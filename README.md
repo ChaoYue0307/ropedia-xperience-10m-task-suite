@@ -54,11 +54,13 @@ Hugging Face Space app:
 
 ![ChatGPT-image-backed 12-task infographic](docs/assets/task_suite_infographic.png)
 
-The infographic background was generated with ChatGPT image. The task names,
-input/output summaries, and metrics are overlaid from
+The infographic uses a ChatGPT-image-generated text-free research background and
+low-resolution modality thumbnails extracted from the public sample episode. The
+task names, input/output summaries, and metrics are overlaid from
 [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json)
 with [`scripts/render_task_suite_infographic.py`](scripts/render_task_suite_infographic.py),
-so the published PNG is a presentation graphic, not a hallucinated metric sheet.
+so the published PNG is a presentation graphic with verified labels and metrics,
+not a hallucinated metric sheet.
 
 ![Verified Pipeline](docs/assets/pipeline_diagram.svg)
 
