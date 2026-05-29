@@ -1,6 +1,7 @@
 # Ropedia Episode Task Suite
 
 [![Website](https://img.shields.io/badge/site-GitHub%20Pages-1f63e9)](https://chaoyue0307.github.io/ropedia-episode-task-suite/)
+[![HF Space](https://img.shields.io/badge/Hugging%20Face-Space-ffb000)](https://huggingface.co/spaces/cy0307/ropedia-episode-task-suite)
 [![Dataset](https://img.shields.io/badge/dataset-Ropedia%20%2F%20Xperience--10M-008b9a)](https://github.com/Ropedia)
 [![Scope](https://img.shields.io/badge/scope-single%20public%20sample-b65b04)](#scope)
 
@@ -19,12 +20,21 @@ Open the polished dashboard:
 
 **https://chaoyue0307.github.io/ropedia-episode-task-suite/**
 
+Hugging Face Space app:
+
+**https://cy0307-ropedia-episode-task-suite.static.hf.space/**
+
 ## Links
 
 | Resource | Link |
 | --- | --- |
 | This GitHub repo | https://github.com/ChaoYue0307/ropedia-episode-task-suite |
 | This project website | https://chaoyue0307.github.io/ropedia-episode-task-suite/ |
+| This Hugging Face Space | https://huggingface.co/spaces/cy0307/ropedia-episode-task-suite |
+| Live Hugging Face static app | https://cy0307-ropedia-episode-task-suite.static.hf.space/ |
+| Derived artifacts on Hugging Face | https://huggingface.co/datasets/cy0307/ropedia-episode-task-suite-artifacts |
+| Minimal baseline models on Hugging Face | https://huggingface.co/cy0307/ropedia-minimal-task-baselines |
+| Hugging Face collection | https://huggingface.co/collections/cy0307/ropedia-episode-task-suite |
 | Ropedia website | https://ropedia.com/dataset |
 | Xperience-10M release page | https://ropedia.com/blog/20260316_xperience_10m |
 | Ropedia GitHub organization | https://github.com/Ropedia |
