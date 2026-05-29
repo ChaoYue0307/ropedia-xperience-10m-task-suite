@@ -61,6 +61,18 @@ def add_toolkit_to_path(workspace: Path) -> None:
     sys.path.insert(0, str(toolkit))
 
 
+def portable_path(path: Path, workspace: Path | None = None) -> str:
+    roots = [workspace, Path.cwd()]
+    for root in roots:
+        if root is None:
+            continue
+        try:
+            return path.resolve().relative_to(Path(root).resolve()).as_posix()
+        except (FileNotFoundError, ValueError):
+            continue
+    return path.name
+
+
 def temporal_stats(arr: np.ndarray) -> np.ndarray:
     """Return fixed statistics over time for an array shaped (T, ...)."""
     arr = np.asarray(arr, dtype=np.float32)
@@ -373,7 +385,7 @@ def save_artifacts(
     np.savez_compressed(output_dir / "model.npz", mean=mean, std=std, W=W, b=b, class_names=np.asarray(class_names, dtype=object))
 
     metadata = {
-        "annotation": str(args.annotation),
+        "annotation": portable_path(args.annotation, args.workspace),
         "target": args.target,
         "window_frames": args.window_frames,
         "stride_frames": args.stride_frames,

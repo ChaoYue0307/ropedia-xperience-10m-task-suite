@@ -22,7 +22,7 @@ annotation.hdf5
 Run:
 
 ```bash
-cd /Users/chaoyue/Library/CloudStorage/Dropbox/Ropedia
+cd /path/to/Ropedia
 source .venv/bin/activate
 python scripts/train_min_action_model.py
 ```

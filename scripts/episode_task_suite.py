@@ -31,6 +31,7 @@ from train_min_action_model import (
     frame_label,
     majority_label,
     predict,
+    portable_path,
     softmax,
     train_softmax_classifier,
 )
@@ -718,7 +719,7 @@ def main() -> int:
     np.savez_compressed(args.output_dir / "shared_windows.npz", X=X, starts=np.asarray([r["start_frame"] for r in rows]), ends=np.asarray([r["end_frame"] for r in rows]))
 
     summary = {
-        "annotation": str(args.annotation),
+        "annotation": portable_path(args.annotation, args.workspace),
         "num_frames": int(len(ann["img_names"])),
         "num_windows": int(len(rows)),
         "feature_dim": int(X.shape[1]),

@@ -11,7 +11,7 @@ This script turns the single public Ropedia sample episode into many end-to-end 
 Run:
 
 ```bash
-cd /Users/chaoyue/Library/CloudStorage/Dropbox/Ropedia
+cd /path/to/Ropedia
 source .venv/bin/activate
 python scripts/episode_task_suite.py
 ```

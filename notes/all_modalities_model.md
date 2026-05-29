@@ -82,7 +82,7 @@ total:                            8378
 Action prediction:
 
 ```bash
-cd /Users/chaoyue/Library/CloudStorage/Dropbox/Ropedia
+cd /path/to/Ropedia
 source .venv/bin/activate
 python scripts/train_all_modalities_model.py
 ```

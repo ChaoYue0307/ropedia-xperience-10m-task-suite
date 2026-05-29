@@ -35,6 +35,7 @@ from train_min_action_model import (
     frame_label,
     majority_label,
     predict,
+    portable_path,
     safe_window,
     save_artifacts,
     stratified_split,
@@ -330,7 +331,12 @@ def prepare_modalities(args: argparse.Namespace, ann: dict) -> tuple[dict, list[
             args.force_rebuild_cache,
         )
         extras["video"][name] = feats
-        available.append({"modality": f"video/{name}", "path": str(path), "shape": list(feats.shape), "exists": path.exists()})
+        available.append({
+            "modality": f"video/{name}",
+            "path": portable_path(path, args.workspace),
+            "shape": list(feats.shape),
+            "exists": path.exists(),
+        })
 
     print("  caption objects/interaction text")
     text = build_text_features(
