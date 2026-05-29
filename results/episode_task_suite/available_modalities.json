@@ -1,0 +1,83 @@
+[
+  {
+    "modality": "depth_confidence",
+    "shape": [
+      5821,
+      140
+    ]
+  },
+  {
+    "modality": "video/fisheye_cam0",
+    "path": "/Users/chaoyue/Library/CloudStorage/Dropbox/Ropedia/data/sample/xperience-10m-sample/fisheye_cam0.mp4",
+    "shape": [
+      5821,
+      98
+    ],
+    "exists": true
+  },
+  {
+    "modality": "video/fisheye_cam1",
+    "path": "/Users/chaoyue/Library/CloudStorage/Dropbox/Ropedia/data/sample/xperience-10m-sample/fisheye_cam1.mp4",
+    "shape": [
+      5821,
+      98
+    ],
+    "exists": true
+  },
+  {
+    "modality": "video/fisheye_cam2",
+    "path": "/Users/chaoyue/Library/CloudStorage/Dropbox/Ropedia/data/sample/xperience-10m-sample/fisheye_cam2.mp4",
+    "shape": [
+      5821,
+      98
+    ],
+    "exists": true
+  },
+  {
+    "modality": "video/fisheye_cam3",
+    "path": "/Users/chaoyue/Library/CloudStorage/Dropbox/Ropedia/data/sample/xperience-10m-sample/fisheye_cam3.mp4",
+    "shape": [
+      5821,
+      98
+    ],
+    "exists": true
+  },
+  {
+    "modality": "video/stereo_left",
+    "path": "/Users/chaoyue/Library/CloudStorage/Dropbox/Ropedia/data/sample/xperience-10m-sample/stereo_left.mp4",
+    "shape": [
+      5821,
+      98
+    ],
+    "exists": true
+  },
+  {
+    "modality": "video/stereo_right",
+    "path": "/Users/chaoyue/Library/CloudStorage/Dropbox/Ropedia/data/sample/xperience-10m-sample/stereo_right.mp4",
+    "shape": [
+      5821,
+      98
+    ],
+    "exists": true
+  },
+  {
+    "modality": "caption_text",
+    "shape": [
+      5821,
+      128
+    ],
+    "fields": "objects,interaction"
+  },
+  {
+    "modality": "slam_point_cloud_static",
+    "shape": [
+      22
+    ]
+  },
+  {
+    "modality": "calibration_static",
+    "shape": [
+      117
+    ]
+  }
+]
