@@ -232,12 +232,17 @@
     }
 
     .pipeline-image,
+    .task-suite-image,
     .chart {
       width: 100%;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: #fff;
       box-shadow: 0 8px 28px rgba(17, 24, 39, 0.05);
+    }
+    .task-suite-image {
+      display: block;
+      margin-bottom: 24px;
     }
     .two-col {
       display: grid;
@@ -484,6 +489,7 @@
           <h2>Single-episode tasks, deliberately scoped.</h2>
           <p>These tasks turn one episode into a lab for temporal structure, modality alignment, retrieval, reconstruction, and action understanding.</p>
         </div>
+        <img class="task-suite-image" src="assets/task_suite_infographic.png" alt="ChatGPT-image-backed infographic showing all 12 Ropedia episode tasks">
         <div class="task-toolbar" aria-label="Task filters">
           <button class="filter active" data-filter="all">All tasks</button>
           <button class="filter" data-filter="supervised">Supervised</button>

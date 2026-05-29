@@ -33,6 +33,14 @@ Open the polished dashboard:
 | Xperience-10M sample on Hugging Face | https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample |
 | Ropedia Hugging Face organization | https://huggingface.co/ropedia-ai |
 
+![ChatGPT-image-backed 12-task infographic](docs/assets/task_suite_infographic.png)
+
+The infographic background was generated with ChatGPT image. The task names,
+input/output summaries, and metrics are overlaid from
+[`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json)
+with [`scripts/render_task_suite_infographic.py`](scripts/render_task_suite_infographic.py),
+so the published PNG is a presentation graphic, not a hallucinated metric sheet.
+
 ![Verified Pipeline](docs/assets/pipeline_diagram.svg)
 
 ## Scope
@@ -50,6 +58,7 @@ scripts/
   train_all_modalities_model.py     # all-modality lightweight baseline
   episode_task_suite.py             # 12 end-to-end task definitions
   generate_visualizations.py        # refreshes SVG charts + summary JSON
+  render_task_suite_infographic.py  # renders the ChatGPT-image-backed PNG
 
 results/
   min_action_model/                 # motion-only action baseline artifacts
@@ -61,6 +70,7 @@ results/
 docs/
   index.html                        # GitHub Pages dashboard
   data/summary_metrics.json         # website-readable metrics bundle
+  assets/task_suite_infographic.png # 12-task presentation graphic
   assets/charts/*.svg               # regenerated visualizations
 
 notes/
