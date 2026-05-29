@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import html
 import json
+import textwrap
 from pathlib import Path
 
 
@@ -149,6 +150,257 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
     path.write_text("\n".join(parts), encoding="utf-8")
 
 
+def feature_dim(feature_manifest: list[dict], include: list[str] | None = None, exclude: list[str] | None = None) -> int:
+    include = include or []
+    exclude = exclude or []
+    total = 0
+    for block in feature_manifest:
+        name = block["name"]
+        if include and not any(name == prefix or name.startswith(prefix) for prefix in include):
+            continue
+        if exclude and any(name == prefix or name.startswith(prefix) for prefix in exclude):
+            continue
+        total += int(block["dim"])
+    return total
+
+
+def metric_text(task_name: str, metrics: dict) -> str:
+    if task_name == "hand_trajectory_forecast":
+        return f"MPJPE {metrics['mpjpe']:.4f}"
+    if task_name == "cross_modal_retrieval":
+        return f"top-5 {metrics['top5_accuracy']:.4f}"
+    if task_name == "caption_grounding":
+        return f"MRR {metrics['mrr']:.4f}"
+    if task_name == "object_relevance":
+        return f"micro-F1 {metrics['micro_f1']:.4f}"
+    if task_name == "modality_reconstruction":
+        return f"R2 {metrics['r2']:.4f}"
+    if task_name in {"temporal_order", "misalignment_detection"}:
+        return f"F1 {metrics['f1']:.4f}"
+    if "macro_f1" in metrics:
+        return f"macro-F1 {metrics['macro_f1']:.4f}"
+    if "accuracy" in metrics:
+        return f"accuracy {metrics['accuracy']:.4f}"
+    return "metric in summary_report.json"
+
+
+def draw_text_block(parts: list[str], x: int, y: int, lines: list[str], size: int = 13, color: str = "#394255", weight: str = "500", max_chars: int = 42, line_h: int = 18) -> int:
+    cursor = y
+    for line in lines:
+        wrapped = textwrap.wrap(line, width=max_chars) or [""]
+        for item in wrapped:
+            parts.append(f'<text x="{x}" y="{cursor}" font-family="Arial, sans-serif" font-size="{size}" font-weight="{weight}" fill="{color}">{html.escape(item)}</text>')
+            cursor += line_h
+    return cursor
+
+
+def task_architecture_rows(summary: dict) -> list[dict]:
+    suite = summary["suite"]
+    tasks = suite["tasks"]
+    manifest = summary["feature_manifest"]
+    all_dim = int(suite["feature_dim"])
+    no_contact_text_dim = feature_dim(manifest, exclude=["body_contacts", "caption_objects_interaction_text"])
+    no_text_dim = feature_dim(manifest, exclude=["caption_objects_interaction_text"])
+    sensor_dim = no_text_dim
+    text_dim = feature_dim(manifest, include=["caption_objects_interaction_text"])
+    motion_dim = feature_dim(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_"])
+    visual_dim = feature_dim(manifest, include=["depth_confidence", "video_"])
+    pair_dim = all_dim * 3
+    align_dim = motion_dim + visual_dim
+
+    return [
+        {
+            "task": "timeline_action",
+            "family": "softmax",
+            "input": f"X_all window, {all_dim:,}d",
+            "head": "z-score -> linear softmax, class-weighted CE + L2",
+            "output": f"current action class, {tasks['timeline_action']['num_classes']} classes",
+            "metric": metric_text("timeline_action", tasks["timeline_action"]),
+        },
+        {
+            "task": "timeline_subtask",
+            "family": "softmax",
+            "input": f"X_all window, {all_dim:,}d",
+            "head": "z-score -> linear softmax, class-weighted CE + L2",
+            "output": f"current subtask class, {tasks['timeline_subtask']['num_classes']} classes",
+            "metric": metric_text("timeline_subtask", tasks["timeline_subtask"]),
+        },
+        {
+            "task": "transition_detection",
+            "family": "softmax",
+            "input": f"X_all window, {all_dim:,}d",
+            "head": "z-score -> linear softmax, class-weighted CE + L2",
+            "output": "steady vs transition near action boundary",
+            "metric": f"{metric_text('transition_detection', tasks['transition_detection'])}; boundary-F1 {tasks['transition_detection']['boundary_f1']:.4f}",
+        },
+        {
+            "task": "next_action",
+            "family": "softmax",
+            "input": f"X_all at time t, {all_dim:,}d",
+            "head": "z-score -> linear softmax, class-weighted CE + L2",
+            "output": f"action at t+{tasks['next_action'].get('future_frames', 20)} frames",
+            "metric": metric_text("next_action", tasks["next_action"]),
+        },
+        {
+            "task": "hand_trajectory_forecast",
+            "family": "ridge",
+            "input": f"X_all at time t, {all_dim:,}d",
+            "head": "z-score X/Y -> dual ridge regression, L2=10",
+            "output": f"future hand joints, {tasks['hand_trajectory_forecast']['target_dim']}d",
+            "metric": metric_text("hand_trajectory_forecast", tasks["hand_trajectory_forecast"]),
+        },
+        {
+            "task": "contact_prediction",
+            "family": "softmax",
+            "input": f"X without contact/text leakage, {no_contact_text_dim:,}d",
+            "head": "z-score -> linear softmax on observed labels",
+            "output": "any body contact in window; degenerate one-class sample",
+            "metric": metric_text("contact_prediction", tasks["contact_prediction"]),
+        },
+        {
+            "task": "object_relevance",
+            "family": "multilabel",
+            "input": f"X without caption text, {no_text_dim:,}d",
+            "head": "z-score -> sigmoid multi-label logistic, weighted",
+            "output": f"multi-hot object set, {tasks['object_relevance']['num_objects']} objects",
+            "metric": metric_text("object_relevance", tasks["object_relevance"]),
+        },
+        {
+            "task": "caption_grounding",
+            "family": "ridge+rank",
+            "input": f"sensor {sensor_dim:,}d -> text space {text_dim:,}d",
+            "head": "ridge projection, then cosine ranking",
+            "output": "text query retrieves matching time window",
+            "metric": metric_text("caption_grounding", tasks["caption_grounding"]),
+        },
+        {
+            "task": "cross_modal_retrieval",
+            "family": "ridge+rank",
+            "input": f"motion/IMU/camera {motion_dim:,}d -> visual {visual_dim:,}d",
+            "head": "ridge projection, then cosine ranking",
+            "output": "retrieve matching depth/video window",
+            "metric": metric_text("cross_modal_retrieval", tasks["cross_modal_retrieval"]),
+        },
+        {
+            "task": "modality_reconstruction",
+            "family": "ridge",
+            "input": f"motion/IMU/camera {motion_dim:,}d",
+            "head": "z-score X/Y -> dual ridge regression, L2=10",
+            "output": f"depth/video feature vector, {visual_dim:,}d",
+            "metric": metric_text("modality_reconstruction", tasks["modality_reconstruction"]),
+        },
+        {
+            "task": "temporal_order",
+            "family": "softmax",
+            "input": f"concat[x_t, x_t+1, diff], {pair_dim:,}d",
+            "head": "z-score -> binary linear softmax, CE + L2",
+            "output": "correct vs reversed adjacent windows",
+            "metric": metric_text("temporal_order", tasks["temporal_order"]),
+        },
+        {
+            "task": "misalignment_detection",
+            "family": "softmax",
+            "input": f"concat[motion_t, visual_t/visual_t+8], {align_dim:,}d",
+            "head": "z-score -> binary linear softmax, CE + L2",
+            "output": "aligned vs shifted by 8 windows",
+            "metric": metric_text("misalignment_detection", tasks["misalignment_detection"]),
+        },
+    ]
+
+
+def svg_task_architectures(path: Path, summary: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    suite = summary["suite"]
+    rows = task_architecture_rows(summary)
+    family_colors = {
+        "softmax": "#1f63e9",
+        "ridge": "#0a7f55",
+        "ridge+rank": "#008b9a",
+        "multilabel": "#b65b04",
+    }
+    width, height = 1500, 1840
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        '<defs><marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#cbd5e1"/></marker></defs>',
+        '<rect width="100%" height="100%" fill="#ffffff"/>',
+        '<text x="60" y="56" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#10141f">Minimal Architectures for the 12 Ropedia Episode Tasks</text>',
+        '<text x="60" y="88" font-family="Arial, sans-serif" font-size="16" fill="#5b6475">Generated from scripts/episode_task_suite.py semantics and committed summary metrics. These are minimal baselines, not deep foundation models.</text>',
+    ]
+
+    setup = [
+        (60, 122, 310, 110, "Shared episode windows", [
+            f"{suite['num_frames']:,} frames -> {suite['num_windows']:,} windows",
+            f"{suite['window_frames']}-frame window, {suite['stride_frames']}-frame stride",
+            "chronological 70/30 split",
+        ], "#1f63e9"),
+        (410, 122, 310, 110, "Feature vector", [
+            f"X_all = {suite['feature_dim']:,} dimensions",
+            "17 named modality blocks",
+            "mean/std fit on train only",
+        ], "#008b9a"),
+        (760, 122, 320, 110, "Reusable heads", [
+            "linear softmax classifier",
+            "dual ridge regression/projection",
+            "multi-label logistic + cosine rank",
+        ], "#0a7f55"),
+        (1120, 122, 320, 110, "Artifacts", [
+            "metrics.json, predictions.csv/npz",
+            "model.npz with scaler and weights",
+            "summary_report.json source of numbers",
+        ], "#b65b04"),
+    ]
+    for i in range(len(setup) - 1):
+        x1 = setup[i][0] + setup[i][2]
+        x2 = setup[i + 1][0]
+        y = setup[i][1] + 55
+        parts.append(f'<line x1="{x1 + 12}" y1="{y}" x2="{x2 - 14}" y2="{y}" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrow2)"/>')
+    for x, y, w, h, title, lines, color in setup:
+        parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="8" fill="#ffffff" stroke="#dce2ec" stroke-width="2"/>')
+        parts.append(f'<rect x="{x}" y="{y}" width="8" height="{h}" rx="4" fill="{color}"/>')
+        parts.append(f'<text x="{x + 24}" y="{y + 31}" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#10141f">{html.escape(title)}</text>')
+        draw_text_block(parts, x + 24, y + 58, lines, size=13, color="#394255", max_chars=34, line_h=18)
+
+    families = [
+        ("Softmax classifier", "logits = z(X)W + b; CE + L2; class weights for classifiers", "#1f63e9", 60, 270),
+        ("Ridge regression/projection", "closed-form dual ridge on z(X), z(Y); used for forecast and reconstruction", "#0a7f55", 780, 270),
+        ("Ridge + cosine ranking", "project one modality into another feature space, then rank candidates by cosine", "#008b9a", 60, 394),
+        ("Multi-label logistic", "sigmoid heads for object vocabulary; threshold 0.5 with top-1 fallback", "#b65b04", 780, 394),
+    ]
+    for title, desc, color, x, y in families:
+        parts.append(f'<rect x="{x}" y="{y}" width="660" height="100" rx="8" fill="#f8fafc" stroke="#dce2ec"/>')
+        parts.append(f'<text x="{x + 18}" y="{y + 33}" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="{color}">{html.escape(title)}</text>')
+        draw_text_block(parts, x + 18, y + 60, [desc], size=13, color="#394255", max_chars=76, line_h=18)
+
+    card_w, card_h = 440, 248
+    gap_x, gap_y = 30, 30
+    start_x, start_y = 60, 540
+    for idx, row in enumerate(rows):
+        col, card_row = idx % 3, idx // 3
+        x = start_x + col * (card_w + gap_x)
+        y = start_y + card_row * (card_h + gap_y)
+        color = family_colors[row["family"]]
+        parts.append(f'<rect x="{x}" y="{y}" width="{card_w}" height="{card_h}" rx="8" fill="#ffffff" stroke="#dce2ec" stroke-width="2"/>')
+        parts.append(f'<rect x="{x}" y="{y}" width="8" height="{card_h}" rx="4" fill="{color}"/>')
+        parts.append(f'<rect x="{x + 20}" y="{y + 18}" width="96" height="24" rx="6" fill="#f8fafc" stroke="{color}"/>')
+        parts.append(f'<text x="{x + 68}" y="{y + 35}" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="{color}">{html.escape(row["family"])}</text>')
+        parts.append(f'<text x="{x + 20}" y="{y + 72}" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#10141f">{html.escape(row["task"])}</text>')
+        cursor = y + 104
+        for label in ("input", "head", "output", "metric"):
+            parts.append(f'<text x="{x + 20}" y="{cursor}" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="{color}">{label.upper()}</text>')
+            cursor = draw_text_block(parts, x + 92, cursor, [row[label]], size=13, color="#394255", max_chars=41, line_h=17)
+            cursor += 8
+
+    notes = [
+        "Interpretation: this suite tests whether each input/output contract is wired correctly before scaling to many episodes.",
+        "Research-grade claims need held-out episode splits and stronger sequence/vision-language/robot-policy models.",
+    ]
+    parts.append('<rect x="60" y="1688" width="1380" height="72" rx="8" fill="#f8fafc" stroke="#dce2ec"/>')
+    for i, line in enumerate(notes):
+        parts.append(f'<text x="84" y="{1718 + i * 24}" font-family="Arial, sans-serif" font-size="15" fill="#273143">{html.escape(line)}</text>')
+    parts.append("</svg>")
+    path.write_text("\n".join(parts), encoding="utf-8")
+
+
 def collect_summary() -> dict:
     all_action = read_json(RESULTS / "min_all_modalities_action_model/metrics.json")
     all_subtask = read_json(RESULTS / "min_all_modalities_subtask_model/metrics.json")
@@ -171,6 +423,7 @@ def collect_summary() -> dict:
 def generate_charts(summary: dict) -> None:
     CHARTS.mkdir(parents=True, exist_ok=True)
     svg_pipeline_diagram(ASSETS / "pipeline_diagram.svg", summary)
+    svg_task_architectures(ASSETS / "task_architectures.svg", summary)
     model_rows = [
         ("Motion-only action macro-F1", summary["models"]["motion_action"]["macro_f1"]),
         ("All-modality action macro-F1", summary["models"]["all_modalities_action"]["macro_f1"]),
@@ -211,6 +464,7 @@ def main() -> int:
     generate_charts(summary)
     write_summary_data(summary)
     print(f"Wrote pipeline diagram: {ASSETS / 'pipeline_diagram.svg'}")
+    print(f"Wrote task architectures diagram: {ASSETS / 'task_architectures.svg'}")
     print(f"Wrote charts: {CHARTS}")
     print(f"Wrote data: {DOCS / 'data/summary_metrics.json'}")
     return 0

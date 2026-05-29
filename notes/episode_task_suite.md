@@ -50,6 +50,51 @@ split:          chronological, first 70% train and last 30% test
 | `temporal_order` | two adjacent windows | whether order is correct | `temporal_order/metrics.json` |
 | `misalignment_detection` | motion+visual pair | aligned vs shifted | `misalignment_detection/metrics.json` |
 
+## Minimal Model Architectures
+
+All tasks share the same window builder unless a task explicitly removes a
+feature block to avoid label leakage.
+
+```text
+raw sample episode
+  -> 20-frame sliding windows, stride 5
+  -> all-modality feature vector X_all, 8,378 dimensions
+  -> chronological split, first 70% train and last 30% test
+  -> train-only z-score scaler
+  -> task-specific minimal head
+```
+
+The task suite intentionally uses simple heads:
+
+| Family | Formula | Tasks |
+|---|---|---|
+| Linear softmax | `softmax(z(X)W + b)`, cross-entropy, L2 | `timeline_action`, `timeline_subtask`, `transition_detection`, `next_action`, `contact_prediction`, `temporal_order`, `misalignment_detection` |
+| Ridge regression/projection | dual ridge regression with L2=10 on z-scored X/Y | `hand_trajectory_forecast`, `caption_grounding`, `cross_modal_retrieval`, `modality_reconstruction` |
+| Multi-label logistic | `sigmoid(z(X)W + b)`, weighted object heads | `object_relevance` |
+
+Task-specific architecture details:
+
+| Task | Input tensor/vector | Minimal head | Output target |
+|---|---|---|---|
+| `timeline_action` | `X_all`, 8,378d | class-weighted linear softmax | current action label |
+| `timeline_subtask` | `X_all`, 8,378d | class-weighted linear softmax | current subtask label |
+| `transition_detection` | `X_all`, 8,378d | class-weighted linear softmax | steady vs transition near action boundary |
+| `next_action` | `X_all(t)`, 8,378d | class-weighted linear softmax | action at `t+20` frames |
+| `hand_trajectory_forecast` | `X_all(t)`, 8,378d | ridge regression | future 10 frames of left/right hand joints, 1,260d |
+| `contact_prediction` | all features except `body_contacts` and caption text, 7,335d | linear softmax on observed labels | any body contact in window |
+| `object_relevance` | all features except caption text, 7,482d | multi-label logistic regression | 34-object multi-hot vector |
+| `caption_grounding` | sensor features, 7,482d, projected into 896d text space | ridge projection plus cosine ranking | matching time window for a text query |
+| `cross_modal_retrieval` | motion/IMU/camera, 2,247d, projected into 5,096d visual space | ridge projection plus cosine ranking | matching depth/video window |
+| `modality_reconstruction` | motion/IMU/camera, 2,247d | ridge regression | depth/video feature vector, 5,096d |
+| `temporal_order` | `[x_t, x_t+1, x_t+1-x_t]`, 25,134d | binary linear softmax | correct vs reversed order |
+| `misalignment_detection` | motion plus visual pair, 7,343d | binary linear softmax | aligned vs shifted by 8 windows |
+
+Diagram:
+
+```text
+docs/assets/task_architectures.svg
+```
+
 ## Current Results
 
 ```text

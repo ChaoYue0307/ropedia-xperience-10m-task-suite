@@ -232,6 +232,7 @@
     }
 
     .pipeline-image,
+    .architecture-image,
     .task-suite-image,
     .chart {
       width: 100%;
@@ -243,6 +244,9 @@
     .task-suite-image {
       display: block;
       margin-bottom: 24px;
+    }
+    .architecture-image {
+      display: block;
     }
     .two-col {
       display: grid;
@@ -403,6 +407,7 @@
       <div class="nav-links" aria-label="Page navigation">
         <a href="#pipeline">Pipeline</a>
         <a href="#models">Models</a>
+        <a href="#architectures">Arch</a>
         <a href="#tasks">Tasks</a>
         <a href="#features">Signals</a>
         <a href="#artifacts">Artifacts</a>
@@ -480,6 +485,16 @@
           <article class="model"><h3>All-modality subtask</h3><span class="score">0.9308</span><span class="meta">macro-F1, chronological caveats</span></article>
         </div>
         <img class="chart" src="assets/charts/model_macro_f1.svg" alt="Macro-F1 comparison chart">
+      </div>
+    </section>
+
+    <section id="architectures">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The 12 tasks use three minimal head families.</h2>
+          <p>The diagram separates the shared episode-window feature pipeline from the task-specific heads: linear softmax, ridge projection/regression, and multi-label logistic regression.</p>
+        </div>
+        <img class="architecture-image" src="assets/task_architectures.svg" alt="Verified minimal architecture diagram for all 12 Ropedia episode tasks">
       </div>
     </section>
 
