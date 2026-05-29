@@ -19,7 +19,7 @@ Open the polished dashboard:
 
 **https://chaoyue0307.github.io/ropedia-episode-task-suite/**
 
-![Pipeline](docs/assets/pipeline_diagram.png)
+![Verified Pipeline](docs/assets/pipeline_diagram.svg)
 
 ## Scope
 
@@ -136,6 +136,16 @@ python scripts/generate_visualizations.py
 The strongest single-episode self-supervised signal is cross-modal retrieval:
 motion/IMU/camera features retrieve matching depth/video windows substantially
 better than random.
+
+## Reproducibility Audit
+
+I re-ran the full pipeline from the local raw public sample into
+`/private/tmp/ropedia-audit` and compared regenerated metrics with the committed
+artifacts. The baseline metrics, 12 task metrics, feature manifest, and
+available modality manifest matched exactly after float normalization.
+
+See [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) for the
+commands and verification evidence.
 
 ## Why Some Scores Are Low
 
