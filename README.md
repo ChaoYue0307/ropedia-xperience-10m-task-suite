@@ -1,69 +1,66 @@
 # Ropedia Episode Task Suite
 
-Minimal, reproducible baselines for exploring one public Ropedia / Xperience-10M sample episode.
+[![Website](https://img.shields.io/badge/site-GitHub%20Pages-1f63e9)](https://chaoyue0307.github.io/ropedia-episode-task-suite/)
+[![Dataset](https://img.shields.io/badge/dataset-Ropedia%20%2F%20Xperience--10M-008b9a)](https://github.com/Ropedia)
+[![Scope](https://img.shields.io/badge/scope-single%20public%20sample-b65b04)](#scope)
 
-This repo turns a single multimodal embodied-AI episode into:
+A compact, reproducible embodied-AI learning repo built around one public
+Ropedia / Xperience-10M sample episode.
 
-- all-modality window features,
-- action/subtask classifiers,
-- 12 single-episode task definitions,
-- metrics, predictions, model artifacts, and visualizations.
+This project turns a raw multimodal episode into:
 
-> Scope: this is a learning and pipeline-validation repo. It does **not** claim cross-episode generalization because the public sample here is one episode.
+- all-modality sliding-window features,
+- motion-only and all-modality baseline models,
+- 12 end-to-end episode-level tasks,
+- metrics, predictions, model weights, manifests, charts, and a static website,
+- a clear explanation of what a single episode can and cannot prove.
 
-## Dashboard
+Open the polished dashboard:
 
-Open the static dashboard:
-
-[docs/index.html](docs/index.html)
-
-Pipeline overview:
+**https://chaoyue0307.github.io/ropedia-episode-task-suite/**
 
 ![Pipeline](docs/assets/pipeline_diagram.png)
 
-Model comparison:
+## Scope
 
-![Model Macro-F1](docs/assets/charts/model_macro_f1.svg)
+This is a learning, inspection, and pipeline-validation repo. It does **not**
+claim cross-episode generalization because the public sample used here is one
+episode. The correct next step for real model claims is to run the same suite
+over many episodes and split train/test by held-out episode.
 
-Episode task suite:
-
-![Episode Task Scores](docs/assets/charts/episode_task_scores.svg)
-
-Feature blocks:
-
-![Feature Blocks](docs/assets/charts/feature_blocks.svg)
-
-## What Is Included
+## What Is Inside
 
 ```text
 scripts/
   train_min_action_model.py         # motion/IMU baseline
   train_all_modalities_model.py     # all-modality lightweight baseline
-  episode_task_suite.py             # 12 task suite
-  generate_visualizations.py        # SVG + HTML dashboard generator
+  episode_task_suite.py             # 12 end-to-end task definitions
+  generate_visualizations.py        # refreshes SVG charts + summary JSON
 
 results/
-  min_action_model/
-  min_subtask_model/
-  min_all_modalities_action_model/
-  min_all_modalities_subtask_model/
-  episode_task_suite/
+  min_action_model/                 # motion-only action baseline artifacts
+  min_subtask_model/                # motion-only subtask baseline artifacts
+  min_all_modalities_action_model/  # all-modality action artifacts
+  min_all_modalities_subtask_model/ # all-modality subtask artifacts
+  episode_task_suite/               # 12-task suite metrics and predictions
+
+docs/
+  index.html                        # GitHub Pages dashboard
+  data/summary_metrics.json         # website-readable metrics bundle
+  assets/charts/*.svg               # regenerated visualizations
 
 notes/
   min_action_model.md
   all_modalities_model.md
   episode_task_suite.md
-
-docs/
-  index.html
-  assets/
 ```
 
-Raw Ropedia data is **not** committed. Download it from Hugging Face and follow the original dataset terms.
+Raw Ropedia data is **not** committed. Download it from the original source and
+follow the dataset terms.
 
-## Sample Data Expected
+## Data Expected
 
-The scripts expect this workspace layout:
+The scripts expect a workspace with the Ropedia toolkit and the sample episode:
 
 ```text
 <workspace>/
@@ -78,13 +75,13 @@ The scripts expect this workspace layout:
     stereo_right.mp4
 ```
 
-The public sample dataset is:
+The public sample dataset identifier is:
 
 ```text
 ropedia-ai/xperience-10m-sample
 ```
 
-## Setup
+## Quickstart
 
 From a workspace folder:
 
@@ -103,95 +100,75 @@ hf download ropedia-ai/xperience-10m-sample \
   --local-dir data/sample/xperience-10m-sample
 ```
 
-Clone this repo into the same workspace or pass `--workspace` explicitly.
-
-## Run
-
-Motion-only baseline:
+Clone and run this repo:
 
 ```bash
-python scripts/train_min_action_model.py --workspace /path/to/workspace
-```
-
-All-modality baseline:
-
-```bash
-python scripts/train_all_modalities_model.py --workspace /path/to/workspace
-```
-
-Episode task suite:
-
-```bash
+git clone https://github.com/ChaoYue0307/ropedia-episode-task-suite.git
+cd ropedia-episode-task-suite
 python scripts/episode_task_suite.py --workspace /path/to/workspace
 ```
 
-Generate dashboard:
+Run the smaller baselines:
+
+```bash
+python scripts/train_min_action_model.py --workspace /path/to/workspace
+python scripts/train_all_modalities_model.py --workspace /path/to/workspace
+```
+
+Refresh charts and the website data bundle:
 
 ```bash
 python scripts/generate_visualizations.py
 ```
 
-## Results Summary
+## Key Results
 
-All-modality action prediction:
+| Experiment | Main score | Accuracy | Notes |
+| --- | ---: | ---: | --- |
+| Motion-only action | 0.9688 macro-F1 | 0.9828 | Uses motion/IMU features only |
+| All-modality action | 0.9791 macro-F1 | 0.9828 | 8,378-dimensional feature vector |
+| Motion-only subtask | 0.9528 macro-F1 | 0.9759 | Strong within-episode subtask signal |
+| All-modality subtask | 0.9308 macro-F1 | 0.9828 | High accuracy, lower class-balanced score |
+| Cross-modal retrieval | 0.3764 top-5 | n/a | Motion/IMU/camera retrieves matching depth/video |
+| Transition detection | 0.6552 macro-F1 | 0.9253 | Boundary F1 is 0.2143 |
+| Hand trajectory forecast | 0.8223 MPJPE | n/a | Predicts future hand-joint trajectory |
 
-```text
-accuracy:          0.9828
-balanced_accuracy: 0.9801
-macro_f1:          0.9791
-weighted_f1:       0.9828
-feature_dim:       8378
-classes:           18
-```
-
-All-modality subtask prediction:
-
-```text
-accuracy:          0.9828
-balanced_accuracy: 0.9505
-macro_f1:          0.9308
-weighted_f1:       0.9838
-feature_dim:       8378
-classes:           14
-```
-
-Episode task suite key result:
-
-```text
-cross_modal_retrieval:
-  top1: 0.1494
-  top5: 0.3764
-  top10: 0.4741
-  MRR:  0.2634
-```
-
-This is the strongest single-episode signal: motion/IMU/camera features can retrieve matching depth/video windows better than random.
+The strongest single-episode self-supervised signal is cross-modal retrieval:
+motion/IMU/camera features retrieve matching depth/video windows substantially
+better than random.
 
 ## Why Some Scores Are Low
 
-The suite uses a chronological split:
+The task suite intentionally uses a chronological split:
 
 ```text
 first 70% of the episode -> train
 last 30% of the episode  -> test
 ```
 
-The test segment contains actions/subtasks not present in the training segment, so timeline and next-action classifiers cannot predict labels they never saw. This is intentional: it exposes the limitation of one-episode learning.
+The test segment contains some action/subtask labels never seen during training.
+Timeline and next-action classifiers therefore expose the core limitation of
+single-episode learning instead of hiding it behind random splits.
 
-## Interpretation
+## Modalities Used
 
-This repo demonstrates the full pipeline:
+The all-modality vector has 8,378 dimensions and includes:
 
-```text
-raw multimodal sample
--> aligned windows
--> handcrafted all-modality features
--> supervised/self-supervised tasks
--> metrics and visualizations
-```
+- hand/body mocap joints and contact labels,
+- camera translation and rotation,
+- IMU acceleration and gyroscope traces,
+- depth confidence features,
+- six video streams,
+- caption/object/interaction text features,
+- SLAM point-cloud summary features,
+- calibration parameters.
 
-For serious embodied-AI evaluation, use many episodes and split by held-out episode or held-out task instance.
+The exact feature block boundaries are stored in
+[`results/episode_task_suite/feature_manifest.json`](results/episode_task_suite/feature_manifest.json).
 
 ## Data Notice
 
-Ropedia / Xperience-10M data belongs to its original authors and is subject to the dataset's original license and access terms. This repo contains code and derived experiment artifacts only; it does not redistribute the raw dataset.
+Ropedia / Xperience-10M data belongs to its original authors and is subject to
+the dataset's original license and access terms. This repo contains code and
+derived experiment artifacts only; it does not redistribute the raw videos or
+raw annotation dataset.

@@ -4,75 +4,605 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ropedia Episode Task Suite</title>
+  <meta name="description" content="A polished all-modality task-suite repo for one public Ropedia / Xperience-10M sample episode.">
   <style>
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #111827; background: #f8fafc; }
-    header { background: #0f172a; color: white; padding: 42px 56px; }
-    header h1 { margin: 0 0 8px; font-size: 34px; }
-    header p { margin: 0; color: #cbd5e1; max-width: 980px; line-height: 1.5; }
-    main { padding: 32px 56px 56px; }
-    section { background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px; margin-bottom: 24px; }
-    h2 { margin-top: 0; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
-    img { max-width: 100%; height: auto; border: 1px solid #e5e7eb; border-radius: 6px; background: white; }
-    table { border-collapse: collapse; width: 100%; font-size: 14px; }
-    th, td { border-bottom: 1px solid #e5e7eb; padding: 10px 8px; text-align: left; vertical-align: top; }
-    th { background: #f1f5f9; }
-    code { background: #f1f5f9; padding: 2px 5px; border-radius: 4px; }
-    .note { color: #475569; line-height: 1.55; }
+    :root {
+      color-scheme: light;
+      --ink: #10141f;
+      --muted: #5b6475;
+      --line: #dce2ec;
+      --soft-line: #edf1f6;
+      --page: #ffffff;
+      --panel: #f8fafc;
+      --blue: #1f63e9;
+      --cyan: #008b9a;
+      --green: #0a7f55;
+      --amber: #b65b04;
+      --red: #b42318;
+      --shadow: 0 18px 55px rgba(24, 34, 54, 0.10);
+      --radius: 8px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--page);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--soft-line);
+    }
+    .nav-inner {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 760;
+      letter-spacing: 0;
+      text-decoration: none;
+    }
+    .mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid #c8d4e6;
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      background: #fff;
+      box-shadow: 0 8px 22px rgba(31, 99, 233, 0.12);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 14px;
+      color: #394255;
+    }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-action {
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: white;
+      height: 36px;
+      padding: 0 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-weight: 650;
+      border-radius: 6px;
+    }
+
+    .hero {
+      border-bottom: 1px solid var(--soft-line);
+      background:
+        linear-gradient(90deg, rgba(31,99,233,0.08) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(31,99,233,0.06) 1px, transparent 1px);
+      background-size: 54px 54px;
+    }
+    .hero-inner {
+      min-height: 680px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.03fr) minmax(420px, 0.97fr);
+      gap: 46px;
+      align-items: center;
+      padding: 64px 0 54px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(46px, 7vw, 86px);
+      line-height: 0.95;
+      letter-spacing: 0;
+      max-width: 860px;
+    }
+    .hero-copy {
+      margin: 26px 0 0;
+      max-width: 690px;
+      color: #394255;
+      font-size: 19px;
+      line-height: 1.65;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .button {
+      height: 46px;
+      padding: 0 18px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      background: white;
+    }
+    .button.primary {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+      box-shadow: 0 15px 30px rgba(31,99,233,0.22);
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 42px;
+      max-width: 760px;
+    }
+    .stat {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.86);
+      padding: 14px 14px 13px;
+      border-radius: var(--radius);
+    }
+    .stat strong { display: block; font-size: 22px; line-height: 1; }
+    .stat span { display: block; margin-top: 7px; font-size: 12px; color: var(--muted); }
+    .hero-panel {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+    .panel-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--soft-line);
+      padding: 6px 6px 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .signal {
+      display: grid;
+      grid-template-columns: 88px 1fr 74px;
+      gap: 14px;
+      align-items: center;
+      padding: 15px 6px;
+      border-bottom: 1px solid var(--soft-line);
+    }
+    .signal:last-child { border-bottom: 0; }
+    .signal code {
+      color: #273143;
+      background: #f2f5fa;
+      border: 1px solid #e2e8f0;
+      padding: 5px 7px;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+    .track {
+      position: relative;
+      height: 12px;
+      background: #eef2f7;
+      overflow: hidden;
+      border-radius: 999px;
+    }
+    .track > span {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: var(--w);
+      background: linear-gradient(90deg, var(--c), color-mix(in srgb, var(--c), white 28%));
+      border-radius: inherit;
+    }
+    .signal strong { text-align: right; font-size: 13px; }
+
+    section { padding: 78px 0; border-bottom: 1px solid var(--soft-line); }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 32px;
+      margin-bottom: 28px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    .section-head p {
+      max-width: 560px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .pipeline-image,
+    .chart {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 0 8px 28px rgba(17, 24, 39, 0.05);
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 0.55fr);
+      gap: 26px;
+      align-items: start;
+    }
+    .callout {
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--amber);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: #fffaf3;
+      color: #3f2d17;
+    }
+    .callout h3, .artifact h3 { margin: 0 0 8px; font-size: 17px; }
+    .callout p, .artifact p { margin: 0; color: #5f5141; }
+
+    .models {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .model {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      background: white;
+    }
+    .model h3 { margin: 0; font-size: 15px; }
+    .model .score { display: block; margin-top: 18px; font-size: 34px; font-weight: 790; line-height: 1; }
+    .model .meta { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; }
+
+    .task-toolbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .filter {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 999px;
+      height: 36px;
+      padding: 0 14px;
+      font-weight: 650;
+      color: #354052;
+      cursor: pointer;
+    }
+    .filter.active { color: white; background: var(--ink); border-color: var(--ink); }
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .task-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: white;
+      display: grid;
+      gap: 12px;
+      min-height: 184px;
+    }
+    .task-card.hide { display: none; }
+    .task-top { display: flex; justify-content: space-between; gap: 14px; align-items: start; }
+    .task-name { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; font-weight: 760; }
+    .tag {
+      font-size: 11px;
+      border-radius: 999px;
+      padding: 4px 8px;
+      color: #1f2937;
+      background: #eef2f7;
+      white-space: nowrap;
+    }
+    .tag.supervised { background: #eaf2ff; color: #1549ad; }
+    .tag.forecast { background: #eaf8f0; color: #0a6b45; }
+    .tag.retrieval { background: #ecfbfd; color: #006b76; }
+    .tag.diagnostic { background: #fff4e5; color: #8a4400; }
+    .task-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .metric-row { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
+    .metric-row strong { font-size: 19px; }
+    .mini-bar { height: 7px; background: #edf1f6; border-radius: 999px; overflow: hidden; }
+    .mini-bar span { display: block; height: 100%; width: var(--w); background: var(--c); }
+
+    .artifact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+    .artifact {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      padding: 18px;
+    }
+    .artifact a { display: inline-block; margin-top: 14px; font-weight: 740; text-decoration: none; color: var(--blue); }
+
+    .code-panel {
+      background: #10141f;
+      color: #eef3ff;
+      border-radius: var(--radius);
+      padding: 18px;
+      overflow: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px;
+      line-height: 1.65;
+      border: 1px solid #252d3d;
+    }
+    .code-panel button {
+      float: right;
+      margin-left: 16px;
+      height: 30px;
+      border: 1px solid #475569;
+      color: white;
+      background: #1f2937;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    footer {
+      padding: 42px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-inner, .two-col { grid-template-columns: 1fr; }
+      .hero-inner { min-height: 0; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section-head { display: block; }
+      .section-head p { margin-top: 14px; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 28px, var(--max)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid { grid-template-columns: 1fr; }
+      .hero-inner, section { padding: 46px 0; }
+      .signal { grid-template-columns: 1fr; }
+      .signal strong { text-align: left; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Ropedia / Xperience-10M Episode Task Suite</h1>
-    <p>One public sample episode converted into all-modality window features, minimal baselines, task-suite metrics, and reproducible artifacts.</p>
-  </header>
-  <main>
-    <section>
-      <h2>Pipeline</h2>
-      <img src="assets/pipeline_diagram.png" alt="Pipeline diagram">
-    </section>
-    <section>
-      <h2>Model Comparison</h2>
-      <img src="assets/charts/model_macro_f1.svg" alt="Model macro F1 chart">
-      <table>
-        <thead><tr><th>Model</th><th>Accuracy</th><th>Balanced Acc.</th><th>Macro-F1</th><th>Weighted-F1</th><th>Classes</th><th>Eval Windows</th></tr></thead>
-        <tbody><tr><td>Motion-only action</td><td>0.9828</td><td>0.9644</td><td>0.9688</td><td>0.9824</td><td>18</td><td>291</td></tr>
-<tr><td>Motion-only subtask</td><td>0.9759</td><td>0.9784</td><td>0.9528</td><td>0.9779</td><td>14</td><td>290</td></tr>
-<tr><td>All-modality action</td><td>0.9828</td><td>0.9801</td><td>0.9791</td><td>0.9828</td><td>18</td><td>291</td></tr>
-<tr><td>All-modality subtask</td><td>0.9828</td><td>0.9505</td><td>0.9308</td><td>0.9838</td><td>14</td><td>290</td></tr></tbody>
-      </table>
-    </section>
-    <section>
-      <h2>All-Modality Feature Vector</h2>
-      <p class="note">The all-modality window feature has 8378 dimensions across motion, video, depth, text, point cloud, and calibration features.</p>
-      <img src="assets/charts/feature_blocks.svg" alt="Feature block dimensions">
-    </section>
-    <section>
-      <h2>Episode Task Suite</h2>
-      <div class="grid">
-        <img src="assets/charts/episode_task_scores.svg" alt="Episode task scores">
-        <img src="assets/charts/cross_modal_retrieval.svg" alt="Cross-modal retrieval">
+  <nav class="site-nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Ropedia Episode Task Suite home">
+        <span class="mark" aria-hidden="true">R</span>
+        <span>Ropedia Episode Task Suite</span>
+      </a>
+      <div class="nav-links" aria-label="Page navigation">
+        <a href="#pipeline">Pipeline</a>
+        <a href="#models">Models</a>
+        <a href="#tasks">Tasks</a>
+        <a href="#features">Signals</a>
+        <a href="#artifacts">Artifacts</a>
+        <a class="nav-action" href="https://github.com/ChaoYue0307/ropedia-episode-task-suite">GitHub</a>
       </div>
-      <table>
-        <thead><tr><th>Task</th><th>Input / Output</th><th>Main Score</th><th>Accuracy</th><th>Macro-F1</th><th>MRR</th><th>MPJPE</th></tr></thead>
-        <tbody><tr><td><code>timeline_action</code></td><td>all modalities -&gt; current action label</td><td>0.0500</td><td>0.0292</td><td>0.0500</td><td>n/a</td><td>n/a</td></tr>
-<tr><td><code>timeline_subtask</code></td><td>all modalities -&gt; current subtask label</td><td>0.0495</td><td>0.0581</td><td>0.0495</td><td>n/a</td><td>n/a</td></tr>
-<tr><td><code>transition_detection</code></td><td>all modalities -&gt; action boundary/steady</td><td>0.6552</td><td>0.9253</td><td>0.6552</td><td>n/a</td><td>n/a</td></tr>
-<tr><td><code>next_action</code></td><td>all modalities at t -&gt; action at t+20 frames</td><td>0.0593</td><td>0.0345</td><td>0.0593</td><td>n/a</td><td>n/a</td></tr>
-<tr><td><code>hand_trajectory_forecast</code></td><td>all modalities at t -&gt; future left/right hand 3D joints</td><td>0.8223</td><td>n/a</td><td>n/a</td><td>n/a</td><td>0.8223</td></tr>
-<tr><td><code>contact_prediction</code></td><td>all non-contact/non-caption-label modalities -&gt; any body contact</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>n/a</td><td>n/a</td></tr>
-<tr><td><code>object_relevance</code></td><td>all non-caption modalities -&gt; current relevant object set</td><td>0.0643</td><td>n/a</td><td>0.0643</td><td>n/a</td><td>n/a</td></tr>
-<tr><td><code>caption_grounding</code></td><td>caption objects/interaction text query + candidate sensor windows</td><td>0.0115</td><td>n/a</td><td>n/a</td><td>0.0172</td><td>n/a</td></tr>
-<tr><td><code>cross_modal_retrieval</code></td><td>motion/IMU/camera query</td><td>0.3764</td><td>n/a</td><td>n/a</td><td>0.2634</td><td>n/a</td></tr>
-<tr><td><code>modality_reconstruction</code></td><td>motion/IMU/camera</td><td>-0.0160</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
-<tr><td><code>temporal_order</code></td><td>two adjacent windows -&gt; whether order is correct</td><td>0.5487</td><td>0.4612</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
-<tr><td><code>misalignment_detection</code></td><td>motion+visual pair -&gt; aligned vs shifted by 8 windows</td><td>0.4866</td><td>0.5029</td><td>n/a</td><td>n/a</td><td>n/a</td></tr></tbody>
-      </table>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap hero-inner">
+      <div>
+        <h1>One embodied episode, twelve ways to learn from it.</h1>
+        <p class="hero-copy">
+          A polished, reproducible task suite for the public Ropedia / Xperience-10M sample:
+          all-modality features, supervised baselines, self-supervised probes, metrics, artifacts,
+          and a clear path from single-episode debugging to real cross-episode evaluation.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#tasks">Explore tasks</a>
+          <a class="button" href="https://github.com/ChaoYue0307/ropedia-episode-task-suite">View repository</a>
+          <a class="button" href="data/summary_metrics.json">Open summary JSON</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>5,821</strong><span>frames in sample episode</span></div>
+          <div class="stat"><strong>1,161</strong><span>20-frame windows</span></div>
+          <div class="stat"><strong>8,378</strong><span>all-modality feature dimensions</span></div>
+          <div class="stat"><strong>12</strong><span>end-to-end task definitions</span></div>
+        </div>
+      </div>
+      <div class="hero-panel" aria-label="Signal summary">
+        <div class="panel-top">
+          <span>all-modality feature allocation</span>
+          <span>window vector</span>
+        </div>
+        <div class="signal"><code>mocap</code><div class="track"><span style="--w:25.3%;--c:#1f63e9"></span></div><strong>2,121</strong></div>
+        <div class="signal"><code>camera+imu</code><div class="track"><span style="--w:1.5%;--c:#008b9a"></span></div><strong>126</strong></div>
+        <div class="signal"><code>depth</code><div class="track"><span style="--w:11.7%;--c:#0a7f55"></span></div><strong>980</strong></div>
+        <div class="signal"><code>video</code><div class="track"><span style="--w:49.1%;--c:#b65b04"></span></div><strong>4,116</strong></div>
+        <div class="signal"><code>language</code><div class="track"><span style="--w:10.7%;--c:#7b5d12"></span></div><strong>896</strong></div>
+        <div class="signal"><code>static</code><div class="track"><span style="--w:1.7%;--c:#475569"></span></div><strong>139</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="pipeline">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Pipeline from raw episode to task suite.</h2>
+          <p>Every script works from the same data contract: aligned multimodal windows, explicit labels, cached feature extraction, and artifact-first evaluation.</p>
+        </div>
+        <div class="two-col">
+          <img class="pipeline-image" src="assets/pipeline_diagram.png" alt="Ropedia all-modality pipeline diagram">
+          <div class="callout">
+            <h3>What this project proves</h3>
+            <p>It proves the full engineering loop: reading Ropedia sample data, aligning modalities, converting them into model-ready windows, defining meaningful tasks, producing metrics, and packaging every artifact for review.</p>
+            <br>
+            <h3>What it does not prove</h3>
+            <p>It does not claim general embodied intelligence. A single episode cannot support cross-environment generalization; that requires many episodes and held-out episode splits.</p>
+          </div>
+        </div>
+      </div>
     </section>
-    <section>
-      <h2>Interpretation</h2>
-      <p class="note">These results are for one sample episode. They are useful for validating data loading, modality alignment, task definitions, and baseline code. They should not be treated as evidence of cross-episode generalization. The next serious step is to run the same suite over many episodes and split train/test by episode.</p>
+
+    <section id="models">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Baselines with transparent artifacts.</h2>
+          <p>Motion-only and all-modality classifiers use the same lightweight softmax model so the comparison stays readable on a laptop.</p>
+        </div>
+        <div class="models">
+          <article class="model"><h3>Motion-only action</h3><span class="score">0.9688</span><span class="meta">macro-F1, 18 classes</span></article>
+          <article class="model"><h3>All-modality action</h3><span class="score">0.9791</span><span class="meta">macro-F1, 8,378 features</span></article>
+          <article class="model"><h3>Motion-only subtask</h3><span class="score">0.9528</span><span class="meta">macro-F1, 14 classes</span></article>
+          <article class="model"><h3>All-modality subtask</h3><span class="score">0.9308</span><span class="meta">macro-F1, chronological caveats</span></article>
+        </div>
+        <img class="chart" src="assets/charts/model_macro_f1.svg" alt="Macro-F1 comparison chart">
+      </div>
+    </section>
+
+    <section id="tasks">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Single-episode tasks, deliberately scoped.</h2>
+          <p>These tasks turn one episode into a lab for temporal structure, modality alignment, retrieval, reconstruction, and action understanding.</p>
+        </div>
+        <div class="task-toolbar" aria-label="Task filters">
+          <button class="filter active" data-filter="all">All tasks</button>
+          <button class="filter" data-filter="supervised">Supervised</button>
+          <button class="filter" data-filter="forecast">Forecast</button>
+          <button class="filter" data-filter="retrieval">Retrieval</button>
+          <button class="filter" data-filter="diagnostic">Diagnostic</button>
+        </div>
+        <div class="task-grid" id="taskGrid">
+          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">timeline_action</span><span class="tag supervised">supervised</span></div><p>All modalities to current action label. Chronological split exposes unseen future actions.</p><div class="metric-row"><span>macro-F1</span><strong>0.0500</strong></div><div class="mini-bar"><span style="--w:5%;--c:#1f63e9"></span></div></article>
+          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">timeline_subtask</span><span class="tag supervised">supervised</span></div><p>All modalities to current subtask label. Useful for segmentation diagnostics.</p><div class="metric-row"><span>macro-F1</span><strong>0.0495</strong></div><div class="mini-bar"><span style="--w:5%;--c:#1f63e9"></span></div></article>
+          <article class="task-card" data-kind="diagnostic"><div class="task-top"><span class="task-name">transition_detection</span><span class="tag diagnostic">diagnostic</span></div><p>Predict steady vs action boundary. Highlights task-transition localization quality.</p><div class="metric-row"><span>macro-F1</span><strong>0.6552</strong></div><div class="mini-bar"><span style="--w:65.5%;--c:#b65b04"></span></div></article>
+          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">next_action</span><span class="tag supervised">supervised</span></div><p>Current multimodal window to action 20 frames later. Tests short-horizon task flow.</p><div class="metric-row"><span>macro-F1</span><strong>0.0593</strong></div><div class="mini-bar"><span style="--w:5.9%;--c:#1f63e9"></span></div></article>
+          <article class="task-card" data-kind="forecast"><div class="task-top"><span class="task-name">hand_trajectory_forecast</span><span class="tag forecast">forecast</span></div><p>Predict future left/right hand 3D joints. Closer to imitation-learning style signals.</p><div class="metric-row"><span>MPJPE</span><strong>0.8223</strong></div><div class="mini-bar"><span style="--w:48%;--c:#0a7f55"></span></div></article>
+          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">contact_prediction</span><span class="tag supervised">supervised</span></div><p>Non-contact modalities to binary contact. Degenerate in this sample because one class dominates.</p><div class="metric-row"><span>accuracy</span><strong>1.0000</strong></div><div class="mini-bar"><span style="--w:100%;--c:#0a7f55"></span></div></article>
+          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">object_relevance</span><span class="tag supervised">supervised</span></div><p>Predict relevant object set from non-caption modalities.</p><div class="metric-row"><span>micro-F1</span><strong>0.1839</strong></div><div class="mini-bar"><span style="--w:18.4%;--c:#1f63e9"></span></div></article>
+          <article class="task-card" data-kind="retrieval"><div class="task-top"><span class="task-name">caption_grounding</span><span class="tag retrieval">retrieval</span></div><p>Caption objects/interaction query to matching sensor window.</p><div class="metric-row"><span>MRR</span><strong>0.0172</strong></div><div class="mini-bar"><span style="--w:1.7%;--c:#008b9a"></span></div></article>
+          <article class="task-card" data-kind="retrieval"><div class="task-top"><span class="task-name">cross_modal_retrieval</span><span class="tag retrieval">retrieval</span></div><p>Motion/IMU/camera query retrieves matching depth/video window. Strongest single-episode signal.</p><div class="metric-row"><span>top-5</span><strong>0.3764</strong></div><div class="mini-bar"><span style="--w:37.6%;--c:#008b9a"></span></div></article>
+          <article class="task-card" data-kind="forecast"><div class="task-top"><span class="task-name">modality_reconstruction</span><span class="tag forecast">forecast</span></div><p>Motion/IMU/camera to depth/video feature vector.</p><div class="metric-row"><span>R2</span><strong>-0.0160</strong></div><div class="mini-bar"><span style="--w:2%;--c:#b42318"></span></div></article>
+          <article class="task-card" data-kind="diagnostic"><div class="task-top"><span class="task-name">temporal_order</span><span class="tag diagnostic">diagnostic</span></div><p>Two adjacent windows to correct vs reversed order.</p><div class="metric-row"><span>F1</span><strong>0.5487</strong></div><div class="mini-bar"><span style="--w:54.9%;--c:#b65b04"></span></div></article>
+          <article class="task-card" data-kind="diagnostic"><div class="task-top"><span class="task-name">misalignment_detection</span><span class="tag diagnostic">diagnostic</span></div><p>Motion+visual pair to aligned vs shifted by eight windows.</p><div class="metric-row"><span>F1</span><strong>0.4866</strong></div><div class="mini-bar"><span style="--w:48.7%;--c:#b65b04"></span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>All-modality features are inspectable.</h2>
+          <p>The point is not hidden complexity. Every block has a clear source modality and an explicit dimensional footprint.</p>
+        </div>
+        <img class="chart" src="assets/charts/feature_blocks.svg" alt="All modality feature block chart">
+      </div>
+    </section>
+
+    <section id="diagnostics">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Diagnostics separate easy wins from real gaps.</h2>
+          <p>The charts make the main lesson visible: within-episode supervised labels are easy under some splits, while retrieval, grounding, forecasting, and alignment remain the useful probes.</p>
+        </div>
+        <div class="chart-grid">
+          <img class="chart" src="assets/charts/episode_task_scores.svg" alt="Episode task suite score chart">
+          <img class="chart" src="assets/charts/cross_modal_retrieval.svg" alt="Cross modal retrieval chart">
+        </div>
+      </div>
+    </section>
+
+    <section id="artifacts">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Everything important is checked in.</h2>
+          <p>Metrics, predictions, confusion matrices, feature manifests, model weights, and derived window artifacts are committed so the repo is reviewable without rerunning first.</p>
+        </div>
+        <div class="artifact-grid">
+          <article class="artifact"><h3>Task-suite report</h3><p>One JSON file with every task metric and split detail.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a></article>
+          <article class="artifact"><h3>Feature manifest</h3><p>Start/end index and dimension for every all-modality feature block.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a></article>
+          <article class="artifact"><h3>Cross-modal retrieval</h3><p>The strongest self-supervised signal from the single episode.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json">metrics.json</a></article>
+          <article class="artifact"><h3>All-modality action model</h3><p>Classifier metrics, predictions, confusion matrix, and model weights.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/min_all_modalities_action_model/metrics.json">metrics.json</a></article>
+          <article class="artifact"><h3>Windows table</h3><p>Window start/end frames and aligned action/subtask labels.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/windows.csv">windows.csv</a></article>
+          <article class="artifact"><h3>Reproduction scripts</h3><p>Three training scripts plus the dashboard generator.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/tree/main/scripts">scripts/</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="run">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Reproduce the suite.</h2>
+          <p>Raw Ropedia data is not redistributed here. Download the public sample separately, then run the same scripts.</p>
+        </div>
+        <pre class="code-panel"><button type="button" data-copy="setup">Copy</button><code id="setup">git clone https://github.com/Ropedia/HOMIE-toolkit.git
+python3.12 -m venv .venv
+source .venv/bin/activate
+pip install -r HOMIE-toolkit/requirements.txt huggingface_hub hf_xet
+
+hf download ropedia-ai/xperience-10m-sample \
+  --repo-type dataset \
+  --local-dir data/sample/xperience-10m-sample
+
+git clone https://github.com/ChaoYue0307/ropedia-episode-task-suite.git
+cd ropedia-episode-task-suite
+python scripts/episode_task_suite.py --workspace /path/to/workspace</code></pre>
+      </div>
     </section>
   </main>
+
+  <footer>
+    <div class="wrap">
+      Built as a single-episode embodied-AI learning lab. For real model claims, scale to multiple episodes and hold out entire episodes at evaluation time.
+    </div>
+  </footer>
+
+  <script>
+    const filters = document.querySelectorAll(".filter");
+    const cards = document.querySelectorAll(".task-card");
+    filters.forEach((button) => {
+      button.addEventListener("click", () => {
+        filters.forEach((b) => b.classList.remove("active"));
+        button.classList.add("active");
+        const filter = button.dataset.filter;
+        cards.forEach((card) => {
+          card.classList.toggle("hide", filter !== "all" && card.dataset.kind !== filter);
+        });
+      });
+    });
+
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const target = document.getElementById(button.dataset.copy);
+        try {
+          await navigator.clipboard.writeText(target.innerText);
+        } catch (error) {
+          return;
+        }
+        const previous = button.textContent;
+        button.textContent = "Copied";
+        setTimeout(() => button.textContent = previous, 1300);
+      });
+    });
+  </script>
 </body>
 </html>
