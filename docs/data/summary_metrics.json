@@ -1,0 +1,392 @@
+{
+  "models": {
+    "motion_action": {
+      "accuracy": 0.9828178694158075,
+      "balanced_accuracy": 0.9643518518518519,
+      "macro_f1": 0.96884342657456,
+      "weighted_f1": 0.9824311468352843,
+      "num_eval_windows": 291,
+      "num_classes": 18,
+      "majority_baseline_accuracy": 0.13745704467353953,
+      "train_final_accuracy": 1.0,
+      "train_final_loss": 0.019042566418647766
+    },
+    "motion_subtask": {
+      "accuracy": 0.9758620689655172,
+      "balanced_accuracy": 0.9783924095954172,
+      "macro_f1": 0.9528048001232955,
+      "weighted_f1": 0.9778836359351952,
+      "num_eval_windows": 290,
+      "num_classes": 14,
+      "majority_baseline_accuracy": 0.14482758620689656,
+      "train_final_accuracy": 1.0,
+      "train_final_loss": 0.02664567530155182
+    },
+    "all_modalities_action": {
+      "accuracy": 0.9828178694158075,
+      "balanced_accuracy": 0.9800925925925925,
+      "macro_f1": 0.9791023658779895,
+      "weighted_f1": 0.98276563540562,
+      "num_eval_windows": 291,
+      "num_classes": 18,
+      "majority_baseline_accuracy": 0.13745704467353953,
+      "train_final_accuracy": 1.0,
+      "train_final_loss": 0.014624637551605701,
+      "feature_dim": 8378,
+      "num_windows": 1144
+    },
+    "all_modalities_subtask": {
+      "accuracy": 0.9827586206896551,
+      "balanced_accuracy": 0.9505102040816327,
+      "macro_f1": 0.9307645963773675,
+      "weighted_f1": 0.9837987833808578,
+      "num_eval_windows": 290,
+      "num_classes": 14,
+      "majority_baseline_accuracy": 0.14482758620689656,
+      "train_final_accuracy": 1.0,
+      "train_final_loss": 0.012823422439396381,
+      "feature_dim": 8378,
+      "num_windows": 1147
+    }
+  },
+  "suite": {
+    "annotation": "/Users/chaoyue/Library/CloudStorage/Dropbox/Ropedia/data/sample/xperience-10m-sample/annotation.hdf5",
+    "num_frames": 5821,
+    "num_windows": 1161,
+    "feature_dim": 8378,
+    "window_frames": 20,
+    "stride_frames": 5,
+    "tasks": {
+      "timeline_action": {
+        "accuracy": 0.029154518950437316,
+        "balanced_accuracy": 0.03125,
+        "macro_f1": 0.05,
+        "weighted_f1": 0.04664723032069971,
+        "num_eval_windows": 343,
+        "num_classes": 18,
+        "task": "timeline_action",
+        "input": "all modalities -> current action label",
+        "split": "chronological",
+        "num_windows": 1144,
+        "num_train_windows": 801,
+        "num_test_windows": 343,
+        "feature_dim": 8378,
+        "majority_baseline_accuracy": 0.0,
+        "train_final_accuracy": 1.0,
+        "train_final_loss": 0.01664665900170803,
+        "unseen_test_classes": [
+          "Place item on table",
+          "Pour coffee",
+          "Pour milk into coffee",
+          "Wait/Prepare for pouring"
+        ]
+      },
+      "timeline_subtask": {
+        "accuracy": 0.05813953488372093,
+        "balanced_accuracy": 0.05376979652090881,
+        "macro_f1": 0.04954121121178666,
+        "weighted_f1": 0.06731304264454903,
+        "num_eval_windows": 344,
+        "num_classes": 14,
+        "task": "timeline_subtask",
+        "input": "all modalities -> current subtask label",
+        "split": "chronological",
+        "num_windows": 1147,
+        "num_train_windows": 803,
+        "num_test_windows": 344,
+        "feature_dim": 8378,
+        "majority_baseline_accuracy": 0.0,
+        "train_final_accuracy": 1.0,
+        "train_final_loss": 0.014040183275938034,
+        "unseen_test_classes": [
+          "Move bottle to coffee equipment",
+          "Pour coffee",
+          "Pour milk into coffee",
+          "Prepare for pouring"
+        ]
+      },
+      "transition_detection": {
+        "accuracy": 0.9252873563218391,
+        "balanced_accuracy": 0.6931475903614458,
+        "macro_f1": 0.6551829268292684,
+        "weighted_f1": 0.9323030557891787,
+        "num_eval_windows": 348,
+        "num_classes": 2,
+        "task": "transition_detection",
+        "input": "all modalities -> action boundary/steady",
+        "split": "chronological",
+        "num_windows": 1161,
+        "num_train_windows": 813,
+        "num_test_windows": 348,
+        "feature_dim": 8378,
+        "majority_baseline_accuracy": 0.9540229885057471,
+        "train_final_accuracy": 1.0,
+        "train_final_loss": 0.007071746978908777,
+        "unseen_test_classes": [],
+        "boundary_precision": 0.125,
+        "boundary_recall": 0.75,
+        "boundary_f1": 0.21428571428571427,
+        "matched_boundaries": 3,
+        "true_boundaries": 4,
+        "predicted_boundaries": 24,
+        "mean_abs_timing_error_frames": 2.6666666666666665
+      },
+      "next_action": {
+        "accuracy": 0.034482758620689655,
+        "balanced_accuracy": 0.04,
+        "macro_f1": 0.05925925925925927,
+        "weighted_f1": 0.05108556832694764,
+        "num_eval_windows": 348,
+        "num_classes": 18,
+        "task": "next_action",
+        "input": "all modalities at t -> action at t+20 frames",
+        "split": "chronological",
+        "num_windows": 1161,
+        "num_train_windows": 813,
+        "num_test_windows": 348,
+        "feature_dim": 8378,
+        "majority_baseline_accuracy": 0.0,
+        "train_final_accuracy": 1.0,
+        "train_final_loss": 0.017629079520702362,
+        "unseen_test_classes": [
+          "Place item on table",
+          "Pour coffee",
+          "Pour milk into coffee",
+          "Wait/Prepare for pouring"
+        ]
+      },
+      "hand_trajectory_forecast": {
+        "mse": 11.323140144348145,
+        "mae": 0.40246668457984924,
+        "r2": -1334.788993815828,
+        "task": "hand_trajectory_forecast",
+        "input": "all modalities at t -> future left/right hand 3D joints",
+        "split": "chronological",
+        "num_windows": 1159,
+        "num_train_windows": 811,
+        "num_test_windows": 348,
+        "forecast_frames": 10,
+        "mpjpe": 0.8222644925117493,
+        "final_frame_mpjpe": 1.0649521350860596,
+        "target_dim": 1260
+      },
+      "contact_prediction": {
+        "accuracy": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "num_eval_windows": 348,
+        "num_classes": 1,
+        "task": "contact_prediction",
+        "input": "all non-contact/non-caption-label modalities -> any body contact",
+        "split": "chronological",
+        "num_windows": 1161,
+        "num_train_windows": 813,
+        "num_test_windows": 348,
+        "feature_dim": 7335,
+        "majority_baseline_accuracy": 1.0,
+        "train_final_accuracy": 1.0,
+        "train_final_loss": 0.0005947681493125856,
+        "unseen_test_classes": []
+      },
+      "object_relevance": {
+        "micro_f1": 0.18393030009680542,
+        "macro_f1": 0.06427052187996415,
+        "exact_match": 0.005747126436781609,
+        "precision": 0.16360505166475317,
+        "recall": 0.21002210759027265,
+        "task": "object_relevance",
+        "input": "all non-caption modalities -> current relevant object set",
+        "split": "chronological",
+        "num_windows": 1161,
+        "num_train_windows": 813,
+        "num_test_windows": 348,
+        "num_objects": 34
+      },
+      "caption_grounding": {
+        "mrr": 0.017183946083791223,
+        "median_rank": 167.0,
+        "mean_rank": 174.39367816091954,
+        "num_queries": 348,
+        "top1_accuracy": 0.0028735632183908046,
+        "top5_accuracy": 0.011494252873563218,
+        "top10_accuracy": 0.017241379310344827,
+        "task": "caption_grounding",
+        "input": "caption objects/interaction text query + candidate sensor windows",
+        "output": "matching time window",
+        "split": "chronological",
+        "num_train_windows": 813,
+        "num_test_windows": 348
+      },
+      "cross_modal_retrieval": {
+        "mrr": 0.26335984006618296,
+        "median_rank": 12.5,
+        "mean_rank": 43.33045977011494,
+        "num_queries": 348,
+        "top1_accuracy": 0.14942528735632185,
+        "top5_accuracy": 0.3764367816091954,
+        "top10_accuracy": 0.47413793103448276,
+        "task": "cross_modal_retrieval",
+        "input": "motion/IMU/camera query",
+        "output": "matching depth/video window",
+        "split": "chronological",
+        "num_train_windows": 813,
+        "num_test_windows": 348
+      },
+      "modality_reconstruction": {
+        "mse": 1359.1639404296875,
+        "mae": 0.31084805727005005,
+        "r2": -0.016022846771134747,
+        "task": "modality_reconstruction",
+        "input": "motion/IMU/camera",
+        "output": "depth/video feature vector",
+        "split": "chronological",
+        "num_train_windows": 813,
+        "num_test_windows": 348,
+        "target_dim": 5096
+      },
+      "temporal_order": {
+        "accuracy": 0.46120689655172414,
+        "precision": 0.4720496894409938,
+        "recall": 0.6551724137931034,
+        "f1": 0.5487364620938628,
+        "tp": 228,
+        "tn": 93,
+        "fp": 255,
+        "fn": 120,
+        "positive_rate_true": 0.5,
+        "positive_rate_pred": 0.6939655172413793,
+        "task": "temporal_order",
+        "input": "two adjacent windows -> whether order is correct",
+        "split": "chronological",
+        "num_samples": 2320,
+        "num_train_samples": 1624,
+        "num_test_samples": 696,
+        "train_final_accuracy": 0.5104679802955665
+      },
+      "misalignment_detection": {
+        "accuracy": 0.5028901734104047,
+        "precision": 0.5030864197530864,
+        "recall": 0.47109826589595377,
+        "f1": 0.4865671641791045,
+        "tp": 163,
+        "tn": 185,
+        "fp": 161,
+        "fn": 183,
+        "positive_rate_true": 0.5,
+        "positive_rate_pred": 0.4682080924855491,
+        "task": "misalignment_detection",
+        "input": "motion+visual pair -> aligned vs shifted by 8 windows",
+        "split": "chronological",
+        "num_samples": 2306,
+        "num_train_samples": 1614,
+        "num_test_samples": 692,
+        "train_final_accuracy": 0.5018587360594795
+      }
+    }
+  },
+  "feature_manifest": [
+    {
+      "name": "hand_left_joints",
+      "start": 0,
+      "end": 441,
+      "dim": 441
+    },
+    {
+      "name": "hand_right_joints",
+      "start": 441,
+      "end": 882,
+      "dim": 441
+    },
+    {
+      "name": "body_joints",
+      "start": 882,
+      "end": 1974,
+      "dim": 1092
+    },
+    {
+      "name": "body_contacts",
+      "start": 1974,
+      "end": 2121,
+      "dim": 147
+    },
+    {
+      "name": "camera_translation",
+      "start": 2121,
+      "end": 2142,
+      "dim": 21
+    },
+    {
+      "name": "camera_rotation_matrix",
+      "start": 2142,
+      "end": 2205,
+      "dim": 63
+    },
+    {
+      "name": "imu_accel_gyro",
+      "start": 2205,
+      "end": 2247,
+      "dim": 42
+    },
+    {
+      "name": "depth_confidence",
+      "start": 2247,
+      "end": 3227,
+      "dim": 980
+    },
+    {
+      "name": "video_fisheye_cam0",
+      "start": 3227,
+      "end": 3913,
+      "dim": 686
+    },
+    {
+      "name": "video_fisheye_cam1",
+      "start": 3913,
+      "end": 4599,
+      "dim": 686
+    },
+    {
+      "name": "video_fisheye_cam2",
+      "start": 4599,
+      "end": 5285,
+      "dim": 686
+    },
+    {
+      "name": "video_fisheye_cam3",
+      "start": 5285,
+      "end": 5971,
+      "dim": 686
+    },
+    {
+      "name": "video_stereo_left",
+      "start": 5971,
+      "end": 6657,
+      "dim": 686
+    },
+    {
+      "name": "video_stereo_right",
+      "start": 6657,
+      "end": 7343,
+      "dim": 686
+    },
+    {
+      "name": "caption_objects_interaction_text",
+      "start": 7343,
+      "end": 8239,
+      "dim": 896
+    },
+    {
+      "name": "slam_point_cloud",
+      "start": 8239,
+      "end": 8261,
+      "dim": 22
+    },
+    {
+      "name": "calibration",
+      "start": 8261,
+      "end": 8378,
+      "dim": 117
+    }
+  ]
+}
