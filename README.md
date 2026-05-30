@@ -311,6 +311,35 @@ python scripts/render_overview_figures.py
 python scripts/render_task_suite_infographic.py
 ```
 
+### 32-Episode Readiness Gate
+
+```bash
+python scripts/omni/discover_xperience10m_sources.py \
+  --workspace /home/cy/Ropedia/ropedia-episode-task-suite \
+  --data-root /home/cy/Ropedia/modelscope_data \
+  --output results/omni_finetune/source_discovery.json \
+  --report-output results/omni_finetune/DATA_BLOCKER_REPORT.md
+```
+
+Current status in this repo:
+
+- local_valid_episodes: 1 (degraded-valid: annotation + fisheye_cam0.mp4)
+- local_complete_episodes: 0
+- ready_for_32_episode_pilot: false
+- source_discovery: `results/omni_finetune/source_discovery.json`
+- blocker_report: `results/omni_finetune/DATA_BLOCKER_REPORT.md`
+
+Current H20-sourced evidence files in this repo:
+
+- `results/omni_finetune/episode_manifest.json`
+- `results/omni_finetune/dataset_manifest.json`
+- `results/omni_finetune/training_metadata.json`
+- `results/omni_finetune/metrics.json`
+- `results/omni_finetune/progress.jsonl`
+- `results/omni_finetune/RUN_REPORT.md`
+- `results/omni_finetune/DATA_BLOCKER_REPORT.md`
+
+Use this gate before scheduling any 32-episode full fine-tune run.
 ## Minimal 12-Task Architectures
 
 These are deliberately minimal baselines. They are useful because every

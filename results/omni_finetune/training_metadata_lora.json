@@ -1,0 +1,32 @@
+{
+  "run_id": "xperience10m_qwen3_omni_32ep_lora",
+  "model_id": "/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct",
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_32ep_dataset/dataset.jsonl",
+  "checkpoint_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_32ep_lora/adapter_lora",
+  "num_processes": 8,
+  "num_train_samples": 128,
+  "num_val_samples": 0,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 10.936363816261292,
+      "val_loss": null,
+      "global_step": 16
+    }
+  ],
+  "lora": {
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ]
+  },
+  "use_audio_in_video": false
+}

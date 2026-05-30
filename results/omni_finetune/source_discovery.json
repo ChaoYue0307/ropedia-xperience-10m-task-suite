@@ -1,0 +1,57 @@
+{
+  "target_episodes": 32,
+  "workspace": "/home/cy/Ropedia/ropedia-episode-task-suite",
+  "data_root": "/home/cy/Ropedia/modelscope_data",
+  "ready_for_32_episode_pilot": false,
+  "selected_source": "none",
+  "local": {
+    "source": "local",
+    "num_episodes": 1,
+    "num_degraded_valid_episodes": 1,
+    "num_complete_episodes": 0,
+    "errors": [],
+    "episodes": [
+      {
+        "source": "local",
+        "episode_id": "xperience-10m-sample",
+        "episode_path": "/home/cy/Ropedia/modelscope_data/xperience-10m-sample",
+        "has_annotation": true,
+        "has_fisheye_cam0": true,
+        "has_all_videos": false,
+        "has_any_video": true,
+        "missing_views": [
+          "fisheye_cam1.mp4",
+          "fisheye_cam2.mp4",
+          "fisheye_cam3.mp4",
+          "stereo_left.mp4",
+          "stereo_right.mp4"
+        ],
+        "is_degraded_valid": true,
+        "is_complete": false
+      }
+    ],
+    "data_root": "/home/cy/Ropedia/modelscope_data"
+  },
+  "modelscope": {
+    "source": "modelscope",
+    "num_episodes": 0,
+    "num_degraded_valid_episodes": 0,
+    "num_complete_episodes": 0,
+    "errors": [],
+    "episodes": []
+  },
+  "huggingface": {
+    "source": "huggingface",
+    "num_episodes": 0,
+    "num_degraded_valid_episodes": 0,
+    "num_complete_episodes": 0,
+    "errors": [],
+    "episodes": []
+  },
+  "blockers": [
+    "Not enough degraded-valid episodes for a 32-episode pilot. Need 32, local has 1.",
+    "Current H20 path remains one-episode proof-of-stack only.",
+    "ModelScope probe unavailable or reported no matching episode files.",
+    "Hugging Face probe unavailable or reported no matching episode files."
+  ]
+}
