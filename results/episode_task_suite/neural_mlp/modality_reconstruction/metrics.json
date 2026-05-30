@@ -1,0 +1,22 @@
+{
+  "mse": 1351.3720703125,
+  "mae": 0.10358995944261551,
+  "r2": -0.010198171891414143,
+  "task": "modality_reconstruction",
+  "input": "motion/IMU/camera",
+  "split": "chronological",
+  "num_train_windows": 813,
+  "num_test_windows": 348,
+  "target_dim": 5096,
+  "output": "depth/video feature vector",
+  "model": "neural_mlp",
+  "head": "z-score -> MLP projection/regression",
+  "neural_epochs": 80,
+  "neural_hidden_dim": 128,
+  "neural_batch_size": 128,
+  "neural_learning_rate": 0.001,
+  "neural_weight_decay": 0.0001,
+  "neural_dropout": 0.1,
+  "neural_device": "cpu",
+  "train_final_loss": 0.2246821296537641
+}

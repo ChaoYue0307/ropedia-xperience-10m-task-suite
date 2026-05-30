@@ -14,6 +14,7 @@ into:
 - manifested sliding-window features over the currently extracted modalities,
 - motion-only and current all-feature baseline models,
 - 12 end-to-end episode-level tasks,
+- lightweight neural MLP heads for the same 12 task contracts,
 - metrics, predictions, model weights, manifests, charts, and a static website,
 - a clear explanation of what a single episode can and cannot prove.
 
@@ -33,11 +34,11 @@ This repo keeps that distinction explicit:
 
 Start with the visual dashboard:
 
-**https://chaoyue0307.github.io/ropedia-episode-task-suite/**
+**[chaoyue0307.github.io/ropedia-episode-task-suite](https://chaoyue0307.github.io/ropedia-episode-task-suite/)**
 
 Hugging Face Space app:
 
-**https://cy0307-ropedia-episode-task-suite.static.hf.space/**
+**[cy0307-ropedia-episode-task-suite.static.hf.space](https://cy0307-ropedia-episode-task-suite.static.hf.space/)**
 
 ## Read This Project In Three Layers
 
@@ -45,26 +46,27 @@ Hugging Face Space app:
 | --- | --- | --- |
 | Data contract | `windows.csv`, `feature_manifest.json`, modality manifests | Confirms what each sample window contains before modeling |
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and debuggable |
+| Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode claims reviewable without rerunning first |
 
 ## Links
 
 | Resource | Link |
 | --- | --- |
-| This GitHub repo | https://github.com/ChaoYue0307/ropedia-episode-task-suite |
-| This project website | https://chaoyue0307.github.io/ropedia-episode-task-suite/ |
-| This Hugging Face Space | https://huggingface.co/spaces/cy0307/ropedia-episode-task-suite |
-| Live Hugging Face static app | https://cy0307-ropedia-episode-task-suite.static.hf.space/ |
-| Derived artifacts on Hugging Face | https://huggingface.co/datasets/cy0307/ropedia-episode-task-suite-artifacts |
-| Minimal baseline models on Hugging Face | https://huggingface.co/cy0307/ropedia-minimal-task-baselines |
-| Hugging Face collection | https://huggingface.co/collections/cy0307/ropedia-episode-task-suite |
-| Xperience-10M dataset website | https://ropedia.com/dataset |
-| Xperience-10M release page | https://ropedia.com/blog/20260316_xperience_10m |
-| Ropedia GitHub organization | https://github.com/Ropedia |
-| HOMIE Toolkit | https://github.com/Ropedia/HOMIE-toolkit |
-| Xperience-10M Hugging Face dataset | https://huggingface.co/datasets/ropedia-ai/xperience-10m |
-| Xperience-10M sample on Hugging Face | https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample |
-| Ropedia Hugging Face organization | https://huggingface.co/ropedia-ai |
+| This GitHub repo | [github.com/ChaoYue0307/ropedia-episode-task-suite](https://github.com/ChaoYue0307/ropedia-episode-task-suite) |
+| This project website | [chaoyue0307.github.io/ropedia-episode-task-suite](https://chaoyue0307.github.io/ropedia-episode-task-suite/) |
+| This Hugging Face Space | [huggingface.co/spaces/cy0307/ropedia-episode-task-suite](https://huggingface.co/spaces/cy0307/ropedia-episode-task-suite) |
+| Live Hugging Face static app | [cy0307-ropedia-episode-task-suite.static.hf.space](https://cy0307-ropedia-episode-task-suite.static.hf.space/) |
+| Derived artifacts on Hugging Face | [huggingface.co/datasets/cy0307/ropedia-episode-task-suite-artifacts](https://huggingface.co/datasets/cy0307/ropedia-episode-task-suite-artifacts) |
+| Minimal baseline models on Hugging Face | [huggingface.co/cy0307/ropedia-minimal-task-baselines](https://huggingface.co/cy0307/ropedia-minimal-task-baselines) |
+| Hugging Face collection | [huggingface.co/collections/cy0307/ropedia-episode-task-suite](https://huggingface.co/collections/cy0307/ropedia-episode-task-suite) |
+| Xperience-10M dataset website | [ropedia.com/dataset](https://ropedia.com/dataset) |
+| Xperience-10M release page | [ropedia.com/blog/20260316_xperience_10m](https://ropedia.com/blog/20260316_xperience_10m) |
+| Ropedia GitHub organization | [github.com/Ropedia](https://github.com/Ropedia) |
+| HOMIE Toolkit | [github.com/Ropedia/HOMIE-toolkit](https://github.com/Ropedia/HOMIE-toolkit) |
+| Xperience-10M Hugging Face dataset | [huggingface.co/datasets/ropedia-ai/xperience-10m](https://huggingface.co/datasets/ropedia-ai/xperience-10m) |
+| Xperience-10M sample on Hugging Face | [huggingface.co/datasets/ropedia-ai/xperience-10m-sample](https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample) |
+| Ropedia Hugging Face organization | [huggingface.co/ropedia-ai](https://huggingface.co/ropedia-ai) |
 
 ![ChatGPT-image-backed Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m)
 
@@ -99,6 +101,7 @@ scripts/
   train_min_action_model.py         # motion/IMU baseline
   train_all_modalities_model.py     # current all-feature lightweight baseline
   episode_task_suite.py             # 12 end-to-end task definitions
+  neural_task_models.py             # optional PyTorch MLP heads for all 12 tasks
   generate_visualizations.py        # refreshes SVG charts + summary JSON
   render_task_suite_infographic.py  # renders the ChatGPT-image-backed PNG
   render_overview_figures.py        # renders polished pipeline/architecture PNGs
@@ -114,6 +117,7 @@ results/
   min_all_modalities_action_model/  # current all-feature action artifacts
   min_all_modalities_subtask_model/ # current all-feature subtask artifacts
   episode_task_suite/               # 12-task suite metrics and predictions
+    neural_mlp/                     # optional neural baseline artifacts per task
   omni_exploration/                 # H20/ModelScope smoke-test artifacts
 
 docs/
@@ -200,6 +204,15 @@ Clone and run this repo:
 git clone https://github.com/ChaoYue0307/ropedia-episode-task-suite.git
 cd ropedia-episode-task-suite
 python scripts/episode_task_suite.py --workspace /path/to/workspace
+```
+
+Run the same 12-task suite with lightweight neural heads:
+
+```bash
+pip install torch
+python scripts/episode_task_suite.py \
+  --workspace /path/to/workspace \
+  --include-neural
 ```
 
 Run the smaller baselines:
@@ -320,6 +333,13 @@ There are four reusable head families:
 | Ridge + cosine ranking | `caption_grounding`, `cross_modal_retrieval` | project one modality into another feature space, then rank candidates by cosine |
 | Multi-label logistic regression | `object_relevance` | z-score non-caption features, sigmoid object heads, threshold at 0.5 |
 
+The optional neural run keeps the same feature vectors, leakage filters,
+chronological splits, and metrics, but replaces the task heads with small
+PyTorch MLP classifiers or regressors. Its outputs live under
+[`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/),
+and the rollup is stored in the `neural_tasks` section of
+[`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json).
+
 The task-specific heads are:
 
 | Task | Input | Minimal head | Output |
@@ -348,6 +368,31 @@ The task-specific heads are:
 | Cross-modal retrieval | 0.3764 top-5 | n/a | Motion/IMU/camera retrieves matching depth/video |
 | Transition detection | 0.6552 macro-F1 | 0.9253 | Boundary F1 is 0.2143 |
 | Hand trajectory forecast | 0.8223 MPJPE | n/a | Predicts future hand-joint trajectory |
+| Neural MLP hand forecast | 0.1116 MPJPE | n/a | Same features/split, nonlinear regression head |
+| Neural MLP temporal order | 0.8718 F1 | 0.8707 | Strong improvement on adjacent-window ordering |
+| Neural MLP misalignment | 0.7335 F1 | 0.7312 | Detects shifted motion/visual pairs better than the linear head |
+
+## Neural MLP Results
+
+The neural baseline was run locally with `--include-neural` for all 12 tasks
+using 80 epochs, hidden size 128, batch size 128, and CPU execution. It is not a
+foundation model result; it is a controlled nonlinear-head comparison over the
+same 8,378-d handcrafted window features.
+
+| Task | Neural metric | Minimal metric | Readout |
+| --- | ---: | ---: | --- |
+| `timeline_action` | 0.0263 macro-F1 | 0.0500 macro-F1 | Still blocked by unseen future classes |
+| `timeline_subtask` | 0.0175 macro-F1 | 0.0495 macro-F1 | Same single-episode split limitation |
+| `transition_detection` | 0.6485 macro-F1 | 0.6552 macro-F1 | Similar to the linear baseline |
+| `next_action` | 0.0235 macro-F1 | 0.0593 macro-F1 | Same unseen-label issue |
+| `hand_trajectory_forecast` | 0.1116 MPJPE | 0.8223 MPJPE | Neural regression improves this target |
+| `contact_prediction` | 1.0000 macro-F1 | 1.0000 macro-F1 | Degenerate one-class sample |
+| `object_relevance` | 0.1798 micro-F1 | 0.1839 micro-F1 | Similar weak object signal |
+| `caption_grounding` | 0.0178 MRR | 0.0172 MRR | Similar ranking behavior |
+| `cross_modal_retrieval` | 0.1530 MRR | 0.2634 MRR | Linear ridge remains stronger here |
+| `modality_reconstruction` | -0.0102 R2 | -0.0160 R2 | Small improvement but still weak |
+| `temporal_order` | 0.8718 F1 | 0.5487 F1 | Neural head captures local temporal structure |
+| `misalignment_detection` | 0.7335 F1 | 0.4866 F1 | Neural head improves alignment detection |
 
 The strongest single-episode self-supervised signal is cross-modal retrieval:
 motion/IMU/camera features retrieve matching depth/video windows substantially

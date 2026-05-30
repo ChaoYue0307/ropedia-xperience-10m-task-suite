@@ -421,6 +421,13 @@ def collect_summary() -> dict:
     }
 
 
+def task_score(metrics: dict) -> float:
+    score = metrics.get("macro_f1", metrics.get("f1", metrics.get("micro_f1", metrics.get("top5_accuracy", metrics.get("r2", 0.0)))))
+    if score is None:
+        score = 0.0
+    return max(float(score), 0.0)
+
+
 def generate_charts(summary: dict) -> None:
     CHARTS.mkdir(parents=True, exist_ok=True)
     svg_pipeline_diagram(ASSETS / "pipeline_diagram.svg", summary)
@@ -436,12 +443,23 @@ def generate_charts(summary: dict) -> None:
     suite = summary["suite"]["tasks"]
     task_rows = []
     for task_name, metrics in suite.items():
-        score = metrics.get("macro_f1", metrics.get("f1", metrics.get("micro_f1", metrics.get("top5_accuracy", metrics.get("r2", 0.0)))))
-        if score is None:
-            score = 0.0
-        score = max(float(score), 0.0)
-        task_rows.append((task_name, score))
+        task_rows.append((task_name, task_score(metrics)))
     svg_bar_chart(CHARTS / "episode_task_scores.svg", "Episode Task Suite: Main Scores", task_rows, max_value=1.0)
+
+    neural = summary["suite"].get("neural_tasks", {})
+    if neural:
+        neural_rows = [(task_name, task_score(metrics)) for task_name, metrics in neural.items() if "error" not in metrics]
+        if neural_rows:
+            svg_bar_chart(CHARTS / "episode_task_scores_neural_mlp.svg", "Episode Task Suite: Neural MLP Main Scores", neural_rows, max_value=1.0)
+
+        comparison_rows = []
+        for task_name, metrics in suite.items():
+            comparison_rows.append((f"{task_name} minimal", task_score(metrics)))
+            neural_metrics = neural.get(task_name)
+            if neural_metrics and "error" not in neural_metrics:
+                comparison_rows.append((f"{task_name} neural", task_score(neural_metrics)))
+        if comparison_rows:
+            svg_bar_chart(CHARTS / "episode_task_scores_minimal_vs_neural.svg", "Episode Task Scores: Minimal vs Neural MLP", comparison_rows, max_value=1.0)
     svg_feature_blocks(CHARTS / "feature_blocks.svg", summary["feature_manifest"])
 
     retrieval = suite["cross_modal_retrieval"]

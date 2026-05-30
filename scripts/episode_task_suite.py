@@ -85,6 +85,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--text-hash-dim", type=int, default=128)
     parser.add_argument("--include-label-text", action="store_true")
     parser.add_argument("--no-class-weights", action="store_true")
+    parser.add_argument("--include-neural", action="store_true", help="Also run lightweight PyTorch MLP baselines for selected tasks.")
+    parser.add_argument("--neural-output-name", default="neural_mlp", help="Subdirectory under --output-dir for neural task artifacts.")
+    parser.add_argument("--neural-epochs", type=int, default=80)
+    parser.add_argument("--neural-learning-rate", type=float, default=1e-3)
+    parser.add_argument("--neural-weight-decay", type=float, default=1e-4)
+    parser.add_argument("--neural-hidden-dim", type=int, default=128)
+    parser.add_argument("--neural-batch-size", type=int, default=128)
+    parser.add_argument("--neural-dropout", type=float, default=0.10)
+    parser.add_argument("--neural-device", default="auto", choices=["auto", "cpu", "cuda"])
     return parser.parse_args()
 
 
@@ -371,6 +380,426 @@ def regression_metrics(Y_true: np.ndarray, Y_pred: np.ndarray) -> dict:
     ss_tot = float(np.sum((Y_true - Y_true.mean(axis=0)) ** 2))
     r2 = 1.0 - ss_res / ss_tot if ss_tot > 0 else 0.0
     return {"mse": mse, "mae": mae, "r2": r2}
+
+
+def neural_config(args: argparse.Namespace):
+    from neural_task_models import NeuralConfig
+
+    return NeuralConfig(
+        epochs=args.neural_epochs,
+        learning_rate=args.neural_learning_rate,
+        weight_decay=args.neural_weight_decay,
+        hidden_dim=args.neural_hidden_dim,
+        batch_size=args.neural_batch_size,
+        dropout=args.neural_dropout,
+        device=args.neural_device,
+        seed=args.seed,
+    )
+
+
+def neural_common_metrics(args: argparse.Namespace, result: dict, head: str) -> dict:
+    final = result["history"][-1] if result.get("history") else {}
+    metrics = {
+        "model": "neural_mlp",
+        "head": head,
+        "neural_epochs": int(args.neural_epochs),
+        "neural_hidden_dim": int(args.neural_hidden_dim),
+        "neural_batch_size": int(args.neural_batch_size),
+        "neural_learning_rate": float(args.neural_learning_rate),
+        "neural_weight_decay": float(args.neural_weight_decay),
+        "neural_dropout": float(args.neural_dropout),
+        "neural_device": result.get("device", args.neural_device),
+    }
+    if "loss" in final:
+        metrics["train_final_loss"] = float(final["loss"])
+    if "train_accuracy" in final:
+        metrics["train_final_accuracy"] = float(final["train_accuracy"])
+    return metrics
+
+
+def save_neural_model(out_dir: Path, result: dict, model_type: str, extra: dict | None = None) -> None:
+    from neural_task_models import save_torch_model
+
+    payload = {
+        "model_type": model_type,
+        "state_dict": result["state_dict"],
+        "scaler": {k: result[k] for k in ("mean", "std", "x_mean", "x_std", "y_mean", "y_std") if k in result},
+        "config": extra or {},
+    }
+    save_torch_model(out_dir / "model.pt", payload)
+
+
+def neural_classification_task(
+    out_dir: Path,
+    X: np.ndarray,
+    labels: np.ndarray,
+    rows: list[dict],
+    args: argparse.Namespace,
+    task_name: str,
+    input_description: str,
+) -> dict:
+    from neural_task_models import train_classifier
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    valid = np.asarray([bool(x) for x in labels])
+    valid_idx = np.flatnonzero(valid)
+    Xv = X[valid_idx]
+    labelv = labels[valid_idx]
+    rowv = [rows[int(i)] for i in valid_idx]
+    y, class_names = encode_labels(labelv)
+    train_local, test_local = chronological_split_indices(len(y), args.test_fraction)
+    train_classes = set(int(x) for x in y[train_local])
+    test_classes = set(int(x) for x in y[test_local])
+    unseen_test_classes = sorted(class_names[i] for i in (test_classes - train_classes))
+
+    result = train_classifier(
+        Xv,
+        y,
+        train_local,
+        test_local,
+        n_classes=len(class_names),
+        config=neural_config(args),
+        use_class_weights=not args.no_class_weights,
+    )
+    pred = result["pred"]
+    probs = result["prob"]
+    metrics, per_class, cm = compute_metrics(y[test_local], pred, class_names)
+    majority = Counter(y[train_local]).most_common(1)[0][0]
+    metrics.update({
+        "task": task_name,
+        "input": input_description,
+        "split": "chronological",
+        "num_windows": int(len(y)),
+        "num_train_windows": int(len(train_local)),
+        "num_test_windows": int(len(test_local)),
+        "num_classes": int(len(class_names)),
+        "feature_dim": int(X.shape[1]),
+        "majority_baseline_accuracy": float(np.mean(y[test_local] == majority)),
+        "unseen_test_classes": unseen_test_classes,
+    })
+    metrics.update(neural_common_metrics(args, result, "z-score -> MLP softmax"))
+
+    pred_rows = []
+    for k, (local_pos, pred_id) in enumerate(zip(test_local, pred)):
+        row = rowv[int(local_pos)]
+        true_id = int(y[int(local_pos)])
+        pred_rows.append({
+            "window_index": row["window_index"],
+            "start_frame": row["start_frame"],
+            "end_frame": row["end_frame"],
+            "center_frame": row["center_frame"],
+            "true_label": class_names[true_id],
+            "predicted_label": class_names[int(pred_id)],
+            "confidence": float(probs[k, int(pred_id)]),
+            "correct": int(true_id == int(pred_id)),
+        })
+
+    write_json(out_dir / "metrics.json", metrics)
+    write_json(out_dir / "history.json", result["history"])
+    write_csv(out_dir / "per_class_metrics.csv", per_class, ["class_id", "class_name", "support", "predicted", "precision", "recall", "f1"])
+    write_confusion(out_dir / "confusion_matrix.csv", cm, class_names)
+    write_csv(out_dir / "predictions.csv", pred_rows, ["window_index", "start_frame", "end_frame", "center_frame", "true_label", "predicted_label", "confidence", "correct"])
+    save_neural_model(out_dir, result, "classifier", {"class_names": class_names})
+    return metrics
+
+
+def neural_transition_detection(out_dir: Path, X: np.ndarray, rows: list[dict], ann: dict, args: argparse.Namespace) -> dict:
+    frame_info = ann["caption_frame_info_map"]
+    n_frames = len(ann["img_names"])
+    per_frame = [frame_label(frame_info.get(i, {}), "action") for i in range(n_frames)]
+    true_boundaries = [i for i in range(1, n_frames) if per_frame[i] and per_frame[i - 1] and per_frame[i] != per_frame[i - 1]]
+    labels = []
+    for row in rows:
+        c = int(row["center_frame"])
+        labels.append("transition" if any(abs(c - b) <= args.boundary_tolerance_frames for b in true_boundaries) else "steady")
+    metrics = neural_classification_task(out_dir, X, np.asarray(labels, dtype=object), rows, args, "transition_detection", "all modalities -> action boundary/steady")
+    with (out_dir / "predictions.csv").open("r", encoding="utf-8") as fp:
+        pred_rows = list(csv.DictReader(fp))
+    pred_frames = [int(r["center_frame"]) for r in pred_rows if r["predicted_label"] == "transition"]
+    test_start = min((int(r["center_frame"]) for r in pred_rows), default=0)
+    test_end = max((int(r["center_frame"]) for r in pred_rows), default=0)
+    true_test = [b for b in true_boundaries if test_start <= b <= test_end]
+    metrics.update(boundary_f1(true_test, pred_frames, args.boundary_tolerance_frames))
+    write_json(out_dir / "metrics.json", metrics)
+    write_csv(out_dir / "true_boundaries.csv", [{"frame": x} for x in true_boundaries], ["frame"])
+    return metrics
+
+
+def neural_next_action(out_dir: Path, X: np.ndarray, rows: list[dict], ann: dict, args: argparse.Namespace) -> dict:
+    frame_info = ann["caption_frame_info_map"]
+    labels = []
+    for row in rows:
+        future_frame = min(len(ann["img_names"]) - 1, int(row["end_frame"]) + args.future_frames)
+        labels.append(frame_label(frame_info.get(future_frame, {}), "action"))
+    return neural_classification_task(out_dir, X, np.asarray(labels, dtype=object), rows, args, "next_action", f"all modalities at t -> action at t+{args.future_frames} frames")
+
+
+def neural_hand_forecast(out_dir: Path, X: np.ndarray, rows: list[dict], ann: dict, args: argparse.Namespace) -> dict:
+    from neural_task_models import train_regressor
+
+    left = ann.get("hand_left_joints")
+    right = ann.get("hand_right_joints")
+    body = ann.get("smplh_body_joints")
+    if left is None or right is None:
+        raise ValueError("Hand joints not available.")
+
+    valid_idx, Y = [], []
+    n_frames = len(left)
+    for i, row in enumerate(rows):
+        future_start = int(row["end_frame"]) + 1
+        future_end = future_start + args.forecast_frames
+        if future_end > n_frames:
+            continue
+        hand = np.concatenate([left[future_start:future_end], right[future_start:future_end]], axis=1)
+        if body is not None and future_end <= len(body):
+            root = body[future_start:future_end, :1, :]
+            hand = hand - root
+        valid_idx.append(i)
+        Y.append(hand.reshape(-1))
+
+    valid_idx = np.asarray(valid_idx, dtype=np.int64)
+    Y = np.stack(Y).astype(np.float32)
+    train, test = chronological_split_indices(len(valid_idx), args.test_fraction)
+    result = train_regressor(X[valid_idx], Y, train, test, neural_config(args))
+    pred = result["pred"]
+    metrics = regression_metrics(Y[test], pred)
+    true_hand = Y[test].reshape(len(test), args.forecast_frames, 42, 3)
+    pred_hand = pred.reshape(len(test), args.forecast_frames, 42, 3)
+    metrics.update({
+        "task": "hand_trajectory_forecast",
+        "input": "all modalities at t -> future left/right hand 3D joints",
+        "split": "chronological",
+        "num_windows": int(len(valid_idx)),
+        "num_train_windows": int(len(train)),
+        "num_test_windows": int(len(test)),
+        "forecast_frames": int(args.forecast_frames),
+        "mpjpe": float(np.linalg.norm(true_hand - pred_hand, axis=-1).mean()),
+        "final_frame_mpjpe": float(np.linalg.norm(true_hand[:, -1] - pred_hand[:, -1], axis=-1).mean()),
+        "target_dim": int(Y.shape[1]),
+    })
+    metrics.update(neural_common_metrics(args, result, "z-score -> MLP regression"))
+    out_dir.mkdir(parents=True, exist_ok=True)
+    write_json(out_dir / "metrics.json", metrics)
+    write_json(out_dir / "history.json", result["history"])
+    np.savez_compressed(out_dir / "predictions.npz", y_true=Y[test], y_pred=pred, test_window_indices=valid_idx[test])
+    save_neural_model(out_dir, result, "regressor", {"target_dim": int(Y.shape[1])})
+    return metrics
+
+
+def neural_object_relevance(out_dir: Path, X: np.ndarray, rows: list[dict], ann: dict, manifest: list[dict], args: argparse.Namespace) -> dict:
+    from neural_task_models import train_multilabel
+
+    frame_info = ann["caption_frame_info_map"]
+    vocab = OrderedDict()
+    labels = []
+    for row in rows:
+        counts = Counter()
+        for frame in range(int(row["start_frame"]), int(row["end_frame"]) + 1):
+            counts.update(extract_objects(frame_info.get(frame, {})))
+        objects = [obj for obj, count in counts.items() if count > 0]
+        for obj in objects:
+            if obj not in vocab:
+                vocab[obj] = len(vocab)
+        labels.append(objects)
+    if not vocab:
+        raise ValueError("No object labels found.")
+    Y = np.zeros((len(rows), len(vocab)), dtype=np.float32)
+    for i, objects in enumerate(labels):
+        for obj in objects:
+            Y[i, vocab[obj]] = 1.0
+
+    keep = block_indices(manifest, exclude=["caption_objects_interaction_text"])
+    Xo = X[:, keep]
+    train, test = chronological_split_indices(len(rows), args.test_fraction)
+    result = train_multilabel(Xo, Y, train, test, neural_config(args))
+    prob = result["prob"]
+    pred = result["pred"]
+    empty = np.where(pred.sum(axis=1) == 0)[0]
+    if len(empty):
+        pred[empty, np.argmax(prob[empty], axis=1)] = 1
+    metrics = multilabel_metrics(Y[test], pred)
+    metrics.update({
+        "task": "object_relevance",
+        "input": "all non-caption modalities -> current relevant object set",
+        "split": "chronological",
+        "num_windows": int(len(rows)),
+        "num_train_windows": int(len(train)),
+        "num_test_windows": int(len(test)),
+        "num_objects": int(len(vocab)),
+        "feature_dim": int(Xo.shape[1]),
+    })
+    metrics.update(neural_common_metrics(args, result, "z-score -> MLP sigmoid multilabel"))
+    out_dir.mkdir(parents=True, exist_ok=True)
+    write_json(out_dir / "metrics.json", metrics)
+    write_json(out_dir / "history.json", result["history"])
+    write_json(out_dir / "object_vocab.json", list(vocab.keys()))
+    rows_out = []
+    names = list(vocab.keys())
+    for local_i, global_i in enumerate(test):
+        true_objs = [names[j] for j in np.flatnonzero(Y[global_i] > 0)]
+        pred_objs = [names[j] for j in np.flatnonzero(pred[local_i] > 0)]
+        rows_out.append({
+            "window_index": int(global_i),
+            "start_frame": rows[int(global_i)]["start_frame"],
+            "end_frame": rows[int(global_i)]["end_frame"],
+            "true_objects": "|".join(true_objs),
+            "predicted_objects": "|".join(pred_objs),
+        })
+    write_csv(out_dir / "predictions.csv", rows_out, ["window_index", "start_frame", "end_frame", "true_objects", "predicted_objects"])
+    save_neural_model(out_dir, result, "multilabel", {"object_vocab": names})
+    return metrics
+
+
+def neural_projection_task(
+    out_dir: Path,
+    X_in: np.ndarray,
+    Y_out: np.ndarray,
+    args: argparse.Namespace,
+    task_name: str,
+    input_desc: str,
+    output_desc: str | None = None,
+    retrieval_query: np.ndarray | None = None,
+    retrieval_candidates: np.ndarray | None = None,
+    retrieval_pred_as_query: bool = False,
+) -> dict:
+    from neural_task_models import train_regressor
+
+    train, test = chronological_split_indices(len(X_in), args.test_fraction)
+    result = train_regressor(X_in, Y_out, train, test, neural_config(args))
+    pred = result["pred"]
+    if retrieval_query is not None and retrieval_candidates is not None:
+        if retrieval_pred_as_query:
+            metrics = retrieval_metrics(pred, retrieval_candidates[test], np.arange(len(test)))
+        else:
+            metrics = retrieval_metrics(retrieval_query[test], pred, np.arange(len(test)))
+    else:
+        metrics = regression_metrics(Y_out[test], pred)
+    metrics.update({
+        "task": task_name,
+        "input": input_desc,
+        "split": "chronological",
+        "num_train_windows": int(len(train)),
+        "num_test_windows": int(len(test)),
+        "target_dim": int(Y_out.shape[1]),
+    })
+    if output_desc is not None:
+        metrics["output"] = output_desc
+    metrics.update(neural_common_metrics(args, result, "z-score -> MLP projection/regression"))
+    out_dir.mkdir(parents=True, exist_ok=True)
+    write_json(out_dir / "metrics.json", metrics)
+    write_json(out_dir / "history.json", result["history"])
+    np.savez_compressed(out_dir / "predictions.npz", y_true=Y_out[test], y_pred=pred, test_window_indices=test)
+    save_neural_model(out_dir, result, "regressor", {"target_dim": int(Y_out.shape[1])})
+    return metrics
+
+
+def neural_binary_classification_from_arrays(out_dir: Path, X: np.ndarray, y: np.ndarray, args: argparse.Namespace, task: str, input_desc: str) -> dict:
+    from neural_task_models import train_classifier
+
+    train, test = chronological_split_indices(len(y), args.test_fraction)
+    result = train_classifier(X, y.astype(np.int64), train, test, n_classes=2, config=neural_config(args), use_class_weights=True)
+    pred = result["pred"]
+    prob = result["prob"]
+    metrics = binary_metrics(y[test], pred)
+    metrics.update({
+        "task": task,
+        "input": input_desc,
+        "split": "chronological",
+        "num_samples": int(len(y)),
+        "num_train_samples": int(len(train)),
+        "num_test_samples": int(len(test)),
+        "feature_dim": int(X.shape[1]),
+    })
+    metrics.update(neural_common_metrics(args, result, "z-score -> MLP binary softmax"))
+    out_dir.mkdir(parents=True, exist_ok=True)
+    write_json(out_dir / "metrics.json", metrics)
+    write_json(out_dir / "history.json", result["history"])
+    pred_rows = []
+    for k, idx in enumerate(test):
+        pred_rows.append({"sample_index": int(idx), "true": int(y[idx]), "predicted": int(pred[k]), "prob_positive": float(prob[k, 1])})
+    write_csv(out_dir / "predictions.csv", pred_rows, ["sample_index", "true", "predicted", "prob_positive"])
+    save_neural_model(out_dir, result, "classifier", {"class_names": ["negative", "positive"]})
+    return metrics
+
+
+def run_neural_task(task: str, out_dir: Path, X: np.ndarray, rows: list[dict], ann: dict, manifest: list[dict], args: argparse.Namespace) -> dict:
+    if task == "timeline_action":
+        return neural_classification_task(out_dir, X, label_array(rows, "action_label"), rows, args, task, "all modalities -> current action label")
+    if task == "timeline_subtask":
+        return neural_classification_task(out_dir, X, label_array(rows, "subtask_label"), rows, args, task, "all modalities -> current subtask label")
+    if task == "transition_detection":
+        return neural_transition_detection(out_dir, X, rows, ann, args)
+    if task == "next_action":
+        return neural_next_action(out_dir, X, rows, ann, args)
+    if task == "hand_trajectory_forecast":
+        return neural_hand_forecast(out_dir, X, rows, ann, args)
+    if task == "contact_prediction":
+        contacts = ann.get("contacts")
+        if contacts is None:
+            raise ValueError("Contacts not available.")
+        y = []
+        for row in rows:
+            c = contacts[int(row["start_frame"]):int(row["end_frame"]) + 1]
+            y.append("contact" if np.any(c > 0) else "no_contact")
+        keep = block_indices(manifest, exclude=["body_contacts", "caption_objects_interaction_text"])
+        return neural_classification_task(out_dir, X[:, keep], np.asarray(y, dtype=object), rows, args, task, "all non-contact/non-caption-label modalities -> any body contact")
+    if task == "object_relevance":
+        return neural_object_relevance(out_dir, X, rows, ann, manifest, args)
+    if task == "caption_grounding":
+        text_idx = block_indices(manifest, include=["caption_objects_interaction_text"])
+        sensor_idx = block_indices(manifest, exclude=["caption_objects_interaction_text"])
+        return neural_projection_task(
+            out_dir,
+            X[:, sensor_idx],
+            X[:, text_idx],
+            args,
+            "caption_grounding",
+            "caption objects/interaction text query + candidate sensor windows",
+            "matching time window",
+            retrieval_query=X[:, text_idx],
+            retrieval_candidates=X[:, text_idx],
+        )
+    if task == "cross_modal_retrieval":
+        motion_idx = block_indices(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_"])
+        visual_idx = block_indices(manifest, include=["depth_confidence", "video_"])
+        return neural_projection_task(
+            out_dir,
+            X[:, motion_idx],
+            X[:, visual_idx],
+            args,
+            "cross_modal_retrieval",
+            "motion/IMU/camera query",
+            "matching depth/video window",
+            retrieval_query=X[:, visual_idx],
+            retrieval_candidates=X[:, visual_idx],
+            retrieval_pred_as_query=True,
+        )
+    if task == "modality_reconstruction":
+        motion_idx = block_indices(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_"])
+        visual_idx = block_indices(manifest, include=["depth_confidence", "video_"])
+        return neural_projection_task(out_dir, X[:, motion_idx], X[:, visual_idx], args, "modality_reconstruction", "motion/IMU/camera", "depth/video feature vector")
+    if task == "temporal_order":
+        pairs, y = [], []
+        for i in range(len(X) - 1):
+            a, b = X[i], X[i + 1]
+            pairs.append(np.concatenate([a, b, b - a]))
+            y.append(1)
+            pairs.append(np.concatenate([b, a, a - b]))
+            y.append(0)
+        return neural_binary_classification_from_arrays(out_dir, np.stack(pairs).astype(np.float32), np.asarray(y, dtype=np.int64), args, "temporal_order", "two adjacent windows -> whether order is correct")
+    if task == "misalignment_detection":
+        motion_idx = block_indices(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_"])
+        visual_idx = block_indices(manifest, include=["depth_confidence", "video_"])
+        shift = args.misalignment_shift_windows
+        pairs, y = [], []
+        limit = len(X) - shift
+        for i in range(limit):
+            pairs.append(np.concatenate([X[i, motion_idx], X[i, visual_idx]]))
+            y.append(1)
+            pairs.append(np.concatenate([X[i, motion_idx], X[i + shift, visual_idx]]))
+            y.append(0)
+        return neural_binary_classification_from_arrays(out_dir, np.stack(pairs).astype(np.float32), np.asarray(y, dtype=np.int64), args, "misalignment_detection", f"motion+visual pair -> aligned vs shifted by {shift} windows")
+    raise ValueError(task)
 
 
 def task_hand_forecast(out_dir: Path, X: np.ndarray, rows: list[dict], ann: dict, args: argparse.Namespace) -> dict:
@@ -727,6 +1156,19 @@ def main() -> int:
         "stride_frames": int(args.stride_frames),
         "tasks": {},
     }
+    if args.include_neural:
+        summary["neural_model"] = {
+            "name": args.neural_output_name,
+            "type": "lightweight PyTorch MLP over shared window features",
+            "epochs": int(args.neural_epochs),
+            "hidden_dim": int(args.neural_hidden_dim),
+            "batch_size": int(args.neural_batch_size),
+            "learning_rate": float(args.neural_learning_rate),
+            "weight_decay": float(args.neural_weight_decay),
+            "dropout": float(args.neural_dropout),
+            "device": args.neural_device,
+        }
+        summary["neural_tasks"] = {}
 
     print(f"Windows: {len(rows)}, feature_dim: {X.shape[1]}")
     for task in tasks:
@@ -766,6 +1208,19 @@ def main() -> int:
             summary["tasks"][task] = {"error": str(exc)}
             write_json(out / "error.json", {"task": task, "error": str(exc)})
             print(f"  error: {exc}")
+
+        if args.include_neural:
+            neural_out = args.output_dir / args.neural_output_name / task
+            try:
+                print(f"  running neural baseline: {args.neural_output_name}")
+                neural_metrics = run_neural_task(task, neural_out, X, rows, ann, manifest, args)
+                summary["neural_tasks"][task] = neural_metrics
+                neural_key_metrics = {k: neural_metrics[k] for k in ("accuracy", "macro_f1", "f1", "mpjpe", "mrr", "r2", "micro_f1") if k in neural_metrics}
+                print(f"  neural done: {neural_key_metrics}")
+            except Exception as exc:
+                summary["neural_tasks"][task] = {"error": str(exc)}
+                write_json(neural_out / "error.json", {"task": task, "error": str(exc), "model": args.neural_output_name})
+                print(f"  neural error: {exc}")
 
     write_json(args.output_dir / "summary_report.json", summary)
     print(f"\nSuite artifacts written to: {args.output_dir}")

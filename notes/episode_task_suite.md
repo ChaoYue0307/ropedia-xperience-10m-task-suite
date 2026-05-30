@@ -36,7 +36,7 @@ split:          chronological, first 70% train and last 30% test
 ## Implemented Tasks
 
 | Task | Input | Output | Main artifact |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `timeline_action` | all modality window | current action label | `timeline_action/metrics.json` |
 | `timeline_subtask` | all modality window | current subtask label | `timeline_subtask/metrics.json` |
 | `transition_detection` | all modality window | steady vs action boundary | `transition_detection/metrics.json` |
@@ -67,7 +67,7 @@ raw sample episode
 The task suite intentionally uses simple heads:
 
 | Family | Formula | Tasks |
-|---|---|---|
+| --- | --- | --- |
 | Linear softmax | `softmax(z(X)W + b)`, cross-entropy, L2 | `timeline_action`, `timeline_subtask`, `transition_detection`, `next_action`, `contact_prediction`, `temporal_order`, `misalignment_detection` |
 | Ridge regression/projection | dual ridge regression with L2=10 on z-scored X/Y | `hand_trajectory_forecast`, `caption_grounding`, `cross_modal_retrieval`, `modality_reconstruction` |
 | Multi-label logistic | `sigmoid(z(X)W + b)`, weighted object heads | `object_relevance` |
@@ -75,7 +75,7 @@ The task suite intentionally uses simple heads:
 Task-specific architecture details:
 
 | Task | Input tensor/vector | Minimal head | Output target |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `timeline_action` | `X_all`, 8,378d | class-weighted linear softmax | current action label |
 | `timeline_subtask` | `X_all`, 8,378d | class-weighted linear softmax | current subtask label |
 | `transition_detection` | `X_all`, 8,378d | class-weighted linear softmax | steady vs transition near action boundary |
@@ -94,6 +94,61 @@ Diagram:
 ```text
 docs/assets/task_architectures.png
 ```
+
+## Neural Baseline
+
+The suite can also run a lightweight PyTorch MLP baseline for every selected
+task while preserving the NumPy baseline artifacts:
+
+```bash
+python scripts/episode_task_suite.py \
+  --output-dir results/episode_task_suite \
+  --include-neural
+```
+
+This requires `torch`; use `requirements-omni.txt` when the base environment
+does not already include PyTorch.
+
+The neural path reuses the same windows, features, chronological split, leakage
+filters, and metrics as the minimal heads. It writes parallel artifacts under:
+
+```text
+results/episode_task_suite/neural_mlp/<task>/
+```
+
+Each neural task directory contains `metrics.json`, `history.json`, a
+`model.pt` checkpoint, and the same prediction artifact shape used by the
+corresponding minimal task (`predictions.csv` or `predictions.npz`). The suite
+rollup adds a `neural_tasks` section to `summary_report.json`; visualization
+generation adds neural-only and minimal-vs-neural score charts when those
+metrics are present.
+
+Useful knobs:
+
+```bash
+python scripts/episode_task_suite.py \
+  --include-neural \
+  --neural-epochs 80 \
+  --neural-hidden-dim 128 \
+  --neural-batch-size 128 \
+  --neural-device auto
+```
+
+This neural baseline is intentionally small. It tests whether a nonlinear head
+over the current handcrafted feature vector improves per-task behavior before
+moving to heavier sequence or vision-language models.
+
+## Qwen/Omni Neural Track
+
+The Qwen3-Omni scripts remain a separate neural/VLM track under
+`scripts/omni/`. They are better suited for action/subtask QA, sensor-adapter
+experiments, and LoRA fine-tuning than for the full 12-task matrix. A useful
+comparison order is:
+
+- current NumPy task suite
+- lightweight `neural_mlp` task suite
+- adapter-only smoke tests from `scripts/omni/qwen3_omni_adapter_smoke.py`
+- Qwen3-Omni zero-shot or LoRA runs where GPU/model access is available
 
 ## Current Results
 

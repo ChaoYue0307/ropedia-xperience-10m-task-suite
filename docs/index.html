@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Xperience-10M Episode Task Suite</title>
-  <meta name="description" content="A transparent multimodal task suite for one public Xperience-10M sample episode released by Ropedia.">
+  <meta name="description" content="A transparent multimodal task suite for one public Xperience-10M sample episode released by Ropedia, with minimal and neural MLP baselines.">
   <meta property="og:title" content="Xperience-10M Episode Task Suite">
-  <meta property="og:description" content="One public embodied-AI episode, converted into reproducible multimodal tasks, baselines, metrics, and diagrams.">
+  <meta property="og:description" content="One public embodied-AI episode, converted into reproducible multimodal tasks, minimal baselines, neural MLP baselines, metrics, and diagrams.">
   <meta property="og:image" content="assets/task_suite_infographic.png?v=xperience10m">
   <style>
     :root {
@@ -495,6 +495,7 @@
         <a href="#suite">Suite</a>
         <a href="#pipeline">Pipeline</a>
         <a href="#models">Models</a>
+        <a href="#neural">Neural</a>
         <a href="#architectures">Arch</a>
         <a href="#tasks">Tasks</a>
         <a href="#features">Signals</a>
@@ -513,7 +514,7 @@
         <p class="hero-copy">
           A compact research lab for the public Xperience-10M sample from Ropedia:
           video, audio, depth, pose, motion capture, inertial sensing, and language annotation,
-          with an explicit record of which modalities enter the current minimal feature vector.
+          with explicit minimal and neural MLP baselines over the same current feature vector.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#suite">Inspect 12 tasks</a>
@@ -525,7 +526,7 @@
           <div class="stat"><strong>5,821</strong><span>frames in sample episode</span></div>
           <div class="stat"><strong>1,161</strong><span>20-frame windows</span></div>
           <div class="stat"><strong>8,378</strong><span>current feature dimensions</span></div>
-          <div class="stat"><strong>12</strong><span>end-to-end task definitions</span></div>
+          <div class="stat"><strong>12+12</strong><span>minimal and neural task results</span></div>
         </div>
       </div>
       <div class="hero-panel" aria-label="Signal summary">
@@ -578,7 +579,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Small baselines, no hidden machinery.</h2>
-          <p>Motion-only and current all-feature classifiers use lightweight heads so the comparison stays readable on a laptop and easy to audit.</p>
+          <p>Motion-only and current all-feature classifiers use lightweight heads so the comparison stays readable on a laptop and easy to audit. The neural run keeps the same features and splits, then swaps in PyTorch MLP heads.</p>
         </div>
         <div class="models">
           <article class="model"><h3>Motion-only action</h3><span class="score">0.9688</span><span class="meta">macro-F1, 18 classes</span></article>
@@ -587,6 +588,25 @@
           <article class="model"><h3>Current all-feature subtask</h3><span class="score">0.9308</span><span class="meta">macro-F1, chronological caveats</span></article>
         </div>
         <img class="chart" src="assets/charts/model_macro_f1.svg" alt="Macro-F1 comparison chart">
+      </div>
+    </section>
+
+    <section id="neural">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Neural MLP heads, same task contracts.</h2>
+          <p>The neural baseline uses small PyTorch MLP classifiers/regressors on the same 8,378-d window features, chronological splits, and leakage filters. This isolates the value of a nonlinear head before moving to heavier Qwen/Omni experiments.</p>
+        </div>
+        <div class="models">
+          <article class="model"><h3>Neural hand forecast</h3><span class="score">0.1116</span><span class="meta">MPJPE, down from 0.8223 minimal</span></article>
+          <article class="model"><h3>Neural temporal order</h3><span class="score">0.8718</span><span class="meta">F1, adjacent-window diagnostic</span></article>
+          <article class="model"><h3>Neural misalignment</h3><span class="score">0.7335</span><span class="meta">F1, shifted motion/visual pairs</span></article>
+          <article class="model"><h3>Neural cross-modal retrieval</h3><span class="score">0.1530</span><span class="meta">MRR; ridge remains stronger here</span></article>
+        </div>
+        <div class="chart-grid">
+          <img class="chart" src="assets/charts/episode_task_scores_neural_mlp.svg" alt="Neural MLP episode task score chart">
+          <img class="chart" src="assets/charts/episode_task_scores_minimal_vs_neural.svg" alt="Minimal versus neural MLP episode task score chart">
+        </div>
       </div>
     </section>
 
@@ -649,6 +669,8 @@
         <div class="chart-grid">
           <img class="chart" src="assets/charts/episode_task_scores.svg" alt="Episode task suite score chart">
           <img class="chart" src="assets/charts/cross_modal_retrieval.svg" alt="Cross modal retrieval chart">
+          <img class="chart" src="assets/charts/episode_task_scores_neural_mlp.svg" alt="Neural MLP task score chart">
+          <img class="chart" src="assets/charts/episode_task_scores_minimal_vs_neural.svg" alt="Minimal versus neural score chart">
         </div>
       </div>
     </section>
@@ -661,6 +683,7 @@
         </div>
         <div class="artifact-grid">
           <article class="artifact"><h3>Task-suite report</h3><p>One JSON file with every task metric and split detail.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a></article>
+          <article class="artifact"><h3>Neural MLP task results</h3><p>Per-task PyTorch MLP metrics, predictions, histories, and checkpoints for the same 12 task contracts.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural_mlp/</a></article>
           <article class="artifact"><h3>Feature manifest</h3><p>Start/end index and dimension for every current feature block.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a></article>
           <article class="artifact"><h3>Cross-modal retrieval</h3><p>The strongest self-supervised signal from the single episode.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json">metrics.json</a></article>
           <article class="artifact"><h3>Current all-feature action model</h3><p>Classifier metrics, predictions, confusion matrix, and model weights.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/min_all_modalities_action_model/metrics.json">metrics.json</a></article>
@@ -684,6 +707,7 @@
 python3.12 -m venv .venv
 source .venv/bin/activate
 pip install -r HOMIE-toolkit/requirements.txt huggingface_hub hf_xet
+pip install torch
 
 hf download ropedia-ai/xperience-10m-sample \
   --repo-type dataset \
@@ -691,7 +715,8 @@ hf download ropedia-ai/xperience-10m-sample \
 
 git clone https://github.com/ChaoYue0307/ropedia-episode-task-suite.git
 cd ropedia-episode-task-suite
-python scripts/episode_task_suite.py --workspace /path/to/workspace</code></pre>
+python scripts/episode_task_suite.py --workspace /path/to/workspace --include-neural
+python scripts/generate_visualizations.py</code></pre>
       </div>
     </section>
   </main>

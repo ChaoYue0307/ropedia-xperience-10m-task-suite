@@ -1,0 +1,33 @@
+{
+  "accuracy": 0.01744186046511628,
+  "balanced_accuracy": 0.021052631578947368,
+  "macro_f1": 0.017518248175182476,
+  "weighted_f1": 0.014513664912578507,
+  "num_eval_windows": 344,
+  "num_classes": 14,
+  "task": "timeline_subtask",
+  "input": "all modalities -> current subtask label",
+  "split": "chronological",
+  "num_windows": 1147,
+  "num_train_windows": 803,
+  "num_test_windows": 344,
+  "feature_dim": 8378,
+  "majority_baseline_accuracy": 0.0,
+  "unseen_test_classes": [
+    "Move bottle to coffee equipment",
+    "Pour coffee",
+    "Pour milk into coffee",
+    "Prepare for pouring"
+  ],
+  "model": "neural_mlp",
+  "head": "z-score -> MLP softmax",
+  "neural_epochs": 80,
+  "neural_hidden_dim": 128,
+  "neural_batch_size": 128,
+  "neural_learning_rate": 0.001,
+  "neural_weight_decay": 0.0001,
+  "neural_dropout": 0.1,
+  "neural_device": "cpu",
+  "train_final_loss": 0.06660133146519678,
+  "train_final_accuracy": 0.9912826899128269
+}
