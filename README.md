@@ -15,6 +15,7 @@ into:
 - motion-only and current all-feature baseline models,
 - 12 end-to-end episode-level tasks,
 - lightweight neural MLP heads for the same 12 task contracts,
+- a next TODO track for Qwen3-Omni fine-tuning and sensor-bridge evaluation,
 - metrics, predictions, model weights, manifests, charts, and a static website,
 - a clear explanation of what a single episode can and cannot prove.
 
