@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Minimum real-data adapter smoke test for an Xperience-10M -> Qwen3-Omni path.
+"""Minimum real-data adapter smoke test for a Ropedia -> Qwen3-Omni path.
 
 This script does not pretend to fine-tune Qwen3-Omni itself. It validates the
-part that Xperience-10M sensor modalities need before they can be attached
+part that Ropedia-specific sensor modalities need before they can be attached
 to an omni backbone: windowing real episodes, turning sensor blocks into
 adapter tokens, and training/evaluating a small task head on real labels.
 """
@@ -38,8 +38,9 @@ ADAPTER_INPUTS = [
 
 def parse_args() -> argparse.Namespace:
     workspace_default = Path(__file__).resolve().parents[2]
-    parser = argparse.ArgumentParser(description="Run a real-data Xperience-10M sensor-adapter smoke test.")
+    parser = argparse.ArgumentParser(description="Run a real-data Ropedia sensor-adapter smoke test.")
     parser.add_argument("--workspace", type=Path, default=workspace_default)
+    parser.add_argument("--run-id", default="adapter_only")
     parser.add_argument(
         "--episode-root",
         type=Path,
@@ -52,9 +53,9 @@ def parse_args() -> argparse.Namespace:
         help="Manifest produced by build_episode_manifest.py. Episodes from this file are appended.",
     )
     parser.add_argument("--target", choices=["action", "subtask"], default="action")
-    parser.add_argument("--output-dir", type=Path, default=workspace_default / "outputs/omni_exploration/qwen3_adapter_smoke")
+    parser.add_argument("--output-dir", type=Path, default=None)
     parser.add_argument("--cache-dir", type=Path, default=workspace_default / "outputs/omni_exploration/feature_cache")
-    parser.add_argument("--base-model-id", default="Qwen/Qwen3-Omni-30B-A3B-Thinking")
+    parser.add_argument("--base-model-id", default="Qwen/Qwen3-Omni-30B-A3B-Instruct")
     parser.add_argument("--window-frames", type=int, default=20)
     parser.add_argument("--stride-frames", type=int, default=20)
     parser.add_argument("--min-label-fraction", type=float, default=0.6)
@@ -384,6 +385,8 @@ def train_adapter_model(
 def main() -> int:
     args = parse_args()
     args.workspace = args.workspace.expanduser().resolve()
+    if args.output_dir is None:
+        args.output_dir = args.workspace / "results" / "omni_finetune" / args.run_id / "adapter_only"
     args.output_dir.mkdir(parents=True, exist_ok=True)
     args.cache_dir.mkdir(parents=True, exist_ok=True)
     add_repo_imports(args.workspace)
@@ -427,7 +430,7 @@ def main() -> int:
         "task": f"qwen3_omni_sensor_adapter_smoke_{args.target}",
         "base_model_target": args.base_model_id,
         "qwen3_loaded": False,
-        "qwen3_note": "This run validates Xperience-10M sensor-adapter tokens and task heads before loading or LoRA-tuning Qwen3-Omni.",
+        "qwen3_note": "This run validates Ropedia sensor-adapter tokens and task heads before loading or LoRA-tuning Qwen3-Omni.",
         "split": split_name,
         "num_episodes": len(episodes),
         "num_windows": int(len(labels)),

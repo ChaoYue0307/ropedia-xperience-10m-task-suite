@@ -31,7 +31,7 @@ ALL_TRAINING_PATTERNS = [
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Download Xperience-10M sample data from ModelScope.")
+    parser = argparse.ArgumentParser(description="Download Ropedia sample data from ModelScope.")
     parser.add_argument("--repo-id", default="ropedia-ai/xperience-10m-sample")
     parser.add_argument("--output-dir", type=Path, default=Path("data/sample/xperience-10m-sample"))
     parser.add_argument(
