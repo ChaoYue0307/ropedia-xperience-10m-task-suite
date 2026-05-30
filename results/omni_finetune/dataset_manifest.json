@@ -1,0 +1,175 @@
+{
+  "run_id": "xperience10m_qwen3_omni_32ep_dataset",
+  "dataset_path": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_qwen3_omni_32ep_dataset/dataset.jsonl",
+  "num_samples": 128,
+  "num_episodes": 1,
+  "split_counts": {
+    "train": 128
+  },
+  "label_counts": {
+    "Close bottle cap": 9,
+    "Pick up kettle": 8,
+    "Position kettle to pour": 8,
+    "Move kettle": 8,
+    "Hold coffee carafe": 8,
+    "Grasp coffee scoop": 8,
+    "Transfer coffee to dripper": 8,
+    "Hold gooseneck kettle": 8,
+    "Lift gooseneck kettle": 8,
+    "Move kettle away": 8,
+    "Wait/Prepare for pouring": 8,
+    "Pour coffee": 8,
+    "Grasp gooseneck kettle": 6,
+    "Place kettle on table": 6,
+    "Pick up white bottle": 6,
+    "Pour liquid from white bottle": 6,
+    "Place item on table": 6,
+    "Pour milk into coffee": 1
+  },
+  "action_options": [
+    "Close bottle cap",
+    "Grasp coffee scoop",
+    "Grasp gooseneck kettle",
+    "Hold coffee carafe",
+    "Hold gooseneck kettle",
+    "Lift gooseneck kettle",
+    "Move kettle",
+    "Move kettle away",
+    "Pick up kettle",
+    "Pick up white bottle",
+    "Place item on table",
+    "Place kettle on table",
+    "Position kettle to pour",
+    "Pour coffee",
+    "Pour liquid from white bottle",
+    "Pour milk into coffee",
+    "Transfer coffee to dripper",
+    "Wait/Prepare for pouring"
+  ],
+  "subtask_options": [
+    "Handle gooseneck kettle",
+    "Lift gooseneck kettle",
+    "Move kettle",
+    "Pick up and position kettle",
+    "Pour and close white bottle",
+    "Pour coffee",
+    "Pour milk into coffee",
+    "Prepare coffee equipment and scoop grounds",
+    "Prepare for pouring",
+    "Set down kettle and retrieve white bottle",
+    "Transfer coffee grounds to dripper"
+  ],
+  "clip_policy": {
+    "label_window_frames": 20,
+    "qwen_context_frames": 120,
+    "max_video_frames": 16,
+    "audio_span": "same_as_video_context",
+    "mosaic": "2x3 multi-camera grid"
+  },
+  "feature_manifest": [
+    {
+      "name": "hand_left_joints",
+      "start": 0,
+      "end": 441,
+      "dim": 441
+    },
+    {
+      "name": "hand_right_joints",
+      "start": 441,
+      "end": 882,
+      "dim": 441
+    },
+    {
+      "name": "body_joints",
+      "start": 882,
+      "end": 1974,
+      "dim": 1092
+    },
+    {
+      "name": "body_contacts",
+      "start": 1974,
+      "end": 2121,
+      "dim": 147
+    },
+    {
+      "name": "camera_translation",
+      "start": 2121,
+      "end": 2142,
+      "dim": 21
+    },
+    {
+      "name": "camera_rotation_matrix",
+      "start": 2142,
+      "end": 2205,
+      "dim": 63
+    },
+    {
+      "name": "imu_accel_gyro",
+      "start": 2205,
+      "end": 2247,
+      "dim": 42
+    },
+    {
+      "name": "depth_confidence",
+      "start": 2247,
+      "end": 3227,
+      "dim": 980
+    },
+    {
+      "name": "caption_objects_interaction_text",
+      "start": 3227,
+      "end": 4123,
+      "dim": 896
+    },
+    {
+      "name": "slam_point_cloud",
+      "start": 4123,
+      "end": 4145,
+      "dim": 22
+    },
+    {
+      "name": "calibration",
+      "start": 4145,
+      "end": 4262,
+      "dim": 117
+    }
+  ],
+  "available_modalities": [
+    {
+      "episode_id": "xperience-10m-sample",
+      "modalities": [
+        {
+          "modality": "depth_confidence",
+          "shape": [
+            5821,
+            140
+          ]
+        },
+        {
+          "modality": "caption_text",
+          "shape": [
+            5821,
+            128
+          ],
+          "fields": "objects,interaction"
+        },
+        {
+          "modality": "slam_point_cloud_static",
+          "shape": [
+            22
+          ]
+        },
+        {
+          "modality": "calibration_static",
+          "shape": [
+            117
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Assistant answers are strict JSON for episode understanding, not robot-control policies.",
+    "Sensor features are stored as NPZ pointers; raw annotation.hdf5 is not copied into the dataset records."
+  ]
+}

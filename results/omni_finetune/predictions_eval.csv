@@ -1,0 +1,1510 @@
+id,target,split,episode_id,center_window,true_label,raw_prediction,predicted_label,correct,true_label_seen_in_train
+xperience-10m-sample:qa:0,episode_qa,train,xperience-10m-sample,"{'start_frame': 0, 'end_frame': 19, 'num_frames': 20}",Pick up kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""0-19""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:1,episode_qa,train,xperience-10m-sample,"{'start_frame': 20, 'end_frame': 39, 'num_frames': 20}",Pick up kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""unknown""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:2,episode_qa,train,xperience-10m-sample,"{'start_frame': 40, 'end_frame': 59, 'num_frames': 20}",Pick up kettle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""40-59""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:3,episode_qa,train,xperience-10m-sample,"{'start_frame': 60, 'end_frame': 79, 'num_frames': 20}",Pick up kettle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""60-79""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:4,episode_qa,train,xperience-10m-sample,"{'start_frame': 80, 'end_frame': 99, 'num_frames': 20}",Pick up kettle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""80-99""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:5,episode_qa,train,xperience-10m-sample,"{'start_frame': 100, 'end_frame': 119, 'num_frames': 20}",Pick up kettle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""100-119""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:6,episode_qa,train,xperience-10m-sample,"{'start_frame': 120, 'end_frame': 139, 'num_frames': 20}",Pick up kettle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""120-139""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:7,episode_qa,train,xperience-10m-sample,"{'start_frame': 140, 'end_frame': 159, 'num_frames': 20}",Pick up kettle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""140-159""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:8,episode_qa,train,xperience-10m-sample,"{'start_frame': 160, 'end_frame': 179, 'num_frames': 20}",Position kettle to pour,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""160-179""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:9,episode_qa,train,xperience-10m-sample,"{'start_frame': 180, 'end_frame': 199, 'num_frames': 20}",Position kettle to pour,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""180-199""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:10,episode_qa,train,xperience-10m-sample,"{'start_frame': 200, 'end_frame': 219, 'num_frames': 20}",Position kettle to pour,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""200-219""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:11,episode_qa,train,xperience-10m-sample,"{'start_frame': 220, 'end_frame': 239, 'num_frames': 20}",Position kettle to pour,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""220-239""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:12,episode_qa,train,xperience-10m-sample,"{'start_frame': 240, 'end_frame': 259, 'num_frames': 20}",Position kettle to pour,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""240-259""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:13,episode_qa,train,xperience-10m-sample,"{'start_frame': 260, 'end_frame': 279, 'num_frames': 20}",Position kettle to pour,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""260-279""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:14,episode_qa,train,xperience-10m-sample,"{'start_frame': 280, 'end_frame': 299, 'num_frames': 20}",Position kettle to pour,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""280-299""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:15,episode_qa,train,xperience-10m-sample,"{'start_frame': 300, 'end_frame': 319, 'num_frames': 20}",Position kettle to pour,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""unknown""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:40,episode_qa,train,xperience-10m-sample,"{'start_frame': 800, 'end_frame': 819, 'num_frames': 20}",Move kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""800-819""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:41,episode_qa,train,xperience-10m-sample,"{'start_frame': 820, 'end_frame': 839, 'num_frames': 20}",Move kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""820-839""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:42,episode_qa,train,xperience-10m-sample,"{'start_frame': 840, 'end_frame': 859, 'num_frames': 20}",Move kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""unknown""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:43,episode_qa,train,xperience-10m-sample,"{'start_frame': 860, 'end_frame': 879, 'num_frames': 20}",Move kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""gooseneck kettle"",
+    ""white bottle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""unknown""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:44,episode_qa,train,xperience-10m-sample,"{'start_frame': 880, 'end_frame': 899, 'num_frames': 20}",Move kettle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""880-899""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:45,episode_qa,train,xperience-10m-sample,"{'start_frame': 900, 'end_frame': 919, 'num_frames': 20}",Move kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""gooseneck kettle"",
+    ""white bottle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""900-919""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:46,episode_qa,train,xperience-10m-sample,"{'start_frame': 920, 'end_frame': 939, 'num_frames': 20}",Move kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""920-939""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:47,episode_qa,train,xperience-10m-sample,"{'start_frame': 940, 'end_frame': 959, 'num_frames': 20}",Move kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""940-959""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:50,episode_qa,train,xperience-10m-sample,"{'start_frame': 1000, 'end_frame': 1019, 'num_frames': 20}",Hold coffee carafe,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1000-1019""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:51,episode_qa,train,xperience-10m-sample,"{'start_frame': 1020, 'end_frame': 1039, 'num_frames': 20}",Hold coffee carafe,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""1020-1039""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:52,episode_qa,train,xperience-10m-sample,"{'start_frame': 1040, 'end_frame': 1059, 'num_frames': 20}",Hold coffee carafe,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""gooseneck kettle"",
+    ""white bottle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""unknown""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:53,episode_qa,train,xperience-10m-sample,"{'start_frame': 1060, 'end_frame': 1079, 'num_frames': 20}",Hold coffee carafe,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1060-1079""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:54,episode_qa,train,xperience-10m-sample,"{'start_frame': 1080, 'end_frame': 1099, 'num_frames': 20}",Hold coffee carafe,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1080-1099""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:55,episode_qa,train,xperience-10m-sample,"{'start_frame': 1100, 'end_frame': 1119, 'num_frames': 20}",Hold coffee carafe,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1100-1119""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:56,episode_qa,train,xperience-10m-sample,"{'start_frame': 1120, 'end_frame': 1139, 'num_frames': 20}",Hold coffee carafe,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1120-1139""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:57,episode_qa,train,xperience-10m-sample,"{'start_frame': 1140, 'end_frame': 1159, 'num_frames': 20}",Hold coffee carafe,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1140-1159""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:62,episode_qa,train,xperience-10m-sample,"{'start_frame': 1240, 'end_frame': 1259, 'num_frames': 20}",Grasp coffee scoop,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [""gooseneck kettle""],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""1240-1259""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:63,episode_qa,train,xperience-10m-sample,"{'start_frame': 1260, 'end_frame': 1279, 'num_frames': 20}",Grasp coffee scoop,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""gooseneck kettle"",
+    ""white bottle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1260-1279""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:64,episode_qa,train,xperience-10m-sample,"{'start_frame': 1280, 'end_frame': 1299, 'num_frames': 20}",Grasp coffee scoop,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""1280-1299""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:65,episode_qa,train,xperience-10m-sample,"{'start_frame': 1300, 'end_frame': 1319, 'num_frames': 20}",Grasp coffee scoop,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1300-1319""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:66,episode_qa,train,xperience-10m-sample,"{'start_frame': 1320, 'end_frame': 1339, 'num_frames': 20}",Grasp coffee scoop,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""white bottle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""unknown""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:67,episode_qa,train,xperience-10m-sample,"{'start_frame': 1340, 'end_frame': 1359, 'num_frames': 20}",Grasp coffee scoop,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1340-1359""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:68,episode_qa,train,xperience-10m-sample,"{'start_frame': 1360, 'end_frame': 1379, 'num_frames': 20}",Grasp coffee scoop,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""white bottle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1360-1379""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:69,episode_qa,train,xperience-10m-sample,"{'start_frame': 1380, 'end_frame': 1399, 'num_frames': 20}",Grasp coffee scoop,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1380-1399""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:78,episode_qa,train,xperience-10m-sample,"{'start_frame': 1560, 'end_frame': 1579, 'num_frames': 20}",Transfer coffee to dripper,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1560-1579""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:79,episode_qa,train,xperience-10m-sample,"{'start_frame': 1580, 'end_frame': 1599, 'num_frames': 20}",Transfer coffee to dripper,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1580-1599""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:80,episode_qa,train,xperience-10m-sample,"{'start_frame': 1600, 'end_frame': 1619, 'num_frames': 20}",Transfer coffee to dripper,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1600-1619""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:81,episode_qa,train,xperience-10m-sample,"{'start_frame': 1620, 'end_frame': 1639, 'num_frames': 20}",Transfer coffee to dripper,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""1620-1639""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:82,episode_qa,train,xperience-10m-sample,"{'start_frame': 1640, 'end_frame': 1659, 'num_frames': 20}",Transfer coffee to dripper,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1640-1659""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:83,episode_qa,train,xperience-10m-sample,"{'start_frame': 1660, 'end_frame': 1679, 'num_frames': 20}",Transfer coffee to dripper,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""1660-1679""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:84,episode_qa,train,xperience-10m-sample,"{'start_frame': 1680, 'end_frame': 1699, 'num_frames': 20}",Transfer coffee to dripper,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""1680-1699""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:85,episode_qa,train,xperience-10m-sample,"{'start_frame': 1700, 'end_frame': 1719, 'num_frames': 20}",Transfer coffee to dripper,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""1700-1719""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:100,episode_qa,train,xperience-10m-sample,"{'start_frame': 2000, 'end_frame': 2019, 'num_frames': 20}",Hold gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2000-2019""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:101,episode_qa,train,xperience-10m-sample,"{'start_frame': 2020, 'end_frame': 2039, 'num_frames': 20}",Hold gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2020-2039""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:102,episode_qa,train,xperience-10m-sample,"{'start_frame': 2040, 'end_frame': 2059, 'num_frames': 20}",Hold gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2040-2059""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:103,episode_qa,train,xperience-10m-sample,"{'start_frame': 2060, 'end_frame': 2079, 'num_frames': 20}",Hold gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2060-2079""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:104,episode_qa,train,xperience-10m-sample,"{'start_frame': 2080, 'end_frame': 2099, 'num_frames': 20}",Hold gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2080-2099""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:105,episode_qa,train,xperience-10m-sample,"{'start_frame': 2100, 'end_frame': 2119, 'num_frames': 20}",Hold gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2100-2119""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:106,episode_qa,train,xperience-10m-sample,"{'start_frame': 2120, 'end_frame': 2139, 'num_frames': 20}",Hold gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""unknown""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2120-2139""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:107,episode_qa,train,xperience-10m-sample,"{'start_frame': 2140, 'end_frame': 2159, 'num_frames': 20}",Hold gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2140-2159""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:140,episode_qa,train,xperience-10m-sample,"{'start_frame': 2800, 'end_frame': 2819, 'num_frames': 20}",Grasp gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2800-2819""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:141,episode_qa,train,xperience-10m-sample,"{'start_frame': 2820, 'end_frame': 2839, 'num_frames': 20}",Grasp gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2820-2839""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:142,episode_qa,train,xperience-10m-sample,"{'start_frame': 2840, 'end_frame': 2859, 'num_frames': 20}",Grasp gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2840-2859""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:143,episode_qa,train,xperience-10m-sample,"{'start_frame': 2860, 'end_frame': 2879, 'num_frames': 20}",Grasp gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2860-2879""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:144,episode_qa,train,xperience-10m-sample,"{'start_frame': 2880, 'end_frame': 2899, 'num_frames': 20}",Grasp gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""white bottle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2880-2899""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:145,episode_qa,train,xperience-10m-sample,"{'start_frame': 2900, 'end_frame': 2919, 'num_frames': 20}",Grasp gooseneck kettle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""2900-2919""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:146,episode_qa,train,xperience-10m-sample,"{'start_frame': 2920, 'end_frame': 2939, 'num_frames': 20}",Lift gooseneck kettle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""2920-2939""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:147,episode_qa,train,xperience-10m-sample,"{'start_frame': 2940, 'end_frame': 2959, 'num_frames': 20}",Lift gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""white bottle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2940-2959""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:148,episode_qa,train,xperience-10m-sample,"{'start_frame': 2960, 'end_frame': 2979, 'num_frames': 20}",Lift gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""white bottle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""unknown""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:149,episode_qa,train,xperience-10m-sample,"{'start_frame': 2980, 'end_frame': 2999, 'num_frames': 20}",Lift gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""2980-2999""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:150,episode_qa,train,xperience-10m-sample,"{'start_frame': 3000, 'end_frame': 3019, 'num_frames': 20}",Lift gooseneck kettle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""3000-3019""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:151,episode_qa,train,xperience-10m-sample,"{'start_frame': 3020, 'end_frame': 3039, 'num_frames': 20}",Lift gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3020-3039""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:152,episode_qa,train,xperience-10m-sample,"{'start_frame': 3040, 'end_frame': 3059, 'num_frames': 20}",Lift gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3040-3059""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:153,episode_qa,train,xperience-10m-sample,"{'start_frame': 3060, 'end_frame': 3079, 'num_frames': 20}",Lift gooseneck kettle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""white bottle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3060-3079""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:170,episode_qa,train,xperience-10m-sample,"{'start_frame': 3400, 'end_frame': 3419, 'num_frames': 20}",Move kettle away,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3400-3419""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:171,episode_qa,train,xperience-10m-sample,"{'start_frame': 3420, 'end_frame': 3439, 'num_frames': 20}",Move kettle away,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3420-3439""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:172,episode_qa,train,xperience-10m-sample,"{'start_frame': 3440, 'end_frame': 3459, 'num_frames': 20}",Move kettle away,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3440-3459""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:173,episode_qa,train,xperience-10m-sample,"{'start_frame': 3460, 'end_frame': 3479, 'num_frames': 20}",Move kettle away,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3460-3479""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:174,episode_qa,train,xperience-10m-sample,"{'start_frame': 3480, 'end_frame': 3499, 'num_frames': 20}",Move kettle away,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3480-3499""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:175,episode_qa,train,xperience-10m-sample,"{'start_frame': 3500, 'end_frame': 3519, 'num_frames': 20}",Move kettle away,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3500-3519""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:176,episode_qa,train,xperience-10m-sample,"{'start_frame': 3520, 'end_frame': 3539, 'num_frames': 20}",Move kettle away,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3520-3539""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:177,episode_qa,train,xperience-10m-sample,"{'start_frame': 3540, 'end_frame': 3559, 'num_frames': 20}",Move kettle away,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3540-3559""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:178,episode_qa,train,xperience-10m-sample,"{'start_frame': 3560, 'end_frame': 3579, 'num_frames': 20}",Place kettle on table,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3560-3579""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:179,episode_qa,train,xperience-10m-sample,"{'start_frame': 3580, 'end_frame': 3599, 'num_frames': 20}",Place kettle on table,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""3580-3599""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:180,episode_qa,train,xperience-10m-sample,"{'start_frame': 3600, 'end_frame': 3619, 'num_frames': 20}",Place kettle on table,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""unknown""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:181,episode_qa,train,xperience-10m-sample,"{'start_frame': 3620, 'end_frame': 3639, 'num_frames': 20}",Place kettle on table,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""3620-3639""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:182,episode_qa,train,xperience-10m-sample,"{'start_frame': 3640, 'end_frame': 3659, 'num_frames': 20}",Place kettle on table,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""3640-3659""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:183,episode_qa,train,xperience-10m-sample,"{'start_frame': 3660, 'end_frame': 3679, 'num_frames': 20}",Place kettle on table,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3660-3679""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:184,episode_qa,train,xperience-10m-sample,"{'start_frame': 3680, 'end_frame': 3699, 'num_frames': 20}",Pick up white bottle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""3680-3699""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:185,episode_qa,train,xperience-10m-sample,"{'start_frame': 3700, 'end_frame': 3719, 'num_frames': 20}",Pick up white bottle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3700-3719""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:186,episode_qa,train,xperience-10m-sample,"{'start_frame': 3720, 'end_frame': 3739, 'num_frames': 20}",Pick up white bottle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""3720-3739""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:187,episode_qa,train,xperience-10m-sample,"{'start_frame': 3740, 'end_frame': 3759, 'num_frames': 20}",Pick up white bottle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""3740-3759""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:188,episode_qa,train,xperience-10m-sample,"{'start_frame': 3760, 'end_frame': 3779, 'num_frames': 20}",Pick up white bottle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""3760-3779""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:189,episode_qa,train,xperience-10m-sample,"{'start_frame': 3780, 'end_frame': 3799, 'num_frames': 20}",Pick up white bottle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3780-3799""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:190,episode_qa,train,xperience-10m-sample,"{'start_frame': 3800, 'end_frame': 3819, 'num_frames': 20}",Pour liquid from white bottle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""3800-3819""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:191,episode_qa,train,xperience-10m-sample,"{'start_frame': 3820, 'end_frame': 3839, 'num_frames': 20}",Pour liquid from white bottle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""3820-3839""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:192,episode_qa,train,xperience-10m-sample,"{'start_frame': 3840, 'end_frame': 3859, 'num_frames': 20}",Pour liquid from white bottle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""3840-3859""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:193,episode_qa,train,xperience-10m-sample,"{'start_frame': 3860, 'end_frame': 3879, 'num_frames': 20}",Pour liquid from white bottle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3860-3879""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:194,episode_qa,train,xperience-10m-sample,"{'start_frame': 3880, 'end_frame': 3899, 'num_frames': 20}",Pour liquid from white bottle,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3880-3899""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:195,episode_qa,train,xperience-10m-sample,"{'start_frame': 3900, 'end_frame': 3919, 'num_frames': 20}",Pour liquid from white bottle,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""3900-3919""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:196,episode_qa,train,xperience-10m-sample,"{'start_frame': 3920, 'end_frame': 3939, 'num_frames': 20}",Close bottle cap,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""unknown""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:197,episode_qa,train,xperience-10m-sample,"{'start_frame': 3940, 'end_frame': 3959, 'num_frames': 20}",Close bottle cap,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3940-3959""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:198,episode_qa,train,xperience-10m-sample,"{'start_frame': 3960, 'end_frame': 3979, 'num_frames': 20}",Close bottle cap,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [""gooseneck kettle""],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""3960-3979""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:199,episode_qa,train,xperience-10m-sample,"{'start_frame': 3980, 'end_frame': 3999, 'num_frames': 20}",Close bottle cap,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""gooseneck kettle"",
+    ""white bottle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""3980-3999""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:200,episode_qa,train,xperience-10m-sample,"{'start_frame': 4000, 'end_frame': 4019, 'num_frames': 20}",Close bottle cap,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [""gooseneck kettle""],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""4000-4019""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:201,episode_qa,train,xperience-10m-sample,"{'start_frame': 4020, 'end_frame': 4039, 'num_frames': 20}",Close bottle cap,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""4020-4039""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:202,episode_qa,train,xperience-10m-sample,"{'start_frame': 4040, 'end_frame': 4059, 'num_frames': 20}",Close bottle cap,"```json
+{
+  ""action"": ""Pour milk into coffee"",
+  ""subtask"": ""Pour milk into coffee"",
+  ""objects"": [
+    ""white bottle"",
+    ""coffee""
+  ],
+  ""contact"": ""white bottle"",
+  ""transition"": ""Pouring milk into coffee"",
+  ""next_action"": ""Place white bottle on table"",
+  ""evidence_window"": ""4040-4059""
+}
+```",Pour milk into coffee,0,1
+xperience-10m-sample:qa:203,episode_qa,train,xperience-10m-sample,"{'start_frame': 4060, 'end_frame': 4079, 'num_frames': 20}",Close bottle cap,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""4060-4079""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:204,episode_qa,train,xperience-10m-sample,"{'start_frame': 4080, 'end_frame': 4099, 'num_frames': 20}",Close bottle cap,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""4080-4099""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:220,episode_qa,train,xperience-10m-sample,"{'start_frame': 4400, 'end_frame': 4419, 'num_frames': 20}",Place item on table,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""unknown""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""4400-4419""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:221,episode_qa,train,xperience-10m-sample,"{'start_frame': 4420, 'end_frame': 4439, 'num_frames': 20}",Place item on table,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""4420-4439""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:222,episode_qa,train,xperience-10m-sample,"{'start_frame': 4440, 'end_frame': 4459, 'num_frames': 20}",Place item on table,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""4440-4459""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:223,episode_qa,train,xperience-10m-sample,"{'start_frame': 4460, 'end_frame': 4479, 'num_frames': 20}",Place item on table,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""4460-4479""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:224,episode_qa,train,xperience-10m-sample,"{'start_frame': 4480, 'end_frame': 4499, 'num_frames': 20}",Place item on table,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""4480-4499""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:225,episode_qa,train,xperience-10m-sample,"{'start_frame': 4500, 'end_frame': 4519, 'num_frames': 20}",Place item on table,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""4500-4519""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:226,episode_qa,train,xperience-10m-sample,"{'start_frame': 4520, 'end_frame': 4539, 'num_frames': 20}",Wait/Prepare for pouring,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""gooseneck kettle"",
+    ""white bottle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""unknown""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:227,episode_qa,train,xperience-10m-sample,"{'start_frame': 4540, 'end_frame': 4559, 'num_frames': 20}",Wait/Prepare for pouring,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""4540-4559""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:228,episode_qa,train,xperience-10m-sample,"{'start_frame': 4560, 'end_frame': 4579, 'num_frames': 20}",Wait/Prepare for pouring,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""4560-4579""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:229,episode_qa,train,xperience-10m-sample,"{'start_frame': 4580, 'end_frame': 4599, 'num_frames': 20}",Wait/Prepare for pouring,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""4580-4599""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:230,episode_qa,train,xperience-10m-sample,"{'start_frame': 4600, 'end_frame': 4619, 'num_frames': 20}",Wait/Prepare for pouring,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""4600-4619""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:231,episode_qa,train,xperience-10m-sample,"{'start_frame': 4620, 'end_frame': 4639, 'num_frames': 20}",Wait/Prepare for pouring,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""4620-4639""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:232,episode_qa,train,xperience-10m-sample,"{'start_frame': 4640, 'end_frame': 4659, 'num_frames': 20}",Wait/Prepare for pouring,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""4640-4659""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:233,episode_qa,train,xperience-10m-sample,"{'start_frame': 4660, 'end_frame': 4679, 'num_frames': 20}",Wait/Prepare for pouring,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""4660-4679""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:250,episode_qa,train,xperience-10m-sample,"{'start_frame': 5000, 'end_frame': 5019, 'num_frames': 20}",Pour coffee,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""5000-5019""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:251,episode_qa,train,xperience-10m-sample,"{'start_frame': 5020, 'end_frame': 5039, 'num_frames': 20}",Pour coffee,"```json
+{
+  ""action"": ""Wait/Prepare for pouring"",
+  ""subtask"": ""Prepare for pouring"",
+  ""objects"": [
+    ""gooseneck kettle""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""Pour coffee"",
+  ""evidence_window"": ""5020-5039""
+}
+```",Wait/Prepare for pouring,0,1
+xperience-10m-sample:qa:252,episode_qa,train,xperience-10m-sample,"{'start_frame': 5040, 'end_frame': 5059, 'num_frames': 20}",Pour coffee,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""5040-5059""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:253,episode_qa,train,xperience-10m-sample,"{'start_frame': 5060, 'end_frame': 5079, 'num_frames': 20}",Pour coffee,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""5060-5079""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:254,episode_qa,train,xperience-10m-sample,"{'start_frame': 5080, 'end_frame': 5099, 'num_frames': 20}",Pour coffee,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""5080-5099""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:255,episode_qa,train,xperience-10m-sample,"{'start_frame': 5100, 'end_frame': 5119, 'num_frames': 20}",Pour coffee,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""5100-5119""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:256,episode_qa,train,xperience-10m-sample,"{'start_frame': 5120, 'end_frame': 5139, 'num_frames': 20}",Pour coffee,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""5120-5139""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:257,episode_qa,train,xperience-10m-sample,"{'start_frame': 5140, 'end_frame': 5159, 'num_frames': 20}",Pour coffee,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": ""unknown"",
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""5140-5159""
+}
+```",unknown,0,1
+xperience-10m-sample:qa:290,episode_qa,train,xperience-10m-sample,"{'start_frame': 5800, 'end_frame': 5819, 'num_frames': 20}",Pour milk into coffee,"```json
+{
+  ""action"": ""unknown"",
+  ""subtask"": ""unknown"",
+  ""objects"": [
+    ""unknown""
+  ],
+  ""contact"": ""unknown"",
+  ""transition"": ""unknown"",
+  ""next_action"": ""unknown"",
+  ""evidence_window"": ""5800-5819""
+}
+```",unknown,0,1

@@ -1,0 +1,19 @@
+{"event": "start", "run_id": "xperience10m_qwen3_omni_32ep_lora", "model_id": "/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct", "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_32ep_dataset/dataset.jsonl", "num_processes": 8, "num_train_samples": 128, "num_val_samples": 0, "rank_samples_per_epoch": 16, "epochs": 1, "timestamp": 1780145767.3727567}
+{"event": "train_step", "epoch": 1, "global_step": 1, "rank0_seen": 1, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 11.024569511413574, "timestamp": 1780145769.5535998}
+{"event": "train_step", "epoch": 1, "global_step": 2, "rank0_seen": 2, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 10.932429313659668, "timestamp": 1780145770.3543525}
+{"event": "train_step", "epoch": 1, "global_step": 3, "rank0_seen": 3, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 11.078858375549316, "timestamp": 1780145771.1473835}
+{"event": "train_step", "epoch": 1, "global_step": 4, "rank0_seen": 4, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 11.395858764648438, "timestamp": 1780145771.93893}
+{"event": "train_step", "epoch": 1, "global_step": 5, "rank0_seen": 5, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 10.80813217163086, "timestamp": 1780145772.7313085}
+{"event": "train_step", "epoch": 1, "global_step": 6, "rank0_seen": 6, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 10.644664764404297, "timestamp": 1780145773.528463}
+{"event": "train_step", "epoch": 1, "global_step": 7, "rank0_seen": 7, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 11.009082794189453, "timestamp": 1780145774.3242047}
+{"event": "train_step", "epoch": 1, "global_step": 8, "rank0_seen": 8, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 10.84404468536377, "timestamp": 1780145775.4113226}
+{"event": "train_step", "epoch": 1, "global_step": 9, "rank0_seen": 9, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 10.985627174377441, "timestamp": 1780145776.5403607}
+{"event": "train_step", "epoch": 1, "global_step": 10, "rank0_seen": 10, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 10.62201976776123, "timestamp": 1780145777.339885}
+{"event": "train_step", "epoch": 1, "global_step": 11, "rank0_seen": 11, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 11.205351829528809, "timestamp": 1780145778.1362987}
+{"event": "train_step", "epoch": 1, "global_step": 12, "rank0_seen": 12, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 10.856507301330566, "timestamp": 1780145778.9328642}
+{"event": "train_step", "epoch": 1, "global_step": 13, "rank0_seen": 13, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 11.044717788696289, "timestamp": 1780145779.7260861}
+{"event": "train_step", "epoch": 1, "global_step": 14, "rank0_seen": 14, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 10.76926326751709, "timestamp": 1780145780.5313745}
+{"event": "train_step", "epoch": 1, "global_step": 15, "rank0_seen": 15, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 11.089532852172852, "timestamp": 1780145781.3197153}
+{"event": "train_step", "epoch": 1, "global_step": 16, "rank0_seen": 16, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 10.671160697937012, "timestamp": 1780145782.1418438}
+{"event": "epoch_end", "epoch": 1, "train_loss": 10.936363816261292, "val_loss": null, "global_step": 16, "timestamp": 1780145782.1423175}
+{"event": "complete", "checkpoint_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_32ep_lora/adapter_lora", "timestamp": 1780145782.743853}

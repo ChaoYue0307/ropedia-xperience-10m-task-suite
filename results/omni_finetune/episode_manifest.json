@@ -1,0 +1,219 @@
+{
+  "summary": {
+    "num_episodes": 1,
+    "total_bytes": 2021338279,
+    "train_minimal_bytes": 2021338279,
+    "split_counts": {
+      "train": 1
+    },
+    "split_fractions": {
+      "train": 0.8,
+      "val": 0.0,
+      "test": 0.2,
+      "seed": 7
+    },
+    "windowing": {
+      "window_frames": 20,
+      "stride_frames": 20,
+      "min_label_fraction": 0.6
+    },
+    "notes": [
+      "train_minimal_bytes excludes visualization.rrd because model training does not need it.",
+      "This file is metadata-only; it does not copy or download raw data.",
+      "Splits are assigned by whole episode to avoid window leakage."
+    ]
+  },
+  "episodes": [
+    {
+      "episode_id": "xperience-10m-sample",
+      "path": "/home/cy/Ropedia/modelscope_data/xperience-10m-sample",
+      "annotation": "/home/cy/Ropedia/modelscope_data/xperience-10m-sample/annotation.hdf5",
+      "frame_count": 5821,
+      "main_task": "Making pour-over coffee",
+      "files": [
+        {
+          "name": "annotation.hdf5",
+          "bytes": 1931496028,
+          "exists": true
+        },
+        {
+          "name": "fisheye_cam0.mp4",
+          "bytes": 89842251,
+          "exists": true
+        },
+        {
+          "name": "fisheye_cam1.mp4",
+          "bytes": 0,
+          "exists": false
+        },
+        {
+          "name": "fisheye_cam2.mp4",
+          "bytes": 0,
+          "exists": false
+        },
+        {
+          "name": "fisheye_cam3.mp4",
+          "bytes": 0,
+          "exists": false
+        },
+        {
+          "name": "stereo_left.mp4",
+          "bytes": 0,
+          "exists": false
+        },
+        {
+          "name": "stereo_right.mp4",
+          "bytes": 0,
+          "exists": false
+        },
+        {
+          "name": "visualization.rrd",
+          "bytes": 0,
+          "exists": false
+        }
+      ],
+      "videos": [
+        {
+          "name": "fisheye_cam0.mp4",
+          "path": "/home/cy/Ropedia/modelscope_data/xperience-10m-sample/fisheye_cam0.mp4",
+          "bytes": 89842251,
+          "exists": true
+        },
+        {
+          "name": "fisheye_cam1.mp4",
+          "path": "/home/cy/Ropedia/modelscope_data/xperience-10m-sample/fisheye_cam1.mp4",
+          "bytes": 0,
+          "exists": false
+        },
+        {
+          "name": "fisheye_cam2.mp4",
+          "path": "/home/cy/Ropedia/modelscope_data/xperience-10m-sample/fisheye_cam2.mp4",
+          "bytes": 0,
+          "exists": false
+        },
+        {
+          "name": "fisheye_cam3.mp4",
+          "path": "/home/cy/Ropedia/modelscope_data/xperience-10m-sample/fisheye_cam3.mp4",
+          "bytes": 0,
+          "exists": false
+        },
+        {
+          "name": "stereo_left.mp4",
+          "path": "/home/cy/Ropedia/modelscope_data/xperience-10m-sample/stereo_left.mp4",
+          "bytes": 0,
+          "exists": false
+        },
+        {
+          "name": "stereo_right.mp4",
+          "path": "/home/cy/Ropedia/modelscope_data/xperience-10m-sample/stereo_right.mp4",
+          "bytes": 0,
+          "exists": false
+        }
+      ],
+      "hdf5_modalities": {
+        "calibration": true,
+        "slam_pose": true,
+        "slam_point_cloud": true,
+        "depth": true,
+        "depth_confidence": true,
+        "hand_mocap": true,
+        "body_mocap": true,
+        "contacts": true,
+        "imu": true,
+        "caption": true,
+        "captions": false
+      },
+      "label_stats": {
+        "main_task": "Making pour-over coffee",
+        "segments": 18,
+        "frame_labels": {
+          "action": {
+            "Hold gooseneck kettle": 800,
+            "Pour coffee": 800,
+            "Position kettle to pour": 640,
+            "Lift gooseneck kettle": 480,
+            "Close bottle cap": 480,
+            "Wait/Prepare for pouring": 480,
+            "Transfer coffee to dripper": 439,
+            "Grasp coffee scoop": 321,
+            "Hold coffee carafe": 240,
+            "Move kettle": 200,
+            "Pick up kettle": 160,
+            "Move kettle away": 160,
+            "Grasp gooseneck kettle": 120,
+            "Place kettle on table": 120,
+            "Pick up white bottle": 120,
+            "Pour liquid from white bottle": 120,
+            "Place item on table": 120,
+            "Pour milk into coffee": 21
+          },
+          "subtask": {
+            "Handle gooseneck kettle": 839,
+            "Pick up and position kettle": 761,
+            "Pour coffee": 761,
+            "Prepare for pouring": 600,
+            "Prepare coffee equipment and scoop grounds": 561,
+            "Lift gooseneck kettle": 561,
+            "Pour and close white bottle": 561,
+            "Transfer coffee grounds to dripper": 400,
+            "Set down kettle and retrieve white bottle": 400,
+            "Move kettle": 200,
+            "Pour milk into coffee": 60,
+            "Position kettle to pour": 39,
+            "Secure coffee container": 39,
+            "Move bottle to coffee equipment": 39
+          }
+        },
+        "window_labels": {
+          "action": {
+            "Hold gooseneck kettle": 40,
+            "Pour coffee": 40,
+            "Position kettle to pour": 32,
+            "Lift gooseneck kettle": 24,
+            "Close bottle cap": 24,
+            "Wait/Prepare for pouring": 24,
+            "Transfer coffee to dripper": 22,
+            "Grasp coffee scoop": 16,
+            "Hold coffee carafe": 12,
+            "Move kettle": 10,
+            "Pick up kettle": 8,
+            "Move kettle away": 8,
+            "Grasp gooseneck kettle": 6,
+            "Place kettle on table": 6,
+            "Pick up white bottle": 6,
+            "Pour liquid from white bottle": 6,
+            "Place item on table": 6,
+            "Pour milk into coffee": 1
+          },
+          "subtask": {
+            "Handle gooseneck kettle": 42,
+            "Pick up and position kettle": 38,
+            "Pour coffee": 38,
+            "Prepare for pouring": 30,
+            "Prepare coffee equipment and scoop grounds": 28,
+            "Lift gooseneck kettle": 28,
+            "Pour and close white bottle": 28,
+            "Transfer coffee grounds to dripper": 20,
+            "Set down kettle and retrieve white bottle": 20,
+            "Move kettle": 10,
+            "Pour milk into coffee": 3,
+            "Position kettle to pour": 2,
+            "Secure coffee container": 2,
+            "Move bottle to coffee equipment": 2
+          }
+        },
+        "num_labeled_windows": {
+          "action": 291,
+          "subtask": 291
+        }
+      },
+      "total_bytes": 2021338279,
+      "train_minimal_bytes": 2021338279,
+      "has_annotation": true,
+      "has_any_video": true,
+      "has_all_videos": false,
+      "has_rrd": false,
+      "split": "train"
+    }
+  ]
+}
