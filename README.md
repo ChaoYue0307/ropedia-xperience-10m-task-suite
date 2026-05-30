@@ -68,7 +68,7 @@ Hugging Face Space app:
 | Xperience-10M sample on Hugging Face | [huggingface.co/datasets/ropedia-ai/xperience-10m-sample](https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample) |
 | Ropedia Hugging Face organization | [huggingface.co/ropedia-ai](https://huggingface.co/ropedia-ai) |
 
-![ChatGPT-image-backed Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m)
+![ChatGPT-image-backed Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-nn)
 
 The infographic uses a ChatGPT-image-generated text-free research background and
 low-resolution modality thumbnails extracted from the public sample episode. The
@@ -78,9 +78,9 @@ with [`scripts/render_task_suite_infographic.py`](scripts/render_task_suite_info
 so the published PNG is a presentation graphic with verified labels and metrics,
 not a hallucinated metric sheet.
 
-![Verified Pipeline](docs/assets/pipeline_diagram.png?v=xperience10m)
+![Verified Pipeline](docs/assets/pipeline_diagram.png?v=xperience10m-nn)
 
-![Minimal 12-task model architectures](docs/assets/task_architectures.png?v=xperience10m)
+![Minimal and neural 12-task model architectures](docs/assets/task_architectures.png?v=xperience10m-nn)
 
 The pipeline and architecture figures use the same pattern: ChatGPT-image
 provides text-free visual backgrounds, while

@@ -470,8 +470,17 @@ def short_io(task_name: str, metrics: dict) -> str:
     return custom.get(task_name, metrics.get("input", ""))
 
 
-def task_card(task_name: str, kind: str, metrics: dict, group: dict, index: int) -> str:
+def task_card(task_name: str, kind: str, metrics: dict, group: dict, index: int, neural_metrics: dict | None = None) -> str:
     label, value = metric_for(task_name, metrics)
+    neural_html = ""
+    if neural_metrics and "error" not in neural_metrics:
+        neural_label, neural_value = metric_for(task_name, neural_metrics)
+        neural_html = f"""
+        <div class="metric neural">
+          <span>NN {html.escape(neural_label)}</span>
+          <strong>{html.escape(neural_value)}</strong>
+        </div>
+        """
     io = short_io(task_name, metrics)
     return f"""
       <article class="task-card" style="--accent:{group['color']};--soft:{group['soft']};">
@@ -482,9 +491,10 @@ def task_card(task_name: str, kind: str, metrics: dict, group: dict, index: int)
         <h3>{html.escape(task_name)}</h3>
         <p>{html.escape(io)}</p>
         <div class="metric">
-          <span>{html.escape(label)}</span>
+          <span>min {html.escape(label)}</span>
           <strong>{html.escape(value)}</strong>
         </div>
+        {neural_html}
       </article>
     """
 
@@ -506,6 +516,7 @@ def modality_card(name: str, line_one: str, line_two: str, index: int, thumbnail
 
 def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) -> str:
     suite = summary["tasks"]
+    neural_suite = summary.get("neural_tasks", {})
     thumbnails = load_sample_thumbnails(sample_dir)
     base_layer = ""
     if base_image is not None and base_image.exists():
@@ -514,7 +525,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
         (f"{summary['num_frames']:,}", "frames"),
         (f"{summary['num_windows']:,}", "windows"),
         (f"{summary['feature_dim']:,}", "features"),
-        (f"{len(suite)}", "tasks"),
+        (f"{len(suite)}+{len(neural_suite)}", "min + NN tasks"),
         ("70/30", "chronological split"),
     ]
     stats_html = "".join(
@@ -531,7 +542,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     for group in GROUPS:
         cards = []
         for task_name, kind in group["tasks"]:
-            cards.append(task_card(task_name, kind, suite[task_name], group, task_index))
+            cards.append(task_card(task_name, kind, suite[task_name], group, task_index, neural_suite.get(task_name)))
             task_index += 1
         families.append(
             f"""
@@ -852,12 +863,17 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       display: inline-flex;
       align-items: baseline;
       gap: 10px;
-      margin-top: 14px;
+      margin-top: 10px;
       min-height: 32px;
       padding: 7px 10px;
       border-radius: 8px;
       border: 1px solid color-mix(in srgb, var(--accent) 32%, #ffffff);
       background: rgba(255,255,255,0.82);
+    }}
+    .metric.neural {{
+      margin-left: 8px;
+      border-color: rgba(31,36,33,0.18);
+      background: rgba(245,241,233,0.82);
     }}
     .metric span {{
       color: #64748b;
@@ -904,7 +920,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       <div>
         <div class="kicker">verified single-episode task suite</div>
         <h1>Xperience-10M 12-task episode suite</h1>
-        <p class="subtitle">A clean map from synchronized multimodal windows to 12 auditable task heads, with metrics loaded from the committed summary report.</p>
+        <p class="subtitle">A clean map from synchronized multimodal windows to 12 auditable task heads, now comparing minimal heads with lightweight neural MLP results loaded from the committed summary report.</p>
       </div>
       <div class="stats">{stats_html}</div>
     </header>
@@ -922,7 +938,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       <div class="arrow">-></div>
       <div class="step"><strong>8,378-d vector</strong><span>current manifest excludes audio features</span></div>
       <div class="arrow">-></div>
-      <div class="step"><strong>12 minimal heads</strong><span>softmax, ridge, logistic</span></div>
+      <div class="step"><strong>12 minimal + NN heads</strong><span>softmax/ridge/logistic plus PyTorch MLP</span></div>
     </section>
 
     <section class="families">{''.join(families)}</section>

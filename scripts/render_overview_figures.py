@@ -94,6 +94,7 @@ def arrow() -> str:
 def build_pipeline_html(summary: dict, base_path: Path) -> str:
     suite = summary["suite"]
     task_count = len(suite["tasks"])
+    neural_count = len(suite.get("neural_tasks", {}))
     stage_rows = [
         [
             stage_card(
@@ -132,21 +133,21 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
             stage_card(
                 "05",
                 "Baseline models",
-                ["motion-only classifiers", "current all-feature classifiers", "stored weights + predictions"],
+                ["motion-only classifiers", "current all-feature classifiers", "neural MLP task heads"],
                 COLORS["blue"],
             ),
             arrow(),
             stage_card(
                 "06",
                 "Episode task suite",
-                [f"{task_count} task contracts", "forecast, retrieval, alignment", "chronological evaluation"],
+                [f"{task_count} minimal + {neural_count} neural results", "forecast, retrieval, alignment", "chronological evaluation"],
                 COLORS["teal"],
             ),
             arrow(),
             stage_card(
                 "07",
                 "Published artifacts",
-                ["metrics.json / csv / npz", "GitHub Pages dashboard", "HF Space + dataset + model card"],
+                ["metrics.json / csv / npz / pt", "GitHub Pages dashboard", "NN comparison charts"],
                 COLORS["green"],
             ),
         ],
@@ -156,6 +157,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
         "Audit check: rerunning scripts to /private/tmp reproduced the committed metrics exactly.",
         "Modality check: sample covers video, AAC audio, depth, pose/SLAM, mocap, IMU, and language annotation.",
         "Feature check: current baseline manifest has video/depth/pose/mocap/IMU/language blocks, but no audio feature block.",
+        "Neural check: lightweight PyTorch MLP heads are reported beside the minimal task heads under neural_mlp/.",
         "Scope check: this validates one public sample episode, not cross-episode generalization.",
     ]
     checks_html = "".join(f"<li>{esc(line)}</li>" for line in checks)
@@ -357,13 +359,13 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
         <div>
           <div class="kicker">verified single-episode pipeline</div>
           <h1>From Xperience-10M episode to reproducible artifacts</h1>
-          <p class="subtitle">The figure follows the actual code path and separates the full Xperience-10M sample modalities from the current baseline feature manifest.</p>
+          <p class="subtitle">The figure follows the actual code path and now includes both minimal task heads and lightweight neural MLP results over the same feature manifest.</p>
         </div>
         <div class="metrics">
           <div class="metric"><strong>{suite['num_frames']:,}</strong><span>frames</span></div>
           <div class="metric"><strong>{suite['num_windows']:,}</strong><span>windows</span></div>
           <div class="metric"><strong>{suite['feature_dim']:,}</strong><span>features</span></div>
-          <div class="metric"><strong>{task_count}</strong><span>tasks</span></div>
+          <div class="metric"><strong>{task_count}+{neural_count}</strong><span>min + NN tasks</span></div>
         </div>
       </header>
       {rows_html}
@@ -404,6 +406,7 @@ def build_task_card(row: dict, color: str) -> str:
 
 def build_architecture_html(summary: dict, base_path: Path) -> str:
     suite = summary["suite"]
+    neural_count = len(suite.get("neural_tasks", {}))
     rows_by_task = {row["task"]: row for row in task_architecture_rows(summary)}
     group_html = []
     for title, color, task_names in TASK_GROUPS:
@@ -421,10 +424,10 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
         )
 
     family_cards = [
-        ("Linear softmax", "Class-weighted CE + L2 for action, subtask, next-action, transition, contact, order, and alignment classifiers.", COLORS["blue"]),
-        ("Ridge regression", "Closed-form dual ridge for hand trajectory forecasting and modality reconstruction.", COLORS["green"]),
-        ("Ridge + cosine rank", "Project sensor features into text or visual space, then rank candidate windows by cosine similarity.", COLORS["teal"]),
-        ("Multi-label logistic", "One-vs-rest sigmoid heads over the object vocabulary with top-1 fallback.", COLORS["orange"]),
+        ("Linear softmax", "Minimal classifier for action, subtask, transition, contact, order, and alignment tasks.", COLORS["blue"]),
+        ("Ridge regression", "Minimal closed-form projection for forecasting, reconstruction, and retrieval spaces.", COLORS["green"]),
+        ("Multi-label logistic", "Minimal one-vs-rest sigmoid heads over the object vocabulary with top-1 fallback.", COLORS["orange"]),
+        ("Neural MLP", "Optional PyTorch nonlinear classifier/regressor over the same features, splits, and metrics.", COLORS["red"]),
     ]
     families = "".join(
         f"""
@@ -693,17 +696,17 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
     <div class="content">
       <header>
         <div>
-          <div class="kicker">minimal verified model architectures</div>
-          <h1>12 Xperience-10M episode tasks, four reusable heads</h1>
-          <p class="subtitle">Each task uses the same aligned episode-window contract, then swaps only the minimal output head needed for labels, forecasting, grounding, reconstruction, or temporal diagnostics.</p>
+          <div class="kicker">minimal + neural verified model architectures</div>
+          <h1>12 Xperience-10M episode tasks, minimal and NN heads</h1>
+          <p class="subtitle">Each task uses the same aligned episode-window contract. The figure now shows minimal heads beside the optional neural MLP metrics for labels, forecasting, grounding, reconstruction, and temporal diagnostics.</p>
         </div>
-        <div class="summary-pill"><strong>{len(suite['tasks'])}</strong><span>end-to-end tasks</span></div>
+        <div class="summary-pill"><strong>{len(suite['tasks'])}+{neural_count}</strong><span>min + NN tasks</span></div>
       </header>
       <section class="shared">
         <article><h2>Shared windows</h2><p>{suite['num_frames']:,} frames to {suite['num_windows']:,} windows over video, depth, pose, mocap, inertial, and language features.</p></article>
         <article><h2>Feature vector</h2><p>X_all is {suite['feature_dim']:,} dimensions with 17 named blocks; sample audio is documented but not featurized here.</p></article>
-        <article><h2>Reusable heads</h2><p>Softmax, ridge, ridge ranking, and multi-label logistic heads cover the whole suite.</p></article>
-        <article><h2>Artifacts</h2><p>Metrics, predictions, models, manifests, and the source summary report are committed.</p></article>
+        <article><h2>Reusable heads</h2><p>Minimal softmax/ridge/logistic heads plus optional PyTorch MLP heads cover the whole suite.</p></article>
+        <article><h2>Artifacts</h2><p>Metrics, predictions, model weights, neural checkpoints, manifests, and the source summary report are committed.</p></article>
       </section>
       <section class="families">{families}</section>
       <section class="task-groups">{"".join(group_html)}</section>

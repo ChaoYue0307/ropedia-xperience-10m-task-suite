@@ -185,6 +185,14 @@ def metric_text(task_name: str, metrics: dict) -> str:
     return "metric in summary_report.json"
 
 
+def metric_text_with_neural(task_name: str, metrics: dict, neural_tasks: dict) -> str:
+    text = metric_text(task_name, metrics)
+    neural_metrics = neural_tasks.get(task_name)
+    if not neural_metrics or "error" in neural_metrics:
+        return text
+    return f"min {text}; NN {metric_text(task_name, neural_metrics)}"
+
+
 def draw_text_block(parts: list[str], x: int, y: int, lines: list[str], size: int = 13, color: str = "#394255", weight: str = "500", max_chars: int = 42, line_h: int = 18) -> int:
     cursor = y
     for line in lines:
@@ -198,6 +206,7 @@ def draw_text_block(parts: list[str], x: int, y: int, lines: list[str], size: in
 def task_architecture_rows(summary: dict) -> list[dict]:
     suite = summary["suite"]
     tasks = suite["tasks"]
+    neural_tasks = suite.get("neural_tasks", {})
     manifest = summary["feature_manifest"]
     all_dim = int(suite["feature_dim"])
     no_contact_text_dim = feature_dim(manifest, exclude=["body_contacts", "caption_objects_interaction_text"])
@@ -214,97 +223,97 @@ def task_architecture_rows(summary: dict) -> list[dict]:
             "task": "timeline_action",
             "family": "softmax",
             "input": f"X_all window, {all_dim:,}d",
-            "head": "z-score -> linear softmax, class-weighted CE + L2",
+            "head": "minimal linear softmax; optional NN MLP softmax",
             "output": f"current action class, {tasks['timeline_action']['num_classes']} classes",
-            "metric": metric_text("timeline_action", tasks["timeline_action"]),
+            "metric": metric_text_with_neural("timeline_action", tasks["timeline_action"], neural_tasks),
         },
         {
             "task": "timeline_subtask",
             "family": "softmax",
             "input": f"X_all window, {all_dim:,}d",
-            "head": "z-score -> linear softmax, class-weighted CE + L2",
+            "head": "minimal linear softmax; optional NN MLP softmax",
             "output": f"current subtask class, {tasks['timeline_subtask']['num_classes']} classes",
-            "metric": metric_text("timeline_subtask", tasks["timeline_subtask"]),
+            "metric": metric_text_with_neural("timeline_subtask", tasks["timeline_subtask"], neural_tasks),
         },
         {
             "task": "transition_detection",
             "family": "softmax",
             "input": f"X_all window, {all_dim:,}d",
-            "head": "z-score -> linear softmax, class-weighted CE + L2",
+            "head": "minimal linear softmax; optional NN MLP softmax",
             "output": "steady vs transition near action boundary",
-            "metric": f"{metric_text('transition_detection', tasks['transition_detection'])}; boundary-F1 {tasks['transition_detection']['boundary_f1']:.4f}",
+            "metric": f"{metric_text_with_neural('transition_detection', tasks['transition_detection'], neural_tasks)}; boundary-F1 {tasks['transition_detection']['boundary_f1']:.4f}",
         },
         {
             "task": "next_action",
             "family": "softmax",
             "input": f"X_all at time t, {all_dim:,}d",
-            "head": "z-score -> linear softmax, class-weighted CE + L2",
+            "head": "minimal linear softmax; optional NN MLP softmax",
             "output": f"action at t+{tasks['next_action'].get('future_frames', 20)} frames",
-            "metric": metric_text("next_action", tasks["next_action"]),
+            "metric": metric_text_with_neural("next_action", tasks["next_action"], neural_tasks),
         },
         {
             "task": "hand_trajectory_forecast",
             "family": "ridge",
             "input": f"X_all at time t, {all_dim:,}d",
-            "head": "z-score X/Y -> dual ridge regression, L2=10",
+            "head": "minimal dual ridge; optional NN MLP regression",
             "output": f"future hand joints, {tasks['hand_trajectory_forecast']['target_dim']}d",
-            "metric": metric_text("hand_trajectory_forecast", tasks["hand_trajectory_forecast"]),
+            "metric": metric_text_with_neural("hand_trajectory_forecast", tasks["hand_trajectory_forecast"], neural_tasks),
         },
         {
             "task": "contact_prediction",
             "family": "softmax",
             "input": f"X without contact/text leakage, {no_contact_text_dim:,}d",
-            "head": "z-score -> linear softmax on observed labels",
+            "head": "minimal linear softmax; optional NN MLP softmax",
             "output": "any body contact in window; degenerate one-class sample",
-            "metric": metric_text("contact_prediction", tasks["contact_prediction"]),
+            "metric": metric_text_with_neural("contact_prediction", tasks["contact_prediction"], neural_tasks),
         },
         {
             "task": "object_relevance",
             "family": "multilabel",
             "input": f"X without caption text, {no_text_dim:,}d",
-            "head": "z-score -> sigmoid multi-label logistic, weighted",
+            "head": "minimal sigmoid logistic; optional NN MLP multilabel",
             "output": f"multi-hot object set, {tasks['object_relevance']['num_objects']} objects",
-            "metric": metric_text("object_relevance", tasks["object_relevance"]),
+            "metric": metric_text_with_neural("object_relevance", tasks["object_relevance"], neural_tasks),
         },
         {
             "task": "caption_grounding",
             "family": "ridge+rank",
             "input": f"sensor {sensor_dim:,}d -> text space {text_dim:,}d",
-            "head": "ridge projection, then cosine ranking",
+            "head": "minimal ridge or NN MLP projection, then cosine rank",
             "output": "text query retrieves matching time window",
-            "metric": metric_text("caption_grounding", tasks["caption_grounding"]),
+            "metric": metric_text_with_neural("caption_grounding", tasks["caption_grounding"], neural_tasks),
         },
         {
             "task": "cross_modal_retrieval",
             "family": "ridge+rank",
             "input": f"motion/IMU/camera {motion_dim:,}d -> visual {visual_dim:,}d",
-            "head": "ridge projection, then cosine ranking",
+            "head": "minimal ridge or NN MLP projection, then cosine rank",
             "output": "retrieve matching depth/video window",
-            "metric": metric_text("cross_modal_retrieval", tasks["cross_modal_retrieval"]),
+            "metric": metric_text_with_neural("cross_modal_retrieval", tasks["cross_modal_retrieval"], neural_tasks),
         },
         {
             "task": "modality_reconstruction",
             "family": "ridge",
             "input": f"motion/IMU/camera {motion_dim:,}d",
-            "head": "z-score X/Y -> dual ridge regression, L2=10",
+            "head": "minimal dual ridge; optional NN MLP regression",
             "output": f"depth/video feature vector, {visual_dim:,}d",
-            "metric": metric_text("modality_reconstruction", tasks["modality_reconstruction"]),
+            "metric": metric_text_with_neural("modality_reconstruction", tasks["modality_reconstruction"], neural_tasks),
         },
         {
             "task": "temporal_order",
             "family": "softmax",
             "input": f"concat[x_t, x_t+1, diff], {pair_dim:,}d",
-            "head": "z-score -> binary linear softmax, CE + L2",
+            "head": "minimal binary softmax; optional NN MLP softmax",
             "output": "correct vs reversed adjacent windows",
-            "metric": metric_text("temporal_order", tasks["temporal_order"]),
+            "metric": metric_text_with_neural("temporal_order", tasks["temporal_order"], neural_tasks),
         },
         {
             "task": "misalignment_detection",
             "family": "softmax",
             "input": f"concat[motion_t, visual_t/visual_t+8], {align_dim:,}d",
-            "head": "z-score -> binary linear softmax, CE + L2",
+            "head": "minimal binary softmax; optional NN MLP softmax",
             "output": "aligned vs shifted by 8 windows",
-            "metric": metric_text("misalignment_detection", tasks["misalignment_detection"]),
+            "metric": metric_text_with_neural("misalignment_detection", tasks["misalignment_detection"], neural_tasks),
         },
     ]
 
