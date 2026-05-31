@@ -43,6 +43,7 @@ This repo is organized around an explicit proof boundary:
 | Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
 | Qwen3-Omni | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `A100_HF_RELAY_STATUS.md` | smoke-only until 32 valid episodes are available |
 | Publication hygiene | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | public repo and HF bundles only; ignored local scratch files are excluded |
+| Artifact index | `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | selective source-of-truth catalog with existence, size, and stable-file hashes |
 | Citation and metadata | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | code is MIT-scoped; raw-data use follows Xperience-10M terms |
 | Reviewer path | `docs/data/reviewer_packet.json`, website reviewer section | audit guide only; no new experimental claim |
 
@@ -51,6 +52,8 @@ consume the machine-readable copy at
 [`docs/data/evidence_contract.json`](docs/data/evidence_contract.json).
 The current publication audit is at
 [`docs/data/publication_audit.json`](docs/data/publication_audit.json).
+The source-of-truth artifact index is at
+[`docs/data/artifact_index.json`](docs/data/artifact_index.json).
 Project citation and machine-readable metadata live in
 [`CITATION.cff`](CITATION.cff), [`codemeta.json`](codemeta.json), and
 [`docs/data/project_manifest.json`](docs/data/project_manifest.json).
@@ -61,13 +64,21 @@ If you are reviewing the project cold, open these in order:
 
 | Step | Question | Primary artifacts | What should be true |
 | --- | --- | --- | --- |
-| 1 | What is actually claimed? | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`docs/data/evidence_contract.json`](docs/data/evidence_contract.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Single-episode task engineering and hygiene are claimed; cross-episode generalization is not. |
+| 1 | What is actually claimed? | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`docs/data/evidence_contract.json`](docs/data/evidence_contract.json), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Single-episode task engineering and hygiene are claimed; cross-episode generalization is not. |
 | 2 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
 | 3 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
 | 4 | What is still pending? | [`DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md), [`A100_HF_RELAY_STATUS.md`](results/omni_finetune/A100_HF_RELAY_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared but not yet a real model-quality claim. |
 
 The machine-readable reviewer packet is
 [`docs/data/reviewer_packet.json`](docs/data/reviewer_packet.json).
+
+## Artifact Index
+
+[`docs/data/artifact_index.json`](docs/data/artifact_index.json) is the compact
+audit map for the repo. It lists the core proof artifacts, whether each exists,
+its size, and a SHA-256 hash for stable files. Volatile generated files, such as
+the publication audit with a run timestamp, are marked so reviewers know they
+are checked for presence and size rather than treated as fixed hashes.
 
 ## Dataset Modality Coverage
 
@@ -100,6 +111,7 @@ Hugging Face Space app:
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode claims reviewable without rerunning first |
 | Publication audit | `docs/data/publication_audit.json` | Confirms public bundles contain no raw Xperience-10M data, Python caches, heavy archives, or token strings |
+| Artifact index | `docs/data/artifact_index.json` | Gives reviewers a compact source-of-truth catalog with stable hashes |
 | Citation metadata | `CITATION.cff`, `codemeta.json`, `LICENSE` | Makes the repo easier to cite, index, and reuse without confusing code license and dataset terms |
 
 ## Links
@@ -172,6 +184,7 @@ scripts/
   generate_visualizations.py        # refreshes SVG charts + summary JSON
   render_task_suite_infographic.py  # renders the ChatGPT-image-backed PNG
   render_overview_figures.py        # renders polished pipeline/architecture PNGs
+  build_artifact_index.py           # builds the source-of-truth reviewer index
   validate_publication_package.py   # checks public repo + HF bundle hygiene
   omni/
     download_sample_modelscope.py   # mainland-China friendly sample download
@@ -195,6 +208,7 @@ docs/
   index.html                        # GitHub Pages dashboard
   data/summary_metrics.json         # website-readable metrics bundle
   data/evidence_contract.json       # machine-readable proof boundary
+  data/artifact_index.json          # compact proof-artifact catalog
   data/publication_audit.json       # machine-readable publication hygiene check
   data/project_manifest.json        # machine-readable public-surface metadata
   data/reviewer_packet.json         # machine-readable reviewer path and proof boundary

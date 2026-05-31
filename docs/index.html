@@ -868,6 +868,7 @@
             <p>The validator checks required assets, raw-data exclusion, Python cache exclusion, heavy archive exclusion, and accidental HF token strings across GitHub and the HF bundles.</p>
             <div class="evidence-links">
               <a href="data/publication_audit.json">publication audit</a>
+              <a href="data/artifact_index.json">artifact index</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_publication_package.py">validator script</a>
             </div>
           </article>
@@ -885,10 +886,11 @@
           <article class="review-card">
             <span class="step-index">01</span>
             <h3>Check the claim boundary</h3>
-            <p>Start with the evidence contract and publication audit. They separate verified single-episode artifacts from smoke-only Qwen3-Omni work.</p>
+            <p>Start with the evidence contract, artifact index, and publication audit. They separate verified single-episode artifacts from smoke-only Qwen3-Omni work.</p>
             <div class="review-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">contract</a>
               <a href="data/evidence_contract.json">JSON</a>
+              <a href="data/artifact_index.json">index</a>
               <a href="data/publication_audit.json">audit</a>
             </div>
           </article>
@@ -1191,6 +1193,7 @@
           <p>Metrics, predictions, confusion matrices, manifests, lightweight model weights, and derived window artifacts are committed so the repo is reviewable before rerunning anything. Raw Xperience-10M data and Qwen weights are not redistributed.</p>
         </div>
         <div class="artifact-grid">
+          <article class="artifact"><h3>Artifact index</h3><p>Selective source-of-truth catalog with existence checks, sizes, and stable-file hashes for reviewer-critical artifacts.</p><a href="data/artifact_index.json">artifact_index.json</a></article>
           <article class="artifact"><h3>Task-suite report</h3><p>One JSON file with every task metric and split detail.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a></article>
           <article class="artifact"><h3>Neural MLP task results</h3><p>Per-task PyTorch MLP metrics, predictions, histories, and checkpoints for the same 12 task contracts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural_mlp/</a></article>
           <article class="artifact"><h3>Four-direction taxonomy</h3><p>Generated JSON, CSV, Markdown, and website data mapping all 12 tasks to the four research tracks with two baselines.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_directions">research_directions/</a></article>

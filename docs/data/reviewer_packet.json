@@ -21,6 +21,7 @@
       "primary_artifacts": [
         "EVIDENCE_CONTRACT.md",
         "docs/data/evidence_contract.json",
+        "docs/data/artifact_index.json",
         "docs/data/publication_audit.json"
       ],
       "readout": "Single-episode task engineering, metrics, visualizations, and publication hygiene are claimed; cross-episode generalization and 32-episode Qwen3-Omni quality are not claimed."
@@ -56,6 +57,7 @@
       "readout": "The next milestone is a 32-episode held-out-episode Qwen3-Omni LoRA pilot after gated Xperience-10M access is available."
     }
   ],
+  "artifact_index": "docs/data/artifact_index.json",
   "public_surfaces": {
     "github_repo": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite",
     "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/",
