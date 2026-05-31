@@ -2,7 +2,7 @@
 
 Audit date: 2026-05-30 Asia/Singapore.
 
-Purpose: verify that the committed Xperience-10M Episode Task Suite artifacts are
+Purpose: verify that the committed Ropedia Xperience-10M Task Suite artifacts are
 real outputs from the scripts, not placeholder or fabricated metrics.
 
 ## Raw Inputs Checked

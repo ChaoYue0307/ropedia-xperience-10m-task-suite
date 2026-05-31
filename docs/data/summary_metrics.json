@@ -10,7 +10,9 @@
     "candidate_scan_top_level_sessions": 64,
     "valid_candidates": 680,
     "estimated_bytes": 72031620552,
-    "exclude": ["visualization.rrd"],
+    "exclude": [
+      "visualization.rrd"
+    ],
     "blocker": "Hugging Face returns 403 pending review for the full Xperience-10M gated dataset.",
     "claim_boundary": "No real 32-episode fine-tune is claimed until the watcher downloads data, transfers it to H20, and the held-out evaluation runs."
   },
