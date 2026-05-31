@@ -1,0 +1,91 @@
+{
+  "project": "Ropedia Xperience-10M Task Suite",
+  "scope": "single public Xperience-10M sample episode",
+  "claims": [
+    {
+      "id": "aligned_windows",
+      "claim": "The public Xperience-10M sample has been converted into aligned model windows.",
+      "status": "verified",
+      "evidence": [
+        "results/episode_task_suite/windows.csv",
+        "results/episode_task_suite/shared_windows.npz",
+        "results/episode_task_suite/summary_report.json"
+      ],
+      "boundary": "5,821 frames, 1,161 windows, one public sample episode"
+    },
+    {
+      "id": "feature_contract",
+      "claim": "The current feature contract is explicit and reviewable.",
+      "status": "verified",
+      "evidence": [
+        "results/episode_task_suite/feature_manifest.json",
+        "results/episode_task_suite/available_modalities.json"
+      ],
+      "boundary": "8,378-d feature vector; audio is documented but not yet featurized"
+    },
+    {
+      "id": "twelve_tasks",
+      "claim": "The 12 task heads are real scripts and artifacts, not presentation placeholders.",
+      "status": "verified",
+      "evidence": [
+        "scripts/episode_task_suite.py",
+        "results/episode_task_suite/*/metrics.json",
+        "results/episode_task_suite/*/predictions.*"
+      ],
+      "boundary": "chronological single-episode split, not cross-episode generalization"
+    },
+    {
+      "id": "minimal_vs_neural",
+      "claim": "Minimal and neural heads use the same task contracts.",
+      "status": "verified",
+      "evidence": [
+        "scripts/neural_task_models.py",
+        "results/episode_task_suite/neural_mlp/",
+        "docs/assets/task_architectures.png"
+      ],
+      "boundary": "small heads only; not a foundation model"
+    },
+    {
+      "id": "research_directions",
+      "claim": "Four Ropedia research directions are mapped honestly as direct, proxy, or diagnostic evidence.",
+      "status": "verified",
+      "evidence": [
+        "results/episode_task_suite/research_directions/research_direction_taxonomy.json",
+        "docs/data/research_directions.json"
+      ],
+      "boundary": "some directions remain proxy-only"
+    },
+    {
+      "id": "direction_extensions",
+      "claim": "Four extra direction probes are coded and evaluated.",
+      "status": "verified",
+      "evidence": [
+        "results/episode_task_suite/research_direction_extensions/research_direction_extension_results.json",
+        "docs/data/research_direction_extensions.json"
+      ],
+      "boundary": "single-episode probes, not full research-direction solutions"
+    },
+    {
+      "id": "qwen3_omni_smoke",
+      "claim": "Qwen3-Omni infrastructure has passed technical smoke checks.",
+      "status": "smoke_only",
+      "evidence": [
+        "results/omni_finetune/RUN_REPORT.md",
+        "results/omni_finetune/dataset_manifest.json",
+        "results/omni_finetune/metrics_eval.json"
+      ],
+      "boundary": "one episode, 128 train windows; not a 32-episode pilot"
+    },
+    {
+      "id": "thirty_two_episode_gate",
+      "claim": "The real 32-episode LoRA pilot is blocked on gated data access, not on repo presentation.",
+      "status": "blocked_by_data_access",
+      "evidence": [
+        "results/omni_finetune/DATA_BLOCKER_REPORT.md",
+        "results/omni_finetune/A100_HF_RELAY_STATUS.md",
+        "results/omni_finetune/source_discovery.json"
+      ],
+      "boundary": "no 32-episode metric should be claimed until the gate passes"
+    }
+  ]
+}

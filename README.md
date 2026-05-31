@@ -28,6 +28,23 @@ into:
 - metrics, predictions, model weights, manifests, charts, and a static website,
 - a clear explanation of what a single episode can and cannot prove.
 
+## Evidence Contract
+
+This repo is organized around an explicit proof boundary:
+
+| Claim layer | Evidence | Boundary |
+| --- | --- | --- |
+| Data windows | `results/episode_task_suite/windows.csv`, `shared_windows.npz`, `summary_report.json` | one public sample episode |
+| Feature contract | `results/episode_task_suite/feature_manifest.json`, `available_modalities.json` | 8,378 current features; audio documented but not featurized |
+| 12-task suite | `scripts/episode_task_suite.py`, per-task `metrics.json`, predictions | chronological single-episode split |
+| Neural heads | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | compact MLP heads, not a foundation model |
+| Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
+| Qwen3-Omni | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `A100_HF_RELAY_STATUS.md` | smoke-only until 32 valid episodes are available |
+
+Read the full contract in [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), or
+consume the machine-readable copy at
+[`docs/data/evidence_contract.json`](docs/data/evidence_contract.json).
+
 ## Dataset Modality Coverage
 
 The Xperience-10M sample is a 4D multimodal episode source spanning video,
@@ -139,6 +156,7 @@ results/
 docs/
   index.html                        # GitHub Pages dashboard
   data/summary_metrics.json         # website-readable metrics bundle
+  data/evidence_contract.json       # machine-readable proof boundary
   data/research_directions.json     # four-track website data bundle
   data/research_direction_extensions.json # four extra probe data bundle
   data/task_walkthroughs.json       # beginner task explanation data bundle
