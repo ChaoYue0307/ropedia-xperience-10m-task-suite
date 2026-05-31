@@ -1,0 +1,309 @@
+{
+  "source": {
+    "shared_windows": "results/episode_task_suite/shared_windows.npz",
+    "windows_csv": "results/episode_task_suite/windows.csv",
+    "feature_manifest": "results/episode_task_suite/feature_manifest.json"
+  },
+  "dataset_scope": {
+    "sample_episode_count": 1,
+    "num_windows": 1161,
+    "feature_dim": 8378,
+    "first_start_frame": 0,
+    "last_end_frame": 5819,
+    "warning": "Single public sample episode; these extension probes validate task design and pipeline mechanics, not cross-episode generalization."
+  },
+  "baselines": {
+    "minimal": "Ridge classifiers/regressors/projections plus cosine retrieval on the committed feature tensor.",
+    "neural_mlp": "Small one-hidden-layer PyTorch MLP heads using the same inputs, targets, chronological split, and evaluator."
+  },
+  "run_config": {
+    "train_fraction": 0.7,
+    "ridge_l2": 10.0,
+    "seed": 7,
+    "future_windows": 4,
+    "neural_epochs": 25,
+    "neural_hidden_dim": 128,
+    "neural_batch_size": 128,
+    "skip_neural": false
+  },
+  "task_specs": {
+    "body_motion_intensity": {
+      "direction": "A",
+      "direction_name": "Human Modeling & Motion Understanding",
+      "name": "Body/hand motion intensity",
+      "family": "classification",
+      "case_study": "A window with a fast reach or pour should be classified as high motion; a steady holding window should be low motion.",
+      "input": "Current non-mocap feature blocks: video, depth, camera pose/rotation, IMU, SLAM, calibration, and language context.",
+      "middle_process": "Compute the target from hand/body joint changes between neighboring windows, hide the mocap blocks from the input, then classify high versus low motion using the train-set median as the threshold.",
+      "output": "Binary label: high_motion or low_motion.",
+      "minimal_baseline": "Ridge classifier on standardized non-mocap features.",
+      "neural_baseline": "One-hidden-layer MLP binary classifier on the same input features.",
+      "metric_name": "macro-F1",
+      "metric_key": "macro_f1",
+      "metric_direction": "higher",
+      "current_limit": "This is a motion-energy proxy, not a SMPL/MANO body model or a generative motion prior."
+    },
+    "multi_view_consistency_retrieval": {
+      "direction": "B",
+      "direction_name": "3D/4D Reconstruction & Neural Rendering",
+      "name": "Multi-view consistency retrieval",
+      "family": "retrieval",
+      "case_study": "Given the fisheye camera features for a pouring moment, retrieve the synchronized stereo-left view from the same time window.",
+      "input": "Query side: fisheye_cam0 video feature block. Candidate side: stereo_left video feature block from held-out windows.",
+      "middle_process": "Learn a projection from one camera-view feature space into another, then rank held-out candidate windows by cosine similarity.",
+      "output": "Ranked candidate windows; the correct synchronized view should rank near the top.",
+      "minimal_baseline": "Ridge projection followed by cosine nearest-neighbor retrieval.",
+      "neural_baseline": "One-hidden-layer MLP projection followed by the same cosine retrieval evaluator.",
+      "metric_name": "MRR",
+      "metric_key": "mrr",
+      "metric_direction": "higher",
+      "current_limit": "This checks calibrated multi-view signal, but it is still feature retrieval, not NeRF, Gaussian Splatting, or novel-view synthesis."
+    },
+    "action_phase_progress": {
+      "direction": "C",
+      "direction_name": "Egocentric Vision & Interaction",
+      "name": "Action phase progress",
+      "family": "regression",
+      "case_study": "Inside a Pour coffee action segment, estimate whether the current window is near the beginning, middle, or end of that action.",
+      "input": "Current non-caption multimodal feature vector, so the label text cannot be copied directly from the language block.",
+      "middle_process": "Convert contiguous action-label runs into a normalized 0-to-1 progress target, train on earlier windows, and regress progress for later windows.",
+      "output": "A scalar progress value between 0.0 and 1.0 for the current action segment.",
+      "minimal_baseline": "Ridge regressor on standardized non-caption features.",
+      "neural_baseline": "One-hidden-layer MLP regressor on the same input features.",
+      "metric_name": "MAE",
+      "metric_key": "mae",
+      "metric_direction": "lower",
+      "current_limit": "This is an action-structure probe inside one episode, not a general intent model across homes, people, or tasks."
+    },
+    "ego_motion_forecast": {
+      "direction": "D",
+      "direction_name": "Scene Reconstruction & World Modeling",
+      "name": "Short-horizon ego-motion forecast",
+      "family": "forecast",
+      "case_study": "From the current sensors, predict how the camera translation will change over the next 20 frames while the wearer moves through the scene.",
+      "input": "Current multimodal features excluding the camera-translation block and caption text.",
+      "middle_process": "Build a future target from camera-translation difference at a four-window horizon, then regress that future ego-motion delta from current sensors.",
+      "output": "A future camera-translation delta vector.",
+      "minimal_baseline": "Ridge regressor with a 20-frame forecast horizon.",
+      "neural_baseline": "One-hidden-layer MLP regressor with the same horizon and split.",
+      "metric_name": "MAE",
+      "metric_key": "mae",
+      "metric_direction": "lower",
+      "current_limit": "This is a compact world-model proxy; it does not build a persistent map, scene graph, or object permanence model."
+    }
+  },
+  "tasks": {
+    "body_motion_intensity": {
+      "train_windows": 812,
+      "test_windows": 348,
+      "target_threshold_train_median": 0.476467490196228,
+      "input_dim": 6257,
+      "target_source": "hand/body joint delta between neighboring windows",
+      "minimal": {
+        "accuracy": 0.7931034482758621,
+        "macro_f1": 0.7827413984461709,
+        "positive_rate_true": 0.35919540229885055,
+        "positive_rate_pred": 0.4224137931034483,
+        "num_test": 348
+      },
+      "neural_mlp": {
+        "accuracy": 0.8045977011494253,
+        "macro_f1": 0.7986111111111112,
+        "positive_rate_true": 0.35919540229885055,
+        "positive_rate_pred": 0.46839080459770116,
+        "num_test": 348
+      },
+      "neural_training": {
+        "available": true,
+        "epochs": 25,
+        "hidden_dim": 128,
+        "loss_history": [
+          0.37396696033736165,
+          0.2156323000715284,
+          0.136186269006412,
+          0.10160321393623728,
+          0.07785259978157547,
+          0.06464119376660568,
+          0.05246563551240954,
+          0.04177419132933828,
+          0.03559323893905861,
+          0.03164790260600926,
+          0.029612853728565088,
+          0.02614598715301658,
+          0.022772305264261557,
+          0.02064551915881669,
+          0.021218053400149487,
+          0.015741589412625347,
+          0.018090384899927623,
+          0.012638344971940215,
+          0.009894669190131752,
+          0.010873594465826092,
+          0.008848077248268086,
+          0.007805832091654683,
+          0.0068195829434054235,
+          0.005149830504334325,
+          0.005361259917228533
+        ]
+      }
+    },
+    "multi_view_consistency_retrieval": {
+      "train_windows": 813,
+      "test_windows": 348,
+      "query_block": "video_fisheye_cam0",
+      "target_block": "video_stereo_left",
+      "query_dim": 686,
+      "target_dim": 686,
+      "minimal": {
+        "mrr": 0.5533982515335083,
+        "top1": 0.41954022988505746,
+        "top5": 0.7068965517241379,
+        "top10": 0.8304597701149425,
+        "median_rank": 2.0,
+        "num_test": 348
+      },
+      "neural_mlp": {
+        "mrr": 0.34691643714904785,
+        "top1": 0.23275862068965517,
+        "top5": 0.46264367816091956,
+        "top10": 0.5890804597701149,
+        "median_rank": 7.0,
+        "num_test": 348
+      },
+      "neural_training": {
+        "available": true,
+        "epochs": 25,
+        "hidden_dim": 128,
+        "loss_history": [
+          0.9800718805740094,
+          0.8296866191855803,
+          0.7029420470986126,
+          0.6089339927846948,
+          0.5426930648814268,
+          0.49323386093200644,
+          0.45315542230600214,
+          0.4240272395578551,
+          0.3964498403400806,
+          0.37567753094588696,
+          0.3599070675332021,
+          0.3417643405048023,
+          0.32952829051721577,
+          0.31516501450450657,
+          0.3070896395824639,
+          0.29752101269888553,
+          0.287490411878072,
+          0.2791558311654193,
+          0.2707079971921693,
+          0.2669465311998811,
+          0.2603630047442728,
+          0.2501040017656148,
+          0.24714160980920216,
+          0.24146720613060843,
+          0.23866056472173036
+        ]
+      }
+    },
+    "action_phase_progress": {
+      "train_windows": 813,
+      "test_windows": 348,
+      "input_dim": 7482,
+      "target_source": "normalized position inside contiguous action-label runs",
+      "minimal": {
+        "mse": 0.18191061913967133,
+        "mae": 0.3415532410144806,
+        "r2": -1.1726725562963778,
+        "num_test": 348
+      },
+      "neural_mlp": {
+        "mse": 0.14496584236621857,
+        "mae": 0.3038153648376465,
+        "r2": -0.73141785516685,
+        "num_test": 348
+      },
+      "neural_training": {
+        "available": true,
+        "epochs": 25,
+        "hidden_dim": 128,
+        "loss_history": [
+          3.4407916824169558,
+          1.4953648904739418,
+          1.0026900049065313,
+          0.6300096198788135,
+          0.5448755314355993,
+          0.4602517489650886,
+          0.3603706451506339,
+          0.2813053481179996,
+          0.2830014601991332,
+          0.23328637721207163,
+          0.18929187855414065,
+          0.16413429575579339,
+          0.1399544254586852,
+          0.14506905856754213,
+          0.12422180419551784,
+          0.12750434244984044,
+          0.1191924728022437,
+          0.10936984800141383,
+          0.10926014599178403,
+          0.1082181931824995,
+          0.11665978281773617,
+          0.11045804545558247,
+          0.12143501237969558,
+          0.0925682960639434,
+          0.0797398226910705
+        ]
+      }
+    },
+    "ego_motion_forecast": {
+      "train_windows": 810,
+      "test_windows": 347,
+      "forecast_horizon_windows": 4,
+      "forecast_horizon_frames": 20,
+      "input_dim": 7461,
+      "target_dim": 21,
+      "target_source": "future minus current camera_translation feature block",
+      "minimal": {
+        "mse": 4.988531589508057,
+        "mae": 0.19889304041862488,
+        "r2": -8530.149735441328,
+        "num_test": 347
+      },
+      "neural_mlp": {
+        "mse": 0.8441281914710999,
+        "mae": 0.09888631105422974,
+        "r2": -1442.5879263394172,
+        "num_test": 347
+      },
+      "neural_training": {
+        "available": true,
+        "epochs": 25,
+        "hidden_dim": 128,
+        "loss_history": [
+          1.042560530886238,
+          0.6099034593429095,
+          0.4637497854085616,
+          0.35177371987590084,
+          0.2794519517892673,
+          0.2182157137143759,
+          0.19129328433378243,
+          0.16159257454636655,
+          0.15545119175940383,
+          0.13092747231324514,
+          0.12344975640744339,
+          0.11533710492981805,
+          0.10952432874912098,
+          0.1020829943963039,
+          0.09445952103461748,
+          0.10036175438651332,
+          0.09325228254368276,
+          0.08845738531262787,
+          0.07980410636023239,
+          0.07802200188607346,
+          0.07408671476590781,
+          0.07979858985837594,
+          0.0699865288388582,
+          0.07628073431091544,
+          0.06997921005075361
+        ]
+      }
+    }
+  }
+}
