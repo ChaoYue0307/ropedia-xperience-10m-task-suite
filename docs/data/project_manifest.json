@@ -1,0 +1,47 @@
+{
+  "name": "Ropedia Xperience-10M Task Suite",
+  "slug": "ropedia-xperience-10m-task-suite",
+  "version": "0.1.0",
+  "status": "single_episode_audit_first",
+  "last_metadata_update": "2026-06-01",
+  "summary": "Audit-first embodied-AI learning repo built around one public Xperience-10M sample episode released by Ropedia.",
+  "scope_boundary": {
+    "raw_data_redistributed": false,
+    "episode_count_verified": 1,
+    "window_count_verified": 1161,
+    "feature_dim_verified": 8378,
+    "audio_featurized": false,
+    "qwen3_omni_32_episode_claim": false
+  },
+  "public_surfaces": {
+    "github_repo": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite",
+    "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/",
+    "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite",
+    "hf_static_space": "https://cy0307-ropedia-xperience-10m-task-suite.static.hf.space/",
+    "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts",
+    "hf_model_repo": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines",
+    "hf_collection": "https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite"
+  },
+  "upstream_sources": {
+    "ropedia_dataset_site": "https://ropedia.com/dataset",
+    "ropedia_release_page": "https://ropedia.com/blog/20260316_xperience_10m",
+    "ropedia_github": "https://github.com/Ropedia",
+    "homie_toolkit": "https://github.com/Ropedia/HOMIE-toolkit",
+    "xperience10m_hf": "https://huggingface.co/datasets/ropedia-ai/xperience-10m",
+    "xperience10m_sample_hf": "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample"
+  },
+  "evidence_files": {
+    "evidence_contract": "docs/data/evidence_contract.json",
+    "publication_audit": "docs/data/publication_audit.json",
+    "summary_metrics": "docs/data/summary_metrics.json",
+    "research_directions": "docs/data/research_directions.json",
+    "research_direction_extensions": "docs/data/research_direction_extensions.json",
+    "task_walkthroughs": "docs/data/task_walkthroughs.json"
+  },
+  "citation_files": {
+    "citation_cff": "CITATION.cff",
+    "codemeta": "codemeta.json",
+    "license": "LICENSE",
+    "data_notice": "DATA_NOTICE.md"
+  }
+}

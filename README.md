@@ -4,6 +4,8 @@
 [![HF Space](https://img.shields.io/badge/Hugging%20Face-Space-ffb000)](https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite)
 [![Dataset](https://img.shields.io/badge/dataset-Xperience--10M%20by%20Ropedia-008b9a)](https://github.com/Ropedia)
 [![Scope](https://img.shields.io/badge/scope-single%20public%20sample-b65b04)](#scope)
+[![Citation](https://img.shields.io/badge/citation-CFF-7ae5c3)](CITATION.cff)
+[![License](https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-a7f078)](LICENSE)
 
 An audit-first embodied-AI learning repo built around one public
 Xperience-10M sample episode released by Ropedia.
@@ -41,12 +43,16 @@ This repo is organized around an explicit proof boundary:
 | Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
 | Qwen3-Omni | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `A100_HF_RELAY_STATUS.md` | smoke-only until 32 valid episodes are available |
 | Publication hygiene | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | public repo and HF bundles only; ignored local scratch files are excluded |
+| Citation and metadata | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | code is MIT-scoped; raw-data use follows Xperience-10M terms |
 
 Read the full contract in [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), or
 consume the machine-readable copy at
 [`docs/data/evidence_contract.json`](docs/data/evidence_contract.json).
 The current publication audit is at
 [`docs/data/publication_audit.json`](docs/data/publication_audit.json).
+Project citation and machine-readable metadata live in
+[`CITATION.cff`](CITATION.cff), [`codemeta.json`](codemeta.json), and
+[`docs/data/project_manifest.json`](docs/data/project_manifest.json).
 
 ## Dataset Modality Coverage
 
@@ -79,6 +85,7 @@ Hugging Face Space app:
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode claims reviewable without rerunning first |
 | Publication audit | `docs/data/publication_audit.json` | Confirms public bundles contain no raw Xperience-10M data, Python caches, heavy archives, or token strings |
+| Citation metadata | `CITATION.cff`, `codemeta.json`, `LICENSE` | Makes the repo easier to cite, index, and reuse without confusing code license and dataset terms |
 
 ## Links
 
@@ -98,6 +105,17 @@ Hugging Face Space app:
 | Xperience-10M Hugging Face dataset | [huggingface.co/datasets/ropedia-ai/xperience-10m](https://huggingface.co/datasets/ropedia-ai/xperience-10m) |
 | Xperience-10M sample on Hugging Face | [huggingface.co/datasets/ropedia-ai/xperience-10m-sample](https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample) |
 | Ropedia Hugging Face organization | [huggingface.co/ropedia-ai](https://huggingface.co/ropedia-ai) |
+
+## Citation, License, And Metadata
+
+Use [`CITATION.cff`](CITATION.cff) when citing this project. The repository
+also includes [`codemeta.json`](codemeta.json) for machine-readable software
+metadata and [`docs/data/project_manifest.json`](docs/data/project_manifest.json)
+for website/Hugging Face surface metadata.
+
+The code files are MIT-licensed. Raw Xperience-10M data is not redistributed
+here, and dataset use remains governed by the official Ropedia/Xperience-10M
+terms. See [`LICENSE`](LICENSE) and [`DATA_NOTICE.md`](DATA_NOTICE.md).
 
 ![ChatGPT-image-backed Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-modalities-v3)
 
@@ -163,6 +181,7 @@ docs/
   data/summary_metrics.json         # website-readable metrics bundle
   data/evidence_contract.json       # machine-readable proof boundary
   data/publication_audit.json       # machine-readable publication hygiene check
+  data/project_manifest.json        # machine-readable public-surface metadata
   data/research_directions.json     # four-track website data bundle
   data/research_direction_extensions.json # four extra probe data bundle
   data/task_walkthroughs.json       # beginner task explanation data bundle

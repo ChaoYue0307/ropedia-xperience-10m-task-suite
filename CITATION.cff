@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this learning repo or derived task-suite artifacts, please cite this project and the original Ropedia Xperience-10M dataset."
+title: "Ropedia Xperience-10M Task Suite"
+type: software
+version: "0.1.0"
+date-released: "2026-06-01"
+abstract: "Audit-first single-episode embodied-AI task suite for the public Ropedia Xperience-10M sample, with 12 minimal task heads, 12 neural MLP heads, four research-direction probes, reproducible metrics, and public dashboard artifacts."
+authors:
+  - family-names: "Yue"
+    given-names: "Chao"
+    alias: "cy0307"
+repository-code: "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite"
+url: "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/"
+keywords:
+  - "Ropedia"
+  - "Xperience-10M"
+  - "embodied AI"
+  - "robotics"
+  - "multimodal learning"
+  - "egocentric vision"
+  - "evaluation"
+license: "MIT"
+preferred-citation:
+  type: software
+  title: "Ropedia Xperience-10M Task Suite"
+  authors:
+    - family-names: "Yue"
+      given-names: "Chao"
+      alias: "cy0307"
+  url: "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite"
+  date-released: "2026-06-01"
+references:
+  - type: dataset
+    title: "Xperience-10M"
+    authors:
+      - name: "Ropedia"
+    url: "https://ropedia.com/dataset"
+  - type: repository
+    title: "HOMIE Toolkit"
+    authors:
+      - name: "Ropedia"
+    url: "https://github.com/Ropedia/HOMIE-toolkit"
