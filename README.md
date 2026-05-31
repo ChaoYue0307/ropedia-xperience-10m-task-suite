@@ -44,6 +44,7 @@ This repo is organized around an explicit proof boundary:
 | Qwen3-Omni | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `A100_HF_RELAY_STATUS.md` | smoke-only until 32 valid episodes are available |
 | Publication hygiene | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | public repo and HF bundles only; ignored local scratch files are excluded |
 | Citation and metadata | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | code is MIT-scoped; raw-data use follows Xperience-10M terms |
+| Reviewer path | `docs/data/reviewer_packet.json`, website reviewer section | audit guide only; no new experimental claim |
 
 Read the full contract in [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), or
 consume the machine-readable copy at
@@ -53,6 +54,20 @@ The current publication audit is at
 Project citation and machine-readable metadata live in
 [`CITATION.cff`](CITATION.cff), [`codemeta.json`](codemeta.json), and
 [`docs/data/project_manifest.json`](docs/data/project_manifest.json).
+
+## 90-Second Reviewer Path
+
+If you are reviewing the project cold, open these in order:
+
+| Step | Question | Primary artifacts | What should be true |
+| --- | --- | --- | --- |
+| 1 | What is actually claimed? | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`docs/data/evidence_contract.json`](docs/data/evidence_contract.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Single-episode task engineering and hygiene are claimed; cross-episode generalization is not. |
+| 2 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
+| 3 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
+| 4 | What is still pending? | [`DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md), [`A100_HF_RELAY_STATUS.md`](results/omni_finetune/A100_HF_RELAY_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared but not yet a real model-quality claim. |
+
+The machine-readable reviewer packet is
+[`docs/data/reviewer_packet.json`](docs/data/reviewer_packet.json).
 
 ## Dataset Modality Coverage
 
@@ -182,6 +197,7 @@ docs/
   data/evidence_contract.json       # machine-readable proof boundary
   data/publication_audit.json       # machine-readable publication hygiene check
   data/project_manifest.json        # machine-readable public-surface metadata
+  data/reviewer_packet.json         # machine-readable reviewer path and proof boundary
   data/research_directions.json     # four-track website data bundle
   data/research_direction_extensions.json # four extra probe data bundle
   data/task_walkthroughs.json       # beginner task explanation data bundle

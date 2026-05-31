@@ -140,6 +140,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "docs/sitemap.xml",
         "docs/data/evidence_contract.json",
         "docs/data/project_manifest.json",
+        "docs/data/reviewer_packet.json",
         "docs/data/summary_metrics.json",
         "docs/assets/task_suite_infographic.png",
         "docs/assets/pipeline_diagram.png",
