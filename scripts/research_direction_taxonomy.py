@@ -483,7 +483,7 @@ def write_markdown(taxonomy: dict[str, Any]) -> None:
     )
 
 
-def svg_text(x: int, y: int, text: str, size: int = 16, weight: int = 500, color: str = "#16213a") -> str:
+def svg_text(x: int, y: int, text: str, size: int = 16, weight: int = 500, color: str = "#f4f8ef") -> str:
     return (
         f'<text x="{x}" y="{y}" font-size="{size}" font-weight="{weight}" '
         f'fill="{color}">{html.escape(text)}</text>'
@@ -496,7 +496,7 @@ def write_svg(taxonomy: dict[str, Any]) -> None:
     margin = 58
     card_w = 515
     card_h = 220
-    colors = {"direct": "#1f6c9f", "proxy": "#2e7775", "diagnostic": "#956400"}
+    colors = {"direct": "#a7f078", "proxy": "#7ae5c3", "diagnostic": "#d8f4a5"}
     cards = []
 
     for idx, (code, info) in enumerate(taxonomy["directions"].items()):
@@ -526,10 +526,10 @@ def write_svg(taxonomy: dict[str, Any]) -> None:
         cards.append(
             "\n".join(
                 [
-                    f'<rect x="{x}" y="{y}" width="{card_w}" height="{card_h}" rx="8" fill="#ffffff" stroke="#d9e1ea"/>',
+                    f'<rect x="{x}" y="{y}" width="{card_w}" height="{card_h}" rx="8" fill="#050905" stroke="#a7f078" stroke-opacity="0.24"/>',
                     svg_text(x + 24, y + 42, f"{code}. {info['name']}", 21, 700),
-                    svg_text(x + 24, y + 75, info["current_status"], 15, 700, "#566273"),
-                    svg_text(x + 24, y + 108, f"Tasks: {task_labels}", 14, 500, "#30394a"),
+                    svg_text(x + 24, y + 75, info["current_status"], 15, 700, "#a7f078"),
+                    svg_text(x + 24, y + 108, f"Tasks: {task_labels}", 14, 500, "#dce8d7"),
                     *segments,
                     svg_text(x + 24, y + 174, f"Direct {counts['direct']}", 14, 700, colors["direct"]),
                     svg_text(x + 150, y + 174, f"Proxy {counts['proxy']}", 14, 700, colors["proxy"]),
@@ -548,18 +548,19 @@ def write_svg(taxonomy: dict[str, Any]) -> None:
         legend.extend(
             [
                 f'<rect x="{lx}" y="622" width="16" height="16" rx="4" fill="{colors[key]}"/>',
-                svg_text(lx + 24, 636, label, 14, 600, "#30394a"),
+                svg_text(lx + 24, 636, label, 14, 600, "#dce8d7"),
             ]
         )
         lx += 200
 
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Xperience-10M task coverage across four research directions">
-  <rect width="100%" height="100%" fill="#f7f9fb"/>
+  <rect width="100%" height="100%" fill="#020502"/>
+  <rect x="24" y="24" width="1132" height="652" rx="20" fill="#050905" stroke="#a7f078" stroke-opacity="0.24"/>
   {svg_text(margin, 64, "Xperience-10M 12-Task Suite: Four Research Directions", 30, 800)}
-  {svg_text(margin, 96, "One public sample episode, two baseline families, explicit direct/proxy/diagnostic coverage.", 16, 500, "#566273")}
+  {svg_text(margin, 96, "One public sample episode, two baseline families, explicit direct/proxy/diagnostic coverage.", 16, 500, "#a5afa2")}
   {"".join(cards)}
   {"".join(legend)}
-  {svg_text(margin, 670, "Generated from results/episode_task_suite/summary_report.json and scripts/research_direction_taxonomy.py", 13, 500, "#6d7787")}
+  {svg_text(margin, 670, "Generated from results/episode_task_suite/summary_report.json and scripts/research_direction_taxonomy.py", 13, 500, "#a5afa2")}
 </svg>
 """
     (CHARTS / "research_direction_coverage.svg").write_text(svg, encoding="utf-8")
