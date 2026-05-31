@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-05-31T22:46:15+00:00",
+  "generated_at_utc": "2026-05-31T23:03:06+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -42,6 +42,7 @@
     "docs/sitemap.xml": true,
     "docs/data/evidence_contract.json": true,
     "docs/data/project_manifest.json": true,
+    "docs/data/reviewer_packet.json": true,
     "docs/data/summary_metrics.json": true,
     "docs/assets/task_suite_infographic.png": true,
     "docs/assets/pipeline_diagram.png": true,
@@ -59,8 +60,8 @@
     "github_repo": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy",
       "exists": true,
-      "file_count": 265,
-      "text_file_count": 217,
+      "file_count": 266,
+      "text_file_count": 218,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -70,8 +71,8 @@
     "hf_space_bundle": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space",
       "exists": true,
-      "file_count": 34,
-      "text_file_count": 28,
+      "file_count": 35,
+      "text_file_count": 29,
       "largest_file": {
         "path": "assets/pipeline_diagram_base.png",
         "bytes": 2279984
@@ -81,8 +82,8 @@
     "hf_artifact_bundle": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts",
       "exists": true,
-      "file_count": 228,
-      "text_file_count": 200,
+      "file_count": 229,
+      "text_file_count": 201,
       "largest_file": {
         "path": "results/episode_task_suite/neural_mlp/temporal_order/model.pt",
         "bytes": 13406129
@@ -92,8 +93,8 @@
     "hf_model_bundle": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model",
       "exists": true,
-      "file_count": 167,
-      "text_file_count": 131,
+      "file_count": 168,
+      "text_file_count": 132,
       "largest_file": {
         "path": "artifacts/episode_task_suite/cross_modal_retrieval/model.npz",
         "bytes": 41310574

@@ -1,0 +1,73 @@
+{
+  "title": "Ropedia Xperience-10M Task Suite Reviewer Packet",
+  "version": "2026-06-01",
+  "scope_status": {
+    "validated_data": "one public Xperience-10M sample episode",
+    "aligned_frames": 5821,
+    "sliding_windows": 1161,
+    "current_feature_dimensions": 8378,
+    "core_task_count": 12,
+    "neural_head_count": 12,
+    "direction_extension_probe_count": 4,
+    "raw_xperience10m_data_in_repo": false,
+    "audio_feature_status": "Audio is present in the sample MP4 streams and shown in the figures, but the current baseline feature vector does not include an extracted audio block.",
+    "qwen3_omni_32_episode_claim": false,
+    "qwen3_omni_status": "Smoke-only until at least 32 valid episodes are available and held-out episode evaluation finishes."
+  },
+  "review_path": [
+    {
+      "step": 1,
+      "question": "What exactly is being claimed?",
+      "primary_artifacts": [
+        "EVIDENCE_CONTRACT.md",
+        "docs/data/evidence_contract.json",
+        "docs/data/publication_audit.json"
+      ],
+      "readout": "Single-episode task engineering, metrics, visualizations, and publication hygiene are claimed; cross-episode generalization and 32-episode Qwen3-Omni quality are not claimed."
+    },
+    {
+      "step": 2,
+      "question": "What is inside one model input?",
+      "primary_artifacts": [
+        "results/episode_task_suite/windows.csv",
+        "results/episode_task_suite/feature_manifest.json",
+        "results/episode_task_suite/available_modalities.json"
+      ],
+      "readout": "The current model input is an 8,378-dimensional aligned window vector with explicit feature-block boundaries."
+    },
+    {
+      "step": 3,
+      "question": "Do the task metrics have committed evidence?",
+      "primary_artifacts": [
+        "results/episode_task_suite/summary_report.json",
+        "results/episode_task_suite/neural_mlp/",
+        "docs/data/summary_metrics.json"
+      ],
+      "readout": "Each of the 12 tasks has minimal-head metrics and a matching neural MLP result over the same window contracts."
+    },
+    {
+      "step": 4,
+      "question": "How should this scale beyond one episode?",
+      "primary_artifacts": [
+        "results/omni_finetune/DATA_BLOCKER_REPORT.md",
+        "results/omni_finetune/A100_HF_RELAY_STATUS.md",
+        "scripts/omni/discover_xperience10m_sources.py"
+      ],
+      "readout": "The next milestone is a 32-episode held-out-episode Qwen3-Omni LoRA pilot after gated Xperience-10M access is available."
+    }
+  ],
+  "public_surfaces": {
+    "github_repo": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite",
+    "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/",
+    "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite",
+    "hf_static_app": "https://cy0307-ropedia-xperience-10m-task-suite.static.hf.space/",
+    "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts",
+    "hf_model_baselines": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines"
+  },
+  "do_not_infer": [
+    "Do not infer cross-environment generalization from the single public sample episode.",
+    "Do not treat the Qwen3-Omni smoke run as a 32-episode fine-tune.",
+    "Do not treat feature-vector reconstruction as pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
+    "Do not assume raw Xperience-10M data is redistributed in this repo."
+  ]
+}

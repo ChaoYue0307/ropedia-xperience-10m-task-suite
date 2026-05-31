@@ -375,6 +375,80 @@
     .callout h3, .artifact h3 { margin: 0 0 8px; font-size: 17px; }
     .callout p, .artifact p { margin: 0; color: #aab5a5; line-height: 1.6; }
 
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .review-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      background:
+        linear-gradient(180deg, rgba(164, 242, 127, 0.075), rgba(7, 18, 7, 0.9)),
+        var(--surface);
+      min-height: 270px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+    .review-card .step-index {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(164, 242, 127, 0.36);
+      border-radius: 8px;
+      color: #020502;
+      background: var(--green);
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+    .review-card h3 { margin: 0; font-size: 17px; line-height: 1.22; }
+    .review-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .review-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .review-links a {
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 740;
+      padding: 7px 8px;
+      text-decoration: none;
+      background: rgba(2, 5, 2, 0.42);
+    }
+    .review-links a:hover { border-color: var(--green); color: var(--ink); }
+    .boundary-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .boundary-item {
+      border: 1px solid var(--soft-line);
+      border-radius: var(--radius);
+      padding: 18px;
+      background: rgba(164, 242, 127, 0.055);
+    }
+    .boundary-item strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 15px;
+    }
+    .boundary-item span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
     .evidence-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -649,7 +723,7 @@
     @media (max-width: 960px) {
       .hero-inner, .two-col { grid-template-columns: 1fr; }
       .hero-inner { min-height: 0; }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .chart-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
       .section-head p { margin-top: 14px; }
@@ -657,7 +731,7 @@
     }
     @media (max-width: 640px) {
       .wrap { width: min(100% - 28px, var(--max)); }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid, .walk-flow { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid, .walk-flow { grid-template-columns: 1fr; }
       .evidence-card:last-child { grid-column: auto; }
       .hero-inner, section { padding: 46px 0; }
       .signal { grid-template-columns: 1fr; }
@@ -796,6 +870,60 @@
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_publication_package.py">validator script</a>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="review">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Verify the project in 90 seconds.</h2>
+          <p>World-class research packaging should be easy to audit. This path tells a reviewer exactly what to open first, what each artifact proves, and where the current proof boundary stops.</p>
+        </div>
+        <div class="review-grid">
+          <article class="review-card">
+            <span class="step-index">01</span>
+            <h3>Check the claim boundary</h3>
+            <p>Start with the evidence contract and publication audit. They separate verified single-episode artifacts from smoke-only Qwen3-Omni work.</p>
+            <div class="review-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">contract</a>
+              <a href="data/evidence_contract.json">JSON</a>
+              <a href="data/publication_audit.json">audit</a>
+            </div>
+          </article>
+          <article class="review-card">
+            <span class="step-index">02</span>
+            <h3>Inspect one model input</h3>
+            <p>Use the window table and feature manifest to see the exact aligned sample unit, feature blocks, dimensions, and omitted audio feature status.</p>
+            <div class="review-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">windows</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">features</a>
+            </div>
+          </article>
+          <article class="review-card">
+            <span class="step-index">03</span>
+            <h3>Compare minimal vs neural heads</h3>
+            <p>Every task has a small interpretable baseline and a matching neural MLP head over the same feature contract and chronological split.</p>
+            <div class="review-links">
+              <a href="data/summary_metrics.json">summary metrics</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural heads</a>
+            </div>
+          </article>
+          <article class="review-card">
+            <span class="step-index">04</span>
+            <h3>Check the scale-up gate</h3>
+            <p>The multi-episode Qwen3-Omni path is prepared, but no real 32-episode result is claimed until the data gate and held-out evaluation pass.</p>
+            <div class="review-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">blocker</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/A100_HF_RELAY_STATUS.md">relay</a>
+              <a href="data/reviewer_packet.json">review packet</a>
+            </div>
+          </article>
+        </div>
+        <div class="boundary-strip">
+          <div class="boundary-item"><strong>Verified now</strong><span>One public episode, 5,821 frames, 1,161 windows, 8,378 current features, 12 minimal heads, 12 neural heads, and 4 direction-extension probes.</span></div>
+          <div class="boundary-item"><strong>Pending scale</strong><span>A 32-episode held-out Qwen3-Omni LoRA pilot is gated on Xperience-10M access and must pass manifest, training, and evaluation checks.</span></div>
+          <div class="boundary-item"><strong>Not redistributed</strong><span>Raw videos, raw annotations, full Qwen weights, and private gated Xperience-10M data are not included in the public repo or HF bundles.</span></div>
         </div>
       </div>
     </section>
