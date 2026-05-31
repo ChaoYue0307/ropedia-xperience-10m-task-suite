@@ -7,7 +7,7 @@
   <meta name="description" content="A transparent multimodal task suite for one public Xperience-10M sample episode released by Ropedia, with minimal and neural MLP baselines.">
   <meta property="og:title" content="Ropedia Xperience-10M Task Suite">
   <meta property="og:description" content="One public embodied-AI episode, converted into reproducible multimodal tasks, minimal baselines, neural MLP baselines, metrics, and diagrams.">
-  <meta property="og:image" content="assets/task_suite_infographic.png?v=xperience10m-modalities-v2">
+  <meta property="og:image" content="assets/task_suite_infographic.png?v=xperience10m-modalities-v3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -315,6 +315,15 @@
     .task-suite-image {
       display: block;
       margin-bottom: 24px;
+    }
+    .figure-pan {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      padding-bottom: 6px;
+      scrollbar-color: rgba(167, 240, 120, 0.58) rgba(7, 18, 7, 0.8);
+    }
+    .figure-pan .task-suite-image {
+      margin-bottom: 0;
     }
     .architecture-image {
       display: block;
@@ -626,6 +635,14 @@
       .hero-inner, section { padding: 46px 0; }
       .signal { grid-template-columns: 1fr; }
       .signal strong { text-align: left; }
+      .figure-pan {
+        margin-inline: -14px;
+        padding-inline: 14px;
+      }
+      .figure-pan .task-suite-image {
+        width: min(1180px, 260vw);
+        max-width: none;
+      }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -752,7 +769,9 @@
           <h2>Ropedia Xperience-10M 12-task suite, first.</h2>
           <p>The top-level map shows the Xperience-10M sample modalities and the verified 12-task results. Audio is present in the sample MP4 stream, but the current 8,378-d baseline manifest does not featurize it.</p>
         </div>
-        <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-modalities-v2" alt="ChatGPT-image-backed infographic showing all 12 Ropedia Xperience-10M tasks">
+        <div class="figure-pan">
+          <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-modalities-v3" alt="ChatGPT-image-backed infographic showing all 12 Ropedia Xperience-10M tasks">
+        </div>
       </div>
     </section>
 
