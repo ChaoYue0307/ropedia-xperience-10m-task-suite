@@ -25,9 +25,9 @@ DEFAULT_BASE = ROOT / "docs/assets/task_suite_infographic_base.png"
 DEFAULT_SAMPLE_DIR = ROOT.parent / "data/sample/xperience-10m-sample"
 DEFAULT_OUTPUT = ROOT / "docs/assets/task_suite_infographic.png"
 CANVAS_WIDTH = 1800
-CANVAS_HEIGHT = 3560
-THUMB_WIDTH = 540
-THUMB_HEIGHT = 220
+CANVAS_HEIGHT = 4520
+THUMB_WIDTH = 760
+THUMB_HEIGHT = 300
 
 
 GROUPS = [
@@ -161,8 +161,8 @@ def video_thumb(sample_dir: Path) -> str:
     canvas.paste(stereo, (panel_width + gutter, 0))
     draw = ImageDraw.Draw(canvas, "RGBA")
     draw.rounded_rectangle((panel_width - 4, 0, panel_width + gutter + 4, THUMB_HEIGHT), radius=0, fill=(2, 5, 2, 220))
-    draw_label(draw, (16, 18), "fisheye", fill=(255, 255, 255), size=18)
-    draw_label(draw, (panel_width + gutter + 16, 18), "stereo", fill=(255, 255, 255), size=18)
+    draw_label(draw, (18, 20), "fisheye", fill=(255, 255, 255), size=22)
+    draw_label(draw, (panel_width + gutter + 18, 20), "stereo", fill=(255, 255, 255), size=22)
     return image_data_uri(canvas, "JPEG")
 
 
@@ -204,10 +204,10 @@ def depth_thumb(h5) -> str:
     canvas.paste(depth, (0, 0))
     canvas.paste(conf_img, (panel_width + gutter, 0))
     draw = ImageDraw.Draw(canvas, "RGBA")
-    draw.rounded_rectangle((0, 0, 134, 34), radius=8, fill=(2, 5, 2, 178))
-    draw.rounded_rectangle((panel_width + gutter, 0, panel_width + gutter + 174, 34), radius=8, fill=(2, 5, 2, 178))
-    draw_label(draw, (12, 8), "depth", fill=(255, 255, 255), size=17)
-    draw_label(draw, (panel_width + gutter + 12, 8), "confidence", fill=(255, 255, 255), size=17)
+    draw.rounded_rectangle((0, 0, 158, 44), radius=8, fill=(2, 5, 2, 178))
+    draw.rounded_rectangle((panel_width + gutter, 0, panel_width + gutter + 220, 44), radius=8, fill=(2, 5, 2, 178))
+    draw_label(draw, (14, 11), "depth", fill=(255, 255, 255), size=22)
+    draw_label(draw, (panel_width + gutter + 14, 11), "confidence", fill=(255, 255, 255), size=22)
     return image_data_uri(canvas, "JPEG")
 
 
@@ -244,27 +244,28 @@ def audio_thumb(sample_dir: Path) -> str:
         if len(samples) == 0:
             raise RuntimeError("empty audio stream")
         samples = samples / max(float(np.max(np.abs(samples))), 1.0)
-        bins = 180
+        bins = 220
         trimmed = samples[: bins * max(1, len(samples) // bins)]
         chunks = np.array_split(trimmed, bins)
         rms = np.array([np.sqrt(np.mean(chunk * chunk)) if len(chunk) else 0.0 for chunk in chunks])
         waveform = np.array([float(np.mean(chunk)) if len(chunk) else 0.0 for chunk in chunks])
+        baseline = THUMB_HEIGHT - 64
         for i, value in enumerate(rms):
             x = 18 + i / max(bins - 1, 1) * (THUMB_WIDTH - 36)
-            h = 8 + np.clip(value * 86, 0, 86)
-            draw.line((x, 126, x, 126 - h), fill=(167, 240, 120, 170), width=2)
+            h = 10 + np.clip(value * 128, 0, 128)
+            draw.line((x, baseline, x, baseline - h), fill=(167, 240, 120, 170), width=2)
         points = []
         for i, value in enumerate(waveform):
             x = 18 + i / max(bins - 1, 1) * (THUMB_WIDTH - 36)
-            y = 74 - np.clip(value, -1, 1) * 42
+            y = 104 - np.clip(value, -1, 1) * 64
             points.append((x, y))
         draw.line(points, fill=(122, 229, 195, 220), width=2)
     except Exception:
         for i in range(48):
             x = 22 + i * 8
             h = 16 + (i % 7) * 7
-            draw.rounded_rectangle((x, 128 - h, x + 4, 128), radius=2, fill=(167, 240, 120, 170))
-    draw_label(draw, (16, 12), "AAC audio waveform", fill=(244, 248, 239), size=17)
+            draw.rounded_rectangle((x, THUMB_HEIGHT - 64 - h, x + 4, THUMB_HEIGHT - 64), radius=2, fill=(167, 240, 120, 170))
+    draw_label(draw, (18, 18), "AAC audio waveform", fill=(244, 248, 239), size=22)
     return image_data_uri(canvas, "PNG")
 
 
@@ -304,7 +305,7 @@ def slam_thumb(h5) -> str:
     traj_xy = normalize_points(traj[:, [0, 2, 1]], THUMB_WIDTH, THUMB_HEIGHT)
     for a, b in zip(traj_xy[:-1], traj_xy[1:]):
         draw.line((a[0], a[1], b[0], b[1]), fill=(167, 240, 120, 205), width=2)
-    draw_label(draw, (16, 14), "camera pose + SLAM map", fill=(244, 248, 239), size=17)
+    draw_label(draw, (18, 18), "camera pose + SLAM map", fill=(244, 248, 239), size=22)
     return image_data_uri(canvas, "PNG")
 
 
@@ -319,8 +320,8 @@ def imu_thumb(h5) -> str:
     gyro = np.array(h5["imu/gyro_xyz"][max(0, key_idx - 220): key_idx + 220], dtype=np.float64)
     series = [accel[:, 0], accel[:, 1], accel[:, 2], gyro[:, 0], gyro[:, 1], gyro[:, 2]]
     colors = [(167, 240, 120), (122, 229, 195), (155, 223, 255), (216, 244, 165), (244, 248, 239), (165, 175, 162)]
-    for row in range(4):
-        y = 26 + row * 33
+    for row in range(6):
+        y = 54 + row * 36
         draw.line((18, y, THUMB_WIDTH - 18, y), fill=(167, 240, 120, 48), width=1)
     for values, color in zip(series, colors):
         values = values[:420]
@@ -331,10 +332,10 @@ def imu_thumb(h5) -> str:
         pts = []
         for i, v in enumerate(norm):
             x = 18 + i / max(len(values) - 1, 1) * (THUMB_WIDTH - 36)
-            y = 138 - np.clip(v, 0, 1) * 112
+            y = THUMB_HEIGHT - 42 - np.clip(v, 0, 1) * 202
             pts.append((x, y))
         draw.line(pts, fill=color + (200,), width=2)
-    draw_label(draw, (16, 12), "inertial accel / gyro", fill=(244, 248, 239), size=17)
+    draw_label(draw, (18, 18), "inertial accel / gyro", fill=(244, 248, 239), size=22)
     return image_data_uri(canvas, "PNG")
 
 
@@ -356,29 +357,29 @@ def mocap_thumb(h5) -> str:
         xy = (points[:, :2] - lo) / span
         xy[:, 1] = 1 - xy[:, 1]
         xy[:, 0] = x_offset + xy[:, 0] * width
-        xy[:, 1] = 26 + xy[:, 1] * 108
+        xy[:, 1] = 60 + xy[:, 1] * 190
         return xy
 
-    body_xy = project(body, 18, 165)
+    body_xy = project(body, 28, 270)
     for x, y in body_xy:
         draw.ellipse((x - 2.4, y - 2.4, x + 2.4, y + 2.4), fill=(167, 240, 120, 185))
     for a, b in zip(body_xy[:-1], body_xy[1:]):
         draw.line((a[0], a[1], b[0], b[1]), fill=(167, 240, 120, 82), width=1)
 
-    for points, x_offset, color in [(left, 218, (122, 229, 195)), (right, 314, (216, 244, 165))]:
-        xy = project(points, x_offset, 82)
+    for points, x_offset, color in [(left, 392, (122, 229, 195)), (right, 562, (216, 244, 165))]:
+        xy = project(points, x_offset, 126)
         for a, b in HAND_EDGES:
             draw.line((xy[a][0], xy[a][1], xy[b][0], xy[b][1]), fill=color + (180,), width=2)
         for x, y in xy:
             draw.ellipse((x - 2.4, y - 2.4, x + 2.4, y + 2.4), fill=color + (220,))
-    draw_label(draw, (16, 12), "body + hand mocap", fill=(244, 248, 239), size=17)
+    draw_label(draw, (18, 18), "body + hand mocap", fill=(244, 248, 239), size=22)
     return image_data_uri(canvas, "PNG")
 
 
 def text_thumb(h5) -> str:
     from PIL import ImageDraw
 
-    width = 1100
+    width = 1500
     raw = h5["caption"][()]
     if isinstance(raw, bytes):
         raw = raw.decode("utf-8", errors="replace")
@@ -388,20 +389,20 @@ def text_thumb(h5) -> str:
     actions = [a.get("label", "") for a in segment.get("Current Action", [])][:2]
     canvas = make_canvas((width, THUMB_HEIGHT))
     draw = ImageDraw.Draw(canvas, "RGBA")
-    draw_label(draw, (24, 22), "language annotation", fill=(244, 248, 239), size=22)
-    y = 66
+    draw_label(draw, (28, 24), "language annotation", fill=(244, 248, 239), size=28)
+    y = 82
     for label in objects:
-        chip_width = 44 + len(label) * 14
-        draw.rounded_rectangle((24, y, 24 + chip_width, y + 32), radius=8, fill=(7, 18, 7, 235), outline=(167, 240, 120, 170), width=2)
-        draw_label(draw, (38, y + 7), label, fill=(244, 248, 239), size=16)
-        y += 39
-    x = 420
-    y = 68
+        chip_width = 52 + len(label) * 16
+        draw.rounded_rectangle((28, y, 28 + chip_width, y + 38), radius=8, fill=(7, 18, 7, 235), outline=(167, 240, 120, 170), width=2)
+        draw_label(draw, (44, y + 8), label, fill=(244, 248, 239), size=18)
+        y += 47
+    x = 560
+    y = 92
     for action in actions:
-        wrapped = action[:54] + ("..." if len(action) > 54 else "")
-        draw.rounded_rectangle((x, y, width - 24, y + 44), radius=9, fill=(7, 18, 7, 235), outline=(122, 229, 195, 180), width=2)
-        draw_label(draw, (x + 18, y + 12), wrapped, fill=(244, 248, 239), size=17)
-        y += 56
+        wrapped = action[:66] + ("..." if len(action) > 66 else "")
+        draw.rounded_rectangle((x, y, width - 28, y + 54), radius=9, fill=(7, 18, 7, 235), outline=(122, 229, 195, 180), width=2)
+        draw_label(draw, (x + 22, y + 15), wrapped, fill=(244, 248, 239), size=20)
+        y += 68
     return image_data_uri(canvas, "PNG")
 
 
@@ -511,14 +512,18 @@ def modality_card(name: str, modality_type: str, line_one: str, line_two: str, i
         thumb_html = f'<div class="modality-thumb"><img src="{thumbnail}" alt=""></div>'
     return f"""
       <article class="modality">
-        {thumb_html}
-        <div class="modality-meta">
-          <span class="modality-index">{index:02d}</span>
+        <div class="modality-heading">
+          <div>
+            <span class="modality-index">{index:02d}</span>
+            <h3>{html.escape(name)}</h3>
+          </div>
           <span class="modality-type">{html.escape(modality_type)}</span>
         </div>
-        <h3>{html.escape(name)}</h3>
-        <p>{html.escape(line_one)}</p>
-        <span>{html.escape(line_two)}</span>
+        {thumb_html}
+        <div class="modality-copy">
+          <p>{html.escape(line_one)}</p>
+          <span>{html.escape(line_two)}</span>
+        </div>
       </article>
     """
 
@@ -677,8 +682,9 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .section-label {{
       display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 8px;
+      grid-template-columns: 0.36fr minmax(0, 1fr);
+      gap: 24px;
+      align-items: end;
       margin: 38px 0 20px;
       color: #a5afa2;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
@@ -687,37 +693,43 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       letter-spacing: 0.08em;
     }}
     .section-label span:last-child {{
-      max-width: 1240px;
+      max-width: 1030px;
       color: #dce8d7;
       text-transform: none;
       letter-spacing: 0;
       font-family: inherit;
-      font-size: 16px;
-      line-height: 1.35;
-      text-align: left;
+      font-size: 18px;
+      line-height: 1.45;
+      text-align: right;
     }}
     .modalities {{
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
     }}
     .modality {{
-      grid-column: span 2;
-      min-height: 386px;
-      padding: 20px 22px 22px;
+      min-height: 510px;
+      padding: 24px 26px 26px;
       border: 1px solid rgba(167,240,120,0.22);
       background: rgba(7,18,7,0.84);
       border-radius: 8px;
       display: flex;
       flex-direction: column;
+      gap: 20px;
     }}
-    .modality:nth-child(7) {{ grid-column: 2 / span 4; }}
+    .modality:nth-child(7) {{
+      grid-column: 1 / -1;
+      min-height: 438px;
+    }}
     .modality-thumb {{
-      height: 212px;
+      height: 300px;
       overflow: hidden;
       border: 1px solid rgba(167,240,120,0.16);
       border-radius: 8px;
       background: #020502;
+    }}
+    .modality:nth-child(7) .modality-thumb {{
+      height: 268px;
     }}
     .modality-thumb img {{
       display: block;
@@ -730,42 +742,47 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
       font-variant-numeric: tabular-nums;
     }}
-    .modality-meta {{
+    .modality-heading {{
       display: flex;
-      align-items: center;
+      align-items: start;
       justify-content: space-between;
-      gap: 12px;
-      margin-top: 17px;
+      gap: 24px;
     }}
     .modality-index {{
       color: #a5afa2;
-      font-size: 14px;
+      font-size: 17px;
     }}
     .modality-type {{
       color: #a7f078;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
-      font-size: 13px;
-      line-height: 1;
+      font-size: 14px;
+      line-height: 1.15;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      text-align: right;
+      max-width: 260px;
+      padding-top: 7px;
     }}
     .modality h3 {{
-      margin: 13px 0 0;
-      font-size: 31px;
-      line-height: 1;
+      margin: 9px 0 0;
+      font-size: 41px;
+      line-height: 0.98;
       text-transform: uppercase;
     }}
-    .modality p {{
-      margin: 14px 0 0;
+    .modality-copy {{
+      margin-top: auto;
+    }}
+    .modality-copy p {{
+      margin: 0;
       color: #dce8d7;
-      font-size: 19px;
+      font-size: 25px;
       font-weight: 650;
     }}
-    .modality > span {{
+    .modality-copy span {{
       display: block;
-      margin-top: 7px;
+      margin-top: 8px;
       color: #a5afa2;
-      font-size: 17px;
+      font-size: 20px;
       line-height: 1.25;
     }}
     .shared-band {{
@@ -957,7 +974,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
 
     <div class="section-label">
       <span>Xperience-10M modalities</span>
-      <span>audio is present in the sample MP4 stream; the current 8,378-d baseline manifest does not featurize it</span>
+      <span>Public-sample thumbnails are enlarged here so each data stream is legible. Audio is present in the sample MP4 stream; the current 8,378-d baseline manifest does not featurize it.</span>
     </div>
     <section class="modalities">{modalities_html}</section>
 

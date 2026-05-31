@@ -13,11 +13,11 @@
   <meta property="og:description" content="One public embodied-AI episode, converted into reproducible multimodal tasks, minimal baselines, neural MLP baselines, metrics, and diagrams.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">
-  <meta property="og:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-modalities-v3">
+  <meta property="og:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-modalities-v4">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ropedia Xperience-10M Task Suite">
   <meta name="twitter:description" content="Audit-first Xperience-10M multimodal task suite with minimal and neural baselines.">
-  <meta name="twitter:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-modalities-v3">
+  <meta name="twitter:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-modalities-v4">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -301,6 +301,8 @@
 
     section { padding: 88px 0 96px; border-bottom: 1px solid var(--soft-line); background: rgba(2, 5, 2, 0.72); }
     #suite { padding: 62px 0 76px; }
+    #suite .wrap { width: min(1680px, calc(100% - 48px)); }
+    #suite .section-head { max-width: var(--max); margin-inline: auto; }
     .section-head {
       display: flex;
       justify-content: space-between;
@@ -666,6 +668,7 @@
       }
       .figure-pan .task-suite-image {
         width: min(1180px, 260vw);
+        min-width: 1180px;
         max-width: none;
       }
     }
@@ -804,7 +807,7 @@
           <p>The top-level map shows the Xperience-10M sample modalities and the verified 12-task results. Audio is present in the sample MP4 stream, but the current 8,378-d baseline manifest does not featurize it.</p>
         </div>
         <div class="figure-pan">
-          <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-modalities-v3" alt="ChatGPT-image-backed infographic showing all 12 Ropedia Xperience-10M tasks">
+          <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-modalities-v4" alt="ChatGPT-image-backed infographic showing all 12 Ropedia Xperience-10M tasks">
         </div>
       </div>
     </section>
