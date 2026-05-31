@@ -35,7 +35,7 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-padding-top: 64px; }
     body {
       margin: 0;
       font-family: var(--font-copy);
@@ -88,6 +88,7 @@
       font-weight: 700;
       letter-spacing: 0;
       text-decoration: none;
+      white-space: nowrap;
     }
     .mark {
       width: 34px;
@@ -104,7 +105,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
       font-size: 14px;
       color: #c6d0c2;
     }
@@ -122,7 +123,7 @@
       background: var(--green);
       color: #020502;
       height: 36px;
-      padding: 0 14px;
+      padding: 0 13px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -342,9 +343,9 @@
 
     .models {
       display: grid;
-      grid-template-columns: 1.1fr 1.35fr 1fr 1.15fr;
-      gap: 14px;
-      margin-bottom: 22px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
     }
     .model {
       border: 1px solid var(--line);
@@ -379,8 +380,8 @@
     .filter.active { color: #020502; background: var(--green); border-color: var(--green); }
     .task-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
     }
     .task-card {
       border: 1px solid var(--line);
@@ -416,20 +417,20 @@
 
     .artifact-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
     }
     .chart-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 22px;
       align-items: start;
     }
     .direction-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      margin-bottom: 22px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
     }
     .direction-card {
       border: 1px solid var(--line);
@@ -473,9 +474,9 @@
     }
     .extension-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      margin: 20px 0 22px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 22px 0 24px;
     }
     .extension-card {
       border: 1px solid var(--line);
@@ -575,7 +576,8 @@
     @media (max-width: 960px) {
       .hero-inner, .two-col { grid-template-columns: 1fr; }
       .hero-inner { min-height: 0; }
-      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .chart-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
       .section-head p { margin-top: 14px; }
       .nav-links { display: none; }
@@ -610,13 +612,8 @@
         <a href="#suite">Suite</a>
         <a href="#pipeline">Pipeline</a>
         <a href="#models">Models</a>
-        <a href="#neural">Neural</a>
         <a href="#directions">Directions</a>
-        <a href="#extensions">Extensions</a>
-        <a href="#architectures">Arch</a>
         <a href="#walkthroughs">Guide</a>
-        <a href="#tasks">Tasks</a>
-        <a href="#features">Signals</a>
         <a href="#artifacts">Artifacts</a>
         <a class="nav-action" href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a>
         <a class="nav-action" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite">GitHub</a>

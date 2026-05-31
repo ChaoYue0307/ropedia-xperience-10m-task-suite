@@ -25,7 +25,7 @@ DEFAULT_BASE = ROOT / "docs/assets/task_suite_infographic_base.png"
 DEFAULT_SAMPLE_DIR = ROOT.parent / "data/sample/xperience-10m-sample"
 DEFAULT_OUTPUT = ROOT / "docs/assets/task_suite_infographic.png"
 CANVAS_WIDTH = 1800
-CANVAS_HEIGHT = 1650
+CANVAS_HEIGHT = 2600
 THUMB_WIDTH = 420
 THUMB_HEIGHT = 160
 
@@ -685,18 +685,18 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .modalities {{
       display: grid;
-      grid-template-columns: repeat(7, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
     }}
     .modality {{
-      min-height: 204px;
-      padding: 11px 12px 14px;
+      min-height: 226px;
+      padding: 12px 13px 15px;
       border: 1px solid rgba(167,240,120,0.22);
       background: rgba(7,18,7,0.84);
       border-radius: 8px;
     }}
     .modality-thumb {{
-      height: 86px;
+      height: 112px;
       overflow: hidden;
       border: 1px solid rgba(167,240,120,0.16);
       border-radius: 8px;
@@ -772,12 +772,12 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .families {{
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 20px;
-      margin-top: 26px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 30px;
     }}
     .family {{
-      padding: 17px;
+      padding: 20px;
       border: 1px solid color-mix(in srgb, var(--accent) 28%, #020502);
       background: rgba(7,18,7,0.82);
       border-radius: 8px;
@@ -787,8 +787,8 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       align-items: end;
       justify-content: space-between;
       gap: 16px;
-      min-height: 78px;
-      padding-bottom: 14px;
+      min-height: 66px;
+      padding-bottom: 16px;
       border-bottom: 1px solid color-mix(in srgb, var(--accent) 24%, #020502);
     }}
     .family-head span {{
@@ -801,18 +801,18 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .family-head h2 {{
       margin: 0;
       color: var(--accent);
-      font-size: 29px;
+      font-size: 32px;
       line-height: 1.02;
       text-align: right;
     }}
     .family-cards {{
       display: grid;
-      gap: 13px;
-      margin-top: 15px;
+      gap: 16px;
+      margin-top: 18px;
     }}
     .task-card {{
-      min-height: 168px;
-      padding: 17px 18px;
+      min-height: 178px;
+      padding: 18px 20px;
       border: 1px solid color-mix(in srgb, var(--accent) 28%, #020502);
       background: linear-gradient(180deg, rgba(10,24,10,0.96), color-mix(in srgb, var(--soft) 24%, #071207));
       border-radius: 8px;

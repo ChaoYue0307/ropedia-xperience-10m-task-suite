@@ -30,7 +30,7 @@ DEFAULT_ARCHITECTURE_OUTPUT = ASSETS / "task_architectures.png"
 PIPELINE_WIDTH = 1800
 PIPELINE_HEIGHT = 1120
 ARCHITECTURE_WIDTH = 1800
-ARCHITECTURE_HEIGHT = 1520
+ARCHITECTURE_HEIGHT = 2450
 
 
 COLORS = {
@@ -580,14 +580,14 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
     }}
     .task-groups {{
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
     }}
     .task-group {{
       border: 1px solid rgba(167,240,120,0.22);
       border-radius: 8px;
       background: rgba(7,18,7,0.74);
-      padding: 18px;
+      padding: 22px;
       box-shadow: 0 22px 54px rgba(0,0,0,0.42);
       backdrop-filter: blur(10px);
     }}
@@ -595,7 +595,7 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
       display: flex;
       align-items: center;
       gap: 11px;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }}
     .group-head span {{
       width: 12px;
@@ -614,12 +614,12 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
       gap: 14px;
     }}
     .task-card {{
-      min-height: 244px;
+      min-height: 230px;
       position: relative;
       border: 1px solid color-mix(in srgb, var(--accent), #020502 66%);
       border-radius: 8px;
       background: rgba(7,18,7,0.92);
-      padding: 17px 18px 16px;
+      padding: 18px 20px 17px;
       overflow: hidden;
     }}
     .task-card::before {{
