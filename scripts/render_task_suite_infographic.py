@@ -25,7 +25,7 @@ DEFAULT_BASE = ROOT / "docs/assets/task_suite_infographic_base.png"
 DEFAULT_SAMPLE_DIR = ROOT.parent / "data/sample/xperience-10m-sample"
 DEFAULT_OUTPUT = ROOT / "docs/assets/task_suite_infographic.png"
 CANVAS_WIDTH = 1800
-CANVAS_HEIGHT = 2600
+CANVAS_HEIGHT = 2820
 THUMB_WIDTH = 420
 THUMB_HEIGHT = 160
 
@@ -78,13 +78,13 @@ GROUPS = [
 ]
 
 MODALITIES = [
-    ("video", "6 camera streams", "fisheye + stereo"),
-    ("audio", "AAC stream in MP4", "documented, not featurized"),
-    ("depth", "depth + confidence", "spatial geometry"),
-    ("pose / SLAM", "camera trajectory", "position + orientation"),
-    ("motion capture", "body + hand joints", "mocap features"),
-    ("inertial", "accel + gyro", "wearable motion"),
-    ("language", "objects + captions", "annotation text"),
+    ("video", "visual stream", "6 camera streams", "fisheye + stereo views"),
+    ("audio", "acoustic stream", "AAC stream in MP4", "documented, not featurized"),
+    ("depth", "geometry map", "depth + confidence", "spatial geometry"),
+    ("pose / SLAM", "camera pose", "trajectory + orientation", "camera path features"),
+    ("motion capture", "human motion", "body + hand joints", "mocap feature tracks"),
+    ("inertial", "wearable sensor", "accelerometer + gyro", "motion dynamics"),
+    ("language", "semantic annotation", "objects + captions", "task text labels"),
 ]
 
 HAND_EDGES = [
@@ -499,14 +499,17 @@ def task_card(task_name: str, kind: str, metrics: dict, group: dict, index: int,
     """
 
 
-def modality_card(name: str, line_one: str, line_two: str, index: int, thumbnail: str | None) -> str:
+def modality_card(name: str, modality_type: str, line_one: str, line_two: str, index: int, thumbnail: str | None) -> str:
     thumb_html = ""
     if thumbnail:
         thumb_html = f'<div class="modality-thumb"><img src="{thumbnail}" alt=""></div>'
     return f"""
       <article class="modality">
         {thumb_html}
-        <div class="modality-index">{index:02d}</div>
+        <div class="modality-meta">
+          <span class="modality-index">{index:02d}</span>
+          <span class="modality-type">{html.escape(modality_type)}</span>
+        </div>
         <h3>{html.escape(name)}</h3>
         <p>{html.escape(line_one)}</p>
         <span>{html.escape(line_two)}</span>
@@ -533,8 +536,8 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
         for value, label in stats
     )
     modalities_html = "".join(
-        modality_card(name, line_one, line_two, index, thumbnails.get(name))
-        for index, (name, line_one, line_two) in enumerate(MODALITIES, start=1)
+        modality_card(name, modality_type, line_one, line_two, index, thumbnails.get(name))
+        for index, (name, modality_type, line_one, line_two) in enumerate(MODALITIES, start=1)
     )
 
     task_index = 1
@@ -670,33 +673,44 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin: 28px 0 14px;
+      gap: 42px;
+      margin: 34px 0 18px;
       color: #a5afa2;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
-      font-size: 14px;
+      font-size: 16px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }}
     .section-label span:last-child {{
+      max-width: 840px;
       color: #dce8d7;
       text-transform: none;
       letter-spacing: 0;
       font-family: inherit;
+      font-size: 14px;
+      line-height: 1.35;
+      text-align: right;
     }}
     .modalities {{
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(24, minmax(0, 1fr));
+      gap: 18px;
     }}
     .modality {{
-      min-height: 226px;
-      padding: 12px 13px 15px;
+      grid-column: span 6;
+      min-height: 302px;
+      padding: 17px 18px 19px;
       border: 1px solid rgba(167,240,120,0.22);
       background: rgba(7,18,7,0.84);
       border-radius: 8px;
+      display: flex;
+      flex-direction: column;
     }}
+    .modality:nth-child(5) {{ grid-column: 4 / span 6; }}
+    .modality:nth-child(6) {{ grid-column: 10 / span 6; }}
+    .modality:nth-child(7) {{ grid-column: 16 / span 6; }}
     .modality-thumb {{
-      height: 112px;
+      height: 150px;
       overflow: hidden;
       border: 1px solid rgba(167,240,120,0.16);
       border-radius: 8px;
@@ -713,28 +727,43 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
       font-variant-numeric: tabular-nums;
     }}
+    .modality-meta {{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px;
+    }}
     .modality-index {{
       color: #a5afa2;
+      font-size: 13px;
+    }}
+    .modality-type {{
+      color: #a7f078;
+      font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
       font-size: 12px;
-      margin-top: 10px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }}
     .modality h3 {{
-      margin: 8px 0 0;
-      font-size: 19px;
+      margin: 10px 0 0;
+      font-size: 24px;
       line-height: 1;
       text-transform: uppercase;
     }}
     .modality p {{
-      margin: 9px 0 0;
+      margin: 12px 0 0;
       color: #dce8d7;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 650;
     }}
-    .modality span {{
+    .modality > span {{
       display: block;
-      margin-top: 5px;
+      margin-top: 6px;
       color: #a5afa2;
-      font-size: 13px;
+      font-size: 15px;
+      line-height: 1.25;
     }}
     .shared-band {{
       display: grid;
