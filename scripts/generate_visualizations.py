@@ -24,6 +24,22 @@ DOCS = ROOT / "docs"
 ASSETS = DOCS / "assets"
 CHARTS = ASSETS / "charts"
 
+OMNI_RELAY = {
+    "status": "pending_huggingface_gated_access",
+    "dataset": "ropedia-ai/xperience-10m",
+    "relay_server": "ANGEL-A100-80Gx4",
+    "training_server": "ANGEL-H20-96GX8",
+    "selection_strategy": "stratified_round_robin_by_top_level_session",
+    "target_episodes": 32,
+    "selected_sessions": 32,
+    "candidate_scan_top_level_sessions": 64,
+    "valid_candidates": 680,
+    "estimated_bytes": 72031620552,
+    "exclude": ["visualization.rrd"],
+    "blocker": "Hugging Face returns 403 pending review for the full Xperience-10M gated dataset.",
+    "claim_boundary": "No real 32-episode fine-tune is claimed until the watcher downloads data, transfers it to H20, and the held-out evaluation runs.",
+}
+
 
 def read_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -100,7 +116,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
             "numpy softmax classifier",
             "metrics and predictions",
         ], "#1f63e9"),
-        (520, 380, 360, 168, "6. Episode task suite", [
+        (520, 380, 360, 168, "6. Ropedia Xperience-10M suite", [
             f"{task_count} supervised/self-supervised tasks",
             "chronological split",
             "retrieval, forecast, alignment",
@@ -117,7 +133,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#ffffff"/>',
         '<rect x="0" y="0" width="1400" height="760" fill="#ffffff"/>',
-        '<text x="60" y="58" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#10141f">Verified Xperience-10M Episode Pipeline</text>',
+        '<text x="60" y="58" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#10141f">Verified Ropedia Xperience-10M Pipeline</text>',
         '<text x="60" y="88" font-family="Arial, sans-serif" font-size="16" fill="#5b6475">Generated from committed scripts and metrics; no conceptual placeholder stages.</text>',
     ]
     arrows = [
@@ -333,7 +349,7 @@ def svg_task_architectures(path: Path, summary: dict) -> None:
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<defs><marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#cbd5e1"/></marker></defs>',
         '<rect width="100%" height="100%" fill="#ffffff"/>',
-        '<text x="60" y="56" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#10141f">Minimal Architectures for the 12 Xperience-10M Episode Tasks</text>',
+        '<text x="60" y="56" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#10141f">Minimal Architectures for 12 Ropedia Xperience-10M Tasks</text>',
         '<text x="60" y="88" font-family="Arial, sans-serif" font-size="16" fill="#5b6475">Generated from scripts/episode_task_suite.py semantics and committed summary metrics. These are minimal baselines, not deep foundation models.</text>',
     ]
 
@@ -419,6 +435,7 @@ def collect_summary() -> dict:
     suite = read_json(RESULTS / "episode_task_suite/summary_report.json")
     manifest = read_json(RESULTS / "episode_task_suite/feature_manifest.json")
     return {
+        "omni_relay": OMNI_RELAY,
         "models": {
             "motion_action": min_action,
             "motion_subtask": min_subtask,
@@ -453,13 +470,13 @@ def generate_charts(summary: dict) -> None:
     task_rows = []
     for task_name, metrics in suite.items():
         task_rows.append((task_name, task_score(metrics)))
-    svg_bar_chart(CHARTS / "episode_task_scores.svg", "Episode Task Suite: Main Scores", task_rows, max_value=1.0)
+    svg_bar_chart(CHARTS / "episode_task_scores.svg", "Ropedia Xperience-10M Suite: Main Scores", task_rows, max_value=1.0)
 
     neural = summary["suite"].get("neural_tasks", {})
     if neural:
         neural_rows = [(task_name, task_score(metrics)) for task_name, metrics in neural.items() if "error" not in metrics]
         if neural_rows:
-            svg_bar_chart(CHARTS / "episode_task_scores_neural_mlp.svg", "Episode Task Suite: Neural MLP Main Scores", neural_rows, max_value=1.0)
+            svg_bar_chart(CHARTS / "episode_task_scores_neural_mlp.svg", "Ropedia Xperience-10M Suite: Neural MLP Main Scores", neural_rows, max_value=1.0)
 
         comparison_rows = []
         for task_name, metrics in suite.items():
@@ -484,7 +501,7 @@ def generate_charts(summary: dict) -> None:
 def write_summary_data(summary: dict) -> None:
     DOCS.mkdir(parents=True, exist_ok=True)
     (DOCS / "data").mkdir(parents=True, exist_ok=True)
-    (DOCS / "data/summary_metrics.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    (DOCS / "data/summary_metrics.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
 
 
 def main() -> int:

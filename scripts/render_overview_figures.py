@@ -139,7 +139,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
             arrow(),
             stage_card(
                 "06",
-                "Episode task suite",
+                "Ropedia Xperience-10M suite",
                 [f"{task_count} minimal + {neural_count} neural results", "forecast, retrieval, alignment", "chronological evaluation"],
                 COLORS["teal"],
             ),
@@ -358,7 +358,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
       <header>
         <div>
           <div class="kicker">verified single-episode pipeline</div>
-          <h1>From Xperience-10M episode to reproducible artifacts</h1>
+          <h1>From Ropedia Xperience-10M episode to reproducible artifacts</h1>
           <p class="subtitle">The figure follows the actual code path and includes minimal heads plus neural MLP results. Next TODO: Qwen3-Omni fine-tuning and sensor-bridge evaluation on multi-episode splits.</p>
         </div>
         <div class="metrics">
@@ -697,7 +697,7 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
       <header>
         <div>
           <div class="kicker">minimal + neural verified model architectures</div>
-          <h1>12 Xperience-10M episode tasks, minimal and NN heads</h1>
+          <h1>12 Ropedia Xperience-10M tasks, minimal and NN heads</h1>
           <p class="subtitle">Each task uses the same aligned episode-window contract. The figure shows minimal heads beside neural MLP metrics; next TODO is Qwen3-Omni fine-tuning with sensor-bridge evaluation.</p>
         </div>
         <div class="summary-pill"><strong>{len(suite['tasks'])}+{neural_count}</strong><span>min + NN tasks</span></div>

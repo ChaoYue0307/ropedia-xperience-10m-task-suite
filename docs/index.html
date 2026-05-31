@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Xperience-10M Episode Task Suite</title>
+  <title>Ropedia Xperience-10M Task Suite</title>
   <meta name="description" content="A transparent multimodal task suite for one public Xperience-10M sample episode released by Ropedia, with minimal and neural MLP baselines.">
-  <meta property="og:title" content="Xperience-10M Episode Task Suite">
+  <meta property="og:title" content="Ropedia Xperience-10M Task Suite">
   <meta property="og:description" content="One public embodied-AI episode, converted into reproducible multimodal tasks, minimal baselines, neural MLP baselines, metrics, and diagrams.">
   <meta property="og:image" content="assets/task_suite_infographic.png?v=xperience10m-nn">
   <style>
@@ -564,9 +564,9 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <nav class="site-nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="Xperience-10M Episode Task Suite home">
+      <a class="brand" href="#top" aria-label="Ropedia Xperience-10M Task Suite home">
         <span class="mark" aria-hidden="true">X</span>
-        <span>Xperience-10M Episode Task Suite</span>
+        <span>Ropedia Xperience-10M Task Suite</span>
       </a>
       <div class="nav-links" aria-label="Page navigation">
         <a href="#suite">Suite</a>
@@ -579,8 +579,8 @@
         <a href="#tasks">Tasks</a>
         <a href="#features">Signals</a>
         <a href="#artifacts">Artifacts</a>
-        <a class="nav-action" href="https://huggingface.co/spaces/cy0307/ropedia-episode-task-suite">HF Space</a>
-        <a class="nav-action" href="https://github.com/ChaoYue0307/ropedia-episode-task-suite">GitHub</a>
+        <a class="nav-action" href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a>
+        <a class="nav-action" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite">GitHub</a>
       </div>
     </div>
   </nav>
@@ -589,7 +589,7 @@
     <div class="wrap hero-inner">
       <div>
         <div class="eyebrow">single public episode / verified artifacts</div>
-        <h1>One Xperience-10M episode, made auditable.</h1>
+        <h1>One Ropedia Xperience-10M episode, made auditable.</h1>
         <p class="hero-copy">
           A compact research lab for the public Xperience-10M sample from Ropedia:
           video, audio, depth, pose, motion capture, inertial sensing, and language annotation,
@@ -598,8 +598,8 @@
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#suite">Inspect 12 tasks</a>
-          <a class="button" href="https://cy0307-ropedia-episode-task-suite.static.hf.space/">Open HF app</a>
-          <a class="button" href="https://github.com/ChaoYue0307/ropedia-episode-task-suite">View repository</a>
+          <a class="button" href="https://cy0307-ropedia-xperience-10m-task-suite.static.hf.space/">Open HF app</a>
+          <a class="button" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite">View repository</a>
           <a class="button" href="data/summary_metrics.json">Read metrics JSON</a>
         </div>
         <div class="hero-stats">
@@ -628,10 +628,10 @@
     <section id="suite">
       <div class="wrap">
         <div class="section-head">
-          <h2>Xperience-10M 12-task suite, first.</h2>
+          <h2>Ropedia Xperience-10M 12-task suite, first.</h2>
           <p>The top-level map shows the Xperience-10M sample modalities and the verified 12-task results. Audio is present in the sample MP4 stream, but the current 8,378-d baseline manifest does not featurize it.</p>
         </div>
-        <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-nn" alt="ChatGPT-image-backed infographic showing all 12 Xperience-10M episode tasks">
+        <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-nn" alt="ChatGPT-image-backed infographic showing all 12 Ropedia Xperience-10M tasks">
       </div>
     </section>
 
@@ -742,7 +742,7 @@
           <h2>The 12 tasks share four head families.</h2>
           <p>The diagram separates the shared episode-window feature pipeline from the task-specific heads, and notes that audio remains dataset context rather than a current baseline feature block.</p>
         </div>
-        <img class="architecture-image" src="assets/task_architectures.png?v=xperience10m-nn" alt="Verified minimal and neural architecture diagram for all 12 Xperience-10M episode tasks">
+        <img class="architecture-image" src="assets/task_architectures.png?v=xperience10m-nn" alt="Verified minimal and neural architecture diagram for all 12 Ropedia Xperience-10M tasks">
       </div>
     </section>
 
@@ -831,22 +831,22 @@
           <p>Metrics, predictions, confusion matrices, manifests, lightweight model weights, and derived window artifacts are committed so the repo is reviewable before rerunning anything. Raw Xperience-10M data and Qwen weights are not redistributed.</p>
         </div>
         <div class="artifact-grid">
-          <article class="artifact"><h3>Task-suite report</h3><p>One JSON file with every task metric and split detail.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a></article>
-          <article class="artifact"><h3>Neural MLP task results</h3><p>Per-task PyTorch MLP metrics, predictions, histories, and checkpoints for the same 12 task contracts.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural_mlp/</a></article>
-          <article class="artifact"><h3>Four-direction taxonomy</h3><p>Generated JSON, CSV, Markdown, and website data mapping all 12 tasks to the four research tracks with two baselines.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/tree/main/results/episode_task_suite/research_directions">research_directions/</a></article>
-          <article class="artifact"><h3>Task walkthroughs</h3><p>Beginner-oriented case studies for all 12 tasks, including input, middle process modules, output, metric, and limitation.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/tree/main/results/episode_task_suite/task_walkthroughs">task_walkthroughs/</a></article>
-          <article class="artifact"><h3>Feature manifest</h3><p>Start/end index and dimension for every current feature block.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a></article>
-          <article class="artifact"><h3>Cross-modal retrieval</h3><p>The strongest self-supervised signal from the single episode.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json">metrics.json</a></article>
-          <article class="artifact"><h3>Current all-feature action model</h3><p>Classifier metrics, predictions, confusion matrix, and model weights.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/min_all_modalities_action_model/metrics.json">metrics.json</a></article>
-          <article class="artifact"><h3>Windows table</h3><p>Window start/end frames and aligned action/subtask labels.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/windows.csv">windows.csv</a></article>
-          <article class="artifact"><h3>Reproduction scripts</h3><p>Three training scripts plus the dashboard generator.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/tree/main/scripts">scripts/</a></article>
-          <article class="artifact"><h3>Hugging Face Space</h3><p>The same dashboard packaged as a public static Space.</p><a href="https://huggingface.co/spaces/cy0307/ropedia-episode-task-suite">cy0307/ropedia-episode-task-suite</a></article>
-          <article class="artifact"><h3>Derived HF artifacts</h3><p>Metrics, predictions, docs, and lightweight derived files without raw Xperience-10M video/data redistribution.</p><a href="https://huggingface.co/datasets/cy0307/ropedia-episode-task-suite-artifacts">dataset repo</a></article>
-          <article class="artifact"><h3>HF baseline models</h3><p>Minimal NumPy softmax and ridge baseline weights with model card and architecture diagrams.</p><a href="https://huggingface.co/cy0307/ropedia-minimal-task-baselines">model repo</a></article>
-          <article class="artifact"><h3>A100 HF relay status</h3><p>HF full-dataset access is pending; an A100 watcher is ready to download a 32-session stratified pilot and transfer it to H20 once approved.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/omni_finetune/A100_HF_RELAY_STATUS.md">A100_HF_RELAY_STATUS.md</a></article>
-          <article class="artifact"><h3>Qwen3-Omni readiness artifacts</h3><p>Manifests, metadata, metrics, and progress logs from the current smoke/evidence run. No real 32-episode metric is claimed yet.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode_manifest.json</a></article>
-          <article class="artifact"><h3>32-episode data gate</h3><p>The readiness gate remains the source of truth before any full pilot training claim.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">DATA_BLOCKER_REPORT.md</a></article>
-          <article class="artifact"><h3>HF collection</h3><p>Space, artifacts, and model baselines grouped into one public project collection.</p><a href="https://huggingface.co/collections/cy0307/ropedia-episode-task-suite">collection</a></article>
+          <article class="artifact"><h3>Task-suite report</h3><p>One JSON file with every task metric and split detail.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a></article>
+          <article class="artifact"><h3>Neural MLP task results</h3><p>Per-task PyTorch MLP metrics, predictions, histories, and checkpoints for the same 12 task contracts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural_mlp/</a></article>
+          <article class="artifact"><h3>Four-direction taxonomy</h3><p>Generated JSON, CSV, Markdown, and website data mapping all 12 tasks to the four research tracks with two baselines.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_directions">research_directions/</a></article>
+          <article class="artifact"><h3>Task walkthroughs</h3><p>Beginner-oriented case studies for all 12 tasks, including input, middle process modules, output, metric, and limitation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/task_walkthroughs">task_walkthroughs/</a></article>
+          <article class="artifact"><h3>Feature manifest</h3><p>Start/end index and dimension for every current feature block.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a></article>
+          <article class="artifact"><h3>Cross-modal retrieval</h3><p>The strongest self-supervised signal from the single episode.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json">metrics.json</a></article>
+          <article class="artifact"><h3>Current all-feature action model</h3><p>Classifier metrics, predictions, confusion matrix, and model weights.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/min_all_modalities_action_model/metrics.json">metrics.json</a></article>
+          <article class="artifact"><h3>Windows table</h3><p>Window start/end frames and aligned action/subtask labels.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">windows.csv</a></article>
+          <article class="artifact"><h3>Reproduction scripts</h3><p>Three training scripts plus the dashboard generator.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/scripts">scripts/</a></article>
+          <article class="artifact"><h3>Hugging Face Space</h3><p>The same dashboard packaged as a public static Space.</p><a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">cy0307/ropedia-xperience-10m-task-suite</a></article>
+          <article class="artifact"><h3>Derived HF artifacts</h3><p>Metrics, predictions, docs, and lightweight derived files without raw Xperience-10M video/data redistribution.</p><a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">dataset repo</a></article>
+          <article class="artifact"><h3>HF baseline models</h3><p>Minimal NumPy softmax and ridge baseline weights with model card and architecture diagrams.</p><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">model repo</a></article>
+          <article class="artifact"><h3>A100 HF relay status</h3><p>HF full-dataset access is pending; an A100 watcher is ready to download a 32-session stratified pilot and transfer it to H20 once approved.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/A100_HF_RELAY_STATUS.md">A100_HF_RELAY_STATUS.md</a></article>
+          <article class="artifact"><h3>Qwen3-Omni readiness artifacts</h3><p>Manifests, metadata, metrics, and progress logs from the current smoke/evidence run. No real 32-episode metric is claimed yet.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode_manifest.json</a></article>
+          <article class="artifact"><h3>32-episode data gate</h3><p>The readiness gate remains the source of truth before any full pilot training claim.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">DATA_BLOCKER_REPORT.md</a></article>
+          <article class="artifact"><h3>HF collection</h3><p>Space, artifacts, and model baselines grouped into one public project collection.</p><a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite">collection</a></article>
         </div>
       </div>
     </section>
@@ -881,8 +881,8 @@ hf download ropedia-ai/xperience-10m-sample \
   --repo-type dataset \
   --local-dir data/sample/xperience-10m-sample
 
-git clone https://github.com/ChaoYue0307/ropedia-episode-task-suite.git
-cd ropedia-episode-task-suite
+git clone https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite.git
+cd ropedia-xperience-10m-task-suite
 python scripts/episode_task_suite.py --workspace /path/to/workspace --include-neural
 python scripts/generate_visualizations.py</code></pre>
       </div>

@@ -1,7 +1,7 @@
-# Xperience-10M Episode Task Suite
+# Ropedia Xperience-10M Task Suite
 
-[![Website](https://img.shields.io/badge/site-GitHub%20Pages-1f63e9)](https://chaoyue0307.github.io/ropedia-episode-task-suite/)
-[![HF Space](https://img.shields.io/badge/Hugging%20Face-Space-ffb000)](https://huggingface.co/spaces/cy0307/ropedia-episode-task-suite)
+[![Website](https://img.shields.io/badge/site-GitHub%20Pages-1f63e9)](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/)
+[![HF Space](https://img.shields.io/badge/Hugging%20Face-Space-ffb000)](https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite)
 [![Dataset](https://img.shields.io/badge/dataset-Xperience--10M%20by%20Ropedia-008b9a)](https://github.com/Ropedia)
 [![Scope](https://img.shields.io/badge/scope-single%20public%20sample-b65b04)](#scope)
 
@@ -37,11 +37,11 @@ This repo keeps that distinction explicit:
 
 Start with the visual dashboard:
 
-**[chaoyue0307.github.io/ropedia-episode-task-suite](https://chaoyue0307.github.io/ropedia-episode-task-suite/)**
+**[chaoyue0307.github.io/ropedia-xperience-10m-task-suite](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/)**
 
 Hugging Face Space app:
 
-**[cy0307-ropedia-episode-task-suite.static.hf.space](https://cy0307-ropedia-episode-task-suite.static.hf.space/)**
+**[cy0307-ropedia-xperience-10m-task-suite.static.hf.space](https://cy0307-ropedia-xperience-10m-task-suite.static.hf.space/)**
 
 ## Read This Project In Three Layers
 
@@ -56,13 +56,13 @@ Hugging Face Space app:
 
 | Resource | Link |
 | --- | --- |
-| This GitHub repo | [github.com/ChaoYue0307/ropedia-episode-task-suite](https://github.com/ChaoYue0307/ropedia-episode-task-suite) |
-| This project website | [chaoyue0307.github.io/ropedia-episode-task-suite](https://chaoyue0307.github.io/ropedia-episode-task-suite/) |
-| This Hugging Face Space | [huggingface.co/spaces/cy0307/ropedia-episode-task-suite](https://huggingface.co/spaces/cy0307/ropedia-episode-task-suite) |
-| Live Hugging Face static app | [cy0307-ropedia-episode-task-suite.static.hf.space](https://cy0307-ropedia-episode-task-suite.static.hf.space/) |
-| Derived artifacts on Hugging Face | [huggingface.co/datasets/cy0307/ropedia-episode-task-suite-artifacts](https://huggingface.co/datasets/cy0307/ropedia-episode-task-suite-artifacts) |
-| Minimal baseline models on Hugging Face | [huggingface.co/cy0307/ropedia-minimal-task-baselines](https://huggingface.co/cy0307/ropedia-minimal-task-baselines) |
-| Hugging Face collection | [huggingface.co/collections/cy0307/ropedia-episode-task-suite](https://huggingface.co/collections/cy0307/ropedia-episode-task-suite) |
+| This GitHub repo | [github.com/ChaoYue0307/ropedia-xperience-10m-task-suite](https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite) |
+| This project website | [chaoyue0307.github.io/ropedia-xperience-10m-task-suite](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/) |
+| This Hugging Face Space | [huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite](https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite) |
+| Live Hugging Face static app | [cy0307-ropedia-xperience-10m-task-suite.static.hf.space](https://cy0307-ropedia-xperience-10m-task-suite.static.hf.space/) |
+| Derived artifacts on Hugging Face | [huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts](https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts) |
+| Minimal and neural task baselines on Hugging Face | [huggingface.co/cy0307/ropedia-xperience-10m-task-baselines](https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines) |
+| Hugging Face collection | [huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite](https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite) |
 | Xperience-10M dataset website | [ropedia.com/dataset](https://ropedia.com/dataset) |
 | Xperience-10M release page | [ropedia.com/blog/20260316_xperience_10m](https://ropedia.com/blog/20260316_xperience_10m) |
 | Ropedia GitHub organization | [github.com/Ropedia](https://github.com/Ropedia) |
@@ -71,7 +71,7 @@ Hugging Face Space app:
 | Xperience-10M sample on Hugging Face | [huggingface.co/datasets/ropedia-ai/xperience-10m-sample](https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample) |
 | Ropedia Hugging Face organization | [huggingface.co/ropedia-ai](https://huggingface.co/ropedia-ai) |
 
-![ChatGPT-image-backed Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-nn)
+![ChatGPT-image-backed Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-nn)
 
 The infographic uses a ChatGPT-image-generated text-free research background and
 low-resolution modality thumbnails extracted from the public sample episode. The
@@ -210,8 +210,8 @@ still skipping `visualization.rrd`.
 Clone and run this repo:
 
 ```bash
-git clone https://github.com/ChaoYue0307/ropedia-episode-task-suite.git
-cd ropedia-episode-task-suite
+git clone https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite.git
+cd ropedia-xperience-10m-task-suite
 python scripts/episode_task_suite.py --workspace /path/to/workspace
 ```
 
@@ -258,7 +258,7 @@ python scripts/omni/build_episode_manifest.py \
   --output outputs/omni_exploration/modelscope_manifest.json
 
 python scripts/omni/qwen3_omni_adapter_smoke.py \
-  --workspace /home/cy/Ropedia/ropedia-episode-task-suite \
+  --workspace /home/cy/Ropedia/ropedia-xperience-10m-task-suite \
   --episode-root /home/cy/Ropedia/modelscope_data/xperience-10m-sample \
   --target action \
   --window-frames 20 \
@@ -333,7 +333,7 @@ python scripts/render_task_suite_infographic.py
 
 ```bash
 python scripts/omni/discover_xperience10m_sources.py \
-  --workspace /home/cy/Ropedia/ropedia-episode-task-suite \
+  --workspace /home/cy/Ropedia/ropedia-xperience-10m-task-suite \
   --data-root /home/cy/Ropedia/modelscope_data \
   --output results/omni_finetune/source_discovery.json \
   --report-output results/omni_finetune/DATA_BLOCKER_REPORT.md

@@ -13,4 +13,4 @@ rsync -avP --partial --append-verify \
   "${H20_HOST}:${H20_DATA_ROOT}"
 
 ssh -i "${SSH_KEY}" -o BatchMode=yes -o StrictHostKeyChecking=accept-new "${H20_HOST}" \
-  "cd /home/cy/Ropedia/ropedia-episode-task-suite && python3 scripts/omni/discover_xperience10m_sources.py --workspace /home/cy/Ropedia/ropedia-episode-task-suite --data-root /home/cy/Ropedia/modelscope_data --output results/omni_finetune/source_discovery.json --report-output results/omni_finetune/DATA_BLOCKER_REPORT.md"
+  "cd /home/cy/Ropedia/ropedia-xperience-10m-task-suite && python3 scripts/omni/discover_xperience10m_sources.py --workspace /home/cy/Ropedia/ropedia-xperience-10m-task-suite --data-root /home/cy/Ropedia/modelscope_data --output results/omni_finetune/source_discovery.json --report-output results/omni_finetune/DATA_BLOCKER_REPORT.md"
