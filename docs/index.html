@@ -341,6 +341,44 @@
     .callout h3, .artifact h3 { margin: 0 0 8px; font-size: 17px; }
     .callout p, .artifact p { margin: 0; color: #aab5a5; line-height: 1.6; }
 
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .evidence-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      background:
+        linear-gradient(180deg, rgba(164, 242, 127, 0.06), rgba(7, 18, 7, 0.88)),
+        var(--surface);
+      min-height: 230px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+    .evidence-card h3 { margin: 0; font-size: 18px; line-height: 1.2; }
+    .evidence-card p { margin: 0; color: var(--muted); line-height: 1.6; }
+    .evidence-card code { color: var(--ink); font-family: var(--font-mono); font-size: 12px; }
+    .evidence-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .evidence-links a {
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 740;
+      padding: 7px 9px;
+      text-decoration: none;
+      background: rgba(2, 5, 2, 0.42);
+    }
+    .evidence-links a:hover { border-color: var(--green); color: var(--ink); }
+
     .models {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -576,7 +614,7 @@
     @media (max-width: 960px) {
       .hero-inner, .two-col { grid-template-columns: 1fr; }
       .hero-inner { min-height: 0; }
-      .hero-stats, .models, .task-grid, .artifact-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .chart-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
       .section-head p { margin-top: 14px; }
@@ -584,7 +622,7 @@
     }
     @media (max-width: 640px) {
       .wrap { width: min(100% - 28px, var(--max)); }
-      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid, .walk-flow { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid, .walk-flow { grid-template-columns: 1fr; }
       .hero-inner, section { padding: 46px 0; }
       .signal { grid-template-columns: 1fr; }
       .signal strong { text-align: left; }
@@ -609,8 +647,8 @@
         <span>Ropedia Xperience-10M Task Suite</span>
       </a>
       <div class="nav-links" aria-label="Page navigation">
+        <a href="#evidence">Evidence</a>
         <a href="#suite">Suite</a>
-        <a href="#pipeline">Pipeline</a>
         <a href="#models">Models</a>
         <a href="#directions">Directions</a>
         <a href="#walkthroughs">Guide</a>
@@ -661,6 +699,53 @@
   </header>
 
   <main id="main">
+    <section id="evidence">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Evidence first, claims second.</h2>
+          <p>A top-level project should make its proof boundary visible. This ledger separates verified single-episode artifacts from smoke-only Qwen3-Omni work and the pending 32-episode gate.</p>
+        </div>
+        <div class="evidence-grid">
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Aligned Xperience-10M sample windows</h3>
+            <p>5,821 frames become 1,161 synchronized 20-frame windows with an explicit 8,378-d feature contract.</p>
+            <div class="evidence-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>12 minimal heads + 12 neural MLP heads</h3>
+            <p>Every task has a minimal interpretable head and a matching neural MLP run over the same windows, splits, and task contract.</p>
+            <div class="evidence-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite">task artifacts</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural_mlp/</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Four research directions are mapped honestly</h3>
+            <p>The Ropedia directions are labeled as direct, proxy, or diagnostic evidence, plus one coded extension probe per direction.</p>
+            <div class="evidence-links">
+              <a href="data/research_directions.json">directions JSON</a>
+              <a href="data/research_direction_extensions.json">extensions JSON</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">blocked by data access</span>
+            <h3>Qwen3-Omni is smoke-only until 32 episodes land</h3>
+            <p>The H20/A100 pipeline exists, but current Qwen3-Omni artifacts use one episode and 128 train windows. No 32-episode metric is claimed.</p>
+            <div class="evidence-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">evidence contract</a>
+              <a href="data/evidence_contract.json">machine JSON</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="suite">
       <div class="wrap">
         <div class="section-head">
