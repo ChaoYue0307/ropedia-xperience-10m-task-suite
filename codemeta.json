@@ -1,0 +1,72 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "Ropedia Xperience-10M Task Suite",
+  "description": "Audit-first single-episode embodied-AI task suite for the public Ropedia Xperience-10M sample, with 12 minimal task heads, 12 neural MLP heads, four research-direction probes, reproducible metrics, and public dashboard artifacts.",
+  "codeRepository": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite",
+  "url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/",
+  "issueTracker": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/issues",
+  "license": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/LICENSE",
+  "version": "0.1.0",
+  "datePublished": "2026-06-01",
+  "programmingLanguage": [
+    "Python",
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "runtimePlatform": [
+    "Python 3.12",
+    "PyTorch",
+    "NumPy",
+    "Hugging Face Hub",
+    "GitHub Pages"
+  ],
+  "keywords": [
+    "Ropedia",
+    "Xperience-10M",
+    "embodied AI",
+    "robotics",
+    "multimodal learning",
+    "egocentric vision",
+    "evaluation",
+    "Qwen3-Omni"
+  ],
+  "author": {
+    "@type": "Person",
+    "givenName": "Chao",
+    "familyName": "Yue",
+    "identifier": "cy0307",
+    "url": "https://huggingface.co/cy0307"
+  },
+  "isBasedOn": [
+    {
+      "@type": "Dataset",
+      "name": "Xperience-10M",
+      "url": "https://ropedia.com/dataset",
+      "identifier": "https://huggingface.co/datasets/ropedia-ai/xperience-10m"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "HOMIE Toolkit",
+      "codeRepository": "https://github.com/Ropedia/HOMIE-toolkit"
+    }
+  ],
+  "softwareRequirements": [
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "torch",
+    "opencv-python",
+    "h5py",
+    "huggingface_hub"
+  ],
+  "applicationCategory": "Robotics research and embodied-AI evaluation",
+  "developmentStatus": "active",
+  "maintainer": {
+    "@type": "Person",
+    "givenName": "Chao",
+    "familyName": "Yue",
+    "identifier": "cy0307"
+  }
+}

@@ -27,13 +27,17 @@ BANNED_SUFFIXES = {".pyc", ".pyo"}
 RAW_DATA_SUFFIXES = {".mp4", ".hdf5", ".h5", ".rrd"}
 HEAVY_MODEL_SUFFIXES = {".safetensors", ".bin", ".tar"}
 TEXT_SUFFIXES = {
+    "",
+    ".cff",
     ".csv",
     ".html",
     ".json",
     ".md",
     ".py",
     ".sh",
+    ".svg",
     ".txt",
+    ".xml",
     ".yaml",
     ".yml",
 }
@@ -124,10 +128,18 @@ def scan(root: Path, *, paths: list[Path] | None = None) -> dict:
 def required_assets(root: Path) -> dict[str, bool]:
     required = [
         "README.md",
+        "CITATION.cff",
+        "LICENSE",
+        "codemeta.json",
         "EVIDENCE_CONTRACT.md",
         "DATA_NOTICE.md",
+        "docs/404.html",
+        "docs/favicon.svg",
         "docs/index.html",
+        "docs/robots.txt",
+        "docs/sitemap.xml",
         "docs/data/evidence_contract.json",
+        "docs/data/project_manifest.json",
         "docs/data/summary_metrics.json",
         "docs/assets/task_suite_infographic.png",
         "docs/assets/pipeline_diagram.png",

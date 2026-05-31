@@ -23,3 +23,4 @@ stereo_right.mp4
 ```
 
 Use of the dataset is governed by the original Xperience-10M dataset terms.
+The code license in `LICENSE` does not grant rights to raw Xperience-10M data.
