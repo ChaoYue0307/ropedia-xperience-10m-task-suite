@@ -132,7 +132,7 @@ The code files are MIT-licensed. Raw Xperience-10M data is not redistributed
 here, and dataset use remains governed by the official Ropedia/Xperience-10M
 terms. See [`LICENSE`](LICENSE) and [`DATA_NOTICE.md`](DATA_NOTICE.md).
 
-![ChatGPT-image-backed Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-modalities-v4)
+![ChatGPT-image-backed Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-modalities-v5)
 
 The infographic uses a ChatGPT-image-generated text-free research background and
 larger modality-atlas thumbnails extracted from the public sample episode. The

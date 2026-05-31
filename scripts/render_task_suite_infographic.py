@@ -25,9 +25,9 @@ DEFAULT_BASE = ROOT / "docs/assets/task_suite_infographic_base.png"
 DEFAULT_SAMPLE_DIR = ROOT.parent / "data/sample/xperience-10m-sample"
 DEFAULT_OUTPUT = ROOT / "docs/assets/task_suite_infographic.png"
 CANVAS_WIDTH = 1800
-CANVAS_HEIGHT = 4520
+CANVAS_HEIGHT = 4900
 THUMB_WIDTH = 760
-THUMB_HEIGHT = 300
+THUMB_HEIGHT = 360
 
 
 GROUPS = [
@@ -78,13 +78,13 @@ GROUPS = [
 ]
 
 MODALITIES = [
-    ("video", "visual stream", "6 camera streams", "fisheye + stereo views"),
+    ("video", "visual stream", "6 camera streams", "fisheye + stereo RGB views"),
     ("audio", "acoustic stream", "AAC stream in MP4", "documented, not featurized"),
-    ("depth", "geometry map", "depth + confidence", "spatial geometry"),
-    ("pose / SLAM", "camera pose", "trajectory + orientation", "camera path features"),
-    ("motion capture", "human motion", "body + hand joints", "mocap feature tracks"),
-    ("inertial", "wearable sensor", "accelerometer + gyro", "motion dynamics"),
-    ("language", "semantic annotation", "objects + captions", "task text labels"),
+    ("depth", "geometry map", "depth + confidence", "per-frame spatial geometry"),
+    ("pose / SLAM", "camera pose", "trajectory + orientation", "camera path + sparse map"),
+    ("motion capture", "human motion", "body + hand joints", "3D mocap feature tracks"),
+    ("inertial", "wearable sensor", "accelerometer + gyroscope", "time-series motion dynamics"),
+    ("language", "semantic annotation", "objects + captions", "task-level text labels"),
 ]
 
 HAND_EDGES = [
@@ -249,22 +249,22 @@ def audio_thumb(sample_dir: Path) -> str:
         chunks = np.array_split(trimmed, bins)
         rms = np.array([np.sqrt(np.mean(chunk * chunk)) if len(chunk) else 0.0 for chunk in chunks])
         waveform = np.array([float(np.mean(chunk)) if len(chunk) else 0.0 for chunk in chunks])
-        baseline = THUMB_HEIGHT - 64
+        baseline = THUMB_HEIGHT - 72
         for i, value in enumerate(rms):
             x = 18 + i / max(bins - 1, 1) * (THUMB_WIDTH - 36)
-            h = 10 + np.clip(value * 128, 0, 128)
+            h = 14 + np.clip(value * 158, 0, 158)
             draw.line((x, baseline, x, baseline - h), fill=(167, 240, 120, 170), width=2)
         points = []
         for i, value in enumerate(waveform):
             x = 18 + i / max(bins - 1, 1) * (THUMB_WIDTH - 36)
-            y = 104 - np.clip(value, -1, 1) * 64
+            y = 126 - np.clip(value, -1, 1) * 82
             points.append((x, y))
         draw.line(points, fill=(122, 229, 195, 220), width=2)
     except Exception:
         for i in range(48):
             x = 22 + i * 8
             h = 16 + (i % 7) * 7
-            draw.rounded_rectangle((x, THUMB_HEIGHT - 64 - h, x + 4, THUMB_HEIGHT - 64), radius=2, fill=(167, 240, 120, 170))
+            draw.rounded_rectangle((x, THUMB_HEIGHT - 72 - h, x + 4, THUMB_HEIGHT - 72), radius=2, fill=(167, 240, 120, 170))
     draw_label(draw, (18, 18), "AAC audio waveform", fill=(244, 248, 239), size=22)
     return image_data_uri(canvas, "PNG")
 
@@ -321,7 +321,7 @@ def imu_thumb(h5) -> str:
     series = [accel[:, 0], accel[:, 1], accel[:, 2], gyro[:, 0], gyro[:, 1], gyro[:, 2]]
     colors = [(167, 240, 120), (122, 229, 195), (155, 223, 255), (216, 244, 165), (244, 248, 239), (165, 175, 162)]
     for row in range(6):
-        y = 54 + row * 36
+        y = 68 + row * 44
         draw.line((18, y, THUMB_WIDTH - 18, y), fill=(167, 240, 120, 48), width=1)
     for values, color in zip(series, colors):
         values = values[:420]
@@ -332,7 +332,7 @@ def imu_thumb(h5) -> str:
         pts = []
         for i, v in enumerate(norm):
             x = 18 + i / max(len(values) - 1, 1) * (THUMB_WIDTH - 36)
-            y = THUMB_HEIGHT - 42 - np.clip(v, 0, 1) * 202
+            y = THUMB_HEIGHT - 48 - np.clip(v, 0, 1) * (THUMB_HEIGHT - 116)
             pts.append((x, y))
         draw.line(pts, fill=color + (200,), width=2)
     draw_label(draw, (18, 18), "inertial accel / gyro", fill=(244, 248, 239), size=22)
@@ -357,7 +357,7 @@ def mocap_thumb(h5) -> str:
         xy = (points[:, :2] - lo) / span
         xy[:, 1] = 1 - xy[:, 1]
         xy[:, 0] = x_offset + xy[:, 0] * width
-        xy[:, 1] = 60 + xy[:, 1] * 190
+        xy[:, 1] = 72 + xy[:, 1] * (THUMB_HEIGHT - 136)
         return xy
 
     body_xy = project(body, 28, 270)
@@ -682,54 +682,54 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .section-label {{
       display: grid;
-      grid-template-columns: 0.36fr minmax(0, 1fr);
-      gap: 24px;
-      align-items: end;
-      margin: 38px 0 20px;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      align-items: start;
+      margin: 44px 0 24px;
       color: #a5afa2;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
-      font-size: 18px;
+      font-size: 22px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }}
     .section-label span:last-child {{
-      max-width: 1030px;
+      max-width: 1400px;
       color: #dce8d7;
       text-transform: none;
       letter-spacing: 0;
       font-family: inherit;
-      font-size: 18px;
-      line-height: 1.45;
-      text-align: right;
+      font-size: 21px;
+      line-height: 1.42;
+      text-align: left;
     }}
     .modalities {{
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 26px;
+      gap: 32px;
     }}
     .modality {{
-      min-height: 510px;
-      padding: 24px 26px 26px;
+      min-height: 620px;
+      padding: 30px 30px 32px;
       border: 1px solid rgba(167,240,120,0.22);
       background: rgba(7,18,7,0.84);
       border-radius: 8px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
     }}
     .modality:nth-child(7) {{
       grid-column: 1 / -1;
-      min-height: 438px;
+      min-height: 552px;
     }}
     .modality-thumb {{
-      height: 300px;
+      height: 360px;
       overflow: hidden;
       border: 1px solid rgba(167,240,120,0.16);
       border-radius: 8px;
       background: #020502;
     }}
     .modality:nth-child(7) .modality-thumb {{
-      height: 268px;
+      height: 342px;
     }}
     .modality-thumb img {{
       display: block;
@@ -750,22 +750,22 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .modality-index {{
       color: #a5afa2;
-      font-size: 17px;
+      font-size: 19px;
     }}
     .modality-type {{
       color: #a7f078;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.15;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       text-align: right;
-      max-width: 260px;
-      padding-top: 7px;
+      max-width: 300px;
+      padding-top: 8px;
     }}
     .modality h3 {{
-      margin: 9px 0 0;
-      font-size: 41px;
+      margin: 11px 0 0;
+      font-size: 48px;
       line-height: 0.98;
       text-transform: uppercase;
     }}
@@ -775,14 +775,14 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .modality-copy p {{
       margin: 0;
       color: #dce8d7;
-      font-size: 25px;
+      font-size: 30px;
       font-weight: 650;
     }}
     .modality-copy span {{
       display: block;
-      margin-top: 8px;
+      margin-top: 9px;
       color: #a5afa2;
-      font-size: 20px;
+      font-size: 23px;
       line-height: 1.25;
     }}
     .shared-band {{
