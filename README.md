@@ -16,6 +16,7 @@ into:
 - 12 end-to-end episode-level tasks,
 - lightweight neural MLP heads for the same 12 task contracts,
 - a generated four-direction research taxonomy matching the Ropedia job tracks,
+- junior-friendly walkthroughs for every task, with case study, input, process, and output,
 - a next TODO track for Qwen3-Omni fine-tuning and sensor-bridge evaluation,
 - metrics, predictions, model weights, manifests, charts, and a static website,
 - a clear explanation of what a single episode can and cannot prove.
@@ -105,6 +106,7 @@ scripts/
   episode_task_suite.py             # 12 end-to-end task definitions
   neural_task_models.py             # optional PyTorch MLP heads for all 12 tasks
   research_direction_taxonomy.py    # maps 12 tasks to the four research tracks
+  task_walkthroughs.py              # beginner explanations for each task contract
   generate_visualizations.py        # refreshes SVG charts + summary JSON
   render_task_suite_infographic.py  # renders the ChatGPT-image-backed PNG
   render_overview_figures.py        # renders polished pipeline/architecture PNGs
@@ -122,12 +124,14 @@ results/
   episode_task_suite/               # 12-task suite metrics and predictions
     neural_mlp/                     # optional neural baseline artifacts per task
     research_directions/            # four-track taxonomy, CSV, and summary
+    task_walkthroughs/              # case-study walkthroughs for all 12 tasks
   omni_exploration/                 # H20/ModelScope smoke-test artifacts
 
 docs/
   index.html                        # GitHub Pages dashboard
   data/summary_metrics.json         # website-readable metrics bundle
   data/research_directions.json     # four-track website data bundle
+  data/task_walkthroughs.json       # beginner task explanation data bundle
   assets/task_suite_infographic.png # 12-task presentation graphic
   assets/pipeline_diagram.png       # verified episode pipeline graphic
   assets/task_architectures.png     # verified 12-task minimal architecture map
@@ -319,6 +323,7 @@ Refresh charts and the website data bundle:
 
 ```bash
 python scripts/research_direction_taxonomy.py
+python scripts/task_walkthroughs.py
 python scripts/generate_visualizations.py
 python scripts/render_overview_figures.py
 python scripts/render_task_suite_infographic.py
@@ -411,6 +416,40 @@ The important interpretation is that all four directions can be **started** from
 the Xperience-10M sample modalities, but only direction C is strongly represented
 by the current 12-task suite. Directions A, B, and D need additional targets and
 multi-episode training before they become full research deliverables.
+
+## Task Walkthroughs For Juniors
+
+Every task now has a beginner-facing explanation with:
+
+- a concrete coffee-episode case study,
+- exact input contract,
+- middle process modules,
+- output contract,
+- minimal and neural metric,
+- one important limitation.
+
+Primary files:
+
+- [`TASK_WALKTHROUGHS.md`](results/episode_task_suite/task_walkthroughs/TASK_WALKTHROUGHS.md)
+- [`task_walkthroughs.json`](results/episode_task_suite/task_walkthroughs/task_walkthroughs.json)
+- [`docs/data/task_walkthroughs.json`](docs/data/task_walkthroughs.json)
+
+Compact map:
+
+| Task | Case study | Input -> process -> output |
+| --- | --- | --- |
+| `timeline_action` | A pouring window should be named as the current action. | all-modality window -> action label builder + classifier -> action class |
+| `timeline_subtask` | A fine action is grouped into a broader drink-preparation stage. | all-modality window -> subtask label builder + classifier -> subtask label |
+| `transition_detection` | Detect the change from preparing to pouring. | window -> boundary builder + binary classifier -> boundary/steady |
+| `next_action` | A preparing window predicts what happens 20 frames later. | current window -> future-label shift + classifier -> next action |
+| `hand_trajectory_forecast` | A hand moving toward a cup becomes a future 3D hand path. | current window -> future mocap target + regressor -> hand trajectory |
+| `contact_prediction` | Decide whether hand/body contact is happening. | non-contact features -> contact target + binary classifier -> contact label |
+| `object_relevance` | Infer milk, cup, coffee, or related objects during pouring. | non-caption features -> multi-hot object target + sigmoid heads -> object set |
+| `caption_grounding` | Query Pour milk into coffee and retrieve the matching moment. | text-like query + candidates -> projection + cosine ranker -> ranked windows |
+| `cross_modal_retrieval` | Motion/IMU from pouring retrieves matching depth/video. | motion/IMU/camera -> projection + candidate index -> ranked depth/video windows |
+| `modality_reconstruction` | Infer depth/video features from motion, IMU, and camera pose. | source modalities -> scaler + regressor -> target modality vector |
+| `temporal_order` | Tell whether reaching then pouring was reversed. | adjacent window pair -> pair combiner + binary classifier -> correct/reversed |
+| `misalignment_detection` | Catch motion paired with visual/depth features shifted in time. | motion side + visual side -> aligned/shifted pair builder + classifier -> aligned/shifted |
 
 ## Minimal 12-Task Architectures
 

@@ -465,6 +465,37 @@
       gap: 14px;
       margin-top: 18px;
     }
+    .walkthrough-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .walk-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+    .walk-card h3 { margin: 0; font-family: var(--font-mono); font-size: 15px; }
+    .walk-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .walk-flow {
+      display: grid;
+      grid-template-columns: 0.72fr 1.15fr 0.72fr;
+      gap: 8px;
+      align-items: stretch;
+      font-size: 12px;
+    }
+    .walk-flow span {
+      border: 1px solid #e5dfd5;
+      background: #faf7f1;
+      border-radius: 6px;
+      padding: 9px;
+      min-height: 58px;
+    }
+    .walk-flow strong { display: block; color: var(--ink); font-size: 11px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
     .artifact {
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -506,14 +537,14 @@
     @media (max-width: 960px) {
       .hero-inner, .two-col { grid-template-columns: 1fr; }
       .hero-inner { min-height: 0; }
-      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .walkthrough-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .section-head { display: block; }
       .section-head p { margin-top: 14px; }
       .nav-links { display: none; }
     }
     @media (max-width: 640px) {
       .wrap { width: min(100% - 28px, var(--max)); }
-      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .walkthrough-grid, .walk-flow { grid-template-columns: 1fr; }
       .hero-inner, section { padding: 46px 0; }
       .signal { grid-template-columns: 1fr; }
       .signal strong { text-align: left; }
@@ -544,6 +575,7 @@
         <a href="#neural">Neural</a>
         <a href="#directions">Directions</a>
         <a href="#architectures">Arch</a>
+        <a href="#walkthroughs">Guide</a>
         <a href="#tasks">Tasks</a>
         <a href="#features">Signals</a>
         <a href="#artifacts">Artifacts</a>
@@ -714,6 +746,29 @@
       </div>
     </section>
 
+    <section id="walkthroughs">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Junior-friendly task walkthroughs.</h2>
+          <p>Each task is explained as a case study with input, middle process modules, and output. The full generated guide is committed as Markdown and JSON.</p>
+        </div>
+        <div class="walkthrough-grid">
+          <article class="walk-card"><h3>timeline_action</h3><p><strong>Case:</strong> a pouring window should map to the current action, such as Pour coffee.</p><div class="walk-flow"><span><strong>Input</strong>one 20-frame all-modality window</span><span><strong>Process</strong>window builder, feature assembler, action label builder, classifier, evaluator</span><span><strong>Output</strong>current action class</span></div></article>
+          <article class="walk-card"><h3>timeline_subtask</h3><p><strong>Case:</strong> a fine action is grouped into a broader drink-preparation stage.</p><div class="walk-flow"><span><strong>Input</strong>one all-modality window</span><span><strong>Process</strong>window builder, feature assembler, subtask label builder, classifier, evaluator</span><span><strong>Output</strong>current subtask label</span></div></article>
+          <article class="walk-card"><h3>transition_detection</h3><p><strong>Case:</strong> detect the moment the demonstrator changes from preparing to pouring.</p><div class="walk-flow"><span><strong>Input</strong>one window plus boundary labels</span><span><strong>Process</strong>boundary builder, feature assembler, binary classifier, boundary matcher, evaluator</span><span><strong>Output</strong>boundary or steady</span></div></article>
+          <article class="walk-card"><h3>next_action</h3><p><strong>Case:</strong> a preparing-to-pour window should predict the action 20 frames later.</p><div class="walk-flow"><span><strong>Input</strong>current window at time t</span><span><strong>Process</strong>future label shift, current-only features, classifier, evaluator</span><span><strong>Output</strong>action at t+20 frames</span></div></article>
+          <article class="walk-card"><h3>hand_trajectory_forecast</h3><p><strong>Case:</strong> when a hand moves toward a cup, predict the future 3D hand path.</p><div class="walk-flow"><span><strong>Input</strong>current all-modality window</span><span><strong>Process</strong>future mocap target builder, regression head, trajectory reshaper, MPJPE evaluator</span><span><strong>Output</strong>future left/right hand joints</span></div></article>
+          <article class="walk-card"><h3>contact_prediction</h3><p><strong>Case:</strong> decide whether the hand/body is touching an object or surface.</p><div class="walk-flow"><span><strong>Input</strong>non-contact, non-caption features</span><span><strong>Process</strong>feature selector, contact target builder, binary classifier, degeneracy check</span><span><strong>Output</strong>contact or no contact</span></div></article>
+          <article class="walk-card"><h3>object_relevance</h3><p><strong>Case:</strong> during pouring, infer relevant objects such as milk, cup, or coffee.</p><div class="walk-flow"><span><strong>Input</strong>non-caption features</span><span><strong>Process</strong>object vocabulary, multi-hot targets, sigmoid heads, micro-F1 evaluator</span><span><strong>Output</strong>multi-label object set</span></div></article>
+          <article class="walk-card"><h3>caption_grounding</h3><p><strong>Case:</strong> a query like Pour milk into coffee should retrieve the matching moment.</p><div class="walk-flow"><span><strong>Input</strong>caption query plus candidate windows</span><span><strong>Process</strong>query builder, candidate builder, projection head, cosine ranker, MRR evaluator</span><span><strong>Output</strong>ranked matching windows</span></div></article>
+          <article class="walk-card"><h3>cross_modal_retrieval</h3><p><strong>Case:</strong> motion and IMU from pouring should retrieve the matching depth/video window.</p><div class="walk-flow"><span><strong>Input</strong>motion/IMU/camera query, depth/video candidates</span><span><strong>Process</strong>modality splitter, projection head, candidate index, cosine ranker, top-k evaluator</span><span><strong>Output</strong>ranked depth/video windows</span></div></article>
+          <article class="walk-card"><h3>modality_reconstruction</h3><p><strong>Case:</strong> infer compressed depth/video features from motion, IMU, and camera pose.</p><div class="walk-flow"><span><strong>Input</strong>motion/IMU/camera features</span><span><strong>Process</strong>source-target split, scaling, regression head, inverse scaling, R2 evaluator</span><span><strong>Output</strong>depth/video feature vector</span></div></article>
+          <article class="walk-card"><h3>temporal_order</h3><p><strong>Case:</strong> tell whether reaching then pouring has been reversed.</p><div class="walk-flow"><span><strong>Input</strong>two adjacent windows</span><span><strong>Process</strong>pair builder, feature combiner, binary classifier, F1 evaluator</span><span><strong>Output</strong>correct or reversed order</span></div></article>
+          <article class="walk-card"><h3>misalignment_detection</h3><p><strong>Case:</strong> detect motion from pouring paired with video/depth shifted later.</p><div class="walk-flow"><span><strong>Input</strong>motion side plus visual/depth side</span><span><strong>Process</strong>aligned pair builder, shifted pair builder, feature combiner, binary classifier</span><span><strong>Output</strong>aligned or shifted</span></div></article>
+        </div>
+      </div>
+    </section>
+
     <section id="tasks">
       <div class="wrap">
         <div class="section-head">
@@ -779,6 +834,7 @@
           <article class="artifact"><h3>Task-suite report</h3><p>One JSON file with every task metric and split detail.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a></article>
           <article class="artifact"><h3>Neural MLP task results</h3><p>Per-task PyTorch MLP metrics, predictions, histories, and checkpoints for the same 12 task contracts.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural_mlp/</a></article>
           <article class="artifact"><h3>Four-direction taxonomy</h3><p>Generated JSON, CSV, Markdown, and website data mapping all 12 tasks to the four research tracks with two baselines.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/tree/main/results/episode_task_suite/research_directions">research_directions/</a></article>
+          <article class="artifact"><h3>Task walkthroughs</h3><p>Beginner-oriented case studies for all 12 tasks, including input, middle process modules, output, metric, and limitation.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/tree/main/results/episode_task_suite/task_walkthroughs">task_walkthroughs/</a></article>
           <article class="artifact"><h3>Feature manifest</h3><p>Start/end index and dimension for every current feature block.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a></article>
           <article class="artifact"><h3>Cross-modal retrieval</h3><p>The strongest self-supervised signal from the single episode.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json">metrics.json</a></article>
           <article class="artifact"><h3>Current all-feature action model</h3><p>Classifier metrics, predictions, confusion matrix, and model weights.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/min_all_modalities_action_model/metrics.json">metrics.json</a></article>
