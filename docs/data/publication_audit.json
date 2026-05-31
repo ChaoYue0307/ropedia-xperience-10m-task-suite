@@ -1,0 +1,97 @@
+{
+  "status": "pass",
+  "generated_at_utc": "2026-05-31T22:03:21+00:00",
+  "checks": [
+    {
+      "name": "required_publication_assets_present",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "no_generated_python_caches",
+      "status": "pass",
+      "count": 0
+    },
+    {
+      "name": "no_raw_xperience10m_data",
+      "status": "pass",
+      "count": 0
+    },
+    {
+      "name": "no_heavy_model_archives",
+      "status": "pass",
+      "count": 0
+    },
+    {
+      "name": "no_hf_tokens_in_public_text",
+      "status": "pass",
+      "count": 0
+    }
+  ],
+  "required_assets": {
+    "README.md": true,
+    "EVIDENCE_CONTRACT.md": true,
+    "DATA_NOTICE.md": true,
+    "docs/index.html": true,
+    "docs/data/evidence_contract.json": true,
+    "docs/data/summary_metrics.json": true,
+    "docs/assets/task_suite_infographic.png": true,
+    "docs/assets/pipeline_diagram.png": true,
+    "docs/assets/task_architectures.png": true,
+    "results/episode_task_suite/summary_report.json": true,
+    "results/episode_task_suite/feature_manifest.json": true,
+    "results/episode_task_suite/neural_mlp/timeline_action/metrics.json": true,
+    "results/omni_finetune/DATA_BLOCKER_REPORT.md": true,
+    "results/omni_finetune/A100_HF_RELAY_STATUS.md": true,
+    "scripts/episode_task_suite.py": true,
+    "scripts/neural_task_models.py": true,
+    "scripts/omni/train_qwen3_omni_lora.py": true
+  },
+  "scans": {
+    "github_repo": {
+      "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy",
+      "exists": true,
+      "file_count": 257,
+      "text_file_count": 197,
+      "largest_file": {
+        "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
+        "bytes": 52601010
+      },
+      "violations": []
+    },
+    "hf_space_bundle": {
+      "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space",
+      "exists": true,
+      "file_count": 25,
+      "text_file_count": 8,
+      "largest_file": {
+        "path": "assets/pipeline_diagram_base.png",
+        "bytes": 2279984
+      },
+      "violations": []
+    },
+    "hf_artifact_bundle": {
+      "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts",
+      "exists": true,
+      "file_count": 220,
+      "text_file_count": 171,
+      "largest_file": {
+        "path": "results/episode_task_suite/neural_mlp/temporal_order/model.pt",
+        "bytes": 13406129
+      },
+      "violations": []
+    },
+    "hf_model_bundle": {
+      "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model",
+      "exists": true,
+      "file_count": 162,
+      "text_file_count": 116,
+      "largest_file": {
+        "path": "artifacts/episode_task_suite/cross_modal_retrieval/model.npz",
+        "bytes": 41310574
+      },
+      "violations": []
+    }
+  },
+  "violations": []
+}
