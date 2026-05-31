@@ -32,8 +32,8 @@ def build_repo(repo_id: str, token: str, private: bool) -> None:
         cmd.append("--private")
     if namespace:
         cmd.extend(["--organization", namespace])
-    cmd.extend(["--token", token])
-    subprocess.run(cmd, check=False)
+    env = {**os.environ, "HF_TOKEN": token}
+    subprocess.run(cmd, check=False, env=env)
 
 
 def main() -> int:
@@ -72,6 +72,7 @@ def main() -> int:
         raise SystemExit(f"source directory does not exist: {source}")
 
     build_repo(args.repo_id, token, args.private)
+    env = {**os.environ, "HF_TOKEN": token}
     run(
         [
             "huggingface-cli",
@@ -79,13 +80,12 @@ def main() -> int:
             args.repo_id,
             str(source),
             ".",
-            "--token",
-            token,
             "--commit-message",
             args.message,
             "--repo-type",
             "model",
-        ]
+        ],
+        env=env,
     )
     print(f"Uploaded {source} -> https://huggingface.co/{args.repo_id}")
     return 0
