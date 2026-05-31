@@ -25,9 +25,9 @@ DEFAULT_BASE = ROOT / "docs/assets/task_suite_infographic_base.png"
 DEFAULT_SAMPLE_DIR = ROOT.parent / "data/sample/xperience-10m-sample"
 DEFAULT_OUTPUT = ROOT / "docs/assets/task_suite_infographic.png"
 CANVAS_WIDTH = 1800
-CANVAS_HEIGHT = 2820
-THUMB_WIDTH = 420
-THUMB_HEIGHT = 160
+CANVAS_HEIGHT = 3560
+THUMB_WIDTH = 540
+THUMB_HEIGHT = 220
 
 
 GROUPS = [
@@ -151,16 +151,18 @@ def draw_label(draw, xy, text, fill=(244, 248, 239), size=18):
 def video_thumb(sample_dir: Path) -> str:
     from PIL import Image, ImageDraw
 
-    fish = fit_image(read_video_frame(sample_dir / "fisheye_cam0.mp4", 2450), (194, THUMB_HEIGHT))
+    gutter = 18
+    panel_width = (THUMB_WIDTH - gutter) // 2
+    fish = fit_image(read_video_frame(sample_dir / "fisheye_cam0.mp4", 2450), (panel_width, THUMB_HEIGHT))
     stereo_path = sample_dir / "stereo_left.mp4"
-    stereo = fit_image(read_video_frame(stereo_path, 2450), (194, THUMB_HEIGHT)) if stereo_path.exists() else fish.copy()
+    stereo = fit_image(read_video_frame(stereo_path, 2450), (panel_width, THUMB_HEIGHT)) if stereo_path.exists() else fish.copy()
     canvas = make_canvas()
     canvas.paste(fish, (0, 0))
-    canvas.paste(stereo, (226, 0))
+    canvas.paste(stereo, (panel_width + gutter, 0))
     draw = ImageDraw.Draw(canvas, "RGBA")
-    draw.rounded_rectangle((188, 0, 232, THUMB_HEIGHT), radius=0, fill=(2, 5, 2, 220))
-    draw_label(draw, (194, 16), "fisheye", fill=(255, 255, 255), size=14)
-    draw_label(draw, (240, 16), "stereo", fill=(255, 255, 255), size=14)
+    draw.rounded_rectangle((panel_width - 4, 0, panel_width + gutter + 4, THUMB_HEIGHT), radius=0, fill=(2, 5, 2, 220))
+    draw_label(draw, (16, 18), "fisheye", fill=(255, 255, 255), size=18)
+    draw_label(draw, (panel_width + gutter + 16, 18), "stereo", fill=(255, 255, 255), size=18)
     return image_data_uri(canvas, "JPEG")
 
 
@@ -187,23 +189,25 @@ def depth_thumb(h5) -> str:
     import numpy as np
     from PIL import Image, ImageDraw
 
+    gutter = 18
+    panel_width = (THUMB_WIDTH - gutter) // 2
     frame = np.array(h5["depth/depth"][2450], dtype=np.float32)
     valid = np.isfinite(frame)
     lo, hi = np.percentile(frame[valid], [3, 97])
     norm = (frame - lo) / max(hi - lo, 1e-6)
     rgb = colorize(norm)
-    depth = fit_image(Image.fromarray(rgb), (204, THUMB_HEIGHT))
+    depth = fit_image(Image.fromarray(rgb), (panel_width, THUMB_HEIGHT))
     conf = np.array(h5["depth/confidence"][2450], dtype=np.uint8)
     conf_img = Image.fromarray(conf, mode="L").convert("RGB")
-    conf_img = fit_image(conf_img, (204, THUMB_HEIGHT))
+    conf_img = fit_image(conf_img, (panel_width, THUMB_HEIGHT))
     canvas = make_canvas()
     canvas.paste(depth, (0, 0))
-    canvas.paste(conf_img, (216, 0))
+    canvas.paste(conf_img, (panel_width + gutter, 0))
     draw = ImageDraw.Draw(canvas, "RGBA")
-    draw.rounded_rectangle((0, 0, 116, 28), radius=6, fill=(2, 5, 2, 178))
-    draw.rounded_rectangle((216, 0, 350, 28), radius=6, fill=(2, 5, 2, 178))
-    draw_label(draw, (10, 6), "depth", fill=(255, 255, 255), size=14)
-    draw_label(draw, (226, 6), "confidence", fill=(255, 255, 255), size=14)
+    draw.rounded_rectangle((0, 0, 134, 34), radius=8, fill=(2, 5, 2, 178))
+    draw.rounded_rectangle((panel_width + gutter, 0, panel_width + gutter + 174, 34), radius=8, fill=(2, 5, 2, 178))
+    draw_label(draw, (12, 8), "depth", fill=(255, 255, 255), size=17)
+    draw_label(draw, (panel_width + gutter + 12, 8), "confidence", fill=(255, 255, 255), size=17)
     return image_data_uri(canvas, "JPEG")
 
 
@@ -374,6 +378,7 @@ def mocap_thumb(h5) -> str:
 def text_thumb(h5) -> str:
     from PIL import ImageDraw
 
+    width = 1100
     raw = h5["caption"][()]
     if isinstance(raw, bytes):
         raw = raw.decode("utf-8", errors="replace")
@@ -381,21 +386,22 @@ def text_thumb(h5) -> str:
     segment = data["segments"][0]
     objects = sorted({item for values in segment.get("objects", {}).values() for item in values})[:5]
     actions = [a.get("label", "") for a in segment.get("Current Action", [])][:2]
-    canvas = make_canvas()
+    canvas = make_canvas((width, THUMB_HEIGHT))
     draw = ImageDraw.Draw(canvas, "RGBA")
-    draw_label(draw, (16, 13), "language annotation", fill=(244, 248, 239), size=17)
-    y = 46
+    draw_label(draw, (24, 22), "language annotation", fill=(244, 248, 239), size=22)
+    y = 66
     for label in objects:
-        draw.rounded_rectangle((16, y, 16 + 20 + len(label) * 8, y + 24), radius=6, fill=(7, 18, 7, 235), outline=(167, 240, 120, 170))
-        draw_label(draw, (26, y + 5), label, fill=(244, 248, 239), size=12)
-        y += 30
-    x = 184
-    y = 48
+        chip_width = 44 + len(label) * 14
+        draw.rounded_rectangle((24, y, 24 + chip_width, y + 32), radius=8, fill=(7, 18, 7, 235), outline=(167, 240, 120, 170), width=2)
+        draw_label(draw, (38, y + 7), label, fill=(244, 248, 239), size=16)
+        y += 39
+    x = 420
+    y = 68
     for action in actions:
-        wrapped = action[:32] + ("..." if len(action) > 32 else "")
-        draw.rounded_rectangle((x, y, THUMB_WIDTH - 16, y + 36), radius=7, fill=(7, 18, 7, 235), outline=(122, 229, 195, 170))
-        draw_label(draw, (x + 10, y + 10), wrapped, fill=(244, 248, 239), size=12)
-        y += 44
+        wrapped = action[:54] + ("..." if len(action) > 54 else "")
+        draw.rounded_rectangle((x, y, width - 24, y + 44), radius=9, fill=(7, 18, 7, 235), outline=(122, 229, 195, 180), width=2)
+        draw_label(draw, (x + 18, y + 12), wrapped, fill=(244, 248, 239), size=17)
+        y += 56
     return image_data_uri(canvas, "PNG")
 
 
@@ -670,47 +676,44 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       line-height: 1.15;
     }}
     .section-label {{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 42px;
-      margin: 34px 0 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+      margin: 38px 0 20px;
       color: #a5afa2;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
-      font-size: 16px;
+      font-size: 18px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }}
     .section-label span:last-child {{
-      max-width: 840px;
+      max-width: 1240px;
       color: #dce8d7;
       text-transform: none;
       letter-spacing: 0;
       font-family: inherit;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.35;
-      text-align: right;
+      text-align: left;
     }}
     .modalities {{
       display: grid;
-      grid-template-columns: repeat(24, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 22px;
     }}
     .modality {{
-      grid-column: span 6;
-      min-height: 302px;
-      padding: 17px 18px 19px;
+      grid-column: span 2;
+      min-height: 386px;
+      padding: 20px 22px 22px;
       border: 1px solid rgba(167,240,120,0.22);
       background: rgba(7,18,7,0.84);
       border-radius: 8px;
       display: flex;
       flex-direction: column;
     }}
-    .modality:nth-child(5) {{ grid-column: 4 / span 6; }}
-    .modality:nth-child(6) {{ grid-column: 10 / span 6; }}
-    .modality:nth-child(7) {{ grid-column: 16 / span 6; }}
+    .modality:nth-child(7) {{ grid-column: 2 / span 4; }}
     .modality-thumb {{
-      height: 150px;
+      height: 212px;
       overflow: hidden;
       border: 1px solid rgba(167,240,120,0.16);
       border-radius: 8px;
@@ -732,37 +735,37 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-top: 14px;
+      margin-top: 17px;
     }}
     .modality-index {{
       color: #a5afa2;
-      font-size: 13px;
+      font-size: 14px;
     }}
     .modality-type {{
       color: #a7f078;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
-      font-size: 12px;
+      font-size: 13px;
       line-height: 1;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }}
     .modality h3 {{
-      margin: 10px 0 0;
-      font-size: 24px;
+      margin: 13px 0 0;
+      font-size: 31px;
       line-height: 1;
       text-transform: uppercase;
     }}
     .modality p {{
-      margin: 12px 0 0;
+      margin: 14px 0 0;
       color: #dce8d7;
-      font-size: 16px;
+      font-size: 19px;
       font-weight: 650;
     }}
     .modality > span {{
       display: block;
-      margin-top: 6px;
+      margin-top: 7px;
       color: #a5afa2;
-      font-size: 15px;
+      font-size: 17px;
       line-height: 1.25;
     }}
     .shared-band {{
@@ -770,7 +773,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
       gap: 12px;
       align-items: center;
-      margin-top: 20px;
+      margin-top: 24px;
       padding: 14px;
       border: 1px solid rgba(167,240,120,0.22);
       background: rgba(7,18,7,0.72);
