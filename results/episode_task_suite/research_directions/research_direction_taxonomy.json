@@ -1,0 +1,384 @@
+{
+  "source": "results/episode_task_suite/summary_report.json",
+  "dataset_scope": {
+    "sample_episode_count": 1,
+    "num_frames": 5821,
+    "num_windows": 1161,
+    "feature_dim": 8378,
+    "warning": "Single public sample episode; this supports pipeline/task evidence, not cross-episode generalization claims."
+  },
+  "baselines": {
+    "minimal": "Interpretable softmax, logistic, ridge, and retrieval heads over the 8,378-d window feature vector.",
+    "neural_mlp": "Small PyTorch MLP classifiers/regressors using the same features, splits, and task contracts."
+  },
+  "directions": {
+    "A": {
+      "id": "human_motion",
+      "name": "Human Modeling & Motion Understanding",
+      "focus": "Human/hand/body motion, deformation priors, human-object interaction, affordance modeling.",
+      "preferred_background": "Human pose/shape estimation, SMPL-style models, motion capture, or motion generation.",
+      "current_status": "partially implemented",
+      "current_readout": "The sample supports hand trajectory forecasting and contact/object probes, but it does not yet include a full body/shape model or multi-person priors.",
+      "next_steps": [
+        "Add SMPL/SMPL-X or MANO-style body/hand parameter targets where available.",
+        "Train sequence models over multi-episode motion trajectories instead of isolated windows.",
+        "Evaluate affordance prediction on held-out objects and held-out episodes."
+      ],
+      "tasks": [
+        "timeline_action",
+        "hand_trajectory_forecast",
+        "contact_prediction",
+        "object_relevance"
+      ],
+      "counts": {
+        "direct": 2,
+        "proxy": 2,
+        "diagnostic": 0,
+        "total_links": 4
+      }
+    },
+    "B": {
+      "id": "reconstruction_rendering",
+      "name": "3D/4D Reconstruction & Neural Rendering",
+      "focus": "Multi-view dynamic scene reconstruction, NeRF/Gaussian Splatting, novel-view synthesis.",
+      "preferred_background": "3D reconstruction, neural rendering, camera calibration, and bundle adjustment.",
+      "current_status": "proxy tasks only",
+      "current_readout": "The current suite checks cross-modal alignment and depth/video reconstruction proxies; it does not yet train a renderer or reconstruct geometry.",
+      "next_steps": [
+        "Use calibrated multi-view video plus SLAM pose to build per-episode camera trajectories.",
+        "Add depth-supervised point clouds, TSDF, Gaussian Splatting, or NeRF baselines.",
+        "Evaluate novel-view synthesis and temporal consistency across held-out views/time."
+      ],
+      "tasks": [
+        "cross_modal_retrieval",
+        "modality_reconstruction",
+        "misalignment_detection"
+      ],
+      "counts": {
+        "direct": 0,
+        "proxy": 2,
+        "diagnostic": 1,
+        "total_links": 3
+      }
+    },
+    "C": {
+      "id": "egocentric_interaction",
+      "name": "Egocentric Vision & Interaction",
+      "focus": "Egocentric action and intention understanding, hand-object interaction, gaze/attention modeling, task structure modeling.",
+      "preferred_background": "Video understanding, action recognition, or egocentric vision.",
+      "current_status": "strongest implemented track",
+      "current_readout": "Most of the 12 tasks directly target egocentric action, task state, interaction, grounding, and alignment.",
+      "next_steps": [
+        "Move from single-episode chronological splits to held-out-episode splits.",
+        "Add audio features and stronger multimodal backbones for action, intent, and grounding.",
+        "Evaluate long-horizon task success prediction and action-conditioned generation."
+      ],
+      "tasks": [
+        "timeline_action",
+        "timeline_subtask",
+        "transition_detection",
+        "next_action",
+        "hand_trajectory_forecast",
+        "contact_prediction",
+        "object_relevance",
+        "caption_grounding",
+        "cross_modal_retrieval",
+        "temporal_order",
+        "misalignment_detection"
+      ],
+      "counts": {
+        "direct": 6,
+        "proxy": 2,
+        "diagnostic": 3,
+        "total_links": 11
+      }
+    },
+    "D": {
+      "id": "world_modeling",
+      "name": "Scene Reconstruction & World Modeling",
+      "focus": "Long-term consistent 3D/4D scene mapping, scene graphs, object- and space-centric representations, spatial reasoning.",
+      "preferred_background": "Large-scale mapping, semantic reconstruction, or agent world models.",
+      "current_status": "early proxy tasks",
+      "current_readout": "The current tasks probe temporal structure, object relevance, cross-modal retrieval, and modality prediction, but they do not yet build persistent maps or scene graphs.",
+      "next_steps": [
+        "Convert windows into persistent object/scene-state nodes with timestamps and camera poses.",
+        "Add map consistency, object permanence, and spatial relation prediction tasks.",
+        "Train held-out-episode world models that predict future observations and task state."
+      ],
+      "tasks": [
+        "timeline_subtask",
+        "transition_detection",
+        "next_action",
+        "object_relevance",
+        "caption_grounding",
+        "cross_modal_retrieval",
+        "modality_reconstruction",
+        "temporal_order",
+        "misalignment_detection"
+      ],
+      "counts": {
+        "direct": 0,
+        "proxy": 6,
+        "diagnostic": 3,
+        "total_links": 9
+      }
+    }
+  },
+  "tasks": {
+    "timeline_action": {
+      "name": "Timeline action recognition",
+      "family": "supervised",
+      "input": "all featurized modalities",
+      "output": "current action label",
+      "primary_direction": "C",
+      "direction_roles": {
+        "C": "direct",
+        "A": "proxy"
+      },
+      "why": "Reads egocentric sensor state as the current human action; also provides a weak human-motion readout.",
+      "current_limit": "Chronological single-episode split creates unseen future action classes.",
+      "metric": {
+        "key": "macro_f1",
+        "name": "macro-F1",
+        "direction": "higher",
+        "minimal": 0.05,
+        "neural_mlp": 0.02631578947368421,
+        "better_baseline": "minimal"
+      }
+    },
+    "timeline_subtask": {
+      "name": "Timeline subtask recognition",
+      "family": "supervised",
+      "input": "all featurized modalities",
+      "output": "current subtask label",
+      "primary_direction": "C",
+      "direction_roles": {
+        "C": "direct",
+        "D": "proxy"
+      },
+      "why": "Segments egocentric task state and provides a first proxy for symbolic world/task state.",
+      "current_limit": "Single-episode ordering makes future subtasks hard to generalize.",
+      "metric": {
+        "key": "macro_f1",
+        "name": "macro-F1",
+        "direction": "higher",
+        "minimal": 0.04954121121178666,
+        "neural_mlp": 0.017518248175182476,
+        "better_baseline": "minimal"
+      }
+    },
+    "transition_detection": {
+      "name": "Action transition detection",
+      "family": "diagnostic",
+      "input": "all featurized modalities",
+      "output": "boundary vs steady state",
+      "primary_direction": "C",
+      "direction_roles": {
+        "C": "direct",
+        "D": "diagnostic"
+      },
+      "why": "Localizes egocentric task boundaries and diagnoses temporal state changes.",
+      "current_limit": "Boundary class is sparse, so accuracy alone is misleading.",
+      "metric": {
+        "key": "macro_f1",
+        "name": "macro-F1",
+        "direction": "higher",
+        "minimal": 0.6551829268292684,
+        "neural_mlp": 0.6484848484848484,
+        "better_baseline": "minimal"
+      }
+    },
+    "next_action": {
+      "name": "Short-horizon next action",
+      "family": "supervised",
+      "input": "current multimodal window",
+      "output": "action 20 frames later",
+      "primary_direction": "C",
+      "direction_roles": {
+        "C": "direct",
+        "D": "proxy"
+      },
+      "why": "Tests action intention/task-flow prediction from egocentric context.",
+      "current_limit": "Unseen future labels dominate the single-episode chronological test.",
+      "metric": {
+        "key": "macro_f1",
+        "name": "macro-F1",
+        "direction": "higher",
+        "minimal": 0.05925925925925927,
+        "neural_mlp": 0.023529411764705882,
+        "better_baseline": "minimal"
+      }
+    },
+    "hand_trajectory_forecast": {
+      "name": "Hand trajectory forecasting",
+      "family": "forecast",
+      "input": "current multimodal window",
+      "output": "future left/right hand 3D joints",
+      "primary_direction": "A",
+      "direction_roles": {
+        "A": "direct",
+        "C": "proxy"
+      },
+      "why": "Directly predicts human hand motion and supports hand-object interaction modeling.",
+      "current_limit": "Forecasting is window-level and not yet a full sequence or policy model.",
+      "metric": {
+        "key": "mpjpe",
+        "name": "MPJPE",
+        "direction": "lower",
+        "minimal": 0.8222644925117493,
+        "neural_mlp": 0.11163123697042465,
+        "better_baseline": "neural_mlp"
+      }
+    },
+    "contact_prediction": {
+      "name": "Body/object contact prediction",
+      "family": "supervised",
+      "input": "non-contact/non-caption features",
+      "output": "binary contact label",
+      "primary_direction": "A",
+      "direction_roles": {
+        "A": "direct",
+        "C": "proxy"
+      },
+      "why": "Targets physical interaction state, a core affordance and manipulation signal.",
+      "current_limit": "The public sample is degenerate for this target because one class dominates.",
+      "metric": {
+        "key": "macro_f1",
+        "name": "macro-F1",
+        "direction": "higher",
+        "minimal": 1.0,
+        "neural_mlp": 1.0,
+        "better_baseline": "tie"
+      }
+    },
+    "object_relevance": {
+      "name": "Relevant object set prediction",
+      "family": "supervised",
+      "input": "non-caption feature blocks",
+      "output": "multi-label object set",
+      "primary_direction": "C",
+      "direction_roles": {
+        "C": "direct",
+        "A": "proxy",
+        "D": "proxy"
+      },
+      "why": "Connects egocentric activity to manipulated objects and early object-centric state.",
+      "current_limit": "Object labels are language-derived and sparse in one episode.",
+      "metric": {
+        "key": "micro_f1",
+        "name": "micro-F1",
+        "direction": "higher",
+        "minimal": 0.18393030009680542,
+        "neural_mlp": 0.1797583081570997,
+        "better_baseline": "minimal"
+      }
+    },
+    "caption_grounding": {
+      "name": "Caption-to-window grounding",
+      "family": "retrieval",
+      "input": "caption objects/interaction query and candidate sensor windows",
+      "output": "matching time window",
+      "primary_direction": "C",
+      "direction_roles": {
+        "C": "direct",
+        "D": "proxy"
+      },
+      "why": "Grounds language annotation into egocentric sensor time and task state.",
+      "current_limit": "Bag-of-objects language features are too weak for rich grounding.",
+      "metric": {
+        "key": "mrr",
+        "name": "MRR",
+        "direction": "higher",
+        "minimal": 0.017183946083791223,
+        "neural_mlp": 0.01781111161035397,
+        "better_baseline": "neural_mlp"
+      }
+    },
+    "cross_modal_retrieval": {
+      "name": "Cross-modal retrieval",
+      "family": "retrieval",
+      "input": "motion/IMU/camera query",
+      "output": "matching depth/video window",
+      "primary_direction": "C",
+      "direction_roles": {
+        "C": "diagnostic",
+        "B": "proxy",
+        "D": "proxy"
+      },
+      "why": "Tests whether synchronized modalities identify the same 4D moment, a prerequisite for reconstruction and world modeling.",
+      "current_limit": "Retrieval proves alignment signal, not geometric reconstruction.",
+      "metric": {
+        "key": "mrr",
+        "name": "MRR",
+        "direction": "higher",
+        "minimal": 0.26335984006618296,
+        "neural_mlp": 0.1530070022204131,
+        "better_baseline": "minimal"
+      }
+    },
+    "modality_reconstruction": {
+      "name": "Modality reconstruction",
+      "family": "forecast",
+      "input": "motion/IMU/camera",
+      "output": "depth/video feature vector",
+      "primary_direction": "B",
+      "direction_roles": {
+        "B": "proxy",
+        "D": "proxy"
+      },
+      "why": "Predicts visual/depth state from non-target sensors as a weak reconstruction/world-model objective.",
+      "current_limit": "Feature-vector reconstruction is not pixel, depth-map, mesh, NeRF, or Gaussian reconstruction.",
+      "metric": {
+        "key": "r2",
+        "name": "R2",
+        "direction": "higher",
+        "minimal": -0.016022846771134747,
+        "neural_mlp": -0.010198171891414143,
+        "better_baseline": "neural_mlp"
+      }
+    },
+    "temporal_order": {
+      "name": "Temporal order verification",
+      "family": "diagnostic",
+      "input": "two adjacent windows",
+      "output": "correct vs reversed order",
+      "primary_direction": "C",
+      "direction_roles": {
+        "C": "diagnostic",
+        "D": "diagnostic"
+      },
+      "why": "Checks whether features encode local time direction and task progression.",
+      "current_limit": "Only local adjacent ordering, not long-horizon causal modeling.",
+      "metric": {
+        "key": "f1",
+        "name": "F1",
+        "direction": "higher",
+        "minimal": 0.5487364620938628,
+        "neural_mlp": 0.8717948717948718,
+        "better_baseline": "neural_mlp"
+      }
+    },
+    "misalignment_detection": {
+      "name": "Cross-modal misalignment detection",
+      "family": "diagnostic",
+      "input": "motion plus visual/depth pair",
+      "output": "aligned vs shifted",
+      "primary_direction": "C",
+      "direction_roles": {
+        "C": "diagnostic",
+        "B": "diagnostic",
+        "D": "diagnostic"
+      },
+      "why": "Detects temporal desynchronization, a key data-quality gate for multimodal reconstruction and world models.",
+      "current_limit": "Synthetic shifts diagnose alignment but do not solve calibration or mapping.",
+      "metric": {
+        "key": "f1",
+        "name": "F1",
+        "direction": "higher",
+        "minimal": 0.4865671641791045,
+        "neural_mlp": 0.7335243553008597,
+        "better_baseline": "neural_mlp"
+      }
+    }
+  }
+}

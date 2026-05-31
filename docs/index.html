@@ -419,6 +419,52 @@
       gap: 18px;
       align-items: start;
     }
+    .direction-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .direction-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 18px;
+      min-height: 230px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+    .direction-card h3 { margin: 0; font-size: 16px; line-height: 1.25; }
+    .direction-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .status-pill {
+      width: fit-content;
+      border-radius: 999px;
+      padding: 4px 9px;
+      background: #edf2f7;
+      color: #334155;
+      font-size: 11px;
+      font-weight: 740;
+    }
+    .direction-counts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      font-size: 12px;
+      color: #4e514c;
+    }
+    .direction-counts strong {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 18px;
+      color: var(--ink);
+    }
+    .baseline-strip {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
     .artifact {
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -460,14 +506,14 @@
     @media (max-width: 960px) {
       .hero-inner, .two-col { grid-template-columns: 1fr; }
       .hero-inner { min-height: 0; }
-      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid, .callout-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .section-head { display: block; }
       .section-head p { margin-top: 14px; }
       .nav-links { display: none; }
     }
     @media (max-width: 640px) {
       .wrap { width: min(100% - 28px, var(--max)); }
-      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid, .callout-row { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip { grid-template-columns: 1fr; }
       .hero-inner, section { padding: 46px 0; }
       .signal { grid-template-columns: 1fr; }
       .signal strong { text-align: left; }
@@ -496,6 +542,7 @@
         <a href="#pipeline">Pipeline</a>
         <a href="#models">Models</a>
         <a href="#neural">Neural</a>
+        <a href="#directions">Directions</a>
         <a href="#architectures">Arch</a>
         <a href="#tasks">Tasks</a>
         <a href="#features">Signals</a>
@@ -611,6 +658,52 @@
       </div>
     </section>
 
+    <section id="directions">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The 12 tasks organized into four research directions.</h2>
+          <p>Each task is mapped as direct, proxy, or diagnostic evidence for the Ropedia research tracks. The mapping uses two current baselines: minimal interpretable heads and neural MLP heads over the same feature contract.</p>
+        </div>
+        <div class="direction-grid">
+          <article class="direction-card">
+            <span class="status-pill">partially implemented</span>
+            <h3>A. Human Modeling & Motion Understanding</h3>
+            <p>Direct evidence comes from hand trajectory forecasting and contact prediction; action and object relevance are supporting proxies.</p>
+            <div class="direction-counts"><span><strong>2</strong>direct</span><span><strong>2</strong>proxy</span><span><strong>0</strong>diagnostic</span></div>
+          </article>
+          <article class="direction-card">
+            <span class="status-pill">proxy tasks only</span>
+            <h3>B. 3D/4D Reconstruction & Neural Rendering</h3>
+            <p>Cross-modal retrieval, modality reconstruction, and misalignment detection check reconstruction prerequisites, not full geometry.</p>
+            <div class="direction-counts"><span><strong>0</strong>direct</span><span><strong>2</strong>proxy</span><span><strong>1</strong>diagnostic</span></div>
+          </article>
+          <article class="direction-card">
+            <span class="status-pill">strongest implemented</span>
+            <h3>C. Egocentric Vision & Interaction</h3>
+            <p>Action, subtask, transition, next-action, object, caption, order, and alignment tasks directly stress egocentric understanding.</p>
+            <div class="direction-counts"><span><strong>6</strong>direct</span><span><strong>2</strong>proxy</span><span><strong>3</strong>diagnostic</span></div>
+          </article>
+          <article class="direction-card">
+            <span class="status-pill">early proxy tasks</span>
+            <h3>D. Scene Reconstruction & World Modeling</h3>
+            <p>Current probes cover task state, object relevance, retrieval, reconstruction, temporal order, and alignment but no persistent map yet.</p>
+            <div class="direction-counts"><span><strong>0</strong>direct</span><span><strong>6</strong>proxy</span><span><strong>3</strong>diagnostic</span></div>
+          </article>
+        </div>
+        <img class="chart" src="assets/charts/research_direction_coverage.svg" alt="Coverage of the 12 Xperience-10M tasks across four research directions">
+        <div class="baseline-strip">
+          <div class="callout">
+            <h3>Baseline 1: minimal heads</h3>
+            <p>Softmax, logistic, ridge, and retrieval heads keep every input/output contract readable. They are the first sanity check for whether a task is well-posed.</p>
+          </div>
+          <div class="callout">
+            <h3>Baseline 2: neural MLP heads</h3>
+            <p>Small PyTorch MLP classifiers/regressors reuse the same features and splits. They test nonlinear gains before heavier Omni fine-tuning.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="architectures">
       <div class="wrap">
         <div class="section-head">
@@ -685,6 +778,7 @@
         <div class="artifact-grid">
           <article class="artifact"><h3>Task-suite report</h3><p>One JSON file with every task metric and split detail.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a></article>
           <article class="artifact"><h3>Neural MLP task results</h3><p>Per-task PyTorch MLP metrics, predictions, histories, and checkpoints for the same 12 task contracts.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural_mlp/</a></article>
+          <article class="artifact"><h3>Four-direction taxonomy</h3><p>Generated JSON, CSV, Markdown, and website data mapping all 12 tasks to the four research tracks with two baselines.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/tree/main/results/episode_task_suite/research_directions">research_directions/</a></article>
           <article class="artifact"><h3>Feature manifest</h3><p>Start/end index and dimension for every current feature block.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a></article>
           <article class="artifact"><h3>Cross-modal retrieval</h3><p>The strongest self-supervised signal from the single episode.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json">metrics.json</a></article>
           <article class="artifact"><h3>Current all-feature action model</h3><p>Classifier metrics, predictions, confusion matrix, and model weights.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/min_all_modalities_action_model/metrics.json">metrics.json</a></article>
