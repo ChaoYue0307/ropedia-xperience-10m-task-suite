@@ -139,6 +139,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "docs/robots.txt",
         "docs/sitemap.xml",
         "docs/data/evidence_contract.json",
+        "docs/data/artifact_index.json",
         "docs/data/project_manifest.json",
         "docs/data/reviewer_packet.json",
         "docs/data/summary_metrics.json",
@@ -152,6 +153,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "results/omni_finetune/A100_HF_RELAY_STATUS.md",
         "scripts/episode_task_suite.py",
         "scripts/neural_task_models.py",
+        "scripts/build_artifact_index.py",
         "scripts/omni/train_qwen3_omni_lora.py",
     ]
     return {item: (root / item).exists() for item in required}

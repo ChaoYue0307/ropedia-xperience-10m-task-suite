@@ -86,6 +86,50 @@
         "results/omni_finetune/source_discovery.json"
       ],
       "boundary": "no 32-episode metric should be claimed until the gate passes"
+    },
+    {
+      "id": "publication_hygiene",
+      "claim": "The public GitHub and Hugging Face bundles are publication-clean.",
+      "status": "verified",
+      "evidence": [
+        "scripts/validate_publication_package.py",
+        "docs/data/publication_audit.json"
+      ],
+      "boundary": "checks public files and HF bundles, not arbitrary ignored local scratch outputs"
+    },
+    {
+      "id": "citation_metadata",
+      "claim": "The project is externally citable and machine-readable.",
+      "status": "verified",
+      "evidence": [
+        "CITATION.cff",
+        "codemeta.json",
+        "docs/data/project_manifest.json",
+        "LICENSE"
+      ],
+      "boundary": "code license does not override original Xperience-10M dataset terms"
+    },
+    {
+      "id": "reviewer_path",
+      "claim": "A first-time reviewer has an explicit audit path.",
+      "status": "verified",
+      "evidence": [
+        "docs/data/reviewer_packet.json",
+        "docs/data/artifact_index.json",
+        "README.md",
+        "docs/index.html"
+      ],
+      "boundary": "guides inspection; does not add new experimental claims"
+    },
+    {
+      "id": "artifact_index",
+      "claim": "The core proof artifacts are indexed with existence, size, and hash metadata where stable.",
+      "status": "verified",
+      "evidence": [
+        "scripts/build_artifact_index.py",
+        "docs/data/artifact_index.json"
+      ],
+      "boundary": "selective source-of-truth catalog, not a complete inventory of every output file"
     }
   ]
 }
