@@ -233,9 +233,16 @@ pipeline over Xperience-10M. The important separation is:
 - adapter-required Xperience-10M sensor inputs: depth, pose/SLAM, hand/body
   mocap, contacts, and IMU.
 
-The H20 smoke test validates the adapter-required side first, using real
-Xperience-10M sample data from ModelScope and real action labels. It does not
-download or fine-tune the 30B Qwen3-Omni weights yet.
+The H20 work now has two separate evidence levels:
+
+- an adapter-side smoke test over one Xperience-10M sample episode, useful for
+  checking sensor feature extraction and label plumbing,
+- a technical Qwen3-Omni LoRA smoke run that loaded the local
+  `Qwen/Qwen3-Omni-30B-A3B-Instruct` weights and trained LoRA parameters on
+  128 windows from the single locally available episode.
+
+Neither is a 32-episode result. The full pilot is still gated on raw
+Xperience-10M access and a held-out episode split.
 
 ```bash
 python scripts/omni/build_episode_manifest.py \
@@ -265,7 +272,7 @@ Verified H20 run:
 | Split | single-episode chronological |
 | Feature dim | 4,262 |
 | Adapter soft-token blocks | 11 |
-| Qwen3-Omni weights loaded | no |
+| Qwen3-Omni weights loaded | adapter smoke: no; LoRA smoke: yes |
 | Result | 0.0000 macro-F1, expected for this single-episode chronological smoke split |
 
 The zero score is not treated as a model claim. It is a useful signal that this
@@ -287,11 +294,12 @@ checkpoints, caches, and logs, a realistic first budget is:
 | Useful LoRA run | 64-128 | 74k-149k | Train sensor adapters plus selected Qwen3-Omni LoRA |
 | Storage-heavy run | 256+ | 297k+ | Only after download layout and checkpoint size are stable |
 
-For the next run, use **32 episodes** if ModelScope exposes enough files
-cleanly. If download structure is simple and disk remains above 800GB free,
-scale to **64 or 128 episodes**. Do not aim for 10k samples first; at the
-observed sample-equivalent size, that would become a data-management project
-before it is a modeling experiment.
+For the next run, use a **32-episode stratified pilot** through the A100 relay,
+then scale to **128 episodes** and later **512 episodes** only after the
+download, transfer, manifest, train, and held-out evaluation path is stable. Do
+not treat "10M" as a reason to start with the entire dataset; the engineering
+unit that matters first is diverse held-out episodes, not adjacent windows from
+one session.
 
 Use the budget helper before downloading:
 
@@ -326,8 +334,12 @@ Current status in this repo:
 - local_valid_episodes: 1 (degraded-valid: annotation + fisheye_cam0.mp4)
 - local_complete_episodes: 0
 - ready_for_32_episode_pilot: false
+- A100 Hugging Face relay: active watcher, polling gated access every 15 minutes
+- planned 32-episode pilot: stratified across 32 top-level session UUIDs
+- HF full dataset blocker: `ropedia-ai/xperience-10m` returns 403 pending review
 - source_discovery: `results/omni_finetune/source_discovery.json`
 - blocker_report: `results/omni_finetune/DATA_BLOCKER_REPORT.md`
+- relay_status: `results/omni_finetune/A100_HF_RELAY_STATUS.md`
 
 Current H20-sourced evidence files in this repo:
 
@@ -338,8 +350,32 @@ Current H20-sourced evidence files in this repo:
 - `results/omni_finetune/progress.jsonl`
 - `results/omni_finetune/RUN_REPORT.md`
 - `results/omni_finetune/DATA_BLOCKER_REPORT.md`
+- `results/omni_finetune/A100_HF_RELAY_STATUS.md`
 
 Use this gate before scheduling any 32-episode full fine-tune run.
+
+For the A100 Hugging Face relay, the 32-episode pilot should use stratified
+selection, not the first 32 paths in repository order. The current relay script
+scans 64 top-level session UUIDs, filters for complete leaf episodes, excludes
+`visualization.rrd`, applies a `0.25 GB` minimum episode size, and selects 32
+episodes from 32 different session UUIDs. This is still a pilot subset, but it
+is materially better for generalization checks than adjacent episodes from the
+same recording session.
+
+### Uploading the pilot Qwen3-Omni LoRA
+
+A prepared upload package is available at `results/omni_finetune/hf_upload`.
+
+```bash
+python3 scripts/omni/upload_qwen3_omni_lora_to_hf.py \
+  --repo-id cy0307/ropedia-qwen3-omni-lora-smoke \
+  --source-dir results/omni_finetune/hf_upload \
+  --message "Upload Xperience-10M Qwen3-Omni LoRA pilot"
+```
+
+This script requires a valid Hugging Face token via `HF_TOKEN` or `--token`.
+Network availability to `huggingface.co` is required.
+
 ## Minimal 12-Task Architectures
 
 These are deliberately minimal baselines. They are useful because every

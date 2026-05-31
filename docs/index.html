@@ -680,7 +680,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Where the evidence lives.</h2>
-          <p>Metrics, predictions, confusion matrices, manifests, model weights, and derived window artifacts are committed so the repo is reviewable before rerunning anything.</p>
+          <p>Metrics, predictions, confusion matrices, manifests, lightweight model weights, and derived window artifacts are committed so the repo is reviewable before rerunning anything. Raw Xperience-10M data and Qwen weights are not redistributed.</p>
         </div>
         <div class="artifact-grid">
           <article class="artifact"><h3>Task-suite report</h3><p>One JSON file with every task metric and split detail.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a></article>
@@ -693,9 +693,24 @@
           <article class="artifact"><h3>Hugging Face Space</h3><p>The same dashboard packaged as a public static Space.</p><a href="https://huggingface.co/spaces/cy0307/ropedia-episode-task-suite">cy0307/ropedia-episode-task-suite</a></article>
           <article class="artifact"><h3>Derived HF artifacts</h3><p>Metrics, predictions, docs, and lightweight derived files without raw Xperience-10M video/data redistribution.</p><a href="https://huggingface.co/datasets/cy0307/ropedia-episode-task-suite-artifacts">dataset repo</a></article>
           <article class="artifact"><h3>HF baseline models</h3><p>Minimal NumPy softmax and ridge baseline weights with model card and architecture diagrams.</p><a href="https://huggingface.co/cy0307/ropedia-minimal-task-baselines">model repo</a></article>
-          <article class="artifact"><h3>Qwen3-Omni 32-episode readiness</h3><p>Current status: one degraded-valid episode only; full pilot blocked until 32 are available.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">DATA_BLOCKER_REPORT.md</a></article>
-          <article class="artifact"><h3>Qwen3-Omni readiness artifacts</h3><p>Manifest, training metadata, metrics, and progress logs from the current smoke/evidence run.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode_manifest.json</a></article>
+          <article class="artifact"><h3>A100 HF relay status</h3><p>HF full-dataset access is pending; an A100 watcher is ready to download a 32-session stratified pilot and transfer it to H20 once approved.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/omni_finetune/A100_HF_RELAY_STATUS.md">A100_HF_RELAY_STATUS.md</a></article>
+          <article class="artifact"><h3>Qwen3-Omni readiness artifacts</h3><p>Manifests, metadata, metrics, and progress logs from the current smoke/evidence run. No real 32-episode metric is claimed yet.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode_manifest.json</a></article>
+          <article class="artifact"><h3>32-episode data gate</h3><p>The readiness gate remains the source of truth before any full pilot training claim.</p><a href="https://github.com/ChaoYue0307/ropedia-episode-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">DATA_BLOCKER_REPORT.md</a></article>
           <article class="artifact"><h3>HF collection</h3><p>Space, artifacts, and model baselines grouped into one public project collection.</p><a href="https://huggingface.co/collections/cy0307/ropedia-episode-task-suite">collection</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="omni-relay">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Qwen3-Omni pilot is approval-ready.</h2>
+          <p>The full Xperience-10M Hugging Face dataset is gated. While access is pending, the A100 relay has already selected a 32-episode pilot across 32 different session UUIDs and will continue automatically after approval.</p>
+        </div>
+        <div class="artifact-grid">
+          <article class="artifact"><h3>Selection</h3><p>Stratified round-robin over 64 top-level sessions; 680 complete candidates scanned; 32 sessions selected.</p></article>
+          <article class="artifact"><h3>Transfer</h3><p>A100 downloads from Hugging Face, excludes visualization.rrd, validates files, then rsyncs to H20.</p></article>
+          <article class="artifact"><h3>Boundary</h3><p>The current LoRA artifact is a smoke/pilot checkpoint. A real 32-episode result requires the watcher to finish and held-out evaluation to run.</p></article>
         </div>
       </div>
     </section>
