@@ -34,8 +34,8 @@ GROUPS = [
     {
         "name": "Label + State",
         "tone": "teal",
-        "color": "#197d83",
-        "soft": "#e8f4f3",
+        "color": "#9bdfff",
+        "soft": "#071d20",
         "tasks": [
             ("timeline_action", "supervised"),
             ("timeline_subtask", "supervised"),
@@ -45,8 +45,8 @@ GROUPS = [
     {
         "name": "Prediction + Reconstruction",
         "tone": "blue",
-        "color": "#1f6c9f",
-        "soft": "#e8f1fb",
+        "color": "#a7f078",
+        "soft": "#10210a",
         "tasks": [
             ("hand_trajectory_forecast", "forecast"),
             ("modality_reconstruction", "forecast"),
@@ -56,8 +56,8 @@ GROUPS = [
     {
         "name": "Grounding + Retrieval",
         "tone": "amber",
-        "color": "#9b6516",
-        "soft": "#fbf3df",
+        "color": "#7ae5c3",
+        "soft": "#092019",
         "tasks": [
             ("caption_grounding", "retrieval"),
             ("cross_modal_retrieval", "retrieval"),
@@ -67,8 +67,8 @@ GROUPS = [
     {
         "name": "Temporal Diagnostics",
         "tone": "red",
-        "color": "#b0443e",
-        "soft": "#fdeceb",
+        "color": "#d8f4a5",
+        "soft": "#1b210d",
         "tasks": [
             ("transition_detection", "diagnostic"),
             ("temporal_order", "diagnostic"),
@@ -107,7 +107,7 @@ def image_data_uri(image, fmt: str = "PNG", quality: int = 92) -> str:
     return f"data:image/{mime};base64,{encoded}"
 
 
-def make_canvas(size=(THUMB_WIDTH, THUMB_HEIGHT), color=(255, 254, 253)):
+def make_canvas(size=(THUMB_WIDTH, THUMB_HEIGHT), color=(2, 5, 2)):
     from PIL import Image
 
     return Image.new("RGB", size, color)
@@ -138,7 +138,7 @@ def read_video_frame(video_path: Path, frame_index: int = 2400):
     return Image.fromarray(frame)
 
 
-def draw_label(draw, xy, text, fill=(31, 36, 33), size=18):
+def draw_label(draw, xy, text, fill=(244, 248, 239), size=18):
     from PIL import ImageFont
 
     try:
@@ -158,7 +158,7 @@ def video_thumb(sample_dir: Path) -> str:
     canvas.paste(fish, (0, 0))
     canvas.paste(stereo, (226, 0))
     draw = ImageDraw.Draw(canvas, "RGBA")
-    draw.rounded_rectangle((188, 0, 232, THUMB_HEIGHT), radius=0, fill=(251, 250, 247, 235))
+    draw.rounded_rectangle((188, 0, 232, THUMB_HEIGHT), radius=0, fill=(2, 5, 2, 220))
     draw_label(draw, (194, 16), "fisheye", fill=(255, 255, 255), size=14)
     draw_label(draw, (240, 16), "stereo", fill=(255, 255, 255), size=14)
     return image_data_uri(canvas, "JPEG")
@@ -168,11 +168,11 @@ def colorize(values):
     import numpy as np
 
     stops = np.array([
-        [26, 35, 126],
-        [36, 123, 160],
-        [68, 170, 122],
-        [238, 190, 76],
-        [197, 79, 51],
+        [2, 5, 2],
+        [58, 136, 102],
+        [122, 229, 195],
+        [167, 240, 120],
+        [216, 244, 165],
     ], dtype=np.float32)
     x = np.clip(values, 0, 1)
     scaled = x * (len(stops) - 1)
@@ -200,8 +200,8 @@ def depth_thumb(h5) -> str:
     canvas.paste(depth, (0, 0))
     canvas.paste(conf_img, (216, 0))
     draw = ImageDraw.Draw(canvas, "RGBA")
-    draw.rounded_rectangle((0, 0, 116, 28), radius=6, fill=(31, 36, 33, 150))
-    draw.rounded_rectangle((216, 0, 350, 28), radius=6, fill=(31, 36, 33, 150))
+    draw.rounded_rectangle((0, 0, 116, 28), radius=6, fill=(2, 5, 2, 178))
+    draw.rounded_rectangle((216, 0, 350, 28), radius=6, fill=(2, 5, 2, 178))
     draw_label(draw, (10, 6), "depth", fill=(255, 255, 255), size=14)
     draw_label(draw, (226, 6), "confidence", fill=(255, 255, 255), size=14)
     return image_data_uri(canvas, "JPEG")
@@ -248,19 +248,19 @@ def audio_thumb(sample_dir: Path) -> str:
         for i, value in enumerate(rms):
             x = 18 + i / max(bins - 1, 1) * (THUMB_WIDTH - 36)
             h = 8 + np.clip(value * 86, 0, 86)
-            draw.line((x, 126, x, 126 - h), fill=(31, 108, 159, 150), width=2)
+            draw.line((x, 126, x, 126 - h), fill=(167, 240, 120, 170), width=2)
         points = []
         for i, value in enumerate(waveform):
             x = 18 + i / max(bins - 1, 1) * (THUMB_WIDTH - 36)
             y = 74 - np.clip(value, -1, 1) * 42
             points.append((x, y))
-        draw.line(points, fill=(155, 101, 22, 210), width=2)
+        draw.line(points, fill=(122, 229, 195, 220), width=2)
     except Exception:
         for i in range(48):
             x = 22 + i * 8
             h = 16 + (i % 7) * 7
-            draw.rounded_rectangle((x, 128 - h, x + 4, 128), radius=2, fill=(31, 108, 159, 150))
-    draw_label(draw, (16, 12), "AAC audio waveform", fill=(31, 36, 33), size=17)
+            draw.rounded_rectangle((x, 128 - h, x + 4, 128), radius=2, fill=(167, 240, 120, 170))
+    draw_label(draw, (16, 12), "AAC audio waveform", fill=(244, 248, 239), size=17)
     return image_data_uri(canvas, "PNG")
 
 
@@ -299,8 +299,8 @@ def slam_thumb(h5) -> str:
     traj = np.array(h5["slam/trans_xyz"][:2450:36], dtype=np.float64)
     traj_xy = normalize_points(traj[:, [0, 2, 1]], THUMB_WIDTH, THUMB_HEIGHT)
     for a, b in zip(traj_xy[:-1], traj_xy[1:]):
-        draw.line((a[0], a[1], b[0], b[1]), fill=(31, 108, 159, 190), width=2)
-    draw_label(draw, (16, 14), "camera pose + SLAM map", fill=(31, 36, 33), size=17)
+        draw.line((a[0], a[1], b[0], b[1]), fill=(167, 240, 120, 205), width=2)
+    draw_label(draw, (16, 14), "camera pose + SLAM map", fill=(244, 248, 239), size=17)
     return image_data_uri(canvas, "PNG")
 
 
@@ -314,10 +314,10 @@ def imu_thumb(h5) -> str:
     accel = np.array(h5["imu/accel_xyz"][max(0, key_idx - 220): key_idx + 220], dtype=np.float64)
     gyro = np.array(h5["imu/gyro_xyz"][max(0, key_idx - 220): key_idx + 220], dtype=np.float64)
     series = [accel[:, 0], accel[:, 1], accel[:, 2], gyro[:, 0], gyro[:, 1], gyro[:, 2]]
-    colors = [(31, 108, 159), (52, 101, 56), (176, 68, 62), (155, 101, 22), (46, 119, 117), (96, 109, 128)]
+    colors = [(167, 240, 120), (122, 229, 195), (155, 223, 255), (216, 244, 165), (244, 248, 239), (165, 175, 162)]
     for row in range(4):
         y = 26 + row * 33
-        draw.line((18, y, THUMB_WIDTH - 18, y), fill=(228, 222, 212, 180), width=1)
+        draw.line((18, y, THUMB_WIDTH - 18, y), fill=(167, 240, 120, 48), width=1)
     for values, color in zip(series, colors):
         values = values[:420]
         if len(values) < 2:
@@ -330,7 +330,7 @@ def imu_thumb(h5) -> str:
             y = 138 - np.clip(v, 0, 1) * 112
             pts.append((x, y))
         draw.line(pts, fill=color + (200,), width=2)
-    draw_label(draw, (16, 12), "inertial accel / gyro", fill=(31, 36, 33), size=17)
+    draw_label(draw, (16, 12), "inertial accel / gyro", fill=(244, 248, 239), size=17)
     return image_data_uri(canvas, "PNG")
 
 
@@ -357,17 +357,17 @@ def mocap_thumb(h5) -> str:
 
     body_xy = project(body, 18, 165)
     for x, y in body_xy:
-        draw.ellipse((x - 2.4, y - 2.4, x + 2.4, y + 2.4), fill=(52, 101, 56, 175))
+        draw.ellipse((x - 2.4, y - 2.4, x + 2.4, y + 2.4), fill=(167, 240, 120, 185))
     for a, b in zip(body_xy[:-1], body_xy[1:]):
-        draw.line((a[0], a[1], b[0], b[1]), fill=(52, 101, 56, 70), width=1)
+        draw.line((a[0], a[1], b[0], b[1]), fill=(167, 240, 120, 82), width=1)
 
-    for points, x_offset, color in [(left, 218, (31, 108, 159)), (right, 314, (155, 101, 22))]:
+    for points, x_offset, color in [(left, 218, (122, 229, 195)), (right, 314, (216, 244, 165))]:
         xy = project(points, x_offset, 82)
         for a, b in HAND_EDGES:
             draw.line((xy[a][0], xy[a][1], xy[b][0], xy[b][1]), fill=color + (180,), width=2)
         for x, y in xy:
             draw.ellipse((x - 2.4, y - 2.4, x + 2.4, y + 2.4), fill=color + (220,))
-    draw_label(draw, (16, 12), "body + hand mocap", fill=(31, 36, 33), size=17)
+    draw_label(draw, (16, 12), "body + hand mocap", fill=(244, 248, 239), size=17)
     return image_data_uri(canvas, "PNG")
 
 
@@ -383,18 +383,18 @@ def text_thumb(h5) -> str:
     actions = [a.get("label", "") for a in segment.get("Current Action", [])][:2]
     canvas = make_canvas()
     draw = ImageDraw.Draw(canvas, "RGBA")
-    draw_label(draw, (16, 13), "language annotation", fill=(31, 36, 33), size=17)
+    draw_label(draw, (16, 13), "language annotation", fill=(244, 248, 239), size=17)
     y = 46
     for label in objects:
-        draw.rounded_rectangle((16, y, 16 + 20 + len(label) * 8, y + 24), radius=6, fill=(251, 243, 219, 230), outline=(226, 200, 144, 255))
-        draw_label(draw, (26, y + 5), label, fill=(83, 74, 56), size=12)
+        draw.rounded_rectangle((16, y, 16 + 20 + len(label) * 8, y + 24), radius=6, fill=(7, 18, 7, 235), outline=(167, 240, 120, 170))
+        draw_label(draw, (26, y + 5), label, fill=(244, 248, 239), size=12)
         y += 30
     x = 184
     y = 48
     for action in actions:
         wrapped = action[:32] + ("..." if len(action) > 32 else "")
-        draw.rounded_rectangle((x, y, THUMB_WIDTH - 16, y + 36), radius=7, fill=(232, 244, 243, 230), outline=(169, 204, 202, 255))
-        draw_label(draw, (x + 10, y + 10), wrapped, fill=(31, 36, 33), size=12)
+        draw.rounded_rectangle((x, y, THUMB_WIDTH - 16, y + 36), radius=7, fill=(7, 18, 7, 235), outline=(122, 229, 195, 170))
+        draw_label(draw, (x + 10, y + 10), wrapped, fill=(244, 248, 239), size=12)
         y += 44
     return image_data_uri(canvas, "PNG")
 
@@ -569,11 +569,11 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       margin: 0;
       width: {CANVAS_WIDTH}px;
       height: {CANVAS_HEIGHT}px;
-      background: #fbfaf7;
+      background: #020502;
     }}
     body {{
-      font-family: "Avenir Next", "SF Pro Display", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #1f2421;
+      font-family: "Inter Tight", "Space Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #f4f8ef;
       text-rendering: optimizeLegibility;
     }}
     .canvas {{
@@ -583,12 +583,10 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       overflow: hidden;
       padding: 54px 64px 44px;
       background:
-        radial-gradient(circle at 9% 6%, rgba(31,108,159,0.13), transparent 20%),
-        radial-gradient(circle at 90% 9%, rgba(155,101,22,0.10), transparent 22%),
-        linear-gradient(90deg, rgba(68,55,38,0.035) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(68,55,38,0.027) 1px, transparent 1px),
-        #fbfaf7;
-      background-size: auto, auto, 54px 54px, 54px 54px, auto;
+        radial-gradient(circle at 72% 10%, rgba(167,240,120,0.18), transparent 24%),
+        radial-gradient(circle at 20% 28%, rgba(255,255,255,0.10) 1px, transparent 2px),
+        #020502;
+      background-size: auto, 18px 18px, auto;
     }}
     .image-background {{
       position: absolute;
@@ -596,8 +594,8 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      opacity: 0.30;
-      filter: saturate(0.85) contrast(0.98);
+      opacity: 0.36;
+      filter: saturate(1.05) contrast(1.08) brightness(0.42);
     }}
     .content {{
       position: relative;
@@ -609,13 +607,13 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       gap: 44px;
       align-items: end;
       padding-bottom: 30px;
-      border-bottom: 1px solid #e4ded4;
+      border-bottom: 1px solid rgba(167,240,120,0.20);
     }}
     .kicker {{
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      color: #5f625d;
+      color: #a7f078;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
       font-size: 15px;
       text-transform: uppercase;
@@ -625,7 +623,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       content: "";
       width: 44px;
       height: 1px;
-      background: #1f2421;
+      background: #a7f078;
     }}
     h1 {{
       margin: 18px 0 0;
@@ -637,7 +635,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .subtitle {{
       margin: 18px 0 0;
       max-width: 900px;
-      color: #5f625d;
+      color: #dce8d7;
       font-size: 23px;
       line-height: 1.35;
       font-weight: 520;
@@ -650,9 +648,9 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .stat {{
       min-height: 78px;
       padding: 14px 15px;
-      border: 1px solid #e4ded4;
-      background: rgba(255,254,253,0.76);
-      border-radius: 10px;
+      border: 1px solid rgba(167,240,120,0.24);
+      background: rgba(7,18,7,0.80);
+      border-radius: 8px;
     }}
     .stat strong {{
       display: block;
@@ -664,7 +662,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .stat span {{
       display: block;
       margin-top: 8px;
-      color: #6f716c;
+      color: #a5afa2;
       font-size: 13px;
       line-height: 1.15;
     }}
@@ -673,14 +671,14 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       align-items: center;
       justify-content: space-between;
       margin: 28px 0 14px;
-      color: #5f625d;
+      color: #a5afa2;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
       font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }}
     .section-label span:last-child {{
-      color: #7e817b;
+      color: #dce8d7;
       text-transform: none;
       letter-spacing: 0;
       font-family: inherit;
@@ -693,16 +691,16 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .modality {{
       min-height: 204px;
       padding: 11px 12px 14px;
-      border: 1px solid #e4ded4;
-      background: rgba(255,254,253,0.84);
-      border-radius: 12px;
+      border: 1px solid rgba(167,240,120,0.22);
+      background: rgba(7,18,7,0.84);
+      border-radius: 8px;
     }}
     .modality-thumb {{
       height: 86px;
       overflow: hidden;
-      border: 1px solid #eee9e1;
-      border-radius: 9px;
-      background: #f5f1e9;
+      border: 1px solid rgba(167,240,120,0.16);
+      border-radius: 8px;
+      background: #020502;
     }}
     .modality-thumb img {{
       display: block;
@@ -716,7 +714,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       font-variant-numeric: tabular-nums;
     }}
     .modality-index {{
-      color: #8a8072;
+      color: #a5afa2;
       font-size: 12px;
       margin-top: 10px;
     }}
@@ -728,14 +726,14 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .modality p {{
       margin: 9px 0 0;
-      color: #4f565f;
+      color: #dce8d7;
       font-size: 14px;
       font-weight: 650;
     }}
     .modality span {{
       display: block;
       margin-top: 5px;
-      color: #7a7d77;
+      color: #a5afa2;
       font-size: 13px;
     }}
     .shared-band {{
@@ -745,16 +743,16 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       align-items: center;
       margin-top: 20px;
       padding: 14px;
-      border: 1px solid #e4ded4;
-      background: rgba(245,241,233,0.82);
-      border-radius: 12px;
+      border: 1px solid rgba(167,240,120,0.22);
+      background: rgba(7,18,7,0.72);
+      border-radius: 8px;
     }}
     .step {{
       min-height: 62px;
       padding: 13px 15px;
-      background: #fffefd;
-      border: 1px solid #eee9e1;
-      border-radius: 9px;
+      background: rgba(7,18,7,0.92);
+      border: 1px solid rgba(167,240,120,0.16);
+      border-radius: 8px;
     }}
     .step strong {{
       display: block;
@@ -764,11 +762,11 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .step span {{
       display: block;
       margin-top: 5px;
-      color: #6f716c;
+      color: #a5afa2;
       font-size: 13px;
     }}
     .arrow {{
-      color: #938a7d;
+      color: #a7f078;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
       font-size: 22px;
     }}
@@ -780,9 +778,9 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .family {{
       padding: 17px;
-      border: 1px solid color-mix(in srgb, var(--accent) 24%, #e4ded4);
-      background: rgba(255,254,253,0.82);
-      border-radius: 16px;
+      border: 1px solid color-mix(in srgb, var(--accent) 28%, #020502);
+      background: rgba(7,18,7,0.82);
+      border-radius: 8px;
     }}
     .family-head {{
       display: flex;
@@ -791,7 +789,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       gap: 16px;
       min-height: 78px;
       padding-bottom: 14px;
-      border-bottom: 1px solid color-mix(in srgb, var(--accent) 18%, #eee9e1);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 24%, #020502);
     }}
     .family-head span {{
       color: var(--accent);
@@ -815,9 +813,9 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .task-card {{
       min-height: 168px;
       padding: 17px 18px;
-      border: 1px solid color-mix(in srgb, var(--accent) 22%, #e4ded4);
-      background: linear-gradient(180deg, #fffefd, color-mix(in srgb, var(--soft) 45%, #fffefd));
-      border-radius: 13px;
+      border: 1px solid color-mix(in srgb, var(--accent) 28%, #020502);
+      background: linear-gradient(180deg, rgba(10,24,10,0.96), color-mix(in srgb, var(--soft) 24%, #071207));
+      border-radius: 8px;
     }}
     .task-meta {{
       display: flex;
@@ -826,7 +824,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       gap: 12px;
     }}
     .index {{
-      color: #8a8072;
+      color: #a5afa2;
       font-size: 12px;
     }}
     .kind {{
@@ -835,9 +833,9 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       height: 24px;
       padding: 0 9px;
       border-radius: 6px;
-      border: 1px solid color-mix(in srgb, var(--accent) 30%, #ffffff);
+      border: 1px solid color-mix(in srgb, var(--accent) 40%, #020502);
       color: var(--accent);
-      background: rgba(255,255,255,0.72);
+      background: rgba(2,5,2,0.48);
       text-transform: uppercase;
       font-size: 11px;
       line-height: 1;
@@ -845,7 +843,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .task-card h3 {{
       margin: 12px 0 0;
-      color: #111827;
+      color: #f4f8ef;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
       font-size: 21px;
       line-height: 1.18;
@@ -854,7 +852,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .task-card p {{
       margin: 11px 0 0;
       min-height: 39px;
-      color: #4f565f;
+      color: #dce8d7;
       font-size: 15px;
       line-height: 1.28;
       font-weight: 560;
@@ -867,16 +865,16 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       min-height: 32px;
       padding: 7px 10px;
       border-radius: 8px;
-      border: 1px solid color-mix(in srgb, var(--accent) 32%, #ffffff);
-      background: rgba(255,255,255,0.82);
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, #020502);
+      background: rgba(2,5,2,0.42);
     }}
     .metric.neural {{
       margin-left: 8px;
-      border-color: rgba(31,36,33,0.18);
-      background: rgba(245,241,233,0.82);
+      border-color: rgba(255,255,255,0.20);
+      background: rgba(255,255,255,0.08);
     }}
     .metric span {{
-      color: #64748b;
+      color: #a5afa2;
       font-size: 13px;
       font-weight: 760;
     }}
@@ -895,17 +893,17 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       gap: 32px;
       margin-top: 22px;
       padding-top: 20px;
-      border-top: 1px solid #e4ded4;
-      color: #5f625d;
+      border-top: 1px solid rgba(167,240,120,0.20);
+      color: #a5afa2;
       font-size: 18px;
       line-height: 1.35;
       font-weight: 620;
     }}
     .footer code {{
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
-      color: #1f2421;
-      background: #f5f1e9;
-      border: 1px solid #e4ded4;
+      color: #020502;
+      background: #a7f078;
+      border: 1px solid #a7f078;
       border-radius: 7px;
       padding: 6px 9px;
       white-space: nowrap;

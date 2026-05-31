@@ -8,27 +8,30 @@
   <meta property="og:title" content="Ropedia Xperience-10M Task Suite">
   <meta property="og:description" content="One public embodied-AI episode, converted into reproducible multimodal tasks, minimal baselines, neural MLP baselines, metrics, and diagrams.">
   <meta property="og:image" content="assets/task_suite_infographic.png?v=xperience10m-nn">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      color-scheme: light;
-      --ink: #1f2421;
-      --muted: #6f716c;
-      --line: #e4ded4;
-      --soft-line: #eee9e1;
-      --page: #fbfaf7;
-      --panel: #f5f1e9;
-      --surface: #fffefd;
-      --blue: #1f6c9f;
-      --cyan: #2e7775;
-      --green: #346538;
-      --amber: #956400;
-      --red: #9f2f2d;
-      --shadow: 0 24px 60px rgba(68, 55, 38, 0.08);
+      color-scheme: dark;
+      --ink: #f4f8ef;
+      --muted: #a5afa2;
+      --line: rgba(164, 242, 127, 0.24);
+      --soft-line: rgba(164, 242, 127, 0.14);
+      --page: #020502;
+      --panel: #061006;
+      --surface: #071207;
+      --blue: #9bdfff;
+      --cyan: #7ae5c3;
+      --green: #a7f078;
+      --amber: #d8f4a5;
+      --red: #ff8f7a;
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
       --radius: 8px;
       --max: 1220px;
-      --font-ui: "Avenir Next", "SF Pro Display", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-copy: "Avenir Next", "SF Pro Text", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-mono: "SF Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --font-ui: "Inter Tight", "Avenir Next", "SF Pro Display", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-copy: "Space Grotesk", "Avenir Next", "SF Pro Text", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "Space Grotesk", "SF Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
     }
 
     * { box-sizing: border-box; }
@@ -38,10 +41,11 @@
       font-family: var(--font-copy);
       color: var(--ink);
       background:
-        linear-gradient(90deg, rgba(68,55,38,0.028) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(68,55,38,0.022) 1px, transparent 1px),
+        radial-gradient(circle at 80% 10%, rgba(164, 242, 127, 0.12), transparent 28%),
+        radial-gradient(circle at 18% 24%, rgba(164, 242, 127, 0.06), transparent 22%),
+        radial-gradient(circle, rgba(164, 242, 127, 0.11) 1px, transparent 1.4px),
         var(--page);
-      background-size: 56px 56px, 56px 56px, auto;
+      background-size: auto, auto, 22px 22px, auto;
       line-height: 1.5;
       text-rendering: optimizeLegibility;
     }
@@ -54,7 +58,7 @@
       top: 12px;
       transform: translateY(-160%);
       background: var(--ink);
-      color: white;
+      color: #020502;
       padding: 10px 12px;
       border-radius: 6px;
       z-index: 40;
@@ -65,7 +69,7 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(251,250,247,0.88);
+      background: rgba(2, 5, 2, 0.86);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--soft-line);
     }
@@ -88,11 +92,11 @@
     .mark {
       width: 34px;
       height: 34px;
-      border: 1px solid #d7ccbd;
+      border: 1px solid rgba(164, 242, 127, 0.48);
       display: grid;
       place-items: center;
-      color: var(--ink);
-      background: #f1eadf;
+      color: var(--green);
+      background: #061006;
       font-family: var(--font-mono);
       font-size: 13px;
       font-weight: 760;
@@ -102,7 +106,7 @@
       align-items: center;
       gap: 20px;
       font-size: 14px;
-      color: #4e514c;
+      color: #c6d0c2;
     }
     .nav-links a {
       text-decoration: none;
@@ -110,13 +114,13 @@
     }
     .nav-links a:hover { color: var(--ink); transform: translateY(-1px); }
     a:focus-visible, button:focus-visible {
-      outline: 2px solid rgba(31,108,159,0.48);
+      outline: 2px solid rgba(164, 242, 127, 0.54);
       outline-offset: 3px;
     }
     .nav-action {
       border: 1px solid var(--ink);
-      background: var(--ink);
-      color: white;
+      background: var(--green);
+      color: #020502;
       height: 36px;
       padding: 0 14px;
       display: inline-flex;
@@ -130,10 +134,10 @@
     .hero {
       border-bottom: 1px solid var(--soft-line);
       background:
-        linear-gradient(115deg, rgba(255,255,255,0.82), rgba(245,241,233,0.72)),
-        linear-gradient(90deg, rgba(68,55,38,0.05) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(68,55,38,0.035) 1px, transparent 1px);
-      background-size: auto, 54px 54px, 54px 54px;
+        radial-gradient(circle at 78% 28%, rgba(164, 242, 127, 0.20), transparent 18%),
+        radial-gradient(circle at 58% 36%, rgba(255, 255, 255, 0.10) 1px, transparent 2px),
+        linear-gradient(180deg, #020502, #020702 68%, #050b05);
+      background-size: auto, 16px 16px, auto;
     }
     .hero-inner {
       min-height: 680px;
@@ -148,7 +152,7 @@
       align-items: center;
       gap: 9px;
       margin-bottom: 22px;
-      color: #4f524d;
+      color: var(--green);
       font-family: var(--font-mono);
       font-size: 12px;
       text-transform: uppercase;
@@ -158,7 +162,7 @@
       content: "";
       width: 34px;
       height: 1px;
-      background: var(--ink);
+      background: var(--green);
     }
     h1 {
       margin: 0;
@@ -168,11 +172,12 @@
       letter-spacing: 0;
       max-width: 860px;
       text-wrap: balance;
+      color: #f7fff0;
     }
     .hero-copy {
       margin: 26px 0 0;
       max-width: 690px;
-      color: #4e514c;
+      color: #c7d1c3;
       font-size: 19px;
       line-height: 1.65;
       text-wrap: pretty;
@@ -193,15 +198,16 @@
       gap: 10px;
       text-decoration: none;
       font-weight: 720;
-      background: var(--surface);
+      background: rgba(7, 18, 7, 0.82);
       transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), border-color 240ms cubic-bezier(0.16, 1, 0.3, 1), background 240ms cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .button:hover { transform: translateY(-2px); border-color: #cbbfad; }
+    .button:hover { transform: translateY(-2px); border-color: var(--green); background: rgba(164, 242, 127, 0.10); }
     .button:active { transform: translateY(0) scale(0.98); }
     .button.primary {
       background: var(--ink);
-      color: white;
-      border-color: var(--ink);
+      color: #020502;
+      border-color: var(--green);
+      background: var(--green);
     }
     .hero-stats {
       display: grid;
@@ -212,14 +218,14 @@
     }
     .stat {
       border: 1px solid var(--line);
-      background: rgba(255,254,253,0.86);
+      background: rgba(7, 18, 7, 0.82);
       padding: 14px 14px 13px;
       border-radius: var(--radius);
     }
     .stat strong { display: block; font-family: var(--font-mono); font-size: 21px; line-height: 1; font-variant-numeric: tabular-nums; }
     .stat span { display: block; margin-top: 7px; font-size: 12px; color: var(--muted); }
     .hero-panel {
-      background: rgba(255,254,253,0.92);
+      background: rgba(7, 18, 7, 0.88);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -245,8 +251,8 @@
     }
     .signal:last-child { border-bottom: 0; }
     .signal code {
-      color: #2f3437;
-      background: #f4f0e8;
+      color: #e7f3df;
+      background: rgba(164, 242, 127, 0.08);
       border: 1px solid var(--soft-line);
       padding: 5px 7px;
       border-radius: 5px;
@@ -256,7 +262,7 @@
     .track {
       position: relative;
       height: 12px;
-      background: #eee8df;
+      background: rgba(164, 242, 127, 0.16);
       overflow: hidden;
       border-radius: 999px;
     }
@@ -269,7 +275,7 @@
     }
     .signal strong { text-align: right; font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; }
 
-    section { padding: 88px 0 96px; border-bottom: 1px solid var(--soft-line); }
+    section { padding: 88px 0 96px; border-bottom: 1px solid var(--soft-line); background: rgba(2, 5, 2, 0.72); }
     #suite { padding: 62px 0 76px; }
     .section-head {
       display: flex;
@@ -303,7 +309,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--surface);
-      box-shadow: 0 14px 34px rgba(68, 55, 38, 0.045);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.36);
     }
     .task-suite-image {
       display: block;
@@ -328,11 +334,11 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 24px;
-      background: #f8f2e8;
-      color: #3f3425;
+      background: rgba(164, 242, 127, 0.06);
+      color: #eaf5e5;
     }
     .callout h3, .artifact h3 { margin: 0 0 8px; font-size: 17px; }
-    .callout p, .artifact p { margin: 0; color: #665d51; line-height: 1.6; }
+    .callout p, .artifact p { margin: 0; color: #aab5a5; line-height: 1.6; }
 
     .models {
       display: grid;
@@ -347,7 +353,7 @@
       background: var(--surface);
       transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 240ms cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .model:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(68, 55, 38, 0.06); }
+    .model:hover { transform: translateY(-3px); box-shadow: 0 18px 38px rgba(164, 242, 127, 0.08); }
     .model h3 { margin: 0; font-size: 15px; }
     .model .score { display: block; margin-top: 18px; font-family: var(--font-mono); font-size: 33px; font-weight: 760; line-height: 1; font-variant-numeric: tabular-nums; }
     .model .meta { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; }
@@ -365,12 +371,12 @@
       height: 36px;
       padding: 0 14px;
       font-weight: 650;
-      color: #354052;
+      color: #d7e3d0;
       cursor: pointer;
       transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), background 220ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     .filter:hover { transform: translateY(-1px); }
-    .filter.active { color: white; background: var(--ink); border-color: var(--ink); }
+    .filter.active { color: #020502; background: var(--green); border-color: var(--green); }
     .task-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -386,7 +392,7 @@
       min-height: 184px;
       transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), border-color 240ms cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .task-card:hover { transform: translateY(-3px); border-color: #cbbfad; }
+    .task-card:hover { transform: translateY(-3px); border-color: var(--green); }
     .task-card.hide { display: none; }
     .task-top { display: flex; justify-content: space-between; gap: 14px; align-items: start; }
     .task-name { font-family: var(--font-mono); font-size: 13px; font-weight: 760; }
@@ -394,18 +400,18 @@
       font-size: 11px;
       border-radius: 999px;
       padding: 4px 8px;
-      color: #1f2937;
-      background: #eef2f7;
+      color: #d8ead2;
+      background: rgba(164, 242, 127, 0.08);
       white-space: nowrap;
     }
-    .tag.supervised { background: #e1f3fe; color: #1f6c9f; }
-    .tag.forecast { background: #edf3ec; color: #346538; }
-    .tag.retrieval { background: #e6f4f1; color: #2e7775; }
-    .tag.diagnostic { background: #fbf3db; color: #956400; }
+    .tag.supervised { background: rgba(155, 223, 255, 0.12); color: #9bdfff; }
+    .tag.forecast { background: rgba(164, 242, 127, 0.12); color: #a7f078; }
+    .tag.retrieval { background: rgba(122, 229, 195, 0.12); color: #7ae5c3; }
+    .tag.diagnostic { background: rgba(216, 244, 165, 0.12); color: #d8f4a5; }
     .task-card p { margin: 0; color: var(--muted); font-size: 13px; }
     .metric-row { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
     .metric-row strong { font-family: var(--font-mono); font-size: 18px; font-variant-numeric: tabular-nums; }
-    .mini-bar { height: 7px; background: #eee8df; border-radius: 999px; overflow: hidden; }
+    .mini-bar { height: 7px; background: rgba(164, 242, 127, 0.14); border-radius: 999px; overflow: hidden; }
     .mini-bar span { display: block; height: 100%; width: var(--w); background: var(--c); }
 
     .artifact-grid {
@@ -441,8 +447,8 @@
       width: fit-content;
       border-radius: 999px;
       padding: 4px 9px;
-      background: #edf2f7;
-      color: #334155;
+      background: rgba(164, 242, 127, 0.10);
+      color: var(--green);
       font-size: 11px;
       font-weight: 740;
     }
@@ -451,7 +457,7 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 8px;
       font-size: 12px;
-      color: #4e514c;
+      color: #bcc8b7;
     }
     .direction-counts strong {
       display: block;
@@ -488,7 +494,7 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
       font-size: 12px;
-      color: #4e514c;
+      color: var(--muted);
     }
     .extension-metrics strong {
       display: block;
@@ -521,8 +527,8 @@
       font-size: 12px;
     }
     .walk-flow span {
-      border: 1px solid #e5dfd5;
-      background: #faf7f1;
+      border: 1px solid var(--soft-line);
+      background: rgba(164, 242, 127, 0.06);
       border-radius: 6px;
       padding: 9px;
       min-height: 58px;
@@ -535,28 +541,28 @@
       padding: 18px;
       transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), border-color 240ms cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .artifact:hover { transform: translateY(-3px); border-color: #cbbfad; }
+    .artifact:hover { transform: translateY(-3px); border-color: var(--green); }
     .artifact a { display: inline-block; margin-top: 14px; font-weight: 740; text-decoration: none; color: var(--blue); }
     .artifact a:hover { text-decoration: underline; text-underline-offset: 4px; }
 
     .code-panel {
-      background: #1f2421;
-      color: #f7f2e8;
+      background: #000;
+      color: #dff7d4;
       border-radius: var(--radius);
       padding: 18px;
       overflow: auto;
       font-family: var(--font-mono);
       font-size: 13px;
       line-height: 1.65;
-      border: 1px solid #3c403b;
+      border: 1px solid rgba(164, 242, 127, 0.24);
     }
     .code-panel button {
       float: right;
       margin-left: 16px;
       height: 30px;
-      border: 1px solid #5a6059;
-      color: white;
-      background: #363c36;
+      border: 1px solid rgba(164, 242, 127, 0.36);
+      color: #020502;
+      background: var(--green);
       border-radius: 5px;
       cursor: pointer;
       font-weight: 700;
@@ -647,12 +653,12 @@
           <span>current feature allocation</span>
           <span>window vector</span>
         </div>
-        <div class="signal"><code>mocap</code><div class="track"><span style="--w:25.3%;--c:#1f6c9f"></span></div><strong>2,121</strong></div>
-        <div class="signal"><code>camera+imu</code><div class="track"><span style="--w:1.5%;--c:#2e7775"></span></div><strong>126</strong></div>
-        <div class="signal"><code>depth</code><div class="track"><span style="--w:11.7%;--c:#346538"></span></div><strong>980</strong></div>
-        <div class="signal"><code>video</code><div class="track"><span style="--w:49.1%;--c:#956400"></span></div><strong>4,116</strong></div>
-        <div class="signal"><code>language</code><div class="track"><span style="--w:10.7%;--c:#6f5b21"></span></div><strong>896</strong></div>
-        <div class="signal"><code>static</code><div class="track"><span style="--w:1.7%;--c:#6f716c"></span></div><strong>139</strong></div>
+        <div class="signal"><code>mocap</code><div class="track"><span style="--w:25.3%;--c:#a7f078"></span></div><strong>2,121</strong></div>
+        <div class="signal"><code>camera+imu</code><div class="track"><span style="--w:1.5%;--c:#7ae5c3"></span></div><strong>126</strong></div>
+        <div class="signal"><code>depth</code><div class="track"><span style="--w:11.7%;--c:#d8f4a5"></span></div><strong>980</strong></div>
+        <div class="signal"><code>video</code><div class="track"><span style="--w:49.1%;--c:#9bdfff"></span></div><strong>4,116</strong></div>
+        <div class="signal"><code>language</code><div class="track"><span style="--w:10.7%;--c:#f4f8ef"></span></div><strong>896</strong></div>
+        <div class="signal"><code>static</code><div class="track"><span style="--w:1.7%;--c:#a5afa2"></span></div><strong>139</strong></div>
       </div>
     </div>
   </header>
@@ -870,18 +876,18 @@
           <button class="filter" data-filter="diagnostic">Diagnostic</button>
         </div>
         <div class="task-grid" id="taskGrid">
-          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">timeline_action</span><span class="tag supervised">supervised</span></div><p>All featurized modalities to current action label. Chronological split exposes unseen future actions.</p><div class="metric-row"><span>macro-F1</span><strong>0.0500</strong></div><div class="mini-bar"><span style="--w:5%;--c:#1f6c9f"></span></div></article>
-          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">timeline_subtask</span><span class="tag supervised">supervised</span></div><p>All featurized modalities to current subtask label. Useful for segmentation diagnostics.</p><div class="metric-row"><span>macro-F1</span><strong>0.0495</strong></div><div class="mini-bar"><span style="--w:5%;--c:#1f6c9f"></span></div></article>
-          <article class="task-card" data-kind="diagnostic"><div class="task-top"><span class="task-name">transition_detection</span><span class="tag diagnostic">diagnostic</span></div><p>Predict steady vs action boundary. Highlights task-transition localization quality.</p><div class="metric-row"><span>macro-F1</span><strong>0.6552</strong></div><div class="mini-bar"><span style="--w:65.5%;--c:#956400"></span></div></article>
-          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">next_action</span><span class="tag supervised">supervised</span></div><p>Current multimodal window to action 20 frames later. Tests short-horizon task flow.</p><div class="metric-row"><span>macro-F1</span><strong>0.0593</strong></div><div class="mini-bar"><span style="--w:5.9%;--c:#1f6c9f"></span></div></article>
-          <article class="task-card" data-kind="forecast"><div class="task-top"><span class="task-name">hand_trajectory_forecast</span><span class="tag forecast">forecast</span></div><p>Predict future left/right hand 3D joints. Closer to imitation-learning style signals.</p><div class="metric-row"><span>MPJPE</span><strong>0.8223</strong></div><div class="mini-bar"><span style="--w:48%;--c:#346538"></span></div></article>
-          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">contact_prediction</span><span class="tag supervised">supervised</span></div><p>Non-contact modalities to binary contact. Degenerate in this sample because one class dominates.</p><div class="metric-row"><span>accuracy</span><strong>1.0000</strong></div><div class="mini-bar"><span style="--w:100%;--c:#346538"></span></div></article>
-          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">object_relevance</span><span class="tag supervised">supervised</span></div><p>Predict relevant object set from non-caption feature blocks.</p><div class="metric-row"><span>micro-F1</span><strong>0.1839</strong></div><div class="mini-bar"><span style="--w:18.4%;--c:#1f6c9f"></span></div></article>
-          <article class="task-card" data-kind="retrieval"><div class="task-top"><span class="task-name">caption_grounding</span><span class="tag retrieval">retrieval</span></div><p>Caption objects/interaction query to matching sensor window.</p><div class="metric-row"><span>MRR</span><strong>0.0172</strong></div><div class="mini-bar"><span style="--w:1.7%;--c:#2e7775"></span></div></article>
-          <article class="task-card" data-kind="retrieval"><div class="task-top"><span class="task-name">cross_modal_retrieval</span><span class="tag retrieval">retrieval</span></div><p>Motion/IMU/camera query retrieves matching depth/video window. Strongest single-episode signal.</p><div class="metric-row"><span>top-5</span><strong>0.3764</strong></div><div class="mini-bar"><span style="--w:37.6%;--c:#2e7775"></span></div></article>
-          <article class="task-card" data-kind="forecast"><div class="task-top"><span class="task-name">modality_reconstruction</span><span class="tag forecast">forecast</span></div><p>Motion/IMU/camera to depth/video feature vector.</p><div class="metric-row"><span>R2</span><strong>-0.0160</strong></div><div class="mini-bar"><span style="--w:2%;--c:#9f2f2d"></span></div></article>
-          <article class="task-card" data-kind="diagnostic"><div class="task-top"><span class="task-name">temporal_order</span><span class="tag diagnostic">diagnostic</span></div><p>Two adjacent windows to correct vs reversed order.</p><div class="metric-row"><span>F1</span><strong>0.5487</strong></div><div class="mini-bar"><span style="--w:54.9%;--c:#956400"></span></div></article>
-          <article class="task-card" data-kind="diagnostic"><div class="task-top"><span class="task-name">misalignment_detection</span><span class="tag diagnostic">diagnostic</span></div><p>Motion+visual pair to aligned vs shifted by eight windows.</p><div class="metric-row"><span>F1</span><strong>0.4866</strong></div><div class="mini-bar"><span style="--w:48.7%;--c:#956400"></span></div></article>
+          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">timeline_action</span><span class="tag supervised">supervised</span></div><p>All featurized modalities to current action label. Chronological split exposes unseen future actions.</p><div class="metric-row"><span>macro-F1</span><strong>0.0500</strong></div><div class="mini-bar"><span style="--w:5%;--c:#9bdfff"></span></div></article>
+          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">timeline_subtask</span><span class="tag supervised">supervised</span></div><p>All featurized modalities to current subtask label. Useful for segmentation diagnostics.</p><div class="metric-row"><span>macro-F1</span><strong>0.0495</strong></div><div class="mini-bar"><span style="--w:5%;--c:#9bdfff"></span></div></article>
+          <article class="task-card" data-kind="diagnostic"><div class="task-top"><span class="task-name">transition_detection</span><span class="tag diagnostic">diagnostic</span></div><p>Predict steady vs action boundary. Highlights task-transition localization quality.</p><div class="metric-row"><span>macro-F1</span><strong>0.6552</strong></div><div class="mini-bar"><span style="--w:65.5%;--c:#d8f4a5"></span></div></article>
+          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">next_action</span><span class="tag supervised">supervised</span></div><p>Current multimodal window to action 20 frames later. Tests short-horizon task flow.</p><div class="metric-row"><span>macro-F1</span><strong>0.0593</strong></div><div class="mini-bar"><span style="--w:5.9%;--c:#9bdfff"></span></div></article>
+          <article class="task-card" data-kind="forecast"><div class="task-top"><span class="task-name">hand_trajectory_forecast</span><span class="tag forecast">forecast</span></div><p>Predict future left/right hand 3D joints. Closer to imitation-learning style signals.</p><div class="metric-row"><span>MPJPE</span><strong>0.8223</strong></div><div class="mini-bar"><span style="--w:48%;--c:#a7f078"></span></div></article>
+          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">contact_prediction</span><span class="tag supervised">supervised</span></div><p>Non-contact modalities to binary contact. Degenerate in this sample because one class dominates.</p><div class="metric-row"><span>accuracy</span><strong>1.0000</strong></div><div class="mini-bar"><span style="--w:100%;--c:#a7f078"></span></div></article>
+          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">object_relevance</span><span class="tag supervised">supervised</span></div><p>Predict relevant object set from non-caption feature blocks.</p><div class="metric-row"><span>micro-F1</span><strong>0.1839</strong></div><div class="mini-bar"><span style="--w:18.4%;--c:#9bdfff"></span></div></article>
+          <article class="task-card" data-kind="retrieval"><div class="task-top"><span class="task-name">caption_grounding</span><span class="tag retrieval">retrieval</span></div><p>Caption objects/interaction query to matching sensor window.</p><div class="metric-row"><span>MRR</span><strong>0.0172</strong></div><div class="mini-bar"><span style="--w:1.7%;--c:#7ae5c3"></span></div></article>
+          <article class="task-card" data-kind="retrieval"><div class="task-top"><span class="task-name">cross_modal_retrieval</span><span class="tag retrieval">retrieval</span></div><p>Motion/IMU/camera query retrieves matching depth/video window. Strongest single-episode signal.</p><div class="metric-row"><span>top-5</span><strong>0.3764</strong></div><div class="mini-bar"><span style="--w:37.6%;--c:#7ae5c3"></span></div></article>
+          <article class="task-card" data-kind="forecast"><div class="task-top"><span class="task-name">modality_reconstruction</span><span class="tag forecast">forecast</span></div><p>Motion/IMU/camera to depth/video feature vector.</p><div class="metric-row"><span>R2</span><strong>-0.0160</strong></div><div class="mini-bar"><span style="--w:2%;--c:#ff8f7a"></span></div></article>
+          <article class="task-card" data-kind="diagnostic"><div class="task-top"><span class="task-name">temporal_order</span><span class="tag diagnostic">diagnostic</span></div><p>Two adjacent windows to correct vs reversed order.</p><div class="metric-row"><span>F1</span><strong>0.5487</strong></div><div class="mini-bar"><span style="--w:54.9%;--c:#d8f4a5"></span></div></article>
+          <article class="task-card" data-kind="diagnostic"><div class="task-top"><span class="task-name">misalignment_detection</span><span class="tag diagnostic">diagnostic</span></div><p>Motion+visual pair to aligned vs shifted by eight windows.</p><div class="metric-row"><span>F1</span><strong>0.4866</strong></div><div class="mini-bar"><span style="--w:48.7%;--c:#d8f4a5"></span></div></article>
         </div>
       </div>
     </section>

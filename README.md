@@ -8,6 +8,12 @@
 An audit-first embodied-AI learning repo built around one public
 Xperience-10M sample episode released by Ropedia.
 
+The public dashboard and generated figures deliberately follow the visual
+language of [ropedia.com](https://ropedia.com/): near-black 4D-world canvas,
+lime-green identity accents, thin green-tinted cards, point-cloud texture, and
+the Inter Tight / Space Grotesk typography pairing. The layout is original to
+this project, but the style stays aligned with Ropedia's own product site.
+
 The project does one narrow thing carefully: it turns a raw multimodal episode
 into:
 

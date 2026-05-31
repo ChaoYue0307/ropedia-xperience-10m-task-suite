@@ -28,33 +28,33 @@ DEFAULT_PIPELINE_OUTPUT = ASSETS / "pipeline_diagram.png"
 DEFAULT_ARCHITECTURE_OUTPUT = ASSETS / "task_architectures.png"
 
 PIPELINE_WIDTH = 1800
-PIPELINE_HEIGHT = 1000
+PIPELINE_HEIGHT = 1120
 ARCHITECTURE_WIDTH = 1800
 ARCHITECTURE_HEIGHT = 1520
 
 
 COLORS = {
-    "blue": "#1f6c9f",
-    "teal": "#197d83",
-    "green": "#346538",
-    "amber": "#956400",
-    "orange": "#b65b04",
-    "red": "#9f2f2d",
-    "ink": "#1f2421",
-    "muted": "#5f625d",
-    "line": "#e4ded4",
+    "blue": "#9bdfff",
+    "teal": "#7ae5c3",
+    "green": "#a7f078",
+    "amber": "#d8f4a5",
+    "orange": "#b7ff91",
+    "red": "#ff8f7a",
+    "ink": "#f4f8ef",
+    "muted": "#a5afa2",
+    "line": "#2b4428",
 }
 
 
 TASK_GROUPS = [
-    ("Label + State", "#197d83", ["timeline_action", "timeline_subtask", "next_action"]),
+    ("Label + State", "#9bdfff", ["timeline_action", "timeline_subtask", "next_action"]),
     (
         "Prediction + Reconstruction",
-        "#1f6c9f",
+        "#a7f078",
         ["hand_trajectory_forecast", "modality_reconstruction", "contact_prediction"],
     ),
-    ("Grounding + Retrieval", "#956400", ["caption_grounding", "cross_modal_retrieval", "object_relevance"]),
-    ("Temporal Diagnostics", "#9f2f2d", ["transition_detection", "temporal_order", "misalignment_detection"]),
+    ("Grounding + Retrieval", "#7ae5c3", ["caption_grounding", "cross_modal_retrieval", "object_relevance"]),
+    ("Temporal Diagnostics", "#d8f4a5", ["transition_detection", "temporal_order", "misalignment_detection"]),
 ]
 
 
@@ -168,30 +168,30 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
   <meta charset="utf-8">
   <style>
     * {{ box-sizing: border-box; }}
-    body {{ margin: 0; background: #fbfaf7; font-family: "Avenir Next", "SF Pro Display", Arial, sans-serif; }}
+    body {{ margin: 0; background: #020502; font-family: "Inter Tight", "Space Grotesk", Arial, sans-serif; }}
     .canvas {{
       position: relative;
       width: {PIPELINE_WIDTH}px;
       height: {PIPELINE_HEIGHT}px;
       overflow: hidden;
-      color: #1f2421;
+      color: #f4f8ef;
       background:
-        linear-gradient(90deg, rgba(68,55,38,0.03) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(68,55,38,0.024) 1px, transparent 1px),
-        #fbfaf7;
-      background-size: 58px 58px, 58px 58px, auto;
+        radial-gradient(circle at 78% 24%, rgba(167,240,120,0.18), transparent 24%),
+        radial-gradient(circle, rgba(167,240,120,0.16) 1px, transparent 2px),
+        #020502;
+      background-size: auto, 18px 18px, auto;
     }}
     .base-layer {{
       position: absolute;
       inset: 0;
       background-size: cover;
       background-position: center;
-      filter: saturate(0.95) contrast(0.98);
+      filter: saturate(1.08) contrast(1.05) brightness(0.48);
     }}
     .wash {{
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(251,250,247,0.72), rgba(251,250,247,0.9));
+      background: linear-gradient(180deg, rgba(2,5,2,0.76), rgba(2,5,2,0.94));
     }}
     .content {{
       position: relative;
@@ -207,7 +207,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
     }}
     .kicker {{
       font: 700 17px "SF Mono", Menlo, monospace;
-      color: #68665f;
+      color: #a7f078;
       text-transform: uppercase;
       letter-spacing: 0.09em;
       margin-bottom: 14px;
@@ -221,7 +221,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
     .subtitle {{
       margin: 18px 0 0;
       max-width: 1010px;
-      color: #4d524d;
+      color: #dce8d7;
       font-size: 24px;
       line-height: 1.42;
       font-weight: 520;
@@ -233,23 +233,23 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
       margin-top: 2px;
     }}
     .metric {{
-      background: rgba(255,254,253,0.86);
-      border: 1px solid #e4ded4;
+      background: rgba(7,18,7,0.86);
+      border: 1px solid rgba(167,240,120,0.26);
       border-radius: 8px;
       padding: 13px 15px 12px;
-      box-shadow: 0 16px 40px rgba(68,55,38,0.06);
+      box-shadow: 0 16px 44px rgba(0,0,0,0.42);
     }}
     .metric strong {{
       display: block;
       font: 850 24px "SF Mono", Menlo, monospace;
-      color: #1f2421;
+      color: #f4f8ef;
       line-height: 1;
       font-variant-numeric: tabular-nums;
     }}
     .metric span {{
       display: block;
       margin-top: 7px;
-      color: #696d67;
+      color: #a5afa2;
       font-size: 14px;
       font-weight: 650;
     }}
@@ -270,11 +270,11 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
       flex: 1 1 0;
       height: 182px;
       position: relative;
-      background: rgba(255,254,253,0.88);
-      border: 1px solid rgba(228,222,212,0.96);
+      background: rgba(7,18,7,0.86);
+      border: 1px solid rgba(167,240,120,0.24);
       border-radius: 8px;
       padding: 24px 24px 22px 30px;
-      box-shadow: 0 24px 62px rgba(68,55,38,0.09);
+      box-shadow: 0 24px 62px rgba(0,0,0,0.40);
       backdrop-filter: blur(12px);
     }}
     .stage::before {{
@@ -301,7 +301,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
       margin: 0;
       padding: 0;
       list-style: none;
-      color: #39413d;
+      color: #dce8d7;
       font-size: 17px;
       line-height: 1.48;
       font-weight: 560;
@@ -313,11 +313,11 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
       display: grid;
       place-items: center;
       border-radius: 999px;
-      border: 1px solid #d7d0c4;
-      background: rgba(255,254,253,0.78);
-      color: #7c807a;
+      border: 1px solid rgba(167,240,120,0.26);
+      background: rgba(7,18,7,0.78);
+      color: #a7f078;
       font: 850 22px "SF Mono", Menlo, monospace;
-      box-shadow: 0 14px 34px rgba(68,55,38,0.06);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.36);
     }}
     .audit {{
       position: absolute;
@@ -328,14 +328,14 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
       grid-template-columns: 190px 1fr;
       gap: 26px;
       align-items: center;
-      background: rgba(255,254,253,0.88);
-      border: 1px solid #e4ded4;
+      background: rgba(7,18,7,0.88);
+      border: 1px solid rgba(167,240,120,0.24);
       border-radius: 8px;
       padding: 24px 28px;
-      box-shadow: 0 22px 52px rgba(68,55,38,0.08);
+      box-shadow: 0 22px 52px rgba(0,0,0,0.42);
     }}
     .audit strong {{
-      color: #1f2421;
+      color: #f4f8ef;
       font-size: 23px;
       line-height: 1.1;
     }}
@@ -343,7 +343,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
       margin: 0;
       padding: 0;
       list-style: none;
-      color: #40463f;
+      color: #dce8d7;
       font-size: 17px;
       line-height: 1.55;
       font-weight: 560;
@@ -445,30 +445,30 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
   <meta charset="utf-8">
   <style>
     * {{ box-sizing: border-box; }}
-    body {{ margin: 0; background: #fbfaf7; font-family: "Avenir Next", "SF Pro Display", Arial, sans-serif; }}
+    body {{ margin: 0; background: #020502; font-family: "Inter Tight", "Space Grotesk", Arial, sans-serif; }}
     .canvas {{
       position: relative;
       width: {ARCHITECTURE_WIDTH}px;
       height: {ARCHITECTURE_HEIGHT}px;
       overflow: hidden;
-      color: #1f2421;
+      color: #f4f8ef;
       background:
-        linear-gradient(90deg, rgba(68,55,38,0.03) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(68,55,38,0.024) 1px, transparent 1px),
-        #fbfaf7;
-      background-size: 58px 58px, 58px 58px, auto;
+        radial-gradient(circle at 76% 18%, rgba(167,240,120,0.16), transparent 24%),
+        radial-gradient(circle, rgba(167,240,120,0.13) 1px, transparent 2px),
+        #020502;
+      background-size: auto, 18px 18px, auto;
     }}
     .base-layer {{
       position: absolute;
       inset: 0;
       background-size: cover;
       background-position: center;
-      filter: saturate(0.95) contrast(0.98);
+      filter: saturate(1.08) contrast(1.05) brightness(0.48);
     }}
     .wash {{
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(251,250,247,0.72), rgba(251,250,247,0.92));
+      background: linear-gradient(180deg, rgba(2,5,2,0.76), rgba(2,5,2,0.94));
     }}
     .content {{
       position: relative;
@@ -484,7 +484,7 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
     }}
     .kicker {{
       font: 700 16px "SF Mono", Menlo, monospace;
-      color: #68665f;
+      color: #a7f078;
       text-transform: uppercase;
       letter-spacing: 0.09em;
       margin-bottom: 13px;
@@ -498,7 +498,7 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
     .subtitle {{
       margin: 15px 0 0;
       max-width: 1060px;
-      color: #4d524d;
+      color: #dce8d7;
       font-size: 22px;
       line-height: 1.42;
       font-weight: 520;
@@ -508,10 +508,10 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
       place-items: center;
       min-width: 188px;
       min-height: 112px;
-      border: 1px solid #e4ded4;
+      border: 1px solid rgba(167,240,120,0.26);
       border-radius: 8px;
-      background: rgba(255,254,253,0.86);
-      box-shadow: 0 18px 44px rgba(68,55,38,0.07);
+      background: rgba(7,18,7,0.86);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.42);
       text-align: center;
     }}
     .summary-pill strong {{
@@ -521,7 +521,7 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
     .summary-pill span {{
       display: block;
       margin-top: 8px;
-      color: #6c6d68;
+      color: #a5afa2;
       font-size: 15px;
       font-weight: 700;
     }}
@@ -533,11 +533,11 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
     }}
     .shared article {{
       min-height: 110px;
-      border: 1px solid #e4ded4;
+      border: 1px solid rgba(167,240,120,0.24);
       border-radius: 8px;
-      background: rgba(255,254,253,0.88);
+      background: rgba(7,18,7,0.86);
       padding: 20px 22px;
-      box-shadow: 0 18px 44px rgba(68,55,38,0.06);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.36);
     }}
     .shared h2 {{
       margin: 0 0 9px;
@@ -546,7 +546,7 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
     }}
     .shared p {{
       margin: 0;
-      color: #4c534f;
+      color: #dce8d7;
       font-size: 16px;
       line-height: 1.38;
       font-weight: 560;
@@ -559,11 +559,11 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
     }}
     .family {{
       min-height: 124px;
-      border: 1px solid #e4ded4;
+      border: 1px solid rgba(167,240,120,0.24);
       border-radius: 8px;
-      background: rgba(255,254,253,0.82);
+      background: rgba(7,18,7,0.82);
       padding: 20px 20px 18px;
-      box-shadow: 0 16px 40px rgba(68,55,38,0.055);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.34);
     }}
     .family h3 {{
       margin: 0 0 10px;
@@ -573,7 +573,7 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
     }}
     .family p {{
       margin: 0;
-      color: #4d534f;
+      color: #dce8d7;
       font-size: 15px;
       line-height: 1.42;
       font-weight: 560;
@@ -584,11 +584,11 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
       gap: 20px;
     }}
     .task-group {{
-      border: 1px solid rgba(228,222,212,0.96);
+      border: 1px solid rgba(167,240,120,0.22);
       border-radius: 8px;
-      background: rgba(255,254,253,0.74);
+      background: rgba(7,18,7,0.74);
       padding: 18px;
-      box-shadow: 0 22px 54px rgba(68,55,38,0.07);
+      box-shadow: 0 22px 54px rgba(0,0,0,0.42);
       backdrop-filter: blur(10px);
     }}
     .group-head {{
@@ -616,9 +616,9 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
     .task-card {{
       min-height: 244px;
       position: relative;
-      border: 1px solid color-mix(in srgb, var(--accent), #ffffff 68%);
+      border: 1px solid color-mix(in srgb, var(--accent), #020502 66%);
       border-radius: 8px;
-      background: rgba(255,254,253,0.92);
+      background: rgba(7,18,7,0.92);
       padding: 17px 18px 16px;
       overflow: hidden;
     }}
@@ -639,11 +639,11 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
       font: 850 11px "SF Mono", Menlo, monospace;
       text-transform: uppercase;
       letter-spacing: 0.03em;
-      background: rgba(255,254,253,0.72);
+      background: rgba(7,18,7,0.72);
     }}
     .task-card h3 {{
       margin: 13px 0 12px;
-      color: #161a17;
+      color: #f4f8ef;
       font-size: 21px;
       line-height: 1.08;
       overflow-wrap: anywhere;
@@ -653,7 +653,7 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
       grid-template-columns: 54px 1fr;
       gap: 5px 9px;
       margin: 0;
-      color: #3d453f;
+      color: #dce8d7;
       font-size: 13px;
       line-height: 1.32;
       font-weight: 560;
@@ -671,13 +671,13 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
       gap: 12px;
       align-items: center;
       margin-top: 12px;
-      border-top: 1px solid #eee9e1;
+      border-top: 1px solid rgba(167,240,120,0.16);
       padding-top: 12px;
       font-size: 13px;
       font-weight: 700;
     }}
     .metric-line span {{
-      color: #6c6d68;
+      color: #a5afa2;
       font: 850 11px "SF Mono", Menlo, monospace;
       text-transform: uppercase;
     }}
