@@ -16,6 +16,7 @@ into:
 - 12 end-to-end episode-level tasks,
 - lightweight neural MLP heads for the same 12 task contracts,
 - a generated four-direction research taxonomy matching the Ropedia job tracks,
+- four additional direction-extension probes with minimal and neural baselines,
 - junior-friendly walkthroughs for every task, with case study, input, process, and output,
 - a next TODO track for Qwen3-Omni fine-tuning and sensor-bridge evaluation,
 - metrics, predictions, model weights, manifests, charts, and a static website,
@@ -106,6 +107,7 @@ scripts/
   episode_task_suite.py             # 12 end-to-end task definitions
   neural_task_models.py             # optional PyTorch MLP heads for all 12 tasks
   research_direction_taxonomy.py    # maps 12 tasks to the four research tracks
+  research_direction_extension_tasks.py # one extra data-backed probe per track
   task_walkthroughs.py              # beginner explanations for each task contract
   generate_visualizations.py        # refreshes SVG charts + summary JSON
   render_task_suite_infographic.py  # renders the ChatGPT-image-backed PNG
@@ -124,6 +126,7 @@ results/
   episode_task_suite/               # 12-task suite metrics and predictions
     neural_mlp/                     # optional neural baseline artifacts per task
     research_directions/            # four-track taxonomy, CSV, and summary
+    research_direction_extensions/  # four extra direction probes + predictions
     task_walkthroughs/              # case-study walkthroughs for all 12 tasks
   omni_exploration/                 # H20/ModelScope smoke-test artifacts
 
@@ -131,6 +134,7 @@ docs/
   index.html                        # GitHub Pages dashboard
   data/summary_metrics.json         # website-readable metrics bundle
   data/research_directions.json     # four-track website data bundle
+  data/research_direction_extensions.json # four extra probe data bundle
   data/task_walkthroughs.json       # beginner task explanation data bundle
   assets/task_suite_infographic.png # 12-task presentation graphic
   assets/pipeline_diagram.png       # verified episode pipeline graphic
@@ -323,6 +327,7 @@ Refresh charts and the website data bundle:
 
 ```bash
 python scripts/research_direction_taxonomy.py
+python scripts/research_direction_extension_tasks.py
 python scripts/task_walkthroughs.py
 python scripts/generate_visualizations.py
 python scripts/render_overview_figures.py
@@ -416,6 +421,38 @@ The important interpretation is that all four directions can be **started** from
 the Xperience-10M sample modalities, but only direction C is strongly represented
 by the current 12-task suite. Directions A, B, and D need additional targets and
 multi-episode training before they become full research deliverables.
+
+## Four Direction-Extension Probes
+
+Beyond the original 12 core tasks, the repo now includes one extra data-backed
+probe for each research direction. These probes are computed from the same
+`shared_windows.npz`, `windows.csv`, and `feature_manifest.json` artifacts, so
+the reported numbers are real sample-derived metrics, not placeholder results.
+
+- [`research_direction_extension_results.json`](results/episode_task_suite/research_direction_extensions/research_direction_extension_results.json)
+- [`research_direction_extension_summary.md`](results/episode_task_suite/research_direction_extensions/research_direction_extension_summary.md)
+- [`docs/data/research_direction_extensions.json`](docs/data/research_direction_extensions.json)
+- [`research_direction_extension_tasks.svg`](docs/assets/charts/research_direction_extension_tasks.svg)
+
+![Four direction extension probes](docs/assets/charts/research_direction_extension_tasks.svg)
+
+| Direction | New extension task | Input | Output | Minimal | Neural MLP | Why it matters |
+| --- | --- | --- | --- | ---: | ---: | --- |
+| A. Human Modeling & Motion Understanding | `body_motion_intensity` | non-mocap video/depth/pose/IMU/SLAM/language features | high vs low body/hand motion | `0.7827` macro-F1 | `0.7986` macro-F1 | Starts a human-motion-energy target without leaking mocap input. |
+| B. 3D/4D Reconstruction & Neural Rendering | `multi_view_consistency_retrieval` | fisheye camera feature query | synchronized stereo-left view rank | `0.5534` MRR | `0.3469` MRR | Tests whether multi-view features preserve synchronized 4D scene identity. |
+| C. Egocentric Vision & Interaction | `action_phase_progress` | non-caption multimodal window | progress inside current action segment | `0.3416` MAE | `0.3038` MAE | Adds a task-structure/intent-style target beyond class labels. |
+| D. Scene Reconstruction & World Modeling | `ego_motion_forecast` | current sensors excluding camera translation and captions | future camera-translation delta | `0.1989` MAE | `0.0989` MAE | Starts a short-horizon world-model target over wearer motion. |
+
+Run:
+
+```bash
+python scripts/research_direction_extension_tasks.py
+```
+
+These four probes make the four-direction mapping more concrete, but they are
+still single-episode extension baselines. Full research claims still require
+multi-episode training, held-out episode evaluation, and stronger task-specific
+models.
 
 ## Task Walkthroughs For Juniors
 

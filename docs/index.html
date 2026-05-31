@@ -465,6 +465,38 @@
       gap: 14px;
       margin-top: 18px;
     }
+    .extension-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 20px 0 22px;
+    }
+    .extension-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      min-height: 282px;
+    }
+    .extension-card h3 { margin: 0; font-size: 15px; line-height: 1.3; }
+    .extension-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .extension-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      font-size: 12px;
+      color: #4e514c;
+    }
+    .extension-metrics strong {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 18px;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
     .walkthrough-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -537,14 +569,14 @@
     @media (max-width: 960px) {
       .hero-inner, .two-col { grid-template-columns: 1fr; }
       .hero-inner { min-height: 0; }
-      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .walkthrough-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .section-head { display: block; }
       .section-head p { margin-top: 14px; }
       .nav-links { display: none; }
     }
     @media (max-width: 640px) {
       .wrap { width: min(100% - 28px, var(--max)); }
-      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .walkthrough-grid, .walk-flow { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid, .walk-flow { grid-template-columns: 1fr; }
       .hero-inner, section { padding: 46px 0; }
       .signal { grid-template-columns: 1fr; }
       .signal strong { text-align: left; }
@@ -574,6 +606,7 @@
         <a href="#models">Models</a>
         <a href="#neural">Neural</a>
         <a href="#directions">Directions</a>
+        <a href="#extensions">Extensions</a>
         <a href="#architectures">Arch</a>
         <a href="#walkthroughs">Guide</a>
         <a href="#tasks">Tasks</a>
@@ -606,7 +639,7 @@
           <div class="stat"><strong>5,821</strong><span>frames in sample episode</span></div>
           <div class="stat"><strong>1,161</strong><span>20-frame windows</span></div>
           <div class="stat"><strong>8,378</strong><span>current feature dimensions</span></div>
-          <div class="stat"><strong>12+12</strong><span>minimal and neural task results</span></div>
+          <div class="stat"><strong>12+12+4</strong><span>core, neural, and extension probes</span></div>
         </div>
       </div>
       <div class="hero-panel" aria-label="Signal summary">
@@ -736,6 +769,60 @@
       </div>
     </section>
 
+    <section id="extensions">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Four extra probes make the directions actionable.</h2>
+          <p>These are new data-backed extension tasks computed from the same single-episode feature tensor. They add one concrete input, process, output, and metric for each research direction, while keeping the single-episode limitation explicit.</p>
+        </div>
+        <img class="chart" src="assets/charts/research_direction_extension_tasks.svg?v=xperience10m-ext" alt="Four Xperience-10M research-direction extension probes with minimal and neural metrics">
+        <div class="extension-grid">
+          <article class="extension-card">
+            <span class="status-pill">A / motion</span>
+            <h3>body_motion_intensity</h3>
+            <p><strong>Case:</strong> classify fast reach/pour windows as high motion and steady holding windows as low motion.</p>
+            <p><strong>Input:</strong> non-mocap video, depth, pose, IMU, SLAM, calibration, and language features.</p>
+            <p><strong>Output:</strong> high_motion or low_motion.</p>
+            <div class="extension-metrics"><span><strong>0.7827</strong>minimal macro-F1</span><span><strong>0.7986</strong>neural macro-F1</span></div>
+          </article>
+          <article class="extension-card">
+            <span class="status-pill">B / views</span>
+            <h3>multi_view_consistency_retrieval</h3>
+            <p><strong>Case:</strong> retrieve the synchronized stereo-left window from a fisheye-camera query.</p>
+            <p><strong>Input:</strong> fisheye_cam0 video features against stereo_left candidate features.</p>
+            <p><strong>Output:</strong> ranked synchronized view candidates.</p>
+            <div class="extension-metrics"><span><strong>0.5534</strong>minimal MRR</span><span><strong>0.3469</strong>neural MRR</span></div>
+          </article>
+          <article class="extension-card">
+            <span class="status-pill">C / phase</span>
+            <h3>action_phase_progress</h3>
+            <p><strong>Case:</strong> estimate whether a Pour coffee window is near the start, middle, or end of its action segment.</p>
+            <p><strong>Input:</strong> non-caption multimodal features.</p>
+            <p><strong>Output:</strong> 0-to-1 progress inside the current action.</p>
+            <div class="extension-metrics"><span><strong>0.3416</strong>minimal MAE</span><span><strong>0.3038</strong>neural MAE</span></div>
+          </article>
+          <article class="extension-card">
+            <span class="status-pill">D / world</span>
+            <h3>ego_motion_forecast</h3>
+            <p><strong>Case:</strong> predict how the camera translation changes over the next 20 frames.</p>
+            <p><strong>Input:</strong> current sensors excluding camera translation and captions.</p>
+            <p><strong>Output:</strong> future camera-translation delta vector.</p>
+            <div class="extension-metrics"><span><strong>0.1989</strong>minimal MAE</span><span><strong>0.0989</strong>neural MAE</span></div>
+          </article>
+        </div>
+        <div class="callout-row">
+          <div class="callout">
+            <h3>What changed</h3>
+            <p>The four research directions now have coded extension probes, prediction/rank CSVs, JSON metrics, a Markdown summary, and a website chart generated from real sample-window features.</p>
+          </div>
+          <div class="callout">
+            <h3>What still needs scale</h3>
+            <p>A full research result still needs many Xperience-10M episodes, held-out episode splits, stronger encoders, and direction-specific models such as body priors, renderers, or persistent scene graphs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="architectures">
       <div class="wrap">
         <div class="section-head">
@@ -834,6 +921,7 @@
           <article class="artifact"><h3>Task-suite report</h3><p>One JSON file with every task metric and split detail.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a></article>
           <article class="artifact"><h3>Neural MLP task results</h3><p>Per-task PyTorch MLP metrics, predictions, histories, and checkpoints for the same 12 task contracts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural_mlp/</a></article>
           <article class="artifact"><h3>Four-direction taxonomy</h3><p>Generated JSON, CSV, Markdown, and website data mapping all 12 tasks to the four research tracks with two baselines.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_directions">research_directions/</a></article>
+          <article class="artifact"><h3>Direction extension probes</h3><p>Four additional coded probes, one per research direction, each with minimal and neural metrics plus prediction/rank CSVs.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_direction_extensions">research_direction_extensions/</a></article>
           <article class="artifact"><h3>Task walkthroughs</h3><p>Beginner-oriented case studies for all 12 tasks, including input, middle process modules, output, metric, and limitation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/task_walkthroughs">task_walkthroughs/</a></article>
           <article class="artifact"><h3>Feature manifest</h3><p>Start/end index and dimension for every current feature block.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a></article>
           <article class="artifact"><h3>Cross-modal retrieval</h3><p>The strongest self-supervised signal from the single episode.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json">metrics.json</a></article>
@@ -884,6 +972,7 @@ hf download ropedia-ai/xperience-10m-sample \
 git clone https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite.git
 cd ropedia-xperience-10m-task-suite
 python scripts/episode_task_suite.py --workspace /path/to/workspace --include-neural
+python scripts/research_direction_extension_tasks.py
 python scripts/generate_visualizations.py</code></pre>
       </div>
     </section>
