@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="700" viewBox="0 0 1180 700" role="img" aria-label="Xperience-10M task coverage across four research directions">
+  <rect width="100%" height="100%" fill="#f7f9fb"/>
+  <text x="58" y="64" font-size="30" font-weight="800" fill="#16213a">Xperience-10M 12-Task Suite: Four Research Directions</text>
+  <text x="58" y="96" font-size="16" font-weight="500" fill="#566273">One public sample episode, two baseline families, explicit direct/proxy/diagnostic coverage.</text>
+  <rect x="58" y="130" width="515" height="220" rx="8" fill="#ffffff" stroke="#d9e1ea"/>
+<text x="82" y="172" font-size="21" font-weight="700" fill="#16213a">A. Human Modeling &amp; Motion Understanding</text>
+<text x="82" y="205" font-size="15" font-weight="700" fill="#566273">partially implemented</text>
+<text x="82" y="238" font-size="14" font-weight="500" fill="#30394a">Tasks: timeline_action, hand_trajectory_forecast, contact_prediction, object_relevance</text>
+<rect x="82" y="262" width="234" height="16" rx="8" fill="#1f6c9f"/>
+<rect x="316" y="262" width="234" height="16" rx="8" fill="#2e7775"/>
+<text x="82" y="304" font-size="14" font-weight="700" fill="#1f6c9f">Direct 2</text>
+<text x="208" y="304" font-size="14" font-weight="700" fill="#2e7775">Proxy 2</text>
+<text x="328" y="304" font-size="14" font-weight="700" fill="#956400">Diagnostic 0</text><rect x="607" y="130" width="515" height="220" rx="8" fill="#ffffff" stroke="#d9e1ea"/>
+<text x="631" y="172" font-size="21" font-weight="700" fill="#16213a">B. 3D/4D Reconstruction &amp; Neural Rendering</text>
+<text x="631" y="205" font-size="15" font-weight="700" fill="#566273">proxy tasks only</text>
+<text x="631" y="238" font-size="14" font-weight="500" fill="#30394a">Tasks: cross_modal_retrieval, modality_reconstruction, misalignment_detection</text>
+<rect x="631" y="262" width="311" height="16" rx="8" fill="#2e7775"/>
+<rect x="942" y="262" width="156" height="16" rx="8" fill="#956400"/>
+<text x="631" y="304" font-size="14" font-weight="700" fill="#1f6c9f">Direct 0</text>
+<text x="757" y="304" font-size="14" font-weight="700" fill="#2e7775">Proxy 2</text>
+<text x="877" y="304" font-size="14" font-weight="700" fill="#956400">Diagnostic 1</text><rect x="58" y="384" width="515" height="220" rx="8" fill="#ffffff" stroke="#d9e1ea"/>
+<text x="82" y="426" font-size="21" font-weight="700" fill="#16213a">C. Egocentric Vision &amp; Interaction</text>
+<text x="82" y="459" font-size="15" font-weight="700" fill="#566273">strongest implemented track</text>
+<text x="82" y="492" font-size="14" font-weight="500" fill="#30394a">Tasks: timeline_action, timeline_subtask, transition_detection, next_action, hand_trajectory_forecast, +6</text>
+<rect x="82" y="516" width="255" height="16" rx="8" fill="#1f6c9f"/>
+<rect x="337" y="516" width="85" height="16" rx="8" fill="#2e7775"/>
+<rect x="422" y="516" width="127" height="16" rx="8" fill="#956400"/>
+<text x="82" y="558" font-size="14" font-weight="700" fill="#1f6c9f">Direct 6</text>
+<text x="208" y="558" font-size="14" font-weight="700" fill="#2e7775">Proxy 2</text>
+<text x="328" y="558" font-size="14" font-weight="700" fill="#956400">Diagnostic 3</text><rect x="607" y="384" width="515" height="220" rx="8" fill="#ffffff" stroke="#d9e1ea"/>
+<text x="631" y="426" font-size="21" font-weight="700" fill="#16213a">D. Scene Reconstruction &amp; World Modeling</text>
+<text x="631" y="459" font-size="15" font-weight="700" fill="#566273">early proxy tasks</text>
+<text x="631" y="492" font-size="14" font-weight="500" fill="#30394a">Tasks: timeline_subtask, transition_detection, next_action, object_relevance, caption_grounding, +4</text>
+<rect x="631" y="516" width="311" height="16" rx="8" fill="#2e7775"/>
+<rect x="942" y="516" width="156" height="16" rx="8" fill="#956400"/>
+<text x="631" y="558" font-size="14" font-weight="700" fill="#1f6c9f">Direct 0</text>
+<text x="757" y="558" font-size="14" font-weight="700" fill="#2e7775">Proxy 6</text>
+<text x="877" y="558" font-size="14" font-weight="700" fill="#956400">Diagnostic 3</text>
+  <rect x="58" y="622" width="16" height="16" rx="4" fill="#1f6c9f"/><text x="82" y="636" font-size="14" font-weight="600" fill="#30394a">Direct task</text><rect x="258" y="622" width="16" height="16" rx="4" fill="#2e7775"/><text x="282" y="636" font-size="14" font-weight="600" fill="#30394a">Proxy / prerequisite</text><rect x="458" y="622" width="16" height="16" rx="4" fill="#956400"/><text x="482" y="636" font-size="14" font-weight="600" fill="#30394a">Diagnostic probe</text>
+  <text x="58" y="670" font-size="13" font-weight="500" fill="#6d7787">Generated from results/episode_task_suite/summary_report.json and scripts/research_direction_taxonomy.py</text>
+</svg>

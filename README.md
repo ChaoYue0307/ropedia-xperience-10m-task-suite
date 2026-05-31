@@ -15,6 +15,7 @@ into:
 - motion-only and current all-feature baseline models,
 - 12 end-to-end episode-level tasks,
 - lightweight neural MLP heads for the same 12 task contracts,
+- a generated four-direction research taxonomy matching the Ropedia job tracks,
 - a next TODO track for Qwen3-Omni fine-tuning and sensor-bridge evaluation,
 - metrics, predictions, model weights, manifests, charts, and a static website,
 - a clear explanation of what a single episode can and cannot prove.
@@ -103,6 +104,7 @@ scripts/
   train_all_modalities_model.py     # current all-feature lightweight baseline
   episode_task_suite.py             # 12 end-to-end task definitions
   neural_task_models.py             # optional PyTorch MLP heads for all 12 tasks
+  research_direction_taxonomy.py    # maps 12 tasks to the four research tracks
   generate_visualizations.py        # refreshes SVG charts + summary JSON
   render_task_suite_infographic.py  # renders the ChatGPT-image-backed PNG
   render_overview_figures.py        # renders polished pipeline/architecture PNGs
@@ -119,11 +121,13 @@ results/
   min_all_modalities_subtask_model/ # current all-feature subtask artifacts
   episode_task_suite/               # 12-task suite metrics and predictions
     neural_mlp/                     # optional neural baseline artifacts per task
+    research_directions/            # four-track taxonomy, CSV, and summary
   omni_exploration/                 # H20/ModelScope smoke-test artifacts
 
 docs/
   index.html                        # GitHub Pages dashboard
   data/summary_metrics.json         # website-readable metrics bundle
+  data/research_directions.json     # four-track website data bundle
   assets/task_suite_infographic.png # 12-task presentation graphic
   assets/pipeline_diagram.png       # verified episode pipeline graphic
   assets/task_architectures.png     # verified 12-task minimal architecture map
@@ -314,6 +318,7 @@ python scripts/omni/plan_finetune_sample_budget.py \
 Refresh charts and the website data bundle:
 
 ```bash
+python scripts/research_direction_taxonomy.py
 python scripts/generate_visualizations.py
 python scripts/render_overview_figures.py
 python scripts/render_task_suite_infographic.py
@@ -375,6 +380,37 @@ python3 scripts/omni/upload_qwen3_omni_lora_to_hf.py \
 
 This script requires a valid Hugging Face token via `HF_TOKEN` or `--token`.
 Network availability to `huggingface.co` is required.
+
+## Four Research Directions
+
+The 12 tasks are now organized against the four Ropedia research directions in
+a generated artifact, not only in prose:
+
+- [`research_direction_taxonomy.json`](results/episode_task_suite/research_directions/research_direction_taxonomy.json)
+- [`research_direction_task_map.csv`](results/episode_task_suite/research_directions/research_direction_task_map.csv)
+- [`research_direction_summary.md`](results/episode_task_suite/research_directions/research_direction_summary.md)
+- [`docs/data/research_directions.json`](docs/data/research_directions.json)
+
+The taxonomy uses two current baselines for every task:
+
+| Baseline | Role |
+| --- | --- |
+| Minimal interpretable heads | Softmax, logistic, ridge, and retrieval heads over the 8,378-d window feature vector. These expose the input/output contract cleanly. |
+| Neural MLP heads | Small PyTorch MLP classifiers/regressors on the same features and splits. These check whether nonlinear heads help before moving to Qwen/Omni fine-tuning. |
+
+Current direction-level coverage:
+
+| Direction | Current status | Covered task evidence | What is not solved yet |
+| --- | --- | --- | --- |
+| A. Human Modeling & Motion Understanding | Partially implemented | `hand_trajectory_forecast` and `contact_prediction` are direct; `timeline_action` and `object_relevance` are proxies. Neural MLP improves hand forecasting from `0.8223` to `0.1116` MPJPE. | No full body/shape model, SMPL/MANO target, deformation prior, or multi-episode motion-generation evaluation yet. |
+| B. 3D/4D Reconstruction & Neural Rendering | Proxy tasks only | `cross_modal_retrieval`, `modality_reconstruction`, and `misalignment_detection` test alignment/reconstruction prerequisites. | No NeRF, Gaussian Splatting, TSDF, mesh, novel-view synthesis, or calibrated 4D reconstruction model yet. |
+| C. Egocentric Vision & Interaction | Strongest implemented track | 6 direct tasks: action, subtask, transition, next-action, object relevance, and caption grounding, plus alignment/order diagnostics. | Single-episode chronological split limits generalization; audio and stronger video-language backbones still need to be added. |
+| D. Scene Reconstruction & World Modeling | Early proxy tasks | Subtask/next-action, object relevance, retrieval, reconstruction, temporal order, and misalignment provide state/world-model probes. | No persistent scene graph, object permanence task, long-term map, or held-out-episode world model yet. |
+
+The important interpretation is that all four directions can be **started** from
+the Xperience-10M sample modalities, but only direction C is strongly represented
+by the current 12-task suite. Directions A, B, and D need additional targets and
+multi-episode training before they become full research deliverables.
 
 ## Minimal 12-Task Architectures
 
