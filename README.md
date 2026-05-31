@@ -40,10 +40,13 @@ This repo is organized around an explicit proof boundary:
 | Neural heads | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | compact MLP heads, not a foundation model |
 | Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
 | Qwen3-Omni | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `A100_HF_RELAY_STATUS.md` | smoke-only until 32 valid episodes are available |
+| Publication hygiene | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | public repo and HF bundles only; ignored local scratch files are excluded |
 
 Read the full contract in [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), or
 consume the machine-readable copy at
 [`docs/data/evidence_contract.json`](docs/data/evidence_contract.json).
+The current publication audit is at
+[`docs/data/publication_audit.json`](docs/data/publication_audit.json).
 
 ## Dataset Modality Coverage
 
@@ -75,6 +78,7 @@ Hugging Face Space app:
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and debuggable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode claims reviewable without rerunning first |
+| Publication audit | `docs/data/publication_audit.json` | Confirms public bundles contain no raw Xperience-10M data, Python caches, heavy archives, or token strings |
 
 ## Links
 
@@ -135,6 +139,7 @@ scripts/
   generate_visualizations.py        # refreshes SVG charts + summary JSON
   render_task_suite_infographic.py  # renders the ChatGPT-image-backed PNG
   render_overview_figures.py        # renders polished pipeline/architecture PNGs
+  validate_publication_package.py   # checks public repo + HF bundle hygiene
   omni/
     download_sample_modelscope.py   # mainland-China friendly sample download
     build_episode_manifest.py       # metadata-only multi-episode scanner
@@ -157,6 +162,7 @@ docs/
   index.html                        # GitHub Pages dashboard
   data/summary_metrics.json         # website-readable metrics bundle
   data/evidence_contract.json       # machine-readable proof boundary
+  data/publication_audit.json       # machine-readable publication hygiene check
   data/research_directions.json     # four-track website data bundle
   data/research_direction_extensions.json # four extra probe data bundle
   data/task_walkthroughs.json       # beginner task explanation data bundle

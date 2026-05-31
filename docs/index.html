@@ -370,6 +370,7 @@
     .evidence-card h3 { margin: 0; font-size: 18px; line-height: 1.2; }
     .evidence-card p { margin: 0; color: var(--muted); line-height: 1.6; }
     .evidence-card code { color: var(--ink); font-family: var(--font-mono); font-size: 12px; }
+    .evidence-card:last-child { grid-column: 1 / -1; }
     .evidence-links {
       display: flex;
       flex-wrap: wrap;
@@ -632,6 +633,7 @@
     @media (max-width: 640px) {
       .wrap { width: min(100% - 28px, var(--max)); }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid, .walk-flow { grid-template-columns: 1fr; }
+      .evidence-card:last-child { grid-column: auto; }
       .hero-inner, section { padding: 46px 0; }
       .signal { grid-template-columns: 1fr; }
       .signal strong { text-align: left; }
@@ -757,6 +759,15 @@
             <div class="evidence-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">evidence contract</a>
               <a href="data/evidence_contract.json">machine JSON</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Publication bundles pass hygiene checks</h3>
+            <p>The validator checks required assets, raw-data exclusion, Python cache exclusion, heavy archive exclusion, and accidental HF token strings across GitHub and the HF bundles.</p>
+            <div class="evidence-links">
+              <a href="data/publication_audit.json">publication audit</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_publication_package.py">validator script</a>
             </div>
           </article>
         </div>
