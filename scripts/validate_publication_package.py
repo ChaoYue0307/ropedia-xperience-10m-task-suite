@@ -44,8 +44,58 @@ TEXT_SUFFIXES = {
 TOKEN_PATTERN = re.compile(r"hf_[A-Za-z0-9]{20,}")
 STALE_PRESENTATION_STRINGS = {
     "xperience10m-" + "modalities-v9-large-atlas": "old task-suite infographic cache key",
+    "xperience10m-" + "taskfirst-v10": "older task-suite infographic cache key",
     "Start with the large native " + "modality atlas": "old suite-section hierarchy copy",
 }
+CARD_FRESHNESS_EXPECTATIONS = [
+    {
+        "surface": "github_repo",
+        "relative_path": "README.md",
+        "required": [
+            "xperience10m-taskfirst-v11-modality-spread",
+            "all 12 task families before the",
+            "Public-sample modality thumbnails remain enlarged below",
+        ],
+    },
+    {
+        "surface": "hf_space_bundle",
+        "relative_path": "README.md",
+        "required": [
+            "xperience10m-taskfirst-v11-modality-spread",
+            "task-first 12-task infographic",
+            "native responsive modality atlas",
+            "website HTML",
+        ],
+    },
+    {
+        "surface": "hf_artifact_bundle",
+        "relative_path": "README.md",
+        "required": [
+            "xperience10m-taskfirst-v11-modality-spread",
+            "task-first 12-task map",
+            "including critical website HTML",
+        ],
+    },
+    {
+        "surface": "hf_artifact_bundle",
+        "relative_path": "PROJECT_README.md",
+        "required": [
+            "xperience10m-taskfirst-v11-modality-spread",
+            "all 12 task families before the",
+            "Public-sample modality thumbnails remain enlarged below",
+        ],
+    },
+    {
+        "surface": "hf_model_bundle",
+        "relative_path": "README.md",
+        "required": [
+            "xperience10m-taskfirst-v11-modality-spread",
+            "task-first 12-head",
+            "responsive modality atlas",
+            "website HTML",
+        ],
+    },
+]
 
 
 def rel(path: Path, base: Path) -> str:
@@ -187,6 +237,24 @@ def required_assets(root: Path) -> dict[str, bool]:
     return {item: (root / item).exists() for item in required}
 
 
+def public_card_freshness(roots: dict[str, Path]) -> list[dict]:
+    records = []
+    for item in CARD_FRESHNESS_EXPECTATIONS:
+        surface = item["surface"]
+        path = roots[surface] / item["relative_path"]
+        text = path.read_text(encoding="utf-8", errors="ignore") if path.exists() else ""
+        missing = [marker for marker in item["required"] if marker not in text]
+        records.append({
+            "surface": surface,
+            "path": item["relative_path"],
+            "exists": path.exists(),
+            "required_marker_count": len(item["required"]),
+            "missing_markers": missing,
+            "status": "pass" if path.exists() and not missing else "fail",
+        })
+    return records
+
+
 def build_report(hf_root: Path) -> dict:
     roots = {
         "github_repo": ROOT,
@@ -199,6 +267,7 @@ def build_report(hf_root: Path) -> dict:
         public_paths = git_public_paths(path) if name == "github_repo" else None
         scans[name] = scan(path, paths=public_paths)
     assets = required_assets(ROOT)
+    card_freshness = public_card_freshness(roots)
     missing_assets = [path for path, present in assets.items() if not present]
     violations = [
         {"root": name, **violation}
@@ -238,6 +307,11 @@ def build_report(hf_root: Path) -> dict:
             "status": "pass" if not any(v["kind"] == "stale_presentation_copy" for v in violations) else "fail",
             "count": sum(1 for v in violations if v["kind"] == "stale_presentation_copy"),
         },
+        {
+            "name": "public_cards_reference_taskfirst_figure",
+            "status": "pass" if all(item["status"] == "pass" for item in card_freshness) else "fail",
+            "failures": [item for item in card_freshness if item["status"] != "pass"],
+        },
     ]
     status = "pass" if all(check["status"] == "pass" for check in checks) else "fail"
     return {
@@ -245,6 +319,7 @@ def build_report(hf_root: Path) -> dict:
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "checks": checks,
         "required_assets": assets,
+        "public_card_freshness": card_freshness,
         "scans": scans,
         "violations": violations,
     }

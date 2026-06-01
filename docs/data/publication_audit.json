@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T05:07:53+00:00",
+  "generated_at_utc": "2026-06-01T05:58:39+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -31,6 +31,11 @@
       "name": "no_stale_task_suite_presentation_copy",
       "status": "pass",
       "count": 0
+    },
+    {
+      "name": "public_cards_reference_taskfirst_figure",
+      "status": "pass",
+      "failures": []
     }
   ],
   "required_assets": {
@@ -80,6 +85,48 @@
     "scripts/validate_website_integrity.py": true,
     "scripts/omni/train_qwen3_omni_lora.py": true
   },
+  "public_card_freshness": [
+    {
+      "surface": "github_repo",
+      "path": "README.md",
+      "exists": true,
+      "required_marker_count": 3,
+      "missing_markers": [],
+      "status": "pass"
+    },
+    {
+      "surface": "hf_space_bundle",
+      "path": "README.md",
+      "exists": true,
+      "required_marker_count": 4,
+      "missing_markers": [],
+      "status": "pass"
+    },
+    {
+      "surface": "hf_artifact_bundle",
+      "path": "README.md",
+      "exists": true,
+      "required_marker_count": 3,
+      "missing_markers": [],
+      "status": "pass"
+    },
+    {
+      "surface": "hf_artifact_bundle",
+      "path": "PROJECT_README.md",
+      "exists": true,
+      "required_marker_count": 3,
+      "missing_markers": [],
+      "status": "pass"
+    },
+    {
+      "surface": "hf_model_bundle",
+      "path": "README.md",
+      "exists": true,
+      "required_marker_count": 4,
+      "missing_markers": [],
+      "status": "pass"
+    }
+  ],
   "scans": {
     "github_repo": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy",
@@ -99,7 +146,7 @@
       "text_file_count": 38,
       "largest_file": {
         "path": "assets/task_suite_infographic.png",
-        "bytes": 2331622
+        "bytes": 2322389
       },
       "violations": []
     },

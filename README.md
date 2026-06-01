@@ -44,7 +44,7 @@ This repo is organized around an explicit proof boundary:
 | Qwen3-Omni | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `A100_HF_RELAY_STATUS.md` | smoke-only until 32 valid episodes are available |
 | Scope claims guard | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | historical `32ep` path strings are provenance, not 32-episode results |
 | Mirror parity | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | prepared GitHub/HF mirrors carry matching data, figure, website HTML, and validator files |
-| Publication hygiene | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | public repo and HF bundles only; ignored local scratch files are excluded |
+| Publication hygiene | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | public repo and HF bundles only; ignored local scratch files are excluded, and public cards must reference the current task-first figure |
 | Artifact index | `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | selective source-of-truth catalog with existence, size, and stable-file hashes |
 | Citation and metadata | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | code is MIT-scoped; raw-data use follows Xperience-10M terms |
 | Reviewer path | `docs/data/reviewer_packet.json`, website reviewer section | audit guide only; no new experimental claim |
@@ -127,7 +127,7 @@ Hugging Face Space app:
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and debuggable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode claims reviewable without rerunning first |
-| Publication audit | `docs/data/publication_audit.json` | Confirms public bundles contain no raw Xperience-10M data, Python caches, heavy archives, or token strings |
+| Publication audit | `docs/data/publication_audit.json` | Confirms public bundles contain no raw Xperience-10M data, Python caches, heavy archives, token strings, or stale public-card figure references |
 | Artifact index | `docs/data/artifact_index.json` | Gives reviewers a compact source-of-truth catalog with stable hashes |
 | Artifact guide | `ARTIFACT_GUIDE.md` | Groups the public evidence into reviewer-friendly layers |
 | Reproducibility contract | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json` | States public commands, expected outputs, exact-match audit evidence, and non-reproducible boundaries |
@@ -163,7 +163,7 @@ The code files are MIT-licensed. Raw Xperience-10M data is not redistributed
 here, and dataset use remains governed by the official Ropedia/Xperience-10M
 terms. See [`LICENSE`](LICENSE) and [`DATA_NOTICE.md`](DATA_NOTICE.md).
 
-![ChatGPT-image-backed Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v10)
+![ChatGPT-image-backed Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v11-modality-spread)
 
 The infographic uses a ChatGPT-image-generated text-free research background,
 but now puts the shared processing contract and all 12 task families before the
