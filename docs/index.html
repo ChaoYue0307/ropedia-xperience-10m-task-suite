@@ -13,11 +13,11 @@
   <meta property="og:description" content="One public embodied-AI episode, converted into reproducible multimodal tasks, minimal baselines, neural MLP baselines, metrics, and diagrams.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">
-  <meta property="og:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-modalities-v8-clear">
+  <meta property="og:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-modalities-v9-large-atlas">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ropedia Xperience-10M Task Suite">
   <meta name="twitter:description" content="Audit-first Xperience-10M multimodal task suite with minimal and neural baselines.">
-  <meta name="twitter:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-modalities-v8-clear">
+  <meta name="twitter:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-modalities-v9-large-atlas">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -339,7 +339,7 @@
     }
     .task-suite-image {
       display: block;
-      margin-bottom: 24px;
+      margin-top: 30px;
     }
     .figure-pan {
       overflow: visible;
@@ -352,13 +352,14 @@
       height: auto;
     }
     .modality-atlas-panel {
-      margin-top: 30px;
+      margin-top: 0;
+      margin-bottom: 34px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background:
         linear-gradient(180deg, rgba(164, 242, 127, 0.08), rgba(7, 18, 7, 0.88)),
         var(--surface);
-      padding: clamp(22px, 3vw, 34px);
+      padding: clamp(26px, 3.2vw, 44px);
       box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
     }
     .atlas-head {
@@ -397,22 +398,23 @@
     .atlas-head a:hover { border-color: var(--green); color: var(--ink); }
     .modality-atlas {
       display: grid;
-      grid-template-columns: repeat(2, minmax(360px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(2, minmax(420px, 1fr));
+      gap: clamp(24px, 2.4vw, 36px);
     }
     .atlas-card {
       min-width: 0;
       border: 1px solid var(--soft-line);
       border-radius: var(--radius);
       background: rgba(2, 9, 2, 0.84);
-      padding: clamp(18px, 2vw, 24px);
+      padding: clamp(24px, 2.4vw, 34px);
       display: grid;
-      gap: 18px;
+      gap: 24px;
+      align-content: start;
     }
     .atlas-card.wide { grid-column: 1 / -1; }
     .atlas-card img {
       width: 100%;
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
       display: block;
       border: 1px solid rgba(164, 242, 127, 0.16);
@@ -432,20 +434,20 @@
       display: block;
       color: var(--muted);
       font-family: var(--font-mono);
-      font-size: 14px;
+      font-size: 15px;
       font-variant-numeric: tabular-nums;
     }
     .atlas-card h4 {
       margin: 6px 0 0;
       font-family: var(--font-ui);
-      font-size: clamp(32px, 3.8vw, 52px);
+      font-size: clamp(38px, 4.2vw, 64px);
       line-height: 0.96;
       text-transform: uppercase;
     }
     .atlas-type {
       color: var(--green);
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 13.5px;
       line-height: 1.2;
       text-align: right;
       text-transform: uppercase;
@@ -457,8 +459,8 @@
     }
     .atlas-row {
       display: grid;
-      grid-template-columns: minmax(128px, 0.34fr) minmax(0, 1fr);
-      gap: 18px;
+      grid-template-columns: minmax(156px, 0.32fr) minmax(0, 1fr);
+      gap: 22px;
       align-items: baseline;
       border-top: 1px solid var(--soft-line);
       padding: 13px 0 0;
@@ -469,14 +471,14 @@
       display: block;
       color: var(--muted);
       font-family: var(--font-mono);
-      font-size: 11.5px;
+      font-size: 12.5px;
       line-height: 1.35;
       text-transform: uppercase;
     }
     .atlas-row p {
       margin: 0;
       color: #edf8e8;
-      font-size: clamp(18px, 1.6vw, 23px);
+      font-size: clamp(21px, 1.85vw, 28px);
       font-weight: 720;
       line-height: 1.18;
     }
@@ -1164,16 +1166,13 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Ropedia Xperience-10M 12-task suite, first.</h2>
-          <p>The top-level map shows the Xperience-10M sample modalities and the verified 12-task results. Audio is present in the sample MP4 stream, but the current 8,378-d baseline manifest does not featurize it.</p>
-        </div>
-        <div class="figure-pan">
-          <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-modalities-v8-clear" alt="ChatGPT-image-backed infographic showing all 12 Ropedia Xperience-10M tasks with enlarged modality cards">
+          <p>Start with the large native modality atlas, then read the full 12-task map below it. Audio is present in the sample MP4 stream, but the current 8,378-d baseline manifest does not featurize it.</p>
         </div>
         <div class="modality-atlas-panel" id="modality-atlas" aria-labelledby="modality-atlas-title">
           <div class="atlas-head">
             <div>
               <h3 id="modality-atlas-title">Readable modality atlas.</h3>
-              <p>These cards expose the same public-sample modality thumbnails as native webpage elements, so reviewers can inspect each stream clearly on desktop and mobile.</p>
+              <p>Each Xperience-10M stream gets a large thumbnail, a plain sample-content line, and the exact current-baseline use. These are small derived images only; no raw MP4, HDF5, or RRD data is redistributed.</p>
             </div>
             <a href="data/modality_atlas.json">modality_atlas.json</a>
           </div>
@@ -1215,6 +1214,9 @@
             </article>
           </div>
           <p class="atlas-note">The atlas redistributes only small derived thumbnails and metadata. Raw MP4, HDF5, and RRD files remain excluded from this repo and the Hugging Face mirrors.</p>
+        </div>
+        <div class="figure-pan">
+          <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-modalities-v9-large-atlas" alt="ChatGPT-image-backed infographic showing all 12 Ropedia Xperience-10M tasks with enlarged modality cards">
         </div>
       </div>
     </section>
