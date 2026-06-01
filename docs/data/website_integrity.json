@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T08:37:52+00:00",
+  "generated_at_utc": "2026-06-01T09:39:50+00:00",
   "docs_root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 2,
-    "local_references": 71,
-    "external_reference_count": 64,
-    "json_files": 18,
+    "local_references": 76,
+    "external_reference_count": 68,
+    "json_files": 19,
     "image_assets_referenced": 18,
     "failure_count": 0
   },
@@ -24,13 +24,27 @@
       "name": "reviewer_scorecard_precedes_evidence_ledger",
       "status": "pass",
       "reason": "The reviewer scorecard should appear before the deeper evidence ledger.",
-      "scorecard_index": 36615,
-      "evidence_index": 40844
+      "scorecard_index": 36656,
+      "evidence_index": 43292
     },
     {
       "name": "reviewer_scorecard_links_json",
       "status": "pass",
       "reason": "The website should expose the machine-readable reviewer scorecard.",
+      "marker_count": 1
+    },
+    {
+      "name": "evaluation_protocol_between_scorecard_and_evidence",
+      "status": "pass",
+      "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
+      "scorecard_index": 36656,
+      "protocol_index": 40885,
+      "evidence_index": 43292
+    },
+    {
+      "name": "evaluation_protocol_links_json",
+      "status": "pass",
+      "reason": "The website should expose the machine-readable evaluation protocol.",
       "marker_count": 1
     },
     {
@@ -45,6 +59,18 @@
       "status": "pass",
       "reason": "The modality atlas should expose seven sample modalities.",
       "card_count": 7
+    },
+    {
+      "name": "dataset_card_section_mentions_sample_license",
+      "status": "pass",
+      "reason": "The dataset-card section should preserve the public sample card license.",
+      "marker_count": 1
+    },
+    {
+      "name": "dataset_card_section_mentions_api_episode_listing",
+      "status": "pass",
+      "reason": "The dataset-card section should distinguish HF API listing metadata from local data possession.",
+      "marker_count": 1
     }
   ],
   "html_pages": [
@@ -56,8 +82,8 @@
     },
     {
       "path": "index.html",
-      "id_count": 33,
-      "reference_count": 70,
+      "id_count": 34,
+      "reference_count": 75,
       "image_count": 20
     }
   ],
@@ -68,18 +94,23 @@
       "top_level_type": "dict"
     },
     {
+      "path": "data/evaluation_protocol.json",
+      "bytes": 13575,
+      "top_level_type": "dict"
+    },
+    {
       "path": "data/evidence_contract.json",
-      "bytes": 8848,
+      "bytes": 9544,
       "top_level_type": "dict"
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 12252,
+      "bytes": 14598,
       "top_level_type": "dict"
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 51823,
+      "bytes": 54563,
       "top_level_type": "dict"
     },
     {
@@ -89,12 +120,12 @@
     },
     {
       "path": "data/project_manifest.json",
-      "bytes": 3530,
+      "bytes": 3917,
       "top_level_type": "dict"
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 5624,
+      "bytes": 5706,
       "top_level_type": "dict"
     },
     {
@@ -104,7 +135,7 @@
     },
     {
       "path": "data/reproducibility_matrix.json",
-      "bytes": 4033,
+      "bytes": 4582,
       "top_level_type": "dict"
     },
     {
@@ -119,12 +150,12 @@
     },
     {
       "path": "data/reviewer_packet.json",
-      "bytes": 5294,
+      "bytes": 6375,
       "top_level_type": "dict"
     },
     {
       "path": "data/reviewer_scorecard.json",
-      "bytes": 4868,
+      "bytes": 5568,
       "top_level_type": "dict"
     },
     {
@@ -144,12 +175,12 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 6287,
+      "bytes": 6843,
       "top_level_type": "dict"
     },
     {
       "path": "data/xperience10m_dataset_card_alignment.json",
-      "bytes": 5103,
+      "bytes": 6985,
       "top_level_type": "dict"
     }
   ],

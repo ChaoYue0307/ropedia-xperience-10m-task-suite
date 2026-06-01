@@ -36,9 +36,10 @@ This repo is organized around an explicit proof boundary:
 
 | Claim layer | Evidence | Boundary |
 | --- | --- | --- |
-| Official Xperience-10M description | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | aligns public wording with the official gated dataset card; does not mirror raw data |
+| Official Xperience-10M description | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | aligns public wording with the official gated dataset card, public sample card, and HF API metadata; does not mirror raw data |
 | Data windows | `results/episode_task_suite/windows.csv`, `shared_windows.npz`, `summary_report.json` | one public sample episode |
 | Feature contract | `results/episode_task_suite/feature_manifest.json`, `available_modalities.json` | 8,378 current features; audio documented but not featurized |
+| Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | defines windowing, chronological split, leakage controls, per-task metrics, and unsupported interpretations |
 | 12-task suite | `scripts/episode_task_suite.py`, per-task `metrics.json`, predictions | chronological single-episode split |
 | Neural heads | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | compact MLP heads, not a foundation model |
 | Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
@@ -66,6 +67,9 @@ The current prepared-mirror parity report is at
 [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json).
 The current scope-claims audit is at
 [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json).
+The generated evaluation protocol is at
+[`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) and
+[`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json).
 The source-of-truth artifact index is at
 [`docs/data/artifact_index.json`](docs/data/artifact_index.json).
 For a human-readable artifact map, use
@@ -94,6 +98,7 @@ They give the current decision boundary in one compact table:
 | 12-task suite | Verified minimal baselines with committed metrics, predictions, and manifests |
 | Neural heads | Verified compact PyTorch MLP heads over the same task contracts and chronological splits |
 | Official dataset wording | Verified against the public `ropedia-ai/xperience-10m` dataset card/API metadata |
+| Evaluation protocol | Verified generated protocol for windowing, split policy, leakage controls, and per-task metrics |
 | Website and HF mirrors | Verified by local integrity, mirror parity, and live-publication checks |
 | Qwen3-Omni 32-episode pilot | Data-gated; prepared, but not a model-quality claim |
 | Raw Xperience-10M data / full Qwen weights | Not redistributed |
@@ -106,11 +111,12 @@ If you are reviewing the project cold, open these in order:
 | --- | --- | --- | --- |
 | 1 | What is actually claimed? | [`REVIEWER_SCORECARD.md`](REVIEWER_SCORECARD.md), [`docs/data/reviewer_scorecard.json`](docs/data/reviewer_scorecard.json), [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`QUALITY_GATES.md`](QUALITY_GATES.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json), [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json), [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Single-episode task engineering and hygiene are claimed; historical `32ep` identifiers are not treated as real 32-episode results, and quality gates plus prepared and live mirrors are checked. |
 | 2 | What is the official upstream dataset? | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md), [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json), [official HF dataset](https://huggingface.co/datasets/ropedia-ai/xperience-10m) | The full dataset is described as a gated large-scale 4D multimodal egocentric source; this repo validates only one public sample episode. |
-| 3 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and exact-match audit evidence are explicit. |
-| 4 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
-| 5 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
-| 6 | Is the website internally coherent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, JSON data, and referenced images are checked before publishing. |
-| 7 | What is still pending? | [`DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md), [`A100_HF_RELAY_STATUS.md`](results/omni_finetune/A100_HF_RELAY_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared but not yet a real model-quality claim. |
+| 3 | How exactly are tasks evaluated? | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md), [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json), [`scripts/build_evaluation_protocol.py`](scripts/build_evaluation_protocol.py) | The window unit, chronological split, leakage controls, task metrics, and unsupported interpretations are explicit. |
+| 4 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and exact-match audit evidence are explicit. |
+| 5 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
+| 6 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
+| 7 | Is the website internally coherent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, JSON data, and referenced images are checked before publishing. |
+| 8 | What is still pending? | [`DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md), [`A100_HF_RELAY_STATUS.md`](results/omni_finetune/A100_HF_RELAY_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared but not yet a real model-quality claim. |
 
 The machine-readable reviewer packet is
 [`docs/data/reviewer_packet.json`](docs/data/reviewer_packet.json).
@@ -126,6 +132,21 @@ are checked for presence and size rather than treated as fixed hashes.
 [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md) is the human-readable companion. It
 groups the same proof layer into start-here files, data-contract files,
 task-evidence files, platform mirrors, and scale-up boundary artifacts.
+
+## Evaluation Protocol
+
+[`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) and
+[`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) are
+generated from committed metric artifacts. They define:
+
+- the 20-frame window unit, stride, feature dimension, and raw-data boundary,
+- the chronological 70/30 single-episode split and its generalization limit,
+- the per-task input, target, primary metric, minimal score, and neural score,
+- leakage controls for future labels, target feature blocks, caption/object
+  labels, and train-only normalization,
+- unsupported interpretations, including cross-episode generalization,
+  audio-visual learning, pixel-depth reconstruction, and real 32-episode
+  Qwen3-Omni quality.
 
 ## Official Dataset Alignment
 
@@ -143,6 +164,21 @@ The card also reports headline counts such as billions of RGB/depth/IMU records
 and large caption/object annotations. This repo records those upstream facts in
 [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md)
 and [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json).
+
+The current HF API snapshot for the gated dataset reports commit
+`ce943cf271a758b60240084892d05cf6dc12dd90`, last modified
+`2026-04-21T05:03:45.000Z`, manual gating, and a metadata file listing with
+803 session folders and 12,103 episode folders carrying `annotation.hdf5`.
+Those counts are upstream listing metadata only; they are not local downloads,
+not redistributed files, and not evidence of model quality in this repo.
+
+The public sample repo,
+[`ropedia-ai/xperience-10m-sample`](https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample),
+is separately documented as `Xperience-10M-Sample` with sample metadata,
+`cc-by-nc-4.0` license, HOMIE Toolkit usage, and Rerun 0.29.0 `.rrd`
+visualization. This project preserves that distinction: the sample powers the
+current 5,821-frame audit suite, while the full gated dataset remains the
+future source for held-out multi-episode training.
 
 This repo's current verified subset is much smaller and intentionally explicit:
 
@@ -175,6 +211,7 @@ Hugging Face Space app:
 | Reviewer scorecard | `REVIEWER_SCORECARD.md`, `docs/data/reviewer_scorecard.json` | Gives a one-table current decision boundary before reading the full audit trail |
 | Data contract | `windows.csv`, `feature_manifest.json`, modality manifests | Confirms what each sample window contains before modeling |
 | Official dataset alignment | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Keeps public descriptions aligned with the official gated dataset card |
+| Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` | Defines the task unit, split, metrics, leakage controls, and unsupported interpretations |
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and debuggable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode claims reviewable without rerunning first |

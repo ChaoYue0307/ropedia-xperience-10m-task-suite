@@ -4,21 +4,24 @@ This guide is the human-readable map for the public Ropedia Xperience-10M task
 suite artifacts. It complements the machine-readable
 [`docs/data/artifact_index.json`](docs/data/artifact_index.json).
 
-The project intentionally separates seven layers:
+The project intentionally separates eight layers:
 
 1. **Reviewer scorecard:** one compact table for first-pass current-state
    decisions.
 2. **Proof boundary:** what is claimed, what is smoke-only, and what remains
    gated by data access.
-3. **Official source alignment:** what the upstream Xperience-10M dataset card
-   says, and which parts this repo currently covers.
-4. **Data contract:** how one public Xperience-10M sample episode becomes
+3. **Official source alignment:** what the upstream Xperience-10M dataset card,
+   public sample card, and HF API metadata say, and which parts this repo
+   currently covers.
+4. **Evaluation protocol:** windowing, split policy, per-task metrics, leakage
+   controls, and unsupported interpretations.
+5. **Data contract:** how one public Xperience-10M sample episode becomes
    aligned model windows and feature blocks.
-5. **Task evidence:** minimal and neural results for the 12 task contracts plus
+6. **Task evidence:** minimal and neural results for the 12 task contracts plus
    four research-direction extension probes.
-6. **Reproducibility:** public commands, expected outputs, and exact-match audit
+7. **Reproducibility:** public commands, expected outputs, and exact-match audit
    evidence for the single-episode pipeline.
-7. **Scale-up status:** scripts and reports for the planned 32-episode
+8. **Scale-up status:** scripts and reports for the planned 32-episode
    Qwen3-Omni pilot, without claiming those results before data access lands.
 
 ## Start Here
@@ -28,11 +31,13 @@ The project intentionally separates seven layers:
 | [`REVIEWER_SCORECARD.md`](REVIEWER_SCORECARD.md) | Gives the fastest current decision table: verified, data-gated, and excluded claims. |
 | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md) | Defines which claims are verified and which are explicitly not claimed. |
 | [`QUALITY_GATES.md`](QUALITY_GATES.md) | Lists the automated release gates and post-publish checks required before presenting a release as current. |
-| [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Aligns this repo's public dataset wording with the official gated Xperience-10M dataset card. |
+| [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Defines the task unit, chronological split, metrics, leakage controls, and unsupported interpretations. |
+| [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Aligns this repo's public dataset wording with the official gated Xperience-10M card, sample card, and HF API metadata. |
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Defines public reproduction commands, expected outputs, and unreproducible boundaries. |
 | [`docs/data/artifact_index.json`](docs/data/artifact_index.json) | Lists reviewer-critical files with existence, size, and stable hashes. |
 | [`docs/data/reviewer_scorecard.json`](docs/data/reviewer_scorecard.json) | Machine-readable copy of the reviewer decision table. |
-| [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable official dataset-card alignment summary. |
+| [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable source-alignment summary, including gated metadata, sample license/tooling, and unsupported claims. |
+| [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | Machine-readable evaluation protocol generated from committed metrics. |
 | [`docs/data/quality_gates.json`](docs/data/quality_gates.json) | Machine-readable quality-gate summary for website and HF mirrors. |
 | [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json) | Last live GitHub/HF verification after upload. |
 | [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json) | Confirms prepared HF Space, artifact, and model mirrors match the repo for critical data, figures, website HTML, and validator scripts. |
@@ -45,8 +50,16 @@ The project intentionally separates seven layers:
 
 | Artifact | What it proves |
 | --- | --- |
-| [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Human-readable summary of the official gated Xperience-10M dataset card, scale, modalities, access boundary, intended uses, and limitations. |
+| [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Human-readable summary of the official gated Xperience-10M dataset card, public sample card, API listing snapshot, scale, modalities, access boundary, intended uses, and limitations. |
 | [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable copy of the same alignment facts for website and HF mirrors. |
+
+## Evaluation Protocol
+
+| Artifact | What it proves |
+| --- | --- |
+| [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Human-readable task protocol: window unit, chronological split, input/target contracts, primary metrics, leakage controls, and unsupported interpretations. |
+| [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | Machine-readable protocol generated from committed task metrics. |
+| [`scripts/build_evaluation_protocol.py`](scripts/build_evaluation_protocol.py) | Regenerates the protocol from `docs/data/summary_metrics.json` and source task artifacts. |
 
 ## Data Contract
 

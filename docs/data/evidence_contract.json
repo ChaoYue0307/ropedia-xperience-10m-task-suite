@@ -14,14 +14,14 @@
     },
     {
       "id": "official_dataset_card_alignment",
-      "claim": "The public dataset description is aligned with the official gated Xperience-10M dataset card.",
+            "claim": "The public dataset description is aligned with the official gated Xperience-10M dataset card and public sample card.",
       "status": "verified",
       "evidence": [
         "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
         "docs/data/xperience10m_dataset_card_alignment.json",
         "https://huggingface.co/datasets/ropedia-ai/xperience-10m"
       ],
-      "boundary": "summarizes upstream public metadata and dataset-card facts; does not grant access or mirror raw data"
+            "boundary": "summarizes upstream public metadata, API listing facts, sample license/tooling, and dataset-card facts; does not grant access or mirror raw data"
     },
     {
       "id": "aligned_windows",
@@ -34,18 +34,29 @@
       ],
       "boundary": "5,821 frames, 1,161 windows, one public sample episode"
     },
-    {
-      "id": "feature_contract",
-      "claim": "The current feature contract is explicit and reviewable.",
-      "status": "verified",
-      "evidence": [
-        "results/episode_task_suite/feature_manifest.json",
-        "results/episode_task_suite/available_modalities.json"
-      ],
-      "boundary": "8,378-d feature vector; audio is documented but not yet featurized"
-    },
-    {
-      "id": "modality_atlas",
+        {
+            "id": "feature_contract",
+            "claim": "The current feature contract is explicit and reviewable.",
+            "status": "verified",
+            "evidence": [
+                "results/episode_task_suite/feature_manifest.json",
+                "results/episode_task_suite/available_modalities.json"
+            ],
+            "boundary": "8,378-d feature vector; audio is documented but not yet featurized"
+        },
+        {
+            "id": "evaluation_protocol",
+            "claim": "The task evaluation protocol is explicit and generated from committed metrics.",
+            "status": "verified",
+            "evidence": [
+                "EVALUATION_PROTOCOL.md",
+                "docs/data/evaluation_protocol.json",
+                "scripts/build_evaluation_protocol.py"
+            ],
+            "boundary": "defines windows, split, per-task metrics, leakage controls, and unsupported interpretations; does not prove cross-episode quality"
+        },
+        {
+            "id": "modality_atlas",
       "claim": "The public sample modalities are inspectable without raw data redistribution.",
       "status": "verified",
       "evidence": [

@@ -9,12 +9,13 @@
     "ropedia_release_page": "https://ropedia.com/blog/20260316_xperience_10m",
     "homie_toolkit": "https://github.com/Ropedia/HOMIE-toolkit"
   },
-  "hf_repo_metadata_observed": {
-    "repo_id": "ropedia-ai/xperience-10m",
-    "last_modified": "2026-04-21T05:03:45.000Z",
-    "gated": "manual",
-    "task_categories": [
-      "video-classification",
+    "hf_repo_metadata_observed": {
+        "repo_id": "ropedia-ai/xperience-10m",
+        "repo_sha": "ce943cf271a758b60240084892d05cf6dc12dd90",
+        "last_modified": "2026-04-21T05:03:45.000Z",
+        "gated": "manual",
+        "task_categories": [
+            "video-classification",
       "image-to-text",
       "depth-estimation",
       "robotics"
@@ -29,10 +30,46 @@
     ],
     "size_categories": [
       "1M<n<10M"
-    ],
-    "license": "other",
-    "access_note": "Reviewed gated access for approved non-commercial use; an external agreement-signing step may be required before approval."
-  },
+        ],
+        "license": "other",
+        "access_note": "Reviewed gated access for approved non-commercial use; an external agreement-signing step may be required before approval.",
+        "api_file_listing_observed": {
+            "scope": "public Hugging Face API metadata, not local data possession",
+            "sibling_count": 85258,
+            "session_folder_count": 803,
+            "episode_folder_count": 12103,
+            "annotation_hdf5_count": 12103,
+            "mp4_count": 72612,
+            "visualization_rrd_count": 541,
+            "canonical_episode_file_counts": {
+                "annotation.hdf5": 12103,
+                "fisheye_cam0.mp4": 12102,
+                "fisheye_cam1.mp4": 12102,
+                "fisheye_cam2.mp4": 12102,
+                "fisheye_cam3.mp4": 12102,
+                "stereo_left.mp4": 12102,
+                "stereo_right.mp4": 12102,
+                "visualization.rrd": 541
+            }
+        }
+    },
+    "public_sample_card_observed": {
+        "repo_id": "ropedia-ai/xperience-10m-sample",
+        "pretty_name": "Xperience-10M-Sample",
+        "license": "cc-by-nc-4.0",
+        "tags": [
+            "sample",
+            "xperience-10k"
+        ],
+        "size_categories": [
+            "n<1K"
+        ],
+        "card_summary": "A sample episode for Xperience-10M. The card says videos and annotations can be downloaded and inspected with HOMIE Toolkit, and the RRD file can be visualized with Rerun 0.29.0.",
+        "tooling": [
+            "HOMIE Toolkit",
+            "Rerun 0.29.0 for visualization.rrd"
+        ]
+    },
   "official_dataset_summary": {
     "description": "Large-scale egocentric multimodal human-experience data for embodied AI, robotics, world models, and spatial intelligence.",
     "experience_units": "about 10 million",
@@ -62,8 +99,8 @@
     "hierarchical language and caption annotations",
     "metadata and calibration records"
   ],
-  "episode_layout": {
-    "folder_pattern": "<session_uuid>/ep<episode_id>/",
+    "episode_layout": {
+        "folder_pattern": "<session_uuid>/ep<episode_id>/",
     "required_for_valid_episode_in_this_repo": [
       "annotation.hdf5"
     ],
@@ -74,11 +111,12 @@
       "fisheye_cam3.mp4",
       "stereo_left.mp4",
       "stereo_right.mp4"
-    ],
-    "optional_or_excluded": [
-      "visualization.rrd"
-    ]
-  },
+        ],
+        "optional_or_excluded": [
+            "visualization.rrd"
+        ],
+        "training_policy": "Use annotation.hdf5 plus available MP4 streams; keep visualization.rrd for optional human inspection only and exclude it from training/public bundles."
+    },
   "annotation_hdf5_groups": [
     "calibration",
     "slam / camera pose",
@@ -135,9 +173,10 @@
       "real 32-episode Qwen3-Omni model quality"
     ]
   },
-  "responsible_use_boundary": [
-    "No raw MP4, raw annotation.hdf5, private gated data, raw visualization.rrd, or full Qwen weights are redistributed.",
-    "The project does not support identity recognition, re-identification, biometric profiling, surveillance, sensitive attribute inference, or safety-critical deployment.",
-    "Dataset use remains governed by the official Ropedia/Xperience-10M terms."
-  ]
+    "responsible_use_boundary": [
+        "No raw MP4, raw annotation.hdf5, private gated data, raw visualization.rrd, or full Qwen weights are redistributed.",
+        "The public sample card lists cc-by-nc-4.0; the full gated dataset uses the official Ropedia/Xperience-10M access terms and license field.",
+        "The project does not support identity recognition, re-identification, biometric profiling, surveillance, sensitive attribute inference, or safety-critical deployment.",
+        "Dataset use remains governed by the official Ropedia/Xperience-10M terms."
+    ]
 }

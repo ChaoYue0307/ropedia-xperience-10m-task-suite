@@ -230,7 +230,11 @@ def validate(docs_root: Path, site_base: str) -> dict:
     suite_end = index_text.find('<section id="pipeline">')
     suite_text = index_text[suite_start:suite_end] if suite_start >= 0 and suite_end > suite_start else ""
     scorecard_pos = index_text.find('<section id="scorecard">')
+    protocol_pos = index_text.find('<section id="protocol">')
     evidence_pos = index_text.find('<section id="evidence">')
+    dataset_start = index_text.find('<section id="dataset-card">')
+    dataset_end = index_text.find('<section id="suite">')
+    dataset_text = index_text[dataset_start:dataset_end] if dataset_start >= 0 and dataset_end > dataset_start else ""
     semantic_rules = [
         (
             "reviewer_scorecard_precedes_evidence_ledger",
@@ -245,6 +249,18 @@ def validate(docs_root: Path, site_base: str) -> dict:
             "The website should expose the machine-readable reviewer scorecard.",
         ),
         (
+            "evaluation_protocol_between_scorecard_and_evidence",
+            '<section id="protocol">',
+            '<section id="evidence">',
+            "The evaluation protocol should appear before the deeper evidence ledger.",
+        ),
+        (
+            "evaluation_protocol_links_json",
+            'data/evaluation_protocol.json',
+            None,
+            "The website should expose the machine-readable evaluation protocol.",
+        ),
+        (
             "suite_task_map_precedes_modality_atlas",
             '<div class="figure-pan" id="task-suite-map">',
             '<div class="modality-atlas-panel"',
@@ -256,16 +272,39 @@ def validate(docs_root: Path, site_base: str) -> dict:
             None,
             "The modality atlas should expose seven sample modalities.",
         ),
+        (
+            "dataset_card_section_mentions_sample_license",
+            'cc-by-nc-4.0',
+            None,
+            "The dataset-card section should preserve the public sample card license.",
+        ),
+        (
+            "dataset_card_section_mentions_api_episode_listing",
+            '12,103 episode folders',
+            None,
+            "The dataset-card section should distinguish HF API listing metadata from local data possession.",
+        ),
     ]
     for name, marker, after_marker, reason in semantic_rules:
         if name == "suite_modality_atlas_contains_seven_cards":
             card_count = len(re.findall(r'class="atlas-card(?:\s|")', suite_text))
             passed = card_count == 7
             detail = {"card_count": card_count}
+        elif name.startswith("dataset_card_section_"):
+            marker_count = dataset_text.count(marker)
+            passed = marker_count >= 1
+            detail = {"marker_count": marker_count}
         elif name == "reviewer_scorecard_precedes_evidence_ledger":
             passed = scorecard_pos >= 0 and evidence_pos >= 0 and scorecard_pos < evidence_pos
             detail = {"scorecard_index": scorecard_pos, "evidence_index": evidence_pos}
+        elif name == "evaluation_protocol_between_scorecard_and_evidence":
+            passed = scorecard_pos >= 0 and protocol_pos >= 0 and evidence_pos >= 0 and scorecard_pos < protocol_pos < evidence_pos
+            detail = {"scorecard_index": scorecard_pos, "protocol_index": protocol_pos, "evidence_index": evidence_pos}
         elif name == "reviewer_scorecard_links_json":
+            marker_count = index_text.count(marker)
+            passed = marker_count >= 1
+            detail = {"marker_count": marker_count}
+        elif name == "evaluation_protocol_links_json":
             marker_count = index_text.count(marker)
             passed = marker_count >= 1
             detail = {"marker_count": marker_count}

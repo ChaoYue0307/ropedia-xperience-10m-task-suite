@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Publication Quality Gates",
   "status": "pass",
-  "generated_at_utc": "2026-06-01T08:59:37+00:00",
+  "generated_at_utc": "2026-06-01T09:43:17+00:00",
   "rule": "Do not present a release as current unless every automated gate passes, then verify live GitHub/HF mirrors after publishing.",
   "automated_gates": [
     {
@@ -23,6 +23,18 @@
       "report": "docs/data/website_integrity.json",
       "blocks_if": "Local links, anchors, JSON bundles, or referenced image assets are missing or invalid.",
       "proves": "The GitHub Pages / HF static surface is internally coherent before upload.",
+      "current_report": {
+        "exists": true,
+        "status": "pass"
+      }
+    },
+    {
+      "id": "evaluation_protocol",
+      "title": "Evaluation protocol",
+      "command": "python scripts/build_evaluation_protocol.py",
+      "report": "docs/data/evaluation_protocol.json",
+      "blocks_if": "Windowing, split policy, leakage controls, task metrics, or unsupported interpretations are not explicit.",
+      "proves": "The task evaluation protocol is generated from committed metric artifacts.",
       "current_report": {
         "exists": true,
         "status": "pass"

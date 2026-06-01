@@ -22,12 +22,12 @@
   },
   "steps": [
     {
-      "id": "download_sample",
-      "status": "reproducible",
-      "command": "hf download ropedia-ai/xperience-10m-sample --repo-type dataset --local-dir data/sample/xperience-10m-sample",
-      "expected": "annotation.hdf5 plus public sample MP4 streams under data/sample/xperience-10m-sample",
-      "boundary": "raw sample data is downloaded from upstream, not redistributed here"
-    },
+            "id": "download_sample",
+            "status": "reproducible",
+            "command": "hf download ropedia-ai/xperience-10m-sample --repo-type dataset --local-dir data/sample/xperience-10m-sample",
+            "expected": "annotation.hdf5 plus public sample MP4 streams under data/sample/xperience-10m-sample; optional visualization.rrd can be inspected with Rerun 0.29.0",
+            "boundary": "sample card lists cc-by-nc-4.0; raw sample data is downloaded from upstream, not redistributed here"
+        },
     {
       "id": "minimal_baselines",
       "status": "reproducible",
@@ -42,15 +42,22 @@
       "expected": "12 task metrics, predictions, manifests, and neural_mlp task-head artifacts",
       "boundary": "8,378-d current feature contract; audio documented but not featurized"
     },
-    {
-      "id": "research_direction_outputs",
-      "status": "reproducible",
-      "command": "python scripts/research_direction_taxonomy.py && python scripts/research_direction_extension_tasks.py && python scripts/task_walkthroughs.py",
-      "expected": "research-direction taxonomy, extension probes, and task walkthrough artifacts",
-      "boundary": "single-episode probes, not full research-direction solutions"
-    },
-    {
-      "id": "figures_and_dashboard_data",
+        {
+            "id": "research_direction_outputs",
+            "status": "reproducible",
+            "command": "python scripts/research_direction_taxonomy.py && python scripts/research_direction_extension_tasks.py && python scripts/task_walkthroughs.py",
+            "expected": "research-direction taxonomy, extension probes, and task walkthrough artifacts",
+            "boundary": "single-episode probes, not full research-direction solutions"
+        },
+        {
+            "id": "evaluation_protocol",
+            "status": "reproducible",
+            "command": "python scripts/build_evaluation_protocol.py",
+            "expected": "EVALUATION_PROTOCOL.md and docs/data/evaluation_protocol.json",
+            "boundary": "defines single-episode task evaluation rules; does not add cross-episode model quality"
+        },
+        {
+            "id": "figures_and_dashboard_data",
       "status": "reproducible",
       "command": "python scripts/generate_visualizations.py && python scripts/render_overview_figures.py && python scripts/render_task_suite_infographic.py && python scripts/export_modality_atlas_assets.py",
       "expected": "website JSON bundles, charts, overview figures, task-suite infographic, and responsive modality atlas assets",

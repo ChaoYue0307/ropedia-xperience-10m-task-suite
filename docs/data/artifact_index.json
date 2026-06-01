@@ -1,13 +1,14 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T08:57:23+00:00",
+  "generated_at_utc": "2026-06-01T09:43:09+00:00",
   "status": "pass",
-  "artifact_count": 37,
+  "artifact_count": 40,
   "missing": [],
   "by_kind": {
     "review_path": 5,
     "claim_boundary": 1,
     "source_alignment": 2,
+    "evaluation_protocol": 3,
     "quality_gate": 4,
     "reproducibility": 2,
     "hygiene_report": 1,
@@ -37,8 +38,8 @@
       "surface": "repo_hf",
       "proves": "Gives a compact verified/data-gated/not-redistributed decision table for first-pass reviewers.",
       "exists": true,
-      "bytes": 3645,
-      "sha256": "dd51a034003489deceb8cd9a49d980225c102506abf963d2a17a219f83e49991"
+      "bytes": 4087,
+      "sha256": "d615951c3b24dc949450be405dd79d446556b683d42c55de13fde26dcb70080f"
     },
     {
       "id": "reviewer_scorecard_json",
@@ -48,8 +49,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable copy of the current reviewer scorecard for website and HF mirrors.",
       "exists": true,
-      "bytes": 4868,
-      "sha256": "8e35558a08b1debc0aadc8dfa367d700e6cc2bfc3ee43e828c42ed7d823ad9af"
+      "bytes": 5568,
+      "sha256": "e882fee1eb1e40b6a6af0e85ac263db0b7674828d16ca999de961ef63492ba52"
     },
     {
       "id": "evidence_contract",
@@ -59,8 +60,8 @@
       "surface": "repo",
       "proves": "Defines what is verified, what is smoke-only, and what must not be inferred.",
       "exists": true,
-      "bytes": 7926,
-      "sha256": "d9d55298c24fb59d2f2f67fcef2812a135c92b3ec4c4217d7c93aa6bdaa27628"
+      "bytes": 8517,
+      "sha256": "0807329cdac8c0447ea7c62bb1d6987226b2f7196da06e3a0882805a8ecb86d6"
     },
     {
       "id": "reviewer_packet",
@@ -70,8 +71,8 @@
       "surface": "website_hf",
       "proves": "Gives a short audit path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 5294,
-      "sha256": "47bb26da602307af5a5b8f4577c01e88ba9287ca97eeaff058e38225d6989277"
+      "bytes": 6375,
+      "sha256": "016e68c1285fda5d64ed41992fb570bcf1766139b165b8a6679014ba7cd3c932"
     },
     {
       "id": "artifact_guide",
@@ -81,8 +82,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 8287,
-      "sha256": "c224d1f5bb24205a246855c7610c81b43d4bae1f696a310dbbc7048ac1682f76"
+      "bytes": 9498,
+      "sha256": "e6fa0e559f969ad6b6a9f617149c213e0be512d6b74a746214e5fd6e155f51e1"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -90,10 +91,10 @@
       "path": "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
       "kind": "source_alignment",
       "surface": "repo_hf",
-      "proves": "Aligns public dataset wording with the official gated Xperience-10M dataset card and records unsupported areas.",
+      "proves": "Aligns public dataset wording with the official gated Xperience-10M card, public sample card, HF API metadata, and unsupported areas.",
       "exists": true,
-      "bytes": 7654,
-      "sha256": "0866357a6d9922c961dc89a872b88b9517a37adf7b8130bfeb64b471045d01da"
+      "bytes": 10029,
+      "sha256": "df25eb9d790d61a524a81c74d3f3a16ebe66d16dc00832ada94ef36371f9ab15"
     },
     {
       "id": "official_dataset_card_alignment_json",
@@ -101,10 +102,43 @@
       "path": "docs/data/xperience10m_dataset_card_alignment.json",
       "kind": "source_alignment",
       "surface": "website_hf",
-      "proves": "Machine-readable upstream dataset-card alignment facts for website and HF mirrors.",
+      "proves": "Machine-readable upstream dataset-card, sample-card, and HF API alignment facts for website and HF mirrors.",
       "exists": true,
-      "bytes": 5103,
-      "sha256": "157f8616cb6cb45ad4d72bc371d4d68c60a990340e4257a4d7e874c577d44f24"
+      "bytes": 6985,
+      "sha256": "feff5d60c5a5a385612adf40a59956809b3e69eaee3918dbd262e8f8d8186729"
+    },
+    {
+      "id": "evaluation_protocol",
+      "title": "Evaluation protocol",
+      "path": "EVALUATION_PROTOCOL.md",
+      "kind": "evaluation_protocol",
+      "surface": "repo_hf",
+      "proves": "Defines the window unit, chronological split, task metrics, leakage controls, and unsupported interpretations.",
+      "exists": true,
+      "bytes": 5844,
+      "sha256": "6c82f0d6806d2e929f568fec32fcd4820218c59ec6b30bbefe1a4ec1e1aa1b54"
+    },
+    {
+      "id": "evaluation_protocol_json",
+      "title": "Evaluation protocol JSON",
+      "path": "docs/data/evaluation_protocol.json",
+      "kind": "evaluation_protocol",
+      "surface": "website_hf",
+      "proves": "Machine-readable protocol generated from committed task metrics for website and HF mirrors.",
+      "exists": true,
+      "bytes": 13575,
+      "sha256": "b24f8d4a03e363c016c62bab66a9ccc8958c69570180c7011fcbed98ab932429"
+    },
+    {
+      "id": "evaluation_protocol_builder",
+      "title": "Evaluation protocol builder",
+      "path": "scripts/build_evaluation_protocol.py",
+      "kind": "evaluation_protocol",
+      "surface": "repo_hf",
+      "proves": "Regenerates the protocol from committed summary metrics and task artifacts.",
+      "exists": true,
+      "bytes": 16084,
+      "sha256": "a859e43fc95b2bce4b85a758050968e504f1dc7870d4b04e230302aec2b74724"
     },
     {
       "id": "quality_gates",
@@ -114,8 +148,8 @@
       "surface": "repo_hf",
       "proves": "Lists the automated and post-publish gates required before presenting a release as current.",
       "exists": true,
-      "bytes": 2869,
-      "sha256": "69160edc3eaf8d99206fb05ab65e01ee3b0ce7f6e1e31d0201a73eca9e27539e"
+      "bytes": 3141,
+      "sha256": "511b02550f68aa2142a27bf80471d3e793ce5aeafd6db2aaef64cf9615b42d07"
     },
     {
       "id": "quality_gate_manifest",
@@ -125,8 +159,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable release-gate summary for validators, mirrors, and reviewer surfaces.",
       "exists": true,
-      "bytes": 4228,
-      "sha256": "9b8dd80825e01be1a117148ba5882f1e6398b78f4264c3e60132395a6b75964e"
+      "bytes": 4737,
+      "sha256": "7a386943138f29808762c9df9673bddbd1e1f3893b7384b33efb4e7588321af1"
     },
     {
       "id": "live_publication_status",
@@ -148,8 +182,8 @@
       "surface": "repo",
       "proves": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 14293,
-      "sha256": "73b37bb78808aa53ec62b4a7ba3f4bfda463d6f8284dfc3e575e73982d0303f1"
+      "bytes": 15467,
+      "sha256": "84911a3a36db0471862add4eb834f54e2105d517887395c774af703a9c346291"
     },
     {
       "id": "reproducibility_contract",
@@ -159,8 +193,8 @@
       "surface": "repo_hf",
       "proves": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
       "exists": true,
-      "bytes": 5284,
-      "sha256": "7be99f2745c6b90b1f308bafcd63a3e6961dcbe836876977bd90983ff16c29eb"
+      "bytes": 5742,
+      "sha256": "53ebb107906807b2338ad9357dac6f814f20685335735a836cb2cbc2a355d35e"
     },
     {
       "id": "reproducibility_matrix",
@@ -170,8 +204,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable reproduction steps with expected artifacts and public boundaries.",
       "exists": true,
-      "bytes": 4033,
-      "sha256": "23c5010d00d929c235a1d3efbf1c350f291a6d92ccb23c5b055396bf89152cf5"
+      "bytes": 4582,
+      "sha256": "0f13b45977ece1c79f5ae5a73cd76efc0061bd8c5daa0b4416730c5739a71242"
     },
     {
       "id": "artifact_index_builder",
@@ -181,8 +215,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 14267,
-      "sha256": "e09ba25e862cdb22b53fead53466079fc7b41be63148bd5d8de1fbdcfe5570b6"
+      "bytes": 15314,
+      "sha256": "a1822ef1f58823ae5f5aa90fd8f568685ec306c0ec6adb4ead918ef6834474cb"
     },
     {
       "id": "publication_audit",
@@ -193,7 +227,7 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 5706,
+      "bytes": 5840,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -217,7 +251,7 @@
       "volatile": true,
       "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 54563,
+      "bytes": 58417,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -229,7 +263,7 @@
       "volatile": true,
       "proves": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 6843,
+      "bytes": 7900,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -240,8 +274,8 @@
       "surface": "website_hf",
       "proves": "Lists public URLs, upstream sources, and machine-readable project metadata.",
       "exists": true,
-      "bytes": 3530,
-      "sha256": "6028e493703bb63fabec3b23cc220f3c2606cf005bb5705043afa041a167486c"
+      "bytes": 3917,
+      "sha256": "8f1fc5cf8bb1776c613b93a96c5edfa9f05584ad69c38049f0b6aba4beef2374"
     },
     {
       "id": "task_summary",
