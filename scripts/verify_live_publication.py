@@ -11,6 +11,8 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import subprocess
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -168,6 +170,9 @@ def fetch(url: str) -> dict:
             "final_url": url,
         }
     except URLError as exc:
+        fallback = fetch_with_curl(url)
+        if fallback["ok"]:
+            return fallback
         return {
             "ok": False,
             "status_code": None,
@@ -176,6 +181,53 @@ def fetch(url: str) -> dict:
             "error": str(exc.reason),
             "final_url": url,
         }
+
+
+def fetch_with_curl(url: str) -> dict:
+    with tempfile.NamedTemporaryFile(delete=False) as tmp:
+        tmp_path = Path(tmp.name)
+    try:
+        result = subprocess.run(
+            [
+                "curl",
+                "-L",
+                "-sS",
+                "--max-time",
+                str(TIMEOUT_SECONDS),
+                "-A",
+                USER_AGENT,
+                "-o",
+                str(tmp_path),
+                "-w",
+                "%{http_code}\n%{url_effective}",
+                url,
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        status_text, _, final_url = result.stdout.partition("\n")
+        status_code = int(status_text.strip() or "0")
+        body = tmp_path.read_bytes() if tmp_path.exists() else b""
+        if result.returncode != 0:
+            return {
+                "ok": False,
+                "status_code": status_code or None,
+                "bytes": 0,
+                "sha256": None,
+                "error": result.stderr.strip() or f"curl exited {result.returncode}",
+                "final_url": sanitize_url(final_url.strip() or url),
+            }
+        return {
+            "ok": 200 <= status_code < 400,
+            "status_code": status_code,
+            "bytes": len(body),
+            "sha256": sha256_bytes(body),
+            "body": body,
+            "final_url": sanitize_url(final_url.strip() or url),
+        }
+    finally:
+        tmp_path.unlink(missing_ok=True)
 
 
 def hash_group_record(group: dict) -> dict:
