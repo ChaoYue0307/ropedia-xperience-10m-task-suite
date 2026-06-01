@@ -42,6 +42,22 @@ ARTIFACTS = [
         "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
     },
     {
+        "id": "reproducibility_contract",
+        "title": "Reproducibility contract",
+        "path": "REPRODUCIBILITY.md",
+        "kind": "reproducibility",
+        "surface": "repo_hf",
+        "proves": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
+    },
+    {
+        "id": "reproducibility_matrix",
+        "title": "Reproducibility matrix",
+        "path": "docs/data/reproducibility_matrix.json",
+        "kind": "reproducibility",
+        "surface": "website_hf",
+        "proves": "Machine-readable reproduction steps with expected artifacts and public boundaries.",
+    },
+    {
         "id": "artifact_index_builder",
         "title": "Artifact index builder",
         "path": "scripts/build_artifact_index.py",

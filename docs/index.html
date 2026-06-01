@@ -750,6 +750,12 @@
     .artifact h3 { line-height: 1.18; }
     .artifact a { display: inline-block; margin-top: 14px; font-weight: 740; text-decoration: none; color: var(--blue); }
     .artifact a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .repro-note {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
 
     .code-panel {
       background: #000;
@@ -1332,23 +1338,35 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Reproduce the suite.</h2>
-          <p>Raw Xperience-10M data is not redistributed here. Download the public sample separately, then run the same scripts.</p>
+          <p>Raw Xperience-10M data is not redistributed here. The public reproduction contract states the commands, expected outputs, exact-match audit evidence, and current non-reproducible scale-up boundary.</p>
         </div>
+        <div class="artifact-grid">
+          <article class="artifact"><h3>Reproducibility contract</h3><p>Human-readable commands, expected artifacts, and boundaries for the public single-episode pipeline.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">REPRODUCIBILITY.md</a></article>
+          <article class="artifact"><h3>Reproducibility matrix</h3><p>Machine-readable command matrix covering sample download, baselines, 12 tasks, figures, and validation.</p><a href="data/reproducibility_matrix.json">reproducibility_matrix.json</a></article>
+          <article class="artifact"><h3>Exact-match audit</h3><p>The last metric audit rebuilt the public-sample outputs from fresh cache and matched the committed metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">reproducibility_audit.md</a></article>
+          <article class="artifact"><h3>Scale-up boundary</h3><p>The 32-episode Qwen3-Omni pilot is prepared but not publicly reproducible until gated data access and held-out evaluation pass.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">DATA_BLOCKER_REPORT.md</a></article>
+        </div>
+        <p class="repro-note">Minimal path: install the toolkit dependencies, download the official sample, run the 12-task suite with neural heads, regenerate visualizations, then run the artifact index and publication validator.</p>
         <pre class="code-panel"><button type="button" data-copy="setup">Copy</button><code id="setup">git clone https://github.com/Ropedia/HOMIE-toolkit.git
 python3.12 -m venv .venv
 source .venv/bin/activate
 pip install -r HOMIE-toolkit/requirements.txt huggingface_hub hf_xet
+git clone https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite.git
+pip install -r ropedia-xperience-10m-task-suite/requirements.txt
 pip install torch
 
 hf download ropedia-ai/xperience-10m-sample \
   --repo-type dataset \
   --local-dir data/sample/xperience-10m-sample
 
-git clone https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite.git
 cd ropedia-xperience-10m-task-suite
-python scripts/episode_task_suite.py --workspace /path/to/workspace --include-neural
+export WORKSPACE=/path/to/workspace
+python scripts/episode_task_suite.py --workspace "$WORKSPACE" --include-neural
 python scripts/research_direction_extension_tasks.py
-python scripts/generate_visualizations.py</code></pre>
+python scripts/task_walkthroughs.py
+python scripts/generate_visualizations.py
+python scripts/build_artifact_index.py
+python scripts/validate_publication_package.py</code></pre>
       </div>
     </section>
   </main>

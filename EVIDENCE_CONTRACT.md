@@ -15,6 +15,7 @@ local artifact that a reader can inspect before trusting the dashboard.
 | The real 32-episode LoRA pilot is blocked on gated data access, not on repo presentation. | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `results/omni_finetune/A100_HF_RELAY_STATUS.md`, `results/omni_finetune/source_discovery.json` | Blocker documented | No 32-episode metric should be claimed until the gate passes |
 | The public GitHub and Hugging Face bundles are publication-clean. | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | Verified pass | Checks public files and HF bundles, not arbitrary ignored local scratch outputs |
 | The core proof artifacts are indexed and grouped for fast review. | `ARTIFACT_GUIDE.md`, `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | Verified guide and index | Selective source-of-truth catalog, not a complete inventory of every output file |
+| The public reproduction path is documented. | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json`, `notes/reproducibility_audit.md` | Verified documentation and prior exact-match audit | Publicly reproduces the single-episode pipeline, not the gated 32-episode Qwen3-Omni pilot |
 | The project is externally citable and machine-readable. | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | Verified metadata files | Code license does not override original Xperience-10M dataset terms |
 | A first-time reviewer has an explicit audit path. | `docs/data/reviewer_packet.json`, website reviewer section, README reviewer path | Verified reviewer packet | It guides inspection; it does not add new experimental claims |
 
@@ -26,15 +27,17 @@ local artifact that a reader can inspect before trusting the dashboard.
    reviewer artifacts, indexed proof artifacts,
    sizes, and stable-file hashes.
 3. Read `docs/assets/task_suite_infographic.png` for the high-level map.
-4. Inspect `results/episode_task_suite/summary_report.json` for the task and
+4. Read `REPRODUCIBILITY.md` and `docs/data/reproducibility_matrix.json` before
+   rerunning the public pipeline.
+5. Inspect `results/episode_task_suite/summary_report.json` for the task and
    metric source of truth.
-5. Inspect `results/episode_task_suite/feature_manifest.json` to see which
+6. Inspect `results/episode_task_suite/feature_manifest.json` to see which
    modalities enter the current feature vector.
-6. Inspect `results/episode_task_suite/neural_mlp/` to compare minimal and
+7. Inspect `results/episode_task_suite/neural_mlp/` to compare minimal and
    neural heads under the same splits.
-7. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before interpreting
+8. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before interpreting
    any Qwen3-Omni artifact.
-8. Inspect `docs/data/publication_audit.json` before publishing or sharing the
+9. Inspect `docs/data/publication_audit.json` before publishing or sharing the
    project externally.
-9. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or
+10. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or
    citing the project.
