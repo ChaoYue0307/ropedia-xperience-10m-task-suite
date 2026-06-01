@@ -38,7 +38,7 @@ TASK_SPECS: OrderedDict[str, dict[str, Any]] = OrderedDict(
             {
                 "direction": "A",
                 "direction_name": "Human Modeling & Motion Understanding",
-                "name": "Body/hand motion intensity",
+                "name": "Body and Hand Motion Intensity",
                 "family": "classification",
                 "case_study": "A window with a fast reach or pour should be classified as high motion; a steady holding window should be low motion.",
                 "input": "Current non-mocap feature blocks: video, depth, camera pose/rotation, IMU, SLAM, calibration, and language context.",
@@ -57,7 +57,7 @@ TASK_SPECS: OrderedDict[str, dict[str, Any]] = OrderedDict(
             {
                 "direction": "B",
                 "direction_name": "3D/4D Reconstruction & Neural Rendering",
-                "name": "Multi-view consistency retrieval",
+                "name": "Multi-View Consistency Retrieval",
                 "family": "retrieval",
                 "case_study": "Given the fisheye camera features for a pouring moment, retrieve the synchronized stereo-left view from the same time window.",
                 "input": "Query side: fisheye_cam0 video feature block. Candidate side: stereo_left video feature block from held-out windows.",
@@ -76,7 +76,7 @@ TASK_SPECS: OrderedDict[str, dict[str, Any]] = OrderedDict(
             {
                 "direction": "C",
                 "direction_name": "Egocentric Vision & Interaction",
-                "name": "Action phase progress",
+                "name": "Action Phase Progress Estimation",
                 "family": "regression",
                 "case_study": "Inside a Pour coffee action segment, estimate whether the current window is near the beginning, middle, or end of that action.",
                 "input": "Current non-caption multimodal feature vector, so the label text cannot be copied directly from the language block.",
@@ -95,7 +95,7 @@ TASK_SPECS: OrderedDict[str, dict[str, Any]] = OrderedDict(
             {
                 "direction": "D",
                 "direction_name": "Scene Reconstruction & World Modeling",
-                "name": "Short-horizon ego-motion forecast",
+                "name": "Short-Horizon Ego-Motion Forecasting",
                 "family": "forecast",
                 "case_study": "From the current sensors, predict how the camera translation will change over the next 20 frames while the wearer moves through the scene.",
                 "input": "Current multimodal features excluding the camera-translation block and caption text.",
@@ -664,7 +664,7 @@ def write_markdown(payload: dict[str, Any]) -> None:
         min_value = task_main_metric(task, result, "minimal")
         nn_value = task_main_metric(task, result, "neural_mlp")
         lines.append(
-            f"| {spec['direction']}. {spec['direction_name']} | `{task}` | {fmt_metric(min_value, key)} {spec['metric_name']} | {fmt_metric(nn_value, key)} {spec['metric_name']} | {spec['current_limit']} |"
+            f"| {spec['direction']}. {spec['direction_name']} | {spec['name']} | {fmt_metric(min_value, key)} {spec['metric_name']} | {fmt_metric(nn_value, key)} {spec['metric_name']} | {spec['current_limit']} |"
         )
 
     lines.extend(["", "## Task Details", ""])

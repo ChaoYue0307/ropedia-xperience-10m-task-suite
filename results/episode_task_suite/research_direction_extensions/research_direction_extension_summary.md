@@ -8,14 +8,14 @@ They do not claim cross-episode generalization or full direction completion.
 
 | Direction | Extension task | Minimal | Neural MLP | Meaning |
 | --- | --- | ---: | ---: | --- |
-| A. Human Modeling & Motion Understanding | `body_motion_intensity` | 0.7827 macro-F1 | 0.7986 macro-F1 | This is a motion-energy proxy, not a SMPL/MANO body model or a generative motion prior. |
-| B. 3D/4D Reconstruction & Neural Rendering | `multi_view_consistency_retrieval` | 0.5534 MRR | 0.3469 MRR | This checks calibrated multi-view signal, but it is still feature retrieval, not NeRF, Gaussian Splatting, or novel-view synthesis. |
-| C. Egocentric Vision & Interaction | `action_phase_progress` | 0.3416 MAE | 0.3038 MAE | This is an action-structure probe inside one episode, not a general intent model across homes, people, or tasks. |
-| D. Scene Reconstruction & World Modeling | `ego_motion_forecast` | 0.1989 MAE | 0.0989 MAE | This is a compact world-model proxy; it does not build a persistent map, scene graph, or object permanence model. |
+| A. Human Modeling & Motion Understanding | Body and Hand Motion Intensity | 0.7827 macro-F1 | 0.7986 macro-F1 | This is a motion-energy proxy, not a SMPL/MANO body model or a generative motion prior. |
+| B. 3D/4D Reconstruction & Neural Rendering | Multi-View Consistency Retrieval | 0.5534 MRR | 0.3469 MRR | This checks calibrated multi-view signal, but it is still feature retrieval, not NeRF, Gaussian Splatting, or novel-view synthesis. |
+| C. Egocentric Vision & Interaction | Action Phase Progress Estimation | 0.3416 MAE | 0.3038 MAE | This is an action-structure probe inside one episode, not a general intent model across homes, people, or tasks. |
+| D. Scene Reconstruction & World Modeling | Short-Horizon Ego-Motion Forecasting | 0.1989 MAE | 0.0989 MAE | This is a compact world-model proxy; it does not build a persistent map, scene graph, or object permanence model. |
 
 ## Task Details
 
-### A. Body/hand motion intensity
+### A. Body and Hand Motion Intensity
 
 - Case study: A window with a fast reach or pour should be classified as high motion; a steady holding window should be low motion.
 - Input: Current non-mocap feature blocks: video, depth, camera pose/rotation, IMU, SLAM, calibration, and language context.
@@ -27,7 +27,7 @@ They do not claim cross-episode generalization or full direction completion.
 - Neural result: 0.7986 macro-F1
 - Limitation: This is a motion-energy proxy, not a SMPL/MANO body model or a generative motion prior.
 
-### B. Multi-view consistency retrieval
+### B. Multi-View Consistency Retrieval
 
 - Case study: Given the fisheye camera features for a pouring moment, retrieve the synchronized stereo-left view from the same time window.
 - Input: Query side: fisheye_cam0 video feature block. Candidate side: stereo_left video feature block from held-out windows.
@@ -39,7 +39,7 @@ They do not claim cross-episode generalization or full direction completion.
 - Neural result: 0.3469 MRR
 - Limitation: This checks calibrated multi-view signal, but it is still feature retrieval, not NeRF, Gaussian Splatting, or novel-view synthesis.
 
-### C. Action phase progress
+### C. Action Phase Progress Estimation
 
 - Case study: Inside a Pour coffee action segment, estimate whether the current window is near the beginning, middle, or end of that action.
 - Input: Current non-caption multimodal feature vector, so the label text cannot be copied directly from the language block.
@@ -51,7 +51,7 @@ They do not claim cross-episode generalization or full direction completion.
 - Neural result: 0.3038 MAE
 - Limitation: This is an action-structure probe inside one episode, not a general intent model across homes, people, or tasks.
 
-### D. Short-horizon ego-motion forecast
+### D. Short-Horizon Ego-Motion Forecasting
 
 - Case study: From the current sensors, predict how the camera translation will change over the next 20 frames while the wearer moves through the scene.
 - Input: Current multimodal features excluding the camera-translation block and caption text.
