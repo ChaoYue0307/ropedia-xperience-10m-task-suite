@@ -232,6 +232,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "scripts/neural_task_models.py",
         "scripts/build_artifact_index.py",
         "scripts/build_quality_gates.py",
+        "scripts/verify_live_publication.py",
         "scripts/validate_mirror_parity.py",
         "scripts/validate_scope_claims.py",
         "scripts/validate_website_integrity.py",

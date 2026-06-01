@@ -23,8 +23,8 @@ These gates validate public packaging, claim boundaries, mirror parity, and webs
 
 | Check | Evidence | Required result |
 | --- | --- | --- |
+| Live publication verifier | `python scripts/verify_live_publication.py` | live GitHub Pages, GitHub raw, HF Space, artifact dataset, and model mirrors match the current release assets |
 | GitHub Pages deployment | `gh run list --repo ChaoYue0307/ropedia-xperience-10m-task-suite --limit 5` | latest pages-build-deployment run succeeds |
-| Live figure hash parity | `download live GitHub/HF task_suite_infographic.png and compare SHA-256 to docs/assets/task_suite_infographic.png` | all live hashes match the repo asset |
 | Rendered browser smoke | `Browser/Playwright page identity, nonblank render, console health, and one local interaction` | no relevant console warnings/errors and target links work |
 
 ## Rerun Order

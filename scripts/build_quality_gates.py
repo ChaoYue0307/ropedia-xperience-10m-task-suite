@@ -71,16 +71,16 @@ GATES = [
 
 POST_PUBLISH_CHECKS = [
     {
+        "id": "live_publication_verifier",
+        "title": "Live publication verifier",
+        "evidence": "python scripts/verify_live_publication.py",
+        "required_result": "live GitHub Pages, GitHub raw, HF Space, artifact dataset, and model mirrors match the current release assets",
+    },
+    {
         "id": "github_pages_deploy",
         "title": "GitHub Pages deployment",
         "evidence": "gh run list --repo ChaoYue0307/ropedia-xperience-10m-task-suite --limit 5",
         "required_result": "latest pages-build-deployment run succeeds",
-    },
-    {
-        "id": "live_figure_hash_parity",
-        "title": "Live figure hash parity",
-        "evidence": "download live GitHub/HF task_suite_infographic.png and compare SHA-256 to docs/assets/task_suite_infographic.png",
-        "required_result": "all live hashes match the repo asset",
     },
     {
         "id": "rendered_browser_smoke",
