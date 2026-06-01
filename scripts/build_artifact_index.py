@@ -75,6 +75,15 @@ ARTIFACTS = [
         "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
     },
     {
+        "id": "scope_claims_audit",
+        "title": "Scope claims audit",
+        "path": "docs/data/scope_claims_audit.json",
+        "kind": "scope_guard",
+        "surface": "website_hf",
+        "volatile": True,
+        "proves": "Confirms historical 32ep path strings are not presented as real 32-episode results.",
+    },
+    {
         "id": "website_integrity",
         "title": "Website integrity report",
         "path": "docs/data/website_integrity.json",

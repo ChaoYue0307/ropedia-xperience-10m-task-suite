@@ -74,6 +74,7 @@ python scripts/render_overview_figures.py
 python scripts/render_task_suite_infographic.py
 python scripts/export_modality_atlas_assets.py
 python scripts/validate_website_integrity.py
+python scripts/validate_scope_claims.py
 python scripts/build_artifact_index.py
 python scripts/validate_publication_package.py
 ```
@@ -91,7 +92,7 @@ python scripts/validate_publication_package.py
 | Figures | `docs/assets/*.png`, `docs/assets/charts/*.svg` |
 | Modality atlas | `docs/data/modality_atlas.json`, `docs/assets/modalities/*` |
 | Website integrity | `docs/data/website_integrity.json` |
-| Publication checks | `docs/data/artifact_index.json`, `docs/data/publication_audit.json` |
+| Publication checks | `docs/data/artifact_index.json`, `docs/data/publication_audit.json`, `docs/data/scope_claims_audit.json` |
 
 ## Exact-Match Audit
 
@@ -118,6 +119,7 @@ state, so this repo does not claim they are publicly reproducible yet:
 - full Qwen weights or large full checkpoints.
 
 Before interpreting any Qwen3-Omni result, read
+[`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json),
 [`results/omni_finetune/DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md)
 and
 [`results/omni_finetune/A100_HF_RELAY_STATUS.md`](results/omni_finetune/A100_HF_RELAY_STATUS.md).

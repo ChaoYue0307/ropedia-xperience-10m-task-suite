@@ -14,6 +14,7 @@ local artifact that a reader can inspect before trusting the dashboard.
 | Four extra direction probes are coded and evaluated. | `results/episode_task_suite/research_direction_extensions/research_direction_extension_results.json`, `docs/data/research_direction_extensions.json` | Verified single-episode probes | Not full human modeling, neural rendering, intent modeling, or world modeling solutions |
 | Qwen3-Omni infrastructure has passed technical smoke checks. | `results/omni_finetune/RUN_REPORT.md`, `results/omni_finetune/dataset_manifest.json`, `results/omni_finetune/metrics_eval.json` | Smoke-only evidence | One episode, 128 train windows; not a 32-episode pilot |
 | The real 32-episode LoRA pilot is blocked on gated data access, not on repo presentation. | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `results/omni_finetune/A100_HF_RELAY_STATUS.md`, `results/omni_finetune/source_discovery.json` | Blocker documented | No 32-episode metric should be claimed until the gate passes |
+| Historical `32ep` path strings are not treated as 32-episode results. | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | Verified pass | Classifies old run/path identifiers and fails if public presentation claims real 32-episode metrics |
 | The public GitHub and Hugging Face bundles are publication-clean. | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | Verified pass | Checks public files and HF bundles, not arbitrary ignored local scratch outputs |
 | The public website has checked local references. | `scripts/validate_website_integrity.py`, `docs/data/website_integrity.json` | Verified pass | Checks local links, anchors, JSON data, and referenced images; external URLs are not fetched |
 | The core proof artifacts are indexed and grouped for fast review. | `ARTIFACT_GUIDE.md`, `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | Verified guide and index | Selective source-of-truth catalog, not a complete inventory of every output file |
@@ -38,10 +39,12 @@ local artifact that a reader can inspect before trusting the dashboard.
    modalities enter the current feature vector.
 7. Inspect `results/episode_task_suite/neural_mlp/` to compare minimal and
    neural heads under the same splits.
-8. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before interpreting
+8. Inspect `docs/data/scope_claims_audit.json` before interpreting historical
+   `32ep` strings in Qwen3-Omni smoke artifacts.
+9. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before interpreting
    any Qwen3-Omni artifact.
-9. Inspect `docs/data/publication_audit.json` and
+10. Inspect `docs/data/publication_audit.json` and
    `docs/data/website_integrity.json` before publishing or sharing the project
    externally.
-10. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or
+11. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or
    citing the project.

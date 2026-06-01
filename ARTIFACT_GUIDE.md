@@ -25,6 +25,7 @@ The project intentionally separates four layers:
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Defines public reproduction commands, expected outputs, and unreproducible boundaries. |
 | [`docs/data/artifact_index.json`](docs/data/artifact_index.json) | Lists reviewer-critical files with existence, size, and stable hashes. |
 | [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Confirms public bundles exclude raw data, Python caches, heavy archives, and token strings. |
+| [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Confirms historical `32ep` smoke-run identifiers are not presented as real 32-episode results. |
 | [`docs/data/website_integrity.json`](docs/data/website_integrity.json) | Confirms local site links, anchors, JSON bundles, and referenced images resolve. |
 | [`docs/data/reviewer_packet.json`](docs/data/reviewer_packet.json) | Gives the shortest machine-readable reviewer route. |
 

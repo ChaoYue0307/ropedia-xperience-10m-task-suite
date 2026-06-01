@@ -99,6 +99,16 @@
       "boundary": "no 32-episode metric should be claimed until the gate passes"
     },
     {
+      "id": "scope_claims_guard",
+      "claim": "Historical 32ep path strings are not treated as 32-episode results.",
+      "status": "verified",
+      "evidence": [
+        "scripts/validate_scope_claims.py",
+        "docs/data/scope_claims_audit.json"
+      ],
+      "boundary": "old run/path identifiers are classified as smoke-artifact provenance and fail validation if public presentation claims real 32-episode metrics"
+    },
+    {
       "id": "publication_hygiene",
       "claim": "The public GitHub and Hugging Face bundles are publication-clean.",
       "status": "verified",
