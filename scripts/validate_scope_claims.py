@@ -28,6 +28,7 @@ PUBLIC_PRESENTATION_FILES = [
     "docs/data/artifact_index.json",
     "docs/data/evidence_contract.json",
     "docs/data/project_manifest.json",
+    "docs/data/mirror_parity.json",
     "docs/data/reproducibility_matrix.json",
     "docs/data/reviewer_packet.json",
     "docs/data/summary_metrics.json",

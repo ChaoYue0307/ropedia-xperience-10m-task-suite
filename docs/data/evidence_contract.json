@@ -109,6 +109,16 @@
       "boundary": "old run/path identifiers are classified as smoke-artifact provenance and fail validation if public presentation claims real 32-episode metrics"
     },
     {
+      "id": "mirror_parity",
+      "claim": "Prepared GitHub and Hugging Face mirrors carry matching critical files.",
+      "status": "verified",
+      "evidence": [
+        "scripts/validate_mirror_parity.py",
+        "docs/data/mirror_parity.json"
+      ],
+      "boundary": "compares prepared local mirror bundles before upload; live URLs are checked after publishing"
+    },
+    {
       "id": "publication_hygiene",
       "claim": "The public GitHub and Hugging Face bundles are publication-clean.",
       "status": "verified",
