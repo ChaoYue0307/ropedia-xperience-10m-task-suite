@@ -127,7 +127,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
             "results/**/*.json/csv/npz",
             "docs/data/summary_metrics.json",
             "GitHub Pages dashboard",
-            "reproducibility audit",
+            "reproducibility check",
         ], "#a7f078"),
     ]
     parts = [

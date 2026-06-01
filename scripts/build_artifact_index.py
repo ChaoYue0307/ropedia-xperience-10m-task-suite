@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a compact source-of-truth artifact index for reviewers.
+"""Build a compact source-of-truth artifact index for the research project.
 
 The index is intentionally selective. It lists the files that prove the public
 claims, not every prediction array or checkpoint in the repository.
@@ -18,20 +18,20 @@ OUTPUT = ROOT / "docs/data/artifact_index.json"
 
 ARTIFACTS = [
     {
-        "id": "reviewer_scorecard",
-        "title": "Reviewer scorecard",
-        "path": "REVIEWER_SCORECARD.md",
-        "kind": "review_path",
+        "id": "project_status",
+        "title": "Project status",
+        "path": "PROJECT_STATUS.md",
+        "kind": "project_path",
         "surface": "repo_hf",
-        "proves": "Gives a compact verified/data-gated/not-redistributed decision table for first-pass reviewers.",
+        "proves": "Gives a compact verified/data-gated/not-redistributed decision table for first-pass readers.",
     },
     {
-        "id": "reviewer_scorecard_json",
-        "title": "Reviewer scorecard JSON",
-        "path": "docs/data/reviewer_scorecard.json",
-        "kind": "review_path",
+        "id": "project_status_json",
+        "title": "Project status JSON",
+        "path": "docs/data/project_status.json",
+        "kind": "project_path",
         "surface": "website_hf",
-        "proves": "Machine-readable copy of the current reviewer scorecard for website and HF mirrors.",
+        "proves": "Machine-readable copy of the current project status for website and HF mirrors.",
     },
     {
         "id": "evidence_contract",
@@ -42,18 +42,18 @@ ARTIFACTS = [
         "proves": "Defines what is verified, what is readiness-only, and what must not be inferred.",
     },
     {
-        "id": "reviewer_packet",
-        "title": "Reviewer packet",
-        "path": "docs/data/reviewer_packet.json",
-        "kind": "review_path",
+        "id": "project_packet",
+        "title": "Project packet",
+        "path": "docs/data/project_packet.json",
+        "kind": "project_path",
         "surface": "website_hf",
-        "proves": "Gives a short audit path with scope status and public surfaces.",
+        "proves": "Gives a short project path with scope status and public surfaces.",
     },
     {
         "id": "artifact_guide",
         "title": "Artifact guide",
         "path": "ARTIFACT_GUIDE.md",
-        "kind": "review_path",
+        "kind": "project_path",
         "surface": "repo_hf",
         "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
     },
@@ -74,20 +74,20 @@ ARTIFACTS = [
         "proves": "Machine-readable upstream dataset-card, sample-card, and HF API alignment facts for website and HF mirrors.",
     },
     {
-        "id": "source_alignment_audit",
-        "title": "Source alignment audit",
+        "id": "source_alignment",
+        "title": "Source alignment",
         "path": "SOURCE_ALIGNMENT_AUDIT.md",
         "kind": "source_alignment",
         "surface": "repo_hf",
-        "proves": "Summarizes the pass/fail audit for full-dataset facts, sample-card facts, API-listing caveats, and public-card boundary markers.",
+        "proves": "Summarizes the pass/fail check for full-dataset facts, sample-card facts, API-listing caveats, and public-card boundary markers.",
     },
     {
-        "id": "source_alignment_audit_json",
-        "title": "Source alignment audit JSON",
+        "id": "source_alignment_json",
+        "title": "Source alignment JSON",
         "path": "docs/data/source_alignment_audit.json",
         "kind": "source_alignment",
         "surface": "website_hf",
-        "proves": "Machine-readable source-alignment pass/fail audit for repo, website, and HF surfaces.",
+        "proves": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
     },
     {
         "id": "source_alignment_validator",
@@ -95,7 +95,7 @@ ARTIFACTS = [
         "path": "scripts/validate_source_alignment.py",
         "kind": "source_alignment",
         "surface": "repo_hf",
-        "proves": "Regenerates the source-alignment audit from committed facts and public card text.",
+        "proves": "Regenerates the source-alignment report from committed facts and public card text.",
     },
     {
         "id": "hf_publisher",
@@ -191,7 +191,7 @@ ARTIFACTS = [
         "path": "docs/data/quality_gates.json",
         "kind": "quality_gate",
         "surface": "website_hf",
-        "proves": "Machine-readable release-gate summary for validators, mirrors, and reviewer surfaces.",
+        "proves": "Machine-readable release-gate summary for validators, mirrors, and public project surfaces.",
     },
     {
         "id": "task_surface_integrity",
@@ -247,7 +247,7 @@ ARTIFACTS = [
         "id": "artifact_index_builder",
         "title": "Artifact index builder",
         "path": "scripts/build_artifact_index.py",
-        "kind": "review_path",
+        "kind": "project_path",
         "surface": "repo_hf",
         "proves": "Generates the selective proof-artifact catalog from local files.",
     },

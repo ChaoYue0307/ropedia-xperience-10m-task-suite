@@ -6,7 +6,7 @@ suite artifacts. It complements the machine-readable
 
 The project intentionally separates nine layers:
 
-1. **Reviewer scorecard:** one compact table for first-pass current-state
+1. **Project status:** one compact table for first-pass current-state
    decisions.
 2. **Proof boundary:** what is claimed, what is readiness-only, and what
    remains gated by data access.
@@ -21,7 +21,7 @@ The project intentionally separates nine layers:
    aligned model windows and feature blocks.
 7. **Task evidence:** minimal and neural results for the 12 task contracts plus
    four research-direction extension probes.
-8. **Reproducibility:** public commands, expected outputs, and exact-match audit
+8. **Reproducibility:** public commands, expected outputs, and exact-match
    evidence for the single-episode pipeline.
 9. **Scale-up status:** scripts and reports for the planned 32-episode
    Qwen3-Omni pilot, without claiming those results before data access lands.
@@ -30,7 +30,7 @@ The project intentionally separates nine layers:
 
 | Artifact | Why to open it first |
 | --- | --- |
-| [`REVIEWER_SCORECARD.md`](REVIEWER_SCORECARD.md) | Gives the fastest current decision table: verified, data-gated, and excluded claims. |
+| [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current decision table: verified, data-gated, and excluded claims. |
 | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md) | Defines which claims are verified and which are explicitly not claimed. |
 | [`QUALITY_GATES.md`](QUALITY_GATES.md) | Lists the automated release gates and post-publish checks required before presenting a release as current. |
 | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Defines the task unit, chronological split, metrics, leakage controls, and unsupported interpretations. |
@@ -39,11 +39,11 @@ The project intentionally separates nine layers:
 | [`FIGURE_INDEX.md`](FIGURE_INDEX.md) | Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts. |
 | [`docs/data/brand_assets.json`](docs/data/brand_assets.json) | Catalogs the generated logo system, favicon, app icon, social card, dimensions, hashes, and usage roles. |
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Defines public reproduction commands, expected outputs, and unreproducible boundaries. |
-| [`docs/data/artifact_index.json`](docs/data/artifact_index.json) | Lists reviewer-critical files with existence, size, and stable hashes. |
+| [`docs/data/artifact_index.json`](docs/data/artifact_index.json) | Lists project-critical files with existence, size, and stable hashes. |
 | [`docs/data/figure_index.json`](docs/data/figure_index.json) | Machine-readable visual asset index for website and HF mirrors. |
-| [`docs/data/reviewer_scorecard.json`](docs/data/reviewer_scorecard.json) | Machine-readable copy of the reviewer decision table. |
+| [`docs/data/project_status.json`](docs/data/project_status.json) | Machine-readable copy of the project status table. |
 | [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable source-alignment summary, including gated metadata, sample license/tooling, and unsupported claims. |
-| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable pass/fail audit for source facts and public-card boundary markers. |
+| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable pass/fail check for source facts and public-card boundary markers. |
 | [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | Machine-readable evaluation protocol generated from committed metrics. |
 | [`docs/data/quality_gates.json`](docs/data/quality_gates.json) | Machine-readable quality-gate summary for website and HF mirrors. |
 | [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json) | Last live GitHub/HF verification after upload. |
@@ -52,7 +52,7 @@ The project intentionally separates nine layers:
 | [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Confirms historical `32ep` smoke-run identifiers are not presented as real 32-episode results. |
 | [`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json) | Confirms the public 12-task cards use readable task names, modality thumbnails, and the interactive walkthrough/player data contract. |
 | [`docs/data/website_integrity.json`](docs/data/website_integrity.json) | Confirms local site links, anchors, JSON bundles, and referenced images resolve. |
-| [`docs/data/reviewer_packet.json`](docs/data/reviewer_packet.json) | Gives the shortest machine-readable reviewer route. |
+| [`docs/data/project_packet.json`](docs/data/project_packet.json) | Gives the shortest machine-readable project route. |
 
 ## Official Source Alignment
 
@@ -60,9 +60,9 @@ The project intentionally separates nine layers:
 | --- | --- |
 | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Human-readable summary of the official gated Xperience-10M dataset card, public sample card, API listing snapshot, scale, modalities, access boundary, intended uses, and limitations. |
 | [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable copy of the same alignment facts for website and HF mirrors. |
-| [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Generated audit showing source facts, sample license/tooling, API-listing caveat, and current project boundary. |
-| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable audit of source metadata, source-boundary markers, and HF card parity. |
-| [`scripts/validate_source_alignment.py`](scripts/validate_source_alignment.py) | Regenerates the source-alignment audit from committed alignment facts and public card text. |
+| [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Generated source-alignment report showing source facts, sample license/tooling, API-listing caveat, and current project boundary. |
+| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable check of source metadata, source-boundary markers, and HF card parity. |
+| [`scripts/validate_source_alignment.py`](scripts/validate_source_alignment.py) | Regenerates the source-alignment report from committed alignment facts and public card text. |
 
 ## Evaluation Protocol
 
@@ -113,13 +113,13 @@ The project intentionally separates nine layers:
 | --- | --- |
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Public commands, expected outputs, and non-reproducible boundaries are explicit. |
 | [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json) | Machine-readable command matrix for website and HF mirrors. |
-| [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | The last exact metric audit rebuilt the public-sample metrics and matched committed artifacts. |
+| [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | The last exact metric check rebuilt the public-sample metrics and matched committed artifacts. |
 
 ## Platform Mirrors
 
 | Surface | Purpose |
 | --- | --- |
-| [GitHub Pages dashboard](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/) | Primary public website and visual reviewer flow. |
+| [GitHub Pages dashboard](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/) | Primary public website and visual research flow. |
 | [Hugging Face Space](https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite) | Static app mirror for HF users. |
 | [HF artifact dataset](https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts) | Derived CSV/JSON/Markdown/figure artifacts without raw Xperience-10M data. |
 | [HF baseline model repo](https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines) | Lightweight minimal and neural task-head model files. |

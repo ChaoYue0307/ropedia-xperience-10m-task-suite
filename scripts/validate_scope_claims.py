@@ -30,7 +30,7 @@ PUBLIC_PRESENTATION_FILES = [
     "docs/data/project_manifest.json",
     "docs/data/mirror_parity.json",
     "docs/data/reproducibility_matrix.json",
-    "docs/data/reviewer_packet.json",
+    "docs/data/project_packet.json",
     "docs/data/summary_metrics.json",
 ]
 
@@ -159,7 +159,7 @@ def build_report() -> dict:
     failures: list[dict] = []
 
     project_manifest = read_json("docs/data/project_manifest.json")
-    reviewer_packet = read_json("docs/data/reviewer_packet.json")
+    project_packet = read_json("docs/data/project_packet.json")
     summary_metrics = read_json("docs/data/summary_metrics.json")
     dataset_manifest = read_json("results/omni_finetune/dataset_manifest.json")
     training_metadata = read_json("results/omni_finetune/training_metadata.json")
@@ -175,22 +175,22 @@ def build_report() -> dict:
         )
     )
 
-    reviewer_qwen_claim = reviewer_packet["scope_status"].get("qwen3_omni_32_episode_claim")
+    project_qwen_claim = project_packet["scope_status"].get("qwen3_omni_32_episode_claim")
     checks.append(
         check(
-            "reviewer_packet_disclaims_32_episode_qwen_result",
-            reviewer_qwen_claim is False,
-            f"reviewer_packet scope_status.qwen3_omni_32_episode_claim={reviewer_qwen_claim!r}",
-            ["docs/data/reviewer_packet.json"],
+            "project_packet_disclaims_32_episode_qwen_result",
+            project_qwen_claim is False,
+            f"project_packet scope_status.qwen3_omni_32_episode_claim={project_qwen_claim!r}",
+            ["docs/data/project_packet.json"],
         )
     )
-    do_not_infer = " ".join(reviewer_packet.get("do_not_infer", []))
+    do_not_infer = " ".join(project_packet.get("do_not_infer", []))
     checks.append(
         check(
-            "reviewer_packet_forbids_32_episode_inference",
+            "project_packet_forbids_32_episode_inference",
             "32-episode" in do_not_infer and "readiness run" in do_not_infer,
-            "reviewer packet explicitly warns not to treat the readiness run as a 32-episode fine-tune",
-            ["docs/data/reviewer_packet.json"],
+            "project packet explicitly warns not to treat the readiness run as a 32-episode fine-tune",
+            ["docs/data/project_packet.json"],
         )
     )
 

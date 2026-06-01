@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T17:37:41+00:00",
+  "generated_at_utc": "2026-06-01T19:00:29+00:00",
   "docs_root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
@@ -21,25 +21,25 @@
   },
   "semantic_checks": [
     {
-      "name": "reviewer_scorecard_precedes_evidence_ledger",
+      "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
-      "reason": "The reviewer scorecard should appear before the deeper evidence ledger.",
-      "scorecard_index": 46359,
-      "evidence_index": 53005
+      "reason": "The project overview should appear before the deeper progress ledger.",
+      "overview_index": 46980,
+      "evidence_index": 53666
     },
     {
-      "name": "reviewer_scorecard_links_json",
+      "name": "project_status_links_json",
       "status": "pass",
-      "reason": "The website should expose the machine-readable reviewer scorecard.",
-      "marker_count": 1
+      "reason": "The website should expose the machine-readable project status.",
+      "marker_count": 2
     },
     {
-      "name": "evaluation_protocol_between_scorecard_and_evidence",
+      "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "scorecard_index": 46359,
-      "protocol_index": 50598,
-      "evidence_index": 53005
+      "overview_index": 46980,
+      "protocol_index": 51259,
+      "evidence_index": 53666
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -81,7 +81,7 @@
     {
       "name": "dataset_card_section_links_source_alignment_audit",
       "status": "pass",
-      "reason": "The dataset-card section should expose the generated source-alignment audit.",
+      "reason": "The dataset-card section should expose the generated source-alignment report.",
       "marker_count": 1
     },
     {
@@ -120,7 +120,7 @@
   "json_files": [
     {
       "path": "data/artifact_index.json",
-      "bytes": 23528,
+      "bytes": 23486,
       "top_level_type": "dict"
     },
     {
@@ -135,7 +135,7 @@
     },
     {
       "path": "data/evidence_contract.json",
-      "bytes": 11309,
+      "bytes": 11266,
       "top_level_type": "dict"
     },
     {
@@ -150,7 +150,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 87890,
+      "bytes": 87845,
       "top_level_type": "dict"
     },
     {
@@ -160,17 +160,27 @@
     },
     {
       "path": "data/project_manifest.json",
-      "bytes": 4489,
+      "bytes": 4468,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/project_packet.json",
+      "bytes": 7409,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/project_status.json",
+      "bytes": 6111,
       "top_level_type": "dict"
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 6878,
+      "bytes": 6869,
       "top_level_type": "dict"
     },
     {
       "path": "data/quality_gates.json",
-      "bytes": 6937,
+      "bytes": 6919,
       "top_level_type": "dict"
     },
     {
@@ -189,18 +199,8 @@
       "top_level_type": "dict"
     },
     {
-      "path": "data/reviewer_packet.json",
-      "bytes": 7401,
-      "top_level_type": "dict"
-    },
-    {
-      "path": "data/reviewer_scorecard.json",
-      "bytes": 6114,
-      "top_level_type": "dict"
-    },
-    {
       "path": "data/scope_claims_audit.json",
-      "bytes": 20089,
+      "bytes": 20081,
       "top_level_type": "dict"
     },
     {
@@ -220,12 +220,12 @@
     },
     {
       "path": "data/task_walkthroughs.json",
-      "bytes": 26935,
+      "bytes": 26951,
       "top_level_type": "dict"
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 9525,
+      "bytes": 9506,
       "top_level_type": "dict"
     },
     {
@@ -374,7 +374,7 @@
     {
       "path": "assets/task_suite_infographic.png",
       "exists": true,
-      "bytes": 2600527,
+      "bytes": 2600193,
       "width": 1800,
       "height": 6600,
       "format": "PNG"
