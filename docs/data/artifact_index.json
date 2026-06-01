@@ -1,13 +1,13 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T06:49:30+00:00",
+  "generated_at_utc": "2026-06-01T07:23:35+00:00",
   "status": "pass",
-  "artifact_count": 32,
+  "artifact_count": 33,
   "missing": [],
   "by_kind": {
     "claim_boundary": 1,
     "review_path": 3,
-    "quality_gate": 3,
+    "quality_gate": 4,
     "reproducibility": 2,
     "hygiene_report": 1,
     "scope_guard": 1,
@@ -36,8 +36,8 @@
       "surface": "repo",
       "proves": "Defines what is verified, what is smoke-only, and what must not be inferred.",
       "exists": true,
-      "bytes": 6818,
-      "sha256": "a6d184b6bab5c0bad50e85f9b899a3c9f90741660130c20843bbf53c17d44713"
+      "bytes": 7046,
+      "sha256": "fd4d09938147487f9c3e713c6ced07b3e6103426f3ccc58266047365bf4ed1ea"
     },
     {
       "id": "reviewer_packet",
@@ -58,8 +58,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 6807,
-      "sha256": "208a173c7805e6dc61c7c243c24fb69de93af4883de13fa51b451b02f374e847"
+      "bytes": 6943,
+      "sha256": "81204b332da6bd1c3ebec603990eeacbec984534499df59463cad9aa6ab7841f"
     },
     {
       "id": "quality_gates",
@@ -84,6 +84,18 @@
       "sha256": "d5b145e83d6a520c628353a894ad3a438418604e262b032767674e66911f893e"
     },
     {
+      "id": "live_publication_status",
+      "title": "Live publication status",
+      "path": "docs/data/live_publication_status.json",
+      "kind": "quality_gate",
+      "surface": "website_hf",
+      "volatile": true,
+      "proves": "Records the last live GitHub/HF URL verification after upload.",
+      "exists": true,
+      "bytes": 13893,
+      "hash_policy": "existence_and_size_only"
+    },
+    {
       "id": "live_publication_verifier",
       "title": "Live publication verifier",
       "path": "scripts/verify_live_publication.py",
@@ -91,8 +103,8 @@
       "surface": "repo",
       "proves": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 10370,
-      "sha256": "348b920627ed8555b518fd9e65c861ea84f19a13298c281d9c199b7d29ec717f"
+      "bytes": 10587,
+      "sha256": "dd8456784c1442ccb622c0fb0da0369cad587dc0023142038b08613ec28a40b4"
     },
     {
       "id": "reproducibility_contract",
@@ -124,8 +136,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 12544,
-      "sha256": "8a8011a6972f65a1e986dc6b99161035314b364890a972ba8d6655cd3166c9dd"
+      "bytes": 12875,
+      "sha256": "9dd7b6e3a511db843d15f15f33d7f0481c41c19dc80031749f006f123162a637"
     },
     {
       "id": "publication_audit",
@@ -136,7 +148,7 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 5408,
+      "bytes": 5508,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -160,7 +172,7 @@
       "volatile": true,
       "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 46406,
+      "bytes": 48916,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -172,7 +184,7 @@
       "volatile": true,
       "proves": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 6042,
+      "bytes": 6159,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -293,8 +305,8 @@
       "surface": "website_hf",
       "proves": "Presents the task suite and sample modality thumbnails with metrics generated from committed files.",
       "exists": true,
-      "bytes": 2322389,
-      "sha256": "0e1d1b1eb165f6c52a49f94e4e93b7b4e9421d9efa015d7a094d70c48800e9b5"
+      "bytes": 2600527,
+      "sha256": "624faef73c034a34b2b1e2b1335ecdb5b41232ef5d035f0d757ece0de4f700c5"
     },
     {
       "id": "modality_atlas",

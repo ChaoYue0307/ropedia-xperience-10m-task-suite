@@ -26,6 +26,7 @@ The project intentionally separates five layers:
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Defines public reproduction commands, expected outputs, and unreproducible boundaries. |
 | [`docs/data/artifact_index.json`](docs/data/artifact_index.json) | Lists reviewer-critical files with existence, size, and stable hashes. |
 | [`docs/data/quality_gates.json`](docs/data/quality_gates.json) | Machine-readable quality-gate summary for website and HF mirrors. |
+| [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json) | Last live GitHub/HF verification after upload. |
 | [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json) | Confirms prepared HF Space, artifact, and model mirrors match the repo for critical data, figures, website HTML, and validator scripts. |
 | [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Confirms public bundles exclude raw data, Python caches, heavy archives, token strings, and stale public-card figure references. |
 | [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Confirms historical `32ep` smoke-run identifiers are not presented as real 32-episode results. |

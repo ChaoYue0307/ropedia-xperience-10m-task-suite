@@ -52,7 +52,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "surface": "github_repo",
         "relative_path": "README.md",
         "required": [
-            "xperience10m-taskfirst-v11-modality-spread",
+            "xperience10m-taskfirst-v12-modality-xl",
             "all 12 task families before the",
             "Public-sample modality thumbnails remain enlarged below",
         ],
@@ -61,7 +61,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "surface": "hf_space_bundle",
         "relative_path": "README.md",
         "required": [
-            "xperience10m-taskfirst-v11-modality-spread",
+            "xperience10m-taskfirst-v12-modality-xl",
             "task-first 12-task infographic",
             "native responsive modality atlas",
             "website HTML",
@@ -71,7 +71,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "surface": "hf_artifact_bundle",
         "relative_path": "README.md",
         "required": [
-            "xperience10m-taskfirst-v11-modality-spread",
+            "xperience10m-taskfirst-v12-modality-xl",
             "task-first 12-task map",
             "including critical website HTML",
         ],
@@ -80,7 +80,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "surface": "hf_artifact_bundle",
         "relative_path": "PROJECT_README.md",
         "required": [
-            "xperience10m-taskfirst-v11-modality-spread",
+            "xperience10m-taskfirst-v12-modality-xl",
             "all 12 task families before the",
             "Public-sample modality thumbnails remain enlarged below",
         ],
@@ -89,7 +89,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "surface": "hf_model_bundle",
         "relative_path": "README.md",
         "required": [
-            "xperience10m-taskfirst-v11-modality-spread",
+            "xperience10m-taskfirst-v12-modality-xl",
             "task-first 12-head",
             "responsive modality atlas",
             "website HTML",
@@ -204,6 +204,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "docs/sitemap.xml",
         "docs/data/evidence_contract.json",
         "docs/data/artifact_index.json",
+        "docs/data/live_publication_status.json",
         "docs/data/quality_gates.json",
         "docs/data/project_manifest.json",
         "docs/data/reviewer_packet.json",

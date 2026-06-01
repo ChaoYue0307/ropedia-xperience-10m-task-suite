@@ -22,6 +22,7 @@ DEFAULT_OUTPUT = ROOT / "docs/data/mirror_parity.json"
 DATA_FILES = [
     "artifact_index.json",
     "evidence_contract.json",
+    "live_publication_status.json",
     "modality_atlas.json",
     "project_manifest.json",
     "publication_audit.json",

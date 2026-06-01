@@ -58,6 +58,15 @@ ARTIFACTS = [
         "proves": "Machine-readable release-gate summary for validators, mirrors, and reviewer surfaces.",
     },
     {
+        "id": "live_publication_status",
+        "title": "Live publication status",
+        "path": "docs/data/live_publication_status.json",
+        "kind": "quality_gate",
+        "surface": "website_hf",
+        "volatile": True,
+        "proves": "Records the last live GitHub/HF URL verification after upload.",
+    },
+    {
         "id": "live_publication_verifier",
         "title": "Live publication verifier",
         "path": "scripts/verify_live_publication.py",

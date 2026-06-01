@@ -58,6 +58,8 @@ The current publication audit is at
 The publication quality-gate summary is at
 [`QUALITY_GATES.md`](QUALITY_GATES.md) and
 [`docs/data/quality_gates.json`](docs/data/quality_gates.json).
+The last live-publication verification report is at
+[`docs/data/live_publication_status.json`](docs/data/live_publication_status.json).
 The current prepared-mirror parity report is at
 [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json).
 The current scope-claims audit is at
@@ -79,7 +81,7 @@ If you are reviewing the project cold, open these in order:
 
 | Step | Question | Primary artifacts | What should be true |
 | --- | --- | --- | --- |
-| 1 | What is actually claimed? | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`QUALITY_GATES.md`](QUALITY_GATES.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json), [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Single-episode task engineering and hygiene are claimed; historical `32ep` identifiers are not treated as real 32-episode results, and quality gates plus prepared mirrors are checked before upload. |
+| 1 | What is actually claimed? | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`QUALITY_GATES.md`](QUALITY_GATES.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json), [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json), [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Single-episode task engineering and hygiene are claimed; historical `32ep` identifiers are not treated as real 32-episode results, and quality gates plus prepared and live mirrors are checked. |
 | 2 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and exact-match audit evidence are explicit. |
 | 3 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
 | 4 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
@@ -132,6 +134,7 @@ Hugging Face Space app:
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode claims reviewable without rerunning first |
 | Quality gates | `QUALITY_GATES.md`, `docs/data/quality_gates.json` | Shows the exact automated and post-publish checks required before presenting a release as current |
+| Live publication status | `docs/data/live_publication_status.json` | Records the last live GitHub Pages, GitHub raw, and Hugging Face mirror verification |
 | Publication audit | `docs/data/publication_audit.json` | Confirms public bundles contain no raw Xperience-10M data, Python caches, heavy archives, token strings, or stale public-card figure references |
 | Artifact index | `docs/data/artifact_index.json` | Gives reviewers a compact source-of-truth catalog with stable hashes |
 | Artifact guide | `ARTIFACT_GUIDE.md` | Groups the public evidence into reviewer-friendly layers |
@@ -168,7 +171,7 @@ The code files are MIT-licensed. Raw Xperience-10M data is not redistributed
 here, and dataset use remains governed by the official Ropedia/Xperience-10M
 terms. See [`LICENSE`](LICENSE) and [`DATA_NOTICE.md`](DATA_NOTICE.md).
 
-![ChatGPT-image-backed Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v11-modality-spread)
+![ChatGPT-image-backed Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v12-modality-xl)
 
 The infographic uses a ChatGPT-image-generated text-free research background,
 but now puts the shared processing contract and all 12 task families before the
@@ -244,6 +247,7 @@ docs/
   data/summary_metrics.json         # website-readable metrics bundle
   data/evidence_contract.json       # machine-readable proof boundary
   data/artifact_index.json          # compact proof-artifact catalog
+  data/live_publication_status.json # live GitHub/HF publication verification
   data/quality_gates.json           # machine-readable publication gates
   data/publication_audit.json       # machine-readable publication hygiene check
   data/website_integrity.json       # machine-readable website integrity check
