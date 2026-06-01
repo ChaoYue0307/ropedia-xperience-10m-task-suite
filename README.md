@@ -43,7 +43,7 @@ This repo is organized around an explicit proof boundary:
 | Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
 | Qwen3-Omni | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `A100_HF_RELAY_STATUS.md` | smoke-only until 32 valid episodes are available |
 | Scope claims guard | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | historical `32ep` path strings are provenance, not 32-episode results |
-| Mirror parity | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | prepared GitHub/HF mirrors carry matching data, figure, and validator files |
+| Mirror parity | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | prepared GitHub/HF mirrors carry matching data, figure, website HTML, and validator files |
 | Publication hygiene | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | public repo and HF bundles only; ignored local scratch files are excluded |
 | Artifact index | `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | selective source-of-truth catalog with existence, size, and stable-file hashes |
 | Citation and metadata | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | code is MIT-scoped; raw-data use follows Xperience-10M terms |
@@ -163,11 +163,12 @@ The code files are MIT-licensed. Raw Xperience-10M data is not redistributed
 here, and dataset use remains governed by the official Ropedia/Xperience-10M
 terms. See [`LICENSE`](LICENSE) and [`DATA_NOTICE.md`](DATA_NOTICE.md).
 
-![ChatGPT-image-backed Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-modalities-v9-large-atlas)
+![ChatGPT-image-backed Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v10)
 
-The infographic uses a ChatGPT-image-generated text-free research background and
-larger modality-atlas thumbnails extracted from the public sample episode. The
-task names, input/output summaries, and metrics are overlaid from
+The infographic uses a ChatGPT-image-generated text-free research background,
+but now puts the shared processing contract and all 12 task families before the
+modality atlas. Public-sample modality thumbnails remain enlarged below the
+task map. The task names, input/output summaries, and metrics are overlaid from
 [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json)
 with [`scripts/render_task_suite_infographic.py`](scripts/render_task_suite_infographic.py),
 so the published PNG is a presentation graphic with verified labels and metrics,
