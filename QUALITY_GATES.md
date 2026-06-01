@@ -1,0 +1,41 @@
+# Publication Quality Gates
+
+This file is the reviewer-facing release checklist for the Ropedia Xperience-10M Task Suite.
+
+Current gate status: **pass**
+
+Do not present a release as current unless every automated gate passes, then verify live GitHub/HF mirrors after publishing.
+
+These gates validate public packaging, claim boundaries, mirror parity, and website integrity. They do not prove cross-episode model quality; the 32-episode Qwen3-Omni pilot remains gated on data access.
+
+## Automated Gates
+
+| Gate | Command | Report | Current report status | Blocks publication if |
+| --- | --- | --- | --- | --- |
+| Scope claims guard | `python scripts/validate_scope_claims.py` | `docs/data/scope_claims_audit.json` | `pass` | Historical 32ep smoke/provenance strings are presented as real 32-episode metrics. |
+| Website integrity | `python scripts/validate_website_integrity.py` | `docs/data/website_integrity.json` | `pass` | Local links, anchors, JSON bundles, or referenced image assets are missing or invalid. |
+| Quality-gate manifest | `python scripts/build_quality_gates.py` | `docs/data/quality_gates.json` | `pass` | A public reviewer cannot see the current packaging gates in one place. |
+| Artifact index | `python scripts/build_artifact_index.py` | `docs/data/artifact_index.json` | `pass` | Reviewer-critical evidence files are missing from the indexed proof layer. |
+| Publication hygiene | `python scripts/validate_publication_package.py` | `docs/data/publication_audit.json` | `pass` | Raw data, caches, heavy archives, token strings, missing required assets, or stale public-card figure references enter public bundles. |
+| Prepared mirror parity | `python scripts/validate_mirror_parity.py` | `docs/data/mirror_parity.json` | `pass` | Prepared HF Space, artifact dataset, or model bundle diverges from the repo for critical files. |
+
+## Post-Publish Checks
+
+| Check | Evidence | Required result |
+| --- | --- | --- |
+| GitHub Pages deployment | `gh run list --repo ChaoYue0307/ropedia-xperience-10m-task-suite --limit 5` | latest pages-build-deployment run succeeds |
+| Live figure hash parity | `download live GitHub/HF task_suite_infographic.png and compare SHA-256 to docs/assets/task_suite_infographic.png` | all live hashes match the repo asset |
+| Rendered browser smoke | `Browser/Playwright page identity, nonblank render, console health, and one local interaction` | no relevant console warnings/errors and target links work |
+
+## Rerun Order
+
+```bash
+python scripts/validate_scope_claims.py
+python scripts/validate_website_integrity.py
+python scripts/build_quality_gates.py
+python scripts/build_artifact_index.py
+python scripts/validate_publication_package.py
+python scripts/validate_mirror_parity.py
+```
+
+After Hugging Face bundle sync, rerun `validate_publication_package.py` and `validate_mirror_parity.py` once more before upload.

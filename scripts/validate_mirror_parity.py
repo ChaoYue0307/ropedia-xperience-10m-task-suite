@@ -25,6 +25,7 @@ DATA_FILES = [
     "modality_atlas.json",
     "project_manifest.json",
     "publication_audit.json",
+    "quality_gates.json",
     "reproducibility_matrix.json",
     "research_direction_extensions.json",
     "research_directions.json",
@@ -50,6 +51,7 @@ ASSET_FILES = [
 
 SCRIPT_FILES = [
     "build_artifact_index.py",
+    "build_quality_gates.py",
     "validate_mirror_parity.py",
     "validate_publication_package.py",
     "validate_scope_claims.py",
@@ -58,6 +60,10 @@ SCRIPT_FILES = [
 
 WEBSITE_FILES = [
     "index.html",
+]
+
+DOC_FILES = [
+    "QUALITY_GATES.md",
 ]
 
 
@@ -166,6 +172,19 @@ def build_report(hf_root: Path) -> dict:
             )
         )
 
+    for filename in DOC_FILES:
+        groups.append(
+            parity_group(
+                f"docs/{filename}",
+                ROOT / filename,
+                {
+                    "hf_space": hf_root / "space" / filename,
+                    "hf_artifacts": hf_root / "artifacts" / filename,
+                    "hf_model": hf_root / "model" / filename,
+                },
+            )
+        )
+
     failures = [
         {"group": group["name"], **failure}
         for group in groups
@@ -207,6 +226,12 @@ def build_report(hf_root: Path) -> dict:
                 "name": "repo_hf_website_html_parity",
                 "status": "pass"
                 if not any(failure["group"].startswith("website/") for failure in failures)
+                else "fail",
+            },
+            {
+                "name": "repo_hf_quality_doc_parity",
+                "status": "pass"
+                if not any(failure["group"].startswith("docs/") for failure in failures)
                 else "fail",
             },
         ],

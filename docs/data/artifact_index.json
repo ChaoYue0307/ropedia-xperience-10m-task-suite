@@ -1,12 +1,13 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T05:58:15+00:00",
+  "generated_at_utc": "2026-06-01T06:24:20+00:00",
   "status": "pass",
-  "artifact_count": 29,
+  "artifact_count": 31,
   "missing": [],
   "by_kind": {
     "claim_boundary": 1,
     "review_path": 3,
+    "quality_gate": 2,
     "reproducibility": 2,
     "hygiene_report": 1,
     "scope_guard": 1,
@@ -35,8 +36,8 @@
       "surface": "repo",
       "proves": "Defines what is verified, what is smoke-only, and what must not be inferred.",
       "exists": true,
-      "bytes": 6520,
-      "sha256": "d6b8d74a53b49778d38bff6f6857f79d481d451f938c6a4177a50374f541d219"
+      "bytes": 6818,
+      "sha256": "a6d184b6bab5c0bad50e85f9b899a3c9f90741660130c20843bbf53c17d44713"
     },
     {
       "id": "reviewer_packet",
@@ -57,8 +58,30 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 6520,
-      "sha256": "0a8740e19d56c9c7e1c3964d3abf838a8e33af140128a4fb95a69bdca0b45173"
+      "bytes": 6807,
+      "sha256": "208a173c7805e6dc61c7c243c24fb69de93af4883de13fa51b451b02f374e847"
+    },
+    {
+      "id": "quality_gates",
+      "title": "Publication quality gates",
+      "path": "QUALITY_GATES.md",
+      "kind": "quality_gate",
+      "surface": "repo_hf",
+      "proves": "Lists the automated and post-publish gates required before presenting a release as current.",
+      "exists": true,
+      "bytes": 2865,
+      "sha256": "f3482dbc310d2ade60aa2b480211a9ee0cad1c814779a8b1d63d96432222897a"
+    },
+    {
+      "id": "quality_gate_manifest",
+      "title": "Quality-gate manifest",
+      "path": "docs/data/quality_gates.json",
+      "kind": "quality_gate",
+      "surface": "website_hf",
+      "proves": "Machine-readable release-gate summary for validators, mirrors, and reviewer surfaces.",
+      "exists": true,
+      "bytes": 4222,
+      "sha256": "274dd753853ea843b5413bbce68b371e4a664853924c9745a4163c1b68a54cf9"
     },
     {
       "id": "reproducibility_contract",
@@ -90,8 +113,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 11579,
-      "sha256": "874a3813fb3a19d79be9ea4c0177f5922adf9e667760f927dd49163784eb6b48"
+      "bytes": 12194,
+      "sha256": "04083feaa7cd486e94fa4f313b54b5b04b588edcb1376234a7b279060e0b4058"
     },
     {
       "id": "publication_audit",
@@ -102,7 +125,7 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 5292,
+      "bytes": 5408,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -126,7 +149,7 @@
       "volatile": true,
       "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 42567,
+      "bytes": 46406,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -138,7 +161,7 @@
       "volatile": true,
       "proves": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 5936,
+      "bytes": 6042,
       "hash_policy": "existence_and_size_only"
     },
     {

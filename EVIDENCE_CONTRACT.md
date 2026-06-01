@@ -18,6 +18,7 @@ local artifact that a reader can inspect before trusting the dashboard.
 | Prepared GitHub/Hugging Face mirrors carry matching critical files. | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | Verified pass | Compares prepared data files, visual assets, website HTML, and validator scripts before upload; live URLs are checked after publishing |
 | The public GitHub and Hugging Face bundles are publication-clean. | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | Verified pass | Checks public files, HF bundles, and public-card freshness; ignored local scratch outputs are excluded |
 | The public website has checked local references. | `scripts/validate_website_integrity.py`, `docs/data/website_integrity.json` | Verified pass | Checks local links, anchors, JSON data, and referenced images; external URLs are not fetched |
+| The release gate is explicit and reviewable. | `QUALITY_GATES.md`, `scripts/build_quality_gates.py`, `docs/data/quality_gates.json` | Verified pass | Summarizes packaging and live-mirror checks; it does not prove cross-episode model quality |
 | The core proof artifacts are indexed and grouped for fast review. | `ARTIFACT_GUIDE.md`, `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | Verified guide and index | Selective source-of-truth catalog, not a complete inventory of every output file |
 | The public reproduction path is documented. | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json`, `notes/reproducibility_audit.md` | Verified documentation and prior exact-match audit | Publicly reproduces the single-episode pipeline, not the gated 32-episode Qwen3-Omni pilot |
 | The project is externally citable and machine-readable. | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | Verified metadata files | Code license does not override original Xperience-10M dataset terms |
@@ -47,8 +48,8 @@ local artifact that a reader can inspect before trusting the dashboard.
    validator files.
 10. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before interpreting
    any Qwen3-Omni artifact.
-11. Inspect `docs/data/publication_audit.json` and
-   `docs/data/website_integrity.json` before publishing or sharing the project
-   externally.
+11. Inspect `QUALITY_GATES.md`, `docs/data/quality_gates.json`,
+   `docs/data/publication_audit.json`, and `docs/data/website_integrity.json`
+   before publishing or sharing the project externally.
 12. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or
    citing the project.

@@ -1122,6 +1122,16 @@
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_website_integrity.py">validator script</a>
             </div>
           </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Release gates are explicit</h3>
+            <p>The quality-gate manifest collects the automated validators and the live post-publish checks required before the release is presented as current.</p>
+            <div class="evidence-links">
+              <a href="data/quality_gates.json">quality_gates.json</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/QUALITY_GATES.md">QUALITY_GATES.md</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_quality_gates.py">builder script</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1501,6 +1511,7 @@
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Artifact guide</h3><p>Human-readable map from proof boundary to data contract, task evidence, platform mirrors, and scale-up status.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ARTIFACT_GUIDE.md">ARTIFACT_GUIDE.md</a></article>
               <article class="artifact"><h3>Evidence contract</h3><p>Defines verified, smoke-only, blocked, and out-of-scope claims.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">EVIDENCE_CONTRACT.md</a></article>
+              <article class="artifact"><h3>Quality gates</h3><p>One release checklist for automated validators and live post-publish checks.</p><a href="data/quality_gates.json">quality_gates.json</a></article>
               <article class="artifact"><h3>Artifact index</h3><p>Selective source-of-truth catalog with existence checks, sizes, and stable-file hashes.</p><a href="data/artifact_index.json">artifact_index.json</a></article>
               <article class="artifact"><h3>Mirror parity</h3><p>Prepared repo, HF Space, artifact dataset, and model bundle parity for critical data, figures, website HTML, and validator files.</p><a href="data/mirror_parity.json">mirror_parity.json</a></article>
               <article class="artifact"><h3>Scope claims audit</h3><p>Machine check that historical <code>32ep</code> identifiers are provenance, not real 32-episode result claims.</p><a href="data/scope_claims_audit.json">scope_claims_audit.json</a></article>
