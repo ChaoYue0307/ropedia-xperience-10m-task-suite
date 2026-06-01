@@ -64,10 +64,10 @@
             "boundary": "defines single-episode task evaluation rules; does not add cross-episode model quality"
         },
         {
-            "id": "figures_and_dashboard_data",
+      "id": "figures_and_dashboard_data",
       "status": "reproducible",
-      "command": "python scripts/generate_visualizations.py && python scripts/render_overview_figures.py && python scripts/render_task_suite_infographic.py && python scripts/export_modality_atlas_assets.py && python scripts/build_figure_index.py",
-      "expected": "website JSON bundles, charts, overview figures, task-suite infographic, responsive modality atlas assets, FIGURE_INDEX.md, and docs/data/figure_index.json",
+      "command": "python scripts/generate_visualizations.py && python scripts/render_overview_figures.py && python scripts/render_task_suite_infographic.py && python scripts/export_modality_atlas_assets.py && python scripts/build_brand_assets.py && python scripts/build_figure_index.py",
+      "expected": "website JSON bundles, charts, overview figures, task-suite infographic, responsive modality atlas assets, brand logo derivatives, FIGURE_INDEX.md, docs/data/brand_assets.json, and docs/data/figure_index.json",
       "boundary": "figures are generated presentation layers over committed metrics and sample thumbnails"
     },
     {

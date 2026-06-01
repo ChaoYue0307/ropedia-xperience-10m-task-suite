@@ -80,6 +80,7 @@ python scripts/generate_visualizations.py
 python scripts/render_overview_figures.py
 python scripts/render_task_suite_infographic.py
 python scripts/export_modality_atlas_assets.py
+python scripts/build_brand_assets.py
 python scripts/build_figure_index.py
 python scripts/validate_website_integrity.py
 python scripts/validate_scope_claims.py
@@ -101,6 +102,7 @@ python scripts/validate_publication_package.py
 | Source alignment audit | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json` |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` |
 | Figures | `docs/assets/*.png`, `docs/assets/charts/*.svg` |
+| Brand assets | `docs/assets/brand/*.png`, `docs/favicon.png`, `docs/apple-touch-icon.png`, `docs/data/brand_assets.json` |
 | Figure index | `FIGURE_INDEX.md`, `docs/data/figure_index.json` |
 | Modality atlas | `docs/data/modality_atlas.json`, `docs/assets/modalities/*` |
 | Website integrity | `docs/data/website_integrity.json` |

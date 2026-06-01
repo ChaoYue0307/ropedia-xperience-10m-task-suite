@@ -8,16 +8,20 @@
   <meta name="theme-color" content="#020502">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
   <meta property="og:title" content="Ropedia Xperience-10M Task Suite">
   <meta property="og:description" content="One public embodied-AI episode, converted into reproducible multimodal tasks, minimal baselines, neural MLP baselines, metrics, and diagrams.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">
-  <meta property="og:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v12-modality-xl">
+  <meta property="og:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/brand/xperience10m-logo-social-card.png?v=xperience10m-logo-v1">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ropedia Xperience-10M Task Suite">
   <meta name="twitter:description" content="Audit-first Xperience-10M multimodal task suite with minimal and neural baselines.">
-  <meta name="twitter:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v12-modality-xl">
+  <meta name="twitter:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/brand/xperience10m-logo-social-card.png?v=xperience10m-logo-v1">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -26,6 +30,7 @@
       "description": "Audit-first single-episode embodied-AI task suite for the public Ropedia Xperience-10M sample.",
       "codeRepository": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite",
       "url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/",
+      "image": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/brand/xperience10m-logo-social-card.png",
       "programmingLanguage": ["Python", "HTML", "CSS", "JavaScript"],
       "isBasedOn": "https://ropedia.com/dataset",
       "license": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/LICENSE"
@@ -113,17 +118,15 @@
       text-decoration: none;
       white-space: nowrap;
     }
-    .mark {
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(164, 242, 127, 0.48);
-      display: grid;
-      place-items: center;
-      color: var(--green);
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid rgba(164, 242, 127, 0.42);
       background: #061006;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 760;
+      object-fit: contain;
+      box-shadow: 0 0 18px rgba(122, 229, 195, 0.12);
     }
     .nav-links {
       display: flex;
@@ -1049,7 +1052,7 @@
   <nav class="site-nav">
     <div class="wrap nav-inner">
       <a class="brand" href="#top" aria-label="Ropedia Xperience-10M Task Suite home">
-        <span class="mark" aria-hidden="true">X</span>
+        <img class="brand-logo" src="assets/brand/xperience10m-logo-favicon-64.png" alt="" aria-hidden="true" width="38" height="38">
         <span>Ropedia Xperience-10M Task Suite</span>
       </a>
       <div class="nav-links" aria-label="Page navigation">
@@ -1275,6 +1278,16 @@
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
+            <h3>Brand assets are packaged consistently</h3>
+            <p>The ChatGPT-image logo is packaged into the website header, favicon, README/HF cards, Open Graph preview, and auditable brand-asset manifest.</p>
+            <div class="evidence-links">
+              <a href="data/brand_assets.json">brand_assets.json</a>
+              <a href="assets/brand/xperience10m-logo-social-card.png">logo card</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_brand_assets.py">builder script</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
             <h3>Publication bundles pass hygiene checks</h3>
             <p>The validator checks required assets, raw-data exclusion, Python cache exclusion, heavy archive exclusion, accidental HF token strings, and public-card figure freshness across GitHub and the HF bundles.</p>
             <div class="evidence-links">
@@ -1334,6 +1347,7 @@
               <a href="data/xperience10m_dataset_card_alignment.json">dataset card</a>
               <a href="data/artifact_index.json">index</a>
               <a href="data/figure_index.json">figures</a>
+              <a href="data/brand_assets.json">brand</a>
               <a href="data/mirror_parity.json">mirrors</a>
               <a href="data/scope_claims_audit.json">scope</a>
               <a href="data/publication_audit.json">audit</a>
