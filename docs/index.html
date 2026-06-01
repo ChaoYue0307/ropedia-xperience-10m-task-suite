@@ -1094,6 +1094,15 @@
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
+            <h3>Prepared mirrors are byte-checked</h3>
+            <p>The parity report compares critical JSON, figure, and validator files across the repo, HF Space bundle, artifact dataset bundle, and model bundle before upload.</p>
+            <div class="evidence-links">
+              <a href="data/mirror_parity.json">mirror parity</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_mirror_parity.py">validator script</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
             <h3>Publication bundles pass hygiene checks</h3>
             <p>The validator checks required assets, raw-data exclusion, Python cache exclusion, heavy archive exclusion, and accidental HF token strings across GitHub and the HF bundles.</p>
             <div class="evidence-links">
@@ -1130,6 +1139,7 @@
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">contract</a>
               <a href="data/evidence_contract.json">JSON</a>
               <a href="data/artifact_index.json">index</a>
+              <a href="data/mirror_parity.json">mirrors</a>
               <a href="data/scope_claims_audit.json">scope</a>
               <a href="data/publication_audit.json">audit</a>
               <a href="data/website_integrity.json">site check</a>
@@ -1490,6 +1500,7 @@
               <article class="artifact primary-artifact"><div><h3>Artifact guide</h3><p>Human-readable map from proof boundary to data contract, task evidence, platform mirrors, and scale-up status.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ARTIFACT_GUIDE.md">ARTIFACT_GUIDE.md</a></article>
               <article class="artifact"><h3>Evidence contract</h3><p>Defines verified, smoke-only, blocked, and out-of-scope claims.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">EVIDENCE_CONTRACT.md</a></article>
               <article class="artifact"><h3>Artifact index</h3><p>Selective source-of-truth catalog with existence checks, sizes, and stable-file hashes.</p><a href="data/artifact_index.json">artifact_index.json</a></article>
+              <article class="artifact"><h3>Mirror parity</h3><p>Prepared repo, HF Space, artifact dataset, and model bundle parity for critical data, figure, and validator files.</p><a href="data/mirror_parity.json">mirror_parity.json</a></article>
               <article class="artifact"><h3>Scope claims audit</h3><p>Machine check that historical <code>32ep</code> identifiers are provenance, not real 32-episode result claims.</p><a href="data/scope_claims_audit.json">scope_claims_audit.json</a></article>
               <article class="artifact"><h3>Publication audit</h3><p>Checks raw-data exclusion, cache exclusion, heavy-archive exclusion, and token-string hygiene.</p><a href="data/publication_audit.json">publication_audit.json</a></article>
               <article class="artifact"><h3>Website integrity</h3><p>Checks local links, anchors, JSON files, and referenced website image dimensions.</p><a href="data/website_integrity.json">website_integrity.json</a></article>
@@ -1596,6 +1607,7 @@ python scripts/export_modality_atlas_assets.py
 python scripts/validate_website_integrity.py
 python scripts/validate_scope_claims.py
 python scripts/build_artifact_index.py
+python scripts/validate_mirror_parity.py
 python scripts/validate_publication_package.py</code></pre>
       </div>
     </section>

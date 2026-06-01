@@ -1,0 +1,925 @@
+{
+  "status": "pass",
+  "generated_at_utc": "2026-06-01T04:24:19+00:00",
+  "hf_root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish",
+  "summary": {
+    "group_count": 28,
+    "failure_count": 0,
+    "failures_by_surface": {}
+  },
+  "checks": [
+    {
+      "name": "repo_hf_space_artifact_model_data_parity",
+      "status": "pass"
+    },
+    {
+      "name": "repo_hf_visual_asset_parity",
+      "status": "pass"
+    },
+    {
+      "name": "repo_hf_validator_script_parity",
+      "status": "pass"
+    }
+  ],
+  "groups": [
+    {
+      "name": "data/artifact_index.json",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/artifact_index.json",
+        "exists": true,
+        "bytes": 12902,
+        "sha256": "0b282f04c0122dac910c509dbd32a00a787355cc16a6b34666e20bffc5e641a6"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/artifact_index.json",
+          "exists": true,
+          "bytes": 12902,
+          "sha256": "0b282f04c0122dac910c509dbd32a00a787355cc16a6b34666e20bffc5e641a6"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/artifact_index.json",
+          "exists": true,
+          "bytes": 12902,
+          "sha256": "0b282f04c0122dac910c509dbd32a00a787355cc16a6b34666e20bffc5e641a6"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/artifact_index.json",
+          "exists": true,
+          "bytes": 12902,
+          "sha256": "0b282f04c0122dac910c509dbd32a00a787355cc16a6b34666e20bffc5e641a6"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "data/evidence_contract.json",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/evidence_contract.json",
+        "exists": true,
+        "bytes": 7148,
+        "sha256": "7be0e996d5acec81b26eba19919ff92f951241c22189086c484b055c7f988bed"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/evidence_contract.json",
+          "exists": true,
+          "bytes": 7148,
+          "sha256": "7be0e996d5acec81b26eba19919ff92f951241c22189086c484b055c7f988bed"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/evidence_contract.json",
+          "exists": true,
+          "bytes": 7148,
+          "sha256": "7be0e996d5acec81b26eba19919ff92f951241c22189086c484b055c7f988bed"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/evidence_contract.json",
+          "exists": true,
+          "bytes": 7148,
+          "sha256": "7be0e996d5acec81b26eba19919ff92f951241c22189086c484b055c7f988bed"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "data/modality_atlas.json",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/modality_atlas.json",
+        "exists": true,
+        "bytes": 3838,
+        "sha256": "7674392102fb28acbb849b0a53117d0327f22ce5d356a5294d937428ed44383e"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/modality_atlas.json",
+          "exists": true,
+          "bytes": 3838,
+          "sha256": "7674392102fb28acbb849b0a53117d0327f22ce5d356a5294d937428ed44383e"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/modality_atlas.json",
+          "exists": true,
+          "bytes": 3838,
+          "sha256": "7674392102fb28acbb849b0a53117d0327f22ce5d356a5294d937428ed44383e"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/modality_atlas.json",
+          "exists": true,
+          "bytes": 3838,
+          "sha256": "7674392102fb28acbb849b0a53117d0327f22ce5d356a5294d937428ed44383e"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "data/project_manifest.json",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/project_manifest.json",
+        "exists": true,
+        "bytes": 2789,
+        "sha256": "333d9876affa556f502d7038ad299c242a68b7bf3be90c3f6e10edf0e081c010"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/project_manifest.json",
+          "exists": true,
+          "bytes": 2789,
+          "sha256": "333d9876affa556f502d7038ad299c242a68b7bf3be90c3f6e10edf0e081c010"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/project_manifest.json",
+          "exists": true,
+          "bytes": 2789,
+          "sha256": "333d9876affa556f502d7038ad299c242a68b7bf3be90c3f6e10edf0e081c010"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/project_manifest.json",
+          "exists": true,
+          "bytes": 2789,
+          "sha256": "333d9876affa556f502d7038ad299c242a68b7bf3be90c3f6e10edf0e081c010"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "data/publication_audit.json",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/publication_audit.json",
+        "exists": true,
+        "bytes": 4105,
+        "sha256": "b1baf008d36d8fd056c00fc56dd2fcd4b12d83ae4b4f4bc3e1077e1c0f022b68"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/publication_audit.json",
+          "exists": true,
+          "bytes": 4105,
+          "sha256": "b1baf008d36d8fd056c00fc56dd2fcd4b12d83ae4b4f4bc3e1077e1c0f022b68"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/publication_audit.json",
+          "exists": true,
+          "bytes": 4105,
+          "sha256": "b1baf008d36d8fd056c00fc56dd2fcd4b12d83ae4b4f4bc3e1077e1c0f022b68"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/publication_audit.json",
+          "exists": true,
+          "bytes": 4105,
+          "sha256": "b1baf008d36d8fd056c00fc56dd2fcd4b12d83ae4b4f4bc3e1077e1c0f022b68"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "data/reproducibility_matrix.json",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/reproducibility_matrix.json",
+        "exists": true,
+        "bytes": 4033,
+        "sha256": "23c5010d00d929c235a1d3efbf1c350f291a6d92ccb23c5b055396bf89152cf5"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/reproducibility_matrix.json",
+          "exists": true,
+          "bytes": 4033,
+          "sha256": "23c5010d00d929c235a1d3efbf1c350f291a6d92ccb23c5b055396bf89152cf5"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/reproducibility_matrix.json",
+          "exists": true,
+          "bytes": 4033,
+          "sha256": "23c5010d00d929c235a1d3efbf1c350f291a6d92ccb23c5b055396bf89152cf5"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/reproducibility_matrix.json",
+          "exists": true,
+          "bytes": 4033,
+          "sha256": "23c5010d00d929c235a1d3efbf1c350f291a6d92ccb23c5b055396bf89152cf5"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "data/research_direction_extensions.json",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/research_direction_extensions.json",
+        "exists": true,
+        "bytes": 11872,
+        "sha256": "d81552093fc94830d5bb96c79e803f0a99c5578ff94e03cae90453074d609b55"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/research_direction_extensions.json",
+          "exists": true,
+          "bytes": 11872,
+          "sha256": "d81552093fc94830d5bb96c79e803f0a99c5578ff94e03cae90453074d609b55"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/research_direction_extensions.json",
+          "exists": true,
+          "bytes": 11872,
+          "sha256": "d81552093fc94830d5bb96c79e803f0a99c5578ff94e03cae90453074d609b55"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/research_direction_extensions.json",
+          "exists": true,
+          "bytes": 11872,
+          "sha256": "d81552093fc94830d5bb96c79e803f0a99c5578ff94e03cae90453074d609b55"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "data/research_directions.json",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/research_directions.json",
+        "exists": true,
+        "bytes": 14390,
+        "sha256": "dddac6db489dc0624717522ed30844bf15d65d3033a1404ff5f52c17e9674336"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/research_directions.json",
+          "exists": true,
+          "bytes": 14390,
+          "sha256": "dddac6db489dc0624717522ed30844bf15d65d3033a1404ff5f52c17e9674336"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/research_directions.json",
+          "exists": true,
+          "bytes": 14390,
+          "sha256": "dddac6db489dc0624717522ed30844bf15d65d3033a1404ff5f52c17e9674336"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/research_directions.json",
+          "exists": true,
+          "bytes": 14390,
+          "sha256": "dddac6db489dc0624717522ed30844bf15d65d3033a1404ff5f52c17e9674336"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "data/reviewer_packet.json",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/reviewer_packet.json",
+        "exists": true,
+        "bytes": 4406,
+        "sha256": "c3669df9fce7adc2cbdb95fa4d1cd75644ababf4bcda88bb19090b4296f8514a"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/reviewer_packet.json",
+          "exists": true,
+          "bytes": 4406,
+          "sha256": "c3669df9fce7adc2cbdb95fa4d1cd75644ababf4bcda88bb19090b4296f8514a"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/reviewer_packet.json",
+          "exists": true,
+          "bytes": 4406,
+          "sha256": "c3669df9fce7adc2cbdb95fa4d1cd75644ababf4bcda88bb19090b4296f8514a"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/reviewer_packet.json",
+          "exists": true,
+          "bytes": 4406,
+          "sha256": "c3669df9fce7adc2cbdb95fa4d1cd75644ababf4bcda88bb19090b4296f8514a"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "data/scope_claims_audit.json",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/scope_claims_audit.json",
+        "exists": true,
+        "bytes": 19964,
+        "sha256": "263b52f636794073a653972463a113b35cd52d8832b32d3ed46bd41fc502e7c8"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/scope_claims_audit.json",
+          "exists": true,
+          "bytes": 19964,
+          "sha256": "263b52f636794073a653972463a113b35cd52d8832b32d3ed46bd41fc502e7c8"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/scope_claims_audit.json",
+          "exists": true,
+          "bytes": 19964,
+          "sha256": "263b52f636794073a653972463a113b35cd52d8832b32d3ed46bd41fc502e7c8"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/scope_claims_audit.json",
+          "exists": true,
+          "bytes": 19964,
+          "sha256": "263b52f636794073a653972463a113b35cd52d8832b32d3ed46bd41fc502e7c8"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "data/summary_metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/summary_metrics.json",
+        "exists": true,
+        "bytes": 25075,
+        "sha256": "4daac229d7cad0180009041369d5eb8d6ea97b4889a7f8cbad43c2657b131145"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/summary_metrics.json",
+          "exists": true,
+          "bytes": 25075,
+          "sha256": "4daac229d7cad0180009041369d5eb8d6ea97b4889a7f8cbad43c2657b131145"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/summary_metrics.json",
+          "exists": true,
+          "bytes": 25075,
+          "sha256": "4daac229d7cad0180009041369d5eb8d6ea97b4889a7f8cbad43c2657b131145"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/summary_metrics.json",
+          "exists": true,
+          "bytes": 25075,
+          "sha256": "4daac229d7cad0180009041369d5eb8d6ea97b4889a7f8cbad43c2657b131145"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "data/task_walkthroughs.json",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/task_walkthroughs.json",
+        "exists": true,
+        "bytes": 17680,
+        "sha256": "9da71d536709f4b15f68965ef2b290dc58faad0cdf73cb5fe8a7d7f5831e50c3"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/task_walkthroughs.json",
+          "exists": true,
+          "bytes": 17680,
+          "sha256": "9da71d536709f4b15f68965ef2b290dc58faad0cdf73cb5fe8a7d7f5831e50c3"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/task_walkthroughs.json",
+          "exists": true,
+          "bytes": 17680,
+          "sha256": "9da71d536709f4b15f68965ef2b290dc58faad0cdf73cb5fe8a7d7f5831e50c3"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/task_walkthroughs.json",
+          "exists": true,
+          "bytes": 17680,
+          "sha256": "9da71d536709f4b15f68965ef2b290dc58faad0cdf73cb5fe8a7d7f5831e50c3"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "data/website_integrity.json",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/website_integrity.json",
+        "exists": true,
+        "bytes": 5432,
+        "sha256": "51212ffc0d43f28102bacea4737de2bd00fce38d298c8af78266b621f56729dc"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/website_integrity.json",
+          "exists": true,
+          "bytes": 5432,
+          "sha256": "51212ffc0d43f28102bacea4737de2bd00fce38d298c8af78266b621f56729dc"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/website_integrity.json",
+          "exists": true,
+          "bytes": 5432,
+          "sha256": "51212ffc0d43f28102bacea4737de2bd00fce38d298c8af78266b621f56729dc"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/website_integrity.json",
+          "exists": true,
+          "bytes": 5432,
+          "sha256": "51212ffc0d43f28102bacea4737de2bd00fce38d298c8af78266b621f56729dc"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "assets/task_suite_infographic.png",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/assets/task_suite_infographic.png",
+        "exists": true,
+        "bytes": 2351084,
+        "sha256": "782835d341c4d7af60518b0d0d1087ab0f93892e0e90a12d88dba712e42cfd41"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/assets/task_suite_infographic.png",
+          "exists": true,
+          "bytes": 2351084,
+          "sha256": "782835d341c4d7af60518b0d0d1087ab0f93892e0e90a12d88dba712e42cfd41"
+        },
+        "hf_artifacts_docs": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/assets/task_suite_infographic.png",
+          "exists": true,
+          "bytes": 2351084,
+          "sha256": "782835d341c4d7af60518b0d0d1087ab0f93892e0e90a12d88dba712e42cfd41"
+        },
+        "hf_artifacts_card": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/assets/task_suite_infographic.png",
+          "exists": true,
+          "bytes": 2351084,
+          "sha256": "782835d341c4d7af60518b0d0d1087ab0f93892e0e90a12d88dba712e42cfd41"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/assets/task_suite_infographic.png",
+          "exists": true,
+          "bytes": 2351084,
+          "sha256": "782835d341c4d7af60518b0d0d1087ab0f93892e0e90a12d88dba712e42cfd41"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "assets/pipeline_diagram.png",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/assets/pipeline_diagram.png",
+        "exists": true,
+        "bytes": 704388,
+        "sha256": "00ab2b375464d629a903e22c19e648830e479407a52a45d2421e590251c1ba7d"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/assets/pipeline_diagram.png",
+          "exists": true,
+          "bytes": 704388,
+          "sha256": "00ab2b375464d629a903e22c19e648830e479407a52a45d2421e590251c1ba7d"
+        },
+        "hf_artifacts_docs": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/assets/pipeline_diagram.png",
+          "exists": true,
+          "bytes": 704388,
+          "sha256": "00ab2b375464d629a903e22c19e648830e479407a52a45d2421e590251c1ba7d"
+        },
+        "hf_artifacts_card": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/assets/pipeline_diagram.png",
+          "exists": true,
+          "bytes": 704388,
+          "sha256": "00ab2b375464d629a903e22c19e648830e479407a52a45d2421e590251c1ba7d"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/assets/pipeline_diagram.png",
+          "exists": true,
+          "bytes": 704388,
+          "sha256": "00ab2b375464d629a903e22c19e648830e479407a52a45d2421e590251c1ba7d"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "assets/task_architectures.png",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/assets/task_architectures.png",
+        "exists": true,
+        "bytes": 762786,
+        "sha256": "9a1d5e87f57dfdaff15efa29c4a236b4f4a1f5c04ac104837e7f98b835b88be6"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/assets/task_architectures.png",
+          "exists": true,
+          "bytes": 762786,
+          "sha256": "9a1d5e87f57dfdaff15efa29c4a236b4f4a1f5c04ac104837e7f98b835b88be6"
+        },
+        "hf_artifacts_docs": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/assets/task_architectures.png",
+          "exists": true,
+          "bytes": 762786,
+          "sha256": "9a1d5e87f57dfdaff15efa29c4a236b4f4a1f5c04ac104837e7f98b835b88be6"
+        },
+        "hf_artifacts_card": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/assets/task_architectures.png",
+          "exists": true,
+          "bytes": 762786,
+          "sha256": "9a1d5e87f57dfdaff15efa29c4a236b4f4a1f5c04ac104837e7f98b835b88be6"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/assets/task_architectures.png",
+          "exists": true,
+          "bytes": 762786,
+          "sha256": "9a1d5e87f57dfdaff15efa29c4a236b4f4a1f5c04ac104837e7f98b835b88be6"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "assets/modalities/audio.png",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/assets/modalities/audio.png",
+        "exists": true,
+        "bytes": 6684,
+        "sha256": "1067559dfb6ba5d018df3c7b30a3747e05d42cc15a1c9d68eb5f0248fb61cdab"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/assets/modalities/audio.png",
+          "exists": true,
+          "bytes": 6684,
+          "sha256": "1067559dfb6ba5d018df3c7b30a3747e05d42cc15a1c9d68eb5f0248fb61cdab"
+        },
+        "hf_artifacts_docs": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/assets/modalities/audio.png",
+          "exists": true,
+          "bytes": 6684,
+          "sha256": "1067559dfb6ba5d018df3c7b30a3747e05d42cc15a1c9d68eb5f0248fb61cdab"
+        },
+        "hf_artifacts_card": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/assets/modalities/audio.png",
+          "exists": true,
+          "bytes": 6684,
+          "sha256": "1067559dfb6ba5d018df3c7b30a3747e05d42cc15a1c9d68eb5f0248fb61cdab"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/assets/modalities/audio.png",
+          "exists": true,
+          "bytes": 6684,
+          "sha256": "1067559dfb6ba5d018df3c7b30a3747e05d42cc15a1c9d68eb5f0248fb61cdab"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "assets/modalities/depth.jpg",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/assets/modalities/depth.jpg",
+        "exists": true,
+        "bytes": 38940,
+        "sha256": "9d3e9763f8ab2c81bae8b3d8f5a12e6cc2e4c2bc10bc1955047c0da9870c9121"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/assets/modalities/depth.jpg",
+          "exists": true,
+          "bytes": 38940,
+          "sha256": "9d3e9763f8ab2c81bae8b3d8f5a12e6cc2e4c2bc10bc1955047c0da9870c9121"
+        },
+        "hf_artifacts_docs": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/assets/modalities/depth.jpg",
+          "exists": true,
+          "bytes": 38940,
+          "sha256": "9d3e9763f8ab2c81bae8b3d8f5a12e6cc2e4c2bc10bc1955047c0da9870c9121"
+        },
+        "hf_artifacts_card": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/assets/modalities/depth.jpg",
+          "exists": true,
+          "bytes": 38940,
+          "sha256": "9d3e9763f8ab2c81bae8b3d8f5a12e6cc2e4c2bc10bc1955047c0da9870c9121"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/assets/modalities/depth.jpg",
+          "exists": true,
+          "bytes": 38940,
+          "sha256": "9d3e9763f8ab2c81bae8b3d8f5a12e6cc2e4c2bc10bc1955047c0da9870c9121"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "assets/modalities/inertial.png",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/assets/modalities/inertial.png",
+        "exists": true,
+        "bytes": 43233,
+        "sha256": "300867508a124f10ee5f6306a9156bd8e1e0a06c5f27cbc1c847d3463a514967"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/assets/modalities/inertial.png",
+          "exists": true,
+          "bytes": 43233,
+          "sha256": "300867508a124f10ee5f6306a9156bd8e1e0a06c5f27cbc1c847d3463a514967"
+        },
+        "hf_artifacts_docs": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/assets/modalities/inertial.png",
+          "exists": true,
+          "bytes": 43233,
+          "sha256": "300867508a124f10ee5f6306a9156bd8e1e0a06c5f27cbc1c847d3463a514967"
+        },
+        "hf_artifacts_card": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/assets/modalities/inertial.png",
+          "exists": true,
+          "bytes": 43233,
+          "sha256": "300867508a124f10ee5f6306a9156bd8e1e0a06c5f27cbc1c847d3463a514967"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/assets/modalities/inertial.png",
+          "exists": true,
+          "bytes": 43233,
+          "sha256": "300867508a124f10ee5f6306a9156bd8e1e0a06c5f27cbc1c847d3463a514967"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "assets/modalities/language.png",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/assets/modalities/language.png",
+        "exists": true,
+        "bytes": 16329,
+        "sha256": "4c2b29622a34cfc868980a635eb13d575a7caa4061a3cb936204e86295fb92ad"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/assets/modalities/language.png",
+          "exists": true,
+          "bytes": 16329,
+          "sha256": "4c2b29622a34cfc868980a635eb13d575a7caa4061a3cb936204e86295fb92ad"
+        },
+        "hf_artifacts_docs": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/assets/modalities/language.png",
+          "exists": true,
+          "bytes": 16329,
+          "sha256": "4c2b29622a34cfc868980a635eb13d575a7caa4061a3cb936204e86295fb92ad"
+        },
+        "hf_artifacts_card": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/assets/modalities/language.png",
+          "exists": true,
+          "bytes": 16329,
+          "sha256": "4c2b29622a34cfc868980a635eb13d575a7caa4061a3cb936204e86295fb92ad"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/assets/modalities/language.png",
+          "exists": true,
+          "bytes": 16329,
+          "sha256": "4c2b29622a34cfc868980a635eb13d575a7caa4061a3cb936204e86295fb92ad"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "assets/modalities/motion_capture.png",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/assets/modalities/motion_capture.png",
+        "exists": true,
+        "bytes": 14037,
+        "sha256": "a30b49acfca3ba874618c4f86c299500a4df818150f813480101fce566f9d88d"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/assets/modalities/motion_capture.png",
+          "exists": true,
+          "bytes": 14037,
+          "sha256": "a30b49acfca3ba874618c4f86c299500a4df818150f813480101fce566f9d88d"
+        },
+        "hf_artifacts_docs": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/assets/modalities/motion_capture.png",
+          "exists": true,
+          "bytes": 14037,
+          "sha256": "a30b49acfca3ba874618c4f86c299500a4df818150f813480101fce566f9d88d"
+        },
+        "hf_artifacts_card": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/assets/modalities/motion_capture.png",
+          "exists": true,
+          "bytes": 14037,
+          "sha256": "a30b49acfca3ba874618c4f86c299500a4df818150f813480101fce566f9d88d"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/assets/modalities/motion_capture.png",
+          "exists": true,
+          "bytes": 14037,
+          "sha256": "a30b49acfca3ba874618c4f86c299500a4df818150f813480101fce566f9d88d"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "assets/modalities/pose_slam.png",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/assets/modalities/pose_slam.png",
+        "exists": true,
+        "bytes": 64057,
+        "sha256": "3374e8fbc0304d39cdb212ae702a60b89c3a1e0cd683c72736e9c43898257c80"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/assets/modalities/pose_slam.png",
+          "exists": true,
+          "bytes": 64057,
+          "sha256": "3374e8fbc0304d39cdb212ae702a60b89c3a1e0cd683c72736e9c43898257c80"
+        },
+        "hf_artifacts_docs": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/assets/modalities/pose_slam.png",
+          "exists": true,
+          "bytes": 64057,
+          "sha256": "3374e8fbc0304d39cdb212ae702a60b89c3a1e0cd683c72736e9c43898257c80"
+        },
+        "hf_artifacts_card": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/assets/modalities/pose_slam.png",
+          "exists": true,
+          "bytes": 64057,
+          "sha256": "3374e8fbc0304d39cdb212ae702a60b89c3a1e0cd683c72736e9c43898257c80"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/assets/modalities/pose_slam.png",
+          "exists": true,
+          "bytes": 64057,
+          "sha256": "3374e8fbc0304d39cdb212ae702a60b89c3a1e0cd683c72736e9c43898257c80"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "assets/modalities/video.jpg",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/assets/modalities/video.jpg",
+        "exists": true,
+        "bytes": 68307,
+        "sha256": "2ff7632d8ec9a83cd1765f29ae2e04e09e1562791bea957a6ae18b96f53f4ce9"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/assets/modalities/video.jpg",
+          "exists": true,
+          "bytes": 68307,
+          "sha256": "2ff7632d8ec9a83cd1765f29ae2e04e09e1562791bea957a6ae18b96f53f4ce9"
+        },
+        "hf_artifacts_docs": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/assets/modalities/video.jpg",
+          "exists": true,
+          "bytes": 68307,
+          "sha256": "2ff7632d8ec9a83cd1765f29ae2e04e09e1562791bea957a6ae18b96f53f4ce9"
+        },
+        "hf_artifacts_card": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/assets/modalities/video.jpg",
+          "exists": true,
+          "bytes": 68307,
+          "sha256": "2ff7632d8ec9a83cd1765f29ae2e04e09e1562791bea957a6ae18b96f53f4ce9"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/assets/modalities/video.jpg",
+          "exists": true,
+          "bytes": 68307,
+          "sha256": "2ff7632d8ec9a83cd1765f29ae2e04e09e1562791bea957a6ae18b96f53f4ce9"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "scripts/build_artifact_index.py",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/scripts/build_artifact_index.py",
+        "exists": true,
+        "bytes": 11565,
+        "sha256": "d57875b1e42a58c02aa2f7da481f7b2190b82414113827883dd8b332c33552f3"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/scripts/build_artifact_index.py",
+          "exists": true,
+          "bytes": 11565,
+          "sha256": "d57875b1e42a58c02aa2f7da481f7b2190b82414113827883dd8b332c33552f3"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/scripts/build_artifact_index.py",
+          "exists": true,
+          "bytes": 11565,
+          "sha256": "d57875b1e42a58c02aa2f7da481f7b2190b82414113827883dd8b332c33552f3"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "scripts/validate_mirror_parity.py",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/scripts/validate_mirror_parity.py",
+        "exists": true,
+        "bytes": 6971,
+        "sha256": "d0e0a1514a6c8548120f8bcb68827a648252a198197acab9186b72725fe9d39b"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/scripts/validate_mirror_parity.py",
+          "exists": true,
+          "bytes": 6971,
+          "sha256": "d0e0a1514a6c8548120f8bcb68827a648252a198197acab9186b72725fe9d39b"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/scripts/validate_mirror_parity.py",
+          "exists": true,
+          "bytes": 6971,
+          "sha256": "d0e0a1514a6c8548120f8bcb68827a648252a198197acab9186b72725fe9d39b"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "scripts/validate_publication_package.py",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/scripts/validate_publication_package.py",
+        "exists": true,
+        "bytes": 8960,
+        "sha256": "129e1276a60abe1330de5190622097a0e19198d133d434425317123f0a390c82"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/scripts/validate_publication_package.py",
+          "exists": true,
+          "bytes": 8960,
+          "sha256": "129e1276a60abe1330de5190622097a0e19198d133d434425317123f0a390c82"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/scripts/validate_publication_package.py",
+          "exists": true,
+          "bytes": 8960,
+          "sha256": "129e1276a60abe1330de5190622097a0e19198d133d434425317123f0a390c82"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "scripts/validate_scope_claims.py",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/scripts/validate_scope_claims.py",
+        "exists": true,
+        "bytes": 11510,
+        "sha256": "bdceff4d445a12d9a45ab66a7e101e6205af306955c7d23fd3258fc8eed92c3f"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/scripts/validate_scope_claims.py",
+          "exists": true,
+          "bytes": 11510,
+          "sha256": "bdceff4d445a12d9a45ab66a7e101e6205af306955c7d23fd3258fc8eed92c3f"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/scripts/validate_scope_claims.py",
+          "exists": true,
+          "bytes": 11510,
+          "sha256": "bdceff4d445a12d9a45ab66a7e101e6205af306955c7d23fd3258fc8eed92c3f"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "scripts/validate_website_integrity.py",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/scripts/validate_website_integrity.py",
+        "exists": true,
+        "bytes": 10170,
+        "sha256": "f2c4e205daf0db83b37619eed0c94b8e3bfbce362114b38fbbec6e811d029403"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/scripts/validate_website_integrity.py",
+          "exists": true,
+          "bytes": 10170,
+          "sha256": "f2c4e205daf0db83b37619eed0c94b8e3bfbce362114b38fbbec6e811d029403"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/scripts/validate_website_integrity.py",
+          "exists": true,
+          "bytes": 10170,
+          "sha256": "f2c4e205daf0db83b37619eed0c94b8e3bfbce362114b38fbbec6e811d029403"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "failures": []
+}

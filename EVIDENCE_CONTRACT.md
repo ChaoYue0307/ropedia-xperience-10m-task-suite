@@ -15,6 +15,7 @@ local artifact that a reader can inspect before trusting the dashboard.
 | Qwen3-Omni infrastructure has passed technical smoke checks. | `results/omni_finetune/RUN_REPORT.md`, `results/omni_finetune/dataset_manifest.json`, `results/omni_finetune/metrics_eval.json` | Smoke-only evidence | One episode, 128 train windows; not a 32-episode pilot |
 | The real 32-episode LoRA pilot is blocked on gated data access, not on repo presentation. | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `results/omni_finetune/A100_HF_RELAY_STATUS.md`, `results/omni_finetune/source_discovery.json` | Blocker documented | No 32-episode metric should be claimed until the gate passes |
 | Historical `32ep` path strings are not treated as 32-episode results. | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | Verified pass | Classifies old run/path identifiers and fails if public presentation claims real 32-episode metrics |
+| Prepared GitHub/Hugging Face mirrors carry matching critical files. | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | Verified pass | Compares prepared Space, artifact dataset, and model bundles before upload; live URLs are checked after publishing |
 | The public GitHub and Hugging Face bundles are publication-clean. | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | Verified pass | Checks public files and HF bundles, not arbitrary ignored local scratch outputs |
 | The public website has checked local references. | `scripts/validate_website_integrity.py`, `docs/data/website_integrity.json` | Verified pass | Checks local links, anchors, JSON data, and referenced images; external URLs are not fetched |
 | The core proof artifacts are indexed and grouped for fast review. | `ARTIFACT_GUIDE.md`, `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | Verified guide and index | Selective source-of-truth catalog, not a complete inventory of every output file |
@@ -41,10 +42,12 @@ local artifact that a reader can inspect before trusting the dashboard.
    neural heads under the same splits.
 8. Inspect `docs/data/scope_claims_audit.json` before interpreting historical
    `32ep` strings in Qwen3-Omni smoke artifacts.
-9. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before interpreting
+9. Inspect `docs/data/mirror_parity.json` before assuming the GitHub and
+   Hugging Face mirrors contain the same critical files.
+10. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before interpreting
    any Qwen3-Omni artifact.
-10. Inspect `docs/data/publication_audit.json` and
+11. Inspect `docs/data/publication_audit.json` and
    `docs/data/website_integrity.json` before publishing or sharing the project
    externally.
-11. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or
+12. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or
    citing the project.

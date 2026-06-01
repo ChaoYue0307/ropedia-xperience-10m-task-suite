@@ -84,6 +84,15 @@ ARTIFACTS = [
         "proves": "Confirms historical 32ep path strings are not presented as real 32-episode results.",
     },
     {
+        "id": "mirror_parity",
+        "title": "Prepared mirror parity report",
+        "path": "docs/data/mirror_parity.json",
+        "kind": "mirror_parity",
+        "surface": "website_hf",
+        "volatile": True,
+        "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, and validator files.",
+    },
+    {
         "id": "website_integrity",
         "title": "Website integrity report",
         "path": "docs/data/website_integrity.json",

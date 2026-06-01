@@ -76,6 +76,7 @@ python scripts/export_modality_atlas_assets.py
 python scripts/validate_website_integrity.py
 python scripts/validate_scope_claims.py
 python scripts/build_artifact_index.py
+python scripts/validate_mirror_parity.py
 python scripts/validate_publication_package.py
 ```
 
@@ -92,7 +93,7 @@ python scripts/validate_publication_package.py
 | Figures | `docs/assets/*.png`, `docs/assets/charts/*.svg` |
 | Modality atlas | `docs/data/modality_atlas.json`, `docs/assets/modalities/*` |
 | Website integrity | `docs/data/website_integrity.json` |
-| Publication checks | `docs/data/artifact_index.json`, `docs/data/publication_audit.json`, `docs/data/scope_claims_audit.json` |
+| Publication checks | `docs/data/artifact_index.json`, `docs/data/mirror_parity.json`, `docs/data/publication_audit.json`, `docs/data/scope_claims_audit.json` |
 
 ## Exact-Match Audit
 
