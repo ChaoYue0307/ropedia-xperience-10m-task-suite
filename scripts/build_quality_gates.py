@@ -28,6 +28,14 @@ GATES = [
         "proves": "The public narrative does not overclaim the Qwen3-Omni smoke artifacts.",
     },
     {
+        "id": "source_alignment",
+        "title": "Source alignment audit",
+        "command": "python scripts/validate_source_alignment.py",
+        "report": "docs/data/source_alignment_audit.json",
+        "blocks_if": "Official full-dataset facts, sample-card facts, API-listing caveats, or public-card boundary markers are missing or inconsistent.",
+        "proves": "The repo, website, and Hugging Face cards preserve the Xperience-10M source facts and current project boundary.",
+    },
+    {
         "id": "website_integrity",
         "title": "Website integrity",
         "command": "python scripts/validate_website_integrity.py",
@@ -170,6 +178,7 @@ def markdown(payload: dict) -> str:
         "",
         "```bash",
         "python scripts/validate_scope_claims.py",
+        "python scripts/validate_source_alignment.py",
         "python scripts/build_evaluation_protocol.py",
         "python scripts/validate_website_integrity.py",
         "python scripts/build_quality_gates.py",

@@ -34,6 +34,7 @@ DATA_FILES = [
     "reviewer_packet.json",
     "reviewer_scorecard.json",
     "scope_claims_audit.json",
+    "source_alignment_audit.json",
     "summary_metrics.json",
     "task_walkthroughs.json",
     "website_integrity.json",
@@ -61,6 +62,7 @@ SCRIPT_FILES = [
     "validate_mirror_parity.py",
     "validate_publication_package.py",
     "validate_scope_claims.py",
+    "validate_source_alignment.py",
     "validate_website_integrity.py",
 ]
 
@@ -72,6 +74,7 @@ DOC_FILES = [
     "QUALITY_GATES.md",
     "EVALUATION_PROTOCOL.md",
     "REVIEWER_SCORECARD.md",
+    "SOURCE_ALIGNMENT_AUDIT.md",
     "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
 ]
 

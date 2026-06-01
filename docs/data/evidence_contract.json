@@ -12,8 +12,8 @@
       ],
       "boundary": "summarizes existing evidence and boundaries; it does not add new experimental claims"
     },
-    {
-      "id": "official_dataset_card_alignment",
+        {
+            "id": "official_dataset_card_alignment",
             "claim": "The public dataset description is aligned with the official gated Xperience-10M dataset card and public sample card.",
       "status": "verified",
       "evidence": [
@@ -22,9 +22,20 @@
         "https://huggingface.co/datasets/ropedia-ai/xperience-10m"
       ],
             "boundary": "summarizes upstream public metadata, API listing facts, sample license/tooling, and dataset-card facts; does not grant access or mirror raw data"
-    },
-    {
-      "id": "aligned_windows",
+        },
+        {
+            "id": "source_alignment_audit",
+            "claim": "Source facts and boundary markers are validated across repo, website, and HF cards.",
+            "status": "verified",
+            "evidence": [
+                "SOURCE_ALIGNMENT_AUDIT.md",
+                "docs/data/source_alignment_audit.json",
+                "scripts/validate_source_alignment.py"
+            ],
+            "boundary": "offline committed-fact audit; does not fetch private gated data"
+        },
+        {
+            "id": "aligned_windows",
       "claim": "The public Xperience-10M sample has been converted into aligned model windows.",
       "status": "verified",
       "evidence": [

@@ -7,6 +7,7 @@ local artifact that a reader can inspect before trusting the dashboard.
 | --- | --- | --- | --- |
 | A first-pass reviewer has a compact current-state scorecard. | `REVIEWER_SCORECARD.md`, `docs/data/reviewer_scorecard.json` | Verified guide | Summarizes existing evidence and boundaries; it does not add new experimental claims |
 | The public dataset description is aligned with the official gated Xperience-10M dataset card and public sample card. | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Verified description alignment | Summarizes upstream public metadata, API listing facts, sample license/tooling, and card facts; does not grant access or mirror raw data |
+| Source facts and boundary markers are validated across repo, website, and HF cards. | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json`, `scripts/validate_source_alignment.py` | Verified source audit | Offline committed-fact audit; does not fetch private gated data |
 | The public Xperience-10M sample has been converted into aligned model windows. | `results/episode_task_suite/windows.csv`, `results/episode_task_suite/shared_windows.npz`, `results/episode_task_suite/summary_report.json` | Verified for 5,821 frames and 1,161 windows | One public sample episode only |
 | The current feature contract is explicit and reviewable. | `results/episode_task_suite/feature_manifest.json`, `results/episode_task_suite/available_modalities.json` | Verified for an 8,378-d feature vector | Audio is present in MP4 streams but not yet a feature block |
 | The task evaluation protocol is explicit and generated from committed metrics. | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | Verified protocol | Defines windows, split, per-task metrics, leakage controls, and unsupported interpretations; does not prove cross-episode quality |
@@ -37,31 +38,34 @@ local artifact that a reader can inspect before trusting the dashboard.
 3. Read `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` and
    `docs/data/xperience10m_dataset_card_alignment.json` to check the official
    dataset-card wording and how the current repo is scoped against it.
-4. Read `EVALUATION_PROTOCOL.md` and `docs/data/evaluation_protocol.json` to
+4. Read `SOURCE_ALIGNMENT_AUDIT.md` and
+   `docs/data/source_alignment_audit.json` to verify the same source facts are
+   present across repo, website, and HF cards.
+5. Read `EVALUATION_PROTOCOL.md` and `docs/data/evaluation_protocol.json` to
    check windowing, split policy, per-task metrics, leakage controls, and
    unsupported interpretations.
-5. Read `ARTIFACT_GUIDE.md` and `docs/data/artifact_index.json` to see grouped
+6. Read `ARTIFACT_GUIDE.md` and `docs/data/artifact_index.json` to see grouped
    reviewer artifacts, indexed proof artifacts,
    sizes, and stable-file hashes.
-6. Read `docs/assets/task_suite_infographic.png` and
+7. Read `docs/assets/task_suite_infographic.png` and
    `docs/data/modality_atlas.json` for the high-level map and modality atlas.
-7. Read `REPRODUCIBILITY.md` and `docs/data/reproducibility_matrix.json` before
+8. Read `REPRODUCIBILITY.md` and `docs/data/reproducibility_matrix.json` before
    rerunning the public pipeline.
-8. Inspect `results/episode_task_suite/summary_report.json` for the task and
+9. Inspect `results/episode_task_suite/summary_report.json` for the task and
    metric source of truth.
-9. Inspect `results/episode_task_suite/feature_manifest.json` to see which
+10. Inspect `results/episode_task_suite/feature_manifest.json` to see which
    modalities enter the current feature vector.
-10. Inspect `results/episode_task_suite/neural_mlp/` to compare minimal and
+11. Inspect `results/episode_task_suite/neural_mlp/` to compare minimal and
    neural heads under the same splits.
-11. Inspect `docs/data/scope_claims_audit.json` before interpreting historical
+12. Inspect `docs/data/scope_claims_audit.json` before interpreting historical
    `32ep` strings in Qwen3-Omni smoke artifacts.
-12. Inspect `docs/data/mirror_parity.json` before assuming the GitHub and
+13. Inspect `docs/data/mirror_parity.json` before assuming the GitHub and
    Hugging Face mirrors contain the same critical data, visual, HTML, and
    validator files.
-13. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before interpreting
+14. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before interpreting
    any Qwen3-Omni artifact.
-14. Inspect `QUALITY_GATES.md`, `docs/data/quality_gates.json`,
+15. Inspect `QUALITY_GATES.md`, `docs/data/quality_gates.json`,
    `docs/data/publication_audit.json`, and `docs/data/website_integrity.json`
    before publishing or sharing the project externally.
-15. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or
+16. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or
    citing the project.

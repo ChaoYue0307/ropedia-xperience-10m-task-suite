@@ -33,10 +33,12 @@ The project intentionally separates eight layers:
 | [`QUALITY_GATES.md`](QUALITY_GATES.md) | Lists the automated release gates and post-publish checks required before presenting a release as current. |
 | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Defines the task unit, chronological split, metrics, leakage controls, and unsupported interpretations. |
 | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Aligns this repo's public dataset wording with the official gated Xperience-10M card, sample card, and HF API metadata. |
+| [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Verifies source-alignment markers across repo, website, and HF cards. |
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Defines public reproduction commands, expected outputs, and unreproducible boundaries. |
 | [`docs/data/artifact_index.json`](docs/data/artifact_index.json) | Lists reviewer-critical files with existence, size, and stable hashes. |
 | [`docs/data/reviewer_scorecard.json`](docs/data/reviewer_scorecard.json) | Machine-readable copy of the reviewer decision table. |
 | [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable source-alignment summary, including gated metadata, sample license/tooling, and unsupported claims. |
+| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable pass/fail audit for source facts and public-card boundary markers. |
 | [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | Machine-readable evaluation protocol generated from committed metrics. |
 | [`docs/data/quality_gates.json`](docs/data/quality_gates.json) | Machine-readable quality-gate summary for website and HF mirrors. |
 | [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json) | Last live GitHub/HF verification after upload. |
@@ -52,6 +54,9 @@ The project intentionally separates eight layers:
 | --- | --- |
 | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Human-readable summary of the official gated Xperience-10M dataset card, public sample card, API listing snapshot, scale, modalities, access boundary, intended uses, and limitations. |
 | [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable copy of the same alignment facts for website and HF mirrors. |
+| [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Generated audit showing source facts, sample license/tooling, API-listing caveat, and current project boundary. |
+| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable audit of source metadata, source-boundary markers, and HF card parity. |
+| [`scripts/validate_source_alignment.py`](scripts/validate_source_alignment.py) | Regenerates the source-alignment audit from committed alignment facts and public card text. |
 
 ## Evaluation Protocol
 
