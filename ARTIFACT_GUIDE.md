@@ -4,30 +4,34 @@ This guide is the human-readable map for the public Ropedia Xperience-10M task
 suite artifacts. It complements the machine-readable
 [`docs/data/artifact_index.json`](docs/data/artifact_index.json).
 
-The project intentionally separates five layers:
+The project intentionally separates seven layers:
 
-1. **Proof boundary:** what is claimed, what is smoke-only, and what remains
+1. **Reviewer scorecard:** one compact table for first-pass current-state
+   decisions.
+2. **Proof boundary:** what is claimed, what is smoke-only, and what remains
    gated by data access.
-2. **Official source alignment:** what the upstream Xperience-10M dataset card
+3. **Official source alignment:** what the upstream Xperience-10M dataset card
    says, and which parts this repo currently covers.
-3. **Data contract:** how one public Xperience-10M sample episode becomes
+4. **Data contract:** how one public Xperience-10M sample episode becomes
    aligned model windows and feature blocks.
-4. **Task evidence:** minimal and neural results for the 12 task contracts plus
+5. **Task evidence:** minimal and neural results for the 12 task contracts plus
    four research-direction extension probes.
-5. **Reproducibility:** public commands, expected outputs, and exact-match audit
+6. **Reproducibility:** public commands, expected outputs, and exact-match audit
    evidence for the single-episode pipeline.
-6. **Scale-up status:** scripts and reports for the planned 32-episode
+7. **Scale-up status:** scripts and reports for the planned 32-episode
    Qwen3-Omni pilot, without claiming those results before data access lands.
 
 ## Start Here
 
 | Artifact | Why to open it first |
 | --- | --- |
+| [`REVIEWER_SCORECARD.md`](REVIEWER_SCORECARD.md) | Gives the fastest current decision table: verified, data-gated, and excluded claims. |
 | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md) | Defines which claims are verified and which are explicitly not claimed. |
 | [`QUALITY_GATES.md`](QUALITY_GATES.md) | Lists the automated release gates and post-publish checks required before presenting a release as current. |
 | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Aligns this repo's public dataset wording with the official gated Xperience-10M dataset card. |
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Defines public reproduction commands, expected outputs, and unreproducible boundaries. |
 | [`docs/data/artifact_index.json`](docs/data/artifact_index.json) | Lists reviewer-critical files with existence, size, and stable hashes. |
+| [`docs/data/reviewer_scorecard.json`](docs/data/reviewer_scorecard.json) | Machine-readable copy of the reviewer decision table. |
 | [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable official dataset-card alignment summary. |
 | [`docs/data/quality_gates.json`](docs/data/quality_gates.json) | Machine-readable quality-gate summary for website and HF mirrors. |
 | [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json) | Last live GitHub/HF verification after upload. |

@@ -522,6 +522,69 @@
     .callout h3, .artifact h3 { margin: 0 0 8px; font-size: 17px; }
     .callout p, .artifact p { margin: 0; color: #aab5a5; line-height: 1.6; }
 
+    .scorecard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .scorecard-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      background:
+        linear-gradient(180deg, rgba(164, 242, 127, 0.08), rgba(7, 18, 7, 0.9)),
+        var(--surface);
+      min-height: 210px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+    .scorecard-card.gated {
+      border-color: rgba(216, 244, 165, 0.32);
+      background:
+        linear-gradient(180deg, rgba(216, 244, 165, 0.075), rgba(7, 18, 7, 0.9)),
+        var(--surface);
+    }
+    .scorecard-card h3 { margin: 0; font-size: 18px; line-height: 1.2; }
+    .scorecard-card p { margin: 0; color: var(--muted); line-height: 1.58; }
+    .scorecard-meta {
+      display: grid;
+      gap: 6px;
+      margin-top: 2px;
+      padding-top: 12px;
+      border-top: 1px solid var(--soft-line);
+      color: #dce8d6;
+      font-size: 13px;
+    }
+    .scorecard-meta span {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--muted);
+    }
+    .scorecard-meta strong {
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+    }
+    .scorecard-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .scorecard-actions a {
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 760;
+      padding: 9px 10px;
+      text-decoration: none;
+      background: rgba(2, 5, 2, 0.42);
+    }
+    .scorecard-actions a:hover { border-color: var(--green); color: var(--ink); }
+
     .review-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -932,7 +995,7 @@
     @media (max-width: 960px) {
       .hero-inner, .two-col { grid-template-columns: 1fr; }
       .hero-inner { min-height: 0; }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .scorecard-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .modality-atlas { grid-template-columns: 1fr; }
       .artifact-group-head { grid-template-columns: 1fr; align-items: start; }
       .chart-grid { grid-template-columns: 1fr; }
@@ -944,7 +1007,7 @@
     }
     @media (max-width: 640px) {
       .wrap { width: min(100% - 28px, var(--max)); }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid, .walk-flow, .atlas-rows { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .scorecard-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid, .walk-flow, .atlas-rows { grid-template-columns: 1fr; }
       .artifact-group { padding: 16px; }
       .modality-atlas-panel { padding: 14px; }
       .atlas-card { padding: 12px; }
@@ -990,6 +1053,7 @@
         <span>Ropedia Xperience-10M Task Suite</span>
       </a>
       <div class="nav-links" aria-label="Page navigation">
+        <a href="#scorecard">Scorecard</a>
         <a href="#evidence">Evidence</a>
         <a href="#dataset-card">Dataset</a>
         <a href="#suite">Suite</a>
@@ -1043,6 +1107,83 @@
   </header>
 
   <main id="main">
+    <section id="scorecard">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Reviewer scorecard.</h2>
+          <p>A fast decision table for what is verified, what is data-gated, and what is intentionally excluded. It is backed by a Markdown scorecard and a machine-readable JSON mirror.</p>
+        </div>
+        <div class="scorecard-grid">
+          <article class="scorecard-card">
+            <span class="status-pill">verified</span>
+            <h3>Public sample pipeline</h3>
+            <p>One Xperience-10M public sample episode is converted into aligned windows and a documented feature contract.</p>
+            <div class="scorecard-meta">
+              <span>frames <strong>5,821</strong></span>
+              <span>windows <strong>1,161</strong></span>
+              <span>features <strong>8,378</strong></span>
+            </div>
+          </article>
+          <article class="scorecard-card">
+            <span class="status-pill">verified</span>
+            <h3>12-task suite + neural heads</h3>
+            <p>Every core task has a minimal baseline and a compact PyTorch MLP head over the same windows, splits, and labels.</p>
+            <div class="scorecard-meta">
+              <span>core tasks <strong>12</strong></span>
+              <span>neural heads <strong>12</strong></span>
+              <span>extension probes <strong>4</strong></span>
+            </div>
+          </article>
+          <article class="scorecard-card">
+            <span class="status-pill">verified</span>
+            <h3>Official dataset wording</h3>
+            <p>The public description is aligned to the official gated Xperience-10M dataset card, including modalities, scale, access, and unsupported claims.</p>
+            <div class="scorecard-meta">
+              <span>full dataset <strong>gated</strong></span>
+              <span>sample scope <strong>1 episode</strong></span>
+              <span>raw data mirrored <strong>no</strong></span>
+            </div>
+          </article>
+          <article class="scorecard-card">
+            <span class="status-pill">verified</span>
+            <h3>Publication quality</h3>
+            <p>Website integrity, prepared mirror parity, public-card freshness, and live GitHub/HF URL checks are tracked as release gates.</p>
+            <div class="scorecard-meta">
+              <span>site integrity <strong>pass</strong></span>
+              <span>mirror parity <strong>pass</strong></span>
+              <span>live status <strong>pass</strong></span>
+            </div>
+          </article>
+          <article class="scorecard-card gated">
+            <span class="status-pill">data-gated</span>
+            <h3>Qwen3-Omni pilot</h3>
+            <p>The 32-episode LoRA path is prepared, but no model-quality claim is made until gated data access, held-out splits, training, and eval pass.</p>
+            <div class="scorecard-meta">
+              <span>current claim <strong>smoke only</strong></span>
+              <span>target gate <strong>32 episodes</strong></span>
+              <span>held-out eval <strong>pending</strong></span>
+            </div>
+          </article>
+          <article class="scorecard-card gated">
+            <span class="status-pill">not redistributed</span>
+            <h3>Raw data and weights</h3>
+            <p>Raw MP4/HDF5/RRD files, private gated Xperience-10M data, and full Qwen weights are excluded from the public repo and HF mirrors.</p>
+            <div class="scorecard-meta">
+              <span>raw Xperience-10M <strong>excluded</strong></span>
+              <span>full Qwen weights <strong>excluded</strong></span>
+              <span>derived artifacts <strong>included</strong></span>
+            </div>
+          </article>
+        </div>
+        <div class="scorecard-actions">
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REVIEWER_SCORECARD.md">REVIEWER_SCORECARD.md</a>
+          <a href="data/reviewer_scorecard.json">reviewer_scorecard.json</a>
+          <a href="data/reviewer_packet.json">reviewer_packet.json</a>
+          <a href="data/live_publication_status.json">live_publication_status.json</a>
+        </div>
+      </div>
+    </section>
+
     <section id="evidence">
       <div class="wrap">
         <div class="section-head">

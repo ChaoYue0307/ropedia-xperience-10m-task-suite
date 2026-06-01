@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T08:19:14+00:00",
+  "generated_at_utc": "2026-06-01T08:39:54+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -44,6 +44,7 @@
     "LICENSE": true,
     "codemeta.json": true,
     "ARTIFACT_GUIDE.md": true,
+    "REVIEWER_SCORECARD.md": true,
     "QUALITY_GATES.md": true,
     "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md": true,
     "REPRODUCIBILITY.md": true,
@@ -60,6 +61,7 @@
     "docs/data/quality_gates.json": true,
     "docs/data/project_manifest.json": true,
     "docs/data/reviewer_packet.json": true,
+    "docs/data/reviewer_scorecard.json": true,
     "docs/data/xperience10m_dataset_card_alignment.json": true,
     "docs/data/reproducibility_matrix.json": true,
     "docs/data/modality_atlas.json": true,
@@ -97,7 +99,7 @@
       "surface": "github_repo",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 4,
+      "required_marker_count": 5,
       "missing_markers": [],
       "status": "pass"
     },
@@ -105,7 +107,7 @@
       "surface": "hf_space_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 5,
+      "required_marker_count": 6,
       "missing_markers": [],
       "status": "pass"
     },
@@ -113,7 +115,7 @@
       "surface": "hf_artifact_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 4,
+      "required_marker_count": 5,
       "missing_markers": [],
       "status": "pass"
     },
@@ -121,7 +123,7 @@
       "surface": "hf_artifact_bundle",
       "path": "PROJECT_README.md",
       "exists": true,
-      "required_marker_count": 4,
+      "required_marker_count": 5,
       "missing_markers": [],
       "status": "pass"
     },
@@ -129,7 +131,7 @@
       "surface": "hf_model_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 5,
+      "required_marker_count": 6,
       "missing_markers": [],
       "status": "pass"
     }
@@ -138,8 +140,8 @@
     "github_repo": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy",
       "exists": true,
-      "file_count": 293,
-      "text_file_count": 238,
+      "file_count": 295,
+      "text_file_count": 240,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -149,8 +151,8 @@
     "hf_space_bundle": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space",
       "exists": true,
-      "file_count": 56,
-      "text_file_count": 43,
+      "file_count": 58,
+      "text_file_count": 45,
       "largest_file": {
         "path": "assets/task_suite_infographic.png",
         "bytes": 2600527
@@ -160,8 +162,8 @@
     "hf_artifact_bundle": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts",
       "exists": true,
-      "file_count": 273,
-      "text_file_count": 231,
+      "file_count": 275,
+      "text_file_count": 233,
       "largest_file": {
         "path": "results/episode_task_suite/neural_mlp/temporal_order/model.pt",
         "bytes": 13406129
@@ -171,8 +173,8 @@
     "hf_model_bundle": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model",
       "exists": true,
-      "file_count": 205,
-      "text_file_count": 162,
+      "file_count": 207,
+      "text_file_count": 164,
       "largest_file": {
         "path": "artifacts/episode_task_suite/cross_modal_retrieval/model.npz",
         "bytes": 41310574

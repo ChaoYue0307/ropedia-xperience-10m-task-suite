@@ -229,7 +229,21 @@ def validate(docs_root: Path, site_base: str) -> dict:
     suite_start = index_text.find('<section id="suite">')
     suite_end = index_text.find('<section id="pipeline">')
     suite_text = index_text[suite_start:suite_end] if suite_start >= 0 and suite_end > suite_start else ""
+    scorecard_pos = index_text.find('<section id="scorecard">')
+    evidence_pos = index_text.find('<section id="evidence">')
     semantic_rules = [
+        (
+            "reviewer_scorecard_precedes_evidence_ledger",
+            '<section id="scorecard">',
+            '<section id="evidence">',
+            "The reviewer scorecard should appear before the deeper evidence ledger.",
+        ),
+        (
+            "reviewer_scorecard_links_json",
+            'data/reviewer_scorecard.json',
+            None,
+            "The website should expose the machine-readable reviewer scorecard.",
+        ),
         (
             "suite_task_map_precedes_modality_atlas",
             '<div class="figure-pan" id="task-suite-map">',
@@ -248,6 +262,13 @@ def validate(docs_root: Path, site_base: str) -> dict:
             card_count = len(re.findall(r'class="atlas-card(?:\s|")', suite_text))
             passed = card_count == 7
             detail = {"card_count": card_count}
+        elif name == "reviewer_scorecard_precedes_evidence_ledger":
+            passed = scorecard_pos >= 0 and evidence_pos >= 0 and scorecard_pos < evidence_pos
+            detail = {"scorecard_index": scorecard_pos, "evidence_index": evidence_pos}
+        elif name == "reviewer_scorecard_links_json":
+            marker_count = index_text.count(marker)
+            passed = marker_count >= 1
+            detail = {"marker_count": marker_count}
         else:
             marker_pos = suite_text.find(marker)
             after_pos = suite_text.find(after_marker or "")

@@ -18,6 +18,22 @@ OUTPUT = ROOT / "docs/data/artifact_index.json"
 
 ARTIFACTS = [
     {
+        "id": "reviewer_scorecard",
+        "title": "Reviewer scorecard",
+        "path": "REVIEWER_SCORECARD.md",
+        "kind": "review_path",
+        "surface": "repo_hf",
+        "proves": "Gives a compact verified/data-gated/not-redistributed decision table for first-pass reviewers.",
+    },
+    {
+        "id": "reviewer_scorecard_json",
+        "title": "Reviewer scorecard JSON",
+        "path": "docs/data/reviewer_scorecard.json",
+        "kind": "review_path",
+        "surface": "website_hf",
+        "proves": "Machine-readable copy of the current reviewer scorecard for website and HF mirrors.",
+    },
+    {
         "id": "evidence_contract",
         "title": "Evidence contract",
         "path": "EVIDENCE_CONTRACT.md",

@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T08:19:14+00:00",
+  "generated_at_utc": "2026-06-01T08:37:52+00:00",
   "docs_root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 2,
-    "local_references": 67,
-    "external_reference_count": 63,
-    "json_files": 17,
+    "local_references": 71,
+    "external_reference_count": 64,
+    "json_files": 18,
     "image_assets_referenced": 18,
     "failure_count": 0
   },
@@ -20,6 +20,19 @@
     "semantic_layout": []
   },
   "semantic_checks": [
+    {
+      "name": "reviewer_scorecard_precedes_evidence_ledger",
+      "status": "pass",
+      "reason": "The reviewer scorecard should appear before the deeper evidence ledger.",
+      "scorecard_index": 36615,
+      "evidence_index": 40844
+    },
+    {
+      "name": "reviewer_scorecard_links_json",
+      "status": "pass",
+      "reason": "The website should expose the machine-readable reviewer scorecard.",
+      "marker_count": 1
+    },
     {
       "name": "suite_task_map_precedes_modality_atlas",
       "status": "pass",
@@ -43,20 +56,20 @@
     },
     {
       "path": "index.html",
-      "id_count": 32,
-      "reference_count": 66,
+      "id_count": 33,
+      "reference_count": 70,
       "image_count": 20
     }
   ],
   "json_files": [
     {
       "path": "data/artifact_index.json",
-      "bytes": 15676,
+      "bytes": 16530,
       "top_level_type": "dict"
     },
     {
       "path": "data/evidence_contract.json",
-      "bytes": 8483,
+      "bytes": 8848,
       "top_level_type": "dict"
     },
     {
@@ -76,7 +89,7 @@
     },
     {
       "path": "data/project_manifest.json",
-      "bytes": 3411,
+      "bytes": 3530,
       "top_level_type": "dict"
     },
     {
@@ -106,7 +119,12 @@
     },
     {
       "path": "data/reviewer_packet.json",
-      "bytes": 5044,
+      "bytes": 5294,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/reviewer_scorecard.json",
+      "bytes": 4868,
       "top_level_type": "dict"
     },
     {
@@ -126,7 +144,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 6286,
+      "bytes": 6287,
       "top_level_type": "dict"
     },
     {

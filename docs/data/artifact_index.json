@@ -1,12 +1,12 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T08:19:19+00:00",
+  "generated_at_utc": "2026-06-01T08:40:06+00:00",
   "status": "pass",
-  "artifact_count": 35,
+  "artifact_count": 37,
   "missing": [],
   "by_kind": {
+    "review_path": 5,
     "claim_boundary": 1,
-    "review_path": 3,
     "source_alignment": 2,
     "quality_gate": 4,
     "reproducibility": 2,
@@ -30,6 +30,28 @@
   },
   "artifacts": [
     {
+      "id": "reviewer_scorecard",
+      "title": "Reviewer scorecard",
+      "path": "REVIEWER_SCORECARD.md",
+      "kind": "review_path",
+      "surface": "repo_hf",
+      "proves": "Gives a compact verified/data-gated/not-redistributed decision table for first-pass reviewers.",
+      "exists": true,
+      "bytes": 3645,
+      "sha256": "dd51a034003489deceb8cd9a49d980225c102506abf963d2a17a219f83e49991"
+    },
+    {
+      "id": "reviewer_scorecard_json",
+      "title": "Reviewer scorecard JSON",
+      "path": "docs/data/reviewer_scorecard.json",
+      "kind": "review_path",
+      "surface": "website_hf",
+      "proves": "Machine-readable copy of the current reviewer scorecard for website and HF mirrors.",
+      "exists": true,
+      "bytes": 4868,
+      "sha256": "8e35558a08b1debc0aadc8dfa367d700e6cc2bfc3ee43e828c42ed7d823ad9af"
+    },
+    {
       "id": "evidence_contract",
       "title": "Evidence contract",
       "path": "EVIDENCE_CONTRACT.md",
@@ -37,8 +59,8 @@
       "surface": "repo",
       "proves": "Defines what is verified, what is smoke-only, and what must not be inferred.",
       "exists": true,
-      "bytes": 7572,
-      "sha256": "1b4c78c3d92c8592dcc7532b94103743bfef2a36b025245968c79fd51fa5c42c"
+      "bytes": 7926,
+      "sha256": "d9d55298c24fb59d2f2f67fcef2812a135c92b3ec4c4217d7c93aa6bdaa27628"
     },
     {
       "id": "reviewer_packet",
@@ -48,8 +70,8 @@
       "surface": "website_hf",
       "proves": "Gives a short audit path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 5044,
-      "sha256": "9b99e1828b74ba2cf99f281925ee6c113d0c73d9e06e700e924513e391c83cd8"
+      "bytes": 5294,
+      "sha256": "47bb26da602307af5a5b8f4577c01e88ba9287ca97eeaff058e38225d6989277"
     },
     {
       "id": "artifact_guide",
@@ -59,8 +81,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 7925,
-      "sha256": "79c81d9f5631df046892e020f979773ac0933381f17b6d2b9f3ff503d6c332b7"
+      "bytes": 8287,
+      "sha256": "c224d1f5bb24205a246855c7610c81b43d4bae1f696a310dbbc7048ac1682f76"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -104,7 +126,7 @@
       "proves": "Machine-readable release-gate summary for validators, mirrors, and reviewer surfaces.",
       "exists": true,
       "bytes": 4228,
-      "sha256": "2e8149b6854a132fc354ef5193b46ee4ad43fd1816a3cf57ef57463bd01cb5e2"
+      "sha256": "8cc79b99c5e1a1a22f43969b63e19628e72f762ea1836f2dd66ba13a65b1a10e"
     },
     {
       "id": "live_publication_status",
@@ -126,8 +148,8 @@
       "surface": "repo",
       "proves": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 13394,
-      "sha256": "c488fc788d28f280e21e4556ea4c5649c4c92405c44c8a956ba8e7bf009c4419"
+      "bytes": 14293,
+      "sha256": "73b37bb78808aa53ec62b4a7ba3f4bfda463d6f8284dfc3e575e73982d0303f1"
     },
     {
       "id": "reproducibility_contract",
@@ -159,8 +181,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 13641,
-      "sha256": "3d0a88e0c2212913699c13362027eb97a0cd84789a47e72b41d43cf3d2d6545b"
+      "bytes": 14267,
+      "sha256": "e09ba25e862cdb22b53fead53466079fc7b41be63148bd5d8de1fbdcfe5570b6"
     },
     {
       "id": "publication_audit",
@@ -171,7 +193,7 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 5624,
+      "bytes": 5706,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -195,7 +217,7 @@
       "volatile": true,
       "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 51823,
+      "bytes": 54563,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -207,7 +229,7 @@
       "volatile": true,
       "proves": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 6287,
+      "bytes": 6843,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -218,8 +240,8 @@
       "surface": "website_hf",
       "proves": "Lists public URLs, upstream sources, and machine-readable project metadata.",
       "exists": true,
-      "bytes": 3411,
-      "sha256": "99e0d386e088e7c532a318c33e4519da9b77d8d7c300c123c5aa7f866cd3c6b4"
+      "bytes": 3530,
+      "sha256": "6028e493703bb63fabec3b23cc220f3c2606cf005bb5705043afa041a167486c"
     },
     {
       "id": "task_summary",
