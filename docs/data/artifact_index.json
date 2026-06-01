@@ -1,14 +1,15 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T03:24:39+00:00",
+  "generated_at_utc": "2026-06-01T03:55:12+00:00",
   "status": "pass",
-  "artifact_count": 27,
+  "artifact_count": 28,
   "missing": [],
   "by_kind": {
     "claim_boundary": 1,
     "review_path": 3,
     "reproducibility": 2,
     "hygiene_report": 1,
+    "scope_guard": 1,
     "integrity_report": 1,
     "metadata": 1,
     "metrics_source": 2,
@@ -33,8 +34,8 @@
       "surface": "repo",
       "proves": "Defines what is verified, what is smoke-only, and what must not be inferred.",
       "exists": true,
-      "bytes": 5640,
-      "sha256": "5a370d37956affb77742a48909f1a18e3e7459abac2ea08e8543acabf5fef289"
+      "bytes": 6034,
+      "sha256": "afc1d6805d53af3662727fd737399c245b9ea31f440fa3cb64ba7f91b43731f6"
     },
     {
       "id": "reviewer_packet",
@@ -44,8 +45,8 @@
       "surface": "website_hf",
       "proves": "Gives a short audit path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 4284,
-      "sha256": "100e731db43fd532807ba9aed1f72ca176fda70d7ea65d1bb4046f1560ea27c0"
+      "bytes": 4351,
+      "sha256": "afc8d16b3b42ec7ba4a1d73cc0996e20e285b537c16095a775d480c9a9cfc36a"
     },
     {
       "id": "artifact_guide",
@@ -55,8 +56,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 6104,
-      "sha256": "364d1af448b6bd6ff96bac67ba7879c1de5559332d8c65ebc9a1424bcc7b1e42"
+      "bytes": 6278,
+      "sha256": "fb357f9d11b024a6270f6f582f3b82f2ec9bed09229b2fd87264d7c1e8e39cb0"
     },
     {
       "id": "reproducibility_contract",
@@ -66,8 +67,8 @@
       "surface": "repo_hf",
       "proves": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
       "exists": true,
-      "bytes": 5060,
-      "sha256": "e61140800ff726f2cd5f79f67c373fd900f6cb0a1225a070b8110697122b27e6"
+      "bytes": 5211,
+      "sha256": "2a62811c1ba6af2f18de26ae6250987d5cc1f8f8e4798fa01043f598e4d9c7b3"
     },
     {
       "id": "reproducibility_matrix",
@@ -77,8 +78,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable reproduction steps with expected artifacts and public boundaries.",
       "exists": true,
-      "bytes": 3856,
-      "sha256": "30f5dc1f8aec4a609ddd1c3ad4076e7c731c60b2db34936d19a0bbd3dfd21121"
+      "bytes": 3934,
+      "sha256": "8823e9b526617d81a2fd0614e8ada9c82027f4720c5313516a3b40b85f87bcda"
     },
     {
       "id": "artifact_index_builder",
@@ -88,8 +89,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 10858,
-      "sha256": "118e7950b92952d7052add0a7567a9145f7e40f48df583297e9f6f194027b147"
+      "bytes": 11194,
+      "sha256": "54f6e418abcf262dfe80822e815f681b191a7f31adcdbe56eeb3b20282b271f8"
     },
     {
       "id": "publication_audit",
@@ -100,7 +101,19 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 3923,
+      "bytes": 4016,
+      "hash_policy": "existence_and_size_only"
+    },
+    {
+      "id": "scope_claims_audit",
+      "title": "Scope claims audit",
+      "path": "docs/data/scope_claims_audit.json",
+      "kind": "scope_guard",
+      "surface": "website_hf",
+      "volatile": true,
+      "proves": "Confirms historical 32ep path strings are not presented as real 32-episode results.",
+      "exists": true,
+      "bytes": 19924,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -112,7 +125,7 @@
       "volatile": true,
       "proves": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 5213,
+      "bytes": 5325,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -123,8 +136,8 @@
       "surface": "website_hf",
       "proves": "Lists public URLs, upstream sources, and machine-readable project metadata.",
       "exists": true,
-      "bytes": 2673,
-      "sha256": "72a024d404b4ae9fd5aa2353ebd936b58c797fa8257ead9acb11faee889db45e"
+      "bytes": 2736,
+      "sha256": "5afa5514f63b94000bf5325e58281c75b7a9a21d104c977a16fd212706ceb675"
     },
     {
       "id": "task_summary",

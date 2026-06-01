@@ -42,6 +42,7 @@ This repo is organized around an explicit proof boundary:
 | Neural heads | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | compact MLP heads, not a foundation model |
 | Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
 | Qwen3-Omni | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `A100_HF_RELAY_STATUS.md` | smoke-only until 32 valid episodes are available |
+| Scope claims guard | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | historical `32ep` path strings are provenance, not 32-episode results |
 | Publication hygiene | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | public repo and HF bundles only; ignored local scratch files are excluded |
 | Artifact index | `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | selective source-of-truth catalog with existence, size, and stable-file hashes |
 | Citation and metadata | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | code is MIT-scoped; raw-data use follows Xperience-10M terms |
@@ -52,6 +53,8 @@ consume the machine-readable copy at
 [`docs/data/evidence_contract.json`](docs/data/evidence_contract.json).
 The current publication audit is at
 [`docs/data/publication_audit.json`](docs/data/publication_audit.json).
+The current scope-claims audit is at
+[`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json).
 The source-of-truth artifact index is at
 [`docs/data/artifact_index.json`](docs/data/artifact_index.json).
 For a human-readable artifact map, use
@@ -69,7 +72,7 @@ If you are reviewing the project cold, open these in order:
 
 | Step | Question | Primary artifacts | What should be true |
 | --- | --- | --- | --- |
-| 1 | What is actually claimed? | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Single-episode task engineering and hygiene are claimed; cross-episode generalization is not. |
+| 1 | What is actually claimed? | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json), [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Single-episode task engineering and hygiene are claimed; historical `32ep` identifiers are not treated as real 32-episode results. |
 | 2 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and exact-match audit evidence are explicit. |
 | 3 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
 | 4 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
@@ -204,6 +207,7 @@ scripts/
   export_modality_atlas_assets.py   # exports responsive modality-card assets
   render_overview_figures.py        # renders polished pipeline/architecture PNGs
   build_artifact_index.py           # builds the source-of-truth reviewer index
+  validate_scope_claims.py          # checks Qwen3-Omni smoke/result claim boundaries
   validate_website_integrity.py     # checks local site links, anchors, JSON, images
   validate_publication_package.py   # checks public repo + HF bundle hygiene
   omni/

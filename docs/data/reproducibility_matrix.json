@@ -59,8 +59,8 @@
     {
       "id": "publication_validation",
       "status": "reproducible",
-      "command": "python scripts/validate_website_integrity.py && python scripts/build_artifact_index.py && python scripts/validate_publication_package.py",
-      "expected": "docs/data/website_integrity.json, docs/data/artifact_index.json, and docs/data/publication_audit.json",
+      "command": "python scripts/validate_website_integrity.py && python scripts/validate_scope_claims.py && python scripts/build_artifact_index.py && python scripts/validate_publication_package.py",
+      "expected": "docs/data/website_integrity.json, docs/data/scope_claims_audit.json, docs/data/artifact_index.json, and docs/data/publication_audit.json",
       "boundary": "checks local website integrity plus public repo and prepared HF bundles"
     },
     {
