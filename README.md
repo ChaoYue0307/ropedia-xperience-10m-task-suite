@@ -23,7 +23,7 @@ into:
 - lightweight neural MLP heads for the same 12 task contracts,
 - a generated four-direction research taxonomy matching the Ropedia job tracks,
 - four additional direction-extension probes with minimal and neural baselines,
-- human-readable research task cards and an interactive task walkthrough/player for every task,
+- human-readable research task cards and an interactive scrub/play walkthrough storyboard for every task,
 - a next-milestone track for Qwen3-Omni fine-tuning and sensor-bridge evaluation,
 - metrics, predictions, model weights, manifests, charts, and a static website,
 - a clear explanation of what a single episode can and cannot prove.
@@ -44,7 +44,7 @@ This repo is organized around an explicit proof boundary:
 | 12-task suite | `scripts/episode_task_suite.py`, per-task `metrics.json`, predictions | chronological single-episode split |
 | Neural heads | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | compact MLP heads, not a foundation model |
 | Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
-| Task surface integrity | `docs/data/task_surface_integrity.json`, `scripts/validate_task_surface.py` | public task cards stay human-readable, thumbnail-backed, and wired to the walkthrough/player data |
+| Task surface integrity | `docs/data/task_surface_integrity.json`, `scripts/validate_task_surface.py` | public task cards stay human-readable, thumbnail-backed, and wired to the scrub/play walkthrough storyboard |
 | Qwen3-Omni | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `MULTI_EPISODE_ACCESS_STATUS.md` | readiness-only until 32 valid episodes are available |
 | Scope claims guard | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | historical `32ep` path strings are provenance, not 32-episode results |
 | Mirror parity | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | prepared GitHub/HF mirrors carry matching data, figure, website HTML, and validator files |
@@ -69,7 +69,7 @@ The current prepared-mirror parity report is at
 [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json).
 The current scope-claims audit is at
 [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json).
-The task-card and walkthrough-player integrity report is at
+The task-card and walkthrough-storyboard integrity report is at
 [`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json).
 The generated evaluation protocol is at
 [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) and
@@ -238,7 +238,7 @@ Hugging Face Space app:
 | Figure index | `FIGURE_INDEX.md`, `docs/data/figure_index.json` | Makes public figures, charts, modality thumbnails, dimensions, hashes, and source scripts auditable |
 | Brand assets | `docs/data/brand_assets.json`, `docs/assets/brand/` | Makes the generated logo, favicon, README/HF card image, app icon, and social preview auditable |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` | Defines the task unit, split, metrics, leakage controls, and unsupported interpretations |
-| Task surface integrity | `docs/data/task_surface_integrity.json` | Checks the public task cards, readable task names, representative modality thumbnails, and interactive task player |
+| Task surface integrity | `docs/data/task_surface_integrity.json` | Checks the public task cards, readable task names, representative modality thumbnails, and interactive walkthrough storyboard |
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and debuggable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode claims reviewable without rerunning first |
@@ -322,7 +322,7 @@ scripts/
   neural_task_models.py             # optional PyTorch MLP heads for all 12 tasks
   research_direction_taxonomy.py    # maps 12 tasks to the four research tracks
   research_direction_extension_tasks.py # one extra data-backed probe per track
-  task_walkthroughs.py              # human-readable task-card and walkthrough-player metadata
+  task_walkthroughs.py              # human-readable task-card and walkthrough-storyboard metadata
   generate_visualizations.py        # refreshes SVG charts + summary JSON
   render_task_suite_infographic.py  # renders the task-suite presentation PNG
   export_modality_atlas_assets.py   # exports responsive modality-card assets
@@ -332,7 +332,7 @@ scripts/
   build_quality_gates.py            # builds reviewer-facing publication gates
   validate_mirror_parity.py         # checks prepared GitHub/HF mirror file parity
   validate_scope_claims.py          # checks Qwen3-Omni readiness/result claim boundaries
-  validate_task_surface.py          # checks readable task cards and interactive player wiring
+  validate_task_surface.py          # checks readable task cards and interactive storyboard wiring
   validate_website_integrity.py     # checks local site links, anchors, JSON, images
   validate_publication_package.py   # checks public repo + HF bundle hygiene
   publish_hf_bundles.py             # uploads prepared HF Space/artifact/model bundles
@@ -362,13 +362,13 @@ docs/
   data/live_publication_status.json # live GitHub/HF publication verification
   data/quality_gates.json           # machine-readable publication gates
   data/publication_audit.json       # machine-readable publication hygiene check
-  data/task_surface_integrity.json  # machine-readable task-card/player integrity check
+  data/task_surface_integrity.json  # machine-readable task-card/storyboard integrity check
   data/website_integrity.json       # machine-readable website integrity check
   data/project_manifest.json        # machine-readable public-surface metadata
   data/reviewer_packet.json         # machine-readable reviewer path and proof boundary
   data/research_directions.json     # four-track website data bundle
   data/research_direction_extensions.json # four extra probe data bundle
-  data/task_walkthroughs.json       # human-readable task-card and walkthrough-player data
+  data/task_walkthroughs.json       # human-readable task-card and walkthrough-storyboard data
   data/modality_atlas.json          # responsive modality-card data
   assets/brand/*.png                # project logo, favicon, social card
   assets/task_suite_infographic.png # 12-task presentation graphic
@@ -573,10 +573,10 @@ Current direction-level coverage:
 
 | Direction | Current status | Covered task evidence | What is not solved yet |
 | --- | --- | --- | --- |
-| A. Human Modeling & Motion Understanding | Partially implemented | `hand_trajectory_forecast` and `contact_prediction` are direct; `timeline_action` and `object_relevance` are proxies. Neural MLP improves hand forecasting from `0.8223` to `0.1116` MPJPE. | No full body/shape model, SMPL/MANO target, deformation prior, or multi-episode motion-generation evaluation yet. |
-| B. 3D/4D Reconstruction & Neural Rendering | Proxy tasks only | `cross_modal_retrieval`, `modality_reconstruction`, and `misalignment_detection` test alignment/reconstruction prerequisites. | No NeRF, Gaussian Splatting, TSDF, mesh, novel-view synthesis, or calibrated 4D reconstruction model yet. |
+| A. Human Modeling & Motion Understanding | Partially implemented | Hand Trajectory Forecasting and Contact State Prediction are direct; Action Recognition and Object Relevance Prediction are proxies. Neural MLP improves hand forecasting from `0.8223` to `0.1116` MPJPE. | No full body/shape model, SMPL/MANO target, deformation prior, or multi-episode motion-generation evaluation yet. |
+| B. 3D/4D Reconstruction & Neural Rendering | Proxy tasks only | Cross-Modal Retrieval, Cross-Modal Reconstruction, and Multimodal Synchronization Detection test alignment/reconstruction prerequisites. | No NeRF, Gaussian Splatting, TSDF, mesh, novel-view synthesis, or calibrated 4D reconstruction model yet. |
 | C. Egocentric Vision & Interaction | Strongest implemented track | 6 direct tasks: action, subtask, transition, next-action, object relevance, and caption grounding, plus alignment/order diagnostics. | Single-episode chronological split limits generalization; audio and stronger video-language backbones still need to be added. |
-| D. Scene Reconstruction & World Modeling | Early proxy tasks | Subtask/next-action, object relevance, retrieval, reconstruction, temporal order, and misalignment provide state/world-model probes. | No persistent scene graph, object permanence task, long-term map, or held-out-episode world model yet. |
+| D. Scene Reconstruction & World Modeling | Early proxy tasks | Procedure Step Recognition, Next-Action Prediction, Object Relevance Prediction, Cross-Modal Retrieval, Cross-Modal Reconstruction, Temporal Order Verification, and Multimodal Synchronization Detection provide state/world-model probes. | No persistent scene graph, object permanence task, long-term map, or held-out-episode world model yet. |
 
 The important interpretation is that all four directions can be **started** from
 the Xperience-10M sample modalities, but only direction C is strongly represented
@@ -599,10 +599,10 @@ the reported numbers are real sample-derived metrics, not placeholder results.
 
 | Direction | New extension task | Input | Output | Minimal | Neural MLP | Why it matters |
 | --- | --- | --- | --- | ---: | ---: | --- |
-| A. Human Modeling & Motion Understanding | `body_motion_intensity` | non-mocap video/depth/pose/IMU/SLAM/language features | high vs low body/hand motion | `0.7827` macro-F1 | `0.7986` macro-F1 | Starts a human-motion-energy target without leaking mocap input. |
-| B. 3D/4D Reconstruction & Neural Rendering | `multi_view_consistency_retrieval` | fisheye camera feature query | synchronized stereo-left view rank | `0.5534` MRR | `0.3469` MRR | Tests whether multi-view features preserve synchronized 4D scene identity. |
-| C. Egocentric Vision & Interaction | `action_phase_progress` | non-caption multimodal window | progress inside current action segment | `0.3416` MAE | `0.3038` MAE | Adds a task-structure/intent-style target beyond class labels. |
-| D. Scene Reconstruction & World Modeling | `ego_motion_forecast` | current sensors excluding camera translation and captions | future camera-translation delta | `0.1989` MAE | `0.0989` MAE | Starts a short-horizon world-model target over wearer motion. |
+| A. Human Modeling & Motion Understanding | Body and Hand Motion Intensity | non-mocap video/depth/pose/IMU/SLAM/language features | high vs low body/hand motion | `0.7827` macro-F1 | `0.7986` macro-F1 | Starts a human-motion-energy target without leaking mocap input. |
+| B. 3D/4D Reconstruction & Neural Rendering | Multi-View Consistency Retrieval | fisheye camera feature query | synchronized stereo-left view rank | `0.5534` MRR | `0.3469` MRR | Tests whether multi-view features preserve synchronized 4D scene identity. |
+| C. Egocentric Vision & Interaction | Action Phase Progress Estimation | non-caption multimodal window | progress inside current action segment | `0.3416` MAE | `0.3038` MAE | Adds a task-structure/intent-style target beyond class labels. |
+| D. Scene Reconstruction & World Modeling | Short-Horizon Ego-Motion Forecasting | current sensors excluding camera translation and captions | future camera-translation delta | `0.1989` MAE | `0.0989` MAE | Starts a short-horizon world-model target over wearer motion. |
 
 Run:
 
@@ -637,18 +637,18 @@ Compact map:
 
 | Task | Case study | Input -> process -> output |
 | --- | --- | --- |
-| `timeline_action` | A pouring window should be named as the current action. | all-modality window -> action label builder + classifier -> action class |
-| `timeline_subtask` | A fine action is grouped into a broader drink-preparation stage. | all-modality window -> subtask label builder + classifier -> subtask label |
-| `transition_detection` | Detect the change from preparing to pouring. | window -> boundary builder + binary classifier -> boundary/steady |
-| `next_action` | A preparing window predicts what happens 20 frames later. | current window -> future-label shift + classifier -> next action |
-| `hand_trajectory_forecast` | A hand moving toward a cup becomes a future 3D hand path. | current window -> future mocap target + regressor -> hand trajectory |
-| `contact_prediction` | Decide whether hand/body contact is happening. | non-contact features -> contact target + binary classifier -> contact label |
-| `object_relevance` | Infer milk, cup, coffee, or related objects during pouring. | non-caption features -> multi-hot object target + sigmoid heads -> object set |
-| `caption_grounding` | Query Pour milk into coffee and retrieve the matching moment. | text-like query + candidates -> projection + cosine ranker -> ranked windows |
-| `cross_modal_retrieval` | Motion/IMU from pouring retrieves matching depth/video. | motion/IMU/camera -> projection + candidate index -> ranked depth/video windows |
-| `modality_reconstruction` | Infer depth/video features from motion, IMU, and camera pose. | source modalities -> scaler + regressor -> target modality vector |
-| `temporal_order` | Tell whether reaching then pouring was reversed. | adjacent window pair -> pair combiner + binary classifier -> correct/reversed |
-| `misalignment_detection` | Catch motion paired with visual/depth features shifted in time. | motion side + visual side -> aligned/shifted pair builder + classifier -> aligned/shifted |
+| Action Recognition | A pouring window should be named as the current action. | all-modality window -> action label builder + classifier -> action class |
+| Procedure Step Recognition | A fine action is grouped into a broader drink-preparation stage. | all-modality window -> subtask label builder + classifier -> subtask label |
+| Action Boundary Detection | Detect the change from preparing to pouring. | window -> boundary builder + binary classifier -> boundary/steady |
+| Next-Action Prediction | A preparing window predicts what happens 20 frames later. | current window -> future-label shift + classifier -> next action |
+| Hand Trajectory Forecasting | A hand moving toward a cup becomes a future 3D hand path. | current window -> future mocap target + regressor -> hand trajectory |
+| Contact State Prediction | Decide whether hand/body contact is happening. | non-contact features -> contact target + binary classifier -> contact label |
+| Object Relevance Prediction | Infer milk, cup, coffee, or related objects during pouring. | non-caption features -> multi-hot object target + sigmoid heads -> object set |
+| Language Grounding | Query Pour milk into coffee and retrieve the matching moment. | text-like query + candidates -> projection + cosine ranker -> ranked windows |
+| Cross-Modal Retrieval | Motion/IMU from pouring retrieves matching depth/video. | motion/IMU/camera -> projection + candidate index -> ranked depth/video windows |
+| Cross-Modal Reconstruction | Infer depth/video features from motion, IMU, and camera pose. | source modalities -> scaler + regressor -> target modality vector |
+| Temporal Order Verification | Tell whether reaching then pouring was reversed. | adjacent window pair -> pair combiner + binary classifier -> correct/reversed |
+| Multimodal Synchronization Detection | Catch motion paired with visual/depth features shifted in time. | motion side + visual side -> aligned/shifted pair builder + classifier -> aligned/shifted |
 
 ## Minimal 12-Task Architectures
 
@@ -668,10 +668,10 @@ There are four reusable head families:
 
 | Head family | Used by | What it means |
 | --- | --- | --- |
-| Linear softmax classifier | `timeline_action`, `timeline_subtask`, `transition_detection`, `next_action`, `contact_prediction`, `temporal_order`, `misalignment_detection` | z-score features, then `XW+b`, softmax, cross-entropy, L2 |
-| Dual ridge regression/projection | `hand_trajectory_forecast`, `modality_reconstruction` | z-score input/target, solve ridge regression with L2=10 |
-| Ridge + cosine ranking | `caption_grounding`, `cross_modal_retrieval` | project one modality into another feature space, then rank candidates by cosine |
-| Multi-label logistic regression | `object_relevance` | z-score non-caption features, sigmoid object heads, threshold at 0.5 |
+| Linear softmax classifier | Action Recognition, Procedure Step Recognition, Action Boundary Detection, Next-Action Prediction, Contact State Prediction, Temporal Order Verification, Multimodal Synchronization Detection | z-score features, then `XW+b`, softmax, cross-entropy, L2 |
+| Dual ridge regression/projection | Hand Trajectory Forecasting, Cross-Modal Reconstruction | z-score input/target, solve ridge regression with L2=10 |
+| Ridge + cosine ranking | Language Grounding, Cross-Modal Retrieval | project one modality into another feature space, then rank candidates by cosine |
+| Multi-label logistic regression | Object Relevance Prediction | z-score non-caption features, sigmoid object heads, threshold at 0.5 |
 
 The optional neural run keeps the same feature vectors, leakage filters,
 chronological splits, and metrics, but replaces the task heads with small
@@ -684,18 +684,18 @@ The task-specific heads are:
 
 | Task | Input | Minimal head | Output |
 | --- | --- | --- | --- |
-| `timeline_action` | all featurized modalities | linear softmax | current action class |
-| `timeline_subtask` | all featurized modalities | linear softmax | current subtask class |
-| `transition_detection` | all featurized modalities | linear softmax | steady vs action boundary |
-| `next_action` | all featurized modalities at `t` | linear softmax | action at `t+20` frames |
-| `hand_trajectory_forecast` | all featurized modalities at `t` | ridge regression | future 10-frame left/right hand joints |
-| `contact_prediction` | non-contact and non-caption feature blocks | linear softmax | any body contact |
-| `object_relevance` | non-caption feature blocks | multi-label logistic | relevant object set |
-| `caption_grounding` | sensor windows projected to text space | ridge projection + cosine ranking | matching time window for text query |
-| `cross_modal_retrieval` | motion/IMU/camera projected to visual space | ridge projection + cosine ranking | matching depth/video window |
-| `modality_reconstruction` | motion/IMU/camera | ridge regression | depth/video feature vector |
-| `temporal_order` | `[x_t, x_t+1, x_t+1-x_t]` | binary linear softmax | correct vs reversed order |
-| `misalignment_detection` | motion plus visual pair | binary linear softmax | aligned vs shifted by 8 windows |
+| Action Recognition | all featurized modalities | linear softmax | current action class |
+| Procedure Step Recognition | all featurized modalities | linear softmax | current subtask class |
+| Action Boundary Detection | all featurized modalities | linear softmax | steady vs action boundary |
+| Next-Action Prediction | all featurized modalities at `t` | linear softmax | action at `t+20` frames |
+| Hand Trajectory Forecasting | all featurized modalities at `t` | ridge regression | future 10-frame left/right hand joints |
+| Contact State Prediction | non-contact and non-caption feature blocks | linear softmax | any body contact |
+| Object Relevance Prediction | non-caption feature blocks | multi-label logistic | relevant object set |
+| Language Grounding | sensor windows projected to text space | ridge projection + cosine ranking | matching time window for text query |
+| Cross-Modal Retrieval | motion/IMU/camera projected to visual space | ridge projection + cosine ranking | matching depth/video window |
+| Cross-Modal Reconstruction | motion/IMU/camera | ridge regression | depth/video feature vector |
+| Temporal Order Verification | `[x_t, x_t+1, x_t+1-x_t]` | binary linear softmax | correct vs reversed order |
+| Multimodal Synchronization Detection | motion plus visual pair | binary linear softmax | aligned vs shifted by 8 windows |
 
 ## Key Results
 
@@ -721,18 +721,18 @@ same 8,378-d handcrafted window features.
 
 | Task | Neural metric | Minimal metric | Readout |
 | --- | ---: | ---: | --- |
-| `timeline_action` | 0.0263 macro-F1 | 0.0500 macro-F1 | Still blocked by unseen future classes |
-| `timeline_subtask` | 0.0175 macro-F1 | 0.0495 macro-F1 | Same single-episode split limitation |
-| `transition_detection` | 0.6485 macro-F1 | 0.6552 macro-F1 | Similar to the linear baseline |
-| `next_action` | 0.0235 macro-F1 | 0.0593 macro-F1 | Same unseen-label issue |
-| `hand_trajectory_forecast` | 0.1116 MPJPE | 0.8223 MPJPE | Neural regression improves this target |
-| `contact_prediction` | 1.0000 macro-F1 | 1.0000 macro-F1 | Degenerate one-class sample |
-| `object_relevance` | 0.1798 micro-F1 | 0.1839 micro-F1 | Similar weak object signal |
-| `caption_grounding` | 0.0178 MRR | 0.0172 MRR | Similar ranking behavior |
-| `cross_modal_retrieval` | 0.1530 MRR | 0.2634 MRR | Linear ridge remains stronger here |
-| `modality_reconstruction` | -0.0102 R2 | -0.0160 R2 | Small improvement but still weak |
-| `temporal_order` | 0.8718 F1 | 0.5487 F1 | Neural head captures local temporal structure |
-| `misalignment_detection` | 0.7335 F1 | 0.4866 F1 | Neural head improves alignment detection |
+| Action Recognition | 0.0263 macro-F1 | 0.0500 macro-F1 | Still blocked by unseen future classes |
+| Procedure Step Recognition | 0.0175 macro-F1 | 0.0495 macro-F1 | Same single-episode split limitation |
+| Action Boundary Detection | 0.6485 macro-F1 | 0.6552 macro-F1 | Similar to the linear baseline |
+| Next-Action Prediction | 0.0235 macro-F1 | 0.0593 macro-F1 | Same unseen-label issue |
+| Hand Trajectory Forecasting | 0.1116 MPJPE | 0.8223 MPJPE | Neural regression improves this target |
+| Contact State Prediction | 1.0000 macro-F1 | 1.0000 macro-F1 | Degenerate one-class sample |
+| Object Relevance Prediction | 0.1798 micro-F1 | 0.1839 micro-F1 | Similar weak object signal |
+| Language Grounding | 0.0178 MRR | 0.0172 MRR | Similar ranking behavior |
+| Cross-Modal Retrieval | 0.1530 MRR | 0.2634 MRR | Linear ridge remains stronger here |
+| Cross-Modal Reconstruction | -0.0102 R2 | -0.0160 R2 | Small improvement but still weak |
+| Temporal Order Verification | 0.8718 F1 | 0.5487 F1 | Neural head captures local temporal structure |
+| Multimodal Synchronization Detection | 0.7335 F1 | 0.4866 F1 | Neural head improves alignment detection |
 
 The strongest single-episode self-supervised signal is cross-modal retrieval:
 motion/IMU/camera features retrieve matching depth/video windows substantially

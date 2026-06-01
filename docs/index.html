@@ -1034,7 +1034,9 @@
       display: block;
       font-family: var(--font-ui);
       font-size: clamp(20px, 2.4vw, 34px);
-      line-height: 1.02;
+      line-height: 1.08;
+      text-wrap: balance;
+      word-spacing: 0.06em;
     }
     .player-badge span {
       display: block;
@@ -1042,6 +1044,32 @@
       color: var(--green);
       font-family: var(--font-mono);
       font-size: 12px;
+    }
+    .player-frame-chip {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      border: 1px solid rgba(164, 242, 127, 0.36);
+      border-radius: 999px;
+      background: rgba(2, 5, 2, 0.74);
+      color: #dce8d6;
+      padding: 7px 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 740;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+    }
+    .player-frame-caption {
+      margin: 12px 0 0;
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      background: rgba(2, 5, 2, 0.48);
+      color: #dce8d6;
+      padding: 11px 12px;
+      font-size: 13px;
+      line-height: 1.5;
     }
     .player-controls {
       display: flex;
@@ -1088,6 +1116,48 @@
       border-radius: inherit;
       background: linear-gradient(90deg, var(--green), var(--cyan));
       transition: width 260ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .task-scrubber {
+      flex: 1 1 210px;
+      min-width: 180px;
+      accent-color: var(--green);
+      cursor: pointer;
+    }
+    .storyboard-steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .story-button {
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      background: rgba(2, 5, 2, 0.52);
+      color: #dce8d6;
+      min-height: 48px;
+      padding: 9px 8px;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .story-button strong {
+      display: block;
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .story-button span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.25;
+    }
+    .story-button.active {
+      border-color: rgba(164, 242, 127, 0.72);
+      background: rgba(164, 242, 127, 0.12);
     }
     .modality-strip {
       display: grid;
@@ -1150,7 +1220,7 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
     }
-    .flow-steps span,
+    .flow-step,
     .module-list li {
       border: 1px solid var(--soft-line);
       background: rgba(164, 242, 127, 0.06);
@@ -1158,7 +1228,17 @@
       padding: 10px;
       min-width: 0;
     }
-    .flow-steps strong,
+    .flow-step {
+      color: inherit;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .flow-step.active {
+      border-color: rgba(164, 242, 127, 0.72);
+      background: rgba(164, 242, 127, 0.12);
+    }
+    .flow-step strong,
     .module-list strong {
       display: block;
       margin-bottom: 5px;
@@ -1168,7 +1248,7 @@
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
-    .flow-steps em {
+    .flow-step em {
       display: block;
       color: #dce8d6;
       font-style: normal;
@@ -1299,6 +1379,7 @@
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .scorecard-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .task-player { grid-template-columns: 1fr; }
       .task-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .storyboard-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .modality-atlas { grid-template-columns: 1fr; }
       .artifact-group-head { grid-template-columns: 1fr; align-items: start; }
       .chart-grid { grid-template-columns: 1fr; }
@@ -1310,7 +1391,7 @@
     }
     @media (max-width: 640px) {
       .wrap { width: min(100% - 28px, var(--max)); }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .scorecard-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .scorecard-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
       .artifact-group { padding: 16px; }
       .modality-atlas-panel { padding: 14px; }
       .atlas-card { padding: 12px; }
@@ -1327,6 +1408,7 @@
       .signal { grid-template-columns: 1fr; }
       .signal strong { text-align: left; }
       .player-counter { width: 100%; margin-left: 0; }
+      .task-scrubber { flex-basis: 100%; }
       .figure-pan {
         margin-inline: 0;
         padding-inline: 0;
@@ -1884,7 +1966,7 @@
         <div class="extension-grid">
           <article class="extension-card">
             <span class="status-pill">A / motion</span>
-            <h3>body_motion_intensity</h3>
+            <h3>Body and Hand Motion Intensity</h3>
             <p><strong>Case:</strong> classify fast reach/pour windows as high motion and steady holding windows as low motion.</p>
             <p><strong>Input:</strong> non-mocap video, depth, pose, IMU, SLAM, calibration, and language features.</p>
             <p><strong>Output:</strong> high_motion or low_motion.</p>
@@ -1892,7 +1974,7 @@
           </article>
           <article class="extension-card">
             <span class="status-pill">B / views</span>
-            <h3>multi_view_consistency_retrieval</h3>
+            <h3>Multi-View Consistency Retrieval</h3>
             <p><strong>Case:</strong> retrieve the synchronized stereo-left window from a fisheye-camera query.</p>
             <p><strong>Input:</strong> fisheye_cam0 video features against stereo_left candidate features.</p>
             <p><strong>Output:</strong> ranked synchronized view candidates.</p>
@@ -1900,7 +1982,7 @@
           </article>
           <article class="extension-card">
             <span class="status-pill">C / phase</span>
-            <h3>action_phase_progress</h3>
+            <h3>Action Phase Progress Estimation</h3>
             <p><strong>Case:</strong> estimate whether a Pour coffee window is near the start, middle, or end of its action segment.</p>
             <p><strong>Input:</strong> non-caption multimodal features.</p>
             <p><strong>Output:</strong> 0-to-1 progress inside the current action.</p>
@@ -1908,7 +1990,7 @@
           </article>
           <article class="extension-card">
             <span class="status-pill">D / world</span>
-            <h3>ego_motion_forecast</h3>
+            <h3>Short-Horizon Ego-Motion Forecasting</h3>
             <p><strong>Case:</strong> predict how the camera translation changes over the next 20 frames.</p>
             <p><strong>Input:</strong> current sensors excluding camera translation and captions.</p>
             <p><strong>Output:</strong> future camera-translation delta vector.</p>
@@ -1948,17 +2030,26 @@
           <div class="player-stage">
             <div class="player-screen">
               <img id="playerPoster" src="assets/modalities/video.jpg" alt="Representative sample modality for the selected task">
+              <div class="player-frame-chip" id="playerFrameChip">Step 1 / 4 · Input</div>
               <div class="player-badge">
                 <strong id="playerBadgeTitle">Action Recognition</strong>
                 <span id="playerBadgeMeta">Egocentric Action Recognition</span>
               </div>
             </div>
+            <p class="player-frame-caption" id="playerFrameCaption">Input: inspect the 20-frame multimodal window before choosing the target.</p>
             <div class="modality-strip" id="playerModalities" aria-label="Selected task modality evidence"></div>
             <div class="player-controls">
               <button type="button" id="playerPrev">Previous</button>
               <button type="button" class="primary-control" id="playerPlay">Play</button>
               <button type="button" id="playerNext">Next</button>
+              <input class="task-scrubber" id="playerScrub" type="range" min="0" max="11" value="0" step="1" aria-label="Scrub through task cards">
               <span class="player-counter" id="playerCounter">01 / 12</span>
+            </div>
+            <div class="storyboard-steps" id="playerStoryboard" aria-label="Interactive walkthrough chapters">
+              <button type="button" class="story-button active" data-stage="0" aria-pressed="true"><strong>Input</strong><span>What enters the model</span></button>
+              <button type="button" class="story-button" data-stage="1" aria-pressed="false"><strong>Process</strong><span>How the target is built</span></button>
+              <button type="button" class="story-button" data-stage="2" aria-pressed="false"><strong>Output</strong><span>What is predicted</span></button>
+              <button type="button" class="story-button" data-stage="3" aria-pressed="false"><strong>Evaluate</strong><span>Metric and limitation</span></button>
             </div>
             <div class="player-progress" aria-hidden="true"><span id="playerProgress"></span></div>
           </div>
@@ -1970,9 +2061,9 @@
             <h3 id="playerTitle">Action Recognition</h3>
             <p class="player-case" id="playerCase">In the coffee-making sample, a pouring window maps to the current action label.</p>
             <div class="flow-steps">
-              <span><strong>Input</strong><em id="playerInput">20-frame multimodal window</em></span>
-              <span><strong>Process</strong><em id="playerProcess">window features -> classifier</em></span>
-              <span><strong>Output</strong><em id="playerOutput">current action class</em></span>
+              <button type="button" class="flow-step active" data-stage="0" aria-pressed="true"><strong>Input</strong><em id="playerInput">20-frame multimodal window</em></button>
+              <button type="button" class="flow-step" data-stage="1" aria-pressed="false"><strong>Process</strong><em id="playerProcess">window features -> classifier</em></button>
+              <button type="button" class="flow-step" data-stage="2" aria-pressed="false"><strong>Output</strong><em id="playerOutput">current action class</em></button>
             </div>
             <ul class="module-list" id="playerModules"></ul>
             <p id="playerMetric">Metric: macro-F1. Minimal 0.0500; neural MLP 0.0263.</p>
@@ -2181,8 +2272,15 @@ python scripts/validate_publication_package.py</code></pre>
     };
     let taskEntries = [];
     let activeTaskIndex = 0;
+    let activeStageIndex = 0;
     let activeFilter = "all";
     let playerTimer = null;
+    const storyStages = [
+      { key: "input", label: "Input" },
+      { key: "process", label: "Process" },
+      { key: "output", label: "Output" },
+      { key: "evaluate", label: "Evaluate" }
+    ];
 
     const escapeHtml = (value) => String(value ?? "")
       .replaceAll("&", "&amp;")
@@ -2207,6 +2305,23 @@ python scripts/validate_publication_package.py</code></pre>
     };
 
     const normalizeTasks = (payload) => Object.values(payload.tasks || {});
+
+    const modalityLabels = (task) => (task.modalities || [])
+      .map((key) => modalityMeta[key]?.label)
+      .filter(Boolean)
+      .join(", ");
+
+    function stageNarration(task) {
+      const minimal = formatMetric(task.metric?.minimal);
+      const neural = formatMetric(task.metric?.neural_mlp);
+      const modules = (task.middle_modules || []).slice(0, 2).join(" ");
+      return [
+        `Input: ${task.input_short}. Evidence shown here comes from ${modalityLabels(task)}.`,
+        `Process: ${task.process_short}. ${modules}`,
+        `Output: ${task.output_short}. Case study: ${task.case_study}`,
+        `Evaluate: ${task.metric.name}, ${task.metric.direction} is better. Minimal ${minimal}; neural MLP ${neural}. Limitation: ${task.failure_mode}`
+      ];
+    }
 
     function renderTaskCards() {
       const grid = document.getElementById("taskGrid");
@@ -2286,12 +2401,29 @@ python scripts/validate_publication_package.py</code></pre>
       )).join("");
       document.getElementById("playerMetric").textContent = `${task.metric.name} (${task.metric.direction} is better). Minimal ${formatMetric(task.metric.minimal)}; neural MLP ${formatMetric(task.metric.neural_mlp)}.`;
       document.getElementById("playerLimit").textContent = `Current limitation: ${task.failure_mode}`;
-      document.getElementById("playerCounter").textContent = `${String(index + 1).padStart(2, "0")} / ${String(taskEntries.length).padStart(2, "0")}`;
-      document.getElementById("playerProgress").style.width = `${((index + 1) / taskEntries.length) * 100}%`;
+      document.getElementById("playerScrub").max = Math.max(0, taskEntries.length - 1);
+      document.getElementById("playerScrub").value = index;
       document.getElementById("playerModalities").innerHTML = task.modalities.map((key) => {
         const modality = modalityMeta[key] || modalityMeta.video;
         return `<span class="modality-tile"><img src="${modality.src}" alt="${escapeHtml(modality.label)} sample thumbnail"><span>${escapeHtml(modality.label)}</span></span>`;
       }).join("");
+      renderStageFrame(task, index);
+    }
+
+    function renderStageFrame(task, index) {
+      const stage = storyStages[activeStageIndex] || storyStages[0];
+      const narration = stageNarration(task);
+      const totalFrames = Math.max(1, taskEntries.length * storyStages.length);
+      const currentFrame = index * storyStages.length + activeStageIndex + 1;
+      document.getElementById("playerFrameChip").textContent = `Step ${activeStageIndex + 1} / ${storyStages.length} · ${stage.label}`;
+      document.getElementById("playerFrameCaption").textContent = narration[activeStageIndex] || narration[0];
+      document.getElementById("playerCounter").textContent = `${String(index + 1).padStart(2, "0")} / ${String(taskEntries.length).padStart(2, "0")} · ${stage.label}`;
+      document.getElementById("playerProgress").style.width = `${(currentFrame / totalFrames) * 100}%`;
+      document.querySelectorAll("[data-stage]").forEach((button) => {
+        const active = Number(button.dataset.stage) === activeStageIndex;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
+      });
     }
 
     function updateActiveMarkers() {
@@ -2307,11 +2439,26 @@ python scripts/validate_publication_package.py</code></pre>
       });
     }
 
-    function setActiveTask(index) {
+    function setActiveTask(index, options = {}) {
       if (!taskEntries.length) return;
       activeTaskIndex = (index + taskEntries.length) % taskEntries.length;
+      if (options.resetStage !== false) activeStageIndex = 0;
       renderPlayer(taskEntries[activeTaskIndex], activeTaskIndex);
       updateActiveMarkers();
+    }
+
+    function setActiveStage(index) {
+      if (!taskEntries.length) return;
+      activeStageIndex = (index + storyStages.length) % storyStages.length;
+      renderStageFrame(taskEntries[activeTaskIndex], activeTaskIndex);
+    }
+
+    function advancePlayer() {
+      if (activeStageIndex < storyStages.length - 1) {
+        setActiveStage(activeStageIndex + 1);
+        return;
+      }
+      setActiveTask(activeTaskIndex + 1);
     }
 
     function applyTaskFilter(filter) {
@@ -2340,7 +2487,7 @@ python scripts/validate_publication_package.py</code></pre>
         return;
       }
       document.getElementById("playerPlay").textContent = "Pause";
-      playerTimer = window.setInterval(() => setActiveTask(activeTaskIndex + 1), 3200);
+      playerTimer = window.setInterval(advancePlayer, 2600);
     }
 
     async function initTaskSurface() {
@@ -2363,6 +2510,16 @@ python scripts/validate_publication_package.py</code></pre>
     document.getElementById("playerPrev").addEventListener("click", () => { pausePlayer(); setActiveTask(activeTaskIndex - 1); });
     document.getElementById("playerNext").addEventListener("click", () => { pausePlayer(); setActiveTask(activeTaskIndex + 1); });
     document.getElementById("playerPlay").addEventListener("click", togglePlayer);
+    document.getElementById("playerScrub").addEventListener("input", (event) => {
+      pausePlayer();
+      setActiveTask(Number(event.target.value));
+    });
+    document.querySelectorAll("[data-stage]").forEach((button) => {
+      button.addEventListener("click", () => {
+        pausePlayer();
+        setActiveStage(Number(button.dataset.stage));
+      });
+    });
     initTaskSurface();
 
     document.querySelectorAll("[data-copy]").forEach((button) => {

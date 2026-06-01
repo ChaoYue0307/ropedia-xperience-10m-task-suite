@@ -37,6 +37,13 @@ EXPECTED_TASKS = {
     "misalignment_detection": "Multimodal Synchronization Detection",
 }
 
+EXPECTED_EXTENSION_NAMES = {
+    "body_motion_intensity": "Body and Hand Motion Intensity",
+    "multi_view_consistency_retrieval": "Multi-View Consistency Retrieval",
+    "action_phase_progress": "Action Phase Progress Estimation",
+    "ego_motion_forecast": "Short-Horizon Ego-Motion Forecasting",
+}
+
 REQUIRED_TASK_FIELDS = {
     "display_name",
     "research_name",
@@ -293,9 +300,15 @@ def validate_website(source: str, failures: list[dict[str, Any]]) -> list[dict[s
         'id="taskPlayer"',
         'id="taskGrid"',
         'id="walkthroughSelector"',
+        'id="playerStoryboard"',
+        'id="playerFrameChip"',
+        'id="playerFrameCaption"',
+        'id="playerScrub"',
         'fetch("data/task_walkthroughs.json"',
         'class="task-card"',
         'class="task-card-media"',
+        'class="story-button',
+        'class="flow-step',
         'id="playerPlay"',
         'id="playerPrev"',
         'id="playerNext"',
@@ -344,9 +357,20 @@ def validate_website(source: str, failures: list[dict[str, Any]]) -> list[dict[s
     )
     checks.append(
         check(
-            all(needle in player_renderer for needle in ["playerPoster", "middle_modules", "playerProgress"])
+            all(
+                needle in player_renderer
+                for needle in ["playerPoster", "middle_modules"]
+            )
+            and all(needle in source for needle in ["playerProgress", "renderStageFrame(task, index)"])
             and all(needle in source for needle in ['id="playerPlay"', 'id="playerPrev"', 'id="playerNext"']),
             "interactive_player_wired_to_task_metadata",
+            failures,
+        )
+    )
+    checks.append(
+        check(
+            all(needle in source for needle in ["function setActiveStage", "function advancePlayer", "playerScrub"]),
+            "interactive_video_storyboard_controls_present",
             failures,
         )
     )
@@ -357,6 +381,15 @@ def validate_website(source: str, failures: list[dict[str, Any]]) -> list[dict[s
             failures,
         )
     )
+    for artifact_id, display_name in EXPECTED_EXTENSION_NAMES.items():
+        checks.append(
+            check(
+                f"<h3>{artifact_id}</h3>" not in source and display_name in source,
+                f"extension_probe_uses_human_name:{artifact_id}",
+                failures,
+                expected=display_name,
+            )
+        )
     return checks
 
 
@@ -412,7 +445,7 @@ def build_report() -> dict[str, Any]:
             "expected_task_count": len(EXPECTED_TASKS),
             "task_family_counts": dict(sorted(task_families.items())),
             "modality_usage_counts": dict(sorted(task_modalities.items())),
-            "interactive_surface": "task cards plus play/previous/next walkthrough player",
+            "interactive_surface": "task cards plus scrub/play/chapter walkthrough storyboard",
             "failure_count": len(failures),
         },
         "checks": checks,
