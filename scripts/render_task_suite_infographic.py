@@ -25,9 +25,9 @@ DEFAULT_BASE = ROOT / "docs/assets/task_suite_infographic_base.png"
 DEFAULT_SAMPLE_DIR = ROOT.parent / "data/sample/xperience-10m-sample"
 DEFAULT_OUTPUT = ROOT / "docs/assets/task_suite_infographic.png"
 CANVAS_WIDTH = 1800
-CANVAS_HEIGHT = 4900
+CANVAS_HEIGHT = 5400
 THUMB_WIDTH = 760
-THUMB_HEIGHT = 360
+THUMB_HEIGHT = 430
 
 
 GROUPS = [
@@ -78,13 +78,13 @@ GROUPS = [
 ]
 
 MODALITIES = [
-    ("video", "visual stream", "6 camera streams", "fisheye + stereo RGB views"),
-    ("audio", "acoustic stream", "AAC stream in MP4", "documented, not featurized"),
-    ("depth", "geometry map", "depth + confidence", "per-frame spatial geometry"),
-    ("pose / SLAM", "camera pose", "trajectory + orientation", "camera path + sparse map"),
-    ("motion capture", "human motion", "body + hand joints", "3D mocap feature tracks"),
-    ("inertial", "wearable sensor", "accelerometer + gyroscope", "time-series motion dynamics"),
-    ("language", "semantic annotation", "objects + captions", "task-level text labels"),
+    ("video", "visual stream", "6 synchronized camera MP4 streams", "RGB/fisheye/stereo frame statistics"),
+    ("audio", "acoustic stream", "AAC stream embedded in MP4", "documented, not featurized in 8,378-d vector"),
+    ("depth", "geometry map", "depth map + confidence channel", "spatial geometry feature block"),
+    ("pose / SLAM", "camera pose", "trajectory + sparse SLAM map", "position + orientation features"),
+    ("motion capture", "human motion", "body + hand joint tracks", "3D mocap feature statistics"),
+    ("inertial", "wearable sensor", "accelerometer + gyroscope", "wearable motion statistics"),
+    ("language", "semantic annotation", "object tags + action captions", "task labels + semantic targets"),
 ]
 
 HAND_EDGES = [
@@ -506,7 +506,7 @@ def task_card(task_name: str, kind: str, metrics: dict, group: dict, index: int,
     """
 
 
-def modality_card(name: str, modality_type: str, line_one: str, line_two: str, index: int, thumbnail: str | None) -> str:
+def modality_card(name: str, modality_type: str, sample_text: str, feature_text: str, index: int, thumbnail: str | None) -> str:
     thumb_html = ""
     if thumbnail:
         thumb_html = f'<div class="modality-thumb"><img src="{thumbnail}" alt=""></div>'
@@ -521,8 +521,14 @@ def modality_card(name: str, modality_type: str, line_one: str, line_two: str, i
         </div>
         {thumb_html}
         <div class="modality-copy">
-          <p>{html.escape(line_one)}</p>
-          <span>{html.escape(line_two)}</span>
+          <div class="modality-row">
+            <span>Sample contains</span>
+            <p>{html.escape(sample_text)}</p>
+          </div>
+          <div class="modality-row">
+            <span>Current baseline use</span>
+            <p>{html.escape(feature_text)}</p>
+          </div>
         </div>
       </article>
     """
@@ -547,8 +553,8 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
         for value, label in stats
     )
     modalities_html = "".join(
-        modality_card(name, modality_type, line_one, line_two, index, thumbnails.get(name))
-        for index, (name, modality_type, line_one, line_two) in enumerate(MODALITIES, start=1)
+        modality_card(name, modality_type, sample_text, feature_text, index, thumbnails.get(name))
+        for index, (name, modality_type, sample_text, feature_text) in enumerate(MODALITIES, start=1)
     )
 
     task_index = 1
@@ -705,31 +711,31 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .modalities {{
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 32px;
+      gap: 38px;
     }}
     .modality {{
-      min-height: 620px;
-      padding: 30px 30px 32px;
+      min-height: 760px;
+      padding: 34px 34px 36px;
       border: 1px solid rgba(167,240,120,0.22);
       background: rgba(7,18,7,0.84);
       border-radius: 8px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 28px;
     }}
     .modality:nth-child(7) {{
       grid-column: 1 / -1;
-      min-height: 552px;
+      min-height: 640px;
     }}
     .modality-thumb {{
-      height: 360px;
+      height: 430px;
       overflow: hidden;
       border: 1px solid rgba(167,240,120,0.16);
       border-radius: 8px;
       background: #020502;
     }}
     .modality:nth-child(7) .modality-thumb {{
-      height: 342px;
+      height: 390px;
     }}
     .modality-thumb img {{
       display: block;
@@ -750,12 +756,12 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .modality-index {{
       color: #a5afa2;
-      font-size: 19px;
+      font-size: 21px;
     }}
     .modality-type {{
       color: #a7f078;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.15;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -765,25 +771,38 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .modality h3 {{
       margin: 11px 0 0;
-      font-size: 48px;
+      font-size: 55px;
       line-height: 0.98;
       text-transform: uppercase;
     }}
     .modality-copy {{
+      display: grid;
+      gap: 14px;
       margin-top: auto;
     }}
-    .modality-copy p {{
+    .modality-row {{
+      display: grid;
+      grid-template-columns: 198px 1fr;
+      gap: 18px;
+      align-items: baseline;
+      padding-top: 14px;
+      border-top: 1px solid rgba(167,240,120,0.16);
+    }}
+    .modality-row span {{
+      display: block;
+      color: #a5afa2;
+      font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
+      font-size: 15px;
+      letter-spacing: 0.06em;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }}
+    .modality-row p {{
       margin: 0;
       color: #dce8d7;
       font-size: 30px;
       font-weight: 650;
-    }}
-    .modality-copy span {{
-      display: block;
-      margin-top: 9px;
-      color: #a5afa2;
-      font-size: 23px;
-      line-height: 1.25;
+      line-height: 1.15;
     }}
     .shared-band {{
       display: grid;
