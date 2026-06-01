@@ -2,6 +2,13 @@
 
 This repository does not redistribute raw Xperience-10M data.
 
+The full official dataset lives at
+[`ropedia-ai/xperience-10m`](https://huggingface.co/datasets/ropedia-ai/xperience-10m)
+and is manually gated for approved non-commercial use. This repo records the
+official dataset-card description in
+[`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md)
+and [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json).
+
 To reproduce the experiments, download the public sample from Hugging Face:
 
 ```bash

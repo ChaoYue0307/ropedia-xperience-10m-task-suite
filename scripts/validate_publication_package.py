@@ -53,6 +53,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "relative_path": "README.md",
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
+            "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
             "all 12 task families before the",
             "Public-sample modality thumbnails remain enlarged below",
         ],
@@ -62,6 +63,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "relative_path": "README.md",
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
+            "xperience10m_dataset_card_alignment.json",
             "task-first 12-task infographic",
             "native responsive modality atlas",
             "website HTML",
@@ -72,6 +74,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "relative_path": "README.md",
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
+            "xperience10m_dataset_card_alignment.json",
             "task-first 12-task map",
             "including critical website HTML",
         ],
@@ -81,6 +84,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "relative_path": "PROJECT_README.md",
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
+            "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
             "all 12 task families before the",
             "Public-sample modality thumbnails remain enlarged below",
         ],
@@ -90,6 +94,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "relative_path": "README.md",
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
+            "xperience10m_dataset_card_alignment.json",
             "task-first 12-head",
             "responsive modality atlas",
             "website HTML",
@@ -194,6 +199,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "codemeta.json",
         "ARTIFACT_GUIDE.md",
         "QUALITY_GATES.md",
+        "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
         "REPRODUCIBILITY.md",
         "EVIDENCE_CONTRACT.md",
         "DATA_NOTICE.md",
@@ -208,6 +214,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "docs/data/quality_gates.json",
         "docs/data/project_manifest.json",
         "docs/data/reviewer_packet.json",
+        "docs/data/xperience10m_dataset_card_alignment.json",
         "docs/data/reproducibility_matrix.json",
         "docs/data/modality_atlas.json",
         "docs/data/mirror_parity.json",

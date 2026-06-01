@@ -48,6 +48,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "xperience10m_dataset_card_alignment_json",
+        "title": "Official Xperience-10M dataset-card alignment JSON",
+        "local_path": "docs/data/xperience10m_dataset_card_alignment.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/xperience10m_dataset_card_alignment.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/xperience10m_dataset_card_alignment.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/xperience10m_dataset_card_alignment.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/xperience10m_dataset_card_alignment.json",
+        },
+    },
+    {
         "id": "quality_gates_markdown",
         "title": "Quality-gate Markdown",
         "local_path": "QUALITY_GATES.md",
@@ -69,6 +80,7 @@ MARKER_CHECKS = [
         "required": [
             "Release gates are explicit",
             "quality_gates.json",
+            "xperience10m_dataset_card_alignment.json",
             "xperience10m-taskfirst-v12-modality-xl",
         ],
         "forbidden": [
@@ -83,6 +95,7 @@ MARKER_CHECKS = [
         "required": [
             "Release gates are explicit",
             "quality_gates.json",
+            "xperience10m_dataset_card_alignment.json",
             "xperience10m-taskfirst-v12-modality-xl",
         ],
         "forbidden": [
@@ -94,14 +107,22 @@ MARKER_CHECKS = [
         "id": "hf_artifacts_card_current",
         "title": "HF artifact card links quality gates",
         "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/raw/main/README.md",
-        "required": ["QUALITY_GATES.md", "docs/data/quality_gates.json"],
+        "required": [
+            "QUALITY_GATES.md",
+            "docs/data/quality_gates.json",
+            "xperience10m_dataset_card_alignment.json",
+        ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },
     {
         "id": "hf_model_card_current",
         "title": "HF model card links quality gates",
         "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/raw/main/README.md",
-        "required": ["QUALITY_GATES.md", "metrics/quality_gates.json"],
+        "required": [
+            "QUALITY_GATES.md",
+            "metrics/quality_gates.json",
+            "xperience10m_dataset_card_alignment.json",
+        ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },
 ]

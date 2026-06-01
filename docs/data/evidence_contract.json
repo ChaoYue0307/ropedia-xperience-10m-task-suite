@@ -3,6 +3,17 @@
   "scope": "single public Xperience-10M sample episode",
   "claims": [
     {
+      "id": "official_dataset_card_alignment",
+      "claim": "The public dataset description is aligned with the official gated Xperience-10M dataset card.",
+      "status": "verified",
+      "evidence": [
+        "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
+        "docs/data/xperience10m_dataset_card_alignment.json",
+        "https://huggingface.co/datasets/ropedia-ai/xperience-10m"
+      ],
+      "boundary": "summarizes upstream public metadata and dataset-card facts; does not grant access or mirror raw data"
+    },
+    {
       "id": "aligned_windows",
       "claim": "The public Xperience-10M sample has been converted into aligned model windows.",
       "status": "verified",

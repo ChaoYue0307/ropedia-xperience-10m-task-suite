@@ -30,8 +30,18 @@
     "xperience10m_hf": "https://huggingface.co/datasets/ropedia-ai/xperience-10m",
     "xperience10m_sample_hf": "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample"
   },
+  "upstream_dataset_card_alignment": {
+    "source_repo": "ropedia-ai/xperience-10m",
+    "source_url": "https://huggingface.co/datasets/ropedia-ai/xperience-10m",
+    "observed_last_modified": "2026-04-21T05:03:45.000Z",
+    "observed_access": "manual gated access for approved non-commercial use",
+    "alignment_doc": "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
+    "alignment_json": "docs/data/xperience10m_dataset_card_alignment.json"
+  },
   "evidence_files": {
     "artifact_guide": "ARTIFACT_GUIDE.md",
+    "official_dataset_card_alignment": "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
+    "official_dataset_card_alignment_json": "docs/data/xperience10m_dataset_card_alignment.json",
     "reproducibility_contract": "REPRODUCIBILITY.md",
     "reproducibility_matrix": "docs/data/reproducibility_matrix.json",
     "evidence_contract": "docs/data/evidence_contract.json",
