@@ -226,16 +226,39 @@ def validate(docs_root: Path, site_base: str) -> dict:
     semantic_layout_failures = []
     index_path = docs_root / "index.html"
     index_text = index_path.read_text(encoding="utf-8", errors="ignore") if index_path.exists() else ""
-    suite_start = index_text.find('<section id="suite">')
-    suite_end = index_text.find('<section id="pipeline">')
+
+    def section_pos(section_id: str) -> int:
+        match = re.search(rf'<section\b[^>]*\bid="{re.escape(section_id)}"', index_text)
+        return match.start() if match else -1
+
+    suite_start = section_pos("suite")
+    suite_end = section_pos("pipeline")
     suite_text = index_text[suite_start:suite_end] if suite_start >= 0 and suite_end > suite_start else ""
-    overview_pos = index_text.find('<section id="overview">')
-    protocol_pos = index_text.find('<section id="protocol">')
-    evidence_pos = index_text.find('<section id="evidence">')
-    dataset_start = index_text.find('<section id="dataset-card">')
-    dataset_end = index_text.find('<section id="suite">')
+    overview_pos = section_pos("overview")
+    protocol_pos = section_pos("protocol")
+    evidence_pos = section_pos("evidence")
+    dataset_start = section_pos("dataset-card")
+    dataset_end = section_pos("suite")
     dataset_text = index_text[dataset_start:dataset_end] if dataset_start >= 0 and dataset_end > dataset_start else ""
     semantic_rules = [
+        (
+            "project_tabs_have_five_groups",
+            'data-tab-key=',
+            None,
+            "The long research page should be grouped into five top-level tabs.",
+        ),
+        (
+            "project_sections_are_assigned_to_tabs",
+            'data-project-tab=',
+            None,
+            "Every major research section should be assigned to a tab group.",
+        ),
+        (
+            "project_hash_router_preserves_deep_links",
+            'activateTabForHash',
+            None,
+            "Deep links should open the correct tab instead of landing on hidden content.",
+        ),
         (
             "project_overview_precedes_progress_ledger",
             '<section id="overview">',
@@ -316,7 +339,19 @@ def validate(docs_root: Path, site_base: str) -> dict:
         ),
     ]
     for name, marker, after_marker, reason in semantic_rules:
-        if name == "suite_modality_atlas_contains_seven_cards":
+        if name == "project_tabs_have_five_groups":
+            tab_count = index_text.count(marker)
+            passed = tab_count == 5
+            detail = {"tab_count": tab_count}
+        elif name == "project_sections_are_assigned_to_tabs":
+            section_count = index_text.count(marker)
+            passed = section_count >= 19
+            detail = {"section_count": section_count}
+        elif name == "project_hash_router_preserves_deep_links":
+            marker_count = index_text.count(marker)
+            passed = marker_count >= 2 and "sectionTabMap" in index_text
+            detail = {"marker_count": marker_count, "has_section_tab_map": "sectionTabMap" in index_text}
+        elif name == "suite_modality_atlas_contains_seven_cards":
             card_count = len(re.findall(r'class="atlas-card(?:\s|")', suite_text))
             passed = card_count == 7
             detail = {"card_count": card_count}

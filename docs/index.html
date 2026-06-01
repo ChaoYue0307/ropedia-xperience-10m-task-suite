@@ -303,7 +303,67 @@
     .signal strong { text-align: right; font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; }
 
     main { display: flex; flex-direction: column; }
-    main > section { padding: 88px 0 96px; border-bottom: 1px solid var(--soft-line); background: rgba(2, 5, 2, 0.72); }
+    main > section {
+      padding: 88px 0 96px;
+      border-bottom: 1px solid var(--soft-line);
+      background: rgba(2, 5, 2, 0.72);
+      scroll-margin-top: 138px;
+    }
+    main.tabbed > section[hidden] { display: none; }
+    .project-tabs-shell {
+      order: 0;
+      position: sticky;
+      top: 64px;
+      z-index: 14;
+      border-bottom: 1px solid var(--soft-line);
+      background: rgba(2, 5, 2, 0.88);
+      backdrop-filter: blur(18px);
+      padding: 14px 0;
+    }
+    .project-tabs {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .project-tab {
+      appearance: none;
+      min-width: 0;
+      min-height: 62px;
+      border: 1px solid var(--soft-line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(164, 242, 127, 0.06), rgba(7, 18, 7, 0.82)),
+        var(--surface);
+      color: #dce8d6;
+      cursor: pointer;
+      padding: 12px 13px;
+      text-align: left;
+      font: inherit;
+      transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms cubic-bezier(0.16, 1, 0.3, 1), background 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project-tab:hover { transform: translateY(-1px); border-color: rgba(164, 242, 127, 0.42); }
+    .project-tab strong {
+      display: block;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 15px;
+      line-height: 1.12;
+    }
+    .project-tab span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.25;
+    }
+    .project-tab.active {
+      border-color: var(--green);
+      background: var(--green);
+      color: #020502;
+      box-shadow: 0 12px 34px rgba(164, 242, 127, 0.10);
+    }
+    .project-tab.active strong,
+    .project-tab.active span { color: #020502; }
     #overview { order: 1; }
     #reading-path { order: 2; }
     #dataset-card { order: 3; }
@@ -1396,6 +1456,7 @@
     @media (max-width: 960px) {
       .hero-inner, .two-col { grid-template-columns: 1fr; }
       .hero-inner { min-height: 0; }
+      .project-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .task-player { grid-template-columns: 1fr; }
       .task-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -1411,6 +1472,21 @@
     }
     @media (max-width: 640px) {
       .wrap { width: min(100% - 28px, var(--max)); }
+      .project-tabs-shell { top: 64px; padding: 10px 0; }
+      .project-tabs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .project-tab {
+        min-height: 54px;
+        padding: 10px;
+      }
+      .project-tab strong { font-size: 14px; }
+      .project-tab span {
+        font-size: 10px;
+        line-height: 1.25;
+      }
+      main > section { scroll-margin-top: 246px; }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
       .artifact-group { padding: 16px; }
       .modality-atlas-panel { padding: 14px; }
@@ -1512,8 +1588,33 @@
     </div>
   </header>
 
-  <main id="main">
-    <section id="overview">
+  <main id="main" class="tabbed" data-active-tab="start">
+    <div class="project-tabs-shell" aria-label="Project section tabs">
+      <div class="wrap project-tabs">
+        <button type="button" class="project-tab active" data-tab-key="start" data-default-section="overview" aria-pressed="true">
+          <strong>Start</strong>
+          <span>overview, reading path, scope</span>
+        </button>
+        <button type="button" class="project-tab" data-tab-key="data" data-default-section="dataset-card" aria-pressed="false">
+          <strong>Data & Tasks</strong>
+          <span>dataset, modalities, 12 tasks</span>
+        </button>
+        <button type="button" class="project-tab" data-tab-key="method" data-default-section="pipeline" aria-pressed="false">
+          <strong>Method</strong>
+          <span>pipeline, protocol, features</span>
+        </button>
+        <button type="button" class="project-tab" data-tab-key="results" data-default-section="models" aria-pressed="false">
+          <strong>Results</strong>
+          <span>baselines, directions, probes</span>
+        </button>
+        <button type="button" class="project-tab" data-tab-key="resources" data-default-section="artifacts" aria-pressed="false">
+          <strong>Resources</strong>
+          <span>artifacts, scale-up, runbook</span>
+        </button>
+      </div>
+    </div>
+
+    <section id="overview" data-project-tab="start">
       <div class="wrap">
         <div class="section-head">
           <h2>Project overview and contributions.</h2>
@@ -1590,7 +1691,7 @@
       </div>
     </section>
 
-    <section id="protocol">
+    <section id="protocol" data-project-tab="method">
       <div class="wrap">
         <div class="section-head">
           <h2>Evaluation protocol is explicit.</h2>
@@ -1607,7 +1708,7 @@
       </div>
     </section>
 
-    <section id="evidence">
+    <section id="evidence" data-project-tab="resources">
       <div class="wrap">
         <div class="section-head">
           <h2>Research progress without overclaiming.</h2>
@@ -1732,7 +1833,7 @@
       </div>
     </section>
 
-    <section id="reading-path">
+    <section id="reading-path" data-project-tab="start">
       <div class="wrap">
         <div class="section-head">
           <h2>Research reading path.</h2>
@@ -1795,7 +1896,7 @@
       </div>
     </section>
 
-    <section id="dataset-card">
+    <section id="dataset-card" data-project-tab="data">
       <div class="wrap">
         <div class="section-head">
           <h2>Aligned with the official dataset card.</h2>
@@ -1817,7 +1918,7 @@
       </div>
     </section>
 
-    <section id="suite">
+    <section id="suite" data-project-tab="data">
       <div class="wrap">
         <div class="section-head">
           <h2>Ropedia Xperience-10M 12-task suite, first.</h2>
@@ -1876,7 +1977,7 @@
       </div>
     </section>
 
-    <section id="pipeline">
+    <section id="pipeline" data-project-tab="method">
       <div class="wrap">
         <div class="section-head">
           <h2>From raw episode to checked artifacts.</h2>
@@ -1896,7 +1997,7 @@
       </div>
     </section>
 
-    <section id="models">
+    <section id="models" data-project-tab="results">
       <div class="wrap">
         <div class="section-head">
           <h2>Small baselines, no hidden machinery.</h2>
@@ -1912,7 +2013,7 @@
       </div>
     </section>
 
-    <section id="neural">
+    <section id="neural" data-project-tab="results">
       <div class="wrap">
         <div class="section-head">
           <h2>Neural MLP heads, same task contracts.</h2>
@@ -1931,7 +2032,7 @@
       </div>
     </section>
 
-    <section id="directions">
+    <section id="directions" data-project-tab="results">
       <div class="wrap">
         <div class="section-head">
           <h2>The 12 tasks organized into four research directions.</h2>
@@ -1977,7 +2078,7 @@
       </div>
     </section>
 
-    <section id="extensions">
+    <section id="extensions" data-project-tab="results">
       <div class="wrap">
         <div class="section-head">
           <h2>Four extra probes make the directions actionable.</h2>
@@ -2031,7 +2132,7 @@
       </div>
     </section>
 
-    <section id="architectures">
+    <section id="architectures" data-project-tab="method">
       <div class="wrap">
         <div class="section-head">
           <h2>The 12 tasks share four head families.</h2>
@@ -2041,7 +2142,7 @@
       </div>
     </section>
 
-    <section id="walkthroughs">
+    <section id="walkthroughs" data-project-tab="data">
       <div class="wrap">
         <div class="section-head">
           <h2>Interactive task walkthrough.</h2>
@@ -2095,7 +2196,7 @@
       </div>
     </section>
 
-    <section id="tasks">
+    <section id="tasks" data-project-tab="data">
       <div class="wrap">
         <div class="section-head">
           <h2>Task cards and metrics.</h2>
@@ -2112,7 +2213,7 @@
       </div>
     </section>
 
-    <section id="features">
+    <section id="features" data-project-tab="method">
       <div class="wrap">
         <div class="section-head">
           <h2>Every feature block has a source.</h2>
@@ -2122,7 +2223,7 @@
       </div>
     </section>
 
-    <section id="diagnostics">
+    <section id="diagnostics" data-project-tab="results">
       <div class="wrap">
         <div class="section-head">
           <h2>Diagnostics separate memorization from signal.</h2>
@@ -2137,7 +2238,7 @@
       </div>
     </section>
 
-    <section id="artifacts">
+    <section id="artifacts" data-project-tab="resources">
       <div class="wrap">
         <div class="section-head">
           <h2>Where the evidence lives.</h2>
@@ -2211,7 +2312,7 @@
       </div>
     </section>
 
-    <section id="omni-relay">
+    <section id="omni-relay" data-project-tab="resources">
       <div class="wrap">
         <div class="section-head">
           <h2>Qwen3-Omni pilot is approval-ready.</h2>
@@ -2225,7 +2326,7 @@
       </div>
     </section>
 
-    <section id="run">
+    <section id="run" data-project-tab="resources">
       <div class="wrap">
         <div class="section-head">
           <h2>Reproduce the suite.</h2>
@@ -2302,6 +2403,57 @@ python scripts/validate_publication_package.py</code></pre>
       { key: "output", label: "Output" },
       { key: "evaluate", label: "Evaluate" }
     ];
+    const tabSections = Array.from(document.querySelectorAll("[data-project-tab]"));
+    const sectionTabMap = Object.fromEntries(tabSections.map((section) => [section.id, section.dataset.projectTab]));
+    const tabDefaultSections = Object.fromEntries(
+      Array.from(document.querySelectorAll("[data-tab-key]"))
+        .map((button) => [button.dataset.tabKey, button.dataset.defaultSection])
+    );
+
+    function setProjectTab(tabKey, options = {}) {
+      const fallbackTab = tabDefaultSections[tabKey] ? tabKey : "start";
+      const targetId = options.targetId || tabDefaultSections[fallbackTab] || "overview";
+      document.getElementById("main").dataset.activeTab = fallbackTab;
+      tabSections.forEach((section) => {
+        section.hidden = section.dataset.projectTab !== fallbackTab;
+      });
+      document.querySelectorAll("[data-tab-key]").forEach((button) => {
+        const active = button.dataset.tabKey === fallbackTab;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+      if (options.pushHash) {
+        history.pushState(null, "", `#${targetId}`);
+      }
+      if (options.scroll) {
+        requestAnimationFrame(() => {
+          document.getElementById(targetId)?.scrollIntoView({
+            behavior: options.smooth ? "smooth" : "auto",
+            block: "start"
+          });
+        });
+      }
+    }
+
+    function activateTabForHash(options = {}) {
+      const hashId = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+      const tabKey = sectionTabMap[hashId] || "start";
+      const targetId = sectionTabMap[hashId] ? hashId : tabDefaultSections[tabKey];
+      setProjectTab(tabKey, { targetId, scroll: options.scroll, smooth: options.smooth });
+    }
+
+    document.querySelectorAll("[data-tab-key]").forEach((button) => {
+      button.addEventListener("click", () => {
+        setProjectTab(button.dataset.tabKey, {
+          targetId: button.dataset.defaultSection,
+          pushHash: true,
+          scroll: true,
+          smooth: true
+        });
+      });
+    });
+    window.addEventListener("hashchange", () => activateTabForHash({ scroll: true }));
+    activateTabForHash({ scroll: Boolean(window.location.hash) });
 
     const escapeHtml = (value) => String(value ?? "")
       .replaceAll("&", "&amp;")
