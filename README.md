@@ -54,6 +54,8 @@ The current publication audit is at
 [`docs/data/publication_audit.json`](docs/data/publication_audit.json).
 The source-of-truth artifact index is at
 [`docs/data/artifact_index.json`](docs/data/artifact_index.json).
+For a human-readable artifact map, use
+[`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md).
 Project citation and machine-readable metadata live in
 [`CITATION.cff`](CITATION.cff), [`codemeta.json`](codemeta.json), and
 [`docs/data/project_manifest.json`](docs/data/project_manifest.json).
@@ -64,7 +66,7 @@ If you are reviewing the project cold, open these in order:
 
 | Step | Question | Primary artifacts | What should be true |
 | --- | --- | --- | --- |
-| 1 | What is actually claimed? | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`docs/data/evidence_contract.json`](docs/data/evidence_contract.json), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Single-episode task engineering and hygiene are claimed; cross-episode generalization is not. |
+| 1 | What is actually claimed? | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Single-episode task engineering and hygiene are claimed; cross-episode generalization is not. |
 | 2 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
 | 3 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
 | 4 | What is still pending? | [`DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md), [`A100_HF_RELAY_STATUS.md`](results/omni_finetune/A100_HF_RELAY_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared but not yet a real model-quality claim. |
@@ -79,6 +81,10 @@ audit map for the repo. It lists the core proof artifacts, whether each exists,
 its size, and a SHA-256 hash for stable files. Volatile generated files, such as
 the publication audit with a run timestamp, are marked so reviewers know they
 are checked for presence and size rather than treated as fixed hashes.
+
+[`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md) is the human-readable companion. It
+groups the same proof layer into start-here files, data-contract files,
+task-evidence files, platform mirrors, and scale-up boundary artifacts.
 
 ## Dataset Modality Coverage
 
@@ -112,6 +118,7 @@ Hugging Face Space app:
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode claims reviewable without rerunning first |
 | Publication audit | `docs/data/publication_audit.json` | Confirms public bundles contain no raw Xperience-10M data, Python caches, heavy archives, or token strings |
 | Artifact index | `docs/data/artifact_index.json` | Gives reviewers a compact source-of-truth catalog with stable hashes |
+| Artifact guide | `ARTIFACT_GUIDE.md` | Groups the public evidence into reviewer-friendly layers |
 | Citation metadata | `CITATION.cff`, `codemeta.json`, `LICENSE` | Makes the repo easier to cite, index, and reuse without confusing code license and dataset terms |
 
 ## Links

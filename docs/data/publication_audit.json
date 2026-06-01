@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T00:14:15+00:00",
+  "generated_at_utc": "2026-06-01T00:41:39+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -33,6 +33,7 @@
     "CITATION.cff": true,
     "LICENSE": true,
     "codemeta.json": true,
+    "ARTIFACT_GUIDE.md": true,
     "EVIDENCE_CONTRACT.md": true,
     "DATA_NOTICE.md": true,
     "docs/404.html": true,
@@ -62,8 +63,8 @@
     "github_repo": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy",
       "exists": true,
-      "file_count": 268,
-      "text_file_count": 220,
+      "file_count": 269,
+      "text_file_count": 221,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -73,8 +74,8 @@
     "hf_space_bundle": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space",
       "exists": true,
-      "file_count": 36,
-      "text_file_count": 30,
+      "file_count": 37,
+      "text_file_count": 31,
       "largest_file": {
         "path": "assets/task_suite_infographic.png",
         "bytes": 2290819
@@ -84,8 +85,8 @@
     "hf_artifact_bundle": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts",
       "exists": true,
-      "file_count": 231,
-      "text_file_count": 203,
+      "file_count": 232,
+      "text_file_count": 204,
       "largest_file": {
         "path": "results/episode_task_suite/neural_mlp/temporal_order/model.pt",
         "bytes": 13406129
@@ -95,8 +96,8 @@
     "hf_model_bundle": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model",
       "exists": true,
-      "file_count": 170,
-      "text_file_count": 134,
+      "file_count": 171,
+      "text_file_count": 135,
       "largest_file": {
         "path": "artifacts/episode_task_suite/cross_modal_retrieval/model.npz",
         "bytes": 41310574

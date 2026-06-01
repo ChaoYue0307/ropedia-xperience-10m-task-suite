@@ -34,6 +34,14 @@ ARTIFACTS = [
         "proves": "Gives a short audit path with scope status and public surfaces.",
     },
     {
+        "id": "artifact_guide",
+        "title": "Artifact guide",
+        "path": "ARTIFACT_GUIDE.md",
+        "kind": "review_path",
+        "surface": "repo_hf",
+        "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
+    },
+    {
         "id": "artifact_index_builder",
         "title": "Artifact index builder",
         "path": "scripts/build_artifact_index.py",

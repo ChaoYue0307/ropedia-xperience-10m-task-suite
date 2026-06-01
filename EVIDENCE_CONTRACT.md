@@ -14,7 +14,7 @@ local artifact that a reader can inspect before trusting the dashboard.
 | Qwen3-Omni infrastructure has passed technical smoke checks. | `results/omni_finetune/RUN_REPORT.md`, `results/omni_finetune/dataset_manifest.json`, `results/omni_finetune/metrics_eval.json` | Smoke-only evidence | One episode, 128 train windows; not a 32-episode pilot |
 | The real 32-episode LoRA pilot is blocked on gated data access, not on repo presentation. | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `results/omni_finetune/A100_HF_RELAY_STATUS.md`, `results/omni_finetune/source_discovery.json` | Blocker documented | No 32-episode metric should be claimed until the gate passes |
 | The public GitHub and Hugging Face bundles are publication-clean. | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | Verified pass | Checks public files and HF bundles, not arbitrary ignored local scratch outputs |
-| The core proof artifacts are indexed for fast review. | `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | Verified index | Selective source-of-truth catalog, not a complete inventory of every output file |
+| The core proof artifacts are indexed and grouped for fast review. | `ARTIFACT_GUIDE.md`, `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | Verified guide and index | Selective source-of-truth catalog, not a complete inventory of every output file |
 | The project is externally citable and machine-readable. | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | Verified metadata files | Code license does not override original Xperience-10M dataset terms |
 | A first-time reviewer has an explicit audit path. | `docs/data/reviewer_packet.json`, website reviewer section, README reviewer path | Verified reviewer packet | It guides inspection; it does not add new experimental claims |
 
@@ -22,7 +22,8 @@ local artifact that a reader can inspect before trusting the dashboard.
 
 1. Read `docs/data/reviewer_packet.json` for the shortest audit path and proof
    boundary.
-2. Read `docs/data/artifact_index.json` to see the indexed proof artifacts,
+2. Read `ARTIFACT_GUIDE.md` and `docs/data/artifact_index.json` to see grouped
+   reviewer artifacts, indexed proof artifacts,
    sizes, and stable-file hashes.
 3. Read `docs/assets/task_suite_infographic.png` for the high-level map.
 4. Inspect `results/episode_task_suite/summary_report.json` for the task and
