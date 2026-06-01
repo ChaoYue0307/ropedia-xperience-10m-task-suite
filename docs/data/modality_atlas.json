@@ -1,0 +1,117 @@
+{
+  "title": "Xperience-10M Public Sample Modality Atlas",
+  "source_sample_reference": "ropedia-ai/xperience-10m-sample public episode",
+  "raw_data_redistributed": false,
+  "notes": [
+    "Images are lightweight derived thumbnails for review and website presentation.",
+    "Raw MP4, HDF5, and RRD files remain excluded from the public repo and Hugging Face bundles.",
+    "Audio is present in the MP4 stream but is not yet featurized in the current 8,378-d baseline vector."
+  ],
+  "modalities": [
+    {
+      "index": 1,
+      "id": "video",
+      "name": "video",
+      "type": "visual stream",
+      "sample_contains": "6 synchronized camera MP4 streams",
+      "current_baseline_use": "RGB/fisheye/stereo frame statistics",
+      "image": "assets/modalities/video.jpg",
+      "image_size": [
+        760,
+        470
+      ],
+      "source": "Derived thumbnail from the public Xperience-10M sample episode.",
+      "feature_status": "featurized_or_label_source"
+    },
+    {
+      "index": 2,
+      "id": "audio",
+      "name": "audio",
+      "type": "acoustic stream",
+      "sample_contains": "AAC stream embedded in MP4",
+      "current_baseline_use": "documented, not featurized in 8,378-d vector",
+      "image": "assets/modalities/audio.png",
+      "image_size": [
+        760,
+        470
+      ],
+      "source": "Derived thumbnail from the public Xperience-10M sample episode.",
+      "feature_status": "documented_not_featurized"
+    },
+    {
+      "index": 3,
+      "id": "depth",
+      "name": "depth",
+      "type": "geometry map",
+      "sample_contains": "depth map + confidence channel",
+      "current_baseline_use": "spatial geometry feature block",
+      "image": "assets/modalities/depth.jpg",
+      "image_size": [
+        760,
+        470
+      ],
+      "source": "Derived thumbnail from the public Xperience-10M sample episode.",
+      "feature_status": "featurized_or_label_source"
+    },
+    {
+      "index": 4,
+      "id": "pose_slam",
+      "name": "pose / SLAM",
+      "type": "camera pose",
+      "sample_contains": "trajectory + sparse SLAM map",
+      "current_baseline_use": "position + orientation features",
+      "image": "assets/modalities/pose_slam.png",
+      "image_size": [
+        760,
+        470
+      ],
+      "source": "Derived thumbnail from the public Xperience-10M sample episode.",
+      "feature_status": "featurized_or_label_source"
+    },
+    {
+      "index": 5,
+      "id": "motion_capture",
+      "name": "motion capture",
+      "type": "human motion",
+      "sample_contains": "body + hand joint tracks",
+      "current_baseline_use": "3D mocap feature statistics",
+      "image": "assets/modalities/motion_capture.png",
+      "image_size": [
+        760,
+        470
+      ],
+      "source": "Derived thumbnail from the public Xperience-10M sample episode.",
+      "feature_status": "featurized_or_label_source"
+    },
+    {
+      "index": 6,
+      "id": "inertial",
+      "name": "inertial",
+      "type": "wearable sensor",
+      "sample_contains": "accelerometer + gyroscope",
+      "current_baseline_use": "wearable motion statistics",
+      "image": "assets/modalities/inertial.png",
+      "image_size": [
+        760,
+        470
+      ],
+      "source": "Derived thumbnail from the public Xperience-10M sample episode.",
+      "feature_status": "featurized_or_label_source"
+    },
+    {
+      "index": 7,
+      "id": "language",
+      "name": "language",
+      "type": "semantic annotation",
+      "sample_contains": "object tags + action captions",
+      "current_baseline_use": "task labels + semantic targets",
+      "image": "assets/modalities/language.png",
+      "image_size": [
+        1500,
+        470
+      ],
+      "source": "Derived thumbnail from the public Xperience-10M sample episode.",
+      "feature_status": "featurized_or_label_source"
+    }
+  ]
+}

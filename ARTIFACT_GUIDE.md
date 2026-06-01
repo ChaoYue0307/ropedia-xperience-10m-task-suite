@@ -34,6 +34,8 @@ The project intentionally separates four layers:
 | [`results/episode_task_suite/windows.csv`](results/episode_task_suite/windows.csv) | The sample episode is converted into 1,161 aligned 20-frame windows. |
 | [`results/episode_task_suite/feature_manifest.json`](results/episode_task_suite/feature_manifest.json) | The current input vector has 8,378 dimensions with explicit feature-block boundaries. |
 | [`results/episode_task_suite/available_modalities.json`](results/episode_task_suite/available_modalities.json) | The sample modality coverage is recorded, including the current audio-featurization boundary. |
+| [`docs/data/modality_atlas.json`](docs/data/modality_atlas.json) | The responsive website modality cards and derived thumbnail assets are documented without redistributing raw data. |
+| [`docs/assets/modalities/`](docs/assets/modalities/) | Small public-sample thumbnails used by the readable modality atlas. |
 
 ## Task Evidence
 

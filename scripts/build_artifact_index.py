@@ -163,6 +163,22 @@ ARTIFACTS = [
         "proves": "Presents the task suite and sample modality thumbnails with metrics generated from committed files.",
     },
     {
+        "id": "modality_atlas",
+        "title": "Responsive modality atlas",
+        "path": "docs/data/modality_atlas.json",
+        "kind": "website_data",
+        "surface": "website_hf",
+        "proves": "Documents the seven public-sample modality cards and their derived thumbnail assets.",
+    },
+    {
+        "id": "modality_thumbnails",
+        "title": "Standalone modality thumbnails",
+        "path": "docs/assets/modalities",
+        "kind": "generated_figure_assets",
+        "surface": "website_hf",
+        "proves": "Stores small derived thumbnails for readable website modality cards without raw data redistribution.",
+    },
+    {
         "id": "pipeline_figure",
         "title": "Pipeline figure",
         "path": "docs/assets/pipeline_diagram.png",
