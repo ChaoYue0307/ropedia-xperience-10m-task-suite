@@ -5,7 +5,8 @@ This file records the public description of the official
 dataset card and how this repo uses only one public sample episode from that
 larger source. It is a description-alignment artifact, not a raw-data mirror.
 
-Checked on: 2026-06-01.
+Checked on: 2026-06-01 against the public Hugging Face dataset page/API and
+the public sample dataset card.
 
 ## Official Dataset Scope
 
@@ -26,7 +27,24 @@ The official card metadata lists these task and modality categories:
 
 The current public Hugging Face API metadata reports the dataset repo as
 `gated: manual` and notes that an external DocuSign agreement may be required
-before approval.
+before approval. The API snapshot checked for this project reported:
+
+| Field | Observed value |
+| --- | --- |
+| repo id | `ropedia-ai/xperience-10m` |
+| repo commit | `ce943cf271a758b60240084892d05cf6dc12dd90` |
+| last modified | `2026-04-21T05:03:45.000Z` |
+| gated mode | manual |
+| listed task categories | video classification, image-to-text, depth estimation, robotics |
+| listed modalities | 3D, audio, video |
+| license field | `other` |
+
+The API file listing is useful for planning, but it is not the same as local
+access. The public metadata snapshot listed 85,258 repository siblings, 803
+session folders, 12,103 episode folders with `annotation.hdf5`, 72,612 MP4
+files, and 541 `visualization.rrd` files. This repo treats those as upstream
+metadata only; no full-dataset files are redistributed here, and model claims
+remain limited to the one public sample episode actually processed.
 
 ## Official Modalities
 
@@ -69,6 +87,31 @@ summary for the gated repo. This project keeps those concepts separate: the
 official card scale describes the dataset design, while this repo validates
 only the files that are actually available to the project.
 
+## Public Sample Dataset Card
+
+The public sample repo is
+[`ropedia-ai/xperience-10m-sample`](https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample).
+Its dataset card describes it as a sample episode for Xperience-10M and points
+readers to HOMIE Toolkit for understanding the videos and annotations. It also
+notes that an `.rrd` file can be opened with Rerun 0.29.0 to inspect the 3D/4D
+structured annotations.
+
+The sample card metadata observed for this project is:
+
+| Field | Observed value |
+| --- | --- |
+| pretty name | `Xperience-10M-Sample` |
+| license | `cc-by-nc-4.0` |
+| tags | `sample`, `xperience-10k` |
+| size category | `n<1K` |
+| recommended toolkit | HOMIE Toolkit |
+| visualization tool | Rerun 0.29.0 for `.rrd` |
+
+This project uses the public sample to build the 5,821-frame / 1,161-window
+audit suite. The sample license and the full gated dataset terms are both
+preserved in the public documentation; this repo's MIT code license does not
+grant additional rights to the raw data.
+
 ## Episode File Layout
 
 The official gated file listing and the public sample use episode folders with
@@ -90,7 +133,8 @@ this practical layout:
 For this repo, a valid training/evaluation episode requires `annotation.hdf5`.
 Full-omni mode prefers all six MP4 streams. Degraded mode may use
 `fisheye_cam0.mp4` plus the annotation file, but must record missing views in
-the manifest.
+the manifest. `visualization.rrd` is useful for human inspection in Rerun, but
+it is excluded from training downloads and public artifact bundles.
 
 ## Annotation File Content
 
@@ -137,10 +181,11 @@ cross-episode generalization.
 ## Responsible-Use Boundary
 
 The official dataset is gated and intended for approved non-commercial research
-use. This repo therefore does not redistribute raw MP4 files, raw
-`annotation.hdf5`, private gated data, raw `visualization.rrd`, or any full
-Qwen weights. Public assets here are derived metrics, small thumbnails,
-manifests, scripts, charts, and lightweight baseline artifacts.
+use, while the public sample card lists `cc-by-nc-4.0`. This repo therefore
+does not redistribute raw MP4 files, raw `annotation.hdf5`, private gated data,
+raw `visualization.rrd`, or any full Qwen weights. Public assets here are
+derived metrics, small thumbnails, manifests, scripts, charts, and lightweight
+baseline artifacts.
 
 The official card also makes clear that the data is not meant for identity
 recognition, re-identification, biometric profiling, surveillance, sensitive
@@ -163,6 +208,8 @@ When describing Xperience-10M in this repo, keep these limitations visible:
 | Official dataset card concept | Current repo status |
 | --- | --- |
 | Full Xperience-10M is large, gated, and multi-episode | Acknowledged; not redistributed |
+| HF API lists many gated episode paths | Recorded as upstream metadata, not local possession |
+| Public sample repo is `cc-by-nc-4.0` and points to HOMIE/Rerun | Preserved in data notice and reproducibility docs |
 | Public sample includes video/audio/depth/pose/mocap/IMU/language | Represented in the modality atlas |
 | Episode layout uses six MP4 streams and `annotation.hdf5` | Used by sample inspection and pilot-readiness scripts |
 | Audio exists in MP4 streams | Documented and visualized, not featurized |

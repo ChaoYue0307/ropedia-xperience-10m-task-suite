@@ -35,23 +35,33 @@
       ],
       "readout": "All 12 task contracts have committed metrics, predictions, and minimal baseline outputs."
     },
-    {
-      "area": "Neural heads",
-      "status": "verified",
-      "evidence": [
-        "scripts/neural_task_models.py",
-        "results/episode_task_suite/neural_mlp/"
-      ],
-      "readout": "Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split."
-    },
-    {
-      "area": "Official dataset wording",
+        {
+            "area": "Neural heads",
+            "status": "verified",
+            "evidence": [
+                "scripts/neural_task_models.py",
+                "results/episode_task_suite/neural_mlp/"
+            ],
+            "readout": "Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split."
+        },
+        {
+            "area": "Evaluation protocol",
+            "status": "verified",
+            "evidence": [
+                "EVALUATION_PROTOCOL.md",
+                "docs/data/evaluation_protocol.json",
+                "scripts/build_evaluation_protocol.py"
+            ],
+            "readout": "Windowing, chronological split, per-task metrics, leakage controls, and unsupported interpretations are generated from committed metric artifacts."
+        },
+        {
+            "area": "Official dataset wording",
       "status": "verified",
       "evidence": [
         "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
         "docs/data/xperience10m_dataset_card_alignment.json"
       ],
-      "readout": "Public wording is aligned to the official gated Xperience-10M dataset card, including modalities, scale, access boundary, and unsupported claims."
+            "readout": "Public wording is aligned to the official gated Xperience-10M dataset card, public sample card, and HF API metadata, including modalities, scale, access boundary, sample license/tooling, and unsupported claims."
     },
     {
       "area": "Website and HF mirrors",
@@ -104,9 +114,10 @@
   ],
   "fast_reviewer_route": [
     "Read REVIEWER_SCORECARD.md and EVIDENCE_CONTRACT.md to establish what is claimed.",
-    "Open docs/data/reviewer_packet.json for the machine-readable review path.",
-    "Inspect docs/data/summary_metrics.json and results/episode_task_suite/neural_mlp/ to check the 12-task outputs.",
-    "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
+        "Open docs/data/reviewer_packet.json for the machine-readable review path.",
+        "Inspect docs/data/summary_metrics.json and results/episode_task_suite/neural_mlp/ to check the 12-task outputs.",
+        "Inspect EVALUATION_PROTOCOL.md before judging task metrics or leakage controls.",
+        "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
     "Inspect results/omni_finetune/DATA_BLOCKER_REPORT.md before judging Qwen3-Omni scale-up status."
   ],
   "do_not_infer": [

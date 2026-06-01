@@ -36,6 +36,14 @@ GATES = [
         "proves": "The GitHub Pages / HF static surface is internally coherent before upload.",
     },
     {
+        "id": "evaluation_protocol",
+        "title": "Evaluation protocol",
+        "command": "python scripts/build_evaluation_protocol.py",
+        "report": "docs/data/evaluation_protocol.json",
+        "blocks_if": "Windowing, split policy, leakage controls, task metrics, or unsupported interpretations are not explicit.",
+        "proves": "The task evaluation protocol is generated from committed metric artifacts.",
+    },
+    {
         "id": "quality_gate_manifest",
         "title": "Quality-gate manifest",
         "command": "python scripts/build_quality_gates.py",
@@ -162,6 +170,7 @@ def markdown(payload: dict) -> str:
         "",
         "```bash",
         "python scripts/validate_scope_claims.py",
+        "python scripts/build_evaluation_protocol.py",
         "python scripts/validate_website_integrity.py",
         "python scripts/build_quality_gates.py",
         "python scripts/build_artifact_index.py",

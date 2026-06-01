@@ -21,12 +21,14 @@
       "primary_artifacts": [
         "REVIEWER_SCORECARD.md",
         "docs/data/reviewer_scorecard.json",
-        "EVIDENCE_CONTRACT.md",
-        "ARTIFACT_GUIDE.md",
-        "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
-        "docs/data/evidence_contract.json",
-        "docs/data/artifact_index.json",
-        "docs/data/xperience10m_dataset_card_alignment.json",
+                "EVIDENCE_CONTRACT.md",
+                "ARTIFACT_GUIDE.md",
+                "EVALUATION_PROTOCOL.md",
+                "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
+                "docs/data/evidence_contract.json",
+                "docs/data/artifact_index.json",
+                "docs/data/evaluation_protocol.json",
+                "docs/data/xperience10m_dataset_card_alignment.json",
         "docs/data/mirror_parity.json",
         "docs/data/publication_audit.json",
         "docs/data/scope_claims_audit.json",
@@ -36,17 +38,28 @@
     },
     {
       "step": 2,
-      "question": "What does the official Xperience-10M dataset card say?",
+            "question": "What do the official Xperience-10M dataset and sample cards say?",
       "primary_artifacts": [
         "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
         "docs/data/xperience10m_dataset_card_alignment.json",
-        "https://huggingface.co/datasets/ropedia-ai/xperience-10m"
-      ],
-      "readout": "The full upstream dataset is a manually gated large-scale 4D multimodal egocentric source; this repo validates only one public sample episode and records unsupported areas explicitly."
+                "https://huggingface.co/datasets/ropedia-ai/xperience-10m",
+                "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample"
+            ],
+            "readout": "The full upstream dataset is a manually gated large-scale 4D multimodal egocentric source. The public sample card records the sample license, HOMIE Toolkit path, and Rerun 0.29.0 visualization path. This repo validates only one public sample episode and records unsupported areas explicitly."
     },
-    {
-      "step": 3,
-      "question": "How can the public pipeline be reproduced?",
+        {
+            "step": 3,
+            "question": "How exactly are the tasks evaluated?",
+            "primary_artifacts": [
+                "EVALUATION_PROTOCOL.md",
+                "docs/data/evaluation_protocol.json",
+                "scripts/build_evaluation_protocol.py"
+            ],
+            "readout": "The protocol fixes the 20-frame window unit, chronological split, train-only normalization, leakage controls, per-task input/target/metric contracts, and unsupported interpretations."
+        },
+        {
+            "step": 4,
+            "question": "How can the public pipeline be reproduced?",
       "primary_artifacts": [
         "REPRODUCIBILITY.md",
         "docs/data/reproducibility_matrix.json",
@@ -54,9 +67,9 @@
       ],
       "readout": "The public sample pipeline has explicit commands, expected outputs, and a prior exact-match audit over the committed metrics."
     },
-    {
-      "step": 4,
-      "question": "What is inside one model input?",
+        {
+            "step": 5,
+            "question": "What is inside one model input?",
       "primary_artifacts": [
         "results/episode_task_suite/windows.csv",
         "results/episode_task_suite/feature_manifest.json",
@@ -65,9 +78,9 @@
       ],
       "readout": "The current model input is an 8,378-dimensional aligned window vector with explicit feature-block boundaries, and the readable atlas shows each public-sample modality without raw data redistribution."
     },
-    {
-      "step": 5,
-      "question": "Do the task metrics have committed evidence?",
+        {
+            "step": 6,
+            "question": "Do the task metrics have committed evidence?",
       "primary_artifacts": [
         "results/episode_task_suite/summary_report.json",
         "results/episode_task_suite/neural_mlp/",
@@ -75,9 +88,9 @@
       ],
       "readout": "Each of the 12 tasks has minimal-head metrics and a matching neural MLP result over the same window contracts."
     },
-    {
-      "step": 6,
-      "question": "How should this scale beyond one episode?",
+        {
+            "step": 7,
+            "question": "How should this scale beyond one episode?",
       "primary_artifacts": [
         "results/omni_finetune/DATA_BLOCKER_REPORT.md",
         "results/omni_finetune/A100_HF_RELAY_STATUS.md",
@@ -86,9 +99,11 @@
       "readout": "The next milestone is a 32-episode held-out-episode Qwen3-Omni LoRA pilot after gated Xperience-10M access is available."
     }
   ],
-  "reviewer_scorecard": "REVIEWER_SCORECARD.md",
-  "reviewer_scorecard_json": "docs/data/reviewer_scorecard.json",
-  "artifact_guide": "ARTIFACT_GUIDE.md",
+    "reviewer_scorecard": "REVIEWER_SCORECARD.md",
+    "reviewer_scorecard_json": "docs/data/reviewer_scorecard.json",
+    "evaluation_protocol": "EVALUATION_PROTOCOL.md",
+    "evaluation_protocol_json": "docs/data/evaluation_protocol.json",
+    "artifact_guide": "ARTIFACT_GUIDE.md",
   "artifact_index": "docs/data/artifact_index.json",
   "reproducibility_matrix": "docs/data/reproducibility_matrix.json",
   "public_surfaces": {

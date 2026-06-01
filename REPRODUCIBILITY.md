@@ -8,7 +8,7 @@ outside the current public data boundary.
 
 | Layer | Reproducible now | Boundary |
 | --- | --- | --- |
-| Sample download | Yes, from `ropedia-ai/xperience-10m-sample` or ModelScope sample mirror | Raw data is not redistributed in this repo. |
+| Sample download | Yes, from `ropedia-ai/xperience-10m-sample` or ModelScope sample mirror | Sample card lists `cc-by-nc-4.0`; raw data is not redistributed in this repo. |
 | Minimal baselines | Yes | One public sample episode, chronological split. |
 | 12-task suite | Yes | Uses the current 8,378-d feature contract; audio is documented but not featurized. |
 | Neural MLP heads | Yes, when `torch` is installed | Compact task heads only, not a foundation model. |
@@ -51,6 +51,11 @@ python scripts/omni/download_sample_modelscope.py \
 `--mode all-training` downloads `annotation.hdf5` and the six MP4 streams while
 skipping `visualization.rrd`.
 
+The sample card points to HOMIE Toolkit for inspecting videos and annotations.
+When `visualization.rrd` is downloaded for human inspection, open it with Rerun
+0.29.0. The `.rrd` viewer artifact is not used by the training/evaluation
+scripts and is excluded from public publication bundles.
+
 ## Core Commands
 
 Run these from the repo root after setting `WORKSPACE` to the folder that owns
@@ -69,6 +74,7 @@ python scripts/episode_task_suite.py \
 python scripts/research_direction_taxonomy.py
 python scripts/research_direction_extension_tasks.py
 python scripts/task_walkthroughs.py
+python scripts/build_evaluation_protocol.py
 python scripts/generate_visualizations.py
 python scripts/render_overview_figures.py
 python scripts/render_task_suite_infographic.py
@@ -90,6 +96,7 @@ python scripts/validate_publication_package.py
 | Research directions | `results/episode_task_suite/research_directions/`, `docs/data/research_directions.json` |
 | Direction probes | `results/episode_task_suite/research_direction_extensions/`, `docs/data/research_direction_extensions.json` |
 | Walkthroughs | `results/episode_task_suite/task_walkthroughs/`, `docs/data/task_walkthroughs.json` |
+| Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` |
 | Figures | `docs/assets/*.png`, `docs/assets/charts/*.svg` |
 | Modality atlas | `docs/data/modality_atlas.json`, `docs/assets/modalities/*` |
 | Website integrity | `docs/data/website_integrity.json` |

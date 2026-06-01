@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T08:39:54+00:00",
+  "generated_at_utc": "2026-06-01T09:43:01+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -46,6 +46,7 @@
     "ARTIFACT_GUIDE.md": true,
     "REVIEWER_SCORECARD.md": true,
     "QUALITY_GATES.md": true,
+    "EVALUATION_PROTOCOL.md": true,
     "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md": true,
     "REPRODUCIBILITY.md": true,
     "EVIDENCE_CONTRACT.md": true,
@@ -56,6 +57,7 @@
     "docs/robots.txt": true,
     "docs/sitemap.xml": true,
     "docs/data/evidence_contract.json": true,
+    "docs/data/evaluation_protocol.json": true,
     "docs/data/artifact_index.json": true,
     "docs/data/live_publication_status.json": true,
     "docs/data/quality_gates.json": true,
@@ -87,6 +89,7 @@
     "scripts/episode_task_suite.py": true,
     "scripts/neural_task_models.py": true,
     "scripts/build_artifact_index.py": true,
+    "scripts/build_evaluation_protocol.py": true,
     "scripts/build_quality_gates.py": true,
     "scripts/verify_live_publication.py": true,
     "scripts/validate_mirror_parity.py": true,
@@ -99,7 +102,7 @@
       "surface": "github_repo",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 5,
+      "required_marker_count": 8,
       "missing_markers": [],
       "status": "pass"
     },
@@ -107,7 +110,7 @@
       "surface": "hf_space_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 6,
+      "required_marker_count": 9,
       "missing_markers": [],
       "status": "pass"
     },
@@ -115,7 +118,7 @@
       "surface": "hf_artifact_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 5,
+      "required_marker_count": 8,
       "missing_markers": [],
       "status": "pass"
     },
@@ -123,7 +126,7 @@
       "surface": "hf_artifact_bundle",
       "path": "PROJECT_README.md",
       "exists": true,
-      "required_marker_count": 5,
+      "required_marker_count": 8,
       "missing_markers": [],
       "status": "pass"
     },
@@ -131,7 +134,7 @@
       "surface": "hf_model_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 6,
+      "required_marker_count": 9,
       "missing_markers": [],
       "status": "pass"
     }
@@ -140,8 +143,8 @@
     "github_repo": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy",
       "exists": true,
-      "file_count": 295,
-      "text_file_count": 240,
+      "file_count": 298,
+      "text_file_count": 243,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -151,8 +154,8 @@
     "hf_space_bundle": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space",
       "exists": true,
-      "file_count": 58,
-      "text_file_count": 45,
+      "file_count": 60,
+      "text_file_count": 47,
       "largest_file": {
         "path": "assets/task_suite_infographic.png",
         "bytes": 2600527
@@ -162,8 +165,8 @@
     "hf_artifact_bundle": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts",
       "exists": true,
-      "file_count": 275,
-      "text_file_count": 233,
+      "file_count": 278,
+      "text_file_count": 236,
       "largest_file": {
         "path": "results/episode_task_suite/neural_mlp/temporal_order/model.pt",
         "bytes": 13406129
@@ -173,8 +176,8 @@
     "hf_model_bundle": {
       "root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model",
       "exists": true,
-      "file_count": 207,
-      "text_file_count": 164,
+      "file_count": 210,
+      "text_file_count": 167,
       "largest_file": {
         "path": "artifacts/episode_task_suite/cross_modal_retrieval/model.npz",
         "bytes": 41310574
