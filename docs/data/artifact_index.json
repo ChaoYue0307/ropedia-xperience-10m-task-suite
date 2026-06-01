@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T13:19:42+00:00",
+  "generated_at_utc": "2026-06-01T14:16:54+00:00",
   "status": "pass",
   "artifact_count": 49,
   "missing": [],
@@ -39,8 +39,8 @@
       "surface": "repo_hf",
       "proves": "Gives a compact verified/data-gated/not-redistributed decision table for first-pass reviewers.",
       "exists": true,
-      "bytes": 4360,
-      "sha256": "2fe1a0c808eb5906e0942cf1bb573c086ba82523cbda8f778cfa8ac0e582fea4"
+      "bytes": 4367,
+      "sha256": "01c3fcd654db595d94b50bc4b68ff1ea9fb13789261dea04dbaba1caa44d5027"
     },
     {
       "id": "reviewer_scorecard_json",
@@ -50,8 +50,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable copy of the current reviewer scorecard for website and HF mirrors.",
       "exists": true,
-      "bytes": 6107,
-      "sha256": "0c368033fa330df11afc1e85010163ba949e108c3e1b3808382d79465a068443"
+      "bytes": 6114,
+      "sha256": "6288bddda015e07c0144bffa827c0849858feae5600086287037c005b87a4197"
     },
     {
       "id": "evidence_contract",
@@ -59,10 +59,10 @@
       "path": "EVIDENCE_CONTRACT.md",
       "kind": "claim_boundary",
       "surface": "repo",
-      "proves": "Defines what is verified, what is smoke-only, and what must not be inferred.",
+      "proves": "Defines what is verified, what is readiness-only, and what must not be inferred.",
       "exists": true,
-      "bytes": 9701,
-      "sha256": "7c78f162e48512ae525c02030f20e667fff60d417ba0d4faee82e733ae211f36"
+      "bytes": 9772,
+      "sha256": "89f79ed4089e3797338be4711c20e4f31a1dc03e8371fc92faf6ce2fe0c1f355"
     },
     {
       "id": "reviewer_packet",
@@ -72,8 +72,8 @@
       "surface": "website_hf",
       "proves": "Gives a short audit path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 7386,
-      "sha256": "212e98170c90d14beed49c4a6374c8ca9ce07093281a85375e33b60beb2d70fb"
+      "bytes": 7401,
+      "sha256": "fefadd40a7ea989dd6d3ff8e4122fc88efc2299f6802a262c24ff1efae8078b9"
     },
     {
       "id": "artifact_guide",
@@ -83,8 +83,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 12376,
-      "sha256": "6b5e645fdd125dd83b5783f0afce7ec9c353c16fb51bc844d1db701bdbb2662b"
+      "bytes": 12444,
+      "sha256": "209eb82a47e66525585b882382412ec01ce38e8561a843430f8c530e7dbf6acd"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -149,8 +149,8 @@
       "surface": "repo_hf",
       "proves": "Defines the window unit, chronological split, task metrics, leakage controls, and unsupported interpretations.",
       "exists": true,
-      "bytes": 5844,
-      "sha256": "6c82f0d6806d2e929f568fec32fcd4820218c59ec6b30bbefe1a4ec1e1aa1b54"
+      "bytes": 5855,
+      "sha256": "8fd0836dbe0f99306db0214d53ed56de603734b9ea1b7e6d44b25dbf2a37d168"
     },
     {
       "id": "evaluation_protocol_json",
@@ -160,8 +160,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable protocol generated from committed task metrics for website and HF mirrors.",
       "exists": true,
-      "bytes": 13575,
-      "sha256": "d1cd2724820e8b1f13e0eee70f9d3d805f105d8d8e2ccc638aca1486a6a6e21a"
+      "bytes": 13586,
+      "sha256": "01749a94f31059c52adc74cfa36e2a256c43a316a2f318fa4177df3fc2f5a5b4"
     },
     {
       "id": "evaluation_protocol_builder",
@@ -171,8 +171,8 @@
       "surface": "repo_hf",
       "proves": "Regenerates the protocol from committed summary metrics and task artifacts.",
       "exists": true,
-      "bytes": 16084,
-      "sha256": "a859e43fc95b2bce4b85a758050968e504f1dc7870d4b04e230302aec2b74724"
+      "bytes": 16102,
+      "sha256": "0781265b37af226432d93b25c18b6278484ba7d6d78e3c56991aaaf78bb0ba76"
     },
     {
       "id": "figure_index",
@@ -215,8 +215,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable manifest for the ChatGPT-image-generated logo, favicon, social card, dimensions, hashes, and usage roles.",
       "exists": true,
-      "bytes": 3921,
-      "sha256": "b284b2dcfa5073d95c1e9eacc97b9bbb21ac0293f93b8e4e3c0cedb5e994ee6f"
+      "bytes": 3904,
+      "sha256": "b822ab3af24f6d3f2e041bacf6a1caa59fbd9dbff013c8b21df8f3ef2414c865"
     },
     {
       "id": "brand_logo_social_card",
@@ -237,8 +237,8 @@
       "surface": "repo_hf",
       "proves": "Regenerates logo derivatives, favicon variants, app icons, and the Open Graph social card from the generated logo mark.",
       "exists": true,
-      "bytes": 9395,
-      "sha256": "b9976b12d95ca720b92ee2f02b1faecdc8ef9eea7eb1dea343ee0188fec41ba7"
+      "bytes": 9378,
+      "sha256": "90836fea66545f6f90b4a860655efb7263796a6fc86cb243793dd63d459b3a79"
     },
     {
       "id": "quality_gates",
@@ -248,8 +248,8 @@
       "surface": "repo_hf",
       "proves": "Lists the automated and post-publish gates required before presenting a release as current.",
       "exists": true,
-      "bytes": 3936,
-      "sha256": "7e095dc7dd0d98de2913dcad95e23726ee205c81b4a8a277c81e0151df8f9839"
+      "bytes": 3940,
+      "sha256": "8979dae77e24bfbea691070637d73540611e16742f5e1f99e834b577ecd72b63"
     },
     {
       "id": "quality_gate_manifest",
@@ -293,8 +293,8 @@
       "surface": "repo_hf",
       "proves": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
       "exists": true,
-      "bytes": 6151,
-      "sha256": "f1f340ea58a61aeea1ae0cdaaeee250f0458ea616c59c1b39d018c941c18a08b"
+      "bytes": 6197,
+      "sha256": "f65169e927c17ad2cb8991c05bdec57b3878c9ed0008aa6e978b675876c46ffc"
     },
     {
       "id": "reproducibility_matrix",
@@ -315,8 +315,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 18273,
-      "sha256": "a94e0202c08b4d7d9d5ca57e772b5d15d7a7c698ce0db8f8909bd669e2b0c905"
+      "bytes": 18358,
+      "sha256": "180023c3636c67f1a5ca1a1a9afed349011e190c673722a7adf0eb1e7fe1992f"
     },
     {
       "id": "publication_audit",
@@ -327,7 +327,7 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 6726,
+      "bytes": 6733,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -339,7 +339,7 @@
       "volatile": true,
       "proves": "Confirms historical 32ep path strings are not presented as real 32-episode results.",
       "exists": true,
-      "bytes": 19964,
+      "bytes": 20089,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -396,8 +396,8 @@
       "surface": "website_hf",
       "proves": "Mirrors task metrics for the static dashboard.",
       "exists": true,
-      "bytes": 25075,
-      "sha256": "4daac229d7cad0180009041369d5eb8d6ea97b4889a7f8cbad43c2657b131145"
+      "bytes": 25088,
+      "sha256": "6923e492c8b2814b04aea4bdcacef98da94d98dc471ba424a7e977c736dd623f"
     },
     {
       "id": "feature_manifest",
@@ -539,19 +539,19 @@
       "surface": "repo_hf",
       "proves": "Documents why no 32-episode Qwen3-Omni result is claimed yet.",
       "exists": true,
-      "bytes": 803,
-      "sha256": "510d92ba0b1a72bcbe66e6b2e1c1ec325f5e904ed29254a07b1e78a0e5ce3cd3"
+      "bytes": 813,
+      "sha256": "561255372fa151fda72b8791746be68c825a320a75264b6131acb743ae381192"
     },
     {
-      "id": "a100_relay_status",
-      "title": "A100 relay status",
-      "path": "results/omni_finetune/A100_HF_RELAY_STATUS.md",
+      "id": "multi_episode_access_status",
+      "title": "Multi-episode access status",
+      "path": "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
       "kind": "scaleup_status",
       "surface": "repo_hf",
-      "proves": "Documents the pending A100-to-H20 data relay and 32-session pilot selection.",
+      "proves": "Documents the public multi-episode access boundary and 32-episode pilot selection without exposing private infrastructure details.",
       "exists": true,
-      "bytes": 2076,
-      "sha256": "4d82faff5eb050434a917bc36c0325b972f629952b2e01fe0e33f2647ceede53"
+      "bytes": 1362,
+      "sha256": "fd4488d1f21d084b9a2bdf7e769264fe306e48643ff3ef17578f329cfccd5d3c"
     },
     {
       "id": "citation",

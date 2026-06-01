@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Plan Xperience-10M episode counts for an H20 fine-tuning run.
+"""Plan Xperience-10M episode counts for a fine-tuning run.
 
 This is a storage and evaluation-design helper. It does not train a model and
 does not invent results. Use it before downloading many episodes.
@@ -19,7 +19,7 @@ GB = 1024 ** 3
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Estimate feasible Xperience-10M fine-tuning sample counts.")
-    parser.add_argument("--storage-root", type=Path, default=Path("/home/cy"), help="Disk root to inspect.")
+    parser.add_argument("--storage-root", type=Path, default=Path("."), help="Disk root to inspect.")
     parser.add_argument("--free-gb", type=float, default=None, help="Override measured free space in GiB.")
     parser.add_argument("--target-free-after-download-gb", type=float, default=800.0)
     parser.add_argument("--model-cache-gb", type=float, default=250.0)

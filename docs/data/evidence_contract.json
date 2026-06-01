@@ -142,9 +142,9 @@
       "boundary": "single-episode probes, not full research-direction solutions"
     },
     {
-      "id": "qwen3_omni_smoke",
-      "claim": "Qwen3-Omni infrastructure has passed technical smoke checks.",
-      "status": "smoke_only",
+      "id": "qwen3_omni_readiness",
+      "claim": "Qwen3-Omni infrastructure has passed technical readiness checks.",
+      "status": "readiness_only",
       "evidence": [
         "results/omni_finetune/RUN_REPORT.md",
         "results/omni_finetune/dataset_manifest.json",
@@ -158,7 +158,7 @@
       "status": "blocked_by_data_access",
       "evidence": [
         "results/omni_finetune/DATA_BLOCKER_REPORT.md",
-        "results/omni_finetune/A100_HF_RELAY_STATUS.md",
+        "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
         "results/omni_finetune/source_discovery.json"
       ],
       "boundary": "no 32-episode metric should be claimed until the gate passes"
@@ -171,7 +171,7 @@
         "scripts/validate_scope_claims.py",
         "docs/data/scope_claims_audit.json"
       ],
-      "boundary": "old run/path identifiers are classified as smoke-artifact provenance and fail validation if public presentation claims real 32-episode metrics"
+      "boundary": "old run/path identifiers are classified as readiness-artifact provenance and fail validation if public presentation claims real 32-episode metrics"
     },
     {
       "id": "mirror_parity",

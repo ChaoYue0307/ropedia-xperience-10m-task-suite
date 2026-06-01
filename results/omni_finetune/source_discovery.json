@@ -1,7 +1,7 @@
 {
   "target_episodes": 32,
-  "workspace": "/home/cy/Ropedia/ropedia-episode-task-suite",
-  "data_root": "/home/cy/Ropedia/modelscope_data",
+  "workspace": "/path/to/ropedia_workspace/ropedia-episode-task-suite",
+  "data_root": "/path/to/ropedia_workspace/modelscope_data",
   "ready_for_32_episode_pilot": false,
   "selected_source": "none",
   "local": {
@@ -14,7 +14,7 @@
       {
         "source": "local",
         "episode_id": "xperience-10m-sample",
-        "episode_path": "/home/cy/Ropedia/modelscope_data/xperience-10m-sample",
+        "episode_path": "/path/to/ropedia_workspace/modelscope_data/xperience-10m-sample",
         "has_annotation": true,
         "has_fisheye_cam0": true,
         "has_all_videos": false,
@@ -30,7 +30,7 @@
         "is_complete": false
       }
     ],
-    "data_root": "/home/cy/Ropedia/modelscope_data"
+    "data_root": "/path/to/ropedia_workspace/modelscope_data"
   },
   "modelscope": {
     "source": "modelscope",
@@ -50,7 +50,7 @@
   },
   "blockers": [
     "Not enough degraded-valid episodes for a 32-episode pilot. Need 32, local has 1.",
-    "Current H20 path remains one-episode proof-of-stack only.",
+    "Current training host path remains one-episode proof-of-stack only.",
     "ModelScope probe unavailable or reported no matching episode files.",
     "Hugging Face probe unavailable or reported no matching episode files."
   ]

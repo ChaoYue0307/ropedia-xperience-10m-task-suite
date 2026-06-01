@@ -1,4 +1,4 @@
-{"event": "start", "run_id": "xperience10m_qwen3_omni_32ep_lora", "model_id": "/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct", "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_32ep_dataset/dataset.jsonl", "num_processes": 8, "num_train_samples": 128, "num_val_samples": 0, "rank_samples_per_epoch": 16, "epochs": 1, "timestamp": 1780145767.3727567}
+{"event": "start", "run_id": "xperience10m_qwen3_omni_32ep_lora", "model_id": "/path/to/ropedia_workspace/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct", "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_32ep_dataset/dataset.jsonl", "num_processes": 8, "num_train_samples": 128, "num_val_samples": 0, "rank_samples_per_epoch": 16, "epochs": 1, "timestamp": 1780145767.3727567}
 {"event": "train_step", "epoch": 1, "global_step": 1, "rank0_seen": 1, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 11.024569511413574, "timestamp": 1780145769.5535998}
 {"event": "train_step", "epoch": 1, "global_step": 2, "rank0_seen": 2, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 10.932429313659668, "timestamp": 1780145770.3543525}
 {"event": "train_step", "epoch": 1, "global_step": 3, "rank0_seen": 3, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 11.078858375549316, "timestamp": 1780145771.1473835}
@@ -16,4 +16,4 @@
 {"event": "train_step", "epoch": 1, "global_step": 15, "rank0_seen": 15, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 11.089532852172852, "timestamp": 1780145781.3197153}
 {"event": "train_step", "epoch": 1, "global_step": 16, "rank0_seen": 16, "rank0_samples_per_epoch": 16, "rank0_batch_loss": 10.671160697937012, "timestamp": 1780145782.1418438}
 {"event": "epoch_end", "epoch": 1, "train_loss": 10.936363816261292, "val_loss": null, "global_step": 16, "timestamp": 1780145782.1423175}
-{"event": "complete", "checkpoint_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_32ep_lora/adapter_lora", "timestamp": 1780145782.743853}
+{"event": "complete", "checkpoint_dir": "/path/to/ropedia_workspace/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_32ep_lora/adapter_lora", "timestamp": 1780145782.743853}

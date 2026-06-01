@@ -2,7 +2,7 @@
 """Build a lightweight manifest for local Ropedia/Xperience episode folders.
 
 The manifest is intentionally metadata-only. It lets us decide how many
-episodes fit on the H20 server before downloading or copying large media.
+episodes fit on target storage before downloading or copying large media.
 """
 
 from __future__ import annotations

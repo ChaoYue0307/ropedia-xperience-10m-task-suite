@@ -72,7 +72,7 @@ are not foundation models.
 
 - Do not infer cross-episode generalization from this single public sample.
 - Do not treat feature-vector reconstruction as pixel depth, mesh, NeRF, or Gaussian reconstruction.
-- Do not treat Qwen3-Omni smoke artifacts as a real 32-episode fine-tune.
+- Do not treat Qwen3-Omni readiness artifacts as a real 32-episode fine-tune.
 - Do not infer audio-visual learning from the current baseline vector because audio is not featurized.
 
 ## Scale-Up Gate
@@ -87,7 +87,7 @@ being presented as model quality:
 
 Current status: prepared but data-gated. Read
 `results/omni_finetune/DATA_BLOCKER_REPORT.md` and
-`results/omni_finetune/A100_HF_RELAY_STATUS.md` before interpreting any
+`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` before interpreting any
 Qwen3-Omni artifact.
 
 ## Machine-Readable Copy

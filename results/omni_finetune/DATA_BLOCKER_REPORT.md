@@ -11,7 +11,7 @@ Selected source: none
 
 ## Blockers
 - Not enough degraded-valid episodes for a 32-episode pilot. Need 32, local has 1.
-- Current H20 path remains one-episode proof-of-stack only.
+- Current training host path remains one-episode proof-of-stack only.
 - ModelScope probe unavailable or reported no matching episode files.
 - Hugging Face probe unavailable or reported no matching episode files.
 

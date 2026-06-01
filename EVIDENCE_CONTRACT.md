@@ -18,8 +18,8 @@ local artifact that a reader can inspect before trusting the dashboard.
 | Minimal and neural heads use the same task contracts. | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/`, `docs/assets/task_architectures.png` | Verified for 12 minimal heads and 12 neural MLP heads | Small heads only; not a foundation model |
 | Four Ropedia research directions are mapped honestly as direct, proxy, or diagnostic evidence. | `results/episode_task_suite/research_directions/research_direction_taxonomy.json`, `docs/data/research_directions.json` | Verified taxonomy | Some directions remain proxy-only |
 | Four extra direction probes are coded and evaluated. | `results/episode_task_suite/research_direction_extensions/research_direction_extension_results.json`, `docs/data/research_direction_extensions.json` | Verified single-episode probes | Not full human modeling, neural rendering, intent modeling, or world modeling solutions |
-| Qwen3-Omni infrastructure has passed technical smoke checks. | `results/omni_finetune/RUN_REPORT.md`, `results/omni_finetune/dataset_manifest.json`, `results/omni_finetune/metrics_eval.json` | Smoke-only evidence | One episode, 128 train windows; not a 32-episode pilot |
-| The real 32-episode LoRA pilot is blocked on gated data access, not on repo presentation. | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `results/omni_finetune/A100_HF_RELAY_STATUS.md`, `results/omni_finetune/source_discovery.json` | Blocker documented | No 32-episode metric should be claimed until the gate passes |
+| Qwen3-Omni infrastructure has passed readiness checks. | `results/omni_finetune/RUN_REPORT.md`, `results/omni_finetune/dataset_manifest.json`, `results/omni_finetune/metrics_eval.json` | Readiness-only evidence | One episode, 128 train windows; not a 32-episode pilot |
+| The real 32-episode LoRA pilot is blocked on gated data access, not on repo presentation. | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`, `results/omni_finetune/source_discovery.json` | Blocker documented | No 32-episode metric should be claimed until the gate passes |
 | Historical `32ep` path strings are not treated as 32-episode results. | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | Verified pass | Classifies old run/path identifiers and fails if public presentation claims real 32-episode metrics |
 | Prepared GitHub/Hugging Face mirrors carry matching critical files. | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | Verified pass | Compares prepared data files, visual assets, website HTML, and validator scripts before upload; live URLs are checked after publishing |
 | The public GitHub and Hugging Face bundles are publication-clean. | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | Verified pass | Checks public files, HF bundles, and public-card freshness; ignored local scratch outputs are excluded |
@@ -63,11 +63,12 @@ local artifact that a reader can inspect before trusting the dashboard.
 12. Inspect `results/episode_task_suite/neural_mlp/` to compare minimal and
    neural heads under the same splits.
 13. Inspect `docs/data/scope_claims_audit.json` before interpreting historical
-   `32ep` strings in Qwen3-Omni smoke artifacts.
+   `32ep` strings in Qwen3-Omni readiness artifacts.
 14. Inspect `docs/data/mirror_parity.json` before assuming the GitHub and
    Hugging Face mirrors contain the same critical data, visual, HTML, and
    validator files.
-15. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before interpreting
+15. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` and
+   `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` before interpreting
    any Qwen3-Omni artifact.
 16. Inspect `QUALITY_GATES.md`, `docs/data/quality_gates.json`,
    `docs/data/publication_audit.json`, and `docs/data/website_integrity.json`

@@ -1,8 +1,8 @@
 {
   "run_id": "xperience10m_qwen3_omni_32ep_lora",
-  "model_id": "/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct",
+  "model_id": "/path/to/ropedia_workspace/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct",
   "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_32ep_dataset/dataset.jsonl",
-  "checkpoint_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_32ep_lora/adapter_lora",
+  "checkpoint_dir": "/path/to/ropedia_workspace/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_32ep_lora/adapter_lora",
   "num_processes": 8,
   "num_train_samples": 128,
   "num_val_samples": 0,

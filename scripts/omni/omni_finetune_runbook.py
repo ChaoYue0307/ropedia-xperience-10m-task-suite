@@ -48,7 +48,7 @@ def preflight_snapshot() -> dict:
         "nvidia_smi": command_output(["nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader"]),
         "cuda_visible_devices": command_output(["bash", "-lc", "printf %s \"${CUDA_VISIBLE_DEVICES:-unset}\""]),
         "ffmpeg": command_output(["ffmpeg", "-version"]).splitlines()[0],
-        "disk_home": command_output(["df", "-h", "/home/cy"]),
+        "disk_workdir": command_output(["df", "-h", "."]),
     }
 
 
@@ -58,7 +58,7 @@ def stage_commands(run_id: str, manifest_path: Path) -> list[dict]:
     return [
         {
             "phase": "phase_0_preflight",
-            "goal": "Confirm H20 runtime, local Qwen weights, ModelScope access, ffmpeg, and HOMIE loader.",
+            "goal": "Confirm accelerator runtime, local Qwen weights, dataset access, ffmpeg, and HOMIE loader.",
             "commands": [
                 "nvidia-smi",
                 "ffmpeg -version",
@@ -69,7 +69,7 @@ def stage_commands(run_id: str, manifest_path: Path) -> list[dict]:
             "phase": "phase_1_one_episode_smoke",
             "goal": "Reproduce adapter smoke and validate JSONL/media generation.",
             "commands": [
-                f"python scripts/omni/build_episode_manifest.py --data-root /home/cy/Ropedia/modelscope_data --max-episodes 1 --output {manifest_path}",
+                f"python scripts/omni/build_episode_manifest.py --data-root /path/to/xperience10m_data --max-episodes 1 --output {manifest_path}",
                 f"python scripts/omni/export_qwen3_omni_action_dataset.py --manifest {manifest_path} --max-windows-per-episode 16 --run-id {run_id}_dataset",
                 f"python scripts/omni/qwen3_omni_inference_smoke.py --dataset-jsonl {dataset_jsonl} --sample-limit 3 --run-id {run_id}_zero_shot",
             ],
@@ -78,7 +78,7 @@ def stage_commands(run_id: str, manifest_path: Path) -> list[dict]:
             "phase": "phase_2_three_episode_overfit",
             "goal": "Train adapter-only and Qwen LoRA on 3 episodes; require decreasing loss and >=98% JSON validity.",
             "commands": [
-                f"python scripts/omni/build_episode_manifest.py --data-root /home/cy/Ropedia/modelscope_data --max-episodes 3 --output {manifest_path}",
+                f"python scripts/omni/build_episode_manifest.py --data-root /path/to/xperience10m_data --max-episodes 3 --output {manifest_path}",
                 f"python scripts/omni/export_qwen3_omni_action_dataset.py --manifest {manifest_path} --run-id {run_id}_3ep_dataset",
                 f"python scripts/omni/train_qwen3_omni_lora.py --dataset-jsonl results/omni_finetune/{run_id}_3ep_dataset/dataset.jsonl --run-id {run_id}_3ep_lora --max-train-samples 256",
             ],
@@ -87,7 +87,7 @@ def stage_commands(run_id: str, manifest_path: Path) -> list[dict]:
             "phase": "phase_3_32_episode_pilot",
             "goal": "Run adapter-only, frozen Qwen, Qwen LoRA video/audio/text, and Qwen LoRA plus sensor bridge.",
             "commands": [
-                f"python scripts/omni/build_episode_manifest.py --data-root /home/cy/Ropedia/modelscope_data --max-episodes 32 --output {manifest_path}",
+                f"python scripts/omni/build_episode_manifest.py --data-root /path/to/xperience10m_data --max-episodes 32 --output {manifest_path}",
                 f"python scripts/omni/export_qwen3_omni_action_dataset.py --manifest {manifest_path} --run-id {run_id}_dataset",
                 f"python scripts/omni/train_qwen3_omni_lora.py --dataset-jsonl {dataset_jsonl} --run-id {run_id}_lora",
                 f"python scripts/omni/eval_qwen3_omni_lora.py --dataset-jsonl {dataset_jsonl} --adapter-dir checkpoints/{run_id}_lora/adapter_lora --run-id {run_id}_eval",

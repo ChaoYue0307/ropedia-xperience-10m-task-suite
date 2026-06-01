@@ -27,8 +27,8 @@ CHARTS = ASSETS / "charts"
 OMNI_RELAY = {
     "status": "pending_huggingface_gated_access",
     "dataset": "ropedia-ai/xperience-10m",
-    "relay_server": "ANGEL-A100-80Gx4",
-    "training_server": "ANGEL-H20-96GX8",
+    "staging": "prepared_generic_host_to_host_transfer",
+    "training_target": "external_multi_gpu_training_host",
     "selection_strategy": "stratified_round_robin_by_top_level_session",
     "target_episodes": 32,
     "selected_sessions": 32,
@@ -37,7 +37,7 @@ OMNI_RELAY = {
     "estimated_bytes": 72031620552,
     "exclude": ["visualization.rrd"],
     "blocker": "Hugging Face returns 403 pending review for the full Xperience-10M gated dataset.",
-    "claim_boundary": "No real 32-episode fine-tune is claimed until the watcher downloads data, transfers it to H20, and the held-out evaluation runs.",
+    "claim_boundary": "No real 32-episode fine-tune is claimed until gated data is available locally and held-out evaluation runs.",
 }
 
 

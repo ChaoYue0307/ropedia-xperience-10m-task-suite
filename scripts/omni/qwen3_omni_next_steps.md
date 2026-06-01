@@ -26,7 +26,7 @@ comparison. Assistant outputs are strict JSON with these fields:
 
 Suggested progression:
 
-1. Phase 0: preflight H20 GPUs, CUDA/PyTorch, free disk, ModelScope, ffmpeg,
+1. Phase 0: preflight accelerator runtime, CUDA/PyTorch, free disk, dataset access, ffmpeg,
    HOMIE, and local Qwen3-Omni-Instruct weights.
 2. Phase 1: one-episode smoke with adapter-only plus JSONL/media validation.
 3. Phase 2: three-episode overfit for adapter-only and Qwen LoRA.
@@ -38,7 +38,7 @@ Concrete command sequence:
 
 ```bash
 python scripts/omni/build_episode_manifest.py \
-  --data-root /home/cy/Ropedia/modelscope_data \
+  --data-root /path/to/xperience10m_data \
   --max-episodes 32 \
   --output results/omni_finetune/episode_manifest.json
 

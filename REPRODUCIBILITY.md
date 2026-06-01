@@ -40,7 +40,8 @@ hf download ropedia-ai/xperience-10m-sample \
   --local-dir data/sample/xperience-10m-sample
 ```
 
-On mainland-China servers, use the included ModelScope helper:
+If Hugging Face access is unavailable in your environment, use the included
+ModelScope helper:
 
 ```bash
 python scripts/omni/download_sample_modelscope.py \
@@ -136,4 +137,4 @@ Before interpreting any Qwen3-Omni result, read
 [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json),
 [`results/omni_finetune/DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md)
 and
-[`results/omni_finetune/A100_HF_RELAY_STATUS.md`](results/omni_finetune/A100_HF_RELAY_STATUS.md).
+[`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md).

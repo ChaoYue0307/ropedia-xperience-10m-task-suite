@@ -6,7 +6,7 @@ This downloads leaf episode folders such as:
     <session_uuid>/ep1/{annotation.hdf5,fisheye_cam0.mp4,...}
 
 It intentionally excludes visualization.rrd and writes a manifest that can be
-used before transferring data to the H20 training server.
+used before transferring data to a training host.
 """
 
 from __future__ import annotations

@@ -1161,9 +1161,9 @@
           <article class="scorecard-card gated">
             <span class="status-pill">data-gated</span>
             <h3>Qwen3-Omni pilot</h3>
-            <p>The 32-episode LoRA path is prepared, but no model-quality claim is made until gated data access, held-out splits, training, and eval pass.</p>
+            <p>The 32-episode LoRA path is prepared, but no model-quality claim is made until gated data access, held-out splits, training, and evaluation pass.</p>
             <div class="scorecard-meta">
-              <span>current claim <strong>smoke only</strong></span>
+              <span>current claim <strong>readiness only</strong></span>
               <span>target gate <strong>32 episodes</strong></span>
               <span>held-out eval <strong>pending</strong></span>
             </div>
@@ -1209,7 +1209,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Evidence first, claims second.</h2>
-          <p>A top-level project should make its proof boundary visible. This ledger separates verified single-episode artifacts from smoke-only Qwen3-Omni work and the pending 32-episode gate.</p>
+          <p>A top-level project should make its proof boundary visible. This ledger separates verified single-episode artifacts from readiness-only Qwen3-Omni work and the pending 32-episode gate.</p>
         </div>
         <div class="evidence-grid">
           <article class="evidence-card">
@@ -1240,9 +1240,9 @@
             </div>
           </article>
           <article class="evidence-card">
-            <span class="status-pill">blocked by data access</span>
-            <h3>Qwen3-Omni is smoke-only until 32 episodes land</h3>
-            <p>The H20/A100 pipeline exists, but current Qwen3-Omni artifacts use one episode and 128 train windows. No 32-episode metric is claimed.</p>
+            <span class="status-pill">data-gated</span>
+            <h3>Qwen3-Omni remains readiness-only</h3>
+            <p>The current Qwen3-Omni artifacts use one episode and 128 train windows. No 32-episode metric is claimed.</p>
             <div class="evidence-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">evidence contract</a>
               <a href="data/evidence_contract.json">machine JSON</a>
@@ -1251,7 +1251,7 @@
           <article class="evidence-card">
             <span class="status-pill">verified</span>
             <h3>Scope claims are machine-checked</h3>
-            <p>The audit confirms historical <code>32ep</code> run/path strings stay confined to smoke-artifact provenance and are not presented as real 32-episode results.</p>
+            <p>The audit confirms historical <code>32ep</code> run/path strings stay confined to readiness-artifact provenance and are not presented as real 32-episode results.</p>
             <div class="evidence-links">
               <a href="data/scope_claims_audit.json">scope audit</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_scope_claims.py">validator script</a>
@@ -1340,7 +1340,7 @@
           <article class="review-card">
             <span class="step-index">01</span>
             <h3>Check the claim boundary</h3>
-            <p>Start with the evidence contract, artifact index, scope audit, publication audit, and website integrity report. They separate verified single-episode artifacts from smoke-only Qwen3-Omni work.</p>
+            <p>Start with the evidence contract, artifact index, scope audit, publication audit, and website integrity report. They separate verified single-episode artifacts from readiness-only Qwen3-Omni work.</p>
             <div class="review-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">contract</a>
               <a href="data/evidence_contract.json">JSON</a>
@@ -1378,7 +1378,7 @@
             <p>The multi-episode Qwen3-Omni path is prepared, but no real 32-episode result is claimed until the data gate and held-out evaluation pass.</p>
             <div class="review-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">blocker</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/A100_HF_RELAY_STATUS.md">relay</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">access status</a>
               <a href="data/reviewer_packet.json">review packet</a>
             </div>
           </article>
@@ -1729,7 +1729,7 @@
             </div>
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Artifact guide</h3><p>Human-readable map from proof boundary to data contract, task evidence, platform mirrors, and scale-up status.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ARTIFACT_GUIDE.md">ARTIFACT_GUIDE.md</a></article>
-              <article class="artifact"><h3>Evidence contract</h3><p>Defines verified, smoke-only, blocked, and out-of-scope claims.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">EVIDENCE_CONTRACT.md</a></article>
+              <article class="artifact"><h3>Evidence contract</h3><p>Defines verified, readiness-only, blocked, and out-of-scope claims.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">EVIDENCE_CONTRACT.md</a></article>
               <article class="artifact"><h3>Quality gates</h3><p>One release checklist for automated validators and live post-publish checks.</p><a href="data/quality_gates.json">quality_gates.json</a></article>
               <article class="artifact"><h3>Live publication</h3><p>Last public GitHub/HF URL verification after upload.</p><a href="data/live_publication_status.json">live_publication_status.json</a></article>
               <article class="artifact"><h3>Artifact index</h3><p>Selective source-of-truth catalog with existence checks, sizes, and stable-file hashes.</p><a href="data/artifact_index.json">artifact_index.json</a></article>
@@ -1779,8 +1779,8 @@
               <p>The multi-episode Qwen3-Omni path is documented and scripted, but no full-pilot metric is claimed until the data gate and held-out evaluation pass.</p>
             </div>
             <div class="artifact-grid">
-              <article class="artifact"><h3>A100 HF relay status</h3><p>HF full-dataset access is pending; an A100 watcher is ready to download and transfer a 32-session pilot.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/A100_HF_RELAY_STATUS.md">A100_HF_RELAY_STATUS.md</a></article>
-              <article class="artifact"><h3>Qwen3-Omni readiness artifacts</h3><p>Manifests, metadata, metrics, and progress logs from the current smoke/evidence run.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode_manifest.json</a></article>
+              <article class="artifact"><h3>Multi-episode access status</h3><p>Public data-access boundary and selected 32-episode pilot plan, without private infrastructure details.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">MULTI_EPISODE_ACCESS_STATUS.md</a></article>
+              <article class="artifact"><h3>Qwen3-Omni readiness artifacts</h3><p>Manifests, metadata, metrics, and progress logs from the current readiness run.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode_manifest.json</a></article>
               <article class="artifact"><h3>32-episode data gate</h3><p>The readiness gate remains the source of truth before any full pilot training claim.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">DATA_BLOCKER_REPORT.md</a></article>
             </div>
           </section>
@@ -1792,12 +1792,12 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Qwen3-Omni pilot is approval-ready.</h2>
-          <p>The full Xperience-10M Hugging Face dataset is gated. While access is pending, the A100 relay has already selected a 32-episode pilot across 32 different session UUIDs and will continue automatically after approval.</p>
+          <p>The full Xperience-10M Hugging Face dataset is gated. While access is pending, the public plan has selected a 32-episode pilot across 32 different session UUIDs.</p>
         </div>
         <div class="artifact-grid">
           <article class="artifact"><h3>Selection</h3><p>Stratified round-robin over 64 top-level sessions; 680 complete candidates scanned; 32 sessions selected.</p></article>
-          <article class="artifact"><h3>Transfer</h3><p>A100 downloads from Hugging Face, excludes visualization.rrd, validates files, then rsyncs to H20.</p></article>
-          <article class="artifact"><h3>Boundary</h3><p>The current LoRA artifact is a smoke/pilot checkpoint. A real 32-episode result requires the watcher to finish and held-out evaluation to run.</p></article>
+          <article class="artifact"><h3>Transfer</h3><p>Download raw episodes only from official gated sources, exclude visualization.rrd, validate files, then stage them for training.</p></article>
+          <article class="artifact"><h3>Boundary</h3><p>The current LoRA artifact is a readiness checkpoint. A real 32-episode result requires local gated data and held-out evaluation.</p></article>
         </div>
       </div>
     </section>

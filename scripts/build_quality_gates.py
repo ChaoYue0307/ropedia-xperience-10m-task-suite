@@ -24,8 +24,8 @@ GATES = [
         "title": "Scope claims guard",
         "command": "python scripts/validate_scope_claims.py",
         "report": "docs/data/scope_claims_audit.json",
-        "blocks_if": "Historical 32ep smoke/provenance strings are presented as real 32-episode metrics.",
-        "proves": "The public narrative does not overclaim the Qwen3-Omni smoke artifacts.",
+        "blocks_if": "Historical 32ep readiness/provenance strings are presented as real 32-episode metrics.",
+        "proves": "The public narrative does not overclaim the Qwen3-Omni readiness artifacts.",
     },
     {
         "id": "source_alignment",
@@ -115,8 +115,8 @@ POST_PUBLISH_CHECKS = [
         "required_result": "latest pages-build-deployment run succeeds",
     },
     {
-        "id": "rendered_browser_smoke",
-        "title": "Rendered browser smoke",
+        "id": "rendered_browser_check",
+        "title": "Rendered browser check",
         "evidence": "Browser/Playwright page identity, nonblank render, console health, and one local interaction",
         "required_result": "no relevant console warnings/errors and target links work",
     },
