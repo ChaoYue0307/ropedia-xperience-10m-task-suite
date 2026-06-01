@@ -1,0 +1,74 @@
+{
+  "title": "Ropedia Xperience-10M Task Suite Reproducibility Matrix",
+  "version": "2026-06-01",
+  "scope": "one public Xperience-10M sample episode",
+  "python_target": "3.12",
+  "public_raw_data_redistributed": false,
+  "last_exact_metric_audit": {
+    "date": "2026-05-30",
+    "timezone": "Asia/Singapore",
+    "evidence": "notes/reproducibility_audit.md",
+    "status": "pass",
+    "matched_artifacts": [
+      "results/min_action_model/metrics.json",
+      "results/min_subtask_model/metrics.json",
+      "results/min_all_modalities_action_model/metrics.json",
+      "results/min_all_modalities_subtask_model/metrics.json",
+      "results/episode_task_suite/summary_report.json",
+      "results/episode_task_suite/feature_manifest.json",
+      "results/episode_task_suite/available_modalities.json",
+      "results/episode_task_suite/*/metrics.json"
+    ]
+  },
+  "steps": [
+    {
+      "id": "download_sample",
+      "status": "reproducible",
+      "command": "hf download ropedia-ai/xperience-10m-sample --repo-type dataset --local-dir data/sample/xperience-10m-sample",
+      "expected": "annotation.hdf5 plus public sample MP4 streams under data/sample/xperience-10m-sample",
+      "boundary": "raw sample data is downloaded from upstream, not redistributed here"
+    },
+    {
+      "id": "minimal_baselines",
+      "status": "reproducible",
+      "command": "python scripts/train_min_action_model.py --workspace $WORKSPACE && python scripts/train_all_modalities_model.py --workspace $WORKSPACE",
+      "expected": "minimal baseline metrics and model weights under results/min_*",
+      "boundary": "single-episode chronological split"
+    },
+    {
+      "id": "twelve_task_suite",
+      "status": "reproducible",
+      "command": "python scripts/episode_task_suite.py --workspace $WORKSPACE --include-neural",
+      "expected": "12 task metrics, predictions, manifests, and neural_mlp task-head artifacts",
+      "boundary": "8,378-d current feature contract; audio documented but not featurized"
+    },
+    {
+      "id": "research_direction_outputs",
+      "status": "reproducible",
+      "command": "python scripts/research_direction_taxonomy.py && python scripts/research_direction_extension_tasks.py && python scripts/task_walkthroughs.py",
+      "expected": "research-direction taxonomy, extension probes, and task walkthrough artifacts",
+      "boundary": "single-episode probes, not full research-direction solutions"
+    },
+    {
+      "id": "figures_and_dashboard_data",
+      "status": "reproducible",
+      "command": "python scripts/generate_visualizations.py && python scripts/render_overview_figures.py && python scripts/render_task_suite_infographic.py",
+      "expected": "website JSON bundles, charts, overview figures, and task-suite infographic",
+      "boundary": "figures are generated presentation layers over committed metrics and sample thumbnails"
+    },
+    {
+      "id": "publication_validation",
+      "status": "reproducible",
+      "command": "python scripts/build_artifact_index.py && python scripts/validate_publication_package.py",
+      "expected": "docs/data/artifact_index.json and docs/data/publication_audit.json",
+      "boundary": "checks public repo and prepared HF bundles only"
+    },
+    {
+      "id": "qwen3_omni_32_episode_pilot",
+      "status": "not_publicly_reproducible_yet",
+      "command": "scripts/omni/discover_xperience10m_sources.py then scripts/omni/train_qwen3_omni_lora.py after 32 valid episodes exist",
+      "expected": "held-out episode LoRA pilot metrics after data gate passes",
+      "boundary": "blocked by gated full Xperience-10M access; no 32-episode metric is claimed"
+    }
+  ]
+}

@@ -29,6 +29,16 @@
     },
     {
       "step": 2,
+      "question": "How can the public pipeline be reproduced?",
+      "primary_artifacts": [
+        "REPRODUCIBILITY.md",
+        "docs/data/reproducibility_matrix.json",
+        "notes/reproducibility_audit.md"
+      ],
+      "readout": "The public sample pipeline has explicit commands, expected outputs, and a prior exact-match audit over the committed metrics."
+    },
+    {
+      "step": 3,
       "question": "What is inside one model input?",
       "primary_artifacts": [
         "results/episode_task_suite/windows.csv",
@@ -38,7 +48,7 @@
       "readout": "The current model input is an 8,378-dimensional aligned window vector with explicit feature-block boundaries."
     },
     {
-      "step": 3,
+      "step": 4,
       "question": "Do the task metrics have committed evidence?",
       "primary_artifacts": [
         "results/episode_task_suite/summary_report.json",
@@ -48,7 +58,7 @@
       "readout": "Each of the 12 tasks has minimal-head metrics and a matching neural MLP result over the same window contracts."
     },
     {
-      "step": 4,
+      "step": 5,
       "question": "How should this scale beyond one episode?",
       "primary_artifacts": [
         "results/omni_finetune/DATA_BLOCKER_REPORT.md",
@@ -60,6 +70,7 @@
   ],
   "artifact_guide": "ARTIFACT_GUIDE.md",
   "artifact_index": "docs/data/artifact_index.json",
+  "reproducibility_matrix": "docs/data/reproducibility_matrix.json",
   "public_surfaces": {
     "github_repo": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite",
     "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/",

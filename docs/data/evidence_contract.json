@@ -132,6 +132,17 @@
         "docs/data/artifact_index.json"
       ],
       "boundary": "selective source-of-truth catalog, not a complete inventory of every output file"
+    },
+    {
+      "id": "reproducibility_contract",
+      "claim": "The public reproduction path is documented with commands, expected outputs, and exact-match audit evidence.",
+      "status": "verified",
+      "evidence": [
+        "REPRODUCIBILITY.md",
+        "docs/data/reproducibility_matrix.json",
+        "notes/reproducibility_audit.md"
+      ],
+      "boundary": "publicly reproduces the single-episode pipeline, not the gated 32-episode Qwen3-Omni pilot"
     }
   ]
 }

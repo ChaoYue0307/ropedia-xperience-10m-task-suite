@@ -12,7 +12,9 @@ The project intentionally separates four layers:
    aligned model windows and feature blocks.
 3. **Task evidence:** minimal and neural results for the 12 task contracts plus
    four research-direction extension probes.
-4. **Scale-up status:** scripts and reports for the planned 32-episode
+4. **Reproducibility:** public commands, expected outputs, and exact-match audit
+   evidence for the single-episode pipeline.
+5. **Scale-up status:** scripts and reports for the planned 32-episode
    Qwen3-Omni pilot, without claiming those results before data access lands.
 
 ## Start Here
@@ -20,6 +22,7 @@ The project intentionally separates four layers:
 | Artifact | Why to open it first |
 | --- | --- |
 | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md) | Defines which claims are verified and which are explicitly not claimed. |
+| [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Defines public reproduction commands, expected outputs, and unreproducible boundaries. |
 | [`docs/data/artifact_index.json`](docs/data/artifact_index.json) | Lists reviewer-critical files with existence, size, and stable hashes. |
 | [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Confirms public bundles exclude raw data, Python caches, heavy archives, and token strings. |
 | [`docs/data/reviewer_packet.json`](docs/data/reviewer_packet.json) | Gives the shortest machine-readable reviewer route. |
@@ -41,6 +44,14 @@ The project intentionally separates four layers:
 | [`results/episode_task_suite/research_directions/`](results/episode_task_suite/research_directions/) | Mapping from the 12 tasks to the four Ropedia research directions. |
 | [`results/episode_task_suite/research_direction_extensions/`](results/episode_task_suite/research_direction_extensions/) | Four additional coded probes, one per research direction. |
 | [`results/episode_task_suite/task_walkthroughs/`](results/episode_task_suite/task_walkthroughs/) | Junior-friendly case studies explaining input, process modules, output, metric, and limitation. |
+
+## Reproducibility
+
+| Artifact | What it proves |
+| --- | --- |
+| [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Public commands, expected outputs, and non-reproducible boundaries are explicit. |
+| [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json) | Machine-readable command matrix for website and HF mirrors. |
+| [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | The last exact metric audit rebuilt the public-sample metrics and matched committed artifacts. |
 
 ## Platform Mirrors
 
