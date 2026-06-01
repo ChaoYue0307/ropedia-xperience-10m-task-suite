@@ -1,0 +1,1608 @@
+{
+  "status": "pass",
+  "generated_at_utc": "2026-06-01T16:21:49+00:00",
+  "summary": {
+    "task_count": 12,
+    "expected_task_count": 12,
+    "task_family_counts": {
+      "diagnostic": 3,
+      "forecast": 2,
+      "retrieval": 2,
+      "supervised": 5
+    },
+    "modality_usage_counts": {
+      "depth": 10,
+      "inertial": 11,
+      "language": 4,
+      "motion_capture": 11,
+      "pose_slam": 11,
+      "video": 12
+    },
+    "interactive_surface": "task cards plus play/previous/next walkthrough player",
+    "failure_count": 0
+  },
+  "checks": [
+    {
+      "name": "required_task_surface_inputs_present",
+      "status": "pass",
+      "inputs": {
+        "task_walkthroughs_json": true,
+        "website_index": true,
+        "walkthrough_markdown": true
+      }
+    },
+    {
+      "name": "tasks_object_present",
+      "status": "pass"
+    },
+    {
+      "name": "exactly_12_tasks",
+      "status": "pass",
+      "observed": 12,
+      "expected": 12
+    },
+    {
+      "name": "expected_task_ids_present",
+      "status": "pass",
+      "missing": [],
+      "extra": []
+    },
+    {
+      "name": "timeline_action: required_fields",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "timeline_action: human_readable_display_name",
+      "status": "pass",
+      "expected": "Action Recognition",
+      "observed": "Action Recognition"
+    },
+    {
+      "name": "timeline_action: artifact_id_matches_key",
+      "status": "pass",
+      "observed": "timeline_action"
+    },
+    {
+      "name": "timeline_action: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "window features -> action label builder -> classifier",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_action: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "current action class",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_action: public_field_card_blurb_is_human_readable",
+      "status": "pass",
+      "value": "Recognize the current manipulation action from synchronized visual, motion, inertial, pose, and annotation context.",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_action: public_field_display_name_is_human_readable",
+      "status": "pass",
+      "value": "Action Recognition",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_action: public_field_research_name_is_human_readable",
+      "status": "pass",
+      "value": "Egocentric Action Recognition",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_action: public_field_plain_goal_is_human_readable",
+      "status": "pass",
+      "value": "Look at one short multimodal window and name what action is happening now.",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_action: public_field_input_short_is_human_readable",
+      "status": "pass",
+      "value": "20-frame multimodal window",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_action: known_task_family",
+      "status": "pass",
+      "observed": "supervised",
+      "allowed": [
+        "diagnostic",
+        "forecast",
+        "retrieval",
+        "supervised"
+      ]
+    },
+    {
+      "name": "timeline_action: modality_list_present",
+      "status": "pass",
+      "observed": [
+        "video",
+        "depth",
+        "pose_slam",
+        "motion_capture",
+        "inertial",
+        "language"
+      ]
+    },
+    {
+      "name": "timeline_action: known_modalities",
+      "status": "pass",
+      "unknown": []
+    },
+    {
+      "name": "timeline_action: modality_assets_exist",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "timeline_action: poster_modality_in_task_modalities",
+      "status": "pass",
+      "poster_modality": "video",
+      "modalities": [
+        "video",
+        "depth",
+        "pose_slam",
+        "motion_capture",
+        "inertial",
+        "language"
+      ]
+    },
+    {
+      "name": "timeline_action: numeric_minimal_and_neural_metrics",
+      "status": "pass",
+      "metric": {
+        "key": "macro_f1",
+        "name": "macro-F1",
+        "direction": "higher",
+        "minimal": 0.05,
+        "neural_mlp": 0.02631578947368421
+      }
+    },
+    {
+      "name": "timeline_action: middle_modules_explain_process",
+      "status": "pass",
+      "observed_count": 5
+    },
+    {
+      "name": "timeline_subtask: required_fields",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "timeline_subtask: human_readable_display_name",
+      "status": "pass",
+      "expected": "Procedure Step Recognition",
+      "observed": "Procedure Step Recognition"
+    },
+    {
+      "name": "timeline_subtask: artifact_id_matches_key",
+      "status": "pass",
+      "observed": "timeline_subtask"
+    },
+    {
+      "name": "timeline_subtask: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "window features -> subtask label builder -> classifier",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_subtask: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "current procedure step",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_subtask: public_field_card_blurb_is_human_readable",
+      "status": "pass",
+      "value": "Recognize the broader activity stage so fine actions become a readable procedure timeline.",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_subtask: public_field_display_name_is_human_readable",
+      "status": "pass",
+      "value": "Procedure Step Recognition",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_subtask: public_field_research_name_is_human_readable",
+      "status": "pass",
+      "value": "Temporal Subtask Recognition",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_subtask: public_field_plain_goal_is_human_readable",
+      "status": "pass",
+      "value": "Predict the higher-level task stage for the current window.",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_subtask: public_field_input_short_is_human_readable",
+      "status": "pass",
+      "value": "20-frame multimodal window",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_subtask: known_task_family",
+      "status": "pass",
+      "observed": "supervised",
+      "allowed": [
+        "diagnostic",
+        "forecast",
+        "retrieval",
+        "supervised"
+      ]
+    },
+    {
+      "name": "timeline_subtask: modality_list_present",
+      "status": "pass",
+      "observed": [
+        "video",
+        "depth",
+        "pose_slam",
+        "motion_capture",
+        "inertial",
+        "language"
+      ]
+    },
+    {
+      "name": "timeline_subtask: known_modalities",
+      "status": "pass",
+      "unknown": []
+    },
+    {
+      "name": "timeline_subtask: modality_assets_exist",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "timeline_subtask: poster_modality_in_task_modalities",
+      "status": "pass",
+      "poster_modality": "language",
+      "modalities": [
+        "video",
+        "depth",
+        "pose_slam",
+        "motion_capture",
+        "inertial",
+        "language"
+      ]
+    },
+    {
+      "name": "timeline_subtask: numeric_minimal_and_neural_metrics",
+      "status": "pass",
+      "metric": {
+        "key": "macro_f1",
+        "name": "macro-F1",
+        "direction": "higher",
+        "minimal": 0.04954121121178666,
+        "neural_mlp": 0.017518248175182476
+      }
+    },
+    {
+      "name": "timeline_subtask: middle_modules_explain_process",
+      "status": "pass",
+      "observed_count": 5
+    },
+    {
+      "name": "transition_detection: required_fields",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "transition_detection: human_readable_display_name",
+      "status": "pass",
+      "expected": "Action Boundary Detection",
+      "observed": "Action Boundary Detection"
+    },
+    {
+      "name": "transition_detection: artifact_id_matches_key",
+      "status": "pass",
+      "observed": "transition_detection"
+    },
+    {
+      "name": "transition_detection: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "action changes -> boundary labels -> binary classifier",
+      "raw_hits": []
+    },
+    {
+      "name": "transition_detection: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "boundary or steady",
+      "raw_hits": []
+    },
+    {
+      "name": "transition_detection: public_field_card_blurb_is_human_readable",
+      "status": "pass",
+      "value": "Detect the local moment where the episode changes from one action segment to the next.",
+      "raw_hits": []
+    },
+    {
+      "name": "transition_detection: public_field_display_name_is_human_readable",
+      "status": "pass",
+      "value": "Action Boundary Detection",
+      "raw_hits": []
+    },
+    {
+      "name": "transition_detection: public_field_research_name_is_human_readable",
+      "status": "pass",
+      "value": "Temporal Action Segmentation",
+      "raw_hits": []
+    },
+    {
+      "name": "transition_detection: public_field_plain_goal_is_human_readable",
+      "status": "pass",
+      "value": "Detect whether the current window is near a boundary between actions.",
+      "raw_hits": []
+    },
+    {
+      "name": "transition_detection: public_field_input_short_is_human_readable",
+      "status": "pass",
+      "value": "current window with boundary target",
+      "raw_hits": []
+    },
+    {
+      "name": "transition_detection: known_task_family",
+      "status": "pass",
+      "observed": "diagnostic",
+      "allowed": [
+        "diagnostic",
+        "forecast",
+        "retrieval",
+        "supervised"
+      ]
+    },
+    {
+      "name": "transition_detection: modality_list_present",
+      "status": "pass",
+      "observed": [
+        "video",
+        "pose_slam",
+        "motion_capture",
+        "inertial",
+        "language"
+      ]
+    },
+    {
+      "name": "transition_detection: known_modalities",
+      "status": "pass",
+      "unknown": []
+    },
+    {
+      "name": "transition_detection: modality_assets_exist",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "transition_detection: poster_modality_in_task_modalities",
+      "status": "pass",
+      "poster_modality": "pose_slam",
+      "modalities": [
+        "video",
+        "pose_slam",
+        "motion_capture",
+        "inertial",
+        "language"
+      ]
+    },
+    {
+      "name": "transition_detection: numeric_minimal_and_neural_metrics",
+      "status": "pass",
+      "metric": {
+        "key": "macro_f1",
+        "name": "macro-F1",
+        "direction": "higher",
+        "minimal": 0.6551829268292684,
+        "neural_mlp": 0.6484848484848484
+      }
+    },
+    {
+      "name": "transition_detection: middle_modules_explain_process",
+      "status": "pass",
+      "observed_count": 5
+    },
+    {
+      "name": "next_action: required_fields",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "next_action: human_readable_display_name",
+      "status": "pass",
+      "expected": "Next-Action Prediction",
+      "observed": "Next-Action Prediction"
+    },
+    {
+      "name": "next_action: artifact_id_matches_key",
+      "status": "pass",
+      "observed": "next_action"
+    },
+    {
+      "name": "next_action: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "current features -> future label shift -> classifier",
+      "raw_hits": []
+    },
+    {
+      "name": "next_action: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "action at t+20 frames",
+      "raw_hits": []
+    },
+    {
+      "name": "next_action: public_field_card_blurb_is_human_readable",
+      "status": "pass",
+      "value": "Forecast the near-future action from the current observations only.",
+      "raw_hits": []
+    },
+    {
+      "name": "next_action: public_field_display_name_is_human_readable",
+      "status": "pass",
+      "value": "Next-Action Prediction",
+      "raw_hits": []
+    },
+    {
+      "name": "next_action: public_field_research_name_is_human_readable",
+      "status": "pass",
+      "value": "Short-Horizon Intention Prediction",
+      "raw_hits": []
+    },
+    {
+      "name": "next_action: public_field_plain_goal_is_human_readable",
+      "status": "pass",
+      "value": "Use the current window to guess the action that will happen shortly after it.",
+      "raw_hits": []
+    },
+    {
+      "name": "next_action: public_field_input_short_is_human_readable",
+      "status": "pass",
+      "value": "current window at time t",
+      "raw_hits": []
+    },
+    {
+      "name": "next_action: known_task_family",
+      "status": "pass",
+      "observed": "supervised",
+      "allowed": [
+        "diagnostic",
+        "forecast",
+        "retrieval",
+        "supervised"
+      ]
+    },
+    {
+      "name": "next_action: modality_list_present",
+      "status": "pass",
+      "observed": [
+        "video",
+        "depth",
+        "pose_slam",
+        "motion_capture",
+        "inertial"
+      ]
+    },
+    {
+      "name": "next_action: known_modalities",
+      "status": "pass",
+      "unknown": []
+    },
+    {
+      "name": "next_action: modality_assets_exist",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "next_action: poster_modality_in_task_modalities",
+      "status": "pass",
+      "poster_modality": "video",
+      "modalities": [
+        "video",
+        "depth",
+        "pose_slam",
+        "motion_capture",
+        "inertial"
+      ]
+    },
+    {
+      "name": "next_action: numeric_minimal_and_neural_metrics",
+      "status": "pass",
+      "metric": {
+        "key": "macro_f1",
+        "name": "macro-F1",
+        "direction": "higher",
+        "minimal": 0.05925925925925927,
+        "neural_mlp": 0.023529411764705882
+      }
+    },
+    {
+      "name": "next_action: middle_modules_explain_process",
+      "status": "pass",
+      "observed_count": 5
+    },
+    {
+      "name": "hand_trajectory_forecast: required_fields",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "hand_trajectory_forecast: human_readable_display_name",
+      "status": "pass",
+      "expected": "Hand Trajectory Forecasting",
+      "observed": "Hand Trajectory Forecasting"
+    },
+    {
+      "name": "hand_trajectory_forecast: artifact_id_matches_key",
+      "status": "pass",
+      "observed": "hand_trajectory_forecast"
+    },
+    {
+      "name": "hand_trajectory_forecast: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "current features -> future mocap target -> regression head",
+      "raw_hits": []
+    },
+    {
+      "name": "hand_trajectory_forecast: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "future hand-joint trajectory",
+      "raw_hits": []
+    },
+    {
+      "name": "hand_trajectory_forecast: public_field_card_blurb_is_human_readable",
+      "status": "pass",
+      "value": "Predict the future 3D left/right hand path from the current multimodal state.",
+      "raw_hits": []
+    },
+    {
+      "name": "hand_trajectory_forecast: public_field_display_name_is_human_readable",
+      "status": "pass",
+      "value": "Hand Trajectory Forecasting",
+      "raw_hits": []
+    },
+    {
+      "name": "hand_trajectory_forecast: public_field_research_name_is_human_readable",
+      "status": "pass",
+      "value": "3D Hand Motion Forecasting",
+      "raw_hits": []
+    },
+    {
+      "name": "hand_trajectory_forecast: public_field_plain_goal_is_human_readable",
+      "status": "pass",
+      "value": "Predict where the hands will move over the next few frames.",
+      "raw_hits": []
+    },
+    {
+      "name": "hand_trajectory_forecast: public_field_input_short_is_human_readable",
+      "status": "pass",
+      "value": "current multimodal window",
+      "raw_hits": []
+    },
+    {
+      "name": "hand_trajectory_forecast: known_task_family",
+      "status": "pass",
+      "observed": "forecast",
+      "allowed": [
+        "diagnostic",
+        "forecast",
+        "retrieval",
+        "supervised"
+      ]
+    },
+    {
+      "name": "hand_trajectory_forecast: modality_list_present",
+      "status": "pass",
+      "observed": [
+        "motion_capture",
+        "video",
+        "depth",
+        "pose_slam",
+        "inertial"
+      ]
+    },
+    {
+      "name": "hand_trajectory_forecast: known_modalities",
+      "status": "pass",
+      "unknown": []
+    },
+    {
+      "name": "hand_trajectory_forecast: modality_assets_exist",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "hand_trajectory_forecast: poster_modality_in_task_modalities",
+      "status": "pass",
+      "poster_modality": "motion_capture",
+      "modalities": [
+        "motion_capture",
+        "video",
+        "depth",
+        "pose_slam",
+        "inertial"
+      ]
+    },
+    {
+      "name": "hand_trajectory_forecast: numeric_minimal_and_neural_metrics",
+      "status": "pass",
+      "metric": {
+        "key": "mpjpe",
+        "name": "MPJPE",
+        "direction": "lower",
+        "minimal": 0.8222644925117493,
+        "neural_mlp": 0.11163123697042465
+      }
+    },
+    {
+      "name": "hand_trajectory_forecast: middle_modules_explain_process",
+      "status": "pass",
+      "observed_count": 5
+    },
+    {
+      "name": "contact_prediction: required_fields",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "contact_prediction: human_readable_display_name",
+      "status": "pass",
+      "expected": "Contact State Prediction",
+      "observed": "Contact State Prediction"
+    },
+    {
+      "name": "contact_prediction: artifact_id_matches_key",
+      "status": "pass",
+      "observed": "contact_prediction"
+    },
+    {
+      "name": "contact_prediction: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "feature filter -> contact target -> binary classifier",
+      "raw_hits": []
+    },
+    {
+      "name": "contact_prediction: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "contact or no contact",
+      "raw_hits": []
+    },
+    {
+      "name": "contact_prediction: public_field_card_blurb_is_human_readable",
+      "status": "pass",
+      "value": "Predict whether body or hand contact with the scene is occurring without leaking contact labels.",
+      "raw_hits": []
+    },
+    {
+      "name": "contact_prediction: public_field_display_name_is_human_readable",
+      "status": "pass",
+      "value": "Contact State Prediction",
+      "raw_hits": []
+    },
+    {
+      "name": "contact_prediction: public_field_research_name_is_human_readable",
+      "status": "pass",
+      "value": "Human-Object Contact Prediction",
+      "raw_hits": []
+    },
+    {
+      "name": "contact_prediction: public_field_plain_goal_is_human_readable",
+      "status": "pass",
+      "value": "Predict whether the body or hand is in contact with something.",
+      "raw_hits": []
+    },
+    {
+      "name": "contact_prediction: public_field_input_short_is_human_readable",
+      "status": "pass",
+      "value": "non-contact, non-caption features",
+      "raw_hits": []
+    },
+    {
+      "name": "contact_prediction: known_task_family",
+      "status": "pass",
+      "observed": "supervised",
+      "allowed": [
+        "diagnostic",
+        "forecast",
+        "retrieval",
+        "supervised"
+      ]
+    },
+    {
+      "name": "contact_prediction: modality_list_present",
+      "status": "pass",
+      "observed": [
+        "motion_capture",
+        "video",
+        "depth",
+        "inertial"
+      ]
+    },
+    {
+      "name": "contact_prediction: known_modalities",
+      "status": "pass",
+      "unknown": []
+    },
+    {
+      "name": "contact_prediction: modality_assets_exist",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "contact_prediction: poster_modality_in_task_modalities",
+      "status": "pass",
+      "poster_modality": "motion_capture",
+      "modalities": [
+        "motion_capture",
+        "video",
+        "depth",
+        "inertial"
+      ]
+    },
+    {
+      "name": "contact_prediction: numeric_minimal_and_neural_metrics",
+      "status": "pass",
+      "metric": {
+        "key": "macro_f1",
+        "name": "macro-F1",
+        "direction": "higher",
+        "minimal": 1.0,
+        "neural_mlp": 1.0
+      }
+    },
+    {
+      "name": "contact_prediction: middle_modules_explain_process",
+      "status": "pass",
+      "observed_count": 5
+    },
+    {
+      "name": "object_relevance: required_fields",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "object_relevance: human_readable_display_name",
+      "status": "pass",
+      "expected": "Object Relevance Prediction",
+      "observed": "Object Relevance Prediction"
+    },
+    {
+      "name": "object_relevance: artifact_id_matches_key",
+      "status": "pass",
+      "observed": "object_relevance"
+    },
+    {
+      "name": "object_relevance: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "object vocabulary -> multi-hot labels -> sigmoid heads",
+      "raw_hits": []
+    },
+    {
+      "name": "object_relevance: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "relevant object set",
+      "raw_hits": []
+    },
+    {
+      "name": "object_relevance: public_field_card_blurb_is_human_readable",
+      "status": "pass",
+      "value": "Infer which objects are relevant to the current manipulation window from non-caption features.",
+      "raw_hits": []
+    },
+    {
+      "name": "object_relevance: public_field_display_name_is_human_readable",
+      "status": "pass",
+      "value": "Object Relevance Prediction",
+      "raw_hits": []
+    },
+    {
+      "name": "object_relevance: public_field_research_name_is_human_readable",
+      "status": "pass",
+      "value": "Object-Centric Interaction Recognition",
+      "raw_hits": []
+    },
+    {
+      "name": "object_relevance: public_field_plain_goal_is_human_readable",
+      "status": "pass",
+      "value": "Predict which objects matter in the current window.",
+      "raw_hits": []
+    },
+    {
+      "name": "object_relevance: public_field_input_short_is_human_readable",
+      "status": "pass",
+      "value": "non-caption multimodal features",
+      "raw_hits": []
+    },
+    {
+      "name": "object_relevance: known_task_family",
+      "status": "pass",
+      "observed": "supervised",
+      "allowed": [
+        "diagnostic",
+        "forecast",
+        "retrieval",
+        "supervised"
+      ]
+    },
+    {
+      "name": "object_relevance: modality_list_present",
+      "status": "pass",
+      "observed": [
+        "video",
+        "depth",
+        "pose_slam",
+        "motion_capture",
+        "inertial"
+      ]
+    },
+    {
+      "name": "object_relevance: known_modalities",
+      "status": "pass",
+      "unknown": []
+    },
+    {
+      "name": "object_relevance: modality_assets_exist",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "object_relevance: poster_modality_in_task_modalities",
+      "status": "pass",
+      "poster_modality": "video",
+      "modalities": [
+        "video",
+        "depth",
+        "pose_slam",
+        "motion_capture",
+        "inertial"
+      ]
+    },
+    {
+      "name": "object_relevance: numeric_minimal_and_neural_metrics",
+      "status": "pass",
+      "metric": {
+        "key": "micro_f1",
+        "name": "micro-F1",
+        "direction": "higher",
+        "minimal": 0.18393030009680542,
+        "neural_mlp": 0.1797583081570997
+      }
+    },
+    {
+      "name": "object_relevance: middle_modules_explain_process",
+      "status": "pass",
+      "observed_count": 5
+    },
+    {
+      "name": "caption_grounding: required_fields",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "caption_grounding: human_readable_display_name",
+      "status": "pass",
+      "expected": "Language Grounding",
+      "observed": "Language Grounding"
+    },
+    {
+      "name": "caption_grounding: artifact_id_matches_key",
+      "status": "pass",
+      "observed": "caption_grounding"
+    },
+    {
+      "name": "caption_grounding: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "query features -> candidate index -> cosine ranker",
+      "raw_hits": []
+    },
+    {
+      "name": "caption_grounding: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "ranked matching moments",
+      "raw_hits": []
+    },
+    {
+      "name": "caption_grounding: public_field_card_blurb_is_human_readable",
+      "status": "pass",
+      "value": "Retrieve the matching time window for an annotation-derived text query.",
+      "raw_hits": []
+    },
+    {
+      "name": "caption_grounding: public_field_display_name_is_human_readable",
+      "status": "pass",
+      "value": "Language Grounding",
+      "raw_hits": []
+    },
+    {
+      "name": "caption_grounding: public_field_research_name_is_human_readable",
+      "status": "pass",
+      "value": "Language-to-Moment Grounding",
+      "raw_hits": []
+    },
+    {
+      "name": "caption_grounding: public_field_plain_goal_is_human_readable",
+      "status": "pass",
+      "value": "Given a text-like query from annotation, find the matching time window.",
+      "raw_hits": []
+    },
+    {
+      "name": "caption_grounding: public_field_input_short_is_human_readable",
+      "status": "pass",
+      "value": "text-like query and candidate windows",
+      "raw_hits": []
+    },
+    {
+      "name": "caption_grounding: known_task_family",
+      "status": "pass",
+      "observed": "retrieval",
+      "allowed": [
+        "diagnostic",
+        "forecast",
+        "retrieval",
+        "supervised"
+      ]
+    },
+    {
+      "name": "caption_grounding: modality_list_present",
+      "status": "pass",
+      "observed": [
+        "language",
+        "video",
+        "depth",
+        "pose_slam"
+      ]
+    },
+    {
+      "name": "caption_grounding: known_modalities",
+      "status": "pass",
+      "unknown": []
+    },
+    {
+      "name": "caption_grounding: modality_assets_exist",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "caption_grounding: poster_modality_in_task_modalities",
+      "status": "pass",
+      "poster_modality": "language",
+      "modalities": [
+        "language",
+        "video",
+        "depth",
+        "pose_slam"
+      ]
+    },
+    {
+      "name": "caption_grounding: numeric_minimal_and_neural_metrics",
+      "status": "pass",
+      "metric": {
+        "key": "mrr",
+        "name": "MRR",
+        "direction": "higher",
+        "minimal": 0.017183946083791223,
+        "neural_mlp": 0.01781111161035397
+      }
+    },
+    {
+      "name": "caption_grounding: middle_modules_explain_process",
+      "status": "pass",
+      "observed_count": 5
+    },
+    {
+      "name": "cross_modal_retrieval: required_fields",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "cross_modal_retrieval: human_readable_display_name",
+      "status": "pass",
+      "expected": "Cross-Modal Retrieval",
+      "observed": "Cross-Modal Retrieval"
+    },
+    {
+      "name": "cross_modal_retrieval: artifact_id_matches_key",
+      "status": "pass",
+      "observed": "cross_modal_retrieval"
+    },
+    {
+      "name": "cross_modal_retrieval: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "modality split -> projection -> nearest-neighbor ranker",
+      "raw_hits": []
+    },
+    {
+      "name": "cross_modal_retrieval: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "ranked visual windows",
+      "raw_hits": []
+    },
+    {
+      "name": "cross_modal_retrieval: public_field_card_blurb_is_human_readable",
+      "status": "pass",
+      "value": "Use motion, IMU, and camera-pose signals to retrieve the matching depth/video window.",
+      "raw_hits": []
+    },
+    {
+      "name": "cross_modal_retrieval: public_field_display_name_is_human_readable",
+      "status": "pass",
+      "value": "Cross-Modal Retrieval",
+      "raw_hits": []
+    },
+    {
+      "name": "cross_modal_retrieval: public_field_research_name_is_human_readable",
+      "status": "pass",
+      "value": "Multimodal Representation Retrieval",
+      "raw_hits": []
+    },
+    {
+      "name": "cross_modal_retrieval: public_field_plain_goal_is_human_readable",
+      "status": "pass",
+      "value": "Use one group of modalities to retrieve the matching window from another group.",
+      "raw_hits": []
+    },
+    {
+      "name": "cross_modal_retrieval: public_field_input_short_is_human_readable",
+      "status": "pass",
+      "value": "motion/IMU/pose query; depth/video candidates",
+      "raw_hits": []
+    },
+    {
+      "name": "cross_modal_retrieval: known_task_family",
+      "status": "pass",
+      "observed": "retrieval",
+      "allowed": [
+        "diagnostic",
+        "forecast",
+        "retrieval",
+        "supervised"
+      ]
+    },
+    {
+      "name": "cross_modal_retrieval: modality_list_present",
+      "status": "pass",
+      "observed": [
+        "motion_capture",
+        "inertial",
+        "pose_slam",
+        "depth",
+        "video"
+      ]
+    },
+    {
+      "name": "cross_modal_retrieval: known_modalities",
+      "status": "pass",
+      "unknown": []
+    },
+    {
+      "name": "cross_modal_retrieval: modality_assets_exist",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "cross_modal_retrieval: poster_modality_in_task_modalities",
+      "status": "pass",
+      "poster_modality": "depth",
+      "modalities": [
+        "motion_capture",
+        "inertial",
+        "pose_slam",
+        "depth",
+        "video"
+      ]
+    },
+    {
+      "name": "cross_modal_retrieval: numeric_minimal_and_neural_metrics",
+      "status": "pass",
+      "metric": {
+        "key": "mrr",
+        "name": "MRR",
+        "direction": "higher",
+        "minimal": 0.26335984006618296,
+        "neural_mlp": 0.1530070022204131
+      }
+    },
+    {
+      "name": "cross_modal_retrieval: middle_modules_explain_process",
+      "status": "pass",
+      "observed_count": 5
+    },
+    {
+      "name": "modality_reconstruction: required_fields",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "modality_reconstruction: human_readable_display_name",
+      "status": "pass",
+      "expected": "Cross-Modal Reconstruction",
+      "observed": "Cross-Modal Reconstruction"
+    },
+    {
+      "name": "modality_reconstruction: artifact_id_matches_key",
+      "status": "pass",
+      "observed": "modality_reconstruction"
+    },
+    {
+      "name": "modality_reconstruction: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "source-target split -> scaler -> regression head",
+      "raw_hits": []
+    },
+    {
+      "name": "modality_reconstruction: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "reconstructed depth/video vector",
+      "raw_hits": []
+    },
+    {
+      "name": "modality_reconstruction: public_field_card_blurb_is_human_readable",
+      "status": "pass",
+      "value": "Predict compressed depth/video feature vectors from motion, IMU, and camera-pose features.",
+      "raw_hits": []
+    },
+    {
+      "name": "modality_reconstruction: public_field_display_name_is_human_readable",
+      "status": "pass",
+      "value": "Cross-Modal Reconstruction",
+      "raw_hits": []
+    },
+    {
+      "name": "modality_reconstruction: public_field_research_name_is_human_readable",
+      "status": "pass",
+      "value": "Modality Feature Reconstruction",
+      "raw_hits": []
+    },
+    {
+      "name": "modality_reconstruction: public_field_plain_goal_is_human_readable",
+      "status": "pass",
+      "value": "Predict one modality feature block from other modality blocks.",
+      "raw_hits": []
+    },
+    {
+      "name": "modality_reconstruction: public_field_input_short_is_human_readable",
+      "status": "pass",
+      "value": "motion, IMU, and camera/pose features",
+      "raw_hits": []
+    },
+    {
+      "name": "modality_reconstruction: known_task_family",
+      "status": "pass",
+      "observed": "forecast",
+      "allowed": [
+        "diagnostic",
+        "forecast",
+        "retrieval",
+        "supervised"
+      ]
+    },
+    {
+      "name": "modality_reconstruction: modality_list_present",
+      "status": "pass",
+      "observed": [
+        "motion_capture",
+        "inertial",
+        "pose_slam",
+        "depth",
+        "video"
+      ]
+    },
+    {
+      "name": "modality_reconstruction: known_modalities",
+      "status": "pass",
+      "unknown": []
+    },
+    {
+      "name": "modality_reconstruction: modality_assets_exist",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "modality_reconstruction: poster_modality_in_task_modalities",
+      "status": "pass",
+      "poster_modality": "depth",
+      "modalities": [
+        "motion_capture",
+        "inertial",
+        "pose_slam",
+        "depth",
+        "video"
+      ]
+    },
+    {
+      "name": "modality_reconstruction: numeric_minimal_and_neural_metrics",
+      "status": "pass",
+      "metric": {
+        "key": "r2",
+        "name": "R2",
+        "direction": "higher",
+        "minimal": -0.016022846771134747,
+        "neural_mlp": -0.010198171891414143
+      }
+    },
+    {
+      "name": "modality_reconstruction: middle_modules_explain_process",
+      "status": "pass",
+      "observed_count": 5
+    },
+    {
+      "name": "temporal_order: required_fields",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "temporal_order: human_readable_display_name",
+      "status": "pass",
+      "expected": "Temporal Order Verification",
+      "observed": "Temporal Order Verification"
+    },
+    {
+      "name": "temporal_order: artifact_id_matches_key",
+      "status": "pass",
+      "observed": "temporal_order"
+    },
+    {
+      "name": "temporal_order: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "pair builder -> feature combiner -> binary classifier",
+      "raw_hits": []
+    },
+    {
+      "name": "temporal_order: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "correct or reversed",
+      "raw_hits": []
+    },
+    {
+      "name": "temporal_order: public_field_card_blurb_is_human_readable",
+      "status": "pass",
+      "value": "Tell whether two neighboring windows are in chronological order or reversed.",
+      "raw_hits": []
+    },
+    {
+      "name": "temporal_order: public_field_display_name_is_human_readable",
+      "status": "pass",
+      "value": "Temporal Order Verification",
+      "raw_hits": []
+    },
+    {
+      "name": "temporal_order: public_field_research_name_is_human_readable",
+      "status": "pass",
+      "value": "Temporal Order Verification",
+      "raw_hits": []
+    },
+    {
+      "name": "temporal_order: public_field_plain_goal_is_human_readable",
+      "status": "pass",
+      "value": "Tell whether two nearby windows are in the correct time order.",
+      "raw_hits": []
+    },
+    {
+      "name": "temporal_order: public_field_input_short_is_human_readable",
+      "status": "pass",
+      "value": "two adjacent windows plus difference vector",
+      "raw_hits": []
+    },
+    {
+      "name": "temporal_order: known_task_family",
+      "status": "pass",
+      "observed": "diagnostic",
+      "allowed": [
+        "diagnostic",
+        "forecast",
+        "retrieval",
+        "supervised"
+      ]
+    },
+    {
+      "name": "temporal_order: modality_list_present",
+      "status": "pass",
+      "observed": [
+        "video",
+        "pose_slam",
+        "motion_capture",
+        "inertial"
+      ]
+    },
+    {
+      "name": "temporal_order: known_modalities",
+      "status": "pass",
+      "unknown": []
+    },
+    {
+      "name": "temporal_order: modality_assets_exist",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "temporal_order: poster_modality_in_task_modalities",
+      "status": "pass",
+      "poster_modality": "video",
+      "modalities": [
+        "video",
+        "pose_slam",
+        "motion_capture",
+        "inertial"
+      ]
+    },
+    {
+      "name": "temporal_order: numeric_minimal_and_neural_metrics",
+      "status": "pass",
+      "metric": {
+        "key": "f1",
+        "name": "F1",
+        "direction": "higher",
+        "minimal": 0.5487364620938628,
+        "neural_mlp": 0.8717948717948718
+      }
+    },
+    {
+      "name": "temporal_order: middle_modules_explain_process",
+      "status": "pass",
+      "observed_count": 5
+    },
+    {
+      "name": "misalignment_detection: required_fields",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "misalignment_detection: human_readable_display_name",
+      "status": "pass",
+      "expected": "Multimodal Synchronization Detection",
+      "observed": "Multimodal Synchronization Detection"
+    },
+    {
+      "name": "misalignment_detection: artifact_id_matches_key",
+      "status": "pass",
+      "observed": "misalignment_detection"
+    },
+    {
+      "name": "misalignment_detection: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "aligned/shifted pairs -> feature combiner -> binary classifier",
+      "raw_hits": []
+    },
+    {
+      "name": "misalignment_detection: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "aligned or shifted",
+      "raw_hits": []
+    },
+    {
+      "name": "misalignment_detection: public_field_card_blurb_is_human_readable",
+      "status": "pass",
+      "value": "Detect whether motion and visual/depth streams have been artificially shifted out of sync.",
+      "raw_hits": []
+    },
+    {
+      "name": "misalignment_detection: public_field_display_name_is_human_readable",
+      "status": "pass",
+      "value": "Multimodal Synchronization Detection",
+      "raw_hits": []
+    },
+    {
+      "name": "misalignment_detection: public_field_research_name_is_human_readable",
+      "status": "pass",
+      "value": "Cross-Modal Misalignment Detection",
+      "raw_hits": []
+    },
+    {
+      "name": "misalignment_detection: public_field_plain_goal_is_human_readable",
+      "status": "pass",
+      "value": "Detect when modalities that should match are shifted out of sync.",
+      "raw_hits": []
+    },
+    {
+      "name": "misalignment_detection: public_field_input_short_is_human_readable",
+      "status": "pass",
+      "value": "motion-side and visual/depth-side feature groups",
+      "raw_hits": []
+    },
+    {
+      "name": "misalignment_detection: known_task_family",
+      "status": "pass",
+      "observed": "diagnostic",
+      "allowed": [
+        "diagnostic",
+        "forecast",
+        "retrieval",
+        "supervised"
+      ]
+    },
+    {
+      "name": "misalignment_detection: modality_list_present",
+      "status": "pass",
+      "observed": [
+        "motion_capture",
+        "inertial",
+        "video",
+        "depth",
+        "pose_slam"
+      ]
+    },
+    {
+      "name": "misalignment_detection: known_modalities",
+      "status": "pass",
+      "unknown": []
+    },
+    {
+      "name": "misalignment_detection: modality_assets_exist",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "misalignment_detection: poster_modality_in_task_modalities",
+      "status": "pass",
+      "poster_modality": "pose_slam",
+      "modalities": [
+        "motion_capture",
+        "inertial",
+        "video",
+        "depth",
+        "pose_slam"
+      ]
+    },
+    {
+      "name": "misalignment_detection: numeric_minimal_and_neural_metrics",
+      "status": "pass",
+      "metric": {
+        "key": "f1",
+        "name": "F1",
+        "direction": "higher",
+        "minimal": 0.4865671641791045,
+        "neural_mlp": 0.7335243553008597
+      }
+    },
+    {
+      "name": "misalignment_detection: middle_modules_explain_process",
+      "status": "pass",
+      "observed_count": 5
+    },
+    {
+      "name": "markdown_heading_present:timeline_action",
+      "status": "pass",
+      "expected": "### Action Recognition (`timeline_action`)"
+    },
+    {
+      "name": "markdown_heading_present:timeline_subtask",
+      "status": "pass",
+      "expected": "### Procedure Step Recognition (`timeline_subtask`)"
+    },
+    {
+      "name": "markdown_heading_present:transition_detection",
+      "status": "pass",
+      "expected": "### Action Boundary Detection (`transition_detection`)"
+    },
+    {
+      "name": "markdown_heading_present:next_action",
+      "status": "pass",
+      "expected": "### Next-Action Prediction (`next_action`)"
+    },
+    {
+      "name": "markdown_heading_present:hand_trajectory_forecast",
+      "status": "pass",
+      "expected": "### Hand Trajectory Forecasting (`hand_trajectory_forecast`)"
+    },
+    {
+      "name": "markdown_heading_present:contact_prediction",
+      "status": "pass",
+      "expected": "### Contact State Prediction (`contact_prediction`)"
+    },
+    {
+      "name": "markdown_heading_present:object_relevance",
+      "status": "pass",
+      "expected": "### Object Relevance Prediction (`object_relevance`)"
+    },
+    {
+      "name": "markdown_heading_present:caption_grounding",
+      "status": "pass",
+      "expected": "### Language Grounding (`caption_grounding`)"
+    },
+    {
+      "name": "markdown_heading_present:cross_modal_retrieval",
+      "status": "pass",
+      "expected": "### Cross-Modal Retrieval (`cross_modal_retrieval`)"
+    },
+    {
+      "name": "markdown_heading_present:modality_reconstruction",
+      "status": "pass",
+      "expected": "### Cross-Modal Reconstruction (`modality_reconstruction`)"
+    },
+    {
+      "name": "markdown_heading_present:temporal_order",
+      "status": "pass",
+      "expected": "### Temporal Order Verification (`temporal_order`)"
+    },
+    {
+      "name": "markdown_heading_present:misalignment_detection",
+      "status": "pass",
+      "expected": "### Multimodal Synchronization Detection (`misalignment_detection`)"
+    },
+    {
+      "name": "markdown_has_12_task_sections",
+      "status": "pass",
+      "observed": 12
+    },
+    {
+      "name": "markdown_contains_case_studies",
+      "status": "pass"
+    },
+    {
+      "name": "website_marker_present:id=\"taskPlayer\"",
+      "status": "pass",
+      "marker": "id=\"taskPlayer\""
+    },
+    {
+      "name": "website_marker_present:id=\"taskGrid\"",
+      "status": "pass",
+      "marker": "id=\"taskGrid\""
+    },
+    {
+      "name": "website_marker_present:id=\"walkthroughSelector\"",
+      "status": "pass",
+      "marker": "id=\"walkthroughSelector\""
+    },
+    {
+      "name": "website_marker_present:fetch(\"data/task_walkthroughs.json\"",
+      "status": "pass",
+      "marker": "fetch(\"data/task_walkthroughs.json\""
+    },
+    {
+      "name": "website_marker_present:class=\"task-card\"",
+      "status": "pass",
+      "marker": "class=\"task-card\""
+    },
+    {
+      "name": "website_marker_present:class=\"task-card-media\"",
+      "status": "pass",
+      "marker": "class=\"task-card-media\""
+    },
+    {
+      "name": "website_marker_present:id=\"playerPlay\"",
+      "status": "pass",
+      "marker": "id=\"playerPlay\""
+    },
+    {
+      "name": "website_marker_present:id=\"playerPrev\"",
+      "status": "pass",
+      "marker": "id=\"playerPrev\""
+    },
+    {
+      "name": "website_marker_present:id=\"playerNext\"",
+      "status": "pass",
+      "marker": "id=\"playerNext\""
+    },
+    {
+      "name": "website_no_artifact_id_css_or_markup",
+      "status": "pass"
+    },
+    {
+      "name": "task_cards_do_not_render_artifact_ids",
+      "status": "pass"
+    },
+    {
+      "name": "task_cards_render_human_names",
+      "status": "pass"
+    },
+    {
+      "name": "task_cards_render_input_process_output",
+      "status": "pass"
+    },
+    {
+      "name": "task_cards_use_representative_modality_thumbnail",
+      "status": "pass"
+    },
+    {
+      "name": "interactive_player_wired_to_task_metadata",
+      "status": "pass"
+    },
+    {
+      "name": "selector_uses_human_names",
+      "status": "pass"
+    }
+  ],
+  "failures": []
+}

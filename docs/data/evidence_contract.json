@@ -78,6 +78,17 @@
       "boundary": "derived thumbnails for review and presentation; raw data remains excluded"
     },
     {
+      "id": "task_surface_integrity",
+      "claim": "Public task cards stay readable for non-expert reviewers.",
+      "status": "verified",
+      "evidence": [
+        "docs/data/task_surface_integrity.json",
+        "scripts/validate_task_surface.py",
+        "docs/index.html"
+      ],
+      "boundary": "presentation integrity only; it does not add model quality or new data"
+    },
+    {
       "id": "figure_index",
       "claim": "Public figures, charts, and modality thumbnails are indexed as auditable evidence.",
       "status": "verified",

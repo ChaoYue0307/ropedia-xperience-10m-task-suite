@@ -6,7 +6,7 @@ Current gate status: **pass**
 
 Do not present a release as current unless every automated gate passes, then verify live GitHub/HF mirrors after publishing.
 
-These gates validate public packaging, claim boundaries, mirror parity, and website integrity. They do not prove cross-episode model quality; the 32-episode Qwen3-Omni pilot remains gated on data access.
+These gates validate public packaging, claim boundaries, mirror parity, website integrity, and task-surface clarity. They do not prove cross-episode model quality; the 32-episode Qwen3-Omni pilot remains gated on data access.
 
 ## Automated Gates
 
@@ -15,6 +15,7 @@ These gates validate public packaging, claim boundaries, mirror parity, and webs
 | Scope claims guard | `python scripts/validate_scope_claims.py` | `docs/data/scope_claims_audit.json` | `pass` | Historical 32ep readiness/provenance strings are presented as real 32-episode metrics. |
 | Source alignment audit | `python scripts/validate_source_alignment.py` | `docs/data/source_alignment_audit.json` | `pass` | Official full-dataset facts, sample-card facts, API-listing caveats, or public-card boundary markers are missing or inconsistent. |
 | Website integrity | `python scripts/validate_website_integrity.py` | `docs/data/website_integrity.json` | `pass` | Local links, anchors, JSON bundles, or referenced image assets are missing or invalid. |
+| Task surface integrity | `python scripts/validate_task_surface.py` | `docs/data/task_surface_integrity.json` | `pass` | Task cards expose raw artifact ids, human-readable task names drift, modality thumbnails are missing, or the interactive task player is not wired to the generated JSON. |
 | Evaluation protocol | `python scripts/build_evaluation_protocol.py` | `docs/data/evaluation_protocol.json` | `pass` | Windowing, split policy, leakage controls, task metrics, or unsupported interpretations are not explicit. |
 | Figure index | `python scripts/build_figure_index.py` | `docs/data/figure_index.json` | `pass` | Public figures, charts, or modality thumbnails are missing, unreadable, or lack source-script provenance. |
 | Brand assets | `python scripts/build_brand_assets.py` | `docs/data/brand_assets.json` | `pass` | The ChatGPT-image-generated logo, favicon, social card, or app icons are missing or not reproducibly packaged. |
@@ -40,6 +41,7 @@ python scripts/build_evaluation_protocol.py
 python scripts/build_brand_assets.py
 python scripts/build_figure_index.py
 python scripts/validate_website_integrity.py
+python scripts/validate_task_surface.py
 python scripts/build_quality_gates.py
 python scripts/build_artifact_index.py
 python scripts/validate_publication_package.py

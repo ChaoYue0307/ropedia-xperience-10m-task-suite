@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Publication Quality Gates",
   "status": "pass",
-  "generated_at_utc": "2026-06-01T14:17:03+00:00",
+  "generated_at_utc": "2026-06-01T16:21:58+00:00",
   "rule": "Do not present a release as current unless every automated gate passes, then verify live GitHub/HF mirrors after publishing.",
   "automated_gates": [
     {
@@ -35,6 +35,18 @@
       "report": "docs/data/website_integrity.json",
       "blocks_if": "Local links, anchors, JSON bundles, or referenced image assets are missing or invalid.",
       "proves": "The GitHub Pages / HF static surface is internally coherent before upload.",
+      "current_report": {
+        "exists": true,
+        "status": "pass"
+      }
+    },
+    {
+      "id": "task_surface_integrity",
+      "title": "Task surface integrity",
+      "command": "python scripts/validate_task_surface.py",
+      "report": "docs/data/task_surface_integrity.json",
+      "blocks_if": "Task cards expose raw artifact ids, human-readable task names drift, modality thumbnails are missing, or the interactive task player is not wired to the generated JSON.",
+      "proves": "The public task cards and walkthrough/player stay aligned with generated 12-task metadata.",
       "current_report": {
         "exists": true,
         "status": "pass"

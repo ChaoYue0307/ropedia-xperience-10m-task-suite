@@ -194,6 +194,23 @@ ARTIFACTS = [
         "proves": "Machine-readable release-gate summary for validators, mirrors, and reviewer surfaces.",
     },
     {
+        "id": "task_surface_integrity",
+        "title": "Task-surface integrity report",
+        "path": "docs/data/task_surface_integrity.json",
+        "kind": "quality_gate",
+        "surface": "website_hf",
+        "volatile": True,
+        "proves": "Confirms the public 12-task cards use human-readable research names, representative modality thumbnails, and the interactive walkthrough/player JSON contract.",
+    },
+    {
+        "id": "task_surface_validator",
+        "title": "Task-surface integrity validator",
+        "path": "scripts/validate_task_surface.py",
+        "kind": "quality_gate",
+        "surface": "repo_hf",
+        "proves": "Regenerates the task-surface integrity report and fails if task cards expose raw artifact ids or lose the interactive player wiring.",
+    },
+    {
         "id": "live_publication_status",
         "title": "Live publication status",
         "path": "docs/data/live_publication_status.json",

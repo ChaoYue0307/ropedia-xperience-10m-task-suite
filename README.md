@@ -44,6 +44,7 @@ This repo is organized around an explicit proof boundary:
 | 12-task suite | `scripts/episode_task_suite.py`, per-task `metrics.json`, predictions | chronological single-episode split |
 | Neural heads | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | compact MLP heads, not a foundation model |
 | Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
+| Task surface integrity | `docs/data/task_surface_integrity.json`, `scripts/validate_task_surface.py` | public task cards stay human-readable, thumbnail-backed, and wired to the walkthrough/player data |
 | Qwen3-Omni | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `MULTI_EPISODE_ACCESS_STATUS.md` | readiness-only until 32 valid episodes are available |
 | Scope claims guard | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | historical `32ep` path strings are provenance, not 32-episode results |
 | Mirror parity | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | prepared GitHub/HF mirrors carry matching data, figure, website HTML, and validator files |
@@ -68,6 +69,8 @@ The current prepared-mirror parity report is at
 [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json).
 The current scope-claims audit is at
 [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json).
+The task-card and walkthrough-player integrity report is at
+[`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json).
 The generated evaluation protocol is at
 [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) and
 [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json).
@@ -235,6 +238,7 @@ Hugging Face Space app:
 | Figure index | `FIGURE_INDEX.md`, `docs/data/figure_index.json` | Makes public figures, charts, modality thumbnails, dimensions, hashes, and source scripts auditable |
 | Brand assets | `docs/data/brand_assets.json`, `docs/assets/brand/` | Makes the generated logo, favicon, README/HF card image, app icon, and social preview auditable |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` | Defines the task unit, split, metrics, leakage controls, and unsupported interpretations |
+| Task surface integrity | `docs/data/task_surface_integrity.json` | Checks the public task cards, readable task names, representative modality thumbnails, and interactive task player |
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and debuggable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode claims reviewable without rerunning first |
@@ -318,7 +322,7 @@ scripts/
   neural_task_models.py             # optional PyTorch MLP heads for all 12 tasks
   research_direction_taxonomy.py    # maps 12 tasks to the four research tracks
   research_direction_extension_tasks.py # one extra data-backed probe per track
-  task_walkthroughs.py              # beginner explanations for each task contract
+  task_walkthroughs.py              # human-readable task-card and walkthrough-player metadata
   generate_visualizations.py        # refreshes SVG charts + summary JSON
   render_task_suite_infographic.py  # renders the ChatGPT-image-backed PNG
   export_modality_atlas_assets.py   # exports responsive modality-card assets
@@ -328,6 +332,7 @@ scripts/
   build_quality_gates.py            # builds reviewer-facing publication gates
   validate_mirror_parity.py         # checks prepared GitHub/HF mirror file parity
   validate_scope_claims.py          # checks Qwen3-Omni readiness/result claim boundaries
+  validate_task_surface.py          # checks readable task cards and interactive player wiring
   validate_website_integrity.py     # checks local site links, anchors, JSON, images
   validate_publication_package.py   # checks public repo + HF bundle hygiene
   publish_hf_bundles.py             # uploads prepared HF Space/artifact/model bundles
@@ -357,6 +362,7 @@ docs/
   data/live_publication_status.json # live GitHub/HF publication verification
   data/quality_gates.json           # machine-readable publication gates
   data/publication_audit.json       # machine-readable publication hygiene check
+  data/task_surface_integrity.json  # machine-readable task-card/player integrity check
   data/website_integrity.json       # machine-readable website integrity check
   data/project_manifest.json        # machine-readable public-surface metadata
   data/reviewer_packet.json         # machine-readable reviewer path and proof boundary
@@ -625,6 +631,7 @@ Primary files:
 - [`TASK_WALKTHROUGHS.md`](results/episode_task_suite/task_walkthroughs/TASK_WALKTHROUGHS.md)
 - [`task_walkthroughs.json`](results/episode_task_suite/task_walkthroughs/task_walkthroughs.json)
 - [`docs/data/task_walkthroughs.json`](docs/data/task_walkthroughs.json)
+- [`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json)
 
 Compact map:
 

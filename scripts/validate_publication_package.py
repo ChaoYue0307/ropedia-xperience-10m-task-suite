@@ -67,6 +67,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
             "all 12 task families before the",
             "Public-sample modality thumbnails remain enlarged below",
             "interactive task walkthrough/player",
+            "task_surface_integrity.json",
         ],
     },
     {
@@ -88,6 +89,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
             "native responsive modality atlas",
             "interactive task walkthrough/player",
             "website HTML",
+            "task_surface_integrity.json",
         ],
     },
     {
@@ -108,6 +110,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
             "task-first 12-task map",
             "interactive task walkthrough/player",
             "including critical website HTML",
+            "task_surface_integrity.json",
         ],
     },
     {
@@ -128,6 +131,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
             "all 12 task families before the",
             "Public-sample modality thumbnails remain enlarged below",
             "interactive task walkthrough/player",
+            "task_surface_integrity.json",
         ],
     },
     {
@@ -149,6 +153,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
             "responsive modality atlas",
             "interactive task player",
             "website HTML",
+            "task_surface_integrity.json",
         ],
     },
 ]
@@ -282,6 +287,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "docs/data/modality_atlas.json",
         "docs/data/mirror_parity.json",
         "docs/data/scope_claims_audit.json",
+        "docs/data/task_surface_integrity.json",
         "docs/data/website_integrity.json",
         "docs/data/summary_metrics.json",
         "docs/assets/modalities/video.jpg",
@@ -317,6 +323,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "scripts/validate_mirror_parity.py",
         "scripts/validate_scope_claims.py",
         "scripts/validate_source_alignment.py",
+        "scripts/validate_task_surface.py",
         "scripts/validate_website_integrity.py",
         "scripts/publish_hf_bundles.py",
         "scripts/omni/train_qwen3_omni_lora.py",
