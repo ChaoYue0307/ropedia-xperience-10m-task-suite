@@ -1,10 +1,61 @@
 {
   "title": "Ropedia Xperience-10M Figure Index",
   "status": "pass",
-  "generated_at_utc": "2026-06-01T11:28:24+00:00",
+  "generated_at_utc": "2026-06-01T13:12:56+00:00",
   "scope": "Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience-10M videos, annotations, RRD files, and Qwen weights are excluded.",
-  "figure_count": 18,
+  "figure_count": 21,
   "figures": [
+    {
+      "id": "brand_logo_mark",
+      "title": "ChatGPT-image project logo mark",
+      "path": "docs/assets/brand/xperience10m-logo-mark-512.png",
+      "role": "Primary X-shaped multimodal camera mark used for the website header, README, HF cards, and brand identity.",
+      "source_script": "scripts/build_brand_assets.py",
+      "surface": "README, website, HF Space, artifact dataset, model card, favicon variants",
+      "exists": true,
+      "bytes": 204385,
+      "sha256": "600c0924c0d85476ad5993e819a7daab34196969cda36bd674a876940bfc6f31",
+      "dimensions": {
+        "format": "PNG",
+        "width": 512,
+        "height": 512
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "brand_social_card",
+      "title": "Project logo social card",
+      "path": "docs/assets/brand/xperience10m-logo-social-card.png",
+      "role": "Large preview image for README, Hugging Face cards, and Open Graph/Twitter social sharing.",
+      "source_script": "scripts/build_brand_assets.py",
+      "surface": "README, website metadata, HF Space, artifact dataset, model card",
+      "exists": true,
+      "bytes": 173546,
+      "sha256": "a87af7b24a89f39934c4081181fbb32351c4ec0e31b2073c06dcec98e6edf18b",
+      "dimensions": {
+        "format": "PNG",
+        "width": 1200,
+        "height": 630
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "brand_favicon",
+      "title": "Project favicon",
+      "path": "docs/assets/brand/xperience10m-logo-favicon-64.png",
+      "role": "Small dark-tile logo for browser tabs and compact navigation.",
+      "source_script": "scripts/build_brand_assets.py",
+      "surface": "website favicon and header",
+      "exists": true,
+      "bytes": 5243,
+      "sha256": "0801c0ce4d19f2b994d75204252eba5a1621131f174b39924e72ca4afac226b0",
+      "dimensions": {
+        "format": "PNG",
+        "width": 64,
+        "height": 64
+      },
+      "source_script_exists": true
+    },
     {
       "id": "task_suite_infographic",
       "title": "12-task suite infographic",

@@ -21,6 +21,7 @@ DEFAULT_OUTPUT = ROOT / "docs/data/mirror_parity.json"
 
 DATA_FILES = [
     "artifact_index.json",
+    "brand_assets.json",
     "evidence_contract.json",
     "evaluation_protocol.json",
     "figure_index.json",
@@ -43,6 +44,13 @@ DATA_FILES = [
 ]
 
 ASSET_FILES = [
+    "brand/xperience10m-logo-apple-touch.png",
+    "brand/xperience10m-logo-favicon-32.png",
+    "brand/xperience10m-logo-favicon-64.png",
+    "brand/xperience10m-logo-mark.png",
+    "brand/xperience10m-logo-mark-192.png",
+    "brand/xperience10m-logo-mark-512.png",
+    "brand/xperience10m-logo-social-card.png",
     "task_suite_infographic.png",
     "pipeline_diagram.png",
     "task_architectures.png",
@@ -57,6 +65,7 @@ ASSET_FILES = [
 
 SCRIPT_FILES = [
     "build_artifact_index.py",
+    "build_brand_assets.py",
     "build_evaluation_protocol.py",
     "build_figure_index.py",
     "build_quality_gates.py",
@@ -69,7 +78,10 @@ SCRIPT_FILES = [
 ]
 
 WEBSITE_FILES = [
+    "apple-touch-icon.png",
+    "favicon.png",
     "index.html",
+    "site.webmanifest",
 ]
 
 DOC_FILES = [

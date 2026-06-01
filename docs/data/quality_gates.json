@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Publication Quality Gates",
   "status": "pass",
-  "generated_at_utc": "2026-06-01T12:02:21+00:00",
+  "generated_at_utc": "2026-06-01T13:19:42+00:00",
   "rule": "Do not present a release as current unless every automated gate passes, then verify live GitHub/HF mirrors after publishing.",
   "automated_gates": [
     {
@@ -59,6 +59,18 @@
       "report": "docs/data/figure_index.json",
       "blocks_if": "Public figures, charts, or modality thumbnails are missing, unreadable, or lack source-script provenance.",
       "proves": "Reviewer-facing visual assets have dimensions, SHA-256 hashes, source scripts, and presentation roles.",
+      "current_report": {
+        "exists": true,
+        "status": "pass"
+      }
+    },
+    {
+      "id": "brand_assets",
+      "title": "Brand assets",
+      "command": "python scripts/build_brand_assets.py",
+      "report": "docs/data/brand_assets.json",
+      "blocks_if": "The ChatGPT-image-generated logo, favicon, social card, or app icons are missing or not reproducibly packaged.",
+      "proves": "The same project logo is available for website header, favicon, README, Hugging Face cards, and social previews.",
       "current_report": {
         "exists": true,
         "status": "pass"

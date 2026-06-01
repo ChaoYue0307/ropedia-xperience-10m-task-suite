@@ -7,6 +7,10 @@
 [![Citation](https://img.shields.io/badge/citation-CFF-7ae5c3)](CITATION.cff)
 [![License](https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-a7f078)](LICENSE)
 
+<p align="center">
+  <img src="docs/assets/brand/xperience10m-logo-social-card.png" alt="Ropedia Xperience-10M Task Suite logo card" width="760">
+</p>
+
 An audit-first embodied-AI learning repo built around one public
 Xperience-10M sample episode released by Ropedia.
 
@@ -39,6 +43,7 @@ This repo is organized around an explicit proof boundary:
 | Official Xperience-10M description | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | aligns public wording with the official gated dataset card, public sample card, and HF API metadata; does not mirror raw data |
 | Source alignment audit | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json`, `scripts/validate_source_alignment.py` | validates source facts and boundary wording across repo, website, and HF cards |
 | Figure index | `FIGURE_INDEX.md`, `docs/data/figure_index.json`, `scripts/build_figure_index.py` | catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts |
+| Brand assets | `docs/assets/brand/`, `docs/favicon.png`, `docs/apple-touch-icon.png`, `scripts/build_brand_assets.py` | applies the ChatGPT-image-generated project logo across the website, README, HF cards, favicon, and social previews |
 | Data windows | `results/episode_task_suite/windows.csv`, `shared_windows.npz`, `summary_report.json` | one public sample episode |
 | Feature contract | `results/episode_task_suite/feature_manifest.json`, `available_modalities.json` | 8,378 current features; audio documented but not featurized |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | defines windowing, chronological split, leakage controls, per-task metrics, and unsupported interpretations |
@@ -92,6 +97,10 @@ The generated source-alignment audit is at
 The generated figure index is at
 [`FIGURE_INDEX.md`](FIGURE_INDEX.md) and
 [`docs/data/figure_index.json`](docs/data/figure_index.json).
+The ChatGPT-image project logo is packaged by
+[`scripts/build_brand_assets.py`](scripts/build_brand_assets.py), stored under
+[`docs/assets/brand/`](docs/assets/brand/), and audited in
+[`docs/data/brand_assets.json`](docs/data/brand_assets.json).
 
 ## Reviewer Scorecard
 
@@ -118,7 +127,7 @@ If you are reviewing the project cold, open these in order:
 
 | Step | Question | Primary artifacts | What should be true |
 | --- | --- | --- | --- |
-| 1 | What is actually claimed? | [`REVIEWER_SCORECARD.md`](REVIEWER_SCORECARD.md), [`docs/data/reviewer_scorecard.json`](docs/data/reviewer_scorecard.json), [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`QUALITY_GATES.md`](QUALITY_GATES.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/figure_index.json`](docs/data/figure_index.json), [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json), [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json), [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Single-episode task engineering and hygiene are claimed; historical `32ep` identifiers are not treated as real 32-episode results, visual assets are indexed, and quality gates plus prepared and live mirrors are checked. |
+| 1 | What is actually claimed? | [`REVIEWER_SCORECARD.md`](REVIEWER_SCORECARD.md), [`docs/data/reviewer_scorecard.json`](docs/data/reviewer_scorecard.json), [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`QUALITY_GATES.md`](QUALITY_GATES.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/figure_index.json`](docs/data/figure_index.json), [`docs/data/brand_assets.json`](docs/data/brand_assets.json), [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json), [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json), [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Single-episode task engineering and hygiene are claimed; historical `32ep` identifiers are not treated as real 32-episode results, visual/brand assets are indexed, and quality gates plus prepared and live mirrors are checked. |
 | 2 | What is the official upstream dataset? | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md), [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json), [official HF dataset](https://huggingface.co/datasets/ropedia-ai/xperience-10m) | The full dataset is described as a gated large-scale 4D multimodal egocentric source; this repo validates only one public sample episode. |
 | 3 | Are source facts consistently presented? | [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md), [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json), [`scripts/validate_source_alignment.py`](scripts/validate_source_alignment.py) | Repo, website, and HF cards preserve full-dataset, sample-card, API-listing, and project-boundary markers. |
 | 4 | How exactly are tasks evaluated? | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md), [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json), [`scripts/build_evaluation_protocol.py`](scripts/build_evaluation_protocol.py) | The window unit, chronological split, leakage controls, task metrics, and unsupported interpretations are explicit. |
@@ -230,6 +239,7 @@ Hugging Face Space app:
 | Official dataset alignment | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Keeps public descriptions aligned with the official gated dataset card |
 | Source alignment audit | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json` | Verifies source facts and boundary markers across repo, website, and HF cards |
 | Figure index | `FIGURE_INDEX.md`, `docs/data/figure_index.json` | Makes public figures, charts, modality thumbnails, dimensions, hashes, and source scripts auditable |
+| Brand assets | `docs/data/brand_assets.json`, `docs/assets/brand/` | Makes the generated logo, favicon, README/HF card image, app icon, and social preview auditable |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` | Defines the task unit, split, metrics, leakage controls, and unsupported interpretations |
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and debuggable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
@@ -319,6 +329,7 @@ scripts/
   render_task_suite_infographic.py  # renders the ChatGPT-image-backed PNG
   export_modality_atlas_assets.py   # exports responsive modality-card assets
   render_overview_figures.py        # renders polished pipeline/architecture PNGs
+  build_brand_assets.py             # derives logo sizes, favicon, social card
   build_artifact_index.py           # builds the source-of-truth reviewer index
   build_quality_gates.py            # builds reviewer-facing publication gates
   validate_mirror_parity.py         # checks prepared GitHub/HF mirror file parity
@@ -358,6 +369,7 @@ docs/
   data/research_direction_extensions.json # four extra probe data bundle
   data/task_walkthroughs.json       # beginner task explanation data bundle
   data/modality_atlas.json          # responsive modality-card data
+  assets/brand/*.png                # project logo, favicon, social card
   assets/task_suite_infographic.png # 12-task presentation graphic
   assets/modalities/                # public-sample derived modality thumbnails
   assets/pipeline_diagram.png       # verified episode pipeline graphic

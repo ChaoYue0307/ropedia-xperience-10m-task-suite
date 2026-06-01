@@ -1,14 +1,14 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T11:30:15+00:00",
+  "generated_at_utc": "2026-06-01T13:12:56+00:00",
   "docs_root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 2,
-    "local_references": 81,
-    "external_reference_count": 70,
-    "json_files": 21,
-    "image_assets_referenced": 18,
+    "local_references": 87,
+    "external_reference_count": 72,
+    "json_files": 22,
+    "image_assets_referenced": 19,
     "failure_count": 0
   },
   "failures": {
@@ -24,8 +24,8 @@
       "name": "reviewer_scorecard_precedes_evidence_ledger",
       "status": "pass",
       "reason": "The reviewer scorecard should appear before the deeper evidence ledger.",
-      "scorecard_index": 36651,
-      "evidence_index": 43287
+      "scorecard_index": 37042,
+      "evidence_index": 43678
     },
     {
       "name": "reviewer_scorecard_links_json",
@@ -37,9 +37,9 @@
       "name": "evaluation_protocol_between_scorecard_and_evidence",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "scorecard_index": 36651,
-      "protocol_index": 40880,
-      "evidence_index": 43287
+      "scorecard_index": 37042,
+      "protocol_index": 41271,
+      "evidence_index": 43678
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -95,14 +95,19 @@
     {
       "path": "index.html",
       "id_count": 34,
-      "reference_count": 80,
-      "image_count": 20
+      "reference_count": 86,
+      "image_count": 21
     }
   ],
   "json_files": [
     {
       "path": "data/artifact_index.json",
-      "bytes": 19321,
+      "bytes": 20587,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/brand_assets.json",
+      "bytes": 3921,
       "top_level_type": "dict"
     },
     {
@@ -112,7 +117,7 @@
     },
     {
       "path": "data/evidence_contract.json",
-      "bytes": 10496,
+      "bytes": 10906,
       "top_level_type": "dict"
     },
     {
@@ -122,12 +127,12 @@
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 19346,
+      "bytes": 21631,
       "top_level_type": "dict"
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 62297,
+      "bytes": 66049,
       "top_level_type": "dict"
     },
     {
@@ -137,22 +142,22 @@
     },
     {
       "path": "data/project_manifest.json",
-      "bytes": 4274,
+      "bytes": 4418,
       "top_level_type": "dict"
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 5982,
+      "bytes": 6098,
       "top_level_type": "dict"
     },
     {
       "path": "data/quality_gates.json",
-      "bytes": 5310,
+      "bytes": 5819,
       "top_level_type": "dict"
     },
     {
       "path": "data/reproducibility_matrix.json",
-      "bytes": 5026,
+      "bytes": 5113,
       "top_level_type": "dict"
     },
     {
@@ -167,7 +172,7 @@
     },
     {
       "path": "data/reviewer_packet.json",
-      "bytes": 7290,
+      "bytes": 7386,
       "top_level_type": "dict"
     },
     {
@@ -197,7 +202,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 8240,
+      "bytes": 8528,
       "top_level_type": "dict"
     },
     {
@@ -207,6 +212,14 @@
     }
   ],
   "images": [
+    {
+      "path": "assets/brand/xperience10m-logo-favicon-64.png",
+      "exists": true,
+      "bytes": 5243,
+      "width": 64,
+      "height": 64,
+      "format": "PNG"
+    },
     {
       "path": "assets/charts/cross_modal_retrieval.svg",
       "exists": true,

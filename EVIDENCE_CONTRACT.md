@@ -9,6 +9,7 @@ local artifact that a reader can inspect before trusting the dashboard.
 | The public dataset description is aligned with the official gated Xperience-10M dataset card and public sample card. | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Verified description alignment | Summarizes upstream public metadata, API listing facts, sample license/tooling, and card facts; does not grant access or mirror raw data |
 | Source facts and boundary markers are validated across repo, website, and HF cards. | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json`, `scripts/validate_source_alignment.py` | Verified source audit | Offline committed-fact audit; does not fetch private gated data |
 | Public figures are indexed as reviewer evidence. | `FIGURE_INDEX.md`, `docs/data/figure_index.json`, `scripts/build_figure_index.py` | Verified visual evidence | Derived figures and thumbnails only; does not include raw MP4/HDF5/RRD data |
+| The project logo is consistently packaged across public surfaces. | `docs/data/brand_assets.json`, `docs/assets/brand/`, `scripts/build_brand_assets.py` | Verified brand packaging | Generated presentation assets only; does not contain raw Xperience-10M data or model weights |
 | The public Xperience-10M sample has been converted into aligned model windows. | `results/episode_task_suite/windows.csv`, `results/episode_task_suite/shared_windows.npz`, `results/episode_task_suite/summary_report.json` | Verified for 5,821 frames and 1,161 windows | One public sample episode only |
 | The current feature contract is explicit and reviewable. | `results/episode_task_suite/feature_manifest.json`, `results/episode_task_suite/available_modalities.json` | Verified for an 8,378-d feature vector | Audio is present in MP4 streams but not yet a feature block |
 | The task evaluation protocol is explicit and generated from committed metrics. | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | Verified protocol | Defines windows, split, per-task metrics, leakage controls, and unsupported interpretations; does not prove cross-episode quality |
@@ -42,8 +43,9 @@ local artifact that a reader can inspect before trusting the dashboard.
 4. Read `SOURCE_ALIGNMENT_AUDIT.md` and
    `docs/data/source_alignment_audit.json` to verify the same source facts are
    present across repo, website, and HF cards.
-5. Read `FIGURE_INDEX.md` and `docs/data/figure_index.json` to verify public
-   figures, charts, modality thumbnails, dimensions, hashes, and source scripts.
+5. Read `FIGURE_INDEX.md`, `docs/data/figure_index.json`, and
+   `docs/data/brand_assets.json` to verify public figures, charts, modality
+   thumbnails, logo assets, dimensions, hashes, and source scripts.
 6. Read `EVALUATION_PROTOCOL.md` and `docs/data/evaluation_protocol.json` to
    check windowing, split policy, per-task metrics, leakage controls, and
    unsupported interpretations.

@@ -60,6 +60,14 @@ GATES = [
         "proves": "Reviewer-facing visual assets have dimensions, SHA-256 hashes, source scripts, and presentation roles.",
     },
     {
+        "id": "brand_assets",
+        "title": "Brand assets",
+        "command": "python scripts/build_brand_assets.py",
+        "report": "docs/data/brand_assets.json",
+        "blocks_if": "The ChatGPT-image-generated logo, favicon, social card, or app icons are missing or not reproducibly packaged.",
+        "proves": "The same project logo is available for website header, favicon, README, Hugging Face cards, and social previews.",
+    },
+    {
         "id": "quality_gate_manifest",
         "title": "Quality-gate manifest",
         "command": "python scripts/build_quality_gates.py",
@@ -188,6 +196,7 @@ def markdown(payload: dict) -> str:
         "python scripts/validate_scope_claims.py",
         "python scripts/validate_source_alignment.py",
         "python scripts/build_evaluation_protocol.py",
+        "python scripts/build_brand_assets.py",
         "python scripts/build_figure_index.py",
         "python scripts/validate_website_integrity.py",
         "python scripts/build_quality_gates.py",

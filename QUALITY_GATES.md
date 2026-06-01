@@ -17,6 +17,7 @@ These gates validate public packaging, claim boundaries, mirror parity, and webs
 | Website integrity | `python scripts/validate_website_integrity.py` | `docs/data/website_integrity.json` | `pass` | Local links, anchors, JSON bundles, or referenced image assets are missing or invalid. |
 | Evaluation protocol | `python scripts/build_evaluation_protocol.py` | `docs/data/evaluation_protocol.json` | `pass` | Windowing, split policy, leakage controls, task metrics, or unsupported interpretations are not explicit. |
 | Figure index | `python scripts/build_figure_index.py` | `docs/data/figure_index.json` | `pass` | Public figures, charts, or modality thumbnails are missing, unreadable, or lack source-script provenance. |
+| Brand assets | `python scripts/build_brand_assets.py` | `docs/data/brand_assets.json` | `pass` | The ChatGPT-image-generated logo, favicon, social card, or app icons are missing or not reproducibly packaged. |
 | Quality-gate manifest | `python scripts/build_quality_gates.py` | `docs/data/quality_gates.json` | `pass` | A public reviewer cannot see the current packaging gates in one place. |
 | Artifact index | `python scripts/build_artifact_index.py` | `docs/data/artifact_index.json` | `pass` | Reviewer-critical evidence files are missing from the indexed proof layer. |
 | Publication hygiene | `python scripts/validate_publication_package.py` | `docs/data/publication_audit.json` | `pass` | Raw data, caches, heavy archives, token strings, missing required assets, or stale public-card figure references enter public bundles. |
@@ -36,6 +37,7 @@ These gates validate public packaging, claim boundaries, mirror parity, and webs
 python scripts/validate_scope_claims.py
 python scripts/validate_source_alignment.py
 python scripts/build_evaluation_protocol.py
+python scripts/build_brand_assets.py
 python scripts/build_figure_index.py
 python scripts/validate_website_integrity.py
 python scripts/build_quality_gates.py

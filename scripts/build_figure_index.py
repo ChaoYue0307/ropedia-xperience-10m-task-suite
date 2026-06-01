@@ -19,6 +19,30 @@ OUTPUT_MD = ROOT / "FIGURE_INDEX.md"
 
 FIGURES = [
     {
+        "id": "brand_logo_mark",
+        "title": "ChatGPT-image project logo mark",
+        "path": "docs/assets/brand/xperience10m-logo-mark-512.png",
+        "role": "Primary X-shaped multimodal camera mark used for the website header, README, HF cards, and brand identity.",
+        "source_script": "scripts/build_brand_assets.py",
+        "surface": "README, website, HF Space, artifact dataset, model card, favicon variants",
+    },
+    {
+        "id": "brand_social_card",
+        "title": "Project logo social card",
+        "path": "docs/assets/brand/xperience10m-logo-social-card.png",
+        "role": "Large preview image for README, Hugging Face cards, and Open Graph/Twitter social sharing.",
+        "source_script": "scripts/build_brand_assets.py",
+        "surface": "README, website metadata, HF Space, artifact dataset, model card",
+    },
+    {
+        "id": "brand_favicon",
+        "title": "Project favicon",
+        "path": "docs/assets/brand/xperience10m-logo-favicon-64.png",
+        "role": "Small dark-tile logo for browser tabs and compact navigation.",
+        "source_script": "scripts/build_brand_assets.py",
+        "surface": "website favicon and header",
+    },
+    {
         "id": "task_suite_infographic",
         "title": "12-task suite infographic",
         "path": "docs/assets/task_suite_infographic.png",

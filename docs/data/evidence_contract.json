@@ -89,6 +89,17 @@
       "boundary": "records derived visual assets, dimensions, hashes, roles, and source scripts; raw Xperience-10M data remains excluded"
     },
     {
+      "id": "brand_assets",
+      "claim": "A project logo is consistently applied across public surfaces.",
+      "status": "verified",
+      "evidence": [
+        "docs/assets/brand/",
+        "docs/data/brand_assets.json",
+        "scripts/build_brand_assets.py"
+      ],
+      "boundary": "ChatGPT-image-generated logo and deterministic derivatives only; no raw dataset data or model weights"
+    },
+    {
       "id": "twelve_tasks",
       "claim": "The 12 task heads are real scripts and artifacts, not presentation placeholders.",
       "status": "verified",
