@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T11:31:45+00:00",
+  "generated_at_utc": "2026-06-01T11:50:58+00:00",
   "status": "pass",
   "artifact_count": 46,
   "missing": [],
@@ -215,8 +215,8 @@
       "surface": "repo_hf",
       "proves": "Lists the automated and post-publish gates required before presenting a release as current.",
       "exists": true,
-      "bytes": 3443,
-      "sha256": "2701aef5d3f32d08342d7b45851eced1ba394fbf84019fff558c44c630128782"
+      "bytes": 3687,
+      "sha256": "4981de10025daa4c41eff5ed79c52bd9c71a85641e908c5d0fe2c5e959e43c3e"
     },
     {
       "id": "quality_gate_manifest",
@@ -226,8 +226,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable release-gate summary for validators, mirrors, and reviewer surfaces.",
       "exists": true,
-      "bytes": 5310,
-      "sha256": "c41756a50eccabfd7102d46204bf1f88e70036101628f69a46e9214659afdc19"
+      "bytes": 5819,
+      "sha256": "d8f7f77f083e012f038a32490f105f73fb376247a935207d13e09b658d68fd74"
     },
     {
       "id": "live_publication_status",
@@ -249,8 +249,8 @@
       "surface": "repo",
       "proves": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 17243,
-      "sha256": "9c7fbe877fd57e09fa8b44807161ca2fbcba78c430ff638d53f9db9ecb526bb8"
+      "bytes": 17579,
+      "sha256": "095c3d5f7cb9fac74173525cb6375b01c76366fd75638c111c2b3e498b711d4f"
     },
     {
       "id": "reproducibility_contract",
@@ -294,7 +294,7 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 5982,
+      "bytes": 6098,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -318,7 +318,7 @@
       "volatile": true,
       "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 62297,
+      "bytes": 66049,
       "hash_policy": "existence_and_size_only"
     },
     {
