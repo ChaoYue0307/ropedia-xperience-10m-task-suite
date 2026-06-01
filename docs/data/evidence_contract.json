@@ -24,6 +24,17 @@
       "boundary": "8,378-d feature vector; audio is documented but not yet featurized"
     },
     {
+      "id": "modality_atlas",
+      "claim": "The public sample modalities are inspectable without raw data redistribution.",
+      "status": "verified",
+      "evidence": [
+        "docs/data/modality_atlas.json",
+        "docs/assets/modalities/",
+        "docs/index.html"
+      ],
+      "boundary": "derived thumbnails for review and presentation; raw data remains excluded"
+    },
+    {
       "id": "twelve_tasks",
       "claim": "The 12 task heads are real scripts and artifacts, not presentation placeholders.",
       "status": "verified",

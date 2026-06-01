@@ -1,8 +1,8 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T01:16:11+00:00",
+  "generated_at_utc": "2026-06-01T01:58:53+00:00",
   "status": "pass",
-  "artifact_count": 24,
+  "artifact_count": 26,
   "missing": [],
   "by_kind": {
     "claim_boundary": 1,
@@ -11,12 +11,13 @@
     "hygiene_report": 1,
     "metadata": 1,
     "metrics_source": 2,
-    "website_data": 1,
+    "website_data": 2,
     "data_contract": 3,
     "result_directory": 1,
     "taxonomy": 1,
     "onboarding_doc": 1,
     "generated_figure": 3,
+    "generated_figure_assets": 1,
     "blocker_report": 1,
     "scaleup_status": 1,
     "citation": 1,
@@ -31,8 +32,8 @@
       "surface": "repo",
       "proves": "Defines what is verified, what is smoke-only, and what must not be inferred.",
       "exists": true,
-      "bytes": 5004,
-      "sha256": "94e52ae085b3bda7af651c9d0998837f12b806321b9b2361b49ac9641eae58fe"
+      "bytes": 5356,
+      "sha256": "c528bfc709f52dae1897e9604de71242aad214a2609a8d674e7491bfd0a8804e"
     },
     {
       "id": "reviewer_packet",
@@ -42,8 +43,8 @@
       "surface": "website_hf",
       "proves": "Gives a short audit path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 4084,
-      "sha256": "06f2f2238659eebf4f70114e724339dd78e3eb94c63303047d27a00b5c2748d9"
+      "bytes": 4215,
+      "sha256": "8c0e290b5eec26019ff179b6e05a2a2993afc468eec13637696a03b262c384ab"
     },
     {
       "id": "artifact_guide",
@@ -53,8 +54,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 5633,
-      "sha256": "cad62f9cc60c7455443a4c9ce16c6846af9ea07730071526462639bbddef8def"
+      "bytes": 5946,
+      "sha256": "90964ae9df162d99d84317ccb9d5565a7648d053c824a7fb219191244c456532"
     },
     {
       "id": "reproducibility_contract",
@@ -64,8 +65,8 @@
       "surface": "repo_hf",
       "proves": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
       "exists": true,
-      "bytes": 4828,
-      "sha256": "2a39958e0081a70a3b5b7bce68c82df1d32d319bbadfcd317ea7ca5582ac8c1e"
+      "bytes": 4956,
+      "sha256": "9b61b1aa8eb8b27e41bed8532b1966baf28d5902fbee8d4bf3e82d3c4fdc6fac"
     },
     {
       "id": "reproducibility_matrix",
@@ -75,8 +76,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable reproduction steps with expected artifacts and public boundaries.",
       "exists": true,
-      "bytes": 3665,
-      "sha256": "cd08d46920fae3a8f4b9efd1ecf28c0dea31e0d056a63d84b0b6072bd29240c4"
+      "bytes": 3749,
+      "sha256": "7aae6b34a5d8d6a817fca8fb5b0f91bb8e7d4820f73fc435b1cb75c7199671da"
     },
     {
       "id": "artifact_index_builder",
@@ -86,8 +87,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 9858,
-      "sha256": "85bdfcb8e8bd138af682b85d391f0281c2446dd283311dcdb5c1179917fc3330"
+      "bytes": 10510,
+      "sha256": "628191cc8f3d4832bc43d9ce713f99503a2f2489215069890aad84c5ed59a33b"
     },
     {
       "id": "publication_audit",
@@ -98,7 +99,7 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 3442,
+      "bytes": 3826,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -109,8 +110,8 @@
       "surface": "website_hf",
       "proves": "Lists public URLs, upstream sources, and machine-readable project metadata.",
       "exists": true,
-      "bytes": 2557,
-      "sha256": "105ca3f8866b1ef20562b66e18599d64e2d7641bf1107ce47f209aa7cf6d02df"
+      "bytes": 2612,
+      "sha256": "543487c7b480fa34a139dba1fa822394ce9bafe1fda15af83dcf2188e8aef036"
     },
     {
       "id": "task_summary",
@@ -221,6 +222,28 @@
       "exists": true,
       "bytes": 2350603,
       "sha256": "74750ce99569a065175d2c5bcb466fda3a172f7716527fbd97df6d40a7230548"
+    },
+    {
+      "id": "modality_atlas",
+      "title": "Responsive modality atlas",
+      "path": "docs/data/modality_atlas.json",
+      "kind": "website_data",
+      "surface": "website_hf",
+      "proves": "Documents the seven public-sample modality cards and their derived thumbnail assets.",
+      "exists": true,
+      "bytes": 3838,
+      "sha256": "7674392102fb28acbb849b0a53117d0327f22ce5d356a5294d937428ed44383e"
+    },
+    {
+      "id": "modality_thumbnails",
+      "title": "Standalone modality thumbnails",
+      "path": "docs/assets/modalities",
+      "kind": "generated_figure_assets",
+      "surface": "website_hf",
+      "proves": "Stores small derived thumbnails for readable website modality cards without raw data redistribution.",
+      "exists": true,
+      "file_count": 7,
+      "bytes": 251587
     },
     {
       "id": "pipeline_figure",

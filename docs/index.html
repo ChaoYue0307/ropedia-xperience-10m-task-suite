@@ -351,6 +351,143 @@
       max-width: 100%;
       height: auto;
     }
+    .modality-atlas-panel {
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(164, 242, 127, 0.08), rgba(7, 18, 7, 0.88)),
+        var(--surface);
+      padding: 22px;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
+    }
+    .atlas-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--soft-line);
+    }
+    .atlas-head h3 {
+      margin: 0;
+      font-family: var(--font-ui);
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.05;
+    }
+    .atlas-head p {
+      margin: 8px 0 0;
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .atlas-head a {
+      flex: none;
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 760;
+      text-decoration: none;
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      padding: 9px 10px;
+      background: rgba(2, 5, 2, 0.44);
+    }
+    .atlas-head a:hover { border-color: var(--green); color: var(--ink); }
+    .modality-atlas {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .atlas-card {
+      min-width: 0;
+      border: 1px solid var(--soft-line);
+      border-radius: var(--radius);
+      background: rgba(2, 9, 2, 0.84);
+      padding: 16px;
+      display: grid;
+      gap: 14px;
+    }
+    .atlas-card.wide { grid-column: 1 / -1; }
+    .atlas-card img {
+      width: 100%;
+      aspect-ratio: 760 / 470;
+      object-fit: cover;
+      display: block;
+      border: 1px solid rgba(164, 242, 127, 0.16);
+      border-radius: 7px;
+      background: #020502;
+    }
+    .atlas-card.wide img {
+      aspect-ratio: 1500 / 470;
+    }
+    .atlas-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .atlas-index {
+      display: block;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+    }
+    .atlas-card h4 {
+      margin: 6px 0 0;
+      font-family: var(--font-ui);
+      font-size: clamp(25px, 3vw, 38px);
+      line-height: 0.96;
+      text-transform: uppercase;
+    }
+    .atlas-type {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.2;
+      text-align: right;
+      text-transform: uppercase;
+    }
+    .atlas-rows {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .atlas-row {
+      border-top: 1px solid var(--soft-line);
+      padding-top: 11px;
+      min-width: 0;
+    }
+    .atlas-row span {
+      display: block;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+    .atlas-row p {
+      margin: 6px 0 0;
+      color: #edf8e8;
+      font-size: 18px;
+      font-weight: 720;
+      line-height: 1.2;
+    }
+    .atlas-card.audio-card {
+      border-color: rgba(216, 244, 165, 0.32);
+      background:
+        linear-gradient(180deg, rgba(216, 244, 165, 0.08), rgba(2, 9, 2, 0.88)),
+        rgba(2, 9, 2, 0.84);
+    }
+    .atlas-card.audio-card .atlas-type { color: var(--amber); }
+    .atlas-note {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
     .architecture-image {
       display: block;
     }
@@ -787,16 +924,27 @@
       .hero-inner, .two-col { grid-template-columns: 1fr; }
       .hero-inner { min-height: 0; }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .modality-atlas { grid-template-columns: 1fr; }
       .artifact-group-head { grid-template-columns: 1fr; align-items: start; }
       .chart-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
       .section-head p { margin-top: 14px; }
+      .atlas-head { display: block; }
+      .atlas-head a { display: inline-flex; margin-top: 14px; }
       .nav-links { display: none; }
     }
     @media (max-width: 640px) {
       .wrap { width: min(100% - 28px, var(--max)); }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid, .walk-flow { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid, .walk-flow, .atlas-rows { grid-template-columns: 1fr; }
       .artifact-group { padding: 16px; }
+      .modality-atlas-panel { padding: 14px; }
+      .atlas-card { padding: 12px; }
+      .atlas-top { display: block; }
+      .atlas-type { margin-top: 8px; text-align: left; }
+      .atlas-card.wide img {
+        aspect-ratio: 760 / 470;
+        object-fit: cover;
+      }
       .artifact.primary-artifact { grid-template-columns: 1fr; }
       .evidence-card:last-child { grid-column: auto; }
       .hero-inner, section { padding: 46px 0; }
@@ -1004,6 +1152,53 @@
         </div>
         <div class="figure-pan">
           <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-modalities-v7" alt="ChatGPT-image-backed infographic showing all 12 Ropedia Xperience-10M tasks">
+        </div>
+        <div class="modality-atlas-panel" id="modality-atlas" aria-labelledby="modality-atlas-title">
+          <div class="atlas-head">
+            <div>
+              <h3 id="modality-atlas-title">Readable modality atlas.</h3>
+              <p>These cards expose the same public-sample modality thumbnails as native webpage elements, so reviewers can inspect each stream clearly on desktop and mobile.</p>
+            </div>
+            <a href="data/modality_atlas.json">modality_atlas.json</a>
+          </div>
+          <div class="modality-atlas">
+            <article class="atlas-card">
+              <div class="atlas-top"><div><span class="atlas-index">01</span><h4>Video</h4></div><span class="atlas-type">visual stream</span></div>
+              <img src="assets/modalities/video.jpg" alt="Public sample fisheye and stereo camera thumbnails" loading="lazy">
+              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>6 synchronized camera MP4 streams</p></div><div class="atlas-row"><span>current baseline use</span><p>RGB/fisheye/stereo frame statistics</p></div></div>
+            </article>
+            <article class="atlas-card audio-card">
+              <div class="atlas-top"><div><span class="atlas-index">02</span><h4>Audio</h4></div><span class="atlas-type">acoustic stream</span></div>
+              <img src="assets/modalities/audio.png" alt="AAC waveform thumbnail from the public sample MP4 stream" loading="lazy">
+              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>AAC stream embedded in MP4</p></div><div class="atlas-row"><span>current baseline use</span><p>Documented, not featurized in the 8,378-d vector</p></div></div>
+            </article>
+            <article class="atlas-card">
+              <div class="atlas-top"><div><span class="atlas-index">03</span><h4>Depth</h4></div><span class="atlas-type">geometry map</span></div>
+              <img src="assets/modalities/depth.jpg" alt="Public sample depth and confidence thumbnails" loading="lazy">
+              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>Depth map + confidence channel</p></div><div class="atlas-row"><span>current baseline use</span><p>Spatial geometry feature block</p></div></div>
+            </article>
+            <article class="atlas-card">
+              <div class="atlas-top"><div><span class="atlas-index">04</span><h4>Pose / SLAM</h4></div><span class="atlas-type">camera pose</span></div>
+              <img src="assets/modalities/pose_slam.png" alt="Public sample camera trajectory and sparse SLAM map thumbnail" loading="lazy">
+              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>Trajectory + sparse SLAM map</p></div><div class="atlas-row"><span>current baseline use</span><p>Position + orientation features</p></div></div>
+            </article>
+            <article class="atlas-card">
+              <div class="atlas-top"><div><span class="atlas-index">05</span><h4>Motion Capture</h4></div><span class="atlas-type">human motion</span></div>
+              <img src="assets/modalities/motion_capture.png" alt="Public sample body and hand motion capture thumbnail" loading="lazy">
+              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>Body + hand joint tracks</p></div><div class="atlas-row"><span>current baseline use</span><p>3D mocap feature statistics</p></div></div>
+            </article>
+            <article class="atlas-card">
+              <div class="atlas-top"><div><span class="atlas-index">06</span><h4>Inertial</h4></div><span class="atlas-type">wearable sensor</span></div>
+              <img src="assets/modalities/inertial.png" alt="Public sample accelerometer and gyroscope time-series thumbnail" loading="lazy">
+              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>Accelerometer + gyroscope</p></div><div class="atlas-row"><span>current baseline use</span><p>Wearable motion statistics</p></div></div>
+            </article>
+            <article class="atlas-card wide">
+              <div class="atlas-top"><div><span class="atlas-index">07</span><h4>Language</h4></div><span class="atlas-type">semantic annotation</span></div>
+              <img src="assets/modalities/language.png" alt="Public sample object tags and action caption thumbnail" loading="lazy">
+              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>Object tags + action captions</p></div><div class="atlas-row"><span>current baseline use</span><p>Task labels + semantic targets</p></div></div>
+            </article>
+          </div>
+          <p class="atlas-note">The atlas redistributes only small derived thumbnails and metadata. Raw MP4, HDF5, and RRD files remain excluded from this repo and the Hugging Face mirrors.</p>
         </div>
       </div>
     </section>
@@ -1364,6 +1559,9 @@ python scripts/episode_task_suite.py --workspace "$WORKSPACE" --include-neural
 python scripts/research_direction_extension_tasks.py
 python scripts/task_walkthroughs.py
 python scripts/generate_visualizations.py
+python scripts/render_overview_figures.py
+python scripts/render_task_suite_infographic.py
+python scripts/export_modality_atlas_assets.py
 python scripts/build_artifact_index.py
 python scripts/validate_publication_package.py</code></pre>
       </div>

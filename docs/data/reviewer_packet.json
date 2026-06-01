@@ -43,9 +43,10 @@
       "primary_artifacts": [
         "results/episode_task_suite/windows.csv",
         "results/episode_task_suite/feature_manifest.json",
-        "results/episode_task_suite/available_modalities.json"
+        "results/episode_task_suite/available_modalities.json",
+        "docs/data/modality_atlas.json"
       ],
-      "readout": "The current model input is an 8,378-dimensional aligned window vector with explicit feature-block boundaries."
+      "readout": "The current model input is an 8,378-dimensional aligned window vector with explicit feature-block boundaries, and the readable atlas shows each public-sample modality without raw data redistribution."
     },
     {
       "step": 4,

@@ -166,6 +166,11 @@ with [`scripts/render_task_suite_infographic.py`](scripts/render_task_suite_info
 so the published PNG is a presentation graphic with verified labels and metrics,
 not a hallucinated metric sheet.
 
+The website also includes a responsive native modality atlas backed by
+[`docs/data/modality_atlas.json`](docs/data/modality_atlas.json) and
+[`docs/assets/modalities/`](docs/assets/modalities/). Those assets are small
+derived thumbnails from the public sample, not raw Xperience-10M files.
+
 ![Verified Pipeline](docs/assets/pipeline_diagram.png?v=xperience10m-nn)
 
 ![Minimal and neural 12-task model architectures](docs/assets/task_architectures.png?v=xperience10m-nn)
@@ -195,6 +200,7 @@ scripts/
   task_walkthroughs.py              # beginner explanations for each task contract
   generate_visualizations.py        # refreshes SVG charts + summary JSON
   render_task_suite_infographic.py  # renders the ChatGPT-image-backed PNG
+  export_modality_atlas_assets.py   # exports responsive modality-card assets
   render_overview_figures.py        # renders polished pipeline/architecture PNGs
   build_artifact_index.py           # builds the source-of-truth reviewer index
   validate_publication_package.py   # checks public repo + HF bundle hygiene
@@ -227,7 +233,9 @@ docs/
   data/research_directions.json     # four-track website data bundle
   data/research_direction_extensions.json # four extra probe data bundle
   data/task_walkthroughs.json       # beginner task explanation data bundle
+  data/modality_atlas.json          # responsive modality-card data
   assets/task_suite_infographic.png # 12-task presentation graphic
+  assets/modalities/                # public-sample derived modality thumbnails
   assets/pipeline_diagram.png       # verified episode pipeline graphic
   assets/task_architectures.png     # verified 12-task minimal architecture map
   assets/charts/*.svg               # regenerated visualizations
