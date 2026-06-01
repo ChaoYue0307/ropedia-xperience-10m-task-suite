@@ -90,7 +90,7 @@ ARTIFACTS = [
         "kind": "mirror_parity",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, and validator files.",
+        "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
     },
     {
         "id": "website_integrity",

@@ -56,6 +56,10 @@ SCRIPT_FILES = [
     "validate_website_integrity.py",
 ]
 
+WEBSITE_FILES = [
+    "index.html",
+]
+
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -150,6 +154,18 @@ def build_report(hf_root: Path) -> dict:
             )
         )
 
+    for filename in WEBSITE_FILES:
+        groups.append(
+            parity_group(
+                f"website/{filename}",
+                ROOT / "docs" / filename,
+                {
+                    "hf_space": hf_root / "space" / filename,
+                    "hf_artifacts_docs": hf_root / "artifacts/docs" / filename,
+                },
+            )
+        )
+
     failures = [
         {"group": group["name"], **failure}
         for group in groups
@@ -185,6 +201,12 @@ def build_report(hf_root: Path) -> dict:
                 "name": "repo_hf_validator_script_parity",
                 "status": "pass"
                 if not any(failure["group"].startswith("scripts/") for failure in failures)
+                else "fail",
+            },
+            {
+                "name": "repo_hf_website_html_parity",
+                "status": "pass"
+                if not any(failure["group"].startswith("website/") for failure in failures)
                 else "fail",
             },
         ],

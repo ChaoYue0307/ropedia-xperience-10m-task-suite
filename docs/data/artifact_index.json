@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T04:49:01+00:00",
+  "generated_at_utc": "2026-06-01T05:07:04+00:00",
   "status": "pass",
   "artifact_count": 29,
   "missing": [],
@@ -35,8 +35,8 @@
       "surface": "repo",
       "proves": "Defines what is verified, what is smoke-only, and what must not be inferred.",
       "exists": true,
-      "bytes": 6440,
-      "sha256": "a89e2316e19ebacbb1150879c070279f8f6f659030a945fc398eb08280c60cc0"
+      "bytes": 6497,
+      "sha256": "417835c2f838f1d4c4bca9f07c708ce04611e7212017e58421956818a4ca4b45"
     },
     {
       "id": "reviewer_packet",
@@ -57,8 +57,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 6438,
-      "sha256": "01d2e37bf25a5884e116ba7de80cc460d69523c563e540a650646a58e365713f"
+      "bytes": 6483,
+      "sha256": "cc211ec1175eed43bc5d8c9ce1ec412982524af1998316b392e77e5d7ddc99ee"
     },
     {
       "id": "reproducibility_contract",
@@ -90,8 +90,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 11565,
-      "sha256": "d57875b1e42a58c02aa2f7da481f7b2190b82414113827883dd8b332c33552f3"
+      "bytes": 11579,
+      "sha256": "874a3813fb3a19d79be9ea4c0177f5922adf9e667760f927dd49163784eb6b48"
     },
     {
       "id": "publication_audit",
@@ -124,7 +124,7 @@
       "kind": "mirror_parity",
       "surface": "website_hf",
       "volatile": true,
-      "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, and validator files.",
+      "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
       "bytes": 41465,
       "hash_policy": "existence_and_size_only"

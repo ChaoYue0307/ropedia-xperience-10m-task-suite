@@ -42,6 +42,10 @@ TEXT_SUFFIXES = {
     ".yml",
 }
 TOKEN_PATTERN = re.compile(r"hf_[A-Za-z0-9]{20,}")
+STALE_PRESENTATION_STRINGS = {
+    "xperience10m-" + "modalities-v9-large-atlas": "old task-suite infographic cache key",
+    "Start with the large native " + "modality atlas": "old suite-section hierarchy copy",
+}
 
 
 def rel(path: Path, base: Path) -> str:
@@ -114,6 +118,13 @@ def scan(root: Path, *, paths: list[Path] | None = None) -> dict:
                 continue
             if TOKEN_PATTERN.search(text):
                 violations.append({"kind": "possible_hf_token", "path": path_rel})
+            for needle, reason in STALE_PRESENTATION_STRINGS.items():
+                if needle in text:
+                    violations.append({
+                        "kind": "stale_presentation_copy",
+                        "path": path_rel,
+                        "detail": reason,
+                    })
 
     return {
         "root": str(root),
@@ -221,6 +232,11 @@ def build_report(hf_root: Path) -> dict:
             "name": "no_hf_tokens_in_public_text",
             "status": "pass" if not any(v["kind"] == "possible_hf_token" for v in violations) else "fail",
             "count": sum(1 for v in violations if v["kind"] == "possible_hf_token"),
+        },
+        {
+            "name": "no_stale_task_suite_presentation_copy",
+            "status": "pass" if not any(v["kind"] == "stale_presentation_copy" for v in violations) else "fail",
+            "count": sum(1 for v in violations if v["kind"] == "stale_presentation_copy"),
         },
     ]
     status = "pass" if all(check["status"] == "pass" for check in checks) else "fail"
