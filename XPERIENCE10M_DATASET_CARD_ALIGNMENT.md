@@ -5,8 +5,8 @@ This file records the public description of the official
 dataset card and how this repo uses only one public sample episode from that
 larger source. It is a description-alignment artifact, not a raw-data mirror.
 
-Checked on: 2026-06-01 against the public Hugging Face dataset page/API and
-the public sample dataset card.
+Checked on: 2026-06-01 11:14:51 UTC against the public Hugging Face dataset
+page/API and the public sample dataset card.
 
 ## Official Dataset Scope
 
@@ -32,12 +32,15 @@ before approval. The API snapshot checked for this project reported:
 | Field | Observed value |
 | --- | --- |
 | repo id | `ropedia-ai/xperience-10m` |
+| pretty name | `Xperience-10M` |
 | repo commit | `ce943cf271a758b60240084892d05cf6dc12dd90` |
 | last modified | `2026-04-21T05:03:45.000Z` |
 | gated mode | manual |
 | listed task categories | video classification, image-to-text, depth estimation, robotics |
 | listed modalities | 3D, audio, video |
+| dataset-card tags | egocentric, first-person, multimodal, 3d/4d, embodied-ai, robotics, human-motion, mocap, imu, audio, depth, captions, video |
 | license field | `other` |
+| live HF total file-size display | 31.9 TB |
 
 The API file listing is useful for planning, but it is not the same as local
 access. The public metadata snapshot listed 85,258 repository siblings, 803
@@ -82,10 +85,12 @@ headline counts:
 | Trajectory distance | about 39,000 km |
 | Total storage described by the card | about 1 PB |
 
-The public Hugging Face page may show a smaller currently listed file-size
-summary for the gated repo. This project keeps those concepts separate: the
-official card scale describes the dataset design, while this repo validates
-only the files that are actually available to the project.
+The public Hugging Face page/API currently shows a separate live hosted
+file-size display of 31.9 TB (`usedStorage` observed as 31,871,115,497,224
+bytes). This project keeps those concepts separate: the official card scale
+describes the full dataset design, the HF display describes the currently
+reported hosted file size, and this repo validates only the files that are
+actually available to the project.
 
 ## Public Sample Dataset Card
 
@@ -162,6 +167,7 @@ The official dataset card supports research directions such as:
 - egocentric video/action understanding
 - task and subtask recognition
 - temporal action localization and human-object interaction analysis
+- action-language grounding and action captioning
 - object grounding and caption/language grounding
 - audio-visual learning and multimodal pretraining
 - embodied reasoning, world-model learning, and robotics imitation learning
@@ -190,7 +196,9 @@ baseline artifacts.
 The official card also makes clear that the data is not meant for identity
 recognition, re-identification, biometric profiling, surveillance, sensitive
 attribute inference, or safety-critical deployment without appropriate
-safeguards.
+safeguards. It also describes the open-source dataset as limited in diversity
+and showcase/production quality, so downstream work still needs robust
+evaluation, safeguards, and careful claim boundaries.
 
 ## Limitations To Preserve In This Project
 

@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T10:34:16+00:00",
+  "generated_at_utc": "2026-06-01T11:30:15+00:00",
   "docs_root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 2,
-    "local_references": 77,
-    "external_reference_count": 68,
-    "json_files": 20,
+    "local_references": 81,
+    "external_reference_count": 70,
+    "json_files": 21,
     "image_assets_referenced": 18,
     "failure_count": 0
   },
@@ -46,6 +46,12 @@
       "status": "pass",
       "reason": "The website should expose the machine-readable evaluation protocol.",
       "marker_count": 1
+    },
+    {
+      "name": "figure_index_links_json",
+      "status": "pass",
+      "reason": "The website should expose the machine-readable figure index.",
+      "marker_count": 2
     },
     {
       "name": "suite_task_map_precedes_modality_atlas",
@@ -89,7 +95,7 @@
     {
       "path": "index.html",
       "id_count": 34,
-      "reference_count": 76,
+      "reference_count": 80,
       "image_count": 20
     }
   ],
@@ -106,7 +112,12 @@
     },
     {
       "path": "data/evidence_contract.json",
-      "bytes": 10063,
+      "bytes": 10496,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/figure_index.json",
+      "bytes": 11493,
       "top_level_type": "dict"
     },
     {
@@ -126,7 +137,7 @@
     },
     {
       "path": "data/project_manifest.json",
-      "bytes": 4060,
+      "bytes": 4274,
       "top_level_type": "dict"
     },
     {
@@ -141,7 +152,7 @@
     },
     {
       "path": "data/reproducibility_matrix.json",
-      "bytes": 4940,
+      "bytes": 5026,
       "top_level_type": "dict"
     },
     {
@@ -156,7 +167,7 @@
     },
     {
       "path": "data/reviewer_packet.json",
-      "bytes": 7117,
+      "bytes": 7290,
       "top_level_type": "dict"
     },
     {
@@ -171,7 +182,7 @@
     },
     {
       "path": "data/source_alignment_audit.json",
-      "bytes": 4021,
+      "bytes": 4425,
       "top_level_type": "dict"
     },
     {
@@ -191,7 +202,7 @@
     },
     {
       "path": "data/xperience10m_dataset_card_alignment.json",
-      "bytes": 6985,
+      "bytes": 8037,
       "top_level_type": "dict"
     }
   ],

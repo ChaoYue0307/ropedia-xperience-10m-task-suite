@@ -12,6 +12,8 @@ Current status: **pass**
 | --- | --- |
 | Full dataset repo | `ropedia-ai/xperience-10m` |
 | Full dataset access | manual |
+| Live HF file-size display | 31.9 TB |
+| Full-scale storage statement | about 1 PB |
 | API episode listing | 12,103 episode folders with `annotation.hdf5` as upstream metadata only |
 | Public sample repo | `ropedia-ai/xperience-10m-sample` |
 | Public sample license | `cc-by-nc-4.0` |
@@ -26,12 +28,15 @@ Current status: **pass**
 | sample_card_metadata_is_preserved | pass | `docs/data/xperience10m_dataset_card_alignment.json` |
 | official_modality_description_is_complete | pass | `docs/data/xperience10m_dataset_card_alignment.json` |
 | current_project_boundary_is_explicit | pass | `docs/data/xperience10m_dataset_card_alignment.json` |
+| responsible_use_disclaimer_is_preserved | pass | `docs/data/xperience10m_dataset_card_alignment.json` |
 | repo_public_surfaces_preserve_source_markers | pass | `README.md`, `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `DATA_NOTICE.md`, `docs/index.html` |
 | hf_public_cards_preserve_source_markers | pass | `space/README.md`, `artifacts/README.md`, `artifacts/PROJECT_README.md`, `model/README.md` |
 
 ## Boundary
 
 - HF API file counts are source-listing metadata, not local data possession.
+- The live HF 31.9 TB file-size display is recorded separately from the card's about-1PB full-scale storage statement.
 - The public sample license is preserved separately from the gated full dataset license field.
+- The official limited-diversity / showcase-quality disclaimer is preserved as a responsible-use boundary.
 - Raw MP4, HDF5, RRD, private gated data, and full Qwen weights are not redistributed.
 - Current model evidence remains one public sample episode, not cross-episode generalization.

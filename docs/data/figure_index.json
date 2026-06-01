@@ -1,0 +1,324 @@
+{
+  "title": "Ropedia Xperience-10M Figure Index",
+  "status": "pass",
+  "generated_at_utc": "2026-06-01T11:28:24+00:00",
+  "scope": "Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience-10M videos, annotations, RRD files, and Qwen weights are excluded.",
+  "figure_count": 18,
+  "figures": [
+    {
+      "id": "task_suite_infographic",
+      "title": "12-task suite infographic",
+      "path": "docs/assets/task_suite_infographic.png",
+      "role": "Primary visual map of the task suite, verified metrics, and sample modalities.",
+      "source_script": "scripts/render_task_suite_infographic.py",
+      "surface": "README, website, HF Space, artifact dataset, model card",
+      "exists": true,
+      "bytes": 2600527,
+      "sha256": "624faef73c034a34b2b1e2b1335ecdb5b41232ef5d035f0d757ece0de4f700c5",
+      "dimensions": {
+        "format": "PNG",
+        "width": 1800,
+        "height": 6600
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "pipeline_diagram",
+      "title": "Episode-to-task pipeline diagram",
+      "path": "docs/assets/pipeline_diagram.png",
+      "role": "End-to-end data processing and evaluation pipeline overview.",
+      "source_script": "scripts/generate_visualizations.py",
+      "surface": "README, website, HF artifact dataset",
+      "exists": true,
+      "bytes": 704388,
+      "sha256": "00ab2b375464d629a903e22c19e648830e479407a52a45d2421e590251c1ba7d",
+      "dimensions": {
+        "format": "PNG",
+        "width": 1800,
+        "height": 1120
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "task_architectures",
+      "title": "Minimal and neural task architecture map",
+      "path": "docs/assets/task_architectures.png",
+      "role": "All 12 task heads and shared feature contracts.",
+      "source_script": "scripts/render_overview_figures.py",
+      "surface": "README, website, HF artifact dataset, model card",
+      "exists": true,
+      "bytes": 762786,
+      "sha256": "9a1d5e87f57dfdaff15efa29c4a236b4f4a1f5c04ac104837e7f98b835b88be6",
+      "dimensions": {
+        "format": "PNG",
+        "width": 1800,
+        "height": 2450
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "video_modality",
+      "title": "Video modality thumbnail",
+      "path": "docs/assets/modalities/video.jpg",
+      "role": "Derived thumbnail for synchronized camera streams.",
+      "source_script": "scripts/export_modality_atlas_assets.py",
+      "surface": "website modality atlas, HF mirrors",
+      "exists": true,
+      "bytes": 68307,
+      "sha256": "2ff7632d8ec9a83cd1765f29ae2e04e09e1562791bea957a6ae18b96f53f4ce9",
+      "dimensions": {
+        "format": "JPEG",
+        "width": 760,
+        "height": 470
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "audio_modality",
+      "title": "Audio modality thumbnail",
+      "path": "docs/assets/modalities/audio.png",
+      "role": "Derived waveform thumbnail for the MP4 AAC stream.",
+      "source_script": "scripts/export_modality_atlas_assets.py",
+      "surface": "website modality atlas, HF mirrors",
+      "exists": true,
+      "bytes": 6684,
+      "sha256": "1067559dfb6ba5d018df3c7b30a3747e05d42cc15a1c9d68eb5f0248fb61cdab",
+      "dimensions": {
+        "format": "PNG",
+        "width": 760,
+        "height": 470
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "depth_modality",
+      "title": "Depth modality thumbnail",
+      "path": "docs/assets/modalities/depth.jpg",
+      "role": "Derived depth and confidence thumbnail.",
+      "source_script": "scripts/export_modality_atlas_assets.py",
+      "surface": "website modality atlas, HF mirrors",
+      "exists": true,
+      "bytes": 38940,
+      "sha256": "9d3e9763f8ab2c81bae8b3d8f5a12e6cc2e4c2bc10bc1955047c0da9870c9121",
+      "dimensions": {
+        "format": "JPEG",
+        "width": 760,
+        "height": 470
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "pose_slam_modality",
+      "title": "Pose / SLAM modality thumbnail",
+      "path": "docs/assets/modalities/pose_slam.png",
+      "role": "Derived camera trajectory and sparse map thumbnail.",
+      "source_script": "scripts/export_modality_atlas_assets.py",
+      "surface": "website modality atlas, HF mirrors",
+      "exists": true,
+      "bytes": 64057,
+      "sha256": "3374e8fbc0304d39cdb212ae702a60b89c3a1e0cd683c72736e9c43898257c80",
+      "dimensions": {
+        "format": "PNG",
+        "width": 760,
+        "height": 470
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "motion_capture_modality",
+      "title": "Motion capture modality thumbnail",
+      "path": "docs/assets/modalities/motion_capture.png",
+      "role": "Derived body and hand motion-capture thumbnail.",
+      "source_script": "scripts/export_modality_atlas_assets.py",
+      "surface": "website modality atlas, HF mirrors",
+      "exists": true,
+      "bytes": 14037,
+      "sha256": "a30b49acfca3ba874618c4f86c299500a4df818150f813480101fce566f9d88d",
+      "dimensions": {
+        "format": "PNG",
+        "width": 760,
+        "height": 470
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "inertial_modality",
+      "title": "Inertial modality thumbnail",
+      "path": "docs/assets/modalities/inertial.png",
+      "role": "Derived accelerometer and gyroscope trace thumbnail.",
+      "source_script": "scripts/export_modality_atlas_assets.py",
+      "surface": "website modality atlas, HF mirrors",
+      "exists": true,
+      "bytes": 43233,
+      "sha256": "300867508a124f10ee5f6306a9156bd8e1e0a06c5f27cbc1c847d3463a514967",
+      "dimensions": {
+        "format": "PNG",
+        "width": 760,
+        "height": 470
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "language_modality",
+      "title": "Language modality thumbnail",
+      "path": "docs/assets/modalities/language.png",
+      "role": "Derived object-tag and caption thumbnail.",
+      "source_script": "scripts/export_modality_atlas_assets.py",
+      "surface": "website modality atlas, HF mirrors",
+      "exists": true,
+      "bytes": 16329,
+      "sha256": "4c2b29622a34cfc868980a635eb13d575a7caa4061a3cb936204e86295fb92ad",
+      "dimensions": {
+        "format": "PNG",
+        "width": 1500,
+        "height": 470
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "model_macro_f1_chart",
+      "title": "Model macro-F1 comparison chart",
+      "path": "docs/assets/charts/model_macro_f1.svg",
+      "role": "Minimal-vs-neural classification score comparison.",
+      "source_script": "scripts/generate_visualizations.py",
+      "surface": "website diagnostics",
+      "exists": true,
+      "bytes": 3321,
+      "sha256": "8e52f54e1257ebf60787713ce220b3ab16fff129a411a7f865c363bd7908a240",
+      "dimensions": {
+        "format": "SVG",
+        "width": 1100,
+        "height": 284,
+        "view_box": "0 0 1100 284"
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "neural_score_chart",
+      "title": "Neural MLP task score chart",
+      "path": "docs/assets/charts/episode_task_scores_neural_mlp.svg",
+      "role": "Neural MLP metric snapshot across the task suite.",
+      "source_script": "scripts/generate_visualizations.py",
+      "surface": "website diagnostics",
+      "exists": true,
+      "bytes": 5917,
+      "sha256": "e5a907af798f026496d3a8c091a641d087d7c6308e063f337f2dabf736ff02d0",
+      "dimensions": {
+        "format": "SVG",
+        "width": 1100,
+        "height": 556,
+        "view_box": "0 0 1100 556"
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "minimal_vs_neural_score_chart",
+      "title": "Minimal-vs-neural task score chart",
+      "path": "docs/assets/charts/episode_task_scores_minimal_vs_neural.svg",
+      "role": "Side-by-side baseline comparison over the same window contracts.",
+      "source_script": "scripts/generate_visualizations.py",
+      "surface": "website diagnostics",
+      "exists": true,
+      "bytes": 10040,
+      "sha256": "b4a898e173717d44d8a446282c472df1ff78e657999b902903cec7075d3b0125",
+      "dimensions": {
+        "format": "SVG",
+        "width": 1100,
+        "height": 964,
+        "view_box": "0 0 1100 964"
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "research_direction_coverage_chart",
+      "title": "Research direction coverage chart",
+      "path": "docs/assets/charts/research_direction_coverage.svg",
+      "role": "Four-track coverage map for Ropedia research directions.",
+      "source_script": "scripts/generate_visualizations.py",
+      "surface": "website directions",
+      "exists": true,
+      "bytes": 4968,
+      "sha256": "934bd9d905c305f1249e0f4bb5bf6679e4609f705b9dee6dbcae8ad80b95a4ef",
+      "dimensions": {
+        "format": "SVG",
+        "width": 1180,
+        "height": 700,
+        "view_box": "0 0 1180 700"
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "research_direction_extension_chart",
+      "title": "Research direction extension chart",
+      "path": "docs/assets/charts/research_direction_extension_tasks.svg",
+      "role": "Four coded extension probes, one per Ropedia research direction.",
+      "source_script": "scripts/generate_visualizations.py",
+      "surface": "website directions",
+      "exists": true,
+      "bytes": 6667,
+      "sha256": "f026c0743b1b20494cf142179a04bb62f2d8bfa2da0977a40c71f362bc1badd5",
+      "dimensions": {
+        "format": "SVG",
+        "width": 1420,
+        "height": 920,
+        "view_box": "0 0 1420 920"
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "feature_blocks_chart",
+      "title": "Feature block chart",
+      "path": "docs/assets/charts/feature_blocks.svg",
+      "role": "Feature allocation by modality block.",
+      "source_script": "scripts/generate_visualizations.py",
+      "surface": "website features",
+      "exists": true,
+      "bytes": 7589,
+      "sha256": "c53ca08f2ce43fb6e28be60f5cef8a06ae5d270c02653bfe9486e417a54961ca",
+      "dimensions": {
+        "format": "SVG",
+        "width": 1100,
+        "height": 726,
+        "view_box": "0 0 1100 726"
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "episode_task_scores_chart",
+      "title": "Minimal task score chart",
+      "path": "docs/assets/charts/episode_task_scores.svg",
+      "role": "Minimal baseline metric snapshot across the task suite.",
+      "source_script": "scripts/generate_visualizations.py",
+      "surface": "website diagnostics",
+      "exists": true,
+      "bytes": 5903,
+      "sha256": "aabcb0ab0db3d0480f175ed287da351ad84a2d5916746f309fe63b8895bced3f",
+      "dimensions": {
+        "format": "SVG",
+        "width": 1100,
+        "height": 556,
+        "view_box": "0 0 1100 556"
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "cross_modal_retrieval_chart",
+      "title": "Cross-modal retrieval chart",
+      "path": "docs/assets/charts/cross_modal_retrieval.svg",
+      "role": "Retrieval behavior chart for the cross-modal task.",
+      "source_script": "scripts/generate_visualizations.py",
+      "surface": "website diagnostics",
+      "exists": true,
+      "bytes": 3196,
+      "sha256": "09eb1e38b78e96b89481c12b36803fb608cd209a00e121ac96073b90a180d2e1",
+      "dimensions": {
+        "format": "SVG",
+        "width": 1100,
+        "height": 284,
+        "view_box": "0 0 1100 284"
+      },
+      "source_script_exists": true
+    }
+  ],
+  "failures": []
+}

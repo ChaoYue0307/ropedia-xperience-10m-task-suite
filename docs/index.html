@@ -1265,6 +1265,16 @@
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
+            <h3>Figures are indexed as evidence</h3>
+            <p>The figure index records public visual assets, dimensions, SHA-256 hashes, source scripts, and the role each figure plays in the project narrative.</p>
+            <div class="evidence-links">
+              <a href="data/figure_index.json">figure_index.json</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FIGURE_INDEX.md">FIGURE_INDEX.md</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_figure_index.py">builder script</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
             <h3>Publication bundles pass hygiene checks</h3>
             <p>The validator checks required assets, raw-data exclusion, Python cache exclusion, heavy archive exclusion, accidental HF token strings, and public-card figure freshness across GitHub and the HF bundles.</p>
             <div class="evidence-links">
@@ -1323,6 +1333,7 @@
               <a href="data/evidence_contract.json">JSON</a>
               <a href="data/xperience10m_dataset_card_alignment.json">dataset card</a>
               <a href="data/artifact_index.json">index</a>
+              <a href="data/figure_index.json">figures</a>
               <a href="data/mirror_parity.json">mirrors</a>
               <a href="data/scope_claims_audit.json">scope</a>
               <a href="data/publication_audit.json">audit</a>
@@ -1374,6 +1385,7 @@
         </div>
         <div class="artifact-grid">
           <article class="artifact primary-artifact"><div><h3>Official scale</h3><p>About 10M experience units and 10,000 hours, with RGB video, audio, depth, camera pose/SLAM, hand/body mocap, IMU, captions, metadata, and calibration.</p></div><a href="data/xperience10m_dataset_card_alignment.json">alignment JSON</a></article>
+          <article class="artifact"><h3>HF file-size display</h3><p>The live Hugging Face page/API currently shows 31.9 TB hosted. This is recorded separately from the card's about-1PB full-scale storage statement.</p><a href="data/xperience10m_dataset_card_alignment.json">source JSON</a></article>
           <article class="artifact"><h3>HF access boundary</h3><p>The source dataset is manually gated for approved non-commercial use, with an external agreement step noted by the public HF metadata.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official HF dataset</a></article>
           <article class="artifact"><h3>API listing snapshot</h3><p>HF API metadata observed 803 session folders and 12,103 episode folders with <code>annotation.hdf5</code>. This is planning metadata, not local data possession or a result claim.</p><a href="data/xperience10m_dataset_card_alignment.json">metadata JSON</a></article>
           <article class="artifact"><h3>Public sample card</h3><p>The sample repo lists <code>cc-by-nc-4.0</code>, HOMIE Toolkit for videos/annotations, and Rerun 0.29.0 for <code>.rrd</code> visualization.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
@@ -1381,6 +1393,7 @@
           <article class="artifact"><h3>Episode layout</h3><p>Expected folders contain six MP4 streams and <code>annotation.hdf5</code>; <code>visualization.rrd</code> is treated as a viewer artifact and excluded from training downloads.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">alignment note</a></article>
           <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 windows, 8,378 current features, audio documented but not yet featurized, and no raw-data redistribution.</p><a href="data/modality_atlas.json">modality atlas</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, and misalignment.</p><a href="data/summary_metrics.json">summary metrics</a></article>
+          <article class="artifact"><h3>Responsible use</h3><p>The official card notes limited diversity and showcase/production quality. This project excludes identity, surveillance, biometric, sensitive-attribute, and safety-critical uses.</p><a href="data/xperience10m_dataset_card_alignment.json">use boundary</a></article>
           <article class="artifact"><h3>Not claimed yet</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, and real 32-episode Qwen3-Omni quality.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">data gate</a></article>
         </div>
       </div>

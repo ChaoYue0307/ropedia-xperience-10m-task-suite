@@ -1,6 +1,6 @@
 {
   "title": "Xperience-10M Official Dataset Card Alignment",
-  "checked_at_utc": "2026-06-01T00:00:00+00:00",
+  "checked_at_utc": "2026-06-01T11:14:51+00:00",
   "source_urls": {
     "official_hf_dataset": "https://huggingface.co/datasets/ropedia-ai/xperience-10m",
     "official_hf_api": "https://huggingface.co/api/datasets/ropedia-ai/xperience-10m",
@@ -11,6 +11,7 @@
   },
     "hf_repo_metadata_observed": {
         "repo_id": "ropedia-ai/xperience-10m",
+        "pretty_name": "Xperience-10M",
         "repo_sha": "ce943cf271a758b60240084892d05cf6dc12dd90",
         "last_modified": "2026-04-21T05:03:45.000Z",
         "gated": "manual",
@@ -18,11 +19,27 @@
             "video-classification",
       "image-to-text",
       "depth-estimation",
-      "robotics"
-    ],
-    "modalities": [
-      "3d",
-      "audio",
+            "robotics"
+        ],
+        "card_tags": [
+            "egocentric",
+            "first-person",
+            "multimodal",
+            "3d",
+            "4d",
+            "embodied-ai",
+            "robotics",
+            "human-motion",
+            "mocap",
+            "imu",
+            "audio",
+            "depth",
+            "captions",
+            "video"
+        ],
+        "modalities": [
+            "3d",
+            "audio",
       "video"
     ],
     "language": [
@@ -33,6 +50,12 @@
         ],
         "license": "other",
         "access_note": "Reviewed gated access for approved non-commercial use; an external agreement-signing step may be required before approval.",
+        "live_hf_page_observed": {
+            "source": "Hugging Face dataset page/API public metadata",
+            "total_file_size_display": "31.9 TB",
+            "used_storage_bytes_observed": 31871115497224,
+            "note": "This live HF-hosted file-size display is separate from the dataset card's about-1PB full-scale data statement."
+        },
         "api_file_listing_observed": {
             "scope": "public Hugging Face API metadata, not local data possession",
             "sibling_count": 85258,
@@ -128,13 +151,14 @@
     "metadata",
     "caption / language annotations"
   ],
-  "official_intended_uses": [
-    "egocentric video and action understanding",
-    "task and subtask recognition",
-    "temporal action localization",
-    "human-object interaction analysis",
-    "object grounding and caption/language grounding",
-    "audio-visual learning and multimodal pretraining",
+    "official_intended_uses": [
+        "egocentric video and action understanding",
+        "task and subtask recognition",
+        "temporal action localization",
+        "action-language grounding and action captioning",
+        "human-object interaction analysis",
+        "object grounding and caption/language grounding",
+        "audio-visual learning and multimodal pretraining",
     "embodied reasoning and world-model learning",
     "robotics imitation learning",
     "depth estimation, odometry, SLAM, and scene reconstruction",
@@ -176,6 +200,7 @@
     "responsible_use_boundary": [
         "No raw MP4, raw annotation.hdf5, private gated data, raw visualization.rrd, or full Qwen weights are redistributed.",
         "The public sample card lists cc-by-nc-4.0; the full gated dataset uses the official Ropedia/Xperience-10M access terms and license field.",
+        "The official card describes the open-source dataset as limited in diversity and showcase/production quality, so robust evaluation and downstream safeguards are still required.",
         "The project does not support identity recognition, re-identification, biometric profiling, surveillance, sensitive attribute inference, or safety-critical deployment.",
         "Dataset use remains governed by the official Ropedia/Xperience-10M terms."
     ]

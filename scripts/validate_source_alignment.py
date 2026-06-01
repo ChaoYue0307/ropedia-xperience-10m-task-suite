@@ -22,6 +22,7 @@ ALIGNMENT_JSON = ROOT / "docs/data/xperience10m_dataset_card_alignment.json"
 
 EXPECTED_FULL_DATASET = {
     "repo_id": "ropedia-ai/xperience-10m",
+    "pretty_name": "Xperience-10M",
     "repo_sha": "ce943cf271a758b60240084892d05cf6dc12dd90",
     "last_modified": "2026-04-21T05:03:45.000Z",
     "gated": "manual",
@@ -33,6 +34,24 @@ EXPECTED_FULL_DATASET = {
         "robotics",
     },
     "modalities": {"3d", "audio", "video"},
+    "card_tags": {
+        "egocentric",
+        "first-person",
+        "multimodal",
+        "3d",
+        "4d",
+        "embodied-ai",
+        "robotics",
+        "human-motion",
+        "mocap",
+        "imu",
+        "audio",
+        "depth",
+        "captions",
+        "video",
+    },
+    "total_file_size_display": "31.9 TB",
+    "used_storage_bytes_observed": 31871115497224,
 }
 
 EXPECTED_API_LISTING = {
@@ -82,20 +101,26 @@ PRESENTATION_MARKERS = {
         "ropedia-ai/xperience-10m-sample",
         "SOURCE_ALIGNMENT_AUDIT.md",
         "source_alignment_audit.json",
+        "31.9 TB",
+        "about-1PB",
         "cc-by-nc-4.0",
         "HOMIE Toolkit",
         "Rerun 0.29.0",
         "12,103 episode folders",
         "metadata only",
+        "limited in diversity",
     ],
     "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md": [
         "ropedia-ai/xperience-10m",
         "ropedia-ai/xperience-10m-sample",
+        "31.9 TB",
+        "31,871,115,497,224",
         "cc-by-nc-4.0",
         "HOMIE Toolkit",
         "Rerun 0.29.0",
         "12,103 episode folders",
         "metadata only",
+        "limited in diversity",
     ],
     "DATA_NOTICE.md": [
         "ropedia-ai/xperience-10m",
@@ -109,11 +134,14 @@ PRESENTATION_MARKERS = {
         "ropedia-ai/xperience-10m",
         "xperience-10m-sample",
         "data/source_alignment_audit.json",
+        "31.9 TB",
+        "about-1PB",
         "cc-by-nc-4.0",
         "HOMIE Toolkit",
         "Rerun 0.29.0",
         "12,103 episode folders",
         "not local data possession",
+        "limited diversity",
     ],
 }
 
@@ -121,39 +149,51 @@ HF_PRESENTATION_MARKERS = {
     "space/README.md": [
         "xperience10m_dataset_card_alignment.json",
         "source_alignment_audit.json",
+        "31.9 TB",
+        "about-1PB",
         "cc-by-nc-4.0",
         "HOMIE Toolkit",
         "Rerun 0.29.0",
         "12,103 episode folders",
         "source-listing facts only",
+        "limited in diversity",
     ],
     "artifacts/README.md": [
         "xperience10m_dataset_card_alignment.json",
         "source_alignment_audit.json",
+        "31.9 TB",
+        "about-1PB",
         "cc-by-nc-4.0",
         "HOMIE Toolkit",
         "Rerun 0.29.0",
         "12,103 episode folders",
         "metadata only",
+        "limited in diversity",
     ],
     "artifacts/PROJECT_README.md": [
         "ropedia-ai/xperience-10m-sample",
         "SOURCE_ALIGNMENT_AUDIT.md",
         "source_alignment_audit.json",
+        "31.9 TB",
+        "about-1PB",
         "cc-by-nc-4.0",
         "HOMIE Toolkit",
         "Rerun 0.29.0",
         "12,103 episode folders",
+        "limited in diversity",
     ],
     "model/README.md": [
         "xperience10m_dataset_card_alignment.json",
         "source_alignment_audit.json",
+        "31.9 TB",
+        "about-1PB",
         "cc-by-nc-4.0",
         "HOMIE",
         "Toolkit",
         "Rerun 0.29.0",
         "12,103 episode folders",
         "upstream metadata facts",
+        "limited in diversity",
     ],
 }
 
@@ -201,6 +241,8 @@ def render_markdown(payload: dict) -> str:
         "| --- | --- |",
         f"| Full dataset repo | `{alignment['full_dataset_repo']}` |",
         f"| Full dataset access | {alignment['full_dataset_access']} |",
+        f"| Live HF file-size display | {alignment['live_hf_file_size_display']} |",
+        f"| Full-scale storage statement | {alignment['full_scale_storage_statement']} |",
         f"| API episode listing | {alignment['api_episode_folders']:,} episode folders with `annotation.hdf5` as upstream metadata only |",
         f"| Public sample repo | `{alignment['sample_repo']}` |",
         f"| Public sample license | `{alignment['sample_license']}` |",
@@ -219,7 +261,9 @@ def render_markdown(payload: dict) -> str:
         "## Boundary",
         "",
         "- HF API file counts are source-listing metadata, not local data possession.",
+        "- The live HF 31.9 TB file-size display is recorded separately from the card's about-1PB full-scale storage statement.",
         "- The public sample license is preserved separately from the gated full dataset license field.",
+        "- The official limited-diversity / showcase-quality disclaimer is preserved as a responsible-use boundary.",
         "- Raw MP4, HDF5, RRD, private gated data, and full Qwen weights are not redistributed.",
         "- Current model evidence remains one public sample episode, not cross-episode generalization.",
         "",
@@ -233,20 +277,26 @@ def build_report(hf_root: Path) -> dict:
 
     metadata = alignment.get("hf_repo_metadata_observed", {})
     api_listing = metadata.get("api_file_listing_observed", {})
+    live_hf_page = metadata.get("live_hf_page_observed", {})
     sample = alignment.get("public_sample_card_observed", {})
     current = alignment.get("current_repo_alignment", {})
+    responsible_use = "\n".join(alignment.get("responsible_use_boundary", []))
 
     checks.append(
         check(
             "full_dataset_metadata_matches_observed_snapshot",
             metadata.get("repo_id") == EXPECTED_FULL_DATASET["repo_id"]
+            and metadata.get("pretty_name") == EXPECTED_FULL_DATASET["pretty_name"]
             and metadata.get("repo_sha") == EXPECTED_FULL_DATASET["repo_sha"]
             and metadata.get("last_modified") == EXPECTED_FULL_DATASET["last_modified"]
             and metadata.get("gated") == EXPECTED_FULL_DATASET["gated"]
             and metadata.get("license") == EXPECTED_FULL_DATASET["license"]
             and set(metadata.get("task_categories", [])) == EXPECTED_FULL_DATASET["task_categories"]
-            and set(metadata.get("modalities", [])) == EXPECTED_FULL_DATASET["modalities"],
-            "gated full-dataset metadata matches the recorded HF API snapshot",
+            and set(metadata.get("modalities", [])) == EXPECTED_FULL_DATASET["modalities"]
+            and set(metadata.get("card_tags", [])) == EXPECTED_FULL_DATASET["card_tags"]
+            and live_hf_page.get("total_file_size_display") == EXPECTED_FULL_DATASET["total_file_size_display"]
+            and live_hf_page.get("used_storage_bytes_observed") == EXPECTED_FULL_DATASET["used_storage_bytes_observed"],
+            "gated full-dataset metadata, card tags, and live HF file-size display match the recorded snapshot",
             ["docs/data/xperience10m_dataset_card_alignment.json"],
         )
     )
@@ -296,6 +346,18 @@ def build_report(hf_root: Path) -> dict:
             ["docs/data/xperience10m_dataset_card_alignment.json"],
         )
     )
+    checks.append(
+        check(
+            "responsible_use_disclaimer_is_preserved",
+            "limited in diversity" in responsible_use
+            and "showcase/production quality" in responsible_use
+            and "identity recognition" in responsible_use
+            and "surveillance" in responsible_use
+            and "sensitive attribute inference" in responsible_use,
+            "official limited-diversity and prohibited-use boundary is preserved",
+            ["docs/data/xperience10m_dataset_card_alignment.json"],
+        )
+    )
 
     repo_marker_records = [marker_record(ROOT, path, markers) for path, markers in PRESENTATION_MARKERS.items()]
     hf_marker_records = [marker_record(hf_root, path, markers) for path, markers in HF_PRESENTATION_MARKERS.items()]
@@ -325,6 +387,8 @@ def build_report(hf_root: Path) -> dict:
         "alignment_summary": {
             "full_dataset_repo": metadata.get("repo_id"),
             "full_dataset_access": metadata.get("gated"),
+            "live_hf_file_size_display": live_hf_page.get("total_file_size_display"),
+            "full_scale_storage_statement": alignment.get("official_dataset_summary", {}).get("storage_described_by_card"),
             "api_episode_folders": api_listing.get("episode_folder_count"),
             "sample_repo": sample.get("repo_id"),
             "sample_license": sample.get("license"),

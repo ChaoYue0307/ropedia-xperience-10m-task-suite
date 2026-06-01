@@ -1,14 +1,15 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T10:50:25+00:00",
+  "generated_at_utc": "2026-06-01T11:31:45+00:00",
   "status": "pass",
-  "artifact_count": 43,
+  "artifact_count": 46,
   "missing": [],
   "by_kind": {
     "review_path": 5,
     "claim_boundary": 1,
     "source_alignment": 5,
     "evaluation_protocol": 3,
+    "visual_evidence": 3,
     "quality_gate": 4,
     "reproducibility": 2,
     "hygiene_report": 1,
@@ -60,8 +61,8 @@
       "surface": "repo",
       "proves": "Defines what is verified, what is smoke-only, and what must not be inferred.",
       "exists": true,
-      "bytes": 8973,
-      "sha256": "797f929857da3e8be2023aac66cc3265c7e931bd21a124b5a662875276fa5906"
+      "bytes": 9374,
+      "sha256": "9761d0696b575d2f84145354bc95979e6b6268680c95d4daef32d8cd706672ad"
     },
     {
       "id": "reviewer_packet",
@@ -71,8 +72,8 @@
       "surface": "website_hf",
       "proves": "Gives a short audit path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 7117,
-      "sha256": "6cc7c70798b95e1d39a8546953d2b95c2818ee80ecfd6f6beadf125f16568149"
+      "bytes": 7290,
+      "sha256": "8ead2fb841fd9b7048497cb1d22eeec47a616dbb9c77f0cbe59a013566b60402"
     },
     {
       "id": "artifact_guide",
@@ -82,8 +83,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 10329,
-      "sha256": "8307b6a5f60789f30217601e344976edd420ea2e19b49efa5a8967524aa86234"
+      "bytes": 11621,
+      "sha256": "e411e49f9111cca679ee50f2d0cb19281b3705cfac4620017d78de9184b6bf5f"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -93,8 +94,8 @@
       "surface": "repo_hf",
       "proves": "Aligns public dataset wording with the official gated Xperience-10M card, public sample card, HF API metadata, and unsupported areas.",
       "exists": true,
-      "bytes": 10029,
-      "sha256": "df25eb9d790d61a524a81c74d3f3a16ebe66d16dc00832ada94ef36371f9ab15"
+      "bytes": 10632,
+      "sha256": "d9212e072fdadb734dadcd2846f772427b99d003d593b0e1865931f4cfa3eca1"
     },
     {
       "id": "official_dataset_card_alignment_json",
@@ -104,8 +105,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable upstream dataset-card, sample-card, and HF API alignment facts for website and HF mirrors.",
       "exists": true,
-      "bytes": 6985,
-      "sha256": "feff5d60c5a5a385612adf40a59956809b3e69eaee3918dbd262e8f8d8186729"
+      "bytes": 8037,
+      "sha256": "6e49a184495c1cc8061f68d7cc74b3ba6377aedffce90c203ae34168411fd538"
     },
     {
       "id": "source_alignment_audit",
@@ -115,8 +116,8 @@
       "surface": "repo_hf",
       "proves": "Summarizes the pass/fail audit for full-dataset facts, sample-card facts, API-listing caveats, and public-card boundary markers.",
       "exists": true,
-      "bytes": 1939,
-      "sha256": "7ce88b1e020a46ba2e21812db3c68ddbad381268a2a1acb02bdd6da9dfab5ed2"
+      "bytes": 2357,
+      "sha256": "9ed1f8581f4656c8bd082be905d6b0ff3a9700410a0df6d60dbe1f1a4a49c63f"
     },
     {
       "id": "source_alignment_audit_json",
@@ -126,8 +127,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable source-alignment pass/fail audit for repo, website, and HF surfaces.",
       "exists": true,
-      "bytes": 4021,
-      "sha256": "cdd8815341ef93b84996b274c514c6f286826e6ea53a9d3ad448f349aa79ca07"
+      "bytes": 4425,
+      "sha256": "dbc7dbc0429fbbedb6d89f330dd3fb0ea3e4dc63eeef4da6645e78f1448fccd2"
     },
     {
       "id": "source_alignment_validator",
@@ -137,8 +138,8 @@
       "surface": "repo_hf",
       "proves": "Regenerates the source-alignment audit from committed facts and public card text.",
       "exists": true,
-      "bytes": 13132,
-      "sha256": "fbebf47edccbf8311b71a589b2816aca21cffd7b481cb330ffeeddc7abde858f"
+      "bytes": 15826,
+      "sha256": "3294745245526ef5a4bb42992c2d7fdd71612db26ad2545f64e4d2272c58f9f2"
     },
     {
       "id": "evaluation_protocol",
@@ -160,7 +161,7 @@
       "proves": "Machine-readable protocol generated from committed task metrics for website and HF mirrors.",
       "exists": true,
       "bytes": 13575,
-      "sha256": "e188f6bbac2bac70da5909ea52798195729c77e970d9ceab7d251f67d7183018"
+      "sha256": "c70b4d522783ef4c94b366ed7e6982804b1d87d1348fedcfd7497edca1e81e0d"
     },
     {
       "id": "evaluation_protocol_builder",
@@ -172,6 +173,39 @@
       "exists": true,
       "bytes": 16084,
       "sha256": "a859e43fc95b2bce4b85a758050968e504f1dc7870d4b04e230302aec2b74724"
+    },
+    {
+      "id": "figure_index",
+      "title": "Figure index",
+      "path": "FIGURE_INDEX.md",
+      "kind": "visual_evidence",
+      "surface": "repo_hf",
+      "proves": "Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts.",
+      "exists": true,
+      "bytes": 4070,
+      "sha256": "959a11973ad6cfbe18d03b083e7a4b93b19cde7c8c7e8c91ba2d75c37b7cd936"
+    },
+    {
+      "id": "figure_index_json",
+      "title": "Figure index JSON",
+      "path": "docs/data/figure_index.json",
+      "kind": "visual_evidence",
+      "surface": "website_hf",
+      "proves": "Machine-readable visual asset index for website and Hugging Face mirrors.",
+      "exists": true,
+      "bytes": 11493,
+      "sha256": "d4b493b3c167e0abd2cf0cad381d7f0d30f7e85152b277903d1a233ee9b8d8ab"
+    },
+    {
+      "id": "figure_index_builder",
+      "title": "Figure index builder",
+      "path": "scripts/build_figure_index.py",
+      "kind": "visual_evidence",
+      "surface": "repo_hf",
+      "proves": "Regenerates visual-asset hashes, dimensions, and source-script provenance.",
+      "exists": true,
+      "bytes": 11792,
+      "sha256": "c8938a9524acf9f797ee601e96f35a0644fe90a48059dca47d434fc8161ce549"
     },
     {
       "id": "quality_gates",
@@ -193,7 +227,7 @@
       "proves": "Machine-readable release-gate summary for validators, mirrors, and reviewer surfaces.",
       "exists": true,
       "bytes": 5310,
-      "sha256": "666f74ffff0a24f0da8e0c53cf16c31b3ae2f66dd05c24346d5e857ae79d2a35"
+      "sha256": "c41756a50eccabfd7102d46204bf1f88e70036101628f69a46e9214659afdc19"
     },
     {
       "id": "live_publication_status",
@@ -215,8 +249,8 @@
       "surface": "repo",
       "proves": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 16410,
-      "sha256": "4a157f92c0a9154d1aad49451c4fdb2c4d480c01df0c3fca58e6d075dbf8a8e8"
+      "bytes": 17243,
+      "sha256": "9c7fbe877fd57e09fa8b44807161ca2fbcba78c430ff638d53f9db9ecb526bb8"
     },
     {
       "id": "reproducibility_contract",
@@ -226,8 +260,8 @@
       "surface": "repo_hf",
       "proves": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
       "exists": true,
-      "bytes": 5884,
-      "sha256": "60cd6b9997719e3637730ab45e774e314740a471be6bc695846ec3ed90b2cfd2"
+      "bytes": 5989,
+      "sha256": "360eb8fe571c7f584f72124a3c2a38d097d920ed64bf588ac79262e106d2d567"
     },
     {
       "id": "reproducibility_matrix",
@@ -237,8 +271,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable reproduction steps with expected artifacts and public boundaries.",
       "exists": true,
-      "bytes": 4940,
-      "sha256": "9b144baae7d4cab3e21304a6fb31e7b12f9971ced5b26fe2e9a03d3e9f9b0631"
+      "bytes": 5026,
+      "sha256": "d8b92f1db7c6c3851fb2133afbfcaef400dc5098eba9f00beda13c5e6f47e9cb"
     },
     {
       "id": "artifact_index_builder",
@@ -248,8 +282,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 16339,
-      "sha256": "afd5ec73c258239bd267638271521c59f267aa7a7837a9fd17eb3e4a69ab3e32"
+      "bytes": 17235,
+      "sha256": "a100c578eefc4f06237e0d4ae4ed0313567d5d7d8c5a6623a8181ab17680aea2"
     },
     {
       "id": "publication_audit",
@@ -296,7 +330,7 @@
       "volatile": true,
       "proves": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 8240,
+      "bytes": 8528,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -307,8 +341,8 @@
       "surface": "website_hf",
       "proves": "Lists public URLs, upstream sources, and machine-readable project metadata.",
       "exists": true,
-      "bytes": 4060,
-      "sha256": "63dfd2c86cb1cd13816cbd68013867bebb195c8cd1bf1dd3180e3c9b9d30116f"
+      "bytes": 4274,
+      "sha256": "55018215d830d59a286741bb8d2d6f2c154b27dcf8757c4140f5b3d014ddad8d"
     },
     {
       "id": "task_summary",
