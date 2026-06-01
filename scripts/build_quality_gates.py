@@ -72,7 +72,7 @@ GATES = [
         "title": "Brand assets",
         "command": "python scripts/build_brand_assets.py",
         "report": "docs/data/brand_assets.json",
-        "blocks_if": "The ChatGPT-image-generated logo, favicon, social card, or app icons are missing or not reproducibly packaged.",
+        "blocks_if": "The generated logo system, favicon, social card, or app icons are missing or not reproducibly packaged.",
         "proves": "The same project logo is available for website header, favicon, README, Hugging Face cards, and social previews.",
     },
     {

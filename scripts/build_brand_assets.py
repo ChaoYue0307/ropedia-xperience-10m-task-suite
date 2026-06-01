@@ -214,7 +214,7 @@ def main() -> int:
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "source": {
             "path": SOURCE_MARK.relative_to(ROOT).as_posix(),
-            "kind": "ChatGPT-image-generated logo mark with chroma-key background removed locally",
+            "kind": "custom generated logo mark with chroma-key background removed locally",
             "prompt_summary": "X-shaped multimodal camera mark with near-black, lime, cyan, trajectory, and point-cloud styling.",
         },
         "assets": [

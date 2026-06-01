@@ -159,7 +159,7 @@ ARTIFACTS = [
         "path": "docs/data/brand_assets.json",
         "kind": "visual_evidence",
         "surface": "website_hf",
-        "proves": "Machine-readable manifest for the ChatGPT-image-generated logo, favicon, social card, dimensions, hashes, and usage roles.",
+        "proves": "Machine-readable manifest for the generated logo system, favicon, social card, dimensions, hashes, and usage roles.",
     },
     {
         "id": "brand_logo_social_card",

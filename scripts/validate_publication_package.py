@@ -47,6 +47,11 @@ STALE_PRESENTATION_STRINGS = {
     "xperience10m-" + "modalities-v9-large-atlas": "old task-suite infographic cache key",
     "xperience10m-" + "taskfirst-v10": "older task-suite infographic cache key",
     "Start with the large native " + "modality atlas": "old suite-section hierarchy copy",
+    "ChatGPT" + "-image": "internal image-generation tool wording in public copy",
+    "H" + "20": "private compute infrastructure wording in public copy",
+    "A" + "100": "private compute infrastructure wording in public copy",
+    "Cur" + "sor": "editor/work-session wording in public copy",
+    "public " + "dashboard and generated figures " + "deliberately " + "follow": "meta design-process wording in public copy",
 }
 CARD_FRESHNESS_EXPECTATIONS = [
     {

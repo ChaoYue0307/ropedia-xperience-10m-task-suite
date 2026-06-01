@@ -37,7 +37,7 @@ The project intentionally separates nine layers:
 | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Aligns this repo's public dataset wording with the official gated Xperience-10M card, sample card, and HF API metadata. |
 | [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Verifies source-alignment markers across repo, website, and HF cards. |
 | [`FIGURE_INDEX.md`](FIGURE_INDEX.md) | Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts. |
-| [`docs/data/brand_assets.json`](docs/data/brand_assets.json) | Catalogs the ChatGPT-image project logo, favicon, app icon, social card, dimensions, hashes, and usage roles. |
+| [`docs/data/brand_assets.json`](docs/data/brand_assets.json) | Catalogs the generated logo system, favicon, app icon, social card, dimensions, hashes, and usage roles. |
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Defines public reproduction commands, expected outputs, and unreproducible boundaries. |
 | [`docs/data/artifact_index.json`](docs/data/artifact_index.json) | Lists reviewer-critical files with existence, size, and stable hashes. |
 | [`docs/data/figure_index.json`](docs/data/figure_index.json) | Machine-readable visual asset index for website and HF mirrors. |
@@ -80,7 +80,7 @@ The project intentionally separates nine layers:
 | [`docs/data/figure_index.json`](docs/data/figure_index.json) | Machine-readable visual asset index mirrored to the website, artifact dataset, and model repo. |
 | [`scripts/build_figure_index.py`](scripts/build_figure_index.py) | Regenerates visual-asset hashes, dimensions, and source-script provenance. |
 | [`docs/data/brand_assets.json`](docs/data/brand_assets.json) | Machine-readable logo/brand manifest for the website, README, Hugging Face cards, favicon, app icon, and social preview. |
-| [`docs/assets/brand/xperience10m-logo-social-card.png`](docs/assets/brand/xperience10m-logo-social-card.png) | ChatGPT-image-generated project logo card used by README and Hugging Face cards. |
+| [`docs/assets/brand/xperience10m-logo-social-card.png`](docs/assets/brand/xperience10m-logo-social-card.png) | Project logo card used by README and Hugging Face cards. |
 | [`scripts/build_brand_assets.py`](scripts/build_brand_assets.py) | Regenerates deterministic logo derivatives, favicon variants, app icons, and the social card from the generated logo mark. |
 | [`docs/assets/task_suite_infographic.png`](docs/assets/task_suite_infographic.png) | Primary 12-task suite map with sample modality thumbnails. |
 | [`docs/assets/pipeline_diagram.png`](docs/assets/pipeline_diagram.png) | Episode-to-task pipeline overview. |
