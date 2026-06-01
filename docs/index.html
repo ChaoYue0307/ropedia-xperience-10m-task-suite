@@ -740,23 +740,56 @@
     .filter.active { color: #020502; background: var(--green); border-color: var(--green); }
     .task-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
     .task-card {
+      appearance: none;
+      width: 100%;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 18px;
+      padding: 20px;
       background: var(--surface);
+      color: inherit;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
       display: grid;
-      gap: 12px;
-      min-height: 184px;
-      transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), border-color 240ms cubic-bezier(0.16, 1, 0.3, 1);
+      gap: 15px;
+      min-height: 324px;
+      align-content: start;
+      transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), border-color 240ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 240ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     .task-card:hover { transform: translateY(-3px); border-color: var(--green); }
+    .task-card.active {
+      border-color: rgba(164, 242, 127, 0.72);
+      box-shadow: 0 20px 48px rgba(164, 242, 127, 0.08);
+    }
     .task-card.hide { display: none; }
     .task-top { display: flex; justify-content: space-between; gap: 14px; align-items: start; }
-    .task-name { font-family: var(--font-mono); font-size: 13px; font-weight: 760; }
+    .task-name {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 21px;
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .task-research-name {
+      display: block;
+      margin-top: 6px;
+      color: #d7e5d1;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .artifact-id {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      line-height: 1.3;
+      word-break: break-word;
+    }
     .tag {
       font-size: 11px;
       border-radius: 999px;
@@ -770,8 +803,51 @@
     .tag.retrieval { background: rgba(122, 229, 195, 0.12); color: #7ae5c3; }
     .tag.diagnostic { background: rgba(216, 244, 165, 0.12); color: #d8f4a5; }
     .task-card p { margin: 0; color: var(--muted); font-size: 13px; }
-    .metric-row { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
-    .metric-row strong { font-family: var(--font-mono); font-size: 18px; font-variant-numeric: tabular-nums; }
+    .task-contract {
+      display: grid;
+      gap: 8px;
+      color: #dce8d6;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .task-contract span {
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr);
+      gap: 10px;
+      align-items: baseline;
+      border-top: 1px solid var(--soft-line);
+      padding-top: 8px;
+    }
+    .task-contract strong {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      font-size: 12px;
+    }
+    .metric-row span {
+      display: block;
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      padding: 9px;
+      color: var(--muted);
+      min-width: 0;
+    }
+    .metric-row strong {
+      display: block;
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 18px;
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+      word-break: break-word;
+    }
     .mini-bar { height: 7px; background: rgba(164, 242, 127, 0.14); border-radius: 999px; overflow: hidden; }
     .mini-bar span { display: block; height: 100%; width: var(--w); background: var(--c); }
 
@@ -906,22 +982,238 @@
       color: var(--ink);
       font-variant-numeric: tabular-nums;
     }
-    .walkthrough-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .walk-card {
+    .task-player {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: var(--surface);
-      padding: 18px;
       display: grid;
-      gap: 12px;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      gap: 24px;
+      padding: clamp(18px, 2.4vw, 28px);
+      background:
+        linear-gradient(180deg, rgba(164, 242, 127, 0.07), rgba(7, 18, 7, 0.88)),
+        var(--surface);
+      box-shadow: 0 20px 58px rgba(0, 0, 0, 0.32);
+    }
+    .player-stage,
+    .player-copy {
+      min-width: 0;
+    }
+    .player-screen {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(164, 242, 127, 0.22);
+      border-radius: var(--radius);
+      background: #020502;
+      aspect-ratio: 16 / 10;
+    }
+    .player-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .player-badge {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      max-width: calc(100% - 28px);
+      border: 1px solid rgba(164, 242, 127, 0.42);
+      border-radius: 6px;
+      background: rgba(2, 5, 2, 0.78);
+      color: #f4f8ef;
+      padding: 10px 12px;
+      backdrop-filter: blur(12px);
+    }
+    .player-badge strong {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: clamp(20px, 2.4vw, 34px);
+      line-height: 1.02;
+    }
+    .player-badge span {
+      display: block;
+      margin-top: 3px;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .player-controls button {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: rgba(2, 5, 2, 0.62);
+      color: #eaf5e5;
+      min-height: 38px;
+      padding: 0 12px;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 720;
+      cursor: pointer;
+    }
+    .player-controls button.primary-control {
+      background: var(--green);
+      color: #020502;
+      border-color: var(--green);
+    }
+    .player-counter {
+      margin-left: auto;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+    .player-progress {
+      height: 6px;
+      margin-top: 12px;
+      border-radius: 999px;
+      background: rgba(164, 242, 127, 0.12);
+      overflow: hidden;
+    }
+    .player-progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+      transition: width 260ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modality-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+      gap: 9px;
+      margin-top: 12px;
+    }
+    .modality-tile {
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      background: rgba(2, 5, 2, 0.48);
+      overflow: hidden;
+      min-width: 0;
+    }
+    .modality-tile img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      background: #020502;
+    }
+    .modality-tile span {
+      display: block;
+      padding: 7px 8px;
+      color: #dce8d6;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .player-copy {
+      display: grid;
+      gap: 18px;
       align-content: start;
     }
-    .walk-card h3 { margin: 0; font-family: var(--font-mono); font-size: 15px; }
-    .walk-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .player-kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .player-copy h3 {
+      margin: 0;
+      font-family: var(--font-ui);
+      font-size: clamp(30px, 3.4vw, 48px);
+      line-height: 1.02;
+      text-wrap: balance;
+    }
+    .player-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.62;
+    }
+    .player-case {
+      color: #eaf5e5;
+      font-size: 16px;
+    }
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .flow-steps span,
+    .module-list li {
+      border: 1px solid var(--soft-line);
+      background: rgba(164, 242, 127, 0.06);
+      border-radius: 6px;
+      padding: 10px;
+      min-width: 0;
+    }
+    .flow-steps strong,
+    .module-list strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .flow-steps em {
+      display: block;
+      color: #dce8d6;
+      font-style: normal;
+      line-height: 1.38;
+    }
+    .module-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #dce8d6;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .task-selector {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .selector-button {
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      background: rgba(2, 5, 2, 0.54);
+      color: #dce8d6;
+      font: inherit;
+      min-height: 64px;
+      padding: 10px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .selector-button strong {
+      display: block;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 14px;
+      line-height: 1.15;
+    }
+    .selector-button span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+    .selector-button.active {
+      border-color: rgba(164, 242, 127, 0.72);
+      background: rgba(164, 242, 127, 0.12);
+    }
     .walk-flow {
       display: grid;
       grid-template-columns: 0.72fr 1.15fr 0.72fr;
@@ -998,7 +1290,9 @@
     @media (max-width: 960px) {
       .hero-inner, .two-col { grid-template-columns: 1fr; }
       .hero-inner { min-height: 0; }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .scorecard-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .scorecard-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .task-player { grid-template-columns: 1fr; }
+      .task-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .modality-atlas { grid-template-columns: 1fr; }
       .artifact-group-head { grid-template-columns: 1fr; align-items: start; }
       .chart-grid { grid-template-columns: 1fr; }
@@ -1010,7 +1304,7 @@
     }
     @media (max-width: 640px) {
       .wrap { width: min(100% - 28px, var(--max)); }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .scorecard-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid, .walk-flow, .atlas-rows { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .scorecard-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
       .artifact-group { padding: 16px; }
       .modality-atlas-panel { padding: 14px; }
       .atlas-card { padding: 12px; }
@@ -1026,6 +1320,7 @@
       .hero-inner, section { padding: 46px 0; }
       .signal { grid-template-columns: 1fr; }
       .signal strong { text-align: left; }
+      .player-counter { width: 100%; margin-left: 0; }
       .figure-pan {
         margin-inline: 0;
         padding-inline: 0;
@@ -1640,23 +1935,45 @@
     <section id="walkthroughs">
       <div class="wrap">
         <div class="section-head">
-          <h2>Junior-friendly task walkthroughs.</h2>
-          <p>Each task is explained as a case study with input, middle process modules, and output. The full generated guide is committed as Markdown and JSON.</p>
+          <h2>Interactive task walkthrough.</h2>
+          <p>Each task uses a common research name and a concrete case study, then opens into the input, middle modules, output, modality evidence, metric, and current limitation.</p>
         </div>
-        <div class="walkthrough-grid">
-          <article class="walk-card"><h3>timeline_action</h3><p><strong>Case:</strong> a pouring window should map to the current action, such as Pour coffee.</p><div class="walk-flow"><span><strong>Input</strong>one 20-frame all-modality window</span><span><strong>Process</strong>window builder, feature assembler, action label builder, classifier, evaluator</span><span><strong>Output</strong>current action class</span></div></article>
-          <article class="walk-card"><h3>timeline_subtask</h3><p><strong>Case:</strong> a fine action is grouped into a broader drink-preparation stage.</p><div class="walk-flow"><span><strong>Input</strong>one all-modality window</span><span><strong>Process</strong>window builder, feature assembler, subtask label builder, classifier, evaluator</span><span><strong>Output</strong>current subtask label</span></div></article>
-          <article class="walk-card"><h3>transition_detection</h3><p><strong>Case:</strong> detect the moment the demonstrator changes from preparing to pouring.</p><div class="walk-flow"><span><strong>Input</strong>one window plus boundary labels</span><span><strong>Process</strong>boundary builder, feature assembler, binary classifier, boundary matcher, evaluator</span><span><strong>Output</strong>boundary or steady</span></div></article>
-          <article class="walk-card"><h3>next_action</h3><p><strong>Case:</strong> a preparing-to-pour window should predict the action 20 frames later.</p><div class="walk-flow"><span><strong>Input</strong>current window at time t</span><span><strong>Process</strong>future label shift, current-only features, classifier, evaluator</span><span><strong>Output</strong>action at t+20 frames</span></div></article>
-          <article class="walk-card"><h3>hand_trajectory_forecast</h3><p><strong>Case:</strong> when a hand moves toward a cup, predict the future 3D hand path.</p><div class="walk-flow"><span><strong>Input</strong>current all-modality window</span><span><strong>Process</strong>future mocap target builder, regression head, trajectory reshaper, MPJPE evaluator</span><span><strong>Output</strong>future left/right hand joints</span></div></article>
-          <article class="walk-card"><h3>contact_prediction</h3><p><strong>Case:</strong> decide whether the hand/body is touching an object or surface.</p><div class="walk-flow"><span><strong>Input</strong>non-contact, non-caption features</span><span><strong>Process</strong>feature selector, contact target builder, binary classifier, degeneracy check</span><span><strong>Output</strong>contact or no contact</span></div></article>
-          <article class="walk-card"><h3>object_relevance</h3><p><strong>Case:</strong> during pouring, infer relevant objects such as milk, cup, or coffee.</p><div class="walk-flow"><span><strong>Input</strong>non-caption features</span><span><strong>Process</strong>object vocabulary, multi-hot targets, sigmoid heads, micro-F1 evaluator</span><span><strong>Output</strong>multi-label object set</span></div></article>
-          <article class="walk-card"><h3>caption_grounding</h3><p><strong>Case:</strong> a query like Pour milk into coffee should retrieve the matching moment.</p><div class="walk-flow"><span><strong>Input</strong>caption query plus candidate windows</span><span><strong>Process</strong>query builder, candidate builder, projection head, cosine ranker, MRR evaluator</span><span><strong>Output</strong>ranked matching windows</span></div></article>
-          <article class="walk-card"><h3>cross_modal_retrieval</h3><p><strong>Case:</strong> motion and IMU from pouring should retrieve the matching depth/video window.</p><div class="walk-flow"><span><strong>Input</strong>motion/IMU/camera query, depth/video candidates</span><span><strong>Process</strong>modality splitter, projection head, candidate index, cosine ranker, top-k evaluator</span><span><strong>Output</strong>ranked depth/video windows</span></div></article>
-          <article class="walk-card"><h3>modality_reconstruction</h3><p><strong>Case:</strong> infer compressed depth/video features from motion, IMU, and camera pose.</p><div class="walk-flow"><span><strong>Input</strong>motion/IMU/camera features</span><span><strong>Process</strong>source-target split, scaling, regression head, inverse scaling, R2 evaluator</span><span><strong>Output</strong>depth/video feature vector</span></div></article>
-          <article class="walk-card"><h3>temporal_order</h3><p><strong>Case:</strong> tell whether reaching then pouring has been reversed.</p><div class="walk-flow"><span><strong>Input</strong>two adjacent windows</span><span><strong>Process</strong>pair builder, feature combiner, binary classifier, F1 evaluator</span><span><strong>Output</strong>correct or reversed order</span></div></article>
-          <article class="walk-card"><h3>misalignment_detection</h3><p><strong>Case:</strong> detect motion from pouring paired with video/depth shifted later.</p><div class="walk-flow"><span><strong>Input</strong>motion side plus visual/depth side</span><span><strong>Process</strong>aligned pair builder, shifted pair builder, feature combiner, binary classifier</span><span><strong>Output</strong>aligned or shifted</span></div></article>
+        <div class="task-player" id="taskPlayer">
+          <div class="player-stage">
+            <div class="player-screen">
+              <img id="playerPoster" src="assets/modalities/video.jpg" alt="Representative sample modality for the selected task">
+              <div class="player-badge">
+                <strong id="playerBadgeTitle">Action Recognition</strong>
+                <span id="playerBadgeMeta">Egocentric Action Recognition</span>
+              </div>
+            </div>
+            <div class="modality-strip" id="playerModalities" aria-label="Selected task modality evidence"></div>
+            <div class="player-controls">
+              <button type="button" id="playerPrev">Previous</button>
+              <button type="button" class="primary-control" id="playerPlay">Play</button>
+              <button type="button" id="playerNext">Next</button>
+              <span class="player-counter" id="playerCounter">01 / 12</span>
+            </div>
+            <div class="player-progress" aria-hidden="true"><span id="playerProgress"></span></div>
+          </div>
+          <article class="player-copy" aria-live="polite">
+            <div class="player-kicker">
+              <span class="tag supervised" id="playerFamily">supervised</span>
+              <span class="status-pill" id="playerArchitecture">multiclass classifier</span>
+            </div>
+            <h3 id="playerTitle">Action Recognition</h3>
+            <p class="player-case" id="playerCase">In the coffee-making sample, a pouring window maps to the current action label.</p>
+            <div class="flow-steps">
+              <span><strong>Input</strong><em id="playerInput">20-frame multimodal window</em></span>
+              <span><strong>Process</strong><em id="playerProcess">window features -> classifier</em></span>
+              <span><strong>Output</strong><em id="playerOutput">current action class</em></span>
+            </div>
+            <ul class="module-list" id="playerModules"></ul>
+            <p id="playerMetric">Metric: macro-F1. Minimal 0.0500; neural MLP 0.0263.</p>
+            <p id="playerLimit">Current limitation: single-episode chronological split.</p>
+          </article>
         </div>
+        <div class="task-selector" id="walkthroughSelector" aria-label="Task walkthrough selector"></div>
       </div>
     </section>
 
@@ -1664,7 +1981,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Task cards and metrics.</h2>
-          <p>The same 12 tasks are kept filterable here so the supervised, forecast, retrieval, and diagnostic probes can be inspected individually.</p>
+          <p>The 12 task cards use readable research names, explicit input-process-output contracts, and verified minimal versus neural scores from the committed result files.</p>
         </div>
         <div class="task-toolbar" aria-label="Task filters">
           <button class="filter active" data-filter="all">All tasks</button>
@@ -1673,20 +1990,7 @@
           <button class="filter" data-filter="retrieval">Retrieval</button>
           <button class="filter" data-filter="diagnostic">Diagnostic</button>
         </div>
-        <div class="task-grid" id="taskGrid">
-          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">timeline_action</span><span class="tag supervised">supervised</span></div><p>All featurized modalities to current action label. Chronological split exposes unseen future actions.</p><div class="metric-row"><span>macro-F1</span><strong>0.0500</strong></div><div class="mini-bar"><span style="--w:5%;--c:#9bdfff"></span></div></article>
-          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">timeline_subtask</span><span class="tag supervised">supervised</span></div><p>All featurized modalities to current subtask label. Useful for segmentation diagnostics.</p><div class="metric-row"><span>macro-F1</span><strong>0.0495</strong></div><div class="mini-bar"><span style="--w:5%;--c:#9bdfff"></span></div></article>
-          <article class="task-card" data-kind="diagnostic"><div class="task-top"><span class="task-name">transition_detection</span><span class="tag diagnostic">diagnostic</span></div><p>Predict steady vs action boundary. Highlights task-transition localization quality.</p><div class="metric-row"><span>macro-F1</span><strong>0.6552</strong></div><div class="mini-bar"><span style="--w:65.5%;--c:#d8f4a5"></span></div></article>
-          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">next_action</span><span class="tag supervised">supervised</span></div><p>Current multimodal window to action 20 frames later. Tests short-horizon task flow.</p><div class="metric-row"><span>macro-F1</span><strong>0.0593</strong></div><div class="mini-bar"><span style="--w:5.9%;--c:#9bdfff"></span></div></article>
-          <article class="task-card" data-kind="forecast"><div class="task-top"><span class="task-name">hand_trajectory_forecast</span><span class="tag forecast">forecast</span></div><p>Predict future left/right hand 3D joints. Closer to imitation-learning style signals.</p><div class="metric-row"><span>MPJPE</span><strong>0.8223</strong></div><div class="mini-bar"><span style="--w:48%;--c:#a7f078"></span></div></article>
-          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">contact_prediction</span><span class="tag supervised">supervised</span></div><p>Non-contact modalities to binary contact. Degenerate in this sample because one class dominates.</p><div class="metric-row"><span>accuracy</span><strong>1.0000</strong></div><div class="mini-bar"><span style="--w:100%;--c:#a7f078"></span></div></article>
-          <article class="task-card" data-kind="supervised"><div class="task-top"><span class="task-name">object_relevance</span><span class="tag supervised">supervised</span></div><p>Predict relevant object set from non-caption feature blocks.</p><div class="metric-row"><span>micro-F1</span><strong>0.1839</strong></div><div class="mini-bar"><span style="--w:18.4%;--c:#9bdfff"></span></div></article>
-          <article class="task-card" data-kind="retrieval"><div class="task-top"><span class="task-name">caption_grounding</span><span class="tag retrieval">retrieval</span></div><p>Caption objects/interaction query to matching sensor window.</p><div class="metric-row"><span>MRR</span><strong>0.0172</strong></div><div class="mini-bar"><span style="--w:1.7%;--c:#7ae5c3"></span></div></article>
-          <article class="task-card" data-kind="retrieval"><div class="task-top"><span class="task-name">cross_modal_retrieval</span><span class="tag retrieval">retrieval</span></div><p>Motion/IMU/camera query retrieves matching depth/video window. Strongest single-episode signal.</p><div class="metric-row"><span>top-5</span><strong>0.3764</strong></div><div class="mini-bar"><span style="--w:37.6%;--c:#7ae5c3"></span></div></article>
-          <article class="task-card" data-kind="forecast"><div class="task-top"><span class="task-name">modality_reconstruction</span><span class="tag forecast">forecast</span></div><p>Motion/IMU/camera to depth/video feature vector.</p><div class="metric-row"><span>R2</span><strong>-0.0160</strong></div><div class="mini-bar"><span style="--w:2%;--c:#ff8f7a"></span></div></article>
-          <article class="task-card" data-kind="diagnostic"><div class="task-top"><span class="task-name">temporal_order</span><span class="tag diagnostic">diagnostic</span></div><p>Two adjacent windows to correct vs reversed order.</p><div class="metric-row"><span>F1</span><strong>0.5487</strong></div><div class="mini-bar"><span style="--w:54.9%;--c:#d8f4a5"></span></div></article>
-          <article class="task-card" data-kind="diagnostic"><div class="task-top"><span class="task-name">misalignment_detection</span><span class="tag diagnostic">diagnostic</span></div><p>Motion+visual pair to aligned vs shifted by eight windows.</p><div class="metric-row"><span>F1</span><strong>0.4866</strong></div><div class="mini-bar"><span style="--w:48.7%;--c:#d8f4a5"></span></div></article>
-        </div>
+        <div class="task-grid" id="taskGrid" aria-live="polite"></div>
       </div>
     </section>
 
@@ -1853,18 +2157,203 @@ python scripts/validate_publication_package.py</code></pre>
   </footer>
 
   <script>
-    const filters = document.querySelectorAll(".filter");
-    const cards = document.querySelectorAll(".task-card");
-    filters.forEach((button) => {
-      button.addEventListener("click", () => {
-        filters.forEach((b) => b.classList.remove("active"));
-        button.classList.add("active");
-        const filter = button.dataset.filter;
-        cards.forEach((card) => {
-          card.classList.toggle("hide", filter !== "all" && card.dataset.kind !== filter);
+    const modalityMeta = {
+      video: { label: "Video", src: "assets/modalities/video.jpg" },
+      audio: { label: "Audio", src: "assets/modalities/audio.png" },
+      depth: { label: "Depth", src: "assets/modalities/depth.jpg" },
+      pose_slam: { label: "Pose / SLAM", src: "assets/modalities/pose_slam.png" },
+      motion_capture: { label: "Motion Capture", src: "assets/modalities/motion_capture.png" },
+      inertial: { label: "Inertial", src: "assets/modalities/inertial.png" },
+      language: { label: "Language", src: "assets/modalities/language.png" }
+    };
+    const familyAccent = {
+      supervised: "#9bdfff",
+      forecast: "#a7f078",
+      retrieval: "#7ae5c3",
+      diagnostic: "#d8f4a5"
+    };
+    let taskEntries = [];
+    let activeTaskIndex = 0;
+    let activeFilter = "all";
+    let playerTimer = null;
+
+    const escapeHtml = (value) => String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+
+    const formatMetric = (value) => {
+      if (value === null || value === undefined || Number.isNaN(Number(value))) return "n/a";
+      const numeric = Number(value);
+      if (Math.abs(numeric) >= 10) return numeric.toFixed(2);
+      return numeric.toFixed(4);
+    };
+
+    const metricBarWidth = (task) => {
+      const value = Number(task.metric?.neural_mlp ?? task.metric?.minimal ?? 0);
+      if (!Number.isFinite(value)) return 4;
+      if (task.metric?.name === "R2") return Math.max(4, Math.min(100, (value + 1) * 50));
+      if (task.metric?.direction === "lower") return Math.max(4, Math.min(100, 100 / (1 + Math.max(value, 0))));
+      return Math.max(4, Math.min(100, value * 100));
+    };
+
+    const normalizeTasks = (payload) => Object.values(payload.tasks || {});
+
+    function renderTaskCards() {
+      const grid = document.getElementById("taskGrid");
+      grid.innerHTML = taskEntries.map((task, index) => {
+        const family = task.task_family;
+        const minimal = formatMetric(task.metric?.minimal);
+        const neural = formatMetric(task.metric?.neural_mlp);
+        return `
+          <button type="button" class="task-card" data-kind="${escapeHtml(family)}" data-index="${index}" aria-pressed="false">
+            <div class="task-top">
+              <span>
+                <span class="task-name">${escapeHtml(task.display_name)}</span>
+                <span class="task-research-name">${escapeHtml(task.research_name)}</span>
+              </span>
+              <span class="tag ${escapeHtml(family)}">${escapeHtml(family)}</span>
+            </div>
+            <p>${escapeHtml(task.card_blurb)}</p>
+            <div class="task-contract">
+              <span><strong>Input</strong>${escapeHtml(task.input_short)}</span>
+              <span><strong>Middle</strong>${escapeHtml(task.process_short)}</span>
+              <span><strong>Output</strong>${escapeHtml(task.output_short)}</span>
+            </div>
+            <div class="metric-row">
+              <span><strong>${minimal}</strong>minimal ${escapeHtml(task.metric?.name)}</span>
+              <span><strong>${neural}</strong>neural MLP</span>
+            </div>
+            <div class="mini-bar"><span style="--w:${metricBarWidth(task).toFixed(1)}%;--c:${familyAccent[family] || "#a7f078"}"></span></div>
+            <span class="artifact-id">${escapeHtml(task.artifact_id)}</span>
+          </button>
+        `;
+      }).join("");
+      grid.querySelectorAll(".task-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          pausePlayer();
+          setActiveTask(Number(card.dataset.index));
+          document.getElementById("walkthroughs").scrollIntoView({ behavior: "smooth", block: "start" });
         });
       });
+      applyTaskFilter(activeFilter);
+    }
+
+    function renderSelector() {
+      const selector = document.getElementById("walkthroughSelector");
+      selector.innerHTML = taskEntries.map((task, index) => `
+        <button type="button" class="selector-button" data-index="${index}" aria-pressed="false">
+          <strong>${escapeHtml(task.display_name)}</strong>
+          <span>${escapeHtml(task.task_family)}</span>
+        </button>
+      `).join("");
+      selector.querySelectorAll(".selector-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          pausePlayer();
+          setActiveTask(Number(button.dataset.index));
+        });
+      });
+    }
+
+    function renderPlayer(task, index) {
+      const poster = modalityMeta[task.poster_modality] || modalityMeta.video;
+      document.getElementById("playerPoster").src = poster.src;
+      document.getElementById("playerPoster").alt = `${task.display_name} representative ${poster.label} modality`;
+      document.getElementById("playerBadgeTitle").textContent = task.display_name;
+      document.getElementById("playerBadgeMeta").textContent = task.research_name;
+      document.getElementById("playerFamily").className = `tag ${task.task_family}`;
+      document.getElementById("playerFamily").textContent = task.task_family;
+      document.getElementById("playerArchitecture").textContent = task.architecture_family;
+      document.getElementById("playerTitle").textContent = task.display_name;
+      document.getElementById("playerCase").textContent = task.case_study;
+      document.getElementById("playerInput").textContent = task.input_short;
+      document.getElementById("playerProcess").textContent = task.process_short;
+      document.getElementById("playerOutput").textContent = task.output_short;
+      document.getElementById("playerModules").innerHTML = task.middle_modules.map((module, moduleIndex) => (
+        `<li><strong>Module ${String(moduleIndex + 1).padStart(2, "0")}</strong>${escapeHtml(module)}</li>`
+      )).join("");
+      document.getElementById("playerMetric").textContent = `${task.metric.name} (${task.metric.direction} is better). Minimal ${formatMetric(task.metric.minimal)}; neural MLP ${formatMetric(task.metric.neural_mlp)}.`;
+      document.getElementById("playerLimit").textContent = `Current limitation: ${task.failure_mode}`;
+      document.getElementById("playerCounter").textContent = `${String(index + 1).padStart(2, "0")} / ${String(taskEntries.length).padStart(2, "0")}`;
+      document.getElementById("playerProgress").style.width = `${((index + 1) / taskEntries.length) * 100}%`;
+      document.getElementById("playerModalities").innerHTML = task.modalities.map((key) => {
+        const modality = modalityMeta[key] || modalityMeta.video;
+        return `<span class="modality-tile"><img src="${modality.src}" alt="${escapeHtml(modality.label)} sample thumbnail"><span>${escapeHtml(modality.label)}</span></span>`;
+      }).join("");
+    }
+
+    function updateActiveMarkers() {
+      document.querySelectorAll(".task-card").forEach((card) => {
+        const active = Number(card.dataset.index) === activeTaskIndex;
+        card.classList.toggle("active", active);
+        card.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+      document.querySelectorAll(".selector-button").forEach((button) => {
+        const active = Number(button.dataset.index) === activeTaskIndex;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+    }
+
+    function setActiveTask(index) {
+      if (!taskEntries.length) return;
+      activeTaskIndex = (index + taskEntries.length) % taskEntries.length;
+      renderPlayer(taskEntries[activeTaskIndex], activeTaskIndex);
+      updateActiveMarkers();
+    }
+
+    function applyTaskFilter(filter) {
+      activeFilter = filter;
+      document.querySelectorAll(".filter").forEach((button) => {
+        const active = button.dataset.filter === filter;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+      document.querySelectorAll(".task-card").forEach((card) => {
+        card.classList.toggle("hide", filter !== "all" && card.dataset.kind !== filter);
+      });
+    }
+
+    function pausePlayer() {
+      if (playerTimer) {
+        window.clearInterval(playerTimer);
+        playerTimer = null;
+        document.getElementById("playerPlay").textContent = "Play";
+      }
+    }
+
+    function togglePlayer() {
+      if (playerTimer) {
+        pausePlayer();
+        return;
+      }
+      document.getElementById("playerPlay").textContent = "Pause";
+      playerTimer = window.setInterval(() => setActiveTask(activeTaskIndex + 1), 3200);
+    }
+
+    async function initTaskSurface() {
+      try {
+        const response = await fetch("data/task_walkthroughs.json", { cache: "no-cache" });
+        if (!response.ok) throw new Error(`task data ${response.status}`);
+        taskEntries = normalizeTasks(await response.json());
+        renderTaskCards();
+        renderSelector();
+        setActiveTask(0);
+      } catch (error) {
+        document.getElementById("taskGrid").innerHTML = '<p class="repro-note">Task data could not be loaded from data/task_walkthroughs.json.</p>';
+        document.getElementById("walkthroughSelector").innerHTML = "";
+      }
+    }
+
+    document.querySelectorAll(".filter").forEach((button) => {
+      button.addEventListener("click", () => applyTaskFilter(button.dataset.filter));
     });
+    document.getElementById("playerPrev").addEventListener("click", () => { pausePlayer(); setActiveTask(activeTaskIndex - 1); });
+    document.getElementById("playerNext").addEventListener("click", () => { pausePlayer(); setActiveTask(activeTaskIndex + 1); });
+    document.getElementById("playerPlay").addEventListener("click", togglePlayer);
+    initTaskSurface();
 
     document.querySelectorAll("[data-copy]").forEach((button) => {
       button.addEventListener("click", async () => {

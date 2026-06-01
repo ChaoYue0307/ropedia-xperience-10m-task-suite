@@ -23,7 +23,7 @@ into:
 - lightweight neural MLP heads for the same 12 task contracts,
 - a generated four-direction research taxonomy matching the Ropedia job tracks,
 - four additional direction-extension probes with minimal and neural baselines,
-- junior-friendly walkthroughs for every task, with case study, input, process, and output,
+- human-readable research task cards and an interactive task walkthrough/player for every task,
 - a next-milestone track for Qwen3-Omni fine-tuning and sensor-bridge evaluation,
 - metrics, predictions, model weights, manifests, charts, and a static website,
 - a clear explanation of what a single episode can and cannot prove.
@@ -362,7 +362,7 @@ docs/
   data/reviewer_packet.json         # machine-readable reviewer path and proof boundary
   data/research_directions.json     # four-track website data bundle
   data/research_direction_extensions.json # four extra probe data bundle
-  data/task_walkthroughs.json       # beginner task explanation data bundle
+  data/task_walkthroughs.json       # human-readable task-card and walkthrough-player data
   data/modality_atlas.json          # responsive modality-card data
   assets/brand/*.png                # project logo, favicon, social card
   assets/task_suite_infographic.png # 12-task presentation graphic

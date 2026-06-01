@@ -296,6 +296,24 @@ def validate(docs_root: Path, site_base: str) -> dict:
             None,
             "The dataset-card section should expose the generated source-alignment audit.",
         ),
+        (
+            "task_player_surface_present",
+            'id="taskPlayer"',
+            None,
+            "The website should expose the interactive task walkthrough/player.",
+        ),
+        (
+            "task_player_uses_walkthrough_json",
+            'data/task_walkthroughs.json',
+            None,
+            "The task player and task cards should read the generated walkthrough JSON.",
+        ),
+        (
+            "task_cards_use_human_research_names",
+            'Action Recognition',
+            None,
+            "The public task surface should use readable research task names.",
+        ),
     ]
     for name, marker, after_marker, reason in semantic_rules:
         if name == "suite_modality_atlas_contains_seven_cards":
@@ -312,7 +330,13 @@ def validate(docs_root: Path, site_base: str) -> dict:
         elif name == "evaluation_protocol_between_scorecard_and_evidence":
             passed = scorecard_pos >= 0 and protocol_pos >= 0 and evidence_pos >= 0 and scorecard_pos < protocol_pos < evidence_pos
             detail = {"scorecard_index": scorecard_pos, "protocol_index": protocol_pos, "evidence_index": evidence_pos}
-        elif name in {"reviewer_scorecard_links_json", "figure_index_links_json"}:
+        elif name in {
+            "reviewer_scorecard_links_json",
+            "figure_index_links_json",
+            "task_player_surface_present",
+            "task_player_uses_walkthrough_json",
+            "task_cards_use_human_research_names",
+        }:
             marker_count = index_text.count(marker)
             passed = marker_count >= 1
             detail = {"marker_count": marker_count}

@@ -1,11 +1,11 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T14:22:00+00:00",
+  "generated_at_utc": "2026-06-01T15:37:05+00:00",
   "docs_root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 2,
-    "local_references": 87,
+    "local_references": 88,
     "external_reference_count": 72,
     "json_files": 22,
     "image_assets_referenced": 19,
@@ -24,8 +24,8 @@
       "name": "reviewer_scorecard_precedes_evidence_ledger",
       "status": "pass",
       "reason": "The reviewer scorecard should appear before the deeper evidence ledger.",
-      "scorecard_index": 37042,
-      "evidence_index": 43688
+      "scorecard_index": 44061,
+      "evidence_index": 50707
     },
     {
       "name": "reviewer_scorecard_links_json",
@@ -37,9 +37,9 @@
       "name": "evaluation_protocol_between_scorecard_and_evidence",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "scorecard_index": 37042,
-      "protocol_index": 41281,
-      "evidence_index": 43688
+      "scorecard_index": 44061,
+      "protocol_index": 48300,
+      "evidence_index": 50707
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -83,6 +83,24 @@
       "status": "pass",
       "reason": "The dataset-card section should expose the generated source-alignment audit.",
       "marker_count": 1
+    },
+    {
+      "name": "task_player_surface_present",
+      "status": "pass",
+      "reason": "The website should expose the interactive task walkthrough/player.",
+      "marker_count": 1
+    },
+    {
+      "name": "task_player_uses_walkthrough_json",
+      "status": "pass",
+      "reason": "The task player and task cards should read the generated walkthrough JSON.",
+      "marker_count": 2
+    },
+    {
+      "name": "task_cards_use_human_research_names",
+      "status": "pass",
+      "reason": "The public task surface should use readable research task names.",
+      "marker_count": 3
     }
   ],
   "html_pages": [
@@ -94,15 +112,15 @@
     },
     {
       "path": "index.html",
-      "id_count": 34,
-      "reference_count": 86,
-      "image_count": 21
+      "id_count": 55,
+      "reference_count": 87,
+      "image_count": 22
     }
   ],
   "json_files": [
     {
       "path": "data/artifact_index.json",
-      "bytes": 22054,
+      "bytes": 22537,
       "top_level_type": "dict"
     },
     {
@@ -127,12 +145,12 @@
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 21631,
+      "bytes": 26326,
       "top_level_type": "dict"
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 84322,
+      "bytes": 85390,
       "top_level_type": "dict"
     },
     {
@@ -147,7 +165,7 @@
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 6733,
+      "bytes": 6781,
       "top_level_type": "dict"
     },
     {
@@ -197,7 +215,7 @@
     },
     {
       "path": "data/task_walkthroughs.json",
-      "bytes": 17680,
+      "bytes": 26935,
       "top_level_type": "dict"
     },
     {
