@@ -126,7 +126,7 @@
         "scripts/validate_publication_package.py",
         "docs/data/publication_audit.json"
       ],
-      "boundary": "checks public files and HF bundles, not arbitrary ignored local scratch outputs"
+      "boundary": "checks public files, HF bundles, and public-card freshness; ignored local scratch outputs are excluded"
     },
     {
       "id": "website_integrity",

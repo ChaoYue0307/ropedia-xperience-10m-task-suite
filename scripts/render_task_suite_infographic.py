@@ -27,7 +27,7 @@ DEFAULT_SAMPLE_DIR = ROOT.parent / "data/sample/xperience-10m-sample"
 DROPBOX_SAMPLE_DIR = Path.home() / "Library/CloudStorage/Dropbox/Ropedia/data/sample/xperience-10m-sample"
 DEFAULT_OUTPUT = ROOT / "docs/assets/task_suite_infographic.png"
 CANVAS_WIDTH = 1800
-CANVAS_HEIGHT = 5700
+CANVAS_HEIGHT = 5850
 THUMB_WIDTH = 760
 THUMB_HEIGHT = 470
 
@@ -738,32 +738,31 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .modalities {{
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 42px;
+      grid-template-columns: 1fr;
+      gap: 30px;
     }}
     .modality {{
-      min-height: 835px;
-      padding: 38px 38px 40px;
+      min-height: 455px;
+      padding: 30px;
       border: 1px solid rgba(167,240,120,0.22);
       background: rgba(7,18,7,0.84);
       border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }}
-    .modality:nth-child(7) {{
-      grid-column: 1 / -1;
-      min-height: 710px;
+      display: grid;
+      grid-template-columns: 760px minmax(0, 1fr);
+      grid-template-areas:
+        "thumb heading"
+        "thumb copy";
+      column-gap: 36px;
+      row-gap: 22px;
+      align-items: start;
     }}
     .modality-thumb {{
-      height: 470px;
+      grid-area: thumb;
+      height: 395px;
       overflow: hidden;
       border: 1px solid rgba(167,240,120,0.16);
       border-radius: 8px;
       background: #020502;
-    }}
-    .modality:nth-child(7) .modality-thumb {{
-      height: 430px;
     }}
     .modality-thumb img {{
       display: block;
@@ -777,10 +776,13 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       font-variant-numeric: tabular-nums;
     }}
     .modality-heading {{
+      grid-area: heading;
       display: flex;
       align-items: start;
       justify-content: space-between;
       gap: 24px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid rgba(167,240,120,0.16);
     }}
     .modality-index {{
       color: #a5afa2;
@@ -799,22 +801,25 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .modality h3 {{
       margin: 11px 0 0;
-      font-size: 60px;
+      font-size: 66px;
       line-height: 0.98;
       text-transform: uppercase;
     }}
     .modality-copy {{
+      grid-area: copy;
       display: grid;
-      gap: 14px;
-      margin-top: auto;
+      grid-template-columns: 1fr;
+      gap: 18px;
     }}
     .modality-row {{
       display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 22px;
+      grid-template-columns: 1fr;
+      gap: 10px;
       align-items: baseline;
-      padding-top: 16px;
-      border-top: 1px solid rgba(167,240,120,0.16);
+      padding: 17px 20px;
+      border: 1px solid rgba(167,240,120,0.16);
+      border-radius: 8px;
+      background: rgba(2,5,2,0.40);
     }}
     .modality-row span {{
       display: block;
@@ -828,7 +833,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .modality-row p {{
       margin: 0;
       color: #dce8d7;
-      font-size: 32px;
+      font-size: 35px;
       font-weight: 650;
       line-height: 1.15;
     }}
