@@ -115,6 +115,7 @@
       "status": "verified",
       "evidence": [
         "docs/data/reviewer_packet.json",
+        "ARTIFACT_GUIDE.md",
         "docs/data/artifact_index.json",
         "README.md",
         "docs/index.html"
@@ -123,9 +124,10 @@
     },
     {
       "id": "artifact_index",
-      "claim": "The core proof artifacts are indexed with existence, size, and hash metadata where stable.",
+      "claim": "The core proof artifacts are grouped for human review and indexed with existence, size, and hash metadata where stable.",
       "status": "verified",
       "evidence": [
+        "ARTIFACT_GUIDE.md",
         "scripts/build_artifact_index.py",
         "docs/data/artifact_index.json"
       ],

@@ -131,6 +131,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "CITATION.cff",
         "LICENSE",
         "codemeta.json",
+        "ARTIFACT_GUIDE.md",
         "EVIDENCE_CONTRACT.md",
         "DATA_NOTICE.md",
         "docs/404.html",

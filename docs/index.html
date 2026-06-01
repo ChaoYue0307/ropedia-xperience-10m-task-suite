@@ -569,6 +569,48 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }
+    .artifact-library {
+      display: grid;
+      gap: 24px;
+    }
+    .artifact-group {
+      border: 1px solid var(--soft-line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(164, 242, 127, 0.045), rgba(7, 18, 7, 0.62)),
+        var(--panel);
+      padding: 20px;
+    }
+    .artifact-group-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.75fr) minmax(280px, 0.95fr);
+      gap: 24px;
+      align-items: end;
+      padding-bottom: 18px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--soft-line);
+    }
+    .artifact-group-head span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 740;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .artifact-group-head h3 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.06;
+    }
+    .artifact-group-head p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
     .chart-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
@@ -689,9 +731,23 @@
       border-radius: var(--radius);
       background: var(--surface);
       padding: 18px;
+      min-height: 164px;
+      display: grid;
+      align-content: start;
       transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), border-color 240ms cubic-bezier(0.16, 1, 0.3, 1);
     }
+    .artifact.primary-artifact {
+      grid-column: 1 / -1;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: end;
+      min-height: 0;
+      background:
+        linear-gradient(120deg, rgba(164, 242, 127, 0.13), rgba(122, 229, 195, 0.05)),
+        var(--surface);
+    }
     .artifact:hover { transform: translateY(-3px); border-color: var(--green); }
+    .artifact h3 { line-height: 1.18; }
     .artifact a { display: inline-block; margin-top: 14px; font-weight: 740; text-decoration: none; color: var(--blue); }
     .artifact a:hover { text-decoration: underline; text-underline-offset: 4px; }
 
@@ -726,6 +782,7 @@
       .hero-inner, .two-col { grid-template-columns: 1fr; }
       .hero-inner { min-height: 0; }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .artifact-group-head { grid-template-columns: 1fr; align-items: start; }
       .chart-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
       .section-head p { margin-top: 14px; }
@@ -734,6 +791,8 @@
     @media (max-width: 640px) {
       .wrap { width: min(100% - 28px, var(--max)); }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .review-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walkthrough-grid, .walk-flow { grid-template-columns: 1fr; }
+      .artifact-group { padding: 16px; }
+      .artifact.primary-artifact { grid-template-columns: 1fr; }
       .evidence-card:last-child { grid-column: auto; }
       .hero-inner, section { padding: 46px 0; }
       .signal { grid-template-columns: 1fr; }
@@ -1193,25 +1252,64 @@
           <h2>Where the evidence lives.</h2>
           <p>Metrics, predictions, confusion matrices, manifests, lightweight model weights, and derived window artifacts are committed so the repo is reviewable before rerunning anything. Raw Xperience-10M data and Qwen weights are not redistributed.</p>
         </div>
-        <div class="artifact-grid">
-          <article class="artifact"><h3>Artifact index</h3><p>Selective source-of-truth catalog with existence checks, sizes, and stable-file hashes for reviewer-critical artifacts.</p><a href="data/artifact_index.json">artifact_index.json</a></article>
-          <article class="artifact"><h3>Task-suite report</h3><p>One JSON file with every task metric and split detail.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a></article>
-          <article class="artifact"><h3>Neural MLP task results</h3><p>Per-task PyTorch MLP metrics, predictions, histories, and checkpoints for the same 12 task contracts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural_mlp/</a></article>
-          <article class="artifact"><h3>Four-direction taxonomy</h3><p>Generated JSON, CSV, Markdown, and website data mapping all 12 tasks to the four research tracks with two baselines.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_directions">research_directions/</a></article>
-          <article class="artifact"><h3>Direction extension probes</h3><p>Four additional coded probes, one per research direction, each with minimal and neural metrics plus prediction/rank CSVs.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_direction_extensions">research_direction_extensions/</a></article>
-          <article class="artifact"><h3>Task walkthroughs</h3><p>Beginner-oriented case studies for all 12 tasks, including input, middle process modules, output, metric, and limitation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/task_walkthroughs">task_walkthroughs/</a></article>
-          <article class="artifact"><h3>Feature manifest</h3><p>Start/end index and dimension for every current feature block.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a></article>
-          <article class="artifact"><h3>Cross-modal retrieval</h3><p>The strongest self-supervised signal from the single episode.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json">metrics.json</a></article>
-          <article class="artifact"><h3>Current all-feature action model</h3><p>Classifier metrics, predictions, confusion matrix, and model weights.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/min_all_modalities_action_model/metrics.json">metrics.json</a></article>
-          <article class="artifact"><h3>Windows table</h3><p>Window start/end frames and aligned action/subtask labels.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">windows.csv</a></article>
-          <article class="artifact"><h3>Reproduction scripts</h3><p>Three training scripts plus the dashboard generator.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/scripts">scripts/</a></article>
-          <article class="artifact"><h3>Hugging Face Space</h3><p>The same dashboard packaged as a public static Space.</p><a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">cy0307/ropedia-xperience-10m-task-suite</a></article>
-          <article class="artifact"><h3>Derived HF artifacts</h3><p>Metrics, predictions, docs, and lightweight derived files without raw Xperience-10M video/data redistribution.</p><a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">dataset repo</a></article>
-          <article class="artifact"><h3>HF baseline models</h3><p>Minimal NumPy softmax and ridge baseline weights with model card and architecture diagrams.</p><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">model repo</a></article>
-          <article class="artifact"><h3>A100 HF relay status</h3><p>HF full-dataset access is pending; an A100 watcher is ready to download a 32-session stratified pilot and transfer it to H20 once approved.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/A100_HF_RELAY_STATUS.md">A100_HF_RELAY_STATUS.md</a></article>
-          <article class="artifact"><h3>Qwen3-Omni readiness artifacts</h3><p>Manifests, metadata, metrics, and progress logs from the current smoke/evidence run. No real 32-episode metric is claimed yet.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode_manifest.json</a></article>
-          <article class="artifact"><h3>32-episode data gate</h3><p>The readiness gate remains the source of truth before any full pilot training claim.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">DATA_BLOCKER_REPORT.md</a></article>
-          <article class="artifact"><h3>HF collection</h3><p>Space, artifacts, and model baselines grouped into one public project collection.</p><a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite">collection</a></article>
+        <div class="artifact-library">
+          <section class="artifact-group">
+            <div class="artifact-group-head">
+              <div><span>Start here</span><h3>Proof boundary and reviewer route</h3></div>
+              <p>These files tell a reviewer what is actually claimed, which artifacts prove it, and where the current scale-up boundary stops.</p>
+            </div>
+            <div class="artifact-grid">
+              <article class="artifact primary-artifact"><div><h3>Artifact guide</h3><p>Human-readable map from proof boundary to data contract, task evidence, platform mirrors, and scale-up status.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ARTIFACT_GUIDE.md">ARTIFACT_GUIDE.md</a></article>
+              <article class="artifact"><h3>Evidence contract</h3><p>Defines verified, smoke-only, blocked, and out-of-scope claims.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">EVIDENCE_CONTRACT.md</a></article>
+              <article class="artifact"><h3>Artifact index</h3><p>Selective source-of-truth catalog with existence checks, sizes, and stable-file hashes.</p><a href="data/artifact_index.json">artifact_index.json</a></article>
+              <article class="artifact"><h3>Publication audit</h3><p>Checks raw-data exclusion, cache exclusion, heavy-archive exclusion, and token-string hygiene.</p><a href="data/publication_audit.json">publication_audit.json</a></article>
+              <article class="artifact"><h3>Reviewer packet</h3><p>Machine-readable 90-second reviewer path and proof boundary summary.</p><a href="data/reviewer_packet.json">reviewer_packet.json</a></article>
+            </div>
+          </section>
+
+          <section class="artifact-group">
+            <div class="artifact-group-head">
+              <div><span>Data and task evidence</span><h3>From one episode to checked task heads</h3></div>
+              <p>These artifacts show the exact sample windows, feature blocks, task contracts, metrics, walkthroughs, and research-direction mapping.</p>
+            </div>
+            <div class="artifact-grid">
+              <article class="artifact"><h3>Task-suite report</h3><p>One JSON file with every task definition, split detail, and metric.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a></article>
+              <article class="artifact"><h3>Windows table</h3><p>Window start/end frames and aligned action/subtask labels.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">windows.csv</a></article>
+              <article class="artifact"><h3>Feature manifest</h3><p>Start/end index and dimension for every current feature block.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a></article>
+              <article class="artifact"><h3>Neural MLP task results</h3><p>Per-task PyTorch MLP metrics, predictions, histories, and checkpoints for the same 12 task contracts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural_mlp/</a></article>
+              <article class="artifact"><h3>Four-direction taxonomy</h3><p>Generated JSON, CSV, Markdown, and website data mapping all 12 tasks to the four research tracks.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_directions">research_directions/</a></article>
+              <article class="artifact"><h3>Direction extension probes</h3><p>Four coded probes, one per research direction, with minimal and neural metrics plus prediction/rank CSVs.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_direction_extensions">research_direction_extensions/</a></article>
+              <article class="artifact"><h3>Task walkthroughs</h3><p>Case studies for all 12 tasks, including input, middle process modules, output, metric, and limitation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/task_walkthroughs">task_walkthroughs/</a></article>
+              <article class="artifact"><h3>Cross-modal retrieval</h3><p>The strongest self-supervised signal from the single episode.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json">metrics.json</a></article>
+            </div>
+          </section>
+
+          <section class="artifact-group">
+            <div class="artifact-group-head">
+              <div><span>Mirrors and reproducibility</span><h3>Public surfaces and runnable code</h3></div>
+              <p>The same evidence is mirrored across GitHub Pages, Hugging Face, scripts, and lightweight baseline model repositories.</p>
+            </div>
+            <div class="artifact-grid">
+              <article class="artifact"><h3>Reproduction scripts</h3><p>Training, visualization, taxonomy, walkthrough, validator, and omni-readiness scripts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/scripts">scripts/</a></article>
+              <article class="artifact"><h3>Current all-feature action model</h3><p>Classifier metrics, predictions, confusion matrix, and model weights.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/min_all_modalities_action_model/metrics.json">metrics.json</a></article>
+              <article class="artifact"><h3>Hugging Face Space</h3><p>The dashboard packaged as a public static Space.</p><a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a></article>
+              <article class="artifact"><h3>Derived HF artifacts</h3><p>Metrics, predictions, docs, and lightweight derived files without raw data redistribution.</p><a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">dataset repo</a></article>
+              <article class="artifact"><h3>HF baseline models</h3><p>Minimal NumPy softmax, ridge baselines, and neural task-head model files.</p><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">model repo</a></article>
+              <article class="artifact"><h3>HF collection</h3><p>Space, artifacts, and model baselines grouped into one public project collection.</p><a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite">collection</a></article>
+            </div>
+          </section>
+
+          <section class="artifact-group">
+            <div class="artifact-group-head">
+              <div><span>Scale-up boundary</span><h3>Prepared, but not overclaimed</h3></div>
+              <p>The multi-episode Qwen3-Omni path is documented and scripted, but no full-pilot metric is claimed until the data gate and held-out evaluation pass.</p>
+            </div>
+            <div class="artifact-grid">
+              <article class="artifact"><h3>A100 HF relay status</h3><p>HF full-dataset access is pending; an A100 watcher is ready to download and transfer a 32-session pilot.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/A100_HF_RELAY_STATUS.md">A100_HF_RELAY_STATUS.md</a></article>
+              <article class="artifact"><h3>Qwen3-Omni readiness artifacts</h3><p>Manifests, metadata, metrics, and progress logs from the current smoke/evidence run.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode_manifest.json</a></article>
+              <article class="artifact"><h3>32-episode data gate</h3><p>The readiness gate remains the source of truth before any full pilot training claim.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">DATA_BLOCKER_REPORT.md</a></article>
+            </div>
+          </section>
         </div>
       </div>
     </section>

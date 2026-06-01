@@ -1,12 +1,12 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T00:14:04+00:00",
+  "generated_at_utc": "2026-06-01T00:31:49+00:00",
   "status": "pass",
-  "artifact_count": 21,
+  "artifact_count": 22,
   "missing": [],
   "by_kind": {
     "claim_boundary": 1,
-    "review_path": 2,
+    "review_path": 3,
     "hygiene_report": 1,
     "metadata": 1,
     "metrics_source": 2,
@@ -30,8 +30,8 @@
       "surface": "repo",
       "proves": "Defines what is verified, what is smoke-only, and what must not be inferred.",
       "exists": true,
-      "bytes": 4503,
-      "sha256": "387c8c915ee514307fc9862456aea07c3b12c88d05762785ca58cc511f2cffed"
+      "bytes": 4597,
+      "sha256": "7e142e39670b17c802677e21eb5101fe2ef0095dc2b6d41f08c964422a93951b"
     },
     {
       "id": "reviewer_packet",
@@ -41,8 +41,19 @@
       "surface": "website_hf",
       "proves": "Gives a short audit path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 3548,
-      "sha256": "ea82a381272cd7bf9c7c13edf558e997c3ec645d1937e1354c0428e6cb63d3cb"
+      "bytes": 3618,
+      "sha256": "087195da8c86f6ce25eec473ee559a5e379476421ebf38ae9332b1ed51e9a320"
+    },
+    {
+      "id": "artifact_guide",
+      "title": "Artifact guide",
+      "path": "ARTIFACT_GUIDE.md",
+      "kind": "review_path",
+      "surface": "repo_hf",
+      "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
+      "exists": true,
+      "bytes": 4861,
+      "sha256": "babd9fce6b92d93c6e857ef3cb8d5bd1ea55ff3941a80a653cf52d6dac1dffb7"
     },
     {
       "id": "artifact_index_builder",
@@ -52,8 +63,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 8908,
-      "sha256": "e166e9142b201b7ceb13024f3201a61b6a1f1896e7ef742c2cfa4f61ef47d020"
+      "bytes": 9211,
+      "sha256": "ecc89391f90f555db671123ddb8f11ea0a084ff9d624a2da3a9cce67617245d0"
     },
     {
       "id": "publication_audit",
@@ -64,7 +75,7 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 3327,
+      "bytes": 3328,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -75,8 +86,8 @@
       "surface": "website_hf",
       "proves": "Lists public URLs, upstream sources, and machine-readable project metadata.",
       "exists": true,
-      "bytes": 2389,
-      "sha256": "478530185f347ca3aac40b016149655b397a4bc8367f9df174e39549a080be95"
+      "bytes": 2432,
+      "sha256": "6e4b9819416c5ff9ab1b5510414df30d068e212d8d9875a06fdf8899a2e87a59"
     },
     {
       "id": "task_summary",
