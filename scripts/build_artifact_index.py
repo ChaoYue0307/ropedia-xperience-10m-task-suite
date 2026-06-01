@@ -75,6 +75,15 @@ ARTIFACTS = [
         "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
     },
     {
+        "id": "website_integrity",
+        "title": "Website integrity report",
+        "path": "docs/data/website_integrity.json",
+        "kind": "integrity_report",
+        "surface": "website_hf",
+        "volatile": True,
+        "proves": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
+    },
+    {
         "id": "project_manifest",
         "title": "Project manifest",
         "path": "docs/data/project_manifest.json",

@@ -73,6 +73,7 @@ python scripts/generate_visualizations.py
 python scripts/render_overview_figures.py
 python scripts/render_task_suite_infographic.py
 python scripts/export_modality_atlas_assets.py
+python scripts/validate_website_integrity.py
 python scripts/build_artifact_index.py
 python scripts/validate_publication_package.py
 ```
@@ -89,6 +90,7 @@ python scripts/validate_publication_package.py
 | Walkthroughs | `results/episode_task_suite/task_walkthroughs/`, `docs/data/task_walkthroughs.json` |
 | Figures | `docs/assets/*.png`, `docs/assets/charts/*.svg` |
 | Modality atlas | `docs/data/modality_atlas.json`, `docs/assets/modalities/*` |
+| Website integrity | `docs/data/website_integrity.json` |
 | Publication checks | `docs/data/artifact_index.json`, `docs/data/publication_audit.json` |
 
 ## Exact-Match Audit
