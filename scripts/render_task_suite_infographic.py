@@ -14,6 +14,7 @@ import base64
 import html
 import io
 import json
+import os
 import subprocess
 import tempfile
 from pathlib import Path
@@ -23,11 +24,12 @@ ROOT = Path(__file__).resolve().parents[1]
 SUMMARY_PATH = ROOT / "results/episode_task_suite/summary_report.json"
 DEFAULT_BASE = ROOT / "docs/assets/task_suite_infographic_base.png"
 DEFAULT_SAMPLE_DIR = ROOT.parent / "data/sample/xperience-10m-sample"
+DROPBOX_SAMPLE_DIR = Path.home() / "Library/CloudStorage/Dropbox/Ropedia/data/sample/xperience-10m-sample"
 DEFAULT_OUTPUT = ROOT / "docs/assets/task_suite_infographic.png"
 CANVAS_WIDTH = 1800
-CANVAS_HEIGHT = 5400
+CANVAS_HEIGHT = 5700
 THUMB_WIDTH = 760
-THUMB_HEIGHT = 430
+THUMB_HEIGHT = 470
 
 
 GROUPS = [
@@ -431,6 +433,32 @@ def load_sample_thumbnails(sample_dir: Path | None) -> dict[str, str]:
         return {}
 
 
+def valid_sample_dir(sample_dir: Path | None) -> bool:
+    if sample_dir is None:
+        return False
+    return (sample_dir / "annotation.hdf5").exists() and (sample_dir / "fisheye_cam0.mp4").exists()
+
+
+def resolve_sample_dir(sample_dir: Path | None) -> Path | None:
+    candidates: list[Path] = []
+    env_sample_dir = os.environ.get("XPERIENCE10M_SAMPLE_DIR")
+    if env_sample_dir:
+        candidates.append(Path(env_sample_dir).expanduser())
+    workspace = os.environ.get("WORKSPACE")
+    if workspace:
+        candidates.append(Path(workspace).expanduser() / "data/sample/xperience-10m-sample")
+    if sample_dir is not None:
+        candidates.append(sample_dir)
+    candidates.extend([
+        DEFAULT_SAMPLE_DIR,
+        DROPBOX_SAMPLE_DIR,
+    ])
+    for candidate in candidates:
+        if valid_sample_dir(candidate):
+            return candidate
+    return sample_dir
+
+
 def load_summary() -> dict:
     return json.loads(SUMMARY_PATH.read_text(encoding="utf-8"))
 
@@ -711,31 +739,31 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .modalities {{
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 38px;
+      gap: 42px;
     }}
     .modality {{
-      min-height: 760px;
-      padding: 34px 34px 36px;
+      min-height: 835px;
+      padding: 38px 38px 40px;
       border: 1px solid rgba(167,240,120,0.22);
       background: rgba(7,18,7,0.84);
       border-radius: 8px;
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 30px;
     }}
     .modality:nth-child(7) {{
       grid-column: 1 / -1;
-      min-height: 640px;
+      min-height: 710px;
     }}
     .modality-thumb {{
-      height: 430px;
+      height: 470px;
       overflow: hidden;
       border: 1px solid rgba(167,240,120,0.16);
       border-radius: 8px;
       background: #020502;
     }}
     .modality:nth-child(7) .modality-thumb {{
-      height: 390px;
+      height: 430px;
     }}
     .modality-thumb img {{
       display: block;
@@ -771,7 +799,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .modality h3 {{
       margin: 11px 0 0;
-      font-size: 55px;
+      font-size: 60px;
       line-height: 0.98;
       text-transform: uppercase;
     }}
@@ -782,10 +810,10 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .modality-row {{
       display: grid;
-      grid-template-columns: 198px 1fr;
-      gap: 18px;
+      grid-template-columns: 220px 1fr;
+      gap: 22px;
       align-items: baseline;
-      padding-top: 14px;
+      padding-top: 16px;
       border-top: 1px solid rgba(167,240,120,0.16);
     }}
     .modality-row span {{
@@ -800,7 +828,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .modality-row p {{
       margin: 0;
       color: #dce8d7;
-      font-size: 30px;
+      font-size: 32px;
       font-weight: 650;
       line-height: 1.15;
     }}
@@ -809,7 +837,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
       gap: 12px;
       align-items: center;
-      margin-top: 24px;
+      margin-top: 30px;
       padding: 14px;
       border: 1px solid rgba(167,240,120,0.22);
       background: rgba(7,18,7,0.72);
@@ -1047,7 +1075,8 @@ def main() -> int:
     args = parser.parse_args()
 
     summary = load_summary()
-    html_text = build_html(summary, args.base_image, args.sample_dir)
+    sample_dir = resolve_sample_dir(args.sample_dir)
+    html_text = build_html(summary, args.base_image, sample_dir)
     if args.html is None:
         with tempfile.NamedTemporaryFile("w", suffix=".html", encoding="utf-8", delete=False) as handle:
             handle.write(html_text)
