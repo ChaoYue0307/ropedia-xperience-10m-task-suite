@@ -31,6 +31,7 @@ DATA_FILES = [
     "research_direction_extensions.json",
     "research_directions.json",
     "reviewer_packet.json",
+    "reviewer_scorecard.json",
     "scope_claims_audit.json",
     "summary_metrics.json",
     "task_walkthroughs.json",
@@ -67,6 +68,7 @@ WEBSITE_FILES = [
 
 DOC_FILES = [
     "QUALITY_GATES.md",
+    "REVIEWER_SCORECARD.md",
     "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
 ]
 

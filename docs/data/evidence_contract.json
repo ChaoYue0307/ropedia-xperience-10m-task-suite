@@ -3,6 +3,16 @@
   "scope": "single public Xperience-10M sample episode",
   "claims": [
     {
+      "id": "reviewer_scorecard",
+      "claim": "A first-pass reviewer has a compact current-state scorecard.",
+      "status": "verified",
+      "evidence": [
+        "REVIEWER_SCORECARD.md",
+        "docs/data/reviewer_scorecard.json"
+      ],
+      "boundary": "summarizes existing evidence and boundaries; it does not add new experimental claims"
+    },
+    {
       "id": "official_dataset_card_alignment",
       "claim": "The public dataset description is aligned with the official gated Xperience-10M dataset card.",
       "status": "verified",

@@ -54,6 +54,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
             "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
+            "REVIEWER_SCORECARD.md",
             "all 12 task families before the",
             "Public-sample modality thumbnails remain enlarged below",
         ],
@@ -64,6 +65,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
             "xperience10m_dataset_card_alignment.json",
+            "reviewer_scorecard.json",
             "task-first 12-task infographic",
             "native responsive modality atlas",
             "website HTML",
@@ -75,6 +77,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
             "xperience10m_dataset_card_alignment.json",
+            "reviewer_scorecard.json",
             "task-first 12-task map",
             "including critical website HTML",
         ],
@@ -85,6 +88,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
             "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
+            "REVIEWER_SCORECARD.md",
             "all 12 task families before the",
             "Public-sample modality thumbnails remain enlarged below",
         ],
@@ -95,6 +99,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
             "xperience10m_dataset_card_alignment.json",
+            "reviewer_scorecard.json",
             "task-first 12-head",
             "responsive modality atlas",
             "website HTML",
@@ -198,6 +203,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "LICENSE",
         "codemeta.json",
         "ARTIFACT_GUIDE.md",
+        "REVIEWER_SCORECARD.md",
         "QUALITY_GATES.md",
         "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
         "REPRODUCIBILITY.md",
@@ -214,6 +220,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "docs/data/quality_gates.json",
         "docs/data/project_manifest.json",
         "docs/data/reviewer_packet.json",
+        "docs/data/reviewer_scorecard.json",
         "docs/data/xperience10m_dataset_card_alignment.json",
         "docs/data/reproducibility_matrix.json",
         "docs/data/modality_atlas.json",

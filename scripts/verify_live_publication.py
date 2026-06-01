@@ -61,6 +61,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "reviewer_scorecard_json",
+        "title": "Reviewer scorecard JSON",
+        "local_path": "docs/data/reviewer_scorecard.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/reviewer_scorecard.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/reviewer_scorecard.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/reviewer_scorecard.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/reviewer_scorecard.json",
+        },
+    },
+    {
         "id": "quality_gates_markdown",
         "title": "Quality-gate Markdown",
         "local_path": "QUALITY_GATES.md",
@@ -83,6 +94,7 @@ MARKER_CHECKS = [
             "Release gates are explicit",
             "quality_gates.json",
             "xperience10m_dataset_card_alignment.json",
+            "reviewer_scorecard.json",
             "xperience10m-taskfirst-v12-modality-xl",
         ],
         "forbidden": [
@@ -98,6 +110,7 @@ MARKER_CHECKS = [
             "Release gates are explicit",
             "quality_gates.json",
             "xperience10m_dataset_card_alignment.json",
+            "reviewer_scorecard.json",
             "xperience10m-taskfirst-v12-modality-xl",
         ],
         "forbidden": [
@@ -113,6 +126,7 @@ MARKER_CHECKS = [
             "QUALITY_GATES.md",
             "docs/data/quality_gates.json",
             "xperience10m_dataset_card_alignment.json",
+            "reviewer_scorecard.json",
         ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },
@@ -124,6 +138,7 @@ MARKER_CHECKS = [
             "QUALITY_GATES.md",
             "metrics/quality_gates.json",
             "xperience10m_dataset_card_alignment.json",
+            "reviewer_scorecard.json",
         ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },

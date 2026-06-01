@@ -48,6 +48,7 @@ This repo is organized around an explicit proof boundary:
 | Publication hygiene | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | public repo and HF bundles only; ignored local scratch files are excluded, and public cards must reference the current task-first figure |
 | Quality gates | `QUALITY_GATES.md`, `docs/data/quality_gates.json`, `scripts/build_quality_gates.py` | one reviewer-facing checklist for automated gates and live post-publish checks |
 | Artifact index | `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | selective source-of-truth catalog with existence, size, and stable-file hashes |
+| Reviewer scorecard | `REVIEWER_SCORECARD.md`, `docs/data/reviewer_scorecard.json` | compact verified/data-gated/not-redistributed decision table for first-pass reviewers |
 | Citation and metadata | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | code is MIT-scoped; raw-data use follows Xperience-10M terms |
 | Reviewer path | `docs/data/reviewer_packet.json`, website reviewer section | audit guide only; no new experimental claim |
 
@@ -80,13 +81,30 @@ The upstream dataset-card alignment note is
 with a machine-readable copy at
 [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json).
 
+## Reviewer Scorecard
+
+If you only have one minute, use
+[`REVIEWER_SCORECARD.md`](REVIEWER_SCORECARD.md) and
+[`docs/data/reviewer_scorecard.json`](docs/data/reviewer_scorecard.json).
+They give the current decision boundary in one compact table:
+
+| Area | Current decision |
+| --- | --- |
+| Public-sample pipeline | Verified on one public sample episode: 5,821 frames, 1,161 windows, 8,378 current features |
+| 12-task suite | Verified minimal baselines with committed metrics, predictions, and manifests |
+| Neural heads | Verified compact PyTorch MLP heads over the same task contracts and chronological splits |
+| Official dataset wording | Verified against the public `ropedia-ai/xperience-10m` dataset card/API metadata |
+| Website and HF mirrors | Verified by local integrity, mirror parity, and live-publication checks |
+| Qwen3-Omni 32-episode pilot | Data-gated; prepared, but not a model-quality claim |
+| Raw Xperience-10M data / full Qwen weights | Not redistributed |
+
 ## 90-Second Reviewer Path
 
 If you are reviewing the project cold, open these in order:
 
 | Step | Question | Primary artifacts | What should be true |
 | --- | --- | --- | --- |
-| 1 | What is actually claimed? | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`QUALITY_GATES.md`](QUALITY_GATES.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json), [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json), [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Single-episode task engineering and hygiene are claimed; historical `32ep` identifiers are not treated as real 32-episode results, and quality gates plus prepared and live mirrors are checked. |
+| 1 | What is actually claimed? | [`REVIEWER_SCORECARD.md`](REVIEWER_SCORECARD.md), [`docs/data/reviewer_scorecard.json`](docs/data/reviewer_scorecard.json), [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`QUALITY_GATES.md`](QUALITY_GATES.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json), [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json), [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Single-episode task engineering and hygiene are claimed; historical `32ep` identifiers are not treated as real 32-episode results, and quality gates plus prepared and live mirrors are checked. |
 | 2 | What is the official upstream dataset? | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md), [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json), [official HF dataset](https://huggingface.co/datasets/ropedia-ai/xperience-10m) | The full dataset is described as a gated large-scale 4D multimodal egocentric source; this repo validates only one public sample episode. |
 | 3 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and exact-match audit evidence are explicit. |
 | 4 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
@@ -154,6 +172,7 @@ Hugging Face Space app:
 
 | Layer | What to inspect | Why it matters |
 | --- | --- | --- |
+| Reviewer scorecard | `REVIEWER_SCORECARD.md`, `docs/data/reviewer_scorecard.json` | Gives a one-table current decision boundary before reading the full audit trail |
 | Data contract | `windows.csv`, `feature_manifest.json`, modality manifests | Confirms what each sample window contains before modeling |
 | Official dataset alignment | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Keeps public descriptions aligned with the official gated dataset card |
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and debuggable |

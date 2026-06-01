@@ -1,0 +1,118 @@
+{
+  "title": "Ropedia Xperience-10M Task Suite Reviewer Scorecard",
+  "version": "2026-06-01",
+  "decision": "public_sample_pipeline_verified_multi_episode_omni_data_gated",
+  "scope_boundary": {
+    "validated_episode_count": 1,
+    "aligned_frames": 5821,
+    "sliding_windows": 1161,
+    "current_feature_dimensions": 8378,
+    "core_task_count": 12,
+    "neural_head_count": 12,
+    "direction_extension_probe_count": 4,
+    "audio_featurized": false,
+    "raw_xperience10m_data_redistributed": false,
+    "qwen3_omni_32_episode_claim": false
+  },
+  "rows": [
+    {
+      "area": "Public-sample pipeline",
+      "status": "verified",
+      "evidence": [
+        "results/episode_task_suite/summary_report.json",
+        "results/episode_task_suite/windows.csv",
+        "results/episode_task_suite/feature_manifest.json"
+      ],
+      "readout": "One public Xperience-10M sample episode is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,378-dimensional current feature contract."
+    },
+    {
+      "area": "Task suite",
+      "status": "verified",
+      "evidence": [
+        "scripts/episode_task_suite.py",
+        "results/episode_task_suite/",
+        "docs/data/summary_metrics.json"
+      ],
+      "readout": "All 12 task contracts have committed metrics, predictions, and minimal baseline outputs."
+    },
+    {
+      "area": "Neural heads",
+      "status": "verified",
+      "evidence": [
+        "scripts/neural_task_models.py",
+        "results/episode_task_suite/neural_mlp/"
+      ],
+      "readout": "Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split."
+    },
+    {
+      "area": "Official dataset wording",
+      "status": "verified",
+      "evidence": [
+        "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
+        "docs/data/xperience10m_dataset_card_alignment.json"
+      ],
+      "readout": "Public wording is aligned to the official gated Xperience-10M dataset card, including modalities, scale, access boundary, and unsupported claims."
+    },
+    {
+      "area": "Website and HF mirrors",
+      "status": "verified",
+      "evidence": [
+        "docs/data/website_integrity.json",
+        "docs/data/mirror_parity.json",
+        "docs/data/live_publication_status.json"
+      ],
+      "readout": "Local website links/assets pass, prepared mirrors match, and public GitHub/HF URLs have been checked after upload."
+    },
+    {
+      "area": "Publication hygiene",
+      "status": "verified",
+      "evidence": [
+        "docs/data/publication_audit.json",
+        "QUALITY_GATES.md",
+        "docs/data/quality_gates.json"
+      ],
+      "readout": "Public bundles are checked for raw-data exclusion, cache exclusion, heavy-archive exclusion, token-string hygiene, and stale presentation copy."
+    },
+    {
+      "area": "Reproducibility",
+      "status": "verified_for_public_sample",
+      "evidence": [
+        "REPRODUCIBILITY.md",
+        "docs/data/reproducibility_matrix.json",
+        "notes/reproducibility_audit.md"
+      ],
+      "readout": "The public sample workflow has explicit commands, expected outputs, and exact-match audit evidence."
+    },
+    {
+      "area": "Qwen3-Omni fine-tuning",
+      "status": "data_gated_not_model_quality_claim",
+      "evidence": [
+        "results/omni_finetune/DATA_BLOCKER_REPORT.md",
+        "results/omni_finetune/A100_HF_RELAY_STATUS.md"
+      ],
+      "readout": "The 32-episode LoRA pilot is prepared, but no real held-out 32-episode result is claimed until gated data access, manifest construction, training, and held-out evaluation pass."
+    },
+    {
+      "area": "Raw Xperience-10M redistribution",
+      "status": "not_included",
+      "evidence": [
+        "DATA_NOTICE.md",
+        "docs/data/publication_audit.json"
+      ],
+      "readout": "Raw MP4, HDF5, RRD files, private gated data, and full Qwen weights are intentionally excluded."
+    }
+  ],
+  "fast_reviewer_route": [
+    "Read REVIEWER_SCORECARD.md and EVIDENCE_CONTRACT.md to establish what is claimed.",
+    "Open docs/data/reviewer_packet.json for the machine-readable review path.",
+    "Inspect docs/data/summary_metrics.json and results/episode_task_suite/neural_mlp/ to check the 12-task outputs.",
+    "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
+    "Inspect results/omni_finetune/DATA_BLOCKER_REPORT.md before judging Qwen3-Omni scale-up status."
+  ],
+  "do_not_infer": [
+    "Do not infer cross-episode generalization from the single public sample.",
+    "Do not treat historical 32ep path names as real 32-episode training results.",
+    "Do not treat the current reconstruction task as pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
+    "Do not assume audio has entered the current 8,378-dimensional baseline feature vector; it is documented and visualized but not yet featurized."
+  ]
+}

@@ -5,6 +5,7 @@ local artifact that a reader can inspect before trusting the dashboard.
 
 | Claim | Current evidence | Status | Boundary |
 | --- | --- | --- | --- |
+| A first-pass reviewer has a compact current-state scorecard. | `REVIEWER_SCORECARD.md`, `docs/data/reviewer_scorecard.json` | Verified guide | Summarizes existing evidence and boundaries; it does not add new experimental claims |
 | The public dataset description is aligned with the official gated Xperience-10M dataset card. | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Verified description alignment | Summarizes upstream public metadata and card facts; does not grant access or mirror raw data |
 | The public Xperience-10M sample has been converted into aligned model windows. | `results/episode_task_suite/windows.csv`, `results/episode_task_suite/shared_windows.npz`, `results/episode_task_suite/summary_report.json` | Verified for 5,821 frames and 1,161 windows | One public sample episode only |
 | The current feature contract is explicit and reviewable. | `results/episode_task_suite/feature_manifest.json`, `results/episode_task_suite/available_modalities.json` | Verified for an 8,378-d feature vector | Audio is present in MP4 streams but not yet a feature block |
@@ -28,33 +29,35 @@ local artifact that a reader can inspect before trusting the dashboard.
 
 ## Review Order
 
-1. Read `docs/data/reviewer_packet.json` for the shortest audit path and proof
+1. Read `REVIEWER_SCORECARD.md` and `docs/data/reviewer_scorecard.json` for
+   the fastest current-state decision table.
+2. Read `docs/data/reviewer_packet.json` for the shortest audit path and proof
    boundary.
-2. Read `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` and
+3. Read `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` and
    `docs/data/xperience10m_dataset_card_alignment.json` to check the official
    dataset-card wording and how the current repo is scoped against it.
-3. Read `ARTIFACT_GUIDE.md` and `docs/data/artifact_index.json` to see grouped
+4. Read `ARTIFACT_GUIDE.md` and `docs/data/artifact_index.json` to see grouped
    reviewer artifacts, indexed proof artifacts,
    sizes, and stable-file hashes.
-4. Read `docs/assets/task_suite_infographic.png` and
+5. Read `docs/assets/task_suite_infographic.png` and
    `docs/data/modality_atlas.json` for the high-level map and modality atlas.
-5. Read `REPRODUCIBILITY.md` and `docs/data/reproducibility_matrix.json` before
+6. Read `REPRODUCIBILITY.md` and `docs/data/reproducibility_matrix.json` before
    rerunning the public pipeline.
-6. Inspect `results/episode_task_suite/summary_report.json` for the task and
+7. Inspect `results/episode_task_suite/summary_report.json` for the task and
    metric source of truth.
-7. Inspect `results/episode_task_suite/feature_manifest.json` to see which
+8. Inspect `results/episode_task_suite/feature_manifest.json` to see which
    modalities enter the current feature vector.
-8. Inspect `results/episode_task_suite/neural_mlp/` to compare minimal and
+9. Inspect `results/episode_task_suite/neural_mlp/` to compare minimal and
    neural heads under the same splits.
-9. Inspect `docs/data/scope_claims_audit.json` before interpreting historical
+10. Inspect `docs/data/scope_claims_audit.json` before interpreting historical
    `32ep` strings in Qwen3-Omni smoke artifacts.
-10. Inspect `docs/data/mirror_parity.json` before assuming the GitHub and
+11. Inspect `docs/data/mirror_parity.json` before assuming the GitHub and
    Hugging Face mirrors contain the same critical data, visual, HTML, and
    validator files.
-11. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before interpreting
+12. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before interpreting
    any Qwen3-Omni artifact.
-12. Inspect `QUALITY_GATES.md`, `docs/data/quality_gates.json`,
+13. Inspect `QUALITY_GATES.md`, `docs/data/quality_gates.json`,
    `docs/data/publication_audit.json`, and `docs/data/website_integrity.json`
    before publishing or sharing the project externally.
-13. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or
+14. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or
    citing the project.

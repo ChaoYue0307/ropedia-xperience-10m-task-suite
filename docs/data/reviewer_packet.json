@@ -19,6 +19,8 @@
       "step": 1,
       "question": "What exactly is being claimed?",
       "primary_artifacts": [
+        "REVIEWER_SCORECARD.md",
+        "docs/data/reviewer_scorecard.json",
         "EVIDENCE_CONTRACT.md",
         "ARTIFACT_GUIDE.md",
         "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
@@ -30,7 +32,7 @@
         "docs/data/scope_claims_audit.json",
         "docs/data/website_integrity.json"
       ],
-      "readout": "Single-episode task engineering, metrics, visualizations, publication hygiene, local website integrity, mirror parity, and scope-claim guarding are claimed; cross-episode generalization and 32-episode Qwen3-Omni quality are not claimed."
+      "readout": "The reviewer scorecard gives the compact decision table. Single-episode task engineering, metrics, visualizations, publication hygiene, local website integrity, mirror parity, and scope-claim guarding are claimed; cross-episode generalization and 32-episode Qwen3-Omni quality are not claimed."
     },
     {
       "step": 2,
@@ -84,6 +86,8 @@
       "readout": "The next milestone is a 32-episode held-out-episode Qwen3-Omni LoRA pilot after gated Xperience-10M access is available."
     }
   ],
+  "reviewer_scorecard": "REVIEWER_SCORECARD.md",
+  "reviewer_scorecard_json": "docs/data/reviewer_scorecard.json",
   "artifact_guide": "ARTIFACT_GUIDE.md",
   "artifact_index": "docs/data/artifact_index.json",
   "reproducibility_matrix": "docs/data/reproducibility_matrix.json",
