@@ -25,7 +25,8 @@ into:
 - four additional direction-extension probes with minimal and neural baselines,
 - human-readable research task cards and an interactive scrub/play walkthrough storyboard for every task,
 - a next-milestone track for Qwen3-Omni fine-tuning and sensor-bridge evaluation,
-- metrics, predictions, model weights, manifests, charts, and a static website,
+- metrics, predictions, model weights, manifests, charts, and a tabbed static
+  research website,
 - a clear explanation of what a single episode can and cannot prove.
 
 ## Evidence Contract
@@ -114,7 +115,7 @@ They give the current research state in one compact table:
 | Official dataset wording | Verified against the public `ropedia-ai/xperience-10m` dataset card/API metadata |
 | Source alignment | Verified source facts and source-boundary markers across repo, website, and HF cards |
 | Evaluation protocol | Verified generated protocol for windowing, split policy, leakage controls, and per-task metrics |
-| Website and HF mirrors | Verified by local integrity, mirror parity, and live-publication checks |
+| Website and HF mirrors | Verified by local integrity, mirror parity, and live-publication checks; the public dashboard is organized into five tabs: Start, Data & Tasks, Method, Results, and Resources |
 | Qwen3-Omni 32-episode pilot | Data-gated; prepared, but not a model-quality claim |
 | Raw Xperience-10M data / full Qwen weights | Not redistributed |
 
@@ -131,7 +132,7 @@ If you are reading the project cold, open these in order:
 | 5 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and exact-match reproduction evidence are explicit. |
 | 6 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
 | 7 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
-| 8 | Is the website internally coherent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, JSON data, and referenced images are checked before publishing. |
+| 8 | Is the website internally coherent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, tab routing, JSON data, and referenced images are checked before publishing. |
 | 9 | What is still pending? | [`DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared but not yet a real model-quality claim. |
 
 The machine-readable project packet is
