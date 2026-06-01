@@ -222,12 +222,49 @@ def validate(docs_root: Path, site_base: str) -> dict:
     ]
     duplicate_id_records = [item for item in duplicate_id_records if item["duplicates"]]
 
+    semantic_checks = []
+    semantic_layout_failures = []
+    index_path = docs_root / "index.html"
+    index_text = index_path.read_text(encoding="utf-8", errors="ignore") if index_path.exists() else ""
+    suite_start = index_text.find('<section id="suite">')
+    suite_end = index_text.find('<section id="pipeline">')
+    suite_text = index_text[suite_start:suite_end] if suite_start >= 0 and suite_end > suite_start else ""
+    semantic_rules = [
+        (
+            "suite_task_map_precedes_modality_atlas",
+            '<div class="figure-pan" id="task-suite-map">',
+            '<div class="modality-atlas-panel"',
+            "The Suite anchor should show the full 12-task map before the modality atlas.",
+        ),
+        (
+            "suite_modality_atlas_contains_seven_cards",
+            'class="atlas-card',
+            None,
+            "The modality atlas should expose seven sample modalities.",
+        ),
+    ]
+    for name, marker, after_marker, reason in semantic_rules:
+        if name == "suite_modality_atlas_contains_seven_cards":
+            card_count = len(re.findall(r'class="atlas-card(?:\s|")', suite_text))
+            passed = card_count == 7
+            detail = {"card_count": card_count}
+        else:
+            marker_pos = suite_text.find(marker)
+            after_pos = suite_text.find(after_marker or "")
+            passed = marker_pos >= 0 and after_pos >= 0 and marker_pos < after_pos
+            detail = {"first_marker_index": marker_pos, "second_marker_index": after_pos}
+        check = {"name": name, "status": "pass" if passed else "fail", "reason": reason, **detail}
+        semantic_checks.append(check)
+        if not passed:
+            semantic_layout_failures.append(check)
+
     failures = {
         "missing_targets": missing_targets,
         "missing_anchors": missing_anchors,
         "duplicate_ids": duplicate_id_records,
         "invalid_json": invalid_json,
         "invalid_images": invalid_images,
+        "semantic_layout": semantic_layout_failures,
     }
     failure_count = sum(len(items) for items in failures.values())
 
@@ -245,6 +282,7 @@ def validate(docs_root: Path, site_base: str) -> dict:
             "failure_count": failure_count,
         },
         "failures": failures,
+        "semantic_checks": semantic_checks,
         "html_pages": [
             {
                 "path": relative(path, docs_root),
