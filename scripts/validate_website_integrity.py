@@ -284,6 +284,12 @@ def validate(docs_root: Path, site_base: str) -> dict:
             None,
             "The dataset-card section should distinguish HF API listing metadata from local data possession.",
         ),
+        (
+            "dataset_card_section_links_source_alignment_audit",
+            'data/source_alignment_audit.json',
+            None,
+            "The dataset-card section should expose the generated source-alignment audit.",
+        ),
     ]
     for name, marker, after_marker, reason in semantic_rules:
         if name == "suite_modality_atlas_contains_seven_cards":

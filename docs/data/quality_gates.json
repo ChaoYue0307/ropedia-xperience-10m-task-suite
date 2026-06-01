@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Publication Quality Gates",
   "status": "pass",
-  "generated_at_utc": "2026-06-01T09:49:01+00:00",
+  "generated_at_utc": "2026-06-01T10:09:22+00:00",
   "rule": "Do not present a release as current unless every automated gate passes, then verify live GitHub/HF mirrors after publishing.",
   "automated_gates": [
     {
@@ -11,6 +11,18 @@
       "report": "docs/data/scope_claims_audit.json",
       "blocks_if": "Historical 32ep smoke/provenance strings are presented as real 32-episode metrics.",
       "proves": "The public narrative does not overclaim the Qwen3-Omni smoke artifacts.",
+      "current_report": {
+        "exists": true,
+        "status": "pass"
+      }
+    },
+    {
+      "id": "source_alignment",
+      "title": "Source alignment audit",
+      "command": "python scripts/validate_source_alignment.py",
+      "report": "docs/data/source_alignment_audit.json",
+      "blocks_if": "Official full-dataset facts, sample-card facts, API-listing caveats, or public-card boundary markers are missing or inconsistent.",
+      "proves": "The repo, website, and Hugging Face cards preserve the Xperience-10M source facts and current project boundary.",
       "current_report": {
         "exists": true,
         "status": "pass"

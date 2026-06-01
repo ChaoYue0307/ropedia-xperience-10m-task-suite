@@ -24,10 +24,12 @@
                 "EVIDENCE_CONTRACT.md",
                 "ARTIFACT_GUIDE.md",
                 "EVALUATION_PROTOCOL.md",
+                "SOURCE_ALIGNMENT_AUDIT.md",
                 "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
                 "docs/data/evidence_contract.json",
                 "docs/data/artifact_index.json",
                 "docs/data/evaluation_protocol.json",
+                "docs/data/source_alignment_audit.json",
                 "docs/data/xperience10m_dataset_card_alignment.json",
         "docs/data/mirror_parity.json",
         "docs/data/publication_audit.json",
@@ -49,6 +51,16 @@
     },
         {
             "step": 3,
+            "question": "Are source facts consistently presented?",
+            "primary_artifacts": [
+                "SOURCE_ALIGNMENT_AUDIT.md",
+                "docs/data/source_alignment_audit.json",
+                "scripts/validate_source_alignment.py"
+            ],
+            "readout": "The source audit checks full-dataset metadata, API-listing caveats, public sample license/tooling, and boundary markers across repo docs, website, and HF cards."
+        },
+        {
+            "step": 4,
             "question": "How exactly are the tasks evaluated?",
             "primary_artifacts": [
                 "EVALUATION_PROTOCOL.md",
@@ -58,7 +70,7 @@
             "readout": "The protocol fixes the 20-frame window unit, chronological split, train-only normalization, leakage controls, per-task input/target/metric contracts, and unsupported interpretations."
         },
         {
-            "step": 4,
+            "step": 5,
             "question": "How can the public pipeline be reproduced?",
       "primary_artifacts": [
         "REPRODUCIBILITY.md",
@@ -68,7 +80,7 @@
       "readout": "The public sample pipeline has explicit commands, expected outputs, and a prior exact-match audit over the committed metrics."
     },
         {
-            "step": 5,
+            "step": 6,
             "question": "What is inside one model input?",
       "primary_artifacts": [
         "results/episode_task_suite/windows.csv",
@@ -79,7 +91,7 @@
       "readout": "The current model input is an 8,378-dimensional aligned window vector with explicit feature-block boundaries, and the readable atlas shows each public-sample modality without raw data redistribution."
     },
         {
-            "step": 6,
+            "step": 7,
             "question": "Do the task metrics have committed evidence?",
       "primary_artifacts": [
         "results/episode_task_suite/summary_report.json",
@@ -89,7 +101,7 @@
       "readout": "Each of the 12 tasks has minimal-head metrics and a matching neural MLP result over the same window contracts."
     },
         {
-            "step": 7,
+            "step": 8,
             "question": "How should this scale beyond one episode?",
       "primary_artifacts": [
         "results/omni_finetune/DATA_BLOCKER_REPORT.md",
@@ -103,6 +115,8 @@
     "reviewer_scorecard_json": "docs/data/reviewer_scorecard.json",
     "evaluation_protocol": "EVALUATION_PROTOCOL.md",
     "evaluation_protocol_json": "docs/data/evaluation_protocol.json",
+    "source_alignment_audit": "SOURCE_ALIGNMENT_AUDIT.md",
+    "source_alignment_audit_json": "docs/data/source_alignment_audit.json",
     "artifact_guide": "ARTIFACT_GUIDE.md",
   "artifact_index": "docs/data/artifact_index.json",
   "reproducibility_matrix": "docs/data/reproducibility_matrix.json",

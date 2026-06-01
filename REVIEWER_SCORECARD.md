@@ -11,6 +11,7 @@ verified only when committed artifacts and validation reports support it.
 | Neural heads | Verified | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split. |
 | Evaluation protocol | Verified | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | Windowing, chronological split, per-task metrics, leakage controls, and unsupported interpretations are generated from committed metric artifacts. |
 | Official dataset wording | Verified | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Public wording is aligned to the official gated Xperience-10M dataset card, public sample card, and HF API metadata, including modalities, scale, access boundary, sample license/tooling, and unsupported claims. |
+| Source alignment audit | Verified | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json`, `scripts/validate_source_alignment.py` | Source facts and boundary markers are checked across repo docs, website, and HF cards. |
 | Website and HF mirrors | Verified | `docs/data/website_integrity.json`, `docs/data/mirror_parity.json`, `docs/data/live_publication_status.json` | Local website links/assets pass, prepared mirrors match, and public GitHub/HF URLs have been checked after upload. |
 | Publication hygiene | Verified | `docs/data/publication_audit.json`, `QUALITY_GATES.md`, `docs/data/quality_gates.json` | Public bundles are checked for raw-data exclusion, cache exclusion, heavy-archive exclusion, token-string hygiene, and stale presentation copy. |
 | Reproducibility | Verified for the public sample | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json`, `notes/reproducibility_audit.md` | The public sample workflow has explicit commands, expected outputs, and exact-match audit evidence. |
@@ -26,7 +27,8 @@ verified only when committed artifacts and validation reports support it.
    `results/episode_task_suite/neural_mlp/` to check the 12-task outputs.
 4. Inspect `EVALUATION_PROTOCOL.md` before judging task metrics or leakage
    controls.
-5. Inspect `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` before judging dataset
+5. Inspect `SOURCE_ALIGNMENT_AUDIT.md` and
+   `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` before judging dataset
    wording.
 6. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before judging
    Qwen3-Omni scale-up status.

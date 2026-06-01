@@ -54,6 +54,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
             "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
+            "SOURCE_ALIGNMENT_AUDIT.md",
             "EVALUATION_PROTOCOL.md",
             "REVIEWER_SCORECARD.md",
             "cc-by-nc-4.0",
@@ -68,6 +69,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
             "xperience10m_dataset_card_alignment.json",
+            "source_alignment_audit.json",
             "evaluation_protocol.json",
             "reviewer_scorecard.json",
             "cc-by-nc-4.0",
@@ -83,6 +85,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
             "xperience10m_dataset_card_alignment.json",
+            "source_alignment_audit.json",
             "evaluation_protocol.json",
             "reviewer_scorecard.json",
             "cc-by-nc-4.0",
@@ -97,6 +100,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
             "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
+            "SOURCE_ALIGNMENT_AUDIT.md",
             "EVALUATION_PROTOCOL.md",
             "REVIEWER_SCORECARD.md",
             "cc-by-nc-4.0",
@@ -111,6 +115,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "required": [
             "xperience10m-taskfirst-v12-modality-xl",
             "xperience10m_dataset_card_alignment.json",
+            "source_alignment_audit.json",
             "evaluation_protocol.json",
             "reviewer_scorecard.json",
             "cc-by-nc-4.0",
@@ -221,6 +226,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "REVIEWER_SCORECARD.md",
         "QUALITY_GATES.md",
         "EVALUATION_PROTOCOL.md",
+        "SOURCE_ALIGNMENT_AUDIT.md",
         "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
         "REPRODUCIBILITY.md",
         "EVIDENCE_CONTRACT.md",
@@ -232,6 +238,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "docs/sitemap.xml",
         "docs/data/evidence_contract.json",
         "docs/data/evaluation_protocol.json",
+        "docs/data/source_alignment_audit.json",
         "docs/data/artifact_index.json",
         "docs/data/live_publication_status.json",
         "docs/data/quality_gates.json",
@@ -268,6 +275,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "scripts/verify_live_publication.py",
         "scripts/validate_mirror_parity.py",
         "scripts/validate_scope_claims.py",
+        "scripts/validate_source_alignment.py",
         "scripts/validate_website_integrity.py",
         "scripts/omni/train_qwen3_omni_lora.py",
     ]

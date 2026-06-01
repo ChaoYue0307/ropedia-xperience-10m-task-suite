@@ -13,6 +13,7 @@ These gates validate public packaging, claim boundaries, mirror parity, and webs
 | Gate | Command | Report | Current report status | Blocks publication if |
 | --- | --- | --- | --- | --- |
 | Scope claims guard | `python scripts/validate_scope_claims.py` | `docs/data/scope_claims_audit.json` | `pass` | Historical 32ep smoke/provenance strings are presented as real 32-episode metrics. |
+| Source alignment audit | `python scripts/validate_source_alignment.py` | `docs/data/source_alignment_audit.json` | `pass` | Official full-dataset facts, sample-card facts, API-listing caveats, or public-card boundary markers are missing or inconsistent. |
 | Website integrity | `python scripts/validate_website_integrity.py` | `docs/data/website_integrity.json` | `pass` | Local links, anchors, JSON bundles, or referenced image assets are missing or invalid. |
 | Evaluation protocol | `python scripts/build_evaluation_protocol.py` | `docs/data/evaluation_protocol.json` | `pass` | Windowing, split policy, leakage controls, task metrics, or unsupported interpretations are not explicit. |
 | Quality-gate manifest | `python scripts/build_quality_gates.py` | `docs/data/quality_gates.json` | `pass` | A public reviewer cannot see the current packaging gates in one place. |
@@ -32,6 +33,7 @@ These gates validate public packaging, claim boundaries, mirror parity, and webs
 
 ```bash
 python scripts/validate_scope_claims.py
+python scripts/validate_source_alignment.py
 python scripts/build_evaluation_protocol.py
 python scripts/validate_website_integrity.py
 python scripts/build_quality_gates.py

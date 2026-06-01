@@ -56,15 +56,25 @@
         },
         {
             "area": "Official dataset wording",
-      "status": "verified",
+            "status": "verified",
       "evidence": [
         "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
         "docs/data/xperience10m_dataset_card_alignment.json"
       ],
             "readout": "Public wording is aligned to the official gated Xperience-10M dataset card, public sample card, and HF API metadata, including modalities, scale, access boundary, sample license/tooling, and unsupported claims."
-    },
-    {
-      "area": "Website and HF mirrors",
+        },
+        {
+            "area": "Source alignment audit",
+            "status": "verified",
+            "evidence": [
+                "SOURCE_ALIGNMENT_AUDIT.md",
+                "docs/data/source_alignment_audit.json",
+                "scripts/validate_source_alignment.py"
+            ],
+            "readout": "Source facts and boundary markers are checked across repo docs, website, and HF cards."
+        },
+        {
+            "area": "Website and HF mirrors",
       "status": "verified",
       "evidence": [
         "docs/data/website_integrity.json",
@@ -117,6 +127,7 @@
         "Open docs/data/reviewer_packet.json for the machine-readable review path.",
         "Inspect docs/data/summary_metrics.json and results/episode_task_suite/neural_mlp/ to check the 12-task outputs.",
         "Inspect EVALUATION_PROTOCOL.md before judging task metrics or leakage controls.",
+        "Inspect SOURCE_ALIGNMENT_AUDIT.md before judging source-card consistency across public surfaces.",
         "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
     "Inspect results/omni_finetune/DATA_BLOCKER_REPORT.md before judging Qwen3-Omni scale-up status."
   ],

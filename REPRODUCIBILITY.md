@@ -74,6 +74,7 @@ python scripts/episode_task_suite.py \
 python scripts/research_direction_taxonomy.py
 python scripts/research_direction_extension_tasks.py
 python scripts/task_walkthroughs.py
+python scripts/validate_source_alignment.py
 python scripts/build_evaluation_protocol.py
 python scripts/generate_visualizations.py
 python scripts/render_overview_figures.py
@@ -96,6 +97,7 @@ python scripts/validate_publication_package.py
 | Research directions | `results/episode_task_suite/research_directions/`, `docs/data/research_directions.json` |
 | Direction probes | `results/episode_task_suite/research_direction_extensions/`, `docs/data/research_direction_extensions.json` |
 | Walkthroughs | `results/episode_task_suite/task_walkthroughs/`, `docs/data/task_walkthroughs.json` |
+| Source alignment audit | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json` |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` |
 | Figures | `docs/assets/*.png`, `docs/assets/charts/*.svg` |
 | Modality atlas | `docs/data/modality_atlas.json`, `docs/assets/modalities/*` |

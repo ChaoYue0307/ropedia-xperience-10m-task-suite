@@ -50,6 +50,13 @@
             "boundary": "single-episode probes, not full research-direction solutions"
         },
         {
+            "id": "source_alignment_audit",
+            "status": "reproducible",
+            "command": "python scripts/validate_source_alignment.py",
+            "expected": "SOURCE_ALIGNMENT_AUDIT.md and docs/data/source_alignment_audit.json",
+            "boundary": "offline committed-fact audit; does not fetch private gated data"
+        },
+        {
             "id": "evaluation_protocol",
             "status": "reproducible",
             "command": "python scripts/build_evaluation_protocol.py",

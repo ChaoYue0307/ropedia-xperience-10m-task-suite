@@ -1,0 +1,139 @@
+{
+  "title": "Ropedia Xperience-10M Source Alignment Audit",
+  "status": "pass",
+  "generated_at_utc": "2026-06-01T10:06:08+00:00",
+  "alignment_json": "docs/data/xperience10m_dataset_card_alignment.json",
+  "alignment_summary": {
+    "full_dataset_repo": "ropedia-ai/xperience-10m",
+    "full_dataset_access": "manual",
+    "api_episode_folders": 12103,
+    "sample_repo": "ropedia-ai/xperience-10m-sample",
+    "sample_license": "cc-by-nc-4.0",
+    "current_project_scope": "1 public sample episode, 5,821 frames, 1,161 windows, 8,378 current features"
+  },
+  "checks": [
+    {
+      "name": "full_dataset_metadata_matches_observed_snapshot",
+      "status": "pass",
+      "detail": "gated full-dataset metadata matches the recorded HF API snapshot",
+      "evidence": [
+        "docs/data/xperience10m_dataset_card_alignment.json"
+      ]
+    },
+    {
+      "name": "api_listing_snapshot_is_consistent",
+      "status": "pass",
+      "detail": "HF API file-listing counts remain internally consistent in the committed alignment JSON",
+      "evidence": [
+        "docs/data/xperience10m_dataset_card_alignment.json"
+      ]
+    },
+    {
+      "name": "sample_card_metadata_is_preserved",
+      "status": "pass",
+      "detail": "public sample card license and tooling are recorded separately from the gated full dataset",
+      "evidence": [
+        "docs/data/xperience10m_dataset_card_alignment.json"
+      ]
+    },
+    {
+      "name": "official_modality_description_is_complete",
+      "status": "pass",
+      "detail": "missing modality markers=[]",
+      "evidence": [
+        "docs/data/xperience10m_dataset_card_alignment.json"
+      ]
+    },
+    {
+      "name": "current_project_boundary_is_explicit",
+      "status": "pass",
+      "detail": "one-episode scope, audio boundary, raw-data exclusion, and unsupported claims are present",
+      "evidence": [
+        "docs/data/xperience10m_dataset_card_alignment.json"
+      ]
+    },
+    {
+      "name": "repo_public_surfaces_preserve_source_markers",
+      "status": "pass",
+      "detail": "README, data notice, alignment doc, and website expose official/full/sample/source-boundary markers",
+      "evidence": [
+        "README.md",
+        "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
+        "DATA_NOTICE.md",
+        "docs/index.html"
+      ]
+    },
+    {
+      "name": "hf_public_cards_preserve_source_markers",
+      "status": "pass",
+      "detail": "HF Space, artifact dataset, model card, and mirrored project README expose source-boundary markers",
+      "evidence": [
+        "space/README.md",
+        "artifacts/README.md",
+        "artifacts/PROJECT_README.md",
+        "model/README.md"
+      ]
+    }
+  ],
+  "repo_marker_records": [
+    {
+      "path": "README.md",
+      "exists": true,
+      "required_marker_count": 9,
+      "missing_markers": [],
+      "status": "pass"
+    },
+    {
+      "path": "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
+      "exists": true,
+      "required_marker_count": 7,
+      "missing_markers": [],
+      "status": "pass"
+    },
+    {
+      "path": "DATA_NOTICE.md",
+      "exists": true,
+      "required_marker_count": 6,
+      "missing_markers": [],
+      "status": "pass"
+    },
+    {
+      "path": "docs/index.html",
+      "exists": true,
+      "required_marker_count": 8,
+      "missing_markers": [],
+      "status": "pass"
+    }
+  ],
+  "hf_marker_records": [
+    {
+      "path": "space/README.md",
+      "exists": true,
+      "required_marker_count": 7,
+      "missing_markers": [],
+      "status": "pass"
+    },
+    {
+      "path": "artifacts/README.md",
+      "exists": true,
+      "required_marker_count": 7,
+      "missing_markers": [],
+      "status": "pass"
+    },
+    {
+      "path": "artifacts/PROJECT_README.md",
+      "exists": true,
+      "required_marker_count": 7,
+      "missing_markers": [],
+      "status": "pass"
+    },
+    {
+      "path": "model/README.md",
+      "exists": true,
+      "required_marker_count": 8,
+      "missing_markers": [],
+      "status": "pass"
+    }
+  ],
+  "failures": []
+}
