@@ -13,11 +13,11 @@
   <meta property="og:description" content="One public embodied-AI episode, converted into reproducible multimodal tasks, minimal baselines, neural MLP baselines, metrics, and diagrams.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">
-  <meta property="og:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-modalities-v6">
+  <meta property="og:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-modalities-v7">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ropedia Xperience-10M Task Suite">
   <meta name="twitter:description" content="Audit-first Xperience-10M multimodal task suite with minimal and neural baselines.">
-  <meta name="twitter:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-modalities-v6">
+  <meta name="twitter:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-modalities-v7">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -342,15 +342,14 @@
       margin-bottom: 24px;
     }
     .figure-pan {
-      overflow-x: auto;
+      overflow: visible;
       border-radius: var(--radius);
-      padding-bottom: 6px;
-      scrollbar-color: rgba(167, 240, 120, 0.58) rgba(7, 18, 7, 0.8);
     }
     .figure-pan .task-suite-image {
       margin-bottom: 0;
-      min-width: 1800px;
-      max-width: none;
+      min-width: 0;
+      max-width: 100%;
+      height: auto;
     }
     .architecture-image {
       display: block;
@@ -804,13 +803,13 @@
       .signal { grid-template-columns: 1fr; }
       .signal strong { text-align: left; }
       .figure-pan {
-        margin-inline: -14px;
-        padding-inline: 14px;
+        margin-inline: 0;
+        padding-inline: 0;
       }
       .figure-pan .task-suite-image {
-        width: min(1600px, 320vw);
-        min-width: 1500px;
-        max-width: none;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
       }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -1004,7 +1003,7 @@
           <p>The top-level map shows the Xperience-10M sample modalities and the verified 12-task results. Audio is present in the sample MP4 stream, but the current 8,378-d baseline manifest does not featurize it.</p>
         </div>
         <div class="figure-pan">
-          <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-modalities-v6" alt="ChatGPT-image-backed infographic showing all 12 Ropedia Xperience-10M tasks">
+          <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-modalities-v7" alt="ChatGPT-image-backed infographic showing all 12 Ropedia Xperience-10M tasks">
         </div>
       </div>
     </section>
