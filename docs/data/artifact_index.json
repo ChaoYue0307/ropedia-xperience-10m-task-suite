@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T10:08:33+00:00",
+  "generated_at_utc": "2026-06-01T10:20:39+00:00",
   "status": "pass",
   "artifact_count": 43,
   "missing": [],
@@ -181,8 +181,8 @@
       "surface": "repo_hf",
       "proves": "Lists the automated and post-publish gates required before presenting a release as current.",
       "exists": true,
-      "bytes": 3141,
-      "sha256": "511b02550f68aa2142a27bf80471d3e793ce5aeafd6db2aaef64cf9615b42d07"
+      "bytes": 3443,
+      "sha256": "2701aef5d3f32d08342d7b45851eced1ba394fbf84019fff558c44c630128782"
     },
     {
       "id": "quality_gate_manifest",
@@ -192,8 +192,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable release-gate summary for validators, mirrors, and reviewer surfaces.",
       "exists": true,
-      "bytes": 4737,
-      "sha256": "1a76c166cb6212729743dc363a47bbc7dda5178416ab61ed33b14ac5f501553a"
+      "bytes": 5310,
+      "sha256": "ca2d316f8453aef196179130944d14794c44b81636689c118777d8fe29ccd04e"
     },
     {
       "id": "live_publication_status",
@@ -204,7 +204,7 @@
       "volatile": true,
       "proves": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 16958,
+      "bytes": 19346,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -260,7 +260,7 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 5840,
+      "bytes": 5982,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -284,7 +284,7 @@
       "volatile": true,
       "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 58417,
+      "bytes": 62297,
       "hash_policy": "existence_and_size_only"
     },
     {
