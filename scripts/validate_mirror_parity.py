@@ -75,6 +75,7 @@ SCRIPT_FILES = [
     "validate_scope_claims.py",
     "validate_source_alignment.py",
     "validate_website_integrity.py",
+    "publish_hf_bundles.py",
 ]
 
 WEBSITE_FILES = [

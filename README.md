@@ -330,6 +330,7 @@ scripts/
   validate_scope_claims.py          # checks Qwen3-Omni readiness/result claim boundaries
   validate_website_integrity.py     # checks local site links, anchors, JSON, images
   validate_publication_package.py   # checks public repo + HF bundle hygiene
+  publish_hf_bundles.py             # uploads prepared HF Space/artifact/model bundles
   omni/
     download_sample_modelscope.py   # ModelScope sample download helper
     build_episode_manifest.py       # metadata-only multi-episode scanner

@@ -98,6 +98,14 @@ ARTIFACTS = [
         "proves": "Regenerates the source-alignment audit from committed facts and public card text.",
     },
     {
+        "id": "hf_publisher",
+        "title": "Hugging Face publisher",
+        "path": "scripts/publish_hf_bundles.py",
+        "kind": "publication_workflow",
+        "surface": "repo_hf",
+        "proves": "Publishes prepared Space, artifact dataset, and model bundles, including an explicit model-binary upload batch.",
+    },
+    {
         "id": "evaluation_protocol",
         "title": "Evaluation protocol",
         "path": "EVALUATION_PROTOCOL.md",
