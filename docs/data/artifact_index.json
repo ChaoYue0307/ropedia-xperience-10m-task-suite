@@ -1,13 +1,14 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T14:16:54+00:00",
+  "generated_at_utc": "2026-06-01T14:46:55+00:00",
   "status": "pass",
-  "artifact_count": 49,
+  "artifact_count": 50,
   "missing": [],
   "by_kind": {
     "review_path": 5,
     "claim_boundary": 1,
     "source_alignment": 5,
+    "publication_workflow": 1,
     "evaluation_protocol": 3,
     "visual_evidence": 6,
     "quality_gate": 4,
@@ -128,7 +129,7 @@
       "proves": "Machine-readable source-alignment pass/fail audit for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4425,
-      "sha256": "b025f11201d0f32f54930f8956d606a6526d2d32b1a7c9cdf5382ddf2bec8fee"
+      "sha256": "d0544dce6980d03ad73f3ee9ec9e9890de448b28f2a7bb7f7d6c715d7bc67157"
     },
     {
       "id": "source_alignment_validator",
@@ -140,6 +141,17 @@
       "exists": true,
       "bytes": 15826,
       "sha256": "3294745245526ef5a4bb42992c2d7fdd71612db26ad2545f64e4d2272c58f9f2"
+    },
+    {
+      "id": "hf_publisher",
+      "title": "Hugging Face publisher",
+      "path": "scripts/publish_hf_bundles.py",
+      "kind": "publication_workflow",
+      "surface": "repo_hf",
+      "proves": "Publishes prepared Space, artifact dataset, and model bundles, including an explicit model-binary upload batch.",
+      "exists": true,
+      "bytes": 5845,
+      "sha256": "f266b9ebbbb179b56512edecb0a2ff2e62470c628ab4198a71530b8290a76171"
     },
     {
       "id": "evaluation_protocol",
@@ -259,8 +271,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable release-gate summary for validators, mirrors, and reviewer surfaces.",
       "exists": true,
-      "bytes": 6343,
-      "sha256": "398c0be6c1894a37a65f16dc52c7497241b40bb65c2f0e7dfffcfa8122ddd1d4"
+      "bytes": 6351,
+      "sha256": "5417424b463d37dfe792d4dee57f941f6484433317b2ae6438c85ba49c6cb940"
     },
     {
       "id": "live_publication_status",
@@ -271,7 +283,7 @@
       "volatile": true,
       "proves": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 21631,
+      "bytes": 26653,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -315,8 +327,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 18358,
-      "sha256": "180023c3636c67f1a5ca1a1a9afed349011e190c673722a7adf0eb1e7fe1992f"
+      "bytes": 18696,
+      "sha256": "3dcd041ce94c85e2ce0305ba6befb282b73563abe254b8882b2e41110f6ff6c5"
     },
     {
       "id": "publication_audit",
@@ -327,7 +339,7 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 6733,
+      "bytes": 6738,
       "hash_policy": "existence_and_size_only"
     },
     {
