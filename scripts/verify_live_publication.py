@@ -116,6 +116,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "task_surface_integrity_json",
+        "title": "Task-surface integrity JSON",
+        "local_path": "docs/data/task_surface_integrity.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/task_surface_integrity.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/task_surface_integrity.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/task_surface_integrity.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/task_surface_integrity.json",
+        },
+    },
+    {
         "id": "brand_assets_json",
         "title": "Brand assets JSON",
         "local_path": "docs/data/brand_assets.json",
@@ -173,10 +184,12 @@ MARKER_CHECKS = [
             "taskPlayer",
             "Action Recognition",
             "data/task_walkthroughs.json",
+            "task_surface_integrity.json",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
             "xperience10m-" + "modalities-v9-large-atlas",
+            "artifact-id",
         ],
     },
     {
@@ -200,10 +213,12 @@ MARKER_CHECKS = [
             "taskPlayer",
             "Action Recognition",
             "data/task_walkthroughs.json",
+            "task_surface_integrity.json",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
             "xperience10m-" + "modalities-v9-large-atlas",
+            "artifact-id",
         ],
     },
     {
@@ -223,6 +238,7 @@ MARKER_CHECKS = [
             "cc-by-nc-4.0",
             "12,103 episode folders",
             "interactive task walkthrough/player",
+            "task_surface_integrity.json",
         ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },
@@ -243,6 +259,7 @@ MARKER_CHECKS = [
             "cc-by-nc-4.0",
             "12,103 episode folders",
             "interactive task player",
+            "task_surface_integrity.json",
         ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },

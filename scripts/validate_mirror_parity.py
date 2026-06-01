@@ -38,6 +38,7 @@ DATA_FILES = [
     "scope_claims_audit.json",
     "source_alignment_audit.json",
     "summary_metrics.json",
+    "task_surface_integrity.json",
     "task_walkthroughs.json",
     "website_integrity.json",
     "xperience10m_dataset_card_alignment.json",
@@ -74,6 +75,7 @@ SCRIPT_FILES = [
     "validate_publication_package.py",
     "validate_scope_claims.py",
     "validate_source_alignment.py",
+    "validate_task_surface.py",
     "validate_website_integrity.py",
     "publish_hf_bundles.py",
 ]

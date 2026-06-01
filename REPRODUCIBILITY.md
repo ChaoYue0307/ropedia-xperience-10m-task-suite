@@ -84,6 +84,7 @@ python scripts/export_modality_atlas_assets.py
 python scripts/build_brand_assets.py
 python scripts/build_figure_index.py
 python scripts/validate_website_integrity.py
+python scripts/validate_task_surface.py
 python scripts/validate_scope_claims.py
 python scripts/build_artifact_index.py
 python scripts/validate_mirror_parity.py
@@ -100,6 +101,7 @@ python scripts/validate_publication_package.py
 | Research directions | `results/episode_task_suite/research_directions/`, `docs/data/research_directions.json` |
 | Direction probes | `results/episode_task_suite/research_direction_extensions/`, `docs/data/research_direction_extensions.json` |
 | Walkthroughs | `results/episode_task_suite/task_walkthroughs/`, `docs/data/task_walkthroughs.json` |
+| Task surface integrity | `docs/data/task_surface_integrity.json` |
 | Source alignment audit | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json` |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` |
 | Figures | `docs/assets/*.png`, `docs/assets/charts/*.svg` |

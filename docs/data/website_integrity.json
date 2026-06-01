@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T15:37:05+00:00",
+  "generated_at_utc": "2026-06-01T16:21:49+00:00",
   "docs_root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 2,
-    "local_references": 88,
+    "local_references": 89,
     "external_reference_count": 72,
-    "json_files": 22,
+    "json_files": 23,
     "image_assets_referenced": 19,
     "failure_count": 0
   },
@@ -24,8 +24,8 @@
       "name": "reviewer_scorecard_precedes_evidence_ledger",
       "status": "pass",
       "reason": "The reviewer scorecard should appear before the deeper evidence ledger.",
-      "scorecard_index": 44061,
-      "evidence_index": 50707
+      "scorecard_index": 44211,
+      "evidence_index": 50857
     },
     {
       "name": "reviewer_scorecard_links_json",
@@ -37,9 +37,9 @@
       "name": "evaluation_protocol_between_scorecard_and_evidence",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "scorecard_index": 44061,
-      "protocol_index": 48300,
-      "evidence_index": 50707
+      "scorecard_index": 44211,
+      "protocol_index": 48450,
+      "evidence_index": 50857
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -113,7 +113,7 @@
     {
       "path": "index.html",
       "id_count": 55,
-      "reference_count": 87,
+      "reference_count": 88,
       "image_count": 22
     }
   ],
@@ -135,7 +135,7 @@
     },
     {
       "path": "data/evidence_contract.json",
-      "bytes": 10929,
+      "bytes": 11323,
       "top_level_type": "dict"
     },
     {
@@ -145,7 +145,7 @@
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 26326,
+      "bytes": 28663,
       "top_level_type": "dict"
     },
     {
@@ -160,7 +160,7 @@
     },
     {
       "path": "data/project_manifest.json",
-      "bytes": 4418,
+      "bytes": 4489,
       "top_level_type": "dict"
     },
     {
@@ -175,7 +175,7 @@
     },
     {
       "path": "data/reproducibility_matrix.json",
-      "bytes": 5113,
+      "bytes": 5195,
       "top_level_type": "dict"
     },
     {
@@ -214,13 +214,18 @@
       "top_level_type": "dict"
     },
     {
+      "path": "data/task_surface_integrity.json",
+      "bytes": 44190,
+      "top_level_type": "dict"
+    },
+    {
       "path": "data/task_walkthroughs.json",
       "bytes": 26935,
       "top_level_type": "dict"
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 8813,
+      "bytes": 9409,
       "top_level_type": "dict"
     },
     {

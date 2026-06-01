@@ -766,6 +766,19 @@
       box-shadow: 0 20px 48px rgba(164, 242, 127, 0.08);
     }
     .task-card.hide { display: none; }
+    .task-card-media {
+      overflow: hidden;
+      border: 1px solid rgba(164, 242, 127, 0.18);
+      border-radius: 7px;
+      background: #020502;
+    }
+    .task-card-media img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 8.5;
+      object-fit: cover;
+      transform: scale(1.01);
+    }
     .task-top { display: flex; justify-content: space-between; gap: 14px; align-items: start; }
     .task-name {
       display: block;
@@ -782,13 +795,6 @@
       color: #d7e5d1;
       font-size: 13px;
       line-height: 1.35;
-    }
-    .artifact-id {
-      color: var(--muted);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      line-height: 1.3;
-      word-break: break-word;
     }
     .tag {
       font-size: 11px;
@@ -1981,7 +1987,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Task cards and metrics.</h2>
-          <p>The 12 task cards use readable research names, explicit input-process-output contracts, and verified minimal versus neural scores from the committed result files.</p>
+          <p>The 12 task cards use readable research names, representative modality thumbnails, explicit input-process-output contracts, and verified minimal versus neural scores from the committed result files.</p>
         </div>
         <div class="task-toolbar" aria-label="Task filters">
           <button class="filter active" data-filter="all">All tasks</button>
@@ -2041,6 +2047,7 @@
               <article class="artifact"><h3>Scope claims audit</h3><p>Machine check that historical <code>32ep</code> identifiers are provenance, not real 32-episode result claims.</p><a href="data/scope_claims_audit.json">scope_claims_audit.json</a></article>
               <article class="artifact"><h3>Publication audit</h3><p>Checks raw-data exclusion, cache exclusion, heavy-archive exclusion, token-string hygiene, and public-card figure freshness.</p><a href="data/publication_audit.json">publication_audit.json</a></article>
               <article class="artifact"><h3>Website integrity</h3><p>Checks local links, anchors, JSON files, and referenced website image dimensions.</p><a href="data/website_integrity.json">website_integrity.json</a></article>
+              <article class="artifact"><h3>Task-surface integrity</h3><p>Checks that public task cards use readable research names, modality thumbnails, and the interactive walkthrough/player contract.</p><a href="data/task_surface_integrity.json">task_surface_integrity.json</a></article>
               <article class="artifact"><h3>Reviewer packet</h3><p>Machine-readable 90-second reviewer path and proof boundary summary.</p><a href="data/reviewer_packet.json">reviewer_packet.json</a></article>
             </div>
           </section>
@@ -2057,7 +2064,7 @@
               <article class="artifact"><h3>Neural MLP task results</h3><p>Per-task PyTorch MLP metrics, predictions, histories, and checkpoints for the same 12 task contracts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural_mlp/</a></article>
               <article class="artifact"><h3>Four-direction taxonomy</h3><p>Generated JSON, CSV, Markdown, and website data mapping all 12 tasks to the four research tracks.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_directions">research_directions/</a></article>
               <article class="artifact"><h3>Direction extension probes</h3><p>Four coded probes, one per research direction, with minimal and neural metrics plus prediction/rank CSVs.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_direction_extensions">research_direction_extensions/</a></article>
-              <article class="artifact"><h3>Task walkthroughs</h3><p>Case studies for all 12 tasks, including input, middle process modules, output, metric, and limitation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/task_walkthroughs">task_walkthroughs/</a></article>
+              <article class="artifact"><h3>Task walkthroughs</h3><p>Case studies for all 12 tasks, including input, middle process modules, output, metric, limitation, and task-player data.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/task_walkthroughs">task_walkthroughs/</a></article>
               <article class="artifact"><h3>Cross-modal retrieval</h3><p>The strongest self-supervised signal from the single episode.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json">metrics.json</a></article>
             </div>
           </section>
@@ -2205,10 +2212,14 @@ python scripts/validate_publication_package.py</code></pre>
       const grid = document.getElementById("taskGrid");
       grid.innerHTML = taskEntries.map((task, index) => {
         const family = task.task_family;
+        const poster = modalityMeta[task.poster_modality] || modalityMeta.video;
         const minimal = formatMetric(task.metric?.minimal);
         const neural = formatMetric(task.metric?.neural_mlp);
         return `
           <button type="button" class="task-card" data-kind="${escapeHtml(family)}" data-index="${index}" aria-pressed="false">
+            <span class="task-card-media" aria-hidden="true">
+              <img src="${poster.src}" alt="">
+            </span>
             <div class="task-top">
               <span>
                 <span class="task-name">${escapeHtml(task.display_name)}</span>
@@ -2227,7 +2238,6 @@ python scripts/validate_publication_package.py</code></pre>
               <span><strong>${neural}</strong>neural MLP</span>
             </div>
             <div class="mini-bar"><span style="--w:${metricBarWidth(task).toFixed(1)}%;--c:${familyAccent[family] || "#a7f078"}"></span></div>
-            <span class="artifact-id">${escapeHtml(task.artifact_id)}</span>
           </button>
         `;
       }).join("");
