@@ -35,6 +35,7 @@ DATA_FILES = [
     "summary_metrics.json",
     "task_walkthroughs.json",
     "website_integrity.json",
+    "xperience10m_dataset_card_alignment.json",
 ]
 
 ASSET_FILES = [
@@ -66,6 +67,7 @@ WEBSITE_FILES = [
 
 DOC_FILES = [
     "QUALITY_GATES.md",
+    "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
 ]
 
 

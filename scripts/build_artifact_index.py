@@ -42,6 +42,22 @@ ARTIFACTS = [
         "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
     },
     {
+        "id": "official_dataset_card_alignment",
+        "title": "Official Xperience-10M dataset-card alignment",
+        "path": "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
+        "kind": "source_alignment",
+        "surface": "repo_hf",
+        "proves": "Aligns public dataset wording with the official gated Xperience-10M dataset card and records unsupported areas.",
+    },
+    {
+        "id": "official_dataset_card_alignment_json",
+        "title": "Official Xperience-10M dataset-card alignment JSON",
+        "path": "docs/data/xperience10m_dataset_card_alignment.json",
+        "kind": "source_alignment",
+        "surface": "website_hf",
+        "proves": "Machine-readable upstream dataset-card alignment facts for website and HF mirrors.",
+    },
+    {
         "id": "quality_gates",
         "title": "Publication quality gates",
         "path": "QUALITY_GATES.md",

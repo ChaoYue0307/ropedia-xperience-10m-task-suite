@@ -1,0 +1,143 @@
+{
+  "title": "Xperience-10M Official Dataset Card Alignment",
+  "checked_at_utc": "2026-06-01T00:00:00+00:00",
+  "source_urls": {
+    "official_hf_dataset": "https://huggingface.co/datasets/ropedia-ai/xperience-10m",
+    "official_hf_api": "https://huggingface.co/api/datasets/ropedia-ai/xperience-10m",
+    "official_sample": "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample",
+    "ropedia_dataset_site": "https://ropedia.com/dataset",
+    "ropedia_release_page": "https://ropedia.com/blog/20260316_xperience_10m",
+    "homie_toolkit": "https://github.com/Ropedia/HOMIE-toolkit"
+  },
+  "hf_repo_metadata_observed": {
+    "repo_id": "ropedia-ai/xperience-10m",
+    "last_modified": "2026-04-21T05:03:45.000Z",
+    "gated": "manual",
+    "task_categories": [
+      "video-classification",
+      "image-to-text",
+      "depth-estimation",
+      "robotics"
+    ],
+    "modalities": [
+      "3d",
+      "audio",
+      "video"
+    ],
+    "language": [
+      "en"
+    ],
+    "size_categories": [
+      "1M<n<10M"
+    ],
+    "license": "other",
+    "access_note": "Reviewed gated access for approved non-commercial use; an external agreement-signing step may be required before approval."
+  },
+  "official_dataset_summary": {
+    "description": "Large-scale egocentric multimodal human-experience data for embodied AI, robotics, world models, and spatial intelligence.",
+    "experience_units": "about 10 million",
+    "recording_hours": "about 10,000",
+    "storage_described_by_card": "about 1 PB"
+  },
+  "official_scale_statistics": {
+    "rgb_frames": "about 2.88 billion",
+    "depth_frames": "about 720 million",
+    "camera_pose_records": "about 576 million",
+    "motion_capture_frames": "about 576 million",
+    "imu_records": "about 7.2 billion",
+    "caption_sentences": "about 16 million",
+    "caption_words": "about 200 million",
+    "vocabulary_words": "about 6,000",
+    "object_annotations": "about 350,000",
+    "trajectory_distance": "about 39,000 km"
+  },
+  "official_modalities": [
+    "six RGB video streams: four fisheye views and two rectified stereo views",
+    "audio embedded in the video streams",
+    "stereo depth and confidence",
+    "camera pose, SLAM trajectory, and point cloud",
+    "two-hand motion capture",
+    "full-body motion capture",
+    "inertial accelerometer and gyroscope streams",
+    "hierarchical language and caption annotations",
+    "metadata and calibration records"
+  ],
+  "episode_layout": {
+    "folder_pattern": "<session_uuid>/ep<episode_id>/",
+    "required_for_valid_episode_in_this_repo": [
+      "annotation.hdf5"
+    ],
+    "preferred_for_full_omni_in_this_repo": [
+      "fisheye_cam0.mp4",
+      "fisheye_cam1.mp4",
+      "fisheye_cam2.mp4",
+      "fisheye_cam3.mp4",
+      "stereo_left.mp4",
+      "stereo_right.mp4"
+    ],
+    "optional_or_excluded": [
+      "visualization.rrd"
+    ]
+  },
+  "annotation_hdf5_groups": [
+    "calibration",
+    "slam / camera pose",
+    "depth",
+    "hand_mocap",
+    "full_body_mocap",
+    "imu",
+    "video timing",
+    "metadata",
+    "caption / language annotations"
+  ],
+  "official_intended_uses": [
+    "egocentric video and action understanding",
+    "task and subtask recognition",
+    "temporal action localization",
+    "human-object interaction analysis",
+    "object grounding and caption/language grounding",
+    "audio-visual learning and multimodal pretraining",
+    "embodied reasoning and world-model learning",
+    "robotics imitation learning",
+    "depth estimation, odometry, SLAM, and scene reconstruction",
+    "hand/body pose and human motion understanding",
+    "sensor fusion"
+  ],
+  "current_repo_alignment": {
+    "validated_episode_count": 1,
+    "validated_frames": 5821,
+    "validated_windows": 1161,
+    "current_feature_dim": 8378,
+    "raw_data_redistributed": false,
+    "audio_feature_status": "Audio is present in the sample MP4 streams and visualized, but not extracted into the current baseline feature vector.",
+    "implemented_task_count": 12,
+    "neural_head_count": 12,
+    "covered_by_current_tasks": [
+      "action/subtask recognition",
+      "next-action prediction",
+      "transition and temporal diagnostics",
+      "hand trajectory forecasting",
+      "contact prediction",
+      "object relevance",
+      "caption grounding",
+      "cross-modal retrieval",
+      "modality reconstruction",
+      "misalignment detection"
+    ],
+    "not_yet_claimed": [
+      "full audio-visual learning",
+      "caption generation",
+      "depth-pixel estimation",
+      "SLAM estimation",
+      "neural rendering",
+      "policy learning",
+      "cross-episode generalization",
+      "real 32-episode Qwen3-Omni model quality"
+    ]
+  },
+  "responsible_use_boundary": [
+    "No raw MP4, raw annotation.hdf5, private gated data, raw visualization.rrd, or full Qwen weights are redistributed.",
+    "The project does not support identity recognition, re-identification, biometric profiling, surveillance, sensitive attribute inference, or safety-critical deployment.",
+    "Dataset use remains governed by the official Ropedia/Xperience-10M terms."
+  ]
+}

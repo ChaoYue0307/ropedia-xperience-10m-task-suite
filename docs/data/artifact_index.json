@@ -1,12 +1,13 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T07:34:10+00:00",
+  "generated_at_utc": "2026-06-01T08:04:57+00:00",
   "status": "pass",
-  "artifact_count": 33,
+  "artifact_count": 35,
   "missing": [],
   "by_kind": {
     "claim_boundary": 1,
     "review_path": 3,
+    "source_alignment": 2,
     "quality_gate": 4,
     "reproducibility": 2,
     "hygiene_report": 1,
@@ -36,8 +37,8 @@
       "surface": "repo",
       "proves": "Defines what is verified, what is smoke-only, and what must not be inferred.",
       "exists": true,
-      "bytes": 7046,
-      "sha256": "fd4d09938147487f9c3e713c6ced07b3e6103426f3ccc58266047365bf4ed1ea"
+      "bytes": 7572,
+      "sha256": "1b4c78c3d92c8592dcc7532b94103743bfef2a36b025245968c79fd51fa5c42c"
     },
     {
       "id": "reviewer_packet",
@@ -47,8 +48,8 @@
       "surface": "website_hf",
       "proves": "Gives a short audit path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 4406,
-      "sha256": "c3669df9fce7adc2cbdb95fa4d1cd75644ababf4bcda88bb19090b4296f8514a"
+      "bytes": 5044,
+      "sha256": "9b99e1828b74ba2cf99f281925ee6c113d0c73d9e06e700e924513e391c83cd8"
     },
     {
       "id": "artifact_guide",
@@ -58,8 +59,30 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 6943,
-      "sha256": "81204b332da6bd1c3ebec603990eeacbec984534499df59463cad9aa6ab7841f"
+      "bytes": 7925,
+      "sha256": "79c81d9f5631df046892e020f979773ac0933381f17b6d2b9f3ff503d6c332b7"
+    },
+    {
+      "id": "official_dataset_card_alignment",
+      "title": "Official Xperience-10M dataset-card alignment",
+      "path": "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
+      "kind": "source_alignment",
+      "surface": "repo_hf",
+      "proves": "Aligns public dataset wording with the official gated Xperience-10M dataset card and records unsupported areas.",
+      "exists": true,
+      "bytes": 7654,
+      "sha256": "0866357a6d9922c961dc89a872b88b9517a37adf7b8130bfeb64b471045d01da"
+    },
+    {
+      "id": "official_dataset_card_alignment_json",
+      "title": "Official Xperience-10M dataset-card alignment JSON",
+      "path": "docs/data/xperience10m_dataset_card_alignment.json",
+      "kind": "source_alignment",
+      "surface": "website_hf",
+      "proves": "Machine-readable upstream dataset-card alignment facts for website and HF mirrors.",
+      "exists": true,
+      "bytes": 5103,
+      "sha256": "157f8616cb6cb45ad4d72bc371d4d68c60a990340e4257a4d7e874c577d44f24"
     },
     {
       "id": "quality_gates",
@@ -81,7 +104,7 @@
       "proves": "Machine-readable release-gate summary for validators, mirrors, and reviewer surfaces.",
       "exists": true,
       "bytes": 4228,
-      "sha256": "d5b145e83d6a520c628353a894ad3a438418604e262b032767674e66911f893e"
+      "sha256": "42cd50ceb83503bbda33245dd1442ae956a9002f9f0d8a729b3b7d068217b836"
     },
     {
       "id": "live_publication_status",
@@ -103,8 +126,8 @@
       "surface": "repo",
       "proves": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 10587,
-      "sha256": "dd8456784c1442ccb622c0fb0da0369cad587dc0023142038b08613ec28a40b4"
+      "bytes": 11753,
+      "sha256": "297364d079c1eea4e790fd7b2f8ae42ddd7d93aa28d7a2362806729789813626"
     },
     {
       "id": "reproducibility_contract",
@@ -136,8 +159,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 12875,
-      "sha256": "9dd7b6e3a511db843d15f15f33d7f0481c41c19dc80031749f006f123162a637"
+      "bytes": 13641,
+      "sha256": "3d0a88e0c2212913699c13362027eb97a0cd84789a47e72b41d43cf3d2d6545b"
     },
     {
       "id": "publication_audit",
@@ -148,7 +171,7 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 5508,
+      "bytes": 5624,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -172,7 +195,7 @@
       "volatile": true,
       "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 48916,
+      "bytes": 51819,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -184,7 +207,7 @@
       "volatile": true,
       "proves": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 6159,
+      "bytes": 6286,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -195,8 +218,8 @@
       "surface": "website_hf",
       "proves": "Lists public URLs, upstream sources, and machine-readable project metadata.",
       "exists": true,
-      "bytes": 2789,
-      "sha256": "333d9876affa556f502d7038ad299c242a68b7bf3be90c3f6e10edf0e081c010"
+      "bytes": 3411,
+      "sha256": "99e0d386e088e7c532a318c33e4519da9b77d8d7c300c123c5aa7f866cd3c6b4"
     },
     {
       "id": "task_summary",

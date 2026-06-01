@@ -2,7 +2,7 @@
 
 [![Website](https://img.shields.io/badge/site-GitHub%20Pages-1f63e9)](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/)
 [![HF Space](https://img.shields.io/badge/Hugging%20Face-Space-ffb000)](https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite)
-[![Dataset](https://img.shields.io/badge/dataset-Xperience--10M%20by%20Ropedia-008b9a)](https://github.com/Ropedia)
+[![Dataset](https://img.shields.io/badge/dataset-Xperience--10M%20by%20Ropedia-008b9a)](https://huggingface.co/datasets/ropedia-ai/xperience-10m)
 [![Scope](https://img.shields.io/badge/scope-single%20public%20sample-b65b04)](#scope)
 [![Citation](https://img.shields.io/badge/citation-CFF-7ae5c3)](CITATION.cff)
 [![License](https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-a7f078)](LICENSE)
@@ -36,6 +36,7 @@ This repo is organized around an explicit proof boundary:
 
 | Claim layer | Evidence | Boundary |
 | --- | --- | --- |
+| Official Xperience-10M description | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | aligns public wording with the official gated dataset card; does not mirror raw data |
 | Data windows | `results/episode_task_suite/windows.csv`, `shared_windows.npz`, `summary_report.json` | one public sample episode |
 | Feature contract | `results/episode_task_suite/feature_manifest.json`, `available_modalities.json` | 8,378 current features; audio documented but not featurized |
 | 12-task suite | `scripts/episode_task_suite.py`, per-task `metrics.json`, predictions | chronological single-episode split |
@@ -74,6 +75,10 @@ For reproduction commands and expected outputs, use
 Project citation and machine-readable metadata live in
 [`CITATION.cff`](CITATION.cff), [`codemeta.json`](codemeta.json), and
 [`docs/data/project_manifest.json`](docs/data/project_manifest.json).
+The upstream dataset-card alignment note is
+[`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md),
+with a machine-readable copy at
+[`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json).
 
 ## 90-Second Reviewer Path
 
@@ -82,11 +87,12 @@ If you are reviewing the project cold, open these in order:
 | Step | Question | Primary artifacts | What should be true |
 | --- | --- | --- | --- |
 | 1 | What is actually claimed? | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`QUALITY_GATES.md`](QUALITY_GATES.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json), [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json), [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Single-episode task engineering and hygiene are claimed; historical `32ep` identifiers are not treated as real 32-episode results, and quality gates plus prepared and live mirrors are checked. |
-| 2 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and exact-match audit evidence are explicit. |
-| 3 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
-| 4 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
-| 5 | Is the website internally coherent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, JSON data, and referenced images are checked before publishing. |
-| 6 | What is still pending? | [`DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md), [`A100_HF_RELAY_STATUS.md`](results/omni_finetune/A100_HF_RELAY_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared but not yet a real model-quality claim. |
+| 2 | What is the official upstream dataset? | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md), [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json), [official HF dataset](https://huggingface.co/datasets/ropedia-ai/xperience-10m) | The full dataset is described as a gated large-scale 4D multimodal egocentric source; this repo validates only one public sample episode. |
+| 3 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and exact-match audit evidence are explicit. |
+| 4 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
+| 5 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
+| 6 | Is the website internally coherent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, JSON data, and referenced images are checked before publishing. |
+| 7 | What is still pending? | [`DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md), [`A100_HF_RELAY_STATUS.md`](results/omni_finetune/A100_HF_RELAY_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared but not yet a real model-quality claim. |
 
 The machine-readable reviewer packet is
 [`docs/data/reviewer_packet.json`](docs/data/reviewer_packet.json).
@@ -103,19 +109,38 @@ are checked for presence and size rather than treated as fixed hashes.
 groups the same proof layer into start-here files, data-contract files,
 task-evidence files, platform mirrors, and scale-up boundary artifacts.
 
-## Dataset Modality Coverage
+## Official Dataset Alignment
 
-The Xperience-10M sample is a 4D multimodal episode source spanning video,
-audio, depth, pose, motion capture, inertial sensing, and language annotation.
-This repo keeps that distinction explicit:
+The official [`ropedia-ai/xperience-10m`](https://huggingface.co/datasets/ropedia-ai/xperience-10m)
+card describes Xperience-10M as a large-scale gated egocentric multimodal
+dataset for embodied AI, robotics, world models, and spatial intelligence. Its
+public metadata lists video classification, image-to-text, depth estimation,
+and robotics task categories; 3D, audio, and video modalities; English
+language; `other` license; and manually reviewed non-commercial access.
 
-- the raw sample files include six MP4 video streams with AAC audio streams,
-- `annotation.hdf5` includes depth, SLAM/camera pose, hand/body mocap, IMU, and
-  language annotation,
-- the current minimal 8,378-d baseline feature manifest includes video, depth,
-  pose/SLAM, mocap, IMU, calibration, and language blocks,
-- audio is documented in the figures but is not yet extracted as a model input
-  feature block in this minimal baseline.
+At full scale, the official card describes about 10 million experience units,
+about 10,000 hours, six RGB streams per episode, audio, stereo depth, camera
+pose/SLAM, hand and full-body mocap, IMU, captions, metadata, and calibration.
+The card also reports headline counts such as billions of RGB/depth/IMU records
+and large caption/object annotations. This repo records those upstream facts in
+[`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md)
+and [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json).
+
+This repo's current verified subset is much smaller and intentionally explicit:
+
+- one public sample episode, 5,821 frames, and 1,161 aligned windows,
+- raw sample files with six MP4 video streams and AAC audio streams,
+- `annotation.hdf5` carrying depth, SLAM/camera pose, hand/body mocap, IMU,
+  language/caption annotations, calibration, metadata, and timing records,
+- an 8,378-d baseline feature vector using video-derived statistics, depth,
+  pose/SLAM, mocap, IMU, calibration, and language-derived blocks,
+- audio documented in figures and the modality atlas, but not yet extracted as
+  a model input feature block.
+
+The same alignment note also records what is not yet claimed: real
+audio-visual learning, caption generation, pixel-depth estimation, SLAM
+estimation, neural rendering, policy learning, cross-episode generalization,
+and real 32-episode Qwen3-Omni model quality.
 
 Start with the visual dashboard:
 
@@ -130,6 +155,7 @@ Hugging Face Space app:
 | Layer | What to inspect | Why it matters |
 | --- | --- | --- |
 | Data contract | `windows.csv`, `feature_manifest.json`, modality manifests | Confirms what each sample window contains before modeling |
+| Official dataset alignment | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Keeps public descriptions aligned with the official gated dataset card |
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and debuggable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode claims reviewable without rerunning first |
