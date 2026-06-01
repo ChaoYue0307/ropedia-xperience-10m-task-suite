@@ -1019,12 +1019,6 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       <div class="stats">{stats_html}</div>
     </header>
 
-    <div class="section-label">
-      <span>Xperience-10M modalities</span>
-      <span>Public-sample thumbnails are enlarged here so each data stream is legible. Audio is present in the sample MP4 stream; the current 8,378-d baseline manifest does not featurize it.</span>
-    </div>
-    <section class="modalities">{modalities_html}</section>
-
     <section class="shared-band" aria-label="shared processing contract">
       <div class="step"><strong>raw public episode</strong><span>video, audio, depth, pose, mocap, IMU, language</span></div>
       <div class="arrow">-></div>
@@ -1035,7 +1029,17 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       <div class="step"><strong>12 minimal + NN heads</strong><span>softmax/ridge/logistic plus PyTorch MLP</span></div>
     </section>
 
+    <div class="section-label">
+      <span>12 task families</span>
+      <span>Every task below has a minimal baseline and a neural MLP head over the same aligned window contract, so the figure prioritizes task design before visual decoration.</span>
+    </div>
     <section class="families">{''.join(families)}</section>
+
+    <div class="section-label">
+      <span>Xperience-10M modalities</span>
+      <span>Public-sample thumbnails are enlarged here so each data stream is legible. Audio is present in the sample MP4 stream; the current 8,378-d baseline manifest does not featurize it.</span>
+    </div>
+    <section class="modalities">{modalities_html}</section>
 
     <footer class="footer">
       <span>Single public sample episode: useful for pipeline validation and task design, not cross-episode generalization.</span>
