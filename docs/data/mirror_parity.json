@@ -1,9 +1,9 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T05:59:09+00:00",
+  "generated_at_utc": "2026-06-01T06:25:42+00:00",
   "hf_root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish",
   "summary": {
-    "group_count": 29,
+    "group_count": 32,
     "failure_count": 0,
     "failures_by_surface": {}
   },
@@ -23,6 +23,10 @@
     {
       "name": "repo_hf_website_html_parity",
       "status": "pass"
+    },
+    {
+      "name": "repo_hf_quality_doc_parity",
+      "status": "pass"
     }
   ],
   "groups": [
@@ -32,27 +36,27 @@
       "local": {
         "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/artifact_index.json",
         "exists": true,
-        "bytes": 12916,
-        "sha256": "0d12a2e36db90b4c6ae4205aab074e6c6b00083fa6c4cc18ea51342f5f1a05df"
+        "bytes": 13782,
+        "sha256": "499a9373836244474fe0db51f38d9ecb2211ae36a22e76a0ae4c323b0d45e05a"
       },
       "mirrors": {
         "hf_space": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/artifact_index.json",
           "exists": true,
-          "bytes": 12916,
-          "sha256": "0d12a2e36db90b4c6ae4205aab074e6c6b00083fa6c4cc18ea51342f5f1a05df"
+          "bytes": 13782,
+          "sha256": "499a9373836244474fe0db51f38d9ecb2211ae36a22e76a0ae4c323b0d45e05a"
         },
         "hf_artifacts": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/artifact_index.json",
           "exists": true,
-          "bytes": 12916,
-          "sha256": "0d12a2e36db90b4c6ae4205aab074e6c6b00083fa6c4cc18ea51342f5f1a05df"
+          "bytes": 13782,
+          "sha256": "499a9373836244474fe0db51f38d9ecb2211ae36a22e76a0ae4c323b0d45e05a"
         },
         "hf_model": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/artifact_index.json",
           "exists": true,
-          "bytes": 12916,
-          "sha256": "0d12a2e36db90b4c6ae4205aab074e6c6b00083fa6c4cc18ea51342f5f1a05df"
+          "bytes": 13782,
+          "sha256": "499a9373836244474fe0db51f38d9ecb2211ae36a22e76a0ae4c323b0d45e05a"
         }
       },
       "failures": []
@@ -63,27 +67,27 @@
       "local": {
         "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/evidence_contract.json",
         "exists": true,
-        "bytes": 7205,
-        "sha256": "78f2a0db49dc00f52f79dc4d3448d01a47bd28019458bd61000304e119a018e8"
+        "bytes": 7587,
+        "sha256": "bb9172140a526b78523cbc5507ed6340bd7b439a51fd68ad9f4728fee721a766"
       },
       "mirrors": {
         "hf_space": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/evidence_contract.json",
           "exists": true,
-          "bytes": 7205,
-          "sha256": "78f2a0db49dc00f52f79dc4d3448d01a47bd28019458bd61000304e119a018e8"
+          "bytes": 7587,
+          "sha256": "bb9172140a526b78523cbc5507ed6340bd7b439a51fd68ad9f4728fee721a766"
         },
         "hf_artifacts": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/evidence_contract.json",
           "exists": true,
-          "bytes": 7205,
-          "sha256": "78f2a0db49dc00f52f79dc4d3448d01a47bd28019458bd61000304e119a018e8"
+          "bytes": 7587,
+          "sha256": "bb9172140a526b78523cbc5507ed6340bd7b439a51fd68ad9f4728fee721a766"
         },
         "hf_model": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/evidence_contract.json",
           "exists": true,
-          "bytes": 7205,
-          "sha256": "78f2a0db49dc00f52f79dc4d3448d01a47bd28019458bd61000304e119a018e8"
+          "bytes": 7587,
+          "sha256": "bb9172140a526b78523cbc5507ed6340bd7b439a51fd68ad9f4728fee721a766"
         }
       },
       "failures": []
@@ -156,27 +160,58 @@
       "local": {
         "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/publication_audit.json",
         "exists": true,
-        "bytes": 5292,
-        "sha256": "c273917a673c41fed0b1498ffef2d1e64ebd9691e7b870cbcd15b194785397ed"
+        "bytes": 5408,
+        "sha256": "9d59186e18321215c55c8cddbf518b5d19fb19428f119a541c3b50ae54c4af4f"
       },
       "mirrors": {
         "hf_space": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/publication_audit.json",
           "exists": true,
-          "bytes": 5292,
-          "sha256": "c273917a673c41fed0b1498ffef2d1e64ebd9691e7b870cbcd15b194785397ed"
+          "bytes": 5408,
+          "sha256": "9d59186e18321215c55c8cddbf518b5d19fb19428f119a541c3b50ae54c4af4f"
         },
         "hf_artifacts": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/publication_audit.json",
           "exists": true,
-          "bytes": 5292,
-          "sha256": "c273917a673c41fed0b1498ffef2d1e64ebd9691e7b870cbcd15b194785397ed"
+          "bytes": 5408,
+          "sha256": "9d59186e18321215c55c8cddbf518b5d19fb19428f119a541c3b50ae54c4af4f"
         },
         "hf_model": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/publication_audit.json",
           "exists": true,
-          "bytes": 5292,
-          "sha256": "c273917a673c41fed0b1498ffef2d1e64ebd9691e7b870cbcd15b194785397ed"
+          "bytes": 5408,
+          "sha256": "9d59186e18321215c55c8cddbf518b5d19fb19428f119a541c3b50ae54c4af4f"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "data/quality_gates.json",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/quality_gates.json",
+        "exists": true,
+        "bytes": 4222,
+        "sha256": "274dd753853ea843b5413bbce68b371e4a664853924c9745a4163c1b68a54cf9"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/quality_gates.json",
+          "exists": true,
+          "bytes": 4222,
+          "sha256": "274dd753853ea843b5413bbce68b371e4a664853924c9745a4163c1b68a54cf9"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/quality_gates.json",
+          "exists": true,
+          "bytes": 4222,
+          "sha256": "274dd753853ea843b5413bbce68b371e4a664853924c9745a4163c1b68a54cf9"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/quality_gates.json",
+          "exists": true,
+          "bytes": 4222,
+          "sha256": "274dd753853ea843b5413bbce68b371e4a664853924c9745a4163c1b68a54cf9"
         }
       },
       "failures": []
@@ -312,26 +347,26 @@
         "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/scope_claims_audit.json",
         "exists": true,
         "bytes": 19964,
-        "sha256": "a74d89124ddbecd1af7a6054fcaa0d905c639dec56a9fd455140817220fd91a1"
+        "sha256": "83ed49035d1ca96dc28351f9d76f9249319d59d9647f0c58cffe0243d5687f9c"
       },
       "mirrors": {
         "hf_space": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/scope_claims_audit.json",
           "exists": true,
           "bytes": 19964,
-          "sha256": "a74d89124ddbecd1af7a6054fcaa0d905c639dec56a9fd455140817220fd91a1"
+          "sha256": "83ed49035d1ca96dc28351f9d76f9249319d59d9647f0c58cffe0243d5687f9c"
         },
         "hf_artifacts": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/scope_claims_audit.json",
           "exists": true,
           "bytes": 19964,
-          "sha256": "a74d89124ddbecd1af7a6054fcaa0d905c639dec56a9fd455140817220fd91a1"
+          "sha256": "83ed49035d1ca96dc28351f9d76f9249319d59d9647f0c58cffe0243d5687f9c"
         },
         "hf_model": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/scope_claims_audit.json",
           "exists": true,
           "bytes": 19964,
-          "sha256": "a74d89124ddbecd1af7a6054fcaa0d905c639dec56a9fd455140817220fd91a1"
+          "sha256": "83ed49035d1ca96dc28351f9d76f9249319d59d9647f0c58cffe0243d5687f9c"
         }
       },
       "failures": []
@@ -404,27 +439,27 @@
       "local": {
         "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/data/website_integrity.json",
         "exists": true,
-        "bytes": 5936,
-        "sha256": "0b9a1d8d3bbf953f86aed99fe22882dbee4ed2813f2cae91cbf15a2002752cc2"
+        "bytes": 6042,
+        "sha256": "b4b98a25ca5095c92f84cd3d945ce4f89228fb4d4f7812922f86007a4095ba20"
       },
       "mirrors": {
         "hf_space": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/data/website_integrity.json",
           "exists": true,
-          "bytes": 5936,
-          "sha256": "0b9a1d8d3bbf953f86aed99fe22882dbee4ed2813f2cae91cbf15a2002752cc2"
+          "bytes": 6042,
+          "sha256": "b4b98a25ca5095c92f84cd3d945ce4f89228fb4d4f7812922f86007a4095ba20"
         },
         "hf_artifacts": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/data/website_integrity.json",
           "exists": true,
-          "bytes": 5936,
-          "sha256": "0b9a1d8d3bbf953f86aed99fe22882dbee4ed2813f2cae91cbf15a2002752cc2"
+          "bytes": 6042,
+          "sha256": "b4b98a25ca5095c92f84cd3d945ce4f89228fb4d4f7812922f86007a4095ba20"
         },
         "hf_model": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/metrics/website_integrity.json",
           "exists": true,
-          "bytes": 5936,
-          "sha256": "0b9a1d8d3bbf953f86aed99fe22882dbee4ed2813f2cae91cbf15a2002752cc2"
+          "bytes": 6042,
+          "sha256": "b4b98a25ca5095c92f84cd3d945ce4f89228fb4d4f7812922f86007a4095ba20"
         }
       },
       "failures": []
@@ -805,21 +840,46 @@
       "local": {
         "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/scripts/build_artifact_index.py",
         "exists": true,
-        "bytes": 11579,
-        "sha256": "874a3813fb3a19d79be9ea4c0177f5922adf9e667760f927dd49163784eb6b48"
+        "bytes": 12194,
+        "sha256": "04083feaa7cd486e94fa4f313b54b5b04b588edcb1376234a7b279060e0b4058"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/scripts/build_artifact_index.py",
           "exists": true,
-          "bytes": 11579,
-          "sha256": "874a3813fb3a19d79be9ea4c0177f5922adf9e667760f927dd49163784eb6b48"
+          "bytes": 12194,
+          "sha256": "04083feaa7cd486e94fa4f313b54b5b04b588edcb1376234a7b279060e0b4058"
         },
         "hf_model": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/scripts/build_artifact_index.py",
           "exists": true,
-          "bytes": 11579,
-          "sha256": "874a3813fb3a19d79be9ea4c0177f5922adf9e667760f927dd49163784eb6b48"
+          "bytes": 12194,
+          "sha256": "04083feaa7cd486e94fa4f313b54b5b04b588edcb1376234a7b279060e0b4058"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "scripts/build_quality_gates.py",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/scripts/build_quality_gates.py",
+        "exists": true,
+        "bytes": 7757,
+        "sha256": "e38c9b27836d694a4cd6ff03de1b10d20347bc7f7bb176bdc7e7d5ba3cbe7fba"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/scripts/build_quality_gates.py",
+          "exists": true,
+          "bytes": 7757,
+          "sha256": "e38c9b27836d694a4cd6ff03de1b10d20347bc7f7bb176bdc7e7d5ba3cbe7fba"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/scripts/build_quality_gates.py",
+          "exists": true,
+          "bytes": 7757,
+          "sha256": "e38c9b27836d694a4cd6ff03de1b10d20347bc7f7bb176bdc7e7d5ba3cbe7fba"
         }
       },
       "failures": []
@@ -830,21 +890,21 @@
       "local": {
         "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/scripts/validate_mirror_parity.py",
         "exists": true,
-        "bytes": 7617,
-        "sha256": "0a74954e50fbf7bff661c9499244fc9be704764b701431fc2035ab4cc29d43d0"
+        "bytes": 8353,
+        "sha256": "9673da079fdeb780b6d0767591ffb77d074f4958e511a4384fb9bd9a735af2ca"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 7617,
-          "sha256": "0a74954e50fbf7bff661c9499244fc9be704764b701431fc2035ab4cc29d43d0"
+          "bytes": 8353,
+          "sha256": "9673da079fdeb780b6d0767591ffb77d074f4958e511a4384fb9bd9a735af2ca"
         },
         "hf_model": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 7617,
-          "sha256": "0a74954e50fbf7bff661c9499244fc9be704764b701431fc2035ab4cc29d43d0"
+          "bytes": 8353,
+          "sha256": "9673da079fdeb780b6d0767591ffb77d074f4958e511a4384fb9bd9a735af2ca"
         }
       },
       "failures": []
@@ -855,21 +915,21 @@
       "local": {
         "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/scripts/validate_publication_package.py",
         "exists": true,
-        "bytes": 12444,
-        "sha256": "f8fc86b66a1fde0755004897dd307eb5c80f84bdaf917158b43c423ff6e7e9e7"
+        "bytes": 12554,
+        "sha256": "0546124d5319fc5cc96881090049e5fcda301e6726f5e42b31141e599ab81711"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/scripts/validate_publication_package.py",
           "exists": true,
-          "bytes": 12444,
-          "sha256": "f8fc86b66a1fde0755004897dd307eb5c80f84bdaf917158b43c423ff6e7e9e7"
+          "bytes": 12554,
+          "sha256": "0546124d5319fc5cc96881090049e5fcda301e6726f5e42b31141e599ab81711"
         },
         "hf_model": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/scripts/validate_publication_package.py",
           "exists": true,
-          "bytes": 12444,
-          "sha256": "f8fc86b66a1fde0755004897dd307eb5c80f84bdaf917158b43c423ff6e7e9e7"
+          "bytes": 12554,
+          "sha256": "0546124d5319fc5cc96881090049e5fcda301e6726f5e42b31141e599ab81711"
         }
       },
       "failures": []
@@ -930,21 +990,52 @@
       "local": {
         "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs/index.html",
         "exists": true,
-        "bytes": 89772,
-        "sha256": "3544638ab8dc809e126f347d942b4f7303674edd79858cd039a5b18b95500fcb"
+        "bytes": 90729,
+        "sha256": "d1f35486ca171b6b6fcd3b4fd43263a54e4ff8e43379a20b57f6b62896e51fe8"
       },
       "mirrors": {
         "hf_space": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/index.html",
           "exists": true,
-          "bytes": 89772,
-          "sha256": "3544638ab8dc809e126f347d942b4f7303674edd79858cd039a5b18b95500fcb"
+          "bytes": 90729,
+          "sha256": "d1f35486ca171b6b6fcd3b4fd43263a54e4ff8e43379a20b57f6b62896e51fe8"
         },
         "hf_artifacts_docs": {
           "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/docs/index.html",
           "exists": true,
-          "bytes": 89772,
-          "sha256": "3544638ab8dc809e126f347d942b4f7303674edd79858cd039a5b18b95500fcb"
+          "bytes": 90729,
+          "sha256": "d1f35486ca171b6b6fcd3b4fd43263a54e4ff8e43379a20b57f6b62896e51fe8"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "docs/QUALITY_GATES.md",
+      "status": "pass",
+      "local": {
+        "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/QUALITY_GATES.md",
+        "exists": true,
+        "bytes": 2865,
+        "sha256": "f3482dbc310d2ade60aa2b480211a9ee0cad1c814779a8b1d63d96432222897a"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/space/QUALITY_GATES.md",
+          "exists": true,
+          "bytes": 2865,
+          "sha256": "f3482dbc310d2ade60aa2b480211a9ee0cad1c814779a8b1d63d96432222897a"
+        },
+        "hf_artifacts": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/artifacts/QUALITY_GATES.md",
+          "exists": true,
+          "bytes": 2865,
+          "sha256": "f3482dbc310d2ade60aa2b480211a9ee0cad1c814779a8b1d63d96432222897a"
+        },
+        "hf_model": {
+          "path": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/hf_publish/model/QUALITY_GATES.md",
+          "exists": true,
+          "bytes": 2865,
+          "sha256": "f3482dbc310d2ade60aa2b480211a9ee0cad1c814779a8b1d63d96432222897a"
         }
       },
       "failures": []

@@ -1,0 +1,101 @@
+{
+  "title": "Ropedia Xperience-10M Publication Quality Gates",
+  "status": "pass",
+  "generated_at_utc": "2026-06-01T06:24:04+00:00",
+  "rule": "Do not present a release as current unless every automated gate passes, then verify live GitHub/HF mirrors after publishing.",
+  "automated_gates": [
+    {
+      "id": "scope_claims",
+      "title": "Scope claims guard",
+      "command": "python scripts/validate_scope_claims.py",
+      "report": "docs/data/scope_claims_audit.json",
+      "blocks_if": "Historical 32ep smoke/provenance strings are presented as real 32-episode metrics.",
+      "proves": "The public narrative does not overclaim the Qwen3-Omni smoke artifacts.",
+      "current_report": {
+        "exists": true,
+        "status": "pass"
+      }
+    },
+    {
+      "id": "website_integrity",
+      "title": "Website integrity",
+      "command": "python scripts/validate_website_integrity.py",
+      "report": "docs/data/website_integrity.json",
+      "blocks_if": "Local links, anchors, JSON bundles, or referenced image assets are missing or invalid.",
+      "proves": "The GitHub Pages / HF static surface is internally coherent before upload.",
+      "current_report": {
+        "exists": true,
+        "status": "pass"
+      }
+    },
+    {
+      "id": "quality_gate_manifest",
+      "title": "Quality-gate manifest",
+      "command": "python scripts/build_quality_gates.py",
+      "report": "docs/data/quality_gates.json",
+      "blocks_if": "A public reviewer cannot see the current packaging gates in one place.",
+      "proves": "The publication checklist is explicit, versioned, and mirrored with the repo.",
+      "current_report": {
+        "exists": true,
+        "status": "pass"
+      }
+    },
+    {
+      "id": "artifact_index",
+      "title": "Artifact index",
+      "command": "python scripts/build_artifact_index.py",
+      "report": "docs/data/artifact_index.json",
+      "blocks_if": "Reviewer-critical evidence files are missing from the indexed proof layer.",
+      "proves": "Core proof artifacts exist and stable files have SHA-256 hashes.",
+      "current_report": {
+        "exists": true,
+        "status": "pass"
+      }
+    },
+    {
+      "id": "publication_hygiene",
+      "title": "Publication hygiene",
+      "command": "python scripts/validate_publication_package.py",
+      "report": "docs/data/publication_audit.json",
+      "blocks_if": "Raw data, caches, heavy archives, token strings, missing required assets, or stale public-card figure references enter public bundles.",
+      "proves": "The repo and prepared HF bundles are clean enough to publish.",
+      "current_report": {
+        "exists": true,
+        "status": "pass"
+      }
+    },
+    {
+      "id": "mirror_parity",
+      "title": "Prepared mirror parity",
+      "command": "python scripts/validate_mirror_parity.py",
+      "report": "docs/data/mirror_parity.json",
+      "blocks_if": "Prepared HF Space, artifact dataset, or model bundle diverges from the repo for critical files.",
+      "proves": "The files staged for GitHub and Hugging Face are synchronized before upload.",
+      "current_report": {
+        "exists": true,
+        "status": "pass"
+      }
+    }
+  ],
+  "post_publish_checks": [
+    {
+      "id": "github_pages_deploy",
+      "title": "GitHub Pages deployment",
+      "evidence": "gh run list --repo ChaoYue0307/ropedia-xperience-10m-task-suite --limit 5",
+      "required_result": "latest pages-build-deployment run succeeds"
+    },
+    {
+      "id": "live_figure_hash_parity",
+      "title": "Live figure hash parity",
+      "evidence": "download live GitHub/HF task_suite_infographic.png and compare SHA-256 to docs/assets/task_suite_infographic.png",
+      "required_result": "all live hashes match the repo asset"
+    },
+    {
+      "id": "rendered_browser_smoke",
+      "title": "Rendered browser smoke",
+      "evidence": "Browser/Playwright page identity, nonblank render, console health, and one local interaction",
+      "required_result": "no relevant console warnings/errors and target links work"
+    }
+  ],
+  "scope_boundary": "These gates validate public packaging, claim boundaries, mirror parity, and website integrity. They do not prove cross-episode model quality."
+}

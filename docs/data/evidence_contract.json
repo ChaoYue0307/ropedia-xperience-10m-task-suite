@@ -139,6 +139,17 @@
       "boundary": "checks local links, anchors, JSON data, and referenced images; external URLs are not fetched"
     },
     {
+      "id": "quality_gates",
+      "claim": "The release gate is explicit and reviewable.",
+      "status": "verified",
+      "evidence": [
+        "QUALITY_GATES.md",
+        "scripts/build_quality_gates.py",
+        "docs/data/quality_gates.json"
+      ],
+      "boundary": "summarizes packaging and live-mirror checks; it does not prove cross-episode model quality"
+    },
+    {
       "id": "citation_metadata",
       "claim": "The project is externally citable and machine-readable.",
       "status": "verified",

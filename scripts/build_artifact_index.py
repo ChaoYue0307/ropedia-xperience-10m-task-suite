@@ -42,6 +42,22 @@ ARTIFACTS = [
         "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
     },
     {
+        "id": "quality_gates",
+        "title": "Publication quality gates",
+        "path": "QUALITY_GATES.md",
+        "kind": "quality_gate",
+        "surface": "repo_hf",
+        "proves": "Lists the automated and post-publish gates required before presenting a release as current.",
+    },
+    {
+        "id": "quality_gate_manifest",
+        "title": "Quality-gate manifest",
+        "path": "docs/data/quality_gates.json",
+        "kind": "quality_gate",
+        "surface": "website_hf",
+        "proves": "Machine-readable release-gate summary for validators, mirrors, and reviewer surfaces.",
+    },
+    {
         "id": "reproducibility_contract",
         "title": "Reproducibility contract",
         "path": "REPRODUCIBILITY.md",
