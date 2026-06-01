@@ -26,7 +26,7 @@ into:
 - a generated four-direction research taxonomy matching the Ropedia job tracks,
 - four additional direction-extension probes with minimal and neural baselines,
 - junior-friendly walkthroughs for every task, with case study, input, process, and output,
-- a next TODO track for Qwen3-Omni fine-tuning and sensor-bridge evaluation,
+- a next-milestone track for Qwen3-Omni fine-tuning and sensor-bridge evaluation,
 - metrics, predictions, model weights, manifests, charts, and a static website,
 - a clear explanation of what a single episode can and cannot prove.
 

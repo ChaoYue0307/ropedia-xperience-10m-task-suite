@@ -1014,7 +1014,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       <div>
         <div class="kicker">verified single-episode task suite</div>
         <h1>Ropedia Xperience-10M 12-task suite</h1>
-        <p class="subtitle">A clean map from synchronized multimodal windows to 12 auditable task heads, comparing minimal heads with neural MLP results. Next TODO: Qwen3-Omni fine-tuning plus sensor-bridge evaluation.</p>
+        <p class="subtitle">A clean map from synchronized multimodal windows to 12 auditable task heads, comparing minimal heads with neural MLP results. Next milestone: Qwen3-Omni fine-tuning with sensor-bridge evaluation.</p>
       </div>
       <div class="stats">{stats_html}</div>
     </header>
