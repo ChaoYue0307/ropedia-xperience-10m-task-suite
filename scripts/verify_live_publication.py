@@ -237,6 +237,18 @@ def fetch(url: str) -> dict:
             "error": str(exc),
             "final_url": url,
         }
+    except (TimeoutError, OSError) as exc:
+        fallback = fetch_with_curl(url)
+        if fallback["ok"]:
+            return fallback
+        return {
+            "ok": False,
+            "status_code": None,
+            "bytes": 0,
+            "sha256": None,
+            "error": str(exc),
+            "final_url": url,
+        }
     except URLError as exc:
         fallback = fetch_with_curl(url)
         if fallback["ok"]:
