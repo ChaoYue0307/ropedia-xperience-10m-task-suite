@@ -1,5 +1,5 @@
 {
-  "title": "Ropedia Xperience-10M Task Suite Reviewer Scorecard",
+  "title": "Ropedia Xperience-10M Task Suite Project Status",
   "version": "2026-06-01",
   "decision": "public_sample_pipeline_verified_multi_episode_omni_data_gated",
   "scope_boundary": {
@@ -64,7 +64,7 @@
             "readout": "Public wording is aligned to the official gated Xperience-10M dataset card, public sample card, and HF API metadata, including modalities, scale, access boundary, sample license/tooling, and unsupported claims."
         },
         {
-            "area": "Source alignment audit",
+            "area": "Source alignment",
             "status": "verified",
             "evidence": [
                 "SOURCE_ALIGNMENT_AUDIT.md",
@@ -101,7 +101,7 @@
         "docs/data/reproducibility_matrix.json",
         "notes/reproducibility_audit.md"
       ],
-      "readout": "The public sample workflow has explicit commands, expected outputs, and exact-match audit evidence."
+      "readout": "The public sample workflow has explicit commands, expected outputs, and exact-match reproduction evidence."
     },
     {
       "area": "Qwen3-Omni fine-tuning",
@@ -122,9 +122,9 @@
       "readout": "Raw MP4, HDF5, RRD files, private gated data, and full Qwen weights are intentionally excluded."
     }
   ],
-  "fast_reviewer_route": [
-    "Read REVIEWER_SCORECARD.md and EVIDENCE_CONTRACT.md to establish what is claimed.",
-        "Open docs/data/reviewer_packet.json for the machine-readable review path.",
+  "fast_research_route": [
+    "Read PROJECT_STATUS.md and EVIDENCE_CONTRACT.md to establish what is implemented.",
+        "Open docs/data/project_packet.json for the machine-readable project path.",
         "Inspect docs/data/summary_metrics.json and results/episode_task_suite/neural_mlp/ to check the 12-task outputs.",
         "Inspect EVALUATION_PROTOCOL.md before judging task metrics or leakage controls.",
         "Inspect SOURCE_ALIGNMENT_AUDIT.md before judging source-card consistency across public surfaces.",

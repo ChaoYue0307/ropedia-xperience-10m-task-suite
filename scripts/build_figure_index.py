@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a reviewer-facing index for public visual assets."""
+"""Build an index for public visual assets."""
 
 from __future__ import annotations
 

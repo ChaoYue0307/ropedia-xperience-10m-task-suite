@@ -2,9 +2,9 @@
   "name": "Ropedia Xperience-10M Task Suite",
   "slug": "ropedia-xperience-10m-task-suite",
   "version": "0.1.0",
-  "status": "single_episode_audit_first",
+  "status": "single_episode_research_development",
   "last_metadata_update": "2026-06-01",
-  "summary": "Audit-first embodied-AI learning repo built around one public Xperience-10M sample episode released by Ropedia.",
+  "summary": "Research-development repo built around one public Xperience-10M sample episode released by Ropedia.",
   "scope_boundary": {
     "raw_data_redistributed": false,
     "episode_count_verified": 1,
@@ -45,8 +45,8 @@
         "alignment_json": "docs/data/xperience10m_dataset_card_alignment.json"
     },
   "evidence_files": {
-    "reviewer_scorecard": "REVIEWER_SCORECARD.md",
-    "reviewer_scorecard_json": "docs/data/reviewer_scorecard.json",
+    "project_status": "PROJECT_STATUS.md",
+    "project_status_json": "docs/data/project_status.json",
     "artifact_guide": "ARTIFACT_GUIDE.md",
         "official_dataset_card_alignment": "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
         "official_dataset_card_alignment_json": "docs/data/xperience10m_dataset_card_alignment.json",
@@ -67,7 +67,7 @@
     "scope_claims_audit": "docs/data/scope_claims_audit.json",
     "website_integrity": "docs/data/website_integrity.json",
     "task_surface_integrity": "docs/data/task_surface_integrity.json",
-    "reviewer_packet": "docs/data/reviewer_packet.json",
+    "project_packet": "docs/data/project_packet.json",
     "summary_metrics": "docs/data/summary_metrics.json",
     "modality_atlas": "docs/data/modality_atlas.json",
     "research_directions": "docs/data/research_directions.json",

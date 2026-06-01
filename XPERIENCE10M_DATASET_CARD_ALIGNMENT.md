@@ -113,7 +113,7 @@ The sample card metadata observed for this project is:
 | visualization tool | Rerun 0.29.0 for `.rrd` |
 
 This project uses the public sample to build the 5,821-frame / 1,161-window
-audit suite. The sample license and the full gated dataset terms are both
+task-development suite. The sample license and the full gated dataset terms are both
 preserved in the public documentation; this repo's MIT code license does not
 grant additional rights to the raw data.
 
@@ -174,7 +174,7 @@ The official dataset card supports research directions such as:
 - depth estimation, visual odometry, camera trajectory, SLAM, and scene reconstruction
 - hand/body pose, human motion understanding, and sensor fusion
 
-This repo currently implements a single-episode audit suite that starts several
+This repo currently implements a single-episode task suite that starts several
 of those directions, but it does not solve the full official task list. The 12
 current tasks cover action/subtask labels, next-action prediction, transition
 and temporal diagnostics, hand trajectory forecasting, contact prediction,

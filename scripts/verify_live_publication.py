@@ -2,7 +2,7 @@
 """Verify the already-published GitHub Pages and Hugging Face mirrors.
 
 This is the post-publish companion to the local publication gates. It fetches
-public URLs and compares them with the local release artifacts so a reviewer can
+public URLs and compares them with the local release artifacts so a reader can
 see that the live surfaces match the repo/HF bundles that were prepared.
 """
 
@@ -61,8 +61,8 @@ HASH_GROUPS = [
         },
     },
     {
-        "id": "source_alignment_audit_json",
-        "title": "Source-alignment audit JSON",
+        "id": "source_alignment_json",
+        "title": "Source-alignment JSON",
         "local_path": "docs/data/source_alignment_audit.json",
         "urls": {
             "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/source_alignment_audit.json",
@@ -72,14 +72,14 @@ HASH_GROUPS = [
         },
     },
     {
-        "id": "reviewer_scorecard_json",
-        "title": "Reviewer scorecard JSON",
-        "local_path": "docs/data/reviewer_scorecard.json",
+        "id": "project_status_json",
+        "title": "Project status JSON",
+        "local_path": "docs/data/project_status.json",
         "urls": {
-            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/reviewer_scorecard.json",
-            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/reviewer_scorecard.json",
-            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/reviewer_scorecard.json",
-            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/reviewer_scorecard.json",
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/project_status.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/project_status.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/project_status.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/project_status.json",
         },
     },
     {
@@ -176,7 +176,7 @@ MARKER_CHECKS = [
             "figure_index.json",
             "brand_assets.json",
             "xperience10m-logo-social-card.png",
-            "reviewer_scorecard.json",
+            "project_status.json",
             "cc-by-nc-4.0",
             "12,103 episode folders",
             "xperience10m-taskfirst-v12-modality-xl",
@@ -205,7 +205,7 @@ MARKER_CHECKS = [
             "figure_index.json",
             "brand_assets.json",
             "xperience10m-logo-social-card.png",
-            "reviewer_scorecard.json",
+            "project_status.json",
             "cc-by-nc-4.0",
             "12,103 episode folders",
             "xperience10m-taskfirst-v12-modality-xl",
@@ -234,7 +234,7 @@ MARKER_CHECKS = [
             "figure_index.json",
             "brand_assets.json",
             "xperience10m-logo-social-card.png",
-            "reviewer_scorecard.json",
+            "project_status.json",
             "cc-by-nc-4.0",
             "12,103 episode folders",
             "interactive scrub/play walkthrough storyboard",
@@ -255,7 +255,7 @@ MARKER_CHECKS = [
             "figure_index.json",
             "brand_assets.json",
             "xperience10m-logo-social-card.png",
-            "reviewer_scorecard.json",
+            "project_status.json",
             "cc-by-nc-4.0",
             "12,103 episode folders",
             "interactive scrub/play storyboard",

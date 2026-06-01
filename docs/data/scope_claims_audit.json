@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T14:16:38+00:00",
+  "generated_at_utc": "2026-06-01T18:53:37+00:00",
   "summary": {
     "qwen3_omni_32_episode_claim": false,
     "dataset_manifest_num_episodes": 1,
@@ -21,19 +21,19 @@
       ]
     },
     {
-      "name": "reviewer_packet_disclaims_32_episode_qwen_result",
+      "name": "project_packet_disclaims_32_episode_qwen_result",
       "status": "pass",
-      "detail": "reviewer_packet scope_status.qwen3_omni_32_episode_claim=False",
+      "detail": "project_packet scope_status.qwen3_omni_32_episode_claim=False",
       "evidence": [
-        "docs/data/reviewer_packet.json"
+        "docs/data/project_packet.json"
       ]
     },
     {
-      "name": "reviewer_packet_forbids_32_episode_inference",
+      "name": "project_packet_forbids_32_episode_inference",
       "status": "pass",
-      "detail": "reviewer packet explicitly warns not to treat the readiness run as a 32-episode fine-tune",
+      "detail": "project packet explicitly warns not to treat the readiness run as a 32-episode fine-tune",
       "evidence": [
-        "docs/data/reviewer_packet.json"
+        "docs/data/project_packet.json"
       ]
     },
     {
@@ -83,7 +83,7 @@
         "docs/data/project_manifest.json",
         "docs/data/mirror_parity.json",
         "docs/data/reproducibility_matrix.json",
-        "docs/data/reviewer_packet.json",
+        "docs/data/project_packet.json",
         "docs/data/summary_metrics.json"
       ]
     },
@@ -130,7 +130,7 @@
       "contains_32_episode_boundary_text": true
     },
     {
-      "path": "docs/data/reviewer_packet.json",
+      "path": "docs/data/project_packet.json",
       "contains_32_episode_boundary_text": true
     },
     {

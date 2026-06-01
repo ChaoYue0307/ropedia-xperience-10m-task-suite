@@ -29,7 +29,7 @@ GATES = [
     },
     {
         "id": "source_alignment",
-        "title": "Source alignment audit",
+        "title": "Source alignment",
         "command": "python scripts/validate_source_alignment.py",
         "report": "docs/data/source_alignment_audit.json",
         "blocks_if": "Official full-dataset facts, sample-card facts, API-listing caveats, or public-card boundary markers are missing or inconsistent.",
@@ -65,7 +65,7 @@ GATES = [
         "command": "python scripts/build_figure_index.py",
         "report": "docs/data/figure_index.json",
         "blocks_if": "Public figures, charts, or modality thumbnails are missing, unreadable, or lack source-script provenance.",
-        "proves": "Reviewer-facing visual assets have dimensions, SHA-256 hashes, source scripts, and presentation roles.",
+        "proves": "Public visual assets have dimensions, SHA-256 hashes, source scripts, and presentation roles.",
     },
     {
         "id": "brand_assets",
@@ -80,7 +80,7 @@ GATES = [
         "title": "Quality-gate manifest",
         "command": "python scripts/build_quality_gates.py",
         "report": "docs/data/quality_gates.json",
-        "blocks_if": "A public reviewer cannot see the current packaging gates in one place.",
+        "blocks_if": "A public reader cannot see the current packaging gates in one place.",
         "proves": "The publication checklist is explicit, versioned, and mirrored with the repo.",
     },
     {
@@ -88,7 +88,7 @@ GATES = [
         "title": "Artifact index",
         "command": "python scripts/build_artifact_index.py",
         "report": "docs/data/artifact_index.json",
-        "blocks_if": "Reviewer-critical evidence files are missing from the indexed proof layer.",
+        "blocks_if": "Project-critical evidence files are missing from the indexed proof layer.",
         "proves": "Core proof artifacts exist and stable files have SHA-256 hashes.",
     },
     {
@@ -169,7 +169,7 @@ def markdown(payload: dict) -> str:
     lines = [
         "# Publication Quality Gates",
         "",
-        "This file is the reviewer-facing release checklist for the Ropedia Xperience-10M Task Suite.",
+        "This file is the release checklist for the Ropedia Xperience-10M Task Suite.",
         "",
         f"Current gate status: **{payload['status']}**",
         "",

@@ -3,12 +3,12 @@
   "scope": "single public Xperience-10M sample episode",
   "claims": [
     {
-      "id": "reviewer_scorecard",
-      "claim": "A first-pass reviewer has a compact current-state scorecard.",
+      "id": "project_status",
+      "claim": "A first-pass reader has a compact current-state summary.",
       "status": "verified",
       "evidence": [
-        "REVIEWER_SCORECARD.md",
-        "docs/data/reviewer_scorecard.json"
+        "PROJECT_STATUS.md",
+        "docs/data/project_status.json"
       ],
       "boundary": "summarizes existing evidence and boundaries; it does not add new experimental claims"
     },
@@ -24,7 +24,7 @@
             "boundary": "summarizes upstream public metadata, API listing facts, sample license/tooling, and dataset-card facts; does not grant access or mirror raw data"
         },
         {
-            "id": "source_alignment_audit",
+            "id": "source_alignment",
             "claim": "Source facts and boundary markers are validated across repo, website, and HF cards.",
             "status": "verified",
             "evidence": [
@@ -32,7 +32,7 @@
                 "docs/data/source_alignment_audit.json",
                 "scripts/validate_source_alignment.py"
             ],
-            "boundary": "offline committed-fact audit; does not fetch private gated data"
+            "boundary": "offline committed-fact check; does not fetch private gated data"
         },
         {
             "id": "aligned_windows",
@@ -47,7 +47,7 @@
     },
         {
             "id": "feature_contract",
-            "claim": "The current feature contract is explicit and reviewable.",
+            "claim": "The current feature contract is explicit and inspectable.",
             "status": "verified",
             "evidence": [
                 "results/episode_task_suite/feature_manifest.json",
@@ -75,11 +75,11 @@
         "docs/assets/modalities/",
         "docs/index.html"
       ],
-      "boundary": "derived thumbnails for review and presentation; raw data remains excluded"
+      "boundary": "derived thumbnails for presentation; raw data remains excluded"
     },
     {
       "id": "task_surface_integrity",
-      "claim": "Public task cards stay readable for non-expert reviewers.",
+      "claim": "Public task cards stay readable for non-expert readers.",
       "status": "verified",
       "evidence": [
         "docs/data/task_surface_integrity.json",
@@ -90,7 +90,7 @@
     },
     {
       "id": "figure_index",
-      "claim": "Public figures, charts, and modality thumbnails are indexed as auditable evidence.",
+      "claim": "Public figures, charts, and modality thumbnails are indexed as project evidence.",
       "status": "verified",
       "evidence": [
         "FIGURE_INDEX.md",
@@ -216,7 +216,7 @@
     },
     {
       "id": "quality_gates",
-      "claim": "The release gate is explicit and reviewable.",
+      "claim": "The release gate is explicit.",
       "status": "verified",
       "evidence": [
         "QUALITY_GATES.md",
@@ -248,11 +248,11 @@
       "boundary": "code license does not override original Xperience-10M dataset terms"
     },
     {
-      "id": "reviewer_path",
-      "claim": "A first-time reviewer has an explicit audit path.",
+      "id": "project_path",
+      "claim": "A first-time reader has an explicit project path.",
       "status": "verified",
       "evidence": [
-        "docs/data/reviewer_packet.json",
+        "docs/data/project_packet.json",
         "ARTIFACT_GUIDE.md",
         "docs/data/artifact_index.json",
         "README.md",
@@ -262,7 +262,7 @@
     },
     {
       "id": "artifact_index",
-      "claim": "The core proof artifacts are grouped for human review and indexed with existence, size, and hash metadata where stable.",
+      "claim": "The core project artifacts are grouped for human reading and indexed with existence, size, and hash metadata where stable.",
       "status": "verified",
       "evidence": [
         "ARTIFACT_GUIDE.md",
@@ -273,7 +273,7 @@
     },
     {
       "id": "reproducibility_contract",
-      "claim": "The public reproduction path is documented with commands, expected outputs, and exact-match audit evidence.",
+      "claim": "The public reproduction path is documented with commands, expected outputs, and exact-match reproduction evidence.",
       "status": "verified",
       "evidence": [
         "REPRODUCIBILITY.md",

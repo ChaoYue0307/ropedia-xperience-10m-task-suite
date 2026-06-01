@@ -5,7 +5,7 @@ Render polished PNG overview figures for the Ropedia project page.
 The generated assets are used only as text-free visual backgrounds. All
 labels, dimensions, task names, and metrics are read from committed result
 files via scripts/generate_visualizations.py so the final figures stay
-auditable.
+traceable.
 """
 
 from __future__ import annotations

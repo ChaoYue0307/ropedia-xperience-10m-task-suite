@@ -102,7 +102,7 @@ python scripts/validate_publication_package.py
 | Direction probes | `results/episode_task_suite/research_direction_extensions/`, `docs/data/research_direction_extensions.json` |
 | Walkthroughs | `results/episode_task_suite/task_walkthroughs/`, `docs/data/task_walkthroughs.json` |
 | Task surface integrity | `docs/data/task_surface_integrity.json` |
-| Source alignment audit | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json` |
+| Source alignment | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json` |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` |
 | Figures | `docs/assets/*.png`, `docs/assets/charts/*.svg` |
 | Brand assets | `docs/assets/brand/*.png`, `docs/favicon.png`, `docs/apple-touch-icon.png`, `docs/data/brand_assets.json` |

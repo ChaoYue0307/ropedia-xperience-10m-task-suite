@@ -43,6 +43,21 @@ COMMON_IGNORE = [
 STALE_ARTIFACT_REMOTE_FILES = [
     "results/omni_finetune/adapter_lora/tokenizer.json",
     "results/omni_finetune/hf_upload/tokenizer.json",
+    "REVIEWER_SCORECARD.md",
+    "docs/data/reviewer_packet.json",
+    "docs/data/reviewer_scorecard.json",
+]
+
+STALE_SPACE_REMOTE_FILES = [
+    "REVIEWER_SCORECARD.md",
+    "data/reviewer_packet.json",
+    "data/reviewer_scorecard.json",
+]
+
+STALE_MODEL_REMOTE_FILES = [
+    "REVIEWER_SCORECARD.md",
+    "metrics/reviewer_packet.json",
+    "metrics/reviewer_scorecard.json",
 ]
 
 
@@ -155,6 +170,8 @@ def main() -> int:
         hf_root / "space",
         "Publish Ropedia Xperience-10M task-suite Space",
     )
+    for path_in_repo in STALE_SPACE_REMOTE_FILES:
+        delete_remote_file_if_present(api, token, space_repo, "space", path_in_repo)
     upload_folder(
         api,
         token,
@@ -175,6 +192,8 @@ def main() -> int:
         "Publish Ropedia Xperience-10M task baseline cards",
         ignore_patterns=["**/*.pt", "**/*.npz"],
     )
+    for path_in_repo in STALE_MODEL_REMOTE_FILES:
+        delete_remote_file_if_present(api, token, model_repo, "model", path_in_repo)
     upload_folder(
         api,
         token,

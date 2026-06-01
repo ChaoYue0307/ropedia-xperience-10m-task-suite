@@ -11,8 +11,8 @@
   <img src="docs/assets/brand/xperience10m-logo-social-card.png" alt="Ropedia Xperience-10M Task Suite logo card" width="760">
 </p>
 
-An audit-first embodied-AI learning repo built around one public
-Xperience-10M sample episode released by Ropedia.
+A research-development repo built around the public Xperience-10M sample
+episode released by Ropedia.
 
 The project does one narrow thing carefully: it turns a raw multimodal episode
 into:
@@ -35,7 +35,7 @@ This repo is organized around an explicit proof boundary:
 | Claim layer | Evidence | Boundary |
 | --- | --- | --- |
 | Official Xperience-10M description | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | aligns public wording with the official gated dataset card, public sample card, and HF API metadata; does not mirror raw data |
-| Source alignment audit | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json`, `scripts/validate_source_alignment.py` | validates source facts and boundary wording across repo, website, and HF cards |
+| Source alignment | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json`, `scripts/validate_source_alignment.py` | validates source facts and boundary wording across repo, website, and HF cards |
 | Figure index | `FIGURE_INDEX.md`, `docs/data/figure_index.json`, `scripts/build_figure_index.py` | catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts |
 | Brand assets | `docs/assets/brand/`, `docs/favicon.png`, `docs/apple-touch-icon.png`, `scripts/build_brand_assets.py` | applies the generated project logo system across the website, README, HF cards, favicon, and social previews |
 | Data windows | `results/episode_task_suite/windows.csv`, `shared_windows.npz`, `summary_report.json` | one public sample episode |
@@ -49,16 +49,16 @@ This repo is organized around an explicit proof boundary:
 | Scope claims guard | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | historical `32ep` path strings are provenance, not 32-episode results |
 | Mirror parity | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | prepared GitHub/HF mirrors carry matching data, figure, website HTML, and validator files |
 | Publication hygiene | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | public repo and HF bundles only; ignored local scratch files are excluded, and public cards must reference the current task-first figure |
-| Quality gates | `QUALITY_GATES.md`, `docs/data/quality_gates.json`, `scripts/build_quality_gates.py` | one reviewer-facing checklist for automated gates and live post-publish checks |
+| Quality gates | `QUALITY_GATES.md`, `docs/data/quality_gates.json`, `scripts/build_quality_gates.py` | one checklist for automated gates and live post-publish checks |
 | Artifact index | `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | selective source-of-truth catalog with existence, size, and stable-file hashes |
-| Reviewer scorecard | `REVIEWER_SCORECARD.md`, `docs/data/reviewer_scorecard.json` | compact verified/data-gated/not-redistributed decision table for first-pass reviewers |
+| Project status | `PROJECT_STATUS.md`, `docs/data/project_status.json` | compact verified/data-gated/not-redistributed decision table for first-pass readers |
 | Citation and metadata | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | code is MIT-scoped; raw-data use follows Xperience-10M terms |
-| Reviewer path | `docs/data/reviewer_packet.json`, website reviewer section | audit guide only; no new experimental claim |
+| Project path | `docs/data/project_packet.json`, website project path section | navigation guide only; no new experimental claim |
 
 Read the full contract in [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), or
 consume the machine-readable copy at
 [`docs/data/evidence_contract.json`](docs/data/evidence_contract.json).
-The current publication audit is at
+The current publication hygiene report is at
 [`docs/data/publication_audit.json`](docs/data/publication_audit.json).
 The publication quality-gate summary is at
 [`QUALITY_GATES.md`](QUALITY_GATES.md) and
@@ -67,7 +67,7 @@ The last live-publication verification report is at
 [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json).
 The current prepared-mirror parity report is at
 [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json).
-The current scope-claims audit is at
+The current scope-claims guard is at
 [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json).
 The task-card and walkthrough-storyboard integrity report is at
 [`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json).
@@ -88,7 +88,7 @@ The upstream dataset-card alignment note is
 [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md),
 with a machine-readable copy at
 [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json).
-The generated source-alignment audit is at
+The generated source-alignment report is at
 [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) and
 [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json).
 The generated figure index is at
@@ -96,15 +96,15 @@ The generated figure index is at
 [`docs/data/figure_index.json`](docs/data/figure_index.json).
 The project logo system is packaged by
 [`scripts/build_brand_assets.py`](scripts/build_brand_assets.py), stored under
-[`docs/assets/brand/`](docs/assets/brand/), and audited in
+[`docs/assets/brand/`](docs/assets/brand/), and indexed in
 [`docs/data/brand_assets.json`](docs/data/brand_assets.json).
 
-## Reviewer Scorecard
+## Project Status
 
 If you only have one minute, use
-[`REVIEWER_SCORECARD.md`](REVIEWER_SCORECARD.md) and
-[`docs/data/reviewer_scorecard.json`](docs/data/reviewer_scorecard.json).
-They give the current decision boundary in one compact table:
+[`PROJECT_STATUS.md`](PROJECT_STATUS.md) and
+[`docs/data/project_status.json`](docs/data/project_status.json).
+They give the current research state in one compact table:
 
 | Area | Current decision |
 | --- | --- |
@@ -112,37 +112,37 @@ They give the current decision boundary in one compact table:
 | 12-task suite | Verified minimal baselines with committed metrics, predictions, and manifests |
 | Neural heads | Verified compact PyTorch MLP heads over the same task contracts and chronological splits |
 | Official dataset wording | Verified against the public `ropedia-ai/xperience-10m` dataset card/API metadata |
-| Source alignment audit | Verified source facts and source-boundary markers across repo, website, and HF cards |
+| Source alignment | Verified source facts and source-boundary markers across repo, website, and HF cards |
 | Evaluation protocol | Verified generated protocol for windowing, split policy, leakage controls, and per-task metrics |
 | Website and HF mirrors | Verified by local integrity, mirror parity, and live-publication checks |
 | Qwen3-Omni 32-episode pilot | Data-gated; prepared, but not a model-quality claim |
 | Raw Xperience-10M data / full Qwen weights | Not redistributed |
 
-## 90-Second Reviewer Path
+## 90-Second Research Project Path
 
-If you are reviewing the project cold, open these in order:
+If you are reading the project cold, open these in order:
 
 | Step | Question | Primary artifacts | What should be true |
 | --- | --- | --- | --- |
-| 1 | What is actually claimed? | [`REVIEWER_SCORECARD.md`](REVIEWER_SCORECARD.md), [`docs/data/reviewer_scorecard.json`](docs/data/reviewer_scorecard.json), [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`QUALITY_GATES.md`](QUALITY_GATES.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/figure_index.json`](docs/data/figure_index.json), [`docs/data/brand_assets.json`](docs/data/brand_assets.json), [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json), [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json), [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Single-episode task engineering and hygiene are claimed; historical `32ep` identifiers are not treated as real 32-episode results, visual/brand assets are indexed, and quality gates plus prepared and live mirrors are checked. |
+| 1 | What has been implemented? | [`PROJECT_STATUS.md`](PROJECT_STATUS.md), [`docs/data/project_status.json`](docs/data/project_status.json), [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`QUALITY_GATES.md`](QUALITY_GATES.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/figure_index.json`](docs/data/figure_index.json), [`docs/data/brand_assets.json`](docs/data/brand_assets.json), [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json), [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json), [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Single-episode task engineering and hygiene are implemented; historical `32ep` identifiers are not treated as real 32-episode results, visual/brand assets are indexed, and quality gates plus prepared and live mirrors are checked. |
 | 2 | What is the official upstream dataset? | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md), [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json), [official HF dataset](https://huggingface.co/datasets/ropedia-ai/xperience-10m) | The full dataset is described as a gated large-scale 4D multimodal egocentric source; this repo validates only one public sample episode. |
 | 3 | Are source facts consistently presented? | [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md), [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json), [`scripts/validate_source_alignment.py`](scripts/validate_source_alignment.py) | Repo, website, and HF cards preserve full-dataset, sample-card, API-listing, and project-boundary markers. |
 | 4 | How exactly are tasks evaluated? | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md), [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json), [`scripts/build_evaluation_protocol.py`](scripts/build_evaluation_protocol.py) | The window unit, chronological split, leakage controls, task metrics, and unsupported interpretations are explicit. |
-| 5 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and exact-match audit evidence are explicit. |
+| 5 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and exact-match reproduction evidence are explicit. |
 | 6 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
 | 7 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
 | 8 | Is the website internally coherent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, JSON data, and referenced images are checked before publishing. |
 | 9 | What is still pending? | [`DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared but not yet a real model-quality claim. |
 
-The machine-readable reviewer packet is
-[`docs/data/reviewer_packet.json`](docs/data/reviewer_packet.json).
+The machine-readable project packet is
+[`docs/data/project_packet.json`](docs/data/project_packet.json).
 
 ## Artifact Index
 
 [`docs/data/artifact_index.json`](docs/data/artifact_index.json) is the compact
-audit map for the repo. It lists the core proof artifacts, whether each exists,
+project artifact map for the repo. It lists the core supporting artifacts, whether each exists,
 its size, and a SHA-256 hash for stable files. Volatile generated files, such as
-the publication audit with a run timestamp, are marked so reviewers know they
+the publication hygiene report with a run timestamp, are marked so readers know they
 are checked for presence and size rather than treated as fixed hashes.
 
 [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md) is the human-readable companion. It
@@ -195,7 +195,7 @@ The public sample repo,
 is separately documented as `Xperience-10M-Sample` with sample metadata,
 `cc-by-nc-4.0` license, HOMIE Toolkit usage, and Rerun 0.29.0 `.rrd`
 visualization. This project preserves that distinction: the sample powers the
-current 5,821-frame audit suite, while the full gated dataset remains the
+current 5,821-frame task suite, while the full gated dataset remains the
 future source for held-out multi-episode training.
 
 This repo's current verified subset is much smaller and intentionally explicit:
@@ -231,23 +231,23 @@ Hugging Face Space app:
 
 | Layer | What to inspect | Why it matters |
 | --- | --- | --- |
-| Reviewer scorecard | `REVIEWER_SCORECARD.md`, `docs/data/reviewer_scorecard.json` | Gives a one-table current decision boundary before reading the full audit trail |
+| Project status | `PROJECT_STATUS.md`, `docs/data/project_status.json` | Gives a one-table current project boundary before reading the full artifact trail |
 | Data contract | `windows.csv`, `feature_manifest.json`, modality manifests | Confirms what each sample window contains before modeling |
 | Official dataset alignment | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Keeps public descriptions aligned with the official gated dataset card |
-| Source alignment audit | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json` | Verifies source facts and boundary markers across repo, website, and HF cards |
-| Figure index | `FIGURE_INDEX.md`, `docs/data/figure_index.json` | Makes public figures, charts, modality thumbnails, dimensions, hashes, and source scripts auditable |
-| Brand assets | `docs/data/brand_assets.json`, `docs/assets/brand/` | Makes the generated logo, favicon, README/HF card image, app icon, and social preview auditable |
+| Source alignment | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json` | Verifies source facts and boundary markers across repo, website, and HF cards |
+| Figure index | `FIGURE_INDEX.md`, `docs/data/figure_index.json` | Indexes public figures, charts, modality thumbnails, dimensions, hashes, and source scripts |
+| Brand assets | `docs/data/brand_assets.json`, `docs/assets/brand/` | Indexes the generated logo, favicon, README/HF card image, app icon, and social preview |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` | Defines the task unit, split, metrics, leakage controls, and unsupported interpretations |
 | Task surface integrity | `docs/data/task_surface_integrity.json` | Checks the public task cards, readable task names, representative modality thumbnails, and interactive walkthrough storyboard |
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and debuggable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
-| Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode claims reviewable without rerunning first |
+| Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode task development inspectable without rerunning first |
 | Quality gates | `QUALITY_GATES.md`, `docs/data/quality_gates.json` | Shows the exact automated and post-publish checks required before presenting a release as current |
 | Live publication status | `docs/data/live_publication_status.json` | Records the last live GitHub Pages, GitHub raw, and Hugging Face mirror verification |
-| Publication audit | `docs/data/publication_audit.json` | Confirms public bundles contain no raw Xperience-10M data, Python caches, heavy archives, token strings, or stale public-card figure references |
-| Artifact index | `docs/data/artifact_index.json` | Gives reviewers a compact source-of-truth catalog with stable hashes |
-| Artifact guide | `ARTIFACT_GUIDE.md` | Groups the public evidence into reviewer-friendly layers |
-| Reproducibility contract | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json` | States public commands, expected outputs, exact-match audit evidence, and non-reproducible boundaries |
+| Publication hygiene | `docs/data/publication_audit.json` | Confirms public bundles contain no raw Xperience-10M data, Python caches, heavy archives, token strings, or stale public-card figure references |
+| Artifact index | `docs/data/artifact_index.json` | Gives readers a compact source-of-truth catalog with stable hashes |
+| Artifact guide | `ARTIFACT_GUIDE.md` | Groups the public evidence into research-project layers |
+| Reproducibility contract | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json` | States public commands, expected outputs, exact-match reproduction evidence, and non-reproducible boundaries |
 | Citation metadata | `CITATION.cff`, `codemeta.json`, `LICENSE` | Makes the repo easier to cite, index, and reuse without confusing code license and dataset terms |
 
 ## Links
@@ -328,8 +328,8 @@ scripts/
   export_modality_atlas_assets.py   # exports responsive modality-card assets
   render_overview_figures.py        # renders polished pipeline/architecture PNGs
   build_brand_assets.py             # derives logo sizes, favicon, social card
-  build_artifact_index.py           # builds the source-of-truth reviewer index
-  build_quality_gates.py            # builds reviewer-facing publication gates
+  build_artifact_index.py           # builds the source-of-truth artifact index
+  build_quality_gates.py            # builds publication quality gates
   validate_mirror_parity.py         # checks prepared GitHub/HF mirror file parity
   validate_scope_claims.py          # checks Qwen3-Omni readiness/result claim boundaries
   validate_task_surface.py          # checks readable task cards and interactive storyboard wiring
@@ -365,7 +365,7 @@ docs/
   data/task_surface_integrity.json  # machine-readable task-card/storyboard integrity check
   data/website_integrity.json       # machine-readable website integrity check
   data/project_manifest.json        # machine-readable public-surface metadata
-  data/reviewer_packet.json         # machine-readable reviewer path and proof boundary
+  data/project_packet.json          # machine-readable project path and scope boundary
   data/research_directions.json     # four-track website data bundle
   data/research_direction_extensions.json # four extra probe data bundle
   data/task_walkthroughs.json       # human-readable task-card and walkthrough-storyboard data
@@ -738,7 +738,7 @@ The strongest single-episode self-supervised signal is cross-modal retrieval:
 motion/IMU/camera features retrieve matching depth/video windows substantially
 better than random.
 
-## Reproducibility Audit
+## Reproducibility Check
 
 I re-ran the full pipeline from the local raw public sample into
 `/private/tmp/ropedia-audit` and compared regenerated metrics with the committed

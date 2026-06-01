@@ -1,5 +1,5 @@
 {
-  "title": "Ropedia Xperience-10M Task Suite Reviewer Packet",
+  "title": "Ropedia Xperience-10M Task Suite Project Packet",
   "version": "2026-06-01",
   "scope_status": {
     "validated_data": "one public Xperience-10M sample episode",
@@ -19,8 +19,8 @@
       "step": 1,
       "question": "What exactly is being claimed?",
       "primary_artifacts": [
-        "REVIEWER_SCORECARD.md",
-        "docs/data/reviewer_scorecard.json",
+        "PROJECT_STATUS.md",
+        "docs/data/project_status.json",
                 "EVIDENCE_CONTRACT.md",
                 "ARTIFACT_GUIDE.md",
                 "EVALUATION_PROTOCOL.md",
@@ -39,7 +39,7 @@
         "docs/data/scope_claims_audit.json",
         "docs/data/website_integrity.json"
       ],
-      "readout": "The reviewer scorecard gives the compact decision table. Single-episode task engineering, metrics, visualizations, publication hygiene, local website integrity, mirror parity, and scope-claim guarding are claimed; cross-episode generalization and 32-episode Qwen3-Omni quality are not claimed."
+      "readout": "The project status table gives the compact current-state summary. Single-episode task engineering, metrics, visualizations, publication hygiene, local website integrity, mirror parity, and scope-claim guarding are claimed; cross-episode generalization and 32-episode Qwen3-Omni quality are not claimed."
     },
     {
       "step": 2,
@@ -60,7 +60,7 @@
                 "docs/data/source_alignment_audit.json",
                 "scripts/validate_source_alignment.py"
             ],
-            "readout": "The source audit checks full-dataset metadata, API-listing caveats, public sample license/tooling, and boundary markers across repo docs, website, and HF cards."
+            "readout": "The source-alignment report checks full-dataset metadata, API-listing caveats, public sample license/tooling, and boundary markers across repo docs, website, and HF cards."
         },
         {
             "step": 4,
@@ -80,7 +80,7 @@
         "docs/data/reproducibility_matrix.json",
         "notes/reproducibility_audit.md"
       ],
-      "readout": "The public sample pipeline has explicit commands, expected outputs, and a prior exact-match audit over the committed metrics."
+      "readout": "The public sample pipeline has explicit commands, expected outputs, and a prior exact-match reproduction check over the committed metrics."
     },
         {
             "step": 6,
@@ -114,8 +114,8 @@
       "readout": "The next milestone is a 32-episode held-out-episode Qwen3-Omni LoRA pilot after gated Xperience-10M access is available."
     }
   ],
-    "reviewer_scorecard": "REVIEWER_SCORECARD.md",
-    "reviewer_scorecard_json": "docs/data/reviewer_scorecard.json",
+    "project_status": "PROJECT_STATUS.md",
+    "project_status_json": "docs/data/project_status.json",
     "evaluation_protocol": "EVALUATION_PROTOCOL.md",
     "evaluation_protocol_json": "docs/data/evaluation_protocol.json",
     "source_alignment_audit": "SOURCE_ALIGNMENT_AUDIT.md",
