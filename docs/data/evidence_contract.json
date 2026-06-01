@@ -66,8 +66,8 @@
             ],
             "boundary": "defines windows, split, per-task metrics, leakage controls, and unsupported interpretations; does not prove cross-episode quality"
         },
-        {
-            "id": "modality_atlas",
+    {
+      "id": "modality_atlas",
       "claim": "The public sample modalities are inspectable without raw data redistribution.",
       "status": "verified",
       "evidence": [
@@ -76,6 +76,17 @@
         "docs/index.html"
       ],
       "boundary": "derived thumbnails for review and presentation; raw data remains excluded"
+    },
+    {
+      "id": "figure_index",
+      "claim": "Public figures, charts, and modality thumbnails are indexed as auditable evidence.",
+      "status": "verified",
+      "evidence": [
+        "FIGURE_INDEX.md",
+        "docs/data/figure_index.json",
+        "scripts/build_figure_index.py"
+      ],
+      "boundary": "records derived visual assets, dimensions, hashes, roles, and source scripts; raw Xperience-10M data remains excluded"
     },
     {
       "id": "twelve_tasks",

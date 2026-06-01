@@ -23,6 +23,7 @@ DATA_FILES = [
     "artifact_index.json",
     "evidence_contract.json",
     "evaluation_protocol.json",
+    "figure_index.json",
     "live_publication_status.json",
     "modality_atlas.json",
     "project_manifest.json",
@@ -57,6 +58,7 @@ ASSET_FILES = [
 SCRIPT_FILES = [
     "build_artifact_index.py",
     "build_evaluation_protocol.py",
+    "build_figure_index.py",
     "build_quality_gates.py",
     "verify_live_publication.py",
     "validate_mirror_parity.py",
@@ -73,6 +75,7 @@ WEBSITE_FILES = [
 DOC_FILES = [
     "QUALITY_GATES.md",
     "EVALUATION_PROTOCOL.md",
+    "FIGURE_INDEX.md",
     "REVIEWER_SCORECARD.md",
     "SOURCE_ALIGNMENT_AUDIT.md",
     "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",

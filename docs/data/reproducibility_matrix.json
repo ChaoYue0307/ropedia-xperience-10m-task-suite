@@ -66,8 +66,8 @@
         {
             "id": "figures_and_dashboard_data",
       "status": "reproducible",
-      "command": "python scripts/generate_visualizations.py && python scripts/render_overview_figures.py && python scripts/render_task_suite_infographic.py && python scripts/export_modality_atlas_assets.py",
-      "expected": "website JSON bundles, charts, overview figures, task-suite infographic, and responsive modality atlas assets",
+      "command": "python scripts/generate_visualizations.py && python scripts/render_overview_figures.py && python scripts/render_task_suite_infographic.py && python scripts/export_modality_atlas_assets.py && python scripts/build_figure_index.py",
+      "expected": "website JSON bundles, charts, overview figures, task-suite infographic, responsive modality atlas assets, FIGURE_INDEX.md, and docs/data/figure_index.json",
       "boundary": "figures are generated presentation layers over committed metrics and sample thumbnails"
     },
     {

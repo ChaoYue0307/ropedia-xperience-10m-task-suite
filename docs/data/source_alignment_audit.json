@@ -1,11 +1,13 @@
 {
   "title": "Ropedia Xperience-10M Source Alignment Audit",
   "status": "pass",
-  "generated_at_utc": "2026-06-01T10:06:08+00:00",
+  "generated_at_utc": "2026-06-01T11:29:22+00:00",
   "alignment_json": "docs/data/xperience10m_dataset_card_alignment.json",
   "alignment_summary": {
     "full_dataset_repo": "ropedia-ai/xperience-10m",
     "full_dataset_access": "manual",
+    "live_hf_file_size_display": "31.9 TB",
+    "full_scale_storage_statement": "about 1 PB",
     "api_episode_folders": 12103,
     "sample_repo": "ropedia-ai/xperience-10m-sample",
     "sample_license": "cc-by-nc-4.0",
@@ -15,7 +17,7 @@
     {
       "name": "full_dataset_metadata_matches_observed_snapshot",
       "status": "pass",
-      "detail": "gated full-dataset metadata matches the recorded HF API snapshot",
+      "detail": "gated full-dataset metadata, card tags, and live HF file-size display match the recorded snapshot",
       "evidence": [
         "docs/data/xperience10m_dataset_card_alignment.json"
       ]
@@ -53,6 +55,14 @@
       ]
     },
     {
+      "name": "responsible_use_disclaimer_is_preserved",
+      "status": "pass",
+      "detail": "official limited-diversity and prohibited-use boundary is preserved",
+      "evidence": [
+        "docs/data/xperience10m_dataset_card_alignment.json"
+      ]
+    },
+    {
       "name": "repo_public_surfaces_preserve_source_markers",
       "status": "pass",
       "detail": "README, data notice, alignment doc, and website expose official/full/sample/source-boundary markers",
@@ -79,14 +89,14 @@
     {
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 9,
+      "required_marker_count": 12,
       "missing_markers": [],
       "status": "pass"
     },
     {
       "path": "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
       "exists": true,
-      "required_marker_count": 7,
+      "required_marker_count": 10,
       "missing_markers": [],
       "status": "pass"
     },
@@ -100,7 +110,7 @@
     {
       "path": "docs/index.html",
       "exists": true,
-      "required_marker_count": 8,
+      "required_marker_count": 11,
       "missing_markers": [],
       "status": "pass"
     }
@@ -109,28 +119,28 @@
     {
       "path": "space/README.md",
       "exists": true,
-      "required_marker_count": 7,
+      "required_marker_count": 10,
       "missing_markers": [],
       "status": "pass"
     },
     {
       "path": "artifacts/README.md",
       "exists": true,
-      "required_marker_count": 7,
+      "required_marker_count": 10,
       "missing_markers": [],
       "status": "pass"
     },
     {
       "path": "artifacts/PROJECT_README.md",
       "exists": true,
-      "required_marker_count": 7,
+      "required_marker_count": 10,
       "missing_markers": [],
       "status": "pass"
     },
     {
       "path": "model/README.md",
       "exists": true,
-      "required_marker_count": 8,
+      "required_marker_count": 11,
       "missing_markers": [],
       "status": "pass"
     }

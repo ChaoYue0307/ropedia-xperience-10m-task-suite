@@ -52,6 +52,14 @@ GATES = [
         "proves": "The task evaluation protocol is generated from committed metric artifacts.",
     },
     {
+        "id": "figure_index",
+        "title": "Figure index",
+        "command": "python scripts/build_figure_index.py",
+        "report": "docs/data/figure_index.json",
+        "blocks_if": "Public figures, charts, or modality thumbnails are missing, unreadable, or lack source-script provenance.",
+        "proves": "Reviewer-facing visual assets have dimensions, SHA-256 hashes, source scripts, and presentation roles.",
+    },
+    {
         "id": "quality_gate_manifest",
         "title": "Quality-gate manifest",
         "command": "python scripts/build_quality_gates.py",
@@ -180,6 +188,7 @@ def markdown(payload: dict) -> str:
         "python scripts/validate_scope_claims.py",
         "python scripts/validate_source_alignment.py",
         "python scripts/build_evaluation_protocol.py",
+        "python scripts/build_figure_index.py",
         "python scripts/validate_website_integrity.py",
         "python scripts/build_quality_gates.py",
         "python scripts/build_artifact_index.py",

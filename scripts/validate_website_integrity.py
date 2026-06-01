@@ -261,6 +261,12 @@ def validate(docs_root: Path, site_base: str) -> dict:
             "The website should expose the machine-readable evaluation protocol.",
         ),
         (
+            "figure_index_links_json",
+            'data/figure_index.json',
+            None,
+            "The website should expose the machine-readable figure index.",
+        ),
+        (
             "suite_task_map_precedes_modality_atlas",
             '<div class="figure-pan" id="task-suite-map">',
             '<div class="modality-atlas-panel"',
@@ -306,7 +312,7 @@ def validate(docs_root: Path, site_base: str) -> dict:
         elif name == "evaluation_protocol_between_scorecard_and_evidence":
             passed = scorecard_pos >= 0 and protocol_pos >= 0 and evidence_pos >= 0 and scorecard_pos < protocol_pos < evidence_pos
             detail = {"scorecard_index": scorecard_pos, "protocol_index": protocol_pos, "evidence_index": evidence_pos}
-        elif name == "reviewer_scorecard_links_json":
+        elif name in {"reviewer_scorecard_links_json", "figure_index_links_json"}:
             marker_count = index_text.count(marker)
             passed = marker_count >= 1
             detail = {"marker_count": marker_count}
