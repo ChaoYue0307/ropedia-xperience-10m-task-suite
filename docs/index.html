@@ -13,11 +13,11 @@
   <meta property="og:description" content="One public embodied-AI episode, converted into reproducible multimodal tasks, minimal baselines, neural MLP baselines, metrics, and diagrams.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">
-  <meta property="og:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v11-modality-spread">
+  <meta property="og:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v12-modality-xl">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ropedia Xperience-10M Task Suite">
   <meta name="twitter:description" content="Audit-first Xperience-10M multimodal task suite with minimal and neural baselines.">
-  <meta name="twitter:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v11-modality-spread">
+  <meta name="twitter:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v12-modality-xl">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -1128,6 +1128,7 @@
             <p>The quality-gate manifest collects the automated validators and the live post-publish checks required before the release is presented as current.</p>
             <div class="evidence-links">
               <a href="data/quality_gates.json">quality_gates.json</a>
+              <a href="data/live_publication_status.json">live publication</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/QUALITY_GATES.md">QUALITY_GATES.md</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_quality_gates.py">builder script</a>
             </div>
@@ -1201,7 +1202,7 @@
           <p>Start with the full 12-task map, then inspect the large native modality atlas below it. Audio is present in the sample MP4 stream, but the current 8,378-d baseline manifest does not featurize it.</p>
         </div>
         <div class="figure-pan" id="task-suite-map">
-          <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-taskfirst-v11-modality-spread" alt="ChatGPT-image-backed infographic showing all 12 Ropedia Xperience-10M tasks with enlarged full-width modality cards">
+          <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-taskfirst-v12-modality-xl" alt="ChatGPT-image-backed infographic showing all 12 Ropedia Xperience-10M tasks with enlarged full-width modality cards">
         </div>
         <div class="modality-atlas-panel" id="modality-atlas" aria-labelledby="modality-atlas-title">
           <div class="atlas-head">
@@ -1512,6 +1513,7 @@
               <article class="artifact primary-artifact"><div><h3>Artifact guide</h3><p>Human-readable map from proof boundary to data contract, task evidence, platform mirrors, and scale-up status.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ARTIFACT_GUIDE.md">ARTIFACT_GUIDE.md</a></article>
               <article class="artifact"><h3>Evidence contract</h3><p>Defines verified, smoke-only, blocked, and out-of-scope claims.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">EVIDENCE_CONTRACT.md</a></article>
               <article class="artifact"><h3>Quality gates</h3><p>One release checklist for automated validators and live post-publish checks.</p><a href="data/quality_gates.json">quality_gates.json</a></article>
+              <article class="artifact"><h3>Live publication</h3><p>Last public GitHub/HF URL verification after upload.</p><a href="data/live_publication_status.json">live_publication_status.json</a></article>
               <article class="artifact"><h3>Artifact index</h3><p>Selective source-of-truth catalog with existence checks, sizes, and stable-file hashes.</p><a href="data/artifact_index.json">artifact_index.json</a></article>
               <article class="artifact"><h3>Mirror parity</h3><p>Prepared repo, HF Space, artifact dataset, and model bundle parity for critical data, figures, website HTML, and validator files.</p><a href="data/mirror_parity.json">mirror_parity.json</a></article>
               <article class="artifact"><h3>Scope claims audit</h3><p>Machine check that historical <code>32ep</code> identifiers are provenance, not real 32-episode result claims.</p><a href="data/scope_claims_audit.json">scope_claims_audit.json</a></article>

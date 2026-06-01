@@ -14,6 +14,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
+from urllib.parse import urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 
 
@@ -68,7 +69,7 @@ MARKER_CHECKS = [
         "required": [
             "Release gates are explicit",
             "quality_gates.json",
-            "xperience10m-taskfirst-v11-modality-spread",
+            "xperience10m-taskfirst-v12-modality-xl",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
@@ -82,7 +83,7 @@ MARKER_CHECKS = [
         "required": [
             "Release gates are explicit",
             "quality_gates.json",
-            "xperience10m-taskfirst-v11-modality-spread",
+            "xperience10m-taskfirst-v12-modality-xl",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
@@ -118,6 +119,11 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def sanitize_url(url: str) -> str:
+    parts = urlsplit(url)
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, "", ""))
+
+
 def fetch(url: str) -> dict:
     request = Request(url, headers={"User-Agent": USER_AGENT})
     try:
@@ -129,7 +135,7 @@ def fetch(url: str) -> dict:
                 "bytes": len(body),
                 "sha256": sha256_bytes(body),
                 "body": body,
-                "final_url": response.geturl(),
+                "final_url": sanitize_url(response.geturl()),
             }
     except HTTPError as exc:
         return {

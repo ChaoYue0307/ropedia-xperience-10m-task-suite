@@ -150,6 +150,16 @@
       "boundary": "summarizes packaging and live-mirror checks; it does not prove cross-episode model quality"
     },
     {
+      "id": "live_publication_status",
+      "claim": "The live public mirrors are checked after upload.",
+      "status": "verified",
+      "evidence": [
+        "scripts/verify_live_publication.py",
+        "docs/data/live_publication_status.json"
+      ],
+      "boundary": "fetches public GitHub/HF URLs; it does not validate private training state"
+    },
+    {
       "id": "citation_metadata",
       "claim": "The project is externally citable and machine-readable.",
       "status": "verified",
