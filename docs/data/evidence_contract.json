@@ -109,6 +109,16 @@
       "boundary": "checks public files and HF bundles, not arbitrary ignored local scratch outputs"
     },
     {
+      "id": "website_integrity",
+      "claim": "The public website has checked local references.",
+      "status": "verified",
+      "evidence": [
+        "scripts/validate_website_integrity.py",
+        "docs/data/website_integrity.json"
+      ],
+      "boundary": "checks local links, anchors, JSON data, and referenced images; external URLs are not fetched"
+    },
+    {
       "id": "citation_metadata",
       "claim": "The project is externally citable and machine-readable.",
       "status": "verified",

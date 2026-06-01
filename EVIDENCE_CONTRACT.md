@@ -15,6 +15,7 @@ local artifact that a reader can inspect before trusting the dashboard.
 | Qwen3-Omni infrastructure has passed technical smoke checks. | `results/omni_finetune/RUN_REPORT.md`, `results/omni_finetune/dataset_manifest.json`, `results/omni_finetune/metrics_eval.json` | Smoke-only evidence | One episode, 128 train windows; not a 32-episode pilot |
 | The real 32-episode LoRA pilot is blocked on gated data access, not on repo presentation. | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `results/omni_finetune/A100_HF_RELAY_STATUS.md`, `results/omni_finetune/source_discovery.json` | Blocker documented | No 32-episode metric should be claimed until the gate passes |
 | The public GitHub and Hugging Face bundles are publication-clean. | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | Verified pass | Checks public files and HF bundles, not arbitrary ignored local scratch outputs |
+| The public website has checked local references. | `scripts/validate_website_integrity.py`, `docs/data/website_integrity.json` | Verified pass | Checks local links, anchors, JSON data, and referenced images; external URLs are not fetched |
 | The core proof artifacts are indexed and grouped for fast review. | `ARTIFACT_GUIDE.md`, `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | Verified guide and index | Selective source-of-truth catalog, not a complete inventory of every output file |
 | The public reproduction path is documented. | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json`, `notes/reproducibility_audit.md` | Verified documentation and prior exact-match audit | Publicly reproduces the single-episode pipeline, not the gated 32-episode Qwen3-Omni pilot |
 | The project is externally citable and machine-readable. | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | Verified metadata files | Code license does not override original Xperience-10M dataset terms |
@@ -39,7 +40,8 @@ local artifact that a reader can inspect before trusting the dashboard.
    neural heads under the same splits.
 8. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before interpreting
    any Qwen3-Omni artifact.
-9. Inspect `docs/data/publication_audit.json` before publishing or sharing the
-   project externally.
+9. Inspect `docs/data/publication_audit.json` and
+   `docs/data/website_integrity.json` before publishing or sharing the project
+   externally.
 10. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or
    citing the project.

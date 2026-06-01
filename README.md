@@ -73,7 +73,8 @@ If you are reviewing the project cold, open these in order:
 | 2 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and exact-match audit evidence are explicit. |
 | 3 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
 | 4 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
-| 5 | What is still pending? | [`DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md), [`A100_HF_RELAY_STATUS.md`](results/omni_finetune/A100_HF_RELAY_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared but not yet a real model-quality claim. |
+| 5 | Is the website internally coherent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, JSON data, and referenced images are checked before publishing. |
+| 6 | What is still pending? | [`DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md), [`A100_HF_RELAY_STATUS.md`](results/omni_finetune/A100_HF_RELAY_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared but not yet a real model-quality claim. |
 
 The machine-readable reviewer packet is
 [`docs/data/reviewer_packet.json`](docs/data/reviewer_packet.json).
@@ -156,7 +157,7 @@ The code files are MIT-licensed. Raw Xperience-10M data is not redistributed
 here, and dataset use remains governed by the official Ropedia/Xperience-10M
 terms. See [`LICENSE`](LICENSE) and [`DATA_NOTICE.md`](DATA_NOTICE.md).
 
-![ChatGPT-image-backed Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-modalities-v7)
+![ChatGPT-image-backed Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-modalities-v8-clear)
 
 The infographic uses a ChatGPT-image-generated text-free research background and
 larger modality-atlas thumbnails extracted from the public sample episode. The
@@ -203,6 +204,7 @@ scripts/
   export_modality_atlas_assets.py   # exports responsive modality-card assets
   render_overview_figures.py        # renders polished pipeline/architecture PNGs
   build_artifact_index.py           # builds the source-of-truth reviewer index
+  validate_website_integrity.py     # checks local site links, anchors, JSON, images
   validate_publication_package.py   # checks public repo + HF bundle hygiene
   omni/
     download_sample_modelscope.py   # mainland-China friendly sample download
@@ -228,6 +230,7 @@ docs/
   data/evidence_contract.json       # machine-readable proof boundary
   data/artifact_index.json          # compact proof-artifact catalog
   data/publication_audit.json       # machine-readable publication hygiene check
+  data/website_integrity.json       # machine-readable website integrity check
   data/project_manifest.json        # machine-readable public-surface metadata
   data/reviewer_packet.json         # machine-readable reviewer path and proof boundary
   data/research_directions.json     # four-track website data bundle

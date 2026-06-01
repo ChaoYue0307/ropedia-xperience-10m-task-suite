@@ -1,14 +1,15 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T01:58:53+00:00",
+  "generated_at_utc": "2026-06-01T02:35:13+00:00",
   "status": "pass",
-  "artifact_count": 26,
+  "artifact_count": 27,
   "missing": [],
   "by_kind": {
     "claim_boundary": 1,
     "review_path": 3,
     "reproducibility": 2,
     "hygiene_report": 1,
+    "integrity_report": 1,
     "metadata": 1,
     "metrics_source": 2,
     "website_data": 2,
@@ -32,8 +33,8 @@
       "surface": "repo",
       "proves": "Defines what is verified, what is smoke-only, and what must not be inferred.",
       "exists": true,
-      "bytes": 5356,
-      "sha256": "c528bfc709f52dae1897e9604de71242aad214a2609a8d674e7491bfd0a8804e"
+      "bytes": 5640,
+      "sha256": "5a370d37956affb77742a48909f1a18e3e7459abac2ea08e8543acabf5fef289"
     },
     {
       "id": "reviewer_packet",
@@ -43,8 +44,8 @@
       "surface": "website_hf",
       "proves": "Gives a short audit path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 4215,
-      "sha256": "8c0e290b5eec26019ff179b6e05a2a2993afc468eec13637696a03b262c384ab"
+      "bytes": 4284,
+      "sha256": "100e731db43fd532807ba9aed1f72ca176fda70d7ea65d1bb4046f1560ea27c0"
     },
     {
       "id": "artifact_guide",
@@ -54,8 +55,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 5946,
-      "sha256": "90964ae9df162d99d84317ccb9d5565a7648d053c824a7fb219191244c456532"
+      "bytes": 6104,
+      "sha256": "364d1af448b6bd6ff96bac67ba7879c1de5559332d8c65ebc9a1424bcc7b1e42"
     },
     {
       "id": "reproducibility_contract",
@@ -65,8 +66,8 @@
       "surface": "repo_hf",
       "proves": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
       "exists": true,
-      "bytes": 4956,
-      "sha256": "9b61b1aa8eb8b27e41bed8532b1966baf28d5902fbee8d4bf3e82d3c4fdc6fac"
+      "bytes": 5060,
+      "sha256": "e61140800ff726f2cd5f79f67c373fd900f6cb0a1225a070b8110697122b27e6"
     },
     {
       "id": "reproducibility_matrix",
@@ -76,8 +77,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable reproduction steps with expected artifacts and public boundaries.",
       "exists": true,
-      "bytes": 3749,
-      "sha256": "7aae6b34a5d8d6a817fca8fb5b0f91bb8e7d4820f73fc435b1cb75c7199671da"
+      "bytes": 3856,
+      "sha256": "30f5dc1f8aec4a609ddd1c3ad4076e7c731c60b2db34936d19a0bbd3dfd21121"
     },
     {
       "id": "artifact_index_builder",
@@ -87,8 +88,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 10510,
-      "sha256": "628191cc8f3d4832bc43d9ce713f99503a2f2489215069890aad84c5ed59a33b"
+      "bytes": 10858,
+      "sha256": "118e7950b92952d7052add0a7567a9145f7e40f48df583297e9f6f194027b147"
     },
     {
       "id": "publication_audit",
@@ -99,7 +100,19 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 3826,
+      "bytes": 3923,
+      "hash_policy": "existence_and_size_only"
+    },
+    {
+      "id": "website_integrity",
+      "title": "Website integrity report",
+      "path": "docs/data/website_integrity.json",
+      "kind": "integrity_report",
+      "surface": "website_hf",
+      "volatile": true,
+      "proves": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
+      "exists": true,
+      "bytes": 5213,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -110,8 +123,8 @@
       "surface": "website_hf",
       "proves": "Lists public URLs, upstream sources, and machine-readable project metadata.",
       "exists": true,
-      "bytes": 2612,
-      "sha256": "543487c7b480fa34a139dba1fa822394ce9bafe1fda15af83dcf2188e8aef036"
+      "bytes": 2673,
+      "sha256": "72a024d404b4ae9fd5aa2353ebd936b58c797fa8257ead9acb11faee889db45e"
     },
     {
       "id": "task_summary",

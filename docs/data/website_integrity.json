@@ -1,0 +1,235 @@
+{
+  "status": "pass",
+  "generated_at_utc": "2026-06-01T02:34:49+00:00",
+  "docs_root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs",
+  "site_base": "/ropedia-xperience-10m-task-suite/",
+  "summary": {
+    "html_pages": 2,
+    "local_references": 51,
+    "external_reference_count": 54,
+    "json_files": 12,
+    "image_assets_referenced": 18,
+    "failure_count": 0
+  },
+  "failures": {
+    "missing_targets": [],
+    "missing_anchors": [],
+    "duplicate_ids": [],
+    "invalid_json": [],
+    "invalid_images": []
+  },
+  "html_pages": [
+    {
+      "path": "404.html",
+      "id_count": 1,
+      "reference_count": 1,
+      "image_count": 0
+    },
+    {
+      "path": "index.html",
+      "id_count": 30,
+      "reference_count": 50,
+      "image_count": 20
+    }
+  ],
+  "json_files": [
+    {
+      "path": "data/artifact_index.json",
+      "bytes": 11995,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/evidence_contract.json",
+      "bytes": 6321,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/modality_atlas.json",
+      "bytes": 3838,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/project_manifest.json",
+      "bytes": 2673,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/publication_audit.json",
+      "bytes": 3923,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/reproducibility_matrix.json",
+      "bytes": 3856,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/research_direction_extensions.json",
+      "bytes": 11872,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/research_directions.json",
+      "bytes": 14390,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/reviewer_packet.json",
+      "bytes": 4284,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/summary_metrics.json",
+      "bytes": 25075,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/task_walkthroughs.json",
+      "bytes": 17680,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/website_integrity.json",
+      "bytes": 5213,
+      "top_level_type": "dict"
+    }
+  ],
+  "images": [
+    {
+      "path": "assets/charts/cross_modal_retrieval.svg",
+      "exists": true,
+      "bytes": 3196,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/episode_task_scores.svg",
+      "exists": true,
+      "bytes": 5903,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/episode_task_scores_minimal_vs_neural.svg",
+      "exists": true,
+      "bytes": 10040,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/episode_task_scores_neural_mlp.svg",
+      "exists": true,
+      "bytes": 5917,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/feature_blocks.svg",
+      "exists": true,
+      "bytes": 7589,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/model_macro_f1.svg",
+      "exists": true,
+      "bytes": 3321,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/research_direction_coverage.svg",
+      "exists": true,
+      "bytes": 4968,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/research_direction_extension_tasks.svg",
+      "exists": true,
+      "bytes": 6667,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/modalities/audio.png",
+      "exists": true,
+      "bytes": 6684,
+      "width": 760,
+      "height": 470,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/modalities/depth.jpg",
+      "exists": true,
+      "bytes": 38940,
+      "width": 760,
+      "height": 470,
+      "format": "JPEG"
+    },
+    {
+      "path": "assets/modalities/inertial.png",
+      "exists": true,
+      "bytes": 43233,
+      "width": 760,
+      "height": 470,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/modalities/language.png",
+      "exists": true,
+      "bytes": 16329,
+      "width": 1500,
+      "height": 470,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/modalities/motion_capture.png",
+      "exists": true,
+      "bytes": 14037,
+      "width": 760,
+      "height": 470,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/modalities/pose_slam.png",
+      "exists": true,
+      "bytes": 64057,
+      "width": 760,
+      "height": 470,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/modalities/video.jpg",
+      "exists": true,
+      "bytes": 68307,
+      "width": 760,
+      "height": 470,
+      "format": "JPEG"
+    },
+    {
+      "path": "assets/pipeline_diagram.png",
+      "exists": true,
+      "bytes": 702732,
+      "width": 1800,
+      "height": 1120,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/task_architectures.png",
+      "exists": true,
+      "bytes": 762708,
+      "width": 1800,
+      "height": 2450,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/task_suite_infographic.png",
+      "exists": true,
+      "bytes": 2350603,
+      "width": 1800,
+      "height": 5700,
+      "format": "PNG"
+    }
+  ]
+}
