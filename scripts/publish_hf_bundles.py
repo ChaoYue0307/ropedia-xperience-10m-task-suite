@@ -40,6 +40,11 @@ COMMON_IGNORE = [
     ".git/*",
 ]
 
+STALE_ARTIFACT_REMOTE_FILES = [
+    "results/omni_finetune/adapter_lora/tokenizer.json",
+    "results/omni_finetune/hf_upload/tokenizer.json",
+]
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -65,6 +70,12 @@ def prune_generated_artifacts(root: Path) -> None:
         junk_file.unlink(missing_ok=True)
 
 
+def prune_artifact_bundle(hf_root: Path) -> None:
+    artifact_root = hf_root / "artifacts"
+    for relative_path in STALE_ARTIFACT_REMOTE_FILES:
+        (artifact_root / relative_path).unlink(missing_ok=True)
+
+
 def upload_folder(
     api: HfApi,
     token: str,
@@ -88,10 +99,35 @@ def upload_folder(
     )
 
 
+def delete_remote_file_if_present(
+    api: HfApi,
+    token: str,
+    repo_id: str,
+    repo_type: str,
+    path_in_repo: str,
+) -> None:
+    try:
+        api.delete_file(
+            path_in_repo=path_in_repo,
+            repo_id=repo_id,
+            repo_type=repo_type,
+            token=token,
+            commit_message=f"Remove stale {path_in_repo}",
+        )
+        print(f"Deleted stale remote file: {repo_id}/{path_in_repo}")
+    except Exception as exc:
+        message = str(exc)
+        if "404" in message or "Entry Not Found" in message or "not found" in message.lower():
+            print(f"Remote file already absent: {repo_id}/{path_in_repo}")
+            return
+        print(f"Remote stale-file cleanup skipped for {repo_id}/{path_in_repo}: {exc}")
+
+
 def main() -> int:
     args = parse_args()
     hf_root = args.hf_root.resolve()
     prune_generated_artifacts(hf_root)
+    prune_artifact_bundle(hf_root)
 
     token = args.token or getpass.getpass("HF token: ").strip()
     if not token:
@@ -128,6 +164,8 @@ def main() -> int:
         "Publish Ropedia Xperience-10M derived artifacts",
         ignore_patterns=["**/*.pt", "**/*.npz"],
     )
+    for path_in_repo in STALE_ARTIFACT_REMOTE_FILES:
+        delete_remote_file_if_present(api, token, artifact_repo, "dataset", path_in_repo)
     upload_folder(
         api,
         token,

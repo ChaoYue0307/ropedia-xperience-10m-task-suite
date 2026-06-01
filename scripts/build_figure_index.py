@@ -20,7 +20,7 @@ OUTPUT_MD = ROOT / "FIGURE_INDEX.md"
 FIGURES = [
     {
         "id": "brand_logo_mark",
-        "title": "ChatGPT-image project logo mark",
+        "title": "Project logo mark",
         "path": "docs/assets/brand/xperience10m-logo-mark-512.png",
         "role": "Primary X-shaped multimodal camera mark used for the website header, README, HF cards, and brand identity.",
         "source_script": "scripts/build_brand_assets.py",

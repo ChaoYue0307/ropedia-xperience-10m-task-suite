@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T16:38:35+00:00",
+  "generated_at_utc": "2026-06-01T16:56:38+00:00",
   "status": "pass",
   "artifact_count": 52,
   "missing": [],
@@ -84,8 +84,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 12899,
-      "sha256": "513b7c44040bdbef5516371378918b93370986c8c1df6b8f2d05d64f94d56dee"
+      "bytes": 12870,
+      "sha256": "c7666882fe354d2fda1119cda98e7125c040ad5552c8160a124ba727a304aa9b"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -150,8 +150,8 @@
       "surface": "repo_hf",
       "proves": "Publishes prepared Space, artifact dataset, and model bundles, including an explicit model-binary upload batch.",
       "exists": true,
-      "bytes": 5845,
-      "sha256": "f266b9ebbbb179b56512edecb0a2ff2e62470c628ab4198a71530b8290a76171"
+      "bytes": 7154,
+      "sha256": "c338b83516f379ebf022e1687b5d623a39f8cc6dc44a36ec8ecaa1e1e7b8ae6d"
     },
     {
       "id": "evaluation_protocol",
@@ -194,8 +194,8 @@
       "surface": "repo_hf",
       "proves": "Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts.",
       "exists": true,
-      "bytes": 4722,
-      "sha256": "e77682f46ce448ebd1beadf8092c436d32b709b83dcd8cbaed7b90328c3428f2"
+      "bytes": 4708,
+      "sha256": "0d4166ad8427152c8d66560c437b5e8633a4782047f532323b5c128258463caa"
     },
     {
       "id": "figure_index_json",
@@ -205,8 +205,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 13449,
-      "sha256": "90c5b2c9f8d211e6675cf4b7fa92cbb67342d971a8c4f55528e0e3628280c38c"
+      "bytes": 13435,
+      "sha256": "b9dd409ee8a3634b154b5b76fff83d8edff567e7f521727ccb3ddb5ba093f35b"
     },
     {
       "id": "figure_index_builder",
@@ -216,8 +216,8 @@
       "surface": "repo_hf",
       "proves": "Regenerates visual-asset hashes, dimensions, and source-script provenance.",
       "exists": true,
-      "bytes": 12995,
-      "sha256": "45924aea975b7d93ad5223e99fd670d7b7bf860ca12a9a83851f28e0c6bc663f"
+      "bytes": 12981,
+      "sha256": "b2016bd5a7f4a1bd9fdf55887797e88d73073a38477ac4b145b2c56e8ee62b58"
     },
     {
       "id": "brand_assets_json",
@@ -225,10 +225,10 @@
       "path": "docs/data/brand_assets.json",
       "kind": "visual_evidence",
       "surface": "website_hf",
-      "proves": "Machine-readable manifest for the ChatGPT-image-generated logo, favicon, social card, dimensions, hashes, and usage roles.",
+      "proves": "Machine-readable manifest for the generated logo system, favicon, social card, dimensions, hashes, and usage roles.",
       "exists": true,
-      "bytes": 3904,
-      "sha256": "b822ab3af24f6d3f2e041bacf6a1caa59fbd9dbff013c8b21df8f3ef2414c865"
+      "bytes": 3897,
+      "sha256": "45f3b385b4f3acad527889630dac0f48a41f181f5532f3221528f2061980d20d"
     },
     {
       "id": "brand_logo_social_card",
@@ -249,8 +249,8 @@
       "surface": "repo_hf",
       "proves": "Regenerates logo derivatives, favicon variants, app icons, and the Open Graph social card from the generated logo mark.",
       "exists": true,
-      "bytes": 9378,
-      "sha256": "90836fea66545f6f90b4a860655efb7263796a6fc86cb243793dd63d459b3a79"
+      "bytes": 9371,
+      "sha256": "83bb9179634e5682e3b03dd7bc81d077efb8df05a82fbb7783f9735c32c9ea4d"
     },
     {
       "id": "quality_gates",
@@ -260,8 +260,8 @@
       "surface": "repo_hf",
       "proves": "Lists the automated and post-publish gates required before presenting a release as current.",
       "exists": true,
-      "bytes": 4295,
-      "sha256": "1418e58f0b3805d1f8427bb6aa24070563c09c61dc88d2dfd6fd55f00604b40c"
+      "bytes": 4288,
+      "sha256": "ee1a6e0e04435f5e312fa30a1f28cb1c4d3c612dfbe95b752e7cfc5919422a9c"
     },
     {
       "id": "quality_gate_manifest",
@@ -271,8 +271,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable release-gate summary for validators, mirrors, and reviewer surfaces.",
       "exists": true,
-      "bytes": 6944,
-      "sha256": "6697526ad8869fa9c8ffec96607555f341cd9dc9049a6ab07e7cfb7eb54e1227"
+      "bytes": 6937,
+      "sha256": "9e7643f343cbe19769ddc302496c7a2fbed496d0259a060c1ea6bd82062cdbc0"
     },
     {
       "id": "task_surface_integrity",
@@ -350,8 +350,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 19501,
-      "sha256": "a3fbf5ecda8a46bfe0750ddc3c1b8e7bebb6d833463763a940d591825c37a45c"
+      "bytes": 19494,
+      "sha256": "fb9a21eccb58c9655388bd540c3393359831eefc046a6c0c28f29de44cca75a3"
     },
     {
       "id": "publication_audit",

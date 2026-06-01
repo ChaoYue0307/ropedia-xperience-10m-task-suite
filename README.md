@@ -37,7 +37,7 @@ This repo is organized around an explicit proof boundary:
 | Official Xperience-10M description | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | aligns public wording with the official gated dataset card, public sample card, and HF API metadata; does not mirror raw data |
 | Source alignment audit | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json`, `scripts/validate_source_alignment.py` | validates source facts and boundary wording across repo, website, and HF cards |
 | Figure index | `FIGURE_INDEX.md`, `docs/data/figure_index.json`, `scripts/build_figure_index.py` | catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts |
-| Brand assets | `docs/assets/brand/`, `docs/favicon.png`, `docs/apple-touch-icon.png`, `scripts/build_brand_assets.py` | applies the ChatGPT-image-generated project logo across the website, README, HF cards, favicon, and social previews |
+| Brand assets | `docs/assets/brand/`, `docs/favicon.png`, `docs/apple-touch-icon.png`, `scripts/build_brand_assets.py` | applies the generated project logo system across the website, README, HF cards, favicon, and social previews |
 | Data windows | `results/episode_task_suite/windows.csv`, `shared_windows.npz`, `summary_report.json` | one public sample episode |
 | Feature contract | `results/episode_task_suite/feature_manifest.json`, `available_modalities.json` | 8,378 current features; audio documented but not featurized |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | defines windowing, chronological split, leakage controls, per-task metrics, and unsupported interpretations |
@@ -94,7 +94,7 @@ The generated source-alignment audit is at
 The generated figure index is at
 [`FIGURE_INDEX.md`](FIGURE_INDEX.md) and
 [`docs/data/figure_index.json`](docs/data/figure_index.json).
-The ChatGPT-image project logo is packaged by
+The project logo system is packaged by
 [`scripts/build_brand_assets.py`](scripts/build_brand_assets.py), stored under
 [`docs/assets/brand/`](docs/assets/brand/), and audited in
 [`docs/data/brand_assets.json`](docs/data/brand_assets.json).
@@ -280,12 +280,12 @@ The code files are MIT-licensed. Raw Xperience-10M data is not redistributed
 here, and dataset use remains governed by the official Ropedia/Xperience-10M
 terms. See [`LICENSE`](LICENSE) and [`DATA_NOTICE.md`](DATA_NOTICE.md).
 
-![ChatGPT-image-backed Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v12-modality-xl)
+![Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v12-modality-xl)
 
-The infographic uses a ChatGPT-image-generated text-free research background,
-but now puts the shared processing contract and all 12 task families before the
-modality atlas. Public-sample modality thumbnails remain enlarged below the
-task map. The task names, input/output summaries, and metrics are overlaid from
+The infographic uses a custom text-free research background and puts the shared
+processing contract plus all 12 task families before the modality atlas.
+Public-sample modality thumbnails remain enlarged below the task map. The task
+names, input/output summaries, and metrics are overlaid from
 [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json)
 with [`scripts/render_task_suite_infographic.py`](scripts/render_task_suite_infographic.py),
 so the published PNG is a presentation graphic with verified labels and metrics,
@@ -300,8 +300,8 @@ derived thumbnails from the public sample, not raw Xperience-10M files.
 
 ![Minimal and neural 12-task model architectures](docs/assets/task_architectures.png?v=xperience10m-nn)
 
-The pipeline and architecture figures use the same pattern: ChatGPT-image
-provides text-free visual backgrounds, while
+The pipeline and architecture figures use the same pattern: text-free visual
+backgrounds carry the composition, while
 [`scripts/render_overview_figures.py`](scripts/render_overview_figures.py)
 overlays exact labels, dimensions, and metrics from the committed result files.
 
@@ -324,7 +324,7 @@ scripts/
   research_direction_extension_tasks.py # one extra data-backed probe per track
   task_walkthroughs.py              # human-readable task-card and walkthrough-player metadata
   generate_visualizations.py        # refreshes SVG charts + summary JSON
-  render_task_suite_infographic.py  # renders the ChatGPT-image-backed PNG
+  render_task_suite_infographic.py  # renders the task-suite presentation PNG
   export_modality_atlas_assets.py   # exports responsive modality-card assets
   render_overview_figures.py        # renders polished pipeline/architecture PNGs
   build_brand_assets.py             # derives logo sizes, favicon, social card

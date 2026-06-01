@@ -11,7 +11,7 @@ Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience
 
 | Figure | Path | Size | Source script | Role |
 | --- | --- | ---: | --- | --- |
-| ChatGPT-image project logo mark | `docs/assets/brand/xperience10m-logo-mark-512.png` | 512 x 512 | `scripts/build_brand_assets.py` | Primary X-shaped multimodal camera mark used for the website header, README, HF cards, and brand identity. |
+| Project logo mark | `docs/assets/brand/xperience10m-logo-mark-512.png` | 512 x 512 | `scripts/build_brand_assets.py` | Primary X-shaped multimodal camera mark used for the website header, README, HF cards, and brand identity. |
 | Project logo social card | `docs/assets/brand/xperience10m-logo-social-card.png` | 1200 x 630 | `scripts/build_brand_assets.py` | Large preview image for README, Hugging Face cards, and Open Graph/Twitter social sharing. |
 | Project favicon | `docs/assets/brand/xperience10m-logo-favicon-64.png` | 64 x 64 | `scripts/build_brand_assets.py` | Small dark-tile logo for browser tabs and compact navigation. |
 | 12-task suite infographic | `docs/assets/task_suite_infographic.png` | 1800 x 6600 | `scripts/render_task_suite_infographic.py` | Primary visual map of the task suite, verified metrics, and sample modalities. |
