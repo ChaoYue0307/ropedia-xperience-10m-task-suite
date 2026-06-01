@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T13:13:35+00:00",
+  "generated_at_utc": "2026-06-01T14:16:38+00:00",
   "summary": {
     "qwen3_omni_32_episode_claim": false,
     "dataset_manifest_num_episodes": 1,
@@ -31,7 +31,7 @@
     {
       "name": "reviewer_packet_forbids_32_episode_inference",
       "status": "pass",
-      "detail": "reviewer packet explicitly warns not to treat the smoke run as a 32-episode fine-tune",
+      "detail": "reviewer packet explicitly warns not to treat the readiness run as a 32-episode fine-tune",
       "evidence": [
         "docs/data/reviewer_packet.json"
       ]
@@ -39,13 +39,13 @@
     {
       "name": "summary_metrics_preserves_omni_claim_boundary",
       "status": "pass",
-      "detail": "No real 32-episode fine-tune is claimed until the watcher downloads data, transfers it to H20, and the held-out evaluation runs.",
+      "detail": "No real 32-episode fine-tune is claimed until gated data is available locally and held-out evaluation runs.",
       "evidence": [
         "docs/data/summary_metrics.json"
       ]
     },
     {
-      "name": "omni_dataset_manifest_is_smoke_only",
+      "name": "omni_dataset_manifest_is_readiness_only",
       "status": "pass",
       "detail": "episodes=1, samples=128, split_counts={'train': 128}",
       "evidence": [
@@ -53,7 +53,7 @@
       ]
     },
     {
-      "name": "omni_training_metadata_is_smoke_only",
+      "name": "omni_training_metadata_is_readiness_only",
       "status": "pass",
       "detail": "train=128, val=0, processes=8",
       "evidence": [
@@ -88,7 +88,7 @@
       ]
     },
     {
-      "name": "historical_32ep_identifiers_are_confined_to_smoke_artifacts",
+      "name": "historical_32ep_identifiers_are_confined_to_readiness_artifacts",
       "status": "pass",
       "detail": "historical identifiers found in result provenance files=157",
       "evidence": [
@@ -140,7 +140,7 @@
   ],
   "historical_identifiers": [
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/HF_UPLOAD.md",
       "line": 5,
       "patterns": [
@@ -150,7 +150,7 @@
       "example": "- `results/omni_finetune/adapter_lora/` (`xperience10m_qwen3_omni_32ep_lora`)"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/RUN_REPORT.md",
       "line": 4,
       "patterns": [
@@ -160,7 +160,7 @@
       "example": "- Adapter: `checkpoints/xperience10m_qwen3_omni_32ep_lora/adapter_lora`"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/RUN_REPORT.md",
       "line": 5,
       "patterns": [
@@ -170,7 +170,7 @@
       "example": "- Dataset: `results/omni_finetune/xperience10m_qwen3_omni_32ep_dataset/dataset.jsonl`"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/RUN_REPORT_eval.md",
       "line": 4,
       "patterns": [
@@ -180,7 +180,7 @@
       "example": "- Adapter: `checkpoints/xperience10m_qwen3_omni_32ep_lora/adapter_lora`"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/RUN_REPORT_eval.md",
       "line": 5,
       "patterns": [
@@ -190,7 +190,7 @@
       "example": "- Dataset: `results/omni_finetune/xperience10m_qwen3_omni_32ep_dataset/dataset.jsonl`"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/RUN_REPORT_lora.md",
       "line": 4,
       "patterns": [
@@ -200,7 +200,7 @@
       "example": "- Dataset: `results/omni_finetune/xperience10m_qwen3_omni_32ep_dataset/dataset.jsonl`"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/config.yaml",
       "line": 1,
       "patterns": [
@@ -210,7 +210,7 @@
       "example": "run_id: xperience10m_qwen3_omni_32ep_lora"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/config.yaml",
       "line": 4,
       "patterns": [
@@ -220,7 +220,7 @@
       "example": "dataset_jsonl: results/omni_finetune/xperience10m_qwen3_omni_32ep_dataset/dataset.jsonl"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/config.yaml",
       "line": 5,
       "patterns": [
@@ -228,10 +228,10 @@
         "xperience10m_qwen3_omni_32ep",
         "ropedia-episode-task-suite"
       ],
-      "example": "checkpoint_dir: /home/cy/Ropedia/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_32ep_lora/adapter_lora"
+      "example": "checkpoint_dir: /path/to/ropedia_workspace/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_32ep_lora/adapter_lora"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 1,
       "patterns": [
@@ -242,7 +242,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:0\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 0, \"end_frame\": 19, \"num_frames\": 20}, \"media\": {\"video_paths\": [{"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 2,
       "patterns": [
@@ -253,7 +253,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:1\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 20, \"end_frame\": 39, \"num_frames\": 20}, \"media\": {\"video_paths\": ["
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 3,
       "patterns": [
@@ -264,7 +264,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:2\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 40, \"end_frame\": 59, \"num_frames\": 20}, \"media\": {\"video_paths\": ["
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 4,
       "patterns": [
@@ -275,7 +275,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:3\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 60, \"end_frame\": 79, \"num_frames\": 20}, \"media\": {\"video_paths\": ["
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 5,
       "patterns": [
@@ -286,7 +286,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:4\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 80, \"end_frame\": 99, \"num_frames\": 20}, \"media\": {\"video_paths\": ["
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 6,
       "patterns": [
@@ -297,7 +297,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:5\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 100, \"end_frame\": 119, \"num_frames\": 20}, \"media\": {\"video_paths\":"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 7,
       "patterns": [
@@ -308,7 +308,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:6\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 120, \"end_frame\": 139, \"num_frames\": 20}, \"media\": {\"video_paths\":"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 8,
       "patterns": [
@@ -319,7 +319,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:7\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 140, \"end_frame\": 159, \"num_frames\": 20}, \"media\": {\"video_paths\":"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 9,
       "patterns": [
@@ -330,7 +330,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:8\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 160, \"end_frame\": 179, \"num_frames\": 20}, \"media\": {\"video_paths\":"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 10,
       "patterns": [
@@ -341,7 +341,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:9\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 180, \"end_frame\": 199, \"num_frames\": 20}, \"media\": {\"video_paths\":"
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 11,
       "patterns": [
@@ -352,7 +352,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:10\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 200, \"end_frame\": 219, \"num_frames\": 20}, \"media\": {\"video_paths\""
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 12,
       "patterns": [
@@ -363,7 +363,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:11\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 220, \"end_frame\": 239, \"num_frames\": 20}, \"media\": {\"video_paths\""
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 13,
       "patterns": [
@@ -374,7 +374,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:12\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 240, \"end_frame\": 259, \"num_frames\": 20}, \"media\": {\"video_paths\""
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 14,
       "patterns": [
@@ -385,7 +385,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:13\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 260, \"end_frame\": 279, \"num_frames\": 20}, \"media\": {\"video_paths\""
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 15,
       "patterns": [
@@ -396,7 +396,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:14\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 280, \"end_frame\": 299, \"num_frames\": 20}, \"media\": {\"video_paths\""
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 16,
       "patterns": [
@@ -407,7 +407,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:15\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 300, \"end_frame\": 319, \"num_frames\": 20}, \"media\": {\"video_paths\""
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 17,
       "patterns": [
@@ -418,7 +418,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:40\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 800, \"end_frame\": 819, \"num_frames\": 20}, \"media\": {\"video_paths\""
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 18,
       "patterns": [
@@ -429,7 +429,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:41\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 820, \"end_frame\": 839, \"num_frames\": 20}, \"media\": {\"video_paths\""
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 19,
       "patterns": [
@@ -440,7 +440,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:42\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 840, \"end_frame\": 859, \"num_frames\": 20}, \"media\": {\"video_paths\""
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 20,
       "patterns": [
@@ -451,7 +451,7 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:43\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 860, \"end_frame\": 879, \"num_frames\": 20}, \"media\": {\"video_paths\""
     },
     {
-      "classification": "historical_identifier_in_smoke_artifact",
+      "classification": "historical_identifier_in_readiness_artifact",
       "path": "results/omni_finetune/dataset.jsonl",
       "line": 21,
       "patterns": [

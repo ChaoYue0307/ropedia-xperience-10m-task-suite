@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Validate that public scope claims match the actual Xperience-10M artifacts.
 
-This guard exists because several smoke-run files retain historical `32ep`
-run identifiers in their paths. Those identifiers are useful provenance, but
-they must never be presented as evidence of a real 32-episode fine-tune.
+This guard exists because several readiness/provenance files retain historical
+`32ep` run identifiers in their paths. Those identifiers are useful provenance,
+but they must never be presented as evidence of a real 32-episode fine-tune.
 """
 
 from __future__ import annotations
@@ -144,7 +144,7 @@ def scan_historical_result_identifiers() -> list[dict]:
                     continue
                 records.append(
                     {
-                        "classification": "historical_identifier_in_smoke_artifact",
+                        "classification": "historical_identifier_in_readiness_artifact",
                         "path": relative_path,
                         "line": line_number,
                         "patterns": matched,
@@ -188,8 +188,8 @@ def build_report() -> dict:
     checks.append(
         check(
             "reviewer_packet_forbids_32_episode_inference",
-            "32-episode" in do_not_infer and "smoke run" in do_not_infer,
-            "reviewer packet explicitly warns not to treat the smoke run as a 32-episode fine-tune",
+            "32-episode" in do_not_infer and "readiness run" in do_not_infer,
+            "reviewer packet explicitly warns not to treat the readiness run as a 32-episode fine-tune",
             ["docs/data/reviewer_packet.json"],
         )
     )
@@ -207,7 +207,7 @@ def build_report() -> dict:
     split_counts = dataset_manifest.get("split_counts", {})
     checks.append(
         check(
-            "omni_dataset_manifest_is_smoke_only",
+            "omni_dataset_manifest_is_readiness_only",
             dataset_manifest.get("num_episodes") == 1
             and dataset_manifest.get("num_samples") == 128
             and split_counts == {"train": 128},
@@ -221,7 +221,7 @@ def build_report() -> dict:
 
     checks.append(
         check(
-            "omni_training_metadata_is_smoke_only",
+            "omni_training_metadata_is_readiness_only",
             training_metadata.get("num_train_samples") == 128
             and training_metadata.get("num_val_samples") == 0,
             (
@@ -260,7 +260,7 @@ def build_report() -> dict:
     historical_identifiers = scan_historical_result_identifiers()
     checks.append(
         check(
-            "historical_32ep_identifiers_are_confined_to_smoke_artifacts",
+            "historical_32ep_identifiers_are_confined_to_readiness_artifacts",
             bool(historical_identifiers),
             f"historical identifiers found in result provenance files={len(historical_identifiers)}",
             ["results/omni_finetune/"],

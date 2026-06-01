@@ -39,7 +39,7 @@ ARTIFACTS = [
         "path": "EVIDENCE_CONTRACT.md",
         "kind": "claim_boundary",
         "surface": "repo",
-        "proves": "Defines what is verified, what is smoke-only, and what must not be inferred.",
+        "proves": "Defines what is verified, what is readiness-only, and what must not be inferred.",
     },
     {
         "id": "reviewer_packet",
@@ -391,12 +391,12 @@ ARTIFACTS = [
         "proves": "Documents why no 32-episode Qwen3-Omni result is claimed yet.",
     },
     {
-        "id": "a100_relay_status",
-        "title": "A100 relay status",
-        "path": "results/omni_finetune/A100_HF_RELAY_STATUS.md",
+        "id": "multi_episode_access_status",
+        "title": "Multi-episode access status",
+        "path": "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
         "kind": "scaleup_status",
         "surface": "repo_hf",
-        "proves": "Documents the pending A100-to-H20 data relay and 32-session pilot selection.",
+        "proves": "Documents the public multi-episode access boundary and 32-episode pilot selection without exposing private infrastructure details.",
     },
     {
         "id": "citation",

@@ -12,7 +12,7 @@
     "raw_xperience10m_data_in_repo": false,
     "audio_feature_status": "Audio is present in the sample MP4 streams and shown in the figures, but the current baseline feature vector does not include an extracted audio block.",
     "qwen3_omni_32_episode_claim": false,
-    "qwen3_omni_status": "Smoke-only until at least 32 valid episodes are available and held-out episode evaluation finishes."
+    "qwen3_omni_status": "Readiness-only until at least 32 valid episodes are available and held-out episode evaluation finishes."
   },
   "review_path": [
     {
@@ -108,7 +108,7 @@
             "question": "How should this scale beyond one episode?",
       "primary_artifacts": [
         "results/omni_finetune/DATA_BLOCKER_REPORT.md",
-        "results/omni_finetune/A100_HF_RELAY_STATUS.md",
+        "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
         "scripts/omni/discover_xperience10m_sources.py"
       ],
       "readout": "The next milestone is a 32-episode held-out-episode Qwen3-Omni LoRA pilot after gated Xperience-10M access is available."
@@ -136,7 +136,7 @@
   },
   "do_not_infer": [
     "Do not infer cross-environment generalization from the single public sample episode.",
-    "Do not treat the Qwen3-Omni smoke run as a 32-episode fine-tune.",
+    "Do not treat the Qwen3-Omni readiness run as a 32-episode fine-tune.",
     "Do not treat feature-vector reconstruction as pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
     "Do not assume raw Xperience-10M data is redistributed in this repo."
   ]

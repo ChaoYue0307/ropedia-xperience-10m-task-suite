@@ -215,7 +215,7 @@ def main() -> int:
         "source": {
             "path": SOURCE_MARK.relative_to(ROOT).as_posix(),
             "kind": "ChatGPT-image-generated logo mark with chroma-key background removed locally",
-            "prompt_summary": "X-shaped multimodal camera mark with Ropedia-inspired near-black, lime, cyan, trajectory, and point-cloud styling.",
+            "prompt_summary": "X-shaped multimodal camera mark with near-black, lime, cyan, trajectory, and point-cloud styling.",
         },
         "assets": [
             image_record("logo_mark", SOURCE_MARK, "Transparent source logo mark."),

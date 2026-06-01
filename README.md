@@ -14,12 +14,6 @@
 An audit-first embodied-AI learning repo built around one public
 Xperience-10M sample episode released by Ropedia.
 
-The public dashboard and generated figures deliberately follow the visual
-language of [ropedia.com](https://ropedia.com/): near-black 4D-world canvas,
-lime-green identity accents, thin green-tinted cards, point-cloud texture, and
-the Inter Tight / Space Grotesk typography pairing. The layout is original to
-this project, but the style stays aligned with Ropedia's own product site.
-
 The project does one narrow thing carefully: it turns a raw multimodal episode
 into:
 
@@ -50,7 +44,7 @@ This repo is organized around an explicit proof boundary:
 | 12-task suite | `scripts/episode_task_suite.py`, per-task `metrics.json`, predictions | chronological single-episode split |
 | Neural heads | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | compact MLP heads, not a foundation model |
 | Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
-| Qwen3-Omni | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `A100_HF_RELAY_STATUS.md` | smoke-only until 32 valid episodes are available |
+| Qwen3-Omni | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `MULTI_EPISODE_ACCESS_STATUS.md` | readiness-only until 32 valid episodes are available |
 | Scope claims guard | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | historical `32ep` path strings are provenance, not 32-episode results |
 | Mirror parity | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | prepared GitHub/HF mirrors carry matching data, figure, website HTML, and validator files |
 | Publication hygiene | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | public repo and HF bundles only; ignored local scratch files are excluded, and public cards must reference the current task-first figure |
@@ -135,7 +129,7 @@ If you are reviewing the project cold, open these in order:
 | 6 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
 | 7 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
 | 8 | Is the website internally coherent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, JSON data, and referenced images are checked before publishing. |
-| 9 | What is still pending? | [`DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md), [`A100_HF_RELAY_STATUS.md`](results/omni_finetune/A100_HF_RELAY_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared but not yet a real model-quality claim. |
+| 9 | What is still pending? | [`DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared but not yet a real model-quality claim. |
 
 The machine-readable reviewer packet is
 [`docs/data/reviewer_packet.json`](docs/data/reviewer_packet.json).
@@ -333,13 +327,13 @@ scripts/
   build_artifact_index.py           # builds the source-of-truth reviewer index
   build_quality_gates.py            # builds reviewer-facing publication gates
   validate_mirror_parity.py         # checks prepared GitHub/HF mirror file parity
-  validate_scope_claims.py          # checks Qwen3-Omni smoke/result claim boundaries
+  validate_scope_claims.py          # checks Qwen3-Omni readiness/result claim boundaries
   validate_website_integrity.py     # checks local site links, anchors, JSON, images
   validate_publication_package.py   # checks public repo + HF bundle hygiene
   omni/
-    download_sample_modelscope.py   # mainland-China friendly sample download
+    download_sample_modelscope.py   # ModelScope sample download helper
     build_episode_manifest.py       # metadata-only multi-episode scanner
-    plan_finetune_sample_budget.py  # H20 storage/sample-count planner
+    plan_finetune_sample_budget.py  # storage/sample-count planner
     qwen3_omni_adapter_smoke.py     # real-data Qwen3-Omni adapter smoke test
 
 results/
@@ -352,7 +346,7 @@ results/
     research_directions/            # four-track taxonomy, CSV, and summary
     research_direction_extensions/  # four extra direction probes + predictions
     task_walkthroughs/              # case-study walkthroughs for all 12 tasks
-  omni_exploration/                 # H20/ModelScope smoke-test artifacts
+  omni_exploration/                 # ModelScope readiness-check artifacts
 
 docs/
   index.html                        # GitHub Pages dashboard
@@ -434,7 +428,7 @@ hf download ropedia-ai/xperience-10m-sample \
   --local-dir data/sample/xperience-10m-sample
 ```
 
-On mainland-China servers, use ModelScope instead:
+If Hugging Face access is unavailable in your environment, use ModelScope:
 
 ```bash
 python scripts/omni/download_sample_modelscope.py \
@@ -470,111 +464,52 @@ python scripts/train_min_action_model.py --workspace /path/to/workspace
 python scripts/train_all_modalities_model.py --workspace /path/to/workspace
 ```
 
-## Xperience-10M Fine-Tuning Exploration On H20
+## Xperience-10M Fine-Tuning Exploration
 
-This repo now includes a concrete first step toward a Qwen3-Omni fine-tuning
-pipeline over Xperience-10M. The important separation is:
+This repo includes a first Qwen3-Omni fine-tuning path over Xperience-10M, but
+the current evidence is still readiness evidence rather than model quality.
+The useful distinction is:
 
 - direct Qwen3-Omni inputs: RGB/fisheye video, embedded MP4 audio, and language
   prompts,
 - adapter-required Xperience-10M sensor inputs: depth, pose/SLAM, hand/body
   mocap, contacts, and IMU.
 
-The H20 work now has two separate evidence levels:
-
-- an adapter-side smoke test over one Xperience-10M sample episode, useful for
-  checking sensor feature extraction and label plumbing,
-- a technical Qwen3-Omni LoRA smoke run that loaded the local
-  `Qwen/Qwen3-Omni-30B-A3B-Instruct` weights and trained LoRA parameters on
-  128 windows from the single locally available episode.
-
-Neither is a 32-episode result. The full pilot is still gated on raw
-Xperience-10M access and a held-out episode split.
-
-```bash
-python scripts/omni/build_episode_manifest.py \
-  --data-root /home/cy/Ropedia/modelscope_data \
-  --output outputs/omni_exploration/modelscope_manifest.json
-
-python scripts/omni/qwen3_omni_adapter_smoke.py \
-  --workspace /home/cy/Ropedia/ropedia-xperience-10m-task-suite \
-  --episode-root /home/cy/Ropedia/modelscope_data/xperience-10m-sample \
-  --target action \
-  --window-frames 20 \
-  --stride-frames 100 \
-  --max-windows-per-episode 64 \
-  --epochs 2 \
-  --skip-video-features
-```
-
-Verified H20 run:
-
-| Item | Value |
-| --- | ---: |
-| Server | 8 x NVIDIA H20, 96GB each |
-| Free storage checked | about 1.5TB under `/home/cy` |
-| Data source | ModelScope `ropedia-ai/xperience-10m-sample` |
-| Downloaded minimal data | 1.93GB `annotation.hdf5` + 85.7MB `fisheye_cam0.mp4` |
-| Smoke windows | 59 |
-| Split | single-episode chronological |
-| Feature dim | 4,262 |
-| Adapter soft-token blocks | 11 |
-| Qwen3-Omni weights loaded | adapter smoke: no; LoRA smoke: yes |
-| Result | 0.0000 macro-F1, expected for this single-episode chronological smoke split |
-
-The zero score is not treated as a model claim. It is a useful signal that this
-split is not leaking labels across time: the train segment does not cover every
-action that appears in the held-out segment. The next real step is to add more
-episodes and split by held-out episode.
+The current scale-up artifacts prove that the export, manifest, sensor-feature,
+LoRA, and evaluation scripts can run on the available sample episode. They do
+not prove a real 32-episode result. A real pilot requires at least 32 valid
+episodes, held-out episode splits, training metadata, predictions, metrics, and
+a run report.
 
 ### Sample Count Decision
 
-The local Mac sample is only one episode. For H20 fine-tuning, decide sample
-count by storage and evaluation design, not by the local folder. The current H20
-has about 1.5TB free under `/home/cy`; after reserving space for model weights,
-checkpoints, caches, and logs, a realistic first budget is:
+Do not treat "10M" as a reason to start with the entire dataset. The engineering
+unit that matters first is diverse held-out episodes, not adjacent windows from
+one session.
 
 | Phase | Episodes/samples | Approx windows at stride 5 | Purpose |
 | --- | ---: | ---: | --- |
-| Smoke | 1-3 | 1k-3k | Verify loaders, token alignment, and task heads |
+| Readiness | 1-3 | 1k-3k | Verify loaders, token alignment, and task heads |
 | Pilot | 16-32 | 18k-37k | First held-out-episode evaluation |
 | Useful LoRA run | 64-128 | 74k-149k | Train sensor adapters plus selected Qwen3-Omni LoRA |
 | Storage-heavy run | 256+ | 297k+ | Only after download layout and checkpoint size are stable |
-
-For the next run, use a **32-episode stratified pilot** through the A100 relay,
-then scale to **128 episodes** and later **512 episodes** only after the
-download, transfer, manifest, train, and held-out evaluation path is stable. Do
-not treat "10M" as a reason to start with the entire dataset; the engineering
-unit that matters first is diverse held-out episodes, not adjacent windows from
-one session.
 
 Use the budget helper before downloading:
 
 ```bash
 python scripts/omni/plan_finetune_sample_budget.py \
-  --storage-root /home/cy \
+  --storage-root /path/to/storage \
   --target-free-after-download-gb 800 \
   --all-training-per-episode-gb 2.4 \
   --full-preview-per-episode-gb 5.1
-```
-
-Refresh charts and the website data bundle:
-
-```bash
-python scripts/research_direction_taxonomy.py
-python scripts/research_direction_extension_tasks.py
-python scripts/task_walkthroughs.py
-python scripts/generate_visualizations.py
-python scripts/render_overview_figures.py
-python scripts/render_task_suite_infographic.py
 ```
 
 ### 32-Episode Readiness Gate
 
 ```bash
 python scripts/omni/discover_xperience10m_sources.py \
-  --workspace /home/cy/Ropedia/ropedia-xperience-10m-task-suite \
-  --data-root /home/cy/Ropedia/modelscope_data \
+  --workspace /path/to/ropedia-xperience-10m-task-suite \
+  --data-root /path/to/xperience10m_data \
   --output results/omni_finetune/source_discovery.json \
   --report-output results/omni_finetune/DATA_BLOCKER_REPORT.md
 ```
@@ -584,33 +519,17 @@ Current status in this repo:
 - local_valid_episodes: 1 (degraded-valid: annotation + fisheye_cam0.mp4)
 - local_complete_episodes: 0
 - ready_for_32_episode_pilot: false
-- A100 Hugging Face relay: active watcher, polling gated access every 15 minutes
 - planned 32-episode pilot: stratified across 32 top-level session UUIDs
-- HF full dataset blocker: `ropedia-ai/xperience-10m` returns 403 pending review
+- full-dataset blocker: gated Xperience-10M access is still pending
 - source_discovery: `results/omni_finetune/source_discovery.json`
 - blocker_report: `results/omni_finetune/DATA_BLOCKER_REPORT.md`
-- relay_status: `results/omni_finetune/A100_HF_RELAY_STATUS.md`
+- access_status: `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`
 
-Current H20-sourced evidence files in this repo:
-
-- `results/omni_finetune/episode_manifest.json`
-- `results/omni_finetune/dataset_manifest.json`
-- `results/omni_finetune/training_metadata.json`
-- `results/omni_finetune/metrics.json`
-- `results/omni_finetune/progress.jsonl`
-- `results/omni_finetune/RUN_REPORT.md`
-- `results/omni_finetune/DATA_BLOCKER_REPORT.md`
-- `results/omni_finetune/A100_HF_RELAY_STATUS.md`
-
-Use this gate before scheduling any 32-episode full fine-tune run.
-
-For the A100 Hugging Face relay, the 32-episode pilot should use stratified
-selection, not the first 32 paths in repository order. The current relay script
-scans 64 top-level session UUIDs, filters for complete leaf episodes, excludes
-`visualization.rrd`, applies a `0.25 GB` minimum episode size, and selects 32
-episodes from 32 different session UUIDs. This is still a pilot subset, but it
-is materially better for generalization checks than adjacent episodes from the
-same recording session.
+Use this gate before scheduling any 32-episode full fine-tune run. The pilot
+should use stratified selection, not the first 32 paths in repository order.
+The current selection plan scans 64 top-level session UUIDs, filters for
+complete leaf episodes, excludes `visualization.rrd`, applies a `0.25 GB`
+minimum episode size, and selects 32 episodes from 32 different session UUIDs.
 
 ### Uploading the pilot Qwen3-Omni LoRA
 
@@ -618,7 +537,7 @@ A prepared upload package is available at `results/omni_finetune/hf_upload`.
 
 ```bash
 python3 scripts/omni/upload_qwen3_omni_lora_to_hf.py \
-  --repo-id cy0307/ropedia-qwen3-omni-lora-smoke \
+  --repo-id cy0307/ropedia-qwen3-omni-lora-readiness \
   --source-dir results/omni_finetune/hf_upload \
   --message "Upload Xperience-10M Qwen3-Omni LoRA pilot"
 ```

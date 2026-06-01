@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-WORKSPACE="${WORKSPACE:-/home/cy/Ropedia/ropedia-xperience-10m-task-suite}"
-PROJECT_ROOT="${PROJECT_ROOT:-/home/cy/Ropedia}"
+WORKSPACE="${WORKSPACE:-$(pwd)}"
+PROJECT_ROOT="${PROJECT_ROOT:-$(dirname "${WORKSPACE}")}"
 VENV_PY="${VENV_PY:-$WORKSPACE/.venv/bin/python}"
 RUN_ID="${RUN_ID:-xperience10m_qwen3_omni_32ep}"
 DATA_ROOT="${DATA_ROOT:-$PROJECT_ROOT/modelscope_data}"

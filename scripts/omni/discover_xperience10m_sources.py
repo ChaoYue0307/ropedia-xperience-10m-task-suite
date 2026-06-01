@@ -59,7 +59,7 @@ def parse_args() -> argparse.Namespace:
     workspace_default = Path(__file__).resolve().parents[2]
     parser = argparse.ArgumentParser(description="Discover Xperience-10M episode availability.")
     parser.add_argument("--workspace", type=Path, default=workspace_default)
-    parser.add_argument("--data-root", type=Path, default=Path("/home/cy/Ropedia/modelscope_data"))
+    parser.add_argument("--data-root", type=Path, default=Path("modelscope_data"))
     parser.add_argument("--output", type=Path, default=Path("results/omni_finetune/source_discovery.json"))
     parser.add_argument("--report-output", type=Path, default=Path("results/omni_finetune/DATA_BLOCKER_REPORT.md"))
     parser.add_argument("--target-episodes", type=int, default=32)
@@ -257,7 +257,7 @@ def pick_source(local: dict, modelscope: dict, huggingface: dict, target: int) -
 
     blockers = [
         f"Not enough degraded-valid episodes for a 32-episode pilot. Need {target}, local has {local['num_degraded_valid_episodes']}.",
-        "Current H20 path remains one-episode proof-of-stack only.",
+        "Current local path remains one-episode proof-of-stack only.",
     ]
     if local["num_episodes"] == 0:
         blockers.append(f"No local annotation.hdf5 found under {local.get('data_root', 'configured data root')}")

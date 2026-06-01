@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Poll Hugging Face gated access, then stage and optionally transfer Xperience-10M.
 
-This is intended for an A100 relay server that can reach Hugging Face while H20
-cannot. It does a cheap HEAD request against one gated file. When access is
-approved, it starts the selective 32-episode staging script and then can launch
-the A100->H20 transfer script.
+This is intended for a staging host that can reach Hugging Face. It does a
+cheap HEAD request against one gated file. When access is approved, it starts
+the selective 32-episode staging script and can optionally launch a generic
+host-to-host transfer script.
 """
 
 from __future__ import annotations
@@ -28,10 +28,10 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-id", default="ropedia-ai/xperience-10m")
     parser.add_argument("--probe-file", default=DEFAULT_PROBE_FILE)
-    parser.add_argument("--local-dir", type=Path, default=Path("/mnt/kgc/chaoyue/xperience10m_hf_staging"))
-    parser.add_argument("--stage-script", type=Path, default=Path("/mnt/kgc/chaoyue/xperience10m_tools/stage_xperience10m_from_hf.py"))
-    parser.add_argument("--transfer-script", type=Path, default=Path("/mnt/kgc/chaoyue/xperience10m_tools/transfer_xperience10m_a100_to_h20.sh"))
-    parser.add_argument("--log-dir", type=Path, default=Path("/mnt/kgc/chaoyue/xperience10m_logs"))
+    parser.add_argument("--local-dir", type=Path, default=Path(os.environ.get("XPERIENCE10M_STAGE_DIR", "xperience10m_hf_staging")))
+    parser.add_argument("--stage-script", type=Path, default=Path(os.environ.get("XPERIENCE10M_STAGE_SCRIPT", "scripts/omni/stage_xperience10m_from_hf.py")))
+    parser.add_argument("--transfer-script", type=Path, default=Path(os.environ.get("XPERIENCE10M_TRANSFER_SCRIPT", "scripts/omni/transfer_xperience10m_between_hosts.sh")))
+    parser.add_argument("--log-dir", type=Path, default=Path(os.environ.get("XPERIENCE10M_LOG_DIR", "xperience10m_logs")))
     parser.add_argument("--target-episodes", type=int, default=32)
     parser.add_argument("--max-top-level", type=int, default=64)
     parser.add_argument("--workers", type=int, default=8)
@@ -108,8 +108,8 @@ def main() -> int:
     env = os.environ.copy()
     if token:
         env["HF_TOKEN"] = token
-    env.setdefault("HF_HOME", "/mnt/kgc/chaoyue/hf_home")
-    env.setdefault("HF_HUB_CACHE", "/mnt/kgc/chaoyue/hf_cache")
+    env.setdefault("HF_HOME", str(args.log_dir.parent / "hf_home"))
+    env.setdefault("HF_HUB_CACHE", str(args.log_dir.parent / "hf_cache"))
 
     attempt = 0
     while True:

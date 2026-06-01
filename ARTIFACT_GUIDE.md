@@ -8,8 +8,8 @@ The project intentionally separates nine layers:
 
 1. **Reviewer scorecard:** one compact table for first-pass current-state
    decisions.
-2. **Proof boundary:** what is claimed, what is smoke-only, and what remains
-   gated by data access.
+2. **Proof boundary:** what is claimed, what is readiness-only, and what
+   remains gated by data access.
 3. **Official source alignment:** what the upstream Xperience-10M dataset card,
    public sample card, and HF API metadata say, and which parts this repo
    currently covers.
@@ -128,7 +128,7 @@ The project intentionally separates nine layers:
 | Artifact | Current status |
 | --- | --- |
 | [`results/omni_finetune/DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md) | Documents why no real 32-episode Qwen3-Omni result is claimed yet. |
-| [`results/omni_finetune/A100_HF_RELAY_STATUS.md`](results/omni_finetune/A100_HF_RELAY_STATUS.md) | Documents the pending A100-to-H20 relay and selected 32-session pilot plan. |
+| [`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | Documents the public multi-episode access boundary and selected 32-episode pilot plan without private infrastructure details. |
 | [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | Discovery gate for valid multi-episode Xperience-10M sources. |
 | [`scripts/omni/train_qwen3_omni_lora.py`](scripts/omni/train_qwen3_omni_lora.py) | Training entrypoint for the Qwen3-Omni LoRA pilot after the data gate passes. |
 
