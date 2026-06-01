@@ -52,6 +52,7 @@ ASSET_FILES = [
 SCRIPT_FILES = [
     "build_artifact_index.py",
     "build_quality_gates.py",
+    "verify_live_publication.py",
     "validate_mirror_parity.py",
     "validate_publication_package.py",
     "validate_scope_claims.py",

@@ -1,13 +1,13 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T06:24:20+00:00",
+  "generated_at_utc": "2026-06-01T06:49:30+00:00",
   "status": "pass",
-  "artifact_count": 31,
+  "artifact_count": 32,
   "missing": [],
   "by_kind": {
     "claim_boundary": 1,
     "review_path": 3,
-    "quality_gate": 2,
+    "quality_gate": 3,
     "reproducibility": 2,
     "hygiene_report": 1,
     "scope_guard": 1,
@@ -69,8 +69,8 @@
       "surface": "repo_hf",
       "proves": "Lists the automated and post-publish gates required before presenting a release as current.",
       "exists": true,
-      "bytes": 2865,
-      "sha256": "f3482dbc310d2ade60aa2b480211a9ee0cad1c814779a8b1d63d96432222897a"
+      "bytes": 2869,
+      "sha256": "69160edc3eaf8d99206fb05ab65e01ee3b0ce7f6e1e31d0201a73eca9e27539e"
     },
     {
       "id": "quality_gate_manifest",
@@ -80,8 +80,19 @@
       "surface": "website_hf",
       "proves": "Machine-readable release-gate summary for validators, mirrors, and reviewer surfaces.",
       "exists": true,
-      "bytes": 4222,
-      "sha256": "274dd753853ea843b5413bbce68b371e4a664853924c9745a4163c1b68a54cf9"
+      "bytes": 4228,
+      "sha256": "d5b145e83d6a520c628353a894ad3a438418604e262b032767674e66911f893e"
+    },
+    {
+      "id": "live_publication_verifier",
+      "title": "Live publication verifier",
+      "path": "scripts/verify_live_publication.py",
+      "kind": "quality_gate",
+      "surface": "repo",
+      "proves": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
+      "exists": true,
+      "bytes": 10370,
+      "sha256": "348b920627ed8555b518fd9e65c861ea84f19a13298c281d9c199b7d29ec717f"
     },
     {
       "id": "reproducibility_contract",
@@ -113,8 +124,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 12194,
-      "sha256": "04083feaa7cd486e94fa4f313b54b5b04b588edcb1376234a7b279060e0b4058"
+      "bytes": 12544,
+      "sha256": "8a8011a6972f65a1e986dc6b99161035314b364890a972ba8d6655cd3166c9dd"
     },
     {
       "id": "publication_audit",
