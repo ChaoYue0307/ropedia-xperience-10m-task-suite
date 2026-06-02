@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a public-surface QA report for repo, website, and HF mirrors."""
+"""Build a public presentation check for repo, website, and HF mirrors."""
 
 from __future__ import annotations
 
@@ -42,6 +42,8 @@ BANNED_PUBLIC_STRINGS = [
     "public " + "dashboard and generated figures " + "deliberately follow",
     "without " + "over" + "claiming",
     "without broad model-quality " + "over" + "claims",
+    "Public " + "surface QA",
+    "public-surface " + "QA",
     "readiness" + "-only",
     "not a model-quality " + "claim",
     "unsupported " + "interpretations",
@@ -154,7 +156,7 @@ def build_report() -> dict:
 
     checks = [
         check(
-            "public_surface_files_exist",
+            "public_presentation_files_exist",
             all_surface_files_exist,
             "Repo README, website HTML, and three Hugging Face cards should all be present in the publication workspace.",
             missing=[str(path) for path in SURFACES.values() if not path.exists()],
@@ -162,7 +164,7 @@ def build_report() -> dict:
         check(
             "core_status_reports_pass",
             not status_failures,
-            "Current public-surface QA depends on the existing validators already reporting pass.",
+            "The presentation check depends on the existing project validators already reporting pass.",
             reports=status_records,
             failures=status_failures,
         ),
@@ -209,7 +211,7 @@ def build_report() -> dict:
         check(
             "public_artifact_qa_files_are_exposed",
             all(marker in combined_public_text for marker in artifact_markers),
-            "Readers should be able to find integrity, publication, mirror, and public-surface QA files from public copy.",
+            "Readers should be able to find integrity, publication, mirror, and presentation-check files from public copy.",
             marker_counts=marker_count(combined_public_text, artifact_markers),
         ),
         check(
@@ -221,7 +223,7 @@ def build_report() -> dict:
     ]
     status = "pass" if all(item["status"] == "pass" for item in checks) else "fail"
     return {
-        "title": "Ropedia Xperience-10M Public Surface QA",
+        "title": "Ropedia Xperience-10M Public Presentation Check",
         "status": status,
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
@@ -233,7 +235,7 @@ def build_report() -> dict:
 
 def markdown(report: dict) -> str:
     lines = [
-        "# Public Surface QA",
+        "# Public Presentation Check",
         "",
         "This generated report checks whether the public repo, website, and Hugging Face cards read like one polished research project.",
         "",

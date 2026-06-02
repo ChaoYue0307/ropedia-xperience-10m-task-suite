@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-02T10:27:48+00:00",
+  "generated_at_utc": "2026-06-02T10:51:47+00:00",
   "status": "pass",
   "artifact_count": 58,
   "missing": [],
@@ -63,8 +63,8 @@
       "surface": "repo",
       "proves": "Defines the implemented scope, setup-stage items, and multi-episode prerequisites.",
       "exists": true,
-      "bytes": 10413,
-      "sha256": "5e44f60cc057c58adb4463f787efd520ff2cd37362482d978090956fefd53219"
+      "bytes": 10426,
+      "sha256": "57ac1db1cfc49b18865e8f294d6fc58941cca5f50ece92b3c15d0c613178bc22"
     },
     {
       "id": "project_packet",
@@ -85,8 +85,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 13851,
-      "sha256": "609a356796d412de66b65974ecd18bee25134405a0ee903b0938b27fa0ef98d7"
+      "bytes": 13870,
+      "sha256": "fa6ecada10a5837e0d2c9d59a40ddb91fd5362514353756bde618d6897702157"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -294,8 +294,8 @@
       "surface": "repo_hf",
       "proves": "Lists the automated and post-publish gates required before presenting a release as current.",
       "exists": true,
-      "bytes": 4534,
-      "sha256": "8b41714c646810f5864574d560111bb1f4e88a11c33c46860e8bda397f20fe9a"
+      "bytes": 4553,
+      "sha256": "18f71ee219b95182d6d72f1d14535db633d25298b3374c35ebbe50bd76d7d42d"
     },
     {
       "id": "quality_gate_manifest",
@@ -305,42 +305,42 @@
       "surface": "website_hf",
       "proves": "Machine-readable release-gate summary for validators, mirrors, and public project surfaces.",
       "exists": true,
-      "bytes": 7557,
-      "sha256": "ff5f3e83ec7f022850287fa21f983b057801afc8d0ea4a2464018a642e1e6af9"
+      "bytes": 7576,
+      "sha256": "db30369036fe4dac630b663d36bf835cff746d7df033c8e80a04eb3a1b0e7323"
     },
     {
       "id": "public_surface_qa",
-      "title": "Public surface QA",
+      "title": "Public presentation check",
       "path": "PUBLIC_SURFACE_QA.md",
       "kind": "quality_gate",
       "surface": "repo_hf",
       "proves": "Checks whether the repo, website, and Hugging Face cards read as one coherent research project surface.",
       "exists": true,
-      "bytes": 2126,
-      "sha256": "2b442ae6b81a958cf5b522003b0e74f41ba37dab2cc5bddafafd69a31db3e6c0"
+      "bytes": 2145,
+      "sha256": "690d698d55e2f9a557642dd0a77a7285a73f30be31564f5686d258fdf269c897"
     },
     {
       "id": "public_surface_qa_json",
-      "title": "Public surface QA JSON",
+      "title": "Public presentation check JSON",
       "path": "docs/data/public_surface_qa.json",
       "kind": "quality_gate",
       "surface": "website_hf",
       "volatile": true,
-      "proves": "Machine-readable checks for SEO/social metadata, accessible tab semantics, public links, QA links, and reader-facing copy consistency.",
+      "proves": "Machine-readable checks for SEO/social metadata, accessible tab semantics, public links, project-check links, and reader-facing copy consistency.",
       "exists": true,
-      "bytes": 5342,
+      "bytes": 5533,
       "hash_policy": "existence_and_size_only"
     },
     {
       "id": "public_surface_qa_builder",
-      "title": "Public surface QA builder",
+      "title": "Public presentation check builder",
       "path": "scripts/build_public_surface_qa.py",
       "kind": "quality_gate",
       "surface": "repo_hf",
-      "proves": "Regenerates the public-surface QA report before release.",
+      "proves": "Regenerates the public presentation check before release.",
       "exists": true,
-      "bytes": 10788,
-      "sha256": "aef132b266f3f3400cc6209fdb08146c73718f5df481ab183f6b2a168a24085a"
+      "bytes": 10876,
+      "sha256": "ffd5a05413aaf1b91a465cbe8dcc7b7598bbd0b3ed46ed719483fc069f7174d8"
     },
     {
       "id": "task_surface_integrity",
@@ -385,8 +385,8 @@
       "surface": "repo",
       "proves": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 26872,
-      "sha256": "a22a524aaf07968918a6fde0c8ab117cd49ccbfab0acc1e4f267be11ac654eb2"
+      "bytes": 26922,
+      "sha256": "a1bd62b94633689c9a8205931f066ae1ee7b9be1720a0d36e9e5cc8846624864"
     },
     {
       "id": "reproducibility_contract",
@@ -418,8 +418,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 21565,
-      "sha256": "41b42117affe2d8721938f587a87f35d53fde9f307bf54eabeb96e82adbfc10a"
+      "bytes": 21601,
+      "sha256": "89ca41a6ea90fd4a50326c71055e6c68da8dd3977b79798f14333d01ae3c661c"
     },
     {
       "id": "publication_audit",

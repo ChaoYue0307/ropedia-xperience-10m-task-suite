@@ -22,7 +22,7 @@ These gates validate public packaging, project status wording, mirror parity, an
 | Quality-gate manifest | `python scripts/build_quality_gates.py` | `docs/data/quality_gates.json` | `pass` | A public reader cannot see the current packaging gates in one place. |
 | Artifact index | `python scripts/build_artifact_index.py` | `docs/data/artifact_index.json` | `pass` | Project-critical evidence files are missing from the indexed artifact layer. |
 | Publication package check | `python scripts/validate_publication_package.py` | `docs/data/publication_audit.json` | `pass` | Raw data, caches, heavy archives, token strings, missing required assets, or stale public-card figure references enter public bundles. |
-| Public surface QA | `python scripts/build_public_surface_qa.py` | `docs/data/public_surface_qa.json` | `pass` | Repo, website, or Hugging Face presentation loses SEO/social metadata, accessible tab semantics, source links, QA links, or reader-facing copy consistency. |
+| Public presentation check | `python scripts/build_public_surface_qa.py` | `docs/data/public_surface_qa.json` | `pass` | Repo, website, or Hugging Face presentation loses SEO/social metadata, accessible tab semantics, source links, project-check links, or reader-facing copy consistency. |
 | Prepared mirror parity | `python scripts/validate_mirror_parity.py` | `docs/data/mirror_parity.json` | `pass` | Prepared HF Space, artifact dataset, or model bundle diverges from the repo for critical files. |
 
 ## Post-Publish Checks

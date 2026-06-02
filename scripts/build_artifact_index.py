@@ -219,7 +219,7 @@ ARTIFACTS = [
     },
     {
         "id": "public_surface_qa",
-        "title": "Public surface QA",
+        "title": "Public presentation check",
         "path": "PUBLIC_SURFACE_QA.md",
         "kind": "quality_gate",
         "surface": "repo_hf",
@@ -227,20 +227,20 @@ ARTIFACTS = [
     },
     {
         "id": "public_surface_qa_json",
-        "title": "Public surface QA JSON",
+        "title": "Public presentation check JSON",
         "path": "docs/data/public_surface_qa.json",
         "kind": "quality_gate",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Machine-readable checks for SEO/social metadata, accessible tab semantics, public links, QA links, and reader-facing copy consistency.",
+        "proves": "Machine-readable checks for SEO/social metadata, accessible tab semantics, public links, project-check links, and reader-facing copy consistency.",
     },
     {
         "id": "public_surface_qa_builder",
-        "title": "Public surface QA builder",
+        "title": "Public presentation check builder",
         "path": "scripts/build_public_surface_qa.py",
         "kind": "quality_gate",
         "surface": "repo_hf",
-        "proves": "Regenerates the public-surface QA report before release.",
+        "proves": "Regenerates the public presentation check before release.",
     },
     {
         "id": "task_surface_integrity",

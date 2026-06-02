@@ -23,7 +23,7 @@ The project separates these reading layers:
    four research-direction extension probes.
 8. **Reproducibility:** public commands, expected outputs, and exact-match
    evidence for the single-episode pipeline.
-9. **Public surface QA:** repo, website, and Hugging Face presentation quality,
+9. **Public presentation check:** repo, website, and Hugging Face pages,
    accessibility semantics, links, and reader-facing copy consistency.
 10. **Scale-up status:** scripts and reports for the planned 32-episode
    Qwen3-Omni pilot, with the data-access requirement kept visible.
@@ -49,7 +49,7 @@ The project separates these reading layers:
 | [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable pass/fail check for source facts and current-project markers. |
 | [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | Machine-readable evaluation protocol generated from committed metrics. |
 | [`docs/data/quality_gates.json`](docs/data/quality_gates.json) | Machine-readable quality-gate summary for website and HF mirrors. |
-| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable public-surface QA for website, repo, and Hugging Face presentation. |
+| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable public presentation check for website, repo, and Hugging Face pages. |
 | [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json) | Last live GitHub/HF verification after upload. |
 | [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json) | Confirms prepared HF Space, artifact, and model mirrors match the repo for critical data, figures, website HTML, and validator scripts. |
 | [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Confirms public bundles exclude raw data, Python caches, heavy archives, token strings, and stale public-card figure references. |
@@ -129,11 +129,11 @@ The project separates these reading layers:
 | [HF baseline model repo](https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines) | Lightweight minimal and neural task-head model files. |
 | [HF collection](https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite) | One grouped landing page for the Space, artifact dataset, and baseline model repo. |
 
-| QA artifact | What it checks |
+| Presentation artifact | What it checks |
 | --- | --- |
-| [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Human-readable presentation QA for repo, website, and Hugging Face cards. |
-| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable checks for SEO/social metadata, accessible tabs, public links, QA links, and reader-facing copy consistency. |
-| [`scripts/build_public_surface_qa.py`](scripts/build_public_surface_qa.py) | Regenerates the public-surface QA report before release. |
+| [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Human-readable presentation check for repo, website, and Hugging Face cards. |
+| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable checks for SEO/social metadata, accessible tabs, public links, project-check links, and reader-facing copy consistency. |
+| [`scripts/build_public_surface_qa.py`](scripts/build_public_surface_qa.py) | Regenerates the public presentation check before release. |
 
 ## Scale-Up Status
 

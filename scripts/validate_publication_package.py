@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Validate public publication hygiene for the repo and HF bundles.
+"""Validate public package contents for the repo and HF bundles.
 
-This check is intentionally conservative: it scans the GitHub repo plus the
-prepared Hugging Face Space/artifact/model folders for generated Python caches,
-raw Xperience-10M data, heavyweight checkpoint formats that should not be
-published here, and accidental Hugging Face token strings.
+This check scans the GitHub repo plus the prepared Hugging Face
+Space/artifact/model folders for generated Python caches, raw Xperience-10M
+data, heavyweight checkpoint formats that do not belong in this public package,
+and accidental Hugging Face token strings.
 """
 
 from __future__ import annotations
