@@ -11,11 +11,33 @@
   <img src="docs/assets/brand/xperience10m-logo-social-card.png" alt="Ropedia Xperience-10M Task Suite logo card" width="760">
 </p>
 
-A research-development repo built around the public Xperience-10M sample
-episode released by Ropedia.
+A research-development project built on the public Xperience-10M sample episode
+released by Ropedia. The goal is to make one richly multimodal egocentric
+episode understandable, turn it into concrete embodied-AI task definitions, and
+prepare the same pipeline for future held-out multi-episode training.
 
-The project does one narrow thing carefully: it turns a raw multimodal episode
-into:
+The central research questions are:
+
+- What can be learned from one aligned Xperience-10M episode without pretending
+  it proves cross-episode generalization?
+- Which input/output tasks are meaningful for embodied AI when video, depth,
+  pose, mocap, IMU, and language annotations are synchronized?
+- What baseline models and evaluation files should exist before scaling to
+  Qwen3-Omni or other multimodal foundation-model fine-tuning?
+
+## Research Project Overview
+
+| Theme | Current implementation |
+| --- | --- |
+| Dataset slice | One public Xperience-10M sample episode, 5,821 frames, 1,161 windows, and 8,378 extracted feature dimensions |
+| Modalities | Video-derived features, depth, camera pose/SLAM, hand/body mocap, IMU, calibration, and language-derived features; audio is documented but not yet featurized |
+| Task suite | 12 human-readable embodied-AI task contracts with input, process, output, metrics, predictions, and case-study walkthroughs |
+| Baselines | Minimal linear/ridge/logistic heads plus compact PyTorch MLP task heads over the same chronological split |
+| Research directions | Task mapping and extension probes for human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling |
+| Scale-up path | Data-gated Qwen3-Omni LoRA pilot plan for 32 held-out episodes; not claimed as completed until data and evaluation are present |
+| Public surfaces | GitHub repo, GitHub Pages dashboard, HF Space, HF artifact dataset, HF baseline-model repo, and HF collection |
+
+Current contributions:
 
 - manifested sliding-window features over the currently extracted modalities,
 - motion-only and current all-feature baseline models,
@@ -27,13 +49,12 @@ into:
 - a next-milestone track for Qwen3-Omni fine-tuning and sensor-bridge evaluation,
 - metrics, predictions, model weights, manifests, charts, and a two-level
   tabbed static research website,
-- a generated public-surface QA report for repo, website, and Hugging Face
-  presentation quality,
 - a clear explanation of what a single episode can and cannot prove.
 
-## Evidence Contract
+## Research Boundary
 
-This repo is organized around an explicit proof boundary:
+This repo separates implemented single-episode research artifacts from future
+multi-episode model claims:
 
 | Claim layer | Evidence | Boundary |
 | --- | --- | --- |
@@ -59,7 +80,7 @@ This repo is organized around an explicit proof boundary:
 | Citation and metadata | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | code is MIT-scoped; raw-data use follows Xperience-10M terms |
 | Project path | `docs/data/project_packet.json`, website project path section | navigation guide only; no new experimental claim |
 
-Read the full contract in [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), or
+Read the full boundary in [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), or
 consume the machine-readable copy at
 [`docs/data/evidence_contract.json`](docs/data/evidence_contract.json).
 The current publication hygiene report is at
