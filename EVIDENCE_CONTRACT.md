@@ -21,7 +21,7 @@ the dashboard as a basis for further work.
 | Four Ropedia research directions are mapped honestly as direct, proxy, or diagnostic evidence. | `results/episode_task_suite/research_directions/research_direction_taxonomy.json`, `docs/data/research_directions.json` | Verified taxonomy | Some directions remain proxy-only |
 | Four extra direction probes are coded and evaluated. | `results/episode_task_suite/research_direction_extensions/research_direction_extension_results.json`, `docs/data/research_direction_extensions.json` | Verified single-episode probes | Not full human modeling, neural rendering, intent modeling, or world modeling solutions |
 | Qwen3-Omni infrastructure has passed setup checks. | `results/omni_finetune/RUN_REPORT.md`, `results/omni_finetune/dataset_manifest.json`, `results/omni_finetune/metrics_eval.json` | Setup-stage evidence | One episode, 128 train windows; full metrics require the 32-episode pilot |
-| The 32-episode LoRA pilot is waiting on gated data access. | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`, `results/omni_finetune/source_discovery.json` | Data access pending | Held-out metrics come after the data gate, manifest construction, training, and test evaluation |
+| The 32-episode LoRA pilot is waiting on gated data access. | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`, `results/omni_finetune/source_discovery.json` | Data access pending | Held-out metrics come after the data gate, manifest construction, training, and test evaluation |
 | Historical `32ep` path strings are tracked as setup-file provenance. | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | Scale-up readiness | Old run/path identifiers stay separate from completed 32-episode results |
 | Prepared GitHub/Hugging Face mirrors carry matching critical files. | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | Mirror parity report | Compares prepared data files, visual assets, website HTML, and validator scripts before upload; live URLs are checked after publishing |
 | The public GitHub and Hugging Face bundles are release-ready. | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | Release package report | Covers public files, HF bundles, and public-card freshness; ignored local scratch outputs are excluded |
@@ -70,7 +70,7 @@ the dashboard as a basis for further work.
 14. Inspect `docs/data/mirror_parity.json` before assuming the GitHub and
    Hugging Face mirrors contain the same critical data, visual, HTML, and
    validator files.
-15. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` and
+15. Inspect `results/omni_finetune/DATA_ACCESS_STATUS.md` and
    `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` before interpreting
    any Qwen3-Omni artifact.
 16. Inspect `QUALITY_GATES.md`, `docs/data/quality_gates.json`,

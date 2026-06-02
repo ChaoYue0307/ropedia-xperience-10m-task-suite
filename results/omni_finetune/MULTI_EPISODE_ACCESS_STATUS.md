@@ -1,6 +1,6 @@
 # Multi-Episode Access Status
 
-Current blocker: access to the gated full `ropedia-ai/xperience-10m` dataset is
+Current status: access to the gated full `ropedia-ai/xperience-10m` dataset is
 still pending approval from the dataset authors.
 
 This file records only public-facing readiness facts. It intentionally excludes
@@ -34,6 +34,10 @@ A real 32-episode pilot can be claimed only after:
 - evaluation runs on held-out test episodes,
 - predictions, metrics, confusion matrices, and a run report are committed.
 
-The source-of-truth blocker report remains:
+The reader-facing data access summary is:
+
+`results/omni_finetune/DATA_ACCESS_STATUS.md`
+
+The machine-generated discovery report remains:
 
 `results/omni_finetune/DATA_BLOCKER_REPORT.md`

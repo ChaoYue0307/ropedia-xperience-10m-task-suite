@@ -32,7 +32,7 @@
     "Open EVALUATION_PROTOCOL.md before comparing task scores.",
     "Use RESEARCH_TAKEAWAYS.md for the current metric interpretation.",
     "Inspect results/episode_task_suite/feature_manifest.json to understand one model input.",
-    "Use results/omni_finetune/DATA_BLOCKER_REPORT.md for the multi-episode gate."
+    "Use results/omni_finetune/DATA_ACCESS_STATUS.md for the multi-episode data status."
   ],
   "scope_boundary": "The public sample is enough to build and verify task definitions, feature contracts, metrics, visualization, and baseline code. It is not enough to measure final model quality for a general embodied-AI model.",
   "next_stage": "Run the same contracts on held-out episodes, then fine-tune and evaluate an omni-model with train/test separation at the episode level.",

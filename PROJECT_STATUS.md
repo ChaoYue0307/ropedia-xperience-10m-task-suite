@@ -17,7 +17,7 @@ the next development step.
 | Website and HF mirrors | Verified | `docs/data/website_integrity.json`, `docs/data/mirror_parity.json`, `docs/data/live_publication_status.json` | Local website links/assets pass, prepared mirrors match, and public GitHub/HF URLs have been verified after upload. |
 | Release package | Verified | `docs/data/publication_audit.json`, `QUALITY_GATES.md`, `docs/data/quality_gates.json` | Public bundles exclude raw data, caches, heavy archives, token strings, and stale public-card copy. |
 | Reproducibility | Verified for the public sample | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json`, `notes/reproducibility_audit.md` | The public sample workflow has explicit commands, expected outputs, and exact-match reproduction evidence. |
-| Qwen3-Omni fine-tuning | Data-gated; full metrics pending | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` | The 32-episode LoRA pilot is prepared; final held-out metrics require gated data access, manifest construction, training, and evaluation. |
+| Qwen3-Omni fine-tuning | Data-gated; full metrics pending | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` | The 32-episode LoRA pilot is prepared; final held-out metrics require gated data access, manifest construction, training, and evaluation. |
 | Raw Xperience-10M redistribution | Not included | `DATA_NOTICE.md`, `docs/data/publication_audit.json` | Raw MP4, HDF5, RRD files, private gated data, and full Qwen weights are intentionally excluded. |
 
 ## Fast Research Route
@@ -34,7 +34,7 @@ the next development step.
 6. Inspect `SOURCE_ALIGNMENT_AUDIT.md` and
    `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` before judging dataset
    wording.
-7. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before judging
+7. Inspect `results/omni_finetune/DATA_ACCESS_STATUS.md` before judging
    Qwen3-Omni scale-up status.
 
 ## Current Reading Notes

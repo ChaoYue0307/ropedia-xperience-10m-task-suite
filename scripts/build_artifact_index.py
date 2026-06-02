@@ -473,12 +473,12 @@ ARTIFACTS = [
         "proves": "Shows the shared feature pipeline and minimal/neural head families.",
     },
     {
-        "id": "qwen_data_blocker",
-        "title": "Qwen3-Omni data blocker report",
-        "path": "results/omni_finetune/DATA_BLOCKER_REPORT.md",
-        "kind": "blocker_report",
+        "id": "qwen_data_access_status",
+        "title": "Qwen3-Omni data access status",
+        "path": "results/omni_finetune/DATA_ACCESS_STATUS.md",
+        "kind": "scaleup_status",
         "surface": "repo_hf",
-        "proves": "Documents the data-access requirement before the 32-episode Qwen3-Omni pilot can run.",
+        "proves": "Summarizes the data-access requirement before the 32-episode Qwen3-Omni pilot can run.",
     },
     {
         "id": "multi_episode_access_status",

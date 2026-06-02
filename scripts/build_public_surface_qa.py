@@ -65,6 +65,9 @@ BANNED_PUBLIC_STRINGS = [
     "Publication " + "hyg" + "iene",
     "copy " + "hyg" + "iene",
     "Research progress with internal caveats",
+    "Research progress without overclaiming",
+    "reviewer scorecard",
+    "blocker",
     "review-only checklist",
 ]
 

@@ -137,6 +137,6 @@ state, so this repo does not yet provide public reproduction for:
 
 Before interpreting any Qwen3-Omni result, read
 [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json),
-[`results/omni_finetune/DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md)
+[`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md)
 and
 [`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md).

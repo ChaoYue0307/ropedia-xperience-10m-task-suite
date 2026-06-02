@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-02T14:51:16+00:00",
+  "generated_at_utc": "2026-06-02T15:35:59+00:00",
   "status": "pass",
   "artifact_count": 60,
   "missing": [],
@@ -27,8 +27,7 @@
     "onboarding_doc": 1,
     "generated_figure": 3,
     "generated_figure_assets": 1,
-    "blocker_report": 1,
-    "scaleup_status": 1,
+    "scaleup_status": 2,
     "citation": 1,
     "license": 1
   },
@@ -41,8 +40,8 @@
       "surface": "repo_hf",
       "proves": "Gives first-pass readers a concise project shape before the detailed artifact trail.",
       "exists": true,
-      "bytes": 2411,
-      "sha256": "ec4c8de4df9f68dc42efae978dc25faeae58ca9ad27d45d2627c02784347b140"
+      "bytes": 2417,
+      "sha256": "8df03c614be4d16ffce9178afe69ecd0e07d2c6e86f1d7d0dd3c90ee6e156c66"
     },
     {
       "id": "project_brief_json",
@@ -52,8 +51,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable first-reader project brief for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 2481,
-      "sha256": "55fa80f7e8b5d47b3648619735aa3f78f6754655294a83b22e148afdb53f8321"
+      "bytes": 2487,
+      "sha256": "7ba9d79ec8f43fc4169346b8a5d7bdc928b4d8555c0860e42fdd819939990417"
     },
     {
       "id": "project_status",
@@ -63,8 +62,8 @@
       "surface": "repo_hf",
       "proves": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 4838,
-      "sha256": "207e2f53404a35830916e5fb33965dab481d00411ae42b44c36c72878630e200"
+      "bytes": 4836,
+      "sha256": "1c371ca3909bfbe97d4833412d823c72c79806b47d3a8533636e7d6b1fa8d6c8"
     },
     {
       "id": "project_status_json",
@@ -74,8 +73,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable copy of the current project status for website and HF mirrors.",
       "exists": true,
-      "bytes": 6741,
-      "sha256": "6bb6966e748e45e6b62f9d5094b74767a74b6de02877fc6b577f42f6415f3ae7"
+      "bytes": 6739,
+      "sha256": "6e64f1cd1a68d87e53a9c6b9b6c5098db7c137d0ab69026331a314657c59bd9e"
     },
     {
       "id": "evidence_contract",
@@ -85,8 +84,8 @@
       "surface": "repo",
       "proves": "Defines the implemented scope, setup-stage items, and multi-episode prerequisites.",
       "exists": true,
-      "bytes": 10417,
-      "sha256": "c42f2b48d4c4b53d9e93c46945cf3155b404991942a68b46ed826b3b2ef5b6a8"
+      "bytes": 10415,
+      "sha256": "877158246e16ac5fae5efa52a5226a3cad91ec978ac4b1baac045f6cc968da7c"
     },
     {
       "id": "project_packet",
@@ -96,8 +95,8 @@
       "surface": "website_hf",
       "proves": "Gives a short project path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 7410,
-      "sha256": "6c7fb06d704cc04a57d21517cf533c31baac5521620e850edc6e023bc47120d8"
+      "bytes": 7409,
+      "sha256": "1d604fa0d09d4fb74ee4b9c4776f5cee8ff4c1204f28a1f6a9ca08058beed217"
     },
     {
       "id": "artifact_guide",
@@ -107,8 +106,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 13857,
-      "sha256": "c75e9991261fb45ea3ed570ed5a119fd37c2f40457d6200754f55f114bb9ec57"
+      "bytes": 13856,
+      "sha256": "c35a2e229c7325fa16a0f7399cb1a98d01a3704a0d0e15d2009cf7ee0826bfcc"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -140,8 +139,8 @@
       "surface": "repo_hf",
       "proves": "Summarizes the pass/fail check for full-dataset facts, sample-card facts, API-listing caveats, and current-project markers.",
       "exists": true,
-      "bytes": 2373,
-      "sha256": "bb17572c0bb9c8b82805e41df15444f3012cebe4a5fef3b33869298c937d80ac"
+      "bytes": 2309,
+      "sha256": "26f8234b6a537ee5961a140e38ae78d9fedda4158483703d7853b6d7791cd9cb"
     },
     {
       "id": "source_alignment_json",
@@ -151,8 +150,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
-      "bytes": 4424,
-      "sha256": "1ddca924cb1c279d154763aad12ce1692f5ef3efce57212410a036ed1c909fd3"
+      "bytes": 4423,
+      "sha256": "ed392c979910aae3c6afe87ac679555b38a1d92478f60bc2d07584e7d08f61f2"
     },
     {
       "id": "source_alignment_validator",
@@ -162,8 +161,8 @@
       "surface": "repo_hf",
       "proves": "Regenerates the source-alignment report from committed facts and public card text.",
       "exists": true,
-      "bytes": 15868,
-      "sha256": "056ce2d226a362efa19afcc5936528d747d90087e4b6467ecd95ad45f61aec75"
+      "bytes": 15792,
+      "sha256": "ebf0aaa0b16759f948ebfd1b4e159a639147d5396f4ca7db9031b7bdf5027483"
     },
     {
       "id": "hf_publisher",
@@ -184,8 +183,8 @@
       "surface": "repo_hf",
       "proves": "Defines the window unit, chronological split, task metrics, leakage controls, and current limitations.",
       "exists": true,
-      "bytes": 5939,
-      "sha256": "b8193d8454af362825f53b8278c2e85bf36077af65bb6a5d680423174d1d962f"
+      "bytes": 5938,
+      "sha256": "b170463965704d181db481e0928c5f6fac3a4b626ebc424ec4e977ddead9c0fa"
     },
     {
       "id": "evaluation_protocol_json",
@@ -195,8 +194,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable protocol generated from committed task metrics for website and HF mirrors.",
       "exists": true,
-      "bytes": 13668,
-      "sha256": "924a2dfdbd408275aed5cd35a6fb2b465c0f77365a373144ba607b4be6450bac"
+      "bytes": 13667,
+      "sha256": "3fa79360af0f055816b50fca655455b321430c0b59d386991d3ec9776aef0bb3"
     },
     {
       "id": "evaluation_protocol_builder",
@@ -206,8 +205,8 @@
       "surface": "repo_hf",
       "proves": "Regenerates the protocol from committed summary metrics and task artifacts.",
       "exists": true,
-      "bytes": 16170,
-      "sha256": "c34f93a9ee5e25f99e1267c406021f1ed09a06451a3d7492c33084d5339e92b5"
+      "bytes": 16168,
+      "sha256": "01bf9dd4de2970636ec558104cd908beab6b2f8dd6290c60f5f4c2693dd55a94"
     },
     {
       "id": "research_takeaways",
@@ -262,7 +261,7 @@
       "proves": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
       "bytes": 13434,
-      "sha256": "dcb74296b42aeeaf54d8f18e4b64f4c5896f6e9fb69a8f933154dad809506805"
+      "sha256": "2620fe80cc8c7fd60d827167f49f7c01486765056787fcdb82f4a001ca6e3052"
     },
     {
       "id": "figure_index_builder",
@@ -284,7 +283,7 @@
       "proves": "Machine-readable manifest for the generated logo system, favicon, social card, dimensions, hashes, and usage roles.",
       "exists": true,
       "bytes": 3897,
-      "sha256": "5c74be556435705a9aa9163dae8d8bf52a44b2398d1089b7da695d861193c55a"
+      "sha256": "0d4e77e3e5903e1d6eff69cc487ad2b7f8d89ad06a44de09d0edca47e878b7d2"
     },
     {
       "id": "brand_logo_social_card",
@@ -294,8 +293,8 @@
       "surface": "website_hf",
       "proves": "Provides the project logo card used in README, Hugging Face cards, and social previews.",
       "exists": true,
-      "bytes": 173546,
-      "sha256": "a87af7b24a89f39934c4081181fbb32351c4ec0e31b2073c06dcec98e6edf18b"
+      "bytes": 173845,
+      "sha256": "b6b92199efd3562b81a949539d463754eb3beba0391608497dcec69f6f087835"
     },
     {
       "id": "brand_asset_builder",
@@ -305,8 +304,8 @@
       "surface": "repo_hf",
       "proves": "Regenerates logo derivatives, favicon variants, app icons, and the Open Graph social card from the generated logo mark.",
       "exists": true,
-      "bytes": 9371,
-      "sha256": "83bb9179634e5682e3b03dd7bc81d077efb8df05a82fbb7783f9735c32c9ea4d"
+      "bytes": 9366,
+      "sha256": "56308035aebe9ccb9a63a80ae5c297dcb1f4c47df953e1d85531bfc4441529ad"
     },
     {
       "id": "quality_gates",
@@ -328,7 +327,7 @@
       "proves": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 7538,
-      "sha256": "3a96887af59f3349a443342b9ad1bc474a6186b5159741b82a750f8911374ab8"
+      "sha256": "1ac521b705456105f84d14a76a935698efde7da3013b77f4b44146c4976d9e2a"
     },
     {
       "id": "public_surface_qa",
@@ -350,7 +349,7 @@
       "volatile": true,
       "proves": "Machine-readable report for SEO/social metadata, accessible tab semantics, public links, project links, and reader-facing copy.",
       "exists": true,
-      "bytes": 5414,
+      "bytes": 5413,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -361,8 +360,8 @@
       "surface": "repo_hf",
       "proves": "Regenerates the public project-surface report before release.",
       "exists": true,
-      "bytes": 11645,
-      "sha256": "ded9b1c1402bc070c2e3601c70866abed13001165990261d0c43b4065e021d3e"
+      "bytes": 11732,
+      "sha256": "743ead7e4e5ab5773f161976db3ba5cd3b85c05e5c911b9929ef8cbfd87889d2"
     },
     {
       "id": "task_surface_integrity",
@@ -418,8 +417,8 @@
       "surface": "repo_hf",
       "proves": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
       "exists": true,
-      "bytes": 6306,
-      "sha256": "ac460fcefc656c8577f95044f023235fc82a60d612c2c5eec9d3009f30f35188"
+      "bytes": 6304,
+      "sha256": "67d0d299182a98caaa8b9412189debd5a76a2086e8e4b5e1f36a32eb43c3c9c5"
     },
     {
       "id": "reproducibility_matrix",
@@ -440,8 +439,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 22065,
-      "sha256": "c12ab8f07a4c0d24fe490ed120ae06b1731c85824a1dbdac6c599bd4d43c9055"
+      "bytes": 22070,
+      "sha256": "fb9f75ee60c830e9a58ed9856cef3d8cffab03d4a35f7854587acd12b2c9721c"
     },
     {
       "id": "publication_audit",
@@ -452,7 +451,7 @@
       "volatile": true,
       "proves": "Confirms public bundles exclude raw data, caches, heavy archives, and token strings.",
       "exists": true,
-      "bytes": 6884,
+      "bytes": 6883,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -521,8 +520,8 @@
       "surface": "website_hf",
       "proves": "Mirrors task metrics for the static dashboard.",
       "exists": true,
-      "bytes": 25068,
-      "sha256": "d6ea537ca713c2cf7180476599a0205018f2fee8e0d2a813cf25fc6179534b98"
+      "bytes": 25074,
+      "sha256": "3240ae9ca9109925bf0408a48d44817684a47a15ff942895220860b76284db1b"
     },
     {
       "id": "feature_manifest",
@@ -642,8 +641,8 @@
       "surface": "website_hf",
       "proves": "Shows the raw-episode to artifact pipeline with verified labels.",
       "exists": true,
-      "bytes": 705113,
-      "sha256": "1c3e0721ddbea991b0012aa25a1ac616131426e7104c33520b070fd14c0007c7"
+      "bytes": 706050,
+      "sha256": "de29f83f2b2cdec0fa96d6bcf5fb7f7ba73c765e7a810513e0366076bdbeed3b"
     },
     {
       "id": "architecture_figure",
@@ -657,15 +656,15 @@
       "sha256": "9a1d5e87f57dfdaff15efa29c4a236b4f4a1f5c04ac104837e7f98b835b88be6"
     },
     {
-      "id": "qwen_data_blocker",
-      "title": "Qwen3-Omni data blocker report",
-      "path": "results/omni_finetune/DATA_BLOCKER_REPORT.md",
-      "kind": "blocker_report",
+      "id": "qwen_data_access_status",
+      "title": "Qwen3-Omni data access status",
+      "path": "results/omni_finetune/DATA_ACCESS_STATUS.md",
+      "kind": "scaleup_status",
       "surface": "repo_hf",
-      "proves": "Documents the data-access requirement before the 32-episode Qwen3-Omni pilot can run.",
+      "proves": "Summarizes the data-access requirement before the 32-episode Qwen3-Omni pilot can run.",
       "exists": true,
-      "bytes": 813,
-      "sha256": "561255372fa151fda72b8791746be68c825a320a75264b6131acb743ae381192"
+      "bytes": 1677,
+      "sha256": "687f5ed6e4d17172d337226ef3575ff13c72cd1bd8691a71ca040583191b20b2"
     },
     {
       "id": "multi_episode_access_status",
@@ -675,8 +674,8 @@
       "surface": "repo_hf",
       "proves": "Documents the public multi-episode access boundary and 32-episode pilot selection without exposing private infrastructure details.",
       "exists": true,
-      "bytes": 1362,
-      "sha256": "fd4488d1f21d084b9a2bdf7e769264fe306e48643ff3ef17578f329cfccd5d3c"
+      "bytes": 1455,
+      "sha256": "3f8454d36eeab84d45156959686e1e3b245f36db513af4db349f0f4857f212f9"
     },
     {
       "id": "citation",

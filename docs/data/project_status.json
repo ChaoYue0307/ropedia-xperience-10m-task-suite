@@ -117,7 +117,7 @@
       "area": "Qwen3-Omni fine-tuning",
       "status": "data_gated_full_metrics_pending",
       "evidence": [
-        "results/omni_finetune/DATA_BLOCKER_REPORT.md",
+        "results/omni_finetune/DATA_ACCESS_STATUS.md",
         "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md"
       ],
       "readout": "The 32-episode LoRA pilot is prepared, with final held-out metrics pending gated data access, manifest construction, training, and held-out evaluation."
@@ -140,7 +140,7 @@
         "Inspect RESEARCH_TAKEAWAYS.md and docs/data/research_takeaways.json before interpreting model scores.",
         "Inspect SOURCE_ALIGNMENT_AUDIT.md before judging source-card consistency across public surfaces.",
         "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
-    "Inspect results/omni_finetune/DATA_BLOCKER_REPORT.md before judging Qwen3-Omni scale-up status."
+    "Inspect results/omni_finetune/DATA_ACCESS_STATUS.md before judging Qwen3-Omni scale-up status."
   ],
   "current_reading_notes": [
     "Cross-episode generalization is evaluated in the later multi-episode stage.",
