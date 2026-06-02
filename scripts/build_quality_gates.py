@@ -101,10 +101,10 @@ GATES = [
     },
     {
         "id": "public_surface_qa",
-        "title": "Public surface QA",
+        "title": "Public presentation check",
         "command": "python scripts/build_public_surface_qa.py",
         "report": "docs/data/public_surface_qa.json",
-        "blocks_if": "Repo, website, or Hugging Face presentation loses SEO/social metadata, accessible tab semantics, source links, QA links, or reader-facing copy consistency.",
+        "blocks_if": "Repo, website, or Hugging Face presentation loses SEO/social metadata, accessible tab semantics, source links, project-check links, or reader-facing copy consistency.",
         "proves": "The public repo, website, and Hugging Face cards read as one polished research project surface.",
     },
     {

@@ -52,7 +52,7 @@ HASH_GROUPS = [
     },
     {
         "id": "public_surface_qa_json",
-        "title": "Public-surface QA JSON",
+        "title": "Public presentation JSON",
         "local_path": "docs/data/public_surface_qa.json",
         "urls": {
             "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/public_surface_qa.json",
@@ -211,7 +211,7 @@ MARKER_CHECKS = [
             "data/task_walkthroughs.json",
             "task_surface_integrity.json",
             "public_surface_qa.json",
-            "Public surface QA",
+            "Public presentation check",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
@@ -244,7 +244,7 @@ MARKER_CHECKS = [
             "data/task_walkthroughs.json",
             "task_surface_integrity.json",
             "public_surface_qa.json",
-            "Public surface QA",
+            "Public presentation check",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
@@ -273,7 +273,7 @@ MARKER_CHECKS = [
             "interactive scrub/play walkthrough storyboard",
             "task_surface_integrity.json",
             "public_surface_qa.json",
-            "Public surface QA",
+            "Public presentation check",
         ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },
@@ -298,7 +298,7 @@ MARKER_CHECKS = [
             "interactive scrub/play storyboard",
             "task_surface_integrity.json",
             "public_surface_qa.json",
-            "Public surface QA",
+            "Public presentation check",
         ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },
@@ -306,7 +306,7 @@ MARKER_CHECKS = [
 
 PATH_HYGIENE_REPORTS = {
     "mirror_parity": {
-        "title": "Mirror parity JSON hides local paths",
+        "title": "Mirror parity JSON excludes local paths",
         "paths": {
             "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/mirror_parity.json",
             "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/mirror_parity.json",
@@ -315,7 +315,7 @@ PATH_HYGIENE_REPORTS = {
         },
     },
     "publication_audit": {
-        "title": "Publication audit JSON hides local paths",
+        "title": "Publication package JSON excludes local paths",
         "paths": {
             "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/publication_audit.json",
             "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/publication_audit.json",
@@ -324,7 +324,7 @@ PATH_HYGIENE_REPORTS = {
         },
     },
     "website_integrity": {
-        "title": "Website integrity JSON hides local paths",
+        "title": "Website integrity JSON excludes local paths",
         "paths": {
             "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/website_integrity.json",
             "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/website_integrity.json",
@@ -333,7 +333,7 @@ PATH_HYGIENE_REPORTS = {
         },
     },
     "public_surface_qa": {
-        "title": "Public-surface QA JSON hides local paths",
+        "title": "Public presentation JSON excludes local paths",
         "paths": {
             "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/public_surface_qa.json",
             "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/public_surface_qa.json",
@@ -344,12 +344,12 @@ PATH_HYGIENE_REPORTS = {
 }
 
 
-def path_hygiene_checks() -> list[dict]:
+def local_path_checks() -> list[dict]:
     checks = []
     for report_id, report in PATH_HYGIENE_REPORTS.items():
         for surface, url in report["paths"].items():
             checks.append({
-                "id": f"{surface}_{report_id}_path_hygiene",
+                "id": f"{surface}_{report_id}_local_path_check",
                 "title": f"{surface}: {report['title']}",
                 "url": url,
                 "required": ['"status": "pass"'],
@@ -541,7 +541,7 @@ def marker_record(check: dict) -> dict:
 
 def build_report() -> dict:
     hash_records = [hash_group_record(group) for group in HASH_GROUPS]
-    marker_records = [marker_record(check) for check in [*MARKER_CHECKS, *path_hygiene_checks()]]
+    marker_records = [marker_record(check) for check in [*MARKER_CHECKS, *local_path_checks()]]
     failures = [
         {"check": record["id"], **failure}
         for record in [*hash_records, *marker_records]

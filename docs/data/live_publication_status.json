@@ -98,7 +98,7 @@
     },
     {
       "id": "public_surface_qa_json",
-      "title": "Public-surface QA JSON",
+      "title": "Public presentation JSON",
       "status": "pass",
       "local": {
         "path": "docs/data/public_surface_qa.json",
@@ -673,8 +673,8 @@
       "failures": []
     },
     {
-      "id": "github_pages_mirror_parity_path_hygiene",
-      "title": "github_pages: Mirror parity JSON hides local paths",
+      "id": "github_pages_mirror_parity_local_path_check",
+      "title": "github_pages: Mirror parity JSON excludes local paths",
       "url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/mirror_parity.json",
       "status": "pass",
       "fetch": {
@@ -690,8 +690,8 @@
       "failures": []
     },
     {
-      "id": "hf_space_mirror_parity_path_hygiene",
-      "title": "hf_space: Mirror parity JSON hides local paths",
+      "id": "hf_space_mirror_parity_local_path_check",
+      "title": "hf_space: Mirror parity JSON excludes local paths",
       "url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/mirror_parity.json",
       "status": "pass",
       "fetch": {
@@ -707,8 +707,8 @@
       "failures": []
     },
     {
-      "id": "hf_artifacts_mirror_parity_path_hygiene",
-      "title": "hf_artifacts: Mirror parity JSON hides local paths",
+      "id": "hf_artifacts_mirror_parity_local_path_check",
+      "title": "hf_artifacts: Mirror parity JSON excludes local paths",
       "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/mirror_parity.json",
       "status": "pass",
       "fetch": {
@@ -724,8 +724,8 @@
       "failures": []
     },
     {
-      "id": "hf_model_mirror_parity_path_hygiene",
-      "title": "hf_model: Mirror parity JSON hides local paths",
+      "id": "hf_model_mirror_parity_local_path_check",
+      "title": "hf_model: Mirror parity JSON excludes local paths",
       "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/mirror_parity.json",
       "status": "pass",
       "fetch": {
@@ -741,8 +741,8 @@
       "failures": []
     },
     {
-      "id": "github_pages_publication_audit_path_hygiene",
-      "title": "github_pages: Publication audit JSON hides local paths",
+      "id": "github_pages_publication_audit_local_path_check",
+      "title": "github_pages: Publication audit JSON excludes local paths",
       "url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/publication_audit.json",
       "status": "pass",
       "fetch": {
@@ -758,8 +758,8 @@
       "failures": []
     },
     {
-      "id": "hf_space_publication_audit_path_hygiene",
-      "title": "hf_space: Publication audit JSON hides local paths",
+      "id": "hf_space_publication_audit_local_path_check",
+      "title": "hf_space: Publication audit JSON excludes local paths",
       "url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/publication_audit.json",
       "status": "pass",
       "fetch": {
@@ -775,8 +775,8 @@
       "failures": []
     },
     {
-      "id": "hf_artifacts_publication_audit_path_hygiene",
-      "title": "hf_artifacts: Publication audit JSON hides local paths",
+      "id": "hf_artifacts_publication_audit_local_path_check",
+      "title": "hf_artifacts: Publication audit JSON excludes local paths",
       "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/publication_audit.json",
       "status": "pass",
       "fetch": {
@@ -792,8 +792,8 @@
       "failures": []
     },
     {
-      "id": "hf_model_publication_audit_path_hygiene",
-      "title": "hf_model: Publication audit JSON hides local paths",
+      "id": "hf_model_publication_audit_local_path_check",
+      "title": "hf_model: Publication audit JSON excludes local paths",
       "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/publication_audit.json",
       "status": "pass",
       "fetch": {
@@ -809,8 +809,8 @@
       "failures": []
     },
     {
-      "id": "github_pages_website_integrity_path_hygiene",
-      "title": "github_pages: Website integrity JSON hides local paths",
+      "id": "github_pages_website_integrity_local_path_check",
+      "title": "github_pages: Website integrity JSON excludes local paths",
       "url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/website_integrity.json",
       "status": "pass",
       "fetch": {
@@ -826,8 +826,8 @@
       "failures": []
     },
     {
-      "id": "hf_space_website_integrity_path_hygiene",
-      "title": "hf_space: Website integrity JSON hides local paths",
+      "id": "hf_space_website_integrity_local_path_check",
+      "title": "hf_space: Website integrity JSON excludes local paths",
       "url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/website_integrity.json",
       "status": "pass",
       "fetch": {
@@ -843,8 +843,8 @@
       "failures": []
     },
     {
-      "id": "hf_artifacts_website_integrity_path_hygiene",
-      "title": "hf_artifacts: Website integrity JSON hides local paths",
+      "id": "hf_artifacts_website_integrity_local_path_check",
+      "title": "hf_artifacts: Website integrity JSON excludes local paths",
       "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/website_integrity.json",
       "status": "pass",
       "fetch": {
@@ -860,8 +860,8 @@
       "failures": []
     },
     {
-      "id": "hf_model_website_integrity_path_hygiene",
-      "title": "hf_model: Website integrity JSON hides local paths",
+      "id": "hf_model_website_integrity_local_path_check",
+      "title": "hf_model: Website integrity JSON excludes local paths",
       "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/website_integrity.json",
       "status": "pass",
       "fetch": {
@@ -877,8 +877,8 @@
       "failures": []
     },
     {
-      "id": "github_pages_public_surface_qa_path_hygiene",
-      "title": "github_pages: Public-surface QA JSON hides local paths",
+      "id": "github_pages_public_surface_qa_local_path_check",
+      "title": "github_pages: Public presentation JSON excludes local paths",
       "url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/public_surface_qa.json",
       "status": "pass",
       "fetch": {
@@ -894,8 +894,8 @@
       "failures": []
     },
     {
-      "id": "hf_space_public_surface_qa_path_hygiene",
-      "title": "hf_space: Public-surface QA JSON hides local paths",
+      "id": "hf_space_public_surface_qa_local_path_check",
+      "title": "hf_space: Public presentation JSON excludes local paths",
       "url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/public_surface_qa.json",
       "status": "pass",
       "fetch": {
@@ -911,8 +911,8 @@
       "failures": []
     },
     {
-      "id": "hf_artifacts_public_surface_qa_path_hygiene",
-      "title": "hf_artifacts: Public-surface QA JSON hides local paths",
+      "id": "hf_artifacts_public_surface_qa_local_path_check",
+      "title": "hf_artifacts: Public presentation JSON excludes local paths",
       "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/public_surface_qa.json",
       "status": "pass",
       "fetch": {
@@ -928,8 +928,8 @@
       "failures": []
     },
     {
-      "id": "hf_model_public_surface_qa_path_hygiene",
-      "title": "hf_model: Public-surface QA JSON hides local paths",
+      "id": "hf_model_public_surface_qa_local_path_check",
+      "title": "hf_model: Public presentation JSON excludes local paths",
       "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/public_surface_qa.json",
       "status": "pass",
       "fetch": {

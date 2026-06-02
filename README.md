@@ -78,7 +78,7 @@ multi-episode held-out model metrics:
 | Neural heads | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | compact MLP heads, not a foundation model |
 | Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
 | Task surface integrity | `docs/data/task_surface_integrity.json`, `scripts/validate_task_surface.py` | public task cards stay human-readable, thumbnail-backed, and wired to the scrub/play walkthrough storyboard |
-| Public presentation check | `PUBLIC_SURFACE_QA.md`, `docs/data/public_surface_qa.json`, `scripts/build_public_surface_qa.py` | repo, website, and Hugging Face cards preserve SEO/social metadata, accessible tab semantics, public links, QA links, and copy consistency |
+| Public presentation check | `PUBLIC_SURFACE_QA.md`, `docs/data/public_surface_qa.json`, `scripts/build_public_surface_qa.py` | repo, website, and Hugging Face cards preserve SEO/social metadata, accessible tab semantics, public links, project-check links, and copy consistency |
 | Qwen3-Omni | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `MULTI_EPISODE_ACCESS_STATUS.md` | setup-stage until 32 valid episodes are available and held-out evaluation runs |
 | Scale-up status check | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | historical `32ep` path strings stay in setup-file provenance and are not presented as completed 32-episode results |
 | Mirror parity | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | prepared GitHub/HF mirrors carry matching data, figure, website HTML, and validator files |
@@ -105,7 +105,7 @@ The current scale-up status check is at
 [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json).
 The task-card and walkthrough-storyboard integrity report is at
 [`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json).
-The public-surface QA report is at
+The public presentation check is at
 [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) and
 [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json).
 The generated evaluation protocol is at
@@ -154,7 +154,7 @@ They give the current research state in one compact table:
 | Official dataset wording | Verified against the public `ropedia-ai/xperience-10m` dataset card/API metadata |
 | Source alignment | Verified source facts and current-project markers across repo, website, and HF cards |
 | Evaluation protocol | Verified generated protocol for windowing, split policy, leakage controls, and per-task metrics |
-| Website and HF mirrors | Verified by local integrity, public-surface QA, mirror parity, and live-publication checks; the public dashboard uses five top-level tabs plus subsection tabs for dataset, task-suite, method, result, and resource views |
+| Website and HF mirrors | Verified by local integrity, presentation checks, mirror parity, and live-publication checks; the public dashboard uses five top-level tabs plus subsection tabs for dataset, task-suite, method, result, and resource views |
 | Qwen3-Omni 32-episode pilot | Data-gated; prepared, with full metrics pending held-out evaluation |
 | Raw Xperience-10M data / full Qwen weights | Not redistributed |
 
