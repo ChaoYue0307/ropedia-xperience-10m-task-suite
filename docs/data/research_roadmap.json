@@ -1,0 +1,124 @@
+{
+  "title": "Ropedia Xperience-10M Research Roadmap",
+  "summary": "Staged path from the public-sample task lab to multi-episode held-out evaluation and larger omni-model extensions.",
+  "current_decision_point": "Keep the public-sample task suite as the development harness, then stage enough official Xperience-10M episodes to run the 32-episode held-out pilot.",
+  "phases": [
+    {
+      "id": "public_sample_task_lab",
+      "name": "Public-Sample Task Lab",
+      "status": "implemented",
+      "entry_condition": "One public Xperience-10M sample episode is available.",
+      "deliverables": [
+        "1161 aligned windows",
+        "12 task contracts",
+        "minimal baseline heads",
+        "neural MLP heads",
+        "modality atlas",
+        "task walkthroughs",
+        "derived figures"
+      ],
+      "completion_evidence": [
+        "PROJECT_STATUS.md",
+        "EVALUATION_PROTOCOL.md",
+        "RESEARCH_TAKEAWAYS.md",
+        "docs/data/summary_metrics.json",
+        "results/episode_task_suite/summary_report.json"
+      ],
+      "reader_takeaway": "The public sample supports task design, feature contracts, walkthroughs, and baseline comparisons."
+    },
+    {
+      "id": "multi_episode_data_staging",
+      "name": "Multi-Episode Data Staging",
+      "status": "active",
+      "entry_condition": "Gated dataset access and enough storage for selected episodes.",
+      "deliverables": [
+        "32 valid episodes",
+        "episode manifest",
+        "missing-view manifest",
+        "held-out episode split",
+        "source-discovery report"
+      ],
+      "completion_evidence": [
+        "results/omni_finetune/DATA_ACCESS_STATUS.md",
+        "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
+        "results/omni_finetune/source_discovery.json"
+      ],
+      "reader_takeaway": "The next scale decision is data staging, with train/test separation at the episode level."
+    },
+    {
+      "id": "qwen3_omni_lora_pilot_32_episode",
+      "name": "32-Episode Qwen3-Omni LoRA Pilot",
+      "status": "next",
+      "entry_condition": "At least 32 valid episodes are staged locally with no train/test episode leakage.",
+      "deliverables": [
+        "dataset JSONL/media manifests",
+        "LoRA adapter checkpoint",
+        "progress logs",
+        "held-out predictions",
+        "metrics",
+        "confusion matrices",
+        "run report"
+      ],
+      "completion_evidence": [
+        "dataset_manifest.json",
+        "training_metadata.json",
+        "progress.jsonl",
+        "metrics.json",
+        "predictions.jsonl",
+        "RUN_REPORT.md"
+      ],
+      "reader_takeaway": "The first omni-model pilot should prove a complete held-out-episode training and evaluation loop."
+    },
+    {
+      "id": "robustness_run_64_128_episode",
+      "name": "64-128 Episode Robustness Run",
+      "status": "planned",
+      "entry_condition": "The 32-episode pilot trains and evaluates cleanly.",
+      "deliverables": [
+        "split-by-session metrics",
+        "modality ablations",
+        "calibration/object/language error analysis",
+        "missing-view sensitivity analysis"
+      ],
+      "completion_evidence": [
+        "held-out metrics by session",
+        "held-out metrics by task",
+        "held-out metrics by modality",
+        "ablation tables",
+        "qualitative error analysis"
+      ],
+      "reader_takeaway": "The robustness run tests whether the pilot conclusions survive broader sessions and missing modalities."
+    },
+    {
+      "id": "foundation_world_model_extensions",
+      "name": "Foundation and World-Model Extensions",
+      "status": "planned",
+      "entry_condition": "Enough multi-episode data and compute budget for larger multimodal objectives.",
+      "deliverables": [
+        "audio encoder integration",
+        "depth/image reconstruction",
+        "SLAM/world modeling probes",
+        "policy-style next-action tasks",
+        "affordance and object-interaction tasks"
+      ],
+      "completion_evidence": [
+        "task-specific held-out evaluations",
+        "qualitative inspection",
+        "updated model cards"
+      ],
+      "reader_takeaway": "The long-term direction is richer multimodal representation learning for embodied-AI reasoning."
+    }
+  ],
+  "public_surfaces_to_update": [
+    "README.md",
+    "PROJECT_STATUS.md",
+    "RESEARCH_TAKEAWAYS.md",
+    "EVALUATION_PROTOCOL.md",
+    "ARTIFACT_GUIDE.md",
+    "docs/index.html",
+    "docs/data/research_roadmap.json",
+    "Hugging Face Space card",
+    "Hugging Face artifact dataset card",
+    "Hugging Face model card"
+  ]
+}

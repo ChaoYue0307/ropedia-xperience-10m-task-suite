@@ -7,6 +7,7 @@ the dashboard as a basis for further work.
 | Project statement | Current evidence | Status | Current scope |
 | --- | --- | --- | --- |
 | A first-pass reader has a compact current-state summary. | `PROJECT_STATUS.md`, `docs/data/project_status.json` | Verified guide | Summarizes existing evidence and current limitations |
+| The staged research path is explicit. | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | Current roadmap | Connects public-sample task development to multi-episode staging, Qwen3-Omni LoRA, robustness runs, and larger omni-model extensions |
 | The public dataset description is aligned with the official gated Xperience-10M dataset card and public sample card. | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Verified description alignment | Summarizes upstream public metadata, API listing facts, sample license/tooling, and card facts; does not grant access or mirror raw data |
 | Source facts, sample details, API-listing notes, and project coverage are aligned across repo, website, and HF cards. | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json`, `scripts/validate_source_alignment.py` | Source alignment recorded | Offline committed-fact report; does not fetch private gated data |
 | Public figures are indexed as project evidence. | `FIGURE_INDEX.md`, `docs/data/figure_index.json`, `scripts/build_figure_index.py` | Verified visual evidence | Derived figures and thumbnails only; does not include raw MP4/HDF5/RRD data |
@@ -38,44 +39,46 @@ the dashboard as a basis for further work.
 
 1. Read `PROJECT_STATUS.md` and `docs/data/project_status.json` for
    the fastest current-state decision table.
-2. Read `docs/data/project_packet.json` for the shortest project path and
+2. Read `RESEARCH_ROADMAP.md` and `docs/data/research_roadmap.json` for the
+   staged path from public-sample development to multi-episode modeling.
+3. Read `docs/data/project_packet.json` for the shortest project path and
    current scope.
-3. Read `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` and
+4. Read `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` and
    `docs/data/xperience10m_dataset_card_alignment.json` to check the official
    dataset-card wording and how the current repo is scoped against it.
-4. Read `SOURCE_ALIGNMENT_AUDIT.md` and
+5. Read `SOURCE_ALIGNMENT_AUDIT.md` and
    `docs/data/source_alignment_audit.json` to inspect the same source facts
    present across repo, website, and HF cards.
-5. Read `FIGURE_INDEX.md`, `docs/data/figure_index.json`, and
+6. Read `FIGURE_INDEX.md`, `docs/data/figure_index.json`, and
    `docs/data/brand_assets.json` to inspect public figures, charts, modality
    thumbnails, logo assets, dimensions, hashes, and source scripts.
-6. Read `EVALUATION_PROTOCOL.md` and `docs/data/evaluation_protocol.json` to
+7. Read `EVALUATION_PROTOCOL.md` and `docs/data/evaluation_protocol.json` to
    check windowing, split policy, per-task metrics, leakage controls, and
    current limitations.
-7. Read `ARTIFACT_GUIDE.md` and `docs/data/artifact_index.json` to see grouped
+8. Read `ARTIFACT_GUIDE.md` and `docs/data/artifact_index.json` to see grouped
    project artifacts, indexed supporting artifacts,
    sizes, and stable-file hashes.
-8. Read `docs/assets/task_suite_infographic.png` and
+9. Read `docs/assets/task_suite_infographic.png` and
    `docs/data/modality_atlas.json` for the high-level map and modality atlas.
-9. Read `REPRODUCIBILITY.md` and `docs/data/reproducibility_matrix.json` before
+10. Read `REPRODUCIBILITY.md` and `docs/data/reproducibility_matrix.json` before
    rerunning the public pipeline.
-10. Inspect `results/episode_task_suite/summary_report.json` for the task and
+11. Inspect `results/episode_task_suite/summary_report.json` for the task and
    metric source of truth.
-11. Inspect `results/episode_task_suite/feature_manifest.json` to see which
+12. Inspect `results/episode_task_suite/feature_manifest.json` to see which
    modalities enter the current feature vector.
-12. Inspect `results/episode_task_suite/neural_mlp/` to compare minimal and
+13. Inspect `results/episode_task_suite/neural_mlp/` to compare minimal and
    neural heads under the same splits.
-13. Inspect `docs/data/scope_claims_audit.json` before interpreting historical
+14. Inspect `docs/data/scope_claims_audit.json` before interpreting historical
    `32ep` strings in Qwen3-Omni setup artifacts.
-14. Inspect `docs/data/mirror_parity.json` before assuming the GitHub and
+15. Inspect `docs/data/mirror_parity.json` before assuming the GitHub and
    Hugging Face mirrors contain the same critical data, visual, HTML, and
    validator files.
-15. Inspect `results/omni_finetune/DATA_ACCESS_STATUS.md` and
+16. Inspect `results/omni_finetune/DATA_ACCESS_STATUS.md` and
    `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` before interpreting
    any Qwen3-Omni artifact.
-16. Inspect `QUALITY_GATES.md`, `docs/data/quality_gates.json`,
+17. Inspect `QUALITY_GATES.md`, `docs/data/quality_gates.json`,
    `PUBLIC_SURFACE_QA.md`, `docs/data/public_surface_qa.json`,
    `docs/data/publication_audit.json`, and `docs/data/website_integrity.json`
    before sharing a new public release.
-17. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or
+18. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or
    citing the project.

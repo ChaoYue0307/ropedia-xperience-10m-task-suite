@@ -459,25 +459,26 @@
     .content-tab.active span { color: var(--green); }
     .tabbed-panel[hidden] { display: none; }
     #overview { order: 1; }
-    #reading-path { order: 2; }
-    #dataset-card { order: 3; }
-    #suite { order: 4; }
-    #pipeline { order: 5; }
-    #protocol { order: 6; }
-    #takeaways { order: 7; }
-    #models { order: 8; }
-    #neural { order: 9; }
-    #directions { order: 10; }
-    #extensions { order: 11; }
-    #architectures { order: 12; }
-    #walkthroughs { order: 13; }
-    #tasks { order: 14; }
-    #features { order: 15; }
-    #diagnostics { order: 16; }
-    #evidence { order: 17; }
-    #artifacts { order: 18; }
-    #omni-relay { order: 19; }
-    #run { order: 20; }
+    #roadmap { order: 2; }
+    #reading-path { order: 3; }
+    #dataset-card { order: 4; }
+    #suite { order: 5; }
+    #pipeline { order: 6; }
+    #protocol { order: 7; }
+    #takeaways { order: 8; }
+    #models { order: 9; }
+    #neural { order: 10; }
+    #directions { order: 11; }
+    #extensions { order: 12; }
+    #architectures { order: 13; }
+    #walkthroughs { order: 14; }
+    #tasks { order: 15; }
+    #features { order: 16; }
+    #diagnostics { order: 17; }
+    #evidence { order: 18; }
+    #artifacts { order: 19; }
+    #omni-relay { order: 20; }
+    #run { order: 21; }
     #suite { padding: 62px 0 76px; }
     #suite .wrap { width: min(1680px, calc(100% - 48px)); }
     #suite .section-head { max-width: var(--max); margin-inline: auto; }
@@ -762,6 +763,101 @@
       background: rgba(2, 5, 2, 0.42);
     }
     .snapshot-actions a:hover { border-color: var(--green); color: var(--ink); }
+
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      align-items: stretch;
+    }
+    .roadmap-card {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      min-height: 330px;
+      background:
+        linear-gradient(180deg, rgba(164, 242, 127, 0.08), rgba(7, 18, 7, 0.92)),
+        var(--surface);
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+    .roadmap-card::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      top: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green), rgba(122, 229, 195, 0.2));
+    }
+    .roadmap-card[data-status="active"] {
+      border-color: rgba(122, 229, 195, 0.42);
+      background:
+        linear-gradient(180deg, rgba(122, 229, 195, 0.11), rgba(7, 18, 7, 0.92)),
+        var(--surface);
+    }
+    .roadmap-card[data-status="next"] {
+      border-color: rgba(216, 244, 165, 0.36);
+      background:
+        linear-gradient(180deg, rgba(216, 244, 165, 0.09), rgba(7, 18, 7, 0.92)),
+        var(--surface);
+    }
+    .roadmap-status {
+      width: fit-content;
+      border: 1px solid var(--soft-line);
+      border-radius: 999px;
+      padding: 5px 8px;
+      color: var(--green);
+      background: rgba(2, 5, 2, 0.5);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 760;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .roadmap-card h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.18;
+    }
+    .roadmap-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .roadmap-meta {
+      display: grid;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1px solid var(--soft-line);
+    }
+    .roadmap-meta strong {
+      display: block;
+      color: #dce8d7;
+      font-size: 12px;
+      line-height: 1.2;
+    }
+    .roadmap-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .roadmap-links a {
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 760;
+      padding: 9px 10px;
+      text-decoration: none;
+      background: rgba(2, 5, 2, 0.42);
+    }
+    .roadmap-links a:hover { border-color: var(--green); color: var(--ink); }
 
     .brief-panel {
       border: 1px solid var(--line);
@@ -1662,7 +1758,7 @@
       .hero-inner { min-height: 0; }
       .project-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .section-tabs { padding-top: 10px; }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .brief-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .brief-panel-head { grid-template-columns: 1fr; align-items: start; }
       .task-player { grid-template-columns: 1fr; }
       .task-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -1728,7 +1824,7 @@
         min-height: 52px;
       }
       main > section { scroll-margin-top: 112px; }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .brief-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
       .brief-panel { padding: 18px; }
       .artifact-group { padding: 16px; }
       .modality-atlas-panel { padding: 14px; }
@@ -1833,7 +1929,7 @@
   <main id="main" class="tabbed" data-active-tab="start">
     <div class="project-tabs-shell" aria-label="Project section tabs">
       <div class="wrap project-tabs" role="tablist" aria-label="Project sections">
-        <button type="button" class="project-tab active" id="tab-start" role="tab" data-tab-key="start" data-default-section="overview" aria-selected="true" aria-pressed="true" aria-controls="overview reading-path">
+        <button type="button" class="project-tab active" id="tab-start" role="tab" data-tab-key="start" data-default-section="overview" aria-selected="true" aria-pressed="true" aria-controls="overview roadmap reading-path">
           <strong>Start</strong>
           <span>project overview and roadmap</span>
         </button>
@@ -1892,6 +1988,7 @@
           <div class="brief-actions">
             <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">Read the brief</a>
             <a href="data/project_brief.json">project_brief.json</a>
+            <a href="#roadmap">Research roadmap</a>
             <a href="#reading-path">Reader path</a>
             <a href="#takeaways">Current takeaways</a>
           </div>
@@ -1963,8 +2060,71 @@
           <a href="data/project_brief.json">Brief JSON</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_STATUS.md">Project status</a>
           <a href="data/project_status.json">Project status JSON</a>
+          <a href="data/research_roadmap.json">Research roadmap JSON</a>
           <a href="data/project_packet.json">Project packet JSON</a>
           <a href="data/live_publication_status.json">live_publication_status.json</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap" data-project-tab="start" role="tabpanel" aria-labelledby="tab-start" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Research roadmap.</h2>
+          <p>The project path is staged from the current public-sample task lab to multi-episode data staging, held-out Qwen3-Omni fine-tuning, robustness runs, and larger foundation/world-model extensions.</p>
+        </div>
+        <div class="roadmap-grid" aria-label="Research roadmap stages">
+          <article class="roadmap-card" data-status="implemented">
+            <span class="roadmap-status">implemented</span>
+            <h3>Public-Sample Task Lab</h3>
+            <p>One public episode is converted into aligned windows, task contracts, minimal baselines, neural heads, walkthroughs, and figures.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>Public Xperience-10M sample episode available.</p>
+              <strong>Evidence</strong><p>Status, protocol, takeaways, summary metrics, and episode-task outputs.</p>
+            </div>
+          </article>
+          <article class="roadmap-card" data-status="active">
+            <span class="roadmap-status">active</span>
+            <h3>Multi-Episode Data Staging</h3>
+            <p>Stage official gated episodes while preserving episode-level separation and recording missing-view coverage.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>Gated data access and enough storage for selected episodes.</p>
+              <strong>Evidence</strong><p>Data access status, source discovery, and selected episode manifests.</p>
+            </div>
+          </article>
+          <article class="roadmap-card" data-status="next">
+            <span class="roadmap-status">next</span>
+            <h3>32-Episode Qwen3-Omni LoRA Pilot</h3>
+            <p>Train lightweight adapters and evaluate on held-out episodes with committed predictions, metrics, and run reports.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>At least 32 valid staged episodes with no train/test episode leakage.</p>
+              <strong>Evidence</strong><p>Dataset manifest, training metadata, progress logs, metrics, and predictions.</p>
+            </div>
+          </article>
+          <article class="roadmap-card" data-status="planned">
+            <span class="roadmap-status">planned</span>
+            <h3>64-128 Episode Robustness Run</h3>
+            <p>Test whether pilot conclusions survive broader sessions, missing modalities, and stronger ablations.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>32-episode pilot trains and evaluates cleanly.</p>
+              <strong>Evidence</strong><p>Metrics by session, task, modality, ablation, and failure type.</p>
+            </div>
+          </article>
+          <article class="roadmap-card" data-status="planned">
+            <span class="roadmap-status">planned</span>
+            <h3>Foundation and World-Model Extensions</h3>
+            <p>Extend toward audio-visible alignment, reconstruction, SLAM/world modeling, policy-style next action, and affordance reasoning.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>Enough multi-episode data and compute budget for larger multimodal objectives.</p>
+              <strong>Evidence</strong><p>Task-specific held-out evaluations, qualitative inspection, and updated model cards.</p>
+            </div>
+          </article>
+        </div>
+        <div class="roadmap-links">
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">RESEARCH_ROADMAP.md</a>
+          <a href="data/research_roadmap.json">research_roadmap.json</a>
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a>
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_STATUS.md">project status</a>
         </div>
       </div>
     </section>
@@ -2264,12 +2424,12 @@
         <img class="pipeline-image" src="assets/pipeline_diagram.png?v=xperience10m-nn" alt="Verified Xperience-10M multimodal pipeline diagram">
         <div class="callout-row">
           <div class="callout">
-            <h3>What this project proves</h3>
+            <h3>What this project enables</h3>
             <p>It demonstrates the full development loop: reading Xperience-10M sample data, aligning modalities, converting them into model-ready windows, defining meaningful tasks, producing metrics, and packaging artifacts for continued research.</p>
           </div>
           <div class="callout">
-            <h3>What it does not prove</h3>
-            <p>It is not a general embodied-intelligence result. A single episode cannot support cross-environment generalization; that requires many episodes and held-out episode splits.</p>
+            <h3>What still needs more data</h3>
+            <p>General embodied-intelligence model quality requires many episodes and held-out episode splits; the public sample is the development harness for that next stage.</p>
           </div>
         </div>
       </div>
@@ -2620,7 +2780,7 @@
             </div>
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Project scope</h3><p>Connects implemented single-episode artifacts, setup-stage Omni work, pending data access, and later multi-episode milestones.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">EVIDENCE_CONTRACT.md</a></article>
-              <article class="artifact"><h3>Multi-episode access status</h3><p>Public data-access path and selected 32-episode pilot plan, without private infrastructure details.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">MULTI_EPISODE_ACCESS_STATUS.md</a></article>
+              <article class="artifact"><h3>Multi-episode access status</h3><p>Public data-access path, selected 32-episode pilot plan, and data requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">MULTI_EPISODE_ACCESS_STATUS.md</a></article>
               <article class="artifact"><h3>Qwen3-Omni setup artifacts</h3><p>Manifests, metadata, metrics, and progress logs from the current setup run.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode_manifest.json</a></article>
               <article class="artifact"><h3>32-episode data requirement</h3><p>The data status file defines what must be available before full pilot training and held-out metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">DATA_ACCESS_STATUS.md</a></article>
             </div>
@@ -2743,6 +2903,7 @@ python scripts/validate_publication_package.py</code></pre>
     const sectionTabs = document.getElementById("sectionTabs");
     const sectionConfig = [
       { id: "overview", label: "Project Overview" },
+      { id: "roadmap", label: "Roadmap" },
       { id: "reading-path", label: "Reading Path" },
       { id: "dataset-card", label: "Dataset Card" },
       { id: "suite", label: "12-Task Map" },

@@ -8,8 +8,9 @@ The project separates these reading layers:
 
 1. **Project status:** one compact table for first-pass current-state
    decisions.
-2. **Project scope:** what is implemented now, what is setup-stage, and what
-   remains gated by multi-episode data access.
+2. **Project scope and roadmap:** what is implemented now, what is setup-stage,
+   what remains gated by multi-episode data access, and how the staged research
+   path progresses.
 3. **Official source alignment:** what the upstream Xperience-10M dataset card,
    public sample card, and HF API metadata say, and which parts this repo
    currently covers.
@@ -33,9 +34,10 @@ The project separates these reading layers:
 | Artifact | Why to open it first |
 | --- | --- |
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current-state table: implemented, data-gated, and outside current scope. |
+| [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) | Shows the staged path from public-sample task development to multi-episode data staging, the 32-episode Qwen3-Omni LoRA pilot, robustness runs, and larger omni-model extensions. |
 | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md) | Defines the implemented scope, setup-stage artifacts, and multi-episode prerequisites. |
 | [`QUALITY_GATES.md`](QUALITY_GATES.md) | Lists the automated release checks and post-publish verification used to keep the release current. |
-| [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Describes whether repo, website, and Hugging Face cards read as one coherent research project surface. |
+| [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Describes whether repo, website, and Hugging Face cards read as one cohesive research project surface. |
 | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Defines the task unit, chronological split, metrics, leakage controls, and current limitations. |
 | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Aligns this repo's public dataset wording with the official gated Xperience-10M card, sample card, and HF API metadata. |
 | [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Summarizes official dataset facts, sample-card facts, API-listing notes, and project coverage across repo, website, and HF cards. |
@@ -45,6 +47,7 @@ The project separates these reading layers:
 | [`docs/data/artifact_index.json`](docs/data/artifact_index.json) | Lists project-critical files with existence, size, and stable hashes. |
 | [`docs/data/figure_index.json`](docs/data/figure_index.json) | Machine-readable visual asset index for website and HF mirrors. |
 | [`docs/data/project_status.json`](docs/data/project_status.json) | Machine-readable copy of the project status table. |
+| [`docs/data/research_roadmap.json`](docs/data/research_roadmap.json) | Machine-readable roadmap for website and Hugging Face mirrors. |
 | [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable source-alignment summary, including gated metadata, sample license/tooling, and current project coverage. |
 | [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable source metadata and HF card parity report. |
 | [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | Machine-readable evaluation protocol generated from committed metrics. |
@@ -60,7 +63,7 @@ The project separates these reading layers:
 
 ## Official Source Alignment
 
-| Artifact | What it proves |
+| Artifact | What it shows |
 | --- | --- |
 | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Human-readable summary of the official gated Xperience-10M dataset card, public sample card, API listing snapshot, scale, modalities, access terms, intended uses, and limitations. |
 | [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable copy of the same alignment facts for website and HF mirrors. |
@@ -70,7 +73,7 @@ The project separates these reading layers:
 
 ## Evaluation Protocol
 
-| Artifact | What it proves |
+| Artifact | What it shows |
 | --- | --- |
 | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Human-readable task protocol: window unit, chronological split, input/target contracts, primary metrics, leakage controls, and current limitations. |
 | [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | Machine-readable protocol generated from committed task metrics. |
@@ -78,7 +81,7 @@ The project separates these reading layers:
 
 ## Visual Evidence
 
-| Artifact | What it proves |
+| Artifact | What it shows |
 | --- | --- |
 | [`FIGURE_INDEX.md`](FIGURE_INDEX.md) | Human-readable catalog of public visual assets, dimensions, hashes, roles, and source scripts. |
 | [`docs/data/figure_index.json`](docs/data/figure_index.json) | Machine-readable visual asset index mirrored to the website, artifact dataset, and model repo. |
@@ -92,7 +95,7 @@ The project separates these reading layers:
 
 ## Data Contract
 
-| Artifact | What it proves |
+| Artifact | What it shows |
 | --- | --- |
 | [`results/episode_task_suite/windows.csv`](results/episode_task_suite/windows.csv) | The sample episode is converted into 1,161 aligned 20-frame windows. |
 | [`results/episode_task_suite/feature_manifest.json`](results/episode_task_suite/feature_manifest.json) | The current input vector has 8,378 dimensions with explicit feature-block boundaries. |
@@ -102,7 +105,7 @@ The project separates these reading layers:
 
 ## Task Evidence
 
-| Artifact | What it proves |
+| Artifact | What it shows |
 | --- | --- |
 | [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json) | The 12 task contracts, chronological split, and minimal/neural metrics. |
 | [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/) | Matching PyTorch MLP heads for the same task contracts and feature windows. |
@@ -113,7 +116,7 @@ The project separates these reading layers:
 
 ## Reproducibility
 
-| Artifact | What it proves |
+| Artifact | What it shows |
 | --- | --- |
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Public commands, expected outputs, and non-reproducible boundaries are explicit. |
 | [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json) | Machine-readable command matrix for website and HF mirrors. |
@@ -140,7 +143,7 @@ The project separates these reading layers:
 | Artifact | Current status |
 | --- | --- |
 | [`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) | Summarizes the data-access requirement before the 32-episode Qwen3-Omni pilot can run. |
-| [`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | Documents the public multi-episode access path and selected 32-episode pilot plan without private infrastructure details. |
+| [`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | Documents the public multi-episode access path, selected 32-episode pilot plan, and data requirements. |
 | [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | Discovery gate for valid multi-episode Xperience-10M sources. |
 | [`scripts/omni/train_qwen3_omni_lora.py`](scripts/omni/train_qwen3_omni_lora.py) | Training entrypoint for the Qwen3-Omni LoRA pilot after the data gate passes. |
 

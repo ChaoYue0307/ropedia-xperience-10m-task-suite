@@ -14,13 +14,15 @@
     "qwen3_omni_32_episode_claim": false,
     "qwen3_omni_status": "Setup-stage until at least 32 valid episodes are available and held-out episode evaluation finishes."
   },
-  "review_path": [
+  "reading_path": [
     {
       "step": 1,
-      "question": "What exactly is being claimed?",
+      "question": "What is the current project scope?",
       "primary_artifacts": [
         "PROJECT_STATUS.md",
         "docs/data/project_status.json",
+                "RESEARCH_ROADMAP.md",
+                "docs/data/research_roadmap.json",
                 "EVIDENCE_CONTRACT.md",
                 "ARTIFACT_GUIDE.md",
                 "EVALUATION_PROTOCOL.md",
@@ -39,7 +41,7 @@
         "docs/data/scope_claims_audit.json",
         "docs/data/website_integrity.json"
       ],
-      "readout": "The project status table gives the compact current-state summary. Single-episode task engineering, metrics, visualizations, publication checks, local website integrity, mirror parity, and scale-up status checks are implemented; cross-episode generalization and 32-episode Qwen3-Omni metrics are later milestones."
+      "readout": "The project status table and roadmap give the compact current-state summary. Single-episode task engineering, metrics, visualizations, public website integrity, mirror parity, and scale-up status checks are implemented; cross-episode generalization and 32-episode Qwen3-Omni metrics are later milestones."
     },
     {
       "step": 2,
@@ -103,10 +105,12 @@
       ],
       "readout": "Each of the 12 tasks has minimal-head metrics and a matching neural MLP result over the same window contracts."
     },
-        {
-            "step": 8,
-            "question": "How should this scale beyond one episode?",
+    {
+      "step": 8,
+            "question": "What is the staged scale-up path?",
       "primary_artifacts": [
+        "RESEARCH_ROADMAP.md",
+        "docs/data/research_roadmap.json",
         "results/omni_finetune/DATA_ACCESS_STATUS.md",
         "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
         "scripts/omni/discover_xperience10m_sources.py"
@@ -116,6 +120,8 @@
   ],
     "project_status": "PROJECT_STATUS.md",
     "project_status_json": "docs/data/project_status.json",
+    "research_roadmap": "RESEARCH_ROADMAP.md",
+    "research_roadmap_json": "docs/data/research_roadmap.json",
     "evaluation_protocol": "EVALUATION_PROTOCOL.md",
     "evaluation_protocol_json": "docs/data/evaluation_protocol.json",
     "source_alignment_audit": "SOURCE_ALIGNMENT_AUDIT.md",

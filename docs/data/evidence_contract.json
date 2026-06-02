@@ -12,6 +12,16 @@
       ],
       "boundary": "summarizes existing evidence and current limitations"
     },
+    {
+      "id": "research_roadmap",
+      "claim": "The staged research path is explicit.",
+      "status": "current",
+      "evidence": [
+        "RESEARCH_ROADMAP.md",
+        "docs/data/research_roadmap.json"
+      ],
+      "boundary": "connects public-sample task development to multi-episode staging, Qwen3-Omni LoRA, robustness runs, and larger omni-model extensions"
+    },
         {
             "id": "official_dataset_card_alignment",
             "claim": "The public dataset description is aligned with the official gated Xperience-10M dataset card and public sample card.",

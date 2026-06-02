@@ -211,7 +211,7 @@ TASK_TAXONOMY: OrderedDict[str, dict[str, Any]] = OrderedDict(
                 "primary_direction": "C",
                 "direction_roles": {"C": "diagnostic", "B": "proxy", "D": "proxy"},
                 "why": "Tests whether synchronized modalities identify the same 4D moment, a prerequisite for reconstruction and world modeling.",
-                "current_limit": "Retrieval proves alignment signal, not geometric reconstruction.",
+                "current_limit": "Retrieval shows an alignment signal, not geometric reconstruction.",
             },
         ),
         (

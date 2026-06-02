@@ -90,6 +90,7 @@ multi-episode held-out model metrics:
 | Feature contract | `results/episode_task_suite/feature_manifest.json`, `available_modalities.json` | 8,378 current features; audio documented but not featurized |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | defines windowing, chronological split, leakage controls, per-task metrics, and current limitations |
 | Research takeaways | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | summarizes result interpretation from committed metrics and identifies which experiments need held-out episodes |
+| Research roadmap | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | stages the path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions |
 | 12-task suite | `scripts/episode_task_suite.py`, per-task `metrics.json`, predictions | chronological single-episode split |
 | Neural heads | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | compact MLP heads, not a foundation model |
 | Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
@@ -130,6 +131,9 @@ The generated evaluation protocol is at
 The generated research takeaways are at
 [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md) and
 [`docs/data/research_takeaways.json`](docs/data/research_takeaways.json).
+The staged research roadmap is at
+[`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) and
+[`docs/data/research_roadmap.json`](docs/data/research_roadmap.json).
 The source-of-truth artifact index is at
 [`docs/data/artifact_index.json`](docs/data/artifact_index.json).
 For a human-readable artifact map, use
@@ -185,11 +189,12 @@ If you are reading the project cold, open these in order:
 | 3 | Are source facts consistently presented? | [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md), [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json), [`scripts/validate_source_alignment.py`](scripts/validate_source_alignment.py) | Repo, website, and HF cards use the same full-dataset facts, sample-card facts, API-listing notes, and project coverage. |
 | 4 | How exactly are tasks evaluated? | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md), [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json), [`scripts/build_evaluation_protocol.py`](scripts/build_evaluation_protocol.py) | The window unit, chronological split, leakage controls, task metrics, and current limitations are explicit. |
 | 5 | What do the current results mean? | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`docs/data/research_takeaways.json`](docs/data/research_takeaways.json), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | The takeaways are generated from committed metrics and identify which signals are ready for larger held-out experiments. |
-| 6 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and the latest exact-match reproduction record are explicit. |
-| 7 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
-| 8 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
-| 9 | Is the website internally coherent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, tab routing, JSON data, and referenced images are checked before publishing. |
-| 10 | What is still pending? | [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared; final model metrics require gated data and held-out evaluation. |
+| 6 | What is the staged roadmap? | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`docs/data/research_roadmap.json`](docs/data/research_roadmap.json), [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) | The roadmap connects public-sample task development to multi-episode staging, Qwen3-Omni LoRA, robustness runs, and larger omni-model extensions. |
+| 7 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and the latest exact-match reproduction record are explicit. |
+| 8 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
+| 9 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
+| 10 | Is the website self-consistent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, tab routing, JSON data, and referenced images are checked before publishing. |
+| 11 | What is still pending? | [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared; final model metrics require gated data and held-out evaluation. |
 
 The machine-readable project packet is
 [`docs/data/project_packet.json`](docs/data/project_packet.json).
@@ -296,6 +301,7 @@ Hugging Face Space app:
 | Brand assets | `docs/data/brand_assets.json`, `docs/assets/brand/` | Indexes the generated logo, favicon, README/HF card image, app icon, and social preview |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` | Defines the task unit, split, metrics, leakage controls, and current limitations |
 | Task surface integrity | `docs/data/task_surface_integrity.json` | Checks the public task cards, readable task names, representative modality thumbnails, and interactive walkthrough storyboard |
+| Research roadmap | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | Shows the staged path from sample-level task development to multi-episode and larger omni-model work |
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and debuggable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode task development inspectable without rerunning first |
@@ -422,6 +428,7 @@ docs/
   data/website_integrity.json       # machine-readable website integrity check
   data/project_manifest.json        # machine-readable public-surface metadata
   data/project_packet.json          # machine-readable project path and scope summary
+  data/research_roadmap.json        # staged multi-episode and omni-model roadmap
   data/research_directions.json     # four-track website data bundle
   data/research_direction_extensions.json # four extra probe data bundle
   data/task_walkthroughs.json       # human-readable task-card and walkthrough-storyboard data

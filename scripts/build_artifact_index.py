@@ -23,7 +23,7 @@ ARTIFACTS = [
         "path": "PROJECT_BRIEF.md",
         "kind": "project_path",
         "surface": "repo_hf",
-        "proves": "Gives first-pass readers a concise project shape before the detailed artifact trail.",
+        "shows": "Gives first-pass readers a concise project shape before the detailed artifact trail.",
     },
     {
         "id": "project_brief_json",
@@ -31,7 +31,7 @@ ARTIFACTS = [
         "path": "docs/data/project_brief.json",
         "kind": "project_path",
         "surface": "website_hf",
-        "proves": "Machine-readable first-reader project brief for the website and Hugging Face mirrors.",
+        "shows": "Machine-readable first-reader project brief for the website and Hugging Face mirrors.",
     },
     {
         "id": "project_status",
@@ -39,7 +39,7 @@ ARTIFACTS = [
         "path": "PROJECT_STATUS.md",
         "kind": "project_path",
         "surface": "repo_hf",
-        "proves": "Gives a compact current-state table for first-pass readers.",
+        "shows": "Gives a compact current-state table for first-pass readers.",
     },
     {
         "id": "project_status_json",
@@ -47,7 +47,23 @@ ARTIFACTS = [
         "path": "docs/data/project_status.json",
         "kind": "project_path",
         "surface": "website_hf",
-        "proves": "Machine-readable copy of the current project status for website and HF mirrors.",
+        "shows": "Machine-readable copy of the current project status for website and HF mirrors.",
+    },
+    {
+        "id": "research_roadmap",
+        "title": "Research roadmap",
+        "path": "RESEARCH_ROADMAP.md",
+        "kind": "project_path",
+        "surface": "repo_hf",
+        "shows": "Defines the staged path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions.",
+    },
+    {
+        "id": "research_roadmap_json",
+        "title": "Research roadmap JSON",
+        "path": "docs/data/research_roadmap.json",
+        "kind": "project_path",
+        "surface": "website_hf",
+        "shows": "Machine-readable staged roadmap for the website and Hugging Face mirrors.",
     },
     {
         "id": "evidence_contract",
@@ -55,7 +71,7 @@ ARTIFACTS = [
         "path": "EVIDENCE_CONTRACT.md",
         "kind": "project_scope",
         "surface": "repo",
-        "proves": "Defines the implemented scope, setup-stage items, and multi-episode prerequisites.",
+        "shows": "Defines the implemented scope, setup-stage items, and multi-episode prerequisites.",
     },
     {
         "id": "project_packet",
@@ -63,7 +79,7 @@ ARTIFACTS = [
         "path": "docs/data/project_packet.json",
         "kind": "project_path",
         "surface": "website_hf",
-        "proves": "Gives a short project path with scope status and public surfaces.",
+        "shows": "Gives a short project path with scope status and public surfaces.",
     },
     {
         "id": "artifact_guide",
@@ -71,7 +87,7 @@ ARTIFACTS = [
         "path": "ARTIFACT_GUIDE.md",
         "kind": "project_path",
         "surface": "repo_hf",
-        "proves": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
+        "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
     },
     {
         "id": "official_dataset_card_alignment",
@@ -79,7 +95,7 @@ ARTIFACTS = [
         "path": "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
         "kind": "source_alignment",
         "surface": "repo_hf",
-        "proves": "Aligns public dataset wording with the official gated Xperience-10M card, public sample card, HF API metadata, and current project coverage.",
+        "shows": "Aligns public dataset wording with the official gated Xperience-10M card, public sample card, HF API metadata, and current project coverage.",
     },
     {
         "id": "official_dataset_card_alignment_json",
@@ -87,7 +103,7 @@ ARTIFACTS = [
         "path": "docs/data/xperience10m_dataset_card_alignment.json",
         "kind": "source_alignment",
         "surface": "website_hf",
-        "proves": "Machine-readable upstream dataset-card, sample-card, and HF API alignment facts for website and HF mirrors.",
+        "shows": "Machine-readable upstream dataset-card, sample-card, and HF API alignment facts for website and HF mirrors.",
     },
     {
         "id": "source_alignment",
@@ -95,7 +111,7 @@ ARTIFACTS = [
         "path": "SOURCE_ALIGNMENT_AUDIT.md",
         "kind": "source_alignment",
         "surface": "repo_hf",
-        "proves": "Summarizes the pass/fail check for full-dataset facts, sample-card facts, API-listing notes, and project coverage.",
+        "shows": "Summarizes the pass/fail check for full-dataset facts, sample-card facts, API-listing notes, and project coverage.",
     },
     {
         "id": "source_alignment_json",
@@ -103,7 +119,7 @@ ARTIFACTS = [
         "path": "docs/data/source_alignment_audit.json",
         "kind": "source_alignment",
         "surface": "website_hf",
-        "proves": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
+        "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
     },
     {
         "id": "source_alignment_validator",
@@ -111,7 +127,7 @@ ARTIFACTS = [
         "path": "scripts/validate_source_alignment.py",
         "kind": "source_alignment",
         "surface": "repo_hf",
-        "proves": "Regenerates the source-alignment report from committed facts and public card text.",
+        "shows": "Regenerates the source-alignment report from committed facts and public card text.",
     },
     {
         "id": "hf_publisher",
@@ -119,7 +135,7 @@ ARTIFACTS = [
         "path": "scripts/publish_hf_bundles.py",
         "kind": "publication_workflow",
         "surface": "repo_hf",
-        "proves": "Publishes prepared Space, artifact dataset, and model bundles, including an explicit model-binary upload batch.",
+        "shows": "Publishes prepared Space, artifact dataset, and model bundles, including an explicit model-binary upload batch.",
     },
     {
         "id": "evaluation_protocol",
@@ -127,7 +143,7 @@ ARTIFACTS = [
         "path": "EVALUATION_PROTOCOL.md",
         "kind": "evaluation_protocol",
         "surface": "repo_hf",
-        "proves": "Defines the window unit, chronological split, task metrics, leakage controls, and current limitations.",
+        "shows": "Defines the window unit, chronological split, task metrics, leakage controls, and current limitations.",
     },
     {
         "id": "evaluation_protocol_json",
@@ -135,7 +151,7 @@ ARTIFACTS = [
         "path": "docs/data/evaluation_protocol.json",
         "kind": "evaluation_protocol",
         "surface": "website_hf",
-        "proves": "Machine-readable protocol generated from committed task metrics for website and HF mirrors.",
+        "shows": "Machine-readable protocol generated from committed task metrics for website and HF mirrors.",
     },
     {
         "id": "evaluation_protocol_builder",
@@ -143,7 +159,7 @@ ARTIFACTS = [
         "path": "scripts/build_evaluation_protocol.py",
         "kind": "evaluation_protocol",
         "surface": "repo_hf",
-        "proves": "Regenerates the protocol from committed summary metrics and task artifacts.",
+        "shows": "Regenerates the protocol from committed summary metrics and task artifacts.",
     },
     {
         "id": "research_takeaways",
@@ -151,7 +167,7 @@ ARTIFACTS = [
         "path": "RESEARCH_TAKEAWAYS.md",
         "kind": "result_interpretation",
         "surface": "repo_hf",
-        "proves": "Summarizes the main research lessons from committed metrics and identifies which experiments need held-out episodes.",
+        "shows": "Summarizes the main research lessons from committed metrics and identifies which experiments need held-out episodes.",
     },
     {
         "id": "research_takeaways_json",
@@ -159,7 +175,7 @@ ARTIFACTS = [
         "path": "docs/data/research_takeaways.json",
         "kind": "result_interpretation",
         "surface": "website_hf",
-        "proves": "Machine-readable result interpretation for the website, HF cards, and mirror checks.",
+        "shows": "Machine-readable result interpretation for the website, HF cards, and mirror checks.",
     },
     {
         "id": "research_takeaways_builder",
@@ -167,7 +183,7 @@ ARTIFACTS = [
         "path": "scripts/build_research_takeaways.py",
         "kind": "result_interpretation",
         "surface": "repo_hf",
-        "proves": "Regenerates the research takeaways from committed summary metrics and task result artifacts.",
+        "shows": "Regenerates the research takeaways from committed summary metrics and task result artifacts.",
     },
     {
         "id": "figure_index",
@@ -175,7 +191,7 @@ ARTIFACTS = [
         "path": "FIGURE_INDEX.md",
         "kind": "visual_evidence",
         "surface": "repo_hf",
-        "proves": "Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts.",
+        "shows": "Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts.",
     },
     {
         "id": "figure_index_json",
@@ -183,7 +199,7 @@ ARTIFACTS = [
         "path": "docs/data/figure_index.json",
         "kind": "visual_evidence",
         "surface": "website_hf",
-        "proves": "Machine-readable visual asset index for website and Hugging Face mirrors.",
+        "shows": "Machine-readable visual asset index for website and Hugging Face mirrors.",
     },
     {
         "id": "figure_index_builder",
@@ -191,7 +207,7 @@ ARTIFACTS = [
         "path": "scripts/build_figure_index.py",
         "kind": "visual_evidence",
         "surface": "repo_hf",
-        "proves": "Regenerates visual-asset hashes, dimensions, and source-script provenance.",
+        "shows": "Regenerates visual-asset hashes, dimensions, and source-script provenance.",
     },
     {
         "id": "brand_assets_json",
@@ -199,7 +215,7 @@ ARTIFACTS = [
         "path": "docs/data/brand_assets.json",
         "kind": "visual_evidence",
         "surface": "website_hf",
-        "proves": "Machine-readable manifest for the generated logo system, favicon, social card, dimensions, hashes, and usage roles.",
+        "shows": "Machine-readable manifest for the generated logo system, favicon, social card, dimensions, hashes, and usage roles.",
     },
     {
         "id": "brand_logo_social_card",
@@ -207,7 +223,7 @@ ARTIFACTS = [
         "path": "docs/assets/brand/xperience10m-logo-social-card.png",
         "kind": "visual_evidence",
         "surface": "website_hf",
-        "proves": "Provides the project logo card used in README, Hugging Face cards, and social previews.",
+        "shows": "Provides the project logo card used in README, Hugging Face cards, and social previews.",
     },
     {
         "id": "brand_asset_builder",
@@ -215,7 +231,7 @@ ARTIFACTS = [
         "path": "scripts/build_brand_assets.py",
         "kind": "visual_evidence",
         "surface": "repo_hf",
-        "proves": "Regenerates logo derivatives, favicon variants, app icons, and the Open Graph social card from the generated logo mark.",
+        "shows": "Regenerates logo derivatives, favicon variants, app icons, and the Open Graph social card from the generated logo mark.",
     },
     {
         "id": "quality_gates",
@@ -223,7 +239,7 @@ ARTIFACTS = [
         "path": "QUALITY_GATES.md",
         "kind": "quality_gate",
         "surface": "repo_hf",
-        "proves": "Lists the automated and post-publish checks used to keep the release current.",
+        "shows": "Lists the automated and post-publish checks used to keep the release current.",
     },
     {
         "id": "quality_gate_manifest",
@@ -231,7 +247,7 @@ ARTIFACTS = [
         "path": "docs/data/quality_gates.json",
         "kind": "quality_gate",
         "surface": "website_hf",
-        "proves": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
+        "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
     },
     {
         "id": "public_surface_qa",
@@ -239,7 +255,7 @@ ARTIFACTS = [
         "path": "PUBLIC_SURFACE_QA.md",
         "kind": "quality_gate",
         "surface": "repo_hf",
-        "proves": "Keeps the repo, website, and Hugging Face cards aligned as one coherent research project surface.",
+        "shows": "Keeps the repo, website, and Hugging Face cards aligned as one cohesive research project surface.",
     },
     {
         "id": "public_surface_qa_json",
@@ -248,7 +264,7 @@ ARTIFACTS = [
         "kind": "quality_gate",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Machine-readable report for SEO/social metadata, accessible tab semantics, public links, project links, and reader-facing copy.",
+        "shows": "Machine-readable report for SEO/social metadata, accessible tab semantics, public links, project links, and reader-facing copy.",
     },
     {
         "id": "public_surface_qa_builder",
@@ -256,7 +272,7 @@ ARTIFACTS = [
         "path": "scripts/build_public_surface_qa.py",
         "kind": "quality_gate",
         "surface": "repo_hf",
-        "proves": "Regenerates the public project-surface report before release.",
+        "shows": "Regenerates the public project-surface report before release.",
     },
     {
         "id": "task_surface_integrity",
@@ -265,7 +281,7 @@ ARTIFACTS = [
         "kind": "quality_gate",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Confirms the public 12-task cards use human-readable research names, representative modality thumbnails, and the interactive walkthrough/player JSON contract.",
+        "shows": "Confirms the public 12-task cards use human-readable research names, representative modality thumbnails, and the interactive walkthrough/player JSON contract.",
     },
     {
         "id": "task_surface_validator",
@@ -273,7 +289,7 @@ ARTIFACTS = [
         "path": "scripts/validate_task_surface.py",
         "kind": "quality_gate",
         "surface": "repo_hf",
-        "proves": "Regenerates the task-surface integrity report and fails if task cards expose raw artifact ids or lose the interactive player wiring.",
+        "shows": "Regenerates the task-surface integrity report and fails if task cards expose raw artifact ids or lose the interactive player wiring.",
     },
     {
         "id": "live_publication_status",
@@ -282,7 +298,7 @@ ARTIFACTS = [
         "kind": "quality_gate",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Records the last live GitHub/HF URL verification after upload.",
+        "shows": "Records the last live GitHub/HF URL verification after upload.",
     },
     {
         "id": "live_publication_verifier",
@@ -290,7 +306,7 @@ ARTIFACTS = [
         "path": "scripts/verify_live_publication.py",
         "kind": "quality_gate",
         "surface": "repo",
-        "proves": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
+        "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
     },
     {
         "id": "reproducibility_contract",
@@ -298,7 +314,7 @@ ARTIFACTS = [
         "path": "REPRODUCIBILITY.md",
         "kind": "reproducibility",
         "surface": "repo_hf",
-        "proves": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
+        "shows": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
     },
     {
         "id": "reproducibility_matrix",
@@ -306,7 +322,7 @@ ARTIFACTS = [
         "path": "docs/data/reproducibility_matrix.json",
         "kind": "reproducibility",
         "surface": "website_hf",
-        "proves": "Machine-readable reproduction steps with expected artifacts and public boundaries.",
+        "shows": "Machine-readable reproduction steps with expected artifacts and public boundaries.",
     },
     {
         "id": "artifact_index_builder",
@@ -314,7 +330,7 @@ ARTIFACTS = [
         "path": "scripts/build_artifact_index.py",
         "kind": "project_path",
         "surface": "repo_hf",
-        "proves": "Generates the selective proof-artifact catalog from local files.",
+        "shows": "Generates the selective artifact catalog from local files.",
     },
     {
         "id": "publication_audit",
@@ -323,7 +339,7 @@ ARTIFACTS = [
         "kind": "publication_package_check",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Confirms public bundles exclude raw data, caches, heavy archives, and token strings.",
+        "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and token strings.",
     },
     {
         "id": "scale_up_status_check",
@@ -332,7 +348,7 @@ ARTIFACTS = [
         "kind": "scale_up_status",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Records historical 32ep setup paths separately from completed held-out-episode results.",
+        "shows": "Records historical 32ep setup paths separately from completed held-out-episode results.",
     },
     {
         "id": "mirror_parity",
@@ -341,7 +357,7 @@ ARTIFACTS = [
         "kind": "mirror_parity",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
+        "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
     },
     {
         "id": "website_integrity",
@@ -350,7 +366,7 @@ ARTIFACTS = [
         "kind": "integrity_report",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
+        "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
     },
     {
         "id": "project_manifest",
@@ -358,7 +374,7 @@ ARTIFACTS = [
         "path": "docs/data/project_manifest.json",
         "kind": "metadata",
         "surface": "website_hf",
-        "proves": "Lists public URLs, upstream sources, and machine-readable project metadata.",
+        "shows": "Lists public URLs, upstream sources, and machine-readable project metadata.",
     },
     {
         "id": "task_summary",
@@ -366,7 +382,7 @@ ARTIFACTS = [
         "path": "results/episode_task_suite/summary_report.json",
         "kind": "metrics_source",
         "surface": "repo_hf",
-        "proves": "Stores the task definitions, splits, feature dimension, and minimal/neural metrics.",
+        "shows": "Stores the task definitions, splits, feature dimension, and minimal/neural metrics.",
     },
     {
         "id": "website_metrics_bundle",
@@ -374,7 +390,7 @@ ARTIFACTS = [
         "path": "docs/data/summary_metrics.json",
         "kind": "website_data",
         "surface": "website_hf",
-        "proves": "Mirrors task metrics for the static dashboard.",
+        "shows": "Mirrors task metrics for the static dashboard.",
     },
     {
         "id": "feature_manifest",
@@ -382,7 +398,7 @@ ARTIFACTS = [
         "path": "results/episode_task_suite/feature_manifest.json",
         "kind": "data_contract",
         "surface": "repo_hf",
-        "proves": "Maps the 8,378-dimensional window vector back to source feature blocks.",
+        "shows": "Maps the 8,378-dimensional window vector back to source feature blocks.",
     },
     {
         "id": "available_modalities",
@@ -390,7 +406,7 @@ ARTIFACTS = [
         "path": "results/episode_task_suite/available_modalities.json",
         "kind": "data_contract",
         "surface": "repo_hf",
-        "proves": "Documents which sample modalities entered the current extracted feature contract.",
+        "shows": "Documents which sample modalities entered the current extracted feature contract.",
     },
     {
         "id": "windows_table",
@@ -398,7 +414,7 @@ ARTIFACTS = [
         "path": "results/episode_task_suite/windows.csv",
         "kind": "data_contract",
         "surface": "repo_hf",
-        "proves": "Lists the 1,161 aligned windows and their frame/action/subtask labels.",
+        "shows": "Lists the 1,161 aligned windows and their frame/action/subtask labels.",
     },
     {
         "id": "neural_mlp_directory",
@@ -406,7 +422,7 @@ ARTIFACTS = [
         "path": "results/episode_task_suite/neural_mlp",
         "kind": "result_directory",
         "surface": "repo_hf_model",
-        "proves": "Stores matching PyTorch MLP results for the 12 task contracts.",
+        "shows": "Stores matching PyTorch MLP results for the 12 task contracts.",
     },
     {
         "id": "research_direction_taxonomy",
@@ -414,7 +430,7 @@ ARTIFACTS = [
         "path": "results/episode_task_suite/research_directions/research_direction_taxonomy.json",
         "kind": "taxonomy",
         "surface": "repo_hf",
-        "proves": "Maps the 12 tasks to the four Ropedia research directions as direct/proxy/diagnostic.",
+        "shows": "Maps the 12 tasks to the four Ropedia research directions as direct/proxy/diagnostic.",
     },
     {
         "id": "research_direction_extensions",
@@ -422,7 +438,7 @@ ARTIFACTS = [
         "path": "results/episode_task_suite/research_direction_extensions/research_direction_extension_results.json",
         "kind": "metrics_source",
         "surface": "repo_hf",
-        "proves": "Stores one coded extension probe per research direction with minimal and neural metrics.",
+        "shows": "Stores one coded extension probe per research direction with minimal and neural metrics.",
     },
     {
         "id": "task_walkthroughs",
@@ -430,7 +446,7 @@ ARTIFACTS = [
         "path": "results/episode_task_suite/task_walkthroughs/TASK_WALKTHROUGHS.md",
         "kind": "onboarding_doc",
         "surface": "repo_hf",
-        "proves": "Explains every task with case study, input, process modules, output, and limitation.",
+        "shows": "Explains every task with case study, input, process modules, output, and limitation.",
     },
     {
         "id": "task_suite_infographic",
@@ -438,7 +454,7 @@ ARTIFACTS = [
         "path": "docs/assets/task_suite_infographic.png",
         "kind": "generated_figure",
         "surface": "website_hf",
-        "proves": "Presents the task suite and sample modality thumbnails with metrics generated from committed files.",
+        "shows": "Presents the task suite and sample modality thumbnails with metrics generated from committed files.",
     },
     {
         "id": "modality_atlas",
@@ -446,7 +462,7 @@ ARTIFACTS = [
         "path": "docs/data/modality_atlas.json",
         "kind": "website_data",
         "surface": "website_hf",
-        "proves": "Documents the seven public-sample modality cards and their derived thumbnail assets.",
+        "shows": "Documents the seven public-sample modality cards and their derived thumbnail assets.",
     },
     {
         "id": "modality_thumbnails",
@@ -454,7 +470,7 @@ ARTIFACTS = [
         "path": "docs/assets/modalities",
         "kind": "generated_figure_assets",
         "surface": "website_hf",
-        "proves": "Stores small derived thumbnails for readable website modality cards without raw data redistribution.",
+        "shows": "Stores small derived thumbnails for readable website modality cards without raw data redistribution.",
     },
     {
         "id": "pipeline_figure",
@@ -462,7 +478,7 @@ ARTIFACTS = [
         "path": "docs/assets/pipeline_diagram.png",
         "kind": "generated_figure",
         "surface": "website_hf",
-        "proves": "Shows the raw-episode to artifact pipeline with verified labels.",
+        "shows": "Shows the raw-episode to artifact pipeline with verified labels.",
     },
     {
         "id": "architecture_figure",
@@ -470,7 +486,7 @@ ARTIFACTS = [
         "path": "docs/assets/task_architectures.png",
         "kind": "generated_figure",
         "surface": "website_hf",
-        "proves": "Shows the shared feature pipeline and minimal/neural head families.",
+        "shows": "Shows the shared feature pipeline and minimal/neural head families.",
     },
     {
         "id": "qwen_data_access_status",
@@ -478,7 +494,7 @@ ARTIFACTS = [
         "path": "results/omni_finetune/DATA_ACCESS_STATUS.md",
         "kind": "scaleup_status",
         "surface": "repo_hf",
-        "proves": "Summarizes the data-access requirement before the 32-episode Qwen3-Omni pilot can run.",
+        "shows": "Summarizes the data-access requirement before the 32-episode Qwen3-Omni pilot can run.",
     },
     {
         "id": "multi_episode_access_status",
@@ -486,7 +502,7 @@ ARTIFACTS = [
         "path": "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
         "kind": "scaleup_status",
         "surface": "repo_hf",
-        "proves": "Documents the public multi-episode access status and 32-episode pilot selection.",
+        "shows": "Documents the public multi-episode access status and 32-episode pilot selection.",
     },
     {
         "id": "citation",
@@ -494,7 +510,7 @@ ARTIFACTS = [
         "path": "CITATION.cff",
         "kind": "citation",
         "surface": "repo_hf",
-        "proves": "Makes the project externally citable.",
+        "shows": "Makes the project externally citable.",
     },
     {
         "id": "license",
@@ -502,7 +518,7 @@ ARTIFACTS = [
         "path": "LICENSE",
         "kind": "license",
         "surface": "repo_hf",
-        "proves": "Separates MIT-scoped code from original Xperience-10M data terms.",
+        "shows": "Separates MIT-scoped code from original Xperience-10M data terms.",
     },
 ]
 
