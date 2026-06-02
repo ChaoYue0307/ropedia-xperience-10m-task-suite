@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-02T07:16:31+00:00",
+  "generated_at_utc": "2026-06-02T07:24:12+00:00",
   "status": "pass",
   "artifact_count": 55,
   "missing": [],
@@ -272,7 +272,7 @@
       "proves": "Machine-readable release-gate summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 7480,
-      "sha256": "723d11784ab4db18b116ef4b2af4b1c55164692457776eb168475bf77356ec1c"
+      "sha256": "4ed57c56fe9e0340577b342f46a3de4de711dba0e2b172aff8ab874bf4c3f8e6"
     },
     {
       "id": "public_surface_qa",
@@ -340,7 +340,7 @@
       "volatile": true,
       "proves": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 33333,
+      "bytes": 45353,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -351,8 +351,8 @@
       "surface": "repo",
       "proves": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 22540,
-      "sha256": "6d0f1a0f12680b2c0c42da203e00139fa020e87d91a2e0f31141c74e1262901c"
+      "bytes": 25837,
+      "sha256": "bf3f37956f97112432f8b57ed396f530af0a6aade629efb728b73a90fd4dccab"
     },
     {
       "id": "reproducibility_contract",
