@@ -375,6 +375,9 @@
     }
     .section-tab {
       appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       flex: 0 0 auto;
       min-height: 38px;
       border: 1px solid rgba(164, 242, 127, 0.18);
@@ -387,6 +390,7 @@
       font-size: 13px;
       font-weight: 660;
       line-height: 1.15;
+      text-align: center;
       white-space: nowrap;
       transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms cubic-bezier(0.16, 1, 0.3, 1), background 220ms cubic-bezier(0.16, 1, 0.3, 1), color 220ms cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -1526,13 +1530,17 @@
         line-height: 1.25;
       }
       .section-tabs {
+        flex-wrap: wrap;
         gap: 6px;
+        overflow-x: visible;
         padding-top: 8px;
       }
       .section-tab {
+        flex: 1 1 calc(50% - 6px);
         min-height: 34px;
         padding: 7px 10px;
         font-size: 12px;
+        white-space: normal;
       }
       main > section { scroll-margin-top: 246px; }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
@@ -1657,7 +1665,7 @@
         </button>
         <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="artifacts" aria-selected="false" aria-pressed="false" aria-controls="evidence artifacts omni-relay run" tabindex="-1">
           <strong>Resources</strong>
-          <span>artifacts and scale-up path</span>
+          <span>research artifacts and scale-up</span>
         </button>
       </div>
       <div class="wrap section-tabs" id="sectionTabs" role="tablist" aria-label="Sections inside the selected project tab"></div>
@@ -2296,34 +2304,13 @@
         <div class="artifact-library">
           <section class="artifact-group">
             <div class="artifact-group-head">
-              <div><span>Start here</span><h3>Project map and scope boundary</h3></div>
-              <p>These files tell a reader what has been implemented, which artifacts support it, and where the current scale-up boundary stops.</p>
+              <div><span>Research artifacts</span><h3>From one episode to checked task heads</h3></div>
+              <p>Start with the files that define the sample windows, feature blocks, task contracts, metrics, walkthroughs, and research-direction mapping.</p>
             </div>
             <div class="artifact-grid">
-              <article class="artifact primary-artifact"><div><h3>Artifact guide</h3><p>Human-readable map from project scope to data contract, task evidence, platform mirrors, and scale-up status.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ARTIFACT_GUIDE.md">ARTIFACT_GUIDE.md</a></article>
-              <article class="artifact"><h3>Evidence contract</h3><p>Defines verified, readiness-only, blocked, and out-of-scope claims.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">EVIDENCE_CONTRACT.md</a></article>
-              <article class="artifact"><h3>Quality gates</h3><p>One release checklist for automated validators and live post-publish checks.</p><a href="data/quality_gates.json">quality_gates.json</a></article>
-              <article class="artifact"><h3>Public surface QA</h3><p>Checks repo, website, and Hugging Face presentation quality, accessibility semantics, public links, and copy hygiene.</p><a href="data/public_surface_qa.json">public_surface_qa.json</a></article>
-              <article class="artifact"><h3>Live publication</h3><p>Last public GitHub/HF URL verification after upload.</p><a href="data/live_publication_status.json">live_publication_status.json</a></article>
-              <article class="artifact"><h3>Artifact index</h3><p>Selective source-of-truth catalog with existence checks, sizes, and stable-file hashes.</p><a href="data/artifact_index.json">artifact_index.json</a></article>
-              <article class="artifact"><h3>Mirror parity</h3><p>Prepared repo, HF Space, artifact dataset, and model bundle parity for critical data, figures, website HTML, and validator files.</p><a href="data/mirror_parity.json">mirror_parity.json</a></article>
-              <article class="artifact"><h3>Scope claim guard</h3><p>Machine check that historical <code>32ep</code> identifiers are provenance, not real 32-episode result claims.</p><a href="data/scope_claims_audit.json">scope_claims_audit.json</a></article>
-              <article class="artifact"><h3>Publication hygiene</h3><p>Checks raw-data exclusion, cache exclusion, heavy-archive exclusion, token-string hygiene, and public-card figure freshness.</p><a href="data/publication_audit.json">publication_audit.json</a></article>
-              <article class="artifact"><h3>Website integrity</h3><p>Checks local links, anchors, JSON files, and referenced website image dimensions.</p><a href="data/website_integrity.json">website_integrity.json</a></article>
-              <article class="artifact"><h3>Task-surface integrity</h3><p>Checks that public task cards use readable research names, modality thumbnails, and the interactive walkthrough/player contract.</p><a href="data/task_surface_integrity.json">task_surface_integrity.json</a></article>
-              <article class="artifact"><h3>Project packet</h3><p>Machine-readable 90-second project path and scope summary.</p><a href="data/project_packet.json">project_packet.json</a></article>
-            </div>
-          </section>
-
-          <section class="artifact-group">
-            <div class="artifact-group-head">
-              <div><span>Data and task evidence</span><h3>From one episode to checked task heads</h3></div>
-              <p>These artifacts show the exact sample windows, feature blocks, task contracts, metrics, walkthroughs, and research-direction mapping.</p>
-            </div>
-            <div class="artifact-grid">
-              <article class="artifact"><h3>Task-suite report</h3><p>One JSON file with every task definition, split detail, and metric.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a></article>
-              <article class="artifact"><h3>Windows table</h3><p>Window start/end frames and aligned action/subtask labels.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">windows.csv</a></article>
-              <article class="artifact"><h3>Feature manifest</h3><p>Start/end index and dimension for every current feature block.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a></article>
+              <article class="artifact primary-artifact"><div><h3>Task-suite report</h3><p>One JSON file with every task definition, split detail, feature dimension, and minimal/neural metric.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a></article>
+              <article class="artifact"><h3>Windows table</h3><p>Window start/end frames and aligned action/subtask labels for the public sample episode.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">windows.csv</a></article>
+              <article class="artifact"><h3>Feature manifest</h3><p>Start/end index and dimension for every current feature block in the 8,378-d window vector.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a></article>
               <article class="artifact"><h3>Neural MLP task results</h3><p>Per-task PyTorch MLP metrics, predictions, histories, and checkpoints for the same 12 task contracts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural_mlp/</a></article>
               <article class="artifact"><h3>Four-direction taxonomy</h3><p>Generated JSON, CSV, Markdown, and website data mapping all 12 tasks to the four research tracks.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_directions">research_directions/</a></article>
               <article class="artifact"><h3>Direction extension probes</h3><p>Four coded probes, one per research direction, with minimal and neural metrics plus prediction/rank CSVs.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_direction_extensions">research_direction_extensions/</a></article>
@@ -2334,16 +2321,18 @@
 
           <section class="artifact-group">
             <div class="artifact-group-head">
-              <div><span>Mirrors and reproducibility</span><h3>Public surfaces and runnable code</h3></div>
-              <p>The same evidence is mirrored across GitHub Pages, Hugging Face, scripts, and lightweight baseline model repositories.</p>
+              <div><span>Public surfaces</span><h3>Project map, mirrors, and runnable code</h3></div>
+              <p>Use these files to navigate the whole project, open the published mirrors, or reproduce the public-sample pipeline.</p>
             </div>
             <div class="artifact-grid">
+              <article class="artifact primary-artifact"><div><h3>Artifact guide</h3><p>Human-readable map from project scope to data contract, task evidence, platform mirrors, and scale-up status.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ARTIFACT_GUIDE.md">ARTIFACT_GUIDE.md</a></article>
               <article class="artifact"><h3>Reproduction scripts</h3><p>Training, visualization, taxonomy, walkthrough, validator, and omni-readiness scripts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/scripts">scripts/</a></article>
-              <article class="artifact"><h3>Current all-feature action model</h3><p>Classifier metrics, predictions, confusion matrix, and model weights.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/min_all_modalities_action_model/metrics.json">metrics.json</a></article>
               <article class="artifact"><h3>Hugging Face Space</h3><p>The dashboard packaged as a public static Space.</p><a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a></article>
               <article class="artifact"><h3>Derived HF artifacts</h3><p>Metrics, predictions, docs, and lightweight derived files without raw data redistribution.</p><a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">dataset repo</a></article>
               <article class="artifact"><h3>HF baseline models</h3><p>Minimal NumPy softmax, ridge baselines, and neural task-head model files.</p><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">model repo</a></article>
               <article class="artifact"><h3>HF collection</h3><p>Space, artifacts, and model baselines grouped into one public project collection.</p><a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite">collection</a></article>
+              <article class="artifact"><h3>Current all-feature action model</h3><p>Classifier metrics, predictions, confusion matrix, and model weights.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/min_all_modalities_action_model/metrics.json">metrics.json</a></article>
+              <article class="artifact"><h3>Project packet</h3><p>Machine-readable 90-second project path and scope summary.</p><a href="data/project_packet.json">project_packet.json</a></article>
             </div>
           </section>
 
@@ -2353,9 +2342,28 @@
               <p>The multi-episode Qwen3-Omni path is documented and scripted, but no full-pilot metric is claimed until the data gate and held-out evaluation pass.</p>
             </div>
             <div class="artifact-grid">
+              <article class="artifact primary-artifact"><div><h3>Evidence contract</h3><p>Defines verified, readiness-only, blocked, and out-of-scope claims before a reader compares metrics.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">EVIDENCE_CONTRACT.md</a></article>
               <article class="artifact"><h3>Multi-episode access status</h3><p>Public data-access boundary and selected 32-episode pilot plan, without private infrastructure details.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">MULTI_EPISODE_ACCESS_STATUS.md</a></article>
               <article class="artifact"><h3>Qwen3-Omni readiness artifacts</h3><p>Manifests, metadata, metrics, and progress logs from the current readiness run.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode_manifest.json</a></article>
               <article class="artifact"><h3>32-episode data gate</h3><p>The readiness gate remains the source of truth before any full pilot training claim.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">DATA_BLOCKER_REPORT.md</a></article>
+            </div>
+          </section>
+
+          <section class="artifact-group">
+            <div class="artifact-group-head">
+              <div><span>Quality layer</span><h3>Checks that keep the public project consistent</h3></div>
+              <p>These validator outputs are kept for transparency, but they support the research artifacts rather than replacing them.</p>
+            </div>
+            <div class="artifact-grid">
+              <article class="artifact"><h3>Artifact index</h3><p>Selective source-of-truth catalog with existence checks, sizes, and stable-file hashes.</p><a href="data/artifact_index.json">artifact_index.json</a></article>
+              <article class="artifact"><h3>Task-surface integrity</h3><p>Checks that public task cards use readable research names, modality thumbnails, and the interactive walkthrough/player contract.</p><a href="data/task_surface_integrity.json">task_surface_integrity.json</a></article>
+              <article class="artifact"><h3>Website integrity</h3><p>Checks local links, anchors, JSON files, and referenced website image dimensions.</p><a href="data/website_integrity.json">website_integrity.json</a></article>
+              <article class="artifact"><h3>Quality gates</h3><p>One release checklist for automated validators and live post-publish checks.</p><a href="data/quality_gates.json">quality_gates.json</a></article>
+              <article class="artifact"><h3>Mirror parity</h3><p>Prepared repo, HF Space, artifact dataset, and model bundle parity for critical data, figures, website HTML, and validator files.</p><a href="data/mirror_parity.json">mirror_parity.json</a></article>
+              <article class="artifact"><h3>Live publication</h3><p>Last public GitHub/HF URL verification after upload.</p><a href="data/live_publication_status.json">live_publication_status.json</a></article>
+              <article class="artifact"><h3>Scope claim guard</h3><p>Machine check that historical <code>32ep</code> identifiers are provenance, not real 32-episode result claims.</p><a href="data/scope_claims_audit.json">scope_claims_audit.json</a></article>
+              <article class="artifact"><h3>Public surface QA</h3><p>Checks repo, website, and Hugging Face presentation quality, accessibility semantics, public links, and copy hygiene.</p><a href="data/public_surface_qa.json">public_surface_qa.json</a></article>
+              <article class="artifact"><h3>Publication hygiene</h3><p>Checks raw-data exclusion, cache exclusion, heavy-archive exclusion, token-string hygiene, and public-card figure freshness.</p><a href="data/publication_audit.json">publication_audit.json</a></article>
             </div>
           </section>
         </div>
@@ -2472,7 +2480,7 @@ python scripts/validate_publication_package.py</code></pre>
       { id: "directions", label: "Four Directions" },
       { id: "extensions", label: "Extension Probes" },
       { id: "diagnostics", label: "Diagnostic Charts" },
-      { id: "artifacts", label: "Artifact Library" },
+      { id: "artifacts", label: "Research Artifacts" },
       { id: "evidence", label: "Research Progress" },
       { id: "omni-relay", label: "Omni Scale-Up" },
       { id: "run", label: "Reproduce" }
