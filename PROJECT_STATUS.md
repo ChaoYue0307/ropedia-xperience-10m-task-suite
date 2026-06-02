@@ -11,19 +11,19 @@ the next development step.
 | Task suite | Verified | `scripts/episode_task_suite.py`, `results/episode_task_suite/`, `docs/data/summary_metrics.json` | All 12 task contracts have committed metrics, predictions, and minimal baseline outputs. |
 | Neural heads | Verified | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split. |
 | Research takeaways | Verified | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | The main result interpretation is generated from committed metrics: chronological class shift, neural gains on dynamics/order/alignment, open retrieval/reconstruction problems, and the need for held-out episodes. |
-| Evaluation protocol | Verified | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | Windowing, chronological split, per-task metrics, leakage controls, and unsupported interpretations are generated from committed metric artifacts. |
-| Official dataset wording | Verified | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Public wording is aligned to the official gated Xperience-10M dataset card, public sample card, and HF API metadata, including modalities, scale, access boundary, sample license/tooling, and unsupported claims. |
-| Source alignment | Verified | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json`, `scripts/validate_source_alignment.py` | Source facts and boundary markers are checked across repo docs, website, and HF cards. |
+| Evaluation protocol | Verified | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | Windowing, chronological split, per-task metrics, leakage controls, and current limitations are generated from committed metric artifacts. |
+| Official dataset wording | Verified | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Public wording is aligned to the official gated Xperience-10M dataset card, public sample card, and HF API metadata, including modalities, scale, access path, sample license/tooling, and current project coverage. |
+| Source alignment | Verified | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json`, `scripts/validate_source_alignment.py` | Source facts and current-project markers are checked across repo docs, website, and HF cards. |
 | Website and HF mirrors | Verified | `docs/data/website_integrity.json`, `docs/data/mirror_parity.json`, `docs/data/live_publication_status.json` | Local website links/assets pass, prepared mirrors match, and public GitHub/HF URLs have been checked after upload. |
-| Publication hygiene | Verified | `docs/data/publication_audit.json`, `QUALITY_GATES.md`, `docs/data/quality_gates.json` | Public bundles are checked for raw-data exclusion, cache exclusion, heavy-archive exclusion, token-string hygiene, and stale presentation copy. |
+| Publication package | Verified | `docs/data/publication_audit.json`, `QUALITY_GATES.md`, `docs/data/quality_gates.json` | Public bundles are checked for raw-data exclusion, cache exclusion, heavy-archive exclusion, token-string scanning, and stale presentation copy. |
 | Reproducibility | Verified for the public sample | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json`, `notes/reproducibility_audit.md` | The public sample workflow has explicit commands, expected outputs, and exact-match reproduction evidence. |
-| Qwen3-Omni fine-tuning | Data-gated, not a model-quality claim | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` | The 32-episode LoRA pilot is prepared, but no real held-out 32-episode result is claimed until gated data access, manifest construction, training, and held-out evaluation pass. |
+| Qwen3-Omni fine-tuning | Data-gated; full metrics pending | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` | The 32-episode LoRA pilot is prepared; final held-out metrics require gated data access, manifest construction, training, and evaluation. |
 | Raw Xperience-10M redistribution | Not included | `DATA_NOTICE.md`, `docs/data/publication_audit.json` | Raw MP4, HDF5, RRD files, private gated data, and full Qwen weights are intentionally excluded. |
 
 ## Fast Research Route
 
-1. Read this status file and `EVIDENCE_CONTRACT.md` to establish what is
-   claimed.
+1. Read this status file and `EVIDENCE_CONTRACT.md` to establish the current
+   project scope.
 2. Open `docs/data/project_packet.json` for the machine-readable project path.
 3. Inspect `RESEARCH_TAKEAWAYS.md` and
    `docs/data/research_takeaways.json` for the generated result interpretation.
@@ -37,12 +37,13 @@ the next development step.
 7. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before judging
    Qwen3-Omni scale-up status.
 
-## Do Not Infer
+## Current Reading Notes
 
-- Do not infer cross-episode generalization from the single public sample.
-- Do not treat historical `32ep` path names as real 32-episode training
-  results.
-- Do not treat the current reconstruction task as pixel-depth, mesh, NeRF, or
-  Gaussian reconstruction.
-- Do not assume audio has entered the current 8,378-dimensional baseline
-  feature vector; it is documented and visualized but not yet featurized.
+- Cross-episode generalization is a later multi-episode evaluation target; the
+  current results use one public sample episode.
+- Historical `32ep` path names refer to setup files, not completed 32-episode
+  training results.
+- The current reconstruction task reconstructs feature vectors, not pixel
+  depth, meshes, NeRF outputs, or Gaussian splats.
+- Audio is documented and visualized, but it is not yet part of the current
+  8,378-dimensional baseline feature vector.

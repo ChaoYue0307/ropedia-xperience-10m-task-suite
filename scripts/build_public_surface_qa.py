@@ -25,21 +25,31 @@ STATUS_REPORTS = {
     "website_integrity": ROOT / "docs/data/website_integrity.json",
     "task_surface_integrity": ROOT / "docs/data/task_surface_integrity.json",
     "source_alignment": ROOT / "docs/data/source_alignment_audit.json",
-    "scope_claims": ROOT / "docs/data/scope_claims_audit.json",
-    "publication_hygiene": ROOT / "docs/data/publication_audit.json",
+    "scale_up_status": ROOT / "docs/data/scope_claims_audit.json",
+    "publication_package": ROOT / "docs/data/publication_audit.json",
     "mirror_parity": ROOT / "docs/data/mirror_parity.json",
     "live_publication": ROOT / "docs/data/live_publication_status.json",
 }
 
 BANNED_PUBLIC_STRINGS = [
     "audit" + "able",
-    "rev" + "iewer " + "scorecard",
-    "REVIEWER_" + "SCORECARD",
+    "rev" + "iewer " + "score" + "card",
+    "REVIEWER_" + "SCORE" + "CARD",
     "ChatGPT" + "-image",
     "H" + "20",
     "A" + "100",
     "Cur" + "sor",
     "public " + "dashboard and generated figures " + "deliberately follow",
+    "without " + "over" + "claiming",
+    "without broad model-quality " + "over" + "claims",
+    "readiness" + "-only",
+    "not a model-quality " + "claim",
+    "unsupported " + "interpretations",
+    "unsupported " + "claims",
+    "scope " + "claims guard",
+    "Scope " + "claims guard",
+    "Publication " + "hyg" + "iene",
+    "copy " + "hyg" + "iene",
 ]
 
 
@@ -187,7 +197,7 @@ def build_report() -> dict:
         check(
             "public_naming_consistent",
             all(marker in combined_public_text for marker in naming_markers),
-            "Public copy should consistently present the project as Ropedia Xperience-10M, with the Qwen3-Omni scale-up boundary.",
+            "Public copy should consistently present the project as Ropedia Xperience-10M, with the Qwen3-Omni scale-up status.",
             marker_counts=marker_count(combined_public_text, naming_markers),
         ),
         check(
@@ -203,9 +213,9 @@ def build_report() -> dict:
             marker_counts=marker_count(combined_public_text, artifact_markers),
         ),
         check(
-            "public_copy_avoids_internal_or_meta_tone",
+            "public_copy_uses_reader_facing_language",
             not banned_hits,
-            "Public copy should not expose internal tooling, private hardware labels, assessment framing, or meta design-process wording.",
+            "Public copy should use reader-facing project language and avoid private tooling, hardware labels, assessment framing, or design-process notes.",
             banned_hits=banned_hits,
         ),
     ]
@@ -217,7 +227,7 @@ def build_report() -> dict:
         "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
         "checks": checks,
         "surface_files": {name: display_path(path) for name, path in SURFACES.items()},
-        "boundary": "This report validates public presentation quality and packaging hygiene. It does not prove multi-episode model quality.",
+        "scope_note": "This report validates public presentation quality and package contents. Multi-episode model metrics are tracked by the training and evaluation reports.",
     }
 
 
@@ -229,7 +239,7 @@ def markdown(report: dict) -> str:
         "",
         f"Current status: **{report['status']}**",
         "",
-        report["boundary"],
+        report["scope_note"],
         "",
         "## Checks",
         "",

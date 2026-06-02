@@ -20,20 +20,20 @@ OUTPUT_MD = ROOT / "QUALITY_GATES.md"
 
 GATES = [
     {
-        "id": "scope_claims",
-        "title": "Scope claims guard",
+        "id": "scale_up_status",
+        "title": "Scale-up status check",
         "command": "python scripts/validate_scope_claims.py",
         "report": "docs/data/scope_claims_audit.json",
-        "blocks_if": "Historical 32ep readiness/provenance strings are presented as real 32-episode metrics.",
-        "proves": "The public narrative does not overclaim the Qwen3-Omni readiness artifacts.",
+        "blocks_if": "Historical 32ep setup/provenance strings are presented as completed 32-episode metrics.",
+        "proves": "Qwen3-Omni setup artifacts stay distinct from the planned held-out 32-episode pilot.",
     },
     {
         "id": "source_alignment",
         "title": "Source alignment",
         "command": "python scripts/validate_source_alignment.py",
         "report": "docs/data/source_alignment_audit.json",
-        "blocks_if": "Official full-dataset facts, sample-card facts, API-listing caveats, or public-card boundary markers are missing or inconsistent.",
-        "proves": "The repo, website, and Hugging Face cards preserve the Xperience-10M source facts and current project boundary.",
+        "blocks_if": "Official full-dataset facts, sample-card facts, API-listing caveats, or current-project markers are missing or inconsistent.",
+        "proves": "The repo, website, and Hugging Face cards preserve the Xperience-10M source facts and current project scope.",
     },
     {
         "id": "website_integrity",
@@ -56,7 +56,7 @@ GATES = [
         "title": "Evaluation protocol",
         "command": "python scripts/build_evaluation_protocol.py",
         "report": "docs/data/evaluation_protocol.json",
-        "blocks_if": "Windowing, split policy, leakage controls, task metrics, or unsupported interpretations are not explicit.",
+        "blocks_if": "Windowing, split policy, leakage controls, task metrics, or current limitations are not explicit.",
         "proves": "The task evaluation protocol is generated from committed metric artifacts.",
     },
     {
@@ -88,23 +88,23 @@ GATES = [
         "title": "Artifact index",
         "command": "python scripts/build_artifact_index.py",
         "report": "docs/data/artifact_index.json",
-        "blocks_if": "Project-critical evidence files are missing from the indexed proof layer.",
-        "proves": "Core proof artifacts exist and stable files have SHA-256 hashes.",
+        "blocks_if": "Project-critical evidence files are missing from the indexed artifact layer.",
+        "proves": "Core project artifacts exist and stable files have SHA-256 hashes.",
     },
     {
-        "id": "publication_hygiene",
-        "title": "Publication hygiene",
+        "id": "publication_package",
+        "title": "Publication package check",
         "command": "python scripts/validate_publication_package.py",
         "report": "docs/data/publication_audit.json",
         "blocks_if": "Raw data, caches, heavy archives, token strings, missing required assets, or stale public-card figure references enter public bundles.",
-        "proves": "The repo and prepared HF bundles are clean enough to publish.",
+        "proves": "The repo and prepared HF bundles contain the intended public files for release.",
     },
     {
         "id": "public_surface_qa",
         "title": "Public surface QA",
         "command": "python scripts/build_public_surface_qa.py",
         "report": "docs/data/public_surface_qa.json",
-        "blocks_if": "Repo, website, or Hugging Face presentation loses SEO/social metadata, accessible tab semantics, source links, QA links, or public-copy hygiene.",
+        "blocks_if": "Repo, website, or Hugging Face presentation loses SEO/social metadata, accessible tab semantics, source links, QA links, or reader-facing copy consistency.",
         "proves": "The public repo, website, and Hugging Face cards read as one polished research project surface.",
     },
     {
@@ -169,7 +169,7 @@ def build_payload() -> dict:
         "rule": "Do not present a release as current unless every automated gate passes, then verify live GitHub/HF mirrors after publishing.",
         "automated_gates": gate_records,
         "post_publish_checks": POST_PUBLISH_CHECKS,
-        "scope_boundary": "These gates validate public packaging, claim boundaries, mirror parity, and website integrity. They do not prove cross-episode model quality.",
+        "scope_note": "These gates validate public packaging, project status wording, mirror parity, and website integrity. Cross-episode model quality is measured by the later held-out evaluation reports.",
     }
 
 
@@ -183,7 +183,7 @@ def markdown(payload: dict) -> str:
         "",
         payload["rule"],
         "",
-        "These gates validate public packaging, claim boundaries, mirror parity, website integrity, and task-surface clarity. They do not prove cross-episode model quality; the 32-episode Qwen3-Omni pilot remains gated on data access.",
+        payload["scope_note"],
         "",
         "## Automated Gates",
         "",

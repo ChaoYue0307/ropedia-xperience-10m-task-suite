@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-02T06:42:22+00:00",
+  "generated_at_utc": "2026-06-02T10:21:25+00:00",
   "summary": {
     "qwen3_omni_32_episode_claim": false,
     "dataset_manifest_num_episodes": 1,
@@ -8,12 +8,12 @@
     "training_metadata_num_train_samples": 128,
     "source_discovery_ready_for_32_episode_pilot": false,
     "historical_identifier_count": 157,
-    "public_32_episode_boundary_file_count": 10,
+    "public_32_episode_status_file_count": 10,
     "failure_count": 0
   },
   "checks": [
     {
-      "name": "project_manifest_disclaims_32_episode_qwen_result",
+      "name": "project_manifest_records_pending_32_episode_qwen_result",
       "status": "pass",
       "detail": "project_manifest scope_boundary.qwen3_omni_32_episode_claim=False",
       "evidence": [
@@ -21,7 +21,7 @@
       ]
     },
     {
-      "name": "project_packet_disclaims_32_episode_qwen_result",
+      "name": "project_packet_records_pending_32_episode_qwen_result",
       "status": "pass",
       "detail": "project_packet scope_status.qwen3_omni_32_episode_claim=False",
       "evidence": [
@@ -29,23 +29,23 @@
       ]
     },
     {
-      "name": "project_packet_forbids_32_episode_inference",
+      "name": "project_packet_describes_32_episode_setup_status",
       "status": "pass",
-      "detail": "project packet explicitly warns not to treat the readiness run as a 32-episode fine-tune",
+      "detail": "project packet describes the setup-stage Qwen3-Omni run separately from the planned 32-episode fine-tune",
       "evidence": [
         "docs/data/project_packet.json"
       ]
     },
     {
-      "name": "summary_metrics_preserves_omni_claim_boundary",
+      "name": "summary_metrics_preserves_omni_scale_up_status",
       "status": "pass",
-      "detail": "No real 32-episode fine-tune is claimed until gated data is available locally and held-out evaluation runs.",
+      "detail": "The 32-episode Qwen3-Omni fine-tune requires gated data staging and held-out evaluation.",
       "evidence": [
         "docs/data/summary_metrics.json"
       ]
     },
     {
-      "name": "omni_dataset_manifest_is_readiness_only",
+      "name": "omni_dataset_manifest_is_setup_stage",
       "status": "pass",
       "detail": "episodes=1, samples=128, split_counts={'train': 128}",
       "evidence": [
@@ -53,7 +53,7 @@
       ]
     },
     {
-      "name": "omni_training_metadata_is_readiness_only",
+      "name": "omni_training_metadata_is_setup_stage",
       "status": "pass",
       "detail": "train=128, val=0, processes=8",
       "evidence": [
@@ -96,46 +96,46 @@
       ]
     }
   ],
-  "public_boundary_observations": [
+  "public_status_observations": [
     {
       "path": "README.md",
-      "contains_32_episode_boundary_text": true
+      "contains_32_episode_status_text": true
     },
     {
       "path": "ARTIFACT_GUIDE.md",
-      "contains_32_episode_boundary_text": true
+      "contains_32_episode_status_text": true
     },
     {
       "path": "EVIDENCE_CONTRACT.md",
-      "contains_32_episode_boundary_text": true
+      "contains_32_episode_status_text": true
     },
     {
       "path": "REPRODUCIBILITY.md",
-      "contains_32_episode_boundary_text": true
+      "contains_32_episode_status_text": true
     },
     {
       "path": "docs/index.html",
-      "contains_32_episode_boundary_text": true
+      "contains_32_episode_status_text": true
     },
     {
       "path": "docs/data/artifact_index.json",
-      "contains_32_episode_boundary_text": true
+      "contains_32_episode_status_text": true
     },
     {
       "path": "docs/data/evidence_contract.json",
-      "contains_32_episode_boundary_text": true
+      "contains_32_episode_status_text": true
     },
     {
       "path": "docs/data/reproducibility_matrix.json",
-      "contains_32_episode_boundary_text": true
+      "contains_32_episode_status_text": true
     },
     {
       "path": "docs/data/project_packet.json",
-      "contains_32_episode_boundary_text": true
+      "contains_32_episode_status_text": true
     },
     {
       "path": "docs/data/summary_metrics.json",
-      "contains_32_episode_boundary_text": true
+      "contains_32_episode_status_text": true
     }
   ],
   "historical_identifiers": [

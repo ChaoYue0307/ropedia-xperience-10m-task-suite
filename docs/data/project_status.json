@@ -52,7 +52,7 @@
                 "docs/data/evaluation_protocol.json",
                 "scripts/build_evaluation_protocol.py"
             ],
-            "readout": "Windowing, chronological split, per-task metrics, leakage controls, and unsupported interpretations are generated from committed metric artifacts."
+            "readout": "Windowing, chronological split, per-task metrics, leakage controls, and current limitations are generated from committed metric artifacts."
         },
         {
             "area": "Research takeaways",
@@ -71,7 +71,7 @@
         "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
         "docs/data/xperience10m_dataset_card_alignment.json"
       ],
-            "readout": "Public wording is aligned to the official gated Xperience-10M dataset card, public sample card, and HF API metadata, including modalities, scale, access boundary, sample license/tooling, and unsupported claims."
+            "readout": "Public wording is aligned to the official gated Xperience-10M dataset card, public sample card, and HF API metadata, including modalities, scale, access path, sample license/tooling, and current project coverage."
         },
         {
             "area": "Source alignment",
@@ -81,7 +81,7 @@
                 "docs/data/source_alignment_audit.json",
                 "scripts/validate_source_alignment.py"
             ],
-            "readout": "Source facts and boundary markers are checked across repo docs, website, and HF cards."
+            "readout": "Source facts and current-project markers are checked across repo docs, website, and HF cards."
         },
         {
             "area": "Website and HF mirrors",
@@ -94,14 +94,14 @@
       "readout": "Local website links/assets pass, prepared mirrors match, and public GitHub/HF URLs have been checked after upload."
     },
     {
-      "area": "Publication hygiene",
+      "area": "Publication package",
       "status": "verified",
       "evidence": [
         "docs/data/publication_audit.json",
         "QUALITY_GATES.md",
         "docs/data/quality_gates.json"
       ],
-      "readout": "Public bundles are checked for raw-data exclusion, cache exclusion, heavy-archive exclusion, token-string hygiene, and stale presentation copy."
+      "readout": "Public bundles are checked for raw-data exclusion, cache exclusion, heavy-archive exclusion, token-string scanning, and stale presentation copy."
     },
     {
       "area": "Reproducibility",
@@ -115,12 +115,12 @@
     },
     {
       "area": "Qwen3-Omni fine-tuning",
-      "status": "data_gated_not_model_quality_claim",
+      "status": "data_gated_full_metrics_pending",
       "evidence": [
         "results/omni_finetune/DATA_BLOCKER_REPORT.md",
         "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md"
       ],
-      "readout": "The 32-episode LoRA pilot is prepared, but no real held-out 32-episode result is claimed until gated data access, manifest construction, training, and held-out evaluation pass."
+      "readout": "The 32-episode LoRA pilot is prepared, with final held-out metrics pending gated data access, manifest construction, training, and held-out evaluation."
     },
     {
       "area": "Raw Xperience-10M redistribution",
@@ -142,10 +142,10 @@
         "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
     "Inspect results/omni_finetune/DATA_BLOCKER_REPORT.md before judging Qwen3-Omni scale-up status."
   ],
-  "do_not_infer": [
-    "Do not infer cross-episode generalization from the single public sample.",
-    "Do not treat historical 32ep path names as real 32-episode training results.",
-    "Do not treat the current reconstruction task as pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
-    "Do not assume audio has entered the current 8,378-dimensional baseline feature vector; it is documented and visualized but not yet featurized."
+  "current_reading_notes": [
+    "Cross-episode generalization is evaluated in the later multi-episode stage.",
+    "Historical 32ep path names refer to setup files, not completed 32-episode training results.",
+    "The current reconstruction task reconstructs feature vectors, not pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
+    "Audio is documented and visualized, but it is not yet part of the current 8,378-dimensional baseline feature vector."
   ]
 }

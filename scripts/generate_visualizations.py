@@ -37,7 +37,7 @@ OMNI_RELAY = {
     "estimated_bytes": 72031620552,
     "exclude": ["visualization.rrd"],
     "blocker": "Hugging Face returns 403 pending review for the full Xperience-10M gated dataset.",
-    "claim_boundary": "No real 32-episode fine-tune is claimed until gated data is available locally and held-out evaluation runs.",
+    "current_scope": "The 32-episode Qwen3-Omni fine-tune requires gated data staging and held-out evaluation.",
 }
 
 

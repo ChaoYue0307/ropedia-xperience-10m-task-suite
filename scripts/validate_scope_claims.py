@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Validate that public scope claims match the actual Xperience-10M artifacts.
+"""Validate Qwen3-Omni scale-up status against the actual Xperience-10M artifacts.
 
-This guard exists because several readiness/provenance files retain historical
+This check exists because several setup/provenance files retain historical
 `32ep` run identifiers in their paths. Those identifiers are useful provenance,
-but they must never be presented as evidence of a real 32-episode fine-tune.
+but public project surfaces should present them as setup artifacts until the
+held-out 32-episode pilot is actually completed.
 """
 
 from __future__ import annotations
@@ -113,7 +114,7 @@ def scan_public_docs() -> tuple[list[dict], list[dict]]:
                         }
                     )
         if "32-episode" in text:
-            observations.append({"path": relative_path, "contains_32_episode_boundary_text": True})
+            observations.append({"path": relative_path, "contains_32_episode_status_text": True})
     return failures, observations
 
 
@@ -168,7 +169,7 @@ def build_report() -> dict:
     project_qwen_claim = project_manifest["scope_boundary"].get("qwen3_omni_32_episode_claim")
     checks.append(
         check(
-            "project_manifest_disclaims_32_episode_qwen_result",
+            "project_manifest_records_pending_32_episode_qwen_result",
             project_qwen_claim is False,
             f"project_manifest scope_boundary.qwen3_omni_32_episode_claim={project_qwen_claim!r}",
             ["docs/data/project_manifest.json"],
@@ -178,28 +179,28 @@ def build_report() -> dict:
     project_qwen_claim = project_packet["scope_status"].get("qwen3_omni_32_episode_claim")
     checks.append(
         check(
-            "project_packet_disclaims_32_episode_qwen_result",
+            "project_packet_records_pending_32_episode_qwen_result",
             project_qwen_claim is False,
             f"project_packet scope_status.qwen3_omni_32_episode_claim={project_qwen_claim!r}",
             ["docs/data/project_packet.json"],
         )
     )
-    do_not_infer = " ".join(project_packet.get("do_not_infer", []))
+    reading_notes = " ".join(project_packet.get("current_reading_notes", []))
     checks.append(
         check(
-            "project_packet_forbids_32_episode_inference",
-            "32-episode" in do_not_infer and "readiness run" in do_not_infer,
-            "project packet explicitly warns not to treat the readiness run as a 32-episode fine-tune",
+            "project_packet_describes_32_episode_setup_status",
+            "32-episode" in reading_notes and ("setup" in reading_notes or "gated data" in reading_notes),
+            "project packet describes the setup-stage Qwen3-Omni run separately from the planned 32-episode fine-tune",
             ["docs/data/project_packet.json"],
         )
     )
 
-    claim_boundary = summary_metrics.get("omni_relay", {}).get("claim_boundary", "")
+    current_scope = summary_metrics.get("omni_relay", {}).get("current_scope", "")
     checks.append(
         check(
-            "summary_metrics_preserves_omni_claim_boundary",
-            "No real 32-episode fine-tune is claimed" in claim_boundary,
-            claim_boundary,
+            "summary_metrics_preserves_omni_scale_up_status",
+            "32-episode Qwen3-Omni fine-tune requires gated data staging" in current_scope,
+            current_scope,
             ["docs/data/summary_metrics.json"],
         )
     )
@@ -207,7 +208,7 @@ def build_report() -> dict:
     split_counts = dataset_manifest.get("split_counts", {})
     checks.append(
         check(
-            "omni_dataset_manifest_is_readiness_only",
+            "omni_dataset_manifest_is_setup_stage",
             dataset_manifest.get("num_episodes") == 1
             and dataset_manifest.get("num_samples") == 128
             and split_counts == {"train": 128},
@@ -221,7 +222,7 @@ def build_report() -> dict:
 
     checks.append(
         check(
-            "omni_training_metadata_is_readiness_only",
+            "omni_training_metadata_is_setup_stage",
             training_metadata.get("num_train_samples") == 128
             and training_metadata.get("num_val_samples") == 0,
             (
@@ -289,11 +290,11 @@ def build_report() -> dict:
             "training_metadata_num_train_samples": training_metadata.get("num_train_samples"),
             "source_discovery_ready_for_32_episode_pilot": source_discovery.get("ready_for_32_episode_pilot"),
             "historical_identifier_count": len(historical_identifiers),
-            "public_32_episode_boundary_file_count": len(public_observations),
+            "public_32_episode_status_file_count": len(public_observations),
             "failure_count": len(failures),
         },
         "checks": checks,
-        "public_boundary_observations": public_observations,
+        "public_status_observations": public_observations,
         "historical_identifiers": historical_identifiers[:30],
         "historical_identifier_total_count": len(historical_identifiers),
         "failures": failures,
