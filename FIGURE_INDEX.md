@@ -33,7 +33,7 @@ Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience
 | Minimal task score chart | `docs/assets/charts/episode_task_scores.svg` | 1100 x 556 | `scripts/generate_visualizations.py` | Minimal baseline metric snapshot across the task suite. |
 | Cross-modal retrieval chart | `docs/assets/charts/cross_modal_retrieval.svg` | 1100 x 284 | `scripts/generate_visualizations.py` | Retrieval behavior chart for the cross-modal task. |
 
-## Boundary
+## Use and Scope
 
 - These figures are derived presentation artifacts or small thumbnails.
 - The index records file hashes and dimensions for reproducibility checks.

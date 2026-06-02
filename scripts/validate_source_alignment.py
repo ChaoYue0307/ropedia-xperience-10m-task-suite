@@ -364,7 +364,7 @@ def build_report(hf_root: Path) -> dict:
         check(
             "repo_public_surfaces_preserve_source_markers",
             all(item["status"] == "pass" for item in repo_marker_records),
-            "README, data notice, alignment doc, and website expose official/full/sample/current-project markers",
+            "README, data notice, alignment doc, and website expose official dataset facts, sample details, and project coverage",
             [item["path"] for item in repo_marker_records],
         )
     )
@@ -372,7 +372,7 @@ def build_report(hf_root: Path) -> dict:
         check(
             "hf_public_cards_preserve_source_markers",
             all(item["status"] == "pass" for item in hf_marker_records),
-            "HF Space, artifact dataset, model card, and mirrored project README expose current-project markers",
+            "HF Space, artifact dataset, model card, and mirrored project README expose project coverage",
             [item["path"] for item in hf_marker_records],
         )
     )

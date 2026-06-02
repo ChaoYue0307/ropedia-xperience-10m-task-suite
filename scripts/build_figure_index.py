@@ -298,7 +298,7 @@ def render_markdown(payload: dict) -> str:
         )
     lines.extend([
         "",
-        "## Boundary",
+        "## Use and Scope",
         "",
         "- These figures are derived presentation artifacts or small thumbnails.",
         "- The index records file hashes and dimensions for reproducibility checks.",

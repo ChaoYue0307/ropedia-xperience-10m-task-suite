@@ -21,10 +21,11 @@ details.
 | Estimated bytes | 72,031,620,552 |
 | Excluded file | `visualization.rrd` |
 
-## Boundary
+## Current Stage
 
-The current Qwen3-Omni artifacts are readiness artifacts from the locally
-available sample data. They are not 32-episode held-out model-quality results.
+The current Qwen3-Omni artifacts come from the locally available sample data.
+The 32-episode held-out model-quality run starts after the selected episodes
+are available locally.
 
 A real 32-episode pilot can be claimed only after:
 

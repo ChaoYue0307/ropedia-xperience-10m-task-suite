@@ -2,18 +2,18 @@
 
 This file defines what can be reproduced from the public repo and the official
 Xperience-10M sample, what each command should produce, and which results remain
-outside the current public data boundary.
+outside the current public data scope.
 
 ## Scope
 
-| Layer | Reproducible now | Boundary |
+| Layer | Reproducible now | Current scope |
 | --- | --- | --- |
 | Sample download | Yes, from `ropedia-ai/xperience-10m-sample` or ModelScope sample mirror | Sample card lists `cc-by-nc-4.0`; raw data is not redistributed in this repo. |
 | Minimal baselines | Yes | One public sample episode, chronological split. |
 | 12-task suite | Yes | Uses the current 8,378-d feature contract; audio is documented but not featurized. |
 | Neural MLP heads | Yes, when `torch` is installed | Compact task heads only, not a foundation model. |
 | Website figures and charts | Yes | Generated from committed metrics and sample thumbnails. |
-| Release package | Yes | Covers public repo and prepared HF bundles. |
+| Public bundle contents | Yes | Covers public repo and prepared HF bundles. |
 | 32-episode Qwen3-Omni LoRA pilot | Not yet | Gated by full Xperience-10M access and held-out-episode evaluation. |
 
 ## Environment
