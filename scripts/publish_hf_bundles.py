@@ -52,6 +52,11 @@ STALE_ARTIFACT_REMOTE_FILES = [
     "docs/data/" + LEGACY_SCORECARD_JSON,
 ]
 
+STALE_ARTIFACT_REMOTE_FOLDERS = [
+    "results/omni_finetune/adapter_lora",
+    "results/omni_finetune/hf_upload",
+]
+
 STALE_SPACE_REMOTE_FILES = [
     LEGACY_SCORECARD_MD,
     "data/" + LEGACY_PACKET_JSON,
@@ -142,6 +147,30 @@ def delete_remote_file_if_present(
         print(f"Remote stale-file cleanup skipped for {repo_id}/{path_in_repo}: {exc}")
 
 
+def delete_remote_folder_if_present(
+    api: HfApi,
+    token: str,
+    repo_id: str,
+    repo_type: str,
+    path_in_repo: str,
+) -> None:
+    try:
+        api.delete_folder(
+            path_in_repo=path_in_repo,
+            repo_id=repo_id,
+            repo_type=repo_type,
+            token=token,
+            commit_message=f"Remove stale {path_in_repo}",
+        )
+        print(f"Deleted stale remote folder: {repo_id}/{path_in_repo}")
+    except Exception as exc:
+        message = str(exc)
+        if "404" in message or "Entry Not Found" in message or "not found" in message.lower():
+            print(f"Remote folder already absent: {repo_id}/{path_in_repo}")
+            return
+        print(f"Remote stale-folder cleanup skipped for {repo_id}/{path_in_repo}: {exc}")
+
+
 def main() -> int:
     args = parse_args()
     hf_root = args.hf_root.resolve()
@@ -187,6 +216,8 @@ def main() -> int:
     )
     for path_in_repo in STALE_ARTIFACT_REMOTE_FILES:
         delete_remote_file_if_present(api, token, artifact_repo, "dataset", path_in_repo)
+    for path_in_repo in STALE_ARTIFACT_REMOTE_FOLDERS:
+        delete_remote_folder_if_present(api, token, artifact_repo, "dataset", path_in_repo)
     upload_folder(
         api,
         token,
