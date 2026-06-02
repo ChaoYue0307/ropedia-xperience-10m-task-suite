@@ -31,6 +31,7 @@ DATA_FILES = [
     "project_packet.json",
     "project_status.json",
     "publication_audit.json",
+    "public_surface_qa.json",
     "quality_gates.json",
     "reproducibility_matrix.json",
     "research_direction_extensions.json",
@@ -70,6 +71,7 @@ SCRIPT_FILES = [
     "build_evaluation_protocol.py",
     "build_figure_index.py",
     "build_quality_gates.py",
+    "build_public_surface_qa.py",
     "verify_live_publication.py",
     "validate_mirror_parity.py",
     "validate_publication_package.py",
@@ -92,6 +94,7 @@ DOC_FILES = [
     "EVALUATION_PROTOCOL.md",
     "FIGURE_INDEX.md",
     "PROJECT_STATUS.md",
+    "PUBLIC_SURFACE_QA.md",
     "SOURCE_ALIGNMENT_AUDIT.md",
     "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
 ]

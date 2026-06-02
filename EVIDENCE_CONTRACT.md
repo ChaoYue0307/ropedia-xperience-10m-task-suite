@@ -25,6 +25,7 @@ the dashboard as a basis for further work.
 | Historical `32ep` path strings are not treated as 32-episode results. | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | Verified pass | Classifies old run/path identifiers and fails if public presentation claims real 32-episode metrics |
 | Prepared GitHub/Hugging Face mirrors carry matching critical files. | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | Verified pass | Compares prepared data files, visual assets, website HTML, and validator scripts before upload; live URLs are checked after publishing |
 | The public GitHub and Hugging Face bundles are publication-clean. | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | Verified pass | Checks public files, HF bundles, and public-card freshness; ignored local scratch outputs are excluded |
+| The public repo, website, and Hugging Face cards present one coherent research surface. | `PUBLIC_SURFACE_QA.md`, `scripts/build_public_surface_qa.py`, `docs/data/public_surface_qa.json` | Verified public-surface QA | Checks SEO/social metadata, accessible tab semantics, public links, QA links, and copy hygiene; it does not prove model quality |
 | The public website has checked local references. | `scripts/validate_website_integrity.py`, `docs/data/website_integrity.json` | Verified pass | Checks local links, anchors, JSON data, and referenced images; external URLs are not fetched |
 | The release gate is explicit. | `QUALITY_GATES.md`, `scripts/build_quality_gates.py`, `docs/data/quality_gates.json` | Verified pass | Summarizes packaging and live-mirror checks; it does not prove cross-episode model quality |
 | The live public mirrors are checked after upload. | `scripts/verify_live_publication.py`, `docs/data/live_publication_status.json` | Verified pass | Fetches public GitHub/HF URLs; it does not validate private training state |
@@ -73,6 +74,7 @@ the dashboard as a basis for further work.
    `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` before interpreting
    any Qwen3-Omni artifact.
 16. Inspect `QUALITY_GATES.md`, `docs/data/quality_gates.json`,
+   `PUBLIC_SURFACE_QA.md`, `docs/data/public_surface_qa.json`,
    `docs/data/publication_audit.json`, and `docs/data/website_integrity.json`
    before publishing or sharing the project externally.
 17. Inspect `CITATION.cff`, `codemeta.json`, and `LICENSE` before reusing or

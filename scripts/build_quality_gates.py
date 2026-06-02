@@ -100,6 +100,14 @@ GATES = [
         "proves": "The repo and prepared HF bundles are clean enough to publish.",
     },
     {
+        "id": "public_surface_qa",
+        "title": "Public surface QA",
+        "command": "python scripts/build_public_surface_qa.py",
+        "report": "docs/data/public_surface_qa.json",
+        "blocks_if": "Repo, website, or Hugging Face presentation loses SEO/social metadata, accessible tab semantics, source links, QA links, or public-copy hygiene.",
+        "proves": "The public repo, website, and Hugging Face cards read as one polished research project surface.",
+    },
+    {
         "id": "mirror_parity",
         "title": "Prepared mirror parity",
         "command": "python scripts/validate_mirror_parity.py",
@@ -211,6 +219,7 @@ def markdown(payload: dict) -> str:
         "python scripts/build_quality_gates.py",
         "python scripts/build_artifact_index.py",
         "python scripts/validate_publication_package.py",
+        "python scripts/build_public_surface_qa.py",
         "python scripts/validate_mirror_parity.py",
         "```",
         "",

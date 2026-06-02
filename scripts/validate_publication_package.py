@@ -73,6 +73,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
             "Public-sample modality thumbnails remain enlarged below",
             "interactive scrub/play walkthrough storyboard",
             "task_surface_integrity.json",
+            "public_surface_qa.json",
         ],
     },
     {
@@ -95,6 +96,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
             "interactive scrub/play task walkthrough storyboard",
             "website HTML",
             "task_surface_integrity.json",
+            "public_surface_qa.json",
         ],
     },
     {
@@ -116,6 +118,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
             "interactive scrub/play walkthrough storyboard",
             "including critical website HTML",
             "task_surface_integrity.json",
+            "public_surface_qa.json",
         ],
     },
     {
@@ -137,6 +140,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
             "Public-sample modality thumbnails remain enlarged below",
             "interactive scrub/play walkthrough storyboard",
             "task_surface_integrity.json",
+            "public_surface_qa.json",
         ],
     },
     {
@@ -159,6 +163,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
             "interactive scrub/play storyboard",
             "website HTML",
             "task_surface_integrity.json",
+            "public_surface_qa.json",
         ],
     },
 ]
@@ -261,6 +266,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "ARTIFACT_GUIDE.md",
         "PROJECT_STATUS.md",
         "QUALITY_GATES.md",
+        "PUBLIC_SURFACE_QA.md",
         "EVALUATION_PROTOCOL.md",
         "FIGURE_INDEX.md",
         "SOURCE_ALIGNMENT_AUDIT.md",
@@ -291,6 +297,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "docs/data/reproducibility_matrix.json",
         "docs/data/modality_atlas.json",
         "docs/data/mirror_parity.json",
+        "docs/data/public_surface_qa.json",
         "docs/data/scope_claims_audit.json",
         "docs/data/task_surface_integrity.json",
         "docs/data/website_integrity.json",
@@ -324,6 +331,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "scripts/build_evaluation_protocol.py",
         "scripts/build_figure_index.py",
         "scripts/build_quality_gates.py",
+        "scripts/build_public_surface_qa.py",
         "scripts/verify_live_publication.py",
         "scripts/validate_mirror_parity.py",
         "scripts/validate_scope_claims.py",

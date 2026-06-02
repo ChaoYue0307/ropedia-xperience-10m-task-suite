@@ -23,7 +23,9 @@ The project intentionally separates nine layers:
    four research-direction extension probes.
 8. **Reproducibility:** public commands, expected outputs, and exact-match
    evidence for the single-episode pipeline.
-9. **Scale-up status:** scripts and reports for the planned 32-episode
+9. **Public surface QA:** repo, website, and Hugging Face presentation quality,
+   accessibility semantics, links, and copy hygiene.
+10. **Scale-up status:** scripts and reports for the planned 32-episode
    Qwen3-Omni pilot, without claiming those results before data access lands.
 
 ## Start Here
@@ -33,6 +35,7 @@ The project intentionally separates nine layers:
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current decision table: verified, data-gated, and excluded claims. |
 | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md) | Defines which claims are verified and which are explicitly not claimed. |
 | [`QUALITY_GATES.md`](QUALITY_GATES.md) | Lists the automated release gates and post-publish checks required before presenting a release as current. |
+| [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Checks whether repo, website, and Hugging Face cards read as one polished research project surface. |
 | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Defines the task unit, chronological split, metrics, leakage controls, and unsupported interpretations. |
 | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Aligns this repo's public dataset wording with the official gated Xperience-10M card, sample card, and HF API metadata. |
 | [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Verifies source-alignment markers across repo, website, and HF cards. |
@@ -46,6 +49,7 @@ The project intentionally separates nine layers:
 | [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable pass/fail check for source facts and public-card boundary markers. |
 | [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | Machine-readable evaluation protocol generated from committed metrics. |
 | [`docs/data/quality_gates.json`](docs/data/quality_gates.json) | Machine-readable quality-gate summary for website and HF mirrors. |
+| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable public-surface QA for website, repo, and Hugging Face presentation. |
 | [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json) | Last live GitHub/HF verification after upload. |
 | [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json) | Confirms prepared HF Space, artifact, and model mirrors match the repo for critical data, figures, website HTML, and validator scripts. |
 | [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Confirms public bundles exclude raw data, Python caches, heavy archives, token strings, and stale public-card figure references. |
@@ -124,6 +128,12 @@ The project intentionally separates nine layers:
 | [HF artifact dataset](https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts) | Derived CSV/JSON/Markdown/figure artifacts without raw Xperience-10M data. |
 | [HF baseline model repo](https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines) | Lightweight minimal and neural task-head model files. |
 | [HF collection](https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite) | One grouped landing page for the Space, artifact dataset, and baseline model repo. |
+
+| QA artifact | What it checks |
+| --- | --- |
+| [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Human-readable presentation QA for repo, website, and Hugging Face cards. |
+| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable checks for SEO/social metadata, accessible tabs, public links, QA links, and copy hygiene. |
+| [`scripts/build_public_surface_qa.py`](scripts/build_public_surface_qa.py) | Regenerates the public-surface QA report before release. |
 
 ## Scale-Up Boundary
 
