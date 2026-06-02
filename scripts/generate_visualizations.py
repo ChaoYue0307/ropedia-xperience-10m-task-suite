@@ -158,7 +158,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
         for i, line in enumerate(lines):
             parts.append(f'<text x="{x + 24}" y="{y + 66 + i * 22}" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">{html.escape(line)}</text>')
     checks = [
-        "Audit check: rerunning scripts to /private/tmp reproduced committed metrics exactly.",
+        "Audit check: rerunning scripts to an ignored scratch workspace reproduced committed metrics exactly.",
         "Modality check: sample covers video, AAC audio, depth, pose/SLAM, mocap, IMU, and language annotation.",
         "Feature check: current manifest has video/depth/pose/mocap/IMU/language blocks, but no audio block.",
         "Scope check: this validates one public sample episode, not cross-episode generalization.",

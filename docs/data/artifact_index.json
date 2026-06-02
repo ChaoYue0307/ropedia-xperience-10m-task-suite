@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-02T06:51:49+00:00",
+  "generated_at_utc": "2026-06-02T07:06:00+00:00",
   "status": "pass",
   "artifact_count": 55,
   "missing": [],
@@ -206,7 +206,7 @@
       "proves": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
       "bytes": 13435,
-      "sha256": "87e27b4440ab06bb2dbed0af94b0511b57de9aedb096ea2d8344537417ee4893"
+      "sha256": "dd3fac977ff1e300455165e0ecfec37d13dae346ee440186ec3e7180c36bc89b"
     },
     {
       "id": "figure_index_builder",
@@ -272,7 +272,7 @@
       "proves": "Machine-readable release-gate summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 7480,
-      "sha256": "61e54a5d550fe0e3ce41d3c2f94e8dd16ad6707ce0547a5d9fdc90bb8b7a9b69"
+      "sha256": "72abc92a669f0b62aa7835289aa1d99d5e8713086ec1ef588070a3dac387d4e0"
     },
     {
       "id": "public_surface_qa",
@@ -351,8 +351,8 @@
       "surface": "repo",
       "proves": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 21520,
-      "sha256": "0f39a3917d038b474c79aee521f8c8b6c815605ad9e5a446f5be51ef579d1655"
+      "bytes": 22540,
+      "sha256": "6d0f1a0f12680b2c0c42da203e00139fa020e87d91a2e0f31141c74e1262901c"
     },
     {
       "id": "reproducibility_contract",
@@ -396,7 +396,7 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 6997,
+      "bytes": 6796,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -420,7 +420,7 @@
       "volatile": true,
       "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 91667,
+      "bytes": 69773,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -432,7 +432,7 @@
       "volatile": true,
       "proves": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 11261,
+      "bytes": 11168,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -586,8 +586,8 @@
       "surface": "website_hf",
       "proves": "Shows the raw-episode to artifact pipeline with verified labels.",
       "exists": true,
-      "bytes": 704388,
-      "sha256": "00ab2b375464d629a903e22c19e648830e479407a52a45d2421e590251c1ba7d"
+      "bytes": 705113,
+      "sha256": "1c3e0721ddbea991b0012aa25a1ac616131426e7104c33520b070fd14c0007c7"
     },
     {
       "id": "architecture_figure",

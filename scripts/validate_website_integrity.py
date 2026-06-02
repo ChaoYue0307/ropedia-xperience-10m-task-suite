@@ -452,7 +452,7 @@ def validate(docs_root: Path, site_base: str) -> dict:
     return {
         "status": "pass" if failure_count == 0 else "fail",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "docs_root": str(docs_root),
+        "docs_root": relative(docs_root, ROOT),
         "site_base": site_base,
         "summary": {
             "html_pages": len(html_files),

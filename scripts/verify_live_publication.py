@@ -50,6 +50,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "public_surface_qa_json",
+        "title": "Public-surface QA JSON",
+        "local_path": "docs/data/public_surface_qa.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/public_surface_qa.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/public_surface_qa.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/public_surface_qa.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/public_surface_qa.json",
+        },
+    },
+    {
         "id": "xperience10m_dataset_card_alignment_json",
         "title": "Official Xperience-10M dataset-card alignment JSON",
         "local_path": "docs/data/xperience10m_dataset_card_alignment.json",
@@ -185,6 +196,8 @@ MARKER_CHECKS = [
             "Action Recognition",
             "data/task_walkthroughs.json",
             "task_surface_integrity.json",
+            "public_surface_qa.json",
+            "Public surface QA",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
@@ -214,6 +227,8 @@ MARKER_CHECKS = [
             "Action Recognition",
             "data/task_walkthroughs.json",
             "task_surface_integrity.json",
+            "public_surface_qa.json",
+            "Public surface QA",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
@@ -239,6 +254,8 @@ MARKER_CHECKS = [
             "12,103 episode folders",
             "interactive scrub/play walkthrough storyboard",
             "task_surface_integrity.json",
+            "public_surface_qa.json",
+            "Public surface QA",
         ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },
@@ -260,6 +277,8 @@ MARKER_CHECKS = [
             "12,103 episode folders",
             "interactive scrub/play storyboard",
             "task_surface_integrity.json",
+            "public_surface_qa.json",
+            "Public surface QA",
         ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },
