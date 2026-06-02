@@ -29,7 +29,7 @@ rebuilt from all six video files during the audit.
 All audit outputs were written outside the repo:
 
 ```bash
-AUDIT=/private/tmp/ropedia-audit
+AUDIT=/path/to/ignored-scratch-workspace
 WORKSPACE=/path/to/Ropedia
 ANN=$WORKSPACE/data/sample/xperience-10m-sample/annotation.hdf5
 PY=$WORKSPACE/.venv/bin/python

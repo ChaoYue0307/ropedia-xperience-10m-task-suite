@@ -108,9 +108,26 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def file_record(path: Path) -> dict:
+def display_path(path: Path, hf_root: Path) -> str:
+    resolved = path.resolve()
+    bases = [
+        ("hf_space", hf_root / "space"),
+        ("hf_artifacts", hf_root / "artifacts"),
+        ("hf_model", hf_root / "model"),
+        ("repo", ROOT),
+        ("hf_publish", hf_root),
+    ]
+    for label, base in bases:
+        try:
+            return f"{label}:{resolved.relative_to(base.resolve()).as_posix()}"
+        except ValueError:
+            continue
+    return path.name
+
+
+def file_record(path: Path, hf_root: Path) -> dict:
     record = {
-        "path": str(path),
+        "path": display_path(path, hf_root),
         "exists": path.exists(),
     }
     if path.exists() and path.is_file():
@@ -122,12 +139,12 @@ def file_record(path: Path) -> dict:
     return record
 
 
-def parity_group(name: str, local_path: Path, mirrors: dict[str, Path]) -> dict:
-    local = file_record(local_path)
-    mirror_records = {surface: file_record(path) for surface, path in mirrors.items()}
+def parity_group(name: str, local_path: Path, mirrors: dict[str, Path], hf_root: Path) -> dict:
+    local = file_record(local_path, hf_root)
+    mirror_records = {surface: file_record(path, hf_root) for surface, path in mirrors.items()}
     failures = []
     if not local["exists"]:
-        failures.append({"surface": "repo", "kind": "missing", "path": str(local_path)})
+        failures.append({"surface": "repo", "kind": "missing", "path": local["path"]})
     for surface, record in mirror_records.items():
         if not record["exists"]:
             failures.append({"surface": surface, "kind": "missing", "path": record["path"]})
@@ -164,6 +181,7 @@ def build_report(hf_root: Path) -> dict:
                     "hf_artifacts": hf_root / "artifacts/docs/data" / filename,
                     "hf_model": hf_root / "model/metrics" / filename,
                 },
+                hf_root,
             )
         )
 
@@ -178,6 +196,7 @@ def build_report(hf_root: Path) -> dict:
                     "hf_artifacts_card": hf_root / "artifacts/assets" / filename,
                     "hf_model": hf_root / "model/assets" / filename,
                 },
+                hf_root,
             )
         )
 
@@ -190,6 +209,7 @@ def build_report(hf_root: Path) -> dict:
                     "hf_artifacts": hf_root / "artifacts/scripts" / filename,
                     "hf_model": hf_root / "model/scripts" / filename,
                 },
+                hf_root,
             )
         )
 
@@ -202,6 +222,7 @@ def build_report(hf_root: Path) -> dict:
                     "hf_space": hf_root / "space" / filename,
                     "hf_artifacts_docs": hf_root / "artifacts/docs" / filename,
                 },
+                hf_root,
             )
         )
 
@@ -215,6 +236,7 @@ def build_report(hf_root: Path) -> dict:
                     "hf_artifacts": hf_root / "artifacts" / filename,
                     "hf_model": hf_root / "model" / filename,
                 },
+                hf_root,
             )
         )
 
@@ -230,7 +252,7 @@ def build_report(hf_root: Path) -> dict:
     return {
         "status": "pass" if not failures else "fail",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "hf_root": str(hf_root),
+        "hf_root": "hf_publish",
         "summary": {
             "group_count": len(groups),
             "failure_count": len(failures),

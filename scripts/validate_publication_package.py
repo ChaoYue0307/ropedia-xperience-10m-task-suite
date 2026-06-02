@@ -53,6 +53,10 @@ STALE_PRESENTATION_STRINGS = {
     "Cur" + "sor": "editor/work-session wording in public copy",
     "public " + "dashboard and generated figures " + "deliberately " + "follow": "meta design-process wording in public copy",
 }
+LOCAL_PATH_PATTERNS = {
+    "/" + "Users/": "local macOS user path in public text",
+    "/" + "private/": "local scratch path in public text",
+}
 CARD_FRESHNESS_EXPECTATIONS = [
     {
         "surface": "github_repo",
@@ -205,7 +209,7 @@ def iter_public_files(root: Path, paths: list[Path] | None = None):
         yield path
 
 
-def scan(root: Path, *, paths: list[Path] | None = None) -> dict:
+def scan(root: Path, *, paths: list[Path] | None = None, display_root: str | None = None) -> dict:
     violations: list[dict] = []
     text_files = 0
     total_files = 0
@@ -239,6 +243,13 @@ def scan(root: Path, *, paths: list[Path] | None = None) -> dict:
                 continue
             if TOKEN_PATTERN.search(text):
                 violations.append({"kind": "possible_hf_token", "path": path_rel})
+            for needle, reason in LOCAL_PATH_PATTERNS.items():
+                if needle in text:
+                    violations.append({
+                        "kind": "local_filesystem_path",
+                        "path": path_rel,
+                        "detail": reason,
+                    })
             for needle, reason in STALE_PRESENTATION_STRINGS.items():
                 if needle in text:
                     violations.append({
@@ -248,7 +259,7 @@ def scan(root: Path, *, paths: list[Path] | None = None) -> dict:
                     })
 
     return {
-        "root": str(root),
+        "root": display_root or rel(root, ROOT.parent),
         "exists": root.exists(),
         "file_count": total_files,
         "text_file_count": text_files,
@@ -369,10 +380,16 @@ def build_report(hf_root: Path) -> dict:
         "hf_artifact_bundle": hf_root / "artifacts",
         "hf_model_bundle": hf_root / "model",
     }
+    root_labels = {
+        "github_repo": "repo",
+        "hf_space_bundle": "hf_publish/space",
+        "hf_artifact_bundle": "hf_publish/artifacts",
+        "hf_model_bundle": "hf_publish/model",
+    }
     scans = {}
     for name, path in roots.items():
         public_paths = git_public_paths(path) if name == "github_repo" else None
-        scans[name] = scan(path, paths=public_paths)
+        scans[name] = scan(path, paths=public_paths, display_root=root_labels[name])
     assets = required_assets(ROOT)
     card_freshness = public_card_freshness(roots)
     missing_assets = [path for path, present in assets.items() if not present]
@@ -408,6 +425,11 @@ def build_report(hf_root: Path) -> dict:
             "name": "no_hf_tokens_in_public_text",
             "status": "pass" if not any(v["kind"] == "possible_hf_token" for v in violations) else "fail",
             "count": sum(1 for v in violations if v["kind"] == "possible_hf_token"),
+        },
+        {
+            "name": "no_local_filesystem_paths_in_public_text",
+            "status": "pass" if not any(v["kind"] == "local_filesystem_path" for v in violations) else "fail",
+            "count": sum(1 for v in violations if v["kind"] == "local_filesystem_path"),
         },
         {
             "name": "no_stale_task_suite_presentation_copy",
