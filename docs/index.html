@@ -763,6 +763,115 @@
     }
     .snapshot-actions a:hover { border-color: var(--green); color: var(--ink); }
 
+    .brief-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(20px, 3vw, 32px);
+      margin-bottom: 24px;
+      background:
+        linear-gradient(135deg, rgba(164, 242, 127, 0.13), rgba(122, 229, 195, 0.045) 58%, rgba(7, 18, 7, 0.9)),
+        var(--surface);
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
+    }
+    .brief-panel-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.85fr);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+    .brief-panel-head span {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 760;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .brief-panel-head h3 {
+      margin: 0;
+      font-family: var(--font-ui);
+      font-size: clamp(30px, 4.8vw, 58px);
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+    .brief-panel-head p {
+      margin: 0;
+      color: #c8d4c3;
+      line-height: 1.65;
+      font-size: 16px;
+      text-wrap: pretty;
+    }
+    .brief-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .brief-card {
+      border: 1px solid var(--soft-line);
+      border-radius: var(--radius);
+      padding: 18px;
+      background: rgba(2, 5, 2, 0.42);
+      min-height: 216px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+    .brief-card strong {
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 18px;
+      line-height: 1.14;
+    }
+    .brief-card p,
+    .brief-card li {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .brief-card ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .brief-card li::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin: 0 8px 1px 0;
+      border-radius: 999px;
+      background: var(--green);
+    }
+    .brief-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .brief-actions a {
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 760;
+      padding: 8px 10px;
+      text-decoration: none;
+      background: rgba(2, 5, 2, 0.48);
+    }
+    .brief-actions a:first-child {
+      color: #020502;
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .brief-actions a:hover { border-color: var(--green); color: var(--ink); }
+    .brief-actions a:first-child:hover { color: #020502; }
+
     .reading-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1553,7 +1662,8 @@
       .hero-inner { min-height: 0; }
       .project-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .section-tabs { padding-top: 10px; }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .brief-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .brief-panel-head { grid-template-columns: 1fr; align-items: start; }
       .task-player { grid-template-columns: 1fr; }
       .task-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .storyboard-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1618,7 +1728,8 @@
         min-height: 52px;
       }
       main > section { scroll-margin-top: 112px; }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .brief-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
+      .brief-panel { padding: 18px; }
       .artifact-group { padding: 16px; }
       .modality-atlas-panel { padding: 14px; }
       .atlas-card { padding: 12px; }
@@ -1752,6 +1863,39 @@
           <h2>Project overview and contributions.</h2>
           <p>The page is organized like a compact research project: motivation and scope, dataset sample, task suite, method, baselines, research directions, interactive walkthroughs, and resources for continuing the work.</p>
         </div>
+        <div class="brief-panel">
+          <div class="brief-panel-head">
+            <div>
+              <span>Project brief</span>
+              <h3>From one public episode to an extensible embodied-AI task lab.</h3>
+            </div>
+            <p>Xperience-10M is much larger than the public sample. This project focuses on the sample available now, turns it into clear task contracts and baseline artifacts, and keeps the same data contract ready for held-out multi-episode training when more episodes are staged.</p>
+          </div>
+          <div class="brief-grid" aria-label="Project brief cards">
+            <article class="brief-card">
+              <strong>What this is</strong>
+              <p>A research-development lab for understanding synchronized egocentric multimodal data, defining embodied-AI tasks, and testing small baselines before omni-model fine-tuning.</p>
+            </article>
+            <article class="brief-card">
+              <strong>What is implemented</strong>
+              <ul>
+                <li>1,161 aligned windows from one public sample episode</li>
+                <li>12 task contracts with minimal and neural heads</li>
+                <li>Four research-direction maps and extension probes</li>
+              </ul>
+            </article>
+            <article class="brief-card">
+              <strong>What comes next</strong>
+              <p>The next model-quality stage is not another single-sample score. It is a held-out episode pilot with at least 32 valid episodes, no train/test episode leakage, and a completed omni-model evaluation report.</p>
+            </article>
+          </div>
+          <div class="brief-actions">
+            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">Read the brief</a>
+            <a href="data/project_brief.json">project_brief.json</a>
+            <a href="#reading-path">Reader path</a>
+            <a href="#takeaways">Current takeaways</a>
+          </div>
+        </div>
         <div class="snapshot-grid">
           <article class="snapshot-card">
             <span class="status-pill">verified</span>
@@ -1815,6 +1959,8 @@
           </article>
         </div>
         <div class="snapshot-actions">
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">Project brief</a>
+          <a href="data/project_brief.json">Brief JSON</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_STATUS.md">Project status</a>
           <a href="data/project_status.json">Project status JSON</a>
           <a href="data/project_packet.json">Project packet JSON</a>

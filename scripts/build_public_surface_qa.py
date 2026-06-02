@@ -155,6 +155,7 @@ def build_report() -> dict:
         "https://ropedia.com/dataset",
     ]
     artifact_markers = [
+        "data/project_brief.json",
         "data/website_integrity.json",
         "data/task_surface_integrity.json",
         "data/publication_audit.json",

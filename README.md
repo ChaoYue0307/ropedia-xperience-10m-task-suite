@@ -25,6 +25,22 @@ The central research questions are:
 - What baseline models and evaluation files should exist before scaling to
   Qwen3-Omni or other multimodal foundation-model fine-tuning?
 
+## Start Here
+
+For a first pass, use [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md) or the
+machine-readable [`docs/data/project_brief.json`](docs/data/project_brief.json).
+They give the project shape in one page: what exists now, what the public
+sample can support, where the 12 tasks and baselines live, and what must happen
+before the 32-episode omni-model stage becomes a real held-out evaluation.
+
+| Reader goal | Best entry point |
+| --- | --- |
+| Understand the whole project quickly | [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md) |
+| See the visual research dashboard | [GitHub Pages dashboard](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/) |
+| Compare current task metrics | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) |
+| Understand one model input | [`results/episode_task_suite/feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`results/episode_task_suite/windows.csv`](results/episode_task_suite/windows.csv) |
+| Check the multi-episode gate | [`results/omni_finetune/DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md) |
+
 ## Research Project Overview
 
 | Theme | Current implementation |

@@ -1,11 +1,11 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-02T12:32:10+00:00",
+  "generated_at_utc": "2026-06-02T14:51:16+00:00",
   "status": "pass",
-  "artifact_count": 58,
+  "artifact_count": 60,
   "missing": [],
   "by_kind": {
-    "project_path": 5,
+    "project_path": 7,
     "project_scope": 1,
     "source_alignment": 5,
     "publication_workflow": 1,
@@ -33,6 +33,28 @@
     "license": 1
   },
   "artifacts": [
+    {
+      "id": "project_brief",
+      "title": "Project brief",
+      "path": "PROJECT_BRIEF.md",
+      "kind": "project_path",
+      "surface": "repo_hf",
+      "proves": "Gives first-pass readers a concise project shape before the detailed artifact trail.",
+      "exists": true,
+      "bytes": 2411,
+      "sha256": "ec4c8de4df9f68dc42efae978dc25faeae58ca9ad27d45d2627c02784347b140"
+    },
+    {
+      "id": "project_brief_json",
+      "title": "Project brief JSON",
+      "path": "docs/data/project_brief.json",
+      "kind": "project_path",
+      "surface": "website_hf",
+      "proves": "Machine-readable first-reader project brief for the website and Hugging Face mirrors.",
+      "exists": true,
+      "bytes": 2481,
+      "sha256": "55fa80f7e8b5d47b3648619735aa3f78f6754655294a83b22e148afdb53f8321"
+    },
     {
       "id": "project_status",
       "title": "Project status",
@@ -306,7 +328,7 @@
       "proves": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 7538,
-      "sha256": "24f974b16ded90810b07abe2bb57f721fed4f408af8867d52315204bad8ab550"
+      "sha256": "3a96887af59f3349a443342b9ad1bc474a6186b5159741b82a750f8911374ab8"
     },
     {
       "id": "public_surface_qa",
@@ -328,7 +350,7 @@
       "volatile": true,
       "proves": "Machine-readable report for SEO/social metadata, accessible tab semantics, public links, project links, and reader-facing copy.",
       "exists": true,
-      "bytes": 5376,
+      "bytes": 5414,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -339,8 +361,8 @@
       "surface": "repo_hf",
       "proves": "Regenerates the public project-surface report before release.",
       "exists": true,
-      "bytes": 11610,
-      "sha256": "9c442dfedcfc3d11361845beb06dca8cee8ad8cd2f42b3a27cdea952a6149c64"
+      "bytes": 11645,
+      "sha256": "ded9b1c1402bc070c2e3601c70866abed13001165990261d0c43b4065e021d3e"
     },
     {
       "id": "task_surface_integrity",
@@ -418,8 +440,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 21475,
-      "sha256": "ae91ac789b3539bc9b88ed113a8214610655aaf693fc3064d0a8b155dc06e017"
+      "bytes": 22065,
+      "sha256": "c12ab8f07a4c0d24fe490ed120ae06b1731c85824a1dbdac6c599bd4d43c9055"
     },
     {
       "id": "publication_audit",
@@ -454,7 +476,7 @@
       "volatile": true,
       "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 72677,
+      "bytes": 74690,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -466,7 +488,7 @@
       "volatile": true,
       "proves": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 11338,
+      "bytes": 11444,
       "hash_policy": "existence_and_size_only"
     },
     {

@@ -18,6 +18,22 @@ OUTPUT = ROOT / "docs/data/artifact_index.json"
 
 ARTIFACTS = [
     {
+        "id": "project_brief",
+        "title": "Project brief",
+        "path": "PROJECT_BRIEF.md",
+        "kind": "project_path",
+        "surface": "repo_hf",
+        "proves": "Gives first-pass readers a concise project shape before the detailed artifact trail.",
+    },
+    {
+        "id": "project_brief_json",
+        "title": "Project brief JSON",
+        "path": "docs/data/project_brief.json",
+        "kind": "project_path",
+        "surface": "website_hf",
+        "proves": "Machine-readable first-reader project brief for the website and Hugging Face mirrors.",
+    },
+    {
         "id": "project_status",
         "title": "Project status",
         "path": "PROJECT_STATUS.md",
