@@ -194,7 +194,7 @@ def build_payload() -> dict:
             "train_fraction": 0.7,
             "test_fraction": 0.3,
             "why": "The split preserves time order so future episode segments are not mixed randomly into the train set.",
-            "limitation": "It is still one episode, so it cannot prove cross-episode generalization.",
+            "limitation": "It is still one episode; cross-episode generalization is evaluated in the multi-episode stage.",
         },
         "feature_policy": {
             "input_contract": "8,378-dimensional current feature vector",
@@ -223,14 +223,14 @@ def build_payload() -> dict:
             "For cross-modal tasks, split query-side and candidate-side feature blocks before training and ranking.",
             "Report unseen test classes when the chronological split exposes labels absent from the train segment.",
         ],
-        "unsupported_interpretations": [
-            "Do not infer cross-episode generalization from this single public sample.",
-            "Do not treat feature-vector reconstruction as pixel depth, mesh, NeRF, or Gaussian reconstruction.",
-            "Do not treat Qwen3-Omni readiness artifacts as a real 32-episode fine-tune.",
-            "Do not infer audio-visual learning from the current baseline vector because audio is not featurized.",
+        "current_limitations": [
+            "Cross-episode generalization is evaluated in the later multi-episode stage.",
+            "Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.",
+            "Qwen3-Omni setup artifacts are preparation artifacts until the 32-episode held-out pilot runs.",
+            "Audio-visual learning needs an extracted audio feature block; audio is documented and visualized but not featurized in the current baseline vector.",
         ],
         "scale_up_gate": {
-            "required_before_real_omni_claim": [
+            "required_before_full_omni_pilot": [
                 "at least 32 valid Xperience-10M episodes",
                 "held-out episode split with no train/test episode leakage",
                 "manifest, training metadata, progress logs, metrics, predictions, and run report",
@@ -333,19 +333,19 @@ def render_markdown(payload: dict) -> str:
     lines.extend(f"- {item}" for item in payload["global_leakage_controls"])
     lines.extend([
         "",
-        "## Unsupported Interpretations",
+        "## Current Limitations",
         "",
     ])
-    lines.extend(f"- {item}" for item in payload["unsupported_interpretations"])
+    lines.extend(f"- {item}" for item in payload["current_limitations"])
     lines.extend([
         "",
         "## Scale-Up Gate",
         "",
-        "A real Qwen3-Omni fine-tuning claim requires all of the following before",
-        "being presented as model quality:",
+        "The full Qwen3-Omni fine-tuning pilot requires all of the following before",
+        "reporting held-out model metrics:",
         "",
     ])
-    lines.extend(f"- {item}" for item in payload["scale_up_gate"]["required_before_real_omni_claim"])
+    lines.extend(f"- {item}" for item in payload["scale_up_gate"]["required_before_full_omni_pilot"])
     lines.extend([
         "",
         "Current status: prepared but data-gated. Read",

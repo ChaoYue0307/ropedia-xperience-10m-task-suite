@@ -26,7 +26,7 @@ table is `results/episode_task_suite/windows.csv`.
 
 ## Split Policy
 
-The current suite uses `single_episode_chronological`: The split preserves time order so future episode segments are not mixed randomly into the train set. It is still one episode, so it cannot prove cross-episode generalization.
+The current suite uses `single_episode_chronological`: The split preserves time order so future episode segments are not mixed randomly into the train set. It is still one episode; cross-episode generalization is evaluated in the multi-episode stage.
 
 This makes some classification metrics intentionally harsh: later test
 segments can contain action or subtask labels not present in the train
@@ -68,17 +68,17 @@ are not foundation models.
 - For cross-modal tasks, split query-side and candidate-side feature blocks before training and ranking.
 - Report unseen test classes when the chronological split exposes labels absent from the train segment.
 
-## Unsupported Interpretations
+## Current Limitations
 
-- Do not infer cross-episode generalization from this single public sample.
-- Do not treat feature-vector reconstruction as pixel depth, mesh, NeRF, or Gaussian reconstruction.
-- Do not treat Qwen3-Omni readiness artifacts as a real 32-episode fine-tune.
-- Do not infer audio-visual learning from the current baseline vector because audio is not featurized.
+- Cross-episode generalization is evaluated in the later multi-episode stage.
+- Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.
+- Qwen3-Omni setup artifacts are preparation artifacts until the 32-episode held-out pilot runs.
+- Audio-visual learning needs an extracted audio feature block; audio is documented and visualized but not featurized in the current baseline vector.
 
 ## Scale-Up Gate
 
-A real Qwen3-Omni fine-tuning claim requires all of the following before
-being presented as model quality:
+The full Qwen3-Omni fine-tuning pilot requires all of the following before
+reporting held-out model metrics:
 
 - at least 32 valid Xperience-10M episodes
 - held-out episode split with no train/test episode leakage

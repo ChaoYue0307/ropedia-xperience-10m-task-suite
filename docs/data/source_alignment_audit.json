@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Source Alignment Audit",
   "status": "pass",
-  "generated_at_utc": "2026-06-02T09:14:13+00:00",
+  "generated_at_utc": "2026-06-02T10:21:56+00:00",
   "alignment_json": "docs/data/xperience10m_dataset_card_alignment.json",
   "alignment_summary": {
     "full_dataset_repo": "ropedia-ai/xperience-10m",
@@ -47,9 +47,9 @@
       ]
     },
     {
-      "name": "current_project_boundary_is_explicit",
+      "name": "current_project_scope_is_explicit",
       "status": "pass",
-      "detail": "one-episode scope, audio boundary, raw-data exclusion, and unsupported claims are present",
+      "detail": "one-episode scope, audio status, raw-data exclusion, and current project coverage are present",
       "evidence": [
         "docs/data/xperience10m_dataset_card_alignment.json"
       ]
@@ -57,7 +57,7 @@
     {
       "name": "responsible_use_disclaimer_is_preserved",
       "status": "pass",
-      "detail": "official limited-diversity and prohibited-use boundary is preserved",
+      "detail": "official limited-diversity and prohibited-use notes are preserved",
       "evidence": [
         "docs/data/xperience10m_dataset_card_alignment.json"
       ]
@@ -65,7 +65,7 @@
     {
       "name": "repo_public_surfaces_preserve_source_markers",
       "status": "pass",
-      "detail": "README, data notice, alignment doc, and website expose official/full/sample/source-boundary markers",
+      "detail": "README, data notice, alignment doc, and website expose official/full/sample/current-project markers",
       "evidence": [
         "README.md",
         "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
@@ -76,7 +76,7 @@
     {
       "name": "hf_public_cards_preserve_source_markers",
       "status": "pass",
-      "detail": "HF Space, artifact dataset, model card, and mirrored project README expose source-boundary markers",
+      "detail": "HF Space, artifact dataset, model card, and mirrored project README expose current-project markers",
       "evidence": [
         "space/README.md",
         "artifacts/README.md",

@@ -4,17 +4,17 @@ This guide is the human-readable map for the public Ropedia Xperience-10M task
 suite artifacts. It complements the machine-readable
 [`docs/data/artifact_index.json`](docs/data/artifact_index.json).
 
-The project intentionally separates nine layers:
+The project separates these reading layers:
 
 1. **Project status:** one compact table for first-pass current-state
    decisions.
-2. **Proof boundary:** what is claimed, what is readiness-only, and what
-   remains gated by data access.
+2. **Project scope:** what is implemented now, what is setup-stage, and what
+   remains gated by multi-episode data access.
 3. **Official source alignment:** what the upstream Xperience-10M dataset card,
    public sample card, and HF API metadata say, and which parts this repo
    currently covers.
 4. **Evaluation protocol:** windowing, split policy, per-task metrics, leakage
-   controls, and unsupported interpretations.
+   controls, and current limitations.
 5. **Visual evidence:** public figures, charts, modality thumbnails, dimensions,
    hashes, roles, and source scripts.
 6. **Data contract:** how one public Xperience-10M sample episode becomes
@@ -24,19 +24,19 @@ The project intentionally separates nine layers:
 8. **Reproducibility:** public commands, expected outputs, and exact-match
    evidence for the single-episode pipeline.
 9. **Public surface QA:** repo, website, and Hugging Face presentation quality,
-   accessibility semantics, links, and copy hygiene.
+   accessibility semantics, links, and reader-facing copy consistency.
 10. **Scale-up status:** scripts and reports for the planned 32-episode
-   Qwen3-Omni pilot, without claiming those results before data access lands.
+   Qwen3-Omni pilot, with the data-access requirement kept visible.
 
 ## Start Here
 
 | Artifact | Why to open it first |
 | --- | --- |
-| [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current decision table: verified, data-gated, and excluded claims. |
-| [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md) | Defines which claims are verified and which are explicitly not claimed. |
+| [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current decision table: verified, data-gated, and outside current scope. |
+| [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md) | Defines the implemented scope, setup-stage artifacts, and multi-episode prerequisites. |
 | [`QUALITY_GATES.md`](QUALITY_GATES.md) | Lists the automated release gates and post-publish checks required before presenting a release as current. |
 | [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Checks whether repo, website, and Hugging Face cards read as one polished research project surface. |
-| [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Defines the task unit, chronological split, metrics, leakage controls, and unsupported interpretations. |
+| [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Defines the task unit, chronological split, metrics, leakage controls, and current limitations. |
 | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Aligns this repo's public dataset wording with the official gated Xperience-10M card, sample card, and HF API metadata. |
 | [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Verifies source-alignment markers across repo, website, and HF cards. |
 | [`FIGURE_INDEX.md`](FIGURE_INDEX.md) | Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts. |
@@ -45,15 +45,15 @@ The project intentionally separates nine layers:
 | [`docs/data/artifact_index.json`](docs/data/artifact_index.json) | Lists project-critical files with existence, size, and stable hashes. |
 | [`docs/data/figure_index.json`](docs/data/figure_index.json) | Machine-readable visual asset index for website and HF mirrors. |
 | [`docs/data/project_status.json`](docs/data/project_status.json) | Machine-readable copy of the project status table. |
-| [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable source-alignment summary, including gated metadata, sample license/tooling, and unsupported claims. |
-| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable pass/fail check for source facts and public-card boundary markers. |
+| [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable source-alignment summary, including gated metadata, sample license/tooling, and current project coverage. |
+| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable pass/fail check for source facts and current-project markers. |
 | [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | Machine-readable evaluation protocol generated from committed metrics. |
 | [`docs/data/quality_gates.json`](docs/data/quality_gates.json) | Machine-readable quality-gate summary for website and HF mirrors. |
 | [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable public-surface QA for website, repo, and Hugging Face presentation. |
 | [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json) | Last live GitHub/HF verification after upload. |
 | [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json) | Confirms prepared HF Space, artifact, and model mirrors match the repo for critical data, figures, website HTML, and validator scripts. |
 | [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Confirms public bundles exclude raw data, Python caches, heavy archives, token strings, and stale public-card figure references. |
-| [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Confirms historical `32ep` smoke-run identifiers are not presented as real 32-episode results. |
+| [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Confirms historical `32ep` setup identifiers are not presented as completed 32-episode results. |
 | [`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json) | Confirms the public 12-task cards use readable task names, modality thumbnails, and the interactive walkthrough/player data contract. |
 | [`docs/data/website_integrity.json`](docs/data/website_integrity.json) | Confirms local site links, anchors, JSON bundles, and referenced images resolve. |
 | [`docs/data/project_packet.json`](docs/data/project_packet.json) | Gives the shortest machine-readable project route. |
@@ -64,15 +64,15 @@ The project intentionally separates nine layers:
 | --- | --- |
 | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Human-readable summary of the official gated Xperience-10M dataset card, public sample card, API listing snapshot, scale, modalities, access boundary, intended uses, and limitations. |
 | [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable copy of the same alignment facts for website and HF mirrors. |
-| [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Generated source-alignment report showing source facts, sample license/tooling, API-listing caveat, and current project boundary. |
-| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable check of source metadata, source-boundary markers, and HF card parity. |
+| [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Generated source-alignment report showing source facts, sample license/tooling, API-listing caveat, and current project scope. |
+| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable check of source metadata, current-project markers, and HF card parity. |
 | [`scripts/validate_source_alignment.py`](scripts/validate_source_alignment.py) | Regenerates the source-alignment report from committed alignment facts and public card text. |
 
 ## Evaluation Protocol
 
 | Artifact | What it proves |
 | --- | --- |
-| [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Human-readable task protocol: window unit, chronological split, input/target contracts, primary metrics, leakage controls, and unsupported interpretations. |
+| [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Human-readable task protocol: window unit, chronological split, input/target contracts, primary metrics, leakage controls, and current limitations. |
 | [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | Machine-readable protocol generated from committed task metrics. |
 | [`scripts/build_evaluation_protocol.py`](scripts/build_evaluation_protocol.py) | Regenerates the protocol from `docs/data/summary_metrics.json` and source task artifacts. |
 
@@ -132,15 +132,15 @@ The project intentionally separates nine layers:
 | QA artifact | What it checks |
 | --- | --- |
 | [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Human-readable presentation QA for repo, website, and Hugging Face cards. |
-| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable checks for SEO/social metadata, accessible tabs, public links, QA links, and copy hygiene. |
+| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable checks for SEO/social metadata, accessible tabs, public links, QA links, and reader-facing copy consistency. |
 | [`scripts/build_public_surface_qa.py`](scripts/build_public_surface_qa.py) | Regenerates the public-surface QA report before release. |
 
-## Scale-Up Boundary
+## Scale-Up Status
 
 | Artifact | Current status |
 | --- | --- |
-| [`results/omni_finetune/DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md) | Documents why no real 32-episode Qwen3-Omni result is claimed yet. |
-| [`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | Documents the public multi-episode access boundary and selected 32-episode pilot plan without private infrastructure details. |
+| [`results/omni_finetune/DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md) | Documents the data-access requirement before the 32-episode Qwen3-Omni pilot can run. |
+| [`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | Documents the public multi-episode access path and selected 32-episode pilot plan without private infrastructure details. |
 | [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | Discovery gate for valid multi-episode Xperience-10M sources. |
 | [`scripts/omni/train_qwen3_omni_lora.py`](scripts/omni/train_qwen3_omni_lora.py) | Training entrypoint for the Qwen3-Omni LoRA pilot after the data gate passes. |
 

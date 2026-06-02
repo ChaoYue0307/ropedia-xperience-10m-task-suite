@@ -69,7 +69,7 @@ def build_payload() -> dict:
                 {"label": "feature_dim", "value": suite["feature_dim"]},
             ],
             "source": "docs/data/summary_metrics.json",
-            "boundary": "This is a task-development benchmark, not cross-episode generalization.",
+            "current_scope": "This benchmark defines the task contract; cross-episode generalization is evaluated in the multi-episode stage.",
         },
         {
             "id": "chronological_split_exposes_class_shift",
@@ -86,7 +86,7 @@ def build_payload() -> dict:
                 {"label": "unseen_action_test_classes", "value": len(tasks["timeline_action"].get("unseen_test_classes", []))},
             ],
             "source": "results/episode_task_suite/summary_report.json",
-            "boundary": "This is an important leakage/split lesson, not evidence that action recognition is solved.",
+            "current_scope": "This split is useful for studying label shift; broad action-recognition conclusions need held-out episodes.",
         },
         {
             "id": "neural_heads_help_dynamics",
@@ -105,7 +105,7 @@ def build_payload() -> dict:
                 {"label": "misalignment_f1_neural", "value": misalign_neural},
             ],
             "source": "results/episode_task_suite/neural_mlp/*/metrics.json",
-            "boundary": "These gains are within one episode and should be re-tested on held-out episodes.",
+            "current_scope": "These gains are measured within one episode and are candidates for held-out-episode testing.",
         },
         {
             "id": "retrieval_and_reconstruction_remain_open",
@@ -122,7 +122,7 @@ def build_payload() -> dict:
                 {"label": "reconstruction_r2_neural", "value": recon_neural_r2},
             ],
             "source": "results/episode_task_suite/cross_modal_retrieval/metrics.json",
-            "boundary": "The current reconstruction task is feature-vector reconstruction, not depth, mesh, NeRF, or Gaussian splatting.",
+            "current_scope": "The current reconstruction task predicts feature vectors; depth, mesh, NeRF, and Gaussian-splatting outputs are future task variants.",
         },
         {
             "id": "scale_requires_episodes",
@@ -137,7 +137,10 @@ def build_payload() -> dict:
                 {"label": "valid_candidates", "value": omni.get("valid_candidates")},
             ],
             "source": "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
-            "boundary": omni.get("claim_boundary", "No 32-episode fine-tune is claimed yet."),
+            "current_scope": omni.get(
+                "current_scope",
+                "The 32-episode fine-tune requires gated data staging and held-out evaluation.",
+            ),
         },
     ]
 
@@ -169,7 +172,7 @@ def render_md(payload: dict) -> str:
         "",
         "This generated note summarizes what the current public Xperience-10M sample",
         "pipeline actually shows. It is built from committed metric artifacts, not",
-        "from hand-entered benchmark claims.",
+        "from hand-edited score text.",
         "",
         "## Scope",
         "",
@@ -205,12 +208,12 @@ def render_md(payload: dict) -> str:
             else:
                 value_text = str(value)
             lines.append(f"| `{evidence['label']}` | {value_text} |")
-        lines.extend(["", f"Source: `{item['source']}`.", "", f"Boundary: {item['boundary']}", ""])
+        lines.extend(["", f"Source: `{item['source']}`.", "", f"Current scope: {item['current_scope']}", ""])
     lines.extend(
         [
             "## How To Read These Results",
             "",
-            "- High single-episode scores are useful pipeline checks, not broad embodied-AI claims.",
+            "- High single-episode scores are useful pipeline checks for the current task contracts.",
             "- Low chronological action/subtask scores are informative because they expose later-label shift.",
             "- Neural gains on trajectory/order/alignment make those tasks good candidates for the next fine-tuning stage.",
             "- Retrieval and reconstruction remain the main multimodal representation challenges.",

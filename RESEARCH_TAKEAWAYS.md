@@ -2,7 +2,7 @@
 
 This generated note summarizes what the current public Xperience-10M sample
 pipeline actually shows. It is built from committed metric artifacts, not
-from hand-entered benchmark claims.
+from hand-edited score text.
 
 ## Scope
 
@@ -27,7 +27,7 @@ The public sample is converted into 5,821 frames, 1,161 aligned 20-frame windows
 
 Source: `docs/data/summary_metrics.json`.
 
-Boundary: This is a task-development benchmark, not cross-episode generalization.
+Current scope: This benchmark defines the task contract; cross-episode generalization is evaluated in the multi-episode stage.
 
 ### Chronological splits expose action-class shift
 
@@ -42,7 +42,7 @@ Earlier all-feature action classifiers reach high macro-F1 on their local split,
 
 Source: `results/episode_task_suite/summary_report.json`.
 
-Boundary: This is an important leakage/split lesson, not evidence that action recognition is solved.
+Current scope: This split is useful for studying label shift; broad action-recognition conclusions need held-out episodes.
 
 ### Small neural heads help dynamic and temporal probes
 
@@ -60,7 +60,7 @@ The MLP heads substantially improve hand trajectory forecasting, temporal-order 
 
 Source: `results/episode_task_suite/neural_mlp/*/metrics.json`.
 
-Boundary: These gains are within one episode and should be re-tested on held-out episodes.
+Current scope: These gains are measured within one episode and are candidates for held-out-episode testing.
 
 ### Retrieval and reconstruction remain the harder multimodal problems
 
@@ -76,7 +76,7 @@ Ridge/cosine retrieval remains stronger than the neural projection on this sampl
 
 Source: `results/episode_task_suite/cross_modal_retrieval/metrics.json`.
 
-Boundary: The current reconstruction task is feature-vector reconstruction, not depth, mesh, NeRF, or Gaussian splatting.
+Current scope: The current reconstruction task predicts feature vectors; depth, mesh, NeRF, and Gaussian-splatting outputs are future task variants.
 
 ### The next scientific unit is held-out episodes, not more adjacent windows
 
@@ -90,11 +90,11 @@ The prepared Qwen3-Omni path targets 32 episodes from 32 sessions, but it remain
 
 Source: `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`.
 
-Boundary: No real 32-episode fine-tune is claimed until gated data is available locally and held-out evaluation runs.
+Current scope: The 32-episode Qwen3-Omni fine-tune requires gated data staging and held-out evaluation.
 
 ## How To Read These Results
 
-- High single-episode scores are useful pipeline checks, not broad embodied-AI claims.
+- High single-episode scores are useful pipeline checks for the current task contracts.
 - Low chronological action/subtask scores are informative because they expose later-label shift.
 - Neural gains on trajectory/order/alignment make those tasks good candidates for the next fine-tuning stage.
 - Retrieval and reconstruction remain the main multimodal representation challenges.

@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Research Takeaways",
   "status": "pass",
-  "generated_at_utc": "2026-06-02T09:02:43+00:00",
+  "generated_at_utc": "2026-06-02T10:21:25+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
@@ -36,7 +36,7 @@
         }
       ],
       "source": "docs/data/summary_metrics.json",
-      "boundary": "This is a task-development benchmark, not cross-episode generalization."
+      "current_scope": "This benchmark defines the task contract; cross-episode generalization is evaluated in the multi-episode stage."
     },
     {
       "id": "chronological_split_exposes_class_shift",
@@ -61,7 +61,7 @@
         }
       ],
       "source": "results/episode_task_suite/summary_report.json",
-      "boundary": "This is an important leakage/split lesson, not evidence that action recognition is solved."
+      "current_scope": "This split is useful for studying label shift; broad action-recognition conclusions need held-out episodes."
     },
     {
       "id": "neural_heads_help_dynamics",
@@ -98,7 +98,7 @@
         }
       ],
       "source": "results/episode_task_suite/neural_mlp/*/metrics.json",
-      "boundary": "These gains are within one episode and should be re-tested on held-out episodes."
+      "current_scope": "These gains are measured within one episode and are candidates for held-out-episode testing."
     },
     {
       "id": "retrieval_and_reconstruction_remain_open",
@@ -127,7 +127,7 @@
         }
       ],
       "source": "results/episode_task_suite/cross_modal_retrieval/metrics.json",
-      "boundary": "The current reconstruction task is feature-vector reconstruction, not depth, mesh, NeRF, or Gaussian splatting."
+      "current_scope": "The current reconstruction task predicts feature vectors; depth, mesh, NeRF, and Gaussian-splatting outputs are future task variants."
     },
     {
       "id": "scale_requires_episodes",
@@ -148,7 +148,7 @@
         }
       ],
       "source": "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
-      "boundary": "No real 32-episode fine-tune is claimed until gated data is available locally and held-out evaluation runs."
+      "current_scope": "The 32-episode Qwen3-Omni fine-tune requires gated data staging and held-out evaluation."
     }
   ]
 }

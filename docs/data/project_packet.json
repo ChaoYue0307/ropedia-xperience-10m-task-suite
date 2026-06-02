@@ -12,7 +12,7 @@
     "raw_xperience10m_data_in_repo": false,
     "audio_feature_status": "Audio is present in the sample MP4 streams and shown in the figures, but the current baseline feature vector does not include an extracted audio block.",
     "qwen3_omni_32_episode_claim": false,
-    "qwen3_omni_status": "Readiness-only until at least 32 valid episodes are available and held-out episode evaluation finishes."
+    "qwen3_omni_status": "Setup-stage until at least 32 valid episodes are available and held-out episode evaluation finishes."
   },
   "review_path": [
     {
@@ -39,7 +39,7 @@
         "docs/data/scope_claims_audit.json",
         "docs/data/website_integrity.json"
       ],
-      "readout": "The project status table gives the compact current-state summary. Single-episode task engineering, metrics, visualizations, publication hygiene, local website integrity, mirror parity, and scope-claim guarding are claimed; cross-episode generalization and 32-episode Qwen3-Omni quality are not claimed."
+      "readout": "The project status table gives the compact current-state summary. Single-episode task engineering, metrics, visualizations, publication checks, local website integrity, mirror parity, and scale-up status checks are implemented; cross-episode generalization and 32-episode Qwen3-Omni metrics are later milestones."
     },
     {
       "step": 2,
@@ -50,7 +50,7 @@
                 "https://huggingface.co/datasets/ropedia-ai/xperience-10m",
                 "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample"
             ],
-            "readout": "The full upstream dataset is a manually gated large-scale 4D multimodal egocentric source. The public sample card records the sample license, HOMIE Toolkit path, and Rerun 0.29.0 visualization path. This repo validates only one public sample episode and records unsupported areas explicitly."
+            "readout": "The full upstream dataset is a manually gated large-scale 4D multimodal egocentric source. The public sample card records the sample license, HOMIE Toolkit path, and Rerun 0.29.0 visualization path. This repo validates one public sample episode and lists the current project coverage."
     },
         {
             "step": 3,
@@ -60,7 +60,7 @@
                 "docs/data/source_alignment_audit.json",
                 "scripts/validate_source_alignment.py"
             ],
-            "readout": "The source-alignment report checks full-dataset metadata, API-listing caveats, public sample license/tooling, and boundary markers across repo docs, website, and HF cards."
+            "readout": "The source-alignment report checks full-dataset metadata, API-listing caveats, public sample license/tooling, and current-project markers across repo docs, website, and HF cards."
         },
         {
             "step": 4,
@@ -70,7 +70,7 @@
                 "docs/data/evaluation_protocol.json",
                 "scripts/build_evaluation_protocol.py"
             ],
-            "readout": "The protocol fixes the 20-frame window unit, chronological split, train-only normalization, leakage controls, per-task input/target/metric contracts, and unsupported interpretations."
+            "readout": "The protocol fixes the 20-frame window unit, chronological split, train-only normalization, leakage controls, per-task input/target/metric contracts, and current limitations."
         },
         {
             "step": 5,
@@ -134,10 +134,10 @@
     "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts",
     "hf_model_baselines": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines"
   },
-  "do_not_infer": [
-    "Do not infer cross-environment generalization from the single public sample episode.",
-    "Do not treat the Qwen3-Omni readiness run as a 32-episode fine-tune.",
-    "Do not treat feature-vector reconstruction as pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
-    "Do not assume raw Xperience-10M data is redistributed in this repo."
+  "current_reading_notes": [
+    "Cross-environment generalization is evaluated in the later multi-episode stage.",
+    "The Qwen3-Omni setup run is separate from the planned 32-episode fine-tune.",
+    "Feature-vector reconstruction is separate from pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
+    "Raw Xperience-10M data is not redistributed in this repo."
   ]
 }

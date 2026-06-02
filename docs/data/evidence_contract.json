@@ -10,7 +10,7 @@
         "PROJECT_STATUS.md",
         "docs/data/project_status.json"
       ],
-      "boundary": "summarizes existing evidence and boundaries; it does not add new experimental claims"
+      "boundary": "summarizes existing evidence and current limitations"
     },
         {
             "id": "official_dataset_card_alignment",
@@ -25,7 +25,7 @@
         },
         {
             "id": "source_alignment",
-            "claim": "Source facts and boundary markers are validated across repo, website, and HF cards.",
+            "claim": "Source facts and current-project markers are validated across repo, website, and HF cards.",
             "status": "verified",
             "evidence": [
                 "SOURCE_ALIGNMENT_AUDIT.md",
@@ -64,7 +64,7 @@
                 "docs/data/evaluation_protocol.json",
                 "scripts/build_evaluation_protocol.py"
             ],
-            "boundary": "defines windows, split, per-task metrics, leakage controls, and unsupported interpretations; does not prove cross-episode quality"
+            "boundary": "defines windows, split, per-task metrics, leakage controls, and current limitations"
         },
     {
       "id": "modality_atlas",
@@ -86,7 +86,7 @@
         "scripts/validate_task_surface.py",
         "docs/index.html"
       ],
-      "boundary": "presentation integrity only; it does not add model quality or new data"
+      "boundary": "presentation integrity for the public task surface"
     },
     {
       "id": "figure_index",
@@ -153,36 +153,36 @@
       "boundary": "single-episode probes, not full research-direction solutions"
     },
     {
-      "id": "qwen3_omni_readiness",
-      "claim": "Qwen3-Omni infrastructure has passed technical readiness checks.",
-      "status": "readiness_only",
+      "id": "qwen3_omni_setup",
+      "claim": "Qwen3-Omni infrastructure has passed technical setup checks.",
+      "status": "setup_stage",
       "evidence": [
         "results/omni_finetune/RUN_REPORT.md",
         "results/omni_finetune/dataset_manifest.json",
         "results/omni_finetune/metrics_eval.json"
       ],
-      "boundary": "one episode, 128 train windows; not a 32-episode pilot"
+      "boundary": "one episode and 128 train windows; full metrics require the 32-episode pilot"
     },
     {
       "id": "thirty_two_episode_gate",
-      "claim": "The real 32-episode LoRA pilot is blocked on gated data access, not on repo presentation.",
+      "claim": "The 32-episode LoRA pilot is waiting on gated data access.",
       "status": "blocked_by_data_access",
       "evidence": [
         "results/omni_finetune/DATA_BLOCKER_REPORT.md",
         "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
         "results/omni_finetune/source_discovery.json"
       ],
-      "boundary": "no 32-episode metric should be claimed until the gate passes"
+      "boundary": "held-out metrics come after the data gate, manifest construction, training, and test evaluation"
     },
     {
-      "id": "scope_claims_guard",
-      "claim": "Historical 32ep path strings are not treated as 32-episode results.",
+      "id": "scale_up_status_check",
+      "claim": "Historical 32ep path strings are tracked as setup-file provenance.",
       "status": "verified",
       "evidence": [
         "scripts/validate_scope_claims.py",
         "docs/data/scope_claims_audit.json"
       ],
-      "boundary": "old run/path identifiers are classified as readiness-artifact provenance and fail validation if public presentation claims real 32-episode metrics"
+      "boundary": "old run/path identifiers stay separate from completed 32-episode results"
     },
     {
       "id": "mirror_parity",
@@ -195,8 +195,8 @@
       "boundary": "compares prepared local mirror bundles before upload; live URLs are checked after publishing"
     },
     {
-      "id": "publication_hygiene",
-      "claim": "The public GitHub and Hugging Face bundles are publication-clean.",
+      "id": "publication_package",
+      "claim": "The public GitHub and Hugging Face bundles contain the intended release files.",
       "status": "verified",
       "evidence": [
         "scripts/validate_publication_package.py",
@@ -223,7 +223,7 @@
         "scripts/build_quality_gates.py",
         "docs/data/quality_gates.json"
       ],
-      "boundary": "summarizes packaging and live-mirror checks; it does not prove cross-episode model quality"
+      "boundary": "summarizes packaging and live-mirror checks; cross-episode model quality is measured by later held-out reports"
     },
     {
       "id": "live_publication_status",
@@ -258,7 +258,7 @@
         "README.md",
         "docs/index.html"
       ],
-      "boundary": "guides inspection; does not add new experimental claims"
+      "boundary": "guides inspection across data, tasks, results, and scale-up status"
     },
     {
       "id": "artifact_index",

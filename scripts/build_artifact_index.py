@@ -37,9 +37,9 @@ ARTIFACTS = [
         "id": "evidence_contract",
         "title": "Evidence contract",
         "path": "EVIDENCE_CONTRACT.md",
-        "kind": "claim_boundary",
+        "kind": "project_scope",
         "surface": "repo",
-        "proves": "Defines what is verified, what is readiness-only, and what must not be inferred.",
+        "proves": "Defines the implemented scope, setup-stage items, and multi-episode prerequisites.",
     },
     {
         "id": "project_packet",
@@ -55,7 +55,7 @@ ARTIFACTS = [
         "path": "ARTIFACT_GUIDE.md",
         "kind": "project_path",
         "surface": "repo_hf",
-        "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
+        "proves": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
     },
     {
         "id": "official_dataset_card_alignment",
@@ -63,7 +63,7 @@ ARTIFACTS = [
         "path": "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
         "kind": "source_alignment",
         "surface": "repo_hf",
-        "proves": "Aligns public dataset wording with the official gated Xperience-10M card, public sample card, HF API metadata, and unsupported areas.",
+        "proves": "Aligns public dataset wording with the official gated Xperience-10M card, public sample card, HF API metadata, and current project coverage.",
     },
     {
         "id": "official_dataset_card_alignment_json",
@@ -79,7 +79,7 @@ ARTIFACTS = [
         "path": "SOURCE_ALIGNMENT_AUDIT.md",
         "kind": "source_alignment",
         "surface": "repo_hf",
-        "proves": "Summarizes the pass/fail check for full-dataset facts, sample-card facts, API-listing caveats, and public-card boundary markers.",
+        "proves": "Summarizes the pass/fail check for full-dataset facts, sample-card facts, API-listing caveats, and current-project markers.",
     },
     {
         "id": "source_alignment_json",
@@ -111,7 +111,7 @@ ARTIFACTS = [
         "path": "EVALUATION_PROTOCOL.md",
         "kind": "evaluation_protocol",
         "surface": "repo_hf",
-        "proves": "Defines the window unit, chronological split, task metrics, leakage controls, and unsupported interpretations.",
+        "proves": "Defines the window unit, chronological split, task metrics, leakage controls, and current limitations.",
     },
     {
         "id": "evaluation_protocol_json",
@@ -135,7 +135,7 @@ ARTIFACTS = [
         "path": "RESEARCH_TAKEAWAYS.md",
         "kind": "result_interpretation",
         "surface": "repo_hf",
-        "proves": "Summarizes the main research lessons from committed metrics without broad model-quality overclaims.",
+        "proves": "Summarizes the main research lessons from committed metrics and identifies which experiments need held-out episodes.",
     },
     {
         "id": "research_takeaways_json",
@@ -232,7 +232,7 @@ ARTIFACTS = [
         "kind": "quality_gate",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Machine-readable checks for SEO/social metadata, accessible tab semantics, public links, QA links, and copy hygiene.",
+        "proves": "Machine-readable checks for SEO/social metadata, accessible tab semantics, public links, QA links, and reader-facing copy consistency.",
     },
     {
         "id": "public_surface_qa_builder",
@@ -302,21 +302,21 @@ ARTIFACTS = [
     },
     {
         "id": "publication_audit",
-        "title": "Publication audit",
+        "title": "Publication package check",
         "path": "docs/data/publication_audit.json",
-        "kind": "hygiene_report",
+        "kind": "publication_package_check",
         "surface": "website_hf",
         "volatile": True,
         "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
     },
     {
-        "id": "scope_claims_audit",
-        "title": "Scope claims audit",
+        "id": "scale_up_status_check",
+        "title": "Scale-up status check",
         "path": "docs/data/scope_claims_audit.json",
-        "kind": "scope_guard",
+        "kind": "scale_up_status",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Confirms historical 32ep path strings are not presented as real 32-episode results.",
+        "proves": "Confirms historical 32ep path strings stay in setup-file provenance and are not presented as completed 32-episode results.",
     },
     {
         "id": "mirror_parity",
@@ -462,7 +462,7 @@ ARTIFACTS = [
         "path": "results/omni_finetune/DATA_BLOCKER_REPORT.md",
         "kind": "blocker_report",
         "surface": "repo_hf",
-        "proves": "Documents why no 32-episode Qwen3-Omni result is claimed yet.",
+        "proves": "Documents the data-access requirement before the 32-episode Qwen3-Omni pilot can run.",
     },
     {
         "id": "multi_episode_access_status",

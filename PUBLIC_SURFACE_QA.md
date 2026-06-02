@@ -4,7 +4,7 @@ This generated report checks whether the public repo, website, and Hugging Face 
 
 Current status: **pass**
 
-This report validates public presentation quality and packaging hygiene. It does not prove multi-episode model quality.
+This report validates public presentation quality and package contents. Multi-episode model metrics are tracked by the training and evaluation reports.
 
 ## Checks
 
@@ -15,10 +15,10 @@ This report validates public presentation quality and packaging hygiene. It does
 | website_has_research_seo_metadata | `pass` | The website should expose search/social metadata and structured project metadata. |
 | website_tabs_are_accessible_and_keyboardable | `pass` | The long research dashboard should be navigable as real tabs, including keyboard support. |
 | responsive_navigation_guard_present | `pass` | Tablet/mobile navigation should not overflow and deep links should land below sticky navigation. |
-| public_naming_consistent | `pass` | Public copy should consistently present the project as Ropedia Xperience-10M, with the Qwen3-Omni scale-up boundary. |
+| public_naming_consistent | `pass` | Public copy should consistently present the project as Ropedia Xperience-10M, with the Qwen3-Omni scale-up status. |
 | public_links_cover_repo_hf_dataset_and_ropedia | `pass` | Public cards should link the repo, Space, artifacts, model baselines, upstream dataset, and Ropedia dataset page. |
 | public_artifact_qa_files_are_exposed | `pass` | Readers should be able to find integrity, publication, mirror, and public-surface QA files from public copy. |
-| public_copy_avoids_internal_or_meta_tone | `pass` | Public copy should not expose internal tooling, private hardware labels, assessment framing, or meta design-process wording. |
+| public_copy_uses_reader_facing_language | `pass` | Public copy should use reader-facing project language and avoid private tooling, hardware labels, assessment framing, or design-process notes. |
 
 ## Scope
 
