@@ -1,7 +1,7 @@
 # Reproducibility Contract
 
 This file defines what can be reproduced from the public repo and the official
-Xperience-10M sample, what each command should produce, and which claims remain
+Xperience-10M sample, what each command should produce, and which results remain
 outside the current public data boundary.
 
 ## Scope
@@ -13,7 +13,7 @@ outside the current public data boundary.
 | 12-task suite | Yes | Uses the current 8,378-d feature contract; audio is documented but not featurized. |
 | Neural MLP heads | Yes, when `torch` is installed | Compact task heads only, not a foundation model. |
 | Website figures and charts | Yes | Generated from committed metrics and sample thumbnails. |
-| Publication audit | Yes | Checks public repo and prepared HF bundles. |
+| Release package | Yes | Covers public repo and prepared HF bundles. |
 | 32-episode Qwen3-Omni LoRA pilot | Not yet | Gated by full Xperience-10M access and held-out-episode evaluation. |
 
 ## Environment
@@ -109,11 +109,11 @@ python scripts/validate_publication_package.py
 | Figure index | `FIGURE_INDEX.md`, `docs/data/figure_index.json` |
 | Modality atlas | `docs/data/modality_atlas.json`, `docs/assets/modalities/*` |
 | Website integrity | `docs/data/website_integrity.json` |
-| Publication checks | `docs/data/artifact_index.json`, `docs/data/mirror_parity.json`, `docs/data/publication_audit.json`, `docs/data/scope_claims_audit.json` |
+| Release reports | `docs/data/artifact_index.json`, `docs/data/mirror_parity.json`, `docs/data/publication_audit.json`, `docs/data/scope_claims_audit.json` |
 
-## Exact-Match Audit
+## Exact-Match Reproduction Record
 
-The last full metric reproducibility audit was run on **2026-05-30
+The last full metric reproduction run was completed on **2026-05-30
 Asia/Singapore** from a fresh output directory outside the repo. It rebuilt the
 minimal baselines, all-modality baselines, and the 12-task suite from the local
 public sample. The regenerated metrics matched the committed artifacts after
@@ -127,7 +127,7 @@ Evidence:
 ## Non-Reproducible From This Public Repo Alone
 
 The following require gated data, large model weights, or private compute
-state, so this repo does not claim they are publicly reproducible yet:
+state, so this repo does not yet provide public reproduction for:
 
 - a real 32-episode Qwen3-Omni LoRA run,
 - held-out episode metrics for Qwen3-Omni,

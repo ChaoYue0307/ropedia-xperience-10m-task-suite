@@ -17,13 +17,13 @@ Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience
 | 12-task suite infographic | `docs/assets/task_suite_infographic.png` | 1800 x 6600 | `scripts/render_task_suite_infographic.py` | Primary visual map of the task suite, verified metrics, and sample modalities. |
 | Episode-to-task pipeline diagram | `docs/assets/pipeline_diagram.png` | 1800 x 1120 | `scripts/generate_visualizations.py` | End-to-end data processing and evaluation pipeline overview. |
 | Minimal and neural task architecture map | `docs/assets/task_architectures.png` | 1800 x 2450 | `scripts/render_overview_figures.py` | All 12 task heads and shared feature contracts. |
-| Video modality thumbnail | `docs/assets/modalities/video.jpg` | 760 x 470 | `scripts/export_modality_atlas_assets.py` | Derived thumbnail for synchronized camera streams. |
-| Audio modality thumbnail | `docs/assets/modalities/audio.png` | 760 x 470 | `scripts/export_modality_atlas_assets.py` | Derived waveform thumbnail for the MP4 AAC stream. |
-| Depth modality thumbnail | `docs/assets/modalities/depth.jpg` | 760 x 470 | `scripts/export_modality_atlas_assets.py` | Derived depth and confidence thumbnail. |
-| Pose / SLAM modality thumbnail | `docs/assets/modalities/pose_slam.png` | 760 x 470 | `scripts/export_modality_atlas_assets.py` | Derived camera trajectory and sparse map thumbnail. |
-| Motion capture modality thumbnail | `docs/assets/modalities/motion_capture.png` | 760 x 470 | `scripts/export_modality_atlas_assets.py` | Derived body and hand motion-capture thumbnail. |
-| Inertial modality thumbnail | `docs/assets/modalities/inertial.png` | 760 x 470 | `scripts/export_modality_atlas_assets.py` | Derived accelerometer and gyroscope trace thumbnail. |
-| Language modality thumbnail | `docs/assets/modalities/language.png` | 1500 x 470 | `scripts/export_modality_atlas_assets.py` | Derived object-tag and caption thumbnail. |
+| Video modality thumbnail | `docs/assets/modalities/video.jpg` | 880 x 520 | `scripts/export_modality_atlas_assets.py` | Derived thumbnail for synchronized camera streams. |
+| Audio modality thumbnail | `docs/assets/modalities/audio.png` | 880 x 520 | `scripts/export_modality_atlas_assets.py` | Derived waveform thumbnail for the MP4 AAC stream. |
+| Depth modality thumbnail | `docs/assets/modalities/depth.jpg` | 880 x 520 | `scripts/export_modality_atlas_assets.py` | Derived depth and confidence thumbnail. |
+| Pose / SLAM modality thumbnail | `docs/assets/modalities/pose_slam.png` | 880 x 520 | `scripts/export_modality_atlas_assets.py` | Derived camera trajectory and sparse map thumbnail. |
+| Motion capture modality thumbnail | `docs/assets/modalities/motion_capture.png` | 880 x 520 | `scripts/export_modality_atlas_assets.py` | Derived body and hand motion-capture thumbnail. |
+| Inertial modality thumbnail | `docs/assets/modalities/inertial.png` | 880 x 520 | `scripts/export_modality_atlas_assets.py` | Derived accelerometer and gyroscope trace thumbnail. |
+| Language modality thumbnail | `docs/assets/modalities/language.png` | 880 x 520 | `scripts/export_modality_atlas_assets.py` | Derived object-tag and caption thumbnail. |
 | Model macro-F1 comparison chart | `docs/assets/charts/model_macro_f1.svg` | 1100 x 284 | `scripts/generate_visualizations.py` | Minimal-vs-neural classification score comparison. |
 | Neural MLP task score chart | `docs/assets/charts/episode_task_scores_neural_mlp.svg` | 1100 x 556 | `scripts/generate_visualizations.py` | Neural MLP metric snapshot across the task suite. |
 | Minimal-vs-neural task score chart | `docs/assets/charts/episode_task_scores_minimal_vs_neural.svg` | 1100 x 964 | `scripts/generate_visualizations.py` | Side-by-side baseline comparison over the same window contracts. |

@@ -7,7 +7,7 @@
     "feature_dim": 8378,
     "window_frames": 20,
     "stride_frames": 5,
-    "warning": "These walkthroughs explain task contracts on one public sample episode; they are not cross-episode performance claims."
+    "warning": "These walkthroughs explain task contracts on one public sample episode; cross-episode performance requires held-out episodes."
   },
   "shared_pipeline": [
     "Read annotation.hdf5 and synchronized video-derived features.",

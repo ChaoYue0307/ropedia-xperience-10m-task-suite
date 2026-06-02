@@ -1572,25 +1572,29 @@
       .wrap { width: min(100% - 28px, var(--max)); }
       .project-tabs-shell { top: 64px; padding: 10px 0; }
       .project-tabs {
-        display: flex;
-        grid-template-columns: none;
-        gap: 8px;
-        overflow-x: auto;
-        padding-bottom: 4px;
-        scroll-snap-type: x proximity;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(164, 242, 127, 0.42) rgba(7, 18, 7, 0.72);
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 6px;
+        overflow: visible;
+        padding-bottom: 0;
+        scroll-snap-type: none;
       }
       .project-tab {
-        flex: 0 0 min(42vw, 168px);
-        min-height: 50px;
-        padding: 10px 11px;
-        scroll-snap-align: start;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 8px 5px;
+        text-align: center;
+        scroll-snap-align: none;
       }
-      .project-tab strong { font-size: 14px; }
+      .project-tab strong {
+        font-size: 12px;
+        line-height: 1.05;
+        text-wrap: balance;
+      }
       .project-tab span {
-        font-size: 10.5px;
-        line-height: 1.25;
+        display: none;
       }
       .section-tabs {
         flex-wrap: nowrap;
@@ -1613,7 +1617,7 @@
         min-width: min(76vw, 210px);
         min-height: 52px;
       }
-      main > section { scroll-margin-top: 184px; }
+      main > section { scroll-margin-top: 112px; }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
       .artifact-group { padding: 16px; }
       .modality-atlas-panel { padding: 14px; }
@@ -1830,7 +1834,7 @@
           <article class="artifact"><h3>Split policy</h3><p>Single-episode chronological 70/30 train/test split. This avoids random future-window mixing; cross-episode generalization is measured in the later multi-episode pilot.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVALUATION_PROTOCOL.md">protocol doc</a></article>
           <article class="artifact"><h3>Metric contract</h3><p>All 12 tasks list input, target, primary metric, minimal baseline score, and neural MLP score from committed result files.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target feature blocks, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
-          <article class="artifact"><h3>Current limits</h3><p>This public-sample run does not evaluate cross-episode generalization, audio-visual learning, pixel-depth reconstruction, neural rendering, or full 32-episode Qwen3-Omni training.</p><a href="data/scope_claims_audit.json">status check</a></article>
+          <article class="artifact"><h3>Current limits</h3><p>This public-sample run does not evaluate cross-episode generalization, audio-visual learning, pixel-depth reconstruction, neural rendering, or full 32-episode Qwen3-Omni training.</p><a href="data/scope_claims_audit.json">scale-up note</a></article>
           <article class="artifact"><h3>Scale-up gate</h3><p>The Omni pilot requires at least 32 valid episodes, held-out episode splits, no train/test episode leakage, training metadata, predictions, metrics, and a run report.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">data gate</a></article>
         </div>
       </div>
@@ -1839,7 +1843,7 @@
     <section id="evidence" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Research progress and next milestones.</h2>
+          <h2>Current experiments and next milestones.</h2>
           <p>The project shows the completed public-sample task suite, then lays out the data requirements for the Qwen3-Omni scale-up path.</p>
         </div>
         <div class="evidence-grid">
@@ -1881,16 +1885,16 @@
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>Scale-up status is machine-checked</h3>
-            <p>The status check confirms historical <code>32ep</code> run/path strings stay in setup-file provenance and are not presented as completed 32-episode results.</p>
+            <h3>Scale-up readiness is explicit</h3>
+            <p>The readiness report keeps historical <code>32ep</code> setup paths separate from completed held-out-episode metrics.</p>
             <div class="evidence-links">
-              <a href="data/scope_claims_audit.json">status JSON</a>
+              <a href="data/scope_claims_audit.json">readiness JSON</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_scope_claims.py">validator script</a>
             </div>
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>Prepared mirrors are byte-checked</h3>
+            <h3>Prepared mirrors stay synchronized</h3>
             <p>The parity report compares critical JSON, figure, and validator files across the repo, HF Space bundle, artifact dataset bundle, and model bundle before upload.</p>
             <div class="evidence-links">
               <a href="data/mirror_parity.json">mirror parity</a>
@@ -1899,7 +1903,7 @@
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>Figures are indexed as evidence</h3>
+            <h3>Figures are indexed</h3>
             <p>The figure index records public visual assets, dimensions, SHA-256 hashes, source scripts, and the role each figure plays in the project narrative.</p>
             <div class="evidence-links">
               <a href="data/figure_index.json">figure_index.json</a>
@@ -1919,17 +1923,17 @@
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>Publication bundles are checked before release</h3>
-            <p>The validator checks required assets, raw-data exclusion, Python cache exclusion, heavy archive exclusion, accidental HF token strings, and public-card figure freshness across GitHub and the HF bundles.</p>
+            <h3>Release package stays lightweight</h3>
+            <p>The package report covers required assets, raw-data exclusion, Python cache exclusion, heavy archive exclusion, accidental HF token strings, and public-card figure freshness across GitHub and the HF bundles.</p>
             <div class="evidence-links">
-              <a href="data/publication_audit.json">package check</a>
+              <a href="data/publication_audit.json">package report</a>
               <a href="data/artifact_index.json">artifact index</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_publication_package.py">validator script</a>
             </div>
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>Website integrity is checked</h3>
+            <h3>Website references are validated</h3>
             <p>The site validator checks local links, anchors, JSON bundles, and referenced image dimensions before publishing.</p>
             <div class="evidence-links">
               <a href="data/website_integrity.json">website_integrity.json</a>
@@ -1938,8 +1942,8 @@
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>Release gates are explicit</h3>
-            <p>The quality-gate manifest collects the automated validators and the live post-publish checks required before the release is presented as current.</p>
+            <h3>Release checks are collected</h3>
+            <p>The release-check manifest collects the automated validators and the live post-publish checks used to keep the release current.</p>
             <div class="evidence-links">
               <a href="data/quality_gates.json">quality_gates.json</a>
               <a href="data/live_publication_status.json">live publication</a>
@@ -1971,7 +1975,7 @@
           <article class="reading-card">
             <span class="step-index">01</span>
             <h3>Understand the current scope</h3>
-            <p>Start with the project status, evidence contract, artifact index, scale-up status check, publication package check, and website integrity report. They separate implemented single-episode work from the prepared Qwen3-Omni scale-up.</p>
+            <p>Start with the project status, evidence contract, artifact index, scale-up readiness note, release package report, and website reference report. They separate implemented single-episode work from the prepared Qwen3-Omni scale-up.</p>
             <div class="reading-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">contract</a>
               <a href="data/evidence_contract.json">JSON</a>
@@ -1984,7 +1988,7 @@
               <a href="data/project_packet.json">packet</a>
               <a href="data/scope_claims_audit.json">scope</a>
               <a href="data/publication_audit.json">package</a>
-              <a href="data/website_integrity.json">site check</a>
+              <a href="data/website_integrity.json">site report</a>
             </div>
           </article>
           <article class="reading-card">
@@ -2036,7 +2040,7 @@
           <article class="artifact"><h3>HF access path</h3><p>The source dataset is manually gated for approved non-commercial use, with an external agreement step noted by the public HF metadata.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official HF dataset</a></article>
           <article class="artifact"><h3>API listing snapshot</h3><p>HF API metadata observed 803 session folders and 12,103 episode folders with <code>annotation.hdf5</code>. This snapshot supports planning; it is not a local data inventory.</p><a href="data/xperience10m_dataset_card_alignment.json">metadata JSON</a></article>
           <article class="artifact"><h3>Public sample card</h3><p>The sample repo lists <code>cc-by-nc-4.0</code>, HOMIE Toolkit for videos/annotations, and Rerun 0.29.0 for <code>.rrd</code> visualization.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
-          <article class="artifact"><h3>Source alignment</h3><p>The source-alignment validator checks full-dataset facts, public sample-card facts, API-listing caveats, and current-project markers across the repo, website, and HF cards.</p><a href="data/source_alignment_audit.json">alignment report</a></article>
+          <article class="artifact"><h3>Source notes</h3><p>The source notes summarize full-dataset facts, public sample-card facts, API-listing caveats, and current-project coverage across the repo, website, and HF cards.</p><a href="data/source_alignment_audit.json">alignment report</a></article>
           <article class="artifact"><h3>Episode layout</h3><p>Expected folders contain six MP4 streams and <code>annotation.hdf5</code>; <code>visualization.rrd</code> is treated as a viewer artifact and excluded from training downloads.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">alignment note</a></article>
           <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 windows, 8,378 current features, audio documented but not yet featurized, and no raw-data redistribution.</p><a href="data/modality_atlas.json">modality atlas</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, and misalignment.</p><a href="data/summary_metrics.json">summary metrics</a></article>
@@ -2049,11 +2053,11 @@
     <section id="suite" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Ropedia Xperience-10M 12-task suite, first.</h2>
-          <p>Start with the full 12-task map, then inspect the large native modality atlas below it. Audio is present in the sample MP4 stream, but the current 8,378-d baseline manifest does not featurize it.</p>
+          <h2>Ropedia Xperience-10M 12-task suite.</h2>
+          <p>The task map connects synchronized multimodal windows to 12 research task heads, then the modality atlas shows the sample streams used to build those contracts. Audio is present in the sample MP4 stream, but the current 8,378-d baseline manifest does not featurize it.</p>
         </div>
         <div class="figure-pan" id="task-suite-map">
-          <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-taskfirst-v12-modality-xl" alt="Infographic showing all 12 Ropedia Xperience-10M tasks with enlarged full-width modality cards">
+          <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-taskfirst-v13-modality-xl" alt="Infographic showing all 12 Ropedia Xperience-10M tasks with enlarged full-width modality cards">
         </div>
         <div class="modality-atlas-panel" id="modality-atlas" aria-labelledby="modality-atlas-title">
           <div class="atlas-head">
@@ -2108,7 +2112,7 @@
     <section id="pipeline" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>From raw episode to checked artifacts.</h2>
+          <h2>From raw episode to research artifacts.</h2>
           <p>Every script works from one data contract: aligned multimodal windows, explicit labels, cached feature extraction, and a manifest that makes omitted modalities visible.</p>
         </div>
         <img class="pipeline-image" src="assets/pipeline_diagram.png?v=xperience10m-nn" alt="Verified Xperience-10M multimodal pipeline diagram">
@@ -2119,7 +2123,7 @@
           </div>
           <div class="callout">
             <h3>What it does not prove</h3>
-            <p>It does not claim general embodied intelligence. A single episode cannot support cross-environment generalization; that requires many episodes and held-out episode splits.</p>
+            <p>It is not a general embodied-intelligence result. A single episode cannot support cross-environment generalization; that requires many episodes and held-out episode splits.</p>
           </div>
         </div>
       </div>
@@ -2129,7 +2133,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>What the current results actually say.</h2>
-          <p>A generated takeaways layer reads the committed metrics and separates useful research signals from claims that still require held-out episodes.</p>
+          <p>A generated takeaways layer reads the committed metrics, summarizes useful research signals, and identifies what still needs held-out episodes.</p>
         </div>
         <div class="artifact-grid">
           <article class="artifact primary-artifact">
@@ -2478,19 +2482,19 @@
 
           <section class="artifact-group tabbed-panel" id="artifact-panel-checks" role="tabpanel" aria-labelledby="artifact-tab-checks" hidden>
             <div class="artifact-group-head">
-              <div><span>Consistency checks</span><h3>Release checks behind the research site</h3></div>
+              <div><span>Release resources</span><h3>Project files behind the research site</h3></div>
               <p>These validator outputs support the public research artifacts by keeping links, mirrors, figures, source wording, and package boundaries consistent.</p>
             </div>
             <div class="artifact-grid">
               <article class="artifact"><h3>Artifact index</h3><p>Selective source-of-truth catalog with existence checks, sizes, and stable-file hashes.</p><a href="data/artifact_index.json">artifact_index.json</a></article>
               <article class="artifact"><h3>Task-surface integrity</h3><p>Checks that public task cards use readable research names, modality thumbnails, and the interactive walkthrough/player contract.</p><a href="data/task_surface_integrity.json">task_surface_integrity.json</a></article>
               <article class="artifact"><h3>Website integrity</h3><p>Checks local links, anchors, JSON files, and referenced website image dimensions.</p><a href="data/website_integrity.json">website_integrity.json</a></article>
-              <article class="artifact"><h3>Quality gates</h3><p>One release checklist for automated validators and live post-publish checks.</p><a href="data/quality_gates.json">quality_gates.json</a></article>
+              <article class="artifact"><h3>Release checks</h3><p>One release map for automated validators and live post-publish checks.</p><a href="data/quality_gates.json">quality_gates.json</a></article>
               <article class="artifact"><h3>Mirror parity</h3><p>Prepared repo, HF Space, artifact dataset, and model bundle parity for critical data, figures, website HTML, and validator files.</p><a href="data/mirror_parity.json">mirror_parity.json</a></article>
               <article class="artifact"><h3>Live publication</h3><p>Last public GitHub/HF URL verification after upload.</p><a href="data/live_publication_status.json">live_publication_status.json</a></article>
-              <article class="artifact"><h3>Scale-up status check</h3><p>Machine check that historical <code>32ep</code> identifiers stay in setup-file provenance and are not presented as completed 32-episode results.</p><a href="data/scope_claims_audit.json">scope_claims_audit.json</a></article>
-              <article class="artifact"><h3>Public presentation check</h3><p>Checks repo, website, and Hugging Face presentation quality, accessibility semantics, public links, and copy consistency.</p><a href="data/public_surface_qa.json">public_surface_qa.json</a></article>
-              <article class="artifact"><h3>Publication package check</h3><p>Checks raw-data exclusion, cache exclusion, heavy-archive exclusion, token-string scanning, and public-card figure freshness.</p><a href="data/publication_audit.json">publication_audit.json</a></article>
+              <article class="artifact"><h3>Scale-up readiness</h3><p>Keeps historical <code>32ep</code> setup identifiers separate from completed held-out-episode results.</p><a href="data/scope_claims_audit.json">scope_claims_audit.json</a></article>
+              <article class="artifact"><h3>Public project surface</h3><p>Keeps repo, website, and Hugging Face cards aligned in naming, links, tab semantics, and reader-facing copy.</p><a href="data/public_surface_qa.json">public_surface_qa.json</a></article>
+              <article class="artifact"><h3>Release package</h3><p>Keeps raw data, caches, heavy archives, token strings, and stale figure references out of the public bundle.</p><a href="data/publication_audit.json">publication_audit.json</a></article>
             </div>
           </section>
         </div>
@@ -2520,8 +2524,8 @@
         <div class="artifact-grid">
           <article class="artifact"><h3>Reproducibility contract</h3><p>Human-readable commands, expected artifacts, and boundaries for the public single-episode pipeline.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">REPRODUCIBILITY.md</a></article>
           <article class="artifact"><h3>Reproducibility matrix</h3><p>Machine-readable command matrix covering sample download, baselines, 12 tasks, figures, and validation.</p><a href="data/reproducibility_matrix.json">reproducibility_matrix.json</a></article>
-          <article class="artifact"><h3>Exact-match reproduction check</h3><p>The last metric check rebuilt the public-sample outputs from fresh cache and matched the committed metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">reproducibility_audit.md</a></article>
-          <article class="artifact"><h3>Website integrity</h3><p>Local HTML references, anchors, JSON bundles, and image dimensions checked before publishing.</p><a href="data/website_integrity.json">website_integrity.json</a></article>
+          <article class="artifact"><h3>Exact-match reproduction record</h3><p>The last metric rebuild reproduced the public-sample outputs from a fresh cache and matched the committed metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">reproducibility_audit.md</a></article>
+          <article class="artifact"><h3>Website reference report</h3><p>Local HTML references, anchors, JSON bundles, and image dimensions are validated before publishing.</p><a href="data/website_integrity.json">website_integrity.json</a></article>
           <article class="artifact"><h3>Scale-up boundary</h3><p>The 32-episode Qwen3-Omni pilot is prepared but not publicly reproducible until gated data access and held-out evaluation pass.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">DATA_BLOCKER_REPORT.md</a></article>
         </div>
         <p class="repro-note">Minimal path: install the toolkit dependencies, download the official sample, run the 12-task suite with neural heads, regenerate visualizations, then run the artifact index and publication validator.</p>

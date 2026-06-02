@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-02T10:22:11+00:00",
+  "generated_at_utc": "2026-06-02T12:01:15+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
@@ -74,8 +74,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 55079,
-      "evidence_index": 61958
+      "overview_index": 55100,
+      "evidence_index": 61980
     },
     {
       "name": "project_status_links_json",
@@ -87,9 +87,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 55079,
-      "protocol_index": 59431,
-      "evidence_index": 61958
+      "overview_index": 55100,
+      "protocol_index": 59452,
+      "evidence_index": 61980
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -107,8 +107,8 @@
       "name": "suite_task_map_precedes_modality_atlas",
       "status": "pass",
       "reason": "The Suite anchor should show the full 12-task map before the modality atlas.",
-      "first_marker_index": 461,
-      "second_marker_index": 752
+      "first_marker_index": 527,
+      "second_marker_index": 818
     },
     {
       "name": "suite_modality_atlas_contains_seven_cards",
@@ -170,7 +170,7 @@
   "json_files": [
     {
       "path": "data/artifact_index.json",
-      "bytes": 26284,
+      "bytes": 26188,
       "top_level_type": "dict"
     },
     {
@@ -190,12 +190,12 @@
     },
     {
       "path": "data/figure_index.json",
-      "bytes": 13435,
+      "bytes": 13434,
       "top_level_type": "dict"
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 45353,
+      "bytes": 47827,
       "top_level_type": "dict"
     },
     {
@@ -205,7 +205,7 @@
     },
     {
       "path": "data/modality_atlas.json",
-      "bytes": 3838,
+      "bytes": 3837,
       "top_level_type": "dict"
     },
     {
@@ -225,17 +225,17 @@
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 5290,
+      "bytes": 5376,
       "top_level_type": "dict"
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 6878,
+      "bytes": 6884,
       "top_level_type": "dict"
     },
     {
       "path": "data/quality_gates.json",
-      "bytes": 7557,
+      "bytes": 7538,
       "top_level_type": "dict"
     },
     {
@@ -245,17 +245,17 @@
     },
     {
       "path": "data/research_direction_extensions.json",
-      "bytes": 11891,
+      "bytes": 11894,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_directions.json",
-      "bytes": 14390,
+      "bytes": 14412,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_takeaways.json",
-      "bytes": 5348,
+      "bytes": 5358,
       "top_level_type": "dict"
     },
     {
@@ -280,12 +280,12 @@
     },
     {
       "path": "data/task_walkthroughs.json",
-      "bytes": 26951,
+      "bytes": 26958,
       "top_level_type": "dict"
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 11339,
+      "bytes": 11338,
       "top_level_type": "dict"
     },
     {
@@ -355,64 +355,64 @@
     {
       "path": "assets/charts/research_direction_extension_tasks.svg",
       "exists": true,
-      "bytes": 6686,
+      "bytes": 6685,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/modalities/audio.png",
       "exists": true,
-      "bytes": 6684,
-      "width": 760,
-      "height": 470,
+      "bytes": 7075,
+      "width": 880,
+      "height": 520,
       "format": "PNG"
     },
     {
       "path": "assets/modalities/depth.jpg",
       "exists": true,
-      "bytes": 38940,
-      "width": 760,
-      "height": 470,
+      "bytes": 45018,
+      "width": 880,
+      "height": 520,
       "format": "JPEG"
     },
     {
       "path": "assets/modalities/inertial.png",
       "exists": true,
-      "bytes": 43233,
-      "width": 760,
-      "height": 470,
+      "bytes": 46655,
+      "width": 880,
+      "height": 520,
       "format": "PNG"
     },
     {
       "path": "assets/modalities/language.png",
       "exists": true,
-      "bytes": 16329,
-      "width": 1500,
-      "height": 470,
+      "bytes": 15428,
+      "width": 880,
+      "height": 520,
       "format": "PNG"
     },
     {
       "path": "assets/modalities/motion_capture.png",
       "exists": true,
-      "bytes": 14037,
-      "width": 760,
-      "height": 470,
+      "bytes": 15078,
+      "width": 880,
+      "height": 520,
       "format": "PNG"
     },
     {
       "path": "assets/modalities/pose_slam.png",
       "exists": true,
-      "bytes": 64057,
-      "width": 760,
-      "height": 470,
+      "bytes": 68057,
+      "width": 880,
+      "height": 520,
       "format": "PNG"
     },
     {
       "path": "assets/modalities/video.jpg",
       "exists": true,
-      "bytes": 68307,
-      "width": 760,
-      "height": 470,
+      "bytes": 82323,
+      "width": 880,
+      "height": 520,
       "format": "JPEG"
     },
     {
@@ -434,7 +434,7 @@
     {
       "path": "assets/task_suite_infographic.png",
       "exists": true,
-      "bytes": 2600193,
+      "bytes": 2618313,
       "width": 1800,
       "height": 6600,
       "format": "PNG"

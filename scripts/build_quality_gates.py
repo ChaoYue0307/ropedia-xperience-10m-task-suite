@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build the public quality-gate summary.
+"""Build the public release-check summary.
 
-This is a presentation artifact over the existing validators. It does not
-replace the validators; it makes the release gate readable in one file and one
+This is a reader-facing map over the existing validators. It does not replace
+the validators; it makes the release state readable in one file and one
 machine-readable JSON bundle.
 """
 
@@ -21,7 +21,7 @@ OUTPUT_MD = ROOT / "QUALITY_GATES.md"
 GATES = [
     {
         "id": "scale_up_status",
-        "title": "Scale-up status check",
+        "title": "Scale-up readiness",
         "command": "python scripts/validate_scope_claims.py",
         "report": "docs/data/scope_claims_audit.json",
         "blocks_if": "Historical 32ep setup/provenance strings are presented as completed 32-episode metrics.",
@@ -77,11 +77,11 @@ GATES = [
     },
     {
         "id": "quality_gate_manifest",
-        "title": "Quality-gate manifest",
+        "title": "Release-check manifest",
         "command": "python scripts/build_quality_gates.py",
         "report": "docs/data/quality_gates.json",
-        "blocks_if": "A public reader cannot see the current packaging gates in one place.",
-        "proves": "The publication checklist is explicit, versioned, and mirrored with the repo.",
+        "blocks_if": "A public reader cannot see the current release state in one place.",
+        "proves": "The release checklist is explicit, versioned, and mirrored with the repo.",
     },
     {
         "id": "artifact_index",
@@ -93,7 +93,7 @@ GATES = [
     },
     {
         "id": "publication_package",
-        "title": "Publication package check",
+        "title": "Release package",
         "command": "python scripts/validate_publication_package.py",
         "report": "docs/data/publication_audit.json",
         "blocks_if": "Raw data, caches, heavy archives, token strings, missing required assets, or stale public-card figure references enter public bundles.",
@@ -101,11 +101,11 @@ GATES = [
     },
     {
         "id": "public_surface_qa",
-        "title": "Public presentation check",
+        "title": "Public project surface",
         "command": "python scripts/build_public_surface_qa.py",
         "report": "docs/data/public_surface_qa.json",
         "blocks_if": "Repo, website, or Hugging Face presentation loses SEO/social metadata, accessible tab semantics, source links, project-check links, or reader-facing copy consistency.",
-        "proves": "The public repo, website, and Hugging Face cards read as one polished research project surface.",
+        "proves": "The public repo, website, and Hugging Face cards read as one coherent research project surface.",
     },
     {
         "id": "mirror_parity",
@@ -163,21 +163,21 @@ def build_payload() -> dict:
         gate_records.append({**gate, "current_report": status})
     overall_status = "pass" if all(item["current_report"]["status"] == "pass" for item in gate_records) else "fail"
     return {
-        "title": "Ropedia Xperience-10M Publication Quality Gates",
+        "title": "Ropedia Xperience-10M Release Checks",
         "status": overall_status,
         "generated_at_utc": generated_at,
-        "rule": "Do not present a release as current unless every automated gate passes, then verify live GitHub/HF mirrors after publishing.",
+        "rule": "A release is current when the automated reports pass and the live GitHub/Hugging Face mirrors are verified after publishing.",
         "automated_gates": gate_records,
         "post_publish_checks": POST_PUBLISH_CHECKS,
-        "scope_note": "These gates validate public packaging, project status wording, mirror parity, and website integrity. Cross-episode model quality is measured by the later held-out evaluation reports.",
+        "scope_note": "These checks cover public packaging, project status wording, mirror parity, and website integrity. Cross-episode model quality is measured by later held-out evaluation reports.",
     }
 
 
 def markdown(payload: dict) -> str:
     lines = [
-        "# Publication Quality Gates",
+        "# Release Checks",
         "",
-        "This file is the release checklist for the Ropedia Xperience-10M Task Suite.",
+        "This file is the release map for the Ropedia Xperience-10M Task Suite.",
         "",
         f"Current gate status: **{payload['status']}**",
         "",
@@ -185,9 +185,9 @@ def markdown(payload: dict) -> str:
         "",
         payload["scope_note"],
         "",
-        "## Automated Gates",
+        "## Automated Checks",
         "",
-        "| Gate | Command | Report | Current report status | Blocks publication if |",
+        "| Check | Command | Report | Current status | Needs attention when |",
         "| --- | --- | --- | --- | --- |",
     ]
     for gate in payload["automated_gates"]:

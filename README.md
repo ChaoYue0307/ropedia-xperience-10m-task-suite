@@ -18,8 +18,8 @@ prepare the same pipeline for future held-out multi-episode training.
 
 The central research questions are:
 
-- What can be learned from one aligned Xperience-10M episode without pretending
-  it proves cross-episode generalization?
+- What can be learned from one aligned Xperience-10M episode while separating
+  sample-specific observations from later multi-episode questions?
 - Which input/output tasks are meaningful for embodied AI when video, depth,
   pose, mocap, IMU, and language annotations are synchronized?
 - What baseline models and evaluation files should exist before scaling to
@@ -34,7 +34,7 @@ The central research questions are:
 | Task suite | 12 human-readable embodied-AI task contracts with input, process, output, metrics, predictions, and case-study walkthroughs |
 | Baselines | Minimal linear/ridge/logistic heads plus compact PyTorch MLP task heads over the same chronological split |
 | Research directions | Task mapping and extension probes for human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling |
-| Scale-up path | Data-gated Qwen3-Omni LoRA pilot plan for 32 held-out episodes; not claimed as completed until data and evaluation are present |
+| Scale-up path | Data-gated Qwen3-Omni LoRA pilot plan for 32 held-out episodes; moves to completed once data, training, and held-out evaluation are present |
 | Public surfaces | GitHub repo, GitHub Pages dashboard, HF Space, HF artifact dataset, HF baseline-model repo, and HF collection |
 
 For the fastest interpretation of the current metrics, start with
@@ -78,34 +78,34 @@ multi-episode held-out model metrics:
 | Neural heads | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | compact MLP heads, not a foundation model |
 | Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
 | Task surface integrity | `docs/data/task_surface_integrity.json`, `scripts/validate_task_surface.py` | public task cards stay human-readable, thumbnail-backed, and wired to the scrub/play walkthrough storyboard |
-| Public presentation check | `PUBLIC_SURFACE_QA.md`, `docs/data/public_surface_qa.json`, `scripts/build_public_surface_qa.py` | repo, website, and Hugging Face cards preserve SEO/social metadata, accessible tab semantics, public links, project-check links, and copy consistency |
+| Public project surface | `PUBLIC_SURFACE_QA.md`, `docs/data/public_surface_qa.json`, `scripts/build_public_surface_qa.py` | keeps the repo, website, and Hugging Face cards aligned as one research project surface |
 | Qwen3-Omni | `results/omni_finetune/DATA_BLOCKER_REPORT.md`, `MULTI_EPISODE_ACCESS_STATUS.md` | setup-stage until 32 valid episodes are available and held-out evaluation runs |
-| Scale-up status check | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | historical `32ep` path strings stay in setup-file provenance and are not presented as completed 32-episode results |
+| Scale-up readiness | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | keeps setup-stage `32ep` artifacts separate from completed held-out-episode metrics |
 | Mirror parity | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | prepared GitHub/HF mirrors carry matching data, figure, website HTML, and validator files |
-| Publication package check | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | public repo and HF bundles only; ignored local scratch files are excluded, and public cards must reference the current task-first figure |
-| Quality gates | `QUALITY_GATES.md`, `docs/data/quality_gates.json`, `scripts/build_quality_gates.py` | one checklist for automated gates and live post-publish checks |
+| Release package | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | keeps public repo and HF bundles lightweight, current, and free of raw data or local scratch files |
+| Release checks | `QUALITY_GATES.md`, `docs/data/quality_gates.json`, `scripts/build_quality_gates.py` | one map for automated checks and live post-publish verification |
 | Artifact index | `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | selective source-of-truth catalog with existence, size, and stable-file hashes |
-| Project status | `PROJECT_STATUS.md`, `docs/data/project_status.json` | compact verified/data-gated/not-redistributed decision table for first-pass readers |
+| Project status | `PROJECT_STATUS.md`, `docs/data/project_status.json` | compact current-state table for first-pass readers |
 | Citation and metadata | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | code is MIT-scoped; raw-data use follows Xperience-10M terms |
 | Project path | `docs/data/project_packet.json`, website project path section | navigation guide across data, tasks, results, and scale-up status |
 
 Read the full scope note in [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), or
 consume the machine-readable copy at
 [`docs/data/evidence_contract.json`](docs/data/evidence_contract.json).
-The current publication package report is at
+The current release package report is at
 [`docs/data/publication_audit.json`](docs/data/publication_audit.json).
-The publication quality-gate summary is at
+The release-check summary is at
 [`QUALITY_GATES.md`](QUALITY_GATES.md) and
 [`docs/data/quality_gates.json`](docs/data/quality_gates.json).
 The last live-publication verification report is at
 [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json).
 The current prepared-mirror parity report is at
 [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json).
-The current scale-up status check is at
+The current scale-up readiness note is at
 [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json).
 The task-card and walkthrough-storyboard integrity report is at
 [`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json).
-The public presentation check is at
+The public project-surface report is at
 [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) and
 [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json).
 The generated evaluation protocol is at
@@ -154,7 +154,7 @@ They give the current research state in one compact table:
 | Official dataset wording | Verified against the public `ropedia-ai/xperience-10m` dataset card/API metadata |
 | Source alignment | Verified source facts and current-project markers across repo, website, and HF cards |
 | Evaluation protocol | Verified generated protocol for windowing, split policy, leakage controls, and per-task metrics |
-| Website and HF mirrors | Verified by local integrity, presentation checks, mirror parity, and live-publication checks; the public dashboard uses five top-level tabs plus subsection tabs for dataset, task-suite, method, result, and resource views |
+| Website and HF mirrors | Verified by website reference reports, public project-surface reports, mirror parity, and live-publication checks; the public dashboard uses five top-level tabs plus subsection tabs for dataset, task-suite, method, result, and resource views |
 | Qwen3-Omni 32-episode pilot | Data-gated; prepared, with full metrics pending held-out evaluation |
 | Raw Xperience-10M data / full Qwen weights | Not redistributed |
 
@@ -164,7 +164,7 @@ If you are reading the project cold, open these in order:
 
 | Step | Question | Primary artifacts | What should be true |
 | --- | --- | --- | --- |
-| 1 | What has been implemented? | [`PROJECT_STATUS.md`](PROJECT_STATUS.md), [`docs/data/project_status.json`](docs/data/project_status.json), [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`QUALITY_GATES.md`](QUALITY_GATES.md), [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/figure_index.json`](docs/data/figure_index.json), [`docs/data/brand_assets.json`](docs/data/brand_assets.json), [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json), [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json), [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json), [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Single-episode task engineering and publication checks are implemented; historical `32ep` identifiers stay in setup-file provenance, visual/brand assets are indexed, and quality gates plus prepared and live mirrors are checked. |
+| 1 | What has been implemented? | [`PROJECT_STATUS.md`](PROJECT_STATUS.md), [`docs/data/project_status.json`](docs/data/project_status.json), [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`QUALITY_GATES.md`](QUALITY_GATES.md), [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/figure_index.json`](docs/data/figure_index.json), [`docs/data/brand_assets.json`](docs/data/brand_assets.json), [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json), [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json), [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json), [`docs/data/publication_audit.json`](docs/data/publication_audit.json), [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Single-episode task engineering is implemented; setup-stage `32ep` artifacts, visual assets, prepared mirrors, and live mirrors are documented. |
 | 2 | What is the official upstream dataset? | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md), [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json), [official HF dataset](https://huggingface.co/datasets/ropedia-ai/xperience-10m) | The full dataset is described as a gated large-scale 4D multimodal egocentric source; this repo validates only one public sample episode. |
 | 3 | Are source facts consistently presented? | [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md), [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json), [`scripts/validate_source_alignment.py`](scripts/validate_source_alignment.py) | Repo, website, and HF cards preserve full-dataset, sample-card, API-listing, and current-project markers. |
 | 4 | How exactly are tasks evaluated? | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md), [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json), [`scripts/build_evaluation_protocol.py`](scripts/build_evaluation_protocol.py) | The window unit, chronological split, leakage controls, task metrics, and current limitations are explicit. |
@@ -250,7 +250,7 @@ This repo's current verified subset is much smaller and intentionally explicit:
 - audio documented in figures and the modality atlas, but not yet extracted as
   a model input feature block.
 
-The same alignment note also records what is not yet claimed: real
+The same alignment note also records what is outside the current implemented subset: real
 audio-visual learning, caption generation, pixel-depth estimation, SLAM
 estimation, neural rendering, policy learning, cross-episode generalization,
 and real 32-episode Qwen3-Omni model quality.
@@ -283,9 +283,9 @@ Hugging Face Space app:
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and debuggable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode task development inspectable without rerunning first |
-| Quality gates | `QUALITY_GATES.md`, `docs/data/quality_gates.json` | Shows the exact automated and post-publish checks required before presenting a release as current |
+| Release checks | `QUALITY_GATES.md`, `docs/data/quality_gates.json` | Shows the automated and post-publish checks used to keep the public release current |
 | Live publication status | `docs/data/live_publication_status.json` | Records the last live GitHub Pages, GitHub raw, and Hugging Face mirror verification |
-| Publication package check | `docs/data/publication_audit.json` | Confirms public bundles contain no raw Xperience-10M data, Python caches, heavy archives, token strings, or stale public-card figure references |
+| Release package | `docs/data/publication_audit.json` | Confirms public bundles contain no raw Xperience-10M data, Python caches, heavy archives, token strings, or stale public-card figure references |
 | Artifact index | `docs/data/artifact_index.json` | Gives readers a compact source-of-truth catalog with stable hashes |
 | Artifact guide | `ARTIFACT_GUIDE.md` | Groups the public evidence into research-project layers |
 | Reproducibility contract | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json` | States public commands, expected outputs, exact-match reproduction evidence, and non-reproducible boundaries |
@@ -321,7 +321,7 @@ The code files are MIT-licensed. Raw Xperience-10M data is not redistributed
 here, and dataset use remains governed by the official Ropedia/Xperience-10M
 terms. See [`LICENSE`](LICENSE) and [`DATA_NOTICE.md`](DATA_NOTICE.md).
 
-![Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v12-modality-xl)
+![Ropedia Xperience-10M 12-task infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v13-modality-xl)
 
 The infographic uses a custom text-free research background and puts the shared
 processing contract plus all 12 task families before the modality atlas.
@@ -369,9 +369,9 @@ scripts/
   render_overview_figures.py        # renders polished pipeline/architecture PNGs
   build_brand_assets.py             # derives logo sizes, favicon, social card
   build_artifact_index.py           # builds the source-of-truth artifact index
-  build_quality_gates.py            # builds publication quality gates
+  build_quality_gates.py            # builds release checks
   validate_mirror_parity.py         # checks prepared GitHub/HF mirror file parity
-  validate_scope_claims.py          # checks Qwen3-Omni setup/result status wording
+  validate_scope_claims.py          # keeps Qwen3-Omni setup and result states separate
   validate_task_surface.py          # checks readable task cards and interactive storyboard wiring
   validate_website_integrity.py     # checks local site links, anchors, JSON, images
   validate_publication_package.py   # checks public repo + HF bundle contents
@@ -400,8 +400,8 @@ docs/
   data/evidence_contract.json       # machine-readable project scope
   data/artifact_index.json          # compact project-artifact catalog
   data/live_publication_status.json # live GitHub/HF publication verification
-  data/quality_gates.json           # machine-readable publication gates
-  data/publication_audit.json       # machine-readable publication package check
+  data/quality_gates.json           # machine-readable release checks
+  data/publication_audit.json       # machine-readable release package report
   data/task_surface_integrity.json  # machine-readable task-card/storyboard integrity check
   data/website_integrity.json       # machine-readable website integrity check
   data/project_manifest.json        # machine-readable public-surface metadata
@@ -652,7 +652,7 @@ python scripts/research_direction_extension_tasks.py
 ```
 
 These four probes make the four-direction mapping more concrete, but they are
-still single-episode extension baselines. Full research claims still require
+still single-episode extension baselines. Full research conclusions still require
 multi-episode training, held-out episode evaluation, and stronger task-specific
 models.
 

@@ -141,7 +141,7 @@ moving to heavier sequence or vision-language models.
 ## Qwen/Omni Neural Track
 
 The Qwen3-Omni scripts remain a separate neural/VLM track under
-`scripts/omni/`. They are better suited for action/subtask QA, sensor-adapter
+`scripts/omni/`. They are better suited for action/subtask adapter checks, sensor-adapter
 experiments, and LoRA fine-tuning than for the full 12-task matrix. A useful
 comparison order is:
 

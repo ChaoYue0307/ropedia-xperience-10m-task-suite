@@ -1,13 +1,13 @@
-# Reproducibility Audit
+# Reproduction Record
 
-Audit date: 2026-05-30 Asia/Singapore.
+Run date: 2026-05-30 Asia/Singapore.
 
-Purpose: verify that the committed Ropedia Xperience-10M Task Suite artifacts are
-real outputs from the scripts, not placeholder or fabricated metrics.
+Purpose: show that the committed Ropedia Xperience-10M Task Suite artifacts are
+real outputs from the scripts and can be reproduced from the public sample.
 
 ## Raw Inputs Checked
 
-The audit used the local public sample episode:
+The run used the local public sample episode:
 
 ```text
 data/sample/xperience-10m-sample/
@@ -22,14 +22,14 @@ data/sample/xperience-10m-sample/
 
 `annotation.hdf5` contains 5,821 aligned frames with depth, hand mocap, body
 mocap, IMU, SLAM, calibration, and caption metadata. The video feature cache was
-rebuilt from all six video files during the audit.
+rebuilt from all six video files during the run.
 
 ## Commands Re-run
 
-All audit outputs were written outside the repo:
+All reproduction outputs were written outside the repo:
 
 ```bash
-AUDIT=/path/to/ignored-scratch-workspace
+REPRO=/path/to/ignored-scratch-workspace
 WORKSPACE=/path/to/Ropedia
 ANN=$WORKSPACE/data/sample/xperience-10m-sample/annotation.hdf5
 PY=$WORKSPACE/.venv/bin/python
@@ -37,34 +37,34 @@ PY=$WORKSPACE/.venv/bin/python
 $PY -B scripts/train_min_action_model.py \
   --workspace $WORKSPACE \
   --annotation $ANN \
-  --output-dir $AUDIT/min_action_model \
+  --output-dir $REPRO/min_action_model \
   --target action
 
 $PY -B scripts/train_min_action_model.py \
   --workspace $WORKSPACE \
   --annotation $ANN \
-  --output-dir $AUDIT/min_subtask_model \
+  --output-dir $REPRO/min_subtask_model \
   --target subtask
 
 $PY -B scripts/train_all_modalities_model.py \
   --workspace $WORKSPACE \
   --annotation $ANN \
-  --output-dir $AUDIT/min_all_modalities_action_model \
-  --cache-dir $AUDIT/cache \
+  --output-dir $REPRO/min_all_modalities_action_model \
+  --cache-dir $REPRO/cache \
   --target action
 
 $PY -B scripts/train_all_modalities_model.py \
   --workspace $WORKSPACE \
   --annotation $ANN \
-  --output-dir $AUDIT/min_all_modalities_subtask_model \
-  --cache-dir $AUDIT/cache \
+  --output-dir $REPRO/min_all_modalities_subtask_model \
+  --cache-dir $REPRO/cache \
   --target subtask
 
 $PY -B scripts/episode_task_suite.py \
   --workspace $WORKSPACE \
   --annotation $ANN \
-  --output-dir $AUDIT/episode_task_suite \
-  --cache-dir $AUDIT/cache
+  --output-dir $REPRO/episode_task_suite \
+  --cache-dir $REPRO/cache
 ```
 
 ## Exact Match Checks
@@ -100,7 +100,7 @@ transition_detection/metrics.json: MATCH
 
 ## Fresh Cache Evidence
 
-The all-modality audit rebuilt a fresh feature cache:
+The all-modality run rebuilt a fresh feature cache:
 
 ```text
 depth_n5821_grid8.npz: shape=(5821, 140), nonzero=809107
@@ -119,6 +119,6 @@ empty placeholder features.
 ## Caveats
 
 The scripts contain a zero-feature fallback if a video file is missing. That is
-not the path used in this audit: all six videos existed and produced nonzero
+not the path used in this run: all six videos existed and produced nonzero
 features. The repo remains a single-episode learning and pipeline-validation
 project, not evidence of cross-episode generalization.

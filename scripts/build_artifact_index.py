@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build a compact source-of-truth artifact index for the research project.
 
-The index is intentionally selective. It lists the files that prove the public
-claims, not every prediction array or checkpoint in the repository.
+The index is intentionally selective. It lists the files behind the public
+project readouts, not every prediction array or checkpoint in the repository.
 """
 
 from __future__ import annotations
@@ -23,7 +23,7 @@ ARTIFACTS = [
         "path": "PROJECT_STATUS.md",
         "kind": "project_path",
         "surface": "repo_hf",
-        "proves": "Gives a compact verified/data-gated/not-redistributed decision table for first-pass readers.",
+        "proves": "Gives a compact current-state table for first-pass readers.",
     },
     {
         "id": "project_status_json",
@@ -203,44 +203,44 @@ ARTIFACTS = [
     },
     {
         "id": "quality_gates",
-        "title": "Publication quality gates",
+        "title": "Release checks",
         "path": "QUALITY_GATES.md",
         "kind": "quality_gate",
         "surface": "repo_hf",
-        "proves": "Lists the automated and post-publish gates required before presenting a release as current.",
+        "proves": "Lists the automated and post-publish checks used to keep the release current.",
     },
     {
         "id": "quality_gate_manifest",
-        "title": "Quality-gate manifest",
+        "title": "Release-check manifest",
         "path": "docs/data/quality_gates.json",
         "kind": "quality_gate",
         "surface": "website_hf",
-        "proves": "Machine-readable release-gate summary for validators, mirrors, and public project surfaces.",
+        "proves": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
     },
     {
         "id": "public_surface_qa",
-        "title": "Public presentation check",
+        "title": "Public project surface",
         "path": "PUBLIC_SURFACE_QA.md",
         "kind": "quality_gate",
         "surface": "repo_hf",
-        "proves": "Checks whether the repo, website, and Hugging Face cards read as one coherent research project surface.",
+        "proves": "Keeps the repo, website, and Hugging Face cards aligned as one coherent research project surface.",
     },
     {
         "id": "public_surface_qa_json",
-        "title": "Public presentation check JSON",
+        "title": "Public project surface JSON",
         "path": "docs/data/public_surface_qa.json",
         "kind": "quality_gate",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Machine-readable checks for SEO/social metadata, accessible tab semantics, public links, project-check links, and reader-facing copy consistency.",
+        "proves": "Machine-readable report for SEO/social metadata, accessible tab semantics, public links, project links, and reader-facing copy.",
     },
     {
         "id": "public_surface_qa_builder",
-        "title": "Public presentation check builder",
+        "title": "Public project surface builder",
         "path": "scripts/build_public_surface_qa.py",
         "kind": "quality_gate",
         "surface": "repo_hf",
-        "proves": "Regenerates the public presentation check before release.",
+        "proves": "Regenerates the public project-surface report before release.",
     },
     {
         "id": "task_surface_integrity",
@@ -302,21 +302,21 @@ ARTIFACTS = [
     },
     {
         "id": "publication_audit",
-        "title": "Publication package check",
+        "title": "Release package",
         "path": "docs/data/publication_audit.json",
         "kind": "publication_package_check",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
+        "proves": "Confirms public bundles exclude raw data, caches, heavy archives, and token strings.",
     },
     {
         "id": "scale_up_status_check",
-        "title": "Scale-up status check",
+        "title": "Scale-up readiness",
         "path": "docs/data/scope_claims_audit.json",
         "kind": "scale_up_status",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Confirms historical 32ep path strings stay in setup-file provenance and are not presented as completed 32-episode results.",
+        "proves": "Keeps historical 32ep setup paths separate from completed held-out-episode results.",
     },
     {
         "id": "mirror_parity",
