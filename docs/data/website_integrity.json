@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-02T12:01:15+00:00",
+  "generated_at_utc": "2026-06-02T13:05:54+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 2,
-    "local_references": 92,
-    "external_reference_count": 75,
-    "json_files": 25,
+    "local_references": 96,
+    "external_reference_count": 77,
+    "json_files": 26,
     "image_assets_referenced": 19,
     "failure_count": 0
   },
@@ -74,8 +74,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 55100,
-      "evidence_index": 61980
+      "overview_index": 57999,
+      "evidence_index": 67093
     },
     {
       "name": "project_status_links_json",
@@ -87,9 +87,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 55100,
-      "protocol_index": 59452,
-      "evidence_index": 61980
+      "overview_index": 57999,
+      "protocol_index": 64565,
+      "evidence_index": 67093
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -163,7 +163,7 @@
     {
       "path": "index.html",
       "id_count": 74,
-      "reference_count": 91,
+      "reference_count": 95,
       "image_count": 22
     }
   ],
@@ -209,6 +209,11 @@
       "top_level_type": "dict"
     },
     {
+      "path": "data/project_brief.json",
+      "bytes": 2481,
+      "top_level_type": "dict"
+    },
+    {
       "path": "data/project_manifest.json",
       "bytes": 4468,
       "top_level_type": "dict"
@@ -225,7 +230,7 @@
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 5376,
+      "bytes": 5414,
       "top_level_type": "dict"
     },
     {

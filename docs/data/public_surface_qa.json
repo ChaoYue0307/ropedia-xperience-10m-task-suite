@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Project Surface",
   "status": "pass",
-  "generated_at_utc": "2026-06-02T12:31:18+00:00",
+  "generated_at_utc": "2026-06-02T13:06:37+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -18,7 +18,7 @@
         "website_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-02T12:01:15+00:00"
+          "generated_at_utc": "2026-06-02T13:05:54+00:00"
         },
         "task_surface_integrity": {
           "exists": true,
@@ -38,12 +38,12 @@
         "publication_package": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-02T12:23:05+00:00"
+          "generated_at_utc": "2026-06-02T12:42:09+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-02T12:23:26+00:00"
+          "generated_at_utc": "2026-06-02T12:42:53+00:00"
         },
         "live_publication": {
           "exists": true,
@@ -96,7 +96,7 @@
       "reason": "Public copy should consistently present the project as Ropedia Xperience-10M, with the Qwen3-Omni scale-up status.",
       "marker_counts": {
         "Ropedia Xperience-10M Task Suite": 15,
-        "Xperience-10M": 94,
+        "Xperience-10M": 95,
         "12-task": 20,
         "Qwen3-Omni": 33,
         "one public Xperience-10M sample episode": 1
@@ -107,7 +107,7 @@
       "status": "pass",
       "reason": "Public cards should link the repo, Space, artifacts, model baselines, upstream dataset, and Ropedia dataset page.",
       "marker_counts": {
-        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 58,
+        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 60,
         "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite": 6,
         "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts": 4,
         "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines": 5,
@@ -120,6 +120,7 @@
       "status": "pass",
       "reason": "Readers should be able to find website reference, release package, mirror, and project-surface files from public copy.",
       "marker_counts": {
+        "data/project_brief.json": 9,
         "data/website_integrity.json": 10,
         "data/task_surface_integrity.json": 13,
         "data/publication_audit.json": 13,
