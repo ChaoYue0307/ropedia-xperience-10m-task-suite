@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-02T07:00:30+00:00",
+  "generated_at_utc": "2026-06-02T07:31:55+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
@@ -57,7 +57,7 @@
       "name": "project_tabs_update_selected_state",
       "status": "pass",
       "reason": "Tab activation should update selected state for assistive technology.",
-      "selected_count": 6,
+      "selected_count": 7,
       "updates_selected_state": true
     },
     {
@@ -72,8 +72,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 51195,
-      "evidence_index": 58049
+      "overview_index": 52692,
+      "evidence_index": 59546
     },
     {
       "name": "project_status_links_json",
@@ -85,9 +85,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 51195,
-      "protocol_index": 55557,
-      "evidence_index": 58049
+      "overview_index": 52692,
+      "protocol_index": 57054,
+      "evidence_index": 59546
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -160,7 +160,7 @@
     },
     {
       "path": "index.html",
-      "id_count": 64,
+      "id_count": 65,
       "reference_count": 89,
       "image_count": 22
     }
@@ -193,12 +193,12 @@
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 30999,
+      "bytes": 45353,
       "top_level_type": "dict"
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 91667,
+      "bytes": 69773,
       "top_level_type": "dict"
     },
     {
@@ -228,7 +228,7 @@
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 6997,
+      "bytes": 6796,
       "top_level_type": "dict"
     },
     {
@@ -278,7 +278,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 11261,
+      "bytes": 11168,
       "top_level_type": "dict"
     },
     {

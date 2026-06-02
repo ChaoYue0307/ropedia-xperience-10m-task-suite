@@ -307,7 +307,7 @@
       padding: 88px 0 96px;
       border-bottom: 1px solid var(--soft-line);
       background: rgba(2, 5, 2, 0.72);
-      scroll-margin-top: 138px;
+      scroll-margin-top: 132px;
     }
     main.tabbed > section[hidden] { display: none; }
     .project-tabs-shell {
@@ -364,6 +364,42 @@
     }
     .project-tab.active strong,
     .project-tab.active span { color: #020502; }
+    .section-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-top: 12px;
+      padding-bottom: 2px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(164, 242, 127, 0.42) rgba(7, 18, 7, 0.72);
+    }
+    .section-tab {
+      appearance: none;
+      flex: 0 0 auto;
+      min-height: 38px;
+      border: 1px solid rgba(164, 242, 127, 0.18);
+      border-radius: 6px;
+      background: rgba(7, 18, 7, 0.78);
+      color: #c8d5c2;
+      cursor: pointer;
+      padding: 8px 12px;
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 660;
+      line-height: 1.15;
+      white-space: nowrap;
+      transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms cubic-bezier(0.16, 1, 0.3, 1), background 220ms cubic-bezier(0.16, 1, 0.3, 1), color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .section-tab:hover {
+      transform: translateY(-1px);
+      border-color: rgba(164, 242, 127, 0.42);
+      color: var(--ink);
+    }
+    .section-tab.active {
+      border-color: rgba(164, 242, 127, 0.82);
+      background: rgba(164, 242, 127, 0.14);
+      color: var(--green);
+    }
     #overview { order: 1; }
     #reading-path { order: 2; }
     #dataset-card { order: 3; }
@@ -1457,6 +1493,7 @@
       .hero-inner, .two-col { grid-template-columns: 1fr; }
       .hero-inner { min-height: 0; }
       .project-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .section-tabs { padding-top: 10px; }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .task-player { grid-template-columns: 1fr; }
       .task-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -1487,6 +1524,15 @@
       .project-tab span {
         font-size: 10px;
         line-height: 1.25;
+      }
+      .section-tabs {
+        gap: 6px;
+        padding-top: 8px;
+      }
+      .section-tab {
+        min-height: 34px;
+        padding: 7px 10px;
+        font-size: 12px;
       }
       main > section { scroll-margin-top: 246px; }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
@@ -1595,25 +1641,26 @@
       <div class="wrap project-tabs" role="tablist" aria-label="Project sections">
         <button type="button" class="project-tab active" id="tab-start" role="tab" data-tab-key="start" data-default-section="overview" aria-selected="true" aria-pressed="true" aria-controls="overview reading-path">
           <strong>Start</strong>
-          <span>overview, reading path, scope</span>
+          <span>project overview and scope</span>
         </button>
         <button type="button" class="project-tab" id="tab-data" role="tab" data-tab-key="data" data-default-section="dataset-card" aria-selected="false" aria-pressed="false" aria-controls="dataset-card suite walkthroughs tasks" tabindex="-1">
           <strong>Data & Tasks</strong>
-          <span>dataset, modalities, 12 tasks</span>
+          <span>dataset sample and task suite</span>
         </button>
         <button type="button" class="project-tab" id="tab-method" role="tab" data-tab-key="method" data-default-section="pipeline" aria-selected="false" aria-pressed="false" aria-controls="protocol pipeline architectures features" tabindex="-1">
           <strong>Method</strong>
-          <span>pipeline, protocol, features</span>
+          <span>pipeline and model design</span>
         </button>
         <button type="button" class="project-tab" id="tab-results" role="tab" data-tab-key="results" data-default-section="models" aria-selected="false" aria-pressed="false" aria-controls="models neural directions extensions diagnostics" tabindex="-1">
           <strong>Results</strong>
-          <span>baselines, directions, probes</span>
+          <span>baselines and research tracks</span>
         </button>
         <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="artifacts" aria-selected="false" aria-pressed="false" aria-controls="evidence artifacts omni-relay run" tabindex="-1">
           <strong>Resources</strong>
-          <span>artifacts, scale-up, runbook</span>
+          <span>artifacts and scale-up path</span>
         </button>
       </div>
+      <div class="wrap section-tabs" id="sectionTabs" role="tablist" aria-label="Sections inside the selected project tab"></div>
     </div>
 
     <section id="overview" data-project-tab="start" role="tabpanel" aria-labelledby="tab-start" tabindex="-1">
@@ -2408,17 +2455,109 @@ python scripts/validate_publication_package.py</code></pre>
     ];
     const tabSections = Array.from(document.querySelectorAll("[data-project-tab]"));
     const tabButtons = Array.from(document.querySelectorAll("[data-tab-key]"));
+    const sectionTabs = document.getElementById("sectionTabs");
+    const sectionConfig = [
+      { id: "overview", label: "Project Overview" },
+      { id: "reading-path", label: "Reading Path" },
+      { id: "dataset-card", label: "Dataset Card" },
+      { id: "suite", label: "12-Task Map" },
+      { id: "walkthroughs", label: "Interactive Walkthrough" },
+      { id: "tasks", label: "Task Cards" },
+      { id: "pipeline", label: "Pipeline" },
+      { id: "protocol", label: "Evaluation Protocol" },
+      { id: "architectures", label: "Model Architectures" },
+      { id: "features", label: "Feature Blocks" },
+      { id: "models", label: "Minimal Baselines" },
+      { id: "neural", label: "Neural Heads" },
+      { id: "directions", label: "Four Directions" },
+      { id: "extensions", label: "Extension Probes" },
+      { id: "diagnostics", label: "Diagnostic Charts" },
+      { id: "artifacts", label: "Artifact Library" },
+      { id: "evidence", label: "Research Progress" },
+      { id: "omni-relay", label: "Omni Scale-Up" },
+      { id: "run", label: "Reproduce" }
+    ];
+    const sectionLabels = Object.fromEntries(sectionConfig.map((section) => [section.id, section.label]));
     const sectionTabMap = Object.fromEntries(tabSections.map((section) => [section.id, section.dataset.projectTab]));
     const tabDefaultSections = Object.fromEntries(
       tabButtons.map((button) => [button.dataset.tabKey, button.dataset.defaultSection])
     );
 
+    function orderedSectionsForTab(tabKey) {
+      const configured = sectionConfig
+        .map(({ id }) => document.getElementById(id))
+        .filter((section) => section?.dataset.projectTab === tabKey);
+      const configuredIds = new Set(configured.map((section) => section.id));
+      const unconfigured = tabSections.filter((section) => (
+        section.dataset.projectTab === tabKey && !configuredIds.has(section.id)
+      ));
+      return [...configured, ...unconfigured];
+    }
+
+    function labelForSection(section) {
+      return sectionLabels[section.id] ||
+        section.querySelector("h2")?.textContent?.replace(/\.$/, "") ||
+        section.id.replaceAll("-", " ");
+    }
+
+    function renderSectionTabs(tabKey, activeSectionId) {
+      if (!sectionTabs) return;
+      const sections = orderedSectionsForTab(tabKey);
+      sectionTabs.replaceChildren();
+      sections.forEach((section, index) => {
+        const button = document.createElement("button");
+        const active = section.id === activeSectionId;
+        button.type = "button";
+        button.className = `section-tab${active ? " active" : ""}`;
+        button.id = `section-tab-${section.id}`;
+        button.dataset.sectionTarget = section.id;
+        button.setAttribute("role", "tab");
+        button.setAttribute("aria-controls", section.id);
+        button.setAttribute("aria-selected", active ? "true" : "false");
+        button.setAttribute("aria-pressed", active ? "true" : "false");
+        button.tabIndex = active ? 0 : -1;
+        button.textContent = labelForSection(section);
+        button.addEventListener("click", () => {
+          setProjectTab(tabKey, {
+            targetId: section.id,
+            pushHash: true,
+            scroll: true,
+            smooth: true
+          });
+        });
+        button.addEventListener("keydown", (event) => {
+          if (!["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp", "Home", "End"].includes(event.key)) return;
+          event.preventDefault();
+          const lastIndex = sections.length - 1;
+          let nextIndex = index;
+          if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = index === lastIndex ? 0 : index + 1;
+          if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = index === 0 ? lastIndex : index - 1;
+          if (event.key === "Home") nextIndex = 0;
+          if (event.key === "End") nextIndex = lastIndex;
+          const nextSection = sections[nextIndex];
+          const nextButton = sectionTabs.querySelector(`[data-section-target="${nextSection.id}"]`);
+          nextButton?.focus();
+          setProjectTab(tabKey, {
+            targetId: nextSection.id,
+            pushHash: true,
+            scroll: true,
+            smooth: true
+          });
+        });
+        sectionTabs.appendChild(button);
+      });
+    }
+
     function setProjectTab(tabKey, options = {}) {
       const fallbackTab = tabDefaultSections[tabKey] ? tabKey : "start";
-      const targetId = options.targetId || tabDefaultSections[fallbackTab] || "overview";
+      const requestedId = options.targetId || tabDefaultSections[fallbackTab] || "overview";
+      const targetId = sectionTabMap[requestedId] === fallbackTab
+        ? requestedId
+        : tabDefaultSections[fallbackTab] || "overview";
       document.getElementById("main").dataset.activeTab = fallbackTab;
+      document.getElementById("main").dataset.activeSection = targetId;
       tabSections.forEach((section) => {
-        section.hidden = section.dataset.projectTab !== fallbackTab;
+        section.hidden = section.id !== targetId;
       });
       tabButtons.forEach((button) => {
         const active = button.dataset.tabKey === fallbackTab;
@@ -2427,6 +2566,7 @@ python scripts/validate_publication_package.py</code></pre>
         button.setAttribute("aria-pressed", active ? "true" : "false");
         button.tabIndex = active ? 0 : -1;
       });
+      renderSectionTabs(fallbackTab, targetId);
       if (options.pushHash) {
         history.pushState(null, "", `#${targetId}`);
       }
