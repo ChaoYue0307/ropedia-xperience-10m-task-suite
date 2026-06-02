@@ -25,8 +25,8 @@ into:
 - four additional direction-extension probes with minimal and neural baselines,
 - human-readable research task cards and an interactive scrub/play walkthrough storyboard for every task,
 - a next-milestone track for Qwen3-Omni fine-tuning and sensor-bridge evaluation,
-- metrics, predictions, model weights, manifests, charts, and a tabbed static
-  research website,
+- metrics, predictions, model weights, manifests, charts, and a two-level
+  tabbed static research website,
 - a generated public-surface QA report for repo, website, and Hugging Face
   presentation quality,
 - a clear explanation of what a single episode can and cannot prove.
@@ -121,7 +121,7 @@ They give the current research state in one compact table:
 | Official dataset wording | Verified against the public `ropedia-ai/xperience-10m` dataset card/API metadata |
 | Source alignment | Verified source facts and source-boundary markers across repo, website, and HF cards |
 | Evaluation protocol | Verified generated protocol for windowing, split policy, leakage controls, and per-task metrics |
-| Website and HF mirrors | Verified by local integrity, public-surface QA, mirror parity, and live-publication checks; the public dashboard is organized into five tabs: Start, Data & Tasks, Method, Results, and Resources |
+| Website and HF mirrors | Verified by local integrity, public-surface QA, mirror parity, and live-publication checks; the public dashboard uses five top-level tabs plus subsection tabs for dataset, task-suite, method, result, and resource views |
 | Qwen3-Omni 32-episode pilot | Data-gated; prepared, but not a model-quality claim |
 | Raw Xperience-10M data / full Qwen weights | Not redistributed |
 

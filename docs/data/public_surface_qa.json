@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Surface QA",
   "status": "pass",
-  "generated_at_utc": "2026-06-02T07:24:12+00:00",
+  "generated_at_utc": "2026-06-02T07:45:54+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -18,7 +18,7 @@
         "website_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-02T07:00:30+00:00"
+          "generated_at_utc": "2026-06-02T07:31:55+00:00"
         },
         "task_surface_integrity": {
           "exists": true,
@@ -38,12 +38,12 @@
         "publication_hygiene": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-02T07:23:43+00:00"
+          "generated_at_utc": "2026-06-02T07:42:05+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-02T07:23:43+00:00"
+          "generated_at_utc": "2026-06-02T07:43:09+00:00"
         },
         "live_publication": {
           "exists": true,
@@ -74,15 +74,15 @@
       "status": "pass",
       "reason": "The long research dashboard should be navigable as real tabs, including keyboard support.",
       "marker_counts": {
-        "role=\"tablist\"": 1,
+        "role=\"tablist\"": 2,
         "role=\"tab\"": 5,
         "role=\"tabpanel\"": 19,
-        "aria-selected": 6,
-        "aria-controls": 5,
+        "aria-selected": 7,
+        "aria-controls": 6,
         "moveProjectTabFocus": 2,
-        "ArrowRight": 2,
-        "Home": 2,
-        "End": 2
+        "ArrowRight": 4,
+        "Home": 4,
+        "End": 4
       }
     },
     {
