@@ -238,7 +238,7 @@ def build_payload() -> dict:
             ],
             "current_status": "prepared but data-gated",
             "evidence": [
-                "results/omni_finetune/DATA_BLOCKER_REPORT.md",
+                "results/omni_finetune/DATA_ACCESS_STATUS.md",
                 "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
             ],
         },
@@ -349,7 +349,7 @@ def render_markdown(payload: dict) -> str:
     lines.extend([
         "",
         "Current status: prepared but data-gated. Read",
-        "`results/omni_finetune/DATA_BLOCKER_REPORT.md` and",
+        "`results/omni_finetune/DATA_ACCESS_STATUS.md` and",
         "`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` before interpreting any",
         "Qwen3-Omni artifact.",
         "",

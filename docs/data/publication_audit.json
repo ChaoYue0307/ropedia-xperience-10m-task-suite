@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-02T14:54:02+00:00",
+  "generated_at_utc": "2026-06-02T15:36:50+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -109,7 +109,7 @@
     "results/episode_task_suite/summary_report.json": true,
     "results/episode_task_suite/feature_manifest.json": true,
     "results/episode_task_suite/neural_mlp/timeline_action/metrics.json": true,
-    "results/omni_finetune/DATA_BLOCKER_REPORT.md": true,
+    "results/omni_finetune/DATA_ACCESS_STATUS.md": true,
     "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md": true,
     "scripts/episode_task_suite.py": true,
     "scripts/neural_task_models.py": true,
@@ -174,8 +174,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 327,
-      "text_file_count": 263,
+      "file_count": 328,
+      "text_file_count": 264,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -185,8 +185,8 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 86,
-      "text_file_count": 64,
+      "file_count": 88,
+      "text_file_count": 66,
       "largest_file": {
         "path": "assets/task_suite_infographic.png",
         "bytes": 2618313
@@ -196,8 +196,8 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 356,
-      "text_file_count": 272,
+      "file_count": 357,
+      "text_file_count": 273,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -207,8 +207,8 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 530,
-      "text_file_count": 414,
+      "file_count": 531,
+      "text_file_count": 415,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010

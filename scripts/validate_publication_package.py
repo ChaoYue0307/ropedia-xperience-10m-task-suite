@@ -347,7 +347,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "results/episode_task_suite/summary_report.json",
         "results/episode_task_suite/feature_manifest.json",
         "results/episode_task_suite/neural_mlp/timeline_action/metrics.json",
-        "results/omni_finetune/DATA_BLOCKER_REPORT.md",
+        "results/omni_finetune/DATA_ACCESS_STATUS.md",
         "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
         "scripts/episode_task_suite.py",
         "scripts/neural_task_models.py",

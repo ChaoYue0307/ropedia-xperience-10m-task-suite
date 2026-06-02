@@ -139,7 +139,7 @@ The project separates these reading layers:
 
 | Artifact | Current status |
 | --- | --- |
-| [`results/omni_finetune/DATA_BLOCKER_REPORT.md`](results/omni_finetune/DATA_BLOCKER_REPORT.md) | Documents the data-access requirement before the 32-episode Qwen3-Omni pilot can run. |
+| [`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) | Summarizes the data-access requirement before the 32-episode Qwen3-Omni pilot can run. |
 | [`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | Documents the public multi-episode access path and selected 32-episode pilot plan without private infrastructure details. |
 | [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | Discovery gate for valid multi-episode Xperience-10M sources. |
 | [`scripts/omni/train_qwen3_omni_lora.py`](scripts/omni/train_qwen3_omni_lora.py) | Training entrypoint for the Qwen3-Omni LoRA pilot after the data gate passes. |

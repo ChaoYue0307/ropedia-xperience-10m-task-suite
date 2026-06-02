@@ -36,7 +36,7 @@ OMNI_RELAY = {
     "valid_candidates": 680,
     "estimated_bytes": 72031620552,
     "exclude": ["visualization.rrd"],
-    "blocker": "Hugging Face returns 403 pending review for the full Xperience-10M gated dataset.",
+    "access_status": "Hugging Face returns 403 pending review for the full Xperience-10M gated dataset.",
     "current_scope": "The 32-episode Qwen3-Omni fine-tune requires gated data staging and held-out evaluation.",
 }
 
@@ -137,7 +137,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
         '<rect x="0" y="0" width="1400" height="760" fill="url(#dotgrid)" opacity="0.55"/>',
         '<circle cx="1120" cy="132" r="170" fill="#a7f078" opacity="0.10"/>',
         '<text x="60" y="58" font-family="Inter Tight, Arial, sans-serif" font-size="32" font-weight="800" fill="#f4f8ef">Verified Ropedia Xperience-10M Pipeline</text>',
-        '<text x="60" y="88" font-family="Space Grotesk, Arial, sans-serif" font-size="16" fill="#a5afa2">Generated from committed scripts and metrics; no conceptual placeholder stages.</text>',
+        '<text x="60" y="88" font-family="Space Grotesk, Arial, sans-serif" font-size="16" fill="#a5afa2">Generated from committed scripts and metrics with traceable stage labels.</text>',
     ]
     arrows = [
         (310, 176, 365, 176),
@@ -158,7 +158,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
         for i, line in enumerate(lines):
             parts.append(f'<text x="{x + 24}" y="{y + 66 + i * 22}" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">{html.escape(line)}</text>')
     checks = [
-        "Audit check: rerunning scripts to an ignored scratch workspace reproduced committed metrics exactly.",
+        "Reproduction check: rerunning scripts to an ignored scratch workspace reproduced committed metrics exactly.",
         "Modality check: sample covers video, AAC audio, depth, pose/SLAM, mocap, IMU, and language annotation.",
         "Feature check: current manifest has video/depth/pose/mocap/IMU/language blocks, but no audio block.",
         "Scope check: this validates one public sample episode, not cross-episode generalization.",

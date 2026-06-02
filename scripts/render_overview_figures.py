@@ -154,7 +154,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
     ]
     rows_html = "".join(f'<section class="flow-row">{"".join(row)}</section>' for row in stage_rows)
     checks = [
-        "Audit check: rerunning scripts to an ignored scratch workspace reproduced the committed metrics exactly.",
+        "Reproduction check: rerunning scripts to an ignored scratch workspace reproduced the committed metrics exactly.",
         "Modality check: sample covers video, AAC audio, depth, pose/SLAM, mocap, IMU, and language annotation.",
         "Feature check: current baseline manifest has video/depth/pose/mocap/IMU/language blocks, but no audio feature block.",
         "Neural check: lightweight PyTorch MLP heads are reported beside the minimal task heads under neural_mlp/.",

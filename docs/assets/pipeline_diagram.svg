@@ -5,7 +5,7 @@
 <rect x="0" y="0" width="1400" height="760" fill="url(#dotgrid)" opacity="0.55"/>
 <circle cx="1120" cy="132" r="170" fill="#a7f078" opacity="0.10"/>
 <text x="60" y="58" font-family="Inter Tight, Arial, sans-serif" font-size="32" font-weight="800" fill="#f4f8ef">Verified Ropedia Xperience-10M Pipeline</text>
-<text x="60" y="88" font-family="Space Grotesk, Arial, sans-serif" font-size="16" fill="#a5afa2">Generated from committed scripts and metrics; no conceptual placeholder stages.</text>
+<text x="60" y="88" font-family="Space Grotesk, Arial, sans-serif" font-size="16" fill="#a5afa2">Generated from committed scripts and metrics with traceable stage labels.</text>
 <line x1="310" y1="176" x2="365" y2="176" stroke="#a7f078" stroke-opacity="0.54" stroke-width="3" marker-end="url(#arrow)"/>
 <line x1="615" y1="176" x2="670" y2="176" stroke="#a7f078" stroke-opacity="0.54" stroke-width="3" marker-end="url(#arrow)"/>
 <line x1="920" y1="176" x2="975" y2="176" stroke="#a7f078" stroke-opacity="0.54" stroke-width="3" marker-end="url(#arrow)"/>
@@ -59,7 +59,7 @@
 <text x="1004" y="490" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">GitHub Pages dashboard</text>
 <text x="1004" y="512" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">reproducibility check</text>
 <rect x="60" y="620" width="1220" height="96" rx="8" fill="#071207" stroke="#a7f078" stroke-opacity="0.24"/>
-<text x="84" y="650" font-family="Space Grotesk, Arial, sans-serif" font-size="15" fill="#dce8d7">Audit check: rerunning scripts to an ignored scratch workspace reproduced committed metrics exactly.</text>
+<text x="84" y="650" font-family="Space Grotesk, Arial, sans-serif" font-size="15" fill="#dce8d7">Reproduction check: rerunning scripts to an ignored scratch workspace reproduced committed metrics exactly.</text>
 <text x="84" y="674" font-family="Space Grotesk, Arial, sans-serif" font-size="15" fill="#dce8d7">Modality check: sample covers video, AAC audio, depth, pose/SLAM, mocap, IMU, and language annotation.</text>
 <text x="84" y="698" font-family="Space Grotesk, Arial, sans-serif" font-size="15" fill="#dce8d7">Feature check: current manifest has video/depth/pose/mocap/IMU/language blocks, but no audio block.</text>
 <text x="84" y="722" font-family="Space Grotesk, Arial, sans-serif" font-size="15" fill="#dce8d7">Scope check: this validates one public sample episode, not cross-episode generalization.</text>

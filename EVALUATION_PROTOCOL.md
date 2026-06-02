@@ -86,7 +86,7 @@ reporting held-out model metrics:
 - held-out evaluation on test episodes rather than train windows
 
 Current status: prepared but data-gated. Read
-`results/omni_finetune/DATA_BLOCKER_REPORT.md` and
+`results/omni_finetune/DATA_ACCESS_STATUS.md` and
 `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` before interpreting any
 Qwen3-Omni artifact.
 

@@ -22,7 +22,7 @@ egocentric episode before scaling to held-out multi-episode training?
 2. Open `EVALUATION_PROTOCOL.md` before comparing task scores.
 3. Use `RESEARCH_TAKEAWAYS.md` for the current metric interpretation.
 4. Inspect `results/episode_task_suite/feature_manifest.json` to understand one model input.
-5. Use `results/omni_finetune/DATA_BLOCKER_REPORT.md` for the multi-episode gate.
+5. Use `results/omni_finetune/DATA_ACCESS_STATUS.md` for the multi-episode data status.
 
 ## What This Enables
 

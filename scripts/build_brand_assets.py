@@ -167,7 +167,7 @@ def make_social_card(mark: Image.Image) -> Image.Image:
     draw.text((x, 308), "Task Suite", font=subtitle_font, fill=CYAN)
     draw.text(
         (x, 370),
-        "Auditable multimodal embodied-AI baselines",
+        "Multimodal embodied-AI task baselines",
         font=body_font,
         fill=MUTED,
     )

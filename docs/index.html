@@ -1981,7 +1981,7 @@
           <article class="artifact"><h3>Metric contract</h3><p>All 12 tasks list input, target, primary metric, minimal baseline score, and neural MLP score from committed result files.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target feature blocks, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
           <article class="artifact"><h3>Current limits</h3><p>This public-sample run does not evaluate cross-episode generalization, audio-visual learning, pixel-depth reconstruction, neural rendering, or full 32-episode Qwen3-Omni training.</p><a href="data/scope_claims_audit.json">scale-up note</a></article>
-          <article class="artifact"><h3>Scale-up gate</h3><p>The Omni pilot requires at least 32 valid episodes, held-out episode splits, no train/test episode leakage, training metadata, predictions, metrics, and a run report.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">data gate</a></article>
+          <article class="artifact"><h3>Scale-up requirement</h3><p>The Omni pilot requires at least 32 valid episodes, held-out episode splits, no train/test episode leakage, training metadata, predictions, metrics, and a run report.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a></article>
         </div>
       </div>
     </section>
@@ -2160,7 +2160,7 @@
             <h3>Check the scale-up gate</h3>
             <p>The multi-episode Qwen3-Omni path is prepared. The 32-episode result will be added after the data gate and held-out evaluation pass.</p>
             <div class="reading-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">blocker</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">access status</a>
               <a href="data/project_packet.json">project packet</a>
             </div>
@@ -2191,7 +2191,7 @@
           <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 windows, 8,378 current features, audio documented but not yet featurized, and no raw-data redistribution.</p><a href="data/modality_atlas.json">modality atlas</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, and misalignment.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Responsible use</h3><p>The official card notes limited diversity and showcase/production quality. This project excludes identity, surveillance, biometric, sensitive-attribute, and safety-critical uses.</p><a href="data/xperience10m_dataset_card_alignment.json">use notes</a></article>
-          <article class="artifact"><h3>Later milestones</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, and 32-episode Qwen3-Omni evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">data gate</a></article>
+          <article class="artifact"><h3>Later milestones</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, and 32-episode Qwen3-Omni evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a></article>
         </div>
       </div>
     </section>
@@ -2622,7 +2622,7 @@
               <article class="artifact primary-artifact"><div><h3>Project scope</h3><p>Connects implemented single-episode artifacts, setup-stage Omni work, pending data access, and later multi-episode milestones.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">EVIDENCE_CONTRACT.md</a></article>
               <article class="artifact"><h3>Multi-episode access status</h3><p>Public data-access path and selected 32-episode pilot plan, without private infrastructure details.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">MULTI_EPISODE_ACCESS_STATUS.md</a></article>
               <article class="artifact"><h3>Qwen3-Omni setup artifacts</h3><p>Manifests, metadata, metrics, and progress logs from the current setup run.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode_manifest.json</a></article>
-              <article class="artifact"><h3>32-episode data gate</h3><p>The data gate defines what must be available before full pilot training and held-out metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">DATA_BLOCKER_REPORT.md</a></article>
+              <article class="artifact"><h3>32-episode data requirement</h3><p>The data status file defines what must be available before full pilot training and held-out metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">DATA_ACCESS_STATUS.md</a></article>
             </div>
           </section>
 
@@ -2672,7 +2672,7 @@
           <article class="artifact"><h3>Reproducibility matrix</h3><p>Machine-readable command matrix covering sample download, baselines, 12 tasks, figures, and validation.</p><a href="data/reproducibility_matrix.json">reproducibility_matrix.json</a></article>
           <article class="artifact"><h3>Exact-match reproduction record</h3><p>The last metric rebuild reproduced the public-sample outputs from a fresh cache and matched the committed metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">reproducibility_audit.md</a></article>
           <article class="artifact"><h3>Website reference report</h3><p>Local HTML references, anchors, JSON bundles, and image dimensions are validated before publishing.</p><a href="data/website_integrity.json">website_integrity.json</a></article>
-          <article class="artifact"><h3>Scale-up boundary</h3><p>The 32-episode Qwen3-Omni pilot is prepared but not publicly reproducible until gated data access and held-out evaluation pass.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_BLOCKER_REPORT.md">DATA_BLOCKER_REPORT.md</a></article>
+          <article class="artifact"><h3>Scale-up boundary</h3><p>The 32-episode Qwen3-Omni pilot is prepared but not publicly reproducible until gated data access and held-out evaluation pass.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">DATA_ACCESS_STATUS.md</a></article>
         </div>
         <p class="repro-note">Minimal path: install the toolkit dependencies, download the official sample, run the 12-task suite with neural heads, regenerate visualizations, then run the artifact index and publication validator.</p>
         <pre class="code-panel"><button type="button" data-copy="setup">Copy</button><code id="setup">git clone https://github.com/Ropedia/HOMIE-toolkit.git
