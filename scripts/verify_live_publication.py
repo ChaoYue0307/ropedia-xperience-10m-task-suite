@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "docs/data/live_publication_status.json"
 TIMEOUT_SECONDS = 30
 USER_AGENT = "ropedia-xperience-10m-live-verifier/1.0"
+LOCAL_PATH_FORBIDDEN_MARKERS = ["/" + "Users/", "/" + "private/"]
 
 
 HASH_GROUPS = [
@@ -284,6 +285,59 @@ MARKER_CHECKS = [
     },
 ]
 
+PATH_HYGIENE_REPORTS = {
+    "mirror_parity": {
+        "title": "Mirror parity JSON hides local paths",
+        "paths": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/mirror_parity.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/mirror_parity.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/mirror_parity.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/mirror_parity.json",
+        },
+    },
+    "publication_audit": {
+        "title": "Publication audit JSON hides local paths",
+        "paths": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/publication_audit.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/publication_audit.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/publication_audit.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/publication_audit.json",
+        },
+    },
+    "website_integrity": {
+        "title": "Website integrity JSON hides local paths",
+        "paths": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/website_integrity.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/website_integrity.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/website_integrity.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/website_integrity.json",
+        },
+    },
+    "public_surface_qa": {
+        "title": "Public-surface QA JSON hides local paths",
+        "paths": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/public_surface_qa.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/public_surface_qa.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/public_surface_qa.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/public_surface_qa.json",
+        },
+    },
+}
+
+
+def path_hygiene_checks() -> list[dict]:
+    checks = []
+    for report_id, report in PATH_HYGIENE_REPORTS.items():
+        for surface, url in report["paths"].items():
+            checks.append({
+                "id": f"{surface}_{report_id}_path_hygiene",
+                "title": f"{surface}: {report['title']}",
+                "url": url,
+                "required": ['"status": "pass"'],
+                "forbidden": LOCAL_PATH_FORBIDDEN_MARKERS,
+            })
+    return checks
+
 
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
@@ -468,7 +522,7 @@ def marker_record(check: dict) -> dict:
 
 def build_report() -> dict:
     hash_records = [hash_group_record(group) for group in HASH_GROUPS]
-    marker_records = [marker_record(check) for check in MARKER_CHECKS]
+    marker_records = [marker_record(check) for check in [*MARKER_CHECKS, *path_hygiene_checks()]]
     failures = [
         {"check": record["id"], **failure}
         for record in [*hash_records, *marker_records]
