@@ -439,7 +439,7 @@ def build_payload(summary: dict[str, Any]) -> dict[str, Any]:
             "feature_dim": summary.get("feature_dim"),
             "window_frames": summary.get("window_frames"),
             "stride_frames": summary.get("stride_frames"),
-            "warning": "These walkthroughs explain task contracts on one public sample episode; they are not cross-episode performance claims.",
+            "warning": "These walkthroughs explain task contracts on one public sample episode; cross-episode performance requires held-out episodes.",
         },
         "shared_pipeline": [
             "Read annotation.hdf5 and synchronized video-derived features.",

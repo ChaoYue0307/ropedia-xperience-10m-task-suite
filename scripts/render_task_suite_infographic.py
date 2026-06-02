@@ -381,7 +381,7 @@ def mocap_thumb(h5) -> str:
 def text_thumb(h5) -> str:
     from PIL import ImageDraw
 
-    width = 1500
+    width = THUMB_WIDTH
     raw = h5["caption"][()]
     if isinstance(raw, bytes):
         raw = raw.decode("utf-8", errors="replace")
@@ -398,7 +398,7 @@ def text_thumb(h5) -> str:
         draw.rounded_rectangle((28, y, 28 + chip_width, y + 38), radius=8, fill=(7, 18, 7, 235), outline=(167, 240, 120, 170), width=2)
         draw_label(draw, (44, y + 8), label, fill=(244, 248, 239), size=18)
         y += 47
-    x = 560
+    x = 340
     y = 92
     for action in actions:
         wrapped = action[:66] + ("..." if len(action) > 66 else "")
@@ -1036,7 +1036,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
 
     <div class="section-label">
       <span>12 task families</span>
-      <span>Every task below has a minimal baseline and a neural MLP head over the same aligned window contract, so the figure prioritizes task design before visual decoration.</span>
+      <span>Every task below has a minimal baseline and a neural MLP head over the same aligned window contract, making the suite easy to compare, extend, and scale to held-out episodes.</span>
     </div>
     <section class="families">{''.join(families)}</section>
 

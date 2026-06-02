@@ -23,19 +23,19 @@ The project separates these reading layers:
    four research-direction extension probes.
 8. **Reproducibility:** public commands, expected outputs, and exact-match
    evidence for the single-episode pipeline.
-9. **Public presentation check:** repo, website, and Hugging Face pages,
-   accessibility semantics, links, and reader-facing copy consistency.
-10. **Scale-up status:** scripts and reports for the planned 32-episode
+9. **Public project surface:** repo, website, and Hugging Face pages,
+   accessibility semantics, links, and reader-facing copy.
+10. **Scale-up readiness:** scripts and reports for the planned 32-episode
    Qwen3-Omni pilot, with the data-access requirement kept visible.
 
 ## Start Here
 
 | Artifact | Why to open it first |
 | --- | --- |
-| [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current decision table: verified, data-gated, and outside current scope. |
+| [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current-state table: implemented, data-gated, and outside current scope. |
 | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md) | Defines the implemented scope, setup-stage artifacts, and multi-episode prerequisites. |
-| [`QUALITY_GATES.md`](QUALITY_GATES.md) | Lists the automated release gates and post-publish checks required before presenting a release as current. |
-| [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Checks whether repo, website, and Hugging Face cards read as one polished research project surface. |
+| [`QUALITY_GATES.md`](QUALITY_GATES.md) | Lists the automated release checks and post-publish verification used to keep the release current. |
+| [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Describes whether repo, website, and Hugging Face cards read as one coherent research project surface. |
 | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Defines the task unit, chronological split, metrics, leakage controls, and current limitations. |
 | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Aligns this repo's public dataset wording with the official gated Xperience-10M card, sample card, and HF API metadata. |
 | [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Verifies source-alignment markers across repo, website, and HF cards. |
@@ -46,14 +46,14 @@ The project separates these reading layers:
 | [`docs/data/figure_index.json`](docs/data/figure_index.json) | Machine-readable visual asset index for website and HF mirrors. |
 | [`docs/data/project_status.json`](docs/data/project_status.json) | Machine-readable copy of the project status table. |
 | [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable source-alignment summary, including gated metadata, sample license/tooling, and current project coverage. |
-| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable pass/fail check for source facts and current-project markers. |
+| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable source-fact and current-project marker report. |
 | [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | Machine-readable evaluation protocol generated from committed metrics. |
-| [`docs/data/quality_gates.json`](docs/data/quality_gates.json) | Machine-readable quality-gate summary for website and HF mirrors. |
-| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable public presentation check for website, repo, and Hugging Face pages. |
+| [`docs/data/quality_gates.json`](docs/data/quality_gates.json) | Machine-readable release-check summary for website and HF mirrors. |
+| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable public project-surface report for website, repo, and Hugging Face pages. |
 | [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json) | Last live GitHub/HF verification after upload. |
 | [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json) | Confirms prepared HF Space, artifact, and model mirrors match the repo for critical data, figures, website HTML, and validator scripts. |
-| [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Confirms public bundles exclude raw data, Python caches, heavy archives, token strings, and stale public-card figure references. |
-| [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Confirms historical `32ep` setup identifiers are not presented as completed 32-episode results. |
+| [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Records whether public bundles exclude raw data, Python caches, heavy archives, token strings, and stale public-card figure references. |
+| [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Keeps historical `32ep` setup identifiers separate from completed held-out-episode results. |
 | [`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json) | Confirms the public 12-task cards use readable task names, modality thumbnails, and the interactive walkthrough/player data contract. |
 | [`docs/data/website_integrity.json`](docs/data/website_integrity.json) | Confirms local site links, anchors, JSON bundles, and referenced images resolve. |
 | [`docs/data/project_packet.json`](docs/data/project_packet.json) | Gives the shortest machine-readable project route. |
@@ -65,7 +65,7 @@ The project separates these reading layers:
 | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Human-readable summary of the official gated Xperience-10M dataset card, public sample card, API listing snapshot, scale, modalities, access boundary, intended uses, and limitations. |
 | [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable copy of the same alignment facts for website and HF mirrors. |
 | [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Generated source-alignment report showing source facts, sample license/tooling, API-listing caveat, and current project scope. |
-| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable check of source metadata, current-project markers, and HF card parity. |
+| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable source metadata, current-project marker, and HF card parity report. |
 | [`scripts/validate_source_alignment.py`](scripts/validate_source_alignment.py) | Regenerates the source-alignment report from committed alignment facts and public card text. |
 
 ## Evaluation Protocol
@@ -117,7 +117,7 @@ The project separates these reading layers:
 | --- | --- |
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Public commands, expected outputs, and non-reproducible boundaries are explicit. |
 | [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json) | Machine-readable command matrix for website and HF mirrors. |
-| [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | The last exact metric check rebuilt the public-sample metrics and matched committed artifacts. |
+| [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | The last exact metric rebuild reproduced the public-sample metrics and matched committed artifacts. |
 
 ## Platform Mirrors
 
@@ -129,13 +129,13 @@ The project separates these reading layers:
 | [HF baseline model repo](https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines) | Lightweight minimal and neural task-head model files. |
 | [HF collection](https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite) | One grouped landing page for the Space, artifact dataset, and baseline model repo. |
 
-| Presentation artifact | What it checks |
+| Public surface artifact | What it keeps aligned |
 | --- | --- |
-| [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Human-readable presentation check for repo, website, and Hugging Face cards. |
-| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable checks for SEO/social metadata, accessible tabs, public links, project-check links, and reader-facing copy consistency. |
-| [`scripts/build_public_surface_qa.py`](scripts/build_public_surface_qa.py) | Regenerates the public presentation check before release. |
+| [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Human-readable public project-surface report for repo, website, and Hugging Face cards. |
+| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable report for SEO/social metadata, accessible tabs, public links, project links, and reader-facing copy. |
+| [`scripts/build_public_surface_qa.py`](scripts/build_public_surface_qa.py) | Regenerates the public project-surface report before release. |
 
-## Scale-Up Status
+## Scale-Up Readiness
 
 | Artifact | Current status |
 | --- | --- |

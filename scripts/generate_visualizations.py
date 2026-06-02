@@ -423,7 +423,7 @@ def svg_task_architectures(path: Path, summary: dict) -> None:
 
     notes = [
         "Interpretation: this suite tests whether each input/output contract is wired correctly before scaling to many episodes.",
-        "Research-grade claims need held-out episode splits and stronger sequence/vision-language/robot-policy models.",
+        "Research-grade conclusions need held-out episode splits and stronger sequence/vision-language/robot-policy models.",
     ]
     parts.append('<rect x="60" y="1688" width="1380" height="72" rx="8" fill="#071207" stroke="#a7f078" stroke-opacity="0.22"/>')
     for i, line in enumerate(notes):

@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Research Takeaways",
   "status": "pass",
-  "generated_at_utc": "2026-06-02T10:21:25+00:00",
+  "generated_at_utc": "2026-06-02T12:00:44+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
@@ -20,7 +20,7 @@
     {
       "id": "episode_to_benchmark",
       "title": "One episode can become a real benchmark contract",
-      "claim": "The public sample is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,378-dimensional feature contract.",
+      "readout": "The public sample is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,378-dimensional feature contract.",
       "evidence": [
         {
           "label": "frames",
@@ -41,7 +41,7 @@
     {
       "id": "chronological_split_exposes_class_shift",
       "title": "Chronological splits expose action-class shift",
-      "claim": "Earlier all-feature action classifiers reach high macro-F1 on their local split, but the 12-task chronological action/subtask heads are much harder because later held-out windows include unseen labels.",
+      "readout": "Earlier all-feature action classifiers reach high macro-F1 on their local split, but the 12-task chronological action/subtask heads are much harder because later held-out windows include unseen labels.",
       "evidence": [
         {
           "label": "all_feature_action_macro_f1",
@@ -66,7 +66,7 @@
     {
       "id": "neural_heads_help_dynamics",
       "title": "Small neural heads help dynamic and temporal probes",
-      "claim": "The MLP heads substantially improve hand trajectory forecasting, temporal-order verification, and motion/visual synchronization.",
+      "readout": "The MLP heads substantially improve hand trajectory forecasting, temporal-order verification, and motion/visual synchronization.",
       "evidence": [
         {
           "label": "hand_mpjpe_minimal",
@@ -103,7 +103,7 @@
     {
       "id": "retrieval_and_reconstruction_remain_open",
       "title": "Retrieval and reconstruction remain the harder multimodal problems",
-      "claim": "Ridge/cosine retrieval remains stronger than the neural projection on this sample, and cross-modal reconstruction still has negative R2.",
+      "readout": "Ridge/cosine retrieval remains stronger than the neural projection on this sample, and cross-modal reconstruction still has negative R2.",
       "evidence": [
         {
           "label": "retrieval_mrr_minimal",
@@ -132,7 +132,7 @@
     {
       "id": "scale_requires_episodes",
       "title": "The next scientific unit is held-out episodes, not more adjacent windows",
-      "claim": "The prepared Qwen3-Omni path targets 32 episodes from 32 sessions, but it remains data-gated until access and held-out evaluation complete.",
+      "readout": "The prepared Qwen3-Omni path targets 32 episodes from 32 sessions, but it remains data-gated until access and held-out evaluation complete.",
       "evidence": [
         {
           "label": "target_episodes",

@@ -62,7 +62,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "surface": "github_repo",
         "relative_path": "README.md",
         "required": [
-            "xperience10m-taskfirst-v12-modality-xl",
+            "xperience10m-taskfirst-v13-modality-xl",
             "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
             "SOURCE_ALIGNMENT_AUDIT.md",
             "EVALUATION_PROTOCOL.md",
@@ -87,7 +87,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "surface": "hf_space_bundle",
         "relative_path": "README.md",
         "required": [
-            "xperience10m-taskfirst-v12-modality-xl",
+            "xperience10m-taskfirst-v13-modality-xl",
             "xperience10m_dataset_card_alignment.json",
             "source_alignment_audit.json",
             "evaluation_protocol.json",
@@ -112,7 +112,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "surface": "hf_artifact_bundle",
         "relative_path": "README.md",
         "required": [
-            "xperience10m-taskfirst-v12-modality-xl",
+            "xperience10m-taskfirst-v13-modality-xl",
             "xperience10m_dataset_card_alignment.json",
             "source_alignment_audit.json",
             "evaluation_protocol.json",
@@ -136,7 +136,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "surface": "hf_artifact_bundle",
         "relative_path": "PROJECT_README.md",
         "required": [
-            "xperience10m-taskfirst-v12-modality-xl",
+            "xperience10m-taskfirst-v13-modality-xl",
             "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
             "SOURCE_ALIGNMENT_AUDIT.md",
             "EVALUATION_PROTOCOL.md",
@@ -161,7 +161,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
         "surface": "hf_model_bundle",
         "relative_path": "README.md",
         "required": [
-            "xperience10m-taskfirst-v12-modality-xl",
+            "xperience10m-taskfirst-v13-modality-xl",
             "xperience10m_dataset_card_alignment.json",
             "source_alignment_audit.json",
             "evaluation_protocol.json",

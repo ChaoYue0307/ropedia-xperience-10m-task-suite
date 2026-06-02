@@ -59,7 +59,7 @@ def build_payload() -> dict:
         {
             "id": "episode_to_benchmark",
             "title": "One episode can become a real benchmark contract",
-            "claim": (
+            "readout": (
                 "The public sample is converted into 5,821 frames, 1,161 aligned "
                 "20-frame windows, and an 8,378-dimensional feature contract."
             ),
@@ -74,7 +74,7 @@ def build_payload() -> dict:
         {
             "id": "chronological_split_exposes_class_shift",
             "title": "Chronological splits expose action-class shift",
-            "claim": (
+            "readout": (
                 "Earlier all-feature action classifiers reach high macro-F1 on their "
                 "local split, but the 12-task chronological action/subtask heads are "
                 "much harder because later held-out windows include unseen labels."
@@ -91,7 +91,7 @@ def build_payload() -> dict:
         {
             "id": "neural_heads_help_dynamics",
             "title": "Small neural heads help dynamic and temporal probes",
-            "claim": (
+            "readout": (
                 "The MLP heads substantially improve hand trajectory forecasting, "
                 "temporal-order verification, and motion/visual synchronization."
             ),
@@ -110,7 +110,7 @@ def build_payload() -> dict:
         {
             "id": "retrieval_and_reconstruction_remain_open",
             "title": "Retrieval and reconstruction remain the harder multimodal problems",
-            "claim": (
+            "readout": (
                 "Ridge/cosine retrieval remains stronger than the neural projection on "
                 "this sample, and cross-modal reconstruction still has negative R2."
             ),
@@ -127,7 +127,7 @@ def build_payload() -> dict:
         {
             "id": "scale_requires_episodes",
             "title": "The next scientific unit is held-out episodes, not more adjacent windows",
-            "claim": (
+            "readout": (
                 "The prepared Qwen3-Omni path targets 32 episodes from 32 sessions, "
                 "but it remains data-gated until access and held-out evaluation complete."
             ),
@@ -191,7 +191,7 @@ def render_md(payload: dict) -> str:
             [
                 f"### {item['title']}",
                 "",
-                item["claim"],
+                item["readout"],
                 "",
                 "| Metric | Value |",
                 "| --- | ---: |",

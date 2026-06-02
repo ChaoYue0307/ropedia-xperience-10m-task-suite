@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a public presentation check for repo, website, and HF mirrors."""
+"""Build the public project-surface report for repo, website, and HF mirrors."""
 
 from __future__ import annotations
 
@@ -31,6 +31,18 @@ STATUS_REPORTS = {
     "live_publication": ROOT / "docs/data/live_publication_status.json",
 }
 
+DISPLAY_LABELS = {
+    "public_presentation_files_exist": "Public files",
+    "core_status_reports_pass": "Project reports",
+    "website_has_research_seo_metadata": "Website metadata",
+    "website_tabs_are_accessible_and_keyboardable": "Keyboard navigation",
+    "responsive_navigation_guard_present": "Responsive navigation",
+    "public_naming_consistent": "Project naming",
+    "public_links_cover_repo_hf_dataset_and_ropedia": "Public links",
+    "public_artifact_qa_files_are_exposed": "Artifact links",
+    "public_copy_uses_reader_facing_language": "Reader-facing language",
+}
+
 BANNED_PUBLIC_STRINGS = [
     "audit" + "able",
     "rev" + "iewer " + "score" + "card",
@@ -52,6 +64,8 @@ BANNED_PUBLIC_STRINGS = [
     "Scope " + "claims guard",
     "Publication " + "hyg" + "iene",
     "copy " + "hyg" + "iene",
+    "Research progress " + "without " + "over" + "claiming",
+    "reviewer scorecard",
 ]
 
 
@@ -164,7 +178,7 @@ def build_report() -> dict:
         check(
             "core_status_reports_pass",
             not status_failures,
-            "The presentation check depends on the existing project validators already reporting pass.",
+            "The public project surface depends on the existing project reports already passing.",
             reports=status_records,
             failures=status_failures,
         ),
@@ -211,7 +225,7 @@ def build_report() -> dict:
         check(
             "public_artifact_qa_files_are_exposed",
             all(marker in combined_public_text for marker in artifact_markers),
-            "Readers should be able to find integrity, publication, mirror, and presentation-check files from public copy.",
+            "Readers should be able to find website reference, release package, mirror, and project-surface files from public copy.",
             marker_counts=marker_count(combined_public_text, artifact_markers),
         ),
         check(
@@ -223,21 +237,21 @@ def build_report() -> dict:
     ]
     status = "pass" if all(item["status"] == "pass" for item in checks) else "fail"
     return {
-        "title": "Ropedia Xperience-10M Public Presentation Check",
+        "title": "Ropedia Xperience-10M Public Project Surface",
         "status": status,
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
         "checks": checks,
         "surface_files": {name: display_path(path) for name, path in SURFACES.items()},
-        "scope_note": "This report validates public presentation quality and package contents. Multi-episode model metrics are tracked by the training and evaluation reports.",
+        "scope_note": "This report covers the public repo, website, Hugging Face cards, and package contents. Multi-episode model metrics are tracked by the training and evaluation reports.",
     }
 
 
 def markdown(report: dict) -> str:
     lines = [
-        "# Public Presentation Check",
+        "# Public Project Surface",
         "",
-        "This generated report checks whether the public repo, website, and Hugging Face cards read like one polished research project.",
+        "This generated report checks whether the public repo, website, and Hugging Face cards read like one coherent research project.",
         "",
         f"Current status: **{report['status']}**",
         "",
@@ -245,11 +259,12 @@ def markdown(report: dict) -> str:
         "",
         "## Checks",
         "",
-        "| Check | Status | What it guards |",
+        "| Area | Status | What it keeps aligned |",
         "| --- | --- | --- |",
     ]
     for item in report["checks"]:
-        lines.append(f"| {item['name']} | `{item['status']}` | {item['reason']} |")
+        label = DISPLAY_LABELS.get(item["name"], item["name"].replace("_", " ").title())
+        lines.append(f"| {label} | `{item['status']}` | {item['reason']} |")
     lines.extend([
         "",
         "## Scope",

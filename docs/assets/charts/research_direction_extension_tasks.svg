@@ -2,46 +2,46 @@
 <rect width="1420" height="920" fill="#020502"/>
 <rect x="28" y="28" width="1364" height="864" rx="18" fill="#050905" stroke="#a7f078" stroke-opacity="0.24"/>
 <text x="66" y="88" font-size="32" font-weight="760" fill="#f4f8ef">Ropedia Xperience-10M: four direction extension probes</text>
-<text x="66" y="122" font-size="17" font-weight="500" fill="#a5afa2">Data-backed from the same 1,161-window public sample feature tensor; extension probes, not full direction claims.</text>
+<text x="66" y="122" font-size="17" font-weight="500" fill="#a5afa2">Data-backed from the same 1,161-window public sample feature tensor; extension probes for later held-out studies.</text>
 <rect x="66" y="166" width="620" height="160" rx="10" fill="#071207" stroke="#a7f078" stroke-opacity="0.22"/>
 <rect x="66" y="166" width="10" height="160" rx="5" fill="#a7f078"/>
 <circle cx="108" cy="206" r="24" fill="#a7f078" opacity="0.14"/>
 <text x="98" y="214" font-size="21" font-weight="760" fill="#a7f078">A</text>
 <text x="142" y="201" font-size="20" font-weight="760" fill="#f4f8ef">Body and Hand Motion Intensity</text>
 <text x="142" y="228" font-size="13" font-weight="650" fill="#a5afa2">Human Modeling &amp; Motion Understanding</text>
-<text x="142" y="260" font-size="16" font-weight="700" fill="#f4f8ef">Minimal: 0.7827 macro-F1</text>
-<text x="366" y="260" font-size="16" font-weight="700" fill="#f4f8ef">Neural MLP: 0.7986 macro-F1</text>
+<text x="142" y="260" font-size="16" font-weight="700" fill="#f4f8ef">Minimal: 0.7860 macro-F1</text>
+<text x="366" y="260" font-size="16" font-weight="700" fill="#f4f8ef">Neural MLP: 0.8143 macro-F1</text>
 <text x="142" y="291" font-size="13" font-weight="500" fill="#dce8d7">Binary label: high_motion or low_motion.</text>
 <rect x="142" y="304" width="440" height="8" rx="4" fill="#a7f078" opacity="0.14"/>
-<rect x="142" y="304" width="344.4" height="8" rx="4" fill="#a7f078" opacity="0.72"/>
+<rect x="142" y="304" width="345.9" height="8" rx="4" fill="#a7f078" opacity="0.72"/>
 <rect x="142" y="316" width="440" height="8" rx="4" fill="#a7f078" opacity="0.14"/>
-<rect x="142" y="316" width="351.4" height="8" rx="4" fill="#ffffff" opacity="0.78"/>
+<rect x="142" y="316" width="358.3" height="8" rx="4" fill="#ffffff" opacity="0.78"/>
 <rect x="730" y="166" width="620" height="160" rx="10" fill="#071207" stroke="#a7f078" stroke-opacity="0.22"/>
 <rect x="730" y="166" width="10" height="160" rx="5" fill="#7ae5c3"/>
 <circle cx="772" cy="206" r="24" fill="#7ae5c3" opacity="0.14"/>
 <text x="762" y="214" font-size="21" font-weight="760" fill="#7ae5c3">B</text>
 <text x="806" y="201" font-size="20" font-weight="760" fill="#f4f8ef">Multi-View Consistency Retrieval</text>
 <text x="806" y="228" font-size="13" font-weight="650" fill="#a5afa2">3D/4D Reconstruction &amp; Neural Rendering</text>
-<text x="806" y="260" font-size="16" font-weight="700" fill="#f4f8ef">Minimal: 0.5534 MRR</text>
-<text x="1030" y="260" font-size="16" font-weight="700" fill="#f4f8ef">Neural MLP: 0.3469 MRR</text>
+<text x="806" y="260" font-size="16" font-weight="700" fill="#f4f8ef">Minimal: 0.5529 MRR</text>
+<text x="1030" y="260" font-size="16" font-weight="700" fill="#f4f8ef">Neural MLP: 0.3451 MRR</text>
 <text x="806" y="291" font-size="13" font-weight="500" fill="#dce8d7">Ranked candidate windows; the correct synchronized view should rank near the top.</text>
 <rect x="806" y="304" width="440" height="8" rx="4" fill="#a7f078" opacity="0.14"/>
-<rect x="806" y="304" width="243.5" height="8" rx="4" fill="#7ae5c3" opacity="0.72"/>
+<rect x="806" y="304" width="243.3" height="8" rx="4" fill="#7ae5c3" opacity="0.72"/>
 <rect x="806" y="316" width="440" height="8" rx="4" fill="#a7f078" opacity="0.14"/>
-<rect x="806" y="316" width="152.6" height="8" rx="4" fill="#ffffff" opacity="0.78"/>
+<rect x="806" y="316" width="151.9" height="8" rx="4" fill="#ffffff" opacity="0.78"/>
 <rect x="66" y="360" width="620" height="160" rx="10" fill="#071207" stroke="#a7f078" stroke-opacity="0.22"/>
 <rect x="66" y="360" width="10" height="160" rx="5" fill="#d8f4a5"/>
 <circle cx="108" cy="400" r="24" fill="#d8f4a5" opacity="0.14"/>
 <text x="98" y="408" font-size="21" font-weight="760" fill="#d8f4a5">C</text>
 <text x="142" y="395" font-size="20" font-weight="760" fill="#f4f8ef">Action Phase Progress Estimation</text>
 <text x="142" y="422" font-size="13" font-weight="650" fill="#a5afa2">Egocentric Vision &amp; Interaction</text>
-<text x="142" y="454" font-size="16" font-weight="700" fill="#f4f8ef">Minimal: 0.3416 MAE</text>
-<text x="366" y="454" font-size="16" font-weight="700" fill="#f4f8ef">Neural MLP: 0.3038 MAE</text>
+<text x="142" y="454" font-size="16" font-weight="700" fill="#f4f8ef">Minimal: 0.3415 MAE</text>
+<text x="366" y="454" font-size="16" font-weight="700" fill="#f4f8ef">Neural MLP: 0.3126 MAE</text>
 <text x="142" y="485" font-size="13" font-weight="500" fill="#dce8d7">A scalar progress value between 0.0 and 1.0 for the current action segment.</text>
 <rect x="142" y="498" width="440" height="8" rx="4" fill="#a7f078" opacity="0.14"/>
 <rect x="142" y="498" width="289.7" height="8" rx="4" fill="#d8f4a5" opacity="0.72"/>
 <rect x="142" y="510" width="440" height="8" rx="4" fill="#a7f078" opacity="0.14"/>
-<rect x="142" y="510" width="306.3" height="8" rx="4" fill="#ffffff" opacity="0.78"/>
+<rect x="142" y="510" width="302.4" height="8" rx="4" fill="#ffffff" opacity="0.78"/>
 <rect x="730" y="360" width="620" height="160" rx="10" fill="#071207" stroke="#a7f078" stroke-opacity="0.22"/>
 <rect x="730" y="360" width="10" height="160" rx="5" fill="#9bdfff"/>
 <circle cx="772" cy="400" r="24" fill="#9bdfff" opacity="0.14"/>
@@ -49,12 +49,12 @@
 <text x="806" y="395" font-size="20" font-weight="760" fill="#f4f8ef">Short-Horizon Ego-Motion Forecasting</text>
 <text x="806" y="422" font-size="13" font-weight="650" fill="#a5afa2">Scene Reconstruction &amp; World Modeling</text>
 <text x="806" y="454" font-size="16" font-weight="700" fill="#f4f8ef">Minimal: 0.1989 MAE</text>
-<text x="1030" y="454" font-size="16" font-weight="700" fill="#f4f8ef">Neural MLP: 0.0989 MAE</text>
+<text x="1030" y="454" font-size="16" font-weight="700" fill="#f4f8ef">Neural MLP: 0.1009 MAE</text>
 <text x="806" y="485" font-size="13" font-weight="500" fill="#dce8d7">A future camera-translation delta vector.</text>
 <rect x="806" y="498" width="440" height="8" rx="4" fill="#a7f078" opacity="0.14"/>
 <rect x="806" y="498" width="352.5" height="8" rx="4" fill="#9bdfff" opacity="0.72"/>
 <rect x="806" y="510" width="440" height="8" rx="4" fill="#a7f078" opacity="0.14"/>
-<rect x="806" y="510" width="396.5" height="8" rx="4" fill="#ffffff" opacity="0.78"/>
+<rect x="806" y="510" width="395.6" height="8" rx="4" fill="#ffffff" opacity="0.78"/>
 <text x="66" y="570" font-size="24" font-weight="760" fill="#f4f8ef">How to read this</text>
 <text x="66" y="604" font-size="16" font-weight="500" fill="#dce8d7">Each card adds one concrete task to a research direction using existing sample modalities.</text>
 <text x="66" y="632" font-size="16" font-weight="500" fill="#dce8d7">Colored bar: minimal baseline normalized score. White bar: neural MLP normalized score. Lower-is-better MAE is shown as 1 - MAE for bar length only.</text>

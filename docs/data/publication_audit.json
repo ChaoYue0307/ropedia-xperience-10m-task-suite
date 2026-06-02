@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-02T11:01:50+00:00",
+  "generated_at_utc": "2026-06-02T12:23:05+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -185,19 +185,19 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 80,
-      "text_file_count": 58,
+      "file_count": 84,
+      "text_file_count": 62,
       "largest_file": {
         "path": "assets/task_suite_infographic.png",
-        "bytes": 2600193
+        "bytes": 2618313
       },
       "violations": []
     },
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 366,
-      "text_file_count": 280,
+      "file_count": 354,
+      "text_file_count": 270,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -207,11 +207,11 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 234,
-      "text_file_count": 184,
+      "file_count": 526,
+      "text_file_count": 410,
       "largest_file": {
-        "path": "artifacts/episode_task_suite/cross_modal_retrieval/model.npz",
-        "bytes": 41310574
+        "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
+        "bytes": 52601010
       },
       "violations": []
     }

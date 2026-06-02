@@ -5,7 +5,7 @@
     "num_frames": 5821,
     "num_windows": 1161,
     "feature_dim": 8378,
-    "warning": "Single public sample episode; this supports pipeline/task evidence, not cross-episode generalization claims."
+    "warning": "Single public sample episode; this supports pipeline/task evidence, while cross-episode generalization requires held-out episodes."
   },
   "baselines": {
     "minimal": "Interpretable softmax, logistic, ridge, and retrieval heads over the 8,378-d window feature vector.",

@@ -294,7 +294,7 @@ def write_blocker_report(payload: dict, path: Path) -> None:
             "## Interpretation",
             "- Degraded-valid means: annotation.hdf5 and fisheye_cam0.mp4 both exist.",
             "- Complete means all six MP4 views are present with annotation.",
-            "- A 32-episode pilot must not be claimed unless this script selects a source with 32+ degraded-valid episodes.",
+            "- A 32-episode pilot moves to full execution only after this script selects a source with 32+ degraded-valid episodes.",
         ]
     )
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")

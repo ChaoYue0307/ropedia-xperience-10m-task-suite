@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-02T10:51:47+00:00",
+  "generated_at_utc": "2026-06-02T12:01:39+00:00",
   "status": "pass",
   "artifact_count": 58,
   "missing": [],
@@ -39,10 +39,10 @@
       "path": "PROJECT_STATUS.md",
       "kind": "project_path",
       "surface": "repo_hf",
-      "proves": "Gives a compact verified/data-gated/not-redistributed decision table for first-pass readers.",
+      "proves": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 4886,
-      "sha256": "de4aa5749c95a67c4ae3fe2500bbff1eabae2b0407b344f064afd9107c6332d9"
+      "bytes": 4838,
+      "sha256": "207e2f53404a35830916e5fb33965dab481d00411ae42b44c36c72878630e200"
     },
     {
       "id": "project_status_json",
@@ -63,8 +63,8 @@
       "surface": "repo",
       "proves": "Defines the implemented scope, setup-stage items, and multi-episode prerequisites.",
       "exists": true,
-      "bytes": 10426,
-      "sha256": "57ac1db1cfc49b18865e8f294d6fc58941cca5f50ece92b3c15d0c613178bc22"
+      "bytes": 10417,
+      "sha256": "c42f2b48d4c4b53d9e93c46945cf3155b404991942a68b46ed826b3b2ef5b6a8"
     },
     {
       "id": "project_packet",
@@ -85,8 +85,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 13870,
-      "sha256": "fa6ecada10a5837e0d2c9d59a40ddb91fd5362514353756bde618d6897702157"
+      "bytes": 13857,
+      "sha256": "c75e9991261fb45ea3ed570ed5a119fd37c2f40457d6200754f55f114bb9ec57"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -206,8 +206,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable result interpretation for the website, HF cards, and mirror checks.",
       "exists": true,
-      "bytes": 5348,
-      "sha256": "f9f95cd2402e387b21cf296035ca374a20f10b0c0c7a83eb20a1f7f431c353ee"
+      "bytes": 5358,
+      "sha256": "f4c94ac0a7c162ff9f448635e54df125dbce47d2ad98fa8ca8d85eedb36e9959"
     },
     {
       "id": "research_takeaways_builder",
@@ -217,8 +217,8 @@
       "surface": "repo_hf",
       "proves": "Regenerates the research takeaways from committed summary metrics and task result artifacts.",
       "exists": true,
-      "bytes": 10655,
-      "sha256": "b1369702b8c2758aa7db536f7bd6ec25847839f4b428ee9b0ef794be3df41ff7"
+      "bytes": 10667,
+      "sha256": "a14855d74b6c6fc8291821b9fbba9185623533ff2e21c96ec53d84071c9e4eae"
     },
     {
       "id": "figure_index",
@@ -228,8 +228,8 @@
       "surface": "repo_hf",
       "proves": "Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts.",
       "exists": true,
-      "bytes": 4708,
-      "sha256": "0d4166ad8427152c8d66560c437b5e8633a4782047f532323b5c128258463caa"
+      "bytes": 4707,
+      "sha256": "8cdbc79c36ea86cc3d0ee539b7c2268c86acdb479d9817710ec44fa058041c52"
     },
     {
       "id": "figure_index_json",
@@ -239,8 +239,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 13435,
-      "sha256": "dd3fac977ff1e300455165e0ecfec37d13dae346ee440186ec3e7180c36bc89b"
+      "bytes": 13434,
+      "sha256": "dcb74296b42aeeaf54d8f18e4b64f4c5896f6e9fb69a8f933154dad809506805"
     },
     {
       "id": "figure_index_builder",
@@ -288,59 +288,59 @@
     },
     {
       "id": "quality_gates",
-      "title": "Publication quality gates",
+      "title": "Release checks",
       "path": "QUALITY_GATES.md",
       "kind": "quality_gate",
       "surface": "repo_hf",
-      "proves": "Lists the automated and post-publish gates required before presenting a release as current.",
+      "proves": "Lists the automated and post-publish checks used to keep the release current.",
       "exists": true,
-      "bytes": 4553,
-      "sha256": "18f71ee219b95182d6d72f1d14535db633d25298b3374c35ebbe50bd76d7d42d"
+      "bytes": 4507,
+      "sha256": "06deb913ebb4afecacda6d64878526162c68ad3abf3865190e3ddedd332f53a7"
     },
     {
       "id": "quality_gate_manifest",
-      "title": "Quality-gate manifest",
+      "title": "Release-check manifest",
       "path": "docs/data/quality_gates.json",
       "kind": "quality_gate",
       "surface": "website_hf",
-      "proves": "Machine-readable release-gate summary for validators, mirrors, and public project surfaces.",
+      "proves": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
-      "bytes": 7576,
-      "sha256": "db30369036fe4dac630b663d36bf835cff746d7df033c8e80a04eb3a1b0e7323"
+      "bytes": 7538,
+      "sha256": "cfffae607e82036bd25a230fafe9422b9b79e30742bfd63029809c2a0a09055c"
     },
     {
       "id": "public_surface_qa",
-      "title": "Public presentation check",
+      "title": "Public project surface",
       "path": "PUBLIC_SURFACE_QA.md",
       "kind": "quality_gate",
       "surface": "repo_hf",
-      "proves": "Checks whether the repo, website, and Hugging Face cards read as one coherent research project surface.",
+      "proves": "Keeps the repo, website, and Hugging Face cards aligned as one coherent research project surface.",
       "exists": true,
-      "bytes": 2145,
-      "sha256": "690d698d55e2f9a557642dd0a77a7285a73f30be31564f5686d258fdf269c897"
+      "bytes": 1999,
+      "sha256": "5f358c56bf2e3f017f0832767e1e375af6adb44322e01ed11019bb456f8dc102"
     },
     {
       "id": "public_surface_qa_json",
-      "title": "Public presentation check JSON",
+      "title": "Public project surface JSON",
       "path": "docs/data/public_surface_qa.json",
       "kind": "quality_gate",
       "surface": "website_hf",
       "volatile": true,
-      "proves": "Machine-readable checks for SEO/social metadata, accessible tab semantics, public links, project-check links, and reader-facing copy consistency.",
+      "proves": "Machine-readable report for SEO/social metadata, accessible tab semantics, public links, project links, and reader-facing copy.",
       "exists": true,
-      "bytes": 5533,
+      "bytes": 5376,
       "hash_policy": "existence_and_size_only"
     },
     {
       "id": "public_surface_qa_builder",
-      "title": "Public presentation check builder",
+      "title": "Public project surface builder",
       "path": "scripts/build_public_surface_qa.py",
       "kind": "quality_gate",
       "surface": "repo_hf",
-      "proves": "Regenerates the public presentation check before release.",
+      "proves": "Regenerates the public project-surface report before release.",
       "exists": true,
-      "bytes": 10876,
-      "sha256": "ffd5a05413aaf1b91a465cbe8dcc7b7598bbd0b3ed46ed719483fc069f7174d8"
+      "bytes": 11656,
+      "sha256": "2fdebff7681e7619777a1b1f3f67ccb9a0cc3e871bfaf9660d8e569224efe0ec"
     },
     {
       "id": "task_surface_integrity",
@@ -374,7 +374,7 @@
       "volatile": true,
       "proves": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 45353,
+      "bytes": 47827,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -385,8 +385,8 @@
       "surface": "repo",
       "proves": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 26922,
-      "sha256": "a1bd62b94633689c9a8205931f066ae1ee7b9be1720a0d36e9e5cc8846624864"
+      "bytes": 26916,
+      "sha256": "aad6a506b8c8c61fd0fb6f1bc3adceb899d4ac06c3d28ae0e8516445fc5a52a8"
     },
     {
       "id": "reproducibility_contract",
@@ -396,8 +396,8 @@
       "surface": "repo_hf",
       "proves": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
       "exists": true,
-      "bytes": 6300,
-      "sha256": "6058848bf1efc7e13a1f6c0958df9925c1803246e40a077b20ea25c912f31e53"
+      "bytes": 6306,
+      "sha256": "ac460fcefc656c8577f95044f023235fc82a60d612c2c5eec9d3009f30f35188"
     },
     {
       "id": "reproducibility_matrix",
@@ -418,29 +418,29 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 21601,
-      "sha256": "89ca41a6ea90fd4a50326c71055e6c68da8dd3977b79798f14333d01ae3c661c"
+      "bytes": 21475,
+      "sha256": "ae91ac789b3539bc9b88ed113a8214610655aaf693fc3064d0a8b155dc06e017"
     },
     {
       "id": "publication_audit",
-      "title": "Publication package check",
+      "title": "Release package",
       "path": "docs/data/publication_audit.json",
       "kind": "publication_package_check",
       "surface": "website_hf",
       "volatile": true,
-      "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
+      "proves": "Confirms public bundles exclude raw data, caches, heavy archives, and token strings.",
       "exists": true,
-      "bytes": 6878,
+      "bytes": 6884,
       "hash_policy": "existence_and_size_only"
     },
     {
       "id": "scale_up_status_check",
-      "title": "Scale-up status check",
+      "title": "Scale-up readiness",
       "path": "docs/data/scope_claims_audit.json",
       "kind": "scale_up_status",
       "surface": "website_hf",
       "volatile": true,
-      "proves": "Confirms historical 32ep path strings stay in setup-file provenance and are not presented as completed 32-episode results.",
+      "proves": "Keeps historical 32ep setup paths separate from completed held-out-episode results.",
       "exists": true,
       "bytes": 20066,
       "hash_policy": "existence_and_size_only"
@@ -466,7 +466,7 @@
       "volatile": true,
       "proves": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 11339,
+      "bytes": 11338,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -554,8 +554,8 @@
       "surface": "repo_hf",
       "proves": "Maps the 12 tasks to the four Ropedia research directions as direct/proxy/diagnostic.",
       "exists": true,
-      "bytes": 14390,
-      "sha256": "dddac6db489dc0624717522ed30844bf15d65d3033a1404ff5f52c17e9674336"
+      "bytes": 14412,
+      "sha256": "5e0c9d3d3655c36b45966c0e383e65551d7567f2c45530321bf5e1012b70865b"
     },
     {
       "id": "research_direction_extensions",
@@ -565,8 +565,8 @@
       "surface": "repo_hf",
       "proves": "Stores one coded extension probe per research direction with minimal and neural metrics.",
       "exists": true,
-      "bytes": 11891,
-      "sha256": "42957bb00d58c861b61a13dd6559d846fe4e32b5f1dc239d7642c48ba115b8a3"
+      "bytes": 11894,
+      "sha256": "ab0e51d53efe58a78f0f57aa683281e64701da86f6fa3ab1c185211b3c07164e"
     },
     {
       "id": "task_walkthroughs",
@@ -587,8 +587,8 @@
       "surface": "website_hf",
       "proves": "Presents the task suite and sample modality thumbnails with metrics generated from committed files.",
       "exists": true,
-      "bytes": 2600193,
-      "sha256": "b9ece059cf35fa1f14f264e773e1852e0042835381cc25266789db839c8e7ad5"
+      "bytes": 2618313,
+      "sha256": "7689eb255c7ad356c6ebd7c70063f53b4cffc2ff8746dac3139841348acf9e30"
     },
     {
       "id": "modality_atlas",
@@ -598,8 +598,8 @@
       "surface": "website_hf",
       "proves": "Documents the seven public-sample modality cards and their derived thumbnail assets.",
       "exists": true,
-      "bytes": 3838,
-      "sha256": "7674392102fb28acbb849b0a53117d0327f22ce5d356a5294d937428ed44383e"
+      "bytes": 3837,
+      "sha256": "af74cd63f60a09e81ed6ce2d2c8b1621556b75ea9afbe20e267e25ac37fe00c8"
     },
     {
       "id": "modality_thumbnails",
@@ -610,7 +610,7 @@
       "proves": "Stores small derived thumbnails for readable website modality cards without raw data redistribution.",
       "exists": true,
       "file_count": 7,
-      "bytes": 251587
+      "bytes": 279634
     },
     {
       "id": "pipeline_figure",
