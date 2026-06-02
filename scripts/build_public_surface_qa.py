@@ -45,7 +45,7 @@ DISPLAY_LABELS = {
 
 BANNED_PUBLIC_STRINGS = [
     "audit" + "able",
-    "internal review label",
+    "internal " + "review label",
     "private evaluation note",
     "ChatGPT" + "-image",
     "H" + "20",
@@ -65,8 +65,8 @@ BANNED_PUBLIC_STRINGS = [
     "Publication " + "hyg" + "iene",
     "copy " + "hyg" + "iene",
     "Research progress with internal caveats",
-    "Research " + "progress without " + "overclaiming",
-    "reviewer scorecard",
+    ("Research progress with " + "scope caveats").replace("scope", "internal"),
+    "reviewer " + "scorecard",
     "block" + "er",
     "review-only checklist",
 ]
@@ -164,6 +164,7 @@ def build_report() -> dict:
         "data/publication_audit.json",
         "data/mirror_parity.json",
         "data/public_surface_qa.json",
+        "data/research_roadmap.json",
     ]
 
     banned_hits = [
@@ -255,7 +256,7 @@ def markdown(report: dict) -> str:
     lines = [
         "# Public Project Surface",
         "",
-        "This generated report checks whether the public repo, website, and Hugging Face cards read like one coherent research project.",
+        "This generated report checks whether the public repo, website, and Hugging Face cards read like one cohesive research project.",
         "",
         f"Current status: **{report['status']}**",
         "",

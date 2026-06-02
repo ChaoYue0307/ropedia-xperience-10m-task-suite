@@ -31,7 +31,7 @@ It maps the current Xperience-10M sample tasks to the four Ropedia research dire
 | `contact_prediction` | A | A:direct, C:proxy | 1.0000 macro-F1 | 1.0000 macro-F1 | Both baselines are tied. The public sample is degenerate for this target because one class dominates. |
 | `object_relevance` | C | C:direct, A:proxy, D:proxy | 0.1839 micro-F1 | 0.1798 micro-F1 | Minimal baseline is stronger. Object labels are language-derived and sparse in one episode. |
 | `caption_grounding` | C | C:direct, D:proxy | 0.0172 MRR | 0.0178 MRR | Neural MLP is stronger. Bag-of-objects language features are too weak for rich grounding. |
-| `cross_modal_retrieval` | C | C:diagnostic, B:proxy, D:proxy | 0.2634 MRR | 0.1530 MRR | Minimal baseline is stronger. Retrieval proves alignment signal, not geometric reconstruction. |
+| `cross_modal_retrieval` | C | C:diagnostic, B:proxy, D:proxy | 0.2634 MRR | 0.1530 MRR | Minimal baseline is stronger. Retrieval shows an alignment signal, not geometric reconstruction. |
 | `modality_reconstruction` | B | B:proxy, D:proxy | -0.0160 R2 | -0.0102 R2 | Neural MLP is stronger. Feature-vector reconstruction is not pixel, depth-map, mesh, NeRF, or Gaussian reconstruction. |
 | `temporal_order` | C | C:diagnostic, D:diagnostic | 0.5487 F1 | 0.8718 F1 | Neural MLP is stronger. Only local adjacent ordering, not long-horizon causal modeling. |
 | `misalignment_detection` | C | C:diagnostic, B:diagnostic, D:diagnostic | 0.4866 F1 | 0.7335 F1 | Neural MLP is stronger. Synthetic shifts diagnose alignment but do not solve calibration or mapping. |

@@ -65,6 +65,15 @@
             "readout": "The main result interpretation is generated from committed metrics: chronological class shift, neural gains on dynamics/order/alignment, open retrieval/reconstruction problems, and the need for held-out episodes."
         },
         {
+            "area": "Research roadmap",
+            "status": "current",
+            "evidence": [
+                "RESEARCH_ROADMAP.md",
+                "docs/data/research_roadmap.json"
+            ],
+            "readout": "The staged path connects public-sample task development to multi-episode data staging, the 32-episode Qwen3-Omni LoRA pilot, robustness runs, and larger omni-model extensions."
+        },
+        {
             "area": "Official dataset wording",
             "status": "verified",
       "evidence": [
@@ -135,9 +144,10 @@
   "fast_research_route": [
     "Read PROJECT_STATUS.md and EVIDENCE_CONTRACT.md to establish what is implemented.",
         "Open docs/data/project_packet.json for the machine-readable project path.",
+        "Inspect RESEARCH_TAKEAWAYS.md and docs/data/research_takeaways.json before interpreting model scores.",
+        "Inspect RESEARCH_ROADMAP.md and docs/data/research_roadmap.json for the staged path from public-sample task work to multi-episode modeling.",
         "Inspect docs/data/summary_metrics.json and results/episode_task_suite/neural_mlp/ to check the 12-task outputs.",
         "Inspect EVALUATION_PROTOCOL.md before judging task metrics or leakage controls.",
-        "Inspect RESEARCH_TAKEAWAYS.md and docs/data/research_takeaways.json before interpreting model scores.",
         "Inspect SOURCE_ALIGNMENT_AUDIT.md before judging source-card consistency across public surfaces.",
         "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
     "Inspect results/omni_finetune/DATA_ACCESS_STATUS.md before judging Qwen3-Omni scale-up status."

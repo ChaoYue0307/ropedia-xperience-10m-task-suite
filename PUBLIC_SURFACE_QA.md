@@ -1,6 +1,6 @@
 # Public Project Surface
 
-This generated report checks whether the public repo, website, and Hugging Face cards read like one coherent research project.
+This generated report checks whether the public repo, website, and Hugging Face cards read like one cohesive research project.
 
 Current status: **pass**
 

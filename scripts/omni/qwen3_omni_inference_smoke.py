@@ -177,7 +177,7 @@ def main() -> int:
         f"- Accuracy: `{metrics['accuracy']:.4f}`",
         f"- Macro-F1: `{metrics['macro_f1']:.4f}`",
         "",
-        "This is a pre-training smoke test. It proves the exported Ropedia video/audio/text prompts can pass through Qwen3-Omni on the target runtime.",
+        "This is a pre-training smoke test. It checks that exported Ropedia video/audio/text prompts can pass through Qwen3-Omni on the target runtime.",
     ]
     (args.output_dir / "RUN_REPORT.md").write_text("\n".join(report) + "\n", encoding="utf-8")
     print(json.dumps(metrics, indent=2))

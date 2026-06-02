@@ -117,6 +117,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "research_roadmap_json",
+        "title": "Research roadmap JSON",
+        "local_path": "docs/data/research_roadmap.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/research_roadmap.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/research_roadmap.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/research_roadmap.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/research_roadmap.json",
+        },
+    },
+    {
         "id": "figure_index_json",
         "title": "Figure index JSON",
         "local_path": "docs/data/figure_index.json",

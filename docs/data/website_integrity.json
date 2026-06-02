@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-02T16:20:59+00:00",
+  "generated_at_utc": "2026-06-02T17:31:49+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 2,
-    "local_references": 96,
-    "external_reference_count": 77,
-    "json_files": 26,
+    "local_references": 99,
+    "external_reference_count": 80,
+    "json_files": 27,
     "image_assets_referenced": 19,
     "failure_count": 0
   },
@@ -30,7 +30,7 @@
       "name": "project_sections_are_assigned_to_tabs",
       "status": "pass",
       "reason": "Every major research section should be assigned to a tab group.",
-      "section_count": 20
+      "section_count": 21
     },
     {
       "name": "project_hash_router_preserves_deep_links",
@@ -52,8 +52,8 @@
       "name": "project_sections_are_labeled_tabpanels",
       "status": "pass",
       "reason": "Every tabbed research section should expose a labeled panel role.",
-      "panel_count": 24,
-      "labeled_panel_count": 20
+      "panel_count": 25,
+      "labeled_panel_count": 21
     },
     {
       "name": "project_tabs_update_selected_state",
@@ -74,8 +74,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 57999,
-      "evidence_index": 67162
+      "overview_index": 60551,
+      "evidence_index": 73976
     },
     {
       "name": "project_status_links_json",
@@ -87,9 +87,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 57999,
-      "protocol_index": 64565,
-      "evidence_index": 67162
+      "overview_index": 60551,
+      "protocol_index": 71379,
+      "evidence_index": 73976
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -162,15 +162,15 @@
     },
     {
       "path": "index.html",
-      "id_count": 74,
-      "reference_count": 95,
+      "id_count": 75,
+      "reference_count": 98,
       "image_count": 22
     }
   ],
   "json_files": [
     {
       "path": "data/artifact_index.json",
-      "bytes": 26947,
+      "bytes": 27749,
       "top_level_type": "dict"
     },
     {
@@ -185,7 +185,7 @@
     },
     {
       "path": "data/evidence_contract.json",
-      "bytes": 11187,
+      "bytes": 11570,
       "top_level_type": "dict"
     },
     {
@@ -205,12 +205,12 @@
     },
     {
       "path": "data/modality_atlas.json",
-      "bytes": 3837,
+      "bytes": 3841,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_brief.json",
-      "bytes": 2487,
+      "bytes": 2596,
       "top_level_type": "dict"
     },
     {
@@ -220,17 +220,17 @@
     },
     {
       "path": "data/project_packet.json",
-      "bytes": 7400,
+      "bytes": 7654,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_status.json",
-      "bytes": 6768,
+      "bytes": 7344,
       "top_level_type": "dict"
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 5413,
+      "bytes": 5454,
       "top_level_type": "dict"
     },
     {
@@ -240,7 +240,7 @@
     },
     {
       "path": "data/quality_gates.json",
-      "bytes": 7544,
+      "bytes": 7528,
       "top_level_type": "dict"
     },
     {
@@ -255,7 +255,12 @@
     },
     {
       "path": "data/research_directions.json",
-      "bytes": 14412,
+      "bytes": 14414,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/research_roadmap.json",
+      "bytes": 4590,
       "top_level_type": "dict"
     },
     {

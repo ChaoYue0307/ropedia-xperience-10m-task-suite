@@ -19,10 +19,12 @@ egocentric episode before scaling to held-out multi-episode training?
 ## How To Read It
 
 1. Start with the website or this brief to understand the project shape.
-2. Open `EVALUATION_PROTOCOL.md` before comparing task scores.
-3. Use `RESEARCH_TAKEAWAYS.md` for the current metric interpretation.
-4. Inspect `results/episode_task_suite/feature_manifest.json` to understand one model input.
-5. Use `results/omni_finetune/DATA_ACCESS_STATUS.md` for the multi-episode data status.
+2. Open `RESEARCH_ROADMAP.md` to see how the work scales from the public
+   sample to multi-episode modeling.
+3. Open `EVALUATION_PROTOCOL.md` before comparing task scores.
+4. Use `RESEARCH_TAKEAWAYS.md` for the current metric interpretation.
+5. Inspect `results/episode_task_suite/feature_manifest.json` to understand one model input.
+6. Use `results/omni_finetune/DATA_ACCESS_STATUS.md` for the multi-episode data status.
 
 ## What This Enables
 

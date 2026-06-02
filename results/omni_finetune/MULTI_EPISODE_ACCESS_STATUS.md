@@ -3,9 +3,8 @@
 Current status: access to the gated full `ropedia-ai/xperience-10m` dataset is
 still pending approval from the dataset authors.
 
-This file records only public-facing readiness facts. It intentionally excludes
-machine aliases, private paths, SSH hosts, token locations, and local server
-details.
+This file records the public data-access status and pilot requirements. It does
+not include local-machine aliases, private paths, SSH hosts, or token locations.
 
 ## Selection Plan
 
