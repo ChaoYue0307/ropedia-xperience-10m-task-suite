@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T20:04:28+00:00",
+  "generated_at_utc": "2026-06-01T20:40:42+00:00",
   "docs_root": "/Users/chaoyue/Documents/Codex/2026-05-29/i-am-learning-this-dataset-https/working_repo_copy/docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
@@ -40,11 +40,40 @@
       "has_section_tab_map": true
     },
     {
+      "name": "project_tabs_use_accessible_roles",
+      "status": "pass",
+      "reason": "The tabbed research dashboard should expose tablist/tab semantics.",
+      "tab_role_count": 5,
+      "has_tablist": true
+    },
+    {
+      "name": "project_sections_are_labeled_tabpanels",
+      "status": "pass",
+      "reason": "Every tabbed research section should expose a labeled panel role.",
+      "panel_count": 19,
+      "labeled_panel_count": 19
+    },
+    {
+      "name": "project_tabs_update_selected_state",
+      "status": "pass",
+      "reason": "Tab activation should update selected state for assistive technology.",
+      "selected_count": 6,
+      "updates_selected_state": true
+    },
+    {
+      "name": "project_tabs_support_keyboard_navigation",
+      "status": "pass",
+      "reason": "Keyboard users should be able to switch project tabs with arrow, Home, and End keys.",
+      "marker_count": 2,
+      "has_arrow_navigation": true,
+      "has_home_end_navigation": true
+    },
+    {
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 50547,
-      "evidence_index": 57284
+      "overview_index": 51195,
+      "evidence_index": 58049
     },
     {
       "name": "project_status_links_json",
@@ -56,9 +85,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 50547,
-      "protocol_index": 54851,
-      "evidence_index": 57284
+      "overview_index": 51195,
+      "protocol_index": 55557,
+      "evidence_index": 58049
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -76,8 +105,8 @@
       "name": "suite_task_map_precedes_modality_atlas",
       "status": "pass",
       "reason": "The Suite anchor should show the full 12-task map before the modality atlas.",
-      "first_marker_index": 404,
-      "second_marker_index": 695
+      "first_marker_index": 461,
+      "second_marker_index": 752
     },
     {
       "name": "suite_modality_atlas_contains_seven_cards",
@@ -131,7 +160,7 @@
     },
     {
       "path": "index.html",
-      "id_count": 59,
+      "id_count": 64,
       "reference_count": 88,
       "image_count": 22
     }
@@ -244,7 +273,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 10149,
+      "bytes": 11151,
       "top_level_type": "dict"
     },
     {

@@ -1468,6 +1468,8 @@
       .section-head p { margin-top: 14px; }
       .atlas-head { display: block; }
       .atlas-head a { display: inline-flex; margin-top: 14px; }
+    }
+    @media (max-width: 1120px) {
       .nav-links { display: none; }
     }
     @media (max-width: 640px) {
@@ -1590,31 +1592,31 @@
 
   <main id="main" class="tabbed" data-active-tab="start">
     <div class="project-tabs-shell" aria-label="Project section tabs">
-      <div class="wrap project-tabs">
-        <button type="button" class="project-tab active" data-tab-key="start" data-default-section="overview" aria-pressed="true">
+      <div class="wrap project-tabs" role="tablist" aria-label="Project sections">
+        <button type="button" class="project-tab active" id="tab-start" role="tab" data-tab-key="start" data-default-section="overview" aria-selected="true" aria-pressed="true" aria-controls="overview reading-path">
           <strong>Start</strong>
           <span>overview, reading path, scope</span>
         </button>
-        <button type="button" class="project-tab" data-tab-key="data" data-default-section="dataset-card" aria-pressed="false">
+        <button type="button" class="project-tab" id="tab-data" role="tab" data-tab-key="data" data-default-section="dataset-card" aria-selected="false" aria-pressed="false" aria-controls="dataset-card suite walkthroughs tasks" tabindex="-1">
           <strong>Data & Tasks</strong>
           <span>dataset, modalities, 12 tasks</span>
         </button>
-        <button type="button" class="project-tab" data-tab-key="method" data-default-section="pipeline" aria-pressed="false">
+        <button type="button" class="project-tab" id="tab-method" role="tab" data-tab-key="method" data-default-section="pipeline" aria-selected="false" aria-pressed="false" aria-controls="protocol pipeline architectures features" tabindex="-1">
           <strong>Method</strong>
           <span>pipeline, protocol, features</span>
         </button>
-        <button type="button" class="project-tab" data-tab-key="results" data-default-section="models" aria-pressed="false">
+        <button type="button" class="project-tab" id="tab-results" role="tab" data-tab-key="results" data-default-section="models" aria-selected="false" aria-pressed="false" aria-controls="models neural directions extensions diagnostics" tabindex="-1">
           <strong>Results</strong>
           <span>baselines, directions, probes</span>
         </button>
-        <button type="button" class="project-tab" data-tab-key="resources" data-default-section="artifacts" aria-pressed="false">
+        <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="artifacts" aria-selected="false" aria-pressed="false" aria-controls="evidence artifacts omni-relay run" tabindex="-1">
           <strong>Resources</strong>
           <span>artifacts, scale-up, runbook</span>
         </button>
       </div>
     </div>
 
-    <section id="overview" data-project-tab="start">
+    <section id="overview" data-project-tab="start" role="tabpanel" aria-labelledby="tab-start" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Project overview and contributions.</h2>
@@ -1691,7 +1693,7 @@
       </div>
     </section>
 
-    <section id="protocol" data-project-tab="method">
+    <section id="protocol" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Evaluation protocol is explicit.</h2>
@@ -1708,7 +1710,7 @@
       </div>
     </section>
 
-    <section id="evidence" data-project-tab="resources">
+    <section id="evidence" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Research progress without overclaiming.</h2>
@@ -1833,7 +1835,7 @@
       </div>
     </section>
 
-    <section id="reading-path" data-project-tab="start">
+    <section id="reading-path" data-project-tab="start" role="tabpanel" aria-labelledby="tab-start" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Research reading path.</h2>
@@ -1896,7 +1898,7 @@
       </div>
     </section>
 
-    <section id="dataset-card" data-project-tab="data">
+    <section id="dataset-card" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Aligned with the official dataset card.</h2>
@@ -1918,7 +1920,7 @@
       </div>
     </section>
 
-    <section id="suite" data-project-tab="data">
+    <section id="suite" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Ropedia Xperience-10M 12-task suite, first.</h2>
@@ -1977,7 +1979,7 @@
       </div>
     </section>
 
-    <section id="pipeline" data-project-tab="method">
+    <section id="pipeline" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>From raw episode to checked artifacts.</h2>
@@ -1997,7 +1999,7 @@
       </div>
     </section>
 
-    <section id="models" data-project-tab="results">
+    <section id="models" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Small baselines, no hidden machinery.</h2>
@@ -2013,7 +2015,7 @@
       </div>
     </section>
 
-    <section id="neural" data-project-tab="results">
+    <section id="neural" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Neural MLP heads, same task contracts.</h2>
@@ -2032,7 +2034,7 @@
       </div>
     </section>
 
-    <section id="directions" data-project-tab="results">
+    <section id="directions" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>The 12 tasks organized into four research directions.</h2>
@@ -2078,7 +2080,7 @@
       </div>
     </section>
 
-    <section id="extensions" data-project-tab="results">
+    <section id="extensions" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Four extra probes make the directions actionable.</h2>
@@ -2132,7 +2134,7 @@
       </div>
     </section>
 
-    <section id="architectures" data-project-tab="method">
+    <section id="architectures" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>The 12 tasks share four head families.</h2>
@@ -2142,7 +2144,7 @@
       </div>
     </section>
 
-    <section id="walkthroughs" data-project-tab="data">
+    <section id="walkthroughs" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Interactive task walkthrough.</h2>
@@ -2196,7 +2198,7 @@
       </div>
     </section>
 
-    <section id="tasks" data-project-tab="data">
+    <section id="tasks" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Task cards and metrics.</h2>
@@ -2213,7 +2215,7 @@
       </div>
     </section>
 
-    <section id="features" data-project-tab="method">
+    <section id="features" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Every feature block has a source.</h2>
@@ -2223,7 +2225,7 @@
       </div>
     </section>
 
-    <section id="diagnostics" data-project-tab="results">
+    <section id="diagnostics" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Diagnostics separate memorization from signal.</h2>
@@ -2238,7 +2240,7 @@
       </div>
     </section>
 
-    <section id="artifacts" data-project-tab="resources">
+    <section id="artifacts" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Where the evidence lives.</h2>
@@ -2312,7 +2314,7 @@
       </div>
     </section>
 
-    <section id="omni-relay" data-project-tab="resources">
+    <section id="omni-relay" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Qwen3-Omni pilot is approval-ready.</h2>
@@ -2326,7 +2328,7 @@
       </div>
     </section>
 
-    <section id="run" data-project-tab="resources">
+    <section id="run" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Reproduce the suite.</h2>
@@ -2404,10 +2406,10 @@ python scripts/validate_publication_package.py</code></pre>
       { key: "evaluate", label: "Evaluate" }
     ];
     const tabSections = Array.from(document.querySelectorAll("[data-project-tab]"));
+    const tabButtons = Array.from(document.querySelectorAll("[data-tab-key]"));
     const sectionTabMap = Object.fromEntries(tabSections.map((section) => [section.id, section.dataset.projectTab]));
     const tabDefaultSections = Object.fromEntries(
-      Array.from(document.querySelectorAll("[data-tab-key]"))
-        .map((button) => [button.dataset.tabKey, button.dataset.defaultSection])
+      tabButtons.map((button) => [button.dataset.tabKey, button.dataset.defaultSection])
     );
 
     function setProjectTab(tabKey, options = {}) {
@@ -2417,10 +2419,12 @@ python scripts/validate_publication_package.py</code></pre>
       tabSections.forEach((section) => {
         section.hidden = section.dataset.projectTab !== fallbackTab;
       });
-      document.querySelectorAll("[data-tab-key]").forEach((button) => {
+      tabButtons.forEach((button) => {
         const active = button.dataset.tabKey === fallbackTab;
         button.classList.toggle("active", active);
+        button.setAttribute("aria-selected", active ? "true" : "false");
         button.setAttribute("aria-pressed", active ? "true" : "false");
+        button.tabIndex = active ? 0 : -1;
       });
       if (options.pushHash) {
         history.pushState(null, "", `#${targetId}`);
@@ -2442,7 +2446,24 @@ python scripts/validate_publication_package.py</code></pre>
       setProjectTab(tabKey, { targetId, scroll: options.scroll, smooth: options.smooth });
     }
 
-    document.querySelectorAll("[data-tab-key]").forEach((button) => {
+    function moveProjectTabFocus(currentIndex, key) {
+      const lastIndex = tabButtons.length - 1;
+      let nextIndex = currentIndex;
+      if (key === "ArrowRight" || key === "ArrowDown") nextIndex = currentIndex === lastIndex ? 0 : currentIndex + 1;
+      if (key === "ArrowLeft" || key === "ArrowUp") nextIndex = currentIndex === 0 ? lastIndex : currentIndex - 1;
+      if (key === "Home") nextIndex = 0;
+      if (key === "End") nextIndex = lastIndex;
+      const nextButton = tabButtons[nextIndex];
+      nextButton.focus();
+      setProjectTab(nextButton.dataset.tabKey, {
+        targetId: nextButton.dataset.defaultSection,
+        pushHash: true,
+        scroll: true,
+        smooth: true
+      });
+    }
+
+    tabButtons.forEach((button, index) => {
       button.addEventListener("click", () => {
         setProjectTab(button.dataset.tabKey, {
           targetId: button.dataset.defaultSection,
@@ -2450,6 +2471,11 @@ python scripts/validate_publication_package.py</code></pre>
           scroll: true,
           smooth: true
         });
+      });
+      button.addEventListener("keydown", (event) => {
+        if (!["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        moveProjectTabFocus(index, event.key);
       });
     });
     window.addEventListener("hashchange", () => activateTabForHash({ scroll: true }));
