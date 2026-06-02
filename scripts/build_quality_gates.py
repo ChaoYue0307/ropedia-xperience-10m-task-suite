@@ -21,7 +21,7 @@ OUTPUT_MD = ROOT / "QUALITY_GATES.md"
 GATES = [
     {
         "id": "scale_up_status",
-        "title": "Scale-up readiness",
+        "title": "Multi-episode pilot status",
         "command": "python scripts/validate_scope_claims.py",
         "report": "docs/data/scope_claims_audit.json",
         "blocks_if": "Historical 32ep setup/provenance strings are presented as completed 32-episode metrics.",
@@ -32,7 +32,7 @@ GATES = [
         "title": "Source alignment",
         "command": "python scripts/validate_source_alignment.py",
         "report": "docs/data/source_alignment_audit.json",
-        "blocks_if": "Official full-dataset facts, sample-card facts, API-listing caveats, or current-project markers are missing or inconsistent.",
+        "blocks_if": "Official full-dataset facts, sample-card facts, API-listing notes, or project coverage are missing or inconsistent.",
         "proves": "The repo, website, and Hugging Face cards preserve the Xperience-10M source facts and current project scope.",
     },
     {
@@ -93,7 +93,7 @@ GATES = [
     },
     {
         "id": "publication_package",
-        "title": "Release package",
+        "title": "Public bundle contents",
         "command": "python scripts/validate_publication_package.py",
         "report": "docs/data/publication_audit.json",
         "blocks_if": "Raw data, caches, heavy archives, token strings, missing required assets, or stale public-card figure references enter public bundles.",

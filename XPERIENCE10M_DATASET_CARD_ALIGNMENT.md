@@ -184,7 +184,7 @@ includes real audio-visual modeling, full caption generation, depth-pixel
 estimation, full SLAM estimation, neural rendering, policy learning, and
 cross-episode generalization.
 
-## Responsible-Use Boundary
+## Responsible Use and Scope
 
 The official dataset is gated and intended for approved non-commercial research
 use, while the public sample card lists `cc-by-nc-4.0`. This repo therefore
@@ -198,7 +198,7 @@ recognition, re-identification, biometric profiling, surveillance, sensitive
 attribute inference, or safety-critical deployment without appropriate
 safeguards. It also describes the open-source dataset as limited in diversity
 and showcase/production quality, so downstream work still needs robust
-evaluation, safeguards, and careful claim boundaries.
+evaluation and safeguards.
 
 ## Limitations To Preserve In This Project
 
@@ -222,4 +222,4 @@ When describing Xperience-10M in this repo, keep these limitations visible:
 | Episode layout uses six MP4 streams and `annotation.hdf5` | Used by sample inspection and pilot-readiness scripts |
 | Audio exists in MP4 streams | Documented and visualized, not featurized |
 | 4D reconstruction/world modeling are intended research directions | Represented by proxy/diagnostic tasks only |
-| Real model quality requires held-out multi-episode evaluation | Not claimed yet; 32-episode pilot remains gated |
+| Real model quality requires held-out multi-episode evaluation | Pending the 32-episode pilot |

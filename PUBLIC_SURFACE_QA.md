@@ -8,7 +8,7 @@ This report covers the public repo, website, Hugging Face cards, and package con
 
 ## Checks
 
-| Area | Status | What it keeps aligned |
+| Area | Status | What it covers |
 | --- | --- | --- |
 | Public files | `pass` | Repo README, website HTML, and three Hugging Face cards should all be present in the publication workspace. |
 | Project reports | `pass` | The public project surface depends on the existing project reports already passing. |

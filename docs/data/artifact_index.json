@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-02T15:35:59+00:00",
+  "generated_at_utc": "2026-06-02T16:12:38+00:00",
   "status": "pass",
   "artifact_count": 60,
   "missing": [],
@@ -62,8 +62,8 @@
       "surface": "repo_hf",
       "proves": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 4836,
-      "sha256": "1c371ca3909bfbe97d4833412d823c72c79806b47d3a8533636e7d6b1fa8d6c8"
+      "bytes": 4872,
+      "sha256": "65dfaf347ebcb02d76d78fc7c10ca0c112d0221c4295571ec1da15781ee41e3c"
     },
     {
       "id": "project_status_json",
@@ -73,8 +73,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable copy of the current project status for website and HF mirrors.",
       "exists": true,
-      "bytes": 6739,
-      "sha256": "6e64f1cd1a68d87e53a9c6b9b6c5098db7c137d0ab69026331a314657c59bd9e"
+      "bytes": 6768,
+      "sha256": "386346a753b65948e851c178f4a0116943070244f571d4427b7929d495a6563f"
     },
     {
       "id": "evidence_contract",
@@ -84,8 +84,8 @@
       "surface": "repo",
       "proves": "Defines the implemented scope, setup-stage items, and multi-episode prerequisites.",
       "exists": true,
-      "bytes": 10415,
-      "sha256": "877158246e16ac5fae5efa52a5226a3cad91ec978ac4b1baac045f6cc968da7c"
+      "bytes": 10453,
+      "sha256": "6784b7227251e265bf59f194f4d56abfeffa10ab5ef10e7a266752f2ed17acf3"
     },
     {
       "id": "project_packet",
@@ -95,8 +95,8 @@
       "surface": "website_hf",
       "proves": "Gives a short project path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 7409,
-      "sha256": "1d604fa0d09d4fb74ee4b9c4776f5cee8ff4c1204f28a1f6a9ca08058beed217"
+      "bytes": 7400,
+      "sha256": "242357ad294c12abd68e3c3d3766902c3db566c81b270dcb1103f48e165ed350"
     },
     {
       "id": "artifact_guide",
@@ -106,8 +106,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 13856,
-      "sha256": "c35a2e229c7325fa16a0f7399cb1a98d01a3704a0d0e15d2009cf7ee0826bfcc"
+      "bytes": 13906,
+      "sha256": "36dee4e4b3c4e16c67d7bf1d9aa3d0af626b4279cc10860ca94e686b1bbb768c"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -117,8 +117,8 @@
       "surface": "repo_hf",
       "proves": "Aligns public dataset wording with the official gated Xperience-10M card, public sample card, HF API metadata, and current project coverage.",
       "exists": true,
-      "bytes": 10642,
-      "sha256": "e3986e5d251f1b4e0bbad677ecec0daa42e965146ded8473e9a1ed3b91d51f21"
+      "bytes": 10597,
+      "sha256": "3103ed45295e75cca79df6b92709a286989355772fde0f2e573ba1a2bd12d499"
     },
     {
       "id": "official_dataset_card_alignment_json",
@@ -137,7 +137,7 @@
       "path": "SOURCE_ALIGNMENT_AUDIT.md",
       "kind": "source_alignment",
       "surface": "repo_hf",
-      "proves": "Summarizes the pass/fail check for full-dataset facts, sample-card facts, API-listing caveats, and current-project markers.",
+      "proves": "Summarizes the pass/fail check for full-dataset facts, sample-card facts, API-listing notes, and project coverage.",
       "exists": true,
       "bytes": 2309,
       "sha256": "26f8234b6a537ee5961a140e38ae78d9fedda4158483703d7853b6d7791cd9cb"
@@ -161,8 +161,8 @@
       "surface": "repo_hf",
       "proves": "Regenerates the source-alignment report from committed facts and public card text.",
       "exists": true,
-      "bytes": 15792,
-      "sha256": "ebf0aaa0b16759f948ebfd1b4e159a639147d5396f4ca7db9031b7bdf5027483"
+      "bytes": 15801,
+      "sha256": "cb2d11aba5dcadf030c564288d6b502ab3e46bed2486ecd7c6d7b200d22ad773"
     },
     {
       "id": "hf_publisher",
@@ -249,8 +249,8 @@
       "surface": "repo_hf",
       "proves": "Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts.",
       "exists": true,
-      "bytes": 4707,
-      "sha256": "8cdbc79c36ea86cc3d0ee539b7c2268c86acdb479d9817710ec44fa058041c52"
+      "bytes": 4712,
+      "sha256": "bf180bd0560c785c85c59f7ad5ad002c1f41ef3b2eda9c604207f39998e4c149"
     },
     {
       "id": "figure_index_json",
@@ -271,8 +271,8 @@
       "surface": "repo_hf",
       "proves": "Regenerates visual-asset hashes, dimensions, and source-script provenance.",
       "exists": true,
-      "bytes": 12966,
-      "sha256": "510f9ae75561235f8c904ccba365696ef9a5eb68606fd508c00e93ca49a4b045"
+      "bytes": 12971,
+      "sha256": "926f7efd274485b1c4772cea8cd61c96cca57ef04cddf4c23271de604042f135"
     },
     {
       "id": "brand_assets_json",
@@ -315,8 +315,8 @@
       "surface": "repo_hf",
       "proves": "Lists the automated and post-publish checks used to keep the release current.",
       "exists": true,
-      "bytes": 4507,
-      "sha256": "06deb913ebb4afecacda6d64878526162c68ad3abf3865190e3ddedd332f53a7"
+      "bytes": 4513,
+      "sha256": "14a6ef280ecc72e8266f1fcbf7e3bfd91ed650de27ef1d3772b15793aa8e3491"
     },
     {
       "id": "quality_gate_manifest",
@@ -326,8 +326,8 @@
       "surface": "website_hf",
       "proves": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
-      "bytes": 7538,
-      "sha256": "1ac521b705456105f84d14a76a935698efde7da3013b77f4b44146c4976d9e2a"
+      "bytes": 7544,
+      "sha256": "708f9d4bde74ac6c950e97bcffa86405063fca0ad4075f49bd3f0755651c7043"
     },
     {
       "id": "public_surface_qa",
@@ -360,8 +360,8 @@
       "surface": "repo_hf",
       "proves": "Regenerates the public project-surface report before release.",
       "exists": true,
-      "bytes": 11732,
-      "sha256": "743ead7e4e5ab5773f161976db3ba5cd3b85c05e5c911b9929ef8cbfd87889d2"
+      "bytes": 11740,
+      "sha256": "1fae98d4ce3510f7bb426a9175ed2dbaa45d528bb4209a955a7dda8f47d97808"
     },
     {
       "id": "task_surface_integrity",
@@ -417,8 +417,8 @@
       "surface": "repo_hf",
       "proves": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
       "exists": true,
-      "bytes": 6304,
-      "sha256": "67d0d299182a98caaa8b9412189debd5a76a2086e8e4b5e1f36a32eb43c3c9c5"
+      "bytes": 6316,
+      "sha256": "1635a0179adfa6c9bc865e5bec46fe3525636fa4bd03daa282fe3279cf05edd7"
     },
     {
       "id": "reproducibility_matrix",
@@ -439,12 +439,12 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 22070,
-      "sha256": "fb9f75ee60c830e9a58ed9856cef3d8cffab03d4a35f7854587acd12b2c9721c"
+      "bytes": 22030,
+      "sha256": "4552993b1d185396dca16f8d5c8082c99c5d5f23645ba8587a1524643df9e89a"
     },
     {
       "id": "publication_audit",
-      "title": "Release package",
+      "title": "Public bundle contents",
       "path": "docs/data/publication_audit.json",
       "kind": "publication_package_check",
       "surface": "website_hf",
@@ -456,12 +456,12 @@
     },
     {
       "id": "scale_up_status_check",
-      "title": "Scale-up readiness",
+      "title": "Multi-episode pilot status",
       "path": "docs/data/scope_claims_audit.json",
       "kind": "scale_up_status",
       "surface": "website_hf",
       "volatile": true,
-      "proves": "Keeps historical 32ep setup paths separate from completed held-out-episode results.",
+      "proves": "Records historical 32ep setup paths separately from completed held-out-episode results.",
       "exists": true,
       "bytes": 20066,
       "hash_policy": "existence_and_size_only"
@@ -663,8 +663,8 @@
       "surface": "repo_hf",
       "proves": "Summarizes the data-access requirement before the 32-episode Qwen3-Omni pilot can run.",
       "exists": true,
-      "bytes": 1677,
-      "sha256": "687f5ed6e4d17172d337226ef3575ff13c72cd1bd8691a71ca040583191b20b2"
+      "bytes": 1676,
+      "sha256": "c810259f82df1daebcaf6d03baa61c8c7dc2cc1a7d02f1b6d29776966f094a6f"
     },
     {
       "id": "multi_episode_access_status",
@@ -672,10 +672,10 @@
       "path": "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
       "kind": "scaleup_status",
       "surface": "repo_hf",
-      "proves": "Documents the public multi-episode access boundary and 32-episode pilot selection without exposing private infrastructure details.",
+      "proves": "Documents the public multi-episode access status and 32-episode pilot selection.",
       "exists": true,
-      "bytes": 1455,
-      "sha256": "3f8454d36eeab84d45156959686e1e3b245f36db513af4db349f0f4857f212f9"
+      "bytes": 1485,
+      "sha256": "c816586827031d6d778d3d80ee4af89f08a9cc32c9eb45a7540be1ab08d4035a"
     },
     {
       "id": "citation",

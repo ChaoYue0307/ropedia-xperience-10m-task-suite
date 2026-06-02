@@ -255,17 +255,17 @@ def pick_source(local: dict, modelscope: dict, huggingface: dict, target: int) -
     if huggingface["num_degraded_valid_episodes"] >= target:
         return "huggingface", []
 
-    blockers = [
+    data_status_items = [
         f"Not enough degraded-valid episodes for a 32-episode pilot. Need {target}, local has {local['num_degraded_valid_episodes']}.",
-        "Current local path remains one-episode proof-of-stack only.",
+        "Current local data supports one-episode training-stack validation only.",
     ]
     if local["num_episodes"] == 0:
-        blockers.append(f"No local annotation.hdf5 found under {local.get('data_root', 'configured data root')}")
+        data_status_items.append(f"No local annotation.hdf5 found under {local.get('data_root', 'configured data root')}")
     if not modelscope["episodes"]:
-        blockers.append("ModelScope probe unavailable or reported no matching episode files.")
+        data_status_items.append("ModelScope probe unavailable or reported no matching episode files.")
     if not huggingface["episodes"]:
-        blockers.append("Hugging Face probe unavailable or reported no matching episode files.")
-    return "none", blockers
+        data_status_items.append("Hugging Face probe unavailable or reported no matching episode files.")
+    return "none", data_status_items
 
 
 def write_blocker_report(payload: dict, path: Path) -> None:
@@ -281,10 +281,10 @@ def write_blocker_report(payload: dict, path: Path) -> None:
         f"- modelscope (degraded-valid): {payload['modelscope']['num_degraded_valid_episodes']} / {payload['modelscope']['num_episodes']}",
         f"- huggingface (degraded-valid): {payload['huggingface']['num_degraded_valid_episodes']} / {payload['huggingface']['num_episodes']}",
         "",
-        "## Blockers",
+        "## Current data status",
     ]
-    if payload["blockers"]:
-        lines.extend([f"- {item}" for item in payload["blockers"]])
+    if payload["data_status_items"]:
+        lines.extend([f"- {item}" for item in payload["data_status_items"]])
     else:
         lines.append("- none")
 
@@ -327,7 +327,7 @@ def main() -> int:
             hf_errors.extend([f"{repo}: {x}" for x in errs])
     huggingface_summary = summarize_episodes(hf_episodes, hf_errors, "huggingface")
 
-    selected, blockers = pick_source(local_summary, modelscope_summary, huggingface_summary, args.target_episodes)
+    selected, data_status_items = pick_source(local_summary, modelscope_summary, huggingface_summary, args.target_episodes)
     ready = selected != "none"
 
     payload = {
@@ -339,7 +339,7 @@ def main() -> int:
         "local": local_summary,
         "modelscope": modelscope_summary,
         "huggingface": huggingface_summary,
-        "blockers": blockers,
+        "data_status_items": data_status_items,
     }
 
     args.output.parent.mkdir(parents=True, exist_ok=True)

@@ -65,9 +65,9 @@ BANNED_PUBLIC_STRINGS = [
     "Publication " + "hyg" + "iene",
     "copy " + "hyg" + "iene",
     "Research progress with internal caveats",
-    "Research progress without overclaiming",
+    "Research " + "progress without " + "overclaiming",
     "reviewer scorecard",
-    "blocker",
+    "block" + "er",
     "review-only checklist",
 ]
 
@@ -263,7 +263,7 @@ def markdown(report: dict) -> str:
         "",
         "## Checks",
         "",
-        "| Area | Status | What it keeps aligned |",
+        "| Area | Status | What it covers |",
         "| --- | --- | --- |",
     ]
     for item in report["checks"]:

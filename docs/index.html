@@ -1980,7 +1980,7 @@
           <article class="artifact"><h3>Split policy</h3><p>Single-episode chronological 70/30 train/test split. This avoids random future-window mixing; cross-episode generalization is measured in the later multi-episode pilot.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVALUATION_PROTOCOL.md">protocol doc</a></article>
           <article class="artifact"><h3>Metric contract</h3><p>All 12 tasks list input, target, primary metric, minimal baseline score, and neural MLP score from committed result files.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target feature blocks, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
-          <article class="artifact"><h3>Current limits</h3><p>This public-sample run does not evaluate cross-episode generalization, audio-visual learning, pixel-depth reconstruction, neural rendering, or full 32-episode Qwen3-Omni training.</p><a href="data/scope_claims_audit.json">scale-up note</a></article>
+          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. Cross-episode generalization, audio-visual learning, pixel-depth reconstruction, neural rendering, and full 32-episode Qwen3-Omni training move to the multi-episode stage.</p><a href="data/scope_claims_audit.json">pilot status</a></article>
           <article class="artifact"><h3>Scale-up requirement</h3><p>The Omni pilot requires at least 32 valid episodes, held-out episode splits, no train/test episode leakage, training metadata, predictions, metrics, and a run report.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a></article>
         </div>
       </div>
@@ -2031,10 +2031,10 @@
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>Scale-up readiness is explicit</h3>
-            <p>The readiness report keeps historical <code>32ep</code> setup paths separate from completed held-out-episode metrics.</p>
+            <h3>Multi-episode pilot status is explicit</h3>
+            <p>The pilot status report records setup-stage <code>32ep</code> paths separately from completed held-out-episode metrics.</p>
             <div class="evidence-links">
-              <a href="data/scope_claims_audit.json">readiness JSON</a>
+              <a href="data/scope_claims_audit.json">pilot status JSON</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_scope_claims.py">validator script</a>
             </div>
           </article>
@@ -2069,10 +2069,10 @@
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>Release package stays lightweight</h3>
-            <p>The package report covers required assets, raw-data exclusion, Python cache exclusion, heavy archive exclusion, accidental HF token strings, and public-card figure freshness across GitHub and the HF bundles.</p>
+            <h3>Public bundles stay lightweight</h3>
+            <p>The bundle report covers required assets, raw-data exclusion, Python cache exclusion, heavy archive exclusion, accidental HF token strings, and public-card figure freshness across GitHub and the HF bundles.</p>
             <div class="evidence-links">
-              <a href="data/publication_audit.json">package report</a>
+              <a href="data/publication_audit.json">bundle report</a>
               <a href="data/artifact_index.json">artifact index</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_publication_package.py">validator script</a>
             </div>
@@ -2132,8 +2132,8 @@
               <a href="data/mirror_parity.json">mirrors</a>
               <a href="data/project_status.json">status</a>
               <a href="data/project_packet.json">packet</a>
-              <a href="data/scope_claims_audit.json">scope</a>
-              <a href="data/publication_audit.json">package</a>
+              <a href="data/scope_claims_audit.json">pilot status</a>
+              <a href="data/publication_audit.json">bundle</a>
               <a href="data/website_integrity.json">site report</a>
             </div>
           </article>
@@ -2168,7 +2168,7 @@
         </div>
         <div class="boundary-strip">
           <div class="boundary-item"><strong>Verified now</strong><span>One public episode, 5,821 frames, 1,161 windows, 8,378 current features, 12 minimal heads, 12 neural heads, and 4 direction-extension probes.</span></div>
-          <div class="boundary-item"><strong>Pending scale</strong><span>A 32-episode held-out Qwen3-Omni LoRA pilot is gated on Xperience-10M access and must pass manifest, training, and evaluation checks.</span></div>
+          <div class="boundary-item"><strong>Next: multi-episode</strong><span>A 32-episode held-out Qwen3-Omni LoRA pilot is gated on Xperience-10M access and must pass manifest, training, and evaluation checks.</span></div>
           <div class="boundary-item"><strong>Not redistributed</strong><span>Raw videos, raw annotations, full Qwen weights, and private gated Xperience-10M data are not included in the public repo or HF bundles.</span></div>
         </div>
       </div>
@@ -2186,7 +2186,7 @@
           <article class="artifact"><h3>HF access path</h3><p>The source dataset is manually gated for approved non-commercial use, with an external agreement step noted by the public HF metadata.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official HF dataset</a></article>
           <article class="artifact"><h3>API listing snapshot</h3><p>HF API metadata observed 803 session folders and 12,103 episode folders with <code>annotation.hdf5</code>. This snapshot supports planning; it is not a local data inventory.</p><a href="data/xperience10m_dataset_card_alignment.json">metadata JSON</a></article>
           <article class="artifact"><h3>Public sample card</h3><p>The sample repo lists <code>cc-by-nc-4.0</code>, HOMIE Toolkit for videos/annotations, and Rerun 0.29.0 for <code>.rrd</code> visualization.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
-          <article class="artifact"><h3>Source notes</h3><p>The source notes summarize full-dataset facts, public sample-card facts, API-listing caveats, and current-project coverage across the repo, website, and HF cards.</p><a href="data/source_alignment_audit.json">alignment report</a></article>
+          <article class="artifact"><h3>Source notes</h3><p>The source notes summarize full-dataset facts, public sample-card facts, API-listing notes, and project coverage across the repo, website, and HF cards.</p><a href="data/source_alignment_audit.json">alignment report</a></article>
           <article class="artifact"><h3>Episode layout</h3><p>Expected folders contain six MP4 streams and <code>annotation.hdf5</code>; <code>visualization.rrd</code> is treated as a viewer artifact and excluded from training downloads.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">alignment note</a></article>
           <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 windows, 8,378 current features, audio documented but not yet featurized, and no raw-data redistribution.</p><a href="data/modality_atlas.json">modality atlas</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, and misalignment.</p><a href="data/summary_metrics.json">summary metrics</a></article>
@@ -2638,9 +2638,9 @@
               <article class="artifact"><h3>Release checks</h3><p>One release map for automated validators and live post-publish checks.</p><a href="data/quality_gates.json">quality_gates.json</a></article>
               <article class="artifact"><h3>Mirror parity</h3><p>Prepared repo, HF Space, artifact dataset, and model bundle parity for critical data, figures, website HTML, and validator files.</p><a href="data/mirror_parity.json">mirror_parity.json</a></article>
               <article class="artifact"><h3>Live publication</h3><p>Last public GitHub/HF URL verification after upload.</p><a href="data/live_publication_status.json">live_publication_status.json</a></article>
-              <article class="artifact"><h3>Scale-up readiness</h3><p>Keeps historical <code>32ep</code> setup identifiers separate from completed held-out-episode results.</p><a href="data/scope_claims_audit.json">scope_claims_audit.json</a></article>
-              <article class="artifact"><h3>Public project surface</h3><p>Keeps repo, website, and Hugging Face cards aligned in naming, links, tab semantics, and reader-facing copy.</p><a href="data/public_surface_qa.json">public_surface_qa.json</a></article>
-              <article class="artifact"><h3>Release package</h3><p>Keeps raw data, caches, heavy archives, token strings, and stale figure references out of the public bundle.</p><a href="data/publication_audit.json">publication_audit.json</a></article>
+              <article class="artifact"><h3>Multi-episode pilot status</h3><p>Records setup-stage <code>32ep</code> identifiers separately from completed held-out-episode results.</p><a href="data/scope_claims_audit.json">scope_claims_audit.json</a></article>
+              <article class="artifact"><h3>Public project surface</h3><p>Presents repo, website, and Hugging Face cards with consistent naming, links, tab semantics, and reader-facing copy.</p><a href="data/public_surface_qa.json">public_surface_qa.json</a></article>
+              <article class="artifact"><h3>Public bundle contents</h3><p>Summarizes raw-data exclusion, cache exclusion, archive exclusion, token-string checks, and public figure references.</p><a href="data/publication_audit.json">publication_audit.json</a></article>
             </div>
           </section>
         </div>
@@ -2656,7 +2656,7 @@
         <div class="artifact-grid">
           <article class="artifact"><h3>Selection</h3><p>Stratified round-robin over 64 top-level sessions; 680 complete candidates scanned; 32 sessions selected.</p></article>
           <article class="artifact"><h3>Transfer</h3><p>Download raw episodes only from official gated sources, exclude visualization.rrd, validate files, then stage them for training.</p></article>
-          <article class="artifact"><h3>Boundary</h3><p>The current LoRA artifact is a readiness checkpoint. A real 32-episode result requires local gated data and held-out evaluation.</p></article>
+          <article class="artifact"><h3>Current LoRA artifact</h3><p>The current LoRA artifact uses the locally available sample data. The 32-episode result begins after gated data is staged and held-out evaluation runs.</p></article>
         </div>
       </div>
     </section>
@@ -2665,14 +2665,14 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Reproduce the suite.</h2>
-          <p>Raw Xperience-10M data is not redistributed here. The public reproduction contract states the commands, expected outputs, exact-match reproduction evidence, and current non-reproducible scale-up boundary.</p>
+          <p>Raw Xperience-10M data is not redistributed here. The reproduction guide states the commands, expected outputs, exact-match reproduction record, and multi-episode requirements.</p>
         </div>
         <div class="artifact-grid">
-          <article class="artifact"><h3>Reproducibility contract</h3><p>Human-readable commands, expected artifacts, and boundaries for the public single-episode pipeline.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">REPRODUCIBILITY.md</a></article>
+          <article class="artifact"><h3>Reproducibility guide</h3><p>Human-readable commands, expected artifacts, and current scope for the public single-episode pipeline.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">REPRODUCIBILITY.md</a></article>
           <article class="artifact"><h3>Reproducibility matrix</h3><p>Machine-readable command matrix covering sample download, baselines, 12 tasks, figures, and validation.</p><a href="data/reproducibility_matrix.json">reproducibility_matrix.json</a></article>
           <article class="artifact"><h3>Exact-match reproduction record</h3><p>The last metric rebuild reproduced the public-sample outputs from a fresh cache and matched the committed metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">reproducibility_audit.md</a></article>
           <article class="artifact"><h3>Website reference report</h3><p>Local HTML references, anchors, JSON bundles, and image dimensions are validated before publishing.</p><a href="data/website_integrity.json">website_integrity.json</a></article>
-          <article class="artifact"><h3>Scale-up boundary</h3><p>The 32-episode Qwen3-Omni pilot is prepared but not publicly reproducible until gated data access and held-out evaluation pass.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">DATA_ACCESS_STATUS.md</a></article>
+          <article class="artifact"><h3>32-Episode pilot status</h3><p>The 32-episode Qwen3-Omni pilot is prepared at the code and selection-plan level; final metrics follow gated data access and held-out evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">DATA_ACCESS_STATUS.md</a></article>
         </div>
         <p class="repro-note">Minimal path: install the toolkit dependencies, download the official sample, run the 12-task suite with neural heads, regenerate visualizations, then run the artifact index and publication validator.</p>
         <pre class="code-panel"><button type="button" data-copy="setup">Copy</button><code id="setup">git clone https://github.com/Ropedia/HOMIE-toolkit.git

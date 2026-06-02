@@ -95,7 +95,7 @@ ARTIFACTS = [
         "path": "SOURCE_ALIGNMENT_AUDIT.md",
         "kind": "source_alignment",
         "surface": "repo_hf",
-        "proves": "Summarizes the pass/fail check for full-dataset facts, sample-card facts, API-listing caveats, and current-project markers.",
+        "proves": "Summarizes the pass/fail check for full-dataset facts, sample-card facts, API-listing notes, and project coverage.",
     },
     {
         "id": "source_alignment_json",
@@ -318,7 +318,7 @@ ARTIFACTS = [
     },
     {
         "id": "publication_audit",
-        "title": "Release package",
+        "title": "Public bundle contents",
         "path": "docs/data/publication_audit.json",
         "kind": "publication_package_check",
         "surface": "website_hf",
@@ -327,12 +327,12 @@ ARTIFACTS = [
     },
     {
         "id": "scale_up_status_check",
-        "title": "Scale-up readiness",
+        "title": "Multi-episode pilot status",
         "path": "docs/data/scope_claims_audit.json",
         "kind": "scale_up_status",
         "surface": "website_hf",
         "volatile": True,
-        "proves": "Keeps historical 32ep setup paths separate from completed held-out-episode results.",
+        "proves": "Records historical 32ep setup paths separately from completed held-out-episode results.",
     },
     {
         "id": "mirror_parity",
@@ -486,7 +486,7 @@ ARTIFACTS = [
         "path": "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
         "kind": "scaleup_status",
         "surface": "repo_hf",
-        "proves": "Documents the public multi-episode access boundary and 32-episode pilot selection without exposing private infrastructure details.",
+        "proves": "Documents the public multi-episode access status and 32-episode pilot selection.",
     },
     {
         "id": "citation",
