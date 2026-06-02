@@ -260,6 +260,30 @@ def validate(docs_root: Path, site_base: str) -> dict:
             "Deep links should open the correct tab instead of landing on hidden content.",
         ),
         (
+            "project_tabs_use_accessible_roles",
+            'role="tab"',
+            None,
+            "The tabbed research dashboard should expose tablist/tab semantics.",
+        ),
+        (
+            "project_sections_are_labeled_tabpanels",
+            'role="tabpanel"',
+            None,
+            "Every tabbed research section should expose a labeled panel role.",
+        ),
+        (
+            "project_tabs_update_selected_state",
+            'aria-selected',
+            None,
+            "Tab activation should update selected state for assistive technology.",
+        ),
+        (
+            "project_tabs_support_keyboard_navigation",
+            'moveProjectTabFocus',
+            None,
+            "Keyboard users should be able to switch project tabs with arrow, Home, and End keys.",
+        ),
+        (
             "project_overview_precedes_progress_ledger",
             '<section id="overview">',
             '<section id="evidence">',
@@ -351,6 +375,32 @@ def validate(docs_root: Path, site_base: str) -> dict:
             marker_count = index_text.count(marker)
             passed = marker_count >= 2 and "sectionTabMap" in index_text
             detail = {"marker_count": marker_count, "has_section_tab_map": "sectionTabMap" in index_text}
+        elif name == "project_tabs_use_accessible_roles":
+            tab_role_count = index_text.count(marker)
+            passed = 'role="tablist"' in index_text and tab_role_count == 5
+            detail = {"tab_role_count": tab_role_count, "has_tablist": 'role="tablist"' in index_text}
+        elif name == "project_sections_are_labeled_tabpanels":
+            panel_count = index_text.count(marker)
+            passed = panel_count >= 19 and index_text.count('aria-labelledby="tab-') >= 19
+            detail = {
+                "panel_count": panel_count,
+                "labeled_panel_count": index_text.count('aria-labelledby="tab-'),
+            }
+        elif name == "project_tabs_update_selected_state":
+            selected_count = index_text.count(marker)
+            passed = selected_count >= 6 and 'setAttribute("aria-selected"' in index_text
+            detail = {
+                "selected_count": selected_count,
+                "updates_selected_state": 'setAttribute("aria-selected"' in index_text,
+            }
+        elif name == "project_tabs_support_keyboard_navigation":
+            marker_count = index_text.count(marker)
+            passed = marker_count >= 2 and "ArrowRight" in index_text and "Home" in index_text and "End" in index_text
+            detail = {
+                "marker_count": marker_count,
+                "has_arrow_navigation": "ArrowRight" in index_text and "ArrowLeft" in index_text,
+                "has_home_end_navigation": "Home" in index_text and "End" in index_text,
+            }
         elif name == "suite_modality_atlas_contains_seven_cards":
             card_count = len(re.findall(r'class="atlas-card(?:\s|")', suite_text))
             passed = card_count == 7
