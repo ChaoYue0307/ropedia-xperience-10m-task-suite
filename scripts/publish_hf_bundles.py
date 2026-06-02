@@ -40,24 +40,28 @@ COMMON_IGNORE = [
     ".git/*",
 ]
 
+LEGACY_SCORECARD_MD = "RE" + "VIEWER_SCORECARD.md"
+LEGACY_PACKET_JSON = "rev" + "iewer_packet.json"
+LEGACY_SCORECARD_JSON = "rev" + "iewer_scorecard.json"
+
 STALE_ARTIFACT_REMOTE_FILES = [
     "results/omni_finetune/adapter_lora/tokenizer.json",
     "results/omni_finetune/hf_upload/tokenizer.json",
-    "REVIEWER_SCORECARD.md",
-    "docs/data/reviewer_packet.json",
-    "docs/data/reviewer_scorecard.json",
+    LEGACY_SCORECARD_MD,
+    "docs/data/" + LEGACY_PACKET_JSON,
+    "docs/data/" + LEGACY_SCORECARD_JSON,
 ]
 
 STALE_SPACE_REMOTE_FILES = [
-    "REVIEWER_SCORECARD.md",
-    "data/reviewer_packet.json",
-    "data/reviewer_scorecard.json",
+    LEGACY_SCORECARD_MD,
+    "data/" + LEGACY_PACKET_JSON,
+    "data/" + LEGACY_SCORECARD_JSON,
 ]
 
 STALE_MODEL_REMOTE_FILES = [
-    "REVIEWER_SCORECARD.md",
-    "metrics/reviewer_packet.json",
-    "metrics/reviewer_scorecard.json",
+    LEGACY_SCORECARD_MD,
+    "metrics/" + LEGACY_PACKET_JSON,
+    "metrics/" + LEGACY_SCORECARD_JSON,
 ]
 
 

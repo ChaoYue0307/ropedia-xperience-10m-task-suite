@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-01T18:31:25+00:00",
+  "generated_at_utc": "2026-06-02T06:42:22+00:00",
   "summary": {
     "task_count": 12,
     "expected_task_count": 12,
@@ -76,21 +76,9 @@
       "raw_hits": []
     },
     {
-      "name": "timeline_action: public_field_process_short_is_human_readable",
-      "status": "pass",
-      "value": "window features -> action label builder -> classifier",
-      "raw_hits": []
-    },
-    {
       "name": "timeline_action: public_field_card_blurb_is_human_readable",
       "status": "pass",
       "value": "Recognize the current manipulation action from synchronized visual, motion, inertial, pose, and annotation context.",
-      "raw_hits": []
-    },
-    {
-      "name": "timeline_action: public_field_output_short_is_human_readable",
-      "status": "pass",
-      "value": "current action class",
       "raw_hits": []
     },
     {
@@ -100,9 +88,21 @@
       "raw_hits": []
     },
     {
+      "name": "timeline_action: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "window features -> action label builder -> classifier",
+      "raw_hits": []
+    },
+    {
       "name": "timeline_action: public_field_display_name_is_human_readable",
       "status": "pass",
       "value": "Action Recognition",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_action: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "current action class",
       "raw_hits": []
     },
     {
@@ -196,21 +196,9 @@
       "raw_hits": []
     },
     {
-      "name": "timeline_subtask: public_field_process_short_is_human_readable",
-      "status": "pass",
-      "value": "window features -> subtask label builder -> classifier",
-      "raw_hits": []
-    },
-    {
       "name": "timeline_subtask: public_field_card_blurb_is_human_readable",
       "status": "pass",
       "value": "Recognize the broader activity stage so fine actions become a readable procedure timeline.",
-      "raw_hits": []
-    },
-    {
-      "name": "timeline_subtask: public_field_output_short_is_human_readable",
-      "status": "pass",
-      "value": "current procedure step",
       "raw_hits": []
     },
     {
@@ -220,9 +208,21 @@
       "raw_hits": []
     },
     {
+      "name": "timeline_subtask: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "window features -> subtask label builder -> classifier",
+      "raw_hits": []
+    },
+    {
       "name": "timeline_subtask: public_field_display_name_is_human_readable",
       "status": "pass",
       "value": "Procedure Step Recognition",
+      "raw_hits": []
+    },
+    {
+      "name": "timeline_subtask: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "current procedure step",
       "raw_hits": []
     },
     {
@@ -316,21 +316,9 @@
       "raw_hits": []
     },
     {
-      "name": "transition_detection: public_field_process_short_is_human_readable",
-      "status": "pass",
-      "value": "action changes -> boundary labels -> binary classifier",
-      "raw_hits": []
-    },
-    {
       "name": "transition_detection: public_field_card_blurb_is_human_readable",
       "status": "pass",
       "value": "Detect the local moment where the episode changes from one action segment to the next.",
-      "raw_hits": []
-    },
-    {
-      "name": "transition_detection: public_field_output_short_is_human_readable",
-      "status": "pass",
-      "value": "boundary or steady",
       "raw_hits": []
     },
     {
@@ -340,9 +328,21 @@
       "raw_hits": []
     },
     {
+      "name": "transition_detection: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "action changes -> boundary labels -> binary classifier",
+      "raw_hits": []
+    },
+    {
       "name": "transition_detection: public_field_display_name_is_human_readable",
       "status": "pass",
       "value": "Action Boundary Detection",
+      "raw_hits": []
+    },
+    {
+      "name": "transition_detection: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "boundary or steady",
       "raw_hits": []
     },
     {
@@ -434,21 +434,9 @@
       "raw_hits": []
     },
     {
-      "name": "next_action: public_field_process_short_is_human_readable",
-      "status": "pass",
-      "value": "current features -> future label shift -> classifier",
-      "raw_hits": []
-    },
-    {
       "name": "next_action: public_field_card_blurb_is_human_readable",
       "status": "pass",
       "value": "Forecast the near-future action from the current observations only.",
-      "raw_hits": []
-    },
-    {
-      "name": "next_action: public_field_output_short_is_human_readable",
-      "status": "pass",
-      "value": "action at t+20 frames",
       "raw_hits": []
     },
     {
@@ -458,9 +446,21 @@
       "raw_hits": []
     },
     {
+      "name": "next_action: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "current features -> future label shift -> classifier",
+      "raw_hits": []
+    },
+    {
       "name": "next_action: public_field_display_name_is_human_readable",
       "status": "pass",
       "value": "Next-Action Prediction",
+      "raw_hits": []
+    },
+    {
+      "name": "next_action: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "action at t+20 frames",
       "raw_hits": []
     },
     {
@@ -552,21 +552,9 @@
       "raw_hits": []
     },
     {
-      "name": "hand_trajectory_forecast: public_field_process_short_is_human_readable",
-      "status": "pass",
-      "value": "current features -> future mocap target -> regression head",
-      "raw_hits": []
-    },
-    {
       "name": "hand_trajectory_forecast: public_field_card_blurb_is_human_readable",
       "status": "pass",
       "value": "Predict the future 3D left/right hand path from the current multimodal state.",
-      "raw_hits": []
-    },
-    {
-      "name": "hand_trajectory_forecast: public_field_output_short_is_human_readable",
-      "status": "pass",
-      "value": "future hand-joint trajectory",
       "raw_hits": []
     },
     {
@@ -576,9 +564,21 @@
       "raw_hits": []
     },
     {
+      "name": "hand_trajectory_forecast: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "current features -> future mocap target -> regression head",
+      "raw_hits": []
+    },
+    {
       "name": "hand_trajectory_forecast: public_field_display_name_is_human_readable",
       "status": "pass",
       "value": "Hand Trajectory Forecasting",
+      "raw_hits": []
+    },
+    {
+      "name": "hand_trajectory_forecast: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "future hand-joint trajectory",
       "raw_hits": []
     },
     {
@@ -670,21 +670,9 @@
       "raw_hits": []
     },
     {
-      "name": "contact_prediction: public_field_process_short_is_human_readable",
-      "status": "pass",
-      "value": "feature filter -> contact target -> binary classifier",
-      "raw_hits": []
-    },
-    {
       "name": "contact_prediction: public_field_card_blurb_is_human_readable",
       "status": "pass",
       "value": "Predict whether body or hand contact with the scene is occurring without leaking contact labels.",
-      "raw_hits": []
-    },
-    {
-      "name": "contact_prediction: public_field_output_short_is_human_readable",
-      "status": "pass",
-      "value": "contact or no contact",
       "raw_hits": []
     },
     {
@@ -694,9 +682,21 @@
       "raw_hits": []
     },
     {
+      "name": "contact_prediction: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "feature filter -> contact target -> binary classifier",
+      "raw_hits": []
+    },
+    {
       "name": "contact_prediction: public_field_display_name_is_human_readable",
       "status": "pass",
       "value": "Contact State Prediction",
+      "raw_hits": []
+    },
+    {
+      "name": "contact_prediction: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "contact or no contact",
       "raw_hits": []
     },
     {
@@ -786,21 +786,9 @@
       "raw_hits": []
     },
     {
-      "name": "object_relevance: public_field_process_short_is_human_readable",
-      "status": "pass",
-      "value": "object vocabulary -> multi-hot labels -> sigmoid heads",
-      "raw_hits": []
-    },
-    {
       "name": "object_relevance: public_field_card_blurb_is_human_readable",
       "status": "pass",
       "value": "Infer which objects are relevant to the current manipulation window from non-caption features.",
-      "raw_hits": []
-    },
-    {
-      "name": "object_relevance: public_field_output_short_is_human_readable",
-      "status": "pass",
-      "value": "relevant object set",
       "raw_hits": []
     },
     {
@@ -810,9 +798,21 @@
       "raw_hits": []
     },
     {
+      "name": "object_relevance: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "object vocabulary -> multi-hot labels -> sigmoid heads",
+      "raw_hits": []
+    },
+    {
       "name": "object_relevance: public_field_display_name_is_human_readable",
       "status": "pass",
       "value": "Object Relevance Prediction",
+      "raw_hits": []
+    },
+    {
+      "name": "object_relevance: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "relevant object set",
       "raw_hits": []
     },
     {
@@ -904,21 +904,9 @@
       "raw_hits": []
     },
     {
-      "name": "caption_grounding: public_field_process_short_is_human_readable",
-      "status": "pass",
-      "value": "query features -> candidate index -> cosine ranker",
-      "raw_hits": []
-    },
-    {
       "name": "caption_grounding: public_field_card_blurb_is_human_readable",
       "status": "pass",
       "value": "Retrieve the matching time window for an annotation-derived text query.",
-      "raw_hits": []
-    },
-    {
-      "name": "caption_grounding: public_field_output_short_is_human_readable",
-      "status": "pass",
-      "value": "ranked matching moments",
       "raw_hits": []
     },
     {
@@ -928,9 +916,21 @@
       "raw_hits": []
     },
     {
+      "name": "caption_grounding: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "query features -> candidate index -> cosine ranker",
+      "raw_hits": []
+    },
+    {
       "name": "caption_grounding: public_field_display_name_is_human_readable",
       "status": "pass",
       "value": "Language Grounding",
+      "raw_hits": []
+    },
+    {
+      "name": "caption_grounding: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "ranked matching moments",
       "raw_hits": []
     },
     {
@@ -1020,21 +1020,9 @@
       "raw_hits": []
     },
     {
-      "name": "cross_modal_retrieval: public_field_process_short_is_human_readable",
-      "status": "pass",
-      "value": "modality split -> projection -> nearest-neighbor ranker",
-      "raw_hits": []
-    },
-    {
       "name": "cross_modal_retrieval: public_field_card_blurb_is_human_readable",
       "status": "pass",
       "value": "Use motion, IMU, and camera-pose signals to retrieve the matching depth/video window.",
-      "raw_hits": []
-    },
-    {
-      "name": "cross_modal_retrieval: public_field_output_short_is_human_readable",
-      "status": "pass",
-      "value": "ranked visual windows",
       "raw_hits": []
     },
     {
@@ -1044,9 +1032,21 @@
       "raw_hits": []
     },
     {
+      "name": "cross_modal_retrieval: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "modality split -> projection -> nearest-neighbor ranker",
+      "raw_hits": []
+    },
+    {
       "name": "cross_modal_retrieval: public_field_display_name_is_human_readable",
       "status": "pass",
       "value": "Cross-Modal Retrieval",
+      "raw_hits": []
+    },
+    {
+      "name": "cross_modal_retrieval: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "ranked visual windows",
       "raw_hits": []
     },
     {
@@ -1138,21 +1138,9 @@
       "raw_hits": []
     },
     {
-      "name": "modality_reconstruction: public_field_process_short_is_human_readable",
-      "status": "pass",
-      "value": "source-target split -> scaler -> regression head",
-      "raw_hits": []
-    },
-    {
       "name": "modality_reconstruction: public_field_card_blurb_is_human_readable",
       "status": "pass",
       "value": "Predict compressed depth/video feature vectors from motion, IMU, and camera-pose features.",
-      "raw_hits": []
-    },
-    {
-      "name": "modality_reconstruction: public_field_output_short_is_human_readable",
-      "status": "pass",
-      "value": "reconstructed depth/video vector",
       "raw_hits": []
     },
     {
@@ -1162,9 +1150,21 @@
       "raw_hits": []
     },
     {
+      "name": "modality_reconstruction: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "source-target split -> scaler -> regression head",
+      "raw_hits": []
+    },
+    {
       "name": "modality_reconstruction: public_field_display_name_is_human_readable",
       "status": "pass",
       "value": "Cross-Modal Reconstruction",
+      "raw_hits": []
+    },
+    {
+      "name": "modality_reconstruction: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "reconstructed depth/video vector",
       "raw_hits": []
     },
     {
@@ -1256,21 +1256,9 @@
       "raw_hits": []
     },
     {
-      "name": "temporal_order: public_field_process_short_is_human_readable",
-      "status": "pass",
-      "value": "pair builder -> feature combiner -> binary classifier",
-      "raw_hits": []
-    },
-    {
       "name": "temporal_order: public_field_card_blurb_is_human_readable",
       "status": "pass",
       "value": "Tell whether two neighboring windows are in chronological order or reversed.",
-      "raw_hits": []
-    },
-    {
-      "name": "temporal_order: public_field_output_short_is_human_readable",
-      "status": "pass",
-      "value": "correct or reversed",
       "raw_hits": []
     },
     {
@@ -1280,9 +1268,21 @@
       "raw_hits": []
     },
     {
+      "name": "temporal_order: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "pair builder -> feature combiner -> binary classifier",
+      "raw_hits": []
+    },
+    {
       "name": "temporal_order: public_field_display_name_is_human_readable",
       "status": "pass",
       "value": "Temporal Order Verification",
+      "raw_hits": []
+    },
+    {
+      "name": "temporal_order: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "correct or reversed",
       "raw_hits": []
     },
     {
@@ -1372,21 +1372,9 @@
       "raw_hits": []
     },
     {
-      "name": "misalignment_detection: public_field_process_short_is_human_readable",
-      "status": "pass",
-      "value": "aligned/shifted pairs -> feature combiner -> binary classifier",
-      "raw_hits": []
-    },
-    {
       "name": "misalignment_detection: public_field_card_blurb_is_human_readable",
       "status": "pass",
       "value": "Detect whether motion and visual/depth streams have been artificially shifted out of sync.",
-      "raw_hits": []
-    },
-    {
-      "name": "misalignment_detection: public_field_output_short_is_human_readable",
-      "status": "pass",
-      "value": "aligned or shifted",
       "raw_hits": []
     },
     {
@@ -1396,9 +1384,21 @@
       "raw_hits": []
     },
     {
+      "name": "misalignment_detection: public_field_process_short_is_human_readable",
+      "status": "pass",
+      "value": "aligned/shifted pairs -> feature combiner -> binary classifier",
+      "raw_hits": []
+    },
+    {
       "name": "misalignment_detection: public_field_display_name_is_human_readable",
       "status": "pass",
       "value": "Multimodal Synchronization Detection",
+      "raw_hits": []
+    },
+    {
+      "name": "misalignment_detection: public_field_output_short_is_human_readable",
+      "status": "pass",
+      "value": "aligned or shifted",
       "raw_hits": []
     },
     {

@@ -1,8 +1,8 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-01T18:53:36+00:00",
+  "generated_at_utc": "2026-06-02T06:51:49+00:00",
   "status": "pass",
-  "artifact_count": 52,
+  "artifact_count": 55,
   "missing": [],
   "by_kind": {
     "project_path": 5,
@@ -11,7 +11,7 @@
     "publication_workflow": 1,
     "evaluation_protocol": 3,
     "visual_evidence": 6,
-    "quality_gate": 6,
+    "quality_gate": 9,
     "reproducibility": 2,
     "hygiene_report": 1,
     "scope_guard": 1,
@@ -62,8 +62,8 @@
       "surface": "repo",
       "proves": "Defines what is verified, what is readiness-only, and what must not be inferred.",
       "exists": true,
-      "bytes": 10056,
-      "sha256": "f46a6b77b4e08ab233eb1ae72bb056ad14c9b0200243b61e44ee24182aaff6b9"
+      "bytes": 10469,
+      "sha256": "6de897eec3936511420ff225029aee003cc326cf044469ecd7f28865b15bae40"
     },
     {
       "id": "project_packet",
@@ -84,8 +84,8 @@
       "surface": "repo_hf",
       "proves": "Gives the human-readable map from proof boundary to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 12856,
-      "sha256": "c89ffc1939bf4b35f8a749b902c9599885f4e5cdeb45e06a7880c0de0ea36359"
+      "bytes": 13803,
+      "sha256": "7794a283da13b4ca720cee425a7b08428157e16cf30a92335910e9a880cef200"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -129,7 +129,7 @@
       "proves": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4425,
-      "sha256": "d0544dce6980d03ad73f3ee9ec9e9890de448b28f2a7bb7f7d6c715d7bc67157"
+      "sha256": "bb7d78c7e65d9f498408a8613757cb55d6bc21351f9c1a4856e48c0c1513476b"
     },
     {
       "id": "source_alignment_validator",
@@ -150,8 +150,8 @@
       "surface": "repo_hf",
       "proves": "Publishes prepared Space, artifact dataset, and model bundles, including an explicit model-binary upload batch.",
       "exists": true,
-      "bytes": 7798,
-      "sha256": "f077e954f495cfb31bbb117c14f020bc09b29d7ae4e2f03ebcd81e961f3573e1"
+      "bytes": 7948,
+      "sha256": "05556b94aaf549c58fdde92ced5c72d588e81100212783b166d544e1b82fe4b4"
     },
     {
       "id": "evaluation_protocol",
@@ -173,7 +173,7 @@
       "proves": "Machine-readable protocol generated from committed task metrics for website and HF mirrors.",
       "exists": true,
       "bytes": 13586,
-      "sha256": "01749a94f31059c52adc74cfa36e2a256c43a316a2f318fa4177df3fc2f5a5b4"
+      "sha256": "f9cae7f5e849a1a46d9e7ec891708e63a8f3b63afe16d68ab142439642985f0f"
     },
     {
       "id": "evaluation_protocol_builder",
@@ -206,7 +206,7 @@
       "proves": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
       "bytes": 13435,
-      "sha256": "fec1f7500cdcf4b35eb17a7296c3eeaeb332a7973cb46094b66911227701a0c2"
+      "sha256": "87e27b4440ab06bb2dbed0af94b0511b57de9aedb096ea2d8344537417ee4893"
     },
     {
       "id": "figure_index_builder",
@@ -228,7 +228,7 @@
       "proves": "Machine-readable manifest for the generated logo system, favicon, social card, dimensions, hashes, and usage roles.",
       "exists": true,
       "bytes": 3897,
-      "sha256": "45f3b385b4f3acad527889630dac0f48a41f181f5532f3221528f2061980d20d"
+      "sha256": "5c74be556435705a9aa9163dae8d8bf52a44b2398d1089b7da695d861193c55a"
     },
     {
       "id": "brand_logo_social_card",
@@ -260,8 +260,8 @@
       "surface": "repo_hf",
       "proves": "Lists the automated and post-publish gates required before presenting a release as current.",
       "exists": true,
-      "bytes": 4263,
-      "sha256": "bcb902bffd06ffc58fddc7195ce7f4dc49e6557bcf146d7c814b974fc22a5b23"
+      "bytes": 4566,
+      "sha256": "c9ee4c47527a31f7957848451163627fe89c83b40b7b06831461d9cdc0085009"
     },
     {
       "id": "quality_gate_manifest",
@@ -271,8 +271,42 @@
       "surface": "website_hf",
       "proves": "Machine-readable release-gate summary for validators, mirrors, and public project surfaces.",
       "exists": true,
-      "bytes": 6919,
-      "sha256": "531f6f6e15f4006800f72f539de04b13e201e9fe91b21a4a6cc6f7bc59d4a519"
+      "bytes": 7480,
+      "sha256": "61e54a5d550fe0e3ce41d3c2f94e8dd16ad6707ce0547a5d9fdc90bb8b7a9b69"
+    },
+    {
+      "id": "public_surface_qa",
+      "title": "Public surface QA",
+      "path": "PUBLIC_SURFACE_QA.md",
+      "kind": "quality_gate",
+      "surface": "repo_hf",
+      "proves": "Checks whether the repo, website, and Hugging Face cards read as one coherent research project surface.",
+      "exists": true,
+      "bytes": 2079,
+      "sha256": "5608cc6adf15184122c5ab00d2fc6e6e6cef5ac562970aea397e379c1514ec86"
+    },
+    {
+      "id": "public_surface_qa_json",
+      "title": "Public surface QA JSON",
+      "path": "docs/data/public_surface_qa.json",
+      "kind": "quality_gate",
+      "surface": "website_hf",
+      "volatile": true,
+      "proves": "Machine-readable checks for SEO/social metadata, accessible tab semantics, public links, QA links, and copy hygiene.",
+      "exists": true,
+      "bytes": 5288,
+      "hash_policy": "existence_and_size_only"
+    },
+    {
+      "id": "public_surface_qa_builder",
+      "title": "Public surface QA builder",
+      "path": "scripts/build_public_surface_qa.py",
+      "kind": "quality_gate",
+      "surface": "repo_hf",
+      "proves": "Regenerates the public-surface QA report before release.",
+      "exists": true,
+      "bytes": 10144,
+      "sha256": "447a76966d40834c7c2fbdd5977eafcc24a09f2354e7f090940a62e07ba89abb"
     },
     {
       "id": "task_surface_integrity",
@@ -306,7 +340,7 @@
       "volatile": true,
       "proves": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 31056,
+      "bytes": 30999,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -350,8 +384,8 @@
       "surface": "repo_hf",
       "proves": "Generates the selective proof-artifact catalog from local files.",
       "exists": true,
-      "bytes": 19462,
-      "sha256": "5f9df1c50d9cf005c9815105c2d74b1975c647d37f7329fba04a6b82b4498436"
+      "bytes": 20448,
+      "sha256": "199323940ab056c50687a93b29591e903478f0c594507b01fcb12f5d29742e8b"
     },
     {
       "id": "publication_audit",
@@ -362,7 +396,7 @@
       "volatile": true,
       "proves": "Confirms public bundles pass raw-data, cache, archive, and token-string checks.",
       "exists": true,
-      "bytes": 6869,
+      "bytes": 6997,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -386,7 +420,7 @@
       "volatile": true,
       "proves": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 87845,
+      "bytes": 91667,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -398,7 +432,7 @@
       "volatile": true,
       "proves": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 9508,
+      "bytes": 11261,
       "hash_policy": "existence_and_size_only"
     },
     {

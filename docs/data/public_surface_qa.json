@@ -1,0 +1,145 @@
+{
+  "title": "Ropedia Xperience-10M Public Surface QA",
+  "status": "pass",
+  "generated_at_utc": "2026-06-02T06:45:18+00:00",
+  "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
+  "checks": [
+    {
+      "name": "public_surface_files_exist",
+      "status": "pass",
+      "reason": "Repo README, website HTML, and three Hugging Face cards should all be present in the publication workspace.",
+      "missing": []
+    },
+    {
+      "name": "core_status_reports_pass",
+      "status": "pass",
+      "reason": "Current public-surface QA depends on the existing validators already reporting pass.",
+      "reports": {
+        "website_integrity": {
+          "exists": true,
+          "status": "pass",
+          "generated_at_utc": "2026-06-02T06:41:59+00:00"
+        },
+        "task_surface_integrity": {
+          "exists": true,
+          "status": "pass",
+          "generated_at_utc": "2026-06-02T06:42:22+00:00"
+        },
+        "source_alignment": {
+          "exists": true,
+          "status": "pass",
+          "generated_at_utc": "2026-06-02T06:43:29+00:00"
+        },
+        "scope_claims": {
+          "exists": true,
+          "status": "pass",
+          "generated_at_utc": "2026-06-02T06:42:22+00:00"
+        },
+        "publication_hygiene": {
+          "exists": true,
+          "status": "pass",
+          "generated_at_utc": "2026-06-02T06:45:00+00:00"
+        },
+        "mirror_parity": {
+          "exists": true,
+          "status": "pass",
+          "generated_at_utc": "2026-06-02T06:25:08+00:00"
+        },
+        "live_publication": {
+          "exists": true,
+          "status": "pass",
+          "generated_at_utc": null
+        }
+      },
+      "failures": {}
+    },
+    {
+      "name": "website_has_research_seo_metadata",
+      "status": "pass",
+      "reason": "The website should expose search/social metadata and structured project metadata.",
+      "marker_counts": {
+        "<title>Ropedia Xperience-10M Task Suite</title>": 1,
+        "name=\"description\"": 1,
+        "rel=\"canonical\"": 1,
+        "property=\"og:title\"": 1,
+        "property=\"og:image\"": 1,
+        "name=\"twitter:card\"": 1,
+        "application/ld+json": 1,
+        "rel=\"manifest\"": 1,
+        "rel=\"apple-touch-icon\"": 1
+      }
+    },
+    {
+      "name": "website_tabs_are_accessible_and_keyboardable",
+      "status": "pass",
+      "reason": "The long research dashboard should be navigable as real tabs, including keyboard support.",
+      "marker_counts": {
+        "role=\"tablist\"": 1,
+        "role=\"tab\"": 5,
+        "role=\"tabpanel\"": 19,
+        "aria-selected": 6,
+        "aria-controls": 5,
+        "moveProjectTabFocus": 2,
+        "ArrowRight": 2,
+        "Home": 2,
+        "End": 2
+      }
+    },
+    {
+      "name": "responsive_navigation_guard_present",
+      "status": "pass",
+      "reason": "Tablet/mobile navigation should not overflow and deep links should land below sticky navigation."
+    },
+    {
+      "name": "public_naming_consistent",
+      "status": "pass",
+      "reason": "Public copy should consistently present the project as Ropedia Xperience-10M, with the Qwen3-Omni scale-up boundary.",
+      "marker_counts": {
+        "Ropedia Xperience-10M Task Suite": 15,
+        "Xperience-10M": 93,
+        "12-task": 20,
+        "Qwen3-Omni": 33,
+        "one public Xperience-10M sample episode": 2
+      }
+    },
+    {
+      "name": "public_links_cover_repo_hf_dataset_and_ropedia",
+      "status": "pass",
+      "reason": "Public cards should link the repo, Space, artifacts, model baselines, upstream dataset, and Ropedia dataset page.",
+      "marker_counts": {
+        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 55,
+        "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite": 6,
+        "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts": 4,
+        "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines": 5,
+        "https://huggingface.co/datasets/ropedia-ai/xperience-10m": 16,
+        "https://ropedia.com/dataset": 6
+      }
+    },
+    {
+      "name": "public_artifact_qa_files_are_exposed",
+      "status": "pass",
+      "reason": "Readers should be able to find integrity, publication, mirror, and public-surface QA files from public copy.",
+      "marker_counts": {
+        "data/website_integrity.json": 11,
+        "data/task_surface_integrity.json": 14,
+        "data/publication_audit.json": 14,
+        "data/mirror_parity.json": 12,
+        "data/public_surface_qa.json": 12
+      }
+    },
+    {
+      "name": "public_copy_avoids_internal_or_meta_tone",
+      "status": "pass",
+      "reason": "Public copy should not expose internal tooling, private hardware labels, assessment framing, or meta design-process wording.",
+      "banned_hits": []
+    }
+  ],
+  "surface_files": {
+    "github_readme": "README.md",
+    "website_html": "docs/index.html",
+    "hf_space_card": "hf_publish/space/README.md",
+    "hf_artifact_card": "hf_publish/artifacts/README.md",
+    "hf_model_card": "hf_publish/model/README.md"
+  },
+  "boundary": "This report validates public presentation quality and packaging hygiene. It does not prove multi-episode model quality."
+}
