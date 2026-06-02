@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-02T08:34:10+00:00",
+  "generated_at_utc": "2026-06-02T09:30:36+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 2,
-    "local_references": 90,
-    "external_reference_count": 72,
-    "json_files": 24,
+    "local_references": 92,
+    "external_reference_count": 75,
+    "json_files": 25,
     "image_assets_referenced": 19,
     "failure_count": 0
   },
@@ -30,7 +30,7 @@
       "name": "project_sections_are_assigned_to_tabs",
       "status": "pass",
       "reason": "Every major research section should be assigned to a tab group.",
-      "section_count": 19
+      "section_count": 20
     },
     {
       "name": "project_hash_router_preserves_deep_links",
@@ -43,21 +43,23 @@
       "name": "project_tabs_use_accessible_roles",
       "status": "pass",
       "reason": "The tabbed research dashboard should expose tablist/tab semantics.",
-      "tab_role_count": 5,
+      "tab_role_count": 9,
+      "project_tab_count": 5,
+      "nested_tab_count": 4,
       "has_tablist": true
     },
     {
       "name": "project_sections_are_labeled_tabpanels",
       "status": "pass",
       "reason": "Every tabbed research section should expose a labeled panel role.",
-      "panel_count": 19,
-      "labeled_panel_count": 19
+      "panel_count": 24,
+      "labeled_panel_count": 20
     },
     {
       "name": "project_tabs_update_selected_state",
       "status": "pass",
       "reason": "Tab activation should update selected state for assistive technology.",
-      "selected_count": 7,
+      "selected_count": 12,
       "updates_selected_state": true
     },
     {
@@ -72,8 +74,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 52926,
-      "evidence_index": 59780
+      "overview_index": 55077,
+      "evidence_index": 61931
     },
     {
       "name": "project_status_links_json",
@@ -85,9 +87,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 52926,
-      "protocol_index": 57288,
-      "evidence_index": 59780
+      "overview_index": 55077,
+      "protocol_index": 59439,
+      "evidence_index": 61931
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -160,15 +162,15 @@
     },
     {
       "path": "index.html",
-      "id_count": 65,
-      "reference_count": 89,
+      "id_count": 74,
+      "reference_count": 91,
       "image_count": 22
     }
   ],
   "json_files": [
     {
       "path": "data/artifact_index.json",
-      "bytes": 24778,
+      "bytes": 26149,
       "top_level_type": "dict"
     },
     {
@@ -198,7 +200,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 69773,
+      "bytes": 72677,
       "top_level_type": "dict"
     },
     {
@@ -218,17 +220,17 @@
     },
     {
       "path": "data/project_status.json",
-      "bytes": 6111,
+      "bytes": 6748,
       "top_level_type": "dict"
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 5288,
+      "bytes": 5290,
       "top_level_type": "dict"
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 6796,
+      "bytes": 6878,
       "top_level_type": "dict"
     },
     {
@@ -249,6 +251,11 @@
     {
       "path": "data/research_directions.json",
       "bytes": 14390,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/research_takeaways.json",
+      "bytes": 5251,
       "top_level_type": "dict"
     },
     {
@@ -278,7 +285,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 11168,
+      "bytes": 11339,
       "top_level_type": "dict"
     },
     {

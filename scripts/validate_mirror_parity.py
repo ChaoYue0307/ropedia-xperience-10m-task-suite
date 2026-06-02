@@ -34,6 +34,7 @@ DATA_FILES = [
     "public_surface_qa.json",
     "quality_gates.json",
     "reproducibility_matrix.json",
+    "research_takeaways.json",
     "research_direction_extensions.json",
     "research_directions.json",
     "scope_claims_audit.json",
@@ -72,6 +73,7 @@ SCRIPT_FILES = [
     "build_figure_index.py",
     "build_quality_gates.py",
     "build_public_surface_qa.py",
+    "build_research_takeaways.py",
     "verify_live_publication.py",
     "validate_mirror_parity.py",
     "validate_publication_package.py",
@@ -95,6 +97,7 @@ DOC_FILES = [
     "FIGURE_INDEX.md",
     "PROJECT_STATUS.md",
     "PUBLIC_SURFACE_QA.md",
+    "RESEARCH_TAKEAWAYS.md",
     "SOURCE_ALIGNMENT_AUDIT.md",
     "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
 ]

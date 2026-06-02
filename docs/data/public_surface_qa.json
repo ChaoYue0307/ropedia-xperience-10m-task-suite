@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Surface QA",
   "status": "pass",
-  "generated_at_utc": "2026-06-02T08:34:07+00:00",
+  "generated_at_utc": "2026-06-02T09:30:35+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -18,7 +18,7 @@
         "website_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-02T08:19:22+00:00"
+          "generated_at_utc": "2026-06-02T09:14:19+00:00"
         },
         "task_surface_integrity": {
           "exists": true,
@@ -28,7 +28,7 @@
         "source_alignment": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-02T06:43:29+00:00"
+          "generated_at_utc": "2026-06-02T09:14:13+00:00"
         },
         "scope_claims": {
           "exists": true,
@@ -38,12 +38,12 @@
         "publication_hygiene": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-02T08:19:42+00:00"
+          "generated_at_utc": "2026-06-02T09:20:06+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-02T08:20:43+00:00"
+          "generated_at_utc": "2026-06-02T09:21:39+00:00"
         },
         "live_publication": {
           "exists": true,
@@ -74,15 +74,15 @@
       "status": "pass",
       "reason": "The long research dashboard should be navigable as real tabs, including keyboard support.",
       "marker_counts": {
-        "role=\"tablist\"": 2,
-        "role=\"tab\"": 5,
-        "role=\"tabpanel\"": 19,
-        "aria-selected": 7,
-        "aria-controls": 6,
+        "role=\"tablist\"": 3,
+        "role=\"tab\"": 9,
+        "role=\"tabpanel\"": 24,
+        "aria-selected": 12,
+        "aria-controls": 10,
         "moveProjectTabFocus": 2,
-        "ArrowRight": 4,
-        "Home": 4,
-        "End": 4
+        "ArrowRight": 6,
+        "Home": 6,
+        "End": 6
       }
     },
     {
@@ -97,7 +97,7 @@
       "marker_counts": {
         "Ropedia Xperience-10M Task Suite": 15,
         "Xperience-10M": 95,
-        "12-task": 20,
+        "12-task": 21,
         "Qwen3-Omni": 35,
         "one public Xperience-10M sample episode": 2
       }
@@ -107,7 +107,7 @@
       "status": "pass",
       "reason": "Public cards should link the repo, Space, artifacts, model baselines, upstream dataset, and Ropedia dataset page.",
       "marker_counts": {
-        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 55,
+        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 58,
         "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite": 6,
         "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts": 4,
         "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines": 5,

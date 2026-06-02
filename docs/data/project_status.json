@@ -55,6 +55,16 @@
             "readout": "Windowing, chronological split, per-task metrics, leakage controls, and unsupported interpretations are generated from committed metric artifacts."
         },
         {
+            "area": "Research takeaways",
+            "status": "verified",
+            "evidence": [
+                "RESEARCH_TAKEAWAYS.md",
+                "docs/data/research_takeaways.json",
+                "scripts/build_research_takeaways.py"
+            ],
+            "readout": "The main result interpretation is generated from committed metrics: chronological class shift, neural gains on dynamics/order/alignment, open retrieval/reconstruction problems, and the need for held-out episodes."
+        },
+        {
             "area": "Official dataset wording",
             "status": "verified",
       "evidence": [
@@ -127,6 +137,7 @@
         "Open docs/data/project_packet.json for the machine-readable project path.",
         "Inspect docs/data/summary_metrics.json and results/episode_task_suite/neural_mlp/ to check the 12-task outputs.",
         "Inspect EVALUATION_PROTOCOL.md before judging task metrics or leakage controls.",
+        "Inspect RESEARCH_TAKEAWAYS.md and docs/data/research_takeaways.json before interpreting model scores.",
         "Inspect SOURCE_ALIGNMENT_AUDIT.md before judging source-card consistency across public surfaces.",
         "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
     "Inspect results/omni_finetune/DATA_BLOCKER_REPORT.md before judging Qwen3-Omni scale-up status."
