@@ -46,14 +46,14 @@ DISPLAY_LABELS = {
 BANNED_PUBLIC_STRINGS = [
     "audit" + "able",
     "internal " + "review label",
-    "private evaluation note",
+    "private " + "evaluation note",
     "ChatGPT" + "-image",
     "H" + "20",
     "A" + "100",
     "Cur" + "sor",
-    "public " + "dashboard and generated figures " + "deliberately follow",
+    "public " + "dashboard and generated figures " + "deliber" + "ately follow",
     "unsupported general-result language",
-    "internal scope-control language",
+    "private process language",
     "Public " + "project QA",
     "public-project " + "QA",
     "readiness" + "-only",
@@ -64,11 +64,11 @@ BANNED_PUBLIC_STRINGS = [
     "Result-scope guard",
     "Publication " + "hyg" + "iene",
     "copy " + "hyg" + "iene",
-    "Research progress with internal caveats",
-    ("Research progress with " + "scope caveats").replace("scope", "internal"),
+    "Research progress with private caveats",
+    "Research progress with process caveats",
     "reviewer " + "scorecard",
     "block" + "er",
-    "review-only checklist",
+    "review" + "-only checklist",
 ]
 
 
@@ -236,7 +236,7 @@ def build_report() -> dict:
         check(
             "public_copy_uses_reader_facing_language",
             not banned_hits,
-            "Public copy should use reader-facing project language and avoid private tooling, hardware labels, assessment framing, or design-process notes.",
+            "Public copy should use reader-facing project language and avoid tool-specific labels, hardware details, review framing, and process notes.",
             banned_hits=banned_hits,
         ),
     ]

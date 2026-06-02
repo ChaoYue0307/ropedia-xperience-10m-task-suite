@@ -546,9 +546,9 @@ The useful distinction is:
 - adapter-required Xperience-10M sensor inputs: depth, pose/SLAM, hand/body
   mocap, contacts, and IMU.
 
-The current scale-up artifacts prove that the export, manifest, sensor-feature,
+The current scale-up artifacts show that the export, manifest, sensor-feature,
 LoRA, and evaluation scripts can run on the available sample episode. They do
-not prove a real 32-episode result. A real pilot requires at least 32 valid
+do not show a real 32-episode result. A real pilot requires at least 32 valid
 episodes, held-out episode splits, training metadata, predictions, metrics, and
 a run report.
 

@@ -3,7 +3,7 @@
 
 This is a local integrity check for the GitHub Pages / Hugging Face static
 website. It intentionally does not fetch external URLs; it verifies that the
-published local surface is internally coherent.
+published local surface is self-consistent.
 """
 
 from __future__ import annotations
@@ -226,6 +226,13 @@ def validate(docs_root: Path, site_base: str) -> dict:
     semantic_layout_failures = []
     index_path = docs_root / "index.html"
     index_text = index_path.read_text(encoding="utf-8", errors="ignore") if index_path.exists() else ""
+    roadmap_payload = None
+    roadmap_json_error = None
+    roadmap_path = docs_root / "data/research_roadmap.json"
+    try:
+        roadmap_payload = json.loads(roadmap_path.read_text(encoding="utf-8"))
+    except Exception as exc:  # noqa: BLE001 - report malformed/missing roadmap data.
+        roadmap_json_error = str(exc)
 
     def section_pos(section_id: str) -> int:
         match = re.search(rf'<section\b[^>]*\bid="{re.escape(section_id)}"', index_text)
@@ -294,6 +301,24 @@ def validate(docs_root: Path, site_base: str) -> dict:
             'data/project_status.json',
             None,
             "The website should expose the machine-readable project status.",
+        ),
+        (
+            "roadmap_links_json",
+            'data/research_roadmap.json',
+            None,
+            "The website should expose the machine-readable research roadmap.",
+        ),
+        (
+            "roadmap_html_matches_json_phases",
+            "",
+            None,
+            "The roadmap section should show every stage defined in research_roadmap.json.",
+        ),
+        (
+            "roadmap_status_chips_match_json",
+            "",
+            None,
+            "The roadmap status chips should match the phase statuses in research_roadmap.json.",
         ),
         (
             "evaluation_protocol_between_overview_and_progress",
@@ -413,6 +438,25 @@ def validate(docs_root: Path, site_base: str) -> dict:
                 "has_arrow_navigation": "ArrowRight" in index_text and "ArrowLeft" in index_text,
                 "has_home_end_navigation": "Home" in index_text and "End" in index_text,
             }
+        elif name == "roadmap_html_matches_json_phases":
+            phase_names = [str(phase.get("name", "")) for phase in (roadmap_payload or {}).get("phases", [])]
+            missing_names = [phase for phase in phase_names if phase and phase not in index_text]
+            passed = bool(phase_names) and not missing_names and not roadmap_json_error
+            detail = {
+                "phase_count": len(phase_names),
+                "missing_phase_names": missing_names,
+                "roadmap_json_error": roadmap_json_error,
+            }
+        elif name == "roadmap_status_chips_match_json":
+            statuses = [str(phase.get("status", "")).lower() for phase in (roadmap_payload or {}).get("phases", [])]
+            missing_statuses = sorted({status for status in statuses if status and f'data-status="{status}"' not in index_text})
+            passed = bool(statuses) and not missing_statuses and not roadmap_json_error
+            detail = {
+                "phase_count": len(statuses),
+                "statuses": statuses,
+                "missing_statuses": missing_statuses,
+                "roadmap_json_error": roadmap_json_error,
+            }
         elif name == "suite_modality_atlas_contains_seven_cards":
             card_count = len(re.findall(r'class="atlas-card(?:\s|")', suite_text))
             passed = card_count == 7
@@ -429,6 +473,7 @@ def validate(docs_root: Path, site_base: str) -> dict:
             detail = {"overview_index": overview_pos, "protocol_index": protocol_pos, "evidence_index": evidence_pos}
         elif name in {
             "project_status_links_json",
+            "roadmap_links_json",
             "figure_index_links_json",
             "task_player_surface_present",
             "task_player_uses_walkthrough_json",
