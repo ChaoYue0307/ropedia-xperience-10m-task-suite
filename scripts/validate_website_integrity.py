@@ -377,8 +377,20 @@ def validate(docs_root: Path, site_base: str) -> dict:
             detail = {"marker_count": marker_count, "has_section_tab_map": "sectionTabMap" in index_text}
         elif name == "project_tabs_use_accessible_roles":
             tab_role_count = index_text.count(marker)
-            passed = 'role="tablist"' in index_text and tab_role_count == 5
-            detail = {"tab_role_count": tab_role_count, "has_tablist": 'role="tablist"' in index_text}
+            project_tab_count = index_text.count("data-tab-key=")
+            nested_tab_count = index_text.count("data-panel-target=")
+            passed = (
+                'role="tablist"' in index_text
+                and project_tab_count == 5
+                and nested_tab_count >= 4
+                and tab_role_count >= project_tab_count + nested_tab_count
+            )
+            detail = {
+                "tab_role_count": tab_role_count,
+                "project_tab_count": project_tab_count,
+                "nested_tab_count": nested_tab_count,
+                "has_tablist": 'role="tablist"' in index_text,
+            }
         elif name == "project_sections_are_labeled_tabpanels":
             panel_count = index_text.count(marker)
             passed = panel_count >= 19 and index_text.count('aria-labelledby="tab-') >= 19

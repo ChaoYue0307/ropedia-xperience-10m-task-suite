@@ -1,0 +1,154 @@
+{
+  "title": "Ropedia Xperience-10M Research Takeaways",
+  "status": "pass",
+  "generated_at_utc": "2026-06-02T09:02:43+00:00",
+  "source_files": [
+    "docs/data/summary_metrics.json",
+    "results/episode_task_suite/summary_report.json",
+    "results/episode_task_suite/neural_mlp/*/metrics.json",
+    "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md"
+  ],
+  "scope": {
+    "validated_episode_count": 1,
+    "num_frames": 5821,
+    "num_windows": 1161,
+    "feature_dim": 8378,
+    "audio_featurized": false,
+    "raw_data_redistributed": false
+  },
+  "takeaways": [
+    {
+      "id": "episode_to_benchmark",
+      "title": "One episode can become a real benchmark contract",
+      "claim": "The public sample is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,378-dimensional feature contract.",
+      "evidence": [
+        {
+          "label": "frames",
+          "value": 5821
+        },
+        {
+          "label": "windows",
+          "value": 1161
+        },
+        {
+          "label": "feature_dim",
+          "value": 8378
+        }
+      ],
+      "source": "docs/data/summary_metrics.json",
+      "boundary": "This is a task-development benchmark, not cross-episode generalization."
+    },
+    {
+      "id": "chronological_split_exposes_class_shift",
+      "title": "Chronological splits expose action-class shift",
+      "claim": "Earlier all-feature action classifiers reach high macro-F1 on their local split, but the 12-task chronological action/subtask heads are much harder because later held-out windows include unseen labels.",
+      "evidence": [
+        {
+          "label": "all_feature_action_macro_f1",
+          "value": 0.9791023658779895
+        },
+        {
+          "label": "suite_action_macro_f1",
+          "value": 0.05
+        },
+        {
+          "label": "suite_subtask_macro_f1",
+          "value": 0.04954121121178666
+        },
+        {
+          "label": "unseen_action_test_classes",
+          "value": 4
+        }
+      ],
+      "source": "results/episode_task_suite/summary_report.json",
+      "boundary": "This is an important leakage/split lesson, not evidence that action recognition is solved."
+    },
+    {
+      "id": "neural_heads_help_dynamics",
+      "title": "Small neural heads help dynamic and temporal probes",
+      "claim": "The MLP heads substantially improve hand trajectory forecasting, temporal-order verification, and motion/visual synchronization.",
+      "evidence": [
+        {
+          "label": "hand_mpjpe_minimal",
+          "value": 0.8222644925117493
+        },
+        {
+          "label": "hand_mpjpe_neural",
+          "value": 0.11163123697042465
+        },
+        {
+          "label": "hand_mpjpe_relative_improvement",
+          "value": 0.8642392587944207
+        },
+        {
+          "label": "temporal_order_f1_minimal",
+          "value": 0.5487364620938628
+        },
+        {
+          "label": "temporal_order_f1_neural",
+          "value": 0.8717948717948718
+        },
+        {
+          "label": "misalignment_f1_minimal",
+          "value": 0.4865671641791045
+        },
+        {
+          "label": "misalignment_f1_neural",
+          "value": 0.7335243553008597
+        }
+      ],
+      "source": "results/episode_task_suite/neural_mlp/*/metrics.json",
+      "boundary": "These gains are within one episode and should be re-tested on held-out episodes."
+    },
+    {
+      "id": "retrieval_and_reconstruction_remain_open",
+      "title": "Retrieval and reconstruction remain the harder multimodal problems",
+      "claim": "Ridge/cosine retrieval remains stronger than the neural projection on this sample, and cross-modal reconstruction still has negative R2.",
+      "evidence": [
+        {
+          "label": "retrieval_mrr_minimal",
+          "value": 0.26335984006618296
+        },
+        {
+          "label": "retrieval_mrr_neural",
+          "value": 0.1530070022204131
+        },
+        {
+          "label": "retrieval_top5_minimal",
+          "value": 0.3764367816091954
+        },
+        {
+          "label": "reconstruction_r2_minimal",
+          "value": -0.016022846771134747
+        },
+        {
+          "label": "reconstruction_r2_neural",
+          "value": -0.010198171891414143
+        }
+      ],
+      "source": "results/episode_task_suite/cross_modal_retrieval/metrics.json",
+      "boundary": "The current reconstruction task is feature-vector reconstruction, not depth, mesh, NeRF, or Gaussian splatting."
+    },
+    {
+      "id": "scale_requires_episodes",
+      "title": "The next scientific unit is held-out episodes, not more adjacent windows",
+      "claim": "The prepared Qwen3-Omni path targets 32 episodes from 32 sessions, but it remains data-gated until access and held-out evaluation complete.",
+      "evidence": [
+        {
+          "label": "target_episodes",
+          "value": 32
+        },
+        {
+          "label": "selected_sessions",
+          "value": 32
+        },
+        {
+          "label": "valid_candidates",
+          "value": 680
+        }
+      ],
+      "source": "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
+      "boundary": "No real 32-episode fine-tune is claimed until gated data is available locally and held-out evaluation runs."
+    }
+  ]
+}

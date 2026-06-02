@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-02T08:45:24+00:00",
+  "generated_at_utc": "2026-06-02T09:30:39+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -50,6 +50,7 @@
     "codemeta.json": true,
     "ARTIFACT_GUIDE.md": true,
     "PROJECT_STATUS.md": true,
+    "RESEARCH_TAKEAWAYS.md": true,
     "QUALITY_GATES.md": true,
     "PUBLIC_SURFACE_QA.md": true,
     "EVALUATION_PROTOCOL.md": true,
@@ -78,6 +79,7 @@
     "docs/data/project_manifest.json": true,
     "docs/data/project_packet.json": true,
     "docs/data/project_status.json": true,
+    "docs/data/research_takeaways.json": true,
     "docs/data/xperience10m_dataset_card_alignment.json": true,
     "docs/data/reproducibility_matrix.json": true,
     "docs/data/modality_atlas.json": true,
@@ -131,7 +133,7 @@
       "surface": "github_repo",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 16,
+      "required_marker_count": 19,
       "missing_markers": [],
       "status": "pass"
     },
@@ -139,7 +141,7 @@
       "surface": "hf_space_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 17,
+      "required_marker_count": 19,
       "missing_markers": [],
       "status": "pass"
     },
@@ -147,7 +149,7 @@
       "surface": "hf_artifact_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 16,
+      "required_marker_count": 18,
       "missing_markers": [],
       "status": "pass"
     },
@@ -155,7 +157,7 @@
       "surface": "hf_artifact_bundle",
       "path": "PROJECT_README.md",
       "exists": true,
-      "required_marker_count": 16,
+      "required_marker_count": 19,
       "missing_markers": [],
       "status": "pass"
     },
@@ -163,7 +165,7 @@
       "surface": "hf_model_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 17,
+      "required_marker_count": 19,
       "missing_markers": [],
       "status": "pass"
     }
@@ -172,8 +174,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 322,
-      "text_file_count": 258,
+      "file_count": 325,
+      "text_file_count": 261,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -183,8 +185,8 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 78,
-      "text_file_count": 56,
+      "file_count": 80,
+      "text_file_count": 58,
       "largest_file": {
         "path": "assets/task_suite_infographic.png",
         "bytes": 2600193
@@ -194,8 +196,8 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 363,
-      "text_file_count": 277,
+      "file_count": 366,
+      "text_file_count": 280,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -205,8 +207,8 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 231,
-      "text_file_count": 181,
+      "file_count": 234,
+      "text_file_count": 184,
       "largest_file": {
         "path": "artifacts/episode_task_suite/cross_modal_retrieval/model.npz",
         "bytes": 41310574

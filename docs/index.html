@@ -309,6 +309,7 @@
       background: rgba(2, 5, 2, 0.72);
       scroll-margin-top: 132px;
     }
+    main > section:focus { outline: none; }
     main.tabbed > section[hidden] { display: none; }
     .project-tabs-shell {
       order: 0;
@@ -404,25 +405,79 @@
       background: rgba(164, 242, 127, 0.14);
       color: var(--green);
     }
+    .content-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 2px 0 4px;
+      margin-bottom: 18px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(164, 242, 127, 0.42) rgba(7, 18, 7, 0.72);
+    }
+    .content-tab {
+      appearance: none;
+      flex: 0 0 auto;
+      min-width: 190px;
+      min-height: 56px;
+      border: 1px solid rgba(164, 242, 127, 0.18);
+      border-radius: 6px;
+      background:
+        linear-gradient(180deg, rgba(164, 242, 127, 0.05), rgba(7, 18, 7, 0.72)),
+        rgba(2, 5, 2, 0.54);
+      color: #dce8d6;
+      cursor: pointer;
+      padding: 10px 12px;
+      text-align: left;
+      font: inherit;
+      transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms cubic-bezier(0.16, 1, 0.3, 1), background 220ms cubic-bezier(0.16, 1, 0.3, 1), color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .content-tab:hover {
+      transform: translateY(-1px);
+      border-color: rgba(164, 242, 127, 0.42);
+      color: var(--ink);
+    }
+    .content-tab strong {
+      display: block;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 14px;
+      line-height: 1.15;
+    }
+    .content-tab span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.25;
+    }
+    .content-tab.active {
+      border-color: rgba(164, 242, 127, 0.82);
+      background: rgba(164, 242, 127, 0.14);
+      color: var(--green);
+    }
+    .content-tab.active strong,
+    .content-tab.active span { color: var(--green); }
+    .tabbed-panel[hidden] { display: none; }
     #overview { order: 1; }
     #reading-path { order: 2; }
     #dataset-card { order: 3; }
     #suite { order: 4; }
     #pipeline { order: 5; }
     #protocol { order: 6; }
-    #models { order: 7; }
-    #neural { order: 8; }
-    #directions { order: 9; }
-    #extensions { order: 10; }
-    #architectures { order: 11; }
-    #walkthroughs { order: 12; }
-    #tasks { order: 13; }
-    #features { order: 14; }
-    #diagnostics { order: 15; }
-    #evidence { order: 16; }
-    #artifacts { order: 17; }
-    #omni-relay { order: 18; }
-    #run { order: 19; }
+    #takeaways { order: 7; }
+    #models { order: 8; }
+    #neural { order: 9; }
+    #directions { order: 10; }
+    #extensions { order: 11; }
+    #architectures { order: 12; }
+    #walkthroughs { order: 13; }
+    #tasks { order: 14; }
+    #features { order: 15; }
+    #diagnostics { order: 16; }
+    #evidence { order: 17; }
+    #artifacts { order: 18; }
+    #omni-relay { order: 19; }
+    #run { order: 20; }
     #suite { padding: 62px 0 76px; }
     #suite .wrap { width: min(1680px, calc(100% - 48px)); }
     #suite .section-head { max-width: var(--max); margin-inline: auto; }
@@ -1517,32 +1572,48 @@
       .wrap { width: min(100% - 28px, var(--max)); }
       .project-tabs-shell { top: 64px; padding: 10px 0; }
       .project-tabs {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        display: flex;
+        grid-template-columns: none;
         gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scroll-snap-type: x proximity;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(164, 242, 127, 0.42) rgba(7, 18, 7, 0.72);
       }
       .project-tab {
-        min-height: 54px;
-        padding: 10px;
+        flex: 0 0 min(42vw, 168px);
+        min-height: 50px;
+        padding: 10px 11px;
+        scroll-snap-align: start;
       }
       .project-tab strong { font-size: 14px; }
       .project-tab span {
-        font-size: 10px;
+        font-size: 10.5px;
         line-height: 1.25;
       }
       .section-tabs {
-        flex-wrap: wrap;
-        gap: 6px;
-        overflow-x: visible;
+        flex-wrap: nowrap;
+        gap: 8px;
+        overflow-x: auto;
         padding-top: 8px;
+        padding-bottom: 4px;
       }
       .section-tab {
-        flex: 1 1 calc(50% - 6px);
+        flex: 0 0 auto;
         min-height: 34px;
         padding: 7px 10px;
         font-size: 12px;
-        white-space: normal;
+        white-space: nowrap;
       }
-      main > section { scroll-margin-top: 246px; }
+      .content-tabs {
+        margin-bottom: 14px;
+      }
+      .content-tab {
+        min-width: min(76vw, 210px);
+        min-height: 52px;
+      }
+      main > section { scroll-margin-top: 184px; }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
       .artifact-group { padding: 16px; }
       .modality-atlas-panel { padding: 14px; }
@@ -1659,7 +1730,7 @@
           <strong>Method</strong>
           <span>pipeline and model design</span>
         </button>
-        <button type="button" class="project-tab" id="tab-results" role="tab" data-tab-key="results" data-default-section="models" aria-selected="false" aria-pressed="false" aria-controls="models neural directions extensions diagnostics" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-results" role="tab" data-tab-key="results" data-default-section="takeaways" aria-selected="false" aria-pressed="false" aria-controls="takeaways models neural directions extensions diagnostics" tabindex="-1">
           <strong>Results</strong>
           <span>baselines and research tracks</span>
         </button>
@@ -2054,6 +2125,44 @@
       </div>
     </section>
 
+    <section id="takeaways" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What the current results actually say.</h2>
+          <p>A generated takeaways layer reads the committed metrics and separates useful research signals from claims that still require held-out episodes.</p>
+        </div>
+        <div class="artifact-grid">
+          <article class="artifact primary-artifact">
+            <div>
+              <h3>One episode becomes a benchmark contract</h3>
+              <p>The public sample is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,378-dimensional feature contract.</p>
+            </div>
+            <a href="data/research_takeaways.json">research_takeaways.json</a>
+          </article>
+          <article class="artifact">
+            <h3>Chronological split exposes class shift</h3>
+            <p>All-feature action reaches 0.9791 macro-F1 on its local split, while the 12-task chronological action head is 0.0500 macro-F1 with four unseen later action labels.</p>
+            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_TAKEAWAYS.md">takeaways</a>
+          </article>
+          <article class="artifact">
+            <h3>Neural heads help dynamics</h3>
+            <p>Hand MPJPE improves from 0.8223 to 0.1116; temporal-order F1 rises from 0.5487 to 0.8718; misalignment F1 rises from 0.4866 to 0.7335.</p>
+            <a href="data/research_takeaways.json">metrics</a>
+          </article>
+          <article class="artifact">
+            <h3>Retrieval and reconstruction remain open</h3>
+            <p>Ridge/cosine retrieval remains stronger than the neural projection here, and cross-modal feature reconstruction still has negative R2.</p>
+            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json">retrieval metrics</a>
+          </article>
+          <article class="artifact">
+            <h3>Scale means held-out episodes</h3>
+            <p>The next credible model-quality unit is a 32-episode held-out pilot across 32 sessions, not more adjacent windows from one sample.</p>
+            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">scale-up status</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="models" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
@@ -2302,7 +2411,25 @@
           <p>Metrics, predictions, manifests, lightweight model weights, and derived window artifacts are organized so the project can be inspected, extended, and scaled before rerunning the full pipeline. Raw Xperience-10M data and Qwen weights are not redistributed.</p>
         </div>
         <div class="artifact-library">
-          <section class="artifact-group">
+          <div class="content-tabs" role="tablist" aria-label="Artifact categories">
+            <button type="button" class="content-tab active" id="artifact-tab-task-heads" role="tab" data-panel-target="artifact-panel-task-heads" aria-selected="true" aria-pressed="true" aria-controls="artifact-panel-task-heads">
+              <strong>Task Heads</strong>
+              <span>windows, features, metrics</span>
+            </button>
+            <button type="button" class="content-tab" id="artifact-tab-public-surfaces" role="tab" data-panel-target="artifact-panel-public-surfaces" aria-selected="false" aria-pressed="false" aria-controls="artifact-panel-public-surfaces" tabindex="-1">
+              <strong>Public Surfaces</strong>
+              <span>repo, HF, project map</span>
+            </button>
+            <button type="button" class="content-tab" id="artifact-tab-scale-up" role="tab" data-panel-target="artifact-panel-scale-up" aria-selected="false" aria-pressed="false" aria-controls="artifact-panel-scale-up" tabindex="-1">
+              <strong>Scale-Up</strong>
+              <span>data gate and Omni path</span>
+            </button>
+            <button type="button" class="content-tab" id="artifact-tab-checks" role="tab" data-panel-target="artifact-panel-checks" aria-selected="false" aria-pressed="false" aria-controls="artifact-panel-checks" tabindex="-1">
+              <strong>Checks</strong>
+              <span>validators and parity</span>
+            </button>
+          </div>
+          <section class="artifact-group tabbed-panel" id="artifact-panel-task-heads" role="tabpanel" aria-labelledby="artifact-tab-task-heads">
             <div class="artifact-group-head">
               <div><span>Research artifacts</span><h3>From one episode to task heads</h3></div>
               <p>Start with the files that define the sample windows, feature blocks, task contracts, metrics, walkthroughs, and research-direction mapping.</p>
@@ -2319,7 +2446,7 @@
             </div>
           </section>
 
-          <section class="artifact-group">
+          <section class="artifact-group tabbed-panel" id="artifact-panel-public-surfaces" role="tabpanel" aria-labelledby="artifact-tab-public-surfaces" hidden>
             <div class="artifact-group-head">
               <div><span>Public surfaces</span><h3>Project map, mirrors, and runnable code</h3></div>
               <p>Use these files to navigate the whole project, open the published mirrors, or reproduce the public-sample pipeline.</p>
@@ -2336,7 +2463,7 @@
             </div>
           </section>
 
-          <section class="artifact-group">
+          <section class="artifact-group tabbed-panel" id="artifact-panel-scale-up" role="tabpanel" aria-labelledby="artifact-tab-scale-up" hidden>
             <div class="artifact-group-head">
               <div><span>Scale-up path</span><h3>Prepared for multi-episode training</h3></div>
               <p>The multi-episode Qwen3-Omni path is documented and scripted, but no full-pilot metric is claimed until the data gate and held-out evaluation pass.</p>
@@ -2349,7 +2476,7 @@
             </div>
           </section>
 
-          <section class="artifact-group">
+          <section class="artifact-group tabbed-panel" id="artifact-panel-checks" role="tabpanel" aria-labelledby="artifact-tab-checks" hidden>
             <div class="artifact-group-head">
               <div><span>Consistency checks</span><h3>Release checks behind the research site</h3></div>
               <p>These validator outputs support the public research artifacts by keeping links, mirrors, figures, source wording, and package boundaries consistent.</p>
@@ -2475,6 +2602,7 @@ python scripts/validate_publication_package.py</code></pre>
       { id: "protocol", label: "Evaluation Protocol" },
       { id: "architectures", label: "Model Architectures" },
       { id: "features", label: "Feature Blocks" },
+      { id: "takeaways", label: "Research Takeaways" },
       { id: "models", label: "Minimal Baselines" },
       { id: "neural", label: "Neural Heads" },
       { id: "directions", label: "Four Directions" },
@@ -2629,6 +2757,44 @@ python scripts/validate_publication_package.py</code></pre>
     });
     window.addEventListener("hashchange", () => activateTabForHash({ scroll: true }));
     activateTabForHash({ scroll: Boolean(window.location.hash) });
+
+    function initContentTabs() {
+      document.querySelectorAll(".content-tabs").forEach((tablist) => {
+        const buttons = Array.from(tablist.querySelectorAll("[data-panel-target]"));
+        if (!buttons.length) return;
+
+        const activatePanel = (activeButton, options = {}) => {
+          buttons.forEach((button) => {
+            const active = button === activeButton;
+            const panel = document.getElementById(button.dataset.panelTarget);
+            button.classList.toggle("active", active);
+            button.setAttribute("aria-selected", active ? "true" : "false");
+            button.setAttribute("aria-pressed", active ? "true" : "false");
+            button.tabIndex = active ? 0 : -1;
+            if (panel) panel.hidden = !active;
+          });
+          if (options.focus) activeButton.focus();
+        };
+
+        buttons.forEach((button, index) => {
+          button.addEventListener("click", () => activatePanel(button));
+          button.addEventListener("keydown", (event) => {
+            if (!["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp", "Home", "End"].includes(event.key)) return;
+            event.preventDefault();
+            const lastIndex = buttons.length - 1;
+            let nextIndex = index;
+            if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = index === lastIndex ? 0 : index + 1;
+            if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = index === 0 ? lastIndex : index - 1;
+            if (event.key === "Home") nextIndex = 0;
+            if (event.key === "End") nextIndex = lastIndex;
+            activatePanel(buttons[nextIndex], { focus: true });
+          });
+        });
+
+        activatePanel(buttons.find((button) => button.classList.contains("active")) || buttons[0]);
+      });
+    }
+    initContentTabs();
 
     const escapeHtml = (value) => String(value ?? "")
       .replaceAll("&", "&amp;")

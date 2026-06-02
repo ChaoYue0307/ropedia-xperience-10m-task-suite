@@ -10,6 +10,7 @@ the next development step.
 | Public-sample pipeline | Verified | `results/episode_task_suite/summary_report.json`, `results/episode_task_suite/windows.csv`, `results/episode_task_suite/feature_manifest.json` | One public Xperience-10M sample episode is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,378-dimensional current feature contract. |
 | Task suite | Verified | `scripts/episode_task_suite.py`, `results/episode_task_suite/`, `docs/data/summary_metrics.json` | All 12 task contracts have committed metrics, predictions, and minimal baseline outputs. |
 | Neural heads | Verified | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split. |
+| Research takeaways | Verified | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | The main result interpretation is generated from committed metrics: chronological class shift, neural gains on dynamics/order/alignment, open retrieval/reconstruction problems, and the need for held-out episodes. |
 | Evaluation protocol | Verified | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | Windowing, chronological split, per-task metrics, leakage controls, and unsupported interpretations are generated from committed metric artifacts. |
 | Official dataset wording | Verified | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Public wording is aligned to the official gated Xperience-10M dataset card, public sample card, and HF API metadata, including modalities, scale, access boundary, sample license/tooling, and unsupported claims. |
 | Source alignment | Verified | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json`, `scripts/validate_source_alignment.py` | Source facts and boundary markers are checked across repo docs, website, and HF cards. |
@@ -24,14 +25,16 @@ the next development step.
 1. Read this status file and `EVIDENCE_CONTRACT.md` to establish what is
    claimed.
 2. Open `docs/data/project_packet.json` for the machine-readable project path.
-3. Inspect `docs/data/summary_metrics.json` and
+3. Inspect `RESEARCH_TAKEAWAYS.md` and
+   `docs/data/research_takeaways.json` for the generated result interpretation.
+4. Inspect `docs/data/summary_metrics.json` and
    `results/episode_task_suite/neural_mlp/` to check the 12-task outputs.
-4. Inspect `EVALUATION_PROTOCOL.md` before judging task metrics or leakage
+5. Inspect `EVALUATION_PROTOCOL.md` before judging task metrics or leakage
    controls.
-5. Inspect `SOURCE_ALIGNMENT_AUDIT.md` and
+6. Inspect `SOURCE_ALIGNMENT_AUDIT.md` and
    `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` before judging dataset
    wording.
-6. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before judging
+7. Inspect `results/omni_finetune/DATA_BLOCKER_REPORT.md` before judging
    Qwen3-Omni scale-up status.
 
 ## Do Not Infer
