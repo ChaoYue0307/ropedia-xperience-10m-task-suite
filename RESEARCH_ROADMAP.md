@@ -56,9 +56,8 @@ Evidence to inspect:
 ### 3. 32-Episode Qwen3-Omni LoRA Pilot
 
 This stage uses Qwen3-Omni as the multimodal backbone and trains lightweight
-LoRA adapters. The first target is not maximum leaderboard performance; it is a
-complete held-out-episode training and evaluation loop with inspectable
-manifests, predictions, and metrics.
+LoRA adapters. The first target is a complete held-out-episode training and
+evaluation loop with inspectable manifests, predictions, and metrics.
 
 Expected outputs:
 

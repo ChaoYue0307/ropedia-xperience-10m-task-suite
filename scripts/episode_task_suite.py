@@ -2,7 +2,7 @@
 """
 End-to-end task suite for one Xperience-10M episode released by Ropedia.
 
-The purpose is not to prove generalization from one sample episode. It is to
+The purpose is not to estimate generalization from one sample episode. It is to
 turn the episode into multiple meaningful supervised/self-supervised learning
 problems and write reproducible artifacts for each one.
 """

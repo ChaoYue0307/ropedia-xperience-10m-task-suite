@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-02T17:31:49+00:00",
+  "generated_at_utc": "2026-06-02T18:36:52+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
@@ -82,6 +82,35 @@
       "status": "pass",
       "reason": "The website should expose the machine-readable project status.",
       "marker_count": 2
+    },
+    {
+      "name": "roadmap_links_json",
+      "status": "pass",
+      "reason": "The website should expose the machine-readable research roadmap.",
+      "marker_count": 2
+    },
+    {
+      "name": "roadmap_html_matches_json_phases",
+      "status": "pass",
+      "reason": "The roadmap section should show every stage defined in research_roadmap.json.",
+      "phase_count": 5,
+      "missing_phase_names": [],
+      "roadmap_json_error": null
+    },
+    {
+      "name": "roadmap_status_chips_match_json",
+      "status": "pass",
+      "reason": "The roadmap status chips should match the phase statuses in research_roadmap.json.",
+      "phase_count": 5,
+      "statuses": [
+        "implemented",
+        "active",
+        "next",
+        "planned",
+        "planned"
+      ],
+      "missing_statuses": [],
+      "roadmap_json_error": null
     },
     {
       "name": "evaluation_protocol_between_overview_and_progress",
@@ -200,7 +229,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 74690,
+      "bytes": 76733,
       "top_level_type": "dict"
     },
     {
@@ -215,7 +244,7 @@
     },
     {
       "path": "data/project_manifest.json",
-      "bytes": 4468,
+      "bytes": 4579,
       "top_level_type": "dict"
     },
     {
@@ -230,12 +259,12 @@
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 5454,
+      "bytes": 5451,
       "top_level_type": "dict"
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 6883,
+      "bytes": 6962,
       "top_level_type": "dict"
     },
     {
@@ -260,7 +289,7 @@
     },
     {
       "path": "data/research_roadmap.json",
-      "bytes": 4590,
+      "bytes": 4594,
       "top_level_type": "dict"
     },
     {
@@ -295,7 +324,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 11444,
+      "bytes": 12406,
       "top_level_type": "dict"
     },
     {
