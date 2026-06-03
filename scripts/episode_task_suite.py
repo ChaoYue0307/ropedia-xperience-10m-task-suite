@@ -20,6 +20,7 @@ from pathlib import Path
 import numpy as np
 
 from train_all_modalities_model import (
+    VIDEO_FILES,
     extract_all_window_features,
     prepare_modalities,
 )
@@ -83,6 +84,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--video-hist-bins", type=int, default=8)
     parser.add_argument("--depth-grid-size", type=int, default=8)
     parser.add_argument("--text-hash-dim", type=int, default=128)
+    parser.add_argument("--audio-source", choices=list(VIDEO_FILES), default="fisheye_cam0")
+    parser.add_argument("--audio-sample-rate", type=int, default=16000)
+    parser.add_argument("--audio-band-count", type=int, default=16)
     parser.add_argument("--include-label-text", action="store_true")
     parser.add_argument("--no-class-weights", action="store_true")
     parser.add_argument("--include-neural", action="store_true", help="Also run lightweight PyTorch MLP baselines for selected tasks.")
@@ -115,7 +119,7 @@ def write_json(path: Path, data: dict | list) -> None:
 def write_csv(path: Path, rows: list[dict], fieldnames: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as fp:
-        writer = csv.DictWriter(fp, fieldnames=fieldnames)
+        writer = csv.DictWriter(fp, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -123,7 +127,7 @@ def write_csv(path: Path, rows: list[dict], fieldnames: list[str]) -> None:
 def write_confusion(path: Path, cm: np.ndarray, class_names: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as fp:
-        writer = csv.writer(fp)
+        writer = csv.writer(fp, lineterminator="\n")
         writer.writerow(["true\\pred"] + class_names)
         for i, name in enumerate(class_names):
             writer.writerow([name] + [int(v) for v in cm[i]])
@@ -760,7 +764,7 @@ def run_neural_task(task: str, out_dir: Path, X: np.ndarray, rows: list[dict], a
             retrieval_candidates=X[:, text_idx],
         )
     if task == "cross_modal_retrieval":
-        motion_idx = block_indices(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_"])
+        motion_idx = block_indices(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_", "audio_"])
         visual_idx = block_indices(manifest, include=["depth_confidence", "video_"])
         return neural_projection_task(
             out_dir,
@@ -768,16 +772,16 @@ def run_neural_task(task: str, out_dir: Path, X: np.ndarray, rows: list[dict], a
             X[:, visual_idx],
             args,
             "cross_modal_retrieval",
-            "motion/IMU/camera query",
+            "motion/IMU/camera/audio query",
             "matching depth/video window",
             retrieval_query=X[:, visual_idx],
             retrieval_candidates=X[:, visual_idx],
             retrieval_pred_as_query=True,
         )
     if task == "modality_reconstruction":
-        motion_idx = block_indices(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_"])
+        motion_idx = block_indices(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_", "audio_"])
         visual_idx = block_indices(manifest, include=["depth_confidence", "video_"])
-        return neural_projection_task(out_dir, X[:, motion_idx], X[:, visual_idx], args, "modality_reconstruction", "motion/IMU/camera", "depth/video feature vector")
+        return neural_projection_task(out_dir, X[:, motion_idx], X[:, visual_idx], args, "modality_reconstruction", "motion/IMU/camera/audio", "depth/video feature vector")
     if task == "temporal_order":
         pairs, y = [], []
         for i in range(len(X) - 1):
@@ -789,7 +793,7 @@ def run_neural_task(task: str, out_dir: Path, X: np.ndarray, rows: list[dict], a
         return neural_binary_classification_from_arrays(out_dir, np.stack(pairs).astype(np.float32), np.asarray(y, dtype=np.int64), args, "temporal_order", "two adjacent windows -> whether order is correct")
     if task == "misalignment_detection":
         motion_idx = block_indices(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_"])
-        visual_idx = block_indices(manifest, include=["depth_confidence", "video_"])
+        visual_idx = block_indices(manifest, include=["depth_confidence", "video_", "audio_"])
         shift = args.misalignment_shift_windows
         pairs, y = [], []
         limit = len(X) - shift
@@ -798,7 +802,7 @@ def run_neural_task(task: str, out_dir: Path, X: np.ndarray, rows: list[dict], a
             y.append(1)
             pairs.append(np.concatenate([X[i, motion_idx], X[i + shift, visual_idx]]))
             y.append(0)
-        return neural_binary_classification_from_arrays(out_dir, np.stack(pairs).astype(np.float32), np.asarray(y, dtype=np.int64), args, "misalignment_detection", f"motion+visual pair -> aligned vs shifted by {shift} windows")
+        return neural_binary_classification_from_arrays(out_dir, np.stack(pairs).astype(np.float32), np.asarray(y, dtype=np.int64), args, "misalignment_detection", f"motion+visual/audio pair -> aligned vs shifted by {shift} windows")
     raise ValueError(task)
 
 
@@ -1028,14 +1032,14 @@ def task_caption_grounding(out_dir: Path, X: np.ndarray, manifest: list[dict], a
 
 
 def task_cross_modal_retrieval(out_dir: Path, X: np.ndarray, manifest: list[dict], args: argparse.Namespace) -> dict:
-    motion_idx = block_indices(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_"])
+    motion_idx = block_indices(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_", "audio_"])
     visual_idx = block_indices(manifest, include=["depth_confidence", "video_"])
     train, test = chronological_split_indices(len(X), args.test_fraction)
     pred_visual, model = ridge_fit_predict(X[train][:, motion_idx], X[train][:, visual_idx], X[test][:, motion_idx], args.ridge_l2)
     metrics = retrieval_metrics(pred_visual, X[test][:, visual_idx], np.arange(len(test)))
     metrics.update({
         "task": "cross_modal_retrieval",
-        "input": "motion/IMU/camera query",
+        "input": "motion/IMU/camera/audio query",
         "output": "matching depth/video window",
         "split": "chronological",
         "num_train_windows": int(len(train)),
@@ -1048,14 +1052,14 @@ def task_cross_modal_retrieval(out_dir: Path, X: np.ndarray, manifest: list[dict
 
 
 def task_modality_reconstruction(out_dir: Path, X: np.ndarray, manifest: list[dict], args: argparse.Namespace) -> dict:
-    motion_idx = block_indices(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_"])
+    motion_idx = block_indices(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_", "audio_"])
     visual_idx = block_indices(manifest, include=["depth_confidence", "video_"])
     train, test = chronological_split_indices(len(X), args.test_fraction)
     pred, model = ridge_fit_predict(X[train][:, motion_idx], X[train][:, visual_idx], X[test][:, motion_idx], args.ridge_l2)
     metrics = regression_metrics(X[test][:, visual_idx], pred)
     metrics.update({
         "task": "modality_reconstruction",
-        "input": "motion/IMU/camera",
+        "input": "motion/IMU/camera/audio",
         "output": "depth/video feature vector",
         "split": "chronological",
         "num_train_windows": int(len(train)),
@@ -1116,7 +1120,7 @@ def task_temporal_order(out_dir: Path, X: np.ndarray, args: argparse.Namespace) 
 
 def task_misalignment(out_dir: Path, X: np.ndarray, manifest: list[dict], args: argparse.Namespace) -> dict:
     motion_idx = block_indices(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_"])
-    visual_idx = block_indices(manifest, include=["depth_confidence", "video_"])
+    visual_idx = block_indices(manifest, include=["depth_confidence", "video_", "audio_"])
     shift = args.misalignment_shift_windows
     pairs, y = [], []
     limit = len(X) - shift
@@ -1125,7 +1129,7 @@ def task_misalignment(out_dir: Path, X: np.ndarray, manifest: list[dict], args: 
         y.append(1)
         pairs.append(np.concatenate([X[i, motion_idx], X[i + shift, visual_idx]]))
         y.append(0)
-    return binary_classification_from_arrays(out_dir, np.stack(pairs).astype(np.float32), np.asarray(y, dtype=np.int64), args, "misalignment_detection", f"motion+visual pair -> aligned vs shifted by {shift} windows")
+    return binary_classification_from_arrays(out_dir, np.stack(pairs).astype(np.float32), np.asarray(y, dtype=np.int64), args, "misalignment_detection", f"motion+visual/audio pair -> aligned vs shifted by {shift} windows")
 
 
 def main() -> int:

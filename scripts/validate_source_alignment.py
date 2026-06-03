@@ -85,7 +85,7 @@ MODALITY_MARKERS = [
 ]
 
 CURRENT_PROJECT_LIMIT_MARKERS = [
-    "full audio-visual learning",
+    "large-scale audio-visual pretraining",
     "caption generation",
     "depth-pixel estimation",
     "SLAM estimation",
@@ -337,9 +337,9 @@ def build_report(hf_root: Path) -> dict:
             current.get("validated_episode_count") == 1
             and current.get("validated_frames") == 5821
             and current.get("validated_windows") == 1161
-            and current.get("current_feature_dim") == 8378
+            and current.get("current_feature_dim") == 8546
             and current.get("raw_data_redistributed") is False
-            and "not extracted into the current baseline feature vector" in current.get("audio_feature_status", "")
+            and "extracted into the current baseline feature vector" in current.get("audio_feature_status", "")
             and set(CURRENT_PROJECT_LIMIT_MARKERS).issubset(not_claimed),
             "one-episode scope, audio status, raw-data exclusion, and current project coverage are present",
             ["docs/data/xperience10m_dataset_card_alignment.json"],
@@ -391,7 +391,7 @@ def build_report(hf_root: Path) -> dict:
             "api_episode_folders": api_listing.get("episode_folder_count"),
             "sample_repo": sample.get("repo_id"),
             "sample_license": sample.get("license"),
-            "current_project_scope": "1 public sample episode, 5,821 frames, 1,161 windows, 8,378 current features",
+            "current_project_scope": "1 public sample episode, 5,821 frames, 1,161 windows, 8,546 current features",
         },
         "checks": checks,
         "repo_marker_records": repo_marker_records,

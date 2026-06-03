@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-03T07:49:53+00:00",
+  "generated_at_utc": "2026-06-03T13:07:43+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
@@ -74,8 +74,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 65926,
-      "evidence_index": 80365
+      "overview_index": 66066,
+      "evidence_index": 80505
     },
     {
       "name": "project_status_links_json",
@@ -148,9 +148,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 65926,
-      "protocol_index": 77768,
-      "evidence_index": 80365
+      "overview_index": 66066,
+      "protocol_index": 77908,
+      "evidence_index": 80505
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -168,8 +168,8 @@
       "name": "suite_task_map_precedes_modality_atlas",
       "status": "pass",
       "reason": "The Suite anchor should show the full 12-task map before the modality atlas.",
-      "first_marker_index": 527,
-      "second_marker_index": 818
+      "first_marker_index": 522,
+      "second_marker_index": 813
     },
     {
       "name": "suite_modality_atlas_contains_seven_cards",
@@ -253,12 +253,12 @@
     },
     {
       "path": "data/evaluation_protocol.json",
-      "bytes": 13667,
+      "bytes": 13644,
       "top_level_type": "dict"
     },
     {
       "path": "data/evidence_contract.json",
-      "bytes": 12007,
+      "bytes": 12025,
       "top_level_type": "dict"
     },
     {
@@ -273,42 +273,42 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 97333,
+      "bytes": 103779,
       "top_level_type": "dict"
     },
     {
       "path": "data/modality_atlas.json",
-      "bytes": 3841,
+      "bytes": 3819,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_brief.json",
-      "bytes": 2596,
+      "bytes": 2563,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_manifest.json",
-      "bytes": 4644,
+      "bytes": 4643,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_packet.json",
-      "bytes": 7654,
+      "bytes": 7659,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_status.json",
-      "bytes": 7344,
+      "bytes": 7340,
       "top_level_type": "dict"
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 5651,
+      "bytes": 5647,
       "top_level_type": "dict"
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 7253,
+      "bytes": 8317,
       "top_level_type": "dict"
     },
     {
@@ -323,17 +323,17 @@
     },
     {
       "path": "data/reproducibility_matrix.json",
-      "bytes": 5195,
+      "bytes": 5197,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_direction_extensions.json",
-      "bytes": 11894,
+      "bytes": 11907,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_directions.json",
-      "bytes": 14414,
+      "bytes": 14429,
       "top_level_type": "dict"
     },
     {
@@ -343,12 +343,12 @@
     },
     {
       "path": "data/research_roadmap_interactive.json",
-      "bytes": 73090,
+      "bytes": 121327,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_takeaways.json",
-      "bytes": 5358,
+      "bytes": 5356,
       "top_level_type": "dict"
     },
     {
@@ -358,7 +358,7 @@
     },
     {
       "path": "data/single_episode_explorer.json",
-      "bytes": 4101241,
+      "bytes": 4297465,
       "top_level_type": "dict"
     },
     {
@@ -368,27 +368,27 @@
     },
     {
       "path": "data/summary_metrics.json",
-      "bytes": 25074,
+      "bytes": 25210,
       "top_level_type": "dict"
     },
     {
       "path": "data/task_surface_integrity.json",
-      "bytes": 45780,
+      "bytes": 45779,
       "top_level_type": "dict"
     },
     {
       "path": "data/task_walkthroughs.json",
-      "bytes": 26958,
+      "bytes": 26976,
       "top_level_type": "dict"
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 14310,
+      "bytes": 14311,
       "top_level_type": "dict"
     },
     {
       "path": "data/xperience10m_dataset_card_alignment.json",
-      "bytes": 8037,
+      "bytes": 7573,
       "top_level_type": "dict"
     }
   ],
@@ -440,7 +440,7 @@
     {
       "path": "assets/charts/feature_blocks.svg",
       "exists": true,
-      "bytes": 7589,
+      "bytes": 7925,
       "format": "SVG",
       "has_viewbox": true
     },
@@ -524,7 +524,7 @@
     {
       "path": "assets/pipeline_diagram.png",
       "exists": true,
-      "bytes": 705995,
+      "bytes": 707296,
       "width": 1800,
       "height": 1120,
       "format": "PNG"
@@ -532,7 +532,7 @@
     {
       "path": "assets/task_architectures.png",
       "exists": true,
-      "bytes": 762376,
+      "bytes": 767403,
       "width": 1800,
       "height": 2450,
       "format": "PNG"
@@ -540,7 +540,7 @@
     {
       "path": "assets/task_suite_infographic.png",
       "exists": true,
-      "bytes": 2619553,
+      "bytes": 2612510,
       "width": 1800,
       "height": 6600,
       "format": "PNG"

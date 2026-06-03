@@ -7,7 +7,7 @@ the next development step.
 
 | Area | Current state | Evidence | Research readout |
 | --- | --- | --- | --- |
-| Public-sample pipeline | Verified | `results/episode_task_suite/summary_report.json`, `results/episode_task_suite/windows.csv`, `results/episode_task_suite/feature_manifest.json` | One public Xperience-10M sample episode is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,378-dimensional current feature contract. |
+| Public-sample pipeline | Verified | `results/episode_task_suite/summary_report.json`, `results/episode_task_suite/windows.csv`, `results/episode_task_suite/feature_manifest.json` | One public Xperience-10M sample episode is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,546-dimensional current feature contract. |
 | Task suite | Verified | `scripts/episode_task_suite.py`, `results/episode_task_suite/`, `docs/data/summary_metrics.json` | All 12 task contracts have committed metrics, predictions, and minimal baseline outputs. |
 | Neural heads | Verified | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split. |
 | Research takeaways | Verified | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | The main result interpretation is generated from committed metrics: chronological class shift, neural gains on dynamics/order/alignment, open retrieval/reconstruction problems, and the need for held-out episodes. |
@@ -48,5 +48,5 @@ the next development step.
   training results.
 - The current reconstruction task reconstructs feature vectors, not pixel
   depth, meshes, NeRF outputs, or Gaussian splats.
-- Audio is documented and visualized, but it is not yet part of the current
-  8,378-dimensional baseline feature vector.
+- AAC audio is decoded from `fisheye_cam0.mp4` and included in the current
+  8,546-dimensional baseline feature vector.

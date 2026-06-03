@@ -46,8 +46,8 @@ before the 32-episode omni-model stage becomes a real held-out evaluation.
 
 | Theme | Current implementation |
 | --- | --- |
-| Dataset slice | One public Xperience-10M sample episode, 5,821 frames, 1,161 windows, and 8,378 extracted feature dimensions |
-| Modalities | Video-derived features, depth, camera pose/SLAM, hand/body mocap, IMU, calibration, and language-derived features; audio is documented but not yet featurized |
+| Dataset slice | One public Xperience-10M sample episode, 5,821 frames, 1,161 windows, and 8,546 extracted feature dimensions |
+| Modalities | Video-derived features, AAC audio features, depth, camera pose/SLAM, hand/body mocap, IMU, calibration, and language-derived features |
 | Task suite | 12 human-readable embodied-AI task contracts with input, process, output, metrics, predictions, and case-study walkthroughs |
 | Baselines | Minimal linear/ridge/logistic heads plus compact PyTorch MLP task heads over the same chronological split |
 | Research directions | Task mapping and extension probes for human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling |
@@ -89,7 +89,7 @@ multi-episode held-out model metrics:
 | Figure index | `FIGURE_INDEX.md`, `docs/data/figure_index.json`, `scripts/build_figure_index.py` | catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts |
 | Brand assets | `docs/assets/brand/`, `docs/favicon.png`, `docs/apple-touch-icon.png`, `scripts/build_brand_assets.py` | applies the generated project logo system across the website, README, HF cards, favicon, and social previews |
 | Data windows | `results/episode_task_suite/windows.csv`, `shared_windows.npz`, `summary_report.json` | one public sample episode |
-| Feature contract | `results/episode_task_suite/feature_manifest.json`, `available_modalities.json` | 8,378 current features; audio documented but not featurized |
+| Feature contract | `results/episode_task_suite/feature_manifest.json`, `available_modalities.json` | 8,546 current features, including a real AAC audio block decoded from `fisheye_cam0.mp4` |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | defines windowing, chronological split, leakage controls, per-task metrics, and current limitations |
 | Research takeaways | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | summarizes result interpretation from committed metrics and identifies which experiments need held-out episodes |
 | Research roadmap | `RESEARCH_ROADMAP.md`, `docs/research_roadmap.html`, `docs/data/research_roadmap.json`, `docs/data/research_roadmap_interactive.json` | stages and visualizes the path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions |
@@ -172,7 +172,7 @@ They give the current research state in one compact table:
 
 | Area | Current decision |
 | --- | --- |
-| Public-sample pipeline | Verified on one public sample episode: 5,821 frames, 1,161 windows, 8,378 current features |
+| Public-sample pipeline | Verified on one public sample episode: 5,821 frames, 1,161 windows, 8,546 current features |
 | 12-task suite | Verified minimal baselines with committed metrics, predictions, and manifests |
 | Neural heads | Verified compact PyTorch MLP heads over the same task contracts and chronological splits |
 | Official dataset wording | Verified against the public `ropedia-ai/xperience-10m` dataset card/API metadata |
@@ -195,7 +195,7 @@ If you are reading the project cold, open these in order:
 | 5 | What do the current results mean? | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`docs/data/research_takeaways.json`](docs/data/research_takeaways.json), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | The takeaways are generated from committed metrics and identify which signals are ready for larger held-out experiments. |
 | 6 | What is the staged roadmap? | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`docs/data/research_roadmap.json`](docs/data/research_roadmap.json), [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) | The roadmap connects public-sample task development to multi-episode staging, Qwen3-Omni LoRA, robustness runs, and larger omni-model extensions. |
 | 7 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and the latest exact-match reproduction record are explicit. |
-| 8 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,378-d window vector with explicit feature-block boundaries. |
+| 8 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,546-d window vector with explicit feature-block boundaries. |
 | 9 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
 | 10 | Is the website self-consistent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, tab routing, JSON data, and referenced images are checked before publishing. |
 | 11 | What is still pending? | [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared; final model metrics require gated data and held-out evaluation. |
@@ -270,10 +270,8 @@ This repo's current verified subset is much smaller and intentionally explicit:
 - raw sample files with six MP4 video streams and AAC audio streams,
 - `annotation.hdf5` carrying depth, SLAM/camera pose, hand/body mocap, IMU,
   language/caption annotations, calibration, metadata, and timing records,
-- an 8,378-d baseline feature vector using video-derived statistics, depth,
-  pose/SLAM, mocap, IMU, calibration, and language-derived blocks,
-- audio documented in figures and the modality atlas, but not yet extracted as
-  a model input feature block.
+- an 8,546-d baseline feature vector using video-derived statistics, AAC audio,
+  depth, pose/SLAM, mocap, IMU, calibration, and language-derived blocks.
 
 The same alignment note also records what is outside the current implemented subset: real
 audio-visual learning, caption generation, pixel-depth estimation, SLAM
@@ -634,14 +632,14 @@ The taxonomy uses two current baselines for every task:
 
 | Baseline | Role |
 | --- | --- |
-| Minimal interpretable heads | Softmax, logistic, ridge, and retrieval heads over the 8,378-d window feature vector. These expose the input/output contract cleanly. |
+| Minimal interpretable heads | Softmax, logistic, ridge, and retrieval heads over the 8,546-d window feature vector. These expose the input/output contract cleanly. |
 | Neural MLP heads | Small PyTorch MLP classifiers/regressors on the same features and splits. These check whether nonlinear heads help before moving to Qwen/Omni fine-tuning. |
 
 Current direction-level coverage:
 
 | Direction | Current status | Covered task evidence | What is not solved yet |
 | --- | --- | --- | --- |
-| A. Human Modeling & Motion Understanding | Partially implemented | Hand Trajectory Forecasting and Contact State Prediction are direct; Action Recognition and Object Relevance Prediction are proxies. Neural MLP improves hand forecasting from `0.8223` to `0.1116` MPJPE. | No full body/shape model, SMPL/MANO target, deformation prior, or multi-episode motion-generation evaluation yet. |
+| A. Human Modeling & Motion Understanding | Partially implemented | Hand Trajectory Forecasting and Contact State Prediction are direct; Action Recognition and Object Relevance Prediction are proxies. Neural MLP improves hand forecasting from `0.8647` to `0.1079` MPJPE. | No full body/shape model, SMPL/MANO target, deformation prior, or multi-episode motion-generation evaluation yet. |
 | B. 3D/4D Reconstruction & Neural Rendering | Proxy tasks only | Cross-Modal Retrieval, Cross-Modal Reconstruction, and Multimodal Synchronization Detection test alignment/reconstruction prerequisites. | No NeRF, Gaussian Splatting, TSDF, mesh, novel-view synthesis, or calibrated 4D reconstruction model yet. |
 | C. Egocentric Vision & Interaction | Strongest implemented track | 6 direct tasks: action, subtask, transition, next-action, object relevance, and caption grounding, plus alignment/order diagnostics. | Single-episode chronological split limits generalization; audio and stronger video-language backbones still need to be added. |
 | D. Scene Reconstruction & World Modeling | Early proxy tasks | Procedure Step Recognition, Next-Action Prediction, Object Relevance Prediction, Cross-Modal Retrieval, Cross-Modal Reconstruction, Temporal Order Verification, and Multimodal Synchronization Detection provide state/world-model probes. | No persistent scene graph, object permanence task, long-term map, or held-out-episode world model yet. |
@@ -727,7 +725,7 @@ models.
 Shared setup:
 
 ```text
-raw episode -> 20-frame windows, stride 5 -> 8,378-d current feature vector
+raw episode -> 20-frame windows, stride 5 -> 8,546-d current feature vector
 chronological split: first 70% train, last 30% test
 scalers are fit on train windows only
 ```
@@ -770,40 +768,40 @@ The task-specific heads are:
 | Experiment | Main score | Accuracy | Notes |
 | --- | ---: | ---: | --- |
 | Motion-only action | 0.9688 macro-F1 | 0.9828 | Uses motion/IMU features only |
-| Current all-feature action | 0.9791 macro-F1 | 0.9828 | 8,378-dimensional feature vector |
+| Current all-feature action | 0.9829 macro-F1 | 0.9863 | 8,546-dimensional feature vector |
 | Motion-only subtask | 0.9528 macro-F1 | 0.9759 | Strong within-episode subtask signal |
-| Current all-feature subtask | 0.9308 macro-F1 | 0.9828 | High accuracy, lower class-balanced score |
-| Cross-modal retrieval | 0.3764 top-5 | n/a | Motion/IMU/camera retrieves matching depth/video |
-| Transition detection | 0.6552 macro-F1 | 0.9253 | Boundary F1 is 0.2143 |
-| Hand trajectory forecast | 0.8223 MPJPE | n/a | Predicts future hand-joint trajectory |
-| Neural MLP hand forecast | 0.1116 MPJPE | n/a | Same features/split, nonlinear regression head |
-| Neural MLP temporal order | 0.8718 F1 | 0.8707 | Strong improvement on adjacent-window ordering |
-| Neural MLP misalignment | 0.7335 F1 | 0.7312 | Detects shifted motion/visual pairs better than the linear head |
+| Current all-feature subtask | 0.9173 macro-F1 | 0.9828 | High accuracy, lower class-balanced score |
+| Cross-modal retrieval | 0.3678 top-5 | n/a | Motion/IMU/camera/audio retrieves matching depth/video |
+| Transition detection | 0.6118 macro-F1 | 0.9080 | Boundary F1 is 0.1250 |
+| Hand trajectory forecast | 0.8647 MPJPE | n/a | Predicts future hand-joint trajectory |
+| Neural MLP hand forecast | 0.1079 MPJPE | n/a | Same features/split, nonlinear regression head |
+| Neural MLP temporal order | 0.8520 F1 | 0.8578 | Strong improvement on adjacent-window ordering |
+| Neural MLP misalignment | 0.7153 F1 | 0.7009 | Detects shifted motion/visual/audio pairs better than the linear head |
 
 ## Neural MLP Results
 
 The neural baseline was run locally with `--include-neural` for all 12 tasks
 using 80 epochs, hidden size 128, batch size 128, and CPU execution. It is not a
 foundation model result; it is a controlled nonlinear-head comparison over the
-same 8,378-d handcrafted window features.
+same 8,546-d handcrafted window features.
 
 | Task | Neural metric | Minimal metric | Readout |
 | --- | ---: | ---: | --- |
-| Action Recognition | 0.0263 macro-F1 | 0.0500 macro-F1 | Still blocked by unseen future classes |
-| Procedure Step Recognition | 0.0175 macro-F1 | 0.0495 macro-F1 | Same single-episode split limitation |
-| Action Boundary Detection | 0.6485 macro-F1 | 0.6552 macro-F1 | Similar to the linear baseline |
-| Next-Action Prediction | 0.0235 macro-F1 | 0.0593 macro-F1 | Same unseen-label issue |
-| Hand Trajectory Forecasting | 0.1116 MPJPE | 0.8223 MPJPE | Neural regression improves this target |
+| Action Recognition | 0.0148 macro-F1 | 0.0500 macro-F1 | Still blocked by unseen future classes |
+| Procedure Step Recognition | 0.0281 macro-F1 | 0.0506 macro-F1 | Same single-episode split limitation |
+| Action Boundary Detection | 0.5862 macro-F1 | 0.6118 macro-F1 | Similar to the linear baseline |
+| Next-Action Prediction | 0.0419 macro-F1 | 0.0593 macro-F1 | Same unseen-label issue |
+| Hand Trajectory Forecasting | 0.1079 MPJPE | 0.8647 MPJPE | Neural regression improves this target |
 | Contact State Prediction | 1.0000 macro-F1 | 1.0000 macro-F1 | Degenerate one-class sample |
-| Object Relevance Prediction | 0.1798 micro-F1 | 0.1839 micro-F1 | Similar weak object signal |
-| Language Grounding | 0.0178 MRR | 0.0172 MRR | Similar ranking behavior |
-| Cross-Modal Retrieval | 0.1530 MRR | 0.2634 MRR | Linear ridge remains stronger here |
-| Cross-Modal Reconstruction | -0.0102 R2 | -0.0160 R2 | Small improvement but still weak |
-| Temporal Order Verification | 0.8718 F1 | 0.5487 F1 | Neural head captures local temporal structure |
-| Multimodal Synchronization Detection | 0.7335 F1 | 0.4866 F1 | Neural head improves alignment detection |
+| Object Relevance Prediction | 0.1679 micro-F1 | 0.1803 micro-F1 | Similar weak object signal |
+| Language Grounding | 0.0168 MRR | 0.0160 MRR | Similar ranking behavior |
+| Cross-Modal Retrieval | 0.1300 MRR | 0.2693 MRR | Linear ridge remains stronger here |
+| Cross-Modal Reconstruction | -0.0102 R2 | -0.0153 R2 | Small improvement but still weak |
+| Temporal Order Verification | 0.8520 F1 | 0.5400 F1 | Neural head captures local temporal structure |
+| Multimodal Synchronization Detection | 0.7153 F1 | 0.5052 F1 | Neural head improves alignment detection |
 
 The strongest single-episode self-supervised signal is cross-modal retrieval:
-motion/IMU/camera features retrieve matching depth/video windows substantially
+motion/IMU/camera/audio features retrieve matching depth/video windows substantially
 better than random.
 
 ## Single-Episode Diagnostics and Explorer
@@ -852,18 +850,17 @@ single-episode learning instead of hiding it behind random splits.
 
 ## Feature Blocks Used
 
-The current feature vector has 8,378 dimensions and includes:
+The current feature vector has 8,546 dimensions and includes:
 
 - hand/body mocap joints and contact labels,
 - camera translation and rotation,
 - IMU acceleration and gyroscope traces,
 - depth confidence features,
 - six video streams,
+- AAC audio features from `fisheye_cam0.mp4`,
 - caption/object/interaction text features,
 - SLAM point-cloud summary features,
 - calibration parameters.
-
-It does not yet include an audio feature block.
 
 The exact feature block boundaries are stored in
 [`results/episode_task_suite/feature_manifest.json`](results/episode_task_suite/feature_manifest.json).

@@ -81,7 +81,7 @@ GROUPS = [
 
 MODALITIES = [
     ("video", "visual stream", "6 synchronized camera MP4 streams", "RGB/fisheye/stereo frame statistics"),
-    ("audio", "acoustic stream", "AAC stream embedded in MP4", "documented, not featurized in 8,378-d vector"),
+    ("audio", "acoustic stream", "AAC stream embedded in MP4", "AAC audio feature block"),
     ("depth", "geometry map", "depth map + confidence channel", "spatial geometry feature block"),
     ("pose / SLAM", "camera pose", "trajectory + sparse SLAM map", "position + orientation features"),
     ("motion capture", "human motion", "body + hand joint tracks", "3D mocap feature statistics"),
@@ -1029,7 +1029,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       <div class="arrow">-></div>
       <div class="step"><strong>20-frame windows</strong><span>stride 5, chronological order</span></div>
       <div class="arrow">-></div>
-      <div class="step"><strong>8,378-d vector</strong><span>current manifest excludes audio features</span></div>
+      <div class="step"><strong>{summary['feature_dim']:,}-d vector</strong><span>current manifest includes audio features</span></div>
       <div class="arrow">-></div>
       <div class="step"><strong>12 minimal + NN heads</strong><span>softmax/ridge/logistic plus PyTorch MLP</span></div>
     </section>
@@ -1042,7 +1042,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
 
     <div class="section-label">
       <span>Xperience-10M modalities</span>
-      <span>Public-sample thumbnails are enlarged here so each data stream is legible. Audio is present in the sample MP4 stream; the current 8,378-d baseline manifest does not featurize it.</span>
+      <span>Public-sample thumbnails are enlarged here so each data stream is legible. Audio is present in the sample MP4 stream and is now extracted into the current baseline manifest.</span>
     </div>
     <section class="modalities">{modalities_html}</section>
 

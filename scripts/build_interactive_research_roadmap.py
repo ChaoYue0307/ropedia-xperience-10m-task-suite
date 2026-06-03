@@ -12,6 +12,11 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 DOCS_DATA = ROOT / "docs" / "data"
 RESULTS = ROOT / "results" / "episode_task_suite"
+GITHUB_BLOB = "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main"
+
+
+def repo_link(path: str) -> str:
+    return f"{GITHUB_BLOB}/{path}"
 
 
 def load_json(path: Path) -> Any:
@@ -40,6 +45,25 @@ def metric_summary(metric: dict[str, Any] | None) -> dict[str, Any]:
     }
 
 
+def task_evidence_links(task_id: str) -> list[dict[str, str]]:
+    candidates = [
+        ("Minimal metrics", f"results/episode_task_suite/{task_id}/metrics.json"),
+        ("Neural metrics", f"results/episode_task_suite/neural_mlp/{task_id}/metrics.json"),
+        ("Minimal predictions", f"results/episode_task_suite/{task_id}/predictions.csv"),
+        ("Neural predictions", f"results/episode_task_suite/neural_mlp/{task_id}/predictions.csv"),
+        ("Confusion matrix", f"results/episode_task_suite/{task_id}/confusion_matrix.csv"),
+        ("Neural confusion matrix", f"results/episode_task_suite/neural_mlp/{task_id}/confusion_matrix.csv"),
+    ]
+    links = [
+        {"label": "Task walkthrough", "href": "data/task_walkthroughs.json"},
+        {"label": "Single-episode explorer", "href": "single_episode_explorer.html"},
+    ]
+    for label, relative_path in candidates:
+        if (ROOT / relative_path).exists():
+            links.append({"label": label, "href": repo_link(relative_path)})
+    return links
+
+
 def task_payload(
     task_id: str,
     direction_task: dict[str, Any],
@@ -64,6 +88,7 @@ def task_payload(
         "current_limit": direction_task.get("current_limit") or walkthrough.get("failure_mode"),
         "why": direction_task.get("why"),
         "metric": metric_summary(metric),
+        "evidence_links": task_evidence_links(task_id),
     }
 
 

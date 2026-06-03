@@ -50,9 +50,43 @@
             "C": "direct"
           },
           "display_name": "Action Recognition",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_action/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_action/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_action/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_action/predictions.csv",
+              "label": "Neural predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_action/confusion_matrix.csv",
+              "label": "Confusion matrix"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_action/confusion_matrix.csv",
+              "label": "Neural confusion matrix"
+            }
+          ],
           "family": "supervised",
           "id": "timeline_action",
-          "input": "One 20-frame window represented by the current 8,378-d feature vector: video/depth summaries, pose, SLAM/camera pose, motion capture, IMU, calibration, and language-derived context.",
+          "input": "One 20-frame window represented by the current feature vector: video/audio/depth summaries, pose, SLAM/camera pose, motion capture, IMU, calibration, and language-derived context.",
           "input_short": "20-frame multimodal window",
           "metric": {
             "better_baseline": "minimal",
@@ -60,7 +94,7 @@
             "key": "macro_f1",
             "minimal": 0.05,
             "name": "macro-F1",
-            "neural_mlp": 0.0263
+            "neural_mlp": 0.0148
           },
           "modalities": [
             "video",
@@ -86,6 +120,24 @@
             "C": "proxy"
           },
           "display_name": "Hand Trajectory Forecasting",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/hand_trajectory_forecast/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/hand_trajectory_forecast/metrics.json",
+              "label": "Neural metrics"
+            }
+          ],
           "family": "forecast",
           "id": "hand_trajectory_forecast",
           "input": "The current all-modality window vector at time t.",
@@ -94,9 +146,9 @@
             "better_baseline": "neural_mlp",
             "direction": "lower",
             "key": "mpjpe",
-            "minimal": 0.8223,
+            "minimal": 0.8647,
             "name": "MPJPE",
-            "neural_mlp": 0.1116
+            "neural_mlp": 0.1079
           },
           "modalities": [
             "motion_capture",
@@ -121,6 +173,40 @@
             "C": "proxy"
           },
           "display_name": "Contact State Prediction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/contact_prediction/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/contact_prediction/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/contact_prediction/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/contact_prediction/predictions.csv",
+              "label": "Neural predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/contact_prediction/confusion_matrix.csv",
+              "label": "Confusion matrix"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/contact_prediction/confusion_matrix.csv",
+              "label": "Neural confusion matrix"
+            }
+          ],
           "family": "supervised",
           "id": "contact_prediction",
           "input": "Non-contact and non-caption feature blocks, so the answer is not directly leaked from the target labels.",
@@ -156,6 +242,32 @@
             "D": "proxy"
           },
           "display_name": "Object Relevance Prediction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/object_relevance/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/object_relevance/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/object_relevance/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/object_relevance/predictions.csv",
+              "label": "Neural predictions"
+            }
+          ],
           "family": "supervised",
           "id": "object_relevance",
           "input": "Non-caption feature blocks, so the model must infer objects from sensors rather than copying the caption words.",
@@ -164,9 +276,9 @@
             "better_baseline": "minimal",
             "direction": "higher",
             "key": "micro_f1",
-            "minimal": 0.1839,
+            "minimal": 0.1803,
             "name": "micro-F1",
-            "neural_mlp": 0.1798
+            "neural_mlp": 0.1679
           },
           "modalities": [
             "video",
@@ -228,6 +340,24 @@
             "D": "proxy"
           },
           "display_name": "Cross-Modal Retrieval",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/cross_modal_retrieval/metrics.json",
+              "label": "Neural metrics"
+            }
+          ],
           "family": "retrieval",
           "id": "cross_modal_retrieval",
           "input": "Query side: motion, IMU, and camera/pose features. Candidate side: depth and video features.",
@@ -236,9 +366,9 @@
             "better_baseline": "minimal",
             "direction": "higher",
             "key": "mrr",
-            "minimal": 0.2634,
+            "minimal": 0.2693,
             "name": "MRR",
-            "neural_mlp": 0.153
+            "neural_mlp": 0.13
           },
           "modalities": [
             "motion_capture",
@@ -263,6 +393,24 @@
             "D": "proxy"
           },
           "display_name": "Cross-Modal Reconstruction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/modality_reconstruction/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/modality_reconstruction/metrics.json",
+              "label": "Neural metrics"
+            }
+          ],
           "family": "forecast",
           "id": "modality_reconstruction",
           "input": "Motion, IMU, and camera/pose features as input; depth/video features as the regression target.",
@@ -271,7 +419,7 @@
             "better_baseline": "neural_mlp",
             "direction": "higher",
             "key": "r2",
-            "minimal": -0.016,
+            "minimal": -0.0153,
             "name": "R2",
             "neural_mlp": -0.0102
           },
@@ -299,6 +447,32 @@
             "D": "diagnostic"
           },
           "display_name": "Multimodal Synchronization Detection",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/misalignment_detection/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/misalignment_detection/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/misalignment_detection/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/misalignment_detection/predictions.csv",
+              "label": "Neural predictions"
+            }
+          ],
           "family": "diagnostic",
           "id": "misalignment_detection",
           "input": "A motion-side feature group and a visual/depth-side feature group, either aligned or artificially shifted.",
@@ -307,9 +481,9 @@
             "better_baseline": "neural_mlp",
             "direction": "higher",
             "key": "f1",
-            "minimal": 0.4866,
+            "minimal": 0.5052,
             "name": "F1",
-            "neural_mlp": 0.7335
+            "neural_mlp": 0.7153
           },
           "modalities": [
             "motion_capture",
@@ -351,7 +525,7 @@
       "name": "Egocentric Vision & Interaction",
       "next_steps": [
         "Move from single-episode chronological splits to held-out-episode splits.",
-        "Add audio features and stronger multimodal backbones for action, intent, and grounding.",
+        "Use the extracted AAC audio block with stronger multimodal backbones for action, intent, and grounding.",
         "Evaluate long-horizon task success prediction and action-conditioned generation."
       ],
       "preferred_background": "Video understanding, action recognition, or egocentric vision.",
@@ -378,9 +552,43 @@
             "C": "direct"
           },
           "display_name": "Action Recognition",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_action/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_action/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_action/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_action/predictions.csv",
+              "label": "Neural predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_action/confusion_matrix.csv",
+              "label": "Confusion matrix"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_action/confusion_matrix.csv",
+              "label": "Neural confusion matrix"
+            }
+          ],
           "family": "supervised",
           "id": "timeline_action",
-          "input": "One 20-frame window represented by the current 8,378-d feature vector: video/depth summaries, pose, SLAM/camera pose, motion capture, IMU, calibration, and language-derived context.",
+          "input": "One 20-frame window represented by the current feature vector: video/audio/depth summaries, pose, SLAM/camera pose, motion capture, IMU, calibration, and language-derived context.",
           "input_short": "20-frame multimodal window",
           "metric": {
             "better_baseline": "minimal",
@@ -388,7 +596,7 @@
             "key": "macro_f1",
             "minimal": 0.05,
             "name": "macro-F1",
-            "neural_mlp": 0.0263
+            "neural_mlp": 0.0148
           },
           "modalities": [
             "video",
@@ -414,17 +622,51 @@
             "D": "proxy"
           },
           "display_name": "Procedure Step Recognition",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_subtask/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_subtask/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_subtask/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_subtask/predictions.csv",
+              "label": "Neural predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_subtask/confusion_matrix.csv",
+              "label": "Confusion matrix"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_subtask/confusion_matrix.csv",
+              "label": "Neural confusion matrix"
+            }
+          ],
           "family": "supervised",
           "id": "timeline_subtask",
-          "input": "The same all-modality 8,378-d window vector used by action recognition.",
+          "input": "The same all-modality window vector used by action recognition.",
           "input_short": "20-frame multimodal window",
           "metric": {
             "better_baseline": "minimal",
             "direction": "higher",
             "key": "macro_f1",
-            "minimal": 0.0495,
+            "minimal": 0.0506,
             "name": "macro-F1",
-            "neural_mlp": 0.0175
+            "neural_mlp": 0.0281
           },
           "modalities": [
             "video",
@@ -450,6 +692,40 @@
             "D": "diagnostic"
           },
           "display_name": "Action Boundary Detection",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/transition_detection/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/transition_detection/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/transition_detection/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/transition_detection/predictions.csv",
+              "label": "Neural predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/transition_detection/confusion_matrix.csv",
+              "label": "Confusion matrix"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/transition_detection/confusion_matrix.csv",
+              "label": "Neural confusion matrix"
+            }
+          ],
           "family": "diagnostic",
           "id": "transition_detection",
           "input": "One all-modality window vector plus labels derived from action-change timestamps.",
@@ -458,9 +734,9 @@
             "better_baseline": "minimal",
             "direction": "higher",
             "key": "macro_f1",
-            "minimal": 0.6552,
+            "minimal": 0.6118,
             "name": "macro-F1",
-            "neural_mlp": 0.6485
+            "neural_mlp": 0.5862
           },
           "modalities": [
             "video",
@@ -485,6 +761,40 @@
             "D": "proxy"
           },
           "display_name": "Next-Action Prediction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/next_action/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/next_action/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/next_action/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/next_action/predictions.csv",
+              "label": "Neural predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/next_action/confusion_matrix.csv",
+              "label": "Confusion matrix"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/next_action/confusion_matrix.csv",
+              "label": "Neural confusion matrix"
+            }
+          ],
           "family": "supervised",
           "id": "next_action",
           "input": "The current all-modality window vector at time t.",
@@ -495,7 +805,7 @@
             "key": "macro_f1",
             "minimal": 0.0593,
             "name": "macro-F1",
-            "neural_mlp": 0.0235
+            "neural_mlp": 0.0419
           },
           "modalities": [
             "video",
@@ -520,6 +830,24 @@
             "C": "proxy"
           },
           "display_name": "Hand Trajectory Forecasting",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/hand_trajectory_forecast/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/hand_trajectory_forecast/metrics.json",
+              "label": "Neural metrics"
+            }
+          ],
           "family": "forecast",
           "id": "hand_trajectory_forecast",
           "input": "The current all-modality window vector at time t.",
@@ -528,9 +856,9 @@
             "better_baseline": "neural_mlp",
             "direction": "lower",
             "key": "mpjpe",
-            "minimal": 0.8223,
+            "minimal": 0.8647,
             "name": "MPJPE",
-            "neural_mlp": 0.1116
+            "neural_mlp": 0.1079
           },
           "modalities": [
             "motion_capture",
@@ -555,6 +883,40 @@
             "C": "proxy"
           },
           "display_name": "Contact State Prediction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/contact_prediction/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/contact_prediction/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/contact_prediction/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/contact_prediction/predictions.csv",
+              "label": "Neural predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/contact_prediction/confusion_matrix.csv",
+              "label": "Confusion matrix"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/contact_prediction/confusion_matrix.csv",
+              "label": "Neural confusion matrix"
+            }
+          ],
           "family": "supervised",
           "id": "contact_prediction",
           "input": "Non-contact and non-caption feature blocks, so the answer is not directly leaked from the target labels.",
@@ -590,6 +952,32 @@
             "D": "proxy"
           },
           "display_name": "Object Relevance Prediction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/object_relevance/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/object_relevance/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/object_relevance/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/object_relevance/predictions.csv",
+              "label": "Neural predictions"
+            }
+          ],
           "family": "supervised",
           "id": "object_relevance",
           "input": "Non-caption feature blocks, so the model must infer objects from sensors rather than copying the caption words.",
@@ -598,9 +986,9 @@
             "better_baseline": "minimal",
             "direction": "higher",
             "key": "micro_f1",
-            "minimal": 0.1839,
+            "minimal": 0.1803,
             "name": "micro-F1",
-            "neural_mlp": 0.1798
+            "neural_mlp": 0.1679
           },
           "modalities": [
             "video",
@@ -625,6 +1013,24 @@
             "D": "proxy"
           },
           "display_name": "Language Grounding",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/caption_grounding/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/caption_grounding/metrics.json",
+              "label": "Neural metrics"
+            }
+          ],
           "family": "retrieval",
           "id": "caption_grounding",
           "input": "Caption/object/interaction query features and a set of candidate sensor-window features.",
@@ -633,9 +1039,9 @@
             "better_baseline": "neural_mlp",
             "direction": "higher",
             "key": "mrr",
-            "minimal": 0.0172,
+            "minimal": 0.016,
             "name": "MRR",
-            "neural_mlp": 0.0178
+            "neural_mlp": 0.0168
           },
           "modalities": [
             "language",
@@ -660,6 +1066,24 @@
             "D": "proxy"
           },
           "display_name": "Cross-Modal Retrieval",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/cross_modal_retrieval/metrics.json",
+              "label": "Neural metrics"
+            }
+          ],
           "family": "retrieval",
           "id": "cross_modal_retrieval",
           "input": "Query side: motion, IMU, and camera/pose features. Candidate side: depth and video features.",
@@ -668,9 +1092,9 @@
             "better_baseline": "minimal",
             "direction": "higher",
             "key": "mrr",
-            "minimal": 0.2634,
+            "minimal": 0.2693,
             "name": "MRR",
-            "neural_mlp": 0.153
+            "neural_mlp": 0.13
           },
           "modalities": [
             "motion_capture",
@@ -695,6 +1119,32 @@
             "D": "diagnostic"
           },
           "display_name": "Temporal Order Verification",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/temporal_order/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/temporal_order/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/temporal_order/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/temporal_order/predictions.csv",
+              "label": "Neural predictions"
+            }
+          ],
           "family": "diagnostic",
           "id": "temporal_order",
           "input": "A pair of adjacent window vectors, plus their difference vector.",
@@ -703,9 +1153,9 @@
             "better_baseline": "neural_mlp",
             "direction": "higher",
             "key": "f1",
-            "minimal": 0.5487,
+            "minimal": 0.54,
             "name": "F1",
-            "neural_mlp": 0.8718
+            "neural_mlp": 0.852
           },
           "modalities": [
             "video",
@@ -730,6 +1180,32 @@
             "D": "diagnostic"
           },
           "display_name": "Multimodal Synchronization Detection",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/misalignment_detection/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/misalignment_detection/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/misalignment_detection/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/misalignment_detection/predictions.csv",
+              "label": "Neural predictions"
+            }
+          ],
           "family": "diagnostic",
           "id": "misalignment_detection",
           "input": "A motion-side feature group and a visual/depth-side feature group, either aligned or artificially shifted.",
@@ -738,9 +1214,9 @@
             "better_baseline": "neural_mlp",
             "direction": "higher",
             "key": "f1",
-            "minimal": 0.4866,
+            "minimal": 0.5052,
             "name": "F1",
-            "neural_mlp": 0.7335
+            "neural_mlp": 0.7153
           },
           "modalities": [
             "motion_capture",
@@ -807,17 +1283,51 @@
             "D": "proxy"
           },
           "display_name": "Procedure Step Recognition",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_subtask/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_subtask/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_subtask/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_subtask/predictions.csv",
+              "label": "Neural predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_subtask/confusion_matrix.csv",
+              "label": "Confusion matrix"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_subtask/confusion_matrix.csv",
+              "label": "Neural confusion matrix"
+            }
+          ],
           "family": "supervised",
           "id": "timeline_subtask",
-          "input": "The same all-modality 8,378-d window vector used by action recognition.",
+          "input": "The same all-modality window vector used by action recognition.",
           "input_short": "20-frame multimodal window",
           "metric": {
             "better_baseline": "minimal",
             "direction": "higher",
             "key": "macro_f1",
-            "minimal": 0.0495,
+            "minimal": 0.0506,
             "name": "macro-F1",
-            "neural_mlp": 0.0175
+            "neural_mlp": 0.0281
           },
           "modalities": [
             "video",
@@ -843,6 +1353,40 @@
             "D": "diagnostic"
           },
           "display_name": "Action Boundary Detection",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/transition_detection/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/transition_detection/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/transition_detection/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/transition_detection/predictions.csv",
+              "label": "Neural predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/transition_detection/confusion_matrix.csv",
+              "label": "Confusion matrix"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/transition_detection/confusion_matrix.csv",
+              "label": "Neural confusion matrix"
+            }
+          ],
           "family": "diagnostic",
           "id": "transition_detection",
           "input": "One all-modality window vector plus labels derived from action-change timestamps.",
@@ -851,9 +1395,9 @@
             "better_baseline": "minimal",
             "direction": "higher",
             "key": "macro_f1",
-            "minimal": 0.6552,
+            "minimal": 0.6118,
             "name": "macro-F1",
-            "neural_mlp": 0.6485
+            "neural_mlp": 0.5862
           },
           "modalities": [
             "video",
@@ -878,6 +1422,40 @@
             "D": "proxy"
           },
           "display_name": "Next-Action Prediction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/next_action/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/next_action/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/next_action/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/next_action/predictions.csv",
+              "label": "Neural predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/next_action/confusion_matrix.csv",
+              "label": "Confusion matrix"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/next_action/confusion_matrix.csv",
+              "label": "Neural confusion matrix"
+            }
+          ],
           "family": "supervised",
           "id": "next_action",
           "input": "The current all-modality window vector at time t.",
@@ -888,7 +1466,7 @@
             "key": "macro_f1",
             "minimal": 0.0593,
             "name": "macro-F1",
-            "neural_mlp": 0.0235
+            "neural_mlp": 0.0419
           },
           "modalities": [
             "video",
@@ -914,6 +1492,32 @@
             "D": "proxy"
           },
           "display_name": "Object Relevance Prediction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/object_relevance/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/object_relevance/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/object_relevance/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/object_relevance/predictions.csv",
+              "label": "Neural predictions"
+            }
+          ],
           "family": "supervised",
           "id": "object_relevance",
           "input": "Non-caption feature blocks, so the model must infer objects from sensors rather than copying the caption words.",
@@ -922,9 +1526,9 @@
             "better_baseline": "minimal",
             "direction": "higher",
             "key": "micro_f1",
-            "minimal": 0.1839,
+            "minimal": 0.1803,
             "name": "micro-F1",
-            "neural_mlp": 0.1798
+            "neural_mlp": 0.1679
           },
           "modalities": [
             "video",
@@ -949,6 +1553,24 @@
             "D": "proxy"
           },
           "display_name": "Language Grounding",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/caption_grounding/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/caption_grounding/metrics.json",
+              "label": "Neural metrics"
+            }
+          ],
           "family": "retrieval",
           "id": "caption_grounding",
           "input": "Caption/object/interaction query features and a set of candidate sensor-window features.",
@@ -957,9 +1579,9 @@
             "better_baseline": "neural_mlp",
             "direction": "higher",
             "key": "mrr",
-            "minimal": 0.0172,
+            "minimal": 0.016,
             "name": "MRR",
-            "neural_mlp": 0.0178
+            "neural_mlp": 0.0168
           },
           "modalities": [
             "language",
@@ -984,6 +1606,24 @@
             "D": "proxy"
           },
           "display_name": "Cross-Modal Retrieval",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/cross_modal_retrieval/metrics.json",
+              "label": "Neural metrics"
+            }
+          ],
           "family": "retrieval",
           "id": "cross_modal_retrieval",
           "input": "Query side: motion, IMU, and camera/pose features. Candidate side: depth and video features.",
@@ -992,9 +1632,9 @@
             "better_baseline": "minimal",
             "direction": "higher",
             "key": "mrr",
-            "minimal": 0.2634,
+            "minimal": 0.2693,
             "name": "MRR",
-            "neural_mlp": 0.153
+            "neural_mlp": 0.13
           },
           "modalities": [
             "motion_capture",
@@ -1019,6 +1659,24 @@
             "D": "proxy"
           },
           "display_name": "Cross-Modal Reconstruction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/modality_reconstruction/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/modality_reconstruction/metrics.json",
+              "label": "Neural metrics"
+            }
+          ],
           "family": "forecast",
           "id": "modality_reconstruction",
           "input": "Motion, IMU, and camera/pose features as input; depth/video features as the regression target.",
@@ -1027,7 +1685,7 @@
             "better_baseline": "neural_mlp",
             "direction": "higher",
             "key": "r2",
-            "minimal": -0.016,
+            "minimal": -0.0153,
             "name": "R2",
             "neural_mlp": -0.0102
           },
@@ -1054,6 +1712,32 @@
             "D": "diagnostic"
           },
           "display_name": "Temporal Order Verification",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/temporal_order/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/temporal_order/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/temporal_order/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/temporal_order/predictions.csv",
+              "label": "Neural predictions"
+            }
+          ],
           "family": "diagnostic",
           "id": "temporal_order",
           "input": "A pair of adjacent window vectors, plus their difference vector.",
@@ -1062,9 +1746,9 @@
             "better_baseline": "neural_mlp",
             "direction": "higher",
             "key": "f1",
-            "minimal": 0.5487,
+            "minimal": 0.54,
             "name": "F1",
-            "neural_mlp": 0.8718
+            "neural_mlp": 0.852
           },
           "modalities": [
             "video",
@@ -1089,6 +1773,32 @@
             "D": "diagnostic"
           },
           "display_name": "Multimodal Synchronization Detection",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/misalignment_detection/metrics.json",
+              "label": "Minimal metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/misalignment_detection/metrics.json",
+              "label": "Neural metrics"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/misalignment_detection/predictions.csv",
+              "label": "Minimal predictions"
+            },
+            {
+              "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/misalignment_detection/predictions.csv",
+              "label": "Neural predictions"
+            }
+          ],
           "family": "diagnostic",
           "id": "misalignment_detection",
           "input": "A motion-side feature group and a visual/depth-side feature group, either aligned or artificially shifted.",
@@ -1097,9 +1807,9 @@
             "better_baseline": "neural_mlp",
             "direction": "higher",
             "key": "f1",
-            "minimal": 0.4866,
+            "minimal": 0.5052,
             "name": "F1",
-            "neural_mlp": 0.7335
+            "neural_mlp": 0.7153
           },
           "modalities": [
             "motion_capture",
@@ -1118,7 +1828,7 @@
       ]
     }
   ],
-  "generated_at_utc": "2026-06-03T06:52:04+00:00",
+  "generated_at_utc": "2026-06-03T12:47:15+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -1260,8 +1970,8 @@
     "valid_candidates": 680
   },
   "scope": {
-    "feature_blocks": 17,
-    "feature_dim": 8378,
+    "feature_blocks": 18,
+    "feature_dim": 8546,
     "num_frames": 5821,
     "num_windows": 1161,
     "sample_episode_count": 1,
@@ -1288,9 +1998,43 @@
         "C": "direct"
       },
       "display_name": "Action Recognition",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_action/metrics.json",
+          "label": "Minimal metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_action/metrics.json",
+          "label": "Neural metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_action/predictions.csv",
+          "label": "Minimal predictions"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_action/predictions.csv",
+          "label": "Neural predictions"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_action/confusion_matrix.csv",
+          "label": "Confusion matrix"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_action/confusion_matrix.csv",
+          "label": "Neural confusion matrix"
+        }
+      ],
       "family": "supervised",
       "id": "timeline_action",
-      "input": "One 20-frame window represented by the current 8,378-d feature vector: video/depth summaries, pose, SLAM/camera pose, motion capture, IMU, calibration, and language-derived context.",
+      "input": "One 20-frame window represented by the current feature vector: video/audio/depth summaries, pose, SLAM/camera pose, motion capture, IMU, calibration, and language-derived context.",
       "input_short": "20-frame multimodal window",
       "metric": {
         "better_baseline": "minimal",
@@ -1298,7 +2042,7 @@
         "key": "macro_f1",
         "minimal": 0.05,
         "name": "macro-F1",
-        "neural_mlp": 0.0263
+        "neural_mlp": 0.0148
       },
       "modalities": [
         "video",
@@ -1324,17 +2068,51 @@
         "D": "proxy"
       },
       "display_name": "Procedure Step Recognition",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_subtask/metrics.json",
+          "label": "Minimal metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_subtask/metrics.json",
+          "label": "Neural metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_subtask/predictions.csv",
+          "label": "Minimal predictions"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_subtask/predictions.csv",
+          "label": "Neural predictions"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/timeline_subtask/confusion_matrix.csv",
+          "label": "Confusion matrix"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/timeline_subtask/confusion_matrix.csv",
+          "label": "Neural confusion matrix"
+        }
+      ],
       "family": "supervised",
       "id": "timeline_subtask",
-      "input": "The same all-modality 8,378-d window vector used by action recognition.",
+      "input": "The same all-modality window vector used by action recognition.",
       "input_short": "20-frame multimodal window",
       "metric": {
         "better_baseline": "minimal",
         "direction": "higher",
         "key": "macro_f1",
-        "minimal": 0.0495,
+        "minimal": 0.0506,
         "name": "macro-F1",
-        "neural_mlp": 0.0175
+        "neural_mlp": 0.0281
       },
       "modalities": [
         "video",
@@ -1360,6 +2138,40 @@
         "D": "diagnostic"
       },
       "display_name": "Action Boundary Detection",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/transition_detection/metrics.json",
+          "label": "Minimal metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/transition_detection/metrics.json",
+          "label": "Neural metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/transition_detection/predictions.csv",
+          "label": "Minimal predictions"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/transition_detection/predictions.csv",
+          "label": "Neural predictions"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/transition_detection/confusion_matrix.csv",
+          "label": "Confusion matrix"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/transition_detection/confusion_matrix.csv",
+          "label": "Neural confusion matrix"
+        }
+      ],
       "family": "diagnostic",
       "id": "transition_detection",
       "input": "One all-modality window vector plus labels derived from action-change timestamps.",
@@ -1368,9 +2180,9 @@
         "better_baseline": "minimal",
         "direction": "higher",
         "key": "macro_f1",
-        "minimal": 0.6552,
+        "minimal": 0.6118,
         "name": "macro-F1",
-        "neural_mlp": 0.6485
+        "neural_mlp": 0.5862
       },
       "modalities": [
         "video",
@@ -1395,6 +2207,40 @@
         "D": "proxy"
       },
       "display_name": "Next-Action Prediction",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/next_action/metrics.json",
+          "label": "Minimal metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/next_action/metrics.json",
+          "label": "Neural metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/next_action/predictions.csv",
+          "label": "Minimal predictions"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/next_action/predictions.csv",
+          "label": "Neural predictions"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/next_action/confusion_matrix.csv",
+          "label": "Confusion matrix"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/next_action/confusion_matrix.csv",
+          "label": "Neural confusion matrix"
+        }
+      ],
       "family": "supervised",
       "id": "next_action",
       "input": "The current all-modality window vector at time t.",
@@ -1405,7 +2251,7 @@
         "key": "macro_f1",
         "minimal": 0.0593,
         "name": "macro-F1",
-        "neural_mlp": 0.0235
+        "neural_mlp": 0.0419
       },
       "modalities": [
         "video",
@@ -1430,6 +2276,24 @@
         "C": "proxy"
       },
       "display_name": "Hand Trajectory Forecasting",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/hand_trajectory_forecast/metrics.json",
+          "label": "Minimal metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/hand_trajectory_forecast/metrics.json",
+          "label": "Neural metrics"
+        }
+      ],
       "family": "forecast",
       "id": "hand_trajectory_forecast",
       "input": "The current all-modality window vector at time t.",
@@ -1438,9 +2302,9 @@
         "better_baseline": "neural_mlp",
         "direction": "lower",
         "key": "mpjpe",
-        "minimal": 0.8223,
+        "minimal": 0.8647,
         "name": "MPJPE",
-        "neural_mlp": 0.1116
+        "neural_mlp": 0.1079
       },
       "modalities": [
         "motion_capture",
@@ -1465,6 +2329,40 @@
         "C": "proxy"
       },
       "display_name": "Contact State Prediction",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/contact_prediction/metrics.json",
+          "label": "Minimal metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/contact_prediction/metrics.json",
+          "label": "Neural metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/contact_prediction/predictions.csv",
+          "label": "Minimal predictions"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/contact_prediction/predictions.csv",
+          "label": "Neural predictions"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/contact_prediction/confusion_matrix.csv",
+          "label": "Confusion matrix"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/contact_prediction/confusion_matrix.csv",
+          "label": "Neural confusion matrix"
+        }
+      ],
       "family": "supervised",
       "id": "contact_prediction",
       "input": "Non-contact and non-caption feature blocks, so the answer is not directly leaked from the target labels.",
@@ -1500,6 +2398,32 @@
         "D": "proxy"
       },
       "display_name": "Object Relevance Prediction",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/object_relevance/metrics.json",
+          "label": "Minimal metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/object_relevance/metrics.json",
+          "label": "Neural metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/object_relevance/predictions.csv",
+          "label": "Minimal predictions"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/object_relevance/predictions.csv",
+          "label": "Neural predictions"
+        }
+      ],
       "family": "supervised",
       "id": "object_relevance",
       "input": "Non-caption feature blocks, so the model must infer objects from sensors rather than copying the caption words.",
@@ -1508,9 +2432,9 @@
         "better_baseline": "minimal",
         "direction": "higher",
         "key": "micro_f1",
-        "minimal": 0.1839,
+        "minimal": 0.1803,
         "name": "micro-F1",
-        "neural_mlp": 0.1798
+        "neural_mlp": 0.1679
       },
       "modalities": [
         "video",
@@ -1535,6 +2459,24 @@
         "D": "proxy"
       },
       "display_name": "Language Grounding",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/caption_grounding/metrics.json",
+          "label": "Minimal metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/caption_grounding/metrics.json",
+          "label": "Neural metrics"
+        }
+      ],
       "family": "retrieval",
       "id": "caption_grounding",
       "input": "Caption/object/interaction query features and a set of candidate sensor-window features.",
@@ -1543,9 +2485,9 @@
         "better_baseline": "neural_mlp",
         "direction": "higher",
         "key": "mrr",
-        "minimal": 0.0172,
+        "minimal": 0.016,
         "name": "MRR",
-        "neural_mlp": 0.0178
+        "neural_mlp": 0.0168
       },
       "modalities": [
         "language",
@@ -1570,6 +2512,24 @@
         "D": "proxy"
       },
       "display_name": "Cross-Modal Retrieval",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json",
+          "label": "Minimal metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/cross_modal_retrieval/metrics.json",
+          "label": "Neural metrics"
+        }
+      ],
       "family": "retrieval",
       "id": "cross_modal_retrieval",
       "input": "Query side: motion, IMU, and camera/pose features. Candidate side: depth and video features.",
@@ -1578,9 +2538,9 @@
         "better_baseline": "minimal",
         "direction": "higher",
         "key": "mrr",
-        "minimal": 0.2634,
+        "minimal": 0.2693,
         "name": "MRR",
-        "neural_mlp": 0.153
+        "neural_mlp": 0.13
       },
       "modalities": [
         "motion_capture",
@@ -1605,6 +2565,24 @@
         "D": "proxy"
       },
       "display_name": "Cross-Modal Reconstruction",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/modality_reconstruction/metrics.json",
+          "label": "Minimal metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/modality_reconstruction/metrics.json",
+          "label": "Neural metrics"
+        }
+      ],
       "family": "forecast",
       "id": "modality_reconstruction",
       "input": "Motion, IMU, and camera/pose features as input; depth/video features as the regression target.",
@@ -1613,7 +2591,7 @@
         "better_baseline": "neural_mlp",
         "direction": "higher",
         "key": "r2",
-        "minimal": -0.016,
+        "minimal": -0.0153,
         "name": "R2",
         "neural_mlp": -0.0102
       },
@@ -1640,6 +2618,32 @@
         "D": "diagnostic"
       },
       "display_name": "Temporal Order Verification",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/temporal_order/metrics.json",
+          "label": "Minimal metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/temporal_order/metrics.json",
+          "label": "Neural metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/temporal_order/predictions.csv",
+          "label": "Minimal predictions"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/temporal_order/predictions.csv",
+          "label": "Neural predictions"
+        }
+      ],
       "family": "diagnostic",
       "id": "temporal_order",
       "input": "A pair of adjacent window vectors, plus their difference vector.",
@@ -1648,9 +2652,9 @@
         "better_baseline": "neural_mlp",
         "direction": "higher",
         "key": "f1",
-        "minimal": 0.5487,
+        "minimal": 0.54,
         "name": "F1",
-        "neural_mlp": 0.8718
+        "neural_mlp": 0.852
       },
       "modalities": [
         "video",
@@ -1675,6 +2679,32 @@
         "D": "diagnostic"
       },
       "display_name": "Multimodal Synchronization Detection",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/misalignment_detection/metrics.json",
+          "label": "Minimal metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/misalignment_detection/metrics.json",
+          "label": "Neural metrics"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/misalignment_detection/predictions.csv",
+          "label": "Minimal predictions"
+        },
+        {
+          "href": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/neural_mlp/misalignment_detection/predictions.csv",
+          "label": "Neural predictions"
+        }
+      ],
       "family": "diagnostic",
       "id": "misalignment_detection",
       "input": "A motion-side feature group and a visual/depth-side feature group, either aligned or artificially shifted.",
@@ -1683,9 +2713,9 @@
         "better_baseline": "neural_mlp",
         "direction": "higher",
         "key": "f1",
-        "minimal": 0.4866,
+        "minimal": 0.5052,
         "name": "F1",
-        "neural_mlp": 0.7335
+        "neural_mlp": 0.7153
       },
       "modalities": [
         "motion_capture",

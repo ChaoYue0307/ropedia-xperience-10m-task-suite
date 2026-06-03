@@ -424,7 +424,7 @@ ARTIFACTS = [
         "path": "results/episode_task_suite/feature_manifest.json",
         "kind": "data_contract",
         "surface": "repo_hf",
-        "shows": "Maps the 8,378-dimensional window vector back to source feature blocks.",
+        "shows": "Maps the current window vector back to source feature blocks.",
     },
     {
         "id": "available_modalities",
@@ -585,7 +585,15 @@ def artifact_entry(item: dict) -> dict:
 
 
 def main() -> int:
-    entries = [artifact_entry(item) for item in ARTIFACTS]
+    artifacts = [dict(item) for item in ARTIFACTS]
+    summary_path = ROOT / "results/episode_task_suite/summary_report.json"
+    if summary_path.exists():
+        summary = json.loads(summary_path.read_text(encoding="utf-8"))
+        feature_dim = int(summary.get("feature_dim", 0))
+        for item in artifacts:
+            if item["id"] == "feature_manifest" and feature_dim:
+                item["shows"] = f"Maps the {feature_dim:,}-dimensional window vector back to source feature blocks."
+    entries = [artifact_entry(item) for item in artifacts]
     missing = [entry["path"] for entry in entries if not entry["exists"]]
     by_kind: dict[str, int] = {}
     for entry in entries:

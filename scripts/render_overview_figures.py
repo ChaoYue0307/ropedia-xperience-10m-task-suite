@@ -107,7 +107,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
             stage_card(
                 "02",
                 "HOMIE loader",
-                ["video, depth, pose", "mocap, IMU, language", "audio noted, not featurized"],
+                ["video, depth, pose", "mocap, IMU, language", "AAC audio features"],
                 COLORS["teal"],
             ),
             arrow(),
@@ -125,7 +125,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
             stage_card(
                 "04",
                 "Feature vector",
-                [f"{suite['feature_dim']:,} dimensions", "17 named blocks, no audio block", "manifested slice indices"],
+                [f"{suite['feature_dim']:,} dimensions", "18 named blocks incl. audio", "manifested slice indices"],
                 COLORS["orange"],
             ),
         ],
@@ -156,7 +156,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
     checks = [
         "Reproduction check: rerunning scripts to an ignored scratch workspace reproduced the committed metrics exactly.",
         "Modality check: sample covers video, AAC audio, depth, pose/SLAM, mocap, IMU, and language annotation.",
-        "Feature check: current baseline manifest has video/depth/pose/mocap/IMU/language blocks, but no audio feature block.",
+        "Feature check: current baseline manifest has video/depth/pose/mocap/IMU/language blocks plus a real AAC audio feature block.",
         "Neural check: lightweight PyTorch MLP heads are reported beside the minimal task heads under neural_mlp/.",
         "Scope check: this validates one public sample episode, not cross-episode generalization.",
     ]
@@ -703,8 +703,8 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
         <div class="summary-pill"><strong>{len(suite['tasks'])}+{neural_count}</strong><span>min + NN tasks</span></div>
       </header>
       <section class="shared">
-        <article><h2>Shared windows</h2><p>{suite['num_frames']:,} frames to {suite['num_windows']:,} windows over video, depth, pose, mocap, inertial, and language features.</p></article>
-        <article><h2>Feature vector</h2><p>X_all is {suite['feature_dim']:,} dimensions with 17 named blocks; sample audio is documented but not featurized here.</p></article>
+        <article><h2>Shared windows</h2><p>{suite['num_frames']:,} frames to {suite['num_windows']:,} windows over video, audio, depth, pose, mocap, inertial, and language features.</p></article>
+        <article><h2>Feature vector</h2><p>X_all is {suite['feature_dim']:,} dimensions with 18 named blocks, including AAC audio extracted from the sample MP4 stream.</p></article>
         <article><h2>Reusable heads</h2><p>Minimal softmax/ridge/logistic heads plus optional PyTorch MLP heads cover the whole suite.</p></article>
         <article><h2>Artifacts</h2><p>Metrics, predictions, model weights, neural checkpoints, manifests, and the source summary report are committed.</p></article>
       </section>

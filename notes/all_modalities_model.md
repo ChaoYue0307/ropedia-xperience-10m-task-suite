@@ -28,6 +28,7 @@ Dynamic sensor/action modalities:
 - `fisheye_cam3.mp4`
 - `stereo_left.mp4`
 - `stereo_right.mp4`
+- AAC audio decoded from `fisheye_cam0.mp4`
 
 Static/context modalities:
 
@@ -51,6 +52,7 @@ For each 20-frame window:
 - Motion signals use mean/std/min/max/delta/velocity statistics.
 - Depth uses global depth stats plus a small normalized depth grid and confidence grid.
 - Each video stream uses color stats, color histograms, a small grayscale grid, and simple edge stats.
+- Audio uses per-frame waveform/spectral statistics and log-spaced spectral band energies.
 - Text uses a hashed bag-of-words vector from objects and interaction text.
 - Point cloud and calibration are included as static episode-level features.
 
@@ -71,10 +73,11 @@ video_fisheye_cam2:                686
 video_fisheye_cam3:                686
 video_stereo_left:                 686
 video_stereo_right:                686
+audio_fisheye_cam0_aac:            168
 caption_objects_interaction_text:  896
 slam_point_cloud:                   22
 calibration:                       117
-total:                            8378
+total:                            8546
 ```
 
 ## Run Commands
@@ -106,12 +109,12 @@ Action-label model:
 ```text
 outputs/min_all_modalities_action_model/
 accuracy:          0.9828
-balanced_accuracy: 0.9801
-macro_f1:          0.9791
-weighted_f1:       0.9828
+balanced_accuracy: 0.9856
+macro_f1:          0.9829
+weighted_f1:       0.9863
 majority_baseline: 0.1375
 classes:           18
-feature_dim:       8378
+feature_dim:       8546
 test_windows:      291
 ```
 
@@ -121,11 +124,11 @@ Subtask-label model:
 outputs/min_all_modalities_subtask_model/
 accuracy:          0.9828
 balanced_accuracy: 0.9505
-macro_f1:          0.9308
-weighted_f1:       0.9838
+macro_f1:          0.9173
+weighted_f1:       0.9841
 majority_baseline: 0.1448
 classes:           14
-feature_dim:       8378
+feature_dim:       8546
 test_windows:      290
 ```
 

@@ -17,8 +17,8 @@
 <rect x="410" y="122" width="310" height="110" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.26" stroke-width="2"/>
 <rect x="410" y="122" width="8" height="110" rx="4" fill="#7ae5c3"/>
 <text x="434" y="153" font-family="Inter Tight, Arial, sans-serif" font-size="18" font-weight="800" fill="#f4f8ef">Feature vector</text>
-<text x="434" y="180" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X_all = 8,378 dimensions</text>
-<text x="434" y="198" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">17 named blocks; no audio block</text>
+<text x="434" y="180" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X_all = 8,546 dimensions</text>
+<text x="434" y="198" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">18 named blocks incl. audio</text>
 <text x="434" y="216" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">mean/std fit on train only</text>
 <rect x="760" y="122" width="320" height="110" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.26" stroke-width="2"/>
 <rect x="760" y="122" width="8" height="110" rx="4" fill="#ccffa0"/>
@@ -52,78 +52,78 @@
 <text x="128" y="575" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#9bdfff">softmax</text>
 <text x="80" y="612" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">timeline_action</text>
 <text x="80" y="644" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">INPUT</text>
-<text x="152" y="644" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X_all window, 8,378d</text>
+<text x="152" y="644" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X_all window, 8,546d</text>
 <text x="80" y="669" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">HEAD</text>
 <text x="152" y="669" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal linear softmax; optional NN MLP</text>
 <text x="152" y="686" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">softmax</text>
 <text x="80" y="711" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">OUTPUT</text>
 <text x="152" y="711" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">current action class, 18 classes</text>
 <text x="80" y="736" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">METRIC</text>
-<text x="152" y="736" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min macro-F1 0.0500; NN macro-F1 0.0263</text>
+<text x="152" y="736" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min macro-F1 0.0500; NN macro-F1 0.0148</text>
 <rect x="530" y="540" width="440" height="248" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.24" stroke-width="2"/>
 <rect x="530" y="540" width="8" height="248" rx="4" fill="#9bdfff"/>
 <rect x="550" y="558" width="96" height="24" rx="6" fill="#071207" stroke="#9bdfff" stroke-opacity="0.72"/>
 <text x="598" y="575" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#9bdfff">softmax</text>
 <text x="550" y="612" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">timeline_subtask</text>
 <text x="550" y="644" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">INPUT</text>
-<text x="622" y="644" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X_all window, 8,378d</text>
+<text x="622" y="644" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X_all window, 8,546d</text>
 <text x="550" y="669" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">HEAD</text>
 <text x="622" y="669" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal linear softmax; optional NN MLP</text>
 <text x="622" y="686" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">softmax</text>
 <text x="550" y="711" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">OUTPUT</text>
 <text x="622" y="711" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">current subtask class, 14 classes</text>
 <text x="550" y="736" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">METRIC</text>
-<text x="622" y="736" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min macro-F1 0.0495; NN macro-F1 0.0175</text>
+<text x="622" y="736" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min macro-F1 0.0506; NN macro-F1 0.0281</text>
 <rect x="1000" y="540" width="440" height="248" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.24" stroke-width="2"/>
 <rect x="1000" y="540" width="8" height="248" rx="4" fill="#9bdfff"/>
 <rect x="1020" y="558" width="96" height="24" rx="6" fill="#071207" stroke="#9bdfff" stroke-opacity="0.72"/>
 <text x="1068" y="575" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#9bdfff">softmax</text>
 <text x="1020" y="612" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">transition_detection</text>
 <text x="1020" y="644" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">INPUT</text>
-<text x="1092" y="644" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X_all window, 8,378d</text>
+<text x="1092" y="644" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X_all window, 8,546d</text>
 <text x="1020" y="669" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">HEAD</text>
 <text x="1092" y="669" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal linear softmax; optional NN MLP</text>
 <text x="1092" y="686" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">softmax</text>
 <text x="1020" y="711" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">OUTPUT</text>
 <text x="1092" y="711" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">steady vs transition near action boundary</text>
 <text x="1020" y="736" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">METRIC</text>
-<text x="1092" y="736" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min macro-F1 0.6552; NN macro-F1 0.6485;</text>
-<text x="1092" y="753" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">boundary-F1 0.2143</text>
+<text x="1092" y="736" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min macro-F1 0.6118; NN macro-F1 0.5862;</text>
+<text x="1092" y="753" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">boundary-F1 0.1250</text>
 <rect x="60" y="818" width="440" height="248" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.24" stroke-width="2"/>
 <rect x="60" y="818" width="8" height="248" rx="4" fill="#9bdfff"/>
 <rect x="80" y="836" width="96" height="24" rx="6" fill="#071207" stroke="#9bdfff" stroke-opacity="0.72"/>
 <text x="128" y="853" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#9bdfff">softmax</text>
 <text x="80" y="890" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">next_action</text>
 <text x="80" y="922" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">INPUT</text>
-<text x="152" y="922" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X_all at time t, 8,378d</text>
+<text x="152" y="922" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X_all at time t, 8,546d</text>
 <text x="80" y="947" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">HEAD</text>
 <text x="152" y="947" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal linear softmax; optional NN MLP</text>
 <text x="152" y="964" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">softmax</text>
 <text x="80" y="989" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">OUTPUT</text>
 <text x="152" y="989" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">action at t+20 frames</text>
 <text x="80" y="1014" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">METRIC</text>
-<text x="152" y="1014" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min macro-F1 0.0593; NN macro-F1 0.0235</text>
+<text x="152" y="1014" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min macro-F1 0.0593; NN macro-F1 0.0419</text>
 <rect x="530" y="818" width="440" height="248" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.24" stroke-width="2"/>
 <rect x="530" y="818" width="8" height="248" rx="4" fill="#ccffa0"/>
 <rect x="550" y="836" width="96" height="24" rx="6" fill="#071207" stroke="#ccffa0" stroke-opacity="0.72"/>
 <text x="598" y="853" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0">ridge</text>
 <text x="550" y="890" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">hand_trajectory_forecast</text>
 <text x="550" y="922" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#ccffa0">INPUT</text>
-<text x="622" y="922" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X_all at time t, 8,378d</text>
+<text x="622" y="922" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X_all at time t, 8,546d</text>
 <text x="550" y="947" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#ccffa0">HEAD</text>
 <text x="622" y="947" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal dual ridge; optional NN MLP</text>
 <text x="622" y="964" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">regression</text>
 <text x="550" y="989" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#ccffa0">OUTPUT</text>
 <text x="622" y="989" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">future hand joints, 1260d</text>
 <text x="550" y="1014" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#ccffa0">METRIC</text>
-<text x="622" y="1014" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min MPJPE 0.8223; NN MPJPE 0.1116</text>
+<text x="622" y="1014" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min MPJPE 0.8647; NN MPJPE 0.1079</text>
 <rect x="1000" y="818" width="440" height="248" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.24" stroke-width="2"/>
 <rect x="1000" y="818" width="8" height="248" rx="4" fill="#9bdfff"/>
 <rect x="1020" y="836" width="96" height="24" rx="6" fill="#071207" stroke="#9bdfff" stroke-opacity="0.72"/>
 <text x="1068" y="853" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#9bdfff">softmax</text>
 <text x="1020" y="890" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">contact_prediction</text>
 <text x="1020" y="922" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">INPUT</text>
-<text x="1092" y="922" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X without contact/text leakage, 7,335d</text>
+<text x="1092" y="922" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X without contact/text leakage, 7,503d</text>
 <text x="1020" y="947" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">HEAD</text>
 <text x="1092" y="947" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal linear softmax; optional NN MLP</text>
 <text x="1092" y="964" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">softmax</text>
@@ -138,85 +138,86 @@
 <text x="128" y="1131" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#d8f4a5">multilabel</text>
 <text x="80" y="1168" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">object_relevance</text>
 <text x="80" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#d8f4a5">INPUT</text>
-<text x="152" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X without caption text, 7,482d</text>
+<text x="152" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X without caption text, 7,650d</text>
 <text x="80" y="1225" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#d8f4a5">HEAD</text>
 <text x="152" y="1225" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal sigmoid logistic; optional NN MLP</text>
 <text x="152" y="1242" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">multilabel</text>
 <text x="80" y="1267" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#d8f4a5">OUTPUT</text>
 <text x="152" y="1267" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">multi-hot object set, 34 objects</text>
 <text x="80" y="1292" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#d8f4a5">METRIC</text>
-<text x="152" y="1292" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min micro-F1 0.1839; NN micro-F1 0.1798</text>
+<text x="152" y="1292" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min micro-F1 0.1803; NN micro-F1 0.1679</text>
 <rect x="530" y="1096" width="440" height="248" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.24" stroke-width="2"/>
 <rect x="530" y="1096" width="8" height="248" rx="4" fill="#7ae5c3"/>
 <rect x="550" y="1114" width="96" height="24" rx="6" fill="#071207" stroke="#7ae5c3" stroke-opacity="0.72"/>
 <text x="598" y="1131" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#7ae5c3">ridge+rank</text>
 <text x="550" y="1168" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">caption_grounding</text>
 <text x="550" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">INPUT</text>
-<text x="622" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">sensor 7,482d -&gt; text space 896d</text>
+<text x="622" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">sensor 7,650d -&gt; text space 896d</text>
 <text x="550" y="1225" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">HEAD</text>
 <text x="622" y="1225" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal ridge or NN MLP projection, then</text>
 <text x="622" y="1242" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">cosine rank</text>
 <text x="550" y="1267" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">OUTPUT</text>
 <text x="622" y="1267" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">text query retrieves matching time window</text>
 <text x="550" y="1292" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">METRIC</text>
-<text x="622" y="1292" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min MRR 0.0172; NN MRR 0.0178</text>
+<text x="622" y="1292" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min MRR 0.0160; NN MRR 0.0168</text>
 <rect x="1000" y="1096" width="440" height="248" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.24" stroke-width="2"/>
 <rect x="1000" y="1096" width="8" height="248" rx="4" fill="#7ae5c3"/>
 <rect x="1020" y="1114" width="96" height="24" rx="6" fill="#071207" stroke="#7ae5c3" stroke-opacity="0.72"/>
 <text x="1068" y="1131" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#7ae5c3">ridge+rank</text>
 <text x="1020" y="1168" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">cross_modal_retrieval</text>
 <text x="1020" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">INPUT</text>
-<text x="1092" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">motion/IMU/camera 2,247d -&gt; visual 5,096d</text>
-<text x="1020" y="1225" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">HEAD</text>
-<text x="1092" y="1225" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal ridge or NN MLP projection, then</text>
-<text x="1092" y="1242" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">cosine rank</text>
-<text x="1020" y="1267" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">OUTPUT</text>
-<text x="1092" y="1267" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">retrieve matching depth/video window</text>
-<text x="1020" y="1292" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">METRIC</text>
-<text x="1092" y="1292" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min top-5 0.3764; NN top-5 0.2155</text>
+<text x="1092" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">motion/IMU/camera/audio 2,415d -&gt; visual</text>
+<text x="1092" y="1217" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">5,096d</text>
+<text x="1020" y="1242" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">HEAD</text>
+<text x="1092" y="1242" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal ridge or NN MLP projection, then</text>
+<text x="1092" y="1259" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">cosine rank</text>
+<text x="1020" y="1284" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">OUTPUT</text>
+<text x="1092" y="1284" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">retrieve matching depth/video window</text>
+<text x="1020" y="1309" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">METRIC</text>
+<text x="1092" y="1309" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min top-5 0.3678; NN top-5 0.1983</text>
 <rect x="60" y="1374" width="440" height="248" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.24" stroke-width="2"/>
 <rect x="60" y="1374" width="8" height="248" rx="4" fill="#ccffa0"/>
 <rect x="80" y="1392" width="96" height="24" rx="6" fill="#071207" stroke="#ccffa0" stroke-opacity="0.72"/>
 <text x="128" y="1409" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0">ridge</text>
 <text x="80" y="1446" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">modality_reconstruction</text>
 <text x="80" y="1478" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#ccffa0">INPUT</text>
-<text x="152" y="1478" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">motion/IMU/camera 2,247d</text>
+<text x="152" y="1478" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">motion/IMU/camera/audio 2,415d</text>
 <text x="80" y="1503" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#ccffa0">HEAD</text>
 <text x="152" y="1503" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal dual ridge; optional NN MLP</text>
 <text x="152" y="1520" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">regression</text>
 <text x="80" y="1545" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#ccffa0">OUTPUT</text>
 <text x="152" y="1545" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">depth/video feature vector, 5,096d</text>
 <text x="80" y="1570" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#ccffa0">METRIC</text>
-<text x="152" y="1570" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min R2 -0.0160; NN R2 -0.0102</text>
+<text x="152" y="1570" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min R2 -0.0153; NN R2 -0.0102</text>
 <rect x="530" y="1374" width="440" height="248" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.24" stroke-width="2"/>
 <rect x="530" y="1374" width="8" height="248" rx="4" fill="#9bdfff"/>
 <rect x="550" y="1392" width="96" height="24" rx="6" fill="#071207" stroke="#9bdfff" stroke-opacity="0.72"/>
 <text x="598" y="1409" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#9bdfff">softmax</text>
 <text x="550" y="1446" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">temporal_order</text>
 <text x="550" y="1478" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">INPUT</text>
-<text x="622" y="1478" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">concat[x_t, x_t+1, diff], 25,134d</text>
+<text x="622" y="1478" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">concat[x_t, x_t+1, diff], 25,638d</text>
 <text x="550" y="1503" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">HEAD</text>
 <text x="622" y="1503" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal binary softmax; optional NN MLP</text>
 <text x="622" y="1520" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">softmax</text>
 <text x="550" y="1545" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">OUTPUT</text>
 <text x="622" y="1545" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">correct vs reversed adjacent windows</text>
 <text x="550" y="1570" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">METRIC</text>
-<text x="622" y="1570" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min F1 0.5487; NN F1 0.8718</text>
+<text x="622" y="1570" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min F1 0.5400; NN F1 0.8520</text>
 <rect x="1000" y="1374" width="440" height="248" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.24" stroke-width="2"/>
 <rect x="1000" y="1374" width="8" height="248" rx="4" fill="#9bdfff"/>
 <rect x="1020" y="1392" width="96" height="24" rx="6" fill="#071207" stroke="#9bdfff" stroke-opacity="0.72"/>
 <text x="1068" y="1409" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#9bdfff">softmax</text>
 <text x="1020" y="1446" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">misalignment_detection</text>
 <text x="1020" y="1478" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">INPUT</text>
-<text x="1092" y="1478" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">concat[motion_t, visual_t/visual_t+8],</text>
-<text x="1092" y="1495" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">7,343d</text>
+<text x="1092" y="1478" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">concat[motion_t, visual+audio_t/shifted],</text>
+<text x="1092" y="1495" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">7,511d</text>
 <text x="1020" y="1520" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">HEAD</text>
 <text x="1092" y="1520" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal binary softmax; optional NN MLP</text>
 <text x="1092" y="1537" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">softmax</text>
 <text x="1020" y="1562" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">OUTPUT</text>
 <text x="1092" y="1562" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">aligned vs shifted by 8 windows</text>
 <text x="1020" y="1587" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">METRIC</text>
-<text x="1092" y="1587" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min F1 0.4866; NN F1 0.7335</text>
+<text x="1092" y="1587" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min F1 0.5052; NN F1 0.7153</text>
 <rect x="60" y="1688" width="1380" height="72" rx="8" fill="#071207" stroke="#ccffa0" stroke-opacity="0.22"/>
 <text x="84" y="1718" font-family="Space Grotesk, Arial, sans-serif" font-size="15" fill="#dce8d7">Interpretation: this suite tests whether each input/output contract is wired correctly before scaling to many episodes.</text>
 <text x="84" y="1742" font-family="Space Grotesk, Arial, sans-serif" font-size="15" fill="#dce8d7">Research-grade conclusions need held-out episode splits and stronger sequence/vision-language/robot-policy models.</text>

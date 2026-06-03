@@ -340,7 +340,7 @@ def compute_metrics(y_true: np.ndarray, y_pred: np.ndarray, class_names: list[st
 
 def write_csv(path: Path, rows: list[dict], fieldnames: list[str]) -> None:
     with path.open("w", newline="", encoding="utf-8") as fp:
-        writer = csv.DictWriter(fp, fieldnames=fieldnames)
+        writer = csv.DictWriter(fp, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -412,7 +412,7 @@ def save_artifacts(
     )
 
     with (output_dir / "confusion_matrix.csv").open("w", newline="", encoding="utf-8") as fp:
-        writer = csv.writer(fp)
+        writer = csv.writer(fp, lineterminator="\n")
         writer.writerow(["true\\pred"] + class_names)
         for i, name in enumerate(class_names):
             writer.writerow([name] + [int(v) for v in cm[i]])

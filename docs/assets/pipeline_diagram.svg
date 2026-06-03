@@ -24,7 +24,7 @@
 <text x="389" y="144" font-family="Inter Tight, Arial, sans-serif" font-size="18" font-weight="800" fill="#f4f8ef">2. HOMIE loader</text>
 <text x="389" y="176" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">video, depth, pose</text>
 <text x="389" y="198" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">mocap, IMU, language</text>
-<text x="389" y="220" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">audio not featurized</text>
+<text x="389" y="220" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">AAC audio features</text>
 <rect x="670" y="110" width="250" height="132" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.26" stroke-width="2"/>
 <rect x="670" y="110" width="8" height="132" rx="4" fill="#ccffa0"/>
 <text x="694" y="144" font-family="Inter Tight, Arial, sans-serif" font-size="18" font-weight="800" fill="#f4f8ef">3. Window builder</text>
@@ -34,9 +34,10 @@
 <rect x="975" y="110" width="300" height="132" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.26" stroke-width="2"/>
 <rect x="975" y="110" width="8" height="132" rx="4" fill="#d8f4a5"/>
 <text x="999" y="144" font-family="Inter Tight, Arial, sans-serif" font-size="18" font-weight="800" fill="#f4f8ef">4. Feature vector</text>
-<text x="999" y="176" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">8,378 dimensions</text>
-<text x="999" y="198" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">17 named blocks, no audio block</text>
-<text x="999" y="220" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">stored manifest</text>
+<text x="999" y="176" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">8,546 dimensions</text>
+<text x="999" y="198" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">18 named blocks</text>
+<text x="999" y="220" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">audio block included</text>
+<text x="999" y="242" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">stored manifest</text>
 <rect x="60" y="380" width="360" height="168" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.26" stroke-width="2"/>
 <rect x="60" y="380" width="8" height="168" rx="4" fill="#9bdfff"/>
 <text x="84" y="414" font-family="Inter Tight, Arial, sans-serif" font-size="18" font-weight="800" fill="#f4f8ef">5. Baseline models</text>
@@ -61,6 +62,6 @@
 <rect x="60" y="620" width="1220" height="96" rx="8" fill="#071207" stroke="#ccffa0" stroke-opacity="0.24"/>
 <text x="84" y="650" font-family="Space Grotesk, Arial, sans-serif" font-size="15" fill="#dce8d7">Reproduction check: rerunning scripts to an ignored scratch workspace reproduced committed metrics exactly.</text>
 <text x="84" y="674" font-family="Space Grotesk, Arial, sans-serif" font-size="15" fill="#dce8d7">Modality check: sample covers video, AAC audio, depth, pose/SLAM, mocap, IMU, and language annotation.</text>
-<text x="84" y="698" font-family="Space Grotesk, Arial, sans-serif" font-size="15" fill="#dce8d7">Feature check: current manifest has video/depth/pose/mocap/IMU/language blocks, but no audio block.</text>
+<text x="84" y="698" font-family="Space Grotesk, Arial, sans-serif" font-size="15" fill="#dce8d7">Feature check: current manifest has video/depth/pose/mocap/IMU/language blocks plus a real AAC audio block.</text>
 <text x="84" y="722" font-family="Space Grotesk, Arial, sans-serif" font-size="15" fill="#dce8d7">Scope check: this validates one public sample episode, not cross-episode generalization.</text>
 </svg>

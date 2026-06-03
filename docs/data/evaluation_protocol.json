@@ -2,7 +2,7 @@
   "title": "Ropedia Xperience-10M Task Suite Evaluation Protocol",
   "status": "pass",
   "version": "2026-06-01",
-  "generated_at_utc": "2026-06-02T15:26:18+00:00",
+  "generated_at_utc": "2026-06-03T12:47:15+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
@@ -14,10 +14,10 @@
     "annotation": "data/sample/xperience-10m-sample/annotation.hdf5",
     "num_frames": 5821,
     "num_windows": 1161,
-    "feature_dim": 8378,
+    "feature_dim": 8546,
     "window_frames": 20,
     "stride_frames": 5,
-    "audio_featurized": false,
+    "audio_featurized": true,
     "raw_data_redistributed": false
   },
   "split_policy": {
@@ -28,10 +28,10 @@
     "limitation": "It is still one episode; cross-episode generalization is evaluated in the multi-episode stage."
   },
   "feature_policy": {
-    "input_contract": "8,378-dimensional current feature vector",
+    "input_contract": "8,546-dimensional current feature vector",
     "source_manifest": "results/episode_task_suite/feature_manifest.json",
     "normalization": "Scalers are fit on train windows only for the baseline heads.",
-    "audio_status": "Audio is present in sample MP4 streams and visualized in the atlas, but not extracted into the current 8,378-d feature vector."
+    "audio_status": "AAC audio is extracted from the sample MP4 stream and included in the current feature vector."
   },
   "baselines": [
     {
@@ -82,7 +82,7 @@
         "num_test_windows": 343
       },
       "minimal_primary_metric": 0.05,
-      "neural_primary_metric": 0.02631578947368421,
+      "neural_primary_metric": 0.014814814814814814,
       "minimal_metric_source": "results/episode_task_suite/timeline_action/metrics.json",
       "neural_metric_source": "results/episode_task_suite/neural_mlp/timeline_action/metrics.json"
     },
@@ -100,8 +100,8 @@
         "num_train_windows": 803,
         "num_test_windows": 344
       },
-      "minimal_primary_metric": 0.04954121121178666,
-      "neural_primary_metric": 0.017518248175182476,
+      "minimal_primary_metric": 0.05056355513846935,
+      "neural_primary_metric": 0.02810810810810811,
       "minimal_metric_source": "results/episode_task_suite/timeline_subtask/metrics.json",
       "neural_metric_source": "results/episode_task_suite/neural_mlp/timeline_subtask/metrics.json"
     },
@@ -119,8 +119,8 @@
         "num_train_windows": 813,
         "num_test_windows": 348
       },
-      "minimal_primary_metric": 0.6551829268292684,
-      "neural_primary_metric": 0.6484848484848484,
+      "minimal_primary_metric": 0.6118237590630229,
+      "neural_primary_metric": 0.5862068965517241,
       "minimal_metric_source": "results/episode_task_suite/transition_detection/metrics.json",
       "neural_metric_source": "results/episode_task_suite/neural_mlp/transition_detection/metrics.json"
     },
@@ -139,7 +139,7 @@
         "num_test_windows": 348
       },
       "minimal_primary_metric": 0.05925925925925927,
-      "neural_primary_metric": 0.023529411764705882,
+      "neural_primary_metric": 0.04186046511627907,
       "minimal_metric_source": "results/episode_task_suite/next_action/metrics.json",
       "neural_metric_source": "results/episode_task_suite/neural_mlp/next_action/metrics.json"
     },
@@ -157,8 +157,8 @@
         "num_train_windows": 811,
         "num_test_windows": 348
       },
-      "minimal_primary_metric": 0.8222644925117493,
-      "neural_primary_metric": 0.11163123697042465,
+      "minimal_primary_metric": 0.8646570444107056,
+      "neural_primary_metric": 0.10785018652677536,
       "minimal_metric_source": "results/episode_task_suite/hand_trajectory_forecast/metrics.json",
       "neural_metric_source": "results/episode_task_suite/neural_mlp/hand_trajectory_forecast/metrics.json"
     },
@@ -195,8 +195,8 @@
         "num_train_windows": 813,
         "num_test_windows": 348
       },
-      "minimal_primary_metric": 0.18393030009680542,
-      "neural_primary_metric": 0.1797583081570997,
+      "minimal_primary_metric": 0.18034382095361662,
+      "neural_primary_metric": 0.1679279279279279,
       "minimal_metric_source": "results/episode_task_suite/object_relevance/metrics.json",
       "neural_metric_source": "results/episode_task_suite/neural_mlp/object_relevance/metrics.json"
     },
@@ -214,8 +214,8 @@
         "num_train_windows": 813,
         "num_test_windows": 348
       },
-      "minimal_primary_metric": 0.017183946083791223,
-      "neural_primary_metric": 0.01781111161035397,
+      "minimal_primary_metric": 0.016023479050338015,
+      "neural_primary_metric": 0.01684125567132316,
       "minimal_metric_source": "results/episode_task_suite/caption_grounding/metrics.json",
       "neural_metric_source": "results/episode_task_suite/neural_mlp/caption_grounding/metrics.json"
     },
@@ -233,8 +233,8 @@
         "num_train_windows": 813,
         "num_test_windows": 348
       },
-      "minimal_primary_metric": 0.3764367816091954,
-      "neural_primary_metric": 0.21551724137931033,
+      "minimal_primary_metric": 0.367816091954023,
+      "neural_primary_metric": 0.19827586206896552,
       "minimal_metric_source": "results/episode_task_suite/cross_modal_retrieval/metrics.json",
       "neural_metric_source": "results/episode_task_suite/neural_mlp/cross_modal_retrieval/metrics.json"
     },
@@ -251,8 +251,8 @@
         "num_train_windows": 813,
         "num_test_windows": 348
       },
-      "minimal_primary_metric": -0.016022846771134747,
-      "neural_primary_metric": -0.010198171891414143,
+      "minimal_primary_metric": -0.015271898913936655,
+      "neural_primary_metric": -0.010171410134180991,
       "minimal_metric_source": "results/episode_task_suite/modality_reconstruction/metrics.json",
       "neural_metric_source": "results/episode_task_suite/neural_mlp/modality_reconstruction/metrics.json"
     },
@@ -270,8 +270,8 @@
         "num_train_samples": 1624,
         "num_test_samples": 696
       },
-      "minimal_primary_metric": 0.5487364620938628,
-      "neural_primary_metric": 0.8717948717948718,
+      "minimal_primary_metric": 0.5399515738498789,
+      "neural_primary_metric": 0.8520179372197308,
       "minimal_metric_source": "results/episode_task_suite/temporal_order/metrics.json",
       "neural_metric_source": "results/episode_task_suite/neural_mlp/temporal_order/metrics.json"
     },
@@ -289,8 +289,8 @@
         "num_train_samples": 1614,
         "num_test_samples": 692
       },
-      "minimal_primary_metric": 0.4865671641791045,
-      "neural_primary_metric": 0.7335243553008597,
+      "minimal_primary_metric": 0.5051698670605613,
+      "neural_primary_metric": 0.7152682255845944,
       "minimal_metric_source": "results/episode_task_suite/misalignment_detection/metrics.json",
       "neural_metric_source": "results/episode_task_suite/neural_mlp/misalignment_detection/metrics.json"
     }
@@ -306,7 +306,7 @@
     "Cross-episode generalization is evaluated in the later multi-episode stage.",
     "Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.",
     "Qwen3-Omni setup artifacts are preparation artifacts until the 32-episode held-out pilot runs.",
-    "Audio-visual learning needs an extracted audio feature block; audio is documented and visualized but not featurized in the current baseline vector."
+    "Full audio-visual representation learning still needs multi-episode training, but the current baseline vector now includes an extracted AAC audio feature block."
   ],
   "scale_up_gate": {
     "required_before_full_omni_pilot": [
