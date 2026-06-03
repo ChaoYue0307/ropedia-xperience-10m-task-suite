@@ -41,6 +41,7 @@ DATA_FILES = [
     "research_direction_extensions.json",
     "research_directions.json",
     "scope_claims_audit.json",
+    "single_episode_explorer.json",
     "source_alignment_audit.json",
     "summary_metrics.json",
     "task_surface_integrity.json",
@@ -77,7 +78,9 @@ SCRIPT_FILES = [
     "build_quality_gates.py",
     "build_public_surface_qa.py",
     "build_rendered_site_check.py",
+    "build_single_episode_explorer.py",
     "build_research_takeaways.py",
+    "single_episode_diagnostics.py",
     "verify_live_publication.py",
     "validate_mirror_parity.py",
     "validate_publication_package.py",
@@ -92,7 +95,20 @@ WEBSITE_FILES = [
     "apple-touch-icon.png",
     "favicon.png",
     "index.html",
+    "single_episode_explorer.html",
     "site.webmanifest",
+]
+
+RESULT_FILES = [
+    "single_episode_diagnostics/provenance.json",
+    "single_episode_diagnostics/README.md",
+    "single_episode_diagnostics/modality_ablation/ablation_metrics.csv",
+    "single_episode_diagnostics/modality_ablation/ablation_summary.json",
+    "single_episode_diagnostics/object_labels/object_vocab.json",
+    "single_episode_diagnostics/object_labels/window_object_labels.csv",
+    "single_episode_diagnostics/timeline_overlay/timeline_overlay.csv",
+    "single_episode_diagnostics/alignment_stress/alignment_shift_metrics.csv",
+    "single_episode_diagnostics/alignment_stress/alignment_stress_summary.json",
 ]
 
 DOC_FILES = [
@@ -236,6 +252,20 @@ def build_report(hf_root: Path) -> dict:
             )
         )
 
+    for filename in RESULT_FILES:
+        groups.append(
+            parity_group(
+                f"results/{filename}",
+                ROOT / "results" / filename,
+                {
+                    "hf_space": hf_root / "space/results" / filename,
+                    "hf_artifacts": hf_root / "artifacts/results" / filename,
+                    "hf_model": hf_root / "model/results" / filename,
+                },
+                hf_root,
+            )
+        )
+
     for filename in DOC_FILES:
         groups.append(
             parity_group(
@@ -291,6 +321,12 @@ def build_report(hf_root: Path) -> dict:
                 "name": "repo_hf_website_html_parity",
                 "status": "pass"
                 if not any(failure["group"].startswith("website/") for failure in failures)
+                else "fail",
+            },
+            {
+                "name": "repo_hf_diagnostic_result_parity",
+                "status": "pass"
+                if not any(failure["group"].startswith("results/") for failure in failures)
                 else "fail",
             },
             {

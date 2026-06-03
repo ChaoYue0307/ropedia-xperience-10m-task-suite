@@ -143,6 +143,29 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+def public_artifact_path(path: Path, repo_root: Path) -> str:
+    path = path.resolve()
+    try:
+        return str(path.relative_to(repo_root))
+    except ValueError:
+        pass
+    if path.name == "annotation.hdf5":
+        return "external_raw_sample/annotation.hdf5"
+    return path.name
+
+
+def public_source_reference(value: object) -> object:
+    if value in (None, ""):
+        return value
+    text = str(value)
+    if text.startswith("/") or "/" + "Users/" in text or "/" + "private/" in text:
+        path = Path(text)
+        if path.name == "annotation.hdf5":
+            return "external_raw_sample/annotation.hdf5"
+        return path.name
+    return text
+
+
 def load_inputs(suite_dir: Path) -> tuple[np.ndarray, np.ndarray, np.ndarray, list[dict], list[dict], dict]:
     npz_path = suite_dir / "shared_windows.npz"
     windows_path = suite_dir / "windows.csv"
@@ -299,8 +322,12 @@ def load_object_targets_from_annotation(annotation: Path, windows: list[dict], t
         "labels": labels,
         "vocab": list(vocab.keys()),
         "rows": rows_out,
-        "annotation": str(annotation),
-        "toolkit": str(toolkit),
+        "annotation": "external_raw_sample/annotation.hdf5",
+        "toolkit": "HOMIE-toolkit",
+        "source_note": (
+            "Object labels were exported from a raw Xperience-10M sample annotation. "
+            "The public artifact stores source type and hash instead of machine-specific file paths."
+        ),
     }
 
 
@@ -1121,6 +1148,7 @@ def build_provenance(
     summary: dict,
     annotation: Path | None = None,
 ) -> dict:
+    repo_root = suite_dir.parent.parent.resolve()
     input_files = [
         suite_dir / "shared_windows.npz",
         suite_dir / "windows.csv",
@@ -1136,8 +1164,8 @@ def build_provenance(
         input_files.append(annotation)
     provenance = {
         "artifact_policy": "Only existing local artifacts are consumed. Missing labels/tasks are marked not_computed instead of filled.",
-        "source_suite_dir": str(suite_dir),
-        "output_dir": str(out_dir),
+        "source_suite_dir": public_artifact_path(suite_dir, repo_root),
+        "output_dir": public_artifact_path(out_dir, repo_root),
         "shared_windows_shape": [int(X.shape[0]), int(X.shape[1])],
         "starts_first_last": [int(starts[0]), int(starts[-1])],
         "ends_first_last": [int(ends[0]), int(ends[-1])],
@@ -1147,10 +1175,10 @@ def build_provenance(
             "feature_dim": summary.get("feature_dim"),
             "window_frames": summary.get("window_frames"),
             "stride_frames": summary.get("stride_frames"),
-            "annotation": summary.get("annotation"),
+            "annotation": public_source_reference(summary.get("annotation")),
         },
         "input_file_hashes": {
-            str(path.relative_to(suite_dir.parent.parent) if suite_dir.parent.parent in path.parents else path): sha256(path)
+            public_artifact_path(path, repo_root): sha256(path)
             for path in input_files
             if path.exists()
         },
@@ -1170,7 +1198,7 @@ def write_index(out_dir: Path, provenance: dict, ablation_rows: list[dict], time
         "- `modality_ablation/`: compact ridge-head ablations across real feature blocks.",
         "- `timeline_overlay/`: existing prediction CSVs aligned to the episode timeline.",
         "- `alignment_stress/`: cross-modal retrieval under explicit time-shift perturbations.",
-        "- `provenance.json`: input hashes, feature dimensions, and source artifact paths.",
+        "- `provenance.json`: input hashes, feature dimensions, and source artifact identifiers.",
         "",
         "## Validity Boundaries",
         "",
@@ -1208,6 +1236,7 @@ def main() -> None:
                 "num_objects": len(object_targets["vocab"]),
                 "source_annotation": object_targets["annotation"],
                 "source_toolkit": object_targets["toolkit"],
+                "source_note": object_targets["source_note"],
             },
         )
     provenance = build_provenance(suite_dir, out_dir, X, starts, ends, manifest, summary, args.annotation)

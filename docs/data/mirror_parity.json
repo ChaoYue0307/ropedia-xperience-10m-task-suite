@@ -1,9 +1,9 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-03T01:40:55+00:00",
+  "generated_at_utc": "2026-06-03T04:07:33+00:00",
   "hf_root": "hf_publish",
   "summary": {
-    "group_count": 75,
+    "group_count": 88,
     "failure_count": 0,
     "failures_by_surface": {}
   },
@@ -22,6 +22,10 @@
     },
     {
       "name": "repo_hf_website_html_parity",
+      "status": "pass"
+    },
+    {
+      "name": "repo_hf_diagnostic_result_parity",
       "status": "pass"
     },
     {
@@ -377,27 +381,27 @@
       "local": {
         "path": "repo:docs/data/publication_audit.json",
         "exists": true,
-        "bytes": 7096,
-        "sha256": "0c692c42c41414c716d642aa051842d8250b44e57df263d3a962cb5b078f7d09"
+        "bytes": 7097,
+        "sha256": "9ab8df8c416ccdf385c076caee6ad13b3b227e29d9467ee00c1e749c36e0909b"
       },
       "mirrors": {
         "hf_space": {
           "path": "hf_space:data/publication_audit.json",
           "exists": true,
-          "bytes": 7096,
-          "sha256": "0c692c42c41414c716d642aa051842d8250b44e57df263d3a962cb5b078f7d09"
+          "bytes": 7097,
+          "sha256": "9ab8df8c416ccdf385c076caee6ad13b3b227e29d9467ee00c1e749c36e0909b"
         },
         "hf_artifacts": {
           "path": "hf_artifacts:docs/data/publication_audit.json",
           "exists": true,
-          "bytes": 7096,
-          "sha256": "0c692c42c41414c716d642aa051842d8250b44e57df263d3a962cb5b078f7d09"
+          "bytes": 7097,
+          "sha256": "9ab8df8c416ccdf385c076caee6ad13b3b227e29d9467ee00c1e749c36e0909b"
         },
         "hf_model": {
           "path": "hf_model:metrics/publication_audit.json",
           "exists": true,
-          "bytes": 7096,
-          "sha256": "0c692c42c41414c716d642aa051842d8250b44e57df263d3a962cb5b078f7d09"
+          "bytes": 7097,
+          "sha256": "9ab8df8c416ccdf385c076caee6ad13b3b227e29d9467ee00c1e749c36e0909b"
         }
       },
       "failures": []
@@ -682,6 +686,37 @@
       "failures": []
     },
     {
+      "name": "data/single_episode_explorer.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:docs/data/single_episode_explorer.json",
+        "exists": true,
+        "bytes": 4101241,
+        "sha256": "4ea0e34660de421a1a5ab0a4afcc44edec0ad0fc4e739f13d3af7974163f1897"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:data/single_episode_explorer.json",
+          "exists": true,
+          "bytes": 4101241,
+          "sha256": "4ea0e34660de421a1a5ab0a4afcc44edec0ad0fc4e739f13d3af7974163f1897"
+        },
+        "hf_artifacts": {
+          "path": "hf_artifacts:docs/data/single_episode_explorer.json",
+          "exists": true,
+          "bytes": 4101241,
+          "sha256": "4ea0e34660de421a1a5ab0a4afcc44edec0ad0fc4e739f13d3af7974163f1897"
+        },
+        "hf_model": {
+          "path": "hf_model:metrics/single_episode_explorer.json",
+          "exists": true,
+          "bytes": 4101241,
+          "sha256": "4ea0e34660de421a1a5ab0a4afcc44edec0ad0fc4e739f13d3af7974163f1897"
+        }
+      },
+      "failures": []
+    },
+    {
       "name": "data/source_alignment_audit.json",
       "status": "pass",
       "local": {
@@ -811,27 +846,27 @@
       "local": {
         "path": "repo:docs/data/website_integrity.json",
         "exists": true,
-        "bytes": 12715,
-        "sha256": "b68904e5051827d97f4b28b23fe57e014773c23b1b648a6444391658eed395bf"
+        "bytes": 13149,
+        "sha256": "d813e2b9dab44f290deed5dfd17af9949b6e064723f138117678e6f54e346df7"
       },
       "mirrors": {
         "hf_space": {
           "path": "hf_space:data/website_integrity.json",
           "exists": true,
-          "bytes": 12715,
-          "sha256": "b68904e5051827d97f4b28b23fe57e014773c23b1b648a6444391658eed395bf"
+          "bytes": 13149,
+          "sha256": "d813e2b9dab44f290deed5dfd17af9949b6e064723f138117678e6f54e346df7"
         },
         "hf_artifacts": {
           "path": "hf_artifacts:docs/data/website_integrity.json",
           "exists": true,
-          "bytes": 12715,
-          "sha256": "b68904e5051827d97f4b28b23fe57e014773c23b1b648a6444391658eed395bf"
+          "bytes": 13149,
+          "sha256": "d813e2b9dab44f290deed5dfd17af9949b6e064723f138117678e6f54e346df7"
         },
         "hf_model": {
           "path": "hf_model:metrics/website_integrity.json",
           "exists": true,
-          "bytes": 12715,
-          "sha256": "b68904e5051827d97f4b28b23fe57e014773c23b1b648a6444391658eed395bf"
+          "bytes": 13149,
+          "sha256": "d813e2b9dab44f290deed5dfd17af9949b6e064723f138117678e6f54e346df7"
         }
       },
       "failures": []
@@ -1672,6 +1707,31 @@
       "failures": []
     },
     {
+      "name": "scripts/build_single_episode_explorer.py",
+      "status": "pass",
+      "local": {
+        "path": "repo:scripts/build_single_episode_explorer.py",
+        "exists": true,
+        "bytes": 29394,
+        "sha256": "c837f4f4a0d7baff8d4e3bea36ea0f669c6a3eb073a0504c0a31bab481a38b73"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "hf_artifacts:scripts/build_single_episode_explorer.py",
+          "exists": true,
+          "bytes": 29394,
+          "sha256": "c837f4f4a0d7baff8d4e3bea36ea0f669c6a3eb073a0504c0a31bab481a38b73"
+        },
+        "hf_model": {
+          "path": "hf_model:scripts/build_single_episode_explorer.py",
+          "exists": true,
+          "bytes": 29394,
+          "sha256": "c837f4f4a0d7baff8d4e3bea36ea0f669c6a3eb073a0504c0a31bab481a38b73"
+        }
+      },
+      "failures": []
+    },
+    {
       "name": "scripts/build_research_takeaways.py",
       "status": "pass",
       "local": {
@@ -1692,6 +1752,31 @@
           "exists": true,
           "bytes": 10667,
           "sha256": "a14855d74b6c6fc8291821b9fbba9185623533ff2e21c96ec53d84071c9e4eae"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "scripts/single_episode_diagnostics.py",
+      "status": "pass",
+      "local": {
+        "path": "repo:scripts/single_episode_diagnostics.py",
+        "exists": true,
+        "bytes": 57667,
+        "sha256": "865ab2cd732e561fdf006516d50b337878592ab06708f231e9a864f82b3c867f"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "hf_artifacts:scripts/single_episode_diagnostics.py",
+          "exists": true,
+          "bytes": 57667,
+          "sha256": "865ab2cd732e561fdf006516d50b337878592ab06708f231e9a864f82b3c867f"
+        },
+        "hf_model": {
+          "path": "hf_model:scripts/single_episode_diagnostics.py",
+          "exists": true,
+          "bytes": 57667,
+          "sha256": "865ab2cd732e561fdf006516d50b337878592ab06708f231e9a864f82b3c867f"
         }
       },
       "failures": []
@@ -1727,21 +1812,21 @@
       "local": {
         "path": "repo:scripts/validate_mirror_parity.py",
         "exists": true,
-        "bytes": 10446,
-        "sha256": "77d1297b7faa1605e50b31e11f30e4f4b8af4b3d566d80bc93d9886295efd15e"
+        "bytes": 11942,
+        "sha256": "730159d3136e1f7fd7db236157d4081096bde0fde5110faeb265eb2724509945"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 10446,
-          "sha256": "77d1297b7faa1605e50b31e11f30e4f4b8af4b3d566d80bc93d9886295efd15e"
+          "bytes": 11942,
+          "sha256": "730159d3136e1f7fd7db236157d4081096bde0fde5110faeb265eb2724509945"
         },
         "hf_model": {
           "path": "hf_model:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 10446,
-          "sha256": "77d1297b7faa1605e50b31e11f30e4f4b8af4b3d566d80bc93d9886295efd15e"
+          "bytes": 11942,
+          "sha256": "730159d3136e1f7fd7db236157d4081096bde0fde5110faeb265eb2724509945"
         }
       },
       "failures": []
@@ -1952,21 +2037,46 @@
       "local": {
         "path": "repo:docs/index.html",
         "exists": true,
-        "bytes": 159244,
-        "sha256": "5c11e18e9974987d332fc0bdb2ca1dfadfaac98f37362710d1043e58b9074f73"
+        "bytes": 159797,
+        "sha256": "6071494e626ef88821cce4f6f9ee27b7d56011de345add95e1708c921ccc84e4"
       },
       "mirrors": {
         "hf_space": {
           "path": "hf_space:index.html",
           "exists": true,
-          "bytes": 159244,
-          "sha256": "5c11e18e9974987d332fc0bdb2ca1dfadfaac98f37362710d1043e58b9074f73"
+          "bytes": 159797,
+          "sha256": "6071494e626ef88821cce4f6f9ee27b7d56011de345add95e1708c921ccc84e4"
         },
         "hf_artifacts_docs": {
           "path": "hf_artifacts:docs/index.html",
           "exists": true,
-          "bytes": 159244,
-          "sha256": "5c11e18e9974987d332fc0bdb2ca1dfadfaac98f37362710d1043e58b9074f73"
+          "bytes": 159797,
+          "sha256": "6071494e626ef88821cce4f6f9ee27b7d56011de345add95e1708c921ccc84e4"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "website/single_episode_explorer.html",
+      "status": "pass",
+      "local": {
+        "path": "repo:docs/single_episode_explorer.html",
+        "exists": true,
+        "bytes": 2641502,
+        "sha256": "e97fede9233ce1329ea113dbbd06d0b6b9e5da986d35a9d6a3e20b626d741935"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:single_episode_explorer.html",
+          "exists": true,
+          "bytes": 2641502,
+          "sha256": "e97fede9233ce1329ea113dbbd06d0b6b9e5da986d35a9d6a3e20b626d741935"
+        },
+        "hf_artifacts_docs": {
+          "path": "hf_artifacts:docs/single_episode_explorer.html",
+          "exists": true,
+          "bytes": 2641502,
+          "sha256": "e97fede9233ce1329ea113dbbd06d0b6b9e5da986d35a9d6a3e20b626d741935"
         }
       },
       "failures": []
@@ -1992,6 +2102,285 @@
           "exists": true,
           "bytes": 725,
           "sha256": "96aabeb9756771606958034c962a9d12b3149f867227219b0c56a412d580d54a"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "results/single_episode_diagnostics/provenance.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/single_episode_diagnostics/provenance.json",
+        "exists": true,
+        "bytes": 3962,
+        "sha256": "48087224240941fd92444d4fee94a6146c96c35b5acc429a209db3c5cdb8d24b"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/single_episode_diagnostics/provenance.json",
+          "exists": true,
+          "bytes": 3962,
+          "sha256": "48087224240941fd92444d4fee94a6146c96c35b5acc429a209db3c5cdb8d24b"
+        },
+        "hf_artifacts": {
+          "path": "hf_artifacts:results/single_episode_diagnostics/provenance.json",
+          "exists": true,
+          "bytes": 3962,
+          "sha256": "48087224240941fd92444d4fee94a6146c96c35b5acc429a209db3c5cdb8d24b"
+        },
+        "hf_model": {
+          "path": "hf_model:results/single_episode_diagnostics/provenance.json",
+          "exists": true,
+          "bytes": 3962,
+          "sha256": "48087224240941fd92444d4fee94a6146c96c35b5acc429a209db3c5cdb8d24b"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "results/single_episode_diagnostics/README.md",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/single_episode_diagnostics/README.md",
+        "exists": true,
+        "bytes": 1058,
+        "sha256": "e64b13f227f270dc545317636f432fb766d6f7ab8695f69234b2c24b6413a42e"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/single_episode_diagnostics/README.md",
+          "exists": true,
+          "bytes": 1058,
+          "sha256": "e64b13f227f270dc545317636f432fb766d6f7ab8695f69234b2c24b6413a42e"
+        },
+        "hf_artifacts": {
+          "path": "hf_artifacts:results/single_episode_diagnostics/README.md",
+          "exists": true,
+          "bytes": 1058,
+          "sha256": "e64b13f227f270dc545317636f432fb766d6f7ab8695f69234b2c24b6413a42e"
+        },
+        "hf_model": {
+          "path": "hf_model:results/single_episode_diagnostics/README.md",
+          "exists": true,
+          "bytes": 1058,
+          "sha256": "e64b13f227f270dc545317636f432fb766d6f7ab8695f69234b2c24b6413a42e"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "results/single_episode_diagnostics/modality_ablation/ablation_metrics.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/single_episode_diagnostics/modality_ablation/ablation_metrics.csv",
+        "exists": true,
+        "bytes": 24871,
+        "sha256": "8e43bfa9b90544d7b09e207de26d1b852dd115b3e7c957eaa4b45e520dc050b8"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/single_episode_diagnostics/modality_ablation/ablation_metrics.csv",
+          "exists": true,
+          "bytes": 24871,
+          "sha256": "8e43bfa9b90544d7b09e207de26d1b852dd115b3e7c957eaa4b45e520dc050b8"
+        },
+        "hf_artifacts": {
+          "path": "hf_artifacts:results/single_episode_diagnostics/modality_ablation/ablation_metrics.csv",
+          "exists": true,
+          "bytes": 24871,
+          "sha256": "8e43bfa9b90544d7b09e207de26d1b852dd115b3e7c957eaa4b45e520dc050b8"
+        },
+        "hf_model": {
+          "path": "hf_model:results/single_episode_diagnostics/modality_ablation/ablation_metrics.csv",
+          "exists": true,
+          "bytes": 24871,
+          "sha256": "8e43bfa9b90544d7b09e207de26d1b852dd115b3e7c957eaa4b45e520dc050b8"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "results/single_episode_diagnostics/modality_ablation/ablation_summary.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/single_episode_diagnostics/modality_ablation/ablation_summary.json",
+        "exists": true,
+        "bytes": 735,
+        "sha256": "2761e1777963473ffa5110ab25e863a6b8ee19ce2004d94ffa938cfa5e0d93fc"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/single_episode_diagnostics/modality_ablation/ablation_summary.json",
+          "exists": true,
+          "bytes": 735,
+          "sha256": "2761e1777963473ffa5110ab25e863a6b8ee19ce2004d94ffa938cfa5e0d93fc"
+        },
+        "hf_artifacts": {
+          "path": "hf_artifacts:results/single_episode_diagnostics/modality_ablation/ablation_summary.json",
+          "exists": true,
+          "bytes": 735,
+          "sha256": "2761e1777963473ffa5110ab25e863a6b8ee19ce2004d94ffa938cfa5e0d93fc"
+        },
+        "hf_model": {
+          "path": "hf_model:results/single_episode_diagnostics/modality_ablation/ablation_summary.json",
+          "exists": true,
+          "bytes": 735,
+          "sha256": "2761e1777963473ffa5110ab25e863a6b8ee19ce2004d94ffa938cfa5e0d93fc"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "results/single_episode_diagnostics/object_labels/object_vocab.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/single_episode_diagnostics/object_labels/object_vocab.json",
+        "exists": true,
+        "bytes": 995,
+        "sha256": "813320bbe5d57c74803f5dfb080d440ef1804af41950e031d82ab80311eb04c7"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/single_episode_diagnostics/object_labels/object_vocab.json",
+          "exists": true,
+          "bytes": 995,
+          "sha256": "813320bbe5d57c74803f5dfb080d440ef1804af41950e031d82ab80311eb04c7"
+        },
+        "hf_artifacts": {
+          "path": "hf_artifacts:results/single_episode_diagnostics/object_labels/object_vocab.json",
+          "exists": true,
+          "bytes": 995,
+          "sha256": "813320bbe5d57c74803f5dfb080d440ef1804af41950e031d82ab80311eb04c7"
+        },
+        "hf_model": {
+          "path": "hf_model:results/single_episode_diagnostics/object_labels/object_vocab.json",
+          "exists": true,
+          "bytes": 995,
+          "sha256": "813320bbe5d57c74803f5dfb080d440ef1804af41950e031d82ab80311eb04c7"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "results/single_episode_diagnostics/object_labels/window_object_labels.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/single_episode_diagnostics/object_labels/window_object_labels.csv",
+        "exists": true,
+        "bytes": 78160,
+        "sha256": "a28e43bf88f5c4c0a193b7c0c574526822e5ca0757d78b168c8450730d804510"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/single_episode_diagnostics/object_labels/window_object_labels.csv",
+          "exists": true,
+          "bytes": 78160,
+          "sha256": "a28e43bf88f5c4c0a193b7c0c574526822e5ca0757d78b168c8450730d804510"
+        },
+        "hf_artifacts": {
+          "path": "hf_artifacts:results/single_episode_diagnostics/object_labels/window_object_labels.csv",
+          "exists": true,
+          "bytes": 78160,
+          "sha256": "a28e43bf88f5c4c0a193b7c0c574526822e5ca0757d78b168c8450730d804510"
+        },
+        "hf_model": {
+          "path": "hf_model:results/single_episode_diagnostics/object_labels/window_object_labels.csv",
+          "exists": true,
+          "bytes": 78160,
+          "sha256": "a28e43bf88f5c4c0a193b7c0c574526822e5ca0757d78b168c8450730d804510"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "results/single_episode_diagnostics/timeline_overlay/timeline_overlay.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/single_episode_diagnostics/timeline_overlay/timeline_overlay.csv",
+        "exists": true,
+        "bytes": 293713,
+        "sha256": "eebd53caf853aac5da51adea285e6623dd00860d23d3bc5703169ed6c53d0405"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/single_episode_diagnostics/timeline_overlay/timeline_overlay.csv",
+          "exists": true,
+          "bytes": 293713,
+          "sha256": "eebd53caf853aac5da51adea285e6623dd00860d23d3bc5703169ed6c53d0405"
+        },
+        "hf_artifacts": {
+          "path": "hf_artifacts:results/single_episode_diagnostics/timeline_overlay/timeline_overlay.csv",
+          "exists": true,
+          "bytes": 293713,
+          "sha256": "eebd53caf853aac5da51adea285e6623dd00860d23d3bc5703169ed6c53d0405"
+        },
+        "hf_model": {
+          "path": "hf_model:results/single_episode_diagnostics/timeline_overlay/timeline_overlay.csv",
+          "exists": true,
+          "bytes": 293713,
+          "sha256": "eebd53caf853aac5da51adea285e6623dd00860d23d3bc5703169ed6c53d0405"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "results/single_episode_diagnostics/alignment_stress/alignment_shift_metrics.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/single_episode_diagnostics/alignment_stress/alignment_shift_metrics.csv",
+        "exists": true,
+        "bytes": 8203,
+        "sha256": "8b0026b472a0c0fd8c6eb5c9c307b41ac7ed71fe0ae3d52c8b18dfd5721f0ef1"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/single_episode_diagnostics/alignment_stress/alignment_shift_metrics.csv",
+          "exists": true,
+          "bytes": 8203,
+          "sha256": "8b0026b472a0c0fd8c6eb5c9c307b41ac7ed71fe0ae3d52c8b18dfd5721f0ef1"
+        },
+        "hf_artifacts": {
+          "path": "hf_artifacts:results/single_episode_diagnostics/alignment_stress/alignment_shift_metrics.csv",
+          "exists": true,
+          "bytes": 8203,
+          "sha256": "8b0026b472a0c0fd8c6eb5c9c307b41ac7ed71fe0ae3d52c8b18dfd5721f0ef1"
+        },
+        "hf_model": {
+          "path": "hf_model:results/single_episode_diagnostics/alignment_stress/alignment_shift_metrics.csv",
+          "exists": true,
+          "bytes": 8203,
+          "sha256": "8b0026b472a0c0fd8c6eb5c9c307b41ac7ed71fe0ae3d52c8b18dfd5721f0ef1"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "results/single_episode_diagnostics/alignment_stress/alignment_stress_summary.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/single_episode_diagnostics/alignment_stress/alignment_stress_summary.json",
+        "exists": true,
+        "bytes": 332,
+        "sha256": "2a467dae8e2f1606d77eccc8d1cbeb11507d462f95291d52b49d1057b7db9f14"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/single_episode_diagnostics/alignment_stress/alignment_stress_summary.json",
+          "exists": true,
+          "bytes": 332,
+          "sha256": "2a467dae8e2f1606d77eccc8d1cbeb11507d462f95291d52b49d1057b7db9f14"
+        },
+        "hf_artifacts": {
+          "path": "hf_artifacts:results/single_episode_diagnostics/alignment_stress/alignment_stress_summary.json",
+          "exists": true,
+          "bytes": 332,
+          "sha256": "2a467dae8e2f1606d77eccc8d1cbeb11507d462f95291d52b49d1057b7db9f14"
+        },
+        "hf_model": {
+          "path": "hf_model:results/single_episode_diagnostics/alignment_stress/alignment_stress_summary.json",
+          "exists": true,
+          "bytes": 332,
+          "sha256": "2a467dae8e2f1606d77eccc8d1cbeb11507d462f95291d52b49d1057b7db9f14"
         }
       },
       "failures": []
