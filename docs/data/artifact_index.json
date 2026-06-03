@@ -1,8 +1,8 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-03T13:04:23+00:00",
+  "generated_at_utc": "2026-06-03T14:17:31+00:00",
   "status": "pass",
-  "artifact_count": 65,
+  "artifact_count": 70,
   "missing": [],
   "by_kind": {
     "project_path": 9,
@@ -10,8 +10,10 @@
     "source_alignment": 5,
     "publication_workflow": 1,
     "evaluation_protocol": 3,
-    "result_interpretation": 3,
-    "visual_evidence": 6,
+    "result_interpretation": 5,
+    "metrics_source": 3,
+    "website_data": 3,
+    "visual_evidence": 7,
     "quality_gate": 12,
     "reproducibility": 2,
     "publication_package_check": 1,
@@ -19,8 +21,6 @@
     "mirror_parity": 1,
     "integrity_report": 1,
     "metadata": 1,
-    "metrics_source": 2,
-    "website_data": 2,
     "data_contract": 3,
     "result_directory": 1,
     "taxonomy": 1,
@@ -62,8 +62,8 @@
       "surface": "repo_hf",
       "shows": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 5384,
-      "sha256": "3af38f7eefee59b48dfbdfb316f75f428e06fb2a2a5d37efa798ee3e2dae53f0"
+      "bytes": 6031,
+      "sha256": "b2de2d9de04e0a05046cbea8a0b7c2e8766f6171b5c80a1b3f244aa1c51023ea"
     },
     {
       "id": "project_status_json",
@@ -73,8 +73,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable copy of the current project status for website and HF mirrors.",
       "exists": true,
-      "bytes": 7340,
-      "sha256": "3f54a794582f4b61f60fe240a9ea6f1782e29a21498e2d63dad670495d4e0d39"
+      "bytes": 8162,
+      "sha256": "19471dbaf46a16275b8f0deaf67a5326b9508adc911a5c6d3426a2565049dd46"
     },
     {
       "id": "research_roadmap",
@@ -128,8 +128,8 @@
       "surface": "repo_hf",
       "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 14599,
-      "sha256": "b08c9c96b4844e7b2dfb0f35d45c70eda1289c9250e0e348f20a0bad6a353cff"
+      "bytes": 15981,
+      "sha256": "1e79ab74c4dee1e5e5a9b7346a9822977fd557a7350f2426e846211afee2f375"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -173,7 +173,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "056de9ea87b93874260b9a1b6191ae9f2c637b6763bfd3186b08df60eb682e53"
+      "sha256": "9d8eb05aa29f898a28f64b0b23ef0b912ba0f43d6ef558d213e05619da0b3197"
     },
     {
       "id": "source_alignment_validator",
@@ -238,8 +238,8 @@
       "surface": "repo_hf",
       "shows": "Summarizes the main research lessons from committed metrics and identifies which experiments need held-out episodes.",
       "exists": true,
-      "bytes": 3856,
-      "sha256": "3b575d4b47ba4e09f5e16d065dab78194148eb52394b30f588930237e0518f0d"
+      "bytes": 4893,
+      "sha256": "16a002167d0702ea7e85ad1a494800daad4ff080c3751e078275f7c196721046"
     },
     {
       "id": "research_takeaways_json",
@@ -249,8 +249,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable result interpretation for the website, HF cards, and mirror checks.",
       "exists": true,
-      "bytes": 5356,
-      "sha256": "0621f28d602582c70524cd9455b01558e7003267b1f4786d005e31597e46b051"
+      "bytes": 6814,
+      "sha256": "538ec80950dbf5d77cc6ab2bd5a96a3af191b56a257b895e48b6cf28deb0d044"
     },
     {
       "id": "research_takeaways_builder",
@@ -260,8 +260,63 @@
       "surface": "repo_hf",
       "shows": "Regenerates the research takeaways from committed summary metrics and task result artifacts.",
       "exists": true,
-      "bytes": 10709,
-      "sha256": "dfb6cc169b5a5a7e0b2f3d2aeb604fd0eeb586e97cfb114a0fe32844c7ff8617"
+      "bytes": 13304,
+      "sha256": "135f555b17aae5dc5965ec88c3db6e49622a480467909ffa10d53278d4ea054b"
+    },
+    {
+      "id": "audio_ablation_script",
+      "title": "Audio ablation and raw-audio upgrade script",
+      "path": "scripts/audio_ablation_and_raw_upgrade.py",
+      "kind": "result_interpretation",
+      "surface": "repo_hf",
+      "shows": "Measures current AAC audio contribution and a raw log-mel audio feature replacement across all 12 task contracts.",
+      "exists": true,
+      "bytes": 43192,
+      "sha256": "73db45a3ddb50b60f61ca5e55bdf2008e48c268681bfcdc95d35bb56e48f89e3"
+    },
+    {
+      "id": "audio_ablation_summary",
+      "title": "Audio ablation summary",
+      "path": "results/audio_ablation/audio_ablation_summary.json",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Stores per-task audio deltas for all current features, no-audio, handcrafted-audio-only, raw-audio-only, raw replacement, and all-plus-raw variants.",
+      "exists": true,
+      "bytes": 9735,
+      "sha256": "514370c53baeb51373160bbd5ab7f5f0de7733301bf1b82981ed799aec41152a"
+    },
+    {
+      "id": "audio_ablation_summary_md",
+      "title": "Audio ablation summary report",
+      "path": "results/audio_ablation/AUDIO_ABLATION_SUMMARY.md",
+      "kind": "result_interpretation",
+      "surface": "repo_hf",
+      "shows": "Human-readable table showing the measured audio contribution and raw-audio replacement delta for every task.",
+      "exists": true,
+      "bytes": 2166,
+      "sha256": "9318bc55b1b051c384ce2fd6e7cd0a56becfa00185a0b597fdc474a40b1f17f9"
+    },
+    {
+      "id": "audio_ablation_website_json",
+      "title": "Audio ablation website JSON",
+      "path": "docs/data/audio_ablation_summary.json",
+      "kind": "website_data",
+      "surface": "website_hf",
+      "shows": "Machine-readable audio ablation summary mirrored into the static website and Hugging Face bundles.",
+      "exists": true,
+      "bytes": 9735,
+      "sha256": "514370c53baeb51373160bbd5ab7f5f0de7733301bf1b82981ed799aec41152a"
+    },
+    {
+      "id": "audio_ablation_delta_chart",
+      "title": "Audio ablation delta chart",
+      "path": "docs/assets/charts/audio_ablation_delta.svg",
+      "kind": "visual_evidence",
+      "surface": "website_hf",
+      "shows": "Bar chart of measured current-audio primary-metric deltas across the 12 tasks.",
+      "exists": true,
+      "bytes": 4146,
+      "sha256": "187dbabe01f9ff18841ff61a1e7fbf85bebdd188cc0f248bb5090d64528e7568"
     },
     {
       "id": "figure_index",
@@ -283,7 +338,7 @@
       "shows": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
       "bytes": 13434,
-      "sha256": "fc7c9d504509bea2bab08238c96b745f00fdd6a016019d121d4bf0e22b5f3936"
+      "sha256": "1a28548d2838b5a5ea9464761ccb73a3e55d6d48dd4c68d321f056bfdc4ad560"
     },
     {
       "id": "figure_index_builder",
@@ -349,7 +404,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8147,
-      "sha256": "f5b7fa88aaae118ddf2ceba02a05f961a6a195fa8aa7a1055211c5a7de0143e2"
+      "sha256": "40c9cdc9d5afd15f8c69bda48a0eb36d81df14adff5555de54a481df1baed5ca"
     },
     {
       "id": "public_surface_qa",
@@ -371,7 +426,7 @@
       "volatile": true,
       "shows": "Machine-readable report for SEO/social metadata, accessible tab semantics, public links, project links, and reader-facing copy.",
       "exists": true,
-      "bytes": 5651,
+      "bytes": 5648,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -452,7 +507,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 68740,
+      "bytes": 68744,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -496,8 +551,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 24091,
-      "sha256": "f21aaf9267e93e571b093525525749054bee85872506f01ce534eb4fa131a56c"
+      "bytes": 25927,
+      "sha256": "4a9796faf0cd87b052a69f5fde89a7a3a88008f8e4485c05f9f5cc7630a89164"
     },
     {
       "id": "publication_audit",
@@ -508,7 +563,7 @@
       "volatile": true,
       "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and token strings.",
       "exists": true,
-      "bytes": 7253,
+      "bytes": 7289,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -532,7 +587,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 97333,
+      "bytes": 97337,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -544,7 +599,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 14310,
+      "bytes": 14587,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -622,7 +677,7 @@
       "shows": "Stores matching PyTorch MLP results for the 12 task contracts.",
       "exists": true,
       "file_count": 60,
-      "bytes": 90612122
+      "bytes": 90608884
     },
     {
       "id": "research_direction_taxonomy",

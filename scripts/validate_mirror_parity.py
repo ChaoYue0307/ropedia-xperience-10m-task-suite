@@ -20,6 +20,7 @@ DEFAULT_HF_ROOT = ROOT.parent / "hf_publish"
 DEFAULT_OUTPUT = ROOT / "docs/data/mirror_parity.json"
 
 DATA_FILES = [
+    "audio_ablation_summary.json",
     "artifact_index.json",
     "brand_assets.json",
     "evidence_contract.json",
@@ -52,6 +53,7 @@ DATA_FILES = [
 ]
 
 ASSET_FILES = [
+    "charts/audio_ablation_delta.svg",
     "brand/xperience10m-logo-apple-touch.png",
     "brand/xperience10m-logo-favicon-32.png",
     "brand/xperience10m-logo-favicon-64.png",
@@ -72,6 +74,7 @@ ASSET_FILES = [
 ]
 
 SCRIPT_FILES = [
+    "audio_ablation_and_raw_upgrade.py",
     "build_artifact_index.py",
     "build_brand_assets.py",
     "build_evaluation_protocol.py",
@@ -103,6 +106,11 @@ WEBSITE_FILES = [
 ]
 
 RESULT_FILES = [
+    "audio_ablation/AUDIO_ABLATION_SUMMARY.md",
+    "audio_ablation/audio_ablation_metrics.csv",
+    "audio_ablation/audio_ablation_summary.json",
+    "audio_ablation/audio_delta_summary.csv",
+    "audio_ablation/raw_logmel_fisheye_cam0_sr16000_mels64_fft512_hop160.npz",
     "single_episode_diagnostics/provenance.json",
     "single_episode_diagnostics/README.md",
     "single_episode_diagnostics/modality_ablation/ablation_metrics.csv",
