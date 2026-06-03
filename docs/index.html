@@ -2172,7 +2172,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Project overview and contributions.</h2>
-          <p>The page is organized like a compact research project: motivation and scope, dataset sample, task suite, method, baselines, research directions, interactive walkthroughs, and resources for continuing the work.</p>
+          <p>The page is organized like a compact research project: motivation and scope, dataset sample, task suite, method, baselines, research directions, interactive walkthroughs, and resources for continuing the work. The public sample is used as a real but bounded research system, not as a final full-dataset benchmark.</p>
         </div>
         <div class="brief-panel">
           <div class="brief-panel-head">
@@ -2198,6 +2198,24 @@
             <article class="brief-card">
               <strong>What comes next</strong>
               <p>The next model-quality stage is a held-out episode pilot over the selected multi-episode relay, with no train/test episode leakage and a completed omni-model evaluation report.</p>
+            </article>
+          </div>
+          <div class="brief-grid" aria-label="Research capability map">
+            <article class="brief-card">
+              <strong>Data understanding</strong>
+              <p>Maps one public episode into synchronized windows across video, audio, depth, pose/SLAM, mocap, IMU, calibration, and language-derived signals.</p>
+            </article>
+            <article class="brief-card">
+              <strong>Task design</strong>
+              <p>Defines embodied-AI inputs, process modules, outputs, metrics, and case-study walkthroughs instead of treating the sample as a generic classification file.</p>
+            </article>
+            <article class="brief-card">
+              <strong>Evaluation discipline</strong>
+              <p>Keeps chronological splits, predictions, confusion matrices, leakage notes, and single-episode limitations explicit before claiming broader model quality.</p>
+            </article>
+            <article class="brief-card">
+              <strong>Scale-up readiness</strong>
+              <p>Connects the same data contract to 32/128-episode held-out pilots, Qwen3-Omni LoRA, Cosmos-style world modeling, and later policy-model branches.</p>
             </article>
           </div>
           <div class="brief-actions">

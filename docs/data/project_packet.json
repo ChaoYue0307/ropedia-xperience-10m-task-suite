@@ -142,7 +142,7 @@
   },
   "current_reading_notes": [
     "Cross-environment generalization is evaluated in the later multi-episode stage.",
-    "The Qwen3-Omni setup run is separate from the planned held-out fine-tune.",
+    "The Qwen3-Omni setup run is separate from the planned held-out 32-episode fine-tune and still requires gated data staging before any real 32-episode result is reported.",
     "Feature-vector reconstruction is separate from pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
     "Raw Xperience-10M data is not redistributed in this repo."
   ]

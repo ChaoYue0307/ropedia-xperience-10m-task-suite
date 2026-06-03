@@ -5,6 +5,25 @@ research task lab for embodied AI. It is designed to answer a practical
 question: what can be built, measured, and extended from a richly synchronized
 egocentric episode before scaling to held-out multi-episode training?
 
+## Research Intent
+
+The public sample is treated as a small but real research system. The project
+does not try to inflate one episode into a final benchmark. Instead, it shows
+the full path from data inspection to task design, baseline modeling,
+evaluation, artifact packaging, and a guarded scale-up plan. The intended
+reader should be able to audit one model input, understand each task, reproduce
+the public-sample results, and see exactly what remains before multi-episode
+model-quality claims.
+
+## Capability Map
+
+| Capability | Evidence in this project |
+| --- | --- |
+| Data understanding | `feature_manifest.json`, `available_modalities.json`, modality atlas, episode-window HF viewer |
+| Task design | 12 task contracts, task cards, case-study walkthroughs, and four research-direction extension probes |
+| Evaluation rigor | chronological split, per-task metrics, predictions, confusion matrices, leakage notes, and generated takeaways |
+| Scale-up planning | 128-episode selection/relay plan, Qwen3-Omni path, Cosmos 3 branch, and policy-model candidates after action-space conversion |
+
 ## What Exists Now
 
 | Layer | Current artifact |
