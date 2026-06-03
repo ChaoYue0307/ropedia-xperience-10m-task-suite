@@ -309,6 +309,12 @@ def validate(docs_root: Path, site_base: str) -> dict:
             "The website should expose the machine-readable research roadmap.",
         ),
         (
+            "rendered_site_check_links_json",
+            'data/rendered_site_check.json',
+            None,
+            "The website should expose the browser-level rendered website check.",
+        ),
+        (
             "roadmap_html_matches_json_phases",
             "",
             None,
@@ -474,6 +480,7 @@ def validate(docs_root: Path, site_base: str) -> dict:
         elif name in {
             "project_status_links_json",
             "roadmap_links_json",
+            "rendered_site_check_links_json",
             "figure_index_links_json",
             "task_player_surface_present",
             "task_player_uses_walkthrough_json",

@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-02T18:40:02+00:00",
+  "generated_at_utc": "2026-06-03T01:40:56+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -54,6 +54,7 @@
     "RESEARCH_TAKEAWAYS.md": true,
     "QUALITY_GATES.md": true,
     "PUBLIC_SURFACE_QA.md": true,
+    "RENDERED_SITE_CHECK.md": true,
     "EVALUATION_PROTOCOL.md": true,
     "FIGURE_INDEX.md": true,
     "SOURCE_ALIGNMENT_AUDIT.md": true,
@@ -87,6 +88,7 @@
     "docs/data/modality_atlas.json": true,
     "docs/data/mirror_parity.json": true,
     "docs/data/public_surface_qa.json": true,
+    "docs/data/rendered_site_check.json": true,
     "docs/data/scope_claims_audit.json": true,
     "docs/data/task_surface_integrity.json": true,
     "docs/data/website_integrity.json": true,
@@ -121,6 +123,7 @@
     "scripts/build_figure_index.py": true,
     "scripts/build_quality_gates.py": true,
     "scripts/build_public_surface_qa.py": true,
+    "scripts/build_rendered_site_check.py": true,
     "scripts/verify_live_publication.py": true,
     "scripts/validate_mirror_parity.py": true,
     "scripts/validate_scope_claims.py": true,
@@ -135,7 +138,7 @@
       "surface": "github_repo",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 19,
+      "required_marker_count": 20,
       "missing_markers": [],
       "status": "pass"
     },
@@ -143,7 +146,7 @@
       "surface": "hf_space_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 19,
+      "required_marker_count": 20,
       "missing_markers": [],
       "status": "pass"
     },
@@ -151,7 +154,7 @@
       "surface": "hf_artifact_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 18,
+      "required_marker_count": 19,
       "missing_markers": [],
       "status": "pass"
     },
@@ -159,7 +162,7 @@
       "surface": "hf_artifact_bundle",
       "path": "PROJECT_README.md",
       "exists": true,
-      "required_marker_count": 19,
+      "required_marker_count": 20,
       "missing_markers": [],
       "status": "pass"
     },
@@ -167,7 +170,7 @@
       "surface": "hf_model_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 19,
+      "required_marker_count": 20,
       "missing_markers": [],
       "status": "pass"
     }
@@ -176,8 +179,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 330,
-      "text_file_count": 266,
+      "file_count": 333,
+      "text_file_count": 269,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -187,8 +190,8 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 116,
-      "text_file_count": 89,
+      "file_count": 118,
+      "text_file_count": 91,
       "largest_file": {
         "path": "assets/task_suite_infographic.png",
         "bytes": 2618313
@@ -198,8 +201,8 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 359,
-      "text_file_count": 275,
+      "file_count": 362,
+      "text_file_count": 278,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -209,8 +212,8 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 536,
-      "text_file_count": 420,
+      "file_count": 539,
+      "text_file_count": 423,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010

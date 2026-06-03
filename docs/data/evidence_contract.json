@@ -225,6 +225,17 @@
       "boundary": "checks local links, anchors, JSON data, and referenced images; external URLs are not fetched"
     },
     {
+      "id": "rendered_site_check",
+      "claim": "The rendered website walkthrough has a browser-level interaction check.",
+      "status": "verified",
+      "evidence": [
+        "RENDERED_SITE_CHECK.md",
+        "scripts/build_rendered_site_check.py",
+        "docs/data/rendered_site_check.json"
+      ],
+      "boundary": "checks local page load, tab switch, walkthrough deep link, player controls, and console health"
+    },
+    {
       "id": "quality_gates",
       "claim": "The release gate is explicit.",
       "status": "verified",

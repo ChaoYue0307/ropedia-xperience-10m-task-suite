@@ -23,6 +23,7 @@ SURFACES = {
 
 STATUS_REPORTS = {
     "website_integrity": ROOT / "docs/data/website_integrity.json",
+    "rendered_site_check": ROOT / "docs/data/rendered_site_check.json",
     "task_surface_integrity": ROOT / "docs/data/task_surface_integrity.json",
     "source_alignment": ROOT / "docs/data/source_alignment_audit.json",
     "scale_up_status": ROOT / "docs/data/scope_claims_audit.json",
@@ -160,6 +161,7 @@ def build_report() -> dict:
     artifact_markers = [
         "data/project_brief.json",
         "data/website_integrity.json",
+        "data/rendered_site_check.json",
         "data/task_surface_integrity.json",
         "data/publication_audit.json",
         "data/mirror_parity.json",

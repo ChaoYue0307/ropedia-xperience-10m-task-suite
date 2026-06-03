@@ -59,6 +59,7 @@ The project separates these reading layers:
 | [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Records historical `32ep` setup identifiers separately from completed held-out-episode results. |
 | [`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json) | Confirms the public 12-task cards use readable task names, modality thumbnails, and the interactive walkthrough/player data contract. |
 | [`docs/data/website_integrity.json`](docs/data/website_integrity.json) | Confirms local site links, anchors, JSON bundles, and referenced images resolve. |
+| [`RENDERED_SITE_CHECK.md`](RENDERED_SITE_CHECK.md) and [`docs/data/rendered_site_check.json`](docs/data/rendered_site_check.json) | Records the latest browser-level page load, tab navigation, walkthrough deep link, player interaction, and console-health check. |
 | [`docs/data/project_packet.json`](docs/data/project_packet.json) | Gives the shortest machine-readable project route. |
 
 ## Official Source Alignment

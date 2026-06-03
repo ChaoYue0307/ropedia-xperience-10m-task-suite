@@ -62,6 +62,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "rendered_site_check_json",
+        "title": "Rendered website check JSON",
+        "local_path": "docs/data/rendered_site_check.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/rendered_site_check.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/rendered_site_check.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/rendered_site_check.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/rendered_site_check.json",
+        },
+    },
+    {
         "id": "xperience10m_dataset_card_alignment_json",
         "title": "Official Xperience-10M dataset-card alignment JSON",
         "local_path": "docs/data/xperience10m_dataset_card_alignment.json",
