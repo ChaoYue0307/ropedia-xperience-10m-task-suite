@@ -83,8 +83,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--video-hist-bins", type=int, default=8, help="Color histogram bins per channel.")
     parser.add_argument("--depth-grid-size", type=int, default=8, help="Small depth/confidence grid per frame.")
     parser.add_argument("--text-hash-dim", type=int, default=128, help="Hashed bag-of-words dimension.")
-    parser.add_argument("--audio-source", choices=list(VIDEO_FILES), default=PRIMARY_AUDIO_VIDEO, help="MP4 stream used for AAC audio features.")
-    parser.add_argument("--audio-sample-rate", type=int, default=16000, help="Audio sample rate for extracted AAC features.")
+    parser.add_argument("--audio-source", choices=list(VIDEO_FILES), default=PRIMARY_AUDIO_VIDEO, help="MP4 stream used for audio features.")
+    parser.add_argument("--audio-sample-rate", type=int, default=16000, help="Audio sample rate for extracted audio features.")
     parser.add_argument("--audio-band-count", type=int, default=16, help="Number of log-spaced spectral energy bands per frame.")
     parser.add_argument(
         "--include-label-text",

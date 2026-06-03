@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Audio ablation and raw-audio feature upgrade for the Xperience-10M task suite.
+"""Audio contribution variants for the Xperience-10M task suite.
 
 This script is artifact-driven where possible. It consumes the committed
-single-episode task-suite windows and feature manifest, decodes the real AAC
-stream from the local public sample MP4, and writes measured task deltas.
+single-episode task-suite windows and feature manifest, derives an alternate
+audio representation from the local public sample MP4, and writes measured
+task deltas.
 """
 
 from __future__ import annotations
@@ -56,10 +57,10 @@ VARIANTS = [
 VARIANT_DISPLAY = {
     "all_handcrafted_audio": "All Current Features",
     "all_except_audio": "All Except Audio",
-    "handcrafted_audio_only": "Handcrafted AAC Audio Only",
-    "raw_logmel_audio_only": "Raw Log-Mel Audio Only",
-    "replace_handcrafted_with_raw": "Replace AAC Block With Raw Log-Mel",
-    "all_plus_raw_logmel": "All Current Features + Raw Log-Mel",
+    "handcrafted_audio_only": "Audio Only",
+    "raw_logmel_audio_only": "Alternate Audio Only",
+    "replace_handcrafted_with_raw": "Audio Representation Replacement",
+    "all_plus_raw_logmel": "All Current Features + Alternate Audio",
 }
 
 PRIMARY_METRIC_HIGHER_IS_BETTER = {
@@ -478,16 +479,16 @@ def feature_matrix_for_variant(task: str, variant: str, X: np.ndarray, raw_audio
     audio = block_indices(manifest, ["audio_"])
     base_no_audio = setdiff_idx(base, audio)
     if variant == "all_handcrafted_audio":
-        return X[:, base], f"task contract feature blocks with handcrafted AAC audio where applicable ({len(base)} dims)"
+        return X[:, base], f"task contract feature blocks with audio where applicable ({len(base)} dims)"
     if variant == "all_except_audio":
-        return X[:, base_no_audio], f"same task contract with handcrafted AAC audio columns removed ({len(base_no_audio)} dims)"
+        return X[:, base_no_audio], f"same task contract with audio columns removed ({len(base_no_audio)} dims)"
     if variant == "handcrafted_audio_only":
-        return X[:, audio], f"handcrafted AAC audio block only ({len(audio)} dims)"
+        return X[:, audio], f"audio feature block only ({len(audio)} dims)"
     if variant == "raw_logmel_audio_only":
         return raw_audio, f"raw waveform log-mel embedding only ({raw_audio.shape[1]} dims)"
     if variant == "replace_handcrafted_with_raw":
         return np.concatenate([X[:, base_no_audio], raw_audio], axis=1), (
-            f"task contract with handcrafted AAC removed and raw log-mel added ({len(base_no_audio) + raw_audio.shape[1]} dims)"
+            f"task contract with baseline audio removed and alternate audio representation added ({len(base_no_audio) + raw_audio.shape[1]} dims)"
         )
     if variant == "all_plus_raw_logmel":
         return np.concatenate([X[:, base], raw_audio], axis=1), (
@@ -575,7 +576,7 @@ def misalignment_features(
         right = X[pairs[:, 1]][:, visual_no_audio]
         return np.concatenate([left, right], axis=1).astype(np.float32), "motion/current visual pair with audio removed"
     if variant == "handcrafted_audio_only":
-        return pair_features_generic(X[:, audio], pairs), "handcrafted AAC audio self-alignment pair"
+        return pair_features_generic(X[:, audio], pairs), "audio self-alignment pair"
     if variant == "raw_logmel_audio_only":
         return pair_features_generic(raw_audio, pairs), "raw log-mel audio self-alignment pair"
     if variant == "replace_handcrafted_with_raw":
@@ -885,7 +886,7 @@ def main() -> int:
     toolkit = infer_homie_toolkit(raw_sample_dir, args.homie_toolkit)
 
     if raw_sample_dir is None or not audio_path.exists():
-        raise FileNotFoundError("Local public sample MP4 is required for raw-audio upgrade. Pass --raw-sample-dir.")
+        raise FileNotFoundError("Local public sample MP4 is required for alternate audio extraction. Pass --raw-sample-dir.")
     if shutil.which("ffmpeg") is None:
         raise RuntimeError("ffmpeg is required to decode the MP4 audio stream.")
 

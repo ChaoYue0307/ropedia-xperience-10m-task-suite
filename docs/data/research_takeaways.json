@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Research Takeaways",
   "status": "pass",
-  "generated_at_utc": "2026-06-03T14:16:16+00:00",
+  "generated_at_utc": "2026-06-03T18:11:32+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
@@ -133,7 +133,7 @@
     {
       "id": "audio_contribution_is_task_specific",
       "title": "Audio helps some tasks and hurts others on the public sample",
-      "readout": "The current AAC audio block improves the primary metric on 6 of 12 tasks, while raw log-mel replacement improves over the current handcrafted block on 6 of 12 tasks. The largest current-audio gain appears in feature reconstruction, not in action classification.",
+      "readout": "Audio improves the primary metric on 6 of 12 tasks, while raw log-mel replacement improves over the current handcrafted block on 6 of 12 tasks. The largest current-audio gain appears in feature reconstruction, not in action classification.",
       "evidence": [
         {
           "label": "tasks_where_current_audio_improves",
@@ -166,23 +166,23 @@
     {
       "id": "scale_requires_episodes",
       "title": "The next scientific unit is held-out episodes, not more adjacent windows",
-      "readout": "The prepared Qwen3-Omni path targets 32 episodes from 32 sessions, but it remains data-gated until access and held-out evaluation complete.",
+      "readout": "The prepared Qwen3-Omni path now targets a selected 128-episode pilot; held-out metrics will be reported after staging, training, and evaluation complete.",
       "evidence": [
         {
           "label": "target_episodes",
-          "value": 32
+          "value": 128
         },
         {
           "label": "selected_sessions",
-          "value": 32
+          "value": 128
         },
         {
           "label": "valid_candidates",
-          "value": 680
+          "value": 12102
         }
       ],
       "source": "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
-      "current_scope": "The 32-episode Qwen3-Omni fine-tune requires gated data staging and held-out evaluation."
+      "current_scope": "The selected-episode Qwen3-Omni fine-tune requires completed data staging and held-out evaluation."
     }
   ]
 }

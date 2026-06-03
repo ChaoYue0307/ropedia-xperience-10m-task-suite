@@ -18,14 +18,14 @@
       "family": "Qwen3-Omni",
       "category": "omni_instruction_model",
       "openness": "open_weights_available_from_official_hf_repo",
-      "best_role": "First 32-episode multimodal LoRA pilot and structured task predictor.",
+      "best_role": "First selected-episode multimodal LoRA pilot and structured task predictor.",
       "xperience10m_fit": [
         "RGB/fisheye video, embedded audio, and language prompts can enter directly.",
         "Depth, pose/SLAM, mocap, contacts, and IMU enter through the existing sensor bridge.",
         "Matches current task outputs: labels, structured JSON, captions, and short decisions."
       ],
       "current_decision": "keep_as_first_pilot",
-      "entry_condition": "At least 32 valid episodes staged with held-out episode split.",
+      "entry_condition": "Selected episodes staged with held-out episode split.",
       "public_source": "https://huggingface.co/Qwen/Qwen3-Omni-30B-A3B-Instruct"
     },
     {

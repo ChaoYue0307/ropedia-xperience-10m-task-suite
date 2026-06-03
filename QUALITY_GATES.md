@@ -12,7 +12,7 @@ These checks cover public packaging, project status wording, mirror parity, and 
 
 | Check | Command | Report | Current status | Needs attention when |
 | --- | --- | --- | --- | --- |
-| Multi-episode pilot status | `python scripts/validate_scope_claims.py` | `docs/data/scope_claims_audit.json` | `pass` | Historical 32ep setup/provenance strings are presented as completed 32-episode metrics. |
+| Multi-episode pilot status | `python scripts/validate_scope_claims.py` | `docs/data/scope_claims_audit.json` | `pass` | Setup/provenance strings are presented as completed held-out metrics. |
 | Source alignment | `python scripts/validate_source_alignment.py` | `docs/data/source_alignment_audit.json` | `pass` | Official full-dataset facts, sample-card facts, API-listing notes, or project coverage are missing or inconsistent. |
 | Website integrity | `python scripts/validate_website_integrity.py` | `docs/data/website_integrity.json` | `pass` | Local links, anchors, JSON bundles, or referenced image assets are missing or invalid. |
 | Rendered website check | `python scripts/build_rendered_site_check.py --input /tmp/xperience_rendered_site_observations.json` | `docs/data/rendered_site_check.json` | `pass` | The local rendered site cannot load, switch tabs, deep-link to the walkthrough, update player controls, or stay console-clean. |

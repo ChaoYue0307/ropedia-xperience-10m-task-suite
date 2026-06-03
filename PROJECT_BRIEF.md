@@ -10,11 +10,11 @@ egocentric episode before scaling to held-out multi-episode training?
 | Layer | Current artifact |
 | --- | --- |
 | Data unit | 1 public sample episode, 5,821 frames, 1,161 synchronized 20-frame windows |
-| Modalities | Video-derived features, AAC audio, depth, pose/SLAM, mocap, IMU, calibration, and language-derived features |
+| Modalities | Video-derived features, audio, depth, pose/SLAM, mocap, IMU, calibration, and language-derived features |
 | Task suite | 12 embodied-AI task contracts with inputs, targets, metrics, predictions, and case-study walkthroughs |
 | Models | Minimal linear/ridge/logistic baselines plus compact PyTorch MLP heads for the same 12 tasks |
 | Research map | Four Ropedia research directions with direct, proxy, diagnostic, and extension-task coverage |
-| Scale-up path | Qwen3-Omni LoRA pilot code path prepared for 32 held-out episodes after gated data access |
+| Scale-up path | Qwen3-Omni LoRA code path prepared; full-dataset access is granted and a 128-episode selected relay is being staged |
 
 ## How To Read It
 

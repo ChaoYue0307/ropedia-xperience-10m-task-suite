@@ -2,8 +2,9 @@
 
 Current status: access to the gated full `ropedia-ai/xperience-10m` dataset is
 granted, and a metadata-only Hugging Face audit has been completed. A
-128-episode metadata-balanced relay has started, but the selected multi-episode
-data has not been fully staged, audited, trained, or evaluated yet.
+128-episode metadata-balanced relay has started with chunked parallel transfer
+and overlapping batch prefetch, but the selected multi-episode data has not
+been fully staged, audited, trained, or evaluated yet.
 
 This file records the public data-access status and pilot requirements. It does
 not include local-machine aliases, private paths, SSH hosts, or token locations.
@@ -13,11 +14,11 @@ not include local-machine aliases, private paths, SSH hosts, or token locations.
 | Item | Value |
 | --- | ---: |
 | Dataset | `ropedia-ai/xperience-10m` |
-| Target | 32 complete leaf episodes |
+| Minimum pilot gate | 32 complete leaf episodes |
 | Strategy | stratified round-robin across top-level session UUIDs |
 | Metadata-audited visible complete episodes | 12,102 |
 | Metadata-audited complete sessions | 802 |
-| Recommended next selection | 128 metadata-balanced episodes |
+| Current selected relay | 128 metadata-balanced episodes |
 | Recommended split | 96 train / 16 val / 16 test |
 | Recommended estimated download | 277.71 GiB excluding `visualization.rrd` |
 | Representative 32-episode estimate | ~70.5 GiB at median episode size |
@@ -28,12 +29,15 @@ not include local-machine aliases, private paths, SSH hosts, or token locations.
 
 The current Qwen3-Omni artifacts come from the locally available sample data.
 The held-out model-quality run starts after selected complete episodes are
-downloaded, transferred if needed, validated locally, audited for content
-balance, and preprocessed into train/val/test examples.
+downloaded, transferred through the relay path, validated locally, audited for
+content balance, and preprocessed into train/val/test examples. The current
+relay uses chunked parallel file transfer and overlapping prefetch to reduce
+staging idle time; this is a data-staging improvement, not a model-quality
+result.
 
-A real 32-episode pilot can be claimed only after:
+A real held-out pilot can be claimed only after:
 
-- at least 32 valid episodes are available locally,
+- selected valid episodes are available locally,
 - the manifest builder confirms complete held-out episode splits,
 - training finishes with recorded metadata and progress logs,
 - evaluation runs on held-out test episodes,

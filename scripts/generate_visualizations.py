@@ -25,19 +25,19 @@ ASSETS = DOCS / "assets"
 CHARTS = ASSETS / "charts"
 
 OMNI_RELAY = {
-    "status": "pending_huggingface_gated_access",
+    "status": "selected_relay_in_progress",
     "dataset": "ropedia-ai/xperience-10m",
     "staging": "prepared_generic_host_to_host_transfer",
     "training_target": "external_multi_gpu_training_host",
     "selection_strategy": "stratified_round_robin_by_top_level_session",
-    "target_episodes": 32,
-    "selected_sessions": 32,
-    "candidate_scan_top_level_sessions": 64,
-    "valid_candidates": 680,
-    "estimated_bytes": 72031620552,
+    "target_episodes": 128,
+    "selected_sessions": 128,
+    "candidate_scan_top_level_sessions": 802,
+    "valid_candidates": 12102,
+    "estimated_bytes": 298188841943,
     "exclude": ["visualization.rrd"],
-    "access_status": "Hugging Face returns 403 pending review for the full Xperience-10M gated dataset.",
-    "current_scope": "The 32-episode Qwen3-Omni fine-tune requires gated data staging and held-out evaluation.",
+    "access_status": "Full-dataset access is granted; selected multi-episode relay is in progress.",
+    "current_scope": "The selected-episode Qwen3-Omni fine-tune requires completed data staging and held-out evaluation.",
 }
 
 
@@ -80,8 +80,18 @@ def svg_bar_chart(path: Path, title: str, rows: list[tuple[str, float]], x_label
     path.write_text("\n".join(parts), encoding="utf-8")
 
 
+FEATURE_DISPLAY_NAMES = {
+    "audio_fisheye_cam0_aac": "audio",
+    "caption_objects_interaction_text": "language text",
+}
+
+
+def display_feature_name(name: str) -> str:
+    return FEATURE_DISPLAY_NAMES.get(name, name.replace("_", " "))
+
+
 def svg_feature_blocks(path: Path, feature_manifest: list[dict]) -> None:
-    rows = [(block["name"], float(block["dim"])) for block in feature_manifest]
+    rows = [(display_feature_name(block["name"]), float(block["dim"])) for block in feature_manifest]
     svg_bar_chart(path, "Current Extracted Feature Blocks", rows, x_label="feature dimensions", max_value=max(v for _, v in rows) * 1.08)
 
 
@@ -99,7 +109,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
         (365, 110, 250, 132, "2. HOMIE loader", [
             "video, depth, pose",
             "mocap, IMU, language",
-            "AAC audio features",
+            "audio features",
         ], "#7ae5c3"),
         (670, 110, 250, 132, "3. Window builder", [
             f"{suite['window_frames']}-frame windows",
@@ -109,7 +119,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
         (975, 110, 300, 132, "4. Feature vector", [
             f"{suite['feature_dim']:,} dimensions",
             f"{len(summary['feature_manifest'])} named blocks",
-            "audio block included",
+            "audio represented",
             "stored manifest",
         ], "#d8f4a5"),
         (60, 380, 360, 168, "5. Baseline models", [
@@ -160,8 +170,8 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
             parts.append(f'<text x="{x + 24}" y="{y + 66 + i * 22}" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">{html.escape(line)}</text>')
     checks = [
         "Reproduction check: rerunning scripts to an ignored scratch workspace reproduced committed metrics exactly.",
-        "Modality check: sample covers video, AAC audio, depth, pose/SLAM, mocap, IMU, and language annotation.",
-        "Feature check: current manifest has video/depth/pose/mocap/IMU/language blocks plus a real AAC audio block.",
+        "Modality check: sample covers video, audio, depth, pose/SLAM, mocap, IMU, and language annotation.",
+        "Feature check: current manifest has synchronized video, audio, depth, pose, mocap, IMU, and language groups.",
         "Scope check: this validates one public sample episode, not cross-episode generalization.",
     ]
     parts.append('<rect x="60" y="620" width="1220" height="96" rx="8" fill="#071207" stroke="#ccffa0" stroke-opacity="0.24"/>')
@@ -369,7 +379,7 @@ def svg_task_architectures(path: Path, summary: dict) -> None:
         ], "#9bdfff"),
         (410, 122, 310, 110, "Feature vector", [
             f"X_all = {suite['feature_dim']:,} dimensions",
-            f"{len(summary['feature_manifest'])} named blocks incl. audio",
+            f"{len(summary['feature_manifest'])} named modality groups",
             "mean/std fit on train only",
         ], "#7ae5c3"),
         (760, 122, 320, 110, "Reusable heads", [
@@ -442,6 +452,10 @@ def collect_summary() -> dict:
     min_subtask = read_json(RESULTS / "min_subtask_model/metrics.json")
     suite = read_json(RESULTS / "episode_task_suite/summary_report.json")
     manifest = read_json(RESULTS / "episode_task_suite/feature_manifest.json")
+    public_manifest = [
+        {**block, "name": display_feature_name(block["name"])}
+        for block in manifest
+    ]
     return {
         "omni_relay": OMNI_RELAY,
         "models": {
@@ -451,7 +465,7 @@ def collect_summary() -> dict:
             "all_modalities_subtask": all_subtask,
         },
         "suite": suite,
-        "feature_manifest": manifest,
+        "feature_manifest": public_manifest,
     }
 
 

@@ -129,7 +129,7 @@ CARD_FRESHNESS_EXPECTATIONS = [
             "12,103 episode folders",
             "task-first 12-task map",
             "interactive scrub/play walkthrough storyboard",
-            "including critical website HTML",
+            "website HTML",
             "task_surface_integrity.json",
             "rendered_site_check.json",
             "public_surface_qa.json",

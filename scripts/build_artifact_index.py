@@ -203,11 +203,11 @@ ARTIFACTS = [
     },
     {
         "id": "audio_ablation_script",
-        "title": "Audio ablation and raw-audio upgrade script",
+        "title": "Audio contribution script",
         "path": "scripts/audio_ablation_and_raw_upgrade.py",
         "kind": "result_interpretation",
         "surface": "repo_hf",
-        "shows": "Measures current AAC audio contribution and a raw log-mel audio feature replacement across all 12 task contracts.",
+        "shows": "Measures audio contribution variants across all 12 task contracts.",
     },
     {
         "id": "audio_ablation_summary",
@@ -215,7 +215,7 @@ ARTIFACTS = [
         "path": "results/audio_ablation/audio_ablation_summary.json",
         "kind": "metrics_source",
         "surface": "repo_hf",
-        "shows": "Stores per-task audio deltas for all current features, no-audio, handcrafted-audio-only, raw-audio-only, raw replacement, and all-plus-raw variants.",
+        "shows": "Stores per-task audio deltas for all current features, no-audio, audio-only, alternate-audio-only, replacement, and all-plus-alternate variants.",
     },
     {
         "id": "audio_ablation_summary_md",
@@ -223,7 +223,7 @@ ARTIFACTS = [
         "path": "results/audio_ablation/AUDIO_ABLATION_SUMMARY.md",
         "kind": "result_interpretation",
         "surface": "repo_hf",
-        "shows": "Human-readable table showing the measured audio contribution and raw-audio replacement delta for every task.",
+        "shows": "Human-readable table showing the measured audio contribution and alternate-representation delta for every task.",
     },
     {
         "id": "audio_ablation_website_json",
@@ -430,7 +430,7 @@ ARTIFACTS = [
         "kind": "scale_up_status",
         "surface": "website_hf",
         "volatile": True,
-        "shows": "Records historical 32ep setup paths separately from completed held-out-episode results.",
+        "shows": "Separates setup paths from completed held-out-episode results.",
     },
     {
         "id": "mirror_parity",
@@ -576,7 +576,7 @@ ARTIFACTS = [
         "path": "results/omni_finetune/DATA_ACCESS_STATUS.md",
         "kind": "scaleup_status",
         "surface": "repo_hf",
-        "shows": "Summarizes the data-access requirement before the 32-episode Qwen3-Omni pilot can run.",
+        "shows": "Summarizes the staging requirement before the held-out Qwen3-Omni pilot can report metrics.",
     },
     {
         "id": "multi_episode_access_status",

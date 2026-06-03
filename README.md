@@ -47,12 +47,12 @@ before the multi-episode omni-model stage becomes a real held-out evaluation.
 
 | Theme | Current implementation |
 | --- | --- |
-| Dataset slice | One public Xperience-10M sample episode, 5,821 frames, 1,161 windows, and 8,546 extracted feature dimensions |
-| Modalities | Video-derived features, AAC audio features, depth, camera pose/SLAM, hand/body mocap, IMU, calibration, and language-derived features |
+| Dataset slice | One public Xperience-10M sample episode, 5,821 frames, 1,161 windows, and an 8,546-dimensional representation |
+| Modalities | Video, audio, depth, camera pose/SLAM, hand/body mocap, IMU, calibration, and language annotations |
 | Task suite | 12 human-readable embodied-AI task contracts with input, process, output, metrics, predictions, and case-study walkthroughs |
 | Baselines | Minimal linear/ridge/logistic heads plus compact PyTorch MLP task heads over the same chronological split |
 | Research directions | Task mapping and extension probes for human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling |
-| Scale-up path | Data-gated Qwen3-Omni LoRA pilot plan for 32 held-out episodes, followed by a foundation-model selection branch that adds Cosmos 3/world-model and VLA/policy candidates |
+| Scale-up path | Full-dataset access granted; a 128-episode selected relay is being staged with chunked parallel transfer and overlapping batch prefetch before Qwen3-Omni LoRA, followed by Cosmos 3/world-model and VLA/policy branches |
 | Public surfaces | GitHub repo, GitHub Pages dashboard, HF Space, HF artifact dataset, HF baseline-model repo, and HF collection |
 
 For the fastest interpretation of the current metrics, start with
@@ -90,10 +90,10 @@ multi-episode held-out model metrics:
 | Figure index | `FIGURE_INDEX.md`, `docs/data/figure_index.json`, `scripts/build_figure_index.py` | catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts |
 | Brand assets | `docs/assets/brand/`, `docs/favicon.png`, `docs/apple-touch-icon.png`, `scripts/build_brand_assets.py` | applies the generated project logo system across the website, README, HF cards, favicon, and social previews |
 | Data windows | `results/episode_task_suite/windows.csv`, `shared_windows.npz`, `summary_report.json` | one public sample episode |
-| Feature contract | `results/episode_task_suite/feature_manifest.json`, `available_modalities.json` | 8,546 current features, including a real AAC audio block decoded from `fisheye_cam0.mp4` |
+| Feature contract | `results/episode_task_suite/feature_manifest.json`, `available_modalities.json` | documents the 8,546-dimensional multimodal representation and source coverage |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | defines windowing, chronological split, leakage controls, per-task metrics, and current limitations |
 | Research takeaways | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | summarizes result interpretation from committed metrics and identifies which experiments need held-out episodes |
-| Audio ablation | `scripts/audio_ablation_and_raw_upgrade.py`, `results/audio_ablation/`, `docs/data/audio_ablation_summary.json` | measures current AAC audio contribution and a raw log-mel audio replacement across all 12 task contracts |
+| Audio ablation | `scripts/audio_ablation_and_raw_upgrade.py`, `results/audio_ablation/`, `docs/data/audio_ablation_summary.json` | measures whether audio helps each of the 12 task contracts |
 | Research roadmap | `RESEARCH_ROADMAP.md`, `docs/research_roadmap.html`, `docs/data/research_roadmap.json`, `docs/data/research_roadmap_interactive.json` | stages and visualizes the path from public-sample task development to multi-episode held-out evaluation, foundation-model selection, and larger omni/world-model extensions |
 | Foundation-model plan | `FOUNDATION_MODEL_PLAN.md`, `docs/data/foundation_model_plan.json` | keeps Qwen3-Omni as the first trainable pilot, adds Cosmos 3 as the first world-model branch, and tracks OpenVLA/openpi/GR00T policy candidates |
 | 12-task suite | `scripts/episode_task_suite.py`, per-task `metrics.json`, predictions | chronological single-episode split |
@@ -103,8 +103,8 @@ multi-episode held-out model metrics:
 | Task surface integrity | `docs/data/task_surface_integrity.json`, `scripts/validate_task_surface.py` | public task cards stay human-readable, thumbnail-backed, and wired to the scrub/play walkthrough storyboard |
 | Rendered website check | `RENDERED_SITE_CHECK.md`, `docs/data/rendered_site_check.json`, `scripts/build_rendered_site_check.py` | records a browser-level load, tab, walkthrough deep-link, control-click, and console-health check |
 | Public project surface | `PUBLIC_SURFACE_QA.md`, `docs/data/public_surface_qa.json`, `scripts/build_public_surface_qa.py` | presents the repo, website, and Hugging Face cards as one research project surface |
-| Qwen3-Omni | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `MULTI_EPISODE_ACCESS_STATUS.md` | setup-stage until 32 valid episodes are available and held-out evaluation runs |
-| Multi-episode pilot status | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | records setup-stage `32ep` artifacts separately from completed held-out-episode metrics |
+| Qwen3-Omni | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `MULTI_EPISODE_ACCESS_STATUS.md` | full-dataset access is granted; 128 selected episodes are in accelerated relay/staging before held-out evaluation |
+| Multi-episode pilot status | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | separates setup artifacts, selected relay state, and completed held-out-episode metrics |
 | Mirror parity | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | prepared GitHub/HF mirrors carry matching data, figure, website HTML, and validator files |
 | Public bundle contents | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | summarizes the public repo and HF bundles, including raw-data exclusion and local scratch-file exclusion |
 | Release checks | `QUALITY_GATES.md`, `docs/data/quality_gates.json`, `scripts/build_quality_gates.py` | one map for automated checks and live post-publish verification |
@@ -178,14 +178,14 @@ They give the current research state in one compact table:
 
 | Area | Current decision |
 | --- | --- |
-| Public-sample pipeline | Verified on one public sample episode: 5,821 frames, 1,161 windows, 8,546 current features |
+| Public-sample pipeline | Verified on one public sample episode: 5,821 frames, 1,161 windows, 8,546 dimensions |
 | 12-task suite | Verified minimal baselines with committed metrics, predictions, and manifests |
 | Neural heads | Verified compact PyTorch MLP heads over the same task contracts and chronological splits |
 | Official dataset wording | Verified against the public `ropedia-ai/xperience-10m` dataset card/API metadata |
 | Source alignment | Source facts, sample details, API-listing notes, and project coverage are consistent across repo, website, and HF cards |
 | Evaluation protocol | Verified generated protocol for windowing, split policy, leakage controls, and per-task metrics |
 | Website and HF mirrors | Verified by website reference reports, public project-surface reports, mirror parity, and live-publication checks; the public dashboard uses five top-level tabs plus subsection tabs for dataset, task-suite, method, result, and resource views |
-| Qwen3-Omni multi-episode pilot | Full-dataset access granted; 128-episode relay in progress, with full metrics pending completed staging and held-out evaluation |
+| Qwen3-Omni multi-episode pilot | Full-dataset access granted; 128-episode relay in progress with chunked parallel transfer and batch prefetch, with full metrics pending completed staging and held-out evaluation |
 | Raw Xperience-10M data / full Qwen weights | Not redistributed |
 
 ## 90-Second Research Project Path
@@ -202,7 +202,7 @@ If you are reading the project cold, open these in order:
 | 6 | What is the staged roadmap? | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`docs/data/research_roadmap.json`](docs/data/research_roadmap.json), [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) | The roadmap connects public-sample task development to multi-episode staging, Qwen3-Omni LoRA, foundation-model selection, robustness runs, and larger omni/world-model extensions. |
 | 7 | Which foundation model comes next? | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json) | Qwen3-Omni remains the first held-out LoRA baseline; Cosmos 3 is the first world-model branch; OpenVLA/openpi/GR00T wait for explicit action targets. |
 | 8 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and the latest exact-match reproduction record are explicit. |
-| 9 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,546-d window vector with explicit feature-block boundaries. |
+| 9 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,546-dimensional multimodal window with synchronized video, audio, sensor, and language signals. |
 | 10 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
 | 11 | Is the website self-consistent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, tab routing, JSON data, and referenced images are checked before publishing. |
 | 12 | What is still pending? | [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The multi-episode Qwen3-Omni run is prepared at the selection and relay level; final model metrics require completed staging, preprocessing, training, and held-out evaluation. |
@@ -231,7 +231,7 @@ generated from committed metric artifacts. They define:
 - the 20-frame window unit, stride, feature dimension, and raw-data policy,
 - the chronological 70/30 single-episode split and its generalization limit,
 - the per-task input, target, primary metric, minimal score, and neural score,
-- leakage controls for future labels, target feature blocks, caption/object
+- leakage controls for future labels, target-side signals, caption/object
   labels, and train-only normalization,
 - current limitations, including cross-episode generalization,
   audio-visual learning, pixel-depth reconstruction, and real held-out
@@ -274,11 +274,11 @@ the selected 128-episode held-out multi-episode relay now in progress.
 This repo's current verified subset is much smaller and intentionally explicit:
 
 - one public sample episode, 5,821 frames, and 1,161 aligned windows,
-- raw sample files with six MP4 video streams and AAC audio streams,
+- raw sample files with six MP4 video streams and audio streams,
 - `annotation.hdf5` carrying depth, SLAM/camera pose, hand/body mocap, IMU,
   language/caption annotations, calibration, metadata, and timing records,
-- an 8,546-d baseline feature vector using video-derived statistics, AAC audio,
-  depth, pose/SLAM, mocap, IMU, calibration, and language-derived blocks.
+- an 8,546-dimensional baseline representation using video, audio, depth,
+  pose/SLAM, mocap, IMU, calibration, and language-derived signals.
 
 The same alignment note also records what is outside the current implemented subset: real
 audio-visual learning, caption generation, pixel-depth estimation, SLAM
@@ -585,7 +585,7 @@ python scripts/omni/plan_finetune_sample_budget.py \
   --full-preview-per-episode-gb 5.1
 ```
 
-### 32-Episode Readiness Gate
+### Multi-Episode Readiness Gate
 
 ```bash
 python scripts/omni/discover_xperience10m_sources.py \
@@ -600,8 +600,8 @@ Current status in this repo:
 - gated_metadata_audit: 12,102 complete visible episodes across 802 complete sessions
 - selected_relay_plan: 128 metadata-balanced episodes, 96/16/16 train/val/test
 - selected_download_size: 277.71 GiB excluding `visualization.rrd`
-- ready_for_held_out_pilot: false until the selected episodes are fully staged and audited
-- full-dataset access: granted; raw multi-episode staging is in progress
+- ready_for_held_out_pilot: false until the selected episodes are fully staged and checked
+- full-dataset access: granted; raw multi-episode staging is in progress with chunked parallel transfer and overlapping batch prefetch
 - source_discovery: `results/omni_finetune/source_discovery.json`
 - data_status: `results/omni_finetune/DATA_ACCESS_STATUS.md`
 - access_status: `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`
@@ -658,7 +658,7 @@ The taxonomy uses two current baselines for every task:
 
 | Baseline | Role |
 | --- | --- |
-| Minimal interpretable heads | Softmax, logistic, ridge, and retrieval heads over the 8,546-d window feature vector. These expose the input/output contract cleanly. |
+| Minimal interpretable heads | Softmax, logistic, ridge, and retrieval heads over the 8,546-dimensional multimodal representation. These expose the input/output contract cleanly. |
 | Neural MLP heads | Small PyTorch MLP classifiers/regressors on the same features and splits. These check whether nonlinear heads help before moving to Qwen/Omni fine-tuning. |
 
 Current direction-level coverage:
@@ -751,7 +751,7 @@ models.
 Shared setup:
 
 ```text
-raw episode -> 20-frame windows, stride 5 -> 8,546-d current feature vector
+raw episode -> 20-frame windows, stride 5 -> 8,546-dimensional multimodal representation
 chronological split: first 70% train, last 30% test
 scalers are fit on train windows only
 ```
@@ -765,7 +765,7 @@ There are four reusable head families:
 | Ridge + cosine ranking | Language Grounding, Cross-Modal Retrieval | project one modality into another feature space, then rank candidates by cosine |
 | Multi-label logistic regression | Object Relevance Prediction | z-score non-caption features, sigmoid object heads, threshold at 0.5 |
 
-The optional neural run keeps the same feature vectors, leakage filters,
+The optional neural run keeps the same window representation, leakage filters,
 chronological splits, and metrics, but replaces the task heads with small
 PyTorch MLP classifiers or regressors. Its outputs live under
 [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/),
@@ -781,11 +781,11 @@ The task-specific heads are:
 | Action Boundary Detection | all featurized modalities | linear softmax | steady vs action boundary |
 | Next-Action Prediction | all featurized modalities at `t` | linear softmax | action at `t+20` frames |
 | Hand Trajectory Forecasting | all featurized modalities at `t` | ridge regression | future 10-frame left/right hand joints |
-| Contact State Prediction | non-contact and non-caption feature blocks | linear softmax | any body contact |
-| Object Relevance Prediction | non-caption feature blocks | multi-label logistic | relevant object set |
+| Contact State Prediction | non-contact and non-caption signals | linear softmax | any body contact |
+| Object Relevance Prediction | non-caption signals | multi-label logistic | relevant object set |
 | Language Grounding | sensor windows projected to text space | ridge projection + cosine ranking | matching time window for text query |
 | Cross-Modal Retrieval | motion/IMU/camera projected to visual space | ridge projection + cosine ranking | matching depth/video window |
-| Cross-Modal Reconstruction | motion/IMU/camera | ridge regression | depth/video feature vector |
+| Cross-Modal Reconstruction | motion/IMU/camera | ridge regression | compressed depth/video target |
 | Temporal Order Verification | `[x_t, x_t+1, x_t+1-x_t]` | binary linear softmax | correct vs reversed order |
 | Multimodal Synchronization Detection | motion plus visual pair | binary linear softmax | aligned vs shifted by 8 windows |
 
@@ -794,7 +794,7 @@ The task-specific heads are:
 | Experiment | Main score | Accuracy | Notes |
 | --- | ---: | ---: | --- |
 | Motion-only action | 0.9688 macro-F1 | 0.9828 | Uses motion/IMU features only |
-| Current all-feature action | 0.9829 macro-F1 | 0.9863 | 8,546-dimensional feature vector |
+| Current all-feature action | 0.9829 macro-F1 | 0.9863 | 8,546-dimensional multimodal representation |
 | Motion-only subtask | 0.9528 macro-F1 | 0.9759 | Strong within-episode subtask signal |
 | Current all-feature subtask | 0.9173 macro-F1 | 0.9828 | High accuracy, lower class-balanced score |
 | Cross-modal retrieval | 0.3678 top-5 | n/a | Motion/IMU/camera/audio retrieves matching depth/video |
@@ -803,27 +803,26 @@ The task-specific heads are:
 | Neural MLP hand forecast | 0.1079 MPJPE | n/a | Same features/split, nonlinear regression head |
 | Neural MLP temporal order | 0.8520 F1 | 0.8578 | Strong improvement on adjacent-window ordering |
 | Neural MLP misalignment | 0.7153 F1 | 0.7009 | Detects shifted motion/visual/audio pairs better than the linear head |
-| Audio ablation | +0.0418 mean delta | n/a | Current AAC audio improves the primary metric on 6 of 12 task contracts |
-| Raw log-mel audio replacement | +0.0936 mean delta | n/a | Raw log-mel replacement beats current handcrafted audio on 6 of 12 task contracts |
+| Audio ablation | +0.0418 mean delta | n/a | Current audio variant improves the primary metric on 6 of 12 task contracts |
+| Alternate audio representation | +0.0936 mean delta | n/a | Alternate audio-window representation improves over the baseline audio variant on 6 of 12 task contracts |
 
-## Audio Ablation and Raw-Audio Upgrade
+## Audio Contribution Study
 
-The current AAC audio block is now tested rather than only included. The script
+The audio ablation keeps the same windows and task labels, then compares input
+variants under the same chronological split. The script
 [`scripts/audio_ablation_and_raw_upgrade.py`](scripts/audio_ablation_and_raw_upgrade.py)
-reuses the real task-suite windows, decodes the local public-sample
-`fisheye_cam0.mp4` audio stream, builds a 588-d raw log-mel window feature, and
-evaluates six variants for every task: current features, no audio,
-handcrafted-audio-only, raw-audio-only, handcrafted audio replaced by raw
-log-mel, and current features plus raw log-mel.
+reuses the real task-suite windows and evaluates six variants for
+every task: current inputs, no audio, audio-only, alternate audio-only, audio
+representation replacement, and all inputs plus the alternate audio representation.
 
 The measured single-episode result is task-specific:
 
 | Readout | Value |
 | --- | ---: |
-| Tasks where current AAC audio improves the primary metric | 6 / 12 |
+| Tasks where current audio improves the primary metric | 6 / 12 |
 | Mean current-audio delta | +0.0418 |
-| Tasks where raw log-mel replacement improves over handcrafted AAC | 6 / 12 |
-| Mean raw-replacement delta vs current audio | +0.0936 |
+| Tasks where alternate audio representation improves over baseline audio | 6 / 12 |
+| Mean alternate-representation delta vs baseline audio | +0.0936 |
 
 Full files:
 
@@ -838,7 +837,7 @@ Full files:
 The neural baseline was run locally with `--include-neural` for all 12 tasks
 using 80 epochs, hidden size 128, batch size 128, and CPU execution. It is not a
 foundation model result; it is a controlled nonlinear-head comparison over the
-same 8,546-d handcrafted window features.
+same 8,546-dimensional multimodal representation.
 
 | Task | Neural metric | Minimal metric | Readout |
 | --- | ---: | ---: | --- |
@@ -873,10 +872,10 @@ artifact-driven diagnostics pass over the public sample episode:
 - `results/single_episode_diagnostics/alignment_stress/alignment_shift_metrics.csv`
   evaluates cross-modal retrieval under explicit time shifts.
 - `docs/single_episode_explorer.html` is a static interactive page for
-  inspecting window labels, objects, predictions, feature-block statistics, and
+  inspecting window labels, objects, predictions, modality statistics, and
   diagnostic scores.
 
-These are single-episode research diagnostics. They are useful for auditing
+These are single-episode research diagnostics. They are useful for studying
 task definitions, feature behavior, and model errors before scaling to more
 episodes; they are not reported as multi-episode benchmark results.
 
@@ -903,21 +902,21 @@ The test segment contains some action/subtask labels never seen during training.
 Timeline and next-action classifiers therefore expose the core limitation of
 single-episode learning instead of hiding it behind random splits.
 
-## Feature Blocks Used
+## Modalities Used
 
-The current feature vector has 8,546 dimensions and includes:
+The current public-sample pipeline uses:
 
 - hand/body mocap joints and contact labels,
 - camera translation and rotation,
 - IMU acceleration and gyroscope traces,
 - depth confidence features,
 - six video streams,
-- AAC audio features from `fisheye_cam0.mp4`,
+- audio from the sample MP4 stream,
 - caption/object/interaction text features,
 - SLAM point-cloud summary features,
 - calibration parameters.
 
-The exact feature block boundaries are stored in
+The full technical source manifest is stored in
 [`results/episode_task_suite/feature_manifest.json`](results/episode_task_suite/feature_manifest.json).
 
 ## Data Notice

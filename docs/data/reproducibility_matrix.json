@@ -40,7 +40,7 @@
       "status": "reproducible",
       "command": "python scripts/episode_task_suite.py --workspace $WORKSPACE --include-neural",
       "expected": "12 task metrics, predictions, manifests, and neural_mlp task-head artifacts",
-      "boundary": "8,546-d current feature contract, including the decoded AAC audio block"
+      "boundary": "8,546-dimensional multimodal window contract"
     },
         {
             "id": "research_direction_outputs",
@@ -78,11 +78,11 @@
       "boundary": "checks local website integrity plus public repo, prepared HF bundles, and prepared mirror parity"
     },
     {
-      "id": "qwen3_omni_32_episode_pilot",
+      "id": "qwen3_omni_multi_episode_pilot",
       "status": "not_publicly_reproducible_yet",
-      "command": "scripts/omni/discover_xperience10m_sources.py then scripts/omni/train_qwen3_omni_lora.py after 32 valid episodes exist",
+      "command": "scripts/omni/discover_xperience10m_sources.py then scripts/omni/train_qwen3_omni_lora.py after selected episodes are staged",
       "expected": "held-out episode LoRA pilot metrics after data gate passes",
-      "boundary": "blocked by gated full Xperience-10M access; no 32-episode metric is claimed"
+      "boundary": "full-dataset access is granted, but no held-out multi-episode metric is claimed until staging, training, and evaluation finish"
     }
   ]
 }

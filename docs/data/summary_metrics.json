@@ -1,20 +1,20 @@
 {
   "omni_relay": {
-    "status": "pending_huggingface_gated_access",
+    "status": "selected_relay_in_progress",
     "dataset": "ropedia-ai/xperience-10m",
-    "staging": "prepared_generic_host_to_host_transfer",
+    "staging": "accelerated_chunked_parallel_transfer_with_batch_prefetch",
     "training_target": "external_multi_gpu_training_host",
     "selection_strategy": "stratified_round_robin_by_top_level_session",
-    "target_episodes": 32,
-    "selected_sessions": 32,
-    "candidate_scan_top_level_sessions": 64,
-    "valid_candidates": 680,
-    "estimated_bytes": 72031620552,
+    "target_episodes": 128,
+    "selected_sessions": 128,
+    "candidate_scan_top_level_sessions": 802,
+    "valid_candidates": 12102,
+    "estimated_bytes": 298188841943,
     "exclude": [
       "visualization.rrd"
     ],
-    "access_status": "Hugging Face returns 403 pending review for the full Xperience-10M gated dataset.",
-    "current_scope": "The 32-episode Qwen3-Omni fine-tune requires gated data staging and held-out evaluation."
+    "access_status": "Full-dataset access is granted; selected multi-episode relay is in progress with chunked parallel transfer and overlapping batch prefetch.",
+    "current_scope": "The selected-episode Qwen3-Omni fine-tune requires completed data staging and held-out evaluation."
   },
   "models": {
     "motion_action": {
@@ -663,103 +663,103 @@
   },
   "feature_manifest": [
     {
-      "name": "hand_left_joints",
+      "name": "hand left joints",
       "start": 0,
       "end": 441,
       "dim": 441
     },
     {
-      "name": "hand_right_joints",
+      "name": "hand right joints",
       "start": 441,
       "end": 882,
       "dim": 441
     },
     {
-      "name": "body_joints",
+      "name": "body joints",
       "start": 882,
       "end": 1974,
       "dim": 1092
     },
     {
-      "name": "body_contacts",
+      "name": "body contacts",
       "start": 1974,
       "end": 2121,
       "dim": 147
     },
     {
-      "name": "camera_translation",
+      "name": "camera translation",
       "start": 2121,
       "end": 2142,
       "dim": 21
     },
     {
-      "name": "camera_rotation_matrix",
+      "name": "camera rotation matrix",
       "start": 2142,
       "end": 2205,
       "dim": 63
     },
     {
-      "name": "imu_accel_gyro",
+      "name": "imu accel gyro",
       "start": 2205,
       "end": 2247,
       "dim": 42
     },
     {
-      "name": "depth_confidence",
+      "name": "depth confidence",
       "start": 2247,
       "end": 3227,
       "dim": 980
     },
     {
-      "name": "video_fisheye_cam0",
+      "name": "video fisheye cam0",
       "start": 3227,
       "end": 3913,
       "dim": 686
     },
     {
-      "name": "video_fisheye_cam1",
+      "name": "video fisheye cam1",
       "start": 3913,
       "end": 4599,
       "dim": 686
     },
     {
-      "name": "video_fisheye_cam2",
+      "name": "video fisheye cam2",
       "start": 4599,
       "end": 5285,
       "dim": 686
     },
     {
-      "name": "video_fisheye_cam3",
+      "name": "video fisheye cam3",
       "start": 5285,
       "end": 5971,
       "dim": 686
     },
     {
-      "name": "video_stereo_left",
+      "name": "video stereo left",
       "start": 5971,
       "end": 6657,
       "dim": 686
     },
     {
-      "name": "video_stereo_right",
+      "name": "video stereo right",
       "start": 6657,
       "end": 7343,
       "dim": 686
     },
     {
-      "name": "audio_fisheye_cam0_aac",
+      "name": "audio",
       "start": 7343,
       "end": 7511,
       "dim": 168
     },
     {
-      "name": "caption_objects_interaction_text",
+      "name": "language text",
       "start": 7511,
       "end": 8407,
       "dim": 896
     },
     {
-      "name": "slam_point_cloud",
+      "name": "slam point cloud",
       "start": 8407,
       "end": 8429,
       "dim": 22

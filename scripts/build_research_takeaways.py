@@ -143,7 +143,7 @@ def build_payload() -> dict:
                 "id": "audio_contribution_is_task_specific",
                 "title": "Audio helps some tasks and hurts others on the public sample",
                 "readout": (
-                    "The current AAC audio block improves the primary metric on 6 of 12 tasks, "
+                    "Audio improves the primary metric on 6 of 12 tasks, "
                     "while raw log-mel replacement improves over the current handcrafted block on 6 of 12 tasks. "
                     "The largest current-audio gain appears in feature reconstruction, not in action classification."
                 ),
@@ -168,8 +168,8 @@ def build_payload() -> dict:
             "id": "scale_requires_episodes",
             "title": "The next scientific unit is held-out episodes, not more adjacent windows",
             "readout": (
-                "The prepared Qwen3-Omni path targets 32 episodes from 32 sessions, "
-                "but it remains data-gated until access and held-out evaluation complete."
+                "The prepared Qwen3-Omni path now targets a selected 128-episode pilot; "
+                "held-out metrics will be reported after staging, training, and evaluation complete."
             ),
             "evidence": [
                 {"label": "target_episodes", "value": omni.get("target_episodes")},
@@ -222,7 +222,7 @@ def render_md(payload: dict) -> str:
         f"- aligned windows: {payload['scope']['num_windows']:,}",
         f"- current feature dimension: {payload['scope']['feature_dim']:,}",
         "- raw Xperience-10M data is not redistributed",
-        "- AAC audio from the sample MP4 stream is extracted into the current feature vector",
+        "- Audio from the sample MP4 stream is represented in the current feature vector",
         "",
         "## Takeaways",
         "",
@@ -257,7 +257,7 @@ def render_md(payload: dict) -> str:
             "- High single-episode scores are useful pipeline checks for the current task contracts.",
             "- Low chronological action/subtask scores are informative because they expose later-label shift.",
         "- Neural gains on trajectory/order/alignment make those tasks good candidates for the next fine-tuning stage.",
-        "- Audio ablation is task-specific: current AAC and raw log-mel features help some probes and hurt others.",
+        "- Audio ablation is task-specific: audio representation choices help some probes and hurt others.",
         "- Retrieval and reconstruction remain the main multimodal representation challenges.",
             "- The next credible model-quality result needs held-out episodes.",
             "",

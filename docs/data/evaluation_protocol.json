@@ -28,10 +28,10 @@
     "limitation": "It is still one episode; cross-episode generalization is evaluated in the multi-episode stage."
   },
   "feature_policy": {
-    "input_contract": "8,546-dimensional current feature vector",
+    "input_contract": "8,546-dimensional aligned multimodal window representation",
     "source_manifest": "results/episode_task_suite/feature_manifest.json",
     "normalization": "Scalers are fit on train windows only for the baseline heads.",
-    "audio_status": "AAC audio is extracted from the sample MP4 stream and included in the current feature vector."
+    "audio_status": "Audio is one of the synchronized source modalities in the current task representation."
   },
   "baselines": [
     {
@@ -166,7 +166,7 @@
       "task": "contact_prediction",
       "family": "binary classification",
       "unit": "single window",
-      "input": "non-contact and non-caption feature blocks",
+      "input": "non-contact and non-caption signals",
       "target": "any body contact",
       "primary_metric": "macro_f1",
       "higher_is_better": true,
@@ -185,7 +185,7 @@
       "task": "object_relevance",
       "family": "multi-label classification",
       "unit": "single window",
-      "input": "non-caption feature blocks",
+      "input": "non-caption signals",
       "target": "current relevant object set",
       "primary_metric": "micro_f1",
       "higher_is_better": true,
@@ -227,7 +227,7 @@
       "target": "matching depth/video window",
       "primary_metric": "top5_accuracy",
       "higher_is_better": true,
-      "leakage_rule": "Query-side and candidate-side feature blocks are split before projection/ranking.",
+      "leakage_rule": "Query-side and candidate-side signals are split before projection/ranking.",
       "counts": {
         "num_queries": 348,
         "num_train_windows": 813,
@@ -246,7 +246,7 @@
       "target": "depth/video feature vector",
       "primary_metric": "r2",
       "higher_is_better": true,
-      "leakage_rule": "Target feature blocks are excluded from the input side.",
+      "leakage_rule": "Target-side signals are excluded from the input side.",
       "counts": {
         "num_train_windows": 813,
         "num_test_windows": 348
@@ -299,23 +299,23 @@
     "Use chronological train/test splits instead of random window shuffling.",
     "Fit scalers and learned projections on train windows only.",
     "Keep future labels, future mocap, contact labels, object labels, and caption labels on the target side unless a task explicitly treats language as the query.",
-    "For cross-modal tasks, split query-side and candidate-side feature blocks before training and ranking.",
+    "For cross-modal tasks, split query-side and candidate-side signals before training and ranking.",
     "Report unseen test classes when the chronological split exposes labels absent from the train segment."
   ],
   "current_limitations": [
     "Cross-episode generalization is evaluated in the later multi-episode stage.",
     "Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.",
-    "Qwen3-Omni setup artifacts are preparation artifacts until the 32-episode held-out pilot runs.",
-    "Full audio-visual representation learning still needs multi-episode training, but the current baseline vector now includes an extracted AAC audio feature block."
+    "Qwen3-Omni setup artifacts are preparation artifacts until the selected held-out pilot runs.",
+    "Full audio-visual representation learning still needs multi-episode training; the current report includes single-episode audio/no-audio ablations."
   ],
   "scale_up_gate": {
     "required_before_full_omni_pilot": [
-      "at least 32 valid Xperience-10M episodes",
+      "selected staged Xperience-10M episodes",
       "held-out episode split with no train/test episode leakage",
       "manifest, training metadata, progress logs, metrics, predictions, and run report",
       "held-out evaluation on test episodes rather than train windows"
     ],
-    "current_status": "prepared but data-gated",
+    "current_status": "prepared; selected data relay in accelerated staging with chunked parallel transfer and batch prefetch",
     "evidence": [
       "results/omni_finetune/DATA_ACCESS_STATUS.md",
       "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md"

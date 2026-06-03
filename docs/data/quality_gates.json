@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Release Checks",
   "status": "pass",
-  "generated_at_utc": "2026-06-03T17:18:29+00:00",
+  "generated_at_utc": "2026-06-03T18:27:05+00:00",
   "rule": "A release is current when the automated reports pass and the live GitHub/Hugging Face mirrors are verified after publishing.",
   "automated_gates": [
     {
@@ -9,8 +9,8 @@
       "title": "Multi-episode pilot status",
       "command": "python scripts/validate_scope_claims.py",
       "report": "docs/data/scope_claims_audit.json",
-      "blocks_if": "Historical 32ep setup/provenance strings are presented as completed 32-episode metrics.",
-      "shows": "Qwen3-Omni setup artifacts stay distinct from the planned held-out 32-episode pilot.",
+      "blocks_if": "Setup/provenance strings are presented as completed held-out metrics.",
+      "shows": "Qwen3-Omni setup artifacts stay distinct from the planned held-out pilot.",
       "current_report": {
         "exists": true,
         "status": "pass"

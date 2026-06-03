@@ -63,7 +63,7 @@
                 "results/episode_task_suite/feature_manifest.json",
                 "results/episode_task_suite/available_modalities.json"
             ],
-            "boundary": "8,546-d feature vector, including audio_fisheye_cam0_aac decoded from the sample MP4"
+            "boundary": "8,546-dimensional aligned multimodal window representation"
         },
         {
             "id": "evaluation_protocol",
@@ -171,28 +171,28 @@
         "results/omni_finetune/dataset_manifest.json",
         "results/omni_finetune/metrics_eval.json"
       ],
-      "boundary": "one episode and 128 train windows; full metrics require the 32-episode pilot"
+      "boundary": "one episode and 128 train windows; full metrics require completed multi-episode staging and held-out evaluation"
     },
     {
-      "id": "thirty_two_episode_gate",
-      "claim": "The 32-episode LoRA pilot is waiting on gated data access.",
-      "status": "pending_data_access",
+      "id": "multi_episode_staging",
+      "claim": "The Qwen3-Omni LoRA pilot is in multi-episode staging.",
+      "status": "data_staging",
       "evidence": [
         "results/omni_finetune/DATA_ACCESS_STATUS.md",
         "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
         "results/omni_finetune/source_discovery.json"
       ],
-      "boundary": "held-out metrics come after the data gate, manifest construction, training, and test evaluation"
+      "boundary": "full-dataset access is granted; held-out metrics come after selected relay, manifest construction, training, and test evaluation"
     },
     {
       "id": "scale_up_status_check",
-      "claim": "Historical 32ep path strings are tracked as setup-file provenance.",
+      "claim": "Older pilot path strings are tracked as setup-file provenance.",
       "status": "verified",
       "evidence": [
         "scripts/validate_scope_claims.py",
         "docs/data/scope_claims_audit.json"
       ],
-      "boundary": "old run/path identifiers stay separate from completed 32-episode results"
+      "boundary": "run/path identifiers stay separate from completed held-out-episode results"
     },
     {
       "id": "mirror_parity",
@@ -301,7 +301,7 @@
         "docs/data/reproducibility_matrix.json",
         "notes/reproducibility_audit.md"
       ],
-      "boundary": "publicly reproduces the single-episode pipeline, not the gated 32-episode Qwen3-Omni pilot"
+      "boundary": "publicly reproduces the single-episode pipeline; multi-episode Qwen3-Omni metrics are added only after staging and held-out evaluation"
     }
   ]
 }

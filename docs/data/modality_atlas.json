@@ -5,7 +5,7 @@
   "notes": [
     "Images are lightweight derived thumbnails for review and website presentation.",
     "Raw MP4, HDF5, and RRD files remain excluded from the public repo and Hugging Face bundles.",
-    "AAC audio is extracted from the sample MP4 stream and included in the current baseline feature vector."
+    "The public sample modalities are mapped into the current 8,546-dimensional task representation."
   ],
   "modalities": [
     {
@@ -29,7 +29,7 @@
       "name": "audio",
       "type": "acoustic stream",
       "sample_contains": "AAC stream embedded in MP4",
-      "current_baseline_use": "AAC audio feature block",
+      "current_baseline_use": "acoustic signal",
       "image": "assets/modalities/audio.png",
       "image_size": [
         880,
@@ -44,7 +44,7 @@
       "name": "depth",
       "type": "geometry map",
       "sample_contains": "depth map + confidence channel",
-      "current_baseline_use": "spatial geometry feature block",
+      "current_baseline_use": "spatial geometry signal",
       "image": "assets/modalities/depth.jpg",
       "image_size": [
         880,

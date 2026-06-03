@@ -9,17 +9,18 @@ downloaded, staged, audited, trained, and evaluated on held-out sessions.
 | Host | Role | Status |
 | --- | --- | --- |
 | HF-reachable relay host | Dataset download relay | Needs Hugging Face access and enough scratch storage for one batch |
-| Private training host | Persistent data + training | Needs enough storage for the staged selection and the training/eval stack |
+| Training host | Persistent data + training | Needs enough storage for the staged selection and the training/eval stack |
 
 Conclusion: use a Hugging Face reachable machine as the download relay and the
-private training machine as the persistent data store. Even when the relay has
-enough free space for the full selection, the safer execution downloads one
-batch, transfers it to the training host, then deletes the relay-local batch.
+training machine as the persistent data store. The current transfer path uses
+chunked parallel file transfer and overlapping batch prefetch so the relay can
+transfer the current batch while future batches are downloaded.
 
-Private execution status:
+Current execution status:
 
-- a 128-episode relay job has been launched on a private HF-reachable host,
-- the first batch is downloading,
+- a 128-episode relay job has been launched on an HF-reachable host,
+- chunked parallel transfer is active for staged files,
+- overlapping batch prefetch is active for later batches,
 - no multi-episode model-quality training result is claimed yet.
 
 ## Selected Data
@@ -64,6 +65,7 @@ ssh <relay-host> 'ssh -i ~/.ssh/xperience10m_relay_ed25519 -o BatchMode=yes -o S
 ssh <relay-host> 'mkdir -p "$RELAY_WORKDIR"'
 rsync -av \
   scripts/omni/relay_xperience10m_selection.py \
+  scripts/omni/parallel_chunk_transfer.py \
   results/omni_finetune/xperience10m_128_episode_selection.json \
   <relay-host>:"$RELAY_WORKDIR"/
 ```
@@ -81,6 +83,10 @@ python3 relay_xperience10m_selection.py \
   --transfer-host "$TRAINING_HOST" \
   --transfer-root "$TRAINING_DATA_ROOT" \
   --ssh-key ~/.ssh/xperience10m_relay_ed25519 \
+  --transfer-mode chunked \
+  --chunk-parallel 8 \
+  --chunk-size-mib 8 \
+  --chunk-threshold-mib 8 \
   --delete-after-transfer \
   --dry-run
 '
@@ -101,12 +107,17 @@ python3 relay_xperience10m_selection.py \
   --transfer-host "$TRAINING_HOST" \
   --transfer-root "$TRAINING_DATA_ROOT" \
   --ssh-key ~/.ssh/xperience10m_relay_ed25519 \
+  --transfer-mode chunked \
+  --chunk-parallel 8 \
+  --chunk-size-mib 8 \
+  --chunk-threshold-mib 8 \
   --delete-after-transfer
 ```
 
 Batch sizing is intentionally conservative. A 40 GiB batch size keeps restarts
 and partial-transfer cleanup cheaper than treating the full 277.71 GiB selection
-as one unit.
+as one unit. Future batches can be downloaded in a separate prefetch-only relay
+process after disk headroom is checked.
 
 ## Training-Host Data Validation
 

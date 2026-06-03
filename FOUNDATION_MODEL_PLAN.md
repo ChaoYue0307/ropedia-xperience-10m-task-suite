@@ -13,13 +13,13 @@ run a held-out multi-episode foundation-model evaluation.
 
 | Priority | Model family | Best role for this project | Why it fits Xperience-10M | Current decision |
 | --- | --- | --- | --- | --- |
-| 1 | Qwen3-Omni | Multimodal instruction model and JSON task predictor | Accepts video/audio/language directly; depth, pose, mocap, and IMU can enter through the existing sensor bridge | Keep as first 32-episode LoRA pilot |
+| 1 | Qwen3-Omni | Multimodal instruction model and JSON task predictor | Accepts video/audio/language directly; depth, pose, mocap, and IMU can enter through the existing sensor bridge | Keep as the first selected-episode LoRA pilot |
 | 2 | Cosmos 3 | Embodied world model, action generation, and synthetic future prediction | Designed for physical-world video generation, action-conditioned world modeling, and robot/world simulation style objectives | Add as the first world-model branch after the data gate |
 | 3 | NVIDIA GR00T | Humanoid/action-policy foundation model | Xperience-10M mocap, hand motion, contacts, and egocentric interaction can support retargeting and action-understanding probes | Track as a humanoid policy branch, not the first LoRA pilot |
 | 4 | OpenVLA / OpenVLA-OFT | Open vision-language-action policy baseline | Useful when windows are converted into visual observation plus action-token targets | Use after action-space design is explicit |
 | 5 | openpi pi0/pi0.5 | Open robot policy and action expert baseline | Useful for action chunking, policy fine-tuning, and embodiment transfer experiments | Candidate for policy branch once action labels are retargeted |
 | 6 | Gemini Robotics | Closed/API embodied reasoning reference | Strong candidate for qualitative reasoning and task interpretation, but not a local fine-tune target | Use only as an external comparison or annotation assistant |
-| 7 | Octo / SmolVLA-style lightweight policies | Smaller reproducible robot-policy baselines | Good for cheaper action-policy experiments, but less directly omni-modal | Optional baseline branch after 32-episode data staging |
+| 7 | Octo / SmolVLA-style lightweight policies | Smaller reproducible robot-policy baselines | Good for cheaper action-policy experiments, but less directly omni-modal | Optional baseline branch after selected-episode data staging |
 
 ## Why Qwen3-Omni Still Goes First
 
@@ -95,7 +95,7 @@ The foundation-model stage should add metrics beyond the current 12-task suite:
 
 ## Execution Order
 
-1. Finish multi-episode data staging with at least 32 valid episodes.
+1. Finish multi-episode data staging for the selected relay.
 2. Run the Qwen3-Omni LoRA pilot exactly once as the first held-out baseline.
 3. Run a model-selection dry run on 3-8 episodes: Qwen3-Omni prompt-only,
    Qwen3-Omni LoRA, Cosmos 3 world-model preprocessing, and one policy baseline.

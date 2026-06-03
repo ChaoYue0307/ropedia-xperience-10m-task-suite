@@ -1,5 +1,5 @@
 {
-  "description": "Measured audio ablation and raw log-mel audio upgrade over the single public Xperience-10M sample episode.",
+  "description": "Measured audio contribution variants over the single public Xperience-10M sample episode.",
   "scope": "single public sample episode; chronological split; ridge heads over fixed feature contracts",
   "raw_audio_metadata": {
     "source": "local_public_sample/fisheye_cam0.mp4",
@@ -19,9 +19,9 @@
   "variants": {
     "all_handcrafted_audio": "All Current Features",
     "all_except_audio": "All Except Audio",
-    "handcrafted_audio_only": "Handcrafted AAC Audio Only",
+    "handcrafted_audio_only": "Audio Only",
     "raw_logmel_audio_only": "Raw Log-Mel Audio Only",
-    "replace_handcrafted_with_raw": "Replace AAC Block With Raw Log-Mel",
+    "replace_handcrafted_with_raw": "Audio Representation Replacement",
     "all_plus_raw_logmel": "All Current Features + Raw Log-Mel"
   },
   "task_summaries": [
