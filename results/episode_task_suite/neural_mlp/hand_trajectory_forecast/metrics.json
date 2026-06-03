@@ -1,7 +1,7 @@
 {
-  "mse": 0.005083972588181496,
-  "mae": 0.055900074541568756,
-  "r2": 0.40024460814419005,
+  "mse": 0.004775360692292452,
+  "mae": 0.05433763191103935,
+  "r2": 0.43665148265771614,
   "task": "hand_trajectory_forecast",
   "input": "all modalities at t -> future left/right hand 3D joints",
   "split": "chronological",
@@ -9,8 +9,8 @@
   "num_train_windows": 811,
   "num_test_windows": 348,
   "forecast_frames": 10,
-  "mpjpe": 0.11163123697042465,
-  "final_frame_mpjpe": 0.11860372871160507,
+  "mpjpe": 0.10785018652677536,
+  "final_frame_mpjpe": 0.11407545953989029,
   "target_dim": 1260,
   "model": "neural_mlp",
   "head": "z-score -> MLP regression",
@@ -21,5 +21,5 @@
   "neural_weight_decay": 0.0001,
   "neural_dropout": 0.1,
   "neural_device": "cpu",
-  "train_final_loss": 0.059780220692901516
+  "train_final_loss": 0.055699273420247435
 }
