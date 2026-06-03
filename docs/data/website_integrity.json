@@ -1,12 +1,12 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-03T07:03:17+00:00",
+  "generated_at_utc": "2026-06-03T07:49:53+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 126,
-    "external_reference_count": 89,
+    "local_references": 131,
+    "external_reference_count": 88,
     "json_files": 30,
     "image_assets_referenced": 20,
     "failure_count": 0
@@ -74,8 +74,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 65889,
-      "evidence_index": 79468
+      "overview_index": 65926,
+      "evidence_index": 80365
     },
     {
       "name": "project_status_links_json",
@@ -93,13 +93,13 @@
       "name": "interactive_roadmap_page_linked",
       "status": "pass",
       "reason": "The project site should link to the dedicated interactive research roadmap page.",
-      "marker_count": 2
+      "marker_count": 5
     },
     {
       "name": "interactive_roadmap_links_json",
       "status": "pass",
       "reason": "The project site should expose the machine-readable interactive roadmap contract.",
-      "marker_count": 1
+      "marker_count": 2
     },
     {
       "name": "interactive_roadmap_loads_generated_json",
@@ -148,9 +148,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 65889,
-      "protocol_index": 76871,
-      "evidence_index": 79468
+      "overview_index": 65926,
+      "protocol_index": 77768,
+      "evidence_index": 80365
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -224,7 +224,7 @@
     {
       "path": "index.html",
       "id_count": 75,
-      "reference_count": 104,
+      "reference_count": 109,
       "image_count": 22
     },
     {
@@ -268,12 +268,12 @@
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 63997,
+      "bytes": 68740,
       "top_level_type": "dict"
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 94540,
+      "bytes": 97333,
       "top_level_type": "dict"
     },
     {
