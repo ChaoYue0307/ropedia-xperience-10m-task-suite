@@ -13,11 +13,11 @@ No synthetic labels are introduced. Derived proxy targets are marked in `target_
 - Future Hand Motion Forecasting: Inertial score=0.5679, mae=0.7608, target overlap=false
 - Contact State Prediction: All Features score=1.0000, macro_f1=1.0000, target overlap=false
 - Relevant Object Prediction: Language score=0.2302, micro_f1=0.2302, target overlap=true; best non-overlap: Depth score=0.2013, micro_f1=0.2013
-- Language-to-Time Grounding: Language score=0.2453, mrr=0.2453, target overlap=true; best non-overlap: Motion Capture score=0.0306, mrr=0.0306
-- Cross-Modal Window Retrieval: All Features score=0.9724, mrr=0.9724, target overlap=true; best non-overlap: Pose + SLAM score=0.4262, mrr=0.4262
+- Language-to-Time Grounding: Language score=0.2453, mrr=0.2453, target overlap=true; best non-overlap: Audio score=0.0390, mrr=0.0390
+- Cross-Modal Window Retrieval: All Features score=0.9728, mrr=0.9728, target overlap=true; best non-overlap: Pose + SLAM score=0.4262, mrr=0.4262
 - Sensor-to-Visual Reconstruction: Video score=0.6113, mae=0.6358, target overlap=true; best non-overlap: Pose + SLAM score=0.5359, mae=0.8659
 - Temporal Order Verification: Pose + SLAM score=0.5259, macro_f1=0.5259, target overlap=false
-- Cross-Modal Misalignment Detection: Video score=0.4949, macro_f1=0.4949, target overlap=false
+- Cross-Modal Misalignment Detection: Audio score=0.5153, macro_f1=0.5153, target overlap=false
 
 ## Files
 

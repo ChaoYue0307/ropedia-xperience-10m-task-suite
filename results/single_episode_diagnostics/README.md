@@ -17,7 +17,7 @@ These outputs are local diagnostics built from the existing one-episode Xperienc
 
 ## Counts
 
-- Ablation rows: 96; computed: 96.
+- Ablation rows: 108; computed: 108.
 - Timeline overlay rows: 2079.
-- Alignment stress rows: 45.
-- Shared feature shape: 1161 windows x 8378 features.
+- Alignment stress rows: 54.
+- Shared feature shape: 1161 windows x 8546 features.
