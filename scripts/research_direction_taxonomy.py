@@ -496,7 +496,7 @@ def write_svg(taxonomy: dict[str, Any]) -> None:
     margin = 58
     card_w = 515
     card_h = 220
-    colors = {"direct": "#a7f078", "proxy": "#7ae5c3", "diagnostic": "#d8f4a5"}
+    colors = {"direct": "#ccffa0", "proxy": "#7ae5c3", "diagnostic": "#d8f4a5"}
     cards = []
 
     for idx, (code, info) in enumerate(taxonomy["directions"].items()):
@@ -526,9 +526,9 @@ def write_svg(taxonomy: dict[str, Any]) -> None:
         cards.append(
             "\n".join(
                 [
-                    f'<rect x="{x}" y="{y}" width="{card_w}" height="{card_h}" rx="8" fill="#050905" stroke="#a7f078" stroke-opacity="0.24"/>',
+                    f'<rect x="{x}" y="{y}" width="{card_w}" height="{card_h}" rx="8" fill="#050905" stroke="#ccffa0" stroke-opacity="0.24"/>',
                     svg_text(x + 24, y + 42, f"{code}. {info['name']}", 21, 700),
-                    svg_text(x + 24, y + 75, info["current_status"], 15, 700, "#a7f078"),
+                    svg_text(x + 24, y + 75, info["current_status"], 15, 700, "#ccffa0"),
                     svg_text(x + 24, y + 108, f"Tasks: {task_labels}", 14, 500, "#dce8d7"),
                     *segments,
                     svg_text(x + 24, y + 174, f"Direct {counts['direct']}", 14, 700, colors["direct"]),
@@ -555,7 +555,7 @@ def write_svg(taxonomy: dict[str, Any]) -> None:
 
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Xperience-10M task coverage across four research directions">
   <rect width="100%" height="100%" fill="#020502"/>
-  <rect x="24" y="24" width="1132" height="652" rx="20" fill="#050905" stroke="#a7f078" stroke-opacity="0.24"/>
+  <rect x="24" y="24" width="1132" height="652" rx="20" fill="#050905" stroke="#ccffa0" stroke-opacity="0.24"/>
   {svg_text(margin, 64, "Xperience-10M 12-Task Suite: Four Research Directions", 30, 800)}
   {svg_text(margin, 96, "One public sample episode, two baseline families, explicit direct/proxy/diagnostic coverage.", 16, 500, "#a5afa2")}
   {"".join(cards)}

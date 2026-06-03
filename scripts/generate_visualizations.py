@@ -56,18 +56,18 @@ def svg_bar_chart(path: Path, title: str, rows: list[tuple[str, float]], x_label
     max_value = max_value if max_value is not None else max([v for _, v in rows] + [1.0])
     max_value = max(max_value, 1e-9)
     plot_w = width - left - right
-    colors = ["#a7f078", "#ffffff", "#7ae5c3", "#d8f4a5", "#9bdfff", "#ff8f7a"]
+    colors = ["#ccffa0", "#ffffff", "#7ae5c3", "#d8f4a5", "#9bdfff", "#ff8f7a"]
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#020502"/>',
-        '<rect x="18" y="18" width="1064" height="' + str(height - 36) + '" rx="18" fill="#050905" stroke="#a7f078" stroke-opacity="0.25"/>',
+        '<rect x="18" y="18" width="1064" height="' + str(height - 36) + '" rx="18" fill="#050905" stroke="#ccffa0" stroke-opacity="0.25"/>',
         f'<text x="32" y="42" font-family="Inter Tight, Arial, sans-serif" font-size="26" font-weight="800" fill="#f4f8ef">{html.escape(title)}</text>',
         f'<text x="{left}" y="{height - 24}" font-family="Space Grotesk, Arial, sans-serif" font-size="13" fill="#a5afa2">{html.escape(x_label)}</text>',
     ]
     for tick in range(6):
         x = left + plot_w * tick / 5
         val = max_value * tick / 5
-        parts.append(f'<line x1="{x:.1f}" y1="{top - 18}" x2="{x:.1f}" y2="{height - 50}" stroke="#a7f078" stroke-opacity="0.13" stroke-width="1"/>')
+        parts.append(f'<line x1="{x:.1f}" y1="{top - 18}" x2="{x:.1f}" y2="{height - 50}" stroke="#ccffa0" stroke-opacity="0.13" stroke-width="1"/>')
         parts.append(f'<text x="{x:.1f}" y="{height - 30}" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="12" fill="#a5afa2">{val:.2f}</text>')
     for i, (label, value) in enumerate(rows):
         y = top + i * row_h
@@ -105,7 +105,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
             f"{suite['window_frames']}-frame windows",
             f"{suite['stride_frames']}-frame stride",
             f"{suite['num_windows']:,} windows",
-        ], "#a7f078"),
+        ], "#ccffa0"),
         (975, 110, 300, 132, "4. Feature vector", [
             f"{suite['feature_dim']:,} dimensions",
             "17 named blocks, no audio block",
@@ -128,14 +128,14 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
             "docs/data/summary_metrics.json",
             "GitHub Pages dashboard",
             "reproducibility check",
-        ], "#a7f078"),
+        ], "#ccffa0"),
     ]
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#020502"/>',
         '<rect x="0" y="0" width="1400" height="760" fill="#020502"/>',
         '<rect x="0" y="0" width="1400" height="760" fill="url(#dotgrid)" opacity="0.55"/>',
-        '<circle cx="1120" cy="132" r="170" fill="#a7f078" opacity="0.10"/>',
+        '<circle cx="1120" cy="132" r="170" fill="#ccffa0" opacity="0.10"/>',
         '<text x="60" y="58" font-family="Inter Tight, Arial, sans-serif" font-size="32" font-weight="800" fill="#f4f8ef">Verified Ropedia Xperience-10M Pipeline</text>',
         '<text x="60" y="88" font-family="Space Grotesk, Arial, sans-serif" font-size="16" fill="#a5afa2">Generated from committed scripts and metrics with traceable stage labels.</text>',
     ]
@@ -149,10 +149,10 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
         (880, 464, 980, 464),
     ]
     for x1, y1, x2, y2 in arrows:
-        parts.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="#a7f078" stroke-opacity="0.54" stroke-width="3" marker-end="url(#arrow)"/>')
-    parts.insert(1, '<defs><pattern id="dotgrid" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#a7f078" opacity="0.20"/></pattern><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#a7f078" fill-opacity="0.72"/></marker></defs>')
+        parts.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="#ccffa0" stroke-opacity="0.54" stroke-width="3" marker-end="url(#arrow)"/>')
+    parts.insert(1, '<defs><pattern id="dotgrid" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#ccffa0" opacity="0.20"/></pattern><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ccffa0" fill-opacity="0.72"/></marker></defs>')
     for x, y, w, h, title, lines, color in boxes:
-        parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="8" fill="#061006" stroke="#a7f078" stroke-opacity="0.26" stroke-width="2"/>')
+        parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.26" stroke-width="2"/>')
         parts.append(f'<rect x="{x}" y="{y}" width="8" height="{h}" rx="4" fill="{color}"/>')
         parts.append(f'<text x="{x + 24}" y="{y + 34}" font-family="Inter Tight, Arial, sans-serif" font-size="18" font-weight="800" fill="#f4f8ef">{html.escape(title)}</text>')
         for i, line in enumerate(lines):
@@ -163,7 +163,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
         "Feature check: current manifest has video/depth/pose/mocap/IMU/language blocks, but no audio block.",
         "Scope check: this validates one public sample episode, not cross-episode generalization.",
     ]
-    parts.append('<rect x="60" y="620" width="1220" height="96" rx="8" fill="#071207" stroke="#a7f078" stroke-opacity="0.24"/>')
+    parts.append('<rect x="60" y="620" width="1220" height="96" rx="8" fill="#071207" stroke="#ccffa0" stroke-opacity="0.24"/>')
     for i, line in enumerate(checks):
         parts.append(f'<text x="84" y="{650 + i * 24}" font-family="Space Grotesk, Arial, sans-serif" font-size="15" fill="#dce8d7">{html.escape(line)}</text>')
     parts.append("</svg>")
@@ -343,17 +343,17 @@ def svg_task_architectures(path: Path, summary: dict) -> None:
     rows = task_architecture_rows(summary)
     family_colors = {
         "softmax": "#9bdfff",
-        "ridge": "#a7f078",
+        "ridge": "#ccffa0",
         "ridge+rank": "#7ae5c3",
         "multilabel": "#d8f4a5",
     }
     width, height = 1500, 1840
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
-        '<defs><pattern id="dotgrid2" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#a7f078" opacity="0.18"/></pattern><marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#a7f078" fill-opacity="0.72"/></marker></defs>',
+        '<defs><pattern id="dotgrid2" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#ccffa0" opacity="0.18"/></pattern><marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ccffa0" fill-opacity="0.72"/></marker></defs>',
         '<rect width="100%" height="100%" fill="#020502"/>',
         '<rect width="100%" height="100%" fill="url(#dotgrid2)" opacity="0.58"/>',
-        '<circle cx="1190" cy="150" r="210" fill="#a7f078" opacity="0.08"/>',
+        '<circle cx="1190" cy="150" r="210" fill="#ccffa0" opacity="0.08"/>',
         '<text x="60" y="56" font-family="Inter Tight, Arial, sans-serif" font-size="34" font-weight="800" fill="#f4f8ef">Minimal Architectures for 12 Ropedia Xperience-10M Tasks</text>',
         '<text x="60" y="88" font-family="Space Grotesk, Arial, sans-serif" font-size="16" fill="#a5afa2">Generated from scripts/episode_task_suite.py semantics and committed summary metrics. These are minimal baselines, not deep foundation models.</text>',
     ]
@@ -373,7 +373,7 @@ def svg_task_architectures(path: Path, summary: dict) -> None:
             "linear softmax classifier",
             "dual ridge regression/projection",
             "multi-label logistic + cosine rank",
-        ], "#a7f078"),
+        ], "#ccffa0"),
         (1120, 122, 320, 110, "Artifacts", [
             "metrics.json, predictions.csv/npz",
             "model.npz with scaler and weights",
@@ -384,21 +384,21 @@ def svg_task_architectures(path: Path, summary: dict) -> None:
         x1 = setup[i][0] + setup[i][2]
         x2 = setup[i + 1][0]
         y = setup[i][1] + 55
-        parts.append(f'<line x1="{x1 + 12}" y1="{y}" x2="{x2 - 14}" y2="{y}" stroke="#a7f078" stroke-opacity="0.54" stroke-width="3" marker-end="url(#arrow2)"/>')
+        parts.append(f'<line x1="{x1 + 12}" y1="{y}" x2="{x2 - 14}" y2="{y}" stroke="#ccffa0" stroke-opacity="0.54" stroke-width="3" marker-end="url(#arrow2)"/>')
     for x, y, w, h, title, lines, color in setup:
-        parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="8" fill="#061006" stroke="#a7f078" stroke-opacity="0.26" stroke-width="2"/>')
+        parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.26" stroke-width="2"/>')
         parts.append(f'<rect x="{x}" y="{y}" width="8" height="{h}" rx="4" fill="{color}"/>')
         parts.append(f'<text x="{x + 24}" y="{y + 31}" font-family="Inter Tight, Arial, sans-serif" font-size="18" font-weight="800" fill="#f4f8ef">{html.escape(title)}</text>')
         draw_text_block(parts, x + 24, y + 58, lines, size=13, color="#dce8d7", max_chars=34, line_h=18)
 
     families = [
         ("Softmax classifier", "logits = z(X)W + b; CE + L2; class weights for classifiers", "#9bdfff", 60, 270),
-        ("Ridge regression/projection", "closed-form dual ridge on z(X), z(Y); used for forecast and reconstruction", "#a7f078", 780, 270),
+        ("Ridge regression/projection", "closed-form dual ridge on z(X), z(Y); used for forecast and reconstruction", "#ccffa0", 780, 270),
         ("Ridge + cosine ranking", "project one modality into another feature space, then rank candidates by cosine", "#7ae5c3", 60, 394),
         ("Multi-label logistic", "sigmoid heads for object vocabulary; threshold 0.5 with top-1 fallback", "#d8f4a5", 780, 394),
     ]
     for title, desc, color, x, y in families:
-        parts.append(f'<rect x="{x}" y="{y}" width="660" height="100" rx="8" fill="#071207" stroke="#a7f078" stroke-opacity="0.22"/>')
+        parts.append(f'<rect x="{x}" y="{y}" width="660" height="100" rx="8" fill="#071207" stroke="#ccffa0" stroke-opacity="0.22"/>')
         parts.append(f'<text x="{x + 18}" y="{y + 33}" font-family="Inter Tight, Arial, sans-serif" font-size="18" font-weight="800" fill="{color}">{html.escape(title)}</text>')
         draw_text_block(parts, x + 18, y + 60, [desc], size=13, color="#dce8d7", max_chars=76, line_h=18)
 
@@ -410,7 +410,7 @@ def svg_task_architectures(path: Path, summary: dict) -> None:
         x = start_x + col * (card_w + gap_x)
         y = start_y + card_row * (card_h + gap_y)
         color = family_colors[row["family"]]
-        parts.append(f'<rect x="{x}" y="{y}" width="{card_w}" height="{card_h}" rx="8" fill="#061006" stroke="#a7f078" stroke-opacity="0.24" stroke-width="2"/>')
+        parts.append(f'<rect x="{x}" y="{y}" width="{card_w}" height="{card_h}" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.24" stroke-width="2"/>')
         parts.append(f'<rect x="{x}" y="{y}" width="8" height="{card_h}" rx="4" fill="{color}"/>')
         parts.append(f'<rect x="{x + 20}" y="{y + 18}" width="96" height="24" rx="6" fill="#071207" stroke="{color}" stroke-opacity="0.72"/>')
         parts.append(f'<text x="{x + 68}" y="{y + 35}" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="{color}">{html.escape(row["family"])}</text>')
@@ -425,7 +425,7 @@ def svg_task_architectures(path: Path, summary: dict) -> None:
         "Interpretation: this suite tests whether each input/output contract is wired correctly before scaling to many episodes.",
         "Research-grade conclusions need held-out episode splits and stronger sequence/vision-language/robot-policy models.",
     ]
-    parts.append('<rect x="60" y="1688" width="1380" height="72" rx="8" fill="#071207" stroke="#a7f078" stroke-opacity="0.22"/>')
+    parts.append('<rect x="60" y="1688" width="1380" height="72" rx="8" fill="#071207" stroke="#ccffa0" stroke-opacity="0.22"/>')
     for i, line in enumerate(notes):
         parts.append(f'<text x="84" y="{1718 + i * 24}" font-family="Space Grotesk, Arial, sans-serif" font-size="15" fill="#dce8d7">{html.escape(line)}</text>')
     parts.append("</svg>")

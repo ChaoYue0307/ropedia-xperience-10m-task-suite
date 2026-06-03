@@ -702,11 +702,11 @@ def write_svg(payload: dict[str, Any]) -> None:
     CHARTS.mkdir(parents=True, exist_ok=True)
     width = 1420
     height = 920
-    colors = {"A": "#a7f078", "B": "#7ae5c3", "C": "#d8f4a5", "D": "#9bdfff"}
+    colors = {"A": "#ccffa0", "B": "#7ae5c3", "C": "#d8f4a5", "D": "#9bdfff"}
     svg: list[str] = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="1420" height="920" fill="#020502"/>',
-        '<rect x="28" y="28" width="1364" height="864" rx="18" fill="#050905" stroke="#a7f078" stroke-opacity="0.24"/>',
+        '<rect x="28" y="28" width="1364" height="864" rx="18" fill="#050905" stroke="#ccffa0" stroke-opacity="0.24"/>',
         svg_text(66, 88, "Ropedia Xperience-10M: four direction extension probes", 32, 760),
         svg_text(66, 122, "Data-backed from the same 1,161-window public sample feature tensor; extension probes for later held-out studies.", 17, 500, "#a5afa2"),
     ]
@@ -728,7 +728,7 @@ def write_svg(payload: dict[str, Any]) -> None:
         metric = spec["metric_name"]
         svg.extend(
             [
-                f'<rect x="{x}" y="{y}" width="{card_w}" height="{card_h}" rx="10" fill="#071207" stroke="#a7f078" stroke-opacity="0.22"/>',
+                f'<rect x="{x}" y="{y}" width="{card_w}" height="{card_h}" rx="10" fill="#071207" stroke="#ccffa0" stroke-opacity="0.22"/>',
                 f'<rect x="{x}" y="{y}" width="10" height="{card_h}" rx="5" fill="{color}"/>',
                 f'<circle cx="{x + 42}" cy="{y + 40}" r="24" fill="{color}" opacity="0.14"/>',
                 svg_text(x + 32, y + 48, spec["direction"], 21, 760, color),
@@ -744,9 +744,9 @@ def write_svg(payload: dict[str, Any]) -> None:
         bar_x = x + 76
         bar_y = y + 138
         bar_w = 440
-        svg.append(f'<rect x="{bar_x}" y="{bar_y}" width="{bar_w}" height="8" rx="4" fill="#a7f078" opacity="0.14"/>')
+        svg.append(f'<rect x="{bar_x}" y="{bar_y}" width="{bar_w}" height="8" rx="4" fill="#ccffa0" opacity="0.14"/>')
         svg.append(f'<rect x="{bar_x}" y="{bar_y}" width="{max(4, min(bar_w, bar_w * min_score)):.1f}" height="8" rx="4" fill="{color}" opacity="0.72"/>')
-        svg.append(f'<rect x="{bar_x}" y="{bar_y + 12}" width="{bar_w}" height="8" rx="4" fill="#a7f078" opacity="0.14"/>')
+        svg.append(f'<rect x="{bar_x}" y="{bar_y + 12}" width="{bar_w}" height="8" rx="4" fill="#ccffa0" opacity="0.14"/>')
         svg.append(f'<rect x="{bar_x}" y="{bar_y + 12}" width="{max(4, min(bar_w, bar_w * nn_score)):.1f}" height="8" rx="4" fill="#ffffff" opacity="0.78"/>')
 
     legend_y = 570
@@ -755,7 +755,7 @@ def write_svg(payload: dict[str, Any]) -> None:
             svg_text(66, legend_y, "How to read this", 24, 760),
             svg_text(66, legend_y + 34, "Each card adds one concrete task to a research direction using existing sample modalities.", 16, 500, "#dce8d7"),
             svg_text(66, legend_y + 62, "Colored bar: minimal baseline normalized score. White bar: neural MLP normalized score. Lower-is-better MAE is shown as 1 - MAE for bar length only.", 16, 500, "#dce8d7"),
-            '<line x1="66" y1="675" x2="1354" y2="675" stroke="#a7f078" stroke-opacity="0.18"/>',
+            '<line x1="66" y1="675" x2="1354" y2="675" stroke="#ccffa0" stroke-opacity="0.18"/>',
             svg_text(66, 724, "Implementation boundary", 22, 760),
             svg_text(66, 758, "A: motion-energy proxy, not a full human body model. B: view-feature retrieval, not neural rendering.", 16, 500, "#dce8d7"),
             svg_text(66, 786, "C: phase-progress regression, not open-world intent. D: ego-motion forecast, not a persistent map.", 16, 500, "#dce8d7"),
