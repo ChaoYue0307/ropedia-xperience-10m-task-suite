@@ -92,7 +92,7 @@ objective. The current decision is:
 - Cosmos 3 next for world modeling, action-conditioned future prediction, and
   synthetic-data experiments.
 - OpenVLA, openpi, GR00T, Octo, and SmolVLA-style policies after action-space
-  conversion and retargeting are auditable.
+  conversion and retargeting are traceable.
 - Gemini Robotics only as an external reasoning/reference surface unless local
   trainable access becomes available.
 

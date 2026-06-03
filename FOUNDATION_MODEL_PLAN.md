@@ -102,7 +102,7 @@ The foundation-model stage should add metrics beyond the current 12-task suite:
 4. Promote Cosmos 3 to the first world-model experiment if video/sensor
    preprocessing and storage fit.
 5. Promote OpenVLA/openpi/GR00T only after action targets are explicit and
-   retargeting artifacts are auditable.
+   retargeting artifacts are traceable.
 6. Update public cards only when a branch has real manifests, predictions,
    metrics, and qualitative examples.
 

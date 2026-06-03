@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-03T14:43:22+00:00",
+  "generated_at_utc": "2026-06-03T17:06:30+00:00",
   "status": "pass",
   "artifact_count": 72,
   "missing": [],
@@ -85,7 +85,7 @@
       "shows": "Defines the staged path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions.",
       "exists": true,
       "bytes": 6677,
-      "sha256": "5baa3ba1b96e0f1c70b8b9ea946aac55ec45d7543587bbfaf5120bef31533b17"
+      "sha256": "590702b8000bd143fdbcf65104b0cad835e6e4c79754c28c31727f1bdf43ae79"
     },
     {
       "id": "research_roadmap_json",
@@ -107,7 +107,7 @@
       "shows": "Defines the post-data-gate backbone choices: Qwen3-Omni first, Cosmos 3 for world modeling, and VLA/policy models after action-target conversion.",
       "exists": true,
       "bytes": 6538,
-      "sha256": "3e0794743ef949dd672b5263394da24428e0bee389e5b0157205b5832b4ad7f4"
+      "sha256": "15431b3ed368d660e777655d2e4a97f2870997f2ad38b451a73d631b5e431bcf"
     },
     {
       "id": "foundation_model_plan_json",
@@ -118,7 +118,7 @@
       "shows": "Machine-readable foundation-model selection matrix with source links, entry conditions, and evaluation additions.",
       "exists": true,
       "bytes": 8883,
-      "sha256": "9f15910ed056683c2fd918311b4a32cd46b699d7b7b7a3e1192bc3db6bc769ee"
+      "sha256": "0465df50071ab4c8e46acafdd2fa1653f23dacd33a1e1e1d65a571c82348ddbc"
     },
     {
       "id": "evidence_contract",
@@ -161,8 +161,8 @@
       "surface": "repo_hf",
       "shows": "Aligns public dataset wording with the official gated Xperience-10M card, public sample card, HF API metadata, and current project coverage.",
       "exists": true,
-      "bytes": 10719,
-      "sha256": "a0cc66e3a52d253dad4b8b19396cd3a8db14bf1835034c6c0aea6c5248fe4037"
+      "bytes": 10764,
+      "sha256": "8eaada6926194aeccf5af6742098f9be8aa611fc9bdf73cfa2df806327b89e9c"
     },
     {
       "id": "official_dataset_card_alignment_json",
@@ -172,8 +172,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable upstream dataset-card, sample-card, and HF API alignment facts for website and HF mirrors.",
       "exists": true,
-      "bytes": 7573,
-      "sha256": "a06402b0a9c23c8bacf0e79acd6bd07ba87e555f3c992d573eac17a3569eb2d7"
+      "bytes": 7585,
+      "sha256": "8bb8f22cf1cc8938f7dcfef15d11e3e544243bb56dc32c792313d224e91a8a2d"
     },
     {
       "id": "source_alignment",
@@ -195,7 +195,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "ab8728f1f7539dd8e9d5a429e1bb01858d701412ab690ccd2f49f39ecbb645d9"
+      "sha256": "e05e785b906d7f0ccedc6ea3bb563eb8dd923f237094f4556d2ea351178f4b5b"
     },
     {
       "id": "source_alignment_validator",
@@ -205,8 +205,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the source-alignment report from committed facts and public card text.",
       "exists": true,
-      "bytes": 15807,
-      "sha256": "66a9d0eebb4800be5d65f982ef13502b37522cd2a9eae0686c63efc121a52b0a"
+      "bytes": 15831,
+      "sha256": "6f48190ca77dd6ba9dd2f821d5ace7e33bd9b4d9d76adb7237cc51ddb88de239"
     },
     {
       "id": "hf_publisher",
@@ -426,7 +426,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8147,
-      "sha256": "40c9cdc9d5afd15f8c69bda48a0eb36d81df14adff5555de54a481df1baed5ca"
+      "sha256": "1a6b09fdf86ad0ad6aef167de8325670d6643c5d68c35e9846ff85270dcfed7a"
     },
     {
       "id": "public_surface_qa",
@@ -448,7 +448,7 @@
       "volatile": true,
       "shows": "Machine-readable report for SEO/social metadata, accessible tab semantics, public links, project links, and reader-facing copy.",
       "exists": true,
-      "bytes": 5648,
+      "bytes": 5631,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -459,8 +459,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the public project-surface report before release.",
       "exists": true,
-      "bytes": 11894,
-      "sha256": "d0e86f45f2f23670e967c1a92024797a59106116ac9d948c35972512384f41de"
+      "bytes": 11872,
+      "sha256": "3ec688d5262d099b480bda674b858834d5d66b8085c0777a2435e58279f37d9d"
     },
     {
       "id": "task_surface_integrity",
@@ -609,7 +609,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 106509,
+      "bytes": 108606,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -621,7 +621,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 14588,
+      "bytes": 14718,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -797,8 +797,8 @@
       "surface": "repo_hf",
       "shows": "Summarizes the data-access requirement before the 32-episode Qwen3-Omni pilot can run.",
       "exists": true,
-      "bytes": 1676,
-      "sha256": "c810259f82df1daebcaf6d03baa61c8c7dc2cc1a7d02f1b6d29776966f094a6f"
+      "bytes": 2954,
+      "sha256": "6ac14781581f06004bdc2fb0e2425c616419b738e6b858f8611bd19fab80741c"
     },
     {
       "id": "multi_episode_access_status",
@@ -808,8 +808,8 @@
       "surface": "repo_hf",
       "shows": "Documents the public multi-episode access status and 32-episode pilot selection.",
       "exists": true,
-      "bytes": 1480,
-      "sha256": "e5a3360a28ea5196cf477a648f119e9c936f9e8b427923d6f04b7589a0f63e4d"
+      "bytes": 2282,
+      "sha256": "e270cdfa4485458572a40f5c3c4bd598fe53e2b8de60af3ff1364398d96862e2"
     },
     {
       "id": "citation",

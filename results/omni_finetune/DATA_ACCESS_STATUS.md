@@ -9,9 +9,17 @@ held-out multi-episode experiment.
 | --- | --- |
 | Target pilot size | 32 valid Xperience-10M episodes |
 | Current public local sample | 1 episode |
-| Full dataset access | Pending gated-dataset approval |
+| Full dataset access | Granted; metadata-only Hugging Face audit completed |
+| Current full-dataset metadata snapshot | 12,102 complete visible HF episodes across 802 complete sessions |
+| Current staged multi-episode data | 128-episode relay started; staging not complete yet |
+| Recommended small fine-tune selection | 128 metadata-balanced episodes, 96/16/16 train/val/test |
 | Current Qwen3-Omni artifacts | Setup-stage sample run, not held-out multi-episode model metrics |
 | Public raw-data redistribution | Not included |
+
+The current 128-episode relay is an operational data-staging step. It should
+not be described as a completed fine-tune or evaluated model until all selected
+episodes are staged, audited, preprocessed, trained, and evaluated on held-out
+sessions.
 
 ## Episode Requirement
 
@@ -35,14 +43,25 @@ The 32-episode pilot should only be reported after:
 | --- | ---: |
 | Local public sample | 1 |
 | ModelScope discovery | 0 |
-| Hugging Face discovery | 0 |
+| Hugging Face gated metadata audit | 12,102 complete visible episodes |
 
-These counts describe the current staged/project-visible data, not the full
-scale of Xperience-10M.
+The Hugging Face count is a metadata-only availability result. It does not mean
+that the raw files have been downloaded, staged, or used for multi-episode
+training yet.
 
 ## Related Files
 
 - `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`
+- `results/omni_finetune/FULL_DATASET_METADATA_AUDIT.md`
+- `results/omni_finetune/full_dataset_metadata_audit.json`
+- `results/omni_finetune/XPERIENCE10M_128_EPISODE_SELECTION.md`
+- `results/omni_finetune/XPERIENCE10M_128_RELAY_AND_FINETUNE_PLAN.md`
+- `results/omni_finetune/xperience10m_128_episode_selection.json`
+- `results/omni_finetune/xperience10m_128_episode_download_files.txt`
 - `results/omni_finetune/source_discovery.json`
 - `scripts/omni/discover_xperience10m_sources.py`
+- `scripts/omni/analyze_xperience10m_hf_metadata.py`
+- `scripts/omni/select_xperience10m_pilot_episodes.py`
+- `scripts/omni/relay_xperience10m_selection.py`
+- `scripts/omni/audit_staged_xperience10m_content.py`
 - `scripts/omni/build_episode_manifest.py`

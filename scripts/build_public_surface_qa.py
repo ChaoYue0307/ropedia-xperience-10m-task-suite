@@ -148,7 +148,7 @@ def build_report() -> dict:
         "Xperience-10M",
         "12-task",
         "Qwen3-Omni",
-        "one public Xperience-10M sample episode",
+        "128-episode relay",
     ]
     hf_link_markers = [
         "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite",

@@ -223,4 +223,4 @@ When describing Xperience-10M in this repo, keep these limitations visible:
 | Episode layout uses six MP4 streams and `annotation.hdf5` | Used by sample inspection and pilot-readiness scripts |
 | Audio exists in MP4 streams | Decoded into the current `audio_fisheye_cam0_aac` feature block |
 | 4D reconstruction/world modeling are intended research directions | Represented by proxy/diagnostic tasks only |
-| Real model quality requires held-out multi-episode evaluation | Pending the 32-episode pilot |
+| Real model quality requires held-out multi-episode evaluation | Pending selected multi-episode staging, training, and held-out evaluation |
