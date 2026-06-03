@@ -1,0 +1,6 @@
+{
+  "description": "Real feature windows are deliberately time-shifted at evaluation time to test cross-modal alignment sensitivity.",
+  "target_group": "depth_confidence + video_*",
+  "status_meaning": "derived_perturbation means the features are real but the time shift is an explicit diagnostic perturbation.",
+  "num_rows": 45
+}
