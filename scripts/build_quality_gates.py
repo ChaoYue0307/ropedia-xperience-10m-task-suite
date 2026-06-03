@@ -24,8 +24,8 @@ GATES = [
         "title": "Multi-episode pilot status",
         "command": "python scripts/validate_scope_claims.py",
         "report": "docs/data/scope_claims_audit.json",
-        "blocks_if": "Historical 32ep setup/provenance strings are presented as completed 32-episode metrics.",
-        "shows": "Qwen3-Omni setup artifacts stay distinct from the planned held-out 32-episode pilot.",
+        "blocks_if": "Setup/provenance strings are presented as completed held-out metrics.",
+        "shows": "Qwen3-Omni setup artifacts stay distinct from the planned held-out pilot.",
     },
     {
         "id": "source_alignment",

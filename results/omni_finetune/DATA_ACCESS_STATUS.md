@@ -7,19 +7,20 @@ held-out multi-episode experiment.
 
 | Item | Status |
 | --- | --- |
-| Target pilot size | 32 valid Xperience-10M episodes |
+| Minimum pilot gate | 32 valid Xperience-10M episodes |
 | Current public local sample | 1 episode |
 | Full dataset access | Granted; metadata-only Hugging Face audit completed |
 | Current full-dataset metadata snapshot | 12,102 complete visible HF episodes across 802 complete sessions |
-| Current staged multi-episode data | 128-episode relay started; staging not complete yet |
-| Recommended small fine-tune selection | 128 metadata-balanced episodes, 96/16/16 train/val/test |
+| Current selected relay | 128 metadata-balanced episodes, 96/16/16 train/val/test |
+| Current staged multi-episode data | 128-episode relay started with chunked parallel transfer and batch prefetch; staging not complete yet |
 | Current Qwen3-Omni artifacts | Setup-stage sample run, not held-out multi-episode model metrics |
 | Public raw-data redistribution | Not included |
 
-The current 128-episode relay is an operational data-staging step. It should
-not be described as a completed fine-tune or evaluated model until all selected
-episodes are staged, audited, preprocessed, trained, and evaluated on held-out
-sessions.
+The current 128-episode relay is an operational data-staging step. It uses
+chunked parallel transfer for staged files and overlapping batch prefetch for
+future relay batches. It should not be described as a completed fine-tune or
+evaluated model until all selected episodes are staged, audited, preprocessed,
+trained, and evaluated on held-out sessions.
 
 ## Episode Requirement
 
@@ -63,5 +64,6 @@ training yet.
 - `scripts/omni/analyze_xperience10m_hf_metadata.py`
 - `scripts/omni/select_xperience10m_pilot_episodes.py`
 - `scripts/omni/relay_xperience10m_selection.py`
+- `scripts/omni/parallel_chunk_transfer.py`
 - `scripts/omni/audit_staged_xperience10m_content.py`
 - `scripts/omni/build_episode_manifest.py`

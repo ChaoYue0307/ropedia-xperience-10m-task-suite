@@ -65,8 +65,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--summary-json", type=Path, default=Path("relay_summary.json"))
     parser.add_argument("--transfer-host", default="", help="Remote destination, e.g. user@training-host")
     parser.add_argument("--transfer-root", default="", help="Remote directory that receives session/episode folders.")
+    parser.add_argument("--transfer-mode", choices=["rsync", "chunked"], default="rsync")
     parser.add_argument("--ssh-key", type=Path, default=Path.home() / ".ssh" / "xperience10m_relay_ed25519")
     parser.add_argument("--ssh-extra", default="-o BatchMode=yes -o StrictHostKeyChecking=accept-new")
+    parser.add_argument("--chunk-transfer-script", type=Path, default=None)
+    parser.add_argument("--chunk-parallel", type=int, default=8)
+    parser.add_argument("--chunk-size-mib", type=int, default=8)
+    parser.add_argument("--chunk-threshold-mib", type=int, default=8)
     parser.add_argument("--delete-after-transfer", action="store_true")
     parser.add_argument("--validate-only", action="store_true", help="Do not download; validate selected files already under relay-root.")
     return parser.parse_args()
@@ -201,7 +206,6 @@ def run_command(cmd: list[str], progress_path: Path, event_prefix: str, batch_in
 def transfer_batch(args: argparse.Namespace, batch_root: Path, batch: Batch) -> None:
     if not args.transfer_host or not args.transfer_root:
         return
-    ssh_cmd = f"ssh -i {shlex.quote(str(args.ssh_key))} {args.ssh_extra}"
     mkdir_cmd = [
         "ssh",
         "-i",
@@ -211,6 +215,38 @@ def transfer_batch(args: argparse.Namespace, batch_root: Path, batch: Batch) -> 
         f"mkdir -p {shlex.quote(args.transfer_root)}",
     ]
     run_command(mkdir_cmd, args.progress_jsonl, "remote_mkdir", batch.index, args.dry_run)
+    if args.transfer_mode == "chunked":
+        script = args.chunk_transfer_script
+        if script is None:
+            script = Path(__file__).with_name("parallel_chunk_transfer.py")
+        script = script.expanduser().resolve()
+        chunk_progress = args.progress_jsonl.parent / f"chunk_transfer_batch_{batch.index:04d}.jsonl"
+        chunk_cmd = [
+            "python3",
+            str(script),
+            "--src-root",
+            str(batch_root),
+            "--dst-host",
+            args.transfer_host,
+            "--dst-root",
+            args.transfer_root,
+            "--ssh-key",
+            str(args.ssh_key),
+            "--ssh-extra",
+            args.ssh_extra,
+            "--chunk-size-mib",
+            str(args.chunk_size_mib),
+            "--parallel",
+            str(args.chunk_parallel),
+            "--split-threshold-mib",
+            str(args.chunk_threshold_mib),
+            "--progress-jsonl",
+            str(chunk_progress),
+        ]
+        run_command(chunk_cmd, args.progress_jsonl, "chunk_transfer", batch.index, args.dry_run)
+        return
+
+    ssh_cmd = f"ssh -i {shlex.quote(str(args.ssh_key))} {args.ssh_extra}"
     rsync_cmd = [
         "rsync",
         "-avP",

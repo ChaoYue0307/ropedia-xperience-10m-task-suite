@@ -59,7 +59,7 @@ The current suite checks cross-modal alignment and depth/video reconstruction pr
 Most of the 12 tasks directly target egocentric action, task state, interaction, grounding, and alignment.
 
 - Move from single-episode chronological splits to held-out-episode splits.
-- Use the extracted AAC audio block with stronger multimodal backbones for action, intent, and grounding.
+- Use audio together with stronger multimodal backbones for action, intent, and grounding.
 - Evaluate long-horizon task success prediction and action-conditioned generation.
 
 ### D. Scene Reconstruction & World Modeling

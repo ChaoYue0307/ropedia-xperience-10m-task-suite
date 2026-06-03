@@ -11,7 +11,7 @@ from hand-edited score text.
 - aligned windows: 1,161
 - current feature dimension: 8,546
 - raw Xperience-10M data is not redistributed
-- AAC audio from the sample MP4 stream is extracted into the current feature vector
+- Audio from the sample MP4 stream is represented in the current feature vector
 
 ## Takeaways
 
@@ -80,7 +80,7 @@ Current scope: The current reconstruction task predicts feature vectors; depth, 
 
 ### Audio helps some tasks and hurts others on the public sample
 
-The current AAC audio block improves the primary metric on 6 of 12 tasks, while raw log-mel replacement improves over the current handcrafted block on 6 of 12 tasks. The largest current-audio gain appears in feature reconstruction, not in action classification.
+Audio improves the primary metric on 6 of 12 tasks, while raw log-mel replacement improves over the current handcrafted block on 6 of 12 tasks. The largest current-audio gain appears in feature reconstruction, not in action classification.
 
 | Metric | Value |
 | --- | ---: |
@@ -97,23 +97,23 @@ Current scope: This is a single-episode ablation over fixed ridge heads. It vali
 
 ### The next scientific unit is held-out episodes, not more adjacent windows
 
-The prepared Qwen3-Omni path targets 32 episodes from 32 sessions, but it remains data-gated until access and held-out evaluation complete.
+The prepared Qwen3-Omni path now targets a selected 128-episode pilot; held-out metrics will be reported after staging, training, and evaluation complete.
 
 | Metric | Value |
 | --- | ---: |
-| `target_episodes` | 32 |
-| `selected_sessions` | 32 |
-| `valid_candidates` | 680 |
+| `target_episodes` | 128 |
+| `selected_sessions` | 128 |
+| `valid_candidates` | 12,102 |
 
 Source: `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`.
 
-Current scope: The 32-episode Qwen3-Omni fine-tune requires gated data staging and held-out evaluation.
+Current scope: The selected-episode Qwen3-Omni fine-tune requires completed data staging and held-out evaluation.
 
 ## How To Read These Results
 
 - High single-episode scores are useful pipeline checks for the current task contracts.
 - Low chronological action/subtask scores are informative because they expose later-label shift.
 - Neural gains on trajectory/order/alignment make those tasks good candidates for the next fine-tuning stage.
-- Audio ablation is task-specific: current AAC and raw log-mel features help some probes and hurt others.
+- Audio ablation is task-specific: audio representation choices help some probes and hurt others.
 - Retrieval and reconstruction remain the main multimodal representation challenges.
 - The next credible model-quality result needs held-out episodes.

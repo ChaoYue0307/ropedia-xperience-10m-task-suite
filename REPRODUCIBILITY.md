@@ -10,11 +10,11 @@ outside the current public data scope.
 | --- | --- | --- |
 | Sample download | Yes, from `ropedia-ai/xperience-10m-sample` or ModelScope sample mirror | Sample card lists `cc-by-nc-4.0`; raw data is not redistributed in this repo. |
 | Minimal baselines | Yes | One public sample episode, chronological split. |
-| 12-task suite | Yes | Uses the current 8,546-d feature contract, including the decoded AAC audio block. |
+| 12-task suite | Yes | Uses the current 8,546-d synchronized multimodal feature contract. |
 | Neural MLP heads | Yes, when `torch` is installed | Compact task heads only, not a foundation model. |
 | Website figures and charts | Yes | Generated from committed metrics and sample thumbnails. |
 | Public bundle contents | Yes | Covers public repo and prepared HF bundles. |
-| 32-episode Qwen3-Omni LoRA pilot | Not yet | Gated by full Xperience-10M access and held-out-episode evaluation. |
+| Multi-episode Qwen3-Omni LoRA pilot | Not yet | Full-dataset access is granted; held-out metrics require completed staging, training, and evaluation. |
 
 ## Environment
 
@@ -129,7 +129,7 @@ Evidence:
 The following require gated data, large model weights, or private compute
 state, so this repo does not yet provide public reproduction for:
 
-- a real 32-episode Qwen3-Omni LoRA run,
+- a real held-out multi-episode Qwen3-Omni LoRA run,
 - held-out episode metrics for Qwen3-Omni,
 - full Xperience-10M-scale pretraining,
 - raw Xperience-10M video or annotation redistribution,

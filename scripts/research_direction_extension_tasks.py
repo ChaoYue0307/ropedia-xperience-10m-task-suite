@@ -41,7 +41,7 @@ TASK_SPECS: OrderedDict[str, dict[str, Any]] = OrderedDict(
                 "name": "Body and Hand Motion Intensity",
                 "family": "classification",
                 "case_study": "A window with a fast reach or pour should be classified as high motion; a steady holding window should be low motion.",
-                "input": "Current non-mocap feature blocks: video, AAC audio, depth, camera pose/rotation, IMU, SLAM, calibration, and language context.",
+                "input": "Current non-mocap feature blocks: video, audio, depth, camera pose/rotation, IMU, SLAM, calibration, and language context.",
                 "middle_process": "Compute the target from hand/body joint changes between neighboring windows, hide the mocap blocks from the input, then classify high versus low motion using the train-set median as the threshold.",
                 "output": "Binary label: high_motion or low_motion.",
                 "minimal_baseline": "Ridge classifier on standardized non-mocap features.",

@@ -36,7 +36,7 @@ BLOCK_DISPLAY = {
     "camera_rotation_matrix": "Camera Rotation",
     "imu_accel_gyro": "IMU Accel/Gyro",
     "depth_confidence": "Depth + Confidence",
-    "audio_fisheye_cam0_aac": "Audio AAC",
+    "audio_fisheye_cam0_aac": "Audio",
     "caption_objects_interaction_text": "Language Text",
     "slam_point_cloud": "SLAM Point Cloud",
     "calibration": "Calibration",

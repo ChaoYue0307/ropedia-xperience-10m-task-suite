@@ -10,9 +10,9 @@
     "neural_head_count": 12,
     "direction_extension_probe_count": 4,
     "raw_xperience10m_data_in_repo": false,
-    "audio_feature_status": "AAC audio is decoded from fisheye_cam0.mp4 and included in the current baseline feature vector as audio_fisheye_cam0_aac.",
+    "audio_feature_status": "Audio is one of the synchronized source modalities in the current task representation.",
     "qwen3_omni_32_episode_claim": false,
-    "qwen3_omni_status": "Setup-stage until at least 32 valid episodes are available and held-out episode evaluation finishes."
+    "qwen3_omni_status": "Full-dataset access is granted; 128 selected episodes are in accelerated relay/staging with chunked parallel transfer and overlapping batch prefetch before held-out episode evaluation."
   },
   "reading_path": [
     {
@@ -41,7 +41,7 @@
         "docs/data/scope_claims_audit.json",
         "docs/data/website_integrity.json"
       ],
-      "readout": "The project status table and roadmap give the compact current-state summary. Single-episode task engineering, metrics, visualizations, public website integrity, mirror parity, and scale-up status checks are implemented; cross-episode generalization and 32-episode Qwen3-Omni metrics are later milestones."
+      "readout": "The project status table and roadmap give the compact current-state summary. Single-episode task engineering, metrics, visualizations, public website integrity, mirror parity, and scale-up status checks are implemented; cross-episode generalization and Qwen3-Omni held-out metrics are later milestones."
     },
     {
       "step": 2,
@@ -93,7 +93,7 @@
         "results/episode_task_suite/available_modalities.json",
         "docs/data/modality_atlas.json"
       ],
-      "readout": "The current model input is an 8,546-dimensional aligned window vector with explicit feature-block boundaries, including a 168-d AAC audio block, and the readable atlas shows each public-sample modality without raw data redistribution."
+      "readout": "The current model input is an 8,546-dimensional aligned multimodal window, and the readable atlas shows each public-sample modality without raw data redistribution."
     },
         {
             "step": 7,
@@ -115,7 +115,7 @@
         "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
         "scripts/omni/discover_xperience10m_sources.py"
       ],
-      "readout": "The next milestone is a 32-episode held-out-episode Qwen3-Omni LoRA pilot after gated Xperience-10M access is available."
+      "readout": "The next milestone is a selected-episode held-out Qwen3-Omni LoRA pilot after staging and preprocessing complete."
     }
   ],
     "project_status": "PROJECT_STATUS.md",
@@ -142,7 +142,7 @@
   },
   "current_reading_notes": [
     "Cross-environment generalization is evaluated in the later multi-episode stage.",
-    "The Qwen3-Omni setup run is separate from the planned 32-episode fine-tune.",
+    "The Qwen3-Omni setup run is separate from the planned held-out fine-tune.",
     "Feature-vector reconstruction is separate from pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
     "Raw Xperience-10M data is not redistributed in this repo."
   ]

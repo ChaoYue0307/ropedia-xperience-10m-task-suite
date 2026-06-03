@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-03T17:06:23+00:00",
+  "generated_at_utc": "2026-06-03T18:25:52+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
@@ -74,8 +74,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 66066,
-      "evidence_index": 81914
+      "overview_index": 66059,
+      "evidence_index": 81858
     },
     {
       "name": "project_status_links_json",
@@ -149,9 +149,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 66066,
-      "protocol_index": 78750,
-      "evidence_index": 81914
+      "overview_index": 66059,
+      "protocol_index": 78722,
+      "evidence_index": 81858
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -169,8 +169,8 @@
       "name": "suite_task_map_precedes_modality_atlas",
       "status": "pass",
       "reason": "The Suite anchor should show the full 12-task map before the modality atlas.",
-      "first_marker_index": 522,
-      "second_marker_index": 813
+      "first_marker_index": 419,
+      "second_marker_index": 710
     },
     {
       "name": "suite_modality_atlas_contains_seven_cards",
@@ -244,12 +244,12 @@
   "json_files": [
     {
       "path": "data/artifact_index.json",
-      "bytes": 32378,
+      "bytes": 32292,
       "top_level_type": "dict"
     },
     {
       "path": "data/audio_ablation_summary.json",
-      "bytes": 9735,
+      "bytes": 9701,
       "top_level_type": "dict"
     },
     {
@@ -259,12 +259,12 @@
     },
     {
       "path": "data/evaluation_protocol.json",
-      "bytes": 13644,
+      "bytes": 13625,
       "top_level_type": "dict"
     },
     {
       "path": "data/evidence_contract.json",
-      "bytes": 12025,
+      "bytes": 12096,
       "top_level_type": "dict"
     },
     {
@@ -274,12 +274,12 @@
     },
     {
       "path": "data/foundation_model_plan.json",
-      "bytes": 8883,
+      "bytes": 8880,
       "top_level_type": "dict"
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 68744,
+      "bytes": 68749,
       "top_level_type": "dict"
     },
     {
@@ -289,12 +289,12 @@
     },
     {
       "path": "data/modality_atlas.json",
-      "bytes": 3819,
+      "bytes": 3797,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_brief.json",
-      "bytes": 2563,
+      "bytes": 2585,
       "top_level_type": "dict"
     },
     {
@@ -304,12 +304,12 @@
     },
     {
       "path": "data/project_packet.json",
-      "bytes": 7659,
+      "bytes": 7553,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_status.json",
-      "bytes": 9006,
+      "bytes": 8868,
       "top_level_type": "dict"
     },
     {
@@ -324,7 +324,7 @@
     },
     {
       "path": "data/quality_gates.json",
-      "bytes": 8147,
+      "bytes": 8118,
       "top_level_type": "dict"
     },
     {
@@ -334,32 +334,32 @@
     },
     {
       "path": "data/reproducibility_matrix.json",
-      "bytes": 5197,
+      "bytes": 5229,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_direction_extensions.json",
-      "bytes": 11907,
+      "bytes": 11903,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_directions.json",
-      "bytes": 14429,
+      "bytes": 14414,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_roadmap.json",
-      "bytes": 5752,
+      "bytes": 5726,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_roadmap_interactive.json",
-      "bytes": 131526,
+      "bytes": 131473,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_takeaways.json",
-      "bytes": 6814,
+      "bytes": 6821,
       "top_level_type": "dict"
     },
     {
@@ -379,7 +379,7 @@
     },
     {
       "path": "data/summary_metrics.json",
-      "bytes": 25210,
+      "bytes": 25179,
       "top_level_type": "dict"
     },
     {
@@ -389,17 +389,17 @@
     },
     {
       "path": "data/task_walkthroughs.json",
-      "bytes": 26976,
+      "bytes": 26963,
       "top_level_type": "dict"
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 14719,
+      "bytes": 14718,
       "top_level_type": "dict"
     },
     {
       "path": "data/xperience10m_dataset_card_alignment.json",
-      "bytes": 7585,
+      "bytes": 7559,
       "top_level_type": "dict"
     }
   ],
@@ -458,7 +458,7 @@
     {
       "path": "assets/charts/feature_blocks.svg",
       "exists": true,
-      "bytes": 7925,
+      "bytes": 7889,
       "format": "SVG",
       "has_viewbox": true
     },

@@ -18,7 +18,7 @@
 <rect x="410" y="122" width="8" height="110" rx="4" fill="#7ae5c3"/>
 <text x="434" y="153" font-family="Inter Tight, Arial, sans-serif" font-size="18" font-weight="800" fill="#f4f8ef">Feature vector</text>
 <text x="434" y="180" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X_all = 8,546 dimensions</text>
-<text x="434" y="198" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">18 named blocks incl. audio</text>
+<text x="434" y="198" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">18 named modality groups</text>
 <text x="434" y="216" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">mean/std fit on train only</text>
 <rect x="760" y="122" width="320" height="110" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.26" stroke-width="2"/>
 <rect x="760" y="122" width="8" height="110" rx="4" fill="#ccffa0"/>
@@ -123,7 +123,7 @@
 <text x="1068" y="853" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#9bdfff">softmax</text>
 <text x="1020" y="890" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">contact_prediction</text>
 <text x="1020" y="922" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">INPUT</text>
-<text x="1092" y="922" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X without contact/text leakage, 7,503d</text>
+<text x="1092" y="922" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X without contact/text leakage, 8,546d</text>
 <text x="1020" y="947" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">HEAD</text>
 <text x="1092" y="947" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal linear softmax; optional NN MLP</text>
 <text x="1092" y="964" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">softmax</text>
@@ -138,7 +138,7 @@
 <text x="128" y="1131" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#d8f4a5">multilabel</text>
 <text x="80" y="1168" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">object_relevance</text>
 <text x="80" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#d8f4a5">INPUT</text>
-<text x="152" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X without caption text, 7,650d</text>
+<text x="152" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">X without caption text, 8,546d</text>
 <text x="80" y="1225" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#d8f4a5">HEAD</text>
 <text x="152" y="1225" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal sigmoid logistic; optional NN MLP</text>
 <text x="152" y="1242" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">multilabel</text>
@@ -152,7 +152,7 @@
 <text x="598" y="1131" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#7ae5c3">ridge+rank</text>
 <text x="550" y="1168" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">caption_grounding</text>
 <text x="550" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">INPUT</text>
-<text x="622" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">sensor 7,650d -&gt; text space 896d</text>
+<text x="622" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">sensor 8,546d -&gt; text space 0d</text>
 <text x="550" y="1225" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">HEAD</text>
 <text x="622" y="1225" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal ridge or NN MLP projection, then</text>
 <text x="622" y="1242" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">cosine rank</text>
@@ -166,27 +166,26 @@
 <text x="1068" y="1131" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#7ae5c3">ridge+rank</text>
 <text x="1020" y="1168" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">cross_modal_retrieval</text>
 <text x="1020" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">INPUT</text>
-<text x="1092" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">motion/IMU/camera/audio 2,415d -&gt; visual</text>
-<text x="1092" y="1217" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">5,096d</text>
-<text x="1020" y="1242" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">HEAD</text>
-<text x="1092" y="1242" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal ridge or NN MLP projection, then</text>
-<text x="1092" y="1259" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">cosine rank</text>
-<text x="1020" y="1284" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">OUTPUT</text>
-<text x="1092" y="1284" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">retrieve matching depth/video window</text>
-<text x="1020" y="1309" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">METRIC</text>
-<text x="1092" y="1309" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min top-5 0.3678; NN top-5 0.1983</text>
+<text x="1092" y="1200" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">motion/IMU/camera/audio 0d -&gt; visual 0d</text>
+<text x="1020" y="1225" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">HEAD</text>
+<text x="1092" y="1225" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal ridge or NN MLP projection, then</text>
+<text x="1092" y="1242" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">cosine rank</text>
+<text x="1020" y="1267" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">OUTPUT</text>
+<text x="1092" y="1267" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">retrieve matching depth/video window</text>
+<text x="1020" y="1292" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#7ae5c3">METRIC</text>
+<text x="1092" y="1292" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min top-5 0.3678; NN top-5 0.1983</text>
 <rect x="60" y="1374" width="440" height="248" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.24" stroke-width="2"/>
 <rect x="60" y="1374" width="8" height="248" rx="4" fill="#ccffa0"/>
 <rect x="80" y="1392" width="96" height="24" rx="6" fill="#071207" stroke="#ccffa0" stroke-opacity="0.72"/>
 <text x="128" y="1409" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0">ridge</text>
 <text x="80" y="1446" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">modality_reconstruction</text>
 <text x="80" y="1478" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#ccffa0">INPUT</text>
-<text x="152" y="1478" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">motion/IMU/camera/audio 2,415d</text>
+<text x="152" y="1478" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">motion/IMU/camera/audio 0d</text>
 <text x="80" y="1503" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#ccffa0">HEAD</text>
 <text x="152" y="1503" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal dual ridge; optional NN MLP</text>
 <text x="152" y="1520" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">regression</text>
 <text x="80" y="1545" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#ccffa0">OUTPUT</text>
-<text x="152" y="1545" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">depth/video feature vector, 5,096d</text>
+<text x="152" y="1545" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">depth/video feature vector, 0d</text>
 <text x="80" y="1570" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#ccffa0">METRIC</text>
 <text x="152" y="1570" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">min R2 -0.0153; NN R2 -0.0102</text>
 <rect x="530" y="1374" width="440" height="248" rx="8" fill="#061006" stroke="#ccffa0" stroke-opacity="0.24" stroke-width="2"/>
@@ -210,7 +209,7 @@
 <text x="1020" y="1446" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">misalignment_detection</text>
 <text x="1020" y="1478" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">INPUT</text>
 <text x="1092" y="1478" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">concat[motion_t, visual+audio_t/shifted],</text>
-<text x="1092" y="1495" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">7,511d</text>
+<text x="1092" y="1495" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">0d</text>
 <text x="1020" y="1520" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="#9bdfff">HEAD</text>
 <text x="1092" y="1520" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">minimal binary softmax; optional NN MLP</text>
 <text x="1092" y="1537" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="500" fill="#dce8d7">softmax</text>

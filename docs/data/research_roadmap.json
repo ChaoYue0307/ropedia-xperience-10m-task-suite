@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Research Roadmap",
   "summary": "Staged path from the public-sample task lab to multi-episode held-out evaluation, foundation-model selection, and larger omni/world-model extensions.",
-  "current_decision_point": "Keep the public-sample task suite as the development harness, stage enough official Xperience-10M episodes to run the 32-episode held-out pilot, then branch into Cosmos 3 world modeling and policy-model experiments only after the data gate is real.",
+  "current_decision_point": "Keep the public-sample task suite as the development harness, stage the selected official Xperience-10M relay for the held-out Qwen3-Omni pilot, then branch into Cosmos 3 world modeling and policy-model experiments after the data staging path is stable.",
   "phases": [
     {
       "id": "public_sample_task_lab",
@@ -30,9 +30,9 @@
       "id": "multi_episode_data_staging",
       "name": "Multi-Episode Data Staging",
       "status": "active",
-      "entry_condition": "Gated dataset access and enough storage for selected episodes.",
+      "entry_condition": "Full-dataset access and enough storage for selected episodes.",
       "deliverables": [
-        "32 valid episodes",
+        "128 selected episodes",
         "episode manifest",
         "missing-view manifest",
         "held-out episode split",
@@ -46,10 +46,10 @@
       "reader_takeaway": "The next scale decision is data staging, with train/test separation at the episode level."
     },
     {
-      "id": "qwen3_omni_lora_pilot_32_episode",
-      "name": "32-Episode Qwen3-Omni LoRA Pilot",
+      "id": "qwen3_omni_lora_pilot",
+      "name": "Qwen3-Omni LoRA Pilot",
       "status": "next",
-      "entry_condition": "At least 32 valid episodes are staged locally with no train/test episode leakage.",
+      "entry_condition": "Selected episodes are staged locally with no train/test episode leakage.",
       "deliverables": [
         "dataset JSONL/media manifests",
         "LoRA adapter checkpoint",
@@ -73,7 +73,7 @@
       "id": "foundation_model_selection_matrix",
       "name": "Foundation-Model Selection Matrix",
       "status": "next",
-      "entry_condition": "The 32-episode data gate is satisfied or a 3-8 episode dry run is staged for preprocessing checks.",
+      "entry_condition": "The selected relay is staged or a 3-8 episode dry run is staged for preprocessing checks.",
       "deliverables": [
         "backbone registry",
         "Cosmos 3 world-model branch plan",
@@ -92,7 +92,7 @@
       "id": "robustness_run_64_128_episode",
       "name": "64-128 Episode Robustness Run",
       "status": "planned",
-      "entry_condition": "The 32-episode pilot trains and evaluates cleanly.",
+      "entry_condition": "The selected-episode pilot trains and evaluates cleanly.",
       "deliverables": [
         "split-by-session metrics",
         "modality ablations",

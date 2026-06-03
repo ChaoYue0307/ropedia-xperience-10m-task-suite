@@ -92,7 +92,7 @@ def main() -> int:
         "notes": [
             "Images are lightweight derived thumbnails for review and website presentation.",
             "Raw MP4, HDF5, and RRD files remain excluded from the public repo and Hugging Face bundles.",
-            "AAC audio is extracted from the sample MP4 stream and included in the current baseline feature vector.",
+            "Audio is represented in the current baseline feature vector.",
         ],
         "modalities": records,
     }

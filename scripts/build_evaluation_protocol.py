@@ -200,7 +200,7 @@ def build_payload() -> dict:
             "input_contract": f"{suite['feature_dim']:,}-dimensional current feature vector",
             "source_manifest": "results/episode_task_suite/feature_manifest.json",
             "normalization": "Scalers are fit on train windows only for the baseline heads.",
-            "audio_status": "AAC audio is extracted from the sample MP4 stream and included in the current feature vector.",
+            "audio_status": "Audio is represented in the current feature vector.",
         },
         "baselines": [
             {
@@ -226,17 +226,17 @@ def build_payload() -> dict:
         "current_limitations": [
             "Cross-episode generalization is evaluated in the later multi-episode stage.",
             "Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.",
-            "Qwen3-Omni setup artifacts are preparation artifacts until the 32-episode held-out pilot runs.",
-            "Full audio-visual representation learning still needs multi-episode training, but the current baseline vector now includes an extracted AAC audio feature block.",
+            "Qwen3-Omni setup artifacts are preparation artifacts until the selected held-out pilot runs.",
+            "Full audio-visual representation learning still needs multi-episode training; the current report includes single-episode audio/no-audio ablations.",
         ],
         "scale_up_gate": {
             "required_before_full_omni_pilot": [
-                "at least 32 valid Xperience-10M episodes",
+                "selected staged Xperience-10M episodes",
                 "held-out episode split with no train/test episode leakage",
                 "manifest, training metadata, progress logs, metrics, predictions, and run report",
                 "held-out evaluation on test episodes rather than train windows",
             ],
-            "current_status": "prepared but data-gated",
+            "current_status": "prepared; selected data relay in progress",
             "evidence": [
                 "results/omni_finetune/DATA_ACCESS_STATUS.md",
                 "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
@@ -348,7 +348,7 @@ def render_markdown(payload: dict) -> str:
     lines.extend(f"- {item}" for item in payload["scale_up_gate"]["required_before_full_omni_pilot"])
     lines.extend([
         "",
-        "Current status: prepared but data-gated. Read",
+        "Current status: prepared; selected data relay in progress. Read",
         "`results/omni_finetune/DATA_ACCESS_STATUS.md` and",
         "`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` before interpreting any",
         "Qwen3-Omni artifact.",

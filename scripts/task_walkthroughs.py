@@ -444,7 +444,7 @@ def build_payload(summary: dict[str, Any]) -> dict[str, Any]:
         "shared_pipeline": [
             "Read annotation.hdf5 and synchronized video-derived features.",
             "Slice the episode into 20-frame windows with stride 5.",
-            f"Build a {summary.get('feature_dim'):,}-d current feature vector from available modality blocks, including AAC audio features.",
+            f"Build a {summary.get('feature_dim'):,}-dimensional aligned feature vector from the synchronized modality groups.",
             "Construct a task-specific target from labels, future frames, paired windows, or modality splits.",
             "Train a minimal head and, when enabled, a neural MLP head.",
             "Write metrics, predictions, and model artifacts for downstream exploration.",

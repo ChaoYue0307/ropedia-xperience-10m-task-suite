@@ -81,7 +81,7 @@ GROUPS = [
 
 MODALITIES = [
     ("video", "visual stream", "6 synchronized camera MP4 streams", "RGB/fisheye/stereo frame statistics"),
-    ("audio", "acoustic stream", "AAC stream embedded in MP4", "AAC audio feature block"),
+    ("audio", "acoustic stream", "audio stream embedded in MP4", "audio feature group"),
     ("depth", "geometry map", "depth map + confidence channel", "spatial geometry feature block"),
     ("pose / SLAM", "camera pose", "trajectory + sparse SLAM map", "position + orientation features"),
     ("motion capture", "human motion", "body + hand joint tracks", "3D mocap feature statistics"),
@@ -267,7 +267,7 @@ def audio_thumb(sample_dir: Path) -> str:
             x = 22 + i * 8
             h = 16 + (i % 7) * 7
             draw.rounded_rectangle((x, THUMB_HEIGHT - 72 - h, x + 4, THUMB_HEIGHT - 72), radius=2, fill=(167, 240, 120, 170))
-    draw_label(draw, (18, 18), "AAC audio waveform", fill=(244, 248, 239), size=22)
+    draw_label(draw, (18, 18), "Audio waveform", fill=(244, 248, 239), size=22)
     return image_data_uri(canvas, "PNG")
 
 

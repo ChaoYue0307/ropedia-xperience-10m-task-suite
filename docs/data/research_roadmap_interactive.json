@@ -525,7 +525,7 @@
       "name": "Egocentric Vision & Interaction",
       "next_steps": [
         "Move from single-episode chronological splits to held-out-episode splits.",
-        "Use the extracted AAC audio block with stronger multimodal backbones for action, intent, and grounding.",
+        "Use the audio signal with stronger multimodal backbones for action, intent, and grounding.",
         "Evaluate long-horizon task success prediction and action-conditioned generation."
       ],
       "preferred_background": "Video understanding, action recognition, or egocentric vision.",
@@ -1925,10 +1925,10 @@
     ],
     "model_families": [
       {
-        "best_role": "First 32-episode multimodal LoRA pilot and structured task predictor.",
+        "best_role": "First selected-episode multimodal LoRA pilot and structured task predictor.",
         "category": "omni_instruction_model",
         "current_decision": "keep_as_first_pilot",
-        "entry_condition": "At least 32 valid episodes staged with held-out episode split.",
+        "entry_condition": "Selected episodes staged with held-out episode split.",
         "family": "Qwen3-Omni",
         "openness": "open_weights_available_from_official_hf_repo",
         "priority": 1,
@@ -2110,13 +2110,13 @@
         "results/omni_finetune/source_discovery.json"
       ],
       "deliverables": [
-        "32 valid episodes",
+        "128 selected episodes",
         "episode manifest",
         "missing-view manifest",
         "held-out episode split",
         "source-discovery report"
       ],
-      "entry_condition": "Gated dataset access and enough storage for selected episodes.",
+      "entry_condition": "Full-dataset access and enough storage for selected episodes.",
       "id": "multi_episode_data_staging",
       "name": "Multi-Episode Data Staging",
       "reader_takeaway": "The next scale decision is data staging, with train/test separation at the episode level.",
@@ -2141,9 +2141,9 @@
         "confusion matrices",
         "run report"
       ],
-      "entry_condition": "At least 32 valid episodes are staged locally with no train/test episode leakage.",
-      "id": "qwen3_omni_lora_pilot_32_episode",
-      "name": "32-Episode Qwen3-Omni LoRA Pilot",
+      "entry_condition": "Selected episodes are staged locally with no train/test episode leakage.",
+      "id": "qwen3_omni_lora_pilot",
+      "name": "Qwen3-Omni LoRA Pilot",
       "reader_takeaway": "The first omni-model pilot should establish a complete held-out-episode training and evaluation loop.",
       "stage": "omni",
       "status": "next"
@@ -2161,7 +2161,7 @@
         "OpenVLA/openpi/GR00T policy-branch candidates",
         "model-specific evaluation additions"
       ],
-      "entry_condition": "The 32-episode data gate is satisfied or a 3-8 episode dry run is staged for preprocessing checks.",
+      "entry_condition": "The selected relay is staged or a 3-8 episode dry run is staged for preprocessing checks.",
       "id": "foundation_model_selection_matrix",
       "name": "Foundation-Model Selection Matrix",
       "reader_takeaway": "Qwen3-Omni remains the first trainable held-out pilot; Cosmos 3 is the first world-model branch; VLA/policy models wait for explicit action targets.",
@@ -2182,7 +2182,7 @@
         "calibration/object/language error analysis",
         "missing-view sensitivity analysis"
       ],
-      "entry_condition": "The 32-episode pilot trains and evaluates cleanly.",
+      "entry_condition": "The selected-episode pilot trains and evaluates cleanly.",
       "id": "robustness_run_64_128_episode",
       "name": "64-128 Episode Robustness Run",
       "reader_takeaway": "The robustness run tests whether the pilot conclusions survive broader sessions and missing modalities.",
@@ -2211,16 +2211,16 @@
     }
   ],
   "scale_up": {
-    "access_status": "Hugging Face returns 403 pending review for the full Xperience-10M gated dataset.",
-    "candidate_scan_top_level_sessions": 64,
-    "estimated_bytes": 72031620552,
+    "access_status": "Full-dataset access is granted; selected multi-episode relay is in progress.",
+    "candidate_scan_top_level_sessions": 802,
+    "estimated_bytes": 298188841943,
     "exclude": [
       "visualization.rrd"
     ],
     "selection_strategy": "stratified_round_robin_by_top_level_session",
-    "status": "pending_huggingface_gated_access",
-    "target_episodes": 32,
-    "valid_candidates": 680
+    "status": "selected_relay_in_progress",
+    "target_episodes": 128,
+    "valid_candidates": 12102
   },
   "scope": {
     "feature_blocks": 18,
