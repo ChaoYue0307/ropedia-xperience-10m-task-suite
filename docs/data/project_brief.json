@@ -1,6 +1,25 @@
 {
   "title": "Ropedia Xperience-10M Project Brief",
   "summary": "A concise first-reader brief for the public-sample embodied-AI task lab and its multi-episode scale-up path.",
+  "research_intent": "Treat the public Xperience-10M sample as a small but real research system: inspect synchronized modalities, define embodied-AI task contracts, run bounded baselines, package evidence, and prepare held-out multi-episode scale-up without presenting one episode as final model quality.",
+  "capability_map": [
+    {
+      "capability": "Data understanding",
+      "evidence": "feature_manifest.json, available_modalities.json, modality atlas, and the episode-window HF viewer"
+    },
+    {
+      "capability": "Task design",
+      "evidence": "12 task contracts, task cards, case-study walkthroughs, and four research-direction extension probes"
+    },
+    {
+      "capability": "Evaluation rigor",
+      "evidence": "chronological split, per-task metrics, predictions, confusion matrices, leakage notes, and generated takeaways"
+    },
+    {
+      "capability": "Scale-up planning",
+      "evidence": "128-episode selection/relay plan, Qwen3-Omni path, Cosmos 3 branch, and policy-model candidates after action-space conversion"
+    }
+  ],
   "current_artifacts": [
     {
       "layer": "Data unit",

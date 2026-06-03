@@ -25,6 +25,25 @@ The central research questions are:
 - What baseline models and evaluation files should exist before scaling to
   Qwen3-Omni or other multimodal foundation-model fine-tuning?
 
+## Why This Project Exists
+
+This project is organized as a compact research artifact around Xperience-10M:
+start from a real public episode, make every modality and label path inspectable,
+turn the data into concrete embodied-AI tasks, and keep the evaluation boundary
+clear while preparing the next multi-episode experiments. The emphasis is on
+research judgment as much as implementation: what the sample can show, what it
+cannot show, and what evidence should exist before claiming model quality.
+
+The work is designed to demonstrate four capabilities that matter for
+embodied-AI research infrastructure:
+
+| Capability | What this project shows |
+| --- | --- |
+| Multimodal data understanding | Parses the public sample into synchronized windows across video, audio, depth, pose/SLAM, mocap, IMU, calibration, and language-derived signals |
+| Task design | Defines 12 human-readable tasks plus four direction-extension probes with inputs, outputs, process modules, metrics, and case-study walkthroughs |
+| Model and evaluation discipline | Runs minimal and compact neural baselines, records predictions/metrics, keeps chronological split boundaries explicit, and separates sample evidence from held-out claims |
+| Scale-up planning | Connects the public-sample pipeline to 32/128-episode held-out pilots, Qwen3-Omni LoRA, Cosmos-style world-model branches, and later policy-model branches |
+
 ## Start Here
 
 For a first pass, use [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md) or the

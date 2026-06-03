@@ -5,6 +5,15 @@ It summarizes what has already been implemented from the public
 Xperience-10M sample, what is being staged for multi-episode training, and
 which artifacts support the next development step.
 
+## Research Positioning
+
+The project is a research-engineering study of Xperience-10M rather than a
+single demo result. It makes the public sample episode inspectable, defines
+embodied-AI tasks over synchronized modalities, records baseline behavior, and
+keeps the next multi-episode modeling stage explicit. The current evidence is
+useful for judging data understanding, task design, evaluation discipline, and
+scale-up readiness; it is not presented as final full-dataset model quality.
+
 | Area | Current state | Evidence | Research readout |
 | --- | --- | --- | --- |
 | Public-sample pipeline | Verified | `results/episode_task_suite/summary_report.json`, `results/episode_task_suite/windows.csv`, `results/episode_task_suite/feature_manifest.json` | One public Xperience-10M sample episode is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,546-dimensional current feature contract. |
