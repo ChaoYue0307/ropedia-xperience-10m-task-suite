@@ -1,0 +1,455 @@
+{
+  "status": "pass",
+  "generated_at_utc": "2026-06-03T15:11:33+00:00",
+  "repo_id": "ropedia-ai/xperience-10m",
+  "download_policy": "annotation.hdf5 only; no videos or visualization.rrd downloaded",
+  "cache_note": "raw annotation files were cached outside the published repo",
+  "probes": [
+    {
+      "repo_filename": "9cecac72-8874-4b97-9541-18d4858f8e43/ep10/annotation.hdf5",
+      "inspection": {
+        "cache_note": "annotation file cached outside the published repo",
+        "local_bytes": 6687192,
+        "local_human": "6.38 MiB",
+        "top_level_keys": [
+          "calibration",
+          "caption",
+          "depth",
+          "full_body_mocap",
+          "hand_mocap",
+          "imu",
+          "metadata",
+          "slam",
+          "video"
+        ],
+        "dataset_count": 65,
+        "dataset_first_dim_histogram_top20": {
+          "20": 27,
+          "4": 14,
+          "190": 3,
+          "47": 1
+        },
+        "top_group_stats": {
+          "calibration": {
+            "dataset_count": 23,
+            "max_first_dim": 4,
+            "first_dim_values": {
+              "4": 14
+            }
+          },
+          "caption": {
+            "dataset_count": 1,
+            "max_first_dim": 0,
+            "first_dim_values": {}
+          },
+          "depth": {
+            "dataset_count": 5,
+            "max_first_dim": 20,
+            "first_dim_values": {
+              "20": 2
+            }
+          },
+          "full_body_mocap": {
+            "dataset_count": 9,
+            "max_first_dim": 20,
+            "first_dim_values": {
+              "20": 9
+            }
+          },
+          "hand_mocap": {
+            "dataset_count": 10,
+            "max_first_dim": 20,
+            "first_dim_values": {
+              "20": 10
+            }
+          },
+          "imu": {
+            "dataset_count": 4,
+            "max_first_dim": 190,
+            "first_dim_values": {
+              "190": 3,
+              "20": 1
+            }
+          },
+          "metadata": {
+            "dataset_count": 6,
+            "max_first_dim": 0,
+            "first_dim_values": {}
+          },
+          "slam": {
+            "dataset_count": 4,
+            "max_first_dim": 47,
+            "first_dim_values": {
+              "20": 3,
+              "47": 1
+            }
+          },
+          "video": {
+            "dataset_count": 3,
+            "max_first_dim": 20,
+            "first_dim_values": {
+              "20": 2
+            }
+          }
+        },
+        "max_first_dim_dataset": {
+          "path": "imu/accel_xyz",
+          "shape": [
+            190,
+            3
+          ],
+          "dtype": "float64",
+          "first_dim": 190,
+          "storage_bytes": 4560,
+          "storage_human": "4.45 KiB"
+        },
+        "text_action_interaction_related_datasets": [
+          {
+            "path": "caption",
+            "shape": [],
+            "dtype": "object",
+            "first_dim": null,
+            "storage_bytes": 16,
+            "storage_human": "16.00 B",
+            "sample_values": [
+              "{\"config\": {\"segment_sec\": 20, \"sample_fps\": 0.5, \"total_tokens\": 2047, \"Main Task\": \"Packing items into a plastic bin. The person is placing various items into a clear plastic storage container.\"}, \"segments\": [{\"segment_id\": 0, \"start_frame\": \"82777404821554\", \"end_frame\": \"frame_0000021\", \"Sub Task\": \"Packing items into a plastic bin\", \"Current Action\": [{\"label\": \"Arrange items in bin\", \"description\": \"The person adjusts the position of items inside the plastic storage container to ensure they are organized.\", \"start_frame\": 82777404821554, \"end_frame\": 82777404821554}], \"sampled_frames\": {\"Image 1\": 82777404821554}, \"objects\": {\"82777404821554\": [\"plastic storage bin\", \"hand\", \"cardboard box\"]}, \"interaction\": {\"82777404821554\": \"The hand is reaching into and organizing items inside the plastic storage bin.\"}, \"api_call_start\": \"2026-03-12T19:33:43.280472\", \"api_call_end\": \"2026-03-12T19:33:44.979810\", \"tokens_in\": 1842, \"tokens_out\": 205}], \"global_summary\": \"The video depicts the process of organizing and packing various personal items into a plastic storage container. It focuses on the practical task of tidying up or preparing belongings for storage.\"}"
+            ]
+          }
+        ],
+        "caption_json_summary": {
+          "parse_status": "ok",
+          "json_bytes": 1178,
+          "top_keys": [
+            "config",
+            "segments",
+            "global_summary"
+          ],
+          "config": {
+            "segment_sec": 20,
+            "sample_fps": 0.5,
+            "total_tokens": 2047,
+            "Main Task": "Packing items into a plastic bin. The person is placing various items into a clear plastic storage container."
+          },
+          "segment_count": 1,
+          "current_action_count": 1,
+          "unique_sub_task_count": 1,
+          "unique_action_label_count": 1,
+          "object_frame_count": 1,
+          "interaction_frame_count": 1,
+          "sampled_frame_count": 1,
+          "unique_object_count": 3,
+          "sub_tasks": [
+            "Packing items into a plastic bin"
+          ],
+          "action_labels": [
+            "Arrange items in bin"
+          ],
+          "objects": [
+            "cardboard box",
+            "hand",
+            "plastic storage bin"
+          ],
+          "global_summary_preview": "The video depicts the process of organizing and packing various personal items into a plastic storage container. It focuses on the practical task of tidying up or preparing belongings for storage."
+        }
+      }
+    },
+    {
+      "repo_filename": "cdc1ae12-a460-48ac-a892-7d314095c4b1/ep23/annotation.hdf5",
+      "inspection": {
+        "cache_note": "annotation file cached outside the published repo",
+        "local_bytes": 6687256,
+        "local_human": "6.38 MiB",
+        "top_level_keys": [
+          "calibration",
+          "caption",
+          "depth",
+          "full_body_mocap",
+          "hand_mocap",
+          "imu",
+          "metadata",
+          "slam",
+          "video"
+        ],
+        "dataset_count": 65,
+        "dataset_first_dim_histogram_top20": {
+          "20": 27,
+          "4": 14,
+          "188": 3,
+          "128": 1
+        },
+        "top_group_stats": {
+          "calibration": {
+            "dataset_count": 23,
+            "max_first_dim": 4,
+            "first_dim_values": {
+              "4": 14
+            }
+          },
+          "caption": {
+            "dataset_count": 1,
+            "max_first_dim": 0,
+            "first_dim_values": {}
+          },
+          "depth": {
+            "dataset_count": 5,
+            "max_first_dim": 20,
+            "first_dim_values": {
+              "20": 2
+            }
+          },
+          "full_body_mocap": {
+            "dataset_count": 9,
+            "max_first_dim": 20,
+            "first_dim_values": {
+              "20": 9
+            }
+          },
+          "hand_mocap": {
+            "dataset_count": 10,
+            "max_first_dim": 20,
+            "first_dim_values": {
+              "20": 10
+            }
+          },
+          "imu": {
+            "dataset_count": 4,
+            "max_first_dim": 188,
+            "first_dim_values": {
+              "188": 3,
+              "20": 1
+            }
+          },
+          "metadata": {
+            "dataset_count": 6,
+            "max_first_dim": 0,
+            "first_dim_values": {}
+          },
+          "slam": {
+            "dataset_count": 4,
+            "max_first_dim": 128,
+            "first_dim_values": {
+              "20": 3,
+              "128": 1
+            }
+          },
+          "video": {
+            "dataset_count": 3,
+            "max_first_dim": 20,
+            "first_dim_values": {
+              "20": 2
+            }
+          }
+        },
+        "max_first_dim_dataset": {
+          "path": "imu/accel_xyz",
+          "shape": [
+            188,
+            3
+          ],
+          "dtype": "float64",
+          "first_dim": 188,
+          "storage_bytes": 4512,
+          "storage_human": "4.41 KiB"
+        },
+        "text_action_interaction_related_datasets": [
+          {
+            "path": "caption",
+            "shape": [],
+            "dtype": "object",
+            "first_dim": null,
+            "storage_bytes": 16,
+            "storage_human": "16.00 B",
+            "sample_values": [
+              "{\"config\": {\"segment_sec\": 20, \"sample_fps\": 0.5, \"total_tokens\": 2035, \"Main Task\": \"Putting on socks. The person is standing in a bathroom and putting on their socks.\"}, \"segments\": [{\"segment_id\": 0, \"start_frame\": \"78968504788029\", \"end_frame\": \"78969405629613\", \"Sub Task\": \"Putting on socks\", \"Current Action\": [{\"label\": \"Pulling up sock\", \"description\": \"The person is manually adjusting and pulling up a sock on their foot.\", \"start_frame\": 78968504788029, \"end_frame\": 78968504788029}], \"sampled_frames\": {\"Image 1\": 78968504788029}, \"objects\": {\"78968504788029\": [\"sock\", \"feet\", \"bathroom floor\", \"toilet\"]}, \"interaction\": {\"78968504788029\": \"The person's hands are gripping and pulling on the fabric of the sock to adjust it over their foot.\"}, \"api_call_start\": \"2026-03-11T07:58:15.838321\", \"api_call_end\": \"2026-03-11T07:58:17.411279\", \"tokens_in\": 1839, \"tokens_out\": 196}], \"global_summary\": \"The video focuses on the simple, everyday task of putting on socks. It provides a brief look at this routine action as the central theme.\"}"
+            ]
+          }
+        ],
+        "caption_json_summary": {
+          "parse_status": "ok",
+          "json_bytes": 1051,
+          "top_keys": [
+            "config",
+            "segments",
+            "global_summary"
+          ],
+          "config": {
+            "segment_sec": 20,
+            "sample_fps": 0.5,
+            "total_tokens": 2035,
+            "Main Task": "Putting on socks. The person is standing in a bathroom and putting on their socks."
+          },
+          "segment_count": 1,
+          "current_action_count": 1,
+          "unique_sub_task_count": 1,
+          "unique_action_label_count": 1,
+          "object_frame_count": 1,
+          "interaction_frame_count": 1,
+          "sampled_frame_count": 1,
+          "unique_object_count": 4,
+          "sub_tasks": [
+            "Putting on socks"
+          ],
+          "action_labels": [
+            "Pulling up sock"
+          ],
+          "objects": [
+            "bathroom floor",
+            "feet",
+            "sock",
+            "toilet"
+          ],
+          "global_summary_preview": "The video focuses on the simple, everyday task of putting on socks. It provides a brief look at this routine action as the central theme."
+        }
+      }
+    },
+    {
+      "repo_filename": "10282b64-a955-461e-9ef9-a1ddf8dc619a/ep5/annotation.hdf5",
+      "inspection": {
+        "cache_note": "annotation file cached outside the published repo",
+        "local_bytes": 6706448,
+        "local_human": "6.40 MiB",
+        "top_level_keys": [
+          "calibration",
+          "caption",
+          "depth",
+          "full_body_mocap",
+          "hand_mocap",
+          "imu",
+          "metadata",
+          "slam",
+          "video"
+        ],
+        "dataset_count": 65,
+        "dataset_first_dim_histogram_top20": {
+          "20": 27,
+          "4": 14,
+          "190": 3,
+          "837": 1
+        },
+        "top_group_stats": {
+          "calibration": {
+            "dataset_count": 23,
+            "max_first_dim": 4,
+            "first_dim_values": {
+              "4": 14
+            }
+          },
+          "caption": {
+            "dataset_count": 1,
+            "max_first_dim": 0,
+            "first_dim_values": {}
+          },
+          "depth": {
+            "dataset_count": 5,
+            "max_first_dim": 20,
+            "first_dim_values": {
+              "20": 2
+            }
+          },
+          "full_body_mocap": {
+            "dataset_count": 9,
+            "max_first_dim": 20,
+            "first_dim_values": {
+              "20": 9
+            }
+          },
+          "hand_mocap": {
+            "dataset_count": 10,
+            "max_first_dim": 20,
+            "first_dim_values": {
+              "20": 10
+            }
+          },
+          "imu": {
+            "dataset_count": 4,
+            "max_first_dim": 190,
+            "first_dim_values": {
+              "190": 3,
+              "20": 1
+            }
+          },
+          "metadata": {
+            "dataset_count": 6,
+            "max_first_dim": 0,
+            "first_dim_values": {}
+          },
+          "slam": {
+            "dataset_count": 4,
+            "max_first_dim": 837,
+            "first_dim_values": {
+              "20": 3,
+              "837": 1
+            }
+          },
+          "video": {
+            "dataset_count": 3,
+            "max_first_dim": 20,
+            "first_dim_values": {
+              "20": 2
+            }
+          }
+        },
+        "max_first_dim_dataset": {
+          "path": "slam/point_cloud",
+          "shape": [
+            837,
+            3
+          ],
+          "dtype": "float64",
+          "first_dim": 837,
+          "storage_bytes": 20088,
+          "storage_human": "19.62 KiB"
+        },
+        "text_action_interaction_related_datasets": [
+          {
+            "path": "caption",
+            "shape": [],
+            "dtype": "object",
+            "first_dim": null,
+            "storage_bytes": 16,
+            "storage_human": "16.00 B",
+            "sample_values": [
+              "{\"config\": {\"segment_sec\": 20, \"sample_fps\": 0.5, \"total_tokens\": 2060, \"Main Task\": \"walking through a retail store. The video shows a first-person perspective of someone walking through a retail aisle lined with shelves of products, while other people are seated nearby.\"}, \"segments\": [{\"segment_id\": 0, \"start_frame\": \"78307554787048\", \"end_frame\": \"frame_0000021\", \"Sub Task\": \"walking through a retail store\", \"Current Action\": [{\"label\": \"Walk down retail aisle\", \"description\": \"The camera operator is walking along a retail aisle while observing merchandise on the shelves and other people in the store.\", \"start_frame\": \"78307554787048\", \"end_frame\": \"78307554787048\"}], \"sampled_frames\": {\"Image 1\": 78307554787048}, \"objects\": {\"78307554787048\": [\"retail shelf\", \"product packaging\", \"shopping bags\", \"person seated\"]}, \"interaction\": {\"78307554787048\": \"The individual is walking through the store environment, passing by shelved products and people.\"}, \"api_call_start\": \"2026-03-12T13:50:32.723710\", \"api_call_end\": \"2026-03-12T13:50:34.677914\", \"tokens_in\": 1856, \"tokens_out\": 204}], \"global_summary\": \"The video captures a casual, observational stroll through a retail store environment. It focuses on the experience of navigating the aisles and browsing the products on display.\"}"
+            ]
+          }
+        ],
+        "caption_json_summary": {
+          "parse_status": "ok",
+          "json_bytes": 1299,
+          "top_keys": [
+            "config",
+            "segments",
+            "global_summary"
+          ],
+          "config": {
+            "segment_sec": 20,
+            "sample_fps": 0.5,
+            "total_tokens": 2060,
+            "Main Task": "walking through a retail store. The video shows a first-person perspective of someone walking through a retail aisle lined with shelves of products, while other people are seated nearby."
+          },
+          "segment_count": 1,
+          "current_action_count": 1,
+          "unique_sub_task_count": 1,
+          "unique_action_label_count": 1,
+          "object_frame_count": 1,
+          "interaction_frame_count": 1,
+          "sampled_frame_count": 1,
+          "unique_object_count": 4,
+          "sub_tasks": [
+            "walking through a retail store"
+          ],
+          "action_labels": [
+            "Walk down retail aisle"
+          ],
+          "objects": [
+            "person seated",
+            "product packaging",
+            "retail shelf",
+            "shopping bags"
+          ],
+          "global_summary_preview": "The video captures a casual, observational stroll through a retail store environment. It focuses on the experience of navigating the aisles and browsing the products on display."
+        }
+      }
+    }
+  ]
+}

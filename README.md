@@ -31,7 +31,7 @@ For a first pass, use [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md) or the
 machine-readable [`docs/data/project_brief.json`](docs/data/project_brief.json).
 They give the project shape in one page: what exists now, what the public
 sample can support, where the 12 tasks and baselines live, and what must happen
-before the 32-episode omni-model stage becomes a real held-out evaluation.
+before the multi-episode omni-model stage becomes a real held-out evaluation.
 
 | Reader goal | Best entry point |
 | --- | --- |
@@ -185,7 +185,7 @@ They give the current research state in one compact table:
 | Source alignment | Source facts, sample details, API-listing notes, and project coverage are consistent across repo, website, and HF cards |
 | Evaluation protocol | Verified generated protocol for windowing, split policy, leakage controls, and per-task metrics |
 | Website and HF mirrors | Verified by website reference reports, public project-surface reports, mirror parity, and live-publication checks; the public dashboard uses five top-level tabs plus subsection tabs for dataset, task-suite, method, result, and resource views |
-| Qwen3-Omni 32-episode pilot | Data-gated; prepared, with full metrics pending held-out evaluation |
+| Qwen3-Omni multi-episode pilot | Full-dataset access granted; 128-episode relay in progress, with full metrics pending completed staging and held-out evaluation |
 | Raw Xperience-10M data / full Qwen weights | Not redistributed |
 
 ## 90-Second Research Project Path
@@ -205,7 +205,7 @@ If you are reading the project cold, open these in order:
 | 9 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,546-d window vector with explicit feature-block boundaries. |
 | 10 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
 | 11 | Is the website self-consistent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, tab routing, JSON data, and referenced images are checked before publishing. |
-| 12 | What is still pending? | [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The 32-episode Qwen3-Omni run is prepared; final model metrics require gated data and held-out evaluation. |
+| 12 | What is still pending? | [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The multi-episode Qwen3-Omni run is prepared at the selection and relay level; final model metrics require completed staging, preprocessing, training, and held-out evaluation. |
 
 The machine-readable project packet is
 [`docs/data/project_packet.json`](docs/data/project_packet.json).
@@ -234,8 +234,8 @@ generated from committed metric artifacts. They define:
 - leakage controls for future labels, target feature blocks, caption/object
   labels, and train-only normalization,
 - current limitations, including cross-episode generalization,
-  audio-visual learning, pixel-depth reconstruction, and real 32-episode
-  Qwen3-Omni quality.
+  audio-visual learning, pixel-depth reconstruction, and real held-out
+  multi-episode Qwen3-Omni quality.
 
 ## Official Dataset Alignment
 
@@ -268,8 +268,8 @@ The public sample repo,
 is separately documented as `Xperience-10M-Sample` with sample metadata,
 `cc-by-nc-4.0` license, HOMIE Toolkit usage, and Rerun 0.29.0 `.rrd`
 visualization. This project preserves that distinction: the sample powers the
-current 5,821-frame task suite, while the full gated dataset remains the
-future source for held-out multi-episode training.
+current 5,821-frame task suite, while the full gated dataset is the source for
+the selected 128-episode held-out multi-episode relay now in progress.
 
 This repo's current verified subset is much smaller and intentionally explicit:
 
@@ -283,7 +283,7 @@ This repo's current verified subset is much smaller and intentionally explicit:
 The same alignment note also records what is outside the current implemented subset: real
 audio-visual learning, caption generation, pixel-depth estimation, SLAM
 estimation, neural rendering, policy learning, cross-episode generalization,
-and real 32-episode Qwen3-Omni model quality.
+and real held-out multi-episode Qwen3-Omni model quality.
 It also preserves the official responsible-use scope: the open-source
 dataset is limited in diversity and showcase/production quality, and it should
 not be used for identity recognition, re-identification, biometric profiling,
@@ -548,7 +548,7 @@ python scripts/train_all_modalities_model.py --workspace /path/to/workspace
 
 This repo includes a first Qwen3-Omni fine-tuning path over Xperience-10M. The
 current artifacts are setup-stage evidence, with held-out multi-episode metrics
-pending gated data access.
+pending completed staging, preprocessing, training, and evaluation.
 The useful distinction is:
 
 - direct Qwen3-Omni inputs: RGB/fisheye video, embedded MP4 audio, and language
@@ -558,9 +558,9 @@ The useful distinction is:
 
 The current scale-up artifacts show that the export, manifest, sensor-feature,
 LoRA, and evaluation scripts can run on the available sample episode. They do
-do not show a real 32-episode result. A real pilot requires at least 32 valid
+not show a real multi-episode result. A real pilot requires staged valid
 episodes, held-out episode splits, training metadata, predictions, metrics, and
-a run report.
+a run report; the current selected relay target is 128 episodes.
 
 ### Sample Count Decision
 
@@ -596,20 +596,21 @@ python scripts/omni/discover_xperience10m_sources.py \
 
 Current status in this repo:
 
-- local_valid_episodes: 1 (degraded-valid: annotation + fisheye_cam0.mp4)
-- local_complete_episodes: 0
-- ready_for_32_episode_pilot: false
-- planned 32-episode pilot: stratified across 32 top-level session UUIDs
-- full-dataset access: gated Xperience-10M approval is still pending
+- public_sample_valid_episodes: 1 (degraded-valid: annotation + fisheye_cam0.mp4)
+- gated_metadata_audit: 12,102 complete visible episodes across 802 complete sessions
+- selected_relay_plan: 128 metadata-balanced episodes, 96/16/16 train/val/test
+- selected_download_size: 277.71 GiB excluding `visualization.rrd`
+- ready_for_held_out_pilot: false until the selected episodes are fully staged and audited
+- full-dataset access: granted; raw multi-episode staging is in progress
 - source_discovery: `results/omni_finetune/source_discovery.json`
 - data_status: `results/omni_finetune/DATA_ACCESS_STATUS.md`
 - access_status: `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`
 
-Use this gate before scheduling any 32-episode full fine-tune run. The pilot
-should use stratified selection, not the first 32 paths in repository order.
-The current selection plan scans 64 top-level session UUIDs, filters for
-complete leaf episodes, excludes `visualization.rrd`, applies a `0.25 GB`
-minimum episode size, and selects 32 episodes from 32 different session UUIDs.
+Use this gate before scheduling any full fine-tune run. The pilot should use
+balanced held-out selection, not the first paths in repository order. The
+current 128-episode selection filters for complete leaf episodes, excludes
+`visualization.rrd`, balances episode-size bands, and preserves one selected
+episode per top-level session UUID.
 
 ### Uploading the pilot Qwen3-Omni LoRA
 
@@ -632,9 +633,9 @@ assuming one backbone solves every Xperience-10M objective.
 
 | Branch | Current role | When to use it |
 | --- | --- | --- |
-| Qwen3-Omni | First trainable multimodal LoRA pilot | Use for the 32-episode held-out baseline over video/audio/language plus sensor-bridge features. |
+| Qwen3-Omni | First trainable multimodal LoRA pilot | Use for the selected 128-episode held-out baseline over video/audio/language plus sensor-bridge features. |
 | Cosmos 3 | First world-model/action-generation branch | Use after data staging for future-window prediction, action-conditioned world modeling, and synthetic-data usefulness tests. |
-| GR00T | Humanoid/action-policy branch | Use after mocap/contact retargeting creates auditable humanoid action targets. |
+| GR00T | Humanoid/action-policy branch | Use after mocap/contact retargeting creates well-defined humanoid action targets. |
 | OpenVLA / openpi | Open VLA/policy baselines | Use after the project defines robot-compatible or action-token targets. |
 | Gemini Robotics | External reasoning reference | Use only for qualitative comparison or annotation support unless local trainable access exists. |
 

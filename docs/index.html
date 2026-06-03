@@ -2265,12 +2265,12 @@
             </div>
           </article>
           <article class="snapshot-card gated">
-            <span class="status-pill">data-gated</span>
+            <span class="status-pill">staging</span>
             <h3>Omni-model scale-up path</h3>
-            <p>The 32-episode LoRA path is prepared; full training results require gated data access, held-out splits, training, and evaluation.</p>
+            <p>Full-dataset access is granted, a 128-episode relay is in progress, and full training results require completed staging, held-out splits, training, and evaluation.</p>
             <div class="snapshot-meta">
-              <span>current stage <strong>setup checked</strong></span>
-              <span>target gate <strong>32 episodes</strong></span>
+              <span>current stage <strong>relay started</strong></span>
+              <span>selected set <strong>128 episodes</strong></span>
               <span>held-out eval <strong>pending</strong></span>
             </div>
           </article>
@@ -2336,7 +2336,7 @@
             <h3>Foundation-Model Selection Matrix</h3>
             <p>Keep Qwen3-Omni as the first trainable held-out pilot, add Cosmos 3 for world modeling, and stage policy candidates after action targets are explicit.</p>
             <div class="roadmap-meta">
-              <strong>Entry</strong><p>32-episode data gate or a 3-8 episode preprocessing dry run.</p>
+              <strong>Entry</strong><p>Completed 128-episode staging or a smaller 3-8 episode preprocessing dry run.</p>
               <strong>Evidence</strong><p>Foundation model plan, source links, model-specific entry conditions, and evaluation additions.</p>
             </div>
           </article>
@@ -2345,7 +2345,7 @@
             <h3>64-128 Episode Robustness Run</h3>
             <p>Test whether pilot conclusions survive broader sessions, missing modalities, and stronger ablations.</p>
             <div class="roadmap-meta">
-              <strong>Entry</strong><p>32-episode pilot trains and evaluates cleanly.</p>
+              <strong>Entry</strong><p>Selected multi-episode pilot trains and evaluates cleanly.</p>
               <strong>Evidence</strong><p>Metrics by session, task, modality, ablation, and failure type.</p>
             </div>
           </article>
@@ -2384,7 +2384,7 @@
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target feature blocks, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
           <article class="artifact"><h3>Audio ablation</h3><p>The current AAC block and a 588-d raw log-mel replacement are evaluated across all 12 task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
           <article class="artifact"><h3>Foundation branch selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 becomes the world-model branch, and policy models wait for explicit action targets.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
-          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. Cross-episode generalization, audio-visual learning, world modeling, policy targets, and full 32-episode Qwen3-Omni training move to the multi-episode stage.</p><a href="data/scope_claims_audit.json">pilot status</a></article>
+          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. Cross-episode generalization, audio-visual learning, world modeling, policy targets, and held-out Qwen3-Omni training move to the multi-episode stage after selected data is staged.</p><a href="data/scope_claims_audit.json">pilot status</a></article>
           <article class="artifact"><h3>Scale-up requirement</h3><p>The Omni pilot requires at least 32 valid episodes, held-out episode splits, no train/test episode leakage, training metadata, predictions, metrics, and a run report.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a></article>
         </div>
       </div>
@@ -2444,9 +2444,9 @@
             </div>
           </article>
           <article class="evidence-card">
-            <span class="status-pill">data-gated</span>
+            <span class="status-pill">staging</span>
             <h3>Qwen3-Omni pilot setup</h3>
-            <p>The current Qwen3-Omni artifacts use one episode and 128 train windows. The 32-episode evaluation is still pending.</p>
+            <p>The current Qwen3-Omni artifacts use one episode and 128 train windows. A 128-episode selected relay is in progress for held-out evaluation.</p>
             <div class="evidence-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">evidence contract</a>
               <a href="data/evidence_contract.json">machine JSON</a>
@@ -2581,7 +2581,7 @@
           <article class="reading-card">
             <span class="step-index">04</span>
             <h3>Check the scale-up gate</h3>
-            <p>The multi-episode Qwen3-Omni path is prepared. The 32-episode result will be added after the data gate and held-out evaluation pass.</p>
+            <p>The multi-episode Qwen3-Omni path is prepared. The selected 128-episode result will be added after staging, preprocessing, training, and held-out evaluation pass.</p>
             <div class="reading-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">access status</a>
@@ -2591,7 +2591,7 @@
         </div>
         <div class="boundary-strip">
           <div class="boundary-item"><strong>Verified now</strong><span>One public episode, 5,821 frames, 1,161 windows, 8,546 current features, 12 minimal heads, 12 neural heads, and 4 direction-extension probes.</span></div>
-          <div class="boundary-item"><strong>Next: multi-episode</strong><span>A 32-episode held-out Qwen3-Omni LoRA pilot is gated on Xperience-10M access and must pass manifest, training, and evaluation checks.</span></div>
+          <div class="boundary-item"><strong>Next: multi-episode</strong><span>A selected 128-episode held-out Qwen3-Omni LoRA pilot is being staged and must pass manifest, training, and evaluation checks before metrics are reported.</span></div>
           <div class="boundary-item"><strong>Not redistributed</strong><span>Raw videos, raw annotations, full Qwen weights, and private gated Xperience-10M data are not included in the public repo or HF bundles.</span></div>
         </div>
       </div>
@@ -2614,7 +2614,7 @@
           <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 windows, 8,546 current features including AAC audio, and no raw-data redistribution.</p><a href="data/modality_atlas.json">modality atlas</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, and misalignment.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Responsible use</h3><p>The official card notes limited diversity and showcase/production quality. This project excludes identity, surveillance, biometric, sensitive-attribute, and safety-critical uses.</p><a href="data/xperience10m_dataset_card_alignment.json">use notes</a></article>
-          <article class="artifact"><h3>Later milestones</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, and 32-episode Qwen3-Omni evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a></article>
+          <article class="artifact"><h3>Later milestones</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, and held-out Qwen3-Omni evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a></article>
         </div>
       </div>
     </section>
@@ -2729,7 +2729,7 @@
           </article>
           <article class="artifact">
             <h3>Scale means held-out episodes</h3>
-            <p>The next credible model-quality unit is a 32-episode held-out pilot across 32 sessions, not more adjacent windows from one sample.</p>
+            <p>The next credible model-quality unit is a held-out multi-episode pilot across different sessions, not more adjacent windows from one sample.</p>
             <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">scale-up status</a>
           </article>
         </div>
@@ -2997,7 +2997,7 @@
             </button>
             <button type="button" class="content-tab" id="artifact-tab-scale-up" role="tab" data-panel-target="artifact-panel-scale-up" aria-selected="false" aria-pressed="false" aria-controls="artifact-panel-scale-up" tabindex="-1">
               <strong>Scale-Up</strong>
-              <span>data gate and Omni path</span>
+              <span>relay and Omni path</span>
             </button>
             <button type="button" class="content-tab" id="artifact-tab-checks" role="tab" data-panel-target="artifact-panel-checks" aria-selected="false" aria-pressed="false" aria-controls="artifact-panel-checks" tabindex="-1">
               <strong>Checks</strong>
@@ -3043,14 +3043,14 @@
           <section class="artifact-group tabbed-panel" id="artifact-panel-scale-up" role="tabpanel" aria-labelledby="artifact-tab-scale-up" hidden>
             <div class="artifact-group-head">
               <div><span>Scale-up path</span><h3>Prepared for multi-episode training</h3></div>
-              <p>The multi-episode Qwen3-Omni path is documented and scripted. Full-pilot metrics come after the data gate and held-out evaluation pass.</p>
+              <p>The multi-episode Qwen3-Omni path is documented and scripted. Full-pilot metrics come after selected data is staged and held-out evaluation passes.</p>
             </div>
             <div class="artifact-grid">
-              <article class="artifact primary-artifact"><div><h3>Project scope</h3><p>Connects implemented single-episode artifacts, setup-stage Omni work, pending data access, and later multi-episode milestones.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">EVIDENCE_CONTRACT.md</a></article>
+              <article class="artifact primary-artifact"><div><h3>Project scope</h3><p>Connects implemented single-episode artifacts, setup-stage Omni work, current 128-episode relay, and later multi-episode milestones.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">EVIDENCE_CONTRACT.md</a></article>
               <article class="artifact"><h3>Foundation-model plan</h3><p>Backbone selection matrix covering Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, and SmolVLA-style policy candidates.</p><a href="data/foundation_model_plan.json">foundation_model_plan.json</a></article>
-              <article class="artifact"><h3>Multi-episode access status</h3><p>Public data-access path, selected 32-episode pilot plan, and data requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">MULTI_EPISODE_ACCESS_STATUS.md</a></article>
+              <article class="artifact"><h3>Multi-episode access status</h3><p>Public data-access path, selected 128-episode relay plan, and data requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">MULTI_EPISODE_ACCESS_STATUS.md</a></article>
               <article class="artifact"><h3>Qwen3-Omni setup artifacts</h3><p>Manifests, metadata, metrics, and progress logs from the current setup run.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode_manifest.json</a></article>
-              <article class="artifact"><h3>32-episode data requirement</h3><p>The data status file defines what must be available before full pilot training and held-out metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">DATA_ACCESS_STATUS.md</a></article>
+              <article class="artifact"><h3>Multi-episode data requirement</h3><p>The data status file defines what must be available before full pilot training and held-out metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">DATA_ACCESS_STATUS.md</a></article>
             </div>
           </section>
 
@@ -3079,14 +3079,14 @@
     <section id="omni-relay" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Qwen3-Omni pilot is approval-ready.</h2>
-          <p>The full Xperience-10M Hugging Face dataset is gated. While access is pending, the public plan has selected a 32-episode pilot across 32 different session UUIDs.</p>
+          <h2>Qwen3-Omni pilot is in data staging.</h2>
+          <p>Full Xperience-10M access is granted. The current plan selects 128 metadata-balanced episodes across 128 different session UUIDs, with raw staging in progress and no held-out metrics reported yet.</p>
         </div>
         <div class="artifact-grid">
-          <article class="artifact"><h3>Selection</h3><p>Stratified round-robin over 64 top-level sessions; 680 complete candidates scanned; 32 sessions selected.</p></article>
+          <article class="artifact"><h3>Selection</h3><p>128 complete episodes selected from 128 unique top-level sessions, balanced across episode-size bands and split 96/16/16 for train/val/test.</p></article>
           <article class="artifact"><h3>Transfer</h3><p>Download raw episodes only from official gated sources, exclude visualization.rrd, validate files, then stage them for training.</p></article>
-          <article class="artifact"><h3>Current LoRA artifact</h3><p>The current LoRA artifact uses the locally available sample data. The 32-episode result begins after gated data is staged and held-out evaluation runs.</p></article>
-          <article class="artifact"><h3>Backbone branches</h3><p>Qwen3-Omni is the immediate LoRA path; Cosmos 3 is the first world-model branch; GR00T/OpenVLA/openpi become policy branches after action targets are auditable.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
+          <article class="artifact"><h3>Current LoRA artifact</h3><p>The current LoRA artifact uses the locally available sample data. The multi-episode result begins after selected data is staged, preprocessed, trained, and evaluated on held-out sessions.</p></article>
+          <article class="artifact"><h3>Backbone branches</h3><p>Qwen3-Omni is the immediate LoRA path; Cosmos 3 is the first world-model branch; GR00T/OpenVLA/openpi become policy branches after action targets are well-defined.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
         </div>
       </div>
     </section>
@@ -3102,7 +3102,7 @@
           <article class="artifact"><h3>Reproducibility matrix</h3><p>Machine-readable command matrix covering sample download, baselines, 12 tasks, figures, and validation.</p><a href="data/reproducibility_matrix.json">reproducibility_matrix.json</a></article>
           <article class="artifact"><h3>Exact-match reproduction record</h3><p>The last metric rebuild reproduced the public-sample outputs from a fresh cache and matched the committed metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">reproducibility_audit.md</a></article>
           <article class="artifact"><h3>Website reference report</h3><p>Local HTML references, anchors, JSON bundles, and image dimensions are validated before publishing.</p><a href="data/website_integrity.json">website_integrity.json</a></article>
-          <article class="artifact"><h3>32-Episode pilot status</h3><p>The 32-episode Qwen3-Omni pilot is prepared at the code and selection-plan level; final metrics follow gated data access and held-out evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">DATA_ACCESS_STATUS.md</a></article>
+          <article class="artifact"><h3>Multi-episode pilot status</h3><p>The Qwen3-Omni pilot is prepared at the code and selection-plan level; final metrics follow completed staging, preprocessing, training, and held-out evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">DATA_ACCESS_STATUS.md</a></article>
         </div>
         <p class="repro-note">Minimal path: install the toolkit dependencies, download the official sample, run the 12-task suite with neural heads, regenerate visualizations, then run the artifact index and publication validator.</p>
         <pre class="code-panel"><button type="button" data-copy="setup">Copy</button><code id="setup">git clone https://github.com/Ropedia/HOMIE-toolkit.git

@@ -92,7 +92,7 @@ CURRENT_PROJECT_LIMIT_MARKERS = [
     "neural rendering",
     "policy learning",
     "cross-episode generalization",
-    "real 32-episode Qwen3-Omni model quality",
+    "real held-out multi-episode Qwen3-Omni model quality",
 ]
 
 PRESENTATION_MARKERS = {
@@ -155,7 +155,7 @@ HF_PRESENTATION_MARKERS = {
         "HOMIE Toolkit",
         "Rerun 0.29.0",
         "12,103 episode folders",
-        "source-listing facts only",
+        "upstream listing metadata only",
         "limited in diversity",
     ],
     "artifacts/README.md": [
@@ -192,7 +192,7 @@ HF_PRESENTATION_MARKERS = {
         "Toolkit",
         "Rerun 0.29.0",
         "12,103 episode folders",
-        "upstream metadata facts",
+        "upstream listing metadata only",
         "limited in diversity",
     ],
 }
