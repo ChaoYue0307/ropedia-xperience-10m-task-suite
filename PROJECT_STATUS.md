@@ -12,7 +12,8 @@ the next development step.
 | Neural heads | Verified | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split. |
 | Audio ablation and raw-audio upgrade | Verified | `scripts/audio_ablation_and_raw_upgrade.py`, `results/audio_ablation/`, `docs/data/audio_ablation_summary.json` | Current AAC audio improves the primary metric on 6 of 12 task contracts; replacing the current handcrafted block with a 588-d raw log-mel feature improves over current audio on 6 of 12 tasks. |
 | Research takeaways | Verified | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | The main result interpretation is generated from committed metrics: chronological class shift, neural gains on dynamics/order/alignment, open retrieval/reconstruction problems, and the need for held-out episodes. |
-| Research roadmap | Current | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | The staged path connects public-sample task development to multi-episode data staging, the 32-episode Qwen3-Omni LoRA pilot, robustness runs, and larger omni-model extensions. |
+| Research roadmap | Current | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | The staged path connects public-sample task development to multi-episode data staging, the 32-episode Qwen3-Omni LoRA pilot, foundation-model selection, robustness runs, and larger omni/world-model extensions. |
+| Foundation-model plan | Current | `FOUNDATION_MODEL_PLAN.md`, `docs/data/foundation_model_plan.json` | Qwen3-Omni remains the first trainable held-out LoRA baseline; Cosmos 3 is added as the first world-model/action-generation branch; OpenVLA/openpi/GR00T are policy candidates after action targets are explicit. |
 | Evaluation protocol | Verified | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | Windowing, chronological split, per-task metrics, leakage controls, and current limitations are generated from committed metric artifacts. |
 | Official dataset wording | Verified | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Public wording is aligned to the official gated Xperience-10M dataset card, public sample card, and HF API metadata, including modalities, scale, access path, sample license/tooling, and current project coverage. |
 | Source alignment | Verified | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json`, `scripts/validate_source_alignment.py` | Source facts, sample details, API-listing notes, and project coverage are checked across repo docs, website, and HF cards. |
@@ -31,16 +32,18 @@ the next development step.
    `docs/data/research_takeaways.json` for the generated result interpretation.
 4. Inspect `RESEARCH_ROADMAP.md` and `docs/data/research_roadmap.json` for
    the staged path from public-sample task work to multi-episode modeling.
-5. Inspect `docs/data/summary_metrics.json` and
+5. Inspect `FOUNDATION_MODEL_PLAN.md` and
+   `docs/data/foundation_model_plan.json` before choosing a backbone branch.
+6. Inspect `docs/data/summary_metrics.json` and
    `results/episode_task_suite/neural_mlp/` to check the 12-task outputs.
-6. Inspect `results/audio_ablation/AUDIO_ABLATION_SUMMARY.md` before judging
+7. Inspect `results/audio_ablation/AUDIO_ABLATION_SUMMARY.md` before judging
    whether audio helps the current task suite.
-7. Inspect `EVALUATION_PROTOCOL.md` before judging task metrics or leakage
+8. Inspect `EVALUATION_PROTOCOL.md` before judging task metrics or leakage
    controls.
-8. Inspect `SOURCE_ALIGNMENT_AUDIT.md` and
+9. Inspect `SOURCE_ALIGNMENT_AUDIT.md` and
    `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` before judging dataset
    wording.
-9. Inspect `results/omni_finetune/DATA_ACCESS_STATUS.md` before judging
+10. Inspect `results/omni_finetune/DATA_ACCESS_STATUS.md` before judging
    Qwen3-Omni scale-up status.
 
 ## Current Reading Notes
@@ -56,3 +59,6 @@ the next development step.
 - Audio is now evaluated directly: the current AAC block and a raw log-mel
   replacement are compared across all 12 task contracts in
   `results/audio_ablation/`.
+- Foundation-model selection is now explicit: Qwen3-Omni is the immediate
+  trainable pilot, Cosmos 3 is the first world-model branch, and policy models
+  such as OpenVLA/openpi/GR00T wait for action-target conversion.

@@ -1,11 +1,11 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-03T14:17:31+00:00",
+  "generated_at_utc": "2026-06-03T14:43:22+00:00",
   "status": "pass",
-  "artifact_count": 70,
+  "artifact_count": 72,
   "missing": [],
   "by_kind": {
-    "project_path": 9,
+    "project_path": 11,
     "project_scope": 1,
     "source_alignment": 5,
     "publication_workflow": 1,
@@ -62,8 +62,8 @@
       "surface": "repo_hf",
       "shows": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 6031,
-      "sha256": "b2de2d9de04e0a05046cbea8a0b7c2e8766f6171b5c80a1b3f244aa1c51023ea"
+      "bytes": 6721,
+      "sha256": "166795e9f5986015f7a9e74934fbd878f5dcc7cbac79d49483bd514feacbfde8"
     },
     {
       "id": "project_status_json",
@@ -73,8 +73,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable copy of the current project status for website and HF mirrors.",
       "exists": true,
-      "bytes": 8162,
-      "sha256": "19471dbaf46a16275b8f0deaf67a5326b9508adc911a5c6d3426a2565049dd46"
+      "bytes": 9006,
+      "sha256": "38d289ce14e7b4f0998ce156718662f2298ee3aa4e77782a40316ad33aefaefb"
     },
     {
       "id": "research_roadmap",
@@ -84,8 +84,8 @@
       "surface": "repo_hf",
       "shows": "Defines the staged path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions.",
       "exists": true,
-      "bytes": 5051,
-      "sha256": "1d640dbc0bcba26d72dbedd4c2dacb04e38bc7c3b11ac79f57b52c2a6e8caec3"
+      "bytes": 6677,
+      "sha256": "5baa3ba1b96e0f1c70b8b9ea946aac55ec45d7543587bbfaf5120bef31533b17"
     },
     {
       "id": "research_roadmap_json",
@@ -95,8 +95,30 @@
       "surface": "website_hf",
       "shows": "Machine-readable staged roadmap for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 4594,
-      "sha256": "bbce65e803a0fad55cc739eb2dc6fdf50a69c81362f05d216324d0813ee4ccad"
+      "bytes": 5752,
+      "sha256": "0510e919ad9ffa3aebe052273e90133a57572c3b21b991db1ff28de83061f6ca"
+    },
+    {
+      "id": "foundation_model_plan",
+      "title": "Foundation model plan",
+      "path": "FOUNDATION_MODEL_PLAN.md",
+      "kind": "project_path",
+      "surface": "repo_hf",
+      "shows": "Defines the post-data-gate backbone choices: Qwen3-Omni first, Cosmos 3 for world modeling, and VLA/policy models after action-target conversion.",
+      "exists": true,
+      "bytes": 6538,
+      "sha256": "3e0794743ef949dd672b5263394da24428e0bee389e5b0157205b5832b4ad7f4"
+    },
+    {
+      "id": "foundation_model_plan_json",
+      "title": "Foundation model plan JSON",
+      "path": "docs/data/foundation_model_plan.json",
+      "kind": "project_path",
+      "surface": "website_hf",
+      "shows": "Machine-readable foundation-model selection matrix with source links, entry conditions, and evaluation additions.",
+      "exists": true,
+      "bytes": 8883,
+      "sha256": "9f15910ed056683c2fd918311b4a32cd46b699d7b7b7a3e1192bc3db6bc769ee"
     },
     {
       "id": "evidence_contract",
@@ -128,8 +150,8 @@
       "surface": "repo_hf",
       "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 15981,
-      "sha256": "1e79ab74c4dee1e5e5a9b7346a9822977fd557a7350f2426e846211afee2f375"
+      "bytes": 16974,
+      "sha256": "e456d291614db14a2cb6a91cabf1b044f47c518d39d7d701eb191f9434f2c157"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -173,7 +195,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "9d8eb05aa29f898a28f64b0b23ef0b912ba0f43d6ef558d213e05619da0b3197"
+      "sha256": "ab8728f1f7539dd8e9d5a429e1bb01858d701412ab690ccd2f49f39ecbb645d9"
     },
     {
       "id": "source_alignment_validator",
@@ -194,8 +216,8 @@
       "surface": "repo_hf",
       "shows": "Publishes prepared Space, artifact dataset, and model bundles, including an explicit model-binary upload batch.",
       "exists": true,
-      "bytes": 8996,
-      "sha256": "9790951493763e6490d01fec62661df2bbe2a3341466fe41298b95cda0900229"
+      "bytes": 9997,
+      "sha256": "b1482905fac18e598337b2f42028f7ffa46ba71a28726e473dc7cd2af1c70f9c"
     },
     {
       "id": "evaluation_protocol",
@@ -551,8 +573,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 25927,
-      "sha256": "4a9796faf0cd87b052a69f5fde89a7a3a88008f8e4485c05f9f5cc7630a89164"
+      "bytes": 26652,
+      "sha256": "faf1e0b56eb9ba4bc94e04bb1aeb9a392fb4410e8053564dd43bce3d8aacfa4d"
     },
     {
       "id": "publication_audit",
@@ -587,7 +609,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 97337,
+      "bytes": 106509,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -599,7 +621,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 14587,
+      "bytes": 14588,
       "hash_policy": "existence_and_size_only"
     },
     {

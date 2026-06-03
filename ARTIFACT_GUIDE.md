@@ -29,6 +29,9 @@ The project separates these reading layers:
    accessibility semantics, links, and reader-facing copy.
 10. **Multi-episode pilot status:** scripts and reports for the planned 32-episode
    Qwen3-Omni pilot, with the data-access requirement kept visible.
+11. **Foundation-model selection:** Qwen3-Omni, Cosmos 3, GR00T, OpenVLA,
+   openpi, Gemini Robotics, and lightweight policy candidates separated by
+   task fit and current evidence level.
 
 ## Start Here
 
@@ -36,6 +39,7 @@ The project separates these reading layers:
 | --- | --- |
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current-state table: implemented, data-gated, and outside current scope. |
 | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) | Shows the staged path from public-sample task development to multi-episode data staging, the 32-episode Qwen3-Omni LoRA pilot, robustness runs, and larger omni-model extensions. |
+| [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md) | Explains which foundation backbones fit which Xperience-10M objective: Qwen3-Omni first, Cosmos 3 for world modeling, and VLA/policy models after action-target conversion. |
 | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md) | Defines the implemented scope, setup-stage artifacts, and multi-episode prerequisites. |
 | [`QUALITY_GATES.md`](QUALITY_GATES.md) | Lists the automated release checks and post-publish verification used to keep the release current. |
 | [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Describes whether repo, website, and Hugging Face cards read as one cohesive research project surface. |
@@ -49,6 +53,7 @@ The project separates these reading layers:
 | [`docs/data/figure_index.json`](docs/data/figure_index.json) | Machine-readable visual asset index for website and HF mirrors. |
 | [`docs/data/project_status.json`](docs/data/project_status.json) | Machine-readable copy of the project status table. |
 | [`docs/data/research_roadmap.json`](docs/data/research_roadmap.json) | Machine-readable roadmap for website and Hugging Face mirrors. |
+| [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json) | Machine-readable foundation-model selection matrix for website and Hugging Face mirrors. |
 | [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable source-alignment summary, including gated metadata, sample license/tooling, and current project coverage. |
 | [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable source metadata and HF card parity report. |
 | [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | Machine-readable evaluation protocol generated from committed metrics. |
@@ -154,6 +159,8 @@ The project separates these reading layers:
 | [`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | Documents the public multi-episode access path, selected 32-episode pilot plan, and data requirements. |
 | [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | Discovery gate for valid multi-episode Xperience-10M sources. |
 | [`scripts/omni/train_qwen3_omni_lora.py`](scripts/omni/train_qwen3_omni_lora.py) | Training entrypoint for the Qwen3-Omni LoRA pilot after the data gate passes. |
+| [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md) | Adds the post-data-gate backbone selection plan: Qwen3-Omni first, Cosmos 3 for world modeling, and OpenVLA/openpi/GR00T for policy/action branches. |
+| [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json) | Machine-readable model-family registry with source links, entry conditions, and evaluation additions. |
 
 ## What Is Not Included
 

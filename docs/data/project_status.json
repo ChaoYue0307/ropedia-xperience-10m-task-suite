@@ -81,7 +81,16 @@
                 "RESEARCH_ROADMAP.md",
                 "docs/data/research_roadmap.json"
             ],
-            "readout": "The staged path connects public-sample task development to multi-episode data staging, the 32-episode Qwen3-Omni LoRA pilot, robustness runs, and larger omni-model extensions."
+            "readout": "The staged path connects public-sample task development to multi-episode data staging, the 32-episode Qwen3-Omni LoRA pilot, foundation-model selection, robustness runs, and larger omni/world-model extensions."
+        },
+        {
+            "area": "Foundation-model plan",
+            "status": "current",
+            "evidence": [
+                "FOUNDATION_MODEL_PLAN.md",
+                "docs/data/foundation_model_plan.json"
+            ],
+            "readout": "Qwen3-Omni remains the first trainable held-out LoRA baseline; Cosmos 3 is added as the first world-model/action-generation branch; OpenVLA/openpi/GR00T are policy candidates after action targets are explicit."
         },
         {
             "area": "Official dataset wording",
@@ -156,6 +165,7 @@
         "Open docs/data/project_packet.json for the machine-readable project path.",
         "Inspect RESEARCH_TAKEAWAYS.md and docs/data/research_takeaways.json before interpreting model scores.",
         "Inspect RESEARCH_ROADMAP.md and docs/data/research_roadmap.json for the staged path from public-sample task work to multi-episode modeling.",
+        "Inspect FOUNDATION_MODEL_PLAN.md and docs/data/foundation_model_plan.json before choosing a backbone branch.",
         "Inspect docs/data/summary_metrics.json and results/episode_task_suite/neural_mlp/ to check the 12-task outputs.",
         "Inspect results/audio_ablation/AUDIO_ABLATION_SUMMARY.md before judging whether audio helps the current task suite.",
         "Inspect EVALUATION_PROTOCOL.md before judging task metrics or leakage controls.",
@@ -168,6 +178,7 @@
     "Historical 32ep path names refer to setup files, not completed 32-episode training results.",
     "The current reconstruction task reconstructs feature vectors, not pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
     "AAC audio is decoded from fisheye_cam0.mp4 and included in the current 8,546-dimensional baseline feature vector.",
-    "Audio is now evaluated directly: the current AAC block and a raw log-mel replacement are compared across all 12 task contracts in results/audio_ablation/."
+    "Audio is now evaluated directly: the current AAC block and a raw log-mel replacement are compared across all 12 task contracts in results/audio_ablation/.",
+    "Foundation-model selection is explicit: Qwen3-Omni is the immediate trainable pilot, Cosmos 3 is the first world-model branch, and policy models such as OpenVLA/openpi/GR00T wait for action-target conversion."
   ]
 }

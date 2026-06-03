@@ -118,6 +118,7 @@ def main() -> int:
     directions_doc = load_json(DOCS_DATA / "research_directions.json")
     walkthroughs = load_json(DOCS_DATA / "task_walkthroughs.json")
     roadmap = load_json(DOCS_DATA / "research_roadmap.json")
+    foundation_plan = load_json(DOCS_DATA / "foundation_model_plan.json")
     summary_metrics = load_json(DOCS_DATA / "summary_metrics.json")
     episode_summary = load_json(RESULTS / "summary_report.json")
     feature_manifest = load_json(RESULTS / "feature_manifest.json")
@@ -170,6 +171,7 @@ def main() -> int:
             "docs/data/research_directions.json",
             "docs/data/task_walkthroughs.json",
             "docs/data/research_roadmap.json",
+            "docs/data/foundation_model_plan.json",
             "docs/data/summary_metrics.json",
             "docs/data/research_direction_extensions.json",
             "results/episode_task_suite/summary_report.json",
@@ -216,6 +218,14 @@ def main() -> int:
                 "object micro-F1",
                 "held-out episode count",
             ],
+        },
+        "foundation_model_plan": {
+            "status": foundation_plan.get("status"),
+            "decision": foundation_plan.get("decision", {}),
+            "model_families": foundation_plan.get("model_families", []),
+            "execution_order": foundation_plan.get("execution_order", []),
+            "evaluation_additions": foundation_plan.get("evaluation_additions", []),
+            "source_links": foundation_plan.get("source_links", []),
         },
         "phases": phase_payload(roadmap.get("phases", [])),
         "directions": directions,

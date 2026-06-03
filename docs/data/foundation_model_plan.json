@@ -1,0 +1,235 @@
+{
+  "title": "Xperience-10M Foundation Model Plan",
+  "status": "planning_artifact",
+  "current_boundary": "No held-out multi-episode foundation-model result has been completed in this repo. The current foundation-model artifacts are setup-stage until enough valid episodes are staged and evaluated.",
+  "decision": {
+    "immediate_trainable_backbone": "Qwen3-Omni",
+    "first_world_model_branch": "Cosmos 3",
+    "first_policy_branch_candidates": [
+      "OpenVLA / OpenVLA-OFT",
+      "openpi pi0/pi0.5",
+      "NVIDIA GR00T"
+    ],
+    "external_reasoning_reference": "Gemini Robotics"
+  },
+  "model_families": [
+    {
+      "priority": 1,
+      "family": "Qwen3-Omni",
+      "category": "omni_instruction_model",
+      "openness": "open_weights_available_from_official_hf_repo",
+      "best_role": "First 32-episode multimodal LoRA pilot and structured task predictor.",
+      "xperience10m_fit": [
+        "RGB/fisheye video, embedded audio, and language prompts can enter directly.",
+        "Depth, pose/SLAM, mocap, contacts, and IMU enter through the existing sensor bridge.",
+        "Matches current task outputs: labels, structured JSON, captions, and short decisions."
+      ],
+      "current_decision": "keep_as_first_pilot",
+      "entry_condition": "At least 32 valid episodes staged with held-out episode split.",
+      "public_source": "https://huggingface.co/Qwen/Qwen3-Omni-30B-A3B-Instruct"
+    },
+    {
+      "priority": 2,
+      "family": "Cosmos 3",
+      "category": "world_foundation_model",
+      "openness": "track_official_nvidia_release_and_available_weights",
+      "best_role": "Embodied world modeling, action generation, future-window prediction, and synthetic-data expansion.",
+      "xperience10m_fit": [
+        "Uses video streams as visual state.",
+        "Uses pose/SLAM, depth, mocap, IMU, and language as physical-world conditioning signals.",
+        "Better aligned with prediction/generation objectives than simple label classification."
+      ],
+      "current_decision": "add_as_first_world_model_branch_after_data_gate",
+      "entry_condition": "Multi-episode data plus enough storage/compute for generated or latent video-state outputs.",
+      "public_source": "https://www.nvidia.com/en-us/ai/cosmos/"
+    },
+    {
+      "priority": 3,
+      "family": "NVIDIA GR00T",
+      "category": "humanoid_policy_foundation_model",
+      "openness": "track_official_nvidia_release_and_tooling",
+      "best_role": "Humanoid action understanding, retargeting, contact/action prediction, and embodied skill transfer.",
+      "xperience10m_fit": [
+        "Hand/body mocap and contact cues can be retargeted into humanoid state/action targets.",
+        "Egocentric video plus human motion can support affordance and interaction tasks."
+      ],
+      "current_decision": "track_as_humanoid_policy_branch",
+      "entry_condition": "Retargeting artifact and action-space definition exist.",
+      "public_source": "https://developer.nvidia.com/isaac/gr00t"
+    },
+    {
+      "priority": 4,
+      "family": "OpenVLA / OpenVLA-OFT",
+      "category": "vision_language_action_policy",
+      "openness": "open_project_and_weights",
+      "best_role": "Open robot-policy baseline after observations and action labels are converted into a VLA format.",
+      "xperience10m_fit": [
+        "Good candidate when each window is expressed as visual observation, instruction/context, and action token.",
+        "Requires an explicit action target; current human egocentric labels are not robot controls by default."
+      ],
+      "current_decision": "candidate_after_action_space_design",
+      "entry_condition": "Window-to-action-token conversion is implemented and audited.",
+      "public_source": "https://openvla.github.io/"
+    },
+    {
+      "priority": 5,
+      "family": "openpi pi0/pi0.5",
+      "category": "robot_policy_model",
+      "openness": "open_source_policy_training_stack",
+      "best_role": "Action-chunking, policy fine-tuning, and embodiment-transfer experiments.",
+      "xperience10m_fit": [
+        "Useful once hand trajectories, contacts, or retargeted body motion are converted into policy targets.",
+        "Better for policy branch than for current structured task JSON outputs."
+      ],
+      "current_decision": "candidate_policy_branch",
+      "entry_condition": "Action target and train/eval protocol exist for at least 64 episodes.",
+      "public_source": "https://github.com/Physical-Intelligence/openpi"
+    },
+    {
+      "priority": 6,
+      "family": "Gemini Robotics",
+      "category": "closed_embodied_reasoning_reference",
+      "openness": "closed_or_limited_access",
+      "best_role": "Qualitative reasoning reference, annotation helper, and external comparison when API access exists.",
+      "xperience10m_fit": [
+        "Can help reason over egocentric scenes and task descriptions.",
+        "Not a local fine-tune target for this repo."
+      ],
+      "current_decision": "external_reference_only",
+      "entry_condition": "API/access exists and outputs are logged separately from trainable model metrics.",
+      "public_source": "https://deepmind.google/discover/blog/gemini-robotics-brings-ai-into-the-physical-world/"
+    },
+    {
+      "priority": 7,
+      "family": "Octo / SmolVLA-style lightweight policies",
+      "category": "lightweight_robot_policy_baselines",
+      "openness": "open_projects",
+      "best_role": "Cheaper policy baselines for observation-to-action experiments.",
+      "xperience10m_fit": [
+        "Useful after action target design.",
+        "Less directly omni-modal than Qwen3-Omni or Cosmos 3."
+      ],
+      "current_decision": "optional_baseline_after_data_staging",
+      "entry_condition": "Action labels and baseline protocol exist.",
+      "public_source": "https://github.com/huggingface/lerobot"
+    }
+  ],
+  "execution_order": [
+    {
+      "step": 1,
+      "name": "Data gate",
+      "action": "Stage at least 32 valid Xperience-10M episodes with held-out episode split."
+    },
+    {
+      "step": 2,
+      "name": "First held-out baseline",
+      "action": "Run Qwen3-Omni LoRA to establish the full train/eval loop."
+    },
+    {
+      "step": 3,
+      "name": "Model-selection dry run",
+      "action": "Run 3-8 episode dry runs for Qwen3-Omni prompt/LoRA, Cosmos 3 preprocessing, and one policy candidate."
+    },
+    {
+      "step": 4,
+      "name": "World-model branch",
+      "action": "Promote Cosmos 3 if future-window/action-conditioned preprocessing fits storage and compute."
+    },
+    {
+      "step": 5,
+      "name": "Policy branch",
+      "action": "Promote OpenVLA/openpi/GR00T after action target conversion and retargeting artifacts are auditable."
+    },
+    {
+      "step": 6,
+      "name": "Publication rule",
+      "action": "Publish branch results only with real manifests, predictions, metrics, and qualitative examples."
+    }
+  ],
+  "evaluation_additions": [
+    {
+      "target": "structured_task_prediction",
+      "metrics": [
+        "JSON validity",
+        "macro-F1",
+        "accuracy",
+        "micro-F1"
+      ],
+      "model_families": [
+        "Qwen3-Omni",
+        "Gemini Robotics reference"
+      ]
+    },
+    {
+      "target": "future_state_prediction",
+      "metrics": [
+        "retrieval rank",
+        "temporal consistency",
+        "feature reconstruction",
+        "qualitative visual inspection"
+      ],
+      "model_families": [
+        "Cosmos 3"
+      ]
+    },
+    {
+      "target": "action_conditioned_dynamics",
+      "metrics": [
+        "transition accuracy",
+        "contact accuracy",
+        "next-action accuracy"
+      ],
+      "model_families": [
+        "Cosmos 3",
+        "OpenVLA",
+        "openpi",
+        "GR00T"
+      ]
+    },
+    {
+      "target": "cross_episode_generalization",
+      "metrics": [
+        "held-out episode metrics",
+        "held-out session metrics",
+        "leakage audit"
+      ],
+      "model_families": [
+        "all trainable branches"
+      ]
+    }
+  ],
+  "source_links": [
+    {
+      "label": "Qwen3-Omni official HF model",
+      "url": "https://huggingface.co/Qwen/Qwen3-Omni-30B-A3B-Instruct"
+    },
+    {
+      "label": "NVIDIA Cosmos",
+      "url": "https://www.nvidia.com/en-us/ai/cosmos/"
+    },
+    {
+      "label": "NVIDIA Isaac GR00T",
+      "url": "https://developer.nvidia.com/isaac/gr00t"
+    },
+    {
+      "label": "OpenVLA",
+      "url": "https://openvla.github.io/"
+    },
+    {
+      "label": "openpi",
+      "url": "https://github.com/Physical-Intelligence/openpi"
+    },
+    {
+      "label": "Gemini Robotics",
+      "url": "https://deepmind.google/discover/blog/gemini-robotics-brings-ai-into-the-physical-world/"
+    },
+    {
+      "label": "Octo",
+      "url": "https://octo-models.github.io/"
+    },
+    {
+      "label": "LeRobot / SmolVLA",
+      "url": "https://github.com/huggingface/lerobot"
+    }
+  ]
+}

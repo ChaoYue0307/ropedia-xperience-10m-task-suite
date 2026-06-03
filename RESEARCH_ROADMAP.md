@@ -1,9 +1,9 @@
 # Research Roadmap
 
 This roadmap connects the current public-sample task lab to the next
-multi-episode Xperience-10M experiments. Each stage lists the entry condition,
-the deliverables, and the evidence that should exist before the stage is treated
-as complete.
+multi-episode Xperience-10M experiments and the later foundation-model branches.
+Each stage lists the entry condition, the deliverables, and the evidence that
+should exist before the stage is treated as complete.
 
 ## Roadmap Summary
 
@@ -12,16 +12,21 @@ as complete.
 | Public-Sample Task Lab | Implemented | One public Xperience-10M sample episode is available. | 1,161 aligned windows, 12 task contracts, minimal heads, neural MLP heads, modality atlas, task walkthroughs, and derived figures. | `PROJECT_STATUS.md`, `EVALUATION_PROTOCOL.md`, `RESEARCH_TAKEAWAYS.md`, `docs/data/summary_metrics.json`, `results/episode_task_suite/summary_report.json` |
 | Multi-Episode Data Staging | Active | Gated dataset access and enough storage for selected episodes. | 32 valid episodes, episode manifest, missing-view manifest, held-out episode split, and source-discovery report. | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`, `results/omni_finetune/source_discovery.json` |
 | 32-Episode Qwen3-Omni LoRA Pilot | Next | At least 32 valid episodes staged locally with no train/test episode leakage. | Dataset JSONL/media manifests, LoRA adapter checkpoint, progress logs, held-out predictions, metrics, confusion matrices, and run report. | `dataset_manifest.json`, `training_metadata.json`, `progress.jsonl`, `metrics.json`, `predictions.jsonl`, `RUN_REPORT.md` |
+| Foundation-Model Selection Matrix | Next | 32-episode data gate is satisfied, or a 3-8 episode dry run is staged for preprocessing checks. | Backbone registry, Cosmos 3 world-model branch plan, Qwen3-Omni baseline plan, OpenVLA/openpi/GR00T policy candidates, and model-specific evaluation additions. | `FOUNDATION_MODEL_PLAN.md`, `docs/data/foundation_model_plan.json`, `research_roadmap_interactive.json` |
 | 64-128 Episode Robustness Run | Planned | The 32-episode pilot trains and evaluates cleanly. | Split-by-session metrics, modality ablations, calibration/object/language error analysis, and sensitivity to missing views. | Held-out metrics by session, task, and modality; ablation tables; qualitative error analysis. |
-| Foundation and World-Model Extensions | Planned | Enough multi-episode data and compute budget for larger multimodal objectives. | Audio encoder integration, depth/image reconstruction, SLAM/world modeling probes, policy-style next-action tasks, and affordance/object interaction tasks. | Task-specific held-out evaluations, qualitative inspection, and updated model cards. |
+| Cosmos 3 and Policy-Model Extensions | Planned | Enough multi-episode data, compute budget, and model-specific action/world-state targets. | Cosmos 3 future-window or action-conditioned world-model probes, OpenVLA/openpi/GR00T action-policy baselines, modality-conditioning audits, affordance tasks, and synthetic-data usefulness tests. | Task-specific held-out evaluations, qualitative inspection, and updated model cards. |
 
 ## Current Decision Point
 
-The useful next decision is data scale: keep the public-sample task suite as the
-development harness, then stage enough official Xperience-10M episodes to run
-the 32-episode held-out pilot. The public sample is already enough for task
-design, feature contracts, walkthroughs, and baseline comparisons. It is not
-enough to measure general embodied-AI model quality.
+The useful next decision is data scale plus backbone fit: keep the public-sample
+task suite as the development harness, stage enough official Xperience-10M
+episodes to run the 32-episode held-out pilot, then choose larger model branches
+by task fit. Qwen3-Omni remains the first trainable multimodal LoRA target.
+Cosmos 3 becomes the first world-model/action-generation branch. OpenVLA,
+openpi, GR00T, Octo, and SmolVLA-style models become policy/action branches only
+after the action target is explicit. The public sample is already enough for
+task design, feature contracts, walkthroughs, and baseline comparisons. It is
+not enough to measure general embodied-AI model quality.
 
 ## Stage Details
 
@@ -77,12 +82,32 @@ This stage asks whether the 32-episode conclusions survive more sessions,
 different objects, missing views, and stronger modality ablations. It should
 report performance by task, session, modality, and failure type.
 
-### 5. Foundation and World-Model Extensions
+### 5. Foundation-Model Selection Matrix
+
+This stage records which foundation model is suitable for which Xperience-10M
+objective. The current decision is:
+
+- Qwen3-Omni first for multimodal instruction, structured JSON prediction, and
+  LoRA over video/audio/language plus sensor-bridge features.
+- Cosmos 3 next for world modeling, action-conditioned future prediction, and
+  synthetic-data experiments.
+- OpenVLA, openpi, GR00T, Octo, and SmolVLA-style policies after action-space
+  conversion and retargeting are auditable.
+- Gemini Robotics only as an external reasoning/reference surface unless local
+  trainable access becomes available.
+
+Evidence to inspect:
+
+- `FOUNDATION_MODEL_PLAN.md`
+- `docs/data/foundation_model_plan.json`
+- `docs/data/research_roadmap_interactive.json`
+
+### 6. Cosmos 3 and Policy-Model Extensions
 
 This stage moves beyond lightweight heads and LoRA pilots into richer multimodal
-objectives: audio-visible alignment, depth/image reconstruction, dynamic scene
-state, SLAM/world modeling, policy-style next action, contact, object relevance,
-and affordance reasoning.
+objectives: audio-visible alignment, future-window prediction,
+action-conditioned world modeling, synthetic-data usefulness tests, policy-style
+next action, contact, object relevance, and affordance reasoning.
 
 ## Public Artifacts That Should Move Together
 
