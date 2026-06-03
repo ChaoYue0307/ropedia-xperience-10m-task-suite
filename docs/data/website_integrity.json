@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-02T18:36:52+00:00",
+  "generated_at_utc": "2026-06-03T01:38:40+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 2,
-    "local_references": 99,
+    "local_references": 100,
     "external_reference_count": 80,
-    "json_files": 27,
+    "json_files": 28,
     "image_assets_referenced": 19,
     "failure_count": 0
   },
@@ -88,6 +88,12 @@
       "status": "pass",
       "reason": "The website should expose the machine-readable research roadmap.",
       "marker_count": 2
+    },
+    {
+      "name": "rendered_site_check_links_json",
+      "status": "pass",
+      "reason": "The website should expose the browser-level rendered website check.",
+      "marker_count": 1
     },
     {
       "name": "roadmap_html_matches_json_phases",
@@ -192,7 +198,7 @@
     {
       "path": "index.html",
       "id_count": 75,
-      "reference_count": 98,
+      "reference_count": 99,
       "image_count": 22
     }
   ],
@@ -214,7 +220,7 @@
     },
     {
       "path": "data/evidence_contract.json",
-      "bytes": 11570,
+      "bytes": 12007,
       "top_level_type": "dict"
     },
     {
@@ -244,7 +250,7 @@
     },
     {
       "path": "data/project_manifest.json",
-      "bytes": 4579,
+      "bytes": 4644,
       "top_level_type": "dict"
     },
     {
@@ -259,7 +265,7 @@
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 5451,
+      "bytes": 5651,
       "top_level_type": "dict"
     },
     {
@@ -270,6 +276,11 @@
     {
       "path": "data/quality_gates.json",
       "bytes": 7528,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/rendered_site_check.json",
+      "bytes": 4032,
       "top_level_type": "dict"
     },
     {

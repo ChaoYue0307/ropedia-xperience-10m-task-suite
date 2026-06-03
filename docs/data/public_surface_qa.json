@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Project Surface",
   "status": "pass",
-  "generated_at_utc": "2026-06-02T18:39:33+00:00",
+  "generated_at_utc": "2026-06-03T01:38:39+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -19,6 +19,11 @@
           "exists": true,
           "status": "pass",
           "generated_at_utc": "2026-06-02T18:36:52+00:00"
+        },
+        "rendered_site_check": {
+          "exists": true,
+          "status": "pass",
+          "generated_at_utc": "2026-06-03T01:38:26+00:00"
         },
         "task_surface_integrity": {
           "exists": true,
@@ -38,12 +43,12 @@
         "publication_package": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-02T17:35:52+00:00"
+          "generated_at_utc": "2026-06-02T18:40:02+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-02T17:37:17+00:00"
+          "generated_at_utc": "2026-06-02T18:40:46+00:00"
         },
         "live_publication": {
           "exists": true,
@@ -122,6 +127,7 @@
       "marker_counts": {
         "data/project_brief.json": 9,
         "data/website_integrity.json": 10,
+        "data/rendered_site_check.json": 7,
         "data/task_surface_integrity.json": 13,
         "data/publication_audit.json": 11,
         "data/mirror_parity.json": 9,

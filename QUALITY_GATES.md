@@ -15,6 +15,7 @@ These checks cover public packaging, project status wording, mirror parity, and 
 | Multi-episode pilot status | `python scripts/validate_scope_claims.py` | `docs/data/scope_claims_audit.json` | `pass` | Historical 32ep setup/provenance strings are presented as completed 32-episode metrics. |
 | Source alignment | `python scripts/validate_source_alignment.py` | `docs/data/source_alignment_audit.json` | `pass` | Official full-dataset facts, sample-card facts, API-listing notes, or project coverage are missing or inconsistent. |
 | Website integrity | `python scripts/validate_website_integrity.py` | `docs/data/website_integrity.json` | `pass` | Local links, anchors, JSON bundles, or referenced image assets are missing or invalid. |
+| Rendered website check | `python scripts/build_rendered_site_check.py --input /tmp/xperience_rendered_site_observations.json` | `docs/data/rendered_site_check.json` | `pass` | The local rendered site cannot load, switch tabs, deep-link to the walkthrough, update player controls, or stay console-clean. |
 | Task surface integrity | `python scripts/validate_task_surface.py` | `docs/data/task_surface_integrity.json` | `pass` | Task cards expose raw artifact ids, human-readable task names drift, modality thumbnails are missing, or the interactive task player is not wired to the generated JSON. |
 | Evaluation protocol | `python scripts/build_evaluation_protocol.py` | `docs/data/evaluation_protocol.json` | `pass` | Windowing, split policy, leakage controls, task metrics, or current limitations are not explicit. |
 | Figure index | `python scripts/build_figure_index.py` | `docs/data/figure_index.json` | `pass` | Public figures, charts, or modality thumbnails are missing, unreadable, or lack source-script provenance. |
@@ -42,6 +43,7 @@ python scripts/build_evaluation_protocol.py
 python scripts/build_brand_assets.py
 python scripts/build_figure_index.py
 python scripts/validate_website_integrity.py
+python scripts/build_rendered_site_check.py --input /tmp/xperience_rendered_site_observations.json
 python scripts/validate_task_surface.py
 python scripts/build_quality_gates.py
 python scripts/build_artifact_index.py

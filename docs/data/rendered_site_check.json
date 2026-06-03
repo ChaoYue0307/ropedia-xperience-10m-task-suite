@@ -1,0 +1,110 @@
+{
+  "title": "Ropedia Xperience-10M Rendered Website Check",
+  "status": "pass",
+  "generated_at_utc": "2026-06-03T01:38:26+00:00",
+  "flow": "load current docs server -> open #walkthroughs deep link -> click Next -> click Process story chapter",
+  "checked_at_local": "2026-06-03T01:32:46.099Z",
+  "screenshot_path": "/tmp/xperience_site_walkthrough_fresh.png",
+  "observations": {
+    "activeSelectorCount": 1,
+    "activeStory": "Process",
+    "activeStoryCount": 1,
+    "activeTask": "Procedure Step Recognition",
+    "atlasCardCount": 7,
+    "checked_at_local": "2026-06-03T01:32:46.099Z",
+    "consoleWarningsOrErrors": 0,
+    "exercised_flow": "load current docs server -> open #walkthroughs deep link -> click Next -> click Process story chapter",
+    "frameChip": "Step 2 / 4 \u00b7 Process",
+    "h1": "Ropedia Xperience-10M Research Task Lab.",
+    "panelCount": 25,
+    "playerCounter": "02 / 12 \u00b7 Process",
+    "playerTitle": "Procedure Step Recognition",
+    "progressWidth": "12.5%",
+    "projectTabCount": 5,
+    "renderedSiteCheckLinkPresent": true,
+    "screenshot_path": "/tmp/xperience_site_walkthrough_fresh.png",
+    "scrubValue": "1",
+    "selectedProjectTab": "tab-data",
+    "selectorButtonCount": 12,
+    "storyButtonCount": 4,
+    "tabCount": 13,
+    "taskCardCount": 12,
+    "title": "Ropedia Xperience-10M Task Suite",
+    "url": "http://127.0.0.1:8765/#walkthroughs",
+    "viewport": {
+      "height": 716,
+      "width": 481
+    },
+    "visibleWalkthrough": true
+  },
+  "checks": [
+    {
+      "name": "page_identity",
+      "status": "pass",
+      "reason": "The rendered page should load the expected local site title and URL.",
+      "title": "Ropedia Xperience-10M Task Suite",
+      "url": "http://127.0.0.1:8765/#walkthroughs"
+    },
+    {
+      "name": "first_meaningful_content",
+      "status": "pass",
+      "reason": "The first meaningful heading should identify the research task lab.",
+      "h1": "Ropedia Xperience-10M Research Task Lab."
+    },
+    {
+      "name": "responsive_viewport_recorded",
+      "status": "pass",
+      "reason": "The browser run should record a narrow responsive viewport large enough to expose the mobile/tablet layout.",
+      "viewport": {
+        "height": 716,
+        "width": 481
+      }
+    },
+    {
+      "name": "tabbed_research_navigation",
+      "status": "pass",
+      "reason": "The rendered top-level tab system should switch to the Data tab for the walkthrough deep link.",
+      "project_tab_count": 5,
+      "panel_count": 25,
+      "selected_project_tab": "tab-data"
+    },
+    {
+      "name": "task_and_modality_cards_render",
+      "status": "pass",
+      "reason": "The rendered task and modality sections should expose all 12 task cards and seven modality cards.",
+      "task_card_count": 12,
+      "atlas_card_count": 7
+    },
+    {
+      "name": "walkthrough_deep_link",
+      "status": "pass",
+      "reason": "The walkthrough deep link should reveal the walkthrough player, all task selectors, and four chapter controls.",
+      "visible_walkthrough": true,
+      "selector_button_count": 12,
+      "story_button_count": 4
+    },
+    {
+      "name": "walkthrough_interaction",
+      "status": "pass",
+      "reason": "Clicking Next and the Process chapter should update the active task, chapter, counter, and frame label.",
+      "active_task": "Procedure Step Recognition",
+      "active_story": "Process",
+      "player_counter": "02 / 12 \u00b7 Process",
+      "frame_chip": "Step 2 / 4 \u00b7 Process",
+      "active_selector_count": 1,
+      "active_story_count": 1
+    },
+    {
+      "name": "rendered_check_resource_link",
+      "status": "pass",
+      "reason": "The rendered page should expose the rendered website check JSON from the resource section.",
+      "rendered_site_check_link_present": true
+    },
+    {
+      "name": "console_health",
+      "status": "pass",
+      "reason": "The rendered flow should complete without browser console warnings or errors.",
+      "console_warnings_or_errors": 0
+    }
+  ]
+}

@@ -44,6 +44,14 @@ GATES = [
         "shows": "The GitHub Pages / HF static surface is self-consistent before upload.",
     },
     {
+        "id": "rendered_site_check",
+        "title": "Rendered website check",
+        "command": "python scripts/build_rendered_site_check.py --input /tmp/xperience_rendered_site_observations.json",
+        "report": "docs/data/rendered_site_check.json",
+        "blocks_if": "The local rendered site cannot load, switch tabs, deep-link to the walkthrough, update player controls, or stay console-clean.",
+        "shows": "The published static page has a recent browser-level interaction record in addition to static link checks.",
+    },
+    {
         "id": "task_surface_integrity",
         "title": "Task surface integrity",
         "command": "python scripts/validate_task_surface.py",
@@ -215,6 +223,7 @@ def markdown(payload: dict) -> str:
         "python scripts/build_brand_assets.py",
         "python scripts/build_figure_index.py",
         "python scripts/validate_website_integrity.py",
+        "python scripts/build_rendered_site_check.py --input /tmp/xperience_rendered_site_observations.json",
         "python scripts/validate_task_surface.py",
         "python scripts/build_quality_gates.py",
         "python scripts/build_artifact_index.py",
