@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-03T17:06:30+00:00",
+  "generated_at_utc": "2026-06-03T17:18:29+00:00",
   "status": "pass",
   "artifact_count": 72,
   "missing": [],
@@ -426,7 +426,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8147,
-      "sha256": "1a6b09fdf86ad0ad6aef167de8325670d6643c5d68c35e9846ff85270dcfed7a"
+      "sha256": "067b2b8e1ed1be2e869e11c1203a4069293dae13445f4844ee59a511de6a3d50"
     },
     {
       "id": "public_surface_qa",
@@ -529,7 +529,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 68744,
+      "bytes": 68749,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -540,8 +540,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 34767,
-      "sha256": "6a1cb0531719888de6bbeb7a2628058f6e67c92df6314c4ac3952af2c17f126b"
+      "bytes": 34779,
+      "sha256": "73c45e1ae1b7509b9f2c54cf42424c9ac0aab8a9e54be58fc488eaa2a696acc7"
     },
     {
       "id": "reproducibility_contract",

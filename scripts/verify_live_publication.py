@@ -421,7 +421,7 @@ MARKER_CHECKS = [
             "project_status.json",
             "cc-by-nc-4.0",
             "12,103 episode folders",
-            "interactive scrub/play storyboard",
+            "interactive scrub/play walkthrough storyboard",
             "task_surface_integrity.json",
             "public_surface_qa.json",
             "Public project surface",
