@@ -8,23 +8,23 @@ Cross-episode generalization and full direction completion require later held-ou
 
 | Direction | Extension task | Minimal | Neural MLP | Meaning |
 | --- | --- | ---: | ---: | --- |
-| A. Human Modeling & Motion Understanding | Body and Hand Motion Intensity | 0.7860 macro-F1 | 0.8143 macro-F1 | This is a motion-energy proxy, not a SMPL/MANO body model or a generative motion prior. |
+| A. Human Modeling & Motion Understanding | Body and Hand Motion Intensity | 0.7686 macro-F1 | 0.8164 macro-F1 | This is a motion-energy proxy, not a SMPL/MANO body model or a generative motion prior. |
 | B. 3D/4D Reconstruction & Neural Rendering | Multi-View Consistency Retrieval | 0.5529 MRR | 0.3451 MRR | This checks calibrated multi-view signal, but it is still feature retrieval, not NeRF, Gaussian Splatting, or novel-view synthesis. |
-| C. Egocentric Vision & Interaction | Action Phase Progress Estimation | 0.3415 MAE | 0.3126 MAE | This is an action-structure probe inside one episode, not a general intent model across homes, people, or tasks. |
-| D. Scene Reconstruction & World Modeling | Short-Horizon Ego-Motion Forecasting | 0.1989 MAE | 0.1009 MAE | This is a compact world-model proxy; it does not build a persistent map, scene graph, or object permanence model. |
+| C. Egocentric Vision & Interaction | Action Phase Progress Estimation | 0.3267 MAE | 0.2977 MAE | This is an action-structure probe inside one episode, not a general intent model across homes, people, or tasks. |
+| D. Scene Reconstruction & World Modeling | Short-Horizon Ego-Motion Forecasting | 0.1700 MAE | 0.0954 MAE | This is a compact world-model proxy; it does not build a persistent map, scene graph, or object permanence model. |
 
 ## Task Details
 
 ### A. Body and Hand Motion Intensity
 
 - Case study: A window with a fast reach or pour should be classified as high motion; a steady holding window should be low motion.
-- Input: Current non-mocap feature blocks: video, depth, camera pose/rotation, IMU, SLAM, calibration, and language context.
+- Input: Current non-mocap feature blocks: video, AAC audio, depth, camera pose/rotation, IMU, SLAM, calibration, and language context.
 - Middle process modules: Compute the target from hand/body joint changes between neighboring windows, hide the mocap blocks from the input, then classify high versus low motion using the train-set median as the threshold.
 - Output: Binary label: high_motion or low_motion.
 - Minimal baseline: Ridge classifier on standardized non-mocap features.
 - Neural baseline: One-hidden-layer MLP binary classifier on the same input features.
-- Minimal result: 0.7860 macro-F1
-- Neural result: 0.8143 macro-F1
+- Minimal result: 0.7686 macro-F1
+- Neural result: 0.8164 macro-F1
 - Limitation: This is a motion-energy proxy, not a SMPL/MANO body model or a generative motion prior.
 
 ### B. Multi-View Consistency Retrieval
@@ -47,8 +47,8 @@ Cross-episode generalization and full direction completion require later held-ou
 - Output: A scalar progress value between 0.0 and 1.0 for the current action segment.
 - Minimal baseline: Ridge regressor on standardized non-caption features.
 - Neural baseline: One-hidden-layer MLP regressor on the same input features.
-- Minimal result: 0.3415 MAE
-- Neural result: 0.3126 MAE
+- Minimal result: 0.3267 MAE
+- Neural result: 0.2977 MAE
 - Limitation: This is an action-structure probe inside one episode, not a general intent model across homes, people, or tasks.
 
 ### D. Short-Horizon Ego-Motion Forecasting
@@ -59,6 +59,6 @@ Cross-episode generalization and full direction completion require later held-ou
 - Output: A future camera-translation delta vector.
 - Minimal baseline: Ridge regressor with a 20-frame forecast horizon.
 - Neural baseline: One-hidden-layer MLP regressor with the same horizon and split.
-- Minimal result: 0.1989 MAE
-- Neural result: 0.1009 MAE
+- Minimal result: 0.1700 MAE
+- Neural result: 0.0954 MAE
 - Limitation: This is a compact world-model proxy; it does not build a persistent map, scene graph, or object permanence model.

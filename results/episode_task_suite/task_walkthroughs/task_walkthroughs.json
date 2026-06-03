@@ -4,7 +4,7 @@
     "episode_count": 1,
     "num_frames": 5821,
     "num_windows": 1161,
-    "feature_dim": 8378,
+    "feature_dim": 8546,
     "window_frames": 20,
     "stride_frames": 5,
     "warning": "These walkthroughs explain task contracts on one public sample episode; cross-episode performance requires held-out episodes."
@@ -12,7 +12,7 @@
   "shared_pipeline": [
     "Read annotation.hdf5 and synchronized video-derived features.",
     "Slice the episode into 20-frame windows with stride 5.",
-    "Build an 8,378-d current feature vector from available modality blocks.",
+    "Build a 8,546-d current feature vector from available modality blocks, including AAC audio features.",
     "Construct a task-specific target from labels, future frames, paired windows, or modality splits.",
     "Train a minimal head and, when enabled, a neural MLP head.",
     "Write metrics, predictions, and model artifacts for downstream exploration."
@@ -21,7 +21,7 @@
     "timeline_action": {
       "plain_goal": "Look at one short multimodal window and name what action is happening now.",
       "case_study": "In the coffee-making sample, if the 20-frame window is during a pouring moment, the task asks the model to output an action such as Pour coffee or Pour milk into coffee.",
-      "input": "One 20-frame window represented by the current 8,378-d feature vector: video/depth summaries, pose, SLAM/camera pose, motion capture, IMU, calibration, and language-derived context.",
+      "input": "One 20-frame window represented by the current feature vector: video/audio/depth summaries, pose, SLAM/camera pose, motion capture, IMU, calibration, and language-derived context.",
       "middle_modules": [
         "Window builder slices the episode into short overlapping windows.",
         "Feature assembler concatenates all current feature blocks.",
@@ -57,14 +57,14 @@
         "name": "macro-F1",
         "direction": "higher",
         "minimal": 0.05,
-        "neural_mlp": 0.02631578947368421
+        "neural_mlp": 0.014814814814814814
       },
       "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
     },
     "timeline_subtask": {
       "plain_goal": "Predict the higher-level task stage for the current window.",
       "case_study": "A pouring action may belong to a broader subtask such as preparing or pouring a drink. The model predicts that broader stage instead of a fine action.",
-      "input": "The same all-modality 8,378-d window vector used by action recognition.",
+      "input": "The same all-modality window vector used by action recognition.",
       "middle_modules": [
         "Window builder creates the current temporal slice.",
         "Feature assembler keeps all available modality blocks.",
@@ -99,8 +99,8 @@
         "key": "macro_f1",
         "name": "macro-F1",
         "direction": "higher",
-        "minimal": 0.04954121121178666,
-        "neural_mlp": 0.017518248175182476
+        "minimal": 0.05056355513846935,
+        "neural_mlp": 0.02810810810810811
       },
       "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
     },
@@ -141,8 +141,8 @@
         "key": "macro_f1",
         "name": "macro-F1",
         "direction": "higher",
-        "minimal": 0.6551829268292684,
-        "neural_mlp": 0.6484848484848484
+        "minimal": 0.6118237590630229,
+        "neural_mlp": 0.5862068965517241
       },
       "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
     },
@@ -184,7 +184,7 @@
         "name": "macro-F1",
         "direction": "higher",
         "minimal": 0.05925925925925927,
-        "neural_mlp": 0.023529411764705882
+        "neural_mlp": 0.04186046511627907
       },
       "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
     },
@@ -225,8 +225,8 @@
         "key": "mpjpe",
         "name": "MPJPE",
         "direction": "lower",
-        "minimal": 0.8222644925117493,
-        "neural_mlp": 0.11163123697042465
+        "minimal": 0.8646570444107056,
+        "neural_mlp": 0.10785018652677536
       },
       "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
     },
@@ -308,8 +308,8 @@
         "key": "micro_f1",
         "name": "micro-F1",
         "direction": "higher",
-        "minimal": 0.18393030009680542,
-        "neural_mlp": 0.1797583081570997
+        "minimal": 0.18034382095361662,
+        "neural_mlp": 0.1679279279279279
       },
       "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
     },
@@ -349,8 +349,8 @@
         "key": "mrr",
         "name": "MRR",
         "direction": "higher",
-        "minimal": 0.017183946083791223,
-        "neural_mlp": 0.01781111161035397
+        "minimal": 0.016023479050338015,
+        "neural_mlp": 0.01684125567132316
       },
       "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
     },
@@ -391,8 +391,8 @@
         "key": "mrr",
         "name": "MRR",
         "direction": "higher",
-        "minimal": 0.26335984006618296,
-        "neural_mlp": 0.1530070022204131
+        "minimal": 0.26925966892956127,
+        "neural_mlp": 0.1299971898648288
       },
       "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
     },
@@ -433,8 +433,8 @@
         "key": "r2",
         "name": "R2",
         "direction": "higher",
-        "minimal": -0.016022846771134747,
-        "neural_mlp": -0.010198171891414143
+        "minimal": -0.015271898913936655,
+        "neural_mlp": -0.010171410134180991
       },
       "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
     },
@@ -474,8 +474,8 @@
         "key": "f1",
         "name": "F1",
         "direction": "higher",
-        "minimal": 0.5487364620938628,
-        "neural_mlp": 0.8717948717948718
+        "minimal": 0.5399515738498789,
+        "neural_mlp": 0.8520179372197308
       },
       "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
     },
@@ -516,8 +516,8 @@
         "key": "f1",
         "name": "F1",
         "direction": "higher",
-        "minimal": 0.4865671641791045,
-        "neural_mlp": 0.7335243553008597
+        "minimal": 0.5051698670605613,
+        "neural_mlp": 0.7152682255845944
       },
       "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
     }

@@ -7,7 +7,7 @@ It maps the current Xperience-10M sample tasks to the four Ropedia research dire
 
 | Baseline | Meaning |
 | --- | --- |
-| Minimal | Interpretable softmax, logistic, ridge, and retrieval heads over the 8,378-d window feature vector. |
+| Minimal | Interpretable softmax, logistic, ridge, and retrieval heads over the 8,546-d window feature vector. |
 | Neural MLP | Small PyTorch MLP classifiers/regressors using the same features, splits, and task contracts. |
 
 ## Direction Coverage
@@ -23,18 +23,18 @@ It maps the current Xperience-10M sample tasks to the four Ropedia research dire
 
 | Task | Primary direction | Related directions | Minimal | Neural MLP | Readout |
 | --- | --- | --- | ---: | ---: | --- |
-| `timeline_action` | C | C:direct, A:proxy | 0.0500 macro-F1 | 0.0263 macro-F1 | Minimal baseline is stronger. Chronological single-episode split creates unseen future action classes. |
-| `timeline_subtask` | C | C:direct, D:proxy | 0.0495 macro-F1 | 0.0175 macro-F1 | Minimal baseline is stronger. Single-episode ordering makes future subtasks hard to generalize. |
-| `transition_detection` | C | C:direct, D:diagnostic | 0.6552 macro-F1 | 0.6485 macro-F1 | Minimal baseline is stronger. Boundary class is sparse, so accuracy alone is misleading. |
-| `next_action` | C | C:direct, D:proxy | 0.0593 macro-F1 | 0.0235 macro-F1 | Minimal baseline is stronger. Unseen future labels dominate the single-episode chronological test. |
-| `hand_trajectory_forecast` | A | A:direct, C:proxy | 0.8223 MPJPE | 0.1116 MPJPE | Neural MLP is stronger. Forecasting is window-level and not yet a full sequence or policy model. |
+| `timeline_action` | C | C:direct, A:proxy | 0.0500 macro-F1 | 0.0148 macro-F1 | Minimal baseline is stronger. Chronological single-episode split creates unseen future action classes. |
+| `timeline_subtask` | C | C:direct, D:proxy | 0.0506 macro-F1 | 0.0281 macro-F1 | Minimal baseline is stronger. Single-episode ordering makes future subtasks hard to generalize. |
+| `transition_detection` | C | C:direct, D:diagnostic | 0.6118 macro-F1 | 0.5862 macro-F1 | Minimal baseline is stronger. Boundary class is sparse, so accuracy alone is misleading. |
+| `next_action` | C | C:direct, D:proxy | 0.0593 macro-F1 | 0.0419 macro-F1 | Minimal baseline is stronger. Unseen future labels dominate the single-episode chronological test. |
+| `hand_trajectory_forecast` | A | A:direct, C:proxy | 0.8647 MPJPE | 0.1079 MPJPE | Neural MLP is stronger. Forecasting is window-level and not yet a full sequence or policy model. |
 | `contact_prediction` | A | A:direct, C:proxy | 1.0000 macro-F1 | 1.0000 macro-F1 | Both baselines are tied. The public sample is degenerate for this target because one class dominates. |
-| `object_relevance` | C | C:direct, A:proxy, D:proxy | 0.1839 micro-F1 | 0.1798 micro-F1 | Minimal baseline is stronger. Object labels are language-derived and sparse in one episode. |
-| `caption_grounding` | C | C:direct, D:proxy | 0.0172 MRR | 0.0178 MRR | Neural MLP is stronger. Bag-of-objects language features are too weak for rich grounding. |
-| `cross_modal_retrieval` | C | C:diagnostic, B:proxy, D:proxy | 0.2634 MRR | 0.1530 MRR | Minimal baseline is stronger. Retrieval shows an alignment signal, not geometric reconstruction. |
-| `modality_reconstruction` | B | B:proxy, D:proxy | -0.0160 R2 | -0.0102 R2 | Neural MLP is stronger. Feature-vector reconstruction is not pixel, depth-map, mesh, NeRF, or Gaussian reconstruction. |
-| `temporal_order` | C | C:diagnostic, D:diagnostic | 0.5487 F1 | 0.8718 F1 | Neural MLP is stronger. Only local adjacent ordering, not long-horizon causal modeling. |
-| `misalignment_detection` | C | C:diagnostic, B:diagnostic, D:diagnostic | 0.4866 F1 | 0.7335 F1 | Neural MLP is stronger. Synthetic shifts diagnose alignment but do not solve calibration or mapping. |
+| `object_relevance` | C | C:direct, A:proxy, D:proxy | 0.1803 micro-F1 | 0.1679 micro-F1 | Minimal baseline is stronger. Object labels are language-derived and sparse in one episode. |
+| `caption_grounding` | C | C:direct, D:proxy | 0.0160 MRR | 0.0168 MRR | Neural MLP is stronger. Bag-of-objects language features are too weak for rich grounding. |
+| `cross_modal_retrieval` | C | C:diagnostic, B:proxy, D:proxy | 0.2693 MRR | 0.1300 MRR | Minimal baseline is stronger. Retrieval shows an alignment signal, not geometric reconstruction. |
+| `modality_reconstruction` | B | B:proxy, D:proxy | -0.0153 R2 | -0.0102 R2 | Neural MLP is stronger. Feature-vector reconstruction is not pixel, depth-map, mesh, NeRF, or Gaussian reconstruction. |
+| `temporal_order` | C | C:diagnostic, D:diagnostic | 0.5400 F1 | 0.8520 F1 | Neural MLP is stronger. Only local adjacent ordering, not long-horizon causal modeling. |
+| `misalignment_detection` | C | C:diagnostic, B:diagnostic, D:diagnostic | 0.5052 F1 | 0.7153 F1 | Neural MLP is stronger. Synthetic shifts diagnose alignment but do not solve calibration or mapping. |
 
 ## Next-Step Interpretation
 
@@ -59,7 +59,7 @@ The current suite checks cross-modal alignment and depth/video reconstruction pr
 Most of the 12 tasks directly target egocentric action, task state, interaction, grounding, and alignment.
 
 - Move from single-episode chronological splits to held-out-episode splits.
-- Add audio features and stronger multimodal backbones for action, intent, and grounding.
+- Use the extracted AAC audio block with stronger multimodal backbones for action, intent, and grounding.
 - Evaluate long-horizon task success prediction and action-conditioned generation.
 
 ### D. Scene Reconstruction & World Modeling
