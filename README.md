@@ -5,7 +5,7 @@
 [![Dataset](https://img.shields.io/badge/dataset-Xperience--10M%20by%20Ropedia-008b9a)](https://huggingface.co/datasets/ropedia-ai/xperience-10m)
 [![Scope](https://img.shields.io/badge/scope-single%20public%20sample-b65b04)](#scope)
 [![Citation](https://img.shields.io/badge/citation-CFF-7ae5c3)](CITATION.cff)
-[![License](https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-a7f078)](LICENSE)
+[![License](https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-ccffa0)](LICENSE)
 
 <p align="center">
   <img src="docs/assets/brand/xperience10m-logo-social-card.png" alt="Ropedia Xperience-10M Task Suite logo card" width="760">
@@ -37,6 +37,7 @@ before the 32-episode omni-model stage becomes a real held-out evaluation.
 | --- | --- |
 | Understand the whole project quickly | [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md) |
 | See the visual research dashboard | [GitHub Pages dashboard](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/) |
+| Navigate the 12 tasks, four tracks, and scale-up plan | [Interactive research roadmap](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/research_roadmap.html), [`docs/data/research_roadmap_interactive.json`](docs/data/research_roadmap_interactive.json) |
 | Compare current task metrics | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) |
 | Understand one model input | [`results/episode_task_suite/feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`results/episode_task_suite/windows.csv`](results/episode_task_suite/windows.csv) |
 | Check multi-episode data status | [`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) |
@@ -70,6 +71,7 @@ Current contributions:
 - a generated four-direction research taxonomy matching the Ropedia job tracks,
 - four additional direction-extension probes with minimal and neural baselines,
 - human-readable research task cards and an interactive scrub/play walkthrough storyboard for every task,
+- an interactive research roadmap connecting 12 tasks, four research tracks, current sample evidence, and the Qwen3-Omni scale-up path,
 - a next-milestone track for Qwen3-Omni fine-tuning and sensor-bridge evaluation,
 - metrics, predictions, model weights, manifests, charts, and a two-level
   tabbed static research website,
@@ -90,7 +92,7 @@ multi-episode held-out model metrics:
 | Feature contract | `results/episode_task_suite/feature_manifest.json`, `available_modalities.json` | 8,378 current features; audio documented but not featurized |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | defines windowing, chronological split, leakage controls, per-task metrics, and current limitations |
 | Research takeaways | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | summarizes result interpretation from committed metrics and identifies which experiments need held-out episodes |
-| Research roadmap | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | stages the path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions |
+| Research roadmap | `RESEARCH_ROADMAP.md`, `docs/research_roadmap.html`, `docs/data/research_roadmap.json`, `docs/data/research_roadmap_interactive.json` | stages and visualizes the path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions |
 | 12-task suite | `scripts/episode_task_suite.py`, per-task `metrics.json`, predictions | chronological single-episode split |
 | Single-episode diagnostics | `scripts/single_episode_diagnostics.py`, `results/single_episode_diagnostics/`, `docs/single_episode_explorer.html` | modality ablations, timeline overlay, object-label export, alignment stress tests, and interactive window inspection from one sample episode |
 | Neural heads | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | compact MLP heads, not a foundation model |

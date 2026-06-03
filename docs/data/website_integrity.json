@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-03T05:44:19+00:00",
+  "generated_at_utc": "2026-06-03T07:03:17+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
-    "html_pages": 3,
-    "local_references": 109,
-    "external_reference_count": 83,
-    "json_files": 29,
+    "html_pages": 4,
+    "local_references": 126,
+    "external_reference_count": 89,
+    "json_files": 30,
     "image_assets_referenced": 20,
     "failure_count": 0
   },
@@ -74,8 +74,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 65878,
-      "evidence_index": 79303
+      "overview_index": 65889,
+      "evidence_index": 79468
     },
     {
       "name": "project_status_links_json",
@@ -88,6 +88,32 @@
       "status": "pass",
       "reason": "The website should expose the machine-readable research roadmap.",
       "marker_count": 2
+    },
+    {
+      "name": "interactive_roadmap_page_linked",
+      "status": "pass",
+      "reason": "The project site should link to the dedicated interactive research roadmap page.",
+      "marker_count": 2
+    },
+    {
+      "name": "interactive_roadmap_links_json",
+      "status": "pass",
+      "reason": "The project site should expose the machine-readable interactive roadmap contract.",
+      "marker_count": 1
+    },
+    {
+      "name": "interactive_roadmap_loads_generated_json",
+      "status": "pass",
+      "reason": "The interactive roadmap page should load the generated roadmap JSON contract.",
+      "marker_count": 4,
+      "page_exists": true
+    },
+    {
+      "name": "interactive_roadmap_tracks_four_directions",
+      "status": "pass",
+      "reason": "The interactive roadmap page should expose the four research-track control surface.",
+      "marker_count": 2,
+      "page_exists": true
     },
     {
       "name": "rendered_site_check_links_json",
@@ -122,9 +148,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 65878,
-      "protocol_index": 76706,
-      "evidence_index": 79303
+      "overview_index": 65889,
+      "protocol_index": 76871,
+      "evidence_index": 79468
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -198,8 +224,14 @@
     {
       "path": "index.html",
       "id_count": 75,
-      "reference_count": 102,
+      "reference_count": 104,
       "image_count": 22
+    },
+    {
+      "path": "research_roadmap.html",
+      "id_count": 15,
+      "reference_count": 15,
+      "image_count": 1
     },
     {
       "path": "single_episode_explorer.html",
@@ -276,7 +308,7 @@
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 7097,
+      "bytes": 7253,
       "top_level_type": "dict"
     },
     {
@@ -307,6 +339,11 @@
     {
       "path": "data/research_roadmap.json",
       "bytes": 4594,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/research_roadmap_interactive.json",
+      "bytes": 73090,
       "top_level_type": "dict"
     },
     {
@@ -346,7 +383,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 13148,
+      "bytes": 14310,
       "top_level_type": "dict"
     },
     {

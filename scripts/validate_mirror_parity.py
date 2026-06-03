@@ -37,6 +37,7 @@ DATA_FILES = [
     "rendered_site_check.json",
     "reproducibility_matrix.json",
     "research_roadmap.json",
+    "research_roadmap_interactive.json",
     "research_takeaways.json",
     "research_direction_extensions.json",
     "research_directions.json",
@@ -78,6 +79,7 @@ SCRIPT_FILES = [
     "build_quality_gates.py",
     "build_public_surface_qa.py",
     "build_rendered_site_check.py",
+    "build_interactive_research_roadmap.py",
     "build_single_episode_explorer.py",
     "build_research_takeaways.py",
     "single_episode_diagnostics.py",
@@ -95,6 +97,7 @@ WEBSITE_FILES = [
     "apple-touch-icon.png",
     "favicon.png",
     "index.html",
+    "research_roadmap.html",
     "single_episode_explorer.html",
     "site.webmanifest",
 ]

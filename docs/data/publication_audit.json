@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-03T05:52:16+00:00",
+  "generated_at_utc": "2026-06-03T07:03:18+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -67,6 +67,7 @@
     "docs/favicon.svg": true,
     "docs/favicon.png": true,
     "docs/index.html": true,
+    "docs/research_roadmap.html": true,
     "docs/robots.txt": true,
     "docs/site.webmanifest": true,
     "docs/sitemap.xml": true,
@@ -82,6 +83,7 @@
     "docs/data/project_packet.json": true,
     "docs/data/project_status.json": true,
     "docs/data/research_roadmap.json": true,
+    "docs/data/research_roadmap_interactive.json": true,
     "docs/data/research_takeaways.json": true,
     "docs/data/xperience10m_dataset_card_alignment.json": true,
     "docs/data/reproducibility_matrix.json": true,
@@ -124,6 +126,7 @@
     "scripts/build_quality_gates.py": true,
     "scripts/build_public_surface_qa.py": true,
     "scripts/build_rendered_site_check.py": true,
+    "scripts/build_interactive_research_roadmap.py": true,
     "scripts/verify_live_publication.py": true,
     "scripts/validate_mirror_parity.py": true,
     "scripts/validate_scope_claims.py": true,
@@ -179,8 +182,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 352,
-      "text_file_count": 288,
+      "file_count": 355,
+      "text_file_count": 291,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -190,8 +193,8 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 135,
-      "text_file_count": 108,
+      "file_count": 137,
+      "text_file_count": 110,
       "largest_file": {
         "path": "data/single_episode_explorer.json",
         "bytes": 4101241
@@ -201,8 +204,8 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 381,
-      "text_file_count": 297,
+      "file_count": 384,
+      "text_file_count": 300,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -212,8 +215,8 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 563,
-      "text_file_count": 447,
+      "file_count": 569,
+      "text_file_count": 453,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010

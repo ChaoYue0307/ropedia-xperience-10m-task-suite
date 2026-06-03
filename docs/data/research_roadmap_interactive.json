@@ -1,0 +1,1706 @@
+{
+  "baseline_summary": {
+    "baseline_heads": "minimal and neural MLP heads",
+    "current_use": "task design, data-contract validation, case studies, and baseline comparison",
+    "split": "chronological single-episode split for public-sample diagnostics",
+    "task_count": 12
+  },
+  "directions": [
+    {
+      "code": "A",
+      "counts": {
+        "diagnostic": 0,
+        "direct": 2,
+        "proxy": 2,
+        "total_links": 4
+      },
+      "current_readout": "The sample supports hand trajectory forecasting and contact/object probes, but it does not yet include a full body/shape model or multi-person priors.",
+      "current_status": "partially implemented",
+      "extension_tasks": [
+        {
+          "current_limit": "This is a motion-energy proxy, not a SMPL/MANO body model or a generative motion prior.",
+          "family": "classification",
+          "id": "body_motion_intensity",
+          "metric_name": "macro-F1",
+          "name": "Body and Hand Motion Intensity"
+        }
+      ],
+      "focus": "Human/hand/body motion, deformation priors, human-object interaction, affordance modeling.",
+      "id": "human_motion",
+      "name": "Human Modeling & Motion Understanding",
+      "next_steps": [
+        "Add SMPL/SMPL-X or MANO-style body/hand parameter targets where available.",
+        "Train sequence models over multi-episode motion trajectories instead of isolated windows.",
+        "Evaluate affordance prediction on held-out objects and held-out episodes."
+      ],
+      "preferred_background": "Human pose/shape estimation, SMPL-style models, motion capture, or motion generation.",
+      "task_ids": [
+        "timeline_action",
+        "hand_trajectory_forecast",
+        "contact_prediction",
+        "object_relevance"
+      ],
+      "tasks": [
+        {
+          "architecture_family": "multiclass classifier",
+          "case_study": "In the coffee-making sample, if the 20-frame window is during a pouring moment, the task asks the model to output an action such as Pour coffee or Pour milk into coffee.",
+          "current_limit": "Chronological single-episode split creates unseen future action classes.",
+          "direction_roles": {
+            "A": "proxy",
+            "C": "direct"
+          },
+          "display_name": "Action Recognition",
+          "family": "supervised",
+          "id": "timeline_action",
+          "input": "One 20-frame window represented by the current 8,378-d feature vector: video/depth summaries, pose, SLAM/camera pose, motion capture, IMU, calibration, and language-derived context.",
+          "input_short": "20-frame multimodal window",
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.05,
+            "name": "macro-F1",
+            "neural_mlp": 0.0263
+          },
+          "modalities": [
+            "video",
+            "depth",
+            "pose_slam",
+            "motion_capture",
+            "inertial",
+            "language"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "current action class",
+          "primary_direction": "C",
+          "process_short": "window features -> action label builder -> classifier",
+          "research_name": "Egocentric Action Recognition",
+          "why": "Reads egocentric sensor state as the current human action; also provides a weak human-motion readout."
+        },
+        {
+          "architecture_family": "continuous regressor",
+          "case_study": "When the hand is moving toward a cup or bottle, the model predicts the future 3D hand-joint path.",
+          "current_limit": "Forecasting is window-level and not yet a full sequence or policy model.",
+          "direction_roles": {
+            "A": "direct",
+            "C": "proxy"
+          },
+          "display_name": "Hand Trajectory Forecasting",
+          "family": "forecast",
+          "id": "hand_trajectory_forecast",
+          "input": "The current all-modality window vector at time t.",
+          "input_short": "current multimodal window",
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "lower",
+            "key": "mpjpe",
+            "minimal": 0.8223,
+            "name": "MPJPE",
+            "neural_mlp": 0.1116
+          },
+          "modalities": [
+            "motion_capture",
+            "video",
+            "depth",
+            "pose_slam",
+            "inertial"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "future hand-joint trajectory",
+          "primary_direction": "A",
+          "process_short": "current features -> future mocap target -> regression head",
+          "research_name": "3D Hand Motion Forecasting",
+          "why": "Directly predicts human hand motion and supports hand-object interaction modeling."
+        },
+        {
+          "architecture_family": "binary classifier",
+          "case_study": "During manipulation, the hand may touch a cup, table, or bottle. The task asks whether any contact is happening.",
+          "current_limit": "The public sample is degenerate for this target because one class dominates.",
+          "direction_roles": {
+            "A": "direct",
+            "C": "proxy"
+          },
+          "display_name": "Contact State Prediction",
+          "family": "supervised",
+          "id": "contact_prediction",
+          "input": "Non-contact and non-caption feature blocks, so the answer is not directly leaked from the target labels.",
+          "input_short": "non-contact, non-caption features",
+          "metric": {
+            "better_baseline": "tie",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 1.0,
+            "name": "macro-F1",
+            "neural_mlp": 1.0
+          },
+          "modalities": [
+            "motion_capture",
+            "video",
+            "depth",
+            "inertial"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "contact or no contact",
+          "primary_direction": "A",
+          "process_short": "feature filter -> contact target -> binary classifier",
+          "research_name": "Human-Object Contact Prediction",
+          "why": "Targets physical interaction state, a core affordance and manipulation signal."
+        },
+        {
+          "architecture_family": "multi-label classifier",
+          "case_study": "If the person is pouring milk into coffee, relevant objects may include milk, cup, coffee, or container-like items.",
+          "current_limit": "Object labels are language-derived and sparse in one episode.",
+          "direction_roles": {
+            "A": "proxy",
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Object Relevance Prediction",
+          "family": "supervised",
+          "id": "object_relevance",
+          "input": "Non-caption feature blocks, so the model must infer objects from sensors rather than copying the caption words.",
+          "input_short": "non-caption multimodal features",
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "micro_f1",
+            "minimal": 0.1839,
+            "name": "micro-F1",
+            "neural_mlp": 0.1798
+          },
+          "modalities": [
+            "video",
+            "depth",
+            "pose_slam",
+            "motion_capture",
+            "inertial"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "relevant object set",
+          "primary_direction": "C",
+          "process_short": "object vocabulary -> multi-hot labels -> sigmoid heads",
+          "research_name": "Object-Centric Interaction Recognition",
+          "why": "Connects egocentric activity to manipulated objects and early object-centric state."
+        }
+      ]
+    },
+    {
+      "code": "B",
+      "counts": {
+        "diagnostic": 1,
+        "direct": 0,
+        "proxy": 2,
+        "total_links": 3
+      },
+      "current_readout": "The current suite checks cross-modal alignment and depth/video reconstruction proxies; it does not yet train a renderer or reconstruct geometry.",
+      "current_status": "proxy tasks only",
+      "extension_tasks": [
+        {
+          "current_limit": "This checks calibrated multi-view signal, but it is still feature retrieval, not NeRF, Gaussian Splatting, or novel-view synthesis.",
+          "family": "retrieval",
+          "id": "multi_view_consistency_retrieval",
+          "metric_name": "MRR",
+          "name": "Multi-View Consistency Retrieval"
+        }
+      ],
+      "focus": "Multi-view dynamic scene reconstruction, NeRF/Gaussian Splatting, novel-view synthesis.",
+      "id": "reconstruction_rendering",
+      "name": "3D/4D Reconstruction & Neural Rendering",
+      "next_steps": [
+        "Use calibrated multi-view video plus SLAM pose to build per-episode camera trajectories.",
+        "Add depth-supervised point clouds, TSDF, Gaussian Splatting, or NeRF baselines.",
+        "Evaluate novel-view synthesis and temporal consistency across held-out views/time."
+      ],
+      "preferred_background": "3D reconstruction, neural rendering, camera calibration, and bundle adjustment.",
+      "task_ids": [
+        "cross_modal_retrieval",
+        "modality_reconstruction",
+        "misalignment_detection"
+      ],
+      "tasks": [
+        {
+          "architecture_family": "two-tower retrieval head",
+          "case_study": "Use motion, IMU, and camera-pose signals from a pouring moment to retrieve the matching depth/video representation for that same moment.",
+          "current_limit": "Retrieval shows an alignment signal, not geometric reconstruction.",
+          "direction_roles": {
+            "B": "proxy",
+            "C": "diagnostic",
+            "D": "proxy"
+          },
+          "display_name": "Cross-Modal Retrieval",
+          "family": "retrieval",
+          "id": "cross_modal_retrieval",
+          "input": "Query side: motion, IMU, and camera/pose features. Candidate side: depth and video features.",
+          "input_short": "motion/IMU/pose query; depth/video candidates",
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "mrr",
+            "minimal": 0.2634,
+            "name": "MRR",
+            "neural_mlp": 0.153
+          },
+          "modalities": [
+            "motion_capture",
+            "inertial",
+            "pose_slam",
+            "depth",
+            "video"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "ranked visual windows",
+          "primary_direction": "C",
+          "process_short": "modality split -> projection -> nearest-neighbor ranker",
+          "research_name": "Multimodal Representation Retrieval",
+          "why": "Tests whether synchronized modalities identify the same 4D moment, a prerequisite for reconstruction and world modeling."
+        },
+        {
+          "architecture_family": "feature regressor",
+          "case_study": "Given motion, IMU, and camera-pose signals while the hand moves, predict the matching depth/video feature vector.",
+          "current_limit": "Feature-vector reconstruction is not pixel, depth-map, mesh, NeRF, or Gaussian reconstruction.",
+          "direction_roles": {
+            "B": "proxy",
+            "D": "proxy"
+          },
+          "display_name": "Cross-Modal Reconstruction",
+          "family": "forecast",
+          "id": "modality_reconstruction",
+          "input": "Motion, IMU, and camera/pose features as input; depth/video features as the regression target.",
+          "input_short": "motion, IMU, and camera/pose features",
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "higher",
+            "key": "r2",
+            "minimal": -0.016,
+            "name": "R2",
+            "neural_mlp": -0.0102
+          },
+          "modalities": [
+            "motion_capture",
+            "inertial",
+            "pose_slam",
+            "depth",
+            "video"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "reconstructed depth/video vector",
+          "primary_direction": "B",
+          "process_short": "source-target split -> scaler -> regression head",
+          "research_name": "Modality Feature Reconstruction",
+          "why": "Predicts visual/depth state from non-target sensors as a weak reconstruction/world-model objective."
+        },
+        {
+          "architecture_family": "pairwise classifier",
+          "case_study": "Motion from a pouring moment is paired with video/depth from several windows later. The task asks the model to detect that mismatch.",
+          "current_limit": "Synthetic shifts diagnose alignment but do not solve calibration or mapping.",
+          "direction_roles": {
+            "B": "diagnostic",
+            "C": "diagnostic",
+            "D": "diagnostic"
+          },
+          "display_name": "Multimodal Synchronization Detection",
+          "family": "diagnostic",
+          "id": "misalignment_detection",
+          "input": "A motion-side feature group and a visual/depth-side feature group, either aligned or artificially shifted.",
+          "input_short": "motion-side and visual/depth-side feature groups",
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "higher",
+            "key": "f1",
+            "minimal": 0.4866,
+            "name": "F1",
+            "neural_mlp": 0.7335
+          },
+          "modalities": [
+            "motion_capture",
+            "inertial",
+            "video",
+            "depth",
+            "pose_slam"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "aligned or shifted",
+          "primary_direction": "C",
+          "process_short": "aligned/shifted pairs -> feature combiner -> binary classifier",
+          "research_name": "Cross-Modal Misalignment Detection",
+          "why": "Detects temporal desynchronization, a key data-quality gate for multimodal reconstruction and world models."
+        }
+      ]
+    },
+    {
+      "code": "C",
+      "counts": {
+        "diagnostic": 3,
+        "direct": 6,
+        "proxy": 2,
+        "total_links": 11
+      },
+      "current_readout": "Most of the 12 tasks directly target egocentric action, task state, interaction, grounding, and alignment.",
+      "current_status": "strongest implemented track",
+      "extension_tasks": [
+        {
+          "current_limit": "This is an action-structure probe inside one episode, not a general intent model across homes, people, or tasks.",
+          "family": "regression",
+          "id": "action_phase_progress",
+          "metric_name": "MAE",
+          "name": "Action Phase Progress Estimation"
+        }
+      ],
+      "focus": "Egocentric action and intention understanding, hand-object interaction, gaze/attention modeling, task structure modeling.",
+      "id": "egocentric_interaction",
+      "name": "Egocentric Vision & Interaction",
+      "next_steps": [
+        "Move from single-episode chronological splits to held-out-episode splits.",
+        "Add audio features and stronger multimodal backbones for action, intent, and grounding.",
+        "Evaluate long-horizon task success prediction and action-conditioned generation."
+      ],
+      "preferred_background": "Video understanding, action recognition, or egocentric vision.",
+      "task_ids": [
+        "timeline_action",
+        "timeline_subtask",
+        "transition_detection",
+        "next_action",
+        "hand_trajectory_forecast",
+        "contact_prediction",
+        "object_relevance",
+        "caption_grounding",
+        "cross_modal_retrieval",
+        "temporal_order",
+        "misalignment_detection"
+      ],
+      "tasks": [
+        {
+          "architecture_family": "multiclass classifier",
+          "case_study": "In the coffee-making sample, if the 20-frame window is during a pouring moment, the task asks the model to output an action such as Pour coffee or Pour milk into coffee.",
+          "current_limit": "Chronological single-episode split creates unseen future action classes.",
+          "direction_roles": {
+            "A": "proxy",
+            "C": "direct"
+          },
+          "display_name": "Action Recognition",
+          "family": "supervised",
+          "id": "timeline_action",
+          "input": "One 20-frame window represented by the current 8,378-d feature vector: video/depth summaries, pose, SLAM/camera pose, motion capture, IMU, calibration, and language-derived context.",
+          "input_short": "20-frame multimodal window",
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.05,
+            "name": "macro-F1",
+            "neural_mlp": 0.0263
+          },
+          "modalities": [
+            "video",
+            "depth",
+            "pose_slam",
+            "motion_capture",
+            "inertial",
+            "language"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "current action class",
+          "primary_direction": "C",
+          "process_short": "window features -> action label builder -> classifier",
+          "research_name": "Egocentric Action Recognition",
+          "why": "Reads egocentric sensor state as the current human action; also provides a weak human-motion readout."
+        },
+        {
+          "architecture_family": "multiclass classifier",
+          "case_study": "A pouring action may belong to a broader subtask such as preparing or pouring a drink. The model predicts that broader stage instead of a fine action.",
+          "current_limit": "Single-episode ordering makes future subtasks hard to generalize.",
+          "direction_roles": {
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Procedure Step Recognition",
+          "family": "supervised",
+          "id": "timeline_subtask",
+          "input": "The same all-modality 8,378-d window vector used by action recognition.",
+          "input_short": "20-frame multimodal window",
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.0495,
+            "name": "macro-F1",
+            "neural_mlp": 0.0175
+          },
+          "modalities": [
+            "video",
+            "depth",
+            "pose_slam",
+            "motion_capture",
+            "inertial",
+            "language"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "current procedure step",
+          "primary_direction": "C",
+          "process_short": "window features -> subtask label builder -> classifier",
+          "research_name": "Temporal Subtask Recognition",
+          "why": "Segments egocentric task state and provides a first proxy for symbolic world/task state."
+        },
+        {
+          "architecture_family": "binary classifier",
+          "case_study": "When the demonstrator changes from preparing to pouring, the model should flag a boundary instead of a steady action window.",
+          "current_limit": "Boundary class is sparse, so accuracy alone is misleading.",
+          "direction_roles": {
+            "C": "direct",
+            "D": "diagnostic"
+          },
+          "display_name": "Action Boundary Detection",
+          "family": "diagnostic",
+          "id": "transition_detection",
+          "input": "One all-modality window vector plus labels derived from action-change timestamps.",
+          "input_short": "current window with boundary target",
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.6552,
+            "name": "macro-F1",
+            "neural_mlp": 0.6485
+          },
+          "modalities": [
+            "video",
+            "pose_slam",
+            "motion_capture",
+            "inertial",
+            "language"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "boundary or steady",
+          "primary_direction": "C",
+          "process_short": "action changes -> boundary labels -> binary classifier",
+          "research_name": "Temporal Action Segmentation",
+          "why": "Localizes egocentric task boundaries and diagnoses temporal state changes."
+        },
+        {
+          "architecture_family": "future-label classifier",
+          "case_study": "If a window shows the person preparing to pour, the target can be the action 20 frames later, such as the start of pouring.",
+          "current_limit": "Unseen future labels dominate the single-episode chronological test.",
+          "direction_roles": {
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Next-Action Prediction",
+          "family": "supervised",
+          "id": "next_action",
+          "input": "The current all-modality window vector at time t.",
+          "input_short": "current window at time t",
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.0593,
+            "name": "macro-F1",
+            "neural_mlp": 0.0235
+          },
+          "modalities": [
+            "video",
+            "depth",
+            "pose_slam",
+            "motion_capture",
+            "inertial"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "action at t+20 frames",
+          "primary_direction": "C",
+          "process_short": "current features -> future label shift -> classifier",
+          "research_name": "Short-Horizon Intention Prediction",
+          "why": "Tests action intention/task-flow prediction from egocentric context."
+        },
+        {
+          "architecture_family": "continuous regressor",
+          "case_study": "When the hand is moving toward a cup or bottle, the model predicts the future 3D hand-joint path.",
+          "current_limit": "Forecasting is window-level and not yet a full sequence or policy model.",
+          "direction_roles": {
+            "A": "direct",
+            "C": "proxy"
+          },
+          "display_name": "Hand Trajectory Forecasting",
+          "family": "forecast",
+          "id": "hand_trajectory_forecast",
+          "input": "The current all-modality window vector at time t.",
+          "input_short": "current multimodal window",
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "lower",
+            "key": "mpjpe",
+            "minimal": 0.8223,
+            "name": "MPJPE",
+            "neural_mlp": 0.1116
+          },
+          "modalities": [
+            "motion_capture",
+            "video",
+            "depth",
+            "pose_slam",
+            "inertial"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "future hand-joint trajectory",
+          "primary_direction": "A",
+          "process_short": "current features -> future mocap target -> regression head",
+          "research_name": "3D Hand Motion Forecasting",
+          "why": "Directly predicts human hand motion and supports hand-object interaction modeling."
+        },
+        {
+          "architecture_family": "binary classifier",
+          "case_study": "During manipulation, the hand may touch a cup, table, or bottle. The task asks whether any contact is happening.",
+          "current_limit": "The public sample is degenerate for this target because one class dominates.",
+          "direction_roles": {
+            "A": "direct",
+            "C": "proxy"
+          },
+          "display_name": "Contact State Prediction",
+          "family": "supervised",
+          "id": "contact_prediction",
+          "input": "Non-contact and non-caption feature blocks, so the answer is not directly leaked from the target labels.",
+          "input_short": "non-contact, non-caption features",
+          "metric": {
+            "better_baseline": "tie",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 1.0,
+            "name": "macro-F1",
+            "neural_mlp": 1.0
+          },
+          "modalities": [
+            "motion_capture",
+            "video",
+            "depth",
+            "inertial"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "contact or no contact",
+          "primary_direction": "A",
+          "process_short": "feature filter -> contact target -> binary classifier",
+          "research_name": "Human-Object Contact Prediction",
+          "why": "Targets physical interaction state, a core affordance and manipulation signal."
+        },
+        {
+          "architecture_family": "multi-label classifier",
+          "case_study": "If the person is pouring milk into coffee, relevant objects may include milk, cup, coffee, or container-like items.",
+          "current_limit": "Object labels are language-derived and sparse in one episode.",
+          "direction_roles": {
+            "A": "proxy",
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Object Relevance Prediction",
+          "family": "supervised",
+          "id": "object_relevance",
+          "input": "Non-caption feature blocks, so the model must infer objects from sensors rather than copying the caption words.",
+          "input_short": "non-caption multimodal features",
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "micro_f1",
+            "minimal": 0.1839,
+            "name": "micro-F1",
+            "neural_mlp": 0.1798
+          },
+          "modalities": [
+            "video",
+            "depth",
+            "pose_slam",
+            "motion_capture",
+            "inertial"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "relevant object set",
+          "primary_direction": "C",
+          "process_short": "object vocabulary -> multi-hot labels -> sigmoid heads",
+          "research_name": "Object-Centric Interaction Recognition",
+          "why": "Connects egocentric activity to manipulated objects and early object-centric state."
+        },
+        {
+          "architecture_family": "retrieval ranker",
+          "case_study": "A query like Pour milk into coffee should rank the windows from the actual pouring moment higher than unrelated windows.",
+          "current_limit": "Bag-of-objects language features are too weak for rich grounding.",
+          "direction_roles": {
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Language Grounding",
+          "family": "retrieval",
+          "id": "caption_grounding",
+          "input": "Caption/object/interaction query features and a set of candidate sensor-window features.",
+          "input_short": "text-like query and candidate windows",
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "higher",
+            "key": "mrr",
+            "minimal": 0.0172,
+            "name": "MRR",
+            "neural_mlp": 0.0178
+          },
+          "modalities": [
+            "language",
+            "video",
+            "depth",
+            "pose_slam"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "ranked matching moments",
+          "primary_direction": "C",
+          "process_short": "query features -> candidate index -> cosine ranker",
+          "research_name": "Language-to-Moment Grounding",
+          "why": "Grounds language annotation into egocentric sensor time and task state."
+        },
+        {
+          "architecture_family": "two-tower retrieval head",
+          "case_study": "Use motion, IMU, and camera-pose signals from a pouring moment to retrieve the matching depth/video representation for that same moment.",
+          "current_limit": "Retrieval shows an alignment signal, not geometric reconstruction.",
+          "direction_roles": {
+            "B": "proxy",
+            "C": "diagnostic",
+            "D": "proxy"
+          },
+          "display_name": "Cross-Modal Retrieval",
+          "family": "retrieval",
+          "id": "cross_modal_retrieval",
+          "input": "Query side: motion, IMU, and camera/pose features. Candidate side: depth and video features.",
+          "input_short": "motion/IMU/pose query; depth/video candidates",
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "mrr",
+            "minimal": 0.2634,
+            "name": "MRR",
+            "neural_mlp": 0.153
+          },
+          "modalities": [
+            "motion_capture",
+            "inertial",
+            "pose_slam",
+            "depth",
+            "video"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "ranked visual windows",
+          "primary_direction": "C",
+          "process_short": "modality split -> projection -> nearest-neighbor ranker",
+          "research_name": "Multimodal Representation Retrieval",
+          "why": "Tests whether synchronized modalities identify the same 4D moment, a prerequisite for reconstruction and world modeling."
+        },
+        {
+          "architecture_family": "pairwise classifier",
+          "case_study": "If window A shows reaching and window B shows pouring, the model should distinguish A then B from B then A.",
+          "current_limit": "Only local adjacent ordering, not long-horizon causal modeling.",
+          "direction_roles": {
+            "C": "diagnostic",
+            "D": "diagnostic"
+          },
+          "display_name": "Temporal Order Verification",
+          "family": "diagnostic",
+          "id": "temporal_order",
+          "input": "A pair of adjacent window vectors, plus their difference vector.",
+          "input_short": "two adjacent windows plus difference vector",
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "higher",
+            "key": "f1",
+            "minimal": 0.5487,
+            "name": "F1",
+            "neural_mlp": 0.8718
+          },
+          "modalities": [
+            "video",
+            "pose_slam",
+            "motion_capture",
+            "inertial"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "correct or reversed",
+          "primary_direction": "C",
+          "process_short": "pair builder -> feature combiner -> binary classifier",
+          "research_name": "Temporal Order Verification",
+          "why": "Checks whether features encode local time direction and task progression."
+        },
+        {
+          "architecture_family": "pairwise classifier",
+          "case_study": "Motion from a pouring moment is paired with video/depth from several windows later. The task asks the model to detect that mismatch.",
+          "current_limit": "Synthetic shifts diagnose alignment but do not solve calibration or mapping.",
+          "direction_roles": {
+            "B": "diagnostic",
+            "C": "diagnostic",
+            "D": "diagnostic"
+          },
+          "display_name": "Multimodal Synchronization Detection",
+          "family": "diagnostic",
+          "id": "misalignment_detection",
+          "input": "A motion-side feature group and a visual/depth-side feature group, either aligned or artificially shifted.",
+          "input_short": "motion-side and visual/depth-side feature groups",
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "higher",
+            "key": "f1",
+            "minimal": 0.4866,
+            "name": "F1",
+            "neural_mlp": 0.7335
+          },
+          "modalities": [
+            "motion_capture",
+            "inertial",
+            "video",
+            "depth",
+            "pose_slam"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "aligned or shifted",
+          "primary_direction": "C",
+          "process_short": "aligned/shifted pairs -> feature combiner -> binary classifier",
+          "research_name": "Cross-Modal Misalignment Detection",
+          "why": "Detects temporal desynchronization, a key data-quality gate for multimodal reconstruction and world models."
+        }
+      ]
+    },
+    {
+      "code": "D",
+      "counts": {
+        "diagnostic": 3,
+        "direct": 0,
+        "proxy": 6,
+        "total_links": 9
+      },
+      "current_readout": "The current tasks probe temporal structure, object relevance, cross-modal retrieval, and modality prediction, but they do not yet build persistent maps or scene graphs.",
+      "current_status": "early proxy tasks",
+      "extension_tasks": [
+        {
+          "current_limit": "This is a compact world-model proxy; it does not build a persistent map, scene graph, or object permanence model.",
+          "family": "forecast",
+          "id": "ego_motion_forecast",
+          "metric_name": "MAE",
+          "name": "Short-Horizon Ego-Motion Forecasting"
+        }
+      ],
+      "focus": "Long-term consistent 3D/4D scene mapping, scene graphs, object- and space-centric representations, spatial reasoning.",
+      "id": "world_modeling",
+      "name": "Scene Reconstruction & World Modeling",
+      "next_steps": [
+        "Convert windows into persistent object/scene-state nodes with timestamps and camera poses.",
+        "Add map consistency, object permanence, and spatial relation prediction tasks.",
+        "Train held-out-episode world models that predict future observations and task state."
+      ],
+      "preferred_background": "Large-scale mapping, semantic reconstruction, or agent world models.",
+      "task_ids": [
+        "timeline_subtask",
+        "transition_detection",
+        "next_action",
+        "object_relevance",
+        "caption_grounding",
+        "cross_modal_retrieval",
+        "modality_reconstruction",
+        "temporal_order",
+        "misalignment_detection"
+      ],
+      "tasks": [
+        {
+          "architecture_family": "multiclass classifier",
+          "case_study": "A pouring action may belong to a broader subtask such as preparing or pouring a drink. The model predicts that broader stage instead of a fine action.",
+          "current_limit": "Single-episode ordering makes future subtasks hard to generalize.",
+          "direction_roles": {
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Procedure Step Recognition",
+          "family": "supervised",
+          "id": "timeline_subtask",
+          "input": "The same all-modality 8,378-d window vector used by action recognition.",
+          "input_short": "20-frame multimodal window",
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.0495,
+            "name": "macro-F1",
+            "neural_mlp": 0.0175
+          },
+          "modalities": [
+            "video",
+            "depth",
+            "pose_slam",
+            "motion_capture",
+            "inertial",
+            "language"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "current procedure step",
+          "primary_direction": "C",
+          "process_short": "window features -> subtask label builder -> classifier",
+          "research_name": "Temporal Subtask Recognition",
+          "why": "Segments egocentric task state and provides a first proxy for symbolic world/task state."
+        },
+        {
+          "architecture_family": "binary classifier",
+          "case_study": "When the demonstrator changes from preparing to pouring, the model should flag a boundary instead of a steady action window.",
+          "current_limit": "Boundary class is sparse, so accuracy alone is misleading.",
+          "direction_roles": {
+            "C": "direct",
+            "D": "diagnostic"
+          },
+          "display_name": "Action Boundary Detection",
+          "family": "diagnostic",
+          "id": "transition_detection",
+          "input": "One all-modality window vector plus labels derived from action-change timestamps.",
+          "input_short": "current window with boundary target",
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.6552,
+            "name": "macro-F1",
+            "neural_mlp": 0.6485
+          },
+          "modalities": [
+            "video",
+            "pose_slam",
+            "motion_capture",
+            "inertial",
+            "language"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "boundary or steady",
+          "primary_direction": "C",
+          "process_short": "action changes -> boundary labels -> binary classifier",
+          "research_name": "Temporal Action Segmentation",
+          "why": "Localizes egocentric task boundaries and diagnoses temporal state changes."
+        },
+        {
+          "architecture_family": "future-label classifier",
+          "case_study": "If a window shows the person preparing to pour, the target can be the action 20 frames later, such as the start of pouring.",
+          "current_limit": "Unseen future labels dominate the single-episode chronological test.",
+          "direction_roles": {
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Next-Action Prediction",
+          "family": "supervised",
+          "id": "next_action",
+          "input": "The current all-modality window vector at time t.",
+          "input_short": "current window at time t",
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.0593,
+            "name": "macro-F1",
+            "neural_mlp": 0.0235
+          },
+          "modalities": [
+            "video",
+            "depth",
+            "pose_slam",
+            "motion_capture",
+            "inertial"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "action at t+20 frames",
+          "primary_direction": "C",
+          "process_short": "current features -> future label shift -> classifier",
+          "research_name": "Short-Horizon Intention Prediction",
+          "why": "Tests action intention/task-flow prediction from egocentric context."
+        },
+        {
+          "architecture_family": "multi-label classifier",
+          "case_study": "If the person is pouring milk into coffee, relevant objects may include milk, cup, coffee, or container-like items.",
+          "current_limit": "Object labels are language-derived and sparse in one episode.",
+          "direction_roles": {
+            "A": "proxy",
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Object Relevance Prediction",
+          "family": "supervised",
+          "id": "object_relevance",
+          "input": "Non-caption feature blocks, so the model must infer objects from sensors rather than copying the caption words.",
+          "input_short": "non-caption multimodal features",
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "micro_f1",
+            "minimal": 0.1839,
+            "name": "micro-F1",
+            "neural_mlp": 0.1798
+          },
+          "modalities": [
+            "video",
+            "depth",
+            "pose_slam",
+            "motion_capture",
+            "inertial"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "relevant object set",
+          "primary_direction": "C",
+          "process_short": "object vocabulary -> multi-hot labels -> sigmoid heads",
+          "research_name": "Object-Centric Interaction Recognition",
+          "why": "Connects egocentric activity to manipulated objects and early object-centric state."
+        },
+        {
+          "architecture_family": "retrieval ranker",
+          "case_study": "A query like Pour milk into coffee should rank the windows from the actual pouring moment higher than unrelated windows.",
+          "current_limit": "Bag-of-objects language features are too weak for rich grounding.",
+          "direction_roles": {
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Language Grounding",
+          "family": "retrieval",
+          "id": "caption_grounding",
+          "input": "Caption/object/interaction query features and a set of candidate sensor-window features.",
+          "input_short": "text-like query and candidate windows",
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "higher",
+            "key": "mrr",
+            "minimal": 0.0172,
+            "name": "MRR",
+            "neural_mlp": 0.0178
+          },
+          "modalities": [
+            "language",
+            "video",
+            "depth",
+            "pose_slam"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "ranked matching moments",
+          "primary_direction": "C",
+          "process_short": "query features -> candidate index -> cosine ranker",
+          "research_name": "Language-to-Moment Grounding",
+          "why": "Grounds language annotation into egocentric sensor time and task state."
+        },
+        {
+          "architecture_family": "two-tower retrieval head",
+          "case_study": "Use motion, IMU, and camera-pose signals from a pouring moment to retrieve the matching depth/video representation for that same moment.",
+          "current_limit": "Retrieval shows an alignment signal, not geometric reconstruction.",
+          "direction_roles": {
+            "B": "proxy",
+            "C": "diagnostic",
+            "D": "proxy"
+          },
+          "display_name": "Cross-Modal Retrieval",
+          "family": "retrieval",
+          "id": "cross_modal_retrieval",
+          "input": "Query side: motion, IMU, and camera/pose features. Candidate side: depth and video features.",
+          "input_short": "motion/IMU/pose query; depth/video candidates",
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "mrr",
+            "minimal": 0.2634,
+            "name": "MRR",
+            "neural_mlp": 0.153
+          },
+          "modalities": [
+            "motion_capture",
+            "inertial",
+            "pose_slam",
+            "depth",
+            "video"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "ranked visual windows",
+          "primary_direction": "C",
+          "process_short": "modality split -> projection -> nearest-neighbor ranker",
+          "research_name": "Multimodal Representation Retrieval",
+          "why": "Tests whether synchronized modalities identify the same 4D moment, a prerequisite for reconstruction and world modeling."
+        },
+        {
+          "architecture_family": "feature regressor",
+          "case_study": "Given motion, IMU, and camera-pose signals while the hand moves, predict the matching depth/video feature vector.",
+          "current_limit": "Feature-vector reconstruction is not pixel, depth-map, mesh, NeRF, or Gaussian reconstruction.",
+          "direction_roles": {
+            "B": "proxy",
+            "D": "proxy"
+          },
+          "display_name": "Cross-Modal Reconstruction",
+          "family": "forecast",
+          "id": "modality_reconstruction",
+          "input": "Motion, IMU, and camera/pose features as input; depth/video features as the regression target.",
+          "input_short": "motion, IMU, and camera/pose features",
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "higher",
+            "key": "r2",
+            "minimal": -0.016,
+            "name": "R2",
+            "neural_mlp": -0.0102
+          },
+          "modalities": [
+            "motion_capture",
+            "inertial",
+            "pose_slam",
+            "depth",
+            "video"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "reconstructed depth/video vector",
+          "primary_direction": "B",
+          "process_short": "source-target split -> scaler -> regression head",
+          "research_name": "Modality Feature Reconstruction",
+          "why": "Predicts visual/depth state from non-target sensors as a weak reconstruction/world-model objective."
+        },
+        {
+          "architecture_family": "pairwise classifier",
+          "case_study": "If window A shows reaching and window B shows pouring, the model should distinguish A then B from B then A.",
+          "current_limit": "Only local adjacent ordering, not long-horizon causal modeling.",
+          "direction_roles": {
+            "C": "diagnostic",
+            "D": "diagnostic"
+          },
+          "display_name": "Temporal Order Verification",
+          "family": "diagnostic",
+          "id": "temporal_order",
+          "input": "A pair of adjacent window vectors, plus their difference vector.",
+          "input_short": "two adjacent windows plus difference vector",
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "higher",
+            "key": "f1",
+            "minimal": 0.5487,
+            "name": "F1",
+            "neural_mlp": 0.8718
+          },
+          "modalities": [
+            "video",
+            "pose_slam",
+            "motion_capture",
+            "inertial"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "correct or reversed",
+          "primary_direction": "C",
+          "process_short": "pair builder -> feature combiner -> binary classifier",
+          "research_name": "Temporal Order Verification",
+          "why": "Checks whether features encode local time direction and task progression."
+        },
+        {
+          "architecture_family": "pairwise classifier",
+          "case_study": "Motion from a pouring moment is paired with video/depth from several windows later. The task asks the model to detect that mismatch.",
+          "current_limit": "Synthetic shifts diagnose alignment but do not solve calibration or mapping.",
+          "direction_roles": {
+            "B": "diagnostic",
+            "C": "diagnostic",
+            "D": "diagnostic"
+          },
+          "display_name": "Multimodal Synchronization Detection",
+          "family": "diagnostic",
+          "id": "misalignment_detection",
+          "input": "A motion-side feature group and a visual/depth-side feature group, either aligned or artificially shifted.",
+          "input_short": "motion-side and visual/depth-side feature groups",
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "higher",
+            "key": "f1",
+            "minimal": 0.4866,
+            "name": "F1",
+            "neural_mlp": 0.7335
+          },
+          "modalities": [
+            "motion_capture",
+            "inertial",
+            "video",
+            "depth",
+            "pose_slam"
+          ],
+          "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+          "output_short": "aligned or shifted",
+          "primary_direction": "C",
+          "process_short": "aligned/shifted pairs -> feature combiner -> binary classifier",
+          "research_name": "Cross-Modal Misalignment Detection",
+          "why": "Detects temporal desynchronization, a key data-quality gate for multimodal reconstruction and world models."
+        }
+      ]
+    }
+  ],
+  "generated_at_utc": "2026-06-03T06:52:04+00:00",
+  "omni_plan": {
+    "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
+    "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
+    "evaluation": [
+      "JSON validity",
+      "action macro-F1",
+      "subtask accuracy",
+      "transition accuracy",
+      "next-action accuracy",
+      "contact accuracy",
+      "object micro-F1",
+      "held-out episode count"
+    ],
+    "first_pilot": "32 held-out-episode pilot after valid episodes are staged",
+    "training_unit": "episode-level split, window-level supervised examples"
+  },
+  "phases": [
+    {
+      "completion_evidence": [
+        "PROJECT_STATUS.md",
+        "EVALUATION_PROTOCOL.md",
+        "RESEARCH_TAKEAWAYS.md",
+        "docs/data/summary_metrics.json",
+        "results/episode_task_suite/summary_report.json"
+      ],
+      "deliverables": [
+        "1161 aligned windows",
+        "12 task contracts",
+        "minimal baseline heads",
+        "neural MLP heads",
+        "modality atlas",
+        "task walkthroughs",
+        "derived figures"
+      ],
+      "entry_condition": "One public Xperience-10M sample episode is available.",
+      "id": "public_sample_task_lab",
+      "name": "Public-Sample Task Lab",
+      "reader_takeaway": "The public sample supports task design, feature contracts, walkthroughs, and baseline comparisons.",
+      "stage": "now",
+      "status": "implemented"
+    },
+    {
+      "completion_evidence": [
+        "results/omni_finetune/DATA_ACCESS_STATUS.md",
+        "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
+        "results/omni_finetune/source_discovery.json"
+      ],
+      "deliverables": [
+        "32 valid episodes",
+        "episode manifest",
+        "missing-view manifest",
+        "held-out episode split",
+        "source-discovery report"
+      ],
+      "entry_condition": "Gated dataset access and enough storage for selected episodes.",
+      "id": "multi_episode_data_staging",
+      "name": "Multi-Episode Data Staging",
+      "reader_takeaway": "The next scale decision is data staging, with train/test separation at the episode level.",
+      "stage": "scale_up",
+      "status": "active"
+    },
+    {
+      "completion_evidence": [
+        "dataset_manifest.json",
+        "training_metadata.json",
+        "progress.jsonl",
+        "metrics.json",
+        "predictions.jsonl",
+        "RUN_REPORT.md"
+      ],
+      "deliverables": [
+        "dataset JSONL/media manifests",
+        "LoRA adapter checkpoint",
+        "progress logs",
+        "held-out predictions",
+        "metrics",
+        "confusion matrices",
+        "run report"
+      ],
+      "entry_condition": "At least 32 valid episodes are staged locally with no train/test episode leakage.",
+      "id": "qwen3_omni_lora_pilot_32_episode",
+      "name": "32-Episode Qwen3-Omni LoRA Pilot",
+      "reader_takeaway": "The first omni-model pilot should establish a complete held-out-episode training and evaluation loop.",
+      "stage": "omni",
+      "status": "next"
+    },
+    {
+      "completion_evidence": [
+        "held-out metrics by session",
+        "held-out metrics by task",
+        "held-out metrics by modality",
+        "ablation tables",
+        "qualitative error analysis"
+      ],
+      "deliverables": [
+        "split-by-session metrics",
+        "modality ablations",
+        "calibration/object/language error analysis",
+        "missing-view sensitivity analysis"
+      ],
+      "entry_condition": "The 32-episode pilot trains and evaluates cleanly.",
+      "id": "robustness_run_64_128_episode",
+      "name": "64-128 Episode Robustness Run",
+      "reader_takeaway": "The robustness run tests whether the pilot conclusions survive broader sessions and missing modalities.",
+      "stage": "future",
+      "status": "planned"
+    },
+    {
+      "completion_evidence": [
+        "task-specific held-out evaluations",
+        "qualitative inspection",
+        "updated model cards"
+      ],
+      "deliverables": [
+        "audio encoder integration",
+        "depth/image reconstruction",
+        "SLAM/world modeling probes",
+        "policy-style next-action tasks",
+        "affordance and object-interaction tasks"
+      ],
+      "entry_condition": "Enough multi-episode data and compute budget for larger multimodal objectives.",
+      "id": "foundation_world_model_extensions",
+      "name": "Foundation and World-Model Extensions",
+      "reader_takeaway": "The long-term direction is richer multimodal representation learning for embodied-AI reasoning.",
+      "stage": "future",
+      "status": "planned"
+    }
+  ],
+  "scale_up": {
+    "access_status": "Hugging Face returns 403 pending review for the full Xperience-10M gated dataset.",
+    "candidate_scan_top_level_sessions": 64,
+    "estimated_bytes": 72031620552,
+    "exclude": [
+      "visualization.rrd"
+    ],
+    "selection_strategy": "stratified_round_robin_by_top_level_session",
+    "status": "pending_huggingface_gated_access",
+    "target_episodes": 32,
+    "valid_candidates": 680
+  },
+  "scope": {
+    "feature_blocks": 17,
+    "feature_dim": 8378,
+    "num_frames": 5821,
+    "num_windows": 1161,
+    "sample_episode_count": 1,
+    "stride_frames": 5,
+    "warning": "These walkthroughs explain task contracts on one public sample episode; cross-episode performance requires held-out episodes.",
+    "window_frames": 20
+  },
+  "source_files": [
+    "docs/data/research_directions.json",
+    "docs/data/task_walkthroughs.json",
+    "docs/data/research_roadmap.json",
+    "docs/data/summary_metrics.json",
+    "docs/data/research_direction_extensions.json",
+    "results/episode_task_suite/summary_report.json",
+    "results/episode_task_suite/feature_manifest.json"
+  ],
+  "tasks": [
+    {
+      "architecture_family": "multiclass classifier",
+      "case_study": "In the coffee-making sample, if the 20-frame window is during a pouring moment, the task asks the model to output an action such as Pour coffee or Pour milk into coffee.",
+      "current_limit": "Chronological single-episode split creates unseen future action classes.",
+      "direction_roles": {
+        "A": "proxy",
+        "C": "direct"
+      },
+      "display_name": "Action Recognition",
+      "family": "supervised",
+      "id": "timeline_action",
+      "input": "One 20-frame window represented by the current 8,378-d feature vector: video/depth summaries, pose, SLAM/camera pose, motion capture, IMU, calibration, and language-derived context.",
+      "input_short": "20-frame multimodal window",
+      "metric": {
+        "better_baseline": "minimal",
+        "direction": "higher",
+        "key": "macro_f1",
+        "minimal": 0.05,
+        "name": "macro-F1",
+        "neural_mlp": 0.0263
+      },
+      "modalities": [
+        "video",
+        "depth",
+        "pose_slam",
+        "motion_capture",
+        "inertial",
+        "language"
+      ],
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "output_short": "current action class",
+      "primary_direction": "C",
+      "process_short": "window features -> action label builder -> classifier",
+      "research_name": "Egocentric Action Recognition",
+      "why": "Reads egocentric sensor state as the current human action; also provides a weak human-motion readout."
+    },
+    {
+      "architecture_family": "multiclass classifier",
+      "case_study": "A pouring action may belong to a broader subtask such as preparing or pouring a drink. The model predicts that broader stage instead of a fine action.",
+      "current_limit": "Single-episode ordering makes future subtasks hard to generalize.",
+      "direction_roles": {
+        "C": "direct",
+        "D": "proxy"
+      },
+      "display_name": "Procedure Step Recognition",
+      "family": "supervised",
+      "id": "timeline_subtask",
+      "input": "The same all-modality 8,378-d window vector used by action recognition.",
+      "input_short": "20-frame multimodal window",
+      "metric": {
+        "better_baseline": "minimal",
+        "direction": "higher",
+        "key": "macro_f1",
+        "minimal": 0.0495,
+        "name": "macro-F1",
+        "neural_mlp": 0.0175
+      },
+      "modalities": [
+        "video",
+        "depth",
+        "pose_slam",
+        "motion_capture",
+        "inertial",
+        "language"
+      ],
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "output_short": "current procedure step",
+      "primary_direction": "C",
+      "process_short": "window features -> subtask label builder -> classifier",
+      "research_name": "Temporal Subtask Recognition",
+      "why": "Segments egocentric task state and provides a first proxy for symbolic world/task state."
+    },
+    {
+      "architecture_family": "binary classifier",
+      "case_study": "When the demonstrator changes from preparing to pouring, the model should flag a boundary instead of a steady action window.",
+      "current_limit": "Boundary class is sparse, so accuracy alone is misleading.",
+      "direction_roles": {
+        "C": "direct",
+        "D": "diagnostic"
+      },
+      "display_name": "Action Boundary Detection",
+      "family": "diagnostic",
+      "id": "transition_detection",
+      "input": "One all-modality window vector plus labels derived from action-change timestamps.",
+      "input_short": "current window with boundary target",
+      "metric": {
+        "better_baseline": "minimal",
+        "direction": "higher",
+        "key": "macro_f1",
+        "minimal": 0.6552,
+        "name": "macro-F1",
+        "neural_mlp": 0.6485
+      },
+      "modalities": [
+        "video",
+        "pose_slam",
+        "motion_capture",
+        "inertial",
+        "language"
+      ],
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "output_short": "boundary or steady",
+      "primary_direction": "C",
+      "process_short": "action changes -> boundary labels -> binary classifier",
+      "research_name": "Temporal Action Segmentation",
+      "why": "Localizes egocentric task boundaries and diagnoses temporal state changes."
+    },
+    {
+      "architecture_family": "future-label classifier",
+      "case_study": "If a window shows the person preparing to pour, the target can be the action 20 frames later, such as the start of pouring.",
+      "current_limit": "Unseen future labels dominate the single-episode chronological test.",
+      "direction_roles": {
+        "C": "direct",
+        "D": "proxy"
+      },
+      "display_name": "Next-Action Prediction",
+      "family": "supervised",
+      "id": "next_action",
+      "input": "The current all-modality window vector at time t.",
+      "input_short": "current window at time t",
+      "metric": {
+        "better_baseline": "minimal",
+        "direction": "higher",
+        "key": "macro_f1",
+        "minimal": 0.0593,
+        "name": "macro-F1",
+        "neural_mlp": 0.0235
+      },
+      "modalities": [
+        "video",
+        "depth",
+        "pose_slam",
+        "motion_capture",
+        "inertial"
+      ],
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "output_short": "action at t+20 frames",
+      "primary_direction": "C",
+      "process_short": "current features -> future label shift -> classifier",
+      "research_name": "Short-Horizon Intention Prediction",
+      "why": "Tests action intention/task-flow prediction from egocentric context."
+    },
+    {
+      "architecture_family": "continuous regressor",
+      "case_study": "When the hand is moving toward a cup or bottle, the model predicts the future 3D hand-joint path.",
+      "current_limit": "Forecasting is window-level and not yet a full sequence or policy model.",
+      "direction_roles": {
+        "A": "direct",
+        "C": "proxy"
+      },
+      "display_name": "Hand Trajectory Forecasting",
+      "family": "forecast",
+      "id": "hand_trajectory_forecast",
+      "input": "The current all-modality window vector at time t.",
+      "input_short": "current multimodal window",
+      "metric": {
+        "better_baseline": "neural_mlp",
+        "direction": "lower",
+        "key": "mpjpe",
+        "minimal": 0.8223,
+        "name": "MPJPE",
+        "neural_mlp": 0.1116
+      },
+      "modalities": [
+        "motion_capture",
+        "video",
+        "depth",
+        "pose_slam",
+        "inertial"
+      ],
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "output_short": "future hand-joint trajectory",
+      "primary_direction": "A",
+      "process_short": "current features -> future mocap target -> regression head",
+      "research_name": "3D Hand Motion Forecasting",
+      "why": "Directly predicts human hand motion and supports hand-object interaction modeling."
+    },
+    {
+      "architecture_family": "binary classifier",
+      "case_study": "During manipulation, the hand may touch a cup, table, or bottle. The task asks whether any contact is happening.",
+      "current_limit": "The public sample is degenerate for this target because one class dominates.",
+      "direction_roles": {
+        "A": "direct",
+        "C": "proxy"
+      },
+      "display_name": "Contact State Prediction",
+      "family": "supervised",
+      "id": "contact_prediction",
+      "input": "Non-contact and non-caption feature blocks, so the answer is not directly leaked from the target labels.",
+      "input_short": "non-contact, non-caption features",
+      "metric": {
+        "better_baseline": "tie",
+        "direction": "higher",
+        "key": "macro_f1",
+        "minimal": 1.0,
+        "name": "macro-F1",
+        "neural_mlp": 1.0
+      },
+      "modalities": [
+        "motion_capture",
+        "video",
+        "depth",
+        "inertial"
+      ],
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "output_short": "contact or no contact",
+      "primary_direction": "A",
+      "process_short": "feature filter -> contact target -> binary classifier",
+      "research_name": "Human-Object Contact Prediction",
+      "why": "Targets physical interaction state, a core affordance and manipulation signal."
+    },
+    {
+      "architecture_family": "multi-label classifier",
+      "case_study": "If the person is pouring milk into coffee, relevant objects may include milk, cup, coffee, or container-like items.",
+      "current_limit": "Object labels are language-derived and sparse in one episode.",
+      "direction_roles": {
+        "A": "proxy",
+        "C": "direct",
+        "D": "proxy"
+      },
+      "display_name": "Object Relevance Prediction",
+      "family": "supervised",
+      "id": "object_relevance",
+      "input": "Non-caption feature blocks, so the model must infer objects from sensors rather than copying the caption words.",
+      "input_short": "non-caption multimodal features",
+      "metric": {
+        "better_baseline": "minimal",
+        "direction": "higher",
+        "key": "micro_f1",
+        "minimal": 0.1839,
+        "name": "micro-F1",
+        "neural_mlp": 0.1798
+      },
+      "modalities": [
+        "video",
+        "depth",
+        "pose_slam",
+        "motion_capture",
+        "inertial"
+      ],
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "output_short": "relevant object set",
+      "primary_direction": "C",
+      "process_short": "object vocabulary -> multi-hot labels -> sigmoid heads",
+      "research_name": "Object-Centric Interaction Recognition",
+      "why": "Connects egocentric activity to manipulated objects and early object-centric state."
+    },
+    {
+      "architecture_family": "retrieval ranker",
+      "case_study": "A query like Pour milk into coffee should rank the windows from the actual pouring moment higher than unrelated windows.",
+      "current_limit": "Bag-of-objects language features are too weak for rich grounding.",
+      "direction_roles": {
+        "C": "direct",
+        "D": "proxy"
+      },
+      "display_name": "Language Grounding",
+      "family": "retrieval",
+      "id": "caption_grounding",
+      "input": "Caption/object/interaction query features and a set of candidate sensor-window features.",
+      "input_short": "text-like query and candidate windows",
+      "metric": {
+        "better_baseline": "neural_mlp",
+        "direction": "higher",
+        "key": "mrr",
+        "minimal": 0.0172,
+        "name": "MRR",
+        "neural_mlp": 0.0178
+      },
+      "modalities": [
+        "language",
+        "video",
+        "depth",
+        "pose_slam"
+      ],
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "output_short": "ranked matching moments",
+      "primary_direction": "C",
+      "process_short": "query features -> candidate index -> cosine ranker",
+      "research_name": "Language-to-Moment Grounding",
+      "why": "Grounds language annotation into egocentric sensor time and task state."
+    },
+    {
+      "architecture_family": "two-tower retrieval head",
+      "case_study": "Use motion, IMU, and camera-pose signals from a pouring moment to retrieve the matching depth/video representation for that same moment.",
+      "current_limit": "Retrieval shows an alignment signal, not geometric reconstruction.",
+      "direction_roles": {
+        "B": "proxy",
+        "C": "diagnostic",
+        "D": "proxy"
+      },
+      "display_name": "Cross-Modal Retrieval",
+      "family": "retrieval",
+      "id": "cross_modal_retrieval",
+      "input": "Query side: motion, IMU, and camera/pose features. Candidate side: depth and video features.",
+      "input_short": "motion/IMU/pose query; depth/video candidates",
+      "metric": {
+        "better_baseline": "minimal",
+        "direction": "higher",
+        "key": "mrr",
+        "minimal": 0.2634,
+        "name": "MRR",
+        "neural_mlp": 0.153
+      },
+      "modalities": [
+        "motion_capture",
+        "inertial",
+        "pose_slam",
+        "depth",
+        "video"
+      ],
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "output_short": "ranked visual windows",
+      "primary_direction": "C",
+      "process_short": "modality split -> projection -> nearest-neighbor ranker",
+      "research_name": "Multimodal Representation Retrieval",
+      "why": "Tests whether synchronized modalities identify the same 4D moment, a prerequisite for reconstruction and world modeling."
+    },
+    {
+      "architecture_family": "feature regressor",
+      "case_study": "Given motion, IMU, and camera-pose signals while the hand moves, predict the matching depth/video feature vector.",
+      "current_limit": "Feature-vector reconstruction is not pixel, depth-map, mesh, NeRF, or Gaussian reconstruction.",
+      "direction_roles": {
+        "B": "proxy",
+        "D": "proxy"
+      },
+      "display_name": "Cross-Modal Reconstruction",
+      "family": "forecast",
+      "id": "modality_reconstruction",
+      "input": "Motion, IMU, and camera/pose features as input; depth/video features as the regression target.",
+      "input_short": "motion, IMU, and camera/pose features",
+      "metric": {
+        "better_baseline": "neural_mlp",
+        "direction": "higher",
+        "key": "r2",
+        "minimal": -0.016,
+        "name": "R2",
+        "neural_mlp": -0.0102
+      },
+      "modalities": [
+        "motion_capture",
+        "inertial",
+        "pose_slam",
+        "depth",
+        "video"
+      ],
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "output_short": "reconstructed depth/video vector",
+      "primary_direction": "B",
+      "process_short": "source-target split -> scaler -> regression head",
+      "research_name": "Modality Feature Reconstruction",
+      "why": "Predicts visual/depth state from non-target sensors as a weak reconstruction/world-model objective."
+    },
+    {
+      "architecture_family": "pairwise classifier",
+      "case_study": "If window A shows reaching and window B shows pouring, the model should distinguish A then B from B then A.",
+      "current_limit": "Only local adjacent ordering, not long-horizon causal modeling.",
+      "direction_roles": {
+        "C": "diagnostic",
+        "D": "diagnostic"
+      },
+      "display_name": "Temporal Order Verification",
+      "family": "diagnostic",
+      "id": "temporal_order",
+      "input": "A pair of adjacent window vectors, plus their difference vector.",
+      "input_short": "two adjacent windows plus difference vector",
+      "metric": {
+        "better_baseline": "neural_mlp",
+        "direction": "higher",
+        "key": "f1",
+        "minimal": 0.5487,
+        "name": "F1",
+        "neural_mlp": 0.8718
+      },
+      "modalities": [
+        "video",
+        "pose_slam",
+        "motion_capture",
+        "inertial"
+      ],
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "output_short": "correct or reversed",
+      "primary_direction": "C",
+      "process_short": "pair builder -> feature combiner -> binary classifier",
+      "research_name": "Temporal Order Verification",
+      "why": "Checks whether features encode local time direction and task progression."
+    },
+    {
+      "architecture_family": "pairwise classifier",
+      "case_study": "Motion from a pouring moment is paired with video/depth from several windows later. The task asks the model to detect that mismatch.",
+      "current_limit": "Synthetic shifts diagnose alignment but do not solve calibration or mapping.",
+      "direction_roles": {
+        "B": "diagnostic",
+        "C": "diagnostic",
+        "D": "diagnostic"
+      },
+      "display_name": "Multimodal Synchronization Detection",
+      "family": "diagnostic",
+      "id": "misalignment_detection",
+      "input": "A motion-side feature group and a visual/depth-side feature group, either aligned or artificially shifted.",
+      "input_short": "motion-side and visual/depth-side feature groups",
+      "metric": {
+        "better_baseline": "neural_mlp",
+        "direction": "higher",
+        "key": "f1",
+        "minimal": 0.4866,
+        "name": "F1",
+        "neural_mlp": 0.7335
+      },
+      "modalities": [
+        "motion_capture",
+        "inertial",
+        "video",
+        "depth",
+        "pose_slam"
+      ],
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "output_short": "aligned or shifted",
+      "primary_direction": "C",
+      "process_short": "aligned/shifted pairs -> feature combiner -> binary classifier",
+      "research_name": "Cross-Modal Misalignment Detection",
+      "why": "Detects temporal desynchronization, a key data-quality gate for multimodal reconstruction and world models."
+    }
+  ],
+  "title": "Interactive Research Roadmap"
+}

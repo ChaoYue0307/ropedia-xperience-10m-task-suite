@@ -247,6 +247,8 @@ def validate(docs_root: Path, site_base: str) -> dict:
     dataset_start = section_pos("dataset-card")
     dataset_end = section_pos("suite")
     dataset_text = index_text[dataset_start:dataset_end] if dataset_start >= 0 and dataset_end > dataset_start else ""
+    roadmap_page = docs_root / "research_roadmap.html"
+    roadmap_page_text = roadmap_page.read_text(encoding="utf-8", errors="ignore") if roadmap_page.exists() else ""
     semantic_rules = [
         (
             "project_tabs_have_five_groups",
@@ -307,6 +309,30 @@ def validate(docs_root: Path, site_base: str) -> dict:
             'data/research_roadmap.json',
             None,
             "The website should expose the machine-readable research roadmap.",
+        ),
+        (
+            "interactive_roadmap_page_linked",
+            'research_roadmap.html',
+            None,
+            "The project site should link to the dedicated interactive research roadmap page.",
+        ),
+        (
+            "interactive_roadmap_links_json",
+            'data/research_roadmap_interactive.json',
+            None,
+            "The project site should expose the machine-readable interactive roadmap contract.",
+        ),
+        (
+            "interactive_roadmap_loads_generated_json",
+            'data/research_roadmap_interactive.json',
+            None,
+            "The interactive roadmap page should load the generated roadmap JSON contract.",
+        ),
+        (
+            "interactive_roadmap_tracks_four_directions",
+            'Research tracks',
+            None,
+            "The interactive roadmap page should expose the four research-track control surface.",
         ),
         (
             "rendered_site_check_links_json",
@@ -480,6 +506,8 @@ def validate(docs_root: Path, site_base: str) -> dict:
         elif name in {
             "project_status_links_json",
             "roadmap_links_json",
+            "interactive_roadmap_page_linked",
+            "interactive_roadmap_links_json",
             "rendered_site_check_links_json",
             "figure_index_links_json",
             "task_player_surface_present",
@@ -489,6 +517,13 @@ def validate(docs_root: Path, site_base: str) -> dict:
             marker_count = index_text.count(marker)
             passed = marker_count >= 1
             detail = {"marker_count": marker_count}
+        elif name in {
+            "interactive_roadmap_loads_generated_json",
+            "interactive_roadmap_tracks_four_directions",
+        }:
+            marker_count = roadmap_page_text.count(marker)
+            passed = marker_count >= 1 and roadmap_page.exists()
+            detail = {"marker_count": marker_count, "page_exists": roadmap_page.exists()}
         elif name == "evaluation_protocol_links_json":
             marker_count = index_text.count(marker)
             passed = marker_count >= 1

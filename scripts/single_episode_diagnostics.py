@@ -741,7 +741,7 @@ def run_modality_ablation(
                 else:
                     raise ValueError(info["kind"])
                 row["target_source_overlap"] = str(target_overlap(group_idx, info, manifest)).lower()
-            except Exception as exc:  # keep the matrix auditable instead of silently dropping failures
+            except Exception as exc:  # keep failed pairs visible instead of silently dropping them
                 row.update({"status": "not_computed", "reason": f"{type(exc).__name__}: {exc}"})
             rows.append(row)
 

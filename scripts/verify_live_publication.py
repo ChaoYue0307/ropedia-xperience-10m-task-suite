@@ -73,6 +73,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "research_roadmap_html",
+        "title": "Interactive research roadmap HTML",
+        "local_path": "docs/research_roadmap.html",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/research_roadmap.html",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/research_roadmap.html",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/research_roadmap.html",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/research_roadmap.html",
+        },
+    },
+    {
         "id": "single_episode_diagnostics_provenance",
         "title": "Single-episode diagnostics provenance",
         "local_path": "results/single_episode_diagnostics/provenance.json",
@@ -183,6 +194,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "research_roadmap_interactive_json",
+        "title": "Interactive research roadmap JSON",
+        "local_path": "docs/data/research_roadmap_interactive.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/research_roadmap_interactive.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/research_roadmap_interactive.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/research_roadmap_interactive.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/research_roadmap_interactive.json",
+        },
+    },
+    {
         "id": "figure_index_json",
         "title": "Figure index JSON",
         "local_path": "docs/data/figure_index.json",
@@ -278,6 +300,8 @@ MARKER_CHECKS = [
             "task_surface_integrity.json",
             "public_surface_qa.json",
             "Public project surface",
+            "research_roadmap.html",
+            "research_roadmap_interactive.json",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
@@ -311,6 +335,8 @@ MARKER_CHECKS = [
             "task_surface_integrity.json",
             "public_surface_qa.json",
             "Public project surface",
+            "research_roadmap.html",
+            "research_roadmap_interactive.json",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
