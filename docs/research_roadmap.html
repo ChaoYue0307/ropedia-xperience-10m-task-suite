@@ -1,0 +1,947 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research Roadmap | Ropedia Xperience-10M</title>
+  <meta name="description" content="Interactive research roadmap connecting the Ropedia Xperience-10M 12-task suite, four research tracks, current sample results, and future Qwen3-Omni fine-tuning plan.">
+  <meta name="theme-color" content="#020502">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f4f8ef;
+      --muted: #a5afa2;
+      --line: rgba(204, 255, 160, 0.24);
+      --soft-line: rgba(204, 255, 160, 0.14);
+      --page: #020502;
+      --panel: #061006;
+      --surface: #071207;
+      --green: #ccffa0;
+      --cyan: #7ae5c3;
+      --blue: #9bdfff;
+      --amber: #d8f4a5;
+      --red: #ff8f7a;
+      --card: rgba(5, 10, 6, 0.84);
+      --pill: rgba(255, 255, 255, 0.05);
+      --radius: 8px;
+      --max: 1360px;
+      --font-ui: "Inter Tight", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-btn: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "Space Grotesk", "SF Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html { scroll-padding-top: 72px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      line-height: 1.5;
+      background:
+        radial-gradient(circle at 84% 8%, rgba(204, 255, 160, 0.13), transparent 28%),
+        radial-gradient(circle at 16% 26%, rgba(204, 255, 160, 0.06), transparent 22%),
+        radial-gradient(circle, rgba(204, 255, 160, 0.11) 1px, transparent 1.4px),
+        var(--page);
+      background-size: auto, auto, 22px 22px, auto;
+      font-synthesis-weight: none;
+    }
+    a { color: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--soft-line);
+      background: rgba(2, 5, 2, 0.88);
+      backdrop-filter: blur(18px);
+    }
+    .nav-inner {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1px solid rgba(204, 255, 160, 0.42);
+      background: #061006;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-btn);
+      font-size: 13px;
+    }
+    .nav-links a {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      background: var(--pill);
+      text-decoration: none;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--green);
+      border-color: var(--green);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .nav-links a.primary {
+      color: #020502;
+      border-color: var(--green);
+      background: var(--green);
+    }
+    .nav-links a.primary:hover {
+      color: #020502;
+      background: #f4f8ef;
+    }
+    button, select, input { font: inherit; }
+    button { color: inherit; }
+    button:focus-visible, a:focus-visible {
+      outline: 2px solid rgba(204, 255, 160, 0.58);
+      outline-offset: 3px;
+    }
+    .hero {
+      padding: 86px 0 48px;
+      border-bottom: 1px solid var(--soft-line);
+      background:
+        radial-gradient(circle at 78% 26%, rgba(204, 255, 160, 0.18), transparent 20%),
+        linear-gradient(180deg, rgba(2, 5, 2, 0.2), rgba(5, 6, 11, 0.96));
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 0.72fr);
+      gap: 54px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 22px;
+      color: var(--green);
+      font-family: var(--font-btn);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--green);
+    }
+    h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(44px, 7vw, 86px);
+      line-height: 0.98;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .hero-copy {
+      max-width: 820px;
+      margin: 24px 0 0;
+      color: #c7d1c3;
+      font-size: 19px;
+      line-height: 1.65;
+      text-wrap: pretty;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      background: var(--pill);
+      color: var(--ink);
+      font-family: var(--font-btn);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .button.primary {
+      color: #020502;
+      border-color: var(--green);
+      background: var(--green);
+    }
+    .button:hover { border-color: var(--green); }
+    .hero-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 20px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+    }
+    .route {
+      display: grid;
+      gap: 12px;
+    }
+    .route-step {
+      display: grid;
+      grid-template-columns: 42px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid var(--soft-line);
+      border-radius: var(--radius);
+      background: rgba(2, 8, 2, 0.78);
+    }
+    .route-step strong {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(204, 255, 160, 0.12);
+      color: var(--green);
+      font-family: var(--font-btn);
+    }
+    .route-step span {
+      color: var(--muted);
+      font-size: 12px;
+      font-family: var(--font-btn);
+    }
+    .route-step b { display: block; }
+    .route-step em {
+      color: var(--green);
+      font-style: normal;
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+    main { background: #05060b; }
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      padding: 22px 0;
+    }
+    .fact {
+      min-height: 96px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 16px;
+    }
+    .fact strong {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 24px;
+      line-height: 1;
+    }
+    .fact span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .roadmap-section {
+      padding: 42px 0 76px;
+      border-top: 1px solid var(--soft-line);
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.75fr);
+      gap: 54px;
+      align-items: start;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+    }
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+    .section-head p {
+      margin: 0;
+      color: #c7d1c3;
+      font-size: 17px;
+      line-height: 1.62;
+    }
+    .stage-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 26px 0 18px;
+    }
+    .stage-tab,
+    .track-button,
+    .task-node {
+      appearance: none;
+      border: 1px solid var(--soft-line);
+      border-radius: 999px;
+      background: var(--pill);
+      cursor: pointer;
+      font-family: var(--font-btn);
+      font-weight: 700;
+    }
+    .stage-tab {
+      min-height: 42px;
+      padding: 0 16px;
+    }
+    .stage-tab.active {
+      color: #020502;
+      border-color: var(--green);
+      background: var(--green);
+    }
+    .roadmap-app {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr) 390px;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      min-width: 0;
+      box-shadow: 0 18px 54px rgba(0, 0, 0, 0.26);
+    }
+    .track-rail {
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+    .rail-title,
+    .panel-label {
+      color: var(--green);
+      font-family: var(--font-btn);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .track-button {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: center;
+      min-height: 72px;
+      padding: 12px;
+      border-radius: var(--radius);
+      text-align: left;
+      color: var(--ink);
+    }
+    .track-button.active {
+      color: #020502;
+      border-color: var(--green);
+      background: var(--green);
+    }
+    .track-button b {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+    }
+    .track-button span {
+      display: block;
+      font-size: 12px;
+      line-height: 1.24;
+    }
+    .track-button small {
+      display: block;
+      margin-top: 4px;
+      color: inherit;
+      opacity: 0.72;
+      font-size: 11px;
+    }
+    .map-panel {
+      padding: 18px;
+      display: grid;
+      gap: 18px;
+    }
+    .phase-strip {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .phase {
+      min-height: 112px;
+      padding: 12px;
+      border: 1px solid var(--soft-line);
+      border-radius: var(--radius);
+      background: rgba(2, 8, 2, 0.76);
+    }
+    .phase[data-stage="now"],
+    .phase[data-stage="scale_up"],
+    .phase[data-stage="omni"] { border-color: rgba(204, 255, 160, 0.42); }
+    .phase span {
+      display: inline-flex;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-family: var(--font-btn);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .phase strong {
+      display: block;
+      line-height: 1.12;
+    }
+    .phase p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .task-map {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .task-node {
+      min-height: 138px;
+      display: grid;
+      gap: 8px;
+      padding: 13px;
+      border-radius: var(--radius);
+      text-align: left;
+      color: var(--ink);
+    }
+    .task-node.active {
+      border-color: var(--green);
+      background: rgba(204, 255, 160, 0.12);
+    }
+    .task-node strong {
+      font-size: 16px;
+      line-height: 1.12;
+    }
+    .task-node span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.36;
+    }
+    .task-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-self: end;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 8px;
+      border: 1px solid var(--soft-line);
+      border-radius: 999px;
+      color: #dce8d6;
+      background: rgba(255, 255, 255, 0.04);
+      font-family: var(--font-btn);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .chip.green { color: var(--green); }
+    .chip.blue { color: var(--blue); }
+    .chip.cyan { color: var(--cyan); }
+    .chip.amber { color: var(--amber); }
+    .detail-panel {
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+    .detail-title {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.06;
+      text-wrap: balance;
+    }
+    .detail-copy {
+      margin: 0;
+      color: #c7d1c3;
+      line-height: 1.58;
+    }
+    .detail-block {
+      border-top: 1px solid var(--soft-line);
+      padding-top: 14px;
+    }
+    .detail-block h3 {
+      margin: 0 0 10px;
+      font-size: 15px;
+    }
+    .detail-block p,
+    .detail-block li {
+      color: #c7d1c3;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .detail-block ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding-left: 18px;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .metric {
+      border: 1px solid var(--soft-line);
+      border-radius: var(--radius);
+      padding: 10px;
+      background: rgba(2, 8, 2, 0.72);
+    }
+    .metric strong {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 18px;
+      line-height: 1;
+    }
+    .metric span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .artifact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .artifact-row a {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 13px;
+      border: 1px solid var(--soft-line);
+      border-radius: 999px;
+      background: var(--pill);
+      color: #dce8d6;
+      font-family: var(--font-btn);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .artifact-row a:hover { border-color: var(--green); color: var(--green); }
+    .loading {
+      min-height: 480px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+    }
+    @media (max-width: 1180px) {
+      .hero-grid,
+      .section-head,
+      .roadmap-app { grid-template-columns: 1fr; }
+      .track-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .rail-title { grid-column: 1 / -1; }
+    }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 28px, var(--max)); }
+      .nav-links { display: none; }
+      .hero { padding-top: 52px; }
+      .hero-copy { font-size: 17px; }
+      .facts,
+      .phase-strip,
+      .task-map,
+      .track-rail,
+      .metric-grid { grid-template-columns: 1fr; }
+      .route-step { grid-template-columns: 38px 1fr; }
+      .route-step em { grid-column: 2; }
+      .section-head { gap: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html" aria-label="Ropedia Xperience-10M home">
+        <img src="assets/brand/xperience10m-logo-favicon-64.png" alt="" aria-hidden="true" width="38" height="38">
+        <span>Ropedia Xperience-10M</span>
+      </a>
+      <div class="nav-links" aria-label="Page navigation">
+        <a href="index.html">Project</a>
+        <a class="active" href="research_roadmap.html">Roadmap</a>
+        <a href="index.html#suite">Tasks</a>
+        <a href="single_episode_explorer.html">Explorer</a>
+        <a href="data/research_roadmap_interactive.json">Data JSON</a>
+        <a class="primary" href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF</a>
+        <a class="primary" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite">Repo</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">12 tasks / 4 tracks / scale-up path</div>
+        <h1>Interactive Research Roadmap.</h1>
+        <p class="hero-copy">
+          This page connects the current public-sample task lab to the four research
+          directions and the next multi-episode Qwen3-Omni fine-tuning path. It loads
+          directly from generated project artifacts, so the track and task views stay
+          tied to the real sample metrics and scale-up status.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#roadmap-app">Open roadmap</a>
+          <a class="button" href="data/research_roadmap_interactive.json">Inspect JSON</a>
+          <a class="button" href="index.html#directions">Four-track summary</a>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="Roadmap route">
+        <div class="route">
+          <div class="route-step">
+            <strong>01</strong>
+            <div><b>Public sample</b><span>12 task contracts and current baselines</span></div>
+            <em id="routeSample">1 episode</em>
+          </div>
+          <div class="route-step">
+            <strong>02</strong>
+            <div><b>Data staging</b><span>episode-level split and missing-view manifest</span></div>
+            <em id="routeData">32 target</em>
+          </div>
+          <div class="route-step">
+            <strong>03</strong>
+            <div><b>Omni pilot</b><span>Qwen3-Omni LoRA with held-out evaluation</span></div>
+            <em id="routeOmni">pending data</em>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap facts" id="facts" aria-label="Roadmap facts"></div>
+
+    <section class="roadmap-section" id="roadmap-app">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>From one sample to multi-episode embodied-AI experiments.</h2>
+          <p>
+            Select a research track, inspect the linked task heads, and switch between
+            the current sample evidence, the data scale-up gate, and the Omni-model pilot plan.
+          </p>
+        </div>
+
+        <div class="stage-tabs" role="tablist" aria-label="Roadmap mode">
+          <button class="stage-tab active" type="button" data-stage="now" role="tab" aria-selected="true">Now: sample task lab</button>
+          <button class="stage-tab" type="button" data-stage="scale_up" role="tab" aria-selected="false">Scale-up: episodes</button>
+          <button class="stage-tab" type="button" data-stage="omni" role="tab" aria-selected="false">Omni: Qwen3 LoRA</button>
+        </div>
+
+        <div id="loading" class="loading">Loading roadmap artifacts...</div>
+        <div class="roadmap-app" id="app" hidden>
+          <aside class="panel track-rail" id="trackRail" aria-label="Research tracks"></aside>
+          <section class="panel map-panel" aria-label="Task and phase map">
+            <div class="phase-strip" id="phaseStrip"></div>
+            <div>
+              <div class="panel-label" id="taskMapLabel">Linked tasks</div>
+              <div class="task-map" id="taskMap"></div>
+            </div>
+          </section>
+          <aside class="panel detail-panel" id="detailPanel" aria-label="Selected roadmap detail"></aside>
+        </div>
+
+        <div class="artifact-row">
+          <a href="data/research_roadmap_interactive.json">research_roadmap_interactive.json</a>
+          <a href="data/research_directions.json">research_directions.json</a>
+          <a href="data/task_walkthroughs.json">task_walkthroughs.json</a>
+          <a href="data/summary_metrics.json">summary_metrics.json</a>
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">RESEARCH_ROADMAP.md</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const state = {
+      data: null,
+      directionCode: "C",
+      taskId: null,
+      stage: "now"
+    };
+
+    const stageCopy = {
+      now: {
+        title: "Current sample evidence",
+        summary: "Use the single public episode to validate task contracts, feature construction, baselines, walkthroughs, and visualization.",
+      },
+      scale_up: {
+        title: "Episode scale-up gate",
+        summary: "Stage enough valid episodes, keep train/test separation at the episode level, and record missing-view coverage before training.",
+      },
+      omni: {
+        title: "Qwen3-Omni pilot",
+        summary: "Use the staged windows and media manifests for a held-out-episode LoRA pilot, then evaluate JSON validity and task metrics.",
+      }
+    };
+
+    function fmt(value) {
+      if (value === null || value === undefined || value === "") return "-";
+      if (typeof value === "number") return new Intl.NumberFormat("en-US").format(value);
+      return String(value);
+    }
+
+    function metricText(metric) {
+      if (!metric || !metric.name) return "metric pending";
+      const left = metric.minimal !== null && metric.minimal !== undefined ? metric.minimal : "-";
+      const right = metric.neural_mlp !== null && metric.neural_mlp !== undefined ? metric.neural_mlp : "-";
+      return `${metric.name}: minimal ${left} / neural ${right}`;
+    }
+
+    function cssRole(role) {
+      if (role === "direct") return "green";
+      if (role === "proxy") return "cyan";
+      if (role === "diagnostic") return "amber";
+      return "blue";
+    }
+
+    function currentDirection() {
+      return state.data.directions.find((direction) => direction.code === state.directionCode) ||
+        state.data.directions[0];
+    }
+
+    function currentTask(direction) {
+      return direction.tasks.find((task) => task.id === state.taskId) || direction.tasks[0] || state.data.tasks[0];
+    }
+
+    function setFacts() {
+      const scope = state.data.scope;
+      const scale = state.data.scale_up;
+      const facts = [
+        ["Sample episodes", scope.sample_episode_count],
+        ["Aligned windows", scope.num_windows],
+        ["Feature dimensions", scope.feature_dim],
+        ["Research tasks", state.data.tasks.length],
+        ["Pilot target episodes", scale.target_episodes]
+      ];
+      document.getElementById("facts").innerHTML = facts.map(([label, value]) => (
+        `<div class="fact"><strong>${fmt(value)}</strong><span>${label}</span></div>`
+      )).join("");
+      document.getElementById("routeSample").textContent = `${fmt(scope.sample_episode_count)} episode`;
+      document.getElementById("routeData").textContent = `${fmt(scale.target_episodes)} target`;
+      document.getElementById("routeOmni").textContent = state.data.omni_plan.backbone.replace("Qwen/", "");
+    }
+
+    function renderTrackRail() {
+      const rail = document.getElementById("trackRail");
+      rail.innerHTML = `<div class="rail-title">Research tracks</div>` + state.data.directions.map((direction) => {
+        const taskCount = direction.tasks.length;
+        const active = direction.code === state.directionCode ? " active" : "";
+        return `
+          <button class="track-button${active}" type="button" data-direction="${direction.code}">
+            <b>${direction.code}</b>
+            <span>${direction.name}<small>${taskCount} linked suite tasks</small></span>
+          </button>
+        `;
+      }).join("");
+      rail.querySelectorAll("[data-direction]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.directionCode = button.dataset.direction;
+          const direction = currentDirection();
+          state.taskId = direction.tasks[0]?.id || state.data.tasks[0]?.id;
+          render();
+        });
+      });
+    }
+
+    function renderPhases() {
+      document.getElementById("phaseStrip").innerHTML = state.data.phases.map((phase) => `
+        <article class="phase" data-stage="${phase.stage}">
+          <span>${phase.status}</span>
+          <strong>${phase.name}</strong>
+          <p>${phase.reader_takeaway || phase.entry_condition || ""}</p>
+        </article>
+      `).join("");
+    }
+
+    function renderTasks(direction) {
+      document.getElementById("taskMapLabel").textContent =
+        `${direction.code}. ${direction.name} - linked suite tasks`;
+      document.getElementById("taskMap").innerHTML = direction.tasks.map((task) => {
+        const role = task.direction_roles?.[direction.code] || "linked";
+        const active = task.id === state.taskId ? " active" : "";
+        return `
+          <button class="task-node${active}" type="button" data-task="${task.id}">
+            <strong>${task.display_name}</strong>
+            <span>${task.output_short || task.research_name}</span>
+            <span>${metricText(task.metric)}</span>
+            <span class="task-meta">
+              <em class="chip ${cssRole(role)}">${role}</em>
+              <em class="chip">${task.family || "task"}</em>
+            </span>
+          </button>
+        `;
+      }).join("");
+      document.querySelectorAll("[data-task]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.taskId = button.dataset.task;
+          render();
+        });
+      });
+    }
+
+    function stageBlock(direction, task) {
+      if (state.stage === "scale_up") {
+        const scale = state.data.scale_up;
+        return `
+          <div class="detail-block">
+            <h3>${stageCopy.scale_up.title}</h3>
+            <div class="metric-grid">
+              <div class="metric"><strong>${fmt(scale.target_episodes)}</strong><span>target episodes</span></div>
+              <div class="metric"><strong>${fmt(scale.valid_candidates)}</strong><span>valid candidates found in scan</span></div>
+              <div class="metric"><strong>${fmt(scale.candidate_scan_top_level_sessions)}</strong><span>top-level sessions scanned</span></div>
+              <div class="metric"><strong>${fmt(Math.round((scale.estimated_bytes || 0) / 1e9))} GB</strong><span>estimated selected data</span></div>
+            </div>
+            <p>${scale.access_status || stageCopy.scale_up.summary}</p>
+          </div>
+        `;
+      }
+      if (state.stage === "omni") {
+        const plan = state.data.omni_plan;
+        return `
+          <div class="detail-block">
+            <h3>${stageCopy.omni.title}</h3>
+            <p>${stageCopy.omni.summary}</p>
+            <ul>
+              <li><strong>Backbone:</strong> ${plan.backbone}</li>
+              <li><strong>Adapter:</strong> ${plan.adapter}</li>
+              <li><strong>Training unit:</strong> ${plan.training_unit}</li>
+              <li><strong>First pilot:</strong> ${plan.first_pilot}</li>
+            </ul>
+          </div>
+        `;
+      }
+      return `
+        <div class="detail-block">
+          <h3>${stageCopy.now.title}</h3>
+          <p>${stageCopy.now.summary}</p>
+          <div class="metric-grid">
+            <div class="metric"><strong>${fmt(state.data.scope.num_windows)}</strong><span>windows in current sample</span></div>
+            <div class="metric"><strong>${fmt(state.data.scope.feature_dim)}</strong><span>feature dimensions</span></div>
+            <div class="metric"><strong>${fmt(state.data.baseline_summary.task_count)}</strong><span>task contracts</span></div>
+            <div class="metric"><strong>${fmt(state.data.scope.feature_blocks)}</strong><span>feature blocks</span></div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDetail(direction, task) {
+      const roles = Object.entries(task.direction_roles || {})
+        .map(([code, role]) => `<span class="chip ${cssRole(role)}">${code}: ${role}</span>`)
+        .join("");
+      const extensions = direction.extension_tasks.map((item) => (
+        `<li>${item.name}: ${item.metric_name}; ${item.current_limit}</li>`
+      )).join("");
+      document.getElementById("detailPanel").innerHTML = `
+        <div>
+          <div class="panel-label">Selected track</div>
+          <h2 class="detail-title">${direction.code}. ${direction.name}</h2>
+          <p class="detail-copy">${direction.current_readout}</p>
+        </div>
+        <div class="task-meta">
+          <span class="chip green">${direction.current_status}</span>
+          <span class="chip">${fmt(direction.counts.direct || 0)} direct</span>
+          <span class="chip">${fmt(direction.counts.proxy || 0)} proxy</span>
+        </div>
+        ${stageBlock(direction, task)}
+        <div class="detail-block">
+          <h3>Selected task: ${task.display_name}</h3>
+          <p>${task.case_study || task.why || ""}</p>
+          <div class="task-meta">${roles}</div>
+        </div>
+        <div class="detail-block">
+          <h3>Input -> process -> output</h3>
+          <ul>
+            <li><strong>Input:</strong> ${task.input_short || task.input}</li>
+            <li><strong>Process:</strong> ${task.process_short || task.module_summary}</li>
+            <li><strong>Output:</strong> ${task.output_short || task.research_name}</li>
+            <li><strong>Metric:</strong> ${metricText(task.metric)}</li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <h3>Next steps for this track</h3>
+          <ul>${direction.next_steps.map((step) => `<li>${step}</li>`).join("")}</ul>
+        </div>
+        <div class="detail-block">
+          <h3>Extension probes</h3>
+          <ul>${extensions || "<li>No extension probe is currently mapped to this track.</li>"}</ul>
+        </div>
+      `;
+    }
+
+    function renderStageTabs() {
+      document.querySelectorAll(".stage-tab").forEach((button) => {
+        const active = button.dataset.stage === state.stage;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-selected", active ? "true" : "false");
+      });
+    }
+
+    function render() {
+      const direction = currentDirection();
+      if (!state.taskId || !direction.tasks.some((task) => task.id === state.taskId)) {
+        state.taskId = direction.tasks[0]?.id || state.data.tasks[0]?.id;
+      }
+      const task = currentTask(direction);
+      renderStageTabs();
+      renderTrackRail();
+      renderPhases();
+      renderTasks(direction);
+      renderDetail(direction, task);
+    }
+
+    document.querySelectorAll(".stage-tab").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.stage = button.dataset.stage;
+        render();
+      });
+    });
+
+    fetch("data/research_roadmap_interactive.json", { cache: "no-cache" })
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then((data) => {
+        state.data = data;
+        state.directionCode = data.directions.find((direction) => direction.code === "C") ? "C" : data.directions[0].code;
+        state.taskId = currentDirection().tasks[0]?.id || data.tasks[0]?.id;
+        setFacts();
+        document.getElementById("loading").hidden = true;
+        document.getElementById("app").hidden = false;
+        render();
+      })
+      .catch((error) => {
+        document.getElementById("loading").textContent = `Roadmap data could not be loaded: ${error.message}`;
+      });
+  </script>
+</body>
+</html>

@@ -1,9 +1,9 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-03T05:52:59+00:00",
+  "generated_at_utc": "2026-06-03T07:04:43+00:00",
   "hf_root": "hf_publish",
   "summary": {
-    "group_count": 88,
+    "group_count": 91,
     "failure_count": 0,
     "failures_by_surface": {}
   },
@@ -381,27 +381,27 @@
       "local": {
         "path": "repo:docs/data/publication_audit.json",
         "exists": true,
-        "bytes": 7097,
-        "sha256": "b570b31579752f4a19feae01195c0f166ed284acb478fc24c658175dfd5a9935"
+        "bytes": 7253,
+        "sha256": "3f1047cae6eba547074422a02990d678de294af0e6140f9f8d9f2d1b2324ccbd"
       },
       "mirrors": {
         "hf_space": {
           "path": "hf_space:data/publication_audit.json",
           "exists": true,
-          "bytes": 7097,
-          "sha256": "b570b31579752f4a19feae01195c0f166ed284acb478fc24c658175dfd5a9935"
+          "bytes": 7253,
+          "sha256": "3f1047cae6eba547074422a02990d678de294af0e6140f9f8d9f2d1b2324ccbd"
         },
         "hf_artifacts": {
           "path": "hf_artifacts:docs/data/publication_audit.json",
           "exists": true,
-          "bytes": 7097,
-          "sha256": "b570b31579752f4a19feae01195c0f166ed284acb478fc24c658175dfd5a9935"
+          "bytes": 7253,
+          "sha256": "3f1047cae6eba547074422a02990d678de294af0e6140f9f8d9f2d1b2324ccbd"
         },
         "hf_model": {
           "path": "hf_model:metrics/publication_audit.json",
           "exists": true,
-          "bytes": 7097,
-          "sha256": "b570b31579752f4a19feae01195c0f166ed284acb478fc24c658175dfd5a9935"
+          "bytes": 7253,
+          "sha256": "3f1047cae6eba547074422a02990d678de294af0e6140f9f8d9f2d1b2324ccbd"
         }
       },
       "failures": []
@@ -557,6 +557,37 @@
           "exists": true,
           "bytes": 4594,
           "sha256": "bbce65e803a0fad55cc739eb2dc6fdf50a69c81362f05d216324d0813ee4ccad"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "data/research_roadmap_interactive.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:docs/data/research_roadmap_interactive.json",
+        "exists": true,
+        "bytes": 73090,
+        "sha256": "204dbcaf022bb14f5d7ff7f68395788f4b6f4466cddffba73a7103d72ca43013"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:data/research_roadmap_interactive.json",
+          "exists": true,
+          "bytes": 73090,
+          "sha256": "204dbcaf022bb14f5d7ff7f68395788f4b6f4466cddffba73a7103d72ca43013"
+        },
+        "hf_artifacts": {
+          "path": "hf_artifacts:docs/data/research_roadmap_interactive.json",
+          "exists": true,
+          "bytes": 73090,
+          "sha256": "204dbcaf022bb14f5d7ff7f68395788f4b6f4466cddffba73a7103d72ca43013"
+        },
+        "hf_model": {
+          "path": "hf_model:metrics/research_roadmap_interactive.json",
+          "exists": true,
+          "bytes": 73090,
+          "sha256": "204dbcaf022bb14f5d7ff7f68395788f4b6f4466cddffba73a7103d72ca43013"
         }
       },
       "failures": []
@@ -846,27 +877,27 @@
       "local": {
         "path": "repo:docs/data/website_integrity.json",
         "exists": true,
-        "bytes": 13148,
-        "sha256": "8453a8d820b071b3c96e10f3c3ce77d85ebfa503063303b32c80fa24aa0d0910"
+        "bytes": 14310,
+        "sha256": "3f8bf5838b8f681babab83b56276346a247572bf45b022ceb376ab1a75d4a762"
       },
       "mirrors": {
         "hf_space": {
           "path": "hf_space:data/website_integrity.json",
           "exists": true,
-          "bytes": 13148,
-          "sha256": "8453a8d820b071b3c96e10f3c3ce77d85ebfa503063303b32c80fa24aa0d0910"
+          "bytes": 14310,
+          "sha256": "3f8bf5838b8f681babab83b56276346a247572bf45b022ceb376ab1a75d4a762"
         },
         "hf_artifacts": {
           "path": "hf_artifacts:docs/data/website_integrity.json",
           "exists": true,
-          "bytes": 13148,
-          "sha256": "8453a8d820b071b3c96e10f3c3ce77d85ebfa503063303b32c80fa24aa0d0910"
+          "bytes": 14310,
+          "sha256": "3f8bf5838b8f681babab83b56276346a247572bf45b022ceb376ab1a75d4a762"
         },
         "hf_model": {
           "path": "hf_model:metrics/website_integrity.json",
           "exists": true,
-          "bytes": 13148,
-          "sha256": "8453a8d820b071b3c96e10f3c3ce77d85ebfa503063303b32c80fa24aa0d0910"
+          "bytes": 14310,
+          "sha256": "3f8bf5838b8f681babab83b56276346a247572bf45b022ceb376ab1a75d4a762"
         }
       },
       "failures": []
@@ -1707,6 +1738,31 @@
       "failures": []
     },
     {
+      "name": "scripts/build_interactive_research_roadmap.py",
+      "status": "pass",
+      "local": {
+        "path": "repo:scripts/build_interactive_research_roadmap.py",
+        "exists": true,
+        "bytes": 8339,
+        "sha256": "3718081b1446086576d683f9b76148857b34c5d0022a101df950f7cb5679d5da"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "hf_artifacts:scripts/build_interactive_research_roadmap.py",
+          "exists": true,
+          "bytes": 8339,
+          "sha256": "3718081b1446086576d683f9b76148857b34c5d0022a101df950f7cb5679d5da"
+        },
+        "hf_model": {
+          "path": "hf_model:scripts/build_interactive_research_roadmap.py",
+          "exists": true,
+          "bytes": 8339,
+          "sha256": "3718081b1446086576d683f9b76148857b34c5d0022a101df950f7cb5679d5da"
+        }
+      },
+      "failures": []
+    },
+    {
       "name": "scripts/build_single_episode_explorer.py",
       "status": "pass",
       "local": {
@@ -1762,21 +1818,21 @@
       "local": {
         "path": "repo:scripts/single_episode_diagnostics.py",
         "exists": true,
-        "bytes": 57667,
-        "sha256": "865ab2cd732e561fdf006516d50b337878592ab06708f231e9a864f82b3c867f"
+        "bytes": 57663,
+        "sha256": "6387a8da67d9a6d8c5bebaa25efc66371f8f64d891a949e23ad9cfeccb202770"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/single_episode_diagnostics.py",
           "exists": true,
-          "bytes": 57667,
-          "sha256": "865ab2cd732e561fdf006516d50b337878592ab06708f231e9a864f82b3c867f"
+          "bytes": 57663,
+          "sha256": "6387a8da67d9a6d8c5bebaa25efc66371f8f64d891a949e23ad9cfeccb202770"
         },
         "hf_model": {
           "path": "hf_model:scripts/single_episode_diagnostics.py",
           "exists": true,
-          "bytes": 57667,
-          "sha256": "865ab2cd732e561fdf006516d50b337878592ab06708f231e9a864f82b3c867f"
+          "bytes": 57663,
+          "sha256": "6387a8da67d9a6d8c5bebaa25efc66371f8f64d891a949e23ad9cfeccb202770"
         }
       },
       "failures": []
@@ -1787,21 +1843,21 @@
       "local": {
         "path": "repo:scripts/verify_live_publication.py",
         "exists": true,
-        "bytes": 33069,
-        "sha256": "e95c4f22883484af1891ac8655da91bcdb32ed21561833e065e5e653ce29ae94"
+        "bytes": 34767,
+        "sha256": "6a1cb0531719888de6bbeb7a2628058f6e67c92df6314c4ac3952af2c17f126b"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/verify_live_publication.py",
           "exists": true,
-          "bytes": 33069,
-          "sha256": "e95c4f22883484af1891ac8655da91bcdb32ed21561833e065e5e653ce29ae94"
+          "bytes": 34767,
+          "sha256": "6a1cb0531719888de6bbeb7a2628058f6e67c92df6314c4ac3952af2c17f126b"
         },
         "hf_model": {
           "path": "hf_model:scripts/verify_live_publication.py",
           "exists": true,
-          "bytes": 33069,
-          "sha256": "e95c4f22883484af1891ac8655da91bcdb32ed21561833e065e5e653ce29ae94"
+          "bytes": 34767,
+          "sha256": "6a1cb0531719888de6bbeb7a2628058f6e67c92df6314c4ac3952af2c17f126b"
         }
       },
       "failures": []
@@ -1812,21 +1868,21 @@
       "local": {
         "path": "repo:scripts/validate_mirror_parity.py",
         "exists": true,
-        "bytes": 11942,
-        "sha256": "730159d3136e1f7fd7db236157d4081096bde0fde5110faeb265eb2724509945"
+        "bytes": 12057,
+        "sha256": "e2d87770613a36c618bc16c4d72e08064c397eef5860594f04f501446d54ed65"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 11942,
-          "sha256": "730159d3136e1f7fd7db236157d4081096bde0fde5110faeb265eb2724509945"
+          "bytes": 12057,
+          "sha256": "e2d87770613a36c618bc16c4d72e08064c397eef5860594f04f501446d54ed65"
         },
         "hf_model": {
           "path": "hf_model:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 11942,
-          "sha256": "730159d3136e1f7fd7db236157d4081096bde0fde5110faeb265eb2724509945"
+          "bytes": 12057,
+          "sha256": "e2d87770613a36c618bc16c4d72e08064c397eef5860594f04f501446d54ed65"
         }
       },
       "failures": []
@@ -1837,21 +1893,21 @@
       "local": {
         "path": "repo:scripts/validate_publication_package.py",
         "exists": true,
-        "bytes": 19097,
-        "sha256": "1073dd6539d4b998150a820e5eb2a5267ea9d492cbe1929f1d958567b3935649"
+        "bytes": 19247,
+        "sha256": "55a9c51d57766d54f9eb884e06d644fd9f3d6e358b80c06e7f515ab764cc2158"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/validate_publication_package.py",
           "exists": true,
-          "bytes": 19097,
-          "sha256": "1073dd6539d4b998150a820e5eb2a5267ea9d492cbe1929f1d958567b3935649"
+          "bytes": 19247,
+          "sha256": "55a9c51d57766d54f9eb884e06d644fd9f3d6e358b80c06e7f515ab764cc2158"
         },
         "hf_model": {
           "path": "hf_model:scripts/validate_publication_package.py",
           "exists": true,
-          "bytes": 19097,
-          "sha256": "1073dd6539d4b998150a820e5eb2a5267ea9d492cbe1929f1d958567b3935649"
+          "bytes": 19247,
+          "sha256": "55a9c51d57766d54f9eb884e06d644fd9f3d6e358b80c06e7f515ab764cc2158"
         }
       },
       "failures": []
@@ -1937,21 +1993,21 @@
       "local": {
         "path": "repo:scripts/validate_website_integrity.py",
         "exists": true,
-        "bytes": 22821,
-        "sha256": "6385dc491daad67f771df9d44895a2e930f572127684c421b132e2d1866040dc"
+        "bytes": 24370,
+        "sha256": "123c813288b554d727ff4574172cf8c2296e907a27c1e89d192696d1d10cf090"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/validate_website_integrity.py",
           "exists": true,
-          "bytes": 22821,
-          "sha256": "6385dc491daad67f771df9d44895a2e930f572127684c421b132e2d1866040dc"
+          "bytes": 24370,
+          "sha256": "123c813288b554d727ff4574172cf8c2296e907a27c1e89d192696d1d10cf090"
         },
         "hf_model": {
           "path": "hf_model:scripts/validate_website_integrity.py",
           "exists": true,
-          "bytes": 22821,
-          "sha256": "6385dc491daad67f771df9d44895a2e930f572127684c421b132e2d1866040dc"
+          "bytes": 24370,
+          "sha256": "123c813288b554d727ff4574172cf8c2296e907a27c1e89d192696d1d10cf090"
         }
       },
       "failures": []
@@ -2037,21 +2093,46 @@
       "local": {
         "path": "repo:docs/index.html",
         "exists": true,
-        "bytes": 165064,
-        "sha256": "f11d9bd8ba276b760724a22fe6cca00b4bf203ec65551d556203ea52a8811bb7"
+        "bytes": 165229,
+        "sha256": "16e57aa29bba43d15cec02612860e8e219de61395a927ffc29405d8cb38acfc4"
       },
       "mirrors": {
         "hf_space": {
           "path": "hf_space:index.html",
           "exists": true,
-          "bytes": 165064,
-          "sha256": "f11d9bd8ba276b760724a22fe6cca00b4bf203ec65551d556203ea52a8811bb7"
+          "bytes": 165229,
+          "sha256": "16e57aa29bba43d15cec02612860e8e219de61395a927ffc29405d8cb38acfc4"
         },
         "hf_artifacts_docs": {
           "path": "hf_artifacts:docs/index.html",
           "exists": true,
-          "bytes": 165064,
-          "sha256": "f11d9bd8ba276b760724a22fe6cca00b4bf203ec65551d556203ea52a8811bb7"
+          "bytes": 165229,
+          "sha256": "16e57aa29bba43d15cec02612860e8e219de61395a927ffc29405d8cb38acfc4"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "website/research_roadmap.html",
+      "status": "pass",
+      "local": {
+        "path": "repo:docs/research_roadmap.html",
+        "exists": true,
+        "bytes": 31119,
+        "sha256": "c190599a74cf40f16d6d554baddbc9f47fabb7e022280399ef06c0d3de1b2047"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:research_roadmap.html",
+          "exists": true,
+          "bytes": 31119,
+          "sha256": "c190599a74cf40f16d6d554baddbc9f47fabb7e022280399ef06c0d3de1b2047"
+        },
+        "hf_artifacts_docs": {
+          "path": "hf_artifacts:docs/research_roadmap.html",
+          "exists": true,
+          "bytes": 31119,
+          "sha256": "c190599a74cf40f16d6d554baddbc9f47fabb7e022280399ef06c0d3de1b2047"
         }
       },
       "failures": []
