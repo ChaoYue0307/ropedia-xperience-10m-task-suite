@@ -1,19 +1,19 @@
 {
-  "accuracy": 0.46120689655172414,
-  "precision": 0.4720496894409938,
-  "recall": 0.6551724137931034,
-  "f1": 0.5487364620938628,
-  "tp": 228,
+  "accuracy": 0.4540229885057471,
+  "precision": 0.4665271966527197,
+  "recall": 0.6408045977011494,
+  "f1": 0.5399515738498789,
+  "tp": 223,
   "tn": 93,
   "fp": 255,
-  "fn": 120,
+  "fn": 125,
   "positive_rate_true": 0.5,
-  "positive_rate_pred": 0.6939655172413793,
+  "positive_rate_pred": 0.6867816091954023,
   "task": "temporal_order",
   "input": "two adjacent windows -> whether order is correct",
   "split": "chronological",
   "num_samples": 2320,
   "num_train_samples": 1624,
   "num_test_samples": 696,
-  "train_final_accuracy": 0.5104679802955665
+  "train_final_accuracy": 0.5086206896551724
 }
