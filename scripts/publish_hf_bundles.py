@@ -16,6 +16,7 @@ silently drift behind the model card.
 from __future__ import annotations
 
 import argparse
+import csv
 import getpass
 import json
 import os
@@ -48,6 +49,7 @@ LEGACY_SCORECARD_JSON = "rev" + "iewer_scorecard.json"
 STALE_ARTIFACT_REMOTE_FILES = [
     "results/omni_finetune/adapter_lora/tokenizer.json",
     "results/omni_finetune/hf_upload/tokenizer.json",
+    "viewer/dataset_viewer_summary.jsonl",
     LEGACY_SCORECARD_MD,
     "docs/data/" + LEGACY_PACKET_JSON,
     "docs/data/" + LEGACY_SCORECARD_JSON,
@@ -75,10 +77,10 @@ ARTIFACT_BINARY_ALLOWLIST = [
 ]
 
 ARTIFACT_VIEWER_CONFIG = """configs:
-  - config_name: viewer_summary
+  - config_name: episode_sample
     data_files:
-      - split: train
-        path: viewer/dataset_viewer_summary.jsonl
+      - split: public_sample
+        path: viewer/episode_windows.jsonl
 """
 
 
@@ -95,127 +97,116 @@ def find_status_readout(project_status: dict, area: str, fallback: str) -> str:
     return fallback
 
 
+def read_csv_by_window(path: Path) -> dict[int, dict]:
+    if not path.exists():
+        return {}
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        return {int(row["window_index"]): row for row in csv.DictReader(handle)}
+
+
+def sample_fps(available_modalities: list[dict]) -> float:
+    for entry in available_modalities:
+        if "fps" in entry:
+            return float(entry["fps"])
+    return 20.00137419266181
+
+
+def modality_summary(modality_atlas: dict) -> str:
+    names = [entry.get("id", entry.get("name", "")) for entry in modality_atlas.get("modalities", [])]
+    names = [name for name in names if name]
+    if "calibration" not in names:
+        names.append("calibration")
+    return "|".join(names)
+
+
 def ensure_artifact_dataset_viewer_config(hf_root: Path) -> None:
-    """Keep HF Dataset Viewer on one JSONL config despite mixed artifact files."""
+    """Expose the public sample episode as HF-viewable window rows."""
     artifact_root = hf_root / "artifacts"
     readme_path = artifact_root / "README.md"
     viewer_dir = artifact_root / "viewer"
     viewer_dir.mkdir(parents=True, exist_ok=True)
 
     project_status = load_json(artifact_root / "docs/data/project_status.json")
-    summary_metrics = load_json(artifact_root / "docs/data/summary_metrics.json")
-    alignment = load_json(artifact_root / "docs/data/xperience10m_dataset_card_alignment.json")
+    modality_atlas = load_json(artifact_root / "docs/data/modality_atlas.json")
+    available_modalities = load_json(artifact_root / "results/episode_task_suite/available_modalities.json")
+    feature_manifest = load_json(artifact_root / "results/episode_task_suite/feature_manifest.json")
+    if not isinstance(available_modalities, list):
+        available_modalities = []
+    if not isinstance(feature_manifest, list):
+        feature_manifest = []
 
     scope = project_status.get("scope_boundary", {})
-    official = alignment.get("hf_repo_metadata_observed", {})
-    live_size = official.get("live_hf_page_observed", {}).get("total_file_size_display", "unknown")
-    listing = official.get("api_file_listing_observed", {})
-    relay = summary_metrics.get("omni_relay", {})
+    fps = sample_fps(available_modalities)
+    modalities = modality_summary(modality_atlas)
+    feature_blocks = "|".join(block.get("name", "") for block in feature_manifest if block.get("name"))
+    objects_by_window = read_csv_by_window(
+        artifact_root / "results/single_episode_diagnostics/object_labels/window_object_labels.csv"
+    )
 
-    rows = [
-        {
-            "row_type": "project_scope",
-            "title": "Public sample pipeline",
-            "value": (
-                f"{scope.get('validated_episode_count', 1)} public Xperience-10M sample episode; "
-                f"{scope.get('aligned_frames', 5821):,} frames; "
-                f"{scope.get('sliding_windows', 1161):,} aligned 20-frame windows; "
-                f"{scope.get('current_feature_dimensions', 8546):,}-dimensional multimodal representation"
-            ),
-            "source_file": "docs/data/project_status.json",
-            "notes": "This artifact repo stores derived outputs only and does not redistribute raw Xperience-10M MP4/HDF5/RRD data or full Qwen weights.",
-        },
-        {
-            "row_type": "modality_contract",
-            "title": "Modalities represented",
-            "value": "video, audio, depth, camera pose/SLAM, motion capture, inertial sensing, calibration metadata, and language annotations",
-            "source_file": "docs/data/xperience10m_dataset_card_alignment.json",
-            "notes": "Audio is featurized in the current public-sample task representation; raw synchronized data remains governed by the official upstream dataset terms.",
-        },
-        {
-            "row_type": "task_suite",
-            "title": "Embodied task suite",
-            "value": (
-                f"{scope.get('core_task_count', 12)} human-readable task contracts with minimal baselines "
-                f"and {scope.get('neural_head_count', 12)} compact neural MLP heads over the same chronological split"
-            ),
-            "source_file": "results/episode_task_suite/summary_report.json",
-            "notes": "These are single-episode public-sample results, not held-out multi-episode model-quality claims.",
-        },
-        {
-            "row_type": "audio_study",
-            "title": "Audio contribution study",
-            "value": find_status_readout(
-                project_status,
-                "Audio contribution study",
-                "Audio contribution results are recorded in results/audio_ablation/.",
-            ),
-            "source_file": "docs/data/project_status.json",
-            "notes": "See results/audio_ablation/ for the per-task audio/no-audio comparison and raw-logmel feature artifact.",
-        },
-        {
-            "row_type": "neural_baselines",
-            "title": "Compact neural heads",
-            "value": (
-                f"{scope.get('neural_head_count', 12)} PyTorch MLP task heads plus "
-                f"{scope.get('direction_extension_probe_count', 4)} extension probes are included as derived artifacts"
-            ),
-            "source_file": "docs/data/project_status.json",
-            "notes": "The neural heads are local task baselines over derived features, separate from the pending Qwen3-Omni multi-episode pilot.",
-        },
-        {
-            "row_type": "official_upstream",
-            "title": "Official Xperience-10M dataset",
-            "value": (
-                f"Official gated HF metadata observed: {listing.get('annotation_hdf5_count', 12103):,} annotation files, "
-                f"{listing.get('episode_folder_count', 12103) - 1:,} complete visible episodes, "
-                f"{listing.get('sibling_count', 85258):,}+ listed files, and {live_size} live HF-hosted file-size display"
-            ),
-            "source_file": "docs/data/xperience10m_dataset_card_alignment.json",
-            "notes": "The official dataset card also describes about 10M experience units, about 10,000 recording hours, and about 1 PB full-scale data; this artifact repo is not the raw dataset mirror.",
-        },
-        {
-            "row_type": "multi_episode_plan",
-            "title": "Selected multi-episode relay",
-            "value": (
-                f"{relay.get('target_episodes', 128)} metadata-balanced episodes selected for future held-out training "
-                "with a 96/16/16 train/val/test target split"
-            ),
-            "source_file": "results/omni_finetune/DATA_ACCESS_STATUS.md",
-            "notes": "Staging, manifest construction, training, and held-out evaluation must complete before reporting full multi-episode metrics.",
-        },
-        {
-            "row_type": "foundation_model_plan",
-            "title": "Foundation-model branches",
-            "value": "Qwen3-Omni is the first trainable LoRA pilot; Cosmos 3 is planned as the world-model/action-generation branch; policy candidates include OpenVLA, openpi, and GR00T after action targets are explicit",
-            "source_file": "docs/data/project_status.json",
-            "notes": "The current package documents the plan and public-sample baselines; it does not claim a completed full-dataset fine-tune.",
-        },
-        {
-            "row_type": "viewer_config",
-            "title": "Dataset Viewer configuration",
-            "value": "This viewer_summary config points HF Dataset Viewer to one JSONL file so mixed artifact formats are not interpreted as incompatible splits",
-            "source_file": "viewer/dataset_viewer_summary.jsonl",
-            "notes": "The rest of the repo intentionally keeps CSV, JSON, JSONL, Markdown, HTML, NPZ, PT, PNG, and SVG artifacts for reproducibility and presentation.",
-        },
-    ]
+    rows = []
+    windows_path = artifact_root / "results/episode_task_suite/windows.csv"
+    with windows_path.open("r", encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle):
+            window_index = int(row["window_index"])
+            start_frame = int(row["start_frame"])
+            end_frame = int(row["end_frame"])
+            center_frame = int(row["center_frame"])
+            object_row = objects_by_window.get(window_index, {})
+            rows.append(
+                {
+                    "episode_id": "xperience-10m-sample/public_episode",
+                    "source_sample_repo": "ropedia-ai/xperience-10m-sample",
+                    "window_index": window_index,
+                    "start_frame": start_frame,
+                    "end_frame": end_frame,
+                    "center_frame": center_frame,
+                    "start_time_s": round(start_frame / fps, 3),
+                    "end_time_s": round(end_frame / fps, 3),
+                    "center_time_s": round(center_frame / fps, 3),
+                    "window_frames": int(scope.get("window_frames", 20) or 20),
+                    "stride_frames": 5,
+                    "action_label": row["action_label"],
+                    "action_fraction": float(row["action_fraction"]),
+                    "subtask_label": row["subtask_label"],
+                    "subtask_fraction": float(row["subtask_fraction"]),
+                    "objects": object_row.get("objects", ""),
+                    "object_count": int(object_row.get("object_count", 0) or 0),
+                    "modalities": modalities,
+                    "feature_dim": int(scope.get("current_feature_dimensions", 8546) or 8546),
+                    "feature_blocks": feature_blocks,
+                    "derived_features_file": "results/episode_task_suite/shared_windows.npz",
+                    "source_window_table": "results/episode_task_suite/windows.csv",
+                    "raw_data_included": False,
+                }
+            )
 
-    viewer_path = viewer_dir / "dataset_viewer_summary.jsonl"
+    viewer_path = viewer_dir / "episode_windows.jsonl"
     viewer_path.write_text(
         "\n".join(json.dumps(row, ensure_ascii=True) for row in rows) + "\n",
         encoding="utf-8",
     )
+    (viewer_dir / "dataset_viewer_summary.jsonl").unlink(missing_ok=True)
 
     if not readme_path.exists():
         return
     readme = readme_path.read_text(encoding="utf-8")
-    if "viewer/dataset_viewer_summary.jsonl" in readme:
-        return
+    readme = readme.replace("  - n<1K", "  - 1K<n<10K")
     if readme.startswith("---"):
         parts = readme.split("---", 2)
         if len(parts) == 3:
-            metadata = parts[1].rstrip() + "\n" + ARTIFACT_VIEWER_CONFIG
-            readme_path.write_text("---" + metadata + "---" + parts[2], encoding="utf-8")
+            metadata_lines = parts[1].strip().splitlines()
+            kept_lines = []
+            skip = False
+            for line in metadata_lines:
+                if line.startswith("configs:"):
+                    skip = True
+                    continue
+                if skip and not line.startswith((" ", "-")):
+                    skip = False
+                if not skip:
+                    kept_lines.append(line)
+            metadata = "\n".join(kept_lines).rstrip() + "\n" + ARTIFACT_VIEWER_CONFIG
+            readme_path.write_text("---\n" + metadata + "---" + parts[2], encoding="utf-8")
             return
     readme_path.write_text(ARTIFACT_VIEWER_CONFIG + "\n" + readme, encoding="utf-8")
 
