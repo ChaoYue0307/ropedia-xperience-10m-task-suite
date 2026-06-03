@@ -1,14 +1,14 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-03T01:38:40+00:00",
+  "generated_at_utc": "2026-06-03T03:40:26+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
-    "html_pages": 2,
-    "local_references": 100,
-    "external_reference_count": 80,
-    "json_files": 28,
-    "image_assets_referenced": 19,
+    "html_pages": 3,
+    "local_references": 109,
+    "external_reference_count": 83,
+    "json_files": 29,
+    "image_assets_referenced": 20,
     "failure_count": 0
   },
   "failures": {
@@ -74,8 +74,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 60551,
-      "evidence_index": 73976
+      "overview_index": 60611,
+      "evidence_index": 74036
     },
     {
       "name": "project_status_links_json",
@@ -122,9 +122,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 60551,
-      "protocol_index": 71379,
-      "evidence_index": 73976
+      "overview_index": 60611,
+      "protocol_index": 71439,
+      "evidence_index": 74036
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -198,14 +198,20 @@
     {
       "path": "index.html",
       "id_count": 75,
-      "reference_count": 99,
+      "reference_count": 102,
       "image_count": 22
+    },
+    {
+      "path": "single_episode_explorer.html",
+      "id_count": 26,
+      "reference_count": 6,
+      "image_count": 1
     }
   ],
   "json_files": [
     {
       "path": "data/artifact_index.json",
-      "bytes": 27749,
+      "bytes": 29016,
       "top_level_type": "dict"
     },
     {
@@ -235,7 +241,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 76733,
+      "bytes": 79648,
       "top_level_type": "dict"
     },
     {
@@ -270,12 +276,12 @@
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 6962,
+      "bytes": 7096,
       "top_level_type": "dict"
     },
     {
       "path": "data/quality_gates.json",
-      "bytes": 7528,
+      "bytes": 8147,
       "top_level_type": "dict"
     },
     {
@@ -314,6 +320,11 @@
       "top_level_type": "dict"
     },
     {
+      "path": "data/single_episode_explorer.json",
+      "bytes": 4101241,
+      "top_level_type": "dict"
+    },
+    {
       "path": "data/source_alignment_audit.json",
       "bytes": 4432,
       "top_level_type": "dict"
@@ -335,7 +346,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 12406,
+      "bytes": 12715,
       "top_level_type": "dict"
     },
     {
@@ -351,6 +362,14 @@
       "bytes": 5243,
       "width": 64,
       "height": 64,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/brand/xperience10m-logo-mark-192.png",
+      "exists": true,
+      "bytes": 41318,
+      "width": 192,
+      "height": 192,
       "format": "PNG"
     },
     {

@@ -92,6 +92,7 @@ multi-episode held-out model metrics:
 | Research takeaways | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | summarizes result interpretation from committed metrics and identifies which experiments need held-out episodes |
 | Research roadmap | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | stages the path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions |
 | 12-task suite | `scripts/episode_task_suite.py`, per-task `metrics.json`, predictions | chronological single-episode split |
+| Single-episode diagnostics | `scripts/single_episode_diagnostics.py`, `results/single_episode_diagnostics/`, `docs/single_episode_explorer.html` | modality ablations, timeline overlay, object-label export, alignment stress tests, and interactive window inspection from one sample episode |
 | Neural heads | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | compact MLP heads, not a foundation model |
 | Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
 | Task surface integrity | `docs/data/task_surface_integrity.json`, `scripts/validate_task_surface.py` | public task cards stay human-readable, thumbnail-backed, and wired to the scrub/play walkthrough storyboard |
@@ -802,6 +803,27 @@ same 8,378-d handcrafted window features.
 The strongest single-episode self-supervised signal is cross-modal retrieval:
 motion/IMU/camera features retrieve matching depth/video windows substantially
 better than random.
+
+## Single-Episode Diagnostics and Explorer
+
+While waiting for broader Xperience-10M access, the repo now includes an
+artifact-driven diagnostics pass over the public sample episode:
+
+- `results/single_episode_diagnostics/object_labels/window_object_labels.csv`
+  exports 1,161 real window-level object-label sets from `annotation.hdf5`.
+- `results/single_episode_diagnostics/modality_ablation/ablation_metrics.csv`
+  recomputes all 96 task/modality cells, including object relevance.
+- `results/single_episode_diagnostics/timeline_overlay/timeline_overlay.csv`
+  aligns 2,079 existing prediction rows back to the episode timeline.
+- `results/single_episode_diagnostics/alignment_stress/alignment_shift_metrics.csv`
+  evaluates cross-modal retrieval under explicit time shifts.
+- `docs/single_episode_explorer.html` is a static interactive page for
+  inspecting window labels, objects, predictions, feature-block statistics, and
+  diagnostic scores.
+
+These are single-episode research diagnostics. They are useful for auditing
+task definitions, feature behavior, and model errors before scaling to more
+episodes; they are not reported as multi-episode benchmark results.
 
 ## Reproducibility Check
 
