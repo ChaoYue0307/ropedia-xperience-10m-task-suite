@@ -66,6 +66,22 @@ ARTIFACTS = [
         "shows": "Machine-readable staged roadmap for the website and Hugging Face mirrors.",
     },
     {
+        "id": "foundation_model_plan",
+        "title": "Foundation model plan",
+        "path": "FOUNDATION_MODEL_PLAN.md",
+        "kind": "project_path",
+        "surface": "repo_hf",
+        "shows": "Defines the post-data-gate backbone choices: Qwen3-Omni first, Cosmos 3 for world modeling, and VLA/policy models after action-target conversion.",
+    },
+    {
+        "id": "foundation_model_plan_json",
+        "title": "Foundation model plan JSON",
+        "path": "docs/data/foundation_model_plan.json",
+        "kind": "project_path",
+        "surface": "website_hf",
+        "shows": "Machine-readable foundation-model selection matrix with source links, entry conditions, and evaluation additions.",
+    },
+    {
         "id": "evidence_contract",
         "title": "Evidence contract",
         "path": "EVIDENCE_CONTRACT.md",

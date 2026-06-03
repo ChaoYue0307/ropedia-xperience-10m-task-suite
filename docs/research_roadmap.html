@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Research Roadmap | Ropedia Xperience-10M</title>
-  <meta name="description" content="Interactive research roadmap connecting the Ropedia Xperience-10M 12-task suite, four research tracks, current sample results, and future Qwen3-Omni fine-tuning plan.">
+  <meta name="description" content="Interactive research roadmap connecting the Ropedia Xperience-10M 12-task suite, four research tracks, current sample results, Qwen3-Omni fine-tuning, and foundation-model branch selection.">
   <meta name="theme-color" content="#020502">
   <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -605,7 +605,8 @@
         <h1>Interactive Research Roadmap.</h1>
         <p class="hero-copy">
           This page connects the current public-sample task lab to the four research
-          directions and the next multi-episode Qwen3-Omni fine-tuning path. It loads
+          directions, the next multi-episode Qwen3-Omni fine-tuning path, and
+          the later Cosmos 3 / policy-model branch choices. It loads
           directly from generated project artifacts, so the track and task views stay
           tied to the real sample metrics and scale-up status.
         </p>
@@ -629,7 +630,7 @@
           </div>
           <div class="route-step">
             <strong>03</strong>
-            <div><b>Omni pilot</b><span>Qwen3-Omni LoRA with held-out evaluation</span></div>
+            <div><b>Omni + branches</b><span>Qwen3-Omni first, Cosmos 3 and policy models after data staging</span></div>
             <em id="routeOmni">pending data</em>
           </div>
         </div>
@@ -646,14 +647,14 @@
           <h2>From one sample to multi-episode embodied-AI experiments.</h2>
           <p>
             Select a research track, inspect the linked task heads, and switch between
-            the current sample evidence, the data scale-up gate, and the Omni-model pilot plan.
+            the current sample evidence, the data scale-up gate, the Omni-model pilot plan, and the foundation-model branch matrix.
           </p>
         </div>
 
         <div class="stage-tabs" role="tablist" aria-label="Roadmap mode">
           <button class="stage-tab active" type="button" data-stage="now" role="tab" aria-selected="true">Now: sample task lab</button>
           <button class="stage-tab" type="button" data-stage="scale_up" role="tab" aria-selected="false">Scale-up: episodes</button>
-          <button class="stage-tab" type="button" data-stage="omni" role="tab" aria-selected="false">Omni: Qwen3 LoRA</button>
+          <button class="stage-tab" type="button" data-stage="omni" role="tab" aria-selected="false">Omni + branches</button>
         </div>
 
         <div id="loading" class="loading">Loading roadmap artifacts...</div>
@@ -671,6 +672,7 @@
 
         <div class="artifact-row">
           <a href="data/research_roadmap_interactive.json">research_roadmap_interactive.json</a>
+          <a href="data/foundation_model_plan.json">foundation_model_plan.json</a>
           <a href="data/research_directions.json">research_directions.json</a>
           <a href="data/task_walkthroughs.json">task_walkthroughs.json</a>
           <a href="data/summary_metrics.json">summary_metrics.json</a>
@@ -698,8 +700,8 @@
         summary: "Stage enough valid episodes, keep train/test separation at the episode level, and record missing-view coverage before training.",
       },
       omni: {
-        title: "Qwen3-Omni pilot",
-        summary: "Use the staged windows and media manifests for a held-out-episode LoRA pilot, then evaluate JSON validity and task metrics.",
+        title: "Omni pilot and foundation branches",
+        summary: "Run Qwen3-Omni first for the held-out LoRA pilot, then evaluate Cosmos 3 for world modeling and policy candidates after action targets are explicit.",
       }
     };
 

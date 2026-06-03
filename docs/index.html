@@ -2331,6 +2331,15 @@
               <strong>Evidence</strong><p>Dataset manifest, training metadata, progress logs, metrics, and predictions.</p>
             </div>
           </article>
+          <article class="roadmap-card" data-status="next">
+            <span class="roadmap-status">next</span>
+            <h3>Foundation-Model Selection Matrix</h3>
+            <p>Keep Qwen3-Omni as the first trainable held-out pilot, add Cosmos 3 for world modeling, and stage policy candidates after action targets are explicit.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>32-episode data gate or a 3-8 episode preprocessing dry run.</p>
+              <strong>Evidence</strong><p>Foundation model plan, source links, model-specific entry conditions, and evaluation additions.</p>
+            </div>
+          </article>
           <article class="roadmap-card" data-status="planned">
             <span class="roadmap-status">planned</span>
             <h3>64-128 Episode Robustness Run</h3>
@@ -2342,10 +2351,10 @@
           </article>
           <article class="roadmap-card" data-status="planned">
             <span class="roadmap-status">planned</span>
-            <h3>Foundation and World-Model Extensions</h3>
-            <p>Extend toward audio-visible alignment, reconstruction, SLAM/world modeling, policy-style next action, and affordance reasoning.</p>
+            <h3>Cosmos 3 and Policy-Model Extensions</h3>
+            <p>Extend toward future-window prediction, action-conditioned world modeling, synthetic-data tests, policy-style next action, and affordance reasoning.</p>
             <div class="roadmap-meta">
-              <strong>Entry</strong><p>Enough multi-episode data and compute budget for larger multimodal objectives.</p>
+              <strong>Entry</strong><p>Enough multi-episode data, compute budget, and model-specific action or world-state targets.</p>
               <strong>Evidence</strong><p>Task-specific held-out evaluations, qualitative inspection, and updated model cards.</p>
             </div>
           </article>
@@ -2354,6 +2363,7 @@
           <a href="research_roadmap.html">interactive roadmap</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">RESEARCH_ROADMAP.md</a>
           <a href="data/research_roadmap.json">research_roadmap.json</a>
+          <a href="data/foundation_model_plan.json">foundation_model_plan.json</a>
           <a href="data/research_roadmap_interactive.json">interactive roadmap JSON</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_STATUS.md">project status</a>
@@ -2373,7 +2383,8 @@
           <article class="artifact"><h3>Metric contract</h3><p>All 12 tasks list input, target, primary metric, minimal baseline score, and neural MLP score from committed result files.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target feature blocks, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
           <article class="artifact"><h3>Audio ablation</h3><p>The current AAC block and a 588-d raw log-mel replacement are evaluated across all 12 task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
-          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. Cross-episode generalization, audio-visual learning, pixel-depth reconstruction, neural rendering, and full 32-episode Qwen3-Omni training move to the multi-episode stage.</p><a href="data/scope_claims_audit.json">pilot status</a></article>
+          <article class="artifact"><h3>Foundation branch selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 becomes the world-model branch, and policy models wait for explicit action targets.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
+          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. Cross-episode generalization, audio-visual learning, world modeling, policy targets, and full 32-episode Qwen3-Omni training move to the multi-episode stage.</p><a href="data/scope_claims_audit.json">pilot status</a></article>
           <article class="artifact"><h3>Scale-up requirement</h3><p>The Omni pilot requires at least 32 valid episodes, held-out episode splits, no train/test episode leakage, training metadata, predictions, metrics, and a run report.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a></article>
         </div>
       </div>
@@ -2421,6 +2432,15 @@
             <div class="evidence-links">
               <a href="data/research_directions.json">directions JSON</a>
               <a href="data/research_direction_extensions.json">extensions JSON</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">current plan</span>
+            <h3>Foundation backbones are separated by role</h3>
+            <p>Qwen3-Omni stays first for held-out LoRA; Cosmos 3 is the world-model branch; OpenVLA/openpi/GR00T are policy candidates after action-space conversion.</p>
+            <div class="evidence-links">
+              <a href="data/foundation_model_plan.json">foundation_model_plan.json</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">plan doc</a>
             </div>
           </article>
           <article class="evidence-card">
@@ -3027,6 +3047,7 @@
             </div>
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Project scope</h3><p>Connects implemented single-episode artifacts, setup-stage Omni work, pending data access, and later multi-episode milestones.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">EVIDENCE_CONTRACT.md</a></article>
+              <article class="artifact"><h3>Foundation-model plan</h3><p>Backbone selection matrix covering Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, and SmolVLA-style policy candidates.</p><a href="data/foundation_model_plan.json">foundation_model_plan.json</a></article>
               <article class="artifact"><h3>Multi-episode access status</h3><p>Public data-access path, selected 32-episode pilot plan, and data requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">MULTI_EPISODE_ACCESS_STATUS.md</a></article>
               <article class="artifact"><h3>Qwen3-Omni setup artifacts</h3><p>Manifests, metadata, metrics, and progress logs from the current setup run.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode_manifest.json</a></article>
               <article class="artifact"><h3>32-episode data requirement</h3><p>The data status file defines what must be available before full pilot training and held-out metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">DATA_ACCESS_STATUS.md</a></article>
@@ -3065,6 +3086,7 @@
           <article class="artifact"><h3>Selection</h3><p>Stratified round-robin over 64 top-level sessions; 680 complete candidates scanned; 32 sessions selected.</p></article>
           <article class="artifact"><h3>Transfer</h3><p>Download raw episodes only from official gated sources, exclude visualization.rrd, validate files, then stage them for training.</p></article>
           <article class="artifact"><h3>Current LoRA artifact</h3><p>The current LoRA artifact uses the locally available sample data. The 32-episode result begins after gated data is staged and held-out evaluation runs.</p></article>
+          <article class="artifact"><h3>Backbone branches</h3><p>Qwen3-Omni is the immediate LoRA path; Cosmos 3 is the first world-model branch; GR00T/OpenVLA/openpi become policy branches after action targets are auditable.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
         </div>
       </div>
     </section>

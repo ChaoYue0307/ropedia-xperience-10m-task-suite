@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Research Roadmap",
-  "summary": "Staged path from the public-sample task lab to multi-episode held-out evaluation and larger omni-model extensions.",
-  "current_decision_point": "Keep the public-sample task suite as the development harness, then stage enough official Xperience-10M episodes to run the 32-episode held-out pilot.",
+  "summary": "Staged path from the public-sample task lab to multi-episode held-out evaluation, foundation-model selection, and larger omni/world-model extensions.",
+  "current_decision_point": "Keep the public-sample task suite as the development harness, stage enough official Xperience-10M episodes to run the 32-episode held-out pilot, then branch into Cosmos 3 world modeling and policy-model experiments only after the data gate is real.",
   "phases": [
     {
       "id": "public_sample_task_lab",
@@ -70,6 +70,25 @@
       "reader_takeaway": "The first omni-model pilot should establish a complete held-out-episode training and evaluation loop."
     },
     {
+      "id": "foundation_model_selection_matrix",
+      "name": "Foundation-Model Selection Matrix",
+      "status": "next",
+      "entry_condition": "The 32-episode data gate is satisfied or a 3-8 episode dry run is staged for preprocessing checks.",
+      "deliverables": [
+        "backbone registry",
+        "Cosmos 3 world-model branch plan",
+        "Qwen3-Omni LoRA baseline plan",
+        "OpenVLA/openpi/GR00T policy-branch candidates",
+        "model-specific evaluation additions"
+      ],
+      "completion_evidence": [
+        "FOUNDATION_MODEL_PLAN.md",
+        "docs/data/foundation_model_plan.json",
+        "research_roadmap_interactive.json"
+      ],
+      "reader_takeaway": "Qwen3-Omni remains the first trainable held-out pilot; Cosmos 3 is the first world-model branch; VLA/policy models wait for explicit action targets."
+    },
+    {
       "id": "robustness_run_64_128_episode",
       "name": "64-128 Episode Robustness Run",
       "status": "planned",
@@ -91,22 +110,22 @@
     },
     {
       "id": "foundation_world_model_extensions",
-      "name": "Foundation and World-Model Extensions",
+      "name": "Cosmos 3 and Policy-Model Extensions",
       "status": "planned",
-      "entry_condition": "Enough multi-episode data and compute budget for larger multimodal objectives.",
+      "entry_condition": "Enough multi-episode data, compute budget, and model-specific action/world-state targets.",
       "deliverables": [
-        "audio encoder integration",
-        "depth/image reconstruction",
-        "SLAM/world modeling probes",
-        "policy-style next-action tasks",
-        "affordance and object-interaction tasks"
+        "Cosmos 3 future-window or action-conditioned world-model probe",
+        "OpenVLA/openpi/GR00T action-policy baseline",
+        "audio/video/depth/pose/mocap conditioning audit",
+        "affordance and object-interaction tasks",
+        "synthetic-data usefulness test"
       ],
       "completion_evidence": [
         "task-specific held-out evaluations",
         "qualitative inspection",
         "updated model cards"
       ],
-      "reader_takeaway": "The long-term direction is richer multimodal representation learning for embodied-AI reasoning."
+      "reader_takeaway": "The long-term direction is richer multimodal representation learning for embodied-AI reasoning, with model branches chosen by task fit rather than by a single default backbone."
     }
   ],
   "public_surfaces_to_update": [
