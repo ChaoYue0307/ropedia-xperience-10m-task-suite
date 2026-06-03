@@ -38,7 +38,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: dark;
@@ -57,8 +57,9 @@
       --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
       --radius: 8px;
       --max: 1220px;
-      --font-ui: "Inter Tight", "Avenir Next", "SF Pro Display", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-copy: "Space Grotesk", "Avenir Next", "SF Pro Text", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-ui: "Inter Tight", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-copy: "Inter Tight", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-btn: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --font-mono: "Space Grotesk", "SF Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
     }
 
@@ -76,6 +77,7 @@
       background-size: auto, auto, 22px 22px, auto;
       line-height: 1.5;
       text-rendering: optimizeLegibility;
+      font-synthesis-weight: none;
     }
 
     a { color: inherit; }
@@ -132,6 +134,7 @@
       display: flex;
       align-items: center;
       gap: 16px;
+      font-family: var(--font-btn);
       font-size: 14px;
       color: #c6d0c2;
     }
@@ -154,6 +157,7 @@
       align-items: center;
       gap: 8px;
       text-decoration: none;
+      font-family: var(--font-btn);
       font-weight: 680;
       border-radius: 6px;
     }
@@ -180,7 +184,7 @@
       gap: 9px;
       margin-bottom: 22px;
       color: var(--green);
-      font-family: var(--font-mono);
+      font-family: var(--font-btn);
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -224,7 +228,8 @@
       align-items: center;
       gap: 10px;
       text-decoration: none;
-      font-weight: 720;
+      font-family: var(--font-btn);
+      font-weight: 700;
       background: rgba(7, 18, 7, 0.82);
       transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), border-color 240ms cubic-bezier(0.16, 1, 0.3, 1), background 240ms cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -569,7 +574,7 @@
       flex: none;
       color: var(--cyan);
       font-size: 13px;
-      font-weight: 760;
+      font-weight: 700;
       text-decoration: none;
       border: 1px solid var(--soft-line);
       border-radius: 6px;
@@ -660,7 +665,7 @@
       margin: 0;
       color: #edf8e8;
       font-size: clamp(21px, 1.85vw, 28px);
-      font-weight: 720;
+      font-weight: 700;
       line-height: 1.18;
     }
     .atlas-card.audio-card {
@@ -757,7 +762,7 @@
       border-radius: 6px;
       color: var(--cyan);
       font-size: 13px;
-      font-weight: 760;
+      font-weight: 700;
       padding: 9px 10px;
       text-decoration: none;
       background: rgba(2, 5, 2, 0.42);
@@ -813,7 +818,7 @@
       background: rgba(2, 5, 2, 0.5);
       font-family: var(--font-mono);
       font-size: 11px;
-      font-weight: 760;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
@@ -852,7 +857,7 @@
       border-radius: 6px;
       color: var(--cyan);
       font-size: 13px;
-      font-weight: 760;
+      font-weight: 700;
       padding: 9px 10px;
       text-decoration: none;
       background: rgba(2, 5, 2, 0.42);
@@ -882,7 +887,7 @@
       color: var(--green);
       font-family: var(--font-mono);
       font-size: 12px;
-      font-weight: 760;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
@@ -955,7 +960,7 @@
       border-radius: 6px;
       color: var(--blue);
       font-size: 13px;
-      font-weight: 760;
+      font-weight: 700;
       padding: 8px 10px;
       text-decoration: none;
       background: rgba(2, 5, 2, 0.48);
@@ -996,7 +1001,7 @@
       color: #020502;
       background: var(--green);
       font-family: var(--font-mono);
-      font-weight: 800;
+      font-weight: 700;
       font-variant-numeric: tabular-nums;
     }
     .reading-card h3 { margin: 0; font-size: 17px; line-height: 1.22; }
@@ -1012,7 +1017,7 @@
       border-radius: 6px;
       color: var(--cyan);
       font-size: 12px;
-      font-weight: 740;
+      font-weight: 700;
       padding: 7px 8px;
       text-decoration: none;
       background: rgba(2, 5, 2, 0.42);
@@ -1074,7 +1079,7 @@
       border-radius: 6px;
       color: var(--blue);
       font-size: 13px;
-      font-weight: 740;
+      font-weight: 700;
       padding: 7px 9px;
       text-decoration: none;
       background: rgba(2, 5, 2, 0.42);
@@ -1096,7 +1101,7 @@
     }
     .model:hover { transform: translateY(-3px); box-shadow: 0 18px 38px rgba(164, 242, 127, 0.08); }
     .model h3 { margin: 0; font-size: 15px; }
-    .model .score { display: block; margin-top: 18px; font-family: var(--font-mono); font-size: 33px; font-weight: 760; line-height: 1; font-variant-numeric: tabular-nums; }
+    .model .score { display: block; margin-top: 18px; font-family: var(--font-mono); font-size: 33px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
     .model .meta { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; }
 
     .task-toolbar {
@@ -1164,7 +1169,7 @@
       display: block;
       font-family: var(--font-ui);
       font-size: 21px;
-      font-weight: 800;
+      font-weight: 700;
       line-height: 1.08;
       letter-spacing: 0;
       text-wrap: balance;
@@ -1269,7 +1274,7 @@
       color: var(--green);
       font-family: var(--font-mono);
       font-size: 12px;
-      font-weight: 740;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
@@ -1315,7 +1320,7 @@
       background: rgba(164, 242, 127, 0.10);
       color: var(--green);
       font-size: 11px;
-      font-weight: 740;
+      font-weight: 700;
     }
     .direction-counts {
       display: grid;
@@ -1436,7 +1441,7 @@
       padding: 7px 10px;
       font-family: var(--font-mono);
       font-size: 11px;
-      font-weight: 740;
+      font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       backdrop-filter: blur(12px);
@@ -1467,7 +1472,7 @@
       padding: 0 12px;
       font: inherit;
       font-size: 13px;
-      font-weight: 720;
+      font-weight: 700;
       cursor: pointer;
     }
     .player-controls button.primary-control {
@@ -1717,7 +1722,7 @@
     }
     .artifact:hover { transform: translateY(-3px); border-color: var(--green); }
     .artifact h3 { line-height: 1.18; }
-    .artifact a { display: inline-block; margin-top: 14px; font-weight: 740; text-decoration: none; color: var(--blue); }
+    .artifact a { display: inline-block; margin-top: 14px; font-weight: 700; text-decoration: none; color: var(--blue); }
     .artifact a:hover { text-decoration: underline; text-underline-offset: 4px; }
     .repro-note {
       margin: 0 0 18px;
