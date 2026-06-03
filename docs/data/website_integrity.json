@@ -1,14 +1,14 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-03T13:07:43+00:00",
+  "generated_at_utc": "2026-06-03T14:22:46+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 131,
-    "external_reference_count": 88,
-    "json_files": 30,
-    "image_assets_referenced": 20,
+    "local_references": 136,
+    "external_reference_count": 90,
+    "json_files": 31,
+    "image_assets_referenced": 21,
     "failure_count": 0
   },
   "failures": {
@@ -75,7 +75,7 @@
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
       "overview_index": 66066,
-      "evidence_index": 80505
+      "evidence_index": 80778
     },
     {
       "name": "project_status_links_json",
@@ -150,7 +150,7 @@
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
       "overview_index": 66066,
       "protocol_index": 77908,
-      "evidence_index": 80505
+      "evidence_index": 80778
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -224,8 +224,8 @@
     {
       "path": "index.html",
       "id_count": 75,
-      "reference_count": 109,
-      "image_count": 22
+      "reference_count": 114,
+      "image_count": 23
     },
     {
       "path": "research_roadmap.html",
@@ -243,7 +243,12 @@
   "json_files": [
     {
       "path": "data/artifact_index.json",
-      "bytes": 29016,
+      "bytes": 31423,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/audio_ablation_summary.json",
+      "bytes": 9735,
       "top_level_type": "dict"
     },
     {
@@ -268,12 +273,12 @@
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 68740,
+      "bytes": 68744,
       "top_level_type": "dict"
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 103779,
+      "bytes": 108702,
       "top_level_type": "dict"
     },
     {
@@ -298,17 +303,17 @@
     },
     {
       "path": "data/project_status.json",
-      "bytes": 7340,
+      "bytes": 8162,
       "top_level_type": "dict"
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 5647,
+      "bytes": 5648,
       "top_level_type": "dict"
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 8317,
+      "bytes": 7289,
       "top_level_type": "dict"
     },
     {
@@ -348,7 +353,7 @@
     },
     {
       "path": "data/research_takeaways.json",
-      "bytes": 5356,
+      "bytes": 6814,
       "top_level_type": "dict"
     },
     {
@@ -363,7 +368,7 @@
     },
     {
       "path": "data/source_alignment_audit.json",
-      "bytes": 4432,
+      "bytes": 4874,
       "top_level_type": "dict"
     },
     {
@@ -383,7 +388,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 14311,
+      "bytes": 14587,
       "top_level_type": "dict"
     },
     {
@@ -408,6 +413,13 @@
       "width": 192,
       "height": 192,
       "format": "PNG"
+    },
+    {
+      "path": "assets/charts/audio_ablation_delta.svg",
+      "exists": true,
+      "bytes": 4146,
+      "format": "SVG",
+      "has_viewbox": true
     },
     {
       "path": "assets/charts/cross_modal_retrieval.svg",

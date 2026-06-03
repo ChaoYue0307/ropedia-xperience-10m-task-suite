@@ -92,6 +92,7 @@ multi-episode held-out model metrics:
 | Feature contract | `results/episode_task_suite/feature_manifest.json`, `available_modalities.json` | 8,546 current features, including a real AAC audio block decoded from `fisheye_cam0.mp4` |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | defines windowing, chronological split, leakage controls, per-task metrics, and current limitations |
 | Research takeaways | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | summarizes result interpretation from committed metrics and identifies which experiments need held-out episodes |
+| Audio ablation | `scripts/audio_ablation_and_raw_upgrade.py`, `results/audio_ablation/`, `docs/data/audio_ablation_summary.json` | measures current AAC audio contribution and a raw log-mel audio replacement across all 12 task contracts |
 | Research roadmap | `RESEARCH_ROADMAP.md`, `docs/research_roadmap.html`, `docs/data/research_roadmap.json`, `docs/data/research_roadmap_interactive.json` | stages and visualizes the path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions |
 | 12-task suite | `scripts/episode_task_suite.py`, per-task `metrics.json`, predictions | chronological single-episode split |
 | Single-episode diagnostics | `scripts/single_episode_diagnostics.py`, `results/single_episode_diagnostics/`, `docs/single_episode_explorer.html` | modality ablations, timeline overlay, object-label export, alignment stress tests, and interactive window inspection from one sample episode |
@@ -641,7 +642,7 @@ Current direction-level coverage:
 | --- | --- | --- | --- |
 | A. Human Modeling & Motion Understanding | Partially implemented | Hand Trajectory Forecasting and Contact State Prediction are direct; Action Recognition and Object Relevance Prediction are proxies. Neural MLP improves hand forecasting from `0.8647` to `0.1079` MPJPE. | No full body/shape model, SMPL/MANO target, deformation prior, or multi-episode motion-generation evaluation yet. |
 | B. 3D/4D Reconstruction & Neural Rendering | Proxy tasks only | Cross-Modal Retrieval, Cross-Modal Reconstruction, and Multimodal Synchronization Detection test alignment/reconstruction prerequisites. | No NeRF, Gaussian Splatting, TSDF, mesh, novel-view synthesis, or calibrated 4D reconstruction model yet. |
-| C. Egocentric Vision & Interaction | Strongest implemented track | 6 direct tasks: action, subtask, transition, next-action, object relevance, and caption grounding, plus alignment/order diagnostics. | Single-episode chronological split limits generalization; audio and stronger video-language backbones still need to be added. |
+| C. Egocentric Vision & Interaction | Strongest implemented track | 6 direct tasks: action, subtask, transition, next-action, object relevance, and caption grounding, plus alignment/order diagnostics and audio ablation. | Single-episode chronological split limits generalization; stronger audio and video-language backbones still need multi-episode testing. |
 | D. Scene Reconstruction & World Modeling | Early proxy tasks | Procedure Step Recognition, Next-Action Prediction, Object Relevance Prediction, Cross-Modal Retrieval, Cross-Modal Reconstruction, Temporal Order Verification, and Multimodal Synchronization Detection provide state/world-model probes. | No persistent scene graph, object permanence task, long-term map, or held-out-episode world model yet. |
 
 The important interpretation is that all four directions can be **started** from
@@ -777,6 +778,35 @@ The task-specific heads are:
 | Neural MLP hand forecast | 0.1079 MPJPE | n/a | Same features/split, nonlinear regression head |
 | Neural MLP temporal order | 0.8520 F1 | 0.8578 | Strong improvement on adjacent-window ordering |
 | Neural MLP misalignment | 0.7153 F1 | 0.7009 | Detects shifted motion/visual/audio pairs better than the linear head |
+| Audio ablation | +0.0418 mean delta | n/a | Current AAC audio improves the primary metric on 6 of 12 task contracts |
+| Raw log-mel audio replacement | +0.0936 mean delta | n/a | Raw log-mel replacement beats current handcrafted audio on 6 of 12 task contracts |
+
+## Audio Ablation and Raw-Audio Upgrade
+
+The current AAC audio block is now tested rather than only included. The script
+[`scripts/audio_ablation_and_raw_upgrade.py`](scripts/audio_ablation_and_raw_upgrade.py)
+reuses the real task-suite windows, decodes the local public-sample
+`fisheye_cam0.mp4` audio stream, builds a 588-d raw log-mel window feature, and
+evaluates six variants for every task: current features, no audio,
+handcrafted-audio-only, raw-audio-only, handcrafted audio replaced by raw
+log-mel, and current features plus raw log-mel.
+
+The measured single-episode result is task-specific:
+
+| Readout | Value |
+| --- | ---: |
+| Tasks where current AAC audio improves the primary metric | 6 / 12 |
+| Mean current-audio delta | +0.0418 |
+| Tasks where raw log-mel replacement improves over handcrafted AAC | 6 / 12 |
+| Mean raw-replacement delta vs current audio | +0.0936 |
+
+Full files:
+
+- [`results/audio_ablation/AUDIO_ABLATION_SUMMARY.md`](results/audio_ablation/AUDIO_ABLATION_SUMMARY.md)
+- [`results/audio_ablation/audio_ablation_metrics.csv`](results/audio_ablation/audio_ablation_metrics.csv)
+- [`results/audio_ablation/audio_delta_summary.csv`](results/audio_ablation/audio_delta_summary.csv)
+- [`docs/data/audio_ablation_summary.json`](docs/data/audio_ablation_summary.json)
+- [`docs/assets/charts/audio_ablation_delta.svg`](docs/assets/charts/audio_ablation_delta.svg)
 
 ## Neural MLP Results
 

@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SUMMARY_PATH = ROOT / "docs/data/summary_metrics.json"
+AUDIO_PATH = ROOT / "docs/data/audio_ablation_summary.json"
 OUTPUT_JSON = ROOT / "docs/data/research_takeaways.json"
 OUTPUT_MD = ROOT / "RESEARCH_TAKEAWAYS.md"
 
@@ -36,6 +37,7 @@ def task_metric(tasks: dict, task: str, key: str) -> float:
 
 def build_payload() -> dict:
     summary = json.loads(SUMMARY_PATH.read_text(encoding="utf-8"))
+    audio_summary = json.loads(AUDIO_PATH.read_text(encoding="utf-8")) if AUDIO_PATH.exists() else None
     suite = summary["suite"]
     tasks = suite["tasks"]
     neural = suite.get("neural_tasks", {})
@@ -124,6 +126,44 @@ def build_payload() -> dict:
             "source": "results/episode_task_suite/cross_modal_retrieval/metrics.json",
             "current_scope": "The current reconstruction task predicts feature vectors; depth, mesh, NeRF, and Gaussian-splatting outputs are future task variants.",
         },
+    ]
+
+    if audio_summary is not None:
+        audio_aggregate = audio_summary["aggregate"]
+        modality_recon = next(
+            (item for item in audio_summary["task_summaries"] if item["task"] == "modality_reconstruction"),
+            {},
+        )
+        object_relevance = next(
+            (item for item in audio_summary["task_summaries"] if item["task"] == "object_relevance"),
+            {},
+        )
+        takeaways.append(
+            {
+                "id": "audio_contribution_is_task_specific",
+                "title": "Audio helps some tasks and hurts others on the public sample",
+                "readout": (
+                    "The current AAC audio block improves the primary metric on 6 of 12 tasks, "
+                    "while raw log-mel replacement improves over the current handcrafted block on 6 of 12 tasks. "
+                    "The largest current-audio gain appears in feature reconstruction, not in action classification."
+                ),
+                "evidence": [
+                    {"label": "tasks_where_current_audio_improves", "value": audio_aggregate["tasks_where_handcrafted_audio_improves"]},
+                    {"label": "mean_current_audio_delta", "value": audio_aggregate["mean_handcrafted_audio_delta"]},
+                    {"label": "tasks_where_raw_replacement_improves", "value": audio_aggregate["tasks_where_raw_replacement_improves_over_handcrafted"]},
+                    {"label": "mean_raw_replacement_delta_vs_current", "value": audio_aggregate["mean_raw_replacement_delta_vs_handcrafted"]},
+                    {"label": "reconstruction_current_audio_delta", "value": modality_recon.get("handcrafted_audio_delta")},
+                    {"label": "object_relevance_current_audio_delta", "value": object_relevance.get("handcrafted_audio_delta")},
+                ],
+                "source": "results/audio_ablation/audio_ablation_summary.json",
+                "current_scope": (
+                    "This is a single-episode ablation over fixed ridge heads. It validates that audio is wired into the task suite "
+                    "and shows where it changes metrics; it does not prove cross-episode audio generalization."
+                ),
+            }
+        )
+
+    takeaways.append(
         {
             "id": "scale_requires_episodes",
             "title": "The next scientific unit is held-out episodes, not more adjacent windows",
@@ -141,8 +181,8 @@ def build_payload() -> dict:
                 "current_scope",
                 "The 32-episode fine-tune requires gated data staging and held-out evaluation.",
             ),
-        },
-    ]
+        }
+    )
 
     return {
         "title": "Ropedia Xperience-10M Research Takeaways",
@@ -152,6 +192,7 @@ def build_payload() -> dict:
             "docs/data/summary_metrics.json",
             "results/episode_task_suite/summary_report.json",
             "results/episode_task_suite/neural_mlp/*/metrics.json",
+            "docs/data/audio_ablation_summary.json",
             "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
         ],
         "scope": {
@@ -215,8 +256,9 @@ def render_md(payload: dict) -> str:
             "",
             "- High single-episode scores are useful pipeline checks for the current task contracts.",
             "- Low chronological action/subtask scores are informative because they expose later-label shift.",
-            "- Neural gains on trajectory/order/alignment make those tasks good candidates for the next fine-tuning stage.",
-            "- Retrieval and reconstruction remain the main multimodal representation challenges.",
+        "- Neural gains on trajectory/order/alignment make those tasks good candidates for the next fine-tuning stage.",
+        "- Audio ablation is task-specific: current AAC and raw log-mel features help some probes and hurt others.",
+        "- Retrieval and reconstruction remain the main multimodal representation challenges.",
             "- The next credible model-quality result needs held-out episodes.",
             "",
         ]

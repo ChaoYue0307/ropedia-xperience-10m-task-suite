@@ -78,6 +78,23 @@ Source: `results/episode_task_suite/cross_modal_retrieval/metrics.json`.
 
 Current scope: The current reconstruction task predicts feature vectors; depth, mesh, NeRF, and Gaussian-splatting outputs are future task variants.
 
+### Audio helps some tasks and hurts others on the public sample
+
+The current AAC audio block improves the primary metric on 6 of 12 tasks, while raw log-mel replacement improves over the current handcrafted block on 6 of 12 tasks. The largest current-audio gain appears in feature reconstruction, not in action classification.
+
+| Metric | Value |
+| --- | ---: |
+| `tasks_where_current_audio_improves` | 6 |
+| `mean_current_audio_delta` | 0.0418 |
+| `tasks_where_raw_replacement_improves` | 6 |
+| `mean_raw_replacement_delta_vs_current` | 0.0936 |
+| `reconstruction_current_audio_delta` | 0.6524 |
+| `object_relevance_current_audio_delta` | 0.0102 |
+
+Source: `results/audio_ablation/audio_ablation_summary.json`.
+
+Current scope: This is a single-episode ablation over fixed ridge heads. It validates that audio is wired into the task suite and shows where it changes metrics; it does not prove cross-episode audio generalization.
+
 ### The next scientific unit is held-out episodes, not more adjacent windows
 
 The prepared Qwen3-Omni path targets 32 episodes from 32 sessions, but it remains data-gated until access and held-out evaluation complete.
@@ -97,5 +114,6 @@ Current scope: The 32-episode Qwen3-Omni fine-tune requires gated data staging a
 - High single-episode scores are useful pipeline checks for the current task contracts.
 - Low chronological action/subtask scores are informative because they expose later-label shift.
 - Neural gains on trajectory/order/alignment make those tasks good candidates for the next fine-tuning stage.
+- Audio ablation is task-specific: current AAC and raw log-mel features help some probes and hurt others.
 - Retrieval and reconstruction remain the main multimodal representation challenges.
 - The next credible model-quality result needs held-out episodes.

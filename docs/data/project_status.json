@@ -45,6 +45,16 @@
             "readout": "Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split."
         },
         {
+            "area": "Audio ablation and raw-audio upgrade",
+            "status": "verified",
+            "evidence": [
+                "scripts/audio_ablation_and_raw_upgrade.py",
+                "results/audio_ablation/",
+                "docs/data/audio_ablation_summary.json"
+            ],
+            "readout": "Current AAC audio improves the primary metric on 6 of 12 task contracts; replacing the current handcrafted block with a 588-d raw log-mel feature improves over current audio on 6 of 12 tasks."
+        },
+        {
             "area": "Evaluation protocol",
             "status": "verified",
             "evidence": [
@@ -147,6 +157,7 @@
         "Inspect RESEARCH_TAKEAWAYS.md and docs/data/research_takeaways.json before interpreting model scores.",
         "Inspect RESEARCH_ROADMAP.md and docs/data/research_roadmap.json for the staged path from public-sample task work to multi-episode modeling.",
         "Inspect docs/data/summary_metrics.json and results/episode_task_suite/neural_mlp/ to check the 12-task outputs.",
+        "Inspect results/audio_ablation/AUDIO_ABLATION_SUMMARY.md before judging whether audio helps the current task suite.",
         "Inspect EVALUATION_PROTOCOL.md before judging task metrics or leakage controls.",
         "Inspect SOURCE_ALIGNMENT_AUDIT.md before judging source-card consistency across public surfaces.",
         "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
@@ -156,6 +167,7 @@
     "Cross-episode generalization is evaluated in the later multi-episode stage.",
     "Historical 32ep path names refer to setup files, not completed 32-episode training results.",
     "The current reconstruction task reconstructs feature vectors, not pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
-    "AAC audio is decoded from fisheye_cam0.mp4 and included in the current 8,546-dimensional baseline feature vector."
+    "AAC audio is decoded from fisheye_cam0.mp4 and included in the current 8,546-dimensional baseline feature vector.",
+    "Audio is now evaluated directly: the current AAC block and a raw log-mel replacement are compared across all 12 task contracts in results/audio_ablation/."
   ]
 }

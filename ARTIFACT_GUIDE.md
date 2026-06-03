@@ -21,7 +21,8 @@ The project separates these reading layers:
 6. **Data contract:** how one public Xperience-10M sample episode becomes
    aligned model windows and feature blocks.
 7. **Task evidence:** minimal and neural results for the 12 task contracts plus
-   four research-direction extension probes.
+   audio ablation, raw-audio feature replacement, and four research-direction
+   extension probes.
 8. **Reproducibility:** public commands, expected outputs, and exact-match
    evidence for the single-episode pipeline.
 9. **Public project surface:** repo, website, and Hugging Face pages,
@@ -51,6 +52,8 @@ The project separates these reading layers:
 | [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable source-alignment summary, including gated metadata, sample license/tooling, and current project coverage. |
 | [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable source metadata and HF card parity report. |
 | [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | Machine-readable evaluation protocol generated from committed metrics. |
+| [`results/audio_ablation/AUDIO_ABLATION_SUMMARY.md`](results/audio_ablation/AUDIO_ABLATION_SUMMARY.md) | Shows measured current-audio and raw log-mel replacement deltas across the 12 task contracts. |
+| [`docs/data/audio_ablation_summary.json`](docs/data/audio_ablation_summary.json) | Machine-readable audio ablation summary for website and HF mirrors. |
 | [`docs/data/quality_gates.json`](docs/data/quality_gates.json) | Machine-readable release-check summary for website and HF mirrors. |
 | [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable public project-surface report for website, repo, and Hugging Face pages. |
 | [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json) | Last live GitHub/HF verification after upload. |
@@ -101,6 +104,7 @@ The project separates these reading layers:
 | [`results/episode_task_suite/windows.csv`](results/episode_task_suite/windows.csv) | The sample episode is converted into 1,161 aligned 20-frame windows. |
 | [`results/episode_task_suite/feature_manifest.json`](results/episode_task_suite/feature_manifest.json) | The current input vector has 8,546 dimensions with explicit feature-block boundaries, including a 168-d AAC audio block. |
 | [`results/episode_task_suite/available_modalities.json`](results/episode_task_suite/available_modalities.json) | The sample modality coverage is recorded, including the current audio-featurization status. |
+| [`results/audio_ablation/raw_logmel_fisheye_cam0_sr16000_mels64_fft512_hop160.npz`](results/audio_ablation/raw_logmel_fisheye_cam0_sr16000_mels64_fft512_hop160.npz) | Derived 588-d raw log-mel window features decoded from the local public-sample MP4 audio stream; raw audio itself is not redistributed. |
 | [`docs/data/modality_atlas.json`](docs/data/modality_atlas.json) | The responsive website modality cards and derived thumbnail assets are documented without redistributing raw data. |
 | [`docs/assets/modalities/`](docs/assets/modalities/) | Small public-sample thumbnails used by the readable modality atlas. |
 
@@ -113,6 +117,9 @@ The project separates these reading layers:
 | [`results/episode_task_suite/research_directions/`](results/episode_task_suite/research_directions/) | Mapping from the 12 tasks to the four Ropedia research directions. |
 | [`results/episode_task_suite/research_direction_extensions/`](results/episode_task_suite/research_direction_extensions/) | Four additional coded probes, one per research direction. |
 | [`results/episode_task_suite/task_walkthroughs/`](results/episode_task_suite/task_walkthroughs/) | Human-readable research names and case studies explaining input, process modules, output, metric, limitation, and the website task-player data. |
+| [`results/audio_ablation/audio_ablation_metrics.csv`](results/audio_ablation/audio_ablation_metrics.csv) | All 72 measured audio rows: 12 tasks times six variants, including no-audio, handcrafted-audio-only, raw-audio-only, raw replacement, and all-plus-raw. |
+| [`results/audio_ablation/audio_delta_summary.csv`](results/audio_ablation/audio_delta_summary.csv) | Compact per-task audio delta table for quick manual inspection. |
+| [`scripts/audio_ablation_and_raw_upgrade.py`](scripts/audio_ablation_and_raw_upgrade.py) | Regenerates current-AAC audio ablation and raw log-mel upgrade results from real task-suite artifacts plus the local public-sample MP4. |
 | [`scripts/validate_task_surface.py`](scripts/validate_task_surface.py) | Fails publication if public task cards drift back to raw artifact ids or lose their thumbnail/player wiring. |
 
 ## Reproducibility
