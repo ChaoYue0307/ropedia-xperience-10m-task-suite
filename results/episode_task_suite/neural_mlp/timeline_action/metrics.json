@@ -1,8 +1,8 @@
 {
-  "accuracy": 0.014577259475218658,
-  "balanced_accuracy": 0.015625,
-  "macro_f1": 0.02631578947368421,
-  "weighted_f1": 0.024551173852999847,
+  "accuracy": 0.008746355685131196,
+  "balanced_accuracy": 0.009375,
+  "macro_f1": 0.014814814814814814,
+  "weighted_f1": 0.013821401576503616,
   "num_eval_windows": 343,
   "num_classes": 18,
   "task": "timeline_action",
@@ -11,7 +11,7 @@
   "num_windows": 1144,
   "num_train_windows": 801,
   "num_test_windows": 343,
-  "feature_dim": 8378,
+  "feature_dim": 8546,
   "majority_baseline_accuracy": 0.0,
   "unseen_test_classes": [
     "Place item on table",
@@ -28,6 +28,6 @@
   "neural_weight_decay": 0.0001,
   "neural_dropout": 0.1,
   "neural_device": "cpu",
-  "train_final_loss": 0.0001524056650931597,
-  "train_final_accuracy": 1.0
+  "train_final_loss": 0.04246756529782,
+  "train_final_accuracy": 0.9875156054931336
 }
