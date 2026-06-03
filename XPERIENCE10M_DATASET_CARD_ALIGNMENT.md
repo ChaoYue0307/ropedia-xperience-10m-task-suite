@@ -155,10 +155,10 @@ multimodal records. The relevant groups include:
 - video timing: timestamps, frame numbers, and video duration
 - language/caption annotations and metadata
 
-This repo's current 8,378-d feature vector uses video-derived statistics,
-depth, pose/SLAM, calibration, mocap, IMU, and language-derived blocks. Audio
-is documented and visualized, but it is not yet extracted into the current
-baseline feature vector.
+This repo's current 8,546-d feature vector uses video-derived statistics,
+AAC audio, depth, pose/SLAM, calibration, mocap, IMU, and language-derived
+blocks. The AAC block is decoded from `fisheye_cam0.mp4` and recorded in the
+feature manifest as `audio_fisheye_cam0_aac`.
 
 ## Intended Research Uses
 
@@ -209,7 +209,8 @@ When describing Xperience-10M in this repo, keep these limitations visible:
 - motion capture, SLAM, depth, captions, and other annotations can contain noise
 - language annotations are not exhaustive descriptions of every scene state
 - large-scale training requires substantial storage, preprocessing, and compute
-- the current feature vector does not include an extracted audio feature block
+- the current feature vector includes a compact AAC audio feature block, while
+  larger audio-visual representation learning remains a multi-episode milestone
 
 ## Current Project Alignment
 
@@ -220,6 +221,6 @@ When describing Xperience-10M in this repo, keep these limitations visible:
 | Public sample repo is `cc-by-nc-4.0` and points to HOMIE/Rerun | Preserved in data notice and reproducibility docs |
 | Public sample includes video/audio/depth/pose/mocap/IMU/language | Represented in the modality atlas |
 | Episode layout uses six MP4 streams and `annotation.hdf5` | Used by sample inspection and pilot-readiness scripts |
-| Audio exists in MP4 streams | Documented and visualized, not featurized |
+| Audio exists in MP4 streams | Decoded into the current `audio_fisheye_cam0_aac` feature block |
 | 4D reconstruction/world modeling are intended research directions | Represented by proxy/diagnostic tasks only |
 | Real model quality requires held-out multi-episode evaluation | Pending the 32-episode pilot |

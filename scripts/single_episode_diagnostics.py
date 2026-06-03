@@ -64,6 +64,7 @@ GROUP_DISPLAY = {
     "pose_slam": "Pose + SLAM",
     "motion_capture": "Motion Capture",
     "inertial": "Inertial",
+    "audio": "Audio",
     "language": "Language",
     "no_language": "All Except Language",
     "motion_pose_inertial": "Motion + Pose + IMU",
@@ -239,6 +240,7 @@ def modality_groups(manifest: list[dict]) -> dict[str, np.ndarray]:
         "pose_slam": block_indices(manifest, ["camera_translation", "camera_rotation_matrix", "slam_point_cloud", "calibration"]),
         "motion_capture": block_indices(manifest, ["hand_left_joints", "hand_right_joints", "body_joints", "body_contacts"]),
         "inertial": block_indices(manifest, ["imu_accel_gyro"]),
+        "audio": block_indices(manifest, ["audio_"]),
         "language": language,
         "no_language": np.setdiff1d(all_idx, language),
     }
@@ -1011,6 +1013,8 @@ def run_alignment_stress(
         "language": groups["language"],
         "motion_pose_inertial": np.unique(np.concatenate([groups["motion_capture"], groups["pose_slam"], groups["inertial"]])),
     }
+    if "audio" in groups:
+        stress_groups["audio"] = groups["audio"]
     target_idx = block_indices(manifest, ["depth_confidence", "video_"])
     n = X.shape[0]
     train_idx, test_idx = chronological_split(n, args.test_fraction)

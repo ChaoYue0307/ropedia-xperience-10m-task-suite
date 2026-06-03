@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-03T07:49:54+00:00",
+  "generated_at_utc": "2026-06-03T13:11:55+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -186,18 +186,18 @@
       "text_file_count": 291,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
-        "bytes": 52601010
+        "bytes": 55702978
       },
       "violations": []
     },
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 137,
-      "text_file_count": 110,
+      "file_count": 304,
+      "text_file_count": 240,
       "largest_file": {
-        "path": "data/single_episode_explorer.json",
-        "bytes": 4101241
+        "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
+        "bytes": 55702978
       },
       "violations": []
     },
@@ -208,18 +208,18 @@
       "text_file_count": 300,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
-        "bytes": 52601010
+        "bytes": 55702978
       },
       "violations": []
     },
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 569,
-      "text_file_count": 453,
+      "file_count": 607,
+      "text_file_count": 486,
       "largest_file": {
-        "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
-        "bytes": 52601010
+        "path": "artifacts/episode_task_suite/modality_reconstruction/predictions.npz",
+        "bytes": 55702978
       },
       "violations": []
     }

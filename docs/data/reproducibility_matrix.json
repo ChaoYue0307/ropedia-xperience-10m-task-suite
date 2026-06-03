@@ -40,7 +40,7 @@
       "status": "reproducible",
       "command": "python scripts/episode_task_suite.py --workspace $WORKSPACE --include-neural",
       "expected": "12 task metrics, predictions, manifests, and neural_mlp task-head artifacts",
-      "boundary": "8,378-d current feature contract; audio documented but not featurized"
+      "boundary": "8,546-d current feature contract, including the decoded AAC audio block"
     },
         {
             "id": "research_direction_outputs",

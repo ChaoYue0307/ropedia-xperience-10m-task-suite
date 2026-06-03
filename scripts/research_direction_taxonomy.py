@@ -70,7 +70,7 @@ DIRECTIONS: OrderedDict[str, dict[str, Any]] = OrderedDict(
                 "current_readout": "Most of the 12 tasks directly target egocentric action, task state, interaction, grounding, and alignment.",
                 "next_steps": [
                     "Move from single-episode chronological splits to held-out-episode splits.",
-                    "Add audio features and stronger multimodal backbones for action, intent, and grounding.",
+                    "Use the extracted AAC audio block with stronger multimodal backbones for action, intent, and grounding.",
                     "Evaluate long-horizon task success prediction and action-conditioned generation.",
                 ],
             },
@@ -371,7 +371,7 @@ def build_taxonomy(summary: dict[str, Any]) -> dict[str, Any]:
             "warning": "Single public sample episode; this supports pipeline/task evidence, while cross-episode generalization requires held-out episodes.",
         },
         "baselines": {
-            "minimal": "Interpretable softmax, logistic, ridge, and retrieval heads over the 8,378-d window feature vector.",
+            "minimal": f"Interpretable softmax, logistic, ridge, and retrieval heads over the {summary.get('feature_dim'):,}-d window feature vector.",
             "neural_mlp": "Small PyTorch MLP classifiers/regressors using the same features, splits, and task contracts.",
         },
         "directions": direction_records,

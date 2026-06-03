@@ -61,7 +61,7 @@ def build_payload() -> dict:
             "title": "One episode can become a real benchmark contract",
             "readout": (
                 "The public sample is converted into 5,821 frames, 1,161 aligned "
-                "20-frame windows, and an 8,378-dimensional feature contract."
+                f"20-frame windows, and an {suite['feature_dim']:,}-dimensional feature contract."
             ),
             "evidence": [
                 {"label": "frames", "value": suite["num_frames"]},
@@ -159,7 +159,7 @@ def build_payload() -> dict:
             "num_frames": suite["num_frames"],
             "num_windows": suite["num_windows"],
             "feature_dim": suite["feature_dim"],
-            "audio_featurized": False,
+            "audio_featurized": True,
             "raw_data_redistributed": False,
         },
         "takeaways": takeaways,
@@ -181,7 +181,7 @@ def render_md(payload: dict) -> str:
         f"- aligned windows: {payload['scope']['num_windows']:,}",
         f"- current feature dimension: {payload['scope']['feature_dim']:,}",
         "- raw Xperience-10M data is not redistributed",
-        "- audio is documented and visualized, but not yet featurized",
+        "- AAC audio from the sample MP4 stream is extracted into the current feature vector",
         "",
         "## Takeaways",
         "",

@@ -82,7 +82,7 @@ def main() -> int:
             "image": f"assets/modalities/{output_path.name}",
             "image_size": image_size(output_path),
             "source": "Derived thumbnail from the public Xperience-10M sample episode.",
-            "feature_status": "documented_not_featurized" if name == "audio" else "featurized_or_label_source",
+            "feature_status": "featurized_or_label_source",
         })
 
     manifest = {
@@ -92,7 +92,7 @@ def main() -> int:
         "notes": [
             "Images are lightweight derived thumbnails for review and website presentation.",
             "Raw MP4, HDF5, and RRD files remain excluded from the public repo and Hugging Face bundles.",
-            "Audio is present in the MP4 stream but is not yet featurized in the current 8,378-d baseline vector.",
+            "AAC audio is extracted from the sample MP4 stream and included in the current baseline feature vector.",
         ],
         "modalities": records,
     }

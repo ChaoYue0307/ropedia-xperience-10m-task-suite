@@ -186,7 +186,7 @@ def build_payload() -> dict:
             "feature_dim": suite["feature_dim"],
             "window_frames": suite["window_frames"],
             "stride_frames": suite["stride_frames"],
-            "audio_featurized": False,
+            "audio_featurized": True,
             "raw_data_redistributed": False,
         },
         "split_policy": {
@@ -197,10 +197,10 @@ def build_payload() -> dict:
             "limitation": "It is still one episode; cross-episode generalization is evaluated in the multi-episode stage.",
         },
         "feature_policy": {
-            "input_contract": "8,378-dimensional current feature vector",
+            "input_contract": f"{suite['feature_dim']:,}-dimensional current feature vector",
             "source_manifest": "results/episode_task_suite/feature_manifest.json",
             "normalization": "Scalers are fit on train windows only for the baseline heads.",
-            "audio_status": "Audio is present in sample MP4 streams and visualized in the atlas, but not extracted into the current 8,378-d feature vector.",
+            "audio_status": "AAC audio is extracted from the sample MP4 stream and included in the current feature vector.",
         },
         "baselines": [
             {
@@ -227,7 +227,7 @@ def build_payload() -> dict:
             "Cross-episode generalization is evaluated in the later multi-episode stage.",
             "Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.",
             "Qwen3-Omni setup artifacts are preparation artifacts until the 32-episode held-out pilot runs.",
-            "Audio-visual learning needs an extracted audio feature block; audio is documented and visualized but not featurized in the current baseline vector.",
+            "Full audio-visual representation learning still needs multi-episode training, but the current baseline vector now includes an extracted AAC audio feature block.",
         ],
         "scale_up_gate": {
             "required_before_full_omni_pilot": [
@@ -294,7 +294,7 @@ def render_markdown(payload: dict) -> str:
         f"| Current feature vector | {scope['feature_dim']:,} dimensions |",
         f"| Split | chronological {int(split['train_fraction'] * 100)}/{int(split['test_fraction'] * 100)} train/test by time |",
         "| Baselines | minimal interpretable heads plus compact neural MLP heads |",
-        "| Audio | present in MP4 streams and visualized, but not featurized in the current baseline vector |",
+        "| Audio | AAC stream extracted from the sample MP4 and included in the current baseline vector |",
         "| Raw data | not redistributed |",
         "",
         "## Data Unit",

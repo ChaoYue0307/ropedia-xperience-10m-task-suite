@@ -2121,7 +2121,7 @@
         <div class="hero-stats">
           <div class="stat"><strong>5,821</strong><span>frames in sample episode</span></div>
           <div class="stat"><strong>1,161</strong><span>20-frame windows</span></div>
-          <div class="stat"><strong>8,378</strong><span>current feature dimensions</span></div>
+          <div class="stat"><strong>8,546</strong><span>current feature dimensions</span></div>
           <div class="stat"><strong>12+12+4</strong><span>core, neural, and extension probes</span></div>
         </div>
       </div>
@@ -2130,12 +2130,13 @@
           <span>current feature allocation</span>
           <span>window vector</span>
         </div>
-        <div class="signal"><code>mocap</code><div class="track"><span style="--w:25.3%;--c:#ccffa0"></span></div><strong>2,121</strong></div>
+        <div class="signal"><code>mocap</code><div class="track"><span style="--w:24.8%;--c:#ccffa0"></span></div><strong>2,121</strong></div>
         <div class="signal"><code>camera+imu</code><div class="track"><span style="--w:1.5%;--c:#7ae5c3"></span></div><strong>126</strong></div>
-        <div class="signal"><code>depth</code><div class="track"><span style="--w:11.7%;--c:#d8f4a5"></span></div><strong>980</strong></div>
-        <div class="signal"><code>video</code><div class="track"><span style="--w:49.1%;--c:#9bdfff"></span></div><strong>4,116</strong></div>
-        <div class="signal"><code>language</code><div class="track"><span style="--w:10.7%;--c:#f4f8ef"></span></div><strong>896</strong></div>
-        <div class="signal"><code>static</code><div class="track"><span style="--w:1.7%;--c:#a5afa2"></span></div><strong>139</strong></div>
+        <div class="signal"><code>depth</code><div class="track"><span style="--w:11.5%;--c:#d8f4a5"></span></div><strong>980</strong></div>
+        <div class="signal"><code>video</code><div class="track"><span style="--w:48.2%;--c:#9bdfff"></span></div><strong>4,116</strong></div>
+        <div class="signal"><code>audio</code><div class="track"><span style="--w:2.0%;--c:#f0a45e"></span></div><strong>168</strong></div>
+        <div class="signal"><code>language</code><div class="track"><span style="--w:10.5%;--c:#f4f8ef"></span></div><strong>896</strong></div>
+        <div class="signal"><code>static</code><div class="track"><span style="--w:1.6%;--c:#a5afa2"></span></div><strong>139</strong></div>
       </div>
     </div>
   </header>
@@ -2230,7 +2231,7 @@
             <div class="snapshot-meta">
               <span>frames <strong>5,821</strong></span>
               <span>windows <strong>1,161</strong></span>
-              <span>features <strong>8,378</strong></span>
+              <span>features <strong>8,546</strong></span>
             </div>
           </article>
           <article class="snapshot-card">
@@ -2367,7 +2368,7 @@
           <p>The protocol is generated from committed metric artifacts so readers can see the exact data unit, split, task targets, leakage controls, and current limitations before comparing scores.</p>
         </div>
         <div class="artifact-grid">
-          <article class="artifact primary-artifact"><div><h3>Data unit</h3><p>One 20-frame aligned window from the public sample episode, stride 5 frames, 1,161 windows total, represented by the current 8,378-d feature vector.</p></div><a href="data/evaluation_protocol.json">protocol JSON</a></article>
+          <article class="artifact primary-artifact"><div><h3>Data unit</h3><p>One 20-frame aligned window from the public sample episode, stride 5 frames, 1,161 windows total, represented by the current 8,546-d feature vector.</p></div><a href="data/evaluation_protocol.json">protocol JSON</a></article>
           <article class="artifact"><h3>Split policy</h3><p>Single-episode chronological 70/30 train/test split. This avoids random future-window mixing; cross-episode generalization is measured in the later multi-episode pilot.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVALUATION_PROTOCOL.md">protocol doc</a></article>
           <article class="artifact"><h3>Metric contract</h3><p>All 12 tasks list input, target, primary metric, minimal baseline score, and neural MLP score from committed result files.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target feature blocks, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
@@ -2387,7 +2388,7 @@
           <article class="evidence-card">
             <span class="status-pill">verified</span>
             <h3>Aligned Xperience-10M sample windows</h3>
-            <p>5,821 frames become 1,161 synchronized 20-frame windows with an explicit 8,378-d feature contract.</p>
+            <p>5,821 frames become 1,161 synchronized 20-frame windows with an explicit 8,546-d feature contract.</p>
             <div class="evidence-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a>
@@ -2531,7 +2532,7 @@
           <article class="reading-card">
             <span class="step-index">02</span>
             <h3>Inspect one model input</h3>
-            <p>Use the window table and feature manifest to see the exact aligned sample unit, feature blocks, dimensions, and omitted audio feature status.</p>
+            <p>Use the window table and feature manifest to see the exact aligned sample unit, feature blocks, dimensions, and real AAC audio feature block.</p>
             <div class="reading-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">windows</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">features</a>
@@ -2558,7 +2559,7 @@
           </article>
         </div>
         <div class="boundary-strip">
-          <div class="boundary-item"><strong>Verified now</strong><span>One public episode, 5,821 frames, 1,161 windows, 8,378 current features, 12 minimal heads, 12 neural heads, and 4 direction-extension probes.</span></div>
+          <div class="boundary-item"><strong>Verified now</strong><span>One public episode, 5,821 frames, 1,161 windows, 8,546 current features, 12 minimal heads, 12 neural heads, and 4 direction-extension probes.</span></div>
           <div class="boundary-item"><strong>Next: multi-episode</strong><span>A 32-episode held-out Qwen3-Omni LoRA pilot is gated on Xperience-10M access and must pass manifest, training, and evaluation checks.</span></div>
           <div class="boundary-item"><strong>Not redistributed</strong><span>Raw videos, raw annotations, full Qwen weights, and private gated Xperience-10M data are not included in the public repo or HF bundles.</span></div>
         </div>
@@ -2579,7 +2580,7 @@
           <article class="artifact"><h3>Public sample card</h3><p>The sample repo lists <code>cc-by-nc-4.0</code>, HOMIE Toolkit for videos/annotations, and Rerun 0.29.0 for <code>.rrd</code> visualization.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
           <article class="artifact"><h3>Source notes</h3><p>The source notes summarize full-dataset facts, public sample-card facts, API-listing notes, and project coverage across the repo, website, and HF cards.</p><a href="data/source_alignment_audit.json">alignment report</a></article>
           <article class="artifact"><h3>Episode layout</h3><p>Expected folders contain six MP4 streams and <code>annotation.hdf5</code>; <code>visualization.rrd</code> is treated as a viewer artifact and excluded from training downloads.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">alignment note</a></article>
-          <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 windows, 8,378 current features, audio documented but not yet featurized, and no raw-data redistribution.</p><a href="data/modality_atlas.json">modality atlas</a></article>
+          <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 windows, 8,546 current features including AAC audio, and no raw-data redistribution.</p><a href="data/modality_atlas.json">modality atlas</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, and misalignment.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Responsible use</h3><p>The official card notes limited diversity and showcase/production quality. This project excludes identity, surveillance, biometric, sensitive-attribute, and safety-critical uses.</p><a href="data/xperience10m_dataset_card_alignment.json">use notes</a></article>
           <article class="artifact"><h3>Later milestones</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, and 32-episode Qwen3-Omni evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a></article>
@@ -2591,7 +2592,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Ropedia Xperience-10M 12-task suite.</h2>
-          <p>The task map connects synchronized multimodal windows to 12 research task heads, then the modality atlas shows the sample streams used to build those contracts. Audio is present in the sample MP4 stream, but the current 8,378-d baseline manifest does not featurize it.</p>
+          <p>The task map connects synchronized multimodal windows to 12 research task heads, then the modality atlas shows the sample streams used to build those contracts. AAC audio is decoded from the sample MP4 stream and included in the current 8,546-d baseline manifest.</p>
         </div>
         <div class="figure-pan" id="task-suite-map">
           <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-taskfirst-v13-modality-xl" alt="Infographic showing all 12 Ropedia Xperience-10M tasks with enlarged full-width modality cards">
@@ -2613,7 +2614,7 @@
             <article class="atlas-card audio-card">
               <div class="atlas-top"><div><span class="atlas-index">02</span><h4>Audio</h4></div><span class="atlas-type">acoustic stream</span></div>
               <img src="assets/modalities/audio.png" alt="AAC waveform thumbnail from the public sample MP4 stream" loading="eager" decoding="async">
-              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>AAC stream embedded in MP4</p></div><div class="atlas-row"><span>current baseline use</span><p>Documented, not featurized in the 8,378-d vector</p></div></div>
+              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>AAC stream embedded in MP4</p></div><div class="atlas-row"><span>current baseline use</span><p>Decoded into a 168-d audio feature block</p></div></div>
             </article>
             <article class="atlas-card">
               <div class="atlas-top"><div><span class="atlas-index">03</span><h4>Depth</h4></div><span class="atlas-type">geometry map</span></div>
@@ -2676,18 +2677,18 @@
           <article class="artifact primary-artifact">
             <div>
               <h3>One episode becomes a benchmark contract</h3>
-              <p>The public sample is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,378-dimensional feature contract.</p>
+              <p>The public sample is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,546-dimensional feature contract.</p>
             </div>
             <a href="data/research_takeaways.json">research_takeaways.json</a>
           </article>
           <article class="artifact">
             <h3>Chronological split exposes class shift</h3>
-            <p>All-feature action reaches 0.9791 macro-F1 on its local split, while the 12-task chronological action head is 0.0500 macro-F1 with four unseen later action labels.</p>
+            <p>All-feature action reaches 0.9829 macro-F1 on its local split, while the 12-task chronological action head is 0.0500 macro-F1 with four unseen later action labels.</p>
             <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_TAKEAWAYS.md">takeaways</a>
           </article>
           <article class="artifact">
             <h3>Neural heads help dynamics</h3>
-            <p>Hand MPJPE improves from 0.8223 to 0.1116; temporal-order F1 rises from 0.5487 to 0.8718; misalignment F1 rises from 0.4866 to 0.7335.</p>
+            <p>Hand MPJPE improves from 0.8647 to 0.1079; temporal-order F1 rises from 0.5400 to 0.8520; misalignment F1 rises from 0.5052 to 0.7153.</p>
             <a href="data/research_takeaways.json">metrics</a>
           </article>
           <article class="artifact">
@@ -2712,9 +2713,9 @@
         </div>
         <div class="models">
           <article class="model"><h3>Motion-only action</h3><span class="score">0.9688</span><span class="meta">macro-F1, 18 classes</span></article>
-          <article class="model"><h3>Current all-feature action</h3><span class="score">0.9791</span><span class="meta">macro-F1, 8,378 features</span></article>
+          <article class="model"><h3>Current all-feature action</h3><span class="score">0.9829</span><span class="meta">macro-F1, 8,546 features</span></article>
           <article class="model"><h3>Motion-only subtask</h3><span class="score">0.9528</span><span class="meta">macro-F1, 14 classes</span></article>
-          <article class="model"><h3>Current all-feature subtask</h3><span class="score">0.9308</span><span class="meta">macro-F1, chronological caveats</span></article>
+          <article class="model"><h3>Current all-feature subtask</h3><span class="score">0.9173</span><span class="meta">macro-F1, chronological caveats</span></article>
         </div>
         <img class="chart" src="assets/charts/model_macro_f1.svg" alt="Macro-F1 comparison chart">
       </div>
@@ -2724,13 +2725,13 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Neural MLP heads, same task contracts.</h2>
-          <p>The neural baseline uses small PyTorch MLP classifiers/regressors on the same 8,378-d window features, chronological splits, and leakage filters. This isolates the value of a nonlinear head before moving to heavier Qwen/Omni experiments.</p>
+          <p>The neural baseline uses small PyTorch MLP classifiers/regressors on the same 8,546-d window features, chronological splits, and leakage filters. This isolates the value of a nonlinear head before moving to heavier Qwen/Omni experiments.</p>
         </div>
         <div class="models">
-          <article class="model"><h3>Neural hand forecast</h3><span class="score">0.1116</span><span class="meta">MPJPE, down from 0.8223 minimal</span></article>
-          <article class="model"><h3>Neural temporal order</h3><span class="score">0.8718</span><span class="meta">F1, adjacent-window diagnostic</span></article>
-          <article class="model"><h3>Neural misalignment</h3><span class="score">0.7335</span><span class="meta">F1, shifted motion/visual pairs</span></article>
-          <article class="model"><h3>Neural cross-modal retrieval</h3><span class="score">0.1530</span><span class="meta">MRR; ridge remains stronger here</span></article>
+          <article class="model"><h3>Neural hand forecast</h3><span class="score">0.1079</span><span class="meta">MPJPE, down from 0.8647 minimal</span></article>
+          <article class="model"><h3>Neural temporal order</h3><span class="score">0.8520</span><span class="meta">F1, adjacent-window diagnostic</span></article>
+          <article class="model"><h3>Neural misalignment</h3><span class="score">0.7153</span><span class="meta">F1, shifted motion/visual/audio pairs</span></article>
+          <article class="model"><h3>Neural cross-modal retrieval</h3><span class="score">0.1300</span><span class="meta">MRR; ridge remains stronger here</span></article>
         </div>
         <div class="chart-grid">
           <img class="chart" src="assets/charts/episode_task_scores_neural_mlp.svg" alt="Neural MLP episode task score chart">
@@ -2895,7 +2896,7 @@
               <button type="button" class="flow-step" data-stage="2" aria-pressed="false"><strong>Output</strong><em id="playerOutput">current action class</em></button>
             </div>
             <ul class="module-list" id="playerModules"></ul>
-            <p id="playerMetric">Metric: macro-F1. Minimal 0.0500; neural MLP 0.0263.</p>
+            <p id="playerMetric">Metric: macro-F1. Minimal 0.0500; neural MLP 0.0148.</p>
             <p id="playerLimit">Current limitation: single-episode chronological split.</p>
           </article>
         </div>
@@ -2979,7 +2980,7 @@
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Task-suite report</h3><p>One JSON file with every task definition, split detail, feature dimension, and minimal/neural metric.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">summary_report.json</a></article>
               <article class="artifact"><h3>Windows table</h3><p>Window start/end frames and aligned action/subtask labels for the public sample episode.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">windows.csv</a></article>
-              <article class="artifact"><h3>Feature manifest</h3><p>Start/end index and dimension for every current feature block in the 8,378-d window vector.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a></article>
+              <article class="artifact"><h3>Feature manifest</h3><p>Start/end index and dimension for every current feature block in the 8,546-d window vector.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature_manifest.json</a></article>
               <article class="artifact"><h3>Neural MLP task results</h3><p>Per-task PyTorch MLP metrics, predictions, histories, and checkpoints for the same 12 task contracts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural_mlp/</a></article>
               <article class="artifact"><h3>Four-direction taxonomy</h3><p>Generated JSON, CSV, Markdown, and website data mapping all 12 tasks to the four research tracks.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_directions">research_directions/</a></article>
               <article class="artifact"><h3>Direction extension probes</h3><p>Four coded probes, one per research direction, with minimal and neural metrics plus prediction/rank CSVs.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_direction_extensions">research_direction_extensions/</a></article>

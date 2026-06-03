@@ -857,6 +857,9 @@
       const roles = Object.entries(task.direction_roles || {})
         .map(([code, role]) => `<span class="chip ${cssRole(role)}">${code}: ${role}</span>`)
         .join("");
+      const evidenceLinks = (task.evidence_links || [])
+        .map((link) => `<a href="${link.href}">${link.label}</a>`)
+        .join("");
       const extensions = direction.extension_tasks.map((item) => (
         `<li>${item.name}: ${item.metric_name}; ${item.current_limit}</li>`
       )).join("");
@@ -876,6 +879,7 @@
           <h3>Selected task: ${task.display_name}</h3>
           <p>${task.case_study || task.why || ""}</p>
           <div class="task-meta">${roles}</div>
+          <div class="artifact-row">${evidenceLinks}</div>
         </div>
         <div class="detail-block">
           <h3>Input -> process -> output</h3>

@@ -6,11 +6,11 @@
     "validated_episode_count": 1,
     "aligned_frames": 5821,
     "sliding_windows": 1161,
-    "current_feature_dimensions": 8378,
+    "current_feature_dimensions": 8546,
     "core_task_count": 12,
     "neural_head_count": 12,
     "direction_extension_probe_count": 4,
-    "audio_featurized": false,
+    "audio_featurized": true,
     "raw_xperience10m_data_redistributed": false,
     "qwen3_omni_32_episode_claim": false
   },
@@ -23,7 +23,7 @@
         "results/episode_task_suite/windows.csv",
         "results/episode_task_suite/feature_manifest.json"
       ],
-      "readout": "One public Xperience-10M sample episode is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,378-dimensional current feature contract."
+      "readout": "One public Xperience-10M sample episode is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,546-dimensional current feature contract."
     },
     {
       "area": "Task suite",
@@ -156,6 +156,6 @@
     "Cross-episode generalization is evaluated in the later multi-episode stage.",
     "Historical 32ep path names refer to setup files, not completed 32-episode training results.",
     "The current reconstruction task reconstructs feature vectors, not pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
-    "Audio is documented and visualized, but it is not yet part of the current 8,378-dimensional baseline feature vector."
+    "AAC audio is decoded from fisheye_cam0.mp4 and included in the current 8,546-dimensional baseline feature vector."
   ]
 }

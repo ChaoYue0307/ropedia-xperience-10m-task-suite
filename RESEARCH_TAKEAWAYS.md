@@ -9,21 +9,21 @@ from hand-edited score text.
 - validated episodes: 1
 - frames: 5,821
 - aligned windows: 1,161
-- current feature dimension: 8,378
+- current feature dimension: 8,546
 - raw Xperience-10M data is not redistributed
-- audio is documented and visualized, but not yet featurized
+- AAC audio from the sample MP4 stream is extracted into the current feature vector
 
 ## Takeaways
 
 ### One episode can become a real benchmark contract
 
-The public sample is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,378-dimensional feature contract.
+The public sample is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,546-dimensional feature contract.
 
 | Metric | Value |
 | --- | ---: |
 | `frames` | 5,821 |
 | `windows` | 1,161 |
-| `feature_dim` | 8,378 |
+| `feature_dim` | 8,546 |
 
 Source: `docs/data/summary_metrics.json`.
 
@@ -35,9 +35,9 @@ Earlier all-feature action classifiers reach high macro-F1 on their local split,
 
 | Metric | Value |
 | --- | ---: |
-| `all_feature_action_macro_f1` | 0.9791 |
+| `all_feature_action_macro_f1` | 0.9829 |
 | `suite_action_macro_f1` | 0.0500 |
-| `suite_subtask_macro_f1` | 0.0495 |
+| `suite_subtask_macro_f1` | 0.0506 |
 | `unseen_action_test_classes` | 4 |
 
 Source: `results/episode_task_suite/summary_report.json`.
@@ -50,13 +50,13 @@ The MLP heads substantially improve hand trajectory forecasting, temporal-order 
 
 | Metric | Value |
 | --- | ---: |
-| `hand_mpjpe_minimal` | 0.8223 |
-| `hand_mpjpe_neural` | 0.1116 |
-| `hand_mpjpe_relative_improvement` | 0.8642 |
-| `temporal_order_f1_minimal` | 0.5487 |
-| `temporal_order_f1_neural` | 0.8718 |
-| `misalignment_f1_minimal` | 0.4866 |
-| `misalignment_f1_neural` | 0.7335 |
+| `hand_mpjpe_minimal` | 0.8647 |
+| `hand_mpjpe_neural` | 0.1079 |
+| `hand_mpjpe_relative_improvement` | 0.8753 |
+| `temporal_order_f1_minimal` | 0.5400 |
+| `temporal_order_f1_neural` | 0.8520 |
+| `misalignment_f1_minimal` | 0.5052 |
+| `misalignment_f1_neural` | 0.7153 |
 
 Source: `results/episode_task_suite/neural_mlp/*/metrics.json`.
 
@@ -68,10 +68,10 @@ Ridge/cosine retrieval remains stronger than the neural projection on this sampl
 
 | Metric | Value |
 | --- | ---: |
-| `retrieval_mrr_minimal` | 0.2634 |
-| `retrieval_mrr_neural` | 0.1530 |
-| `retrieval_top5_minimal` | 0.3764 |
-| `reconstruction_r2_minimal` | -0.0160 |
+| `retrieval_mrr_minimal` | 0.2693 |
+| `retrieval_mrr_neural` | 0.1300 |
+| `retrieval_top5_minimal` | 0.3678 |
+| `reconstruction_r2_minimal` | -0.0153 |
 | `reconstruction_r2_neural` | -0.0102 |
 
 Source: `results/episode_task_suite/cross_modal_retrieval/metrics.json`.

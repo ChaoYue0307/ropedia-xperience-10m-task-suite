@@ -99,7 +99,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
         (365, 110, 250, 132, "2. HOMIE loader", [
             "video, depth, pose",
             "mocap, IMU, language",
-            "audio not featurized",
+            "AAC audio features",
         ], "#7ae5c3"),
         (670, 110, 250, 132, "3. Window builder", [
             f"{suite['window_frames']}-frame windows",
@@ -108,7 +108,8 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
         ], "#ccffa0"),
         (975, 110, 300, 132, "4. Feature vector", [
             f"{suite['feature_dim']:,} dimensions",
-            "17 named blocks, no audio block",
+            f"{len(summary['feature_manifest'])} named blocks",
+            "audio block included",
             "stored manifest",
         ], "#d8f4a5"),
         (60, 380, 360, 168, "5. Baseline models", [
@@ -160,7 +161,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
     checks = [
         "Reproduction check: rerunning scripts to an ignored scratch workspace reproduced committed metrics exactly.",
         "Modality check: sample covers video, AAC audio, depth, pose/SLAM, mocap, IMU, and language annotation.",
-        "Feature check: current manifest has video/depth/pose/mocap/IMU/language blocks, but no audio block.",
+        "Feature check: current manifest has video/depth/pose/mocap/IMU/language blocks plus a real AAC audio block.",
         "Scope check: this validates one public sample episode, not cross-episode generalization.",
     ]
     parts.append('<rect x="60" y="620" width="1220" height="96" rx="8" fill="#071207" stroke="#ccffa0" stroke-opacity="0.24"/>')
@@ -233,9 +234,11 @@ def task_architecture_rows(summary: dict) -> list[dict]:
     sensor_dim = no_text_dim
     text_dim = feature_dim(manifest, include=["caption_objects_interaction_text"])
     motion_dim = feature_dim(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_"])
+    motion_audio_dim = feature_dim(manifest, include=["hand_", "body_joints", "body_contacts", "camera_", "imu_", "audio_"])
     visual_dim = feature_dim(manifest, include=["depth_confidence", "video_"])
+    visual_audio_dim = feature_dim(manifest, include=["depth_confidence", "video_", "audio_"])
     pair_dim = all_dim * 3
-    align_dim = motion_dim + visual_dim
+    align_dim = motion_dim + visual_audio_dim
 
     return [
         {
@@ -305,7 +308,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
         {
             "task": "cross_modal_retrieval",
             "family": "ridge+rank",
-            "input": f"motion/IMU/camera {motion_dim:,}d -> visual {visual_dim:,}d",
+            "input": f"motion/IMU/camera/audio {motion_audio_dim:,}d -> visual {visual_dim:,}d",
             "head": "minimal ridge or NN MLP projection, then cosine rank",
             "output": "retrieve matching depth/video window",
             "metric": metric_text_with_neural("cross_modal_retrieval", tasks["cross_modal_retrieval"], neural_tasks),
@@ -313,7 +316,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
         {
             "task": "modality_reconstruction",
             "family": "ridge",
-            "input": f"motion/IMU/camera {motion_dim:,}d",
+            "input": f"motion/IMU/camera/audio {motion_audio_dim:,}d",
             "head": "minimal dual ridge; optional NN MLP regression",
             "output": f"depth/video feature vector, {visual_dim:,}d",
             "metric": metric_text_with_neural("modality_reconstruction", tasks["modality_reconstruction"], neural_tasks),
@@ -329,7 +332,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
         {
             "task": "misalignment_detection",
             "family": "softmax",
-            "input": f"concat[motion_t, visual_t/visual_t+8], {align_dim:,}d",
+            "input": f"concat[motion_t, visual+audio_t/shifted], {align_dim:,}d",
             "head": "minimal binary softmax; optional NN MLP softmax",
             "output": "aligned vs shifted by 8 windows",
             "metric": metric_text_with_neural("misalignment_detection", tasks["misalignment_detection"], neural_tasks),
@@ -366,7 +369,7 @@ def svg_task_architectures(path: Path, summary: dict) -> None:
         ], "#9bdfff"),
         (410, 122, 310, 110, "Feature vector", [
             f"X_all = {suite['feature_dim']:,} dimensions",
-            "17 named blocks; no audio block",
+            f"{len(summary['feature_manifest'])} named blocks incl. audio",
             "mean/std fit on train only",
         ], "#7ae5c3"),
         (760, 122, 320, 110, "Reusable heads", [

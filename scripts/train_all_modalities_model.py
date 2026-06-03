@@ -18,6 +18,8 @@ import csv
 import hashlib
 import json
 import re
+import shutil
+import subprocess
 import sys
 from collections import Counter, OrderedDict
 from pathlib import Path
@@ -53,6 +55,8 @@ VIDEO_FILES = OrderedDict([
     ("stereo_right", "stereo_right.mp4"),
 ])
 
+PRIMARY_AUDIO_VIDEO = "fisheye_cam0"
+
 
 def parse_args() -> argparse.Namespace:
     workspace_default = Path(__file__).resolve().parents[1]
@@ -79,6 +83,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--video-hist-bins", type=int, default=8, help="Color histogram bins per channel.")
     parser.add_argument("--depth-grid-size", type=int, default=8, help="Small depth/confidence grid per frame.")
     parser.add_argument("--text-hash-dim", type=int, default=128, help="Hashed bag-of-words dimension.")
+    parser.add_argument("--audio-source", choices=list(VIDEO_FILES), default=PRIMARY_AUDIO_VIDEO, help="MP4 stream used for AAC audio features.")
+    parser.add_argument("--audio-sample-rate", type=int, default=16000, help="Audio sample rate for extracted AAC features.")
+    parser.add_argument("--audio-band-count", type=int, default=16, help="Number of log-spaced spectral energy bands per frame.")
     parser.add_argument(
         "--include-label-text",
         action="store_true",
@@ -261,6 +268,130 @@ def read_depth_feature_cache(annotation: Path, n_frames: int, cache_dir: Path, g
     return features
 
 
+def video_fps(path: Path) -> float | None:
+    if not path.exists():
+        return None
+    cap = cv2.VideoCapture(str(path))
+    fps = float(cap.get(cv2.CAP_PROP_FPS) or 0.0) if cap.isOpened() else 0.0
+    cap.release()
+    return fps if np.isfinite(fps) and fps > 0 else None
+
+
+def decode_audio_mono(path: Path, sample_rate: int) -> np.ndarray:
+    if not path.exists() or shutil.which("ffmpeg") is None:
+        return np.zeros(0, dtype=np.float32)
+    cmd = [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        str(path),
+        "-vn",
+        "-ac",
+        "1",
+        "-ar",
+        str(sample_rate),
+        "-f",
+        "f32le",
+        "-",
+    ]
+    try:
+        proc = subprocess.run(cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return np.zeros(0, dtype=np.float32)
+    audio = np.frombuffer(proc.stdout, dtype=np.float32)
+    if audio.size == 0:
+        return np.zeros(0, dtype=np.float32)
+    return np.nan_to_num(audio, nan=0.0, posinf=0.0, neginf=0.0).astype(np.float32)
+
+
+def audio_segment_features(segment: np.ndarray, sample_rate: int, band_count: int) -> np.ndarray:
+    segment = np.asarray(segment, dtype=np.float32).reshape(-1)
+    if segment.size == 0:
+        return np.zeros(8 + band_count, dtype=np.float32)
+
+    segment = np.nan_to_num(segment, nan=0.0, posinf=0.0, neginf=0.0)
+    rms = float(np.sqrt(np.mean(segment * segment)))
+    mean_abs = float(np.mean(np.abs(segment)))
+    peak = float(np.max(np.abs(segment)))
+    zcr = float(np.mean(segment[1:] * segment[:-1] < 0.0)) if segment.size > 1 else 0.0
+
+    windowed = segment * np.hanning(segment.size).astype(np.float32)
+    spectrum = np.fft.rfft(windowed)
+    power = (np.abs(spectrum) ** 2).astype(np.float64)
+    freqs = np.fft.rfftfreq(segment.size, d=1.0 / float(sample_rate))
+    total = float(power.sum())
+    nyquist = max(sample_rate / 2.0, 1.0)
+    if total <= 1e-12:
+        spectral = [0.0, 0.0, 0.0]
+        band_energy = np.zeros(band_count, dtype=np.float32)
+    else:
+        centroid = float((freqs * power).sum() / total)
+        bandwidth = float(np.sqrt((((freqs - centroid) ** 2) * power).sum() / total))
+        cumulative = np.cumsum(power)
+        rolloff = float(freqs[int(np.searchsorted(cumulative, 0.85 * total, side="left"))])
+        spectral = [centroid / nyquist, bandwidth / nyquist, rolloff / nyquist]
+
+        edges = np.geomspace(50.0, nyquist, band_count + 1)
+        band_vals = []
+        for lo, hi in zip(edges[:-1], edges[1:]):
+            mask = (freqs >= lo) & (freqs < hi)
+            band_vals.append(float(power[mask].sum()) if np.any(mask) else 0.0)
+        band_energy = np.log1p(np.asarray(band_vals, dtype=np.float32))
+        norm = np.linalg.norm(band_energy)
+        if norm > 0:
+            band_energy = band_energy / norm
+
+    log_energy = float(np.log1p(total / max(segment.size, 1)))
+    return np.asarray([rms, mean_abs, peak, zcr, log_energy, *spectral, *band_energy], dtype=np.float32)
+
+
+def read_audio_feature_cache(
+    path: Path,
+    n_frames: int,
+    cache_dir: Path,
+    sample_rate: int,
+    band_count: int,
+    force: bool,
+) -> tuple[np.ndarray, dict]:
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    cache_path = cache_dir / f"audio_{path.stem}_n{n_frames}_sr{sample_rate}_bands{band_count}.npz"
+    if cache_path.exists() and not force:
+        data = np.load(cache_path, allow_pickle=True)
+        meta = json.loads(str(data["metadata"].item())) if "metadata" in data else {}
+        return data["features"].astype(np.float32), meta
+
+    dim = 8 + band_count
+    features = np.zeros((n_frames, dim), dtype=np.float32)
+    fps = video_fps(path)
+    audio = decode_audio_mono(path, sample_rate)
+    has_audio = bool(audio.size > 0)
+    if has_audio:
+        if fps is None:
+            fps = n_frames / max(audio.size / float(sample_rate), 1e-6)
+        for frame_idx in range(n_frames):
+            start_sample = int(round((frame_idx / fps) * sample_rate))
+            end_sample = int(round(((frame_idx + 1) / fps) * sample_rate))
+            start_sample = max(0, min(start_sample, audio.size))
+            end_sample = max(start_sample + 1, min(end_sample, audio.size))
+            features[frame_idx] = audio_segment_features(audio[start_sample:end_sample], sample_rate, band_count)
+            if frame_idx and frame_idx % 1000 == 0:
+                print(f"    audio/{path.name}: {frame_idx}/{n_frames} frames")
+
+    metadata = {
+        "source": path.name,
+        "exists": path.exists(),
+        "has_audio": has_audio,
+        "sample_rate": int(sample_rate),
+        "fps": float(fps) if fps is not None else None,
+        "num_samples": int(audio.size),
+        "per_frame_dim": int(dim),
+        "band_count": int(band_count),
+    }
+    np.savez_compressed(cache_path, features=features, metadata=json.dumps(metadata, sort_keys=True))
+    return features, metadata
+
+
 TOKEN_RE = re.compile(r"[a-zA-Z0-9_]+")
 
 
@@ -306,6 +437,8 @@ def prepare_modalities(args: argparse.Namespace, ann: dict) -> tuple[dict, list[
     n_frames = len(ann["img_names"])
     extras: dict = {
         "video": OrderedDict(),
+        "audio": None,
+        "audio_name": args.audio_source,
         "depth": None,
         "text": None,
         "static": OrderedDict(),
@@ -337,6 +470,24 @@ def prepare_modalities(args: argparse.Namespace, ann: dict) -> tuple[dict, list[
             "shape": list(feats.shape),
             "exists": path.exists(),
         })
+
+    print("  audio")
+    audio_path = data_root / VIDEO_FILES[args.audio_source]
+    audio, audio_meta = read_audio_feature_cache(
+        audio_path,
+        n_frames,
+        args.cache_dir,
+        args.audio_sample_rate,
+        args.audio_band_count,
+        args.force_rebuild_cache,
+    )
+    extras["audio"] = audio
+    available.append({
+        "modality": f"audio/{args.audio_source}",
+        "path": portable_path(audio_path, args.workspace),
+        "shape": list(audio.shape),
+        **audio_meta,
+    })
 
     print("  caption objects/interaction text")
     text = build_text_features(
@@ -409,6 +560,8 @@ def extract_all_window_features(ann: dict, extras: dict, start: int, end: int, r
         add("depth_confidence", temporal_stats(extras["depth"][start:end]))
     for name, feats in extras.get("video", {}).items():
         add(f"video_{name}", temporal_stats(feats[start:end]))
+    if extras.get("audio") is not None:
+        add(f"audio_{extras.get('audio_name', PRIMARY_AUDIO_VIDEO)}_aac", temporal_stats(extras["audio"][start:end]))
     if extras.get("text") is not None:
         add("caption_objects_interaction_text", temporal_stats(extras["text"][start:end]))
     for name, vec in extras.get("static", {}).items():
@@ -468,7 +621,7 @@ def write_extra_reports(output_dir: Path, feature_manifest: list[dict], availabl
     (output_dir / "feature_manifest.json").write_text(json.dumps(feature_manifest, indent=2), encoding="utf-8")
     (output_dir / "available_modalities.json").write_text(json.dumps(available_modalities, indent=2), encoding="utf-8")
     with (output_dir / "feature_manifest.csv").open("w", newline="", encoding="utf-8") as fp:
-        writer = csv.DictWriter(fp, fieldnames=["name", "start", "end", "dim"])
+        writer = csv.DictWriter(fp, fieldnames=["name", "start", "end", "dim"], lineterminator="\n")
         writer.writeheader()
         writer.writerows(feature_manifest)
     notes = [

@@ -11,10 +11,10 @@ reported metrics are allowed to mean.
 | Source scope | 1 public Xperience-10M sample episode |
 | Frames | 5,821 |
 | Sliding windows | 1,161 windows, 20 frames each, stride 5 frames |
-| Current feature vector | 8,378 dimensions |
+| Current feature vector | 8,546 dimensions |
 | Split | chronological 70/30 train/test by time |
 | Baselines | minimal interpretable heads plus compact neural MLP heads |
-| Audio | present in MP4 streams and visualized, but not featurized in the current baseline vector |
+| Audio | AAC stream extracted from the sample MP4 and included in the current baseline vector |
 | Raw data | not redistributed |
 
 ## Data Unit
@@ -34,10 +34,10 @@ segment. Those cases are recorded in the task metrics as `unseen_test_classes`.
 
 ## Feature And Head Policy
 
-- Input contract: 8,378-dimensional current feature vector.
+- Input contract: 8,546-dimensional current feature vector.
 - Source manifest: `results/episode_task_suite/feature_manifest.json`.
 - Normalization: Scalers are fit on train windows only for the baseline heads.
-- Audio status: Audio is present in sample MP4 streams and visualized in the atlas, but not extracted into the current 8,378-d feature vector.
+- Audio status: AAC audio is extracted from the sample MP4 stream and included in the current feature vector.
 
 Minimal heads are used first because they make task contracts debuggable.
 Neural MLP heads reuse the same windows, splits, and feature tensors; they
@@ -47,18 +47,18 @@ are not foundation models.
 
 | Task | Family | Unit | Input -> target | Primary metric | Minimal | Neural |
 | --- | --- | --- | --- | --- | ---: | ---: |
-| timeline_action | supervised classification | single window | current 20-frame all-feature window -> current action label | macro_f1 (higher better) | 0.0500 | 0.0263 |
-| timeline_subtask | supervised classification | single window | current 20-frame all-feature window -> current subtask label | macro_f1 (higher better) | 0.0495 | 0.0175 |
-| transition_detection | temporal diagnostic | single window | current 20-frame all-feature window -> action boundary versus steady | macro_f1 (higher better) | 0.6552 | 0.6485 |
-| next_action | short-horizon prediction | single window | current 20-frame all-feature window at time t -> action label at t + 20 frames | macro_f1 (higher better) | 0.0593 | 0.0235 |
-| hand_trajectory_forecast | trajectory regression | single window | current all-feature window -> future left/right hand 3D joints for 10 frames | mpjpe (lower better) | 0.8223 | 0.1116 |
+| timeline_action | supervised classification | single window | current 20-frame all-feature window -> current action label | macro_f1 (higher better) | 0.0500 | 0.0148 |
+| timeline_subtask | supervised classification | single window | current 20-frame all-feature window -> current subtask label | macro_f1 (higher better) | 0.0506 | 0.0281 |
+| transition_detection | temporal diagnostic | single window | current 20-frame all-feature window -> action boundary versus steady | macro_f1 (higher better) | 0.6118 | 0.5862 |
+| next_action | short-horizon prediction | single window | current 20-frame all-feature window at time t -> action label at t + 20 frames | macro_f1 (higher better) | 0.0593 | 0.0419 |
+| hand_trajectory_forecast | trajectory regression | single window | current all-feature window -> future left/right hand 3D joints for 10 frames | mpjpe (lower better) | 0.8647 | 0.1079 |
 | contact_prediction | binary classification | single window | non-contact and non-caption feature blocks -> any body contact | macro_f1 (higher better) | 1.0000 | 1.0000 |
-| object_relevance | multi-label classification | single window | non-caption feature blocks -> current relevant object set | micro_f1 (higher better) | 0.1839 | 0.1798 |
-| caption_grounding | retrieval | caption query | caption object/interaction query plus candidate sensor windows -> matching time window | mrr (higher better) | 0.0172 | 0.0178 |
-| cross_modal_retrieval | retrieval | sensor query | motion, IMU, and camera query features -> matching depth/video window | top5_accuracy (higher better) | 0.3764 | 0.2155 |
-| modality_reconstruction | cross-modal regression | single window | motion, IMU, and camera features -> depth/video feature vector | r2 (higher better) | -0.0160 | -0.0102 |
-| temporal_order | pairwise diagnostic | adjacent window pair | two adjacent windows -> correct versus reversed order | f1 (higher better) | 0.5487 | 0.8718 |
-| misalignment_detection | pairwise diagnostic | paired modality window | motion side plus visual/depth side -> aligned versus shifted by 8 windows | f1 (higher better) | 0.4866 | 0.7335 |
+| object_relevance | multi-label classification | single window | non-caption feature blocks -> current relevant object set | micro_f1 (higher better) | 0.1803 | 0.1679 |
+| caption_grounding | retrieval | caption query | caption object/interaction query plus candidate sensor windows -> matching time window | mrr (higher better) | 0.0160 | 0.0168 |
+| cross_modal_retrieval | retrieval | sensor query | motion, IMU, and camera query features -> matching depth/video window | top5_accuracy (higher better) | 0.3678 | 0.1983 |
+| modality_reconstruction | cross-modal regression | single window | motion, IMU, and camera features -> depth/video feature vector | r2 (higher better) | -0.0153 | -0.0102 |
+| temporal_order | pairwise diagnostic | adjacent window pair | two adjacent windows -> correct versus reversed order | f1 (higher better) | 0.5400 | 0.8520 |
+| misalignment_detection | pairwise diagnostic | paired modality window | motion side plus visual/depth side -> aligned versus shifted by 8 windows | f1 (higher better) | 0.5052 | 0.7153 |
 
 ## Leakage Controls
 
@@ -73,7 +73,7 @@ are not foundation models.
 - Cross-episode generalization is evaluated in the later multi-episode stage.
 - Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.
 - Qwen3-Omni setup artifacts are preparation artifacts until the 32-episode held-out pilot runs.
-- Audio-visual learning needs an extracted audio feature block; audio is documented and visualized but not featurized in the current baseline vector.
+- Full audio-visual representation learning still needs multi-episode training, but the current baseline vector now includes an extracted AAC audio feature block.
 
 ## Scale-Up Gate
 

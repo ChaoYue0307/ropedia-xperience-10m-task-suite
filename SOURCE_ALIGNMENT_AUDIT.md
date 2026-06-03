@@ -16,7 +16,7 @@ Current status: **pass**
 | API episode listing | 12,103 episode folders with `annotation.hdf5` as upstream metadata only |
 | Public sample repo | `ropedia-ai/xperience-10m-sample` |
 | Public sample license | `cc-by-nc-4.0` |
-| Current verified project data | 1 public sample episode, 5,821 frames, 1,161 windows, 8,378 current features |
+| Current verified project data | 1 public sample episode, 5,821 frames, 1,161 windows, 8,546 current features |
 
 ## Checks
 

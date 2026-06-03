@@ -9,37 +9,37 @@
     "ropedia_release_page": "https://ropedia.com/blog/20260316_xperience_10m",
     "homie_toolkit": "https://github.com/Ropedia/HOMIE-toolkit"
   },
-    "hf_repo_metadata_observed": {
-        "repo_id": "ropedia-ai/xperience-10m",
-        "pretty_name": "Xperience-10M",
-        "repo_sha": "ce943cf271a758b60240084892d05cf6dc12dd90",
-        "last_modified": "2026-04-21T05:03:45.000Z",
-        "gated": "manual",
-        "task_categories": [
-            "video-classification",
+  "hf_repo_metadata_observed": {
+    "repo_id": "ropedia-ai/xperience-10m",
+    "pretty_name": "Xperience-10M",
+    "repo_sha": "ce943cf271a758b60240084892d05cf6dc12dd90",
+    "last_modified": "2026-04-21T05:03:45.000Z",
+    "gated": "manual",
+    "task_categories": [
+      "video-classification",
       "image-to-text",
       "depth-estimation",
-            "robotics"
-        ],
-        "card_tags": [
-            "egocentric",
-            "first-person",
-            "multimodal",
-            "3d",
-            "4d",
-            "embodied-ai",
-            "robotics",
-            "human-motion",
-            "mocap",
-            "imu",
-            "audio",
-            "depth",
-            "captions",
-            "video"
-        ],
-        "modalities": [
-            "3d",
-            "audio",
+      "robotics"
+    ],
+    "card_tags": [
+      "egocentric",
+      "first-person",
+      "multimodal",
+      "3d",
+      "4d",
+      "embodied-ai",
+      "robotics",
+      "human-motion",
+      "mocap",
+      "imu",
+      "audio",
+      "depth",
+      "captions",
+      "video"
+    ],
+    "modalities": [
+      "3d",
+      "audio",
       "video"
     ],
     "language": [
@@ -47,52 +47,52 @@
     ],
     "size_categories": [
       "1M<n<10M"
-        ],
-        "license": "other",
-        "access_note": "Reviewed gated access for approved non-commercial use; an external agreement-signing step may be required before approval.",
-        "live_hf_page_observed": {
-            "source": "Hugging Face dataset page/API public metadata",
-            "total_file_size_display": "31.9 TB",
-            "used_storage_bytes_observed": 31871115497224,
-            "note": "This live HF-hosted file-size display is separate from the dataset card's about-1PB full-scale data statement."
-        },
-        "api_file_listing_observed": {
-            "scope": "public Hugging Face API metadata, not local data possession",
-            "sibling_count": 85258,
-            "session_folder_count": 803,
-            "episode_folder_count": 12103,
-            "annotation_hdf5_count": 12103,
-            "mp4_count": 72612,
-            "visualization_rrd_count": 541,
-            "canonical_episode_file_counts": {
-                "annotation.hdf5": 12103,
-                "fisheye_cam0.mp4": 12102,
-                "fisheye_cam1.mp4": 12102,
-                "fisheye_cam2.mp4": 12102,
-                "fisheye_cam3.mp4": 12102,
-                "stereo_left.mp4": 12102,
-                "stereo_right.mp4": 12102,
-                "visualization.rrd": 541
-            }
-        }
+    ],
+    "license": "other",
+    "access_note": "Reviewed gated access for approved non-commercial use; an external agreement-signing step may be required before approval.",
+    "live_hf_page_observed": {
+      "source": "Hugging Face dataset page/API public metadata",
+      "total_file_size_display": "31.9 TB",
+      "used_storage_bytes_observed": 31871115497224,
+      "note": "This live HF-hosted file-size display is separate from the dataset card's about-1PB full-scale data statement."
     },
-    "public_sample_card_observed": {
-        "repo_id": "ropedia-ai/xperience-10m-sample",
-        "pretty_name": "Xperience-10M-Sample",
-        "license": "cc-by-nc-4.0",
-        "tags": [
-            "sample",
-            "xperience-10k"
-        ],
-        "size_categories": [
-            "n<1K"
-        ],
-        "card_summary": "A sample episode for Xperience-10M. The card says videos and annotations can be downloaded and inspected with HOMIE Toolkit, and the RRD file can be visualized with Rerun 0.29.0.",
-        "tooling": [
-            "HOMIE Toolkit",
-            "Rerun 0.29.0 for visualization.rrd"
-        ]
-    },
+    "api_file_listing_observed": {
+      "scope": "public Hugging Face API metadata, not local data possession",
+      "sibling_count": 85258,
+      "session_folder_count": 803,
+      "episode_folder_count": 12103,
+      "annotation_hdf5_count": 12103,
+      "mp4_count": 72612,
+      "visualization_rrd_count": 541,
+      "canonical_episode_file_counts": {
+        "annotation.hdf5": 12103,
+        "fisheye_cam0.mp4": 12102,
+        "fisheye_cam1.mp4": 12102,
+        "fisheye_cam2.mp4": 12102,
+        "fisheye_cam3.mp4": 12102,
+        "stereo_left.mp4": 12102,
+        "stereo_right.mp4": 12102,
+        "visualization.rrd": 541
+      }
+    }
+  },
+  "public_sample_card_observed": {
+    "repo_id": "ropedia-ai/xperience-10m-sample",
+    "pretty_name": "Xperience-10M-Sample",
+    "license": "cc-by-nc-4.0",
+    "tags": [
+      "sample",
+      "xperience-10k"
+    ],
+    "size_categories": [
+      "n<1K"
+    ],
+    "card_summary": "A sample episode for Xperience-10M. The card says videos and annotations can be downloaded and inspected with HOMIE Toolkit, and the RRD file can be visualized with Rerun 0.29.0.",
+    "tooling": [
+      "HOMIE Toolkit",
+      "Rerun 0.29.0 for visualization.rrd"
+    ]
+  },
   "official_dataset_summary": {
     "description": "Large-scale egocentric multimodal human-experience data for embodied AI, robotics, world models, and spatial intelligence.",
     "experience_units": "about 10 million",
@@ -122,8 +122,8 @@
     "hierarchical language and caption annotations",
     "metadata and calibration records"
   ],
-    "episode_layout": {
-        "folder_pattern": "<session_uuid>/ep<episode_id>/",
+  "episode_layout": {
+    "folder_pattern": "<session_uuid>/ep<episode_id>/",
     "required_for_valid_episode_in_this_repo": [
       "annotation.hdf5"
     ],
@@ -134,12 +134,12 @@
       "fisheye_cam3.mp4",
       "stereo_left.mp4",
       "stereo_right.mp4"
-        ],
-        "optional_or_excluded": [
-            "visualization.rrd"
-        ],
-        "training_policy": "Use annotation.hdf5 plus available MP4 streams; keep visualization.rrd for optional human inspection only and exclude it from training/public bundles."
-    },
+    ],
+    "optional_or_excluded": [
+      "visualization.rrd"
+    ],
+    "training_policy": "Use annotation.hdf5 plus available MP4 streams; keep visualization.rrd for optional human inspection only and exclude it from training/public bundles."
+  },
   "annotation_hdf5_groups": [
     "calibration",
     "slam / camera pose",
@@ -151,14 +151,14 @@
     "metadata",
     "caption / language annotations"
   ],
-    "official_intended_uses": [
-        "egocentric video and action understanding",
-        "task and subtask recognition",
-        "temporal action localization",
-        "action-language grounding and action captioning",
-        "human-object interaction analysis",
-        "object grounding and caption/language grounding",
-        "audio-visual learning and multimodal pretraining",
+  "official_intended_uses": [
+    "egocentric video and action understanding",
+    "task and subtask recognition",
+    "temporal action localization",
+    "action-language grounding and action captioning",
+    "human-object interaction analysis",
+    "object grounding and caption/language grounding",
+    "audio-visual learning and multimodal pretraining",
     "embodied reasoning and world-model learning",
     "robotics imitation learning",
     "depth estimation, odometry, SLAM, and scene reconstruction",
@@ -169,9 +169,9 @@
     "validated_episode_count": 1,
     "validated_frames": 5821,
     "validated_windows": 1161,
-    "current_feature_dim": 8378,
+    "current_feature_dim": 8546,
     "raw_data_redistributed": false,
-    "audio_feature_status": "Audio is present in the sample MP4 streams and visualized, but not extracted into the current baseline feature vector.",
+    "audio_feature_status": "Audio is present in the sample MP4 streams and extracted into the current baseline feature vector as a real AAC audio block.",
     "implemented_task_count": 12,
     "neural_head_count": 12,
     "covered_by_current_tasks": [
@@ -187,7 +187,7 @@
       "misalignment detection"
     ],
     "not_yet_claimed": [
-      "full audio-visual learning",
+      "large-scale audio-visual pretraining",
       "caption generation",
       "depth-pixel estimation",
       "SLAM estimation",
@@ -197,11 +197,11 @@
       "real 32-episode Qwen3-Omni model quality"
     ]
   },
-    "responsible_use_boundary": [
-        "No raw MP4, raw annotation.hdf5, private gated data, raw visualization.rrd, or full Qwen weights are redistributed.",
-        "The public sample card lists cc-by-nc-4.0; the full gated dataset uses the official Ropedia/Xperience-10M access terms and license field.",
-        "The official card describes the open-source dataset as limited in diversity and showcase/production quality, so robust evaluation and downstream safeguards are still required.",
-        "The project does not support identity recognition, re-identification, biometric profiling, surveillance, sensitive attribute inference, or safety-critical deployment.",
-        "Dataset use remains governed by the official Ropedia/Xperience-10M terms."
-    ]
+  "responsible_use_boundary": [
+    "No raw MP4, raw annotation.hdf5, private gated data, raw visualization.rrd, or full Qwen weights are redistributed.",
+    "The public sample card lists cc-by-nc-4.0; the full gated dataset uses the official Ropedia/Xperience-10M access terms and license field.",
+    "The official card describes the open-source dataset as limited in diversity and showcase/production quality, so robust evaluation and downstream safeguards are still required.",
+    "The project does not support identity recognition, re-identification, biometric profiling, surveillance, sensitive attribute inference, or safety-critical deployment.",
+    "Dataset use remains governed by the official Ropedia/Xperience-10M terms."
+  ]
 }

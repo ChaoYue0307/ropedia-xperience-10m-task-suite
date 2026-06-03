@@ -10,7 +10,7 @@ outside the current public data scope.
 | --- | --- | --- |
 | Sample download | Yes, from `ropedia-ai/xperience-10m-sample` or ModelScope sample mirror | Sample card lists `cc-by-nc-4.0`; raw data is not redistributed in this repo. |
 | Minimal baselines | Yes | One public sample episode, chronological split. |
-| 12-task suite | Yes | Uses the current 8,378-d feature contract; audio is documented but not featurized. |
+| 12-task suite | Yes | Uses the current 8,546-d feature contract, including the decoded AAC audio block. |
 | Neural MLP heads | Yes, when `torch` is installed | Compact task heads only, not a foundation model. |
 | Website figures and charts | Yes | Generated from committed metrics and sample thumbnails. |
 | Public bundle contents | Yes | Covers public repo and prepared HF bundles. |

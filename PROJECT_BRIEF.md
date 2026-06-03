@@ -10,7 +10,7 @@ egocentric episode before scaling to held-out multi-episode training?
 | Layer | Current artifact |
 | --- | --- |
 | Data unit | 1 public sample episode, 5,821 frames, 1,161 synchronized 20-frame windows |
-| Modalities | Video-derived features, depth, pose/SLAM, mocap, IMU, calibration, and language-derived features; audio is documented but not yet featurized |
+| Modalities | Video-derived features, AAC audio, depth, pose/SLAM, mocap, IMU, calibration, and language-derived features |
 | Task suite | 12 embodied-AI task contracts with inputs, targets, metrics, predictions, and case-study walkthroughs |
 | Models | Minimal linear/ridge/logistic baselines plus compact PyTorch MLP heads for the same 12 tasks |
 | Research map | Four Ropedia research directions with direct, proxy, diagnostic, and extension-task coverage |

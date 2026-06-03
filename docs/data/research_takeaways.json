@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Research Takeaways",
   "status": "pass",
-  "generated_at_utc": "2026-06-02T12:00:44+00:00",
+  "generated_at_utc": "2026-06-03T12:56:49+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
@@ -12,15 +12,15 @@
     "validated_episode_count": 1,
     "num_frames": 5821,
     "num_windows": 1161,
-    "feature_dim": 8378,
-    "audio_featurized": false,
+    "feature_dim": 8546,
+    "audio_featurized": true,
     "raw_data_redistributed": false
   },
   "takeaways": [
     {
       "id": "episode_to_benchmark",
       "title": "One episode can become a real benchmark contract",
-      "readout": "The public sample is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,378-dimensional feature contract.",
+      "readout": "The public sample is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,546-dimensional feature contract.",
       "evidence": [
         {
           "label": "frames",
@@ -32,7 +32,7 @@
         },
         {
           "label": "feature_dim",
-          "value": 8378
+          "value": 8546
         }
       ],
       "source": "docs/data/summary_metrics.json",
@@ -45,7 +45,7 @@
       "evidence": [
         {
           "label": "all_feature_action_macro_f1",
-          "value": 0.9791023658779895
+          "value": 0.9828810433408773
         },
         {
           "label": "suite_action_macro_f1",
@@ -53,7 +53,7 @@
         },
         {
           "label": "suite_subtask_macro_f1",
-          "value": 0.04954121121178666
+          "value": 0.05056355513846935
         },
         {
           "label": "unseen_action_test_classes",
@@ -70,31 +70,31 @@
       "evidence": [
         {
           "label": "hand_mpjpe_minimal",
-          "value": 0.8222644925117493
+          "value": 0.8646570444107056
         },
         {
           "label": "hand_mpjpe_neural",
-          "value": 0.11163123697042465
+          "value": 0.10785018652677536
         },
         {
           "label": "hand_mpjpe_relative_improvement",
-          "value": 0.8642392587944207
+          "value": 0.8752682497367739
         },
         {
           "label": "temporal_order_f1_minimal",
-          "value": 0.5487364620938628
+          "value": 0.5399515738498789
         },
         {
           "label": "temporal_order_f1_neural",
-          "value": 0.8717948717948718
+          "value": 0.8520179372197308
         },
         {
           "label": "misalignment_f1_minimal",
-          "value": 0.4865671641791045
+          "value": 0.5051698670605613
         },
         {
           "label": "misalignment_f1_neural",
-          "value": 0.7335243553008597
+          "value": 0.7152682255845944
         }
       ],
       "source": "results/episode_task_suite/neural_mlp/*/metrics.json",
@@ -107,23 +107,23 @@
       "evidence": [
         {
           "label": "retrieval_mrr_minimal",
-          "value": 0.26335984006618296
+          "value": 0.26925966892956127
         },
         {
           "label": "retrieval_mrr_neural",
-          "value": 0.1530070022204131
+          "value": 0.1299971898648288
         },
         {
           "label": "retrieval_top5_minimal",
-          "value": 0.3764367816091954
+          "value": 0.367816091954023
         },
         {
           "label": "reconstruction_r2_minimal",
-          "value": -0.016022846771134747
+          "value": -0.015271898913936655
         },
         {
           "label": "reconstruction_r2_neural",
-          "value": -0.010198171891414143
+          "value": -0.010171410134180991
         }
       ],
       "source": "results/episode_task_suite/cross_modal_retrieval/metrics.json",

@@ -184,7 +184,7 @@ TASK_WALKTHROUGHS: OrderedDict[str, dict[str, Any]] = OrderedDict(
             {
                 "plain_goal": "Look at one short multimodal window and name what action is happening now.",
                 "case_study": "In the coffee-making sample, if the 20-frame window is during a pouring moment, the task asks the model to output an action such as Pour coffee or Pour milk into coffee.",
-                "input": "One 20-frame window represented by the current 8,378-d feature vector: video/depth summaries, pose, SLAM/camera pose, motion capture, IMU, calibration, and language-derived context.",
+                "input": "One 20-frame window represented by the current feature vector: video/audio/depth summaries, pose, SLAM/camera pose, motion capture, IMU, calibration, and language-derived context.",
                 "middle_modules": [
                     "Window builder slices the episode into short overlapping windows.",
                     "Feature assembler concatenates all current feature blocks.",
@@ -202,7 +202,7 @@ TASK_WALKTHROUGHS: OrderedDict[str, dict[str, Any]] = OrderedDict(
             {
                 "plain_goal": "Predict the higher-level task stage for the current window.",
                 "case_study": "A pouring action may belong to a broader subtask such as preparing or pouring a drink. The model predicts that broader stage instead of a fine action.",
-                "input": "The same all-modality 8,378-d window vector used by action recognition.",
+                "input": "The same all-modality window vector used by action recognition.",
                 "middle_modules": [
                     "Window builder creates the current temporal slice.",
                     "Feature assembler keeps all available modality blocks.",
@@ -444,7 +444,7 @@ def build_payload(summary: dict[str, Any]) -> dict[str, Any]:
         "shared_pipeline": [
             "Read annotation.hdf5 and synchronized video-derived features.",
             "Slice the episode into 20-frame windows with stride 5.",
-            "Build an 8,378-d current feature vector from available modality blocks.",
+            f"Build a {summary.get('feature_dim'):,}-d current feature vector from available modality blocks, including AAC audio features.",
             "Construct a task-specific target from labels, future frames, paired windows, or modality splits.",
             "Train a minimal head and, when enabled, a neural MLP head.",
             "Write metrics, predictions, and model artifacts for downstream exploration.",
