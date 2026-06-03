@@ -47,7 +47,7 @@ GROUPS = [
     {
         "name": "Prediction + Reconstruction",
         "tone": "blue",
-        "color": "#a7f078",
+        "color": "#ccffa0",
         "soft": "#10210a",
         "tasks": [
             ("hand_trajectory_forecast", "forecast"),
@@ -661,7 +661,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      color: #a7f078;
+      color: #ccffa0;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
       font-size: 15px;
       text-transform: uppercase;
@@ -671,7 +671,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       content: "";
       width: 44px;
       height: 1px;
-      background: #a7f078;
+      background: #ccffa0;
     }}
     h1 {{
       margin: 18px 0 0;
@@ -789,7 +789,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       font-size: 24px;
     }}
     .modality-type {{
-      color: #a7f078;
+      color: #ccffa0;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
       font-size: 16px;
       line-height: 1.15;
@@ -867,7 +867,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       font-size: 13px;
     }}
     .arrow {{
-      color: #a7f078;
+      color: #ccffa0;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
       font-size: 22px;
     }}
@@ -1003,8 +1003,8 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .footer code {{
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
       color: #020502;
-      background: #a7f078;
-      border: 1px solid #a7f078;
+      background: #ccffa0;
+      border: 1px solid #ccffa0;
       border-radius: 7px;
       padding: 6px 9px;
       white-space: nowrap;

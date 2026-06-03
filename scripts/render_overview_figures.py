@@ -36,7 +36,7 @@ ARCHITECTURE_HEIGHT = 2450
 COLORS = {
     "blue": "#9bdfff",
     "teal": "#7ae5c3",
-    "green": "#a7f078",
+    "green": "#ccffa0",
     "amber": "#d8f4a5",
     "orange": "#b7ff91",
     "red": "#ff8f7a",
@@ -50,7 +50,7 @@ TASK_GROUPS = [
     ("Label + State", "#9bdfff", ["timeline_action", "timeline_subtask", "next_action"]),
     (
         "Prediction + Reconstruction",
-        "#a7f078",
+        "#ccffa0",
         ["hand_trajectory_forecast", "modality_reconstruction", "contact_prediction"],
     ),
     ("Grounding + Retrieval", "#7ae5c3", ["caption_grounding", "cross_modal_retrieval", "object_relevance"]),
@@ -207,7 +207,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
     }}
     .kicker {{
       font: 700 17px "SF Mono", Menlo, monospace;
-      color: #a7f078;
+      color: #ccffa0;
       text-transform: uppercase;
       letter-spacing: 0.09em;
       margin-bottom: 14px;
@@ -315,7 +315,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
       border-radius: 999px;
       border: 1px solid rgba(167,240,120,0.26);
       background: rgba(7,18,7,0.78);
-      color: #a7f078;
+      color: #ccffa0;
       font: 850 22px "SF Mono", Menlo, monospace;
       box-shadow: 0 14px 34px rgba(0,0,0,0.36);
     }}
@@ -484,7 +484,7 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
     }}
     .kicker {{
       font: 700 16px "SF Mono", Menlo, monospace;
-      color: #a7f078;
+      color: #ccffa0;
       text-transform: uppercase;
       letter-spacing: 0.09em;
       margin-bottom: 13px;
