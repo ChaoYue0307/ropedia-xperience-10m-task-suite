@@ -4,7 +4,7 @@
   "output_dir": "results/single_episode_diagnostics",
   "shared_windows_shape": [
     1161,
-    8378
+    8546
   ],
   "starts_first_last": [
     0,
@@ -100,43 +100,49 @@
       "dim": 686
     },
     {
-      "name": "caption_objects_interaction_text",
+      "name": "audio_fisheye_cam0_aac",
       "start": 7343,
-      "end": 8239,
+      "end": 7511,
+      "dim": 168
+    },
+    {
+      "name": "caption_objects_interaction_text",
+      "start": 7511,
+      "end": 8407,
       "dim": 896
     },
     {
       "name": "slam_point_cloud",
-      "start": 8239,
-      "end": 8261,
+      "start": 8407,
+      "end": 8429,
       "dim": 22
     },
     {
       "name": "calibration",
-      "start": 8261,
-      "end": 8378,
+      "start": 8429,
+      "end": 8546,
       "dim": 117
     }
   ],
   "summary_report_core": {
     "num_windows": 1161,
-    "feature_dim": 8378,
+    "feature_dim": 8546,
     "window_frames": 20,
     "stride_frames": 5,
     "annotation": "data/sample/xperience-10m-sample/annotation.hdf5"
   },
   "input_file_hashes": {
-    "results/episode_task_suite/shared_windows.npz": "72ca8566186080580e7181ae08d5659dd19f2ad55a2a9613f5cee75467e501e6",
+    "results/episode_task_suite/shared_windows.npz": "c5d6de347376bb2d38ed9c4646d9ca2f02b34b5f7e81036e1897c1ed1d5894be",
     "results/episode_task_suite/windows.csv": "c075e43518a96934b68da97dceb45926c5fd71c846c8df5d94cc1a3d9e250739",
-    "results/episode_task_suite/feature_manifest.json": "a6662295f44c325490d3575edb1a0e88585554c57c3988263b78b59bec3970a0",
-    "results/episode_task_suite/summary_report.json": "04d2badfaa149cce10e218ea8e13745e620d062e4ec5fa9f209a3ed9926a2ef4",
+    "results/episode_task_suite/feature_manifest.json": "86b67142aaa63727287635b73c60dcb97c30a730b6a3c7335ea7640c296ed41e",
+    "results/episode_task_suite/summary_report.json": "4c4db850c37268a8dc4d2e86c21f99c8d92c4cee106b27f7b8db0347631947cd",
     "results/episode_task_suite/transition_detection/true_boundaries.csv": "5445144c216666d66e725be8313d7e2954670761a45d234df983acd94f7007f0",
-    "results/episode_task_suite/timeline_action/predictions.csv": "0ed609f2b5a2dc47b678a0b5d5fb6fc23d9a1cdd4f88dd85da8d8c9123c5565b",
-    "results/episode_task_suite/timeline_subtask/predictions.csv": "f12336affe6b907fc8b4b7655e4a16772e0cffb594789ebfc6a041bd7a251600",
-    "results/episode_task_suite/transition_detection/predictions.csv": "601a611bd9abf14bfac69d7fe44785b6567f4972fa6a80cb5d55f47b76c4d18c",
-    "results/episode_task_suite/next_action/predictions.csv": "1182cdeafe0282704d8b6a2c482a161d0bd97275a153e53d0501f3371ac61066",
+    "results/episode_task_suite/timeline_action/predictions.csv": "619be182c7997d38bda0cf8bb6067aebe7841d669c6fc2940a4f69c792028d26",
+    "results/episode_task_suite/timeline_subtask/predictions.csv": "e45d3aaaba0761b1b20be6f70ee467948b115c7bdfea66a5428365df36e21bea",
+    "results/episode_task_suite/transition_detection/predictions.csv": "e7898d94cfe373aa77eb6350f17118c954d8d6af7f61b3819f25fe735458b0da",
+    "results/episode_task_suite/next_action/predictions.csv": "15a18dca37ff862b5ce55d5ca17b40f251e07d2efd2a3b631cfb184f79c99caa",
     "results/episode_task_suite/contact_prediction/predictions.csv": "161d7ddc9abc1d9cab08ce733f5f476c686a6a5046e81c9a8a4afbcf8064f43b",
-    "results/episode_task_suite/object_relevance/predictions.csv": "cd3a30437de815deafe67ac894e606c6fa87d0cccef15ae76757f9cf7cad5708",
+    "results/episode_task_suite/object_relevance/predictions.csv": "b5e854dbb34fa3cf520ed1bbe63b5dde9faa50516411dc9da25966f56259c839",
     "external_raw_sample/annotation.hdf5": "4a44b773c92715091c8d70e19f25e41a503160d2d6e7da98b47b99a538f9cad3"
   }
 }

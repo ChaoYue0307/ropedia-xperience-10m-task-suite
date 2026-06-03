@@ -4,6 +4,7 @@ This diagnostic uses real held-out feature windows, then deliberately shifts the
 
 ## Zero-Shift Versus Worst Shift
 
+- Audio: zero-shift MRR=0.0233; worst shift=40 windows, MRR=0.0132
 - Inertial: zero-shift MRR=0.2840; worst shift=-20 windows, MRR=0.0199
 - Language: zero-shift MRR=0.0310; worst shift=-40 windows, MRR=0.0158
 - Motion Capture: zero-shift MRR=0.2553; worst shift=-10 windows, MRR=0.0183

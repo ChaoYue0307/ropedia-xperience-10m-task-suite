@@ -1,17 +1,18 @@
 {
   "description": "Compact ridge-head ablation over real shared_windows.npz feature blocks.",
-  "num_rows": 96,
-  "num_computed": 96,
+  "num_rows": 108,
+  "num_computed": 108,
   "num_not_computed": 0,
   "groups": {
-    "all_features": 8378,
+    "all_features": 8546,
     "video": 4116,
     "depth": 980,
     "pose_slam": 223,
     "motion_capture": 2121,
     "inertial": 42,
+    "audio": 168,
     "language": 896,
-    "no_language": 7482
+    "no_language": 7650
   },
   "tasks": [
     "timeline_action",
