@@ -1,9 +1,9 @@
 {
-  "mse": 1351.3720703125,
-  "mae": 0.10358995944261551,
-  "r2": -0.010198171891414143,
+  "mse": 1351.3363037109375,
+  "mae": 0.10379635542631149,
+  "r2": -0.010171410134180991,
   "task": "modality_reconstruction",
-  "input": "motion/IMU/camera",
+  "input": "motion/IMU/camera/audio",
   "split": "chronological",
   "num_train_windows": 813,
   "num_test_windows": 348,
@@ -18,5 +18,5 @@
   "neural_weight_decay": 0.0001,
   "neural_dropout": 0.1,
   "neural_device": "cpu",
-  "train_final_loss": 0.2246821296537641
+  "train_final_loss": 0.21891545446596464
 }
