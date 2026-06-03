@@ -7,7 +7,7 @@ These outputs are local diagnostics built from the existing one-episode Xperienc
 - `modality_ablation/`: compact ridge-head ablations across real feature blocks.
 - `timeline_overlay/`: existing prediction CSVs aligned to the episode timeline.
 - `alignment_stress/`: cross-modal retrieval under explicit time-shift perturbations.
-- `provenance.json`: input hashes, feature dimensions, and source artifact paths.
+- `provenance.json`: input hashes, feature dimensions, and source artifact identifiers.
 
 ## Validity Boundaries
 

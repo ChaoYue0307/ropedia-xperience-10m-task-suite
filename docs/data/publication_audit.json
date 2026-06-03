@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-03T01:40:56+00:00",
+  "generated_at_utc": "2026-06-03T04:07:12+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -179,8 +179,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 333,
-      "text_file_count": 269,
+      "file_count": 352,
+      "text_file_count": 288,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -190,19 +190,19 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 118,
-      "text_file_count": 91,
+      "file_count": 135,
+      "text_file_count": 108,
       "largest_file": {
-        "path": "assets/task_suite_infographic.png",
-        "bytes": 2618313
+        "path": "data/single_episode_explorer.json",
+        "bytes": 4101241
       },
       "violations": []
     },
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 362,
-      "text_file_count": 278,
+      "file_count": 381,
+      "text_file_count": 297,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
@@ -212,8 +212,8 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 539,
-      "text_file_count": 423,
+      "file_count": 561,
+      "text_file_count": 445,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 52601010
