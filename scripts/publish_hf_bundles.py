@@ -69,6 +69,10 @@ STALE_MODEL_REMOTE_FILES = [
     "metrics/" + LEGACY_SCORECARD_JSON,
 ]
 
+ARTIFACT_BINARY_ALLOWLIST = [
+    "results/audio_ablation/raw_logmel_fisheye_cam0_sr16000_mels64_fft512_hop160.npz",
+]
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -171,6 +175,29 @@ def delete_remote_folder_if_present(
         print(f"Remote stale-folder cleanup skipped for {repo_id}/{path_in_repo}: {exc}")
 
 
+def upload_allowlisted_artifact_binaries(
+    api: HfApi,
+    token: str,
+    repo_id: str,
+    artifact_root: Path,
+) -> None:
+    """Upload approved derived binary artifacts without exposing model weights."""
+    for relative_path in ARTIFACT_BINARY_ALLOWLIST:
+        path = artifact_root / relative_path
+        if not path.exists():
+            print(f"Allowlisted artifact binary absent: {relative_path}")
+            continue
+        api.upload_file(
+            path_or_fileobj=str(path),
+            path_in_repo=relative_path,
+            repo_id=repo_id,
+            repo_type="dataset",
+            token=token,
+            commit_message=f"Publish derived artifact {relative_path}",
+        )
+        print(f"Uploaded allowlisted artifact binary: {repo_id}/{relative_path}")
+
+
 def main() -> int:
     args = parse_args()
     hf_root = args.hf_root.resolve()
@@ -214,6 +241,7 @@ def main() -> int:
         "Publish Ropedia Xperience-10M derived artifacts",
         ignore_patterns=["**/*.pt", "**/*.npz"],
     )
+    upload_allowlisted_artifact_binaries(api, token, artifact_repo, hf_root / "artifacts")
     for path_in_repo in STALE_ARTIFACT_REMOTE_FILES:
         delete_remote_file_if_present(api, token, artifact_repo, "dataset", path_in_repo)
     for path_in_repo in STALE_ARTIFACT_REMOTE_FOLDERS:
