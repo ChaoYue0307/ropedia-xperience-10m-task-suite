@@ -1,9 +1,9 @@
 {
   "title": "Ropedia Xperience-10M Figure Index",
   "status": "pass",
-  "generated_at_utc": "2026-06-04T06:20:38+00:00",
+  "generated_at_utc": "2026-06-04T14:43:42+00:00",
   "scope": "Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience-10M videos, annotations, RRD files, and Qwen weights are excluded.",
-  "figure_count": 21,
+  "figure_count": 22,
   "figures": [
     {
       "id": "brand_logo_mark",
@@ -81,12 +81,29 @@
       "source_script": "scripts/generate_visualizations.py",
       "surface": "README, website, HF artifact dataset",
       "exists": true,
-      "bytes": 707296,
-      "sha256": "3eb7767a6ec78ef50847b79fad16e2438e84f449782f3fe8367417bece1e289c",
+      "bytes": 704575,
+      "sha256": "c90723cc4b1bf5490269af2df594849030ae8d4cc8176e1d1eab96fabf9412f9",
       "dimensions": {
         "format": "PNG",
         "width": 1800,
         "height": 1120
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "qwen3_omni_lora_pipeline",
+      "title": "Qwen3-Omni LoRA training pipeline",
+      "path": "docs/assets/qwen3_omni_lora_pipeline.png",
+      "role": "Detailed raw-data-to-adapter flow for staged Xperience-10M Qwen3-Omni LoRA training.",
+      "source_script": "docs/assets/qwen3_omni_lora_pipeline.prompt.md",
+      "surface": "README, website, HF Space, artifact dataset, model card",
+      "exists": true,
+      "bytes": 1879166,
+      "sha256": "41cc0ca137ae453834a98f5496ff5fab44654900154ccbfdb235767e604cd644",
+      "dimensions": {
+        "format": "PNG",
+        "width": 1536,
+        "height": 1024
       },
       "source_script_exists": true
     },
@@ -98,8 +115,8 @@
       "source_script": "scripts/render_overview_figures.py",
       "surface": "README, website, HF artifact dataset, model card",
       "exists": true,
-      "bytes": 767403,
-      "sha256": "9e3b86acf7f7296eb7c4b1e5e74c7008f264ddce40485e0e923b1e2a2f2b8efe",
+      "bytes": 761507,
+      "sha256": "076c2e463ddce473e9138ac6f3615152d59031d6be2aa5c3d9ae1ace3d3f6c83",
       "dimensions": {
         "format": "PNG",
         "width": 1800,

@@ -390,6 +390,8 @@ derived thumbnails from the public sample, not raw Xperience-10M files.
 
 ![Verified Pipeline](docs/assets/pipeline_diagram.png?v=xperience10m-nn)
 
+![Qwen3-Omni LoRA training pipeline](docs/assets/qwen3_omni_lora_pipeline.png?v=qwen3-lora-v1)
+
 ![Minimal and neural 12-task model architectures](docs/assets/task_architectures.png?v=xperience10m-nn)
 
 The pipeline and architecture figures use the same pattern: text-free visual
@@ -466,6 +468,7 @@ docs/
   assets/task_suite_infographic.png # 12-task presentation graphic
   assets/modalities/                # public-sample derived modality thumbnails
   assets/pipeline_diagram.png       # verified episode pipeline graphic
+  assets/qwen3_omni_lora_pipeline.png # Qwen3-Omni LoRA training-flow figure
   assets/task_architectures.png     # verified 12-task minimal architecture map
   assets/charts/*.svg               # regenerated visualizations
 
@@ -574,6 +577,15 @@ The useful distinction is:
   prompts,
 - adapter-required Xperience-10M sensor inputs: depth, pose/SLAM, hand/body
   mocap, contacts, and IMU.
+
+![Xperience-10M to Qwen3-Omni LoRA training flow](docs/assets/qwen3_omni_lora_pipeline.png?v=qwen3-lora-v1)
+
+The figure shows the intended end-to-end training flow: raw valid episodes enter
+episode-level split validation, parallel media/sensor export creates Qwen-style
+JSONL records, Qwen3-Omni receives video/audio/text directly, the sensor bridge
+adds depth/pose/mocap/IMU features, LoRA adapters are trained on staged
+train/val episodes, and sealed held-out test evaluation produces predictions,
+metrics, run reports, and upload-ready adapter artifacts.
 
 The current scale-up artifacts show that the export, manifest, sensor-feature,
 LoRA, and evaluation scripts can run on the available sample episode. They do

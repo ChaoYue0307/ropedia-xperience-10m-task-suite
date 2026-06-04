@@ -550,6 +550,37 @@
       background: var(--surface);
       box-shadow: 0 18px 46px rgba(0, 0, 0, 0.36);
     }
+    .lora-pipeline-image {
+      display: block;
+      margin-top: 22px;
+    }
+    .figure-brief {
+      margin: 24px 0 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+    .figure-brief-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(204, 255, 160, 0.08), rgba(6, 14, 7, 0.76));
+      padding: 22px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.24);
+    }
+    .figure-brief-card h3 {
+      margin: 0 0 10px;
+      font-family: var(--font-ui);
+      font-size: 21px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    .figure-brief-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
     .task-suite-image {
       display: block;
       margin-top: 30px;
@@ -1970,6 +2001,7 @@
       .hero-inner { min-height: 0; }
       .project-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .section-tabs { padding-top: 10px; }
+      .figure-brief { grid-template-columns: 1fr; }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .brief-panel-head { grid-template-columns: 1fr; align-items: start; }
       .task-player { grid-template-columns: 1fr; }
@@ -2708,6 +2740,17 @@
           <p>Every script works from one data contract: aligned multimodal windows, explicit labels, cached feature extraction, and a manifest that makes omitted modalities visible.</p>
         </div>
         <img class="pipeline-image" src="assets/pipeline_diagram.png?v=xperience10m-nn" alt="Verified Xperience-10M multimodal pipeline diagram">
+        <div class="figure-brief">
+          <article class="figure-brief-card">
+            <h3>Qwen3-Omni LoRA training flow</h3>
+            <p>Raw valid episodes move through split validation, parallel export, video/audio/text formatting, sensor-bridge features, LoRA training, and sealed held-out evaluation.</p>
+          </article>
+          <article class="figure-brief-card">
+            <h3>What the figure represents</h3>
+            <p>It documents the staged 128-episode path now being prepared. Final model-quality numbers are added only after training and held-out evaluation complete.</p>
+          </article>
+        </div>
+        <img class="pipeline-image lora-pipeline-image" src="assets/qwen3_omni_lora_pipeline.png?v=qwen3-lora-v1" alt="Detailed Qwen3-Omni LoRA training pipeline from raw Xperience-10M episodes to adapter outputs, predictions, metrics, and reports">
         <div class="callout-row">
           <div class="callout">
             <h3>What this project enables</h3>
