@@ -111,7 +111,7 @@ multi-episode held-out model metrics:
 | Data windows | `results/episode_task_suite/windows.csv`, `shared_windows.npz`, `summary_report.json` | one public sample episode |
 | Feature contract | `results/episode_task_suite/feature_manifest.json`, `available_modalities.json` | documents the 8,546-dimensional multimodal representation and source coverage |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | defines windowing, chronological split, leakage controls, per-task metrics, and current limitations |
-| Research takeaways | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | summarizes result interpretation from committed metrics and identifies which experiments need held-out episodes |
+| Research Takeaways | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | summarizes result interpretation from committed metrics and identifies which experiments need held-out episodes |
 | Audio ablation | `scripts/audio_ablation_and_raw_upgrade.py`, `results/audio_ablation/`, `docs/data/audio_ablation_summary.json` | measures whether audio helps each of the 12 task contracts |
 | Research roadmap | `RESEARCH_ROADMAP.md`, `docs/research_roadmap.html`, `docs/data/research_roadmap.json`, `docs/data/research_roadmap_interactive.json` | stages and visualizes the path from public-sample task development to multi-episode held-out evaluation, foundation-model selection, and larger omni/world-model extensions |
 | Foundation-model plan | `FOUNDATION_MODEL_PLAN.md`, `docs/data/foundation_model_plan.json` | keeps Qwen3-Omni as the first trainable pilot, adds Cosmos 3 as the first world-model branch, and tracks OpenVLA/openpi/GR00T policy candidates |
@@ -126,7 +126,7 @@ multi-episode held-out model metrics:
 | Multi-episode pilot status | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | separates setup artifacts, selected relay state, and completed held-out-episode metrics |
 | Mirror parity | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | prepared GitHub/HF mirrors carry matching data, figure, website HTML, and validator files |
 | Public bundle contents | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | summarizes the public repo and HF bundles, including raw-data exclusion and temporary local-file exclusion |
-| Release checks | `QUALITY_GATES.md`, `docs/data/quality_gates.json`, `scripts/build_quality_gates.py` | one map for automated checks and live post-publish verification |
+| Release checks | `QUALITY_GATES.md`, `docs/data/quality_gates.json`, `metrics/quality_gates.json`, `scripts/build_quality_gates.py` | one map for automated checks and live post-publish verification; the `metrics/` path is the Hugging Face model-repo mirror |
 | Artifact index | `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | selective source-of-truth catalog with existence, size, and stable-file hashes |
 | Project status | `PROJECT_STATUS.md`, `docs/data/project_status.json` | compact current-state table for first-pass readers |
 | Citation and metadata | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | code is MIT-scoped; raw-data use follows Xperience-10M terms |
