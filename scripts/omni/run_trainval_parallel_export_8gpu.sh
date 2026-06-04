@@ -19,6 +19,9 @@ MIN_VAL_EPISODES="${MIN_VAL_EPISODES:-12}"
 EXPORT_WORKERS="${EXPORT_WORKERS:-8}"
 MAX_WINDOWS_PER_EPISODE="${MAX_WINDOWS_PER_EPISODE:-32}"
 MAX_VIDEO_FRAMES="${MAX_VIDEO_FRAMES:-16}"
+AUDIO_SOURCE="${AUDIO_SOURCE:-fisheye_cam0}"
+AUDIO_SAMPLE_RATE="${AUDIO_SAMPLE_RATE:-16000}"
+AUDIO_BAND_COUNT="${AUDIO_BAND_COUNT:-16}"
 MAX_VAL_SAMPLES="${MAX_VAL_SAMPLES:-512}"
 EPOCHS="${EPOCHS:-1}"
 NUM_PROCESSES="${NUM_PROCESSES:-8}"
@@ -100,7 +103,10 @@ json_log event=parallel_export_start dataset_run_id="$DATASET_RUN_ID" workers="$
   --output-dir "$DATASET_DIR" \
   --num-workers "$EXPORT_WORKERS" \
   --max-windows-per-episode "$MAX_WINDOWS_PER_EPISODE" \
-  --max-video-frames "$MAX_VIDEO_FRAMES"
+  --max-video-frames "$MAX_VIDEO_FRAMES" \
+  --audio-source "$AUDIO_SOURCE" \
+  --audio-sample-rate "$AUDIO_SAMPLE_RATE" \
+  --audio-band-count "$AUDIO_BAND_COUNT"
 json_log event=parallel_export_done dataset_jsonl="$DATASET_JSONL"
 
 "$VENV_PY" - "$DATASET_JSONL" <<'PY'

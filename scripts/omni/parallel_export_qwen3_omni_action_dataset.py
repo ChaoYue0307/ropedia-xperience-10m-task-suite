@@ -26,6 +26,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--num-workers", type=int, default=8)
     parser.add_argument("--max-windows-per-episode", type=int, default=32)
     parser.add_argument("--max-video-frames", type=int, default=16)
+    parser.add_argument("--audio-source", default="fisheye_cam0")
+    parser.add_argument("--audio-sample-rate", type=int, default=16000)
+    parser.add_argument("--audio-band-count", type=int, default=16)
     parser.add_argument("--render-media", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--force-rebuild-cache", action="store_true")
     return parser.parse_args()
@@ -72,6 +75,12 @@ def run_shard(args: argparse.Namespace, shard_manifest: Path, shard_output: Path
         str(args.max_windows_per_episode),
         "--max-video-frames",
         str(args.max_video_frames),
+        "--audio-source",
+        args.audio_source,
+        "--audio-sample-rate",
+        str(args.audio_sample_rate),
+        "--audio-band-count",
+        str(args.audio_band_count),
     ]
     if not args.render_media:
         cmd.append("--no-render-media")

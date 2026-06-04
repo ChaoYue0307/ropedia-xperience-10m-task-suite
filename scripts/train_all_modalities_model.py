@@ -425,6 +425,7 @@ def text_for_frame(info: dict, include_label_text: bool) -> str:
 
 
 def build_text_features(frame_info_map: dict, n_frames: int, dim: int, include_label_text: bool) -> np.ndarray:
+    frame_info_map = frame_info_map or {}
     features = np.zeros((n_frames, dim), dtype=np.float32)
     for idx in range(n_frames):
         info = frame_info_map.get(idx, {})
@@ -435,10 +436,16 @@ def build_text_features(frame_info_map: dict, n_frames: int, dim: int, include_l
 def prepare_modalities(args: argparse.Namespace, ann: dict) -> tuple[dict, list[dict]]:
     data_root = args.annotation.parent
     n_frames = len(ann["img_names"])
+    audio_source = getattr(args, "audio_source", PRIMARY_AUDIO_VIDEO)
+    if audio_source not in VIDEO_FILES:
+        audio_source = PRIMARY_AUDIO_VIDEO
+    audio_sample_rate = getattr(args, "audio_sample_rate", 16000)
+    audio_band_count = getattr(args, "audio_band_count", 16)
+    skip_video_features = bool(getattr(args, "skip_video_features", False))
     extras: dict = {
         "video": OrderedDict(),
         "audio": None,
-        "audio_name": args.audio_source,
+        "audio_name": audio_source,
         "depth": None,
         "text": None,
         "static": OrderedDict(),
@@ -452,38 +459,41 @@ def prepare_modalities(args: argparse.Namespace, ann: dict) -> tuple[dict, list[
     available.append({"modality": "depth_confidence", "shape": list(depth.shape)})
 
     print("  videos")
-    for name, filename in VIDEO_FILES.items():
-        path = data_root / filename
-        feats = read_video_feature_cache(
-            path,
-            n_frames,
-            args.cache_dir,
-            args.video_image_size,
-            args.video_grid_size,
-            args.video_hist_bins,
-            args.force_rebuild_cache,
-        )
-        extras["video"][name] = feats
-        available.append({
-            "modality": f"video/{name}",
-            "path": portable_path(path, args.workspace),
-            "shape": list(feats.shape),
-            "exists": path.exists(),
-        })
+    if skip_video_features:
+        print("    skipped handcrafted video features")
+    else:
+        for name, filename in VIDEO_FILES.items():
+            path = data_root / filename
+            feats = read_video_feature_cache(
+                path,
+                n_frames,
+                args.cache_dir,
+                args.video_image_size,
+                args.video_grid_size,
+                args.video_hist_bins,
+                args.force_rebuild_cache,
+            )
+            extras["video"][name] = feats
+            available.append({
+                "modality": f"video/{name}",
+                "path": portable_path(path, args.workspace),
+                "shape": list(feats.shape),
+                "exists": path.exists(),
+            })
 
     print("  audio")
-    audio_path = data_root / VIDEO_FILES[args.audio_source]
+    audio_path = data_root / VIDEO_FILES[audio_source]
     audio, audio_meta = read_audio_feature_cache(
         audio_path,
         n_frames,
         args.cache_dir,
-        args.audio_sample_rate,
-        args.audio_band_count,
+        audio_sample_rate,
+        audio_band_count,
         args.force_rebuild_cache,
     )
     extras["audio"] = audio
     available.append({
-        "modality": f"audio/{args.audio_source}",
+        "modality": f"audio/{audio_source}",
         "path": portable_path(audio_path, args.workspace),
         "shape": list(audio.shape),
         **audio_meta,
