@@ -2141,9 +2141,11 @@
         <p class="hero-copy">
           This project uses the public Xperience-10M sample from Ropedia to explore
           embodied-AI task design, multimodal feature construction, lightweight
-          baselines, and future Omni-model fine-tuning. It starts from the sample
-          episode available now, then keeps the same data contracts ready for
-          held-out multi-episode training when more Xperience-10M data is prepared.
+          baselines, future Omni-model fine-tuning, and the long-term path toward
+          an Xperience-native embodied foundation model. It starts from the
+          sample episode available now, then keeps the same data contracts ready
+          for held-out multi-episode training when more Xperience-10M data is
+          prepared.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="research_roadmap.html">Open roadmap</a>
@@ -2252,7 +2254,7 @@
             </article>
             <article class="brief-card">
               <strong>Scale-up readiness</strong>
-              <p>Connects the same data contract to 32/128-episode held-out pilots, Qwen3-Omni LoRA, Cosmos-style world modeling, and later policy-model branches.</p>
+              <p>Connects the same data contract to 32/128-episode held-out pilots, Qwen3-Omni LoRA, Cosmos-style world modeling, policy-model branches, and the later Xperience-native pretraining goal.</p>
             </article>
           </div>
           <div class="brief-actions">
@@ -2356,7 +2358,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Research roadmap.</h2>
-          <p>The project path moves from the current public-sample task lab to multi-episode data preparation, held-out Qwen3-Omni fine-tuning, robustness runs, and larger foundation/world-model extensions.</p>
+          <p>The project path moves from the current public-sample task lab to multi-episode data preparation, held-out Qwen3-Omni fine-tuning, robustness runs, world/policy branches, and the future Xperience Embodied Foundation Model pretraining goal.</p>
         </div>
         <div class="roadmap-grid" aria-label="Research roadmap stages">
           <article class="roadmap-card" data-status="implemented">
@@ -2413,12 +2415,22 @@
               <strong>Evidence</strong><p>Task-specific held-out evaluations, qualitative inspection, and updated model cards.</p>
             </div>
           </article>
+          <article class="roadmap-card" data-status="planned">
+            <span class="roadmap-status">future</span>
+            <h3>Xperience Embodied Foundation Model</h3>
+            <p>Pretrain an Xperience-native domain model over synchronized video, audio, depth, pose, mocap, IMU, and language after smaller scaling stages prove value.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>Full-corpus access, PB-scale storage path, multi-node compute, and positive scaling evidence.</p>
+              <strong>Evidence</strong><p>Pretraining manifests, scaling curves, held-out evaluations, checkpoint inventory, model card, and data-boundary report.</p>
+            </div>
+          </article>
         </div>
         <div class="roadmap-links">
           <a href="research_roadmap.html">interactive roadmap</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">roadmap document</a>
           <a href="data/research_roadmap.json">roadmap stages</a>
           <a href="data/foundation_model_plan.json">foundation model plan</a>
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">native pretraining plan</a>
           <a href="data/research_roadmap_interactive.json">interactive map</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up status</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_STATUS.md">project status</a>
@@ -2438,7 +2450,7 @@
           <article class="artifact"><h3>Metric contract</h3><p>All 12 tasks list input, target, primary metric, minimal baseline score, and neural MLP score from committed result files.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target-side signals, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
           <article class="artifact"><h3>Audio ablation</h3><p>Audio and no-audio variants are evaluated across all 12 task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
-          <article class="artifact"><h3>Foundation branch selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 becomes the world-model branch, and policy models wait for explicit action targets.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
+          <article class="artifact"><h3>Foundation branch selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 becomes the world-model branch, policy models wait for explicit action targets, and Xperience-native pretraining remains a later full-corpus goal.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
           <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. Cross-episode generalization, audio-visual learning, world modeling, policy targets, and held-out Qwen3-Omni training move to the multi-episode stage after selected data is prepared.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">next-stage plan</a></article>
           <article class="artifact"><h3>Scale-up requirement</h3><p>The Omni pilot requires selected prepared episodes, held-out episode splits, no train/test episode leakage, training metadata, predictions, metrics, and a run report.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up status</a></article>
         </div>
@@ -2492,10 +2504,11 @@
           <article class="evidence-card">
             <span class="status-pill">current plan</span>
             <h3>Foundation backbones are separated by role</h3>
-            <p>Qwen3-Omni stays first for held-out LoRA; Cosmos 3 is the world-model branch; OpenVLA/openpi/GR00T are policy candidates after action-space conversion.</p>
+            <p>Qwen3-Omni stays first for held-out LoRA; Cosmos 3 is the world-model branch; OpenVLA/openpi/GR00T are policy candidates after action-space conversion; Xperience-native pretraining is the later full-corpus goal.</p>
             <div class="evidence-links">
               <a href="data/foundation_model_plan.json">foundation model plan</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">plan doc</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a>
             </div>
           </article>
           <article class="evidence-card">
@@ -2628,10 +2641,11 @@
           <article class="reading-card">
             <span class="step-index">04</span>
             <h3>Check the scale-up gate</h3>
-            <p>The multi-episode Qwen3-Omni path is prepared. The selected 128-episode result will be added after staging, preprocessing, training, and held-out evaluation pass.</p>
+            <p>The multi-episode Qwen3-Omni path is prepared. The selected 128-episode result will be added after staging, preprocessing, training, and held-out evaluation pass. The native-pretraining plan shows how this can grow into a full-corpus research direction.</p>
             <div class="reading-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up status</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">data access</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">native pretraining</a>
               <a href="data/project_packet.json">reader path</a>
             </div>
           </article>
@@ -2659,7 +2673,7 @@
           <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, and no raw-data redistribution.</p><a href="data/modality_atlas.json">modality atlas</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, and misalignment.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Responsible use</h3><p>This project is for research exploration and excludes identity recognition, surveillance, biometric profiling, sensitive-attribute inference, and safety-critical deployment.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">use notes</a></article>
-          <article class="artifact"><h3>Later milestones</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, and held-out Qwen3-Omni evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up status</a></article>
+          <article class="artifact"><h3>Later milestones</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, held-out Qwen3-Omni evaluation, and future Xperience-native pretraining.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">native pretraining</a></article>
         </div>
       </div>
     </section>
@@ -3103,10 +3117,11 @@
             </div>
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Project scope</h3><p>Connects implemented single-episode artifacts, setup-stage Omni work, the selected 128-episode pilot, and later multi-episode milestones.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">evidence contract</a></article>
-              <article class="artifact"><h3>Foundation-model plan</h3><p>Backbone selection matrix covering Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, and SmolVLA-style policy candidates.</p><a href="data/foundation_model_plan.json">foundation model plan</a></article>
+              <article class="artifact"><h3>Foundation-model plan</h3><p>Backbone selection matrix covering Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, SmolVLA-style policy candidates, and the future Xperience-native pretraining goal.</p><a href="data/foundation_model_plan.json">foundation model plan</a></article>
               <article class="artifact"><h3>Multi-episode data access</h3><p>Public data-access path, selected 128-episode pilot plan, and preparation requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">data access</a></article>
               <article class="artifact"><h3>Qwen3-Omni preparation</h3><p>Episode selection and manifest preparation for the current scale-up path.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/episode_manifest.json">preparation details</a></article>
               <article class="artifact"><h3>Scale-up requirement</h3><p>What must be available before full pilot training and held-out metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">training requirements</a></article>
+              <article class="artifact"><h3>Xperience-native pretraining</h3><p>Future plan for a domain-specific embodied foundation model trained from scratch over full-corpus video, audio, geometry, motion, inertial, and language streams.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a></article>
             </div>
           </section>
 
@@ -3123,7 +3138,7 @@
               <article class="artifact"><h3>Dataset notes</h3><p>Official dataset links, public sample source, modalities, access boundary, and current project subset.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">dataset notes</a></article>
               <article class="artifact"><h3>Reproducibility</h3><p>Commands and expected outputs for rebuilding the public-sample task suite and visual artifacts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">reproduce</a></article>
               <article class="artifact"><h3>Qwen3-Omni status</h3><p>Data requirements and evaluation boundary for the selected multi-episode LoRA pilot.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">training status</a></article>
-              <article class="artifact"><h3>Foundation-model plan</h3><p>Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, and SmolVLA-style branches by role.</p><a href="data/foundation_model_plan.json">model plan</a></article>
+              <article class="artifact"><h3>Foundation-model plan</h3><p>Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, SmolVLA-style branches, and the Xperience-native pretraining goal by role.</p><a href="data/foundation_model_plan.json">model plan</a></article>
               <article class="artifact"><h3>Hub artifacts</h3><p>Derived CSV/JSON/Markdown/figure artifacts without redistributing raw Xperience-10M data.</p><a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">artifact dataset</a></article>
               <article class="artifact"><h3>Baseline models</h3><p>Lightweight minimal and neural task-head model files for the 12 task contracts.</p><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">model repo</a></article>
             </div>
@@ -3143,6 +3158,7 @@
           <article class="artifact"><h3>Transfer</h3><p>Download raw episodes only from official gated sources, exclude visualization.rrd, validate files, then stage them for training.</p></article>
           <article class="artifact"><h3>Current LoRA artifact</h3><p>The current LoRA artifact uses the locally available sample data. The multi-episode result begins after selected data is prepared, preprocessed, trained, and evaluated on held-out sessions.</p></article>
           <article class="artifact"><h3>Backbone branches</h3><p>Qwen3-Omni is the immediate LoRA path; Cosmos 3 is the first world-model branch; GR00T/OpenVLA/openpi become policy branches after action targets are well-defined.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
+          <article class="artifact"><h3>Native foundation model</h3><p>The long-term goal is a full-corpus Xperience Embodied Foundation Model trained on synchronized perception, geometry, motion, inertial, audio, and language streams after smaller scaling stages validate the approach.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a></article>
         </div>
       </div>
     </section>

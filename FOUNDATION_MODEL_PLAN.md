@@ -20,6 +20,7 @@ run a held-out multi-episode foundation-model evaluation.
 | 5 | openpi pi0/pi0.5 | Open robot policy and action expert baseline | Useful for action chunking, policy fine-tuning, and embodiment transfer experiments | Candidate for policy branch once action labels are retargeted |
 | 6 | Gemini Robotics | Closed/API embodied reasoning reference | Strong candidate for qualitative reasoning and task interpretation, but not a local fine-tune target | Use only as an external comparison or annotation assistant |
 | 7 | Octo / SmolVLA-style lightweight policies | Smaller reproducible robot-policy baselines | Good for cheaper action-policy experiments, but less directly omni-modal | Optional baseline branch after selected-episode data preparation |
+| Future | Xperience Embodied Foundation Model | Xperience-native domain model pretrained from scratch on full-corpus embodied experience | Would learn a shared temporal representation across video, audio, depth, pose, mocap, IMU, and language | Long-term goal after smaller pilots prove value and full-corpus storage/compute are available |
 
 ## Why Qwen3-Omni Still Goes First
 
@@ -49,6 +50,34 @@ The shared extension rules are in
 [`OMNI_MODEL_EXTENSION_CONTRACT.md`](OMNI_MODEL_EXTENSION_CONTRACT.md). A new
 foundation branch should add a config first, then implement the exporter,
 trainer, evaluator, and launcher required by that config.
+
+## Long-Term Native Pretraining Goal
+
+Qwen3-Omni, Cosmos 3, GR00T, OpenVLA, and openpi are backbone choices for the
+next experiments. The longer-term goal is different: train an
+**Xperience Embodied Foundation Model** that is native to the Xperience-10M
+modality structure.
+
+That model would not start as a general internet-scale omni model. It would be
+a domain model over synchronized embodied experience: multi-view egocentric
+video, audio, depth, pose/SLAM, hand and body mocap, IMU, calibration, and
+language annotations. Its pretraining should combine masked multimodal
+modeling, cross-modal contrastive alignment, future-state prediction,
+ego-motion and hand-motion forecasting, action/procedure prediction, language
+grounding, contact/affordance prediction, and optional policy-style targets
+after action conversion.
+
+This is not a current result in the repo. It becomes appropriate only after:
+
+- the selected multi-episode pipeline trains and evaluates cleanly,
+- scaling from 128 episodes to thousands of episodes shows measurable value,
+- raw-corpus storage and derived-shard capacity are available,
+- distributed training and checkpoint/restart infrastructure are reliable,
+- evaluation covers held-out episodes, sessions, activities, objects, and
+  missing-modality robustness.
+
+The full plan is documented in
+[`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md).
 
 ## Why Cosmos 3 Should Be Added Next
 
@@ -117,6 +146,9 @@ The foundation-model stage should add metrics beyond the current 12-task suite:
    retargeting artifacts are traceable.
 6. Update public cards only when a branch has real manifests, predictions,
    metrics, and qualitative examples.
+7. Start Xperience-native pretraining only after smaller scaling stages,
+   full-corpus storage, multi-node compute, and held-out evaluation protocols
+   are in place.
 
 ## Source Links
 
@@ -128,3 +160,5 @@ The foundation-model stage should add metrics beyond the current 12-task suite:
 - Gemini Robotics: https://deepmind.google/discover/blog/gemini-robotics-brings-ai-into-the-physical-world/
 - Octo: https://octo-models.github.io/
 - LeRobot / SmolVLA: https://github.com/huggingface/lerobot
+- Xperience Embodied Foundation Model pretraining plan:
+  `XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`

@@ -21,8 +21,9 @@ scale-up readiness; it is not presented as final full-dataset model quality.
 | Neural heads | Verified | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split. |
 | Audio contribution study | Verified | `scripts/audio_ablation_and_raw_upgrade.py`, `results/audio_ablation/`, `docs/data/audio_ablation_summary.json` | Audio variants are compared across all 12 task contracts; audio improves the primary metric on 6 of 12 tasks, and a 588-d audio-window representation improves over the baseline audio variant on 6 of 12 tasks. |
 | Research takeaways | Verified | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | The main result interpretation is generated from committed metrics: chronological class shift, neural gains on dynamics/order/alignment, open retrieval/reconstruction problems, and the need for held-out episodes. |
-| Research roadmap | Current | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | The roadmap connects public-sample task development to 128-episode data preparation, Qwen3-Omni LoRA, foundation-model selection, robustness runs, and larger omni/world-model extensions. |
+| Research roadmap | Current | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | The roadmap connects public-sample task development to 128-episode data preparation, Qwen3-Omni LoRA, foundation-model selection, robustness runs, world/policy branches, and the future Xperience-native pretraining goal. |
 | Foundation-model plan | Current | `FOUNDATION_MODEL_PLAN.md`, `docs/data/foundation_model_plan.json` | Qwen3-Omni remains the first trainable held-out LoRA baseline; Cosmos 3 is added as the first world-model/action-generation branch; OpenVLA/openpi/GR00T are policy candidates after action targets are explicit. |
+| Xperience Embodied Foundation Model | Future goal | `XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md` | A future full-corpus pretraining plan describes target modules, objectives, staged scale-up, hardware ranges, and evaluation for a domain-specific embodied foundation model. |
 | Evaluation protocol | Verified | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | Windowing, chronological split, per-task metrics, leakage controls, and current limitations are generated from committed metric artifacts. |
 | Dataset context | Verified | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, official Xperience-10M and sample cards | The README and dashboard distinguish the public sample used here from the gated full dataset used for the selected multi-episode pilot. |
 | Public dashboard and Hub pages | Verified | GitHub Pages, HF Space, artifact dataset, baseline model repo, Qwen3-Omni LoRA repo | Readers can move between the website, code, derived artifacts, baseline weights, and Qwen3-Omni pilot status without needing internal setup details. |
@@ -42,15 +43,17 @@ scale-up readiness; it is not presented as final full-dataset model quality.
    the path from public-sample task work to multi-episode modeling.
 5. Inspect `FOUNDATION_MODEL_PLAN.md` and
    `docs/data/foundation_model_plan.json` before choosing a backbone branch.
-6. Inspect `docs/data/summary_metrics.json` and
+6. Inspect `XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md` for the
+   long-term full-corpus pretraining goal.
+7. Inspect `docs/data/summary_metrics.json` and
    `results/episode_task_suite/neural_mlp/` to check the 12-task outputs.
-7. Inspect `results/audio_ablation/AUDIO_ABLATION_SUMMARY.md` before judging
+8. Inspect `results/audio_ablation/AUDIO_ABLATION_SUMMARY.md` before judging
    whether audio helps the current task suite.
-8. Inspect `EVALUATION_PROTOCOL.md` before judging task metrics or leakage
+9. Inspect `EVALUATION_PROTOCOL.md` before judging task metrics or leakage
    controls.
-9. Inspect `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` only if you need the
+10. Inspect `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` only if you need the
    detailed upstream dataset-card context.
-10. Inspect `results/omni_finetune/DATA_ACCESS_STATUS.md` before judging
+11. Inspect `results/omni_finetune/DATA_ACCESS_STATUS.md` before judging
    Qwen3-Omni scale-up status.
 
 ## Current Reading Notes
@@ -67,3 +70,5 @@ scale-up readiness; it is not presented as final full-dataset model quality.
 - Foundation-model selection is now explicit: Qwen3-Omni is the immediate
   trainable pilot, Cosmos 3 is the first world-model branch, and policy models
   such as OpenVLA/openpi/GR00T wait for action-target conversion.
+- The Xperience Embodied Foundation Model is a future native-pretraining goal,
+  not a completed model or current benchmark.

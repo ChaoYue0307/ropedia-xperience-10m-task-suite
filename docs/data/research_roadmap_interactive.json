@@ -1837,7 +1837,8 @@
         "NVIDIA GR00T"
       ],
       "first_world_model_branch": "Cosmos 3",
-      "immediate_trainable_backbone": "Qwen3-Omni"
+      "immediate_trainable_backbone": "Qwen3-Omni",
+      "long_term_native_pretraining_goal": "Xperience Embodied Foundation Model"
     },
     "evaluation_additions": [
       {
@@ -1921,6 +1922,11 @@
         "action": "Publish branch results only with real manifests, predictions, metrics, and qualitative examples.",
         "name": "Publishing threshold",
         "step": 6
+      },
+      {
+        "action": "Start a from-scratch Xperience Embodied Foundation Model only after smaller scaling stages, full-corpus storage, multi-node compute, and held-out evaluation protocols are in place.",
+        "name": "Xperience-native pretraining",
+        "step": 7
       }
     ],
     "model_families": [
@@ -2023,6 +2029,21 @@
           "Useful after action target design.",
           "Less directly omni-modal than Qwen3-Omni or Cosmos 3."
         ]
+      },
+      {
+        "best_role": "Domain model over synchronized embodied experience.",
+        "category": "xperience_native_pretraining_goal",
+        "current_decision": "future_goal_after_scaling_evidence",
+        "entry_condition": "Full-corpus data path, PB-scale storage, multi-node compute, and positive smaller-run scaling evidence.",
+        "family": "Xperience Embodied Foundation Model",
+        "openness": "future project-specific model if full-corpus access and compute exist",
+        "priority": 8,
+        "public_source": "XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md",
+        "xperience10m_fit": [
+          "Uses the full aligned modality stack rather than treating sensors as auxiliary metadata.",
+          "Targets temporal embodied representation learning across perception, motion, geometry, audio, and language.",
+          "Can become the shared pretraining backbone for Qwen-style instruction tasks, Cosmos-style world modeling, and policy/action branches."
+        ]
       }
     ],
     "source_links": [
@@ -2057,11 +2078,15 @@
       {
         "label": "LeRobot / SmolVLA",
         "url": "https://github.com/huggingface/lerobot"
+      },
+      {
+        "label": "Xperience Embodied Foundation Model pretraining plan",
+        "url": "XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md"
       }
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-04T16:42:13+00:00",
+  "generated_at_utc": "2026-06-04T20:40:29+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -2208,6 +2233,31 @@
       "reader_takeaway": "The long-term direction is richer multimodal representation learning for embodied-AI reasoning, with model branches chosen by task fit rather than by a single default backbone.",
       "stage": "future",
       "status": "planned"
+    },
+    {
+      "completion_evidence": [
+        "pretraining metadata",
+        "checkpoint inventory",
+        "scaling curves",
+        "held-out evaluation reports",
+        "qualitative retrieval or future-state examples",
+        "safety and data-boundary report"
+      ],
+      "deliverables": [
+        "full-corpus episode and split manifests",
+        "pretraining shard and provenance manifests",
+        "0.3B-1B and 1B-3B scaling pilots",
+        "3B-7B Xperience-native domain model target",
+        "held-out episode/session/activity/object evaluations",
+        "missing-modality robustness report",
+        "model card and data-boundary report"
+      ],
+      "entry_condition": "Full-corpus access, PB-scale storage path, high-throughput data loading, multi-node compute, and positive scaling evidence from smaller multi-episode runs.",
+      "id": "xperience_embodied_foundation_pretraining",
+      "name": "Xperience Embodied Foundation Model Pretraining",
+      "reader_takeaway": "The final research direction is a domain-specific embodied foundation model trained directly on Xperience-10M, after smaller pilots justify the cost and infrastructure.",
+      "stage": "future",
+      "status": "future"
     }
   ],
   "scale_up": {

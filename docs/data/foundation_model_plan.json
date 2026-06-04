@@ -20,7 +20,65 @@
       "openpi pi0/pi0.5",
       "NVIDIA GR00T"
     ],
-    "external_reasoning_reference": "Gemini Robotics"
+    "external_reasoning_reference": "Gemini Robotics",
+    "long_term_native_pretraining_goal": "Xperience Embodied Foundation Model"
+  },
+  "future_pretraining_goal": {
+    "name": "Xperience Embodied Foundation Model",
+    "status": "future_planning_goal",
+    "role": "Domain-specific embodied foundation model pretrained on full Xperience-10M if full-corpus data, storage, and compute become available.",
+    "not_current_result": true,
+    "document": "XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md",
+    "entry_conditions": [
+      "Selected multi-episode Qwen3-Omni pilot trains and evaluates cleanly.",
+      "Scaling from 128 episodes to thousands of episodes shows measurable value.",
+      "Full-corpus storage, derived-shard storage, and fast active-cache capacity are available.",
+      "Distributed training, checkpoint/restart, and provenance tracking are reliable.",
+      "Evaluation covers held-out episodes, sessions, activities, objects, and missing-modality robustness."
+    ],
+    "target_modules": [
+      "multi-view video encoder",
+      "audio encoder",
+      "depth and geometry encoder",
+      "pose/SLAM encoder",
+      "hand/body mocap encoder",
+      "IMU encoder",
+      "language encoder/decoder",
+      "temporal fusion transformer",
+      "task heads and decoders"
+    ],
+    "pretraining_objectives": [
+      "masked multimodal modeling",
+      "cross-modal contrastive alignment",
+      "future-state prediction",
+      "ego-motion and hand-motion forecasting",
+      "action and procedure prediction",
+      "language grounding and captioning",
+      "contact and affordance prediction",
+      "optional policy-style targets after action conversion"
+    ],
+    "hardware_ranges": [
+      {
+        "goal": "0.3B-1B pilot",
+        "compute": "8-32 modern 80GB-class data-center GPUs",
+        "use": "prove objectives and data loaders"
+      },
+      {
+        "goal": "1B-3B domain model",
+        "compute": "32-128 GPUs",
+        "use": "research-scale Xperience representation learning"
+      },
+      {
+        "goal": "3B-7B full-corpus domain model",
+        "compute": "128-512 GPUs",
+        "use": "first realistic full Xperience-native foundation model"
+      },
+      {
+        "goal": "30B-class omni model from scratch",
+        "compute": "512-2000+ GPUs",
+        "use": "lab-scale project after scaling curves justify cost"
+      }
+    ]
   },
   "model_families": [
     {
@@ -122,6 +180,21 @@
       "current_decision": "optional_baseline_after_data_staging",
       "entry_condition": "Action labels and baseline protocol exist.",
       "public_source": "https://github.com/huggingface/lerobot"
+    },
+    {
+      "priority": 8,
+      "family": "Xperience Embodied Foundation Model",
+      "category": "xperience_native_pretraining_goal",
+      "openness": "future project-specific model if full-corpus access and compute exist",
+      "best_role": "Domain model over synchronized embodied experience.",
+      "xperience10m_fit": [
+        "Uses the full aligned modality stack rather than treating sensors as auxiliary metadata.",
+        "Targets temporal embodied representation learning across perception, motion, geometry, audio, and language.",
+        "Can become the shared pretraining backbone for Qwen-style instruction tasks, Cosmos-style world modeling, and policy/action branches."
+      ],
+      "current_decision": "future_goal_after_scaling_evidence",
+      "entry_condition": "Full-corpus data path, PB-scale storage, multi-node compute, and positive smaller-run scaling evidence.",
+      "public_source": "XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md"
     }
   ],
   "execution_order": [
@@ -154,6 +227,11 @@
       "step": 6,
       "name": "Publishing threshold",
       "action": "Publish branch results only with real manifests, predictions, metrics, and qualitative examples."
+    },
+    {
+      "step": 7,
+      "name": "Xperience-native pretraining",
+      "action": "Start a from-scratch Xperience Embodied Foundation Model only after smaller scaling stages, full-corpus storage, multi-node compute, and held-out evaluation protocols are in place."
     }
   ],
   "evaluation_additions": [
@@ -240,6 +318,10 @@
     {
       "label": "LeRobot / SmolVLA",
       "url": "https://github.com/huggingface/lerobot"
+    },
+    {
+      "label": "Xperience Embodied Foundation Model pretraining plan",
+      "url": "XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md"
     }
   ]
 }

@@ -42,7 +42,7 @@ embodied-AI research infrastructure:
 | Multimodal data understanding | Parses the public sample into synchronized windows across video, audio, depth, pose/SLAM, mocap, IMU, calibration, and language-derived signals |
 | Task design | Defines 12 human-readable tasks plus four direction-extension probes with inputs, outputs, process modules, metrics, and case-study walkthroughs |
 | Model and evaluation discipline | Runs minimal and compact neural baselines, records predictions/metrics, keeps chronological split boundaries explicit, and separates sample evidence from held-out claims |
-| Scale-up planning | Connects the public-sample pipeline to 32/128-episode held-out pilots, Qwen3-Omni LoRA, Cosmos-style world-model branches, and later policy-model branches |
+| Scale-up planning | Connects the public-sample pipeline to 32/128-episode held-out pilots, Qwen3-Omni LoRA, Cosmos-style world-model branches, policy-model branches, and the future Xperience-native foundation-model pretraining goal |
 
 ## Start Here
 
@@ -59,6 +59,7 @@ before the multi-episode omni-model stage becomes a real held-out evaluation.
 | Navigate the 12 tasks, four tracks, and scale-up plan | [Interactive research roadmap](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/research_roadmap.html), [`docs/data/research_roadmap_interactive.json`](docs/data/research_roadmap_interactive.json) |
 | Compare current task metrics | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) |
 | Compare possible foundation backbones | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json) |
+| Understand the future native pretraining goal | [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md) |
 | Understand one model input | [`results/episode_task_suite/feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`results/episode_task_suite/windows.csv`](results/episode_task_suite/windows.csv) |
 | Check multi-episode data status | [`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) |
 
@@ -71,7 +72,7 @@ before the multi-episode omni-model stage becomes a real held-out evaluation.
 | Task suite | 12 human-readable embodied-AI task contracts with input, process, output, metrics, predictions, and case-study walkthroughs |
 | Baselines | Minimal linear/ridge/logistic heads plus compact PyTorch MLP task heads over the same chronological split |
 | Research directions | Task mapping and extension probes for human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling |
-| Scale-up path | The gated Xperience-10M dataset is available for a selected 128-episode pilot before Qwen3-Omni LoRA, followed by Cosmos 3/world-model and VLA/policy branches |
+| Scale-up path | The gated Xperience-10M dataset is available for a selected 128-episode pilot before Qwen3-Omni LoRA, followed by Cosmos 3/world-model and VLA/policy branches; the long-term goal is an Xperience-native embodied foundation model if full-corpus data, storage, and compute are available |
 | Public surfaces | GitHub repo, GitHub Pages dashboard, HF Space, HF artifact dataset, HF baseline-model repo, and HF collection |
 
 For the fastest interpretation of the current metrics, start with
@@ -93,6 +94,7 @@ Current contributions:
 - human-readable research task cards and an interactive scrub/play walkthrough storyboard for every task,
 - an interactive research roadmap connecting 12 tasks, four research tracks, current sample evidence, the Qwen3-Omni scale-up path, and foundation-model branch selection,
 - a next-milestone track for Qwen3-Omni fine-tuning, Cosmos 3 world modeling, and sensor-bridge evaluation,
+- a future pretraining plan for an Xperience Embodied Foundation Model over the full corpus after smaller multi-episode stages prove value,
 - metrics, predictions, model weights, manifests, charts, and a two-level
   tabbed static research website,
 - a clear explanation of what is implemented now and what moves to the multi-episode stage.
@@ -107,7 +109,7 @@ This project is best read as a staged embodied-AI research study:
 | Task suite | Twelve human-readable tasks cover action, procedure, contact, object, language, retrieval, reconstruction, order, and synchronization questions. | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json) |
 | Baselines | Minimal heads and compact PyTorch MLP heads provide a first controlled comparison on the same chronological split. | [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/) |
 | Diagnostics | Audio contribution, modality ablations, timeline overlays, object labels, and alignment stress tests show which signals are useful and which tasks remain hard. | [`results/audio_ablation/AUDIO_ABLATION_SUMMARY.md`](results/audio_ablation/AUDIO_ABLATION_SUMMARY.md), [`docs/single_episode_explorer.html`](docs/single_episode_explorer.html) |
-| Scale-up | A selected 128-episode Qwen3-Omni LoRA pilot is being prepared from the gated dataset; held-out model metrics will be added only after training and evaluation finish. | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) |
+| Scale-up | A selected 128-episode Qwen3-Omni LoRA pilot is being prepared from the gated dataset; held-out model metrics will be added only after training and evaluation finish. The long-term native-pretraining plan is documented separately as a future research goal. | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md), [`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) |
 
 Detailed dataset notes, reproduction checks, and generated JSON reports are
 included for readers who want to inspect the implementation, but they are
@@ -146,7 +148,7 @@ If you are reading the project cold, open these in order:
 | 6 | What do the current results mean? | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`docs/data/research_takeaways.json`](docs/data/research_takeaways.json), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Current metrics describe sample-level task behavior and identify which signals need larger held-out experiments. |
 | 7 | Which models are implemented? | [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json), [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/), [HF baseline repo](https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines) | Each task has minimal and neural-head evidence over the same feature windows. |
 | 8 | What research directions does this support? | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`docs/data/research_directions.json`](docs/data/research_directions.json), [`docs/data/research_direction_extensions.json`](docs/data/research_direction_extensions.json) | The tasks are mapped to human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling. |
-| 9 | Which foundation model comes next? | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json) | Qwen3-Omni is the first held-out LoRA baseline; Cosmos 3 is the first world-model branch; policy models wait for explicit action targets. |
+| 9 | Which foundation model comes next? | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json), [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md) | Qwen3-Omni is the first held-out LoRA baseline; Cosmos 3 is the first world-model branch; policy models wait for explicit action targets; Xperience-native pretraining is the full-corpus future goal. |
 | 10 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands and expected outputs are documented for the sample-episode task suite. |
 | 11 | What is still pending? | [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | Multi-episode Qwen3-Omni model quality will be reported after preprocessing, training, and held-out evaluation complete. |
 
@@ -224,7 +226,8 @@ Hugging Face Space app:
 | Dataset context | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, official dataset links | Explains the official dataset, public sample, modalities, access boundary, and what this repo uses |
 | Visual assets | `FIGURE_INDEX.md`, `docs/assets/` | Shows the task-suite graphic, modality thumbnails, pipeline diagrams, charts, and logo assets |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` | Defines the task unit, split, metrics, leakage controls, and current limitations |
-| Research roadmap | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | Shows the path from sample-level task development to multi-episode and larger omni-model work |
+| Research roadmap | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | Shows the path from sample-level task development to multi-episode work, larger model branches, and the future native-pretraining goal |
+| Xperience Embodied Foundation Model plan | `XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md` | Describes the long-term full-corpus pretraining goal, target modules, objectives, staged scale-up, hardware ranges, and evaluation protocol |
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and inspectable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode task development inspectable without rerunning first |
@@ -638,11 +641,14 @@ assuming one backbone solves every Xperience-10M objective.
 | GR00T | Humanoid/action-policy branch | Use after mocap/contact retargeting creates well-defined humanoid action targets. |
 | OpenVLA / openpi | Open VLA/policy baselines | Use after the project defines robot-compatible or action-token targets. |
 | Gemini Robotics | External reasoning reference | Use only for qualitative comparison or annotation support unless local trainable access exists. |
+| Xperience Embodied Foundation Model | Future Xperience-native pretraining goal | Use only after multi-episode pilots, full-corpus storage, distributed training infrastructure, and scaling evidence justify a from-scratch domain model. |
 
 See [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md) and
 [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json)
 for the full selection matrix, source links, and model-specific evaluation
-additions.
+additions. See
+[`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md)
+for the long-term full-corpus pretraining plan.
 
 Backbone-specific contracts now live in [`configs/omni_backbones`](configs/omni_backbones).
 The extension contract is documented in

@@ -3,15 +3,17 @@
 This guide is the human-readable map for the public Ropedia Xperience-10M task
 suite artifacts. It is organized around what a reader usually wants to do:
 understand the project, inspect the sample episode, compare baselines, read the
-task results, and follow the Qwen3-Omni scale-up path.
+task results, follow the Qwen3-Omni scale-up path, and understand the longer
+Xperience-native pretraining goal.
 
 ## Start Here
 
 | Artifact | Why to open it first |
 | --- | --- |
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current-state table: implemented, in staging, and outside current scope. |
-| [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) | Shows the roadmap from public-sample task development to multi-episode data preparation, Qwen3-Omni LoRA, robustness runs, and larger omni-model extensions. |
+| [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) | Shows the roadmap from public-sample task development to multi-episode data preparation, Qwen3-Omni LoRA, robustness runs, model branches, and the future native-pretraining goal. |
 | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md) | Explains which foundation backbones fit which Xperience-10M objective: Qwen3-Omni first, Cosmos 3 for world modeling, and VLA/policy models after action-target conversion. |
+| [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md) | Describes the future full-corpus Xperience Embodied Foundation Model goal, including modules, objectives, staged scale-up, hardware ranges, and evaluation. |
 | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Defines the task unit, chronological split, metrics, leakage controls, and current limitations. |
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Defines public reproduction commands, expected outputs, and unreproducible boundaries. |
 | [`results/audio_ablation/AUDIO_ABLATION_SUMMARY.md`](results/audio_ablation/AUDIO_ABLATION_SUMMARY.md) | Shows measured current-audio and raw log-mel replacement deltas across the 12 task contracts. |
@@ -107,6 +109,7 @@ research project.
 | [`scripts/omni/train_qwen3_omni_lora.py`](scripts/omni/train_qwen3_omni_lora.py) | Training entrypoint for the Qwen3-Omni LoRA pilot after the data gate passes. |
 | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md) | Adds the post-data-gate backbone selection plan: Qwen3-Omni first, Cosmos 3 for world modeling, and OpenVLA/openpi/GR00T for policy/action branches. |
 | [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json) | Machine-readable model-family registry with source links, entry conditions, and evaluation additions. |
+| [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md) | Future full-corpus Xperience-native pretraining plan; not a current model result. |
 
 ## What Is Not Included
 

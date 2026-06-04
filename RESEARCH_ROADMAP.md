@@ -15,6 +15,7 @@ should exist before the stage is treated as complete.
 | Foundation-Model Selection Matrix | Next | The selected pilot episodes are prepared, or a 3-8 episode dry run is available for preprocessing checks. | Backbone registry, Cosmos 3 world-model branch plan, Qwen3-Omni baseline plan, OpenVLA/openpi/GR00T policy candidates, and model-specific evaluation additions. | `FOUNDATION_MODEL_PLAN.md`, `docs/data/foundation_model_plan.json`, `research_roadmap_interactive.json` |
 | 64-128 Episode Robustness Run | Planned | The selected-episode pilot trains and evaluates cleanly. | Split-by-session metrics, modality ablations, calibration/object/language error analysis, and sensitivity to missing views. | Held-out metrics by session, task, and modality; ablation tables; qualitative error analysis. |
 | Cosmos 3 and Policy-Model Extensions | Planned | Enough multi-episode data, compute budget, and model-specific action/world-state targets. | Cosmos 3 future-window or action-conditioned world-model probes, OpenVLA/openpi/GR00T action-policy baselines, modality-conditioning checks, affordance tasks, and synthetic-data usefulness tests. | Task-specific held-out evaluations, qualitative inspection, and updated model cards. |
+| Xperience Embodied Foundation Model Pretraining | Future | Full-corpus access, PB-scale storage path, multi-node compute, and positive scaling evidence from smaller runs. | Xperience-native temporal multimodal model, full-corpus manifests, pretraining shards, scaling curves, held-out evaluations, and model card. | Pretraining metadata, checkpoint inventory, held-out metrics, scaling report, and data-boundary report. |
 
 ## Current Decision Point
 
@@ -24,9 +25,11 @@ episodes to run the held-out Qwen3-Omni pilot, then choose larger model branches
 by task fit. Qwen3-Omni remains the first trainable multimodal LoRA target.
 Cosmos 3 becomes the first world-model/action-generation branch. OpenVLA,
 openpi, GR00T, Octo, and SmolVLA-style models become policy/action branches only
-after the action target is explicit. The public sample is already enough for
-task design, feature contracts, walkthroughs, and baseline comparisons. It is
-not enough to measure general embodied-AI model quality.
+after the action target is explicit. A from-scratch Xperience Embodied
+Foundation Model is the long-term native-pretraining goal, not the immediate
+experiment. The public sample is already enough for task design, feature
+contracts, walkthroughs, and baseline comparisons. It is not enough to measure
+general embodied-AI model quality.
 
 ## Stage Details
 
@@ -109,6 +112,27 @@ objectives: audio-visible alignment, future-window prediction,
 action-conditioned world modeling, synthetic-data usefulness tests, policy-style
 next action, contact, object relevance, and affordance reasoning.
 
+### 7. Xperience Embodied Foundation Model Pretraining
+
+This stage is the long-term full-corpus goal. Instead of adapting an existing
+backbone, it would pretrain a domain model directly on the synchronized
+Xperience-10M modality structure: video, audio, depth, pose/SLAM, hand/body
+mocap, IMU, calibration, and language annotations.
+
+The first realistic target is a 3B-7B Xperience-native domain model after
+smaller 0.3B-1B and 1B-3B pilots prove that the objectives and data loaders
+scale. The training objective should combine masked multimodal modeling,
+cross-modal alignment, future-state prediction, ego-motion and hand-motion
+forecasting, action/procedure prediction, language grounding, contact and
+affordance prediction, and optional policy-style targets after action
+conversion.
+
+This stage needs full-corpus access, PB-scale storage planning, high-throughput
+media decoding, distributed training, reliable checkpoints, and held-out
+evaluation across episodes, sessions, activities, objects, and missing
+modalities. The plan is reader-facing in
+`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`.
+
 ## Public Artifacts That Should Move Together
 
 When a roadmap stage advances, update these public surfaces together:
@@ -118,6 +142,7 @@ When a roadmap stage advances, update these public surfaces together:
 - `RESEARCH_TAKEAWAYS.md`
 - `EVALUATION_PROTOCOL.md`
 - `ARTIFACT_GUIDE.md`
+- `XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`
 - `docs/index.html`
 - `docs/data/research_roadmap.json`
 - Hugging Face Space, artifact dataset, and model cards

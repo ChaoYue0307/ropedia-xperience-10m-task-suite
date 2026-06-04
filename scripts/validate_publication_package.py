@@ -221,6 +221,8 @@ def scan(root: Path, *, paths: list[Path] | None = None, display_root: str | Non
                         "detail": reason,
                     })
             for needle, reason in STALE_PRESENTATION_STRINGS.items():
+                if path_rel == ".mailmap":
+                    continue
                 if needle in text:
                     violations.append({
                         "kind": "stale_presentation_copy",

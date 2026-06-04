@@ -82,6 +82,14 @@ ARTIFACTS = [
         "shows": "Machine-readable foundation-model selection matrix with source links, entry conditions, and evaluation additions.",
     },
     {
+        "id": "xperience_embodied_foundation_pretraining",
+        "title": "Xperience Embodied Foundation Model pretraining goal",
+        "path": "XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md",
+        "kind": "project_path",
+        "surface": "repo_hf",
+        "shows": "Describes the future full-corpus Xperience-native pretraining goal, target modules, objectives, staged scale-up, hardware ranges, and evaluation protocol.",
+    },
+    {
         "id": "evidence_contract",
         "title": "Evidence contract",
         "path": "EVIDENCE_CONTRACT.md",
