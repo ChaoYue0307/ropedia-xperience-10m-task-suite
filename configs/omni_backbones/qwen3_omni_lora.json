@@ -36,6 +36,7 @@
   "entrypoints": {
     "selection_manifest": "scripts/omni/build_selection_episode_manifest.py",
     "export": "scripts/omni/parallel_export_qwen3_omni_action_dataset.py",
+    "neutral_index": "scripts/omni/export_model_neutral_window_index.py",
     "train": "scripts/omni/train_qwen3_omni_lora.py",
     "eval": "scripts/omni/eval_qwen3_omni_lora.py",
     "launcher": "scripts/omni/run_128_fullsplit_parallel_export_8gpu.sh",
