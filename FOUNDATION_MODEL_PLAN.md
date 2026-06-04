@@ -38,6 +38,18 @@ prepare video/audio/language prompts and adapter inputs. It is also suitable for
 the 12 current task contracts, which mostly produce labels, structured JSON, or
 short task answers.
 
+The executable Qwen branch and future branch contracts are now represented as
+config files under `configs/omni_backbones/`. Validate them with:
+
+```bash
+python scripts/omni/backbone_registry.py --validate --json
+```
+
+The shared extension rules are in
+[`OMNI_MODEL_EXTENSION_CONTRACT.md`](OMNI_MODEL_EXTENSION_CONTRACT.md). A new
+foundation branch should add a config first, then implement the exporter,
+trainer, evaluator, and launcher required by that config.
+
 ## Why Cosmos 3 Should Be Added Next
 
 Cosmos 3 should not replace the Qwen3-Omni pilot. It should become the first

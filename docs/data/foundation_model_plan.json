@@ -2,6 +2,16 @@
   "title": "Xperience-10M Foundation Model Plan",
   "status": "planning_artifact",
   "current_boundary": "No held-out multi-episode foundation-model result has been completed in this repo. The current foundation-model artifacts are setup-stage until enough valid episodes are prepared and evaluated.",
+  "backbone_registry": {
+    "config_dir": "configs/omni_backbones",
+    "validator": "scripts/omni/backbone_registry.py --validate --json",
+    "extension_contract": "OMNI_MODEL_EXTENSION_CONTRACT.md",
+    "implemented_backbone": "qwen3_omni_lora",
+    "planned_backbones": [
+      "cosmos_world_model",
+      "policy_vla_branch"
+    ]
+  },
   "decision": {
     "immediate_trainable_backbone": "Qwen3-Omni",
     "first_world_model_branch": "Cosmos 3",

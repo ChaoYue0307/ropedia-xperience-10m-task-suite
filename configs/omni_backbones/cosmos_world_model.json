@@ -1,0 +1,63 @@
+{
+  "id": "cosmos_world_model",
+  "display_name": "Cosmos-Style World Model",
+  "status": "planned_adapter",
+  "model_family": "Cosmos / physical-world foundation models",
+  "default_model_id": null,
+  "local_model_env": "COSMOS_MODEL_DIR",
+  "dataset_contract": "xperience10m_future_window_world_model_v0",
+  "training_objective": "future_window_and_action_conditioned_world_modeling",
+  "split_policy": {
+    "unit": "episode",
+    "default_counts": {
+      "train": 96,
+      "val": 16,
+      "test": 16
+    },
+    "leakage_guard": "future windows must remain inside the same episode and test episodes must never condition training"
+  },
+  "modalities": {
+    "direct_inputs": [
+      "camera video streams or rendered mosaics",
+      "language task context"
+    ],
+    "conditioning_inputs": [
+      "pose and SLAM trajectory",
+      "depth and confidence",
+      "mocap or action labels",
+      "IMU acceleration and gyro",
+      "audio event cues"
+    ],
+    "targets": [
+      "future visual window",
+      "future latent state",
+      "future sensor-feature window",
+      "transition or contact event"
+    ],
+    "excluded_inputs": [
+      "visualization.rrd"
+    ]
+  },
+  "entrypoints": {
+    "selection_manifest": "scripts/omni/build_selection_episode_manifest.py",
+    "export": null,
+    "train": null,
+    "eval": null,
+    "launcher": null,
+    "validate": "scripts/omni/validate_omni_finetune_run.py"
+  },
+  "primary_metrics": [
+    "future_retrieval_mrr",
+    "future_retrieval_recall_at_5",
+    "temporal_consistency",
+    "feature_reconstruction_error",
+    "transition_accuracy",
+    "contact_accuracy"
+  ],
+  "extension_requirements": [
+    "Add a future-window exporter that creates context/target pairs instead of JSON QA records.",
+    "Define whether the target is pixels, latent video state, sensor features, or retrieval among candidate futures.",
+    "Add an evaluator that scores held-out future prediction without training on held-out test episodes.",
+    "Record generated or retrieved qualitative examples separately from task-classification metrics."
+  ]
+}
