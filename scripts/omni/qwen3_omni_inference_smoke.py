@@ -23,7 +23,7 @@ from qwen3_omni_dataset_utils import (
 
 def parse_args() -> argparse.Namespace:
     workspace_default = Path(__file__).resolve().parents[2]
-    parser = argparse.ArgumentParser(description="Run a small Qwen3-Omni inference smoke test.")
+    parser = argparse.ArgumentParser(description="Run a small Qwen3-Omni inference setup check.")
     parser.add_argument("--dataset-jsonl", type=Path, required=True)
     parser.add_argument("--run-id", default="qwen_zero_shot")
     parser.add_argument("--output-dir", type=Path)
@@ -130,7 +130,7 @@ def main() -> int:
     if args.sample_limit > 0:
         samples = samples[: args.sample_limit]
     if not samples:
-        raise ValueError("No samples selected for inference smoke.")
+        raise ValueError("No samples selected for the inference setup check.")
 
     model, processor = load_model_and_processor(args)
     rows = []
@@ -169,7 +169,7 @@ def main() -> int:
     (args.output_dir / "per_class_metrics.json").write_text(json.dumps(per_class, indent=2), encoding="utf-8")
     (args.output_dir / "confusion_matrix.json").write_text(json.dumps(cm, indent=2), encoding="utf-8")
     report = [
-        "# Qwen3-Omni Inference Smoke",
+        "# Qwen3-Omni Inference Setup Check",
         "",
         f"- Model: `{args.model_id}`",
         f"- Dataset: `{args.dataset_jsonl}`",
@@ -177,7 +177,7 @@ def main() -> int:
         f"- Accuracy: `{metrics['accuracy']:.4f}`",
         f"- Macro-F1: `{metrics['macro_f1']:.4f}`",
         "",
-        "This is a pre-training smoke test. It checks that exported Ropedia video/audio/text prompts can pass through Qwen3-Omni on the target runtime.",
+        "This is a pre-training setup check. It verifies that exported Ropedia video/audio/text prompts can pass through Qwen3-Omni on the target runtime.",
     ]
     (args.output_dir / "RUN_REPORT.md").write_text("\n".join(report) + "\n", encoding="utf-8")
     print(json.dumps(metrics, indent=2))

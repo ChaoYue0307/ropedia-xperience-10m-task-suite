@@ -108,7 +108,7 @@ Metadata-only analysis of the gated Hugging Face dataset. No MP4, HDF5, RRD, or 
 
 ## Download and Compute Recommendation
 
-- This metadata audit can run on any machine with Hugging Face access.
+- This metadata listing check can run on any machine with Hugging Face access.
 - If the training host cannot reach Hugging Face, download on an HF-reachable relay host, then transfer staged episode folders to the training host.
 - For training downloads, include `annotation.hdf5` plus the six MP4 streams; exclude `visualization.rrd` unless Rerun visualization is specifically needed.
 - For the first real training pilot, prefer 32 complete episodes from different top-level sessions and avoid selecting only the tiny outlier episodes.

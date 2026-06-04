@@ -320,7 +320,7 @@ ARTIFACTS = [
         "kind": "quality_gate",
         "surface": "website_hf",
         "volatile": True,
-        "shows": "Machine-readable report for SEO/social metadata, accessible tab semantics, public links, project links, and reader-facing copy.",
+        "shows": "Machine-readable report for SEO/social metadata, accessible tab semantics, public links, project links, and clear project presentation.",
     },
     {
         "id": "public_surface_qa_builder",
@@ -328,7 +328,7 @@ ARTIFACTS = [
         "path": "scripts/build_public_surface_qa.py",
         "kind": "quality_gate",
         "surface": "repo_hf",
-        "shows": "Regenerates the public project-surface report before release.",
+        "shows": "Regenerates the public presentation report before release.",
     },
     {
         "id": "task_surface_integrity",
@@ -421,7 +421,7 @@ ARTIFACTS = [
         "kind": "publication_package_check",
         "surface": "website_hf",
         "volatile": True,
-        "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and token strings.",
+        "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and credential text.",
     },
     {
         "id": "scale_up_status_check",

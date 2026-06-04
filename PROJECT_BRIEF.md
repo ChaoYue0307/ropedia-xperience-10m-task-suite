@@ -10,10 +10,9 @@ egocentric episode before scaling to held-out multi-episode training?
 The public sample is treated as a small but real research system. The project
 does not try to inflate one episode into a final benchmark. Instead, it shows
 the full path from data inspection to task design, baseline modeling,
-evaluation, artifact packaging, and a guarded scale-up plan. The intended
-reader should be able to audit one model input, understand each task, reproduce
-the public-sample results, and see exactly what remains before multi-episode
-model-quality claims.
+evaluation, artifact packaging, and a guarded scale-up plan. A reader should be
+able to trace one model input, understand each task, reproduce the public-sample
+results, and see what remains before multi-episode model-quality claims.
 
 ## Capability Map
 

@@ -147,7 +147,7 @@ comparison order is:
 
 - current NumPy task suite
 - lightweight `neural_mlp` task suite
-- adapter-only smoke tests from `scripts/omni/qwen3_omni_adapter_smoke.py`
+- adapter-only setup checks from `scripts/omni/qwen3_omni_adapter_smoke.py`
 - Qwen3-Omni zero-shot or LoRA runs where GPU/model access is available
 
 ## Current Results

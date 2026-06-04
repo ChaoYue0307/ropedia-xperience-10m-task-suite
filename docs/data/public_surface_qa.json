@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Project Surface",
   "status": "pass",
-  "generated_at_utc": "2026-06-04T07:14:16+00:00",
+  "generated_at_utc": "2026-06-04T07:41:09+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -43,12 +43,12 @@
         "publication_package": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-04T06:51:20+00:00"
+          "generated_at_utc": "2026-06-04T07:15:42+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-04T06:51:49+00:00"
+          "generated_at_utc": "2026-06-04T07:15:58+00:00"
         },
         "live_publication": {
           "exists": true,
@@ -123,7 +123,7 @@
     {
       "name": "public_artifact_qa_files_are_exposed",
       "status": "pass",
-      "reason": "Readers should be able to find website reference, release package, mirror, and project-surface files from public copy.",
+      "reason": "Readers should be able to find website reference, release package, mirror, and public presentation files from public copy.",
       "marker_counts": {
         "data/project_brief.json": 9,
         "data/website_integrity.json": 13,
@@ -138,7 +138,7 @@
     {
       "name": "public_copy_uses_reader_facing_language",
       "status": "pass",
-      "reason": "Public copy should use reader-facing project language and avoid tool-specific labels, hardware details, review framing, and process notes.",
+      "reason": "Project language is clear and avoids hardware details or irrelevant implementation details.",
       "banned_hits": []
     }
   ],

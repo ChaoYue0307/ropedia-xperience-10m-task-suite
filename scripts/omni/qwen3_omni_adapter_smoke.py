@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Minimum real-data adapter smoke test for a Ropedia -> Qwen3-Omni path.
+"""Minimum real-data adapter setup check for a Ropedia -> Qwen3-Omni path.
 
 This script does not pretend to fine-tune Qwen3-Omni itself. It validates the
 part that Ropedia-specific sensor modalities need before they can be attached
@@ -38,7 +38,7 @@ ADAPTER_INPUTS = [
 
 def parse_args() -> argparse.Namespace:
     workspace_default = Path(__file__).resolve().parents[2]
-    parser = argparse.ArgumentParser(description="Run a real-data Ropedia sensor-adapter smoke test.")
+    parser = argparse.ArgumentParser(description="Run a real-data Ropedia sensor-adapter setup check.")
     parser.add_argument("--workspace", type=Path, default=workspace_default)
     parser.add_argument("--run-id", default="adapter_only")
     parser.add_argument(
@@ -470,7 +470,7 @@ def main() -> int:
             writer.writerow([name] + [int(x) for x in cm[i]])
 
     report = [
-        "# Qwen3-Omni Adapter Smoke Test",
+        "# Qwen3-Omni Adapter Setup Check",
         "",
         f"- Base model target: `{args.base_model_id}`",
         "- Qwen3-Omni weights loaded: `false`",

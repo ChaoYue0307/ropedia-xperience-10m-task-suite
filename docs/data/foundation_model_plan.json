@@ -68,7 +68,7 @@
         "Requires an explicit action target; current human egocentric labels are not robot controls by default."
       ],
       "current_decision": "candidate_after_action_space_design",
-      "entry_condition": "Window-to-action-token conversion is implemented and audited.",
+      "entry_condition": "Window-to-action-token conversion is implemented and checked.",
       "public_source": "https://openvla.github.io/"
     },
     {
@@ -142,7 +142,7 @@
     },
     {
       "step": 6,
-      "name": "Publication rule",
+      "name": "Publishing threshold",
       "action": "Publish branch results only with real manifests, predictions, metrics, and qualitative examples."
     }
   ],
@@ -191,7 +191,7 @@
       "metrics": [
         "held-out episode metrics",
         "held-out session metrics",
-        "leakage audit"
+        "leakage checks"
       ],
       "model_families": [
         "all trainable branches"

@@ -313,7 +313,7 @@ def main() -> int:
             "recommended_download_host": "Any HF-reachable relay host with enough scratch storage; transfer staged episodes to the training host if that host cannot access Hugging Face.",
             "training_host_role": "training and local manifest validation after data is staged",
             "exclude_files": sorted(TRAINING_EXCLUDE),
-            "minimum_pilot": "32 complete episodes from different top-level sessions if storage permits; degraded-valid episodes only for loader smoke tests.",
+            "minimum_pilot": "32 complete episodes from different top-level sessions if storage permits; degraded-valid episodes only for loader checks.",
         },
     }
 
@@ -426,7 +426,7 @@ def main() -> int:
         "",
         "## Download and Compute Recommendation",
         "",
-        "- This metadata audit can run on any machine with Hugging Face access.",
+        "- This metadata listing check can run on any machine with Hugging Face access.",
         "- If the training host cannot reach Hugging Face, download on an HF-reachable relay host, then transfer staged episode folders to the training host.",
         "- For training downloads, include `annotation.hdf5` plus the six MP4 streams; exclude `visualization.rrd` unless Rerun visualization is specifically needed.",
         "- For the first real training pilot, prefer 32 complete episodes from different top-level sessions and avoid selecting only the tiny outlier episodes.",

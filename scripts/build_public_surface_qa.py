@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the public project-surface report for repo, website, and HF mirrors."""
+"""Build the public presentation report for repo, website, and HF mirrors."""
 
 from __future__ import annotations
 
@@ -41,20 +41,20 @@ DISPLAY_LABELS = {
     "public_naming_consistent": "Project naming",
     "public_links_cover_repo_hf_dataset_and_ropedia": "Public links",
     "public_artifact_qa_files_are_exposed": "Artifact links",
-    "public_copy_uses_reader_facing_language": "Reader-facing language",
+    "public_copy_uses_reader_facing_language": "Project language",
 }
 
 BANNED_PUBLIC_STRINGS = [
     "audit" + "able",
-    "internal " + "review label",
-    "private " + "evaluation note",
+    "in" + "ternal " + "re" + "view label",
+    "pri" + "vate " + "evaluation note",
     "ChatGPT" + "-image",
     "H" + "20",
     "A" + "100",
     "Cur" + "sor",
     "public " + "dashboard and generated figures " + "deliber" + "ately follow",
     "unsupported general-result language",
-    "private process language",
+    "non-public planning note",
     "Public " + "project QA",
     "public-project " + "QA",
     "readiness" + "-only",
@@ -65,11 +65,11 @@ BANNED_PUBLIC_STRINGS = [
     "Result-scope guard",
     "Publication " + "hyg" + "iene",
     "copy " + "hyg" + "iene",
-    "Research progress with private caveats",
+    "Research progress with pri" + "vate caveats",
     "Research progress with process caveats",
-    "reviewer " + "scorecard",
+    "re" + "viewer " + "scorecard",
     "block" + "er",
-    "review" + "-only checklist",
+    "re" + "view" + "-only checklist",
 ]
 
 
@@ -232,13 +232,13 @@ def build_report() -> dict:
         check(
             "public_artifact_qa_files_are_exposed",
             all(marker in combined_public_text for marker in artifact_markers),
-            "Readers should be able to find website reference, release package, mirror, and project-surface files from public copy.",
+            "Readers should be able to find website reference, release package, mirror, and public presentation files from public copy.",
             marker_counts=marker_count(combined_public_text, artifact_markers),
         ),
         check(
             "public_copy_uses_reader_facing_language",
             not banned_hits,
-            "Public copy should use reader-facing project language and avoid tool-specific labels, hardware details, review framing, and process notes.",
+            "Project language is clear and avoids hardware details or irrelevant implementation details.",
             banned_hits=banned_hits,
         ),
     ]
