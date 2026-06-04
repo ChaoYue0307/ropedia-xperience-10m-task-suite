@@ -20,6 +20,7 @@ DEFAULT_HF_ROOT = ROOT.parent / "hf_publish"
 DEFAULT_OUTPUT = ROOT / "docs/data/mirror_parity.json"
 
 DATA_FILES = [
+    "additional_development_directions.json",
     "audio_ablation_summary.json",
     "artifact_index.json",
     "brand_assets.json",
@@ -128,6 +129,7 @@ DOC_FILES = [
     "EVALUATION_PROTOCOL.md",
     "FIGURE_INDEX.md",
     "FOUNDATION_MODEL_PLAN.md",
+    "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
     "PROJECT_BRIEF.md",
     "RENDERED_SITE_CHECK.md",
     "RESEARCH_ROADMAP.md",

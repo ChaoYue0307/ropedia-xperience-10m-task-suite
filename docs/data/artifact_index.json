@@ -1,11 +1,11 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-04T21:01:40+00:00",
+  "generated_at_utc": "2026-06-04T21:22:15+00:00",
   "status": "pass",
-  "artifact_count": 75,
+  "artifact_count": 77,
   "missing": [],
   "by_kind": {
-    "project_path": 12,
+    "project_path": 14,
     "project_scope": 1,
     "source_alignment": 5,
     "publication_workflow": 3,
@@ -84,8 +84,8 @@
       "surface": "repo_hf",
       "shows": "Defines the path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions.",
       "exists": true,
-      "bytes": 8388,
-      "sha256": "0b3e3356076998ad94dc39f708cc783a4ebeab76c9da661cdd37ea12a3bb3665"
+      "bytes": 10259,
+      "sha256": "6e26acb051a45a5afe36fa0c8b3c60f58c383c2e58bee6e01bac28b7dd604f0a"
     },
     {
       "id": "research_roadmap_json",
@@ -95,8 +95,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable research roadmap for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 7161,
-      "sha256": "cc96118c2c05108c831616151bc027441f7545495adeeb6a4a6a6bffe8da7801"
+      "bytes": 7699,
+      "sha256": "69b777b4d01e2e587236c1bb2206a47e2b9a0e1a5f1c7c6e125b0dd3270ce0d5"
     },
     {
       "id": "foundation_model_plan",
@@ -119,6 +119,28 @@
       "exists": true,
       "bytes": 12981,
       "sha256": "9cce52025a2e2f8afb4660e2af3353aea6ad0a1af380849218dd74c0acc271bb"
+    },
+    {
+      "id": "additional_development_directions",
+      "title": "Additional development directions",
+      "path": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
+      "kind": "project_path",
+      "surface": "repo_hf",
+      "shows": "Records concrete non-backbone Xperience-10M development tracks: taxonomy, benchmark protocol, representation learning, skill graphs, affordances, 3D/4D memory, QA, and policy transfer.",
+      "exists": true,
+      "bytes": 3136,
+      "sha256": "9766e5537d7ec5a78548d52ea618443dae8e811bb68c4cb8361be0dba7136935"
+    },
+    {
+      "id": "additional_development_directions_json",
+      "title": "Additional development directions JSON",
+      "path": "docs/data/additional_development_directions.json",
+      "kind": "project_path",
+      "surface": "website_hf",
+      "shows": "Machine-readable additional development directions for the website and Hugging Face mirrors.",
+      "exists": true,
+      "bytes": 6120,
+      "sha256": "ec918f6849ca888e314a6481e10ddab68d88ba766cbe6a97265df6891058e1df"
     },
     {
       "id": "xperience_embodied_foundation_pretraining",
@@ -161,8 +183,8 @@
       "surface": "repo_hf",
       "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 11641,
-      "sha256": "d365760463d657a392435239e6ea8e7f4cf3d03ad3a3592e79e9e2bec0bf3584"
+      "bytes": 12275,
+      "sha256": "7b4db6893ee0d13db32216f20a8287ffa442764cfd20475e1dc3b17c8e10a974"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -238,8 +260,8 @@
       "surface": "repo",
       "shows": "Builds the static-dashboard container package for GitHub Container Registry.",
       "exists": true,
-      "bytes": 1121,
-      "sha256": "e226b1ed412b5d2a84fdb043d6012cf3792147fb6d8f0fd11ae5ebde4f5690cc"
+      "bytes": 1222,
+      "sha256": "a117926410b6db824e173acaa83a64ba3317a4c992ce353613cde68afb4ff80d"
     },
     {
       "id": "github_package_workflow",
@@ -606,8 +628,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 27649,
-      "sha256": "54e1a432a3c24240ba4e6827b0ef8663001adff917f249615da736c5b899dbf5"
+      "bytes": 28464,
+      "sha256": "a74480209e3185b00aaa50dbf93313010f49ce3dd39e1c0d856536302abf9398"
     },
     {
       "id": "publication_audit",

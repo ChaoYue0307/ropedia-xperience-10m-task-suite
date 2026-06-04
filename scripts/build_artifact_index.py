@@ -82,6 +82,22 @@ ARTIFACTS = [
         "shows": "Machine-readable foundation-model selection matrix with source links, entry conditions, and evaluation additions.",
     },
     {
+        "id": "additional_development_directions",
+        "title": "Additional development directions",
+        "path": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
+        "kind": "project_path",
+        "surface": "repo_hf",
+        "shows": "Records concrete non-backbone Xperience-10M development tracks: taxonomy, benchmark protocol, representation learning, skill graphs, affordances, 3D/4D memory, QA, and policy transfer.",
+    },
+    {
+        "id": "additional_development_directions_json",
+        "title": "Additional development directions JSON",
+        "path": "docs/data/additional_development_directions.json",
+        "kind": "project_path",
+        "surface": "website_hf",
+        "shows": "Machine-readable additional development directions for the website and Hugging Face mirrors.",
+    },
+    {
         "id": "xperience_embodied_foundation_pretraining",
         "title": "Xperience Embodied Foundation Model pretraining goal",
         "path": "XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md",

@@ -2179,7 +2179,7 @@
   <main id="main" class="tabbed" data-active-tab="start">
     <div class="project-tabs-shell" aria-label="Project section tabs">
       <div class="wrap project-tabs" role="tablist" aria-label="Project sections">
-        <button type="button" class="project-tab active" id="tab-start" role="tab" data-tab-key="start" data-default-section="overview" aria-selected="true" aria-pressed="true" aria-controls="overview roadmap reading-path">
+        <button type="button" class="project-tab active" id="tab-start" role="tab" data-tab-key="start" data-default-section="overview" aria-selected="true" aria-pressed="true" aria-controls="overview roadmap development-directions reading-path">
           <strong>Start</strong>
           <span>project overview and roadmap</span>
         </button>
@@ -2415,9 +2415,9 @@
               <strong>Evidence</strong><p>Task-specific held-out evaluations, qualitative inspection, and updated model cards.</p>
             </div>
           </article>
-          <article class="roadmap-card" data-status="planned">
+          <article class="roadmap-card" data-status="future">
             <span class="roadmap-status">future</span>
-            <h3>Xperience Embodied Foundation Model</h3>
+            <h3>Xperience Embodied Foundation Model Pretraining</h3>
             <p>Pretrain an Xperience-native domain model over synchronized video, audio, depth, pose, mocap, IMU, and language after smaller scaling stages prove value.</p>
             <div class="roadmap-meta">
               <strong>Entry</strong><p>Full-corpus access, PB-scale storage path, multi-node compute, and positive scaling evidence.</p>
@@ -2430,10 +2430,30 @@
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">roadmap document</a>
           <a href="data/research_roadmap.json">roadmap stages</a>
           <a href="data/foundation_model_plan.json">foundation model plan</a>
+          <a href="data/additional_development_directions.json">additional directions</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">native pretraining plan</a>
           <a href="data/research_roadmap_interactive.json">interactive map</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up status</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_STATUS.md">project status</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="development-directions" data-project-tab="start" role="tabpanel" aria-labelledby="tab-start" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Additional development directions.</h2>
+          <p>Beyond the current task heads, Qwen3-Omni fine-tuning path, Cosmos/world-model branch, and future native pretraining goal, Xperience-10M can support several concrete research-development tracks.</p>
+        </div>
+        <div class="artifact-grid">
+          <article class="artifact primary-artifact"><div><h3>Episode taxonomy and data engine</h3><p>Build an episode atlas, category tags, balance report, and split builder across activities, objects, scenes, sessions, people, and missing modalities.</p></div><a href="data/additional_development_directions.json">direction data</a></article>
+          <article class="artifact"><h3>Standardized benchmark protocol</h3><p>Version train/val/test manifests, task cards, leakage checks, metric scripts, and reference baselines so future model scores are comparable.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ADDITIONAL_DEVELOPMENT_DIRECTIONS.md">direction note</a></article>
+          <article class="artifact"><h3>Multimodal representation learning</h3><p>Train contrastive and masked-prediction encoders over synchronized video, audio, depth, pose, mocap, IMU, and language windows.</p><a href="data/additional_development_directions.json">JSON plan</a></article>
+          <article class="artifact"><h3>Skill and procedure graphs</h3><p>Mine action steps, transitions, preconditions, effects, and temporal graphs that connect egocentric perception to planning.</p><a href="data/research_directions.json">current task map</a></article>
+          <article class="artifact"><h3>Human-object affordances</h3><p>Add contact, reachable-object, tool-use, and next-affordance tasks using hands, mocap, objects, contacts, video, and language.</p><a href="data/task_walkthroughs.json">task walkthroughs</a></article>
+          <article class="artifact"><h3>3D/4D scene and object memory</h3><p>Fuse depth, pose/SLAM, multiview video, and object cues into persistent scene/object maps for spatial reasoning and object permanence.</p><a href="data/foundation_model_plan.json">model branches</a></article>
+          <article class="artifact"><h3>Quality and sync diagnostics</h3><p>Track timestamp drift, missing streams, calibration consistency, corrupted files, and degraded-mode manifests before large training runs.</p><a href="data/evidence_contract.json">evidence contract</a></article>
+          <article class="artifact"><h3>Policy and simulation transfer</h3><p>Convert mocap, hand trajectories, contacts, and object states into action tokens, robot-compatible targets, and imitation-learning examples.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">foundation plan</a></article>
         </div>
       </div>
     </section>
