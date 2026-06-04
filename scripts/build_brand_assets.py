@@ -107,15 +107,39 @@ def fit_on_canvas(image: Image.Image, size: int, *, scale: float = 0.88) -> Imag
 
 def make_dark_tile(mark: Image.Image, size: int) -> Image.Image:
     tile = Image.new("RGBA", (size, size), (*BG, 255))
+
+    glow = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    glow_draw = ImageDraw.Draw(glow)
+    glow_inset = max(2, size // 18)
+    glow_draw.rounded_rectangle(
+        (glow_inset, glow_inset, size - glow_inset - 1, size - glow_inset - 1),
+        radius=max(5, size // 7),
+        fill=(*GREEN, 82),
+    )
+    glow_draw.ellipse(
+        (size * 0.22, size * 0.22, size * 0.78, size * 0.78),
+        fill=(*CYAN, 42),
+    )
+    glow = glow.filter(ImageFilter.GaussianBlur(max(2, size // 10)))
+    tile = Image.alpha_composite(tile, glow)
+
     draw = ImageDraw.Draw(tile)
+    border_width = max(2, size // 30)
     draw.rounded_rectangle(
         (1, 1, size - 2, size - 2),
-        radius=max(3, size // 8),
-        fill=(*PANEL, 255),
-        outline=(*GREEN, 190),
-        width=max(1, size // 40),
+        radius=max(4, size // 8),
+        fill=(2, 15, 7, 250),
+        outline=(*GREEN, 245),
+        width=border_width,
     )
-    fitted = fit_on_canvas(mark, size, scale=0.82)
+    inner_inset = max(4, border_width + size // 16)
+    draw.rounded_rectangle(
+        (inner_inset, inner_inset, size - inner_inset - 1, size - inner_inset - 1),
+        radius=max(2, size // 10),
+        outline=(*CYAN, 92),
+        width=max(1, size // 80),
+    )
+    fitted = fit_on_canvas(mark, size, scale=0.87)
     tile.alpha_composite(fitted)
     return tile
 
@@ -141,14 +165,27 @@ def make_social_card(mark: Image.Image) -> Image.Image:
     glow = glow.filter(ImageFilter.GaussianBlur(34))
     card = Image.alpha_composite(card.convert("RGBA"), glow)
 
+    panel_glow = Image.new("RGBA", (470, 470), (0, 0, 0, 0))
+    panel_glow_draw = ImageDraw.Draw(panel_glow)
+    panel_glow_draw.rounded_rectangle((24, 24, 446, 446), radius=38, fill=(*GREEN, 56))
+    panel_glow_draw.rounded_rectangle((54, 54, 416, 416), radius=32, fill=(*CYAN, 28))
+    panel_glow = panel_glow.filter(ImageFilter.GaussianBlur(22))
+    card.alpha_composite(panel_glow, (61, 80))
+
     panel = Image.new("RGBA", (420, 420), (0, 0, 0, 0))
     panel_draw = ImageDraw.Draw(panel)
     panel_draw.rounded_rectangle(
         (0, 0, 419, 419),
         radius=34,
-        fill=(5, 14, 8, 226),
-        outline=(83, 155, 71, 210),
-        width=2,
+        fill=(3, 15, 8, 238),
+        outline=(*GREEN, 238),
+        width=3,
+    )
+    panel_draw.rounded_rectangle(
+        (16, 16, 403, 403),
+        radius=26,
+        outline=(*CYAN, 92),
+        width=1,
     )
     mark_fit = fit_on_canvas(mark, 390, scale=0.9)
     panel.alpha_composite(mark_fit, (15, 15))
