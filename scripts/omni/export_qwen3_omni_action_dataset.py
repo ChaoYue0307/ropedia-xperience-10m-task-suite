@@ -262,6 +262,7 @@ def build_answer(ann: dict, start: int, end: int, min_fraction: float) -> dict:
 def export_episode(args: argparse.Namespace, episode_dir: Path, records: list[dict], summaries: dict) -> None:
     ann = load_annotation(args, episode_dir)
     action_ep = load_episode_dataset(args, episode_dir, "action")
+    episode_key = f"{episode_dir.parent.name}__{episode_dir.name}"
     answers = [
         build_answer(ann, int(start), int(end) + 1, args.min_label_fraction)
         for start, end in zip(action_ep.starts, action_ep.ends)
@@ -271,8 +272,8 @@ def export_episode(args: argparse.Namespace, episode_dir: Path, records: list[di
     primary_path = Path(primary) if primary else None
     fps = video_fps(primary_path)
     feature_dir = args.output_dir / "sensor_features"
-    media_dir = args.output_dir / "media" / episode_dir.name
-    feature_path = feature_dir / f"{episode_dir.name}_sensor_features.npz"
+    media_dir = args.output_dir / "media" / episode_key
+    feature_path = feature_dir / f"{episode_key}_sensor_features.npz"
     feature_dir.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
         feature_path,
@@ -285,7 +286,7 @@ def export_episode(args: argparse.Namespace, episode_dir: Path, records: list[di
 
     labels = [str(answer["action"]) for answer in answers]
     keep = stratified_cap(list(range(len(action_ep.labels))), labels, args.max_windows_per_episode)
-    split = split_for_episode(action_ep.episode_id, args.manifest)
+    split = split_for_episode(episode_key, args.manifest, episode_dir)
     n_frames = len(ann["img_names"])
 
     for idx in keep:
@@ -302,7 +303,7 @@ def export_episode(args: argparse.Namespace, episode_dir: Path, records: list[di
             "audio_path": None,
         }
         if args.render_media:
-            stem = f"{action_ep.episode_id}_w{idx:05d}_ctx{ctx_start}_{ctx_end}"
+            stem = f"{episode_key}_w{idx:05d}_ctx{ctx_start}_{ctx_end}"
             mosaic_path = media_dir / f"{stem}_mosaic.mp4"
             audio_path = media_dir / f"{stem}_audio.wav"
             if render_mosaic(videos, mosaic_path, ctx_start, ctx_end, args):
@@ -314,8 +315,10 @@ def export_episode(args: argparse.Namespace, episode_dir: Path, records: list[di
 
         answer = answers[idx]
         record = {
-            "id": f"{action_ep.episode_id}:qa:{idx}",
-            "episode_id": action_ep.episode_id,
+            "id": f"{episode_key}:qa:{idx}",
+            "episode_id": episode_key,
+            "source_episode_id": action_ep.episode_id,
+            "episode_path": str(episode_dir),
             "split": split,
             "target": "episode_qa",
             "prompt_type": "json_episode_understanding",
@@ -331,7 +334,7 @@ def export_episode(args: argparse.Namespace, episode_dir: Path, records: list[di
         records.append(record)
 
     summaries["feature_manifest"] = action_ep.feature_manifest
-    summaries["available_modalities"].append({"episode_id": action_ep.episode_id, "modalities": action_ep.available_modalities})
+    summaries["available_modalities"].append({"episode_id": episode_key, "modalities": action_ep.available_modalities})
 
 
 def main() -> int:

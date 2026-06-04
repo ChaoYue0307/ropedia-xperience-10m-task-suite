@@ -83,12 +83,16 @@ def episode_dirs_from_sources(episode_roots: list[Path] | None, manifest: Path |
     return episode_dirs
 
 
-def split_for_episode(episode_id: str, manifest: Path | None) -> str:
+def split_for_episode(episode_id: str, manifest: Path | None, episode_path: Path | None = None) -> str:
     if manifest is None:
         return "unspecified"
     payload = json.loads(manifest.read_text(encoding="utf-8"))
+    resolved_episode_path = episode_path.expanduser().resolve() if episode_path is not None else None
     for ep in payload.get("episodes", []):
-        if ep.get("episode_id") == episode_id or Path(ep.get("path", "")).name == episode_id:
+        manifest_path = Path(ep.get("path", "")).expanduser()
+        if resolved_episode_path is not None and manifest_path.resolve() == resolved_episode_path:
+            return str(ep.get("split", "unspecified"))
+        if ep.get("episode_id") == episode_id or manifest_path.name == episode_id:
             return str(ep.get("split", "unspecified"))
     return "unspecified"
 
