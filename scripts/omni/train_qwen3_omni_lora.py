@@ -24,6 +24,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--results-dir", type=Path)
     parser.add_argument("--model-id", default=DEFAULT_MODEL_ID)
+    parser.add_argument(
+        "--backbone-config",
+        type=Path,
+        default=workspace_default / "configs" / "omni_backbones" / "qwen3_omni_lora.json",
+        help="Backbone contract JSON recorded with the run for model-extension tracking.",
+    )
     parser.add_argument("--train-split", default="train")
     parser.add_argument("--val-split", default="val")
     parser.add_argument("--include-unspecified-in-train", action="store_true")
@@ -174,6 +180,35 @@ def build_trainable_cpu_state_dict(model) -> dict[str, torch.Tensor]:
     return state_dict
 
 
+def load_backbone_profile(path: Path | None) -> dict:
+    if path is None:
+        return {
+            "id": "qwen3_omni_lora",
+            "display_name": "Qwen3-Omni LoRA",
+            "dataset_contract": "xperience10m_episode_json_qa_v1",
+            "training_objective": "structured_episode_understanding_json_qa",
+            "primary_metrics": [],
+        }
+    path = path.expanduser()
+    if not path.is_absolute():
+        path = Path(__file__).resolve().parents[2] / path
+    if not path.exists():
+        raise FileNotFoundError(f"Backbone config not found: {path}")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return {
+        "id": payload.get("id"),
+        "display_name": payload.get("display_name"),
+        "status": payload.get("status"),
+        "model_family": payload.get("model_family"),
+        "dataset_contract": payload.get("dataset_contract"),
+        "training_objective": payload.get("training_objective"),
+        "split_policy": payload.get("split_policy", {}),
+        "modalities": payload.get("modalities", {}),
+        "primary_metrics": payload.get("primary_metrics", []),
+        "config_path": str(path),
+    }
+
+
 def load_model_processor(args: argparse.Namespace):
     from qwen3_omni_compat import patch_qwen3_omni_config
 
@@ -312,6 +347,7 @@ def main() -> int:
     progress_path = args.results_dir / "progress.jsonl"
     if accelerator.is_main_process and progress_path.exists():
         progress_path.unlink()
+    backbone_profile = load_backbone_profile(args.backbone_config)
     torch.manual_seed(args.seed + accelerator.process_index)
     random.seed(args.seed + accelerator.process_index)
 
@@ -336,6 +372,9 @@ def main() -> int:
             "num_train_samples": len(train_samples),
             "num_val_samples": len(val_samples),
             "rank0_samples_per_epoch": len(rank_train_samples),
+            "backbone_id": backbone_profile.get("id"),
+            "dataset_contract": backbone_profile.get("dataset_contract"),
+            "training_objective": backbone_profile.get("training_objective"),
             "timestamp": time.time(),
         })
     if accelerator.num_processes > 1 and args.device_map == "auto":
@@ -345,6 +384,7 @@ def main() -> int:
             "event": "model_load_start",
             "run_id": args.run_id,
             "model_id": args.model_id,
+            "backbone_id": backbone_profile.get("id"),
             "device_map": args.device_map,
             "dtype": args.dtype,
             "timestamp": time.time(),
@@ -462,6 +502,7 @@ def main() -> int:
     metadata = {
         "run_id": args.run_id,
         "model_id": args.model_id,
+        "backbone": backbone_profile,
         "dataset_jsonl": str(args.dataset_jsonl),
         "checkpoint_dir": str(args.output_dir),
         "num_processes": accelerator.num_processes,
@@ -482,6 +523,8 @@ def main() -> int:
             "\n".join([
                 f"run_id: {args.run_id}",
                 "stage: qwen_lora_text_video_audio",
+                f"backbone_id: {backbone_profile.get('id')}",
+                f"dataset_contract: {backbone_profile.get('dataset_contract')}",
                 f"model_id: {args.model_id}",
                 f"dataset_jsonl: {args.dataset_jsonl}",
                 f"checkpoint_dir: {args.output_dir}",
@@ -497,6 +540,9 @@ def main() -> int:
         report = [
             "# Qwen3-Omni LoRA Training",
             "",
+            f"- Backbone profile: `{backbone_profile.get('display_name')}`",
+            f"- Dataset contract: `{backbone_profile.get('dataset_contract')}`",
+            f"- Training objective: `{backbone_profile.get('training_objective')}`",
             f"- Base model: `{args.model_id}`",
             f"- Dataset: `{args.dataset_jsonl}`",
             f"- Train samples: `{len(train_samples)}`",

@@ -7,6 +7,7 @@ SMOKE_RUN_ID="${SMOKE_RUN_ID:-xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_l
 SMOKE_EXIT_EVENT="${SMOKE_EXIT_EVENT:-train_exit_fsdp_smoke_v3_no_val}"
 FULL_RUN_ID="${FULL_RUN_ID:-xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval}"
 MODEL_ID="${MODEL_ID:-/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct}"
+BACKBONE_CONFIG="${BACKBONE_CONFIG:-configs/omni_backbones/qwen3_omni_lora.json}"
 
 cd "$PROJECT_DIR"
 
@@ -66,6 +67,7 @@ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
   scripts/omni/train_qwen3_omni_lora.py \
   --dataset-jsonl "$DATASET_JSONL" \
   --model-id "$MODEL_ID" \
+  --backbone-config "$BACKBONE_CONFIG" \
   --run-id "$FULL_RUN_ID" \
   --train-split train \
   --val-split __none__ \
