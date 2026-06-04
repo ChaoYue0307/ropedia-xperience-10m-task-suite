@@ -82,7 +82,7 @@
       "status": "not_publicly_reproducible_yet",
       "command": "scripts/omni/discover_xperience10m_sources.py then scripts/omni/train_qwen3_omni_lora.py after selected episodes are staged",
       "expected": "held-out episode LoRA pilot metrics after data gate passes",
-      "boundary": "full-dataset access is granted, but no held-out multi-episode metric is claimed until staging, training, and evaluation finish"
+      "boundary": "the gated full dataset is available for the selected pilot, but no held-out multi-episode metric is claimed until preprocessing, training, and evaluation finish"
     }
   ]
 }

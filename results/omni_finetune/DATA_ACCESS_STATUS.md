@@ -11,16 +11,15 @@ held-out multi-episode experiment.
 | Current public local sample | 1 episode |
 | Full dataset access | Granted; metadata-only Hugging Face audit completed |
 | Current full-dataset metadata snapshot | 12,102 complete visible HF episodes across 802 complete sessions |
-| Current selected relay | 128 metadata-balanced episodes, 96/16/16 train/val/test |
-| Current staged multi-episode data | 128-episode relay started with chunked parallel transfer and batch prefetch; staging not complete yet |
+| Current selected pilot | 128 metadata-balanced episodes, 96/16/16 train/val/test |
+| Current multi-episode data state | Selected episodes are being prepared; preprocessing and held-out evaluation are not complete yet |
 | Current Qwen3-Omni artifacts | Setup-stage sample run, not held-out multi-episode model metrics |
 | Public raw-data redistribution | Not included |
 
-The current 128-episode relay is an operational data-staging step. It uses
-chunked parallel transfer for staged files and overlapping batch prefetch for
-future relay batches. It should not be described as a completed fine-tune or
-evaluated model until all selected episodes are staged, audited, preprocessed,
-trained, and evaluated on held-out sessions.
+The selected 128-episode pilot is the next model-quality milestone. It should
+not be described as a completed fine-tune or evaluated model until the selected
+episodes are available, checked for modality coverage, preprocessed into
+train/validation/test examples, trained, and evaluated on held-out sessions.
 
 ## Episode Requirement
 

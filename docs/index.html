@@ -2322,9 +2322,9 @@
           <article class="snapshot-card gated">
             <span class="status-pill">staging</span>
             <h3>Omni-model scale-up path</h3>
-            <p>Full-dataset access is granted, a 128-episode relay is in progress with chunked parallel transfer and overlapping batch prefetch, and full training results require completed staging, held-out splits, training, and evaluation.</p>
+            <p>The gated full dataset is available for the next selected 128-episode pilot. Full training results require completed preprocessing, held-out splits, training, and evaluation.</p>
             <div class="snapshot-meta">
-              <span>current stage <strong>accelerated relay staging</strong></span>
+              <span>current stage <strong>pilot data preparation</strong></span>
               <span>selected set <strong>128 episodes</strong></span>
               <span>held-out eval <strong>pending</strong></span>
             </div>
@@ -2501,7 +2501,7 @@
           <article class="evidence-card">
             <span class="status-pill">staging</span>
             <h3>Qwen3-Omni pilot setup</h3>
-            <p>The current Qwen3-Omni artifacts use one episode and 128 train windows. A 128-episode selected relay is in accelerated staging for held-out evaluation.</p>
+            <p>The current Qwen3-Omni artifacts use one episode and 128 train windows. A selected 128-episode pilot is being prepared for held-out evaluation.</p>
             <div class="evidence-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">evidence contract</a>
               <a href="data/evidence_contract.json">evidence data</a>
@@ -2510,7 +2510,7 @@
           <article class="evidence-card">
             <span class="status-pill">verified</span>
             <h3>Multi-episode pilot status is explicit</h3>
-            <p>The pilot status report separates setup artifacts, selected relay state, and completed held-out-episode metrics.</p>
+            <p>The pilot status report separates setup artifacts, selected-episode preparation, and completed held-out-episode metrics.</p>
             <div class="evidence-links">
               <a href="data/scope_claims_audit.json">pilot status</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_scope_claims.py">validator script</a>
@@ -3112,9 +3112,9 @@
               <p>The multi-episode Qwen3-Omni path is documented and scripted. Full-pilot metrics come after selected data is staged and held-out evaluation passes.</p>
             </div>
             <div class="artifact-grid">
-              <article class="artifact primary-artifact"><div><h3>Project scope</h3><p>Connects implemented single-episode artifacts, setup-stage Omni work, current 128-episode relay, and later multi-episode milestones.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">evidence contract</a></article>
+              <article class="artifact primary-artifact"><div><h3>Project scope</h3><p>Connects implemented single-episode artifacts, setup-stage Omni work, the selected 128-episode pilot, and later multi-episode milestones.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">evidence contract</a></article>
               <article class="artifact"><h3>Foundation-model plan</h3><p>Backbone selection matrix covering Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, and SmolVLA-style policy candidates.</p><a href="data/foundation_model_plan.json">foundation model plan</a></article>
-              <article class="artifact"><h3>Multi-episode access status</h3><p>Public data-access path, selected 128-episode relay plan, and data requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">access status</a></article>
+              <article class="artifact"><h3>Multi-episode access status</h3><p>Public data-access path, selected 128-episode pilot plan, and data requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">access status</a></article>
               <article class="artifact"><h3>Qwen3-Omni setup artifacts</h3><p>Manifests, metadata, metrics, and progress logs from the current setup run.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode manifest</a></article>
               <article class="artifact"><h3>Multi-episode data requirement</h3><p>The data status file defines what must be available before full pilot training and held-out metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data requirement</a></article>
             </div>
@@ -3133,7 +3133,7 @@
               <article class="artifact"><h3>Release checks</h3><p>One release map for automated validators and live post-publish checks.</p><a href="data/quality_gates.json">release checks</a></article>
               <article class="artifact"><h3>Mirror parity</h3><p>Prepared repo, HF Space, artifact dataset, and model bundle parity for critical data, figures, website HTML, and validator files.</p><a href="data/mirror_parity.json">mirror parity</a></article>
               <article class="artifact"><h3>Live publication</h3><p>Last public GitHub/HF URL verification after upload.</p><a href="data/live_publication_status.json">live publication</a></article>
-              <article class="artifact"><h3>Multi-episode pilot status</h3><p>Separates setup artifacts, selected relay state, and completed held-out-episode results.</p><a href="data/scope_claims_audit.json">pilot status</a></article>
+              <article class="artifact"><h3>Multi-episode pilot status</h3><p>Separates setup artifacts, selected-episode preparation, and completed held-out-episode results.</p><a href="data/scope_claims_audit.json">pilot status</a></article>
               <article class="artifact"><h3>Public project surface</h3><p>Presents repo, website, and Hugging Face cards with consistent naming, links, tab semantics, and clear project language.</p><a href="data/public_surface_qa.json">public surface check</a></article>
               <article class="artifact"><h3>Public bundle contents</h3><p>Summarizes raw-data exclusion, cache exclusion, archive exclusion, credential-text checks, and public figure references.</p><a href="data/publication_audit.json">bundle report</a></article>
             </div>
@@ -3145,8 +3145,8 @@
     <section id="omni-relay" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Qwen3-Omni pilot is in accelerated data staging.</h2>
-          <p>Full Xperience-10M access is granted. The current plan selects 128 metadata-balanced episodes across 128 different session UUIDs, with chunked parallel transfer and overlapping batch prefetch in progress and no held-out metrics reported yet.</p>
+          <h2>Qwen3-Omni pilot is in data preparation.</h2>
+          <p>The selected pilot uses 128 metadata-balanced episodes across 128 different session UUIDs. Held-out metrics will be reported only after preprocessing, training, and evaluation are complete.</p>
         </div>
         <div class="artifact-grid">
           <article class="artifact"><h3>Selection</h3><p>128 complete episodes selected from 128 unique top-level sessions, balanced across episode-size bands and split 96/16/16 for train/val/test.</p></article>

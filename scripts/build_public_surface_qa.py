@@ -70,6 +70,11 @@ BANNED_PUBLIC_STRINGS = [
     "re" + "viewer " + "scorecard",
     "block" + "er",
     "re" + "view" + "-only checklist",
+    "accelerated relay",
+    "selected relay",
+    "chunked parallel transfer",
+    "batch prefetch",
+    "overlapping batch prefetch",
 ]
 
 
@@ -148,7 +153,7 @@ def build_report() -> dict:
         "Xperience-10M",
         "12-task",
         "Qwen3-Omni",
-        "128-episode relay",
+        "128-episode pilot",
     ]
     hf_link_markers = [
         "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite",
