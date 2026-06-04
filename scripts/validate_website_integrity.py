@@ -251,10 +251,10 @@ def validate(docs_root: Path, site_base: str) -> dict:
     roadmap_page_text = roadmap_page.read_text(encoding="utf-8", errors="ignore") if roadmap_page.exists() else ""
     semantic_rules = [
         (
-            "project_tabs_have_five_groups",
+            "project_tabs_have_six_groups",
             'data-tab-key=',
             None,
-            "The long research page should be grouped into five top-level tabs.",
+            "The long research page should expose six top-level tabs, including a dedicated Directions tab.",
         ),
         (
             "project_sections_are_assigned_to_tabs",
@@ -420,9 +420,9 @@ def validate(docs_root: Path, site_base: str) -> dict:
         ),
     ]
     for name, marker, after_marker, reason in semantic_rules:
-        if name == "project_tabs_have_five_groups":
+        if name == "project_tabs_have_six_groups":
             tab_count = index_text.count(marker)
-            passed = tab_count == 5
+            passed = tab_count == 6
             detail = {"tab_count": tab_count}
         elif name == "project_sections_are_assigned_to_tabs":
             section_count = index_text.count(marker)
@@ -438,7 +438,7 @@ def validate(docs_root: Path, site_base: str) -> dict:
             nested_tab_count = index_text.count("data-panel-target=")
             passed = (
                 'role="tablist"' in index_text
-                and project_tab_count == 5
+                and project_tab_count == 6
                 and nested_tab_count >= 4
                 and tab_role_count >= project_tab_count + nested_tab_count
             )

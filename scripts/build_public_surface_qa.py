@@ -198,7 +198,7 @@ def build_report() -> dict:
         check(
             "website_tabs_are_accessible_and_keyboardable",
             'role="tablist"' in website
-            and website.count("data-tab-key=") == 5
+            and website.count("data-tab-key=") == 6
             and website.count("data-panel-target=") >= 4
             and website.count('role="tab"') >= website.count("data-tab-key=") + website.count("data-panel-target=")
             and website.count('role="tabpanel"') >= 19
