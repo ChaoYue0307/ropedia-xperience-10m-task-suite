@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the public release-check summary.
 
-This is a reader-facing map over the existing validators. It does not replace
+This is a public release map over the existing validators. It does not replace
 the validators; it makes the release state readable in one file and one
 machine-readable JSON bundle.
 """
@@ -24,7 +24,7 @@ GATES = [
         "title": "Multi-episode pilot status",
         "command": "python scripts/validate_scope_claims.py",
         "report": "docs/data/scope_claims_audit.json",
-        "blocks_if": "Setup/provenance strings are presented as completed held-out metrics.",
+        "blocks_if": "Setup identifiers are presented as completed held-out metrics.",
         "shows": "Qwen3-Omni setup artifacts stay distinct from the planned held-out pilot.",
     },
     {
@@ -104,7 +104,7 @@ GATES = [
         "title": "Public bundle contents",
         "command": "python scripts/validate_publication_package.py",
         "report": "docs/data/publication_audit.json",
-        "blocks_if": "Raw data, caches, heavy archives, token strings, missing required assets, or stale public-card figure references enter public bundles.",
+        "blocks_if": "Raw data, caches, heavy archives, credential text, missing required assets, or outdated public-card assets enter public bundles.",
         "shows": "The repo and prepared HF bundles contain the intended public files for release.",
     },
     {
@@ -112,7 +112,7 @@ GATES = [
         "title": "Public project surface",
         "command": "python scripts/build_public_surface_qa.py",
         "report": "docs/data/public_surface_qa.json",
-        "blocks_if": "Repo, website, or Hugging Face presentation loses SEO/social metadata, accessible tab semantics, source links, project-check links, or reader-facing copy consistency.",
+        "blocks_if": "Repo, website, or Hugging Face presentation loses SEO/social metadata, accessible tab semantics, source links, project-check links, or clear project language.",
         "shows": "The public repo, website, and Hugging Face cards read as one cohesive research project surface.",
     },
     {

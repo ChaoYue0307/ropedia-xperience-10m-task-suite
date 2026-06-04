@@ -206,7 +206,7 @@ def build_payload() -> dict:
             {
                 "name": "minimal",
                 "heads": ["softmax", "binary logistic", "multi-label logistic", "ridge regression", "ridge projection plus cosine ranking"],
-                "purpose": "Keep each task contract interpretable and easy to debug.",
+                "purpose": "Keep each task contract interpretable and easy to inspect.",
             },
             {
                 "name": "neural_mlp",
@@ -319,7 +319,7 @@ def render_markdown(payload: dict) -> str:
         f"- Normalization: {feature['normalization']}",
         f"- Audio status: {feature['audio_status']}",
         "",
-        "Minimal heads are used first because they make task contracts debuggable.",
+        "Minimal heads are used first because they make task contracts easy to inspect.",
         "Neural MLP heads reuse the same windows, splits, and feature tensors; they",
         "are not foundation models.",
         "",

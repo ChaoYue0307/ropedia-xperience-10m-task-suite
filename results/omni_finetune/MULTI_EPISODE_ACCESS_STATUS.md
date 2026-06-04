@@ -43,7 +43,7 @@ A real held-out pilot can be claimed only after:
 - evaluation runs on held-out test episodes,
 - predictions, metrics, confusion matrices, and a run report are committed.
 
-The reader-facing data access summary is:
+The public data access summary is:
 
 `results/omni_finetune/DATA_ACCESS_STATUS.md`
 

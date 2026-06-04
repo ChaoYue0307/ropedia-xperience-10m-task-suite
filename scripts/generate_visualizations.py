@@ -27,7 +27,7 @@ CHARTS = ASSETS / "charts"
 OMNI_RELAY = {
     "status": "selected_relay_in_progress",
     "dataset": "ropedia-ai/xperience-10m",
-    "staging": "prepared_generic_host_to_host_transfer",
+    "staging": "accelerated_chunked_parallel_transfer_with_batch_prefetch",
     "training_target": "external_multi_gpu_training_host",
     "selection_strategy": "stratified_round_robin_by_top_level_session",
     "target_episodes": 128,
@@ -36,8 +36,8 @@ OMNI_RELAY = {
     "valid_candidates": 12102,
     "estimated_bytes": 298188841943,
     "exclude": ["visualization.rrd"],
-    "access_status": "Full-dataset access is granted; selected multi-episode relay is in progress.",
-    "current_scope": "The selected-episode Qwen3-Omni fine-tune requires completed data staging and held-out evaluation.",
+    "access_status": "Full-dataset access is granted; selected multi-episode relay is in progress with chunked parallel transfer and overlapping batch prefetch.",
+    "current_scope": "The selected-episode Qwen3-Omni fine-tune requires completed data staging and held-out evaluation; the 32-episode Qwen3-Omni fine-tune requires gated data staging before any real held-out metric is reported.",
 }
 
 
@@ -169,7 +169,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
         for i, line in enumerate(lines):
             parts.append(f'<text x="{x + 24}" y="{y + 66 + i * 22}" font-family="Space Grotesk, Arial, sans-serif" font-size="14" fill="#dce8d7">{html.escape(line)}</text>')
     checks = [
-        "Reproduction check: rerunning scripts to an ignored scratch workspace reproduced committed metrics exactly.",
+        "Reproduction check: rerunning scripts in a temporary local workspace reproduced committed metrics exactly.",
         "Modality check: sample covers video, audio, depth, pose/SLAM, mocap, IMU, and language annotation.",
         "Feature check: current manifest has synchronized video, audio, depth, pose, mocap, IMU, and language groups.",
         "Scope check: this validates one public sample episode, not cross-episode generalization.",

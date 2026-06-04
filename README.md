@@ -125,7 +125,7 @@ multi-episode held-out model metrics:
 | Qwen3-Omni | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `MULTI_EPISODE_ACCESS_STATUS.md` | full-dataset access is granted; 128 selected episodes are in accelerated relay/staging before held-out evaluation |
 | Multi-episode pilot status | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | separates setup artifacts, selected relay state, and completed held-out-episode metrics |
 | Mirror parity | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | prepared GitHub/HF mirrors carry matching data, figure, website HTML, and validator files |
-| Public bundle contents | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | summarizes the public repo and HF bundles, including raw-data exclusion and local scratch-file exclusion |
+| Public bundle contents | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | summarizes the public repo and HF bundles, including raw-data exclusion and temporary local-file exclusion |
 | Release checks | `QUALITY_GATES.md`, `docs/data/quality_gates.json`, `scripts/build_quality_gates.py` | one map for automated checks and live post-publish verification |
 | Artifact index | `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | selective source-of-truth catalog with existence, size, and stable-file hashes |
 | Project status | `PROJECT_STATUS.md`, `docs/data/project_status.json` | compact current-state table for first-pass readers |
@@ -148,7 +148,7 @@ The current multi-episode pilot status note is at
 [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json).
 The task-card and walkthrough-storyboard integrity report is at
 [`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json).
-The public project-surface report is at
+The public presentation report is at
 [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) and
 [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json).
 The generated evaluation protocol is at
@@ -203,7 +203,7 @@ They give the current research state in one compact table:
 | Official dataset wording | Verified against the public `ropedia-ai/xperience-10m` dataset card/API metadata |
 | Source alignment | Source facts, sample details, API-listing notes, and project coverage are consistent across repo, website, and HF cards |
 | Evaluation protocol | Verified generated protocol for windowing, split policy, leakage controls, and per-task metrics |
-| Website and HF mirrors | Verified by website reference reports, public project-surface reports, mirror parity, and live-publication checks; the public dashboard uses six top-level tabs, including an explicit Directions tab, plus subsection tabs for dataset, task-suite, method, result, direction, and resource views |
+| Website and HF mirrors | Verified by website reference reports, public presentation reports, mirror parity, and live-publication checks; the public dashboard uses six top-level tabs, including an explicit Directions tab, plus subsection tabs for dataset, task-suite, method, result, direction, and resource views |
 | Qwen3-Omni multi-episode pilot | Full-dataset access granted; 128-episode relay in progress with chunked parallel transfer and batch prefetch, with full metrics pending completed staging and held-out evaluation |
 | Raw Xperience-10M data / full Qwen weights | Not redistributed |
 
@@ -331,12 +331,12 @@ Hugging Face Space app:
 | Task surface integrity | `docs/data/task_surface_integrity.json` | Checks the public task cards, readable task names, representative modality thumbnails, and interactive walkthrough storyboard |
 | Rendered website check | `RENDERED_SITE_CHECK.md`, `docs/data/rendered_site_check.json` | Records the browser-level page load, tab navigation, walkthrough deep link, player interaction, and console-health result |
 | Research roadmap | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | Shows the staged path from sample-level task development to multi-episode and larger omni-model work |
-| Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and debuggable |
+| Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and inspectable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode task development inspectable without rerunning first |
 | Release checks | `QUALITY_GATES.md`, `docs/data/quality_gates.json` | Shows the automated and post-publish checks used to keep the public release current |
 | Live publication status | `docs/data/live_publication_status.json` | Records the last live GitHub Pages, GitHub raw, and Hugging Face mirror verification |
-| Public bundle contents | `docs/data/publication_audit.json` | Summarizes public bundle contents, raw Xperience-10M data exclusion, cache exclusion, archive exclusion, token-string checks, and public-card figure references |
+| Public bundle contents | `docs/data/publication_audit.json` | Summarizes public bundle contents, raw Xperience-10M data exclusion, cache exclusion, archive exclusion, credential-text checks, and public-card figure references |
 | Artifact index | `docs/data/artifact_index.json` | Gives readers a compact source-of-truth catalog with stable hashes |
 | Artifact guide | `ARTIFACT_GUIDE.md` | Groups the public evidence into research-project layers |
 | Reproducibility contract | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json` | States public commands, expected outputs, exact-match reproduction evidence, and non-reproducible boundaries |
@@ -431,7 +431,7 @@ scripts/
     download_sample_modelscope.py   # ModelScope sample download helper
     build_episode_manifest.py       # metadata-only multi-episode scanner
     plan_finetune_sample_budget.py  # storage/sample-count planner
-    qwen3_omni_adapter_smoke.py     # real-data Qwen3-Omni adapter smoke test
+    qwen3_omni_adapter_smoke.py     # real-data Qwen3-Omni adapter setup check
 
 results/
   min_action_model/                 # motion-only action baseline artifacts
@@ -699,7 +699,7 @@ multi-episode training before they become full research deliverables.
 Beyond the original 12 core tasks, the repo now includes one extra data-backed
 probe for each research direction. These probes are computed from the same
 `shared_windows.npz`, `windows.csv`, and `feature_manifest.json` artifacts, so
-the reported numbers are real sample-derived metrics, not placeholder results.
+the reported numbers are computed from sample-derived features and saved metric artifacts.
 
 - [`research_direction_extension_results.json`](results/episode_task_suite/research_direction_extensions/research_direction_extension_results.json)
 - [`research_direction_extension_summary.md`](results/episode_task_suite/research_direction_extensions/research_direction_extension_summary.md)
@@ -900,8 +900,8 @@ episodes; they are not reported as multi-episode benchmark results.
 
 ## Reproducibility Check
 
-I re-ran the full pipeline from the local raw public sample into an ignored
-scratch workspace and compared regenerated metrics with the committed
+I re-ran the full pipeline from the local raw public sample into a temporary
+local workspace and compared regenerated metrics with the committed
 artifacts. The baseline metrics, 12 task metrics, feature manifest, and
 available modality manifest matched exactly after float normalization.
 

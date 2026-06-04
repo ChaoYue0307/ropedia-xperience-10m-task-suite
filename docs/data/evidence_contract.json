@@ -122,7 +122,7 @@
     },
     {
       "id": "twelve_tasks",
-      "claim": "The 12 task heads are real scripts and artifacts, not presentation placeholders.",
+      "claim": "The 12 task heads are implemented as scripts with saved metrics and predictions.",
       "status": "verified",
       "evidence": [
         "scripts/episode_task_suite.py",
@@ -212,7 +212,7 @@
         "scripts/validate_publication_package.py",
         "docs/data/publication_audit.json"
       ],
-      "boundary": "checks public files, HF bundles, and public-card freshness; ignored local scratch outputs are excluded"
+      "boundary": "checks public files, HF bundles, and current public-card assets; temporary local outputs are excluded"
     },
     {
       "id": "website_integrity",

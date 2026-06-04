@@ -37,9 +37,9 @@ segment. Those cases are recorded in the task metrics as `unseen_test_classes`.
 - Input contract: 8,546-dimensional current feature vector.
 - Source manifest: `results/episode_task_suite/feature_manifest.json`.
 - Normalization: Scalers are fit on train windows only for the baseline heads.
-- Audio status: AAC audio is extracted from the sample MP4 stream and included in the current feature vector.
+- Audio status: Audio is represented in the current feature vector.
 
-Minimal heads are used first because they make task contracts debuggable.
+Minimal heads are used first because they make task contracts easy to inspect.
 Neural MLP heads reuse the same windows, splits, and feature tensors; they
 are not foundation models.
 
@@ -72,20 +72,20 @@ are not foundation models.
 
 - Cross-episode generalization is evaluated in the later multi-episode stage.
 - Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.
-- Qwen3-Omni setup artifacts are preparation artifacts until the 32-episode held-out pilot runs.
-- Full audio-visual representation learning still needs multi-episode training, but the current baseline vector now includes an extracted AAC audio feature block.
+- Qwen3-Omni setup artifacts are preparation artifacts until the selected held-out pilot runs.
+- Full audio-visual representation learning still needs multi-episode training; the current report includes single-episode audio/no-audio ablations.
 
 ## Scale-Up Gate
 
 The full Qwen3-Omni fine-tuning pilot requires all of the following before
 reporting held-out model metrics:
 
-- at least 32 valid Xperience-10M episodes
+- selected staged Xperience-10M episodes
 - held-out episode split with no train/test episode leakage
 - manifest, training metadata, progress logs, metrics, predictions, and run report
 - held-out evaluation on test episodes rather than train windows
 
-Current status: prepared but data-gated. Read
+Current status: prepared; selected data relay in progress. Read
 `results/omni_finetune/DATA_ACCESS_STATUS.md` and
 `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` before interpreting any
 Qwen3-Omni artifact.

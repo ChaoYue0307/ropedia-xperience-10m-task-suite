@@ -61,8 +61,8 @@ The practical Cosmos 3 branch should start with three targets:
 3. **Synthetic data expansion:** generate or score candidate futures, then test
    whether synthetic windows improve downstream task heads.
 
-Do not claim a Cosmos 3 result until there are committed manifests, generated
-outputs, held-out metrics, and qualitative examples.
+A Cosmos 3 branch is ready to publish only after committed manifests, generated
+outputs, held-out metrics, and qualitative examples are available.
 
 ## Policy-Model Branch
 
@@ -91,7 +91,7 @@ The foundation-model stage should add metrics beyond the current 12-task suite:
 | Future state prediction | retrieval rank, temporal consistency, feature reconstruction, visual inspection | Cosmos 3 |
 | Action-conditioned dynamics | transition accuracy, contact accuracy, next-action accuracy | Cosmos 3, OpenVLA, openpi, GR00T |
 | Affordance and object interaction | object micro-F1, contact-object consistency, caption grounding | all branches |
-| Cross-episode generalization | held-out episode metrics, held-out session metrics, leakage audit | all trainable branches |
+| Cross-episode generalization | held-out episode metrics, held-out session metrics, leakage checks | all trainable branches |
 
 ## Execution Order
 

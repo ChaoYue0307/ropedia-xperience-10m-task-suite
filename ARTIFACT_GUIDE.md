@@ -26,7 +26,7 @@ The project separates these reading layers:
 8. **Reproducibility:** public commands, expected outputs, and exact-match
    evidence for the single-episode pipeline.
 9. **Public project surface:** repo, website, and Hugging Face pages,
-   accessibility semantics, links, and reader-facing copy.
+   accessibility semantics, links, and clear project presentation.
 10. **Multi-episode pilot status:** scripts and reports for the selected-episode
    Qwen3-Omni pilot, with the data-access requirement kept visible.
 11. **Foundation-model selection:** Qwen3-Omni, Cosmos 3, GR00T, OpenVLA,
@@ -60,10 +60,10 @@ The project separates these reading layers:
 | [`results/audio_ablation/AUDIO_ABLATION_SUMMARY.md`](results/audio_ablation/AUDIO_ABLATION_SUMMARY.md) | Shows measured current-audio and raw log-mel replacement deltas across the 12 task contracts. |
 | [`docs/data/audio_ablation_summary.json`](docs/data/audio_ablation_summary.json) | Machine-readable audio ablation summary for website and HF mirrors. |
 | [`docs/data/quality_gates.json`](docs/data/quality_gates.json) | Machine-readable release-check summary for website and HF mirrors. |
-| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable public project-surface report for website, repo, and Hugging Face pages. |
+| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable public presentation report for website, repo, and Hugging Face pages. |
 | [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json) | Last live GitHub/HF verification after upload. |
 | [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json) | Confirms prepared HF Space, artifact, and model mirrors match the repo for critical data, figures, website HTML, and validator scripts. |
-| [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Summarizes public bundle contents and exclusions for raw data, Python caches, heavy archives, token strings, and public-card figure references. |
+| [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Summarizes public bundle contents and exclusions for raw data, Python caches, heavy archives, credential text, and public-card figure references. |
 | [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Separates setup identifiers from completed held-out-episode results. |
 | [`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json) | Confirms the public 12-task cards use readable task names, modality thumbnails, and the interactive walkthrough/player data contract. |
 | [`docs/data/website_integrity.json`](docs/data/website_integrity.json) | Confirms local site links, anchors, JSON bundles, and referenced images resolve. |
@@ -147,9 +147,9 @@ The project separates these reading layers:
 
 | Public surface artifact | What it keeps aligned |
 | --- | --- |
-| [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Human-readable public project-surface report for repo, website, and Hugging Face cards. |
-| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable report for SEO/social metadata, accessible tabs, public links, project links, and reader-facing copy. |
-| [`scripts/build_public_surface_qa.py`](scripts/build_public_surface_qa.py) | Regenerates the public project-surface report before release. |
+| [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Human-readable public presentation report for repo, website, and Hugging Face cards. |
+| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable report for SEO/social metadata, accessible tabs, public links, project links, and clear project presentation. |
+| [`scripts/build_public_surface_qa.py`](scripts/build_public_surface_qa.py) | Regenerates the public presentation report before release. |
 
 ## Scale-Up Readiness
 

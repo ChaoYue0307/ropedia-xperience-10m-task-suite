@@ -525,7 +525,7 @@
       "name": "Egocentric Vision & Interaction",
       "next_steps": [
         "Move from single-episode chronological splits to held-out-episode splits.",
-        "Use the audio signal with stronger multimodal backbones for action, intent, and grounding.",
+        "Use audio together with stronger multimodal backbones for action, intent, and grounding.",
         "Evaluate long-horizon task success prediction and action-conditioned generation."
       ],
       "preferred_background": "Video understanding, action recognition, or egocentric vision.",
@@ -1883,7 +1883,7 @@
         "metrics": [
           "held-out episode metrics",
           "held-out session metrics",
-          "leakage audit"
+          "leakage checks"
         ],
         "model_families": [
           "all trainable branches"
@@ -1919,7 +1919,7 @@
       },
       {
         "action": "Publish branch results only with real manifests, predictions, metrics, and qualitative examples.",
-        "name": "Publication rule",
+        "name": "Publishing threshold",
         "step": 6
       }
     ],
@@ -1972,7 +1972,7 @@
         "best_role": "Open robot-policy baseline after observations and action labels are converted into a VLA format.",
         "category": "vision_language_action_policy",
         "current_decision": "candidate_after_action_space_design",
-        "entry_condition": "Window-to-action-token conversion is implemented and audited.",
+        "entry_condition": "Window-to-action-token conversion is implemented and checked.",
         "family": "OpenVLA / OpenVLA-OFT",
         "openness": "open_project_and_weights",
         "priority": 4,
@@ -2061,7 +2061,7 @@
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-03T14:43:22+00:00",
+  "generated_at_utc": "2026-06-04T07:35:10+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -2198,7 +2198,7 @@
       "deliverables": [
         "Cosmos 3 future-window or action-conditioned world-model probe",
         "OpenVLA/openpi/GR00T action-policy baseline",
-        "audio/video/depth/pose/mocap conditioning audit",
+        "audio/video/depth/pose/mocap conditioning checks",
         "affordance and object-interaction tasks",
         "synthetic-data usefulness test"
       ],
@@ -2211,7 +2211,7 @@
     }
   ],
   "scale_up": {
-    "access_status": "Full-dataset access is granted; selected multi-episode relay is in progress.",
+    "access_status": "Full-dataset access is granted; selected multi-episode relay is in progress with chunked parallel transfer and overlapping batch prefetch.",
     "candidate_scan_top_level_sessions": 802,
     "estimated_bytes": 298188841943,
     "exclude": [

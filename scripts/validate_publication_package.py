@@ -4,7 +4,7 @@
 This check scans the GitHub repo plus the prepared Hugging Face
 Space/artifact/model folders for generated Python caches, raw Xperience-10M
 data, heavyweight checkpoint formats that do not belong in this public package,
-and accidental Hugging Face token strings.
+and accidental credential text.
 """
 
 from __future__ import annotations
@@ -55,7 +55,7 @@ STALE_PRESENTATION_STRINGS = {
 }
 LOCAL_PATH_PATTERNS = {
     "/" + "Users/": "local macOS user path in public text",
-    "/" + "private/": "local scratch path in public text",
+    "/" + "private/": "temporary local path in public text",
 }
 CARD_FRESHNESS_EXPECTATIONS = [
     {

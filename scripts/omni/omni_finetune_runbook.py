@@ -66,8 +66,8 @@ def stage_commands(run_id: str, manifest_path: Path) -> list[dict]:
             ],
         },
         {
-            "phase": "phase_1_one_episode_smoke",
-            "goal": "Reproduce adapter smoke and validate JSONL/media generation.",
+            "phase": "phase_1_one_episode_setup_check",
+            "goal": "Reproduce the adapter setup check and validate JSONL/media generation.",
             "commands": [
                 f"python scripts/omni/build_episode_manifest.py --data-root /path/to/xperience10m_data --max-episodes 1 --output {manifest_path}",
                 f"python scripts/omni/export_qwen3_omni_action_dataset.py --manifest {manifest_path} --max-windows-per-episode 16 --run-id {run_id}_dataset",
