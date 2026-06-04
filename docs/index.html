@@ -2258,7 +2258,7 @@
           <div class="brief-actions">
             <a href="research_roadmap.html">Open interactive roadmap</a>
             <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">Read the brief</a>
-            <a href="data/project_brief.json">Project brief data</a>
+            <a href="data/project_brief.json">Project summary</a>
             <a href="#roadmap">Roadmap summary</a>
             <a href="#reading-path">Reader path</a>
             <a href="#takeaways">Current takeaways</a>
@@ -2276,7 +2276,7 @@
             </div>
             <div class="snapshot-actions">
               <a href="research_roadmap.html">Open roadmap</a>
-              <a href="data/research_roadmap_interactive.json">roadmap data</a>
+              <a href="data/research_roadmap_interactive.json">Roadmap structure</a>
             </div>
           </article>
           <article class="snapshot-card">
@@ -2342,12 +2342,12 @@
         </div>
         <div class="snapshot-actions">
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">Project brief</a>
-          <a href="data/project_brief.json">brief data</a>
+          <a href="data/project_brief.json">Project summary</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_STATUS.md">Project status</a>
-          <a href="data/project_status.json">status data</a>
-          <a href="data/research_roadmap.json">roadmap data</a>
-          <a href="data/project_packet.json">project packet</a>
-          <a href="data/live_publication_status.json">live publication status</a>
+          <a href="data/project_status.json">Current status</a>
+          <a href="data/research_roadmap.json">Roadmap summary</a>
+          <a href="data/project_packet.json">Reader path</a>
+          <a href="#artifacts">Project materials</a>
         </div>
       </div>
     </section>
@@ -2417,10 +2417,10 @@
         <div class="roadmap-links">
           <a href="research_roadmap.html">interactive roadmap</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">roadmap document</a>
-          <a href="data/research_roadmap.json">roadmap data</a>
+          <a href="data/research_roadmap.json">roadmap stages</a>
           <a href="data/foundation_model_plan.json">foundation model plan</a>
-          <a href="data/research_roadmap_interactive.json">interactive roadmap data</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a>
+          <a href="data/research_roadmap_interactive.json">interactive map</a>
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up status</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_STATUS.md">project status</a>
         </div>
       </div>
@@ -2433,14 +2433,14 @@
           <p>The protocol is generated from committed metric artifacts so readers can see the exact data unit, split, task targets, leakage controls, and current limitations before comparing scores.</p>
         </div>
         <div class="artifact-grid">
-          <article class="artifact primary-artifact"><div><h3>Data unit</h3><p>One 20-frame aligned window from the public sample episode, stride 5 frames, 1,161 windows total, represented by 8,546 synchronized multimodal dimensions.</p></div><a href="data/evaluation_protocol.json">protocol data</a></article>
+          <article class="artifact primary-artifact"><div><h3>Data unit</h3><p>One 20-frame aligned window from the public sample episode, stride 5 frames, 1,161 windows total, represented by 8,546 synchronized multimodal dimensions.</p></div><a href="data/evaluation_protocol.json">evaluation protocol</a></article>
           <article class="artifact"><h3>Split policy</h3><p>Single-episode chronological 70/30 train/test split. This avoids random future-window mixing; cross-episode generalization is measured in the later multi-episode pilot.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVALUATION_PROTOCOL.md">protocol document</a></article>
           <article class="artifact"><h3>Metric contract</h3><p>All 12 tasks list input, target, primary metric, minimal baseline score, and neural MLP score from committed result files.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target-side signals, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
           <article class="artifact"><h3>Audio ablation</h3><p>Audio and no-audio variants are evaluated across all 12 task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
           <article class="artifact"><h3>Foundation branch selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 becomes the world-model branch, and policy models wait for explicit action targets.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
           <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. Cross-episode generalization, audio-visual learning, world modeling, policy targets, and held-out Qwen3-Omni training move to the multi-episode stage after selected data is prepared.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">next-stage plan</a></article>
-          <article class="artifact"><h3>Scale-up requirement</h3><p>The Omni pilot requires selected prepared episodes, held-out episode splits, no train/test episode leakage, training metadata, predictions, metrics, and a run report.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a></article>
+          <article class="artifact"><h3>Scale-up requirement</h3><p>The Omni pilot requires selected prepared episodes, held-out episode splits, no train/test episode leakage, training metadata, predictions, metrics, and a run report.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up status</a></article>
         </div>
       </div>
     </section>
@@ -2457,8 +2457,8 @@
             <h3>Aligned Xperience-10M sample windows</h3>
             <p>5,821 frames become 1,161 synchronized 20-frame windows with an 8,546-dimensional representation.</p>
             <div class="evidence-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">task-suite report</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature manifest</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">task results</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature inputs</a>
             </div>
           </article>
           <article class="evidence-card">
@@ -2477,7 +2477,7 @@
             <div class="evidence-links">
               <a href="data/audio_ablation_summary.json">audio summary</a>
               <a href="assets/charts/audio_ablation_delta.svg">delta chart</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/audio_ablation/AUDIO_ABLATION_SUMMARY.md">report</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/audio_ablation/AUDIO_ABLATION_SUMMARY.md">audio findings</a>
             </div>
           </article>
           <article class="evidence-card">
@@ -2485,7 +2485,7 @@
             <h3>Four research directions are mapped by evidence type</h3>
             <p>The Ropedia directions are labeled as direct, proxy, or diagnostic coverage, plus one coded extension probe per direction.</p>
             <div class="evidence-links">
-              <a href="data/research_directions.json">directions data</a>
+              <a href="data/research_directions.json">direction map</a>
               <a href="data/research_direction_extensions.json">extension probes</a>
             </div>
           </article>
@@ -2504,7 +2504,7 @@
             <p>The current Qwen3-Omni artifacts use one episode and 128 train windows. A selected 128-episode pilot is being prepared for held-out evaluation.</p>
             <div class="evidence-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">evidence contract</a>
-              <a href="data/evidence_contract.json">evidence data</a>
+              <a href="data/evidence_contract.json">project scope</a>
             </div>
           </article>
           <article class="evidence-card">
@@ -2600,7 +2600,7 @@
             <p>Start with the project brief, status, dataset context, task results, roadmap, and Qwen3-Omni scale-up notes. They separate implemented single-episode work from the prepared multi-episode stage.</p>
             <div class="reading-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">brief</a>
-              <a href="data/project_status.json">status</a>
+              <a href="data/project_status.json">current status</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">dataset notes</a>
               <a href="data/summary_metrics.json">task metrics</a>
               <a href="data/research_roadmap.json">roadmap</a>
@@ -2630,9 +2630,9 @@
             <h3>Check the scale-up gate</h3>
             <p>The multi-episode Qwen3-Omni path is prepared. The selected 128-episode result will be added after staging, preprocessing, training, and held-out evaluation pass.</p>
             <div class="reading-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">access status</a>
-              <a href="data/project_packet.json">project packet</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up status</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">data access</a>
+              <a href="data/project_packet.json">reader path</a>
             </div>
           </article>
         </div>
@@ -2659,7 +2659,7 @@
           <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, and no raw-data redistribution.</p><a href="data/modality_atlas.json">modality atlas</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, and misalignment.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Responsible use</h3><p>This project is for research exploration and excludes identity recognition, surveillance, biometric profiling, sensitive-attribute inference, and safety-critical deployment.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">use notes</a></article>
-          <article class="artifact"><h3>Later milestones</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, and held-out Qwen3-Omni evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a></article>
+          <article class="artifact"><h3>Later milestones</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, and held-out Qwen3-Omni evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up status</a></article>
         </div>
       </div>
     </section>
@@ -3066,11 +3066,11 @@
               <p>Start with the files that define the sample windows, modality inputs, task contracts, metrics, walkthroughs, and research-direction mapping.</p>
             </div>
             <div class="artifact-grid">
-              <article class="artifact primary-artifact"><div><h3>Task-suite report</h3><p>One JSON file with every task definition, split detail, feature dimension, and minimal/neural metric.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">task-suite report</a></article>
+              <article class="artifact primary-artifact"><div><h3>Task results</h3><p>Every task definition, split detail, feature dimension, and minimal/neural metric in one project output.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">task results</a></article>
               <article class="artifact"><h3>Windows table</h3><p>Window start/end frames and aligned action/subtask labels for the public sample episode.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">window table</a></article>
-              <article class="artifact"><h3>Feature manifest</h3><p>Technical source map for the current modality inputs used by the task suite.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature manifest</a></article>
+              <article class="artifact"><h3>Feature inputs</h3><p>Source map for the current modality inputs used by the task suite.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature inputs</a></article>
               <article class="artifact"><h3>Neural MLP task results</h3><p>Per-task PyTorch MLP metrics, predictions, histories, and checkpoints for the same 12 task contracts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural MLP outputs</a></article>
-              <article class="artifact"><h3>Four-direction taxonomy</h3><p>Generated JSON, CSV, Markdown, and website data mapping all 12 tasks to the four research tracks.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_directions">research direction outputs</a></article>
+              <article class="artifact"><h3>Four-direction taxonomy</h3><p>Maps all 12 tasks to the four research tracks: human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_directions">research direction outputs</a></article>
               <article class="artifact"><h3>Direction extension probes</h3><p>Four coded probes, one per research direction, with minimal and neural metrics plus prediction/rank CSVs.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_direction_extensions">extension probe outputs</a></article>
               <article class="artifact"><h3>Task walkthroughs</h3><p>Case studies for all 12 tasks, including input, middle process modules, output, metric, limitation, and task-player data.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/task_walkthroughs">walkthrough outputs</a></article>
               <article class="artifact"><h3>Audio ablation and raw upgrade</h3><p>All 72 task/variant rows comparing current audio, no audio, raw audio, replacement, and combined-input settings.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/audio_ablation">audio ablation outputs</a></article>
@@ -3088,11 +3088,11 @@
               <article class="artifact primary-artifact"><div><h3>Artifact guide</h3><p>Human-readable map from project scope to data contract, task evidence, platform mirrors, and scale-up status.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ARTIFACT_GUIDE.md">artifact guide</a></article>
               <article class="artifact"><h3>Reproduction scripts</h3><p>Training, visualization, taxonomy, walkthrough, validator, and omni-readiness scripts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/scripts">scripts/</a></article>
               <article class="artifact"><h3>Hugging Face Space</h3><p>The dashboard packaged as a public static Space.</p><a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a></article>
-              <article class="artifact"><h3>Derived HF artifacts</h3><p>Metrics, predictions, docs, and lightweight derived files without raw data redistribution.</p><a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">dataset repo</a></article>
+              <article class="artifact"><h3>Derived HF artifacts</h3><p>Metrics, predictions, docs, and lightweight derived files without raw data redistribution.</p><a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">artifact collection</a></article>
               <article class="artifact"><h3>HF baseline models</h3><p>Minimal NumPy softmax, ridge baselines, and neural task-head model files.</p><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">model repo</a></article>
               <article class="artifact"><h3>HF collection</h3><p>Space, artifacts, and model baselines grouped into one public project collection.</p><a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite">collection</a></article>
               <article class="artifact"><h3>Current all-feature action model</h3><p>Classifier metrics, predictions, confusion matrix, and model weights.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/min_all_modalities_action_model/metrics.json">model metrics</a></article>
-              <article class="artifact"><h3>Project packet</h3><p>Machine-readable 90-second project path and scope summary.</p><a href="data/project_packet.json">project packet</a></article>
+              <article class="artifact"><h3>Reader path</h3><p>Compact route through the project for readers who want the shortest path from scope to results.</p><a href="data/project_packet.json">reader path</a></article>
             </div>
           </section>
 
@@ -3104,9 +3104,9 @@
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Project scope</h3><p>Connects implemented single-episode artifacts, setup-stage Omni work, the selected 128-episode pilot, and later multi-episode milestones.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">evidence contract</a></article>
               <article class="artifact"><h3>Foundation-model plan</h3><p>Backbone selection matrix covering Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, and SmolVLA-style policy candidates.</p><a href="data/foundation_model_plan.json">foundation model plan</a></article>
-              <article class="artifact"><h3>Multi-episode access status</h3><p>Public data-access path, selected 128-episode pilot plan, and data requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">access status</a></article>
-              <article class="artifact"><h3>Qwen3-Omni setup artifacts</h3><p>Manifests, metadata, metrics, and progress logs from the current setup run.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/episode_manifest.json">episode manifest</a></article>
-              <article class="artifact"><h3>Multi-episode data requirement</h3><p>The data status file defines what must be available before full pilot training and held-out metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data requirement</a></article>
+              <article class="artifact"><h3>Multi-episode data access</h3><p>Public data-access path, selected 128-episode pilot plan, and data requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">data access</a></article>
+              <article class="artifact"><h3>Qwen3-Omni preparation</h3><p>Episode selection and manifest preparation for the current scale-up path.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/episode_manifest.json">preparation details</a></article>
+              <article class="artifact"><h3>Scale-up requirement</h3><p>What must be available before full pilot training and held-out metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">training requirements</a></article>
             </div>
           </section>
 
@@ -3157,8 +3157,8 @@
           <article class="artifact"><h3>Reproducibility guide</h3><p>Human-readable commands, expected artifacts, and current scope for the public single-episode pipeline.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">reproducibility guide</a></article>
           <article class="artifact"><h3>Reproducibility matrix</h3><p>Machine-readable command matrix covering sample download, baselines, 12 tasks, figures, and validation.</p><a href="data/reproducibility_matrix.json">reproducibility matrix</a></article>
           <article class="artifact"><h3>Exact-match reproduction record</h3><p>The last metric rebuild reproduced the public-sample outputs from a fresh cache and matched the committed metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">reproduction audit</a></article>
-          <article class="artifact"><h3>Website reference report</h3><p>Local HTML references, anchors, JSON bundles, and image dimensions are validated before publishing.</p><a href="data/website_integrity.json">website integrity</a></article>
-          <article class="artifact"><h3>Multi-episode pilot status</h3><p>The Qwen3-Omni pilot is prepared at the code and selection-plan level; final metrics follow completed staging, preprocessing, training, and held-out evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data requirement</a></article>
+          <article class="artifact"><h3>Project dashboard</h3><p>The website organizes the dataset sample, tasks, methods, results, directions, and scale-up path in one tabbed reader flow.</p><a href="#artifacts">project materials</a></article>
+          <article class="artifact"><h3>Multi-episode pilot status</h3><p>The Qwen3-Omni pilot is prepared at the code and selection-plan level; final metrics follow completed staging, preprocessing, training, and held-out evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">training requirements</a></article>
         </div>
         <p class="repro-note">Minimal path: install the toolkit dependencies, download the official sample, run the 12-task suite with neural heads, regenerate visualizations, then rebuild the supporting project reports.</p>
         <pre class="code-panel"><button type="button" data-copy="setup">Copy</button><code id="setup">git clone https://github.com/Ropedia/HOMIE-toolkit.git
