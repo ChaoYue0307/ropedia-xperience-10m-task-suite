@@ -31,6 +31,26 @@ experiment. The public sample is already enough for task design, feature
 contracts, walkthroughs, and baseline comparisons. It is not enough to measure
 general embodied-AI model quality.
 
+## Additional Concrete Development Directions
+
+The project can also grow through smaller, high-leverage directions that do not
+depend on immediately training a larger foundation model:
+
+| Direction | First artifact | Research value |
+| --- | --- | --- |
+| Episode taxonomy and data engine | Episode atlas, category tags, balance report, and split builder. | Makes episode selection representative and auditable. |
+| Standardized benchmark protocol | Fixed splits, task cards, metric scripts, and leakage checks. | Makes future model comparisons fair. |
+| Multimodal representation learning | Contrastive and masked-window objectives over synchronized modalities. | Learns reusable encoders before expensive large-model training. |
+| Skill and procedure graph mining | Steps, transitions, preconditions, effects, and temporal skill graphs. | Connects perception to planning and long-horizon reasoning. |
+| Human-object interaction and affordance modeling | Contact, reachable-object, tool-use, and next-affordance tasks. | Models what the scene makes possible, not only the current label. |
+| 3D/4D scene and object memory | Persistent scene/object maps from depth, pose, multiview video, and objects. | Supports object permanence and spatial reasoning. |
+| Data quality and synchronization diagnostics | Per-episode QA for drift, missing streams, calibration, and corrupted files. | Prevents silent failures in large multimodal training. |
+| Policy, retargeting, and simulation transfer | Action-token conversion and robot-compatible imitation examples. | Bridges human egocentric experience to robot policy work. |
+
+The concise public source is
+`ADDITIONAL_DEVELOPMENT_DIRECTIONS.md`; the website/Hugging Face data copy is
+`docs/data/additional_development_directions.json`.
+
 ## Stage Details
 
 ### 1. Public-Sample Task Lab
@@ -142,7 +162,9 @@ When a roadmap stage advances, update these public surfaces together:
 - `RESEARCH_TAKEAWAYS.md`
 - `EVALUATION_PROTOCOL.md`
 - `ARTIFACT_GUIDE.md`
+- `ADDITIONAL_DEVELOPMENT_DIRECTIONS.md`
 - `XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`
 - `docs/index.html`
+- `docs/data/additional_development_directions.json`
 - `docs/data/research_roadmap.json`
 - Hugging Face Space, artifact dataset, and model cards

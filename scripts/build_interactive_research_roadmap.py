@@ -119,6 +119,7 @@ def main() -> int:
     walkthroughs = load_json(DOCS_DATA / "task_walkthroughs.json")
     roadmap = load_json(DOCS_DATA / "research_roadmap.json")
     foundation_plan = load_json(DOCS_DATA / "foundation_model_plan.json")
+    additional_directions = load_json(DOCS_DATA / "additional_development_directions.json")
     summary_metrics = load_json(DOCS_DATA / "summary_metrics.json")
     episode_summary = load_json(RESULTS / "summary_report.json")
     feature_manifest = load_json(RESULTS / "feature_manifest.json")
@@ -172,6 +173,7 @@ def main() -> int:
             "docs/data/task_walkthroughs.json",
             "docs/data/research_roadmap.json",
             "docs/data/foundation_model_plan.json",
+            "docs/data/additional_development_directions.json",
             "docs/data/summary_metrics.json",
             "docs/data/research_direction_extensions.json",
             "results/episode_task_suite/summary_report.json",
@@ -226,6 +228,15 @@ def main() -> int:
             "execution_order": foundation_plan.get("execution_order", []),
             "evaluation_additions": foundation_plan.get("evaluation_additions", []),
             "source_links": foundation_plan.get("source_links", []),
+        },
+        "additional_development_directions": {
+            "title": additional_directions.get("title"),
+            "summary": additional_directions.get("summary"),
+            "status": additional_directions.get("status"),
+            "public_boundary": additional_directions.get("public_boundary"),
+            "directions": additional_directions.get("directions", []),
+            "practical_order": additional_directions.get("practical_order", []),
+            "source_document": additional_directions.get("source_document"),
         },
         "phases": phase_payload(roadmap.get("phases", [])),
         "directions": directions,

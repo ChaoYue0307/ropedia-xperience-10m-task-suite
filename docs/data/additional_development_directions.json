@@ -1,0 +1,79 @@
+{
+  "title": "Additional Development Directions",
+  "summary": "Concrete Xperience-10M project directions beyond the current minimal baselines, Qwen3-Omni LoRA plan, Cosmos/world-model branch, and long-term native pretraining goal.",
+  "status": "planned_research_directions",
+  "public_boundary": "These are proposed development tracks. They are not reported as completed held-out benchmark results.",
+  "directions": [
+    {
+      "id": "episode_taxonomy_data_engine",
+      "name": "Episode Taxonomy and Data Engine",
+      "data_signals": ["language annotations", "object labels", "scene context", "video thumbnails", "motion statistics", "missing-modality flags"],
+      "first_build": "Episode atlas, category tags, balance report, and split builder across activities, objects, scenes, people, sessions, and missing modalities.",
+      "evaluation": "Coverage by session, activity, object, and modality; duplicate checks; train/val/test leakage checks; reproducible selection report.",
+      "why_it_matters": "Fine-tuning quality depends on selecting representative episodes instead of sampling randomly from a large corpus."
+    },
+    {
+      "id": "standardized_benchmark_protocol",
+      "name": "Standardized Benchmark Protocol",
+      "data_signals": ["episode manifests", "window manifests", "task labels", "prediction files", "metric files"],
+      "first_build": "Fixed train/val/test manifests, task cards, leakage checks, metric scripts, and small reference baselines.",
+      "evaluation": "Versioned splits, deterministic metric scripts, task-specific confidence intervals, and model-card reporting templates.",
+      "why_it_matters": "Future model results become comparable across Qwen, Cosmos-style world models, policy models, and smaller task heads."
+    },
+    {
+      "id": "multimodal_representation_learning",
+      "name": "Multimodal Representation Learning",
+      "data_signals": ["video", "audio", "depth", "pose/SLAM", "mocap", "IMU", "language"],
+      "first_build": "Contrastive and masked-prediction objectives over synchronized multimodal windows.",
+      "evaluation": "Cross-modal retrieval, missing-modality reconstruction, transfer to the 12 task heads, and held-out episode generalization.",
+      "why_it_matters": "Xperience-10M can train reusable encoders before committing to expensive large-model fine-tuning or pretraining."
+    },
+    {
+      "id": "skill_procedure_graph_mining",
+      "name": "Skill and Procedure Graph Mining",
+      "data_signals": ["action labels", "subtask labels", "language annotations", "hand trajectories", "contact states", "object labels"],
+      "first_build": "Step segmentation, transition graph, precondition/effect labels, and temporal skill graph extraction.",
+      "evaluation": "Step boundary accuracy, transition prediction, next-step prediction, graph consistency, and long-horizon task replay.",
+      "why_it_matters": "It connects egocentric perception to task structure, planning, and long-horizon embodied reasoning."
+    },
+    {
+      "id": "human_object_affordance_modeling",
+      "name": "Human-Object Interaction and Affordance Modeling",
+      "data_signals": ["hand mocap", "body mocap", "contacts", "objects", "egocentric video", "language"],
+      "first_build": "Contact, hand-object state, reachable object, likely tool use, and next-affordance prediction tasks.",
+      "evaluation": "Contact F1, object micro-F1, affordance accuracy, future interaction prediction, and per-object error analysis.",
+      "why_it_matters": "The dataset can model what actions the scene affords, not only what action label is currently visible."
+    },
+    {
+      "id": "scene_object_memory",
+      "name": "3D/4D Scene and Object Memory",
+      "data_signals": ["depth", "pose/SLAM", "multiview video", "camera calibration", "objects", "motion traces"],
+      "first_build": "Persistent scene/object map prototypes built from depth, pose/SLAM, multiview video, and object cues.",
+      "evaluation": "Map consistency, object permanence, spatial retrieval, future-state prediction, and novel-view or view-consistency probes.",
+      "why_it_matters": "It moves beyond frame-level recognition toward world-state tracking, object permanence, and spatial reasoning."
+    },
+    {
+      "id": "data_quality_sync_diagnostics",
+      "name": "Data Quality, Synchronization, and Missing-Modality Diagnostics",
+      "data_signals": ["timestamps", "file manifests", "camera streams", "audio streams", "depth streams", "calibration", "annotation coverage"],
+      "first_build": "Per-episode QA for timestamp drift, stream availability, calibration consistency, corrupted files, and missing modalities.",
+      "evaluation": "QA pass rate, drift estimates, missing-view tables, corruption reports, and exclusion or degraded-mode manifests.",
+      "why_it_matters": "Large multimodal training fails quietly without strong data-quality gates, so QA should be a first-class artifact."
+    },
+    {
+      "id": "policy_retargeting_simulation_transfer",
+      "name": "Policy, Retargeting, and Simulation Transfer",
+      "data_signals": ["mocap", "hand trajectories", "contacts", "object states", "egocentric video", "language instructions"],
+      "first_build": "Action-token conversion, robot-compatible targets, imitation-learning examples, and simulation transfer probes.",
+      "evaluation": "Retargeting validity, action prediction, contact consistency, imitation rollout quality, and sim-to-real assumption checks.",
+      "why_it_matters": "It creates a bridge from human egocentric experience to robot policies while keeping action-space assumptions explicit."
+    }
+  ],
+  "practical_order": [
+    "Build the episode taxonomy and data-quality diagnostics first.",
+    "Lock the benchmark protocol and split manifests before reporting model scores.",
+    "Add representation-learning and skill-graph objectives once enough episodes are staged.",
+    "Add affordance, 3D/4D memory, and policy-retargeting branches after labels and action targets are auditable."
+  ],
+  "source_document": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md"
+}

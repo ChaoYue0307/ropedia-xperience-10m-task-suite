@@ -2,6 +2,11 @@
   "title": "Ropedia Xperience-10M Research Roadmap",
   "summary": "Staged path from the public-sample task lab to multi-episode held-out evaluation, foundation-model selection, world/policy branches, and a future Xperience-native embodied foundation model.",
   "current_decision_point": "Keep the public-sample task suite as the development harness, prepare the selected official Xperience-10M episodes for the held-out Qwen3-Omni pilot, then branch into Cosmos 3 world modeling and policy-model experiments after the data preparation path is stable. The Xperience Embodied Foundation Model is a later full-corpus pretraining goal, not a current result.",
+  "additional_development_directions": {
+    "source_document": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
+    "source_json": "docs/data/additional_development_directions.json",
+    "summary": "Additional concrete tracks include episode taxonomy and data selection, benchmark protocol, multimodal representation learning, skill graphs, affordance modeling, 3D/4D scene memory, data-quality diagnostics, and policy/simulation transfer."
+  },
   "phases": [
     {
       "id": "public_sample_task_lab",
@@ -158,8 +163,10 @@
     "RESEARCH_TAKEAWAYS.md",
     "EVALUATION_PROTOCOL.md",
     "ARTIFACT_GUIDE.md",
+    "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
     "XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md",
     "docs/index.html",
+    "docs/data/additional_development_directions.json",
     "docs/data/research_roadmap.json",
     "Hugging Face Space card",
     "Hugging Face artifact dataset card",

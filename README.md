@@ -61,6 +61,7 @@ before the multi-episode omni-model stage becomes a real held-out evaluation.
 | Compare current task metrics | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) |
 | Compare possible foundation backbones | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json) |
 | Understand the future native pretraining goal | [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md) |
+| See additional concrete project directions | [`ADDITIONAL_DEVELOPMENT_DIRECTIONS.md`](ADDITIONAL_DEVELOPMENT_DIRECTIONS.md), [`docs/data/additional_development_directions.json`](docs/data/additional_development_directions.json) |
 | Understand one model input | [`results/episode_task_suite/feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`results/episode_task_suite/windows.csv`](results/episode_task_suite/windows.csv) |
 | Check multi-episode data status | [`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) |
 
@@ -228,6 +229,7 @@ Hugging Face Space app:
 | Visual assets | `FIGURE_INDEX.md`, `docs/assets/` | Shows the task-suite graphic, modality thumbnails, pipeline diagrams, charts, and logo assets |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` | Defines the task unit, split, metrics, leakage controls, and current limitations |
 | Research roadmap | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | Shows the path from sample-level task development to multi-episode work, larger model branches, and the future native-pretraining goal |
+| Additional development directions | `ADDITIONAL_DEVELOPMENT_DIRECTIONS.md`, `docs/data/additional_development_directions.json` | Records concrete non-backbone tracks: taxonomy, benchmark protocol, representation learning, skill graphs, affordances, 3D/4D memory, QA, and policy transfer |
 | Xperience Embodied Foundation Model plan | `XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md` | Describes the long-term full-corpus pretraining goal, target modules, objectives, staged scale-up, hardware ranges, and evaluation protocol |
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and inspectable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
@@ -344,6 +346,7 @@ results/
 
 docs/
   index.html                        # GitHub Pages dashboard
+  data/additional_development_directions.json # concrete non-backbone project directions
   data/summary_metrics.json         # website-readable metrics bundle
   data/evidence_contract.json       # machine-readable project scope
   data/artifact_index.json          # compact project-artifact catalog
@@ -674,6 +677,25 @@ registry can be checked with:
 ```bash
 python scripts/omni/backbone_registry.py --validate --json
 ```
+
+## Additional Development Directions
+
+Beyond backbone selection and fine-tuning, Xperience-10M supports several
+concrete research-development tracks:
+
+| Direction | First useful artifact | Role in the project |
+| --- | --- | --- |
+| Episode taxonomy and data engine | Episode atlas, balance report, and split builder | Select representative data before training. |
+| Standardized benchmark protocol | Versioned train/val/test manifests and metric scripts | Make future model results comparable. |
+| Multimodal representation learning | Contrastive and masked-window encoder objectives | Learn reusable video/audio/depth/pose/mocap/IMU/language features. |
+| Skill and procedure graph mining | Step graph, transitions, preconditions, and effects | Connect perception to planning and long-horizon reasoning. |
+| Human-object affordance modeling | Contact, reachable-object, tool-use, and next-affordance tasks | Model what actions the scene makes possible. |
+| 3D/4D scene and object memory | Persistent scene/object maps from depth, pose, multiview video, and objects | Track world state beyond single frames. |
+| Data-quality and synchronization diagnostics | Per-episode QA for drift, missing streams, calibration, and corrupted files | Keep large multimodal training trustworthy. |
+| Policy, retargeting, and simulation transfer | Action-token conversion and robot-compatible imitation examples | Bridge human egocentric experience to robot policy work. |
+
+See [`ADDITIONAL_DEVELOPMENT_DIRECTIONS.md`](ADDITIONAL_DEVELOPMENT_DIRECTIONS.md)
+and [`docs/data/additional_development_directions.json`](docs/data/additional_development_directions.json).
 
 ## Four Research Directions
 
