@@ -631,6 +631,29 @@ current 128-episode selection filters for complete leaf episodes, excludes
 `visualization.rrd`, balances episode-size bands, and preserves one selected
 episode per top-level session UUID.
 
+### Progressive Train/Validation Pilot
+
+The selected 128-episode plan can be used before every episode has arrived by
+training only on staged `train` episodes and monitoring staged `val` episodes.
+The final `test` episodes stay sealed until the end, so early development does
+not contaminate held-out evaluation.
+
+```bash
+python scripts/omni/build_selection_episode_manifest.py \
+  --workspace /path/to/ropedia-xperience-10m-task-suite \
+  --data-root /path/to/xperience10m_128 \
+  --selection-json results/omni_finetune/xperience10m_128_episode_selection.json \
+  --output results/omni_finetune/trainval_progressive/episode_manifest_trainval.json \
+  --include-split train \
+  --include-split val
+```
+
+`scripts/omni/run_trainval_progressive_128.sh` wraps the same guard, exports a
+train/val-only Qwen3-Omni JSONL dataset, and launches LoRA training without
+running final test evaluation. The exporter uses session-qualified episode IDs
+and path-based split matching so repeated folder names such as `ep1` cannot
+collide across different sessions.
+
 ### Uploading the pilot Qwen3-Omni LoRA
 
 A prepared upload package is available at `results/omni_finetune/hf_upload`.
