@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Research Roadmap",
   "summary": "Staged path from the public-sample task lab to multi-episode held-out evaluation, foundation-model selection, and larger omni/world-model extensions.",
-  "current_decision_point": "Keep the public-sample task suite as the development harness, stage the selected official Xperience-10M relay for the held-out Qwen3-Omni pilot, then branch into Cosmos 3 world modeling and policy-model experiments after the data staging path is stable.",
+  "current_decision_point": "Keep the public-sample task suite as the development harness, prepare the selected official Xperience-10M episodes for the held-out Qwen3-Omni pilot, then branch into Cosmos 3 world modeling and policy-model experiments after the data preparation path is stable.",
   "phases": [
     {
       "id": "public_sample_task_lab",
@@ -30,7 +30,7 @@
       "id": "multi_episode_data_staging",
       "name": "Multi-Episode Data Staging",
       "status": "active",
-      "entry_condition": "Full-dataset access and enough storage for selected episodes.",
+      "entry_condition": "Gated dataset availability and enough storage for selected episodes.",
       "deliverables": [
         "128 selected episodes",
         "episode manifest",
@@ -73,7 +73,7 @@
       "id": "foundation_model_selection_matrix",
       "name": "Foundation-Model Selection Matrix",
       "status": "next",
-      "entry_condition": "The selected relay is staged or a 3-8 episode dry run is staged for preprocessing checks.",
+      "entry_condition": "The selected episodes are prepared or a 3-8 episode dry run is available for preprocessing checks.",
       "deliverables": [
         "backbone registry",
         "Cosmos 3 world-model branch plan",

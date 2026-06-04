@@ -32,7 +32,7 @@ results, and see what remains before multi-episode model-quality claims.
 | Task suite | 12 embodied-AI task contracts with inputs, targets, metrics, predictions, and case-study walkthroughs |
 | Models | Minimal linear/ridge/logistic baselines plus compact PyTorch MLP heads for the same 12 tasks |
 | Research map | Four Ropedia research directions with direct, proxy, diagnostic, and extension-task coverage |
-| Scale-up path | Qwen3-Omni LoRA code path prepared; full-dataset access is granted and a 128-episode selected relay is being staged |
+| Scale-up path | Qwen3-Omni LoRA code path prepared; the gated Xperience-10M dataset is available for a selected 128-episode pilot |
 
 ## How To Read It
 

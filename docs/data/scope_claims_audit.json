@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-04T07:45:04+00:00",
+  "generated_at_utc": "2026-06-04T16:27:09+00:00",
   "summary": {
     "qwen3_omni_32_episode_claim": false,
     "dataset_manifest_num_episodes": 1,
     "dataset_manifest_num_samples": 128,
     "training_metadata_num_train_samples": 128,
     "source_discovery_ready_for_32_episode_pilot": false,
-    "historical_identifier_count": 159,
+    "historical_identifier_count": 157,
     "public_32_episode_status_file_count": 3,
     "failure_count": 0
   },
@@ -90,7 +90,7 @@
     {
       "name": "historical_32ep_identifiers_are_confined_to_readiness_artifacts",
       "status": "pass",
-      "detail": "historical identifiers found in result provenance files=159",
+      "detail": "historical identifiers found in result provenance files=157",
       "evidence": [
         "results/omni_finetune/"
       ]
@@ -170,24 +170,6 @@
         "xperience10m_qwen3_omni_32ep"
       ],
       "example": "- Dataset: `results/omni_finetune/xperience10m_qwen3_omni_32ep_dataset/dataset.jsonl`"
-    },
-    {
-      "classification": "historical_identifier_in_readiness_artifact",
-      "path": "results/omni_finetune/XPERIENCE10M_128_RELAY_AND_FINETUNE_PLAN.md",
-      "line": 42,
-      "patterns": [
-        "ropedia-episode-task-suite"
-      ],
-      "example": "export RELAY_WORKDIR=/path/to/ropedia-episode-task-suite"
-    },
-    {
-      "classification": "historical_identifier_in_readiness_artifact",
-      "path": "results/omni_finetune/XPERIENCE10M_128_RELAY_AND_FINETUNE_PLAN.md",
-      "line": 45,
-      "patterns": [
-        "ropedia-episode-task-suite"
-      ],
-      "example": "export TRAINING_REPO=/path/to/ropedia-episode-task-suite"
     },
     {
       "classification": "historical_identifier_in_readiness_artifact",
@@ -428,8 +410,30 @@
         "ropedia-episode-task-suite"
       ],
       "example": "{\"id\": \"xperience-10m-sample:qa:42\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 840, \"end_frame\": 859, \"num_frames\": 20}, \"media\": {\"video_paths\""
+    },
+    {
+      "classification": "historical_identifier_in_readiness_artifact",
+      "path": "results/omni_finetune/dataset.jsonl",
+      "line": 20,
+      "patterns": [
+        "qwen3_omni_32ep",
+        "xperience10m_qwen3_omni_32ep",
+        "ropedia-episode-task-suite"
+      ],
+      "example": "{\"id\": \"xperience-10m-sample:qa:43\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 860, \"end_frame\": 879, \"num_frames\": 20}, \"media\": {\"video_paths\""
+    },
+    {
+      "classification": "historical_identifier_in_readiness_artifact",
+      "path": "results/omni_finetune/dataset.jsonl",
+      "line": 21,
+      "patterns": [
+        "qwen3_omni_32ep",
+        "xperience10m_qwen3_omni_32ep",
+        "ropedia-episode-task-suite"
+      ],
+      "example": "{\"id\": \"xperience-10m-sample:qa:44\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 880, \"end_frame\": 899, \"num_frames\": 20}, \"media\": {\"video_paths\""
     }
   ],
-  "historical_identifier_total_count": 159,
+  "historical_identifier_total_count": 157,
   "failures": []
 }

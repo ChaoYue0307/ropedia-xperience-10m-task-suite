@@ -63,7 +63,7 @@ ARTIFACTS = [
         "path": "docs/data/research_roadmap.json",
         "kind": "project_path",
         "surface": "website_hf",
-        "shows": "Machine-readable staged roadmap for the website and Hugging Face mirrors.",
+        "shows": "Machine-readable research roadmap for the website and Hugging Face mirrors.",
     },
     {
         "id": "foundation_model_plan",

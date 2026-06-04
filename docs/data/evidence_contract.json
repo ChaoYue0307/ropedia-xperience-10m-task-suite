@@ -14,13 +14,13 @@
     },
     {
       "id": "research_roadmap",
-      "claim": "The staged research path is explicit.",
+      "claim": "The research roadmap is explicit.",
       "status": "current",
       "evidence": [
         "RESEARCH_ROADMAP.md",
         "docs/data/research_roadmap.json"
       ],
-      "boundary": "connects public-sample task development to multi-episode staging, Qwen3-Omni LoRA, robustness runs, and larger omni-model extensions"
+      "boundary": "connects public-sample task development to multi-episode data preparation, Qwen3-Omni LoRA, robustness runs, and larger omni-model extensions"
     },
         {
             "id": "official_dataset_card_alignment",
@@ -171,18 +171,18 @@
         "results/omni_finetune/dataset_manifest.json",
         "results/omni_finetune/metrics_eval.json"
       ],
-      "boundary": "one episode and 128 train windows; full metrics require completed multi-episode staging and held-out evaluation"
+      "boundary": "one episode and 128 train windows; full metrics require completed multi-episode data preparation and held-out evaluation"
     },
     {
       "id": "multi_episode_staging",
-      "claim": "The Qwen3-Omni LoRA pilot is in multi-episode staging.",
-      "status": "data_staging",
+      "claim": "The Qwen3-Omni LoRA pilot is in selected multi-episode preparation.",
+      "status": "data_preparation",
       "evidence": [
         "results/omni_finetune/DATA_ACCESS_STATUS.md",
         "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
         "results/omni_finetune/source_discovery.json"
       ],
-      "boundary": "the gated full dataset is available for the selected pilot; held-out metrics come after manifest construction, training, and test evaluation"
+      "boundary": "the gated Xperience-10M dataset is available for the selected pilot; held-out metrics come after manifest construction, training, and test evaluation"
     },
     {
       "id": "scale_up_status_check",

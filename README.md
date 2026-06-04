@@ -71,7 +71,7 @@ before the multi-episode omni-model stage becomes a real held-out evaluation.
 | Task suite | 12 human-readable embodied-AI task contracts with input, process, output, metrics, predictions, and case-study walkthroughs |
 | Baselines | Minimal linear/ridge/logistic heads plus compact PyTorch MLP task heads over the same chronological split |
 | Research directions | Task mapping and extension probes for human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling |
-| Scale-up path | Full-dataset access granted; a selected 128-episode pilot is being prepared before Qwen3-Omni LoRA, followed by Cosmos 3/world-model and VLA/policy branches |
+| Scale-up path | The gated Xperience-10M dataset is available for a selected 128-episode pilot before Qwen3-Omni LoRA, followed by Cosmos 3/world-model and VLA/policy branches |
 | Public surfaces | GitHub repo, GitHub Pages dashboard, HF Space, HF artifact dataset, HF baseline-model repo, and HF collection |
 
 For the fastest interpretation of the current metrics, start with
@@ -204,7 +204,7 @@ They give the current research state in one compact table:
 | Source alignment | Source facts, sample details, API-listing notes, and project coverage are consistent across repo, website, and HF cards |
 | Evaluation protocol | Verified generated protocol for windowing, split policy, leakage controls, and per-task metrics |
 | Website and HF mirrors | Verified by website reference reports, public presentation reports, mirror parity, and live-publication checks; the public dashboard uses six top-level tabs, including an explicit Directions tab, plus subsection tabs for dataset, task-suite, method, result, direction, and resource views |
-| Qwen3-Omni multi-episode pilot | Full-dataset access granted; selected 128-episode preparation is underway, with full metrics pending completed preprocessing, training, and held-out evaluation |
+| Qwen3-Omni multi-episode pilot | The gated Xperience-10M dataset is available for selected 128-episode preparation, with full metrics pending completed preprocessing, training, and held-out evaluation |
 | Raw Xperience-10M data / full Qwen weights | Not redistributed |
 
 ## 90-Second Research Project Path
@@ -218,7 +218,7 @@ If you are reading the project cold, open these in order:
 | 3 | Are source facts consistently presented? | [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md), [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json), [`scripts/validate_source_alignment.py`](scripts/validate_source_alignment.py) | Repo, website, and HF cards use the same full-dataset facts, sample-card facts, API-listing notes, and project coverage. |
 | 4 | How exactly are tasks evaluated? | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md), [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json), [`scripts/build_evaluation_protocol.py`](scripts/build_evaluation_protocol.py) | The window unit, chronological split, leakage controls, task metrics, and current limitations are explicit. |
 | 5 | What do the current results mean? | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`docs/data/research_takeaways.json`](docs/data/research_takeaways.json), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | The takeaways are generated from committed metrics and identify which signals are ready for larger held-out experiments. |
-| 6 | What is the staged roadmap? | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`docs/data/research_roadmap.json`](docs/data/research_roadmap.json), [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) | The roadmap connects public-sample task development to multi-episode staging, Qwen3-Omni LoRA, foundation-model selection, robustness runs, and larger omni/world-model extensions. |
+| 6 | What is the research roadmap? | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`docs/data/research_roadmap.json`](docs/data/research_roadmap.json), [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) | The roadmap connects public-sample task development to multi-episode data preparation, Qwen3-Omni LoRA, foundation-model selection, robustness runs, and larger omni/world-model extensions. |
 | 7 | Which foundation model comes next? | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json) | Qwen3-Omni remains the first held-out LoRA baseline; Cosmos 3 is the first world-model branch; OpenVLA/openpi/GR00T wait for explicit action targets. |
 | 8 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and the latest exact-match reproduction record are explicit. |
 | 9 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,546-dimensional multimodal window with synchronized video, audio, sensor, and language signals. |
@@ -632,7 +632,7 @@ Current status in this repo:
 - selected_episode_plan: 128 metadata-balanced episodes, 96/16/16 train/val/test
 - selected_download_size: 277.71 GiB excluding `visualization.rrd`
 - ready_for_held_out_pilot: false until the selected episodes are fully staged and checked
-- full-dataset access: granted; selected multi-episode data preparation is in progress
+- gated dataset: available for selected multi-episode data preparation
 - source_discovery: `results/omni_finetune/source_discovery.json`
 - data_status: `results/omni_finetune/DATA_ACCESS_STATUS.md`
 - access_status: `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`

@@ -156,7 +156,7 @@ The project separates these reading layers:
 | Artifact | Current status |
 | --- | --- |
 | [`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) | Summarizes the staging requirement before the held-out Qwen3-Omni pilot can report metrics. |
-| [`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | Documents the public multi-episode access path, selected relay plan, and data requirements. |
+| [`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | Documents the public multi-episode access path, selected 128-episode pilot plan, and data requirements. |
 | [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | Discovery gate for valid multi-episode Xperience-10M sources. |
 | [`scripts/omni/train_qwen3_omni_lora.py`](scripts/omni/train_qwen3_omni_lora.py) | Training entrypoint for the Qwen3-Omni LoRA pilot after the data gate passes. |
 | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md) | Adds the post-data-gate backbone selection plan: Qwen3-Omni first, Cosmos 3 for world modeling, and OpenVLA/openpi/GR00T for policy/action branches. |

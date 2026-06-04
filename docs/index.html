@@ -511,7 +511,7 @@
     #diagnostics { order: 17; }
     #evidence { order: 18; }
     #artifacts { order: 19; }
-    #omni-relay { order: 20; }
+    #omni-scale-up { order: 20; }
     #run { order: 21; }
     #suite { padding: 62px 0 76px; }
     #suite .wrap { width: min(1680px, calc(100% - 48px)); }
@@ -2197,7 +2197,7 @@
           <strong>Directions</strong>
           <span>four tracks and probes</span>
         </button>
-        <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="artifacts" aria-selected="false" aria-pressed="false" aria-controls="evidence artifacts omni-relay run" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="artifacts" aria-selected="false" aria-pressed="false" aria-controls="evidence artifacts omni-scale-up run" tabindex="-1">
           <strong>Resources</strong>
           <span>research artifacts and scale-up</span>
         </button>
@@ -2234,7 +2234,7 @@
             </article>
             <article class="brief-card">
               <strong>What comes next</strong>
-              <p>The next model-quality stage is a held-out episode pilot over the selected multi-episode relay, with no train/test episode leakage and a completed omni-model evaluation report.</p>
+              <p>The next model-quality stage is a held-out episode pilot over selected multi-episode data, with no train/test episode leakage and a completed omni-model evaluation report.</p>
             </article>
           </div>
           <div class="brief-grid" aria-label="Research capability map">
@@ -3063,7 +3063,7 @@
             </button>
             <button type="button" class="content-tab" id="artifact-tab-scale-up" role="tab" data-panel-target="artifact-panel-scale-up" aria-selected="false" aria-pressed="false" aria-controls="artifact-panel-scale-up" tabindex="-1">
               <strong>Scale-Up</strong>
-              <span>relay and Omni path</span>
+              <span>Omni scale-up path</span>
             </button>
             <button type="button" class="content-tab" id="artifact-tab-checks" role="tab" data-panel-target="artifact-panel-checks" aria-selected="false" aria-pressed="false" aria-controls="artifact-panel-checks" tabindex="-1">
               <strong>Checks</strong>
@@ -3142,7 +3142,7 @@
       </div>
     </section>
 
-    <section id="omni-relay" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
+    <section id="omni-scale-up" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Qwen3-Omni pilot is in data preparation.</h2>
@@ -3257,7 +3257,7 @@ python scripts/validate_publication_package.py</code></pre>
       { id: "diagnostics", label: "Diagnostic Charts" },
       { id: "artifacts", label: "Research Artifacts" },
       { id: "evidence", label: "Research Progress" },
-      { id: "omni-relay", label: "Omni Scale-Up" },
+      { id: "omni-scale-up", label: "Omni Scale-Up" },
       { id: "run", label: "Reproduce" }
     ];
     const sectionLabels = Object.fromEntries(sectionConfig.map((section) => [section.id, section.label]));
