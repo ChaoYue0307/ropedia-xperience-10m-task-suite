@@ -162,6 +162,22 @@ ARTIFACTS = [
         "shows": "Publishes prepared Space, artifact dataset, and model bundles, including an explicit model-binary upload batch.",
     },
     {
+        "id": "github_package_dockerfile",
+        "title": "GitHub package Dockerfile",
+        "path": "Dockerfile",
+        "kind": "publication_workflow",
+        "surface": "repo",
+        "shows": "Builds the static-dashboard container package for GitHub Container Registry.",
+    },
+    {
+        "id": "github_package_workflow",
+        "title": "GitHub package workflow",
+        "path": ".github/workflows/publish-ghcr.yml",
+        "kind": "publication_workflow",
+        "surface": "repo",
+        "shows": "Publishes the static-dashboard image to GitHub Container Registry on main or manual dispatch.",
+    },
+    {
         "id": "evaluation_protocol",
         "title": "Evaluation protocol",
         "path": "EVALUATION_PROTOCOL.md",

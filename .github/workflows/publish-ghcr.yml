@@ -1,0 +1,67 @@
+name: Publish GitHub Package
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - Dockerfile
+      - .dockerignore
+      - .github/workflows/publish-ghcr.yml
+      - docs/**
+      - README.md
+      - PROJECT_STATUS.md
+      - ARTIFACT_GUIDE.md
+      - FOUNDATION_MODEL_PLAN.md
+      - RESEARCH_ROADMAP.md
+      - XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md
+      - DATA_NOTICE.md
+      - LICENSE
+      - CITATION.cff
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE_NAME: ghcr.io/chaoyue0307/ropedia-xperience-10m-task-suite
+
+jobs:
+  publish:
+    name: Build and publish static dashboard image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate image metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=latest
+            type=sha,prefix=sha-
+          labels: |
+            org.opencontainers.image.title=Ropedia Xperience-10M Task Suite
+            org.opencontainers.image.description=Static research dashboard for the Ropedia Xperience-10M task-suite project.
+            org.opencontainers.image.source=https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite
+            org.opencontainers.image.url=https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/
+            org.opencontainers.image.licenses=MIT
+
+      - name: Build and publish image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
