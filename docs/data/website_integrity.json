@@ -1,11 +1,11 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-04T06:23:19+00:00",
+  "generated_at_utc": "2026-06-04T06:46:45+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 142,
+    "local_references": 143,
     "external_reference_count": 91,
     "json_files": 32,
     "image_assets_referenced": 21,
@@ -21,10 +21,10 @@
   },
   "semantic_checks": [
     {
-      "name": "project_tabs_have_five_groups",
+      "name": "project_tabs_have_six_groups",
       "status": "pass",
-      "reason": "The long research page should be grouped into five top-level tabs.",
-      "tab_count": 5
+      "reason": "The long research page should expose six top-level tabs, including a dedicated Directions tab.",
+      "tab_count": 6
     },
     {
       "name": "project_sections_are_assigned_to_tabs",
@@ -43,8 +43,8 @@
       "name": "project_tabs_use_accessible_roles",
       "status": "pass",
       "reason": "The tabbed research dashboard should expose tablist/tab semantics.",
-      "tab_role_count": 9,
-      "project_tab_count": 5,
+      "tab_role_count": 10,
+      "project_tab_count": 6,
       "nested_tab_count": 4,
       "has_tablist": true
     },
@@ -59,7 +59,7 @@
       "name": "project_tabs_update_selected_state",
       "status": "pass",
       "reason": "Tab activation should update selected state for assistive technology.",
-      "selected_count": 12,
+      "selected_count": 13,
       "updates_selected_state": true
     },
     {
@@ -74,8 +74,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 66059,
-      "evidence_index": 83262
+      "overview_index": 66415,
+      "evidence_index": 83618
     },
     {
       "name": "project_status_links_json",
@@ -149,9 +149,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 66059,
-      "protocol_index": 80126,
-      "evidence_index": 83262
+      "overview_index": 66415,
+      "protocol_index": 80482,
+      "evidence_index": 83618
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -224,8 +224,8 @@
     },
     {
       "path": "index.html",
-      "id_count": 75,
-      "reference_count": 119,
+      "id_count": 76,
+      "reference_count": 120,
       "image_count": 23
     },
     {
@@ -284,7 +284,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 108609,
+      "bytes": 108617,
       "top_level_type": "dict"
     },
     {
@@ -314,7 +314,7 @@
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 5631,
+      "bytes": 5632,
       "top_level_type": "dict"
     },
     {
@@ -394,7 +394,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 14718,
+      "bytes": 14746,
       "top_level_type": "dict"
     },
     {

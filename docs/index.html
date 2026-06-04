@@ -357,7 +357,7 @@
     }
     .project-tabs {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 10px;
     }
     .project-tab {
@@ -2090,6 +2090,7 @@
         <a href="#suite">Tasks</a>
         <a href="#pipeline">Method</a>
         <a href="#models">Results</a>
+        <a href="#directions">Directions</a>
         <a href="research_roadmap.html">Roadmap</a>
         <a href="#walkthroughs">Demo</a>
         <a href="single_episode_explorer.html">Explorer</a>
@@ -2156,9 +2157,13 @@
           <strong>Method</strong>
           <span>pipeline and model design</span>
         </button>
-        <button type="button" class="project-tab" id="tab-results" role="tab" data-tab-key="results" data-default-section="takeaways" aria-selected="false" aria-pressed="false" aria-controls="takeaways models neural directions extensions diagnostics" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-results" role="tab" data-tab-key="results" data-default-section="takeaways" aria-selected="false" aria-pressed="false" aria-controls="takeaways models neural diagnostics" tabindex="-1">
           <strong>Results</strong>
-          <span>baselines and research tracks</span>
+          <span>takeaways and baselines</span>
+        </button>
+        <button type="button" class="project-tab" id="tab-directions" role="tab" data-tab-key="directions" data-default-section="directions" aria-selected="false" aria-pressed="false" aria-controls="directions extensions" tabindex="-1">
+          <strong>Directions</strong>
+          <span>four tracks and probes</span>
         </button>
         <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="artifacts" aria-selected="false" aria-pressed="false" aria-controls="evidence artifacts omni-relay run" tabindex="-1">
           <strong>Resources</strong>
@@ -2789,7 +2794,7 @@
       </div>
     </section>
 
-    <section id="directions" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
+    <section id="directions" data-project-tab="directions" role="tabpanel" aria-labelledby="tab-directions" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>The 12 tasks organized into four research directions.</h2>
@@ -2835,7 +2840,7 @@
       </div>
     </section>
 
-    <section id="extensions" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
+    <section id="extensions" data-project-tab="directions" role="tabpanel" aria-labelledby="tab-directions" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Four extra probes make the directions actionable.</h2>

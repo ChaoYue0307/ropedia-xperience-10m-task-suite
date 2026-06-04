@@ -203,7 +203,7 @@ They give the current research state in one compact table:
 | Official dataset wording | Verified against the public `ropedia-ai/xperience-10m` dataset card/API metadata |
 | Source alignment | Source facts, sample details, API-listing notes, and project coverage are consistent across repo, website, and HF cards |
 | Evaluation protocol | Verified generated protocol for windowing, split policy, leakage controls, and per-task metrics |
-| Website and HF mirrors | Verified by website reference reports, public project-surface reports, mirror parity, and live-publication checks; the public dashboard uses five top-level tabs plus subsection tabs for dataset, task-suite, method, result, and resource views |
+| Website and HF mirrors | Verified by website reference reports, public project-surface reports, mirror parity, and live-publication checks; the public dashboard uses six top-level tabs, including an explicit Directions tab, plus subsection tabs for dataset, task-suite, method, result, direction, and resource views |
 | Qwen3-Omni multi-episode pilot | Full-dataset access granted; 128-episode relay in progress with chunked parallel transfer and batch prefetch, with full metrics pending completed staging and held-out evaluation |
 | Raw Xperience-10M data / full Qwen weights | Not redistributed |
 
