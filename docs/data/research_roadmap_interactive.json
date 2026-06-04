@@ -2061,7 +2061,7 @@
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-04T07:35:10+00:00",
+  "generated_at_utc": "2026-06-04T16:13:49+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -2116,7 +2116,7 @@
         "held-out episode split",
         "source-discovery report"
       ],
-      "entry_condition": "Full-dataset access and enough storage for selected episodes.",
+      "entry_condition": "Gated dataset availability and enough storage for selected episodes.",
       "id": "multi_episode_data_staging",
       "name": "Multi-Episode Data Staging",
       "reader_takeaway": "The next scale decision is data staging, with train/test separation at the episode level.",
@@ -2161,7 +2161,7 @@
         "OpenVLA/openpi/GR00T policy-branch candidates",
         "model-specific evaluation additions"
       ],
-      "entry_condition": "Selected pilot episodes are prepared or a 3-8 episode dry run is available for preprocessing checks.",
+      "entry_condition": "The selected episodes are prepared or a 3-8 episode dry run is available for preprocessing checks.",
       "id": "foundation_model_selection_matrix",
       "name": "Foundation-Model Selection Matrix",
       "reader_takeaway": "Qwen3-Omni remains the first trainable held-out pilot; Cosmos 3 is the first world-model branch; VLA/policy models wait for explicit action targets.",
@@ -2211,14 +2211,14 @@
     }
   ],
   "scale_up": {
-    "access_status": "The gated full dataset is available for selected multi-episode pilot preparation.",
+    "access_status": "The gated Xperience-10M dataset is available for selected multi-episode pilot preparation.",
     "candidate_scan_top_level_sessions": 802,
     "estimated_bytes": 298188841943,
     "exclude": [
       "visualization.rrd"
     ],
     "selection_strategy": "stratified_round_robin_by_top_level_session",
-    "status": "selected_pilot_preparation",
+    "status": "selected_relay_in_progress",
     "target_episodes": 128,
     "valid_candidates": 12102
   },

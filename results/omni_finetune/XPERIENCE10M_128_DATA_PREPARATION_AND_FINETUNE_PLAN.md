@@ -1,4 +1,4 @@
-# Xperience-10M 128-Episode Relay and Fine-Tune Plan
+# Xperience-10M 128-Episode Data Preparation and Fine-Tune Plan
 
 This is the executable plan for moving from metadata selection to real
 multi-episode training. It does not claim model-quality results until data is
@@ -8,19 +8,19 @@ downloaded, staged, audited, trained, and evaluated on held-out sessions.
 
 | Host | Role | Status |
 | --- | --- | --- |
-| HF-reachable relay host | Dataset download relay | Needs Hugging Face access and enough scratch storage for one batch |
+| HF-reachable download host | Dataset download and transfer | Needs Hugging Face access and enough scratch storage for one batch |
 | Training host | Persistent data + training | Needs enough storage for the staged selection and the training/eval stack |
 
-Conclusion: use a Hugging Face reachable machine as the download relay and the
-training machine as the persistent data store. The current transfer path uses
-chunked parallel file transfer and overlapping batch prefetch so the relay can
-transfer the current batch while future batches are downloaded.
+Conclusion: use a Hugging Face reachable machine for dataset downloads and the
+training machine as the persistent data store. The selected episodes are
+prepared in bounded batches, transferred, validated, and then used for the
+held-out Qwen3-Omni LoRA pilot.
 
 Current execution status:
 
-- a 128-episode relay job has been launched on an HF-reachable host,
-- chunked parallel transfer is active for staged files,
-- overlapping batch prefetch is active for later batches,
+- a 128-episode data-preparation job has been launched on an HF-reachable host,
+- staged-file transfer is active,
+- later batches are scheduled after storage checks,
 - no multi-episode model-quality training result is claimed yet.
 
 ## Selected Data
@@ -34,7 +34,7 @@ Current execution status:
 - Excluded: `visualization.rrd`
 - Estimated training-host storage: 277.71 GiB excluding RRD
 
-## Relay Setup
+## Transfer Setup
 
 Define host-specific paths outside the public artifact:
 
@@ -46,20 +46,20 @@ export TRAINING_REPO=/path/to/ropedia-episode-task-suite
 export TRAINING_DATA_ROOT=/path/to/xperience10m_128
 ```
 
-Create a dedicated relay-to-training SSH key:
+Create a dedicated download-to-training SSH key:
 
 ```bash
 ssh <relay-host> 'mkdir -p ~/.ssh && chmod 700 ~/.ssh && test -f ~/.ssh/xperience10m_relay_ed25519 || ssh-keygen -t ed25519 -N "" -f ~/.ssh/xperience10m_relay_ed25519 -C xperience10m-relay-to-training'
 ssh <relay-host> 'cat ~/.ssh/xperience10m_relay_ed25519.pub'
 ```
 
-Append that public key to the training host `~/.ssh/authorized_keys`, then verify from the relay:
+Append that public key to the training host `~/.ssh/authorized_keys`, then verify from the download host:
 
 ```bash
 ssh <relay-host> 'ssh -i ~/.ssh/xperience10m_relay_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=accept-new <training-user>@<training-host> hostname'
 ```
 
-## Copy Minimal Repo Files to Relay
+## Copy Minimal Repo Files to Download Host
 
 ```bash
 ssh <relay-host> 'mkdir -p "$RELAY_WORKDIR"'
@@ -70,7 +70,7 @@ rsync -av \
   <relay-host>:"$RELAY_WORKDIR"/
 ```
 
-## Relay Dry Run
+## Transfer Dry Run
 
 ```bash
 ssh <relay-host> '
@@ -92,9 +92,9 @@ python3 relay_xperience10m_selection.py \
 '
 ```
 
-## Start Relay
+## Start Data Preparation
 
-Run in a persistent terminal or `tmux` session on the relay:
+Run in a persistent terminal or `tmux` session on the download host:
 
 ```bash
 export HF_TOKEN=...
@@ -116,8 +116,7 @@ python3 relay_xperience10m_selection.py \
 
 Batch sizing is intentionally conservative. A 40 GiB batch size keeps restarts
 and partial-transfer cleanup cheaper than treating the full 277.71 GiB selection
-as one unit. Future batches can be downloaded in a separate prefetch-only relay
-process after disk headroom is checked.
+as one unit. Later batches should start after disk headroom is checked.
 
 ## Training-Host Data Validation
 

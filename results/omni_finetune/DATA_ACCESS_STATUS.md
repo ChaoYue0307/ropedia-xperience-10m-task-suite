@@ -55,7 +55,7 @@ training yet.
 - `results/omni_finetune/FULL_DATASET_METADATA_AUDIT.md`
 - `results/omni_finetune/full_dataset_metadata_audit.json`
 - `results/omni_finetune/XPERIENCE10M_128_EPISODE_SELECTION.md`
-- `results/omni_finetune/XPERIENCE10M_128_RELAY_AND_FINETUNE_PLAN.md`
+- `results/omni_finetune/XPERIENCE10M_128_DATA_PREPARATION_AND_FINETUNE_PLAN.md`
 - `results/omni_finetune/xperience10m_128_episode_selection.json`
 - `results/omni_finetune/xperience10m_128_episode_download_files.txt`
 - `results/omni_finetune/source_discovery.json`

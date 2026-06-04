@@ -25,10 +25,10 @@ ASSETS = DOCS / "assets"
 CHARTS = ASSETS / "charts"
 
 OMNI_RELAY = {
-    "status": "selected_relay_in_progress",
+    "status": "selected_episode_preparation",
     "dataset": "ropedia-ai/xperience-10m",
-    "staging": "accelerated_chunked_parallel_transfer_with_batch_prefetch",
-    "training_target": "external_multi_gpu_training_host",
+    "staging": "selected_episode_preparation",
+    "training_target": "multi_episode_training_pipeline",
     "selection_strategy": "stratified_round_robin_by_top_level_session",
     "target_episodes": 128,
     "selected_sessions": 128,
@@ -36,7 +36,7 @@ OMNI_RELAY = {
     "valid_candidates": 12102,
     "estimated_bytes": 298188841943,
     "exclude": ["visualization.rrd"],
-    "access_status": "Full-dataset access is granted; selected multi-episode relay is in progress with chunked parallel transfer and overlapping batch prefetch.",
+    "access_status": "The gated Xperience-10M dataset is available for selected multi-episode pilot preparation.",
     "current_scope": "The selected-episode Qwen3-Omni fine-tune requires completed data staging and held-out evaluation; the 32-episode Qwen3-Omni fine-tune requires gated data staging before any real held-out metric is reported.",
 }
 

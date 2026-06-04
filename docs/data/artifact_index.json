@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-04T07:39:12+00:00",
+  "generated_at_utc": "2026-06-04T16:27:07+00:00",
   "status": "pass",
   "artifact_count": 72,
   "missing": [],
@@ -40,8 +40,8 @@
       "surface": "repo_hf",
       "shows": "Gives first-pass readers a concise project shape before the detailed artifact trail.",
       "exists": true,
-      "bytes": 3596,
-      "sha256": "0a9557f57088644466b19e91202ec0304f9394e3abf69d7861a878d192d1c1aa"
+      "bytes": 3594,
+      "sha256": "8df692f2d6b092097d5ef7d5039e7529abe2fd0a80ff3fb23fa14260fb5f9de2"
     },
     {
       "id": "project_brief_json",
@@ -51,8 +51,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable first-reader project brief for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 3645,
-      "sha256": "66056460f2d93691d19e9af2f47acb57bab561f3b2697884549d144569b70fa7"
+      "bytes": 3637,
+      "sha256": "0e859cfd3fca3ac66c9dd67e04a404ab41757c248d8777ee9cf7da63ab11a2f7"
     },
     {
       "id": "project_status",
@@ -62,8 +62,8 @@
       "surface": "repo_hf",
       "shows": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 7205,
-      "sha256": "aceb06898420b77589a84a48f7dd0a518183a82f4bf04be96d78d769ee4cbed6"
+      "bytes": 7143,
+      "sha256": "49653ef7bd5ef4ba040fe4c1c12b4d831be975226b1ea672634f75614c6f9bce"
     },
     {
       "id": "project_status_json",
@@ -73,8 +73,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable copy of the current project status for website and HF mirrors.",
       "exists": true,
-      "bytes": 9233,
-      "sha256": "f74b7265bebf28cf23688e81ea9aa392488ac110dcd9a8c9ebafb7f52935db35"
+      "bytes": 9176,
+      "sha256": "aa9ca62f30793c8d4c57e54133cb2beffeed14abff4446740b83218250279971"
     },
     {
       "id": "research_roadmap",
@@ -84,8 +84,8 @@
       "surface": "repo_hf",
       "shows": "Defines the staged path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions.",
       "exists": true,
-      "bytes": 6645,
-      "sha256": "6152c3981806beb454fd7e99a3e9e0e3a1637840571c267ec9315e78494df5f1"
+      "bytes": 6675,
+      "sha256": "314a2596075152da747ec9b983c2ac0110ec6213125005494f7a4d7d9d20f2e8"
     },
     {
       "id": "research_roadmap_json",
@@ -93,10 +93,10 @@
       "path": "docs/data/research_roadmap.json",
       "kind": "project_path",
       "surface": "website_hf",
-      "shows": "Machine-readable staged roadmap for the website and Hugging Face mirrors.",
+      "shows": "Machine-readable research roadmap for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 5727,
-      "sha256": "ac9be2d90db281a21df4956c792d8cd77648aa6c7dd4c12b5c3371fe951147b4"
+      "bytes": 5752,
+      "sha256": "b86d2bfdaeb0f3bd2e162164333122c5c1b4d09a2224143f37307f3b2d07708f"
     },
     {
       "id": "foundation_model_plan",
@@ -106,8 +106,8 @@
       "surface": "repo_hf",
       "shows": "Defines the post-data-gate backbone choices: Qwen3-Omni first, Cosmos 3 for world modeling, and VLA/policy models after action-target conversion.",
       "exists": true,
-      "bytes": 6562,
-      "sha256": "fcfdadd1b1b79c47ea99076d81b7624ac99c5d6a86df5b5c5e5ff8d16a1ec0f6"
+      "bytes": 6553,
+      "sha256": "816ff621d9e987425f545fd7471f1548a2bd427ccfb959704d2d4dc603b71d74"
     },
     {
       "id": "foundation_model_plan_json",
@@ -128,8 +128,8 @@
       "surface": "repo",
       "shows": "Defines the implemented scope, setup-stage items, and multi-episode prerequisites.",
       "exists": true,
-      "bytes": 11294,
-      "sha256": "b1643d23496ce868aec5d2dc6799013b99f86ee0af54f6175742bb585c6222f5"
+      "bytes": 11323,
+      "sha256": "5c1f41ab70424aa139fa3062cce2d5182995312f072560c403bc505c5cf3b302"
     },
     {
       "id": "project_packet",
@@ -139,8 +139,8 @@
       "surface": "website_hf",
       "shows": "Gives a short project path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 7722,
-      "sha256": "06aa7bc21ee856c3d99cb95e30bb6f376eb8deed4289774740af4b9ed353749f"
+      "bytes": 7651,
+      "sha256": "f8b57892a6031620402554b1e3105115ef2fa27e0db65bb3263f0fd353947a3d"
     },
     {
       "id": "artifact_guide",
@@ -150,8 +150,8 @@
       "surface": "repo_hf",
       "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 16885,
-      "sha256": "755727a141df5a5e77eb9031d76f686d884e3ad11419c186d1f3c684f29a6aa0"
+      "bytes": 16897,
+      "sha256": "81c731cd65f7496abb275b9a60dcacca1407a132bba1748303854f2a1eb435df"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -162,7 +162,7 @@
       "shows": "Aligns public dataset wording with the official gated Xperience-10M card, public sample card, HF API metadata, and current project coverage.",
       "exists": true,
       "bytes": 10625,
-      "sha256": "9e51442cb13cb4074d73fb212b49c56e6e4ae6dea10fd135a4020f7488e49be0"
+      "sha256": "1ad8d533b402091be66b320c36b4a0df5ec474906da4b3d079cbf860fd50dccf"
     },
     {
       "id": "official_dataset_card_alignment_json",
@@ -195,7 +195,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "129d54143e4ea914e4c1adea6280871164a029da55ae3f668f01e09ebbe75225"
+      "sha256": "c12a17b949b50b4d246e2ea985ca3b872ed9891400b3c2e9fc4593dcff1bf269"
     },
     {
       "id": "source_alignment_validator",
@@ -227,8 +227,8 @@
       "surface": "repo_hf",
       "shows": "Defines the window unit, chronological split, task metrics, leakage controls, and current limitations.",
       "exists": true,
-      "bytes": 5877,
-      "sha256": "5761f8c81f543a5f8cd4d6a23d3a0986c1221eb2c05e362e01ff3c37407de08f"
+      "bytes": 5896,
+      "sha256": "51710edf5ac8d2f6737321089a4e6d0ae876dc26adf6edf33e2b8710acb8e4c2"
     },
     {
       "id": "evaluation_protocol_json",
@@ -238,8 +238,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable protocol generated from committed task metrics for website and HF mirrors.",
       "exists": true,
-      "bytes": 13604,
-      "sha256": "2a9cb2323eba460fb89ef54d149aad1e97902fd7f369813e1ab4f2d2f7b9a85b"
+      "bytes": 13624,
+      "sha256": "2e52de628b00d443117183b9276261cf30a5a07734e82fbd7fbbfa123bf28a82"
     },
     {
       "id": "evaluation_protocol_builder",
@@ -348,8 +348,8 @@
       "surface": "repo_hf",
       "shows": "Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts.",
       "exists": true,
-      "bytes": 4712,
-      "sha256": "bc1e1b695649270c64f654aa260c9d52cfc372a765ca6c993ef07145e8050f6e"
+      "bytes": 4947,
+      "sha256": "71e39f890e630923bf4a1699ee3069b0a8c29dd0cb7de637250dfeaa3b744eea"
     },
     {
       "id": "figure_index_json",
@@ -359,8 +359,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 13434,
-      "sha256": "158dddd13e7868f35a919bfdd8d18a4f7cba52b872ab1ad68c7f321a21578fd9"
+      "bytes": 14115,
+      "sha256": "b6033bc57887e5d3421e661077194176c36dd6f08419a65fa44b245de8842ca2"
     },
     {
       "id": "figure_index_builder",
@@ -370,8 +370,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates visual-asset hashes, dimensions, and source-script provenance.",
       "exists": true,
-      "bytes": 12971,
-      "sha256": "926f7efd274485b1c4772cea8cd61c96cca57ef04cddf4c23271de604042f135"
+      "bytes": 13397,
+      "sha256": "c5a4d3ba1764d9aaaf96c04b170bdc144d02b9b30230b411097544bf647786be"
     },
     {
       "id": "brand_assets_json",
@@ -436,8 +436,8 @@
       "surface": "repo_hf",
       "shows": "Keeps the repo, website, and Hugging Face cards aligned as one cohesive research project surface.",
       "exists": true,
-      "bytes": 1982,
-      "sha256": "4ddb758fc32354e74fae8aacef71e590a34c108b0856f7782fdc0bc71a7e79fc"
+      "bytes": 1939,
+      "sha256": "516ca8e7b67460a6151785bfa186165f37e394ab56114bab05481c878265ffe5"
     },
     {
       "id": "public_surface_qa_json",
@@ -448,7 +448,7 @@
       "volatile": true,
       "shows": "Machine-readable report for SEO/social metadata, accessible tab semantics, public links, project links, and clear project presentation.",
       "exists": true,
-      "bytes": 5632,
+      "bytes": 5591,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -459,8 +459,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the public presentation report before release.",
       "exists": true,
-      "bytes": 11863,
-      "sha256": "7311b7974bcc3866f08ca2f01bff13ea88898cae71b83c33247c2ffa32c37b84"
+      "bytes": 11986,
+      "sha256": "949fffe589d35db8ba342c44d462702acf00be129f4d3392a239496f797252fa"
     },
     {
       "id": "task_surface_integrity",
@@ -551,8 +551,8 @@
       "surface": "repo_hf",
       "shows": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
       "exists": true,
-      "bytes": 6346,
-      "sha256": "48d82bbdfeba88a63100f55e19ef7e1392c0e633b5f3f0c648444f9ed1c96e02"
+      "bytes": 6380,
+      "sha256": "19ca27c3771d22843ee8257aa1cd8ae66e17609a84f6d78e70c55deac2a6ce5b"
     },
     {
       "id": "reproducibility_matrix",
@@ -562,8 +562,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable reproduction steps with expected artifacts and public boundaries.",
       "exists": true,
-      "bytes": 5229,
-      "sha256": "928eb95b95d4028a7f21135584c37ff141833e26178cc918a874a6448f8c5ded"
+      "bytes": 5263,
+      "sha256": "8b476b240362a6f3fb2c33eef91f7766175fb05c1528dd6f052b9ed24d1fe330"
     },
     {
       "id": "artifact_index_builder",
@@ -573,8 +573,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 26573,
-      "sha256": "62d4c5dcdb8fe2757dde39af4b36d3c2e2601e50062bd156b11eff1663a9dd01"
+      "bytes": 26575,
+      "sha256": "7ce8429b8ec87d56f0efed41187f760efd71e98989b32dd7ecd2b43fdc85a368"
     },
     {
       "id": "publication_audit",
@@ -597,7 +597,7 @@
       "volatile": true,
       "shows": "Separates setup paths from completed held-out-episode results.",
       "exists": true,
-      "bytes": 18951,
+      "bytes": 18973,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -621,7 +621,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 14746,
+      "bytes": 14923,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -654,8 +654,8 @@
       "surface": "website_hf",
       "shows": "Mirrors task metrics for the static dashboard.",
       "exists": true,
-      "bytes": 25369,
-      "sha256": "884c9caf1517126f4c93b5c903121d29806922ecbd42bc2c34e2e568b9af83e3"
+      "bytes": 25293,
+      "sha256": "22cbbaa5f0b3c889776e746257d99c6ceb6fd913c249d58353d641cac205d7d3"
     },
     {
       "id": "feature_manifest",
@@ -775,8 +775,8 @@
       "surface": "website_hf",
       "shows": "Shows the raw-episode to artifact pipeline with verified labels.",
       "exists": true,
-      "bytes": 707296,
-      "sha256": "3eb7767a6ec78ef50847b79fad16e2438e84f449782f3fe8367417bece1e289c"
+      "bytes": 704575,
+      "sha256": "c90723cc4b1bf5490269af2df594849030ae8d4cc8176e1d1eab96fabf9412f9"
     },
     {
       "id": "architecture_figure",
@@ -786,8 +786,8 @@
       "surface": "website_hf",
       "shows": "Shows the shared feature pipeline and minimal/neural head families.",
       "exists": true,
-      "bytes": 767403,
-      "sha256": "9e3b86acf7f7296eb7c4b1e5e74c7008f264ddce40485e0e923b1e2a2f2b8efe"
+      "bytes": 761507,
+      "sha256": "076c2e463ddce473e9138ac6f3615152d59031d6be2aa5c3d9ae1ace3d3f6c83"
     },
     {
       "id": "qwen_data_access_status",
@@ -797,8 +797,8 @@
       "surface": "repo_hf",
       "shows": "Summarizes the staging requirement before the held-out Qwen3-Omni pilot can report metrics.",
       "exists": true,
-      "bytes": 3142,
-      "sha256": "e55fbb9cadb6eb50fca8d787156e603067e99710b9b4c8efeafb638e5ea9064c"
+      "bytes": 3101,
+      "sha256": "8e8e80c0b5442f267ad7cc87a469c5a5b4ed8ec8e10578437ce51094e82b5764"
     },
     {
       "id": "multi_episode_access_status",
@@ -808,8 +808,8 @@
       "surface": "repo_hf",
       "shows": "Documents the public multi-episode access status and 32-episode pilot selection.",
       "exists": true,
-      "bytes": 2532,
-      "sha256": "7881cfca4a2b33712f52c55edea0db54b417169fff4fce636c1c7709ba43b95d"
+      "bytes": 2339,
+      "sha256": "14b8b629ddb548aa1ea39d0a8dc3c84fe3cf26931c6928f41b760d6f3c4c2470"
     },
     {
       "id": "citation",
