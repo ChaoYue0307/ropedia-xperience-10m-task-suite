@@ -75,6 +75,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--video-hist-bins", type=int, default=8)
     parser.add_argument("--depth-grid-size", type=int, default=8)
     parser.add_argument("--text-hash-dim", type=int, default=128)
+    parser.add_argument("--audio-source", default="fisheye_cam0")
+    parser.add_argument("--audio-sample-rate", type=int, default=16000)
+    parser.add_argument("--audio-band-count", type=int, default=16)
     parser.add_argument("--include-label-text", action="store_true")
     parser.add_argument(
         "--skip-video-features",
@@ -138,16 +141,7 @@ def load_episode(args: argparse.Namespace, episode_dir: Path) -> EpisodeDataset:
     local_args.annotation = annotation
     local_args.cache_dir = args.cache_dir / f"{episode_dir.parent.name}__{episode_dir.name}"
 
-    if args.skip_video_features:
-        original_video_files = VIDEO_FILES.copy()
-        VIDEO_FILES.clear()
-        try:
-            extras, available_modalities = prepare_modalities(local_args, ann)
-        finally:
-            VIDEO_FILES.clear()
-            VIDEO_FILES.update(original_video_files)
-    else:
-        extras, available_modalities = prepare_modalities(local_args, ann)
+    extras, available_modalities = prepare_modalities(local_args, ann)
 
     X, labels, starts, ends, _label_fracs, feature_manifest = build_feature_dataset(
         ann,
