@@ -150,7 +150,7 @@ If you are reading the project cold, open these in order:
 | 10 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands and expected outputs are documented for the sample-episode task suite. |
 | 11 | What is still pending? | [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | Multi-episode Qwen3-Omni model quality will be reported after preprocessing, training, and held-out evaluation complete. |
 
-The machine-readable project packet is
+A compact reader-path summary is available at
 [`docs/data/project_packet.json`](docs/data/project_packet.json).
 
 ## Supporting Files
@@ -314,9 +314,9 @@ scripts/
   build_artifact_index.py           # builds the compact artifact guide data
   build_quality_gates.py            # builds release checks
   validate_mirror_parity.py         # checks prepared GitHub/HF mirror file parity
-  validate_scope_claims.py          # keeps Qwen3-Omni setup and result states separate
+  validate_scope_claims.py          # separates setup artifacts from completed model metrics
   validate_task_surface.py          # checks readable task cards and interactive storyboard wiring
-  validate_website_integrity.py     # checks local site links, anchors, JSON, images
+  validate_website_integrity.py     # checks local site links, anchors, and images
   validate_publication_package.py   # checks public repo + HF bundle contents
   publish_hf_bundles.py             # uploads prepared HF Space/artifact/model bundles
   omni/
@@ -345,9 +345,8 @@ docs/
   data/live_publication_status.json # live GitHub/HF publication verification
   data/quality_gates.json           # machine-readable release checks
   data/task_surface_integrity.json  # machine-readable task-card/storyboard integrity check
-  data/website_integrity.json       # machine-readable website integrity check
   data/project_manifest.json        # machine-readable public-surface metadata
-  data/project_packet.json          # machine-readable project path and scope summary
+  data/project_packet.json          # compact project path and scope summary
   data/research_roadmap.json        # multi-episode and omni-model roadmap
   data/research_directions.json     # four-track website data bundle
   data/research_direction_extensions.json # four extra probe data bundle
