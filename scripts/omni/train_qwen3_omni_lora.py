@@ -12,6 +12,7 @@ from pathlib import Path
 from types import MethodType
 
 import torch
+import torch.nn.functional as F
 
 from qwen3_omni_dataset_utils import build_messages, DEFAULT_MODEL_ID, load_jsonl
 
@@ -264,6 +265,22 @@ def move_inputs(inputs, device, dtype=None):
     return inputs
 
 
+def compute_answer_token_loss(model, inputs: dict) -> torch.Tensor:
+    """Compute CE only on supervised answer tokens to avoid full-logit fp32 casts."""
+    labels = inputs.pop("labels")
+    output = model(**inputs)
+    logits = output.logits
+    labels = labels.to(logits.device)
+    shift_logits = logits[..., :-1, :]
+    shift_labels = labels[..., 1:]
+    active = shift_labels != -100
+    if not active.any().item():
+        return logits.sum() * 0.0
+    active_logits = shift_logits[active]
+    active_labels = shift_labels[active]
+    return F.cross_entropy(active_logits.float(), active_labels, reduction="mean")
+
+
 def prepare_sample(processor, sample: dict, use_audio_in_video: bool, device, dtype=None) -> dict:
     from qwen_omni_utils import process_mm_info
 
@@ -320,8 +337,8 @@ def evaluate_loss(model, processor, samples: list[dict], args: argparse.Namespac
     with torch.no_grad():
         for sample in samples:
             inputs = prepare_sample(processor, sample, args.use_audio_in_video, device, dtype=dtype)
-            output = model(**inputs)
-            losses.append(float(output.loss.detach().cpu()))
+            loss = compute_answer_token_loss(model, inputs)
+            losses.append(float(loss.detach().cpu()))
     model.train()
     local = torch.tensor([sum(losses), len(losses)], dtype=torch.float32, device=device)
     if accelerator is not None:
@@ -375,6 +392,7 @@ def main() -> int:
             "backbone_id": backbone_profile.get("id"),
             "dataset_contract": backbone_profile.get("dataset_contract"),
             "training_objective": backbone_profile.get("training_objective"),
+            "loss_mode": "answer_token_ce",
             "timestamp": time.time(),
         })
     if accelerator.num_processes > 1 and args.device_map == "auto":
@@ -441,9 +459,9 @@ def main() -> int:
             for sample in batch:
                 with accelerator.accumulate(model):
                     inputs = prepare_sample(processor, sample, args.use_audio_in_video, device, dtype=model_dtype)
-                    output = model(**inputs)
-                    accelerator.backward(output.loss)
-                    batch_loss += float(output.loss.detach().cpu())
+                    loss = compute_answer_token_loss(model, inputs)
+                    accelerator.backward(loss)
+                    batch_loss += float(loss.detach().cpu())
                     if accelerator.sync_gradients:
                         accelerator.clip_grad_norm_(model.parameters(), args.max_grad_norm)
                     optimizer.step()
@@ -516,6 +534,7 @@ def main() -> int:
             "target_modules": [item.strip() for item in args.lora_target_modules.split(",") if item.strip()],
         },
         "use_audio_in_video": args.use_audio_in_video,
+        "loss_mode": "answer_token_ce",
     }
     if accelerator.is_main_process:
         (args.output_dir / "training_metadata.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")
@@ -533,6 +552,7 @@ def main() -> int:
                 f"learning_rate: {args.learning_rate}",
                 f"lora_r: {args.lora_r}",
                 f"lora_alpha: {args.lora_alpha}",
+                "loss_mode: answer_token_ce",
             ]) + "\n",
             encoding="utf-8",
         )
@@ -549,6 +569,7 @@ def main() -> int:
             f"- Validation samples: `{len(val_samples)}`",
             f"- Processes: `{accelerator.num_processes}`",
             f"- Epochs: `{args.epochs}`",
+            "- Loss: answer-token cross entropy over supervised JSON tokens",
             f"- Final train loss: `{history[-1]['train_loss']:.6f}`",
             "",
             "Only LoRA parameters are trained; the base Qwen3-Omni weights remain frozen.",
