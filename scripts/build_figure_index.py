@@ -59,6 +59,14 @@ FIGURES = [
         "surface": "README, website, HF artifact dataset",
     },
     {
+        "id": "qwen3_omni_lora_pipeline",
+        "title": "Qwen3-Omni LoRA training pipeline",
+        "path": "docs/assets/qwen3_omni_lora_pipeline.png",
+        "role": "Detailed raw-data-to-adapter flow for staged Xperience-10M Qwen3-Omni LoRA training.",
+        "source_script": "docs/assets/qwen3_omni_lora_pipeline.prompt.md",
+        "surface": "README, website, HF Space, artifact dataset, model card",
+    },
+    {
         "id": "task_architectures",
         "title": "Minimal and neural task architecture map",
         "path": "docs/assets/task_architectures.png",

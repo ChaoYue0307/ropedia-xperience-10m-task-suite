@@ -1,14 +1,14 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-04T07:45:05+00:00",
+  "generated_at_utc": "2026-06-04T14:44:20+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 143,
+    "local_references": 144,
     "external_reference_count": 91,
     "json_files": 32,
-    "image_assets_referenced": 21,
+    "image_assets_referenced": 22,
     "failure_count": 0
   },
   "failures": {
@@ -74,8 +74,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 66415,
-      "evidence_index": 83579
+      "overview_index": 67288,
+      "evidence_index": 84452
     },
     {
       "name": "project_status_links_json",
@@ -149,9 +149,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 66415,
-      "protocol_index": 80438,
-      "evidence_index": 83579
+      "overview_index": 67288,
+      "protocol_index": 81311,
+      "evidence_index": 84452
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -225,8 +225,8 @@
     {
       "path": "index.html",
       "id_count": 76,
-      "reference_count": 120,
-      "image_count": 23
+      "reference_count": 121,
+      "image_count": 24
     },
     {
       "path": "research_roadmap.html",
@@ -269,7 +269,7 @@
     },
     {
       "path": "data/figure_index.json",
-      "bytes": 13434,
+      "bytes": 14115,
       "top_level_type": "dict"
     },
     {
@@ -394,7 +394,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 14746,
+      "bytes": 14923,
       "top_level_type": "dict"
     },
     {
@@ -545,6 +545,14 @@
       "bytes": 704575,
       "width": 1800,
       "height": 1120,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/qwen3_omni_lora_pipeline.png",
+      "exists": true,
+      "bytes": 1879166,
+      "width": 1536,
+      "height": 1024,
       "format": "PNG"
     },
     {
