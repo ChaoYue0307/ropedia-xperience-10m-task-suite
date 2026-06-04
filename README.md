@@ -71,7 +71,7 @@ before the multi-episode omni-model stage becomes a real held-out evaluation.
 | Task suite | 12 human-readable embodied-AI task contracts with input, process, output, metrics, predictions, and case-study walkthroughs |
 | Baselines | Minimal linear/ridge/logistic heads plus compact PyTorch MLP task heads over the same chronological split |
 | Research directions | Task mapping and extension probes for human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling |
-| Scale-up path | Full-dataset access granted; a 128-episode selected relay is being staged with chunked parallel transfer and overlapping batch prefetch before Qwen3-Omni LoRA, followed by Cosmos 3/world-model and VLA/policy branches |
+| Scale-up path | Full-dataset access granted; a selected 128-episode pilot is being prepared before Qwen3-Omni LoRA, followed by Cosmos 3/world-model and VLA/policy branches |
 | Public surfaces | GitHub repo, GitHub Pages dashboard, HF Space, HF artifact dataset, HF baseline-model repo, and HF collection |
 
 For the fastest interpretation of the current metrics, start with
@@ -122,8 +122,8 @@ multi-episode held-out model metrics:
 | Task surface integrity | `docs/data/task_surface_integrity.json`, `scripts/validate_task_surface.py` | public task cards stay human-readable, thumbnail-backed, and wired to the scrub/play walkthrough storyboard |
 | Rendered website check | `RENDERED_SITE_CHECK.md`, `docs/data/rendered_site_check.json`, `scripts/build_rendered_site_check.py` | records a browser-level load, tab, walkthrough deep-link, control-click, and console-health check |
 | Public project surface | `PUBLIC_SURFACE_QA.md`, `docs/data/public_surface_qa.json`, `scripts/build_public_surface_qa.py` | presents the repo, website, and Hugging Face cards as one research project surface |
-| Qwen3-Omni | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `MULTI_EPISODE_ACCESS_STATUS.md` | full-dataset access is granted; 128 selected episodes are in accelerated relay/staging before held-out evaluation |
-| Multi-episode pilot status | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | separates setup artifacts, selected relay state, and completed held-out-episode metrics |
+| Qwen3-Omni | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `MULTI_EPISODE_ACCESS_STATUS.md` | the gated full dataset is available for a selected 128-episode pilot before held-out evaluation |
+| Multi-episode pilot status | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | separates setup artifacts, selected-episode preparation, and completed held-out-episode metrics |
 | Mirror parity | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | prepared GitHub/HF mirrors carry matching data, figure, website HTML, and validator files |
 | Public bundle contents | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | summarizes the public repo and HF bundles, including raw-data exclusion and temporary local-file exclusion |
 | Release checks | `QUALITY_GATES.md`, `docs/data/quality_gates.json`, `metrics/quality_gates.json`, `scripts/build_quality_gates.py` | one map for automated checks and live post-publish verification; the `metrics/` path is the Hugging Face model-repo mirror |
@@ -204,7 +204,7 @@ They give the current research state in one compact table:
 | Source alignment | Source facts, sample details, API-listing notes, and project coverage are consistent across repo, website, and HF cards |
 | Evaluation protocol | Verified generated protocol for windowing, split policy, leakage controls, and per-task metrics |
 | Website and HF mirrors | Verified by website reference reports, public presentation reports, mirror parity, and live-publication checks; the public dashboard uses six top-level tabs, including an explicit Directions tab, plus subsection tabs for dataset, task-suite, method, result, direction, and resource views |
-| Qwen3-Omni multi-episode pilot | Full-dataset access granted; 128-episode relay in progress with chunked parallel transfer and batch prefetch, with full metrics pending completed staging and held-out evaluation |
+| Qwen3-Omni multi-episode pilot | Full-dataset access granted; selected 128-episode preparation is underway, with full metrics pending completed preprocessing, training, and held-out evaluation |
 | Raw Xperience-10M data / full Qwen weights | Not redistributed |
 
 ## 90-Second Research Project Path
@@ -224,7 +224,7 @@ If you are reading the project cold, open these in order:
 | 9 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,546-dimensional multimodal window with synchronized video, audio, sensor, and language signals. |
 | 10 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
 | 11 | Is the website self-consistent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, tab routing, JSON data, and referenced images are checked before publishing. |
-| 12 | What is still pending? | [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The multi-episode Qwen3-Omni run is prepared at the selection and relay level; final model metrics require completed staging, preprocessing, training, and held-out evaluation. |
+| 12 | What is still pending? | [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The multi-episode Qwen3-Omni run is prepared at the episode-selection level; final model metrics require completed preprocessing, training, and held-out evaluation. |
 
 The machine-readable project packet is
 [`docs/data/project_packet.json`](docs/data/project_packet.json).
@@ -288,7 +288,7 @@ is separately documented as `Xperience-10M-Sample` with sample metadata,
 `cc-by-nc-4.0` license, HOMIE Toolkit usage, and Rerun 0.29.0 `.rrd`
 visualization. This project preserves that distinction: the sample powers the
 current 5,821-frame task suite, while the full gated dataset is the source for
-the selected 128-episode held-out multi-episode relay now in progress.
+the selected 128-episode held-out multi-episode pilot now in preparation.
 
 This repo's current verified subset is much smaller and intentionally explicit:
 
@@ -591,7 +591,7 @@ The current scale-up artifacts show that the export, manifest, sensor-feature,
 LoRA, and evaluation scripts can run on the available sample episode. They do
 not show a real multi-episode result. A real pilot requires staged valid
 episodes, held-out episode splits, training metadata, predictions, metrics, and
-a run report; the current selected relay target is 128 episodes.
+a run report; the current selected pilot target is 128 episodes.
 
 ### Sample Count Decision
 
@@ -629,10 +629,10 @@ Current status in this repo:
 
 - public_sample_valid_episodes: 1 (degraded-valid: annotation + fisheye_cam0.mp4)
 - gated_metadata_audit: 12,102 complete visible episodes across 802 complete sessions
-- selected_relay_plan: 128 metadata-balanced episodes, 96/16/16 train/val/test
+- selected_episode_plan: 128 metadata-balanced episodes, 96/16/16 train/val/test
 - selected_download_size: 277.71 GiB excluding `visualization.rrd`
 - ready_for_held_out_pilot: false until the selected episodes are fully staged and checked
-- full-dataset access: granted; raw multi-episode staging is in progress with chunked parallel transfer and overlapping batch prefetch
+- full-dataset access: granted; selected multi-episode data preparation is in progress
 - source_discovery: `results/omni_finetune/source_discovery.json`
 - data_status: `results/omni_finetune/DATA_ACCESS_STATUS.md`
 - access_status: `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`

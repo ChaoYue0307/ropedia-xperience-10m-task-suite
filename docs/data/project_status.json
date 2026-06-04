@@ -144,12 +144,12 @@
     },
     {
       "area": "Qwen3-Omni fine-tuning",
-      "status": "data_staging_full_metrics_pending",
+      "status": "data_preparation_full_metrics_pending",
       "evidence": [
         "results/omni_finetune/DATA_ACCESS_STATUS.md",
         "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md"
       ],
-      "readout": "Full-dataset access is granted and a 128-episode selected relay is in progress with chunked parallel transfer and overlapping batch prefetch; final held-out metrics require completed staging, manifest construction, training, and held-out evaluation."
+      "readout": "The gated full dataset is available for a selected 128-episode pilot; final held-out metrics require completed preprocessing, manifest construction, training, and held-out evaluation."
     },
     {
       "area": "Raw Xperience-10M redistribution",

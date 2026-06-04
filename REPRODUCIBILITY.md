@@ -14,7 +14,7 @@ outside the current public data scope.
 | Neural MLP heads | Yes, when `torch` is installed | Compact task heads only, not a foundation model. |
 | Website figures and charts | Yes | Generated from committed metrics and sample thumbnails. |
 | Public bundle contents | Yes | Covers public repo and prepared HF bundles. |
-| Multi-episode Qwen3-Omni LoRA pilot | Not yet | Full-dataset access is granted; held-out metrics require completed staging, training, and evaluation. |
+| Multi-episode Qwen3-Omni LoRA pilot | Not yet | The gated full dataset is available for the selected pilot; held-out metrics require completed preprocessing, training, and evaluation. |
 
 ## Environment
 

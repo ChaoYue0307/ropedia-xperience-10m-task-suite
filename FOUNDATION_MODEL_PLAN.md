@@ -95,7 +95,7 @@ The foundation-model stage should add metrics beyond the current 12-task suite:
 
 ## Execution Order
 
-1. Finish multi-episode data staging for the selected relay.
+1. Finish selected multi-episode pilot preparation.
 2. Run the Qwen3-Omni LoRA pilot exactly once as the first held-out baseline.
 3. Run a model-selection dry run on 3-8 episodes: Qwen3-Omni prompt-only,
    Qwen3-Omni LoRA, Cosmos 3 world-model preprocessing, and one policy baseline.
