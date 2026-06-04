@@ -654,6 +654,11 @@ running final test evaluation. The exporter uses session-qualified episode IDs
 and path-based split matching so repeated folder names such as `ep1` cannot
 collide across different sessions.
 
+For larger staged subsets, `scripts/omni/run_trainval_parallel_export_8gpu.sh`
+uses the same split guard, exports episodes in parallel CPU shards, skips and
+reports episodes that contain no labeled windows under the configured label
+rule, then launches Qwen3-Omni LoRA with `NUM_PROCESSES=8`.
+
 ### Uploading the pilot Qwen3-Omni LoRA
 
 A prepared upload package is available at `results/omni_finetune/hf_upload`.
