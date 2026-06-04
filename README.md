@@ -99,94 +99,20 @@ Current contributions:
 
 ## Current Research Scope
 
-This repo separates implemented single-episode research artifacts from future
-multi-episode held-out model metrics:
+This project is best read as a staged embodied-AI research study:
 
-| Project layer | Evidence | Current scope |
+| Layer | Current scope | Where to start |
 | --- | --- | --- |
-| Official Xperience-10M description | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | aligns public wording with the official gated dataset card, public sample card, and HF API metadata; does not mirror raw data |
-| Source alignment | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json`, `scripts/validate_source_alignment.py` | records the same official dataset facts, public sample details, API-listing notes, and project coverage across repo, website, and HF cards |
-| Figure index | `FIGURE_INDEX.md`, `docs/data/figure_index.json`, `scripts/build_figure_index.py` | catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts |
-| Brand assets | `docs/assets/brand/`, `docs/favicon.png`, `docs/apple-touch-icon.png`, `scripts/build_brand_assets.py` | applies the generated project logo system across the website, README, HF cards, favicon, and social previews |
-| Data windows | `results/episode_task_suite/windows.csv`, `shared_windows.npz`, `summary_report.json` | one public sample episode |
-| Feature contract | `results/episode_task_suite/feature_manifest.json`, `available_modalities.json` | documents the 8,546-dimensional multimodal representation and source coverage |
-| Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | defines windowing, chronological split, leakage controls, per-task metrics, and current limitations |
-| Research Takeaways | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | summarizes result interpretation from committed metrics and identifies which experiments need held-out episodes |
-| Audio ablation | `scripts/audio_ablation_and_raw_upgrade.py`, `results/audio_ablation/`, `docs/data/audio_ablation_summary.json` | measures whether audio helps each of the 12 task contracts |
-| Research roadmap | `RESEARCH_ROADMAP.md`, `docs/research_roadmap.html`, `docs/data/research_roadmap.json`, `docs/data/research_roadmap_interactive.json` | stages and visualizes the path from public-sample task development to multi-episode held-out evaluation, foundation-model selection, and larger omni/world-model extensions |
-| Foundation-model plan | `FOUNDATION_MODEL_PLAN.md`, `docs/data/foundation_model_plan.json` | keeps Qwen3-Omni as the first trainable pilot, adds Cosmos 3 as the first world-model branch, and tracks OpenVLA/openpi/GR00T policy candidates |
-| 12-task suite | `scripts/episode_task_suite.py`, per-task `metrics.json`, predictions | chronological single-episode split |
-| Single-episode diagnostics | `scripts/single_episode_diagnostics.py`, `results/single_episode_diagnostics/`, `docs/single_episode_explorer.html` | modality ablations, timeline overlay, object-label export, alignment stress tests, and interactive window inspection from one sample episode |
-| Neural heads | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | compact MLP heads, not a foundation model |
-| Research directions | `research_direction_taxonomy.json`, extension probe results | direct/proxy/diagnostic evidence, not full solutions |
-| Task surface integrity | `docs/data/task_surface_integrity.json`, `scripts/validate_task_surface.py` | public task cards stay human-readable, thumbnail-backed, and wired to the scrub/play walkthrough storyboard |
-| Rendered website check | `RENDERED_SITE_CHECK.md`, `docs/data/rendered_site_check.json`, `scripts/build_rendered_site_check.py` | records a browser-level load, tab, walkthrough deep-link, control-click, and console-health check |
-| Public project surface | `PUBLIC_SURFACE_QA.md`, `docs/data/public_surface_qa.json`, `scripts/build_public_surface_qa.py` | presents the repo, website, and Hugging Face cards as one research project surface |
-| Qwen3-Omni | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `MULTI_EPISODE_ACCESS_STATUS.md` | the gated full dataset is available for a selected 128-episode pilot before held-out evaluation |
-| Multi-episode pilot status | `scripts/validate_scope_claims.py`, `docs/data/scope_claims_audit.json` | separates setup artifacts, selected-episode preparation, and completed held-out-episode metrics |
-| Mirror parity | `scripts/validate_mirror_parity.py`, `docs/data/mirror_parity.json` | prepared GitHub/HF mirrors carry matching data, figure, website HTML, and validator files |
-| Public bundle contents | `scripts/validate_publication_package.py`, `docs/data/publication_audit.json` | summarizes the public repo and HF bundles, including raw-data exclusion and temporary local-file exclusion |
-| Release checks | `QUALITY_GATES.md`, `docs/data/quality_gates.json`, `metrics/quality_gates.json`, `scripts/build_quality_gates.py` | one map for automated checks and live post-publish verification; the `metrics/` path is the Hugging Face model-repo mirror |
-| Artifact index | `scripts/build_artifact_index.py`, `docs/data/artifact_index.json` | selective source-of-truth catalog with existence, size, and stable-file hashes |
-| Project status | `PROJECT_STATUS.md`, `docs/data/project_status.json` | compact current-state table for first-pass readers |
-| Citation and metadata | `CITATION.cff`, `codemeta.json`, `docs/data/project_manifest.json`, `LICENSE` | code is MIT-scoped; raw-data use follows Xperience-10M terms |
-| Project path | `docs/data/project_packet.json`, website project path section | navigation guide across data, tasks, results, and scale-up status |
+| Data understanding | One public Xperience-10M sample episode is converted into 5,821 frames, 1,161 aligned windows, and an 8,546-dimensional multimodal representation. | [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md), [`PROJECT_STATUS.md`](PROJECT_STATUS.md) |
+| Task suite | Twelve human-readable tasks cover action, procedure, contact, object, language, retrieval, reconstruction, order, and synchronization questions. | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json) |
+| Baselines | Minimal heads and compact PyTorch MLP heads provide a first controlled comparison on the same chronological split. | [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/) |
+| Diagnostics | Audio contribution, modality ablations, timeline overlays, object labels, and alignment stress tests show which signals are useful and which tasks remain hard. | [`results/audio_ablation/AUDIO_ABLATION_SUMMARY.md`](results/audio_ablation/AUDIO_ABLATION_SUMMARY.md), [`docs/single_episode_explorer.html`](docs/single_episode_explorer.html) |
+| Scale-up | A selected 128-episode Qwen3-Omni LoRA pilot is being prepared from the gated dataset; held-out model metrics will be added only after training and evaluation finish. | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) |
 
-Read the full scope note in [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md), or
-consume the machine-readable copy at
-[`docs/data/evidence_contract.json`](docs/data/evidence_contract.json).
-The current release package report is at
-[`docs/data/publication_audit.json`](docs/data/publication_audit.json).
-The release-check summary is at
-[`QUALITY_GATES.md`](QUALITY_GATES.md) and
-[`docs/data/quality_gates.json`](docs/data/quality_gates.json).
-The last live-publication verification report is at
-[`docs/data/live_publication_status.json`](docs/data/live_publication_status.json).
-The current prepared-mirror parity report is at
-[`docs/data/mirror_parity.json`](docs/data/mirror_parity.json).
-The current multi-episode pilot status note is at
-[`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json).
-The task-card and walkthrough-storyboard integrity report is at
-[`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json).
-The public presentation report is at
-[`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) and
-[`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json).
-The generated evaluation protocol is at
-[`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) and
-[`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json).
-The generated research takeaways are at
-[`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md) and
-[`docs/data/research_takeaways.json`](docs/data/research_takeaways.json).
-The research roadmap is at
-[`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) and
-[`docs/data/research_roadmap.json`](docs/data/research_roadmap.json).
-The foundation-model selection plan is at
-[`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md) and
-[`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json).
-The source-of-truth artifact index is at
-[`docs/data/artifact_index.json`](docs/data/artifact_index.json).
-For a human-readable artifact map, use
-[`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md).
-For reproduction commands and expected outputs, use
-[`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) and
-[`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json).
-Project citation and machine-readable metadata live in
-[`CITATION.cff`](CITATION.cff), [`codemeta.json`](codemeta.json), and
-[`docs/data/project_manifest.json`](docs/data/project_manifest.json).
-The upstream dataset-card alignment note is
-[`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md),
-with a machine-readable copy at
-[`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json).
-The generated source-alignment note is at
-[`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) and
-[`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json).
-The generated figure index is at
-[`FIGURE_INDEX.md`](FIGURE_INDEX.md) and
-[`docs/data/figure_index.json`](docs/data/figure_index.json).
-The project logo system is packaged by
-[`scripts/build_brand_assets.py`](scripts/build_brand_assets.py), stored under
-[`docs/assets/brand/`](docs/assets/brand/), and indexed in
-[`docs/data/brand_assets.json`](docs/data/brand_assets.json).
+Detailed dataset notes, reproduction checks, and generated JSON reports are
+included for readers who want to inspect the implementation, but they are
+supporting materials rather than the main reading path. Use
+[`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md) when you want the full file map.
 
 ## Project Status
 
@@ -200,10 +126,9 @@ They give the current research state in one compact table:
 | Public-sample pipeline | Verified on one public sample episode: 5,821 frames, 1,161 windows, 8,546 dimensions |
 | 12-task suite | Verified minimal baselines with committed metrics, predictions, and manifests |
 | Neural heads | Verified compact PyTorch MLP heads over the same task contracts and chronological splits |
-| Official dataset wording | Verified against the public `ropedia-ai/xperience-10m` dataset card/API metadata |
-| Source alignment | Source facts, sample details, API-listing notes, and project coverage are consistent across repo, website, and HF cards |
+| Dataset context | Official Xperience-10M links, sample-vs-gated-data boundary, modality coverage, and redistribution policy are documented |
 | Evaluation protocol | Verified generated protocol for windowing, split policy, leakage controls, and per-task metrics |
-| Website and HF mirrors | Verified by website reference reports, public presentation reports, mirror parity, and live-publication checks; the public dashboard uses six top-level tabs, including an explicit Directions tab, plus subsection tabs for dataset, task-suite, method, result, direction, and resource views |
+| Website and Hub pages | Public dashboard, Hugging Face Space, artifact dataset, baseline model repo, and collection use the same project framing and links |
 | Qwen3-Omni multi-episode pilot | The gated Xperience-10M dataset is available for selected 128-episode preparation, with full metrics pending completed preprocessing, training, and held-out evaluation |
 | Raw Xperience-10M data / full Qwen weights | Not redistributed |
 
@@ -213,33 +138,31 @@ If you are reading the project cold, open these in order:
 
 | Step | Question | Primary artifacts | What should be true |
 | --- | --- | --- | --- |
-| 1 | What has been implemented? | [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md), [`PROJECT_STATUS.md`](PROJECT_STATUS.md), [`docs/data/project_status.json`](docs/data/project_status.json), [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md), [`docs/data/artifact_index.json`](docs/data/artifact_index.json), [`docs/data/figure_index.json`](docs/data/figure_index.json) | Single-episode task engineering, visual assets, mirrors, and scale-up status are summarized for first-pass reading. |
-| 2 | What is the official upstream dataset? | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md), [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json), [official HF dataset](https://huggingface.co/datasets/ropedia-ai/xperience-10m) | The full dataset is described as a gated large-scale 4D multimodal egocentric source; this repo validates only one public sample episode. |
-| 3 | Are source facts consistently presented? | [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md), [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json), [`scripts/validate_source_alignment.py`](scripts/validate_source_alignment.py) | Repo, website, and HF cards use the same full-dataset facts, sample-card facts, API-listing notes, and project coverage. |
-| 4 | How exactly are tasks evaluated? | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md), [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json), [`scripts/build_evaluation_protocol.py`](scripts/build_evaluation_protocol.py) | The window unit, chronological split, leakage controls, task metrics, and current limitations are explicit. |
-| 5 | What do the current results mean? | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`docs/data/research_takeaways.json`](docs/data/research_takeaways.json), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | The takeaways are generated from committed metrics and identify which signals are ready for larger held-out experiments. |
-| 6 | What is the research roadmap? | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`docs/data/research_roadmap.json`](docs/data/research_roadmap.json), [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) | The roadmap connects public-sample task development to multi-episode data preparation, Qwen3-Omni LoRA, foundation-model selection, robustness runs, and larger omni/world-model extensions. |
-| 7 | Which foundation model comes next? | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json) | Qwen3-Omni remains the first held-out LoRA baseline; Cosmos 3 is the first world-model branch; OpenVLA/openpi/GR00T wait for explicit action targets. |
-| 8 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands, expected outputs, and the latest exact-match reproduction record are explicit. |
-| 9 | What is one model input? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | The input is an aligned 8,546-dimensional multimodal window with synchronized video, audio, sensor, and language signals. |
-| 10 | Are the task results backed by files? | [`summary_report.json`](results/episode_task_suite/summary_report.json), [`neural_mlp/`](results/episode_task_suite/neural_mlp/), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Each task has minimal and neural-head evidence over the same window contracts. |
-| 11 | Is the website self-consistent? | [`docs/data/website_integrity.json`](docs/data/website_integrity.json), [`scripts/validate_website_integrity.py`](scripts/validate_website_integrity.py) | Local links, anchors, tab routing, JSON data, and referenced images are checked before publishing. |
-| 12 | What is still pending? | [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md), [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | The multi-episode Qwen3-Omni run is prepared at the episode-selection level; final model metrics require completed preprocessing, training, and held-out evaluation. |
+| 1 | What is this project? | [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md), [`PROJECT_STATUS.md`](PROJECT_STATUS.md), [dashboard](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/) | A public-sample Xperience-10M research project with 12 tasks, baselines, and a scale-up plan. |
+| 2 | What data is used? | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md), [official HF dataset](https://huggingface.co/datasets/ropedia-ai/xperience-10m), [sample HF dataset](https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample) | The implemented suite uses one public sample episode; the gated dataset is reserved for selected multi-episode training. |
+| 3 | What does one model input contain? | [`windows.csv`](results/episode_task_suite/windows.csv), [`feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`available_modalities.json`](results/episode_task_suite/available_modalities.json) | Each window is an aligned multimodal unit with video, audio, depth, pose/SLAM, mocap, IMU, calibration, and language-derived signals. |
+| 4 | What are the 12 tasks? | [`results/episode_task_suite/task_walkthroughs/`](results/episode_task_suite/task_walkthroughs/), [`docs/data/task_walkthroughs.json`](docs/data/task_walkthroughs.json) | Every task has a human-readable name, case study, input, process modules, output, metric, and limitation. |
+| 5 | How are tasks evaluated? | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md), [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | The window unit, chronological split, leakage controls, task metrics, and current limitations are explicit. |
+| 6 | What do the current results mean? | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`docs/data/research_takeaways.json`](docs/data/research_takeaways.json), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Current metrics describe sample-level task behavior and identify which signals need larger held-out experiments. |
+| 7 | Which models are implemented? | [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json), [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/), [HF baseline repo](https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines) | Each task has minimal and neural-head evidence over the same feature windows. |
+| 8 | What research directions does this support? | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`docs/data/research_directions.json`](docs/data/research_directions.json), [`docs/data/research_direction_extensions.json`](docs/data/research_direction_extensions.json) | The tasks are mapped to human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling. |
+| 9 | Which foundation model comes next? | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json) | Qwen3-Omni is the first held-out LoRA baseline; Cosmos 3 is the first world-model branch; policy models wait for explicit action targets. |
+| 10 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands and expected outputs are documented for the sample-episode task suite. |
+| 11 | What is still pending? | [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | Multi-episode Qwen3-Omni model quality will be reported after preprocessing, training, and held-out evaluation complete. |
 
 The machine-readable project packet is
 [`docs/data/project_packet.json`](docs/data/project_packet.json).
 
-## Artifact Index
+## Supporting Files
+
+[`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md) is the human-readable map for readers
+who want to inspect the project files after the first pass. It groups the main
+briefs, task outputs, baseline results, visual assets, data notes, and
+scale-up documents.
 
 [`docs/data/artifact_index.json`](docs/data/artifact_index.json) is the compact
-project artifact map for the repo. It lists the core supporting artifacts, whether each exists,
-its size, and a SHA-256 hash for stable files. Volatile generated files, such as
-the publication package report with a run timestamp, are marked so readers know they
-are checked for presence and size rather than treated as fixed hashes.
-
-[`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md) is the human-readable companion. It
-groups the same project evidence into start-here files, data-contract files,
-task-evidence files, platform mirrors, and scale-up status artifacts.
+machine-readable companion used by the website and Hugging Face artifact
+dataset.
 
 ## Evaluation Protocol
 
@@ -256,41 +179,20 @@ generated from committed metric artifacts. They define:
   audio-visual learning, pixel-depth reconstruction, and real held-out
   multi-episode Qwen3-Omni quality.
 
-## Official Dataset Alignment
+## Dataset Context
 
 The official [`ropedia-ai/xperience-10m`](https://huggingface.co/datasets/ropedia-ai/xperience-10m)
-card describes Xperience-10M as a large-scale gated egocentric multimodal
-dataset for embodied AI, robotics, world models, and spatial intelligence. Its
-public metadata lists video classification, image-to-text, depth estimation,
-and robotics task categories; 3D, audio, and video modalities; English
-language; `other` license; and manually reviewed non-commercial access.
+dataset is a gated large-scale egocentric multimodal dataset for embodied AI,
+robotics, spatial intelligence, and world modeling. The public
+[`ropedia-ai/xperience-10m-sample`](https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample)
+repo provides the sample episode used for the implemented task suite here.
 
-At full scale, the official card describes about 10 million experience units,
-about 10,000 hours, six RGB streams per episode, audio, stereo depth, camera
-pose/SLAM, hand and full-body mocap, IMU, captions, metadata, and calibration.
-The card also reports headline counts such as billions of RGB/depth/IMU records
-and large caption/object annotations. The live HF page/API separately shows a
-31.9 TB currently hosted file-size display; this is kept separate from the
-card's about-1PB full-scale storage statement. This repo records those upstream facts in
-[`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md)
-and [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json).
+This project keeps those layers separate: the public sample supports the
+current 12-task study, while the gated full dataset is used only for the
+selected multi-episode Qwen3-Omni pilot. Raw Xperience-10M MP4/HDF5/RRD files
+are not redistributed in this repo or in the Hugging Face mirrors.
 
-The current HF API snapshot for the gated dataset reports commit
-`ce943cf271a758b60240084892d05cf6dc12dd90`, last modified
-`2026-04-21T05:03:45.000Z`, manual gating, and a metadata file listing with
-803 session folders and 12,103 episode folders carrying `annotation.hdf5`.
-Those counts are upstream listing metadata only; they are not local downloads,
-not redistributed files, and not evidence of model quality in this repo.
-
-The public sample repo,
-[`ropedia-ai/xperience-10m-sample`](https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample),
-is separately documented as `Xperience-10M-Sample` with sample metadata,
-`cc-by-nc-4.0` license, HOMIE Toolkit usage, and Rerun 0.29.0 `.rrd`
-visualization. This project preserves that distinction: the sample powers the
-current 5,821-frame task suite, while the full gated dataset is the source for
-the selected 128-episode held-out multi-episode pilot now in preparation.
-
-This repo's current verified subset is much smaller and intentionally explicit:
+The current verified public-sample subset is:
 
 - one public sample episode, 5,821 frames, and 1,161 aligned windows,
 - raw sample files with six MP4 video streams and audio streams,
@@ -299,15 +201,11 @@ This repo's current verified subset is much smaller and intentionally explicit:
 - an 8,546-dimensional baseline representation using video, audio, depth,
   pose/SLAM, mocap, IMU, calibration, and language-derived signals.
 
-The same alignment note also records what is outside the current implemented subset: real
-audio-visual learning, caption generation, pixel-depth estimation, SLAM
-estimation, neural rendering, policy learning, cross-episode generalization,
-and real held-out multi-episode Qwen3-Omni model quality.
-It also preserves the official responsible-use scope: the open-source
-dataset is limited in diversity and showcase/production quality, and it should
-not be used for identity recognition, re-identification, biometric profiling,
-surveillance, sensitive attribute inference, or safety-critical deployment
-without appropriate safeguards.
+Detailed dataset notes are available in
+[`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md)
+for readers who need the full upstream-card and access-term context. The
+practical boundary is simple: current results come from the public sample, and
+multi-episode model quality is pending the selected held-out pilot.
 
 Start with the visual dashboard:
 
@@ -323,22 +221,14 @@ Hugging Face Space app:
 | --- | --- | --- |
 | Project status | `PROJECT_STATUS.md`, `docs/data/project_status.json` | Gives a one-table current project summary before reading the full artifact trail |
 | Data contract | `windows.csv`, `feature_manifest.json`, modality manifests | Confirms what each sample window contains before modeling |
-| Official dataset alignment | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Keeps public descriptions aligned with the official gated dataset card |
-| Source alignment | `SOURCE_ALIGNMENT_AUDIT.md`, `docs/data/source_alignment_audit.json` | Summarizes official dataset facts, sample-card facts, API-listing notes, and project coverage across repo, website, and HF cards |
-| Figure index | `FIGURE_INDEX.md`, `docs/data/figure_index.json` | Indexes public figures, charts, modality thumbnails, dimensions, hashes, and source scripts |
-| Brand assets | `docs/data/brand_assets.json`, `docs/assets/brand/` | Indexes the generated logo, favicon, README/HF card image, app icon, and social preview |
+| Dataset context | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, official dataset links | Explains the official dataset, public sample, modalities, access boundary, and what this repo uses |
+| Visual assets | `FIGURE_INDEX.md`, `docs/assets/` | Shows the task-suite graphic, modality thumbnails, pipeline diagrams, charts, and logo assets |
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` | Defines the task unit, split, metrics, leakage controls, and current limitations |
-| Task surface integrity | `docs/data/task_surface_integrity.json` | Checks the public task cards, readable task names, representative modality thumbnails, and interactive walkthrough storyboard |
-| Rendered website check | `RENDERED_SITE_CHECK.md`, `docs/data/rendered_site_check.json` | Records the browser-level page load, tab navigation, walkthrough deep link, player interaction, and console-health result |
 | Research roadmap | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | Shows the path from sample-level task development to multi-episode and larger omni-model work |
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and inspectable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode task development inspectable without rerunning first |
-| Release checks | `QUALITY_GATES.md`, `docs/data/quality_gates.json` | Shows the automated and post-publish checks used to keep the public release current |
-| Live publication status | `docs/data/live_publication_status.json` | Records the last live GitHub Pages, GitHub raw, and Hugging Face mirror verification |
-| Public bundle contents | `docs/data/publication_audit.json` | Summarizes public bundle contents, raw Xperience-10M data exclusion, cache exclusion, archive exclusion, credential-text checks, and public-card figure references |
-| Artifact index | `docs/data/artifact_index.json` | Gives readers a compact source-of-truth catalog with stable hashes |
-| Artifact guide | `ARTIFACT_GUIDE.md` | Groups the public evidence into research-project layers |
+| Artifact guide | `ARTIFACT_GUIDE.md` | Groups the public evidence into research-project layers after the first-pass overview |
 | Reproducibility contract | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json` | States public commands, expected outputs, exact-match reproduction evidence, and non-reproducible boundaries |
 | Citation metadata | `CITATION.cff`, `codemeta.json`, `LICENSE` | Makes the repo easier to cite, index, and reuse without confusing code license and dataset terms |
 
@@ -421,7 +311,7 @@ scripts/
   export_modality_atlas_assets.py   # exports responsive modality-card assets
   render_overview_figures.py        # renders polished pipeline/architecture PNGs
   build_brand_assets.py             # derives logo sizes, favicon, social card
-  build_artifact_index.py           # builds the source-of-truth artifact index
+  build_artifact_index.py           # builds the compact artifact guide data
   build_quality_gates.py            # builds release checks
   validate_mirror_parity.py         # checks prepared GitHub/HF mirror file parity
   validate_scope_claims.py          # keeps Qwen3-Omni setup and result states separate
@@ -454,7 +344,6 @@ docs/
   data/artifact_index.json          # compact project-artifact catalog
   data/live_publication_status.json # live GitHub/HF publication verification
   data/quality_gates.json           # machine-readable release checks
-  data/publication_audit.json       # machine-readable public bundle report
   data/task_surface_integrity.json  # machine-readable task-card/storyboard integrity check
   data/website_integrity.json       # machine-readable website integrity check
   data/project_manifest.json        # machine-readable public-surface metadata
