@@ -45,6 +45,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--expected-val-episodes", type=int, default=16)
     parser.add_argument("--expected-test-episodes", type=int, default=16)
     parser.add_argument("--expected-num-processes", type=int, default=8)
+    parser.add_argument(
+        "--allow-zero-val-training",
+        action="store_true",
+        help="Allow LoRA training metadata to record zero validation samples when validation/test are reserved for a separate eval step.",
+    )
     parser.add_argument("--min-json-validity", type=float, default=0.0)
     parser.add_argument("--output", type=Path)
     return parser.parse_args()
@@ -194,8 +199,10 @@ def validate_training(args: argparse.Namespace, workspace: Path, run_id: str, is
     })
     if int(metadata.get("num_processes", 0)) != args.expected_num_processes:
         add_issue(issues, "training", f"num_processes is {metadata.get('num_processes')}, expected {args.expected_num_processes}")
-    if int(metadata.get("num_train_samples", 0)) <= 0 or int(metadata.get("num_val_samples", 0)) <= 0:
-        add_issue(issues, "training", "training metadata has empty train or validation samples")
+    if int(metadata.get("num_train_samples", 0)) <= 0:
+        add_issue(issues, "training", "training metadata has empty train samples")
+    if int(metadata.get("num_val_samples", 0)) <= 0 and not args.allow_zero_val_training:
+        add_issue(issues, "training", "training metadata has empty validation samples")
     for filename in ("adapter_config.json", "training_metadata.json"):
         if not (checkpoint_dir / filename).exists():
             add_issue(issues, "training", f"missing checkpoint artifact: {checkpoint_dir / filename}")
