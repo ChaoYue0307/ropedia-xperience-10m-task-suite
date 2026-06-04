@@ -107,6 +107,15 @@ def majority_label(labels: list[str], min_fraction: float) -> str:
     return label if count / len(labels) >= min_fraction else "unknown"
 
 
+def is_skippable_episode_error(exc: ValueError) -> bool:
+    message = str(exc)
+    skippable_markers = (
+        "No labeled windows were created",
+        "No caption_frame_info_map found in annotation",
+    )
+    return any(marker in message for marker in skippable_markers)
+
+
 def collect_objects(frame_info: dict, start: int, end: int) -> list[str]:
     counts = Counter()
     for idx in range(start, end):
@@ -248,7 +257,7 @@ def stratified_cap(indices: list[int], labels: list[str], max_count: int) -> lis
 
 
 def build_answer(ann: dict, start: int, end: int, min_fraction: float) -> dict:
-    frame_info = ann["caption_frame_info_map"] or {}
+    frame_info = ann.get("caption_frame_info_map") or {}
     action = majority_label([frame_label(frame_info.get(idx, {}), "action") for idx in range(start, end)], min_fraction)
     subtask = majority_label([frame_label(frame_info.get(idx, {}), "subtask") for idx in range(start, end)], min_fraction)
     next_start = end
@@ -367,7 +376,7 @@ def main() -> int:
         try:
             export_episode(args, episode_dir, records, summaries)
         except ValueError as exc:
-            if "No labeled windows were created" not in str(exc):
+            if not is_skippable_episode_error(exc):
                 raise
             summaries["skipped_episodes"].append({
                 "episode_path": str(episode_dir),

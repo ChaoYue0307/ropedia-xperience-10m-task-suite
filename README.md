@@ -559,6 +559,47 @@ uses the same split guard, exports episodes in parallel CPU shards, skips and
 reports episodes that contain no labeled windows under the configured label
 rule, then launches Qwen3-Omni LoRA with `NUM_PROCESSES=8`.
 
+### Full 128-Episode Held-Out Pilot
+
+Once all selected episodes are complete, use the fixed selected-episode split:
+
+- 96 train episodes,
+- 16 validation episodes,
+- 16 held-out test episodes.
+
+The clean full-run launcher validates the selected split, exports all splits in
+parallel, trains Qwen3-Omni LoRA on train/val only, then evaluates on the held-
+out test split:
+
+```bash
+RUN_ID=xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu \
+DATA_ROOT=/path/to/xperience10m_128 \
+SELECTION_JSON=results/omni_finetune/xperience10m_128_episode_selection.json \
+MODEL_DIR=/path/to/Qwen__Qwen3-Omni-30B-A3B-Instruct \
+NUM_PROCESSES=8 \
+scripts/omni/run_128_fullsplit_parallel_export_8gpu.sh
+```
+
+Monitor the run with:
+
+```bash
+python scripts/omni/monitor_omni_progress.py \
+  --run-id xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu
+```
+
+Validate the run artifacts stage by stage:
+
+```bash
+python scripts/omni/validate_omni_finetune_run.py \
+  --run-id xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu \
+  --require-stage manifest
+
+python scripts/omni/validate_omni_finetune_run.py \
+  --run-id xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu \
+  --require-stage eval \
+  --min-json-validity 0.98
+```
+
 ### Uploading the pilot Qwen3-Omni LoRA
 
 A prepared upload package is available at `results/omni_finetune/hf_upload`.
@@ -590,6 +631,15 @@ See [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md) and
 [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json)
 for the full selection matrix, source links, and model-specific evaluation
 additions.
+
+Backbone-specific contracts now live in [`configs/omni_backbones`](configs/omni_backbones).
+The extension contract is documented in
+[`OMNI_MODEL_EXTENSION_CONTRACT.md`](OMNI_MODEL_EXTENSION_CONTRACT.md), and the
+registry can be checked with:
+
+```bash
+python scripts/omni/backbone_registry.py --validate --json
+```
 
 ## Four Research Directions
 

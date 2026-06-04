@@ -1,0 +1,59 @@
+{
+  "id": "policy_vla_branch",
+  "display_name": "VLA / Policy Model Branch",
+  "status": "planned_adapter",
+  "model_family": "OpenVLA, openpi, GR00T, Octo, and related policy models",
+  "default_model_id": null,
+  "local_model_env": "POLICY_MODEL_DIR",
+  "dataset_contract": "xperience10m_observation_action_v0",
+  "training_objective": "observation_to_action_or_motion_policy",
+  "split_policy": {
+    "unit": "episode",
+    "default_counts": {
+      "train": 96,
+      "val": 16,
+      "test": 16
+    },
+    "leakage_guard": "action targets and normalization statistics must be fit on train episodes only"
+  },
+  "modalities": {
+    "observations": [
+      "egocentric video",
+      "language instruction or task context",
+      "optional depth/pose/mocap/IMU state"
+    ],
+    "candidate_targets": [
+      "action label",
+      "next action",
+      "hand trajectory chunk",
+      "contact state",
+      "retargeted body or humanoid action",
+      "robot-compatible action token"
+    ],
+    "excluded_inputs": [
+      "visualization.rrd"
+    ]
+  },
+  "entrypoints": {
+    "selection_manifest": "scripts/omni/build_selection_episode_manifest.py",
+    "export": null,
+    "train": null,
+    "eval": null,
+    "launcher": null,
+    "validate": "scripts/omni/validate_omni_finetune_run.py"
+  },
+  "primary_metrics": [
+    "action_accuracy",
+    "next_action_accuracy",
+    "contact_accuracy",
+    "trajectory_mpjpe",
+    "object_affordance_f1",
+    "held_out_episode_count"
+  ],
+  "extension_requirements": [
+    "Define an explicit action space before policy fine-tuning.",
+    "Implement target conversion from human egocentric motion to policy-compatible action tokens or trajectories.",
+    "Fit action normalizers on train episodes only and save them with the run manifest.",
+    "Add policy evaluation that separates classification, trajectory, and retargeting metrics."
+  ]
+}
