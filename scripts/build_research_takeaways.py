@@ -179,7 +179,7 @@ def build_payload() -> dict:
             "source": "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
             "current_scope": omni.get(
                 "current_scope",
-                "The 32-episode fine-tune requires gated data staging and held-out evaluation.",
+                "The 32-episode fine-tune requires gated data preparation and held-out evaluation.",
             ),
         }
     )

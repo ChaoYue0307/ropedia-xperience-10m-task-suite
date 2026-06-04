@@ -55,7 +55,7 @@ ARTIFACTS = [
         "path": "RESEARCH_ROADMAP.md",
         "kind": "project_path",
         "surface": "repo_hf",
-        "shows": "Defines the staged path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions.",
+        "shows": "Defines the path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions.",
     },
     {
         "id": "research_roadmap_json",

@@ -157,7 +157,7 @@ The generated evaluation protocol is at
 The generated research takeaways are at
 [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md) and
 [`docs/data/research_takeaways.json`](docs/data/research_takeaways.json).
-The staged research roadmap is at
+The research roadmap is at
 [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) and
 [`docs/data/research_roadmap.json`](docs/data/research_roadmap.json).
 The foundation-model selection plan is at
@@ -330,7 +330,7 @@ Hugging Face Space app:
 | Evaluation protocol | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json` | Defines the task unit, split, metrics, leakage controls, and current limitations |
 | Task surface integrity | `docs/data/task_surface_integrity.json` | Checks the public task cards, readable task names, representative modality thumbnails, and interactive walkthrough storyboard |
 | Rendered website check | `RENDERED_SITE_CHECK.md`, `docs/data/rendered_site_check.json` | Records the browser-level page load, tab navigation, walkthrough deep link, player interaction, and console-health result |
-| Research roadmap | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | Shows the staged path from sample-level task development to multi-episode and larger omni-model work |
+| Research roadmap | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | Shows the path from sample-level task development to multi-episode and larger omni-model work |
 | Minimal heads | softmax, ridge projection/regression, multi-label logistic heads | Keeps every input/output contract visible and inspectable |
 | Neural heads | PyTorch MLP classifiers/regressors under `neural_mlp/` | Checks whether nonlinear heads improve each task without changing features |
 | Evidence | metrics, predictions, confusion matrices, diagrams, dashboard | Makes the single-episode task development inspectable without rerunning first |
@@ -459,7 +459,7 @@ docs/
   data/website_integrity.json       # machine-readable website integrity check
   data/project_manifest.json        # machine-readable public-surface metadata
   data/project_packet.json          # machine-readable project path and scope summary
-  data/research_roadmap.json        # staged multi-episode and omni-model roadmap
+  data/research_roadmap.json        # multi-episode and omni-model roadmap
   data/research_directions.json     # four-track website data bundle
   data/research_direction_extensions.json # four extra probe data bundle
   data/task_walkthroughs.json       # human-readable task-card and walkthrough-storyboard data
@@ -583,13 +583,13 @@ The useful distinction is:
 The figure shows the intended end-to-end training flow: raw valid episodes enter
 episode-level split validation, parallel media/sensor export creates Qwen-style
 JSONL records, Qwen3-Omni receives video/audio/text directly, the sensor bridge
-adds depth/pose/mocap/IMU features, LoRA adapters are trained on staged
+adds depth/pose/mocap/IMU features, LoRA adapters are trained on prepared
 train/val episodes, and sealed held-out test evaluation produces predictions,
 metrics, run reports, and upload-ready adapter artifacts.
 
 The current scale-up artifacts show that the export, manifest, sensor-feature,
 LoRA, and evaluation scripts can run on the available sample episode. They do
-not show a real multi-episode result. A real pilot requires staged valid
+not show a real multi-episode result. A real pilot requires valid prepared
 episodes, held-out episode splits, training metadata, predictions, metrics, and
 a run report; the current selected pilot target is 128 episodes.
 
@@ -631,7 +631,7 @@ Current status in this repo:
 - gated_metadata_audit: 12,102 complete visible episodes across 802 complete sessions
 - selected_episode_plan: 128 metadata-balanced episodes, 96/16/16 train/val/test
 - selected_download_size: 277.71 GiB excluding `visualization.rrd`
-- ready_for_held_out_pilot: false until the selected episodes are fully staged and checked
+- ready_for_held_out_pilot: false until the selected episodes are fully prepared and checked
 - gated dataset: available for selected multi-episode data preparation
 - source_discovery: `results/omni_finetune/source_discovery.json`
 - data_status: `results/omni_finetune/DATA_ACCESS_STATUS.md`
@@ -646,7 +646,7 @@ episode per top-level session UUID.
 ### Progressive Train/Validation Pilot
 
 The selected 128-episode plan can be used before every episode has arrived by
-training only on staged `train` episodes and monitoring staged `val` episodes.
+training only on prepared `train` episodes and monitoring prepared `val` episodes.
 The final `test` episodes stay sealed until the end, so early development does
 not contaminate held-out evaluation.
 
@@ -666,7 +666,7 @@ running final test evaluation. The exporter uses session-qualified episode IDs
 and path-based split matching so repeated folder names such as `ep1` cannot
 collide across different sessions.
 
-For larger staged subsets, `scripts/omni/run_trainval_parallel_export_8gpu.sh`
+For larger prepared subsets, `scripts/omni/run_trainval_parallel_export_8gpu.sh`
 uses the same split guard, exports episodes in parallel CPU shards, skips and
 reports episodes that contain no labeled windows under the configured label
 rule, then launches Qwen3-Omni LoRA with `NUM_PROCESSES=8`.
@@ -693,7 +693,7 @@ assuming one backbone solves every Xperience-10M objective.
 | Branch | Current role | When to use it |
 | --- | --- | --- |
 | Qwen3-Omni | First trainable multimodal LoRA pilot | Use for the selected 128-episode held-out baseline over video/audio/language plus sensor-bridge features. |
-| Cosmos 3 | First world-model/action-generation branch | Use after data staging for future-window prediction, action-conditioned world modeling, and synthetic-data usefulness tests. |
+| Cosmos 3 | First world-model/action-generation branch | Use after data preparation for future-window prediction, action-conditioned world modeling, and synthetic-data usefulness tests. |
 | GR00T | Humanoid/action-policy branch | Use after mocap/contact retargeting creates well-defined humanoid action targets. |
 | OpenVLA / openpi | Open VLA/policy baselines | Use after the project defines robot-compatible or action-token targets. |
 | Gemini Robotics | External reasoning reference | Use only for qualitative comparison or annotation support unless local trainable access exists. |

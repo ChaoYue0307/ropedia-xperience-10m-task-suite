@@ -107,7 +107,7 @@ The prepared Qwen3-Omni path now targets a selected 128-episode pilot; held-out 
 
 Source: `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`.
 
-Current scope: The selected-episode Qwen3-Omni fine-tune requires completed data staging and held-out evaluation.
+Current scope: The selected-episode Qwen3-Omni fine-tune requires completed data preparation and held-out evaluation; the 32-episode Qwen3-Omni fine-tune requires gated data preparation before any real held-out metric is reported.
 
 ## How To Read These Results
 

@@ -2143,7 +2143,7 @@
           embodied-AI task design, multimodal feature construction, lightweight
           baselines, and future Omni-model fine-tuning. It starts from the sample
           episode available now, then keeps the same data contracts ready for
-          held-out multi-episode training when more Xperience-10M data is staged.
+          held-out multi-episode training when more Xperience-10M data is prepared.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="research_roadmap.html">Open roadmap</a>
@@ -2217,7 +2217,7 @@
               <span>Project brief</span>
               <h3>From one public episode to an extensible embodied-AI task lab.</h3>
             </div>
-            <p>Xperience-10M is much larger than the public sample. This project focuses on the sample available now, turns it into clear task contracts and baseline artifacts, and keeps the same data contract ready for held-out multi-episode training when more episodes are staged.</p>
+            <p>Xperience-10M is much larger than the public sample. This project focuses on the sample available now, turns it into clear task contracts and baseline artifacts, and keeps the same data contract ready for held-out multi-episode training when more episodes are prepared.</p>
           </div>
           <div class="brief-grid" aria-label="Project brief cards">
             <article class="brief-card">
@@ -2356,7 +2356,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Research roadmap.</h2>
-          <p>The project path is staged from the current public-sample task lab to multi-episode data staging, held-out Qwen3-Omni fine-tuning, robustness runs, and larger foundation/world-model extensions.</p>
+          <p>The project path moves from the current public-sample task lab to multi-episode data preparation, held-out Qwen3-Omni fine-tuning, robustness runs, and larger foundation/world-model extensions.</p>
         </div>
         <div class="roadmap-grid" aria-label="Research roadmap stages">
           <article class="roadmap-card" data-status="implemented">
@@ -2380,9 +2380,9 @@
           <article class="roadmap-card" data-status="next">
             <span class="roadmap-status">next</span>
             <h3>Qwen3-Omni LoRA Pilot</h3>
-            <p>Train lightweight adapters on staged selected episodes and evaluate on held-out episodes with committed predictions, metrics, and run reports.</p>
+            <p>Train lightweight adapters on selected prepared episodes and evaluate on held-out episodes with committed predictions, metrics, and run reports.</p>
             <div class="roadmap-meta">
-              <strong>Entry</strong><p>Selected episodes staged with no train/test episode leakage.</p>
+              <strong>Entry</strong><p>Selected episodes prepared with no train/test episode leakage.</p>
               <strong>Evidence</strong><p>Dataset manifest, training metadata, progress logs, metrics, and predictions.</p>
             </div>
           </article>
@@ -2439,8 +2439,8 @@
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target-side signals, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
           <article class="artifact"><h3>Audio ablation</h3><p>Audio and no-audio variants are evaluated across all 12 task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
           <article class="artifact"><h3>Foundation branch selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 becomes the world-model branch, and policy models wait for explicit action targets.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
-          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. Cross-episode generalization, audio-visual learning, world modeling, policy targets, and held-out Qwen3-Omni training move to the multi-episode stage after selected data is staged.</p><a href="data/scope_claims_audit.json">pilot status</a></article>
-          <article class="artifact"><h3>Scale-up requirement</h3><p>The Omni pilot requires selected staged episodes, held-out episode splits, no train/test episode leakage, training metadata, predictions, metrics, and a run report.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a></article>
+          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. Cross-episode generalization, audio-visual learning, world modeling, policy targets, and held-out Qwen3-Omni training move to the multi-episode stage after selected data is prepared.</p><a href="data/scope_claims_audit.json">pilot status</a></article>
+          <article class="artifact"><h3>Scale-up requirement</h3><p>The Omni pilot requires selected prepared episodes, held-out episode splits, no train/test episode leakage, training metadata, predictions, metrics, and a run report.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a></article>
         </div>
       </div>
     </section>
@@ -2646,7 +2646,7 @@
         </div>
         <div class="boundary-strip">
           <div class="boundary-item"><strong>Verified now</strong><span>One public episode, 5,821 frames, 1,161 aligned windows, 8,546 dimensions, 12 minimal heads, 12 neural heads, and 4 direction-extension probes.</span></div>
-          <div class="boundary-item"><strong>Next: multi-episode</strong><span>A selected 128-episode held-out Qwen3-Omni LoRA pilot is being staged and must pass manifest, training, and evaluation checks before metrics are reported.</span></div>
+          <div class="boundary-item"><strong>Next: multi-episode</strong><span>A selected 128-episode held-out Qwen3-Omni LoRA pilot is being prepared and must pass manifest, training, and evaluation checks before metrics are reported.</span></div>
           <div class="boundary-item"><strong>Not redistributed</strong><span>Raw videos, raw annotations, full Qwen weights, and private gated Xperience-10M data are not included in the public repo or HF bundles.</span></div>
         </div>
       </div>
@@ -2747,7 +2747,7 @@
           </article>
           <article class="figure-brief-card">
             <h3>What the figure represents</h3>
-            <p>It documents the staged 128-episode path now being prepared. Final model-quality numbers are added only after training and held-out evaluation complete.</p>
+            <p>It documents the selected 128-episode path now being prepared. Final model-quality numbers are added only after training and held-out evaluation complete.</p>
           </article>
         </div>
         <img class="pipeline-image lora-pipeline-image" src="assets/qwen3_omni_lora_pipeline.png?v=qwen3-lora-v1" alt="Detailed Qwen3-Omni LoRA training pipeline from raw Xperience-10M episodes to adapter outputs, predictions, metrics, and reports">
@@ -3109,7 +3109,7 @@
           <section class="artifact-group tabbed-panel" id="artifact-panel-scale-up" role="tabpanel" aria-labelledby="artifact-tab-scale-up" hidden>
             <div class="artifact-group-head">
               <div><span>Scale-up path</span><h3>Prepared for multi-episode training</h3></div>
-              <p>The multi-episode Qwen3-Omni path is documented and scripted. Full-pilot metrics come after selected data is staged and held-out evaluation passes.</p>
+              <p>The multi-episode Qwen3-Omni path is documented and scripted. Full-pilot metrics come after selected data is prepared and held-out evaluation passes.</p>
             </div>
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Project scope</h3><p>Connects implemented single-episode artifacts, setup-stage Omni work, the selected 128-episode pilot, and later multi-episode milestones.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">evidence contract</a></article>
@@ -3151,7 +3151,7 @@
         <div class="artifact-grid">
           <article class="artifact"><h3>Selection</h3><p>128 complete episodes selected from 128 unique top-level sessions, balanced across episode-size bands and split 96/16/16 for train/val/test.</p></article>
           <article class="artifact"><h3>Transfer</h3><p>Download raw episodes only from official gated sources, exclude visualization.rrd, validate files, then stage them for training.</p></article>
-          <article class="artifact"><h3>Current LoRA artifact</h3><p>The current LoRA artifact uses the locally available sample data. The multi-episode result begins after selected data is staged, preprocessed, trained, and evaluated on held-out sessions.</p></article>
+          <article class="artifact"><h3>Current LoRA artifact</h3><p>The current LoRA artifact uses the locally available sample data. The multi-episode result begins after selected data is prepared, preprocessed, trained, and evaluated on held-out sessions.</p></article>
           <article class="artifact"><h3>Backbone branches</h3><p>Qwen3-Omni is the immediate LoRA path; Cosmos 3 is the first world-model branch; GR00T/OpenVLA/openpi become policy branches after action targets are well-defined.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
         </div>
       </div>

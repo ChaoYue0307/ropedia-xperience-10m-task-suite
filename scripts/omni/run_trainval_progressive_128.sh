@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Launch a progressive Qwen3-Omni LoRA run on currently staged train/val
+# Launch a progressive Qwen3-Omni LoRA run on currently prepared train/val
 # episodes from the fixed 128-episode Xperience-10M selection. Held-out test
 # episodes are sealed and are not exported or evaluated here.
 

@@ -231,7 +231,7 @@ def build_payload() -> dict:
         ],
         "scale_up_gate": {
             "required_before_full_omni_pilot": [
-                "selected staged Xperience-10M episodes",
+                "selected prepared Xperience-10M episodes",
                 "held-out episode split with no train/test episode leakage",
                 "manifest, training metadata, progress logs, metrics, predictions, and run report",
                 "held-out evaluation on test episodes rather than train windows",

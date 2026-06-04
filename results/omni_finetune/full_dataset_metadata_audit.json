@@ -2245,8 +2245,8 @@
   ],
   "download_recommendation": {
     "metadata_only_audit_requires_training_host": false,
-    "recommended_download_host": "Any HF-reachable relay host with enough scratch storage; transfer staged episodes to the training host if that host cannot access Hugging Face.",
-    "training_host_role": "training and local manifest validation after data is staged",
+    "recommended_download_host": "Any HF-reachable download machine with enough scratch storage; transfer prepared episodes to the training host if that host cannot access Hugging Face.",
+    "training_host_role": "training and local manifest validation after data is prepared",
     "exclude_files": [
       "visualization.rrd"
     ],
