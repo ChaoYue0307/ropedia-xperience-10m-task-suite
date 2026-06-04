@@ -12,6 +12,7 @@ RESULT_ROOT="${RESULT_ROOT:-$PROJECT_ROOT/results/omni_finetune}"
 SELECTION_JSON="${SELECTION_JSON:-$RESULT_ROOT/xperience10m_128_episode_selection.json}"
 VENV_PY="${VENV_PY:-$PROJECT_ROOT/.venv/bin/python}"
 MODEL_DIR="${MODEL_DIR:-/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct}"
+BACKBONE_CONFIG="${BACKBONE_CONFIG:-configs/omni_backbones/qwen3_omni_lora.json}"
 
 RUN_ID="${RUN_ID:-xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu}"
 TARGET_EPISODES="${TARGET_EPISODES:-128}"
@@ -21,12 +22,15 @@ EXPECTED_TEST_EPISODES="${EXPECTED_TEST_EPISODES:-16}"
 EXPORT_WORKERS="${EXPORT_WORKERS:-8}"
 MAX_WINDOWS_PER_EPISODE="${MAX_WINDOWS_PER_EPISODE:-32}"
 MAX_VIDEO_FRAMES="${MAX_VIDEO_FRAMES:-16}"
-MAX_VAL_SAMPLES="${MAX_VAL_SAMPLES:-512}"
+TRAIN_VAL_SPLIT="${TRAIN_VAL_SPLIT:-__none__}"
+MAX_VAL_SAMPLES="${MAX_VAL_SAMPLES:-0}"
 EVAL_SAMPLE_LIMIT="${EVAL_SAMPLE_LIMIT:-0}"
 EPOCHS="${EPOCHS:-1}"
 NUM_PROCESSES="${NUM_PROCESSES:-8}"
 GRADIENT_ACCUMULATION_STEPS="${GRADIENT_ACCUMULATION_STEPS:-8}"
 MIN_JSON_VALIDITY="${MIN_JSON_VALIDITY:-0.98}"
+USE_FSDP="${USE_FSDP:-1}"
+FSDP_TRANSFORMER_LAYER="${FSDP_TRANSFORMER_LAYER:-Qwen3OmniMoeThinkerTextDecoderLayer}"
 
 RUN_DIR="$RESULT_ROOT/$RUN_ID"
 DATASET_RUN_ID="${RUN_ID}_dataset"
@@ -193,24 +197,40 @@ json_log event=neutral_index_done output="$DATASET_DIR/window_index_manifest.jso
 json_log event=validation_dataset_done output="$RUN_DIR/validation_dataset.json"
 
 json_log event=train_start run_id="${RUN_ID}_lora" num_processes="$NUM_PROCESSES"
-CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3,4,5,6,7}" \
-"$VENV_PY" -m accelerate.commands.launch \
-  --num_processes "$NUM_PROCESSES" \
-  --mixed_precision bf16 \
-  scripts/omni/train_qwen3_omni_lora.py \
-  --dataset-jsonl "$DATASET_JSONL" \
-  --model-id "$MODEL_DIR" \
-  --run-id "${RUN_ID}_lora" \
-  --train-split train \
-  --val-split val \
-  --epochs "$EPOCHS" \
-  --batch-size 1 \
-  --gradient-accumulation-steps "$GRADIENT_ACCUMULATION_STEPS" \
-  --max-train-samples 0 \
-  --max-val-samples "$MAX_VAL_SAMPLES" \
-  --local-files-only \
-  --gradient-checkpointing \
+train_cmd=(
+  "$VENV_PY" -m accelerate.commands.launch
+  --num_processes "$NUM_PROCESSES"
+  --mixed_precision bf16
+)
+if [[ "$USE_FSDP" == "1" ]]; then
+  train_cmd+=(
+    --use_fsdp
+    --fsdp_sharding_strategy FULL_SHARD
+    --fsdp_auto_wrap_policy TRANSFORMER_BASED_WRAP
+    --fsdp_transformer_layer_cls_to_wrap "$FSDP_TRANSFORMER_LAYER"
+    --fsdp_use_orig_params true
+  )
+fi
+train_cmd+=(
+  scripts/omni/train_qwen3_omni_lora.py
+  --dataset-jsonl "$DATASET_JSONL"
+  --model-id "$MODEL_DIR"
+  --backbone-config "$BACKBONE_CONFIG"
+  --run-id "${RUN_ID}_lora"
+  --train-split train
+  --val-split "$TRAIN_VAL_SPLIT"
+  --epochs "$EPOCHS"
+  --batch-size 1
+  --gradient-accumulation-steps "$GRADIENT_ACCUMULATION_STEPS"
+  --max-train-samples 0
+  --max-val-samples "$MAX_VAL_SAMPLES"
+  --local-files-only
+  --gradient-checkpointing
   --progress-every 10
+)
+CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3,4,5,6,7}" \
+PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}" \
+"${train_cmd[@]}"
 json_log event=train_done run_id="${RUN_ID}_lora" adapter_dir="$ADAPTER_DIR"
 
 "$VENV_PY" scripts/omni/validate_omni_finetune_run.py \
@@ -221,6 +241,7 @@ json_log event=train_done run_id="${RUN_ID}_lora" adapter_dir="$ADAPTER_DIR"
   --expected-val-episodes "$EXPECTED_VAL_EPISODES" \
   --expected-test-episodes "$EXPECTED_TEST_EPISODES" \
   --expected-num-processes "$NUM_PROCESSES" \
+  --allow-zero-val-training \
   --output "$RUN_DIR/validation_training.json"
 json_log event=validation_training_done output="$RUN_DIR/validation_training.json"
 

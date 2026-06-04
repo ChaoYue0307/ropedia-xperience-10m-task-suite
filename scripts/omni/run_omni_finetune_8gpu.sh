@@ -15,6 +15,9 @@ VAL_SPLIT="${VAL_SPLIT:-val}"
 EVAL_SPLIT="${EVAL_SPLIT:-test}"
 MODEL_ID="${MODEL_ID:-Qwen/Qwen3-Omni-30B-A3B-Instruct}"
 LOCAL_MODEL_DIR="${LOCAL_MODEL_DIR:-$PROJECT_ROOT/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct}"
+BACKBONE_CONFIG="${BACKBONE_CONFIG:-configs/omni_backbones/qwen3_omni_lora.json}"
+USE_FSDP="${USE_FSDP:-1}"
+FSDP_TRANSFORMER_LAYER="${FSDP_TRANSFORMER_LAYER:-Qwen3OmniMoeThinkerTextDecoderLayer}"
 
 RESULT_DIR="$WORKSPACE/results/omni_finetune/$RUN_ID"
 DATASET_RUN_ID="${RUN_ID}_dataset"
@@ -102,22 +105,39 @@ phase "qwen_zero_shot_smoke"
   --local-files-only || true
 
 phase "train_8gpu_lora"
-CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3,4,5,6,7}" \
-"$VENV_PY" -m accelerate.commands.launch \
-  --num_processes 8 \
-  --mixed_precision bf16 \
-  scripts/omni/train_qwen3_omni_lora.py \
-  --dataset-jsonl "$DATASET_JSONL" \
-  --model-id "$LOCAL_MODEL_DIR" \
-  --run-id "${RUN_ID}_lora" \
-  --train-split "$TRAIN_SPLIT" \
-  --val-split "$VAL_SPLIT" \
-  --epochs "$EPOCHS" \
-  --batch-size 1 \
-  --gradient-accumulation-steps 8 \
-  --max-train-samples 0 \
-  --max-val-samples 64 \
+train_cmd=(
+  "$VENV_PY" -m accelerate.commands.launch
+  --num_processes 8
+  --mixed_precision bf16
+)
+if [[ "$USE_FSDP" == "1" ]]; then
+  train_cmd+=(
+    --use_fsdp
+    --fsdp_sharding_strategy FULL_SHARD
+    --fsdp_auto_wrap_policy TRANSFORMER_BASED_WRAP
+    --fsdp_transformer_layer_cls_to_wrap "$FSDP_TRANSFORMER_LAYER"
+    --fsdp_use_orig_params true
+  )
+fi
+train_cmd+=(
+  scripts/omni/train_qwen3_omni_lora.py
+  --dataset-jsonl "$DATASET_JSONL"
+  --model-id "$LOCAL_MODEL_DIR"
+  --backbone-config "$BACKBONE_CONFIG"
+  --run-id "${RUN_ID}_lora"
+  --train-split "$TRAIN_SPLIT"
+  --val-split __none__
+  --epochs "$EPOCHS"
+  --batch-size 1
+  --gradient-accumulation-steps 8
+  --max-train-samples 0
+  --max-val-samples 0
   --local-files-only
+  --gradient-checkpointing
+)
+CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3,4,5,6,7}" \
+PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}" \
+"${train_cmd[@]}"
 
 phase "eval_lora"
 "$VENV_PY" scripts/omni/eval_qwen3_omni_lora.py \
