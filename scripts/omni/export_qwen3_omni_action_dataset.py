@@ -53,6 +53,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--mosaic-fps", type=float, default=8.0)
     parser.add_argument("--force-rebuild-cache", action="store_true")
     parser.add_argument(
+        "--allow-empty",
+        action="store_true",
+        help="Write an empty dataset manifest instead of failing when every selected episode is skipped.",
+    )
+    parser.add_argument(
         "--with-handcrafted-video-features",
         action="store_true",
         help="Also decode MP4s into handcrafted sensor features. The default skips this because Qwen consumes rendered mosaic video directly.",
@@ -369,7 +374,7 @@ def main() -> int:
                 "reason": str(exc),
             })
 
-    if not records:
+    if not records and not args.allow_empty:
         raise ValueError("No dataset records were exported from the selected episodes.")
 
     action_options = sorted({record["answer_json"]["action"] for record in records if record["answer_json"]["action"] != "unknown"})
@@ -397,6 +402,7 @@ def main() -> int:
             "max_video_frames": args.max_video_frames,
             "audio_span": "same_as_video_context",
             "mosaic": "2x3 multi-camera grid",
+            "allow_empty": args.allow_empty,
         },
         "feature_manifest": summaries["feature_manifest"],
         "available_modalities": summaries["available_modalities"],

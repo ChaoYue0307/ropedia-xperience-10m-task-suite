@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-04T16:49:00+00:00",
+  "generated_at_utc": "2026-06-04T18:19:53+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -141,7 +141,7 @@
       "surface": "github_repo",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 20,
+      "required_marker_count": 10,
       "missing_markers": [],
       "status": "pass"
     },
@@ -149,7 +149,7 @@
       "surface": "hf_space_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 20,
+      "required_marker_count": 10,
       "missing_markers": [],
       "status": "pass"
     },
@@ -157,7 +157,7 @@
       "surface": "hf_artifact_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 19,
+      "required_marker_count": 7,
       "missing_markers": [],
       "status": "pass"
     },
@@ -165,7 +165,7 @@
       "surface": "hf_artifact_bundle",
       "path": "PROJECT_README.md",
       "exists": true,
-      "required_marker_count": 20,
+      "required_marker_count": 10,
       "missing_markers": [],
       "status": "pass"
     },
@@ -173,7 +173,7 @@
       "surface": "hf_model_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 20,
+      "required_marker_count": 10,
       "missing_markers": [],
       "status": "pass"
     }
@@ -215,11 +215,11 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 640,
-      "text_file_count": 516,
+      "file_count": 643,
+      "text_file_count": 518,
       "largest_file": {
-        "path": "artifacts/episode_task_suite/modality_reconstruction/predictions.npz",
-        "bytes": 55702978
+        "path": "pytorch_model.bin",
+        "bytes": 93495480
       },
       "violations": []
     }

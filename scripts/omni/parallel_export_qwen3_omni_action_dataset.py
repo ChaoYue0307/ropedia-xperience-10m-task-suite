@@ -81,6 +81,7 @@ def run_shard(args: argparse.Namespace, shard_manifest: Path, shard_output: Path
         str(args.audio_sample_rate),
         "--audio-band-count",
         str(args.audio_band_count),
+        "--allow-empty",
     ]
     if not args.render_media:
         cmd.append("--no-render-media")

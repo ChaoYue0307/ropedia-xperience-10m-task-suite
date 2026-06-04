@@ -1,37 +1,9 @@
 # Artifact Guide
 
 This guide is the human-readable map for the public Ropedia Xperience-10M task
-suite artifacts. It complements the machine-readable
-[`docs/data/artifact_index.json`](docs/data/artifact_index.json).
-
-The project separates these reading layers:
-
-1. **Project status:** one compact table for first-pass current-state
-   decisions.
-2. **Project scope and roadmap:** what is implemented now, what is setup-stage,
-   what remains gated by multi-episode data access, and how the research
-   path progresses.
-3. **Official source alignment:** what the upstream Xperience-10M dataset card,
-   public sample card, and HF API metadata say, and which parts this repo
-   currently covers.
-4. **Evaluation protocol:** windowing, split policy, per-task metrics, leakage
-   controls, and current limitations.
-5. **Visual evidence:** public figures, charts, modality thumbnails, dimensions,
-   hashes, roles, and source scripts.
-6. **Data contract:** how one public Xperience-10M sample episode becomes
-   aligned model windows and feature blocks.
-7. **Task evidence:** minimal and neural results for the 12 task contracts plus
-   audio contribution variants, and four research-direction
-   extension probes.
-8. **Reproducibility:** public commands, expected outputs, and exact-match
-   evidence for the single-episode pipeline.
-9. **Public project surface:** repo, website, and Hugging Face pages,
-   accessibility semantics, links, and clear project presentation.
-10. **Multi-episode pilot status:** scripts and reports for the selected-episode
-   Qwen3-Omni pilot, with the data-access requirement kept visible.
-11. **Foundation-model selection:** Qwen3-Omni, Cosmos 3, GR00T, OpenVLA,
-   openpi, Gemini Robotics, and lightweight policy candidates separated by
-   task fit and current evidence level.
+suite artifacts. It is organized around what a reader usually wants to do:
+understand the project, inspect the sample episode, compare baselines, read the
+task results, and follow the Qwen3-Omni scale-up path.
 
 ## Start Here
 
@@ -40,45 +12,21 @@ The project separates these reading layers:
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current-state table: implemented, in staging, and outside current scope. |
 | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) | Shows the roadmap from public-sample task development to multi-episode data preparation, Qwen3-Omni LoRA, robustness runs, and larger omni-model extensions. |
 | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md) | Explains which foundation backbones fit which Xperience-10M objective: Qwen3-Omni first, Cosmos 3 for world modeling, and VLA/policy models after action-target conversion. |
-| [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md) | Defines the implemented scope, setup-stage artifacts, and multi-episode prerequisites. |
-| [`QUALITY_GATES.md`](QUALITY_GATES.md) | Lists the automated release checks and post-publish verification used to keep the release current. |
-| [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Describes whether repo, website, and Hugging Face cards read as one cohesive research project surface. |
 | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Defines the task unit, chronological split, metrics, leakage controls, and current limitations. |
-| [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Aligns this repo's public dataset wording with the official gated Xperience-10M card, sample card, and HF API metadata. |
-| [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Summarizes official dataset facts, sample-card facts, API-listing notes, and project coverage across repo, website, and HF cards. |
-| [`FIGURE_INDEX.md`](FIGURE_INDEX.md) | Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts. |
-| [`docs/data/brand_assets.json`](docs/data/brand_assets.json) | Catalogs the generated logo system, favicon, app icon, social card, dimensions, hashes, and usage roles. |
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Defines public reproduction commands, expected outputs, and unreproducible boundaries. |
-| [`docs/data/artifact_index.json`](docs/data/artifact_index.json) | Lists project-critical files with existence, size, and stable hashes. |
-| [`docs/data/figure_index.json`](docs/data/figure_index.json) | Machine-readable visual asset index for website and HF mirrors. |
-| [`docs/data/project_status.json`](docs/data/project_status.json) | Machine-readable copy of the project status table. |
-| [`docs/data/research_roadmap.json`](docs/data/research_roadmap.json) | Machine-readable roadmap for website and Hugging Face mirrors. |
-| [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json) | Machine-readable foundation-model selection matrix for website and Hugging Face mirrors. |
-| [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable source-alignment summary, including gated metadata, sample license/tooling, and current project coverage. |
-| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable source metadata and HF card parity report. |
-| [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | Machine-readable evaluation protocol generated from committed metrics. |
 | [`results/audio_ablation/AUDIO_ABLATION_SUMMARY.md`](results/audio_ablation/AUDIO_ABLATION_SUMMARY.md) | Shows measured current-audio and raw log-mel replacement deltas across the 12 task contracts. |
-| [`docs/data/audio_ablation_summary.json`](docs/data/audio_ablation_summary.json) | Machine-readable audio ablation summary for website and HF mirrors. |
-| [`docs/data/quality_gates.json`](docs/data/quality_gates.json) | Machine-readable release-check summary for website and HF mirrors. |
-| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable public presentation report for website, repo, and Hugging Face pages. |
-| [`docs/data/live_publication_status.json`](docs/data/live_publication_status.json) | Last live GitHub/HF verification after upload. |
-| [`docs/data/mirror_parity.json`](docs/data/mirror_parity.json) | Confirms prepared HF Space, artifact, and model mirrors match the repo for critical data, figures, website HTML, and validator scripts. |
-| [`docs/data/publication_audit.json`](docs/data/publication_audit.json) | Summarizes public bundle contents and exclusions for raw data, Python caches, heavy archives, credential text, and public-card figure references. |
-| [`docs/data/scope_claims_audit.json`](docs/data/scope_claims_audit.json) | Separates setup identifiers from completed held-out-episode results. |
-| [`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json) | Confirms the public 12-task cards use readable task names, modality thumbnails, and the interactive walkthrough/player data contract. |
-| [`docs/data/website_integrity.json`](docs/data/website_integrity.json) | Confirms local site links, anchors, JSON bundles, and referenced images resolve. |
-| [`RENDERED_SITE_CHECK.md`](RENDERED_SITE_CHECK.md) and [`docs/data/rendered_site_check.json`](docs/data/rendered_site_check.json) | Records the latest browser-level page load, tab navigation, walkthrough deep link, player interaction, and console-health check. |
-| [`docs/data/project_packet.json`](docs/data/project_packet.json) | Gives the shortest machine-readable project route. |
+| [`docs/single_episode_explorer.html`](docs/single_episode_explorer.html) | Gives a static window-level explorer for the public sample episode. |
+| [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Optional detail for readers who need official dataset and access-term context. |
 
-## Official Source Alignment
+## Dataset Context
 
 | Artifact | What it shows |
 | --- | --- |
-| [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Human-readable summary of the official gated Xperience-10M dataset card, public sample card, API listing snapshot, scale, modalities, access terms, intended uses, and limitations. |
-| [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable copy of the same alignment facts for website and HF mirrors. |
-| [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Generated source-alignment report showing source facts, sample license/tooling, API-listing notes, and current project scope. |
-| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable source metadata and HF card parity report. |
-| [`scripts/validate_source_alignment.py`](scripts/validate_source_alignment.py) | Regenerates the source-alignment report from committed alignment facts and public card text. |
+| [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Human-readable summary of the official gated Xperience-10M dataset, public sample, modalities, access terms, intended uses, and limitations. |
+| [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable dataset-context bundle for the website and Hub pages. |
+| [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Supporting provenance note for maintainers who want to inspect how public dataset descriptions were checked. |
+| [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json) | Machine-readable provenance record for generated project pages. |
+| [`scripts/validate_source_alignment.py`](scripts/validate_source_alignment.py) | Maintenance script for refreshing the dataset-context note. |
 
 ## Evaluation Protocol
 
@@ -132,10 +80,10 @@ The project separates these reading layers:
 | Artifact | What it shows |
 | --- | --- |
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Public commands, expected outputs, and non-reproducible boundaries are explicit. |
-| [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json) | Machine-readable command matrix for website and HF mirrors. |
+| [`docs/data/reproducibility_matrix.json`](docs/data/reproducibility_matrix.json) | Machine-readable command matrix for the website and Hub pages. |
 | [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | The last exact metric rebuild reproduced the public-sample metrics and matched committed artifacts. |
 
-## Platform Mirrors
+## Public Pages
 
 | Surface | Purpose |
 | --- | --- |
@@ -145,11 +93,9 @@ The project separates these reading layers:
 | [HF baseline model repo](https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines) | Lightweight minimal and neural task-head model files. |
 | [HF collection](https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite) | One grouped landing page for the Space, artifact dataset, and baseline model repo. |
 
-| Public surface artifact | What it keeps aligned |
-| --- | --- |
-| [`PUBLIC_SURFACE_QA.md`](PUBLIC_SURFACE_QA.md) | Human-readable public presentation report for repo, website, and Hugging Face cards. |
-| [`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json) | Machine-readable report for SEO/social metadata, accessible tabs, public links, project links, and clear project presentation. |
-| [`scripts/build_public_surface_qa.py`](scripts/build_public_surface_qa.py) | Regenerates the public presentation report before release. |
+The public pages are meant to be the normal reader path. Supporting maintenance
+checks remain in the repo, but they are not required for understanding the
+research project.
 
 ## Scale-Up Readiness
 

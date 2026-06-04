@@ -2312,11 +2312,11 @@
           <article class="snapshot-card">
             <span class="status-pill">verified</span>
             <h3>Public research artifacts</h3>
-            <p>Metrics, figures, walkthrough data, baseline weights, and project metadata are packaged across GitHub, GitHub Pages, and Hugging Face.</p>
+            <p>Metrics, figures, walkthroughs, baseline weights, and the Qwen3-Omni pilot status are packaged across GitHub, GitHub Pages, and Hugging Face.</p>
             <div class="snapshot-meta">
-              <span>site integrity <strong>pass</strong></span>
-              <span>mirror parity <strong>pass</strong></span>
-              <span>live status <strong>pass</strong></span>
+              <span>tasks <strong>12</strong></span>
+              <span>baselines <strong>minimal + neural</strong></span>
+              <span>reader path <strong>tabs</strong></span>
             </div>
           </article>
           <article class="snapshot-card gated">
@@ -2439,7 +2439,7 @@
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target-side signals, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
           <article class="artifact"><h3>Audio ablation</h3><p>Audio and no-audio variants are evaluated across all 12 task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
           <article class="artifact"><h3>Foundation branch selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 becomes the world-model branch, and policy models wait for explicit action targets.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
-          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. Cross-episode generalization, audio-visual learning, world modeling, policy targets, and held-out Qwen3-Omni training move to the multi-episode stage after selected data is prepared.</p><a href="data/scope_claims_audit.json">pilot status</a></article>
+          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. Cross-episode generalization, audio-visual learning, world modeling, policy targets, and held-out Qwen3-Omni training move to the multi-episode stage after selected data is prepared.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">next-stage plan</a></article>
           <article class="artifact"><h3>Scale-up requirement</h3><p>The Omni pilot requires selected prepared episodes, held-out episode splits, no train/test episode leakage, training metadata, predictions, metrics, and a run report.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a></article>
         </div>
       </div>
@@ -2510,79 +2510,77 @@
           <article class="evidence-card">
             <span class="status-pill">verified</span>
             <h3>Multi-episode pilot status is explicit</h3>
-            <p>The pilot status report separates setup artifacts, selected-episode preparation, and completed held-out-episode metrics.</p>
+            <p>The Qwen3-Omni notes separate the current sample-level artifact from the planned multi-episode held-out training run.</p>
             <div class="evidence-links">
-              <a href="data/scope_claims_audit.json">pilot status</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_scope_claims.py">validator script</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">training status</a>
+              <a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-smoke">LoRA repo</a>
             </div>
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>Prepared mirrors stay synchronized</h3>
-            <p>The parity report compares critical JSON, figure, and validator files across the repo, HF Space bundle, artifact dataset bundle, and model bundle before upload.</p>
+            <h3>Public pages are connected</h3>
+            <p>The website, GitHub repo, Hugging Face Space, artifact dataset, baseline model repo, and collection point to the same research project.</p>
             <div class="evidence-links">
-              <a href="data/mirror_parity.json">mirror parity</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_mirror_parity.py">validator script</a>
+              <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a>
+              <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">artifact dataset</a>
+              <a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">baseline models</a>
             </div>
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
             <h3>Figures are indexed</h3>
-            <p>The figure index records public visual assets, dimensions, SHA-256 hashes, source scripts, and the role each figure plays in the project narrative.</p>
+            <p>The visual set includes the logo, modality atlas, 12-task suite figure, model-architecture figure, and Qwen3-Omni LoRA training-flow figure.</p>
             <div class="evidence-links">
-              <a href="data/figure_index.json">figure index</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FIGURE_INDEX.md">figure index document</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_figure_index.py">builder script</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FIGURE_INDEX.md">figure guide</a>
+              <a href="assets/task_suite_infographic.png">task-suite figure</a>
+              <a href="assets/qwen3_omni_lora_pipeline.png">LoRA figure</a>
             </div>
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
             <h3>Brand assets are packaged consistently</h3>
-            <p>The generated logo system is packaged into the website header, favicon, README/HF cards, Open Graph preview, and brand-asset manifest.</p>
+            <p>The project logo is used consistently in the website header, favicon, README/HF cards, and social preview.</p>
             <div class="evidence-links">
-              <a href="data/brand_assets.json">brand assets</a>
               <a href="assets/brand/xperience10m-logo-social-card.png">logo card</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_brand_assets.py">builder script</a>
+              <a href="assets/brand/xperience10m-logo-mark-512.png">logo mark</a>
             </div>
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>Public bundles stay lightweight</h3>
-            <p>The bundle report covers required assets, raw-data exclusion, Python cache exclusion, heavy archive exclusion, credential-text checks, and public-card figure freshness across GitHub and the HF bundles.</p>
+            <h3>Raw dataset files are not redistributed</h3>
+            <p>The public project shares derived task artifacts, figures, reports, and lightweight baseline files. Raw Xperience-10M videos, HDF5 annotations, RRD visualizations, gated data, and full Qwen weights stay outside the repo.</p>
             <div class="evidence-links">
-              <a href="data/publication_audit.json">bundle report</a>
-              <a href="data/artifact_index.json">artifact index</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_publication_package.py">validator script</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Website references are validated</h3>
-            <p>The site validator checks local links, anchors, JSON bundles, and referenced image dimensions before publishing.</p>
-            <div class="evidence-links">
-              <a href="data/website_integrity.json">website integrity</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/validate_website_integrity.py">validator script</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Release checks are collected</h3>
-            <p>The release-check manifest collects the automated validators and the live post-publish checks used to keep the release current.</p>
-            <div class="evidence-links">
-              <a href="data/quality_gates.json">release checks</a>
-              <a href="data/live_publication_status.json">live publication</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/QUALITY_GATES.md">release-check document</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_quality_gates.py">builder script</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Official dataset card is aligned</h3>
-            <p>The source-alignment note mirrors the public Hugging Face dataset-card facts, sample-card facts, and API metadata: gated access, sample license/tooling, modality coverage, episode layout, intended uses, and current project coverage.</p>
-            <div class="evidence-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">alignment note</a>
-              <a href="data/xperience10m_dataset_card_alignment.json">alignment data</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a>
               <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official dataset</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>The dashboard is designed as the visual entry point</h3>
+            <p>Tabs organize the sample data, 12 tasks, model method, results, research directions, and next-stage resources.</p>
+            <div class="evidence-links">
+              <a href="#dataset-card">dataset</a>
+              <a href="#tasks">tasks</a>
+              <a href="#directions">directions</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Reproduction path is documented</h3>
+            <p>The reproduction guide lists the public sample setup, task-suite rebuild, neural heads, figure generation, and expected outputs.</p>
+            <div class="evidence-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">reproducibility</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">latest rebuild</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Official dataset source is linked</h3>
+            <p>The project keeps the official Xperience-10M dataset, public sample, dataset website, and HOMIE toolkit visible so readers can trace the data source.</p>
+            <div class="evidence-links">
+              <a href="https://ropedia.com/dataset">dataset website</a>
+              <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official dataset</a>
+              <a href="https://github.com/Ropedia/HOMIE-toolkit">HOMIE toolkit</a>
             </div>
           </article>
         </div>
@@ -2599,20 +2597,14 @@
           <article class="reading-card">
             <span class="step-index">01</span>
             <h3>Understand the current scope</h3>
-            <p>Start with the project status, evidence contract, artifact index, scale-up readiness note, release package report, and website reference report. They separate implemented single-episode work from the prepared Qwen3-Omni scale-up.</p>
+            <p>Start with the project brief, status, dataset context, task results, roadmap, and Qwen3-Omni scale-up notes. They separate implemented single-episode work from the prepared multi-episode stage.</p>
             <div class="reading-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVIDENCE_CONTRACT.md">contract</a>
-              <a href="data/evidence_contract.json">evidence data</a>
-              <a href="data/xperience10m_dataset_card_alignment.json">dataset card</a>
-              <a href="data/artifact_index.json">index</a>
-              <a href="data/figure_index.json">figures</a>
-              <a href="data/brand_assets.json">brand</a>
-              <a href="data/mirror_parity.json">mirrors</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">brief</a>
               <a href="data/project_status.json">status</a>
-              <a href="data/project_packet.json">packet</a>
-              <a href="data/scope_claims_audit.json">pilot status</a>
-              <a href="data/publication_audit.json">bundle</a>
-              <a href="data/website_integrity.json">site report</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">dataset notes</a>
+              <a href="data/summary_metrics.json">task metrics</a>
+              <a href="data/research_roadmap.json">roadmap</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up</a>
             </div>
           </article>
           <article class="reading-card">
@@ -2659,16 +2651,14 @@
           <p>The official Xperience-10M card describes a gated, large-scale 4D egocentric multimodal dataset. This project records that full upstream scope while focusing the implemented artifacts on one public sample episode.</p>
         </div>
         <div class="artifact-grid">
-          <article class="artifact primary-artifact"><div><h3>Official scale</h3><p>About 10M experience units and 10,000 hours, with RGB video, audio, depth, camera pose/SLAM, hand/body mocap, IMU, captions, metadata, and calibration.</p></div><a href="data/xperience10m_dataset_card_alignment.json">alignment data</a></article>
-          <article class="artifact"><h3>HF file-size display</h3><p>The live Hugging Face page/API currently shows 31.9 TB hosted. This is recorded separately from the card's about-1PB full-scale storage statement.</p><a href="data/xperience10m_dataset_card_alignment.json">source data</a></article>
-          <article class="artifact"><h3>HF access path</h3><p>The source dataset is manually gated for approved non-commercial use, with an external agreement step noted by the public HF metadata.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official HF dataset</a></article>
-          <article class="artifact"><h3>API listing snapshot</h3><p>HF API metadata observed 803 session folders and 12,103 episode folders with <code>annotation.hdf5</code>. This snapshot supports planning; it is not a local data inventory.</p><a href="data/xperience10m_dataset_card_alignment.json">metadata snapshot</a></article>
-          <article class="artifact"><h3>Public sample card</h3><p>The sample repo lists <code>cc-by-nc-4.0</code>, HOMIE Toolkit for videos/annotations, and Rerun 0.29.0 for <code>.rrd</code> visualization.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
-          <article class="artifact"><h3>Source notes</h3><p>The source notes summarize full-dataset facts, public sample-card facts, API-listing notes, and project coverage across the repo, website, and HF cards.</p><a href="data/source_alignment_audit.json">alignment report</a></article>
-          <article class="artifact"><h3>Episode layout</h3><p>Expected folders contain six MP4 streams and <code>annotation.hdf5</code>; <code>visualization.rrd</code> is treated as a viewer artifact and excluded from training downloads.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">alignment note</a></article>
+          <article class="artifact primary-artifact"><div><h3>Official dataset</h3><p>Xperience-10M is a gated large-scale egocentric multimodal dataset for embodied AI, robotics, spatial intelligence, and world modeling.</p></div><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official HF dataset</a></article>
+          <article class="artifact"><h3>Public sample</h3><p>The current task suite is built from one public sample episode, not from the entire gated dataset.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
+          <article class="artifact"><h3>Modalities</h3><p>The sample exposes synchronized video, audio, depth, pose/SLAM, motion capture, inertial signals, calibration, and language annotations.</p><a href="data/modality_atlas.json">modality atlas</a></article>
+          <article class="artifact"><h3>Multi-episode pilot</h3><p>The gated full dataset is used for the selected 128-episode Qwen3-Omni LoRA pilot. Held-out metrics will be added after training and evaluation complete.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-smoke">LoRA status</a></article>
+          <article class="artifact"><h3>Data boundary</h3><p>Raw MP4, HDF5, RRD files, private gated data, and full Qwen weights are not redistributed in this project.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a></article>
           <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, and no raw-data redistribution.</p><a href="data/modality_atlas.json">modality atlas</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, and misalignment.</p><a href="data/summary_metrics.json">summary metrics</a></article>
-          <article class="artifact"><h3>Responsible use</h3><p>The official card notes limited diversity and showcase/production quality. This project excludes identity, surveillance, biometric, sensitive-attribute, and safety-critical uses.</p><a href="data/xperience10m_dataset_card_alignment.json">use notes</a></article>
+          <article class="artifact"><h3>Responsible use</h3><p>This project is for research exploration and excludes identity recognition, surveillance, biometric profiling, sensitive-attribute inference, and safety-critical deployment.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">use notes</a></article>
           <article class="artifact"><h3>Later milestones</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, and held-out Qwen3-Omni evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data status</a></article>
         </div>
       </div>
@@ -3122,20 +3112,20 @@
 
           <section class="artifact-group tabbed-panel" id="artifact-panel-checks" role="tabpanel" aria-labelledby="artifact-tab-checks" hidden>
             <div class="artifact-group-head">
-              <div><span>Release resources</span><h3>Project files behind the research site</h3></div>
-              <p>These validator outputs support the public research artifacts by keeping links, mirrors, figures, source wording, and package boundaries consistent.</p>
+              <div><span>Supporting resources</span><h3>Project files behind the research site</h3></div>
+              <p>These resources are useful after the first pass: they collect the project brief, task evidence, visuals, dataset notes, reproduction path, and public pages.</p>
             </div>
             <div class="artifact-grid">
-              <article class="artifact"><h3>Artifact index</h3><p>Selective source-of-truth catalog with existence checks, sizes, and stable-file hashes.</p><a href="data/artifact_index.json">artifact index</a></article>
-              <article class="artifact"><h3>Task-surface integrity</h3><p>Checks that public task cards use readable research names, modality thumbnails, and the interactive walkthrough/player contract.</p><a href="data/task_surface_integrity.json">task-surface check</a></article>
-              <article class="artifact"><h3>Website integrity</h3><p>Checks local links, anchors, JSON files, and referenced website image dimensions.</p><a href="data/website_integrity.json">website integrity</a></article>
-              <article class="artifact"><h3>Rendered website check</h3><p>Records the latest browser-level load, tab, walkthrough deep-link, control-click, and console-health check.</p><a href="data/rendered_site_check.json">rendered website check</a></article>
-              <article class="artifact"><h3>Release checks</h3><p>One release map for automated validators and live post-publish checks.</p><a href="data/quality_gates.json">release checks</a></article>
-              <article class="artifact"><h3>Mirror parity</h3><p>Prepared repo, HF Space, artifact dataset, and model bundle parity for critical data, figures, website HTML, and validator files.</p><a href="data/mirror_parity.json">mirror parity</a></article>
-              <article class="artifact"><h3>Live publication</h3><p>Last public GitHub/HF URL verification after upload.</p><a href="data/live_publication_status.json">live publication</a></article>
-              <article class="artifact"><h3>Multi-episode pilot status</h3><p>Separates setup artifacts, selected-episode preparation, and completed held-out-episode results.</p><a href="data/scope_claims_audit.json">pilot status</a></article>
-              <article class="artifact"><h3>Public project surface</h3><p>Presents repo, website, and Hugging Face cards with consistent naming, links, tab semantics, and clear project language.</p><a href="data/public_surface_qa.json">public surface check</a></article>
-              <article class="artifact"><h3>Public bundle contents</h3><p>Summarizes raw-data exclusion, cache exclusion, archive exclusion, credential-text checks, and public figure references.</p><a href="data/publication_audit.json">bundle report</a></article>
+              <article class="artifact"><h3>Project brief</h3><p>The fastest written overview of the dataset sample, tasks, baselines, and scale-up plan.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">brief</a></article>
+              <article class="artifact"><h3>Task walkthroughs</h3><p>Human-readable case studies for all 12 tasks, including input, process modules, output, metric, and limitation.</p><a href="data/task_walkthroughs.json">walkthroughs</a></article>
+              <article class="artifact"><h3>Task results</h3><p>Minimal and neural-head metrics for the same sample windows and chronological split.</p><a href="data/summary_metrics.json">metrics</a></article>
+              <article class="artifact"><h3>Visual figures</h3><p>Task-suite map, modality atlas, pipeline diagram, model architecture figure, and Qwen3-Omni LoRA training-flow figure.</p><a href="assets/task_suite_infographic.png">task-suite figure</a></article>
+              <article class="artifact"><h3>Dataset notes</h3><p>Official dataset links, public sample source, modalities, access boundary, and current project subset.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">dataset notes</a></article>
+              <article class="artifact"><h3>Reproducibility</h3><p>Commands and expected outputs for rebuilding the public-sample task suite and visual artifacts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">reproduce</a></article>
+              <article class="artifact"><h3>Qwen3-Omni status</h3><p>Data requirements and evaluation boundary for the selected multi-episode LoRA pilot.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">training status</a></article>
+              <article class="artifact"><h3>Foundation-model plan</h3><p>Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, and SmolVLA-style branches by role.</p><a href="data/foundation_model_plan.json">model plan</a></article>
+              <article class="artifact"><h3>Hub artifacts</h3><p>Derived CSV/JSON/Markdown/figure artifacts without redistributing raw Xperience-10M data.</p><a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">artifact dataset</a></article>
+              <article class="artifact"><h3>Baseline models</h3><p>Lightweight minimal and neural task-head model files for the 12 task contracts.</p><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">model repo</a></article>
             </div>
           </section>
         </div>
@@ -3170,7 +3160,7 @@
           <article class="artifact"><h3>Website reference report</h3><p>Local HTML references, anchors, JSON bundles, and image dimensions are validated before publishing.</p><a href="data/website_integrity.json">website integrity</a></article>
           <article class="artifact"><h3>Multi-episode pilot status</h3><p>The Qwen3-Omni pilot is prepared at the code and selection-plan level; final metrics follow completed staging, preprocessing, training, and held-out evaluation.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">data requirement</a></article>
         </div>
-        <p class="repro-note">Minimal path: install the toolkit dependencies, download the official sample, run the 12-task suite with neural heads, regenerate visualizations, then run the artifact index and publication validator.</p>
+        <p class="repro-note">Minimal path: install the toolkit dependencies, download the official sample, run the 12-task suite with neural heads, regenerate visualizations, then rebuild the supporting project reports.</p>
         <pre class="code-panel"><button type="button" data-copy="setup">Copy</button><code id="setup">git clone https://github.com/Ropedia/HOMIE-toolkit.git
 python3.12 -m venv .venv
 source .venv/bin/activate

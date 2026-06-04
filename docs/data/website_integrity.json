@@ -1,12 +1,12 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-04T16:48:59+00:00",
+  "generated_at_utc": "2026-06-04T18:19:53+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 144,
-    "external_reference_count": 91,
+    "local_references": 121,
+    "external_reference_count": 104,
     "json_files": 32,
     "image_assets_referenced": 22,
     "failure_count": 0
@@ -75,7 +75,7 @@
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
       "overview_index": 67296,
-      "evidence_index": 84411
+      "evidence_index": 84507
     },
     {
       "name": "project_status_links_json",
@@ -87,7 +87,7 @@
       "name": "roadmap_links_json",
       "status": "pass",
       "reason": "The website should expose the machine-readable research roadmap.",
-      "marker_count": 2
+      "marker_count": 3
     },
     {
       "name": "interactive_roadmap_page_linked",
@@ -116,10 +116,10 @@
       "page_exists": true
     },
     {
-      "name": "rendered_site_check_links_json",
+      "name": "reader_resources_link_qwen_status",
       "status": "pass",
-      "reason": "The website should expose the browser-level rendered website check.",
-      "marker_count": 1
+      "reason": "The website should expose the Qwen3-Omni scale-up status.",
+      "marker_count": 10
     },
     {
       "name": "roadmap_html_matches_json_phases",
@@ -150,8 +150,8 @@
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
       "overview_index": 67296,
-      "protocol_index": 81266,
-      "evidence_index": 84411
+      "protocol_index": 81270,
+      "evidence_index": 84507
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -160,10 +160,10 @@
       "marker_count": 1
     },
     {
-      "name": "figure_index_links_json",
+      "name": "visual_figures_link_task_suite_image",
       "status": "pass",
-      "reason": "The website should expose the machine-readable figure index.",
-      "marker_count": 2
+      "reason": "The website should expose the main task-suite figure.",
+      "marker_count": 3
     },
     {
       "name": "suite_task_map_precedes_modality_atlas",
@@ -179,21 +179,21 @@
       "card_count": 7
     },
     {
-      "name": "dataset_card_section_mentions_sample_license",
+      "name": "dataset_card_section_links_official_dataset",
       "status": "pass",
-      "reason": "The dataset-card section should preserve the public sample card license.",
+      "reason": "The dataset-card section should link the official gated dataset.",
+      "marker_count": 2
+    },
+    {
+      "name": "dataset_card_section_links_public_sample",
+      "status": "pass",
+      "reason": "The dataset-card section should link the public sample dataset used here.",
       "marker_count": 1
     },
     {
-      "name": "dataset_card_section_mentions_api_episode_listing",
+      "name": "dataset_card_section_states_raw_data_boundary",
       "status": "pass",
-      "reason": "The dataset-card section should distinguish HF API listing metadata from local data possession.",
-      "marker_count": 1
-    },
-    {
-      "name": "dataset_card_section_links_source_alignment_audit",
-      "status": "pass",
-      "reason": "The dataset-card section should expose the generated source-alignment report.",
+      "reason": "The dataset-card section should state that raw Xperience-10M files are not redistributed.",
       "marker_count": 1
     },
     {
@@ -206,7 +206,7 @@
       "name": "task_player_uses_walkthrough_json",
       "status": "pass",
       "reason": "The task player and task cards should read the generated walkthrough JSON.",
-      "marker_count": 1
+      "marker_count": 2
     },
     {
       "name": "task_cards_use_human_research_names",
@@ -225,7 +225,7 @@
     {
       "path": "index.html",
       "id_count": 76,
-      "reference_count": 121,
+      "reference_count": 98,
       "image_count": 24
     },
     {
@@ -319,7 +319,7 @@
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 7289,
+      "bytes": 7237,
       "top_level_type": "dict"
     },
     {
@@ -394,7 +394,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 14923,
+      "bytes": 14891,
       "top_level_type": "dict"
     },
     {
