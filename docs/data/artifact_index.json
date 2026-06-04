@@ -1,11 +1,11 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-04T16:42:13+00:00",
+  "generated_at_utc": "2026-06-04T20:40:52+00:00",
   "status": "pass",
-  "artifact_count": 72,
+  "artifact_count": 73,
   "missing": [],
   "by_kind": {
-    "project_path": 11,
+    "project_path": 12,
     "project_scope": 1,
     "source_alignment": 5,
     "publication_workflow": 1,
@@ -62,8 +62,8 @@
       "surface": "repo_hf",
       "shows": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 7138,
-      "sha256": "67d85a198ee90082e47d790bd0f4d9dafbc97625cd39b17cc94b9785ec25104a"
+      "bytes": 7207,
+      "sha256": "7baaba976ccc254da1a03ee2653057d1e08f3fb0c0cad035886c362442828720"
     },
     {
       "id": "project_status_json",
@@ -73,8 +73,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable copy of the current project status for website and HF mirrors.",
       "exists": true,
-      "bytes": 9169,
-      "sha256": "50d3c87b774c8375dcb897bd363d25e392e5fd6571571c41d56e623df15063f8"
+      "bytes": 9874,
+      "sha256": "600c95726eae3404127a8b2110f35468ff2ba02943cae0fbcd3ea43c66109d3e"
     },
     {
       "id": "research_roadmap",
@@ -84,8 +84,8 @@
       "surface": "repo_hf",
       "shows": "Defines the path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions.",
       "exists": true,
-      "bytes": 6677,
-      "sha256": "58491bfb68ad3e6b7569bdb1a3cac3de7682a49beb9de368a114d58ebf0b118b"
+      "bytes": 8388,
+      "sha256": "0b3e3356076998ad94dc39f708cc783a4ebeab76c9da661cdd37ea12a3bb3665"
     },
     {
       "id": "research_roadmap_json",
@@ -95,8 +95,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable research roadmap for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 5758,
-      "sha256": "54657eb8824416d2128d6e5710543bdaf9e41d7c2fa46dd14ad6b58fede3b5db"
+      "bytes": 7161,
+      "sha256": "cc96118c2c05108c831616151bc027441f7545495adeeb6a4a6a6bffe8da7801"
     },
     {
       "id": "foundation_model_plan",
@@ -106,8 +106,8 @@
       "surface": "repo_hf",
       "shows": "Defines the post-data-gate backbone choices: Qwen3-Omni first, Cosmos 3 for world modeling, and VLA/policy models after action-target conversion.",
       "exists": true,
-      "bytes": 6559,
-      "sha256": "955be6559b554f1c6c4141dd6ca2818127d89585df3940c2bd9b975ad9047926"
+      "bytes": 9075,
+      "sha256": "444d13ab556d2e16a199a7fca191b87c85ab8685d167aab357bc6341839299a2"
     },
     {
       "id": "foundation_model_plan_json",
@@ -117,8 +117,19 @@
       "surface": "website_hf",
       "shows": "Machine-readable foundation-model selection matrix with source links, entry conditions, and evaluation additions.",
       "exists": true,
-      "bytes": 8889,
-      "sha256": "e9b11114fa290253000b921575586780ccc3ba17665235259d4326c524f6ce97"
+      "bytes": 12981,
+      "sha256": "9cce52025a2e2f8afb4660e2af3353aea6ad0a1af380849218dd74c0acc271bb"
+    },
+    {
+      "id": "xperience_embodied_foundation_pretraining",
+      "title": "Xperience Embodied Foundation Model pretraining goal",
+      "path": "XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md",
+      "kind": "project_path",
+      "surface": "repo_hf",
+      "shows": "Describes the future full-corpus Xperience-native pretraining goal, target modules, objectives, staged scale-up, hardware ranges, and evaluation protocol.",
+      "exists": true,
+      "bytes": 9182,
+      "sha256": "b5a6ddc58647cd895a4772b110ecc9f4d685427fb37b81b22c6c02d2b9b323f1"
     },
     {
       "id": "evidence_contract",
@@ -150,8 +161,8 @@
       "surface": "repo_hf",
       "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 16890,
-      "sha256": "8bce9a773daf36214e377a7154b72a4493efd0f7d1a1941d5e0fc9bf784a29e5"
+      "bytes": 11440,
+      "sha256": "9b8821a9b14fe1744f2e6b5c419b2c5daaf70b57f1944caf1105c36c0c66c119"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -195,7 +206,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "96c7adc61c869fab71ef34ec2f6ec4f5f88af844509bd3d51d3818732d1f84b6"
+      "sha256": "06c6e2d111c72df01ed127fd288e6675b63e35a21ae12a2523931a072bd0bc49"
     },
     {
       "id": "source_alignment_validator",
@@ -573,8 +584,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 26568,
-      "sha256": "a611b399e858560f6afb41e121f033724753c5167d04e0d7bf243e569de88f04"
+      "bytes": 27020,
+      "sha256": "0ca7ed96f24caecbab31687cffa99f0eba8471258986412a294614e688c5aff5"
     },
     {
       "id": "publication_audit",
@@ -585,7 +596,7 @@
       "volatile": true,
       "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and credential text.",
       "exists": true,
-      "bytes": 7289,
+      "bytes": 11811,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -597,7 +608,7 @@
       "volatile": true,
       "shows": "Separates setup paths from completed held-out-episode results.",
       "exists": true,
-      "bytes": 19505,
+      "bytes": 18981,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -609,7 +620,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 108617,
+      "bytes": 108621,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -621,7 +632,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 14923,
+      "bytes": 14891,
       "hash_policy": "existence_and_size_only"
     },
     {
