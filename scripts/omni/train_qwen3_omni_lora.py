@@ -9,6 +9,7 @@ import math
 import random
 import time
 from pathlib import Path
+from types import MethodType
 
 import torch
 
@@ -70,12 +71,118 @@ def select_samples(samples: list[dict], split: str, include_unspecified: bool) -
     return rows
 
 
+def patch_rotary_position_device(model) -> bool:
+    """Keep Qwen3-Omni rotary position ids aligned under model-parallel device maps."""
+    inner_model = getattr(model, "model", None)
+    rotary = getattr(inner_model, "rotary_emb", None)
+    if rotary is None or getattr(rotary, "_ropedia_position_device_patch", False):
+        return False
+
+    original_forward = rotary.forward
+
+    def forward_with_aligned_position_ids(self, x, position_ids, *args, **kwargs):
+        if hasattr(self, "inv_freq") and hasattr(x, "device") and self.inv_freq.device != x.device:
+            self._buffers["inv_freq"] = self.inv_freq.to(x.device)
+        if hasattr(position_ids, "to") and hasattr(x, "device") and position_ids.device != x.device:
+            position_ids = position_ids.to(x.device)
+        return original_forward(x, position_ids, *args, **kwargs)
+
+    rotary.forward = MethodType(forward_with_aligned_position_ids, rotary)
+    rotary._ropedia_position_device_patch = True
+    return True
+
+
+def patch_qwen3_omni_rotary_classes() -> None:
+    """Patch Qwen3-Omni MRoPE classes before Accelerate installs device hooks."""
+    from transformers.models.qwen3_omni_moe import modeling_qwen3_omni_moe as qwen3_omni_moe
+
+    def patch_mrope_class(class_name: str) -> None:
+        rotary_cls = getattr(qwen3_omni_moe, class_name, None)
+        if rotary_cls is None or getattr(rotary_cls, "_ropedia_class_device_patch", False):
+            return
+
+        @torch.no_grad()
+        def forward(self, x, position_ids):
+            if position_ids.ndim == 2:
+                position_ids = position_ids[None, ...].expand(3, position_ids.shape[0], -1)
+            target_device = x.device
+            inv_freq = self.inv_freq.to(target_device)
+            position_ids = position_ids.to(target_device)
+            inv_freq_expanded = inv_freq[None, None, :, None].float().expand(3, position_ids.shape[1], -1, 1)
+            position_ids_expanded = position_ids[:, :, None, :].float()
+
+            device_type = target_device.type if isinstance(target_device.type, str) and target_device.type != "mps" else "cpu"
+            with qwen3_omni_moe.maybe_autocast(device_type=device_type, enabled=False):
+                freqs = (inv_freq_expanded.float() @ position_ids_expanded.float()).transpose(2, 3)
+                freqs = self.apply_interleaved_mrope(freqs, self.mrope_section)
+                emb = torch.cat((freqs, freqs), dim=-1)
+                cos = emb.cos() * self.attention_scaling
+                sin = emb.sin() * self.attention_scaling
+
+            return cos.to(dtype=x.dtype), sin.to(dtype=x.dtype)
+
+        rotary_cls.forward = forward
+        rotary_cls._ropedia_class_device_patch = True
+
+    patch_mrope_class("Qwen3OmniMoeThinkerTextRotaryEmbedding")
+    patch_mrope_class("Qwen3OmniMoeTalkerRotaryEmbedding")
+
+
+def patch_qwen3_omni_norm_classes() -> None:
+    """Patch Qwen3-Omni RMSNorm classes for model-parallel device maps."""
+    from transformers.models.qwen3_omni_moe import modeling_qwen3_omni_moe as qwen3_omni_moe
+
+    def patch_norm_class(class_name: str) -> None:
+        norm_cls = getattr(qwen3_omni_moe, class_name, None)
+        if norm_cls is None or getattr(norm_cls, "_ropedia_class_device_patch", False):
+            return
+
+        def forward(self, hidden_states):
+            input_dtype = hidden_states.dtype
+            norm_states = hidden_states.to(torch.float32)
+            variance = norm_states.pow(2).mean(-1, keepdim=True)
+            norm_states = norm_states * torch.rsqrt(variance + self.variance_epsilon)
+            weight = self.weight.to(hidden_states.device)
+            return weight * norm_states.to(input_dtype)
+
+        norm_cls.forward = forward
+        norm_cls._ropedia_class_device_patch = True
+
+    patch_norm_class("Qwen3OmniMoeRMSNorm")
+    patch_norm_class("Qwen3OmniMoeTextRMSNorm")
+    patch_norm_class("Qwen3OmniMoeThinkerTextRMSNorm")
+    patch_norm_class("Qwen3OmniMoeCode2WavRMSNorm")
+
+
+def cast_floating_parameters(model, target_dtype) -> None:
+    if isinstance(target_dtype, str):
+        return
+    for param in model.parameters():
+        if param.is_floating_point() and param.dtype != target_dtype:
+            param.data = param.data.to(target_dtype)
+
+
+def build_trainable_cpu_state_dict(model) -> dict[str, torch.Tensor]:
+    state_dict = {}
+    for name, param in model.named_parameters():
+        if not param.requires_grad:
+            continue
+        clean_name = name
+        if clean_name.startswith("module."):
+            clean_name = clean_name[len("module.") :]
+        state_dict[clean_name] = param.detach().to("cpu", copy=True)
+    return state_dict
+
+
 def load_model_processor(args: argparse.Namespace):
     from qwen3_omni_compat import patch_qwen3_omni_config
 
     patch_qwen3_omni_config()
     from peft import LoraConfig, get_peft_model
     from transformers import Qwen3OmniMoeForConditionalGeneration, Qwen3OmniMoeProcessor
+
+    patch_qwen3_omni_rotary_classes()
+    patch_qwen3_omni_norm_classes()
 
     model_kwargs = {
         "dtype": dtype_arg(args.dtype),
@@ -89,6 +196,8 @@ def load_model_processor(args: argparse.Namespace):
     if hasattr(omni_model, "disable_talker"):
         omni_model.disable_talker()
     model = omni_model.thinker
+    if args.device_map and args.device_map.lower() != "none":
+        patch_rotary_position_device(model)
     if args.gradient_checkpointing and hasattr(model, "gradient_checkpointing_enable"):
         model.gradient_checkpointing_enable()
 
@@ -105,6 +214,7 @@ def load_model_processor(args: argparse.Namespace):
         target_modules=[item.strip() for item in args.lora_target_modules.split(",") if item.strip()],
     )
     model = get_peft_model(model, config)
+    cast_floating_parameters(model, dtype_arg(args.dtype))
     model.print_trainable_parameters()
     return model, processor
 
@@ -217,11 +327,49 @@ def main() -> int:
     rank_train_samples = distributed_slice(train_samples, accelerator.process_index, accelerator.num_processes)
     rank_val_samples = distributed_slice(val_samples, accelerator.process_index, accelerator.num_processes) if val_samples else []
 
+    if accelerator.is_main_process:
+        write_progress(progress_path, {
+            "event": "setup_done",
+            "run_id": args.run_id,
+            "dataset_jsonl": str(args.dataset_jsonl),
+            "num_processes": accelerator.num_processes,
+            "num_train_samples": len(train_samples),
+            "num_val_samples": len(val_samples),
+            "rank0_samples_per_epoch": len(rank_train_samples),
+            "timestamp": time.time(),
+        })
     if accelerator.num_processes > 1 and args.device_map == "auto":
         args.device_map = "none"
+    if accelerator.is_main_process:
+        write_progress(progress_path, {
+            "event": "model_load_start",
+            "run_id": args.run_id,
+            "model_id": args.model_id,
+            "device_map": args.device_map,
+            "dtype": args.dtype,
+            "timestamp": time.time(),
+        })
     model, processor = load_model_processor(args)
+    if accelerator.is_main_process:
+        write_progress(progress_path, {
+            "event": "model_load_done",
+            "run_id": args.run_id,
+            "timestamp": time.time(),
+        })
     optimizer = torch.optim.AdamW((p for p in model.parameters() if p.requires_grad), lr=args.learning_rate, weight_decay=args.weight_decay)
+    if accelerator.is_main_process:
+        write_progress(progress_path, {
+            "event": "accelerator_prepare_start",
+            "run_id": args.run_id,
+            "timestamp": time.time(),
+        })
     model, optimizer = accelerator.prepare(model, optimizer)
+    if accelerator.is_main_process:
+        write_progress(progress_path, {
+            "event": "accelerator_prepare_done",
+            "run_id": args.run_id,
+            "timestamp": time.time(),
+        })
     device = accelerator.device
     model_dtype = next(model.parameters()).dtype
 
@@ -231,7 +379,7 @@ def main() -> int:
     model.train()
     if accelerator.is_main_process:
         write_progress(progress_path, {
-            "event": "start",
+            "event": "train_loop_start",
             "run_id": args.run_id,
             "model_id": args.model_id,
             "dataset_jsonl": str(args.dataset_jsonl),
@@ -287,9 +435,30 @@ def main() -> int:
 
     accelerator.wait_for_everyone()
     if accelerator.is_main_process:
-        unwrapped = accelerator.unwrap_model(model)
-        unwrapped.save_pretrained(args.output_dir)
+        write_progress(progress_path, {
+            "event": "save_start",
+            "checkpoint_dir": str(args.output_dir),
+            "save_mode": "trainable_lora_state_dict",
+            "timestamp": time.time(),
+        })
+    accelerator.wait_for_everyone()
+    unwrapped = accelerator.unwrap_model(model)
+    if accelerator.is_main_process:
+        adapter_state = build_trainable_cpu_state_dict(unwrapped)
+        write_progress(progress_path, {
+            "event": "save_state_dict_built",
+            "checkpoint_dir": str(args.output_dir),
+            "trainable_tensors": len(adapter_state),
+            "trainable_bytes": sum(t.numel() * t.element_size() for t in adapter_state.values()),
+            "timestamp": time.time(),
+        })
+        unwrapped.save_pretrained(args.output_dir, state_dict=adapter_state, is_main_process=True)
         processor.save_pretrained(args.output_dir)
+        write_progress(progress_path, {
+            "event": "save_done",
+            "checkpoint_dir": str(args.output_dir),
+            "timestamp": time.time(),
+        })
     metadata = {
         "run_id": args.run_id,
         "model_id": args.model_id,
