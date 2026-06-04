@@ -1,14 +1,14 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-04T20:40:52+00:00",
+  "generated_at_utc": "2026-06-04T21:01:40+00:00",
   "status": "pass",
-  "artifact_count": 73,
+  "artifact_count": 75,
   "missing": [],
   "by_kind": {
     "project_path": 12,
     "project_scope": 1,
     "source_alignment": 5,
-    "publication_workflow": 1,
+    "publication_workflow": 3,
     "evaluation_protocol": 3,
     "result_interpretation": 5,
     "metrics_source": 3,
@@ -161,8 +161,8 @@
       "surface": "repo_hf",
       "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 11440,
-      "sha256": "9b8821a9b14fe1744f2e6b5c419b2c5daaf70b57f1944caf1105c36c0c66c119"
+      "bytes": 11641,
+      "sha256": "d365760463d657a392435239e6ea8e7f4cf3d03ad3a3592e79e9e2bec0bf3584"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -229,6 +229,28 @@
       "exists": true,
       "bytes": 15901,
       "sha256": "60f27a4d32c48e6960445bfafe917ce30d6a43211153146a52ae068f051de4e8"
+    },
+    {
+      "id": "github_package_dockerfile",
+      "title": "GitHub package Dockerfile",
+      "path": "Dockerfile",
+      "kind": "publication_workflow",
+      "surface": "repo",
+      "shows": "Builds the static-dashboard container package for GitHub Container Registry.",
+      "exists": true,
+      "bytes": 1121,
+      "sha256": "e226b1ed412b5d2a84fdb043d6012cf3792147fb6d8f0fd11ae5ebde4f5690cc"
+    },
+    {
+      "id": "github_package_workflow",
+      "title": "GitHub package workflow",
+      "path": ".github/workflows/publish-ghcr.yml",
+      "kind": "publication_workflow",
+      "surface": "repo",
+      "shows": "Publishes the static-dashboard image to GitHub Container Registry on main or manual dispatch.",
+      "exists": true,
+      "bytes": 1948,
+      "sha256": "77e2d1fbd47f3d7313c1b3b9a8795985294a2369c2d550c0850adde31e6dba45"
     },
     {
       "id": "evaluation_protocol",
@@ -584,8 +606,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 27020,
-      "sha256": "0ca7ed96f24caecbab31687cffa99f0eba8471258986412a294614e688c5aff5"
+      "bytes": 27649,
+      "sha256": "54e1a432a3c24240ba4e6827b0ef8663001adff917f249615da736c5b899dbf5"
     },
     {
       "id": "publication_audit",
@@ -596,7 +618,7 @@
       "volatile": true,
       "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and credential text.",
       "exists": true,
-      "bytes": 11811,
+      "bytes": 7237,
       "hash_policy": "existence_and_size_only"
     },
     {

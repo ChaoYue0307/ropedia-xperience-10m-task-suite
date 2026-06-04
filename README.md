@@ -3,6 +3,7 @@
 [![Website](https://img.shields.io/badge/site-GitHub%20Pages-1f63e9)](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/)
 [![HF Space](https://img.shields.io/badge/Hugging%20Face-Space-ffb000)](https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite)
 [![Dataset](https://img.shields.io/badge/dataset-Xperience--10M%20by%20Ropedia-008b9a)](https://huggingface.co/datasets/ropedia-ai/xperience-10m)
+[![GitHub Package](https://img.shields.io/badge/package-GHCR-2496ed)](https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/pkgs/container/ropedia-xperience-10m-task-suite)
 [![Scope](https://img.shields.io/badge/scope-single%20public%20sample-b65b04)](#scope)
 [![Citation](https://img.shields.io/badge/citation-CFF-7ae5c3)](CITATION.cff)
 [![License](https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-ccffa0)](LICENSE)
@@ -73,7 +74,7 @@ before the multi-episode omni-model stage becomes a real held-out evaluation.
 | Baselines | Minimal linear/ridge/logistic heads plus compact PyTorch MLP task heads over the same chronological split |
 | Research directions | Task mapping and extension probes for human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling |
 | Scale-up path | The gated Xperience-10M dataset is available for a selected 128-episode pilot before Qwen3-Omni LoRA, followed by Cosmos 3/world-model and VLA/policy branches; the long-term goal is an Xperience-native embodied foundation model if full-corpus data, storage, and compute are available |
-| Public surfaces | GitHub repo, GitHub Pages dashboard, HF Space, HF artifact dataset, HF baseline-model repo, and HF collection |
+| Public surfaces | GitHub repo, GitHub Pages dashboard, GHCR static-site package, HF Space, HF artifact dataset, HF baseline-model repo, and HF collection |
 
 For the fastest interpretation of the current metrics, start with
 [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md) and
@@ -243,6 +244,7 @@ Hugging Face Space app:
 | This project website | [chaoyue0307.github.io/ropedia-xperience-10m-task-suite](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/) |
 | This Hugging Face Space | [huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite](https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite) |
 | Live Hugging Face static app | [cy0307-ropedia-xperience-10m-task-suite.static.hf.space](https://cy0307-ropedia-xperience-10m-task-suite.static.hf.space/) |
+| GitHub Container package | [ghcr.io/chaoyue0307/ropedia-xperience-10m-task-suite](https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/pkgs/container/ropedia-xperience-10m-task-suite) |
 | Derived artifacts on Hugging Face | [huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts](https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts) |
 | Minimal and neural task baselines on Hugging Face | [huggingface.co/cy0307/ropedia-xperience-10m-task-baselines](https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines) |
 | Hugging Face collection | [huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite](https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite) |
@@ -371,6 +373,20 @@ notes/
 
 Raw Xperience-10M data is **not** committed. Download it from the official
 Ropedia distribution and follow the dataset terms.
+
+## GitHub Package
+
+The public dashboard is packaged as a static-site container on GitHub Container
+Registry. It contains the `docs/` site plus the main reader documents; it does
+not include raw Xperience-10M videos, raw annotations, gated data, or model
+weights.
+
+```bash
+docker pull ghcr.io/chaoyue0307/ropedia-xperience-10m-task-suite:latest
+docker run --rm -p 8080:80 ghcr.io/chaoyue0307/ropedia-xperience-10m-task-suite:latest
+```
+
+Then open `http://localhost:8080`.
 
 ## Data Expected
 
