@@ -1928,7 +1928,7 @@
         "best_role": "First selected-episode multimodal LoRA pilot and structured task predictor.",
         "category": "omni_instruction_model",
         "current_decision": "keep_as_first_pilot",
-        "entry_condition": "Selected episodes staged with held-out episode split.",
+        "entry_condition": "Selected episodes prepared with held-out episode split.",
         "family": "Qwen3-Omni",
         "openness": "open_weights_available_from_official_hf_repo",
         "priority": 1,
@@ -2061,7 +2061,7 @@
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-04T16:13:49+00:00",
+  "generated_at_utc": "2026-06-04T16:42:13+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -2075,7 +2075,7 @@
       "object micro-F1",
       "held-out episode count"
     ],
-    "first_pilot": "32 held-out-episode pilot after valid episodes are staged",
+    "first_pilot": "32 held-out-episode pilot after valid episodes are prepared",
     "training_unit": "episode-level split, window-level supervised examples"
   },
   "phases": [
@@ -2119,7 +2119,7 @@
       "entry_condition": "Gated dataset availability and enough storage for selected episodes.",
       "id": "multi_episode_data_staging",
       "name": "Multi-Episode Data Staging",
-      "reader_takeaway": "The next scale decision is data staging, with train/test separation at the episode level.",
+      "reader_takeaway": "The next scale decision is data preparation, with train/test separation at the episode level.",
       "stage": "scale_up",
       "status": "active"
     },
@@ -2141,7 +2141,7 @@
         "confusion matrices",
         "run report"
       ],
-      "entry_condition": "Selected episodes are staged locally with no train/test episode leakage.",
+      "entry_condition": "Selected episodes are prepared locally with no train/test episode leakage.",
       "id": "qwen3_omni_lora_pilot",
       "name": "Qwen3-Omni LoRA Pilot",
       "reader_takeaway": "The first omni-model pilot should establish a complete held-out-episode training and evaluation loop.",
@@ -2218,7 +2218,7 @@
       "visualization.rrd"
     ],
     "selection_strategy": "stratified_round_robin_by_top_level_session",
-    "status": "selected_relay_in_progress",
+    "status": "selected_episode_preparation",
     "target_episodes": 128,
     "valid_candidates": 12102
   },

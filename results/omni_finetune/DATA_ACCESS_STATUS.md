@@ -30,7 +30,7 @@ training downloads.
 
 The 32-episode pilot should only be reported after:
 
-- at least 32 valid episodes are staged,
+- at least 32 valid episodes are prepared,
 - train/test splits are separated by episode,
 - manifest files record missing views and feature coverage,
 - training finishes with metadata and progress logs,

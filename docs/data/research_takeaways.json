@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Research Takeaways",
   "status": "pass",
-  "generated_at_utc": "2026-06-03T18:11:32+00:00",
+  "generated_at_utc": "2026-06-04T16:42:13+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
@@ -182,7 +182,7 @@
         }
       ],
       "source": "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
-      "current_scope": "The selected-episode Qwen3-Omni fine-tune requires completed data staging and held-out evaluation."
+      "current_scope": "The selected-episode Qwen3-Omni fine-tune requires completed data preparation and held-out evaluation; the 32-episode Qwen3-Omni fine-tune requires gated data preparation before any real held-out metric is reported."
     }
   ]
 }

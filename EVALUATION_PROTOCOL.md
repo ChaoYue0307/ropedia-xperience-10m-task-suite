@@ -80,12 +80,12 @@ are not foundation models.
 The full Qwen3-Omni fine-tuning pilot requires all of the following before
 reporting held-out model metrics:
 
-- selected Xperience-10M pilot episodes
+- selected prepared Xperience-10M episodes
 - held-out episode split with no train/test episode leakage
 - manifest, training metadata, progress logs, metrics, predictions, and run report
 - held-out evaluation on test episodes rather than train windows
 
-Current status: prepared; selected multi-episode pilot data is being prepared. Read
+Current status: prepared; selected data relay in progress. Read
 `results/omni_finetune/DATA_ACCESS_STATUS.md` and
 `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` before interpreting any
 Qwen3-Omni artifact.

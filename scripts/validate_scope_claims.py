@@ -199,7 +199,7 @@ def build_report() -> dict:
     checks.append(
         check(
             "summary_metrics_preserves_omni_scale_up_status",
-            "32-episode Qwen3-Omni fine-tune requires gated data staging" in current_scope,
+            "32-episode Qwen3-Omni fine-tune requires gated data preparation" in current_scope,
             current_scope,
             ["docs/data/summary_metrics.json"],
         )

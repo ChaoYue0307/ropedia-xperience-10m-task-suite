@@ -41,7 +41,7 @@ the dashboard as a basis for further work.
 1. Read `PROJECT_STATUS.md` and `docs/data/project_status.json` for
    the fastest current-state decision table.
 2. Read `RESEARCH_ROADMAP.md` and `docs/data/research_roadmap.json` for the
-   staged path from public-sample development to multi-episode modeling.
+   research path from public-sample development to multi-episode modeling.
 3. Read `docs/data/project_packet.json` for the shortest project path and
    current scope.
 4. Read `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` and

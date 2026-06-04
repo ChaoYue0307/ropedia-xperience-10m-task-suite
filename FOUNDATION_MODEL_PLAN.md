@@ -19,13 +19,13 @@ run a held-out multi-episode foundation-model evaluation.
 | 4 | OpenVLA / OpenVLA-OFT | Open vision-language-action policy baseline | Useful when windows are converted into visual observation plus action-token targets | Use after action-space design is explicit |
 | 5 | openpi pi0/pi0.5 | Open robot policy and action expert baseline | Useful for action chunking, policy fine-tuning, and embodiment transfer experiments | Candidate for policy branch once action labels are retargeted |
 | 6 | Gemini Robotics | Closed/API embodied reasoning reference | Strong candidate for qualitative reasoning and task interpretation, but not a local fine-tune target | Use only as an external comparison or annotation assistant |
-| 7 | Octo / SmolVLA-style lightweight policies | Smaller reproducible robot-policy baselines | Good for cheaper action-policy experiments, but less directly omni-modal | Optional baseline branch after selected-episode data staging |
+| 7 | Octo / SmolVLA-style lightweight policies | Smaller reproducible robot-policy baselines | Good for cheaper action-policy experiments, but less directly omni-modal | Optional baseline branch after selected-episode data preparation |
 
 ## Why Qwen3-Omni Still Goes First
 
 The immediate pilot is about proving the full data path:
 
-- staged multi-episode Xperience-10M data,
+- prepared multi-episode Xperience-10M data,
 - episode-level train/test separation,
 - window-level supervised examples,
 - multimodal prompt construction,

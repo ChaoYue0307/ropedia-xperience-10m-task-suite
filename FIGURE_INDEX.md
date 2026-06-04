@@ -16,7 +16,7 @@ Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience
 | Project favicon | `docs/assets/brand/xperience10m-logo-favicon-64.png` | 64 x 64 | `scripts/build_brand_assets.py` | Small dark-tile logo for browser tabs and compact navigation. |
 | 12-task suite infographic | `docs/assets/task_suite_infographic.png` | 1800 x 6600 | `scripts/render_task_suite_infographic.py` | Primary visual map of the task suite, verified metrics, and sample modalities. |
 | Episode-to-task pipeline diagram | `docs/assets/pipeline_diagram.png` | 1800 x 1120 | `scripts/generate_visualizations.py` | End-to-end data processing and evaluation pipeline overview. |
-| Qwen3-Omni LoRA training pipeline | `docs/assets/qwen3_omni_lora_pipeline.png` | 1536 x 1024 | `docs/assets/qwen3_omni_lora_pipeline.prompt.md` | Detailed raw-data-to-adapter flow for staged Xperience-10M Qwen3-Omni LoRA training. |
+| Qwen3-Omni LoRA training pipeline | `docs/assets/qwen3_omni_lora_pipeline.png` | 1536 x 1024 | `docs/assets/qwen3_omni_lora_pipeline.prompt.md` | Detailed raw-data-to-adapter flow for selected Xperience-10M Qwen3-Omni LoRA training. |
 | Minimal and neural task architecture map | `docs/assets/task_architectures.png` | 1800 x 2450 | `scripts/render_overview_figures.py` | All 12 task heads and shared feature contracts. |
 | Video modality thumbnail | `docs/assets/modalities/video.jpg` | 880 x 520 | `scripts/export_modality_atlas_assets.py` | Derived thumbnail for synchronized camera streams. |
 | Audio modality thumbnail | `docs/assets/modalities/audio.png` | 880 x 520 | `scripts/export_modality_atlas_assets.py` | Derived waveform thumbnail for the MP4 AAC stream. |

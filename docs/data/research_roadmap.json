@@ -43,13 +43,13 @@
         "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
         "results/omni_finetune/source_discovery.json"
       ],
-      "reader_takeaway": "The next scale decision is data staging, with train/test separation at the episode level."
+      "reader_takeaway": "The next scale decision is data preparation, with train/test separation at the episode level."
     },
     {
       "id": "qwen3_omni_lora_pilot",
       "name": "Qwen3-Omni LoRA Pilot",
       "status": "next",
-      "entry_condition": "Selected episodes are staged locally with no train/test episode leakage.",
+      "entry_condition": "Selected episodes are prepared locally with no train/test episode leakage.",
       "deliverables": [
         "dataset JSONL/media manifests",
         "LoRA adapter checkpoint",

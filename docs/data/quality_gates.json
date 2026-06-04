@@ -154,7 +154,7 @@
       "command": "python scripts/validate_mirror_parity.py",
       "report": "docs/data/mirror_parity.json",
       "blocks_if": "Prepared HF Space, artifact dataset, or model bundle diverges from the repo for critical files.",
-      "shows": "The files staged for GitHub and Hugging Face are synchronized before upload.",
+      "shows": "The files prepared for GitHub and Hugging Face are synchronized before upload.",
       "current_report": {
         "exists": true,
         "status": "pass"

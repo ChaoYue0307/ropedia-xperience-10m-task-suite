@@ -9,7 +9,7 @@ The project separates these reading layers:
 1. **Project status:** one compact table for first-pass current-state
    decisions.
 2. **Project scope and roadmap:** what is implemented now, what is setup-stage,
-   what remains gated by multi-episode data access, and how the staged research
+   what remains gated by multi-episode data access, and how the research
    path progresses.
 3. **Official source alignment:** what the upstream Xperience-10M dataset card,
    public sample card, and HF API metadata say, and which parts this repo
@@ -38,7 +38,7 @@ The project separates these reading layers:
 | Artifact | Why to open it first |
 | --- | --- |
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current-state table: implemented, in staging, and outside current scope. |
-| [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) | Shows the staged path from public-sample task development to multi-episode data staging, Qwen3-Omni LoRA, robustness runs, and larger omni-model extensions. |
+| [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) | Shows the roadmap from public-sample task development to multi-episode data preparation, Qwen3-Omni LoRA, robustness runs, and larger omni-model extensions. |
 | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md) | Explains which foundation backbones fit which Xperience-10M objective: Qwen3-Omni first, Cosmos 3 for world modeling, and VLA/policy models after action-target conversion. |
 | [`EVIDENCE_CONTRACT.md`](EVIDENCE_CONTRACT.md) | Defines the implemented scope, setup-stage artifacts, and multi-episode prerequisites. |
 | [`QUALITY_GATES.md`](QUALITY_GATES.md) | Lists the automated release checks and post-publish verification used to keep the release current. |

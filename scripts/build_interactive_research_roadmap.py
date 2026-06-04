@@ -206,7 +206,7 @@ def main() -> int:
         "omni_plan": {
             "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
             "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
-            "first_pilot": "32 held-out-episode pilot after valid episodes are staged",
+            "first_pilot": "32 held-out-episode pilot after valid episodes are prepared",
             "training_unit": "episode-level split, window-level supervised examples",
             "evaluation": [
                 "JSON validity",

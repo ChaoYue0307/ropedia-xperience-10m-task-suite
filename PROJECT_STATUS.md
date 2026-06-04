@@ -2,7 +2,7 @@
 
 This is the fastest way to understand the current research project state.
 It summarizes what has already been implemented from the public
-Xperience-10M sample, what is being staged for multi-episode training, and
+Xperience-10M sample, what is being prepared for multi-episode training, and
 which artifacts support the next development step.
 
 ## Research Positioning
@@ -21,7 +21,7 @@ scale-up readiness; it is not presented as final full-dataset model quality.
 | Neural heads | Verified | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split. |
 | Audio contribution study | Verified | `scripts/audio_ablation_and_raw_upgrade.py`, `results/audio_ablation/`, `docs/data/audio_ablation_summary.json` | Audio variants are compared across all 12 task contracts; audio improves the primary metric on 6 of 12 tasks, and a 588-d audio-window representation improves over the baseline audio variant on 6 of 12 tasks. |
 | Research takeaways | Verified | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | The main result interpretation is generated from committed metrics: chronological class shift, neural gains on dynamics/order/alignment, open retrieval/reconstruction problems, and the need for held-out episodes. |
-| Research roadmap | Current | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | The staged path connects public-sample task development to 128-episode data staging, Qwen3-Omni LoRA, foundation-model selection, robustness runs, and larger omni/world-model extensions. |
+| Research roadmap | Current | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | The roadmap connects public-sample task development to 128-episode data preparation, Qwen3-Omni LoRA, foundation-model selection, robustness runs, and larger omni/world-model extensions. |
 | Foundation-model plan | Current | `FOUNDATION_MODEL_PLAN.md`, `docs/data/foundation_model_plan.json` | Qwen3-Omni remains the first trainable held-out LoRA baseline; Cosmos 3 is added as the first world-model/action-generation branch; OpenVLA/openpi/GR00T are policy candidates after action targets are explicit. |
 | Evaluation protocol | Verified | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | Windowing, chronological split, per-task metrics, leakage controls, and current limitations are generated from committed metric artifacts. |
 | Official dataset wording | Verified | `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`, `docs/data/xperience10m_dataset_card_alignment.json` | Public wording is aligned to the official gated Xperience-10M dataset card, public sample card, and HF API metadata, including modalities, scale, access path, sample license/tooling, and current project coverage. |
@@ -40,7 +40,7 @@ scale-up readiness; it is not presented as final full-dataset model quality.
 3. Inspect `RESEARCH_TAKEAWAYS.md` and
    `docs/data/research_takeaways.json` for the generated result interpretation.
 4. Inspect `RESEARCH_ROADMAP.md` and `docs/data/research_roadmap.json` for
-   the staged path from public-sample task work to multi-episode modeling.
+   the path from public-sample task work to multi-episode modeling.
 5. Inspect `FOUNDATION_MODEL_PLAN.md` and
    `docs/data/foundation_model_plan.json` before choosing a backbone branch.
 6. Inspect `docs/data/summary_metrics.json` and
