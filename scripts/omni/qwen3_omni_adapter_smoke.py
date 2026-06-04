@@ -136,7 +136,7 @@ def load_episode(args: argparse.Namespace, episode_dir: Path) -> EpisodeDataset:
     ann = load_from_annotation_hdf5(annotation, 0, None, load_slam_point_cloud=True)
     local_args = argparse.Namespace(**vars(args))
     local_args.annotation = annotation
-    local_args.cache_dir = args.cache_dir / episode_dir.name
+    local_args.cache_dir = args.cache_dir / f"{episode_dir.parent.name}__{episode_dir.name}"
 
     if args.skip_video_features:
         original_video_files = VIDEO_FILES.copy()

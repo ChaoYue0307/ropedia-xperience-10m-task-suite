@@ -354,9 +354,20 @@ def main() -> int:
             raise ValueError("No episode directories found. Pass --episode-root or --manifest.")
 
     records: list[dict] = []
-    summaries = {"feature_manifest": [], "available_modalities": []}
+    summaries = {"feature_manifest": [], "available_modalities": [], "skipped_episodes": []}
     for episode_dir in episode_dirs:
-        export_episode(args, episode_dir, records, summaries)
+        try:
+            export_episode(args, episode_dir, records, summaries)
+        except ValueError as exc:
+            if "No labeled windows were created" not in str(exc):
+                raise
+            summaries["skipped_episodes"].append({
+                "episode_path": str(episode_dir),
+                "reason": str(exc),
+            })
+
+    if not records:
+        raise ValueError("No dataset records were exported from the selected episodes.")
 
     action_options = sorted({record["answer_json"]["action"] for record in records if record["answer_json"]["action"] != "unknown"})
     subtask_options = sorted({record["answer_json"]["subtask"] for record in records if record["answer_json"]["subtask"] != "unknown"})
@@ -386,9 +397,11 @@ def main() -> int:
         },
         "feature_manifest": summaries["feature_manifest"],
         "available_modalities": summaries["available_modalities"],
+        "skipped_episodes": summaries["skipped_episodes"],
         "notes": [
             "Assistant answers are strict JSON for episode understanding, not robot-control policies.",
             "Sensor features are stored as NPZ pointers; raw annotation.hdf5 is not copied into the dataset records.",
+            "Episodes with no labeled windows under the configured label rule are skipped and reported.",
         ],
     }
     (args.output_dir / "dataset_manifest.json").write_text(json.dumps(dataset_manifest, indent=2), encoding="utf-8")
