@@ -46,6 +46,34 @@ Current contracts:
 | `cosmos_world_model` | planned adapter | Future-window and action-conditioned world modeling |
 | `policy_vla_branch` | planned adapter | Observation-to-action or motion-policy training after action-space conversion |
 
+## Model-Neutral Window Index
+
+The Qwen exporter produces model-ready JSONL records. To avoid tying future
+branches to Qwen chat-message formatting, convert those records into a
+backbone-neutral window index:
+
+```bash
+python scripts/omni/export_model_neutral_window_index.py \
+  --dataset-jsonl results/omni_finetune/<run_id>_dataset/dataset.jsonl
+```
+
+This writes:
+
+- `window_index.jsonl`
+- `window_index_manifest.json`
+
+Each neutral record keeps the same episode split and window boundaries, then
+separates:
+
+- media paths,
+- sensor feature pointers,
+- language context,
+- JSON supervision,
+- Qwen, Cosmos-style, and policy/VLA adapter views.
+
+Future exporters should consume this neutral index when possible, then add only
+the model-specific target conversion that they need.
+
 ## Qwen3-Omni Contract
 
 Qwen3-Omni consumes:

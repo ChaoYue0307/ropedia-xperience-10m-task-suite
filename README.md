@@ -600,6 +600,18 @@ python scripts/omni/validate_omni_finetune_run.py \
   --min-json-validity 0.98
 ```
 
+After dataset export, a model-neutral window index can be created for future
+backbones:
+
+```bash
+python scripts/omni/export_model_neutral_window_index.py \
+  --dataset-jsonl results/omni_finetune/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_dataset/dataset.jsonl
+```
+
+This produces `window_index.jsonl` and `window_index_manifest.json` so Cosmos-
+style world models and VLA/policy branches can reuse the same split-checked
+windows without depending on Qwen chat-message records.
+
 ### Uploading the pilot Qwen3-Omni LoRA
 
 A prepared upload package is available at `results/omni_finetune/hf_upload`.

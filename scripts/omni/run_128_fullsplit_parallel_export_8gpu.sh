@@ -173,6 +173,15 @@ print(json.dumps({
 }, sort_keys=True))
 PY
 
+json_log event=neutral_index_start
+"$VENV_PY" scripts/omni/export_model_neutral_window_index.py \
+  --dataset-jsonl "$DATASET_JSONL" \
+  --dataset-manifest "$DATASET_DIR/dataset_manifest.json" \
+  --run-id "${RUN_ID}_window_index" \
+  --output-jsonl "$DATASET_DIR/window_index.jsonl" \
+  --output-manifest "$DATASET_DIR/window_index_manifest.json"
+json_log event=neutral_index_done output="$DATASET_DIR/window_index_manifest.json"
+
 "$VENV_PY" scripts/omni/validate_omni_finetune_run.py \
   --workspace "$PROJECT_ROOT" \
   --run-id "$RUN_ID" \
