@@ -102,11 +102,12 @@ Every backbone config must declare an `artifact_contract` with:
 - `public_package_forbidden`: raw data, weights, checkpoints, or large files
   that must stay out of public packages.
 
-`scripts/omni/backbone_registry.py --validate --json` now checks that the
-contract exists for Qwen, Cosmos-style, and policy/VLA branches. The concrete
-packager currently implements the Qwen public-safe package; Cosmos-style and
-policy branches must add matching package/validation code before reporting
-public metrics.
+`scripts/omni/backbone_registry.py --validate --json` checks that the contract
+exists for Qwen, Cosmos-style, and policy/VLA branches. The validator and
+public-safe packager read `required_eval_files`, `primary_metrics`, and
+publication rules from the selected backbone config. Export, training, and
+evaluation code still remain model-specific, but the final validation and
+publication gate follows the same contract for every future branch.
 
 ## Qwen3-Omni Contract
 

@@ -643,7 +643,11 @@ python scripts/omni/watch_verified_omni_package.py \
 
 The package copies only small derived artifacts such as metrics, predictions,
 confusion matrices, run reports, manifests, validation summaries, and training
-metadata. It excludes raw Xperience-10M files, base-model weights, LoRA adapter
+metadata. The exact required eval files and primary metrics come from the
+selected backbone contract in `configs/omni_backbones`, so Qwen3-Omni,
+Cosmos-style world models, and VLA/policy branches can share the same verified
+publication gate once their model-specific evaluators exist. The package
+excludes raw Xperience-10M files, base-model weights, adapter or checkpoint
 weights, full checkpoints, and large archives.
 
 For hardware setups that can run multiple eval workers, the Qwen evaluator also
