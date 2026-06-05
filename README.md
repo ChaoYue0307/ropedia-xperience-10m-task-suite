@@ -610,6 +610,10 @@ python scripts/omni/monitor_omni_progress.py \
   --run-id xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu
 ```
 
+The monitor reads training `progress.jsonl`, new evaluator partial-prediction
+progress, and legacy generation logs, so long held-out evals can still expose
+sample-level progress even before final metrics are written.
+
 Validate the run artifacts stage by stage:
 
 ```bash

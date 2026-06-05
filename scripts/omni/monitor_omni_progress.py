@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import subprocess
+import time
 from collections import Counter
 from pathlib import Path
 
@@ -121,6 +122,24 @@ def dataset_summary(dataset_dir: Path) -> dict:
     }
 
 
+def dataset_split_counts(dataset_dir: Path) -> dict[str, int]:
+    manifest = read_json(dataset_dir / "dataset_manifest.json")
+    split_counts = manifest.get("split_counts") if manifest else None
+    if isinstance(split_counts, dict):
+        return {str(key): int(value) for key, value in split_counts.items()}
+    dataset_jsonl = dataset_dir / "dataset.jsonl"
+    if not dataset_jsonl.exists():
+        return {}
+    counts = Counter()
+    with dataset_jsonl.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            counts[str(row.get("split", "unspecified"))] += 1
+    return dict(counts)
+
+
 def format_duration(seconds: float | None) -> str | None:
     if seconds is None:
         return None
@@ -201,6 +220,30 @@ def eval_progress_summary(eval_dir: Path) -> dict:
     return summary
 
 
+def legacy_eval_log_summary(run_dir: Path, eval_run_id: str, dataset_dir: Path, eval_split: str = "test") -> dict:
+    log_path = run_dir / f"eval_{eval_run_id}.log"
+    if not log_path.exists():
+        return {}
+    split_counts = dataset_split_counts(dataset_dir)
+    total = split_counts.get(eval_split)
+    completed = 0
+    with log_path.open("r", encoding="utf-8", errors="replace") as handle:
+        for line in handle:
+            if "Setting `pad_token_id`" in line or "Setting pad_token_id" in line:
+                completed += 1
+    stat = log_path.stat()
+    return {
+        "source": "legacy_generation_log",
+        "log": str(log_path),
+        "eval_split": eval_split,
+        "completed_generations": completed,
+        "num_eval_samples": total,
+        "percent_complete": round((completed / total) * 100, 2) if total else None,
+        "log_bytes": stat.st_size,
+        "log_modified_seconds_ago": round(time.time() - stat.st_mtime, 1),
+    }
+
+
 def main() -> int:
     args = parse_args()
     root = args.workspace / "results" / "omni_finetune"
@@ -276,6 +319,8 @@ def main() -> int:
         print(json.dumps({key: payload.get(key) for key in keys}, indent=2))
     else:
         eval_summary = eval_progress_summary(eval_dir)
+        if not eval_summary:
+            eval_summary = legacy_eval_log_summary(run_dir, eval_run_id, dataset_dir)
         if eval_summary:
             print("\nEval progress:")
             print(json.dumps(eval_summary, indent=2))
