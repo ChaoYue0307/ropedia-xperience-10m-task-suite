@@ -195,6 +195,44 @@ def build_trainable_cpu_state_dict(model) -> dict[str, torch.Tensor]:
     return state_dict
 
 
+def strip_module_prefix(name: str) -> str:
+    while name.startswith("module."):
+        name = name[len("module.") :]
+    return name
+
+
+def thinker_adapter_state_from_full_state(state_dict: dict[str, torch.Tensor]) -> dict[str, torch.Tensor]:
+    adapter_state: dict[str, torch.Tensor] = {}
+    for name, tensor in state_dict.items():
+        clean_name = strip_module_prefix(name)
+        if clean_name.startswith("thinker."):
+            clean_name = clean_name[len("thinker.") :]
+        elif clean_name.startswith("base_model.model.thinker."):
+            clean_name = clean_name[len("base_model.model.thinker.") :]
+        if "lora_" not in clean_name:
+            continue
+        if tensor.numel() == 0:
+            raise ValueError(f"Gathered LoRA state still has an empty tensor: {name}")
+        adapter_state[clean_name] = tensor.detach().to("cpu", copy=True)
+    if not adapter_state:
+        raise ValueError("Gathered state dict did not contain any LoRA tensors.")
+    return adapter_state
+
+
+def adapter_shape_summary(state_dict: dict[str, torch.Tensor]) -> dict[str, object]:
+    prefixes = {}
+    for name, tensor in state_dict.items():
+        prefix = name.split(".")[2] if name.startswith("base_model.model.") and len(name.split(".")) > 2 else name.split(".")[0]
+        row = prefixes.setdefault(prefix, {"tensors": 0, "numel": 0})
+        row["tensors"] += 1
+        row["numel"] += int(tensor.numel())
+    return {
+        "adapter_tensors": len(state_dict),
+        "adapter_bytes": sum(t.numel() * t.element_size() for t in state_dict.values()),
+        "prefixes": prefixes,
+    }
+
+
 class TailSlicingLmHead(torch.nn.Module):
     """Wrap lm_head so SFT can avoid full-prompt vocab logits."""
 
@@ -599,16 +637,26 @@ def main() -> int:
         })
     accelerator.wait_for_everyone()
     unwrapped = accelerator.unwrap_model(model)
+    gathered_state = accelerator.get_state_dict(model) if accelerator.num_processes > 1 else None
     if accelerator.is_main_process:
-        adapter_state = build_trainable_cpu_state_dict(unwrapped)
+        if gathered_state is not None:
+            adapter_state = thinker_adapter_state_from_full_state(gathered_state)
+            state_source = "accelerator_full_state_dict"
+        else:
+            adapter_state = thinker_adapter_state_from_full_state(build_trainable_cpu_state_dict(unwrapped))
+            state_source = "local_trainable_state_dict"
+        shape_summary = adapter_shape_summary(adapter_state)
         write_progress(progress_path, {
             "event": "save_state_dict_built",
             "checkpoint_dir": str(args.output_dir),
-            "trainable_tensors": len(adapter_state),
-            "trainable_bytes": sum(t.numel() * t.element_size() for t in adapter_state.values()),
+            "state_source": state_source,
+            "trainable_tensors": shape_summary["adapter_tensors"],
+            "trainable_bytes": shape_summary["adapter_bytes"],
+            "shape_summary": shape_summary,
             "timestamp": time.time(),
         })
-        unwrapped.save_pretrained(args.output_dir, state_dict=adapter_state, is_main_process=True)
+        peft_model = getattr(unwrapped, "thinker", unwrapped)
+        peft_model.save_pretrained(args.output_dir, state_dict=adapter_state, is_main_process=True)
         processor.save_pretrained(args.output_dir)
         write_progress(progress_path, {
             "event": "save_done",
