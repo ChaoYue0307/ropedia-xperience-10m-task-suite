@@ -14,7 +14,15 @@ from types import MethodType
 import torch
 import torch.nn.functional as F
 
-from qwen3_omni_dataset_utils import build_messages, DEFAULT_MODEL_ID, load_jsonl
+from qwen3_omni_dataset_utils import (
+    build_messages,
+    DEFAULT_MODEL_ID,
+    has_empty_audio_items,
+    is_empty_audio_exception,
+    load_jsonl,
+    sample_has_audio,
+    sample_without_audio,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -359,20 +367,34 @@ def compute_answer_token_loss(model, inputs: dict, tail_only: bool = True) -> to
 def prepare_sample(processor, sample: dict, use_audio_in_video: bool, device, dtype=None) -> dict:
     from qwen_omni_utils import process_mm_info
 
-    full_messages = build_messages(sample, sample["label_options"], include_answer=True)
-    prompt_messages = build_messages(sample, sample["label_options"], include_answer=False)
-    full_text = processor.apply_chat_template(full_messages, tokenize=False)
-    prompt_text = processor.apply_chat_template(prompt_messages, add_generation_prompt=True, tokenize=False)
-    audios, images, videos = process_mm_info(full_messages, use_audio_in_video=use_audio_in_video)
-    inputs = processor(
-        text=full_text,
-        audio=audios,
-        images=images,
-        videos=videos,
-        return_tensors="pt",
-        padding=True,
-        use_audio_in_video=use_audio_in_video,
-    )
+    active_sample = sample
+    for attempt in range(2):
+        full_messages = build_messages(active_sample, active_sample["label_options"], include_answer=True)
+        prompt_messages = build_messages(active_sample, active_sample["label_options"], include_answer=False)
+        full_text = processor.apply_chat_template(full_messages, tokenize=False)
+        prompt_text = processor.apply_chat_template(prompt_messages, add_generation_prompt=True, tokenize=False)
+        audios, images, videos = process_mm_info(full_messages, use_audio_in_video=use_audio_in_video)
+        if attempt == 0 and sample_has_audio(active_sample) and has_empty_audio_items(audios):
+            active_sample = sample_without_audio(active_sample)
+            continue
+        try:
+            inputs = processor(
+                text=full_text,
+                audio=audios,
+                images=images,
+                videos=videos,
+                return_tensors="pt",
+                padding=True,
+                use_audio_in_video=use_audio_in_video,
+            )
+            break
+        except RuntimeError as exc:
+            if attempt == 0 and sample_has_audio(active_sample) and is_empty_audio_exception(exc):
+                active_sample = sample_without_audio(active_sample)
+                continue
+            raise
+    else:
+        raise RuntimeError("Unable to prepare multimodal sample after dropping empty audio.")
     labels = inputs["input_ids"].clone()
     prompt_ids = processor.tokenizer(prompt_text, add_special_tokens=False, return_tensors="pt")["input_ids"]
     prompt_len = min(prompt_ids.shape[1], labels.shape[1])
