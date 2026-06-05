@@ -325,6 +325,7 @@ def main() -> int:
         "sample_offset": args.sample_offset,
         "sample_stride": args.sample_stride,
         "num_eval_episodes": len({row["episode_id"] for row in rows}),
+        "held_out_episode_count": len({row["episode_id"] for row in rows}),
         "unseen_eval_labels": unseen_labels,
         "num_unseen_label_samples": len(unseen_rows),
         "seen_label_accuracy": sum(row["correct"] for row in seen_rows) / len(seen_rows) if seen_rows else None,

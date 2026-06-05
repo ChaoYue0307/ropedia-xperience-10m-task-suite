@@ -129,6 +129,7 @@ def main() -> int:
         "eval_split": args.eval_split,
         "train_split": args.train_split,
         "num_eval_episodes": len({row["episode_id"] for row in ordered_rows}),
+        "held_out_episode_count": len({row["episode_id"] for row in ordered_rows}),
         "unseen_eval_labels": unseen_labels,
         "num_unseen_label_samples": len(unseen_rows),
         "seen_label_accuracy": sum(row["correct"] for row in seen_rows) / len(seen_rows) if seen_rows else None,
