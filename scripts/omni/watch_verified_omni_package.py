@@ -31,6 +31,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--poll-seconds", type=int, default=60)
     parser.add_argument("--timeout-hours", type=float, default=12.0)
     parser.add_argument("--max-file-mb", type=float, default=50.0)
+    parser.add_argument("--progress-event-seconds", type=float, default=300.0)
+    parser.add_argument("--stale-seconds", type=float, default=300.0)
     return parser.parse_args()
 
 
@@ -59,6 +61,95 @@ def append_event(path: Path, event: str, **fields: Any) -> None:
     payload = {"event": event, "time": time.time(), **fields}
     with path.open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(payload, ensure_ascii=False) + "\n")
+
+
+def count_jsonl_rows(path: Path) -> int:
+    if not path.exists():
+        return 0
+    with path.open("r", encoding="utf-8", errors="replace") as handle:
+        return sum(1 for line in handle if line.strip())
+
+
+def dataset_split_counts(dataset_dir: Path) -> dict[str, int]:
+    manifest = dataset_dir / "dataset_manifest.json"
+    if manifest.exists():
+        payload = read_json(manifest)
+        split_counts = payload.get("split_counts")
+        if isinstance(split_counts, dict):
+            return {str(key): int(value) for key, value in split_counts.items()}
+    dataset_jsonl = dataset_dir / "dataset.jsonl"
+    counts: dict[str, int] = {}
+    if not dataset_jsonl.exists():
+        return counts
+    with dataset_jsonl.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            if not line.strip():
+                continue
+            split = str(json.loads(line).get("split", "unspecified"))
+            counts[split] = counts.get(split, 0) + 1
+    return counts
+
+
+def legacy_generation_count(log_path: Path) -> int:
+    if not log_path.exists():
+        return 0
+    count = 0
+    with log_path.open("r", encoding="utf-8", errors="replace") as handle:
+        for line in handle:
+            if "Setting `pad_token_id`" in line or "Setting pad_token_id" in line:
+                count += 1
+    return count
+
+
+def eval_progress(root: Path, dataset_run_id: str, eval_run_id: str, stale_seconds: float) -> dict[str, Any]:
+    eval_dir = root / eval_run_id
+    dataset_dir = root / f"{dataset_run_id}_dataset"
+    progress = eval_dir / "progress.jsonl"
+    partial = eval_dir / "predictions.partial.jsonl"
+    final_predictions = eval_dir / "predictions.jsonl"
+    log_path = root / dataset_run_id / f"eval_{eval_run_id}.log"
+    split_counts = dataset_split_counts(dataset_dir)
+    total = split_counts.get("test")
+
+    source = None
+    source_path: Path | None = None
+    completed = 0
+    if final_predictions.exists():
+        source = "final_predictions"
+        source_path = final_predictions
+        completed = count_jsonl_rows(final_predictions)
+    elif partial.exists():
+        source = "partial_predictions"
+        source_path = partial
+        completed = count_jsonl_rows(partial)
+    elif progress.exists():
+        rows = read_jsonl(progress)
+        sample_rows = [row for row in rows if row.get("event") == "sample_done"]
+        source = "progress_jsonl"
+        source_path = progress
+        completed = len(sample_rows)
+        starts = [row for row in rows if row.get("event") == "eval_start" and row.get("num_eval_samples")]
+        if starts:
+            total = int(starts[-1]["num_eval_samples"])
+    elif log_path.exists():
+        source = "legacy_generation_log"
+        source_path = log_path
+        completed = legacy_generation_count(log_path)
+
+    if source is None:
+        return {}
+
+    modified_seconds_ago = time.time() - source_path.stat().st_mtime if source_path and source_path.exists() else None
+    remaining = max(0, total - completed) if total is not None else None
+    return {
+        "source": source,
+        "health": "active" if modified_seconds_ago is None or modified_seconds_ago <= stale_seconds else "stale",
+        "completed": completed,
+        "total": total,
+        "remaining": remaining,
+        "percent_complete": round((completed / total) * 100, 2) if total else None,
+        "modified_seconds_ago": round(modified_seconds_ago, 1) if modified_seconds_ago is not None else None,
+    }
 
 
 def watcher_failure(watch_status: Path) -> dict[str, Any] | None:
@@ -115,6 +206,7 @@ def main() -> int:
 
     deadline = time.time() + args.timeout_hours * 3600
     last_state = None
+    last_progress_event = 0.0
     while time.time() < deadline:
         failure = watcher_failure(watch_status)
         if failure:
@@ -140,6 +232,12 @@ def main() -> int:
         elif last_state != "waiting_for_validation":
             append_event(status_path, "waiting_for_validation", validation_json=str(validation_json), watch_status=str(watch_status))
             last_state = "waiting_for_validation"
+
+        if time.time() - last_progress_event >= args.progress_event_seconds:
+            progress = eval_progress(root, args.dataset_run_id, args.eval_run_id, args.stale_seconds)
+            if progress:
+                append_event(status_path, "eval_progress_observed", **progress)
+                last_progress_event = time.time()
 
         time.sleep(args.poll_seconds)
 
