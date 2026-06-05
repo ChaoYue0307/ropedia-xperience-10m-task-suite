@@ -8,6 +8,9 @@ SMOKE_EXIT_EVENT="${SMOKE_EXIT_EVENT:-train_exit_fsdp_smoke_v3_no_val}"
 FULL_RUN_ID="${FULL_RUN_ID:-xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval}"
 MODEL_ID="${MODEL_ID:-/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct}"
 BACKBONE_CONFIG="${BACKBONE_CONFIG:-configs/omni_backbones/qwen3_omni_lora.json}"
+FSDP_CPU_RAM_EFFICIENT_LOADING="${FSDP_CPU_RAM_EFFICIENT_LOADING:-true}"
+FSDP_SYNC_MODULE_STATES="${FSDP_SYNC_MODULE_STATES:-true}"
+FSDP_ACTIVATION_CHECKPOINTING="${FSDP_ACTIVATION_CHECKPOINTING:-true}"
 
 cd "$PROJECT_DIR"
 
@@ -62,6 +65,9 @@ train_cmd=(
   --fsdp_auto_wrap_policy TRANSFORMER_BASED_WRAP
   --fsdp_transformer_layer_cls_to_wrap Qwen3OmniMoeThinkerTextDecoderLayer
   --fsdp_use_orig_params true
+  --fsdp_cpu_ram_efficient_loading "$FSDP_CPU_RAM_EFFICIENT_LOADING"
+  --fsdp_sync_module_states "$FSDP_SYNC_MODULE_STATES"
+  --fsdp_activation_checkpointing "$FSDP_ACTIVATION_CHECKPOINTING"
   scripts/omni/train_qwen3_omni_lora.py
   --dataset-jsonl "$DATASET_JSONL"
   --model-id "$MODEL_ID"

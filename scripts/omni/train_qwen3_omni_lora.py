@@ -50,6 +50,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--use-audio-in-video", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument("--gradient-checkpointing", action="store_true")
     parser.add_argument("--progress-every", type=int, default=1)
+    parser.add_argument(
+        "--loss-logit-tail-only",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="For SFT, project only the supervised assistant-answer tail through lm_head before CE loss.",
+    )
     parser.add_argument("--lora-r", type=int, default=16)
     parser.add_argument("--lora-alpha", type=int, default=32)
     parser.add_argument("--lora-dropout", type=float, default=0.05)
@@ -181,6 +187,56 @@ def build_trainable_cpu_state_dict(model) -> dict[str, torch.Tensor]:
     return state_dict
 
 
+class TailSlicingLmHead(torch.nn.Module):
+    """Wrap lm_head so SFT can avoid full-prompt vocab logits."""
+
+    def __init__(self, base: torch.nn.Module) -> None:
+        super().__init__()
+        self.base = base
+        self.tail_start: int | None = None
+        self._ropedia_tail_slicing_lm_head = True
+
+    @property
+    def weight(self):
+        return self.base.weight
+
+    @property
+    def bias(self):
+        return getattr(self.base, "bias", None)
+
+    def forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
+        if self.tail_start is not None:
+            hidden_states = hidden_states[:, self.tail_start :, :]
+        return self.base(hidden_states)
+
+
+def install_tail_slicing_lm_head(model) -> bool:
+    base = model.get_base_model() if hasattr(model, "get_base_model") else model
+    lm_head = getattr(base, "lm_head", None)
+    if lm_head is None:
+        return False
+    if getattr(lm_head, "_ropedia_tail_slicing_lm_head", False):
+        return True
+    setattr(base, "lm_head", TailSlicingLmHead(lm_head))
+    return True
+
+
+def set_tail_slicing_lm_head(model, tail_start: int | None) -> bool:
+    updated = False
+    for module in model.modules():
+        if getattr(module, "_ropedia_tail_slicing_lm_head", False):
+            module.tail_start = tail_start
+            updated = True
+    return updated
+
+
+def first_supervised_label(labels: torch.Tensor) -> int | None:
+    active = labels[0].ne(-100).nonzero(as_tuple=False)
+    if active.numel() == 0:
+        return None
+    return int(active[0].item())
+
+
 def load_backbone_profile(path: Path | None) -> dict:
     if path is None:
         return {
@@ -250,6 +306,8 @@ def load_model_processor(args: argparse.Namespace):
         target_modules=[item.strip() for item in args.lora_target_modules.split(",") if item.strip()],
     )
     model = get_peft_model(model, config)
+    if args.loss_logit_tail_only:
+        install_tail_slicing_lm_head(model)
     cast_floating_parameters(model, dtype_arg(args.dtype))
     model.print_trainable_parameters()
     return model, processor
@@ -265,14 +323,31 @@ def move_inputs(inputs, device, dtype=None):
     return inputs
 
 
-def compute_answer_token_loss(model, inputs: dict) -> torch.Tensor:
+def compute_answer_token_loss(model, inputs: dict, tail_only: bool = True) -> torch.Tensor:
     """Compute CE only on supervised answer tokens to avoid full-logit fp32 casts."""
     labels = inputs.pop("labels")
-    output = model(**inputs)
+    tail_start = 0
+    if tail_only:
+        first_label = first_supervised_label(labels)
+        if first_label is None:
+            return model(**inputs).logits.sum() * 0.0
+        tail_start = max(first_label - 1, 0)
+        tail_only = set_tail_slicing_lm_head(model, tail_start)
+    try:
+        output = model(**inputs)
+    finally:
+        if tail_only:
+            set_tail_slicing_lm_head(model, None)
     logits = output.logits
     labels = labels.to(logits.device)
-    shift_logits = logits[..., :-1, :]
-    shift_labels = labels[..., 1:]
+    if tail_only:
+        if logits.shape[1] == labels.shape[1]:
+            logits = logits[:, tail_start:, :]
+        shift_logits = logits[..., :-1, :]
+        shift_labels = labels[..., tail_start + 1 : tail_start + 1 + shift_logits.shape[1]]
+    else:
+        shift_logits = logits[..., :-1, :]
+        shift_labels = labels[..., 1:]
     active = shift_labels != -100
     if not active.any().item():
         return logits.sum() * 0.0
@@ -337,7 +412,7 @@ def evaluate_loss(model, processor, samples: list[dict], args: argparse.Namespac
     with torch.no_grad():
         for sample in samples:
             inputs = prepare_sample(processor, sample, args.use_audio_in_video, device, dtype=dtype)
-            loss = compute_answer_token_loss(model, inputs)
+            loss = compute_answer_token_loss(model, inputs, tail_only=args.loss_logit_tail_only)
             losses.append(float(loss.detach().cpu()))
     model.train()
     local = torch.tensor([sum(losses), len(losses)], dtype=torch.float32, device=device)
@@ -393,6 +468,7 @@ def main() -> int:
             "dataset_contract": backbone_profile.get("dataset_contract"),
             "training_objective": backbone_profile.get("training_objective"),
             "loss_mode": "answer_token_ce",
+            "loss_logit_tail_only": args.loss_logit_tail_only,
             "timestamp": time.time(),
         })
     if accelerator.num_processes > 1 and args.device_map == "auto":
@@ -459,7 +535,7 @@ def main() -> int:
             for sample in batch:
                 with accelerator.accumulate(model):
                     inputs = prepare_sample(processor, sample, args.use_audio_in_video, device, dtype=model_dtype)
-                    loss = compute_answer_token_loss(model, inputs)
+                    loss = compute_answer_token_loss(model, inputs, tail_only=args.loss_logit_tail_only)
                     accelerator.backward(loss)
                     batch_loss += float(loss.detach().cpu())
                     if accelerator.sync_gradients:
@@ -535,6 +611,7 @@ def main() -> int:
         },
         "use_audio_in_video": args.use_audio_in_video,
         "loss_mode": "answer_token_ce",
+        "loss_logit_tail_only": args.loss_logit_tail_only,
     }
     if accelerator.is_main_process:
         (args.output_dir / "training_metadata.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")
@@ -553,6 +630,7 @@ def main() -> int:
                 f"lora_r: {args.lora_r}",
                 f"lora_alpha: {args.lora_alpha}",
                 "loss_mode: answer_token_ce",
+                f"loss_logit_tail_only: {args.loss_logit_tail_only}",
             ]) + "\n",
             encoding="utf-8",
         )
@@ -570,6 +648,7 @@ def main() -> int:
             f"- Processes: `{accelerator.num_processes}`",
             f"- Epochs: `{args.epochs}`",
             "- Loss: answer-token cross entropy over supervised JSON tokens",
+            f"- Logit projection: `{'assistant-answer tail only' if args.loss_logit_tail_only else 'full sequence'}`",
             f"- Final train loss: `{history[-1]['train_loss']:.6f}`",
             "",
             "Only LoRA parameters are trained; the base Qwen3-Omni weights remain frozen.",
