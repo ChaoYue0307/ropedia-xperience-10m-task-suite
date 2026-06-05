@@ -21,6 +21,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--eval-run-id", help="Run id that owns held-out evaluation metrics.")
     parser.add_argument("--watch-status-jsonl", type=Path, help="Explicit watcher status JSONL path.")
     parser.add_argument("--last", type=int, default=5)
+    parser.add_argument("--stale-seconds", type=float, default=300.0, help="Warn when an eval log has not changed for this many seconds.")
     return parser.parse_args()
 
 
@@ -220,7 +221,7 @@ def eval_progress_summary(eval_dir: Path) -> dict:
     return summary
 
 
-def legacy_eval_log_summary(run_dir: Path, eval_run_id: str, dataset_dir: Path, eval_split: str = "test") -> dict:
+def legacy_eval_log_summary(run_dir: Path, eval_run_id: str, dataset_dir: Path, eval_split: str = "test", stale_seconds: float = 300.0) -> dict:
     log_path = run_dir / f"eval_{eval_run_id}.log"
     if not log_path.exists():
         return {}
@@ -232,15 +233,20 @@ def legacy_eval_log_summary(run_dir: Path, eval_run_id: str, dataset_dir: Path, 
             if "Setting `pad_token_id`" in line or "Setting pad_token_id" in line:
                 completed += 1
     stat = log_path.stat()
+    modified_seconds_ago = time.time() - stat.st_mtime
+    remaining = max(0, total - completed) if total is not None else None
     return {
         "source": "legacy_generation_log",
         "log": str(log_path),
+        "health": "active" if modified_seconds_ago <= stale_seconds else "stale_log",
         "eval_split": eval_split,
         "completed_generations": completed,
         "num_eval_samples": total,
+        "remaining_generations": remaining,
         "percent_complete": round((completed / total) * 100, 2) if total else None,
         "log_bytes": stat.st_size,
-        "log_modified_seconds_ago": round(time.time() - stat.st_mtime, 1),
+        "log_modified_seconds_ago": round(modified_seconds_ago, 1),
+        "stale_seconds": stale_seconds,
     }
 
 
@@ -320,7 +326,7 @@ def main() -> int:
     else:
         eval_summary = eval_progress_summary(eval_dir)
         if not eval_summary:
-            eval_summary = legacy_eval_log_summary(run_dir, eval_run_id, dataset_dir)
+            eval_summary = legacy_eval_log_summary(run_dir, eval_run_id, dataset_dir, stale_seconds=args.stale_seconds)
         if eval_summary:
             print("\nEval progress:")
             print(json.dumps(eval_summary, indent=2))
