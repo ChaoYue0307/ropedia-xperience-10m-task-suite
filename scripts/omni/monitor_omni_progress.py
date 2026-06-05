@@ -168,6 +168,39 @@ def training_progress_summary(rows: list[dict]) -> dict:
     return summary
 
 
+def eval_progress_summary(eval_dir: Path) -> dict:
+    progress_path = eval_dir / "progress.jsonl"
+    partial_path = eval_dir / "predictions.partial.jsonl"
+    progress_rows = read_jsonl(progress_path)
+    if not progress_rows and not partial_path.exists():
+        return {}
+    sample_events = [row for row in progress_rows if row.get("event") == "sample_done"]
+    start = next((row for row in progress_rows if row.get("event") == "eval_start"), {})
+    latest = progress_rows[-1] if progress_rows else {}
+    completed = len(sample_events)
+    if partial_path.exists():
+        completed = max(completed, sum(1 for _ in partial_path.open("r", encoding="utf-8") if _.strip()))
+    total = int(start.get("num_eval_samples") or latest.get("num_eval_samples") or 0)
+    summary = {
+        "latest_event": latest.get("event"),
+        "progress_jsonl": str(progress_path),
+        "partial_predictions": str(partial_path) if partial_path.exists() else None,
+        "completed_samples": completed,
+        "num_eval_samples": total or None,
+        "percent_complete": round((completed / total) * 100, 2) if total else None,
+    }
+    if len(sample_events) >= 2 and total:
+        first = sample_events[0]
+        last = sample_events[-1]
+        elapsed = float(last.get("timestamp", 0)) - float(first.get("timestamp", 0))
+        sample_delta = int(last.get("completed_samples", 0)) - int(first.get("completed_samples", 0))
+        seconds_per_sample = elapsed / sample_delta if sample_delta > 0 else None
+        remaining = (total - completed) * seconds_per_sample if seconds_per_sample else None
+        summary["seconds_per_sample"] = round(seconds_per_sample, 3) if seconds_per_sample else None
+        summary["eta"] = format_duration(remaining)
+    return summary
+
+
 def main() -> int:
     args = parse_args()
     root = args.workspace / "results" / "omni_finetune"
@@ -241,6 +274,11 @@ def main() -> int:
         payload = json.loads(metrics.read_text(encoding="utf-8"))
         keys = ["accuracy", "action_macro_f1", "json_validity_rate", "subtask_accuracy", "object_micro_f1"]
         print(json.dumps({key: payload.get(key) for key in keys}, indent=2))
+    else:
+        eval_summary = eval_progress_summary(eval_dir)
+        if eval_summary:
+            print("\nEval progress:")
+            print(json.dumps(eval_summary, indent=2))
     return 0
 
 

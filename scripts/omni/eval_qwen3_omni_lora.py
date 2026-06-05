@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import time
 from pathlib import Path
 
 import torch
@@ -44,6 +45,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--local-files-only", action="store_true")
     parser.add_argument("--trust-remote-code", action="store_true")
     parser.add_argument("--use-audio-in-video", action=argparse.BooleanOptionalAction, default=False)
+    parser.add_argument("--resume", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--progress-jsonl", type=Path)
+    parser.add_argument("--partial-predictions-jsonl", type=Path)
     return parser.parse_args()
 
 
@@ -171,11 +175,57 @@ def write_csv(path: Path, rows: list[dict], fieldnames: list[str]) -> None:
         writer.writerows(rows)
 
 
+def append_jsonl(path: Path, payload: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as fp:
+        fp.write(json.dumps(payload, ensure_ascii=False) + "\n")
+
+
+def read_jsonl_if_exists(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    rows = []
+    with path.open("r", encoding="utf-8") as fp:
+        for line in fp:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                rows.append(json.loads(line))
+            except json.JSONDecodeError:
+                continue
+    return rows
+
+
+def prediction_row(model, processor, sample: dict, args: argparse.Namespace, train_labels: set[str]) -> dict:
+    raw = generate_one(model, processor, sample, args)
+    pred_json = parse_answer_json(raw)
+    true_json = sample.get("answer_json", {})
+    predicted = match_label(str(pred_json.get("action", raw)), sample.get("action_options") or sample["label_options"])
+    true_action = true_json.get("action", sample.get("label", "unknown"))
+    return {
+        "id": sample["id"],
+        "target": sample["target"],
+        "split": sample.get("split", "unspecified"),
+        "episode_id": sample["episode_id"],
+        "center_window": sample.get("center_window"),
+        "true_label": true_action,
+        "raw_prediction": raw,
+        "true_json": true_json,
+        "pred_json": pred_json,
+        "predicted_label": predicted,
+        "correct": int(predicted == true_action),
+        "true_label_seen_in_train": int(true_action in train_labels),
+    }
+
+
 def main() -> int:
     args = parse_args()
     if args.output_dir is None:
         args.output_dir = Path(__file__).resolve().parents[2] / "results" / "omni_finetune" / args.run_id
     args.output_dir.mkdir(parents=True, exist_ok=True)
+    args.progress_jsonl = args.progress_jsonl or args.output_dir / "progress.jsonl"
+    args.partial_predictions_jsonl = args.partial_predictions_jsonl or args.output_dir / "predictions.partial.jsonl"
     samples = load_jsonl(args.dataset_jsonl)
     eval_samples = [sample for sample in samples if sample.get("split") == args.eval_split]
     if args.sample_limit > 0:
@@ -188,27 +238,66 @@ def main() -> int:
     unseen_labels = sorted(eval_labels - train_labels)
 
     model, processor = load_model_processor(args)
-    rows = []
-    for sample in eval_samples:
-        raw = generate_one(model, processor, sample, args)
-        pred_json = parse_answer_json(raw)
-        true_json = sample.get("answer_json", {})
-        predicted = match_label(str(pred_json.get("action", raw)), sample.get("action_options") or sample["label_options"])
-        true_action = true_json.get("action", sample.get("label", "unknown"))
-        rows.append({
-            "id": sample["id"],
-            "target": sample["target"],
-            "split": sample.get("split", "unspecified"),
-            "episode_id": sample["episode_id"],
-            "center_window": sample.get("center_window"),
-            "true_label": true_action,
-            "raw_prediction": raw,
-            "true_json": true_json,
-            "pred_json": pred_json,
-            "predicted_label": predicted,
-            "correct": int(predicted == true_action),
-            "true_label_seen_in_train": int(true_action in train_labels),
-        })
+    sample_ids = [sample["id"] for sample in eval_samples]
+    completed_by_id = {}
+    if args.resume:
+        for row in read_jsonl_if_exists(args.partial_predictions_jsonl):
+            if row.get("id") in sample_ids:
+                completed_by_id[row["id"]] = row
+
+    append_jsonl(
+        args.progress_jsonl,
+        {
+            "event": "eval_start",
+            "timestamp": time.time(),
+            "run_id": args.run_id,
+            "eval_split": args.eval_split,
+            "num_eval_samples": len(eval_samples),
+            "completed_before_start": len(completed_by_id),
+            "resume": args.resume,
+        },
+    )
+
+    for index, sample in enumerate(eval_samples, start=1):
+        if sample["id"] in completed_by_id:
+            continue
+        started = time.time()
+        try:
+            row = prediction_row(model, processor, sample, args, train_labels)
+        except Exception as exc:
+            append_jsonl(
+                args.progress_jsonl,
+                {
+                    "event": "sample_error",
+                    "timestamp": time.time(),
+                    "sample_index": index,
+                    "num_eval_samples": len(eval_samples),
+                    "sample_id": sample["id"],
+                    "episode_id": sample.get("episode_id"),
+                    "error_type": type(exc).__name__,
+                    "error": str(exc),
+                },
+            )
+            raise
+        completed_by_id[sample["id"]] = row
+        append_jsonl(args.partial_predictions_jsonl, row)
+        append_jsonl(
+            args.progress_jsonl,
+            {
+                "event": "sample_done",
+                "timestamp": time.time(),
+                "sample_index": index,
+                "num_eval_samples": len(eval_samples),
+                "completed_samples": len(completed_by_id),
+                "sample_id": sample["id"],
+                "episode_id": sample.get("episode_id"),
+                "seconds": round(time.time() - started, 3),
+            },
+        )
+
+    rows = [completed_by_id[sample_id] for sample_id in sample_ids if sample_id in completed_by_id]
+    if len(rows) != len(eval_samples):
+        raise RuntimeError(f"Only {len(rows)} of {len(eval_samples)} evaluation samples completed.")
 
     metrics, per_class, cm = class_metrics(
         [row["true_label"] for row in rows],
@@ -261,6 +350,16 @@ def main() -> int:
         for label, row in zip(labels, cm):
             writer.writerow([label] + row)
     (args.output_dir / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
+    append_jsonl(
+        args.progress_jsonl,
+        {
+            "event": "eval_complete",
+            "timestamp": time.time(),
+            "run_id": args.run_id,
+            "num_eval_samples": len(rows),
+            "metrics_json": str(args.output_dir / "metrics.json"),
+        },
+    )
     report = [
         "# Qwen3-Omni LoRA Evaluation",
         "",
