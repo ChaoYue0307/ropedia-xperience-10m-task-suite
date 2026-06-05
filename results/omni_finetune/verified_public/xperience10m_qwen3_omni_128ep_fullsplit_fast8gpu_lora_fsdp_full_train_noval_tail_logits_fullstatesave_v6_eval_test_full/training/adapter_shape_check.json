@@ -1,0 +1,21 @@
+{
+  "status": "pass",
+  "adapter_file": "<project>/checkpoints/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6/adapter_lora/adapter_model.safetensors",
+  "num_tensors": 576,
+  "num_bad_tensors": 0,
+  "bad_tensors": [],
+  "total_bytes": 69206016,
+  "shape_counts": {
+    "(16, 1280)": 96,
+    "(1280, 16)": 96,
+    "(16, 2048)": 144,
+    "(512, 16)": 96,
+    "(16, 4096)": 48,
+    "(2048, 16)": 48,
+    "(4096, 16)": 48
+  },
+  "prefixes": {
+    "audio_tower": 192,
+    "model": 384
+  }
+}
