@@ -97,17 +97,18 @@ Current scope: This is a single-episode ablation over fixed ridge heads. It vali
 
 ### The next scientific unit is held-out episodes, not more adjacent windows
 
-The prepared Qwen3-Omni path now targets a selected 128-episode pilot; held-out metrics will be reported after staging, training, and evaluation complete.
+The selected Qwen3-Omni path now has a verified held-out diagnostic pilot. It proves the cross-episode train/eval loop, but the weak metrics show that validation monitoring and JSON-format reliability are the next modeling problems.
 
 | Metric | Value |
 | --- | ---: |
-| `target_episodes` | 128 |
-| `selected_sessions` | 128 |
-| `valid_candidates` | 12,102 |
+| `selected_episodes` | 128 |
+| `held_out_test_windows` | 448 |
+| `json_validity_rate` | 0.8527 |
+| `action_macro_f1` | 0.0021 |
 
-Source: `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`.
+Source: `docs/data/omni_finetune_verified_result.json`.
 
-Current scope: The selected-episode Qwen3-Omni fine-tune requires completed data preparation and held-out evaluation; the 32-episode Qwen3-Omni fine-tune requires gated data preparation before any real held-out metric is reported.
+Current scope: The first selected-episode Qwen3-Omni diagnostic pilot is verified, but held-out quality is weak and JSON validity is below the 98% target.
 
 ## How To Read These Results
 

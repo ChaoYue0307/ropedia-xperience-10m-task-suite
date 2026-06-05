@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Project Brief",
-  "summary": "A concise first-reader brief for the public-sample embodied-AI task lab and its multi-episode scale-up path.",
-  "research_intent": "Treat the public Xperience-10M sample as a small but real research system: inspect synchronized modalities, define embodied-AI task contracts, run bounded baselines, package evidence, and prepare held-out multi-episode scale-up without presenting one episode as final model quality.",
+  "summary": "A concise first-reader brief for the public-sample embodied-AI task lab, the first Qwen3-Omni diagnostic pilot, and the multi-model scale-up path.",
+  "research_intent": "Treat the public Xperience-10M sample as a small but real research system, then connect it to verified multi-episode experiments without presenting weak diagnostic results as final model quality.",
   "capability_map": [
     {
       "capability": "Data understanding",
@@ -17,7 +17,7 @@
     },
     {
       "capability": "Scale-up planning",
-      "evidence": "128-episode selection plan, Qwen3-Omni path, Cosmos 3 branch, and policy-model candidates after action-space conversion"
+      "evidence": "verified 96/16/16 Qwen3-Omni diagnostic pilot, validation-aware rerun path, Cosmos 3 branch, and policy-model candidates after action-space conversion"
     }
   ],
   "current_artifacts": [
@@ -43,7 +43,7 @@
     },
     {
       "layer": "Scale-up path",
-      "status": "Qwen3-Omni LoRA code path prepared; the gated full dataset is available for selected 128-episode data preparation"
+      "status": "A selected 96/16/16 Qwen3-Omni LoRA diagnostic pilot is verified; current model-quality metrics are weak and guide the next validation-aware rerun"
     }
   ],
   "reading_order": [
@@ -52,10 +52,10 @@
     "Open EVALUATION_PROTOCOL.md before comparing task scores.",
     "Use RESEARCH_TAKEAWAYS.md for the current metric interpretation.",
     "Inspect results/episode_task_suite/feature_manifest.json to understand one model input.",
-    "Use results/omni_finetune/DATA_ACCESS_STATUS.md for the multi-episode data status."
+    "Use docs/data/omni_finetune_verified_result.json for the current multi-episode Qwen3-Omni pilot result."
   ],
-  "scope_boundary": "The public sample is enough to build and verify task definitions, feature contracts, metrics, visualization, and baseline code. It is not enough to measure final model quality for a general embodied-AI model.",
-  "next_stage": "Run the same contracts on held-out episodes, then fine-tune and evaluate an omni-model with train/test separation at the episode level.",
+  "scope_boundary": "The public sample is enough to build and verify task definitions, feature contracts, metrics, visualization, and baseline code. The first multi-episode Qwen3-Omni pilot verifies the training loop but does not yet show strong model quality.",
+  "next_stage": "Improve validation monitoring, structured JSON reliability, and error analysis before larger robustness or alternative-backbone claims.",
   "entry_points": {
     "visual_dashboard": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/",
     "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite",

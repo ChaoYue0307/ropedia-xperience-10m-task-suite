@@ -14,7 +14,7 @@ outside the current public data scope.
 | Neural MLP heads | Yes, when `torch` is installed | Compact task heads only, not a foundation model. |
 | Website figures and charts | Yes | Generated from committed metrics and sample thumbnails. |
 | Public bundle contents | Yes | Covers public repo and prepared HF bundles. |
-| Multi-episode Qwen3-Omni LoRA pilot | Not yet | The gated full dataset is available for the selected pilot; held-out metrics require completed preprocessing, training, and evaluation. |
+| Multi-episode Qwen3-Omni LoRA pilot | Yes, as a public-safe verified result package | The selected 96/16/16 episode split produced a diagnostic held-out result package with 3,808 exported windows, 448 test predictions, and weak model-quality metrics that motivate the next validation-aware rerun. |
 
 ## Environment
 
@@ -127,10 +127,9 @@ Evidence:
 ## Non-Reproducible From This Public Repo Alone
 
 The following require gated data, large model weights, or private compute
-state, so this repo does not yet provide public reproduction for:
+state, so this repo does not provide public reproduction for:
 
-- a real held-out multi-episode Qwen3-Omni LoRA run,
-- held-out episode metrics for Qwen3-Omni,
+- rerunning the multi-episode Qwen3-Omni LoRA pilot from raw gated data,
 - full Xperience-10M-scale pretraining,
 - raw Xperience-10M video or annotation redistribution,
 - full Qwen weights or large full checkpoints.

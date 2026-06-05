@@ -2,7 +2,7 @@
   "title": "Ropedia Xperience-10M Task Suite Evaluation Protocol",
   "status": "pass",
   "version": "2026-06-01",
-  "generated_at_utc": "2026-06-04T16:42:13+00:00",
+  "generated_at_utc": "2026-06-05T06:52:46+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
@@ -303,22 +303,23 @@
     "Report unseen test classes when the chronological split exposes labels absent from the train segment."
   ],
   "current_limitations": [
-    "Cross-episode generalization is evaluated in the later multi-episode stage.",
+    "Cross-episode generalization for Qwen3-Omni has a first verified diagnostic pilot, but strong model quality is not yet shown.",
     "Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.",
-    "Qwen3-Omni setup artifacts are preparation artifacts until the selected held-out pilot runs.",
+    "The verified Qwen3-Omni diagnostic pilot has weak held-out metrics and needs validation-aware rerunning before larger model-quality claims.",
     "Full audio-visual representation learning still needs multi-episode training; the current report includes single-episode audio/no-audio ablations."
   ],
   "scale_up_gate": {
-    "required_before_full_omni_pilot": [
+    "required_before_next_omni_quality_pilot": [
       "selected prepared Xperience-10M episodes",
       "held-out episode split with no train/test episode leakage",
+      "nonzero validation samples during training",
       "manifest, training metadata, progress logs, metrics, predictions, and run report",
       "held-out evaluation on test episodes rather than train windows"
     ],
-    "current_status": "prepared; selected data relay in progress",
+    "current_status": "verified diagnostic pilot; quality target not met",
     "evidence": [
-      "results/omni_finetune/DATA_ACCESS_STATUS.md",
-      "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md"
+      "docs/data/omni_finetune_verified_result.json",
+      "results/omni_finetune/verified_public/"
     ]
   }
 }

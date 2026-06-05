@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT_DIR="${PROJECT_DIR:-/home/cy/Ropedia/ropedia-episode-task-suite}"
+ROPEDIA_WORKSPACE="${ROPEDIA_WORKSPACE:-$HOME/Ropedia}"
+PROJECT_DIR="${PROJECT_DIR:-$ROPEDIA_WORKSPACE/ropedia-episode-task-suite}"
 BASE_RUN_ID="${BASE_RUN_ID:-xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu}"
 SMOKE_RUN_ID="${SMOKE_RUN_ID:-xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_smoke_v3}"
 SMOKE_EXIT_EVENT="${SMOKE_EXIT_EVENT:-train_exit_fsdp_smoke_v3_no_val}"
-FULL_RUN_ID="${FULL_RUN_ID:-xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval}"
-MODEL_ID="${MODEL_ID:-/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct}"
+FULL_RUN_ID="${FULL_RUN_ID:-xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_valmon}"
+MODEL_ID="${MODEL_ID:-$ROPEDIA_WORKSPACE/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct}"
 BACKBONE_CONFIG="${BACKBONE_CONFIG:-configs/omni_backbones/qwen3_omni_lora.json}"
 FSDP_CPU_RAM_EFFICIENT_LOADING="${FSDP_CPU_RAM_EFFICIENT_LOADING:-true}"
 FSDP_SYNC_MODULE_STATES="${FSDP_SYNC_MODULE_STATES:-true}"
@@ -54,7 +55,7 @@ if is_full_training_active; then
   exit 0
 fi
 
-echo "{\"event\":\"train_start_fsdp_full_train_noval\",\"time\":$(date +%s),\"run_id\":\"${FULL_RUN_ID}\",\"train_split\":\"train\",\"val_split_reserved\":\"val\",\"test_split_reserved\":\"test\",\"num_processes\":8}" >> "$STATUS"
+echo "{\"event\":\"train_start_fsdp_full_train_valmon\",\"time\":$(date +%s),\"run_id\":\"${FULL_RUN_ID}\",\"train_split\":\"train\",\"val_split\":\"val\",\"test_split_reserved\":\"test\",\"num_processes\":8}" >> "$STATUS"
 
 train_cmd=(
   .venv/bin/python -m accelerate.commands.launch
@@ -74,12 +75,12 @@ train_cmd=(
   --backbone-config "$BACKBONE_CONFIG"
   --run-id "$FULL_RUN_ID"
   --train-split train
-  --val-split __none__
+  --val-split val
   --epochs 1
   --batch-size 1
   --gradient-accumulation-steps 8
   --max-train-samples 0
-  --max-val-samples 0
+  --max-val-samples 512
   --local-files-only
   --gradient-checkpointing
   --progress-every 10
@@ -92,5 +93,5 @@ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
 rc=$?
 set -e
 
-echo "{\"event\":\"train_exit_fsdp_full_train_noval\",\"time\":$(date +%s),\"run_id\":\"${FULL_RUN_ID}\",\"returncode\":${rc}}" >> "$STATUS"
+echo "{\"event\":\"train_exit_fsdp_full_train_valmon\",\"time\":$(date +%s),\"run_id\":\"${FULL_RUN_ID}\",\"returncode\":${rc}}" >> "$STATUS"
 exit "$rc"

@@ -23,7 +23,7 @@ not completed benchmark results.
 3. Add representation-learning and skill-graph objectives once enough episodes
    are staged.
 4. Add affordance, 3D/4D memory, and policy-retargeting branches after the
-   labels and action targets are auditable.
+   labels and action targets are measurable.
 
 The current public sample is useful for prototyping the contracts and visual
 explanations. Strong claims for these directions require multi-episode training,

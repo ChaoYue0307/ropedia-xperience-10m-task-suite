@@ -12,7 +12,7 @@
     "raw_xperience10m_data_in_repo": false,
     "audio_feature_status": "Audio is one of the synchronized source modalities in the current task representation.",
     "qwen3_omni_32_episode_claim": false,
-    "qwen3_omni_status": "The gated full dataset is available for selected 128-episode data preparation before held-out episode evaluation."
+    "qwen3_omni_status": "The selected 96/16/16 Qwen3-Omni diagnostic pilot is verified, with weak held-out metrics that guide the next validation-aware rerun."
   },
   "reading_path": [
     {
@@ -41,7 +41,7 @@
         "docs/data/scope_claims_audit.json",
         "docs/data/website_integrity.json"
       ],
-      "readout": "The project status table and roadmap give the compact current-state summary. Single-episode task engineering, metrics, visualizations, public website integrity, mirror parity, and scale-up status checks are implemented; cross-episode generalization and Qwen3-Omni held-out metrics are later milestones."
+      "readout": "The project status table and roadmap give the compact current-state summary. Single-episode task engineering, metrics, visualizations, public website integrity, mirror parity, and the first selected-episode Qwen3-Omni diagnostic pilot are implemented; stronger cross-episode model quality remains a follow-up."
     },
     {
       "step": 2,
@@ -113,9 +113,10 @@
         "docs/data/research_roadmap.json",
         "results/omni_finetune/DATA_ACCESS_STATUS.md",
         "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
-        "scripts/omni/discover_xperience10m_sources.py"
+        "scripts/omni/discover_xperience10m_sources.py",
+        "docs/data/omni_finetune_verified_result.json"
       ],
-      "readout": "The next milestone is a selected-episode held-out Qwen3-Omni LoRA pilot after staging and preprocessing complete."
+      "readout": "The selected-episode held-out Qwen3-Omni diagnostic pilot is verified. The next milestone is a validation-aware rerun with stronger JSON-format reliability and error analysis."
     }
   ],
     "project_status": "PROJECT_STATUS.md",
@@ -141,8 +142,8 @@
     "hf_model_baselines": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines"
   },
   "current_reading_notes": [
-    "Cross-environment generalization is evaluated in the later multi-episode stage.",
-    "The Qwen3-Omni setup run is separate from the planned held-out 32-episode fine-tune and still requires gated data preparation before any real 32-episode result is reported.",
+    "The first cross-episode Qwen3-Omni diagnostic pilot is verified, but strong model quality is not yet shown.",
+    "Older Qwen3-Omni setup artifacts are separate from the verified selected-episode diagnostic package.",
     "Feature-vector reconstruction is separate from pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
     "Raw Xperience-10M data is not redistributed in this repo."
   ]

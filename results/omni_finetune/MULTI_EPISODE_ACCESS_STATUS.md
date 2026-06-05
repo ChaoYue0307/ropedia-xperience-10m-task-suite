@@ -2,8 +2,9 @@
 
 Current status: access to the gated full `ropedia-ai/xperience-10m` dataset is
 granted, and a metadata-only Hugging Face audit has been completed. A selected
-128-episode pilot has been defined, but the multi-episode fine-tune has not
-completed preprocessing, training, or held-out evaluation yet.
+128-episode pilot has produced a verified diagnostic Qwen3-Omni LoRA package
+with held-out evaluation. The result is useful as a pipeline and error-analysis
+baseline, not as a strong final model.
 
 This file records the public data-access status and pilot requirements. It does
 not include local-machine aliases, private paths, SSH hosts, or token locations.
@@ -26,19 +27,32 @@ not include local-machine aliases, private paths, SSH hosts, or token locations.
 
 ## Current Stage
 
-The current Qwen3-Omni artifacts come from the locally available sample data.
-The held-out model-quality run starts after selected complete episodes are
-available, validated for modality coverage, reviewed for content balance, and
-preprocessed into train/validation/test examples. This is still a preparation
-stage, not a model-quality result.
+The current Qwen3-Omni artifacts include a verified diagnostic held-out run:
+96/16/16 selected train/val/test episodes, 3,808 exported windows, 2,848 train
+examples, 512 validation examples in the exported dataset, and 448 held-out
+test predictions from 14 exported test episodes. Training used eight distributed accelerator processes
+for one epoch with LoRA rank 16. The run did not compute validation loss during
+training, so the next run should enable validation monitoring.
 
-A real held-out pilot can be claimed only after:
+A stronger model-quality pilot should be claimed only after:
 
 - selected valid episodes are available locally,
 - the manifest builder confirms complete held-out episode splits,
 - training finishes with recorded metadata and progress logs,
 - evaluation runs on held-out test episodes,
 - predictions, metrics, confusion matrices, and a run report are committed.
+- JSON validity and action/subtask metrics improve beyond the current
+  diagnostic baseline.
+
+Current diagnostic metrics:
+
+- JSON validity: 85.27%
+- action macro-F1: 0.0021
+- subtask accuracy: 0.0045
+- transition accuracy: 0.8281
+- next-action accuracy: 0.0223
+- contact accuracy: 0.6518
+- object micro-F1: 0.2306
 
 The public data access summary is:
 
@@ -51,6 +65,12 @@ The current metadata-only full dataset audit is:
 The current 128-episode metadata-balanced download plan is:
 
 `results/omni_finetune/XPERIENCE10M_128_EPISODE_SELECTION.md`
+
+The current verified diagnostic package is:
+
+`docs/data/omni_finetune_verified_result.json`
+
+`results/omni_finetune/verified_public/`
 
 The older machine-generated source discovery report remains a pre-access local
 planning record:

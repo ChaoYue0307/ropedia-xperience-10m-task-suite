@@ -22,12 +22,12 @@
   },
   "steps": [
     {
-            "id": "download_sample",
-            "status": "reproducible",
-            "command": "hf download ropedia-ai/xperience-10m-sample --repo-type dataset --local-dir data/sample/xperience-10m-sample",
-            "expected": "annotation.hdf5 plus public sample MP4 streams under data/sample/xperience-10m-sample; optional visualization.rrd can be inspected with Rerun 0.29.0",
-            "boundary": "sample card lists cc-by-nc-4.0; raw sample data is downloaded from upstream, not redistributed here"
-        },
+      "id": "download_sample",
+      "status": "reproducible",
+      "command": "hf download ropedia-ai/xperience-10m-sample --repo-type dataset --local-dir data/sample/xperience-10m-sample",
+      "expected": "annotation.hdf5 plus public sample MP4 streams under data/sample/xperience-10m-sample; optional visualization.rrd can be inspected with Rerun 0.29.0",
+      "boundary": "sample card lists cc-by-nc-4.0; raw sample data is downloaded from upstream, not redistributed here"
+    },
     {
       "id": "minimal_baselines",
       "status": "reproducible",
@@ -42,28 +42,28 @@
       "expected": "12 task metrics, predictions, manifests, and neural_mlp task-head artifacts",
       "boundary": "8,546-dimensional multimodal window contract"
     },
-        {
-            "id": "research_direction_outputs",
-            "status": "reproducible",
-            "command": "python scripts/research_direction_taxonomy.py && python scripts/research_direction_extension_tasks.py && python scripts/task_walkthroughs.py",
-            "expected": "research-direction taxonomy, extension probes, and task walkthrough artifacts",
-            "boundary": "single-episode probes, not full research-direction solutions"
-        },
-        {
-            "id": "source_alignment_audit",
-            "status": "reproducible",
-            "command": "python scripts/validate_source_alignment.py",
-            "expected": "SOURCE_ALIGNMENT_AUDIT.md and docs/data/source_alignment_audit.json",
-            "boundary": "offline committed-fact audit; does not fetch private gated data"
-        },
-        {
-            "id": "evaluation_protocol",
-            "status": "reproducible",
-            "command": "python scripts/build_evaluation_protocol.py",
-            "expected": "EVALUATION_PROTOCOL.md and docs/data/evaluation_protocol.json",
-            "boundary": "defines single-episode task evaluation rules; does not add cross-episode model quality"
-        },
-        {
+    {
+      "id": "research_direction_outputs",
+      "status": "reproducible",
+      "command": "python scripts/research_direction_taxonomy.py && python scripts/research_direction_extension_tasks.py && python scripts/task_walkthroughs.py",
+      "expected": "research-direction taxonomy, extension probes, and task walkthrough artifacts",
+      "boundary": "single-episode probes, not full research-direction solutions"
+    },
+    {
+      "id": "source_alignment_audit",
+      "status": "reproducible",
+      "command": "python scripts/validate_source_alignment.py",
+      "expected": "SOURCE_ALIGNMENT_AUDIT.md and docs/data/source_alignment_audit.json",
+      "boundary": "offline committed-fact audit; does not fetch private gated data"
+    },
+    {
+      "id": "evaluation_protocol",
+      "status": "reproducible",
+      "command": "python scripts/build_evaluation_protocol.py",
+      "expected": "EVALUATION_PROTOCOL.md and docs/data/evaluation_protocol.json",
+      "boundary": "defines single-episode task evaluation rules; does not add cross-episode model quality"
+    },
+    {
       "id": "figures_and_dashboard_data",
       "status": "reproducible",
       "command": "python scripts/generate_visualizations.py && python scripts/render_overview_figures.py && python scripts/render_task_suite_infographic.py && python scripts/export_modality_atlas_assets.py && python scripts/build_brand_assets.py && python scripts/build_figure_index.py",
@@ -79,10 +79,10 @@
     },
     {
       "id": "qwen3_omni_multi_episode_pilot",
-      "status": "not_publicly_reproducible_yet",
-      "command": "scripts/omni/discover_xperience10m_sources.py then scripts/omni/train_qwen3_omni_lora.py after selected episodes are prepared",
-      "expected": "held-out episode LoRA pilot metrics after data gate passes",
-      "boundary": "the gated full dataset is available for the selected pilot, but no held-out multi-episode metric is claimed until preprocessing, training, and evaluation finish"
+      "status": "verified_diagnostic_pilot_not_publicly_rerunnable_without_gated_data",
+      "command": "scripts/omni/build_qwen3_omni_dataset.py and scripts/omni/train_qwen3_omni_lora.py on the selected gated episodes",
+      "expected": "verified diagnostic LoRA package with 3,808 exported windows, 2,848 train windows, and 448 held-out test predictions",
+      "boundary": "the public package records metrics and manifests, but rerunning requires gated Xperience-10M episode access and base-model weights; current JSON validity is 85.27%, below the 98% target"
     }
   ]
 }

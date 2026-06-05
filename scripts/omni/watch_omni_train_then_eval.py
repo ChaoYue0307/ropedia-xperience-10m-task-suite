@@ -24,7 +24,7 @@ from typing import Any
 
 DEFAULT_DATASET_RUN_ID = "xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu"
 DEFAULT_TRAIN_RUN_ID = "xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6"
-DEFAULT_MODEL_ID = "/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct"
+DEFAULT_MODEL_ID = str(Path.home() / "Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct")
 
 
 def parse_args() -> argparse.Namespace:

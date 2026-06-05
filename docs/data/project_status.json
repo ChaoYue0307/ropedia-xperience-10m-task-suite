@@ -1,8 +1,8 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Project Status",
   "version": "2026-06-01",
-  "decision": "public_sample_pipeline_verified_multi_episode_omni_data_staging",
-  "research_positioning": "A research-engineering study that makes one public Xperience-10M sample episode inspectable, defines embodied-AI tasks over synchronized modalities, records baseline behavior, and keeps later multi-episode model-quality claims separate from current single-episode evidence.",
+  "decision": "public_sample_pipeline_verified_qwen3_omni_diagnostic_pilot",
+  "research_positioning": "A research-engineering study that makes one public Xperience-10M sample episode inspectable, defines embodied-AI tasks over synchronized modalities, records baseline behavior, and uses the first selected-episode Qwen3-Omni diagnostic pilot as a verified but weak cross-episode baseline.",
   "scope_boundary": {
     "validated_episode_count": 1,
     "aligned_frames": 5821,
@@ -13,7 +13,19 @@
     "direction_extension_probe_count": 4,
     "audio_featurized": true,
     "raw_xperience10m_data_redistributed": false,
-    "qwen3_omni_32_episode_claim": false
+    "qwen3_omni_32_episode_claim": false,
+    "qwen3_omni_verified_diagnostic_pilot": true,
+    "qwen3_omni_selected_episode_counts": {
+      "train": 96,
+      "val": 16,
+      "test": 16
+    },
+    "qwen3_omni_exported_window_counts": {
+      "train": 2848,
+      "val": 512,
+      "test": 448
+    },
+    "qwen3_omni_json_validity_rate": 0.8526785714285714
   },
   "rows": [
     {
@@ -82,7 +94,7 @@
                 "RESEARCH_ROADMAP.md",
                 "docs/data/research_roadmap.json"
             ],
-            "readout": "The roadmap connects public-sample task development to 128-episode data preparation, Qwen3-Omni LoRA, foundation-model selection, robustness runs, world/policy branches, and the future Xperience-native pretraining goal."
+            "readout": "The roadmap connects public-sample task development to the verified Qwen3-Omni diagnostic pilot, validation-aware reruns, foundation-model selection, robustness runs, world/policy branches, and the future Xperience-native pretraining goal."
         },
         {
             "area": "Foundation-model plan",
@@ -152,12 +164,14 @@
     },
     {
       "area": "Qwen3-Omni fine-tuning",
-      "status": "data_preparation_full_metrics_pending",
+      "status": "verified_diagnostic_pilot_quality_target_not_met",
       "evidence": [
-        "results/omni_finetune/DATA_ACCESS_STATUS.md",
-        "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md"
+        "docs/data/omni_finetune_verified_result.json",
+        "results/omni_finetune/verified_public/",
+        "scripts/omni/package_verified_omni_result.py",
+        "scripts/omni/audit_verified_omni_package.py"
       ],
-      "readout": "The gated full dataset is available for a selected 128-episode pilot; final held-out metrics require completed preprocessing, manifest construction, training, and held-out evaluation."
+      "readout": "The selected 96/16/16 episode split has a verified held-out Qwen3-Omni diagnostic package. It contains 3,808 exported windows and 448 held-out test predictions; JSON validity is 85.27%, below the 98% target, so it is a baseline for error analysis rather than a strong model."
     },
     {
       "area": "Raw Xperience-10M redistribution",
@@ -181,15 +195,16 @@
         "Inspect EVALUATION_PROTOCOL.md before judging task metrics or leakage controls.",
         "Inspect SOURCE_ALIGNMENT_AUDIT.md before judging source-card consistency across public surfaces.",
         "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
-    "Inspect results/omni_finetune/DATA_ACCESS_STATUS.md before judging Qwen3-Omni scale-up status."
+    "Inspect docs/data/omni_finetune_verified_result.json before judging the Qwen3-Omni diagnostic pilot."
   ],
   "current_reading_notes": [
-    "Cross-episode generalization is evaluated in the later multi-episode stage.",
+    "The first cross-episode Qwen3-Omni diagnostic pilot is verified, but current held-out quality is weak.",
     "Older pilot path names refer to setup files, not completed held-out training results.",
     "The current reconstruction task reconstructs feature vectors, not pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
     "Audio is one of the synchronized source modalities in the current task representation.",
     "The audio ablation report compares audio/no-audio variants across all 12 task contracts in results/audio_ablation/.",
     "Foundation-model selection is explicit: Qwen3-Omni is the immediate trainable pilot, Cosmos 3 is the first world-model branch, and policy models such as OpenVLA/openpi/GR00T wait for action-target conversion.",
+    "The next Qwen3-Omni run should enable validation monitoring and improve structured JSON reliability before larger model-quality claims.",
     "The Xperience Embodied Foundation Model is a future native-pretraining goal, not a completed model or current benchmark."
   ]
 }

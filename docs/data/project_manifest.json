@@ -2,16 +2,24 @@
   "name": "Ropedia Xperience-10M Task Suite",
   "slug": "ropedia-xperience-10m-task-suite",
   "version": "0.1.0",
-  "status": "single_episode_research_development",
-  "last_metadata_update": "2026-06-03",
-  "summary": "Research-development repo built around one public Xperience-10M sample episode released by Ropedia.",
+  "status": "single_episode_suite_plus_qwen3_omni_diagnostic_pilot",
+  "last_metadata_update": "2026-06-05",
+  "summary": "Research-development repo built around one public Xperience-10M sample episode plus a verified selected-episode Qwen3-Omni diagnostic pilot.",
   "scope_boundary": {
     "raw_data_redistributed": false,
     "episode_count_verified": 1,
     "window_count_verified": 1161,
     "feature_dim_verified": 8546,
     "audio_featurized": true,
-    "qwen3_omni_32_episode_claim": false
+    "qwen3_omni_32_episode_claim": false,
+    "qwen3_omni_verified_diagnostic_pilot": true,
+    "qwen3_omni_selected_split": {
+      "train": 96,
+      "val": 16,
+      "test": 16
+    },
+    "qwen3_omni_held_out_test_windows": 448,
+    "qwen3_omni_json_validity_rate": 0.8526785714285714
   },
   "public_surfaces": {
     "github_repo": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite",
@@ -72,6 +80,7 @@
     "task_surface_integrity": "docs/data/task_surface_integrity.json",
     "project_packet": "docs/data/project_packet.json",
     "summary_metrics": "docs/data/summary_metrics.json",
+    "omni_finetune_verified_result": "docs/data/omni_finetune_verified_result.json",
     "modality_atlas": "docs/data/modality_atlas.json",
     "research_directions": "docs/data/research_directions.json",
     "research_direction_extensions": "docs/data/research_direction_extensions.json",

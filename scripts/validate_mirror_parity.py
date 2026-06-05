@@ -30,6 +30,7 @@ DATA_FILES = [
     "foundation_model_plan.json",
     "live_publication_status.json",
     "modality_atlas.json",
+    "omni_finetune_verified_result.json",
     "project_brief.json",
     "project_manifest.json",
     "project_packet.json",
