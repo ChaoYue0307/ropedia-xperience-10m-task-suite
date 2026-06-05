@@ -39,6 +39,7 @@
     "neutral_index": "scripts/omni/export_model_neutral_window_index.py",
     "train": "scripts/omni/train_qwen3_omni_lora.py",
     "eval": "scripts/omni/eval_qwen3_omni_lora.py",
+    "watch": "scripts/omni/watch_omni_train_then_eval.py",
     "launcher": "scripts/omni/run_128_fullsplit_parallel_export_8gpu.sh",
     "upload": "scripts/omni/upload_qwen3_omni_lora_to_hf.py",
     "validate": "scripts/omni/validate_omni_finetune_run.py"
