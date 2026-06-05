@@ -25,6 +25,9 @@ EPOCHS="${EPOCHS:-1}"
 NUM_PROCESSES="${NUM_PROCESSES:-8}"
 USE_FSDP="${USE_FSDP:-1}"
 FSDP_TRANSFORMER_LAYER="${FSDP_TRANSFORMER_LAYER:-Qwen3OmniMoeThinkerTextDecoderLayer}"
+FSDP_CPU_RAM_EFFICIENT_LOADING="${FSDP_CPU_RAM_EFFICIENT_LOADING:-true}"
+FSDP_SYNC_MODULE_STATES="${FSDP_SYNC_MODULE_STATES:-true}"
+FSDP_ACTIVATION_CHECKPOINTING="${FSDP_ACTIVATION_CHECKPOINTING:-true}"
 
 RUN_DIR="$RESULT_ROOT/$RUN_ID"
 DATASET_RUN_ID="${RUN_ID}_dataset"
@@ -140,6 +143,9 @@ if [[ "$USE_FSDP" == "1" ]]; then
     --fsdp_auto_wrap_policy TRANSFORMER_BASED_WRAP
     --fsdp_transformer_layer_cls_to_wrap "$FSDP_TRANSFORMER_LAYER"
     --fsdp_use_orig_params true
+    --fsdp_cpu_ram_efficient_loading "$FSDP_CPU_RAM_EFFICIENT_LOADING"
+    --fsdp_sync_module_states "$FSDP_SYNC_MODULE_STATES"
+    --fsdp_activation_checkpointing "$FSDP_ACTIVATION_CHECKPOINTING"
   )
 fi
 train_cmd+=(
