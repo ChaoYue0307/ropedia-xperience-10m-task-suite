@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
-"""Wait for an omni LoRA training run, then validate and evaluate it.
+"""Wait for an omni training run, then validate and evaluate it.
 
 The script is intentionally a gate runner: it does not invent metrics and it
 does not mark a run successful until the training progress ends in `complete`,
-the adapter tensors are reloadable-shaped, and the existing validators pass.
+the configured checkpoint check passes, and the existing validators pass.
+
+The default checkpoint check is for PEFT/LoRA safetensors because Qwen3-Omni is
+the first implemented branch. Future backbones can reuse the same wait/eval
+sequence with a model-specific evaluator and a different checkpoint gate.
 """
 
 from __future__ import annotations
@@ -35,6 +39,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--adapter-dir", type=Path)
     parser.add_argument("--model-id", default=DEFAULT_MODEL_ID)
     parser.add_argument("--eval-script", default="scripts/omni/eval_qwen3_omni_lora.py")
+    parser.add_argument("--validation-script", default="scripts/omni/validate_omni_finetune_run.py")
+    parser.add_argument("--adapter-check", choices=["lora_safetensors", "none"], default="lora_safetensors")
     parser.add_argument("--status-jsonl", type=Path)
     parser.add_argument("--poll-seconds", type=int, default=60)
     parser.add_argument("--timeout-hours", type=float, default=12.0)
@@ -125,7 +131,7 @@ def adapter_shape_check(adapter_dir: Path) -> dict[str, Any]:
 def validation_cmd(args: argparse.Namespace, stage: str, output: Path, eval_run_id: str | None = None) -> list[str]:
     cmd = [
         sys.executable,
-        "scripts/omni/validate_omni_finetune_run.py",
+        args.validation_script,
         "--workspace",
         str(args.workspace),
         "--run-id",
@@ -228,10 +234,13 @@ def main() -> int:
     wait_for_training_complete(args, progress_path, status_path)
     append_event(status_path, "training_complete_observed", progress=str(progress_path))
 
-    shape_payload = adapter_shape_check(args.adapter_dir)
-    shape_path = run_dir / f"adapter_shape_check_{args.train_run_id}.json"
-    write_json(shape_path, shape_payload)
-    append_event(status_path, "adapter_shape_check_done", output=str(shape_path), **{k: shape_payload[k] for k in ("status", "num_tensors", "num_bad_tensors", "total_bytes")})
+    if args.adapter_check == "lora_safetensors":
+        shape_payload = adapter_shape_check(args.adapter_dir)
+        shape_path = run_dir / f"adapter_shape_check_{args.train_run_id}.json"
+        write_json(shape_path, shape_payload)
+        append_event(status_path, "adapter_shape_check_done", output=str(shape_path), **{k: shape_payload[k] for k in ("status", "num_tensors", "num_bad_tensors", "total_bytes")})
+    else:
+        append_event(status_path, "adapter_shape_check_skipped", adapter_check=args.adapter_check)
 
     validation_training = run_dir / f"validation_training_{args.train_run_id}.json"
     run_checked(

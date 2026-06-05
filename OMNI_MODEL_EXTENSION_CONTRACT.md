@@ -102,7 +102,18 @@ Implemented entrypoints:
 - `scripts/omni/parallel_export_qwen3_omni_action_dataset.py`
 - `scripts/omni/train_qwen3_omni_lora.py`
 - `scripts/omni/eval_qwen3_omni_lora.py`
+- `scripts/omni/watch_omni_train_then_eval.py`
 - `scripts/omni/run_128_fullsplit_parallel_export_8gpu.sh`
+
+The watcher is the current post-training gate runner. For the Qwen3-Omni LoRA
+branch it waits for `progress.jsonl` to end in `complete`, checks the PEFT LoRA
+safetensors shapes, runs the training validator, runs a held-out eval smoke,
+then runs the full held-out test evaluation.
+
+Future model families can reuse the same wait/eval sequence only if their
+checkpoint artifact has a compatible gate. Otherwise they should provide a
+model-specific checkpoint check and evaluator, while keeping the same episode
+split and held-out reporting discipline.
 
 ## Cosmos-Style World Model Contract
 
@@ -140,6 +151,11 @@ Minimum evaluators:
 - transition/contact prediction,
 - qualitative generated or retrieved examples.
 
+Cosmos-style checkpoints are not LoRA adapters by default. Their post-training
+gate should verify generated latent/video checkpoints, model config, scheduler
+state, and future-window evaluator outputs instead of using the Qwen LoRA
+safetensors check.
+
 ## VLA / Policy Contract
 
 Policy branches need an explicit action target before training. A valid sample
@@ -161,6 +177,11 @@ Minimum evaluators:
 - trajectory MPJPE when trajectories are used,
 - object-affordance F1,
 - held-out episode count and leakage check.
+
+Policy checkpoints should additionally save the action-space definition,
+normalization statistics, and retargeting/conversion metadata. These must be
+fit from train episodes only and validated before any held-out policy metrics
+are reported.
 
 ## Non-Negotiable Invariants
 
