@@ -77,6 +77,23 @@ separates:
 Future exporters should consume this neutral index when possible, then add only
 the model-specific target conversion that they need.
 
+## Artifact Contract
+
+Every backbone config must declare an `artifact_contract` with:
+
+- `checkpoint_gate`: the model-specific checkpoint validation rule,
+- `required_training_files`: files that prove training state and configuration,
+- `required_eval_files`: files that prove held-out evaluation outputs,
+- `public_package_allowed`: small derived artifacts that may be published,
+- `public_package_forbidden`: raw data, weights, checkpoints, or large files
+  that must stay out of public packages.
+
+`scripts/omni/backbone_registry.py --validate --json` now checks that the
+contract exists for Qwen, Cosmos-style, and policy/VLA branches. The concrete
+packager currently implements the Qwen public-safe package; Cosmos-style and
+policy branches must add matching package/validation code before reporting
+public metrics.
+
 ## Qwen3-Omni Contract
 
 Qwen3-Omni consumes:

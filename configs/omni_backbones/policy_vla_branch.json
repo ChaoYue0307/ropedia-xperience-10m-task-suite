@@ -51,6 +51,43 @@
     "object_affordance_f1",
     "held_out_episode_count"
   ],
+  "artifact_contract": {
+    "checkpoint_gate": "policy_checkpoint_action_space_and_normalizer",
+    "required_eval_files": [
+      "metrics.json",
+      "policy_predictions.jsonl",
+      "trajectory_metrics.csv",
+      "action_confusion_matrix.csv",
+      "retargeting_audit.json",
+      "RUN_REPORT.md"
+    ],
+    "required_training_files": [
+      "training_metadata.json",
+      "progress.jsonl",
+      "action_space.json",
+      "normalization_stats.json",
+      "checkpoint_manifest.json"
+    ],
+    "public_package_allowed": [
+      "metrics",
+      "policy prediction summaries",
+      "trajectory metric tables",
+      "action confusion matrices",
+      "action-space definitions",
+      "normalization metadata",
+      "retargeting audit summaries",
+      "validation summaries"
+    ],
+    "public_package_forbidden": [
+      "raw MP4",
+      "annotation HDF5",
+      "Rerun RRD",
+      "private retargeting source files",
+      "base-model weights",
+      "full checkpoints",
+      "large archives"
+    ]
+  },
   "extension_requirements": [
     "Define an explicit action space before policy fine-tuning.",
     "Implement target conversion from human egocentric motion to policy-compatible action tokens or trajectories.",

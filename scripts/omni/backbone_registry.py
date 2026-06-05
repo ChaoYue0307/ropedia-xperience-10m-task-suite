@@ -25,11 +25,19 @@ REQUIRED_KEYS = {
     "modalities",
     "entrypoints",
     "primary_metrics",
+    "artifact_contract",
     "extension_requirements",
 }
 
 IMPLEMENTED_STATUS = "implemented"
 DEFAULT_CONFIG_DIR = Path(__file__).resolve().parents[2] / "configs" / "omni_backbones"
+ARTIFACT_CONTRACT_KEYS = {
+    "checkpoint_gate",
+    "required_eval_files",
+    "required_training_files",
+    "public_package_allowed",
+    "public_package_forbidden",
+}
 
 
 def load_config(path: Path) -> dict[str, Any]:
@@ -37,6 +45,10 @@ def load_config(path: Path) -> dict[str, Any]:
     missing = sorted(REQUIRED_KEYS - set(payload))
     if missing:
         raise ValueError(f"{path} is missing required keys: {missing}")
+    artifact_contract = payload.get("artifact_contract", {})
+    missing_artifact = sorted(ARTIFACT_CONTRACT_KEYS - set(artifact_contract))
+    if missing_artifact:
+        raise ValueError(f"{path} artifact_contract is missing required keys: {missing_artifact}")
     payload["_config_path"] = str(path)
     return payload
 
@@ -73,6 +85,8 @@ def summarize(config: dict[str, Any]) -> dict[str, Any]:
             key for key, value in config.get("entrypoints", {}).items() if not value
         ),
         "primary_metrics": config["primary_metrics"],
+        "checkpoint_gate": config["artifact_contract"]["checkpoint_gate"],
+        "required_eval_file_count": len(config["artifact_contract"]["required_eval_files"]),
         "extension_requirement_count": len(config.get("extension_requirements", [])),
     }
 
