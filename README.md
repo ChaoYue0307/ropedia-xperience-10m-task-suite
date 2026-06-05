@@ -632,6 +632,15 @@ python scripts/omni/package_verified_omni_result.py \
   --eval-run-id <eval_run_id>
 ```
 
+For long-running remote jobs, the packaging step can be watched automatically:
+
+```bash
+python scripts/omni/watch_verified_omni_package.py \
+  --dataset-run-id xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu \
+  --train-run-id <train_run_id> \
+  --eval-run-id <eval_run_id>
+```
+
 The package copies only small derived artifacts such as metrics, predictions,
 confusion matrices, run reports, manifests, validation summaries, and training
 metadata. It excludes raw Xperience-10M files, base-model weights, LoRA adapter
