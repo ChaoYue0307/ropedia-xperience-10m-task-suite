@@ -20,6 +20,9 @@ Every trainable branch should keep these stages:
 6. **Held-out evaluation:** evaluate on test episodes only after training.
 7. **Run report:** write metrics, predictions, confusion matrices or
    task-specific scoring files, and skipped-episode reasons.
+8. **Long-run observability:** stream `progress.jsonl` and
+   `predictions.partial.jsonl` during evaluation so multi-hour held-out runs can
+   be monitored and resumed without changing the final metric definitions.
 
 The current 128-episode pilot uses a fixed `96/16/16` train/val/test split by
 episode.
@@ -109,6 +112,11 @@ The watcher is the current post-training gate runner. For the Qwen3-Omni LoRA
 branch it waits for `progress.jsonl` to end in `complete`, checks the PEFT LoRA
 safetensors shapes, runs the training validator, runs a held-out eval smoke,
 then runs the full held-out test evaluation.
+
+The Qwen evaluator writes partial predictions during inference and finalizes the
+same `predictions.jsonl`, `predictions.csv`, `metrics.json`,
+`confusion_matrix.csv`, and `RUN_REPORT.md` files after all selected held-out
+windows finish. A restarted eval can resume from the partial prediction file.
 
 Future model families can reuse the same wait/eval sequence only if their
 checkpoint artifact has a compatible gate. Otherwise they should provide a
