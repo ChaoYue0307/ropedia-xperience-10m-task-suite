@@ -645,6 +645,10 @@ python scripts/omni/watch_verified_omni_package.py \
   --eval-run-id <eval_run_id>
 ```
 
+While waiting, the watcher can append `eval_progress_observed` events from
+partial prediction files or legacy generation logs. This keeps the package
+status file useful during long held-out evaluations.
+
 The package copies only small derived artifacts such as metrics, predictions,
 confusion matrices, run reports, manifests, validation summaries, and training
 metadata. The exact required eval files and primary metrics come from the
