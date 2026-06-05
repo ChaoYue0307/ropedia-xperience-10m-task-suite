@@ -14,11 +14,15 @@ from qwen3_omni_dataset_utils import (
     build_messages,
     class_metrics,
     DEFAULT_MODEL_ID,
+    has_empty_audio_items,
+    is_empty_audio_exception,
     json_validity_rate,
     label_counts,
     load_jsonl,
     match_label,
     parse_answer_json,
+    sample_has_audio,
+    sample_without_audio,
     write_jsonl,
 )
 
@@ -95,18 +99,32 @@ def move_inputs(inputs, model):
 def generate_one(model, processor, sample: dict, args: argparse.Namespace) -> str:
     from qwen_omni_utils import process_mm_info
 
-    messages = build_messages(sample, sample["label_options"], include_answer=False)
-    text = processor.apply_chat_template(messages, add_generation_prompt=True, tokenize=False)
-    audios, images, videos = process_mm_info(messages, use_audio_in_video=args.use_audio_in_video)
-    inputs = processor(
-        text=text,
-        audio=audios,
-        images=images,
-        videos=videos,
-        return_tensors="pt",
-        padding=True,
-        use_audio_in_video=args.use_audio_in_video,
-    )
+    active_sample = sample
+    for attempt in range(2):
+        messages = build_messages(active_sample, active_sample["label_options"], include_answer=False)
+        text = processor.apply_chat_template(messages, add_generation_prompt=True, tokenize=False)
+        audios, images, videos = process_mm_info(messages, use_audio_in_video=args.use_audio_in_video)
+        if attempt == 0 and sample_has_audio(active_sample) and has_empty_audio_items(audios):
+            active_sample = sample_without_audio(active_sample)
+            continue
+        try:
+            inputs = processor(
+                text=text,
+                audio=audios,
+                images=images,
+                videos=videos,
+                return_tensors="pt",
+                padding=True,
+                use_audio_in_video=args.use_audio_in_video,
+            )
+            break
+        except RuntimeError as exc:
+            if attempt == 0 and sample_has_audio(active_sample) and is_empty_audio_exception(exc):
+                active_sample = sample_without_audio(active_sample)
+                continue
+            raise
+    else:
+        raise RuntimeError("Unable to prepare multimodal sample after dropping empty audio.")
     inputs = move_inputs(inputs, model)
     with torch.no_grad():
         generated = model.generate(

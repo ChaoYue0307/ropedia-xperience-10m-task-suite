@@ -180,6 +180,54 @@ def build_messages(sample: dict, label_options: list[str], include_answer: bool)
     return messages
 
 
+def sample_without_audio(sample: dict) -> dict:
+    copied = dict(sample)
+    media = dict(copied.get("media") or {})
+    media["audio_path"] = None
+    copied["media"] = media
+    return copied
+
+
+def sample_has_audio(sample: dict) -> bool:
+    return bool((sample.get("media") or {}).get("audio_path"))
+
+
+def audio_num_elements(audio) -> int:
+    if audio is None:
+        return 0
+    if hasattr(audio, "numel"):
+        try:
+            return int(audio.numel())
+        except TypeError:
+            pass
+    shape = getattr(audio, "shape", None)
+    if shape is not None:
+        total = 1
+        for dim in shape:
+            total *= int(dim)
+        return total
+    try:
+        return len(audio)
+    except TypeError:
+        return 1
+
+
+def has_empty_audio_items(audios) -> bool:
+    if audios is None:
+        return False
+    items = audios if isinstance(audios, (list, tuple)) else [audios]
+    return any(audio_num_elements(item) == 0 for item in items)
+
+
+def is_empty_audio_exception(exc: BaseException) -> bool:
+    text = str(exc).lower()
+    return (
+        "[1, 1, 0]" in text
+        or "zero-size" in text
+        or ("stft" in text and "expected 2d or 3d" in text)
+    )
+
+
 def parse_answer_json(text: str) -> dict:
     raw = str(text).strip()
     if raw.startswith("```"):
