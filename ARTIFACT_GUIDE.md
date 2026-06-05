@@ -110,7 +110,7 @@ research project.
 | [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | Discovery gate for valid multi-episode Xperience-10M sources. |
 | [`scripts/omni/train_qwen3_omni_lora.py`](scripts/omni/train_qwen3_omni_lora.py) | Training entrypoint for the Qwen3-Omni LoRA pilot after the data gate passes. |
 | [`scripts/omni/merge_qwen3_omni_eval_shards.py`](scripts/omni/merge_qwen3_omni_eval_shards.py) | Recomputes held-out metrics from deterministic Qwen eval shards and checks missing or duplicate prediction ids. |
-| [`scripts/omni/package_verified_omni_result.py`](scripts/omni/package_verified_omni_result.py) | Creates a public-safe package from validated held-out fine-tuning outputs without raw data, base weights, adapter weights, full checkpoints, or large archives. |
+| [`scripts/omni/package_verified_omni_result.py`](scripts/omni/package_verified_omni_result.py) | Creates a contract-driven public-safe package from validated held-out fine-tuning outputs without raw data, base weights, adapter/checkpoint weights, full checkpoints, or large archives. |
 | [`scripts/omni/watch_verified_omni_package.py`](scripts/omni/watch_verified_omni_package.py) | Waits for a passing held-out eval validation and then runs the verified public-safe packager automatically. |
 | [`scripts/omni/scaffold_omni_backbone.py`](scripts/omni/scaffold_omni_backbone.py) | Creates a validated planned-backbone config from an existing contract template so new model branches inherit split, artifact, and publication rules. |
 | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md) | Adds the post-data-gate backbone selection plan: Qwen3-Omni first, Cosmos 3 for world modeling, and OpenVLA/openpi/GR00T for policy/action branches. |
