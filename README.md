@@ -718,6 +718,12 @@ registry can be checked with:
 python scripts/omni/backbone_registry.py --validate --json
 ```
 
+Each backbone config declares the checkpoint gate, required train/eval files,
+allowed public artifacts, and forbidden private or heavyweight artifacts. This
+keeps Qwen3-Omni, Cosmos-style world models, and policy/VLA branches on the same
+split, validation, and publication discipline even though their training targets
+are different.
+
 ## Additional Development Directions
 
 Beyond backbone selection and fine-tuning, Xperience-10M supports several

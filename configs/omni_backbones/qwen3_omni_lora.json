@@ -54,5 +54,40 @@
     "object_micro_f1",
     "held_out_episode_count"
   ],
+  "artifact_contract": {
+    "checkpoint_gate": "lora_safetensors_shape_check",
+    "required_eval_files": [
+      "metrics.json",
+      "predictions.jsonl",
+      "predictions.csv",
+      "per_class_metrics.csv",
+      "confusion_matrix.csv",
+      "RUN_REPORT.md"
+    ],
+    "required_training_files": [
+      "training_metadata.json",
+      "progress.jsonl",
+      "adapter_config.json",
+      "adapter_model.safetensors"
+    ],
+    "public_package_allowed": [
+      "metrics",
+      "predictions",
+      "confusion matrices",
+      "run reports",
+      "episode and dataset manifests",
+      "training metadata",
+      "validation summaries"
+    ],
+    "public_package_forbidden": [
+      "raw MP4",
+      "annotation HDF5",
+      "Rerun RRD",
+      "base-model weights",
+      "LoRA adapter weights",
+      "full checkpoints",
+      "large archives"
+    ]
+  },
   "extension_requirements": []
 }

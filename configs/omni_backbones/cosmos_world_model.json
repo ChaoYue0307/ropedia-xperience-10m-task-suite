@@ -55,6 +55,41 @@
     "transition_accuracy",
     "contact_accuracy"
   ],
+  "artifact_contract": {
+    "checkpoint_gate": "world_model_checkpoint_and_generation_config",
+    "required_eval_files": [
+      "metrics.json",
+      "future_predictions.jsonl",
+      "retrieval_rankings.csv",
+      "temporal_consistency.csv",
+      "qualitative_examples.json",
+      "RUN_REPORT.md"
+    ],
+    "required_training_files": [
+      "training_metadata.json",
+      "progress.jsonl",
+      "model_config.json",
+      "checkpoint_manifest.json"
+    ],
+    "public_package_allowed": [
+      "metrics",
+      "future-window prediction summaries",
+      "retrieval rankings",
+      "temporal consistency tables",
+      "qualitative example metadata",
+      "episode and dataset manifests",
+      "validation summaries"
+    ],
+    "public_package_forbidden": [
+      "raw MP4",
+      "annotation HDF5",
+      "Rerun RRD",
+      "generated raw video unless explicitly licensed and size-bounded",
+      "base-model weights",
+      "full checkpoints",
+      "large archives"
+    ]
+  },
   "extension_requirements": [
     "Add a future-window exporter that creates context/target pairs instead of JSON QA records.",
     "Define whether the target is pixels, latent video state, sensor features, or retrieval among candidate futures.",
