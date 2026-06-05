@@ -109,6 +109,12 @@ publication rules from the selected backbone config. Export, training, and
 evaluation code still remain model-specific, but the final validation and
 publication gate follows the same contract for every future branch.
 
+The registry validation also enforces the minimum held-out evidence surface:
+episode-level `train`/`val`/`test` split defaults, a leakage guard,
+`held_out_episode_count`, `metrics.json`, a JSONL prediction file,
+`RUN_REPORT.md`, training metadata, progress logs, and explicit forbidden
+artifact categories for raw data, model weights, checkpoints, and archives.
+
 ## Qwen3-Omni Contract
 
 Qwen3-Omni consumes:

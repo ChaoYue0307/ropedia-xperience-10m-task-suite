@@ -30,6 +30,7 @@ REQUIRED_KEYS = {
 }
 
 IMPLEMENTED_STATUS = "implemented"
+PLANNED_STATUS = "planned_adapter"
 DEFAULT_CONFIG_DIR = Path(__file__).resolve().parents[2] / "configs" / "omni_backbones"
 ARTIFACT_CONTRACT_KEYS = {
     "checkpoint_gate",
@@ -37,6 +38,15 @@ ARTIFACT_CONTRACT_KEYS = {
     "required_training_files",
     "public_package_allowed",
     "public_package_forbidden",
+}
+REQUIRED_SPLITS = {"train", "val", "test"}
+REQUIRED_PUBLIC_FORBIDDEN_TERMS = {
+    "mp4",
+    "hdf5",
+    "rrd",
+    "weights",
+    "checkpoints",
+    "archives",
 }
 
 
@@ -102,6 +112,61 @@ def validate_implemented(config: dict[str, Any], workspace: Path) -> list[str]:
     return issues
 
 
+def text_contains_any(values: list[Any], term: str) -> bool:
+    needle = term.lower()
+    return any(needle in str(value).lower() for value in values)
+
+
+def validate_contract(config: dict[str, Any], workspace: Path) -> list[str]:
+    issues = validate_implemented(config, workspace)
+    backbone_id = config["id"]
+    status = config.get("status")
+    if status not in {IMPLEMENTED_STATUS, PLANNED_STATUS}:
+        issues.append(f"{backbone_id} has unsupported status: {status}")
+
+    split_policy = config.get("split_policy") or {}
+    default_counts = split_policy.get("default_counts") or {}
+    missing_splits = sorted(REQUIRED_SPLITS - set(default_counts))
+    if missing_splits:
+        issues.append(f"{backbone_id} split_policy.default_counts missing splits: {missing_splits}")
+    for split in sorted(REQUIRED_SPLITS & set(default_counts)):
+        if int(default_counts.get(split) or 0) <= 0:
+            issues.append(f"{backbone_id} split {split} has non-positive default count: {default_counts.get(split)}")
+    if not split_policy.get("leakage_guard"):
+        issues.append(f"{backbone_id} split_policy.leakage_guard is empty")
+
+    primary_metrics = list(config.get("primary_metrics") or [])
+    if not primary_metrics:
+        issues.append(f"{backbone_id} primary_metrics is empty")
+    if "held_out_episode_count" not in primary_metrics:
+        issues.append(f"{backbone_id} primary_metrics must include held_out_episode_count")
+
+    artifact_contract = config.get("artifact_contract") or {}
+    required_eval = list(artifact_contract.get("required_eval_files") or [])
+    required_training = list(artifact_contract.get("required_training_files") or [])
+    if "metrics.json" not in required_eval:
+        issues.append(f"{backbone_id} required_eval_files must include metrics.json")
+    if "RUN_REPORT.md" not in required_eval:
+        issues.append(f"{backbone_id} required_eval_files must include RUN_REPORT.md")
+    if not any(str(filename).endswith(".jsonl") for filename in required_eval):
+        issues.append(f"{backbone_id} required_eval_files must include a JSONL prediction file")
+    if "training_metadata.json" not in required_training:
+        issues.append(f"{backbone_id} required_training_files must include training_metadata.json")
+    if "progress.jsonl" not in required_training:
+        issues.append(f"{backbone_id} required_training_files must include progress.jsonl")
+
+    public_allowed = list(artifact_contract.get("public_package_allowed") or [])
+    public_forbidden = list(artifact_contract.get("public_package_forbidden") or [])
+    if not public_allowed:
+        issues.append(f"{backbone_id} public_package_allowed is empty")
+    if not public_forbidden:
+        issues.append(f"{backbone_id} public_package_forbidden is empty")
+    for term in sorted(REQUIRED_PUBLIC_FORBIDDEN_TERMS):
+        if not text_contains_any(public_forbidden, term):
+            issues.append(f"{backbone_id} public_package_forbidden should mention {term}")
+    return issues
+
+
 def parse_args() -> argparse.Namespace:
     workspace_default = Path(__file__).resolve().parents[2]
     parser = argparse.ArgumentParser(description="Inspect configured omni fine-tuning backbones.")
@@ -109,7 +174,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--config-dir", type=Path, default=DEFAULT_CONFIG_DIR)
     parser.add_argument("--backbone", help="Print one backbone contract.")
     parser.add_argument("--json", action="store_true", help="Emit machine-readable JSON.")
-    parser.add_argument("--validate", action="store_true", help="Validate implemented entrypoint files exist.")
+    parser.add_argument("--validate", action="store_true", help="Validate backbone contracts and implemented entrypoint files.")
     return parser.parse_args()
 
 
@@ -130,7 +195,7 @@ def main() -> int:
     issues: list[str] = []
     if args.validate:
         for config in registry.values():
-            issues.extend(validate_implemented(config, args.workspace))
+            issues.extend(validate_contract(config, args.workspace))
         if isinstance(payload, dict):
             payload = {**payload, "validation_issues": issues}
 
