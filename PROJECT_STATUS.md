@@ -29,7 +29,7 @@ scale-up readiness; it is not presented as final full-dataset model quality.
 | Public dashboard and Hub pages | Verified | GitHub Pages, HF Space, artifact dataset, baseline model repo, Qwen3-Omni LoRA repo | Readers can move between the website, code, derived artifacts, baseline weights, and Qwen3-Omni pilot status without needing internal setup details. |
 | Public package policy | Verified | `DATA_NOTICE.md`, `REPRODUCIBILITY.md` | Raw Xperience-10M data, private gated files, large archives, credentials, and full Qwen weights are not redistributed. |
 | Reproducibility | Verified for the public sample | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json`, `notes/reproducibility_audit.md` | The public sample workflow has explicit commands, expected outputs, and exact-match reproduction evidence. |
-| Qwen3-Omni fine-tuning | Data preparation; full metrics pending | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` | The gated full dataset is available for a selected 128-episode pilot; final held-out metrics require completed preprocessing, manifest construction, training, and evaluation. |
+| Qwen3-Omni fine-tuning | Multi-episode validation path defined; final metrics require held-out eval package | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`, `scripts/omni/package_verified_omni_result.py` | The selected 128-episode pilot uses manifest, training, eval, validation, and public-safe packaging gates before any model-quality numbers are presented. |
 | Raw Xperience-10M redistribution | Not included | `DATA_NOTICE.md`, `docs/data/publication_audit.json` | Raw MP4, HDF5, RRD files, private gated data, and full Qwen weights are intentionally excluded. |
 
 ## Fast Research Route
@@ -60,8 +60,8 @@ scale-up readiness; it is not presented as final full-dataset model quality.
 
 - Cross-episode generalization is a later multi-episode evaluation target; the
   current results use one public sample episode.
-- Older pilot path names refer to setup files, not completed held-out
-  training results.
+- Public-facing fine-tuning results should come from the verified result
+  package, not from live process logs or setup-only artifacts.
 - The current reconstruction task reconstructs feature vectors, not pixel
   depth, meshes, NeRF outputs, or Gaussian splats.
 - Audio is part of the current 8,546-dimensional baseline feature vector.
