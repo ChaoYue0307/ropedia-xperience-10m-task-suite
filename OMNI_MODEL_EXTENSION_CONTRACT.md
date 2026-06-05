@@ -41,6 +41,20 @@ Inspect them with:
 python scripts/omni/backbone_registry.py --validate --json
 ```
 
+Create a new planned backbone config from an existing contract template with:
+
+```bash
+python scripts/omni/scaffold_omni_backbone.py \
+  --template-backbone policy_vla_branch \
+  --id new_policy_branch \
+  --display-name "New Policy Branch" \
+  --model-family "Model family name" \
+  --dataset-contract xperience10m_observation_action_v1 \
+  --training-objective observation_to_action_policy \
+  --checkpoint-gate policy_checkpoint_action_space_and_normalizer \
+  --dry-run
+```
+
 Current contracts:
 
 | Backbone | Status | Purpose |
