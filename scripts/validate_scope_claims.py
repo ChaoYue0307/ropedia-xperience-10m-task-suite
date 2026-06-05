@@ -159,38 +159,21 @@ def build_report() -> dict:
     checks: list[dict] = []
     failures: list[dict] = []
 
-    project_manifest = read_json("docs/data/project_manifest.json")
     project_packet = read_json("docs/data/project_packet.json")
     summary_metrics = read_json("docs/data/summary_metrics.json")
-    dataset_manifest = read_json("results/omni_finetune/dataset_manifest.json")
-    training_metadata = read_json("results/omni_finetune/training_metadata.json")
-    source_discovery = read_json("results/omni_finetune/source_discovery.json")
+    verified_result = read_json("docs/data/omni_finetune_verified_result.json")
+    package_path = verified_result["public_package"]["path"]
+    package_audit = read_json(f"{package_path}/package_audit.json")
+    dataset_manifest = read_json(f"{package_path}/dataset/dataset_manifest.json")
+    training_metadata = read_json(f"{package_path}/training/training_metadata.json")
+    eval_metrics = read_json(f"{package_path}/eval/metrics.json")
 
-    project_qwen_claim = project_manifest["scope_boundary"].get("qwen3_omni_32_episode_claim")
-    checks.append(
-        check(
-            "project_manifest_records_pending_32_episode_qwen_result",
-            project_qwen_claim is False,
-            f"project_manifest scope_boundary.qwen3_omni_32_episode_claim={project_qwen_claim!r}",
-            ["docs/data/project_manifest.json"],
-        )
-    )
-
-    project_qwen_claim = project_packet["scope_status"].get("qwen3_omni_32_episode_claim")
-    checks.append(
-        check(
-            "project_packet_records_pending_32_episode_qwen_result",
-            project_qwen_claim is False,
-            f"project_packet scope_status.qwen3_omni_32_episode_claim={project_qwen_claim!r}",
-            ["docs/data/project_packet.json"],
-        )
-    )
     reading_notes = " ".join(project_packet.get("current_reading_notes", []))
     checks.append(
         check(
-            "project_packet_describes_32_episode_setup_status",
-            "32-episode" in reading_notes and ("setup" in reading_notes or "gated data" in reading_notes),
-            "project packet describes the setup-stage Qwen3-Omni run separately from the planned 32-episode fine-tune",
+            "project_packet_records_verified_diagnostic_status",
+            "diagnostic pilot is verified" in reading_notes and "strong model quality is not yet shown" in reading_notes,
+            "project packet describes the verified diagnostic pilot and quality boundary",
             ["docs/data/project_packet.json"],
         )
     )
@@ -198,8 +181,8 @@ def build_report() -> dict:
     current_scope = summary_metrics.get("omni_relay", {}).get("current_scope", "")
     checks.append(
         check(
-            "summary_metrics_preserves_omni_scale_up_status",
-            "32-episode Qwen3-Omni fine-tune requires gated data preparation" in current_scope,
+            "summary_metrics_preserves_verified_diagnostic_status",
+            "diagnostic pilot is verified" in current_scope and "98% target" in current_scope,
             current_scope,
             ["docs/data/summary_metrics.json"],
         )
@@ -208,42 +191,55 @@ def build_report() -> dict:
     split_counts = dataset_manifest.get("split_counts", {})
     checks.append(
         check(
-            "omni_dataset_manifest_is_setup_stage",
-            dataset_manifest.get("num_episodes") == 1
-            and dataset_manifest.get("num_samples") == 128
-            and split_counts == {"train": 128},
+            "verified_package_dataset_has_expected_windows",
+            dataset_manifest.get("num_episodes") == 119
+            and dataset_manifest.get("num_samples") == 3808
+            and split_counts == {"train": 2848, "val": 512, "test": 448},
             (
                 f"episodes={dataset_manifest.get('num_episodes')}, "
                 f"samples={dataset_manifest.get('num_samples')}, split_counts={split_counts}"
             ),
-            ["results/omni_finetune/dataset_manifest.json"],
+            [f"{package_path}/dataset/dataset_manifest.json"],
         )
     )
 
     checks.append(
         check(
-            "omni_training_metadata_is_setup_stage",
-            training_metadata.get("num_train_samples") == 128
-            and training_metadata.get("num_val_samples") == 0,
+            "verified_package_training_records_8_processes",
+            training_metadata.get("num_train_samples") == 2848
+            and training_metadata.get("num_processes") == 8,
             (
                 f"train={training_metadata.get('num_train_samples')}, "
                 f"val={training_metadata.get('num_val_samples')}, "
                 f"processes={training_metadata.get('num_processes')}"
             ),
-            ["results/omni_finetune/training_metadata.json"],
+            [f"{package_path}/training/training_metadata.json"],
         )
     )
 
     checks.append(
         check(
-            "source_discovery_gate_is_closed",
-            source_discovery.get("ready_for_32_episode_pilot") is False
-            and source_discovery.get("local", {}).get("num_degraded_valid_episodes") == 1,
+            "verified_package_eval_records_real_held_out_metrics",
+            eval_metrics.get("num_samples") == 448
+            and eval_metrics.get("eval_split") == "test"
+            and eval_metrics.get("held_out_episode_count", eval_metrics.get("num_eval_episodes")) == 14
+            and abs(float(eval_metrics.get("json_validity_rate", 0.0)) - 0.8526785714285714) < 1e-12,
             (
-                f"ready_for_32_episode_pilot={source_discovery.get('ready_for_32_episode_pilot')}, "
-                f"local_valid={source_discovery.get('local', {}).get('num_degraded_valid_episodes')}"
+                f"samples={eval_metrics.get('num_samples')}, "
+                f"split={eval_metrics.get('eval_split')}, "
+                f"held_out={eval_metrics.get('held_out_episode_count', eval_metrics.get('num_eval_episodes'))}, "
+                f"json_validity={eval_metrics.get('json_validity_rate')}"
             ),
-            ["results/omni_finetune/source_discovery.json"],
+            [f"{package_path}/eval/metrics.json"],
+        )
+    )
+
+    checks.append(
+        check(
+            "verified_package_audit_passes",
+            package_audit.get("status") == "pass" and not package_audit.get("issues"),
+            f"audit_status={package_audit.get('status')}, issues={len(package_audit.get('issues', []))}",
+            [f"{package_path}/package_audit.json"],
         )
     )
 
@@ -251,7 +247,7 @@ def build_report() -> dict:
     failures.extend(doc_failures)
     checks.append(
         check(
-            "public_presentation_has_no_historical_32ep_identifiers",
+            "public_presentation_has_no_misleading_32ep_identifiers",
             not doc_failures,
             f"public presentation scan failures={len(doc_failures)}",
             PUBLIC_PRESENTATION_FILES,
@@ -284,11 +280,13 @@ def build_report() -> dict:
         "status": status,
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "summary": {
-            "qwen3_omni_32_episode_claim": False,
+            "qwen3_omni_verified_diagnostic_pilot": True,
             "dataset_manifest_num_episodes": dataset_manifest.get("num_episodes"),
             "dataset_manifest_num_samples": dataset_manifest.get("num_samples"),
             "training_metadata_num_train_samples": training_metadata.get("num_train_samples"),
-            "source_discovery_ready_for_32_episode_pilot": source_discovery.get("ready_for_32_episode_pilot"),
+            "eval_num_samples": eval_metrics.get("num_samples"),
+            "eval_json_validity_rate": eval_metrics.get("json_validity_rate"),
+            "quality_target_met": verified_result.get("evaluation", {}).get("quality_target", {}).get("status") == "met",
             "historical_identifier_count": len(historical_identifiers),
             "public_32_episode_status_file_count": len(public_observations),
             "failure_count": len(failures),

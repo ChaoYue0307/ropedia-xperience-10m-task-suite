@@ -1,12 +1,27 @@
 {
   "omni_relay": {
-    "status": "selected_episode_preparation",
+    "status": "verified_diagnostic_pilot",
     "dataset": "ropedia-ai/xperience-10m",
-    "staging": "selected_episode_preparation",
-    "training_target": "multi_episode_training_pipeline",
+    "staging": "selected_episode_verified_package",
+    "training_target": "validation_aware_quality_improvement",
     "selection_strategy": "stratified_round_robin_by_top_level_session",
     "target_episodes": 128,
     "selected_sessions": 128,
+    "selected_split_counts": {
+      "train": 96,
+      "val": 16,
+      "test": 16
+    },
+    "exported_window_counts": {
+      "train": 2848,
+      "val": 512,
+      "test": 448
+    },
+    "held_out_episode_count": 14,
+    "held_out_test_windows": 448,
+    "json_validity_rate": 0.8526785714285714,
+    "action_macro_f1": 0.00213753459655099,
+    "quality_target_met": false,
     "candidate_scan_top_level_sessions": 802,
     "valid_candidates": 12102,
     "estimated_bytes": 298188841943,
@@ -14,7 +29,7 @@
       "visualization.rrd"
     ],
     "access_status": "The gated Xperience-10M dataset is available for selected multi-episode pilot preparation.",
-    "current_scope": "The selected-episode Qwen3-Omni fine-tune requires completed data preparation and held-out evaluation; the 32-episode Qwen3-Omni fine-tune requires gated data preparation before any real held-out metric is reported."
+    "current_scope": "The first selected-episode Qwen3-Omni diagnostic pilot is verified, but held-out quality is weak and JSON validity is below the 98% target."
   },
   "models": {
     "motion_action": {

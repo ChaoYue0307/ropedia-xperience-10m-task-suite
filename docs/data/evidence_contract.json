@@ -163,26 +163,27 @@
       "boundary": "single-episode probes, not full research-direction solutions"
     },
     {
-      "id": "qwen3_omni_setup",
-      "claim": "Qwen3-Omni infrastructure has passed technical setup checks.",
-      "status": "setup_stage",
+      "id": "qwen3_omni_diagnostic_pilot",
+      "claim": "Qwen3-Omni has a verified selected-episode held-out diagnostic pilot.",
+      "status": "verified_diagnostic",
       "evidence": [
-        "results/omni_finetune/RUN_REPORT.md",
-        "results/omni_finetune/dataset_manifest.json",
-        "results/omni_finetune/metrics_eval.json"
+        "docs/data/omni_finetune_verified_result.json",
+        "results/omni_finetune/verified_public/",
+        "scripts/omni/package_verified_omni_result.py",
+        "scripts/omni/audit_verified_omni_package.py"
       ],
-      "boundary": "one episode and 128 train windows; full metrics require completed multi-episode data preparation and held-out evaluation"
+      "boundary": "the pipeline is verified, but model quality is weak: JSON validity is below target and action/subtask metrics are low"
     },
     {
-      "id": "multi_episode_staging",
-      "claim": "The Qwen3-Omni LoRA pilot is in selected multi-episode preparation.",
-      "status": "data_preparation",
+      "id": "multi_episode_quality_improvement",
+      "claim": "The next Qwen3-Omni step is validation-aware quality improvement on the same selected split.",
+      "status": "active_next_step",
       "evidence": [
-        "results/omni_finetune/DATA_ACCESS_STATUS.md",
-        "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
-        "results/omni_finetune/source_discovery.json"
+        "scripts/omni/run_128_fullsplit_parallel_export_8gpu.sh",
+        "docs/data/omni_finetune_verified_result.json",
+        "FOUNDATION_MODEL_PLAN.md"
       ],
-      "boundary": "the gated Xperience-10M dataset is available for the selected pilot; held-out metrics come after manifest construction, training, and test evaluation"
+      "boundary": "stronger model quality requires a rerun with validation monitoring and output-format improvements"
     },
     {
       "id": "scale_up_status_check",

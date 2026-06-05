@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import shutil
 from pathlib import Path
 from typing import Any
@@ -185,13 +186,20 @@ def main() -> int:
     if not eval_dir.exists():
         raise FileNotFoundError(f"Missing eval directory: {eval_dir}")
 
+    model_cache_root = Path(
+        os.environ.get("MODEL_CACHE_ROOT", str(workspace.parent / "modelscope_models"))
+    ).expanduser()
+    data_root = Path(os.environ.get("DATA_ROOT", str(workspace.parent / "modelscope_data"))).expanduser()
+
     replacements = [
         (str(workspace_arg), "<project>"),
         (str(workspace), "<project>"),
         (str(workspace_arg.parent), "<workspace-parent>"),
         (str(workspace.parent), "<workspace-parent>"),
-        ("/home/cy/Ropedia/modelscope_models", "<model-cache>"),
-        ("/home/cy/Ropedia/modelscope_data", "<xperience10m-data>"),
+        (str(model_cache_root), "<model-cache>"),
+        (str(model_cache_root.resolve()), "<model-cache>"),
+        (str(data_root), "<xperience10m-data>"),
+        (str(data_root.resolve()), "<xperience10m-data>"),
     ]
 
     reset_output_dir(output_dir, [workspace, root, run_dir, dataset_dir, train_dir, eval_dir, workspace.parent])

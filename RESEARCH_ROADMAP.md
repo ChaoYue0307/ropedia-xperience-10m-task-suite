@@ -10,26 +10,28 @@ should exist before the stage is treated as complete.
 | Stage | Status | Entry condition | Research deliverables | Completion evidence |
 | --- | --- | --- | --- | --- |
 | Public-Sample Task Lab | Implemented | One public Xperience-10M sample episode is available. | 1,161 aligned windows, 12 task contracts, minimal heads, neural MLP heads, modality atlas, task walkthroughs, and derived figures. | `PROJECT_STATUS.md`, `EVALUATION_PROTOCOL.md`, `RESEARCH_TAKEAWAYS.md`, `docs/data/summary_metrics.json`, `results/episode_task_suite/summary_report.json` |
-| Multi-Episode Data Preparation | Active | Gated dataset availability and enough storage for selected episodes. | 128 selected episodes, episode manifest, missing-view manifest, held-out episode split, and source-discovery report. | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`, `results/omni_finetune/source_discovery.json` |
-| Qwen3-Omni LoRA Pilot | Next | Selected episodes prepared locally with no train/test episode leakage. | Dataset JSONL/media manifests, LoRA adapter checkpoint, progress logs, held-out predictions, metrics, confusion matrices, and run report. | `dataset_manifest.json`, `training_metadata.json`, `progress.jsonl`, `metrics.json`, `predictions.jsonl`, `RUN_REPORT.md` |
-| Foundation-Model Selection Matrix | Next | The selected pilot episodes are prepared, or a 3-8 episode dry run is available for preprocessing checks. | Backbone registry, Cosmos 3 world-model branch plan, Qwen3-Omni baseline plan, OpenVLA/openpi/GR00T policy candidates, and model-specific evaluation additions. | `FOUNDATION_MODEL_PLAN.md`, `docs/data/foundation_model_plan.json`, `research_roadmap_interactive.json` |
-| 64-128 Episode Robustness Run | Planned | The selected-episode pilot trains and evaluates cleanly. | Split-by-session metrics, modality ablations, calibration/object/language error analysis, and sensitivity to missing views. | Held-out metrics by session, task, and modality; ablation tables; qualitative error analysis. |
+| Multi-Episode Data Preparation | Implemented for first selected pilot | Gated dataset availability and enough storage for selected episodes. | 128 selected episodes, episode manifest, missing-view manifest, held-out episode split, and source-discovery report. | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`, `results/omni_finetune/xperience10m_128_episode_selection.json` |
+| Qwen3-Omni LoRA Diagnostic Pilot | Verified baseline | Selected episodes prepared locally with no train/test episode leakage. | Dataset JSONL/media manifests, LoRA adapter checkpoint, progress logs, held-out predictions, metrics, confusion matrices, and run report. | `docs/data/omni_finetune_verified_result.json`, `results/omni_finetune/verified_public/`, `metrics.json`, `predictions.jsonl`, `RUN_REPORT.md` |
+| Validation-Aware Qwen3-Omni Rerun | Active next step | The diagnostic pilot package exists and shows weak held-out quality. | Same 96/16/16 split, nonzero validation samples during training, held-out test evaluation, JSON-format reliability improvements, and error analysis. | Training metadata with `num_val_samples > 0`, held-out metrics, quality-target report, and verified public package. |
+| Foundation-Model Selection Matrix | Current | The selected pilot episodes are prepared, or a 3-8 episode dry run is available for preprocessing checks. | Backbone registry, Cosmos 3 world-model branch plan, Qwen3-Omni baseline plan, OpenVLA/openpi/GR00T policy candidates, and model-specific evaluation additions. | `FOUNDATION_MODEL_PLAN.md`, `docs/data/foundation_model_plan.json`, `research_roadmap_interactive.json` |
+| 64-128 Episode Robustness Run | Planned | The validation-aware selected-episode pilot trains and evaluates cleanly. | Split-by-session metrics, modality ablations, calibration/object/language error analysis, and sensitivity to missing views. | Held-out metrics by session, task, and modality; ablation tables; qualitative error analysis. |
 | Cosmos 3 and Policy-Model Extensions | Planned | Enough multi-episode data, compute budget, and model-specific action/world-state targets. | Cosmos 3 future-window or action-conditioned world-model probes, OpenVLA/openpi/GR00T action-policy baselines, modality-conditioning checks, affordance tasks, and synthetic-data usefulness tests. | Task-specific held-out evaluations, qualitative inspection, and updated model cards. |
 | Xperience Embodied Foundation Model Pretraining | Future | Full-corpus access, PB-scale storage path, multi-node compute, and positive scaling evidence from smaller runs. | Xperience-native temporal multimodal model, full-corpus manifests, pretraining shards, scaling curves, held-out evaluations, and model card. | Pretraining metadata, checkpoint inventory, held-out metrics, scaling report, and data-boundary report. |
 
 ## Current Decision Point
 
-The useful next decision is data scale plus backbone fit: keep the public-sample
-task suite as the development harness, stage enough official Xperience-10M
-episodes to run the held-out Qwen3-Omni pilot, then choose larger model branches
-by task fit. Qwen3-Omni remains the first trainable multimodal LoRA target.
-Cosmos 3 becomes the first world-model/action-generation branch. OpenVLA,
-openpi, GR00T, Octo, and SmolVLA-style models become policy/action branches only
-after the action target is explicit. A from-scratch Xperience Embodied
-Foundation Model is the long-term native-pretraining goal, not the immediate
-experiment. The public sample is already enough for task design, feature
-contracts, walkthroughs, and baseline comparisons. It is not enough to measure
-general embodied-AI model quality.
+The useful next decision is model-quality improvement plus backbone fit: keep
+the public-sample task suite as the development harness, use the verified
+Qwen3-Omni diagnostic pilot as the first cross-episode baseline, then improve
+format reliability and validation monitoring before claiming model quality.
+Qwen3-Omni remains the first trainable multimodal LoRA target. Cosmos 3 becomes
+the first world-model/action-generation branch. OpenVLA, openpi, GR00T, Octo,
+and SmolVLA-style models become policy/action branches only after the action
+target is explicit. A from-scratch Xperience Embodied Foundation Model is the
+long-term native-pretraining goal, not the immediate experiment. The public
+sample is already enough for task design, feature contracts, walkthroughs, and
+baseline comparisons. The first multi-episode pilot is enough to verify the
+end-to-end training loop, but its weak metrics are not final model quality.
 
 ## Additional Concrete Development Directions
 
@@ -38,7 +40,7 @@ depend on immediately training a larger foundation model:
 
 | Direction | First artifact | Research value |
 | --- | --- | --- |
-| Episode taxonomy and data engine | Episode atlas, category tags, balance report, and split builder. | Makes episode selection representative and auditable. |
+| Episode taxonomy and data engine | Episode atlas, category tags, balance report, and split builder. | Makes episode selection representative and measurable. |
 | Standardized benchmark protocol | Fixed splits, task cards, metric scripts, and leakage checks. | Makes future model comparisons fair. |
 | Multimodal representation learning | Contrastive and masked-window objectives over synchronized modalities. | Learns reusable encoders before expensive large-model training. |
 | Skill and procedure graph mining | Steps, transitions, preconditions, effects, and temporal skill graphs. | Connects perception to planning and long-horizon reasoning. |
@@ -72,7 +74,8 @@ Evidence to inspect:
 This stage expands the same data contract to official gated episodes. The key
 research requirement is episode-level separation: training and test examples
 must come from different episodes, not different windows inside the same
-episode.
+episode. The first selected 96/16/16 split has been used for a verified
+Qwen3-Omni diagnostic pilot.
 
 Evidence to inspect:
 
@@ -84,8 +87,11 @@ Evidence to inspect:
 ### 3. Qwen3-Omni LoRA Pilot
 
 This stage uses Qwen3-Omni as the multimodal backbone and trains lightweight
-LoRA adapters. The first target is a complete held-out-episode training and
-evaluation loop with inspectable manifests, predictions, and metrics.
+LoRA adapters. The first held-out diagnostic package now exists. It proves the
+export, training, evaluation, validation, and public-safe packaging loop, but
+the metrics are weak: JSON validity is 85.27%, action macro-F1 is 0.0021, and
+subtask accuracy is 0.0045. Treat it as a baseline and error-analysis starting
+point.
 
 Expected outputs:
 

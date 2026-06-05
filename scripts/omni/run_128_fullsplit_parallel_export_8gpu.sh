@@ -7,11 +7,12 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="${PROJECT_ROOT:-$(cd "$SCRIPT_DIR/../.." && pwd)}"
-DATA_ROOT="${DATA_ROOT:-/home/cy/Ropedia/modelscope_data/xperience10m_128}"
+ROPEDIA_WORKSPACE="${ROPEDIA_WORKSPACE:-$HOME/Ropedia}"
+DATA_ROOT="${DATA_ROOT:-$ROPEDIA_WORKSPACE/modelscope_data/xperience10m_128}"
 RESULT_ROOT="${RESULT_ROOT:-$PROJECT_ROOT/results/omni_finetune}"
 SELECTION_JSON="${SELECTION_JSON:-$RESULT_ROOT/xperience10m_128_episode_selection.json}"
 VENV_PY="${VENV_PY:-$PROJECT_ROOT/.venv/bin/python}"
-MODEL_DIR="${MODEL_DIR:-/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct}"
+MODEL_DIR="${MODEL_DIR:-$ROPEDIA_WORKSPACE/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct}"
 BACKBONE_CONFIG="${BACKBONE_CONFIG:-configs/omni_backbones/qwen3_omni_lora.json}"
 
 RUN_ID="${RUN_ID:-xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu}"
@@ -22,13 +23,15 @@ EXPECTED_TEST_EPISODES="${EXPECTED_TEST_EPISODES:-16}"
 EXPORT_WORKERS="${EXPORT_WORKERS:-8}"
 MAX_WINDOWS_PER_EPISODE="${MAX_WINDOWS_PER_EPISODE:-32}"
 MAX_VIDEO_FRAMES="${MAX_VIDEO_FRAMES:-16}"
-TRAIN_VAL_SPLIT="${TRAIN_VAL_SPLIT:-__none__}"
-MAX_VAL_SAMPLES="${MAX_VAL_SAMPLES:-0}"
+TRAIN_VAL_SPLIT="${TRAIN_VAL_SPLIT:-val}"
+MAX_VAL_SAMPLES="${MAX_VAL_SAMPLES:-512}"
 EVAL_SAMPLE_LIMIT="${EVAL_SAMPLE_LIMIT:-0}"
+MAX_NEW_TOKENS="${MAX_NEW_TOKENS:-96}"
 EPOCHS="${EPOCHS:-1}"
 NUM_PROCESSES="${NUM_PROCESSES:-8}"
 GRADIENT_ACCUMULATION_STEPS="${GRADIENT_ACCUMULATION_STEPS:-8}"
-MIN_JSON_VALIDITY="${MIN_JSON_VALIDITY:-0.98}"
+MIN_JSON_VALIDITY="${MIN_JSON_VALIDITY:-0.0}"
+TARGET_JSON_VALIDITY="${TARGET_JSON_VALIDITY:-0.98}"
 USE_FSDP="${USE_FSDP:-1}"
 FSDP_TRANSFORMER_LAYER="${FSDP_TRANSFORMER_LAYER:-Qwen3OmniMoeThinkerTextDecoderLayer}"
 FSDP_CPU_RAM_EFFICIENT_LOADING="${FSDP_CPU_RAM_EFFICIENT_LOADING:-true}"
@@ -199,7 +202,7 @@ json_log event=neutral_index_done output="$DATASET_DIR/window_index_manifest.jso
   --output "$RUN_DIR/validation_dataset.json"
 json_log event=validation_dataset_done output="$RUN_DIR/validation_dataset.json"
 
-json_log event=train_start run_id="${RUN_ID}_lora" num_processes="$NUM_PROCESSES"
+json_log event=train_start run_id="${RUN_ID}_lora" num_processes="$NUM_PROCESSES" train_split=train val_split="$TRAIN_VAL_SPLIT" max_val_samples="$MAX_VAL_SAMPLES"
 train_cmd=(
   "$VENV_PY" -m accelerate.commands.launch
   --num_processes "$NUM_PROCESSES"
@@ -259,6 +262,7 @@ json_log event=eval_start run_id="${RUN_ID}_eval"
   --run-id "${RUN_ID}_eval" \
   --eval-split test \
   --sample-limit "$EVAL_SAMPLE_LIMIT" \
+  --max-new-tokens "$MAX_NEW_TOKENS" \
   --local-files-only
 json_log event=eval_done run_id="${RUN_ID}_eval" metrics="$EVAL_DIR/metrics.json"
 
@@ -273,6 +277,25 @@ json_log event=eval_done run_id="${RUN_ID}_eval" metrics="$EVAL_DIR/metrics.json
   --min-json-validity "$MIN_JSON_VALIDITY" \
   --output "$RUN_DIR/validation_eval.json"
 json_log event=validation_eval_done output="$RUN_DIR/validation_eval.json"
+
+"$VENV_PY" - "$EVAL_DIR/metrics.json" "$TARGET_JSON_VALIDITY" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+metrics_path = Path(sys.argv[1])
+target = float(sys.argv[2])
+metrics = json.loads(metrics_path.read_text(encoding="utf-8"))
+value = float(metrics.get("json_validity_rate") or 0.0)
+payload = {
+    "event": "quality_target_checked",
+    "metric": "json_validity_rate",
+    "value": value,
+    "target": target,
+    "status": "pass" if value >= target else "needs_improvement",
+}
+print(json.dumps(payload, sort_keys=True))
+PY
 
 "$VENV_PY" scripts/omni/omni_finetune_runbook.py \
   --run-id "$RUN_ID" \

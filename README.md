@@ -74,7 +74,7 @@ before the multi-episode omni-model stage becomes a real held-out evaluation.
 | Task suite | 12 human-readable embodied-AI task contracts with input, process, output, metrics, predictions, and case-study walkthroughs |
 | Baselines | Minimal linear/ridge/logistic heads plus compact PyTorch MLP task heads over the same chronological split |
 | Research directions | Task mapping and extension probes for human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling |
-| Scale-up path | The gated Xperience-10M dataset is available for a selected 128-episode pilot before Qwen3-Omni LoRA, followed by Cosmos 3/world-model and VLA/policy branches; the long-term goal is an Xperience-native embodied foundation model if full-corpus data, storage, and compute are available |
+| Scale-up path | A first selected-episode Qwen3-Omni LoRA diagnostic pilot has completed on the 96/16/16 split; it proves the multi-episode export/train/eval/package loop, but the weak held-out metrics make it a baseline for error analysis rather than a strong model. Cosmos 3/world-model and VLA/policy branches reuse the same split and package contract after their targets are implemented. |
 | Public surfaces | GitHub repo, GitHub Pages dashboard, GHCR static-site package, HF Space, HF artifact dataset, HF baseline-model repo, and HF collection |
 
 For the fastest interpretation of the current metrics, start with
@@ -111,7 +111,7 @@ This project is best read as a staged embodied-AI research study:
 | Task suite | Twelve human-readable tasks cover action, procedure, contact, object, language, retrieval, reconstruction, order, and synchronization questions. | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json) |
 | Baselines | Minimal heads and compact PyTorch MLP heads provide a first controlled comparison on the same chronological split. | [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/) |
 | Diagnostics | Audio contribution, modality ablations, timeline overlays, object labels, and alignment stress tests show which signals are useful and which tasks remain hard. | [`results/audio_ablation/AUDIO_ABLATION_SUMMARY.md`](results/audio_ablation/AUDIO_ABLATION_SUMMARY.md), [`docs/single_episode_explorer.html`](docs/single_episode_explorer.html) |
-| Scale-up | A selected 128-episode Qwen3-Omni LoRA pilot is being prepared from the gated dataset; held-out model metrics will be added only after training and evaluation finish. The long-term native-pretraining plan is documented separately as a future research goal. | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md), [`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) |
+| Scale-up | The selected 128-episode Qwen3-Omni LoRA diagnostic pilot has a verified held-out package: 96/16/16 selected episodes, 3,808 exported windows, 448 held-out test windows, and public-safe metrics/predictions. JSON validity is 85.27%, below the 98% target, so the next run focuses on validation monitoring and output-format reliability. | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/omni_finetune_verified_result.json`](docs/data/omni_finetune_verified_result.json), [`results/omni_finetune/verified_public/`](results/omni_finetune/verified_public/) |
 
 Detailed dataset notes, reproduction checks, and generated JSON reports are
 included for readers who want to inspect the implementation, but they are
@@ -133,7 +133,7 @@ They give the current research state in one compact table:
 | Dataset context | Official Xperience-10M links, sample-vs-gated-data boundary, modality coverage, and redistribution policy are documented |
 | Evaluation protocol | Verified generated protocol for windowing, split policy, leakage controls, and per-task metrics |
 | Website and Hub pages | Public dashboard, Hugging Face Space, artifact dataset, baseline model repo, and collection use the same project framing and links |
-| Qwen3-Omni multi-episode pilot | The gated Xperience-10M dataset is available for selected 128-episode preparation, with full metrics pending completed preprocessing, training, and held-out evaluation |
+| Qwen3-Omni multi-episode pilot | Verified diagnostic result package exists for the selected 96/16/16 episode split; current held-out metrics are weak and below the JSON-validity quality target |
 | Raw Xperience-10M data / full Qwen weights | Not redistributed |
 
 ## 90-Second Research Project Path
@@ -152,7 +152,7 @@ If you are reading the project cold, open these in order:
 | 8 | What research directions does this support? | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`docs/data/research_directions.json`](docs/data/research_directions.json), [`docs/data/research_direction_extensions.json`](docs/data/research_direction_extensions.json) | The tasks are mapped to human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling. |
 | 9 | Which foundation model comes next? | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json), [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md) | Qwen3-Omni is the first held-out LoRA baseline; Cosmos 3 is the first world-model branch; policy models wait for explicit action targets; Xperience-native pretraining is the full-corpus future goal. |
 | 10 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands and expected outputs are documented for the sample-episode task suite. |
-| 11 | What is still pending? | [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | Multi-episode Qwen3-Omni model quality will be reported after preprocessing, training, and held-out evaluation complete. |
+| 11 | What is still pending? | [`docs/data/omni_finetune_verified_result.json`](docs/data/omni_finetune_verified_result.json), [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | The first held-out diagnostic pilot is verified; strong model quality remains pending because JSON validity is 85.27% and action/subtask metrics are weak. |
 
 A compact reader-path summary is available at
 [`docs/data/project_packet.json`](docs/data/project_packet.json).
@@ -208,8 +208,9 @@ The current verified public-sample subset is:
 Detailed dataset notes are available in
 [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md)
 for readers who need the full upstream-card and access-term context. The
-practical boundary is simple: current results come from the public sample, and
-multi-episode model quality is pending the selected held-out pilot.
+practical boundary is simple: current task-suite results come from the public
+sample, and the first multi-episode Qwen3-Omni diagnostic pilot is verified but
+not yet strong model quality.
 
 Start with the visual dashboard:
 
@@ -480,8 +481,8 @@ python scripts/train_all_modalities_model.py --workspace /path/to/workspace
 
 This repo includes a first Qwen3-Omni fine-tuning path over Xperience-10M. The
 repository separates public-sample evidence from multi-episode fine-tuning
-artifacts. Multi-episode model quality should be reported only after validated
-held-out evaluation artifacts are packaged for publication.
+artifacts. The first selected-episode held-out package is now verified as a
+diagnostic pilot, not a strong final model.
 The useful distinction is:
 
 - direct Qwen3-Omni inputs: RGB/fisheye video, embedded MP4 audio, and language
@@ -502,7 +503,8 @@ The scale-up path requires valid prepared episodes, held-out episode splits,
 training metadata, predictions, metrics, and a run report. A result is ready
 for public README, website, or Hugging Face updates only after the validator
 passes and `scripts/omni/package_verified_omni_result.py` creates a
-public-safe derived-artifact package.
+public-safe derived-artifact package. The current verified package is listed in
+[`docs/data/omni_finetune_verified_result.json`](docs/data/omni_finetune_verified_result.json).
 
 ### Sample Count Decision
 
@@ -542,7 +544,11 @@ Current status in this repo:
 - gated_metadata_audit: 12,102 complete visible episodes across 802 complete sessions
 - selected_episode_plan: 128 metadata-balanced episodes, 96/16/16 train/val/test
 - selected_download_size: 277.71 GiB excluding `visualization.rrd`
-- ready_for_held_out_pilot: false until the selected episodes are fully prepared and checked
+- verified_held_out_diagnostic_package: true
+- selected_split: 96 train / 16 validation / 16 held-out test episodes
+- exported_windows: 2,848 train / 512 validation / 448 test
+- held_out_eval: 448 test windows from 14 exported test episodes
+- current_quality_target: JSON validity 85.27%, below the 98% target
 - gated dataset: available for selected multi-episode data preparation
 - source_discovery: `results/omni_finetune/source_discovery.json`
 - data_status: `results/omni_finetune/DATA_ACCESS_STATUS.md`
@@ -591,8 +597,8 @@ Once all selected episodes are complete, use the fixed selected-episode split:
 - 16 held-out test episodes.
 
 The clean full-run launcher validates the selected split, exports all splits in
-parallel, trains Qwen3-Omni LoRA on train/val only, then evaluates on the held-
-out test split:
+parallel, trains Qwen3-Omni LoRA on train episodes while optionally monitoring
+validation loss, then evaluates on the held-out test split:
 
 ```bash
 RUN_ID=xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu \
@@ -600,8 +606,15 @@ DATA_ROOT=/path/to/xperience10m_128 \
 SELECTION_JSON=results/omni_finetune/xperience10m_128_episode_selection.json \
 MODEL_DIR=/path/to/Qwen__Qwen3-Omni-30B-A3B-Instruct \
 NUM_PROCESSES=8 \
+TRAIN_VAL_SPLIT=val \
+MAX_VAL_SAMPLES=512 \
 scripts/omni/run_128_fullsplit_parallel_export_8gpu.sh
 ```
+
+The first verified diagnostic package used the same selected split and 8-GPU
+training path, but recorded zero validation samples during training. The next
+rerun should keep the sealed test split and enable validation monitoring with
+`TRAIN_VAL_SPLIT=val`.
 
 Monitor the run with:
 
@@ -695,14 +708,18 @@ This produces `window_index.jsonl` and `window_index_manifest.json` so Cosmos-
 style world models and VLA/policy branches can reuse the same split-checked
 windows without depending on Qwen chat-message records.
 
-### Uploading the pilot Qwen3-Omni LoRA
+### Uploading Qwen3-Omni LoRA artifacts
 
-A prepared upload package is available at `results/omni_finetune/hf_upload`.
+The public-safe verified package intentionally excludes raw data, base Qwen
+weights, LoRA weights, and full checkpoints. Adapter upload is a separate step:
+use it only when the intended adapter directory is present and the model card
+clearly distinguishes older smoke weights from the selected-episode diagnostic
+or validation-aware run.
 
 ```bash
 python3 scripts/omni/upload_qwen3_omni_lora_to_hf.py \
-  --repo-id cy0307/ropedia-qwen3-omni-lora-readiness \
-  --source-dir results/omni_finetune/hf_upload \
+  --repo-id cy0307/ropedia-qwen3-omni-lora-smoke \
+  --source-dir /path/to/adapter_upload_package \
   --message "Upload Xperience-10M Qwen3-Omni LoRA pilot"
 ```
 

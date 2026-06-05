@@ -2,8 +2,8 @@
 
 This is the fastest way to understand the current research project state.
 It summarizes what has already been implemented from the public
-Xperience-10M sample, what is being prepared for multi-episode training, and
-which artifacts support the next development step.
+Xperience-10M sample, what the first multi-episode Qwen3-Omni diagnostic pilot
+shows, and which artifacts support the next development step.
 
 ## Research Positioning
 
@@ -21,7 +21,7 @@ scale-up readiness; it is not presented as final full-dataset model quality.
 | Neural heads | Verified | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split. |
 | Audio contribution study | Verified | `scripts/audio_ablation_and_raw_upgrade.py`, `results/audio_ablation/`, `docs/data/audio_ablation_summary.json` | Audio variants are compared across all 12 task contracts; audio improves the primary metric on 6 of 12 tasks, and a 588-d audio-window representation improves over the baseline audio variant on 6 of 12 tasks. |
 | Research takeaways | Verified | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | The main result interpretation is generated from committed metrics: chronological class shift, neural gains on dynamics/order/alignment, open retrieval/reconstruction problems, and the need for held-out episodes. |
-| Research roadmap | Current | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | The roadmap connects public-sample task development to 128-episode data preparation, Qwen3-Omni LoRA, foundation-model selection, robustness runs, world/policy branches, and the future Xperience-native pretraining goal. |
+| Research roadmap | Current | `RESEARCH_ROADMAP.md`, `docs/data/research_roadmap.json` | The roadmap connects public-sample task development to the verified Qwen3-Omni diagnostic pilot, validation-aware reruns, robustness runs, world/policy branches, and the future Xperience-native pretraining goal. |
 | Foundation-model plan | Current | `FOUNDATION_MODEL_PLAN.md`, `docs/data/foundation_model_plan.json` | Qwen3-Omni remains the first trainable held-out LoRA baseline; Cosmos 3 is added as the first world-model/action-generation branch; OpenVLA/openpi/GR00T are policy candidates after action targets are explicit. |
 | Xperience Embodied Foundation Model | Future goal | `XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md` | A future full-corpus pretraining plan describes target modules, objectives, staged scale-up, hardware ranges, and evaluation for a domain-specific embodied foundation model. |
 | Evaluation protocol | Verified | `EVALUATION_PROTOCOL.md`, `docs/data/evaluation_protocol.json`, `scripts/build_evaluation_protocol.py` | Windowing, chronological split, per-task metrics, leakage controls, and current limitations are generated from committed metric artifacts. |
@@ -29,7 +29,7 @@ scale-up readiness; it is not presented as final full-dataset model quality.
 | Public dashboard and Hub pages | Verified | GitHub Pages, HF Space, artifact dataset, baseline model repo, Qwen3-Omni LoRA repo | Readers can move between the website, code, derived artifacts, baseline weights, and Qwen3-Omni pilot status without needing internal setup details. |
 | Public package policy | Verified | `DATA_NOTICE.md`, `REPRODUCIBILITY.md` | Raw Xperience-10M data, private gated files, large archives, credentials, and full Qwen weights are not redistributed. |
 | Reproducibility | Verified for the public sample | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json`, `notes/reproducibility_audit.md` | The public sample workflow has explicit commands, expected outputs, and exact-match reproduction evidence. |
-| Qwen3-Omni fine-tuning | Multi-episode validation path defined; final metrics require held-out eval package | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`, `scripts/omni/package_verified_omni_result.py` | The selected 128-episode pilot uses manifest, training, eval, validation, and public-safe packaging gates before any model-quality numbers are presented. |
+| Qwen3-Omni fine-tuning | Verified diagnostic held-out pilot; quality target not met | `docs/data/omni_finetune_verified_result.json`, `results/omni_finetune/verified_public/`, `scripts/omni/package_verified_omni_result.py`, `scripts/omni/audit_verified_omni_package.py` | The selected 96/16/16 episode split produced a public-safe held-out package with 3,808 exported windows and 448 test predictions. JSON validity is 85.27%, below the 98% target, so the result is a diagnostic baseline and the next run should use validation monitoring plus output-format improvements. |
 | Raw Xperience-10M redistribution | Not included | `DATA_NOTICE.md`, `docs/data/publication_audit.json` | Raw MP4, HDF5, RRD files, private gated data, and full Qwen weights are intentionally excluded. |
 
 ## Fast Research Route
@@ -53,8 +53,8 @@ scale-up readiness; it is not presented as final full-dataset model quality.
    controls.
 10. Inspect `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` only if you need the
    detailed upstream dataset-card context.
-11. Inspect `results/omni_finetune/DATA_ACCESS_STATUS.md` before judging
-   Qwen3-Omni scale-up status.
+11. Inspect `docs/data/omni_finetune_verified_result.json` before judging the
+   Qwen3-Omni diagnostic pilot.
 
 ## Current Reading Notes
 
@@ -62,6 +62,9 @@ scale-up readiness; it is not presented as final full-dataset model quality.
   current results use one public sample episode.
 - Public-facing fine-tuning results should come from the verified result
   package, not from live process logs or setup-only artifacts.
+- The first Qwen3-Omni held-out package verifies the pipeline, not strong model
+  quality: JSON validity is 85.27%, action macro-F1 is 0.0021, and subtask
+  accuracy is 0.0045.
 - The current reconstruction task reconstructs feature vectors, not pixel
   depth, meshes, NeRF outputs, or Gaussian splats.
 - Audio is part of the current 8,546-dimensional baseline feature vector.

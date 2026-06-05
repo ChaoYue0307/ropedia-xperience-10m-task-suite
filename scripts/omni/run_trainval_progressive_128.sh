@@ -19,8 +19,8 @@ MIN_TRAIN_EPISODES="${MIN_TRAIN_EPISODES:-80}"
 MIN_VAL_EPISODES="${MIN_VAL_EPISODES:-12}"
 MAX_WINDOWS_PER_EPISODE="${MAX_WINDOWS_PER_EPISODE:-128}"
 MAX_VIDEO_FRAMES="${MAX_VIDEO_FRAMES:-16}"
-TRAIN_VAL_SPLIT="${TRAIN_VAL_SPLIT:-__none__}"
-MAX_VAL_SAMPLES="${MAX_VAL_SAMPLES:-0}"
+TRAIN_VAL_SPLIT="${TRAIN_VAL_SPLIT:-val}"
+MAX_VAL_SAMPLES="${MAX_VAL_SAMPLES:-512}"
 EPOCHS="${EPOCHS:-1}"
 NUM_PROCESSES="${NUM_PROCESSES:-8}"
 USE_FSDP="${USE_FSDP:-1}"
@@ -130,7 +130,7 @@ if counts.get("test", 0):
 print(json.dumps({"event": "dataset_guard_ok", "split_counts": dict(counts), "episodes": len(episodes)}, sort_keys=True))
 PY
 
-json_log event=train_start run_id="$RUN_ID"
+json_log event=train_start run_id="$RUN_ID" train_split=train val_split="$TRAIN_VAL_SPLIT" max_val_samples="$MAX_VAL_SAMPLES"
 train_cmd=(
   "$VENV_PY" -m accelerate.commands.launch
   --num_processes "$NUM_PROCESSES"

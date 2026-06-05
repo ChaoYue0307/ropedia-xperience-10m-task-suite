@@ -70,25 +70,25 @@ are not foundation models.
 
 ## Current Limitations
 
-- Cross-episode generalization is evaluated in the later multi-episode stage.
+- Cross-episode generalization for Qwen3-Omni has a first verified diagnostic pilot, but strong model quality is not yet shown.
 - Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.
-- Qwen3-Omni setup artifacts are preparation artifacts until the selected held-out pilot runs.
+- The verified Qwen3-Omni diagnostic pilot has weak held-out metrics and needs validation-aware rerunning before larger model-quality claims.
 - Full audio-visual representation learning still needs multi-episode training; the current report includes single-episode audio/no-audio ablations.
 
 ## Scale-Up Gate
 
-The full Qwen3-Omni fine-tuning pilot requires all of the following before
-reporting held-out model metrics:
+The next Qwen3-Omni quality pilot requires all of the following before
+claiming improved held-out model quality:
 
 - selected prepared Xperience-10M episodes
 - held-out episode split with no train/test episode leakage
+- nonzero validation samples during training
 - manifest, training metadata, progress logs, metrics, predictions, and run report
 - held-out evaluation on test episodes rather than train windows
 
-Current status: prepared; selected data relay in progress. Read
-`results/omni_finetune/DATA_ACCESS_STATUS.md` and
-`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md` before interpreting any
-Qwen3-Omni artifact.
+Current status: verified diagnostic pilot; quality target not met. Read
+`docs/data/omni_finetune_verified_result.json` before interpreting any
+Qwen3-Omni metric.
 
 ## Machine-Readable Copy
 

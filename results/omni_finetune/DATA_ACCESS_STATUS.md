@@ -12,14 +12,15 @@ held-out multi-episode experiment.
 | Full dataset access | Granted; metadata-only Hugging Face audit completed |
 | Current full-dataset metadata snapshot | 12,102 complete visible HF episodes across 802 complete sessions |
 | Current selected pilot | 128 metadata-balanced episodes, 96/16/16 train/val/test |
-| Current multi-episode data state | Selected episodes are being prepared; preprocessing and held-out evaluation are not complete yet |
-| Current Qwen3-Omni artifacts | Setup-stage sample run, not held-out multi-episode model metrics |
+| Current multi-episode data state | Selected 128-episode pilot package is verified for the exported subset: 3,808 windows across train/val/test, with 448 held-out test windows |
+| Current Qwen3-Omni artifacts | Verified diagnostic held-out pilot; JSON validity is 85.27%, below the 98% target |
 | Public raw-data redistribution | Not included |
 
-The selected 128-episode pilot is the next model-quality milestone. It should
-not be described as a completed fine-tune or evaluated model until the selected
-episodes are available, checked for modality coverage, preprocessed into
-train/validation/test examples, trained, and evaluated on held-out sessions.
+The selected 128-episode pilot is now a completed diagnostic pipeline result,
+not a strong model-quality result. It verifies the data export, LoRA training,
+held-out evaluation, validation, and public-safe packaging path. The next
+model-quality milestone is a validation-aware rerun that raises strict-JSON
+validity and improves action/subtask metrics.
 
 ## Episode Requirement
 
@@ -28,7 +29,7 @@ A valid training episode needs `annotation.hdf5` and at least
 MP4 streams. `visualization.rrd` is a viewer artifact and is excluded from
 training downloads.
 
-The 32-episode pilot should only be reported after:
+Any future larger pilot should only be reported after:
 
 - at least 32 valid episodes are prepared,
 - train/test splits are separated by episode,
@@ -36,6 +37,10 @@ The 32-episode pilot should only be reported after:
 - training finishes with metadata and progress logs,
 - evaluation runs on held-out test episodes,
 - predictions, metrics, confusion matrices, and a run report are committed.
+
+The current verified 128-episode diagnostic package satisfies the reporting
+path above for the exported subset and records skipped selected episodes in the
+dataset manifest.
 
 ## Discovery Snapshot
 
@@ -56,6 +61,8 @@ training yet.
 - `results/omni_finetune/full_dataset_metadata_audit.json`
 - `results/omni_finetune/XPERIENCE10M_128_EPISODE_SELECTION.md`
 - `results/omni_finetune/XPERIENCE10M_128_DATA_PREPARATION_AND_FINETUNE_PLAN.md`
+- `docs/data/omni_finetune_verified_result.json`
+- `results/omni_finetune/verified_public/`
 - `results/omni_finetune/xperience10m_128_episode_selection.json`
 - `results/omni_finetune/xperience10m_128_episode_download_files.txt`
 - `results/omni_finetune/source_discovery.json`

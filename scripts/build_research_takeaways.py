@@ -168,18 +168,20 @@ def build_payload() -> dict:
             "id": "scale_requires_episodes",
             "title": "The next scientific unit is held-out episodes, not more adjacent windows",
             "readout": (
-                "The prepared Qwen3-Omni path now targets a selected 128-episode pilot; "
-                "held-out metrics will be reported after staging, training, and evaluation complete."
+                "The selected Qwen3-Omni path now has a verified held-out diagnostic pilot. "
+                "It proves the cross-episode train/eval loop, but the weak metrics show that "
+                "validation monitoring and JSON-format reliability are the next modeling problems."
             ),
             "evidence": [
-                {"label": "target_episodes", "value": omni.get("target_episodes")},
-                {"label": "selected_sessions", "value": omni.get("selected_sessions")},
-                {"label": "valid_candidates", "value": omni.get("valid_candidates")},
+                {"label": "selected_episodes", "value": omni.get("target_episodes")},
+                {"label": "held_out_test_windows", "value": omni.get("held_out_test_windows")},
+                {"label": "json_validity_rate", "value": omni.get("json_validity_rate")},
+                {"label": "action_macro_f1", "value": omni.get("action_macro_f1")},
             ],
-            "source": "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
+            "source": "docs/data/omni_finetune_verified_result.json",
             "current_scope": omni.get(
                 "current_scope",
-                "The 32-episode fine-tune requires gated data preparation and held-out evaluation.",
+                "This is a diagnostic multi-episode pilot, not a strong model result.",
             ),
         }
     )
