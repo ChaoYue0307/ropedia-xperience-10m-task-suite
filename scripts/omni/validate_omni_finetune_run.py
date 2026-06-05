@@ -39,11 +39,26 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Validate an omni fine-tuning run.")
     parser.add_argument("--workspace", type=Path, default=workspace_default)
     parser.add_argument("--run-id", required=True)
+    parser.add_argument(
+        "--dataset-run-id",
+        help="Run id that owns episode_manifest.json and the exported *_dataset directory. Defaults to --run-id.",
+    )
+    parser.add_argument(
+        "--train-run-id",
+        help="Run id that owns LoRA training results/checkpoints. Defaults to --run-id.",
+    )
+    parser.add_argument(
+        "--eval-run-id",
+        help="Run id that owns evaluation outputs. Defaults to '<train-run-id>_eval' when --train-run-id is set, otherwise '<run-id>_eval'.",
+    )
     parser.add_argument("--backbone", default="qwen3_omni_lora")
     parser.add_argument("--require-stage", choices=sorted(STAGE_ORDER), default="manifest")
     parser.add_argument("--expected-train-episodes", type=int, default=96)
     parser.add_argument("--expected-val-episodes", type=int, default=16)
     parser.add_argument("--expected-test-episodes", type=int, default=16)
+    parser.add_argument("--expected-dataset-train-episodes", type=int)
+    parser.add_argument("--expected-dataset-val-episodes", type=int)
+    parser.add_argument("--expected-dataset-test-episodes", type=int)
     parser.add_argument("--expected-num-processes", type=int, default=8)
     parser.add_argument(
         "--allow-zero-val-training",
@@ -83,6 +98,30 @@ def expected_counts(args: argparse.Namespace) -> dict[str, int]:
         "val": args.expected_val_episodes,
         "test": args.expected_test_episodes,
     }
+
+
+def expected_dataset_counts(args: argparse.Namespace) -> dict[str, int] | None:
+    values = {
+        "train": args.expected_dataset_train_episodes,
+        "val": args.expected_dataset_val_episodes,
+        "test": args.expected_dataset_test_episodes,
+    }
+    if all(value is None for value in values.values()):
+        return None
+    missing = [split for split, value in values.items() if value is None]
+    if missing:
+        raise ValueError(f"Dataset expected counts must include train/val/test; missing: {missing}")
+    return {split: int(value) for split, value in values.items()}
+
+
+def first_existing_dir(paths: list[Path], required_file: str | None = None) -> Path:
+    for path in paths:
+        if not path.exists():
+            continue
+        if required_file and not (path / required_file).exists():
+            continue
+        return path
+    return paths[0]
 
 
 def manifest_counts(manifest: dict[str, Any]) -> dict[str, int]:
@@ -142,7 +181,7 @@ def validate_manifest(args: argparse.Namespace, run_dir: Path, issues: list[dict
     return summary
 
 
-def validate_dataset(dataset_dir: Path, issues: list[dict[str, str]]) -> dict[str, Any]:
+def validate_dataset(args: argparse.Namespace, dataset_dir: Path, issues: list[dict[str, str]]) -> dict[str, Any]:
     summary: dict[str, Any] = {"dataset_dir": str(dataset_dir)}
     manifest_path = dataset_dir / "dataset_manifest.json"
     dataset_path = dataset_dir / "dataset.jsonl"
@@ -170,6 +209,11 @@ def validate_dataset(dataset_dir: Path, issues: list[dict[str, str]]) -> dict[st
     for split in ("train", "val", "test"):
         if row_counts.get(split, 0) <= 0:
             add_issue(issues, "dataset", f"no exported samples for split {split}")
+    expected_dataset = expected_dataset_counts(args)
+    if expected_dataset is not None:
+        actual = {split: episode_counts.get(split, 0) for split in ("train", "val", "test")}
+        if actual != expected_dataset:
+            add_issue(issues, "dataset", f"exported episode counts {actual} do not match expected {expected_dataset}")
     for leak in leakage_pairs(episode_sets):
         add_issue(issues, "dataset", f"episode leakage in exported records: {leak}")
     required_fields = {"id", "episode_id", "split", "media", "answer_json", "messages", "label_options"}
@@ -182,15 +226,29 @@ def validate_dataset(dataset_dir: Path, issues: list[dict[str, str]]) -> dict[st
 
 
 def validate_training(args: argparse.Namespace, workspace: Path, run_id: str, issues: list[dict[str, str]]) -> dict[str, Any]:
-    train_dir = workspace / "results" / "omni_finetune" / f"{run_id}_lora"
-    checkpoint_dir = workspace / "checkpoints" / f"{run_id}_lora" / "adapter_lora"
-    summary: dict[str, Any] = {"train_dir": str(train_dir), "checkpoint_dir": str(checkpoint_dir)}
+    train_dir = first_existing_dir([
+        workspace / "results" / "omni_finetune" / run_id,
+        workspace / "results" / "omni_finetune" / f"{run_id}_lora",
+    ], required_file="training_metadata.json")
+    checkpoint_candidates = [
+        workspace / "checkpoints" / run_id / "adapter_lora",
+        workspace / "checkpoints" / f"{run_id}_lora" / "adapter_lora",
+    ]
+    summary: dict[str, Any] = {"train_dir": str(train_dir), "checkpoint_candidates": [str(path) for path in checkpoint_candidates]}
     try:
         metadata = read_json(train_dir / "training_metadata.json")
     except FileNotFoundError:
         add_issue(issues, "training", f"missing training metadata: {train_dir / 'training_metadata.json'}")
         return summary
+    recorded_checkpoint = metadata.get("checkpoint_dir")
+    if recorded_checkpoint:
+        recorded_path = Path(recorded_checkpoint)
+        if not recorded_path.is_absolute():
+            recorded_path = workspace / recorded_path
+        checkpoint_candidates.insert(0, recorded_path)
+    checkpoint_dir = first_existing_dir(checkpoint_candidates, required_file="training_metadata.json")
     summary.update({
+        "checkpoint_dir": str(checkpoint_dir),
         "num_processes": metadata.get("num_processes"),
         "num_train_samples": metadata.get("num_train_samples"),
         "num_val_samples": metadata.get("num_val_samples"),
@@ -220,7 +278,10 @@ def validate_training(args: argparse.Namespace, workspace: Path, run_id: str, is
 
 
 def validate_eval(args: argparse.Namespace, workspace: Path, run_id: str, issues: list[dict[str, str]]) -> dict[str, Any]:
-    eval_dir = workspace / "results" / "omni_finetune" / f"{run_id}_eval"
+    eval_dir = first_existing_dir([
+        workspace / "results" / "omni_finetune" / run_id,
+        workspace / "results" / "omni_finetune" / f"{run_id}_eval",
+    ], required_file="metrics.json")
     summary: dict[str, Any] = {"eval_dir": str(eval_dir)}
     for filename in REQUIRED_EVAL_FILES:
         if not (eval_dir / filename).exists():
@@ -256,8 +317,11 @@ def main() -> int:
     args = parse_args()
     workspace = args.workspace.expanduser().resolve()
     root = workspace / "results" / "omni_finetune"
-    run_dir = root / args.run_id
-    dataset_dir = root / f"{args.run_id}_dataset"
+    dataset_run_id = args.dataset_run_id or args.run_id
+    train_run_id = args.train_run_id or args.run_id
+    eval_run_id = args.eval_run_id or (f"{train_run_id}_eval" if args.train_run_id else args.run_id)
+    run_dir = root / dataset_run_id
+    dataset_dir = root / f"{dataset_run_id}_dataset"
 
     issues: list[dict[str, str]] = []
     registry = load_registry(workspace / "configs" / "omni_backbones")
@@ -269,6 +333,9 @@ def main() -> int:
 
     summary: dict[str, Any] = {
         "run_id": args.run_id,
+        "dataset_run_id": dataset_run_id,
+        "train_run_id": train_run_id,
+        "eval_run_id": eval_run_id,
         "backbone": args.backbone,
         "backbone_status": backbone.get("status"),
         "required_stage": args.require_stage,
@@ -276,11 +343,11 @@ def main() -> int:
     }
     summary["manifest"] = validate_manifest(args, run_dir, issues)
     if STAGE_ORDER[args.require_stage] >= STAGE_ORDER["dataset"]:
-        summary["dataset"] = validate_dataset(dataset_dir, issues)
+        summary["dataset"] = validate_dataset(args, dataset_dir, issues)
     if STAGE_ORDER[args.require_stage] >= STAGE_ORDER["training"]:
-        summary["training"] = validate_training(args, workspace, args.run_id, issues)
+        summary["training"] = validate_training(args, workspace, train_run_id, issues)
     if STAGE_ORDER[args.require_stage] >= STAGE_ORDER["eval"]:
-        summary["eval"] = validate_eval(args, workspace, args.run_id, issues)
+        summary["eval"] = validate_eval(args, workspace, eval_run_id, issues)
 
     errors = [issue for issue in issues if issue["severity"] == "error"]
     payload = {
