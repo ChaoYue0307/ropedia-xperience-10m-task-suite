@@ -739,6 +739,13 @@ registry can be checked with:
 python scripts/omni/backbone_registry.py --validate --json
 ```
 
+Verify that every configured backbone can pass the public-safe packaging
+contract on synthetic derived artifacts:
+
+```bash
+python scripts/omni/smoke_test_backbone_packaging.py
+```
+
 Create a new planned backbone branch from an existing contract template with:
 
 ```bash
