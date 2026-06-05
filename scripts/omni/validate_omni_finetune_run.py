@@ -24,7 +24,7 @@ STAGE_ORDER = {
     "eval": 4,
 }
 
-REQUIRED_EVAL_FILES = [
+DEFAULT_REQUIRED_EVAL_FILES = [
     "metrics.json",
     "predictions.jsonl",
     "predictions.csv",
@@ -122,6 +122,33 @@ def first_existing_dir(paths: list[Path], required_file: str | None = None) -> P
             continue
         return path
     return paths[0]
+
+
+def artifact_contract(backbone: dict[str, Any]) -> dict[str, Any]:
+    return backbone.get("artifact_contract") or {}
+
+
+def required_contract_files(backbone: dict[str, Any], key: str, fallback: list[str]) -> list[str]:
+    files = artifact_contract(backbone).get(key)
+    return list(files) if isinstance(files, list) and files else list(fallback)
+
+
+def has_contract_file(filename: str, search_dirs: list[Path]) -> bool:
+    for directory in search_dirs:
+        path = directory / filename
+        if path.exists():
+            return True
+        if "*" in filename and any(directory.glob(filename)):
+            return True
+    return False
+
+
+def metric_present(metrics: dict[str, Any], metric_name: str) -> bool:
+    if metric_name in metrics:
+        return True
+    if metric_name == "held_out_episode_count" and "num_eval_episodes" in metrics:
+        return True
+    return False
 
 
 def manifest_counts(manifest: dict[str, Any]) -> dict[str, int]:
@@ -225,7 +252,7 @@ def validate_dataset(args: argparse.Namespace, dataset_dir: Path, issues: list[d
     return summary
 
 
-def validate_training(args: argparse.Namespace, workspace: Path, run_id: str, issues: list[dict[str, str]]) -> dict[str, Any]:
+def validate_training(args: argparse.Namespace, workspace: Path, run_id: str, backbone: dict[str, Any], issues: list[dict[str, str]]) -> dict[str, Any]:
     train_dir = first_existing_dir([
         workspace / "results" / "omni_finetune" / run_id,
         workspace / "results" / "omni_finetune" / f"{run_id}_lora",
@@ -234,7 +261,17 @@ def validate_training(args: argparse.Namespace, workspace: Path, run_id: str, is
         workspace / "checkpoints" / run_id / "adapter_lora",
         workspace / "checkpoints" / f"{run_id}_lora" / "adapter_lora",
     ]
-    summary: dict[str, Any] = {"train_dir": str(train_dir), "checkpoint_candidates": [str(path) for path in checkpoint_candidates]}
+    required_files = required_contract_files(
+        backbone,
+        "required_training_files",
+        ["training_metadata.json", "progress.jsonl", "adapter_config.json", "adapter_model.*"],
+    )
+    summary: dict[str, Any] = {
+        "train_dir": str(train_dir),
+        "checkpoint_candidates": [str(path) for path in checkpoint_candidates],
+        "checkpoint_gate": artifact_contract(backbone).get("checkpoint_gate"),
+        "required_training_files": required_files,
+    }
     try:
         metadata = read_json(train_dir / "training_metadata.json")
     except FileNotFoundError:
@@ -261,11 +298,12 @@ def validate_training(args: argparse.Namespace, workspace: Path, run_id: str, is
         add_issue(issues, "training", "training metadata has empty train samples")
     if int(metadata.get("num_val_samples", 0)) <= 0 and not args.allow_zero_val_training:
         add_issue(issues, "training", "training metadata has empty validation samples")
-    for filename in ("adapter_config.json", "training_metadata.json"):
-        if not (checkpoint_dir / filename).exists():
-            add_issue(issues, "training", f"missing checkpoint artifact: {checkpoint_dir / filename}")
-    if not any(checkpoint_dir.glob("adapter_model.*")):
-        add_issue(issues, "training", f"missing adapter_model file in {checkpoint_dir}")
+    training_search_dirs = [train_dir, checkpoint_dir]
+    for filename in required_files:
+        if not has_contract_file(filename, training_search_dirs):
+            add_issue(issues, "training", f"missing required training artifact {filename} in {training_search_dirs}")
+    if artifact_contract(backbone).get("checkpoint_gate") == "lora_safetensors_shape_check" and not any(checkpoint_dir.glob("adapter_model*.safetensors")):
+        add_issue(issues, "training", f"missing LoRA safetensors adapter file in {checkpoint_dir}")
     progress = train_dir / "progress.jsonl"
     try:
         progress_rows = read_jsonl(progress)
@@ -277,39 +315,53 @@ def validate_training(args: argparse.Namespace, workspace: Path, run_id: str, is
     return summary
 
 
-def validate_eval(args: argparse.Namespace, workspace: Path, run_id: str, issues: list[dict[str, str]]) -> dict[str, Any]:
+def validate_eval(args: argparse.Namespace, workspace: Path, run_id: str, backbone: dict[str, Any], issues: list[dict[str, str]]) -> dict[str, Any]:
     eval_dir = first_existing_dir([
         workspace / "results" / "omni_finetune" / run_id,
         workspace / "results" / "omni_finetune" / f"{run_id}_eval",
     ], required_file="metrics.json")
-    summary: dict[str, Any] = {"eval_dir": str(eval_dir)}
-    for filename in REQUIRED_EVAL_FILES:
+    required_files = required_contract_files(backbone, "required_eval_files", DEFAULT_REQUIRED_EVAL_FILES)
+    summary: dict[str, Any] = {
+        "eval_dir": str(eval_dir),
+        "required_eval_files": required_files,
+    }
+    for filename in required_files:
         if not (eval_dir / filename).exists():
             add_issue(issues, "eval", f"missing eval artifact: {eval_dir / filename}")
     try:
         metrics = read_json(eval_dir / "metrics.json")
     except FileNotFoundError:
         return summary
+    prediction_file = next((filename for filename in required_files if filename.endswith(".jsonl")), "predictions.jsonl")
     predictions = []
     try:
-        predictions = read_jsonl(eval_dir / "predictions.jsonl")
+        predictions = read_jsonl(eval_dir / prediction_file)
     except FileNotFoundError:
         pass
     summary.update({
         "eval_split": metrics.get("eval_split"),
         "num_eval_episodes": metrics.get("num_eval_episodes"),
+        "held_out_episode_count": metrics.get("held_out_episode_count"),
         "json_validity_rate": metrics.get("json_validity_rate"),
         "action_macro_f1": metrics.get("action_macro_f1"),
+        "prediction_file": prediction_file,
         "prediction_rows": len(predictions),
     })
     if metrics.get("eval_split") != "test":
         add_issue(issues, "eval", f"eval_split is {metrics.get('eval_split')}, expected test")
-    if int(metrics.get("num_eval_episodes", 0)) <= 0:
-        add_issue(issues, "eval", "num_eval_episodes is empty")
-    if float(metrics.get("json_validity_rate", 0.0)) < args.min_json_validity:
-        add_issue(issues, "eval", f"json_validity_rate below threshold {args.min_json_validity}")
+    held_out_episode_count = metrics.get("held_out_episode_count", metrics.get("num_eval_episodes", 0))
+    if int(held_out_episode_count or 0) <= 0:
+        add_issue(issues, "eval", "held-out episode count is empty")
+    for metric_name in backbone.get("primary_metrics", []):
+        if not metric_present(metrics, metric_name):
+            add_issue(issues, "eval", f"primary metric missing from metrics.json: {metric_name}")
+    if args.min_json_validity > 0:
+        if "json_validity_rate" not in metrics:
+            add_issue(issues, "eval", "json_validity_rate missing while min-json-validity was requested")
+        elif float(metrics.get("json_validity_rate", 0.0)) < args.min_json_validity:
+            add_issue(issues, "eval", f"json_validity_rate below threshold {args.min_json_validity}")
     if not predictions:
-        add_issue(issues, "eval", "predictions.jsonl has no rows")
+        add_issue(issues, "eval", f"{prediction_file} has no rows")
     return summary
 
 
@@ -338,6 +390,7 @@ def main() -> int:
         "eval_run_id": eval_run_id,
         "backbone": args.backbone,
         "backbone_status": backbone.get("status"),
+        "checkpoint_gate": artifact_contract(backbone).get("checkpoint_gate"),
         "required_stage": args.require_stage,
         "workspace": str(workspace),
     }
@@ -345,9 +398,9 @@ def main() -> int:
     if STAGE_ORDER[args.require_stage] >= STAGE_ORDER["dataset"]:
         summary["dataset"] = validate_dataset(args, dataset_dir, issues)
     if STAGE_ORDER[args.require_stage] >= STAGE_ORDER["training"]:
-        summary["training"] = validate_training(args, workspace, train_run_id, issues)
+        summary["training"] = validate_training(args, workspace, train_run_id, backbone, issues)
     if STAGE_ORDER[args.require_stage] >= STAGE_ORDER["eval"]:
-        summary["eval"] = validate_eval(args, workspace, eval_run_id, issues)
+        summary["eval"] = validate_eval(args, workspace, eval_run_id, backbone, issues)
 
     errors = [issue for issue in issues if issue["severity"] == "error"]
     payload = {
