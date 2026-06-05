@@ -637,6 +637,31 @@ confusion matrices, run reports, manifests, validation summaries, and training
 metadata. It excludes raw Xperience-10M files, base-model weights, LoRA adapter
 weights, full checkpoints, and large archives.
 
+For hardware setups that can run multiple eval workers, the Qwen evaluator also
+supports deterministic sample shards:
+
+```bash
+python scripts/omni/eval_qwen3_omni_lora.py \
+  --dataset-jsonl results/omni_finetune/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_dataset/dataset.jsonl \
+  --adapter-dir checkpoints/<train_run_id>/adapter_lora \
+  --run-id <eval_shard_0> \
+  --eval-split test \
+  --sample-offset 0 \
+  --sample-stride 4
+
+python scripts/omni/merge_qwen3_omni_eval_shards.py \
+  --dataset-jsonl results/omni_finetune/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_dataset/dataset.jsonl \
+  --output-dir results/omni_finetune/<merged_eval_run_id> \
+  --shard-dir results/omni_finetune/<eval_shard_0> \
+  --shard-dir results/omni_finetune/<eval_shard_1> \
+  --shard-dir results/omni_finetune/<eval_shard_2> \
+  --shard-dir results/omni_finetune/<eval_shard_3>
+```
+
+Only the merged eval directory should be validated and reported publicly,
+because the merger checks coverage and recomputes the metrics from all
+held-out predictions.
+
 After dataset export, a model-neutral window index can be created for future
 backbones:
 

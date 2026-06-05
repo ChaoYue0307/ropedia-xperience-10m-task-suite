@@ -117,6 +117,11 @@ The Qwen evaluator writes partial predictions during inference and finalizes the
 same `predictions.jsonl`, `predictions.csv`, `metrics.json`,
 `confusion_matrix.csv`, and `RUN_REPORT.md` files after all selected held-out
 windows finish. A restarted eval can resume from the partial prediction file.
+For faster held-out evaluation, the Qwen evaluator can also run deterministic
+sample shards via `--sample-offset` and `--sample-stride`. Sharded outputs must
+be merged with `scripts/omni/merge_qwen3_omni_eval_shards.py`, which recomputes
+the final metrics from combined predictions and checks missing or duplicate
+sample ids.
 
 Future model families can reuse the same wait/eval sequence only if their
 checkpoint artifact has a compatible gate. Otherwise they should provide a

@@ -39,6 +39,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--eval-split", default="test")
     parser.add_argument("--train-split", default="train")
     parser.add_argument("--sample-limit", type=int, default=0)
+    parser.add_argument("--sample-offset", type=int, default=0)
+    parser.add_argument("--sample-stride", type=int, default=1)
     parser.add_argument("--max-new-tokens", type=int, default=32)
     parser.add_argument("--device-map", default="auto")
     parser.add_argument("--dtype", default="bfloat16", choices=["auto", "bfloat16", "float16", "float32"])
@@ -228,6 +230,12 @@ def main() -> int:
     args.partial_predictions_jsonl = args.partial_predictions_jsonl or args.output_dir / "predictions.partial.jsonl"
     samples = load_jsonl(args.dataset_jsonl)
     eval_samples = [sample for sample in samples if sample.get("split") == args.eval_split]
+    if args.sample_stride < 1:
+        raise ValueError("--sample-stride must be >= 1")
+    if args.sample_offset < 0 or args.sample_offset >= args.sample_stride:
+        raise ValueError("--sample-offset must satisfy 0 <= offset < stride")
+    if args.sample_stride > 1:
+        eval_samples = [sample for idx, sample in enumerate(eval_samples) if idx % args.sample_stride == args.sample_offset]
     if args.sample_limit > 0:
         eval_samples = eval_samples[: args.sample_limit]
     if not eval_samples:
@@ -252,6 +260,8 @@ def main() -> int:
             "timestamp": time.time(),
             "run_id": args.run_id,
             "eval_split": args.eval_split,
+            "sample_offset": args.sample_offset,
+            "sample_stride": args.sample_stride,
             "num_eval_samples": len(eval_samples),
             "completed_before_start": len(completed_by_id),
             "resume": args.resume,
@@ -312,6 +322,8 @@ def main() -> int:
         "dataset_jsonl": str(args.dataset_jsonl),
         "eval_split": args.eval_split,
         "train_split": args.train_split,
+        "sample_offset": args.sample_offset,
+        "sample_stride": args.sample_stride,
         "num_eval_episodes": len({row["episode_id"] for row in rows}),
         "unseen_eval_labels": unseen_labels,
         "num_unseen_label_samples": len(unseen_rows),
