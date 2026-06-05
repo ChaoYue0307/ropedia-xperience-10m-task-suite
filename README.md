@@ -479,8 +479,9 @@ python scripts/train_all_modalities_model.py --workspace /path/to/workspace
 ## Xperience-10M Fine-Tuning Exploration
 
 This repo includes a first Qwen3-Omni fine-tuning path over Xperience-10M. The
-current artifacts are setup-stage evidence, with held-out multi-episode metrics
-pending completed staging, preprocessing, training, and evaluation.
+repository separates public-sample evidence from multi-episode fine-tuning
+artifacts. Multi-episode model quality should be reported only after validated
+held-out evaluation artifacts are packaged for publication.
 The useful distinction is:
 
 - direct Qwen3-Omni inputs: RGB/fisheye video, embedded MP4 audio, and language
@@ -497,11 +498,11 @@ adds depth/pose/mocap/IMU features, LoRA adapters are trained on prepared
 train/val episodes, and sealed held-out test evaluation produces predictions,
 metrics, run reports, and upload-ready adapter artifacts.
 
-The current scale-up artifacts show that the export, manifest, sensor-feature,
-LoRA, and evaluation scripts can run on the available sample episode. They do
-not show a real multi-episode result. A real pilot requires valid prepared
-episodes, held-out episode splits, training metadata, predictions, metrics, and
-a run report; the current selected pilot target is 128 episodes.
+The scale-up path requires valid prepared episodes, held-out episode splits,
+training metadata, predictions, metrics, and a run report. A result is ready
+for public README, website, or Hugging Face updates only after the validator
+passes and `scripts/omni/package_verified_omni_result.py` creates a
+public-safe derived-artifact package.
 
 ### Sample Count Decision
 
@@ -621,6 +622,20 @@ python scripts/omni/validate_omni_finetune_run.py \
   --require-stage eval \
   --min-json-validity 0.98
 ```
+
+After the eval validator passes, create the public-safe result package:
+
+```bash
+python scripts/omni/package_verified_omni_result.py \
+  --dataset-run-id xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu \
+  --train-run-id <train_run_id> \
+  --eval-run-id <eval_run_id>
+```
+
+The package copies only small derived artifacts such as metrics, predictions,
+confusion matrices, run reports, manifests, validation summaries, and training
+metadata. It excludes raw Xperience-10M files, base-model weights, LoRA adapter
+weights, full checkpoints, and large archives.
 
 After dataset export, a model-neutral window index can be created for future
 backbones:
