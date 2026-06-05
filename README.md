@@ -746,6 +746,14 @@ contract on synthetic derived artifacts:
 python scripts/omni/smoke_test_backbone_packaging.py
 ```
 
+After a real held-out package is created, audit it before updating README,
+website, or Hugging Face pages:
+
+```bash
+python scripts/omni/audit_verified_omni_package.py \
+  --package-dir results/omni_finetune/verified_public/<eval_run_id>
+```
+
 Create a new planned backbone branch from an existing contract template with:
 
 ```bash

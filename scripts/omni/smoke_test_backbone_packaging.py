@@ -131,13 +131,27 @@ def run_package(repo: Path, temp_workspace: Path, backbone: dict[str, Any]) -> d
     subprocess.run(cmd, cwd=repo, check=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     output_dir = temp_workspace / "results" / "omni_finetune" / "verified_public" / eval_run_id
     summary = json.loads((output_dir / "verified_result_summary.json").read_text(encoding="utf-8"))
+    audit_cmd = [
+        sys.executable,
+        str(repo / "scripts" / "omni" / "audit_verified_omni_package.py"),
+        "--workspace",
+        str(temp_workspace),
+        "--package-dir",
+        str(output_dir),
+        "--backbone",
+        str(backbone["id"]),
+    ]
+    audit_proc = subprocess.run(audit_cmd, cwd=repo, check=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+    audit_payload = json.loads(audit_proc.stdout)
     assert summary["status"] == "verified"
     assert summary["required_eval_files"] == backbone["artifact_contract"]["required_eval_files"]
     assert set(summary["eval"]["primary_metrics"]) == set(backbone.get("primary_metrics", []))
+    assert audit_payload["status"] == "pass"
     assert_public_safe(output_dir)
     return {
         "backbone": backbone["id"],
         "output_dir": str(output_dir),
+        "audit_status": audit_payload["status"],
         "required_eval_files": summary["required_eval_files"],
         "primary_metrics": summary["eval"]["primary_metrics"],
     }
