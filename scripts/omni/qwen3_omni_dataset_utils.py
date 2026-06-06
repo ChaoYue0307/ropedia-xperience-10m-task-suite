@@ -33,11 +33,23 @@ JSON_FIELDS = [
     "evidence_window",
 ]
 
+STRICT_JSON_SCHEMA_TEXT = (
+    '{"action":"<one action label or unknown>",'
+    '"subtask":"<one subtask label or unknown>",'
+    '"objects":["<0 to 8 short object names>"],'
+    '"contact":"yes|no|unknown",'
+    '"transition":"yes|no|unknown",'
+    '"next_action":"<one action label or unknown>",'
+    '"evidence_window":{"start_frame":0,"end_frame":0}}'
+)
+
 SYSTEM_PROMPT = (
     "You are an embodied episode-understanding model for Ropedia/Xperience-10M. "
-    "Answer every question as strict JSON with these keys: action, subtask, objects, "
-    "contact, transition, next_action, evidence_window. Use \"unknown\" when the "
-    "evidence is missing instead of guessing."
+    "Return exactly one valid JSON object and no markdown, no prose, no code fences, "
+    "and no repeated text. The JSON must use exactly these keys: action, subtask, "
+    "objects, contact, transition, next_action, evidence_window. Use \"unknown\" "
+    "when evidence is missing instead of guessing. Keep objects to at most 8 short "
+    f"names. Schema example: {STRICT_JSON_SCHEMA_TEXT}"
 )
 
 
@@ -121,6 +133,33 @@ def label_options_text(label_options: list[str]) -> str:
     return "\n".join(f"- {label}" for label in label_options)
 
 
+def canonical_answer(answer: dict) -> dict:
+    window = answer.get("evidence_window") if isinstance(answer.get("evidence_window"), dict) else {}
+    objects = answer.get("objects") if isinstance(answer.get("objects"), list) else []
+    clean_objects = []
+    seen = set()
+    for obj in objects:
+        value = normalize_label(obj)
+        if not value or value.lower() in seen:
+            continue
+        seen.add(value.lower())
+        clean_objects.append(value)
+        if len(clean_objects) >= 8:
+            break
+    return {
+        "action": normalize_label(answer.get("action") or "unknown") or "unknown",
+        "subtask": normalize_label(answer.get("subtask") or "unknown") or "unknown",
+        "objects": clean_objects,
+        "contact": normalize_label(answer.get("contact") or "unknown").lower() or "unknown",
+        "transition": normalize_label(answer.get("transition") or "unknown").lower() or "unknown",
+        "next_action": normalize_label(answer.get("next_action") or "unknown") or "unknown",
+        "evidence_window": {
+            "start_frame": int(window.get("start_frame", 0) or 0),
+            "end_frame": int(window.get("end_frame", 0) or 0),
+        },
+    }
+
+
 def answer_json_text(sample: dict) -> str:
     answer = sample.get("answer_json")
     if answer is None:
@@ -133,7 +172,7 @@ def answer_json_text(sample: dict) -> str:
             "next_action": sample.get("next_action", "unknown"),
             "evidence_window": sample.get("evidence_window", {}),
         }
-    return json.dumps(answer, ensure_ascii=False, sort_keys=True)
+    return json.dumps(canonical_answer(answer), ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 
 def build_user_prompt(sample: dict, label_options: list[str]) -> str:
@@ -149,8 +188,10 @@ def build_user_prompt(sample: dict, label_options: list[str]) -> str:
         ),
         f"Episode: {sample['episode_id']}",
         f"Label window frames: {start_frame}-{end_frame}",
-        "Return strict JSON only with keys: action, subtask, objects, contact, transition, next_action, evidence_window.",
-        "Use \"unknown\" for fields that cannot be determined.",
+        "Return exactly one compact JSON object only. Do not add markdown, prose, analysis, comments, or a second object.",
+        f"Required schema: {STRICT_JSON_SCHEMA_TEXT}",
+        "Use labels from the option lists when possible. Use \"unknown\" for fields that cannot be determined.",
+        "Keep objects as a short list with at most 8 entries.",
     ]
     if action_options:
         prompt.extend(["Known action labels:", label_options_text(action_options)])
