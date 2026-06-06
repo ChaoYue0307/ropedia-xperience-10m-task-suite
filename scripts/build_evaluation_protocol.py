@@ -7,6 +7,8 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+from task_display import task_display_name
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SUMMARY_PATH = ROOT / "docs/data/summary_metrics.json"
@@ -158,6 +160,7 @@ def build_payload() -> dict:
         task_rows.append(
             {
                 "task": task_name,
+                "task_display_name": task_display_name(task_name),
                 **protocol,
                 "counts": count_record(minimal),
                 "minimal_primary_metric": metric_value(minimal, primary),
@@ -226,7 +229,7 @@ def build_payload() -> dict:
         "current_limitations": [
             "Cross-episode generalization for Qwen3-Omni has a first verified diagnostic pilot, but strong model quality is not yet shown.",
             "Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.",
-            "The verified validation-aware Qwen3-Omni diagnostic pilot has weak held-out metrics and needs structured-output and task-quality improvements before larger model-quality claims.",
+            "The final verified Qwen3-Omni diagnostic result meets the strict-JSON target, but action/subtask held-out quality remains weak and needs error analysis before larger model-quality claims.",
             "Full audio-visual representation learning still needs multi-episode training; the current report includes single-episode audio/no-audio ablations.",
         ],
         "scale_up_gate": {
@@ -237,7 +240,7 @@ def build_payload() -> dict:
                 "manifest, training metadata, progress logs, metrics, predictions, and run report",
                 "held-out evaluation on test episodes rather than train windows",
             ],
-            "current_status": "verified diagnostic pilot; quality target not met",
+            "current_status": "verified diagnostic result; strict-JSON quality target met, action/subtask quality still weak",
             "evidence": [
                 "docs/data/omni_finetune_verified_result.json",
                 "results/omni_finetune/verified_public/",
@@ -248,8 +251,8 @@ def build_payload() -> dict:
 
 def markdown_table(rows: list[dict]) -> list[str]:
     lines = [
-        "| Task | Family | Unit | Input -> target | Primary metric | Minimal | Neural |",
-        "| --- | --- | --- | --- | --- | ---: | ---: |",
+        "| Task | Artifact id | Family | Unit | Input -> target | Primary metric | Minimal | Neural |",
+        "| --- | --- | --- | --- | --- | --- | ---: | ---: |",
     ]
     for row in rows:
         metric = row["primary_metric"]
@@ -259,8 +262,9 @@ def markdown_table(rows: list[dict]) -> list[str]:
         neural_text = "n/a" if neural is None else f"{neural:.4f}"
         direction = "higher better" if row["higher_is_better"] else "lower better"
         lines.append(
-            "| {task} | {family} | {unit} | {input} -> {target} | {metric} ({direction}) | {minimal} | {neural} |".format(
-                task=row["task"],
+            "| {task} | `{artifact}` | {family} | {unit} | {input} -> {target} | {metric} ({direction}) | {minimal} | {neural} |".format(
+                task=row["task_display_name"],
+                artifact=row["task"],
                 family=row["family"],
                 unit=row["unit"],
                 input=row["input"],
@@ -349,7 +353,7 @@ def render_markdown(payload: dict) -> str:
     lines.extend(f"- {item}" for item in payload["scale_up_gate"]["required_before_next_omni_quality_pilot"])
     lines.extend([
         "",
-        "Current status: verified diagnostic pilot; quality target not met. Read",
+        "Current status: verified diagnostic result; strict-JSON quality target met, action/subtask quality still weak. Read",
         "`docs/data/omni_finetune_verified_result.json` before interpreting any",
         "Qwen3-Omni metric.",
         "",

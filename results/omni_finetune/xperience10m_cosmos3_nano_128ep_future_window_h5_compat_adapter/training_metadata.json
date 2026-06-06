@@ -1,0 +1,39 @@
+{
+  "run_id": "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter",
+  "backbone": "cosmos_world_model",
+  "model_id": "/home/cy/Ropedia/cosmos3_models/nvidia__Cosmos3-Nano",
+  "dataset_jsonl": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_dataset/dataset.jsonl",
+  "checkpoint_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter",
+  "num_processes": 1,
+  "num_train_samples": 2403,
+  "num_val_samples": 432,
+  "history": [
+    {
+      "epoch": 0,
+      "train_loss": null,
+      "val_loss": null,
+      "note": "closed-form mean-delta adapter; no Cosmos diffusion weights fine-tuned in this compatibility run"
+    }
+  ],
+  "adapter": {
+    "type": "standardized_current_plus_train_mean_future_delta",
+    "feature_dim": 4430,
+    "mean_delta_l2": 4.0002640162128955e-05,
+    "saved_weights": false
+  },
+  "cosmos_model": {
+    "available": true,
+    "path": "/home/cy/Ropedia/cosmos3_models/nvidia__Cosmos3-Nano",
+    "config.json": true,
+    "architectures": [
+      "Cosmos3ForConditionalGeneration"
+    ],
+    "lora_rank_default": 16,
+    "lora_enabled_default": false,
+    "resolution": "720",
+    "model_index.json": true,
+    "pipeline_class": "Cosmos3OmniDiffusersPipeline",
+    "diffusers_version": "0.37.1",
+    "generation_config.json": true
+  }
+}

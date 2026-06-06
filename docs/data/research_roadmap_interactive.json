@@ -2035,7 +2035,7 @@
         "step": 1
       },
       {
-        "action": "Run validation-aware Qwen3-Omni LoRA to improve the verified diagnostic baseline.",
+        "action": "Run Qwen3-Omni action/subtask error analysis and targeted reruns to improve the verified diagnostic baseline.",
         "name": "First held-out baseline",
         "step": 2
       },
@@ -2222,7 +2222,7 @@
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-06T13:49:32+00:00",
+  "generated_at_utc": "2026-06-06T23:26:13+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -2303,33 +2303,53 @@
         "held-out predictions",
         "metrics",
         "confusion matrices",
-        "run report"
+        "run report",
+        "public LoRA adapter repo"
       ],
       "entry_condition": "Selected episodes are prepared locally with no train/test episode leakage.",
       "id": "qwen3_omni_lora_diagnostic_pilot",
-      "name": "Qwen3-Omni LoRA Validation-Aware Diagnostic Pilot",
-      "reader_takeaway": "The first omni-model pilot establishes the full held-out training/validation/evaluation loop, but the weak metrics make it a diagnostic baseline.",
+      "name": "Qwen3-Omni LoRA Final Diagnostic Result",
+      "reader_takeaway": "The final omni-model diagnostic result establishes the full held-out training/validation/evaluation loop and meets the strict-JSON target, but weak action/subtask metrics make it a diagnostic baseline.",
       "stage": "future",
       "status": "verified_baseline"
     },
     {
       "completion_evidence": [
-        "quality-target report",
+        "results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md",
+        "results/omni_finetune/multi_episode_128_task_baselines/summary_report.json",
+        "scripts/omni/run_128_task_baselines.py"
+      ],
+      "deliverables": [
+        "same 12 task ids",
+        "simple metadata/text baselines",
+        "neural MLP baselines for JSON-supported labels",
+        "explicit unsupported markers for raw-feature-only tasks"
+      ],
+      "entry_condition": "Derived Qwen JSONL export for the selected 96/16/16 split.",
+      "id": "multi_episode_128_same_split_baselines",
+      "name": "128-Episode Same-Split Simple/NN Baselines",
+      "reader_takeaway": "The simple and neural baseline framing is now aligned to the selected 128-episode setup; trajectory, retrieval, reconstruction, and misalignment variants still need raw 128 feature blocks for exact feature-level reproduction.",
+      "stage": "future",
+      "status": "verified_companion_result"
+    },
+    {
+      "completion_evidence": [
         "error-analysis tables",
-        "held-out metrics",
+        "held-out metrics by failure type",
         "verified public-safe package"
       ],
       "deliverables": [
         "same 96/16/16 episode split",
-        "stricter JSON decoding or target formatting",
-        "episode/action/object error analysis",
+        "action/subtask confusion analysis",
+        "unseen-label analysis",
+        "object/action family breakdowns",
         "held-out test evaluation",
-        "comparison to the verified validation-aware baseline"
+        "comparison to the final verified Qwen baseline"
       ],
-      "entry_condition": "The validation-aware diagnostic package exists and shows weak held-out quality.",
+      "entry_condition": "The final diagnostic package meets strict JSON validity but has weak action/subtask held-out quality.",
       "id": "qwen3_omni_structured_output_error_analysis",
-      "name": "Structured-Output And Error-Analysis Pass",
-      "reader_takeaway": "The next pass should improve output reliability and task metrics before larger model-quality claims.",
+      "name": "Action/Subtask Error-Analysis Pass",
+      "reader_takeaway": "The next pass should improve action/subtask quality before larger model-quality claims.",
       "stage": "future",
       "status": "active_next_step"
     },
@@ -2428,7 +2448,7 @@
       "visualization.rrd"
     ],
     "selection_strategy": "stratified_round_robin_by_top_level_session",
-    "status": "verified_validation_aware_diagnostic_pilot",
+    "status": "verified_full_128_episode_diagnostic_result",
     "target_episodes": 128,
     "valid_candidates": 12102
   },

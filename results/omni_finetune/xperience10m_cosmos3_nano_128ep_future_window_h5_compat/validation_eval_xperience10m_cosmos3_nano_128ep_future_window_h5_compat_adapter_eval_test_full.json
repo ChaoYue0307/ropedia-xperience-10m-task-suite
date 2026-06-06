@@ -1,0 +1,81 @@
+{
+  "status": "pass",
+  "summary": {
+    "run_id": "xperience10m_cosmos3_nano_128ep_future_window_h5_compat",
+    "dataset_run_id": "xperience10m_cosmos3_nano_128ep_future_window_h5_compat",
+    "train_run_id": "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter",
+    "eval_run_id": "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full",
+    "backbone": "cosmos_world_model",
+    "backbone_status": "implemented",
+    "checkpoint_gate": "world_model_checkpoint_and_generation_config",
+    "required_stage": "eval",
+    "workspace": "/home/cy/Ropedia/ropedia-episode-task-suite",
+    "manifest": {
+      "path": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_nano_128ep_future_window_h5_compat/episode_manifest.json",
+      "episode_count": 119,
+      "split_counts": {
+        "train": 89,
+        "test": 14,
+        "val": 16
+      },
+      "session_leakage": []
+    },
+    "dataset": {
+      "dataset_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_dataset",
+      "manifest_path": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_dataset/dataset_manifest.json",
+      "dataset_path": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_dataset/dataset.jsonl",
+      "manifest_num_samples": 3213,
+      "row_count": 3213,
+      "sample_split_counts": {
+        "train": 2403,
+        "test": 378,
+        "val": 432
+      },
+      "episode_split_counts": {
+        "train": 89,
+        "test": 14,
+        "val": 16
+      },
+      "skipped_episodes": 0
+    },
+    "training": {
+      "train_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter",
+      "checkpoint_candidates": [
+        "/home/cy/Ropedia/ropedia-episode-task-suite/checkpoints/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter/adapter_lora",
+        "/home/cy/Ropedia/ropedia-episode-task-suite/checkpoints/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_lora/adapter_lora"
+      ],
+      "checkpoint_gate": "world_model_checkpoint_and_generation_config",
+      "required_training_files": [
+        "training_metadata.json",
+        "progress.jsonl",
+        "model_config.json",
+        "checkpoint_manifest.json"
+      ],
+      "checkpoint_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter",
+      "num_processes": 1,
+      "num_train_samples": 2403,
+      "num_val_samples": 432,
+      "history_len": 1,
+      "checkpoint_dir_recorded": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter"
+    },
+    "eval": {
+      "eval_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full",
+      "required_eval_files": [
+        "metrics.json",
+        "future_predictions.jsonl",
+        "retrieval_rankings.csv",
+        "temporal_consistency.csv",
+        "qualitative_examples.json",
+        "RUN_REPORT.md"
+      ],
+      "eval_split": "test",
+      "num_eval_episodes": 14,
+      "held_out_episode_count": 14,
+      "json_validity_rate": null,
+      "action_macro_f1": null,
+      "prediction_file": "future_predictions.jsonl",
+      "prediction_rows": 378
+    }
+  },
+  "issues": []
+}

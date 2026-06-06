@@ -1,0 +1,31 @@
+{
+  "eval_split": "test",
+  "num_samples": 378,
+  "num_eval_episodes": 14,
+  "held_out_episode_count": 14,
+  "future_retrieval_mrr": 0.022138720585222767,
+  "future_retrieval_recall_at_5": 0.015873015873015872,
+  "temporal_consistency": 0.09523809523809523,
+  "feature_reconstruction_error": 3479.218317102503,
+  "transition_accuracy": 0.9682539682539683,
+  "contact_accuracy": 0.7433862433862434,
+  "action_accuracy_from_retrieved_future": 0.007936507936507936,
+  "train_samples": 2403,
+  "val_samples": 432,
+  "dataset_jsonl": "<project>/results/omni_finetune/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_dataset/dataset.jsonl",
+  "cosmos_model": {
+    "available": true,
+    "path": "<workspace-parent>/cosmos3_models/nvidia__Cosmos3-Nano",
+    "config.json": true,
+    "architectures": [
+      "Cosmos3ForConditionalGeneration"
+    ],
+    "lora_rank_default": 16,
+    "lora_enabled_default": false,
+    "resolution": "720",
+    "model_index.json": true,
+    "pipeline_class": "Cosmos3OmniDiffusersPipeline",
+    "diffusers_version": "0.37.1",
+    "generation_config.json": true
+  }
+}

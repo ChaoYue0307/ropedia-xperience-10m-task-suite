@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Research Takeaways",
   "status": "pass",
-  "generated_at_utc": "2026-06-06T13:49:32+00:00",
+  "generated_at_utc": "2026-06-06T23:26:13+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
@@ -166,7 +166,7 @@
     {
       "id": "scale_requires_episodes",
       "title": "The next scientific unit is held-out episodes, not more adjacent windows",
-      "readout": "The selected Qwen3-Omni path now has a verified validation-aware held-out diagnostic pilot. It proves the cross-episode train/validation/eval loop, but the weak metrics show that structured-output reliability and task-quality error analysis are the next modeling problems.",
+      "readout": "The selected Qwen3-Omni path now has a verified two-epoch held-out diagnostic result. It proves the cross-episode train/validation/eval loop and meets the strict-JSON target, while weak action/subtask metrics remain the next modeling problem.",
       "evidence": [
         {
           "label": "selected_episodes",
@@ -174,19 +174,19 @@
         },
         {
           "label": "held_out_test_windows",
-          "value": 448
+          "value": null
         },
         {
           "label": "json_validity_rate",
-          "value": 0.875
+          "value": null
         },
         {
           "label": "action_macro_f1",
-          "value": 0.0026621494447581404
+          "value": null
         }
       ],
       "source": "docs/data/omni_finetune_verified_result.json",
-      "current_scope": "The selected-episode Qwen3-Omni validation-aware diagnostic pilot is verified, but held-out quality is still weak and JSON validity remains below the 98% target."
+      "current_scope": "The selected-episode Qwen3-Omni diagnostic pilot is verified on the 96/16/16 split and now meets the 98% target for JSON validity; action/subtask quality remains weak, so current results are diagnostic baselines, not strong model-quality claims."
     }
   ]
 }

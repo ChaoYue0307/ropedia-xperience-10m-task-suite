@@ -18,6 +18,7 @@ import tempfile
 from pathlib import Path
 
 from generate_visualizations import collect_summary, task_architecture_rows
+from task_display import task_display_name
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -393,7 +394,7 @@ def build_task_card(row: dict, color: str) -> str:
     return f"""
       <article class="task-card" style="--accent:{color}">
         <div class="chip">{esc(family_label(row['family']))}</div>
-        <h3>{esc(row['task'])}</h3>
+        <h3>{esc(row.get('task_display_name', task_display_name(row['task'])))}</h3>
         <dl>
           <dt>Input</dt><dd>{esc(row['input'])}</dd>
           <dt>Head</dt><dd>{esc(row['head'])}</dd>

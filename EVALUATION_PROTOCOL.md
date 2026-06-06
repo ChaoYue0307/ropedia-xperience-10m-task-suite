@@ -45,20 +45,20 @@ are not foundation models.
 
 ## Task Contracts
 
-| Task | Family | Unit | Input -> target | Primary metric | Minimal | Neural |
-| --- | --- | --- | --- | --- | ---: | ---: |
-| timeline_action | supervised classification | single window | current 20-frame all-feature window -> current action label | macro_f1 (higher better) | 0.0500 | 0.0148 |
-| timeline_subtask | supervised classification | single window | current 20-frame all-feature window -> current subtask label | macro_f1 (higher better) | 0.0506 | 0.0281 |
-| transition_detection | temporal diagnostic | single window | current 20-frame all-feature window -> action boundary versus steady | macro_f1 (higher better) | 0.6118 | 0.5862 |
-| next_action | short-horizon prediction | single window | current 20-frame all-feature window at time t -> action label at t + 20 frames | macro_f1 (higher better) | 0.0593 | 0.0419 |
-| hand_trajectory_forecast | trajectory regression | single window | current all-feature window -> future left/right hand 3D joints for 10 frames | mpjpe (lower better) | 0.8647 | 0.1079 |
-| contact_prediction | binary classification | single window | non-contact and non-caption feature blocks -> any body contact | macro_f1 (higher better) | 1.0000 | 1.0000 |
-| object_relevance | multi-label classification | single window | non-caption feature blocks -> current relevant object set | micro_f1 (higher better) | 0.1803 | 0.1679 |
-| caption_grounding | retrieval | caption query | caption object/interaction query plus candidate sensor windows -> matching time window | mrr (higher better) | 0.0160 | 0.0168 |
-| cross_modal_retrieval | retrieval | sensor query | motion, IMU, and camera query features -> matching depth/video window | top5_accuracy (higher better) | 0.3678 | 0.1983 |
-| modality_reconstruction | cross-modal regression | single window | motion, IMU, and camera features -> depth/video feature vector | r2 (higher better) | -0.0153 | -0.0102 |
-| temporal_order | pairwise diagnostic | adjacent window pair | two adjacent windows -> correct versus reversed order | f1 (higher better) | 0.5400 | 0.8520 |
-| misalignment_detection | pairwise diagnostic | paired modality window | motion side plus visual/depth side -> aligned versus shifted by 8 windows | f1 (higher better) | 0.5052 | 0.7153 |
+| Task | Artifact id | Family | Unit | Input -> target | Primary metric | Minimal | Neural |
+| --- | --- | --- | --- | --- | --- | ---: | ---: |
+| Action Recognition | `timeline_action` | supervised classification | single window | current 20-frame all-feature window -> current action label | macro_f1 (higher better) | 0.0500 | 0.0148 |
+| Procedure Step Recognition | `timeline_subtask` | supervised classification | single window | current 20-frame all-feature window -> current subtask label | macro_f1 (higher better) | 0.0506 | 0.0281 |
+| Action Boundary Detection | `transition_detection` | temporal diagnostic | single window | current 20-frame all-feature window -> action boundary versus steady | macro_f1 (higher better) | 0.6118 | 0.5862 |
+| Next-Action Prediction | `next_action` | short-horizon prediction | single window | current 20-frame all-feature window at time t -> action label at t + 20 frames | macro_f1 (higher better) | 0.0593 | 0.0419 |
+| Hand Trajectory Forecasting | `hand_trajectory_forecast` | trajectory regression | single window | current all-feature window -> future left/right hand 3D joints for 10 frames | mpjpe (lower better) | 0.8647 | 0.1079 |
+| Contact State Prediction | `contact_prediction` | binary classification | single window | non-contact and non-caption feature blocks -> any body contact | macro_f1 (higher better) | 1.0000 | 1.0000 |
+| Object Relevance Prediction | `object_relevance` | multi-label classification | single window | non-caption feature blocks -> current relevant object set | micro_f1 (higher better) | 0.1803 | 0.1679 |
+| Language Grounding | `caption_grounding` | retrieval | caption query | caption object/interaction query plus candidate sensor windows -> matching time window | mrr (higher better) | 0.0160 | 0.0168 |
+| Cross-Modal Retrieval | `cross_modal_retrieval` | retrieval | sensor query | motion, IMU, and camera query features -> matching depth/video window | top5_accuracy (higher better) | 0.3678 | 0.1983 |
+| Cross-Modal Reconstruction | `modality_reconstruction` | cross-modal regression | single window | motion, IMU, and camera features -> depth/video feature vector | r2 (higher better) | -0.0153 | -0.0102 |
+| Temporal Order Verification | `temporal_order` | pairwise diagnostic | adjacent window pair | two adjacent windows -> correct versus reversed order | f1 (higher better) | 0.5400 | 0.8520 |
+| Multimodal Synchronization Detection | `misalignment_detection` | pairwise diagnostic | paired modality window | motion side plus visual/depth side -> aligned versus shifted by 8 windows | f1 (higher better) | 0.5052 | 0.7153 |
 
 ## Leakage Controls
 
@@ -72,7 +72,7 @@ are not foundation models.
 
 - Cross-episode generalization for Qwen3-Omni has a first verified diagnostic pilot, but strong model quality is not yet shown.
 - Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.
-- The verified validation-aware Qwen3-Omni diagnostic pilot has weak held-out metrics and needs structured-output and task-quality improvements before larger model-quality claims.
+- The final verified Qwen3-Omni diagnostic result meets the strict-JSON target, but action/subtask held-out quality remains weak and needs error analysis before larger model-quality claims.
 - Full audio-visual representation learning still needs multi-episode training; the current report includes single-episode audio/no-audio ablations.
 
 ## Scale-Up Gate
@@ -86,7 +86,7 @@ claiming improved held-out model quality:
 - manifest, training metadata, progress logs, metrics, predictions, and run report
 - held-out evaluation on test episodes rather than train windows
 
-Current status: verified diagnostic pilot; quality target not met. Read
+Current status: verified diagnostic result; strict-JSON quality target met, action/subtask quality still weak. Read
 `docs/data/omni_finetune_verified_result.json` before interpreting any
 Qwen3-Omni metric.
 

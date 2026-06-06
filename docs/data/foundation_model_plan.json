@@ -1,7 +1,7 @@
 {
   "title": "Xperience-10M Foundation Model Plan",
   "status": "planning_artifact",
-  "current_boundary": "A first held-out multi-episode Qwen3-Omni diagnostic pilot is verified in this repo, but it is not a strong model result. The current foundation-model work should treat it as the baseline train/eval/package loop before validation-aware Qwen reruns, Cosmos-style world modeling, or policy/VLA branches.",
+  "current_boundary": "A final held-out multi-episode Qwen3-Omni diagnostic result is verified in this repo and meets the strict-JSON target, but it is not a strong action/subtask model result. The current foundation-model work should treat it as the baseline train/eval/package loop before Qwen action/subtask improvements, Cosmos-style world modeling, or policy/VLA branches.",
   "backbone_registry": {
     "config_dir": "configs/omni_backbones",
     "validator": "scripts/omni/backbone_registry.py --validate --json",
@@ -206,7 +206,7 @@
     {
       "step": 2,
       "name": "First held-out baseline",
-      "action": "Run validation-aware Qwen3-Omni LoRA to improve the verified diagnostic baseline."
+      "action": "Run Qwen3-Omni action/subtask error analysis and targeted reruns to improve the verified diagnostic baseline."
     },
     {
       "step": 3,

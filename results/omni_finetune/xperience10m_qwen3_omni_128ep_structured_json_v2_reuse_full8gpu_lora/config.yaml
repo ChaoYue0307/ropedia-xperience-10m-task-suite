@@ -1,0 +1,14 @@
+run_id: xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora
+stage: qwen_lora_text_video_audio
+backbone_id: qwen3_omni_lora
+dataset_contract: xperience10m_episode_json_qa_v1
+model_id: /home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct
+dataset_jsonl: results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl
+checkpoint_dir: /home/cy/Ropedia/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora/adapter_lora
+num_processes: 8
+epochs: 2
+learning_rate: 0.0001
+lora_r: 16
+lora_alpha: 32
+loss_mode: answer_token_ce
+loss_logit_tail_only: True

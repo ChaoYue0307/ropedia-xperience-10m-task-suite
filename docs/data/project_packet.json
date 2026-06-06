@@ -12,7 +12,7 @@
     "raw_xperience10m_data_in_repo": false,
     "audio_feature_status": "Audio is one of the synchronized source modalities in the current task representation.",
     "qwen3_omni_32_episode_claim": false,
-    "qwen3_omni_status": "The selected 96/16/16 Qwen3-Omni validation-monitored diagnostic pilot is verified, with weak held-out metrics that guide the next structured-output improvement pass."
+    "qwen3_omni_status": "The selected 96/16/16 Qwen3-Omni final diagnostic result is verified, meets the strict-JSON target, and still has weak action/subtask metrics that guide the next error-analysis pass."
   },
   "reading_path": [
     {
@@ -41,7 +41,7 @@
         "docs/data/scope_claims_audit.json",
         "docs/data/website_integrity.json"
       ],
-      "readout": "The project status table and roadmap give the compact current-state summary. Single-episode task engineering, metrics, visualizations, public website integrity, mirror parity, and the validation-aware selected-episode Qwen3-Omni diagnostic pilot are implemented; stronger cross-episode model quality remains a follow-up."
+      "readout": "The project status table and roadmap give the compact current-state summary. Single-episode task engineering, metrics, visualizations, public website integrity, mirror parity, same-split 128-episode baselines, the final selected-episode Qwen3-Omni diagnostic result, and the Cosmos3-Nano compatibility package are implemented; stronger action/subtask and full Cosmos model quality remain follow-ups."
     },
     {
       "step": 2,
@@ -116,7 +116,7 @@
         "scripts/omni/discover_xperience10m_sources.py",
         "docs/data/omni_finetune_verified_result.json"
       ],
-      "readout": "The selected-episode held-out Qwen3-Omni diagnostic pilot is verified. The next milestone is a validation-aware diagnostic run with stronger JSON-format reliability and error analysis."
+      "readout": "The selected-episode held-out Qwen3-Omni final diagnostic result is verified and JSON-format reliability meets the 98% target. The next milestone is action/subtask error analysis and a stronger model-quality run on the same split."
     }
   ],
     "project_status": "PROJECT_STATUS.md",

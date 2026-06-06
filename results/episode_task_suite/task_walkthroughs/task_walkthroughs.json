@@ -59,7 +59,8 @@
         "minimal": 0.05,
         "neural_mlp": 0.014814814814814814
       },
-      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "task_display_name": "Action Recognition"
     },
     "timeline_subtask": {
       "plain_goal": "Predict the higher-level task stage for the current window.",
@@ -102,7 +103,8 @@
         "minimal": 0.05056355513846935,
         "neural_mlp": 0.02810810810810811
       },
-      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "task_display_name": "Procedure Step Recognition"
     },
     "transition_detection": {
       "plain_goal": "Detect whether the current window is near a boundary between actions.",
@@ -144,7 +146,8 @@
         "minimal": 0.6118237590630229,
         "neural_mlp": 0.5862068965517241
       },
-      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "task_display_name": "Action Boundary Detection"
     },
     "next_action": {
       "plain_goal": "Use the current window to guess the action that will happen shortly after it.",
@@ -186,7 +189,8 @@
         "minimal": 0.05925925925925927,
         "neural_mlp": 0.04186046511627907
       },
-      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "task_display_name": "Next-Action Prediction"
     },
     "hand_trajectory_forecast": {
       "plain_goal": "Predict where the hands will move over the next few frames.",
@@ -228,7 +232,8 @@
         "minimal": 0.8646570444107056,
         "neural_mlp": 0.10785018652677536
       },
-      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "task_display_name": "Hand Trajectory Forecasting"
     },
     "contact_prediction": {
       "plain_goal": "Predict whether the body or hand is in contact with something.",
@@ -269,7 +274,8 @@
         "minimal": 1.0,
         "neural_mlp": 1.0
       },
-      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "task_display_name": "Contact State Prediction"
     },
     "object_relevance": {
       "plain_goal": "Predict which objects matter in the current window.",
@@ -311,7 +317,8 @@
         "minimal": 0.18034382095361662,
         "neural_mlp": 0.1679279279279279
       },
-      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "task_display_name": "Object Relevance Prediction"
     },
     "caption_grounding": {
       "plain_goal": "Given a text-like query from annotation, find the matching time window.",
@@ -352,7 +359,8 @@
         "minimal": 0.016023479050338015,
         "neural_mlp": 0.01684125567132316
       },
-      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "task_display_name": "Language Grounding"
     },
     "cross_modal_retrieval": {
       "plain_goal": "Use one group of modalities to retrieve the matching window from another group.",
@@ -394,7 +402,8 @@
         "minimal": 0.26925966892956127,
         "neural_mlp": 0.1299971898648288
       },
-      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "task_display_name": "Cross-Modal Retrieval"
     },
     "modality_reconstruction": {
       "plain_goal": "Predict one modality feature block from other modality blocks.",
@@ -436,7 +445,8 @@
         "minimal": -0.015271898913936655,
         "neural_mlp": -0.010171410134180991
       },
-      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "task_display_name": "Cross-Modal Reconstruction"
     },
     "temporal_order": {
       "plain_goal": "Tell whether two nearby windows are in the correct time order.",
@@ -477,7 +487,8 @@
         "minimal": 0.5399515738498789,
         "neural_mlp": 0.8520179372197308
       },
-      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "task_display_name": "Temporal Order Verification"
     },
     "misalignment_detection": {
       "plain_goal": "Detect when modalities that should match are shifted out of sync.",
@@ -519,7 +530,22 @@
         "minimal": 0.5051698670605613,
         "neural_mlp": 0.7152682255845944
       },
-      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files"
+      "module_summary": "input window -> feature/target builder -> baseline head -> evaluator -> artifact files",
+      "task_display_name": "Multimodal Synchronization Detection"
     }
+  },
+  "task_display_names": {
+    "timeline_action": "Action Recognition",
+    "timeline_subtask": "Procedure Step Recognition",
+    "transition_detection": "Action Boundary Detection",
+    "next_action": "Next-Action Prediction",
+    "hand_trajectory_forecast": "Hand Trajectory Forecasting",
+    "contact_prediction": "Contact State Prediction",
+    "object_relevance": "Object Relevance Prediction",
+    "caption_grounding": "Language Grounding",
+    "cross_modal_retrieval": "Cross-Modal Retrieval",
+    "modality_reconstruction": "Cross-Modal Reconstruction",
+    "temporal_order": "Temporal Order Verification",
+    "misalignment_detection": "Multimodal Synchronization Detection"
   }
 }

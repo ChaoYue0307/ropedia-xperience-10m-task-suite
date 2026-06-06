@@ -1,0 +1,601 @@
+{
+  "run_id": "xperience10m_cosmos3_nano_128ep_future_window_h5_compat",
+  "source_dataset_jsonl": "<project>/results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl",
+  "episodes": [
+    {
+      "episode_id": "003dcaf0-edba-4787-ada0-187d2748f684__ep1",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "0073a4be-ec41-47f3-92d6-f63cf89aec9b__ep4",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "0474d134-f983-4590-9cf9-29bd1c6e33cb__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "04d9f378-2812-4c7f-a269-1ad0bc43445f__ep4",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "0a5009c4-292b-40c6-b9ec-7c75cf54a112__ep1",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "0d330006-684f-4e93-bf38-06d53be3fe5f__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "0da1f6d2-6564-4f28-b248-1d1b71f9521b__ep1",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "0ffa6540-b99f-4909-9f80-c1b3e4c14a85__ep6",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "13ca0290-713b-43a8-a06c-305bde0cbf6c__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "175a573b-7294-43b4-9c14-09c29ab3fef0__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "17901b9e-7d5d-475a-86f8-b4a9bc9a5709__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "1796b943-caad-43c6-b9bd-80b8d601f37d__ep1",
+      "split": "test",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "17eea990-0d39-4cc8-a7c8-03fd56b4bf04__ep10",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "1a76d123-ed27-4c4a-a8d4-06f3aaeda454__ep1",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "21d33146-cd1f-40bd-b26b-0c64fd1d603f__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "22af1ff1-eaa9-4268-b96a-81a9fa35fe93__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "2651c600-a427-42a5-bdc9-6e8ab74356eb__ep5",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "2680606b-f296-4daa-baf9-7d58c90444bc__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "27c9fc42-2bb4-4737-b09c-08d2dd88aed4__ep4",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "2a433534-63d5-48ad-b75e-a5607087b5df__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "2aee3428-f462-49e6-95c4-b803c1803e0b__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "2f579b88-12fb-41c2-aa2a-9b8f5ae8f918__ep1",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "2f918260-6ba7-4132-8069-7972afedc1cf__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "322958e6-2d26-40d7-af3d-cb16362c78f7__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1",
+      "split": "test",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "34353740-0ce5-4b2f-9394-f9fd9a19b8fe__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "34e4d6f3-f2b4-4de1-b837-15a372512a90__ep2",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "34f07a04-eb37-45a3-95ec-189ed5f4a85b__ep5",
+      "split": "test",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "363abff7-e5ce-425e-a85c-5397186aefd2__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "373850be-6393-4d15-985d-283da6cbe3e7__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "37ee5802-66fb-4893-9173-fe97fe0e2000__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "3cd70c8e-4ef5-481c-aa61-88b0dd4dec1f__ep4",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "3eb8ef88-902d-4e84-8a72-a361c9d18647__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "3ebbfff2-3a60-4cf4-af98-9db074a46e73__ep11",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "3efd6a52-1457-4437-a3bf-9d5894614fe6__ep4",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "40611d4c-a36d-4ae3-8a71-da94b81cdce4__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "41e90813-8fff-4053-94f0-9537b1393bc2__ep1",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "4318ba68-cc33-455d-bac1-6f8b66558708__ep1",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "46b507a1-b1cb-4851-8558-9435de4abf68__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "48b299c1-6c08-40a5-9b9d-9d170647a15a__ep1",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "4a12e289-e4ed-405c-b198-96f704e94276__ep4",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "4ab31463-5a47-4904-82c4-d859a0506e04__ep4",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "4b02bb38-384a-438a-b5f9-6131d85c34b0__ep1",
+      "split": "test",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "4b7cc33d-56cf-4029-bda8-f154bd146447__ep5",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "4e3da960-c06f-4b2c-996d-fe6f04fa4e36__ep2",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "5399ef86-4df9-49bc-809f-8f4f92f9e659__ep6",
+      "split": "test",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "53ccaadb-44df-4ddf-bc40-c1bcedb92faa__ep7",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "53e64c93-8947-403e-ab35-3428c431aee8__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "53f2c164-09dd-48ca-ae69-4f5955a902ed__ep4",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "54bf2b92-a5f8-440c-81fe-8f820bb90aab__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "55f345d5-aa45-4d75-829b-a6ec41dca2ed__ep7",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "573a5795-03bf-4f16-b4ce-bc09c2c56476__ep3",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "59d0d93f-55c9-4a55-8cd4-e570cc0499d6__ep4",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "5d994eb3-bc12-46dd-8984-da2d5f1a7055__ep9",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "5e221284-f4af-4408-9177-25200282b6de__ep4",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "613e0f29-cc10-4d0c-b0ce-e39fe9c8a6b9__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "628d6ea4-0a63-4d8f-9725-1e41d2a56b8c__ep5",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "638630bb-caf0-4367-a990-7a3d02dd395a__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "65adf646-cb23-430e-9583-12482dd451a1__ep8",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "676c3db3-464e-406a-be9f-8283518e8181__ep4",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "6dc018a4-0614-478c-9332-86bd6c4af9e8__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "6fbdecec-d4d5-477a-b94b-2486adb0dbd8__ep6",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "705435da-879d-456e-a28e-f15f86e75027__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "70a56200-9f80-4f13-8adb-33c0f931e1de__ep2",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "7258c332-1061-4c43-8242-f438d951db1f__ep1",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "727f582a-fe2a-45c3-b506-216133a28c35__ep1",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "7ba21b77-14c9-47c5-8942-ef2ef5e02784__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "7f443115-54a4-4d50-acfb-e05fe506c270__ep5",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "81d4c5c5-b164-419c-86e0-c26347284f83__ep9",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "81e9362f-fd63-4aec-92fa-1f489d6ac025__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "82c95b73-ba14-4083-8929-ddeb85d22e9f__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "832369c5-8fca-4591-940a-7a7a28206de2__ep4",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "833144f1-bd03-4b93-bdc7-3d2e46aedcf1__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "84106bb9-1cf8-47b6-8d11-fddbfe381e4f__ep5",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "8533707e-d7e0-4d1a-99d1-fa154a8e62ad__ep5",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "85a956ae-65c6-4d11-9e7f-720d6d71ae5b__ep5",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "8692d5eb-19b2-4c49-9f88-da2ec373796e__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "877779cd-25f3-4293-a3c4-39067dd9558c__ep4",
+      "split": "test",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1",
+      "split": "test",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "90fe845b-df65-4297-838c-7924d4c3b6ad__ep9",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "960e7265-e8f2-4bca-9c21-501e2c250ce8__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "994e4c6c-660a-49f2-90a7-3ebbbb55eb9b__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "999100c1-b488-4ed1-a580-c0487f308e5d__ep5",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "9c553886-83c5-4dc4-be5c-dcb269b3a771__ep2",
+      "split": "test",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "9c7b2c19-5370-4a81-af68-6b76723f3c67__ep1",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "9f84a0a7-8964-48c5-b7e1-8a1d28094c86__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "a00c1d99-de08-42bc-8623-712b9dde7fde__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "a1012a57-385e-45a9-8a59-694a26fe92a5__ep1",
+      "split": "test",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "a2f2e433-d2c6-4ae1-80b9-c775a8428aa8__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "a39eaab1-ac8c-4c2d-9764-a566b773136e__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "a3e06450-50f8-4894-a22f-1f891fad3809__ep7",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "a90b8b61-cbba-40fa-948c-b3da79fec1cb__ep1",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "a93a840b-2d22-4231-9504-87ec4d930aad__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "aa3ca3ec-56fd-4bbd-ad15-055eabc1838a__ep7",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "adb1bb6f-6df3-4f46-b895-f045ac3e0772__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "aed79382-cf3f-4b5c-89bb-46c322c19350__ep3",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "af8e9345-011f-4c97-a78e-ecb4a268220f__ep4",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "b2bd37ae-1261-4a9c-82ee-6d50fec3550b__ep1",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "b49d8a3c-7a1e-4ca3-8ce8-ae1cce0df001__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "b5d76a3d-f4a3-4950-ab9d-344caa247059__ep4",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "b6579cb5-0a71-4ca6-8808-1e2700be05c7__ep3",
+      "split": "test",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "b750fab3-7fbb-43a0-b451-c64c4d4a64da__ep1",
+      "split": "test",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "b9dd769b-e31a-4fdb-945e-5a60db6487b0__ep2",
+      "split": "test",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "ba045ed4-ef25-404d-b756-8dcbd45b18fa__ep2",
+      "split": "test",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "ba18b7c1-21ff-45da-8452-41acce7fc8de__ep2",
+      "split": "test",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "bc53027e-d29a-473f-8f18-7b524b801e40__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "bdfae17b-1e56-4cc5-a4dc-f4fad8369aed__ep1",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "bf622eaf-363e-40c4-8a04-1dfedd85a718__ep10",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "c038defe-faa6-4fe9-aef6-84bd93726d1c__ep2",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "c09b25c6-218c-4e06-95ff-d63eccf20f2b__ep8",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "c221c115-7b98-4d08-b5ab-653b5956c811__ep3",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "c304368b-3b2c-46fc-8a19-c1de1e13dc75__ep4",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "c5e31792-0961-463c-bfb4-ff89030c2ac8__ep1",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "c5e5183a-9eca-448a-9ec1-a0a40682b81a__ep4",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "cd364707-88fc-43bd-a95b-61aee9f8bd20__ep5",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "d342e6e2-c381-4a1c-b0ac-e62a5c80624f__ep3",
+      "split": "val",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "d377bbb4-1bce-43ae-a41f-cefd23b8a8a2__ep2",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "d5520c73-fa72-4e92-ad2a-4c3e48d8ad7c__ep6",
+      "split": "train",
+      "source_record_count": 32
+    },
+    {
+      "episode_id": "dab5e5d1-9d11-43ad-ac6f-205500ff5ad4__ep5",
+      "split": "train",
+      "source_record_count": 32
+    }
+  ]
+}

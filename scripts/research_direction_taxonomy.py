@@ -15,6 +15,8 @@ from collections import OrderedDict
 from pathlib import Path
 from typing import Any
 
+from task_display import task_display_name
+
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "results" / "episode_task_suite"
@@ -338,6 +340,8 @@ def build_taxonomy(summary: dict[str, Any]) -> dict[str, Any]:
 
         task_records[task] = {
             **spec,
+            "display_name": task_display_name(task),
+            "artifact_id": task,
             "metric": {
                 "key": metric_key,
                 "name": metric_name,
@@ -358,6 +362,7 @@ def build_taxonomy(summary: dict[str, Any]) -> dict[str, Any]:
         direction_records[code] = {
             **info,
             "tasks": linked_tasks,
+            "task_display_names": [task_display_name(task) for task in linked_tasks],
             "counts": direction_counts[code],
         }
 
@@ -388,6 +393,7 @@ def write_csv(taxonomy: dict[str, Any]) -> None:
                 "direction",
                 "direction_name",
                 "task",
+                "task_display_name",
                 "task_name",
                 "family",
                 "relationship",
@@ -408,6 +414,7 @@ def write_csv(taxonomy: dict[str, Any]) -> None:
                         direction_code,
                         taxonomy["directions"][direction_code]["name"],
                         task,
+                        spec["display_name"],
                         spec["name"],
                         spec["family"],
                         relationship,
@@ -452,8 +459,8 @@ def write_markdown(taxonomy: dict[str, Any]) -> None:
             "",
             "## Task Mapping With Two Baselines",
             "",
-            "| Task | Primary direction | Related directions | Minimal | Neural MLP | Readout |",
-            "| --- | --- | --- | ---: | ---: | --- |",
+            "| Task | Artifact id | Primary direction | Related directions | Minimal | Neural MLP | Readout |",
+            "| --- | --- | --- | --- | ---: | ---: | --- |",
         ]
     )
     for task, spec in taxonomy["tasks"].items():
@@ -465,7 +472,7 @@ def write_markdown(taxonomy: dict[str, Any]) -> None:
         neural = f"{fmt_metric(metric['neural_mlp'])} {metric['name']}"
         readout = f"{baseline_readout(metric['better_baseline'])}. {spec['current_limit']}"
         lines.append(
-            f"| `{task}` | {spec['primary_direction']} | {related} | {minimal} | {neural} | {readout} |"
+            f"| {spec['display_name']} | `{task}` | {spec['primary_direction']} | {related} | {minimal} | {neural} | {readout} |"
         )
 
     lines.extend(["", "## Next-Step Interpretation", ""])
@@ -519,9 +526,9 @@ def write_svg(taxonomy: dict[str, Any]) -> None:
                 )
             cursor += seg_w
 
-        task_labels = ", ".join(info["tasks"][:5])
-        if len(info["tasks"]) > 5:
-            task_labels += f", +{len(info['tasks']) - 5}"
+        task_labels = ", ".join(info["task_display_names"][:5])
+        if len(info["task_display_names"]) > 5:
+            task_labels += f", +{len(info['task_display_names']) - 5}"
 
         cards.append(
             "\n".join(

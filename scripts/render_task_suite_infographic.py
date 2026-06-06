@@ -19,6 +19,8 @@ import subprocess
 import tempfile
 from pathlib import Path
 
+from task_display import task_display_name
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SUMMARY_PATH = ROOT / "results/episode_task_suite/summary_report.json"
@@ -523,7 +525,7 @@ def task_card(task_name: str, kind: str, metrics: dict, group: dict, index: int,
           <span class="index">{index:02d}</span>
           <span class="kind">{html.escape(kind)}</span>
         </div>
-        <h3>{html.escape(task_name)}</h3>
+        <h3>{html.escape(task_display_name(task_name))}</h3>
         <p>{html.escape(io)}</p>
         <div class="metric">
           <span>min {html.escape(label)}</span>

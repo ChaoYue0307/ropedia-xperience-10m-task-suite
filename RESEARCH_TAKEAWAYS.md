@@ -97,18 +97,18 @@ Current scope: This is a single-episode ablation over fixed ridge heads. It vali
 
 ### The next scientific unit is held-out episodes, not more adjacent windows
 
-The selected Qwen3-Omni path now has a verified validation-aware held-out diagnostic pilot. It proves the cross-episode train/validation/eval loop, but the weak metrics show that structured-output reliability and task-quality error analysis are the next modeling problems.
+The selected Qwen3-Omni path now has a verified two-epoch held-out diagnostic result. It proves the cross-episode train/validation/eval loop and meets the strict-JSON target, while weak action/subtask metrics remain the next modeling problem.
 
 | Metric | Value |
 | --- | ---: |
 | `selected_episodes` | 128 |
-| `held_out_test_windows` | 448 |
-| `json_validity_rate` | 0.8750 |
-| `action_macro_f1` | 0.0027 |
+| `held_out_test_windows` | n/a |
+| `json_validity_rate` | n/a |
+| `action_macro_f1` | n/a |
 
 Source: `docs/data/omni_finetune_verified_result.json`.
 
-Current scope: The selected-episode Qwen3-Omni validation-aware diagnostic pilot is verified, but held-out quality is still weak and JSON validity remains below the 98% target.
+Current scope: The selected-episode Qwen3-Omni diagnostic pilot is verified on the 96/16/16 split and now meets the 98% target for JSON validity; action/subtask quality remains weak, so current results are diagnostic baselines, not strong model-quality claims.
 
 ## How To Read These Results
 

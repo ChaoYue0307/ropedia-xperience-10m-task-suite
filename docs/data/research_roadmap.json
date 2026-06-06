@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Research Roadmap",
-  "summary": "Staged path from the public-sample task lab to a verified validation-aware Qwen3-Omni diagnostic pilot, structured-output improvement pass, foundation-model selection, world/policy branches, and a future Xperience-native embodied foundation model.",
-  "current_decision_point": "Keep the public-sample task suite as the development harness, use the verified selected-episode Qwen3-Omni validation-aware diagnostic pilot and the same-split 128-episode simple/NN metadata baselines as the first cross-episode references, improve structured-output reliability and task-quality error analysis, then branch into Cosmos 3 world modeling and policy-model experiments after their targets are implemented. The Xperience Embodied Foundation Model is a later full-corpus pretraining goal, not a current result.",
+  "summary": "Staged path from the public-sample task lab to a final verified Qwen3-Omni diagnostic result, same-split 128-episode baseline alignment, action/subtask error analysis, foundation-model selection, world/policy branches, and a future Xperience-native embodied foundation model.",
+  "current_decision_point": "Keep the public-sample task suite as the development harness, use the final verified selected-episode Qwen3-Omni diagnostic result and the same-split 128-episode simple/NN metadata baselines as the first cross-episode references, improve action/subtask quality through error analysis, then branch into Cosmos 3 world modeling and policy-model experiments after their targets are implemented. The Xperience Embodied Foundation Model is a later full-corpus pretraining goal, not a current result.",
   "additional_development_directions": {
     "source_document": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
     "source_json": "docs/data/additional_development_directions.json",
@@ -52,7 +52,7 @@
     },
     {
       "id": "qwen3_omni_lora_diagnostic_pilot",
-      "name": "Qwen3-Omni LoRA Validation-Aware Diagnostic Pilot",
+      "name": "Qwen3-Omni LoRA Final Diagnostic Result",
       "status": "verified_baseline",
       "entry_condition": "Selected episodes are prepared locally with no train/test episode leakage.",
       "deliverables": [
@@ -63,7 +63,8 @@
         "held-out predictions",
         "metrics",
         "confusion matrices",
-        "run report"
+        "run report",
+        "public LoRA adapter repo"
       ],
       "completion_evidence": [
         "docs/data/omni_finetune_verified_result.json",
@@ -75,7 +76,7 @@
         "predictions.jsonl",
         "RUN_REPORT.md"
       ],
-      "reader_takeaway": "The first omni-model pilot establishes the full held-out training/validation/evaluation loop, but the weak metrics make it a diagnostic baseline."
+      "reader_takeaway": "The final omni-model diagnostic result establishes the full held-out training/validation/evaluation loop and meets the strict-JSON target, but weak action/subtask metrics make it a diagnostic baseline."
     },
     {
       "id": "multi_episode_128_same_split_baselines",
@@ -97,23 +98,23 @@
     },
     {
       "id": "qwen3_omni_structured_output_error_analysis",
-      "name": "Structured-Output And Error-Analysis Pass",
+      "name": "Action/Subtask Error-Analysis Pass",
       "status": "active_next_step",
-      "entry_condition": "The validation-aware diagnostic package exists and shows weak held-out quality.",
+      "entry_condition": "The final diagnostic package meets strict JSON validity but has weak action/subtask held-out quality.",
       "deliverables": [
         "same 96/16/16 episode split",
-        "stricter JSON decoding or target formatting",
-        "episode/action/object error analysis",
+        "action/subtask confusion analysis",
+        "unseen-label analysis",
+        "object/action family breakdowns",
         "held-out test evaluation",
-        "comparison to the verified validation-aware baseline"
+        "comparison to the final verified Qwen baseline"
       ],
       "completion_evidence": [
-        "quality-target report",
         "error-analysis tables",
-        "held-out metrics",
+        "held-out metrics by failure type",
         "verified public-safe package"
       ],
-      "reader_takeaway": "The next pass should improve output reliability and task metrics before larger model-quality claims."
+      "reader_takeaway": "The next pass should improve action/subtask quality before larger model-quality claims."
     },
     {
       "id": "foundation_model_selection_matrix",

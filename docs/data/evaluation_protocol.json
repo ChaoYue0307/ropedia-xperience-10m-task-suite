@@ -2,7 +2,7 @@
   "title": "Ropedia Xperience-10M Task Suite Evaluation Protocol",
   "status": "pass",
   "version": "2026-06-01",
-  "generated_at_utc": "2026-06-06T13:49:32+00:00",
+  "generated_at_utc": "2026-06-06T23:26:13+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
@@ -69,6 +69,7 @@
   "task_protocols": [
     {
       "task": "timeline_action",
+      "task_display_name": "Action Recognition",
       "family": "supervised classification",
       "unit": "single window",
       "input": "current 20-frame all-feature window",
@@ -88,6 +89,7 @@
     },
     {
       "task": "timeline_subtask",
+      "task_display_name": "Procedure Step Recognition",
       "family": "supervised classification",
       "unit": "single window",
       "input": "current 20-frame all-feature window",
@@ -107,6 +109,7 @@
     },
     {
       "task": "transition_detection",
+      "task_display_name": "Action Boundary Detection",
       "family": "temporal diagnostic",
       "unit": "single window",
       "input": "current 20-frame all-feature window",
@@ -126,6 +129,7 @@
     },
     {
       "task": "next_action",
+      "task_display_name": "Next-Action Prediction",
       "family": "short-horizon prediction",
       "unit": "single window",
       "input": "current 20-frame all-feature window at time t",
@@ -145,6 +149,7 @@
     },
     {
       "task": "hand_trajectory_forecast",
+      "task_display_name": "Hand Trajectory Forecasting",
       "family": "trajectory regression",
       "unit": "single window",
       "input": "current all-feature window",
@@ -164,6 +169,7 @@
     },
     {
       "task": "contact_prediction",
+      "task_display_name": "Contact State Prediction",
       "family": "binary classification",
       "unit": "single window",
       "input": "non-contact and non-caption feature blocks",
@@ -183,6 +189,7 @@
     },
     {
       "task": "object_relevance",
+      "task_display_name": "Object Relevance Prediction",
       "family": "multi-label classification",
       "unit": "single window",
       "input": "non-caption feature blocks",
@@ -202,6 +209,7 @@
     },
     {
       "task": "caption_grounding",
+      "task_display_name": "Language Grounding",
       "family": "retrieval",
       "unit": "caption query",
       "input": "caption object/interaction query plus candidate sensor windows",
@@ -221,6 +229,7 @@
     },
     {
       "task": "cross_modal_retrieval",
+      "task_display_name": "Cross-Modal Retrieval",
       "family": "retrieval",
       "unit": "sensor query",
       "input": "motion, IMU, and camera query features",
@@ -240,6 +249,7 @@
     },
     {
       "task": "modality_reconstruction",
+      "task_display_name": "Cross-Modal Reconstruction",
       "family": "cross-modal regression",
       "unit": "single window",
       "input": "motion, IMU, and camera features",
@@ -258,6 +268,7 @@
     },
     {
       "task": "temporal_order",
+      "task_display_name": "Temporal Order Verification",
       "family": "pairwise diagnostic",
       "unit": "adjacent window pair",
       "input": "two adjacent windows",
@@ -277,6 +288,7 @@
     },
     {
       "task": "misalignment_detection",
+      "task_display_name": "Multimodal Synchronization Detection",
       "family": "pairwise diagnostic",
       "unit": "paired modality window",
       "input": "motion side plus visual/depth side",
@@ -305,7 +317,7 @@
   "current_limitations": [
     "Cross-episode generalization for Qwen3-Omni has a first verified diagnostic pilot, but strong model quality is not yet shown.",
     "Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.",
-    "The verified validation-aware Qwen3-Omni diagnostic pilot has weak held-out metrics and needs structured-output and task-quality improvements before larger model-quality claims.",
+    "The final verified Qwen3-Omni diagnostic result meets the strict-JSON target, but action/subtask held-out quality remains weak and needs error analysis before larger model-quality claims.",
     "Full audio-visual representation learning still needs multi-episode training; the current report includes single-episode audio/no-audio ablations."
   ],
   "scale_up_gate": {
@@ -316,7 +328,7 @@
       "manifest, training metadata, progress logs, metrics, predictions, and run report",
       "held-out evaluation on test episodes rather than train windows"
     ],
-    "current_status": "verified diagnostic pilot; quality target not met",
+    "current_status": "verified diagnostic result; strict-JSON quality target met, action/subtask quality still weak",
     "evidence": [
       "docs/data/omni_finetune_verified_result.json",
       "results/omni_finetune/verified_public/"

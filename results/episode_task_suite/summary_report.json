@@ -28,7 +28,8 @@
         "Pour coffee",
         "Pour milk into coffee",
         "Wait/Prepare for pouring"
-      ]
+      ],
+      "task_display_name": "Action Recognition"
     },
     "timeline_subtask": {
       "accuracy": 0.05813953488372093,
@@ -52,7 +53,8 @@
         "Pour coffee",
         "Pour milk into coffee",
         "Prepare for pouring"
-      ]
+      ],
+      "task_display_name": "Procedure Step Recognition"
     },
     "transition_detection": {
       "accuracy": 0.9080459770114943,
@@ -78,7 +80,8 @@
       "matched_boundaries": 2,
       "true_boundaries": 4,
       "predicted_boundaries": 28,
-      "mean_abs_timing_error_frames": 3.5
+      "mean_abs_timing_error_frames": 3.5,
+      "task_display_name": "Action Boundary Detection"
     },
     "next_action": {
       "accuracy": 0.034482758620689655,
@@ -102,7 +105,8 @@
         "Pour coffee",
         "Pour milk into coffee",
         "Wait/Prepare for pouring"
-      ]
+      ],
+      "task_display_name": "Next-Action Prediction"
     },
     "hand_trajectory_forecast": {
       "mse": 14.956222534179688,
@@ -117,7 +121,8 @@
       "forecast_frames": 10,
       "mpjpe": 0.8646570444107056,
       "final_frame_mpjpe": 1.0330793857574463,
-      "target_dim": 1260
+      "target_dim": 1260,
+      "task_display_name": "Hand Trajectory Forecasting"
     },
     "contact_prediction": {
       "accuracy": 1.0,
@@ -136,7 +141,8 @@
       "majority_baseline_accuracy": 1.0,
       "train_final_accuracy": 1.0,
       "train_final_loss": 0.0006056802230887115,
-      "unseen_test_classes": []
+      "unseen_test_classes": [],
+      "task_display_name": "Contact State Prediction"
     },
     "object_relevance": {
       "micro_f1": 0.18034382095361662,
@@ -150,7 +156,8 @@
       "num_windows": 1161,
       "num_train_windows": 813,
       "num_test_windows": 348,
-      "num_objects": 34
+      "num_objects": 34,
+      "task_display_name": "Object Relevance Prediction"
     },
     "caption_grounding": {
       "mrr": 0.016023479050338015,
@@ -165,7 +172,8 @@
       "output": "matching time window",
       "split": "chronological",
       "num_train_windows": 813,
-      "num_test_windows": 348
+      "num_test_windows": 348,
+      "task_display_name": "Language Grounding"
     },
     "cross_modal_retrieval": {
       "mrr": 0.26925966892956127,
@@ -180,7 +188,8 @@
       "output": "matching depth/video window",
       "split": "chronological",
       "num_train_windows": 813,
-      "num_test_windows": 348
+      "num_test_windows": 348,
+      "task_display_name": "Cross-Modal Retrieval"
     },
     "modality_reconstruction": {
       "mse": 1358.1593017578125,
@@ -192,7 +201,8 @@
       "split": "chronological",
       "num_train_windows": 813,
       "num_test_windows": 348,
-      "target_dim": 5096
+      "target_dim": 5096,
+      "task_display_name": "Cross-Modal Reconstruction"
     },
     "temporal_order": {
       "accuracy": 0.4540229885057471,
@@ -211,7 +221,8 @@
       "num_samples": 2320,
       "num_train_samples": 1624,
       "num_test_samples": 696,
-      "train_final_accuracy": 0.5086206896551724
+      "train_final_accuracy": 0.5086206896551724,
+      "task_display_name": "Temporal Order Verification"
     },
     "misalignment_detection": {
       "accuracy": 0.5158959537572254,
@@ -230,7 +241,8 @@
       "num_samples": 2306,
       "num_train_samples": 1614,
       "num_test_samples": 692,
-      "train_final_accuracy": 0.49380421313506817
+      "train_final_accuracy": 0.49380421313506817,
+      "task_display_name": "Multimodal Synchronization Detection"
     }
   },
   "neural_model": {
@@ -276,7 +288,8 @@
       "neural_dropout": 0.1,
       "neural_device": "cpu",
       "train_final_loss": 0.04246756529782,
-      "train_final_accuracy": 0.9875156054931336
+      "train_final_accuracy": 0.9875156054931336,
+      "task_display_name": "Action Recognition"
     },
     "timeline_subtask": {
       "accuracy": 0.0377906976744186,
@@ -309,7 +322,8 @@
       "neural_dropout": 0.1,
       "neural_device": "cpu",
       "train_final_loss": 5.4104819144748596e-05,
-      "train_final_accuracy": 1.0
+      "train_final_accuracy": 1.0,
+      "task_display_name": "Procedure Step Recognition"
     },
     "transition_detection": {
       "accuracy": 0.8735632183908046,
@@ -344,7 +358,8 @@
       "matched_boundaries": 3,
       "true_boundaries": 4,
       "predicted_boundaries": 42,
-      "mean_abs_timing_error_frames": 2.6666666666666665
+      "mean_abs_timing_error_frames": 2.6666666666666665,
+      "task_display_name": "Action Boundary Detection"
     },
     "next_action": {
       "accuracy": 0.02586206896551724,
@@ -377,7 +392,8 @@
       "neural_dropout": 0.1,
       "neural_device": "cpu",
       "train_final_loss": 0.000416612956025105,
-      "train_final_accuracy": 1.0
+      "train_final_accuracy": 1.0,
+      "task_display_name": "Next-Action Prediction"
     },
     "hand_trajectory_forecast": {
       "mse": 0.004775360692292452,
@@ -402,7 +418,8 @@
       "neural_weight_decay": 0.0001,
       "neural_dropout": 0.1,
       "neural_device": "cpu",
-      "train_final_loss": 0.055699273420247435
+      "train_final_loss": 0.055699273420247435,
+      "task_display_name": "Hand Trajectory Forecasting"
     },
     "contact_prediction": {
       "accuracy": 1.0,
@@ -430,7 +447,8 @@
       "neural_dropout": 0.1,
       "neural_device": "cpu",
       "train_final_loss": 0.0,
-      "train_final_accuracy": 1.0
+      "train_final_accuracy": 1.0,
+      "task_display_name": "Contact State Prediction"
     },
     "object_relevance": {
       "micro_f1": 0.1679279279279279,
@@ -455,7 +473,8 @@
       "neural_weight_decay": 0.0001,
       "neural_dropout": 0.1,
       "neural_device": "cpu",
-      "train_final_loss": 0.003651880362182214
+      "train_final_loss": 0.003651880362182214,
+      "task_display_name": "Object Relevance Prediction"
     },
     "caption_grounding": {
       "mrr": 0.01684125567132316,
@@ -481,7 +500,8 @@
       "neural_weight_decay": 0.0001,
       "neural_dropout": 0.1,
       "neural_device": "cpu",
-      "train_final_loss": 0.06317874967483723
+      "train_final_loss": 0.06317874967483723,
+      "task_display_name": "Language Grounding"
     },
     "cross_modal_retrieval": {
       "mrr": 0.1299971898648288,
@@ -507,7 +527,8 @@
       "neural_weight_decay": 0.0001,
       "neural_dropout": 0.1,
       "neural_device": "cpu",
-      "train_final_loss": 0.21891545446596464
+      "train_final_loss": 0.21891545446596464,
+      "task_display_name": "Cross-Modal Retrieval"
     },
     "modality_reconstruction": {
       "mse": 1351.3363037109375,
@@ -529,7 +550,8 @@
       "neural_weight_decay": 0.0001,
       "neural_dropout": 0.1,
       "neural_device": "cpu",
-      "train_final_loss": 0.21891545446596464
+      "train_final_loss": 0.21891545446596464,
+      "task_display_name": "Cross-Modal Reconstruction"
     },
     "temporal_order": {
       "accuracy": 0.8577586206896551,
@@ -559,7 +581,8 @@
       "neural_dropout": 0.1,
       "neural_device": "cpu",
       "train_final_loss": 0.0005108328477586757,
-      "train_final_accuracy": 1.0
+      "train_final_accuracy": 1.0,
+      "task_display_name": "Temporal Order Verification"
     },
     "misalignment_detection": {
       "accuracy": 0.7008670520231214,
@@ -589,7 +612,22 @@
       "neural_dropout": 0.1,
       "neural_device": "cpu",
       "train_final_loss": 0.010604870708167664,
-      "train_final_accuracy": 0.9956629491945477
+      "train_final_accuracy": 0.9956629491945477,
+      "task_display_name": "Multimodal Synchronization Detection"
     }
+  },
+  "task_display_names": {
+    "timeline_action": "Action Recognition",
+    "timeline_subtask": "Procedure Step Recognition",
+    "transition_detection": "Action Boundary Detection",
+    "next_action": "Next-Action Prediction",
+    "hand_trajectory_forecast": "Hand Trajectory Forecasting",
+    "contact_prediction": "Contact State Prediction",
+    "object_relevance": "Object Relevance Prediction",
+    "caption_grounding": "Language Grounding",
+    "cross_modal_retrieval": "Cross-Modal Retrieval",
+    "modality_reconstruction": "Cross-Modal Reconstruction",
+    "temporal_order": "Temporal Order Verification",
+    "misalignment_detection": "Multimodal Synchronization Detection"
   }
 }

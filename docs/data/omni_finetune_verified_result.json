@@ -1,7 +1,7 @@
 {
-  "title": "Verified Qwen3-Omni LoRA Validation-Aware Held-Out Pilot",
-  "status": "verified_validation_aware_diagnostic_pilot",
-  "status_date": "2026-06-06",
+  "title": "Verified Qwen3-Omni LoRA 128-Episode Held-Out Result",
+  "status": "verified_full_128_episode_diagnostic_result",
+  "status_date": "2026-06-07",
   "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
   "adapter": "Qwen3-Omni LoRA",
   "dataset": "Ropedia Xperience-10M selected 128-episode pilot",
@@ -27,7 +27,7 @@
   },
   "training": {
     "num_processes": 8,
-    "epochs": 1,
+    "epochs": 2,
     "lora_rank": 16,
     "lora_alpha": 32,
     "lora_dropout": 0.05,
@@ -36,64 +36,50 @@
     "history": [
       {
         "epoch": 1,
-        "train_loss": 0.41304643672440994,
-        "val_loss": 0.0330660454928875,
+        "train_loss": 0.41282760031950355,
+        "val_loss": 0.03288277983665466,
         "global_step": 356
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.027745448225544075,
+        "val_loss": 0.027823254466056824,
+        "global_step": 712
       }
     ],
     "loss": "answer-token cross entropy over supervised JSON tokens",
-    "note": "This validation-aware run uses the selected validation split during training and preserves the held-out test split for final evaluation."
+    "note": "This final Qwen3-Omni LoRA pass reused the selected 96/16/16 episode setup, trained on all exported train windows with validation monitoring, and preserved the held-out test split for final evaluation."
   },
   "evaluation": {
     "split": "test",
     "num_samples": 448,
     "held_out_episode_count": 14,
-    "json_validity_rate": 0.875,
-    "action_macro_f1": 0.0026621494447581404,
-    "subtask_accuracy": 0.006696428571428571,
-    "transition_accuracy": 0.8504464285714286,
-    "next_action_accuracy": 0.024553571428571428,
-    "contact_accuracy": 0.6450892857142857,
-    "object_micro_f1": 0.22299431459254582,
+    "json_validity_rate": 0.9977678571428571,
+    "action_macro_f1": 0.0024331644885523347,
+    "subtask_accuracy": 0.002232142857142857,
+    "transition_accuracy": 0.9709821428571429,
+    "next_action_accuracy": 0.029017857142857144,
+    "contact_accuracy": 0.71875,
+    "object_micro_f1": 0.30160427807486634,
     "quality_target": {
       "json_validity_rate": 0.98,
-      "status": "not_met"
+      "status": "met"
     },
-    "previous_diagnostic_json_validity_rate": 0.8526785714285714
+    "previous_validation_aware_json_validity_rate": 0.875
   },
-  "interpretation": "This is a real held-out multi-episode validation-aware diagnostic pilot proving the export, LoRA training with validation monitoring, evaluation, validation, and public-safe packaging loop. JSON validity improved over the earlier no-validation diagnostic run, but task-quality metrics remain weak, so it should be used as a baseline and error-analysis starting point rather than a strong Xperience-10M model.",
+  "interpretation": "This is the final verified two-epoch Qwen3-Omni LoRA diagnostic result for the selected 128-episode setup. It meets the 98% JSON-validity target and improves transition, contact, and object metrics over the earlier validation-aware pilot, but action and subtask classification remain weak on held-out episodes, so this is still a baseline-quality diagnostic model rather than a strong Xperience-10M action recognizer.",
   "public_package": {
-    "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval",
+    "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
     "audit_status": "pass",
     "contains_raw_xperience10m_data": false,
     "contains_qwen_base_weights": false,
     "contains_lora_weights": false,
-    "error_analysis": {
-      "status": "pass",
-      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/error_analysis_summary.json",
-      "markdown_report": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/ERROR_ANALYSIS.md",
-      "groupings": [
-        "episode",
-        "action_family",
-        "train_seen_status",
-        "required_modality_state",
-        "object_category"
-      ],
-      "key_readouts": {
-        "parsed_prediction_rate": 0.8772321428571429,
-        "weakest_action_family": "locomotion",
-        "weakest_action_family_samples": 23,
-        "weakest_action_family_parsed_prediction_rate": 0.2608695652173913,
-        "seen_action_exact_rate": 0.04580152671755725,
-        "unseen_action_exact_rate": 0.015772870662460567,
-        "required_modality_state": "rrd_missing_only_required_modalities_present"
-      }
-    }
+    "adapter_weights_repo": "cy0307/ropedia-qwen3-omni-lora-128ep"
   },
   "required_next_steps": [
-    "Improve JSON-format reliability through prompt, decoding, constrained parsing, or target formatting changes.",
-    "Use the published held-out error analysis to prioritize JSON constraints, action/subtask formatting, object vocabulary handling, and missing-modality robustness.",
-    "Run a second validation-aware Qwen3-Omni pass only after the JSON/output contract is tightened.",
-    "Keep the same verified package contract for Cosmos-style world-model and VLA/policy branches."
+    "Verify the public Hugging Face LoRA adapter repository hashes after publication.",
+    "Publish the final verified package and refreshed comparison tables to all public mirrors, then run live publication verification.",
+    "Use the full-eval predictions for error analysis focused on action/subtask confusions and unseen-label behavior.",
+    "Keep the same verified package contract for the Cosmos3 world-model branch and any future VLA/policy branches."
   ]
 }

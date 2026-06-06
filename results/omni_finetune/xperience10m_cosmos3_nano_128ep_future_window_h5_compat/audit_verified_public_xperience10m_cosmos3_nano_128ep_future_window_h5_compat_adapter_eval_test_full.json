@@ -1,0 +1,23 @@
+{
+  "status": "pass",
+  "package_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full",
+  "backbone": "cosmos_world_model",
+  "required_eval_files": [
+    "metrics.json",
+    "future_predictions.jsonl",
+    "retrieval_rankings.csv",
+    "temporal_consistency.csv",
+    "qualitative_examples.json",
+    "RUN_REPORT.md"
+  ],
+  "primary_metrics": [
+    "contact_accuracy",
+    "feature_reconstruction_error",
+    "future_retrieval_mrr",
+    "future_retrieval_recall_at_5",
+    "held_out_episode_count",
+    "temporal_consistency",
+    "transition_accuracy"
+  ],
+  "issues": []
+}
