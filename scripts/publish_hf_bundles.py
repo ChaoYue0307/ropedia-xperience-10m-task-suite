@@ -23,7 +23,7 @@ import os
 import shutil
 from pathlib import Path
 
-from huggingface_hub import HfApi
+from huggingface_hub import HfApi, get_token
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -342,7 +342,7 @@ def main() -> int:
     prune_artifact_bundle(hf_root)
     ensure_artifact_dataset_viewer_config(hf_root)
 
-    token = args.token or getpass.getpass("HF token: ").strip()
+    token = args.token or get_token() or getpass.getpass("HF token: ").strip()
     if not token:
         raise SystemExit("No token provided.")
 
