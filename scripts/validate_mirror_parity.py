@@ -77,6 +77,7 @@ ASSET_FILES = [
 ]
 
 SCRIPT_FILES = [
+    "omni/analyze_qwen3_omni_errors.py",
     "audio_ablation_and_raw_upgrade.py",
     "build_artifact_index.py",
     "build_brand_assets.py",
@@ -123,9 +124,18 @@ RESULT_FILES = [
     "single_episode_diagnostics/timeline_overlay/timeline_overlay.csv",
     "single_episode_diagnostics/alignment_stress/alignment_shift_metrics.csv",
     "single_episode_diagnostics/alignment_stress/alignment_stress_summary.json",
+    "omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/ERROR_ANALYSIS.md",
+    "omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/error_analysis_summary.json",
+    "omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/episode_error_analysis.csv",
+    "omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/action_family_error_analysis.csv",
+    "omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/train_seen_error_analysis.csv",
+    "omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/missing_modality_error_analysis.csv",
+    "omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/object_category_error_analysis.csv",
 ]
 
 DOC_FILES = [
+    "ARTIFACT_GUIDE.md",
+    "OMNI_MODEL_EXTENSION_CONTRACT.md",
     "QUALITY_GATES.md",
     "EVALUATION_PROTOCOL.md",
     "FIGURE_INDEX.md",

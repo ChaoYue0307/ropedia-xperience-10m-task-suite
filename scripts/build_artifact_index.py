@@ -130,6 +130,14 @@ ARTIFACTS = [
         "shows": "Builds synthetic verified packages for every configured backbone and audits them against the public-safe package contract.",
     },
     {
+        "id": "qwen3_omni_error_analysis_script",
+        "title": "Qwen3-Omni held-out error-analysis script",
+        "path": "scripts/omni/analyze_qwen3_omni_errors.py",
+        "kind": "scaleup_contract",
+        "surface": "repo_hf",
+        "shows": "Computes public-safe held-out error-analysis tables by episode, action family, train-seen status, required-modality state, and object category.",
+    },
+    {
         "id": "additional_development_directions",
         "title": "Additional development directions",
         "path": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
@@ -673,6 +681,22 @@ ARTIFACTS = [
         "kind": "scaleup_status",
         "surface": "repo_hf",
         "shows": "Documents the public multi-episode access status and 32-episode pilot selection.",
+    },
+    {
+        "id": "qwen3_omni_error_analysis_report",
+        "title": "Qwen3-Omni held-out error-analysis report",
+        "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/ERROR_ANALYSIS.md",
+        "kind": "scaleup_status",
+        "surface": "repo_hf",
+        "shows": "Summarizes validation-aware Qwen3-Omni held-out failures by episode, action family, train-seen status, required-modality state, and object category.",
+    },
+    {
+        "id": "qwen3_omni_error_analysis_json",
+        "title": "Qwen3-Omni held-out error-analysis JSON",
+        "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/error_analysis_summary.json",
+        "kind": "scaleup_status",
+        "surface": "repo_hf",
+        "shows": "Machine-readable Qwen3-Omni held-out error analysis with grouped metrics and sanitized failure examples.",
     },
     {
         "id": "citation",

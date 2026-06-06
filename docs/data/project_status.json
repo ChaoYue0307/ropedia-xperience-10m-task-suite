@@ -180,10 +180,12 @@
       "evidence": [
         "docs/data/omni_finetune_verified_result.json",
         "results/omni_finetune/verified_public/",
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/",
         "scripts/omni/package_verified_omni_result.py",
-        "scripts/omni/audit_verified_omni_package.py"
+        "scripts/omni/audit_verified_omni_package.py",
+        "scripts/omni/analyze_qwen3_omni_errors.py"
       ],
-      "readout": "The selected 96/16/16 episode split produced a validation-aware public-safe held-out package with 3,808 exported windows, 512 validation windows, and 448 test predictions. JSON validity is 87.50%, below the 98% target, so it is a stronger diagnostic baseline but not a strong model-quality result."
+      "readout": "The selected 96/16/16 episode split produced a validation-aware public-safe held-out package with 3,808 exported windows, 512 validation windows, 448 test predictions, and derived error-analysis tables by episode, action family, train-seen status, required-modality state, and object category. JSON validity is 87.50%, below the 98% target, so it is a diagnostic baseline but not a strong model-quality result."
     },
     {
       "area": "Raw Xperience-10M redistribution",
