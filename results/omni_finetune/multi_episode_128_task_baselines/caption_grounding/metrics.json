@@ -1,0 +1,16 @@
+{
+  "status": "pass",
+  "task": "caption_grounding",
+  "model_family": "simple_hashed_text_retrieval",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "limitation": "query text is derived from held-out labels, while candidate representations exclude answer_json fields; this is a public-safe retrieval proxy, not a raw caption-to-sensor grounding model",
+  "num_queries": 448,
+  "mrr": 0.012785504572093487,
+  "median_rank": 242.5,
+  "mean_rank": 243.02455139160156,
+  "top1_accuracy": 0.002232142857142857,
+  "top5_accuracy": 0.006696428571428571,
+  "top10_accuracy": 0.011160714285714286,
+  "primary_metric": "mrr",
+  "primary_score": 0.012785504572093487
+}

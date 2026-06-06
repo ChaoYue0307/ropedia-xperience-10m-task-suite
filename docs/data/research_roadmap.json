@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Research Roadmap",
   "summary": "Staged path from the public-sample task lab to a verified validation-aware Qwen3-Omni diagnostic pilot, structured-output improvement pass, foundation-model selection, world/policy branches, and a future Xperience-native embodied foundation model.",
-  "current_decision_point": "Keep the public-sample task suite as the development harness, use the verified selected-episode Qwen3-Omni validation-aware diagnostic pilot as the first cross-episode baseline, improve structured-output reliability and task-quality error analysis, then branch into Cosmos 3 world modeling and policy-model experiments after their targets are implemented. The Xperience Embodied Foundation Model is a later full-corpus pretraining goal, not a current result.",
+  "current_decision_point": "Keep the public-sample task suite as the development harness, use the verified selected-episode Qwen3-Omni validation-aware diagnostic pilot and the same-split 128-episode simple/NN metadata baselines as the first cross-episode references, improve structured-output reliability and task-quality error analysis, then branch into Cosmos 3 world modeling and policy-model experiments after their targets are implemented. The Xperience Embodied Foundation Model is a later full-corpus pretraining goal, not a current result.",
   "additional_development_directions": {
     "source_document": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
     "source_json": "docs/data/additional_development_directions.json",
@@ -76,6 +76,24 @@
         "RUN_REPORT.md"
       ],
       "reader_takeaway": "The first omni-model pilot establishes the full held-out training/validation/evaluation loop, but the weak metrics make it a diagnostic baseline."
+    },
+    {
+      "id": "multi_episode_128_same_split_baselines",
+      "name": "128-Episode Same-Split Simple/NN Baselines",
+      "status": "verified_companion_result",
+      "entry_condition": "Derived Qwen JSONL export for the selected 96/16/16 split.",
+      "deliverables": [
+        "same 12 task ids",
+        "simple metadata/text baselines",
+        "neural MLP baselines for JSON-supported labels",
+        "explicit unsupported markers for raw-feature-only tasks"
+      ],
+      "completion_evidence": [
+        "results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md",
+        "results/omni_finetune/multi_episode_128_task_baselines/summary_report.json",
+        "scripts/omni/run_128_task_baselines.py"
+      ],
+      "reader_takeaway": "The simple and neural baseline framing is now aligned to the selected 128-episode setup; trajectory, retrieval, reconstruction, and misalignment variants still need raw 128 feature blocks for exact feature-level reproduction."
     },
     {
       "id": "qwen3_omni_structured_output_error_analysis",

@@ -12,6 +12,7 @@ should exist before the stage is treated as complete.
 | Public-Sample Task Lab | Implemented | One public Xperience-10M sample episode is available. | 1,161 aligned windows, 12 task contracts, minimal heads, neural MLP heads, modality atlas, task walkthroughs, and derived figures. | `PROJECT_STATUS.md`, `EVALUATION_PROTOCOL.md`, `RESEARCH_TAKEAWAYS.md`, `docs/data/summary_metrics.json`, `results/episode_task_suite/summary_report.json` |
 | Multi-Episode Data Preparation | Implemented for first selected pilot | Gated dataset availability and enough storage for selected episodes. | 128 selected episodes, episode manifest, missing-view manifest, held-out episode split, and source-discovery report. | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`, `results/omni_finetune/xperience10m_128_episode_selection.json` |
 | Qwen3-Omni LoRA Validation-Aware Diagnostic Pilot | Verified baseline | Selected episodes prepared locally with no train/test episode leakage. | Dataset JSONL/media manifests, LoRA adapter checkpoint, progress logs, validation monitoring, held-out predictions, metrics, confusion matrices, and run report. | `docs/data/omni_finetune_verified_result.json`, `results/omni_finetune/verified_public/`, `metrics.json`, `predictions.jsonl`, `RUN_REPORT.md` |
+| 128-Episode Same-Split Simple/NN Baselines | Verified companion result | Derived Qwen JSONL export for the selected 96/16/16 split. | Same 12 task ids, simple metadata/text baselines, neural MLP baselines where JSON labels support them, and explicit unsupported markers for tasks that still require raw 128 feature blocks. | `results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`, `summary_report.json`, `scripts/omni/run_128_task_baselines.py` |
 | Structured-Output And Error-Analysis Pass | Active next step | The validation-aware diagnostic package exists and shows weak held-out quality. | Same 96/16/16 split, stricter JSON decoding or target formatting, action/subtask error analysis, held-out test evaluation, and comparison to the verified validation-aware baseline. | Updated quality-target report, error-analysis tables, held-out metrics, and verified public package. |
 | Foundation-Model Selection Matrix | Current | The selected pilot episodes are prepared, or a 3-8 episode dry run is available for preprocessing checks. | Backbone registry, Cosmos 3 world-model branch plan, Qwen3-Omni baseline plan, OpenVLA/openpi/GR00T policy candidates, and model-specific evaluation additions. | `FOUNDATION_MODEL_PLAN.md`, `docs/data/foundation_model_plan.json`, `research_roadmap_interactive.json` |
 | 64-128 Episode Robustness Run | Planned | The validation-aware selected-episode pilot trains and evaluates cleanly. | Split-by-session metrics, modality ablations, calibration/object/language error analysis, and sensitivity to missing views. | Held-out metrics by session, task, and modality; ablation tables; qualitative error analysis. |
@@ -24,7 +25,10 @@ The useful next decision is model-quality improvement plus backbone fit: keep
 the public-sample task suite as the development harness, use the verified
 Qwen3-Omni validation-aware diagnostic pilot as the first cross-episode
 baseline, then improve format reliability and task quality before claiming
-model quality.
+model quality. The earlier simple and neural baseline framing is now aligned to
+the same 96/16/16 split through metadata/text baselines for JSON-supported task
+ids; raw-feature-only tasks remain marked as needing the 128-run sensor feature
+blocks.
 Qwen3-Omni remains the first trainable multimodal LoRA target. Cosmos 3 becomes
 the first world-model/action-generation branch. OpenVLA, openpi, GR00T, Octo,
 and SmolVLA-style models become policy/action branches only after the action
@@ -84,6 +88,7 @@ Evidence to inspect:
 - `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`
 - `scripts/omni/discover_xperience10m_sources.py`
 - `results/omni_finetune/source_discovery.json`
+- `results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`
 
 ### 3. Qwen3-Omni LoRA Pilot
 

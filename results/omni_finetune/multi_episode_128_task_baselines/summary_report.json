@@ -1,0 +1,1245 @@
+{
+  "status": "pass",
+  "run_id": "xperience10m_128_episode_aligned_task_baselines",
+  "source_dataset_jsonl": "tmp/omni_128_dataset_fetch/dataset.jsonl",
+  "verified_package": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval",
+  "source_policy": "derived JSONL metadata only; fetched dataset JSONL is not committed",
+  "num_rows": 3808,
+  "split_counts": {
+    "train": 2848,
+    "val": 512,
+    "test": 448
+  },
+  "episode_counts": {
+    "test": 16,
+    "train": 96,
+    "val": 16
+  },
+  "feature_contract": {
+    "kind": "metadata_text_hash",
+    "hash_dim": 384,
+    "numeric_dim": 10,
+    "answer_json_used_as_input": false
+  },
+  "run_config": {
+    "epochs": 80,
+    "learning_rate": 0.16,
+    "l2": 0.002,
+    "softmax_max_train_classes": 256,
+    "neural_epochs": 4,
+    "neural_hidden_dim": 128,
+    "neural_batch_size": 256,
+    "neural_learning_rate": 0.001,
+    "neural_weight_decay": 0.0001,
+    "neural_dropout": 0.1,
+    "neural_device": "auto"
+  },
+  "tasks": [
+    {
+      "task": "timeline_action",
+      "simple": {
+        "status": "pass",
+        "task": "timeline_action",
+        "model_family": "simple_centroid_metadata",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+        "split_policy": "train on train split, report val and held-out test split",
+        "num_train_windows": 2848,
+        "num_val_windows": 512,
+        "num_test_windows": 448,
+        "num_classes": 1187,
+        "num_train_classes": 885,
+        "majority_baseline_accuracy": 0.0,
+        "history": [
+          {
+            "method": "train_class_centroid_cosine",
+            "reason": "train_class_count=885 exceeds softmax_max_train_classes=256"
+          }
+        ],
+        "splits": {
+          "val": {
+            "accuracy": 0.013671875,
+            "balanced_accuracy": 0.006726457399103139,
+            "macro_f1": 0.00040766408479412964,
+            "weighted_f1": 0.002019074675324675,
+            "num_eval_windows": 512,
+            "num_classes": 1187
+          },
+          "test": {
+            "accuracy": 0.015625,
+            "balanced_accuracy": 0.005291005291005291,
+            "macro_f1": 0.00017511601435951318,
+            "weighted_f1": 0.0005171394799054373,
+            "num_eval_windows": 448,
+            "num_classes": 1187
+          }
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 0.00017511601435951318,
+        "unseen_test_class_count": 144,
+        "unseen_test_classes": [
+          "Place smartphone on stand",
+          "Pick up dustpan",
+          "Move dustpan to side",
+          "Hold container lid",
+          "Move towards the stove",
+          "Open stove pot lid",
+          "Walking towards door",
+          "Closing the door",
+          "Picking up bottle",
+          "Wipe kitchen counter",
+          "Rinse cloth in sink",
+          "Move towards kitchen area",
+          "Place cloth on floor",
+          "Reach for cleaning supplies",
+          "Grasp cleaning bottle",
+          "Remove cleaning bottle",
+          "Washing hands in sink",
+          "Grasping cleaning cloth",
+          "Wiping countertop",
+          "Lift pot lid",
+          "Stir contents",
+          "Place lid back",
+          "Adjust pot position",
+          "Move pot",
+          "Place towel",
+          "Start cutting",
+          "Cut along the marked line",
+          "Reposition hand",
+          "Observe and walk through store",
+          "Inspect shelf condition",
+          "Observe colleague and workspace",
+          "Approach boxes",
+          "Reach for wire hangers",
+          "Extract wire hangers from box",
+          "Bundle display hooks",
+          "Release hook",
+          "Walk towards other aisles",
+          "Move through aisle",
+          "Pick up items from the shopping bag",
+          "Place items on the shelf",
+          "Place marked piece down",
+          "Release cardboard piece and gesture",
+          "Move marker and adjust hand",
+          "Identify next cardboard piece",
+          "Observe and pause",
+          "Gesturing",
+          "Resume observation",
+          "Reach for next can",
+          "Hold canned food",
+          "Retrieve next canned food item",
+          "Align canned food on shelf",
+          "Reach for next canned food",
+          "Retrieve canned food from box",
+          "Place another canned food on shelf",
+          "Adjust canned food on shelf",
+          "Move hand away from shelf",
+          "Move hand away",
+          "Hold earbud case",
+          "Open earbud case",
+          "sort craft materials",
+          "Manipulate craft piece",
+          "Manipulate craft paper strips",
+          "Operate smartphone",
+          "Release smartphone",
+          "Sort small craft pieces",
+          "Open paper lantern",
+          "Fold paper lantern",
+          "Grasp lantern",
+          "Grasp lantern component",
+          "Align paper lantern edges",
+          "Adjust lantern string",
+          "Release lantern",
+          "Pick up packaged paper lantern component",
+          "Handle paper lantern component",
+          "Open folded paper lantern",
+          "Adjust lantern shape",
+          "Hold paper lantern",
+          "Apply adhesive tape to lantern",
+          "Remove paper lantern part from packaging",
+          "Remove plastic packaging",
+          "Open paper lantern component",
+          "Expand paper lantern",
+          "Align edges of paper lantern",
+          "Reach for craft items",
+          "Sort craft items",
+          "Place hand on table",
+          "Browse smartphone screen",
+          "Scroll smartphone screen",
+          "Put down smartphone",
+          "Place smartphone down",
+          "Pick up puzzle piece",
+          "Place piece into puzzle",
+          "Manipulate puzzle piece",
+          "Observe puzzle progress",
+          "Reach for puzzle piece",
+          "Attempt to fit puzzle piece",
+          "Sort puzzle pieces",
+          "Walking across the room",
+          "Approaching the table",
+          "Preparing to craft",
+          "Picking up crafting material",
+          "Pick up small piece of material",
+          "Manipulate material",
+          "Place material",
+          "Manipulate yellow strip",
+          "Manipulating paper strips",
+          "Manipulate bead",
+          "Manipulate beads",
+          "Use phone while crafting",
+          "Hold and manipulate paper strip",
+          "Sort buttons",
+          "Arrange buttons in a line",
+          "Sort and arrange buttons",
+          "Sort button",
+          "Sort and adjust button line",
+          "Sort and place buttons",
+          "Walking in the hallway",
+          "Approaching and pressing the door switch",
+          "Entering the VR training room",
+          "Greeting/acknowledging participants",
+          "Move through the training room",
+          "Manipulate plastic strips",
+          "Manipulate plastic strip",
+          "Hold and bend plastic strip",
+          "Bend and manipulate plastic strip",
+          "Fold plastic strip",
+          "Manipulate paper decoration",
+          "Manipulate paper edge",
+          "Placing paper strip",
+          "Securing paper structure",
+          "Manipulate adhesive strip",
+          "Secure paper edges with adhesive",
+          "Record count",
+          "Sort beads and write count",
+          "Counting and organizing beads",
+          "Pick up star bead",
+          "Place and count bead",
+          "Arrange star beads",
+          "Counting star beads",
+          "Retrieving more beads",
+          "Adjust paper",
+          "Gather star beads",
+          "Arrange star beads for counting",
+          "Sort and count beads"
+        ]
+      },
+      "neural": {
+        "status": "pass",
+        "task": "timeline_action",
+        "model_family": "neural_mlp_metadata",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+        "split_policy": "train on train split, report held-out test split",
+        "num_train_windows": 2848,
+        "num_val_windows": 512,
+        "num_test_windows": 448,
+        "num_classes": 1187,
+        "num_train_classes": 885,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 6.779340010010794,
+            "train_accuracy": 0.0052668539325842695
+          },
+          {
+            "epoch": 2,
+            "loss": 6.647005257981546,
+            "train_accuracy": 0.02422752808988764
+          },
+          {
+            "epoch": 3,
+            "loss": 6.360280615560124,
+            "train_accuracy": 0.03546348314606742
+          },
+          {
+            "epoch": 4,
+            "loss": 5.891431020886711,
+            "train_accuracy": 0.042485955056179775
+          }
+        ],
+        "device": "cpu",
+        "splits": {
+          "test": {
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0,
+            "weighted_f1": 0.0,
+            "num_eval_windows": 448,
+            "num_classes": 1187
+          }
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 0.0
+      }
+    },
+    {
+      "task": "timeline_subtask",
+      "simple": {
+        "status": "pass",
+        "task": "timeline_subtask",
+        "model_family": "simple_centroid_metadata",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+        "split_policy": "train on train split, report val and held-out test split",
+        "num_train_windows": 2848,
+        "num_val_windows": 512,
+        "num_test_windows": 448,
+        "num_classes": 850,
+        "num_train_classes": 617,
+        "majority_baseline_accuracy": 0.0,
+        "history": [
+          {
+            "method": "train_class_centroid_cosine",
+            "reason": "train_class_count=617 exceeds softmax_max_train_classes=256"
+          }
+        ],
+        "splits": {
+          "val": {
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0,
+            "weighted_f1": 0.0,
+            "num_eval_windows": 512,
+            "num_classes": 850
+          },
+          "test": {
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0,
+            "weighted_f1": 0.0,
+            "num_eval_windows": 448,
+            "num_classes": 850
+          }
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 0.0,
+        "unseen_test_class_count": 113,
+        "unseen_test_classes": [
+          "Using a smartphone",
+          "Setting up smartphone",
+          "Tidying workspace",
+          "Handling container lid",
+          "Approaching the stove",
+          "Checking cooking pot",
+          "Moving around the kitchen",
+          "Wiping counter",
+          "Cleaning cloth maintenance",
+          "Retrieving cleaning supplies",
+          "Cleaning kitchen surfaces",
+          "Cooking at the stove",
+          "Adjusting cookware",
+          "Prepare to cut cardboard",
+          "Cut cardboard",
+          "Cut along the marked line",
+          "Finish cutting along the marked line and reposition",
+          "Walk to shelf location",
+          "Inspect shelf condition",
+          "Inspect shelf condition and observe surroundings",
+          "Approach inventory boxes",
+          "Extract wire hangers from inventory",
+          "Bundle display hooks",
+          "Install display hooks",
+          "Move to stocking area",
+          "Unpack and place items on shelf",
+          "Place and adjust items on shelf",
+          "Place and retrieve items for stocking",
+          "Labeling cardboard pieces",
+          "Observing and pausing",
+          "Placing canned goods on the shelf",
+          "Retrieving and placing canned goods",
+          "Reaching into the box for more stock",
+          "Picking up and placing canned goods",
+          "Placing and retrieving canned goods",
+          "Aligning canned goods on the shelf",
+          "Stocking multiple cans on the shelf",
+          "Adjusting stock and finishing placement",
+          "Finalizing shelf organization",
+          "Handling earbud case",
+          "Checking smartphone",
+          "Sort craft materials into piles",
+          "Manipulate craft pieces",
+          "Release scissors and operate smartphone",
+          "Operate and release smartphone",
+          "Manipulate and release paper strips",
+          "Sort small craft pieces",
+          "Unfold paper lantern",
+          "Fold and grasp lantern",
+          "Grasp lantern component",
+          "Align paper lantern edges",
+          "Adjust lantern string and handle components",
+          "Handle paper lantern component",
+          "Expand and adjust lantern shape",
+          "Secure lantern with adhesive",
+          "Unpack additional lantern component",
+          "Remove packaging and prepare component",
+          "Expand paper lantern",
+          "Final alignment of lantern edges",
+          "Preparing craft area",
+          "Transitioning to smartphone usage",
+          "Browsing smartphone",
+          "Scrolling smartphone screen",
+          "Scrolling and setting down smartphone",
+          "Scrolling and placing smartphone down",
+          "Paper quilling craft",
+          "Pick up and place puzzle piece",
+          "Manipulate puzzle piece",
+          "Manipulate puzzle pieces",
+          "Place puzzle piece",
+          "Observe puzzle progress",
+          "Search for and pick up puzzle piece",
+          "Release and adjust puzzle piece",
+          "Reach for, pick up, and attempt to fit puzzle piece",
+          "Sort puzzle pieces",
+          "Walking to the crafting area",
+          "Preparing materials",
+          "Assembling material pieces",
+          "Manipulating yellow strips",
+          "Working with paper strips",
+          "Manipulating beads",
+          "Using phone and resuming work",
+          "Working with paper strips and using phone",
+          "Sort buttons by color",
+          "Arrange buttons",
+          "Arrange buttons in a line",
+          "Sort and arrange buttons",
+          "Pick up and place buttons",
+          "Sort buttons",
+          "Sort and adjust button line",
+          "Use smartphone",
+          "Sort and place buttons",
+          "Entering the training area",
+          "Greeting participants",
+          "Moving through the room",
+          "Initiating assembly",
+          "Handling plastic strip",
+          "Bending plastic strip",
+          "Manipulating plastic strip",
+          "Folding plastic strip",
+          "Manipulate paper decoration",
+          "Manipulate paper edge",
+          "Adjusting paper edge and placing strip",
+          "Adjusting and securing paper structure",
+          "Manipulate adhesive strip",
+          "Secure paper edges with adhesive",
+          "Sort and record bead counts",
+          "Sort and group beads",
+          "Pick, place, and count beads",
+          "Sort beads and record count",
+          "Count beads and retrieve more",
+          "Document bead counts",
+          "Organize and count beads"
+        ]
+      },
+      "neural": {
+        "status": "pass",
+        "task": "timeline_subtask",
+        "model_family": "neural_mlp_metadata",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+        "split_policy": "train on train split, report held-out test split",
+        "num_train_windows": 2848,
+        "num_val_windows": 512,
+        "num_test_windows": 448,
+        "num_classes": 850,
+        "num_train_classes": 617,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 6.398931417572364,
+            "train_accuracy": 0.016502808988764044
+          },
+          {
+            "epoch": 2,
+            "loss": 6.202290117070916,
+            "train_accuracy": 0.07057584269662921
+          },
+          {
+            "epoch": 3,
+            "loss": 5.748026708538613,
+            "train_accuracy": 0.06917134831460674
+          },
+          {
+            "epoch": 4,
+            "loss": 5.068999804807513,
+            "train_accuracy": 0.10428370786516854
+          }
+        ],
+        "device": "cpu",
+        "splits": {
+          "test": {
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0,
+            "weighted_f1": 0.0,
+            "num_eval_windows": 448,
+            "num_classes": 850
+          }
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 0.0
+      }
+    },
+    {
+      "task": "transition_detection",
+      "simple": {
+        "status": "pass",
+        "task": "transition_detection",
+        "model_family": "simple_softmax_metadata",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+        "split_policy": "train on train split, report val and held-out test split",
+        "num_train_windows": 2848,
+        "num_val_windows": 512,
+        "num_test_windows": 448,
+        "num_classes": 2,
+        "num_train_classes": 2,
+        "majority_baseline_accuracy": 0.9732142857142857,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.7121606864482164,
+            "train_accuracy": 0.425561797752809
+          },
+          {
+            "epoch": 8,
+            "loss": 1.4377943713963033,
+            "train_accuracy": 0.5365168539325843
+          },
+          {
+            "epoch": 16,
+            "loss": 1.0574088531136512,
+            "train_accuracy": 0.5884831460674157
+          },
+          {
+            "epoch": 24,
+            "loss": 0.9226435352563858,
+            "train_accuracy": 0.6358848314606742
+          },
+          {
+            "epoch": 32,
+            "loss": 0.8376591262817383,
+            "train_accuracy": 0.6569522471910112
+          },
+          {
+            "epoch": 40,
+            "loss": 0.7868445960283279,
+            "train_accuracy": 0.6860955056179775
+          },
+          {
+            "epoch": 48,
+            "loss": 0.7682721855640411,
+            "train_accuracy": 0.6896067415730337
+          },
+          {
+            "epoch": 56,
+            "loss": 0.7510879929065705,
+            "train_accuracy": 0.6906601123595506
+          },
+          {
+            "epoch": 64,
+            "loss": 0.737436814546585,
+            "train_accuracy": 0.6892556179775281
+          },
+          {
+            "epoch": 72,
+            "loss": 0.7258850708007812,
+            "train_accuracy": 0.6892556179775281
+          },
+          {
+            "epoch": 80,
+            "loss": 0.7159176783561707,
+            "train_accuracy": 0.6913623595505618
+          }
+        ],
+        "splits": {
+          "val": {
+            "accuracy": 0.75390625,
+            "balanced_accuracy": 0.5782683982683983,
+            "macro_f1": 0.5380252642433617,
+            "weighted_f1": 0.7921480246197473,
+            "num_eval_windows": 512,
+            "num_classes": 2
+          },
+          "test": {
+            "accuracy": 0.9107142857142857,
+            "balanced_accuracy": 0.5489296636085627,
+            "macro_f1": 0.5219803670507895,
+            "weighted_f1": 0.9299585391134686,
+            "num_eval_windows": 448,
+            "num_classes": 2
+          },
+          "train": {
+            "accuracy": 0.6232443820224719,
+            "balanced_accuracy": 0.671987365642721,
+            "macro_f1": 0.44401869218390533,
+            "weighted_f1": 0.7355236793672263,
+            "num_eval_windows": 2848,
+            "num_classes": 2
+          }
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 0.5219803670507895,
+        "unseen_test_class_count": 0,
+        "unseen_test_classes": []
+      },
+      "neural": {
+        "status": "pass",
+        "task": "transition_detection",
+        "model_family": "neural_mlp_metadata",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+        "split_policy": "train on train split, report held-out test split",
+        "num_train_windows": 2848,
+        "num_val_windows": 512,
+        "num_test_windows": 448,
+        "num_classes": 2,
+        "num_train_classes": 2,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.6818444025650453,
+            "train_accuracy": 0.5259831460674157
+          },
+          {
+            "epoch": 2,
+            "loss": 0.6317462693439441,
+            "train_accuracy": 0.7643960674157303
+          },
+          {
+            "epoch": 3,
+            "loss": 0.5774573911441846,
+            "train_accuracy": 0.7219101123595506
+          },
+          {
+            "epoch": 4,
+            "loss": 0.5448428894696611,
+            "train_accuracy": 0.6432584269662921
+          }
+        ],
+        "device": "cpu",
+        "splits": {
+          "test": {
+            "accuracy": 0.7611607142857143,
+            "balanced_accuracy": 0.5126146788990826,
+            "macro_f1": 0.45822172492907925,
+            "weighted_f1": 0.8416430129506114,
+            "num_eval_windows": 448,
+            "num_classes": 2
+          }
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 0.45822172492907925
+      }
+    },
+    {
+      "task": "next_action",
+      "simple": {
+        "status": "pass",
+        "task": "next_action",
+        "model_family": "simple_centroid_metadata",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+        "split_policy": "train on train split, report val and held-out test split",
+        "num_train_windows": 2848,
+        "num_val_windows": 512,
+        "num_test_windows": 448,
+        "num_classes": 1184,
+        "num_train_classes": 882,
+        "majority_baseline_accuracy": 0.0,
+        "history": [
+          {
+            "method": "train_class_centroid_cosine",
+            "reason": "train_class_count=882 exceeds softmax_max_train_classes=256"
+          }
+        ],
+        "splits": {
+          "val": {
+            "accuracy": 0.015625,
+            "balanced_accuracy": 0.006756756756756757,
+            "macro_f1": 0.0004327791892558732,
+            "weighted_f1": 0.0020494078460399703,
+            "num_eval_windows": 512,
+            "num_classes": 1184
+          },
+          "test": {
+            "accuracy": 0.017857142857142856,
+            "balanced_accuracy": 0.005291005291005291,
+            "macro_f1": 0.00019966057701906761,
+            "weighted_f1": 0.0006738544474393532,
+            "num_eval_windows": 448,
+            "num_classes": 1184
+          }
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 0.00019966057701906761,
+        "unseen_test_class_count": 145,
+        "unseen_test_classes": [
+          "Place smartphone on stand",
+          "Pick up dustpan",
+          "Move dustpan to side",
+          "Hold container lid",
+          "Move towards the stove",
+          "Open stove pot lid",
+          "Walking towards door",
+          "Closing the door",
+          "Picking up bottle",
+          "Wipe kitchen counter",
+          "Rinse cloth in sink",
+          "Move towards kitchen area",
+          "Place cloth on floor",
+          "Reach for cleaning supplies",
+          "Grasp cleaning bottle",
+          "Remove cleaning bottle",
+          "Washing hands in sink",
+          "Grasping cleaning cloth",
+          "Wiping countertop",
+          "Lift pot lid",
+          "Stir contents",
+          "Place lid back",
+          "Adjust pot position",
+          "Move pot",
+          "Place towel",
+          "Start cutting",
+          "Cut along the marked line",
+          "Reposition hand",
+          "Observe and walk through store",
+          "Inspect shelf condition",
+          "Observe colleague and workspace",
+          "Approach boxes",
+          "Reach for wire hangers",
+          "Extract wire hangers from box",
+          "Bundle display hooks",
+          "Release hook",
+          "Walk towards other aisles",
+          "Move through aisle",
+          "Pick up items from the shopping bag",
+          "Place items on the shelf",
+          "Place marked piece down",
+          "Hold cardboard piece",
+          "Release cardboard piece and gesture",
+          "Move marker and adjust hand",
+          "Identify next cardboard piece",
+          "Observe and pause",
+          "Gesturing",
+          "Resume observation",
+          "Reach for next can",
+          "Hold canned food",
+          "Retrieve next canned food item",
+          "Align canned food on shelf",
+          "Reach for next canned food",
+          "Retrieve canned food from box",
+          "Place another canned food on shelf",
+          "Adjust canned food on shelf",
+          "Move hand away from shelf",
+          "Move hand away",
+          "Hold earbud case",
+          "Open earbud case",
+          "sort craft materials",
+          "Manipulate craft piece",
+          "Manipulate craft paper strips",
+          "Operate smartphone",
+          "Release smartphone",
+          "Sort small craft pieces",
+          "Open paper lantern",
+          "Fold paper lantern",
+          "Grasp lantern",
+          "Grasp lantern component",
+          "Align paper lantern edges",
+          "Adjust lantern string",
+          "Release lantern",
+          "Pick up packaged paper lantern component",
+          "Handle paper lantern component",
+          "Open folded paper lantern",
+          "Adjust lantern shape",
+          "Hold paper lantern",
+          "Apply adhesive tape to lantern",
+          "Remove paper lantern part from packaging",
+          "Remove plastic packaging",
+          "Open paper lantern component",
+          "Expand paper lantern",
+          "Align edges of paper lantern",
+          "Reach for craft items",
+          "Sort craft items",
+          "Place hand on table",
+          "Browse smartphone screen",
+          "Scroll smartphone screen",
+          "Put down smartphone",
+          "Place smartphone down",
+          "Pick up puzzle piece",
+          "Place piece into puzzle",
+          "Manipulate puzzle piece",
+          "Observe puzzle progress",
+          "Reach for puzzle piece",
+          "Attempt to fit puzzle piece",
+          "Sort puzzle pieces",
+          "Walking across the room",
+          "Approaching the table",
+          "Preparing to craft",
+          "Picking up crafting material",
+          "Pick up small piece of material",
+          "Manipulate material",
+          "Place material",
+          "Manipulate yellow strip",
+          "Manipulating paper strips",
+          "Manipulate bead",
+          "Manipulate beads",
+          "Use phone while crafting",
+          "Hold and manipulate paper strip",
+          "Sort buttons",
+          "Arrange buttons in a line",
+          "Sort and arrange buttons",
+          "Sort button",
+          "Sort and adjust button line",
+          "Sort and place buttons",
+          "Walking in the hallway",
+          "Approaching and pressing the door switch",
+          "Entering the VR training room",
+          "Greeting/acknowledging participants",
+          "Move through the training room",
+          "Manipulate plastic strips",
+          "Manipulate plastic strip",
+          "Hold and bend plastic strip",
+          "Bend and manipulate plastic strip",
+          "Fold plastic strip",
+          "Manipulate paper decoration",
+          "Manipulate paper edge",
+          "Placing paper strip",
+          "Securing paper structure",
+          "Manipulate adhesive strip",
+          "Secure paper edges with adhesive",
+          "Record count",
+          "Sort beads and write count",
+          "Counting and organizing beads",
+          "Pick up star bead",
+          "Place and count bead",
+          "Arrange star beads",
+          "Counting star beads",
+          "Retrieving more beads",
+          "Adjust paper",
+          "Gather star beads",
+          "Arrange star beads for counting",
+          "Sort and count beads"
+        ]
+      },
+      "neural": {
+        "status": "pass",
+        "task": "next_action",
+        "model_family": "neural_mlp_metadata",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+        "split_policy": "train on train split, report held-out test split",
+        "num_train_windows": 2848,
+        "num_val_windows": 512,
+        "num_test_windows": 448,
+        "num_classes": 1184,
+        "num_train_classes": 882,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 6.774531332294592,
+            "train_accuracy": 0.004564606741573034
+          },
+          {
+            "epoch": 2,
+            "loss": 6.636962890625,
+            "train_accuracy": 0.02071629213483146
+          },
+          {
+            "epoch": 3,
+            "loss": 6.343262838513664,
+            "train_accuracy": 0.03546348314606742
+          },
+          {
+            "epoch": 4,
+            "loss": 5.852934960568889,
+            "train_accuracy": 0.046348314606741575
+          }
+        ],
+        "device": "cpu",
+        "splits": {
+          "test": {
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "macro_f1": 0.0,
+            "weighted_f1": 0.0,
+            "num_eval_windows": 448,
+            "num_classes": 1184
+          }
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 0.0
+      }
+    },
+    {
+      "task": "hand_trajectory_forecast",
+      "simple": {
+        "status": "unsupported_without_raw_128_feature_blocks",
+        "task": "hand_trajectory_forecast",
+        "primary_metric": "mpjpe",
+        "primary_score": null,
+        "reason": "requires future hand-joint trajectories from raw sensor feature NPZ blocks, which are not in the public 128 package",
+        "source": "128_episode_qwen_jsonl_metadata"
+      },
+      "neural": null
+    },
+    {
+      "task": "contact_prediction",
+      "simple": {
+        "status": "pass",
+        "task": "contact_prediction",
+        "model_family": "simple_softmax_metadata",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+        "split_policy": "train on train split, report val and held-out test split",
+        "num_train_windows": 2848,
+        "num_val_windows": 512,
+        "num_test_windows": 448,
+        "num_classes": 2,
+        "num_train_classes": 2,
+        "majority_baseline_accuracy": 0.71875,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.6972762247174978,
+            "train_accuracy": 0.4571629213483146
+          },
+          {
+            "epoch": 8,
+            "loss": 1.2813005490899085,
+            "train_accuracy": 0.5365168539325843
+          },
+          {
+            "epoch": 16,
+            "loss": 1.0597041568756103,
+            "train_accuracy": 0.5832162921348315
+          },
+          {
+            "epoch": 24,
+            "loss": 1.008222098827362,
+            "train_accuracy": 0.6376404494382022
+          },
+          {
+            "epoch": 32,
+            "loss": 0.981668760061264,
+            "train_accuracy": 0.6597612359550562
+          },
+          {
+            "epoch": 40,
+            "loss": 0.9678718686103821,
+            "train_accuracy": 0.6773174157303371
+          },
+          {
+            "epoch": 48,
+            "loss": 0.9600052433013916,
+            "train_accuracy": 0.6804775280898876
+          },
+          {
+            "epoch": 56,
+            "loss": 0.9529352180957794,
+            "train_accuracy": 0.6839887640449438
+          },
+          {
+            "epoch": 64,
+            "loss": 0.9405473039150238,
+            "train_accuracy": 0.6882022471910112
+          },
+          {
+            "epoch": 72,
+            "loss": 0.916521418094635,
+            "train_accuracy": 0.7085674157303371
+          },
+          {
+            "epoch": 80,
+            "loss": 0.8868137853145599,
+            "train_accuracy": 0.7205056179775281
+          }
+        ],
+        "splits": {
+          "val": {
+            "accuracy": 0.767578125,
+            "balanced_accuracy": 0.6817330795394265,
+            "macro_f1": 0.6316836231962907,
+            "weighted_f1": 0.7916109147080513,
+            "num_eval_windows": 512,
+            "num_classes": 2
+          },
+          "test": {
+            "accuracy": 0.625,
+            "balanced_accuracy": 0.5169082125603864,
+            "macro_f1": 0.5167950693374422,
+            "weighted_f1": 0.6168335901386749,
+            "num_eval_windows": 448,
+            "num_classes": 2
+          },
+          "train": {
+            "accuracy": 0.6239466292134831,
+            "balanced_accuracy": 0.652883248657548,
+            "macro_f1": 0.5682389952686467,
+            "weighted_f1": 0.6646246375778945,
+            "num_eval_windows": 2848,
+            "num_classes": 2
+          }
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 0.5167950693374422,
+        "unseen_test_class_count": 0,
+        "unseen_test_classes": []
+      },
+      "neural": {
+        "status": "pass",
+        "task": "contact_prediction",
+        "model_family": "neural_mlp_metadata",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+        "split_policy": "train on train split, report held-out test split",
+        "num_train_windows": 2848,
+        "num_val_windows": 512,
+        "num_test_windows": 448,
+        "num_classes": 2,
+        "num_train_classes": 2,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.6547630710548229,
+            "train_accuracy": 0.5832162921348315
+          },
+          {
+            "epoch": 2,
+            "loss": 0.5742614466822549,
+            "train_accuracy": 0.7029494382022472
+          },
+          {
+            "epoch": 3,
+            "loss": 0.5385025645909685,
+            "train_accuracy": 0.7166432584269663
+          },
+          {
+            "epoch": 4,
+            "loss": 0.5157321825456084,
+            "train_accuracy": 0.7338483146067416
+          }
+        ],
+        "device": "cpu",
+        "splits": {
+          "test": {
+            "accuracy": 0.28125,
+            "balanced_accuracy": 0.5,
+            "macro_f1": 0.21951219512195122,
+            "weighted_f1": 0.12347560975609757,
+            "num_eval_windows": 448,
+            "num_classes": 2
+          }
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 0.21951219512195122
+      }
+    },
+    {
+      "task": "object_relevance",
+      "simple": {
+        "status": "pass",
+        "task": "object_relevance",
+        "model_family": "simple_train_object_frequency",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "split_policy": "object vocabulary and frequencies are learned from train split only",
+        "num_train_windows": 2848,
+        "num_val_windows": 512,
+        "num_test_windows": 448,
+        "num_objects": 256,
+        "splits": {
+          "val": {
+            "precision": 0.13509114583333334,
+            "recall": 0.3129713423831071,
+            "micro_f1": 0.18872214643019555,
+            "macro_f1": 0.005456210886733049,
+            "exact_match": 0.0
+          },
+          "test": {
+            "precision": 0.12388392857142858,
+            "recall": 0.344364012409514,
+            "micro_f1": 0.18221614227086183,
+            "macro_f1": 0.004965974024177778,
+            "exact_match": 0.0
+          }
+        },
+        "primary_metric": "micro_f1",
+        "primary_score": 0.18221614227086183
+      },
+      "neural": {
+        "status": "pass",
+        "task": "object_relevance",
+        "model_family": "neural_mlp_metadata_multilabel",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "num_train_windows": 2848,
+        "num_val_windows": 512,
+        "num_test_windows": 448,
+        "num_objects": 256,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.7418333559893491
+          },
+          {
+            "epoch": 2,
+            "loss": 0.4571684712774298
+          },
+          {
+            "epoch": 3,
+            "loss": 0.35704097319185063
+          },
+          {
+            "epoch": 4,
+            "loss": 0.30894677424698735
+          }
+        ],
+        "device": "cpu",
+        "splits": {
+          "test": {
+            "precision": 0.07382828701783492,
+            "recall": 0.18407445708376421,
+            "micro_f1": 0.1053878034339846,
+            "macro_f1": 0.003917153492790942,
+            "exact_match": 0.0
+          }
+        },
+        "primary_metric": "micro_f1",
+        "primary_score": 0.1053878034339846
+      }
+    },
+    {
+      "task": "caption_grounding",
+      "simple": {
+        "status": "pass",
+        "task": "caption_grounding",
+        "model_family": "simple_hashed_text_retrieval",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "limitation": "query text is derived from held-out labels, while candidate representations exclude answer_json fields; this is a public-safe retrieval proxy, not a raw caption-to-sensor grounding model",
+        "num_queries": 448,
+        "mrr": 0.012785504572093487,
+        "median_rank": 242.5,
+        "mean_rank": 243.02455139160156,
+        "top1_accuracy": 0.002232142857142857,
+        "top5_accuracy": 0.006696428571428571,
+        "top10_accuracy": 0.011160714285714286,
+        "primary_metric": "mrr",
+        "primary_score": 0.012785504572093487
+      },
+      "neural": null
+    },
+    {
+      "task": "cross_modal_retrieval",
+      "simple": {
+        "status": "unsupported_without_raw_128_feature_blocks",
+        "task": "cross_modal_retrieval",
+        "primary_metric": "mrr",
+        "primary_score": null,
+        "reason": "requires paired motion/IMU/camera/audio/depth feature blocks, which are not in the public 128 package",
+        "source": "128_episode_qwen_jsonl_metadata"
+      },
+      "neural": null
+    },
+    {
+      "task": "modality_reconstruction",
+      "simple": {
+        "status": "unsupported_without_raw_128_feature_blocks",
+        "task": "modality_reconstruction",
+        "primary_metric": "r2",
+        "primary_score": null,
+        "reason": "requires source and target modality feature blocks such as depth/video vectors, which are not in the public 128 package",
+        "source": "128_episode_qwen_jsonl_metadata"
+      },
+      "neural": null
+    },
+    {
+      "task": "temporal_order",
+      "simple": {
+        "status": "pass",
+        "task": "temporal_order",
+        "model_family": "simple_softmax_metadata_pair",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "limitation": "metadata-only pair features are weaker than the single-episode raw-feature temporal-order task",
+        "num_train_samples": 2759,
+        "num_test_samples": 434,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.6979212703853845,
+            "train_accuracy": 0.5059804276911924
+          },
+          {
+            "epoch": 8,
+            "loss": 3.8023250982761385,
+            "train_accuracy": 0.4958318231243204
+          },
+          {
+            "epoch": 16,
+            "loss": 3.1767871653437614,
+            "train_accuracy": 0.4972816237767307
+          },
+          {
+            "epoch": 24,
+            "loss": 2.8641889533400535,
+            "train_accuracy": 0.49800652410293583
+          },
+          {
+            "epoch": 32,
+            "loss": 2.7535072563886644,
+            "train_accuracy": 0.498731424429141
+          },
+          {
+            "epoch": 40,
+            "loss": 2.72535897231102,
+            "train_accuracy": 0.5001812250815513
+          },
+          {
+            "epoch": 48,
+            "loss": 2.7133759973049165,
+            "train_accuracy": 0.5001812250815513
+          },
+          {
+            "epoch": 56,
+            "loss": 2.7025450394153596,
+            "train_accuracy": 0.5023559260601668
+          },
+          {
+            "epoch": 64,
+            "loss": 2.6946775743961333,
+            "train_accuracy": 0.5045306270387822
+          },
+          {
+            "epoch": 72,
+            "loss": 2.6916689813137054,
+            "train_accuracy": 0.5056179775280899
+          },
+          {
+            "epoch": 80,
+            "loss": 2.6921223065853117,
+            "train_accuracy": 0.5077926785067053
+          }
+        ],
+        "accuracy": 0.4861751152073733,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.32713178294573647,
+        "weighted_f1": 0.31808666452327367,
+        "num_eval_windows": 434,
+        "num_classes": 2,
+        "primary_metric": "f1",
+        "primary_score": 0.32713178294573647
+      },
+      "neural": null
+    },
+    {
+      "task": "misalignment_detection",
+      "simple": {
+        "status": "unsupported_without_raw_128_feature_blocks",
+        "task": "misalignment_detection",
+        "primary_metric": "f1",
+        "primary_score": null,
+        "reason": "requires deliberately shifted cross-modal feature pairs, which cannot be reconstructed from the public JSONL labels alone",
+        "source": "128_episode_qwen_jsonl_metadata"
+      },
+      "neural": null
+    }
+  ]
+}

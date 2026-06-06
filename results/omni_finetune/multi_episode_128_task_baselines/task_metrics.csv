@@ -1,0 +1,13 @@
+task,simple_status,simple_primary_metric,simple_primary_score,neural_status,neural_primary_metric,neural_primary_score
+timeline_action,pass,macro_f1,0.00017511601435951318,pass,macro_f1,0.0
+timeline_subtask,pass,macro_f1,0.0,pass,macro_f1,0.0
+transition_detection,pass,macro_f1,0.5219803670507895,pass,macro_f1,0.45822172492907925
+next_action,pass,macro_f1,0.00019966057701906761,pass,macro_f1,0.0
+hand_trajectory_forecast,unsupported_without_raw_128_feature_blocks,mpjpe,,not_run,,
+contact_prediction,pass,macro_f1,0.5167950693374422,pass,macro_f1,0.21951219512195122
+object_relevance,pass,micro_f1,0.18221614227086183,pass,micro_f1,0.1053878034339846
+caption_grounding,pass,mrr,0.012785504572093487,not_run,,
+cross_modal_retrieval,unsupported_without_raw_128_feature_blocks,mrr,,not_run,,
+modality_reconstruction,unsupported_without_raw_128_feature_blocks,r2,,not_run,,
+temporal_order,pass,f1,0.32713178294573647,not_run,,
+misalignment_detection,unsupported_without_raw_128_feature_blocks,f1,,not_run,,

@@ -1,18 +1,19 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-06T15:24:58+00:00",
+  "generated_at_utc": "2026-06-06T17:44:58+00:00",
   "status": "pass",
-  "artifact_count": 86,
+  "artifact_count": 89,
   "missing": [],
   "by_kind": {
     "project_path": 14,
     "scaleup_contract": 7,
+    "scaleup_status": 6,
     "project_scope": 1,
     "source_alignment": 5,
     "publication_workflow": 3,
     "evaluation_protocol": 3,
     "result_interpretation": 5,
-    "metrics_source": 3,
+    "metrics_source": 4,
     "website_data": 3,
     "visual_evidence": 7,
     "quality_gate": 12,
@@ -28,7 +29,6 @@
     "onboarding_doc": 1,
     "generated_figure": 3,
     "generated_figure_assets": 1,
-    "scaleup_status": 4,
     "citation": 1,
     "license": 1
   },
@@ -63,8 +63,8 @@
       "surface": "repo_hf",
       "shows": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 8805,
-      "sha256": "4051b78674306078880de33a144a499144b2487b11455c70a364a94cefa035a7"
+      "bytes": 9818,
+      "sha256": "ae59a373796d279cf0c14208e14a1feca1ecbf3d31e5099fcf126c4c8de8a93a"
     },
     {
       "id": "project_status_json",
@@ -74,8 +74,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable copy of the current project status for website and HF mirrors.",
       "exists": true,
-      "bytes": 11274,
-      "sha256": "ae2b2c520ab1e0553fa399439345edd87832fa5293d8c27ffe610ede5bfa1067"
+      "bytes": 12602,
+      "sha256": "38c3ea58375f127bc72653beffef5fb9d872430843137944f626f395395a5b1f"
     },
     {
       "id": "research_roadmap",
@@ -85,8 +85,8 @@
       "surface": "repo_hf",
       "shows": "Defines the path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions.",
       "exists": true,
-      "bytes": 11244,
-      "sha256": "4e3451a2248176e78b0587a8a15ead2df682068d0833a21e624ac955c5ae72a3"
+      "bytes": 12045,
+      "sha256": "dece941b1be0f03aea11f0ce3e1a8240977cd9d9629b640fdcf233825cfd5f48"
     },
     {
       "id": "research_roadmap_json",
@@ -96,8 +96,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable research roadmap for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 8981,
-      "sha256": "92f94edda5337aa0f49e136748320cb1c2c013b7a12b5fe36cf556f5b1bb0142"
+      "bytes": 10052,
+      "sha256": "0a2ce1c96e9546ce32571f26bf4a2c580708e0cb7bb56b51e3bfbc6eef240ff9"
     },
     {
       "id": "foundation_model_plan",
@@ -199,6 +199,17 @@
       "sha256": "d4c7e46d9fbd5f9d84bc32374f457fd8c9d68c8faa39c77bc45770eb95d80337"
     },
     {
+      "id": "multi_episode_128_baseline_script",
+      "title": "128-episode aligned baseline runner",
+      "path": "scripts/omni/run_128_task_baselines.py",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Runs simple metadata and neural MLP baselines on the same selected 96/16/16 episode split used by the Qwen3-Omni diagnostic pilot.",
+      "exists": true,
+      "bytes": 46953,
+      "sha256": "f6579d123275ec098184ac2021372e33ed48100e42fd62fe37ab7cb7126e5a1c"
+    },
+    {
       "id": "additional_development_directions",
       "title": "Additional development directions",
       "path": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
@@ -261,8 +272,8 @@
       "surface": "repo_hf",
       "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 16318,
-      "sha256": "cda5f4b5be4b7a2d26aff6ed7f930bfba13dfc463d533a9880193c0a0611b677"
+      "bytes": 17246,
+      "sha256": "0e3739a51aca083bb9be8195b1759dddf84378f34059eaad950013307dd377ec"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -706,8 +717,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 32191,
-      "sha256": "4a105c732d2f6c54a78333d7f47e0139325ba638027e34e6acd929a90626b8e0"
+      "bytes": 33486,
+      "sha256": "9c41f5660ca8380deb0e0f466f21fb4fc73c85cb67c7a058de17173a4d075179"
     },
     {
       "id": "publication_audit",
@@ -718,7 +729,7 @@
       "volatile": true,
       "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and credential text.",
       "exists": true,
-      "bytes": 7237,
+      "bytes": 7212,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -742,7 +753,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 126335,
+      "bytes": 131036,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -754,7 +765,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 15221,
+      "bytes": 15259,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -965,6 +976,28 @@
       "exists": true,
       "bytes": 25202,
       "sha256": "c2e4eaa686f5d9739a8d0bfd8ae51a453b94019489ed84a154e2bce2fa316ff5"
+    },
+    {
+      "id": "multi_episode_128_baseline_report",
+      "title": "128-episode aligned baseline report",
+      "path": "results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Summarizes same-split simple and neural metadata baselines for the 12 task ids, with unsupported markers for tasks that need missing raw 128 feature blocks.",
+      "exists": true,
+      "bytes": 1861,
+      "sha256": "6e233609117917c9d14dcd815457cb2884f2000bef6cde24b7628d6060737b2b"
+    },
+    {
+      "id": "multi_episode_128_baseline_summary",
+      "title": "128-episode aligned baseline summary",
+      "path": "results/omni_finetune/multi_episode_128_task_baselines/summary_report.json",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Machine-readable 96/16/16 split counts, run configuration, per-task simple metrics, neural metrics, and raw-feature unsupported statuses.",
+      "exists": true,
+      "bytes": 42129,
+      "sha256": "32592b0d976a4bf610a6e93412114d792989344570f30c4e89702e310c422f1e"
     },
     {
       "id": "citation",

@@ -138,6 +138,14 @@ ARTIFACTS = [
         "shows": "Computes public-safe held-out error-analysis tables by episode, action family, train-seen status, required-modality state, and object category.",
     },
     {
+        "id": "multi_episode_128_baseline_script",
+        "title": "128-episode aligned baseline runner",
+        "path": "scripts/omni/run_128_task_baselines.py",
+        "kind": "scaleup_status",
+        "surface": "repo_hf",
+        "shows": "Runs simple metadata and neural MLP baselines on the same selected 96/16/16 episode split used by the Qwen3-Omni diagnostic pilot.",
+    },
+    {
         "id": "additional_development_directions",
         "title": "Additional development directions",
         "path": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
@@ -697,6 +705,22 @@ ARTIFACTS = [
         "kind": "scaleup_status",
         "surface": "repo_hf",
         "shows": "Machine-readable Qwen3-Omni held-out error analysis with grouped metrics and sanitized failure examples.",
+    },
+    {
+        "id": "multi_episode_128_baseline_report",
+        "title": "128-episode aligned baseline report",
+        "path": "results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md",
+        "kind": "scaleup_status",
+        "surface": "repo_hf",
+        "shows": "Summarizes same-split simple and neural metadata baselines for the 12 task ids, with unsupported markers for tasks that need missing raw 128 feature blocks.",
+    },
+    {
+        "id": "multi_episode_128_baseline_summary",
+        "title": "128-episode aligned baseline summary",
+        "path": "results/omni_finetune/multi_episode_128_task_baselines/summary_report.json",
+        "kind": "metrics_source",
+        "surface": "repo_hf",
+        "shows": "Machine-readable 96/16/16 split counts, run configuration, per-task simple metrics, neural metrics, and raw-feature unsupported statuses.",
     },
     {
         "id": "citation",

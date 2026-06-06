@@ -26,7 +26,14 @@
       "test": 448
     },
     "qwen3_omni_json_validity_rate": 0.875,
-    "qwen3_omni_validation_aware": true
+    "qwen3_omni_validation_aware": true,
+    "multi_episode_128_aligned_baselines": true,
+    "multi_episode_128_baseline_window_counts": {
+      "train": 2848,
+      "val": 512,
+      "test": 448
+    },
+    "multi_episode_128_baseline_task_count": 12
   },
   "rows": [
     {
@@ -175,6 +182,16 @@
       "readout": "The public sample workflow has explicit commands, expected outputs, and exact-match reproduction evidence."
     },
     {
+      "area": "128-episode aligned baselines",
+      "status": "verified_companion_result",
+      "evidence": [
+        "results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md",
+        "results/omni_finetune/multi_episode_128_task_baselines/summary_report.json",
+        "scripts/omni/run_128_task_baselines.py"
+      ],
+      "readout": "The earlier simple and neural baseline framing is aligned to the selected 96/16/16 episode split used by the Qwen3-Omni pilot. JSON-supported tasks have metadata/text simple and neural MLP metrics; raw-feature-only tasks are explicitly marked unsupported until 128-run sensor feature blocks are available."
+    },
+    {
       "area": "Qwen3-Omni fine-tuning",
       "status": "verified_validation_aware_diagnostic_pilot_quality_target_not_met",
       "evidence": [
@@ -210,11 +227,13 @@
     "Inspect EVALUATION_PROTOCOL.md before judging task metrics or leakage controls.",
     "Inspect SOURCE_ALIGNMENT_AUDIT.md before judging source-card consistency across public surfaces.",
     "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
+    "Inspect results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md before comparing simple/NN baselines to the selected 128-episode setup.",
     "Inspect docs/data/omni_finetune_verified_result.json before judging the Qwen3-Omni diagnostic pilot."
   ],
   "current_reading_notes": [
     "The validation-aware Qwen3-Omni diagnostic pilot is verified, but current held-out quality is still weak.",
     "Use docs/data/omni_finetune_verified_result.json and the latest verified_public validation-aware package for current held-out results.",
+    "The 128-episode aligned simple/NN baselines use metadata/text features from the derived Qwen JSONL export; they align the split and task ids but do not replace raw-modality baselines for trajectory, retrieval, reconstruction, or misalignment tasks.",
     "The current reconstruction task reconstructs feature vectors, not pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
     "Audio is one of the synchronized source modalities in the current task representation.",
     "The audio ablation report compares audio/no-audio variants across all 12 task contracts in results/audio_ablation/.",

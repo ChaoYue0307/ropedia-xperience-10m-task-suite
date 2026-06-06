@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-06T15:25:12+00:00",
+  "generated_at_utc": "2026-06-06T17:43:55+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
@@ -75,7 +75,7 @@
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
       "overview_index": 67412,
-      "evidence_index": 89661
+      "evidence_index": 90414
     },
     {
       "name": "project_status_links_json",
@@ -125,7 +125,7 @@
       "name": "roadmap_html_matches_json_phases",
       "status": "pass",
       "reason": "The roadmap section should show every stage defined in research_roadmap.json.",
-      "phase_count": 8,
+      "phase_count": 9,
       "missing_phase_names": [],
       "roadmap_json_error": null
     },
@@ -133,11 +133,12 @@
       "name": "roadmap_status_chips_match_json",
       "status": "pass",
       "reason": "The roadmap status chips should match the phase statuses in research_roadmap.json.",
-      "phase_count": 8,
+      "phase_count": 9,
       "statuses": [
         "implemented",
         "implemented_for_first_pilot",
         "verified_baseline",
+        "verified_companion_result",
         "active_next_step",
         "next",
         "planned",
@@ -152,8 +153,8 @@
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
       "overview_index": 67412,
-      "protocol_index": 86399,
-      "evidence_index": 89661
+      "protocol_index": 87152,
+      "evidence_index": 90414
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -251,7 +252,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 39486,
+      "bytes": 41126,
       "top_level_type": "dict"
     },
     {
@@ -291,7 +292,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 126335,
+      "bytes": 131036,
       "top_level_type": "dict"
     },
     {
@@ -321,7 +322,7 @@
     },
     {
       "path": "data/project_status.json",
-      "bytes": 11274,
+      "bytes": 12602,
       "top_level_type": "dict"
     },
     {
@@ -331,7 +332,7 @@
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 7237,
+      "bytes": 7212,
       "top_level_type": "dict"
     },
     {
@@ -361,7 +362,7 @@
     },
     {
       "path": "data/research_roadmap.json",
-      "bytes": 8981,
+      "bytes": 10052,
       "top_level_type": "dict"
     },
     {
@@ -406,7 +407,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 15221,
+      "bytes": 15259,
       "top_level_type": "dict"
     },
     {
