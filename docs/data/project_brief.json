@@ -17,7 +17,7 @@
     },
     {
       "capability": "Scale-up planning",
-      "evidence": "verified 96/16/16 Qwen3-Omni diagnostic pilot, validation-aware rerun path, Cosmos 3 branch, and policy-model candidates after action-space conversion"
+      "evidence": "verified 96/16/16 Qwen3-Omni validation-monitored diagnostic pilot, structured-output improvement path, Cosmos 3 branch, and policy-model candidates after action-space conversion"
     }
   ],
   "current_artifacts": [
@@ -43,7 +43,7 @@
     },
     {
       "layer": "Scale-up path",
-      "status": "A selected 96/16/16 Qwen3-Omni LoRA diagnostic pilot is verified; current model-quality metrics are weak and guide the next validation-aware rerun"
+      "status": "A selected 96/16/16 Qwen3-Omni LoRA validation-monitored diagnostic pilot is verified; current model-quality metrics are weak and guide the next structured-output improvement pass"
     }
   ],
   "reading_order": [
@@ -54,8 +54,8 @@
     "Inspect results/episode_task_suite/feature_manifest.json to understand one model input.",
     "Use docs/data/omni_finetune_verified_result.json for the current multi-episode Qwen3-Omni pilot result."
   ],
-  "scope_boundary": "The public sample is enough to build and verify task definitions, feature contracts, metrics, visualization, and baseline code. The first multi-episode Qwen3-Omni pilot verifies the training loop but does not yet show strong model quality.",
-  "next_stage": "Improve validation monitoring, structured JSON reliability, and error analysis before larger robustness or alternative-backbone claims.",
+  "scope_boundary": "The public sample is enough to build and verify task definitions, feature contracts, metrics, visualization, and baseline code. The validation-aware multi-episode Qwen3-Omni pilot verifies the training loop but does not yet show strong model quality.",
+  "next_stage": "Improve structured JSON reliability and error analysis before larger robustness or alternative-backbone claims.",
   "entry_points": {
     "visual_dashboard": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/",
     "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite",

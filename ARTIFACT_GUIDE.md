@@ -10,7 +10,7 @@ Xperience-native pretraining goal.
 
 | Artifact | Why to open it first |
 | --- | --- |
-| [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current-state table: implemented, in staging, and outside current scope. |
+| [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current-state table: implemented, being improved, and outside current scope. |
 | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) | Shows the roadmap from public-sample task development to multi-episode data preparation, Qwen3-Omni LoRA, robustness runs, model branches, and the future native-pretraining goal. |
 | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md) | Explains which foundation backbones fit which Xperience-10M objective: Qwen3-Omni first, Cosmos 3 for world modeling, and VLA/policy models after action-target conversion. |
 | [`ADDITIONAL_DEVELOPMENT_DIRECTIONS.md`](ADDITIONAL_DEVELOPMENT_DIRECTIONS.md) | Records concrete non-backbone development tracks: taxonomy, benchmark protocol, representation learning, skill graphs, affordances, 3D/4D memory, QA, and policy transfer. |
@@ -105,7 +105,7 @@ research project.
 
 | Artifact | Current status |
 | --- | --- |
-| [`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) | Summarizes the staging requirement before the held-out Qwen3-Omni pilot can report metrics. |
+| [`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) | Summarizes the data-readiness checks required before a held-out Qwen3-Omni pilot can report metrics. |
 | [`results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | Documents the public multi-episode access path, selected 128-episode pilot plan, and data requirements. |
 | [`docs/data/omni_finetune_verified_result.json`](docs/data/omni_finetune_verified_result.json) | Compact verified summary for the first selected-episode Qwen3-Omni diagnostic pilot, including split counts, held-out metrics, and the quality-target caveat. |
 | [`results/omni_finetune/verified_public/`](results/omni_finetune/verified_public/) | Public-safe verified held-out result packages. These include metrics, predictions, reports, manifests, training metadata, validation summaries, and audit files, but not raw data or weights. |

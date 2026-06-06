@@ -226,14 +226,14 @@ def build_payload() -> dict:
         "current_limitations": [
             "Cross-episode generalization for Qwen3-Omni has a first verified diagnostic pilot, but strong model quality is not yet shown.",
             "Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.",
-            "The verified Qwen3-Omni diagnostic pilot has weak held-out metrics and needs validation-aware rerunning before larger model-quality claims.",
+            "The verified validation-aware Qwen3-Omni diagnostic pilot has weak held-out metrics and needs structured-output and task-quality improvements before larger model-quality claims.",
             "Full audio-visual representation learning still needs multi-episode training; the current report includes single-episode audio/no-audio ablations.",
         ],
         "scale_up_gate": {
             "required_before_next_omni_quality_pilot": [
                 "selected prepared Xperience-10M episodes",
                 "held-out episode split with no train/test episode leakage",
-                "nonzero validation samples during training",
+                "validation samples during training",
                 "manifest, training metadata, progress logs, metrics, predictions, and run report",
                 "held-out evaluation on test episodes rather than train windows",
             ],

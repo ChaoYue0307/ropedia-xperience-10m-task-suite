@@ -21,7 +21,7 @@ results, and see what remains before multi-episode model-quality claims.
 | Data understanding | `feature_manifest.json`, `available_modalities.json`, modality atlas, episode-window HF viewer |
 | Task design | 12 task contracts, task cards, case-study walkthroughs, and four research-direction extension probes |
 | Evaluation rigor | chronological split, per-task metrics, predictions, confusion matrices, leakage notes, and generated takeaways |
-| Scale-up planning | Verified 96/16/16 Qwen3-Omni diagnostic pilot, validation-aware rerun path, Cosmos 3 branch, and policy-model candidates after action-space conversion |
+| Scale-up planning | Verified 96/16/16 Qwen3-Omni validation-monitored diagnostic pilot, structured-output improvement path, Cosmos 3 branch, and policy-model candidates after action-space conversion |
 
 ## What Exists Now
 
@@ -32,7 +32,7 @@ results, and see what remains before multi-episode model-quality claims.
 | Task suite | 12 embodied-AI task contracts with inputs, targets, metrics, predictions, and case-study walkthroughs |
 | Models | Minimal linear/ridge/logistic baselines plus compact PyTorch MLP heads for the same 12 tasks |
 | Research map | Four Ropedia research directions with direct, proxy, diagnostic, and extension-task coverage |
-| Scale-up path | A selected 96/16/16 Qwen3-Omni LoRA diagnostic pilot is verified; current model-quality metrics are weak and guide the next validation-aware rerun |
+| Scale-up path | A selected 96/16/16 Qwen3-Omni LoRA validation-monitored diagnostic pilot is verified; current model-quality metrics are weak and guide the next structured-output improvement pass |
 
 ## How To Read It
 
@@ -50,9 +50,9 @@ The public sample is enough to build and verify task definitions, feature
 contracts, metrics, visualization, and baseline code. It is not enough to
 measure final model quality for a general embodied-AI model. The first
 multi-episode Qwen3-Omni diagnostic pilot now verifies the held-out training
-loop; the next research stage is to improve validation monitoring, JSON-format
-reliability, and error analysis before larger robustness or alternative
-backbone claims.
+loop with validation loss recorded; the next research stage is to improve
+JSON-format reliability and error analysis before larger robustness or
+alternative backbone claims.
 
 ## Best Entry Points
 

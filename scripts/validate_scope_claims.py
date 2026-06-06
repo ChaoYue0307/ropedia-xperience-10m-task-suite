@@ -167,6 +167,8 @@ def build_report() -> dict:
     dataset_manifest = read_json(f"{package_path}/dataset/dataset_manifest.json")
     training_metadata = read_json(f"{package_path}/training/training_metadata.json")
     eval_metrics = read_json(f"{package_path}/eval/metrics.json")
+    verified_evaluation = verified_result.get("evaluation", {})
+    expected_json_validity = float(verified_evaluation.get("json_validity_rate", 0.0))
 
     reading_notes = " ".join(project_packet.get("current_reading_notes", []))
     checks.append(
@@ -207,6 +209,7 @@ def build_report() -> dict:
         check(
             "verified_package_training_records_8_processes",
             training_metadata.get("num_train_samples") == 2848
+            and training_metadata.get("num_val_samples") == 512
             and training_metadata.get("num_processes") == 8,
             (
                 f"train={training_metadata.get('num_train_samples')}, "
@@ -223,7 +226,7 @@ def build_report() -> dict:
             eval_metrics.get("num_samples") == 448
             and eval_metrics.get("eval_split") == "test"
             and eval_metrics.get("held_out_episode_count", eval_metrics.get("num_eval_episodes")) == 14
-            and abs(float(eval_metrics.get("json_validity_rate", 0.0)) - 0.8526785714285714) < 1e-12,
+            and abs(float(eval_metrics.get("json_validity_rate", 0.0)) - expected_json_validity) < 1e-12,
             (
                 f"samples={eval_metrics.get('num_samples')}, "
                 f"split={eval_metrics.get('eval_split')}, "

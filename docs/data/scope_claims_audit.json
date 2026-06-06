@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-05T06:55:59+00:00",
+  "generated_at_utc": "2026-06-06T13:56:22+00:00",
   "summary": {
     "qwen3_omni_verified_diagnostic_pilot": true,
     "dataset_manifest_num_episodes": 119,
     "dataset_manifest_num_samples": 3808,
     "training_metadata_num_train_samples": 2848,
     "eval_num_samples": 448,
-    "eval_json_validity_rate": 0.8526785714285714,
+    "eval_json_validity_rate": 0.875,
     "quality_target_met": false,
     "historical_identifier_count": 132,
     "public_32_episode_status_file_count": 1,
@@ -25,7 +25,7 @@
     {
       "name": "summary_metrics_preserves_verified_diagnostic_status",
       "status": "pass",
-      "detail": "The first selected-episode Qwen3-Omni diagnostic pilot is verified, but held-out quality is weak and JSON validity is below the 98% target.",
+      "detail": "The selected-episode Qwen3-Omni validation-aware diagnostic pilot is verified, but held-out quality is still weak and JSON validity remains below the 98% target.",
       "evidence": [
         "docs/data/summary_metrics.json"
       ]
@@ -35,23 +35,23 @@
       "status": "pass",
       "detail": "episodes=119, samples=3808, split_counts={'train': 2848, 'val': 512, 'test': 448}",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full/dataset/dataset_manifest.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/dataset/dataset_manifest.json"
       ]
     },
     {
       "name": "verified_package_training_records_8_processes",
       "status": "pass",
-      "detail": "train=2848, val=0, processes=8",
+      "detail": "train=2848, val=512, processes=8",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full/training/training_metadata.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/training/training_metadata.json"
       ]
     },
     {
       "name": "verified_package_eval_records_real_held_out_metrics",
       "status": "pass",
-      "detail": "samples=448, split=test, held_out=14, json_validity=0.8526785714285714",
+      "detail": "samples=448, split=test, held_out=14, json_validity=0.875",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full/eval/metrics.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/eval/metrics.json"
       ]
     },
     {
@@ -59,7 +59,7 @@
       "status": "pass",
       "detail": "audit_status=pass, issues=0",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full/package_audit.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/package_audit.json"
       ]
     },
     {
