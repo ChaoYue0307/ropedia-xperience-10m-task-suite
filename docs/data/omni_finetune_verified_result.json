@@ -92,7 +92,7 @@
   },
   "required_next_steps": [
     "Improve JSON-format reliability through prompt, decoding, constrained parsing, or target formatting changes.",
-    "Add error analysis by episode, action family, object category, and missing-modality state.",
+    "Use the published held-out error analysis to prioritize JSON constraints, action/subtask formatting, object vocabulary handling, and missing-modality robustness.",
     "Run a second validation-aware Qwen3-Omni pass only after the JSON/output contract is tightened.",
     "Keep the same verified package contract for Cosmos-style world-model and VLA/policy branches."
   ]
