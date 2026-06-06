@@ -107,6 +107,17 @@
       "readout": "Qwen3-Omni remains the first trainable held-out LoRA baseline; Cosmos 3 is added as the first world-model/action-generation branch; OpenVLA/openpi/GR00T are policy candidates after action targets are explicit."
     },
     {
+      "area": "Omni model extension contract",
+      "status": "current",
+      "evidence": [
+        "OMNI_MODEL_EXTENSION_CONTRACT.md",
+        "configs/omni_backbones/",
+        "scripts/omni/backbone_registry.py",
+        "scripts/omni/smoke_test_backbone_packaging.py"
+      ],
+      "readout": "Future Qwen, Cosmos-style, and VLA/policy branches must keep the same episode split discipline, held-out metrics, validation gate, public-safe package contract, and explicit forbidden-artifact policy before reporting results."
+    },
+    {
       "area": "Xperience Embodied Foundation Model",
       "status": "future_goal",
       "evidence": [
@@ -190,6 +201,7 @@
     "Inspect RESEARCH_TAKEAWAYS.md and docs/data/research_takeaways.json before interpreting model scores.",
     "Inspect RESEARCH_ROADMAP.md and docs/data/research_roadmap.json for the path from public-sample task work to multi-episode modeling.",
     "Inspect FOUNDATION_MODEL_PLAN.md and docs/data/foundation_model_plan.json before choosing a backbone branch.",
+    "Inspect OMNI_MODEL_EXTENSION_CONTRACT.md and run python scripts/omni/backbone_registry.py --validate --json before adding a new Qwen, Cosmos-style, or VLA/policy branch.",
     "Inspect XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md for the long-term full-corpus pretraining goal.",
     "Inspect docs/data/summary_metrics.json and results/episode_task_suite/neural_mlp/ to check the 12-task outputs.",
     "Inspect results/audio_ablation/AUDIO_ABLATION_SUMMARY.md before judging whether audio helps the current task suite.",
@@ -205,6 +217,7 @@
     "Audio is one of the synchronized source modalities in the current task representation.",
     "The audio ablation report compares audio/no-audio variants across all 12 task contracts in results/audio_ablation/.",
     "Foundation-model selection is explicit: Qwen3-Omni is the immediate trainable pilot, Cosmos 3 is the first world-model branch, and policy models such as OpenVLA/openpi/GR00T wait for action-target conversion.",
+    "Future model branches should be added through the backbone registry and verified package contract, not as one-off result folders with incompatible metrics or publication rules.",
     "The Xperience Embodied Foundation Model is a future native-pretraining goal, not a completed model or current benchmark."
   ]
 }
