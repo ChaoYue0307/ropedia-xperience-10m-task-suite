@@ -1,12 +1,12 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-06T14:35:42+00:00",
+  "generated_at_utc": "2026-06-06T14:53:45+00:00",
   "status": "pass",
-  "artifact_count": 83,
+  "artifact_count": 86,
   "missing": [],
   "by_kind": {
     "project_path": 14,
-    "scaleup_contract": 6,
+    "scaleup_contract": 7,
     "project_scope": 1,
     "source_alignment": 5,
     "publication_workflow": 3,
@@ -28,7 +28,7 @@
     "onboarding_doc": 1,
     "generated_figure": 3,
     "generated_figure_assets": 1,
-    "scaleup_status": 2,
+    "scaleup_status": 4,
     "citation": 1,
     "license": 1
   },
@@ -63,8 +63,8 @@
       "surface": "repo_hf",
       "shows": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 8534,
-      "sha256": "5eb48d489da7f005baab233a94c9d6b209eb1e9ffdb138c8e0e600ece9239a29"
+      "bytes": 8805,
+      "sha256": "4051b78674306078880de33a144a499144b2487b11455c70a364a94cefa035a7"
     },
     {
       "id": "project_status_json",
@@ -74,8 +74,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable copy of the current project status for website and HF mirrors.",
       "exists": true,
-      "bytes": 10977,
-      "sha256": "2bb0639c137dfd6eddd337eb909292543ae2e72753dee398f8240ff35f6a3984"
+      "bytes": 11274,
+      "sha256": "ae2b2c520ab1e0553fa399439345edd87832fa5293d8c27ffe610ede5bfa1067"
     },
     {
       "id": "research_roadmap",
@@ -188,6 +188,17 @@
       "sha256": "a3773fc681e298325e2be80556d6be6e7e30b90ba22ee24b66633f07ff9c4ea4"
     },
     {
+      "id": "qwen3_omni_error_analysis_script",
+      "title": "Qwen3-Omni held-out error-analysis script",
+      "path": "scripts/omni/analyze_qwen3_omni_errors.py",
+      "kind": "scaleup_contract",
+      "surface": "repo_hf",
+      "shows": "Computes public-safe held-out error-analysis tables by episode, action family, train-seen status, required-modality state, and object category.",
+      "exists": true,
+      "bytes": 15676,
+      "sha256": "d4c7e46d9fbd5f9d84bc32374f457fd8c9d68c8faa39c77bc45770eb95d80337"
+    },
+    {
       "id": "additional_development_directions",
       "title": "Additional development directions",
       "path": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
@@ -250,8 +261,8 @@
       "surface": "repo_hf",
       "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 15660,
-      "sha256": "a9ad335b82c35a5ac102428663ffae1c8798e90e45cc5e795c3a499b4563b417"
+      "bytes": 16318,
+      "sha256": "cda5f4b5be4b7a2d26aff6ed7f930bfba13dfc463d533a9880193c0a0611b677"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -695,8 +706,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 30785,
-      "sha256": "0c42b68e44e6a32b6b5161b47161adc5ccdb57567e1462e8271ea87af50ab92d"
+      "bytes": 32191,
+      "sha256": "4a105c732d2f6c54a78333d7f47e0139325ba638027e34e6acd929a90626b8e0"
     },
     {
       "id": "publication_audit",
@@ -731,7 +742,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 111950,
+      "bytes": 126335,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -932,6 +943,28 @@
       "exists": true,
       "bytes": 3076,
       "sha256": "23b87581cfc1d95b0af118a0dbb4e601f42fc6bad608759490e13a9a1ef73205"
+    },
+    {
+      "id": "qwen3_omni_error_analysis_report",
+      "title": "Qwen3-Omni held-out error-analysis report",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/ERROR_ANALYSIS.md",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Summarizes validation-aware Qwen3-Omni held-out failures by episode, action family, train-seen status, required-modality state, and object category.",
+      "exists": true,
+      "bytes": 3331,
+      "sha256": "063fcc2ebd7b57ab5b281fd5e8edc629da4e1f4e5a708483ba27375d02af9467"
+    },
+    {
+      "id": "qwen3_omni_error_analysis_json",
+      "title": "Qwen3-Omni held-out error-analysis JSON",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/error_analysis_summary.json",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Machine-readable Qwen3-Omni held-out error analysis with grouped metrics and sanitized failure examples.",
+      "exists": true,
+      "bytes": 25202,
+      "sha256": "c2e4eaa686f5d9739a8d0bfd8ae51a453b94019489ed84a154e2bce2fa316ff5"
     },
     {
       "id": "citation",

@@ -1,0 +1,667 @@
+{
+  "status": "pass",
+  "source_package": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval",
+  "source_prediction_rows": 448,
+  "metrics_json_validity_rate": 0.875,
+  "computed": {
+    "group": "overall",
+    "samples": 448,
+    "parsed_prediction_rate": 0.8772321428571429,
+    "action_exact_rate": 0.024553571428571428,
+    "subtask_exact_rate": 0.006696428571428571,
+    "transition_exact_rate": 0.8504464285714286,
+    "next_action_exact_rate": 0.024553571428571428,
+    "contact_exact_rate": 0.6450892857142857,
+    "object_precision": 0.19611111111111112,
+    "object_recall": 0.25841874084919475,
+    "object_f1": 0.22299431459254582
+  },
+  "worst_episode_groups": [
+    {
+      "group": "1796b943-caad-43c6-b9bd-80b8d601f37d__ep1",
+      "samples": 32,
+      "parsed_prediction_rate": 0.5625,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.5625,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.53125,
+      "object_precision": 0.045871559633027525,
+      "object_recall": 0.045871559633027525,
+      "object_f1": 0.045871559633027525
+    },
+    {
+      "group": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1",
+      "samples": 32,
+      "parsed_prediction_rate": 0.75,
+      "action_exact_rate": 0.03125,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.71875,
+      "next_action_exact_rate": 0.03125,
+      "contact_exact_rate": 0.4375,
+      "object_precision": 0.08108108108108109,
+      "object_recall": 0.1125,
+      "object_f1": 0.09424083769633508
+    },
+    {
+      "group": "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1",
+      "samples": 32,
+      "parsed_prediction_rate": 0.84375,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.6875,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.53125,
+      "object_precision": 0.043859649122807015,
+      "object_recall": 0.06666666666666667,
+      "object_f1": 0.05291005291005291
+    },
+    {
+      "group": "b750fab3-7fbb-43a0-b451-c64c4d4a64da__ep1",
+      "samples": 32,
+      "parsed_prediction_rate": 0.84375,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.84375,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.375,
+      "object_precision": 0.2153846153846154,
+      "object_recall": 0.25925925925925924,
+      "object_f1": 0.23529411764705882
+    },
+    {
+      "group": "ba18b7c1-21ff-45da-8452-41acce7fc8de__ep2",
+      "samples": 32,
+      "parsed_prediction_rate": 0.84375,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.84375,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.75,
+      "object_precision": 0.3,
+      "object_recall": 0.2689655172413793,
+      "object_f1": 0.2836363636363637
+    },
+    {
+      "group": "ba045ed4-ef25-404d-b756-8dcbd45b18fa__ep2",
+      "samples": 32,
+      "parsed_prediction_rate": 0.84375,
+      "action_exact_rate": 0.0625,
+      "subtask_exact_rate": 0.0625,
+      "transition_exact_rate": 0.84375,
+      "next_action_exact_rate": 0.0625,
+      "contact_exact_rate": 0.75,
+      "object_precision": 0.04830917874396135,
+      "object_recall": 0.16393442622950818,
+      "object_f1": 0.07462686567164178
+    },
+    {
+      "group": "b9dd769b-e31a-4fdb-945e-5a60db6487b0__ep2",
+      "samples": 32,
+      "parsed_prediction_rate": 0.875,
+      "action_exact_rate": 0.03125,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.8125,
+      "next_action_exact_rate": 0.03125,
+      "contact_exact_rate": 0.40625,
+      "object_precision": 0.30303030303030304,
+      "object_recall": 0.35398230088495575,
+      "object_f1": 0.32653061224489793
+    },
+    {
+      "group": "4b02bb38-384a-438a-b5f9-6131d85c34b0__ep1",
+      "samples": 32,
+      "parsed_prediction_rate": 0.875,
+      "action_exact_rate": 0.09375,
+      "subtask_exact_rate": 0.03125,
+      "transition_exact_rate": 0.8125,
+      "next_action_exact_rate": 0.09375,
+      "contact_exact_rate": 0.40625,
+      "object_precision": 0.2608695652173913,
+      "object_recall": 0.30927835051546393,
+      "object_f1": 0.2830188679245283
+    }
+  ],
+  "action_family_groups": [
+    {
+      "group": "locomotion",
+      "samples": 23,
+      "parsed_prediction_rate": 0.2608695652173913,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.2608695652173913,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.08695652173913043,
+      "object_precision": 0.010752688172043012,
+      "object_recall": 0.0136986301369863,
+      "object_f1": 0.012048192771084338
+    },
+    {
+      "group": "food_kitchen",
+      "samples": 5,
+      "parsed_prediction_rate": 0.6,
+      "action_exact_rate": 0.2,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.6,
+      "next_action_exact_rate": 0.2,
+      "contact_exact_rate": 0.2,
+      "object_precision": 0.375,
+      "object_recall": 0.21428571428571427,
+      "object_f1": 0.2727272727272727
+    },
+    {
+      "group": "cleaning",
+      "samples": 8,
+      "parsed_prediction_rate": 0.75,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.625,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.625,
+      "object_precision": 0.0,
+      "object_recall": 0.0,
+      "object_f1": 0.0
+    },
+    {
+      "group": "other",
+      "samples": 94,
+      "parsed_prediction_rate": 0.851063829787234,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.8085106382978723,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.6063829787234043,
+      "object_precision": 0.17220543806646527,
+      "object_recall": 0.21428571428571427,
+      "object_f1": 0.19095477386934673
+    },
+    {
+      "group": "phone_use",
+      "samples": 51,
+      "parsed_prediction_rate": 0.9019607843137255,
+      "action_exact_rate": 0.058823529411764705,
+      "subtask_exact_rate": 0.0196078431372549,
+      "transition_exact_rate": 0.8431372549019608,
+      "next_action_exact_rate": 0.058823529411764705,
+      "contact_exact_rate": 0.5686274509803921,
+      "object_precision": 0.35542168674698793,
+      "object_recall": 0.34502923976608185,
+      "object_f1": 0.3501483679525222
+    },
+    {
+      "group": "paper_cardboard_craft",
+      "samples": 142,
+      "parsed_prediction_rate": 0.9225352112676056,
+      "action_exact_rate": 0.028169014084507043,
+      "subtask_exact_rate": 0.014084507042253521,
+      "transition_exact_rate": 0.9154929577464789,
+      "next_action_exact_rate": 0.028169014084507043,
+      "contact_exact_rate": 0.8169014084507042,
+      "object_precision": 0.1853233830845771,
+      "object_recall": 0.3059548254620123,
+      "object_f1": 0.2308288148721921
+    },
+    {
+      "group": "small_object_sorting",
+      "samples": 87,
+      "parsed_prediction_rate": 0.9655172413793104,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9425287356321839,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.5747126436781609,
+      "object_precision": 0.26515151515151514,
+      "object_recall": 0.2834008097165992,
+      "object_f1": 0.27397260273972607
+    },
+    {
+      "group": "retail_stocking",
+      "samples": 38,
+      "parsed_prediction_rate": 0.9736842105263158,
+      "action_exact_rate": 0.07894736842105263,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9473684210526315,
+      "next_action_exact_rate": 0.07894736842105263,
+      "contact_exact_rate": 0.7631578947368421,
+      "object_precision": 0.15384615384615385,
+      "object_recall": 0.1590909090909091,
+      "object_f1": 0.1564245810055866
+    }
+  ],
+  "train_seen_groups": [
+    {
+      "group": "unseen_in_train",
+      "samples": 317,
+      "parsed_prediction_rate": 0.8454258675078864,
+      "action_exact_rate": 0.015772870662460567,
+      "subtask_exact_rate": 0.006309148264984227,
+      "transition_exact_rate": 0.8233438485804416,
+      "next_action_exact_rate": 0.015772870662460567,
+      "contact_exact_rate": 0.6151419558359621,
+      "object_precision": 0.15804806991988346,
+      "object_recall": 0.23183760683760685,
+      "object_f1": 0.18796015591165008
+    },
+    {
+      "group": "seen_in_train",
+      "samples": 131,
+      "parsed_prediction_rate": 0.9541984732824428,
+      "action_exact_rate": 0.04580152671755725,
+      "subtask_exact_rate": 0.007633587786259542,
+      "transition_exact_rate": 0.916030534351145,
+      "next_action_exact_rate": 0.04580152671755725,
+      "contact_exact_rate": 0.7175572519083969,
+      "object_precision": 0.3185011709601874,
+      "object_recall": 0.31627906976744186,
+      "object_f1": 0.3173862310385064
+    }
+  ],
+  "missing_modality_groups": [
+    {
+      "group": "rrd_missing_only_required_modalities_present",
+      "samples": 448,
+      "parsed_prediction_rate": 0.8772321428571429,
+      "action_exact_rate": 0.024553571428571428,
+      "subtask_exact_rate": 0.006696428571428571,
+      "transition_exact_rate": 0.8504464285714286,
+      "next_action_exact_rate": 0.024553571428571428,
+      "contact_exact_rate": 0.6450892857142857,
+      "object_precision": 0.19611111111111112,
+      "object_recall": 0.25841874084919475,
+      "object_f1": 0.22299431459254582
+    }
+  ],
+  "object_category_groups": [
+    {
+      "group": "furniture_room",
+      "samples": 96,
+      "parsed_prediction_rate": 0.71875,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.7083333333333334,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.4166666666666667,
+      "object_precision": 0.2534246575342466,
+      "object_recall": 0.2334384858044164,
+      "object_f1": 0.24302134646962234
+    },
+    {
+      "group": "other_object",
+      "samples": 135,
+      "parsed_prediction_rate": 0.7925925925925926,
+      "action_exact_rate": 0.02962962962962963,
+      "subtask_exact_rate": 0.007407407407407408,
+      "transition_exact_rate": 0.762962962962963,
+      "next_action_exact_rate": 0.02962962962962963,
+      "contact_exact_rate": 0.6,
+      "object_precision": 0.13717693836978131,
+      "object_recall": 0.16428571428571428,
+      "object_f1": 0.1495124593716143
+    },
+    {
+      "group": "food_kitchen",
+      "samples": 56,
+      "parsed_prediction_rate": 0.8571428571428571,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.8214285714285714,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.7678571428571429,
+      "object_precision": 0.22277227722772278,
+      "object_recall": 0.2,
+      "object_f1": 0.2107728337236534
+    },
+    {
+      "group": "cleaning",
+      "samples": 8,
+      "parsed_prediction_rate": 0.875,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.875,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.625,
+      "object_precision": 0.04,
+      "object_recall": 0.047619047619047616,
+      "object_f1": 0.043478260869565216
+    },
+    {
+      "group": "phone_device",
+      "samples": 162,
+      "parsed_prediction_rate": 0.9074074074074074,
+      "action_exact_rate": 0.024691358024691357,
+      "subtask_exact_rate": 0.006172839506172839,
+      "transition_exact_rate": 0.8703703703703703,
+      "next_action_exact_rate": 0.024691358024691357,
+      "contact_exact_rate": 0.5864197530864198,
+      "object_precision": 0.32521739130434785,
+      "object_recall": 0.3132328308207705,
+      "object_f1": 0.31911262798634815
+    },
+    {
+      "group": "paper_cardboard",
+      "samples": 261,
+      "parsed_prediction_rate": 0.9080459770114943,
+      "action_exact_rate": 0.034482758620689655,
+      "subtask_exact_rate": 0.011494252873563218,
+      "transition_exact_rate": 0.8888888888888888,
+      "next_action_exact_rate": 0.034482758620689655,
+      "contact_exact_rate": 0.7203065134099617,
+      "object_precision": 0.22274881516587677,
+      "object_recall": 0.32339449541284404,
+      "object_f1": 0.2637979420018709
+    },
+    {
+      "group": "craft_small_object",
+      "samples": 106,
+      "parsed_prediction_rate": 0.9339622641509434,
+      "action_exact_rate": 0.02830188679245283,
+      "subtask_exact_rate": 0.009433962264150943,
+      "transition_exact_rate": 0.9150943396226415,
+      "next_action_exact_rate": 0.02830188679245283,
+      "contact_exact_rate": 0.5,
+      "object_precision": 0.22662889518413598,
+      "object_recall": 0.25806451612903225,
+      "object_f1": 0.24132730015082954
+    },
+    {
+      "group": "retail_container",
+      "samples": 101,
+      "parsed_prediction_rate": 0.9405940594059405,
+      "action_exact_rate": 0.0297029702970297,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9108910891089109,
+      "next_action_exact_rate": 0.0297029702970297,
+      "contact_exact_rate": 0.7722772277227723,
+      "object_precision": 0.20279720279720279,
+      "object_recall": 0.17522658610271905,
+      "object_f1": 0.18800648298217182
+    },
+    {
+      "group": "tool_stationery",
+      "samples": 138,
+      "parsed_prediction_rate": 0.9565217391304348,
+      "action_exact_rate": 0.014492753623188406,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9347826086956522,
+      "next_action_exact_rate": 0.014492753623188406,
+      "contact_exact_rate": 0.8043478260869565,
+      "object_precision": 0.27906976744186046,
+      "object_recall": 0.3894523326572008,
+      "object_f1": 0.32514817950889074
+    },
+    {
+      "group": "no_object_label",
+      "samples": 2,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 1.0,
+      "object_precision": 0.0,
+      "object_recall": 0.0,
+      "object_f1": 0.0
+    }
+  ],
+  "invalid_json_examples": [
+    {
+      "id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1:qa:0",
+      "episode_id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1",
+      "true_action": "Hold smartphone",
+      "raw_prediction_prefix": "{\"action\": \"Pour liquid into bowl\", \"contact\": \"yes\", \"evidence_window\": {\"end_frame\": 19, \"start_frame\": 0}, \"next_action\": \"Pour liquid into bowl\", \"objects\": [\"bottle\", \"bowl\", \"kitchen counter\", \"kitchen sink\", \"kitchen tap\", \"kitchen c"
+    },
+    {
+      "id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1:qa:90",
+      "episode_id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1",
+      "true_action": "Move towards the stove",
+      "raw_prediction_prefix": "{\"action\": \"Walk through workspace\", \"contact\": \"no\", \"evidence_window\": {\"end_frame\": 1819, \"start_frame\": 1800}, \"next_action\": \"Walk through workspace\", \"objects\": [\"kitchen counter\", \"kitchen sink\", \"kitchen cabinets\", \"kitchen applianc"
+    },
+    {
+      "id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1:qa:100",
+      "episode_id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1",
+      "true_action": "Open stove pot lid",
+      "raw_prediction_prefix": "{\"action\": \"Approach packing area\", \"contact\": \"no\", \"evidence_window\": {\"end_frame\": 2019, \"start_frame\": 2000}, \"next_action\": \"Approach packing area\", \"objects\": [\"kitchen counter\", \"kitchen sink\", \"kitchen cabinet\", \"kitchen utensils\", "
+    },
+    {
+      "id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1:qa:126",
+      "episode_id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1",
+      "true_action": "Closing the door",
+      "raw_prediction_prefix": "{\"action\": \"Close door\", \"contact\": \"yes\", \"evidence_window\": {\"end_frame\": 2539, \"start_frame\": 2520}, \"next_action\": \"Close door\", \"objects\": [\"door\", \"door handle\", \"plastic bag\", \"blue bucket\", \"red bucket\", \"blue container\", \"red conta"
+    },
+    {
+      "id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1:qa:127",
+      "episode_id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1",
+      "true_action": "Closing the door",
+      "raw_prediction_prefix": "{\"action\": \"Close the door\", \"contact\": \"yes\", \"evidence_window\": {\"end_frame\": 2559, \"start_frame\": 2540}, \"next_action\": \"Close the door\", \"objects\": [\"door\", \"door handle\", \"door knob\", \"door frame\", \"door hinge\", \"door latch\", \"door loc"
+    },
+    {
+      "id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1:qa:134",
+      "episode_id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1",
+      "true_action": "Picking up bottle",
+      "raw_prediction_prefix": "{\"action\": \"Carry cereal boxes\", \"contact\": \"yes\", \"evidence_window\": {\"end_frame\": 2699, \"start_frame\": 2680}, \"next_action\": \"Carry cereal boxes\", \"objects\": [\"cereal boxes\", \"door\", \"washing machine\", \"laundry basket\", \"laundry detergent"
+    },
+    {
+      "id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1:qa:140",
+      "episode_id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1",
+      "true_action": "Wipe kitchen counter",
+      "raw_prediction_prefix": "{\"action\": \"Walk through workspace\", \"contact\": \"no\", \"evidence_window\": {\"end_frame\": 2819, \"start_frame\": 2800}, \"next_action\": \"Walk through workspace\", \"objects\": [\"laundry machine\", \"laundry basket\", \"laundry detergent\", \"laundry soap\""
+    },
+    {
+      "id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1:qa:170",
+      "episode_id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1",
+      "true_action": "Reach for cleaning supplies",
+      "raw_prediction_prefix": "{\"action\": \"Close cabinet door\", \"contact\": \"yes\", \"evidence_window\": {\"end_frame\": 3419, \"start_frame\": 3400}, \"next_action\": \"Close cabinet door\", \"objects\": [\"cabinet\", \"cabinet door\", \"cabinet handle\", \"cabinet shelf\", \"cabinet drawer\","
+    },
+    {
+      "id": "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1:qa:0",
+      "episode_id": "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1",
+      "true_action": "Observe and walk through store",
+      "raw_prediction_prefix": "{\"action\": \"Walk through workspace\", \"contact\": \"no\", \"evidence_window\": {\"end_frame\": 19, \"start_frame\": 0}, \"next_action\": \"Walk through workspace\", \"objects\": [\"person\", \"mirror\", \"desk\", \"chair\", \"box\", \"shelf\", \"door\", \"wall\", \"floor\","
+    },
+    {
+      "id": "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1:qa:1",
+      "episode_id": "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1",
+      "true_action": "Observe and walk through store",
+      "raw_prediction_prefix": "{\"action\": \"Walk through workspace\", \"contact\": \"no\", \"evidence_window\": {\"end_frame\": 39, \"start_frame\": 20}, \"next_action\": \"Walk through workspace\", \"objects\": [\"person\", \"desk\", \"chair\", \"wall\", \"ceiling\", \"floor\", \"box\", \"cardboard\", \""
+    },
+    {
+      "id": "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1:qa:50",
+      "episode_id": "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1",
+      "true_action": "Walk towards shelves",
+      "raw_prediction_prefix": "{\"action\": \"Walk through workspace\", \"contact\": \"no\", \"evidence_window\": {\"end_frame\": 1019, \"start_frame\": 1000}, \"next_action\": \"Walk through workspace\", \"objects\": [\"person\", \"cardboard\", \"shelf\", \"door\", \"box\", \"jar\", \"lantern\", \"light\""
+    },
+    {
+      "id": "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1:qa:59",
+      "episode_id": "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1",
+      "true_action": "Observe workspace",
+      "raw_prediction_prefix": "{\"action\": \"Walk through workspace\", \"contact\": \"no\", \"evidence_window\": {\"end_frame\": 1199, \"start_frame\": 1180}, \"next_action\": \"Walk through workspace\", \"objects\": [\"cardboard\", \"cardboard box\", \"cardboard pieces\", \"cardboard sheet\", \"ca"
+    }
+  ],
+  "object_overgeneration_examples": [
+    {
+      "id": "a1012a57-385e-45a9-8a59-694a26fe92a5__ep1:qa:19",
+      "episode_id": "a1012a57-385e-45a9-8a59-694a26fe92a5__ep1",
+      "true_action": "Start cutting",
+      "predicted_object_count": 175,
+      "first_predicted_objects": [
+        "cardboard",
+        "cardboard box",
+        "cardboard pieces",
+        "cardboard sheet",
+        "cardboard square",
+        "cardboard tray",
+        "cardboard tube",
+        "utility knife",
+        "scissors",
+        "ruler",
+        "pen",
+        "marker",
+        "box",
+        "container",
+        "plastic container",
+        "tin can",
+        "jar",
+        "canned food",
+        "canned goods",
+        "canned product"
+      ]
+    },
+    {
+      "id": "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1:qa:70",
+      "episode_id": "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1",
+      "true_action": "Reach for wire hangers",
+      "predicted_object_count": 53,
+      "first_predicted_objects": [
+        "cardboard",
+        "cardboard box",
+        "cardboard pieces",
+        "cardboard shapes",
+        "cardboard squares",
+        "cardboard tray",
+        "cardboard tube",
+        "cardboard pieces",
+        "cardboard shapes",
+        "cardboard squares",
+        "cardboard tray",
+        "cardboard tube",
+        "blue foam pieces",
+        "blue foam sheet",
+        "blue product box",
+        "blue strip",
+        "canned food",
+        "canned goods",
+        "canned items",
+        "cans"
+      ]
+    },
+    {
+      "id": "ba045ed4-ef25-404d-b756-8dcbd45b18fa__ep2:qa:30",
+      "episode_id": "ba045ed4-ef25-404d-b756-8dcbd45b18fa__ep2",
+      "true_action": "Grasp lantern",
+      "predicted_object_count": 119,
+      "first_predicted_objects": [
+        "jar",
+        "red bowl",
+        "cardboard box",
+        "white paper",
+        "black bag",
+        "white bag",
+        "plastic bag",
+        "cardboard pieces",
+        "cardboard tray",
+        "cardboard sheet",
+        "cardboard shape",
+        "cardboard tube",
+        "cardboard strip",
+        "cardboard pattern",
+        "cardboard cutout",
+        "cardboard square",
+        "cardboard stack",
+        "plastic container",
+        "canned food",
+        "tin can"
+      ]
+    },
+    {
+      "id": "ba045ed4-ef25-404d-b756-8dcbd45b18fa__ep2:qa:176",
+      "episode_id": "ba045ed4-ef25-404d-b756-8dcbd45b18fa__ep2",
+      "true_action": "Release lantern",
+      "predicted_object_count": 205,
+      "first_predicted_objects": [
+        "jar",
+        "gift box",
+        "cardboard",
+        "paper lantern",
+        "plastic bag",
+        "plastic container",
+        "shopping bag",
+        "cardboard box",
+        "cardboard piece",
+        "cardboard tray",
+        "cardboard sheet",
+        "cardboard shape",
+        "cardboard pattern",
+        "cardboard square",
+        "cardboard strip",
+        "cardboard tube",
+        "cardboard piece",
+        "cardboard cutout",
+        "cardboard pattern piece",
+        "box"
+      ]
+    },
+    {
+      "id": "1796b943-caad-43c6-b9bd-80b8d601f37d__ep1:qa:40",
+      "episode_id": "1796b943-caad-43c6-b9bd-80b8d601f37d__ep1",
+      "true_action": "Move through the training room",
+      "predicted_object_count": 108,
+      "first_predicted_objects": [
+        "people",
+        "office chairs",
+        "desk",
+        "computer",
+        "laptop",
+        "office supplies",
+        "whiteboard",
+        "door",
+        "window",
+        "light fixture",
+        "wall",
+        "floor",
+        "box",
+        "cardboard",
+        "paper",
+        "plastic container",
+        "jar",
+        "bottle",
+        "canned food",
+        "snack package"
+      ]
+    }
+  ],
+  "modality_missing_by_episode": {
+    "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1": [
+      "visualization.rrd"
+    ],
+    "a1012a57-385e-45a9-8a59-694a26fe92a5__ep1": [
+      "visualization.rrd"
+    ],
+    "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1": [
+      "visualization.rrd"
+    ],
+    "9c553886-83c5-4dc4-be5c-dcb269b3a771__ep2": [
+      "visualization.rrd"
+    ],
+    "34f07a04-eb37-45a3-95ec-189ed5f4a85b__ep5": [
+      "visualization.rrd"
+    ],
+    "b9dd769b-e31a-4fdb-945e-5a60db6487b0__ep2": [
+      "visualization.rrd"
+    ],
+    "ba045ed4-ef25-404d-b756-8dcbd45b18fa__ep2": [
+      "visualization.rrd"
+    ],
+    "4b02bb38-384a-438a-b5f9-6131d85c34b0__ep1": [
+      "visualization.rrd"
+    ],
+    "5399ef86-4df9-49bc-809f-8f4f92f9e659__ep6": [
+      "visualization.rrd"
+    ],
+    "b750fab3-7fbb-43a0-b451-c64c4d4a64da__ep1": [
+      "visualization.rrd"
+    ],
+    "877779cd-25f3-4293-a3c4-39067dd9558c__ep4": [
+      "visualization.rrd"
+    ],
+    "1796b943-caad-43c6-b9bd-80b8d601f37d__ep1": [
+      "visualization.rrd"
+    ],
+    "ba18b7c1-21ff-45da-8452-41acce7fc8de__ep2": [
+      "visualization.rrd"
+    ],
+    "b6579cb5-0a71-4ca6-8808-1e2700be05c7__ep3": [
+      "visualization.rrd"
+    ]
+  },
+  "interpretation": "The diagnostic pilot is dominated by invalid or weak structured outputs and exact-label failures. These tables identify where to tighten JSON constraints, action/subtask target formatting, object vocabularies, and missing-modality robustness before claiming stronger model quality."
+}

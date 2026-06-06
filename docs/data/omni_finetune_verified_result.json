@@ -67,7 +67,28 @@
     "audit_status": "pass",
     "contains_raw_xperience10m_data": false,
     "contains_qwen_base_weights": false,
-    "contains_lora_weights": false
+    "contains_lora_weights": false,
+    "error_analysis": {
+      "status": "pass",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/error_analysis_summary.json",
+      "markdown_report": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/ERROR_ANALYSIS.md",
+      "groupings": [
+        "episode",
+        "action_family",
+        "train_seen_status",
+        "required_modality_state",
+        "object_category"
+      ],
+      "key_readouts": {
+        "parsed_prediction_rate": 0.8772321428571429,
+        "weakest_action_family": "locomotion",
+        "weakest_action_family_samples": 23,
+        "weakest_action_family_parsed_prediction_rate": 0.2608695652173913,
+        "seen_action_exact_rate": 0.04580152671755725,
+        "unseen_action_exact_rate": 0.015772870662460567,
+        "required_modality_state": "rrd_missing_only_required_modalities_present"
+      }
+    }
   },
   "required_next_steps": [
     "Improve JSON-format reliability through prompt, decoding, constrained parsing, or target formatting changes.",

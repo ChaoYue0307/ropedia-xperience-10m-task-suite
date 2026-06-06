@@ -22,4 +22,22 @@
 
 Raw Xperience-10M files, base-model weights, adapter or checkpoint weights, full checkpoints, and large archives are not included.
 
+## Error Analysis
+
+The package includes a derived held-out error analysis under `analysis/`. It
+groups the 448 public prediction rows by episode, coarse action family,
+train-seen status, required-modality state, and object category.
+
+Key readouts:
+
+- Official JSON validity from `metrics.json`: `0.8750`
+- Parsed prediction rate from public rows: `0.8772`
+- Weakest action family by parsed prediction rate: `locomotion` with 23 rows and `0.2609`
+- Train-seen split: seen labels have `0.0458` action exact rate; unseen labels have `0.0158`
+- Required-modality state: all held-out rows have required modalities present, with only `visualization.rrd` absent
+
+Use `analysis/ERROR_ANALYSIS.md` and
+`analysis/error_analysis_summary.json` before planning the next
+structured-output pass.
+
 Use this package as the source for README, website, and Hugging Face updates.
