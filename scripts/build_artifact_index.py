@@ -616,7 +616,7 @@ ARTIFACTS = [
         "path": "results/omni_finetune/DATA_ACCESS_STATUS.md",
         "kind": "scaleup_status",
         "surface": "repo_hf",
-        "shows": "Summarizes the staging requirement before the held-out Qwen3-Omni pilot can report metrics.",
+        "shows": "Summarizes the data-readiness checks required before a held-out Qwen3-Omni pilot can report metrics.",
     },
     {
         "id": "multi_episode_access_status",

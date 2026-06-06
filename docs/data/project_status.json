@@ -1,8 +1,8 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Project Status",
   "version": "2026-06-01",
-  "decision": "public_sample_pipeline_verified_qwen3_omni_diagnostic_pilot",
-  "research_positioning": "A research-engineering study that makes one public Xperience-10M sample episode inspectable, defines embodied-AI tasks over synchronized modalities, records baseline behavior, and uses the first selected-episode Qwen3-Omni diagnostic pilot as a verified but weak cross-episode baseline.",
+  "decision": "public_sample_pipeline_verified_qwen3_omni_validation_aware_diagnostic_pilot",
+  "research_positioning": "A research-engineering study that makes one public Xperience-10M sample episode inspectable, defines embodied-AI tasks over synchronized modalities, records baseline behavior, and uses the selected-episode Qwen3-Omni validation-aware diagnostic pilot as a verified but weak cross-episode baseline.",
   "scope_boundary": {
     "validated_episode_count": 1,
     "aligned_frames": 5821,
@@ -25,7 +25,8 @@
       "val": 512,
       "test": 448
     },
-    "qwen3_omni_json_validity_rate": 0.8526785714285714
+    "qwen3_omni_json_validity_rate": 0.875,
+    "qwen3_omni_validation_aware": true
   },
   "rows": [
     {
@@ -48,92 +49,92 @@
       ],
       "readout": "All 12 task contracts have committed metrics, predictions, and minimal baseline outputs."
     },
-        {
-            "area": "Neural heads",
-            "status": "verified",
-            "evidence": [
-                "scripts/neural_task_models.py",
-                "results/episode_task_suite/neural_mlp/"
-            ],
-            "readout": "Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split."
-        },
-        {
-            "area": "Audio contribution study",
-            "status": "verified",
-            "evidence": [
-                "scripts/audio_ablation_and_raw_upgrade.py",
-                "results/audio_ablation/",
-                "docs/data/audio_ablation_summary.json"
-            ],
-            "readout": "Audio variants improve the primary metric on 6 of 12 task contracts in this single-episode setting."
-        },
-        {
-            "area": "Evaluation protocol",
-            "status": "verified",
-            "evidence": [
-                "EVALUATION_PROTOCOL.md",
-                "docs/data/evaluation_protocol.json",
-                "scripts/build_evaluation_protocol.py"
-            ],
-            "readout": "Windowing, chronological split, per-task metrics, leakage controls, and current limitations are generated from committed metric artifacts."
-        },
-        {
-            "area": "Research takeaways",
-            "status": "verified",
-            "evidence": [
-                "RESEARCH_TAKEAWAYS.md",
-                "docs/data/research_takeaways.json",
-                "scripts/build_research_takeaways.py"
-            ],
-            "readout": "The main result interpretation is generated from committed metrics: chronological class shift, neural gains on dynamics/order/alignment, open retrieval/reconstruction problems, and the need for held-out episodes."
-        },
-        {
-            "area": "Research roadmap",
-            "status": "current",
-            "evidence": [
-                "RESEARCH_ROADMAP.md",
-                "docs/data/research_roadmap.json"
-            ],
-            "readout": "The roadmap connects public-sample task development to the verified Qwen3-Omni diagnostic pilot, validation-aware reruns, foundation-model selection, robustness runs, world/policy branches, and the future Xperience-native pretraining goal."
-        },
-        {
-            "area": "Foundation-model plan",
-            "status": "current",
-            "evidence": [
-                "FOUNDATION_MODEL_PLAN.md",
-                "docs/data/foundation_model_plan.json"
-            ],
-            "readout": "Qwen3-Omni remains the first trainable held-out LoRA baseline; Cosmos 3 is added as the first world-model/action-generation branch; OpenVLA/openpi/GR00T are policy candidates after action targets are explicit."
-        },
-        {
-            "area": "Xperience Embodied Foundation Model",
-            "status": "future_goal",
-            "evidence": [
-                "XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md"
-            ],
-            "readout": "A future full-corpus pretraining plan describes target modules, objectives, staged scale-up, hardware ranges, and evaluation for a domain-specific embodied foundation model."
-        },
-        {
-            "area": "Official dataset wording",
-            "status": "verified",
+    {
+      "area": "Neural heads",
+      "status": "verified",
+      "evidence": [
+        "scripts/neural_task_models.py",
+        "results/episode_task_suite/neural_mlp/"
+      ],
+      "readout": "Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split."
+    },
+    {
+      "area": "Audio contribution study",
+      "status": "verified",
+      "evidence": [
+        "scripts/audio_ablation_and_raw_upgrade.py",
+        "results/audio_ablation/",
+        "docs/data/audio_ablation_summary.json"
+      ],
+      "readout": "Audio variants improve the primary metric on 6 of 12 task contracts in this single-episode setting."
+    },
+    {
+      "area": "Evaluation protocol",
+      "status": "verified",
+      "evidence": [
+        "EVALUATION_PROTOCOL.md",
+        "docs/data/evaluation_protocol.json",
+        "scripts/build_evaluation_protocol.py"
+      ],
+      "readout": "Windowing, chronological split, per-task metrics, leakage controls, and current limitations are generated from committed metric artifacts."
+    },
+    {
+      "area": "Research takeaways",
+      "status": "verified",
+      "evidence": [
+        "RESEARCH_TAKEAWAYS.md",
+        "docs/data/research_takeaways.json",
+        "scripts/build_research_takeaways.py"
+      ],
+      "readout": "The main result interpretation is generated from committed metrics: chronological class shift, neural gains on dynamics/order/alignment, open retrieval/reconstruction problems, and the need for held-out episodes."
+    },
+    {
+      "area": "Research roadmap",
+      "status": "current",
+      "evidence": [
+        "RESEARCH_ROADMAP.md",
+        "docs/data/research_roadmap.json"
+      ],
+      "readout": "The roadmap connects public-sample task development to the verified Qwen3-Omni diagnostic pilot, validation-aware diagnostics, foundation-model selection, robustness runs, world/policy branches, and the future Xperience-native pretraining goal."
+    },
+    {
+      "area": "Foundation-model plan",
+      "status": "current",
+      "evidence": [
+        "FOUNDATION_MODEL_PLAN.md",
+        "docs/data/foundation_model_plan.json"
+      ],
+      "readout": "Qwen3-Omni remains the first trainable held-out LoRA baseline; Cosmos 3 is added as the first world-model/action-generation branch; OpenVLA/openpi/GR00T are policy candidates after action targets are explicit."
+    },
+    {
+      "area": "Xperience Embodied Foundation Model",
+      "status": "future_goal",
+      "evidence": [
+        "XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md"
+      ],
+      "readout": "A future full-corpus pretraining plan describes target modules, objectives, staged scale-up, hardware ranges, and evaluation for a domain-specific embodied foundation model."
+    },
+    {
+      "area": "Official dataset wording",
+      "status": "verified",
       "evidence": [
         "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
         "docs/data/xperience10m_dataset_card_alignment.json"
       ],
-            "readout": "Public wording is aligned to the official gated Xperience-10M dataset card, public sample card, and HF API metadata, including modalities, scale, access path, sample license/tooling, and current project coverage."
-        },
-        {
-            "area": "Source alignment",
-            "status": "verified",
-            "evidence": [
-                "SOURCE_ALIGNMENT_AUDIT.md",
-                "docs/data/source_alignment_audit.json",
-                "scripts/validate_source_alignment.py"
-            ],
-            "readout": "Source facts, sample details, API-listing notes, and project coverage are checked across repo docs, website, and HF cards."
-        },
-        {
-            "area": "Website and HF mirrors",
+      "readout": "Public wording is aligned to the official gated Xperience-10M dataset card, public sample card, and HF API metadata, including modalities, scale, access path, sample license/tooling, and current project coverage."
+    },
+    {
+      "area": "Source alignment",
+      "status": "verified",
+      "evidence": [
+        "SOURCE_ALIGNMENT_AUDIT.md",
+        "docs/data/source_alignment_audit.json",
+        "scripts/validate_source_alignment.py"
+      ],
+      "readout": "Source facts, sample details, API-listing notes, and project coverage are checked across repo docs, website, and HF cards."
+    },
+    {
+      "area": "Website and HF mirrors",
       "status": "verified",
       "evidence": [
         "docs/data/website_integrity.json",
@@ -164,14 +165,14 @@
     },
     {
       "area": "Qwen3-Omni fine-tuning",
-      "status": "verified_diagnostic_pilot_quality_target_not_met",
+      "status": "verified_validation_aware_diagnostic_pilot_quality_target_not_met",
       "evidence": [
         "docs/data/omni_finetune_verified_result.json",
         "results/omni_finetune/verified_public/",
         "scripts/omni/package_verified_omni_result.py",
         "scripts/omni/audit_verified_omni_package.py"
       ],
-      "readout": "The selected 96/16/16 episode split has a verified held-out Qwen3-Omni diagnostic package. It contains 3,808 exported windows and 448 held-out test predictions; JSON validity is 85.27%, below the 98% target, so it is a baseline for error analysis rather than a strong model."
+      "readout": "The selected 96/16/16 episode split produced a validation-aware public-safe held-out package with 3,808 exported windows, 512 validation windows, and 448 test predictions. JSON validity is 87.50%, below the 98% target, so it is a stronger diagnostic baseline but not a strong model-quality result."
     },
     {
       "area": "Raw Xperience-10M redistribution",
@@ -185,26 +186,25 @@
   ],
   "fast_research_route": [
     "Read PROJECT_STATUS.md and EVIDENCE_CONTRACT.md to establish what is implemented.",
-        "Open docs/data/project_packet.json for the machine-readable project path.",
-        "Inspect RESEARCH_TAKEAWAYS.md and docs/data/research_takeaways.json before interpreting model scores.",
-        "Inspect RESEARCH_ROADMAP.md and docs/data/research_roadmap.json for the path from public-sample task work to multi-episode modeling.",
-        "Inspect FOUNDATION_MODEL_PLAN.md and docs/data/foundation_model_plan.json before choosing a backbone branch.",
-        "Inspect XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md for the long-term full-corpus pretraining goal.",
-        "Inspect docs/data/summary_metrics.json and results/episode_task_suite/neural_mlp/ to check the 12-task outputs.",
-        "Inspect results/audio_ablation/AUDIO_ABLATION_SUMMARY.md before judging whether audio helps the current task suite.",
-        "Inspect EVALUATION_PROTOCOL.md before judging task metrics or leakage controls.",
-        "Inspect SOURCE_ALIGNMENT_AUDIT.md before judging source-card consistency across public surfaces.",
-        "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
+    "Open docs/data/project_packet.json for the machine-readable project path.",
+    "Inspect RESEARCH_TAKEAWAYS.md and docs/data/research_takeaways.json before interpreting model scores.",
+    "Inspect RESEARCH_ROADMAP.md and docs/data/research_roadmap.json for the path from public-sample task work to multi-episode modeling.",
+    "Inspect FOUNDATION_MODEL_PLAN.md and docs/data/foundation_model_plan.json before choosing a backbone branch.",
+    "Inspect XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md for the long-term full-corpus pretraining goal.",
+    "Inspect docs/data/summary_metrics.json and results/episode_task_suite/neural_mlp/ to check the 12-task outputs.",
+    "Inspect results/audio_ablation/AUDIO_ABLATION_SUMMARY.md before judging whether audio helps the current task suite.",
+    "Inspect EVALUATION_PROTOCOL.md before judging task metrics or leakage controls.",
+    "Inspect SOURCE_ALIGNMENT_AUDIT.md before judging source-card consistency across public surfaces.",
+    "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
     "Inspect docs/data/omni_finetune_verified_result.json before judging the Qwen3-Omni diagnostic pilot."
   ],
   "current_reading_notes": [
-    "The first cross-episode Qwen3-Omni diagnostic pilot is verified, but current held-out quality is weak.",
-    "Older pilot path names refer to setup files, not completed held-out training results.",
+    "The validation-aware Qwen3-Omni diagnostic pilot is verified, but current held-out quality is still weak.",
+    "Use docs/data/omni_finetune_verified_result.json and the latest verified_public validation-aware package for current held-out results.",
     "The current reconstruction task reconstructs feature vectors, not pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
     "Audio is one of the synchronized source modalities in the current task representation.",
     "The audio ablation report compares audio/no-audio variants across all 12 task contracts in results/audio_ablation/.",
     "Foundation-model selection is explicit: Qwen3-Omni is the immediate trainable pilot, Cosmos 3 is the first world-model branch, and policy models such as OpenVLA/openpi/GR00T wait for action-target conversion.",
-    "The next Qwen3-Omni run should enable validation monitoring and improve structured JSON reliability before larger model-quality claims.",
     "The Xperience Embodied Foundation Model is a future native-pretraining goal, not a completed model or current benchmark."
   ]
 }

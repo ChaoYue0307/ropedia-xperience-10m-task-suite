@@ -82,7 +82,7 @@
       "status": "verified_diagnostic_pilot_not_publicly_rerunnable_without_gated_data",
       "command": "scripts/omni/build_qwen3_omni_dataset.py and scripts/omni/train_qwen3_omni_lora.py on the selected gated episodes",
       "expected": "verified diagnostic LoRA package with 3,808 exported windows, 2,848 train windows, and 448 held-out test predictions",
-      "boundary": "the public package records metrics and manifests, but rerunning requires gated Xperience-10M episode access and base-model weights; current JSON validity is 85.27%, below the 98% target"
+      "boundary": "the public package records metrics and manifests, but rerunning requires gated Xperience-10M episode access and base-model weights; current JSON validity is 87.50%, below the 98% target"
     }
   ]
 }

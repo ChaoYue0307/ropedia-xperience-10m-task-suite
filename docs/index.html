@@ -2328,7 +2328,7 @@
             <div class="snapshot-meta">
               <span>split <strong>96 / 16 / 16</strong></span>
               <span>test windows <strong>448</strong></span>
-              <span>JSON validity <strong>85.27%</strong></span>
+              <span>JSON validity <strong>87.50%</strong></span>
             </div>
           </article>
           <article class="snapshot-card gated">
@@ -2372,8 +2372,8 @@
           </article>
           <article class="roadmap-card" data-status="verified_baseline">
             <span class="roadmap-status">implemented</span>
-            <h3>Multi-Episode Data Staging</h3>
-            <p>Stage official gated episodes while preserving episode-level separation and recording missing-view coverage. The first selected split is available for Qwen3-Omni diagnostics.</p>
+            <h3>Multi-Episode Data Preparation</h3>
+            <p>Prepare official gated episodes while preserving episode-level separation and recording missing-view coverage. The first selected split is available for Qwen3-Omni diagnostics.</p>
             <div class="roadmap-meta">
               <strong>Entry</strong><p>Gated data access and enough storage for selected episodes.</p>
               <strong>Evidence</strong><p>Selected-episode plan, data boundary, preparation notes, and verified package summary.</p>
@@ -2381,7 +2381,7 @@
           </article>
           <article class="roadmap-card" data-status="implemented">
             <span class="roadmap-status">verified baseline</span>
-            <h3>Qwen3-Omni LoRA Diagnostic Pilot</h3>
+            <h3>Qwen3-Omni LoRA Validation-Aware Diagnostic Pilot</h3>
             <p>Train lightweight adapters on selected prepared episodes and evaluate on held-out episodes with committed predictions, metrics, and run reports.</p>
             <div class="roadmap-meta">
               <strong>Entry</strong><p>Selected episodes prepared with no train/test episode leakage.</p>
@@ -2390,11 +2390,11 @@
           </article>
           <article class="roadmap-card" data-status="active_next_step">
             <span class="roadmap-status">active next step</span>
-            <h3>Validation-Aware Qwen3-Omni Rerun</h3>
-            <p>Keep the 96/16/16 split, train with validation monitoring, and improve structured JSON reliability before larger model-quality claims.</p>
+            <h3>Structured-Output And Error-Analysis Pass</h3>
+            <p>Keep the 96/16/16 split, tighten JSON decoding or target formatting, and analyze action/subtask failures before larger model-quality claims.</p>
             <div class="roadmap-meta">
-              <strong>Entry</strong><p>The diagnostic package is verified and exposes weak held-out quality.</p>
-              <strong>Evidence</strong><p>Training metadata with validation samples, held-out metrics, quality-target report, and public-safe package.</p>
+              <strong>Entry</strong><p>The validation-aware diagnostic package is verified and exposes weak held-out quality.</p>
+              <strong>Evidence</strong><p>Updated quality-target report, error-analysis tables, held-out metrics, and public-safe package.</p>
             </div>
           </article>
           <article class="roadmap-card" data-status="next">
@@ -2402,7 +2402,7 @@
             <h3>Foundation-Model Selection Matrix</h3>
             <p>Keep Qwen3-Omni as the first trainable held-out pilot, add Cosmos 3 for world modeling, and stage policy candidates after action targets are explicit.</p>
             <div class="roadmap-meta">
-              <strong>Entry</strong><p>Completed 128-episode staging or a smaller 3-8 episode preprocessing dry run.</p>
+              <strong>Entry</strong><p>Completed 128-episode preparation or a smaller 3-8 episode preprocessing dry run.</p>
               <strong>Evidence</strong><p>Foundation model plan, source links, model-specific entry conditions, and evaluation additions.</p>
             </div>
           </article>
@@ -2480,7 +2480,7 @@
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target-side signals, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
           <article class="artifact"><h3>Audio ablation</h3><p>Audio and no-audio variants are evaluated across all 12 task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
           <article class="artifact"><h3>Foundation branch selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 becomes the world-model branch, policy models wait for explicit action targets, and Xperience-native pretraining remains a later full-corpus goal.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
-          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. The selected multi-episode Qwen3-Omni pilot is now a verified diagnostic result; the next stage is validation-aware rerunning, error analysis, world modeling, and policy-target conversion.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/docs/data/omni_finetune_verified_result.json">diagnostic result</a></article>
+          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. The selected multi-episode Qwen3-Omni pilot is now a verified validation-monitored diagnostic result; the next stage is structured-output reliability, error analysis, world modeling, and policy-target conversion.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/docs/data/omni_finetune_verified_result.json">diagnostic result</a></article>
           <article class="artifact"><h3>Scale-up requirement</h3><p>Future Omni, Cosmos, and policy branches use the same episode split discipline, training metadata, held-out predictions, metrics, run report, and public-safe package gate.</p><a href="data/foundation_model_plan.json">scale-up status</a></article>
         </div>
       </div>
@@ -2543,7 +2543,7 @@
           <article class="evidence-card">
             <span class="status-pill">verified diagnostic</span>
             <h3>Qwen3-Omni held-out pilot</h3>
-            <p>The selected 96/16/16 episode split produced a verified package with 3,808 exported windows and 448 held-out test predictions. JSON validity is 85.27%, below the 98% target.</p>
+            <p>The selected 96/16/16 episode split produced a verified package with 3,808 exported windows and 448 held-out test predictions. JSON validity is 87.50%, below the 98% target.</p>
             <div class="evidence-links">
               <a href="data/omni_finetune_verified_result.json">pilot result</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/omni_finetune/verified_public">verified package</a>
@@ -2552,7 +2552,7 @@
           <article class="evidence-card">
             <span class="status-pill">verified</span>
             <h3>Multi-episode pilot status is explicit</h3>
-            <p>The Qwen3-Omni notes separate the older smoke adapter from the verified diagnostic pilot and the next validation-aware rerun.</p>
+            <p>The Qwen3-Omni notes separate the previous adapter package, the current validation-monitored diagnostic pilot, and the next structured-output improvement pass.</p>
             <div class="evidence-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">training status</a>
               <a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-smoke">LoRA repo</a>
@@ -2670,7 +2670,7 @@
           <article class="reading-card">
             <span class="step-index">04</span>
             <h3>Check the scale-up gate</h3>
-            <p>The multi-episode Qwen3-Omni path now has a verified diagnostic package. The native-pretraining plan shows how this can grow into a full-corpus research direction after validation-aware reruns and stronger task metrics.</p>
+            <p>The multi-episode Qwen3-Omni path now has a verified validation-monitored diagnostic package. The native-pretraining plan shows how this can grow into a full-corpus research direction after structured-output improvements and stronger task metrics.</p>
             <div class="reading-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up status</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">data access</a>
@@ -2681,7 +2681,7 @@
         </div>
         <div class="boundary-strip">
           <div class="boundary-item"><strong>Verified now</strong><span>One public episode, 5,821 frames, 1,161 aligned windows, 8,546 dimensions, 12 minimal heads, 12 neural heads, and 4 direction-extension probes.</span></div>
-          <div class="boundary-item"><strong>Next: validation-aware rerun</strong><span>The selected 128-episode Qwen3-Omni LoRA pilot has a verified diagnostic package; the next run should improve strict-JSON validity and action/subtask quality.</span></div>
+          <div class="boundary-item"><strong>Next: error analysis</strong><span>The selected 128-episode Qwen3-Omni LoRA pilot has a verified validation-monitored diagnostic package; the next pass should improve strict-JSON validity and action/subtask quality.</span></div>
           <div class="boundary-item"><strong>Not redistributed</strong><span>Raw videos, raw annotations, full Qwen weights, and private gated Xperience-10M data are not included in the public repo or HF bundles.</span></div>
         </div>
       </div>
@@ -2697,7 +2697,7 @@
           <article class="artifact primary-artifact"><div><h3>Official dataset</h3><p>Xperience-10M is a gated large-scale egocentric multimodal dataset for embodied AI, robotics, spatial intelligence, and world modeling.</p></div><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official HF dataset</a></article>
           <article class="artifact"><h3>Public sample</h3><p>The current task suite is built from one public sample episode, not from the entire gated dataset.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
           <article class="artifact"><h3>Modalities</h3><p>The sample exposes synchronized video, audio, depth, pose/SLAM, motion capture, inertial signals, calibration, and language annotations.</p><a href="data/modality_atlas.json">modality atlas</a></article>
-          <article class="artifact"><h3>Multi-episode pilot</h3><p>The selected 128-episode Qwen3-Omni LoRA diagnostic pilot is verified with 448 held-out test predictions. The current metrics are weak, so this is a baseline for error analysis and rerunning.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-smoke">LoRA status</a></article>
+          <article class="artifact"><h3>Multi-episode pilot</h3><p>The selected 128-episode Qwen3-Omni LoRA validation-aware diagnostic pilot is verified with 448 held-out test predictions. The current metrics are weak, so this is a baseline for error analysis and rerunning.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-smoke">LoRA status</a></article>
           <article class="artifact"><h3>Data boundary</h3><p>Raw MP4, HDF5, RRD files, private gated data, and full Qwen weights are not redistributed in this project.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a></article>
           <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, and no raw-data redistribution.</p><a href="data/modality_atlas.json">modality atlas</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, and misalignment.</p><a href="data/summary_metrics.json">summary metrics</a></article>
@@ -2780,7 +2780,7 @@
           </article>
           <article class="figure-brief-card">
             <h3>What the figure represents</h3>
-            <p>It documents the selected 128-episode diagnostic pilot and the next validation-aware rerun needed for stronger model-quality numbers.</p>
+            <p>It documents the selected 128-episode validation-monitored diagnostic pilot and the structured-output improvement path needed for stronger model-quality numbers.</p>
           </article>
         </div>
         <img class="pipeline-image lora-pipeline-image" src="assets/qwen3_omni_lora_pipeline.png?v=qwen3-lora-v1" alt="Detailed Qwen3-Omni LoRA training pipeline from raw Xperience-10M episodes to adapter outputs, predictions, metrics, and reports">
@@ -3143,14 +3143,14 @@
           <section class="artifact-group tabbed-panel" id="artifact-panel-scale-up" role="tabpanel" aria-labelledby="artifact-tab-scale-up" hidden>
             <div class="artifact-group-head">
               <div><span>Scale-up path</span><h3>Verified diagnostic pilot</h3></div>
-              <p>The multi-episode Qwen3-Omni path is documented, scripted, and verified as a diagnostic held-out pilot. Stronger model-quality metrics require the next validation-aware rerun.</p>
+              <p>The multi-episode Qwen3-Omni path is documented, scripted, and verified as a validation-monitored diagnostic held-out pilot. Stronger model-quality metrics require structured-output and error-analysis improvements.</p>
             </div>
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Project scope</h3><p>Connects implemented single-episode artifacts, the verified Qwen3-Omni diagnostic pilot, and later multi-episode/model-extension milestones.</p></div><a href="data/omni_finetune_verified_result.json">pilot result</a></article>
               <article class="artifact"><h3>Foundation-model plan</h3><p>Backbone selection matrix covering Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, SmolVLA-style policy candidates, and the future Xperience-native pretraining goal.</p><a href="data/foundation_model_plan.json">foundation model plan</a></article>
               <article class="artifact"><h3>Multi-episode data access</h3><p>Public data-access path, selected 128-episode pilot plan, and preparation requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">data access</a></article>
               <article class="artifact"><h3>Qwen3-Omni diagnostic result</h3><p>Verified selected-episode package with split counts, held-out metrics, validation summaries, and public-safe artifact policy.</p><a href="data/omni_finetune_verified_result.json">result summary</a></article>
-              <article class="artifact"><h3>Scale-up requirement</h3><p>Future runs need nonzero validation monitoring, held-out predictions, quality-target reporting, and the same public-safe package gate.</p><a href="data/foundation_model_plan.json">training requirements</a></article>
+              <article class="artifact"><h3>Scale-up requirement</h3><p>Future runs need validation tracking, held-out predictions, quality-target reporting, and the same public-safe package gate.</p><a href="data/foundation_model_plan.json">training requirements</a></article>
               <article class="artifact"><h3>Xperience-native pretraining</h3><p>Future plan for a domain-specific embodied foundation model trained from scratch over full-corpus video, audio, geometry, motion, inertial, and language streams.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a></article>
             </div>
           </section>
@@ -3181,7 +3181,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Qwen3-Omni diagnostic pilot is verified.</h2>
-          <p>The selected pilot uses 128 metadata-balanced episodes across 128 different session UUIDs. The first held-out package is verified, and its weak metrics define the next validation-aware improvement pass.</p>
+          <p>The selected pilot uses 128 source-balanced episodes across 128 different session UUIDs. The first held-out package is verified, and its weak metrics define the next structured-output and error-analysis pass.</p>
         </div>
         <div class="artifact-grid">
           <article class="artifact"><h3>Selection</h3><p>128 complete episodes selected from 128 unique top-level sessions, balanced across episode-size bands and split 96/16/16 for train/val/test.</p></article>

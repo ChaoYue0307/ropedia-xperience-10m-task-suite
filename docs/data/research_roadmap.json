@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Research Roadmap",
-  "summary": "Staged path from the public-sample task lab to a verified Qwen3-Omni diagnostic pilot, validation-aware reruns, foundation-model selection, world/policy branches, and a future Xperience-native embodied foundation model.",
-  "current_decision_point": "Keep the public-sample task suite as the development harness, use the verified selected-episode Qwen3-Omni diagnostic pilot as the first cross-episode baseline, improve validation monitoring and JSON-format reliability, then branch into Cosmos 3 world modeling and policy-model experiments after their targets are implemented. The Xperience Embodied Foundation Model is a later full-corpus pretraining goal, not a current result.",
+  "summary": "Staged path from the public-sample task lab to a verified validation-aware Qwen3-Omni diagnostic pilot, structured-output improvement pass, foundation-model selection, world/policy branches, and a future Xperience-native embodied foundation model.",
+  "current_decision_point": "Keep the public-sample task suite as the development harness, use the verified selected-episode Qwen3-Omni validation-aware diagnostic pilot as the first cross-episode baseline, improve structured-output reliability and task-quality error analysis, then branch into Cosmos 3 world modeling and policy-model experiments after their targets are implemented. The Xperience Embodied Foundation Model is a later full-corpus pretraining goal, not a current result.",
   "additional_development_directions": {
     "source_document": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
     "source_json": "docs/data/additional_development_directions.json",
@@ -33,7 +33,7 @@
     },
     {
       "id": "multi_episode_data_staging",
-      "name": "Multi-Episode Data Staging",
+      "name": "Multi-Episode Data Preparation",
       "status": "implemented_for_first_pilot",
       "entry_condition": "Gated dataset availability and enough storage for selected episodes.",
       "deliverables": [
@@ -52,13 +52,14 @@
     },
     {
       "id": "qwen3_omni_lora_diagnostic_pilot",
-      "name": "Qwen3-Omni LoRA Diagnostic Pilot",
+      "name": "Qwen3-Omni LoRA Validation-Aware Diagnostic Pilot",
       "status": "verified_baseline",
       "entry_condition": "Selected episodes are prepared locally with no train/test episode leakage.",
       "deliverables": [
         "dataset JSONL/media manifests",
         "LoRA adapter checkpoint",
         "progress logs",
+        "validation monitoring",
         "held-out predictions",
         "metrics",
         "confusion matrices",
@@ -74,27 +75,27 @@
         "predictions.jsonl",
         "RUN_REPORT.md"
       ],
-      "reader_takeaway": "The first omni-model pilot establishes the full held-out training/evaluation loop, but the weak metrics make it a diagnostic baseline."
+      "reader_takeaway": "The first omni-model pilot establishes the full held-out training/validation/evaluation loop, but the weak metrics make it a diagnostic baseline."
     },
     {
-      "id": "qwen3_omni_validation_aware_rerun",
-      "name": "Validation-Aware Qwen3-Omni Rerun",
+      "id": "qwen3_omni_structured_output_error_analysis",
+      "name": "Structured-Output And Error-Analysis Pass",
       "status": "active_next_step",
-      "entry_condition": "The diagnostic pilot package exists and shows weak held-out quality.",
+      "entry_condition": "The validation-aware diagnostic package exists and shows weak held-out quality.",
       "deliverables": [
         "same 96/16/16 episode split",
-        "nonzero validation samples during training",
+        "stricter JSON decoding or target formatting",
+        "episode/action/object error analysis",
         "held-out test evaluation",
-        "JSON-format reliability improvements",
-        "episode/action/object error analysis"
+        "comparison to the verified validation-aware baseline"
       ],
       "completion_evidence": [
-        "training metadata with num_val_samples above zero",
-        "held-out metrics",
         "quality-target report",
+        "error-analysis tables",
+        "held-out metrics",
         "verified public-safe package"
       ],
-      "reader_takeaway": "The next run should improve monitoring and output reliability before larger model-quality claims."
+      "reader_takeaway": "The next pass should improve output reliability and task metrics before larger model-quality claims."
     },
     {
       "id": "foundation_model_selection_matrix",

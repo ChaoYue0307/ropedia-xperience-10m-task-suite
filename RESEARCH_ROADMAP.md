@@ -11,8 +11,8 @@ should exist before the stage is treated as complete.
 | --- | --- | --- | --- | --- |
 | Public-Sample Task Lab | Implemented | One public Xperience-10M sample episode is available. | 1,161 aligned windows, 12 task contracts, minimal heads, neural MLP heads, modality atlas, task walkthroughs, and derived figures. | `PROJECT_STATUS.md`, `EVALUATION_PROTOCOL.md`, `RESEARCH_TAKEAWAYS.md`, `docs/data/summary_metrics.json`, `results/episode_task_suite/summary_report.json` |
 | Multi-Episode Data Preparation | Implemented for first selected pilot | Gated dataset availability and enough storage for selected episodes. | 128 selected episodes, episode manifest, missing-view manifest, held-out episode split, and source-discovery report. | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`, `results/omni_finetune/xperience10m_128_episode_selection.json` |
-| Qwen3-Omni LoRA Diagnostic Pilot | Verified baseline | Selected episodes prepared locally with no train/test episode leakage. | Dataset JSONL/media manifests, LoRA adapter checkpoint, progress logs, held-out predictions, metrics, confusion matrices, and run report. | `docs/data/omni_finetune_verified_result.json`, `results/omni_finetune/verified_public/`, `metrics.json`, `predictions.jsonl`, `RUN_REPORT.md` |
-| Validation-Aware Qwen3-Omni Rerun | Active next step | The diagnostic pilot package exists and shows weak held-out quality. | Same 96/16/16 split, nonzero validation samples during training, held-out test evaluation, JSON-format reliability improvements, and error analysis. | Training metadata with `num_val_samples > 0`, held-out metrics, quality-target report, and verified public package. |
+| Qwen3-Omni LoRA Validation-Aware Diagnostic Pilot | Verified baseline | Selected episodes prepared locally with no train/test episode leakage. | Dataset JSONL/media manifests, LoRA adapter checkpoint, progress logs, validation monitoring, held-out predictions, metrics, confusion matrices, and run report. | `docs/data/omni_finetune_verified_result.json`, `results/omni_finetune/verified_public/`, `metrics.json`, `predictions.jsonl`, `RUN_REPORT.md` |
+| Structured-Output And Error-Analysis Pass | Active next step | The validation-aware diagnostic package exists and shows weak held-out quality. | Same 96/16/16 split, stricter JSON decoding or target formatting, action/subtask error analysis, held-out test evaluation, and comparison to the verified validation-aware baseline. | Updated quality-target report, error-analysis tables, held-out metrics, and verified public package. |
 | Foundation-Model Selection Matrix | Current | The selected pilot episodes are prepared, or a 3-8 episode dry run is available for preprocessing checks. | Backbone registry, Cosmos 3 world-model branch plan, Qwen3-Omni baseline plan, OpenVLA/openpi/GR00T policy candidates, and model-specific evaluation additions. | `FOUNDATION_MODEL_PLAN.md`, `docs/data/foundation_model_plan.json`, `research_roadmap_interactive.json` |
 | 64-128 Episode Robustness Run | Planned | The validation-aware selected-episode pilot trains and evaluates cleanly. | Split-by-session metrics, modality ablations, calibration/object/language error analysis, and sensitivity to missing views. | Held-out metrics by session, task, and modality; ablation tables; qualitative error analysis. |
 | Cosmos 3 and Policy-Model Extensions | Planned | Enough multi-episode data, compute budget, and model-specific action/world-state targets. | Cosmos 3 future-window or action-conditioned world-model probes, OpenVLA/openpi/GR00T action-policy baselines, modality-conditioning checks, affordance tasks, and synthetic-data usefulness tests. | Task-specific held-out evaluations, qualitative inspection, and updated model cards. |
@@ -22,8 +22,9 @@ should exist before the stage is treated as complete.
 
 The useful next decision is model-quality improvement plus backbone fit: keep
 the public-sample task suite as the development harness, use the verified
-Qwen3-Omni diagnostic pilot as the first cross-episode baseline, then improve
-format reliability and validation monitoring before claiming model quality.
+Qwen3-Omni validation-aware diagnostic pilot as the first cross-episode
+baseline, then improve format reliability and task quality before claiming
+model quality.
 Qwen3-Omni remains the first trainable multimodal LoRA target. Cosmos 3 becomes
 the first world-model/action-generation branch. OpenVLA, openpi, GR00T, Octo,
 and SmolVLA-style models become policy/action branches only after the action
@@ -89,8 +90,8 @@ Evidence to inspect:
 This stage uses Qwen3-Omni as the multimodal backbone and trains lightweight
 LoRA adapters. The first held-out diagnostic package now exists. It proves the
 export, training, evaluation, validation, and public-safe packaging loop, but
-the metrics are weak: JSON validity is 85.27%, action macro-F1 is 0.0021, and
-subtask accuracy is 0.0045. Treat it as a baseline and error-analysis starting
+the metrics are weak: JSON validity is 87.50%, action macro-F1 is 0.0027, and
+subtask accuracy is 0.0067. Treat it as a baseline and error-analysis starting
 point.
 
 Expected outputs:

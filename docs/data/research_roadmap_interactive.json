@@ -2035,7 +2035,7 @@
         "step": 1
       },
       {
-        "action": "Run Qwen3-Omni LoRA to establish the full train/eval loop.",
+        "action": "Run validation-aware Qwen3-Omni LoRA to improve the verified diagnostic baseline.",
         "name": "First held-out baseline",
         "step": 2
       },
@@ -2222,7 +2222,7 @@
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-04T21:22:15+00:00",
+  "generated_at_utc": "2026-06-06T13:49:32+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -2279,13 +2279,15 @@
       ],
       "entry_condition": "Gated dataset availability and enough storage for selected episodes.",
       "id": "multi_episode_data_staging",
-      "name": "Multi-Episode Data Staging",
-      "reader_takeaway": "The next scale decision is data preparation, with train/test separation at the episode level.",
-      "stage": "scale_up",
-      "status": "active"
+      "name": "Multi-Episode Data Preparation",
+      "reader_takeaway": "The first selected split is available for Qwen3-Omni diagnostics, with train/test separation at the episode level.",
+      "stage": "future",
+      "status": "implemented_for_first_pilot"
     },
     {
       "completion_evidence": [
+        "docs/data/omni_finetune_verified_result.json",
+        "results/omni_finetune/verified_public/",
         "dataset_manifest.json",
         "training_metadata.json",
         "progress.jsonl",
@@ -2297,17 +2299,39 @@
         "dataset JSONL/media manifests",
         "LoRA adapter checkpoint",
         "progress logs",
+        "validation monitoring",
         "held-out predictions",
         "metrics",
         "confusion matrices",
         "run report"
       ],
       "entry_condition": "Selected episodes are prepared locally with no train/test episode leakage.",
-      "id": "qwen3_omni_lora_pilot",
-      "name": "Qwen3-Omni LoRA Pilot",
-      "reader_takeaway": "The first omni-model pilot should establish a complete held-out-episode training and evaluation loop.",
-      "stage": "omni",
-      "status": "next"
+      "id": "qwen3_omni_lora_diagnostic_pilot",
+      "name": "Qwen3-Omni LoRA Validation-Aware Diagnostic Pilot",
+      "reader_takeaway": "The first omni-model pilot establishes the full held-out training/validation/evaluation loop, but the weak metrics make it a diagnostic baseline.",
+      "stage": "future",
+      "status": "verified_baseline"
+    },
+    {
+      "completion_evidence": [
+        "quality-target report",
+        "error-analysis tables",
+        "held-out metrics",
+        "verified public-safe package"
+      ],
+      "deliverables": [
+        "same 96/16/16 episode split",
+        "stricter JSON decoding or target formatting",
+        "episode/action/object error analysis",
+        "held-out test evaluation",
+        "comparison to the verified validation-aware baseline"
+      ],
+      "entry_condition": "The validation-aware diagnostic package exists and shows weak held-out quality.",
+      "id": "qwen3_omni_structured_output_error_analysis",
+      "name": "Structured-Output And Error-Analysis Pass",
+      "reader_takeaway": "The next pass should improve output reliability and task metrics before larger model-quality claims.",
+      "stage": "future",
+      "status": "active_next_step"
     },
     {
       "completion_evidence": [
@@ -2404,7 +2428,7 @@
       "visualization.rrd"
     ],
     "selection_strategy": "stratified_round_robin_by_top_level_session",
-    "status": "selected_episode_preparation",
+    "status": "verified_validation_aware_diagnostic_pilot",
     "target_episodes": 128,
     "valid_candidates": 12102
   },

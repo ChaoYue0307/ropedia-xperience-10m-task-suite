@@ -168,9 +168,9 @@ def build_payload() -> dict:
             "id": "scale_requires_episodes",
             "title": "The next scientific unit is held-out episodes, not more adjacent windows",
             "readout": (
-                "The selected Qwen3-Omni path now has a verified held-out diagnostic pilot. "
-                "It proves the cross-episode train/eval loop, but the weak metrics show that "
-                "validation monitoring and JSON-format reliability are the next modeling problems."
+                "The selected Qwen3-Omni path now has a verified validation-aware held-out diagnostic pilot. "
+                "It proves the cross-episode train/validation/eval loop, but the weak metrics show that "
+                "structured-output reliability and task-quality error analysis are the next modeling problems."
             ),
             "evidence": [
                 {"label": "selected_episodes", "value": omni.get("target_episodes")},

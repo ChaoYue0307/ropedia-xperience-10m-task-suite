@@ -111,7 +111,7 @@ This project is best read as a staged embodied-AI research study:
 | Task suite | Twelve human-readable tasks cover action, procedure, contact, object, language, retrieval, reconstruction, order, and synchronization questions. | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json) |
 | Baselines | Minimal heads and compact PyTorch MLP heads provide a first controlled comparison on the same chronological split. | [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/) |
 | Diagnostics | Audio contribution, modality ablations, timeline overlays, object labels, and alignment stress tests show which signals are useful and which tasks remain hard. | [`results/audio_ablation/AUDIO_ABLATION_SUMMARY.md`](results/audio_ablation/AUDIO_ABLATION_SUMMARY.md), [`docs/single_episode_explorer.html`](docs/single_episode_explorer.html) |
-| Scale-up | The selected 128-episode Qwen3-Omni LoRA diagnostic pilot has a verified held-out package: 96/16/16 selected episodes, 3,808 exported windows, 448 held-out test windows, and public-safe metrics/predictions. JSON validity is 85.27%, below the 98% target, so the next run focuses on validation monitoring and output-format reliability. | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/omni_finetune_verified_result.json`](docs/data/omni_finetune_verified_result.json), [`results/omni_finetune/verified_public/`](results/omni_finetune/verified_public/) |
+| Scale-up | The selected 128-episode Qwen3-Omni LoRA diagnostic pilot has a verified validation-aware held-out package: 96/16/16 selected episodes, 3,808 exported windows, 512 validation windows, 448 held-out test windows, and public-safe metrics/predictions. JSON validity is 87.50%, below the 98% target, so the next pass focuses on structured-output reliability and task-quality error analysis. | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/omni_finetune_verified_result.json`](docs/data/omni_finetune_verified_result.json), [`results/omni_finetune/verified_public/`](results/omni_finetune/verified_public/) |
 
 Detailed dataset notes, reproduction checks, and generated JSON reports are
 included for readers who want to inspect the implementation, but they are
@@ -152,7 +152,7 @@ If you are reading the project cold, open these in order:
 | 8 | What research directions does this support? | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`docs/data/research_directions.json`](docs/data/research_directions.json), [`docs/data/research_direction_extensions.json`](docs/data/research_direction_extensions.json) | The tasks are mapped to human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling. |
 | 9 | Which foundation model comes next? | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json), [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md) | Qwen3-Omni is the first held-out LoRA baseline; Cosmos 3 is the first world-model branch; policy models wait for explicit action targets; Xperience-native pretraining is the full-corpus future goal. |
 | 10 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands and expected outputs are documented for the sample-episode task suite. |
-| 11 | What is still pending? | [`docs/data/omni_finetune_verified_result.json`](docs/data/omni_finetune_verified_result.json), [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | The first held-out diagnostic pilot is verified; strong model quality remains pending because JSON validity is 85.27% and action/subtask metrics are weak. |
+| 11 | What is still pending? | [`docs/data/omni_finetune_verified_result.json`](docs/data/omni_finetune_verified_result.json), [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | The first held-out diagnostic pilot is verified; strong model quality remains pending because JSON validity is 87.50% and action/subtask metrics remain weak. |
 
 A compact reader-path summary is available at
 [`docs/data/project_packet.json`](docs/data/project_packet.json).
@@ -481,7 +481,7 @@ python scripts/train_all_modalities_model.py --workspace /path/to/workspace
 
 This repo includes a first Qwen3-Omni fine-tuning path over Xperience-10M. The
 repository separates public-sample evidence from multi-episode fine-tuning
-artifacts. The first selected-episode held-out package is now verified as a
+artifacts. The validation-aware selected-episode held-out package is now verified as a
 diagnostic pilot, not a strong final model.
 The useful distinction is:
 
@@ -542,13 +542,15 @@ Current status in this repo:
 
 - public_sample_valid_episodes: 1 (degraded-valid: annotation + fisheye_cam0.mp4)
 - gated_metadata_audit: 12,102 complete visible episodes across 802 complete sessions
-- selected_episode_plan: 128 metadata-balanced episodes, 96/16/16 train/val/test
+- selected_episode_plan: 128 source-balanced episodes, 96/16/16 train/val/test
 - selected_download_size: 277.71 GiB excluding `visualization.rrd`
-- verified_held_out_diagnostic_package: true
+- verified_validation_aware_diagnostic_package: true
 - selected_split: 96 train / 16 validation / 16 held-out test episodes
 - exported_windows: 2,848 train / 512 validation / 448 test
+- validation_samples_used: 512
 - held_out_eval: 448 test windows from 14 exported test episodes
-- current_quality_target: JSON validity 85.27%, below the 98% target
+- train_loss / val_loss: 0.4130 / 0.0331
+- current_quality_target: JSON validity 87.50%, below the 98% target
 - gated dataset: available for selected multi-episode data preparation
 - source_discovery: `results/omni_finetune/source_discovery.json`
 - data_status: `results/omni_finetune/DATA_ACCESS_STATUS.md`
@@ -611,10 +613,11 @@ MAX_VAL_SAMPLES=512 \
 scripts/omni/run_128_fullsplit_parallel_export_8gpu.sh
 ```
 
-The first verified diagnostic package used the same selected split and 8-GPU
-training path, but recorded zero validation samples during training. The next
-rerun should keep the sealed test split and enable validation monitoring with
-`TRAIN_VAL_SPLIT=val`.
+The current verified diagnostic package uses the same selected split and 8-GPU
+training path, records validation loss over 512 validation windows, and keeps
+the held-out test split sealed for final evaluation. The next pass should keep
+this package contract while tightening JSON decoding, target formatting, and
+action/subtask error analysis.
 
 Monitor the run with:
 

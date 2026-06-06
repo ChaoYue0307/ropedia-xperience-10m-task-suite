@@ -11,16 +11,16 @@ held-out multi-episode experiment.
 | Current public local sample | 1 episode |
 | Full dataset access | Granted; metadata-only Hugging Face audit completed |
 | Current full-dataset metadata snapshot | 12,102 complete visible HF episodes across 802 complete sessions |
-| Current selected pilot | 128 metadata-balanced episodes, 96/16/16 train/val/test |
+| Current selected pilot | 128 source-balanced episodes, 96/16/16 train/val/test |
 | Current multi-episode data state | Selected 128-episode pilot package is verified for the exported subset: 3,808 windows across train/val/test, with 448 held-out test windows |
-| Current Qwen3-Omni artifacts | Verified diagnostic held-out pilot; JSON validity is 85.27%, below the 98% target |
+| Current Qwen3-Omni artifacts | Verified diagnostic held-out pilot; JSON validity is 87.50%, below the 98% target |
 | Public raw-data redistribution | Not included |
 
 The selected 128-episode pilot is now a completed diagnostic pipeline result,
 not a strong model-quality result. It verifies the data export, LoRA training,
-held-out evaluation, validation, and public-safe packaging path. The next
-model-quality milestone is a validation-aware rerun that raises strict-JSON
-validity and improves action/subtask metrics.
+validation monitoring, held-out evaluation, and public-safe packaging path. The
+next model-quality milestone is a structured-output improvement pass that raises
+strict-JSON validity and improves action/subtask metrics.
 
 ## Episode Requirement
 

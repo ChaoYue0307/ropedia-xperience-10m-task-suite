@@ -1,9 +1,9 @@
 {
   "omni_relay": {
-    "status": "verified_diagnostic_pilot",
+    "status": "verified_validation_aware_diagnostic_pilot",
     "dataset": "ropedia-ai/xperience-10m",
-    "staging": "selected_episode_verified_package",
-    "training_target": "validation_aware_quality_improvement",
+    "staging": "selected_episode_verified_validation_package",
+    "training_target": "json_reliability_and_task_quality_improvement",
     "selection_strategy": "stratified_round_robin_by_top_level_session",
     "target_episodes": 128,
     "selected_sessions": 128,
@@ -19,8 +19,8 @@
     },
     "held_out_episode_count": 14,
     "held_out_test_windows": 448,
-    "json_validity_rate": 0.8526785714285714,
-    "action_macro_f1": 0.00213753459655099,
+    "json_validity_rate": 0.875,
+    "action_macro_f1": 0.0026621494447581404,
     "quality_target_met": false,
     "candidate_scan_top_level_sessions": 802,
     "valid_candidates": 12102,
@@ -29,7 +29,16 @@
       "visualization.rrd"
     ],
     "access_status": "The gated Xperience-10M dataset is available for selected multi-episode pilot preparation.",
-    "current_scope": "The first selected-episode Qwen3-Omni diagnostic pilot is verified, but held-out quality is weak and JSON validity is below the 98% target."
+    "current_scope": "The selected-episode Qwen3-Omni validation-aware diagnostic pilot is verified, but held-out quality is still weak and JSON validity remains below the 98% target.",
+    "validation_samples_used": 512,
+    "train_loss": 0.41304643672440994,
+    "val_loss": 0.0330660454928875,
+    "num_val_samples": 512,
+    "subtask_accuracy": 0.006696428571428571,
+    "transition_accuracy": 0.8504464285714286,
+    "next_action_accuracy": 0.024553571428571428,
+    "contact_accuracy": 0.6450892857142857,
+    "object_micro_f1": 0.22299431459254582
   },
   "models": {
     "motion_action": {

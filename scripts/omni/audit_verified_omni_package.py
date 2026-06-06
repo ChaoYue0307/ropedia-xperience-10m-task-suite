@@ -61,12 +61,16 @@ def count_jsonl(path: Path) -> int:
 def audit(args: argparse.Namespace) -> dict[str, Any]:
     workspace = args.workspace.expanduser().resolve()
     package_dir = args.package_dir.expanduser().resolve()
+    try:
+        package_label = package_dir.relative_to(workspace).as_posix()
+    except ValueError:
+        package_label = package_dir.name
     summary_path = package_dir / "verified_result_summary.json"
     issues: list[dict[str, str]] = []
 
     if not summary_path.exists():
         add_issue(issues, "summary", f"missing verified_result_summary.json: {summary_path}")
-        return {"status": "fail", "package_dir": str(package_dir), "issues": issues}
+        return {"status": "fail", "package_dir": package_label, "issues": issues}
 
     summary = read_json(summary_path)
     backbone_id = args.backbone or summary.get("backbone")
@@ -128,7 +132,7 @@ def audit(args: argparse.Namespace) -> dict[str, Any]:
     errors = [issue for issue in issues if issue["severity"] == "error"]
     return {
         "status": "pass" if not errors else "fail",
-        "package_dir": str(package_dir),
+        "package_dir": package_label,
         "backbone": backbone_id,
         "required_eval_files": required_eval_files,
         "primary_metrics": sorted(primary_metrics),

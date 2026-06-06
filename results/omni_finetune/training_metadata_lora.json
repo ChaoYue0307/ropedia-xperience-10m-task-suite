@@ -1,6 +1,6 @@
 {
-  "run_id": "xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6",
-  "model_id": "<model-cache>/Qwen__Qwen3-Omni-30B-A3B-Instruct",
+  "run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_lora",
+  "model_id": "<workspace-parent>/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct",
   "backbone": {
     "id": "qwen3_omni_lora",
     "display_name": "Qwen3-Omni LoRA",
@@ -46,16 +46,16 @@
     ],
     "config_path": "<project>/configs/omni_backbones/qwen3_omni_lora.json"
   },
-  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_dataset/dataset.jsonl",
-  "checkpoint_dir": "<project>/checkpoints/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6/adapter_lora",
+  "dataset_jsonl": "<project>/results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl",
+  "checkpoint_dir": "<project>/checkpoints/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_lora/adapter_lora",
   "num_processes": 8,
   "num_train_samples": 2848,
-  "num_val_samples": 0,
+  "num_val_samples": 512,
   "history": [
     {
       "epoch": 1,
-      "train_loss": 0.4121775626560694,
-      "val_loss": null,
+      "train_loss": 0.41304643672440994,
+      "val_loss": 0.0330660454928875,
       "global_step": 356
     }
   ],

@@ -18,7 +18,7 @@ not include local-machine aliases, private paths, SSH hosts, or token locations.
 | Strategy | stratified round-robin across top-level session UUIDs |
 | Metadata-audited visible complete episodes | 12,102 |
 | Metadata-audited complete sessions | 802 |
-| Current selected pilot | 128 metadata-balanced episodes |
+| Current selected pilot | 128 source-balanced episodes |
 | Recommended split | 96 train / 16 val / 16 test |
 | Recommended estimated download | 277.71 GiB excluding `visualization.rrd` |
 | Representative 32-episode estimate | ~70.5 GiB at median episode size |
@@ -27,12 +27,14 @@ not include local-machine aliases, private paths, SSH hosts, or token locations.
 
 ## Current Stage
 
-The current Qwen3-Omni artifacts include a verified diagnostic held-out run:
-96/16/16 selected train/val/test episodes, 3,808 exported windows, 2,848 train
-examples, 512 validation examples in the exported dataset, and 448 held-out
-test predictions from 14 exported test episodes. Training used eight distributed accelerator processes
-for one epoch with LoRA rank 16. The run did not compute validation loss during
-training, so the next run should enable validation monitoring.
+The current Qwen3-Omni artifacts include a verified validation-monitored
+diagnostic held-out run: 96/16/16 selected train/val/test episodes, 3,808
+exported windows, 2,848 train examples, 512 validation examples, and 448
+held-out test predictions from 14 exported test episodes. Training used eight
+distributed accelerator processes for one epoch with LoRA rank 16 and recorded a
+final train loss of 0.4130 plus a validation loss of 0.0331. The result verifies
+the multi-episode pipeline and gives a real error-analysis baseline; it is still
+not a strong final model.
 
 A stronger model-quality pilot should be claimed only after:
 
@@ -46,13 +48,13 @@ A stronger model-quality pilot should be claimed only after:
 
 Current diagnostic metrics:
 
-- JSON validity: 85.27%
-- action macro-F1: 0.0021
-- subtask accuracy: 0.0045
-- transition accuracy: 0.8281
-- next-action accuracy: 0.0223
-- contact accuracy: 0.6518
-- object micro-F1: 0.2306
+- JSON validity: 87.50%
+- action macro-F1: 0.0027
+- subtask accuracy: 0.0067
+- transition accuracy: 0.8504
+- next-action accuracy: 0.0246
+- contact accuracy: 0.6451
+- object micro-F1: 0.2230
 
 The public data access summary is:
 
@@ -62,7 +64,7 @@ The current metadata-only full dataset audit is:
 
 `results/omni_finetune/FULL_DATASET_METADATA_AUDIT.md`
 
-The current 128-episode metadata-balanced download plan is:
+The current 128-episode source-balanced download plan is:
 
 `results/omni_finetune/XPERIENCE10M_128_EPISODE_SELECTION.md`
 
