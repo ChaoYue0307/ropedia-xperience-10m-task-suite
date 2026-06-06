@@ -1,0 +1,85 @@
+{"event": "setup_done", "run_id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora", "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl", "num_processes": 8, "num_train_samples": 2848, "num_val_samples": 512, "rank0_samples_per_epoch": 356, "backbone_id": "qwen3_omni_lora", "dataset_contract": "xperience10m_episode_json_qa_v1", "training_objective": "structured_episode_understanding_json_qa", "loss_mode": "answer_token_ce", "loss_logit_tail_only": true, "timestamp": 1780772095.545236}
+{"event": "model_load_start", "run_id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora", "model_id": "/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct", "backbone_id": "qwen3_omni_lora", "device_map": "none", "dtype": "bfloat16", "timestamp": 1780772095.5454679}
+{"event": "model_load_done", "run_id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora", "timestamp": 1780772156.874106}
+{"event": "accelerator_prepare_start", "run_id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora", "timestamp": 1780772156.8791337}
+{"event": "accelerator_prepare_done", "run_id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora", "timestamp": 1780772886.8786576}
+{"event": "train_loop_start", "run_id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora", "model_id": "/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct", "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl", "num_processes": 8, "num_train_samples": 2848, "num_val_samples": 512, "rank_samples_per_epoch": 356, "epochs": 2, "timestamp": 1780772886.88835}
+{"event": "train_step", "epoch": 1, "global_step": 10, "rank0_seen": 10, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 1.2411541938781738, "timestamp": 1780773021.9297879}
+{"event": "train_step", "epoch": 1, "global_step": 20, "rank0_seen": 20, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 1.2082393169403076, "timestamp": 1780773164.0304909}
+{"event": "train_step", "epoch": 1, "global_step": 30, "rank0_seen": 30, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 1.1561942100524902, "timestamp": 1780773307.3136907}
+{"event": "train_step", "epoch": 1, "global_step": 40, "rank0_seen": 40, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 1.1068700551986694, "timestamp": 1780773452.942166}
+{"event": "train_step", "epoch": 1, "global_step": 50, "rank0_seen": 50, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 1.020526647567749, "timestamp": 1780773597.9646401}
+{"event": "train_step", "epoch": 1, "global_step": 60, "rank0_seen": 60, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.9700353145599365, "timestamp": 1780773741.095038}
+{"event": "train_step", "epoch": 1, "global_step": 70, "rank0_seen": 70, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.9207736253738403, "timestamp": 1780773884.4449034}
+{"event": "train_step", "epoch": 1, "global_step": 80, "rank0_seen": 80, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.8935067653656006, "timestamp": 1780774029.6789927}
+{"event": "train_step", "epoch": 1, "global_step": 90, "rank0_seen": 90, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.8067576289176941, "timestamp": 1780774175.0657575}
+{"event": "train_step", "epoch": 1, "global_step": 100, "rank0_seen": 100, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.7375144958496094, "timestamp": 1780774318.968427}
+{"event": "train_step", "epoch": 1, "global_step": 110, "rank0_seen": 110, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.6920928955078125, "timestamp": 1780774463.29319}
+{"event": "train_step", "epoch": 1, "global_step": 120, "rank0_seen": 120, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.6104325652122498, "timestamp": 1780774609.3720176}
+{"event": "train_step", "epoch": 1, "global_step": 130, "rank0_seen": 130, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.48016348481178284, "timestamp": 1780774755.0183794}
+{"event": "train_step", "epoch": 1, "global_step": 140, "rank0_seen": 140, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.43758195638656616, "timestamp": 1780774899.2300682}
+{"event": "train_step", "epoch": 1, "global_step": 150, "rank0_seen": 150, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.3697756230831146, "timestamp": 1780775043.9364626}
+{"event": "train_step", "epoch": 1, "global_step": 160, "rank0_seen": 160, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.30797359347343445, "timestamp": 1780775190.2854555}
+{"event": "train_step", "epoch": 1, "global_step": 170, "rank0_seen": 170, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.21947918832302094, "timestamp": 1780775337.020666}
+{"event": "train_step", "epoch": 1, "global_step": 180, "rank0_seen": 180, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.15988954901695251, "timestamp": 1780775481.7186742}
+{"event": "train_step", "epoch": 1, "global_step": 190, "rank0_seen": 190, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.10599871724843979, "timestamp": 1780775626.5219464}
+{"event": "train_step", "epoch": 1, "global_step": 200, "rank0_seen": 200, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.07846773415803909, "timestamp": 1780775772.6306653}
+{"event": "train_step", "epoch": 1, "global_step": 210, "rank0_seen": 210, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.04225705936551094, "timestamp": 1780775919.2578576}
+{"event": "train_step", "epoch": 1, "global_step": 220, "rank0_seen": 220, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.047041941434144974, "timestamp": 1780776064.170654}
+{"event": "train_step", "epoch": 1, "global_step": 230, "rank0_seen": 230, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.06731082499027252, "timestamp": 1780776209.0749338}
+{"event": "train_step", "epoch": 1, "global_step": 240, "rank0_seen": 240, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.024569334462285042, "timestamp": 1780776355.2502549}
+{"event": "train_step", "epoch": 1, "global_step": 250, "rank0_seen": 250, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.0451919361948967, "timestamp": 1780776500.7761035}
+{"event": "train_step", "epoch": 1, "global_step": 260, "rank0_seen": 260, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.058232005685567856, "timestamp": 1780776645.9410477}
+{"event": "train_step", "epoch": 1, "global_step": 270, "rank0_seen": 270, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.04011138156056404, "timestamp": 1780776789.73086}
+{"event": "train_step", "epoch": 1, "global_step": 280, "rank0_seen": 280, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.053194157779216766, "timestamp": 1780776936.245476}
+{"event": "train_step", "epoch": 1, "global_step": 290, "rank0_seen": 290, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.01279137097299099, "timestamp": 1780777082.6204314}
+{"event": "train_step", "epoch": 1, "global_step": 300, "rank0_seen": 300, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.05286041274666786, "timestamp": 1780777226.8001966}
+{"event": "train_step", "epoch": 1, "global_step": 310, "rank0_seen": 310, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.03335895016789436, "timestamp": 1780777370.6835082}
+{"event": "train_step", "epoch": 1, "global_step": 320, "rank0_seen": 320, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.019599564373493195, "timestamp": 1780777516.4551933}
+{"event": "train_step", "epoch": 1, "global_step": 330, "rank0_seen": 330, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.0465046651661396, "timestamp": 1780777661.4767969}
+{"event": "train_step", "epoch": 1, "global_step": 340, "rank0_seen": 340, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.011825518682599068, "timestamp": 1780777805.2706292}
+{"event": "train_step", "epoch": 1, "global_step": 350, "rank0_seen": 350, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.025316592305898666, "timestamp": 1780777948.6230314}
+{"event": "train_step", "epoch": 1, "global_step": 356, "rank0_seen": 356, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.03265270218253136, "timestamp": 1780778036.55198}
+{"event": "epoch_end", "epoch": 1, "train_loss": 0.41282760031950355, "val_loss": 0.03288277983665466, "global_step": 356, "timestamp": 1780778271.2944036}
+{"event": "train_step", "epoch": 2, "global_step": 360, "rank0_seen": 4, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.03361562639474869, "timestamp": 1780778328.2471879}
+{"event": "train_step", "epoch": 2, "global_step": 370, "rank0_seen": 14, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.03195416182279587, "timestamp": 1780778473.9947712}
+{"event": "train_step", "epoch": 2, "global_step": 380, "rank0_seen": 24, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.03212687745690346, "timestamp": 1780778617.4381936}
+{"event": "train_step", "epoch": 2, "global_step": 390, "rank0_seen": 34, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.020628655329346657, "timestamp": 1780778761.6440127}
+{"event": "train_step", "epoch": 2, "global_step": 400, "rank0_seen": 44, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.031167080625891685, "timestamp": 1780778907.590844}
+{"event": "train_step", "epoch": 2, "global_step": 410, "rank0_seen": 54, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.03995392844080925, "timestamp": 1780779052.8025923}
+{"event": "train_step", "epoch": 2, "global_step": 420, "rank0_seen": 64, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.03478384017944336, "timestamp": 1780779197.504084}
+{"event": "train_step", "epoch": 2, "global_step": 430, "rank0_seen": 74, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.02787017822265625, "timestamp": 1780779341.7429447}
+{"event": "train_step", "epoch": 2, "global_step": 440, "rank0_seen": 84, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.05049789696931839, "timestamp": 1780779487.0513713}
+{"event": "train_step", "epoch": 2, "global_step": 450, "rank0_seen": 94, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.025099370628595352, "timestamp": 1780779633.4013472}
+{"event": "train_step", "epoch": 2, "global_step": 460, "rank0_seen": 104, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.020003439858555794, "timestamp": 1780779777.8058982}
+{"event": "train_step", "epoch": 2, "global_step": 470, "rank0_seen": 114, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.018042705953121185, "timestamp": 1780779922.529725}
+{"event": "train_step", "epoch": 2, "global_step": 480, "rank0_seen": 124, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.026938844472169876, "timestamp": 1780780069.5731006}
+{"event": "train_step", "epoch": 2, "global_step": 490, "rank0_seen": 134, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.02047225832939148, "timestamp": 1780780216.1057038}
+{"event": "train_step", "epoch": 2, "global_step": 500, "rank0_seen": 144, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.022333865985274315, "timestamp": 1780780360.42305}
+{"event": "train_step", "epoch": 2, "global_step": 510, "rank0_seen": 154, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.01889258623123169, "timestamp": 1780780504.7359412}
+{"event": "train_step", "epoch": 2, "global_step": 520, "rank0_seen": 164, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.0357406847178936, "timestamp": 1780780650.4271557}
+{"event": "train_step", "epoch": 2, "global_step": 530, "rank0_seen": 174, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.019072983413934708, "timestamp": 1780780796.5439446}
+{"event": "train_step", "epoch": 2, "global_step": 540, "rank0_seen": 184, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.01791965216398239, "timestamp": 1780780940.7633247}
+{"event": "train_step", "epoch": 2, "global_step": 550, "rank0_seen": 194, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.03431646153330803, "timestamp": 1780781085.1370506}
+{"event": "train_step", "epoch": 2, "global_step": 560, "rank0_seen": 204, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.03132851421833038, "timestamp": 1780781231.6745424}
+{"event": "train_step", "epoch": 2, "global_step": 570, "rank0_seen": 214, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.016359906643629074, "timestamp": 1780781377.7965937}
+{"event": "train_step", "epoch": 2, "global_step": 580, "rank0_seen": 224, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.03513734042644501, "timestamp": 1780781522.941984}
+{"event": "train_step", "epoch": 2, "global_step": 590, "rank0_seen": 234, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.02099127136170864, "timestamp": 1780781668.4226098}
+{"event": "train_step", "epoch": 2, "global_step": 600, "rank0_seen": 244, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.02567869797348976, "timestamp": 1780781814.7500746}
+{"event": "train_step", "epoch": 2, "global_step": 610, "rank0_seen": 254, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.021749990060925484, "timestamp": 1780781961.195312}
+{"event": "train_step", "epoch": 2, "global_step": 620, "rank0_seen": 264, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.013441737741231918, "timestamp": 1780782105.972085}
+{"event": "train_step", "epoch": 2, "global_step": 630, "rank0_seen": 274, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.01763376221060753, "timestamp": 1780782250.8576815}
+{"event": "train_step", "epoch": 2, "global_step": 640, "rank0_seen": 284, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.0241999588906765, "timestamp": 1780782397.6719575}
+{"event": "train_step", "epoch": 2, "global_step": 650, "rank0_seen": 294, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.03424759954214096, "timestamp": 1780782544.178517}
+{"event": "train_step", "epoch": 2, "global_step": 660, "rank0_seen": 304, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.02738356590270996, "timestamp": 1780782688.9212384}
+{"event": "train_step", "epoch": 2, "global_step": 670, "rank0_seen": 314, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.023020543158054352, "timestamp": 1780782833.648978}
+{"event": "train_step", "epoch": 2, "global_step": 680, "rank0_seen": 324, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.025029756128787994, "timestamp": 1780782979.3261318}
+{"event": "train_step", "epoch": 2, "global_step": 690, "rank0_seen": 334, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.05018872767686844, "timestamp": 1780783125.8390105}
+{"event": "train_step", "epoch": 2, "global_step": 700, "rank0_seen": 344, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.02515098825097084, "timestamp": 1780783269.7372599}
+{"event": "train_step", "epoch": 2, "global_step": 710, "rank0_seen": 354, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.013559438288211823, "timestamp": 1780783413.2314537}
+{"event": "train_step", "epoch": 2, "global_step": 712, "rank0_seen": 356, "rank0_samples_per_epoch": 356, "rank0_batch_loss": 0.02508429065346718, "timestamp": 1780783442.8169117}
+{"event": "epoch_end", "epoch": 2, "train_loss": 0.027745448225544075, "val_loss": 0.027823254466056824, "global_step": 712, "timestamp": 1780783678.4580102}
+{"event": "save_start", "checkpoint_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora/adapter_lora", "save_mode": "trainable_lora_state_dict", "timestamp": 1780783678.4584997}
+{"event": "save_state_dict_built", "checkpoint_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora/adapter_lora", "state_source": "accelerator_full_state_dict", "trainable_tensors": 576, "trainable_bytes": 69206016, "shape_summary": {"adapter_tensors": 576, "adapter_bytes": 69206016, "prefixes": {"audio_tower": {"tensors": 192, "numel": 3932160}, "model": {"tensors": 384, "numel": 13369344}}}, "timestamp": 1780783811.933485}
+{"event": "save_done", "checkpoint_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora/adapter_lora", "timestamp": 1780783812.4553072}
+{"event": "complete", "checkpoint_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora/adapter_lora", "timestamp": 1780783812.455843}

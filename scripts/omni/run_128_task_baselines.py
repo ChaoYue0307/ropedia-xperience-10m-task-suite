@@ -33,6 +33,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from train_min_action_model import compute_metrics, fit_scaler, predict, train_softmax_classifier
+from task_display import task_display_name
 
 
 TASKS = [
@@ -516,6 +517,7 @@ def classification_baseline(
     metrics = {
         "status": "pass",
         "task": task_id,
+        "task_display_name": task_display_name(task_id),
         "model_family": f"simple_{classifier_kind}_metadata",
         "source": "128_episode_qwen_jsonl_metadata",
         "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
@@ -581,6 +583,7 @@ def classification_baseline(
             neural_result = {
                 "status": "failed",
                 "task": task_id,
+                "task_display_name": task_display_name(task_id),
                 "model_family": "neural_mlp_metadata",
                 "source": "128_episode_qwen_jsonl_metadata",
                 "primary_metric": "macro_f1",
@@ -655,6 +658,7 @@ def neural_classification(
     metrics = {
         "status": "pass",
         "task": task_id,
+        "task_display_name": task_display_name(task_id),
         "model_family": "neural_mlp_metadata",
         "source": "128_episode_qwen_jsonl_metadata",
         "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
@@ -748,6 +752,7 @@ def simple_multilabel(
     metrics = {
         "status": "pass",
         "task": "object_relevance",
+        "task_display_name": task_display_name("object_relevance"),
         "model_family": "simple_train_object_frequency",
         "source": "128_episode_qwen_jsonl_metadata",
         "split_policy": "object vocabulary and frequencies are learned from train split only",
@@ -772,6 +777,7 @@ def simple_multilabel(
             neural_result = {
                 "status": "failed",
                 "task": "object_relevance",
+                "task_display_name": task_display_name("object_relevance"),
                 "model_family": "neural_mlp_metadata_multilabel",
                 "source": "128_episode_qwen_jsonl_metadata",
                 "primary_metric": "micro_f1",
@@ -806,6 +812,7 @@ def neural_multilabel(
     metrics = {
         "status": "pass",
         "task": "object_relevance",
+        "task_display_name": task_display_name("object_relevance"),
         "model_family": "neural_mlp_metadata_multilabel",
         "source": "128_episode_qwen_jsonl_metadata",
         "num_train_windows": int(len(splits["train"])),
@@ -856,6 +863,7 @@ def caption_grounding(rows: list[dict[str, Any]], episodes: dict[str, dict[str, 
     metrics = {
         "status": "pass",
         "task": "caption_grounding",
+        "task_display_name": task_display_name("caption_grounding"),
         "model_family": "simple_hashed_text_retrieval",
         "source": "128_episode_qwen_jsonl_metadata",
         "limitation": "query text is derived from held-out labels, while candidate representations exclude answer_json fields; this is a public-safe retrieval proxy, not a raw caption-to-sensor grounding model",
@@ -913,6 +921,7 @@ def temporal_order(rows: list[dict[str, Any]], X: np.ndarray, splits: dict[str, 
     payload = {
         "status": "pass",
         "task": "temporal_order",
+        "task_display_name": task_display_name("temporal_order"),
         "model_family": "simple_softmax_metadata_pair",
         "source": "128_episode_qwen_jsonl_metadata",
         "limitation": "metadata-only pair features are weaker than the single-episode raw-feature temporal-order task",
@@ -935,6 +944,7 @@ def unsupported_record(task_id: str, out_root: Path, reason: str, primary_metric
     payload = {
         "status": "unsupported_without_raw_128_feature_blocks",
         "task": task_id,
+        "task_display_name": task_display_name(task_id),
         "primary_metric": primary_metric,
         "primary_score": None,
         "reason": reason,
@@ -961,8 +971,8 @@ def build_markdown(summary: dict[str, Any]) -> str:
         "",
         "## Coverage",
         "",
-        "| task | simple status | simple primary | neural status | neural primary |",
-        "| --- | --- | ---: | --- | ---: |",
+        "| task | artifact id | simple status | simple primary | neural status | neural primary |",
+        "| --- | --- | --- | ---: | --- | ---: |",
     ]
     for task in summary["tasks"]:
         simple = task.get("simple") or {}
@@ -970,8 +980,9 @@ def build_markdown(summary: dict[str, Any]) -> str:
         simple_score = simple.get("primary_score")
         neural_score = neural.get("primary_score") if neural else None
         lines.append(
-            "| {task} | {simple_status} | {simple_score} | {neural_status} | {neural_score} |".format(
-                task=task["task"],
+            "| {task} | `{artifact}` | {simple_status} | {simple_score} | {neural_status} | {neural_score} |".format(
+                task=task.get("task_display_name") or task_display_name(task["task"]),
+                artifact=task["task"],
                 simple_status=simple.get("status", ""),
                 simple_score="" if simple_score is None else f"{float(simple_score):.4f}",
                 neural_status=neural.get("status", "not_run") if neural else "not_run",
@@ -1027,16 +1038,16 @@ def main() -> int:
     for task_id, (key, _metric) in CLASSIFICATION_TASKS.items():
         log(f"{task_id}: start")
         result = classification_baseline(task_id, rows, feature_rows, X, splits, lambda row, k=key: norm(answer(row).get(k)), out, args)
-        task_results.append({"task": task_id, **result})
+        task_results.append({"task": task_id, "task_display_name": task_display_name(task_id), **result})
     log("object_relevance: start")
-    task_results.append({"task": "object_relevance", **simple_multilabel(rows, feature_rows, X, splits, out, args)})
+    task_results.append({"task": "object_relevance", "task_display_name": task_display_name("object_relevance"), **simple_multilabel(rows, feature_rows, X, splits, out, args)})
     log("caption_grounding: start")
-    task_results.append({"task": "caption_grounding", **caption_grounding(rows, episodes, splits, out, args)})
+    task_results.append({"task": "caption_grounding", "task_display_name": task_display_name("caption_grounding"), **caption_grounding(rows, episodes, splits, out, args)})
     log("temporal_order: start")
-    task_results.append({"task": "temporal_order", **temporal_order(rows, X, splits, out, args)})
+    task_results.append({"task": "temporal_order", "task_display_name": task_display_name("temporal_order"), **temporal_order(rows, X, splits, out, args)})
     for task_id, spec in UNSUPPORTED_TASKS.items():
         log(f"{task_id}: recording unsupported status")
-        task_results.append({"task": task_id, **unsupported_record(task_id, out, spec["reason"], spec["primary_metric"])})
+        task_results.append({"task": task_id, "task_display_name": task_display_name(task_id), **unsupported_record(task_id, out, spec["reason"], spec["primary_metric"])})
 
     task_results = sorted(task_results, key=lambda row: TASKS.index(row["task"]))
     episode_counts = Counter(str(row.get("split")) for row in episodes.values())
@@ -1049,6 +1060,7 @@ def main() -> int:
         "num_rows": len(rows),
         "split_counts": split_counts,
         "episode_counts": dict(sorted(episode_counts.items())),
+        "task_display_names": {task: task_display_name(task) for task in TASKS},
         "feature_contract": {
             "kind": "metadata_text_hash",
             "hash_dim": args.hash_dim,
@@ -1076,6 +1088,7 @@ def main() -> int:
         [
             {
                 "task": row["task"],
+                "task_display_name": row.get("task_display_name") or task_display_name(row["task"]),
                 "simple_status": (row.get("simple") or {}).get("status"),
                 "simple_primary_metric": (row.get("simple") or {}).get("primary_metric"),
                 "simple_primary_score": (row.get("simple") or {}).get("primary_score"),

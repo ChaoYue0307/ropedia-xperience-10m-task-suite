@@ -30,6 +30,20 @@
         "contact_prediction",
         "object_relevance"
       ],
+      "task_display_names": {
+        "timeline_action": "Action Recognition",
+        "timeline_subtask": "Procedure Step Recognition",
+        "transition_detection": "Action Boundary Detection",
+        "next_action": "Next-Action Prediction",
+        "hand_trajectory_forecast": "Hand Trajectory Forecasting",
+        "contact_prediction": "Contact State Prediction",
+        "object_relevance": "Object Relevance Prediction",
+        "caption_grounding": "Language Grounding",
+        "cross_modal_retrieval": "Cross-Modal Retrieval",
+        "modality_reconstruction": "Cross-Modal Reconstruction",
+        "temporal_order": "Temporal Order Verification",
+        "misalignment_detection": "Multimodal Synchronization Detection"
+      },
       "counts": {
         "direct": 2,
         "proxy": 2,
@@ -54,6 +68,20 @@
         "modality_reconstruction",
         "misalignment_detection"
       ],
+      "task_display_names": {
+        "timeline_action": "Action Recognition",
+        "timeline_subtask": "Procedure Step Recognition",
+        "transition_detection": "Action Boundary Detection",
+        "next_action": "Next-Action Prediction",
+        "hand_trajectory_forecast": "Hand Trajectory Forecasting",
+        "contact_prediction": "Contact State Prediction",
+        "object_relevance": "Object Relevance Prediction",
+        "caption_grounding": "Language Grounding",
+        "cross_modal_retrieval": "Cross-Modal Retrieval",
+        "modality_reconstruction": "Cross-Modal Reconstruction",
+        "temporal_order": "Temporal Order Verification",
+        "misalignment_detection": "Multimodal Synchronization Detection"
+      },
       "counts": {
         "direct": 0,
         "proxy": 2,
@@ -86,6 +114,20 @@
         "temporal_order",
         "misalignment_detection"
       ],
+      "task_display_names": {
+        "timeline_action": "Action Recognition",
+        "timeline_subtask": "Procedure Step Recognition",
+        "transition_detection": "Action Boundary Detection",
+        "next_action": "Next-Action Prediction",
+        "hand_trajectory_forecast": "Hand Trajectory Forecasting",
+        "contact_prediction": "Contact State Prediction",
+        "object_relevance": "Object Relevance Prediction",
+        "caption_grounding": "Language Grounding",
+        "cross_modal_retrieval": "Cross-Modal Retrieval",
+        "modality_reconstruction": "Cross-Modal Reconstruction",
+        "temporal_order": "Temporal Order Verification",
+        "misalignment_detection": "Multimodal Synchronization Detection"
+      },
       "counts": {
         "direct": 6,
         "proxy": 2,
@@ -116,6 +158,20 @@
         "temporal_order",
         "misalignment_detection"
       ],
+      "task_display_names": {
+        "timeline_action": "Action Recognition",
+        "timeline_subtask": "Procedure Step Recognition",
+        "transition_detection": "Action Boundary Detection",
+        "next_action": "Next-Action Prediction",
+        "hand_trajectory_forecast": "Hand Trajectory Forecasting",
+        "contact_prediction": "Contact State Prediction",
+        "object_relevance": "Object Relevance Prediction",
+        "caption_grounding": "Language Grounding",
+        "cross_modal_retrieval": "Cross-Modal Retrieval",
+        "modality_reconstruction": "Cross-Modal Reconstruction",
+        "temporal_order": "Temporal Order Verification",
+        "misalignment_detection": "Multimodal Synchronization Detection"
+      },
       "counts": {
         "direct": 0,
         "proxy": 6,
@@ -137,6 +193,8 @@
       },
       "why": "Reads egocentric sensor state as the current human action; also provides a weak human-motion readout.",
       "current_limit": "Chronological single-episode split creates unseen future action classes.",
+      "display_name": "Action Recognition",
+      "artifact_id": "timeline_action",
       "metric": {
         "key": "macro_f1",
         "name": "macro-F1",
@@ -158,6 +216,8 @@
       },
       "why": "Segments egocentric task state and provides a first proxy for symbolic world/task state.",
       "current_limit": "Single-episode ordering makes future subtasks hard to generalize.",
+      "display_name": "Procedure Step Recognition",
+      "artifact_id": "timeline_subtask",
       "metric": {
         "key": "macro_f1",
         "name": "macro-F1",
@@ -179,6 +239,8 @@
       },
       "why": "Localizes egocentric task boundaries and diagnoses temporal state changes.",
       "current_limit": "Boundary class is sparse, so accuracy alone is misleading.",
+      "display_name": "Action Boundary Detection",
+      "artifact_id": "transition_detection",
       "metric": {
         "key": "macro_f1",
         "name": "macro-F1",
@@ -200,6 +262,8 @@
       },
       "why": "Tests action intention/task-flow prediction from egocentric context.",
       "current_limit": "Unseen future labels dominate the single-episode chronological test.",
+      "display_name": "Next-Action Prediction",
+      "artifact_id": "next_action",
       "metric": {
         "key": "macro_f1",
         "name": "macro-F1",
@@ -221,6 +285,8 @@
       },
       "why": "Directly predicts human hand motion and supports hand-object interaction modeling.",
       "current_limit": "Forecasting is window-level and not yet a full sequence or policy model.",
+      "display_name": "Hand Trajectory Forecasting",
+      "artifact_id": "hand_trajectory_forecast",
       "metric": {
         "key": "mpjpe",
         "name": "MPJPE",
@@ -242,6 +308,8 @@
       },
       "why": "Targets physical interaction state, a core affordance and manipulation signal.",
       "current_limit": "The public sample is degenerate for this target because one class dominates.",
+      "display_name": "Contact State Prediction",
+      "artifact_id": "contact_prediction",
       "metric": {
         "key": "macro_f1",
         "name": "macro-F1",
@@ -264,6 +332,8 @@
       },
       "why": "Connects egocentric activity to manipulated objects and early object-centric state.",
       "current_limit": "Object labels are language-derived and sparse in one episode.",
+      "display_name": "Object Relevance Prediction",
+      "artifact_id": "object_relevance",
       "metric": {
         "key": "micro_f1",
         "name": "micro-F1",
@@ -285,6 +355,8 @@
       },
       "why": "Grounds language annotation into egocentric sensor time and task state.",
       "current_limit": "Bag-of-objects language features are too weak for rich grounding.",
+      "display_name": "Language Grounding",
+      "artifact_id": "caption_grounding",
       "metric": {
         "key": "mrr",
         "name": "MRR",
@@ -307,6 +379,8 @@
       },
       "why": "Tests whether synchronized modalities identify the same 4D moment, a prerequisite for reconstruction and world modeling.",
       "current_limit": "Retrieval shows an alignment signal, not geometric reconstruction.",
+      "display_name": "Cross-Modal Retrieval",
+      "artifact_id": "cross_modal_retrieval",
       "metric": {
         "key": "mrr",
         "name": "MRR",
@@ -328,6 +402,8 @@
       },
       "why": "Predicts visual/depth state from non-target sensors as a weak reconstruction/world-model objective.",
       "current_limit": "Feature-vector reconstruction is not pixel, depth-map, mesh, NeRF, or Gaussian reconstruction.",
+      "display_name": "Cross-Modal Reconstruction",
+      "artifact_id": "modality_reconstruction",
       "metric": {
         "key": "r2",
         "name": "R2",
@@ -349,6 +425,8 @@
       },
       "why": "Checks whether features encode local time direction and task progression.",
       "current_limit": "Only local adjacent ordering, not long-horizon causal modeling.",
+      "display_name": "Temporal Order Verification",
+      "artifact_id": "temporal_order",
       "metric": {
         "key": "f1",
         "name": "F1",
@@ -371,6 +449,8 @@
       },
       "why": "Detects temporal desynchronization, a key data-quality gate for multimodal reconstruction and world models.",
       "current_limit": "Synthetic shifts diagnose alignment but do not solve calibration or mapping.",
+      "display_name": "Multimodal Synchronization Detection",
+      "artifact_id": "misalignment_detection",
       "metric": {
         "key": "f1",
         "name": "F1",
@@ -380,5 +460,19 @@
         "better_baseline": "neural_mlp"
       }
     }
+  },
+  "task_display_names": {
+    "timeline_action": "Action Recognition",
+    "timeline_subtask": "Procedure Step Recognition",
+    "transition_detection": "Action Boundary Detection",
+    "next_action": "Next-Action Prediction",
+    "hand_trajectory_forecast": "Hand Trajectory Forecasting",
+    "contact_prediction": "Contact State Prediction",
+    "object_relevance": "Object Relevance Prediction",
+    "caption_grounding": "Language Grounding",
+    "cross_modal_retrieval": "Cross-Modal Retrieval",
+    "modality_reconstruction": "Cross-Modal Reconstruction",
+    "temporal_order": "Temporal Order Verification",
+    "misalignment_detection": "Multimodal Synchronization Detection"
   }
 }

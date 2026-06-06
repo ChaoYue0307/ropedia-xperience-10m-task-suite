@@ -36,6 +36,7 @@ from train_min_action_model import (
     softmax,
     train_softmax_classifier,
 )
+from task_display import task_display_name
 
 
 TASKS = [
@@ -237,6 +238,7 @@ def classification_task(
     majority = Counter(y[train_local]).most_common(1)[0][0]
     metrics.update({
         "task": task_name,
+        "task_display_name": task_display_name(task_name),
         "input": input_description,
         "split": "chronological",
         "num_windows": int(len(y)),
@@ -471,6 +473,7 @@ def neural_classification_task(
     majority = Counter(y[train_local]).most_common(1)[0][0]
     metrics.update({
         "task": task_name,
+        "task_display_name": task_display_name(task_name),
         "input": input_description,
         "split": "chronological",
         "num_windows": int(len(y)),
@@ -571,6 +574,7 @@ def neural_hand_forecast(out_dir: Path, X: np.ndarray, rows: list[dict], ann: di
     pred_hand = pred.reshape(len(test), args.forecast_frames, 42, 3)
     metrics.update({
         "task": "hand_trajectory_forecast",
+        "task_display_name": task_display_name("hand_trajectory_forecast"),
         "input": "all modalities at t -> future left/right hand 3D joints",
         "split": "chronological",
         "num_windows": int(len(valid_idx)),
@@ -624,6 +628,7 @@ def neural_object_relevance(out_dir: Path, X: np.ndarray, rows: list[dict], ann:
     metrics = multilabel_metrics(Y[test], pred)
     metrics.update({
         "task": "object_relevance",
+        "task_display_name": task_display_name("object_relevance"),
         "input": "all non-caption modalities -> current relevant object set",
         "split": "chronological",
         "num_windows": int(len(rows)),
@@ -680,6 +685,7 @@ def neural_projection_task(
         metrics = regression_metrics(Y_out[test], pred)
     metrics.update({
         "task": task_name,
+        "task_display_name": task_display_name(task_name),
         "input": input_desc,
         "split": "chronological",
         "num_train_windows": int(len(train)),
@@ -707,6 +713,7 @@ def neural_binary_classification_from_arrays(out_dir: Path, X: np.ndarray, y: np
     metrics = binary_metrics(y[test], pred)
     metrics.update({
         "task": task,
+        "task_display_name": task_display_name(task),
         "input": input_desc,
         "split": "chronological",
         "num_samples": int(len(y)),
@@ -838,6 +845,7 @@ def task_hand_forecast(out_dir: Path, X: np.ndarray, rows: list[dict], ann: dict
     final_error = np.linalg.norm(true_hand[:, -1] - pred_hand[:, -1], axis=-1).mean()
     metrics.update({
         "task": "hand_trajectory_forecast",
+        "task_display_name": task_display_name("hand_trajectory_forecast"),
         "input": "all modalities at t -> future left/right hand 3D joints",
         "split": "chronological",
         "num_windows": int(len(valid_idx)),
@@ -957,6 +965,7 @@ def task_object_relevance(out_dir: Path, X: np.ndarray, rows: list[dict], ann: d
     metrics = multilabel_metrics(Y[test], pred)
     metrics.update({
         "task": "object_relevance",
+        "task_display_name": task_display_name("object_relevance"),
         "input": "all non-caption modalities -> current relevant object set",
         "split": "chronological",
         "num_windows": int(len(rows)),
@@ -1019,6 +1028,7 @@ def task_caption_grounding(out_dir: Path, X: np.ndarray, manifest: list[dict], a
     metrics = retrieval_metrics(X[test][:, text_idx], pred_text, np.arange(len(test)))
     metrics.update({
         "task": "caption_grounding",
+        "task_display_name": task_display_name("caption_grounding"),
         "input": "caption objects/interaction text query + candidate sensor windows",
         "output": "matching time window",
         "split": "chronological",
@@ -1039,6 +1049,7 @@ def task_cross_modal_retrieval(out_dir: Path, X: np.ndarray, manifest: list[dict
     metrics = retrieval_metrics(pred_visual, X[test][:, visual_idx], np.arange(len(test)))
     metrics.update({
         "task": "cross_modal_retrieval",
+        "task_display_name": task_display_name("cross_modal_retrieval"),
         "input": "motion/IMU/camera/audio query",
         "output": "matching depth/video window",
         "split": "chronological",
@@ -1059,6 +1070,7 @@ def task_modality_reconstruction(out_dir: Path, X: np.ndarray, manifest: list[di
     metrics = regression_metrics(X[test][:, visual_idx], pred)
     metrics.update({
         "task": "modality_reconstruction",
+        "task_display_name": task_display_name("modality_reconstruction"),
         "input": "motion/IMU/camera/audio",
         "output": "depth/video feature vector",
         "split": "chronological",
@@ -1090,6 +1102,7 @@ def binary_classification_from_arrays(out_dir: Path, X: np.ndarray, y: np.ndarra
     metrics = binary_metrics(y[test], pred)
     metrics.update({
         "task": task,
+        "task_display_name": task_display_name(task),
         "input": input_desc,
         "split": "chronological",
         "num_samples": int(len(y)),
@@ -1158,6 +1171,7 @@ def main() -> int:
         "feature_dim": int(X.shape[1]),
         "window_frames": int(args.window_frames),
         "stride_frames": int(args.stride_frames),
+        "task_display_names": {task: task_display_name(task) for task in tasks},
         "tasks": {},
     }
     if args.include_neural:
@@ -1209,8 +1223,8 @@ def main() -> int:
             key_metrics = {k: metrics[k] for k in ("accuracy", "macro_f1", "f1", "mpjpe", "mrr", "r2", "micro_f1") if k in metrics}
             print(f"  done: {key_metrics}")
         except Exception as exc:
-            summary["tasks"][task] = {"error": str(exc)}
-            write_json(out / "error.json", {"task": task, "error": str(exc)})
+            summary["tasks"][task] = {"task_display_name": task_display_name(task), "error": str(exc)}
+            write_json(out / "error.json", {"task": task, "task_display_name": task_display_name(task), "error": str(exc)})
             print(f"  error: {exc}")
 
         if args.include_neural:
@@ -1222,8 +1236,8 @@ def main() -> int:
                 neural_key_metrics = {k: neural_metrics[k] for k in ("accuracy", "macro_f1", "f1", "mpjpe", "mrr", "r2", "micro_f1") if k in neural_metrics}
                 print(f"  neural done: {neural_key_metrics}")
             except Exception as exc:
-                summary["neural_tasks"][task] = {"error": str(exc)}
-                write_json(neural_out / "error.json", {"task": task, "error": str(exc), "model": args.neural_output_name})
+                summary["neural_tasks"][task] = {"task_display_name": task_display_name(task), "error": str(exc)}
+                write_json(neural_out / "error.json", {"task": task, "task_display_name": task_display_name(task), "error": str(exc), "model": args.neural_output_name})
                 print(f"  neural error: {exc}")
 
     write_json(args.output_dir / "summary_report.json", summary)

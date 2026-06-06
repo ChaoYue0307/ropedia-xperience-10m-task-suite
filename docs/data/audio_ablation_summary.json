@@ -38,7 +38,8 @@
       "raw_replacement_delta_vs_no_audio": -0.007422402159244265,
       "raw_replacement_delta_vs_handcrafted": -0.00770504201550171,
       "all_plus_raw_logmel": 0.002734107997265892,
-      "all_plus_raw_delta_vs_handcrafted": -0.006320461683552957
+      "all_plus_raw_delta_vs_handcrafted": -0.006320461683552957,
+      "task_display_name": "Action Recognition"
     },
     {
       "task": "timeline_subtask",
@@ -53,7 +54,8 @@
       "raw_replacement_delta_vs_no_audio": -0.01034742052599772,
       "raw_replacement_delta_vs_handcrafted": -0.010430590562065117,
       "all_plus_raw_logmel": 0.0017889087656529517,
-      "all_plus_raw_delta_vs_handcrafted": -0.009467445627956345
+      "all_plus_raw_delta_vs_handcrafted": -0.009467445627956345,
+      "task_display_name": "Procedure Step Recognition"
     },
     {
       "task": "transition_detection",
@@ -68,7 +70,8 @@
       "raw_replacement_delta_vs_no_audio": 0.010507780641701658,
       "raw_replacement_delta_vs_handcrafted": 0.01707714954338524,
       "all_plus_raw_logmel": 0.4816233470132239,
-      "all_plus_raw_delta_vs_handcrafted": 0.019490425838571634
+      "all_plus_raw_delta_vs_handcrafted": 0.019490425838571634,
+      "task_display_name": "Action Boundary Detection"
     },
     {
       "task": "next_action",
@@ -83,7 +86,8 @@
       "raw_replacement_delta_vs_no_audio": -0.004703498679402295,
       "raw_replacement_delta_vs_handcrafted": -0.004576004576004574,
       "all_plus_raw_logmel": 0.0058479532163742695,
-      "all_plus_raw_delta_vs_handcrafted": -0.00473405736563631
+      "all_plus_raw_delta_vs_handcrafted": -0.00473405736563631,
+      "task_display_name": "Next-Action Prediction"
     },
     {
       "task": "hand_trajectory_forecast",
@@ -98,7 +102,8 @@
       "raw_replacement_delta_vs_no_audio": -0.0021152496337890625,
       "raw_replacement_delta_vs_handcrafted": 0.16052484512329102,
       "all_plus_raw_logmel": 4.1367621421813965,
-      "all_plus_raw_delta_vs_handcrafted": 0.3296332359313965
+      "all_plus_raw_delta_vs_handcrafted": 0.3296332359313965,
+      "task_display_name": "Hand Trajectory Forecasting"
     },
     {
       "task": "contact_prediction",
@@ -113,7 +118,8 @@
       "raw_replacement_delta_vs_no_audio": 0.0,
       "raw_replacement_delta_vs_handcrafted": 0.0,
       "all_plus_raw_logmel": 1.0,
-      "all_plus_raw_delta_vs_handcrafted": 0.0
+      "all_plus_raw_delta_vs_handcrafted": 0.0,
+      "task_display_name": "Contact State Prediction"
     },
     {
       "task": "object_relevance",
@@ -128,7 +134,8 @@
       "raw_replacement_delta_vs_no_audio": 0.030784313919472256,
       "raw_replacement_delta_vs_handcrafted": 0.020578064024873888,
       "all_plus_raw_logmel": 0.18262653898768813,
-      "all_plus_raw_delta_vs_handcrafted": 0.024487004103967203
+      "all_plus_raw_delta_vs_handcrafted": 0.024487004103967203,
+      "task_display_name": "Object Relevance Prediction"
     },
     {
       "task": "caption_grounding",
@@ -143,7 +150,8 @@
       "raw_replacement_delta_vs_no_audio": -0.002380702644586563,
       "raw_replacement_delta_vs_handcrafted": -0.007237853482365608,
       "all_plus_raw_logmel": 0.02719014883041382,
-      "all_plus_raw_delta_vs_handcrafted": -0.004895530641078949
+      "all_plus_raw_delta_vs_handcrafted": -0.004895530641078949,
+      "task_display_name": "Language Grounding"
     },
     {
       "task": "cross_modal_retrieval",
@@ -158,7 +166,8 @@
       "raw_replacement_delta_vs_no_audio": -0.061719030141830444,
       "raw_replacement_delta_vs_handcrafted": -0.04763227701187134,
       "all_plus_raw_logmel": 0.31795138120651245,
-      "all_plus_raw_delta_vs_handcrafted": -0.05717244744300842
+      "all_plus_raw_delta_vs_handcrafted": -0.05717244744300842,
+      "task_display_name": "Cross-Modal Retrieval"
     },
     {
       "task": "modality_reconstruction",
@@ -173,7 +182,8 @@
       "raw_replacement_delta_vs_no_audio": 1.615983009338379,
       "raw_replacement_delta_vs_handcrafted": 0.9635343551635742,
       "all_plus_raw_logmel": 8.392388343811035,
-      "all_plus_raw_delta_vs_handcrafted": 1.401824951171875
+      "all_plus_raw_delta_vs_handcrafted": 1.401824951171875,
+      "task_display_name": "Cross-Modal Reconstruction"
     },
     {
       "task": "temporal_order",
@@ -188,7 +198,8 @@
       "raw_replacement_delta_vs_no_audio": 0.03591857034334939,
       "raw_replacement_delta_vs_handcrafted": 0.012930064596222923,
       "all_plus_raw_logmel": 0.5330450130569861,
-      "all_plus_raw_delta_vs_handcrafted": 0.015803633746641288
+      "all_plus_raw_delta_vs_handcrafted": 0.015803633746641288,
+      "task_display_name": "Temporal Order Verification"
     },
     {
       "task": "misalignment_detection",
@@ -203,7 +214,8 @@
       "raw_replacement_delta_vs_no_audio": 0.021203945154488313,
       "raw_replacement_delta_vs_handcrafted": 0.02644906505448169,
       "all_plus_raw_logmel": 0.4373795761078998,
-      "all_plus_raw_delta_vs_handcrafted": 0.02003912235410793
+      "all_plus_raw_delta_vs_handcrafted": 0.02003912235410793,
+      "task_display_name": "Multimodal Synchronization Detection"
     }
   ],
   "aggregate": {

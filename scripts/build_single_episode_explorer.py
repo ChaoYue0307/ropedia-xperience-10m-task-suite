@@ -16,14 +16,16 @@ from pathlib import Path
 
 import numpy as np
 
+from task_display import task_display_name
+
 
 TASK_DISPLAY = {
-    "timeline_action": "Current Action Recognition",
-    "timeline_subtask": "Current Subtask Recognition",
-    "transition_detection": "Action Transition Detection",
-    "next_action": "Next-Action Prediction",
-    "contact_prediction": "Contact State Prediction",
-    "object_relevance": "Relevant Object Prediction",
+    "timeline_action": task_display_name("timeline_action"),
+    "timeline_subtask": task_display_name("timeline_subtask"),
+    "transition_detection": task_display_name("transition_detection"),
+    "next_action": task_display_name("next_action"),
+    "contact_prediction": task_display_name("contact_prediction"),
+    "object_relevance": task_display_name("object_relevance"),
 }
 
 
@@ -153,6 +155,10 @@ def build_data(args: argparse.Namespace) -> dict:
     provenance = read_json(diagnostics_dir / "provenance.json")
     object_rows = {int(r["window_index"]): r for r in read_csv(diagnostics_dir / "object_labels/window_object_labels.csv")}
     ablation_rows = read_csv(diagnostics_dir / "modality_ablation/ablation_metrics.csv")
+    for row in ablation_rows:
+        task = row.get("task")
+        if task in TASK_DISPLAY:
+            row["task_display_name"] = TASK_DISPLAY[task]
     alignment_rows = read_csv(diagnostics_dir / "alignment_stress/alignment_shift_metrics.csv")
     timeline_rows = read_csv(diagnostics_dir / "timeline_overlay/timeline_overlay.csv")
     predictions = load_predictions(suite_dir)
@@ -218,6 +224,8 @@ def build_data(args: argparse.Namespace) -> dict:
         non_overlap = [r for r in computed if r.get("target_source_overlap") == "false"]
         best_non_overlap = max(non_overlap, key=lambda r: float(r["score"])) if non_overlap else None
         best_ablation[task] = {
+            "task": task,
+            "task_display_name": TASK_DISPLAY.get(task, task_display_name(task)),
             "best": {
                 "modality_group": best["modality_group"],
                 "modality_display": best["modality_display"],
@@ -251,6 +259,7 @@ def build_data(args: argparse.Namespace) -> dict:
             },
         },
         "tasks": TASK_DISPLAY,
+        "task_display_names": TASK_DISPLAY,
         "feature_blocks": block_meta,
         "segments": build_action_segments(windows),
         "windows": explorer_windows,

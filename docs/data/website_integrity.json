@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-06T17:43:55+00:00",
+  "generated_at_utc": "2026-06-07T00:00:35+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 133,
-    "external_reference_count": 107,
-    "json_files": 34,
+    "local_references": 136,
+    "external_reference_count": 106,
+    "json_files": 35,
     "image_assets_referenced": 22,
     "failure_count": 0
   },
@@ -75,7 +75,7 @@
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
       "overview_index": 67412,
-      "evidence_index": 90414
+      "evidence_index": 90413
     },
     {
       "name": "project_status_links_json",
@@ -153,8 +153,8 @@
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
       "overview_index": 67412,
-      "protocol_index": 87152,
-      "evidence_index": 90414
+      "protocol_index": 87159,
+      "evidence_index": 90413
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -228,7 +228,7 @@
     {
       "path": "index.html",
       "id_count": 77,
-      "reference_count": 110,
+      "reference_count": 113,
       "image_count": 24
     },
     {
@@ -252,12 +252,12 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 41126,
+      "bytes": 60162,
       "top_level_type": "dict"
     },
     {
       "path": "data/audio_ablation_summary.json",
-      "bytes": 9701,
+      "bytes": 10370,
       "top_level_type": "dict"
     },
     {
@@ -267,7 +267,7 @@
     },
     {
       "path": "data/evaluation_protocol.json",
-      "bytes": 13788,
+      "bytes": 14511,
       "top_level_type": "dict"
     },
     {
@@ -282,17 +282,17 @@
     },
     {
       "path": "data/foundation_model_plan.json",
-      "bytes": 13112,
+      "bytes": 13193,
       "top_level_type": "dict"
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 68749,
+      "bytes": 86497,
       "top_level_type": "dict"
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 131036,
+      "bytes": 235815,
       "top_level_type": "dict"
     },
     {
@@ -302,27 +302,32 @@
     },
     {
       "path": "data/omni_finetune_verified_result.json",
-      "bytes": 4213,
+      "bytes": 3483,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/omni_model_comparison.json",
+      "bytes": 21433,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_brief.json",
-      "bytes": 3752,
+      "bytes": 3811,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_manifest.json",
-      "bytes": 4927,
+      "bytes": 5193,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_packet.json",
-      "bytes": 7802,
+      "bytes": 7943,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_status.json",
-      "bytes": 12602,
+      "bytes": 15049,
       "top_level_type": "dict"
     },
     {
@@ -347,7 +352,7 @@
     },
     {
       "path": "data/reproducibility_matrix.json",
-      "bytes": 5223,
+      "bytes": 5280,
       "top_level_type": "dict"
     },
     {
@@ -357,32 +362,32 @@
     },
     {
       "path": "data/research_directions.json",
-      "bytes": 14414,
+      "bytes": 16694,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_roadmap.json",
-      "bytes": 10052,
+      "bytes": 10133,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_roadmap_interactive.json",
-      "bytes": 142418,
+      "bytes": 143560,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_takeaways.json",
-      "bytes": 7102,
+      "bytes": 7139,
       "top_level_type": "dict"
     },
     {
       "path": "data/scope_claims_audit.json",
-      "bytes": 20823,
+      "bytes": 21234,
       "top_level_type": "dict"
     },
     {
       "path": "data/single_episode_explorer.json",
-      "bytes": 4297465,
+      "bytes": 4305527,
       "top_level_type": "dict"
     },
     {
@@ -392,7 +397,7 @@
     },
     {
       "path": "data/summary_metrics.json",
-      "bytes": 26028,
+      "bytes": 27490,
       "top_level_type": "dict"
     },
     {
@@ -407,7 +412,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 15259,
+      "bytes": 15375,
       "top_level_type": "dict"
     },
     {
@@ -450,21 +455,21 @@
     {
       "path": "assets/charts/episode_task_scores.svg",
       "exists": true,
-      "bytes": 5903,
+      "bytes": 5983,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/charts/episode_task_scores_minimal_vs_neural.svg",
       "exists": true,
-      "bytes": 10040,
+      "bytes": 10200,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/charts/episode_task_scores_neural_mlp.svg",
       "exists": true,
-      "bytes": 5917,
+      "bytes": 5997,
       "format": "SVG",
       "has_viewbox": true
     },
@@ -485,7 +490,7 @@
     {
       "path": "assets/charts/research_direction_coverage.svg",
       "exists": true,
-      "bytes": 4968,
+      "bytes": 5078,
       "format": "SVG",
       "has_viewbox": true
     },
@@ -571,7 +576,7 @@
     {
       "path": "assets/task_architectures.png",
       "exists": true,
-      "bytes": 761507,
+      "bytes": 774391,
       "width": 1800,
       "height": 2450,
       "format": "PNG"
@@ -579,7 +584,7 @@
     {
       "path": "assets/task_suite_infographic.png",
       "exists": true,
-      "bytes": 2612510,
+      "bytes": 1588641,
       "width": 1800,
       "height": 6600,
       "format": "PNG"

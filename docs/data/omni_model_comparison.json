@@ -1,0 +1,513 @@
+{
+  "title": "Ropedia Xperience-10M Current Result Versions",
+  "generated_at_utc": "2026-06-06T23:26:13+00:00",
+  "status": "pass",
+  "version_count": 3,
+  "comparison_rule": "Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and Cosmos3 future-window metrics answer different questions.",
+  "version_reading_notes": [
+    "Version 1 is the public-sample 12-task harness with minimal and neural heads.",
+    "Version 2 is the selected 128-episode same-split simple/NN baseline alignment.",
+    "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, while Cosmos3-Nano is a future-window compatibility result rather than a full Cosmos diffusion fine-tune."
+  ],
+  "versions": [
+    {
+      "id": "v1_single_episode_public_sample",
+      "title": "Single-Episode Public-Sample Task Suite",
+      "status": "verified",
+      "scope": "one public Xperience-10M sample episode",
+      "source": "results/episode_task_suite/summary_report.json",
+      "split": "chronological 70/30 within one episode",
+      "counts": {
+        "episodes": 1,
+        "windows": 1161,
+        "frames": 5821,
+        "feature_dim": 8546,
+        "task_count": 12,
+        "neural_task_count": 12
+      },
+      "models": [
+        "minimal task heads",
+        "compact neural MLP task heads"
+      ],
+      "task_metrics": [
+        {
+          "task": "caption_grounding",
+          "task_display_name": "Language Grounding",
+          "simple_status": "pass",
+          "simple_primary_metric": "mrr",
+          "simple_primary_score": 0.016023479050338015,
+          "neural_status": "pass",
+          "neural_primary_metric": "mrr",
+          "neural_primary_score": 0.01684125567132316
+        },
+        {
+          "task": "contact_prediction",
+          "task_display_name": "Contact State Prediction",
+          "simple_status": "pass",
+          "simple_primary_metric": "macro_f1",
+          "simple_primary_score": 1.0,
+          "neural_status": "pass",
+          "neural_primary_metric": "macro_f1",
+          "neural_primary_score": 1.0
+        },
+        {
+          "task": "cross_modal_retrieval",
+          "task_display_name": "Cross-Modal Retrieval",
+          "simple_status": "pass",
+          "simple_primary_metric": "mrr",
+          "simple_primary_score": 0.26925966892956127,
+          "neural_status": "pass",
+          "neural_primary_metric": "mrr",
+          "neural_primary_score": 0.1299971898648288
+        },
+        {
+          "task": "hand_trajectory_forecast",
+          "task_display_name": "Hand Trajectory Forecasting",
+          "simple_status": "pass",
+          "simple_primary_metric": "mpjpe",
+          "simple_primary_score": 0.8646570444107056,
+          "neural_status": "pass",
+          "neural_primary_metric": "mpjpe",
+          "neural_primary_score": 0.10785018652677536
+        },
+        {
+          "task": "misalignment_detection",
+          "task_display_name": "Multimodal Synchronization Detection",
+          "simple_status": "pass",
+          "simple_primary_metric": "f1",
+          "simple_primary_score": 0.5051698670605613,
+          "neural_status": "pass",
+          "neural_primary_metric": "f1",
+          "neural_primary_score": 0.7152682255845944
+        },
+        {
+          "task": "modality_reconstruction",
+          "task_display_name": "Cross-Modal Reconstruction",
+          "simple_status": "pass",
+          "simple_primary_metric": "r2",
+          "simple_primary_score": -0.015271898913936655,
+          "neural_status": "pass",
+          "neural_primary_metric": "r2",
+          "neural_primary_score": -0.010171410134180991
+        },
+        {
+          "task": "next_action",
+          "task_display_name": "Next-Action Prediction",
+          "simple_status": "pass",
+          "simple_primary_metric": "macro_f1",
+          "simple_primary_score": 0.05925925925925927,
+          "neural_status": "pass",
+          "neural_primary_metric": "macro_f1",
+          "neural_primary_score": 0.04186046511627907
+        },
+        {
+          "task": "object_relevance",
+          "task_display_name": "Object Relevance Prediction",
+          "simple_status": "pass",
+          "simple_primary_metric": "micro_f1",
+          "simple_primary_score": 0.18034382095361662,
+          "neural_status": "pass",
+          "neural_primary_metric": "micro_f1",
+          "neural_primary_score": 0.1679279279279279
+        },
+        {
+          "task": "temporal_order",
+          "task_display_name": "Temporal Order Verification",
+          "simple_status": "pass",
+          "simple_primary_metric": "accuracy",
+          "simple_primary_score": 0.4540229885057471,
+          "neural_status": "pass",
+          "neural_primary_metric": "accuracy",
+          "neural_primary_score": 0.8577586206896551
+        },
+        {
+          "task": "timeline_action",
+          "task_display_name": "Action Recognition",
+          "simple_status": "pass",
+          "simple_primary_metric": "macro_f1",
+          "simple_primary_score": 0.05,
+          "neural_status": "pass",
+          "neural_primary_metric": "macro_f1",
+          "neural_primary_score": 0.014814814814814814
+        },
+        {
+          "task": "timeline_subtask",
+          "task_display_name": "Procedure Step Recognition",
+          "simple_status": "pass",
+          "simple_primary_metric": "macro_f1",
+          "simple_primary_score": 0.05056355513846935,
+          "neural_status": "pass",
+          "neural_primary_metric": "macro_f1",
+          "neural_primary_score": 0.02810810810810811
+        },
+        {
+          "task": "transition_detection",
+          "task_display_name": "Action Boundary Detection",
+          "simple_status": "pass",
+          "simple_primary_metric": "macro_f1",
+          "simple_primary_score": 0.6118237590630229,
+          "neural_status": "pass",
+          "neural_primary_metric": "macro_f1",
+          "neural_primary_score": 0.5862068965517241
+        }
+      ],
+      "interpretation": "This layer verifies the 12 task contracts and raw multimodal feature pipeline on the public sample. It is not a cross-episode benchmark."
+    },
+    {
+      "id": "v2_multi_episode_128_aligned_metadata_baselines",
+      "title": "128-Episode Aligned Simple/NN Baselines",
+      "status": "pass",
+      "scope": "selected 128-episode 96/16/16 split",
+      "source": "results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md",
+      "split": "train/val/test by selected episode/session",
+      "counts": {
+        "rows": 3808,
+        "split_counts": {
+          "train": 2848,
+          "val": 512,
+          "test": 448
+        },
+        "episode_counts": {
+          "test": 16,
+          "train": 96,
+          "val": 16
+        },
+        "task_count": 12,
+        "simple_supported_task_count": 8,
+        "neural_supported_task_count": 6
+      },
+      "models": [
+        "metadata/text simple baselines",
+        "metadata/text neural MLP baselines"
+      ],
+      "task_metrics": [
+        {
+          "task": "timeline_action",
+          "task_display_name": "Action Recognition",
+          "simple_status": "pass",
+          "simple_primary_metric": "macro_f1",
+          "simple_primary_score": 0.00017511601435951318,
+          "neural_status": "pass",
+          "neural_primary_metric": "macro_f1",
+          "neural_primary_score": 0.0
+        },
+        {
+          "task": "timeline_subtask",
+          "task_display_name": "Procedure Step Recognition",
+          "simple_status": "pass",
+          "simple_primary_metric": "macro_f1",
+          "simple_primary_score": 0.0,
+          "neural_status": "pass",
+          "neural_primary_metric": "macro_f1",
+          "neural_primary_score": 0.0
+        },
+        {
+          "task": "transition_detection",
+          "task_display_name": "Action Boundary Detection",
+          "simple_status": "pass",
+          "simple_primary_metric": "macro_f1",
+          "simple_primary_score": 0.5219803670507895,
+          "neural_status": "pass",
+          "neural_primary_metric": "macro_f1",
+          "neural_primary_score": 0.45822172492907925
+        },
+        {
+          "task": "next_action",
+          "task_display_name": "Next-Action Prediction",
+          "simple_status": "pass",
+          "simple_primary_metric": "macro_f1",
+          "simple_primary_score": 0.00019966057701906761,
+          "neural_status": "pass",
+          "neural_primary_metric": "macro_f1",
+          "neural_primary_score": 0.0
+        },
+        {
+          "task": "hand_trajectory_forecast",
+          "task_display_name": "Hand Trajectory Forecasting",
+          "simple_status": "unsupported_without_raw_128_feature_blocks",
+          "simple_primary_metric": "mpjpe",
+          "simple_primary_score": null,
+          "neural_status": "not_run",
+          "neural_primary_metric": "",
+          "neural_primary_score": null
+        },
+        {
+          "task": "contact_prediction",
+          "task_display_name": "Contact State Prediction",
+          "simple_status": "pass",
+          "simple_primary_metric": "macro_f1",
+          "simple_primary_score": 0.5167950693374422,
+          "neural_status": "pass",
+          "neural_primary_metric": "macro_f1",
+          "neural_primary_score": 0.21951219512195122
+        },
+        {
+          "task": "object_relevance",
+          "task_display_name": "Object Relevance Prediction",
+          "simple_status": "pass",
+          "simple_primary_metric": "micro_f1",
+          "simple_primary_score": 0.18221614227086183,
+          "neural_status": "pass",
+          "neural_primary_metric": "micro_f1",
+          "neural_primary_score": 0.1053878034339846
+        },
+        {
+          "task": "caption_grounding",
+          "task_display_name": "Language Grounding",
+          "simple_status": "pass",
+          "simple_primary_metric": "mrr",
+          "simple_primary_score": 0.012785504572093487,
+          "neural_status": "not_run",
+          "neural_primary_metric": "",
+          "neural_primary_score": null
+        },
+        {
+          "task": "cross_modal_retrieval",
+          "task_display_name": "Cross-Modal Retrieval",
+          "simple_status": "unsupported_without_raw_128_feature_blocks",
+          "simple_primary_metric": "mrr",
+          "simple_primary_score": null,
+          "neural_status": "not_run",
+          "neural_primary_metric": "",
+          "neural_primary_score": null
+        },
+        {
+          "task": "modality_reconstruction",
+          "task_display_name": "Cross-Modal Reconstruction",
+          "simple_status": "unsupported_without_raw_128_feature_blocks",
+          "simple_primary_metric": "r2",
+          "simple_primary_score": null,
+          "neural_status": "not_run",
+          "neural_primary_metric": "",
+          "neural_primary_score": null
+        },
+        {
+          "task": "temporal_order",
+          "task_display_name": "Temporal Order Verification",
+          "simple_status": "pass",
+          "simple_primary_metric": "f1",
+          "simple_primary_score": 0.32713178294573647,
+          "neural_status": "not_run",
+          "neural_primary_metric": "",
+          "neural_primary_score": null
+        },
+        {
+          "task": "misalignment_detection",
+          "task_display_name": "Multimodal Synchronization Detection",
+          "simple_status": "unsupported_without_raw_128_feature_blocks",
+          "simple_primary_metric": "f1",
+          "simple_primary_score": null,
+          "neural_status": "not_run",
+          "neural_primary_metric": "",
+          "neural_primary_score": null
+        }
+      ],
+      "interpretation": "This layer aligns the previous simple and neural baseline framing to the same selected 96/16/16 split used by the model branches. It uses public-safe JSONL metadata/text features, so raw-feature-only tasks remain explicitly unsupported until 128-run sensor feature blocks exist."
+    },
+    {
+      "id": "v3_multi_episode_foundation_model_branches",
+      "title": "128-Episode Foundation-Model Branches",
+      "status": "partial_verified",
+      "scope": "selected 128-episode split and compatible derived windows",
+      "source": "results/omni_finetune/verified_public/",
+      "split": "episode/session held-out split; exact task target depends on backbone contract",
+      "counts": {
+        "verified_branch_count": 4,
+        "qwen3_verified_package_count": 3,
+        "cosmos3_verified_package_count": 1
+      },
+      "models": [
+        "Qwen3-Omni LoRA",
+        "Cosmos3-Nano future-window compatibility branch"
+      ],
+      "branches": [
+        {
+          "id": "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full",
+          "title": "Cosmos3-Nano Future-Window World Model",
+          "status": "verified",
+          "backbone": "cosmos_world_model",
+          "dataset_contract": "xperience10m_future_window_world_model_v0",
+          "training_objective": "future_window_and_action_conditioned_world_modeling",
+          "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/verified_result_summary.json",
+          "dataset_run_id": "xperience10m_cosmos3_nano_128ep_future_window_h5_compat",
+          "train_run_id": "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter",
+          "eval_run_id": "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full",
+          "counts": {
+            "dataset_samples": 3213,
+            "dataset_episodes": 119,
+            "split_counts": {
+              "train": 2403,
+              "test": 378,
+              "val": 432
+            },
+            "train_samples": 2403,
+            "val_samples": 432,
+            "eval_samples": 378,
+            "held_out_episode_count": 14,
+            "num_processes": 1
+          },
+          "primary_metrics": {
+            "future_retrieval_mrr": 0.022138720585222767,
+            "future_retrieval_recall_at_5": 0.015873015873015872,
+            "temporal_consistency": 0.09523809523809523,
+            "feature_reconstruction_error": 3479.218317102503,
+            "transition_accuracy": 0.9682539682539683,
+            "contact_accuracy": 0.7433862433862434,
+            "held_out_episode_count": 14
+          },
+          "history": [
+            {
+              "epoch": 0,
+              "train_loss": null,
+              "val_loss": null,
+              "note": "closed-form mean-delta adapter; no Cosmos diffusion weights fine-tuned in this compatibility run"
+            }
+          ]
+        },
+        {
+          "id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval",
+          "title": "Qwen3-Omni LoRA",
+          "status": "verified",
+          "backbone": "qwen3_omni_lora",
+          "dataset_contract": "xperience10m_episode_json_qa_v1",
+          "training_objective": "structured_episode_understanding_json_qa",
+          "source": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/verified_result_summary.json",
+          "dataset_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605",
+          "train_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_lora",
+          "eval_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval",
+          "counts": {
+            "dataset_samples": 3808,
+            "dataset_episodes": 119,
+            "split_counts": {
+              "train": 2848,
+              "val": 512,
+              "test": 448
+            },
+            "train_samples": 2848,
+            "val_samples": 512,
+            "eval_samples": 448,
+            "held_out_episode_count": 14,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "json_validity_rate": 0.875,
+            "action_macro_f1": 0.0026621494447581404,
+            "subtask_accuracy": 0.006696428571428571,
+            "transition_accuracy": 0.8504464285714286,
+            "next_action_accuracy": 0.024553571428571428,
+            "contact_accuracy": 0.6450892857142857,
+            "object_micro_f1": 0.22299431459254582,
+            "held_out_episode_count": 14
+          },
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.41304643672440994,
+              "val_loss": 0.0330660454928875,
+              "global_step": 356
+            }
+          ]
+        },
+        {
+          "id": "xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full",
+          "title": "Qwen3-Omni LoRA",
+          "status": "verified",
+          "backbone": "qwen3_omni_lora",
+          "dataset_contract": "xperience10m_episode_json_qa_v1",
+          "training_objective": "structured_episode_understanding_json_qa",
+          "source": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full/verified_result_summary.json",
+          "dataset_run_id": "xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu",
+          "train_run_id": "xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6",
+          "eval_run_id": "xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full",
+          "counts": {
+            "dataset_samples": 3808,
+            "dataset_episodes": 119,
+            "split_counts": {
+              "train": 2848,
+              "val": 512,
+              "test": 448
+            },
+            "train_samples": 2848,
+            "val_samples": 0,
+            "eval_samples": 448,
+            "held_out_episode_count": 14,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "json_validity_rate": 0.8526785714285714,
+            "action_macro_f1": 0.00213753459655099,
+            "subtask_accuracy": 0.004464285714285714,
+            "transition_accuracy": 0.828125,
+            "next_action_accuracy": 0.022321428571428572,
+            "contact_accuracy": 0.6517857142857143,
+            "object_micro_f1": 0.23062730627306272,
+            "held_out_episode_count": 14
+          },
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.4121775626560694,
+              "val_loss": null,
+              "global_step": 356
+            }
+          ]
+        },
+        {
+          "id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
+          "title": "Qwen3-Omni LoRA",
+          "status": "verified",
+          "backbone": "qwen3_omni_lora",
+          "dataset_contract": "xperience10m_episode_json_qa_v1",
+          "training_objective": "structured_episode_understanding_json_qa",
+          "source": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full/verified_result_summary.json",
+          "dataset_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605",
+          "train_run_id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora",
+          "eval_run_id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
+          "counts": {
+            "dataset_samples": 3808,
+            "dataset_episodes": 119,
+            "split_counts": {
+              "train": 2848,
+              "val": 512,
+              "test": 448
+            },
+            "train_samples": 2848,
+            "val_samples": 512,
+            "eval_samples": 448,
+            "held_out_episode_count": 14,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "json_validity_rate": 0.9977678571428571,
+            "action_macro_f1": 0.0024331644885523347,
+            "subtask_accuracy": 0.002232142857142857,
+            "transition_accuracy": 0.9709821428571429,
+            "next_action_accuracy": 0.029017857142857144,
+            "contact_accuracy": 0.71875,
+            "object_micro_f1": 0.30160427807486634,
+            "held_out_episode_count": 14
+          },
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.41282760031950355,
+              "val_loss": 0.03288277983665466,
+              "global_step": 356
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.027745448225544075,
+              "val_loss": 0.027823254466056824,
+              "global_step": 712
+            }
+          ]
+        }
+      ],
+      "interpretation": "This layer contains the held-out foundation-model packages. Qwen3-Omni packages evaluate structured JSON task prediction; Cosmos3-Nano currently evaluates a future-window world-model compatibility adapter, not a full diffusion-weight fine-tune."
+    }
+  ],
+  "pending": [
+    "Use the final Qwen3 full-eval package as the current Qwen result; older Qwen package rows remain historical diagnostics for comparison.",
+    "Promote Cosmos3 from compatibility adapter to full Cosmos3 fine-tuning only after a separate environment with matching Diffusers/Cosmos dependencies is prepared."
+  ]
+}

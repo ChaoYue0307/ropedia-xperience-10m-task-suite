@@ -1,9 +1,9 @@
 {
   "id": "cosmos_world_model",
-  "display_name": "Cosmos-Style World Model",
-  "status": "planned_adapter",
+  "display_name": "Cosmos3-Nano Future-Window World Model",
+  "status": "implemented",
   "model_family": "Cosmos / physical-world foundation models",
-  "default_model_id": null,
+  "default_model_id": "nvidia/Cosmos3-Nano",
   "local_model_env": "COSMOS_MODEL_DIR",
   "dataset_contract": "xperience10m_future_window_world_model_v0",
   "training_objective": "future_window_and_action_conditioned_world_modeling",
@@ -41,10 +41,10 @@
   "entrypoints": {
     "selection_manifest": "scripts/omni/build_selection_episode_manifest.py",
     "neutral_index": "scripts/omni/export_model_neutral_window_index.py",
-    "export": null,
-    "train": null,
-    "eval": null,
-    "launcher": null,
+    "export": "scripts/omni/export_cosmos3_future_window_dataset.py",
+    "train": "scripts/omni/eval_cosmos3_future_window_retrieval.py",
+    "eval": "scripts/omni/eval_cosmos3_future_window_retrieval.py",
+    "launcher": "scripts/omni/run_cosmos3_nano_future_window_compat.sh",
     "validate": "scripts/omni/validate_omni_finetune_run.py"
   },
   "primary_metrics": [
@@ -92,9 +92,9 @@
     ]
   },
   "extension_requirements": [
-    "Add a future-window exporter that creates context/target pairs instead of JSON QA records.",
-    "Define whether the target is pixels, latent video state, sensor features, or retrieval among candidate futures.",
-    "Add an evaluator that scores held-out future prediction without training on held-out test episodes.",
+    "Current implementation starts with Cosmos3-Nano compatibility over same-split future sensor-feature retrieval; it does not fine-tune Cosmos diffusion weights yet.",
+    "Install a Cosmos3 Diffusers training stack before replacing the compatibility adapter with LoRA or diffusion post-training.",
+    "Keep target windows inside the same episode and never train on held-out test episodes.",
     "Record generated or retrieved qualitative examples separately from task-classification metrics."
   ]
 }

@@ -6,7 +6,7 @@
   <rect x="58" y="130" width="515" height="220" rx="8" fill="#050905" stroke="#ccffa0" stroke-opacity="0.24"/>
 <text x="82" y="172" font-size="21" font-weight="700" fill="#f4f8ef">A. Human Modeling &amp; Motion Understanding</text>
 <text x="82" y="205" font-size="15" font-weight="700" fill="#ccffa0">partially implemented</text>
-<text x="82" y="238" font-size="14" font-weight="500" fill="#dce8d7">Tasks: timeline_action, hand_trajectory_forecast, contact_prediction, object_relevance</text>
+<text x="82" y="238" font-size="14" font-weight="500" fill="#dce8d7">Tasks: Action Recognition, Hand Trajectory Forecasting, Contact State Prediction, Object Relevance Prediction</text>
 <rect x="82" y="262" width="234" height="16" rx="8" fill="#ccffa0"/>
 <rect x="316" y="262" width="234" height="16" rx="8" fill="#7ae5c3"/>
 <text x="82" y="304" font-size="14" font-weight="700" fill="#ccffa0">Direct 2</text>
@@ -14,7 +14,7 @@
 <text x="328" y="304" font-size="14" font-weight="700" fill="#d8f4a5">Diagnostic 0</text><rect x="607" y="130" width="515" height="220" rx="8" fill="#050905" stroke="#ccffa0" stroke-opacity="0.24"/>
 <text x="631" y="172" font-size="21" font-weight="700" fill="#f4f8ef">B. 3D/4D Reconstruction &amp; Neural Rendering</text>
 <text x="631" y="205" font-size="15" font-weight="700" fill="#ccffa0">proxy tasks only</text>
-<text x="631" y="238" font-size="14" font-weight="500" fill="#dce8d7">Tasks: cross_modal_retrieval, modality_reconstruction, misalignment_detection</text>
+<text x="631" y="238" font-size="14" font-weight="500" fill="#dce8d7">Tasks: Cross-Modal Retrieval, Cross-Modal Reconstruction, Multimodal Synchronization Detection</text>
 <rect x="631" y="262" width="311" height="16" rx="8" fill="#7ae5c3"/>
 <rect x="942" y="262" width="156" height="16" rx="8" fill="#d8f4a5"/>
 <text x="631" y="304" font-size="14" font-weight="700" fill="#ccffa0">Direct 0</text>
@@ -22,7 +22,7 @@
 <text x="877" y="304" font-size="14" font-weight="700" fill="#d8f4a5">Diagnostic 1</text><rect x="58" y="384" width="515" height="220" rx="8" fill="#050905" stroke="#ccffa0" stroke-opacity="0.24"/>
 <text x="82" y="426" font-size="21" font-weight="700" fill="#f4f8ef">C. Egocentric Vision &amp; Interaction</text>
 <text x="82" y="459" font-size="15" font-weight="700" fill="#ccffa0">strongest implemented track</text>
-<text x="82" y="492" font-size="14" font-weight="500" fill="#dce8d7">Tasks: timeline_action, timeline_subtask, transition_detection, next_action, hand_trajectory_forecast, +6</text>
+<text x="82" y="492" font-size="14" font-weight="500" fill="#dce8d7">Tasks: Action Recognition, Procedure Step Recognition, Action Boundary Detection, Next-Action Prediction, Hand Trajectory Forecasting, +6</text>
 <rect x="82" y="516" width="255" height="16" rx="8" fill="#ccffa0"/>
 <rect x="337" y="516" width="85" height="16" rx="8" fill="#7ae5c3"/>
 <rect x="422" y="516" width="127" height="16" rx="8" fill="#d8f4a5"/>
@@ -31,7 +31,7 @@
 <text x="328" y="558" font-size="14" font-weight="700" fill="#d8f4a5">Diagnostic 3</text><rect x="607" y="384" width="515" height="220" rx="8" fill="#050905" stroke="#ccffa0" stroke-opacity="0.24"/>
 <text x="631" y="426" font-size="21" font-weight="700" fill="#f4f8ef">D. Scene Reconstruction &amp; World Modeling</text>
 <text x="631" y="459" font-size="15" font-weight="700" fill="#ccffa0">early proxy tasks</text>
-<text x="631" y="492" font-size="14" font-weight="500" fill="#dce8d7">Tasks: timeline_subtask, transition_detection, next_action, object_relevance, caption_grounding, +4</text>
+<text x="631" y="492" font-size="14" font-weight="500" fill="#dce8d7">Tasks: Procedure Step Recognition, Action Boundary Detection, Next-Action Prediction, Object Relevance Prediction, Language Grounding, +4</text>
 <rect x="631" y="516" width="311" height="16" rx="8" fill="#7ae5c3"/>
 <rect x="942" y="516" width="156" height="16" rx="8" fill="#d8f4a5"/>
 <text x="631" y="558" font-size="14" font-weight="700" fill="#ccffa0">Direct 0</text>

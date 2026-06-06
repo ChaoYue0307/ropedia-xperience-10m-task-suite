@@ -13,20 +13,20 @@ The runner uses the derived Qwen JSONL export and public-safe metadata. It does 
 
 ## Coverage
 
-| task | simple status | simple primary | neural status | neural primary |
-| --- | --- | ---: | --- | ---: |
-| timeline_action | pass | 0.0002 | pass | 0.0000 |
-| timeline_subtask | pass | 0.0000 | pass | 0.0000 |
-| transition_detection | pass | 0.5220 | pass | 0.4582 |
-| next_action | pass | 0.0002 | pass | 0.0000 |
-| hand_trajectory_forecast | unsupported_without_raw_128_feature_blocks |  | not_run |  |
-| contact_prediction | pass | 0.5168 | pass | 0.2195 |
-| object_relevance | pass | 0.1822 | pass | 0.1054 |
-| caption_grounding | pass | 0.0128 | not_run |  |
-| cross_modal_retrieval | unsupported_without_raw_128_feature_blocks |  | not_run |  |
-| modality_reconstruction | unsupported_without_raw_128_feature_blocks |  | not_run |  |
-| temporal_order | pass | 0.3271 | not_run |  |
-| misalignment_detection | unsupported_without_raw_128_feature_blocks |  | not_run |  |
+| task | artifact id | simple status | simple primary | neural status | neural primary |
+| --- | --- | --- | ---: | --- | ---: |
+| Action Recognition | `timeline_action` | pass | 0.0002 | pass | 0.0000 |
+| Procedure Step Recognition | `timeline_subtask` | pass | 0.0000 | pass | 0.0000 |
+| Action Boundary Detection | `transition_detection` | pass | 0.5220 | pass | 0.4582 |
+| Next-Action Prediction | `next_action` | pass | 0.0002 | pass | 0.0000 |
+| Hand Trajectory Forecasting | `hand_trajectory_forecast` | unsupported_without_raw_128_feature_blocks |  | not_run |  |
+| Contact State Prediction | `contact_prediction` | pass | 0.5168 | pass | 0.2195 |
+| Object Relevance Prediction | `object_relevance` | pass | 0.1822 | pass | 0.1054 |
+| Language Grounding | `caption_grounding` | pass | 0.0128 | not_run |  |
+| Cross-Modal Retrieval | `cross_modal_retrieval` | unsupported_without_raw_128_feature_blocks |  | not_run |  |
+| Cross-Modal Reconstruction | `modality_reconstruction` | unsupported_without_raw_128_feature_blocks |  | not_run |  |
+| Temporal Order Verification | `temporal_order` | pass | 0.3271 | not_run |  |
+| Multimodal Synchronization Detection | `misalignment_detection` | unsupported_without_raw_128_feature_blocks |  | not_run |  |
 
 ## Interpretation
 

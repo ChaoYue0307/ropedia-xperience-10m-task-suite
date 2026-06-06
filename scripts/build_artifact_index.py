@@ -146,6 +146,14 @@ ARTIFACTS = [
         "shows": "Runs simple metadata and neural MLP baselines on the same selected 96/16/16 episode split used by the Qwen3-Omni diagnostic pilot.",
     },
     {
+        "id": "qwen3_lora_hf_package_builder",
+        "title": "Qwen3 LoRA HF package builder",
+        "path": "scripts/omni/prepare_qwen3_lora_hf_package.py",
+        "kind": "publication_workflow",
+        "surface": "repo_hf",
+        "shows": "Builds the upload-ready Hugging Face adapter folder from a verified Qwen3 LoRA result summary and adapter directory.",
+    },
+    {
         "id": "additional_development_directions",
         "title": "Additional development directions",
         "path": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
@@ -683,6 +691,14 @@ ARTIFACTS = [
         "shows": "Summarizes the data-readiness checks required before a held-out Qwen3-Omni pilot can report metrics.",
     },
     {
+        "id": "qwen3_lora_hf_upload_note",
+        "title": "Qwen3 LoRA HF upload note",
+        "path": "results/omni_finetune/HF_UPLOAD.md",
+        "kind": "publication_workflow",
+        "surface": "repo_hf",
+        "shows": "Documents the final 128-episode LoRA adapter upload path, target model repo, package builder, and forbidden files.",
+    },
+    {
         "id": "multi_episode_access_status",
         "title": "Multi-episode access status",
         "path": "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
@@ -696,7 +712,7 @@ ARTIFACTS = [
         "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/ERROR_ANALYSIS.md",
         "kind": "scaleup_status",
         "surface": "repo_hf",
-        "shows": "Summarizes validation-aware Qwen3-Omni held-out failures by episode, action family, train-seen status, required-modality state, and object category.",
+        "shows": "Summarizes the earlier validation-aware Qwen3-Omni held-out failures by episode, action family, train-seen status, required-modality state, and object category.",
     },
     {
         "id": "qwen3_omni_error_analysis_json",
@@ -721,6 +737,38 @@ ARTIFACTS = [
         "kind": "metrics_source",
         "surface": "repo_hf",
         "shows": "Machine-readable 96/16/16 split counts, run configuration, per-task simple metrics, neural metrics, and raw-feature unsupported statuses.",
+    },
+    {
+        "id": "omni_model_comparison_report",
+        "title": "Omni model comparison report",
+        "path": "results/omni_finetune/OMNI_MODEL_COMPARISON.md",
+        "kind": "scaleup_status",
+        "surface": "repo_hf",
+        "shows": "Reader-facing comparison of the single-episode task suite, 128-episode aligned baselines, Qwen3-Omni packages, and Cosmos3 future-window branch.",
+    },
+    {
+        "id": "omni_model_comparison_json",
+        "title": "Omni model comparison JSON",
+        "path": "docs/data/omni_model_comparison.json",
+        "kind": "metrics_source",
+        "surface": "repo_hf",
+        "shows": "Machine-readable comparison of the current result versions, per-task aligned baselines, verified Qwen3 packages, and Cosmos3 package.",
+    },
+    {
+        "id": "cosmos3_nano_verified_summary",
+        "title": "Cosmos3-Nano verified package summary",
+        "path": "results/omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/verified_result_summary.json",
+        "kind": "metrics_source",
+        "surface": "repo_hf",
+        "shows": "Machine-readable verified public summary for the Cosmos3-Nano future-window compatibility package.",
+    },
+    {
+        "id": "cosmos3_nano_run_report",
+        "title": "Cosmos3-Nano future-window run report",
+        "path": "results/omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/eval/RUN_REPORT.md",
+        "kind": "scaleup_status",
+        "surface": "repo_hf",
+        "shows": "Reader-facing held-out metrics and interpretation for the Cosmos3-Nano future-window compatibility branch.",
     },
     {
         "id": "citation",
@@ -757,6 +805,66 @@ def directory_stats(path: Path) -> dict:
     }
 
 
+def verified_public_package_artifacts() -> list[dict]:
+    verified_root = ROOT / "results/omni_finetune/verified_public"
+    if not verified_root.exists():
+        return []
+
+    artifacts: list[dict] = []
+    for summary_path in sorted(verified_root.glob("*/verified_result_summary.json")):
+        package_dir = summary_path.parent
+        slug = package_dir.name
+        payload = json.loads(summary_path.read_text(encoding="utf-8"))
+        title = payload.get("backbone_display_name") or payload.get("eval_run_id") or slug
+        backbone = payload.get("backbone", "unknown_backbone")
+        status = payload.get("status", "unknown")
+        eval_run_id = payload.get("eval_run_id", slug)
+        artifacts.append(
+            {
+                "id": f"verified_public_package_{slug}",
+                "title": f"Verified public package: {title}",
+                "path": package_dir.relative_to(ROOT).as_posix(),
+                "kind": "verified_public_package",
+                "surface": "repo_hf",
+                "shows": (
+                    f"Public-safe verified package for {eval_run_id} "
+                    f"({backbone}, status={status})."
+                ),
+            }
+        )
+        artifacts.append(
+            {
+                "id": f"verified_public_summary_{slug}",
+                "title": f"Verified summary: {title}",
+                "path": summary_path.relative_to(ROOT).as_posix(),
+                "kind": "metrics_source",
+                "surface": "repo_hf",
+                "shows": f"Machine-readable verified summary for {eval_run_id}.",
+            }
+        )
+        for relative_path, kind, label in [
+            ("PUBLIC_RESULT_SUMMARY.md", "scaleup_status", "public result summary"),
+            ("eval/RUN_REPORT.md", "scaleup_status", "run report"),
+            ("eval/metrics.json", "metrics_source", "metrics JSON"),
+            ("package_audit.json", "publication_audit", "package audit"),
+        ]:
+            path = package_dir / relative_path
+            if not path.exists():
+                continue
+            safe_label = label.replace(" ", "_")
+            artifacts.append(
+                {
+                    "id": f"verified_public_{safe_label}_{slug}",
+                    "title": f"Verified {label}: {title}",
+                    "path": path.relative_to(ROOT).as_posix(),
+                    "kind": kind,
+                    "surface": "repo_hf",
+                    "shows": f"{label.capitalize()} for {eval_run_id}.",
+                }
+            )
+    return artifacts
+
+
 def artifact_entry(item: dict) -> dict:
     path = ROOT / item["path"]
     entry = {
@@ -778,6 +886,7 @@ def artifact_entry(item: dict) -> dict:
 
 def main() -> int:
     artifacts = [dict(item) for item in ARTIFACTS]
+    artifacts.extend(verified_public_package_artifacts())
     summary_path = ROOT / "results/episode_task_suite/summary_report.json"
     if summary_path.exists():
         summary = json.loads(summary_path.read_text(encoding="utf-8"))

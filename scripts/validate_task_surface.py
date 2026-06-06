@@ -15,6 +15,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from task_display import TASK_DISPLAY_NAMES
+
 
 ROOT = Path(__file__).resolve().parents[1]
 TASK_JSON = ROOT / "docs/data/task_walkthroughs.json"
@@ -22,20 +24,7 @@ WEBSITE = ROOT / "docs/index.html"
 WALKTHROUGH_MD = ROOT / "results/episode_task_suite/task_walkthroughs/TASK_WALKTHROUGHS.md"
 OUTPUT = ROOT / "docs/data/task_surface_integrity.json"
 
-EXPECTED_TASKS = {
-    "timeline_action": "Action Recognition",
-    "timeline_subtask": "Procedure Step Recognition",
-    "transition_detection": "Action Boundary Detection",
-    "next_action": "Next-Action Prediction",
-    "hand_trajectory_forecast": "Hand Trajectory Forecasting",
-    "contact_prediction": "Contact State Prediction",
-    "object_relevance": "Object Relevance Prediction",
-    "caption_grounding": "Language Grounding",
-    "cross_modal_retrieval": "Cross-Modal Retrieval",
-    "modality_reconstruction": "Cross-Modal Reconstruction",
-    "temporal_order": "Temporal Order Verification",
-    "misalignment_detection": "Multimodal Synchronization Detection",
-}
+EXPECTED_TASKS = TASK_DISPLAY_NAMES
 
 EXPECTED_EXTENSION_NAMES = {
     "body_motion_intensity": "Body and Hand Motion Intensity",

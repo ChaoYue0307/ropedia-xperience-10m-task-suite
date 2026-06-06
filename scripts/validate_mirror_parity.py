@@ -31,6 +31,7 @@ DATA_FILES = [
     "live_publication_status.json",
     "modality_atlas.json",
     "omni_finetune_verified_result.json",
+    "omni_model_comparison.json",
     "project_brief.json",
     "project_manifest.json",
     "project_packet.json",
@@ -78,6 +79,8 @@ ASSET_FILES = [
 
 SCRIPT_FILES = [
     "omni/analyze_qwen3_omni_errors.py",
+    "omni/build_omni_model_comparison.py",
+    "omni/prepare_qwen3_lora_hf_package.py",
     "omni/run_128_task_baselines.py",
     "audio_ablation_and_raw_upgrade.py",
     "build_artifact_index.py",
@@ -135,6 +138,12 @@ RESULT_FILES = [
     "omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md",
     "omni_finetune/multi_episode_128_task_baselines/summary_report.json",
     "omni_finetune/multi_episode_128_task_baselines/task_metrics.csv",
+    "omni_finetune/OMNI_MODEL_COMPARISON.md",
+    "omni_finetune/HF_UPLOAD.md",
+    "omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/verified_result_summary.json",
+    "omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/PUBLIC_RESULT_SUMMARY.md",
+    "omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/eval/metrics.json",
+    "omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/eval/RUN_REPORT.md",
 ]
 
 DOC_FILES = [
@@ -193,6 +202,25 @@ def file_record(path: Path, hf_root: Path) -> dict:
         record["bytes"] = 0
         record["sha256"] = None
     return record
+
+
+def verified_public_result_files() -> list[str]:
+    """Return every public-safe file from verified model packages.
+
+    Verified packages are already sanitized by the package audit; mirroring the
+    whole package prevents final model results from being silently omitted when a
+    new run lands under results/omni_finetune/verified_public.
+    """
+
+    verified_root = ROOT / "results/omni_finetune/verified_public"
+    if not verified_root.exists():
+        return []
+    files: list[str] = []
+    for path in verified_root.rglob("*"):
+        if not path.is_file():
+            continue
+        files.append(path.relative_to(ROOT / "results").as_posix())
+    return sorted(files)
 
 
 def parity_group(name: str, local_path: Path, mirrors: dict[str, Path], hf_root: Path) -> dict:
@@ -282,7 +310,8 @@ def build_report(hf_root: Path) -> dict:
             )
         )
 
-    for filename in RESULT_FILES:
+    result_files = sorted(set(RESULT_FILES) | set(verified_public_result_files()))
+    for filename in result_files:
         groups.append(
             parity_group(
                 f"results/{filename}",

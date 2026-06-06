@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-06-03T12:47:16.188806+00:00",
+    "generated_at": "2026-06-06T21:22:14.639673+00:00",
     "window_count": 1161,
     "feature_dim": 8546,
     "object_label_rows": 1161,
@@ -16,12 +16,26 @@
     }
   },
   "tasks": {
-    "timeline_action": "Current Action Recognition",
-    "timeline_subtask": "Current Subtask Recognition",
-    "transition_detection": "Action Transition Detection",
+    "timeline_action": "Action Recognition",
+    "timeline_subtask": "Procedure Step Recognition",
+    "transition_detection": "Action Boundary Detection",
     "next_action": "Next-Action Prediction",
     "contact_prediction": "Contact State Prediction",
-    "object_relevance": "Relevant Object Prediction"
+    "object_relevance": "Object Relevance Prediction"
+  },
+  "task_display_names": {
+    "timeline_action": "Action Recognition",
+    "timeline_subtask": "Procedure Step Recognition",
+    "transition_detection": "Action Boundary Detection",
+    "next_action": "Next-Action Prediction",
+    "hand_trajectory_forecast": "Hand Trajectory Forecasting",
+    "contact_prediction": "Contact State Prediction",
+    "object_relevance": "Object Relevance Prediction",
+    "caption_grounding": "Language Grounding",
+    "cross_modal_retrieval": "Cross-Modal Retrieval",
+    "modality_reconstruction": "Cross-Modal Reconstruction",
+    "temporal_order": "Temporal Order Verification",
+    "misalignment_detection": "Multimodal Synchronization Detection"
   },
   "feature_blocks": [
     {
@@ -138,7 +152,7 @@
     },
     {
       "name": "audio_fisheye_cam0_aac",
-      "display": "Audio AAC",
+      "display": "Audio",
       "modality": "audio",
       "start": 7343,
       "end": 7511,
@@ -163958,6 +163972,8 @@
   "ablation": {
     "best_by_task": {
       "caption_grounding": {
+        "task": "caption_grounding",
+        "task_display_name": "Language Grounding",
         "best": {
           "modality_group": "language",
           "modality_display": "Language",
@@ -163973,6 +163989,8 @@
         }
       },
       "contact_prediction": {
+        "task": "contact_prediction",
+        "task_display_name": "Contact State Prediction",
         "best": {
           "modality_group": "all_features",
           "modality_display": "All Features",
@@ -163988,6 +164006,8 @@
         }
       },
       "cross_modal_retrieval": {
+        "task": "cross_modal_retrieval",
+        "task_display_name": "Cross-Modal Retrieval",
         "best": {
           "modality_group": "all_features",
           "modality_display": "All Features",
@@ -164003,6 +164023,8 @@
         }
       },
       "hand_trajectory_forecast": {
+        "task": "hand_trajectory_forecast",
+        "task_display_name": "Hand Trajectory Forecasting",
         "best": {
           "modality_group": "inertial",
           "modality_display": "Inertial",
@@ -164018,6 +164040,8 @@
         }
       },
       "misalignment_detection": {
+        "task": "misalignment_detection",
+        "task_display_name": "Multimodal Synchronization Detection",
         "best": {
           "modality_group": "audio",
           "modality_display": "Audio",
@@ -164033,6 +164057,8 @@
         }
       },
       "modality_reconstruction": {
+        "task": "modality_reconstruction",
+        "task_display_name": "Cross-Modal Reconstruction",
         "best": {
           "modality_group": "video",
           "modality_display": "Video",
@@ -164048,6 +164074,8 @@
         }
       },
       "next_action": {
+        "task": "next_action",
+        "task_display_name": "Next-Action Prediction",
         "best": {
           "modality_group": "language",
           "modality_display": "Language",
@@ -164063,6 +164091,8 @@
         }
       },
       "object_relevance": {
+        "task": "object_relevance",
+        "task_display_name": "Object Relevance Prediction",
         "best": {
           "modality_group": "language",
           "modality_display": "Language",
@@ -164078,6 +164108,8 @@
         }
       },
       "temporal_order": {
+        "task": "temporal_order",
+        "task_display_name": "Temporal Order Verification",
         "best": {
           "modality_group": "pose_slam",
           "modality_display": "Pose + SLAM",
@@ -164093,6 +164125,8 @@
         }
       },
       "timeline_action": {
+        "task": "timeline_action",
+        "task_display_name": "Action Recognition",
         "best": {
           "modality_group": "language",
           "modality_display": "Language",
@@ -164108,6 +164142,8 @@
         }
       },
       "timeline_subtask": {
+        "task": "timeline_subtask",
+        "task_display_name": "Procedure Step Recognition",
         "best": {
           "modality_group": "language",
           "modality_display": "Language",
@@ -164123,6 +164159,8 @@
         }
       },
       "transition_detection": {
+        "task": "transition_detection",
+        "task_display_name": "Action Boundary Detection",
         "best": {
           "modality_group": "language",
           "modality_display": "Language",
@@ -164173,7 +164211,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Recognition"
       },
       {
         "task": "timeline_action",
@@ -164209,7 +164248,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Recognition"
       },
       {
         "task": "timeline_action",
@@ -164245,7 +164285,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Recognition"
       },
       {
         "task": "timeline_action",
@@ -164281,7 +164322,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Recognition"
       },
       {
         "task": "timeline_action",
@@ -164317,7 +164359,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Recognition"
       },
       {
         "task": "timeline_action",
@@ -164353,7 +164396,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Recognition"
       },
       {
         "task": "timeline_action",
@@ -164389,7 +164433,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Recognition"
       },
       {
         "task": "timeline_action",
@@ -164425,7 +164470,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Recognition"
       },
       {
         "task": "timeline_action",
@@ -164461,7 +164507,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Recognition"
       },
       {
         "task": "timeline_subtask",
@@ -164497,7 +164544,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Procedure Step Recognition"
       },
       {
         "task": "timeline_subtask",
@@ -164533,7 +164581,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Procedure Step Recognition"
       },
       {
         "task": "timeline_subtask",
@@ -164569,7 +164618,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Procedure Step Recognition"
       },
       {
         "task": "timeline_subtask",
@@ -164605,7 +164655,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Procedure Step Recognition"
       },
       {
         "task": "timeline_subtask",
@@ -164641,7 +164692,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Procedure Step Recognition"
       },
       {
         "task": "timeline_subtask",
@@ -164677,7 +164729,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Procedure Step Recognition"
       },
       {
         "task": "timeline_subtask",
@@ -164713,7 +164766,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Procedure Step Recognition"
       },
       {
         "task": "timeline_subtask",
@@ -164749,7 +164803,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Procedure Step Recognition"
       },
       {
         "task": "timeline_subtask",
@@ -164785,7 +164840,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Procedure Step Recognition"
       },
       {
         "task": "transition_detection",
@@ -164821,7 +164877,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Boundary Detection"
       },
       {
         "task": "transition_detection",
@@ -164857,7 +164914,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Boundary Detection"
       },
       {
         "task": "transition_detection",
@@ -164893,7 +164951,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Boundary Detection"
       },
       {
         "task": "transition_detection",
@@ -164929,7 +164988,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Boundary Detection"
       },
       {
         "task": "transition_detection",
@@ -164965,7 +165025,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Boundary Detection"
       },
       {
         "task": "transition_detection",
@@ -165001,7 +165062,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Boundary Detection"
       },
       {
         "task": "transition_detection",
@@ -165037,7 +165099,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Boundary Detection"
       },
       {
         "task": "transition_detection",
@@ -165073,7 +165136,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Boundary Detection"
       },
       {
         "task": "transition_detection",
@@ -165109,7 +165173,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Action Boundary Detection"
       },
       {
         "task": "next_action",
@@ -165145,7 +165210,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Next-Action Prediction"
       },
       {
         "task": "next_action",
@@ -165181,7 +165247,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Next-Action Prediction"
       },
       {
         "task": "next_action",
@@ -165217,7 +165284,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Next-Action Prediction"
       },
       {
         "task": "next_action",
@@ -165253,7 +165321,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Next-Action Prediction"
       },
       {
         "task": "next_action",
@@ -165289,7 +165358,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Next-Action Prediction"
       },
       {
         "task": "next_action",
@@ -165325,7 +165395,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Next-Action Prediction"
       },
       {
         "task": "next_action",
@@ -165361,7 +165432,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Next-Action Prediction"
       },
       {
         "task": "next_action",
@@ -165397,7 +165469,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Next-Action Prediction"
       },
       {
         "task": "next_action",
@@ -165433,7 +165506,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Next-Action Prediction"
       },
       {
         "task": "hand_trajectory_forecast",
@@ -165469,7 +165543,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Hand Trajectory Forecasting"
       },
       {
         "task": "hand_trajectory_forecast",
@@ -165505,7 +165580,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Hand Trajectory Forecasting"
       },
       {
         "task": "hand_trajectory_forecast",
@@ -165541,7 +165617,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Hand Trajectory Forecasting"
       },
       {
         "task": "hand_trajectory_forecast",
@@ -165577,7 +165654,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Hand Trajectory Forecasting"
       },
       {
         "task": "hand_trajectory_forecast",
@@ -165613,7 +165691,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Hand Trajectory Forecasting"
       },
       {
         "task": "hand_trajectory_forecast",
@@ -165649,7 +165728,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Hand Trajectory Forecasting"
       },
       {
         "task": "hand_trajectory_forecast",
@@ -165685,7 +165765,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Hand Trajectory Forecasting"
       },
       {
         "task": "hand_trajectory_forecast",
@@ -165721,7 +165802,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Hand Trajectory Forecasting"
       },
       {
         "task": "hand_trajectory_forecast",
@@ -165757,7 +165839,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Hand Trajectory Forecasting"
       },
       {
         "task": "contact_prediction",
@@ -165793,7 +165876,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Contact State Prediction"
       },
       {
         "task": "contact_prediction",
@@ -165829,7 +165913,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Contact State Prediction"
       },
       {
         "task": "contact_prediction",
@@ -165865,7 +165950,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Contact State Prediction"
       },
       {
         "task": "contact_prediction",
@@ -165901,7 +165987,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Contact State Prediction"
       },
       {
         "task": "contact_prediction",
@@ -165937,7 +166024,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Contact State Prediction"
       },
       {
         "task": "contact_prediction",
@@ -165973,7 +166061,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Contact State Prediction"
       },
       {
         "task": "contact_prediction",
@@ -166009,7 +166098,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Contact State Prediction"
       },
       {
         "task": "contact_prediction",
@@ -166045,7 +166135,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Contact State Prediction"
       },
       {
         "task": "contact_prediction",
@@ -166081,7 +166172,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Contact State Prediction"
       },
       {
         "task": "object_relevance",
@@ -166117,7 +166209,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Object Relevance Prediction"
       },
       {
         "task": "object_relevance",
@@ -166153,7 +166246,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Object Relevance Prediction"
       },
       {
         "task": "object_relevance",
@@ -166189,7 +166283,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Object Relevance Prediction"
       },
       {
         "task": "object_relevance",
@@ -166225,7 +166320,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Object Relevance Prediction"
       },
       {
         "task": "object_relevance",
@@ -166261,7 +166357,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Object Relevance Prediction"
       },
       {
         "task": "object_relevance",
@@ -166297,7 +166394,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Object Relevance Prediction"
       },
       {
         "task": "object_relevance",
@@ -166333,7 +166431,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Object Relevance Prediction"
       },
       {
         "task": "object_relevance",
@@ -166369,7 +166468,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Object Relevance Prediction"
       },
       {
         "task": "object_relevance",
@@ -166405,7 +166505,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Object Relevance Prediction"
       },
       {
         "task": "caption_grounding",
@@ -166441,7 +166542,8 @@
         "top10_accuracy": "0.4454022988505747",
         "median_rank": "13.0",
         "mean_rank": "23.19827651977539",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Language Grounding"
       },
       {
         "task": "caption_grounding",
@@ -166477,7 +166579,8 @@
         "top10_accuracy": "0.034482758620689655",
         "median_rank": "162.0",
         "mean_rank": "161.4770050048828",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Language Grounding"
       },
       {
         "task": "caption_grounding",
@@ -166513,7 +166616,8 @@
         "top10_accuracy": "0.03735632183908046",
         "median_rank": "114.0",
         "mean_rank": "137.90805053710938",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Language Grounding"
       },
       {
         "task": "caption_grounding",
@@ -166549,7 +166653,8 @@
         "top10_accuracy": "0.04597701149425287",
         "median_rank": "143.5",
         "mean_rank": "155.4712677001953",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Language Grounding"
       },
       {
         "task": "caption_grounding",
@@ -166585,7 +166690,8 @@
         "top10_accuracy": "0.04885057471264368",
         "median_rank": "110.5",
         "mean_rank": "130.32470703125",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Language Grounding"
       },
       {
         "task": "caption_grounding",
@@ -166621,7 +166727,8 @@
         "top10_accuracy": "0.04597701149425287",
         "median_rank": "123.0",
         "mean_rank": "138.61207580566406",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Language Grounding"
       },
       {
         "task": "caption_grounding",
@@ -166657,7 +166764,8 @@
         "top10_accuracy": "0.07758620689655173",
         "median_rank": "141.0",
         "mean_rank": "152.14942932128906",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Language Grounding"
       },
       {
         "task": "caption_grounding",
@@ -166693,7 +166801,8 @@
         "top10_accuracy": "0.47126436781609193",
         "median_rank": "12.0",
         "mean_rank": "15.106322288513184",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Language Grounding"
       },
       {
         "task": "caption_grounding",
@@ -166729,7 +166838,8 @@
         "top10_accuracy": "0.06896551724137931",
         "median_rank": "132.0",
         "mean_rank": "137.30746459960938",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Language Grounding"
       },
       {
         "task": "cross_modal_retrieval",
@@ -166765,7 +166875,8 @@
         "top10_accuracy": "0.9798850574712644",
         "median_rank": "1.0",
         "mean_rank": "2.0862069129943848",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Cross-Modal Retrieval"
       },
       {
         "task": "cross_modal_retrieval",
@@ -166801,7 +166912,8 @@
         "top10_accuracy": "0.9798850574712644",
         "median_rank": "1.0",
         "mean_rank": "3.844827651977539",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Cross-Modal Retrieval"
       },
       {
         "task": "cross_modal_retrieval",
@@ -166837,7 +166949,8 @@
         "top10_accuracy": "0.8620689655172413",
         "median_rank": "1.0",
         "mean_rank": "5.729885101318359",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Cross-Modal Retrieval"
       },
       {
         "task": "cross_modal_retrieval",
@@ -166873,7 +166986,8 @@
         "top10_accuracy": "0.6551724137931034",
         "median_rank": "4.0",
         "mean_rank": "15.623562812805176",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Cross-Modal Retrieval"
       },
       {
         "task": "cross_modal_retrieval",
@@ -166909,7 +167023,8 @@
         "top10_accuracy": "0.3994252873563218",
         "median_rank": "21.5",
         "mean_rank": "49.181034088134766",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Cross-Modal Retrieval"
       },
       {
         "task": "cross_modal_retrieval",
@@ -166945,7 +167060,8 @@
         "top10_accuracy": "0.5229885057471264",
         "median_rank": "10.0",
         "mean_rank": "20.577587127685547",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Cross-Modal Retrieval"
       },
       {
         "task": "cross_modal_retrieval",
@@ -166981,7 +167097,8 @@
         "top10_accuracy": "0.031609195402298854",
         "median_rank": "152.5",
         "mean_rank": "161.44540405273438",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Cross-Modal Retrieval"
       },
       {
         "task": "cross_modal_retrieval",
@@ -167017,7 +167134,8 @@
         "top10_accuracy": "0.05747126436781609",
         "median_rank": "138.0",
         "mean_rank": "146.83045959472656",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Cross-Modal Retrieval"
       },
       {
         "task": "cross_modal_retrieval",
@@ -167053,7 +167171,8 @@
         "top10_accuracy": "0.9770114942528736",
         "median_rank": "1.0",
         "mean_rank": "2.181034564971924",
-        "num_queries": "348"
+        "num_queries": "348",
+        "task_display_name": "Cross-Modal Retrieval"
       },
       {
         "task": "modality_reconstruction",
@@ -167089,7 +167208,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Cross-Modal Reconstruction"
       },
       {
         "task": "modality_reconstruction",
@@ -167125,7 +167245,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Cross-Modal Reconstruction"
       },
       {
         "task": "modality_reconstruction",
@@ -167161,7 +167282,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Cross-Modal Reconstruction"
       },
       {
         "task": "modality_reconstruction",
@@ -167197,7 +167319,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Cross-Modal Reconstruction"
       },
       {
         "task": "modality_reconstruction",
@@ -167233,7 +167356,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Cross-Modal Reconstruction"
       },
       {
         "task": "modality_reconstruction",
@@ -167269,7 +167393,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Cross-Modal Reconstruction"
       },
       {
         "task": "modality_reconstruction",
@@ -167305,7 +167430,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Cross-Modal Reconstruction"
       },
       {
         "task": "modality_reconstruction",
@@ -167341,7 +167467,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Cross-Modal Reconstruction"
       },
       {
         "task": "modality_reconstruction",
@@ -167377,7 +167504,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Cross-Modal Reconstruction"
       },
       {
         "task": "temporal_order",
@@ -167413,7 +167541,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Temporal Order Verification"
       },
       {
         "task": "temporal_order",
@@ -167449,7 +167578,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Temporal Order Verification"
       },
       {
         "task": "temporal_order",
@@ -167485,7 +167615,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Temporal Order Verification"
       },
       {
         "task": "temporal_order",
@@ -167521,7 +167652,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Temporal Order Verification"
       },
       {
         "task": "temporal_order",
@@ -167557,7 +167689,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Temporal Order Verification"
       },
       {
         "task": "temporal_order",
@@ -167593,7 +167726,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Temporal Order Verification"
       },
       {
         "task": "temporal_order",
@@ -167629,7 +167763,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Temporal Order Verification"
       },
       {
         "task": "temporal_order",
@@ -167665,7 +167800,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Temporal Order Verification"
       },
       {
         "task": "temporal_order",
@@ -167701,7 +167837,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Temporal Order Verification"
       },
       {
         "task": "misalignment_detection",
@@ -167737,7 +167874,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Multimodal Synchronization Detection"
       },
       {
         "task": "misalignment_detection",
@@ -167773,7 +167911,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Multimodal Synchronization Detection"
       },
       {
         "task": "misalignment_detection",
@@ -167809,7 +167948,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Multimodal Synchronization Detection"
       },
       {
         "task": "misalignment_detection",
@@ -167845,7 +167985,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Multimodal Synchronization Detection"
       },
       {
         "task": "misalignment_detection",
@@ -167881,7 +168022,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Multimodal Synchronization Detection"
       },
       {
         "task": "misalignment_detection",
@@ -167917,7 +168059,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Multimodal Synchronization Detection"
       },
       {
         "task": "misalignment_detection",
@@ -167953,7 +168096,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Multimodal Synchronization Detection"
       },
       {
         "task": "misalignment_detection",
@@ -167989,7 +168133,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Multimodal Synchronization Detection"
       },
       {
         "task": "misalignment_detection",
@@ -168025,7 +168170,8 @@
         "top10_accuracy": "",
         "median_rank": "",
         "mean_rank": "",
-        "num_queries": ""
+        "num_queries": "",
+        "task_display_name": "Multimodal Synchronization Detection"
       }
     ]
   },

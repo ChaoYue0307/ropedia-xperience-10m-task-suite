@@ -25,6 +25,11 @@ DEFAULT_OUTPUT = ROOT / "docs/data/live_publication_status.json"
 TIMEOUT_SECONDS = 30
 USER_AGENT = "ropedia-xperience-10m-live-verifier/1.0"
 LOCAL_PATH_FORBIDDEN_MARKERS = ["/" + "Users/", "/" + "private/"]
+QWEN3_LORA_REPO_ID = "cy0307/ropedia-qwen3-omni-lora-128ep"
+QWEN3_LORA_UPLOAD_DIR_CANDIDATES = [
+    ROOT.parent / "hf_publish/qwen3_lora_128ep",
+    ROOT / "results/omni_finetune/hf_upload_qwen3_128ep_full",
+]
 
 
 HASH_GROUPS = [
@@ -161,6 +166,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "omni_model_comparison_json",
+        "title": "Omni model comparison JSON",
+        "local_path": "docs/data/omni_model_comparison.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/omni_model_comparison.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/omni_model_comparison.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/omni_model_comparison.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/omni_model_comparison.json",
+        },
+    },
+    {
         "id": "evaluation_protocol_json",
         "title": "Evaluation protocol JSON",
         "local_path": "docs/data/evaluation_protocol.json",
@@ -279,29 +295,23 @@ MARKER_CHECKS = [
         "title": "GitHub Pages index contains current publication markers",
         "url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/",
         "required": [
-            "Release checks are collected",
-            "quality_gates.json",
-            "xperience10m_dataset_card_alignment.json",
-            "source_alignment_audit.json",
             "evaluation_protocol.json",
             "research_takeaways.json",
             "Research Takeaways",
-            "figure_index.json",
-            "brand_assets.json",
-            "xperience10m-logo-social-card.png",
             "project_status.json",
-            "cc-by-nc-4.0",
-            "12,103 episode folders",
             "xperience10m-taskfirst-v13-modality-xl",
             "Interactive task walkthrough.",
             "taskPlayer",
             "Action Recognition",
             "data/task_walkthroughs.json",
-            "task_surface_integrity.json",
-            "public_surface_qa.json",
-            "Public project surface",
             "research_roadmap.html",
             "research_roadmap_interactive.json",
+            "Qwen3-Omni LoRA Final Diagnostic Result",
+            "Action/Subtask Error-Analysis Pass",
+            "99.78%",
+            "omni_model_comparison.json",
+            "ropedia-qwen3-omni-lora-128ep",
+            "Cosmos3-Nano compatibility result",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
@@ -314,29 +324,23 @@ MARKER_CHECKS = [
         "title": "HF Space index contains current publication markers",
         "url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/index.html",
         "required": [
-            "Release checks are collected",
-            "quality_gates.json",
-            "xperience10m_dataset_card_alignment.json",
-            "source_alignment_audit.json",
             "evaluation_protocol.json",
             "research_takeaways.json",
             "Research Takeaways",
-            "figure_index.json",
-            "brand_assets.json",
-            "xperience10m-logo-social-card.png",
             "project_status.json",
-            "cc-by-nc-4.0",
-            "12,103 episode folders",
             "xperience10m-taskfirst-v13-modality-xl",
             "Interactive task walkthrough.",
             "taskPlayer",
             "Action Recognition",
             "data/task_walkthroughs.json",
-            "task_surface_integrity.json",
-            "public_surface_qa.json",
-            "Public project surface",
             "research_roadmap.html",
             "research_roadmap_interactive.json",
+            "Qwen3-Omni LoRA Final Diagnostic Result",
+            "Action/Subtask Error-Analysis Pass",
+            "99.78%",
+            "omni_model_comparison.json",
+            "ropedia-qwen3-omni-lora-128ep",
+            "Cosmos3-Nano compatibility result",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
@@ -346,26 +350,14 @@ MARKER_CHECKS = [
     },
     {
         "id": "hf_artifacts_card_current",
-        "title": "HF artifact card links release checks",
+        "title": "HF artifact card links current result packages",
         "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/raw/main/README.md",
         "required": [
-            "QUALITY_GATES.md",
-            "docs/data/quality_gates.json",
-            "xperience10m_dataset_card_alignment.json",
-            "source_alignment_audit.json",
-            "evaluation_protocol.json",
-            "research_takeaways.json",
-            "Research Takeaways",
-            "figure_index.json",
-            "brand_assets.json",
-            "xperience10m-logo-social-card.png",
-            "project_status.json",
-            "cc-by-nc-4.0",
-            "12,103 episode folders",
-            "interactive scrub/play walkthrough storyboard",
-            "task_surface_integrity.json",
-            "public_surface_qa.json",
-            "Public project surface",
+            "docs/data/omni_finetune_verified_result.json",
+            "docs/data/omni_model_comparison.json",
+            "99.78% JSON validity",
+            "Cosmos3-Nano future-window compatibility",
+            "ropedia-qwen3-omni-lora-128ep",
         ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },
@@ -405,26 +397,14 @@ MARKER_CHECKS = [
     },
     {
         "id": "hf_model_card_current",
-        "title": "HF model card links release checks",
+        "title": "HF model card links current result packages",
         "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/raw/main/README.md",
         "required": [
-            "QUALITY_GATES.md",
-            "metrics/quality_gates.json",
-            "xperience10m_dataset_card_alignment.json",
-            "source_alignment_audit.json",
-            "evaluation_protocol.json",
-            "research_takeaways.json",
-            "Research Takeaways",
-            "figure_index.json",
-            "brand_assets.json",
-            "xperience10m-logo-social-card.png",
-            "project_status.json",
-            "cc-by-nc-4.0",
-            "12,103 episode folders",
-            "interactive scrub/play walkthrough storyboard",
-            "task_surface_integrity.json",
-            "public_surface_qa.json",
-            "Public project surface",
+            "docs/data/omni_finetune_verified_result.json",
+            "docs/data/omni_model_comparison.json",
+            "99.78%",
+            "Cosmos3-Nano future-window compatibility",
+            "ropedia-qwen3-omni-lora-128ep",
         ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },
@@ -482,6 +462,43 @@ def local_path_checks() -> list[dict]:
                 "forbidden": LOCAL_PATH_FORBIDDEN_MARKERS,
             })
     return checks
+
+
+def qwen3_lora_upload_dir() -> Path | None:
+    for path in QWEN3_LORA_UPLOAD_DIR_CANDIDATES:
+        if path.exists():
+            return path
+    return None
+
+
+def qwen3_lora_hash_groups() -> list[dict]:
+    upload_dir = qwen3_lora_upload_dir()
+    if upload_dir is None:
+        return []
+    groups = []
+    required_files = [
+        "README.md",
+        "upload_manifest.json",
+        "adapter_config.json",
+    ]
+    adapter_files = sorted(path.name for path in upload_dir.glob("adapter_model*.safetensors"))
+    for filename in [*required_files, *adapter_files]:
+        path = upload_dir / filename
+        if not path.exists():
+            continue
+        groups.append(
+            {
+                "id": f"qwen3_lora_{filename.replace('.', '_').replace('-', '_')}",
+                "title": f"Qwen3-Omni LoRA repo file: {filename}",
+                "local_path": str(path),
+                "urls": {
+                    "hf_qwen3_lora_model": (
+                        f"https://huggingface.co/{QWEN3_LORA_REPO_ID}/resolve/main/{filename}"
+                    ),
+                },
+            }
+        )
+    return groups
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -597,7 +614,8 @@ def fetch_with_curl(url: str) -> dict:
 
 
 def hash_group_record(group: dict) -> dict:
-    local_path = ROOT / group["local_path"]
+    group_path = Path(group["local_path"])
+    local_path = group_path if group_path.is_absolute() else ROOT / group_path
     local = {
         "path": group["local_path"],
         "exists": local_path.exists(),
@@ -666,7 +684,7 @@ def marker_record(check: dict) -> dict:
 
 
 def build_report() -> dict:
-    hash_records = [hash_group_record(group) for group in HASH_GROUPS]
+    hash_records = [hash_group_record(group) for group in [*HASH_GROUPS, *qwen3_lora_hash_groups()]]
     marker_records = [marker_record(check) for check in [*MARKER_CHECKS, *local_path_checks()]]
     failures = [
         {"check": record["id"], **failure}
@@ -677,7 +695,11 @@ def build_report() -> dict:
         "title": "Ropedia Xperience-10M Live Publication Status",
         "status": "pass" if not failures else "fail",
         "checked_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "scope": "Live GitHub Pages, GitHub raw, Hugging Face Space, artifact dataset, and model card mirrors.",
+        "scope": (
+            "Live GitHub Pages, GitHub raw, Hugging Face Space, artifact dataset, "
+            "baseline model mirrors, and the Qwen3 LoRA adapter repo when the final "
+            "upload package exists locally."
+        ),
         "hash_groups": hash_records,
         "marker_checks": marker_records,
         "failure_count": len(failures),

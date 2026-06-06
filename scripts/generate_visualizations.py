@@ -17,6 +17,8 @@ import json
 import textwrap
 from pathlib import Path
 
+from task_display import task_display_name
+
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "results"
@@ -25,10 +27,10 @@ ASSETS = DOCS / "assets"
 CHARTS = ASSETS / "charts"
 
 OMNI_RELAY = {
-    "status": "selected_episode_preparation",
+    "status": "verified_full_128_episode_diagnostic_result",
     "dataset": "ropedia-ai/xperience-10m",
-    "staging": "selected_episode_preparation",
-    "training_target": "multi_episode_training_pipeline",
+    "staging": "verified_public_package_and_adapter_publication",
+    "training_target": "action_subtask_quality_and_unseen_label_error_analysis",
     "selection_strategy": "stratified_round_robin_by_top_level_session",
     "target_episodes": 128,
     "selected_sessions": 128,
@@ -37,7 +39,7 @@ OMNI_RELAY = {
     "estimated_bytes": 298188841943,
     "exclude": ["visualization.rrd"],
     "access_status": "The gated Xperience-10M dataset is available for selected multi-episode pilot preparation.",
-    "current_scope": "The selected-episode Qwen3-Omni fine-tune requires completed data preparation and held-out evaluation; the 32-episode Qwen3-Omni fine-tune requires gated data preparation before any real held-out metric is reported.",
+    "current_scope": "The selected-episode Qwen3-Omni diagnostic pilot is verified on the 96/16/16 split and now meets the 98% target for JSON validity; action/subtask quality remains weak, so current results are diagnostic baselines, not strong model-quality claims.",
 }
 
 
@@ -253,6 +255,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
     return [
         {
             "task": "timeline_action",
+            "task_display_name": task_display_name("timeline_action"),
             "family": "softmax",
             "input": f"X_all window, {all_dim:,}d",
             "head": "minimal linear softmax; optional NN MLP softmax",
@@ -261,6 +264,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
         },
         {
             "task": "timeline_subtask",
+            "task_display_name": task_display_name("timeline_subtask"),
             "family": "softmax",
             "input": f"X_all window, {all_dim:,}d",
             "head": "minimal linear softmax; optional NN MLP softmax",
@@ -269,6 +273,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
         },
         {
             "task": "transition_detection",
+            "task_display_name": task_display_name("transition_detection"),
             "family": "softmax",
             "input": f"X_all window, {all_dim:,}d",
             "head": "minimal linear softmax; optional NN MLP softmax",
@@ -277,6 +282,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
         },
         {
             "task": "next_action",
+            "task_display_name": task_display_name("next_action"),
             "family": "softmax",
             "input": f"X_all at time t, {all_dim:,}d",
             "head": "minimal linear softmax; optional NN MLP softmax",
@@ -285,6 +291,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
         },
         {
             "task": "hand_trajectory_forecast",
+            "task_display_name": task_display_name("hand_trajectory_forecast"),
             "family": "ridge",
             "input": f"X_all at time t, {all_dim:,}d",
             "head": "minimal dual ridge; optional NN MLP regression",
@@ -293,6 +300,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
         },
         {
             "task": "contact_prediction",
+            "task_display_name": task_display_name("contact_prediction"),
             "family": "softmax",
             "input": f"X without contact/text leakage, {no_contact_text_dim:,}d",
             "head": "minimal linear softmax; optional NN MLP softmax",
@@ -301,6 +309,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
         },
         {
             "task": "object_relevance",
+            "task_display_name": task_display_name("object_relevance"),
             "family": "multilabel",
             "input": f"X without caption text, {no_text_dim:,}d",
             "head": "minimal sigmoid logistic; optional NN MLP multilabel",
@@ -309,6 +318,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
         },
         {
             "task": "caption_grounding",
+            "task_display_name": task_display_name("caption_grounding"),
             "family": "ridge+rank",
             "input": f"sensor {sensor_dim:,}d -> text space {text_dim:,}d",
             "head": "minimal ridge or NN MLP projection, then cosine rank",
@@ -317,6 +327,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
         },
         {
             "task": "cross_modal_retrieval",
+            "task_display_name": task_display_name("cross_modal_retrieval"),
             "family": "ridge+rank",
             "input": f"motion/IMU/camera/audio {motion_audio_dim:,}d -> visual {visual_dim:,}d",
             "head": "minimal ridge or NN MLP projection, then cosine rank",
@@ -325,6 +336,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
         },
         {
             "task": "modality_reconstruction",
+            "task_display_name": task_display_name("modality_reconstruction"),
             "family": "ridge",
             "input": f"motion/IMU/camera/audio {motion_audio_dim:,}d",
             "head": "minimal dual ridge; optional NN MLP regression",
@@ -333,6 +345,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
         },
         {
             "task": "temporal_order",
+            "task_display_name": task_display_name("temporal_order"),
             "family": "softmax",
             "input": f"concat[x_t, x_t+1, diff], {pair_dim:,}d",
             "head": "minimal binary softmax; optional NN MLP softmax",
@@ -341,6 +354,7 @@ def task_architecture_rows(summary: dict) -> list[dict]:
         },
         {
             "task": "misalignment_detection",
+            "task_display_name": task_display_name("misalignment_detection"),
             "family": "softmax",
             "input": f"concat[motion_t, visual+audio_t/shifted], {align_dim:,}d",
             "head": "minimal binary softmax; optional NN MLP softmax",
@@ -427,7 +441,7 @@ def svg_task_architectures(path: Path, summary: dict) -> None:
         parts.append(f'<rect x="{x}" y="{y}" width="8" height="{card_h}" rx="4" fill="{color}"/>')
         parts.append(f'<rect x="{x + 20}" y="{y + 18}" width="96" height="24" rx="6" fill="#071207" stroke="{color}" stroke-opacity="0.72"/>')
         parts.append(f'<text x="{x + 68}" y="{y + 35}" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="{color}">{html.escape(row["family"])}</text>')
-        parts.append(f'<text x="{x + 20}" y="{y + 72}" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">{html.escape(row["task"])}</text>')
+        parts.append(f'<text x="{x + 20}" y="{y + 72}" font-family="Inter Tight, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef">{html.escape(row["task_display_name"])}</text>')
         cursor = y + 104
         for label in ("input", "head", "output", "metric"):
             parts.append(f'<text x="{x + 20}" y="{cursor}" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="800" fill="{color}">{label.upper()}</text>')
@@ -491,21 +505,21 @@ def generate_charts(summary: dict) -> None:
     suite = summary["suite"]["tasks"]
     task_rows = []
     for task_name, metrics in suite.items():
-        task_rows.append((task_name, task_score(metrics)))
+        task_rows.append((task_display_name(task_name), task_score(metrics)))
     svg_bar_chart(CHARTS / "episode_task_scores.svg", "Ropedia Xperience-10M Suite: Main Scores", task_rows, max_value=1.0)
 
     neural = summary["suite"].get("neural_tasks", {})
     if neural:
-        neural_rows = [(task_name, task_score(metrics)) for task_name, metrics in neural.items() if "error" not in metrics]
+        neural_rows = [(task_display_name(task_name), task_score(metrics)) for task_name, metrics in neural.items() if "error" not in metrics]
         if neural_rows:
             svg_bar_chart(CHARTS / "episode_task_scores_neural_mlp.svg", "Ropedia Xperience-10M Suite: Neural MLP Main Scores", neural_rows, max_value=1.0)
 
         comparison_rows = []
         for task_name, metrics in suite.items():
-            comparison_rows.append((f"{task_name} minimal", task_score(metrics)))
+            comparison_rows.append((f"{task_display_name(task_name)} minimal", task_score(metrics)))
             neural_metrics = neural.get(task_name)
             if neural_metrics and "error" not in neural_metrics:
-                comparison_rows.append((f"{task_name} neural", task_score(neural_metrics)))
+                comparison_rows.append((f"{task_display_name(task_name)} neural", task_score(neural_metrics)))
         if comparison_rows:
             svg_bar_chart(CHARTS / "episode_task_scores_minimal_vs_neural.svg", "Episode Task Scores: Minimal vs Neural MLP", comparison_rows, max_value=1.0)
     svg_feature_blocks(CHARTS / "feature_blocks.svg", summary["feature_manifest"])

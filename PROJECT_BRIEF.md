@@ -21,7 +21,7 @@ results, and see what remains before multi-episode model-quality claims.
 | Data understanding | `feature_manifest.json`, `available_modalities.json`, modality atlas, episode-window HF viewer |
 | Task design | 12 task contracts, task cards, case-study walkthroughs, and four research-direction extension probes |
 | Evaluation rigor | chronological split, per-task metrics, predictions, confusion matrices, leakage notes, and generated takeaways |
-| Scale-up planning | Verified 96/16/16 Qwen3-Omni validation-monitored diagnostic pilot, structured-output improvement path, Cosmos 3 branch, and policy-model candidates after action-space conversion |
+| Scale-up planning | Final verified 96/16/16 Qwen3-Omni diagnostic result, same-split 128-episode baseline alignment, Cosmos3-Nano compatibility branch, and policy-model candidates after action-space conversion |
 
 ## What Exists Now
 
@@ -32,7 +32,7 @@ results, and see what remains before multi-episode model-quality claims.
 | Task suite | 12 embodied-AI task contracts with inputs, targets, metrics, predictions, and case-study walkthroughs |
 | Models | Minimal linear/ridge/logistic baselines plus compact PyTorch MLP heads for the same 12 tasks |
 | Research map | Four Ropedia research directions with direct, proxy, diagnostic, and extension-task coverage |
-| Scale-up path | A selected 96/16/16 Qwen3-Omni LoRA validation-monitored diagnostic pilot is verified; current model-quality metrics are weak and guide the next structured-output improvement pass |
+| Scale-up path | A selected 96/16/16 Qwen3-Omni LoRA final diagnostic result is verified; strict-JSON validity meets target, while weak action/subtask metrics guide the next error-analysis pass |
 
 ## How To Read It
 

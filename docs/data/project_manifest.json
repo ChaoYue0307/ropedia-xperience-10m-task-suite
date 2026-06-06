@@ -2,9 +2,9 @@
   "name": "Ropedia Xperience-10M Task Suite",
   "slug": "ropedia-xperience-10m-task-suite",
   "version": "0.1.0",
-  "status": "single_episode_suite_plus_qwen3_omni_diagnostic_pilot",
-  "last_metadata_update": "2026-06-05",
-  "summary": "Research-development repo built around one public Xperience-10M sample episode plus a verified selected-episode Qwen3-Omni diagnostic pilot.",
+  "status": "single_episode_suite_plus_final_qwen3_omni_diagnostic_result",
+  "last_metadata_update": "2026-06-07",
+  "summary": "Research-development repo built around one public Xperience-10M sample episode plus a final verified selected-episode Qwen3-Omni diagnostic result.",
   "scope_boundary": {
     "raw_data_redistributed": false,
     "episode_count_verified": 1,
@@ -19,7 +19,9 @@
       "test": 16
     },
     "qwen3_omni_held_out_test_windows": 448,
-    "qwen3_omni_json_validity_rate": 0.875
+    "qwen3_omni_json_validity_rate": 0.9977678571428571,
+    "qwen3_omni_json_quality_target_met": true,
+    "qwen3_omni_lora_adapter_repo": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
   },
   "public_surfaces": {
     "github_repo": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite",
@@ -28,6 +30,7 @@
     "hf_static_space": "https://cy0307-ropedia-xperience-10m-task-suite.static.hf.space/",
     "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts",
     "hf_model_repo": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines",
+    "hf_qwen3_lora_adapter": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep",
     "hf_collection": "https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite"
   },
   "upstream_sources": {

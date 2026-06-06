@@ -24,6 +24,8 @@ from typing import Iterable
 
 import numpy as np
 
+from task_display import task_display_name
+
 
 TASKS = [
     "timeline_action",
@@ -42,18 +44,8 @@ TASKS = [
 
 
 TASK_DISPLAY = {
-    "timeline_action": "Current Action Recognition",
-    "timeline_subtask": "Current Subtask Recognition",
-    "transition_detection": "Action Transition Detection",
-    "next_action": "Next-Action Prediction",
-    "hand_trajectory_forecast": "Future Hand Motion Forecasting",
-    "contact_prediction": "Contact State Prediction",
-    "object_relevance": "Relevant Object Prediction",
-    "caption_grounding": "Language-to-Time Grounding",
-    "cross_modal_retrieval": "Cross-Modal Window Retrieval",
-    "modality_reconstruction": "Sensor-to-Visual Reconstruction",
-    "temporal_order": "Temporal Order Verification",
-    "misalignment_detection": "Cross-Modal Misalignment Detection",
+    task: task_display_name(task)
+    for task in TASKS
 }
 
 

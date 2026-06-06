@@ -222,7 +222,8 @@
           "Gather star beads",
           "Arrange star beads for counting",
           "Sort and count beads"
-        ]
+        ],
+        "task_display_name": "Action Recognition"
       },
       "neural": {
         "status": "pass",
@@ -270,8 +271,10 @@
           }
         },
         "primary_metric": "macro_f1",
-        "primary_score": 0.0
-      }
+        "primary_score": 0.0,
+        "task_display_name": "Action Recognition"
+      },
+      "task_display_name": "Action Recognition"
     },
     {
       "task": "timeline_subtask",
@@ -429,7 +432,8 @@
           "Count beads and retrieve more",
           "Document bead counts",
           "Organize and count beads"
-        ]
+        ],
+        "task_display_name": "Procedure Step Recognition"
       },
       "neural": {
         "status": "pass",
@@ -477,8 +481,10 @@
           }
         },
         "primary_metric": "macro_f1",
-        "primary_score": 0.0
-      }
+        "primary_score": 0.0,
+        "task_display_name": "Procedure Step Recognition"
+      },
+      "task_display_name": "Procedure Step Recognition"
     },
     {
       "task": "transition_detection",
@@ -581,7 +587,8 @@
         "primary_metric": "macro_f1",
         "primary_score": 0.5219803670507895,
         "unseen_test_class_count": 0,
-        "unseen_test_classes": []
+        "unseen_test_classes": [],
+        "task_display_name": "Action Boundary Detection"
       },
       "neural": {
         "status": "pass",
@@ -629,8 +636,10 @@
           }
         },
         "primary_metric": "macro_f1",
-        "primary_score": 0.45822172492907925
-      }
+        "primary_score": 0.45822172492907925,
+        "task_display_name": "Action Boundary Detection"
+      },
+      "task_display_name": "Action Boundary Detection"
     },
     {
       "task": "next_action",
@@ -820,7 +829,8 @@
           "Gather star beads",
           "Arrange star beads for counting",
           "Sort and count beads"
-        ]
+        ],
+        "task_display_name": "Next-Action Prediction"
       },
       "neural": {
         "status": "pass",
@@ -868,8 +878,10 @@
           }
         },
         "primary_metric": "macro_f1",
-        "primary_score": 0.0
-      }
+        "primary_score": 0.0,
+        "task_display_name": "Next-Action Prediction"
+      },
+      "task_display_name": "Next-Action Prediction"
     },
     {
       "task": "hand_trajectory_forecast",
@@ -879,9 +891,11 @@
         "primary_metric": "mpjpe",
         "primary_score": null,
         "reason": "requires future hand-joint trajectories from raw sensor feature NPZ blocks, which are not in the public 128 package",
-        "source": "128_episode_qwen_jsonl_metadata"
+        "source": "128_episode_qwen_jsonl_metadata",
+        "task_display_name": "Hand Trajectory Forecasting"
       },
-      "neural": null
+      "neural": null,
+      "task_display_name": "Hand Trajectory Forecasting"
     },
     {
       "task": "contact_prediction",
@@ -984,7 +998,8 @@
         "primary_metric": "macro_f1",
         "primary_score": 0.5167950693374422,
         "unseen_test_class_count": 0,
-        "unseen_test_classes": []
+        "unseen_test_classes": [],
+        "task_display_name": "Contact State Prediction"
       },
       "neural": {
         "status": "pass",
@@ -1032,8 +1047,10 @@
           }
         },
         "primary_metric": "macro_f1",
-        "primary_score": 0.21951219512195122
-      }
+        "primary_score": 0.21951219512195122,
+        "task_display_name": "Contact State Prediction"
+      },
+      "task_display_name": "Contact State Prediction"
     },
     {
       "task": "object_relevance",
@@ -1064,7 +1081,8 @@
           }
         },
         "primary_metric": "micro_f1",
-        "primary_score": 0.18221614227086183
+        "primary_score": 0.18221614227086183,
+        "task_display_name": "Object Relevance Prediction"
       },
       "neural": {
         "status": "pass",
@@ -1104,8 +1122,10 @@
           }
         },
         "primary_metric": "micro_f1",
-        "primary_score": 0.1053878034339846
-      }
+        "primary_score": 0.1053878034339846,
+        "task_display_name": "Object Relevance Prediction"
+      },
+      "task_display_name": "Object Relevance Prediction"
     },
     {
       "task": "caption_grounding",
@@ -1123,9 +1143,11 @@
         "top5_accuracy": 0.006696428571428571,
         "top10_accuracy": 0.011160714285714286,
         "primary_metric": "mrr",
-        "primary_score": 0.012785504572093487
+        "primary_score": 0.012785504572093487,
+        "task_display_name": "Language Grounding"
       },
-      "neural": null
+      "neural": null,
+      "task_display_name": "Language Grounding"
     },
     {
       "task": "cross_modal_retrieval",
@@ -1135,9 +1157,11 @@
         "primary_metric": "mrr",
         "primary_score": null,
         "reason": "requires paired motion/IMU/camera/audio/depth feature blocks, which are not in the public 128 package",
-        "source": "128_episode_qwen_jsonl_metadata"
+        "source": "128_episode_qwen_jsonl_metadata",
+        "task_display_name": "Cross-Modal Retrieval"
       },
-      "neural": null
+      "neural": null,
+      "task_display_name": "Cross-Modal Retrieval"
     },
     {
       "task": "modality_reconstruction",
@@ -1147,9 +1171,11 @@
         "primary_metric": "r2",
         "primary_score": null,
         "reason": "requires source and target modality feature blocks such as depth/video vectors, which are not in the public 128 package",
-        "source": "128_episode_qwen_jsonl_metadata"
+        "source": "128_episode_qwen_jsonl_metadata",
+        "task_display_name": "Cross-Modal Reconstruction"
       },
-      "neural": null
+      "neural": null,
+      "task_display_name": "Cross-Modal Reconstruction"
     },
     {
       "task": "temporal_order",
@@ -1225,9 +1251,11 @@
         "num_eval_windows": 434,
         "num_classes": 2,
         "primary_metric": "f1",
-        "primary_score": 0.32713178294573647
+        "primary_score": 0.32713178294573647,
+        "task_display_name": "Temporal Order Verification"
       },
-      "neural": null
+      "neural": null,
+      "task_display_name": "Temporal Order Verification"
     },
     {
       "task": "misalignment_detection",
@@ -1237,9 +1265,25 @@
         "primary_metric": "f1",
         "primary_score": null,
         "reason": "requires deliberately shifted cross-modal feature pairs, which cannot be reconstructed from the public JSONL labels alone",
-        "source": "128_episode_qwen_jsonl_metadata"
+        "source": "128_episode_qwen_jsonl_metadata",
+        "task_display_name": "Multimodal Synchronization Detection"
       },
-      "neural": null
+      "neural": null,
+      "task_display_name": "Multimodal Synchronization Detection"
     }
-  ]
+  ],
+  "task_display_names": {
+    "timeline_action": "Action Recognition",
+    "timeline_subtask": "Procedure Step Recognition",
+    "transition_detection": "Action Boundary Detection",
+    "next_action": "Next-Action Prediction",
+    "hand_trajectory_forecast": "Hand Trajectory Forecasting",
+    "contact_prediction": "Contact State Prediction",
+    "object_relevance": "Object Relevance Prediction",
+    "caption_grounding": "Language Grounding",
+    "cross_modal_retrieval": "Cross-Modal Retrieval",
+    "modality_reconstruction": "Cross-Modal Reconstruction",
+    "temporal_order": "Temporal Order Verification",
+    "misalignment_detection": "Multimodal Synchronization Detection"
+  }
 }
