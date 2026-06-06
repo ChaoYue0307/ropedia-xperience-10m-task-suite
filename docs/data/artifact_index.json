@@ -1,11 +1,12 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-06T13:49:32+00:00",
+  "generated_at_utc": "2026-06-06T14:35:42+00:00",
   "status": "pass",
-  "artifact_count": 77,
+  "artifact_count": 83,
   "missing": [],
   "by_kind": {
     "project_path": 14,
+    "scaleup_contract": 6,
     "project_scope": 1,
     "source_alignment": 5,
     "publication_workflow": 3,
@@ -62,8 +63,8 @@
       "surface": "repo_hf",
       "shows": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 7765,
-      "sha256": "81e9152505c97f827f2c446f2a03f73b13c21f30abb760ace9c94d4c09ce3f8e"
+      "bytes": 8534,
+      "sha256": "5eb48d489da7f005baab233a94c9d6b209eb1e9ffdb138c8e0e600ece9239a29"
     },
     {
       "id": "project_status_json",
@@ -73,8 +74,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable copy of the current project status for website and HF mirrors.",
       "exists": true,
-      "bytes": 10075,
-      "sha256": "f954101565815168eedcc8cc0377632ef903f1515d315cadbbd58708a95352f2"
+      "bytes": 10977,
+      "sha256": "2bb0639c137dfd6eddd337eb909292543ae2e72753dee398f8240ff35f6a3984"
     },
     {
       "id": "research_roadmap",
@@ -119,6 +120,72 @@
       "exists": true,
       "bytes": 13112,
       "sha256": "0850a9b74f2c62aba30b297089ad0a4a04424cc16d4a265f71e39538c6d22792"
+    },
+    {
+      "id": "omni_model_extension_contract",
+      "title": "Omni model extension contract",
+      "path": "OMNI_MODEL_EXTENSION_CONTRACT.md",
+      "kind": "scaleup_contract",
+      "surface": "repo_hf",
+      "shows": "Defines the shared manifest, episode split, held-out evaluation, packaging, and public-safety rules for Qwen3-Omni, Cosmos-style, and VLA/policy model branches.",
+      "exists": true,
+      "bytes": 8900,
+      "sha256": "c4e51d0aa7536045c229418603a67c6b3c5f31c9d756ca7395cb0c9455f0ed6d"
+    },
+    {
+      "id": "omni_backbone_registry_configs",
+      "title": "Omni backbone registry configs",
+      "path": "configs/omni_backbones",
+      "kind": "scaleup_contract",
+      "surface": "repo_hf",
+      "shows": "Stores the implemented Qwen3-Omni LoRA contract and planned Cosmos-style world-model and VLA/policy branch contracts.",
+      "exists": true,
+      "file_count": 3,
+      "bytes": 8904
+    },
+    {
+      "id": "omni_backbone_registry_validator",
+      "title": "Omni backbone registry validator",
+      "path": "scripts/omni/backbone_registry.py",
+      "kind": "scaleup_contract",
+      "surface": "repo_hf",
+      "shows": "Validates backbone ids, split defaults, leakage guards, required metrics, required files, and forbidden public package categories.",
+      "exists": true,
+      "bytes": 8740,
+      "sha256": "3bc9eeb47471fb995f767d5420a556a95413c1cb2d8b3ea9d2805429df55beb8"
+    },
+    {
+      "id": "omni_model_neutral_window_index_exporter",
+      "title": "Model-neutral window index exporter",
+      "path": "scripts/omni/export_model_neutral_window_index.py",
+      "kind": "scaleup_contract",
+      "surface": "repo_hf",
+      "shows": "Converts Qwen JSONL records into a model-neutral window index with Qwen, Cosmos-style, and policy/VLA adapter views.",
+      "exists": true,
+      "bytes": 8540,
+      "sha256": "ec6dd4fcdc1c9a90566a59ef118f7ed5b78ebf8843752873aea8ae8b5f71a34d"
+    },
+    {
+      "id": "omni_backbone_scaffolder",
+      "title": "Omni backbone scaffolder",
+      "path": "scripts/omni/scaffold_omni_backbone.py",
+      "kind": "scaleup_contract",
+      "surface": "repo_hf",
+      "shows": "Creates a validated planned-backbone config from an existing contract template so new model families inherit the shared rules.",
+      "exists": true,
+      "bytes": 4809,
+      "sha256": "2cd34a7db1510392c6caba735fb903b2a6b78aeff8a748ebf20bcd372b0f8f2d"
+    },
+    {
+      "id": "omni_backbone_packaging_smoke",
+      "title": "Omni backbone packaging smoke test",
+      "path": "scripts/omni/smoke_test_backbone_packaging.py",
+      "kind": "scaleup_contract",
+      "surface": "repo_hf",
+      "shows": "Builds synthetic verified packages for every configured backbone and audits them against the public-safe package contract.",
+      "exists": true,
+      "bytes": 6519,
+      "sha256": "a3773fc681e298325e2be80556d6be6e7e30b90ba22ee24b66633f07ff9c4ea4"
     },
     {
       "id": "additional_development_directions",
@@ -183,8 +250,8 @@
       "surface": "repo_hf",
       "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 14580,
-      "sha256": "1c11a57dfaf7bd762ddc642c686fcb85d538d0ae805da15b6d1123747915b088"
+      "bytes": 15660,
+      "sha256": "a9ad335b82c35a5ac102428663ffae1c8798e90e45cc5e795c3a499b4563b417"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -249,8 +316,8 @@
       "surface": "repo_hf",
       "shows": "Publishes prepared Space, artifact dataset, and model bundles, including an explicit model-binary upload batch.",
       "exists": true,
-      "bytes": 15901,
-      "sha256": "60f27a4d32c48e6960445bfafe917ce30d6a43211153146a52ae068f051de4e8"
+      "bytes": 15927,
+      "sha256": "7b3e515763ccce08f72b4fd12a903c21f14b469c6af144524196ecad945da2ab"
     },
     {
       "id": "github_package_dockerfile",
@@ -628,8 +695,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 28473,
-      "sha256": "4236a4052280030cf52cf642060a827ff157db59507702a2f05327a536e5908c"
+      "bytes": 30785,
+      "sha256": "0c42b68e44e6a32b6b5161b47161adc5ccdb57567e1462e8271ea87af50ab92d"
     },
     {
       "id": "publication_audit",
@@ -652,7 +719,7 @@
       "volatile": true,
       "shows": "Separates setup paths from completed held-out-episode results.",
       "exists": true,
-      "bytes": 21017,
+      "bytes": 20823,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -852,8 +919,8 @@
       "surface": "repo_hf",
       "shows": "Summarizes the data-readiness checks required before a held-out Qwen3-Omni pilot can report metrics.",
       "exists": true,
-      "bytes": 3501,
-      "sha256": "be77c3c70244e8bb6d7686564f84f52ae0a327b1c421b10df9da9fa8de6d4a1c"
+      "bytes": 3499,
+      "sha256": "c2999f0ea75765c8da3b94aa54d8a9628edd687a0fe38c09d2582f578f2b1ba7"
     },
     {
       "id": "multi_episode_access_status",
@@ -863,8 +930,8 @@
       "surface": "repo_hf",
       "shows": "Documents the public multi-episode access status and 32-episode pilot selection.",
       "exists": true,
-      "bytes": 3080,
-      "sha256": "e7d12d69c9b3a1b850cead035f9ec2e2d70be91a74cb0877d392609ca8ca1e40"
+      "bytes": 3076,
+      "sha256": "23b87581cfc1d95b0af118a0dbb4e601f42fc6bad608759490e13a9a1ef73205"
     },
     {
       "id": "citation",
