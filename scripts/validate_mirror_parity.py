@@ -78,6 +78,7 @@ ASSET_FILES = [
 
 SCRIPT_FILES = [
     "omni/analyze_qwen3_omni_errors.py",
+    "omni/run_128_task_baselines.py",
     "audio_ablation_and_raw_upgrade.py",
     "build_artifact_index.py",
     "build_brand_assets.py",
@@ -131,6 +132,9 @@ RESULT_FILES = [
     "omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/train_seen_error_analysis.csv",
     "omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/missing_modality_error_analysis.csv",
     "omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/object_category_error_analysis.csv",
+    "omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md",
+    "omni_finetune/multi_episode_128_task_baselines/summary_report.json",
+    "omni_finetune/multi_episode_128_task_baselines/task_metrics.csv",
 ]
 
 DOC_FILES = [

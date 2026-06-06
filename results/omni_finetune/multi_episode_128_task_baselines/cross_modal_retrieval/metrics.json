@@ -1,0 +1,8 @@
+{
+  "status": "unsupported_without_raw_128_feature_blocks",
+  "task": "cross_modal_retrieval",
+  "primary_metric": "mrr",
+  "primary_score": null,
+  "reason": "requires paired motion/IMU/camera/audio/depth feature blocks, which are not in the public 128 package",
+  "source": "128_episode_qwen_jsonl_metadata"
+}

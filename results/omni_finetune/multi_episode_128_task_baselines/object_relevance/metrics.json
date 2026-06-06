@@ -1,0 +1,29 @@
+{
+  "status": "pass",
+  "task": "object_relevance",
+  "model_family": "simple_train_object_frequency",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "split_policy": "object vocabulary and frequencies are learned from train split only",
+  "num_train_windows": 2848,
+  "num_val_windows": 512,
+  "num_test_windows": 448,
+  "num_objects": 256,
+  "splits": {
+    "val": {
+      "precision": 0.13509114583333334,
+      "recall": 0.3129713423831071,
+      "micro_f1": 0.18872214643019555,
+      "macro_f1": 0.005456210886733049,
+      "exact_match": 0.0
+    },
+    "test": {
+      "precision": 0.12388392857142858,
+      "recall": 0.344364012409514,
+      "micro_f1": 0.18221614227086183,
+      "macro_f1": 0.004965974024177778,
+      "exact_match": 0.0
+    }
+  },
+  "primary_metric": "micro_f1",
+  "primary_score": 0.18221614227086183
+}

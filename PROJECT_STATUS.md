@@ -30,6 +30,7 @@ scale-up readiness; it is not presented as final full-dataset model quality.
 | Public dashboard and Hub pages | Verified | GitHub Pages, HF Space, artifact dataset, baseline model repo, Qwen3-Omni LoRA repo | Readers can move between the website, code, derived artifacts, baseline weights, and Qwen3-Omni pilot status without needing local infrastructure details. |
 | Public package policy | Verified | `DATA_NOTICE.md`, `REPRODUCIBILITY.md` | Raw Xperience-10M data, private gated files, large archives, credentials, and full Qwen weights are not redistributed. |
 | Reproducibility | Verified for the public sample | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json`, `notes/reproducibility_audit.md` | The public sample workflow has explicit commands, expected outputs, and exact-match reproduction evidence. |
+| 128-episode aligned baselines | Verified companion result | `results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`, `results/omni_finetune/multi_episode_128_task_baselines/summary_report.json`, `scripts/omni/run_128_task_baselines.py` | The earlier simple and neural baseline framing is aligned to the same selected 96/16/16 episode split used by the Qwen3-Omni pilot. JSON-supported tasks have metadata/text simple and neural MLP metrics; raw-feature-only tasks are explicitly marked unsupported until 128-run sensor feature blocks are available. |
 | Qwen3-Omni fine-tuning | Verified validation-aware diagnostic held-out pilot; quality target not met | `docs/data/omni_finetune_verified_result.json`, `results/omni_finetune/verified_public/`, `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/analysis/`, `scripts/omni/package_verified_omni_result.py`, `scripts/omni/audit_verified_omni_package.py`, `scripts/omni/analyze_qwen3_omni_errors.py` | The selected 96/16/16 episode split produced a validation-aware public-safe held-out package with 3,808 exported windows, 512 validation windows, 448 test predictions, and derived error-analysis tables by episode, action family, train-seen status, required-modality state, and object category. JSON validity is 87.50%, below the 98% target, so the result is a diagnostic baseline and the next pass should focus on structured-output improvements. |
 | Raw Xperience-10M redistribution | Not included | `DATA_NOTICE.md`, `docs/data/publication_audit.json` | Raw MP4, HDF5, RRD files, private gated data, and full Qwen weights are intentionally excluded. |
 
@@ -57,7 +58,9 @@ scale-up readiness; it is not presented as final full-dataset model quality.
    controls.
 11. Inspect `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` only if you need the
    detailed upstream dataset-card context.
-12. Inspect `docs/data/omni_finetune_verified_result.json` before judging the
+12. Inspect `results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`
+   before comparing simple/NN baselines to the selected 128-episode setup.
+13. Inspect `docs/data/omni_finetune_verified_result.json` before judging the
    Qwen3-Omni diagnostic pilot.
 
 ## Current Reading Notes
@@ -69,6 +72,10 @@ scale-up readiness; it is not presented as final full-dataset model quality.
 - The first Qwen3-Omni held-out package verifies the pipeline, not strong model
   quality: JSON validity is 87.50%, action macro-F1 is 0.0027, and subtask
   accuracy is 0.0067.
+- The 128-episode aligned simple/NN baselines use metadata/text features from
+  the derived Qwen JSONL export; they align the split and task ids but do not
+  replace raw-modality baselines for trajectory, retrieval, reconstruction, or
+  misalignment tasks.
 - The current reconstruction task reconstructs feature vectors, not pixel
   depth, meshes, NeRF outputs, or Gaussian splats.
 - Audio is part of the current 8,546-dimensional baseline feature vector.

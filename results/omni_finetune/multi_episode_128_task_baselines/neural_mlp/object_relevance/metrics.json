@@ -1,0 +1,40 @@
+{
+  "status": "pass",
+  "task": "object_relevance",
+  "model_family": "neural_mlp_metadata_multilabel",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "num_train_windows": 2848,
+  "num_val_windows": 512,
+  "num_test_windows": 448,
+  "num_objects": 256,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.7418333559893491
+    },
+    {
+      "epoch": 2,
+      "loss": 0.4571684712774298
+    },
+    {
+      "epoch": 3,
+      "loss": 0.35704097319185063
+    },
+    {
+      "epoch": 4,
+      "loss": 0.30894677424698735
+    }
+  ],
+  "device": "cpu",
+  "splits": {
+    "test": {
+      "precision": 0.07382828701783492,
+      "recall": 0.18407445708376421,
+      "micro_f1": 0.1053878034339846,
+      "macro_f1": 0.003917153492790942,
+      "exact_match": 0.0
+    }
+  },
+  "primary_metric": "micro_f1",
+  "primary_score": 0.1053878034339846
+}

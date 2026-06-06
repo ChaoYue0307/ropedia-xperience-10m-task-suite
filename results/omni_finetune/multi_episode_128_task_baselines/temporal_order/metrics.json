@@ -1,0 +1,74 @@
+{
+  "status": "pass",
+  "task": "temporal_order",
+  "model_family": "simple_softmax_metadata_pair",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "limitation": "metadata-only pair features are weaker than the single-episode raw-feature temporal-order task",
+  "num_train_samples": 2759,
+  "num_test_samples": 434,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.6979212703853845,
+      "train_accuracy": 0.5059804276911924
+    },
+    {
+      "epoch": 8,
+      "loss": 3.8023250982761385,
+      "train_accuracy": 0.4958318231243204
+    },
+    {
+      "epoch": 16,
+      "loss": 3.1767871653437614,
+      "train_accuracy": 0.4972816237767307
+    },
+    {
+      "epoch": 24,
+      "loss": 2.8641889533400535,
+      "train_accuracy": 0.49800652410293583
+    },
+    {
+      "epoch": 32,
+      "loss": 2.7535072563886644,
+      "train_accuracy": 0.498731424429141
+    },
+    {
+      "epoch": 40,
+      "loss": 2.72535897231102,
+      "train_accuracy": 0.5001812250815513
+    },
+    {
+      "epoch": 48,
+      "loss": 2.7133759973049165,
+      "train_accuracy": 0.5001812250815513
+    },
+    {
+      "epoch": 56,
+      "loss": 2.7025450394153596,
+      "train_accuracy": 0.5023559260601668
+    },
+    {
+      "epoch": 64,
+      "loss": 2.6946775743961333,
+      "train_accuracy": 0.5045306270387822
+    },
+    {
+      "epoch": 72,
+      "loss": 2.6916689813137054,
+      "train_accuracy": 0.5056179775280899
+    },
+    {
+      "epoch": 80,
+      "loss": 2.6921223065853117,
+      "train_accuracy": 0.5077926785067053
+    }
+  ],
+  "accuracy": 0.4861751152073733,
+  "balanced_accuracy": 0.5,
+  "macro_f1": 0.32713178294573647,
+  "weighted_f1": 0.31808666452327367,
+  "num_eval_windows": 434,
+  "num_classes": 2,
+  "primary_metric": "f1",
+  "primary_score": 0.32713178294573647
+}

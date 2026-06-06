@@ -1,0 +1,48 @@
+{
+  "status": "pass",
+  "task": "timeline_action",
+  "model_family": "neural_mlp_metadata",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+  "split_policy": "train on train split, report held-out test split",
+  "num_train_windows": 2848,
+  "num_val_windows": 512,
+  "num_test_windows": 448,
+  "num_classes": 1187,
+  "num_train_classes": 885,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 6.779340010010794,
+      "train_accuracy": 0.0052668539325842695
+    },
+    {
+      "epoch": 2,
+      "loss": 6.647005257981546,
+      "train_accuracy": 0.02422752808988764
+    },
+    {
+      "epoch": 3,
+      "loss": 6.360280615560124,
+      "train_accuracy": 0.03546348314606742
+    },
+    {
+      "epoch": 4,
+      "loss": 5.891431020886711,
+      "train_accuracy": 0.042485955056179775
+    }
+  ],
+  "device": "cpu",
+  "splits": {
+    "test": {
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0,
+      "weighted_f1": 0.0,
+      "num_eval_windows": 448,
+      "num_classes": 1187
+    }
+  },
+  "primary_metric": "macro_f1",
+  "primary_score": 0.0
+}
