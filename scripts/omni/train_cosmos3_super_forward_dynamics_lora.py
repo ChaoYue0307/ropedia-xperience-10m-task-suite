@@ -32,6 +32,14 @@ DEFAULT_DATASET = (
     "xperience10m_cosmos3_camera_pose_targets_20260608/"
     "dataset_with_cosmos_actions.jsonl"
 )
+DEFAULT_COSMOS3_SUPER_LORA_TARGETS = [
+    "add_q_proj",
+    "add_k_proj",
+    "add_v_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj",
+]
 
 
 def parse_args() -> argparse.Namespace:
@@ -125,12 +133,34 @@ def select_rows(rows: list[dict[str, Any]], args: argparse.Namespace) -> list[di
     return candidates
 
 
-def lora_targets(args: argparse.Namespace, inner: dict[str, Any]) -> list[str]:
+def checkpoint_module_suffixes(model_dir: Path) -> set[str]:
+    suffixes: set[str] = set()
+    for index_path in (
+        model_dir / "model.safetensors.index.json",
+        model_dir / "transformer" / "diffusion_pytorch_model.safetensors.index.json",
+    ):
+        index = read_json(index_path)
+        weight_map = index.get("weight_map") if isinstance(index, dict) else None
+        if not isinstance(weight_map, dict):
+            continue
+        for key in weight_map:
+            if key.endswith(".weight"):
+                suffixes.add(key[:-7].split(".")[-1])
+    return suffixes
+
+
+def lora_targets(args: argparse.Namespace, inner: dict[str, Any], model_dir: Path) -> list[str]:
     raw = args.target_modules or inner.get("lora_target_modules") or ""
     modules = [item.strip() for item in str(raw).split(",") if item.strip()]
-    if not modules:
-        modules = ["q_proj_moe_gen", "k_proj_moe_gen", "v_proj_moe_gen", "o_proj_moe_gen"]
-    return modules
+    if args.target_modules:
+        return modules
+
+    available = checkpoint_module_suffixes(model_dir)
+    if modules and (not available or any(module in available for module in modules)):
+        return modules
+
+    fallback = [module for module in DEFAULT_COSMOS3_SUPER_LORA_TARGETS if not available or module in available]
+    return fallback or modules or DEFAULT_COSMOS3_SUPER_LORA_TARGETS
 
 
 def instantiate_action(row: dict[str, Any], resolution_tier: int | None):
@@ -156,6 +186,47 @@ def instantiate_action(row: dict[str, Any], resolution_tier: int | None):
     )
 
 
+def load_video_frames(video_path: str | Path, max_frames: int) -> list[Any]:
+    import cv2
+    from PIL import Image
+
+    path = Path(video_path)
+    capture = cv2.VideoCapture(str(path))
+    if not capture.isOpened():
+        raise ValueError(f"failed to open conditioning video: {path}")
+
+    frames: list[Any] = []
+    try:
+        while len(frames) < max_frames:
+            ok, frame = capture.read()
+            if not ok:
+                break
+            rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            frames.append(Image.fromarray(rgb))
+    finally:
+        capture.release()
+
+    if not frames:
+        raise ValueError(f"conditioning video has no decodable frames: {path}")
+    return frames
+
+
+def conditioning_clip_for_action(action: Any, target_frames: int) -> Any:
+    if action.image is not None:
+        if isinstance(action.image, (str, Path)):
+            from PIL import Image
+
+            return [Image.open(action.image).convert("RGB")]
+        return [action.image]
+
+    video = action.video
+    if isinstance(video, list) and video and isinstance(video[0], (str, Path)):
+        return load_video_frames(video[0], target_frames)
+    if isinstance(video, (str, Path)):
+        return load_video_frames(video, target_frames)
+    return video
+
+
 def action_domain_id(domain_name: str, device: str):
     import torch
     from diffusers.pipelines.cosmos.pipeline_cosmos3_omni import _EMBODIMENT_TO_DOMAIN_ID
@@ -167,7 +238,7 @@ def action_domain_id(domain_name: str, device: str):
 
 def clean_vision_latents(pipe: Any, action: Any, device: str, dtype: Any):
     target_frames = action.chunk_size + 1
-    conditioning_clip = [action.image] if action.image is not None else action.video
+    conditioning_clip = conditioning_clip_for_action(action, target_frames)
     vision_tensor, action_image_size, height, width = pipe._prepare_action_video_conditioning(
         conditioning_clip,
         action.resolution_tier,
@@ -283,12 +354,13 @@ def training_step(pipe: Any, row: dict[str, Any], args: argparse.Namespace, devi
     noise = torch.randn_like(x0, dtype=x0.dtype, device=x0.device)
     velocity_target = noise - x0
 
-    latent_t = int(x0.shape[1])
-    vision_condition_mask = torch.zeros((latent_t, 1, 1), device=x0.device, dtype=x0.dtype)
-    vision_condition_mask[0, 0, 0] = 1.0
+    latent_t = int(x0.shape[2])
+    vision_condition_mask = torch.zeros((1, latent_t, 1, 1), device=x0.device, dtype=x0.dtype)
+    vision_condition_mask[:, 0, 0, 0] = 1.0
     loss_mask = loss_mask_from_condition(vision_condition_mask, x0)
+    latent_condition_mask = vision_condition_mask.unsqueeze(0)
     noised = x0 + sigma * velocity_target
-    latents = vision_condition_mask * x0.to(dtype) + (1.0 - vision_condition_mask) * noised.to(dtype)
+    latents = latent_condition_mask * x0.to(dtype) + (1.0 - latent_condition_mask) * noised.to(dtype)
 
     packed = pack_static(pipe, input_ids, latents, act_tokens, act_condition_frames, args.fps, device)
     vision_timesteps = torch.full((packed["num_noisy_vision_tokens"],), timestep, device=device)
@@ -386,7 +458,7 @@ def main() -> int:
 
     inner = model_inner_config(args.model_dir)
     train_rows = select_rows(load_jsonl(args.dataset_jsonl), args)
-    target_modules = lora_targets(args, inner)
+    target_modules = lora_targets(args, inner, args.model_dir)
     lora_rank = int(args.lora_rank or inner.get("lora_rank") or 16)
     lora_alpha = int(args.lora_alpha or inner.get("lora_alpha") or 32)
     train_cfg = inner.get("rectified_flow_training_config") or {}

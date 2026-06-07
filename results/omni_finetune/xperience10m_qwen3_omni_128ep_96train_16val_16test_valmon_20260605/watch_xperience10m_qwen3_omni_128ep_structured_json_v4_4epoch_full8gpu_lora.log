@@ -1,0 +1,10 @@
+watch_omni_train_then_eval failed: Command '['/home/cy/Ropedia/ropedia-episode-task-suite/.venv/bin/python', 'scripts/omni/eval_qwen3_omni_lora.py', '--dataset-jsonl', 'results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl', '--model-id', '/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct', '--adapter-dir', 'checkpoints/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora/adapter_lora', '--run-id', 'xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full', '--eval-split', 'test', '--train-split', 'train', '--max-new-tokens', '96', '--local-files-only']' died with <Signals.SIGTERM: 15>.
+Traceback (most recent call last):
+  File "/home/cy/Ropedia/ropedia-episode-task-suite/scripts/omni/watch_omni_train_then_eval.py", line 285, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/cy/Ropedia/ropedia-episode-task-suite/scripts/omni/watch_omni_train_then_eval.py", line 263, in main
+    run_checked(
+  File "/home/cy/Ropedia/ropedia-episode-task-suite/scripts/omni/watch_omni_train_then_eval.py", line 98, in run_checked
+    raise subprocess.CalledProcessError(proc.returncode, cmd)
+subprocess.CalledProcessError: Command '['/home/cy/Ropedia/ropedia-episode-task-suite/.venv/bin/python', 'scripts/omni/eval_qwen3_omni_lora.py', '--dataset-jsonl', 'results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl', '--model-id', '/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct', '--adapter-dir', 'checkpoints/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora/adapter_lora', '--run-id', 'xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full', '--eval-split', 'test', '--train-split', 'train', '--max-new-tokens', '96', '--local-files-only']' died with <Signals.SIGTERM: 15>.
