@@ -1,0 +1,120 @@
+{
+  "run_id": "xperience10m_cosmos3_super_training_contract_audit_20260608",
+  "run_kind": "cosmos3_super_training_contract_audit",
+  "started_at_unix": 1780849991.7901566,
+  "finished_at_unix": 1780849994.0397775,
+  "elapsed_seconds": 2.2496211528778076,
+  "workspace": "/home/cy/Ropedia/ropedia-episode-task-suite",
+  "dataset_jsonl": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl",
+  "sample_limit": 0,
+  "backbone_config": "/home/cy/Ropedia/ropedia-episode-task-suite/configs/omni_backbones/cosmos3_super_reasoner.json",
+  "backbone": {
+    "id": "cosmos3_super_reasoner",
+    "display_name": "Cosmos3-Super Reasoner",
+    "training_objective": "zero_shot_structured_episode_understanding_json_qa_via_vllm_reasoner"
+  },
+  "model": {
+    "provided": true,
+    "path": "/home/cy/Ropedia/cosmos3_models/nv-community__Cosmos3-Super",
+    "exists": true,
+    "model_type": "cosmos3_omni",
+    "architectures": [
+      "Cosmos3ForConditionalGeneration"
+    ],
+    "pipeline_class": "Cosmos3OmniDiffusersPipeline",
+    "transformer_class": "Cosmos3OmniTransformer",
+    "action_gen": true,
+    "action_dim": 64,
+    "lora_enabled_default": false,
+    "lora_rank_default": 16,
+    "lora_alpha_default": 32,
+    "lora_target_modules_default": "q_proj_moe_gen,k_proj_moe_gen,v_proj_moe_gen,o_proj_moe_gen",
+    "rectified_flow_training_config_keys": [
+      "_type",
+      "action_loss_weight",
+      "high_sigma_ratio",
+      "high_sigma_timesteps_max",
+      "high_sigma_timesteps_min",
+      "image_loss_scale",
+      "independent_action_schedule",
+      "independent_sound_schedule",
+      "loss_scale",
+      "normalize_loss_by_active",
+      "shift",
+      "shift_action",
+      "shift_sound",
+      "sound_loss_scale",
+      "train_time_action_distribution",
+      "train_time_image_distribution",
+      "train_time_sound_distribution",
+      "train_time_video_distribution",
+      "train_time_weight",
+      "use_discrete_rf",
+      "use_dynamic_shift",
+      "use_high_sigma_strategy",
+      "use_high_sigma_strategy_action",
+      "use_high_sigma_strategy_sound"
+    ]
+  },
+  "dataset": {
+    "num_rows": 3808,
+    "split_counts": {
+      "train": 2848,
+      "val": 512,
+      "test": 448
+    },
+    "episode_split_counts": {
+      "test": 14,
+      "train": 89,
+      "val": 16
+    },
+    "rows_with_video": 3808,
+    "missing_json_answer": 0,
+    "missing_json_fields": {},
+    "rows_with_action_target": 0,
+    "valid_action_targets": 0,
+    "target_key_counts": {},
+    "target_mode_counts": {},
+    "target_issue_counts": {},
+    "target_issue_examples": []
+  },
+  "decision": {
+    "status": "blocked_missing_cosmos_action_targets",
+    "weights_updated": false,
+    "blockers": [
+      "dataset has no cosmos_action_target/cosmos3_action_target/action_target records; semantic JSON labels cannot be used as Cosmos continuous action latents"
+    ],
+    "warnings": [],
+    "required_target_schema": {
+      "cosmos_action_target": {
+        "mode": "policy|forward_dynamics|inverse_dynamics",
+        "domain_name": "one Cosmos3 embodiment domain supported by CosmosActionCondition",
+        "chunk_size": "positive integer action transition count",
+        "raw_actions": "required for forward_dynamics; list[list[float]] with shape [T, raw_action_dim]",
+        "video": "required for inverse_dynamics, or image/video conditioning for policy and forward_dynamics",
+        "resolution_tier": "optional; one of 256, 480, 704, 720",
+        "view_point": "optional; ego_view|third_person_view|wrist_view|concat_view"
+      }
+    },
+    "trainer_contract": {
+      "diffusers_classes": [
+        "Cosmos3OmniPipeline",
+        "Cosmos3OmniTransformer",
+        "CosmosActionCondition"
+      ],
+      "packing_helpers": [
+        "Cosmos3OmniPipeline.prepare_latents",
+        "Cosmos3OmniPipeline._prepare_text_segment",
+        "Cosmos3OmniPipeline._prepare_vision_segment",
+        "Cosmos3OmniPipeline._prepare_action_segment"
+      ],
+      "forward_outputs": "Cosmos3OmniTransformer.forward returns (preds_vision, preds_sound, preds_action); action LoRA needs supervised loss against raw continuous action tokens, not JSON strings.",
+      "lora_targets": "use checkpoint-declared q_proj_moe_gen,k_proj_moe_gen,v_proj_moe_gen,o_proj_moe_gen unless a new audited config overrides them"
+    },
+    "next_steps": [
+      "Export Cosmos-native action targets from Xperience annotations or mocap/pose/contact signals into the required cosmos_action_target schema.",
+      "Implement a one-sample batch packer that calls Cosmos3OmniPipeline.prepare_latents and the static segment helpers, then computes MSE/rectified-flow loss over preds_action for noisy action tokens.",
+      "Run a one-episode overfit before scheduling a 96/16/16 Super LoRA run; only publish a Cosmos model repo after new adapter/checkpoint weights exist."
+    ]
+  }
+}
