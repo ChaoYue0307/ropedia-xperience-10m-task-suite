@@ -80,7 +80,7 @@
   "required_next_steps": [
     "Use the v3 strict-label predictions for action/subtask error analysis and unseen-label debugging.",
     "Keep the existing Qwen LoRA adapter repository as the weight-bearing artifact; v3 is an evaluation/package refresh over the same adapter, not new weights.",
-    "Implement the Cosmos3-Super diffusion/action target packer and supervised loss before claiming Cosmos3 fine-tuning.",
+    "Implement the Cosmos3-Super batch packer and supervised action loss before claiming Cosmos3 fine-tuning; camera-pose proxy action targets are now exported and contract-audited, but no Cosmos weights have been updated.",
     "Use sharded Qwen eval for future long held-out passes to improve GPU utilization."
   ]
 }
