@@ -471,6 +471,17 @@ def qwen3_lora_upload_dir() -> Path | None:
     return None
 
 
+def display_local_path(path: Path) -> str:
+    resolved = path.resolve()
+    for base, prefix in ((ROOT, ""), (ROOT.parent, "../")):
+        try:
+            rel = resolved.relative_to(base.resolve()).as_posix()
+            return f"{prefix}{rel}"
+        except ValueError:
+            continue
+    return path.name
+
+
 def qwen3_lora_hash_groups() -> list[dict]:
     upload_dir = qwen3_lora_upload_dir()
     if upload_dir is None:
@@ -490,7 +501,7 @@ def qwen3_lora_hash_groups() -> list[dict]:
             {
                 "id": f"qwen3_lora_{filename.replace('.', '_').replace('-', '_')}",
                 "title": f"Qwen3-Omni LoRA repo file: {filename}",
-                "local_path": str(path),
+                "local_path": display_local_path(path),
                 "urls": {
                     "hf_qwen3_lora_model": (
                         f"https://huggingface.co/{QWEN3_LORA_REPO_ID}/resolve/main/{filename}"
