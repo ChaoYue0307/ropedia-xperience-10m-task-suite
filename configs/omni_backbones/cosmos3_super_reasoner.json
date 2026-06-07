@@ -6,7 +6,7 @@
   "default_model_id": "nv-community/Cosmos3-Super",
   "local_model_env": "COSMOS3_SUPER_MODEL_DIR",
   "dataset_contract": "xperience10m_episode_json_qa_v1",
-  "training_objective": "zero_shot_structured_episode_understanding_json_qa_via_vllm_reasoner",
+  "training_objective": "base_weight_structured_json_reasoner_eval_plus_forward_dynamics_lora_training",
   "split_policy": {
     "unit": "episode",
     "default_counts": {
@@ -25,7 +25,8 @@
       "prompt-side task schema and episode/window metadata"
     ],
     "targets": [
-      "structured action/subtask/contact/transition/object JSON"
+      "structured action/subtask/contact/transition/object JSON",
+      "camera-pose-conditioned future vision velocity for forward-dynamics LoRA"
     ],
     "excluded_inputs": [
       "visualization.rrd",
@@ -39,11 +40,12 @@
     "neutral_index": "scripts/omni/export_model_neutral_window_index.py",
     "action_target_export": "scripts/omni/export_cosmos3_camera_pose_targets.py",
     "action_batch_packer": "scripts/omni/pack_cosmos3_super_action_batch.py",
-    "train": "",
+    "train": "scripts/omni/train_cosmos3_super_forward_dynamics_lora.py",
     "train_contract_audit": "scripts/omni/audit_cosmos3_super_training_contract.py",
     "train_probe": "scripts/omni/probe_cosmos3_super_training_readiness.py",
     "eval": "scripts/omni/eval_cosmos3_super_reasoner.py",
     "launcher": "scripts/omni/run_cosmos3_super_reasoner_eval.sh",
+    "train_launcher": "scripts/omni/run_cosmos3_super_forward_dynamics_lora.sh",
     "validate": "scripts/omni/validate_omni_finetune_run.py"
   },
   "primary_metrics": [
@@ -91,8 +93,8 @@
     ]
   },
   "extension_requirements": [
-    "This branch evaluates staged Cosmos3-Super Reasoner base weights through vLLM on the 128-episode held-out JSON task; it does not fine-tune or release new Cosmos weights.",
-    "Run scripts/omni/probe_cosmos3_super_training_readiness.py before any Cosmos3-Super adapter launch; the probe must have no blockers before train can be filled.",
+    "This branch evaluates staged Cosmos3-Super Reasoner base weights through vLLM on the 128-episode held-out JSON task; forward-dynamics LoRA training is a separate Diffusers path over camera-pose action targets.",
+    "Run scripts/omni/probe_cosmos3_super_training_readiness.py and scripts/omni/audit_cosmos3_super_training_contract.py before any Cosmos3-Super adapter launch; the action-target audit must have no blockers.",
     "Create a separate Cosmos3-Super adapter/model repository only after a real fine-tuning run produces new adapter or checkpoint weights.",
     "Keep it separate from the Cosmos3-Nano future-window compatibility branch, which answers a different world-model retrieval target."
   ]

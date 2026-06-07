@@ -1,9 +1,9 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-07T18:19:14+00:00",
+  "generated_at_utc": "2026-06-07T18:38:28+00:00",
   "hf_root": "hf_publish",
   "summary": {
-    "group_count": 236,
+    "group_count": 242,
     "failure_count": 0,
     "failures_by_surface": {}
   },
@@ -1780,6 +1780,31 @@
       "failures": []
     },
     {
+      "name": "scripts/omni/audit_cosmos3_super_training_contract.py",
+      "status": "pass",
+      "local": {
+        "path": "repo:scripts/omni/audit_cosmos3_super_training_contract.py",
+        "exists": true,
+        "bytes": 16837,
+        "sha256": "8d4c94ccf7e7b121f714f98e08daf128b8b33ba8c3f75da1a4c86da2438bcb9a"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "hf_artifacts:scripts/omni/audit_cosmos3_super_training_contract.py",
+          "exists": true,
+          "bytes": 16837,
+          "sha256": "8d4c94ccf7e7b121f714f98e08daf128b8b33ba8c3f75da1a4c86da2438bcb9a"
+        },
+        "hf_model": {
+          "path": "hf_model:scripts/omni/audit_cosmos3_super_training_contract.py",
+          "exists": true,
+          "bytes": 16837,
+          "sha256": "8d4c94ccf7e7b121f714f98e08daf128b8b33ba8c3f75da1a4c86da2438bcb9a"
+        }
+      },
+      "failures": []
+    },
+    {
       "name": "scripts/omni/build_omni_model_comparison.py",
       "status": "pass",
       "local": {
@@ -1830,6 +1855,56 @@
       "failures": []
     },
     {
+      "name": "scripts/omni/export_cosmos3_camera_pose_targets.py",
+      "status": "pass",
+      "local": {
+        "path": "repo:scripts/omni/export_cosmos3_camera_pose_targets.py",
+        "exists": true,
+        "bytes": 10215,
+        "sha256": "6e0cc77a45dbe4678b082291f54e85f92133d47d7ba292d11e91487e28af586d"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "hf_artifacts:scripts/omni/export_cosmos3_camera_pose_targets.py",
+          "exists": true,
+          "bytes": 10215,
+          "sha256": "6e0cc77a45dbe4678b082291f54e85f92133d47d7ba292d11e91487e28af586d"
+        },
+        "hf_model": {
+          "path": "hf_model:scripts/omni/export_cosmos3_camera_pose_targets.py",
+          "exists": true,
+          "bytes": 10215,
+          "sha256": "6e0cc77a45dbe4678b082291f54e85f92133d47d7ba292d11e91487e28af586d"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "scripts/omni/pack_cosmos3_super_action_batch.py",
+      "status": "pass",
+      "local": {
+        "path": "repo:scripts/omni/pack_cosmos3_super_action_batch.py",
+        "exists": true,
+        "bytes": 18807,
+        "sha256": "2a07f7c860b468d23f93e4640d30bf7681f1d6f2384b690f72240feb9afb0baa"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "hf_artifacts:scripts/omni/pack_cosmos3_super_action_batch.py",
+          "exists": true,
+          "bytes": 18807,
+          "sha256": "2a07f7c860b468d23f93e4640d30bf7681f1d6f2384b690f72240feb9afb0baa"
+        },
+        "hf_model": {
+          "path": "hf_model:scripts/omni/pack_cosmos3_super_action_batch.py",
+          "exists": true,
+          "bytes": 18807,
+          "sha256": "2a07f7c860b468d23f93e4640d30bf7681f1d6f2384b690f72240feb9afb0baa"
+        }
+      },
+      "failures": []
+    },
+    {
       "name": "scripts/omni/prepare_qwen3_lora_hf_package.py",
       "status": "pass",
       "local": {
@@ -1855,6 +1930,31 @@
       "failures": []
     },
     {
+      "name": "scripts/omni/probe_cosmos3_super_training_readiness.py",
+      "status": "pass",
+      "local": {
+        "path": "repo:scripts/omni/probe_cosmos3_super_training_readiness.py",
+        "exists": true,
+        "bytes": 19611,
+        "sha256": "2d13a3a5a73ac9f47f277d47d8ff695ccb4a399fd93129bfa663e04aed0d4793"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "hf_artifacts:scripts/omni/probe_cosmos3_super_training_readiness.py",
+          "exists": true,
+          "bytes": 19611,
+          "sha256": "2d13a3a5a73ac9f47f277d47d8ff695ccb4a399fd93129bfa663e04aed0d4793"
+        },
+        "hf_model": {
+          "path": "hf_model:scripts/omni/probe_cosmos3_super_training_readiness.py",
+          "exists": true,
+          "bytes": 19611,
+          "sha256": "2d13a3a5a73ac9f47f277d47d8ff695ccb4a399fd93129bfa663e04aed0d4793"
+        }
+      },
+      "failures": []
+    },
+    {
       "name": "scripts/omni/run_128_task_baselines.py",
       "status": "pass",
       "local": {
@@ -1875,6 +1975,56 @@
           "exists": true,
           "bytes": 48164,
           "sha256": "fbefe3f31e2d19566ed1fc356a25c564ecb4f0645de4d595f5926e1426c058d5"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "scripts/omni/run_cosmos3_super_forward_dynamics_lora.sh",
+      "status": "pass",
+      "local": {
+        "path": "repo:scripts/omni/run_cosmos3_super_forward_dynamics_lora.sh",
+        "exists": true,
+        "bytes": 1637,
+        "sha256": "edb1f55fc791e406e1456ef922f1ff4db804bfc558f026a5b8d71d80af87c3af"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "hf_artifacts:scripts/omni/run_cosmos3_super_forward_dynamics_lora.sh",
+          "exists": true,
+          "bytes": 1637,
+          "sha256": "edb1f55fc791e406e1456ef922f1ff4db804bfc558f026a5b8d71d80af87c3af"
+        },
+        "hf_model": {
+          "path": "hf_model:scripts/omni/run_cosmos3_super_forward_dynamics_lora.sh",
+          "exists": true,
+          "bytes": 1637,
+          "sha256": "edb1f55fc791e406e1456ef922f1ff4db804bfc558f026a5b8d71d80af87c3af"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "scripts/omni/train_cosmos3_super_forward_dynamics_lora.py",
+      "status": "pass",
+      "local": {
+        "path": "repo:scripts/omni/train_cosmos3_super_forward_dynamics_lora.py",
+        "exists": true,
+        "bytes": 23657,
+        "sha256": "d067a71283253260dfed02e01e620e278d990945828d1d4ffee8f6a46dd80163"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "hf_artifacts:scripts/omni/train_cosmos3_super_forward_dynamics_lora.py",
+          "exists": true,
+          "bytes": 23657,
+          "sha256": "d067a71283253260dfed02e01e620e278d990945828d1d4ffee8f6a46dd80163"
+        },
+        "hf_model": {
+          "path": "hf_model:scripts/omni/train_cosmos3_super_forward_dynamics_lora.py",
+          "exists": true,
+          "bytes": 23657,
+          "sha256": "d067a71283253260dfed02e01e620e278d990945828d1d4ffee8f6a46dd80163"
         }
       },
       "failures": []
@@ -2210,21 +2360,21 @@
       "local": {
         "path": "repo:scripts/validate_mirror_parity.py",
         "exists": true,
-        "bytes": 15657,
-        "sha256": "3d126fc47a0a67e1c1148d64600fe39d7a208d7d0c15ea984e3f3e2ced46bd0c"
+        "bytes": 15973,
+        "sha256": "10eb77216f8f0672f0cae9f90214fd67f450713a117ee2d02caed5e6448e95ed"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 15657,
-          "sha256": "3d126fc47a0a67e1c1148d64600fe39d7a208d7d0c15ea984e3f3e2ced46bd0c"
+          "bytes": 15973,
+          "sha256": "10eb77216f8f0672f0cae9f90214fd67f450713a117ee2d02caed5e6448e95ed"
         },
         "hf_model": {
           "path": "hf_model:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 15657,
-          "sha256": "3d126fc47a0a67e1c1148d64600fe39d7a208d7d0c15ea984e3f3e2ced46bd0c"
+          "bytes": 15973,
+          "sha256": "10eb77216f8f0672f0cae9f90214fd67f450713a117ee2d02caed5e6448e95ed"
         }
       },
       "failures": []
