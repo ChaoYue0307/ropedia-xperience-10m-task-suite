@@ -297,11 +297,13 @@ def main() -> int:
         root / f"{args.run_id}_lora" / "progress.jsonl",
         root / args.run_id / "progress.jsonl",
     ])
-    metrics = first_existing([
-        eval_dir / "metrics.json",
-        root / f"{train_run_id}_eval" / "metrics.json",
-        root / f"{args.run_id}_eval" / "metrics.json",
-    ])
+    metrics_candidates = [eval_dir / "metrics.json"]
+    if not args.eval_run_id:
+        metrics_candidates.extend([
+            root / f"{train_run_id}_eval" / "metrics.json",
+            root / f"{args.run_id}_eval" / "metrics.json",
+        ])
+    metrics = first_existing(metrics_candidates)
     log_path = first_existing([
         run_dir / "run.log",
         run_dir / "logs" / "pipeline.log",
