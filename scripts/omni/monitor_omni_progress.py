@@ -11,11 +11,14 @@ from collections import Counter
 from pathlib import Path
 
 
+DEFAULT_RUN_ID = "xperience10m_qwen3_omni_32ep"
+
+
 def parse_args() -> argparse.Namespace:
     workspace_default = Path(__file__).resolve().parents[2]
     parser = argparse.ArgumentParser(description="Monitor an omni fine-tuning run.")
     parser.add_argument("--workspace", type=Path, default=workspace_default)
-    parser.add_argument("--run-id", default="xperience10m_qwen3_omni_32ep")
+    parser.add_argument("--run-id", default=DEFAULT_RUN_ID)
     parser.add_argument("--dataset-run-id", help="Run id that owns the episode manifest and exported dataset.")
     parser.add_argument("--train-run-id", help="Run id that owns training progress and checkpoint artifacts.")
     parser.add_argument("--eval-run-id", help="Run id that owns held-out evaluation metrics.")
@@ -311,7 +314,8 @@ def main() -> int:
         root / f"{dataset_run_id}.detached.log",
     ])
 
-    print(f"Run: {args.run_id}")
+    display_run_id = train_run_id if args.run_id == DEFAULT_RUN_ID and args.train_run_id else args.run_id
+    print(f"Run: {display_run_id}")
     print(f"Dataset run: {dataset_run_id}")
     print(f"Train run: {train_run_id}")
     print(f"Eval run: {eval_run_id}")
