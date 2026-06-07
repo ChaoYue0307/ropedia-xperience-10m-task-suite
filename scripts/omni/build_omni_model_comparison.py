@@ -212,7 +212,8 @@ def model_branch_entry(payload: dict[str, Any]) -> dict[str, Any]:
 def model_branch_summary() -> dict[str, Any]:
     branches = [model_branch_entry(payload) for payload in verified_summaries()]
     qwen = [item for item in branches if item.get("backbone") == "qwen3_omni_lora"]
-    cosmos = [item for item in branches if item.get("backbone") == "cosmos_world_model"]
+    cosmos_nano = [item for item in branches if item.get("backbone") == "cosmos_world_model"]
+    cosmos_super = [item for item in branches if item.get("backbone") == "cosmos3_super_reasoner"]
     return {
         "id": "v3_multi_episode_foundation_model_branches",
         "title": "128-Episode Foundation-Model Branches",
@@ -223,40 +224,241 @@ def model_branch_summary() -> dict[str, Any]:
         "counts": {
             "verified_branch_count": len(branches),
             "qwen3_verified_package_count": len(qwen),
-            "cosmos3_verified_package_count": len(cosmos),
+            "cosmos3_verified_package_count": len(cosmos_nano) + len(cosmos_super),
+            "cosmos3_nano_verified_package_count": len(cosmos_nano),
+            "cosmos3_super_verified_package_count": len(cosmos_super),
         },
-        "models": ["Qwen3-Omni LoRA", "Cosmos3-Nano future-window compatibility branch"],
+        "models": [
+            "Qwen3-Omni LoRA",
+            "Cosmos3-Nano future-window compatibility branch",
+            "Cosmos3-Super Reasoner base-weight evaluation",
+        ],
         "branches": branches,
         "interpretation": (
             "This layer contains the held-out foundation-model packages. Qwen3-Omni "
-            "packages evaluate structured JSON task prediction; Cosmos3-Nano currently "
-            "evaluates a future-window world-model compatibility adapter, not a full "
-            "diffusion-weight fine-tune."
+            "packages evaluate structured JSON task prediction; Cosmos3-Nano evaluates "
+            "a future-window world-model compatibility adapter; Cosmos3-Super Reasoner "
+            "evaluates staged base weights through vLLM on the JSON task. Neither Cosmos "
+            "branch is a new fine-tuned weight release yet."
         ),
     }
 
 
+def qwen3_smoke_entry() -> dict[str, Any]:
+    path = ROOT / "results/omni_exploration/qwen3_adapter_smoke/metrics.json"
+    metrics = load_json(path)
+    if not metrics:
+        return {
+            "id": "qwen3_omni_sensor_adapter_smoke_1ep",
+            "title": "Qwen3-Omni Sensor-Adapter Smoke",
+            "scope": "one public Xperience-10M sample episode",
+            "status": "missing",
+            "source": rel(path),
+            "weights": "none",
+            "interpretation": "Expected readiness entry, but the local metrics file is missing.",
+        }
+    return {
+        "id": "qwen3_omni_sensor_adapter_smoke_1ep",
+        "title": "Qwen3-Omni Sensor-Adapter Smoke",
+        "scope": "one public Xperience-10M sample episode",
+        "status": "verified_smoke",
+        "source": rel(path),
+        "split": metrics.get("split"),
+        "counts": {
+            "episodes": metrics.get("num_episodes"),
+            "windows": metrics.get("num_windows"),
+            "train_windows": metrics.get("num_train_windows"),
+            "test_windows": metrics.get("num_test_windows"),
+            "feature_dim": metrics.get("feature_dim"),
+            "adapter_tokens": metrics.get("num_adapter_tokens"),
+        },
+        "primary_metrics": {
+            "accuracy": metrics.get("accuracy"),
+            "macro_f1": metrics.get("macro_f1"),
+            "train_final_loss": metrics.get("train_final_loss"),
+        },
+        "base_model_target": metrics.get("base_model_target"),
+        "qwen3_loaded": metrics.get("qwen3_loaded"),
+        "weights": "no Qwen3 base weights or LoRA adapter weights; adapter-token readiness smoke only",
+        "interpretation": (
+            "This validates the sensor-adapter token path on one real episode before "
+            "loading or LoRA-tuning Qwen3-Omni. It is not comparable to the 128-episode "
+            "held-out LoRA result."
+        ),
+    }
+
+
+def run_entry_from_version(version: dict[str, Any], *, run_id: str, weights: str, interpretation: str) -> dict[str, Any]:
+    return {
+        "id": run_id,
+        "title": version.get("title"),
+        "scope": version.get("scope"),
+        "status": version.get("status"),
+        "source": version.get("source"),
+        "split": version.get("split"),
+        "counts": version.get("counts", {}),
+        "weights": weights,
+        "interpretation": interpretation,
+    }
+
+
+def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    single_episode = versions[0]
+    aligned_128 = versions[1]
+    branch_version = versions[2]
+    branches = branch_version.get("branches", [])
+    qwen_branches = [branch for branch in branches if branch.get("backbone") == "qwen3_omni_lora"]
+    cosmos_nano_branches = [branch for branch in branches if branch.get("backbone") == "cosmos_world_model"]
+    cosmos_super_branches = [branch for branch in branches if branch.get("backbone") == "cosmos3_super_reasoner"]
+    if qwen_branches:
+        current_qwen = max(qwen_branches, key=lambda item: item.get("primary_metrics", {}).get("json_validity_rate") or -1)
+        for branch in qwen_branches:
+            branch["is_current"] = branch.get("id") == current_qwen.get("id")
+            branch["weights_repository"] = (
+                "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
+                if branch["is_current"]
+                else "historical diagnostic package; keep separate from the final 128-episode adapter repo"
+            )
+    for branch in cosmos_nano_branches:
+        branch["is_current"] = True
+        branch["weights_repository"] = (
+            "planned separate Cosmos3 model repo after a real Cosmos diffusion/LoRA "
+            "fine-tune exists; current result remains artifacts-only"
+        )
+    for branch in cosmos_super_branches:
+        branch["is_current"] = True
+        branch["weights_repository"] = (
+            "none for this run: staged base nv-community/Cosmos3-Super weights were "
+            "evaluated through vLLM; create a separate repo only after new adapter or "
+            "fine-tuned weights exist"
+        )
+    return [
+        {
+            "id": "task_head_baselines",
+            "model_family": "Minimal and Neural Task Heads",
+            "model_type": "lightweight supervised/self-supervised task heads",
+            "weight_repository": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines",
+            "one_episode_runs": [
+                run_entry_from_version(
+                    single_episode,
+                    run_id="task_heads_single_episode_public_sample",
+                    weights="baseline model files in the baseline model repo; no foundation-model weights",
+                    interpretation="Raw multimodal feature task harness on the public sample.",
+                )
+            ],
+            "multi_episode_128_runs": [
+                run_entry_from_version(
+                    aligned_128,
+                    run_id="task_heads_128_episode_metadata_baselines",
+                    weights="metadata/text baseline artifacts; raw 128 sensor-feature model weights not yet complete",
+                    interpretation="Same selected 96/16/16 split and task ids as the model branches, but metadata/text features only.",
+                )
+            ],
+            "comparison_note": (
+                "This is the cleanest 1-episode versus 128-episode grouping for the "
+                "same simple/NN task-head family, but the feature surface changes from "
+                "raw public-sample features to public-safe 128-episode metadata/text features."
+            ),
+        },
+        {
+            "id": "qwen3_omni_lora",
+            "model_family": "Qwen3-Omni LoRA",
+            "model_type": "PEFT LoRA adapter over Qwen/Qwen3-Omni-30B-A3B-Instruct",
+            "weight_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep",
+            "one_episode_runs": [qwen3_smoke_entry()],
+            "multi_episode_128_runs": qwen_branches,
+            "comparison_note": (
+                "The one-episode Qwen entry is only a sensor-adapter smoke test with "
+                "Qwen3 weights unloaded. The 128-episode entries are real held-out LoRA "
+                "diagnostics; the current final adapter belongs in the separate Qwen model repo."
+            ),
+        },
+        {
+            "id": "cosmos3_nano_world_model",
+            "model_family": "Cosmos3-Nano Future-Window World Model",
+            "model_type": "world-model/future-window branch",
+            "weight_repository": "planned: cy0307/ropedia-cosmos3-nano-future-window-lora-128ep after real adapter weights exist",
+            "one_episode_runs": [
+                {
+                    "id": "cosmos3_nano_one_episode",
+                    "title": "Cosmos3-Nano One-Episode Fine-Tune",
+                    "scope": "one public Xperience-10M sample episode",
+                    "status": "not_run",
+                    "source": None,
+                    "weights": "none",
+                    "interpretation": (
+                        "No Cosmos3 one-episode adapter or diffusion-weight fine-tune is currently published. "
+                        "Use the public-sample task suite only as model-agnostic evidence."
+                    ),
+                }
+            ],
+            "multi_episode_128_runs": cosmos_nano_branches,
+            "comparison_note": (
+                "The current 128-episode Cosmos result is a public-safe future-window "
+                "compatibility adapter. It is not yet a full Cosmos diffusion/LoRA weight release."
+            ),
+        },
+        {
+            "id": "cosmos3_super_reasoner",
+            "model_family": "Cosmos3-Super Reasoner",
+            "model_type": "base-weight vLLM Reasoner evaluation over nv-community/Cosmos3-Super",
+            "weight_repository": "none for this run; staged base weights only, no new fine-tuned weights",
+            "one_episode_runs": [
+                {
+                    "id": "cosmos3_super_one_episode",
+                    "title": "Cosmos3-Super One-Episode Fine-Tune",
+                    "scope": "one public Xperience-10M sample episode",
+                    "status": "not_run",
+                    "source": None,
+                    "weights": "none",
+                    "interpretation": (
+                        "No one-episode Cosmos3-Super adapter or fine-tuned weight run is published. "
+                        "The available Super result is the 128-episode held-out base-weight evaluation."
+                    ),
+                }
+            ],
+            "multi_episode_128_runs": cosmos_super_branches,
+            "comparison_note": (
+                "Cosmos3-Super is now represented by a verified 448-window held-out "
+                "Reasoner evaluation on the same JSON task as Qwen3. It uses staged base "
+                "weights through vLLM, so it is a model-branch diagnostic, not a weight release."
+            ),
+        },
+    ]
+
+
 def build_report() -> dict[str, Any]:
     versions = [single_episode_summary(), aligned_baseline_summary(), model_branch_summary()]
+    model_groups = model_grouped_view(versions)
     return {
-        "title": "Ropedia Xperience-10M Current Result Versions",
+        "title": "Ropedia Xperience-10M Current Result Versions and Model Groups",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "status": "pass",
         "version_count": len(versions),
+        "model_group_count": len(model_groups),
         "comparison_rule": (
             "Compare only rows with the same scope and target. Single-episode raw-feature "
             "metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and "
-            "Cosmos3 future-window metrics answer different questions."
+            "the two Cosmos3 targets answer different questions: Nano future-window retrieval "
+            "versus Super structured JSON Reasoner evaluation."
         ),
         "version_reading_notes": [
             "Version 1 is the public-sample 12-task harness with minimal and neural heads.",
             "Version 2 is the selected 128-episode same-split simple/NN baseline alignment.",
-            "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, while Cosmos3-Nano is a future-window compatibility result rather than a full Cosmos diffusion fine-tune.",
+            "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, and Cosmos3-Super Reasoner is a base-weight JSON-task evaluation rather than a new fine-tuned weight release.",
         ],
         "versions": versions,
+        "model_groups": model_groups,
+        "model_group_reading_notes": [
+            "Use model_groups when comparing one-episode and 128-episode artifacts within the same model family.",
+            "Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.",
+            "Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; only the final 128-episode adapter belongs in the Qwen LoRA model repo.",
+            "Cosmos3-Nano has a 128-episode future-window compatibility package.",
+            "Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.",
+        ],
         "pending": [
             "Use the final Qwen3 full-eval package as the current Qwen result; older Qwen package rows remain historical diagnostics for comparison.",
-            "Promote Cosmos3 from compatibility adapter to full Cosmos3 fine-tuning only after a separate environment with matching Diffusers/Cosmos dependencies is prepared.",
+            "Promote Cosmos3 from Nano compatibility and Super base-weight evaluation to true fine-tuning only after a dedicated Cosmos adapter/diffusion training path produces new weights.",
         ],
     }
 
@@ -267,6 +469,73 @@ def fmt_score(value: Any) -> str:
     if isinstance(value, float):
         return f"{value:.4f}"
     return str(value)
+
+
+def entry_count_text(entry: dict[str, Any]) -> str:
+    counts = entry.get("counts", {}) if isinstance(entry.get("counts"), dict) else {}
+    pieces = []
+    for label, keys in (
+        ("episodes", ("episodes", "dataset_episodes", "held_out_episode_count")),
+        ("windows/samples", ("windows", "rows", "dataset_samples", "eval_samples")),
+        ("eval", ("eval_samples",)),
+    ):
+        value = next((counts.get(key) for key in keys if counts.get(key) is not None), None)
+        if value is not None:
+            pieces.append(f"{value} {label}")
+    return ", ".join(pieces)
+
+
+def entry_metric_text(entry: dict[str, Any]) -> str:
+    metrics = entry.get("primary_metrics", {}) if isinstance(entry.get("primary_metrics"), dict) else {}
+    if not metrics:
+        return ""
+    keep = [
+        "json_validity_rate",
+        "action_macro_f1",
+        "future_retrieval_mrr",
+        "temporal_consistency",
+        "transition_accuracy",
+        "contact_accuracy",
+        "accuracy",
+        "macro_f1",
+    ]
+    return ", ".join(f"{key}={fmt_score(metrics[key])}" for key in keep if key in metrics)
+
+
+def append_model_group(lines: list[str], group: dict[str, Any]) -> None:
+    lines.extend(
+        [
+            "",
+            f"### {group['model_family']}",
+            "",
+            group.get("comparison_note", ""),
+            "",
+            f"- Weight repo policy: {group.get('weight_repository')}",
+            "",
+            "| scope | status | run | counts | metrics | source |",
+            "| --- | --- | --- | --- | --- | --- |",
+        ]
+    )
+    rows = []
+    for entry in group.get("one_episode_runs", []):
+        rows.append(("1 episode", entry))
+    for entry in group.get("multi_episode_128_runs", []):
+        rows.append(("128 episode", entry))
+    for scope, entry in rows:
+        source = entry.get("source")
+        source_text = "" if source in (None, "") else f"`{source}`"
+        current = " current" if entry.get("is_current") else ""
+        lines.append(
+            "| {scope} | {status}{current} | {title} | {counts} | {metrics} | {source} |".format(
+                scope=scope,
+                status=entry.get("status", ""),
+                current=current,
+                title=entry.get("title") or entry.get("id"),
+                counts=entry_count_text(entry),
+                metrics=entry_metric_text(entry),
+                source=source_text,
+            )
+        )
 
 
 def markdown(report: dict[str, Any]) -> str:
@@ -293,6 +562,10 @@ def markdown(report: dict[str, Any]) -> str:
         )
     lines.extend(["", "Read the three rows this way:", ""])
     lines.extend(f"- {item}" for item in report.get("version_reading_notes", []))
+    lines.extend(["", "## Model-Family Grouped View", ""])
+    lines.extend(f"- {item}" for item in report.get("model_group_reading_notes", []))
+    for group in report.get("model_groups", []):
+        append_model_group(lines, group)
     lines.extend(["", "## 128-Episode Task Baselines", "", "| task | simple | neural |", "| --- | ---: | ---: |"])
     baseline = report["versions"][1]
     for row in baseline.get("task_metrics", []):

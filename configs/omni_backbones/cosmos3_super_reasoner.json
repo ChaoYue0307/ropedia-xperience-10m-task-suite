@@ -1,0 +1,94 @@
+{
+  "id": "cosmos3_super_reasoner",
+  "display_name": "Cosmos3-Super Reasoner",
+  "status": "implemented",
+  "model_family": "Cosmos3 / physical-world foundation models",
+  "default_model_id": "nv-community/Cosmos3-Super",
+  "local_model_env": "COSMOS3_SUPER_MODEL_DIR",
+  "dataset_contract": "xperience10m_episode_json_qa_v1",
+  "training_objective": "zero_shot_structured_episode_understanding_json_qa_via_vllm_reasoner",
+  "split_policy": {
+    "unit": "episode",
+    "default_counts": {
+      "train": 96,
+      "val": 16,
+      "test": 16
+    },
+    "leakage_guard": "uses the same 96/16/16 selected episode split as the Qwen3-Omni LoRA branch; no Super weights are updated"
+  },
+  "modalities": {
+    "direct_inputs": [
+      "multi-camera rendered mosaic video",
+      "language prompt and label options"
+    ],
+    "conditioning_inputs": [
+      "prompt-side task schema and episode/window metadata"
+    ],
+    "targets": [
+      "structured action/subtask/contact/transition/object JSON"
+    ],
+    "excluded_inputs": [
+      "visualization.rrd",
+      "raw annotation HDF5",
+      "audio in the current vLLM Reasoner path"
+    ]
+  },
+  "entrypoints": {
+    "selection_manifest": "scripts/omni/build_selection_episode_manifest.py",
+    "export": "scripts/omni/parallel_export_qwen3_omni_action_dataset.py",
+    "neutral_index": "scripts/omni/export_model_neutral_window_index.py",
+    "train": "",
+    "eval": "scripts/omni/eval_cosmos3_super_reasoner.py",
+    "launcher": "scripts/omni/run_cosmos3_super_reasoner_eval.sh",
+    "validate": "scripts/omni/validate_omni_finetune_run.py"
+  },
+  "primary_metrics": [
+    "json_validity_rate",
+    "action_macro_f1",
+    "subtask_accuracy",
+    "transition_accuracy",
+    "next_action_accuracy",
+    "contact_accuracy",
+    "object_micro_f1",
+    "held_out_episode_count"
+  ],
+  "artifact_contract": {
+    "checkpoint_gate": "base_weight_vllm_reasoner_setup_metadata",
+    "required_eval_files": [
+      "metrics.json",
+      "predictions.jsonl",
+      "predictions.csv",
+      "per_class_metrics.csv",
+      "confusion_matrix.csv",
+      "server_info.json",
+      "RUN_REPORT.md"
+    ],
+    "required_training_files": [
+      "training_metadata.json",
+      "progress.jsonl"
+    ],
+    "public_package_allowed": [
+      "metrics",
+      "predictions",
+      "confusion matrices",
+      "run reports",
+      "server/model setup metadata",
+      "episode and dataset manifests",
+      "validation summaries"
+    ],
+    "public_package_forbidden": [
+      "raw MP4",
+      "annotation HDF5",
+      "Rerun RRD",
+      "base-model weights",
+      "fine-tuned weights",
+      "checkpoints",
+      "large archives"
+    ]
+  },
+  "extension_requirements": [
+    "This branch evaluates staged Cosmos3-Super Reasoner base weights through vLLM on the 128-episode held-out JSON task; it does not fine-tune or release new Cosmos weights.",
+    "Create a separate Cosmos3-Super adapter/model repository only after a real fine-tuning run produces new adapter or checkpoint weights.",
+    "Keep it separate from the Cosmos3-Nano future-window compatibility branch, which answers a different world-model retrieval target."
+  ]
+}

@@ -74,7 +74,7 @@ before the multi-episode omni-model stage becomes a real held-out evaluation.
 | Task suite | 12 human-readable embodied-AI task contracts with input, process, output, metrics, predictions, and case-study walkthroughs |
 | Baselines | Minimal linear/ridge/logistic heads plus compact PyTorch MLP task heads over the same chronological split; companion simple/NN metadata baselines are also aligned to the selected 128-episode 96/16/16 split |
 | Research directions | Task mapping and extension probes for human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling |
-| Scale-up path | The selected-episode Qwen3-Omni LoRA final diagnostic result is verified on the 96/16/16 split; same-split simple/NN metadata baselines now cover the 12 task ids as a companion comparison. The Qwen result proves the multi-episode export/train/eval/package loop and meets the strict-JSON target, but weak action/subtask metrics make it a baseline for error analysis rather than a strong model. Cosmos3/world-model and VLA/policy branches reuse the same split and package contract after their targets are implemented. |
+| Scale-up path | The selected-episode Qwen3-Omni LoRA final diagnostic result is verified on the 96/16/16 split; same-split simple/NN metadata baselines now cover the 12 task ids as a companion comparison. The Qwen result proves the multi-episode export/train/eval/package loop and meets the strict-JSON target, but weak action/subtask metrics make it a baseline for error analysis rather than a strong model. Cosmos3 now has two separate verified diagnostics: Nano future-window compatibility and Super base-weight Reasoner evaluation; neither is a new fine-tuned Cosmos weight release yet. |
 | Public surfaces | GitHub repo, GitHub Pages dashboard, GHCR static-site package, HF Space, HF artifact dataset, HF baseline-model repo, and HF collection |
 
 For the fastest interpretation of the current metrics, start with
@@ -111,7 +111,7 @@ This project is best read as a staged embodied-AI research study:
 | Task suite | Twelve human-readable tasks cover action, procedure, contact, object, language, retrieval, reconstruction, order, and synchronization questions. | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json) |
 | Baselines | Minimal heads and compact PyTorch MLP heads provide a first controlled comparison on the same chronological split; the selected 128-episode setup also has same-split simple/NN metadata baselines for JSON-supported tasks. | [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/), [`results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`](results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md) |
 | Diagnostics | Audio contribution, modality ablations, timeline overlays, object labels, and alignment stress tests show which signals are useful and which tasks remain hard. | [`results/audio_ablation/AUDIO_ABLATION_SUMMARY.md`](results/audio_ablation/AUDIO_ABLATION_SUMMARY.md), [`docs/single_episode_explorer.html`](docs/single_episode_explorer.html) |
-| Scale-up | The selected 128-episode Qwen3-Omni LoRA diagnostic path has a final verified held-out package: 96/16/16 selected episodes, 3,808 exported windows, 512 validation windows, 448 held-out test windows, and public-safe metrics/predictions. Same-split simple/NN metadata baselines are published for the 12 task ids, and the first Cosmos3-Nano future-window compatibility package is verified as a separate world-model branch. The final Qwen pass reaches 99.78% JSON validity, meeting the 98% target, while action/subtask quality remains weak and is the next error-analysis target. | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/omni_model_comparison.json`](docs/data/omni_model_comparison.json), [`docs/data/omni_finetune_verified_result.json`](docs/data/omni_finetune_verified_result.json), [`results/omni_finetune/OMNI_MODEL_COMPARISON.md`](results/omni_finetune/OMNI_MODEL_COMPARISON.md), [`results/omni_finetune/verified_public/`](results/omni_finetune/verified_public/), [`results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`](results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md) |
+| Scale-up | The selected 128-episode Qwen3-Omni LoRA diagnostic path has a final verified held-out package: 96/16/16 selected episodes, 3,808 exported windows, 512 validation windows, 448 held-out test windows, and public-safe metrics/predictions. Same-split simple/NN metadata baselines are published for the 12 task ids. Cosmos3-Nano has a verified future-window compatibility package, and Cosmos3-Super Reasoner has a verified 448-window base-weight held-out JSON-task evaluation. The comparison now supports both views: the three result layers and a model-family grouping for task heads, Qwen3-Omni LoRA, Cosmos3-Nano, and Cosmos3-Super. | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/omni_model_comparison.json`](docs/data/omni_model_comparison.json), [`docs/data/omni_finetune_verified_result.json`](docs/data/omni_finetune_verified_result.json), [`results/omni_finetune/OMNI_MODEL_COMPARISON.md`](results/omni_finetune/OMNI_MODEL_COMPARISON.md), [`results/omni_finetune/verified_public/`](results/omni_finetune/verified_public/), [`results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`](results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md) |
 
 Detailed dataset notes, reproduction checks, and generated JSON reports are
 included for readers who want to inspect the implementation, but they are
@@ -509,7 +509,11 @@ The current cross-version comparison is generated at
 [`docs/data/omni_model_comparison.json`](docs/data/omni_model_comparison.json)
 and [`results/omni_finetune/OMNI_MODEL_COMPARISON.md`](results/omni_finetune/OMNI_MODEL_COMPARISON.md);
 it separates the single-episode task suite, 128-episode aligned simple/NN
-baselines, and verified Qwen3/Cosmos model-branch packages.
+baselines, and verified Qwen3/Cosmos model-branch packages. The same generated
+files also include `model_groups`: a model-first view that pairs 1-episode and
+128-episode entries for the same family. Use that section when comparing task
+heads against task heads, Qwen3-Omni smoke/LoRA against Qwen3-Omni LoRA, or
+Cosmos3-Nano compatibility against future Cosmos weight releases.
 
 ### Sample Count Decision
 
@@ -558,7 +562,8 @@ Current status in this repo:
 - current_quality_target: JSON validity 99.78%, meeting the 98% target; action/subtask quality remains weak
 - qwen3_lora_adapter_repo: https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep
 - 128_aligned_baselines: 12 task ids, 8 simple metadata/text baselines, 6 neural metadata/text baselines
-- cosmos3_branch: verified Cosmos3-Nano future-window compatibility package, 378 held-out future-window predictions from 14 test episodes
+- cosmos3_nano_branch: verified Cosmos3-Nano future-window compatibility package, 378 held-out future-window predictions from 14 test episodes
+- cosmos3_super_branch: verified Cosmos3-Super Reasoner base-weight JSON-task evaluation, 448 held-out predictions from 14 test episodes; JSON validity 51.12%, action macro-F1 0.0008, contact accuracy 32.14%, transition accuracy 36.83%
 - gated dataset: available for selected multi-episode data preparation
 - source_discovery: `results/omni_finetune/source_discovery.json`
 - data_status: `results/omni_finetune/DATA_ACCESS_STATUS.md`
@@ -726,6 +731,13 @@ weights, LoRA weights, and full checkpoints. Adapter upload is a separate step:
 use it only when the intended adapter directory is present and the model card
 clearly distinguishes older smoke weights from the final selected-episode
 diagnostic run.
+
+Keep weight-bearing repositories model-specific: the final 128-episode
+Qwen3-Omni adapter belongs in `cy0307/ropedia-qwen3-omni-lora-128ep`, older
+Qwen smoke material remains historical. The current Cosmos3-Nano and
+Cosmos3-Super outputs are artifacts-only diagnostics; Cosmos3 should get its
+own model repo only after real Cosmos adapter or fine-tuned weights exist.
+Metrics, predictions, audits, and reports stay in the artifact dataset.
 
 ```bash
 python3 scripts/omni/upload_qwen3_omni_lora_to_hf.py \

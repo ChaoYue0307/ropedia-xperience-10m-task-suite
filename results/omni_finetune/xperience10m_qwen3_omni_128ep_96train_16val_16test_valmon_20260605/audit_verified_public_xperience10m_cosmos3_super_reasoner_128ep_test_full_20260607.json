@@ -1,0 +1,25 @@
+{
+  "status": "pass",
+  "package_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607",
+  "backbone": "cosmos3_super_reasoner",
+  "required_eval_files": [
+    "metrics.json",
+    "predictions.jsonl",
+    "predictions.csv",
+    "per_class_metrics.csv",
+    "confusion_matrix.csv",
+    "server_info.json",
+    "RUN_REPORT.md"
+  ],
+  "primary_metrics": [
+    "action_macro_f1",
+    "contact_accuracy",
+    "held_out_episode_count",
+    "json_validity_rate",
+    "next_action_accuracy",
+    "object_micro_f1",
+    "subtask_accuracy",
+    "transition_accuracy"
+  ],
+  "issues": []
+}

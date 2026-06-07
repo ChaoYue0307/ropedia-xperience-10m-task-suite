@@ -31,6 +31,9 @@
     "qwen3_omni_lora_adapter_repo": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep",
     "cosmos3_nano_future_window_compatibility_verified": true,
     "cosmos3_nano_future_window_test_predictions": 378,
+    "cosmos3_super_reasoner_verified": true,
+    "cosmos3_super_reasoner_test_predictions": 448,
+    "cosmos3_super_reasoner_json_validity_rate": 0.5111607142857143,
     "omni_model_comparison_available": true,
     "multi_episode_128_aligned_baselines": true,
     "multi_episode_128_baseline_window_counts": {
@@ -116,7 +119,7 @@
         "FOUNDATION_MODEL_PLAN.md",
         "docs/data/foundation_model_plan.json"
       ],
-      "readout": "Qwen3-Omni remains the first trainable held-out LoRA baseline; Cosmos 3 is now represented by a verified Cosmos3-Nano future-window compatibility package and remains the first world-model/action-generation branch; OpenVLA/openpi/GR00T are policy candidates after action targets are explicit."
+      "readout": "Qwen3-Omni remains the first trainable held-out LoRA baseline; Cosmos 3 is now represented by a verified Cosmos3-Nano future-window compatibility package plus a verified Cosmos3-Super base-weight Reasoner evaluation; OpenVLA/openpi/GR00T are policy candidates after action targets are explicit."
     },
     {
       "area": "Omni model extension contract",
@@ -204,7 +207,7 @@
         "results/omni_finetune/OMNI_MODEL_COMPARISON.md",
         "scripts/omni/build_omni_model_comparison.py"
       ],
-      "readout": "The public comparison separates three layers: the single-episode raw-feature task suite, the selected 128-episode simple/NN metadata baselines, and verified foundation-model branch packages for Qwen3-Omni and Cosmos3-Nano future-window compatibility."
+      "readout": "The public comparison now has two views: the three result layers and a model-family grouping. The model grouping pairs 1-episode and 128-episode entries for task-head baselines, separates Qwen3-Omni sensor-adapter smoke from 128-episode LoRA diagnostics, and separates Cosmos3-Nano future-window compatibility from Cosmos3-Super base-weight Reasoner evaluation."
     },
     {
       "area": "Qwen3-Omni fine-tuning",
@@ -231,6 +234,17 @@
       "readout": "The Cosmos3-Nano branch now has a public-safe verified future-window compatibility package with 3,213 future-window samples, 378 held-out test predictions, future retrieval MRR 0.0221, temporal consistency 0.0952, transition accuracy 0.9683, and contact accuracy 0.7434. It is a compatibility adapter result, not a full Cosmos diffusion-weight fine-tune."
     },
     {
+      "area": "Cosmos3-Super Reasoner branch",
+      "status": "verified_base_weight_result",
+      "evidence": [
+        "configs/omni_backbones/cosmos3_super_reasoner.json",
+        "scripts/omni/eval_cosmos3_super_reasoner.py",
+        "scripts/omni/run_cosmos3_super_reasoner_eval.sh",
+        "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/verified_result_summary.json"
+      ],
+      "readout": "Cosmos3-Super Reasoner now has a public-safe verified 448-window held-out evaluation on the same structured JSON task as Qwen3. It uses staged nv-community/Cosmos3-Super base weights through an 8-GPU vLLM server, not fine-tuned weights: JSON validity 0.5112, action macro-F1 0.0008, transition accuracy 0.3683, contact accuracy 0.3214, and object micro-F1 0.1370."
+    },
+    {
       "area": "Raw Xperience-10M redistribution",
       "status": "not_included",
       "evidence": [
@@ -254,15 +268,15 @@
     "Inspect SOURCE_ALIGNMENT_AUDIT.md before judging source-card consistency across public surfaces.",
     "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
     "Inspect results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md before comparing simple/NN baselines to the selected 128-episode setup.",
-    "Inspect docs/data/omni_model_comparison.json before comparing the current three result versions.",
+    "Inspect docs/data/omni_model_comparison.json before comparing the current three result versions or the model-family 1-episode versus 128-episode groupings.",
     "Inspect docs/data/omni_finetune_verified_result.json before judging the Qwen3-Omni diagnostic pilot."
   ],
   "current_reading_notes": [
     "The final Qwen3-Omni diagnostic result is verified and meets the strict-JSON target, but action/subtask held-out quality is still weak.",
-    "Use docs/data/omni_model_comparison.json to compare the single-episode task suite, 128-episode aligned baselines, and verified Qwen3/Cosmos branch packages without mixing incompatible metric targets.",
+    "Use docs/data/omni_model_comparison.json to compare both views: the single-episode/128-baseline/model-branch result layers and the model-family grouping for task heads, Qwen3-Omni LoRA, Cosmos3-Nano, and Cosmos3-Super.",
     "Use docs/data/omni_finetune_verified_result.json and the latest verified_public final Qwen package for current held-out results.",
     "The 128-episode aligned simple/NN baselines use metadata/text features from the derived Qwen JSONL export; they align the split and task ids but do not replace raw-modality baselines for trajectory, retrieval, reconstruction, or misalignment tasks.",
-    "The Cosmos3-Nano future-window branch is verified as a compatibility adapter result; full Cosmos diffusion-weight fine-tuning remains pending.",
+    "The Cosmos3-Nano future-window branch is verified as a compatibility adapter result, and Cosmos3-Super Reasoner is verified as a base-weight evaluation; one-episode Cosmos fine-tuning and full Cosmos adapter/diffusion-weight fine-tuning remain pending, so no Cosmos weight repo should be published yet.",
     "The current reconstruction task reconstructs feature vectors, not pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
     "Audio is one of the synchronized source modalities in the current task representation.",
     "The audio ablation report compares audio/no-audio variants across all 12 task contracts in results/audio_ablation/.",

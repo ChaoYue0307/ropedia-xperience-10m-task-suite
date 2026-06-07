@@ -1,13 +1,14 @@
 {
-  "title": "Ropedia Xperience-10M Current Result Versions",
-  "generated_at_utc": "2026-06-06T23:26:13+00:00",
+  "title": "Ropedia Xperience-10M Current Result Versions and Model Groups",
+  "generated_at_utc": "2026-06-07T09:05:41+00:00",
   "status": "pass",
   "version_count": 3,
-  "comparison_rule": "Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and Cosmos3 future-window metrics answer different questions.",
+  "model_group_count": 4,
+  "comparison_rule": "Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and the two Cosmos3 targets answer different questions: Nano future-window retrieval versus Super structured JSON Reasoner evaluation.",
   "version_reading_notes": [
     "Version 1 is the public-sample 12-task harness with minimal and neural heads.",
     "Version 2 is the selected 128-episode same-split simple/NN baseline alignment.",
-    "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, while Cosmos3-Nano is a future-window compatibility result rather than a full Cosmos diffusion fine-tune."
+    "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, and Cosmos3-Super Reasoner is a base-weight JSON-task evaluation rather than a new fine-tuned weight release."
   ],
   "versions": [
     {
@@ -312,13 +313,16 @@
       "source": "results/omni_finetune/verified_public/",
       "split": "episode/session held-out split; exact task target depends on backbone contract",
       "counts": {
-        "verified_branch_count": 4,
+        "verified_branch_count": 5,
         "qwen3_verified_package_count": 3,
-        "cosmos3_verified_package_count": 1
+        "cosmos3_verified_package_count": 2,
+        "cosmos3_nano_verified_package_count": 1,
+        "cosmos3_super_verified_package_count": 1
       },
       "models": [
         "Qwen3-Omni LoRA",
-        "Cosmos3-Nano future-window compatibility branch"
+        "Cosmos3-Nano future-window compatibility branch",
+        "Cosmos3-Super Reasoner base-weight evaluation"
       ],
       "branches": [
         {
@@ -362,7 +366,48 @@
               "val_loss": null,
               "note": "closed-form mean-delta adapter; no Cosmos diffusion weights fine-tuned in this compatibility run"
             }
-          ]
+          ],
+          "is_current": true,
+          "weights_repository": "planned separate Cosmos3 model repo after a real Cosmos diffusion/LoRA fine-tune exists; current result remains artifacts-only"
+        },
+        {
+          "id": "xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607",
+          "title": "Cosmos3-Super Reasoner",
+          "status": "verified",
+          "backbone": "cosmos3_super_reasoner",
+          "dataset_contract": "xperience10m_episode_json_qa_v1",
+          "training_objective": "zero_shot_structured_episode_understanding_json_qa_via_vllm_reasoner",
+          "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/verified_result_summary.json",
+          "dataset_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605",
+          "train_run_id": "xperience10m_cosmos3_super_reasoner_base_vllm_8gpu_20260607",
+          "eval_run_id": "xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607",
+          "counts": {
+            "dataset_samples": 3808,
+            "dataset_episodes": 119,
+            "split_counts": {
+              "train": 2848,
+              "val": 512,
+              "test": 448
+            },
+            "train_samples": 2848,
+            "val_samples": 512,
+            "eval_samples": 448,
+            "held_out_episode_count": 14,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "json_validity_rate": 0.5111607142857143,
+            "action_macro_f1": 0.0008284021201089245,
+            "subtask_accuracy": 0.0,
+            "transition_accuracy": 0.36830357142857145,
+            "next_action_accuracy": 0.013392857142857142,
+            "contact_accuracy": 0.32142857142857145,
+            "object_micro_f1": 0.13704276146316333,
+            "held_out_episode_count": 14
+          },
+          "history": [],
+          "is_current": true,
+          "weights_repository": "none for this run: staged base nv-community/Cosmos3-Super weights were evaluated through vLLM; create a separate repo only after new adapter or fine-tuned weights exist"
         },
         {
           "id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval",
@@ -406,7 +451,9 @@
               "val_loss": 0.0330660454928875,
               "global_step": 356
             }
-          ]
+          ],
+          "is_current": false,
+          "weights_repository": "historical diagnostic package; keep separate from the final 128-episode adapter repo"
         },
         {
           "id": "xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full",
@@ -450,7 +497,9 @@
               "val_loss": null,
               "global_step": 356
             }
-          ]
+          ],
+          "is_current": false,
+          "weights_repository": "historical diagnostic package; keep separate from the final 128-episode adapter repo"
         },
         {
           "id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
@@ -500,14 +549,384 @@
               "val_loss": 0.027823254466056824,
               "global_step": 712
             }
-          ]
+          ],
+          "is_current": true,
+          "weights_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
         }
       ],
-      "interpretation": "This layer contains the held-out foundation-model packages. Qwen3-Omni packages evaluate structured JSON task prediction; Cosmos3-Nano currently evaluates a future-window world-model compatibility adapter, not a full diffusion-weight fine-tune."
+      "interpretation": "This layer contains the held-out foundation-model packages. Qwen3-Omni packages evaluate structured JSON task prediction; Cosmos3-Nano evaluates a future-window world-model compatibility adapter; Cosmos3-Super Reasoner evaluates staged base weights through vLLM on the JSON task. Neither Cosmos branch is a new fine-tuned weight release yet."
     }
+  ],
+  "model_groups": [
+    {
+      "id": "task_head_baselines",
+      "model_family": "Minimal and Neural Task Heads",
+      "model_type": "lightweight supervised/self-supervised task heads",
+      "weight_repository": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines",
+      "one_episode_runs": [
+        {
+          "id": "task_heads_single_episode_public_sample",
+          "title": "Single-Episode Public-Sample Task Suite",
+          "scope": "one public Xperience-10M sample episode",
+          "status": "verified",
+          "source": "results/episode_task_suite/summary_report.json",
+          "split": "chronological 70/30 within one episode",
+          "counts": {
+            "episodes": 1,
+            "windows": 1161,
+            "frames": 5821,
+            "feature_dim": 8546,
+            "task_count": 12,
+            "neural_task_count": 12
+          },
+          "weights": "baseline model files in the baseline model repo; no foundation-model weights",
+          "interpretation": "Raw multimodal feature task harness on the public sample."
+        }
+      ],
+      "multi_episode_128_runs": [
+        {
+          "id": "task_heads_128_episode_metadata_baselines",
+          "title": "128-Episode Aligned Simple/NN Baselines",
+          "scope": "selected 128-episode 96/16/16 split",
+          "status": "pass",
+          "source": "results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md",
+          "split": "train/val/test by selected episode/session",
+          "counts": {
+            "rows": 3808,
+            "split_counts": {
+              "train": 2848,
+              "val": 512,
+              "test": 448
+            },
+            "episode_counts": {
+              "test": 16,
+              "train": 96,
+              "val": 16
+            },
+            "task_count": 12,
+            "simple_supported_task_count": 8,
+            "neural_supported_task_count": 6
+          },
+          "weights": "metadata/text baseline artifacts; raw 128 sensor-feature model weights not yet complete",
+          "interpretation": "Same selected 96/16/16 split and task ids as the model branches, but metadata/text features only."
+        }
+      ],
+      "comparison_note": "This is the cleanest 1-episode versus 128-episode grouping for the same simple/NN task-head family, but the feature surface changes from raw public-sample features to public-safe 128-episode metadata/text features."
+    },
+    {
+      "id": "qwen3_omni_lora",
+      "model_family": "Qwen3-Omni LoRA",
+      "model_type": "PEFT LoRA adapter over Qwen/Qwen3-Omni-30B-A3B-Instruct",
+      "weight_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep",
+      "one_episode_runs": [
+        {
+          "id": "qwen3_omni_sensor_adapter_smoke_1ep",
+          "title": "Qwen3-Omni Sensor-Adapter Smoke",
+          "scope": "one public Xperience-10M sample episode",
+          "status": "verified_smoke",
+          "source": "results/omni_exploration/qwen3_adapter_smoke/metrics.json",
+          "split": "single_episode_chronological",
+          "counts": {
+            "episodes": 1,
+            "windows": 59,
+            "train_windows": 41,
+            "test_windows": 18,
+            "feature_dim": 4262,
+            "adapter_tokens": 11
+          },
+          "primary_metrics": {
+            "accuracy": 0.0,
+            "macro_f1": 0.0,
+            "train_final_loss": 1.4479121318677577
+          },
+          "base_model_target": "Qwen/Qwen3-Omni-30B-A3B-Thinking",
+          "qwen3_loaded": false,
+          "weights": "no Qwen3 base weights or LoRA adapter weights; adapter-token readiness smoke only",
+          "interpretation": "This validates the sensor-adapter token path on one real episode before loading or LoRA-tuning Qwen3-Omni. It is not comparable to the 128-episode held-out LoRA result."
+        }
+      ],
+      "multi_episode_128_runs": [
+        {
+          "id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval",
+          "title": "Qwen3-Omni LoRA",
+          "status": "verified",
+          "backbone": "qwen3_omni_lora",
+          "dataset_contract": "xperience10m_episode_json_qa_v1",
+          "training_objective": "structured_episode_understanding_json_qa",
+          "source": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/verified_result_summary.json",
+          "dataset_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605",
+          "train_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_lora",
+          "eval_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval",
+          "counts": {
+            "dataset_samples": 3808,
+            "dataset_episodes": 119,
+            "split_counts": {
+              "train": 2848,
+              "val": 512,
+              "test": 448
+            },
+            "train_samples": 2848,
+            "val_samples": 512,
+            "eval_samples": 448,
+            "held_out_episode_count": 14,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "json_validity_rate": 0.875,
+            "action_macro_f1": 0.0026621494447581404,
+            "subtask_accuracy": 0.006696428571428571,
+            "transition_accuracy": 0.8504464285714286,
+            "next_action_accuracy": 0.024553571428571428,
+            "contact_accuracy": 0.6450892857142857,
+            "object_micro_f1": 0.22299431459254582,
+            "held_out_episode_count": 14
+          },
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.41304643672440994,
+              "val_loss": 0.0330660454928875,
+              "global_step": 356
+            }
+          ],
+          "is_current": false,
+          "weights_repository": "historical diagnostic package; keep separate from the final 128-episode adapter repo"
+        },
+        {
+          "id": "xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full",
+          "title": "Qwen3-Omni LoRA",
+          "status": "verified",
+          "backbone": "qwen3_omni_lora",
+          "dataset_contract": "xperience10m_episode_json_qa_v1",
+          "training_objective": "structured_episode_understanding_json_qa",
+          "source": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full/verified_result_summary.json",
+          "dataset_run_id": "xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu",
+          "train_run_id": "xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6",
+          "eval_run_id": "xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full",
+          "counts": {
+            "dataset_samples": 3808,
+            "dataset_episodes": 119,
+            "split_counts": {
+              "train": 2848,
+              "val": 512,
+              "test": 448
+            },
+            "train_samples": 2848,
+            "val_samples": 0,
+            "eval_samples": 448,
+            "held_out_episode_count": 14,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "json_validity_rate": 0.8526785714285714,
+            "action_macro_f1": 0.00213753459655099,
+            "subtask_accuracy": 0.004464285714285714,
+            "transition_accuracy": 0.828125,
+            "next_action_accuracy": 0.022321428571428572,
+            "contact_accuracy": 0.6517857142857143,
+            "object_micro_f1": 0.23062730627306272,
+            "held_out_episode_count": 14
+          },
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.4121775626560694,
+              "val_loss": null,
+              "global_step": 356
+            }
+          ],
+          "is_current": false,
+          "weights_repository": "historical diagnostic package; keep separate from the final 128-episode adapter repo"
+        },
+        {
+          "id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
+          "title": "Qwen3-Omni LoRA",
+          "status": "verified",
+          "backbone": "qwen3_omni_lora",
+          "dataset_contract": "xperience10m_episode_json_qa_v1",
+          "training_objective": "structured_episode_understanding_json_qa",
+          "source": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full/verified_result_summary.json",
+          "dataset_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605",
+          "train_run_id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora",
+          "eval_run_id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
+          "counts": {
+            "dataset_samples": 3808,
+            "dataset_episodes": 119,
+            "split_counts": {
+              "train": 2848,
+              "val": 512,
+              "test": 448
+            },
+            "train_samples": 2848,
+            "val_samples": 512,
+            "eval_samples": 448,
+            "held_out_episode_count": 14,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "json_validity_rate": 0.9977678571428571,
+            "action_macro_f1": 0.0024331644885523347,
+            "subtask_accuracy": 0.002232142857142857,
+            "transition_accuracy": 0.9709821428571429,
+            "next_action_accuracy": 0.029017857142857144,
+            "contact_accuracy": 0.71875,
+            "object_micro_f1": 0.30160427807486634,
+            "held_out_episode_count": 14
+          },
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.41282760031950355,
+              "val_loss": 0.03288277983665466,
+              "global_step": 356
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.027745448225544075,
+              "val_loss": 0.027823254466056824,
+              "global_step": 712
+            }
+          ],
+          "is_current": true,
+          "weights_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
+        }
+      ],
+      "comparison_note": "The one-episode Qwen entry is only a sensor-adapter smoke test with Qwen3 weights unloaded. The 128-episode entries are real held-out LoRA diagnostics; the current final adapter belongs in the separate Qwen model repo."
+    },
+    {
+      "id": "cosmos3_nano_world_model",
+      "model_family": "Cosmos3-Nano Future-Window World Model",
+      "model_type": "world-model/future-window branch",
+      "weight_repository": "planned: cy0307/ropedia-cosmos3-nano-future-window-lora-128ep after real adapter weights exist",
+      "one_episode_runs": [
+        {
+          "id": "cosmos3_nano_one_episode",
+          "title": "Cosmos3-Nano One-Episode Fine-Tune",
+          "scope": "one public Xperience-10M sample episode",
+          "status": "not_run",
+          "source": null,
+          "weights": "none",
+          "interpretation": "No Cosmos3 one-episode adapter or diffusion-weight fine-tune is currently published. Use the public-sample task suite only as model-agnostic evidence."
+        }
+      ],
+      "multi_episode_128_runs": [
+        {
+          "id": "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full",
+          "title": "Cosmos3-Nano Future-Window World Model",
+          "status": "verified",
+          "backbone": "cosmos_world_model",
+          "dataset_contract": "xperience10m_future_window_world_model_v0",
+          "training_objective": "future_window_and_action_conditioned_world_modeling",
+          "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/verified_result_summary.json",
+          "dataset_run_id": "xperience10m_cosmos3_nano_128ep_future_window_h5_compat",
+          "train_run_id": "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter",
+          "eval_run_id": "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full",
+          "counts": {
+            "dataset_samples": 3213,
+            "dataset_episodes": 119,
+            "split_counts": {
+              "train": 2403,
+              "test": 378,
+              "val": 432
+            },
+            "train_samples": 2403,
+            "val_samples": 432,
+            "eval_samples": 378,
+            "held_out_episode_count": 14,
+            "num_processes": 1
+          },
+          "primary_metrics": {
+            "future_retrieval_mrr": 0.022138720585222767,
+            "future_retrieval_recall_at_5": 0.015873015873015872,
+            "temporal_consistency": 0.09523809523809523,
+            "feature_reconstruction_error": 3479.218317102503,
+            "transition_accuracy": 0.9682539682539683,
+            "contact_accuracy": 0.7433862433862434,
+            "held_out_episode_count": 14
+          },
+          "history": [
+            {
+              "epoch": 0,
+              "train_loss": null,
+              "val_loss": null,
+              "note": "closed-form mean-delta adapter; no Cosmos diffusion weights fine-tuned in this compatibility run"
+            }
+          ],
+          "is_current": true,
+          "weights_repository": "planned separate Cosmos3 model repo after a real Cosmos diffusion/LoRA fine-tune exists; current result remains artifacts-only"
+        }
+      ],
+      "comparison_note": "The current 128-episode Cosmos result is a public-safe future-window compatibility adapter. It is not yet a full Cosmos diffusion/LoRA weight release."
+    },
+    {
+      "id": "cosmos3_super_reasoner",
+      "model_family": "Cosmos3-Super Reasoner",
+      "model_type": "base-weight vLLM Reasoner evaluation over nv-community/Cosmos3-Super",
+      "weight_repository": "none for this run; staged base weights only, no new fine-tuned weights",
+      "one_episode_runs": [
+        {
+          "id": "cosmos3_super_one_episode",
+          "title": "Cosmos3-Super One-Episode Fine-Tune",
+          "scope": "one public Xperience-10M sample episode",
+          "status": "not_run",
+          "source": null,
+          "weights": "none",
+          "interpretation": "No one-episode Cosmos3-Super adapter or fine-tuned weight run is published. The available Super result is the 128-episode held-out base-weight evaluation."
+        }
+      ],
+      "multi_episode_128_runs": [
+        {
+          "id": "xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607",
+          "title": "Cosmos3-Super Reasoner",
+          "status": "verified",
+          "backbone": "cosmos3_super_reasoner",
+          "dataset_contract": "xperience10m_episode_json_qa_v1",
+          "training_objective": "zero_shot_structured_episode_understanding_json_qa_via_vllm_reasoner",
+          "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/verified_result_summary.json",
+          "dataset_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605",
+          "train_run_id": "xperience10m_cosmos3_super_reasoner_base_vllm_8gpu_20260607",
+          "eval_run_id": "xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607",
+          "counts": {
+            "dataset_samples": 3808,
+            "dataset_episodes": 119,
+            "split_counts": {
+              "train": 2848,
+              "val": 512,
+              "test": 448
+            },
+            "train_samples": 2848,
+            "val_samples": 512,
+            "eval_samples": 448,
+            "held_out_episode_count": 14,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "json_validity_rate": 0.5111607142857143,
+            "action_macro_f1": 0.0008284021201089245,
+            "subtask_accuracy": 0.0,
+            "transition_accuracy": 0.36830357142857145,
+            "next_action_accuracy": 0.013392857142857142,
+            "contact_accuracy": 0.32142857142857145,
+            "object_micro_f1": 0.13704276146316333,
+            "held_out_episode_count": 14
+          },
+          "history": [],
+          "is_current": true,
+          "weights_repository": "none for this run: staged base nv-community/Cosmos3-Super weights were evaluated through vLLM; create a separate repo only after new adapter or fine-tuned weights exist"
+        }
+      ],
+      "comparison_note": "Cosmos3-Super is now represented by a verified 448-window held-out Reasoner evaluation on the same JSON task as Qwen3. It uses staged base weights through vLLM, so it is a model-branch diagnostic, not a weight release."
+    }
+  ],
+  "model_group_reading_notes": [
+    "Use model_groups when comparing one-episode and 128-episode artifacts within the same model family.",
+    "Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.",
+    "Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; only the final 128-episode adapter belongs in the Qwen LoRA model repo.",
+    "Cosmos3-Nano has a 128-episode future-window compatibility package.",
+    "Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist."
   ],
   "pending": [
     "Use the final Qwen3 full-eval package as the current Qwen result; older Qwen package rows remain historical diagnostics for comparison.",
-    "Promote Cosmos3 from compatibility adapter to full Cosmos3 fine-tuning only after a separate environment with matching Diffusers/Cosmos dependencies is prepared."
+    "Promote Cosmos3 from Nano compatibility and Super base-weight evaluation to true fine-tuning only after a dedicated Cosmos adapter/diffusion training path produces new weights."
   ]
 }
