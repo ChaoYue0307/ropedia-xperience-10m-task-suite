@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Current Result Versions and Model Groups",
-  "generated_at_utc": "2026-06-07T17:02:35+00:00",
+  "generated_at_utc": "2026-06-07T17:09:29+00:00",
   "status": "pass",
   "version_count": 3,
   "model_group_count": 4,
@@ -1017,6 +1017,7 @@
         {
           "id": "xperience10m_cosmos3_super_training_contract_audit_camera_pose_20260608",
           "title": "Cosmos3-Super Camera-Pose Target Audit",
+          "scope_label": "action target contract",
           "scope": "selected 128-episode 96/16/16 dataset augmented with camera_pose proxy cosmos_action_target records",
           "status": "ready_for_action_lora_trainer",
           "source": "results/omni_finetune/xperience10m_cosmos3_super_training_contract_audit_camera_pose_20260608/training_contract_audit.json",
@@ -1031,9 +1032,9 @@
               "test": 448
             },
             "episode_split_counts": {
+              "test": 14,
               "train": 89,
-              "val": 16,
-              "test": 14
+              "val": 16
             }
           },
           "primary_metrics": {

@@ -315,8 +315,54 @@ def cosmos3_super_readiness_entry() -> dict[str, Any] | None:
         "weights": "none; readiness audit only, no adapter checkpoint",
         "interpretation": (
             "This probe confirms the staged Cosmos3-Super Diffusers/GPU runtime and "
-            "the same JSON QA dataset are visible, but blocks true fine-tuning until "
-            "a Cosmos-specific diffusion/action target packer and supervised loss are implemented."
+            "the same JSON QA dataset are visible. It predates the camera-pose action-target "
+            "export, so use the 20260608 contract audit for the current trainer-readiness status."
+        ),
+    }
+
+
+def cosmos3_super_action_contract_entry() -> dict[str, Any] | None:
+    paths = sorted(
+        (ROOT / "results/omni_finetune").glob(
+            "xperience10m_cosmos3_super_training_contract_audit_*/training_contract_audit.json"
+        )
+    )
+    if not paths:
+        return None
+    payloads = [(path, load_json(path)) for path in paths]
+    path, payload = max(payloads, key=lambda item: item[1].get("finished_at_unix") or 0)
+    decision = payload.get("decision", {}) if isinstance(payload.get("decision"), dict) else {}
+    dataset = payload.get("dataset", {}) if isinstance(payload.get("dataset"), dict) else {}
+    target_modes = dataset.get("target_mode_counts", {}) if isinstance(dataset.get("target_mode_counts"), dict) else {}
+    return {
+        "id": payload.get("run_id", path.parent.name),
+        "title": "Cosmos3-Super Camera-Pose Target Audit",
+        "scope_label": "action target contract",
+        "scope": "selected 128-episode 96/16/16 dataset augmented with camera_pose proxy cosmos_action_target records",
+        "status": "ready_for_action_lora_trainer" if decision.get("status") == "ready_for_cosmos3_super_action_lora" else decision.get("status", "unknown"),
+        "source": rel(path),
+        "split": "train/val/test by selected episode/session",
+        "counts": {
+            "dataset_samples": dataset.get("num_rows"),
+            "rows_with_action_target": dataset.get("rows_with_action_target"),
+            "valid_action_targets": dataset.get("valid_action_targets"),
+            "split_counts": dataset.get("split_counts"),
+            "episode_split_counts": dataset.get("episode_split_counts"),
+        },
+        "primary_metrics": {
+            "domain_name": "camera_pose",
+            "raw_action_dim": 9,
+            "mode": next(iter(target_modes), "forward_dynamics"),
+            "valid_action_targets": dataset.get("valid_action_targets"),
+            "weights_updated": decision.get("weights_updated"),
+        },
+        "weights": "none; action-target contract audit only, no adapter checkpoint",
+        "interpretation": (
+            "The selected dataset now has valid Cosmos3 action targets for an egocentric "
+            "camera-motion proxy, removing the target-schema blocker for a Cosmos3-Super "
+            "action-LoRA smoke run. It is not robot-control supervision and does not update "
+            "Cosmos weights; the remaining work is the Cosmos batch packer, supervised action "
+            "loss over preds_action, and one-episode overfit."
         ),
     }
 
@@ -344,6 +390,7 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
     cosmos_nano_branches = [branch for branch in branches if branch.get("backbone") == "cosmos_world_model"]
     cosmos_super_branches = [branch for branch in branches if branch.get("backbone") == "cosmos3_super_reasoner"]
     cosmos_super_readiness = cosmos3_super_readiness_entry()
+    cosmos_super_action_contract = cosmos3_super_action_contract_entry()
     if qwen_branches:
         current_qwen = max(qwen_branches, key=lambda item: item.get("primary_metrics", {}).get("json_validity_rate") or -1)
         for branch in qwen_branches:
@@ -451,13 +498,17 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     ),
                 }
             ],
-            "readiness_runs": [cosmos_super_readiness] if cosmos_super_readiness else [],
+            "readiness_runs": [
+                entry for entry in (cosmos_super_readiness, cosmos_super_action_contract) if entry
+            ],
             "multi_episode_128_runs": cosmos_super_branches,
             "comparison_note": (
                 "Cosmos3-Super is now represented by a verified 448-window held-out "
                 "Reasoner evaluation on the same JSON task as Qwen3. It uses staged base "
                 "weights through vLLM, so it is a model-branch diagnostic, not a weight release. "
-                "The readiness probe records why true Cosmos3-Super fine-tuning is not launched yet."
+                "A camera-pose proxy action-target export now passes the action-LoRA contract audit; "
+                "true Cosmos3-Super fine-tuning is still not launched until the batch packer and "
+                "supervised action loss exist."
             ),
         },
     ]
@@ -481,7 +532,7 @@ def build_report() -> dict[str, Any]:
         "version_reading_notes": [
             "Version 1 is the public-sample 12-task harness with minimal and neural heads.",
             "Version 2 is the selected 128-episode same-split simple/NN baseline alignment.",
-            "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, and Cosmos3-Super Reasoner is a base-weight JSON-task evaluation rather than a new fine-tuned weight release.",
+            "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, and Cosmos3-Super Reasoner is a base-weight JSON-task evaluation; Cosmos3-Super now has a camera-pose action-target contract audit, but no new fine-tuned weight release.",
         ],
         "versions": versions,
         "model_groups": model_groups,
@@ -490,11 +541,11 @@ def build_report() -> dict[str, Any]:
             "Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.",
             "Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; only the final 128-episode adapter belongs in the Qwen LoRA model repo.",
             "Cosmos3-Nano has a 128-episode future-window compatibility package.",
-            "Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a training-readiness probe; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.",
+            "Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a camera-pose action-target contract audit; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.",
         ],
         "pending": [
             "Use the final Qwen3 full-eval package as the current Qwen result; older Qwen package rows remain historical diagnostics for comparison.",
-            "Promote Cosmos3 from Nano compatibility and Super base-weight evaluation to true fine-tuning only after a dedicated Cosmos diffusion/action target packer and supervised loss produce new weights.",
+            "Promote Cosmos3 from Nano compatibility, Super base-weight evaluation, and the camera-pose action-target contract to true fine-tuning only after the Cosmos batch packer and supervised action loss produce new weights.",
         ],
     }
 
@@ -534,6 +585,10 @@ def entry_metric_text(entry: dict[str, Any]) -> str:
         "contact_accuracy",
         "accuracy",
         "macro_f1",
+        "domain_name",
+        "raw_action_dim",
+        "mode",
+        "valid_action_targets",
         "diffusers_runtime_supported",
         "chat_sft_supported",
         "weights_updated",
@@ -559,7 +614,7 @@ def append_model_group(lines: list[str], group: dict[str, Any]) -> None:
     for entry in group.get("one_episode_runs", []):
         rows.append(("1 episode", entry))
     for entry in group.get("readiness_runs", []):
-        rows.append(("readiness", entry))
+        rows.append((entry.get("scope_label", "readiness"), entry))
     for entry in group.get("multi_episode_128_runs", []):
         rows.append(("128 episode", entry))
     for scope, entry in rows:
