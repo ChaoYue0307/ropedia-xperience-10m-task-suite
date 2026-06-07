@@ -34,12 +34,12 @@ JSON_FIELDS = [
 ]
 
 STRICT_JSON_SCHEMA_TEXT = (
-    '{"action":"<one action label or unknown>",'
-    '"subtask":"<one subtask label or unknown>",'
+    '{"action":"<exact action option or unknown>",'
+    '"subtask":"<exact subtask option or unknown>",'
     '"objects":["<0 to 8 short object names>"],'
     '"contact":"yes|no|unknown",'
     '"transition":"yes|no|unknown",'
-    '"next_action":"<one action label or unknown>",'
+    '"next_action":"<exact action option or unknown>",'
     '"evidence_window":{"start_frame":0,"end_frame":0}}'
 )
 
@@ -47,9 +47,11 @@ SYSTEM_PROMPT = (
     "You are an embodied episode-understanding model for Ropedia/Xperience-10M. "
     "Return exactly one valid JSON object and no markdown, no prose, no code fences, "
     "and no repeated text. The JSON must use exactly these keys: action, subtask, "
-    "objects, contact, transition, next_action, evidence_window. Use \"unknown\" "
-    "when evidence is missing instead of guessing. Keep objects to at most 8 short "
-    f"names. Schema example: {STRICT_JSON_SCHEMA_TEXT}"
+    "objects, contact, transition, next_action, evidence_window. For action, "
+    "subtask, and next_action, copy one label exactly from the provided option "
+    "lists or use \"unknown\"; do not invent synonyms or paraphrases. Use "
+    "\"unknown\" when evidence is missing instead of guessing. Keep objects to at "
+    f"most 8 short names. Schema example: {STRICT_JSON_SCHEMA_TEXT}"
 )
 
 
@@ -190,7 +192,9 @@ def build_user_prompt(sample: dict, label_options: list[str]) -> str:
         f"Label window frames: {start_frame}-{end_frame}",
         "Return exactly one compact JSON object only. Do not add markdown, prose, analysis, comments, or a second object.",
         f"Required schema: {STRICT_JSON_SCHEMA_TEXT}",
-        "Use labels from the option lists when possible. Use \"unknown\" for fields that cannot be determined.",
+        "For action, subtask, and next_action, copy exactly one label from the option lists or use \"unknown\".",
+        "Do not paraphrase labels, merge labels, or create new action/subtask strings.",
+        "Use \"unknown\" for fields that cannot be determined.",
         "Keep objects as a short list with at most 8 entries.",
     ]
     if action_options:

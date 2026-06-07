@@ -1,0 +1,461 @@
+{
+  "status": "pass",
+  "model_label": "Qwen3-Omni LoRA v2 strict-json",
+  "source_package": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
+  "source_prediction_rows": 448,
+  "metrics_json_validity_rate": 0.9977678571428571,
+  "computed": {
+    "group": "overall",
+    "samples": 448,
+    "parsed_prediction_rate": 0.9977678571428571,
+    "action_exact_rate": 0.029017857142857144,
+    "subtask_exact_rate": 0.002232142857142857,
+    "transition_exact_rate": 0.9709821428571429,
+    "next_action_exact_rate": 0.029017857142857144,
+    "contact_exact_rate": 0.71875,
+    "object_precision": 0.2939541348158443,
+    "object_recall": 0.3096632503660322,
+    "object_f1": 0.30160427807486634
+  },
+  "worst_episode_groups": [
+    {
+      "group": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1",
+      "samples": 32,
+      "parsed_prediction_rate": 0.96875,
+      "action_exact_rate": 0.03125,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9375,
+      "next_action_exact_rate": 0.03125,
+      "contact_exact_rate": 0.59375,
+      "object_precision": 0.16091954022988506,
+      "object_recall": 0.175,
+      "object_f1": 0.16766467065868262
+    },
+    {
+      "group": "9c553886-83c5-4dc4-be5c-dcb269b3a771__ep2",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 1.0,
+      "object_precision": 0.34057971014492755,
+      "object_recall": 0.415929203539823,
+      "object_f1": 0.37450199203187257
+    },
+    {
+      "group": "b9dd769b-e31a-4fdb-945e-5a60db6487b0__ep2",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9375,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.40625,
+      "object_precision": 0.37404580152671757,
+      "object_recall": 0.4336283185840708,
+      "object_f1": 0.40163934426229503
+    },
+    {
+      "group": "5399ef86-4df9-49bc-809f-8f4f92f9e659__ep6",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 1.0,
+      "object_precision": 0.029411764705882353,
+      "object_recall": 0.027777777777777776,
+      "object_f1": 0.02857142857142857
+    },
+    {
+      "group": "877779cd-25f3-4293-a3c4-39067dd9558c__ep4",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.40625,
+      "object_precision": 0.3626373626373626,
+      "object_recall": 0.3548387096774194,
+      "object_f1": 0.3586956521739131
+    },
+    {
+      "group": "1796b943-caad-43c6-b9bd-80b8d601f37d__ep1",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.5625,
+      "object_precision": 0.13,
+      "object_recall": 0.11926605504587157,
+      "object_f1": 0.1244019138755981
+    },
+    {
+      "group": "a1012a57-385e-45a9-8a59-694a26fe92a5__ep1",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.03125,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.03125,
+      "contact_exact_rate": 0.90625,
+      "object_precision": 0.6,
+      "object_recall": 0.5454545454545454,
+      "object_f1": 0.5714285714285713
+    },
+    {
+      "group": "ba045ed4-ef25-404d-b756-8dcbd45b18fa__ep2",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.03125,
+      "subtask_exact_rate": 0.03125,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.03125,
+      "contact_exact_rate": 0.90625,
+      "object_precision": 0.09523809523809523,
+      "object_recall": 0.16393442622950818,
+      "object_f1": 0.12048192771084339
+    }
+  ],
+  "action_family_groups": [
+    {
+      "group": "cleaning",
+      "samples": 8,
+      "parsed_prediction_rate": 0.875,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.75,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.5,
+      "object_precision": 0.041666666666666664,
+      "object_recall": 0.05,
+      "object_f1": 0.04545454545454545
+    },
+    {
+      "group": "locomotion",
+      "samples": 23,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.4782608695652174,
+      "object_precision": 0.1267605633802817,
+      "object_recall": 0.1232876712328767,
+      "object_f1": 0.125
+    },
+    {
+      "group": "small_object_sorting",
+      "samples": 87,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9885057471264368,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.6551724137931034,
+      "object_precision": 0.2701612903225806,
+      "object_recall": 0.27125506072874495,
+      "object_f1": 0.27070707070707073
+    },
+    {
+      "group": "other",
+      "samples": 94,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9574468085106383,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.6595744680851063,
+      "object_precision": 0.25705329153605017,
+      "object_recall": 0.3082706766917293,
+      "object_f1": 0.28034188034188035
+    },
+    {
+      "group": "phone_use",
+      "samples": 51,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0196078431372549,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9411764705882353,
+      "next_action_exact_rate": 0.0196078431372549,
+      "contact_exact_rate": 0.6470588235294118,
+      "object_precision": 0.4233128834355828,
+      "object_recall": 0.40350877192982454,
+      "object_f1": 0.4131736526946108
+    },
+    {
+      "group": "paper_cardboard_craft",
+      "samples": 142,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.04929577464788732,
+      "subtask_exact_rate": 0.007042253521126761,
+      "transition_exact_rate": 0.9859154929577465,
+      "next_action_exact_rate": 0.04929577464788732,
+      "contact_exact_rate": 0.8802816901408451,
+      "object_precision": 0.3489278752436647,
+      "object_recall": 0.3675564681724846,
+      "object_f1": 0.35800000000000004
+    },
+    {
+      "group": "retail_stocking",
+      "samples": 38,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.10526315789473684,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9736842105263158,
+      "next_action_exact_rate": 0.10526315789473684,
+      "contact_exact_rate": 0.7368421052631579,
+      "object_precision": 0.15730337078651685,
+      "object_recall": 0.1590909090909091,
+      "object_f1": 0.1581920903954802
+    },
+    {
+      "group": "food_kitchen",
+      "samples": 5,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.2,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.2,
+      "contact_exact_rate": 0.4,
+      "object_precision": 0.16666666666666666,
+      "object_recall": 0.14285714285714285,
+      "object_f1": 0.15384615384615383
+    }
+  ],
+  "train_seen_groups": [
+    {
+      "group": "unseen_in_train",
+      "samples": 317,
+      "parsed_prediction_rate": 0.9968454258675079,
+      "action_exact_rate": 0.012618296529968454,
+      "subtask_exact_rate": 0.0031545741324921135,
+      "transition_exact_rate": 0.9747634069400631,
+      "next_action_exact_rate": 0.012618296529968454,
+      "contact_exact_rate": 0.6908517350157729,
+      "object_precision": 0.25897187196896215,
+      "object_recall": 0.28525641025641024,
+      "object_f1": 0.2714794102694459
+    },
+    {
+      "group": "seen_in_train",
+      "samples": 131,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.06870229007633588,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9618320610687023,
+      "next_action_exact_rate": 0.06870229007633588,
+      "contact_exact_rate": 0.7862595419847328,
+      "object_precision": 0.38235294117647056,
+      "object_recall": 0.3627906976744186,
+      "object_f1": 0.3723150357995227
+    }
+  ],
+  "missing_modality_groups": [
+    {
+      "group": "rrd_missing_only_required_modalities_present",
+      "samples": 448,
+      "parsed_prediction_rate": 0.9977678571428571,
+      "action_exact_rate": 0.029017857142857144,
+      "subtask_exact_rate": 0.002232142857142857,
+      "transition_exact_rate": 0.9709821428571429,
+      "next_action_exact_rate": 0.029017857142857144,
+      "contact_exact_rate": 0.71875,
+      "object_precision": 0.2939541348158443,
+      "object_recall": 0.3096632503660322,
+      "object_f1": 0.30160427807486634
+    }
+  ],
+  "object_category_groups": [
+    {
+      "group": "furniture_room",
+      "samples": 96,
+      "parsed_prediction_rate": 0.9895833333333334,
+      "action_exact_rate": 0.03125,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9791666666666666,
+      "next_action_exact_rate": 0.03125,
+      "contact_exact_rate": 0.5625,
+      "object_precision": 0.33557046979865773,
+      "object_recall": 0.31545741324921134,
+      "object_f1": 0.3252032520325203
+    },
+    {
+      "group": "other_object",
+      "samples": 135,
+      "parsed_prediction_rate": 0.9925925925925926,
+      "action_exact_rate": 0.014814814814814815,
+      "subtask_exact_rate": 0.007407407407407408,
+      "transition_exact_rate": 0.9629629629629629,
+      "next_action_exact_rate": 0.014814814814814815,
+      "contact_exact_rate": 0.674074074074074,
+      "object_precision": 0.2,
+      "object_recall": 0.20476190476190476,
+      "object_f1": 0.2023529411764706
+    },
+    {
+      "group": "no_object_label",
+      "samples": 2,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 1.0,
+      "object_precision": 0.0,
+      "object_recall": 0.0,
+      "object_f1": 0.0
+    },
+    {
+      "group": "cleaning",
+      "samples": 8,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.75,
+      "object_precision": 0.045454545454545456,
+      "object_recall": 0.047619047619047616,
+      "object_f1": 0.046511627906976744
+    },
+    {
+      "group": "craft_small_object",
+      "samples": 106,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.009433962264150943,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9905660377358491,
+      "next_action_exact_rate": 0.009433962264150943,
+      "contact_exact_rate": 0.6132075471698113,
+      "object_precision": 0.25076452599388377,
+      "object_recall": 0.2645161290322581,
+      "object_f1": 0.2574568288854003
+    },
+    {
+      "group": "tool_stationery",
+      "samples": 138,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.014492753623188406,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9782608695652174,
+      "next_action_exact_rate": 0.014492753623188406,
+      "contact_exact_rate": 0.8333333333333334,
+      "object_precision": 0.44129554655870445,
+      "object_recall": 0.4421906693711968,
+      "object_f1": 0.4417426545086119
+    },
+    {
+      "group": "food_kitchen",
+      "samples": 56,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.017857142857142856,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9464285714285714,
+      "next_action_exact_rate": 0.017857142857142856,
+      "contact_exact_rate": 0.7857142857142857,
+      "object_precision": 0.32019704433497537,
+      "object_recall": 0.28888888888888886,
+      "object_f1": 0.3037383177570093
+    },
+    {
+      "group": "phone_device",
+      "samples": 162,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.018518518518518517,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9567901234567902,
+      "next_action_exact_rate": 0.018518518518518517,
+      "contact_exact_rate": 0.6296296296296297,
+      "object_precision": 0.3915343915343915,
+      "object_recall": 0.37185929648241206,
+      "object_f1": 0.3814432989690722
+    },
+    {
+      "group": "paper_cardboard",
+      "samples": 261,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.038314176245210725,
+      "subtask_exact_rate": 0.0038314176245210726,
+      "transition_exact_rate": 0.9770114942528736,
+      "next_action_exact_rate": 0.038314176245210725,
+      "contact_exact_rate": 0.7662835249042146,
+      "object_precision": 0.361863488624052,
+      "object_recall": 0.3830275229357798,
+      "object_f1": 0.37214484679665744
+    },
+    {
+      "group": "retail_container",
+      "samples": 101,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.06930693069306931,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9603960396039604,
+      "next_action_exact_rate": 0.06930693069306931,
+      "contact_exact_rate": 0.8118811881188119,
+      "object_precision": 0.2542955326460481,
+      "object_recall": 0.22356495468277945,
+      "object_f1": 0.23794212218649516
+    }
+  ],
+  "invalid_json_examples": [
+    {
+      "id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1:qa:200",
+      "episode_id": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1",
+      "true_action": "Washing hands in sink",
+      "raw_prediction_prefix": "{\"action\":\"Close door\",\"contact\":\"yes\",\"evidence_window\":{\"end_frame\":4019,\"start_frame\":4000},\"next_action\":\"Close door\",\"objects\":[\"door\",\"door handle\",\"bathroom counter\",\"bathroom sink\",\"bathroom cabinet\",\"bathroom mirror\",\"bathroom ligh"
+    }
+  ],
+  "object_overgeneration_examples": [],
+  "modality_missing_by_episode": {
+    "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1": [
+      "visualization.rrd"
+    ],
+    "a1012a57-385e-45a9-8a59-694a26fe92a5__ep1": [
+      "visualization.rrd"
+    ],
+    "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1": [
+      "visualization.rrd"
+    ],
+    "9c553886-83c5-4dc4-be5c-dcb269b3a771__ep2": [
+      "visualization.rrd"
+    ],
+    "34f07a04-eb37-45a3-95ec-189ed5f4a85b__ep5": [
+      "visualization.rrd"
+    ],
+    "b9dd769b-e31a-4fdb-945e-5a60db6487b0__ep2": [
+      "visualization.rrd"
+    ],
+    "ba045ed4-ef25-404d-b756-8dcbd45b18fa__ep2": [
+      "visualization.rrd"
+    ],
+    "4b02bb38-384a-438a-b5f9-6131d85c34b0__ep1": [
+      "visualization.rrd"
+    ],
+    "5399ef86-4df9-49bc-809f-8f4f92f9e659__ep6": [
+      "visualization.rrd"
+    ],
+    "b750fab3-7fbb-43a0-b451-c64c4d4a64da__ep1": [
+      "visualization.rrd"
+    ],
+    "877779cd-25f3-4293-a3c4-39067dd9558c__ep4": [
+      "visualization.rrd"
+    ],
+    "1796b943-caad-43c6-b9bd-80b8d601f37d__ep1": [
+      "visualization.rrd"
+    ],
+    "ba18b7c1-21ff-45da-8452-41acce7fc8de__ep2": [
+      "visualization.rrd"
+    ],
+    "b6579cb5-0a71-4ca6-8808-1e2700be05c7__ep3": [
+      "visualization.rrd"
+    ]
+  },
+  "interpretation": "The diagnostic pilot is dominated by invalid or weak structured outputs and exact-label failures. These tables identify where to tighten JSON constraints, action/subtask target formatting, object vocabularies, and missing-modality robustness before claiming stronger model quality."
+}

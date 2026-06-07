@@ -31,7 +31,7 @@ scale-up readiness; it is not presented as final full-dataset model quality.
 | Public package policy | Verified | `DATA_NOTICE.md`, `REPRODUCIBILITY.md` | Raw Xperience-10M data, private gated files, large archives, credentials, and full Qwen weights are not redistributed. |
 | Reproducibility | Verified for the public sample | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json`, `notes/reproducibility_audit.md` | The public sample workflow has explicit commands, expected outputs, and exact-match reproduction evidence. |
 | 128-episode aligned baselines | Verified companion result | `results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`, `results/omni_finetune/multi_episode_128_task_baselines/summary_report.json`, `scripts/omni/run_128_task_baselines.py` | The earlier simple and neural baseline framing is aligned to the same selected 96/16/16 episode split used by the Qwen3-Omni pilot. JSON-supported tasks have metadata/text simple and neural MLP metrics; raw-feature-only tasks are explicitly marked unsupported until 128-run sensor feature blocks are available. |
-| Qwen3-Omni fine-tuning | Final verified diagnostic held-out result; JSON target met | `docs/data/omni_finetune_verified_result.json`, `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full/`, `scripts/omni/package_verified_omni_result.py`, `scripts/omni/audit_verified_omni_package.py`, `scripts/omni/analyze_qwen3_omni_errors.py` | The selected 96/16/16 episode split produced a final public-safe held-out package with 3,808 exported windows, 512 validation windows, 448 test predictions, two training epochs, and validation/audit summaries. JSON validity is 99.78%, meeting the 98% target; transition accuracy is 97.10%, contact accuracy is 71.88%, object micro-F1 is 30.16%, and action/subtask metrics remain weak, so it is still a diagnostic baseline rather than a strong model-quality claim. |
+| Qwen3-Omni fine-tuning | Final verified diagnostic held-out result; JSON target met | `docs/data/omni_finetune_verified_result.json`, `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/`, `scripts/omni/package_verified_omni_result.py`, `scripts/omni/audit_verified_omni_package.py`, `scripts/omni/analyze_qwen3_omni_errors.py` | The selected 96/16/16 episode split produced a current public-safe strict-label v3 held-out package with 3,808 exported windows, 512 validation windows, 448 test predictions, two training epochs, validation/audit summaries, and the reused public LoRA adapter. JSON validity is 100.00%, meeting the 98% target; transition accuracy is 97.32%, contact accuracy is 72.10%, object micro-F1 is 30.69%, and action/subtask metrics remain weak, so it is still a diagnostic baseline rather than a strong model-quality claim. |
 | Raw Xperience-10M redistribution | Not included | `DATA_NOTICE.md`, `docs/data/publication_audit.json` | Raw MP4, HDF5, RRD files, private gated data, and full Qwen weights are intentionally excluded. |
 
 ## Fast Research Route
@@ -69,9 +69,10 @@ scale-up readiness; it is not presented as final full-dataset model quality.
   current results use one public sample episode.
 - Public-facing fine-tuning results should come from the verified result
   package, not from live process logs or setup-only artifacts.
-- The final Qwen3-Omni held-out package verifies the pipeline and meets the
-  strict-JSON target, but not strong action/subtask model quality: JSON validity
-  is 99.78%, action macro-F1 is 0.0024, and subtask accuracy is 0.0022.
+- The final Qwen3-Omni strict-label v3 held-out package verifies the pipeline
+  and meets the strict-JSON target, but not strong action/subtask model quality:
+  JSON validity is 100.00%, action macro-F1 is 0.0022, and subtask accuracy is
+  0.0022.
 - The 128-episode aligned simple/NN baselines use metadata/text features from
   the derived Qwen JSONL export; they align the split and task ids but do not
   replace raw-modality baselines for trajectory, retrieval, reconstruction, or

@@ -16,7 +16,7 @@ Prepare the upload directory from the completed adapter and verified summary:
 ```bash
 python3 scripts/omni/prepare_qwen3_lora_hf_package.py \
   --adapter-dir checkpoints/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora/adapter_lora \
-  --verified-summary results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full/verified_result_summary.json \
+  --verified-summary results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/verified_result_summary.json \
   --output-dir results/omni_finetune/hf_upload_qwen3_128ep_full \
   --repo-id cy0307/ropedia-qwen3-omni-lora-128ep
 ```

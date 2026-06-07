@@ -1,15 +1,15 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-07T00:00:35+00:00",
+  "generated_at_utc": "2026-06-07T15:47:31+00:00",
   "summary": {
     "qwen3_omni_verified_diagnostic_pilot": true,
     "dataset_manifest_num_episodes": 119,
     "dataset_manifest_num_samples": 3808,
     "training_metadata_num_train_samples": 2848,
     "eval_num_samples": 448,
-    "eval_json_validity_rate": 0.9977678571428571,
+    "eval_json_validity_rate": 1.0,
     "quality_target_met": true,
-    "historical_identifier_count": 189,
+    "historical_identifier_count": 1545,
     "public_32_episode_status_file_count": 1,
     "failure_count": 0
   },
@@ -35,7 +35,7 @@
       "status": "pass",
       "detail": "episodes=119, samples=3808, split_counts={'train': 2848, 'val': 512, 'test': 448}",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full/dataset/dataset_manifest.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/dataset/dataset_manifest.json"
       ]
     },
     {
@@ -43,15 +43,15 @@
       "status": "pass",
       "detail": "train=2848, val=512, processes=8",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full/training/training_metadata.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/training/training_metadata.json"
       ]
     },
     {
       "name": "verified_package_eval_records_real_held_out_metrics",
       "status": "pass",
-      "detail": "samples=448, split=test, held_out=14, json_validity=0.9977678571428571",
+      "detail": "samples=448, split=test, held_out=14, json_validity=1.0",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full/eval/metrics.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/eval/metrics.json"
       ]
     },
     {
@@ -59,7 +59,7 @@
       "status": "pass",
       "detail": "audit_status=pass, issues=0",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full/package_audit.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/package_audit.json"
       ]
     },
     {
@@ -84,7 +84,7 @@
     {
       "name": "historical_32ep_identifiers_are_confined_to_readiness_artifacts",
       "status": "pass",
-      "detail": "historical identifiers found in result provenance files=189",
+      "detail": "historical identifiers found in result provenance files=1545",
       "evidence": [
         "results/omni_finetune/"
       ]
@@ -424,6 +424,6 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:53\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 1060, \"end_frame\": 1079, \"num_frames\": 20}, \"media\": {\"video_path"
     }
   ],
-  "historical_identifier_total_count": 189,
+  "historical_identifier_total_count": 1545,
   "failures": []
 }

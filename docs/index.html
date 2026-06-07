@@ -2328,7 +2328,7 @@
             <div class="snapshot-meta">
               <span>split <strong>96 / 16 / 16</strong></span>
               <span>test windows <strong>448</strong></span>
-              <span>JSON validity <strong>99.78%</strong></span>
+              <span>JSON validity <strong>100.00%</strong></span>
             </div>
           </article>
           <article class="snapshot-card gated">
@@ -2707,7 +2707,7 @@
           <article class="artifact primary-artifact"><div><h3>Official dataset</h3><p>Xperience-10M is a gated large-scale egocentric multimodal dataset for embodied AI, robotics, spatial intelligence, and world modeling.</p></div><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official HF dataset</a></article>
           <article class="artifact"><h3>Public sample</h3><p>The current task suite is built from one public sample episode, not from the entire gated dataset.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
           <article class="artifact"><h3>Modalities</h3><p>The sample exposes synchronized video, audio, depth, pose/SLAM, motion capture, inertial signals, calibration, and language annotations.</p><a href="data/modality_atlas.json">modality atlas</a></article>
-          <article class="artifact"><h3>Multi-episode pilot</h3><p>The selected 128-episode Qwen3-Omni LoRA final diagnostic result is verified with 448 held-out test predictions and 99.78% JSON validity. Action/subtask metrics are still weak, so this remains a baseline for error analysis.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a></article>
+          <article class="artifact"><h3>Multi-episode pilot</h3><p>The selected 128-episode Qwen3-Omni LoRA strict-label v3 diagnostic result is verified with 448 held-out test predictions and 100.00% JSON validity. Action/subtask metrics are still weak, so this remains a baseline for error analysis.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a></article>
           <article class="artifact"><h3>Data boundary</h3><p>Raw MP4, HDF5, RRD files, private gated data, and full Qwen weights are not redistributed in this project.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a></article>
           <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, and no raw-data redistribution.</p><a href="data/modality_atlas.json">modality atlas</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, and misalignment.</p><a href="data/summary_metrics.json">summary metrics</a></article>

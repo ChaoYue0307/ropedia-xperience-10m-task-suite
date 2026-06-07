@@ -95,10 +95,10 @@ Evidence to inspect:
 This stage uses Qwen3-Omni as the multimodal backbone and trains lightweight
 LoRA adapters. The final held-out diagnostic package now exists. It proves the
 export, training, evaluation, validation, public-safe packaging, and adapter
-publication loop. JSON validity is 99.78%, transition accuracy is 97.10%, and
-contact accuracy is 71.88%, but action macro-F1 is 0.0024 and subtask accuracy
-is 0.0022. Treat it as a baseline and error-analysis starting point, not as a
-strong action/subtask model.
+publication loop. The current strict-label v3 evaluation reaches 100.00% JSON
+validity, 97.32% transition accuracy, and 72.10% contact accuracy, but action
+macro-F1 is 0.0022 and subtask accuracy is 0.0022. Treat it as a baseline and
+error-analysis starting point, not as a strong action/subtask model.
 
 Expected outputs:
 

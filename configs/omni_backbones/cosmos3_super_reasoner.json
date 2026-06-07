@@ -38,6 +38,7 @@
     "export": "scripts/omni/parallel_export_qwen3_omni_action_dataset.py",
     "neutral_index": "scripts/omni/export_model_neutral_window_index.py",
     "train": "",
+    "train_probe": "scripts/omni/probe_cosmos3_super_training_readiness.py",
     "eval": "scripts/omni/eval_cosmos3_super_reasoner.py",
     "launcher": "scripts/omni/run_cosmos3_super_reasoner_eval.sh",
     "validate": "scripts/omni/validate_omni_finetune_run.py"
@@ -88,6 +89,7 @@
   },
   "extension_requirements": [
     "This branch evaluates staged Cosmos3-Super Reasoner base weights through vLLM on the 128-episode held-out JSON task; it does not fine-tune or release new Cosmos weights.",
+    "Run scripts/omni/probe_cosmos3_super_training_readiness.py before any Cosmos3-Super adapter launch; the probe must have no blockers before train can be filled.",
     "Create a separate Cosmos3-Super adapter/model repository only after a real fine-tuning run produces new adapter or checkpoint weights.",
     "Keep it separate from the Cosmos3-Nano future-window compatibility branch, which answers a different world-model retrieval target."
   ]

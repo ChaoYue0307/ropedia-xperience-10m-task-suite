@@ -88,6 +88,25 @@ def sanitized_text(text: str, replacements: list[tuple[str, str]]) -> str:
     return text
 
 
+def path_replacements(paths: list[tuple[Path, str]]) -> list[tuple[str, str]]:
+    replacements: list[tuple[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for path, target in paths:
+        expanded = path.expanduser()
+        candidates = [expanded.resolve()]
+        if expanded.is_absolute():
+            candidates.append(expanded)
+        for candidate in candidates:
+            source = str(candidate)
+            if source in {".", "/"}:
+                continue
+            item = (source, target)
+            if item not in seen:
+                replacements.append(item)
+                seen.add(item)
+    return replacements
+
+
 def write_json(path: Path, payload: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
@@ -166,8 +185,7 @@ def load_validation(args: argparse.Namespace, run_dir: Path) -> tuple[dict[str, 
 
 def main() -> int:
     args = parse_args()
-    workspace_arg = args.workspace.expanduser()
-    workspace = workspace_arg.resolve()
+    workspace = args.workspace.expanduser().resolve()
     root = workspace / "results" / "omni_finetune"
     run_dir = root / args.dataset_run_id
     dataset_dir = root / f"{args.dataset_run_id}_dataset"
@@ -191,16 +209,14 @@ def main() -> int:
     ).expanduser()
     data_root = Path(os.environ.get("DATA_ROOT", str(workspace.parent / "modelscope_data"))).expanduser()
 
-    replacements = [
-        (str(workspace_arg), "<project>"),
-        (str(workspace), "<project>"),
-        (str(workspace_arg.parent), "<workspace-parent>"),
-        (str(workspace.parent), "<workspace-parent>"),
-        (str(model_cache_root), "<model-cache>"),
-        (str(model_cache_root.resolve()), "<model-cache>"),
-        (str(data_root), "<xperience10m-data>"),
-        (str(data_root.resolve()), "<xperience10m-data>"),
-    ]
+    replacements = path_replacements(
+        [
+            (workspace, "<project>"),
+            (workspace.parent, "<workspace-parent>"),
+            (model_cache_root, "<model-cache>"),
+            (data_root, "<xperience10m-data>"),
+        ]
+    )
 
     reset_output_dir(output_dir, [workspace, root, run_dir, dataset_dir, train_dir, eval_dir, workspace.parent])
 

@@ -1,0 +1,163 @@
+{
+  "run_id": "xperience10m_cosmos3_super_training_readiness_20260607",
+  "run_kind": "cosmos3_super_training_readiness_probe",
+  "started_at_unix": 1780843850.0829008,
+  "finished_at_unix": 1780843860.1816256,
+  "elapsed_seconds": 10.098725318908691,
+  "workspace": "/home/cy/Ropedia/ropedia-episode-task-suite",
+  "backbone": {
+    "config_path": "/home/cy/Ropedia/ropedia-episode-task-suite/configs/omni_backbones/cosmos3_super_reasoner.json",
+    "exists": true,
+    "id": "cosmos3_super_reasoner",
+    "display_name": "Cosmos3-Super Reasoner",
+    "status": "implemented",
+    "dataset_contract": "xperience10m_episode_json_qa_v1",
+    "training_objective": "zero_shot_structured_episode_understanding_json_qa_via_vllm_reasoner",
+    "entrypoints": {
+      "selection_manifest": "scripts/omni/build_selection_episode_manifest.py",
+      "export": "scripts/omni/parallel_export_qwen3_omni_action_dataset.py",
+      "neutral_index": "scripts/omni/export_model_neutral_window_index.py",
+      "train": "",
+      "train_probe": "scripts/omni/probe_cosmos3_super_training_readiness.py",
+      "eval": "scripts/omni/eval_cosmos3_super_reasoner.py",
+      "launcher": "scripts/omni/run_cosmos3_super_reasoner_eval.sh",
+      "validate": "scripts/omni/validate_omni_finetune_run.py"
+    }
+  },
+  "model": {
+    "path": "/home/cy/Ropedia/cosmos3_models/nv-community__Cosmos3-Super",
+    "exists": true,
+    "files": {
+      "config.json": true,
+      "model_index.json": true,
+      "tokenizer.json": true,
+      "text_tokenizer/tokenizer.json": true,
+      "transformer/config.json": true,
+      "transformer/index": true,
+      "vae/config.json": true,
+      "sound_tokenizer/config.json": true
+    },
+    "architectures": [
+      "Cosmos3ForConditionalGeneration"
+    ],
+    "model_type": "cosmos3_omni",
+    "model_index_class": "Cosmos3OmniDiffusersPipeline",
+    "transformer_class": "Cosmos3OmniTransformer",
+    "lora_enabled_default": false,
+    "lora_rank_default": 16,
+    "lora_alpha_default": 32,
+    "lora_target_modules_default": "q_proj_moe_gen,k_proj_moe_gen,v_proj_moe_gen,o_proj_moe_gen",
+    "rectified_flow_training_config_keys": [
+      "_type",
+      "action_loss_weight",
+      "high_sigma_ratio",
+      "high_sigma_timesteps_max",
+      "high_sigma_timesteps_min",
+      "image_loss_scale",
+      "independent_action_schedule",
+      "independent_sound_schedule",
+      "loss_scale",
+      "normalize_loss_by_active",
+      "shift",
+      "shift_action",
+      "shift_sound",
+      "sound_loss_scale",
+      "train_time_action_distribution",
+      "train_time_image_distribution",
+      "train_time_sound_distribution",
+      "train_time_video_distribution",
+      "train_time_weight",
+      "use_discrete_rf",
+      "use_dynamic_shift",
+      "use_high_sigma_strategy",
+      "use_high_sigma_strategy_action",
+      "use_high_sigma_strategy_sound"
+    ]
+  },
+  "dataset": {
+    "dataset_jsonl": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl",
+    "total_samples": 3808,
+    "split_summary": {
+      "test": {
+        "samples": 448,
+        "episodes": 14,
+        "actions": 189
+      },
+      "train": {
+        "samples": 2848,
+        "episodes": 89,
+        "actions": 885
+      },
+      "val": {
+        "samples": 512,
+        "episodes": 16,
+        "actions": 223
+      }
+    },
+    "missing_required_fields": {
+      "answer_json": 0,
+      "episode_id": 0,
+      "id": 0,
+      "label_options": 0,
+      "split": 0
+    },
+    "missing_answer_fields": {
+      "action": 0,
+      "contact": 0,
+      "evidence_window": 0,
+      "next_action": 0,
+      "objects": 0,
+      "subtask": 0,
+      "transition": 0
+    },
+    "samples_with_video_path": 3808,
+    "contract": "xperience10m_episode_json_qa_v1"
+  },
+  "runtime": {
+    "python": "3.12.3 (main, Jan  8 2026, 11:30:50) [GCC 13.3.0]",
+    "platform": "Linux-6.8.0-88-generic-x86_64-with-glibc2.39",
+    "torch": "2.10.0+cu128",
+    "cuda_available": true,
+    "cuda_device_count": 8,
+    "accelerate": "1.12.0",
+    "peft": "0.18.1",
+    "diffusers": "0.39.0.dev0",
+    "diffusers_classes": {
+      "Cosmos3OmniPipeline": true,
+      "Cosmos3OmniTransformer": true,
+      "Cosmos3AVAEAudioTokenizer": true,
+      "AutoencoderKLWan": true,
+      "UniPCMultistepScheduler": true
+    },
+    "cosmos3_transformer_forward_signature": "(self, input_ids: torch.Tensor, text_indexes: torch.Tensor, position_ids: torch.Tensor, und_len: int, sequence_length: int, vision_tokens: list[torch.Tensor], vision_token_shapes: list[tuple[int, int, int]], vision_sequence_indexes: torch.Tensor, vision_mse_loss_indexes: torch.Tensor, vision_timesteps: torch.Tensor, vision_noisy_frame_indexes: list[torch.Tensor], sound_tokens: list[torch.Tensor] | None = None, sound_token_shapes: list[tuple[int, int, int]] | None = None, sound_sequence_indexes: torch.Tensor | None = None, sound_mse_loss_indexes: torch.Tensor | None = None, sound_timesteps: torch.Tensor | None = None, sound_noisy_frame_indexes: list[torch.Tensor] | None = None, action_tokens: list[torch.Tensor] | None = None, action_token_shapes: list[tuple[int, int, int]] | None = None, action_sequence_indexes: torch.Tensor | None = None, action_mse_loss_indexes: torch.Tensor | None = None, action_timesteps: torch.Tensor | None = None, action_noisy_frame_indexes: list[torch.Tensor] | None = None, action_domain_ids: list[torch.Tensor] | None = None) -> tuple[list[torch.Tensor], list[torch.Tensor] | None, list[torch.Tensor] | None]",
+    "cosmos3_pipeline_call_signature": "(self, prompt: str | list[str], negative_prompt: str | list[str] | None = None, image: torch.Tensor | None = None, num_frames: int | None = None, height: int | None = None, width: int | None = None, fps: float = 24.0, num_inference_steps: int = 35, guidance_scale: float = 6.0, enable_sound: bool = False, generator: torch._C.Generator | None = None, latents: torch.Tensor | None = None, sound_latents: torch.Tensor | None = None, action_latents: torch.Tensor | None = None, action: diffusers.pipelines.cosmos.pipeline_cosmos3_omni.CosmosActionCondition | None = None, output_type: str = 'pil', return_dict: bool = True, use_system_prompt: bool = True, callback_on_step_end: Union[Callable[[int, int, dict[str, Any]], NoneType], diffusers.callbacks.PipelineCallback, diffusers.callbacks.MultiPipelineCallbacks, NoneType] = None, callback_on_step_end_tensor_inputs: list[str] = ['latents'], add_resolution_template: bool = True, add_duration_template: bool = True, enable_safety_check: bool = True) -> diffusers.pipelines.cosmos.pipeline_cosmos3_omni.Cosmos3OmniPipelineOutput",
+    "transformers": "5.0.0",
+    "has_transformers_cosmos3_for_conditional_generation": false,
+    "auto_config_error": "ValueError('The checkpoint you are trying to load has model type `cosmos3_omni` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date.\\n\\nYou can update Transformers with the command `pip install --upgrade transformers`. If this does not work, and the checkpoint is very new, then there may not be a release version that supports this model yet. In this case, you can get the most up-to-date code by installing Transformers from source with the command `pip install git+https://github.com/huggingface/transformers.git`')",
+    "tokenizer_class": "TokenizersBackend",
+    "processor_class": "Qwen3VLProcessor"
+  },
+  "optional_pipeline_load": {
+    "attempted": false
+  },
+  "decision": {
+    "status": "blocked_until_trainer_implemented",
+    "weights_updated": false,
+    "chat_sft_supported": false,
+    "diffusers_runtime_supported": true,
+    "blockers": [
+      "Transformers cannot load model_type cosmos3_omni as a local causal-generation model; Qwen-style answer-token CE fine-tuning is unavailable in this environment.",
+      "Repository has no Cosmos3 diffusion/action target packer or supervised loss implementation for xperience10m_episode_json_qa_v1; a readiness probe cannot produce adapter weights."
+    ],
+    "warnings": [],
+    "next_steps": [
+      "Implement a Cosmos3-Super training data packer that maps each Xperience-10M window to prompt, video/action latent inputs, timesteps, and loss indexes expected by Cosmos3OmniTransformer.forward.",
+      "Wire LoRA only onto the checkpoint-declared target modules q_proj_moe_gen,k_proj_moe_gen,v_proj_moe_gen,o_proj_moe_gen and use the rectified_flow_training_config loss weights.",
+      "Run a one-episode overfit with --load-pipeline enabled, then a 96/16/16 held-out adapter run only after the probe status has no blockers."
+    ]
+  },
+  "gpu_runtime_summary": {
+    "cuda_available": true,
+    "cuda_device_count": 8
+  }
+}

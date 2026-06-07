@@ -288,6 +288,39 @@ def qwen3_smoke_entry() -> dict[str, Any]:
     }
 
 
+def cosmos3_super_readiness_entry() -> dict[str, Any] | None:
+    paths = sorted((ROOT / "results/omni_finetune").glob("xperience10m_cosmos3_super_training_readiness_*/training_readiness.json"))
+    if not paths:
+        return None
+    payloads = [(path, load_json(path)) for path in paths]
+    path, payload = max(payloads, key=lambda item: item[1].get("finished_at_unix") or 0)
+    decision = payload.get("decision", {}) if isinstance(payload.get("decision"), dict) else {}
+    dataset = payload.get("dataset", {}) if isinstance(payload.get("dataset"), dict) else {}
+    return {
+        "id": payload.get("run_id", path.parent.name),
+        "title": "Cosmos3-Super Training Readiness Probe",
+        "scope": "selected 128-episode 96/16/16 JSON-task dataset and staged Cosmos3-Super runtime",
+        "status": decision.get("status", "unknown"),
+        "source": rel(path),
+        "split": "train/val/test by selected episode/session",
+        "counts": {
+            "dataset_samples": dataset.get("total_samples"),
+            "split_counts": dataset.get("split_summary"),
+        },
+        "primary_metrics": {
+            "diffusers_runtime_supported": decision.get("diffusers_runtime_supported"),
+            "chat_sft_supported": decision.get("chat_sft_supported"),
+            "weights_updated": decision.get("weights_updated"),
+        },
+        "weights": "none; readiness audit only, no adapter checkpoint",
+        "interpretation": (
+            "This probe confirms the staged Cosmos3-Super Diffusers/GPU runtime and "
+            "the same JSON QA dataset are visible, but blocks true fine-tuning until "
+            "a Cosmos-specific diffusion/action target packer and supervised loss are implemented."
+        ),
+    }
+
+
 def run_entry_from_version(version: dict[str, Any], *, run_id: str, weights: str, interpretation: str) -> dict[str, Any]:
     return {
         "id": run_id,
@@ -310,6 +343,7 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
     qwen_branches = [branch for branch in branches if branch.get("backbone") == "qwen3_omni_lora"]
     cosmos_nano_branches = [branch for branch in branches if branch.get("backbone") == "cosmos_world_model"]
     cosmos_super_branches = [branch for branch in branches if branch.get("backbone") == "cosmos3_super_reasoner"]
+    cosmos_super_readiness = cosmos3_super_readiness_entry()
     if qwen_branches:
         current_qwen = max(qwen_branches, key=lambda item: item.get("primary_metrics", {}).get("json_validity_rate") or -1)
         for branch in qwen_branches:
@@ -417,11 +451,13 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     ),
                 }
             ],
+            "readiness_runs": [cosmos_super_readiness] if cosmos_super_readiness else [],
             "multi_episode_128_runs": cosmos_super_branches,
             "comparison_note": (
                 "Cosmos3-Super is now represented by a verified 448-window held-out "
                 "Reasoner evaluation on the same JSON task as Qwen3. It uses staged base "
-                "weights through vLLM, so it is a model-branch diagnostic, not a weight release."
+                "weights through vLLM, so it is a model-branch diagnostic, not a weight release. "
+                "The readiness probe records why true Cosmos3-Super fine-tuning is not launched yet."
             ),
         },
     ]
@@ -454,11 +490,11 @@ def build_report() -> dict[str, Any]:
             "Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.",
             "Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; only the final 128-episode adapter belongs in the Qwen LoRA model repo.",
             "Cosmos3-Nano has a 128-episode future-window compatibility package.",
-            "Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.",
+            "Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a training-readiness probe; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.",
         ],
         "pending": [
             "Use the final Qwen3 full-eval package as the current Qwen result; older Qwen package rows remain historical diagnostics for comparison.",
-            "Promote Cosmos3 from Nano compatibility and Super base-weight evaluation to true fine-tuning only after a dedicated Cosmos adapter/diffusion training path produces new weights.",
+            "Promote Cosmos3 from Nano compatibility and Super base-weight evaluation to true fine-tuning only after a dedicated Cosmos diffusion/action target packer and supervised loss produce new weights.",
         ],
     }
 
@@ -498,6 +534,9 @@ def entry_metric_text(entry: dict[str, Any]) -> str:
         "contact_accuracy",
         "accuracy",
         "macro_f1",
+        "diffusers_runtime_supported",
+        "chat_sft_supported",
+        "weights_updated",
     ]
     return ", ".join(f"{key}={fmt_score(metrics[key])}" for key in keep if key in metrics)
 
@@ -519,6 +558,8 @@ def append_model_group(lines: list[str], group: dict[str, Any]) -> None:
     rows = []
     for entry in group.get("one_episode_runs", []):
         rows.append(("1 episode", entry))
+    for entry in group.get("readiness_runs", []):
+        rows.append(("readiness", entry))
     for entry in group.get("multi_episode_128_runs", []):
         rows.append(("128 episode", entry))
     for scope, entry in rows:

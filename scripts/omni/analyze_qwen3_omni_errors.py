@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Analyze public-safe Qwen3-Omni held-out prediction errors.
+"""Analyze public-safe held-out structured JSON prediction errors.
 
-The script consumes a verified public package, not raw Xperience-10M data. It
-summarizes where the diagnostic pilot fails by episode, train-seen status,
+The script consumes a verified public package or a raw eval directory plus a
+public-safe episode manifest, not raw Xperience-10M data. It summarizes where
+the diagnostic pilot fails by episode, train-seen status,
 coarse action family, object category, parsed prediction state, and
 required-modality state. The outputs are small derived CSV/JSON/Markdown
 artifacts suitable for the public package.
@@ -23,6 +24,7 @@ DEFAULT_PACKAGE = (
     / "results/omni_finetune/verified_public/"
     / "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval"
 )
+ROOT = Path(__file__).resolve().parents[2]
 
 ACTION_FAMILIES = [
     ("phone_use", ("phone", "smartphone", "watch", "screen")),
@@ -71,13 +73,24 @@ REQUIRED_HDF5_MODALITIES = {
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--package-dir", type=Path, default=DEFAULT_PACKAGE)
+    parser.add_argument("--eval-dir", type=Path, help="Raw or packaged eval directory containing predictions.jsonl and metrics.json.")
+    parser.add_argument("--dataset-dir", type=Path, help="Directory containing a public-safe episode_manifest.json.")
+    parser.add_argument("--episode-manifest", type=Path, help="Explicit public-safe episode manifest JSON.")
     parser.add_argument("--output-dir", type=Path)
+    parser.add_argument("--model-label", default="Qwen3-Omni")
     parser.add_argument("--max-examples", type=int, default=12)
     return parser.parse_args()
 
 
 def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def public_path(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(ROOT).as_posix()
+    except ValueError:
+        return path.name
 
 
 def load_jsonl(path: Path) -> list[dict[str, Any]]:
@@ -231,12 +244,20 @@ def markdown_table(rows: list[dict[str, Any]], columns: list[str], limit: int = 
 def main() -> int:
     args = parse_args()
     package_dir = args.package_dir.expanduser().resolve()
-    output_dir = args.output_dir or package_dir / "analysis"
+    raw_eval_mode = args.eval_dir is not None
+    eval_dir = args.eval_dir.expanduser().resolve() if args.eval_dir else package_dir / "eval"
+    dataset_dir = args.dataset_dir.expanduser().resolve() if args.dataset_dir else package_dir / "dataset"
+    episode_manifest_path = (
+        args.episode_manifest.expanduser().resolve()
+        if args.episode_manifest
+        else dataset_dir / "episode_manifest.json"
+    )
+    output_dir = args.output_dir or (eval_dir / "analysis" if raw_eval_mode else package_dir / "analysis")
     output_dir = output_dir.expanduser().resolve()
 
-    predictions = load_jsonl(package_dir / "eval" / "predictions.jsonl")
-    metrics = load_json(package_dir / "eval" / "metrics.json")
-    episode_manifest = load_json(package_dir / "dataset" / "episode_manifest.json")
+    predictions = load_jsonl(eval_dir / "predictions.jsonl")
+    metrics = load_json(eval_dir / "metrics.json")
+    episode_manifest = load_json(episode_manifest_path)
     episodes = {episode.get("episode_id"): episode for episode in episode_manifest.get("episodes", [])}
 
     overall = empty_bucket()
@@ -293,7 +314,10 @@ def main() -> int:
 
     summary = {
         "status": "pass",
+        "model_label": args.model_label,
         "source_package": package_dir.name,
+        "source_eval_dir": public_path(eval_dir),
+        "source_episode_manifest": public_path(episode_manifest_path),
         "source_prediction_rows": len(predictions),
         "metrics_json_validity_rate": metrics.get("json_validity_rate"),
         "computed": finalize_bucket("overall", overall),
@@ -314,9 +338,9 @@ def main() -> int:
     (output_dir / "error_analysis_summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
 
     report = [
-        "# Qwen3-Omni Held-Out Error Analysis",
+        f"# {args.model_label} Held-Out Error Analysis",
         "",
-        "This report is computed from the verified public package predictions. It contains only derived metrics and sanitized examples.",
+        "This report is computed from public-safe predictions and an episode manifest. It contains only derived metrics and sanitized examples.",
         "",
         "## Overall",
         "",
