@@ -101,6 +101,7 @@ SCRIPT_FILES = [
     "validate_source_alignment.py",
     "validate_task_surface.py",
     "validate_website_integrity.py",
+    "sync_hf_publish_mirrors.py",
     "publish_hf_bundles.py",
 ]
 

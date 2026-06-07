@@ -39,6 +39,10 @@ COMMON_IGNORE = [
     "__pycache__/*",
     "**/__pycache__/*",
     "*.pyc",
+    "*.log",
+    "**/*.log",
+    "*.pid",
+    "**/*.pid",
     ".git/*",
 ]
 
@@ -49,6 +53,8 @@ LEGACY_SCORECARD_JSON = "rev" + "iewer_scorecard.json"
 STALE_ARTIFACT_REMOTE_FILES = [
     "results/omni_finetune/adapter_lora/tokenizer.json",
     "results/omni_finetune/hf_upload/tokenizer.json",
+    "results/omni_finetune/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/eval.log",
+    "results/omni_finetune/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/eval.pid",
     "viewer/dataset_viewer_summary.jsonl",
     LEGACY_SCORECARD_MD,
     "docs/data/" + LEGACY_PACKET_JSON,
@@ -64,12 +70,16 @@ STALE_SPACE_REMOTE_FILES = [
     LEGACY_SCORECARD_MD,
     "data/" + LEGACY_PACKET_JSON,
     "data/" + LEGACY_SCORECARD_JSON,
+    "results/omni_finetune/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/eval.log",
+    "results/omni_finetune/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/eval.pid",
 ]
 
 STALE_MODEL_REMOTE_FILES = [
     LEGACY_SCORECARD_MD,
     "metrics/" + LEGACY_PACKET_JSON,
     "metrics/" + LEGACY_SCORECARD_JSON,
+    "results/omni_finetune/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/eval.log",
+    "results/omni_finetune/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/eval.pid",
 ]
 
 ARTIFACT_BINARY_ALLOWLIST = [
