@@ -23,6 +23,7 @@ DEFAULT_REMOTE_WORKSPACE = os.environ.get("ROPEDIA_REMOTE_WORKSPACE", "")
 DEFAULT_DATASET_RUN_ID = "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605"
 DEFAULT_TRAIN_RUN_ID = "xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora"
 DEFAULT_EVAL_RUN_ID = f"{DEFAULT_TRAIN_RUN_ID}_eval_test_full"
+DEFAULT_EVAL_SMOKE_RUN_ID = f"{DEFAULT_TRAIN_RUN_ID}_eval_smoke8"
 
 
 def parse_args() -> argparse.Namespace:
@@ -34,6 +35,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--dataset-run-id", default=DEFAULT_DATASET_RUN_ID)
     parser.add_argument("--train-run-id", default=DEFAULT_TRAIN_RUN_ID)
     parser.add_argument("--eval-run-id", default=DEFAULT_EVAL_RUN_ID)
+    parser.add_argument("--eval-smoke-run-id", default=DEFAULT_EVAL_SMOKE_RUN_ID)
     parser.add_argument("--execute", action="store_true", help="run rsync; otherwise print the planned copy set")
     parser.add_argument("--include-adapter", action="store_true", help="also copy checkpoints/<train_run_id>/adapter_lora")
     parser.add_argument("--allow-incomplete", action="store_true", help="allow collection before verified package status is present")
@@ -55,8 +57,10 @@ eval_run = {args.eval_run_id!r}
 base = root / "results" / "omni_finetune"
 package_dir = base / "verified_public" / eval_run
 summary_path = package_dir / "verified_result_summary.json"
-validation_path = base / dataset / f"validation_eval_{{eval_run}}.json"
+training_validation_path = base / dataset / f"validation_training_{{train}}.json"
+eval_validation_path = base / dataset / f"validation_eval_{{eval_run}}.json"
 package_watch = base / dataset / f"package_watch_{{eval_run}}.jsonl"
+watch_status = base / dataset / f"watch_{{train}}.jsonl"
 train_progress = base / train / "progress.jsonl"
 def last_jsonl(path):
     if not path.exists():
@@ -78,8 +82,11 @@ print(json.dumps({{
     "summary_path": str(summary_path),
     "summary_exists": summary_path.exists(),
     "summary_status": summary.get("status") if summary else None,
-    "validation_path": str(validation_path),
-    "validation_exists": validation_path.exists(),
+    "training_validation_path": str(training_validation_path),
+    "training_validation_exists": training_validation_path.exists(),
+    "eval_validation_path": str(eval_validation_path),
+    "eval_validation_exists": eval_validation_path.exists(),
+    "watch_status_last": last_jsonl(watch_status),
     "package_watch_last": last_jsonl(package_watch),
     "train_progress_last": last_jsonl(train_progress),
 }}, indent=2))
@@ -94,6 +101,10 @@ def planned_paths(args: argparse.Namespace) -> list[tuple[str, Path]]:
     result_root = Path("results/omni_finetune")
     paths: list[tuple[str, Path]] = [
         (
+            f"{remote_base}/results/omni_finetune/{args.dataset_run_id}/validation_training_{args.train_run_id}.json",
+            workspace / result_root / args.dataset_run_id / f"validation_training_{args.train_run_id}.json",
+        ),
+        (
             f"{remote_base}/results/omni_finetune/{args.dataset_run_id}/validation_eval_{args.eval_run_id}.json",
             workspace / result_root / args.dataset_run_id / f"validation_eval_{args.eval_run_id}.json",
         ),
@@ -102,12 +113,40 @@ def planned_paths(args: argparse.Namespace) -> list[tuple[str, Path]]:
             workspace / result_root / args.dataset_run_id / f"adapter_shape_check_{args.train_run_id}.json",
         ),
         (
+            f"{remote_base}/results/omni_finetune/{args.dataset_run_id}/validate_training_{args.train_run_id}.log",
+            workspace / result_root / args.dataset_run_id / f"validate_training_{args.train_run_id}.log",
+        ),
+        (
+            f"{remote_base}/results/omni_finetune/{args.dataset_run_id}/validate_eval_{args.eval_run_id}.log",
+            workspace / result_root / args.dataset_run_id / f"validate_eval_{args.eval_run_id}.log",
+        ),
+        (
+            f"{remote_base}/results/omni_finetune/{args.dataset_run_id}/eval_{args.eval_smoke_run_id}.log",
+            workspace / result_root / args.dataset_run_id / f"eval_{args.eval_smoke_run_id}.log",
+        ),
+        (
+            f"{remote_base}/results/omni_finetune/{args.dataset_run_id}/eval_{args.eval_run_id}.log",
+            workspace / result_root / args.dataset_run_id / f"eval_{args.eval_run_id}.log",
+        ),
+        (
             f"{remote_base}/results/omni_finetune/{args.dataset_run_id}/watch_{args.train_run_id}.jsonl",
             workspace / result_root / args.dataset_run_id / f"watch_{args.train_run_id}.jsonl",
         ),
         (
+            f"{remote_base}/results/omni_finetune/{args.dataset_run_id}/watch_{args.train_run_id}.log",
+            workspace / result_root / args.dataset_run_id / f"watch_{args.train_run_id}.log",
+        ),
+        (
             f"{remote_base}/results/omni_finetune/{args.dataset_run_id}/package_watch_{args.eval_run_id}.jsonl",
             workspace / result_root / args.dataset_run_id / f"package_watch_{args.eval_run_id}.jsonl",
+        ),
+        (
+            f"{remote_base}/results/omni_finetune/{args.dataset_run_id}/package_watch_{args.eval_run_id}.log",
+            workspace / result_root / args.dataset_run_id / f"package_watch_{args.eval_run_id}.log",
+        ),
+        (
+            f"{remote_base}/results/omni_finetune/{args.dataset_run_id}/audit_verified_public_{args.eval_run_id}.json",
+            workspace / result_root / args.dataset_run_id / f"audit_verified_public_{args.eval_run_id}.json",
         ),
         (
             f"{remote_base}/results/omni_finetune/{args.train_run_id}/",
