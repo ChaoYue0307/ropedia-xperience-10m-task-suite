@@ -93,6 +93,55 @@ ARTIFACT_VIEWER_CONFIG = """configs:
         path: viewer/episode_windows.jsonl
 """
 
+SPACE_CARD_METADATA = """---
+title: Ropedia Xperience-10M Task Suite
+sdk: static
+app_file: index.html
+license: mit
+colorFrom: blue
+colorTo: green
+pinned: false
+short_description: Xperience-10M embodied-AI task-suite dashboard.
+tags:
+  - embodied-ai
+  - robotics
+  - multimodal
+  - xperience-10m
+  - evaluation
+  - qwen3-omni
+  - cosmos
+datasets:
+  - ropedia-ai/xperience-10m-sample
+  - ropedia-ai/xperience-10m
+models:
+  - cy0307/ropedia-xperience-10m-task-baselines
+  - cy0307/ropedia-qwen3-omni-lora-128ep
+---
+"""
+
+BASELINE_MODEL_CARD_METADATA = """---
+license: mit
+library_name: pytorch
+tags:
+  - embodied-ai
+  - robotics
+  - multimodal
+  - xperience-10m
+  - baseline
+  - evaluation
+  - qwen3-omni
+  - cosmos
+datasets:
+  - ropedia-ai/xperience-10m-sample
+  - ropedia-ai/xperience-10m
+metrics:
+  - accuracy
+  - f1
+  - precision
+  - recall
+---
+"""
+
 
 def load_json(path: Path) -> dict:
     if not path.exists():
@@ -219,6 +268,16 @@ def ensure_artifact_dataset_viewer_config(hf_root: Path) -> None:
             readme_path.write_text("---\n" + metadata + "---" + parts[2], encoding="utf-8")
             return
     readme_path.write_text(ARTIFACT_VIEWER_CONFIG + "\n" + readme, encoding="utf-8")
+
+
+def ensure_repo_card_metadata(readme_path: Path, metadata: str) -> None:
+    """Avoid Hub card warnings when staged cards mirror plain project READMEs."""
+    if not readme_path.exists():
+        return
+    readme = readme_path.read_text(encoding="utf-8")
+    if readme.startswith("---\n"):
+        return
+    readme_path.write_text(metadata.rstrip() + "\n\n" + readme, encoding="utf-8")
 
 
 def parse_args() -> argparse.Namespace:
@@ -351,6 +410,8 @@ def main() -> int:
     prune_generated_artifacts(hf_root)
     prune_artifact_bundle(hf_root)
     ensure_artifact_dataset_viewer_config(hf_root)
+    ensure_repo_card_metadata(hf_root / "space/README.md", SPACE_CARD_METADATA)
+    ensure_repo_card_metadata(hf_root / "model/README.md", BASELINE_MODEL_CARD_METADATA)
 
     token = args.token or get_token() or getpass.getpass("HF token: ").strip()
     if not token:
