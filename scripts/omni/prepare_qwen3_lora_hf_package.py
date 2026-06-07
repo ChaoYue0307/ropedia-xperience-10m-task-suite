@@ -16,12 +16,12 @@ ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_VERIFIED_SUMMARY = (
     ROOT
     / "results/omni_finetune/verified_public/"
-    / "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full/"
+    / "xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full/"
     / "verified_result_summary.json"
 )
 DEFAULT_ADAPTER_DIR = (
     ROOT
-    / "checkpoints/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora/adapter_lora"
+    / "checkpoints/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora/adapter_lora"
 )
 DEFAULT_OUTPUT_DIR = ROOT / "results/omni_finetune/hf_upload_qwen3_128ep_full"
 COPY_NAMES = [
