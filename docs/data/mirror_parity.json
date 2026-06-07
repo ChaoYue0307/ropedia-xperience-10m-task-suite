@@ -1,9 +1,9 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-07T19:37:03+00:00",
+  "generated_at_utc": "2026-06-07T20:48:16+00:00",
   "hf_root": "hf_publish",
   "summary": {
-    "group_count": 242,
+    "group_count": 243,
     "failure_count": 0,
     "failures_by_surface": {}
   },
@@ -1855,6 +1855,31 @@
       "failures": []
     },
     {
+      "name": "scripts/omni/defer_cosmos3_super_after_qwen_v4.sh",
+      "status": "pass",
+      "local": {
+        "path": "repo:scripts/omni/defer_cosmos3_super_after_qwen_v4.sh",
+        "exists": true,
+        "bytes": 1478,
+        "sha256": "2ad7cc5ab8704df65e9cfff7b247131731eb821fab01b2b1a48f633f06b54925"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "hf_artifacts:scripts/omni/defer_cosmos3_super_after_qwen_v4.sh",
+          "exists": true,
+          "bytes": 1478,
+          "sha256": "2ad7cc5ab8704df65e9cfff7b247131731eb821fab01b2b1a48f633f06b54925"
+        },
+        "hf_model": {
+          "path": "hf_model:scripts/omni/defer_cosmos3_super_after_qwen_v4.sh",
+          "exists": true,
+          "bytes": 1478,
+          "sha256": "2ad7cc5ab8704df65e9cfff7b247131731eb821fab01b2b1a48f633f06b54925"
+        }
+      },
+      "failures": []
+    },
+    {
       "name": "scripts/omni/export_cosmos3_camera_pose_targets.py",
       "status": "pass",
       "local": {
@@ -2360,21 +2385,21 @@
       "local": {
         "path": "repo:scripts/validate_mirror_parity.py",
         "exists": true,
-        "bytes": 15973,
-        "sha256": "10eb77216f8f0672f0cae9f90214fd67f450713a117ee2d02caed5e6448e95ed"
+        "bytes": 16022,
+        "sha256": "27f308113f9d21c0f7b9203ff29c1422d23d84f14acd659c985633a211761c44"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 15973,
-          "sha256": "10eb77216f8f0672f0cae9f90214fd67f450713a117ee2d02caed5e6448e95ed"
+          "bytes": 16022,
+          "sha256": "27f308113f9d21c0f7b9203ff29c1422d23d84f14acd659c985633a211761c44"
         },
         "hf_model": {
           "path": "hf_model:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 15973,
-          "sha256": "10eb77216f8f0672f0cae9f90214fd67f450713a117ee2d02caed5e6448e95ed"
+          "bytes": 16022,
+          "sha256": "27f308113f9d21c0f7b9203ff29c1422d23d84f14acd659c985633a211761c44"
         }
       },
       "failures": []

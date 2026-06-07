@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-07T19:34:59+00:00",
+  "generated_at_utc": "2026-06-07T20:48:21+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -182,8 +182,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 703,
-      "text_file_count": 598,
+      "file_count": 704,
+      "text_file_count": 599,
       "largest_file": {
         "path": "tmp/omni_128_dataset_fetch/dataset.jsonl",
         "bytes": 582271586
@@ -204,8 +204,8 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 771,
-      "text_file_count": 645,
+      "file_count": 772,
+      "text_file_count": 646,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978
@@ -215,8 +215,8 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 959,
-      "text_file_count": 798,
+      "file_count": 960,
+      "text_file_count": 799,
       "largest_file": {
         "path": "pytorch_model.bin",
         "bytes": 93495480
