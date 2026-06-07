@@ -311,7 +311,7 @@ MARKER_CHECKS = [
             "99.78%",
             "omni_model_comparison.json",
             "ropedia-qwen3-omni-lora-128ep",
-            "Cosmos3-Nano compatibility result",
+            "Cosmos3-Nano has a verified future-window compatibility package",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
@@ -340,7 +340,7 @@ MARKER_CHECKS = [
             "99.78%",
             "omni_model_comparison.json",
             "ropedia-qwen3-omni-lora-128ep",
-            "Cosmos3-Nano compatibility result",
+            "Cosmos3-Nano has a verified future-window compatibility package",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
