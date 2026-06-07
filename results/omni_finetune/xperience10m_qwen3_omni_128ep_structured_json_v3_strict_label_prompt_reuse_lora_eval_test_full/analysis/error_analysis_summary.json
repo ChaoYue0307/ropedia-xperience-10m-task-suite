@@ -1,0 +1,456 @@
+{
+  "status": "pass",
+  "model_label": "Qwen3-Omni strict-label v3 raw eval",
+  "source_package": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval",
+  "source_eval_dir": "results/omni_finetune/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full",
+  "source_episode_manifest": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/dataset/episode_manifest.json",
+  "source_prediction_rows": 448,
+  "metrics_json_validity_rate": 1.0,
+  "computed": {
+    "group": "overall",
+    "samples": 448,
+    "parsed_prediction_rate": 1.0,
+    "action_exact_rate": 0.03125,
+    "subtask_exact_rate": 0.002232142857142857,
+    "transition_exact_rate": 0.9732142857142857,
+    "next_action_exact_rate": 0.03125,
+    "contact_exact_rate": 0.7209821428571429,
+    "object_precision": 0.31554524361948955,
+    "object_recall": 0.2986822840409956,
+    "object_f1": 0.30688228657389993
+  },
+  "worst_episode_groups": [
+    {
+      "group": "a1012a57-385e-45a9-8a59-694a26fe92a5__ep1",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.90625,
+      "object_precision": 0.6103896103896104,
+      "object_recall": 0.47474747474747475,
+      "object_f1": 0.5340909090909091
+    },
+    {
+      "group": "9c553886-83c5-4dc4-be5c-dcb269b3a771__ep2",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.03125,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 1.0,
+      "object_precision": 0.3488372093023256,
+      "object_recall": 0.39823008849557523,
+      "object_f1": 0.37190082644628103
+    },
+    {
+      "group": "ba045ed4-ef25-404d-b756-8dcbd45b18fa__ep2",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.90625,
+      "object_precision": 0.08602150537634409,
+      "object_recall": 0.13114754098360656,
+      "object_f1": 0.1038961038961039
+    },
+    {
+      "group": "5399ef86-4df9-49bc-809f-8f4f92f9e659__ep6",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 1.0,
+      "object_precision": 0.0,
+      "object_recall": 0.0,
+      "object_f1": 0.0
+    },
+    {
+      "group": "877779cd-25f3-4293-a3c4-39067dd9558c__ep4",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.40625,
+      "object_precision": 0.3409090909090909,
+      "object_recall": 0.3225806451612903,
+      "object_f1": 0.3314917127071823
+    },
+    {
+      "group": "1796b943-caad-43c6-b9bd-80b8d601f37d__ep1",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.5,
+      "object_precision": 0.15476190476190477,
+      "object_recall": 0.11926605504587157,
+      "object_f1": 0.13471502590673576
+    },
+    {
+      "group": "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.03125,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.96875,
+      "next_action_exact_rate": 0.03125,
+      "contact_exact_rate": 0.625,
+      "object_precision": 0.18604651162790697,
+      "object_recall": 0.2,
+      "object_f1": 0.19277108433734938
+    },
+    {
+      "group": "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1",
+      "samples": 32,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.03125,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.84375,
+      "next_action_exact_rate": 0.03125,
+      "contact_exact_rate": 0.6875,
+      "object_precision": 0.075,
+      "object_recall": 0.08,
+      "object_f1": 0.07741935483870968
+    }
+  ],
+  "action_family_groups": [
+    {
+      "group": "cleaning",
+      "samples": 8,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.875,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.625,
+      "object_precision": 0.038461538461538464,
+      "object_recall": 0.05,
+      "object_f1": 0.043478260869565216
+    },
+    {
+      "group": "locomotion",
+      "samples": 23,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.43478260869565216,
+      "object_precision": 0.15873015873015872,
+      "object_recall": 0.136986301369863,
+      "object_f1": 0.14705882352941177
+    },
+    {
+      "group": "small_object_sorting",
+      "samples": 87,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9885057471264368,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.6551724137931034,
+      "object_precision": 0.27615062761506276,
+      "object_recall": 0.26720647773279355,
+      "object_f1": 0.2716049382716049
+    },
+    {
+      "group": "other",
+      "samples": 94,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.010638297872340425,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9574468085106383,
+      "next_action_exact_rate": 0.010638297872340425,
+      "contact_exact_rate": 0.6595744680851063,
+      "object_precision": 0.28044280442804426,
+      "object_recall": 0.2857142857142857,
+      "object_f1": 0.28305400372439476
+    },
+    {
+      "group": "phone_use",
+      "samples": 51,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0392156862745098,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9411764705882353,
+      "next_action_exact_rate": 0.0392156862745098,
+      "contact_exact_rate": 0.6470588235294118,
+      "object_precision": 0.49206349206349204,
+      "object_recall": 0.36257309941520466,
+      "object_f1": 0.41750841750841755
+    },
+    {
+      "group": "paper_cardboard_craft",
+      "samples": 142,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.04929577464788732,
+      "subtask_exact_rate": 0.007042253521126761,
+      "transition_exact_rate": 0.9859154929577465,
+      "next_action_exact_rate": 0.04929577464788732,
+      "contact_exact_rate": 0.8802816901408451,
+      "object_precision": 0.36075949367088606,
+      "object_recall": 0.351129363449692,
+      "object_f1": 0.35587929240374605
+    },
+    {
+      "group": "retail_stocking",
+      "samples": 38,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.07894736842105263,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9736842105263158,
+      "next_action_exact_rate": 0.07894736842105263,
+      "contact_exact_rate": 0.7631578947368421,
+      "object_precision": 0.21428571428571427,
+      "object_recall": 0.20454545454545456,
+      "object_f1": 0.20930232558139536
+    },
+    {
+      "group": "food_kitchen",
+      "samples": 5,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.2,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.2,
+      "contact_exact_rate": 0.4,
+      "object_precision": 0.4,
+      "object_recall": 0.2857142857142857,
+      "object_f1": 0.3333333333333333
+    }
+  ],
+  "train_seen_groups": [
+    {
+      "group": "unseen_in_train",
+      "samples": 317,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.00946372239747634,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9779179810725552,
+      "next_action_exact_rate": 0.00946372239747634,
+      "contact_exact_rate": 0.694006309148265,
+      "object_precision": 0.2781954887218045,
+      "object_recall": 0.2767094017094017,
+      "object_f1": 0.27745045527584367
+    },
+    {
+      "group": "seen_in_train",
+      "samples": 131,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.08396946564885496,
+      "subtask_exact_rate": 0.007633587786259542,
+      "transition_exact_rate": 0.9618320610687023,
+      "next_action_exact_rate": 0.08396946564885496,
+      "contact_exact_rate": 0.7862595419847328,
+      "object_precision": 0.4116022099447514,
+      "object_recall": 0.34651162790697676,
+      "object_f1": 0.3762626262626263
+    }
+  ],
+  "missing_modality_groups": [
+    {
+      "group": "rrd_missing_only_required_modalities_present",
+      "samples": 448,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.03125,
+      "subtask_exact_rate": 0.002232142857142857,
+      "transition_exact_rate": 0.9732142857142857,
+      "next_action_exact_rate": 0.03125,
+      "contact_exact_rate": 0.7209821428571429,
+      "object_precision": 0.31554524361948955,
+      "object_recall": 0.2986822840409956,
+      "object_f1": 0.30688228657389993
+    }
+  ],
+  "object_category_groups": [
+    {
+      "group": "no_object_label",
+      "samples": 2,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 1.0,
+      "object_precision": 0.0,
+      "object_recall": 0.0,
+      "object_f1": 0.0
+    },
+    {
+      "group": "cleaning",
+      "samples": 8,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.0,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 1.0,
+      "next_action_exact_rate": 0.0,
+      "contact_exact_rate": 0.75,
+      "object_precision": 0.05,
+      "object_recall": 0.047619047619047616,
+      "object_f1": 0.04878048780487805
+    },
+    {
+      "group": "craft_small_object",
+      "samples": 106,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.018867924528301886,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9905660377358491,
+      "next_action_exact_rate": 0.018867924528301886,
+      "contact_exact_rate": 0.6132075471698113,
+      "object_precision": 0.2604166666666667,
+      "object_recall": 0.24193548387096775,
+      "object_f1": 0.25083612040133774
+    },
+    {
+      "group": "furniture_room",
+      "samples": 96,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.020833333333333332,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9895833333333334,
+      "next_action_exact_rate": 0.020833333333333332,
+      "contact_exact_rate": 0.5520833333333334,
+      "object_precision": 0.3046594982078853,
+      "object_recall": 0.26813880126182965,
+      "object_f1": 0.28523489932885904
+    },
+    {
+      "group": "tool_stationery",
+      "samples": 138,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.021739130434782608,
+      "subtask_exact_rate": 0.007246376811594203,
+      "transition_exact_rate": 0.9782608695652174,
+      "next_action_exact_rate": 0.021739130434782608,
+      "contact_exact_rate": 0.8333333333333334,
+      "object_precision": 0.45278969957081544,
+      "object_recall": 0.4279918864097363,
+      "object_f1": 0.4400417101147028
+    },
+    {
+      "group": "other_object",
+      "samples": 135,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.022222222222222223,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9703703703703703,
+      "next_action_exact_rate": 0.022222222222222223,
+      "contact_exact_rate": 0.674074074074074,
+      "object_precision": 0.22879177377892032,
+      "object_recall": 0.2119047619047619,
+      "object_f1": 0.2200247218788628
+    },
+    {
+      "group": "food_kitchen",
+      "samples": 56,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.03571428571428571,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9464285714285714,
+      "next_action_exact_rate": 0.03571428571428571,
+      "contact_exact_rate": 0.7857142857142857,
+      "object_precision": 0.3875,
+      "object_recall": 0.27555555555555555,
+      "object_f1": 0.3220779220779221
+    },
+    {
+      "group": "phone_device",
+      "samples": 162,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.043209876543209874,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9567901234567902,
+      "next_action_exact_rate": 0.043209876543209874,
+      "contact_exact_rate": 0.6296296296296297,
+      "object_precision": 0.44353182751540043,
+      "object_recall": 0.36180904522613067,
+      "object_f1": 0.3985239852398524
+    },
+    {
+      "group": "paper_cardboard",
+      "samples": 261,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.04597701149425287,
+      "subtask_exact_rate": 0.0038314176245210726,
+      "transition_exact_rate": 0.9770114942528736,
+      "next_action_exact_rate": 0.04597701149425287,
+      "contact_exact_rate": 0.7739463601532567,
+      "object_precision": 0.3888213851761847,
+      "object_recall": 0.3669724770642202,
+      "object_f1": 0.3775811209439528
+    },
+    {
+      "group": "retail_container",
+      "samples": 101,
+      "parsed_prediction_rate": 1.0,
+      "action_exact_rate": 0.06930693069306931,
+      "subtask_exact_rate": 0.0,
+      "transition_exact_rate": 0.9603960396039604,
+      "next_action_exact_rate": 0.06930693069306931,
+      "contact_exact_rate": 0.8217821782178217,
+      "object_precision": 0.30833333333333335,
+      "object_recall": 0.22356495468277945,
+      "object_f1": 0.25919439579684767
+    }
+  ],
+  "invalid_json_examples": [],
+  "object_overgeneration_examples": [],
+  "modality_missing_by_episode": {
+    "8a8e1b3c-607e-4ada-b3fd-fa639727e92c__ep1": [
+      "visualization.rrd"
+    ],
+    "a1012a57-385e-45a9-8a59-694a26fe92a5__ep1": [
+      "visualization.rrd"
+    ],
+    "33f7ae08-ac1d-4321-9cb9-eca79016b359__ep1": [
+      "visualization.rrd"
+    ],
+    "9c553886-83c5-4dc4-be5c-dcb269b3a771__ep2": [
+      "visualization.rrd"
+    ],
+    "34f07a04-eb37-45a3-95ec-189ed5f4a85b__ep5": [
+      "visualization.rrd"
+    ],
+    "b9dd769b-e31a-4fdb-945e-5a60db6487b0__ep2": [
+      "visualization.rrd"
+    ],
+    "ba045ed4-ef25-404d-b756-8dcbd45b18fa__ep2": [
+      "visualization.rrd"
+    ],
+    "4b02bb38-384a-438a-b5f9-6131d85c34b0__ep1": [
+      "visualization.rrd"
+    ],
+    "5399ef86-4df9-49bc-809f-8f4f92f9e659__ep6": [
+      "visualization.rrd"
+    ],
+    "b750fab3-7fbb-43a0-b451-c64c4d4a64da__ep1": [
+      "visualization.rrd"
+    ],
+    "877779cd-25f3-4293-a3c4-39067dd9558c__ep4": [
+      "visualization.rrd"
+    ],
+    "1796b943-caad-43c6-b9bd-80b8d601f37d__ep1": [
+      "visualization.rrd"
+    ],
+    "ba18b7c1-21ff-45da-8452-41acce7fc8de__ep2": [
+      "visualization.rrd"
+    ],
+    "b6579cb5-0a71-4ca6-8808-1e2700be05c7__ep3": [
+      "visualization.rrd"
+    ]
+  },
+  "interpretation": "The diagnostic pilot is dominated by invalid or weak structured outputs and exact-label failures. These tables identify where to tighten JSON constraints, action/subtask target formatting, object vocabularies, and missing-modality robustness before claiming stronger model quality."
+}
