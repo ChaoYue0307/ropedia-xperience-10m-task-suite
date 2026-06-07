@@ -30,6 +30,14 @@ PRIMARY_METRICS = {
     "misalignment_detection": "f1",
 }
 
+QWEN_RUN_PRIORITY = {
+    "xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full": 400,
+    "xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full": 300,
+    "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full": 200,
+    "xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full": 100,
+    "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval": 50,
+}
+
 TASK_DISPLAY_NAMES = {
     "timeline_action": "Action Recognition",
     "timeline_subtask": "Procedure Step Recognition",
@@ -244,6 +252,17 @@ def model_branch_summary() -> dict[str, Any]:
     }
 
 
+def qwen_current_rank(branch: dict[str, Any]) -> tuple[int, float, str]:
+    branch_id = str(branch.get("id") or "")
+    metrics = branch.get("primary_metrics", {}) if isinstance(branch.get("primary_metrics"), dict) else {}
+    json_validity = metrics.get("json_validity_rate")
+    return (
+        QWEN_RUN_PRIORITY.get(branch_id, 0),
+        float(json_validity) if isinstance(json_validity, (int, float)) else -1.0,
+        branch_id,
+    )
+
+
 def qwen3_smoke_entry() -> dict[str, Any]:
     path = ROOT / "results/omni_exploration/qwen3_adapter_smoke/metrics.json"
     metrics = load_json(path)
@@ -432,7 +451,7 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
     cosmos_super_action_contract = cosmos3_super_action_contract_entry()
     cosmos_super_packer = cosmos3_super_packer_entry()
     if qwen_branches:
-        current_qwen = max(qwen_branches, key=lambda item: item.get("primary_metrics", {}).get("json_validity_rate") or -1)
+        current_qwen = max(qwen_branches, key=qwen_current_rank)
         for branch in qwen_branches:
             branch["is_current"] = branch.get("id") == current_qwen.get("id")
             branch["weights_repository"] = (
@@ -579,13 +598,13 @@ def build_report() -> dict[str, Any]:
         "model_group_reading_notes": [
             "Use model_groups when comparing one-episode and 128-episode artifacts within the same model family.",
             "Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.",
-            "Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; only the final 128-episode adapter belongs in the Qwen LoRA model repo.",
+            "Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; the newest verified full-eval 128-episode adapter belongs in the Qwen LoRA model repo.",
             "Cosmos3-Nano has a 128-episode future-window compatibility package.",
-            "Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a camera-pose forward-dynamics contract audit; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.",
+            "Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a camera-pose forward-dynamics contract audit; create a separate Cosmos model repo only after the queued overfit or later full run produces real Cosmos adapter/fine-tuned weights.",
         ],
         "pending": [
-            "Use the final Qwen3 full-eval package as the current Qwen result; older Qwen package rows remain historical diagnostics for comparison.",
-            "Promote Cosmos3 from Nano compatibility, Super base-weight evaluation, and the camera-pose forward-dynamics contract to true fine-tuning only after the pipeline-loaded packer check and one-sample overfit produce new weights.",
+            "Replace the current Qwen3 row with the active v4 4-epoch full-eval package only after its verified public summary exists; older Qwen package rows remain historical diagnostics for comparison.",
+            "Promote Cosmos3 from Nano compatibility, Super base-weight evaluation, and the camera-pose forward-dynamics contract to true fine-tuning only after the queued Cosmos3-Super forward-dynamics overfit or later full run produces new weights.",
         ],
     }
 
