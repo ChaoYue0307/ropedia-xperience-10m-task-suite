@@ -158,23 +158,47 @@ def training_progress_summary(rows: list[dict]) -> dict:
     if not rows:
         return {}
     setup = next((row for row in rows if row.get("event") == "setup_done"), {})
+    train_loop = next((row for row in rows if row.get("event") == "train_loop_start"), {})
     train_steps = [row for row in rows if row.get("event") == "train_step"]
     latest = rows[-1]
+    rank0_steps_per_epoch = int(
+        setup.get("rank0_samples_per_epoch")
+        or train_loop.get("rank_samples_per_epoch")
+        or 0
+    )
+    epochs = int(train_loop.get("epochs") or 0)
+    total_rank0_steps = rank0_steps_per_epoch * epochs if rank0_steps_per_epoch and epochs else rank0_steps_per_epoch
     summary = {
         "latest_event": latest.get("event"),
         "rows": len(rows),
         "num_processes": setup.get("num_processes"),
         "num_train_samples": setup.get("num_train_samples"),
         "rank0_samples_per_epoch": setup.get("rank0_samples_per_epoch"),
+        "epochs": epochs or None,
     }
     if train_steps:
         last_step = train_steps[-1]
-        total = int(setup.get("rank0_samples_per_epoch") or 0)
         current = int(last_step.get("global_step") or 0)
+        rank0_seen = int(last_step.get("rank0_seen") or 0)
+        epoch_percent = (
+            round((rank0_seen / rank0_steps_per_epoch) * 100, 2)
+            if rank0_steps_per_epoch
+            else None
+        )
+        overall_percent = (
+            round((current / total_rank0_steps) * 100, 2)
+            if total_rank0_steps
+            else None
+        )
         summary.update({
+            "current_epoch": last_step.get("epoch"),
             "global_step": current,
-            "total_rank0_steps": total or None,
-            "percent_complete": round((current / total) * 100, 2) if total else None,
+            "rank0_seen_this_epoch": rank0_seen,
+            "rank0_steps_per_epoch": rank0_steps_per_epoch or None,
+            "total_rank0_steps": total_rank0_steps or None,
+            "percent_complete": overall_percent,
+            "overall_percent_complete": overall_percent,
+            "epoch_percent_complete": epoch_percent,
             "latest_rank0_loss": last_step.get("rank0_batch_loss"),
         })
         if len(train_steps) >= 2:
@@ -182,7 +206,8 @@ def training_progress_summary(rows: list[dict]) -> dict:
             elapsed = float(last_step.get("timestamp", 0)) - float(first.get("timestamp", 0))
             step_delta = int(last_step.get("global_step", 0)) - int(first.get("global_step", 0))
             seconds_per_step = elapsed / step_delta if step_delta > 0 else None
-            remaining = (total - current) * seconds_per_step if total and seconds_per_step else None
+            remaining_steps = max(0, total_rank0_steps - current) if total_rank0_steps else None
+            remaining = remaining_steps * seconds_per_step if remaining_steps is not None and seconds_per_step else None
             summary["seconds_per_step"] = round(seconds_per_step, 3) if seconds_per_step else None
             summary["eta"] = format_duration(remaining)
     return summary
