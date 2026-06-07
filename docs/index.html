@@ -2409,7 +2409,7 @@
           <article class="roadmap-card" data-status="next">
             <span class="roadmap-status">next</span>
             <h3>Foundation-Model Selection Matrix</h3>
-            <p>Keep Qwen3-Omni as the first trainable held-out pilot, add Cosmos 3 for world modeling, and stage policy candidates after action targets are explicit.</p>
+            <p>Keep Qwen3-Omni as the first trainable held-out pilot, use Cosmos 3 for world modeling and action-LoRA trainer development, and stage policy candidates after robot-compatible action targets are explicit.</p>
             <div class="roadmap-meta">
               <strong>Entry</strong><p>Completed 128-episode preparation or a smaller 3-8 episode preprocessing dry run.</p>
               <strong>Evidence</strong><p>Foundation model plan, source links, model-specific entry conditions, and evaluation additions.</p>
@@ -2488,8 +2488,8 @@
           <article class="artifact"><h3>Metric contract</h3><p>All 12 tasks list input, target, primary metric, minimal baseline score, and neural MLP score from committed result files.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target-side signals, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
           <article class="artifact"><h3>Audio ablation</h3><p>Audio and no-audio variants are evaluated across all 12 task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
-          <article class="artifact"><h3>Foundation branch selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 becomes the world-model branch, policy models wait for explicit action targets, and Xperience-native pretraining remains a later full-corpus goal.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
-          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. The selected multi-episode Qwen3-Omni final diagnostic result is verified and meets the JSON-validity target; Cosmos3-Nano has a verified future-window compatibility package; and Cosmos3-Super has a verified base-weight Reasoner JSON-task evaluation. The next stage is action/subtask error analysis, true Cosmos fine-tuning, and policy-target conversion.</p><a href="data/omni_model_comparison.json">result comparison</a></article>
+          <article class="artifact"><h3>Foundation branch selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 becomes the world-model branch with a camera-pose proxy action-target contract ready for trainer work, policy models wait for robot-compatible action targets, and Xperience-native pretraining remains a later full-corpus goal.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
+          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. The selected multi-episode Qwen3-Omni final diagnostic result is verified and meets the JSON-validity target; Cosmos3-Nano has a verified future-window compatibility package; and Cosmos3-Super has a verified base-weight JSON-task evaluation plus a camera-pose action-target contract audit. The next stage is action/subtask error analysis, true Cosmos fine-tuning, and policy-target conversion.</p><a href="data/omni_model_comparison.json">result comparison</a></article>
           <article class="artifact"><h3>Scale-up requirement</h3><p>Future Omni, Cosmos, and policy branches use the same episode split discipline, training metadata, held-out predictions, metrics, run report, and public-safe package gate.</p><a href="data/foundation_model_plan.json">scale-up status</a></article>
         </div>
       </div>
@@ -2542,7 +2542,7 @@
           <article class="evidence-card">
             <span class="status-pill">current plan</span>
             <h3>Foundation backbones are separated by role</h3>
-            <p>Qwen3-Omni stays first for held-out LoRA; Cosmos 3 is the world-model branch; OpenVLA/openpi/GR00T are policy candidates after action-space conversion; Xperience-native pretraining is the later full-corpus goal.</p>
+            <p>Qwen3-Omni stays first for held-out LoRA; Cosmos 3 is the world-model branch with camera-pose proxy action targets ready for trainer work; OpenVLA/openpi/GR00T are policy candidates after robot-compatible action conversion; Xperience-native pretraining is the later full-corpus goal.</p>
             <div class="evidence-links">
               <a href="data/foundation_model_plan.json">foundation model plan</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">plan doc</a>
@@ -2552,7 +2552,7 @@
           <article class="evidence-card">
             <span class="status-pill">verified diagnostic</span>
             <h3>Qwen3-Omni and Cosmos3 branches</h3>
-            <p>The selected 96/16/16 episode split produced verified Qwen3-Omni packages with 448 held-out test predictions. Cosmos3-Nano has 378 held-out future-window predictions, and Cosmos3-Super Reasoner has 448 held-out base-weight JSON-task predictions.</p>
+            <p>The selected 96/16/16 episode split produced verified Qwen3-Omni packages with 448 held-out test predictions. Cosmos3-Nano has 378 held-out future-window predictions, and Cosmos3-Super Reasoner has 448 held-out base-weight JSON-task predictions plus a camera-pose action-target contract audit.</p>
             <div class="evidence-links">
               <a href="data/omni_model_comparison.json">result comparison</a>
               <a href="data/omni_finetune_verified_result.json">pilot result</a>
@@ -3160,7 +3160,7 @@
               <article class="artifact"><h3>Foundation-model plan</h3><p>Backbone selection matrix covering Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, SmolVLA-style policy candidates, and the future Xperience-native pretraining goal.</p><a href="data/foundation_model_plan.json">foundation model plan</a></article>
               <article class="artifact"><h3>Multi-episode data access</h3><p>Public data-access path, selected 128-episode pilot plan, and preparation requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">data access</a></article>
               <article class="artifact"><h3>Qwen3-Omni LoRA group</h3><p>Separates the 1-episode sensor-adapter smoke test from the current 128-episode LoRA adapter package and older diagnostics.</p><a href="data/omni_model_comparison.json">Qwen group</a></article>
-              <article class="artifact"><h3>Cosmos3 groups</h3><p>Shows the verified Nano future-window compatibility package and the Super base-weight Reasoner JSON-task evaluation; neither is a new fine-tuned Cosmos weight release.</p><a href="data/omni_model_comparison.json">Cosmos groups</a></article>
+              <article class="artifact"><h3>Cosmos3 groups</h3><p>Shows the verified Nano future-window compatibility package, the Super base-weight Reasoner JSON-task evaluation, and the Super camera-pose action-target contract audit; none is a new fine-tuned Cosmos weight release.</p><a href="data/omni_model_comparison.json">Cosmos groups</a></article>
               <article class="artifact"><h3>Scale-up requirement</h3><p>Future runs need validation tracking, held-out predictions, quality-target reporting, and the same public-safe package gate.</p><a href="data/foundation_model_plan.json">training requirements</a></article>
               <article class="artifact"><h3>Xperience-native pretraining</h3><p>Future plan for a domain-specific embodied foundation model trained from scratch over full-corpus video, audio, geometry, motion, inertial, and language streams.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a></article>
             </div>

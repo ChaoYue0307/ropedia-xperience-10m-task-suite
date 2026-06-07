@@ -1,6 +1,6 @@
 # Omni Model Comparison
 
-Generated: `2026-06-07T17:02:35+00:00`
+Generated: `2026-06-07T17:09:29+00:00`
 
 Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and the two Cosmos3 targets answer different questions: Nano future-window retrieval versus Super structured JSON Reasoner evaluation.
 
@@ -16,7 +16,7 @@ Read the three rows this way:
 
 - Version 1 is the public-sample 12-task harness with minimal and neural heads.
 - Version 2 is the selected 128-episode same-split simple/NN baseline alignment.
-- Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, and Cosmos3-Super Reasoner is a base-weight JSON-task evaluation rather than a new fine-tuned weight release.
+- Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, and Cosmos3-Super Reasoner is a base-weight JSON-task evaluation; Cosmos3-Super now has a camera-pose action-target contract audit, but no new fine-tuned weight release.
 
 ## Model-Family Grouped View
 
@@ -24,7 +24,7 @@ Read the three rows this way:
 - Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.
 - Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; only the final 128-episode adapter belongs in the Qwen LoRA model repo.
 - Cosmos3-Nano has a 128-episode future-window compatibility package.
-- Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus an action-target contract audit; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.
+- Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a camera-pose action-target contract audit; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.
 
 ### Minimal and Neural Task Heads
 
@@ -72,7 +72,7 @@ Cosmos3-Super is now represented by a verified 448-window held-out Reasoner eval
 | --- | --- | --- | --- | --- | --- |
 | 1 episode | not_run | Cosmos3-Super One-Episode Fine-Tune |  |  |  |
 | readiness | blocked_until_trainer_implemented | Cosmos3-Super Training Readiness Probe | 3808 windows/samples | diffusers_runtime_supported=True, chat_sft_supported=False, weights_updated=False | `results/omni_finetune/xperience10m_cosmos3_super_training_readiness_20260607/training_readiness.json` |
-| action target contract | ready_for_action_lora_trainer | Cosmos3-Super Camera-Pose Target Audit | 119 episodes, 3808 windows/samples, 3808 valid action targets | domain=camera_pose, raw_action_dim=9, mode=forward_dynamics, weights_updated=False | `results/omni_finetune/xperience10m_cosmos3_super_training_contract_audit_camera_pose_20260608/training_contract_audit.json` |
+| action target contract | ready_for_action_lora_trainer | Cosmos3-Super Camera-Pose Target Audit | 3808 windows/samples | domain_name=camera_pose, raw_action_dim=9, mode=forward_dynamics, valid_action_targets=3808, weights_updated=False | `results/omni_finetune/xperience10m_cosmos3_super_training_contract_audit_camera_pose_20260608/training_contract_audit.json` |
 | 128 episode | verified current | Cosmos3-Super Reasoner | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.5112, action_macro_f1=0.0008, transition_accuracy=0.3683, contact_accuracy=0.3214 | `results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/verified_result_summary.json` |
 
 ## 128-Episode Task Baselines
