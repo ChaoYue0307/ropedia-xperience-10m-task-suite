@@ -31,5 +31,6 @@
 ## Next Steps
 
 - Export Cosmos-native action targets from Xperience annotations or mocap/pose/contact signals into the required cosmos_action_target schema.
-- Implement a one-sample batch packer that calls Cosmos3OmniPipeline.prepare_latents and the static segment helpers, then computes MSE/rectified-flow loss over preds_action for noisy action tokens.
+- Run the one-sample action batch packer that calls Cosmos3OmniPipeline.prepare_latents and the static segment helpers, then records whether the exported target supervises vision or action tokens.
+- For camera_pose forward_dynamics targets, use vision velocity/rectified-flow loss under action conditioning; add a policy/inverse target export before claiming supervised action-token prediction.
 - Run a one-episode overfit before scheduling a 96/16/16 Super LoRA run; only publish a Cosmos model repo after new adapter/checkpoint weights exist.

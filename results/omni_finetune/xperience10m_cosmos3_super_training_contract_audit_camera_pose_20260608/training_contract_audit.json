@@ -1,9 +1,9 @@
 {
   "run_id": "xperience10m_cosmos3_super_training_contract_audit_camera_pose_20260608",
   "run_kind": "cosmos3_super_training_contract_audit",
-  "started_at_unix": 1780851483.7160537,
-  "finished_at_unix": 1780851486.207544,
-  "elapsed_seconds": 2.491490602493286,
+  "started_at_unix": 1780853191.2988842,
+  "finished_at_unix": 1780853193.8374674,
+  "elapsed_seconds": 2.538583517074585,
   "workspace": "/home/cy/Ropedia/ropedia-episode-task-suite",
   "dataset_jsonl": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_camera_pose_targets_20260608/dataset_with_cosmos_actions.jsonl",
   "sample_limit": 0,
@@ -83,7 +83,7 @@
     "target_issue_examples": []
   },
   "decision": {
-    "status": "ready_for_cosmos3_super_action_lora",
+    "status": "ready_for_cosmos3_super_forward_dynamics_lora",
     "weights_updated": false,
     "blockers": [],
     "warnings": [],
@@ -110,11 +110,12 @@
         "Cosmos3OmniPipeline._prepare_vision_segment",
         "Cosmos3OmniPipeline._prepare_action_segment"
       ],
-      "forward_outputs": "Cosmos3OmniTransformer.forward returns (preds_vision, preds_sound, preds_action); action LoRA needs supervised loss against raw continuous action tokens, not JSON strings.",
+      "forward_outputs": "Cosmos3OmniTransformer.forward returns (preds_vision, preds_sound, preds_action). The current camera_pose forward_dynamics target uses raw actions as conditioning and should supervise preds_vision; supervised preds_action needs policy or inverse_dynamics targets.",
       "lora_targets": "use checkpoint-declared q_proj_moe_gen,k_proj_moe_gen,v_proj_moe_gen,o_proj_moe_gen unless a new audited config overrides them"
     },
     "next_steps": [
-      "Implement a one-sample batch packer that calls Cosmos3OmniPipeline.prepare_latents and the static segment helpers, then computes MSE/rectified-flow loss over preds_action for noisy action tokens.",
+      "Run the one-sample action batch packer that calls Cosmos3OmniPipeline.prepare_latents and the static segment helpers, then records whether the current target supervises vision or action tokens.",
+      "For the current camera_pose forward_dynamics target, implement a one-sample overfit with vision velocity/rectified-flow loss under action conditioning; add a policy/inverse target export before claiming supervised action-token prediction.",
       "Run a one-episode overfit before scheduling a 96/16/16 Super LoRA run; only publish a Cosmos model repo after new adapter/checkpoint weights exist."
     ]
   }
