@@ -559,11 +559,12 @@ Current status in this repo:
 - validation_samples_used: 512
 - held_out_eval: 448 test windows from 14 exported test episodes
 - final_train_loss / final_val_loss: 0.0277 / 0.0278
-- current_quality_target: JSON validity 99.78%, meeting the 98% target; action/subtask quality remains weak
+- current_quality_target: strict-label JSON validity 100.00%, meeting the 98% target; action/subtask quality remains weak
 - qwen3_lora_adapter_repo: https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep
 - 128_aligned_baselines: 12 task ids, 8 simple metadata/text baselines, 6 neural metadata/text baselines
 - cosmos3_nano_branch: verified Cosmos3-Nano future-window compatibility package, 378 held-out future-window predictions from 14 test episodes
 - cosmos3_super_branch: verified Cosmos3-Super Reasoner base-weight JSON-task evaluation, 448 held-out predictions from 14 test episodes; JSON validity 51.12%, action macro-F1 0.0008, contact accuracy 32.14%, transition accuracy 36.83%
+- cosmos3_super_training_readiness: runtime/GPU probe passes for Diffusers on 8 CUDA devices, but true fine-tuning is blocked until a Cosmos3-specific diffusion/action target packer and supervised loss are implemented; no Cosmos weights have been updated
 - gated dataset: available for selected multi-episode data preparation
 - source_discovery: `results/omni_finetune/source_discovery.json`
 - data_status: `results/omni_finetune/DATA_ACCESS_STATUS.md`
@@ -691,21 +692,10 @@ For hardware setups that can run multiple eval workers, the Qwen evaluator also
 supports deterministic sample shards:
 
 ```bash
-python scripts/omni/eval_qwen3_omni_lora.py \
-  --dataset-jsonl results/omni_finetune/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_dataset/dataset.jsonl \
-  --adapter-dir checkpoints/<train_run_id>/adapter_lora \
-  --run-id <eval_shard_0> \
-  --eval-split test \
-  --sample-offset 0 \
-  --sample-stride 4
-
-python scripts/omni/merge_qwen3_omni_eval_shards.py \
-  --dataset-jsonl results/omni_finetune/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_dataset/dataset.jsonl \
-  --output-dir results/omni_finetune/<merged_eval_run_id> \
-  --shard-dir results/omni_finetune/<eval_shard_0> \
-  --shard-dir results/omni_finetune/<eval_shard_1> \
-  --shard-dir results/omni_finetune/<eval_shard_2> \
-  --shard-dir results/omni_finetune/<eval_shard_3>
+CUDA_DEVICE_GROUPS="0,1 2,3 4,5 6,7" \
+SHARDS=4 \
+RUN_ID=<merged_eval_run_id> \
+scripts/omni/run_qwen3_omni_lora_eval_sharded.sh
 ```
 
 Only the merged eval directory should be validated and reported publicly,

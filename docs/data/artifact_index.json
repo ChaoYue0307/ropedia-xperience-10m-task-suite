@@ -1,19 +1,19 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-06T23:27:35+00:00",
+  "generated_at_utc": "2026-06-07T15:47:31+00:00",
   "status": "pass",
-  "artifact_count": 118,
+  "artifact_count": 129,
   "missing": [],
   "by_kind": {
     "project_path": 14,
     "scaleup_contract": 7,
-    "scaleup_status": 16,
+    "scaleup_status": 20,
     "publication_workflow": 5,
     "project_scope": 1,
     "source_alignment": 5,
     "evaluation_protocol": 3,
     "result_interpretation": 5,
-    "metrics_source": 14,
+    "metrics_source": 18,
     "website_data": 3,
     "visual_evidence": 7,
     "quality_gate": 12,
@@ -31,8 +31,8 @@
     "generated_figure_assets": 1,
     "citation": 1,
     "license": 1,
-    "verified_public_package": 4,
-    "publication_audit": 3
+    "verified_public_package": 6,
+    "publication_audit": 4
   },
   "artifacts": [
     {
@@ -65,8 +65,8 @@
       "surface": "repo_hf",
       "shows": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 9845,
-      "sha256": "e77d3facc533bffe35586e4de6500400352c07b4ca0df5ffc523855f38faa26e"
+      "bytes": 9926,
+      "sha256": "c7dfb7a45f0c1ea435c16d93208a82da4227336e34f56a96d4afa04fce42438c"
     },
     {
       "id": "project_status_json",
@@ -76,8 +76,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable copy of the current project status for website and HF mirrors.",
       "exists": true,
-      "bytes": 15049,
-      "sha256": "23873ed59f3a38f46e45b15a5965afbb1365d49eb359bd5089a4ba6bda990d3c"
+      "bytes": 16455,
+      "sha256": "3590ee1e09ecf819080a7714ea9629db305e1fd68c99a65f62bb65061c0d766c"
     },
     {
       "id": "research_roadmap",
@@ -87,8 +87,8 @@
       "surface": "repo_hf",
       "shows": "Defines the path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions.",
       "exists": true,
-      "bytes": 12194,
-      "sha256": "8773f240e362198b3a669d1ac848d6f1629df3a33e41bd76fba157cbf566479c"
+      "bytes": 12233,
+      "sha256": "020512aa647cef7d63eccf7bb8dd6cb86f0e5c457f3c0e3d5ef293e7b35a58bf"
     },
     {
       "id": "research_roadmap_json",
@@ -142,8 +142,8 @@
       "surface": "repo_hf",
       "shows": "Stores the implemented Qwen3-Omni LoRA contract and planned Cosmos-style world-model and VLA/policy branch contracts.",
       "exists": true,
-      "file_count": 3,
-      "bytes": 9203
+      "file_count": 4,
+      "bytes": 12613
     },
     {
       "id": "omni_backbone_registry_validator",
@@ -197,8 +197,8 @@
       "surface": "repo_hf",
       "shows": "Computes public-safe held-out error-analysis tables by episode, action family, train-seen status, required-modality state, and object category.",
       "exists": true,
-      "bytes": 15676,
-      "sha256": "d4c7e46d9fbd5f9d84bc32374f457fd8c9d68c8faa39c77bc45770eb95d80337"
+      "bytes": 16957,
+      "sha256": "1d5fb2e0df0b89b1d1236ffc0eb30a2033fa1c3bc00abfcdf7898108ab1e3382"
     },
     {
       "id": "multi_episode_128_baseline_script",
@@ -219,8 +219,8 @@
       "surface": "repo_hf",
       "shows": "Builds the upload-ready Hugging Face adapter folder from a verified Qwen3 LoRA result summary and adapter directory.",
       "exists": true,
-      "bytes": 9843,
-      "sha256": "636132a7d299db4d874ec797e34acd7e37eea69994c2d39afaafaec6587169a0"
+      "bytes": 10710,
+      "sha256": "c5f33f7030e6861ccab465b71d4c1b4209b8fbbcebdca882aa5c7e8d70e76b37"
     },
     {
       "id": "additional_development_directions",
@@ -274,8 +274,8 @@
       "surface": "website_hf",
       "shows": "Gives a short project path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 7943,
-      "sha256": "ffd5da5fd2c2dc82fa1beb74335a51a33317923b3e7ee4864e2b5031082b0a42"
+      "bytes": 8005,
+      "sha256": "2258fecb80850c745e60cb28733869c49a5182879d9d0461b666a5575e3c1610"
     },
     {
       "id": "artifact_guide",
@@ -285,8 +285,8 @@
       "surface": "repo_hf",
       "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 17508,
-      "sha256": "fbbd9f460610464efb27c371a17cf23c3fa409d853f8148368f48707192427d7"
+      "bytes": 17930,
+      "sha256": "6a2843318d83b8dac1fc56a53e4dbf202f8757d4e7d8b3bf67b574be570fa585"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -686,7 +686,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 68749,
+      "bytes": 74880,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -697,8 +697,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 36847,
-      "sha256": "07fd059a9ff8c13b073f349c79f1f7d3abe839559cf0809e291f6ea9bbad21e8"
+      "bytes": 36201,
+      "sha256": "76f03885867a8ed7095958a6948cbce81b4958fb74a09df24c24ad7eb5b0d944"
     },
     {
       "id": "reproducibility_contract",
@@ -719,8 +719,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable reproduction steps with expected artifacts and public boundaries.",
       "exists": true,
-      "bytes": 5280,
-      "sha256": "bfb34f14206943da909aee36465e8211c592615fca15a284e2fa8ef9ea1d438b"
+      "bytes": 5294,
+      "sha256": "b91da81ad855de974037ba24bd8b1d132be840b8b50004d9c137f4b5064ad18d"
     },
     {
       "id": "artifact_index_builder",
@@ -754,7 +754,7 @@
       "volatile": true,
       "shows": "Separates setup paths from completed held-out-episode results.",
       "exists": true,
-      "bytes": 21234,
+      "bytes": 21251,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -766,7 +766,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 235815,
+      "bytes": 410374,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -965,8 +965,8 @@
       "surface": "repo_hf",
       "shows": "Documents the final 128-episode LoRA adapter upload path, target model repo, package builder, and forbidden files.",
       "exists": true,
-      "bytes": 1875,
-      "sha256": "7a822452347e8c4241a5160d67a9782f17f3d3cb9bd2960b00bac0ca1bf2392f"
+      "bytes": 1886,
+      "sha256": "a8fa5a326e2dd91130c2e86b988e7afcfa4e043e48614191f0fc589158089c03"
     },
     {
       "id": "multi_episode_access_status",
@@ -1031,8 +1031,8 @@
       "surface": "repo_hf",
       "shows": "Reader-facing comparison of the single-episode task suite, 128-episode aligned baselines, Qwen3-Omni packages, and Cosmos3 future-window branch.",
       "exists": true,
-      "bytes": 3110,
-      "sha256": "11c22b7ac1e16fd8db86eb7c6fc33cf28fee97a38098f1606a35daee113dc72b"
+      "bytes": 9231,
+      "sha256": "c38d12e138193f7200800d4dd8c149497de2c5f5895299e22fe81285b69fc62d"
     },
     {
       "id": "omni_model_comparison_json",
@@ -1042,8 +1042,8 @@
       "surface": "repo_hf",
       "shows": "Machine-readable comparison of the current result versions, per-task aligned baselines, verified Qwen3 packages, and Cosmos3 package.",
       "exists": true,
-      "bytes": 21433,
-      "sha256": "b539a489a8974ecec90dda312471be54f466b81bef9d1ebc99d08155f8c21c94"
+      "bytes": 48296,
+      "sha256": "1c968bd58842af9a4e6159c1a8bd171aec08757bb77fce9f04c55030be08357f"
     },
     {
       "id": "cosmos3_nano_verified_summary",
@@ -1143,6 +1143,61 @@
       "exists": true,
       "bytes": 1099,
       "sha256": "f11ccb167908d4f5bfb49c0be0b4bc6c9254901462aa52ae98a2a98e8af16558"
+    },
+    {
+      "id": "verified_public_package_xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607",
+      "title": "Verified public package: Cosmos3-Super Reasoner",
+      "path": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607",
+      "kind": "verified_public_package",
+      "surface": "repo_hf",
+      "shows": "Public-safe verified package for xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607 (cosmos3_super_reasoner, status=verified).",
+      "exists": true,
+      "file_count": 21,
+      "bytes": 5151738
+    },
+    {
+      "id": "verified_public_summary_xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607",
+      "title": "Verified summary: Cosmos3-Super Reasoner",
+      "path": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/verified_result_summary.json",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Machine-readable verified summary for xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607.",
+      "exists": true,
+      "bytes": 5693,
+      "sha256": "6e263015a73dbcd8d9dd2fa036348d1a20c3e4aecfd1f6bf43d1b9f923320b91"
+    },
+    {
+      "id": "verified_public_public_result_summary_xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607",
+      "title": "Verified public result summary: Cosmos3-Super Reasoner",
+      "path": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/PUBLIC_RESULT_SUMMARY.md",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Public result summary for xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607.",
+      "exists": true,
+      "bytes": 979,
+      "sha256": "1c17ac8b08e522abaf606a32982086295c577c81f94a3495ea2b9b6a50f83d74"
+    },
+    {
+      "id": "verified_public_run_report_xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607",
+      "title": "Verified run report: Cosmos3-Super Reasoner",
+      "path": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/eval/RUN_REPORT.md",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Run report for xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607.",
+      "exists": true,
+      "bytes": 549,
+      "sha256": "9a3edf661c75956335137f98fa4cd40071bcc0a66e7553bb614375f2e2e2ac22"
+    },
+    {
+      "id": "verified_public_metrics_JSON_xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607",
+      "title": "Verified metrics JSON: Cosmos3-Super Reasoner",
+      "path": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/eval/metrics.json",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Metrics json for xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607.",
+      "exists": true,
+      "bytes": 48156,
+      "sha256": "138b9de0ba2cda7b273c47a59656f5abc85c435a64108d9932bc3611143e5d8e"
     },
     {
       "id": "verified_public_package_xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval",
@@ -1284,8 +1339,8 @@
       "surface": "repo_hf",
       "shows": "Public-safe verified package for xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full (qwen3_omni_lora, status=verified).",
       "exists": true,
-      "file_count": 16,
-      "bytes": 4898687
+      "file_count": 23,
+      "bytes": 4923819
     },
     {
       "id": "verified_public_summary_xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
@@ -1341,6 +1396,72 @@
       "exists": true,
       "bytes": 623,
       "sha256": "d7264cfb34e48b5c41c89444ea9cd1314b8f4d0bcc0224debbbe5ea512450197"
+    },
+    {
+      "id": "verified_public_package_xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full",
+      "title": "Verified public package: Qwen3-Omni LoRA",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full",
+      "kind": "verified_public_package",
+      "surface": "repo_hf",
+      "shows": "Public-safe verified package for xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full (qwen3_omni_lora, status=verified).",
+      "exists": true,
+      "file_count": 23,
+      "bytes": 4879339
+    },
+    {
+      "id": "verified_public_summary_xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full",
+      "title": "Verified summary: Qwen3-Omni LoRA",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/verified_result_summary.json",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Machine-readable verified summary for xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full.",
+      "exists": true,
+      "bytes": 6208,
+      "sha256": "4a2fa145882d06008ebde7734dce72e81e1a111e8a24cc2877694249847d70cc"
+    },
+    {
+      "id": "verified_public_public_result_summary_xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full",
+      "title": "Verified public result summary: Qwen3-Omni LoRA",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/PUBLIC_RESULT_SUMMARY.md",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Public result summary for xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full.",
+      "exists": true,
+      "bytes": 1002,
+      "sha256": "c3a07b041ef66250cb805625473f919cb01cc427f7ca79d12fd5142094f4a80c"
+    },
+    {
+      "id": "verified_public_run_report_xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full",
+      "title": "Verified run report: Qwen3-Omni LoRA",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/eval/RUN_REPORT.md",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Run report for xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full.",
+      "exists": true,
+      "bytes": 580,
+      "sha256": "84ad4fa629d0f0bc6ee7da284a793e2d78f0e847c093fdbfcd87cd5df014c7e8"
+    },
+    {
+      "id": "verified_public_metrics_JSON_xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full",
+      "title": "Verified metrics JSON: Qwen3-Omni LoRA",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/eval/metrics.json",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Metrics json for xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full.",
+      "exists": true,
+      "bytes": 47129,
+      "sha256": "567a6db75813d638dfcdecc18c661764ddf06d8a0ec01b23af6a5113c7f06026"
+    },
+    {
+      "id": "verified_public_package_audit_xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full",
+      "title": "Verified package audit: Qwen3-Omni LoRA",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/package_audit.json",
+      "kind": "publication_audit",
+      "surface": "repo_hf",
+      "shows": "Package audit for xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full.",
+      "exists": true,
+      "bytes": 634,
+      "sha256": "c5bfa7b231dcf2f9a2d1a50ce5324cdf4bb8afd60294fd5d40b7ef578983b1b2"
     }
   ]
 }

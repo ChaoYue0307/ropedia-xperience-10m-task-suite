@@ -1,6 +1,6 @@
 # Omni Model Comparison
 
-Generated: `2026-06-07T09:05:41+00:00`
+Generated: `2026-06-07T15:34:51+00:00`
 
 Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and the two Cosmos3 targets answer different questions: Nano future-window retrieval versus Super structured JSON Reasoner evaluation.
 
@@ -24,7 +24,7 @@ Read the three rows this way:
 - Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.
 - Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; only the final 128-episode adapter belongs in the Qwen LoRA model repo.
 - Cosmos3-Nano has a 128-episode future-window compatibility package.
-- Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.
+- Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a training-readiness probe; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.
 
 ### Minimal and Neural Task Heads
 
@@ -48,7 +48,8 @@ The one-episode Qwen entry is only a sensor-adapter smoke test with Qwen3 weight
 | 1 episode | verified_smoke | Qwen3-Omni Sensor-Adapter Smoke | 1 episodes, 59 windows/samples | accuracy=0.0000, macro_f1=0.0000 | `results/omni_exploration/qwen3_adapter_smoke/metrics.json` |
 | 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.8750, action_macro_f1=0.0027, transition_accuracy=0.8504, contact_accuracy=0.6451 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/verified_result_summary.json` |
 | 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.8527, action_macro_f1=0.0021, transition_accuracy=0.8281, contact_accuracy=0.6518 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full/verified_result_summary.json` |
-| 128 episode | verified current | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.9978, action_macro_f1=0.0024, transition_accuracy=0.9710, contact_accuracy=0.7188 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full/verified_result_summary.json` |
+| 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.9978, action_macro_f1=0.0024, transition_accuracy=0.9710, contact_accuracy=0.7188 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full/verified_result_summary.json` |
+| 128 episode | verified current | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=1.0000, action_macro_f1=0.0022, transition_accuracy=0.9732, contact_accuracy=0.7210 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/verified_result_summary.json` |
 
 ### Cosmos3-Nano Future-Window World Model
 
@@ -63,13 +64,14 @@ The current 128-episode Cosmos result is a public-safe future-window compatibili
 
 ### Cosmos3-Super Reasoner
 
-Cosmos3-Super is now represented by a verified 448-window held-out Reasoner evaluation on the same JSON task as Qwen3. It uses staged base weights through vLLM, so it is a model-branch diagnostic, not a weight release.
+Cosmos3-Super is now represented by a verified 448-window held-out Reasoner evaluation on the same JSON task as Qwen3. It uses staged base weights through vLLM, so it is a model-branch diagnostic, not a weight release. The readiness probe records why true Cosmos3-Super fine-tuning is not launched yet.
 
 - Weight repo policy: none for this run; staged base weights only, no new fine-tuned weights
 
 | scope | status | run | counts | metrics | source |
 | --- | --- | --- | --- | --- | --- |
 | 1 episode | not_run | Cosmos3-Super One-Episode Fine-Tune |  |  |  |
+| readiness | blocked_until_trainer_implemented | Cosmos3-Super Training Readiness Probe | 3808 windows/samples | diffusers_runtime_supported=True, chat_sft_supported=False, weights_updated=False | `results/omni_finetune/xperience10m_cosmos3_super_training_readiness_20260607/training_readiness.json` |
 | 128 episode | verified current | Cosmos3-Super Reasoner | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.5112, action_macro_f1=0.0008, transition_accuracy=0.3683, contact_accuracy=0.3214 | `results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/verified_result_summary.json` |
 
 ## 128-Episode Task Baselines
@@ -98,8 +100,9 @@ Cosmos3-Super is now represented by a verified 448-window held-out Reasoner eval
 | Qwen3-Omni LoRA | `qwen3_omni_lora` | 448 | 14 | json_validity_rate=0.8750, action_macro_f1=0.0027, transition_accuracy=0.8504, contact_accuracy=0.6451 |
 | Qwen3-Omni LoRA | `qwen3_omni_lora` | 448 | 14 | json_validity_rate=0.8527, action_macro_f1=0.0021, transition_accuracy=0.8281, contact_accuracy=0.6518 |
 | Qwen3-Omni LoRA | `qwen3_omni_lora` | 448 | 14 | json_validity_rate=0.9978, action_macro_f1=0.0024, transition_accuracy=0.9710, contact_accuracy=0.7188 |
+| Qwen3-Omni LoRA | `qwen3_omni_lora` | 448 | 14 | json_validity_rate=1.0000, action_macro_f1=0.0022, transition_accuracy=0.9732, contact_accuracy=0.7210 |
 
 ## Pending
 
 - Use the final Qwen3 full-eval package as the current Qwen result; older Qwen package rows remain historical diagnostics for comparison.
-- Promote Cosmos3 from Nano compatibility and Super base-weight evaluation to true fine-tuning only after a dedicated Cosmos adapter/diffusion training path produces new weights.
+- Promote Cosmos3 from Nano compatibility and Super base-weight evaluation to true fine-tuning only after a dedicated Cosmos diffusion/action target packer and supervised loss produce new weights.
