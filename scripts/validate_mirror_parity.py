@@ -79,10 +79,16 @@ ASSET_FILES = [
 
 SCRIPT_FILES = [
     "omni/analyze_qwen3_omni_errors.py",
+    "omni/audit_cosmos3_super_training_contract.py",
     "omni/build_omni_model_comparison.py",
     "omni/collect_qwen3_v4_release_artifacts.py",
+    "omni/export_cosmos3_camera_pose_targets.py",
+    "omni/pack_cosmos3_super_action_batch.py",
     "omni/prepare_qwen3_lora_hf_package.py",
+    "omni/probe_cosmos3_super_training_readiness.py",
     "omni/run_128_task_baselines.py",
+    "omni/run_cosmos3_super_forward_dynamics_lora.sh",
+    "omni/train_cosmos3_super_forward_dynamics_lora.py",
     "audio_ablation_and_raw_upgrade.py",
     "build_artifact_index.py",
     "build_brand_assets.py",

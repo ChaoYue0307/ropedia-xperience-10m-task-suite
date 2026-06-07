@@ -327,10 +327,17 @@ def readiness_decision(model: dict[str, Any], runtime: dict[str, Any], dataset: 
         blockers.append(f"Dataset is missing required JSON QA fields: {dataset['missing_required_fields']}")
     if dataset["missing_answer_fields"] and any(dataset["missing_answer_fields"].values()):
         blockers.append(f"Dataset answer_json is missing required fields: {dataset['missing_answer_fields']}")
-    blockers.append(
-        "Repository has no Cosmos3 diffusion/action target packer or supervised loss implementation for "
-        "xperience10m_episode_json_qa_v1; a readiness probe cannot produce adapter weights."
-    )
+    trainer_path = Path(__file__).with_name("train_cosmos3_super_forward_dynamics_lora.py")
+    if not trainer_path.exists():
+        blockers.append(
+            "Repository has no Cosmos3 diffusion/action target packer or supervised loss implementation for "
+            "xperience10m_episode_json_qa_v1; a readiness probe cannot produce adapter weights."
+        )
+    else:
+        warnings.append(
+            "Forward-dynamics LoRA trainer exists; run the camera-pose action-target contract audit before launch "
+            "because this probe checks the staged runtime and JSON-task dataset surface, not every action target row."
+        )
     return {
         "status": "blocked_until_trainer_implemented" if blockers else "ready_for_training_launch",
         "weights_updated": False,
@@ -341,9 +348,9 @@ def readiness_decision(model: dict[str, Any], runtime: dict[str, Any], dataset: 
         "blockers": blockers,
         "warnings": warnings,
         "next_steps": [
-            "Implement a Cosmos3-Super training data packer that maps each Xperience-10M window to prompt, video/action latent inputs, timesteps, and loss indexes expected by Cosmos3OmniTransformer.forward.",
-            "Wire LoRA only onto the checkpoint-declared target modules q_proj_moe_gen,k_proj_moe_gen,v_proj_moe_gen,o_proj_moe_gen and use the rectified_flow_training_config loss weights.",
-            "Run a one-episode overfit with --load-pipeline enabled, then a 96/16/16 held-out adapter run only after the probe status has no blockers.",
+            "Run scripts/omni/audit_cosmos3_super_training_contract.py on the camera-pose action-target JSONL and require no blockers.",
+            "Run scripts/omni/train_cosmos3_super_forward_dynamics_lora.py as a one-sample or one-episode overfit before a full 96/16/16 adapter run.",
+            "Publish a separate Cosmos3-Super model repository only after the trainer produces new adapter/checkpoint weights and held-out evaluation artifacts.",
         ],
     }
 
