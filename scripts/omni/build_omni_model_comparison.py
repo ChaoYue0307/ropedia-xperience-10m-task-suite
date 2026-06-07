@@ -334,12 +334,13 @@ def cosmos3_super_action_contract_entry() -> dict[str, Any] | None:
     decision = payload.get("decision", {}) if isinstance(payload.get("decision"), dict) else {}
     dataset = payload.get("dataset", {}) if isinstance(payload.get("dataset"), dict) else {}
     target_modes = dataset.get("target_mode_counts", {}) if isinstance(dataset.get("target_mode_counts"), dict) else {}
+    only_forward_dynamics = set(target_modes) == {"forward_dynamics"}
     return {
         "id": payload.get("run_id", path.parent.name),
         "title": "Cosmos3-Super Camera-Pose Target Audit",
         "scope_label": "action target contract",
         "scope": "selected 128-episode 96/16/16 dataset augmented with camera_pose proxy cosmos_action_target records",
-        "status": "ready_for_action_lora_trainer" if decision.get("status") == "ready_for_cosmos3_super_action_lora" else decision.get("status", "unknown"),
+        "status": "ready_for_forward_dynamics_trainer" if only_forward_dynamics else "ready_for_action_lora_trainer" if decision.get("status") == "ready_for_cosmos3_super_action_lora" else decision.get("status", "unknown"),
         "source": rel(path),
         "split": "train/val/test by selected episode/session",
         "counts": {
@@ -358,11 +359,49 @@ def cosmos3_super_action_contract_entry() -> dict[str, Any] | None:
         },
         "weights": "none; action-target contract audit only, no adapter checkpoint",
         "interpretation": (
-            "The selected dataset now has valid Cosmos3 action targets for an egocentric "
-            "camera-motion proxy, removing the target-schema blocker for a Cosmos3-Super "
-            "action-LoRA smoke run. It is not robot-control supervision and does not update "
-            "Cosmos weights; the remaining work is the Cosmos batch packer, supervised action "
-            "loss over preds_action, and one-episode overfit."
+            "The selected dataset now has valid Cosmos3 camera_pose forward_dynamics targets "
+            "for an egocentric camera-motion proxy. These remove the target-schema blocker "
+            "for action-conditioned world-model training, but they supervise noisy vision "
+            "tokens rather than preds_action. The remaining work is a pipeline-loaded packer "
+            "check and one-sample forward-dynamics overfit; action-token prediction needs a "
+            "separate policy or inverse-dynamics target export."
+        ),
+    }
+
+
+def cosmos3_super_packer_entry() -> dict[str, Any] | None:
+    paths = sorted(
+        (ROOT / "results/omni_finetune").glob("xperience10m_cosmos3_super_action_packer_*/packer_summary.json")
+    )
+    if not paths:
+        return None
+    payloads = [(path, load_json(path)) for path in paths]
+    path, payload = max(payloads, key=lambda item: item[1].get("finished_at_unix") or 0)
+    row_contract = payload.get("row_contract", {}) if isinstance(payload.get("row_contract"), dict) else {}
+    pack_result = payload.get("pack_result", {}) if isinstance(payload.get("pack_result"), dict) else {}
+    return {
+        "id": payload.get("run_id", path.parent.name),
+        "title": "Cosmos3-Super Action Batch Packer Smoke",
+        "scope_label": "batch packer",
+        "scope": "one selected train row from the camera_pose forward_dynamics augmented JSONL",
+        "status": payload.get("status", "unknown"),
+        "source": rel(path),
+        "split": row_contract.get("split"),
+        "counts": {
+            "samples": 1,
+            "raw_action_rows": (row_contract.get("raw_actions_shape") or [None, None])[0],
+            "raw_action_dim": row_contract.get("raw_action_dim"),
+        },
+        "primary_metrics": {
+            "mode": row_contract.get("mode"),
+            "loss_surface": row_contract.get("loss_surface"),
+            "pipeline_loaded": pack_result.get("pipeline_loaded"),
+            "weights_updated": payload.get("weights_updated"),
+        },
+        "weights": "none; schema-only packer smoke, no adapter checkpoint",
+        "interpretation": (
+            "The selected row maps to a camera_pose forward_dynamics contract. In the installed Cosmos3 pipeline this "
+            "uses raw actions as conditioning and supervises noisy vision tokens; it does not supervise preds_action."
         ),
     }
 
@@ -391,6 +430,7 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
     cosmos_super_branches = [branch for branch in branches if branch.get("backbone") == "cosmos3_super_reasoner"]
     cosmos_super_readiness = cosmos3_super_readiness_entry()
     cosmos_super_action_contract = cosmos3_super_action_contract_entry()
+    cosmos_super_packer = cosmos3_super_packer_entry()
     if qwen_branches:
         current_qwen = max(qwen_branches, key=lambda item: item.get("primary_metrics", {}).get("json_validity_rate") or -1)
         for branch in qwen_branches:
@@ -499,16 +539,16 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 }
             ],
             "readiness_runs": [
-                entry for entry in (cosmos_super_readiness, cosmos_super_action_contract) if entry
+                entry for entry in (cosmos_super_readiness, cosmos_super_action_contract, cosmos_super_packer) if entry
             ],
             "multi_episode_128_runs": cosmos_super_branches,
             "comparison_note": (
                 "Cosmos3-Super is now represented by a verified 448-window held-out "
                 "Reasoner evaluation on the same JSON task as Qwen3. It uses staged base "
                 "weights through vLLM, so it is a model-branch diagnostic, not a weight release. "
-                "A camera-pose proxy action-target export now passes the action-LoRA contract audit; "
-                "true Cosmos3-Super fine-tuning is still not launched until the batch packer and "
-                "supervised action loss exist."
+                "A camera-pose proxy forward-dynamics target export now passes the contract audit "
+                "and schema-only packer smoke; true Cosmos3-Super fine-tuning is still not launched "
+                "until the pipeline-loaded packer check and one-sample overfit exist."
             ),
         },
     ]
@@ -532,7 +572,7 @@ def build_report() -> dict[str, Any]:
         "version_reading_notes": [
             "Version 1 is the public-sample 12-task harness with minimal and neural heads.",
             "Version 2 is the selected 128-episode same-split simple/NN baseline alignment.",
-            "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, and Cosmos3-Super Reasoner is a base-weight JSON-task evaluation; Cosmos3-Super now has a camera-pose action-target contract audit, but no new fine-tuned weight release.",
+            "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, and Cosmos3-Super Reasoner is a base-weight JSON-task evaluation; Cosmos3-Super now has a camera-pose forward-dynamics contract audit and schema-only packer smoke, but no new fine-tuned weight release.",
         ],
         "versions": versions,
         "model_groups": model_groups,
@@ -541,11 +581,11 @@ def build_report() -> dict[str, Any]:
             "Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.",
             "Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; only the final 128-episode adapter belongs in the Qwen LoRA model repo.",
             "Cosmos3-Nano has a 128-episode future-window compatibility package.",
-            "Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a camera-pose action-target contract audit; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.",
+            "Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a camera-pose forward-dynamics contract audit; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.",
         ],
         "pending": [
             "Use the final Qwen3 full-eval package as the current Qwen result; older Qwen package rows remain historical diagnostics for comparison.",
-            "Promote Cosmos3 from Nano compatibility, Super base-weight evaluation, and the camera-pose action-target contract to true fine-tuning only after the Cosmos batch packer and supervised action loss produce new weights.",
+            "Promote Cosmos3 from Nano compatibility, Super base-weight evaluation, and the camera-pose forward-dynamics contract to true fine-tuning only after the pipeline-loaded packer check and one-sample overfit produce new weights.",
         ],
     }
 
@@ -563,7 +603,7 @@ def entry_count_text(entry: dict[str, Any]) -> str:
     pieces = []
     for label, keys in (
         ("episodes", ("episodes", "dataset_episodes", "held_out_episode_count")),
-        ("windows/samples", ("windows", "rows", "dataset_samples", "eval_samples")),
+        ("windows/samples", ("windows", "rows", "dataset_samples", "eval_samples", "samples")),
         ("eval", ("eval_samples",)),
     ):
         value = next((counts.get(key) for key in keys if counts.get(key) is not None), None)
@@ -589,6 +629,8 @@ def entry_metric_text(entry: dict[str, Any]) -> str:
         "raw_action_dim",
         "mode",
         "valid_action_targets",
+        "loss_surface",
+        "pipeline_loaded",
         "diffusers_runtime_supported",
         "chat_sft_supported",
         "weights_updated",

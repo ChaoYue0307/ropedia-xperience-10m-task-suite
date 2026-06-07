@@ -33,12 +33,13 @@
         "Cosmos3OmniPipeline._prepare_vision_segment",
         "Cosmos3OmniPipeline._prepare_action_segment"
       ],
-      "forward_outputs": "Cosmos3OmniTransformer.forward returns (preds_vision, preds_sound, preds_action); action LoRA needs supervised loss against raw continuous action tokens, not JSON strings.",
+      "forward_outputs": "Cosmos3OmniTransformer.forward returns (preds_vision, preds_sound, preds_action). Forward-dynamics targets use raw actions as conditioning and should supervise preds_vision; supervised preds_action needs policy or inverse_dynamics targets.",
       "lora_targets": "use checkpoint-declared q_proj_moe_gen,k_proj_moe_gen,v_proj_moe_gen,o_proj_moe_gen unless a new audited config overrides them"
     },
     "next_steps": [
       "Export Cosmos-native action targets from Xperience annotations or mocap/pose/contact signals into the required cosmos_action_target schema.",
-      "Implement a one-sample batch packer that calls Cosmos3OmniPipeline.prepare_latents and the static segment helpers, then computes MSE/rectified-flow loss over preds_action for noisy action tokens.",
+      "Run the one-sample action batch packer that calls Cosmos3OmniPipeline.prepare_latents and the static segment helpers, then records whether the exported target supervises vision or action tokens.",
+      "For camera_pose forward_dynamics targets, use vision velocity/rectified-flow loss under action conditioning; add a policy/inverse target export before claiming supervised action-token prediction.",
       "Run a one-episode overfit before scheduling a 96/16/16 Super LoRA run; only publish a Cosmos model repo after new adapter/checkpoint weights exist."
     ]
   }

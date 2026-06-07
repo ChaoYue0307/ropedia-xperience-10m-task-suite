@@ -146,11 +146,14 @@ action-conditioned world modeling, synthetic-data usefulness tests, policy-style
 next action, contact, object relevance, and affordance reasoning.
 
 Current Cosmos3-Super status: a camera-pose proxy action target export now
-augments all 3,808 selected 128-episode windows and passes the action-LoRA
-contract audit. This is a trainer-readiness artifact, not a fine-tuned Cosmos
-weight release. The next Cosmos step is the one-sample batch packer, supervised
-action loss over `preds_action`, and one-episode overfit before any 96/16/16
-Super LoRA run.
+augments all 3,808 selected 128-episode windows and passes the contract audit.
+A schema-only batch-packer smoke confirms the current `forward_dynamics` target
+uses camera-pose actions as conditioning and should supervise noisy vision
+tokens, not `preds_action`. This is a trainer-readiness artifact, not a
+fine-tuned Cosmos weight release. The next Cosmos step is a pipeline-loaded
+packer check and one-sample forward-dynamics overfit before any 96/16/16 Super
+LoRA run; supervised action-token prediction needs a separate policy or
+inverse-dynamics target export.
 
 ### 7. Xperience Embodied Foundation Model Pretraining
 

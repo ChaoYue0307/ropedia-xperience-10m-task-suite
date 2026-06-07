@@ -5,7 +5,7 @@
 - Rows: `3808`
 - Rows with Cosmos action targets: `3808`
 - Valid Cosmos action targets: `3808`
-- Status: `ready_for_cosmos3_super_action_lora`
+- Status: `ready_for_cosmos3_super_forward_dynamics_lora`
 - Weights updated: `False`
 
 ## Blockers
@@ -30,5 +30,6 @@
 
 ## Next Steps
 
-- Implement a one-sample batch packer that calls Cosmos3OmniPipeline.prepare_latents and the static segment helpers, then computes MSE/rectified-flow loss over preds_action for noisy action tokens.
+- Run the one-sample action batch packer that calls Cosmos3OmniPipeline.prepare_latents and the static segment helpers, then records whether the current target supervises vision or action tokens.
+- For the current camera_pose forward_dynamics target, implement a one-sample overfit with vision velocity/rectified-flow loss under action conditioning; add a policy/inverse target export before claiming supervised action-token prediction.
 - Run a one-episode overfit before scheduling a 96/16/16 Super LoRA run; only publish a Cosmos model repo after new adapter/checkpoint weights exist.

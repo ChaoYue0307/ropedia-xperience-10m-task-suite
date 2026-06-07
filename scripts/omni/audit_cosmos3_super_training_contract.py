@@ -286,6 +286,8 @@ def decide(dataset: dict[str, Any], model: dict[str, Any]) -> dict[str, Any]:
         )
 
     status = "ready_for_cosmos3_super_action_lora" if not blockers else "blocked_missing_cosmos_action_targets"
+    if not blockers and dataset.get("target_mode_counts") == {"forward_dynamics": dataset["rows_with_action_target"]}:
+        status = "ready_for_cosmos3_super_forward_dynamics_lora"
     return {
         "status": status,
         "weights_updated": False,
@@ -304,12 +306,12 @@ def decide(dataset: dict[str, Any], model: dict[str, Any]) -> dict[str, Any]:
                 "Cosmos3OmniPipeline._prepare_vision_segment",
                 "Cosmos3OmniPipeline._prepare_action_segment",
             ],
-            "forward_outputs": "Cosmos3OmniTransformer.forward returns (preds_vision, preds_sound, preds_action); action LoRA needs supervised loss against raw continuous action tokens, not JSON strings.",
+            "forward_outputs": "Cosmos3OmniTransformer.forward returns (preds_vision, preds_sound, preds_action). The current camera_pose forward_dynamics target uses raw actions as conditioning and should supervise preds_vision; supervised preds_action needs policy or inverse_dynamics targets.",
             "lora_targets": "use checkpoint-declared q_proj_moe_gen,k_proj_moe_gen,v_proj_moe_gen,o_proj_moe_gen unless a new audited config overrides them",
         },
         "next_steps": [
-            "Export Cosmos-native action targets from Xperience annotations or mocap/pose/contact signals into the required cosmos_action_target schema.",
-            "Implement a one-sample batch packer that calls Cosmos3OmniPipeline.prepare_latents and the static segment helpers, then computes MSE/rectified-flow loss over preds_action for noisy action tokens.",
+            "Run the one-sample action batch packer that calls Cosmos3OmniPipeline.prepare_latents and the static segment helpers, then records whether the current target supervises vision or action tokens.",
+            "For the current camera_pose forward_dynamics target, implement a one-sample overfit with vision velocity/rectified-flow loss under action conditioning; add a policy/inverse target export before claiming supervised action-token prediction.",
             "Run a one-episode overfit before scheduling a 96/16/16 Super LoRA run; only publish a Cosmos model repo after new adapter/checkpoint weights exist.",
         ],
     }
@@ -393,7 +395,11 @@ def main() -> int:
     write_report(output_dir / "RUN_REPORT.md", payload)
     append_jsonl(progress_path, {"event": "complete", "time": time.time(), "status": decision["status"]})
     print(json.dumps({"status": decision["status"], "output_dir": str(output_dir)}, indent=2))
-    return 1 if args.require_trainable and decision["status"] != "ready_for_cosmos3_super_action_lora" else 0
+    ready_statuses = {
+        "ready_for_cosmos3_super_action_lora",
+        "ready_for_cosmos3_super_forward_dynamics_lora",
+    }
+    return 1 if args.require_trainable and decision["status"] not in ready_statuses else 0
 
 
 if __name__ == "__main__":

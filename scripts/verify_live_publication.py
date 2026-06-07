@@ -311,7 +311,7 @@ MARKER_CHECKS = [
             "100.00%",
             "omni_model_comparison.json",
             "ropedia-qwen3-omni-lora-128ep",
-            "Cosmos3-Super has a verified base-weight JSON-task evaluation plus a camera-pose action-target contract audit",
+            "Cosmos3-Super has a verified base-weight JSON-task evaluation plus a camera-pose forward-dynamics contract audit",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
@@ -340,7 +340,7 @@ MARKER_CHECKS = [
             "100.00%",
             "omni_model_comparison.json",
             "ropedia-qwen3-omni-lora-128ep",
-            "Cosmos3-Super has a verified base-weight JSON-task evaluation plus a camera-pose action-target contract audit",
+            "Cosmos3-Super has a verified base-weight JSON-task evaluation plus a camera-pose forward-dynamics contract audit",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",

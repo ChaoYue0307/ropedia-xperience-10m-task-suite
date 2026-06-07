@@ -1,0 +1,136 @@
+{
+  "run_id": "xperience10m_cosmos3_super_action_packer_schema_smoke_20260608",
+  "run_kind": "cosmos3_super_action_batch_packer",
+  "started_at_unix": 1780852840.3893492,
+  "finished_at_unix": 1780852842.8621027,
+  "elapsed_seconds": 2.4727537631988525,
+  "dataset_jsonl": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_camera_pose_targets_20260608/dataset_with_cosmos_actions.jsonl",
+  "backbone_config": "/home/cy/Ropedia/ropedia-episode-task-suite/configs/omni_backbones/cosmos3_super_reasoner.json",
+  "backbone": {
+    "id": "cosmos3_super_reasoner",
+    "display_name": "Cosmos3-Super Reasoner",
+    "status": "implemented",
+    "model_family": "Cosmos3 / physical-world foundation models",
+    "default_model_id": "nv-community/Cosmos3-Super",
+    "local_model_env": "COSMOS3_SUPER_MODEL_DIR",
+    "dataset_contract": "xperience10m_episode_json_qa_v1",
+    "training_objective": "zero_shot_structured_episode_understanding_json_qa_via_vllm_reasoner",
+    "split_policy": {
+      "unit": "episode",
+      "default_counts": {
+        "train": 96,
+        "val": 16,
+        "test": 16
+      },
+      "leakage_guard": "uses the same 96/16/16 selected episode split as the Qwen3-Omni LoRA branch; no Super weights are updated"
+    },
+    "modalities": {
+      "direct_inputs": [
+        "multi-camera rendered mosaic video",
+        "language prompt and label options"
+      ],
+      "conditioning_inputs": [
+        "prompt-side task schema and episode/window metadata"
+      ],
+      "targets": [
+        "structured action/subtask/contact/transition/object JSON"
+      ],
+      "excluded_inputs": [
+        "visualization.rrd",
+        "raw annotation HDF5",
+        "audio in the current vLLM Reasoner path"
+      ]
+    },
+    "entrypoints": {
+      "selection_manifest": "scripts/omni/build_selection_episode_manifest.py",
+      "export": "scripts/omni/parallel_export_qwen3_omni_action_dataset.py",
+      "neutral_index": "scripts/omni/export_model_neutral_window_index.py",
+      "action_target_export": "scripts/omni/export_cosmos3_camera_pose_targets.py",
+      "action_batch_packer": "scripts/omni/pack_cosmos3_super_action_batch.py",
+      "train": "",
+      "train_contract_audit": "scripts/omni/audit_cosmos3_super_training_contract.py",
+      "train_probe": "scripts/omni/probe_cosmos3_super_training_readiness.py",
+      "eval": "scripts/omni/eval_cosmos3_super_reasoner.py",
+      "launcher": "scripts/omni/run_cosmos3_super_reasoner_eval.sh",
+      "validate": "scripts/omni/validate_omni_finetune_run.py"
+    },
+    "primary_metrics": [
+      "json_validity_rate",
+      "action_macro_f1",
+      "subtask_accuracy",
+      "transition_accuracy",
+      "next_action_accuracy",
+      "contact_accuracy",
+      "object_micro_f1",
+      "held_out_episode_count"
+    ],
+    "artifact_contract": {
+      "checkpoint_gate": "base_weight_vllm_reasoner_setup_metadata",
+      "required_eval_files": [
+        "metrics.json",
+        "predictions.jsonl",
+        "predictions.csv",
+        "per_class_metrics.csv",
+        "confusion_matrix.csv",
+        "server_info.json",
+        "RUN_REPORT.md"
+      ],
+      "required_training_files": [
+        "training_metadata.json",
+        "progress.jsonl"
+      ],
+      "public_package_allowed": [
+        "metrics",
+        "predictions",
+        "confusion matrices",
+        "run reports",
+        "server/model setup metadata",
+        "episode and dataset manifests",
+        "validation summaries"
+      ],
+      "public_package_forbidden": [
+        "raw MP4",
+        "annotation HDF5",
+        "Rerun RRD",
+        "base-model weights",
+        "fine-tuned weights",
+        "checkpoints",
+        "large archives"
+      ]
+    },
+    "extension_requirements": [
+      "This branch evaluates staged Cosmos3-Super Reasoner base weights through vLLM on the 128-episode held-out JSON task; it does not fine-tune or release new Cosmos weights.",
+      "Run scripts/omni/probe_cosmos3_super_training_readiness.py before any Cosmos3-Super adapter launch; the probe must have no blockers before train can be filled.",
+      "Create a separate Cosmos3-Super adapter/model repository only after a real fine-tuning run produces new adapter or checkpoint weights.",
+      "Keep it separate from the Cosmos3-Nano future-window compatibility branch, which answers a different world-model retrieval target."
+    ]
+  },
+  "status": "pass",
+  "row_contract": {
+    "row_id": "27c9fc42-2bb4-4737-b09c-08d2dd88aed4__ep4:qa:0",
+    "episode_id": "27c9fc42-2bb4-4737-b09c-08d2dd88aed4__ep4",
+    "split": "train",
+    "target_key": "cosmos_action_target",
+    "mode": "forward_dynamics",
+    "domain_name": "camera_pose",
+    "chunk_size": 8,
+    "raw_action_dim": 9,
+    "raw_actions_shape": [
+      8,
+      9
+    ],
+    "video_path": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/shards/shard_00/media/27c9fc42-2bb4-4737-b09c-08d2dd88aed4__ep4/27c9fc42-2bb4-4737-b09c-08d2dd88aed4__ep4_w00000_ctx0_119_mosaic.mp4",
+    "video_path_exists": true,
+    "loss_surface": "vision_velocity_conditioned_on_camera_pose",
+    "action_loss_expected": false,
+    "interpretation": "Cosmos3 forward_dynamics consumes raw_actions as conditioning and predicts noisy vision tokens. It does not supervise preds_action for this target mode.",
+    "issues": []
+  },
+  "pack_result": {
+    "status": "schema_ready_pipeline_not_loaded",
+    "pipeline_loaded": false,
+    "loss_surface": "vision_velocity_conditioned_on_camera_pose",
+    "action_loss_expected": false
+  },
+  "weights_updated": false
+}
