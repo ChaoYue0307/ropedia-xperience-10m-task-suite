@@ -381,8 +381,9 @@ def cosmos3_super_action_contract_entry() -> dict[str, Any] | None:
             "The selected dataset now has valid Cosmos3 camera_pose forward_dynamics targets "
             "for an egocentric camera-motion proxy. These remove the target-schema blocker "
             "for action-conditioned world-model training, but they supervise noisy vision "
-            "tokens rather than preds_action. The remaining work is a pipeline-loaded packer "
-            "check and one-sample forward-dynamics overfit; action-token prediction needs a "
+            "tokens rather than preds_action. The remaining work is a trainable "
+            "Cosmos3-Super implementation that can backpropagate through this loss "
+            "surface at the required memory scale; action-token prediction needs a "
             "separate policy or inverse-dynamics target export."
         ),
     }
@@ -566,8 +567,8 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "Reasoner evaluation on the same JSON task as Qwen3. It uses staged base "
                 "weights through vLLM, so it is a model-branch diagnostic, not a weight release. "
                 "A camera-pose proxy forward-dynamics target export now passes the contract audit "
-                "and schema-only packer smoke; true Cosmos3-Super fine-tuning is still not launched "
-                "until the pipeline-loaded packer check and one-sample overfit exist."
+                "and schema-only packer smoke; true Cosmos3-Super fine-tuning is still blocked "
+                "until a trainable multi-GPU/offload path produces adapter or fine-tuned weights."
             ),
         },
     ]
@@ -591,7 +592,7 @@ def build_report() -> dict[str, Any]:
         "version_reading_notes": [
             "Version 1 is the public-sample 12-task harness with minimal and neural heads.",
             "Version 2 is the selected 128-episode same-split simple/NN baseline alignment.",
-            "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, and Cosmos3-Super Reasoner is a base-weight JSON-task evaluation; Cosmos3-Super now has a camera-pose forward-dynamics contract audit and schema-only packer smoke, but no new fine-tuned weight release.",
+            "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, and Cosmos3-Super Reasoner is a base-weight JSON-task evaluation; Cosmos3-Super has a camera-pose forward-dynamics contract audit and schema-only packer smoke, but no new fine-tuned weight release.",
         ],
         "versions": versions,
         "model_groups": model_groups,
@@ -600,11 +601,11 @@ def build_report() -> dict[str, Any]:
             "Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.",
             "Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; the newest verified full-eval 128-episode adapter belongs in the Qwen LoRA model repo.",
             "Cosmos3-Nano has a 128-episode future-window compatibility package.",
-            "Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a camera-pose forward-dynamics contract audit; create a separate Cosmos model repo only after the queued overfit or later full run produces real Cosmos adapter/fine-tuned weights.",
+            "Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a camera-pose forward-dynamics contract audit; create a separate Cosmos model repo only after a trainable multi-GPU/offload run produces real Cosmos adapter or fine-tuned weights.",
         ],
         "pending": [
-            "Replace the current Qwen3 row with the active v4 4-epoch full-eval package only after its verified public summary exists; older Qwen package rows remain historical diagnostics for comparison.",
-            "Promote Cosmos3 from Nano compatibility, Super base-weight evaluation, and the camera-pose forward-dynamics contract to true fine-tuning only after the queued Cosmos3-Super forward-dynamics overfit or later full run produces new weights.",
+            "Use the verified Qwen3 v4 4-epoch full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison.",
+            "Promote Cosmos3 from Nano compatibility, Super base-weight evaluation, and the camera-pose forward-dynamics contract to true fine-tuning only after a trainable Cosmos3-Super run produces new weights.",
         ],
     }
 

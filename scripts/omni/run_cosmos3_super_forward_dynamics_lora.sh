@@ -16,8 +16,10 @@ LEARNING_RATE="${LEARNING_RATE:-0.0001}"
 DEVICE_MAP="${DEVICE_MAP:-balanced}"
 DTYPE="${DTYPE:-bfloat16}"
 SEED="${SEED:-123}"
+TARGET_MODULES="${TARGET_MODULES:-}"
 TIMESTEP_SAMPLING="${TIMESTEP_SAMPLING:-uniform}"
 OVERRIDE_RESOLUTION_TIER="${OVERRIDE_RESOLUTION_TIER:-}"
+GRADIENT_CHECKPOINTING="${GRADIENT_CHECKPOINTING:-1}"
 DRY_RUN="${DRY_RUN:-0}"
 
 args=(
@@ -39,6 +41,14 @@ args=(
 
 if [[ -n "$OVERRIDE_RESOLUTION_TIER" ]]; then
   args+=(--override-resolution-tier "$OVERRIDE_RESOLUTION_TIER")
+fi
+
+if [[ -n "$TARGET_MODULES" ]]; then
+  args+=(--target-modules "$TARGET_MODULES")
+fi
+
+if [[ "$GRADIENT_CHECKPOINTING" == "0" ]]; then
+  args+=(--no-gradient-checkpointing)
 fi
 
 if [[ "$DRY_RUN" == "1" ]]; then
