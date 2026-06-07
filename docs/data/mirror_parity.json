@@ -1,9 +1,9 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-07T18:00:54+00:00",
+  "generated_at_utc": "2026-06-07T18:12:13+00:00",
   "hf_root": "hf_publish",
   "summary": {
-    "group_count": 235,
+    "group_count": 236,
     "failure_count": 0,
     "failures_by_surface": {}
   },
@@ -536,27 +536,27 @@
       "local": {
         "path": "repo:docs/data/publication_audit.json",
         "exists": true,
-        "bytes": 7212,
-        "sha256": "6bdcf755365702c4811ca7b5f71ab8f893c8b44d4e08854de242104cae9b5630"
+        "bytes": 8127,
+        "sha256": "a7b245a69376d5f2be1c6765e654f147f02e33bc5973877b10c617d022fb917e"
       },
       "mirrors": {
         "hf_space": {
           "path": "hf_space:data/publication_audit.json",
           "exists": true,
-          "bytes": 7212,
-          "sha256": "6bdcf755365702c4811ca7b5f71ab8f893c8b44d4e08854de242104cae9b5630"
+          "bytes": 8127,
+          "sha256": "a7b245a69376d5f2be1c6765e654f147f02e33bc5973877b10c617d022fb917e"
         },
         "hf_artifacts": {
           "path": "hf_artifacts:docs/data/publication_audit.json",
           "exists": true,
-          "bytes": 7212,
-          "sha256": "6bdcf755365702c4811ca7b5f71ab8f893c8b44d4e08854de242104cae9b5630"
+          "bytes": 8127,
+          "sha256": "a7b245a69376d5f2be1c6765e654f147f02e33bc5973877b10c617d022fb917e"
         },
         "hf_model": {
           "path": "hf_model:metrics/publication_audit.json",
           "exists": true,
-          "bytes": 7212,
-          "sha256": "6bdcf755365702c4811ca7b5f71ab8f893c8b44d4e08854de242104cae9b5630"
+          "bytes": 8127,
+          "sha256": "a7b245a69376d5f2be1c6765e654f147f02e33bc5973877b10c617d022fb917e"
         }
       },
       "failures": []
@@ -1033,26 +1033,26 @@
         "path": "repo:docs/data/website_integrity.json",
         "exists": true,
         "bytes": 15375,
-        "sha256": "27caed1336ffb209a4fcbca52d7e9ae385beb7d5f13ed4f511d9f6b0eb28dd48"
+        "sha256": "2c08f9634529b7d1e2e694dd9c5b4fd4c9c3bb2cf010d1bc3de43cff2ca6e967"
       },
       "mirrors": {
         "hf_space": {
           "path": "hf_space:data/website_integrity.json",
           "exists": true,
           "bytes": 15375,
-          "sha256": "27caed1336ffb209a4fcbca52d7e9ae385beb7d5f13ed4f511d9f6b0eb28dd48"
+          "sha256": "2c08f9634529b7d1e2e694dd9c5b4fd4c9c3bb2cf010d1bc3de43cff2ca6e967"
         },
         "hf_artifacts": {
           "path": "hf_artifacts:docs/data/website_integrity.json",
           "exists": true,
           "bytes": 15375,
-          "sha256": "27caed1336ffb209a4fcbca52d7e9ae385beb7d5f13ed4f511d9f6b0eb28dd48"
+          "sha256": "2c08f9634529b7d1e2e694dd9c5b4fd4c9c3bb2cf010d1bc3de43cff2ca6e967"
         },
         "hf_model": {
           "path": "hf_model:metrics/website_integrity.json",
           "exists": true,
           "bytes": 15375,
-          "sha256": "27caed1336ffb209a4fcbca52d7e9ae385beb7d5f13ed4f511d9f6b0eb28dd48"
+          "sha256": "2c08f9634529b7d1e2e694dd9c5b4fd4c9c3bb2cf010d1bc3de43cff2ca6e967"
         }
       },
       "failures": []
@@ -1805,6 +1805,31 @@
       "failures": []
     },
     {
+      "name": "scripts/omni/collect_qwen3_v4_release_artifacts.py",
+      "status": "pass",
+      "local": {
+        "path": "repo:scripts/omni/collect_qwen3_v4_release_artifacts.py",
+        "exists": true,
+        "bytes": 7496,
+        "sha256": "fdb0172ebf66d40f74ede9724e000a14697f498fc764835cd545caba51de3119"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "hf_artifacts:scripts/omni/collect_qwen3_v4_release_artifacts.py",
+          "exists": true,
+          "bytes": 7496,
+          "sha256": "fdb0172ebf66d40f74ede9724e000a14697f498fc764835cd545caba51de3119"
+        },
+        "hf_model": {
+          "path": "hf_model:scripts/omni/collect_qwen3_v4_release_artifacts.py",
+          "exists": true,
+          "bytes": 7496,
+          "sha256": "fdb0172ebf66d40f74ede9724e000a14697f498fc764835cd545caba51de3119"
+        }
+      },
+      "failures": []
+    },
+    {
       "name": "scripts/omni/prepare_qwen3_lora_hf_package.py",
       "status": "pass",
       "local": {
@@ -2185,21 +2210,21 @@
       "local": {
         "path": "repo:scripts/validate_mirror_parity.py",
         "exists": true,
-        "bytes": 15607,
-        "sha256": "809fa49dde0f3ddef8fc159ac0452c6158ac78e17571fb2149db076d19eb0873"
+        "bytes": 15657,
+        "sha256": "3d126fc47a0a67e1c1148d64600fe39d7a208d7d0c15ea984e3f3e2ced46bd0c"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 15607,
-          "sha256": "809fa49dde0f3ddef8fc159ac0452c6158ac78e17571fb2149db076d19eb0873"
+          "bytes": 15657,
+          "sha256": "3d126fc47a0a67e1c1148d64600fe39d7a208d7d0c15ea984e3f3e2ced46bd0c"
         },
         "hf_model": {
           "path": "hf_model:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 15607,
-          "sha256": "809fa49dde0f3ddef8fc159ac0452c6158ac78e17571fb2149db076d19eb0873"
+          "bytes": 15657,
+          "sha256": "3d126fc47a0a67e1c1148d64600fe39d7a208d7d0c15ea984e3f3e2ced46bd0c"
         }
       },
       "failures": []
@@ -2335,21 +2360,21 @@
       "local": {
         "path": "repo:scripts/sync_hf_publish_mirrors.py",
         "exists": true,
-        "bytes": 4480,
-        "sha256": "2c3d35b3b1a8649f8cdf6a35a4e60453cde66cd158eb73a908ec155710670a29"
+        "bytes": 5211,
+        "sha256": "22aeee7e77f39c3d1bd06b0caaea53a3fec570ce994a82ad5111203eab0e6c0a"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/sync_hf_publish_mirrors.py",
           "exists": true,
-          "bytes": 4480,
-          "sha256": "2c3d35b3b1a8649f8cdf6a35a4e60453cde66cd158eb73a908ec155710670a29"
+          "bytes": 5211,
+          "sha256": "22aeee7e77f39c3d1bd06b0caaea53a3fec570ce994a82ad5111203eab0e6c0a"
         },
         "hf_model": {
           "path": "hf_model:scripts/sync_hf_publish_mirrors.py",
           "exists": true,
-          "bytes": 4480,
-          "sha256": "2c3d35b3b1a8649f8cdf6a35a4e60453cde66cd158eb73a908ec155710670a29"
+          "bytes": 5211,
+          "sha256": "22aeee7e77f39c3d1bd06b0caaea53a3fec570ce994a82ad5111203eab0e6c0a"
         }
       },
       "failures": []

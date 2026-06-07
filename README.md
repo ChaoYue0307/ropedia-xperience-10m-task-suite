@@ -332,6 +332,7 @@ scripts/
     build_episode_manifest.py       # metadata-only multi-episode scanner
     plan_finetune_sample_budget.py  # storage/sample-count planner
     qwen3_omni_adapter_smoke.py     # real-data Qwen3-Omni adapter setup check
+    collect_qwen3_v4_release_artifacts.py # pulls verified v4 results after remote eval
 
 results/
   min_action_model/                 # motion-only action baseline artifacts

@@ -80,6 +80,7 @@ ASSET_FILES = [
 SCRIPT_FILES = [
     "omni/analyze_qwen3_omni_errors.py",
     "omni/build_omni_model_comparison.py",
+    "omni/collect_qwen3_v4_release_artifacts.py",
     "omni/prepare_qwen3_lora_hf_package.py",
     "omni/run_128_task_baselines.py",
     "audio_ablation_and_raw_upgrade.py",
