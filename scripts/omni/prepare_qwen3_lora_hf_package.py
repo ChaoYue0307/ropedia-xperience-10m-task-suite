@@ -66,6 +66,14 @@ def copy_file(src: Path, dst: Path) -> dict[str, Any]:
     }
 
 
+def normalize_adapter_config(path: Path) -> None:
+    """Keep PEFT Hub metadata valid even when older training wrote null."""
+    config = load_json(path)
+    if config.get("task_type") is None:
+        config["task_type"] = "CAUSAL_LM"
+    path.write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")
+
+
 def metric_table(metrics: dict[str, Any]) -> list[str]:
     rows = [
         ("JSON validity", metrics.get("json_validity_rate")),
@@ -220,7 +228,17 @@ def main() -> int:
     for name in COPY_NAMES:
         src = adapter_dir / name
         if src.exists():
-            copied.append(copy_file(src, output_dir / name))
+            dst = output_dir / name
+            copy_file(src, dst)
+            if name == "adapter_config.json":
+                normalize_adapter_config(dst)
+            copied.append(
+                {
+                    "path": dst.name,
+                    "bytes": dst.stat().st_size,
+                    "sha256": sha256(dst),
+                }
+            )
     safetensors = sorted(adapter_dir.glob("adapter_model*.safetensors"))
     if not safetensors:
         raise SystemExit(f"No adapter_model*.safetensors files found in {adapter_dir}")
