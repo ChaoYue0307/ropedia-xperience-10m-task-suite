@@ -1,6 +1,6 @@
 # Omni Model Comparison
 
-Generated: `2026-06-07T17:29:16+00:00`
+Generated: `2026-06-07T19:34:08+00:00`
 
 Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and the two Cosmos3 targets answer different questions: Nano future-window retrieval versus Super structured JSON Reasoner evaluation.
 
@@ -22,9 +22,9 @@ Read the three rows this way:
 
 - Use model_groups when comparing one-episode and 128-episode artifacts within the same model family.
 - Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.
-- Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; only the final 128-episode adapter belongs in the Qwen LoRA model repo.
+- Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; the newest verified full-eval 128-episode adapter belongs in the Qwen LoRA model repo.
 - Cosmos3-Nano has a 128-episode future-window compatibility package.
-- Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a camera-pose forward-dynamics contract audit; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.
+- Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a camera-pose forward-dynamics contract audit; create a separate Cosmos model repo only after the queued overfit or later full run produces real Cosmos adapter/fine-tuned weights.
 
 ### Minimal and Neural Task Heads
 
@@ -106,5 +106,5 @@ Cosmos3-Super is now represented by a verified 448-window held-out Reasoner eval
 
 ## Pending
 
-- Use the final Qwen3 full-eval package as the current Qwen result; older Qwen package rows remain historical diagnostics for comparison.
-- Promote Cosmos3 from Nano compatibility, Super base-weight evaluation, and the camera-pose forward-dynamics contract to true fine-tuning only after the pipeline-loaded packer check and one-sample overfit produce new weights.
+- Replace the current Qwen3 row with the active v4 4-epoch full-eval package only after its verified public summary exists; older Qwen package rows remain historical diagnostics for comparison.
+- Promote Cosmos3 from Nano compatibility, Super base-weight evaluation, and the camera-pose forward-dynamics contract to true fine-tuning only after the queued Cosmos3-Super forward-dynamics overfit or later full run produces new weights.
