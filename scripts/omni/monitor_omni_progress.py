@@ -71,6 +71,30 @@ def first_existing(paths: list[Path]) -> Path | None:
     return None
 
 
+def resolve_train_run_id(args: argparse.Namespace, root: Path, dataset_run_id: str) -> str:
+    if args.train_run_id:
+        return args.train_run_id
+
+    if args.dataset_run_id:
+        candidates = [
+            args.run_id,
+            f"{args.run_id}_lora",
+            f"{dataset_run_id}_lora",
+        ]
+    else:
+        candidates = [
+            f"{args.run_id}_lora",
+            args.run_id,
+        ]
+
+    checkpoint_root = root.parents[1] / "checkpoints"
+    for candidate in candidates:
+        if (root / candidate / "progress.jsonl").exists() or (checkpoint_root / candidate / "adapter_lora").exists():
+            return candidate
+
+    return args.run_id if args.dataset_run_id else f"{args.run_id}_lora"
+
+
 def shard_export_summary(dataset_dir: Path) -> dict:
     shard_root = dataset_dir / "shards"
     if not shard_root.exists():
@@ -282,7 +306,7 @@ def main() -> int:
     args = parse_args()
     root = args.workspace / "results" / "omni_finetune"
     dataset_run_id = args.dataset_run_id or args.run_id
-    train_run_id = args.train_run_id or f"{args.run_id}_lora"
+    train_run_id = resolve_train_run_id(args, root, dataset_run_id)
     eval_run_id = args.eval_run_id or f"{train_run_id}_eval"
     run_dir = root / dataset_run_id
     train_dir = root / train_run_id
