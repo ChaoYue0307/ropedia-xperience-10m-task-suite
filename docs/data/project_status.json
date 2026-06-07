@@ -119,7 +119,7 @@
         "FOUNDATION_MODEL_PLAN.md",
         "docs/data/foundation_model_plan.json"
       ],
-      "readout": "Qwen3-Omni remains the first trainable held-out LoRA baseline; Cosmos 3 is now represented by a verified Cosmos3-Nano future-window compatibility package plus a verified Cosmos3-Super base-weight Reasoner evaluation; OpenVLA/openpi/GR00T are policy candidates after action targets are explicit."
+      "readout": "Qwen3-Omni remains the first trainable held-out LoRA baseline; Cosmos 3 is now represented by a verified Cosmos3-Nano future-window compatibility package, a verified Cosmos3-Super base-weight Reasoner evaluation, and a Cosmos3-Super camera-pose proxy action-target contract audit. The Cosmos trainer/loss and fine-tuned weights remain pending; OpenVLA/openpi/GR00T are policy candidates after robot-compatible action targets are explicit."
     },
     {
       "area": "Omni model extension contract",
@@ -245,6 +245,16 @@
       "readout": "Cosmos3-Super Reasoner now has a public-safe verified 448-window held-out evaluation on the same structured JSON task as Qwen3. It uses staged nv-community/Cosmos3-Super base weights through an 8-GPU vLLM server, not fine-tuned weights: JSON validity 0.5112, action macro-F1 0.0008, transition accuracy 0.3683, contact accuracy 0.3214, and object micro-F1 0.1370."
     },
     {
+      "area": "Cosmos3-Super action-target contract",
+      "status": "ready_for_trainer_implementation",
+      "evidence": [
+        "scripts/omni/export_cosmos3_camera_pose_targets.py",
+        "results/omni_finetune/xperience10m_cosmos3_camera_pose_targets_20260608/target_manifest.json",
+        "results/omni_finetune/xperience10m_cosmos3_super_training_contract_audit_camera_pose_20260608/training_contract_audit.json"
+      ],
+      "readout": "The selected 128-episode JSONL is augmented with 3,808/3,808 valid camera_pose proxy cosmos_action_target records from SLAM pose deltas. This removes the action-target schema blocker for a Cosmos3-Super action-LoRA smoke run, but it does not update Cosmos weights; the remaining work is a Cosmos3 batch packer, supervised action loss, and one-episode overfit."
+    },
+    {
       "area": "Raw Xperience-10M redistribution",
       "status": "not_included",
       "evidence": [
@@ -276,11 +286,11 @@
     "Use docs/data/omni_model_comparison.json to compare both views: the single-episode/128-baseline/model-branch result layers and the model-family grouping for task heads, Qwen3-Omni LoRA, Cosmos3-Nano, and Cosmos3-Super.",
     "Use docs/data/omni_finetune_verified_result.json and the latest verified_public final Qwen package for current held-out results.",
     "The 128-episode aligned simple/NN baselines use metadata/text features from the derived Qwen JSONL export; they align the split and task ids but do not replace raw-modality baselines for trajectory, retrieval, reconstruction, or misalignment tasks.",
-    "The Cosmos3-Nano future-window branch is verified as a compatibility adapter result, and Cosmos3-Super Reasoner is verified as a base-weight evaluation; one-episode Cosmos fine-tuning and full Cosmos adapter/diffusion-weight fine-tuning remain pending, so no Cosmos weight repo should be published yet.",
+    "The Cosmos3-Nano future-window branch is verified as a compatibility adapter result, Cosmos3-Super Reasoner is verified as a base-weight evaluation, and Cosmos3-Super camera-pose action targets now pass the action-LoRA contract audit; one-episode Cosmos fine-tuning and full Cosmos adapter/diffusion-weight fine-tuning remain pending, so no Cosmos weight repo should be published yet.",
     "The current reconstruction task reconstructs feature vectors, not pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
     "Audio is one of the synchronized source modalities in the current task representation.",
     "The audio ablation report compares audio/no-audio variants across all 12 task contracts in results/audio_ablation/.",
-    "Foundation-model selection is explicit: Qwen3-Omni is the immediate trainable pilot, Cosmos 3 is the first world-model branch, and policy models such as OpenVLA/openpi/GR00T wait for action-target conversion.",
+    "Foundation-model selection is explicit: Qwen3-Omni is the immediate trainable pilot, Cosmos 3 is the first world-model branch, Cosmos3-Super has a camera-pose proxy action-target contract ready for trainer implementation, and policy models such as OpenVLA/openpi/GR00T wait for robot-compatible action-target conversion.",
     "Future model branches should be added through the backbone registry and verified package contract, not as one-off result folders with incompatible metrics or publication rules.",
     "The Xperience Embodied Foundation Model is a future native-pretraining goal, not a completed model or current benchmark."
   ]

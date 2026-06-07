@@ -145,6 +145,13 @@ objectives: audio-visible alignment, future-window prediction,
 action-conditioned world modeling, synthetic-data usefulness tests, policy-style
 next action, contact, object relevance, and affordance reasoning.
 
+Current Cosmos3-Super status: a camera-pose proxy action target export now
+augments all 3,808 selected 128-episode windows and passes the action-LoRA
+contract audit. This is a trainer-readiness artifact, not a fine-tuned Cosmos
+weight release. The next Cosmos step is the one-sample batch packer, supervised
+action loss over `preds_action`, and one-episode overfit before any 96/16/16
+Super LoRA run.
+
 ### 7. Xperience Embodied Foundation Model Pretraining
 
 This stage is the long-term full-corpus goal. Instead of adapting an existing

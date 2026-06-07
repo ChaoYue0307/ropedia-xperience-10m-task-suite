@@ -1,6 +1,6 @@
 # Omni Model Comparison
 
-Generated: `2026-06-07T15:34:51+00:00`
+Generated: `2026-06-07T17:02:35+00:00`
 
 Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and the two Cosmos3 targets answer different questions: Nano future-window retrieval versus Super structured JSON Reasoner evaluation.
 
@@ -24,7 +24,7 @@ Read the three rows this way:
 - Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.
 - Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; only the final 128-episode adapter belongs in the Qwen LoRA model repo.
 - Cosmos3-Nano has a 128-episode future-window compatibility package.
-- Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a training-readiness probe; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.
+- Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus an action-target contract audit; create a separate Cosmos model repo only after real Cosmos adapter/fine-tuned weights exist.
 
 ### Minimal and Neural Task Heads
 
@@ -64,7 +64,7 @@ The current 128-episode Cosmos result is a public-safe future-window compatibili
 
 ### Cosmos3-Super Reasoner
 
-Cosmos3-Super is now represented by a verified 448-window held-out Reasoner evaluation on the same JSON task as Qwen3. It uses staged base weights through vLLM, so it is a model-branch diagnostic, not a weight release. The readiness probe records why true Cosmos3-Super fine-tuning is not launched yet.
+Cosmos3-Super is now represented by a verified 448-window held-out Reasoner evaluation on the same JSON task as Qwen3. It uses staged base weights through vLLM, so it is a model-branch diagnostic, not a weight release. A camera-pose proxy action-target export now passes the action-LoRA contract audit; true Cosmos3-Super fine-tuning is still not launched until the batch packer and supervised action loss exist.
 
 - Weight repo policy: none for this run; staged base weights only, no new fine-tuned weights
 
@@ -72,6 +72,7 @@ Cosmos3-Super is now represented by a verified 448-window held-out Reasoner eval
 | --- | --- | --- | --- | --- | --- |
 | 1 episode | not_run | Cosmos3-Super One-Episode Fine-Tune |  |  |  |
 | readiness | blocked_until_trainer_implemented | Cosmos3-Super Training Readiness Probe | 3808 windows/samples | diffusers_runtime_supported=True, chat_sft_supported=False, weights_updated=False | `results/omni_finetune/xperience10m_cosmos3_super_training_readiness_20260607/training_readiness.json` |
+| action target contract | ready_for_action_lora_trainer | Cosmos3-Super Camera-Pose Target Audit | 119 episodes, 3808 windows/samples, 3808 valid action targets | domain=camera_pose, raw_action_dim=9, mode=forward_dynamics, weights_updated=False | `results/omni_finetune/xperience10m_cosmos3_super_training_contract_audit_camera_pose_20260608/training_contract_audit.json` |
 | 128 episode | verified current | Cosmos3-Super Reasoner | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.5112, action_macro_f1=0.0008, transition_accuracy=0.3683, contact_accuracy=0.3214 | `results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/verified_result_summary.json` |
 
 ## 128-Episode Task Baselines
@@ -105,4 +106,4 @@ Cosmos3-Super is now represented by a verified 448-window held-out Reasoner eval
 ## Pending
 
 - Use the final Qwen3 full-eval package as the current Qwen result; older Qwen package rows remain historical diagnostics for comparison.
-- Promote Cosmos3 from Nano compatibility and Super base-weight evaluation to true fine-tuning only after a dedicated Cosmos diffusion/action target packer and supervised loss produce new weights.
+- Promote Cosmos3 from Nano compatibility, Super base-weight evaluation, and the camera-pose action-target contract to true fine-tuning only after the Cosmos batch packer and supervised action loss produce new weights.
