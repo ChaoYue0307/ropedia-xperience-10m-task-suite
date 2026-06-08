@@ -7,6 +7,7 @@ import argparse
 import json
 import shutil
 import subprocess
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -277,6 +278,7 @@ def build_answer(ann: dict, start: int, end: int, min_fraction: float) -> dict:
 
 
 def export_episode(args: argparse.Namespace, episode_dir: Path, records: list[dict], summaries: dict) -> None:
+    before_records = len(records)
     ann = load_annotation(args, episode_dir)
     action_ep = load_episode_dataset(args, episode_dir, "action")
     episode_key = f"{episode_dir.parent.name}__{episode_dir.name}"
@@ -352,6 +354,20 @@ def export_episode(args: argparse.Namespace, episode_dir: Path, records: list[di
 
     summaries["feature_manifest"] = action_ep.feature_manifest
     summaries["available_modalities"].append({"episode_id": episode_key, "modalities": action_ep.available_modalities})
+    print(
+        json.dumps(
+            {
+                "event": "episode_export_done",
+                "episode_id": episode_key,
+                "split": split,
+                "records": len(records) - before_records,
+                "total_records": len(records),
+            },
+            sort_keys=True,
+        ),
+        file=sys.stderr,
+        flush=True,
+    )
 
 
 def main() -> int:
