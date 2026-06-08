@@ -356,6 +356,9 @@ def main() -> int:
         run_dir / f"watch_{train_run_id}.jsonl",
         run_dir / "status.jsonl",
         run_dir / "pipeline_status.jsonl",
+        root / args.run_id / "status.jsonl",
+        root / args.run_id / "pipeline_status.jsonl",
+        root / args.run_id / f"watch_{train_run_id}.jsonl",
         root / f"{dataset_run_id}_watch" / "status.jsonl",
     ])
     train_progress = first_existing([
@@ -374,6 +377,9 @@ def main() -> int:
         run_dir / "run.log",
         run_dir / "logs" / "pipeline.log",
         run_dir / f"train_{train_run_id}.log",
+        root / args.run_id / "run.log",
+        root / args.run_id / "logs" / "pipeline.log",
+        root / args.run_id / f"train_{train_run_id}.log",
         root / f"{dataset_run_id}.detached.log",
     ])
 
