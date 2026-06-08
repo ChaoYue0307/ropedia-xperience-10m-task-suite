@@ -23,6 +23,8 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "docs/data/live_publication_status.json"
 TIMEOUT_SECONDS = 30
+LARGE_FILE_TIMEOUT_SECONDS = 240
+LARGE_FILE_THRESHOLD_BYTES = 20 * 1024 * 1024
 USER_AGENT = "ropedia-xperience-10m-live-verifier/1.0"
 LOCAL_PATH_FORBIDDEN_MARKERS = ["/" + "Users/", "/" + "private/"]
 QWEN3_LORA_REPO_ID = "cy0307/ropedia-qwen3-omni-lora-128ep"
@@ -577,13 +579,17 @@ def sanitize_url(url: str) -> str:
     return urlunsplit((parts.scheme, parts.netloc, parts.path, "", ""))
 
 
-def fetch(url: str) -> dict:
+def fetch(url: str, *, timeout_seconds: int = TIMEOUT_SECONDS, prefer_curl: bool = False) -> dict:
+    if prefer_curl:
+        return fetch_with_curl(url, timeout_seconds=timeout_seconds)
     request = Request(url, headers={"User-Agent": USER_AGENT})
     try:
-        with urlopen(request, timeout=TIMEOUT_SECONDS) as response:
+        with urlopen(request, timeout=timeout_seconds) as response:
             body = response.read()
             return {
                 "ok": True,
+                "method": "urllib",
+                "timeout_seconds": timeout_seconds,
                 "status_code": int(getattr(response, "status", 200)),
                 "bytes": len(body),
                 "sha256": sha256_bytes(body),
@@ -593,6 +599,8 @@ def fetch(url: str) -> dict:
     except HTTPError as exc:
         return {
             "ok": False,
+            "method": "urllib",
+            "timeout_seconds": timeout_seconds,
             "status_code": exc.code,
             "bytes": 0,
             "sha256": None,
@@ -600,11 +608,13 @@ def fetch(url: str) -> dict:
             "final_url": url,
         }
     except (TimeoutError, OSError) as exc:
-        fallback = fetch_with_curl(url)
+        fallback = fetch_with_curl(url, timeout_seconds=timeout_seconds)
         if fallback["ok"]:
             return fallback
         return {
             "ok": False,
+            "method": "urllib",
+            "timeout_seconds": timeout_seconds,
             "status_code": None,
             "bytes": 0,
             "sha256": None,
@@ -612,11 +622,13 @@ def fetch(url: str) -> dict:
             "final_url": url,
         }
     except URLError as exc:
-        fallback = fetch_with_curl(url)
+        fallback = fetch_with_curl(url, timeout_seconds=timeout_seconds)
         if fallback["ok"]:
             return fallback
         return {
             "ok": False,
+            "method": "urllib",
+            "timeout_seconds": timeout_seconds,
             "status_code": None,
             "bytes": 0,
             "sha256": None,
@@ -625,7 +637,7 @@ def fetch(url: str) -> dict:
         }
 
 
-def fetch_with_curl(url: str) -> dict:
+def fetch_with_curl(url: str, *, timeout_seconds: int = TIMEOUT_SECONDS) -> dict:
     with tempfile.NamedTemporaryFile(delete=False) as tmp:
         tmp_path = Path(tmp.name)
     try:
@@ -635,7 +647,7 @@ def fetch_with_curl(url: str) -> dict:
                 "-L",
                 "-sS",
                 "--max-time",
-                str(TIMEOUT_SECONDS),
+                str(timeout_seconds),
                 "-A",
                 USER_AGENT,
                 "-o",
@@ -654,6 +666,8 @@ def fetch_with_curl(url: str) -> dict:
         if result.returncode != 0:
             return {
                 "ok": False,
+                "method": "curl",
+                "timeout_seconds": timeout_seconds,
                 "status_code": status_code or None,
                 "bytes": 0,
                 "sha256": None,
@@ -662,6 +676,8 @@ def fetch_with_curl(url: str) -> dict:
             }
         return {
             "ok": 200 <= status_code < 400,
+            "method": "curl",
+            "timeout_seconds": timeout_seconds,
             "status_code": status_code,
             "bytes": len(body),
             "sha256": sha256_bytes(body),
@@ -686,7 +702,12 @@ def hash_group_record(group: dict) -> dict:
     if not local["exists"]:
         failures.append({"surface": "local", "kind": "missing", "path": group["local_path"]})
     for surface, url in group["urls"].items():
-        result = fetch(url)
+        prefer_curl = (
+            local["bytes"] >= LARGE_FILE_THRESHOLD_BYTES
+            or Path(urlsplit(url).path).suffix == ".safetensors"
+        )
+        timeout_seconds = LARGE_FILE_TIMEOUT_SECONDS if prefer_curl else TIMEOUT_SECONDS
+        result = fetch(url, timeout_seconds=timeout_seconds, prefer_curl=prefer_curl)
         record = {key: value for key, value in result.items() if key != "body"}
         record["url"] = url
         mirrors[surface] = record
