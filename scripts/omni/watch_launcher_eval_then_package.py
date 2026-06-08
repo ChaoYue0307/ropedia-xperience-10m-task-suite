@@ -45,9 +45,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--expected-train-episodes", type=int, default=96)
     parser.add_argument("--expected-val-episodes", type=int, default=16)
     parser.add_argument("--expected-test-episodes", type=int, default=16)
-    parser.add_argument("--expected-dataset-train-episodes", type=int, default=89)
-    parser.add_argument("--expected-dataset-val-episodes", type=int, default=16)
-    parser.add_argument("--expected-dataset-test-episodes", type=int, default=14)
+    parser.add_argument(
+        "--expected-dataset-train-episodes",
+        type=int,
+        help="Expected exported train episode count. Omit to validate nonempty/leakage without imposing stale prior counts.",
+    )
+    parser.add_argument(
+        "--expected-dataset-val-episodes",
+        type=int,
+        help="Expected exported validation episode count. Omit to validate nonempty/leakage without imposing stale prior counts.",
+    )
+    parser.add_argument(
+        "--expected-dataset-test-episodes",
+        type=int,
+        help="Expected exported test episode count. Omit to validate nonempty/leakage without imposing stale prior counts.",
+    )
     parser.add_argument("--expected-num-processes", type=int, default=8)
     parser.add_argument("--max-file-mb", type=float, default=50.0)
     return parser.parse_args()
@@ -136,7 +148,7 @@ def run_checked(cmd: list[str], *, cwd: Path, log_path: Path, status_path: Path,
 
 
 def validation_cmd(args: argparse.Namespace, output: Path) -> list[str]:
-    return [
+    cmd = [
         sys.executable,
         "scripts/omni/validate_omni_finetune_run.py",
         "--workspace",
@@ -159,12 +171,6 @@ def validation_cmd(args: argparse.Namespace, output: Path) -> list[str]:
         str(args.expected_val_episodes),
         "--expected-test-episodes",
         str(args.expected_test_episodes),
-        "--expected-dataset-train-episodes",
-        str(args.expected_dataset_train_episodes),
-        "--expected-dataset-val-episodes",
-        str(args.expected_dataset_val_episodes),
-        "--expected-dataset-test-episodes",
-        str(args.expected_dataset_test_episodes),
         "--expected-num-processes",
         str(args.expected_num_processes),
         "--allow-zero-val-training",
@@ -173,6 +179,23 @@ def validation_cmd(args: argparse.Namespace, output: Path) -> list[str]:
         "--output",
         str(output),
     ]
+    expected_dataset = (
+        args.expected_dataset_train_episodes,
+        args.expected_dataset_val_episodes,
+        args.expected_dataset_test_episodes,
+    )
+    if all(value is not None for value in expected_dataset):
+        cmd.extend([
+            "--expected-dataset-train-episodes",
+            str(args.expected_dataset_train_episodes),
+            "--expected-dataset-val-episodes",
+            str(args.expected_dataset_val_episodes),
+            "--expected-dataset-test-episodes",
+            str(args.expected_dataset_test_episodes),
+        ])
+    elif any(value is not None for value in expected_dataset):
+        raise ValueError("Set all three expected dataset episode counts, or omit all three.")
+    return cmd
 
 
 def package_cmd(args: argparse.Namespace, validation_json: Path, output_dir: Path) -> list[str]:
