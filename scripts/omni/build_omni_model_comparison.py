@@ -640,7 +640,7 @@ def build_report() -> dict[str, Any]:
         ],
         "pending": [
             "Use the verified Qwen3 v4 4-epoch full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison.",
-            "Verify the live Cosmos3-Super forward-dynamics adapter model repo after upload; the public-safe verified_public package still excludes safetensors by design.",
+            "Complete the Qwen3-Omni v5 dense multiscale raw-media export, all-GPU LoRA train, held-out eval, and public package before promoting it over the current Qwen v4 row.",
         ],
     }
 
