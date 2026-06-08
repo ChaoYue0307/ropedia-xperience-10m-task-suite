@@ -1,8 +1,8 @@
 {
   "title": "Ropedia Xperience-10M Live Publication Status",
   "status": "pass",
-  "checked_at_utc": "2026-06-07T23:50:58+00:00",
-  "scope": "Live GitHub Pages, GitHub raw, Hugging Face Space, artifact dataset, baseline model mirrors, and the Qwen3 LoRA adapter repo when the final upload package exists locally.",
+  "checked_at_utc": "2026-06-08T07:53:20+00:00",
+  "scope": "Live GitHub Pages, GitHub raw, Hugging Face Space, artifact dataset, baseline model mirrors, and the Qwen3/Cosmos3 LoRA adapter repos when their upload packages exist locally.",
   "hash_groups": [
     {
       "id": "task_suite_infographic",
@@ -17,6 +17,8 @@
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 1588641,
           "sha256": "1275e2adaef920ecde7c29dc62c8d79d4f13475a0c09bc3baa693f47cdec2e1f",
@@ -25,6 +27,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 1588641,
           "sha256": "1275e2adaef920ecde7c29dc62c8d79d4f13475a0c09bc3baa693f47cdec2e1f",
@@ -33,6 +37,8 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 1588641,
           "sha256": "1275e2adaef920ecde7c29dc62c8d79d4f13475a0c09bc3baa693f47cdec2e1f",
@@ -41,6 +47,8 @@
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 1588641,
           "sha256": "1275e2adaef920ecde7c29dc62c8d79d4f13475a0c09bc3baa693f47cdec2e1f",
@@ -57,40 +65,48 @@
       "local": {
         "path": "docs/data/quality_gates.json",
         "exists": true,
-        "bytes": 8099,
-        "sha256": "c67b1a3cbd1a355ffdecec22d22486c181f081b03286f4180acff7f9659402e0"
+        "bytes": 8097,
+        "sha256": "076f83cfdbad683b14d98ba32390a95a1ca71b4c020fa1cfbbbc20cc83e23c94"
       },
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 8099,
-          "sha256": "c67b1a3cbd1a355ffdecec22d22486c181f081b03286f4180acff7f9659402e0",
+          "bytes": 8097,
+          "sha256": "076f83cfdbad683b14d98ba32390a95a1ca71b4c020fa1cfbbbc20cc83e23c94",
           "final_url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/quality_gates.json",
           "url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/quality_gates.json"
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 8099,
-          "sha256": "c67b1a3cbd1a355ffdecec22d22486c181f081b03286f4180acff7f9659402e0",
+          "bytes": 8097,
+          "sha256": "076f83cfdbad683b14d98ba32390a95a1ca71b4c020fa1cfbbbc20cc83e23c94",
           "final_url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/quality_gates.json",
           "url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/quality_gates.json"
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 8099,
-          "sha256": "c67b1a3cbd1a355ffdecec22d22486c181f081b03286f4180acff7f9659402e0",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fquality_gates.json",
+          "bytes": 8097,
+          "sha256": "076f83cfdbad683b14d98ba32390a95a1ca71b4c020fa1cfbbbc20cc83e23c94",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fquality_gates.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/quality_gates.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 8099,
-          "sha256": "c67b1a3cbd1a355ffdecec22d22486c181f081b03286f4180acff7f9659402e0",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fquality_gates.json",
+          "bytes": 8097,
+          "sha256": "076f83cfdbad683b14d98ba32390a95a1ca71b4c020fa1cfbbbc20cc83e23c94",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fquality_gates.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/quality_gates.json"
         }
       },
@@ -109,6 +125,8 @@
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4305527,
           "sha256": "286230d8070150e09595797569a447308a5110241b69edf52e535e3d8a34f827",
@@ -117,6 +135,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4305527,
           "sha256": "286230d8070150e09595797569a447308a5110241b69edf52e535e3d8a34f827",
@@ -125,18 +145,22 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4305527,
           "sha256": "286230d8070150e09595797569a447308a5110241b69edf52e535e3d8a34f827",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fsingle_episode_explorer.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fsingle_episode_explorer.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/single_episode_explorer.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4305527,
           "sha256": "286230d8070150e09595797569a447308a5110241b69edf52e535e3d8a34f827",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fsingle_episode_explorer.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fsingle_episode_explorer.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/single_episode_explorer.json"
         }
       },
@@ -155,6 +179,8 @@
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 2770710,
           "sha256": "fea187795e701d5cf1b3d0cfd0ddb7d2c407a85309238a15006d4f928029213a",
@@ -163,6 +189,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 2770710,
           "sha256": "fea187795e701d5cf1b3d0cfd0ddb7d2c407a85309238a15006d4f928029213a",
@@ -171,18 +199,22 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 2770710,
           "sha256": "fea187795e701d5cf1b3d0cfd0ddb7d2c407a85309238a15006d4f928029213a",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fsingle_episode_explorer.html",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fsingle_episode_explorer.html",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/single_episode_explorer.html"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 2770710,
           "sha256": "fea187795e701d5cf1b3d0cfd0ddb7d2c407a85309238a15006d4f928029213a",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/single_episode_explorer.html",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/single_episode_explorer.html",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/single_episode_explorer.html"
         }
       },
@@ -201,6 +233,8 @@
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 31706,
           "sha256": "a51ccc9e42247be6cda5a026c96be74e2aeeacfae6ef47abf028c9f769eae9a1",
@@ -209,6 +243,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 31706,
           "sha256": "a51ccc9e42247be6cda5a026c96be74e2aeeacfae6ef47abf028c9f769eae9a1",
@@ -217,18 +253,22 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 31706,
           "sha256": "a51ccc9e42247be6cda5a026c96be74e2aeeacfae6ef47abf028c9f769eae9a1",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fresearch_roadmap.html",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fresearch_roadmap.html",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/research_roadmap.html"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 31706,
           "sha256": "a51ccc9e42247be6cda5a026c96be74e2aeeacfae6ef47abf028c9f769eae9a1",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/research_roadmap.html",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/research_roadmap.html",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/research_roadmap.html"
         }
       },
@@ -247,6 +287,8 @@
       "mirrors": {
         "github_raw": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4072,
           "sha256": "7189be7fc773943859dc75a6119c1fb654d8905ea381e8fc9f782d4b33f5e466",
@@ -255,6 +297,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4072,
           "sha256": "7189be7fc773943859dc75a6119c1fb654d8905ea381e8fc9f782d4b33f5e466",
@@ -263,18 +307,22 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4072,
           "sha256": "7189be7fc773943859dc75a6119c1fb654d8905ea381e8fc9f782d4b33f5e466",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/results%2Fsingle_episode_diagnostics%2Fprovenance.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/results%2Fsingle_episode_diagnostics%2Fprovenance.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/results/single_episode_diagnostics/provenance.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4072,
           "sha256": "7189be7fc773943859dc75a6119c1fb654d8905ea381e8fc9f782d4b33f5e466",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/results%2Fsingle_episode_diagnostics%2Fprovenance.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/results%2Fsingle_episode_diagnostics%2Fprovenance.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/results/single_episode_diagnostics/provenance.json"
         }
       },
@@ -293,6 +341,8 @@
       "mirrors": {
         "github_raw": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 995,
           "sha256": "813320bbe5d57c74803f5dfb080d440ef1804af41950e031d82ab80311eb04c7",
@@ -301,6 +351,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 995,
           "sha256": "813320bbe5d57c74803f5dfb080d440ef1804af41950e031d82ab80311eb04c7",
@@ -309,18 +361,22 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 995,
           "sha256": "813320bbe5d57c74803f5dfb080d440ef1804af41950e031d82ab80311eb04c7",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/results%2Fsingle_episode_diagnostics%2Fobject_labels%2Fobject_vocab.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/results%2Fsingle_episode_diagnostics%2Fobject_labels%2Fobject_vocab.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/results/single_episode_diagnostics/object_labels/object_vocab.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 995,
           "sha256": "813320bbe5d57c74803f5dfb080d440ef1804af41950e031d82ab80311eb04c7",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/results%2Fsingle_episode_diagnostics%2Fobject_labels%2Fobject_vocab.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/results%2Fsingle_episode_diagnostics%2Fobject_labels%2Fobject_vocab.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/results/single_episode_diagnostics/object_labels/object_vocab.json"
         }
       },
@@ -333,40 +389,48 @@
       "local": {
         "path": "docs/data/public_surface_qa.json",
         "exists": true,
-        "bytes": 5591,
-        "sha256": "28f4c5fece8bfe7d46e6e8c3f5c7ca712ffe5a4ed4f5ca9e39655ada8f3e65f1"
+        "bytes": 5588,
+        "sha256": "9fdc57330afafda1b78ee5e9d90c34f8ed0b6210783cccc0efcbb75d3539644a"
       },
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 5591,
-          "sha256": "28f4c5fece8bfe7d46e6e8c3f5c7ca712ffe5a4ed4f5ca9e39655ada8f3e65f1",
+          "bytes": 5588,
+          "sha256": "9fdc57330afafda1b78ee5e9d90c34f8ed0b6210783cccc0efcbb75d3539644a",
           "final_url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/public_surface_qa.json",
           "url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/public_surface_qa.json"
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 5591,
-          "sha256": "28f4c5fece8bfe7d46e6e8c3f5c7ca712ffe5a4ed4f5ca9e39655ada8f3e65f1",
+          "bytes": 5588,
+          "sha256": "9fdc57330afafda1b78ee5e9d90c34f8ed0b6210783cccc0efcbb75d3539644a",
           "final_url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/public_surface_qa.json",
           "url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/public_surface_qa.json"
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 5591,
-          "sha256": "28f4c5fece8bfe7d46e6e8c3f5c7ca712ffe5a4ed4f5ca9e39655ada8f3e65f1",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fpublic_surface_qa.json",
+          "bytes": 5588,
+          "sha256": "9fdc57330afafda1b78ee5e9d90c34f8ed0b6210783cccc0efcbb75d3539644a",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fpublic_surface_qa.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/public_surface_qa.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 5591,
-          "sha256": "28f4c5fece8bfe7d46e6e8c3f5c7ca712ffe5a4ed4f5ca9e39655ada8f3e65f1",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fpublic_surface_qa.json",
+          "bytes": 5588,
+          "sha256": "9fdc57330afafda1b78ee5e9d90c34f8ed0b6210783cccc0efcbb75d3539644a",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fpublic_surface_qa.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/public_surface_qa.json"
         }
       },
@@ -385,6 +449,8 @@
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4032,
           "sha256": "2390c3663e9a110b9ed2f9c581b88a95bbd811a72ffb3e8dc780dae420e0f919",
@@ -393,6 +459,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4032,
           "sha256": "2390c3663e9a110b9ed2f9c581b88a95bbd811a72ffb3e8dc780dae420e0f919",
@@ -401,18 +469,22 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4032,
           "sha256": "2390c3663e9a110b9ed2f9c581b88a95bbd811a72ffb3e8dc780dae420e0f919",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Frendered_site_check.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Frendered_site_check.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/rendered_site_check.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4032,
           "sha256": "2390c3663e9a110b9ed2f9c581b88a95bbd811a72ffb3e8dc780dae420e0f919",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Frendered_site_check.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Frendered_site_check.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/rendered_site_check.json"
         }
       },
@@ -431,6 +503,8 @@
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 7559,
           "sha256": "417e65746724c87cbf1cd40f6451f1f6fe6098f60ba0b1c24d11e718fc86e257",
@@ -439,6 +513,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 7559,
           "sha256": "417e65746724c87cbf1cd40f6451f1f6fe6098f60ba0b1c24d11e718fc86e257",
@@ -447,18 +523,22 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 7559,
           "sha256": "417e65746724c87cbf1cd40f6451f1f6fe6098f60ba0b1c24d11e718fc86e257",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fxperience10m_dataset_card_alignment.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fxperience10m_dataset_card_alignment.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/xperience10m_dataset_card_alignment.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 7559,
           "sha256": "417e65746724c87cbf1cd40f6451f1f6fe6098f60ba0b1c24d11e718fc86e257",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fxperience10m_dataset_card_alignment.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fxperience10m_dataset_card_alignment.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/xperience10m_dataset_card_alignment.json"
         }
       },
@@ -477,6 +557,8 @@
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4432,
           "sha256": "06c6e2d111c72df01ed127fd288e6675b63e35a21ae12a2523931a072bd0bc49",
@@ -485,6 +567,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4432,
           "sha256": "06c6e2d111c72df01ed127fd288e6675b63e35a21ae12a2523931a072bd0bc49",
@@ -493,18 +577,22 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4432,
           "sha256": "06c6e2d111c72df01ed127fd288e6675b63e35a21ae12a2523931a072bd0bc49",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fsource_alignment_audit.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fsource_alignment_audit.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/source_alignment_audit.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4432,
           "sha256": "06c6e2d111c72df01ed127fd288e6675b63e35a21ae12a2523931a072bd0bc49",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fsource_alignment_audit.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fsource_alignment_audit.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/source_alignment_audit.json"
         }
       },
@@ -517,40 +605,48 @@
       "local": {
         "path": "docs/data/project_status.json",
         "exists": true,
-        "bytes": 18062,
-        "sha256": "3f75b0894d215e39f69b4a477c06132eba00d4ed67cf6e39a22716e08ee725b8"
+        "bytes": 19360,
+        "sha256": "a7ef3b7998a7fa10d1aa1a462caa3df122884fdaa54fe5812b439e18288ebd5c"
       },
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 18062,
-          "sha256": "3f75b0894d215e39f69b4a477c06132eba00d4ed67cf6e39a22716e08ee725b8",
+          "bytes": 19360,
+          "sha256": "a7ef3b7998a7fa10d1aa1a462caa3df122884fdaa54fe5812b439e18288ebd5c",
           "final_url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/project_status.json",
           "url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/project_status.json"
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 18062,
-          "sha256": "3f75b0894d215e39f69b4a477c06132eba00d4ed67cf6e39a22716e08ee725b8",
+          "bytes": 19360,
+          "sha256": "a7ef3b7998a7fa10d1aa1a462caa3df122884fdaa54fe5812b439e18288ebd5c",
           "final_url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/project_status.json",
           "url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/project_status.json"
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 18062,
-          "sha256": "3f75b0894d215e39f69b4a477c06132eba00d4ed67cf6e39a22716e08ee725b8",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fproject_status.json",
+          "bytes": 19360,
+          "sha256": "a7ef3b7998a7fa10d1aa1a462caa3df122884fdaa54fe5812b439e18288ebd5c",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fproject_status.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/project_status.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 18062,
-          "sha256": "3f75b0894d215e39f69b4a477c06132eba00d4ed67cf6e39a22716e08ee725b8",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fproject_status.json",
+          "bytes": 19360,
+          "sha256": "a7ef3b7998a7fa10d1aa1a462caa3df122884fdaa54fe5812b439e18288ebd5c",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fproject_status.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/project_status.json"
         }
       },
@@ -563,40 +659,48 @@
       "local": {
         "path": "docs/data/omni_model_comparison.json",
         "exists": true,
-        "bytes": 56941,
-        "sha256": "02f0d07e836356b775447764a8d6868ffd96d5bd1f5da6b4cc6969d5ae04a52e"
+        "bytes": 62577,
+        "sha256": "65b11e0a9eede70d71229737294ab15a729b421184b1c451237e5d820904e71b"
       },
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 56941,
-          "sha256": "02f0d07e836356b775447764a8d6868ffd96d5bd1f5da6b4cc6969d5ae04a52e",
+          "bytes": 62577,
+          "sha256": "65b11e0a9eede70d71229737294ab15a729b421184b1c451237e5d820904e71b",
           "final_url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/omni_model_comparison.json",
           "url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/omni_model_comparison.json"
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 56941,
-          "sha256": "02f0d07e836356b775447764a8d6868ffd96d5bd1f5da6b4cc6969d5ae04a52e",
+          "bytes": 62577,
+          "sha256": "65b11e0a9eede70d71229737294ab15a729b421184b1c451237e5d820904e71b",
           "final_url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/omni_model_comparison.json",
           "url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/omni_model_comparison.json"
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 56941,
-          "sha256": "02f0d07e836356b775447764a8d6868ffd96d5bd1f5da6b4cc6969d5ae04a52e",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fomni_model_comparison.json",
+          "bytes": 62577,
+          "sha256": "65b11e0a9eede70d71229737294ab15a729b421184b1c451237e5d820904e71b",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fomni_model_comparison.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/omni_model_comparison.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 56941,
-          "sha256": "02f0d07e836356b775447764a8d6868ffd96d5bd1f5da6b4cc6969d5ae04a52e",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fomni_model_comparison.json",
+          "bytes": 62577,
+          "sha256": "65b11e0a9eede70d71229737294ab15a729b421184b1c451237e5d820904e71b",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fomni_model_comparison.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/omni_model_comparison.json"
         }
       },
@@ -615,6 +719,8 @@
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 14511,
           "sha256": "ea7caff963fcf048f803a852e5cdae8d3975ba4a36d805c5e42211b1bf2744ef",
@@ -623,6 +729,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 14511,
           "sha256": "ea7caff963fcf048f803a852e5cdae8d3975ba4a36d805c5e42211b1bf2744ef",
@@ -631,18 +739,22 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 14511,
           "sha256": "ea7caff963fcf048f803a852e5cdae8d3975ba4a36d805c5e42211b1bf2744ef",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fevaluation_protocol.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fevaluation_protocol.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/evaluation_protocol.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 14511,
           "sha256": "ea7caff963fcf048f803a852e5cdae8d3975ba4a36d805c5e42211b1bf2744ef",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fevaluation_protocol.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fevaluation_protocol.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/evaluation_protocol.json"
         }
       },
@@ -661,6 +773,8 @@
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 7139,
           "sha256": "eb87b65ef2f6ef910b4cda29c33f3c75014a5cce8ebf8299f71eb09c856a2481",
@@ -669,6 +783,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 7139,
           "sha256": "eb87b65ef2f6ef910b4cda29c33f3c75014a5cce8ebf8299f71eb09c856a2481",
@@ -677,18 +793,22 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 7139,
           "sha256": "eb87b65ef2f6ef910b4cda29c33f3c75014a5cce8ebf8299f71eb09c856a2481",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fresearch_takeaways.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fresearch_takeaways.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/research_takeaways.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 7139,
           "sha256": "eb87b65ef2f6ef910b4cda29c33f3c75014a5cce8ebf8299f71eb09c856a2481",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fresearch_takeaways.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fresearch_takeaways.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/research_takeaways.json"
         }
       },
@@ -701,40 +821,48 @@
       "local": {
         "path": "docs/data/research_roadmap.json",
         "exists": true,
-        "bytes": 10246,
-        "sha256": "d34d763c3e880002f0b5de554b1b3f17b65f2cff24c5bc080ece938d04db2d06"
+        "bytes": 10502,
+        "sha256": "33725c2b41370e4d8b2df3d45f412ff75f398457ad81376eee1a2b0730101f6a"
       },
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 10246,
-          "sha256": "d34d763c3e880002f0b5de554b1b3f17b65f2cff24c5bc080ece938d04db2d06",
+          "bytes": 10502,
+          "sha256": "33725c2b41370e4d8b2df3d45f412ff75f398457ad81376eee1a2b0730101f6a",
           "final_url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/research_roadmap.json",
           "url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/research_roadmap.json"
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 10246,
-          "sha256": "d34d763c3e880002f0b5de554b1b3f17b65f2cff24c5bc080ece938d04db2d06",
+          "bytes": 10502,
+          "sha256": "33725c2b41370e4d8b2df3d45f412ff75f398457ad81376eee1a2b0730101f6a",
           "final_url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/research_roadmap.json",
           "url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/research_roadmap.json"
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 10246,
-          "sha256": "d34d763c3e880002f0b5de554b1b3f17b65f2cff24c5bc080ece938d04db2d06",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fresearch_roadmap.json",
+          "bytes": 10502,
+          "sha256": "33725c2b41370e4d8b2df3d45f412ff75f398457ad81376eee1a2b0730101f6a",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fresearch_roadmap.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/research_roadmap.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 10246,
-          "sha256": "d34d763c3e880002f0b5de554b1b3f17b65f2cff24c5bc080ece938d04db2d06",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fresearch_roadmap.json",
+          "bytes": 10502,
+          "sha256": "33725c2b41370e4d8b2df3d45f412ff75f398457ad81376eee1a2b0730101f6a",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fresearch_roadmap.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/research_roadmap.json"
         }
       },
@@ -747,40 +875,48 @@
       "local": {
         "path": "docs/data/research_roadmap_interactive.json",
         "exists": true,
-        "bytes": 143673,
-        "sha256": "ad989e7cf78a213543614e23f90d4f03e5f5617b3ec6be43dfcc4b3a22cd6ac6"
+        "bytes": 144016,
+        "sha256": "2bf6a55eecab539a1a29749fc11ef57ee35a1bbf60bafe12fd003e70bb93db33"
       },
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 143673,
-          "sha256": "ad989e7cf78a213543614e23f90d4f03e5f5617b3ec6be43dfcc4b3a22cd6ac6",
+          "bytes": 144016,
+          "sha256": "2bf6a55eecab539a1a29749fc11ef57ee35a1bbf60bafe12fd003e70bb93db33",
           "final_url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/research_roadmap_interactive.json",
           "url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/research_roadmap_interactive.json"
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 143673,
-          "sha256": "ad989e7cf78a213543614e23f90d4f03e5f5617b3ec6be43dfcc4b3a22cd6ac6",
+          "bytes": 144016,
+          "sha256": "2bf6a55eecab539a1a29749fc11ef57ee35a1bbf60bafe12fd003e70bb93db33",
           "final_url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/research_roadmap_interactive.json",
           "url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/research_roadmap_interactive.json"
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 143673,
-          "sha256": "ad989e7cf78a213543614e23f90d4f03e5f5617b3ec6be43dfcc4b3a22cd6ac6",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fresearch_roadmap_interactive.json",
+          "bytes": 144016,
+          "sha256": "2bf6a55eecab539a1a29749fc11ef57ee35a1bbf60bafe12fd003e70bb93db33",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fresearch_roadmap_interactive.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/research_roadmap_interactive.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
-          "bytes": 143673,
-          "sha256": "ad989e7cf78a213543614e23f90d4f03e5f5617b3ec6be43dfcc4b3a22cd6ac6",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fresearch_roadmap_interactive.json",
+          "bytes": 144016,
+          "sha256": "2bf6a55eecab539a1a29749fc11ef57ee35a1bbf60bafe12fd003e70bb93db33",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fresearch_roadmap_interactive.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/research_roadmap_interactive.json"
         }
       },
@@ -799,6 +935,8 @@
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 14117,
           "sha256": "3cb04da5c2807a3f7a5e196c5bf7d40dbe2a5d8143cefcb37323e1096889afa4",
@@ -807,6 +945,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 14117,
           "sha256": "3cb04da5c2807a3f7a5e196c5bf7d40dbe2a5d8143cefcb37323e1096889afa4",
@@ -815,18 +955,22 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 14117,
           "sha256": "3cb04da5c2807a3f7a5e196c5bf7d40dbe2a5d8143cefcb37323e1096889afa4",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Ffigure_index.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Ffigure_index.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/figure_index.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 14117,
           "sha256": "3cb04da5c2807a3f7a5e196c5bf7d40dbe2a5d8143cefcb37323e1096889afa4",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Ffigure_index.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Ffigure_index.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/figure_index.json"
         }
       },
@@ -845,6 +989,8 @@
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 26963,
           "sha256": "b93df37e7da1fcd5d3df7c2643b4659e2fef986dba52cb37a164874919ccc53a",
@@ -853,6 +999,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 26963,
           "sha256": "b93df37e7da1fcd5d3df7c2643b4659e2fef986dba52cb37a164874919ccc53a",
@@ -861,18 +1009,22 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 26963,
           "sha256": "b93df37e7da1fcd5d3df7c2643b4659e2fef986dba52cb37a164874919ccc53a",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Ftask_walkthroughs.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Ftask_walkthroughs.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/task_walkthroughs.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 26963,
           "sha256": "b93df37e7da1fcd5d3df7c2643b4659e2fef986dba52cb37a164874919ccc53a",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Ftask_walkthroughs.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Ftask_walkthroughs.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/task_walkthroughs.json"
         }
       },
@@ -891,6 +1043,8 @@
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 45779,
           "sha256": "ece1f964ae3face2151489cc9a24b43e446968af07e6e87d5f531733c27dcc35",
@@ -899,6 +1053,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 45779,
           "sha256": "ece1f964ae3face2151489cc9a24b43e446968af07e6e87d5f531733c27dcc35",
@@ -907,18 +1063,22 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 45779,
           "sha256": "ece1f964ae3face2151489cc9a24b43e446968af07e6e87d5f531733c27dcc35",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Ftask_surface_integrity.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Ftask_surface_integrity.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/task_surface_integrity.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 45779,
           "sha256": "ece1f964ae3face2151489cc9a24b43e446968af07e6e87d5f531733c27dcc35",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Ftask_surface_integrity.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Ftask_surface_integrity.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/task_surface_integrity.json"
         }
       },
@@ -937,6 +1097,8 @@
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 3898,
           "sha256": "883a4a3ec27b72bff0c1d53b72dd4ba872a4d1df0695fba5ebe3b11c036a4224",
@@ -945,6 +1107,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 3898,
           "sha256": "883a4a3ec27b72bff0c1d53b72dd4ba872a4d1df0695fba5ebe3b11c036a4224",
@@ -953,18 +1117,22 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 3898,
           "sha256": "883a4a3ec27b72bff0c1d53b72dd4ba872a4d1df0695fba5ebe3b11c036a4224",
-          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fbrand_assets.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fbrand_assets.json",
           "url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/brand_assets.json"
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 3898,
           "sha256": "883a4a3ec27b72bff0c1d53b72dd4ba872a4d1df0695fba5ebe3b11c036a4224",
-          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fbrand_assets.json",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fbrand_assets.json",
           "url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/brand_assets.json"
         }
       },
@@ -983,6 +1151,8 @@
       "mirrors": {
         "github_pages": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 201330,
           "sha256": "16e99ea98eb890e02aeb681e16b5163e1d5a9702d784dbd34ce3691e423a766a",
@@ -991,6 +1161,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 201330,
           "sha256": "16e99ea98eb890e02aeb681e16b5163e1d5a9702d784dbd34ce3691e423a766a",
@@ -999,6 +1171,8 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 201330,
           "sha256": "16e99ea98eb890e02aeb681e16b5163e1d5a9702d784dbd34ce3691e423a766a",
@@ -1007,6 +1181,8 @@
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 201330,
           "sha256": "16e99ea98eb890e02aeb681e16b5163e1d5a9702d784dbd34ce3691e423a766a",
@@ -1029,6 +1205,8 @@
       "mirrors": {
         "github_raw": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4880,
           "sha256": "526a38edffdb8e96eb7be3fc4ae4c8fab5a43ac4ed6e57137e9e0857c75b0a27",
@@ -1037,6 +1215,8 @@
         },
         "hf_space": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4880,
           "sha256": "526a38edffdb8e96eb7be3fc4ae4c8fab5a43ac4ed6e57137e9e0857c75b0a27",
@@ -1045,6 +1225,8 @@
         },
         "hf_artifacts": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4880,
           "sha256": "526a38edffdb8e96eb7be3fc4ae4c8fab5a43ac4ed6e57137e9e0857c75b0a27",
@@ -1053,6 +1235,8 @@
         },
         "hf_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 4880,
           "sha256": "526a38edffdb8e96eb7be3fc4ae4c8fab5a43ac4ed6e57137e9e0857c75b0a27",
@@ -1075,6 +1259,8 @@
       "mirrors": {
         "hf_qwen3_lora_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 3387,
           "sha256": "85189cd207f1dd8ae27f1da58175102940800c769bd90dc0018332cd79228641",
@@ -1097,6 +1283,8 @@
       "mirrors": {
         "hf_qwen3_lora_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 2502,
           "sha256": "800f46444e10adcb7734606fafda0195e0660ef2749f792ab9fb9919ffa1932e",
@@ -1119,6 +1307,8 @@
       "mirrors": {
         "hf_qwen3_lora_model": {
           "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
           "status_code": 200,
           "bytes": 1187,
           "sha256": "02fad3973be595a4109f8363b107b07257039013fd04b26537aba9f43b88d134",
@@ -1141,11 +1331,181 @@
       "mirrors": {
         "hf_qwen3_lora_model": {
           "ok": true,
+          "method": "curl",
+          "timeout_seconds": 240,
           "status_code": 200,
           "bytes": 69284456,
           "sha256": "97d049e1fe7e50a93e0e3179cbc175f30e75f98ec2e19a8f412347a47705eea5",
           "final_url": "https://cas-bridge.xethub.hf.co/xet-bridge-us/6a24aa8f77b6bd853fd1c263/4b61a44160d713b264046d77f357992ff72e734f9a9bc365ad2074efa28e7354",
           "url": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep/resolve/main/adapter_model.safetensors"
+        }
+      },
+      "failures": []
+    },
+    {
+      "id": "cosmos3_super_lora_README_md",
+      "title": "Cosmos3-Super LoRA repo file: README.md",
+      "status": "pass",
+      "local": {
+        "path": "../hf_publish/cosmos3_super_forward_dynamics_lora_128ep/README.md",
+        "exists": true,
+        "bytes": 3379,
+        "sha256": "96fe569772530be5b86431e3c79344f4c37720d16ee4a1b727e6ad16ee1a04a4"
+      },
+      "mirrors": {
+        "hf_cosmos3_super_lora_model": {
+          "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
+          "status_code": 200,
+          "bytes": 3379,
+          "sha256": "96fe569772530be5b86431e3c79344f4c37720d16ee4a1b727e6ad16ee1a04a4",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep/a50ddad07d5f8bfe57d6218cad79cc65b295d90c/README.md",
+          "url": "https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep/resolve/main/README.md"
+        }
+      },
+      "failures": []
+    },
+    {
+      "id": "cosmos3_super_lora_upload_manifest_json",
+      "title": "Cosmos3-Super LoRA repo file: upload_manifest.json",
+      "status": "pass",
+      "local": {
+        "path": "../hf_publish/cosmos3_super_forward_dynamics_lora_128ep/upload_manifest.json",
+        "exists": true,
+        "bytes": 2295,
+        "sha256": "4d73067b9f69ed13aa3e1ad8de47b33823de6c79d7bfa053ea32d3ccc9799276"
+      },
+      "mirrors": {
+        "hf_cosmos3_super_lora_model": {
+          "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
+          "status_code": 200,
+          "bytes": 2295,
+          "sha256": "4d73067b9f69ed13aa3e1ad8de47b33823de6c79d7bfa053ea32d3ccc9799276",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep/a50ddad07d5f8bfe57d6218cad79cc65b295d90c/upload_manifest.json",
+          "url": "https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep/resolve/main/upload_manifest.json"
+        }
+      },
+      "failures": []
+    },
+    {
+      "id": "cosmos3_super_lora_pytorch_lora_weights_safetensors",
+      "title": "Cosmos3-Super LoRA repo file: pytorch_lora_weights.safetensors",
+      "status": "pass",
+      "local": {
+        "path": "../hf_publish/cosmos3_super_forward_dynamics_lora_128ep/pytorch_lora_weights.safetensors",
+        "exists": true,
+        "bytes": 104903208,
+        "sha256": "44dd7614e7b7986a07bfeff4c6e897c4fbec7406b84e52c5e4b321cdf85ced16"
+      },
+      "mirrors": {
+        "hf_cosmos3_super_lora_model": {
+          "ok": true,
+          "method": "curl",
+          "timeout_seconds": 240,
+          "status_code": 200,
+          "bytes": 104903208,
+          "sha256": "44dd7614e7b7986a07bfeff4c6e897c4fbec7406b84e52c5e4b321cdf85ced16",
+          "final_url": "https://cas-bridge.xethub.hf.co/xet-bridge-us/6a266de81103266fee961edb/931735664032375a541323af6bdc60b1d8f8dffef7542f7a9ccdec34e661d034",
+          "url": "https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep/resolve/main/pytorch_lora_weights.safetensors"
+        }
+      },
+      "failures": []
+    },
+    {
+      "id": "cosmos3_super_lora_verified_result_summary_json",
+      "title": "Cosmos3-Super LoRA repo file: verified_result_summary.json",
+      "status": "pass",
+      "local": {
+        "path": "../hf_publish/cosmos3_super_forward_dynamics_lora_128ep/verified_result_summary.json",
+        "exists": true,
+        "bytes": 3978,
+        "sha256": "f70d7507537abcf9ac140f0f1b44d0dad7c5b324cc35635fd70c8f6f85d4ae94"
+      },
+      "mirrors": {
+        "hf_cosmos3_super_lora_model": {
+          "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
+          "status_code": 200,
+          "bytes": 3978,
+          "sha256": "f70d7507537abcf9ac140f0f1b44d0dad7c5b324cc35635fd70c8f6f85d4ae94",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep/a50ddad07d5f8bfe57d6218cad79cc65b295d90c/verified_result_summary.json",
+          "url": "https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep/resolve/main/verified_result_summary.json"
+        }
+      },
+      "failures": []
+    },
+    {
+      "id": "cosmos3_super_lora_package_audit_json",
+      "title": "Cosmos3-Super LoRA repo file: package_audit.json",
+      "status": "pass",
+      "local": {
+        "path": "../hf_publish/cosmos3_super_forward_dynamics_lora_128ep/package_audit.json",
+        "exists": true,
+        "bytes": 534,
+        "sha256": "9d63e5f0febe52f1dd78a67b3ef4db10b3ecc40c2ddd704b73b03995b220e35e"
+      },
+      "mirrors": {
+        "hf_cosmos3_super_lora_model": {
+          "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
+          "status_code": 200,
+          "bytes": 534,
+          "sha256": "9d63e5f0febe52f1dd78a67b3ef4db10b3ecc40c2ddd704b73b03995b220e35e",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep/a50ddad07d5f8bfe57d6218cad79cc65b295d90c/package_audit.json",
+          "url": "https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep/resolve/main/package_audit.json"
+        }
+      },
+      "failures": []
+    },
+    {
+      "id": "cosmos3_super_lora_eval_metrics_json",
+      "title": "Cosmos3-Super LoRA repo file: eval_metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "../hf_publish/cosmos3_super_forward_dynamics_lora_128ep/eval_metrics.json",
+        "exists": true,
+        "bytes": 142983,
+        "sha256": "40c0863faead8e0a852fd1efb3ba6f9e97cc8dd8327dd0d3a9fd12f9fff3b615"
+      },
+      "mirrors": {
+        "hf_cosmos3_super_lora_model": {
+          "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
+          "status_code": 200,
+          "bytes": 142983,
+          "sha256": "40c0863faead8e0a852fd1efb3ba6f9e97cc8dd8327dd0d3a9fd12f9fff3b615",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep/a50ddad07d5f8bfe57d6218cad79cc65b295d90c/eval_metrics.json",
+          "url": "https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep/resolve/main/eval_metrics.json"
+        }
+      },
+      "failures": []
+    },
+    {
+      "id": "cosmos3_super_lora_val_metrics_json",
+      "title": "Cosmos3-Super LoRA repo file: val_metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "../hf_publish/cosmos3_super_forward_dynamics_lora_128ep/val_metrics.json",
+        "exists": true,
+        "bytes": 146067,
+        "sha256": "0b7b86b2778fc62082fb55ed3a124c934353211692fdde8f2e52408614979b40"
+      },
+      "mirrors": {
+        "hf_cosmos3_super_lora_model": {
+          "ok": true,
+          "method": "urllib",
+          "timeout_seconds": 30,
+          "status_code": 200,
+          "bytes": 146067,
+          "sha256": "0b7b86b2778fc62082fb55ed3a124c934353211692fdde8f2e52408614979b40",
+          "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep/a50ddad07d5f8bfe57d6218cad79cc65b295d90c/val_metrics.json",
+          "url": "https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep/resolve/main/val_metrics.json"
         }
       },
       "failures": []
@@ -1159,12 +1519,14 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 181095,
-        "sha256": "856d5f9529fc30adbd995f45df43af0861f5e48b8fbfb14cb4e4313ede097dc1",
+        "bytes": 181231,
+        "sha256": "505299b45da4f751e3e6409a9a5e609e356b3d545bfce1186677b1c7aac15bcd",
         "final_url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/"
       },
-      "required_marker_count": 17,
+      "required_marker_count": 18,
       "missing_markers": [],
       "forbidden_markers_present": [],
       "failures": []
@@ -1176,12 +1538,14 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 181095,
-        "sha256": "856d5f9529fc30adbd995f45df43af0861f5e48b8fbfb14cb4e4313ede097dc1",
+        "bytes": 181231,
+        "sha256": "505299b45da4f751e3e6409a9a5e609e356b3d545bfce1186677b1c7aac15bcd",
         "final_url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/index.html"
       },
-      "required_marker_count": 17,
+      "required_marker_count": 18,
       "missing_markers": [],
       "forbidden_markers_present": [],
       "failures": []
@@ -1193,12 +1557,14 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 4195,
-        "sha256": "8cf024df1bbdf91f26ecfc46f56adccd43cb01036779afa901880e31efbc6ed5",
+        "bytes": 4333,
+        "sha256": "2103ff27d9e37b3068ad8a43f7679b09cd8237998098d97a45eb8e2261484b2a",
         "final_url": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/raw/main/README.md"
       },
-      "required_marker_count": 5,
+      "required_marker_count": 6,
       "missing_markers": [],
       "forbidden_markers_present": [],
       "failures": []
@@ -1210,6 +1576,8 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
         "bytes": 2770710,
         "sha256": "fea187795e701d5cf1b3d0cfd0ddb7d2c407a85309238a15006d4f928029213a",
@@ -1227,6 +1595,8 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
         "bytes": 2770710,
         "sha256": "fea187795e701d5cf1b3d0cfd0ddb7d2c407a85309238a15006d4f928029213a",
@@ -1244,12 +1614,14 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 70105,
-        "sha256": "b82ab58709b050c7e5c7c29c83f0f605a0003981bf67691a43ef1275fd8a89d3",
+        "bytes": 70399,
+        "sha256": "1b395d29d4297dae3a1d276fde8cc4aa5b7928b441e668e18fc127fb2716ef37",
         "final_url": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/raw/main/README.md"
       },
-      "required_marker_count": 5,
+      "required_marker_count": 6,
       "missing_markers": [],
       "forbidden_markers_present": [],
       "failures": []
@@ -1261,9 +1633,11 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 352006,
-        "sha256": "b5c4bd65c4e64d964945d994d94f827492ed50801676835c845c224e5b51c7ab",
+        "bytes": 409212,
+        "sha256": "c8d386a620b178fb9f0dea975309701011751c0f3941c65ceae2c71b3007a1bb",
         "final_url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/mirror_parity.json"
       },
       "required_marker_count": 1,
@@ -1278,6 +1652,8 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
         "bytes": 321031,
         "sha256": "fc1c5969252b3a7fa6e7ae2cadd48d9e9684b97d1066738eb29ff2ba96d8a3c3",
@@ -1295,10 +1671,12 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
         "bytes": 321031,
         "sha256": "fc1c5969252b3a7fa6e7ae2cadd48d9e9684b97d1066738eb29ff2ba96d8a3c3",
-        "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fmirror_parity.json"
+        "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fmirror_parity.json"
       },
       "required_marker_count": 1,
       "missing_markers": [],
@@ -1312,10 +1690,12 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
         "bytes": 321031,
         "sha256": "fc1c5969252b3a7fa6e7ae2cadd48d9e9684b97d1066738eb29ff2ba96d8a3c3",
-        "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fmirror_parity.json"
+        "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fmirror_parity.json"
       },
       "required_marker_count": 1,
       "missing_markers": [],
@@ -1329,9 +1709,11 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 7212,
-        "sha256": "953a9f057ce6740380034f4a57af9b72e6fa98ab4031a467abf58f4f2e29c5c1",
+        "bytes": 7213,
+        "sha256": "c1b8b623093313bb74670fc7017a5cf01f8f714264f872295eeed5f089fe0bc6",
         "final_url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/publication_audit.json"
       },
       "required_marker_count": 1,
@@ -1346,9 +1728,11 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 7212,
-        "sha256": "953a9f057ce6740380034f4a57af9b72e6fa98ab4031a467abf58f4f2e29c5c1",
+        "bytes": 7213,
+        "sha256": "c1b8b623093313bb74670fc7017a5cf01f8f714264f872295eeed5f089fe0bc6",
         "final_url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/publication_audit.json"
       },
       "required_marker_count": 1,
@@ -1363,10 +1747,12 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 7212,
-        "sha256": "953a9f057ce6740380034f4a57af9b72e6fa98ab4031a467abf58f4f2e29c5c1",
-        "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fpublication_audit.json"
+        "bytes": 7213,
+        "sha256": "c1b8b623093313bb74670fc7017a5cf01f8f714264f872295eeed5f089fe0bc6",
+        "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fpublication_audit.json"
       },
       "required_marker_count": 1,
       "missing_markers": [],
@@ -1380,10 +1766,12 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 7212,
-        "sha256": "953a9f057ce6740380034f4a57af9b72e6fa98ab4031a467abf58f4f2e29c5c1",
-        "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fpublication_audit.json"
+        "bytes": 7213,
+        "sha256": "c1b8b623093313bb74670fc7017a5cf01f8f714264f872295eeed5f089fe0bc6",
+        "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fpublication_audit.json"
       },
       "required_marker_count": 1,
       "missing_markers": [],
@@ -1397,9 +1785,11 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 15375,
-        "sha256": "01c062f36e7af7cf223310715aec8a1ab63efba741e4837fd0d3acd5ed8e8201",
+        "bytes": 15392,
+        "sha256": "11062298aad2c8475e18bda382d620439cfac5be5cf5a90e1a98173bab7dc62c",
         "final_url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/website_integrity.json"
       },
       "required_marker_count": 1,
@@ -1414,9 +1804,11 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 15375,
-        "sha256": "01c062f36e7af7cf223310715aec8a1ab63efba741e4837fd0d3acd5ed8e8201",
+        "bytes": 15392,
+        "sha256": "11062298aad2c8475e18bda382d620439cfac5be5cf5a90e1a98173bab7dc62c",
         "final_url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/website_integrity.json"
       },
       "required_marker_count": 1,
@@ -1431,10 +1823,12 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 15375,
-        "sha256": "01c062f36e7af7cf223310715aec8a1ab63efba741e4837fd0d3acd5ed8e8201",
-        "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fwebsite_integrity.json"
+        "bytes": 15392,
+        "sha256": "11062298aad2c8475e18bda382d620439cfac5be5cf5a90e1a98173bab7dc62c",
+        "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fwebsite_integrity.json"
       },
       "required_marker_count": 1,
       "missing_markers": [],
@@ -1448,10 +1842,12 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 15375,
-        "sha256": "01c062f36e7af7cf223310715aec8a1ab63efba741e4837fd0d3acd5ed8e8201",
-        "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fwebsite_integrity.json"
+        "bytes": 15392,
+        "sha256": "11062298aad2c8475e18bda382d620439cfac5be5cf5a90e1a98173bab7dc62c",
+        "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fwebsite_integrity.json"
       },
       "required_marker_count": 1,
       "missing_markers": [],
@@ -1465,9 +1861,11 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 5591,
-        "sha256": "28f4c5fece8bfe7d46e6e8c3f5c7ca712ffe5a4ed4f5ca9e39655ada8f3e65f1",
+        "bytes": 5588,
+        "sha256": "9fdc57330afafda1b78ee5e9d90c34f8ed0b6210783cccc0efcbb75d3539644a",
         "final_url": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/public_surface_qa.json"
       },
       "required_marker_count": 1,
@@ -1482,9 +1880,11 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 5591,
-        "sha256": "28f4c5fece8bfe7d46e6e8c3f5c7ca712ffe5a4ed4f5ca9e39655ada8f3e65f1",
+        "bytes": 5588,
+        "sha256": "9fdc57330afafda1b78ee5e9d90c34f8ed0b6210783cccc0efcbb75d3539644a",
         "final_url": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/public_surface_qa.json"
       },
       "required_marker_count": 1,
@@ -1499,10 +1899,12 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 5591,
-        "sha256": "28f4c5fece8bfe7d46e6e8c3f5c7ca712ffe5a4ed4f5ca9e39655ada8f3e65f1",
-        "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/7bca22f6fd6ca061d90e1075fc6b48c47c6814a3/docs%2Fdata%2Fpublic_surface_qa.json"
+        "bytes": 5588,
+        "sha256": "9fdc57330afafda1b78ee5e9d90c34f8ed0b6210783cccc0efcbb75d3539644a",
+        "final_url": "https://huggingface.co/api/resolve-cache/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/f13b71d2b84f02b693189d6580deb5327a40f587/docs%2Fdata%2Fpublic_surface_qa.json"
       },
       "required_marker_count": 1,
       "missing_markers": [],
@@ -1516,10 +1918,12 @@
       "status": "pass",
       "fetch": {
         "ok": true,
+        "method": "urllib",
+        "timeout_seconds": 30,
         "status_code": 200,
-        "bytes": 5591,
-        "sha256": "28f4c5fece8bfe7d46e6e8c3f5c7ca712ffe5a4ed4f5ca9e39655ada8f3e65f1",
-        "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/09da36cba4e609375216e2b6781defdb89ef5702/metrics%2Fpublic_surface_qa.json"
+        "bytes": 5588,
+        "sha256": "9fdc57330afafda1b78ee5e9d90c34f8ed0b6210783cccc0efcbb75d3539644a",
+        "final_url": "https://huggingface.co/api/resolve-cache/models/cy0307/ropedia-xperience-10m-task-baselines/d0f5abd6ca89d4ccd48fef2b02a4268a6cd68d54/metrics%2Fpublic_surface_qa.json"
       },
       "required_marker_count": 1,
       "missing_markers": [],
