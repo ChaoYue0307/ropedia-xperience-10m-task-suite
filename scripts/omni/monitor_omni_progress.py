@@ -113,32 +113,51 @@ def shard_export_summary(dataset_dir: Path) -> dict:
     if not shard_root.exists():
         return {}
     rows = []
+    now = time.time()
     for shard_dir in sorted(shard_root.glob("shard_*")):
         shard_bytes = 0
         media_count = 0
         sensor_count = 0
+        latest_mtime = 0.0
+        latest_file: str | None = None
         media_root = shard_dir / "media"
         sensor_root = shard_dir / "sensor_features"
         if media_root.exists():
             for path in media_root.rglob("*"):
                 if path.is_file():
                     media_count += 1
-                    shard_bytes += path.stat().st_size
+                    stat = path.stat()
+                    shard_bytes += stat.st_size
+                    if stat.st_mtime > latest_mtime:
+                        latest_mtime = stat.st_mtime
+                        latest_file = str(path)
         if sensor_root.exists():
             for path in sensor_root.rglob("*"):
                 if path.is_file():
                     sensor_count += 1
-                    shard_bytes += path.stat().st_size
+                    stat = path.stat()
+                    shard_bytes += stat.st_size
+                    if stat.st_mtime > latest_mtime:
+                        latest_mtime = stat.st_mtime
+                        latest_file = str(path)
         manifest = shard_dir / "dataset_manifest.json"
+        if manifest.exists():
+            stat = manifest.stat()
+            if stat.st_mtime > latest_mtime:
+                latest_mtime = stat.st_mtime
+                latest_file = str(manifest)
         rows.append({
             "shard": shard_dir.name,
             "media_files": media_count,
             "sensor_files": sensor_count,
             "bytes": shard_bytes,
             "size": human_bytes(shard_bytes),
+            "latest_file": latest_file,
+            "latest_file_age_seconds": round(now - latest_mtime, 1) if latest_mtime else None,
             "done": manifest.exists(),
             "samples": read_json(manifest).get("num_samples") if manifest.exists() else None,
         })
+    latest_ages = [float(row["latest_file_age_seconds"]) for row in rows if row["latest_file_age_seconds"] is not None]
     return {
         "num_shards": len(rows),
         "done_shards": sum(1 for row in rows if row["done"]),
@@ -146,6 +165,8 @@ def shard_export_summary(dataset_dir: Path) -> dict:
         "sensor_files": sum(row["sensor_files"] for row in rows),
         "bytes": sum(int(row["bytes"]) for row in rows),
         "size": human_bytes(sum(int(row["bytes"]) for row in rows)),
+        "freshest_file_age_seconds": min(latest_ages) if latest_ages else None,
+        "staleest_shard_file_age_seconds": max(latest_ages) if latest_ages else None,
         "shards": rows,
     }
 
@@ -402,7 +423,26 @@ def main() -> int:
     print("\nExport summary:")
     export_summary = shard_export_summary(dataset_dir)
     if export_summary:
-        compact = {key: export_summary[key] for key in ("num_shards", "done_shards", "media_files", "sensor_files", "size")}
+        compact = {
+            key: export_summary[key]
+            for key in (
+                "num_shards",
+                "done_shards",
+                "media_files",
+                "sensor_files",
+                "size",
+                "freshest_file_age_seconds",
+                "staleest_shard_file_age_seconds",
+            )
+        }
+        freshest_age = compact.get("freshest_file_age_seconds")
+        compact["write_health"] = (
+            "active"
+            if freshest_age is not None and float(freshest_age) <= args.stale_seconds
+            else "stale"
+            if freshest_age is not None
+            else "unknown"
+        )
         print(json.dumps(compact, indent=2))
         print(json.dumps(export_summary["shards"], indent=2))
     else:
