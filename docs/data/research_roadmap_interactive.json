@@ -2222,7 +2222,7 @@
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-08T06:50:10+00:00",
+  "generated_at_utc": "2026-06-08T12:22:13+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -2331,6 +2331,27 @@
       "reader_takeaway": "The simple and neural baseline framing is now aligned to the selected 128-episode setup; trajectory, retrieval, reconstruction, and misalignment variants still need raw 128 feature blocks for exact feature-level reproduction.",
       "stage": "future",
       "status": "verified_companion_result"
+    },
+    {
+      "completion_evidence": [
+        "TASK_SUITE_ENHANCEMENT_128.md",
+        "docs/data/task_suite_enhancement_128.json",
+        "results/omni_finetune/task_suite_enhancement_128_v1_20260608/enhancement_plan.json",
+        "scripts/omni/build_task_suite_enhancement_128.py"
+      ],
+      "deliverables": [
+        "dense-window and multiscale export estimates",
+        "hierarchical action/subtask target contract",
+        "raw-feature shard priorities for unsupported tasks",
+        "Qwen v5 and Cosmos continuation run cards",
+        "publication-ready enhancement artifacts"
+      ],
+      "entry_condition": "Same selected 96/16/16 split and current public 3,808-window export.",
+      "id": "task_suite_enhancement_128",
+      "name": "128-Episode Task Suite Enhancement Pack",
+      "reader_takeaway": "The current 128-episode setup still has headroom: use multiscale_20s10_40s20_80s40, hierarchical labels, label-normalized scoring, and raw-feature shards before adding more episodes.",
+      "stage": "future",
+      "status": "current"
     },
     {
       "completion_evidence": [

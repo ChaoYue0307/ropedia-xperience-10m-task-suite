@@ -1,0 +1,8 @@
+id,estimated_windows,multiplier_vs_current_export,window_frames,stride_frames,role,source_note
+current_export,3808,1.0,20,selected_sparse_windows,current public 128-episode JSON-task export,Estimated from current public-safe window frame spans; the real exporter must still validate raw-stream availability and label coverage.
+dense_20f_stride20,30422,7.99,20,20,non-overlap dense coverage over each observed episode frame span,Estimated from current public-safe window frame spans; the real exporter must still validate raw-stream availability and label coverage.
+dense_20f_stride10,60725,15.95,20,10,2x overlap action/subtask densification,Estimated from current public-safe window frame spans; the real exporter must still validate raw-stream availability and label coverage.
+dense_20f_stride5,121331,31.86,20,5,high-overlap action boundary and transition stress setting,Estimated from current public-safe window frame spans; the real exporter must still validate raw-stream availability and label coverage.
+medium_40f_stride20,30303,7.96,40,20,subtask/procedure context window,Estimated from current public-safe window frame spans; the real exporter must still validate raw-stream availability and label coverage.
+long_80f_stride40,15067,3.96,80,40,procedure and world-model context window,Estimated from current public-safe window frame spans; the real exporter must still validate raw-stream availability and label coverage.
+multiscale_20s10_40s20_80s40,106095,27.86,,,recommended no-new-episode v5 export: short action windows plus medium/long procedure context,Composite planning estimate; store as a new export run rather than replacing existing 128-episode packages.

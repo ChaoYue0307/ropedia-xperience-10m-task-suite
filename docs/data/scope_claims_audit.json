@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-08T07:55:13+00:00",
+  "generated_at_utc": "2026-06-08T12:27:44+00:00",
   "summary": {
     "qwen3_omni_verified_diagnostic_pilot": true,
     "dataset_manifest_num_episodes": 119,
@@ -35,7 +35,7 @@
       "status": "pass",
       "detail": "episodes=119, samples=3808, split_counts={'train': 2848, 'val': 512, 'test': 448}",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/dataset/dataset_manifest.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full/dataset/dataset_manifest.json"
       ]
     },
     {
@@ -43,7 +43,7 @@
       "status": "pass",
       "detail": "train=2848, val=512, processes=8",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/training/training_metadata.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full/training/training_metadata.json"
       ]
     },
     {
@@ -51,7 +51,7 @@
       "status": "pass",
       "detail": "samples=448, split=test, held_out=14, json_validity=1.0",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/eval/metrics.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full/eval/metrics.json"
       ]
     },
     {
@@ -59,7 +59,7 @@
       "status": "pass",
       "detail": "audit_status=pass, issues=0",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/package_audit.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full/package_audit.json"
       ]
     },
     {

@@ -250,6 +250,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "PROJECT_STATUS.md",
         "RESEARCH_ROADMAP.md",
         "RESEARCH_TAKEAWAYS.md",
+        "TASK_SUITE_ENHANCEMENT_128.md",
         "QUALITY_GATES.md",
         "PUBLIC_SURFACE_QA.md",
         "RENDERED_SITE_CHECK.md",
@@ -293,6 +294,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "docs/data/task_surface_integrity.json",
         "docs/data/website_integrity.json",
         "docs/data/summary_metrics.json",
+        "docs/data/task_suite_enhancement_128.json",
         "docs/assets/modalities/video.jpg",
         "docs/assets/modalities/audio.png",
         "docs/assets/modalities/depth.jpg",
@@ -332,7 +334,10 @@ def required_assets(root: Path) -> dict[str, bool]:
         "scripts/validate_task_surface.py",
         "scripts/validate_website_integrity.py",
         "scripts/publish_hf_bundles.py",
+        "scripts/omni/build_task_suite_enhancement_128.py",
         "scripts/omni/train_qwen3_omni_lora.py",
+        "results/omni_finetune/task_suite_enhancement_128_v1_20260608/enhancement_plan.json",
+        "results/omni_finetune/task_suite_enhancement_128_v1_20260608/ENHANCEMENT_REPORT.md",
     ]
     return {item: (root / item).exists() for item in required}
 

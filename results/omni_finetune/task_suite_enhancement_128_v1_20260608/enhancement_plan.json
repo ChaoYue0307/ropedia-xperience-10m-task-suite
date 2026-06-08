@@ -1,0 +1,599 @@
+{
+  "title": "Ropedia Xperience-10M 128-Episode Task Suite Enhancement Pack",
+  "status": "pass",
+  "run_id": "task_suite_enhancement_128_v1_20260608",
+  "generated_at_utc": "2026-06-08T12:30:01+00:00",
+  "scope": "No-new-episode enhancement plan over the current selected 128-episode 96/16/16 split.",
+  "current_128_split": {
+    "total_windows": 3808,
+    "split_windows": {
+      "test": 448,
+      "train": 2848,
+      "val": 512
+    },
+    "selected_episode_counts": {
+      "test": 16,
+      "train": 96,
+      "val": 16
+    },
+    "windowed_episode_counts": {
+      "test": 14,
+      "train": 89,
+      "val": 16
+    },
+    "unique_main_tasks": 106,
+    "windows_per_episode": {
+      "min": 32,
+      "median": 32,
+      "max": 32
+    }
+  },
+  "dense_window_scenarios": [
+    {
+      "id": "current_export",
+      "window_frames": 20,
+      "stride_frames": "selected_sparse_windows",
+      "role": "current public 128-episode JSON-task export",
+      "estimated_windows": 3808,
+      "estimated_split_windows": {
+        "test": 448,
+        "train": 2848,
+        "val": 512
+      },
+      "multiplier_vs_current_export": 1.0,
+      "source_note": "Estimated from current public-safe window frame spans; the real exporter must still validate raw-stream availability and label coverage."
+    },
+    {
+      "id": "dense_20f_stride20",
+      "window_frames": 20,
+      "stride_frames": 20,
+      "role": "non-overlap dense coverage over each observed episode frame span",
+      "estimated_windows": 30422,
+      "estimated_split_windows": {
+        "test": 3383,
+        "train": 22822,
+        "val": 4217
+      },
+      "multiplier_vs_current_export": 7.99,
+      "source_note": "Estimated from current public-safe window frame spans; the real exporter must still validate raw-stream availability and label coverage."
+    },
+    {
+      "id": "dense_20f_stride10",
+      "window_frames": 20,
+      "stride_frames": 10,
+      "role": "2x overlap action/subtask densification",
+      "estimated_windows": 60725,
+      "estimated_split_windows": {
+        "test": 6752,
+        "train": 45555,
+        "val": 8418
+      },
+      "multiplier_vs_current_export": 15.95,
+      "source_note": "Estimated from current public-safe window frame spans; the real exporter must still validate raw-stream availability and label coverage."
+    },
+    {
+      "id": "dense_20f_stride5",
+      "window_frames": 20,
+      "stride_frames": 5,
+      "role": "high-overlap action boundary and transition stress setting",
+      "estimated_windows": 121331,
+      "estimated_split_windows": {
+        "test": 13490,
+        "train": 91021,
+        "val": 16820
+      },
+      "multiplier_vs_current_export": 31.86,
+      "source_note": "Estimated from current public-safe window frame spans; the real exporter must still validate raw-stream availability and label coverage."
+    },
+    {
+      "id": "medium_40f_stride20",
+      "window_frames": 40,
+      "stride_frames": 20,
+      "role": "subtask/procedure context window",
+      "estimated_windows": 30303,
+      "estimated_split_windows": {
+        "test": 3369,
+        "train": 22733,
+        "val": 4201
+      },
+      "multiplier_vs_current_export": 7.96,
+      "source_note": "Estimated from current public-safe window frame spans; the real exporter must still validate raw-stream availability and label coverage."
+    },
+    {
+      "id": "long_80f_stride40",
+      "window_frames": 80,
+      "stride_frames": 40,
+      "role": "procedure and world-model context window",
+      "estimated_windows": 15067,
+      "estimated_split_windows": {
+        "test": 1674,
+        "train": 11305,
+        "val": 2088
+      },
+      "multiplier_vs_current_export": 3.96,
+      "source_note": "Estimated from current public-safe window frame spans; the real exporter must still validate raw-stream availability and label coverage."
+    },
+    {
+      "id": "multiscale_20s10_40s20_80s40",
+      "role": "recommended no-new-episode v5 export: short action windows plus medium/long procedure context",
+      "components": [
+        "dense_20f_stride10",
+        "medium_40f_stride20",
+        "long_80f_stride40"
+      ],
+      "estimated_windows": 106095,
+      "estimated_split_windows": {
+        "test": 11795,
+        "train": 79593,
+        "val": 14707
+      },
+      "multiplier_vs_current_export": 27.86,
+      "source_note": "Composite planning estimate; store as a new export run rather than replacing existing 128-episode packages."
+    }
+  ],
+  "hierarchical_target_contract": {
+    "id": "xperience10m_128_hierarchical_action_targets_v1",
+    "status": "ready_for_export",
+    "purpose": "Reduce fine-grained label sparsity without changing the sealed 96/16/16 episode split.",
+    "target_fields": [
+      {
+        "field": "action_family",
+        "source": "normalized true action string",
+        "values": [
+          "locomotion",
+          "reach_grasp_release",
+          "place_arrange_align",
+          "manipulate_adjust",
+          "tool_cut_mark_write",
+          "sort_count_organize",
+          "inspect_observe_use",
+          "clean_cook",
+          "other_fine_action",
+          "unknown"
+        ],
+        "metric": "macro_f1"
+      },
+      {
+        "field": "action_verb",
+        "source": "first normalized verb phrase from action label",
+        "metric": "macro_f1 with train-seen and unseen slices"
+      },
+      {
+        "field": "fine_action",
+        "source": "existing action label",
+        "metric": "exact match and label-normalized semantic family match"
+      },
+      {
+        "field": "subtask_family",
+        "source": "normalized subtask phrase or main task fallback",
+        "metric": "accuracy and macro_f1"
+      },
+      {
+        "field": "contact_transition",
+        "source": "existing contact and transition fields",
+        "metric": "accuracy, balanced accuracy, calibration"
+      },
+      {
+        "field": "object_set",
+        "source": "existing objects list",
+        "metric": "micro_f1 and object-category recall"
+      }
+    ],
+    "public_safety": [
+      "No raw MP4/HDF5/RRD files are written.",
+      "No full Qwen/Cosmos weights are mirrored.",
+      "Generated labels and aggregate metrics remain public-safe derived metadata."
+    ]
+  },
+  "task_bottlenecks": [
+    {
+      "task": "next_action",
+      "display_name": "Next-Action Prediction",
+      "priority": "highest",
+      "simple_status": "pass",
+      "simple_primary_metric": "macro_f1",
+      "simple_primary_score": 0.00019966057701906761,
+      "neural_status": "pass",
+      "neural_primary_score": 0.0,
+      "num_classes": 1184,
+      "unseen_test_class_count": 145,
+      "bottleneck": "fine-grained label explosion and held-out unseen labels",
+      "next_action": "add hierarchical action/subtask families plus label-normalized scoring"
+    },
+    {
+      "task": "timeline_action",
+      "display_name": "Action Recognition",
+      "priority": "highest",
+      "simple_status": "pass",
+      "simple_primary_metric": "macro_f1",
+      "simple_primary_score": 0.00017511601435951318,
+      "neural_status": "pass",
+      "neural_primary_score": 0.0,
+      "num_classes": 1187,
+      "unseen_test_class_count": 144,
+      "bottleneck": "fine-grained label explosion and held-out unseen labels",
+      "next_action": "add hierarchical action/subtask families plus label-normalized scoring"
+    },
+    {
+      "task": "timeline_subtask",
+      "display_name": "Procedure Step Recognition",
+      "priority": "highest",
+      "simple_status": "pass",
+      "simple_primary_metric": "macro_f1",
+      "simple_primary_score": 0.0,
+      "neural_status": "pass",
+      "neural_primary_score": 0.0,
+      "num_classes": 850,
+      "unseen_test_class_count": 113,
+      "bottleneck": "fine-grained label explosion and held-out unseen labels",
+      "next_action": "add hierarchical action/subtask families plus label-normalized scoring"
+    },
+    {
+      "task": "cross_modal_retrieval",
+      "display_name": "Cross-Modal Retrieval",
+      "priority": "high",
+      "simple_status": "unsupported_without_raw_128_feature_blocks",
+      "simple_primary_metric": "mrr",
+      "simple_primary_score": null,
+      "neural_status": "not_run",
+      "neural_primary_score": null,
+      "num_classes": null,
+      "unseen_test_class_count": null,
+      "bottleneck": "missing raw 128-episode feature blocks",
+      "next_action": "export compact raw-feature shards for this task before model comparison"
+    },
+    {
+      "task": "hand_trajectory_forecast",
+      "display_name": "Hand Trajectory Forecasting",
+      "priority": "high",
+      "simple_status": "unsupported_without_raw_128_feature_blocks",
+      "simple_primary_metric": "mpjpe",
+      "simple_primary_score": null,
+      "neural_status": "not_run",
+      "neural_primary_score": null,
+      "num_classes": null,
+      "unseen_test_class_count": null,
+      "bottleneck": "missing raw 128-episode feature blocks",
+      "next_action": "export compact raw-feature shards for this task before model comparison"
+    },
+    {
+      "task": "misalignment_detection",
+      "display_name": "Multimodal Synchronization Detection",
+      "priority": "high",
+      "simple_status": "unsupported_without_raw_128_feature_blocks",
+      "simple_primary_metric": "f1",
+      "simple_primary_score": null,
+      "neural_status": "not_run",
+      "neural_primary_score": null,
+      "num_classes": null,
+      "unseen_test_class_count": null,
+      "bottleneck": "missing raw 128-episode feature blocks",
+      "next_action": "export compact raw-feature shards for this task before model comparison"
+    },
+    {
+      "task": "modality_reconstruction",
+      "display_name": "Cross-Modal Reconstruction",
+      "priority": "high",
+      "simple_status": "unsupported_without_raw_128_feature_blocks",
+      "simple_primary_metric": "r2",
+      "simple_primary_score": null,
+      "neural_status": "not_run",
+      "neural_primary_score": null,
+      "num_classes": null,
+      "unseen_test_class_count": null,
+      "bottleneck": "missing raw 128-episode feature blocks",
+      "next_action": "export compact raw-feature shards for this task before model comparison"
+    },
+    {
+      "task": "caption_grounding",
+      "display_name": "Language Grounding",
+      "priority": "medium",
+      "simple_status": "pass",
+      "simple_primary_metric": "mrr",
+      "simple_primary_score": 0.012785504572093487,
+      "neural_status": "not_run",
+      "neural_primary_score": null,
+      "num_classes": null,
+      "unseen_test_class_count": null,
+      "bottleneck": "weak public-safe metadata/text baseline",
+      "next_action": "add dense windows and stronger fusion baselines before interpreting model quality"
+    },
+    {
+      "task": "contact_prediction",
+      "display_name": "Contact State Prediction",
+      "priority": "medium",
+      "simple_status": "pass",
+      "simple_primary_metric": "macro_f1",
+      "simple_primary_score": 0.5167950693374422,
+      "neural_status": "pass",
+      "neural_primary_score": 0.21951219512195122,
+      "num_classes": 2,
+      "unseen_test_class_count": 0,
+      "bottleneck": "usable control task",
+      "next_action": "keep as sanity/control metric for future dense-window and model runs"
+    },
+    {
+      "task": "object_relevance",
+      "display_name": "Object Relevance Prediction",
+      "priority": "medium",
+      "simple_status": "pass",
+      "simple_primary_metric": "micro_f1",
+      "simple_primary_score": 0.18221614227086183,
+      "neural_status": "pass",
+      "neural_primary_score": 0.1053878034339846,
+      "num_classes": null,
+      "unseen_test_class_count": null,
+      "bottleneck": "moderate task signal, still needs robustness split",
+      "next_action": "add session/task-family slices and bootstrap confidence intervals"
+    },
+    {
+      "task": "temporal_order",
+      "display_name": "Temporal Order Verification",
+      "priority": "medium",
+      "simple_status": "pass",
+      "simple_primary_metric": "f1",
+      "simple_primary_score": 0.32713178294573647,
+      "neural_status": "not_run",
+      "neural_primary_score": null,
+      "num_classes": 2,
+      "unseen_test_class_count": null,
+      "bottleneck": "usable control task",
+      "next_action": "keep as sanity/control metric for future dense-window and model runs"
+    },
+    {
+      "task": "transition_detection",
+      "display_name": "Action Boundary Detection",
+      "priority": "medium",
+      "simple_status": "pass",
+      "simple_primary_metric": "macro_f1",
+      "simple_primary_score": 0.5219803670507895,
+      "neural_status": "pass",
+      "neural_primary_score": 0.45822172492907925,
+      "num_classes": 2,
+      "unseen_test_class_count": 0,
+      "bottleneck": "usable control task",
+      "next_action": "keep as sanity/control metric for future dense-window and model runs"
+    }
+  ],
+  "qwen_v4_error_pressure": {
+    "run_id": "xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full",
+    "samples": 448,
+    "json_validity_rate": 1.0,
+    "action_macro_f1": 0.0018678269676001454,
+    "subtask_accuracy": 0.0,
+    "next_action_accuracy": 0.033482142857142856,
+    "contact_accuracy": 0.7299107142857143,
+    "transition_accuracy": 0.9732142857142857,
+    "object_micro_f1": 0.31099781500364165,
+    "num_unseen_label_samples": 317,
+    "unseen_label_sample_share": 0.7075892857142857,
+    "seen_label_accuracy": 0.09923664122137404,
+    "unseen_label_accuracy": 0.0031545741324921135,
+    "eval_unique_labels": 189,
+    "eval_singleton_label_count": 42,
+    "eval_singleton_label_share": 0.2222222222222222,
+    "action_family_error_summary": [
+      {
+        "family": "manipulate_adjust",
+        "samples": 98,
+        "action_exact_rate": 0.030612244897959183,
+        "seen_share": 0.22448979591836735,
+        "contact_exact_rate": 0.7959183673469388,
+        "transition_exact_rate": 1.0
+      },
+      {
+        "family": "reach_grasp_release",
+        "samples": 88,
+        "action_exact_rate": 0.011363636363636364,
+        "seen_share": 0.45454545454545453,
+        "contact_exact_rate": 0.7954545454545454,
+        "transition_exact_rate": 0.9318181818181818
+      },
+      {
+        "family": "other_fine_action",
+        "samples": 73,
+        "action_exact_rate": 0.0,
+        "seen_share": 0.2465753424657534,
+        "contact_exact_rate": 0.7945205479452054,
+        "transition_exact_rate": 0.9726027397260274
+      },
+      {
+        "family": "place_arrange_align",
+        "samples": 65,
+        "action_exact_rate": 0.03076923076923077,
+        "seen_share": 0.26153846153846155,
+        "contact_exact_rate": 0.5384615384615384,
+        "transition_exact_rate": 0.9692307692307692
+      },
+      {
+        "family": "sort_count_organize",
+        "samples": 36,
+        "action_exact_rate": 0.0,
+        "seen_share": 0.1388888888888889,
+        "contact_exact_rate": 0.6388888888888888,
+        "transition_exact_rate": 1.0
+      },
+      {
+        "family": "tool_cut_mark_write",
+        "samples": 28,
+        "action_exact_rate": 0.25,
+        "seen_share": 0.6428571428571429,
+        "contact_exact_rate": 1.0,
+        "transition_exact_rate": 1.0
+      },
+      {
+        "family": "inspect_observe_use",
+        "samples": 27,
+        "action_exact_rate": 0.0,
+        "seen_share": 0.37037037037037035,
+        "contact_exact_rate": 0.6666666666666666,
+        "transition_exact_rate": 0.9629629629629629
+      },
+      {
+        "family": "locomotion",
+        "samples": 27,
+        "action_exact_rate": 0.0,
+        "seen_share": 0.037037037037037035,
+        "contact_exact_rate": 0.48148148148148145,
+        "transition_exact_rate": 1.0
+      },
+      {
+        "family": "clean_cook",
+        "samples": 6,
+        "action_exact_rate": 0.16666666666666666,
+        "seen_share": 0.0,
+        "contact_exact_rate": 0.6666666666666666,
+        "transition_exact_rate": 0.8333333333333334
+      }
+    ],
+    "top_true_objects": [
+      {
+        "object": "smartphone",
+        "count": 134
+      },
+      {
+        "object": "table",
+        "count": 56
+      },
+      {
+        "object": "scissors",
+        "count": 47
+      },
+      {
+        "object": "water bottle",
+        "count": 43
+      },
+      {
+        "object": "pen",
+        "count": 41
+      },
+      {
+        "object": "paper",
+        "count": 34
+      },
+      {
+        "object": "cardboard",
+        "count": 32
+      },
+      {
+        "object": "utility knife",
+        "count": 32
+      },
+      {
+        "object": "marker",
+        "count": 31
+      },
+      {
+        "object": "puzzle box",
+        "count": 31
+      },
+      {
+        "object": "paper strips",
+        "count": 29
+      },
+      {
+        "object": "buttons",
+        "count": 28
+      },
+      {
+        "object": "cardboard box",
+        "count": 25
+      },
+      {
+        "object": "ruler",
+        "count": 23
+      },
+      {
+        "object": "power bank",
+        "count": 21
+      },
+      {
+        "object": "star beads",
+        "count": 21
+      },
+      {
+        "object": "cardboard pieces",
+        "count": 20
+      },
+      {
+        "object": "hand",
+        "count": 19
+      },
+      {
+        "object": "canned food",
+        "count": 19
+      },
+      {
+        "object": "jigsaw puzzle",
+        "count": 19
+      }
+    ]
+  },
+  "cosmos3_super_forward_dynamics_reference": {
+    "status": "verified",
+    "run_id": null,
+    "train_rows": null,
+    "val_rows": null,
+    "test_rows": null,
+    "test_mse": null,
+    "adapter_parameter_numel": null
+  },
+  "experiment_backlog": [
+    {
+      "id": "dense_window_export_v1",
+      "priority": 1,
+      "status": "ready_to_implement",
+      "goal": "Create a new dense-window export over the same 128 episodes without replacing existing JSONL packages.",
+      "expected_artifacts": [
+        "dataset_dense_20f_stride10.jsonl",
+        "dataset_dense_multiscale_manifest.json",
+        "label_family_distribution.json"
+      ],
+      "gate": "episode ids and split assignment must exactly match the current 96/16/16 split"
+    },
+    {
+      "id": "hierarchical_qwen3_v5",
+      "priority": 2,
+      "status": "ready_after_dense_export",
+      "goal": "Train/evaluate Qwen3 with hierarchical action/subtask targets, constrained label options, and no-public-overwrite packaging.",
+      "suggested_setup": "high-rank LoRA or partial projector/last-layer unfreeze before full-parameter tuning",
+      "primary_comparison": "Qwen3 v4 action/subtask/next-action plus seen/unseen-label slices"
+    },
+    {
+      "id": "raw_feature_unblocker_128",
+      "priority": 3,
+      "status": "ready_to_implement_on_training_host",
+      "goal": "Export compact 128-episode raw feature shards for tasks currently marked unsupported_without_raw_128_feature_blocks.",
+      "target_tasks": [
+        "hand_trajectory_forecast",
+        "cross_modal_retrieval",
+        "modality_reconstruction",
+        "misalignment_detection"
+      ]
+    },
+    {
+      "id": "cosmos3_fd_v2_multiscale",
+      "priority": 4,
+      "status": "ready_after_dense_export",
+      "goal": "Continue Cosmos3-Super forward-dynamics with multiscale horizons and temporal consistency metrics.",
+      "primary_comparison": "Cosmos3-Super Forward-Dynamics v1 validation/test MSE and rank-level loss records"
+    },
+    {
+      "id": "robustness_and_confidence_pack",
+      "priority": 5,
+      "status": "ready_from_existing_outputs",
+      "goal": "Add bootstrap confidence intervals, task-family slices, session slices, and random-time/random-label sanity checks.",
+      "public_output": "results/omni_finetune/task_suite_enhancement_128_v1_20260608/robustness_pack_v1.json"
+    }
+  ],
+  "public_artifacts": {
+    "result_dir": "results/omni_finetune/task_suite_enhancement_128_v1_20260608",
+    "public_json": "docs/data/task_suite_enhancement_128.json",
+    "public_markdown": "TASK_SUITE_ENHANCEMENT_128.md"
+  },
+  "non_overwrite_policy": {
+    "result_directory_created_once": true,
+    "stable_public_summaries_update_to_latest_enhancement_pack": true,
+    "prior_model_result_packages_overwritten": false
+  }
+}

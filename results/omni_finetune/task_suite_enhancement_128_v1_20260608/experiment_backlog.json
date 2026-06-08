@@ -1,0 +1,51 @@
+{
+  "status": "pass",
+  "experiments": [
+    {
+      "id": "dense_window_export_v1",
+      "priority": 1,
+      "status": "ready_to_implement",
+      "goal": "Create a new dense-window export over the same 128 episodes without replacing existing JSONL packages.",
+      "expected_artifacts": [
+        "dataset_dense_20f_stride10.jsonl",
+        "dataset_dense_multiscale_manifest.json",
+        "label_family_distribution.json"
+      ],
+      "gate": "episode ids and split assignment must exactly match the current 96/16/16 split"
+    },
+    {
+      "id": "hierarchical_qwen3_v5",
+      "priority": 2,
+      "status": "ready_after_dense_export",
+      "goal": "Train/evaluate Qwen3 with hierarchical action/subtask targets, constrained label options, and no-public-overwrite packaging.",
+      "suggested_setup": "high-rank LoRA or partial projector/last-layer unfreeze before full-parameter tuning",
+      "primary_comparison": "Qwen3 v4 action/subtask/next-action plus seen/unseen-label slices"
+    },
+    {
+      "id": "raw_feature_unblocker_128",
+      "priority": 3,
+      "status": "ready_to_implement_on_training_host",
+      "goal": "Export compact 128-episode raw feature shards for tasks currently marked unsupported_without_raw_128_feature_blocks.",
+      "target_tasks": [
+        "hand_trajectory_forecast",
+        "cross_modal_retrieval",
+        "modality_reconstruction",
+        "misalignment_detection"
+      ]
+    },
+    {
+      "id": "cosmos3_fd_v2_multiscale",
+      "priority": 4,
+      "status": "ready_after_dense_export",
+      "goal": "Continue Cosmos3-Super forward-dynamics with multiscale horizons and temporal consistency metrics.",
+      "primary_comparison": "Cosmos3-Super Forward-Dynamics v1 validation/test MSE and rank-level loss records"
+    },
+    {
+      "id": "robustness_and_confidence_pack",
+      "priority": 5,
+      "status": "ready_from_existing_outputs",
+      "goal": "Add bootstrap confidence intervals, task-family slices, session slices, and random-time/random-label sanity checks.",
+      "public_output": "results/omni_finetune/task_suite_enhancement_128_v1_20260608/robustness_pack_v1.json"
+    }
+  ]
+}
