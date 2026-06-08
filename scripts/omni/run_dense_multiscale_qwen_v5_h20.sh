@@ -31,6 +31,10 @@ GRADIENT_ACCUMULATION_STEPS="${GRADIENT_ACCUMULATION_STEPS:-8}"
 MAX_VAL_SAMPLES="${MAX_VAL_SAMPLES:-1024}"
 EVAL_SAMPLE_LIMIT="${EVAL_SAMPLE_LIMIT:-0}"
 MAX_NEW_TOKENS="${MAX_NEW_TOKENS:-96}"
+EVAL_SHARDS="${EVAL_SHARDS:-8}"
+EVAL_CUDA_DEVICE_GROUPS="${EVAL_CUDA_DEVICE_GROUPS:-0 1 2 3 4 5 6 7}"
+EVAL_DEVICE_MAP="${EVAL_DEVICE_MAP:-auto}"
+EVAL_DTYPE="${EVAL_DTYPE:-bfloat16}"
 
 RUN_DIR="$RESULT_ROOT/$RUN_ID"
 MANIFEST="$RUN_DIR/episode_manifest.json"
@@ -217,17 +221,21 @@ else
 fi
 
 if [[ ! -s "$EVAL_DIR/metrics.json" ]]; then
-  json_log event=eval_start run_id="${RUN_ID}_eval_test_full" eval_sample_limit="$EVAL_SAMPLE_LIMIT"
-  CUDA_VISIBLE_DEVICES="${EVAL_CUDA_VISIBLE_DEVICES:-0}" \
-  "$VENV_PY" scripts/omni/eval_qwen3_omni_lora.py \
-    --dataset-jsonl "$MERGED_DATASET_JSONL" \
-    --model-id "$MODEL_DIR" \
-    --adapter-dir "$ADAPTER_DIR" \
-    --run-id "${RUN_ID}_eval_test_full" \
-    --eval-split test \
-    --sample-limit "$EVAL_SAMPLE_LIMIT" \
-    --max-new-tokens "$MAX_NEW_TOKENS" \
-    --local-files-only
+  json_log event=eval_start run_id="${RUN_ID}_eval_test_full" eval_sample_limit="$EVAL_SAMPLE_LIMIT" eval_shards="$EVAL_SHARDS"
+  VENV_PY="$VENV_PY" \
+  DATASET_JSONL="$MERGED_DATASET_JSONL" \
+  MODEL_DIR="$MODEL_DIR" \
+  ADAPTER_DIR="$ADAPTER_DIR" \
+  RUN_ID="${RUN_ID}_eval_test_full" \
+  EVAL_SPLIT=test \
+  SAMPLE_LIMIT="$EVAL_SAMPLE_LIMIT" \
+  MAX_NEW_TOKENS="$MAX_NEW_TOKENS" \
+  SHARDS="$EVAL_SHARDS" \
+  CUDA_DEVICE_GROUPS="$EVAL_CUDA_DEVICE_GROUPS" \
+  DEVICE_MAP="$EVAL_DEVICE_MAP" \
+  DTYPE="$EVAL_DTYPE" \
+  LOCAL_FILES_ONLY=1 \
+  scripts/omni/run_qwen3_omni_lora_eval_sharded.sh
   json_log event=eval_done metrics="$EVAL_DIR/metrics.json"
 else
   json_log event=eval_skip metrics="$EVAL_DIR/metrics.json"
