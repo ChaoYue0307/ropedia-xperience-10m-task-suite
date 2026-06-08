@@ -118,8 +118,15 @@ def shard_export_summary(dataset_dir: Path) -> dict:
         shard_bytes = 0
         media_count = 0
         sensor_count = 0
+        expected_episodes = None
         latest_mtime = 0.0
         latest_file: str | None = None
+        shard_manifest = shard_root / f"manifest_{shard_dir.name}.json"
+        if shard_manifest.exists():
+            manifest_payload = read_json(shard_manifest)
+            episodes = manifest_payload.get("episodes") if isinstance(manifest_payload, dict) else None
+            if isinstance(episodes, list):
+                expected_episodes = len(episodes)
         media_root = shard_dir / "media"
         sensor_root = shard_dir / "sensor_features"
         if media_root.exists():
@@ -150,19 +157,26 @@ def shard_export_summary(dataset_dir: Path) -> dict:
             "shard": shard_dir.name,
             "media_files": media_count,
             "sensor_files": sensor_count,
+            "expected_episodes": expected_episodes,
             "bytes": shard_bytes,
             "size": human_bytes(shard_bytes),
             "latest_file": latest_file,
-            "latest_file_age_seconds": round(now - latest_mtime, 1) if latest_mtime else None,
+            "latest_file_age_seconds": round(max(0.0, now - latest_mtime), 1) if latest_mtime else None,
             "done": manifest.exists(),
             "samples": read_json(manifest).get("num_samples") if manifest.exists() else None,
         })
     latest_ages = [float(row["latest_file_age_seconds"]) for row in rows if row["latest_file_age_seconds"] is not None]
+    expected_episode_total = sum(int(row["expected_episodes"]) for row in rows if row["expected_episodes"] is not None)
+    processed_episode_total = sum(row["sensor_files"] for row in rows)
     return {
         "num_shards": len(rows),
         "done_shards": sum(1 for row in rows if row["done"]),
         "media_files": sum(row["media_files"] for row in rows),
         "sensor_files": sum(row["sensor_files"] for row in rows),
+        "expected_episodes": expected_episode_total or None,
+        "episode_sensor_progress_fraction": (
+            round(processed_episode_total / expected_episode_total, 4) if expected_episode_total else None
+        ),
         "bytes": sum(int(row["bytes"]) for row in rows),
         "size": human_bytes(sum(int(row["bytes"]) for row in rows)),
         "freshest_file_age_seconds": min(latest_ages) if latest_ages else None,
@@ -430,6 +444,8 @@ def main() -> int:
                 "done_shards",
                 "media_files",
                 "sensor_files",
+                "expected_episodes",
+                "episode_sensor_progress_fraction",
                 "size",
                 "freshest_file_age_seconds",
                 "staleest_shard_file_age_seconds",
