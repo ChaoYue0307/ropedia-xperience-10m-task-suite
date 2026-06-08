@@ -92,6 +92,16 @@ ARTIFACT_VIEWER_CONFIG = """configs:
       - split: public_sample
         path: viewer/episode_windows.jsonl
 """
+ENHANCEMENT_MARKER = "docs/data/task_suite_enhancement_128.json"
+ENHANCEMENT_CARD_BLOCK = """
+## 128-Episode Enhancement Pack
+
+The no-new-episode suite push is recorded in `TASK_SUITE_ENHANCEMENT_128.md`
+and `docs/data/task_suite_enhancement_128.json`. It recommends
+`multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets,
+label-normalized scoring, and compact raw-feature shards before adding more
+episodes.
+"""
 
 SPACE_CARD_METADATA = """---
 title: Ropedia Xperience-10M Task Suite
@@ -280,6 +290,22 @@ def ensure_repo_card_metadata(readme_path: Path, metadata: str) -> None:
     readme_path.write_text(metadata.rstrip() + "\n\n" + readme, encoding="utf-8")
 
 
+def ensure_enhancement_card_links(hf_root: Path) -> None:
+    for relative_path in ("artifacts/README.md", "model/README.md"):
+        path = hf_root / relative_path
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        if ENHANCEMENT_MARKER in text:
+            continue
+        insert_before = "\n## Dataset Boundary" if relative_path.startswith("artifacts/") else "\n## Start Here"
+        if insert_before in text:
+            text = text.replace(insert_before, ENHANCEMENT_CARD_BLOCK + insert_before, 1)
+        else:
+            text = text.rstrip() + "\n" + ENHANCEMENT_CARD_BLOCK
+        path.write_text(text, encoding="utf-8")
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--hf-root", type=Path, default=DEFAULT_HF_ROOT)
@@ -412,6 +438,7 @@ def main() -> int:
     ensure_artifact_dataset_viewer_config(hf_root)
     ensure_repo_card_metadata(hf_root / "space/README.md", SPACE_CARD_METADATA)
     ensure_repo_card_metadata(hf_root / "model/README.md", BASELINE_MODEL_CARD_METADATA)
+    ensure_enhancement_card_links(hf_root)
 
     token = args.token or get_token() or getpass.getpass("HF token: ").strip()
     if not token:

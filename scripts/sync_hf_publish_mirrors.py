@@ -22,6 +22,16 @@ STALE_MIRROR_FILES = [
     "artifacts/scripts/omni/collect_qwen3_v4_publication_artifacts.py",
     "model/scripts/omni/collect_qwen3_v4_publication_artifacts.py",
 ]
+ENHANCEMENT_MARKER = "docs/data/task_suite_enhancement_128.json"
+ENHANCEMENT_CARD_BLOCK = """
+## 128-Episode Enhancement Pack
+
+The no-new-episode suite push is recorded in `TASK_SUITE_ENHANCEMENT_128.md`
+and `docs/data/task_suite_enhancement_128.json`. It recommends
+`multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets,
+label-normalized scoring, and compact raw-feature shards before adding more
+episodes.
+"""
 
 
 def load_parity_module():
@@ -64,6 +74,26 @@ def prune_stale_files(hf_root: Path, *, dry_run: bool) -> list[str]:
         if not dry_run:
             path.unlink()
     return removed
+
+
+def ensure_enhancement_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
+    updated = []
+    for relative_path in ("artifacts/README.md", "model/README.md"):
+        path = hf_root / relative_path
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        if ENHANCEMENT_MARKER in text:
+            continue
+        insert_before = "\n## Dataset Boundary" if relative_path.startswith("artifacts/") else "\n## Start Here"
+        if insert_before in text:
+            text = text.replace(insert_before, ENHANCEMENT_CARD_BLOCK + insert_before, 1)
+        else:
+            text = text.rstrip() + "\n" + ENHANCEMENT_CARD_BLOCK
+        updated.append(relative_path)
+        if not dry_run:
+            path.write_text(text, encoding="utf-8")
+    return updated
 
 
 def main() -> int:
@@ -145,12 +175,14 @@ def main() -> int:
             dry_run=args.dry_run,
         )
 
+    card_updates = ensure_enhancement_card_links(hf_root, dry_run=args.dry_run)
     summary = {
         "status": "dry_run" if args.dry_run else "synced",
         "hf_root": hf_root.as_posix(),
         "copy_count": len(copied),
         "removed_stale_count": len(removed),
         "removed_stale": removed,
+        "card_updates": card_updates,
         "records": copied,
     }
     if args.json:
