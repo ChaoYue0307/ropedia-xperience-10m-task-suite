@@ -34,6 +34,12 @@
     "cosmos3_super_reasoner_verified": true,
     "cosmos3_super_reasoner_test_predictions": 448,
     "cosmos3_super_reasoner_json_validity_rate": 0.5111607142857143,
+    "cosmos3_super_forward_dynamics_lora_verified": true,
+    "cosmos3_super_forward_dynamics_train_rows": 2848,
+    "cosmos3_super_forward_dynamics_val_rows": 512,
+    "cosmos3_super_forward_dynamics_test_rows": 448,
+    "cosmos3_super_forward_dynamics_test_mse": 3.6853174321087345,
+    "cosmos3_super_forward_dynamics_adapter_params": 26214400,
     "omni_model_comparison_available": true,
     "multi_episode_128_aligned_baselines": true,
     "multi_episode_128_baseline_window_counts": {
@@ -119,7 +125,7 @@
         "FOUNDATION_MODEL_PLAN.md",
         "docs/data/foundation_model_plan.json"
       ],
-      "readout": "Qwen3-Omni remains the first trainable held-out LoRA baseline; Cosmos 3 is now represented by a verified Cosmos3-Nano future-window compatibility package, a verified Cosmos3-Super base-weight Reasoner evaluation, and a Cosmos3-Super camera-pose proxy forward-dynamics contract audit plus schema-only packer smoke. The current target supports vision-velocity training under action conditioning, not supervised action-token prediction; OpenVLA/openpi/GR00T are policy candidates after robot-compatible action targets are explicit."
+      "readout": "Qwen3-Omni remains the first structured JSON LoRA baseline; Cosmos 3 is now represented by a verified Cosmos3-Nano future-window compatibility package, a verified Cosmos3-Super base-weight Reasoner evaluation, and a verified Cosmos3-Super Forward-Dynamics LoRA over camera-pose proxy targets. The Super LoRA target supports vision-velocity training under action conditioning, not supervised action-token prediction; OpenVLA/openpi/GR00T remain policy candidates after robot-compatible action targets are explicit."
     },
     {
       "area": "Omni model extension contract",
@@ -207,7 +213,7 @@
         "results/omni_finetune/OMNI_MODEL_COMPARISON.md",
         "scripts/omni/build_omni_model_comparison.py"
       ],
-      "readout": "The public comparison now has two views: the three result layers and a model-family grouping. The model grouping pairs 1-episode and 128-episode entries for task-head baselines, separates Qwen3-Omni sensor-adapter smoke from 128-episode LoRA diagnostics, and separates Cosmos3-Nano future-window compatibility from Cosmos3-Super base-weight Reasoner evaluation."
+      "readout": "The public comparison now has two views: the three result layers and a model-family grouping. The model grouping pairs 1-episode and 128-episode entries for task-head baselines, separates Qwen3-Omni sensor-adapter smoke from 128-episode LoRA diagnostics, separates Cosmos3-Nano future-window compatibility from Cosmos3-Super base-weight Reasoner evaluation, and adds Cosmos3-Super Forward-Dynamics LoRA as a loss-based fine-tuned adapter branch."
     },
     {
       "area": "Qwen3-Omni fine-tuning",
@@ -246,7 +252,7 @@
     },
     {
       "area": "Cosmos3-Super action-target contract",
-      "status": "ready_for_forward_dynamics_trainer_implementation",
+      "status": "superseded_by_verified_forward_dynamics_lora",
       "evidence": [
         "scripts/omni/export_cosmos3_camera_pose_targets.py",
         "scripts/omni/pack_cosmos3_super_action_batch.py",
@@ -254,7 +260,19 @@
         "results/omni_finetune/xperience10m_cosmos3_super_training_contract_audit_camera_pose_20260608/training_contract_audit.json",
         "results/omni_finetune/xperience10m_cosmos3_super_action_packer_schema_smoke_20260608/packer_summary.json"
       ],
-      "readout": "The selected 128-episode JSONL is augmented with 3,808/3,808 valid camera_pose proxy cosmos_action_target records from SLAM pose deltas. The schema-only packer smoke confirms the current forward_dynamics target should supervise noisy vision tokens under camera-pose conditioning; it does not supervise preds_action. Remaining work is a pipeline-loaded packer check, one-sample forward-dynamics overfit, and a separate policy/inverse target export before claiming action-token prediction."
+      "readout": "The selected 128-episode JSONL is augmented with 3,808/3,808 valid camera_pose proxy cosmos_action_target records from SLAM pose deltas. The contract and packer smoke enabled the verified forward-dynamics LoRA run; it supervises noisy vision tokens under camera-pose conditioning and does not supervise preds_action."
+    },
+    {
+      "area": "Cosmos3-Super Forward-Dynamics LoRA",
+      "status": "verified_fine_tuned_adapter_result",
+      "evidence": [
+        "configs/omni_backbones/cosmos3_super_forward_dynamics.json",
+        "scripts/omni/train_cosmos3_super_forward_dynamics_lora.py",
+        "scripts/omni/eval_cosmos3_super_forward_dynamics_lora.py",
+        "results/omni_finetune/verified_public/xperience10m_cosmos3_super_forward_dynamics_lora_128ep_train1epoch_256_attn_full8gpu_20260608_eval_test_full_fsdp/verified_result_summary.json",
+        "results/omni_finetune/verified_public/xperience10m_cosmos3_super_forward_dynamics_lora_128ep_train1epoch_256_attn_full8gpu_20260608_eval_test_full_fsdp/package_audit.json"
+      ],
+      "readout": "The first fine-tuned Cosmos3-Super adapter branch is verified as a public-safe package: 8-GPU FSDP LoRA, 26.2M adapter parameters, 2,848 train rows, 512 validation rows, 448 held-out test rows, validation MSE 4.0082, and test MSE 3.6853. The package excludes adapter safetensors; weights are published separately at cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep."
     },
     {
       "area": "Raw Xperience-10M redistribution",
@@ -288,11 +306,11 @@
     "Use docs/data/omni_model_comparison.json to compare both views: the single-episode/128-baseline/model-branch result layers and the model-family grouping for task heads, Qwen3-Omni LoRA, Cosmos3-Nano, and Cosmos3-Super.",
     "Use docs/data/omni_finetune_verified_result.json and the latest verified_public final Qwen package for current held-out results.",
     "The 128-episode aligned simple/NN baselines use metadata/text features from the derived Qwen JSONL export; they align the split and task ids but do not replace raw-modality baselines for trajectory, retrieval, reconstruction, or misalignment tasks.",
-    "The Cosmos3-Nano future-window branch is verified as a compatibility adapter result, Cosmos3-Super Reasoner is verified as a base-weight evaluation, and Cosmos3-Super camera-pose forward-dynamics targets now pass the contract audit plus a schema-only packer smoke; one-episode Cosmos fine-tuning and full Cosmos adapter/diffusion-weight fine-tuning remain pending, so no Cosmos weight repo should be published yet.",
+    "The Cosmos3-Nano future-window branch is verified as a compatibility adapter result, Cosmos3-Super Reasoner is verified as a base-weight evaluation, and Cosmos3-Super Forward-Dynamics LoRA is verified as the first fine-tuned Super adapter branch. Cosmos3-Super adapter weights belong in cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep; verified_public packages exclude safetensors.",
     "The current reconstruction task reconstructs feature vectors, not pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
     "Audio is one of the synchronized source modalities in the current task representation.",
     "The audio ablation report compares audio/no-audio variants across all 12 task contracts in results/audio_ablation/.",
-    "Foundation-model selection is explicit: Qwen3-Omni is the immediate trainable pilot, Cosmos 3 is the first world-model branch, Cosmos3-Super has a camera-pose proxy forward-dynamics contract ready for trainer implementation, and policy models such as OpenVLA/openpi/GR00T wait for robot-compatible action-target conversion.",
+    "Foundation-model selection is explicit: Qwen3-Omni is the structured JSON baseline, Cosmos 3 is the world-model branch with Nano compatibility and Super forward-dynamics LoRA results, and policy models such as OpenVLA/openpi/GR00T wait for robot-compatible action-target conversion.",
     "Future model branches should be added through the backbone registry and verified package contract, not as one-off result folders with incompatible metrics or publication rules.",
     "The Xperience Embodied Foundation Model is a future native-pretraining goal, not a completed model or current benchmark."
   ]

@@ -145,15 +145,14 @@ objectives: audio-visible alignment, future-window prediction,
 action-conditioned world modeling, synthetic-data usefulness tests, policy-style
 next action, contact, object relevance, and affordance reasoning.
 
-Current Cosmos3-Super status: a camera-pose proxy action target export now
-augments all 3,808 selected 128-episode windows and passes the contract audit.
-A schema-only batch-packer smoke confirms the current `forward_dynamics` target
-uses camera-pose actions as conditioning and should supervise noisy vision
-tokens, not `preds_action`. This is a trainer-readiness artifact, not a
-fine-tuned Cosmos weight release. The next Cosmos step is a pipeline-loaded
-packer check and one-sample forward-dynamics overfit before any 96/16/16 Super
-LoRA run; supervised action-token prediction needs a separate policy or
-inverse-dynamics target export.
+Current Cosmos3-Super status: a camera-pose proxy action target export augments
+all 3,808 selected 128-episode windows, passes the contract audit, and now has
+a verified 8-GPU FSDP forward-dynamics LoRA run. The full run trains 26.2M LoRA
+parameters on 2,848 train rows and evaluates 512 validation plus 448 held-out
+test rows. It supervises noisy future vision velocity under camera-pose action
+conditioning, not semantic JSON labels or `preds_action`; supervised
+action-token prediction still needs a separate policy or inverse-dynamics
+target export.
 
 ### 7. Xperience Embodied Foundation Model Pretraining
 

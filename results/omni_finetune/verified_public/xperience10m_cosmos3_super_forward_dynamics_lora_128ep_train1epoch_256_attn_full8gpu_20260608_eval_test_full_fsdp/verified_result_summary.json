@@ -1,0 +1,124 @@
+{
+  "backbone": "cosmos3_super_forward_dynamics",
+  "backbone_display_name": "Cosmos3-Super Forward-Dynamics LoRA",
+  "dataset": {
+    "action_target": {
+      "chunk_size": 8,
+      "domain_name": "camera_pose",
+      "raw_action_dim": 9,
+      "rows_augmented": 3808,
+      "target_kind": "slam_camera_pose_delta_proxy_v1"
+    },
+    "num_episodes": 119,
+    "num_samples": 3808,
+    "skipped_episodes": 9,
+    "split_counts": {
+      "test": 448,
+      "train": 2848,
+      "val": 512
+    }
+  },
+  "dataset_contract": "xperience10m_camera_pose_forward_dynamics_v1",
+  "dataset_run_id": "xperience10m_cosmos3_camera_pose_targets_20260608",
+  "eval": {
+    "eval_split": "test",
+    "held_out_episode_count": 14,
+    "num_eval_episodes": 14,
+    "num_samples": 448,
+    "prediction_file": "loss_records.jsonl",
+    "prediction_rows": 448,
+    "primary_metrics": {
+      "adapter_parameter_numel": 26214400,
+      "held_out_episode_count": 14,
+      "test_forward_dynamics_mse": 3.6853174321087345,
+      "train_final_loss": 1.0785235166549683,
+      "val_forward_dynamics_mse": 4.008244896889664
+    }
+  },
+  "eval_run_id": "xperience10m_cosmos3_super_forward_dynamics_lora_128ep_train1epoch_256_attn_full8gpu_20260608_eval_test_full_fsdp",
+  "excluded_policy": "Raw Xperience-10M media/annotations, base-model weights, LoRA adapter weights, checkpoints, and large archives are not included.",
+  "included_files": [
+    "dataset/dataset_manifest.json",
+    "dataset/episode_manifest.json",
+    "dataset/target_manifest.json",
+    "eval/RUN_REPORT.md",
+    "eval/loss_records.jsonl",
+    "eval/metrics.json",
+    "eval/progress/progress_rank0.jsonl",
+    "eval/progress/progress_rank1.jsonl",
+    "eval/progress/progress_rank2.jsonl",
+    "eval/progress/progress_rank3.jsonl",
+    "eval/progress/progress_rank4.jsonl",
+    "eval/progress/progress_rank5.jsonl",
+    "eval/progress/progress_rank6.jsonl",
+    "eval/progress/progress_rank7.jsonl",
+    "eval/rank_metrics/rank_0_metrics.json",
+    "eval/rank_metrics/rank_1_metrics.json",
+    "eval/rank_metrics/rank_2_metrics.json",
+    "eval/rank_metrics/rank_3_metrics.json",
+    "eval/rank_metrics/rank_4_metrics.json",
+    "eval/rank_metrics/rank_5_metrics.json",
+    "eval/rank_metrics/rank_6_metrics.json",
+    "eval/rank_metrics/rank_7_metrics.json",
+    "eval/val_metrics.json",
+    "training/adapter_repair_audit.json",
+    "training/adapter_shape_check_raw_fsdp.json",
+    "training/progress.jsonl",
+    "training/training_metadata.json",
+    "validation/eval.json"
+  ],
+  "public_package_allowed": [
+    "loss metrics",
+    "rank-level eval metrics",
+    "progress logs",
+    "run reports",
+    "episode and dataset manifests",
+    "adapter repair audit",
+    "validation summaries"
+  ],
+  "public_package_forbidden": [
+    ".bin",
+    ".ckpt",
+    ".gz",
+    ".hdf5",
+    ".mov",
+    ".mp4",
+    ".pt",
+    ".pth",
+    ".rrd",
+    ".safetensors",
+    ".tar",
+    ".zip"
+  ],
+  "required_eval_files": [
+    "metrics.json",
+    "RUN_REPORT.md",
+    "loss_records.jsonl"
+  ],
+  "status": "verified",
+  "train_run_id": "xperience10m_cosmos3_super_forward_dynamics_lora_128ep_train1epoch_256_attn_full8gpu_20260608",
+  "training": {
+    "final_loss": 1.0785235166549683,
+    "history": [
+      {
+        "epoch": 1,
+        "note": "FSDP 8-GPU LoRA over camera-pose-conditioned future vision velocity loss; adapter weights are excluded from this public package.",
+        "train_loss": 1.0785235166549683,
+        "val_loss": 4.008244896889664
+      }
+    ],
+    "max_steps": 356,
+    "num_processes": 8,
+    "num_train_samples": 2848,
+    "num_val_samples": 512,
+    "trainable_params": 26214400
+  },
+  "training_objective": "camera_pose_conditioned_future_vision_velocity_lora",
+  "validation_summary": {
+    "held_out_episode_count": 14,
+    "test_eval_samples": 448,
+    "test_forward_dynamics_mse": 3.6853174321087345,
+    "train_final_loss": 1.0785235166549683,
+    "val_forward_dynamics_mse": 4.008244896889664
+  }
+}

@@ -1,6 +1,6 @@
 # Omni Model Comparison
 
-Generated: `2026-06-07T23:37:45+00:00`
+Generated: `2026-06-08T07:13:32+00:00`
 
 Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and the two Cosmos3 targets answer different questions: Nano future-window retrieval versus Super structured JSON Reasoner evaluation.
 
@@ -16,7 +16,7 @@ Read the three rows this way:
 
 - Version 1 is the public-sample 12-task harness with minimal and neural heads.
 - Version 2 is the selected 128-episode same-split simple/NN baseline alignment.
-- Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, and Cosmos3-Super Reasoner is a base-weight JSON-task evaluation; Cosmos3-Super has a camera-pose forward-dynamics contract audit and schema-only packer smoke, but no new fine-tuned weight release.
+- Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, Cosmos3-Super Reasoner is a base-weight JSON-task evaluation, and Cosmos3-Super Forward-Dynamics LoRA is the first Super fine-tuned adapter branch.
 
 ## Model-Family Grouped View
 
@@ -24,7 +24,7 @@ Read the three rows this way:
 - Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.
 - Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; the newest verified full-eval 128-episode adapter belongs in the Qwen LoRA model repo.
 - Cosmos3-Nano has a 128-episode future-window compatibility package.
-- Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a camera-pose forward-dynamics contract audit; create a separate Cosmos model repo only after a trainable multi-GPU/offload run produces real Cosmos adapter or fine-tuned weights.
+- Cosmos3-Super now has both a 128-episode base-weight Reasoner evaluation on the JSON task and a fine-tuned forward-dynamics LoRA branch over camera-pose proxy targets.
 
 ### Minimal and Neural Task Heads
 
@@ -45,7 +45,7 @@ The one-episode Qwen entry is only a sensor-adapter smoke test with Qwen3 weight
 
 | scope | status | run | counts | metrics | source |
 | --- | --- | --- | --- | --- | --- |
-| 1 episode | verified_smoke | Qwen3-Omni Sensor-Adapter Smoke | 1 episodes, 59 windows/samples | accuracy=0.0000, macro_f1=0.0000 | `results/omni_exploration/qwen3_adapter_smoke/metrics.json` |
+| 1 episode | verified_smoke | Qwen3-Omni Sensor-Adapter Smoke | 1 episodes, 59 windows/samples | train_final_loss=1.4479, accuracy=0.0000, macro_f1=0.0000 | `results/omni_exploration/qwen3_adapter_smoke/metrics.json` |
 | 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.8750, action_macro_f1=0.0027, transition_accuracy=0.8504, contact_accuracy=0.6451 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/verified_result_summary.json` |
 | 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.8527, action_macro_f1=0.0021, transition_accuracy=0.8281, contact_accuracy=0.6518 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full/verified_result_summary.json` |
 | 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.9978, action_macro_f1=0.0024, transition_accuracy=0.9710, contact_accuracy=0.7188 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full/verified_result_summary.json` |
@@ -65,7 +65,7 @@ The current 128-episode Cosmos result is a public-safe future-window compatibili
 
 ### Cosmos3-Super Reasoner
 
-Cosmos3-Super is now represented by a verified 448-window held-out Reasoner evaluation on the same JSON task as Qwen3. It uses staged base weights through vLLM, so it is a model-branch diagnostic, not a weight release. A camera-pose proxy forward-dynamics target export now passes the contract audit and schema-only packer smoke; true Cosmos3-Super fine-tuning is still blocked until a trainable multi-GPU/offload path produces adapter or fine-tuned weights.
+Cosmos3-Super is now represented by a verified 448-window held-out Reasoner evaluation on the same JSON task as Qwen3. It uses staged base weights through vLLM, so it is a model-branch diagnostic, not a weight release. A camera-pose proxy forward-dynamics target export now passes the contract audit and schema-only packer smoke; the separate Forward-Dynamics LoRA group records the trainable adapter run and loss-based held-out evaluation.
 
 - Weight repo policy: none for this run; staged base weights only, no new fine-tuned weights
 
@@ -76,6 +76,17 @@ Cosmos3-Super is now represented by a verified 448-window held-out Reasoner eval
 | action target contract | ready_for_forward_dynamics_trainer | Cosmos3-Super Camera-Pose Target Audit | 3808 windows/samples | domain_name=camera_pose, raw_action_dim=9, mode=forward_dynamics, valid_action_targets=3808, weights_updated=False | `results/omni_finetune/xperience10m_cosmos3_super_training_contract_audit_camera_pose_20260608/training_contract_audit.json` |
 | batch packer | pass | Cosmos3-Super Action Batch Packer Smoke | 1 windows/samples | mode=forward_dynamics, loss_surface=vision_velocity_conditioned_on_camera_pose, pipeline_loaded=False, weights_updated=False | `results/omni_finetune/xperience10m_cosmos3_super_action_packer_schema_smoke_20260608/packer_summary.json` |
 | 128 episode | verified current | Cosmos3-Super Reasoner | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.5112, action_macro_f1=0.0008, transition_accuracy=0.3683, contact_accuracy=0.3214 | `results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/verified_result_summary.json` |
+
+### Cosmos3-Super Forward-Dynamics LoRA
+
+This is the first verified Cosmos3-Super fine-tuned adapter branch. Its metric is forward-dynamics MSE, so compare it to world-model loss or future-prediction targets, not to Qwen JSON classification accuracy.
+
+- Weight repo policy: https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep
+
+| scope | status | run | counts | metrics | source |
+| --- | --- | --- | --- | --- | --- |
+| 1 episode | verified_smoke | Cosmos3-Super Forward-Dynamics Overfit Smoke |  |  | `results/omni_finetune/xperience10m_cosmos3_super_forward_dynamics_lora_overfit_after_qwen_v4_20260608_fsdp8_attn256_gradfix_savefix2/` |
+| 128 episode | verified current | Cosmos3-Super Forward-Dynamics LoRA | 119 episodes, 3808 windows/samples, 448 eval | test_forward_dynamics_mse=3.6853, val_forward_dynamics_mse=4.0082, train_final_loss=1.0785, adapter_parameter_numel=26214400 | `results/omni_finetune/verified_public/xperience10m_cosmos3_super_forward_dynamics_lora_128ep_train1epoch_256_attn_full8gpu_20260608_eval_test_full_fsdp/verified_result_summary.json` |
 
 ## 128-Episode Task Baselines
 
@@ -99,6 +110,7 @@ Cosmos3-Super is now represented by a verified 448-window held-out Reasoner eval
 | branch | backbone | eval samples | held-out episodes | key metrics |
 | --- | --- | ---: | ---: | --- |
 | Cosmos3-Nano Future-Window World Model | `cosmos_world_model` | 378 | 14 | future_retrieval_mrr=0.0221, temporal_consistency=0.0952, transition_accuracy=0.9683, contact_accuracy=0.7434 |
+| Cosmos3-Super Forward-Dynamics LoRA | `cosmos3_super_forward_dynamics` | 448 | 14 | adapter_parameter_numel=26214400, test_forward_dynamics_mse=3.6853, train_final_loss=1.0785, val_forward_dynamics_mse=4.0082 |
 | Cosmos3-Super Reasoner | `cosmos3_super_reasoner` | 448 | 14 | json_validity_rate=0.5112, action_macro_f1=0.0008, transition_accuracy=0.3683, contact_accuracy=0.3214 |
 | Qwen3-Omni LoRA | `qwen3_omni_lora` | 448 | 14 | json_validity_rate=0.8750, action_macro_f1=0.0027, transition_accuracy=0.8504, contact_accuracy=0.6451 |
 | Qwen3-Omni LoRA | `qwen3_omni_lora` | 448 | 14 | json_validity_rate=0.8527, action_macro_f1=0.0021, transition_accuracy=0.8281, contact_accuracy=0.6518 |
@@ -109,4 +121,4 @@ Cosmos3-Super is now represented by a verified 448-window held-out Reasoner eval
 ## Pending
 
 - Use the verified Qwen3 v4 4-epoch full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison.
-- Promote Cosmos3 from Nano compatibility, Super base-weight evaluation, and the camera-pose forward-dynamics contract to true fine-tuning only after a trainable Cosmos3-Super run produces new weights.
+- Verify the live Cosmos3-Super forward-dynamics adapter model repo after upload; the public-safe verified_public package still excludes safetensors by design.

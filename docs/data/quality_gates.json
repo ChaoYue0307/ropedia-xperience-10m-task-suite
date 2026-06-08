@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Release Checks",
   "status": "pass",
-  "generated_at_utc": "2026-06-04T07:39:12+00:00",
+  "generated_at_utc": "2026-06-08T07:14:19+00:00",
   "rule": "A release is current when the automated reports pass and the live GitHub/Hugging Face mirrors are verified after publishing.",
   "automated_gates": [
     {
@@ -154,7 +154,7 @@
       "command": "python scripts/validate_mirror_parity.py",
       "report": "docs/data/mirror_parity.json",
       "blocks_if": "Prepared HF Space, artifact dataset, or model bundle diverges from the repo for critical files.",
-      "shows": "The files prepared for GitHub and Hugging Face are synchronized before upload.",
+      "shows": "The files staged for GitHub and Hugging Face are synchronized before upload.",
       "current_report": {
         "exists": true,
         "status": "pass"

@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Project Surface",
   "status": "pass",
-  "generated_at_utc": "2026-06-04T16:48:58+00:00",
+  "generated_at_utc": "2026-06-08T07:13:54+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -18,7 +18,7 @@
         "website_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-04T16:42:53+00:00"
+          "generated_at_utc": "2026-06-08T06:57:50+00:00"
         },
         "rendered_site_check": {
           "exists": true,
@@ -28,27 +28,27 @@
         "task_surface_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-03T20:36:23+00:00"
+          "generated_at_utc": "2026-06-07T15:47:30+00:00"
         },
         "source_alignment": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-04T16:42:48+00:00"
+          "generated_at_utc": "2026-06-04T16:48:58+00:00"
         },
         "scale_up_status": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-04T16:42:49+00:00"
+          "generated_at_utc": "2026-06-08T06:57:51+00:00"
         },
         "publication_package": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-04T16:42:56+00:00"
+          "generated_at_utc": "2026-06-08T06:59:58+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-04T16:34:37+00:00"
+          "generated_at_utc": "2026-06-08T07:00:45+00:00"
         },
         "live_publication": {
           "exists": true,
@@ -81,7 +81,7 @@
       "marker_counts": {
         "role=\"tablist\"": 3,
         "role=\"tab\"": 10,
-        "role=\"tabpanel\"": 25,
+        "role=\"tabpanel\"": 26,
         "aria-selected": 13,
         "aria-controls": 11,
         "moveProjectTabFocus": 2,
@@ -101,10 +101,10 @@
       "reason": "Public copy should consistently present the project as Ropedia Xperience-10M, with the Qwen3-Omni scale-up status.",
       "marker_counts": {
         "Ropedia Xperience-10M Task Suite": 15,
-        "Xperience-10M": 142,
-        "12-task": 33,
-        "Qwen3-Omni": 108,
-        "128-episode pilot": 11
+        "Xperience-10M": 149,
+        "12-task": 32,
+        "Qwen3-Omni": 142,
+        "128-episode pilot": 1
       }
     },
     {
@@ -112,12 +112,12 @@
       "status": "pass",
       "reason": "Public cards should link the repo, Space, artifacts, model baselines, upstream dataset, and Ropedia dataset page.",
       "marker_counts": {
-        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 66,
-        "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite": 8,
-        "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts": 4,
-        "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines": 4,
-        "https://huggingface.co/datasets/ropedia-ai/xperience-10m": 26,
-        "https://ropedia.com/dataset": 4
+        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 78,
+        "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite": 10,
+        "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts": 7,
+        "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines": 10,
+        "https://huggingface.co/datasets/ropedia-ai/xperience-10m": 28,
+        "https://ropedia.com/dataset": 5
       }
     },
     {
@@ -125,14 +125,14 @@
       "status": "pass",
       "reason": "Readers should be able to find website reference, release package, mirror, and public presentation files from public copy.",
       "marker_counts": {
-        "data/project_brief.json": 9,
-        "data/website_integrity.json": 13,
-        "data/rendered_site_check.json": 8,
-        "data/task_surface_integrity.json": 23,
-        "data/publication_audit.json": 18,
-        "data/mirror_parity.json": 12,
-        "data/public_surface_qa.json": 12,
-        "data/research_roadmap.json": 23
+        "data/project_brief.json": 8,
+        "data/website_integrity.json": 2,
+        "data/rendered_site_check.json": 2,
+        "data/task_surface_integrity.json": 11,
+        "data/publication_audit.json": 2,
+        "data/mirror_parity.json": 2,
+        "data/public_surface_qa.json": 2,
+        "data/research_roadmap.json": 11
       }
     },
     {

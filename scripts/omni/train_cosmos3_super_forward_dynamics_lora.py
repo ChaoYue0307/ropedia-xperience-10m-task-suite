@@ -14,6 +14,7 @@ import argparse
 import json
 import math
 import random
+import shutil
 import time
 from pathlib import Path
 from typing import Any
@@ -133,6 +134,20 @@ def select_rows(rows: list[dict[str, Any]], args: argparse.Namespace) -> list[di
     return candidates
 
 
+def distributed_slice(samples: list[dict[str, Any]], process_index: int, num_processes: int) -> list[dict[str, Any]]:
+    if num_processes <= 1:
+        return list(samples)
+    shard = list(samples[process_index::num_processes])
+    max_len = math.ceil(len(samples) / num_processes)
+    if not samples:
+        return []
+    if not shard:
+        shard = [samples[process_index % len(samples)]]
+    while len(shard) < max_len:
+        shard.append(random.choice(shard))
+    return shard
+
+
 def checkpoint_module_suffixes(model_dir: Path) -> set[str]:
     suffixes: set[str] = set()
     for index_path in (
@@ -161,6 +176,188 @@ def lora_targets(args: argparse.Namespace, inner: dict[str, Any], model_dir: Pat
 
     fallback = [module for module in DEFAULT_COSMOS3_SUPER_LORA_TARGETS if not available or module in available]
     return fallback or modules or DEFAULT_COSMOS3_SUPER_LORA_TARGETS
+
+
+def parameter_dtype_counts(module: Any) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for param in module.parameters():
+        key = str(param.dtype).replace("torch.", "")
+        counts[key] = counts.get(key, 0) + param.numel()
+    return counts
+
+
+def adapter_tensor_numel(adapter_dir: Path) -> int:
+    weight_path = adapter_dir / "pytorch_lora_weights.safetensors"
+    if not weight_path.exists():
+        return -1
+    from safetensors.torch import load_file
+
+    state = load_file(str(weight_path), device="cpu")
+    return sum(tensor.numel() for tensor in state.values())
+
+
+def expected_lora_shape(transformer: Any, key: str, lora_rank: int) -> tuple[int, ...] | None:
+    marker = ".lora_"
+    if marker not in key:
+        return None
+    module_name, suffix = key.split(marker, 1)
+    candidates = [module_name]
+    parts = module_name.split(".")
+    if len(parts) >= 2 and parts[0] == "layers":
+        candidates.append(".".join([parts[0], parts[1], "_fsdp_wrapped_module", *parts[2:]]))
+    module = None
+    last_error: Exception | None = None
+    for candidate in candidates:
+        try:
+            module = transformer.get_submodule(candidate)
+            break
+        except AttributeError as exc:
+            last_error = exc
+            continue
+    try:
+        if module is None:
+            raise last_error or AttributeError(module_name)
+    except AttributeError:
+        try:
+            module = transformer
+            for part in module_name.split("."):
+                module = getattr(module, part)
+        except AttributeError:
+            return None
+    base = getattr(module, "base_layer", module)
+    in_features = getattr(base, "in_features", None)
+    out_features = getattr(base, "out_features", None)
+    if in_features is None or out_features is None:
+        return None
+    if suffix.startswith("lora_A."):
+        return (int(lora_rank), int(in_features))
+    if suffix.startswith("lora_B."):
+        return (int(out_features), int(lora_rank))
+    return None
+
+
+def fallback_flat_lora_shape(key: str, tensor_numel: int, lora_rank: int) -> tuple[int, ...] | None:
+    if lora_rank <= 0 or tensor_numel % lora_rank:
+        return None
+    if ".lora_A." in key:
+        return (int(lora_rank), int(tensor_numel // lora_rank))
+    if ".lora_B." in key:
+        return (int(tensor_numel // lora_rank), int(lora_rank))
+    return None
+
+
+def repair_lora_adapter_shapes(adapter_dir: Path, transformer: Any, lora_rank: int) -> dict[str, Any]:
+    weight_path = adapter_dir / "pytorch_lora_weights.safetensors"
+    from safetensors import safe_open
+    from safetensors.torch import load_file, save_file
+
+    with safe_open(str(weight_path), framework="pt", device="cpu") as handle:
+        metadata = handle.metadata()
+    state = load_file(str(weight_path), device="cpu")
+    repaired: dict[str, Any] = {}
+    for key, tensor in list(state.items()):
+        expected_shape = expected_lora_shape(transformer, key, lora_rank)
+        if expected_shape is None and tensor.ndim == 1:
+            expected_shape = fallback_flat_lora_shape(key, tensor.numel(), lora_rank)
+        if expected_shape is None or tuple(tensor.shape) == expected_shape:
+            continue
+        if tensor.ndim == 1 and tensor.numel() == math.prod(expected_shape):
+            state[key] = tensor.reshape(expected_shape).contiguous()
+            repaired[key] = {"from": list(tensor.shape), "to": list(expected_shape)}
+    if repaired:
+        save_file(state, str(weight_path), metadata=metadata)
+    return {"adapter_file": str(weight_path), "tensor_numel": sum(t.numel() for t in state.values()), "repaired": repaired}
+
+
+def json_safe(value: Any) -> Any:
+    if isinstance(value, set):
+        return sorted(value)
+    if isinstance(value, dict):
+        return {key: json_safe(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [json_safe(item) for item in value]
+    return value
+
+
+def canonical_lora_key(name: str, adapter_name: str) -> str | None:
+    for marker in (".lora_A.", ".lora_B."):
+        if marker not in name:
+            continue
+        prefix, suffix = name.split(marker, 1)
+        prefix = prefix.replace("._fsdp_wrapped_module", "")
+        adapter_prefix = f"{adapter_name}."
+        if suffix.startswith(adapter_prefix):
+            suffix = suffix[len(adapter_prefix) :]
+        return f"{prefix}{marker}{suffix}"
+    return None
+
+
+def distributed_save_lora_adapter(transformer: Any, adapter_dir: Path, adapter_name: str, lora_config: Any, lora_rank: int) -> dict[str, Any]:
+    import torch.distributed as dist
+    from safetensors.torch import save_file
+
+    adapter_dir.mkdir(parents=True, exist_ok=True)
+    local_state: dict[str, Any] = {}
+    expected_shapes: dict[str, tuple[int, ...]] = {}
+    for name, param in transformer.named_parameters():
+        key = canonical_lora_key(name, adapter_name)
+        if key is None or not param.requires_grad:
+            continue
+        expected_shape = expected_lora_shape(transformer, key, lora_rank)
+        if expected_shape is not None:
+            expected_shapes[key] = expected_shape
+        if param.numel() == 0:
+            continue
+        tensor = param.detach().cpu()
+        if expected_shape is not None and tensor.ndim == 1 and tensor.numel() == math.prod(expected_shape):
+            tensor = tensor.reshape(expected_shape)
+        local_state[key] = tensor.contiguous()
+
+    if dist.is_available() and dist.is_initialized():
+        gathered: list[dict[str, Any] | None] = [None for _ in range(dist.get_world_size())]
+        dist.all_gather_object(gathered, local_state)
+        rank = dist.get_rank()
+    else:
+        gathered = [local_state]
+        rank = 0
+
+    merged: dict[str, Any] = {}
+    duplicate_keys: list[str] = []
+    for shard in gathered:
+        if not shard:
+            continue
+        for key, tensor in shard.items():
+            if key in merged:
+                duplicate_keys.append(key)
+            expected_shape = expected_shapes.get(key)
+            if expected_shape is None and tensor.ndim == 1:
+                expected_shape = fallback_flat_lora_shape(key, tensor.numel(), lora_rank)
+                if expected_shape is not None:
+                    expected_shapes[key] = expected_shape
+            if expected_shape is not None and tensor.ndim == 1 and tensor.numel() == math.prod(expected_shape):
+                tensor = tensor.reshape(expected_shape).contiguous()
+            merged[key] = tensor
+
+    missing_keys = sorted(set(expected_shapes) - set(merged))
+    adapter_file = adapter_dir / "pytorch_lora_weights.safetensors"
+    metadata = {
+        "format": "pt",
+        "lora_adapter_metadata": json.dumps(json_safe(lora_config.to_dict()), indent=2, sort_keys=True),
+    }
+    if rank == 0:
+        if missing_keys:
+            raise RuntimeError(f"missing gathered LoRA tensors: {missing_keys[:8]} ({len(missing_keys)} total)")
+        save_file(merged, str(adapter_file), metadata=metadata)
+    return {
+        "adapter_dir": str(adapter_dir),
+        "adapter_file": str(adapter_file),
+        "local_keys": sorted(local_state),
+        "merged_keys": sorted(merged),
+        "missing_keys": missing_keys,
+        "duplicate_keys": sorted(duplicate_keys),
+        "tensor_numel": sum(tensor.numel() for tensor in merged.values()),
+        "tensor_shapes": {key: list(tensor.shape) for key, tensor in merged.items()},
+    }
 
 
 def instantiate_action(row: dict[str, Any], resolution_tier: int | None):
@@ -264,7 +461,13 @@ def action_latents(action: Any, pipe: Any, device: str, dtype: Any):
         raw = torch.cat([raw, raw[-1:].expand(action_chunk_size - raw.shape[0], -1)], dim=0)
     raw = raw[:action_chunk_size]
     raw_action_dim = int(raw.shape[-1])
-    action_dim = int(pipe.transformer.action_dim)
+    transformer = pipe.transformer
+    action_dim = getattr(transformer, "action_dim", None)
+    if action_dim is None and hasattr(transformer, "module"):
+        action_dim = getattr(transformer.module, "action_dim", None)
+    if action_dim is None:
+        raise ValueError("Cosmos3 transformer does not expose action_dim")
+    action_dim = int(action_dim)
     if raw_action_dim > action_dim:
         raise ValueError(f"raw action dim {raw_action_dim} exceeds model action_dim {action_dim}")
     if raw_action_dim < action_dim:
@@ -334,7 +537,16 @@ def pack_static(pipe: Any, input_ids: list[int], latents: Any, action_tokens: An
     }
 
 
-def training_step(pipe: Any, row: dict[str, Any], args: argparse.Namespace, device: str, dtype: Any, num_train_timesteps: int, sigma_shift: float):
+def training_step(
+    pipe: Any,
+    row: dict[str, Any],
+    args: argparse.Namespace,
+    device: str,
+    dtype: Any,
+    num_train_timesteps: int,
+    sigma_shift: float,
+    grad_enabled: bool = True,
+):
     import torch
 
     contract = row_contract(row, require_media_exists=args.require_media_exists)
@@ -366,40 +578,42 @@ def training_step(pipe: Any, row: dict[str, Any], args: argparse.Namespace, devi
     vision_timesteps = torch.full((packed["num_noisy_vision_tokens"],), timestep, device=device)
     action_timesteps = torch.full((packed["num_noisy_action_tokens"],), timestep, device=device)
 
-    preds_vision, preds_sound, preds_action = pipe.transformer(
-        input_ids=packed["input_ids"],
-        text_indexes=packed["text_indexes"],
-        position_ids=packed["position_ids"],
-        und_len=packed["und_len"],
-        sequence_length=packed["sequence_length"],
-        vision_tokens=[latents.to(device=device, dtype=dtype)],
-        vision_token_shapes=packed["vision_token_shapes"],
-        vision_sequence_indexes=packed["vision_sequence_indexes"],
-        vision_mse_loss_indexes=packed["vision_mse_loss_indexes"],
-        vision_timesteps=vision_timesteps,
-        vision_noisy_frame_indexes=packed["vision_noisy_frame_indexes"],
-        action_tokens=[act_tokens.to(device=device, dtype=dtype)],
-        action_token_shapes=packed["action_token_shapes"],
-        action_sequence_indexes=packed["action_sequence_indexes"],
-        action_mse_loss_indexes=packed["action_mse_loss_indexes"],
-        action_timesteps=action_timesteps,
-        action_noisy_frame_indexes=packed["action_noisy_frame_indexes"],
-        action_domain_ids=[action_domain_id(action.domain_name, device)],
-    )
-    pred_velocity, _pred_sound, _pred_action = pipe._mask_velocity_predictions(
-        preds_vision,
-        preds_sound,
-        vision_condition_mask=[vision_condition_mask.to(dtype=preds_vision[0].dtype)],
-        preds_action=preds_action,
-        action_condition_mask=[act_mask],
-        raw_action_dim=raw_action_dim,
-    )
-    target = velocity_target.to(device=pred_velocity.device, dtype=pred_velocity.dtype)
-    mask = loss_mask.to(device=pred_velocity.device, dtype=pred_velocity.dtype)
-    denom = mask.expand_as(pred_velocity).sum()
-    loss = ((pred_velocity - target) ** 2 * mask).sum() / denom.clamp_min(1.0)
-    if args.loss_scale:
-        loss = loss * args.loss_scale
+    grad_context = torch.enable_grad() if grad_enabled else torch.no_grad()
+    with grad_context:
+        preds_vision, preds_sound, preds_action = pipe.transformer(
+            input_ids=packed["input_ids"],
+            text_indexes=packed["text_indexes"],
+            position_ids=packed["position_ids"],
+            und_len=packed["und_len"],
+            sequence_length=packed["sequence_length"],
+            vision_tokens=[latents.to(device=device, dtype=dtype)],
+            vision_token_shapes=packed["vision_token_shapes"],
+            vision_sequence_indexes=packed["vision_sequence_indexes"],
+            vision_mse_loss_indexes=packed["vision_mse_loss_indexes"],
+            vision_timesteps=vision_timesteps,
+            vision_noisy_frame_indexes=packed["vision_noisy_frame_indexes"],
+            action_tokens=[act_tokens.to(device=device, dtype=dtype)],
+            action_token_shapes=packed["action_token_shapes"],
+            action_sequence_indexes=packed["action_sequence_indexes"],
+            action_mse_loss_indexes=packed["action_mse_loss_indexes"],
+            action_timesteps=action_timesteps,
+            action_noisy_frame_indexes=packed["action_noisy_frame_indexes"],
+            action_domain_ids=[action_domain_id(action.domain_name, device)],
+        )
+        pred_velocity, _pred_sound, _pred_action = pipe._mask_velocity_predictions(
+            preds_vision,
+            preds_sound,
+            vision_condition_mask=[vision_condition_mask.to(dtype=preds_vision[0].dtype)],
+            preds_action=preds_action,
+            action_condition_mask=[act_mask],
+            raw_action_dim=raw_action_dim,
+        )
+        target = velocity_target.to(device=pred_velocity.device, dtype=pred_velocity.dtype)
+        mask = loss_mask.to(device=pred_velocity.device, dtype=pred_velocity.dtype)
+        denom = mask.expand_as(pred_velocity).sum()
+        loss = ((pred_velocity - target) ** 2 * mask).sum() / denom.clamp_min(1.0)
+        if args.loss_scale:
+            loss = loss * args.loss_scale
     return loss, {
         "row_id": contract["row_id"],
         "episode_id": contract["episode_id"],
@@ -443,21 +657,27 @@ def write_report(output_dir: Path, payload: dict[str, Any]) -> None:
 
 def main() -> int:
     args = parse_args()
+    from accelerate import Accelerator
+
+    accelerator = Accelerator()
     args.workspace = args.workspace.expanduser().resolve()
     args.dataset_jsonl = args.dataset_jsonl.expanduser().resolve()
     args.model_dir = args.model_dir.expanduser().resolve()
     output_dir = args.output_dir or args.workspace / "results" / "omni_finetune" / args.run_id
     output_dir = output_dir.expanduser().resolve()
     progress_path = output_dir / "progress.jsonl"
-    if progress_path.exists():
+    if accelerator.is_main_process and progress_path.exists():
         progress_path.unlink()
+    accelerator.wait_for_everyone()
 
-    random.seed(args.seed)
+    random.seed(args.seed + accelerator.process_index)
     started = time.time()
-    append_jsonl(progress_path, {"event": "start", "run_id": args.run_id, "timestamp": started})
+    if accelerator.is_main_process:
+        append_jsonl(progress_path, {"event": "start", "run_id": args.run_id, "timestamp": started})
 
     inner = model_inner_config(args.model_dir)
-    train_rows = select_rows(load_jsonl(args.dataset_jsonl), args)
+    all_train_rows = select_rows(load_jsonl(args.dataset_jsonl), args)
+    train_rows = distributed_slice(all_train_rows, accelerator.process_index, accelerator.num_processes)
     target_modules = lora_targets(args, inner, args.model_dir)
     lora_rank = int(args.lora_rank or inner.get("lora_rank") or 16)
     lora_alpha = int(args.lora_alpha or inner.get("lora_alpha") or 32)
@@ -469,34 +689,46 @@ def main() -> int:
     loss_scale = args.loss_scale if args.loss_scale is not None else train_cfg.get("loss_scale")
     args.loss_scale = float(loss_scale) if loss_scale is not None else None
 
-    append_jsonl(
-        progress_path,
-        {
-            "event": "dataset_ready",
-            "timestamp": time.time(),
-            "train_samples": len(train_rows),
-            "target_modules": target_modules,
-            "lora_rank": lora_rank,
-            "lora_alpha": lora_alpha,
-            "sigma_shift": sigma_shift,
-            "loss_scale": args.loss_scale,
-        },
-    )
+    if accelerator.is_main_process:
+        append_jsonl(
+            progress_path,
+            {
+                "event": "dataset_ready",
+                "timestamp": time.time(),
+                "num_processes": accelerator.num_processes,
+                "train_samples": len(all_train_rows),
+                "rank0_samples": len(train_rows),
+                "target_modules": target_modules,
+                "lora_rank": lora_rank,
+                "lora_alpha": lora_alpha,
+                "sigma_shift": sigma_shift,
+                "loss_scale": args.loss_scale,
+            },
+        )
 
     import torch
     from diffusers import Cosmos3OmniPipeline
     from peft import LoraConfig
 
+    torch.set_grad_enabled(True)
     dtype = dtype_from_name(args.dtype)
     load_kwargs: dict[str, Any] = {
         "torch_dtype": dtype,
         "local_files_only": args.local_files_only,
         "enable_safety_checker": False,
     }
+    if accelerator.num_processes > 1 and args.device_map != "none":
+        args.device_map = "none"
     if args.device_map != "none":
         load_kwargs["device_map"] = args.device_map
     pipe = Cosmos3OmniPipeline.from_pretrained(str(args.model_dir), **load_kwargs)
-    if args.device_map == "none":
+    if accelerator.num_processes > 1:
+        device = accelerator.device
+        for component_name in ("vae", "sound_tokenizer"):
+            component = getattr(pipe, component_name, None)
+            if component is not None:
+                component.to(device)
+    elif args.device_map == "none":
         pipe.to(args.device)
         device = args.device
     else:
@@ -516,7 +748,12 @@ def main() -> int:
     )
     pipe.transformer.add_adapter(lora_config, adapter_name=args.adapter_name)
     pipe.transformer.set_adapter(args.adapter_name)
+    if args.device_map == "none":
+        pipe.transformer.to(dtype=dtype)
     pipe.transformer.train()
+    for param in pipe.transformer.parameters():
+        if param.requires_grad and param.dtype != dtype:
+            param.data = param.data.to(dtype=dtype)
     for component_name in ("vae", "sound_tokenizer"):
         component = getattr(pipe, component_name, None)
         if component is not None:
@@ -525,11 +762,28 @@ def main() -> int:
 
     trainable = [param for param in pipe.transformer.parameters() if param.requires_grad]
     trainable_params = sum(param.numel() for param in trainable)
-    append_jsonl(progress_path, {"event": "model_ready", "timestamp": time.time(), "device": device, "trainable_params": trainable_params})
+    if accelerator.is_main_process:
+        append_jsonl(
+            progress_path,
+            {
+                "event": "model_ready",
+                "timestamp": time.time(),
+                "device": str(device),
+                "device_map": args.device_map,
+                "trainable_params": trainable_params,
+                "parameter_dtype_counts": parameter_dtype_counts(pipe.transformer),
+            },
+        )
     if not trainable:
         raise RuntimeError("no trainable LoRA parameters found")
 
     optimizer = torch.optim.AdamW(trainable, lr=args.learning_rate, weight_decay=args.weight_decay)
+    if accelerator.num_processes > 1:
+        if accelerator.is_main_process:
+            append_jsonl(progress_path, {"event": "accelerator_prepare_start", "timestamp": time.time()})
+        pipe.transformer, optimizer = accelerator.prepare(pipe.transformer, optimizer)
+        if accelerator.is_main_process:
+            append_jsonl(progress_path, {"event": "accelerator_prepare_done", "timestamp": time.time()})
     losses: list[float] = []
     status = "dry_run_complete" if args.dry_run else "complete"
     adapter_dir: Path | None = None
@@ -541,25 +795,58 @@ def main() -> int:
             loss_value = float(loss.detach().float().cpu())
             losses.append(loss_value)
             if not args.dry_run:
-                loss.backward()
+                if accelerator.num_processes > 1:
+                    accelerator.backward(loss)
+                else:
+                    loss.backward()
                 optimizer.step()
             if step == 1 or step % args.progress_every == 0 or step == args.max_steps:
-                append_jsonl(
-                    progress_path,
-                    {
-                        "event": "train_step",
-                        "timestamp": time.time(),
-                        "step": step,
-                        "loss": loss_value,
-                        **info,
-                    },
-                )
+                if accelerator.is_main_process:
+                    append_jsonl(
+                        progress_path,
+                        {
+                            "event": "train_step",
+                            "timestamp": time.time(),
+                            "step": step,
+                            "rank0_loss": loss_value,
+                            **info,
+                        },
+                    )
         if not args.dry_run:
-            adapter_dir = save_adapter(pipe, output_dir, args.adapter_name)
-            append_jsonl(progress_path, {"event": "adapter_saved", "timestamp": time.time(), "adapter_dir": str(adapter_dir)})
+            if accelerator.is_main_process:
+                append_jsonl(progress_path, {"event": "save_start", "timestamp": time.time()})
+            accelerator.wait_for_everyone()
+            if accelerator.num_processes > 1:
+                pipe.transformer = accelerator.unwrap_model(pipe.transformer)
+                adapter_dir = output_dir / "adapter_lora"
+                adapter_audit = distributed_save_lora_adapter(
+                    pipe.transformer,
+                    adapter_dir,
+                    args.adapter_name,
+                    lora_config,
+                    lora_rank,
+                )
+                accelerator.wait_for_everyone()
+                if accelerator.is_main_process:
+                    append_jsonl(
+                        progress_path,
+                        {
+                            "event": "adapter_saved",
+                            "timestamp": time.time(),
+                            "adapter_dir": str(adapter_dir),
+                            "adapter_audit": adapter_audit,
+                        },
+                    )
+                    write_json(output_dir / "adapter_shape_check.json", adapter_audit)
+            else:
+                adapter_dir = save_adapter(pipe, output_dir, args.adapter_name)
+                if accelerator.is_main_process:
+                    append_jsonl(progress_path, {"event": "adapter_saved", "timestamp": time.time(), "adapter_dir": str(adapter_dir)})
+            accelerator.wait_for_everyone()
     except Exception as exc:
         status = "failed"
-        append_jsonl(progress_path, {"event": "failed", "timestamp": time.time(), "error": repr(exc)})
+        if accelerator.is_main_process:
+            append_jsonl(progress_path, {"event": "failed", "timestamp": time.time(), "error": repr(exc)})
         raise
     finally:
         finished = time.time()
@@ -575,7 +862,9 @@ def main() -> int:
             "model_dir": str(args.model_dir),
             "split": args.split,
             "episode_id": args.episode_id,
-            "train_samples": len(train_rows),
+            "num_processes": accelerator.num_processes,
+            "train_samples": len(all_train_rows),
+            "rank_samples": len(train_rows),
             "max_steps": args.max_steps,
             "learning_rate": args.learning_rate,
             "target_modules": target_modules,
@@ -592,11 +881,13 @@ def main() -> int:
             "loss_surface": "vision_velocity_conditioned_on_camera_pose",
             "action_loss_expected": False,
         }
-        write_json(output_dir / "training_metadata.json", payload)
-        write_report(output_dir, payload)
-        append_jsonl(progress_path, {"event": "complete", "timestamp": time.time(), "status": status})
+        if accelerator.is_main_process:
+            write_json(output_dir / "training_metadata.json", payload)
+            write_report(output_dir, payload)
+            append_jsonl(progress_path, {"event": "complete", "timestamp": time.time(), "status": status})
 
-    print(json.dumps({"status": status, "output_dir": str(output_dir), "adapter_dir": str(adapter_dir) if adapter_dir else None}, indent=2))
+    if accelerator.is_main_process:
+        print(json.dumps({"status": status, "output_dir": str(output_dir), "adapter_dir": str(adapter_dir) if adapter_dir else None}, indent=2))
     return 0
 
 

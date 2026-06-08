@@ -14,7 +14,7 @@
       "visualization.rrd"
     ],
     "access_status": "The gated Xperience-10M dataset is available for selected multi-episode pilot preparation.",
-    "current_scope": "The selected-episode Qwen3-Omni diagnostic pilot is verified on the 96/16/16 split and now meets the 98% target for JSON validity; action/subtask quality remains weak, so current results are diagnostic baselines, not strong model-quality claims."
+    "current_scope": "The selected-episode Qwen3-Omni diagnostic pilot is verified on the 96/16/16 split and meets the 98% target for JSON validity; action/subtask quality remains weak, so it is a structured-task baseline. Cosmos3-Nano future-window compatibility and Cosmos3-Super Forward-Dynamics LoRA are also verified as separate world-model diagnostics with different metrics."
   },
   "models": {
     "motion_action": {

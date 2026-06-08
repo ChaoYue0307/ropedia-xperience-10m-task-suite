@@ -30,6 +30,10 @@ QWEN3_LORA_UPLOAD_DIR_CANDIDATES = [
     ROOT.parent / "hf_publish/qwen3_lora_128ep",
     ROOT / "results/omni_finetune/hf_upload_qwen3_128ep_full",
 ]
+COSMOS3_SUPER_LORA_REPO_ID = "cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep"
+COSMOS3_SUPER_LORA_UPLOAD_DIR_CANDIDATES = [
+    ROOT.parent / "hf_publish/cosmos3_super_forward_dynamics_lora_128ep",
+]
 
 
 HASH_GROUPS = [
@@ -311,7 +315,8 @@ MARKER_CHECKS = [
             "100.00%",
             "omni_model_comparison.json",
             "ropedia-qwen3-omni-lora-128ep",
-            "Cosmos3-Super has a verified base-weight JSON-task evaluation plus a camera-pose forward-dynamics contract audit",
+            "ropedia-cosmos3-super-forward-dynamics-lora-128ep",
+            "Cosmos3-Super has a verified base-weight JSON-task evaluation plus a fine-tuned forward-dynamics LoRA branch",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
@@ -340,7 +345,8 @@ MARKER_CHECKS = [
             "100.00%",
             "omni_model_comparison.json",
             "ropedia-qwen3-omni-lora-128ep",
-            "Cosmos3-Super has a verified base-weight JSON-task evaluation plus a camera-pose forward-dynamics contract audit",
+            "ropedia-cosmos3-super-forward-dynamics-lora-128ep",
+            "Cosmos3-Super has a verified base-weight JSON-task evaluation plus a fine-tuned forward-dynamics LoRA branch",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
@@ -358,6 +364,7 @@ MARKER_CHECKS = [
             "100.00% JSON validity",
             "Cosmos3-Super",
             "ropedia-qwen3-omni-lora-128ep",
+            "ropedia-cosmos3-super-forward-dynamics-lora-128ep",
         ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },
@@ -405,6 +412,7 @@ MARKER_CHECKS = [
             "100.00%",
             "Cosmos3-Super",
             "ropedia-qwen3-omni-lora-128ep",
+            "ropedia-cosmos3-super-forward-dynamics-lora-128ep",
         ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },
@@ -471,6 +479,13 @@ def qwen3_lora_upload_dir() -> Path | None:
     return None
 
 
+def cosmos3_super_lora_upload_dir() -> Path | None:
+    for path in COSMOS3_SUPER_LORA_UPLOAD_DIR_CANDIDATES:
+        if path.exists():
+            return path
+    return None
+
+
 def display_local_path(path: Path) -> str:
     resolved = path.resolve()
     for base, prefix in ((ROOT, ""), (ROOT.parent, "../")):
@@ -505,6 +520,39 @@ def qwen3_lora_hash_groups() -> list[dict]:
                 "urls": {
                     "hf_qwen3_lora_model": (
                         f"https://huggingface.co/{QWEN3_LORA_REPO_ID}/resolve/main/{filename}"
+                    ),
+                },
+            }
+        )
+    return groups
+
+
+def cosmos3_super_lora_hash_groups() -> list[dict]:
+    upload_dir = cosmos3_super_lora_upload_dir()
+    if upload_dir is None:
+        return []
+    groups = []
+    required_files = [
+        "README.md",
+        "upload_manifest.json",
+        "pytorch_lora_weights.safetensors",
+        "verified_result_summary.json",
+        "package_audit.json",
+        "eval_metrics.json",
+        "val_metrics.json",
+    ]
+    for filename in required_files:
+        path = upload_dir / filename
+        if not path.exists():
+            continue
+        groups.append(
+            {
+                "id": f"cosmos3_super_lora_{filename.replace('.', '_').replace('-', '_')}",
+                "title": f"Cosmos3-Super LoRA repo file: {filename}",
+                "local_path": display_local_path(path),
+                "urls": {
+                    "hf_cosmos3_super_lora_model": (
+                        f"https://huggingface.co/{COSMOS3_SUPER_LORA_REPO_ID}/resolve/main/{filename}"
                     ),
                 },
             }
@@ -695,7 +743,10 @@ def marker_record(check: dict) -> dict:
 
 
 def build_report() -> dict:
-    hash_records = [hash_group_record(group) for group in [*HASH_GROUPS, *qwen3_lora_hash_groups()]]
+    hash_records = [
+        hash_group_record(group)
+        for group in [*HASH_GROUPS, *qwen3_lora_hash_groups(), *cosmos3_super_lora_hash_groups()]
+    ]
     marker_records = [marker_record(check) for check in [*MARKER_CHECKS, *local_path_checks()]]
     failures = [
         {"check": record["id"], **failure}
@@ -708,8 +759,8 @@ def build_report() -> dict:
         "checked_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "scope": (
             "Live GitHub Pages, GitHub raw, Hugging Face Space, artifact dataset, "
-            "baseline model mirrors, and the Qwen3 LoRA adapter repo when the final "
-            "upload package exists locally."
+            "baseline model mirrors, and the Qwen3/Cosmos3 LoRA adapter repos when "
+            "their upload packages exist locally."
         ),
         "hash_groups": hash_records,
         "marker_checks": marker_records,

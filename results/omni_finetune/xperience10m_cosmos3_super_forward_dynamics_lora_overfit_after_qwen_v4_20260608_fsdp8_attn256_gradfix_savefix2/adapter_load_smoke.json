@@ -1,0 +1,21 @@
+{
+  "state_numel": 26214400,
+  "state_tensors": 384,
+  "first_key": "layers.0.self_attn.add_k_proj.lora_A.weight",
+  "first_shape": [
+    16,
+    5120
+  ],
+  "loaded_peft_configs": [
+    "load_smoke"
+  ],
+  "trainable_after_load": 26214400,
+  "loaded_lora_tensors": [
+    "layers.0.self_attn.add_q_proj.lora_A.load_smoke.weight",
+    "layers.0.self_attn.add_q_proj.lora_B.load_smoke.weight",
+    "layers.0.self_attn.add_k_proj.lora_A.load_smoke.weight",
+    "layers.0.self_attn.add_k_proj.lora_B.load_smoke.weight",
+    "layers.0.self_attn.add_v_proj.lora_A.load_smoke.weight",
+    "layers.0.self_attn.add_v_proj.lora_B.load_smoke.weight"
+  ]
+}

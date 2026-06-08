@@ -1,0 +1,88 @@
+{
+  "id": "cosmos3_super_forward_dynamics",
+  "display_name": "Cosmos3-Super Forward-Dynamics LoRA",
+  "status": "implemented",
+  "model_family": "Cosmos3 / physical-world foundation models",
+  "default_model_id": "nv-community/Cosmos3-Super",
+  "local_model_env": "COSMOS3_SUPER_MODEL_DIR",
+  "dataset_contract": "xperience10m_camera_pose_forward_dynamics_v1",
+  "training_objective": "camera_pose_conditioned_future_vision_velocity_lora",
+  "split_policy": {
+    "unit": "episode",
+    "default_counts": {
+      "train": 96,
+      "val": 16,
+      "test": 16
+    },
+    "leakage_guard": "uses the same selected 96/16/16 episode split as the Qwen3-Omni branch; camera-pose targets are derived inside each episode only"
+  },
+  "modalities": {
+    "direct_inputs": [
+      "egocentric camera video conditioning",
+      "language task context"
+    ],
+    "conditioning_inputs": [
+      "camera-pose delta proxy actions derived from SLAM/pose traces"
+    ],
+    "targets": [
+      "future vision velocity under rectified-flow noise"
+    ],
+    "excluded_inputs": [
+      "visualization.rrd",
+      "raw annotation HDF5",
+      "audio in the current forward-dynamics loss path"
+    ]
+  },
+  "entrypoints": {
+    "action_target_export": "scripts/omni/export_cosmos3_camera_pose_targets.py",
+    "action_batch_packer": "scripts/omni/pack_cosmos3_super_action_batch.py",
+    "train": "scripts/omni/train_cosmos3_super_forward_dynamics_lora.py",
+    "eval": "scripts/omni/eval_cosmos3_super_forward_dynamics_lora.py",
+    "launcher": "scripts/omni/run_cosmos3_super_forward_dynamics_lora.sh",
+    "package": "scripts/omni/package_cosmos3_super_forward_dynamics_result.py",
+    "validate": "scripts/omni/audit_verified_omni_package.py"
+  },
+  "primary_metrics": [
+    "test_forward_dynamics_mse",
+    "val_forward_dynamics_mse",
+    "train_final_loss",
+    "adapter_parameter_numel",
+    "held_out_episode_count"
+  ],
+  "artifact_contract": {
+    "checkpoint_gate": "lora_safetensors_shape_check_and_load_smoke",
+    "required_eval_files": [
+      "metrics.json",
+      "RUN_REPORT.md",
+      "loss_records.jsonl"
+    ],
+    "required_training_files": [
+      "training_metadata.json",
+      "progress.jsonl",
+      "adapter_repair_audit.json"
+    ],
+    "public_package_allowed": [
+      "loss metrics",
+      "rank-level eval metrics",
+      "progress logs",
+      "run reports",
+      "episode and dataset manifests",
+      "adapter shape/load audits",
+      "validation summaries"
+    ],
+    "public_package_forbidden": [
+      "raw MP4",
+      "annotation HDF5",
+      "Rerun RRD",
+      "base-model weights",
+      "LoRA adapter weights",
+      "full checkpoints",
+      "large archives"
+    ]
+  },
+  "extension_requirements": [
+    "This branch fine-tunes a LoRA adapter over Cosmos3-Super on a camera-pose proxy forward-dynamics loss; it does not supervise semantic JSON action labels.",
+    "Report it separately from Cosmos3-Super Reasoner and Cosmos3-Nano because the target is future vision velocity MSE, not JSON task accuracy or future-window retrieval.",
+    "Publish adapter weights only in a separate model repository with explicit load instructions and public-safe metadata; verified_public packages must not include safetensors."
+  ]
+}
