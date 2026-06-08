@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Conservative LoRA SFT for Qwen3-Omni action/subtask label generation."""
+"""Conservative SFT for Qwen3-Omni action/subtask label generation.
+
+The default mode is LoRA and preserves the published adapter contract. A
+separate full-parameter smoke mode is available for memory/procedure checks; it
+must not gather or save full 30B weights unless an explicit future checkpoint
+path is implemented.
+"""
 
 from __future__ import annotations
 
@@ -63,6 +69,25 @@ def parse_args() -> argparse.Namespace:
         action=argparse.BooleanOptionalAction,
         default=True,
         help="For SFT, project only the supervised assistant-answer tail through lm_head before CE loss.",
+    )
+    parser.add_argument("--tuning-mode", choices=["lora", "full"], default="lora")
+    parser.add_argument(
+        "--save-mode",
+        choices=["auto", "none"],
+        default="auto",
+        help="auto saves LoRA adapters in LoRA mode and skips full-weight saving in full mode.",
+    )
+    parser.add_argument(
+        "--max-train-steps",
+        type=int,
+        default=0,
+        help="Stop after this many optimizer steps. Used for full-parameter feasibility smokes.",
+    )
+    parser.add_argument(
+        "--optimizer-init",
+        choices=["before_prepare", "after_model_prepare"],
+        default="before_prepare",
+        help="Initialize optimizer before Accelerate prepare, or after model wrapping for full-parameter FSDP smokes.",
     )
     parser.add_argument("--lora-r", type=int, default=16)
     parser.add_argument("--lora-alpha", type=int, default=32)
@@ -316,7 +341,6 @@ def load_model_processor(args: argparse.Namespace):
     from qwen3_omni_compat import patch_qwen3_omni_config
 
     patch_qwen3_omni_config()
-    from peft import LoraConfig, get_peft_model
     from transformers import Qwen3OmniMoeForConditionalGeneration, Qwen3OmniMoeProcessor
 
     patch_qwen3_omni_rotary_classes()
@@ -344,18 +368,30 @@ def load_model_processor(args: argparse.Namespace):
         processor_kwargs["trust_remote_code"] = True
     processor = Qwen3OmniMoeProcessor.from_pretrained(args.model_id, **processor_kwargs)
 
-    config = LoraConfig(
-        r=args.lora_r,
-        lora_alpha=args.lora_alpha,
-        lora_dropout=args.lora_dropout,
-        bias="none",
-        target_modules=[item.strip() for item in args.lora_target_modules.split(",") if item.strip()],
-    )
-    model = get_peft_model(model, config)
+    if args.tuning_mode == "lora":
+        from peft import LoraConfig, get_peft_model
+
+        config = LoraConfig(
+            r=args.lora_r,
+            lora_alpha=args.lora_alpha,
+            lora_dropout=args.lora_dropout,
+            bias="none",
+            target_modules=[item.strip() for item in args.lora_target_modules.split(",") if item.strip()],
+        )
+        model = get_peft_model(model, config)
+    else:
+        for param in model.parameters():
+            param.requires_grad_(True)
     if args.loss_logit_tail_only:
         install_tail_slicing_lm_head(model)
     cast_floating_parameters(model, dtype_arg(args.dtype))
-    model.print_trainable_parameters()
+    if hasattr(model, "print_trainable_parameters"):
+        model.print_trainable_parameters()
+    else:
+        trainable = sum(param.numel() for param in model.parameters() if param.requires_grad)
+        total = sum(param.numel() for param in model.parameters())
+        pct = 100.0 * trainable / max(total, 1)
+        print(f"trainable params: {trainable:,} || all params: {total:,} || trainable%: {pct:.4f}")
     return model, processor
 
 
@@ -527,6 +563,7 @@ def main() -> int:
             "backbone_id": backbone_profile.get("id"),
             "dataset_contract": backbone_profile.get("dataset_contract"),
             "training_objective": backbone_profile.get("training_objective"),
+            "tuning_mode": args.tuning_mode,
             "loss_mode": "answer_token_ce",
             "loss_logit_tail_only": args.loss_logit_tail_only,
             "timestamp": time.time(),
@@ -550,18 +587,24 @@ def main() -> int:
             "run_id": args.run_id,
             "timestamp": time.time(),
         })
-    optimizer = torch.optim.AdamW((p for p in model.parameters() if p.requires_grad), lr=args.learning_rate, weight_decay=args.weight_decay)
     if accelerator.is_main_process:
         write_progress(progress_path, {
             "event": "accelerator_prepare_start",
             "run_id": args.run_id,
+            "optimizer_init": args.optimizer_init,
             "timestamp": time.time(),
         })
-    model, optimizer = accelerator.prepare(model, optimizer)
+    if args.optimizer_init == "before_prepare":
+        optimizer = torch.optim.AdamW((p for p in model.parameters() if p.requires_grad), lr=args.learning_rate, weight_decay=args.weight_decay)
+        model, optimizer = accelerator.prepare(model, optimizer)
+    else:
+        model = accelerator.prepare(model)
+        optimizer = torch.optim.AdamW((p for p in model.parameters() if p.requires_grad), lr=args.learning_rate, weight_decay=args.weight_decay)
     if accelerator.is_main_process:
         write_progress(progress_path, {
             "event": "accelerator_prepare_done",
             "run_id": args.run_id,
+            "optimizer_init": args.optimizer_init,
             "timestamp": time.time(),
         })
     device = accelerator.device
@@ -582,8 +625,12 @@ def main() -> int:
             "num_val_samples": len(val_samples),
             "rank_samples_per_epoch": len(rank_train_samples),
             "epochs": args.epochs,
+            "max_train_steps": args.max_train_steps,
+            "tuning_mode": args.tuning_mode,
+            "optimizer_init": args.optimizer_init,
             "timestamp": time.time(),
         })
+    stop_training = False
     for epoch in range(1, args.epochs + 1):
         random.shuffle(rank_train_samples)
         epoch_loss = 0.0
@@ -615,6 +662,17 @@ def main() -> int:
                     "rank0_batch_loss": batch_loss / max(len(batch), 1),
                     "timestamp": time.time(),
                 })
+            if args.max_train_steps > 0 and global_step >= args.max_train_steps:
+                stop_training = True
+                break
+        if stop_training and accelerator.is_main_process:
+            write_progress(progress_path, {
+                "event": "train_loop_stopped_max_steps",
+                "epoch": epoch,
+                "global_step": global_step,
+                "max_train_steps": args.max_train_steps,
+                "timestamp": time.time(),
+            })
         val_loss = evaluate_loss(model, processor, rank_val_samples, args, device, dtype=model_dtype, accelerator=accelerator)
         epoch_row = {
             "epoch": epoch,
@@ -626,19 +684,33 @@ def main() -> int:
         if accelerator.is_main_process:
             print(json.dumps(epoch_row, indent=2))
             write_progress(progress_path, {"event": "epoch_end", **epoch_row, "timestamp": time.time()})
+        if stop_training:
+            break
 
     accelerator.wait_for_everyone()
+    resolved_save_mode = args.save_mode
+    if resolved_save_mode == "auto":
+        resolved_save_mode = "none" if args.tuning_mode == "full" else "lora_adapter"
     if accelerator.is_main_process:
         write_progress(progress_path, {
             "event": "save_start",
             "checkpoint_dir": str(args.output_dir),
-            "save_mode": "trainable_lora_state_dict",
+            "save_mode": resolved_save_mode,
             "timestamp": time.time(),
         })
     accelerator.wait_for_everyone()
     unwrapped = accelerator.unwrap_model(model)
-    gathered_state = accelerator.get_state_dict(model) if accelerator.num_processes > 1 else None
-    if accelerator.is_main_process:
+    if resolved_save_mode == "none":
+        if accelerator.is_main_process:
+            write_progress(progress_path, {
+                "event": "save_skipped",
+                "checkpoint_dir": str(args.output_dir),
+                "reason": "full_parameter_smoke_no_checkpoint",
+                "timestamp": time.time(),
+            })
+    else:
+        gathered_state = accelerator.get_state_dict(model) if accelerator.num_processes > 1 else None
+    if accelerator.is_main_process and resolved_save_mode != "none":
         if gathered_state is not None:
             adapter_state = thinker_adapter_state_from_full_state(gathered_state)
             state_source = "accelerator_full_state_dict"
@@ -672,6 +744,10 @@ def main() -> int:
         "num_processes": accelerator.num_processes,
         "num_train_samples": len(train_samples),
         "num_val_samples": len(val_samples),
+        "tuning_mode": args.tuning_mode,
+        "save_mode": resolved_save_mode,
+        "max_train_steps": args.max_train_steps,
+        "optimizer_init": args.optimizer_init,
         "history": history,
         "lora": {
             "r": args.lora_r,
@@ -697,6 +773,10 @@ def main() -> int:
                 f"num_processes: {accelerator.num_processes}",
                 f"epochs: {args.epochs}",
                 f"learning_rate: {args.learning_rate}",
+                f"tuning_mode: {args.tuning_mode}",
+                f"save_mode: {resolved_save_mode}",
+                f"max_train_steps: {args.max_train_steps}",
+                f"optimizer_init: {args.optimizer_init}",
                 f"lora_r: {args.lora_r}",
                 f"lora_alpha: {args.lora_alpha}",
                 "loss_mode: answer_token_ce",
@@ -717,17 +797,26 @@ def main() -> int:
             f"- Validation samples: `{len(val_samples)}`",
             f"- Processes: `{accelerator.num_processes}`",
             f"- Epochs: `{args.epochs}`",
+            f"- Tuning mode: `{args.tuning_mode}`",
+            f"- Save mode: `{resolved_save_mode}`",
+            f"- Optimizer init: `{args.optimizer_init}`",
             "- Loss: answer-token cross entropy over supervised JSON tokens",
             f"- Logit projection: `{'assistant-answer tail only' if args.loss_logit_tail_only else 'full sequence'}`",
             f"- Final train loss: `{history[-1]['train_loss']:.6f}`",
             "",
-            "Only LoRA parameters are trained; the base Qwen3-Omni weights remain frozen.",
         ]
+        if args.tuning_mode == "lora":
+            report.append("Only LoRA parameters are trained; the base Qwen3-Omni weights remain frozen.")
+        else:
+            report.append("Full thinker parameters are trainable. This mode is intended for feasibility smokes unless a future sharded full-checkpoint saver is added.")
         if history[-1]["val_loss"] is not None:
             report.append(f"- Final val loss: `{history[-1]['val_loss']:.6f}`")
         (args.results_dir / "RUN_REPORT.md").write_text("\n".join(report) + "\n", encoding="utf-8")
         write_progress(progress_path, {"event": "complete", "checkpoint_dir": str(args.output_dir), "timestamp": time.time()})
-        print(f"Wrote LoRA adapter to {args.output_dir}")
+        if resolved_save_mode == "none":
+            print(f"Completed training run without saving weights: {args.output_dir}")
+        else:
+            print(f"Wrote LoRA adapter to {args.output_dir}")
     return 0
 
 
