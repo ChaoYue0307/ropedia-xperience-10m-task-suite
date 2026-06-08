@@ -20,6 +20,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--workspace", type=Path, default=workspace_default)
     parser.add_argument("--run-id", default=DEFAULT_RUN_ID)
     parser.add_argument("--dataset-run-id", help="Run id that owns the episode manifest and exported dataset.")
+    parser.add_argument(
+        "--dataset-dir",
+        type=Path,
+        help="Explicit exported dataset/component directory. Useful for v5 per-scale export dirs.",
+    )
     parser.add_argument("--train-run-id", help="Run id that owns training progress and checkpoint artifacts.")
     parser.add_argument("--eval-run-id", help="Run id that owns held-out evaluation metrics.")
     parser.add_argument("--watch-status-jsonl", type=Path, help="Explicit watcher status JSONL path.")
@@ -71,6 +76,14 @@ def first_existing(paths: list[Path]) -> Path | None:
     return None
 
 
+def human_bytes(num_bytes: int) -> str:
+    value = float(num_bytes)
+    for unit in ("B", "KiB", "MiB", "GiB", "TiB"):
+        if value < 1024.0 or unit == "TiB":
+            return f"{value:.1f} {unit}" if unit != "B" else f"{int(value)} B"
+        value /= 1024.0
+
+
 def resolve_train_run_id(args: argparse.Namespace, root: Path, dataset_run_id: str) -> str:
     if args.train_run_id:
         return args.train_run_id
@@ -101,13 +114,28 @@ def shard_export_summary(dataset_dir: Path) -> dict:
         return {}
     rows = []
     for shard_dir in sorted(shard_root.glob("shard_*")):
-        media_count = sum(1 for _ in (shard_dir / "media").rglob("*") if _.is_file()) if (shard_dir / "media").exists() else 0
-        sensor_count = sum(1 for _ in (shard_dir / "sensor_features").rglob("*") if _.is_file()) if (shard_dir / "sensor_features").exists() else 0
+        shard_bytes = 0
+        media_count = 0
+        sensor_count = 0
+        media_root = shard_dir / "media"
+        sensor_root = shard_dir / "sensor_features"
+        if media_root.exists():
+            for path in media_root.rglob("*"):
+                if path.is_file():
+                    media_count += 1
+                    shard_bytes += path.stat().st_size
+        if sensor_root.exists():
+            for path in sensor_root.rglob("*"):
+                if path.is_file():
+                    sensor_count += 1
+                    shard_bytes += path.stat().st_size
         manifest = shard_dir / "dataset_manifest.json"
         rows.append({
             "shard": shard_dir.name,
             "media_files": media_count,
             "sensor_files": sensor_count,
+            "bytes": shard_bytes,
+            "size": human_bytes(shard_bytes),
             "done": manifest.exists(),
             "samples": read_json(manifest).get("num_samples") if manifest.exists() else None,
         })
@@ -116,6 +144,8 @@ def shard_export_summary(dataset_dir: Path) -> dict:
         "done_shards": sum(1 for row in rows if row["done"]),
         "media_files": sum(row["media_files"] for row in rows),
         "sensor_files": sum(row["sensor_files"] for row in rows),
+        "bytes": sum(int(row["bytes"]) for row in rows),
+        "size": human_bytes(sum(int(row["bytes"]) for row in rows)),
         "shards": rows,
     }
 
@@ -311,7 +341,16 @@ def main() -> int:
     run_dir = root / dataset_run_id
     train_dir = root / train_run_id
     eval_dir = root / eval_run_id
-    dataset_dir = root / f"{dataset_run_id}_dataset"
+    if args.dataset_dir:
+        dataset_dir = args.dataset_dir.expanduser()
+        if not dataset_dir.is_absolute():
+            dataset_dir = args.workspace / dataset_dir
+    else:
+        dataset_dir = first_existing([
+            root / f"{dataset_run_id}_dataset",
+            root / dataset_run_id,
+            root / f"{args.run_id}_dataset",
+        ]) or root / f"{dataset_run_id}_dataset"
     status_path = first_existing([
         args.watch_status_jsonl if args.watch_status_jsonl else Path("__missing__"),
         run_dir / f"watch_{train_run_id}.jsonl",
@@ -343,6 +382,7 @@ def main() -> int:
     print(f"Dataset run: {dataset_run_id}")
     print(f"Train run: {train_run_id}")
     print(f"Eval run: {eval_run_id}")
+    print(f"Dataset dir: {dataset_dir}")
     print(f"Status file: {status_path or 'not found'}")
     print(f"Training progress: {train_progress or 'not found'}")
     print(f"Pipeline log: {log_path or 'not found'}")
@@ -356,8 +396,9 @@ def main() -> int:
     print("\nExport summary:")
     export_summary = shard_export_summary(dataset_dir)
     if export_summary:
-        compact = {key: export_summary[key] for key in ("num_shards", "done_shards", "media_files", "sensor_files")}
+        compact = {key: export_summary[key] for key in ("num_shards", "done_shards", "media_files", "sensor_files", "size")}
         print(json.dumps(compact, indent=2))
+        print(json.dumps(export_summary["shards"], indent=2))
     else:
         print("No shard export directory found yet.")
 
