@@ -24,6 +24,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--cache-dir", type=Path, default=workspace_default / "outputs/omni_exploration/feature_cache")
     parser.add_argument("--num-workers", type=int, default=8)
+    parser.add_argument("--window-frames", type=int, default=20)
+    parser.add_argument("--stride-frames", type=int, default=20)
+    parser.add_argument("--qwen-context-frames", type=int, default=120)
     parser.add_argument("--max-windows-per-episode", type=int, default=32)
     parser.add_argument("--max-video-frames", type=int, default=16)
     parser.add_argument("--audio-source", default="fisheye_cam0")
@@ -71,6 +74,12 @@ def run_shard(args: argparse.Namespace, shard_manifest: Path, shard_output: Path
         str(shard_output),
         "--cache-dir",
         str(args.cache_dir),
+        "--window-frames",
+        str(args.window_frames),
+        "--stride-frames",
+        str(args.stride_frames),
+        "--qwen-context-frames",
+        str(args.qwen_context_frames),
         "--max-windows-per-episode",
         str(args.max_windows_per_episode),
         "--max-video-frames",
@@ -151,6 +160,9 @@ def merge_shards(args: argparse.Namespace, shard_results: list[dict], output_dir
             "shards": shard_results,
         },
         "clip_policy": {
+            "window_frames": args.window_frames,
+            "stride_frames": args.stride_frames,
+            "qwen_context_frames": args.qwen_context_frames,
             "max_windows_per_episode": args.max_windows_per_episode,
             "max_video_frames": args.max_video_frames,
             "audio_span": "same_as_video_context",
