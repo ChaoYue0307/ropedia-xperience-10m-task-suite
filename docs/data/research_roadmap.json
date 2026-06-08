@@ -1,219 +1,241 @@
 {
-  "title": "Ropedia Xperience-10M Research Roadmap",
-  "summary": "Staged path from the public-sample task lab to verified Qwen3-Omni, Cosmos3-Nano, and Cosmos3-Super diagnostics, same-split 128-episode baseline alignment, action/subtask error analysis, world/policy branches, and a future Xperience-native embodied foundation model.",
-  "current_decision_point": "Keep the public-sample task suite as the development harness, use the final verified selected-episode Qwen3-Omni diagnostic result and same-split 128-episode simple/NN metadata baselines as structured-task references, read Cosmos3-Nano and Cosmos3-Super Forward-Dynamics LoRA as separate world-model results, improve action/subtask quality through error analysis, and defer policy-model experiments until robot-compatible targets are implemented. The Xperience Embodied Foundation Model is a later full-corpus pretraining goal, not a current result.",
-  "additional_development_directions": {
-    "source_document": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
-    "source_json": "docs/data/additional_development_directions.json",
-    "summary": "Additional concrete tracks include episode taxonomy and data selection, benchmark protocol, multimodal representation learning, skill graphs, affordance modeling, 3D/4D scene memory, data-quality diagnostics, and policy/simulation transfer."
-  },
-  "phases": [
-    {
-      "id": "public_sample_task_lab",
-      "name": "Public-Sample Task Lab",
-      "status": "implemented",
-      "entry_condition": "One public Xperience-10M sample episode is available.",
-      "deliverables": [
-        "1161 aligned windows",
-        "12 task contracts",
-        "minimal baseline heads",
-        "neural MLP heads",
-        "modality atlas",
-        "task walkthroughs",
-        "derived figures"
-      ],
-      "completion_evidence": [
+    "title": "Ropedia Xperience-10M Research Roadmap",
+    "summary": "Staged path from the public-sample task lab to verified Qwen3-Omni, Cosmos3-Nano, and Cosmos3-Super diagnostics, same-split 128-episode baseline alignment, a no-new-episode 128-suite enhancement pack, action/subtask error analysis, world/policy branches, and a future Xperience-native embodied foundation model.",
+    "current_decision_point": "Push the current selected 128 episodes harder before requesting more storage: keep the public-sample task suite as the development harness, use the final verified selected-episode Qwen3-Omni v4 diagnostic result and same-split 128-episode simple/NN metadata baselines as structured-task references, read Cosmos3-Nano and Cosmos3-Super Forward-Dynamics LoRA as separate world-model results, export multiscale_20s10_40s20_80s40 windows plus hierarchical action/subtask targets, and defer policy-model experiments until robot-compatible targets are implemented. The Xperience Embodied Foundation Model is a later full-corpus pretraining goal, not a current result.",
+    "additional_development_directions": {
+        "source_document": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
+        "source_json": "docs/data/additional_development_directions.json",
+        "summary": "Additional concrete tracks include episode taxonomy and data selection, benchmark protocol, multimodal representation learning, skill graphs, affordance modeling, 3D/4D scene memory, data-quality diagnostics, and policy/simulation transfer."
+    },
+    "phases": [
+        {
+            "id": "public_sample_task_lab",
+            "name": "Public-Sample Task Lab",
+            "status": "implemented",
+            "entry_condition": "One public Xperience-10M sample episode is available.",
+            "deliverables": [
+                "1161 aligned windows",
+                "12 task contracts",
+                "minimal baseline heads",
+                "neural MLP heads",
+                "modality atlas",
+                "task walkthroughs",
+                "derived figures"
+            ],
+            "completion_evidence": [
+                "PROJECT_STATUS.md",
+                "EVALUATION_PROTOCOL.md",
+                "RESEARCH_TAKEAWAYS.md",
+                "docs/data/summary_metrics.json",
+                "results/episode_task_suite/summary_report.json"
+            ],
+            "reader_takeaway": "The public sample supports task design, feature contracts, walkthroughs, and baseline comparisons."
+        },
+        {
+            "id": "multi_episode_data_staging",
+            "name": "Multi-Episode Data Preparation",
+            "status": "implemented_for_first_pilot",
+            "entry_condition": "Gated dataset availability and enough storage for selected episodes.",
+            "deliverables": [
+                "128 selected episodes",
+                "episode manifest",
+                "missing-view manifest",
+                "held-out episode split",
+                "source-discovery report"
+            ],
+            "completion_evidence": [
+                "results/omni_finetune/DATA_ACCESS_STATUS.md",
+                "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
+                "results/omni_finetune/source_discovery.json"
+            ],
+            "reader_takeaway": "The first selected split is available for Qwen3-Omni diagnostics, with train/test separation at the episode level."
+        },
+        {
+            "id": "qwen3_omni_lora_diagnostic_pilot",
+            "name": "Qwen3-Omni LoRA Final Diagnostic Result",
+            "status": "verified_baseline",
+            "entry_condition": "Selected episodes are prepared locally with no train/test episode leakage.",
+            "deliverables": [
+                "dataset JSONL/media manifests",
+                "LoRA adapter checkpoint",
+                "progress logs",
+                "validation monitoring",
+                "held-out predictions",
+                "metrics",
+                "confusion matrices",
+                "run report",
+                "public LoRA adapter repo"
+            ],
+            "completion_evidence": [
+                "docs/data/omni_finetune_verified_result.json",
+                "results/omni_finetune/verified_public/",
+                "dataset_manifest.json",
+                "training_metadata.json",
+                "progress.jsonl",
+                "metrics.json",
+                "predictions.jsonl",
+                "RUN_REPORT.md"
+            ],
+            "reader_takeaway": "The final omni-model diagnostic result establishes the full held-out training/validation/evaluation loop and meets the strict-JSON target, but weak action/subtask metrics make it a diagnostic baseline."
+        },
+        {
+            "id": "multi_episode_128_same_split_baselines",
+            "name": "128-Episode Same-Split Simple/NN Baselines",
+            "status": "verified_companion_result",
+            "entry_condition": "Derived Qwen JSONL export for the selected 96/16/16 split.",
+            "deliverables": [
+                "same 12 task ids",
+                "simple metadata/text baselines",
+                "neural MLP baselines for JSON-supported labels",
+                "explicit unsupported markers for raw-feature-only tasks"
+            ],
+            "completion_evidence": [
+                "results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md",
+                "results/omni_finetune/multi_episode_128_task_baselines/summary_report.json",
+                "scripts/omni/run_128_task_baselines.py"
+            ],
+            "reader_takeaway": "The simple and neural baseline framing is now aligned to the selected 128-episode setup; trajectory, retrieval, reconstruction, and misalignment variants still need raw 128 feature blocks for exact feature-level reproduction."
+        },
+        {
+            "id": "task_suite_enhancement_128",
+            "name": "128-Episode Task Suite Enhancement Pack",
+            "status": "current",
+            "entry_condition": "Same selected 96/16/16 split and current public 3,808-window export.",
+            "deliverables": [
+                "dense-window and multiscale export estimates",
+                "hierarchical action/subtask target contract",
+                "raw-feature shard priorities for unsupported tasks",
+                "Qwen v5 and Cosmos continuation run cards",
+                "publication-ready enhancement artifacts"
+            ],
+            "completion_evidence": [
+                "TASK_SUITE_ENHANCEMENT_128.md",
+                "docs/data/task_suite_enhancement_128.json",
+                "results/omni_finetune/task_suite_enhancement_128_v1_20260608/enhancement_plan.json",
+                "scripts/omni/build_task_suite_enhancement_128.py"
+            ],
+            "reader_takeaway": "The current 128-episode setup still has headroom: use multiscale_20s10_40s20_80s40, hierarchical labels, label-normalized scoring, and raw-feature shards before adding more episodes."
+        },
+        {
+            "id": "qwen3_omni_structured_output_error_analysis",
+            "name": "Action/Subtask Error-Analysis Pass",
+            "status": "active_next_step",
+            "entry_condition": "The final diagnostic package meets strict JSON validity but has weak action/subtask held-out quality.",
+            "deliverables": [
+                "same 96/16/16 episode split",
+                "action/subtask confusion analysis",
+                "unseen-label analysis",
+                "object/action family breakdowns",
+                "held-out test evaluation",
+                "comparison to the final verified Qwen baseline"
+            ],
+            "completion_evidence": [
+                "error-analysis tables",
+                "held-out metrics by failure type",
+                "verified public-safe package"
+            ],
+            "reader_takeaway": "The next pass should improve action/subtask quality before larger model-quality claims."
+        },
+        {
+            "id": "foundation_model_selection_matrix",
+            "name": "Foundation-Model Selection Matrix",
+            "status": "current",
+            "entry_condition": "The selected episodes are prepared or a 3-8 episode dry run is available for preprocessing checks.",
+            "deliverables": [
+                "backbone registry",
+                "Cosmos 3 world-model branch plan",
+                "Cosmos3-Super Forward-Dynamics LoRA verified package",
+                "Qwen3-Omni LoRA baseline plan",
+                "OpenVLA/openpi/GR00T policy-branch candidates",
+                "model-specific evaluation additions"
+            ],
+            "completion_evidence": [
+                "FOUNDATION_MODEL_PLAN.md",
+                "docs/data/foundation_model_plan.json",
+                "research_roadmap_interactive.json"
+            ],
+            "reader_takeaway": "Qwen3-Omni remains the structured JSON held-out pilot; Cosmos 3 is the first world-model branch. Cosmos3-Super now has a verified forward-dynamics LoRA over camera-pose proxy targets, while VLA/policy models wait for robot-compatible action targets."
+        },
+        {
+            "id": "robustness_run_64_128_episode",
+            "name": "64-128 Episode Robustness Run",
+            "status": "partially_implemented",
+            "entry_condition": "The selected-episode pilot trains and evaluates cleanly.",
+            "deliverables": [
+                "split-by-session metrics",
+                "modality ablations",
+                "calibration/object/language error analysis",
+                "missing-view sensitivity analysis"
+            ],
+            "completion_evidence": [
+                "held-out metrics by session",
+                "held-out metrics by task",
+                "held-out metrics by modality",
+                "ablation tables",
+                "qualitative error analysis"
+            ],
+            "reader_takeaway": "The robustness run tests whether the pilot conclusions survive broader sessions and missing modalities."
+        },
+        {
+            "id": "foundation_world_model_extensions",
+            "name": "Cosmos 3 and Policy-Model Extensions",
+            "status": "planned",
+            "entry_condition": "Enough multi-episode data, compute budget, and model-specific action/world-state targets.",
+            "deliverables": [
+                "Cosmos 3 future-window and action-conditioned world-model probes",
+                "OpenVLA/openpi/GR00T action-policy baseline",
+                "audio/video/depth/pose/mocap conditioning checks",
+                "affordance and object-interaction tasks",
+                "synthetic-data usefulness test"
+            ],
+            "completion_evidence": [
+                "task-specific held-out evaluations",
+                "verified Cosmos3-Super forward-dynamics LoRA package",
+                "qualitative inspection",
+                "updated model cards"
+            ],
+            "reader_takeaway": "The Cosmos branch now includes Nano future-window compatibility and Super forward-dynamics LoRA; the long-term direction remains richer multimodal representation learning with model branches chosen by task fit rather than by a single default backbone."
+        },
+        {
+            "id": "xperience_embodied_foundation_pretraining",
+            "name": "Xperience Embodied Foundation Model Pretraining",
+            "status": "future",
+            "entry_condition": "Full-corpus access, PB-scale storage path, high-throughput data loading, multi-node compute, and positive scaling evidence from smaller multi-episode runs.",
+            "deliverables": [
+                "full-corpus episode and split manifests",
+                "pretraining shard and provenance manifests",
+                "0.3B-1B and 1B-3B scaling pilots",
+                "3B-7B Xperience-native domain model target",
+                "held-out episode/session/activity/object evaluations",
+                "missing-modality robustness report",
+                "model card and data-boundary report"
+            ],
+            "completion_evidence": [
+                "pretraining metadata",
+                "checkpoint inventory",
+                "scaling curves",
+                "held-out evaluation reports",
+                "qualitative retrieval or future-state examples",
+                "safety and data-boundary report"
+            ],
+            "reader_takeaway": "The final research direction is a domain-specific embodied foundation model trained directly on Xperience-10M, after smaller pilots justify the cost and infrastructure."
+        }
+    ],
+    "public_surfaces_to_update": [
+        "README.md",
+        "docs/data/task_suite_enhancement_128.json",
+        "TASK_SUITE_ENHANCEMENT_128.md",
         "PROJECT_STATUS.md",
-        "EVALUATION_PROTOCOL.md",
         "RESEARCH_TAKEAWAYS.md",
-        "docs/data/summary_metrics.json",
-        "results/episode_task_suite/summary_report.json"
-      ],
-      "reader_takeaway": "The public sample supports task design, feature contracts, walkthroughs, and baseline comparisons."
-    },
-    {
-      "id": "multi_episode_data_staging",
-      "name": "Multi-Episode Data Preparation",
-      "status": "implemented_for_first_pilot",
-      "entry_condition": "Gated dataset availability and enough storage for selected episodes.",
-      "deliverables": [
-        "128 selected episodes",
-        "episode manifest",
-        "missing-view manifest",
-        "held-out episode split",
-        "source-discovery report"
-      ],
-      "completion_evidence": [
-        "results/omni_finetune/DATA_ACCESS_STATUS.md",
-        "results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md",
-        "results/omni_finetune/source_discovery.json"
-      ],
-      "reader_takeaway": "The first selected split is available for Qwen3-Omni diagnostics, with train/test separation at the episode level."
-    },
-    {
-      "id": "qwen3_omni_lora_diagnostic_pilot",
-      "name": "Qwen3-Omni LoRA Final Diagnostic Result",
-      "status": "verified_baseline",
-      "entry_condition": "Selected episodes are prepared locally with no train/test episode leakage.",
-      "deliverables": [
-        "dataset JSONL/media manifests",
-        "LoRA adapter checkpoint",
-        "progress logs",
-        "validation monitoring",
-        "held-out predictions",
-        "metrics",
-        "confusion matrices",
-        "run report",
-        "public LoRA adapter repo"
-      ],
-      "completion_evidence": [
-        "docs/data/omni_finetune_verified_result.json",
-        "results/omni_finetune/verified_public/",
-        "dataset_manifest.json",
-        "training_metadata.json",
-        "progress.jsonl",
-        "metrics.json",
-        "predictions.jsonl",
-        "RUN_REPORT.md"
-      ],
-      "reader_takeaway": "The final omni-model diagnostic result establishes the full held-out training/validation/evaluation loop and meets the strict-JSON target, but weak action/subtask metrics make it a diagnostic baseline."
-    },
-    {
-      "id": "multi_episode_128_same_split_baselines",
-      "name": "128-Episode Same-Split Simple/NN Baselines",
-      "status": "verified_companion_result",
-      "entry_condition": "Derived Qwen JSONL export for the selected 96/16/16 split.",
-      "deliverables": [
-        "same 12 task ids",
-        "simple metadata/text baselines",
-        "neural MLP baselines for JSON-supported labels",
-        "explicit unsupported markers for raw-feature-only tasks"
-      ],
-      "completion_evidence": [
-        "results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md",
-        "results/omni_finetune/multi_episode_128_task_baselines/summary_report.json",
-        "scripts/omni/run_128_task_baselines.py"
-      ],
-      "reader_takeaway": "The simple and neural baseline framing is now aligned to the selected 128-episode setup; trajectory, retrieval, reconstruction, and misalignment variants still need raw 128 feature blocks for exact feature-level reproduction."
-    },
-    {
-      "id": "qwen3_omni_structured_output_error_analysis",
-      "name": "Action/Subtask Error-Analysis Pass",
-      "status": "active_next_step",
-      "entry_condition": "The final diagnostic package meets strict JSON validity but has weak action/subtask held-out quality.",
-      "deliverables": [
-        "same 96/16/16 episode split",
-        "action/subtask confusion analysis",
-        "unseen-label analysis",
-        "object/action family breakdowns",
-        "held-out test evaluation",
-        "comparison to the final verified Qwen baseline"
-      ],
-      "completion_evidence": [
-        "error-analysis tables",
-        "held-out metrics by failure type",
-        "verified public-safe package"
-      ],
-      "reader_takeaway": "The next pass should improve action/subtask quality before larger model-quality claims."
-    },
-    {
-      "id": "foundation_model_selection_matrix",
-      "name": "Foundation-Model Selection Matrix",
-      "status": "current",
-      "entry_condition": "The selected episodes are prepared or a 3-8 episode dry run is available for preprocessing checks.",
-      "deliverables": [
-        "backbone registry",
-        "Cosmos 3 world-model branch plan",
-        "Cosmos3-Super Forward-Dynamics LoRA verified package",
-        "Qwen3-Omni LoRA baseline plan",
-        "OpenVLA/openpi/GR00T policy-branch candidates",
-        "model-specific evaluation additions"
-      ],
-      "completion_evidence": [
-        "FOUNDATION_MODEL_PLAN.md",
-        "docs/data/foundation_model_plan.json",
-        "research_roadmap_interactive.json"
-      ],
-      "reader_takeaway": "Qwen3-Omni remains the structured JSON held-out pilot; Cosmos 3 is the first world-model branch. Cosmos3-Super now has a verified forward-dynamics LoRA over camera-pose proxy targets, while VLA/policy models wait for robot-compatible action targets."
-    },
-    {
-      "id": "robustness_run_64_128_episode",
-      "name": "64-128 Episode Robustness Run",
-      "status": "partially_implemented",
-      "entry_condition": "The selected-episode pilot trains and evaluates cleanly.",
-      "deliverables": [
-        "split-by-session metrics",
-        "modality ablations",
-        "calibration/object/language error analysis",
-        "missing-view sensitivity analysis"
-      ],
-      "completion_evidence": [
-        "held-out metrics by session",
-        "held-out metrics by task",
-        "held-out metrics by modality",
-        "ablation tables",
-        "qualitative error analysis"
-      ],
-      "reader_takeaway": "The robustness run tests whether the pilot conclusions survive broader sessions and missing modalities."
-    },
-    {
-      "id": "foundation_world_model_extensions",
-      "name": "Cosmos 3 and Policy-Model Extensions",
-      "status": "planned",
-      "entry_condition": "Enough multi-episode data, compute budget, and model-specific action/world-state targets.",
-      "deliverables": [
-        "Cosmos 3 future-window and action-conditioned world-model probes",
-        "OpenVLA/openpi/GR00T action-policy baseline",
-        "audio/video/depth/pose/mocap conditioning checks",
-        "affordance and object-interaction tasks",
-        "synthetic-data usefulness test"
-      ],
-      "completion_evidence": [
-        "task-specific held-out evaluations",
-        "verified Cosmos3-Super forward-dynamics LoRA package",
-        "qualitative inspection",
-        "updated model cards"
-      ],
-      "reader_takeaway": "The Cosmos branch now includes Nano future-window compatibility and Super forward-dynamics LoRA; the long-term direction remains richer multimodal representation learning with model branches chosen by task fit rather than by a single default backbone."
-    },
-    {
-      "id": "xperience_embodied_foundation_pretraining",
-      "name": "Xperience Embodied Foundation Model Pretraining",
-      "status": "future",
-      "entry_condition": "Full-corpus access, PB-scale storage path, high-throughput data loading, multi-node compute, and positive scaling evidence from smaller multi-episode runs.",
-      "deliverables": [
-        "full-corpus episode and split manifests",
-        "pretraining shard and provenance manifests",
-        "0.3B-1B and 1B-3B scaling pilots",
-        "3B-7B Xperience-native domain model target",
-        "held-out episode/session/activity/object evaluations",
-        "missing-modality robustness report",
-        "model card and data-boundary report"
-      ],
-      "completion_evidence": [
-        "pretraining metadata",
-        "checkpoint inventory",
-        "scaling curves",
-        "held-out evaluation reports",
-        "qualitative retrieval or future-state examples",
-        "safety and data-boundary report"
-      ],
-      "reader_takeaway": "The final research direction is a domain-specific embodied foundation model trained directly on Xperience-10M, after smaller pilots justify the cost and infrastructure."
-    }
-  ],
-  "public_surfaces_to_update": [
-    "README.md",
-    "PROJECT_STATUS.md",
-    "RESEARCH_TAKEAWAYS.md",
-    "EVALUATION_PROTOCOL.md",
-    "ARTIFACT_GUIDE.md",
-    "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
-    "XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md",
-    "docs/index.html",
-    "docs/data/additional_development_directions.json",
-    "docs/data/research_roadmap.json",
-    "Hugging Face Space card",
-    "Hugging Face artifact dataset card",
-    "Hugging Face model card"
-  ]
+        "EVALUATION_PROTOCOL.md",
+        "ARTIFACT_GUIDE.md",
+        "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
+        "XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md",
+        "docs/index.html",
+        "docs/data/additional_development_directions.json",
+        "docs/data/research_roadmap.json",
+        "Hugging Face Space card",
+        "Hugging Face artifact dataset card",
+        "Hugging Face model card"
+    ]
 }

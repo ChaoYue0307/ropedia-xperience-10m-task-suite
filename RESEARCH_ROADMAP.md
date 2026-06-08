@@ -13,6 +13,7 @@ should exist before the stage is treated as complete.
 | Multi-Episode Data Preparation | Implemented for first selected pilot | Gated dataset availability and enough storage for selected episodes. | 128 selected episodes, episode manifest, missing-view manifest, held-out episode split, and source-discovery report. | `results/omni_finetune/DATA_ACCESS_STATUS.md`, `results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md`, `results/omni_finetune/xperience10m_128_episode_selection.json` |
 | Qwen3-Omni LoRA Final Diagnostic Result | Verified baseline | Selected episodes prepared locally with no train/test episode leakage. | Dataset JSONL/media manifests, LoRA adapter checkpoint, progress logs, validation monitoring, held-out predictions, metrics, confusion matrices, run report, and public LoRA adapter repo. | `docs/data/omni_finetune_verified_result.json`, `results/omni_finetune/verified_public/`, `metrics.json`, `predictions.jsonl`, `RUN_REPORT.md`, `https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep` |
 | 128-Episode Same-Split Simple/NN Baselines | Verified companion result | Derived Qwen JSONL export for the selected 96/16/16 split. | Same 12 task ids, simple metadata/text baselines, neural MLP baselines where JSON labels support them, and explicit unsupported markers for tasks that still require raw 128 feature blocks. | `results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`, `summary_report.json`, `scripts/omni/run_128_task_baselines.py` |
+| 128-Episode Task Suite Enhancement Pack | Current no-new-episode plan | Same selected 96/16/16 split and current public 3,808-window export. | Dense-window and multiscale export estimates, hierarchical action/subtask target contract, raw-feature shard priorities for unsupported tasks, Qwen v5 and Cosmos continuation run cards, and publication-ready artifacts. | `TASK_SUITE_ENHANCEMENT_128.md`, `docs/data/task_suite_enhancement_128.json`, `results/omni_finetune/task_suite_enhancement_128_v1_20260608/enhancement_plan.json`, `scripts/omni/build_task_suite_enhancement_128.py` |
 | Action/Subtask Error-Analysis Pass | Active next step | The final diagnostic package meets strict JSON validity but has weak action/subtask held-out quality. | Same 96/16/16 split, action/subtask confusion analysis, unseen-label analysis, object/action family breakdowns, and comparison to the final verified Qwen baseline. | Updated error-analysis tables, held-out metrics by failure type, and verified public package. |
 | Foundation-Model Selection Matrix | Current | The selected pilot episodes are prepared, or a 3-8 episode dry run is available for preprocessing checks. | Backbone registry, Cosmos 3 world-model branch plan, Qwen3-Omni baseline plan, OpenVLA/openpi/GR00T policy candidates, and model-specific evaluation additions. | `FOUNDATION_MODEL_PLAN.md`, `docs/data/foundation_model_plan.json`, `research_roadmap_interactive.json` |
 | 64-128 Episode Robustness Run | Planned | The final selected-episode Qwen diagnostic run trains and evaluates cleanly. | Split-by-session metrics, modality ablations, calibration/object/language error analysis, and sensitivity to missing views. | Held-out metrics by session, task, and modality; ablation tables; qualitative error analysis. |
@@ -21,14 +22,17 @@ should exist before the stage is treated as complete.
 
 ## Current Decision Point
 
-The useful next decision is model-quality improvement plus backbone fit: keep
-the public-sample task suite as the development harness, use the verified
-Qwen3-Omni final diagnostic result as the first cross-episode
-baseline, then improve action/subtask quality before claiming
-model quality. The earlier simple and neural baseline framing is now aligned to
-the same 96/16/16 split through metadata/text baselines for JSON-supported task
-ids; raw-feature-only tasks remain marked as needing the 128-run sensor feature
-blocks.
+The useful next decision is model-quality improvement plus backbone fit without
+requiring more raw episodes first: keep the public-sample task suite as the
+development harness, use the verified Qwen3-Omni final diagnostic result as the
+first cross-episode baseline, then improve action/subtask quality before
+claiming model quality. The earlier simple and neural baseline framing is now
+aligned to the same 96/16/16 split through metadata/text baselines for
+JSON-supported task ids; raw-feature-only tasks remain marked as needing the
+128-run sensor feature blocks. The current no-new-episode recommendation is to
+export `multiscale_20s10_40s20_80s40` windows, add hierarchical
+action/subtask targets, and publish separate verified packages rather than
+overwriting the existing Qwen, Cosmos, or baseline results.
 Qwen3-Omni remains the first trainable multimodal LoRA target. Cosmos 3 becomes
 the first world-model/action-generation branch. OpenVLA, openpi, GR00T, Octo,
 and SmolVLA-style models become policy/action branches only after the action
@@ -57,6 +61,21 @@ depend on immediately training a larger foundation model:
 The concise public source is
 `ADDITIONAL_DEVELOPMENT_DIRECTIONS.md`; the website/Hugging Face data copy is
 `docs/data/additional_development_directions.json`.
+
+## No-New-Episode Enhancement Pack
+
+The current 128-episode setup still has headroom before adding more data. The
+non-overwriting enhancement pack estimates denser and multiscale windows from
+the observed frame spans, identifies the action/subtask and next-action
+label-pressure bottleneck, and defines the next export/model contracts.
+
+Evidence to inspect:
+
+- `TASK_SUITE_ENHANCEMENT_128.md`
+- `docs/data/task_suite_enhancement_128.json`
+- `results/omni_finetune/task_suite_enhancement_128_v1_20260608/enhancement_plan.json`
+- `results/omni_finetune/task_suite_enhancement_128_v1_20260608/dense_window_scenarios.csv`
+- `scripts/omni/build_task_suite_enhancement_128.py`
 
 ## Stage Details
 
@@ -95,10 +114,11 @@ Evidence to inspect:
 This stage uses Qwen3-Omni as the multimodal backbone and trains lightweight
 LoRA adapters. The final held-out diagnostic package now exists. It proves the
 export, training, evaluation, validation, public-safe packaging, and adapter
-publication loop. The current strict-label v3 evaluation reaches 100.00% JSON
-validity, 97.32% transition accuracy, and 72.10% contact accuracy, but action
-macro-F1 is 0.0022 and subtask accuracy is 0.0022. Treat it as a baseline and
-error-analysis starting point, not as a strong action/subtask model.
+publication loop. The current v4 four-epoch evaluation reaches 100.00% JSON
+validity, 97.32% transition accuracy, 72.99% contact accuracy, and 31.10%
+object micro-F1, but action macro-F1 is 0.0019 and subtask accuracy is 0.0000.
+Treat it as a baseline and error-analysis starting point, not as a strong
+action/subtask model.
 
 Expected outputs:
 

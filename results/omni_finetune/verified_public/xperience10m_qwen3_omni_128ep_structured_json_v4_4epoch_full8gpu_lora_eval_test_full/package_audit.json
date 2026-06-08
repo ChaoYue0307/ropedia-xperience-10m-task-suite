@@ -1,0 +1,24 @@
+{
+  "status": "pass",
+  "package_dir": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full",
+  "backbone": "qwen3_omni_lora",
+  "required_eval_files": [
+    "metrics.json",
+    "predictions.jsonl",
+    "predictions.csv",
+    "per_class_metrics.csv",
+    "confusion_matrix.csv",
+    "RUN_REPORT.md"
+  ],
+  "primary_metrics": [
+    "action_macro_f1",
+    "contact_accuracy",
+    "held_out_episode_count",
+    "json_validity_rate",
+    "next_action_accuracy",
+    "object_micro_f1",
+    "subtask_accuracy",
+    "transition_accuracy"
+  ],
+  "issues": []
+}

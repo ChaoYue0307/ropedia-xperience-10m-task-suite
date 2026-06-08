@@ -172,6 +172,7 @@ def build_report() -> dict:
         "data/mirror_parity.json",
         "data/public_surface_qa.json",
         "data/research_roadmap.json",
+        "data/task_suite_enhancement_128.json",
     ]
 
     banned_hits = [

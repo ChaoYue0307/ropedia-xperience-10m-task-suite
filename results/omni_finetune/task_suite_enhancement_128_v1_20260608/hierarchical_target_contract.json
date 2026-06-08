@@ -1,0 +1,54 @@
+{
+  "id": "xperience10m_128_hierarchical_action_targets_v1",
+  "status": "ready_for_export",
+  "purpose": "Reduce fine-grained label sparsity without changing the sealed 96/16/16 episode split.",
+  "target_fields": [
+    {
+      "field": "action_family",
+      "source": "normalized true action string",
+      "values": [
+        "locomotion",
+        "reach_grasp_release",
+        "place_arrange_align",
+        "manipulate_adjust",
+        "tool_cut_mark_write",
+        "sort_count_organize",
+        "inspect_observe_use",
+        "clean_cook",
+        "other_fine_action",
+        "unknown"
+      ],
+      "metric": "macro_f1"
+    },
+    {
+      "field": "action_verb",
+      "source": "first normalized verb phrase from action label",
+      "metric": "macro_f1 with train-seen and unseen slices"
+    },
+    {
+      "field": "fine_action",
+      "source": "existing action label",
+      "metric": "exact match and label-normalized semantic family match"
+    },
+    {
+      "field": "subtask_family",
+      "source": "normalized subtask phrase or main task fallback",
+      "metric": "accuracy and macro_f1"
+    },
+    {
+      "field": "contact_transition",
+      "source": "existing contact and transition fields",
+      "metric": "accuracy, balanced accuracy, calibration"
+    },
+    {
+      "field": "object_set",
+      "source": "existing objects list",
+      "metric": "micro_f1 and object-category recall"
+    }
+  ],
+  "public_safety": [
+    "No raw MP4/HDF5/RRD files are written.",
+    "No full Qwen/Cosmos weights are mirrored.",
+    "Generated labels and aggregate metrics remain public-safe derived metadata."
+  ]
+}

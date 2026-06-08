@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-08T07:54:26+00:00",
+  "generated_at_utc": "2026-06-08T12:23:52+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 136,
-    "external_reference_count": 107,
-    "json_files": 35,
+    "local_references": 142,
+    "external_reference_count": 111,
+    "json_files": 36,
     "image_assets_referenced": 22,
     "failure_count": 0
   },
@@ -75,7 +75,7 @@
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
       "overview_index": 67412,
-      "evidence_index": 90718
+      "evidence_index": 92693
     },
     {
       "name": "project_status_links_json",
@@ -125,7 +125,7 @@
       "name": "roadmap_html_matches_json_phases",
       "status": "pass",
       "reason": "The roadmap section should show every stage defined in research_roadmap.json.",
-      "phase_count": 9,
+      "phase_count": 10,
       "missing_phase_names": [],
       "roadmap_json_error": null
     },
@@ -133,12 +133,13 @@
       "name": "roadmap_status_chips_match_json",
       "status": "pass",
       "reason": "The roadmap status chips should match the phase statuses in research_roadmap.json.",
-      "phase_count": 9,
+      "phase_count": 10,
       "statuses": [
         "implemented",
         "implemented_for_first_pilot",
         "verified_baseline",
         "verified_companion_result",
+        "current",
         "active_next_step",
         "current",
         "partially_implemented",
@@ -153,8 +154,8 @@
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
       "overview_index": 67412,
-      "protocol_index": 87277,
-      "evidence_index": 90718
+      "protocol_index": 88875,
+      "evidence_index": 92693
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -228,7 +229,7 @@
     {
       "path": "index.html",
       "id_count": 77,
-      "reference_count": 113,
+      "reference_count": 119,
       "image_count": 24
     },
     {
@@ -252,7 +253,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 75435,
+      "bytes": 78253,
       "top_level_type": "dict"
     },
     {
@@ -292,7 +293,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 412911,
+      "bytes": 409212,
       "top_level_type": "dict"
     },
     {
@@ -302,7 +303,7 @@
     },
     {
       "path": "data/omni_finetune_verified_result.json",
-      "bytes": 3724,
+      "bytes": 4431,
       "top_level_type": "dict"
     },
     {
@@ -322,12 +323,12 @@
     },
     {
       "path": "data/project_packet.json",
-      "bytes": 8656,
+      "bytes": 10496,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_status.json",
-      "bytes": 19360,
+      "bytes": 23198,
       "top_level_type": "dict"
     },
     {
@@ -337,7 +338,7 @@
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 7213,
+      "bytes": 7565,
       "top_level_type": "dict"
     },
     {
@@ -367,12 +368,12 @@
     },
     {
       "path": "data/research_roadmap.json",
-      "bytes": 10502,
+      "bytes": 13313,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_roadmap_interactive.json",
-      "bytes": 144016,
+      "bytes": 145083,
       "top_level_type": "dict"
     },
     {
@@ -382,7 +383,7 @@
     },
     {
       "path": "data/scope_claims_audit.json",
-      "bytes": 21365,
+      "bytes": 21325,
       "top_level_type": "dict"
     },
     {
@@ -398,6 +399,11 @@
     {
       "path": "data/summary_metrics.json",
       "bytes": 27604,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/task_suite_enhancement_128.json",
+      "bytes": 20181,
       "top_level_type": "dict"
     },
     {
