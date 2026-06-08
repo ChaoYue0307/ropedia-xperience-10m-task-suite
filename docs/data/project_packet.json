@@ -12,7 +12,8 @@
     "raw_xperience10m_data_in_repo": false,
     "audio_feature_status": "Audio is one of the synchronized source modalities in the current task representation.",
     "qwen3_omni_32_episode_claim": false,
-    "qwen3_omni_status": "The selected 96/16/16 Qwen3-Omni final diagnostic result is verified, meets the strict-JSON target, and still has weak action/subtask metrics that guide the next error-analysis pass."
+    "qwen3_omni_status": "The selected 96/16/16 Qwen3-Omni final diagnostic result is verified, meets the strict-JSON target, and still has weak action/subtask metrics that guide the next error-analysis pass.",
+    "cosmos3_super_forward_dynamics_lora_status": "The first Cosmos3-Super fine-tuned adapter branch is verified as a forward-dynamics LoRA over camera-pose proxy targets; it reports loss metrics, not JSON action-label accuracy."
   },
   "reading_path": [
     {
@@ -41,7 +42,7 @@
         "docs/data/scope_claims_audit.json",
         "docs/data/website_integrity.json"
       ],
-      "readout": "The project status table and roadmap give the compact current-state summary. Single-episode task engineering, metrics, visualizations, public website integrity, mirror parity, same-split 128-episode baselines, the final selected-episode Qwen3-Omni diagnostic result, the Cosmos3-Nano compatibility package, the Cosmos3-Super base-weight Reasoner evaluation, and the Cosmos3-Super camera-pose forward-dynamics contract audit plus schema-only packer smoke are implemented; stronger action/subtask and real Cosmos fine-tuned model quality remain follow-ups."
+      "readout": "The project status table and roadmap give the compact current-state summary. Single-episode task engineering, metrics, visualizations, public website integrity, mirror parity, same-split 128-episode baselines, the final selected-episode Qwen3-Omni diagnostic result, the Cosmos3-Nano compatibility package, the Cosmos3-Super base-weight Reasoner evaluation, and the Cosmos3-Super Forward-Dynamics LoRA package are implemented; stronger action/subtask quality and policy-compatible action targets remain follow-ups."
     },
     {
       "step": 2,
@@ -116,7 +117,7 @@
         "scripts/omni/discover_xperience10m_sources.py",
         "docs/data/omni_finetune_verified_result.json"
       ],
-      "readout": "The selected-episode held-out Qwen3-Omni final diagnostic result is verified and JSON-format reliability meets the 98% target. The next milestone is action/subtask error analysis and a stronger model-quality run on the same split."
+      "readout": "The selected-episode held-out Qwen3-Omni final diagnostic result is verified and JSON-format reliability meets the 98% target. The same public comparison also includes the verified 128-episode baselines, Cosmos3-Nano compatibility result, Cosmos3-Super Reasoner evaluation, and Cosmos3-Super Forward-Dynamics LoRA package. The next milestone is action/subtask error analysis and stronger model-quality runs on the same split."
     }
   ],
     "project_status": "PROJECT_STATUS.md",
@@ -142,7 +143,8 @@
     "hf_model_baselines": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines"
   },
   "current_reading_notes": [
-    "The first cross-episode Qwen3-Omni diagnostic pilot is verified, but strong model quality is not yet shown.",
+    "The first cross-episode Qwen3-Omni diagnostic pilot is verified, but strong model quality is not yet shown; action/subtask metrics remain weak.",
+    "Cosmos3-Super Forward-Dynamics LoRA is verified as a loss-based world-model adapter branch, not as JSON action-token prediction.",
     "Older Qwen3-Omni setup artifacts are separate from the verified selected-episode diagnostic package.",
     "Feature-vector reconstruction is separate from pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
     "Raw Xperience-10M data is not redistributed in this repo."

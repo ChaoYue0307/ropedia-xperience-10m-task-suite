@@ -221,7 +221,11 @@ def model_branch_summary() -> dict[str, Any]:
     branches = [model_branch_entry(payload) for payload in verified_summaries()]
     qwen = [item for item in branches if item.get("backbone") == "qwen3_omni_lora"]
     cosmos_nano = [item for item in branches if item.get("backbone") == "cosmos_world_model"]
-    cosmos_super = [item for item in branches if item.get("backbone") == "cosmos3_super_reasoner"]
+    cosmos_super = [
+        item
+        for item in branches
+        if item.get("backbone") in {"cosmos3_super_reasoner", "cosmos3_super_forward_dynamics"}
+    ]
     return {
         "id": "v3_multi_episode_foundation_model_branches",
         "title": "128-Episode Foundation-Model Branches",
@@ -240,14 +244,16 @@ def model_branch_summary() -> dict[str, Any]:
             "Qwen3-Omni LoRA",
             "Cosmos3-Nano future-window compatibility branch",
             "Cosmos3-Super Reasoner base-weight evaluation",
+            "Cosmos3-Super forward-dynamics LoRA",
         ],
         "branches": branches,
         "interpretation": (
             "This layer contains the held-out foundation-model packages. Qwen3-Omni "
             "packages evaluate structured JSON task prediction; Cosmos3-Nano evaluates "
             "a future-window world-model compatibility adapter; Cosmos3-Super Reasoner "
-            "evaluates staged base weights through vLLM on the JSON task. Neither Cosmos "
-            "branch is a new fine-tuned weight release yet."
+            "evaluates staged base weights through vLLM on the JSON task; Cosmos3-Super "
+            "Forward-Dynamics LoRA is the first Super adapter branch and evaluates "
+            "camera-pose-conditioned future vision velocity loss."
         ),
     }
 
@@ -448,6 +454,7 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
     qwen_branches = [branch for branch in branches if branch.get("backbone") == "qwen3_omni_lora"]
     cosmos_nano_branches = [branch for branch in branches if branch.get("backbone") == "cosmos_world_model"]
     cosmos_super_branches = [branch for branch in branches if branch.get("backbone") == "cosmos3_super_reasoner"]
+    cosmos_super_fd_branches = [branch for branch in branches if branch.get("backbone") == "cosmos3_super_forward_dynamics"]
     cosmos_super_readiness = cosmos3_super_readiness_entry()
     cosmos_super_action_contract = cosmos3_super_action_contract_entry()
     cosmos_super_packer = cosmos3_super_packer_entry()
@@ -473,6 +480,9 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "evaluated through vLLM; create a separate repo only after new adapter or "
             "fine-tuned weights exist"
         )
+    for branch in cosmos_super_fd_branches:
+        branch["is_current"] = True
+        branch["weights_repository"] = "https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep"
     return [
         {
             "id": "task_head_baselines",
@@ -567,8 +577,33 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "Reasoner evaluation on the same JSON task as Qwen3. It uses staged base "
                 "weights through vLLM, so it is a model-branch diagnostic, not a weight release. "
                 "A camera-pose proxy forward-dynamics target export now passes the contract audit "
-                "and schema-only packer smoke; true Cosmos3-Super fine-tuning is still blocked "
-                "until a trainable multi-GPU/offload path produces adapter or fine-tuned weights."
+                "and schema-only packer smoke; the separate Forward-Dynamics LoRA group records "
+                "the trainable adapter run and loss-based held-out evaluation."
+            ),
+        },
+        {
+            "id": "cosmos3_super_forward_dynamics",
+            "model_family": "Cosmos3-Super Forward-Dynamics LoRA",
+            "model_type": "PEFT LoRA over nv-community/Cosmos3-Super for camera-pose-conditioned future vision velocity",
+            "weight_repository": "https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep",
+            "one_episode_runs": [
+                {
+                    "id": "cosmos3_super_forward_dynamics_overfit_smoke",
+                    "title": "Cosmos3-Super Forward-Dynamics Overfit Smoke",
+                    "scope": "small overfit smoke before 128-episode scale-up",
+                    "status": "verified_smoke",
+                    "source": "results/omni_finetune/xperience10m_cosmos3_super_forward_dynamics_lora_overfit_after_qwen_v4_20260608_fsdp8_attn256_gradfix_savefix2/",
+                    "weights": "local repaired LoRA smoke adapter, not public packaged as final",
+                    "interpretation": (
+                        "Validated the trainable adapter path, FSDP save repair, and Diffusers load before the full 128-episode run."
+                    ),
+                }
+            ],
+            "multi_episode_128_runs": cosmos_super_fd_branches,
+            "comparison_note": (
+                "This is the first verified Cosmos3-Super fine-tuned adapter branch. "
+                "Its metric is forward-dynamics MSE, so compare it to world-model loss "
+                "or future-prediction targets, not to Qwen JSON classification accuracy."
             ),
         },
     ]
@@ -592,7 +627,7 @@ def build_report() -> dict[str, Any]:
         "version_reading_notes": [
             "Version 1 is the public-sample 12-task harness with minimal and neural heads.",
             "Version 2 is the selected 128-episode same-split simple/NN baseline alignment.",
-            "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, and Cosmos3-Super Reasoner is a base-weight JSON-task evaluation; Cosmos3-Super has a camera-pose forward-dynamics contract audit and schema-only packer smoke, but no new fine-tuned weight release.",
+            "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, Cosmos3-Super Reasoner is a base-weight JSON-task evaluation, and Cosmos3-Super Forward-Dynamics LoRA is the first Super fine-tuned adapter branch.",
         ],
         "versions": versions,
         "model_groups": model_groups,
@@ -601,11 +636,11 @@ def build_report() -> dict[str, Any]:
             "Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.",
             "Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; the newest verified full-eval 128-episode adapter belongs in the Qwen LoRA model repo.",
             "Cosmos3-Nano has a 128-episode future-window compatibility package.",
-            "Cosmos3-Super has a 128-episode base-weight Reasoner evaluation on the JSON task plus a camera-pose forward-dynamics contract audit; create a separate Cosmos model repo only after a trainable multi-GPU/offload run produces real Cosmos adapter or fine-tuned weights.",
+            "Cosmos3-Super now has both a 128-episode base-weight Reasoner evaluation on the JSON task and a fine-tuned forward-dynamics LoRA branch over camera-pose proxy targets.",
         ],
         "pending": [
             "Use the verified Qwen3 v4 4-epoch full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison.",
-            "Promote Cosmos3 from Nano compatibility, Super base-weight evaluation, and the camera-pose forward-dynamics contract to true fine-tuning only after a trainable Cosmos3-Super run produces new weights.",
+            "Verify the live Cosmos3-Super forward-dynamics adapter model repo after upload; the public-safe verified_public package still excludes safetensors by design.",
         ],
     }
 
@@ -640,6 +675,10 @@ def entry_metric_text(entry: dict[str, Any]) -> str:
         "json_validity_rate",
         "action_macro_f1",
         "future_retrieval_mrr",
+        "test_forward_dynamics_mse",
+        "val_forward_dynamics_mse",
+        "train_final_loss",
+        "adapter_parameter_numel",
         "temporal_consistency",
         "transition_accuracy",
         "contact_accuracy",
@@ -736,7 +775,19 @@ def markdown(report: dict[str, Any]) -> str:
         key_metrics = ", ".join(
             f"{key}={fmt_score(value)}"
             for key, value in metrics.items()
-            if key in {"json_validity_rate", "action_macro_f1", "future_retrieval_mrr", "temporal_consistency", "transition_accuracy", "contact_accuracy"}
+            if key
+            in {
+                "json_validity_rate",
+                "action_macro_f1",
+                "future_retrieval_mrr",
+                "test_forward_dynamics_mse",
+                "val_forward_dynamics_mse",
+                "train_final_loss",
+                "adapter_parameter_numel",
+                "temporal_consistency",
+                "transition_accuracy",
+                "contact_accuracy",
+            }
         )
         counts = branch.get("counts", {})
         lines.append(

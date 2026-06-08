@@ -1,0 +1,86 @@
+{
+  "run_id": "xperience10m_cosmos3_super_forward_dynamics_lora_overfit_after_qwen_v4_20260608_fsdp8_projout256_gradfix_savefix",
+  "run_kind": "cosmos3_super_forward_dynamics_lora",
+  "status": "complete",
+  "started_at_unix": 1780896569.0936432,
+  "finished_at_unix": 1780896639.7712083,
+  "elapsed_seconds": 70.67756509780884,
+  "workspace": "/home/cy/Ropedia/ropedia-episode-task-suite",
+  "dataset_jsonl": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_camera_pose_targets_20260608/dataset_with_cosmos_actions.jsonl",
+  "model_dir": "/home/cy/Ropedia/cosmos3_models/nv-community__Cosmos3-Super",
+  "split": "train",
+  "episode_id": null,
+  "num_processes": 8,
+  "train_samples": 1,
+  "rank_samples": 1,
+  "max_steps": 10,
+  "learning_rate": 0.0001,
+  "target_modules": [
+    "proj_out"
+  ],
+  "lora_rank": 16,
+  "lora_alpha": 32,
+  "trainable_params": 84992,
+  "num_train_timesteps": 1000,
+  "sigma_shift": 3.0,
+  "loss_scale": 10.0,
+  "final_loss": 4.932724952697754,
+  "losses": [
+    8.590700149536133,
+    5.863537788391113,
+    7.423462390899658,
+    4.991403579711914,
+    5.493304252624512,
+    5.923407077789307,
+    6.795309066772461,
+    4.328230381011963,
+    5.2016119956970215,
+    4.932724952697754
+  ],
+  "adapter_dir": "results/omni_finetune/xperience10m_cosmos3_super_forward_dynamics_lora_overfit_after_qwen_v4_20260608_fsdp8_projout256_gradfix_savefix/adapter_lora",
+  "weights_updated": true,
+  "loss_surface": "vision_velocity_conditioned_on_camera_pose",
+  "action_loss_expected": false,
+  "adapter_shape_check": {
+    "status": "repaired",
+    "source_rank_adapter_dir": "results/omni_finetune/xperience10m_cosmos3_super_forward_dynamics_lora_overfit_after_qwen_v4_20260608_fsdp8_projout256_gradfix_savefix/rank7/adapter_lora",
+    "adapter_file": "results/omni_finetune/xperience10m_cosmos3_super_forward_dynamics_lora_overfit_after_qwen_v4_20260608_fsdp8_projout256_gradfix_savefix/adapter_lora/pytorch_lora_weights.safetensors",
+    "bytes": 341272,
+    "keys": [
+      "proj_out.lora_A.weight",
+      "proj_out.lora_B.weight"
+    ],
+    "shapes": {
+      "proj_out.lora_A.weight": [
+        16,
+        5120
+      ],
+      "proj_out.lora_B.weight": [
+        192,
+        16
+      ]
+    },
+    "numel": 84992,
+    "repaired": {
+      "proj_out.lora_A.weight": {
+        "from": [
+          81920
+        ],
+        "to": [
+          16,
+          5120
+        ]
+      },
+      "proj_out.lora_B.weight": {
+        "from": [
+          3072
+        ],
+        "to": [
+          192,
+          16
+        ]
+      }
+    },
+    "timestamp": 1780896798.5033157
+  }
+}

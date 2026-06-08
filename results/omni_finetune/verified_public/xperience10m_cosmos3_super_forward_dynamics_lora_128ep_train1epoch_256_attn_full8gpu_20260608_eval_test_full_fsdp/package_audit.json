@@ -1,0 +1,18 @@
+{
+  "status": "pass",
+  "package_dir": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_forward_dynamics_lora_128ep_train1epoch_256_attn_full8gpu_20260608_eval_test_full_fsdp",
+  "backbone": "cosmos3_super_forward_dynamics",
+  "required_eval_files": [
+    "metrics.json",
+    "RUN_REPORT.md",
+    "loss_records.jsonl"
+  ],
+  "primary_metrics": [
+    "adapter_parameter_numel",
+    "held_out_episode_count",
+    "test_forward_dynamics_mse",
+    "train_final_loss",
+    "val_forward_dynamics_mse"
+  ],
+  "issues": []
+}

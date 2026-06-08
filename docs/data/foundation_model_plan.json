@@ -1,14 +1,19 @@
 {
   "title": "Xperience-10M Foundation Model Plan",
   "status": "planning_artifact",
-  "current_boundary": "A final held-out multi-episode Qwen3-Omni diagnostic result is verified in this repo and meets the strict-JSON target, but it is not a strong action/subtask model result. The current foundation-model work should treat it as the baseline train/eval/package loop before Qwen action/subtask improvements, Cosmos-style world modeling, or policy/VLA branches.",
+  "current_boundary": "Verified held-out multi-episode foundation-model diagnostics now exist for Qwen3-Omni LoRA, Cosmos3-Nano future-window compatibility, Cosmos3-Super base-weight Reasoner evaluation, and Cosmos3-Super Forward-Dynamics LoRA. Qwen remains the structured JSON baseline; the Cosmos branches answer world-model or base-reasoner questions with separate metrics.",
   "backbone_registry": {
     "config_dir": "configs/omni_backbones",
     "validator": "scripts/omni/backbone_registry.py --validate --json",
     "extension_contract": "OMNI_MODEL_EXTENSION_CONTRACT.md",
     "implemented_backbone": "qwen3_omni_lora",
-    "planned_backbones": [
+    "implemented_backbones": [
+      "qwen3_omni_lora",
       "cosmos_world_model",
+      "cosmos3_super_reasoner",
+      "cosmos3_super_forward_dynamics"
+    ],
+    "planned_backbones": [
       "policy_vla_branch"
     ]
   },
@@ -107,8 +112,8 @@
         "Uses pose/SLAM, depth, mocap, IMU, and language as physical-world conditioning signals.",
         "Better aligned with prediction/generation objectives than simple label classification."
       ],
-      "current_decision": "add_as_first_world_model_branch_after_data_gate",
-      "entry_condition": "Multi-episode data plus enough storage/compute for generated or latent video-state outputs.",
+      "current_decision": "implemented_as_nano_future_window_and_super_forward_dynamics_branches",
+      "entry_condition": "Use separate metrics for Nano future-window retrieval and Super forward-dynamics MSE; do not compare them directly to Qwen JSON-task accuracy.",
       "public_source": "https://www.nvidia.com/en-us/ai/cosmos/"
     },
     {
@@ -211,12 +216,12 @@
     {
       "step": 3,
       "name": "Model-selection dry run",
-      "action": "Run 3-8 episode dry runs for Qwen3-Omni prompt/LoRA, Cosmos 3 preprocessing, and one policy candidate."
+      "action": "Run 3-8 episode dry runs for any next backbone before scaling beyond the selected split."
     },
     {
       "step": 4,
       "name": "World-model branch",
-      "action": "Promote Cosmos 3 if future-window/action-conditioned preprocessing fits storage and compute."
+      "action": "Promote Cosmos 3 beyond the current Nano compatibility and Super forward-dynamics runs only when loss metrics, preprocessing, and storage justify the added compute."
     },
     {
       "step": 5,

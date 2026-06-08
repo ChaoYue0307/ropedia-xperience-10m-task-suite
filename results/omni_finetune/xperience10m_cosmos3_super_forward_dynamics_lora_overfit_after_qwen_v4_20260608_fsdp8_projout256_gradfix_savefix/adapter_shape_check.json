@@ -1,0 +1,42 @@
+{
+  "status": "repaired",
+  "source_rank_adapter_dir": "results/omni_finetune/xperience10m_cosmos3_super_forward_dynamics_lora_overfit_after_qwen_v4_20260608_fsdp8_projout256_gradfix_savefix/rank7/adapter_lora",
+  "adapter_file": "results/omni_finetune/xperience10m_cosmos3_super_forward_dynamics_lora_overfit_after_qwen_v4_20260608_fsdp8_projout256_gradfix_savefix/adapter_lora/pytorch_lora_weights.safetensors",
+  "bytes": 341272,
+  "keys": [
+    "proj_out.lora_A.weight",
+    "proj_out.lora_B.weight"
+  ],
+  "shapes": {
+    "proj_out.lora_A.weight": [
+      16,
+      5120
+    ],
+    "proj_out.lora_B.weight": [
+      192,
+      16
+    ]
+  },
+  "numel": 84992,
+  "repaired": {
+    "proj_out.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "proj_out.lora_B.weight": {
+      "from": [
+        3072
+      ],
+      "to": [
+        192,
+        16
+      ]
+    }
+  },
+  "timestamp": 1780896798.5033157
+}

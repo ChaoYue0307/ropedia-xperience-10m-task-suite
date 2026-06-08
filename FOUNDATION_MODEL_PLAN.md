@@ -5,9 +5,11 @@ Qwen3-Omni LoRA pilot. It separates immediate trainable work from later
 world-model and robot-policy branches, so the project can choose a backbone
 without mixing different research goals.
 
-Current status: this is a planning artifact. The public repo has verified
-single-episode task heads and setup-stage Qwen3-Omni scripts. It has not yet
-run a held-out multi-episode foundation-model evaluation.
+Current status: this remains the backbone-selection plan, but the repo now has
+verified held-out multi-episode foundation-model diagnostics: Qwen3-Omni LoRA
+for structured JSON tasks, Cosmos3-Nano for future-window compatibility,
+Cosmos3-Super Reasoner as a base-weight JSON-task evaluation, and Cosmos3-Super
+Forward-Dynamics LoRA as the first fine-tuned Super adapter branch.
 
 ## Backbone Decision
 
@@ -102,8 +104,11 @@ The practical Cosmos 3 branch should start with three targets:
 3. **Synthetic data expansion:** generate or score candidate futures, then test
    whether synthetic windows improve downstream task heads.
 
-A Cosmos 3 branch is ready to publish only after committed manifests, generated
-outputs, held-out metrics, and qualitative examples are available.
+A Cosmos 3 branch is now represented by two public-safe verified packages:
+Cosmos3-Nano future-window compatibility and Cosmos3-Super forward-dynamics
+LoRA. The Super LoRA target is camera-pose-conditioned future vision velocity,
+so it should be analyzed as a world-model loss result rather than a JSON-task
+classifier.
 
 ## Policy-Model Branch
 
@@ -136,17 +141,17 @@ The foundation-model stage should add metrics beyond the current 12-task suite:
 
 ## Execution Order
 
-1. Finish selected multi-episode pilot preparation.
-2. Run the Qwen3-Omni LoRA pilot exactly once as the first held-out baseline.
-3. Run a model-selection dry run on 3-8 episodes: Qwen3-Omni prompt-only,
-   Qwen3-Omni LoRA, Cosmos 3 world-model preprocessing, and one policy baseline.
-4. Promote Cosmos 3 to the first world-model experiment if video/sensor
-   preprocessing and storage fit.
-5. Promote OpenVLA/openpi/GR00T only after action targets are explicit and
+1. Keep the selected 96/16/16 split as the comparison spine.
+2. Treat the verified Qwen3-Omni LoRA package as the structured JSON baseline.
+3. Treat Cosmos3-Nano compatibility and Cosmos3-Super Forward-Dynamics LoRA as separate world-model branches with different metrics.
+4. Run a model-selection dry run on 3-8 episodes for any next backbone before scaling beyond the selected split.
+5. Promote Cosmos 3 to larger world-model experiments if video/sensor
+   preprocessing, storage, and loss metrics justify the extra cost.
+6. Promote OpenVLA/openpi/GR00T only after action targets are explicit and
    retargeting artifacts are traceable.
-6. Update public cards only when a branch has real manifests, predictions,
+7. Update public cards only when a branch has real manifests, predictions,
    metrics, and qualitative examples.
-7. Start Xperience-native pretraining only after smaller scaling stages,
+8. Start Xperience-native pretraining only after smaller scaling stages,
    full-corpus storage, multi-node compute, and held-out evaluation protocols
    are in place.
 

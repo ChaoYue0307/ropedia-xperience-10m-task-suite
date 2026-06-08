@@ -1,0 +1,3492 @@
+{
+  "adapter_file": "results/omni_finetune/xperience10m_cosmos3_super_forward_dynamics_lora_128ep_train1epoch_256_attn_full8gpu_20260608/adapter_lora/pytorch_lora_weights.safetensors",
+  "dim_counts": {
+    "2": 384
+  },
+  "repaired": {
+    "layers.0.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.0.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.0.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.0.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.0.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.0.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.1.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.1.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.1.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.1.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.1.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.1.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.10.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.10.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.10.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.10.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.10.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.10.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.11.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.11.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.11.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.11.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.11.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.11.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.12.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.12.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.12.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.12.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.12.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.12.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.13.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.13.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.13.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.13.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.13.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.13.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.14.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.14.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.14.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.14.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.14.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.14.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.15.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.15.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.15.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.15.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.15.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.15.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.16.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.16.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.16.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.16.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.16.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.16.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.17.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.17.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.17.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.17.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.17.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.17.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.18.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.18.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.18.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.18.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.18.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.18.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.19.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.19.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.19.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.19.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.19.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.19.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.2.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.2.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.2.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.2.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.2.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.2.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.20.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.20.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.20.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.20.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.20.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.20.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.21.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.21.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.21.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.21.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.21.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.21.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.22.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.22.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.22.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.22.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.22.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.22.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.23.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.23.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.23.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.23.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.23.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.23.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.24.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.24.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.24.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.24.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.24.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.24.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.25.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.25.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.25.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.25.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.25.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.25.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.26.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.26.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.26.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.26.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.26.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.26.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.27.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.27.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.27.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.27.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.27.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.27.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.28.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.28.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.28.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.28.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.28.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.28.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.29.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.29.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.29.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.29.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.29.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.29.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.3.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.3.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.3.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.3.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.3.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.3.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.30.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.30.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.30.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.30.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.30.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.30.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.31.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.31.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.31.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.31.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.31.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.31.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.32.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.32.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.32.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.32.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.32.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.32.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.33.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.33.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.33.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.33.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.33.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.33.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.34.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.34.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.34.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.34.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.34.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.34.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.35.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.35.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.35.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.35.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.35.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.35.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.36.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.36.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.36.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.36.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.36.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.36.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.37.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.37.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.37.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.37.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.37.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.37.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.38.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.38.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.38.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.38.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.38.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.38.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.39.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.39.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.39.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.39.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.39.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.39.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.4.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.4.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.4.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.4.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.4.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.4.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.40.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.40.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.40.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.40.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.40.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.40.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.41.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.41.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.41.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.41.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.41.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.41.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.42.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.42.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.42.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.42.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.42.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.42.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.43.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.43.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.43.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.43.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.43.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.43.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.44.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.44.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.44.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.44.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.44.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.44.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.45.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.45.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.45.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.45.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.45.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.45.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.46.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.46.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.46.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.46.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.46.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.46.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.47.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.47.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.47.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.47.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.47.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.47.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.48.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.48.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.48.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.48.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.48.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.48.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.49.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.49.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.49.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.49.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.49.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.49.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.5.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.5.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.5.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.5.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.5.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.5.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.50.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.50.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.50.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.50.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.50.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.50.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.51.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.51.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.51.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.51.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.51.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.51.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.52.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.52.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.52.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.52.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.52.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.52.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.53.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.53.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.53.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.53.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.53.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.53.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.54.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.54.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.54.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.54.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.54.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.54.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.55.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.55.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.55.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.55.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.55.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.55.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.56.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.56.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.56.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.56.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.56.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.56.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.57.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.57.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.57.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.57.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.57.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.57.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.58.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.58.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.58.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.58.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.58.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.58.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.59.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.59.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.59.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.59.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.59.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.59.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.6.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.6.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.6.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.6.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.6.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.6.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.60.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.60.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.60.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.60.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.60.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.60.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.61.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.61.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.61.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.61.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.61.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.61.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.62.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.62.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.62.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.62.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.62.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.62.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.63.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.63.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.63.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.63.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.63.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.63.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.7.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.7.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.7.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.7.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.7.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.7.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.8.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.8.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.8.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.8.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.8.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.8.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.9.self_attn.add_k_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.9.self_attn.add_k_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    },
+    "layers.9.self_attn.add_q_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.9.self_attn.add_q_proj.lora_B.weight": {
+      "from": [
+        131072
+      ],
+      "to": [
+        8192,
+        16
+      ]
+    },
+    "layers.9.self_attn.add_v_proj.lora_A.weight": {
+      "from": [
+        81920
+      ],
+      "to": [
+        16,
+        5120
+      ]
+    },
+    "layers.9.self_attn.add_v_proj.lora_B.weight": {
+      "from": [
+        16384
+      ],
+      "to": [
+        1024,
+        16
+      ]
+    }
+  },
+  "tensor_count": 384,
+  "tensor_numel": 26214400,
+  "tensor_shapes_sample": {
+    "layers.0.self_attn.add_k_proj.lora_A.weight": [
+      16,
+      5120
+    ],
+    "layers.0.self_attn.add_k_proj.lora_B.weight": [
+      1024,
+      16
+    ],
+    "layers.0.self_attn.add_q_proj.lora_A.weight": [
+      16,
+      5120
+    ],
+    "layers.0.self_attn.add_q_proj.lora_B.weight": [
+      8192,
+      16
+    ],
+    "layers.0.self_attn.add_v_proj.lora_A.weight": [
+      16,
+      5120
+    ],
+    "layers.0.self_attn.add_v_proj.lora_B.weight": [
+      1024,
+      16
+    ]
+  }
+}

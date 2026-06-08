@@ -1,0 +1,507 @@
+{
+  "run_id": "xperience10m_cosmos3_super_forward_dynamics_lora_128ep_train1epoch_256_attn_full8gpu_20260608_eval_val_full_fsdp",
+  "run_kind": "cosmos3_super_forward_dynamics_lora_eval",
+  "status": "complete",
+  "process_index": 3,
+  "started_at_unix": 1780899824.9877136,
+  "finished_at_unix": 1780899917.1720345,
+  "elapsed_seconds": 92.18432092666626,
+  "dataset_jsonl": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_camera_pose_targets_20260608/dataset_with_cosmos_actions.jsonl",
+  "model_dir": "/home/cy/Ropedia/cosmos3_models/nv-community__Cosmos3-Super",
+  "adapter_dir": "/home/cy/Ropedia/ropedia-episode-task-suite/results/omni_finetune/xperience10m_cosmos3_super_forward_dynamics_lora_128ep_train1epoch_256_attn_full8gpu_20260608/adapter_lora",
+  "adapter_weight_name": "pytorch_lora_weights.safetensors",
+  "adapter_prefix": "none",
+  "split": "val",
+  "episode_id": null,
+  "eval_num_shards": 1,
+  "eval_shard_index": 0,
+  "num_eval_samples": 64,
+  "num_train_timesteps": 1000,
+  "sigma_shift": 3.0,
+  "loss_scale": 10.0,
+  "loss_summary": {
+    "mean": 4.199683074839413,
+    "min": 0.9813029170036316,
+    "max": 10.20537281036377
+  },
+  "losses": [
+    4.319987773895264,
+    8.066588401794434,
+    5.318512439727783,
+    4.095946788787842,
+    4.125543594360352,
+    6.6507954597473145,
+    3.12343692779541,
+    4.341691970825195,
+    3.5836687088012695,
+    4.20064115524292,
+    3.7763335704803467,
+    4.705870628356934,
+    3.839838981628418,
+    1.295375108718872,
+    2.8386054039001465,
+    4.25101375579834,
+    3.8306853771209717,
+    3.0508790016174316,
+    7.276161193847656,
+    4.968023777008057,
+    4.464605331420898,
+    2.206251382827759,
+    5.301186561584473,
+    5.704233169555664,
+    4.7002644538879395,
+    5.056535720825195,
+    3.7432315349578857,
+    5.691044330596924,
+    1.363633394241333,
+    6.653229713439941,
+    2.1461570262908936,
+    4.30797004699707,
+    2.4540517330169678,
+    5.426358222961426,
+    5.039691925048828,
+    4.523562431335449,
+    1.5536468029022217,
+    1.0359063148498535,
+    10.20537281036377,
+    0.9813029170036316,
+    3.533534049987793,
+    6.32849645614624,
+    3.148977756500244,
+    3.5664966106414795,
+    2.8076963424682617,
+    1.939130425453186,
+    2.2973015308380127,
+    3.906484842300415,
+    3.8394994735717773,
+    4.806118488311768,
+    4.579357624053955,
+    4.771925926208496,
+    7.2265238761901855,
+    6.25053596496582,
+    2.1393728256225586,
+    3.128082275390625,
+    2.6520934104919434,
+    3.612147569656372,
+    9.667068481445312,
+    4.467556953430176,
+    2.5640323162078857,
+    3.3278725147247314,
+    3.5889580249786377,
+    4.412617206573486
+  ],
+  "examples": [
+    {
+      "index": 1,
+      "loss": 4.319987773895264,
+      "row_id": "2f579b88-12fb-41c2-aa2a-9b8f5ae8f918__ep1:qa:21",
+      "episode_id": "2f579b88-12fb-41c2-aa2a-9b8f5ae8f918__ep1",
+      "timestep": 587,
+      "sigma": 0.8100275988960441,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 2,
+      "loss": 8.066588401794434,
+      "row_id": "2f579b88-12fb-41c2-aa2a-9b8f5ae8f918__ep1:qa:71",
+      "episode_id": "2f579b88-12fb-41c2-aa2a-9b8f5ae8f918__ep1",
+      "timestep": 62,
+      "sigma": 0.16548042704626334,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 3,
+      "loss": 5.318512439727783,
+      "row_id": "2f579b88-12fb-41c2-aa2a-9b8f5ae8f918__ep1:qa:162",
+      "episode_id": "2f579b88-12fb-41c2-aa2a-9b8f5ae8f918__ep1",
+      "timestep": 592,
+      "sigma": 0.8131868131868131,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 4,
+      "loss": 4.095946788787842,
+      "row_id": "2f579b88-12fb-41c2-aa2a-9b8f5ae8f918__ep1:qa:206",
+      "episode_id": "2f579b88-12fb-41c2-aa2a-9b8f5ae8f918__ep1",
+      "timestep": 610,
+      "sigma": 0.8243243243243245,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 5,
+      "loss": 4.125543594360352,
+      "row_id": "4e3da960-c06f-4b2c-996d-fe6f04fa4e36__ep2:qa:41",
+      "episode_id": "4e3da960-c06f-4b2c-996d-fe6f04fa4e36__ep2",
+      "timestep": 468,
+      "sigma": 0.725206611570248,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 6,
+      "loss": 6.6507954597473145,
+      "row_id": "4e3da960-c06f-4b2c-996d-fe6f04fa4e36__ep2:qa:95",
+      "episode_id": "4e3da960-c06f-4b2c-996d-fe6f04fa4e36__ep2",
+      "timestep": 254,
+      "sigma": 0.5053050397877984,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 7,
+      "loss": 3.12343692779541,
+      "row_id": "4e3da960-c06f-4b2c-996d-fe6f04fa4e36__ep2:qa:183",
+      "episode_id": "4e3da960-c06f-4b2c-996d-fe6f04fa4e36__ep2",
+      "timestep": 661,
+      "sigma": 0.8540051679586563,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 8,
+      "loss": 4.341691970825195,
+      "row_id": "4e3da960-c06f-4b2c-996d-fe6f04fa4e36__ep2:qa:241",
+      "episode_id": "4e3da960-c06f-4b2c-996d-fe6f04fa4e36__ep2",
+      "timestep": 180,
+      "sigma": 0.39705882352941185,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 9,
+      "loss": 3.5836687088012695,
+      "row_id": "7f443115-54a4-4d50-acfb-e05fe506c270__ep5:qa:9",
+      "episode_id": "7f443115-54a4-4d50-acfb-e05fe506c270__ep5",
+      "timestep": 484,
+      "sigma": 0.7378048780487805,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 10,
+      "loss": 4.20064115524292,
+      "row_id": "7f443115-54a4-4d50-acfb-e05fe506c270__ep5:qa:101",
+      "episode_id": "7f443115-54a4-4d50-acfb-e05fe506c270__ep5",
+      "timestep": 902,
+      "sigma": 0.9650499286733237,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 11,
+      "loss": 3.7763335704803467,
+      "row_id": "7f443115-54a4-4d50-acfb-e05fe506c270__ep5:qa:151",
+      "episode_id": "7f443115-54a4-4d50-acfb-e05fe506c270__ep5",
+      "timestep": 485,
+      "sigma": 0.7385786802030457,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 12,
+      "loss": 4.705870628356934,
+      "row_id": "7f443115-54a4-4d50-acfb-e05fe506c270__ep5:qa:212",
+      "episode_id": "7f443115-54a4-4d50-acfb-e05fe506c270__ep5",
+      "timestep": 235,
+      "sigma": 0.47959183673469385,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 13,
+      "loss": 3.839838981628418,
+      "row_id": "628d6ea4-0a63-4d8f-9725-1e41d2a56b8c__ep5:qa:26",
+      "episode_id": "628d6ea4-0a63-4d8f-9725-1e41d2a56b8c__ep5",
+      "timestep": 161,
+      "sigma": 0.36535552193645987,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 14,
+      "loss": 1.295375108718872,
+      "row_id": "628d6ea4-0a63-4d8f-9725-1e41d2a56b8c__ep5:qa:129",
+      "episode_id": "628d6ea4-0a63-4d8f-9725-1e41d2a56b8c__ep5",
+      "timestep": 694,
+      "sigma": 0.871859296482412,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 15,
+      "loss": 2.8386054039001465,
+      "row_id": "628d6ea4-0a63-4d8f-9725-1e41d2a56b8c__ep5:qa:204",
+      "episode_id": "628d6ea4-0a63-4d8f-9725-1e41d2a56b8c__ep5",
+      "timestep": 137,
+      "sigma": 0.3226059654631083,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    },
+    {
+      "index": 16,
+      "loss": 4.25101375579834,
+      "row_id": "628d6ea4-0a63-4d8f-9725-1e41d2a56b8c__ep5:qa:246",
+      "episode_id": "628d6ea4-0a63-4d8f-9725-1e41d2a56b8c__ep5",
+      "timestep": 938,
+      "sigma": 0.978442280945758,
+      "height": 192,
+      "width": 320,
+      "vision_latents_shape": [
+        1,
+        48,
+        3,
+        10,
+        20
+      ],
+      "action_latents_shape": [
+        8,
+        64
+      ],
+      "vision_loss_tokens": 100,
+      "action_loss_tokens": 0
+    }
+  ],
+  "adapter_audit": {
+    "adapter_name": "xperience_forward_dynamics",
+    "parameter_count": 384,
+    "meta_parameter_count": 0,
+    "meta_parameters_sample": [],
+    "trainable_parameter_numel": 26214400,
+    "parameter_numel": 26214400,
+    "sample_shapes": {
+      "layers.0.self_attn.add_q_proj.lora_A.xperience_forward_dynamics.weight": [
+        16,
+        5120
+      ],
+      "layers.0.self_attn.add_q_proj.lora_B.xperience_forward_dynamics.weight": [
+        8192,
+        16
+      ],
+      "layers.0.self_attn.add_k_proj.lora_A.xperience_forward_dynamics.weight": [
+        16,
+        5120
+      ],
+      "layers.0.self_attn.add_k_proj.lora_B.xperience_forward_dynamics.weight": [
+        1024,
+        16
+      ],
+      "layers.0.self_attn.add_v_proj.lora_A.xperience_forward_dynamics.weight": [
+        16,
+        5120
+      ],
+      "layers.0.self_attn.add_v_proj.lora_B.xperience_forward_dynamics.weight": [
+        1024,
+        16
+      ],
+      "layers.1.self_attn.add_q_proj.lora_A.xperience_forward_dynamics.weight": [
+        16,
+        5120
+      ],
+      "layers.1.self_attn.add_q_proj.lora_B.xperience_forward_dynamics.weight": [
+        8192,
+        16
+      ]
+    }
+  },
+  "loss_surface": "vision_velocity_conditioned_on_camera_pose",
+  "action_loss_expected": false
+}

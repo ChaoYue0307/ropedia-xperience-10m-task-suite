@@ -50,8 +50,9 @@ embodied-AI research infrastructure:
 For a first pass, use [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md) or the
 machine-readable [`docs/data/project_brief.json`](docs/data/project_brief.json).
 They give the project shape in one page: what exists now, what the public
-sample can support, where the 12 tasks and baselines live, and what must happen
-before the multi-episode omni-model stage becomes a real held-out evaluation.
+sample can support, where the 12 tasks and baselines live, and how the verified
+128-episode baseline, Qwen3-Omni, Cosmos3-Nano, and Cosmos3-Super branches
+should be compared.
 
 | Reader goal | Best entry point |
 | --- | --- |
@@ -65,6 +66,15 @@ before the multi-episode omni-model stage becomes a real held-out evaluation.
 | Understand one model input | [`results/episode_task_suite/feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`results/episode_task_suite/windows.csv`](results/episode_task_suite/windows.csv) |
 | Check multi-episode data status | [`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) |
 
+Public release checks are exposed as JSON for mirrors and dashboards:
+[`docs/data/website_integrity.json`](docs/data/website_integrity.json),
+[`docs/data/rendered_site_check.json`](docs/data/rendered_site_check.json),
+[`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json),
+[`docs/data/publication_audit.json`](docs/data/publication_audit.json),
+[`docs/data/mirror_parity.json`](docs/data/mirror_parity.json),
+[`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json), and
+[`docs/data/research_roadmap.json`](docs/data/research_roadmap.json).
+
 ## Research Project Overview
 
 | Theme | Current implementation |
@@ -74,7 +84,7 @@ before the multi-episode omni-model stage becomes a real held-out evaluation.
 | Task suite | 12 human-readable embodied-AI task contracts with input, process, output, metrics, predictions, and case-study walkthroughs |
 | Baselines | Minimal linear/ridge/logistic heads plus compact PyTorch MLP task heads over the same chronological split; companion simple/NN metadata baselines are also aligned to the selected 128-episode 96/16/16 split |
 | Research directions | Task mapping and extension probes for human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling |
-| Scale-up path | The selected-episode Qwen3-Omni LoRA final diagnostic result is verified on the 96/16/16 split; same-split simple/NN metadata baselines now cover the 12 task ids as a companion comparison. The Qwen result proves the multi-episode export/train/eval/package loop and meets the strict-JSON target, but weak action/subtask metrics make it a baseline for error analysis rather than a strong model. Cosmos3 now has two separate verified diagnostics: Nano future-window compatibility and Super base-weight Reasoner evaluation; neither is a new fine-tuned Cosmos weight release yet. |
+| Scale-up path | The selected-episode Qwen3-Omni LoRA final diagnostic result is verified on the 96/16/16 split; same-split simple/NN metadata baselines now cover the 12 task ids as a companion comparison. The Qwen result proves the multi-episode export/train/eval/package loop and meets the strict-JSON target, but weak action/subtask metrics make it a baseline for error analysis rather than a strong model. Cosmos3 now has three verified diagnostics: Nano future-window compatibility, Super base-weight Reasoner evaluation, and Super forward-dynamics LoRA fine-tuning over camera-pose proxy targets. |
 | Public surfaces | GitHub repo, GitHub Pages dashboard, GHCR static-site package, HF Space, HF artifact dataset, HF baseline-model repo, and HF collection |
 
 For the fastest interpretation of the current metrics, start with
@@ -111,7 +121,7 @@ This project is best read as a staged embodied-AI research study:
 | Task suite | Twelve human-readable tasks cover action, procedure, contact, object, language, retrieval, reconstruction, order, and synchronization questions. | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json) |
 | Baselines | Minimal heads and compact PyTorch MLP heads provide a first controlled comparison on the same chronological split; the selected 128-episode setup also has same-split simple/NN metadata baselines for JSON-supported tasks. | [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/), [`results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`](results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md) |
 | Diagnostics | Audio contribution, modality ablations, timeline overlays, object labels, and alignment stress tests show which signals are useful and which tasks remain hard. | [`results/audio_ablation/AUDIO_ABLATION_SUMMARY.md`](results/audio_ablation/AUDIO_ABLATION_SUMMARY.md), [`docs/single_episode_explorer.html`](docs/single_episode_explorer.html) |
-| Scale-up | The selected 128-episode Qwen3-Omni LoRA diagnostic path has a final verified held-out package: 96/16/16 selected episodes, 3,808 exported windows, 512 validation windows, 448 held-out test windows, and public-safe metrics/predictions. Same-split simple/NN metadata baselines are published for the 12 task ids. Cosmos3-Nano has a verified future-window compatibility package. Cosmos3-Super has a verified 448-window base-weight JSON-task evaluation plus a camera-pose proxy forward-dynamics contract audit and schema-only batch-packer smoke, but no fine-tuned Cosmos weights yet. The comparison now supports both views: the three result layers and a model-family grouping for task heads, Qwen3-Omni LoRA, Cosmos3-Nano, and Cosmos3-Super. | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/omni_model_comparison.json`](docs/data/omni_model_comparison.json), [`docs/data/omni_finetune_verified_result.json`](docs/data/omni_finetune_verified_result.json), [`results/omni_finetune/OMNI_MODEL_COMPARISON.md`](results/omni_finetune/OMNI_MODEL_COMPARISON.md), [`results/omni_finetune/verified_public/`](results/omni_finetune/verified_public/), [`results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`](results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md) |
+| Scale-up | The selected 128-episode Qwen3-Omni LoRA diagnostic path has a final verified held-out package: 96/16/16 selected episodes, 3,808 exported windows, 512 validation windows, 448 held-out test windows, and public-safe metrics/predictions. Same-split simple/NN metadata baselines are published for the 12 task ids. Cosmos3-Nano has a verified future-window compatibility package. Cosmos3-Super now has two verified branches: a 448-window base-weight JSON-task Reasoner evaluation and a fine-tuned forward-dynamics LoRA package over camera-pose proxy targets with 2,848 train rows, 512 val rows, and 448 test rows. The comparison now supports both views: the three result layers and a model-family grouping for task heads, Qwen3-Omni LoRA, Cosmos3-Nano, Cosmos3-Super Reasoner, and Cosmos3-Super Forward-Dynamics LoRA. | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/omni_model_comparison.json`](docs/data/omni_model_comparison.json), [`docs/data/omni_finetune_verified_result.json`](docs/data/omni_finetune_verified_result.json), [`results/omni_finetune/OMNI_MODEL_COMPARISON.md`](results/omni_finetune/OMNI_MODEL_COMPARISON.md), [`results/omni_finetune/verified_public/`](results/omni_finetune/verified_public/), [`results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`](results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md) |
 
 Detailed dataset notes, reproduction checks, and generated JSON reports are
 included for readers who want to inspect the implementation, but they are
@@ -150,7 +160,7 @@ If you are reading the project cold, open these in order:
 | 6 | What do the current results mean? | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`docs/data/research_takeaways.json`](docs/data/research_takeaways.json), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Current metrics describe sample-level task behavior and identify which signals need larger held-out experiments. |
 | 7 | Which models are implemented? | [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json), [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/), [HF baseline repo](https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines) | Each task has minimal and neural-head evidence over the same feature windows. |
 | 8 | What research directions does this support? | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`docs/data/research_directions.json`](docs/data/research_directions.json), [`docs/data/research_direction_extensions.json`](docs/data/research_direction_extensions.json) | The tasks are mapped to human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling. |
-| 9 | Which foundation model comes next? | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json), [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md) | Qwen3-Omni is the first held-out LoRA baseline; Cosmos 3 is the first world-model branch with a camera-pose proxy forward-dynamics contract ready for trainer work; policy models wait for robot-compatible action targets; Xperience-native pretraining is the full-corpus future goal. |
+| 9 | Which foundation model comes next? | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json), [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md) | Qwen3-Omni is the first held-out LoRA baseline; Cosmos 3 is now represented by Nano future-window compatibility and Super forward-dynamics LoRA; policy models wait for robot-compatible action targets; Xperience-native pretraining is the full-corpus future goal. |
 | 10 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands and expected outputs are documented for the sample-episode task suite. |
 | 11 | What is still pending? | [`docs/data/omni_finetune_verified_result.json`](docs/data/omni_finetune_verified_result.json), [`DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md), [`MULTI_EPISODE_ACCESS_STATUS.md`](results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md) | The final held-out diagnostic Qwen pass is verified and JSON-validity target is met; strong action/subtask model quality remains pending. |
 
@@ -565,7 +575,7 @@ Current status in this repo:
 - 128_aligned_baselines: 12 task ids, 8 simple metadata/text baselines, 6 neural metadata/text baselines
 - cosmos3_nano_branch: verified Cosmos3-Nano future-window compatibility package, 378 held-out future-window predictions from 14 test episodes
 - cosmos3_super_branch: verified Cosmos3-Super Reasoner base-weight JSON-task evaluation, 448 held-out predictions from 14 test episodes; JSON validity 51.12%, action macro-F1 0.0008, contact accuracy 32.14%, transition accuracy 36.83%
-- cosmos3_super_training_readiness: runtime/GPU probe passes for Diffusers on 8 CUDA devices; camera-pose proxy action targets now cover 3,808/3,808 windows and pass the Cosmos3-Super contract audit; a schema-only packer smoke confirms the current `forward_dynamics` target supervises noisy vision tokens under action conditioning, not `preds_action`; no Cosmos weights have been updated
+- cosmos3_super_forward_dynamics_lora: verified 8-GPU FSDP LoRA branch over camera-pose proxy targets; 2,848 train rows, 512 val rows, 448 test rows, 26.2M adapter parameters, val MSE 4.0082, test MSE 3.6853; public package excludes safetensors
 - gated dataset: available for selected multi-episode data preparation
 - source_discovery: `results/omni_finetune/source_discovery.json`
 - data_status: `results/omni_finetune/DATA_ACCESS_STATUS.md`
@@ -725,9 +735,10 @@ diagnostic run.
 
 Keep weight-bearing repositories model-specific: the final 128-episode
 Qwen3-Omni adapter belongs in `cy0307/ropedia-qwen3-omni-lora-128ep`, older
-Qwen smoke material remains historical. The current Cosmos3-Nano and
-Cosmos3-Super outputs are artifacts-only diagnostics; Cosmos3 should get its
-own model repo only after real Cosmos adapter or fine-tuned weights exist.
+Qwen smoke material remains historical. Cosmos3-Nano remains an artifacts-only
+compatibility result; Cosmos3-Super Forward-Dynamics now has a separate
+weight-bearing model repo at
+`cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep`.
 Metrics, predictions, audits, and reports stay in the artifact dataset.
 
 ```bash
@@ -748,7 +759,7 @@ assuming one backbone solves every Xperience-10M objective.
 | Branch | Current role | When to use it |
 | --- | --- | --- |
 | Qwen3-Omni | First trainable multimodal LoRA pilot | Use for the selected 128-episode held-out baseline over video/audio/language plus sensor-bridge features. |
-| Cosmos 3 | First world-model/action-generation branch | Use now for future-window compatibility analysis and Cosmos3 forward-dynamics trainer development; camera-pose proxy action targets are exported, but supervised Cosmos weights are still pending. |
+| Cosmos 3 | First world-model/action-generation branch | Use now for future-window compatibility analysis and the verified Cosmos3-Super forward-dynamics LoRA branch; compare its loss metrics separately from Qwen JSON-task accuracy. |
 | GR00T | Humanoid/action-policy branch | Use after mocap/contact retargeting creates well-defined humanoid action targets. |
 | OpenVLA / openpi | Open VLA/policy baselines | Use after the project defines robot-compatible or action-token targets. |
 | Gemini Robotics | External reasoning reference | Use only for qualitative comparison or annotation support unless local trainable access exists. |

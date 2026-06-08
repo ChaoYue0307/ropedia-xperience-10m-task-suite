@@ -2040,12 +2040,12 @@
         "step": 2
       },
       {
-        "action": "Run 3-8 episode dry runs for Qwen3-Omni prompt/LoRA, Cosmos 3 preprocessing, and one policy candidate.",
+        "action": "Run 3-8 episode dry runs for any next backbone before scaling beyond the selected split.",
         "name": "Model-selection dry run",
         "step": 3
       },
       {
-        "action": "Promote Cosmos 3 if future-window/action-conditioned preprocessing fits storage and compute.",
+        "action": "Promote Cosmos 3 beyond the current Nano compatibility and Super forward-dynamics runs only when loss metrics, preprocessing, and storage justify the added compute.",
         "name": "World-model branch",
         "step": 4
       },
@@ -2084,8 +2084,8 @@
       {
         "best_role": "Embodied world modeling, action generation, future-window prediction, and synthetic-data expansion.",
         "category": "world_foundation_model",
-        "current_decision": "add_as_first_world_model_branch_after_data_gate",
-        "entry_condition": "Multi-episode data plus enough storage/compute for generated or latent video-state outputs.",
+        "current_decision": "implemented_as_nano_future_window_and_super_forward_dynamics_branches",
+        "entry_condition": "Use separate metrics for Nano future-window retrieval and Super forward-dynamics MSE; do not compare them directly to Qwen JSON-task accuracy.",
         "family": "Cosmos 3",
         "openness": "track_official_nvidia_release_and_available_weights",
         "priority": 2,
@@ -2222,7 +2222,7 @@
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-06T23:26:13+00:00",
+  "generated_at_utc": "2026-06-08T06:50:10+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -2362,6 +2362,7 @@
       "deliverables": [
         "backbone registry",
         "Cosmos 3 world-model branch plan",
+        "Cosmos3-Super Forward-Dynamics LoRA verified package",
         "Qwen3-Omni LoRA baseline plan",
         "OpenVLA/openpi/GR00T policy-branch candidates",
         "model-specific evaluation additions"
@@ -2369,9 +2370,9 @@
       "entry_condition": "The selected episodes are prepared or a 3-8 episode dry run is available for preprocessing checks.",
       "id": "foundation_model_selection_matrix",
       "name": "Foundation-Model Selection Matrix",
-      "reader_takeaway": "Qwen3-Omni remains the first trainable held-out pilot; Cosmos 3 is the first world-model branch. Cosmos3-Super now has camera-pose proxy forward-dynamics targets ready for trainer implementation, while VLA/policy models wait for robot-compatible action targets.",
-      "stage": "omni",
-      "status": "next"
+      "reader_takeaway": "Qwen3-Omni remains the structured JSON held-out pilot; Cosmos 3 is the first world-model branch. Cosmos3-Super now has a verified forward-dynamics LoRA over camera-pose proxy targets, while VLA/policy models wait for robot-compatible action targets.",
+      "stage": "future",
+      "status": "current"
     },
     {
       "completion_evidence": [
@@ -2392,16 +2393,17 @@
       "name": "64-128 Episode Robustness Run",
       "reader_takeaway": "The robustness run tests whether the pilot conclusions survive broader sessions and missing modalities.",
       "stage": "future",
-      "status": "planned"
+      "status": "partially_implemented"
     },
     {
       "completion_evidence": [
         "task-specific held-out evaluations",
+        "verified Cosmos3-Super forward-dynamics LoRA package",
         "qualitative inspection",
         "updated model cards"
       ],
       "deliverables": [
-        "Cosmos 3 future-window or action-conditioned world-model probe",
+        "Cosmos 3 future-window and action-conditioned world-model probes",
         "OpenVLA/openpi/GR00T action-policy baseline",
         "audio/video/depth/pose/mocap conditioning checks",
         "affordance and object-interaction tasks",
@@ -2410,7 +2412,7 @@
       "entry_condition": "Enough multi-episode data, compute budget, and model-specific action/world-state targets.",
       "id": "foundation_world_model_extensions",
       "name": "Cosmos 3 and Policy-Model Extensions",
-      "reader_takeaway": "The long-term direction is richer multimodal representation learning for embodied-AI reasoning, with model branches chosen by task fit rather than by a single default backbone.",
+      "reader_takeaway": "The Cosmos branch now includes Nano future-window compatibility and Super forward-dynamics LoRA; the long-term direction remains richer multimodal representation learning with model branches chosen by task fit rather than by a single default backbone.",
       "stage": "future",
       "status": "planned"
     },

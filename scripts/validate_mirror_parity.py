@@ -85,6 +85,7 @@ SCRIPT_FILES = [
     "omni/defer_cosmos3_super_after_qwen_v4.sh",
     "omni/export_cosmos3_camera_pose_targets.py",
     "omni/pack_cosmos3_super_action_batch.py",
+    "omni/prepare_cosmos3_super_lora_hf_package.py",
     "omni/prepare_qwen3_lora_hf_package.py",
     "omni/probe_cosmos3_super_training_readiness.py",
     "omni/run_128_task_baselines.py",

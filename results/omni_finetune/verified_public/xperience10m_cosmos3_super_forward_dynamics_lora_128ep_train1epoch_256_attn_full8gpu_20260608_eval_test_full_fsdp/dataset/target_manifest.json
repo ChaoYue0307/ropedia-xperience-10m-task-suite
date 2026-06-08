@@ -1,0 +1,22 @@
+{
+  "status": "pass",
+  "input_dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl",
+  "output_jsonl": "results/omni_finetune/xperience10m_cosmos3_camera_pose_targets_20260608/dataset_with_cosmos_actions.jsonl",
+  "domain_name": "camera_pose",
+  "raw_action_dim": 9,
+  "chunk_size": 8,
+  "resolution_tier": 480,
+  "view_point": "ego_view",
+  "target_kind": "slam_camera_pose_delta_proxy_v1",
+  "counts": {
+    "rows_seen": 3808,
+    "rows_augmented": 3808
+  },
+  "episode_annotation_files_read": 119,
+  "issues": [],
+  "limitations": [
+    "This is an egocentric camera-motion proxy, not a robot gripper or human hand-control action.",
+    "Use it for Cosmos3 action-packer and one-episode overfit smoke tests before claiming model-quality improvement.",
+    "Fit any normalization on train episodes only before a full publishable Cosmos adapter run."
+  ]
+}
