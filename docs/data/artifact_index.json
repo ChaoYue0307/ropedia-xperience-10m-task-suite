@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-11T03:34:19+00:00",
+  "generated_at_utc": "2026-06-11T16:12:17+00:00",
   "status": "pass",
   "artifact_count": 154,
   "missing": [],
@@ -264,7 +264,7 @@
       "shows": "Summarizes the 2026-06-09 full-parameter FSDP feasibility gates: 1/8/32/64-step guarded runs passed, the 128-step opportunistic pilot was preempted for Qwen v5 handoff, and no full checkpoints or weights are published.",
       "exists": true,
       "bytes": 3003,
-      "sha256": "5c363f9f5e6be2bcf5bc7b65f7ad7590c86faf31392a9a5bd74987dc5931d7eb"
+      "sha256": "f3c5f27e98939ea6404328585b1c4ffde1566f958bc360d9a51e6654c893e082"
     },
     {
       "id": "qwen3_full_parameter_gates_json",
@@ -275,7 +275,7 @@
       "shows": "Machine-readable summary of full-parameter feasibility evidence and publication policy for website and Hugging Face mirrors.",
       "exists": true,
       "bytes": 10533,
-      "sha256": "7eecba00a26aa9df04048816a112011b5d0182b3fbd1aee19686cf3eb7828fd5"
+      "sha256": "3a2bea971b4a1f131e841fc52fea91a391173eade354922a62afbc431e70e753"
     },
     {
       "id": "qwen3_full_parameter_gates_builder",
@@ -418,7 +418,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "e3644aa1fa819807688607e56e0bf1d98a84c9a187f58a6b234a73ea8b25bd0f"
+      "sha256": "ce97ffc9dcef21e384a27bf37db108477f50a8a408769fd8aa035f88173651aa"
     },
     {
       "id": "source_alignment_validator",
@@ -671,7 +671,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8097,
-      "sha256": "69ffacd5860853a4b46717b2ea7b637e10ef782be8e809d91371707d7b29c90d"
+      "sha256": "632c5691c97abaaa98121f9f9946ea1bb0a25e9ccf036225165519d0e0614db2"
     },
     {
       "id": "public_surface_qa",
@@ -774,7 +774,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 89685,
+      "bytes": 97776,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -854,7 +854,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 495491,
+      "bytes": 521789,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1119,8 +1119,8 @@
       "surface": "repo_hf",
       "shows": "Reader-facing comparison of the single-episode task suite, 128-episode aligned baselines, Qwen3-Omni packages, and Cosmos3 future-window branch.",
       "exists": true,
-      "bytes": 14840,
-      "sha256": "a3831ff27ed8aecda6e117c228fc1303ab819458eed835fb3b73c7babeb8e136"
+      "bytes": 14849,
+      "sha256": "1b9f5051cd8c889f95d91296badc902f289d2582e6ff7a3503d5e4d5f3e9b4cc"
     },
     {
       "id": "omni_model_comparison_json",
@@ -1130,8 +1130,8 @@
       "surface": "repo_hf",
       "shows": "Machine-readable comparison of the current result versions, per-task aligned baselines, verified Qwen3 packages, and Cosmos3 package.",
       "exists": true,
-      "bytes": 75698,
-      "sha256": "3b310ccf4e1c72aba1382f051778d581fd150cef468db826869ade8e8149abca"
+      "bytes": 75707,
+      "sha256": "ff6f4965f493284f5d0d7a76425d7e20a9e4d19469bacbb43a85200fa6824c6e"
     },
     {
       "id": "cosmos3_nano_verified_summary",
