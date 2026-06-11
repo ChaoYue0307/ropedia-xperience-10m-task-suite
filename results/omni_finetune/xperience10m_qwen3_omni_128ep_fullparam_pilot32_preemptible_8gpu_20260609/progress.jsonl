@@ -1,0 +1,43 @@
+{"event": "setup_done", "run_id": "xperience10m_qwen3_omni_128ep_fullparam_pilot32_preemptible_8gpu_20260609", "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl", "num_processes": 8, "num_train_samples": 256, "num_val_samples": 0, "rank0_samples_per_epoch": 32, "backbone_id": "qwen3_omni_lora", "dataset_contract": "xperience10m_episode_json_qa_v1", "training_objective": "structured_episode_understanding_json_qa", "tuning_mode": "full", "loss_mode": "answer_token_ce", "loss_logit_tail_only": true, "timestamp": 1780950239.498304}
+{"event": "model_load_start", "run_id": "xperience10m_qwen3_omni_128ep_fullparam_pilot32_preemptible_8gpu_20260609", "model_id": "/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct", "backbone_id": "qwen3_omni_lora", "device_map": "none", "dtype": "bfloat16", "timestamp": 1780950239.4987216}
+{"event": "model_load_done", "run_id": "xperience10m_qwen3_omni_128ep_fullparam_pilot32_preemptible_8gpu_20260609", "timestamp": 1780950355.929898}
+{"event": "accelerator_prepare_start", "run_id": "xperience10m_qwen3_omni_128ep_fullparam_pilot32_preemptible_8gpu_20260609", "optimizer_init": "after_model_prepare", "timestamp": 1780950355.930595}
+{"event": "accelerator_prepare_done", "run_id": "xperience10m_qwen3_omni_128ep_fullparam_pilot32_preemptible_8gpu_20260609", "optimizer_init": "after_model_prepare", "timestamp": 1780951478.264415}
+{"event": "train_loop_start", "run_id": "xperience10m_qwen3_omni_128ep_fullparam_pilot32_preemptible_8gpu_20260609", "model_id": "/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct", "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl", "num_processes": 8, "num_train_samples": 256, "num_val_samples": 0, "rank_samples_per_epoch": 32, "epochs": 4, "max_train_steps": 32, "tuning_mode": "full", "optimizer_init": "after_model_prepare", "timestamp": 1780951478.271186}
+{"event": "train_step", "epoch": 1, "global_step": 1, "rank0_seen": 1, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 1.2583622932434082, "timestamp": 1780951494.3181567}
+{"event": "train_step", "epoch": 1, "global_step": 2, "rank0_seen": 2, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 1.26246976852417, "timestamp": 1780951508.0448313}
+{"event": "train_step", "epoch": 1, "global_step": 3, "rank0_seen": 3, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 1.2576639652252197, "timestamp": 1780951520.8966558}
+{"event": "train_step", "epoch": 1, "global_step": 4, "rank0_seen": 4, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 1.2305485010147095, "timestamp": 1780951534.1766634}
+{"event": "train_step", "epoch": 1, "global_step": 5, "rank0_seen": 5, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 1.1932777166366577, "timestamp": 1780951547.6360476}
+{"event": "train_step", "epoch": 1, "global_step": 6, "rank0_seen": 6, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 1.2025657892227173, "timestamp": 1780951561.2637885}
+{"event": "train_step", "epoch": 1, "global_step": 7, "rank0_seen": 7, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 1.177128553390503, "timestamp": 1780951574.9800882}
+{"event": "train_step", "epoch": 1, "global_step": 8, "rank0_seen": 8, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 1.16531503200531, "timestamp": 1780951590.4677467}
+{"event": "train_step", "epoch": 1, "global_step": 9, "rank0_seen": 9, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 1.0716787576675415, "timestamp": 1780951605.1141217}
+{"event": "train_step", "epoch": 1, "global_step": 10, "rank0_seen": 10, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 1.0322527885437012, "timestamp": 1780951619.0054605}
+{"event": "train_step", "epoch": 1, "global_step": 11, "rank0_seen": 11, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 1.0376025438308716, "timestamp": 1780951633.1457508}
+{"event": "train_step", "epoch": 1, "global_step": 12, "rank0_seen": 12, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 1.027962565422058, "timestamp": 1780951647.2814333}
+{"event": "train_step", "epoch": 1, "global_step": 13, "rank0_seen": 13, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.9972424507141113, "timestamp": 1780951661.454712}
+{"event": "train_step", "epoch": 1, "global_step": 14, "rank0_seen": 14, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.9794553518295288, "timestamp": 1780951676.1774764}
+{"event": "train_step", "epoch": 1, "global_step": 15, "rank0_seen": 15, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.9743497967720032, "timestamp": 1780951690.325558}
+{"event": "train_step", "epoch": 1, "global_step": 16, "rank0_seen": 16, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.9319109916687012, "timestamp": 1780951704.3891373}
+{"event": "train_step", "epoch": 1, "global_step": 17, "rank0_seen": 17, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.7803138494491577, "timestamp": 1780951718.574756}
+{"event": "train_step", "epoch": 1, "global_step": 18, "rank0_seen": 18, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.7561709880828857, "timestamp": 1780951732.8747785}
+{"event": "train_step", "epoch": 1, "global_step": 19, "rank0_seen": 19, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.7292264699935913, "timestamp": 1780951747.8840644}
+{"event": "train_step", "epoch": 1, "global_step": 20, "rank0_seen": 20, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.7089120149612427, "timestamp": 1780951762.1941288}
+{"event": "train_step", "epoch": 1, "global_step": 21, "rank0_seen": 21, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.6879022121429443, "timestamp": 1780951776.3882477}
+{"event": "train_step", "epoch": 1, "global_step": 22, "rank0_seen": 22, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.6681657433509827, "timestamp": 1780951790.6217966}
+{"event": "train_step", "epoch": 1, "global_step": 23, "rank0_seen": 23, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.6540761590003967, "timestamp": 1780951804.804464}
+{"event": "train_step", "epoch": 1, "global_step": 24, "rank0_seen": 24, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.611674427986145, "timestamp": 1780951819.7322702}
+{"event": "train_step", "epoch": 1, "global_step": 25, "rank0_seen": 25, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.5725405216217041, "timestamp": 1780951834.026127}
+{"event": "train_step", "epoch": 1, "global_step": 26, "rank0_seen": 26, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.547266960144043, "timestamp": 1780951848.1657934}
+{"event": "train_step", "epoch": 1, "global_step": 27, "rank0_seen": 27, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.5225100517272949, "timestamp": 1780951862.3850925}
+{"event": "train_step", "epoch": 1, "global_step": 28, "rank0_seen": 28, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.5301505327224731, "timestamp": 1780951876.6350658}
+{"event": "train_step", "epoch": 1, "global_step": 29, "rank0_seen": 29, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.5012355446815491, "timestamp": 1780951891.725504}
+{"event": "train_step", "epoch": 1, "global_step": 30, "rank0_seen": 30, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.4339476227760315, "timestamp": 1780951905.9720538}
+{"event": "train_step", "epoch": 1, "global_step": 31, "rank0_seen": 31, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.31911951303482056, "timestamp": 1780951920.3253555}
+{"event": "train_step", "epoch": 1, "global_step": 32, "rank0_seen": 32, "rank0_samples_per_epoch": 32, "rank0_batch_loss": 0.2206273376941681, "timestamp": 1780951934.6009047}
+{"event": "train_loop_stopped_max_steps", "epoch": 1, "global_step": 32, "max_train_steps": 32, "timestamp": 1780951934.601613}
+{"event": "epoch_end", "epoch": 1, "train_loss": 0.8451133379712701, "val_loss": null, "global_step": 32, "timestamp": 1780951934.6017325}
+{"event": "save_start", "checkpoint_dir": "checkpoints/xperience10m_qwen3_omni_128ep_fullparam_pilot32_preemptible_8gpu_20260609/fullparam_smoke_no_weights", "save_mode": "none", "timestamp": 1780951934.687613}
+{"event": "save_skipped", "checkpoint_dir": "checkpoints/xperience10m_qwen3_omni_128ep_fullparam_pilot32_preemptible_8gpu_20260609/fullparam_smoke_no_weights", "reason": "full_parameter_smoke_no_checkpoint", "timestamp": 1780951934.6919398}
+{"event": "complete", "checkpoint_dir": "checkpoints/xperience10m_qwen3_omni_128ep_fullparam_pilot32_preemptible_8gpu_20260609/fullparam_smoke_no_weights", "timestamp": 1780951934.692757}

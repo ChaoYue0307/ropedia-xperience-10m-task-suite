@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Current Result Versions and Model Groups",
-  "generated_at_utc": "2026-06-08T14:09:07+00:00",
+  "generated_at_utc": "2026-06-11T03:22:03+00:00",
   "status": "pass",
   "version_count": 3,
   "model_group_count": 5,
@@ -313,8 +313,8 @@
       "source": "results/omni_finetune/verified_public/",
       "split": "episode/session held-out split; exact task target depends on backbone contract",
       "counts": {
-        "verified_branch_count": 8,
-        "qwen3_verified_package_count": 5,
+        "verified_branch_count": 9,
+        "qwen3_verified_package_count": 6,
         "cosmos3_verified_package_count": 3,
         "cosmos3_nano_verified_package_count": 1,
         "cosmos3_super_verified_package_count": 2
@@ -546,6 +546,52 @@
           "weights_repository": "historical diagnostic package; keep separate from the final 128-episode adapter repo"
         },
         {
+          "id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full",
+          "title": "Qwen3-Omni LoRA",
+          "status": "verified",
+          "backbone": "qwen3_omni_lora",
+          "dataset_contract": "xperience10m_episode_json_qa_v1",
+          "training_objective": "structured_episode_understanding_json_qa",
+          "source": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full/verified_result_summary.json",
+          "dataset_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora",
+          "train_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora",
+          "eval_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full",
+          "counts": {
+            "dataset_samples": 34269,
+            "dataset_episodes": 119,
+            "split_counts": {
+              "test": 4032,
+              "train": 25629,
+              "val": 4608
+            },
+            "train_samples": 25629,
+            "val_samples": 1024,
+            "eval_samples": 4032,
+            "held_out_episode_count": 14,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "json_validity_rate": 1.0,
+            "action_macro_f1": 0.002289711036077459,
+            "subtask_accuracy": 0.011194029850746268,
+            "transition_accuracy": 0.9908234126984127,
+            "next_action_accuracy": 0.053618594823032224,
+            "contact_accuracy": 0.7864583333333334,
+            "object_micro_f1": 0.31614599936244814,
+            "held_out_episode_count": 14
+          },
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.06255286606544624,
+              "val_loss": 0.02668904885649681,
+              "global_step": 3204
+            }
+          ],
+          "is_current": true,
+          "weights_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
+        },
+        {
           "id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
           "title": "Qwen3-Omni LoRA",
           "status": "verified",
@@ -710,8 +756,8 @@
               "global_step": 1424
             }
           ],
-          "is_current": true,
-          "weights_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
+          "is_current": false,
+          "weights_repository": "historical diagnostic package; keep separate from the final 128-episode adapter repo"
         }
       ],
       "interpretation": "This layer contains the held-out foundation-model packages. Qwen3-Omni packages evaluate structured JSON task prediction; Cosmos3-Nano evaluates a future-window world-model compatibility adapter; Cosmos3-Super Reasoner evaluates staged base weights through vLLM on the JSON task; Cosmos3-Super Forward-Dynamics LoRA is the first Super adapter branch and evaluates camera-pose-conditioned future vision velocity loss."
@@ -803,6 +849,146 @@
           "qwen3_loaded": false,
           "weights": "no Qwen3 base weights or LoRA adapter weights; adapter-token readiness smoke only",
           "interpretation": "This validates the sensor-adapter token path on one real episode before loading or LoRA-tuning Qwen3-Omni. It is not comparable to the 128-episode held-out LoRA result."
+        }
+      ],
+      "readiness_runs": [
+        {
+          "id": "xperience10m_qwen3_omni_128ep_fullparam_smoke_preemptible_8gpu_20260609",
+          "title": "Full-Parameter 1-Step Feasibility Smoke",
+          "scope_label": "full-param gate",
+          "scope": "1 optimizer step over 8 train samples",
+          "status": "passed",
+          "source": "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_smoke_preemptible_8gpu_20260609/fullparam_feasibility_summary.json",
+          "split": "selected 128-episode train split",
+          "counts": {
+            "samples": 8,
+            "steps": 1,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "full_parameter_gate": "passed",
+            "observed_train_steps": 1,
+            "final_step_loss": 1.2726006507873535,
+            "epoch_train_loss": 1.2726006507873535,
+            "checkpoint_saved": false
+          },
+          "weights": "no full-parameter checkpoint or public weights; save_mode=none",
+          "interpretation": "Full-parameter FSDP feasibility evidence only. This gate is not a held-out model result, full fine-tune, checkpoint release, or public weight package."
+        },
+        {
+          "id": "xperience10m_qwen3_omni_128ep_fullparam_shorttrain8_preemptible_8gpu_20260609",
+          "title": "Full-Parameter 8-Step Short Train",
+          "scope_label": "full-param gate",
+          "scope": "8 optimizer steps over 64 train samples",
+          "status": "passed",
+          "source": "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_shorttrain8_preemptible_8gpu_20260609/fullparam_shorttrain8_summary.json",
+          "split": "selected 128-episode train split",
+          "counts": {
+            "samples": 64,
+            "steps": 8,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "full_parameter_gate": "passed",
+            "observed_train_steps": 8,
+            "final_step_loss": 1.180522084236145,
+            "epoch_train_loss": 1.2190196067094803,
+            "checkpoint_saved": false
+          },
+          "weights": "no full-parameter checkpoint or public weights; save_mode=none",
+          "interpretation": "Full-parameter FSDP feasibility evidence only. This gate is not a held-out model result, full fine-tune, checkpoint release, or public weight package."
+        },
+        {
+          "id": "xperience10m_qwen3_omni_128ep_fullparam_pilot32_preemptible_8gpu_20260609",
+          "title": "Full-Parameter 32-Step Pilot",
+          "scope_label": "full-param gate",
+          "scope": "32 optimizer steps over 256 train samples",
+          "status": "passed",
+          "source": "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot32_preemptible_8gpu_20260609/fullparam_pilot32_summary.json",
+          "split": "selected 128-episode train split",
+          "counts": {
+            "samples": 256,
+            "steps": 32,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "full_parameter_gate": "passed",
+            "observed_train_steps": 32,
+            "final_step_loss": 0.2206273376941681,
+            "epoch_train_loss": 0.8451133379712701,
+            "checkpoint_saved": false
+          },
+          "weights": "no full-parameter checkpoint or public weights; save_mode=none",
+          "interpretation": "Full-parameter FSDP feasibility evidence only. This gate is not a held-out model result, full fine-tune, checkpoint release, or public weight package."
+        },
+        {
+          "id": "xperience10m_qwen3_omni_128ep_fullparam_pilot64_preemptible_8gpu_20260609",
+          "title": "Full-Parameter 64-Step Pilot",
+          "scope_label": "full-param gate",
+          "scope": "64 optimizer steps over 512 train samples",
+          "status": "passed",
+          "source": "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot64_preemptible_8gpu_20260609/fullparam_pilot64_summary.json",
+          "split": "selected 128-episode train split",
+          "counts": {
+            "samples": 512,
+            "steps": 64,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "full_parameter_gate": "passed",
+            "observed_train_steps": 64,
+            "final_step_loss": 0.011219973675906658,
+            "epoch_train_loss": 0.4434075650788145,
+            "checkpoint_saved": false
+          },
+          "weights": "no full-parameter checkpoint or public weights; save_mode=none",
+          "interpretation": "Full-parameter FSDP feasibility evidence only. This gate is not a held-out model result, full fine-tune, checkpoint release, or public weight package."
+        },
+        {
+          "id": "xperience10m_qwen3_omni_128ep_fullparam_pilot128_preemptible_8gpu_20260609",
+          "title": "Full-Parameter 128-Step Opportunistic Pilot",
+          "scope_label": "full-param gate",
+          "scope": "planned 128 optimizer steps over 1024 train samples; preempted for Qwen v5 handoff",
+          "status": "preempted_for_qwen_v5_handoff",
+          "source": "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot128_preemptible_8gpu_20260609/fullparam_pilot128_summary.json",
+          "split": "selected 128-episode train split",
+          "counts": {
+            "samples": 1024,
+            "steps": 0,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "full_parameter_gate": "preempted_for_qwen_v5_handoff",
+            "observed_train_steps": 0,
+            "final_step_loss": null,
+            "epoch_train_loss": null,
+            "checkpoint_saved": false
+          },
+          "weights": "no full-parameter checkpoint or public weights; save_mode=none",
+          "interpretation": "Full-parameter FSDP feasibility evidence only. This gate is not a held-out model result, full fine-tune, checkpoint release, or public weight package."
+        },
+        {
+          "id": "xperience10m_qwen3_omni_128ep_fullparam_pilot128_after_qwen_v5_preemptible_8gpu_20260609",
+          "title": "Full-Parameter 128-Step Post-Qwen-v5 Pilot",
+          "scope_label": "full-param gate",
+          "scope": "128 optimizer steps over 1024 train samples after verified Qwen v5 handoff",
+          "status": "passed",
+          "source": "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot128_after_qwen_v5_preemptible_8gpu_20260609/training_metadata.json",
+          "split": "selected 128-episode train split",
+          "counts": {
+            "samples": 1024,
+            "steps": 128,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "full_parameter_gate": "passed",
+            "observed_train_steps": 128,
+            "final_step_loss": 0.0136940386146307,
+            "epoch_train_loss": 0.21579630990163423,
+            "checkpoint_saved": false
+          },
+          "weights": "no full-parameter checkpoint or public weights; save_mode=none",
+          "interpretation": "Full-parameter FSDP feasibility evidence only. This gate is not a held-out model result, full fine-tune, checkpoint release, or public weight package."
         }
       ],
       "multi_episode_128_runs": [
@@ -899,6 +1085,52 @@
           "weights_repository": "historical diagnostic package; keep separate from the final 128-episode adapter repo"
         },
         {
+          "id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full",
+          "title": "Qwen3-Omni LoRA",
+          "status": "verified",
+          "backbone": "qwen3_omni_lora",
+          "dataset_contract": "xperience10m_episode_json_qa_v1",
+          "training_objective": "structured_episode_understanding_json_qa",
+          "source": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full/verified_result_summary.json",
+          "dataset_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora",
+          "train_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora",
+          "eval_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full",
+          "counts": {
+            "dataset_samples": 34269,
+            "dataset_episodes": 119,
+            "split_counts": {
+              "test": 4032,
+              "train": 25629,
+              "val": 4608
+            },
+            "train_samples": 25629,
+            "val_samples": 1024,
+            "eval_samples": 4032,
+            "held_out_episode_count": 14,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "json_validity_rate": 1.0,
+            "action_macro_f1": 0.002289711036077459,
+            "subtask_accuracy": 0.011194029850746268,
+            "transition_accuracy": 0.9908234126984127,
+            "next_action_accuracy": 0.053618594823032224,
+            "contact_accuracy": 0.7864583333333334,
+            "object_micro_f1": 0.31614599936244814,
+            "held_out_episode_count": 14
+          },
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.06255286606544624,
+              "val_loss": 0.02668904885649681,
+              "global_step": 3204
+            }
+          ],
+          "is_current": true,
+          "weights_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
+        },
+        {
           "id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
           "title": "Qwen3-Omni LoRA",
           "status": "verified",
@@ -1063,11 +1295,11 @@
               "global_step": 1424
             }
           ],
-          "is_current": true,
-          "weights_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
+          "is_current": false,
+          "weights_repository": "historical diagnostic package; keep separate from the final 128-episode adapter repo"
         }
       ],
-      "comparison_note": "The one-episode Qwen entry is only a sensor-adapter smoke test with Qwen3 weights unloaded. The 128-episode entries are real held-out LoRA diagnostics; the current final adapter belongs in the separate Qwen model repo."
+      "comparison_note": "The one-episode Qwen entry is only a sensor-adapter smoke test with Qwen3 weights unloaded. The 128-episode entries are real held-out LoRA diagnostics; the current final adapter belongs in the separate Qwen model repo. The full-parameter rows are feasibility gates only and intentionally publish no checkpoints or full-parameter weights."
     },
     {
       "id": "cosmos3_nano_world_model",
@@ -1185,6 +1417,43 @@
           },
           "weights": "none; readiness audit only, no adapter checkpoint",
           "interpretation": "This probe confirms the staged Cosmos3-Super Diffusers/GPU runtime and the same JSON QA dataset are visible. It predates the camera-pose action-target export, so use the 20260608 contract audit for the current trainer-readiness status."
+        },
+        {
+          "id": "xperience10m_cosmos3_super_training_readiness_metadata_a100_20260609",
+          "title": "Cosmos3-Super Remote Staging Readiness Probe",
+          "scope_label": "staging readiness",
+          "scope": "secondary 4-GPU staging tree, JSON-task dataset visibility, and metadata-only Cosmos3-Super runtime probe",
+          "status": "blocked_until_trainer_implemented",
+          "source": "results/omni_finetune/xperience10m_cosmos3_super_training_readiness_metadata_a100_20260609/training_readiness.json",
+          "split": "train/val/test by selected episode/session",
+          "counts": {
+            "dataset_samples": 3808,
+            "split_counts": {
+              "test": {
+                "samples": 448,
+                "episodes": 14,
+                "actions": 189
+              },
+              "train": {
+                "samples": 2848,
+                "episodes": 89,
+                "actions": 885
+              },
+              "val": {
+                "samples": 512,
+                "episodes": 16,
+                "actions": 223
+              }
+            }
+          },
+          "primary_metrics": {
+            "model_files_visible": false,
+            "diffusers_runtime_supported": false,
+            "cuda_device_count": 4,
+            "weights_updated": false
+          },
+          "weights": "none; staging readiness audit only, no adapter checkpoint",
+          "interpretation": "This metadata-only probe checks the secondary 4-GPU staging tree without loading the model pipeline or updating weights. It confirms the JSON task dataset is present, but the Cosmos3-Super model files and Diffusers runtime are not staged there yet, so real Super training should wait for model/runtime staging or run on the already prepared main host."
         },
         {
           "id": "xperience10m_cosmos3_super_training_contract_audit_camera_pose_20260608",
@@ -1352,12 +1621,11 @@
   "model_group_reading_notes": [
     "Use model_groups when comparing one-episode and 128-episode artifacts within the same model family.",
     "Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.",
-    "Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; the newest verified full-eval 128-episode adapter belongs in the Qwen LoRA model repo.",
+    "Qwen3-Omni has a one-episode sensor-adapter smoke test, full-parameter feasibility gates, and separate 128-episode LoRA diagnostic packages; the newest verified full-eval 128-episode adapter belongs in the Qwen LoRA model repo.",
     "Cosmos3-Nano has a 128-episode future-window compatibility package.",
     "Cosmos3-Super now has both a 128-episode base-weight Reasoner evaluation on the JSON task and a fine-tuned forward-dynamics LoRA branch over camera-pose proxy targets."
   ],
   "pending": [
-    "Use the verified Qwen3 v4 4-epoch full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison.",
-    "Complete the Qwen3-Omni v5 dense multiscale raw-media export, all-GPU LoRA train, held-out eval, and public package before promoting it over the current Qwen v4 row."
+    "Use the verified Qwen3 v4 4-epoch full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison."
   ]
 }

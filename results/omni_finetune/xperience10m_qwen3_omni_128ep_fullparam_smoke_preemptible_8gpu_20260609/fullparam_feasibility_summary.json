@@ -1,0 +1,35 @@
+{
+  "checkpoint_bytes": 2425,
+  "checkpoint_dir": "checkpoints/xperience10m_qwen3_omni_128ep_fullparam_smoke_preemptible_8gpu_20260609/fullparam_smoke_no_weights",
+  "created_at": 1780947938.049631,
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl",
+  "dtype": "bfloat16",
+  "evidence_files": [
+    "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_smoke_preemptible_8gpu_20260609/progress.jsonl",
+    "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_smoke_preemptible_8gpu_20260609/train.launch.log",
+    "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_smoke_preemptible_8gpu_20260609/training_metadata.json",
+    "checkpoints/xperience10m_qwen3_omni_128ep_fullparam_smoke_preemptible_8gpu_20260609/fullparam_smoke_no_weights/training_metadata.json"
+  ],
+  "global_step": 1,
+  "max_train_steps": 1,
+  "model_id": "/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct",
+  "num_processes": 8,
+  "num_train_samples": 8,
+  "purpose": "Full-parameter Qwen3-Omni feasibility gate: load, FSDP prepare, backward/optimizer step, and no checkpoint save.",
+  "rank0_batch_loss": 1.2726006507873535,
+  "run_id": "xperience10m_qwen3_omni_128ep_fullparam_smoke_preemptible_8gpu_20260609",
+  "save_mode": "none",
+  "save_skipped_reason": "full_parameter_smoke_no_checkpoint",
+  "status": "passed",
+  "timestamps": {
+    "accelerator_prepare_done": 1780947805.7452078,
+    "accelerator_prepare_start": 1780946467.102135,
+    "complete": 1780947824.1410775,
+    "model_load_done": 1780946467.101778,
+    "model_load_start": 1780946346.275373,
+    "train_loop_start": 1780947805.7561052,
+    "train_step": 1780947823.9967754
+  },
+  "train_loss": 1.2726006507873535,
+  "tuning_mode": "full"
+}

@@ -1,0 +1,135 @@
+{
+  "run_id": "xperience10m_cosmos3_super_training_readiness_metadata_a100_20260609",
+  "run_kind": "cosmos3_super_training_readiness_probe",
+  "started_at_unix": 1780996660.9140558,
+  "finished_at_unix": 1780996667.6715362,
+  "elapsed_seconds": 6.757480621337891,
+  "workspace": "/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite",
+  "backbone": {
+    "config_path": "/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/configs/omni_backbones/cosmos3_super_reasoner.json",
+    "exists": true,
+    "id": "cosmos3_super_reasoner",
+    "display_name": "Cosmos3-Super Reasoner",
+    "status": "implemented",
+    "dataset_contract": "xperience10m_episode_json_qa_v1",
+    "training_objective": "base_weight_structured_json_reasoner_eval_plus_forward_dynamics_lora_training",
+    "entrypoints": {
+      "selection_manifest": "scripts/omni/build_selection_episode_manifest.py",
+      "export": "scripts/omni/parallel_export_qwen3_omni_action_dataset.py",
+      "neutral_index": "scripts/omni/export_model_neutral_window_index.py",
+      "action_target_export": "scripts/omni/export_cosmos3_camera_pose_targets.py",
+      "action_batch_packer": "scripts/omni/pack_cosmos3_super_action_batch.py",
+      "train": "scripts/omni/train_cosmos3_super_forward_dynamics_lora.py",
+      "train_contract_audit": "scripts/omni/audit_cosmos3_super_training_contract.py",
+      "train_probe": "scripts/omni/probe_cosmos3_super_training_readiness.py",
+      "eval": "scripts/omni/eval_cosmos3_super_reasoner.py",
+      "launcher": "scripts/omni/run_cosmos3_super_reasoner_eval.sh",
+      "train_launcher": "scripts/omni/run_cosmos3_super_forward_dynamics_lora.sh",
+      "validate": "scripts/omni/validate_omni_finetune_run.py"
+    }
+  },
+  "model": {
+    "path": "/mnt/kgc/chaoyue/ropedia-h20-side/modelscope_models/nv-community__Cosmos3-Super",
+    "exists": false,
+    "files": {
+      "config.json": false,
+      "model_index.json": false,
+      "tokenizer.json": false,
+      "text_tokenizer/tokenizer.json": false,
+      "transformer/config.json": false,
+      "transformer/index": false,
+      "vae/config.json": false,
+      "sound_tokenizer/config.json": false
+    },
+    "architectures": null,
+    "model_type": null,
+    "model_index_class": null,
+    "transformer_class": null,
+    "lora_enabled_default": null,
+    "lora_rank_default": null,
+    "lora_alpha_default": null,
+    "lora_target_modules_default": null,
+    "rectified_flow_training_config_keys": []
+  },
+  "dataset": {
+    "dataset_jsonl": "/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl",
+    "total_samples": 3808,
+    "split_summary": {
+      "test": {
+        "samples": 448,
+        "episodes": 14,
+        "actions": 189
+      },
+      "train": {
+        "samples": 2848,
+        "episodes": 89,
+        "actions": 885
+      },
+      "val": {
+        "samples": 512,
+        "episodes": 16,
+        "actions": 223
+      }
+    },
+    "missing_required_fields": {
+      "answer_json": 0,
+      "episode_id": 0,
+      "id": 0,
+      "label_options": 0,
+      "split": 0
+    },
+    "missing_answer_fields": {
+      "action": 0,
+      "contact": 0,
+      "evidence_window": 0,
+      "next_action": 0,
+      "objects": 0,
+      "subtask": 0,
+      "transition": 0
+    },
+    "samples_with_video_path": 3808,
+    "contract": "xperience10m_episode_json_qa_v1"
+  },
+  "runtime": {
+    "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+    "platform": "Linux-5.15.0-130-generic-x86_64-with-glibc2.35",
+    "torch": "2.4.0+cu121",
+    "cuda_available": true,
+    "cuda_device_count": 4,
+    "accelerate": "1.5.2",
+    "peft": "0.15.0",
+    "diffusers_error": "ModuleNotFoundError(\"No module named 'diffusers'\")",
+    "diffusers_traceback": "Traceback (most recent call last):\n  File \"/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/scripts/omni/probe_cosmos3_super_training_readiness.py\", line 198, in inspect_runtime\n    import diffusers\nModuleNotFoundError: No module named 'diffusers'\n",
+    "transformers": "4.50.0",
+    "has_transformers_cosmos3_for_conditional_generation": false,
+    "auto_config_error": "OSError(\"Can't load the configuration of '/mnt/kgc/chaoyue/ropedia-h20-side/modelscope_models/nv-community__Cosmos3-Super'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local directory with the same name. Otherwise, make sure '/mnt/kgc/chaoyue/ropedia-h20-side/modelscope_models/nv-community__Cosmos3-Super' is the correct path to a directory containing a config.json file\")",
+    "tokenizer_error": "HFValidationError(\"Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/mnt/kgc/chaoyue/ropedia-h20-side/modelscope_models/nv-community__Cosmos3-Super'. Use `repo_type` argument if needed.\")",
+    "processor_error": "HFValidationError(\"Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/mnt/kgc/chaoyue/ropedia-h20-side/modelscope_models/nv-community__Cosmos3-Super'. Use `repo_type` argument if needed.\")"
+  },
+  "optional_pipeline_load": {
+    "attempted": false
+  },
+  "gpu_runtime_summary": {
+    "cuda_available": true,
+    "cuda_device_count": 4
+  },
+  "decision": {
+    "status": "blocked_until_trainer_implemented",
+    "weights_updated": false,
+    "chat_sft_supported": false,
+    "diffusers_runtime_supported": false,
+    "blockers": [
+      "Diffusers runtime is missing Cosmos3 classes: ['Cosmos3OmniPipeline', 'Cosmos3OmniTransformer', 'Cosmos3AVAEAudioTokenizer', 'AutoencoderKLWan', 'UniPCMultistepScheduler']",
+      "Transformers cannot load model_type cosmos3_omni as a local causal-generation model; Qwen-style answer-token CE fine-tuning is unavailable in this environment."
+    ],
+    "warnings": [
+      "config.json does not expose rectified_flow_training_config keys for diffusion loss wiring.",
+      "Forward-dynamics LoRA trainer exists; run the camera-pose action-target contract audit before launch because this probe checks the staged runtime and JSON-task dataset surface, not every action target row."
+    ],
+    "next_steps": [
+      "Run scripts/omni/audit_cosmos3_super_training_contract.py on the camera-pose action-target JSONL and require no blockers.",
+      "Run scripts/omni/train_cosmos3_super_forward_dynamics_lora.py as a one-sample or one-episode overfit before a full 96/16/16 adapter run.",
+      "Publish a separate Cosmos3-Super model repository only after the trainer produces new adapter/checkpoint weights and held-out evaluation artifacts."
+    ]
+  }
+}

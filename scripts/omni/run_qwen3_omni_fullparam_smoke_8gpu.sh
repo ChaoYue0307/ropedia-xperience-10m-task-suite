@@ -19,6 +19,7 @@ BACKBONE_CONFIG="${BACKBONE_CONFIG:-configs/omni_backbones/qwen3_omni_lora.json}
 NUM_PROCESSES="${NUM_PROCESSES:-8}"
 MAX_TRAIN_SAMPLES="${MAX_TRAIN_SAMPLES:-8}"
 MAX_TRAIN_STEPS="${MAX_TRAIN_STEPS:-1}"
+EPOCHS="${EPOCHS:-1}"
 LEARNING_RATE="${LEARNING_RATE:-1e-6}"
 TIMEOUT_SECONDS="${TIMEOUT_SECONDS:-1200}"
 
@@ -78,7 +79,7 @@ cmd=(
   --output-dir "$OUTPUT_DIR"
   --train-split train
   --val-split fullparam_smoke_no_val
-  --epochs 1
+  --epochs "$EPOCHS"
   --batch-size 1
   --gradient-accumulation-steps 1
   --learning-rate "$LEARNING_RATE"
@@ -99,6 +100,7 @@ json_status \
   dataset_jsonl="$DATASET_JSONL" \
   max_train_samples="$MAX_TRAIN_SAMPLES" \
   max_train_steps="$MAX_TRAIN_STEPS" \
+  epochs="$EPOCHS" \
   num_processes="$NUM_PROCESSES" \
   timeout_seconds="$TIMEOUT_SECONDS"
 

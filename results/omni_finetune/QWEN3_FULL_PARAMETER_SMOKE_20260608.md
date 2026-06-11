@@ -14,7 +14,7 @@ not produce Qwen3 full-parameter checkpoints or public weights.
 - Scope: 8 train samples, `--max-train-steps 1`, no validation, `--save-mode none`
 - Observed progress: `setup_done`, `model_load_start`, `model_load_done`, `accelerator_prepare_start`
 - Stop reason: manually stopped after prepare stayed CPU/RAM-bound with no `accelerator_prepare_done`, no `train_step`, and no meaningful GPU utilization.
-- Peak observation before stop: host RAM about 467 GiB used, GPUs at about 2.5 GiB on rank 0 and 329 MiB on the other H20s.
+- Peak observation before stop: host RAM about 467 GiB used, GPUs at about 2.5 GiB on rank 0 and 329 MiB on the other ranks.
 
 ## Attempt 2
 
@@ -25,7 +25,7 @@ not produce Qwen3 full-parameter checkpoints or public weights.
 - Scope: 8 train samples, `--max-train-steps 1`, no validation, `--save-mode none`, 20-minute launcher timeout
 - Observed progress: `setup_done`, `model_load_start`, `model_load_done`, `accelerator_prepare_start`
 - Stop reason: manually stopped after prepare again stayed CPU/RAM-bound with no `accelerator_prepare_done`, no `train_step`, and no meaningful GPU utilization.
-- Peak observation before stop: host RAM about 454 GiB used, GPUs at about 2.5 GiB on rank 0 and 329 MiB on the other H20s.
+- Peak observation before stop: host RAM about 454 GiB used, GPUs at about 2.5 GiB on rank 0 and 329 MiB on the other ranks.
 
 ## Decision
 

@@ -1,0 +1,117 @@
+{
+  "checkpoint_saved": false,
+  "configured_max_train_steps": 8,
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl",
+  "epoch_train_loss": 1.2190196067094803,
+  "evidence_time": 1780949988.502369,
+  "final_global_step": 8,
+  "final_step_loss": 1.180522084236145,
+  "first_step_loss": 1.2701153755187988,
+  "last_event": {
+    "checkpoint_dir": "checkpoints/xperience10m_qwen3_omni_128ep_fullparam_shorttrain8_preemptible_8gpu_20260609/fullparam_smoke_no_weights",
+    "event": "complete",
+    "timestamp": 1780949820.1585019
+  },
+  "launch_events": [
+    {
+      "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl",
+      "event": "launch_start",
+      "max_train_samples": 64,
+      "max_train_steps": 8,
+      "num_processes": 8,
+      "run_id": "xperience10m_qwen3_omni_128ep_fullparam_shorttrain8_preemptible_8gpu_20260609",
+      "time": 1780948336.4365993,
+      "timeout_seconds": 5400
+    },
+    {
+      "event": "launch_detached",
+      "log": "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_shorttrain8_preemptible_8gpu_20260609/train.launch.log",
+      "pid": 2568626,
+      "run_id": "xperience10m_qwen3_omni_128ep_fullparam_shorttrain8_preemptible_8gpu_20260609",
+      "time": 1780948341.5881686
+    },
+    {
+      "event": "shorttrain_handoff_guard_detached",
+      "guard_pid": 2580854,
+      "log": "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_shorttrain8_preemptible_8gpu_20260609/handoff_guard_20260609_035221.log",
+      "time": 1780948341.6839814,
+      "watched_pid": 2568626
+    },
+    {
+      "event": "shorttrain_handoff_guard_start",
+      "guard_pid": 2580857,
+      "kind": "shorttrain_handoff_guard",
+      "time": 1780948341.6929266,
+      "watched_pid": 2568626
+    },
+    {
+      "event": "shorttrain_pid_exited",
+      "guard_pid": 1108554,
+      "kind": "shorttrain_handoff_guard",
+      "time": 1780949836.6763642,
+      "watched_pid": 2568626
+    }
+  ],
+  "max_step_loss": 1.2701153755187988,
+  "min_step_loss": 1.1532728672027588,
+  "model_load_seconds": 111.21318578720093,
+  "num_processes": 8,
+  "num_train_samples": 64,
+  "observed_train_steps": 8,
+  "progress_events": 19,
+  "purpose": "guarded full-parameter Qwen3-Omni short train using all 8 remote GPUs while Qwen v5 export was CPU-bound",
+  "run_id": "xperience10m_qwen3_omni_128ep_fullparam_shorttrain8_preemptible_8gpu_20260609",
+  "save_event": {
+    "checkpoint_dir": "checkpoints/xperience10m_qwen3_omni_128ep_fullparam_shorttrain8_preemptible_8gpu_20260609/fullparam_smoke_no_weights",
+    "event": "save_skipped",
+    "reason": "full_parameter_smoke_no_checkpoint",
+    "timestamp": 1780949820.1574066
+  },
+  "save_mode": "none",
+  "status": "passed",
+  "step_losses": [
+    {
+      "global_step": 1,
+      "rank0_batch_loss": 1.2701153755187988,
+      "timestamp": 1780949723.3320336
+    },
+    {
+      "global_step": 2,
+      "rank0_batch_loss": 1.263624906539917,
+      "timestamp": 1780949736.645062
+    },
+    {
+      "global_step": 3,
+      "rank0_batch_loss": 1.2406173944473267,
+      "timestamp": 1780949749.7436893
+    },
+    {
+      "global_step": 4,
+      "rank0_batch_loss": 1.2595319747924805,
+      "timestamp": 1780949763.0719097
+    },
+    {
+      "global_step": 5,
+      "rank0_batch_loss": 1.2050122022628784,
+      "timestamp": 1780949776.760996
+    },
+    {
+      "global_step": 6,
+      "rank0_batch_loss": 1.179460048675537,
+      "timestamp": 1780949790.6069174
+    },
+    {
+      "global_step": 7,
+      "rank0_batch_loss": 1.1532728672027588,
+      "timestamp": 1780949804.6144133
+    },
+    {
+      "global_step": 8,
+      "rank0_batch_loss": 1.180522084236145,
+      "timestamp": 1780949820.072463
+    }
+  ],
+  "training_objective": "structured_episode_understanding_json_qa",
+  "tuning_mode": "full",
+  "val_loss": null
+}
