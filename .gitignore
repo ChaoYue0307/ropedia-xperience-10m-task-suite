@@ -20,3 +20,9 @@ results/omni_finetune/hf_upload/
 results/omni_finetune/*.tar
 results/omni_finetune/*.safetensors
 results/omni_finetune/**/adapter_lora/*.safetensors
+results/omni_finetune/deferred_launchers/*.log
+results/omni_finetune/deferred_launchers/*.pid
+results/omni_finetune/xperience10m_*/
+!results/omni_finetune/verified_public/
+!results/omni_finetune/verified_public/**
+tmp/
