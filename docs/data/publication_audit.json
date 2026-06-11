@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-11T07:16:04+00:00",
+  "generated_at_utc": "2026-06-11T16:14:07+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -187,11 +187,11 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 1002,
-      "text_file_count": 779,
+      "file_count": 893,
+      "text_file_count": 729,
       "largest_file": {
-        "path": "tmp/omni_128_dataset_fetch/dataset.jsonl",
-        "bytes": 582271586
+        "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
+        "bytes": 55702978
       },
       "violations": []
     },
