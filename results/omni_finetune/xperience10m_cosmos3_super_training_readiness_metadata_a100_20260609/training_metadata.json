@@ -1,0 +1,27 @@
+{
+  "run_id": "xperience10m_cosmos3_super_training_readiness_metadata_a100_20260609",
+  "run_kind": "cosmos3_super_training_readiness_probe",
+  "model_dir": "/mnt/kgc/chaoyue/ropedia-h20-side/modelscope_models/nv-community__Cosmos3-Super",
+  "dataset_jsonl": "/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl",
+  "weights_updated": false,
+  "checkpoint_dir": null,
+  "decision": {
+    "status": "blocked_until_trainer_implemented",
+    "weights_updated": false,
+    "chat_sft_supported": false,
+    "diffusers_runtime_supported": false,
+    "blockers": [
+      "Diffusers runtime is missing Cosmos3 classes: ['Cosmos3OmniPipeline', 'Cosmos3OmniTransformer', 'Cosmos3AVAEAudioTokenizer', 'AutoencoderKLWan', 'UniPCMultistepScheduler']",
+      "Transformers cannot load model_type cosmos3_omni as a local causal-generation model; Qwen-style answer-token CE fine-tuning is unavailable in this environment."
+    ],
+    "warnings": [
+      "config.json does not expose rectified_flow_training_config keys for diffusion loss wiring.",
+      "Forward-dynamics LoRA trainer exists; run the camera-pose action-target contract audit before launch because this probe checks the staged runtime and JSON-task dataset surface, not every action target row."
+    ],
+    "next_steps": [
+      "Run scripts/omni/audit_cosmos3_super_training_contract.py on the camera-pose action-target JSONL and require no blockers.",
+      "Run scripts/omni/train_cosmos3_super_forward_dynamics_lora.py as a one-sample or one-episode overfit before a full 96/16/16 adapter run.",
+      "Publish a separate Cosmos3-Super model repository only after the trainer produces new adapter/checkpoint weights and held-out evaluation artifacts."
+    ]
+  }
+}

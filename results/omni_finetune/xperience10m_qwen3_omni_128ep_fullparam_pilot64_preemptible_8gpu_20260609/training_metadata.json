@@ -1,0 +1,83 @@
+{
+  "run_id": "xperience10m_qwen3_omni_128ep_fullparam_pilot64_preemptible_8gpu_20260609",
+  "model_id": "/home/cy/Ropedia/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct",
+  "backbone": {
+    "id": "qwen3_omni_lora",
+    "display_name": "Qwen3-Omni LoRA",
+    "status": "implemented",
+    "model_family": "Qwen3-Omni",
+    "dataset_contract": "xperience10m_episode_json_qa_v1",
+    "training_objective": "structured_episode_understanding_json_qa",
+    "split_policy": {
+      "unit": "episode",
+      "default_counts": {
+        "train": 96,
+        "val": 16,
+        "test": 16
+      },
+      "leakage_guard": "episode_id and path-qualified session split checks"
+    },
+    "modalities": {
+      "direct_inputs": [
+        "multi-camera rendered mosaic video",
+        "AAC audio extracted from fisheye_cam0 MP4",
+        "language prompt and label options"
+      ],
+      "bridged_inputs": [
+        "depth and confidence",
+        "pose and SLAM trajectory",
+        "body and hand mocap",
+        "IMU acceleration and gyro",
+        "object/contact summary features"
+      ],
+      "excluded_inputs": [
+        "visualization.rrd"
+      ]
+    },
+    "primary_metrics": [
+      "json_validity_rate",
+      "action_macro_f1",
+      "subtask_accuracy",
+      "transition_accuracy",
+      "next_action_accuracy",
+      "contact_accuracy",
+      "object_micro_f1",
+      "held_out_episode_count"
+    ],
+    "config_path": "/home/cy/Ropedia/ropedia-episode-task-suite/configs/omni_backbones/qwen3_omni_lora.json"
+  },
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl",
+  "checkpoint_dir": "checkpoints/xperience10m_qwen3_omni_128ep_fullparam_pilot64_preemptible_8gpu_20260609/fullparam_smoke_no_weights",
+  "num_processes": 8,
+  "num_train_samples": 512,
+  "num_val_samples": 0,
+  "tuning_mode": "full",
+  "save_mode": "none",
+  "max_train_steps": 64,
+  "optimizer_init": "after_model_prepare",
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.4434075650788145,
+      "val_loss": null,
+      "global_step": 64
+    }
+  ],
+  "lora": {
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ]
+  },
+  "use_audio_in_video": false,
+  "loss_mode": "answer_token_ce",
+  "loss_logit_tail_only": true
+}

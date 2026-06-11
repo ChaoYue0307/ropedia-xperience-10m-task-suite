@@ -1,0 +1,84 @@
+{
+  "checkpoint_saved": false,
+  "configured_max_train_samples": 1024,
+  "configured_max_train_steps": 128,
+  "evidence_time": 1780955049.894055,
+  "last_progress_event": {
+    "event": "accelerator_prepare_start",
+    "optimizer_init": "after_model_prepare",
+    "run_id": "xperience10m_qwen3_omni_128ep_fullparam_pilot128_preemptible_8gpu_20260609",
+    "timestamp": 1780954498.655631
+  },
+  "launch_events": [
+    {
+      "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_dataset/dataset.jsonl",
+      "epochs": 16,
+      "event": "launch_start",
+      "max_train_samples": 1024,
+      "max_train_steps": 128,
+      "num_processes": 8,
+      "run_id": "xperience10m_qwen3_omni_128ep_fullparam_pilot128_preemptible_8gpu_20260609",
+      "time": 1780954420.9287472,
+      "timeout_seconds": 14400
+    },
+    {
+      "event": "launch_detached",
+      "log": "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot128_preemptible_8gpu_20260609/train.launch.log",
+      "pid": 3753782,
+      "run_id": "xperience10m_qwen3_omni_128ep_fullparam_pilot128_preemptible_8gpu_20260609",
+      "time": 1780954426.0082471
+    },
+    {
+      "event": "fullparam_pilot128_handoff_guard_detached",
+      "guard_pid": 3757690,
+      "log": "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot128_preemptible_8gpu_20260609/handoff_guard_20260609_053346.log",
+      "time": 1780954426,
+      "watched_pid": 3753782
+    },
+    {
+      "event": "fullparam_pilot128_guard_start",
+      "guard_pid": 3757690,
+      "kind": "fullparam_pilot128_handoff_guard",
+      "time": 1780954426,
+      "watched_pid": 3753782
+    },
+    {
+      "event": "fullparam_pilot128_preempt_for_qwen_v5_handoff",
+      "guard_pid": 3757690,
+      "kind": "fullparam_pilot128_handoff_guard",
+      "time": 1780954910,
+      "watched_pid": 3753782
+    },
+    {
+      "event": "fullparam_pilot128_resumed_parent_after_preempt",
+      "guard_pid": 3757690,
+      "kind": "fullparam_pilot128_handoff_guard",
+      "time": 1780954925,
+      "watched_pid": 3753782
+    }
+  ],
+  "model_load_seconds": 65.33229899406433,
+  "num_processes": 8,
+  "observed_train_steps": 0,
+  "parent_resume_event": {
+    "event": "fullparam_pilot128_resumed_parent_after_preempt",
+    "guard_pid": 3757690,
+    "kind": "fullparam_pilot128_handoff_guard",
+    "time": 1780954925,
+    "watched_pid": 3753782
+  },
+  "preempt_event": {
+    "event": "fullparam_pilot128_preempt_for_qwen_v5_handoff",
+    "guard_pid": 3757690,
+    "kind": "fullparam_pilot128_handoff_guard",
+    "time": 1780954910,
+    "watched_pid": 3753782
+  },
+  "progress_events": 4,
+  "purpose": "opportunistic guarded full-parameter Qwen3-Omni 128-step pilot launched only while Qwen v5 export was CPU-bound; preempted for main Qwen v5 handoff",
+  "run_id": "xperience10m_qwen3_omni_128ep_fullparam_pilot128_preemptible_8gpu_20260609",
+  "save_mode": "none",
+  "status": "preempted_for_qwen_v5_handoff",
+  "training_objective": "structured_episode_understanding_json_qa",
+  "tuning_mode": "full"
+}

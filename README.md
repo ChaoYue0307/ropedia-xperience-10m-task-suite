@@ -128,6 +128,16 @@ included for readers who want to inspect the implementation, but they are
 supporting materials rather than the main reading path. Use
 [`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md) when you want the full file map.
 
+Source alignment is tracked in [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md)
+and [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json).
+The official gated `ropedia-ai/xperience-10m` card reports `31.9 TB` on the
+live HF surface and an `about-1PB` full-scale storage statement; the committed
+API-listing snapshot records `12,103 episode folders` as upstream `metadata only`,
+not a local raw-data inventory. The public sample remains
+`ropedia-ai/xperience-10m-sample` under `cc-by-nc-4.0`, with the `HOMIE Toolkit`
+and `Rerun 0.29.0` noted as source tooling. The official responsible-use note
+that the data is `limited in diversity` is preserved.
+
 ## Project Status
 
 If you only have one minute, use

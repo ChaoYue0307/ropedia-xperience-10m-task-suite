@@ -31,12 +31,14 @@ PRIMARY_METRICS = {
 }
 
 QWEN_RUN_PRIORITY = {
+    "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full": 500,
     "xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full": 400,
     "xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full": 300,
     "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full": 200,
     "xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full": 100,
     "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval": 50,
 }
+QWEN_V5_EVAL_RUN_ID = "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full"
 
 TASK_DISPLAY_NAMES = {
     "timeline_action": "Action Recognition",
@@ -313,8 +315,55 @@ def qwen3_smoke_entry() -> dict[str, Any]:
     }
 
 
+def qwen_full_parameter_gate_entries() -> list[dict[str, Any]]:
+    path = ROOT / "docs/data/qwen3_full_parameter_gates.json"
+    payload = load_json(path)
+    rows = payload.get("runs", []) if isinstance(payload.get("runs"), list) else []
+    entries = []
+    for row in rows:
+        status = row.get("status", "unknown")
+        entries.append(
+            {
+                "id": row.get("run_id") or row.get("id"),
+                "title": row.get("title"),
+                "scope_label": "full-param gate",
+                "scope": row.get("scope"),
+                "status": status,
+                "source": row.get("summary_path") or rel(path),
+                "split": "selected 128-episode train split",
+                "counts": {
+                    "samples": row.get("num_train_samples"),
+                    "steps": row.get("observed_train_steps"),
+                    "num_processes": row.get("num_processes"),
+                },
+                "primary_metrics": {
+                    "full_parameter_gate": status,
+                    "observed_train_steps": row.get("observed_train_steps"),
+                    "final_step_loss": row.get("final_step_loss"),
+                    "epoch_train_loss": row.get("epoch_train_loss"),
+                    "checkpoint_saved": row.get("checkpoint_saved"),
+                },
+                "weights": row.get("checkpoint_policy"),
+                "interpretation": (
+                    "Full-parameter FSDP feasibility evidence only. This gate is not a "
+                    "held-out model result, full fine-tune, checkpoint release, or public "
+                    "weight package."
+                ),
+            }
+        )
+    return entries
+
+
 def cosmos3_super_readiness_entry() -> dict[str, Any] | None:
-    paths = sorted((ROOT / "results/omni_finetune").glob("xperience10m_cosmos3_super_training_readiness_*/training_readiness.json"))
+    paths = [
+        path
+        for path in sorted(
+            (ROOT / "results/omni_finetune").glob(
+                "xperience10m_cosmos3_super_training_readiness_*/training_readiness.json"
+            )
+        )
+        if "metadata_a100" not in path.parent.name
+    ]
     if not paths:
         return None
     payloads = [(path, load_json(path)) for path in paths]
@@ -342,6 +391,49 @@ def cosmos3_super_readiness_entry() -> dict[str, Any] | None:
             "This probe confirms the staged Cosmos3-Super Diffusers/GPU runtime and "
             "the same JSON QA dataset are visible. It predates the camera-pose action-target "
             "export, so use the 20260608 contract audit for the current trainer-readiness status."
+        ),
+    }
+
+
+def cosmos3_super_staging_readiness_entry() -> dict[str, Any] | None:
+    paths = sorted(
+        (ROOT / "results/omni_finetune").glob(
+            "xperience10m_cosmos3_super_training_readiness_metadata_a100_*/training_readiness.json"
+        )
+    )
+    if not paths:
+        return None
+    payloads = [(path, load_json(path)) for path in paths]
+    path, payload = max(payloads, key=lambda item: item[1].get("finished_at_unix") or 0)
+    decision = payload.get("decision", {}) if isinstance(payload.get("decision"), dict) else {}
+    dataset = payload.get("dataset", {}) if isinstance(payload.get("dataset"), dict) else {}
+    model = payload.get("model", {}) if isinstance(payload.get("model"), dict) else {}
+    runtime = payload.get("runtime", {}) if isinstance(payload.get("runtime"), dict) else {}
+    return {
+        "id": payload.get("run_id", path.parent.name),
+        "title": "Cosmos3-Super Remote Staging Readiness Probe",
+        "scope_label": "staging readiness",
+        "scope": "secondary 4-GPU staging tree, JSON-task dataset visibility, and metadata-only Cosmos3-Super runtime probe",
+        "status": decision.get("status", "unknown"),
+        "source": rel(path),
+        "split": "train/val/test by selected episode/session",
+        "counts": {
+            "dataset_samples": dataset.get("total_samples"),
+            "split_counts": dataset.get("split_summary"),
+        },
+        "primary_metrics": {
+            "model_files_visible": model.get("exists"),
+            "diffusers_runtime_supported": decision.get("diffusers_runtime_supported"),
+            "cuda_device_count": runtime.get("cuda_device_count"),
+            "weights_updated": decision.get("weights_updated"),
+        },
+        "weights": "none; staging readiness audit only, no adapter checkpoint",
+        "interpretation": (
+            "This metadata-only probe checks the secondary 4-GPU staging tree without "
+            "loading the model pipeline or updating weights. It confirms the JSON task "
+            "dataset is present, but the Cosmos3-Super model files and Diffusers runtime "
+            "are not staged there yet, so real Super training should wait for model/runtime "
+            "staging or run on the already prepared main host."
         ),
     }
 
@@ -455,7 +547,9 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
     cosmos_nano_branches = [branch for branch in branches if branch.get("backbone") == "cosmos_world_model"]
     cosmos_super_branches = [branch for branch in branches if branch.get("backbone") == "cosmos3_super_reasoner"]
     cosmos_super_fd_branches = [branch for branch in branches if branch.get("backbone") == "cosmos3_super_forward_dynamics"]
+    qwen_full_parameter_gates = qwen_full_parameter_gate_entries()
     cosmos_super_readiness = cosmos3_super_readiness_entry()
+    cosmos_super_staging_readiness = cosmos3_super_staging_readiness_entry()
     cosmos_super_action_contract = cosmos3_super_action_contract_entry()
     cosmos_super_packer = cosmos3_super_packer_entry()
     if qwen_branches:
@@ -517,11 +611,14 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "model_type": "PEFT LoRA adapter over Qwen/Qwen3-Omni-30B-A3B-Instruct",
             "weight_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep",
             "one_episode_runs": [qwen3_smoke_entry()],
+            "readiness_runs": qwen_full_parameter_gates,
             "multi_episode_128_runs": qwen_branches,
             "comparison_note": (
                 "The one-episode Qwen entry is only a sensor-adapter smoke test with "
                 "Qwen3 weights unloaded. The 128-episode entries are real held-out LoRA "
-                "diagnostics; the current final adapter belongs in the separate Qwen model repo."
+                "diagnostics; the current final adapter belongs in the separate Qwen model repo. "
+                "The full-parameter rows are feasibility gates only and intentionally publish "
+                "no checkpoints or full-parameter weights."
             ),
         },
         {
@@ -569,7 +666,14 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 }
             ],
             "readiness_runs": [
-                entry for entry in (cosmos_super_readiness, cosmos_super_action_contract, cosmos_super_packer) if entry
+                entry
+                for entry in (
+                    cosmos_super_readiness,
+                    cosmos_super_staging_readiness,
+                    cosmos_super_action_contract,
+                    cosmos_super_packer,
+                )
+                if entry
             ],
             "multi_episode_128_runs": cosmos_super_branches,
             "comparison_note": (
@@ -612,6 +716,18 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
 def build_report() -> dict[str, Any]:
     versions = [single_episode_summary(), aligned_baseline_summary(), model_branch_summary()]
     model_groups = model_grouped_view(versions)
+    qwen_branch_ids = {
+        str(branch.get("id"))
+        for branch in versions[2].get("branches", [])
+        if branch.get("backbone") == "qwen3_omni_lora"
+    }
+    pending = [
+        "Use the verified Qwen3 v4 4-epoch full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison.",
+    ]
+    if QWEN_V5_EVAL_RUN_ID not in qwen_branch_ids:
+        pending.append(
+            "Complete the Qwen3-Omni v5 dense multiscale raw-media export, all-GPU LoRA train, held-out eval, and public package before promoting it over the current Qwen v4 row."
+        )
     return {
         "title": "Ropedia Xperience-10M Current Result Versions and Model Groups",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -634,14 +750,11 @@ def build_report() -> dict[str, Any]:
         "model_group_reading_notes": [
             "Use model_groups when comparing one-episode and 128-episode artifacts within the same model family.",
             "Task-head baselines have both a one-episode public-sample run and a 128-episode same-split metadata/text run.",
-            "Qwen3-Omni has a one-episode sensor-adapter smoke test and separate 128-episode LoRA diagnostic packages; the newest verified full-eval 128-episode adapter belongs in the Qwen LoRA model repo.",
+            "Qwen3-Omni has a one-episode sensor-adapter smoke test, full-parameter feasibility gates, and separate 128-episode LoRA diagnostic packages; the newest verified full-eval 128-episode adapter belongs in the Qwen LoRA model repo.",
             "Cosmos3-Nano has a 128-episode future-window compatibility package.",
             "Cosmos3-Super now has both a 128-episode base-weight Reasoner evaluation on the JSON task and a fine-tuned forward-dynamics LoRA branch over camera-pose proxy targets.",
         ],
-        "pending": [
-            "Use the verified Qwen3 v4 4-epoch full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison.",
-            "Complete the Qwen3-Omni v5 dense multiscale raw-media export, all-GPU LoRA train, held-out eval, and public package before promoting it over the current Qwen v4 row.",
-        ],
+        "pending": pending,
     }
 
 
@@ -693,6 +806,11 @@ def entry_metric_text(entry: dict[str, Any]) -> str:
         "diffusers_runtime_supported",
         "chat_sft_supported",
         "weights_updated",
+        "full_parameter_gate",
+        "observed_train_steps",
+        "final_step_loss",
+        "epoch_train_loss",
+        "checkpoint_saved",
     ]
     return ", ".join(f"{key}={fmt_score(metrics[key])}" for key in keep if key in metrics)
 

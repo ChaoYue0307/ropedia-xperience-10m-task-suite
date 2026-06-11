@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# H20-oriented next-stage run:
+# Remote 8-GPU next-stage run:
 # 1. Build the full compact 106k dense/multiscale hierarchical index.
 # 2. Run compact hierarchical simple/NN baselines.
 # 3. Export a balanced raw-media multiscale Qwen dataset capped per
 #    episode/scale to keep the current trainer's per-rank JSONL load bounded.
-# 4. Train/evaluate a distinct Qwen3-Omni LoRA v5 run on all 8 H20 GPUs.
+# 4. Train/evaluate a distinct Qwen3-Omni LoRA v5 run on all 8 GPUs.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="${PROJECT_ROOT:-$(cd "$SCRIPT_DIR/../.." && pwd)}"
