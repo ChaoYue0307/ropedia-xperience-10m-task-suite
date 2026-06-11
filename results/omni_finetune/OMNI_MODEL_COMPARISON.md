@@ -1,6 +1,6 @@
 # Omni Model Comparison
 
-Generated: `2026-06-11T03:22:03+00:00`
+Generated: `2026-06-11T04:42:46+00:00`
 
 Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and the two Cosmos3 targets answer different questions: Nano future-window retrieval versus Super structured JSON Reasoner evaluation.
 
@@ -129,4 +129,4 @@ This is the first verified Cosmos3-Super fine-tuned adapter branch. Its metric i
 
 ## Pending
 
-- Use the verified Qwen3 v4 4-epoch full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison.
+- Use the verified Qwen3 v5 dense multiscale full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison.
