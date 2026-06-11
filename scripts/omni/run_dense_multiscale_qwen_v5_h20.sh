@@ -28,6 +28,13 @@ MAX_VIDEO_FRAMES="${MAX_VIDEO_FRAMES:-16}"
 EPOCHS="${EPOCHS:-1}"
 NUM_PROCESSES="${NUM_PROCESSES:-8}"
 GRADIENT_ACCUMULATION_STEPS="${GRADIENT_ACCUMULATION_STEPS:-8}"
+LEARNING_RATE="${LEARNING_RATE:-1e-4}"
+MAX_GRAD_NORM="${MAX_GRAD_NORM:-1.0}"
+SEED="${SEED:-7}"
+LORA_R="${LORA_R:-16}"
+LORA_ALPHA="${LORA_ALPHA:-32}"
+LORA_DROPOUT="${LORA_DROPOUT:-0.05}"
+LORA_TARGET_MODULES="${LORA_TARGET_MODULES:-q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj}"
 MAX_VAL_SAMPLES="${MAX_VAL_SAMPLES:-1024}"
 EVAL_SAMPLE_LIMIT="${EVAL_SAMPLE_LIMIT:-0}"
 MAX_NEW_TOKENS="${MAX_NEW_TOKENS:-96}"
@@ -210,8 +217,15 @@ if [[ ! -s "$ADAPTER_DIR/adapter_config.json" ]]; then
     --epochs "$EPOCHS" \
     --batch-size 1 \
     --gradient-accumulation-steps "$GRADIENT_ACCUMULATION_STEPS" \
+    --learning-rate "$LEARNING_RATE" \
+    --max-grad-norm "$MAX_GRAD_NORM" \
+    --seed "$SEED" \
     --max-train-samples 0 \
     --max-val-samples "$MAX_VAL_SAMPLES" \
+    --lora-r "$LORA_R" \
+    --lora-alpha "$LORA_ALPHA" \
+    --lora-dropout "$LORA_DROPOUT" \
+    --lora-target-modules "$LORA_TARGET_MODULES" \
     --local-files-only \
     --gradient-checkpointing \
     --progress-every 25
