@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-11T03:23:13+00:00",
+  "generated_at_utc": "2026-06-11T03:36:15+00:00",
   "summary": {
     "qwen3_omni_verified_diagnostic_pilot": true,
     "dataset_manifest_num_episodes": 119,
@@ -9,7 +9,7 @@
     "eval_num_samples": 448,
     "eval_json_validity_rate": 1.0,
     "quality_target_met": true,
-    "historical_identifier_count": 1790,
+    "historical_identifier_count": 1799,
     "public_32_episode_status_file_count": 1,
     "failure_count": 0
   },
@@ -84,7 +84,7 @@
     {
       "name": "historical_32ep_identifiers_are_confined_to_readiness_artifacts",
       "status": "pass",
-      "detail": "historical identifiers found in result provenance files=1790",
+      "detail": "historical identifiers found in result provenance files=1799",
       "evidence": [
         "results/omni_finetune/"
       ]
@@ -424,6 +424,6 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:53\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 1060, \"end_frame\": 1079, \"num_frames\": 20}, \"media\": {\"video_path"
     }
   ],
-  "historical_identifier_total_count": 1790,
+  "historical_identifier_total_count": 1799,
   "failures": []
 }
