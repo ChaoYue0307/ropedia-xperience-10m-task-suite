@@ -721,10 +721,14 @@ def build_report() -> dict[str, Any]:
         for branch in versions[2].get("branches", [])
         if branch.get("backbone") == "qwen3_omni_lora"
     }
-    pending = [
-        "Use the verified Qwen3 v4 4-epoch full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison.",
-    ]
-    if QWEN_V5_EVAL_RUN_ID not in qwen_branch_ids:
+    if QWEN_V5_EVAL_RUN_ID in qwen_branch_ids:
+        pending = [
+            "Use the verified Qwen3 v5 dense multiscale full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison.",
+        ]
+    else:
+        pending = [
+            "Use the verified Qwen3 v4 4-epoch full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison.",
+        ]
         pending.append(
             "Complete the Qwen3-Omni v5 dense multiscale raw-media export, all-GPU LoRA train, held-out eval, and public package before promoting it over the current Qwen v4 row."
         )

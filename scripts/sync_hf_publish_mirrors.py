@@ -22,6 +22,11 @@ STALE_MIRROR_FILES = [
     "artifacts/scripts/omni/collect_qwen3_v4_publication_artifacts.py",
     "model/scripts/omni/collect_qwen3_v4_publication_artifacts.py",
 ]
+GENERATED_REPORT_DATA_FILES = [
+    # The parity validator rewrites this report, so it is synced after checks
+    # rather than included in the self-referential hash parity file set.
+    "mirror_parity.json",
+]
 ENHANCEMENT_MARKER = "docs/data/task_suite_enhancement_128.json"
 ENHANCEMENT_CARD_BLOCK = """
 ## 128-Episode Enhancement Pack
@@ -109,7 +114,25 @@ def main() -> int:
             src,
             [
                 hf_root / "space/data" / filename,
+                hf_root / "artifacts/data" / filename,
                 hf_root / "artifacts/docs/data" / filename,
+                hf_root / "model/data" / filename,
+                hf_root / "model/docs/data" / filename,
+                hf_root / "model/metrics" / filename,
+            ],
+            dry_run=args.dry_run,
+        )
+
+    for filename in GENERATED_REPORT_DATA_FILES:
+        src = ROOT / "docs/data" / filename
+        copied += copy_file(
+            src,
+            [
+                hf_root / "space/data" / filename,
+                hf_root / "artifacts/data" / filename,
+                hf_root / "artifacts/docs/data" / filename,
+                hf_root / "model/data" / filename,
+                hf_root / "model/docs/data" / filename,
                 hf_root / "model/metrics" / filename,
             ],
             dry_run=args.dry_run,
