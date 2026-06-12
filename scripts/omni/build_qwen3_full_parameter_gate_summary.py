@@ -71,6 +71,17 @@ RUNS = [
         / "progress.jsonl",
         "scope": "128 optimizer steps over 1024 train samples after verified Qwen v5 handoff",
     },
+    {
+        "id": "fullparam_pilot256_after_qwen_v6",
+        "title": "Full-Parameter 256-Step Post-Qwen-v6 Pilot",
+        "metadata": RESULT_ROOT
+        / "xperience10m_qwen3_omni_128ep_fullparam_pilot256_after_qwen_v6_preemptible_8gpu_20260611"
+        / "training_metadata.json",
+        "progress": RESULT_ROOT
+        / "xperience10m_qwen3_omni_128ep_fullparam_pilot256_after_qwen_v6_preemptible_8gpu_20260611"
+        / "progress.jsonl",
+        "scope": "256 optimizer steps over 2048 train samples after verified Qwen v6 handoff",
+    },
 ]
 
 

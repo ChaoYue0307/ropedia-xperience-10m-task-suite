@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Current Result Versions and Model Groups",
-  "generated_at_utc": "2026-06-12T16:51:33+00:00",
+  "generated_at_utc": "2026-06-12T18:14:48+00:00",
   "status": "pass",
   "version_count": 3,
   "model_group_count": 5,
@@ -1037,6 +1037,29 @@
             "observed_train_steps": 128,
             "final_step_loss": 0.0136940386146307,
             "epoch_train_loss": 0.21579630990163423,
+            "checkpoint_saved": false
+          },
+          "weights": "no full-parameter checkpoint or public weights; save_mode=none",
+          "interpretation": "Full-parameter FSDP feasibility evidence only. This gate is not a held-out model result, full fine-tune, checkpoint release, or public weight package."
+        },
+        {
+          "id": "xperience10m_qwen3_omni_128ep_fullparam_pilot256_after_qwen_v6_preemptible_8gpu_20260611",
+          "title": "Full-Parameter 256-Step Post-Qwen-v6 Pilot",
+          "scope_label": "full-param gate",
+          "scope": "256 optimizer steps over 2048 train samples after verified Qwen v6 handoff",
+          "status": "passed",
+          "source": "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot256_after_qwen_v6_preemptible_8gpu_20260611/training_metadata.json",
+          "split": "selected 128-episode train split",
+          "counts": {
+            "samples": 2048,
+            "steps": 256,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "full_parameter_gate": "passed",
+            "observed_train_steps": 256,
+            "final_step_loss": 0.009560374543070793,
+            "epoch_train_loss": 0.1157912792496063,
             "checkpoint_saved": false
           },
           "weights": "no full-parameter checkpoint or public weights; save_mode=none",
