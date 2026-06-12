@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Current Result Versions and Model Groups",
-  "generated_at_utc": "2026-06-11T16:11:49+00:00",
+  "generated_at_utc": "2026-06-12T16:51:33+00:00",
   "status": "pass",
   "version_count": 3,
   "model_group_count": 5,
@@ -313,8 +313,8 @@
       "source": "results/omni_finetune/verified_public/",
       "split": "episode/session held-out split; exact task target depends on backbone contract",
       "counts": {
-        "verified_branch_count": 9,
-        "qwen3_verified_package_count": 6,
+        "verified_branch_count": 10,
+        "qwen3_verified_package_count": 7,
         "cosmos3_verified_package_count": 3,
         "cosmos3_nano_verified_package_count": 1,
         "cosmos3_super_verified_package_count": 2
@@ -590,6 +590,58 @@
           ],
           "is_current": true,
           "weights_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
+        },
+        {
+          "id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+          "title": "Qwen3-Omni LoRA",
+          "status": "verified",
+          "backbone": "qwen3_omni_lora",
+          "dataset_contract": "xperience10m_episode_json_qa_v1",
+          "training_objective": "structured_episode_understanding_json_qa",
+          "source": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/verified_result_summary.json",
+          "dataset_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora",
+          "train_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora",
+          "eval_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+          "counts": {
+            "dataset_samples": 34269,
+            "dataset_episodes": 119,
+            "split_counts": {
+              "test": 4032,
+              "train": 25629,
+              "val": 4608
+            },
+            "train_samples": 25629,
+            "val_samples": 2048,
+            "eval_samples": 4032,
+            "held_out_episode_count": 14,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "json_validity_rate": 0.9990079365079365,
+            "action_macro_f1": 0.0028830723979596335,
+            "subtask_accuracy": 0.0037313432835820895,
+            "transition_accuracy": 0.9898313492063492,
+            "next_action_accuracy": 0.04305335446381405,
+            "contact_accuracy": 0.8177083333333334,
+            "object_micro_f1": 0.3064982378331287,
+            "held_out_episode_count": 14
+          },
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.05208605339353295,
+              "val_loss": 0.026512427255511284,
+              "global_step": 3204
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.013760763933660042,
+              "val_loss": 0.032345958054065704,
+              "global_step": 6408
+            }
+          ],
+          "is_current": false,
+          "weights_repository": "historical diagnostic package; keep separate from the final 128-episode adapter repo"
         },
         {
           "id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
@@ -1129,6 +1181,58 @@
           ],
           "is_current": true,
           "weights_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
+        },
+        {
+          "id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+          "title": "Qwen3-Omni LoRA",
+          "status": "verified",
+          "backbone": "qwen3_omni_lora",
+          "dataset_contract": "xperience10m_episode_json_qa_v1",
+          "training_objective": "structured_episode_understanding_json_qa",
+          "source": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/verified_result_summary.json",
+          "dataset_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora",
+          "train_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora",
+          "eval_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+          "counts": {
+            "dataset_samples": 34269,
+            "dataset_episodes": 119,
+            "split_counts": {
+              "test": 4032,
+              "train": 25629,
+              "val": 4608
+            },
+            "train_samples": 25629,
+            "val_samples": 2048,
+            "eval_samples": 4032,
+            "held_out_episode_count": 14,
+            "num_processes": 8
+          },
+          "primary_metrics": {
+            "json_validity_rate": 0.9990079365079365,
+            "action_macro_f1": 0.0028830723979596335,
+            "subtask_accuracy": 0.0037313432835820895,
+            "transition_accuracy": 0.9898313492063492,
+            "next_action_accuracy": 0.04305335446381405,
+            "contact_accuracy": 0.8177083333333334,
+            "object_micro_f1": 0.3064982378331287,
+            "held_out_episode_count": 14
+          },
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.05208605339353295,
+              "val_loss": 0.026512427255511284,
+              "global_step": 3204
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.013760763933660042,
+              "val_loss": 0.032345958054065704,
+              "global_step": 6408
+            }
+          ],
+          "is_current": false,
+          "weights_repository": "historical diagnostic package; keep separate from the final 128-episode adapter repo"
         },
         {
           "id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",

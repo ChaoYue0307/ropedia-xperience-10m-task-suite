@@ -1,0 +1,81 @@
+{
+  "status": "pass",
+  "summary": {
+    "run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora",
+    "dataset_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora",
+    "train_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora",
+    "eval_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+    "backbone": "qwen3_omni_lora",
+    "backbone_status": "implemented",
+    "checkpoint_gate": "lora_safetensors_shape_check",
+    "required_stage": "eval",
+    "workspace": "<project>",
+    "manifest": {
+      "path": "<project>/results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora/episode_manifest.json",
+      "episode_count": 128,
+      "split_counts": {
+        "test": 16,
+        "train": 96,
+        "val": 16
+      },
+      "session_leakage": []
+    },
+    "dataset": {
+      "dataset_dir": "<project>/results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset",
+      "manifest_path": "<project>/results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_manifest.json",
+      "dataset_path": "<project>/results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset.jsonl",
+      "manifest_num_samples": 34269,
+      "row_count": 34269,
+      "sample_split_counts": {
+        "train": 25629,
+        "val": 4608,
+        "test": 4032
+      },
+      "episode_split_counts": {
+        "train": 89,
+        "val": 16,
+        "test": 14
+      },
+      "skipped_episodes": 0
+    },
+    "training": {
+      "train_dir": "<project>/results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora",
+      "checkpoint_candidates": [
+        "<project>/checkpoints/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora/adapter_lora",
+        "<project>/checkpoints/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_lora/adapter_lora"
+      ],
+      "checkpoint_gate": "lora_safetensors_shape_check",
+      "required_training_files": [
+        "training_metadata.json",
+        "progress.jsonl",
+        "adapter_config.json",
+        "adapter_model.safetensors"
+      ],
+      "checkpoint_dir": "<project>/checkpoints/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora/adapter_lora",
+      "num_processes": 8,
+      "num_train_samples": 25629,
+      "num_val_samples": 2048,
+      "history_len": 2,
+      "checkpoint_dir_recorded": "<project>/checkpoints/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora/adapter_lora"
+    },
+    "eval": {
+      "eval_dir": "<project>/results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+      "required_eval_files": [
+        "metrics.json",
+        "predictions.jsonl",
+        "predictions.csv",
+        "per_class_metrics.csv",
+        "confusion_matrix.csv",
+        "RUN_REPORT.md"
+      ],
+      "eval_split": "test",
+      "num_eval_episodes": 14,
+      "held_out_episode_count": 14,
+      "json_validity_rate": 0.9990079365079365,
+      "action_macro_f1": 0.0028830723979596335,
+      "prediction_file": "predictions.jsonl",
+      "prediction_rows": 4032
+    }
+  },
+  "issues": []
+}

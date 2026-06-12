@@ -1,19 +1,19 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-11T16:12:17+00:00",
+  "generated_at_utc": "2026-06-12T16:51:33+00:00",
   "status": "pass",
-  "artifact_count": 154,
+  "artifact_count": 159,
   "missing": [],
   "by_kind": {
     "project_path": 14,
     "scaleup_contract": 7,
-    "scaleup_status": 34,
+    "scaleup_status": 36,
     "publication_workflow": 5,
     "project_scope": 1,
     "source_alignment": 5,
     "evaluation_protocol": 3,
     "result_interpretation": 5,
-    "metrics_source": 24,
+    "metrics_source": 26,
     "website_data": 3,
     "visual_evidence": 7,
     "quality_gate": 12,
@@ -31,7 +31,7 @@
     "generated_figure_assets": 1,
     "citation": 1,
     "license": 1,
-    "verified_public_package": 9,
+    "verified_public_package": 10,
     "publication_audit": 6
   },
   "artifacts": [
@@ -264,7 +264,7 @@
       "shows": "Summarizes the 2026-06-09 full-parameter FSDP feasibility gates: 1/8/32/64-step guarded runs passed, the 128-step opportunistic pilot was preempted for Qwen v5 handoff, and no full checkpoints or weights are published.",
       "exists": true,
       "bytes": 3003,
-      "sha256": "f3c5f27e98939ea6404328585b1c4ffde1566f958bc360d9a51e6654c893e082"
+      "sha256": "21035e4b2bc997ee0e65f0b1c21ed88cad45fd6a0f077f35cecf5e98b5b1cde1"
     },
     {
       "id": "qwen3_full_parameter_gates_json",
@@ -275,7 +275,7 @@
       "shows": "Machine-readable summary of full-parameter feasibility evidence and publication policy for website and Hugging Face mirrors.",
       "exists": true,
       "bytes": 10533,
-      "sha256": "3a2bea971b4a1f131e841fc52fea91a391173eade354922a62afbc431e70e753"
+      "sha256": "751fc2ec5ef4e4dbc57e3076119dce77323ab6320ee7ca67caedd0c69e986379"
     },
     {
       "id": "qwen3_full_parameter_gates_builder",
@@ -418,7 +418,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "ce97ffc9dcef21e384a27bf37db108477f50a8a408769fd8aa035f88173651aa"
+      "sha256": "7486c4e1fdddba18414ca2d84faa88796e211ed8e12af33437a666acd3c6496a"
     },
     {
       "id": "source_alignment_validator",
@@ -671,7 +671,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8097,
-      "sha256": "632c5691c97abaaa98121f9f9946ea1bb0a25e9ccf036225165519d0e0614db2"
+      "sha256": "4aea62a2dd958af6c9da41084916a0d8161a4b7533e875a38f390fbc76b3fb4d"
     },
     {
       "id": "public_surface_qa",
@@ -830,7 +830,7 @@
       "volatile": true,
       "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and credential text.",
       "exists": true,
-      "bytes": 7566,
+      "bytes": 7590,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1119,8 +1119,8 @@
       "surface": "repo_hf",
       "shows": "Reader-facing comparison of the single-episode task suite, 128-episode aligned baselines, Qwen3-Omni packages, and Cosmos3 future-window branch.",
       "exists": true,
-      "bytes": 14849,
-      "sha256": "1b9f5051cd8c889f95d91296badc902f289d2582e6ff7a3503d5e4d5f3e9b4cc"
+      "bytes": 15368,
+      "sha256": "8299845be7ede957130308facc8a16304fd04f8eba4b7c8e4609d60d54c6e9d5"
     },
     {
       "id": "omni_model_comparison_json",
@@ -1130,8 +1130,8 @@
       "surface": "repo_hf",
       "shows": "Machine-readable comparison of the current result versions, per-task aligned baselines, verified Qwen3 packages, and Cosmos3 package.",
       "exists": true,
-      "bytes": 75707,
-      "sha256": "ff6f4965f493284f5d0d7a76425d7e20a9e4d19469bacbb43a85200fa6824c6e"
+      "bytes": 80354,
+      "sha256": "7162809246031a36869c05bef924b29cc3fa02cf1d53c955d925652004631e53"
     },
     {
       "id": "cosmos3_nano_verified_summary",
@@ -1539,6 +1539,61 @@
       "exists": true,
       "bytes": 48231,
       "sha256": "18000afe3d23bd5aad93743f6f86fc3c60c344a69f0cecee9b552e5fd14b8eb5"
+    },
+    {
+      "id": "verified_public_package_xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+      "title": "Verified public package: Qwen3-Omni LoRA",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+      "kind": "verified_public_package",
+      "surface": "repo_hf",
+      "shows": "Public-safe verified package for xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full (qwen3_omni_lora, status=verified).",
+      "exists": true,
+      "file_count": 13,
+      "bytes": 12189099
+    },
+    {
+      "id": "verified_public_summary_xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+      "title": "Verified summary: Qwen3-Omni LoRA",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/verified_result_summary.json",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Machine-readable verified summary for xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full.",
+      "exists": true,
+      "bytes": 6222,
+      "sha256": "b9072e29866e8a4cd19eca3b1ee096544b8a86232c7eaa682f5acc69f953e4b6"
+    },
+    {
+      "id": "verified_public_public_result_summary_xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+      "title": "Verified public result summary: Qwen3-Omni LoRA",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/PUBLIC_RESULT_SUMMARY.md",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Public result summary for xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full.",
+      "exists": true,
+      "bytes": 1032,
+      "sha256": "6ba3539cba842f2e54fe6e4207a427357d2441d50f82b0b5c5e1c09a830f11df"
+    },
+    {
+      "id": "verified_public_run_report_xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+      "title": "Verified run report: Qwen3-Omni LoRA",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/eval/RUN_REPORT.md",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Run report for xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full.",
+      "exists": true,
+      "bytes": 452,
+      "sha256": "7ad7d37ce82fcedea746f054f8fb4708d2756e15adea158a0bccf82e6af15e21"
+    },
+    {
+      "id": "verified_public_metrics_JSON_xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+      "title": "Verified metrics JSON: Qwen3-Omni LoRA",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/eval/metrics.json",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Metrics json for xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full.",
+      "exists": true,
+      "bytes": 49205,
+      "sha256": "fc198c3e443877bca42cc33bec6e2a194d6cb20e97c28e931a90736c45538bba"
     },
     {
       "id": "verified_public_package_xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",

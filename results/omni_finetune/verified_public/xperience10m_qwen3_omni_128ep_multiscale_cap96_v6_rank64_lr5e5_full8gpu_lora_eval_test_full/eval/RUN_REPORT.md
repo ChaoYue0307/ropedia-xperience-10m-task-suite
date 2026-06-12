@@ -1,0 +1,12 @@
+# Qwen3-Omni LoRA Sharded Evaluation
+
+- Dataset: `<project>/results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset.jsonl`
+- Eval split: `test`
+- Expected eval samples: `4032`
+- Merged predictions: `4032`
+- Held-out episodes: `14`
+- Accuracy: `0.0437`
+- Macro-F1: `0.0029`
+- JSON validity: `0.9990`
+
+Artifacts include `metrics.json`, `predictions.csv`, `per_class_metrics.csv`, and `confusion_matrix.csv`.
