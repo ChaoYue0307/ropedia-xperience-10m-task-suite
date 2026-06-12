@@ -5,35 +5,25 @@ from __future__ import annotations
 
 import argparse
 import os
-import subprocess
 from pathlib import Path
 
 
-def run(cmd: list[str], env: dict[str, str] | None = None) -> None:
-    proc = subprocess.run(cmd, check=True, env=env)
-    if proc.returncode:
-        raise SystemExit(f"command failed: {' '.join(cmd)}")
+def upload_folder(repo_id: str, source: Path, token: str, private: bool, message: str) -> str:
+    try:
+        from huggingface_hub import HfApi
+    except ImportError as exc:
+        raise SystemExit("huggingface_hub is required for upload; install it in this environment") from exc
 
-
-def build_repo(repo_id: str, token: str, private: bool) -> None:
-    # `repo create` returns non-zero when repo already exists.
-    name = repo_id.split("/", 1)[1] if "/" in repo_id else repo_id
-    namespace = repo_id.split("/", 2)[0] if "/" in repo_id else None
-    cmd = [
-        "huggingface-cli",
-        "repo",
-        "create",
-        name,
-        "--type",
-        "model",
-        "--yes",
-    ]
-    if private:
-        cmd.append("--private")
-    if namespace:
-        cmd.extend(["--organization", namespace])
-    env = {**os.environ, "HF_TOKEN": token}
-    subprocess.run(cmd, check=False, env=env)
+    api = HfApi(token=token)
+    api.create_repo(repo_id=repo_id, repo_type="model", private=private, exist_ok=True)
+    result = api.upload_folder(
+        repo_id=repo_id,
+        repo_type="model",
+        folder_path=str(source),
+        path_in_repo=".",
+        commit_message=message,
+    )
+    return str(result)
 
 
 def main() -> int:
@@ -71,23 +61,9 @@ def main() -> int:
     if not source.is_dir():
         raise SystemExit(f"source directory does not exist: {source}")
 
-    build_repo(args.repo_id, token, args.private)
-    env = {**os.environ, "HF_TOKEN": token}
-    run(
-        [
-            "huggingface-cli",
-            "upload",
-            args.repo_id,
-            str(source),
-            ".",
-            "--commit-message",
-            args.message,
-            "--repo-type",
-            "model",
-        ],
-        env=env,
-    )
+    result = upload_folder(args.repo_id, source, token, args.private, args.message)
     print(f"Uploaded {source} -> https://huggingface.co/{args.repo_id}")
+    print(result)
     return 0
 
 

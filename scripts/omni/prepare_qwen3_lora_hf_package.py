@@ -106,7 +106,12 @@ def split_table(dataset: dict[str, Any], validation: dict[str, Any]) -> list[str
     return lines
 
 
-def render_readme(summary: dict[str, Any], base_model: str, repo_id: str) -> str:
+def render_readme(
+    summary: dict[str, Any],
+    adapter_config: dict[str, Any],
+    base_model: str,
+    repo_id: str,
+) -> str:
     training = summary.get("training", {})
     eval_payload = summary.get("eval", {})
     dataset = summary.get("dataset", {})
@@ -117,6 +122,9 @@ def render_readme(summary: dict[str, Any], base_model: str, repo_id: str) -> str
     train_run_id = summary.get("train_run_id", "")
     eval_run_id = summary.get("eval_run_id", "")
     dataset_run_id = summary.get("dataset_run_id", "")
+    lora_rank = adapter_config.get("r", "unknown")
+    lora_alpha = adapter_config.get("lora_alpha", "unknown")
+    lora_dropout = adapter_config.get("lora_dropout", "unknown")
     return "\n".join(
         [
             "---",
@@ -158,9 +166,9 @@ def render_readme(summary: dict[str, Any], base_model: str, repo_id: str) -> str
             "",
             f"- Base model: `{base_model}`",
             "- Adapter method: LoRA",
-            "- Rank: 16",
-            "- Alpha: 32",
-            "- Dropout: 0.05",
+            f"- Rank: `{lora_rank}`",
+            f"- Alpha: `{lora_alpha}`",
+            f"- Dropout: `{lora_dropout}`",
             "- Precision: bf16",
             "- Full-parameter fine-tuning: not included",
             "",
@@ -222,6 +230,10 @@ def main() -> int:
     summary = load_json(summary_path)
     if summary.get("backbone") != "qwen3_omni_lora":
         raise SystemExit(f"Verified summary is not a Qwen3 LoRA package: {summary_path}")
+    adapter_config_path = adapter_dir / "adapter_config.json"
+    if not adapter_config_path.is_file():
+        raise SystemExit(f"Adapter config does not exist: {adapter_config_path}")
+    adapter_config = load_json(adapter_config_path)
 
     output_dir.mkdir(parents=True, exist_ok=True)
     copied = []
@@ -245,7 +257,7 @@ def main() -> int:
     for src in safetensors:
         copied.append(copy_file(src, output_dir / src.name))
 
-    readme = render_readme(summary, args.base_model, args.repo_id)
+    readme = render_readme(summary, adapter_config, args.base_model, args.repo_id)
     (output_dir / "README.md").write_text(readme, encoding="utf-8")
     copied.append(
         {
@@ -263,6 +275,11 @@ def main() -> int:
         "verified_summary": str(summary_path),
         "output_dir": str(output_dir),
         "base_model": args.base_model,
+        "lora": {
+            "rank": adapter_config.get("r"),
+            "alpha": adapter_config.get("lora_alpha"),
+            "dropout": adapter_config.get("lora_dropout"),
+        },
         "dataset_run_id": summary.get("dataset_run_id"),
         "train_run_id": summary.get("train_run_id"),
         "eval_run_id": summary.get("eval_run_id"),

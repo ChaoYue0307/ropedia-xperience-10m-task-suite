@@ -314,6 +314,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--artifact-repo", default=DEFAULT_ARTIFACT_REPO)
     parser.add_argument("--model-repo", default=DEFAULT_MODEL_REPO)
     parser.add_argument("--token", default=os.environ.get("HF_TOKEN", "").strip())
+    parser.add_argument("--skip-space", action="store_true")
+    parser.add_argument("--skip-artifacts", action="store_true")
+    parser.add_argument("--skip-model", action="store_true")
     return parser.parse_args()
 
 
@@ -348,6 +351,19 @@ def upload_folder(
     ignore_patterns: list[str] | None = None,
 ):
     print(f"Uploading {folder} -> {repo_id}")
+    effective_repo_type = repo_type or "model"
+    effective_ignore_patterns = COMMON_IGNORE + (ignore_patterns or [])
+    if effective_repo_type != "space" and hasattr(api, "upload_large_folder"):
+        return api.upload_large_folder(
+            repo_id=repo_id,
+            repo_type=effective_repo_type,
+            folder_path=str(folder),
+            allow_patterns=allow_patterns,
+            ignore_patterns=effective_ignore_patterns,
+            num_workers=8,
+            print_report=True,
+            print_report_every=60,
+        )
     return api.upload_folder(
         repo_id=repo_id,
         repo_type=repo_type,
@@ -355,7 +371,7 @@ def upload_folder(
         commit_message=message,
         token=token,
         allow_patterns=allow_patterns,
-        ignore_patterns=COMMON_IGNORE + (ignore_patterns or []),
+        ignore_patterns=effective_ignore_patterns,
     )
 
 
@@ -458,50 +474,53 @@ def main() -> int:
     api.create_repo(artifact_repo, repo_type="dataset", exist_ok=True, token=token)
     api.create_repo(model_repo, repo_type=None, exist_ok=True, token=token)
 
-    upload_folder(
-        api,
-        token,
-        space_repo,
-        "space",
-        hf_root / "space",
-        "Publish Ropedia Xperience-10M task-suite Space",
-    )
-    for path_in_repo in STALE_SPACE_REMOTE_FILES:
-        delete_remote_file_if_present(api, token, space_repo, "space", path_in_repo)
-    upload_folder(
-        api,
-        token,
-        artifact_repo,
-        "dataset",
-        hf_root / "artifacts",
-        "Publish Ropedia Xperience-10M derived artifacts",
-        ignore_patterns=["**/*.pt", "**/*.npz"],
-    )
-    upload_allowlisted_artifact_binaries(api, token, artifact_repo, hf_root / "artifacts")
-    for path_in_repo in STALE_ARTIFACT_REMOTE_FILES:
-        delete_remote_file_if_present(api, token, artifact_repo, "dataset", path_in_repo)
-    for path_in_repo in STALE_ARTIFACT_REMOTE_FOLDERS:
-        delete_remote_folder_if_present(api, token, artifact_repo, "dataset", path_in_repo)
-    upload_folder(
-        api,
-        token,
-        model_repo,
-        None,
-        hf_root / "model",
-        "Publish Ropedia Xperience-10M task baseline cards",
-        ignore_patterns=["**/*.pt", "**/*.npz"],
-    )
-    for path_in_repo in STALE_MODEL_REMOTE_FILES:
-        delete_remote_file_if_present(api, token, model_repo, "model", path_in_repo)
-    upload_folder(
-        api,
-        token,
-        model_repo,
-        None,
-        hf_root / "model",
-        "Publish Ropedia Xperience-10M model binaries",
-        allow_patterns=["**/*.npz", "**/*.pt"],
-    )
+    if not args.skip_space:
+        upload_folder(
+            api,
+            token,
+            space_repo,
+            "space",
+            hf_root / "space",
+            "Publish Ropedia Xperience-10M task-suite Space",
+        )
+        for path_in_repo in STALE_SPACE_REMOTE_FILES:
+            delete_remote_file_if_present(api, token, space_repo, "space", path_in_repo)
+    if not args.skip_artifacts:
+        upload_folder(
+            api,
+            token,
+            artifact_repo,
+            "dataset",
+            hf_root / "artifacts",
+            "Publish Ropedia Xperience-10M derived artifacts",
+            ignore_patterns=["**/*.pt", "**/*.npz"],
+        )
+        upload_allowlisted_artifact_binaries(api, token, artifact_repo, hf_root / "artifacts")
+        for path_in_repo in STALE_ARTIFACT_REMOTE_FILES:
+            delete_remote_file_if_present(api, token, artifact_repo, "dataset", path_in_repo)
+        for path_in_repo in STALE_ARTIFACT_REMOTE_FOLDERS:
+            delete_remote_folder_if_present(api, token, artifact_repo, "dataset", path_in_repo)
+    if not args.skip_model:
+        upload_folder(
+            api,
+            token,
+            model_repo,
+            None,
+            hf_root / "model",
+            "Publish Ropedia Xperience-10M task baseline cards",
+            ignore_patterns=["**/*.pt", "**/*.npz"],
+        )
+        for path_in_repo in STALE_MODEL_REMOTE_FILES:
+            delete_remote_file_if_present(api, token, model_repo, "model", path_in_repo)
+        upload_folder(
+            api,
+            token,
+            model_repo,
+            None,
+            hf_root / "model",
+            "Publish Ropedia Xperience-10M model binaries",
+            allow_patterns=["**/*.npz", "**/*.pt"],
+        )
 
     try:
         collection = api.create_collection(
