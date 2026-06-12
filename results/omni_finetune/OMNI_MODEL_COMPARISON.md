@@ -1,6 +1,6 @@
 # Omni Model Comparison
 
-Generated: `2026-06-12T16:51:33+00:00`
+Generated: `2026-06-12T18:14:48+00:00`
 
 Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and the two Cosmos3 targets answer different questions: Nano future-window retrieval versus Super structured JSON Reasoner evaluation.
 
@@ -52,6 +52,7 @@ The one-episode Qwen entry is only a sensor-adapter smoke test with Qwen3 weight
 | full-param gate | passed | Full-Parameter 64-Step Pilot | 512 windows/samples | full_parameter_gate=passed, observed_train_steps=64, final_step_loss=0.0112, epoch_train_loss=0.4434, checkpoint_saved=False | `results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot64_preemptible_8gpu_20260609/fullparam_pilot64_summary.json` |
 | full-param gate | preempted_for_qwen_v5_handoff | Full-Parameter 128-Step Opportunistic Pilot | 1024 windows/samples | full_parameter_gate=preempted_for_qwen_v5_handoff, observed_train_steps=0, final_step_loss=, epoch_train_loss=, checkpoint_saved=False | `results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot128_preemptible_8gpu_20260609/fullparam_pilot128_summary.json` |
 | full-param gate | passed | Full-Parameter 128-Step Post-Qwen-v5 Pilot | 1024 windows/samples | full_parameter_gate=passed, observed_train_steps=128, final_step_loss=0.0137, epoch_train_loss=0.2158, checkpoint_saved=False | `results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot128_after_qwen_v5_preemptible_8gpu_20260609/training_metadata.json` |
+| full-param gate | passed | Full-Parameter 256-Step Post-Qwen-v6 Pilot | 2048 windows/samples | full_parameter_gate=passed, observed_train_steps=256, final_step_loss=0.0096, epoch_train_loss=0.1158, checkpoint_saved=False | `results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot256_after_qwen_v6_preemptible_8gpu_20260611/training_metadata.json` |
 | 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.8750, action_macro_f1=0.0027, transition_accuracy=0.8504, contact_accuracy=0.6451 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/verified_result_summary.json` |
 | 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.8527, action_macro_f1=0.0021, transition_accuracy=0.8281, contact_accuracy=0.6518 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full/verified_result_summary.json` |
 | 128 episode | verified current | Qwen3-Omni LoRA | 119 episodes, 34269 windows/samples, 4032 eval | json_validity_rate=1.0000, action_macro_f1=0.0023, transition_accuracy=0.9908, contact_accuracy=0.7865 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full/verified_result_summary.json` |

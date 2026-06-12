@@ -1,6 +1,6 @@
 # Qwen3-Omni Full-Parameter Feasibility Gates
 
-Generated: `2026-06-12T16:50:05+00:00`
+Generated: `2026-06-12T18:14:48+00:00`
 
 The 2026-06-09 gates prove that Qwen3-Omni full-parameter FSDP can load, prepare, run backward/optimizer steps, and complete guarded pilots up to 128 optimizer steps on an 8-GPU remote worker. They do not prove a production full-parameter fine-tune, and they intentionally save no full checkpoints or public weights.
 
@@ -8,11 +8,11 @@ The 2026-06-09 gates prove that Qwen3-Omni full-parameter FSDP can load, prepare
 
 - Status: `pass`
 - Decision: `full_parameter_feasible_for_guarded_short_runs_not_promoted`
-- Passed runs: `5`
+- Passed runs: `6`
 - Preempted runs: `1`
 - Review/missing runs: `0`
-- Completed full-parameter optimizer steps: `233`
-- Longest passed run: `xperience10m_qwen3_omni_128ep_fullparam_pilot128_after_qwen_v5_preemptible_8gpu_20260609` (128 steps)
+- Completed full-parameter optimizer steps: `489`
+- Longest passed run: `xperience10m_qwen3_omni_128ep_fullparam_pilot256_after_qwen_v6_preemptible_8gpu_20260611` (256 steps)
 - Checkpoint saved: `False`
 
 ## Runs
@@ -25,6 +25,7 @@ The 2026-06-09 gates prove that Qwen3-Omni full-parameter FSDP can load, prepare
 | Full-Parameter 64-Step Pilot | passed | 64 | 512 | 0.0112 | 0.4434 | no weights/checkpoints | `results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot64_preemptible_8gpu_20260609/fullparam_pilot64_summary.json` |
 | Full-Parameter 128-Step Opportunistic Pilot | preempted_for_qwen_v5_handoff | 0 | 1024 |  |  | no weights/checkpoints | `results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot128_preemptible_8gpu_20260609/fullparam_pilot128_summary.json` |
 | Full-Parameter 128-Step Post-Qwen-v5 Pilot | passed | 128 | 1024 | 0.0137 | 0.2158 | no weights/checkpoints | `results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot128_after_qwen_v5_preemptible_8gpu_20260609/training_metadata.json` |
+| Full-Parameter 256-Step Post-Qwen-v6 Pilot | passed | 256 | 2048 | 0.0096 | 0.1158 | no weights/checkpoints | `results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot256_after_qwen_v6_preemptible_8gpu_20260611/training_metadata.json` |
 
 ## Publication Policy
 
