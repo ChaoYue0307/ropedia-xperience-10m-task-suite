@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-13T17:46:38+00:00",
+  "generated_at_utc": "2026-06-13T18:14:42+00:00",
   "status": "pass",
   "artifact_count": 162,
   "missing": [],
@@ -263,8 +263,8 @@
       "surface": "repo_hf",
       "shows": "Summarizes the 2026-06-09 full-parameter FSDP feasibility gates: 1/8/32/64-step guarded runs passed, the 128-step opportunistic pilot was preempted for Qwen v5 handoff, and no full checkpoints or weights are published.",
       "exists": true,
-      "bytes": 3253,
-      "sha256": "b25f1d8cde814207b4c3234bf07140cf99a0ede29af3f53dbc146aab464e8a9b"
+      "bytes": 3251,
+      "sha256": "47ed28deb8fda3c7a0c3b0df9e39211e42e4d5d50cac26af5519459e637f56db"
     },
     {
       "id": "qwen3_full_parameter_gates_json",
@@ -274,8 +274,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable summary of full-parameter feasibility evidence and publication policy for website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 12183,
-      "sha256": "d051608d3428645778f721e538af93566ab772871a825ac12825dd5f18e94a95"
+      "bytes": 12181,
+      "sha256": "265bbd21617547445a9a93eaf2d2d5256bd2c287affadc80ece50538f0ad4371"
     },
     {
       "id": "qwen3_v5_v6_comparison",
@@ -307,8 +307,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the full-parameter feasibility-gate Markdown and JSON summaries from the run-local evidence files.",
       "exists": true,
-      "bytes": 15876,
-      "sha256": "2af61b320744bf367bd6f477371f5e1b24f5201aecfa431f250f6a976f2de8a9"
+      "bytes": 16013,
+      "sha256": "da01bb1a547259ea471e04df23d8f3d0544f4d7cfffbfd76b35344270beb1797"
     },
     {
       "id": "qwen3_full_parameter_post_verified_deferrer",
@@ -440,7 +440,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "0d0d381f726c1e3787fb3fb15b6fb8879512c26fa0dc06fb943e1a239b0063dd"
+      "sha256": "b277329512546c334ce68deda9d7d2c8f6e5df3e04a28b5a2fcc6fd7aa5036dd"
     },
     {
       "id": "source_alignment_validator",
@@ -876,7 +876,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 543559,
+      "bytes": 548183,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1142,7 +1142,7 @@
       "shows": "Reader-facing comparison of the single-episode task suite, 128-episode aligned baselines, Qwen3-Omni packages, and Cosmos3 future-window branch.",
       "exists": true,
       "bytes": 15999,
-      "sha256": "d5a7118a878b202adbc50e3436bbe134e5de139f2a9e97176efe9ecc0f446088"
+      "sha256": "30053bdea6c417ab02f98d99d8e80cd7e304bc3a9dfacbf599139d3221c02c8f"
     },
     {
       "id": "omni_model_comparison_json",
@@ -1153,7 +1153,7 @@
       "shows": "Machine-readable comparison of the current result versions, per-task aligned baselines, verified Qwen3 packages, and Cosmos3 package.",
       "exists": true,
       "bytes": 81866,
-      "sha256": "191125098a66ecccfa27395c0f9776616f74b4bf8fb19f16b75cda7ed06cb4b2"
+      "sha256": "1c9d4ba370661b0e0cb7104e9a51abdc3fe91a440ae86e748b10b719d1d613cc"
     },
     {
       "id": "cosmos3_nano_verified_summary",

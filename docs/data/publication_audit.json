@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-13T17:46:58+00:00",
+  "generated_at_utc": "2026-06-13T18:15:14+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -198,8 +198,8 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 700,
-      "text_file_count": 571,
+      "file_count": 703,
+      "text_file_count": 574,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978
@@ -209,8 +209,8 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 2581,
-      "text_file_count": 738,
+      "file_count": 1745,
+      "text_file_count": 742,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978
@@ -220,8 +220,8 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 3239,
-      "text_file_count": 893,
+      "file_count": 2171,
+      "text_file_count": 898,
       "largest_file": {
         "path": "pytorch_model.bin",
         "bytes": 93495480

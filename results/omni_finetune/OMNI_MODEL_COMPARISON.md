@@ -1,6 +1,6 @@
 # Omni Model Comparison
 
-Generated: `2026-06-13T17:41:35+00:00`
+Generated: `2026-06-13T18:14:42+00:00`
 
 Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and the two Cosmos3 targets answer different questions: Nano future-window retrieval versus Super structured JSON Reasoner evaluation.
 
