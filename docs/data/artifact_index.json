@@ -1,14 +1,15 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-13T18:14:42+00:00",
+  "generated_at_utc": "2026-06-13T21:57:03+00:00",
   "status": "pass",
-  "artifact_count": 162,
+  "artifact_count": 164,
   "missing": [],
   "by_kind": {
     "project_path": 14,
     "scaleup_contract": 7,
     "scaleup_status": 38,
     "publication_workflow": 5,
+    "reproducibility": 4,
     "project_scope": 1,
     "source_alignment": 5,
     "evaluation_protocol": 3,
@@ -17,7 +18,6 @@
     "website_data": 3,
     "visual_evidence": 7,
     "quality_gate": 12,
-    "reproducibility": 2,
     "publication_package_check": 1,
     "scale_up_status": 1,
     "mirror_parity": 1,
@@ -333,6 +333,28 @@
       "sha256": "93e7b0edba5cb37621171706df5e62bb2ecc3f4e6725fc78d24634aca9ac4175"
     },
     {
+      "id": "qwen3_private_gpu_repro_smoke",
+      "title": "Qwen3 private staged-GPU reproduction smoke",
+      "path": "scripts/omni/run_private_gpu_qwen3_v6_repro_smoke.sh",
+      "kind": "reproducibility",
+      "surface": "repo_hf",
+      "shows": "Runs the owner-side Qwen3-Omni v6 one-sample reproduction smoke from a private staged model, adapter, JSONL, and exported media cache.",
+      "exists": true,
+      "bytes": 2514,
+      "sha256": "65c692efa70e4440041bb4c1b7da2d92eded6b2925a22889caa1a18621e59247"
+    },
+    {
+      "id": "qwen3_video_feature_compat_patch",
+      "title": "Qwen3 video-feature compatibility patch checker",
+      "path": "scripts/omni/patch_qwen3_omni_video_features.py",
+      "kind": "reproducibility",
+      "surface": "repo_hf",
+      "shows": "Checks and narrowly repairs the installed Qwen3-Omni video-feature branch so private staged-GPU reproduction uses the verified source-compatible behavior.",
+      "exists": true,
+      "bytes": 4435,
+      "sha256": "012b540f90f05772cd1c0d9745a1f8e47fc0cd45de383ed0f0ca956b7670a8f7"
+    },
+    {
       "id": "additional_development_directions",
       "title": "Additional development directions",
       "path": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
@@ -440,7 +462,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "b277329512546c334ce68deda9d7d2c8f6e5df3e04a28b5a2fcc6fd7aa5036dd"
+      "sha256": "b7f30209e242dd07a0a5de5154a0c8caf3d8988995591da2bd35ba5bce0aa4b8"
     },
     {
       "id": "source_alignment_validator",
@@ -693,7 +715,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8097,
-      "sha256": "1cdc8b4767b3ca88eada654a3117aa2de253fea7af62573b080088e8f1b311bd"
+      "sha256": "e2a017b06001e665b9332d37b1f6dcd754d64acc4cf2ac2b2b1d1c09ac869897"
     },
     {
       "id": "public_surface_qa",
@@ -818,8 +840,8 @@
       "surface": "repo_hf",
       "shows": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
       "exists": true,
-      "bytes": 6523,
-      "sha256": "fd6a1af61a8767d45bc5f197330e6bbf4ee45d9eda8cea7be21f9c1b8c600c9d"
+      "bytes": 9016,
+      "sha256": "765cd4e45e0844534839cc9bcfe473613fa76c2aa073c74ccb08ac15a51da197"
     },
     {
       "id": "reproducibility_matrix",
@@ -829,8 +851,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable reproduction steps with expected artifacts and public boundaries.",
       "exists": true,
-      "bytes": 5294,
-      "sha256": "b91da81ad855de974037ba24bd8b1d132be840b8b50004d9c137f4b5064ad18d"
+      "bytes": 6123,
+      "sha256": "1accf4524762545e52e50f604f2cd7ec861da5d3482b8a337c97a064ef7a1203"
     },
     {
       "id": "artifact_index_builder",
@@ -840,8 +862,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 42809,
-      "sha256": "c03d1b1367ad191fea0be3c634fddf8ee6fdc2118bf17396920c16cc288c4ef0"
+      "bytes": 43663,
+      "sha256": "9c5eb1d7d973f961639dfe66bc15387fa91ead1f5d29165a61f7ed291899f71f"
     },
     {
       "id": "publication_audit",
@@ -876,7 +898,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 548183,
+      "bytes": 548190,
       "hash_policy": "existence_and_size_only"
     },
     {

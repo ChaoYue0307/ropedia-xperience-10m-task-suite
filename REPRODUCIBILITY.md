@@ -14,7 +14,8 @@ outside the current public data scope.
 | Neural MLP heads | Yes, when `torch` is installed | Compact task heads only, not a foundation model. |
 | Website figures and charts | Yes | Generated from committed metrics and sample thumbnails. |
 | Public bundle contents | Yes | Covers public repo and prepared HF bundles. |
-| Multi-episode Qwen3-Omni LoRA pilot | Yes, as a public-safe verified result package | The selected 96/16/16 episode split produced a validation-monitored diagnostic held-out result package with 3,808 exported windows, 512 validation windows, 448 test predictions, and weak model-quality metrics that motivate the next structured-output improvement pass. |
+| Multi-episode Qwen3-Omni LoRA pilot | Yes, as a public-safe verified result package | The selected 96/16/16 episode split produced verified held-out packages; the latest v6 package records 34,269 exported multiscale windows and 4,032 held-out predictions. Public readers can inspect the package, but rerunning requires gated Xperience data and base-model weights. |
+| Owner-side staged Qwen3-Omni v6 reproduction | Yes, on the private staged GPU host only | The staged host has the exported media cache, path-rewritten JSONL, Qwen3-Omni base-model cache, v6 adapter, HF mirrors, and a one-sample smoke with `exit_code=0` on 2026-06-14. |
 
 ## Environment
 
@@ -90,6 +91,59 @@ python scripts/build_artifact_index.py
 python scripts/validate_mirror_parity.py
 python scripts/validate_publication_package.py
 ```
+
+## Owner-Side Staged Qwen3-Omni v6 Reproduction
+
+This section is for the private staged GPU host, not for public reruns from the
+GitHub repo alone. It preserves the verified result path after the original
+training host is released.
+
+Expected private staging layout:
+
+| Item | Staged path |
+| --- | --- |
+| Staging root | `/mnt/kgc/chaoyue/ropedia-h20-side` |
+| Repo | `<staged-repo-root>` |
+| Qwen3-Omni base model | `/mnt/kgc/chaoyue/ropedia-h20-side/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct` |
+| v6 adapter | `checkpoints/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora/adapter_lora` |
+| Staged eval JSONL | `results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl` |
+| Private handoff manifest | `/mnt/kgc/chaoyue/ropedia-h20-side/STAGING_MANIFEST_20260614.md` |
+
+The staged JSONL has the same 34,269 rows as the original export JSONL, with
+exported media paths rewritten from the training-host repo root to the private
+staging root. Raw upstream Xperience-10M source files are not required for this
+train/eval cache reproduction and were not copied because the selected raw
+source tree is about 278 GB.
+
+Run this from the staged repo:
+
+```bash
+cd <staged-repo-root>
+CUDA_VISIBLE_DEVICES=0,1,2,3 \
+RUN_ID=a100_repro_qwen_v6_eval_smoke1_manual \
+SAMPLE_LIMIT=1 \
+MAX_NEW_TOKENS=1 \
+scripts/omni/run_private_gpu_qwen3_v6_repro_smoke.sh
+```
+
+The launcher first applies/checks the narrow Transformers Qwen3-Omni
+video-feature compatibility patch. The expected compatible installed source
+hash is `da5feea4afc11767db3ca7eedb85ac129c66605643dadc6272c4288b03be7d25`;
+the known incompatible pre-patch hash is
+`2aa5752c32965dbaeee230a016afbbbb30d459a46a12c88c1d6f712e12ba95ad`.
+
+Verified staged-GPU smoke evidence from 2026-06-14:
+
+| Field | Value |
+| --- | --- |
+| Run id | `a100_repro_qwen_v6_eval_smoke1_h20compat_tok1_20260614` |
+| Exit code | `0` |
+| Samples | `1` |
+| JSON validity | `1.0` |
+| Transition accuracy | `1.0` |
+| Contact accuracy | `1.0` |
+| Object micro-F1 | `0.28571428571428575` |
+| Metrics path | `results/omni_finetune/a100_repro_qwen_v6_eval_smoke1_h20compat_tok1_20260614/metrics.json` |
 
 ## Expected Public Outputs
 
