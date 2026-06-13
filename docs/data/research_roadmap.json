@@ -1,7 +1,7 @@
 {
     "title": "Ropedia Xperience-10M Research Roadmap",
     "summary": "Staged path from the public-sample task lab to verified Qwen3-Omni, Cosmos3-Nano, and Cosmos3-Super diagnostics, same-split 128-episode baseline alignment, a no-new-episode 128-suite enhancement pack, action/subtask error analysis, world/policy branches, and a future Xperience-native embodied foundation model.",
-    "current_decision_point": "Push the current selected 128 episodes harder before requesting more storage: keep the public-sample task suite as the development harness, use the final verified selected-episode Qwen3-Omni v4 diagnostic result and same-split 128-episode simple/NN metadata baselines as structured-task references, read Cosmos3-Nano and Cosmos3-Super Forward-Dynamics LoRA as separate world-model results, export multiscale_20s10_40s20_80s40 windows plus hierarchical action/subtask targets, and defer policy-model experiments until robot-compatible targets are implemented. The Xperience Embodied Foundation Model is a later full-corpus pretraining goal, not a current result.",
+    "current_decision_point": "Push the current selected 128 episodes harder before requesting more storage: keep the public-sample task suite as the development harness, use the latest verified selected-episode Qwen3-Omni v6 diagnostic branch plus the pinned v5 row as structured-task references, read Cosmos3-Nano and Cosmos3-Super Forward-Dynamics LoRA as separate world-model results, continue with hierarchical action/subtask targets and label-normalized scoring, and defer policy-model experiments until robot-compatible targets are implemented. The Xperience Embodied Foundation Model is a later full-corpus pretraining goal, not a current result.",
     "additional_development_directions": {
         "source_document": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
         "source_json": "docs/data/additional_development_directions.json",
@@ -52,8 +52,8 @@
         },
         {
             "id": "qwen3_omni_lora_diagnostic_pilot",
-            "name": "Qwen3-Omni LoRA Final Diagnostic Result",
-            "status": "verified_baseline",
+            "name": "Qwen3-Omni LoRA Latest Diagnostic Branch",
+            "status": "verified_latest_branch",
             "entry_condition": "Selected episodes are prepared locally with no train/test episode leakage.",
             "deliverables": [
                 "dataset JSONL/media manifests",
@@ -64,10 +64,13 @@
                 "metrics",
                 "confusion matrices",
                 "run report",
+                "v5/v6 comparison",
                 "public LoRA adapter repo"
             ],
             "completion_evidence": [
                 "docs/data/omni_finetune_verified_result.json",
+                "docs/data/qwen3_v5_v6_comparison.json",
+                "results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md",
                 "results/omni_finetune/verified_public/",
                 "dataset_manifest.json",
                 "training_metadata.json",

@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Current Result Versions and Model Groups",
-  "generated_at_utc": "2026-06-12T18:14:48+00:00",
+  "generated_at_utc": "2026-06-13T17:41:35+00:00",
   "status": "pass",
   "version_count": 3,
   "model_group_count": 5,
@@ -588,8 +588,8 @@
               "global_step": 3204
             }
           ],
-          "is_current": true,
-          "weights_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
+          "is_current": false,
+          "weights_repository": "historical diagnostic package; keep separate from the final 128-episode adapter repo"
         },
         {
           "id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
@@ -640,8 +640,8 @@
               "global_step": 6408
             }
           ],
-          "is_current": false,
-          "weights_repository": "historical diagnostic package; keep separate from the final 128-episode adapter repo"
+          "is_current": true,
+          "weights_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
         },
         {
           "id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
@@ -1202,8 +1202,8 @@
               "global_step": 3204
             }
           ],
-          "is_current": true,
-          "weights_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
+          "is_current": false,
+          "weights_repository": "historical diagnostic package; keep separate from the final 128-episode adapter repo"
         },
         {
           "id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
@@ -1254,8 +1254,8 @@
               "global_step": 6408
             }
           ],
-          "is_current": false,
-          "weights_repository": "historical diagnostic package; keep separate from the final 128-episode adapter repo"
+          "is_current": true,
+          "weights_repository": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
         },
         {
           "id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
@@ -1753,6 +1753,7 @@
     "Cosmos3-Super now has both a 128-episode base-weight Reasoner evaluation on the JSON task and a fine-tuned forward-dynamics LoRA branch over camera-pose proxy targets."
   ],
   "pending": [
-    "Use the verified Qwen3 v5 dense multiscale full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison."
+    "Use the verified Qwen3 v6 rank64/lr5e-5 dense multiscale full-eval package as the latest current Qwen row; the v5 release tag remains pinned as the previous verified release.",
+    "Read results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md before claiming v6 is globally better than v5, because v6 improves action macro-F1 and contact accuracy but regresses subtask, next-action, object micro-F1, and JSON validity slightly."
   ]
 }

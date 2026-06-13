@@ -194,6 +194,22 @@ ARTIFACTS = [
         "shows": "Machine-readable summary of full-parameter feasibility evidence and publication policy for website and Hugging Face mirrors.",
     },
     {
+        "id": "qwen3_v5_v6_comparison",
+        "title": "Qwen3-Omni v5/v6 comparison",
+        "path": "results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md",
+        "kind": "scaleup_status",
+        "surface": "repo_hf",
+        "shows": "Reader-facing comparison of the verified Qwen3 v5 release row and the latest verified v6 row, including metric deltas and release-tag policy.",
+    },
+    {
+        "id": "qwen3_v5_v6_comparison_json",
+        "title": "Qwen3-Omni v5/v6 comparison JSON",
+        "path": "docs/data/qwen3_v5_v6_comparison.json",
+        "kind": "scaleup_status",
+        "surface": "website_hf",
+        "shows": "Machine-readable v5/v6 metric deltas and publication recommendation for website and Hugging Face mirrors.",
+    },
+    {
         "id": "qwen3_full_parameter_gates_builder",
         "title": "Qwen3-Omni full-parameter gate summary builder",
         "path": "scripts/omni/build_qwen3_full_parameter_gate_summary.py",

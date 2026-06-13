@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-12T18:14:52+00:00",
+  "generated_at_utc": "2026-06-13T17:46:49+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
     "local_references": 142,
     "external_reference_count": 111,
-    "json_files": 37,
+    "json_files": 38,
     "image_assets_referenced": 22,
     "failure_count": 0
   },
@@ -75,7 +75,7 @@
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
       "overview_index": 67412,
-      "evidence_index": 93026
+      "evidence_index": 93059
     },
     {
       "name": "project_status_links_json",
@@ -137,7 +137,7 @@
       "statuses": [
         "implemented",
         "implemented_for_first_pilot",
-        "verified_baseline",
+        "verified_latest_branch",
         "verified_companion_result",
         "current",
         "active_next_step",
@@ -154,8 +154,8 @@
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
       "overview_index": 67412,
-      "protocol_index": 89208,
-      "evidence_index": 93026
+      "protocol_index": 89241,
+      "evidence_index": 93059
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -253,7 +253,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 87230,
+      "bytes": 88913,
       "top_level_type": "dict"
     },
     {
@@ -303,12 +303,12 @@
     },
     {
       "path": "data/omni_finetune_verified_result.json",
-      "bytes": 4431,
+      "bytes": 4325,
       "top_level_type": "dict"
     },
     {
       "path": "data/omni_model_comparison.json",
-      "bytes": 81593,
+      "bytes": 81866,
       "top_level_type": "dict"
     },
     {
@@ -323,12 +323,12 @@
     },
     {
       "path": "data/project_packet.json",
-      "bytes": 10496,
+      "bytes": 10597,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_status.json",
-      "bytes": 23198,
+      "bytes": 23535,
       "top_level_type": "dict"
     },
     {
@@ -349,6 +349,11 @@
     {
       "path": "data/qwen3_full_parameter_gates.json",
       "bytes": 12183,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/qwen3_v5_v6_comparison.json",
+      "bytes": 2814,
       "top_level_type": "dict"
     },
     {
@@ -373,12 +378,12 @@
     },
     {
       "path": "data/research_roadmap.json",
-      "bytes": 13313,
+      "bytes": 13450,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_roadmap_interactive.json",
-      "bytes": 145083,
+      "bytes": 145234,
       "top_level_type": "dict"
     },
     {
@@ -388,7 +393,7 @@
     },
     {
       "path": "data/scope_claims_audit.json",
-      "bytes": 21325,
+      "bytes": 21795,
       "top_level_type": "dict"
     },
     {
@@ -403,7 +408,7 @@
     },
     {
       "path": "data/summary_metrics.json",
-      "bytes": 27604,
+      "bytes": 27807,
       "top_level_type": "dict"
     },
     {
@@ -423,7 +428,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 15654,
+      "bytes": 15774,
       "top_level_type": "dict"
     },
     {

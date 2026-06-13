@@ -1,98 +1,96 @@
 {
-    "title": "Verified Qwen3-Omni LoRA 128-Episode Held-Out Result",
-    "status": "verified_full_128_episode_diagnostic_result",
-    "status_date": "2026-06-08",
-    "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
-    "adapter": "Qwen3-Omni LoRA",
-    "dataset": "Ropedia Xperience-10M selected 128-episode pilot",
-    "split_policy": {
-        "unit": "episode",
-        "selected_episode_counts": {
-            "test": 16,
-            "train": 96,
-            "val": 16
-        },
-        "exported_window_counts": {
-            "train": 2848,
-            "val": 512,
-            "test": 448
-        },
-        "exported_episode_counts": {
-            "train": 89,
-            "val": 16,
-            "test": 14
-        },
-        "skipped_selected_episodes": 9,
-        "leakage_policy": "Train, validation, and test are separated by episode/session; test windows are used only for held-out evaluation."
+  "title": "Verified Qwen3-Omni LoRA 128-Episode Held-Out Result",
+  "status": "verified_latest_qwen3_v6_diagnostic_result",
+  "status_date": "2026-06-14",
+  "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
+  "adapter": "Qwen3-Omni LoRA",
+  "dataset": "Ropedia Xperience-10M selected 128-episode pilot",
+  "split_policy": {
+    "unit": "episode",
+    "selected_episode_counts": {
+      "train": 96,
+      "val": 16,
+      "test": 16
     },
-    "training": {
-        "num_processes": 8,
-        "epochs": 4,
-        "lora_rank": 16,
-        "lora_alpha": 32,
-        "lora_dropout": 0.05,
-        "num_train_samples": 2848,
-        "num_val_samples": 512,
-        "history": [
-            {
-                "epoch": 1,
-                "train_loss": 0.40796751019628613,
-                "val_loss": 0.03258896619081497,
-                "global_step": 356
-            },
-            {
-                "epoch": 2,
-                "train_loss": 0.027628723937453012,
-                "val_loss": 0.027754632756114006,
-                "global_step": 712
-            },
-            {
-                "epoch": 3,
-                "train_loss": 0.02446955946807781,
-                "val_loss": 0.026343274861574173,
-                "global_step": 1068
-            },
-            {
-                "epoch": 4,
-                "train_loss": 0.022728607045444712,
-                "val_loss": 0.025629229843616486,
-                "global_step": 1424
-            }
-        ],
-        "loss": "answer-token cross entropy over supervised JSON tokens",
-        "note": "This current Qwen3-Omni LoRA result is the v4 four-epoch full held-out evaluation on the selected 96/16/16 episode setup."
+    "exported_window_counts": {
+      "train": 25629,
+      "val": 4608,
+      "test": 4032
     },
-    "evaluation": {
-        "split": "test",
-        "num_samples": 448,
-        "held_out_episode_count": 14,
-        "json_validity_rate": 1.0,
-        "action_macro_f1": 0.0018678269676001454,
-        "subtask_accuracy": 0.0,
-        "transition_accuracy": 0.9732142857142857,
-        "next_action_accuracy": 0.033482142857142856,
-        "contact_accuracy": 0.7299107142857143,
-        "object_micro_f1": 0.31099781500364165,
-        "quality_target": {
-            "json_validity_rate": 0.98,
-            "status": "met"
-        },
-        "previous_strict_label_v3_action_macro_f1": 0.0021983997167007384,
-        "previous_structured_json_v2_json_validity_rate": 0.9977678571428571
+    "exported_episode_counts": {
+      "train": 89,
+      "val": 16,
+      "test": 14
     },
-    "interpretation": "This is the current verified Qwen3-Omni LoRA diagnostic result for the selected 128-episode setup. The v4 four-epoch package reaches 100% JSON validity and slightly improves next-action, contact, and object metrics versus the prior strict-label v3 package, while action and subtask classification remain weak on held-out episodes. Treat it as a diagnostic baseline and error-analysis source, not as a strong Xperience-10M action recognizer.",
-    "public_package": {
-        "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full",
-        "audit_status": "pass",
-        "contains_raw_xperience10m_data": false,
-        "contains_qwen_base_weights": false,
-        "contains_lora_weights": false,
-        "adapter_weights_repo": "cy0307/ropedia-qwen3-omni-lora-128ep"
+    "skipped_selected_episodes": 9,
+    "leakage_policy": "Train, validation, and test are separated by episode/session; test windows are used only for held-out evaluation."
+  },
+  "training": {
+    "num_processes": 8,
+    "epochs": 2,
+    "lora_rank": 64,
+    "lora_alpha": 128,
+    "lora_dropout": 0.05,
+    "learning_rate": 0.00005,
+    "num_train_samples": 25629,
+    "num_val_samples": 2048,
+    "history": [
+      {
+        "epoch": 1,
+        "train_loss": 0.05208605339353295,
+        "val_loss": 0.026512427255511284,
+        "global_step": 3204
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.013760763933660042,
+        "val_loss": 0.032345958054065704,
+        "global_step": 6408
+      }
+    ],
+    "loss": "answer-token cross entropy over supervised JSON tokens",
+    "note": "This current Qwen3-Omni LoRA result is the v6 rank64/lr5e-5 dense multiscale held-out evaluation on the selected 96/16/16 episode setup."
+  },
+  "evaluation": {
+    "split": "test",
+    "num_samples": 4032,
+    "held_out_episode_count": 14,
+    "json_validity_rate": 0.9990079365079365,
+    "action_macro_f1": 0.0028830723979596335,
+    "subtask_accuracy": 0.0037313432835820895,
+    "transition_accuracy": 0.9898313492063492,
+    "next_action_accuracy": 0.04305335446381405,
+    "contact_accuracy": 0.8177083333333334,
+    "object_micro_f1": 0.3064982378331287,
+    "quality_target": {
+      "json_validity_rate": 0.98,
+      "status": "met"
     },
-    "required_next_steps": [
-        "Use the v4 predictions for action/subtask error analysis, unseen-label debugging, and hierarchical action-family scoring.",
-        "Use TASK_SUITE_ENHANCEMENT_128.md and docs/data/task_suite_enhancement_128.json for the no-new-episode suite push before requesting more storage.",
-        "Keep the existing Qwen LoRA adapter repository as the weight-bearing artifact and publish future Qwen v5 runs as separate verified packages.",
-        "Use the verified Cosmos3-Super Forward-Dynamics LoRA package as a separate world-model branch: it updates adapter weights over camera-pose proxy future-vision-velocity targets, not Qwen-style JSON action labels."
-    ]
+    "previous_v5_json_validity_rate": 1.0,
+    "previous_v5_action_macro_f1": 0.002289711036077459,
+    "previous_v5_subtask_accuracy": 0.011194029850746268,
+    "previous_v5_next_action_accuracy": 0.053618594823032224,
+    "previous_v5_contact_accuracy": 0.7864583333333334,
+    "previous_v5_object_micro_f1": 0.31614599936244814
+  },
+  "interpretation": "This is the latest verified Qwen3-Omni LoRA diagnostic result for the selected 128-episode setup. The v6 rank64/lr5e-5 package keeps JSON validity above the 98% target and improves action macro-F1 and contact accuracy versus the pinned v5 release row, but slightly regresses JSON validity, subtask accuracy, next-action accuracy, transition accuracy, and object micro-F1. Treat it as the latest diagnostic branch, not as a globally stronger replacement for v5.",
+  "public_package": {
+    "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+    "audit_status": "pass",
+    "contains_raw_xperience10m_data": false,
+    "contains_qwen_base_weights": false,
+    "contains_lora_weights": false,
+    "adapter_weights_repo": "cy0307/ropedia-qwen3-omni-lora-128ep"
+  },
+  "release_policy": {
+    "latest_verified_qwen_row": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+    "pinned_release_tag": "ropedia-xperience-10m-v5",
+    "pinned_release_reason": "v5 remains the prior stable release tag; v6 is published on main/HF as the latest verified branch and can receive a separate v6 release tag."
+  },
+  "required_next_steps": [
+    "Use results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md before deciding whether v6 should become a formal release tag.",
+    "Use the v6 predictions for action/contact error analysis, and compare v5 for subtask, next-action, and object regressions.",
+    "Keep full-parameter Qwen runs as feasibility gates until there is a storage plan for checkpoints or mergeable full-weight deltas.",
+    "Use the verified Cosmos3-Super Forward-Dynamics LoRA package as a separate world-model branch: it updates adapter weights over camera-pose proxy future-vision-velocity targets, not Qwen-style JSON action labels."
+  ]
 }

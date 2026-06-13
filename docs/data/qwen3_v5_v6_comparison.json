@@ -1,0 +1,68 @@
+{
+  "title": "Qwen3-Omni v5 versus v6 verified comparison",
+  "status": "pass",
+  "generated_at_utc": "2026-06-14T00:00:00+00:00",
+  "comparison_scope": "Verified Qwen3-Omni LoRA held-out test packages on the same dense multiscale selected 128-episode dataset.",
+  "release_policy": {
+    "latest_verified_qwen_row": "v6",
+    "pinned_release_tag": "ropedia-xperience-10m-v5",
+    "recommendation": "Publish v6 as the latest verified branch and create a separate v6 tag only if the project wants a formal experimental release; do not move the v5 tag."
+  },
+  "runs": {
+    "v5": {
+      "eval_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full",
+      "train_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora",
+      "epochs": 1,
+      "eval_samples": 4032,
+      "held_out_episode_count": 14,
+      "metrics": {
+        "json_validity_rate": 1.0,
+        "action_macro_f1": 0.002289711036077459,
+        "subtask_accuracy": 0.011194029850746268,
+        "transition_accuracy": 0.9908234126984127,
+        "next_action_accuracy": 0.053618594823032224,
+        "contact_accuracy": 0.7864583333333334,
+        "object_micro_f1": 0.31614599936244814
+      }
+    },
+    "v6": {
+      "eval_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+      "train_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora",
+      "epochs": 2,
+      "lora_rank": 64,
+      "learning_rate": 0.00005,
+      "eval_samples": 4032,
+      "held_out_episode_count": 14,
+      "metrics": {
+        "json_validity_rate": 0.9990079365079365,
+        "action_macro_f1": 0.0028830723979596335,
+        "subtask_accuracy": 0.0037313432835820895,
+        "transition_accuracy": 0.9898313492063492,
+        "next_action_accuracy": 0.04305335446381405,
+        "contact_accuracy": 0.8177083333333334,
+        "object_micro_f1": 0.3064982378331287
+      }
+    }
+  },
+  "deltas_v6_minus_v5": {
+    "json_validity_rate": -0.0009920634920634888,
+    "action_macro_f1": 0.0005933613618821745,
+    "subtask_accuracy": -0.007462686567164178,
+    "transition_accuracy": -0.0009920634920634888,
+    "next_action_accuracy": -0.010565240359218173,
+    "contact_accuracy": 0.03125,
+    "object_micro_f1": -0.009647761529319436
+  },
+  "wins_for_v6": [
+    "action_macro_f1",
+    "contact_accuracy"
+  ],
+  "wins_for_v5": [
+    "json_validity_rate",
+    "subtask_accuracy",
+    "transition_accuracy",
+    "next_action_accuracy",
+    "object_micro_f1"
+  ],
+  "interpretation": "v6 is the newest verified Qwen LoRA branch and is better for action macro-F1 and contact accuracy, but v5 remains the safer pinned release row for JSON perfection, subtask/next-action accuracy, transition accuracy, and object micro-F1."
+}
