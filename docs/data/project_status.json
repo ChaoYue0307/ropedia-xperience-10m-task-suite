@@ -1,7 +1,7 @@
 {
     "title": "Ropedia Xperience-10M Task Suite Project Status",
-    "version": "2026-06-08",
-    "decision": "public_sample_pipeline_verified_128_enhancement_qwen3_v4_cosmos_comparison",
+    "version": "2026-06-14",
+    "decision": "public_sample_pipeline_verified_128_enhancement_qwen3_v6_cosmos_comparison",
     "research_positioning": "A research-engineering study that makes one public Xperience-10M sample episode inspectable, defines embodied-AI tasks over synchronized modalities, records baseline behavior, aligns simple/NN baselines to the selected 128-episode split, compares verified Qwen3-Omni and Cosmos3 branch packages as early cross-episode diagnostics, and now records a no-new-episode enhancement pack for pushing the current 128-episode suite harder.",
     "scope_boundary": {
         "validated_episode_count": 1,
@@ -21,11 +21,11 @@
             "test": 16
         },
         "qwen3_omni_exported_window_counts": {
-            "train": 2848,
-            "val": 512,
-            "test": 448
+            "train": 25629,
+            "val": 4608,
+            "test": 4032
         },
-        "qwen3_omni_json_validity_rate": 1.0,
+        "qwen3_omni_json_validity_rate": 0.9990079365079365,
         "qwen3_omni_validation_aware": true,
         "qwen3_omni_json_quality_target_met": true,
         "qwen3_omni_lora_adapter_repo": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep",
@@ -48,12 +48,12 @@
             "test": 448
         },
         "multi_episode_128_baseline_task_count": 12,
-        "qwen3_omni_current_eval_run_id": "xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full",
-        "qwen3_omni_current_train_epochs": 4,
-        "qwen3_omni_action_macro_f1": 0.0018678269676001454,
-        "qwen3_omni_subtask_accuracy": 0.0,
-        "qwen3_omni_contact_accuracy": 0.7299107142857143,
-        "qwen3_omni_object_micro_f1": 0.31099781500364165,
+        "qwen3_omni_current_eval_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+        "qwen3_omni_current_train_epochs": 2,
+        "qwen3_omni_action_macro_f1": 0.0028830723979596335,
+        "qwen3_omni_subtask_accuracy": 0.0037313432835820895,
+        "qwen3_omni_contact_accuracy": 0.8177083333333334,
+        "qwen3_omni_object_micro_f1": 0.3064982378331287,
         "task_suite_enhancement_128_available": true,
         "task_suite_enhancement_128_current_windows": 3808,
         "task_suite_enhancement_128_recommended_export": "multiscale_20s10_40s20_80s40",
@@ -241,13 +241,15 @@
             "status": "final_verified_diagnostic_result_json_target_met",
             "evidence": [
                 "docs/data/omni_finetune_verified_result.json",
-                "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full/",
+                "docs/data/qwen3_v5_v6_comparison.json",
+                "results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md",
+                "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/",
                 "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep",
                 "scripts/omni/package_verified_omni_result.py",
                 "scripts/omni/audit_verified_omni_package.py",
                 "scripts/omni/analyze_qwen3_omni_errors.py"
             ],
-            "readout": "The selected 96/16/16 episode split now has a v4 four-epoch public-safe held-out package with 3,808 exported windows, 512 validation windows, 448 test predictions, validation/audit summaries, and a public LoRA adapter repo. JSON validity is 100.00%, meeting the 98% target; transition accuracy is 97.32%, contact accuracy is 72.99%, object micro-F1 is 31.10%, next-action accuracy is 3.35%, and action/subtask metrics remain weak, so it is still a diagnostic baseline rather than a strong model-quality claim."
+            "readout": "The selected 96/16/16 episode split now has a current v6 rank64/lr5e-5 public-safe held-out package with 34,269 exported windows, 4,032 test predictions, validation/audit summaries, and a public LoRA adapter repo. JSON validity is 99.90%, meeting the 98% target; transition accuracy is 98.98%, contact accuracy is 81.77%, object micro-F1 is 30.65%, next-action accuracy is 4.31%, and action/subtask metrics remain weak. v6 improves action macro-F1 and contact accuracy versus v5, but v5 remains stronger on JSON validity, subtask, next-action, transition, and object metrics."
         },
         {
             "area": "Cosmos3-Nano future-window branch",
@@ -324,7 +326,7 @@
         "Inspect docs/data/omni_finetune_verified_result.json before judging the Qwen3-Omni diagnostic pilot."
     ],
     "current_reading_notes": [
-        "The final Qwen3-Omni v4 diagnostic result is verified and meets the strict-JSON target, but action/subtask held-out quality is still weak: JSON validity is 100.00%, action macro-F1 is 0.0019, and subtask accuracy is 0.0000.",
+        "The latest Qwen3-Omni v6 diagnostic branch is verified and meets the strict-JSON target, but action/subtask held-out quality is still weak: JSON validity is 99.90%, action macro-F1 is 0.0029, and subtask accuracy is 0.0037. v5 remains the pinned prior release row because it is still stronger on several metrics.",
         "Use TASK_SUITE_ENHANCEMENT_128.md and docs/data/task_suite_enhancement_128.json to push the current 128-episode suite without more raw episodes through multiscale_20s10_40s20_80s40, hierarchical labels, label-normalized scoring, and raw-feature shard export.",
         "Use docs/data/omni_model_comparison.json to compare both views: the single-episode/128-baseline/model-branch result layers and the model-family grouping for task heads, Qwen3-Omni LoRA, Cosmos3-Nano, and Cosmos3-Super.",
         "The 128-episode aligned simple/NN baselines use metadata/text features from the derived Qwen JSONL export; they align the split and task ids but do not replace raw-modality baselines for trajectory, retrieval, reconstruction, or misalignment tasks.",

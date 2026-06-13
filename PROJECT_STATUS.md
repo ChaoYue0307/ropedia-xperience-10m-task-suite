@@ -37,7 +37,7 @@ The current no-new-episode enhancement layer records how to push the selected
 | Public package policy | Verified | `DATA_NOTICE.md`, `REPRODUCIBILITY.md` | Raw Xperience-10M data, private gated files, large archives, credentials, and full Qwen weights are not redistributed. |
 | Reproducibility | Verified for the public sample | `REPRODUCIBILITY.md`, `docs/data/reproducibility_matrix.json`, `notes/reproducibility_audit.md` | The public sample workflow has explicit commands, expected outputs, and exact-match reproduction evidence. |
 | 128-episode aligned baselines | Verified companion result | `results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`, `results/omni_finetune/multi_episode_128_task_baselines/summary_report.json`, `scripts/omni/run_128_task_baselines.py` | The earlier simple and neural baseline framing is aligned to the same selected 96/16/16 episode split used by the Qwen3-Omni pilot. JSON-supported tasks have metadata/text simple and neural MLP metrics; raw-feature-only tasks are explicitly marked unsupported until 128-run sensor feature blocks are available. |
-| Qwen3-Omni fine-tuning | Final verified diagnostic held-out result; JSON target met | `docs/data/omni_finetune_verified_result.json`, `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full/`, `scripts/omni/package_verified_omni_result.py`, `scripts/omni/audit_verified_omni_package.py`, `scripts/omni/analyze_qwen3_omni_errors.py` | The selected 96/16/16 episode split produced a current public-safe v4 four-epoch held-out package with 3,808 exported windows, 512 validation windows, 448 test predictions, validation/audit summaries, and the public LoRA adapter. JSON validity is 100.00%, meeting the 98% target; transition accuracy is 97.32%, contact accuracy is 72.99%, object micro-F1 is 31.10%, next-action accuracy is 3.35%, and action/subtask metrics remain weak, so it is still a diagnostic baseline rather than a strong model-quality claim. |
+| Qwen3-Omni fine-tuning | Latest v6 diagnostic branch verified; JSON target met | `docs/data/omni_finetune_verified_result.json`, `docs/data/qwen3_v5_v6_comparison.json`, `results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md`, `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/`, `scripts/omni/package_verified_omni_result.py`, `scripts/omni/audit_verified_omni_package.py`, `scripts/omni/analyze_qwen3_omni_errors.py` | The selected 96/16/16 episode split now has a current public-safe v6 rank64/lr5e-5 held-out package with 34,269 exported windows and 4,032 test predictions. JSON validity is 99.90%, meeting the 98% target; transition accuracy is 98.98%, contact accuracy is 81.77%, object micro-F1 is 30.65%, next-action accuracy is 4.31%, and action/subtask metrics remain weak. v6 improves action macro-F1 and contact accuracy versus v5, but v5 remains stronger on JSON validity, subtask, next-action, transition, and object metrics. |
 | Raw Xperience-10M redistribution | Not included | `DATA_NOTICE.md`, `docs/data/publication_audit.json` | Raw MP4, HDF5, RRD files, private gated data, and full Qwen weights are intentionally excluded. |
 
 ## Fast Research Route
@@ -79,10 +79,11 @@ The current no-new-episode enhancement layer records how to push the selected
   current results use one public sample episode.
 - Public-facing fine-tuning results should come from the verified result
   package, not from live process logs or setup-only artifacts.
-- The final Qwen3-Omni v4 held-out package verifies the pipeline and meets the
-  strict-JSON target, but not strong action/subtask model quality: JSON
-  validity is 100.00%, action macro-F1 is 0.0019, and subtask accuracy is
-  0.0000.
+- The latest Qwen3-Omni v6 held-out package verifies the current dense
+  multiscale branch and meets the strict-JSON target, but not strong
+  action/subtask model quality: JSON validity is 99.90%, action macro-F1 is
+  0.0029, and subtask accuracy is 0.0037. v5 remains the pinned prior release
+  row because it is still stronger on several metrics.
 - The current 128-episode task suite can be pushed further without more raw
   episodes by using dense/multiscale windows, hierarchical action/subtask
   targets, stronger label-normalized scoring, and compact raw-feature shards

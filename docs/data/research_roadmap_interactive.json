@@ -2222,7 +2222,7 @@
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-08T12:22:13+00:00",
+  "generated_at_utc": "2026-06-13T17:41:13+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -2287,6 +2287,8 @@
     {
       "completion_evidence": [
         "docs/data/omni_finetune_verified_result.json",
+        "docs/data/qwen3_v5_v6_comparison.json",
+        "results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md",
         "results/omni_finetune/verified_public/",
         "dataset_manifest.json",
         "training_metadata.json",
@@ -2304,14 +2306,15 @@
         "metrics",
         "confusion matrices",
         "run report",
+        "v5/v6 comparison",
         "public LoRA adapter repo"
       ],
       "entry_condition": "Selected episodes are prepared locally with no train/test episode leakage.",
       "id": "qwen3_omni_lora_diagnostic_pilot",
-      "name": "Qwen3-Omni LoRA Final Diagnostic Result",
+      "name": "Qwen3-Omni LoRA Latest Diagnostic Branch",
       "reader_takeaway": "The final omni-model diagnostic result establishes the full held-out training/validation/evaluation loop and meets the strict-JSON target, but weak action/subtask metrics make it a diagnostic baseline.",
       "stage": "future",
-      "status": "verified_baseline"
+      "status": "verified_latest_branch"
     },
     {
       "completion_evidence": [

@@ -1,13 +1,13 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-12T18:14:49+00:00",
+  "generated_at_utc": "2026-06-13T17:46:38+00:00",
   "status": "pass",
-  "artifact_count": 159,
+  "artifact_count": 162,
   "missing": [],
   "by_kind": {
     "project_path": 14,
     "scaleup_contract": 7,
-    "scaleup_status": 36,
+    "scaleup_status": 38,
     "publication_workflow": 5,
     "project_scope": 1,
     "source_alignment": 5,
@@ -32,7 +32,7 @@
     "citation": 1,
     "license": 1,
     "verified_public_package": 10,
-    "publication_audit": 6
+    "publication_audit": 7
   },
   "artifacts": [
     {
@@ -65,8 +65,8 @@
       "surface": "repo_hf",
       "shows": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 13535,
-      "sha256": "595f90e26d75baba46a0827eb2ec38d0c6badb137437f642dff4e88e22b7ca80"
+      "bytes": 13755,
+      "sha256": "342897ae05ceab83d626765c0052c140e414ba25ebda4fce9fb07bb37a2decef"
     },
     {
       "id": "project_status_json",
@@ -76,8 +76,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable copy of the current project status for website and HF mirrors.",
       "exists": true,
-      "bytes": 23198,
-      "sha256": "07678354fde90a7e15134f5deff036eb200f7bf422ab2350ff64825b902843d5"
+      "bytes": 23535,
+      "sha256": "9ffae32ff0b3750f89179d2ce92205f95a5b53069d0aa344d6342c23b1efebbd"
     },
     {
       "id": "research_roadmap",
@@ -87,8 +87,8 @@
       "surface": "repo_hf",
       "shows": "Defines the path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions.",
       "exists": true,
-      "bytes": 14354,
-      "sha256": "7d385916e6d07cfa5f95e80b501fe58237f671711691cc8c792479d233991ef5"
+      "bytes": 14503,
+      "sha256": "bb06fb0ccf336cafb0305883b7f93c2e1af547c9ff04b1fa6fc87481d54bcf61"
     },
     {
       "id": "research_roadmap_json",
@@ -98,8 +98,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable research roadmap for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 13313,
-      "sha256": "719a8b5f45810d6b09788391d8549eb5226e480454c9f2a4ed7380ceacfd834b"
+      "bytes": 13450,
+      "sha256": "668220626950f8e55410b8f829dba6306d0b2feedafdf0198800ad9814992d84"
     },
     {
       "id": "foundation_model_plan",
@@ -264,7 +264,7 @@
       "shows": "Summarizes the 2026-06-09 full-parameter FSDP feasibility gates: 1/8/32/64-step guarded runs passed, the 128-step opportunistic pilot was preempted for Qwen v5 handoff, and no full checkpoints or weights are published.",
       "exists": true,
       "bytes": 3253,
-      "sha256": "5c0e49adad861e00bede7f9245808e6e68346e7bc51c0b0142d2b99f944f2408"
+      "sha256": "b25f1d8cde814207b4c3234bf07140cf99a0ede29af3f53dbc146aab464e8a9b"
     },
     {
       "id": "qwen3_full_parameter_gates_json",
@@ -275,7 +275,29 @@
       "shows": "Machine-readable summary of full-parameter feasibility evidence and publication policy for website and Hugging Face mirrors.",
       "exists": true,
       "bytes": 12183,
-      "sha256": "50b8b93f0bae34c7fa269ae52d7c2073d6122fdafc9297f380c052d94253bf3f"
+      "sha256": "d051608d3428645778f721e538af93566ab772871a825ac12825dd5f18e94a95"
+    },
+    {
+      "id": "qwen3_v5_v6_comparison",
+      "title": "Qwen3-Omni v5/v6 comparison",
+      "path": "results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Reader-facing comparison of the verified Qwen3 v5 release row and the latest verified v6 row, including metric deltas and release-tag policy.",
+      "exists": true,
+      "bytes": 1793,
+      "sha256": "890430b05ace20375fc9534f923d170c0509037272ba4ef523e3ca2f3c9ac746"
+    },
+    {
+      "id": "qwen3_v5_v6_comparison_json",
+      "title": "Qwen3-Omni v5/v6 comparison JSON",
+      "path": "docs/data/qwen3_v5_v6_comparison.json",
+      "kind": "scaleup_status",
+      "surface": "website_hf",
+      "shows": "Machine-readable v5/v6 metric deltas and publication recommendation for website and Hugging Face mirrors.",
+      "exists": true,
+      "bytes": 2814,
+      "sha256": "f5d16e279a82cdc6266a1318584bf38cbc0b105296d437f9b8bf0398403aace5"
     },
     {
       "id": "qwen3_full_parameter_gates_builder",
@@ -362,8 +384,8 @@
       "surface": "website_hf",
       "shows": "Gives a short project path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 10496,
-      "sha256": "fc21325035c3b8d4892bfad50dd1a7f5f562a662b7da7be73f7349cb515544ef"
+      "bytes": 10597,
+      "sha256": "a64b7c033c54879e0183e7ec794d3197fb483024c25947759287fcd4b7e0fec1"
     },
     {
       "id": "artifact_guide",
@@ -418,7 +440,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "d5ada9ec76cace484a779672d636222f1dfa281135508ff1b5d5eac98908bf60"
+      "sha256": "0d0d381f726c1e3787fb3fb15b6fb8879512c26fa0dc06fb943e1a239b0063dd"
     },
     {
       "id": "source_alignment_validator",
@@ -671,7 +693,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8097,
-      "sha256": "9b4783b42d0a6f58f2bc36bb7990c86dc85af9d346cb59c90dca402e2c4cf0de"
+      "sha256": "1cdc8b4767b3ca88eada654a3117aa2de253fea7af62573b080088e8f1b311bd"
     },
     {
       "id": "public_surface_qa",
@@ -785,8 +807,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 42224,
-      "sha256": "069b05229b72b9fa0c0917afd18655f58e5258499b43889dd96a87f29f577890"
+      "bytes": 42394,
+      "sha256": "43a70436108eea3fa6692096ebf318fb755ff040d925094ef9de018f212fde18"
     },
     {
       "id": "reproducibility_contract",
@@ -818,8 +840,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 42045,
-      "sha256": "0954119cda59bb9c77cba362a206ac237eae73c4a1dc44cfa56599f170fc94de"
+      "bytes": 42809,
+      "sha256": "c03d1b1367ad191fea0be3c634fddf8ee6fdc2118bf17396920c16cc288c4ef0"
     },
     {
       "id": "publication_audit",
@@ -842,7 +864,7 @@
       "volatile": true,
       "shows": "Separates setup paths from completed held-out-episode results.",
       "exists": true,
-      "bytes": 21325,
+      "bytes": 21795,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -866,7 +888,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 15654,
+      "bytes": 15774,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -899,8 +921,8 @@
       "surface": "website_hf",
       "shows": "Mirrors task metrics for the static dashboard.",
       "exists": true,
-      "bytes": 27604,
-      "sha256": "ebaf9d598b4cd91118f149cafa01fe4d17629499565b7be0c7ce4a0ffcd70f6b"
+      "bytes": 27807,
+      "sha256": "3a6a5ee59562ae189844cb4ba26d6e261c2f73a8e54bb6e2fbc3e307c2d123fa"
     },
     {
       "id": "feature_manifest",
@@ -1119,8 +1141,8 @@
       "surface": "repo_hf",
       "shows": "Reader-facing comparison of the single-episode task suite, 128-episode aligned baselines, Qwen3-Omni packages, and Cosmos3 future-window branch.",
       "exists": true,
-      "bytes": 15731,
-      "sha256": "1ee5621a825219c1125a9c3f3ac779ac8bfa2fc45668531dbee3a728be13bfb5"
+      "bytes": 15999,
+      "sha256": "d5a7118a878b202adbc50e3436bbe134e5de139f2a9e97176efe9ecc0f446088"
     },
     {
       "id": "omni_model_comparison_json",
@@ -1130,8 +1152,8 @@
       "surface": "repo_hf",
       "shows": "Machine-readable comparison of the current result versions, per-task aligned baselines, verified Qwen3 packages, and Cosmos3 package.",
       "exists": true,
-      "bytes": 81593,
-      "sha256": "c570f0810dec46f9a14969089245051c2b3a255f074bd9d06f529615fa6fbd73"
+      "bytes": 81866,
+      "sha256": "191125098a66ecccfa27395c0f9776616f74b4bf8fb19f16b75cda7ed06cb4b2"
     },
     {
       "id": "cosmos3_nano_verified_summary",
@@ -1548,8 +1570,8 @@
       "surface": "repo_hf",
       "shows": "Public-safe verified package for xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full (qwen3_omni_lora, status=verified).",
       "exists": true,
-      "file_count": 13,
-      "bytes": 12189099
+      "file_count": 14,
+      "bytes": 12189730
     },
     {
       "id": "verified_public_summary_xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
@@ -1594,6 +1616,17 @@
       "exists": true,
       "bytes": 49205,
       "sha256": "fc198c3e443877bca42cc33bec6e2a194d6cb20e97c28e931a90736c45538bba"
+    },
+    {
+      "id": "verified_public_package_audit_xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
+      "title": "Verified package audit: Qwen3-Omni LoRA",
+      "path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/package_audit.json",
+      "kind": "publication_audit",
+      "surface": "repo_hf",
+      "shows": "Package audit for xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full.",
+      "exists": true,
+      "bytes": 631,
+      "sha256": "7cf478ae33c52bae0ba742e81da8e482e06d0853eecd85f895f447a708f81718"
     },
     {
       "id": "verified_public_package_xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",

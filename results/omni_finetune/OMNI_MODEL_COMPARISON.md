@@ -1,6 +1,6 @@
 # Omni Model Comparison
 
-Generated: `2026-06-12T18:14:48+00:00`
+Generated: `2026-06-13T17:41:35+00:00`
 
 Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and the two Cosmos3 targets answer different questions: Nano future-window retrieval versus Super structured JSON Reasoner evaluation.
 
@@ -55,8 +55,8 @@ The one-episode Qwen entry is only a sensor-adapter smoke test with Qwen3 weight
 | full-param gate | passed | Full-Parameter 256-Step Post-Qwen-v6 Pilot | 2048 windows/samples | full_parameter_gate=passed, observed_train_steps=256, final_step_loss=0.0096, epoch_train_loss=0.1158, checkpoint_saved=False | `results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot256_after_qwen_v6_preemptible_8gpu_20260611/training_metadata.json` |
 | 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.8750, action_macro_f1=0.0027, transition_accuracy=0.8504, contact_accuracy=0.6451 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval/verified_result_summary.json` |
 | 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.8527, action_macro_f1=0.0021, transition_accuracy=0.8281, contact_accuracy=0.6518 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_fullsplit_fast8gpu_lora_fsdp_full_train_noval_tail_logits_fullstatesave_v6_eval_test_full/verified_result_summary.json` |
-| 128 episode | verified current | Qwen3-Omni LoRA | 119 episodes, 34269 windows/samples, 4032 eval | json_validity_rate=1.0000, action_macro_f1=0.0023, transition_accuracy=0.9908, contact_accuracy=0.7865 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full/verified_result_summary.json` |
-| 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 34269 windows/samples, 4032 eval | json_validity_rate=0.9990, action_macro_f1=0.0029, transition_accuracy=0.9898, contact_accuracy=0.8177 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/verified_result_summary.json` |
+| 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 34269 windows/samples, 4032 eval | json_validity_rate=1.0000, action_macro_f1=0.0023, transition_accuracy=0.9908, contact_accuracy=0.7865 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full/verified_result_summary.json` |
+| 128 episode | verified current | Qwen3-Omni LoRA | 119 episodes, 34269 windows/samples, 4032 eval | json_validity_rate=0.9990, action_macro_f1=0.0029, transition_accuracy=0.9898, contact_accuracy=0.8177 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/verified_result_summary.json` |
 | 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=0.9978, action_macro_f1=0.0024, transition_accuracy=0.9710, contact_accuracy=0.7188 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full/verified_result_summary.json` |
 | 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=1.0000, action_macro_f1=0.0022, transition_accuracy=0.9732, contact_accuracy=0.7210 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full/verified_result_summary.json` |
 | 128 episode | verified | Qwen3-Omni LoRA | 119 episodes, 3808 windows/samples, 448 eval | json_validity_rate=1.0000, action_macro_f1=0.0019, transition_accuracy=0.9732, contact_accuracy=0.7299 | `results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full/verified_result_summary.json` |
@@ -132,4 +132,5 @@ This is the first verified Cosmos3-Super fine-tuned adapter branch. Its metric i
 
 ## Pending
 
-- Use the verified Qwen3 v5 dense multiscale full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison.
+- Use the verified Qwen3 v6 rank64/lr5e-5 dense multiscale full-eval package as the latest current Qwen row; the v5 release tag remains pinned as the previous verified release.
+- Read results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md before claiming v6 is globally better than v5, because v6 improves action macro-F1 and contact accuracy but regresses subtask, next-action, object micro-F1, and JSON validity slightly.

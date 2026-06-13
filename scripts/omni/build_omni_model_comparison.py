@@ -31,6 +31,7 @@ PRIMARY_METRICS = {
 }
 
 QWEN_RUN_PRIORITY = {
+    "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full": 600,
     "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full": 500,
     "xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full": 400,
     "xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full": 300,
@@ -39,6 +40,7 @@ QWEN_RUN_PRIORITY = {
     "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval": 50,
 }
 QWEN_V5_EVAL_RUN_ID = "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full"
+QWEN_V6_EVAL_RUN_ID = "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full"
 
 TASK_DISPLAY_NAMES = {
     "timeline_action": "Action Recognition",
@@ -721,7 +723,12 @@ def build_report() -> dict[str, Any]:
         for branch in versions[2].get("branches", [])
         if branch.get("backbone") == "qwen3_omni_lora"
     }
-    if QWEN_V5_EVAL_RUN_ID in qwen_branch_ids:
+    if QWEN_V6_EVAL_RUN_ID in qwen_branch_ids:
+        pending = [
+            "Use the verified Qwen3 v6 rank64/lr5e-5 dense multiscale full-eval package as the latest current Qwen row; the v5 release tag remains pinned as the previous verified release.",
+            "Read results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md before claiming v6 is globally better than v5, because v6 improves action macro-F1 and contact accuracy but regresses subtask, next-action, object micro-F1, and JSON validity slightly.",
+        ]
+    elif QWEN_V5_EVAL_RUN_ID in qwen_branch_ids:
         pending = [
             "Use the verified Qwen3 v5 dense multiscale full-eval package as the current Qwen row; older Qwen package rows remain historical diagnostics for comparison.",
         ]

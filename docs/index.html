@@ -2327,8 +2327,8 @@
             <p>The first selected-episode LoRA pilot is packaged with real held-out predictions and metrics. It proves the pipeline, while the weak scores make it a baseline for error analysis.</p>
             <div class="snapshot-meta">
               <span>split <strong>96 / 16 / 16</strong></span>
-              <span>test windows <strong>448</strong></span>
-              <span>JSON validity <strong>100.00%</strong></span>
+              <span>test windows <strong>4,032</strong></span>
+              <span>JSON validity <strong>99.90%</strong></span>
             </div>
           </article>
           <article class="snapshot-card gated">
@@ -2368,10 +2368,10 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Research roadmap.</h2>
-          <p>The project path moves from the current public-sample task lab to a final verified Qwen3-Omni diagnostic result, same-split 128-episode baseline alignment, a no-new-episode enhancement pack, action/subtask error analysis, robustness runs, world/policy branches, and the future Xperience Embodied Foundation Model pretraining goal.</p>
+          <p>The project path moves from the current public-sample task lab to the latest verified Qwen3-Omni diagnostic branch, same-split 128-episode baseline alignment, a no-new-episode enhancement pack, action/subtask error analysis, robustness runs, world/policy branches, and the future Xperience Embodied Foundation Model pretraining goal.</p>
         </div>
         <div class="roadmap-grid" aria-label="Research roadmap stages">
-          <article class="roadmap-card" data-status="implemented_for_first_pilot">
+          <article class="roadmap-card" data-status="implemented">
             <span class="roadmap-status">implemented</span>
             <h3>Public-Sample Task Lab</h3>
             <p>One public episode is converted into aligned windows, task contracts, minimal baselines, neural heads, walkthroughs, and figures.</p>
@@ -2380,7 +2380,7 @@
               <strong>Evidence</strong><p>Status, protocol, takeaways, summary metrics, and episode-task outputs.</p>
             </div>
           </article>
-          <article class="roadmap-card" data-status="verified_baseline">
+          <article class="roadmap-card" data-status="implemented_for_first_pilot">
             <span class="roadmap-status">implemented</span>
             <h3>Multi-Episode Data Preparation</h3>
             <p>Prepare official gated episodes while preserving episode-level separation and recording missing-view coverage. The first selected split is available for Qwen3-Omni diagnostics.</p>
@@ -2389,13 +2389,13 @@
               <strong>Evidence</strong><p>Selected-episode plan, data boundary, preparation notes, and verified package summary.</p>
             </div>
           </article>
-          <article class="roadmap-card" data-status="implemented">
-            <span class="roadmap-status">verified baseline</span>
-            <h3>Qwen3-Omni LoRA Final Diagnostic Result</h3>
+          <article class="roadmap-card" data-status="verified_latest_branch">
+            <span class="roadmap-status">verified latest branch</span>
+            <h3>Qwen3-Omni LoRA Latest Diagnostic Branch</h3>
             <p>Train lightweight adapters on selected prepared episodes and evaluate on held-out episodes with committed predictions, metrics, and run reports.</p>
             <div class="roadmap-meta">
               <strong>Entry</strong><p>Selected episodes prepared with no train/test episode leakage.</p>
-              <strong>Evidence</strong><p>Verified result summary, dataset manifest, training metadata, progress logs, metrics, and predictions.</p>
+              <strong>Evidence</strong><p>Verified result summary, v5/v6 comparison, dataset manifest, training metadata, progress logs, metrics, and predictions.</p>
             </div>
           </article>
           <article class="roadmap-card" data-status="verified_companion_result">
@@ -2749,7 +2749,7 @@
           <article class="artifact primary-artifact"><div><h3>Official dataset</h3><p>Xperience-10M is a gated large-scale egocentric multimodal dataset for embodied AI, robotics, spatial intelligence, and world modeling.</p></div><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official HF dataset</a></article>
           <article class="artifact"><h3>Public sample</h3><p>The current task suite is built from one public sample episode, not from the entire gated dataset.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
           <article class="artifact"><h3>Modalities</h3><p>The sample exposes synchronized video, audio, depth, pose/SLAM, motion capture, inertial signals, calibration, and language annotations.</p><a href="data/modality_atlas.json">modality atlas</a></article>
-          <article class="artifact"><h3>Multi-episode pilot</h3><p>The selected 128-episode Qwen3-Omni LoRA v4 diagnostic result is verified with 448 held-out test predictions and 100.00% JSON validity. Action/subtask metrics are still weak, so this remains a baseline for error analysis.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a></article>
+          <article class="artifact"><h3>Multi-episode pilot</h3><p>The selected 128-episode Qwen3-Omni LoRA v6 diagnostic branch is verified with 4,032 held-out test predictions and 99.90% JSON validity. Action/subtask metrics are still weak, so this remains a baseline for error analysis.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a></article>
           <article class="artifact"><h3>Data boundary</h3><p>Raw MP4, HDF5, RRD files, private gated data, and full Qwen weights are not redistributed in this project.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a></article>
           <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, and no raw-data redistribution.</p><a href="data/modality_atlas.json">modality atlas</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, and misalignment.</p><a href="data/summary_metrics.json">summary metrics</a></article>
@@ -3234,13 +3234,13 @@
     <section id="omni-scale-up" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Qwen3-Omni diagnostic pilot is verified.</h2>
-          <p>The selected pilot uses 128 source-balanced episodes across 128 different session UUIDs. The first held-out package is verified, and its weak metrics define the next structured-output and error-analysis pass.</p>
+          <h2>Qwen3-Omni diagnostic branch is verified.</h2>
+          <p>The selected pilot uses 128 source-balanced episodes across 128 different session UUIDs. The latest v6 held-out package is verified, and its weak metrics define the next structured-output and error-analysis pass.</p>
         </div>
         <div class="artifact-grid">
           <article class="artifact"><h3>Selection</h3><p>128 complete episodes selected from 128 unique top-level sessions, balanced across episode-size bands and split 96/16/16 for train/val/test.</p></article>
           <article class="artifact"><h3>Transfer</h3><p>Download raw episodes only from official gated sources, exclude visualization.rrd, validate files, then stage them for training.</p></article>
-          <article class="artifact"><h3>Current LoRA artifact</h3><p>The current Qwen3-Omni LoRA artifact is the selected 128-episode diagnostic adapter. The 1-episode Qwen entry is only a sensor-adapter smoke test.</p><a href="data/omni_model_comparison.json">model groups</a></article>
+          <article class="artifact"><h3>Current LoRA artifact</h3><p>The current Qwen3-Omni LoRA artifact is the verified v6 selected 128-episode diagnostic adapter. The v5 row remains pinned as the prior release, and the 1-episode Qwen entry is only a sensor-adapter smoke test.</p><a href="data/omni_model_comparison.json">model groups</a></article>
           <article class="artifact"><h3>128-Episode Task Suite Enhancement Pack</h3><p>The next suite push does not need more episodes first: use `multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets, and raw-feature shards while keeping the held-out split fixed.</p><a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a></article>
           <article class="artifact"><h3>Backbone branches</h3><p>Qwen3-Omni uses a separate LoRA model repo; Cosmos3-Nano remains a compatibility package; Cosmos3-Super now has a verified forward-dynamics LoRA branch with weights in a dedicated model repo.</p><a href="https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep">Cosmos3-Super weights</a></article>
           <article class="artifact"><h3>Native foundation model</h3><p>The long-term goal is a full-corpus Xperience Embodied Foundation Model trained on synchronized perception, geometry, motion, inertial, audio, and language streams after smaller scaling stages validate the approach.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a></article>

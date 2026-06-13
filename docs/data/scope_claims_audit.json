@@ -1,15 +1,15 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-12T18:14:51+00:00",
+  "generated_at_utc": "2026-06-13T17:46:50+00:00",
   "summary": {
     "qwen3_omni_verified_diagnostic_pilot": true,
     "dataset_manifest_num_episodes": 119,
-    "dataset_manifest_num_samples": 3808,
-    "training_metadata_num_train_samples": 2848,
-    "eval_num_samples": 448,
-    "eval_json_validity_rate": 1.0,
+    "dataset_manifest_num_samples": 34269,
+    "training_metadata_num_train_samples": 25629,
+    "eval_num_samples": 4032,
+    "eval_json_validity_rate": 0.9990079365079365,
     "quality_target_met": true,
-    "historical_identifier_count": 1799,
+    "historical_identifier_count": 1800,
     "public_32_episode_status_file_count": 1,
     "failure_count": 0
   },
@@ -25,7 +25,7 @@
     {
       "name": "summary_metrics_preserves_verified_diagnostic_status",
       "status": "pass",
-      "detail": "The selected-episode Qwen3-Omni diagnostic pilot is verified on the 96/16/16 split and meets the 98% target for JSON validity; action/subtask quality remains weak, so it is a structured-task baseline. Cosmos3-Nano future-window compatibility and Cosmos3-Super Forward-Dynamics LoRA are also verified as separate world-model diagnostics with different metrics.",
+      "detail": "The selected-episode Qwen3-Omni v6 diagnostic branch is verified on the 96/16/16 split and meets the 98% target for JSON validity; action/subtask quality remains weak, so it is a structured-task baseline rather than a strong model-quality claim. v6 improves action macro-F1 and contact accuracy versus v5, while v5 remains stronger on JSON validity, subtask, next-action, transition, and object metrics. Cosmos3-Nano future-window compatibility and Cosmos3-Super Forward-Dynamics LoRA are also verified as separate world-model diagnostics with different metrics.",
       "evidence": [
         "docs/data/summary_metrics.json"
       ]
@@ -33,25 +33,25 @@
     {
       "name": "verified_package_dataset_has_expected_windows",
       "status": "pass",
-      "detail": "episodes=119, samples=3808, split_counts={'train': 2848, 'val': 512, 'test': 448}",
+      "detail": "episodes=119, samples=34269, split_counts={'test': 4032, 'train': 25629, 'val': 4608}, expected_samples=34269, expected_split_counts={'train': 25629, 'val': 4608, 'test': 4032}",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full/dataset/dataset_manifest.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/dataset/dataset_manifest.json"
       ]
     },
     {
       "name": "verified_package_training_records_8_processes",
       "status": "pass",
-      "detail": "train=2848, val=512, processes=8",
+      "detail": "train=25629, val=2048, processes=8, expected_train=25629, expected_val=2048, expected_processes=8",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full/training/training_metadata.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/training/training_metadata.json"
       ]
     },
     {
       "name": "verified_package_eval_records_real_held_out_metrics",
       "status": "pass",
-      "detail": "samples=448, split=test, held_out=14, json_validity=1.0",
+      "detail": "samples=4032, split=test, held_out=14, json_validity=0.9990079365079365, expected_samples=4032, expected_held_out=14",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full/eval/metrics.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/eval/metrics.json"
       ]
     },
     {
@@ -59,7 +59,7 @@
       "status": "pass",
       "detail": "audit_status=pass, issues=0",
       "evidence": [
-        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full/package_audit.json"
+        "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/package_audit.json"
       ]
     },
     {
@@ -84,7 +84,7 @@
     {
       "name": "historical_32ep_identifiers_are_confined_to_readiness_artifacts",
       "status": "pass",
-      "detail": "historical identifiers found in result provenance files=1799",
+      "detail": "historical identifiers found in result provenance files=1800",
       "evidence": [
         "results/omni_finetune/"
       ]
@@ -424,6 +424,6 @@
       "example": "{\"id\": \"xperience-10m-sample:qa:53\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 1060, \"end_frame\": 1079, \"num_frames\": 20}, \"media\": {\"video_path"
     }
   ],
-  "historical_identifier_total_count": 1799,
+  "historical_identifier_total_count": 1800,
   "failures": []
 }

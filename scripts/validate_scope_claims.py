@@ -171,67 +171,88 @@ def build_report() -> dict:
     expected_json_validity = float(verified_evaluation.get("json_validity_rate", 0.0))
 
     reading_notes = " ".join(project_packet.get("current_reading_notes", []))
+    has_verified_qwen_note = (
+        "diagnostic pilot is verified" in reading_notes
+        or "diagnostic branch is verified" in reading_notes
+        or "diagnostic result is verified" in reading_notes
+    )
     checks.append(
         check(
             "project_packet_records_verified_diagnostic_status",
-            "diagnostic pilot is verified" in reading_notes and "strong model quality is not yet shown" in reading_notes,
+            has_verified_qwen_note and "strong model quality is not yet shown" in reading_notes,
             "project packet describes the verified diagnostic pilot and quality boundary",
             ["docs/data/project_packet.json"],
         )
     )
 
     current_scope = summary_metrics.get("omni_relay", {}).get("current_scope", "")
+    has_verified_scope = (
+        "diagnostic pilot is verified" in current_scope
+        or "diagnostic branch is verified" in current_scope
+        or "diagnostic result is verified" in current_scope
+    )
     checks.append(
         check(
             "summary_metrics_preserves_verified_diagnostic_status",
-            "diagnostic pilot is verified" in current_scope and "98% target" in current_scope,
+            has_verified_scope and "98% target" in current_scope,
             current_scope,
             ["docs/data/summary_metrics.json"],
         )
     )
 
     split_counts = dataset_manifest.get("split_counts", {})
+    expected_split_counts = verified_result.get("split_policy", {}).get("exported_window_counts", {})
+    expected_dataset_samples = sum(expected_split_counts.values()) if expected_split_counts else None
     checks.append(
         check(
             "verified_package_dataset_has_expected_windows",
             dataset_manifest.get("num_episodes") == 119
-            and dataset_manifest.get("num_samples") == 3808
-            and split_counts == {"train": 2848, "val": 512, "test": 448},
+            and dataset_manifest.get("num_samples") == expected_dataset_samples
+            and split_counts == expected_split_counts,
             (
                 f"episodes={dataset_manifest.get('num_episodes')}, "
-                f"samples={dataset_manifest.get('num_samples')}, split_counts={split_counts}"
+                f"samples={dataset_manifest.get('num_samples')}, split_counts={split_counts}, "
+                f"expected_samples={expected_dataset_samples}, expected_split_counts={expected_split_counts}"
             ),
             [f"{package_path}/dataset/dataset_manifest.json"],
         )
     )
 
+    expected_train = verified_result.get("training", {}).get("num_train_samples")
+    expected_val = verified_result.get("training", {}).get("num_val_samples")
+    expected_processes = verified_result.get("training", {}).get("num_processes")
     checks.append(
         check(
             "verified_package_training_records_8_processes",
-            training_metadata.get("num_train_samples") == 2848
-            and training_metadata.get("num_val_samples") == 512
-            and training_metadata.get("num_processes") == 8,
+            training_metadata.get("num_train_samples") == expected_train
+            and training_metadata.get("num_val_samples") == expected_val
+            and training_metadata.get("num_processes") == expected_processes,
             (
                 f"train={training_metadata.get('num_train_samples')}, "
                 f"val={training_metadata.get('num_val_samples')}, "
-                f"processes={training_metadata.get('num_processes')}"
+                f"processes={training_metadata.get('num_processes')}, "
+                f"expected_train={expected_train}, expected_val={expected_val}, "
+                f"expected_processes={expected_processes}"
             ),
             [f"{package_path}/training/training_metadata.json"],
         )
     )
 
+    expected_eval_samples = verified_evaluation.get("num_samples")
+    expected_eval_episodes = verified_evaluation.get("held_out_episode_count")
     checks.append(
         check(
             "verified_package_eval_records_real_held_out_metrics",
-            eval_metrics.get("num_samples") == 448
+            eval_metrics.get("num_samples") == expected_eval_samples
             and eval_metrics.get("eval_split") == "test"
-            and eval_metrics.get("held_out_episode_count", eval_metrics.get("num_eval_episodes")) == 14
+            and eval_metrics.get("held_out_episode_count", eval_metrics.get("num_eval_episodes")) == expected_eval_episodes
             and abs(float(eval_metrics.get("json_validity_rate", 0.0)) - expected_json_validity) < 1e-12,
             (
                 f"samples={eval_metrics.get('num_samples')}, "
                 f"split={eval_metrics.get('eval_split')}, "
                 f"held_out={eval_metrics.get('held_out_episode_count', eval_metrics.get('num_eval_episodes'))}, "
-                f"json_validity={eval_metrics.get('json_validity_rate')}"
+                f"json_validity={eval_metrics.get('json_validity_rate')}, "
+                f"expected_samples={expected_eval_samples}, expected_held_out={expected_eval_episodes}"
             ),
             [f"{package_path}/eval/metrics.json"],
         )
