@@ -136,14 +136,14 @@ Verified staged-GPU smoke evidence from 2026-06-14:
 
 | Field | Value |
 | --- | --- |
-| Run id | `a100_repro_qwen_v6_eval_smoke1_h20compat_tok1_20260614` |
+| Run id | `a100_repro_qwen_v6_eval_smoke1_preflight_busy_20260614` |
 | Exit code | `0` |
 | Samples | `1` |
 | JSON validity | `1.0` |
 | Transition accuracy | `1.0` |
 | Contact accuracy | `1.0` |
 | Object micro-F1 | `0.28571428571428575` |
-| Metrics path | `results/omni_finetune/a100_repro_qwen_v6_eval_smoke1_h20compat_tok1_20260614/metrics.json` |
+| Metrics path | `results/omni_finetune/a100_repro_qwen_v6_eval_smoke1_preflight_busy_20260614/metrics.json` |
 
 ## Expected Public Outputs
 
