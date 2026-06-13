@@ -1,9 +1,9 @@
 {
   "title": "Qwen3-Omni Full-Parameter Feasibility Gates",
-  "generated_at_utc": "2026-06-13T17:41:13+00:00",
+  "generated_at_utc": "2026-06-13T18:14:32+00:00",
   "status": "pass",
   "decision": "full_parameter_feasible_for_guarded_short_runs_not_promoted",
-  "interpretation": "The 2026-06-09 gates prove that Qwen3-Omni full-parameter FSDP can load, prepare, run backward/optimizer steps, and complete guarded pilots up to 128 optimizer steps on an 8-GPU remote worker. They do not prove a production full-parameter fine-tune, and they intentionally save no full checkpoints or public weights.",
+  "interpretation": "The full-parameter gates prove that Qwen3-Omni full-parameter FSDP can load, prepare, run backward/optimizer steps, and complete guarded pilots up to 256 optimizer steps on an 8-GPU remote worker. They do not prove a production full-parameter fine-tune, and they intentionally save no full checkpoints or public weights.",
   "aggregate": {
     "run_count": 7,
     "passed_run_count": 6,
@@ -212,7 +212,7 @@
       "summary_path": "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot256_after_qwen_v6_preemptible_8gpu_20260611/training_metadata.json",
       "progress_path": "results/omni_finetune/xperience10m_qwen3_omni_128ep_fullparam_pilot256_after_qwen_v6_preemptible_8gpu_20260611/progress.jsonl",
       "run_id": "xperience10m_qwen3_omni_128ep_fullparam_pilot256_after_qwen_v6_preemptible_8gpu_20260611",
-      "purpose": "post_verified_qwen_v5_full_parameter_feasibility_pilot",
+      "purpose": "post_verified_qwen_v6_full_parameter_feasibility_pilot",
       "tuning_mode": "full",
       "training_objective": "structured_episode_understanding_json_qa",
       "num_processes": 8,
@@ -243,7 +243,7 @@
     "public_summary_allowed": true,
     "publish_full_parameter_weights": false,
     "publish_full_checkpoints": false,
-    "reason": "All completed 2026-06-09 full-parameter runs used save_mode=none; the preempted pilot saved nothing. These are feasibility evidence only."
+    "reason": "All completed full-parameter gate runs used save_mode=none; the preempted pilot saved nothing. These are feasibility evidence only."
   },
   "next_steps": [
     "Keep the verified Qwen3-Omni LoRA adapter as the published production result for the 128-episode suite.",

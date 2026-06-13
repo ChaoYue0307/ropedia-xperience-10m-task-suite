@@ -159,7 +159,11 @@ def row_from_metadata(config: dict[str, Any]) -> dict[str, Any]:
         "summary_path": rel(metadata_path),
         "progress_path": rel(progress_path),
         "run_id": payload.get("run_id"),
-        "purpose": "post_verified_qwen_v5_full_parameter_feasibility_pilot",
+        "purpose": (
+            "post_verified_qwen_v6_full_parameter_feasibility_pilot"
+            if "qwen_v6" in config["id"]
+            else "post_verified_qwen_v5_full_parameter_feasibility_pilot"
+        ),
         "tuning_mode": payload.get("tuning_mode"),
         "training_objective": payload.get("backbone", {}).get("training_objective")
         if isinstance(payload.get("backbone"), dict)
@@ -252,9 +256,9 @@ def build_payload() -> dict[str, Any]:
         "status": "pass" if len(passed) >= 5 and len(preempted) <= 1 and not missing_or_review else "review",
         "decision": "full_parameter_feasible_for_guarded_short_runs_not_promoted",
         "interpretation": (
-            "The 2026-06-09 gates prove that Qwen3-Omni full-parameter FSDP can load, "
+            "The full-parameter gates prove that Qwen3-Omni full-parameter FSDP can load, "
             "prepare, run backward/optimizer steps, and complete guarded pilots up to "
-            "128 optimizer steps on an 8-GPU remote worker. They do not prove a production full-parameter fine-tune, and "
+            "256 optimizer steps on an 8-GPU remote worker. They do not prove a production full-parameter fine-tune, and "
             "they intentionally save no full checkpoints or public weights."
         ),
         "aggregate": {
@@ -273,7 +277,7 @@ def build_payload() -> dict[str, Any]:
             "public_summary_allowed": True,
             "publish_full_parameter_weights": False,
             "publish_full_checkpoints": False,
-            "reason": "All completed 2026-06-09 full-parameter runs used save_mode=none; the preempted pilot saved nothing. These are feasibility evidence only.",
+            "reason": "All completed full-parameter gate runs used save_mode=none; the preempted pilot saved nothing. These are feasibility evidence only.",
         },
         "next_steps": [
             "Keep the verified Qwen3-Omni LoRA adapter as the published production result for the 128-episode suite.",
