@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Reproducibility Matrix",
-  "version": "2026-06-01",
-  "scope": "one public Xperience-10M sample episode",
+  "version": "2026-06-14",
+  "scope": "one public Xperience-10M sample episode plus owner-side private staged Qwen3-Omni v6 reproduction",
   "python_target": "3.12",
   "public_raw_data_redistributed": false,
   "last_exact_metric_audit": {
@@ -80,9 +80,16 @@
     {
       "id": "qwen3_omni_multi_episode_pilot",
       "status": "verified_final_diagnostic_result_not_publicly_rerunnable_without_gated_data",
-      "command": "scripts/omni/build_qwen3_omni_dataset.py and scripts/omni/train_qwen3_omni_lora.py on the selected gated episodes",
-      "expected": "verified final diagnostic LoRA package with 3,808 exported windows, 2,848 train windows, and 448 held-out test predictions",
-      "boundary": "the public package records metrics and manifests, but rerunning requires gated Xperience-10M episode access and base-model weights; current strict-label JSON validity is 100.00%, meeting the 98% target, while action/subtask metrics remain weak"
+      "command": "scripts/omni/run_dense_multiscale_qwen_v5_h20.sh, scripts/omni/train_qwen3_omni_lora.py, and scripts/omni/run_qwen3_omni_lora_eval_sharded.sh on the selected gated episodes",
+      "expected": "verified v5/v6 diagnostic LoRA packages; the latest v6 package records 34,269 exported multiscale windows and 4,032 held-out test predictions",
+      "boundary": "the public package records metrics and manifests, but rerunning requires gated Xperience-10M episode access and base-model weights; v6 improves some structured metrics over v5 but remains a diagnostic baseline rather than a strong action/subtask model"
+    },
+    {
+      "id": "owner_gpu_qwen3_v6_reproduction",
+      "status": "reproducible_on_private_gpu_staging",
+      "command": "cd <staged-repo-root> && CUDA_VISIBLE_DEVICES=0,1,2,3 RUN_ID=a100_repro_qwen_v6_eval_smoke1_manual SAMPLE_LIMIT=1 MAX_NEW_TOKENS=1 scripts/omni/run_private_gpu_qwen3_v6_repro_smoke.sh",
+      "expected": "One-sample Qwen3-Omni v6 eval smoke writes progress.jsonl, predictions, metrics.json, and exit_code.txt with exit_code 0",
+      "boundary": "owner-side private staging only; depends on exported media cache, path-rewritten dataset_a100_eval.jsonl, Qwen3-Omni base model cache, v6 LoRA adapter, and the compatible Transformers video-feature patch"
     }
   ]
 }

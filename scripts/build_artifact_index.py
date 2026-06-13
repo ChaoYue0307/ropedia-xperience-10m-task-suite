@@ -234,6 +234,22 @@ ARTIFACTS = [
         "shows": "Builds the upload-ready Hugging Face adapter folder from a verified Qwen3 LoRA result summary and adapter directory.",
     },
     {
+        "id": "qwen3_private_gpu_repro_smoke",
+        "title": "Qwen3 private staged-GPU reproduction smoke",
+        "path": "scripts/omni/run_private_gpu_qwen3_v6_repro_smoke.sh",
+        "kind": "reproducibility",
+        "surface": "repo_hf",
+        "shows": "Runs the owner-side Qwen3-Omni v6 one-sample reproduction smoke from a private staged model, adapter, JSONL, and exported media cache.",
+    },
+    {
+        "id": "qwen3_video_feature_compat_patch",
+        "title": "Qwen3 video-feature compatibility patch checker",
+        "path": "scripts/omni/patch_qwen3_omni_video_features.py",
+        "kind": "reproducibility",
+        "surface": "repo_hf",
+        "shows": "Checks and narrowly repairs the installed Qwen3-Omni video-feature branch so private staged-GPU reproduction uses the verified source-compatible behavior.",
+    },
+    {
         "id": "additional_development_directions",
         "title": "Additional development directions",
         "path": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
