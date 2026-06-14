@@ -42,12 +42,7 @@
       color: var(--ink);
       font-family: var(--font-ui);
       line-height: 1.5;
-      background:
-        radial-gradient(circle at 84% 8%, rgba(204, 255, 160, 0.13), transparent 28%),
-        radial-gradient(circle at 16% 26%, rgba(204, 255, 160, 0.06), transparent 22%),
-        radial-gradient(circle, rgba(204, 255, 160, 0.11) 1px, transparent 1.4px),
-        var(--page);
-      background-size: auto, auto, 22px 22px, auto;
+      background: var(--page);
       font-synthesis-weight: none;
     }
     a { color: inherit; }
@@ -122,11 +117,14 @@
       outline-offset: 3px;
     }
     .hero {
+      position: relative;
+      overflow: hidden;
       padding: 86px 0 48px;
       border-bottom: 1px solid var(--soft-line);
       background:
-        radial-gradient(circle at 78% 26%, rgba(204, 255, 160, 0.18), transparent 20%),
-        linear-gradient(180deg, rgba(2, 5, 2, 0.2), rgba(5, 6, 11, 0.96));
+        linear-gradient(90deg, rgba(2, 5, 2, 0.96) 0%, rgba(2, 5, 2, 0.84) 52%, rgba(2, 5, 2, 0.70) 100%),
+        linear-gradient(180deg, rgba(2, 5, 2, 0.12), rgba(5, 6, 11, 0.98)),
+        url("assets/qwen3_omni_lora_pipeline.png?v=qwen3-lora-v1") center right / cover no-repeat;
     }
     .hero-grid {
       display: grid;

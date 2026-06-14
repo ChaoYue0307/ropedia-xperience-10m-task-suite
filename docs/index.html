@@ -1996,9 +1996,108 @@
     .bar span {
       background: linear-gradient(90deg, var(--green), rgba(204, 255, 160, 0.45));
     }
+    /* Product-design polish: align with ropedia.com through real project visuals,
+       restrained surfaces, and a clear first-viewport research story. */
+    body {
+      background: #020502;
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: min(760px, calc(100vh - 24px));
+      background: #020502;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(2, 5, 2, 0.96) 0%, rgba(2, 5, 2, 0.86) 42%, rgba(2, 5, 2, 0.58) 72%, rgba(2, 5, 2, 0.88) 100%),
+        linear-gradient(180deg, rgba(2, 5, 2, 0.10) 0%, rgba(2, 5, 2, 0.82) 100%),
+        url("assets/task_suite_infographic.png?v=xperience10m-taskfirst-v13-modality-xl") center right / cover no-repeat;
+      opacity: 0.92;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      z-index: -1;
+      height: 42%;
+      background: linear-gradient(180deg, transparent, #020502 88%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      min-height: min(760px, calc(100vh - 24px));
+      grid-template-columns: minmax(0, 1fr);
+      align-items: end;
+      padding: 104px 0 72px;
+    }
+    .hero-inner > div:first-child {
+      max-width: 980px;
+    }
+    .hero h1 {
+      max-width: 940px;
+      color: #f7fff0;
+    }
+    .hero-copy {
+      max-width: 760px;
+      color: rgba(245, 247, 240, 0.78);
+    }
+    .hero-stats {
+      max-width: 820px;
+    }
+    .hero-panel {
+      max-width: 1060px;
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(7, minmax(96px, 1fr));
+      gap: 0;
+      padding: 0;
+      overflow: hidden;
+      border-color: rgba(245, 247, 240, 0.18);
+      background: rgba(2, 5, 2, 0.74);
+      box-shadow: none;
+      backdrop-filter: blur(10px);
+    }
+    .panel-top {
+      grid-column: 1 / -1;
+      padding: 12px 14px;
+      border-bottom-color: rgba(245, 247, 240, 0.14);
+      color: rgba(245, 247, 240, 0.66);
+    }
+    .signal {
+      grid-template-columns: 1fr;
+      gap: 9px;
+      align-items: start;
+      padding: 13px 14px 14px;
+      border-right: 1px solid rgba(245, 247, 240, 0.10);
+      border-bottom: 0;
+    }
+    .signal:last-child {
+      border-right: 0;
+    }
+    .signal code {
+      width: fit-content;
+      color: rgba(245, 247, 240, 0.86);
+    }
+    .signal strong {
+      text-align: left;
+      color: #f7fff0;
+    }
+    .track {
+      width: 100%;
+      height: 6px;
+    }
     @media (max-width: 960px) {
       .hero-inner, .two-col { grid-template-columns: 1fr; }
+      .hero,
       .hero-inner { min-height: 0; }
+      .hero-inner { padding: 76px 0 58px; }
+      .hero-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .signal:nth-child(2n + 1) { border-right: 0; }
       .project-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .section-tabs { padding-top: 10px; }
       .figure-brief { grid-template-columns: 1fr; }
@@ -2069,6 +2168,14 @@
       }
       main > section { scroll-margin-top: 112px; }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(2, 5, 2, 0.92) 0%, rgba(2, 5, 2, 0.76) 48%, rgba(2, 5, 2, 0.96) 100%),
+          url("assets/task_suite_infographic.png?v=xperience10m-taskfirst-v13-modality-xl") center / cover no-repeat;
+      }
+      .hero-panel { grid-template-columns: 1fr; }
+      .signal { border-right: 0; border-bottom: 1px solid rgba(245, 247, 240, 0.10); }
+      .signal:last-child { border-bottom: 0; }
       .brief-panel { padding: 18px; }
       .artifact-group { padding: 16px; }
       .modality-atlas-panel { padding: 14px; }
@@ -2137,15 +2244,13 @@
     <div class="wrap hero-inner">
       <div>
         <div class="eyebrow">public sample episode / multimodal task lab</div>
-        <h1>Ropedia Xperience-10M Research Task Lab.</h1>
+        <h1>Ropedia Xperience-10M Task Suite.</h1>
         <p class="hero-copy">
-          This project uses the public Xperience-10M sample from Ropedia to explore
-          embodied-AI task design, multimodal feature construction, lightweight
-          baselines, future Omni-model fine-tuning, and the long-term path toward
-          an Xperience-native embodied foundation model. It starts from the
-          sample episode available now, then keeps the same data contracts ready
-          for held-out multi-episode training when more Xperience-10M data is
-          prepared.
+          A public research surface for physical 4D intelligence: sample-to-task
+          contracts, multimodal baselines, verified multi-episode Qwen3-Omni
+          results, and a clear path toward Xperience-native foundation models.
+          Public raw-data boundaries stay explicit while private staged-GPU
+          reproduction paths keep the latest model evidence recoverable.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="research_roadmap.html">Open roadmap</a>
@@ -2160,7 +2265,7 @@
           <div class="stat"><strong>12+12+4</strong><span>core, neural, and extension probes</span></div>
         </div>
       </div>
-      <div class="hero-panel" aria-label="Signal summary">
+      <div class="hero-panel" aria-label="Feature allocation summary">
         <div class="panel-top">
           <span>current feature allocation</span>
           <span>aligned window</span>
