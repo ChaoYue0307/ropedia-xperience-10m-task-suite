@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-14T05:40:13+00:00",
+  "generated_at_utc": "2026-06-14T05:50:58+00:00",
   "hf_root": "hf_publish",
   "summary": {
     "group_count": 369,
@@ -3294,21 +3294,21 @@
       "local": {
         "path": "repo:scripts/validate_mirror_parity.py",
         "exists": true,
-        "bytes": 21157,
-        "sha256": "3964b8981d78f0daeb576e93613040df2b0243bf5789f41b55cf7dd56a0d61e0"
+        "bytes": 21219,
+        "sha256": "9d6a617fed3b52ed462a0ddf3d1e115e981c943dead944e5ee22e5b784adf4ad"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 21157,
-          "sha256": "3964b8981d78f0daeb576e93613040df2b0243bf5789f41b55cf7dd56a0d61e0"
+          "bytes": 21219,
+          "sha256": "9d6a617fed3b52ed462a0ddf3d1e115e981c943dead944e5ee22e5b784adf4ad"
         },
         "hf_model": {
           "path": "hf_model:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 21157,
-          "sha256": "3964b8981d78f0daeb576e93613040df2b0243bf5789f41b55cf7dd56a0d61e0"
+          "bytes": 21219,
+          "sha256": "9d6a617fed3b52ed462a0ddf3d1e115e981c943dead944e5ee22e5b784adf4ad"
         }
       },
       "failures": []
@@ -3444,21 +3444,21 @@
       "local": {
         "path": "repo:scripts/sync_hf_publish_mirrors.py",
         "exists": true,
-        "bytes": 7484,
-        "sha256": "6848a8b51d3a8c96dfce6c77ff9b1ddf0cb66232f7ac32bce0297c4d23447aef"
+        "bytes": 7530,
+        "sha256": "1ce2916bef718a3bf17abbc2b9505de59479de8de660285ee8a9561b7e164c6e"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/sync_hf_publish_mirrors.py",
           "exists": true,
-          "bytes": 7484,
-          "sha256": "6848a8b51d3a8c96dfce6c77ff9b1ddf0cb66232f7ac32bce0297c4d23447aef"
+          "bytes": 7530,
+          "sha256": "1ce2916bef718a3bf17abbc2b9505de59479de8de660285ee8a9561b7e164c6e"
         },
         "hf_model": {
           "path": "hf_model:scripts/sync_hf_publish_mirrors.py",
           "exists": true,
-          "bytes": 7484,
-          "sha256": "6848a8b51d3a8c96dfce6c77ff9b1ddf0cb66232f7ac32bce0297c4d23447aef"
+          "bytes": 7530,
+          "sha256": "1ce2916bef718a3bf17abbc2b9505de59479de8de660285ee8a9561b7e164c6e"
         }
       },
       "failures": []
@@ -3509,6 +3509,12 @@
           "exists": true,
           "bytes": 40470,
           "sha256": "3b1a1b7be85b816f3ba2333224b8776de255843ae5f6a761cb56d468ae2273cb"
+        },
+        "hf_model": {
+          "path": "hf_model:apple-touch-icon.png",
+          "exists": true,
+          "bytes": 40470,
+          "sha256": "3b1a1b7be85b816f3ba2333224b8776de255843ae5f6a761cb56d468ae2273cb"
         }
       },
       "failures": []
@@ -3531,6 +3537,12 @@
         },
         "hf_artifacts_docs": {
           "path": "hf_artifacts:docs/favicon.png",
+          "exists": true,
+          "bytes": 7206,
+          "sha256": "c6ec4a7d71bedd2299f01dbc7c7b1c09bbd6b67a0a316922a290d7ddd2469600"
+        },
+        "hf_model": {
+          "path": "hf_model:favicon.png",
           "exists": true,
           "bytes": 7206,
           "sha256": "c6ec4a7d71bedd2299f01dbc7c7b1c09bbd6b67a0a316922a290d7ddd2469600"
@@ -3559,6 +3571,12 @@
           "exists": true,
           "bytes": 189682,
           "sha256": "a8595d5ebda10feaf3315b68ae6464544fef81f5c9c5013301c1ba0a1d744364"
+        },
+        "hf_model": {
+          "path": "hf_model:index.html",
+          "exists": true,
+          "bytes": 189682,
+          "sha256": "a8595d5ebda10feaf3315b68ae6464544fef81f5c9c5013301c1ba0a1d744364"
         }
       },
       "failures": []
@@ -3581,6 +3599,12 @@
         },
         "hf_artifacts_docs": {
           "path": "hf_artifacts:docs/research_roadmap.html",
+          "exists": true,
+          "bytes": 31557,
+          "sha256": "28bf27ed26d08aef6ef9ad61cf4db37649476227b058a1c46434782787d92b18"
+        },
+        "hf_model": {
+          "path": "hf_model:research_roadmap.html",
           "exists": true,
           "bytes": 31557,
           "sha256": "28bf27ed26d08aef6ef9ad61cf4db37649476227b058a1c46434782787d92b18"
@@ -3609,6 +3633,12 @@
           "exists": true,
           "bytes": 2773799,
           "sha256": "a8444e1531763ade489af72626d22a273266b2b64a872c698addee5cbd2261d1"
+        },
+        "hf_model": {
+          "path": "hf_model:single_episode_explorer.html",
+          "exists": true,
+          "bytes": 2773799,
+          "sha256": "a8444e1531763ade489af72626d22a273266b2b64a872c698addee5cbd2261d1"
         }
       },
       "failures": []
@@ -3631,6 +3661,12 @@
         },
         "hf_artifacts_docs": {
           "path": "hf_artifacts:docs/site.webmanifest",
+          "exists": true,
+          "bytes": 725,
+          "sha256": "96aabeb9756771606958034c962a9d12b3149f867227219b0c56a412d580d54a"
+        },
+        "hf_model": {
+          "path": "hf_model:site.webmanifest",
           "exists": true,
           "bytes": 725,
           "sha256": "96aabeb9756771606958034c962a9d12b3149f867227219b0c56a412d580d54a"

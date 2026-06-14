@@ -369,6 +369,7 @@ def build_report(hf_root: Path) -> dict:
                 {
                     "hf_space": hf_root / "space" / filename,
                     "hf_artifacts_docs": hf_root / "artifacts/docs" / filename,
+                    "hf_model": hf_root / "model" / filename,
                 },
                 hf_root,
             )
