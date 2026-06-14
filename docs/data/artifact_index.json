@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-13T21:57:03+00:00",
+  "generated_at_utc": "2026-06-14T05:39:44+00:00",
   "status": "pass",
   "artifact_count": 164,
   "missing": [],
@@ -340,8 +340,8 @@
       "surface": "repo_hf",
       "shows": "Runs the owner-side Qwen3-Omni v6 one-sample reproduction smoke from a private staged model, adapter, JSONL, and exported media cache.",
       "exists": true,
-      "bytes": 2514,
-      "sha256": "65c692efa70e4440041bb4c1b7da2d92eded6b2925a22889caa1a18621e59247"
+      "bytes": 4082,
+      "sha256": "23cdd97be6cc7f516d231f65646215ff7447f47243040920b1840c7e76c09ff1"
     },
     {
       "id": "qwen3_video_feature_compat_patch",
@@ -462,7 +462,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "b7f30209e242dd07a0a5de5154a0c8caf3d8988995591da2bd35ba5bce0aa4b8"
+      "sha256": "24076a6db867af49f9b82d24b68816a1d2bbb4b31f7031aa89699326cb33539b"
     },
     {
       "id": "source_alignment_validator",
@@ -841,7 +841,7 @@
       "shows": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
       "exists": true,
       "bytes": 9016,
-      "sha256": "765cd4e45e0844534839cc9bcfe473613fa76c2aa073c74ccb08ac15a51da197"
+      "sha256": "c1b9c7bd3fdd7446f41b1c4247727ce135697bfc3539b82cabd0d0c09fe7307f"
     },
     {
       "id": "reproducibility_matrix",
@@ -898,7 +898,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 548190,
+      "bytes": 550970,
       "hash_policy": "existence_and_size_only"
     },
     {

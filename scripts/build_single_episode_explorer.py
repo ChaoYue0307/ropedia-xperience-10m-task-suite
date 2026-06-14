@@ -16,7 +16,7 @@ from pathlib import Path
 
 import numpy as np
 
-from task_display import task_display_name
+from task_display import TASK_DISPLAY_NAMES, task_display_name
 
 
 TASK_DISPLAY = {
@@ -27,6 +27,7 @@ TASK_DISPLAY = {
     "contact_prediction": task_display_name("contact_prediction"),
     "object_relevance": task_display_name("object_relevance"),
 }
+TASK_DISPLAY_ALL = dict(TASK_DISPLAY_NAMES)
 
 
 BLOCK_DISPLAY = {
@@ -66,7 +67,7 @@ def read_json(path: Path):
 
 def write_json(path: Path, data: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def block_modality(name: str) -> str:
@@ -157,8 +158,8 @@ def build_data(args: argparse.Namespace) -> dict:
     ablation_rows = read_csv(diagnostics_dir / "modality_ablation/ablation_metrics.csv")
     for row in ablation_rows:
         task = row.get("task")
-        if task in TASK_DISPLAY:
-            row["task_display_name"] = TASK_DISPLAY[task]
+        if task in TASK_DISPLAY_ALL:
+            row["task_display_name"] = TASK_DISPLAY_ALL[task]
     alignment_rows = read_csv(diagnostics_dir / "alignment_stress/alignment_shift_metrics.csv")
     timeline_rows = read_csv(diagnostics_dir / "timeline_overlay/timeline_overlay.csv")
     predictions = load_predictions(suite_dir)
@@ -259,7 +260,7 @@ def build_data(args: argparse.Namespace) -> dict:
             },
         },
         "tasks": TASK_DISPLAY,
-        "task_display_names": TASK_DISPLAY,
+        "task_display_names": TASK_DISPLAY_ALL,
         "feature_blocks": block_meta,
         "segments": build_action_segments(windows),
         "windows": explorer_windows,
@@ -286,7 +287,7 @@ HTML_TEMPLATE = """<!doctype html>
   <style>
     :root { color-scheme: dark; --page:#020502; --panel:#071207; --surface:#0b1709; --ink:#f4f8ef; --muted:#a7b5a3; --line:rgba(204,255,160,.24); --soft:rgba(204,255,160,.14); --green:#ccffa0; --cyan:#7ae5c3; --blue:#9bdfff; --red:#ff8f7a; --amber:#d8f4a5; --card:rgba(5,10,6,.84); --pill:rgba(255,255,255,.05); --font-ui:"Inter Tight",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --font-copy:"Inter Tight",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --font-btn:"Space Grotesk",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --max:1400px; }
     * { box-sizing:border-box; }
-    body { margin:0; background: radial-gradient(circle at 80% 12%, rgba(204,255,160,.13), transparent 28%), radial-gradient(circle, rgba(204,255,160,.10) 1px, transparent 1.4px), var(--page); background-size:auto,22px 22px,auto; color:var(--ink); font-family:var(--font-copy); line-height:1.5; font-synthesis-weight:none; }
+    body { margin:0; background:var(--page); color:var(--ink); font-family:var(--font-copy); line-height:1.5; font-synthesis-weight:none; }
     a { color:inherit; }
     .wrap { width:min(var(--max), calc(100% - 42px)); margin:0 auto; }
     header { position:sticky; top:0; z-index:10; background:rgba(2,5,2,.92); backdrop-filter:blur(16px); border-bottom:1px solid var(--soft); }
@@ -296,7 +297,7 @@ HTML_TEMPLATE = """<!doctype html>
     .nav-links { display:flex; gap:10px; color:#c9d5c5; font-family:var(--font-btn); font-size:14px; }
     .nav-links a { min-height:36px; display:inline-flex; align-items:center; justify-content:center; padding:0 14px; border:1px solid transparent; border-radius:999px; background:var(--pill); text-decoration:none; }
     .nav-links a:hover { border-color:var(--green); color:var(--green); background:rgba(255,255,255,.08); }
-    .hero { padding:54px 0 30px; border-bottom:1px solid var(--soft); background:#05060b; }
+    .hero { padding:78px 0 38px; border-bottom:1px solid var(--soft); background:linear-gradient(90deg, rgba(2,5,2,.95) 0%, rgba(2,5,2,.82) 55%, rgba(2,5,2,.70) 100%), linear-gradient(180deg, rgba(2,5,2,.08), rgba(5,6,11,.96)), url("assets/modalities/video.jpg") center right / cover no-repeat; }
     h1 { max-width:900px; margin:0; font-family:var(--font-ui); font-size:clamp(42px, 6vw, 76px); line-height:.98; letter-spacing:0; }
     .hero p { max-width:820px; margin:22px 0 0; color:#c7d1c3; font-size:18px; line-height:1.62; }
     .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-top:28px; max-width:900px; }
