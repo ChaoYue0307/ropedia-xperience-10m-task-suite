@@ -169,6 +169,7 @@ def main() -> int:
             [
                 hf_root / "space" / filename,
                 hf_root / "artifacts/docs" / filename,
+                hf_root / "model" / filename,
             ],
             dry_run=args.dry_run,
         )
