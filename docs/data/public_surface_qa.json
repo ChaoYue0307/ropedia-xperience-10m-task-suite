@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Project Surface",
   "status": "pass",
-  "generated_at_utc": "2026-06-15T17:25:51+00:00",
+  "generated_at_utc": "2026-06-15T17:32:36+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -43,12 +43,12 @@
         "publication_package": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-15T17:24:51+00:00"
+          "generated_at_utc": "2026-06-15T17:32:31+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-15T17:25:42+00:00"
+          "generated_at_utc": "2026-06-15T17:32:28+00:00"
         }
       },
       "failures": {}
@@ -98,7 +98,7 @@
         "Ropedia Xperience-10M Task Suite": 16,
         "Xperience-10M": 149,
         "12-task": 32,
-        "Qwen3-Omni": 141,
+        "Qwen3-Omni": 143,
         "128-episode pilot": 1
       }
     },
@@ -121,15 +121,15 @@
       "reason": "Readers should be able to find website reference, release package, mirror, and public presentation files from public copy.",
       "marker_counts": {
         "data/project_brief.json": 8,
-        "data/website_integrity.json": 2,
-        "data/rendered_site_check.json": 2,
-        "data/task_surface_integrity.json": 11,
-        "data/publication_audit.json": 2,
-        "data/mirror_parity.json": 2,
-        "data/public_surface_qa.json": 2,
-        "data/research_roadmap.json": 11,
-        "data/task_suite_enhancement_128.json": 17,
-        "data/tier2_task_suite.json": 11
+        "data/website_integrity.json": 6,
+        "data/rendered_site_check.json": 6,
+        "data/task_surface_integrity.json": 15,
+        "data/publication_audit.json": 6,
+        "data/mirror_parity.json": 6,
+        "data/public_surface_qa.json": 6,
+        "data/research_roadmap.json": 15,
+        "data/task_suite_enhancement_128.json": 28,
+        "data/tier2_task_suite.json": 23
       }
     },
     {

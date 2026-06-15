@@ -152,6 +152,49 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
     return updated
 
 
+def split_hf_frontmatter(text: str) -> tuple[str, str]:
+    lines = text.splitlines()
+    if not lines or lines[0].strip() != "---":
+        return "", text
+    for idx in range(1, len(lines)):
+        if lines[idx].strip() == "---":
+            frontmatter = "\n".join(lines[: idx + 1]).rstrip() + "\n\n"
+            body = "\n".join(lines[idx + 1 :]).lstrip()
+            return frontmatter, body
+    return "", text
+
+
+def refresh_project_readme_cards(hf_root: Path, *, dry_run: bool) -> list[str]:
+    """Keep HF project cards aligned with the current repo README body."""
+
+    project_readme = (ROOT / "README.md").read_text(encoding="utf-8").rstrip() + "\n"
+    updated = []
+    for relative_path in ("space/PROJECT_README.md", "artifacts/PROJECT_README.md", "model/PROJECT_README.md"):
+        path = hf_root / relative_path
+        if not path.exists():
+            continue
+        original = path.read_text(encoding="utf-8")
+        if original == project_readme:
+            continue
+        updated.append(relative_path)
+        if not dry_run:
+            path.write_text(project_readme, encoding="utf-8")
+
+    for relative_path in ("space/README.md", "model/README.md"):
+        path = hf_root / relative_path
+        if not path.exists():
+            continue
+        original = path.read_text(encoding="utf-8")
+        frontmatter, _body = split_hf_frontmatter(original)
+        refreshed = frontmatter + project_readme
+        if original == refreshed:
+            continue
+        updated.append(relative_path)
+        if not dry_run:
+            path.write_text(refreshed, encoding="utf-8")
+    return updated
+
+
 def read_current_scaleup_line() -> str:
     for line in (ROOT / "README.md").read_text(encoding="utf-8").splitlines():
         if line.startswith("| Scale-up |"):
@@ -312,7 +355,8 @@ def main() -> int:
             dry_run=args.dry_run,
         )
 
-    card_updates = ensure_enhancement_card_links(hf_root, dry_run=args.dry_run)
+    card_updates = refresh_project_readme_cards(hf_root, dry_run=args.dry_run)
+    card_updates += ensure_enhancement_card_links(hf_root, dry_run=args.dry_run)
     card_updates += ensure_tier2_card_links(hf_root, dry_run=args.dry_run)
     card_updates += ensure_current_qwen_card_links(hf_root, dry_run=args.dry_run)
     summary = {
