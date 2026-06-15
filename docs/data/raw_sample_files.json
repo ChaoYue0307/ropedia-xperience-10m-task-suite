@@ -1,0 +1,271 @@
+{
+  "title": "Ropedia Xperience-10M Raw Public Sample Files",
+  "status": "pass",
+  "source_checked_utc": "2026-06-15T08:12:55+00:00",
+  "dataset": {
+    "repo_id": "ropedia-ai/xperience-10m-sample",
+    "repo_url": "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample",
+    "repo_commit": "2d80b5af8085a18ffe702e1420968308007f6204",
+    "license": "cc-by-nc-4.0",
+    "episode_id": "xperience-10m-sample",
+    "hosting_policy": "Raw files are streamed or downloaded from the official public sample dataset. This task-suite repo mirrors derived artifacts and metadata only."
+  },
+  "browser_preview_policy": "The website includes compact 12 second H.264/AAC fast-start preview clips derived from the official public MP4 files so video and audio can play immediately in browsers. The complete raw MP4, HDF5, and RRD source links remain the authoritative files.",
+  "windowization": {
+    "num_frames": 5821,
+    "num_windows": 1161,
+    "window_frames": 20,
+    "stride_frames": 5,
+    "fps_observed": 20.00137419266181,
+    "feature_dim": 8546,
+    "audio_sample_rate": 16000,
+    "note": "The public task suite converts the raw episode into overlapping 20-frame windows with a 5-frame stride."
+  },
+  "sample_tree": [
+    "xperience-10m-sample/",
+    "  annotation.hdf5",
+    "  fisheye_cam0.mp4",
+    "  fisheye_cam1.mp4",
+    "  fisheye_cam2.mp4",
+    "  fisheye_cam3.mp4",
+    "  stereo_left.mp4",
+    "  stereo_right.mp4",
+    "  visualization.rrd"
+  ],
+  "preview_assets": [
+    {
+      "source_file": "fisheye_cam0.mp4",
+      "path": "assets/raw-sample-preview/fisheye_cam0_preview.mp4",
+      "bytes": 506126,
+      "duration_sec": 12,
+      "contains_audio": true
+    },
+    {
+      "source_file": "fisheye_cam1.mp4",
+      "path": "assets/raw-sample-preview/fisheye_cam1_preview.mp4",
+      "bytes": 648798,
+      "duration_sec": 12,
+      "contains_audio": false
+    },
+    {
+      "source_file": "fisheye_cam2.mp4",
+      "path": "assets/raw-sample-preview/fisheye_cam2_preview.mp4",
+      "bytes": 659709,
+      "duration_sec": 12,
+      "contains_audio": false
+    },
+    {
+      "source_file": "fisheye_cam3.mp4",
+      "path": "assets/raw-sample-preview/fisheye_cam3_preview.mp4",
+      "bytes": 330306,
+      "duration_sec": 12,
+      "contains_audio": false
+    },
+    {
+      "source_file": "stereo_left.mp4",
+      "path": "assets/raw-sample-preview/stereo_left_preview.mp4",
+      "bytes": 594158,
+      "duration_sec": 12,
+      "contains_audio": false
+    },
+    {
+      "source_file": "stereo_right.mp4",
+      "path": "assets/raw-sample-preview/stereo_right_preview.mp4",
+      "bytes": 650983,
+      "duration_sec": 12,
+      "contains_audio": false
+    }
+  ],
+  "files": [
+    {
+      "name": "annotation.hdf5",
+      "kind": "hdf5_annotation_container",
+      "role": "Primary synchronized annotation and sensor container.",
+      "bytes": 1931496028,
+      "content_type": "application/octet-stream",
+      "url": "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/annotation.hdf5",
+      "browser_behavior": "download_or_open_external",
+      "contains": [
+        "caption segments and object/interactions",
+        "depth and confidence arrays",
+        "camera pose and SLAM point cloud",
+        "full-body and hand mocap",
+        "IMU accelerometer and gyroscope",
+        "calibration and metadata"
+      ],
+      "task_suite_use": "Loaded by HOMIE and task-suite scripts to build aligned labels, sensor features, windows, object labels, and diagnostics."
+    },
+    {
+      "name": "fisheye_cam0.mp4",
+      "kind": "video_with_audio",
+      "role": "Fisheye camera 0 stream and the public sample audio source.",
+      "bytes": 89842251,
+      "content_type": "video/mp4",
+      "url": "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/fisheye_cam0.mp4",
+      "browser_preview": {
+        "path": "assets/raw-sample-preview/fisheye_cam0_preview.mp4",
+        "bytes": 506126,
+        "duration_sec": 12,
+        "codec": "h264/aac",
+        "derived_from": "official raw MP4"
+      },
+      "browser_behavior": "play_video_and_audio",
+      "contains": [
+        "egocentric fisheye RGB frames",
+        "embedded audio stream"
+      ],
+      "task_suite_use": "Video features feed visual tasks; the embedded audio stream feeds audio ablation and acoustic feature blocks."
+    },
+    {
+      "name": "fisheye_cam1.mp4",
+      "kind": "video",
+      "role": "Fisheye camera 1 stream.",
+      "bytes": 127085978,
+      "content_type": "video/mp4",
+      "url": "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/fisheye_cam1.mp4",
+      "browser_preview": {
+        "path": "assets/raw-sample-preview/fisheye_cam1_preview.mp4",
+        "bytes": 648798,
+        "duration_sec": 12,
+        "codec": "h264",
+        "derived_from": "official raw MP4"
+      },
+      "browser_behavior": "play_video",
+      "contains": [
+        "synchronized fisheye RGB frames"
+      ],
+      "task_suite_use": "Used as one of the synchronized visual feature streams."
+    },
+    {
+      "name": "fisheye_cam2.mp4",
+      "kind": "video",
+      "role": "Fisheye camera 2 stream.",
+      "bytes": 113406041,
+      "content_type": "video/mp4",
+      "url": "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/fisheye_cam2.mp4",
+      "browser_preview": {
+        "path": "assets/raw-sample-preview/fisheye_cam2_preview.mp4",
+        "bytes": 659709,
+        "duration_sec": 12,
+        "codec": "h264",
+        "derived_from": "official raw MP4"
+      },
+      "browser_behavior": "play_video",
+      "contains": [
+        "synchronized fisheye RGB frames"
+      ],
+      "task_suite_use": "Used as one of the synchronized visual feature streams."
+    },
+    {
+      "name": "fisheye_cam3.mp4",
+      "kind": "video",
+      "role": "Fisheye camera 3 stream.",
+      "bytes": 95024162,
+      "content_type": "video/mp4",
+      "url": "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/fisheye_cam3.mp4",
+      "browser_preview": {
+        "path": "assets/raw-sample-preview/fisheye_cam3_preview.mp4",
+        "bytes": 330306,
+        "duration_sec": 12,
+        "codec": "h264",
+        "derived_from": "official raw MP4"
+      },
+      "browser_behavior": "play_video",
+      "contains": [
+        "synchronized fisheye RGB frames"
+      ],
+      "task_suite_use": "Used as one of the synchronized visual feature streams."
+    },
+    {
+      "name": "stereo_left.mp4",
+      "kind": "video",
+      "role": "Left stereo RGB stream.",
+      "bytes": 22674748,
+      "content_type": "video/mp4",
+      "url": "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/stereo_left.mp4",
+      "browser_preview": {
+        "path": "assets/raw-sample-preview/stereo_left_preview.mp4",
+        "bytes": 594158,
+        "duration_sec": 12,
+        "codec": "h264",
+        "derived_from": "official raw MP4"
+      },
+      "browser_behavior": "play_video",
+      "contains": [
+        "synchronized stereo-left RGB frames"
+      ],
+      "task_suite_use": "Used for visual features and multi-view consistency retrieval targets."
+    },
+    {
+      "name": "stereo_right.mp4",
+      "kind": "video",
+      "role": "Right stereo RGB stream.",
+      "bytes": 25415328,
+      "content_type": "video/mp4",
+      "url": "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/stereo_right.mp4",
+      "browser_preview": {
+        "path": "assets/raw-sample-preview/stereo_right_preview.mp4",
+        "bytes": 650983,
+        "duration_sec": 12,
+        "codec": "h264",
+        "derived_from": "official raw MP4"
+      },
+      "browser_behavior": "play_video",
+      "contains": [
+        "synchronized stereo-right RGB frames"
+      ],
+      "task_suite_use": "Used as a paired stereo visual stream."
+    },
+    {
+      "name": "visualization.rrd",
+      "kind": "rerun_viewer_recording",
+      "role": "Optional Rerun visualization bundle for the sample episode.",
+      "bytes": 2702924036,
+      "content_type": "application/octet-stream",
+      "url": "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/visualization.rrd",
+      "browser_behavior": "download_or_open_with_rerun",
+      "contains": [
+        "prebuilt Rerun visualization state"
+      ],
+      "task_suite_use": "Not used for training or metrics; useful for external visual inspection with Rerun 0.29.0."
+    }
+  ],
+  "hdf5_organization": [
+    {
+      "group": "calibration",
+      "description": "Camera intrinsics/extrinsics and static calibration values used to align sensor streams."
+    },
+    {
+      "group": "caption",
+      "description": "JSON text with task config, action segments, object mentions, interaction descriptions, and global summary."
+    },
+    {
+      "group": "depth",
+      "description": "Depth maps and confidence channels aligned to the episode timeline."
+    },
+    {
+      "group": "full_body_mocap",
+      "description": "Full-body joint and contact signals for human motion modeling."
+    },
+    {
+      "group": "hand_mocap",
+      "description": "Left and right hand joint trajectories used by hand-motion and forecast tasks."
+    },
+    {
+      "group": "imu",
+      "description": "Accelerometer and gyroscope streams sampled at higher frequency than the video frames."
+    },
+    {
+      "group": "metadata",
+      "description": "Episode metadata, frame indexing, and source bookkeeping."
+    },
+    {
+      "group": "slam",
+      "description": "Camera trajectory, pose, and sparse SLAM point-cloud information."
+    },
+    {
+      "group": "video",
+      "description": "Video stream metadata and per-frame alignment information."
+    }
+  ]
+}

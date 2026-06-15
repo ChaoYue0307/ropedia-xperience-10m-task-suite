@@ -1,8 +1,8 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-15T07:54:17+00:00",
+  "generated_at_utc": "2026-06-15T08:43:19+00:00",
   "status": "pass",
-  "artifact_count": 164,
+  "artifact_count": 165,
   "missing": [],
   "by_kind": {
     "project_path": 14,
@@ -17,6 +17,7 @@
     "metrics_source": 26,
     "website_data": 3,
     "visual_evidence": 7,
+    "dataset_context": 1,
     "quality_gate": 12,
     "publication_package_check": 1,
     "scale_up_status": 1,
@@ -462,7 +463,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "c6108f2dca36ca31be5220a2b6e90425c80bf7645fe86a45de3e1cb77ae8849d"
+      "sha256": "e7538ef1a10abe11c4877e4f3775a006a4ccda73415d8d9deb6bd864900cdca0"
     },
     {
       "id": "source_alignment_validator",
@@ -696,6 +697,17 @@
       "sha256": "844ae1fb60b58bfb67c3599148a710ff723507ef4596c8271d4bc5a5aa66fb96"
     },
     {
+      "id": "raw_sample_files_manifest",
+      "title": "Raw public sample file manifest",
+      "path": "docs/data/raw_sample_files.json",
+      "kind": "dataset_context",
+      "surface": "website_hf",
+      "shows": "Lists the official public sample HDF5, MP4, and RRD files, derived browser-preview clips, playback/download URLs, file sizes, browser behavior, and HDF5 group organization.",
+      "exists": true,
+      "bytes": 9777,
+      "sha256": "16020e539b6ebe18e00801c2c6a51df3975afb4934d422fd11bc532639b578ec"
+    },
+    {
       "id": "quality_gates",
       "title": "Release checks",
       "path": "QUALITY_GATES.md",
@@ -715,7 +727,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8097,
-      "sha256": "fa4fa95ab2eb1d54ec533394b1c6eb7a1af201a9e2499c5a5bfb5e482b8fa0a0"
+      "sha256": "943eb9063fb8b0373878d3e140a74cfaf6be279a37f2123f8bee8fb803c456f1"
     },
     {
       "id": "public_surface_qa",
@@ -818,7 +830,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 98051,
+      "bytes": 98032,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -829,8 +841,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 42394,
-      "sha256": "43a70436108eea3fa6692096ebf318fb755ff040d925094ef9de018f212fde18"
+      "bytes": 43133,
+      "sha256": "03127d12a40606f96d99354e604aca148390cc29552a4c3f88ac3b3fdd193c24"
     },
     {
       "id": "reproducibility_contract",
@@ -862,8 +874,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 43663,
-      "sha256": "9c5eb1d7d973f961639dfe66bc15387fa91ead1f5d29165a61f7ed291899f71f"
+      "bytes": 44083,
+      "sha256": "cd00558a38d0d0dba9a3631fcbdb496b8761233e845082d3c1638cb5bc54510a"
     },
     {
       "id": "publication_audit",
@@ -898,7 +910,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 555083,
+      "bytes": 556838,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -910,7 +922,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 15774,
+      "bytes": 17210,
       "hash_policy": "existence_and_size_only"
     },
     {

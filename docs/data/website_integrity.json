@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-15T07:54:19+00:00",
+  "generated_at_utc": "2026-06-15T08:44:26+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 144,
-    "external_reference_count": 111,
-    "json_files": 38,
+    "local_references": 151,
+    "external_reference_count": 121,
+    "json_files": 39,
     "image_assets_referenced": 21,
     "failure_count": 0
   },
@@ -30,7 +30,7 @@
       "name": "project_sections_are_assigned_to_tabs",
       "status": "pass",
       "reason": "Every major research section should be assigned to a tab group.",
-      "section_count": 22
+      "section_count": 23
     },
     {
       "name": "project_hash_router_preserves_deep_links",
@@ -52,8 +52,8 @@
       "name": "project_sections_are_labeled_tabpanels",
       "status": "pass",
       "reason": "Every tabbed research section should expose a labeled panel role.",
-      "panel_count": 26,
-      "labeled_panel_count": 22
+      "panel_count": 27,
+      "labeled_panel_count": 23
     },
     {
       "name": "project_tabs_update_selected_state",
@@ -74,8 +74,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 70501,
-      "evidence_index": 96148
+      "overview_index": 76615,
+      "evidence_index": 102262
     },
     {
       "name": "project_status_links_json",
@@ -153,9 +153,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 70501,
-      "protocol_index": 92330,
-      "evidence_index": 96148
+      "overview_index": 76615,
+      "protocol_index": 98444,
+      "evidence_index": 102262
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -186,19 +186,61 @@
       "name": "dataset_card_section_links_official_dataset",
       "status": "pass",
       "reason": "The dataset-card section should link the official gated dataset.",
-      "marker_count": 2
+      "marker_count": 4
     },
     {
       "name": "dataset_card_section_links_public_sample",
       "status": "pass",
       "reason": "The dataset-card section should link the public sample dataset used here.",
-      "marker_count": 1
+      "marker_count": 3
     },
     {
       "name": "dataset_card_section_states_raw_data_boundary",
       "status": "pass",
       "reason": "The dataset-card section should state that raw Xperience-10M files are not redistributed.",
       "marker_count": 1
+    },
+    {
+      "name": "raw_sample_browser_section_present",
+      "status": "pass",
+      "reason": "The website should expose a direct raw public sample browser under the Data tab.",
+      "marker_count": 1
+    },
+    {
+      "name": "raw_sample_browser_links_manifest",
+      "status": "pass",
+      "reason": "The raw sample browser should expose a machine-readable file manifest.",
+      "marker_count": 2
+    },
+    {
+      "name": "raw_sample_browser_has_video_player",
+      "status": "pass",
+      "reason": "The raw sample browser should include a native video player for MP4 streams.",
+      "marker_count": 1
+    },
+    {
+      "name": "raw_sample_browser_has_audio_player",
+      "status": "pass",
+      "reason": "The raw sample browser should include a native audio player for the embedded MP4 audio stream.",
+      "marker_count": 1
+    },
+    {
+      "name": "raw_sample_browser_lists_core_files",
+      "status": "pass",
+      "reason": "The raw sample browser should list the annotation, MP4, and optional RRD files.",
+      "marker_count": 6
+    },
+    {
+      "name": "raw_sample_browser_links_preview_assets",
+      "status": "pass",
+      "reason": "The raw sample browser should link browser-playable preview clips for MP4 streams.",
+      "marker_count": 4
+    },
+    {
+      "name": "raw_sample_browser_links_full_raw_source",
+      "status": "pass",
+      "reason": "The raw sample browser should keep direct links to the complete raw source files.",
+      "marker_count": 2
     },
     {
       "name": "task_player_surface_present",
@@ -228,8 +270,8 @@
     },
     {
       "path": "index.html",
-      "id_count": 77,
-      "reference_count": 121,
+      "id_count": 90,
+      "reference_count": 127,
       "image_count": 24
     },
     {
@@ -241,7 +283,7 @@
     {
       "path": "single_episode_explorer.html",
       "id_count": 26,
-      "reference_count": 6,
+      "reference_count": 7,
       "image_count": 1
     }
   ],
@@ -253,7 +295,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 89995,
+      "bytes": 90555,
       "top_level_type": "dict"
     },
     {
@@ -288,12 +330,12 @@
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 98051,
+      "bytes": 98032,
       "top_level_type": "dict"
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 555083,
+      "bytes": 565472,
       "top_level_type": "dict"
     },
     {
@@ -357,6 +399,11 @@
       "top_level_type": "dict"
     },
     {
+      "path": "data/raw_sample_files.json",
+      "bytes": 9777,
+      "top_level_type": "dict"
+    },
+    {
       "path": "data/rendered_site_check.json",
       "bytes": 4032,
       "top_level_type": "dict"
@@ -398,7 +445,7 @@
     },
     {
       "path": "data/single_episode_explorer.json",
-      "bytes": 4305527,
+      "bytes": 4305626,
       "top_level_type": "dict"
     },
     {
@@ -428,7 +475,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 15774,
+      "bytes": 17210,
       "top_level_type": "dict"
     },
     {

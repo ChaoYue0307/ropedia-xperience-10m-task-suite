@@ -36,6 +36,14 @@ stereo_right.mp4
 visualization.rrd   # optional viewer artifact when available; not used for training
 ```
 
+The project website links these official public-sample files directly from the
+upstream Hugging Face dataset. It also includes compact derived MP4 preview
+clips so video and audio can play immediately in a browser; the full raw MP4,
+HDF5, and RRD sources remain linked to the official dataset. The task-suite
+repository and mirrors still do not redistribute the full raw MP4, HDF5, or RRD
+files; they keep derived artifacts, manifests, figures, compact previews, and
+validation reports.
+
 The sample card lists `cc-by-nc-4.0` and points to HOMIE Toolkit for inspecting
 the videos/annotations and Rerun 0.29.0 for `.rrd` visualization. Use of the
 full gated dataset remains governed by the official Xperience-10M terms. The

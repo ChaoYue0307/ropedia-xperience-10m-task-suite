@@ -498,6 +498,14 @@ ARTIFACTS = [
         "shows": "Regenerates logo derivatives, favicon variants, app icons, and the Open Graph social card from the generated logo mark.",
     },
     {
+        "id": "raw_sample_files_manifest",
+        "title": "Raw public sample file manifest",
+        "path": "docs/data/raw_sample_files.json",
+        "kind": "dataset_context",
+        "surface": "website_hf",
+        "shows": "Lists the official public sample HDF5, MP4, and RRD files, derived browser-preview clips, playback/download URLs, file sizes, browser behavior, and HDF5 group organization.",
+    },
+    {
         "id": "quality_gates",
         "title": "Release checks",
         "path": "QUALITY_GATES.md",

@@ -25,6 +25,11 @@ BANNED_DIR_NAMES = {"__pycache__"}
 BANNED_FILE_NAMES = {".DS_Store"}
 BANNED_SUFFIXES = {".pyc", ".pyo"}
 RAW_DATA_SUFFIXES = {".mp4", ".hdf5", ".h5", ".rrd"}
+ALLOWED_PREVIEW_VIDEO_PREFIXES = (
+    "docs/assets/raw-sample-preview/",
+    "assets/raw-sample-preview/",
+)
+MAX_PREVIEW_VIDEO_BYTES = 5 * 1024 * 1024
 HEAVY_MODEL_SUFFIXES = {".safetensors", ".bin", ".tar"}
 TEXT_SUFFIXES = {
     "",
@@ -174,6 +179,14 @@ def iter_public_files(root: Path, paths: list[Path] | None = None):
         yield path
 
 
+def is_allowed_preview_video(path_rel: str, size: int) -> bool:
+    return (
+        path_rel.endswith("_preview.mp4")
+        and any(path_rel.startswith(prefix) for prefix in ALLOWED_PREVIEW_VIDEO_PREFIXES)
+        and size <= MAX_PREVIEW_VIDEO_BYTES
+    )
+
+
 def scan(root: Path, *, paths: list[Path] | None = None, display_root: str | None = None) -> dict:
     violations: list[dict] = []
     text_files = 0
@@ -195,7 +208,7 @@ def scan(root: Path, *, paths: list[Path] | None = None, display_root: str | Non
         suffix = path.suffix.lower()
         if path.name in BANNED_FILE_NAMES or suffix in BANNED_SUFFIXES:
             violations.append({"kind": "generated_cache_file", "path": path_rel})
-        if suffix in RAW_DATA_SUFFIXES:
+        if suffix in RAW_DATA_SUFFIXES and not is_allowed_preview_video(path_rel, size):
             violations.append({"kind": "raw_xperience10m_data", "path": path_rel})
         allowed_model_weight = (
             display_root == "hf_publish/model"

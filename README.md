@@ -433,6 +433,13 @@ Xperience-10M sample episode:
     stereo_right.mp4
 ```
 
+The public website also includes a Raw Sample Browser that lists every official
+sample file, plays compact browser-preview clips derived from the official MP4
+streams, exposes the audio track embedded in `fisheye_cam0.mp4`, links the full
+raw Hugging Face source for each MP4/HDF5/RRD file, and describes the
+`annotation.hdf5` group organization without copying large raw files into this
+repository.
+
 The public sample dataset identifier is:
 
 ```text

@@ -41,6 +41,7 @@ DATA_FILES = [
     "qwen3_full_parameter_gates.json",
     "qwen3_v5_v6_comparison.json",
     "quality_gates.json",
+    "raw_sample_files.json",
     "rendered_site_check.json",
     "reproducibility_matrix.json",
     "research_roadmap.json",
@@ -78,6 +79,12 @@ ASSET_FILES = [
     "modalities/motion_capture.png",
     "modalities/pose_slam.png",
     "modalities/video.jpg",
+    "raw-sample-preview/fisheye_cam0_preview.mp4",
+    "raw-sample-preview/fisheye_cam1_preview.mp4",
+    "raw-sample-preview/fisheye_cam2_preview.mp4",
+    "raw-sample-preview/fisheye_cam3_preview.mp4",
+    "raw-sample-preview/stereo_left_preview.mp4",
+    "raw-sample-preview/stereo_right_preview.mp4",
 ]
 
 SCRIPT_FILES = [

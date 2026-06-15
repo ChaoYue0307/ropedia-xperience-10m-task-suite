@@ -496,23 +496,24 @@
     #roadmap { order: 2; }
     #reading-path { order: 3; }
     #dataset-card { order: 4; }
-    #suite { order: 5; }
-    #pipeline { order: 6; }
-    #protocol { order: 7; }
-    #takeaways { order: 8; }
-    #models { order: 9; }
-    #neural { order: 10; }
-    #directions { order: 11; }
-    #extensions { order: 12; }
-    #architectures { order: 13; }
-    #walkthroughs { order: 14; }
-    #tasks { order: 15; }
-    #features { order: 16; }
-    #diagnostics { order: 17; }
-    #evidence { order: 18; }
-    #artifacts { order: 19; }
-    #omni-scale-up { order: 20; }
-    #run { order: 21; }
+    #raw-sample { order: 5; }
+    #suite { order: 6; }
+    #pipeline { order: 7; }
+    #protocol { order: 8; }
+    #takeaways { order: 9; }
+    #models { order: 10; }
+    #neural { order: 11; }
+    #directions { order: 12; }
+    #extensions { order: 13; }
+    #architectures { order: 14; }
+    #walkthroughs { order: 15; }
+    #tasks { order: 16; }
+    #features { order: 17; }
+    #diagnostics { order: 18; }
+    #evidence { order: 19; }
+    #artifacts { order: 20; }
+    #omni-scale-up { order: 21; }
+    #run { order: 22; }
     #suite { padding: 62px 0 76px; }
     #suite .wrap { width: min(1680px, calc(100% - 48px)); }
     #suite .section-head { max-width: var(--max); margin-inline: auto; }
@@ -740,6 +741,225 @@
       color: var(--muted);
       font-size: 13px;
       line-height: 1.55;
+    }
+    .raw-sample-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(330px, 0.46fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .raw-player-panel,
+    .raw-file-panel,
+    .raw-detail-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.07), rgba(7, 18, 7, 0.88)),
+        var(--surface);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
+    }
+    .raw-player-panel {
+      padding: clamp(18px, 2.2vw, 28px);
+      display: grid;
+      gap: 16px;
+      align-content: start;
+      min-width: 0;
+    }
+    .raw-player-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--soft-line);
+    }
+    .raw-player-top h3 {
+      margin: 0;
+      font-family: var(--font-ui);
+      font-size: clamp(24px, 3vw, 38px);
+      line-height: 1.04;
+      overflow-wrap: anywhere;
+    }
+    .raw-player-top p {
+      margin: 8px 0 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .raw-kind-pill {
+      flex: none;
+      border: 1px solid rgba(204, 255, 160, 0.28);
+      border-radius: 999px;
+      background: rgba(204, 255, 160, 0.08);
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 9px;
+      text-transform: uppercase;
+    }
+    .raw-video-frame {
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: var(--radius);
+      background: #020502;
+      overflow: hidden;
+    }
+    .raw-video-frame[hidden],
+    .raw-audio-frame[hidden] { display: none; }
+    .raw-video-frame video {
+      display: block;
+      width: 100%;
+      height: clamp(240px, 42vh, 420px);
+      object-fit: contain;
+      background: #020502;
+    }
+    .raw-preview-note {
+      margin: -4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .raw-preview-note[hidden] { display: none; }
+    .raw-audio-frame {
+      border: 1px solid rgba(216, 244, 165, 0.26);
+      border-radius: var(--radius);
+      background: rgba(216, 244, 165, 0.06);
+      padding: 14px;
+    }
+    .raw-audio-frame strong {
+      display: block;
+      margin-bottom: 10px;
+      font-family: var(--font-ui);
+      font-size: 14px;
+    }
+    .raw-audio-frame audio { width: 100%; }
+    .raw-link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .raw-link-row a {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 10px;
+      text-decoration: none;
+      background: rgba(2, 5, 2, 0.42);
+    }
+    .raw-link-row a:hover { border-color: var(--green); color: var(--ink); }
+    .raw-file-panel {
+      padding: 14px;
+      display: grid;
+      gap: 8px;
+      align-content: start;
+    }
+    .raw-file-button {
+      appearance: none;
+      width: 100%;
+      min-height: 78px;
+      border: 1px solid rgba(204, 255, 160, 0.14);
+      border-radius: 6px;
+      background: rgba(2, 5, 2, 0.48);
+      color: var(--ink);
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 5px 12px;
+      align-items: start;
+      padding: 12px;
+      text-align: left;
+      font: inherit;
+    }
+    .raw-file-button:hover,
+    .raw-file-button.active {
+      border-color: rgba(204, 255, 160, 0.74);
+      background: rgba(204, 255, 160, 0.10);
+    }
+    .raw-file-button strong {
+      min-width: 0;
+      font-family: var(--font-ui);
+      font-size: 15px;
+      line-height: 1.16;
+      overflow-wrap: anywhere;
+    }
+    .raw-file-button span {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .raw-file-button em {
+      color: var(--green);
+      font-style: normal;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.2;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .raw-detail-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .raw-detail-card {
+      padding: 22px;
+      min-width: 0;
+    }
+    .raw-detail-card h3 {
+      margin: 0 0 12px;
+      font-family: var(--font-ui);
+      font-size: 20px;
+      line-height: 1.18;
+    }
+    .raw-detail-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.58;
+    }
+    .raw-tree {
+      margin: 0;
+      overflow-x: auto;
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      background: rgba(2, 5, 2, 0.62);
+      padding: 15px;
+      color: #eaf5e5;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.52;
+    }
+    .hdf5-map {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .hdf5-map article {
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      background: rgba(2, 5, 2, 0.48);
+      padding: 12px;
+      min-width: 0;
+    }
+    .hdf5-map strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+    .hdf5-map span {
+      color: #c7d1c3;
+      font-size: 12px;
+      line-height: 1.45;
     }
     .architecture-image {
       display: block;
@@ -2107,6 +2327,9 @@
       .task-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .storyboard-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .modality-atlas { grid-template-columns: 1fr; }
+      .raw-sample-layout,
+      .raw-detail-grid { grid-template-columns: 1fr; }
+      .hdf5-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .artifact-group-head { grid-template-columns: 1fr; align-items: start; }
       .chart-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
@@ -2179,6 +2402,14 @@
       .brief-panel { padding: 18px; }
       .artifact-group { padding: 16px; }
       .modality-atlas-panel { padding: 14px; }
+      .raw-player-panel,
+      .raw-file-panel,
+      .raw-detail-card { padding: 14px; }
+      .raw-player-top { display: block; }
+      .raw-kind-pill { display: inline-flex; margin-top: 12px; }
+      .raw-file-button { grid-template-columns: 1fr; }
+      .raw-file-button em { text-align: left; }
+      .hdf5-map { grid-template-columns: 1fr; }
       .atlas-card { padding: 12px; }
       .atlas-top { display: block; }
       .atlas-type { margin-top: 8px; text-align: left; }
@@ -2855,11 +3086,91 @@
           <article class="artifact"><h3>Public sample</h3><p>The current task suite is built from one public sample episode, not from the entire gated dataset.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
           <article class="artifact"><h3>Modalities</h3><p>The sample exposes synchronized video, audio, depth, pose/SLAM, motion capture, inertial signals, calibration, and language annotations.</p><a href="data/modality_atlas.json">modality atlas</a></article>
           <article class="artifact"><h3>Multi-episode pilot</h3><p>The selected 128-episode Qwen3-Omni LoRA v6 diagnostic branch is verified with 4,032 held-out test predictions and 99.90% JSON validity. Action/subtask metrics are still weak, so this remains a baseline for error analysis.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a><a href="data/qwen3_v5_v6_comparison.json">v5/v6 comparison</a></article>
-          <article class="artifact"><h3>Data boundary</h3><p>Raw MP4, HDF5, RRD files, private gated data, and full Qwen weights are not redistributed in this project.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a></article>
-          <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, and no raw-data redistribution.</p><a href="data/modality_atlas.json">modality atlas</a></article>
+          <article class="artifact"><h3>Raw sample browser</h3><p>The Data tab now exposes the official public sample files directly, including playable MP4 video streams and the audio track embedded in fisheye_cam0.mp4.</p><a href="#raw-sample">open raw browser</a><a href="data/raw_sample_files.json">raw manifest</a></article>
+          <article class="artifact"><h3>Data boundary</h3><p>Raw MP4, HDF5, RRD files are streamed from the official public sample source when opened here; private gated data and full Qwen weights are not redistributed in this project.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a></article>
+          <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, plus direct links to the official raw sample files.</p><a href="data/modality_atlas.json">modality atlas</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, and misalignment.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Responsible use</h3><p>This project is for research exploration and excludes identity recognition, surveillance, biometric profiling, sensitive-attribute inference, and safety-critical deployment.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">use notes</a></article>
           <article class="artifact"><h3>Later milestones</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, held-out Qwen3-Omni evaluation, and future Xperience-native pretraining.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">native pretraining</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="raw-sample" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Raw public sample browser.</h2>
+          <p>Open each official Xperience-10M sample file from the project page. Video and audio use compact browser previews derived from the official MP4 files, with direct links beside them for the full raw Hugging Face sources. HDF5 and RRD files are shown with their role, size, organization, and direct source links.</p>
+        </div>
+        <div class="raw-sample-layout">
+          <article class="raw-player-panel" id="rawPlayerPanel">
+            <div class="raw-player-top">
+              <div>
+                <h3 id="rawFileTitle">fisheye_cam0.mp4</h3>
+                <p id="rawFileDescription">Fisheye camera 0 stream and the public sample audio source. This file can be played as video and as the embedded audio track.</p>
+              </div>
+              <span class="raw-kind-pill" id="rawKindPill">video + audio</span>
+            </div>
+            <div class="raw-video-frame" id="rawVideoFrame">
+              <video id="rawVideo" controls preload="metadata" playsinline poster="assets/modalities/video.jpg">
+                <source src="assets/raw-sample-preview/fisheye_cam0_preview.mp4" type="video/mp4">
+              </video>
+            </div>
+            <p class="raw-preview-note" id="rawPreviewNote">Playing a 12 second fast-start preview derived from the official raw MP4. Use the source link for the complete file.</p>
+            <div class="raw-audio-frame" id="rawAudioFrame">
+              <strong>Embedded audio preview from fisheye_cam0.mp4</strong>
+              <audio id="rawAudio" controls preload="metadata">
+                <source src="assets/raw-sample-preview/fisheye_cam0_preview.mp4" type="video/mp4">
+              </audio>
+            </div>
+            <p class="atlas-note" id="rawFileUse">Video features feed visual tasks; the embedded audio stream feeds audio ablation and acoustic feature blocks.</p>
+            <div class="raw-link-row">
+              <a id="rawOpenPreview" href="assets/raw-sample-preview/fisheye_cam0_preview.mp4">open playable preview</a>
+              <a id="rawOpenSource" href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/fisheye_cam0.mp4">open full raw source</a>
+              <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">official sample dataset</a>
+              <a href="data/raw_sample_files.json">machine-readable manifest</a>
+            </div>
+          </article>
+          <aside class="raw-file-panel" aria-label="Raw sample files">
+            <button type="button" class="raw-file-button active" data-raw-file="fisheye_cam0.mp4"><strong>fisheye_cam0.mp4</strong><em>89.84 MB</em><span>Fisheye video plus embedded audio. Playable preview, full raw source linked.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="fisheye_cam1.mp4"><strong>fisheye_cam1.mp4</strong><em>127.09 MB</em><span>Second synchronized fisheye camera stream. Playable preview.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="fisheye_cam2.mp4"><strong>fisheye_cam2.mp4</strong><em>113.41 MB</em><span>Third synchronized fisheye camera stream. Playable preview.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="fisheye_cam3.mp4"><strong>fisheye_cam3.mp4</strong><em>95.02 MB</em><span>Fourth synchronized fisheye camera stream. Playable preview.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="stereo_left.mp4"><strong>stereo_left.mp4</strong><em>22.67 MB</em><span>Left stereo RGB stream. Playable preview.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="stereo_right.mp4"><strong>stereo_right.mp4</strong><em>25.42 MB</em><span>Right stereo RGB stream. Playable preview.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="annotation.hdf5"><strong>annotation.hdf5</strong><em>1.93 GB</em><span>Sensor, labels, pose, mocap, IMU, depth, calibration, and captions.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="visualization.rrd"><strong>visualization.rrd</strong><em>2.70 GB</em><span>Optional Rerun viewer recording. Download/open with Rerun 0.29.0.</span></button>
+          </aside>
+        </div>
+        <div class="raw-detail-grid">
+          <article class="raw-detail-card">
+            <h3>Sample folder organization</h3>
+            <p>The official public sample is one episode folder. The task suite reads the HDF5 annotations and six synchronized MP4 streams, then writes 20-frame windows with a 5-frame stride.</p>
+            <pre class="raw-tree">xperience-10m-sample/
+  annotation.hdf5
+  fisheye_cam0.mp4
+  fisheye_cam1.mp4
+  fisheye_cam2.mp4
+  fisheye_cam3.mp4
+  stereo_left.mp4
+  stereo_right.mp4
+  visualization.rrd</pre>
+          </article>
+          <article class="raw-detail-card">
+            <h3>annotation.hdf5 group map</h3>
+            <p>The raw HDF5 is a binary container, so the browser shows its organization rather than loading the whole file into memory.</p>
+            <div class="hdf5-map">
+              <article><strong>calibration</strong><span>Camera intrinsics/extrinsics and static alignment values.</span></article>
+              <article><strong>caption</strong><span>JSON text with actions, objects, interactions, segments, and global summary.</span></article>
+              <article><strong>depth</strong><span>Depth maps and confidence channels aligned to the episode timeline.</span></article>
+              <article><strong>full_body_mocap</strong><span>Full-body joint and contact signals for human motion modeling.</span></article>
+              <article><strong>hand_mocap</strong><span>Left and right hand joint trajectories used by forecast tasks.</span></article>
+              <article><strong>imu</strong><span>Accelerometer and gyroscope streams sampled above video rate.</span></article>
+              <article><strong>metadata</strong><span>Episode metadata, frame indexing, and source bookkeeping.</span></article>
+              <article><strong>slam</strong><span>Camera trajectory, pose, and sparse SLAM point-cloud information.</span></article>
+              <article><strong>video</strong><span>Video metadata and per-frame alignment information.</span></article>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -3430,6 +3741,106 @@ python scripts/validate_publication_package.py</code></pre>
       { key: "output", label: "Output" },
       { key: "evaluate", label: "Evaluate" }
     ];
+    const rawSampleFiles = [
+      {
+        name: "fisheye_cam0.mp4",
+        kind: "video + audio",
+        bytes: 89842251,
+        description: "Fisheye camera 0 stream and the public sample audio source. The page plays a browser-optimized preview and links the complete raw MP4.",
+        use: "Video features feed visual tasks; the embedded audio stream feeds audio ablation and acoustic feature blocks.",
+        url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/fisheye_cam0.mp4",
+        previewUrl: "assets/raw-sample-preview/fisheye_cam0_preview.mp4",
+        previewBytes: 506126,
+        previewNote: "Playing a 12 second fast-start preview derived from the official raw MP4. Use the source link for the complete file.",
+        mediaType: "video",
+        hasAudio: true
+      },
+      {
+        name: "fisheye_cam1.mp4",
+        kind: "video",
+        bytes: 127085978,
+        description: "Second synchronized fisheye camera stream from the same episode.",
+        use: "Used as one of the synchronized visual feature streams.",
+        url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/fisheye_cam1.mp4",
+        previewUrl: "assets/raw-sample-preview/fisheye_cam1_preview.mp4",
+        previewBytes: 648798,
+        previewNote: "Playing a 12 second fast-start preview derived from the official raw MP4. Use the source link for the complete file.",
+        mediaType: "video",
+        hasAudio: false
+      },
+      {
+        name: "fisheye_cam2.mp4",
+        kind: "video",
+        bytes: 113406041,
+        description: "Third synchronized fisheye camera stream from the same episode.",
+        use: "Used as one of the synchronized visual feature streams.",
+        url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/fisheye_cam2.mp4",
+        previewUrl: "assets/raw-sample-preview/fisheye_cam2_preview.mp4",
+        previewBytes: 659709,
+        previewNote: "Playing a 12 second fast-start preview derived from the official raw MP4. Use the source link for the complete file.",
+        mediaType: "video",
+        hasAudio: false
+      },
+      {
+        name: "fisheye_cam3.mp4",
+        kind: "video",
+        bytes: 95024162,
+        description: "Fourth synchronized fisheye camera stream from the same episode.",
+        use: "Used as one of the synchronized visual feature streams.",
+        url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/fisheye_cam3.mp4",
+        previewUrl: "assets/raw-sample-preview/fisheye_cam3_preview.mp4",
+        previewBytes: 330306,
+        previewNote: "Playing a 12 second fast-start preview derived from the official raw MP4. Use the source link for the complete file.",
+        mediaType: "video",
+        hasAudio: false
+      },
+      {
+        name: "stereo_left.mp4",
+        kind: "video",
+        bytes: 22674748,
+        description: "Left stereo RGB stream, synchronized with the fisheye cameras and annotation container.",
+        use: "Used for visual features and multi-view consistency retrieval targets.",
+        url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/stereo_left.mp4",
+        previewUrl: "assets/raw-sample-preview/stereo_left_preview.mp4",
+        previewBytes: 594158,
+        previewNote: "Playing a 12 second fast-start preview derived from the official raw MP4. Use the source link for the complete file.",
+        mediaType: "video",
+        hasAudio: false
+      },
+      {
+        name: "stereo_right.mp4",
+        kind: "video",
+        bytes: 25415328,
+        description: "Right stereo RGB stream, synchronized with stereo_left and the fisheye cameras.",
+        use: "Used as a paired stereo visual stream.",
+        url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/stereo_right.mp4",
+        previewUrl: "assets/raw-sample-preview/stereo_right_preview.mp4",
+        previewBytes: 650983,
+        previewNote: "Playing a 12 second fast-start preview derived from the official raw MP4. Use the source link for the complete file.",
+        mediaType: "video",
+        hasAudio: false
+      },
+      {
+        name: "annotation.hdf5",
+        kind: "HDF5 annotations",
+        bytes: 1931496028,
+        description: "Primary synchronized annotation and sensor container for depth, pose, mocap, IMU, calibration, metadata, caption text, and labels.",
+        use: "Loaded by HOMIE and task-suite scripts to build aligned labels, sensor features, windows, object labels, and diagnostics.",
+        url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/annotation.hdf5",
+        mediaType: "binary",
+        hasAudio: false
+      },
+      {
+        name: "visualization.rrd",
+        kind: "Rerun viewer file",
+        bytes: 2702924036,
+        description: "Optional Rerun visualization bundle for inspecting the episode outside the browser.",
+        use: "Not used for training or metrics; useful for external visual inspection with Rerun 0.29.0.",
+        url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/visualization.rrd",
+        mediaType: "binary",
+        hasAudio: false
+      }
+    ];
     const tabSections = Array.from(document.querySelectorAll("[data-project-tab]"));
     const tabButtons = Array.from(document.querySelectorAll("[data-tab-key]"));
     const sectionTabs = document.getElementById("sectionTabs");
@@ -3438,6 +3849,7 @@ python scripts/validate_publication_package.py</code></pre>
       { id: "roadmap", label: "Roadmap" },
       { id: "reading-path", label: "Reading Path" },
       { id: "dataset-card", label: "Dataset Card" },
+      { id: "raw-sample", label: "Raw Sample Browser" },
       { id: "suite", label: "12-Task Map" },
       { id: "walkthroughs", label: "Interactive Walkthrough" },
       { id: "tasks", label: "Task Cards" },
@@ -3638,6 +4050,89 @@ python scripts/validate_publication_package.py</code></pre>
       });
     }
     initContentTabs();
+
+    function formatBytes(bytes) {
+      if (!Number.isFinite(Number(bytes))) return "unknown size";
+      const units = ["B", "KB", "MB", "GB"];
+      let value = Number(bytes);
+      let unitIndex = 0;
+      while (value >= 1000 && unitIndex < units.length - 1) {
+        value /= 1000;
+        unitIndex += 1;
+      }
+      return `${value.toFixed(unitIndex === 0 ? 0 : 2)} ${units[unitIndex]}`;
+    }
+
+    function setRawSampleFile(file) {
+      const video = document.getElementById("rawVideo");
+      const audio = document.getElementById("rawAudio");
+      const videoFrame = document.getElementById("rawVideoFrame");
+      const audioFrame = document.getElementById("rawAudioFrame");
+      const sourceLink = document.getElementById("rawOpenSource");
+      const previewLink = document.getElementById("rawOpenPreview");
+      const previewNote = document.getElementById("rawPreviewNote");
+      const mediaUrl = file.previewUrl || file.url;
+      document.getElementById("rawFileTitle").textContent = file.name;
+      document.getElementById("rawFileDescription").textContent = file.description;
+      document.getElementById("rawKindPill").textContent = `${file.kind} · ${formatBytes(file.bytes)}`;
+      document.getElementById("rawFileUse").textContent = file.use;
+      sourceLink.href = file.url;
+      sourceLink.textContent = file.mediaType === "video" ? "open full raw source" : "open/download source";
+
+      if (file.previewUrl) {
+        previewLink.hidden = false;
+        previewLink.href = file.previewUrl;
+        previewLink.textContent = `open playable preview (${formatBytes(file.previewBytes)})`;
+        previewNote.hidden = false;
+        previewNote.textContent = file.previewNote;
+      } else {
+        previewLink.hidden = true;
+        previewNote.hidden = true;
+      }
+
+      if (file.mediaType === "video") {
+        videoFrame.hidden = false;
+        if (video.querySelector("source").getAttribute("src") !== mediaUrl) {
+          video.pause();
+          video.querySelector("source").src = mediaUrl;
+          video.load();
+        }
+      } else {
+        video.pause();
+        videoFrame.hidden = true;
+      }
+
+      if (file.hasAudio) {
+        audioFrame.hidden = false;
+        if (audio.querySelector("source").getAttribute("src") !== mediaUrl) {
+          audio.pause();
+          audio.querySelector("source").src = mediaUrl;
+          audio.load();
+        }
+      } else {
+        audio.pause();
+        audioFrame.hidden = true;
+      }
+
+      document.querySelectorAll("[data-raw-file]").forEach((button) => {
+        const active = button.dataset.rawFile === file.name;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+    }
+
+    function initRawSampleBrowser() {
+      const buttons = Array.from(document.querySelectorAll("[data-raw-file]"));
+      if (!buttons.length) return;
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const file = rawSampleFiles.find((item) => item.name === button.dataset.rawFile);
+          if (file) setRawSampleFile(file);
+        });
+      });
+      setRawSampleFile(rawSampleFiles[0]);
+    }
+    initRawSampleBrowser();
 
     const escapeHtml = (value) => String(value ?? "")
       .replaceAll("&", "&amp;")

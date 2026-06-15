@@ -401,6 +401,48 @@ def validate(docs_root: Path, site_base: str) -> dict:
             "The dataset-card section should state that raw Xperience-10M files are not redistributed.",
         ),
         (
+            "raw_sample_browser_section_present",
+            '<section id="raw-sample"',
+            None,
+            "The website should expose a direct raw public sample browser under the Data tab.",
+        ),
+        (
+            "raw_sample_browser_links_manifest",
+            'data/raw_sample_files.json',
+            None,
+            "The raw sample browser should expose a machine-readable file manifest.",
+        ),
+        (
+            "raw_sample_browser_has_video_player",
+            'id="rawVideo"',
+            None,
+            "The raw sample browser should include a native video player for MP4 streams.",
+        ),
+        (
+            "raw_sample_browser_has_audio_player",
+            'id="rawAudio"',
+            None,
+            "The raw sample browser should include a native audio player for the embedded MP4 audio stream.",
+        ),
+        (
+            "raw_sample_browser_lists_core_files",
+            'visualization.rrd',
+            None,
+            "The raw sample browser should list the annotation, MP4, and optional RRD files.",
+        ),
+        (
+            "raw_sample_browser_links_preview_assets",
+            'assets/raw-sample-preview/fisheye_cam0_preview.mp4',
+            None,
+            "The raw sample browser should link browser-playable preview clips for MP4 streams.",
+        ),
+        (
+            "raw_sample_browser_links_full_raw_source",
+            'open full raw source',
+            None,
+            "The raw sample browser should keep direct links to the complete raw source files.",
+        ),
+        (
             "task_player_surface_present",
             'id="taskPlayer"',
             None,
@@ -495,6 +537,13 @@ def validate(docs_root: Path, site_base: str) -> dict:
             detail = {"card_count": card_count}
         elif name.startswith("dataset_card_section_"):
             marker_count = dataset_text.count(marker)
+            passed = marker_count >= 1
+            detail = {"marker_count": marker_count}
+        elif name.startswith("raw_sample_browser_"):
+            if name == "raw_sample_browser_section_present":
+                marker_count = len(re.findall(r'<section\b[^>]*\bid=["\']raw-sample["\']', index_text))
+            else:
+                marker_count = index_text.count(marker)
             passed = marker_count >= 1
             detail = {"marker_count": marker_count}
         elif name == "project_overview_precedes_progress_ledger":

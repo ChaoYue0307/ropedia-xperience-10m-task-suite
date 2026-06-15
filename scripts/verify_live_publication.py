@@ -73,6 +73,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "raw_sample_files_json",
+        "title": "Raw public sample file manifest",
+        "local_path": "docs/data/raw_sample_files.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/raw_sample_files.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/raw_sample_files.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/raw_sample_files.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/raw_sample_files.json",
+        },
+    },
+    {
         "id": "single_episode_explorer_html",
         "title": "Single-episode explorer HTML",
         "local_path": "docs/single_episode_explorer.html",

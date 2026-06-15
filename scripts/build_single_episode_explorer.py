@@ -250,7 +250,7 @@ def build_data(args: argparse.Namespace) -> dict:
             "object_label_rows": len(object_rows),
             "object_vocab_count": len(read_json(diagnostics_dir / "object_labels/object_vocab.json")["vocab"]),
             "timeline_prediction_rows": len(timeline_rows),
-            "source_policy": "Window-level labels, features, predictions, and diagnostics only. Raw Xperience-10M MP4/HDF5/RRD files are not embedded.",
+            "source_policy": "Window-level labels, features, predictions, and diagnostics are embedded here. Official raw MP4/HDF5/RRD files are linked from the Raw Sample Browser, with compact browser-preview clips for immediate MP4/audio playback.",
             "annotation_hash_recorded": any("annotation.hdf5" in key for key in provenance["input_file_hashes"]),
             "summary": {
                 "num_windows": summary.get("num_windows"),
@@ -355,7 +355,7 @@ HTML_TEMPLATE = """<!doctype html>
   <header>
     <div class="wrap nav">
       <a class="brand" href="index.html"><img src="assets/brand/xperience10m-logo-favicon-64.png" alt=""><span>Ropedia Xperience-10M</span></a>
-      <nav class="nav-links"><a href="index.html">Project</a><a href="single_episode_explorer.html">Explorer</a><a href="data/single_episode_explorer.json">Data JSON</a></nav>
+      <nav class="nav-links"><a href="index.html">Project</a><a href="index.html#raw-sample">Raw Sample</a><a href="single_episode_explorer.html">Explorer</a><a href="data/single_episode_explorer.json">Data JSON</a></nav>
     </div>
   </header>
   <section class="hero">
@@ -381,7 +381,7 @@ HTML_TEMPLATE = """<!doctype html>
         <label for="searchBox">Search Action or Object</label>
         <input id="searchBox" type="search" placeholder="e.g. Pour coffee, kettle">
         <div class="button-row"><button id="firstMatch" type="button">First Match</button><button id="firstPred" type="button">First Predicted</button></div>
-        <p class="note">The page uses window-level exported artifacts only. Raw video, raw HDF5, and RRD assets are not embedded.</p>
+        <p class="note">This explorer embeds window-level exported artifacts. Open the Raw Sample page to play browser-preview clips, access the full raw MP4/HDF5/RRD source files, and inspect the HDF5/RRD file organization.</p>
       </aside>
       <section class="content">
         <div class="panel timeline">
