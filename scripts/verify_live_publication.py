@@ -13,6 +13,7 @@ import hashlib
 import json
 import subprocess
 import tempfile
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -25,6 +26,7 @@ DEFAULT_OUTPUT = ROOT / "docs/data/live_publication_status.json"
 TIMEOUT_SECONDS = 30
 LARGE_FILE_TIMEOUT_SECONDS = 240
 LARGE_FILE_THRESHOLD_BYTES = 20 * 1024 * 1024
+FETCH_RETRIES = 3
 USER_AGENT = "ropedia-xperience-10m-live-verifier/1.0"
 LOCAL_PATH_FORBIDDEN_MARKERS = ["/" + "Users/", "/" + "private/"]
 QWEN3_LORA_REPO_ID = "cy0307/ropedia-qwen3-omni-lora-128ep"
@@ -703,7 +705,7 @@ def sanitize_url(url: str) -> str:
     return urlunsplit((parts.scheme, parts.netloc, parts.path, "", ""))
 
 
-def fetch(url: str, *, timeout_seconds: int = TIMEOUT_SECONDS, prefer_curl: bool = False) -> dict:
+def fetch_once(url: str, *, timeout_seconds: int = TIMEOUT_SECONDS, prefer_curl: bool = False) -> dict:
     if prefer_curl:
         return fetch_with_curl(url, timeout_seconds=timeout_seconds)
     request = Request(url, headers={"User-Agent": USER_AGENT})
@@ -759,6 +761,19 @@ def fetch(url: str, *, timeout_seconds: int = TIMEOUT_SECONDS, prefer_curl: bool
             "error": str(exc.reason),
             "final_url": url,
         }
+
+
+def fetch(url: str, *, timeout_seconds: int = TIMEOUT_SECONDS, prefer_curl: bool = False) -> dict:
+    last_result = None
+    for attempt in range(1, FETCH_RETRIES + 1):
+        result = fetch_once(url, timeout_seconds=timeout_seconds, prefer_curl=prefer_curl)
+        result["attempt"] = attempt
+        result["max_attempts"] = FETCH_RETRIES
+        if result["ok"] or attempt == FETCH_RETRIES:
+            return result
+        last_result = result
+        time.sleep(min(2 * attempt, 5))
+    return last_result or fetch_once(url, timeout_seconds=timeout_seconds, prefer_curl=prefer_curl)
 
 
 def fetch_with_curl(url: str, *, timeout_seconds: int = TIMEOUT_SECONDS) -> dict:
