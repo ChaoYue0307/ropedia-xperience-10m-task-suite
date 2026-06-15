@@ -1,0 +1,996 @@
+{
+  "title": "Ropedia Xperience-10M Tier-2 Extension Task Suite",
+  "status": "pass",
+  "generated_at_utc": "2026-06-15T17:19:10+00:00",
+  "tier": "tier2_extension",
+  "integrated_with_core_12": {
+    "core_task_count": 12,
+    "tier2_task_count": 8,
+    "combined_task_count": 20,
+    "core_metrics": "docs/data/summary_metrics.json",
+    "core_protocol": "docs/data/evaluation_protocol.json"
+  },
+  "dataset_scope": {
+    "sample_episode_count": 1,
+    "num_frames": 5821,
+    "num_windows": 1161,
+    "feature_dim": 8546,
+    "window_frames": 20,
+    "stride_frames": 5,
+    "future_horizon_windows": 20,
+    "future_horizon_frames": 100,
+    "future_horizon_seconds_at_20fps": 5.0,
+    "transition_target_cap_frames": 200,
+    "transition_target_cap_seconds_at_20fps": 10.0,
+    "split_policy": "single_episode_chronological_70_30",
+    "raw_hdf5_required_to_regenerate": true,
+    "raw_data_redistributed": false
+  },
+  "setup_alignment": {
+    "same_window_unit_as_core_12": true,
+    "same_feature_manifest_as_core_12": "results/episode_task_suite/feature_manifest.json",
+    "same_shared_tensor_as_core_12": "results/episode_task_suite/shared_windows.npz",
+    "minimal_baselines": "softmax, ridge regression/projection, and ridge multilabel heads",
+    "neural_baselines": "compact one-hidden-layer/two-layer PyTorch MLP heads with the same chronological split",
+    "leakage_policy": "Caption-derived text features are removed whenever the target is a label, object, relation, interaction phrase, or future semantic state."
+  },
+  "source_files": [
+    "results/episode_task_suite/shared_windows.npz",
+    "results/episode_task_suite/windows.csv",
+    "results/episode_task_suite/feature_manifest.json",
+    "data/sample/xperience-10m-sample/annotation.hdf5"
+  ],
+  "task_specs": {
+    "long_horizon_next_action": {
+      "name": "Long-Horizon Next-Action Forecasting",
+      "family": "classification",
+      "input": "Current 20-frame non-caption multimodal window.",
+      "target": "Action label five seconds later.",
+      "metric_key": "macro_f1",
+      "metric_name": "macro-F1",
+      "metric_direction": "higher",
+      "meaning": "Tests whether the current state carries enough procedure context to forecast beyond the one-second core next-action task."
+    },
+    "next_subtask_forecast": {
+      "name": "Long-Horizon Next-Subtask Forecasting",
+      "family": "classification",
+      "input": "Current 20-frame non-caption multimodal window.",
+      "target": "Procedure subtask label five seconds later.",
+      "metric_key": "macro_f1",
+      "metric_name": "macro-F1",
+      "metric_direction": "higher",
+      "meaning": "Moves from immediate action anticipation to higher-level procedure-state prediction."
+    },
+    "interaction_text_prediction": {
+      "name": "Interaction Text Prediction",
+      "family": "classification",
+      "input": "Current 20-frame sensor window with caption-text features removed.",
+      "target": "Raw annotation interaction phrase for the same window.",
+      "metric_key": "macro_f1",
+      "metric_name": "macro-F1",
+      "metric_direction": "higher",
+      "meaning": "Uses the raw caption JSON interaction field as a language target instead of only the hashed text feature."
+    },
+    "action_object_relation": {
+      "name": "Action-Object Relation Prediction",
+      "family": "classification",
+      "input": "Current 20-frame sensor window with caption-text features removed.",
+      "target": "Joint action plus active object-set relation.",
+      "metric_key": "macro_f1",
+      "metric_name": "macro-F1",
+      "metric_direction": "higher",
+      "meaning": "Evaluates whether a model can bind what action is happening to which objects are involved."
+    },
+    "object_set_forecast": {
+      "name": "Future Object-Set Forecasting",
+      "family": "multi_label",
+      "input": "Current 20-frame sensor window with caption-text features removed.",
+      "target": "Object set active five seconds later.",
+      "metric_key": "micro_f1",
+      "metric_name": "micro-F1",
+      "metric_direction": "higher",
+      "meaning": "Predicts which objects will become relevant soon, not only which objects are relevant now."
+    },
+    "imu_to_hand_pose": {
+      "name": "IMU-to-Hand Pose Reconstruction",
+      "family": "regression",
+      "input": "Current IMU acceleration/gyroscope feature block only.",
+      "target": "Current left/right hand joint feature blocks.",
+      "metric_key": "mae",
+      "metric_name": "MAE",
+      "metric_direction": "lower",
+      "meaning": "A sensor-bridge probe for how much hand configuration can be recovered from inertial motion alone."
+    },
+    "camera_view_sync_retrieval": {
+      "name": "Camera-View Synchronization Retrieval",
+      "family": "retrieval",
+      "input": "Fisheye camera-1 feature query projected into fisheye camera-3 feature space.",
+      "target": "The synchronized held-out camera-3 window.",
+      "metric_key": "mrr",
+      "metric_name": "MRR",
+      "metric_direction": "higher",
+      "meaning": "Stress-tests multi-camera time alignment beyond the core cross-modal retrieval task."
+    },
+    "time_to_transition": {
+      "name": "Time-to-Next-Transition Regression",
+      "family": "regression",
+      "input": "Current 20-frame non-caption multimodal window.",
+      "target": "Frames until the next action-label boundary, capped at 200 frames.",
+      "metric_key": "mae",
+      "metric_name": "MAE frames",
+      "metric_direction": "lower",
+      "meaning": "Turns boundary detection into a continuous timing estimate for procedural control."
+    }
+  },
+  "tasks": {
+    "long_horizon_next_action": {
+      "minimal": {
+        "accuracy": 0.055900621118012424,
+        "balanced_accuracy": 0.072,
+        "macro_f1": 0.07499999999999998,
+        "weighted_f1": 0.058229813664596265,
+        "num_eval_windows": 322,
+        "num_classes": 18,
+        "status": "pass",
+        "task": "long_horizon_next_action",
+        "task_display_name": "Long-Horizon Next-Action Forecasting",
+        "tier": "tier2_extension",
+        "model_family": "minimal_softmax",
+        "input": "Current 20-frame non-caption multimodal window.",
+        "split": "single_episode_chronological",
+        "num_windows": 1073,
+        "num_train_windows": 751,
+        "num_test_windows": 322,
+        "num_train_classes": 14,
+        "majority_baseline_accuracy": 0.0,
+        "primary_metric": "macro_f1",
+        "primary_score": 0.07499999999999998,
+        "unseen_test_class_count": 4,
+        "unseen_test_classes": [
+          "Place item on table",
+          "Wait/Prepare for pouring",
+          "Pour coffee",
+          "Pour milk into coffee"
+        ],
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 2.9943459033966064,
+            "train_accuracy": 0.07190412782956059
+          },
+          {
+            "epoch": 22,
+            "loss": 0.022863121703267097,
+            "train_accuracy": 0.9986684420772304
+          },
+          {
+            "epoch": 44,
+            "loss": 0.019138943403959274,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 66,
+            "loss": 0.017911160364747047,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 88,
+            "loss": 0.017209626734256744,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 110,
+            "loss": 0.0167277492582798,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 132,
+            "loss": 0.016360996291041374,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 154,
+            "loss": 0.016062702983617783,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 176,
+            "loss": 0.015808619558811188,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 198,
+            "loss": 0.015584941953420639,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 220,
+            "loss": 0.015383150428533554,
+            "train_accuracy": 1.0
+          }
+        ]
+      },
+      "neural_mlp": {
+        "accuracy": 0.055900621118012424,
+        "balanced_accuracy": 0.072,
+        "macro_f1": 0.06545454545454546,
+        "weighted_f1": 0.05081874647092039,
+        "num_eval_windows": 322,
+        "num_classes": 18,
+        "status": "pass",
+        "task": "long_horizon_next_action",
+        "task_display_name": "Long-Horizon Next-Action Forecasting",
+        "tier": "tier2_extension",
+        "model_family": "neural_mlp",
+        "input": "Current 20-frame non-caption multimodal window.",
+        "split": "single_episode_chronological",
+        "num_windows": 1073,
+        "num_train_windows": 751,
+        "num_test_windows": 322,
+        "primary_metric": "macro_f1",
+        "primary_score": 0.06545454545454546,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 1.8488772948794612,
+            "train_accuracy": 0.4420772303595206
+          },
+          {
+            "epoch": 5,
+            "loss": 0.05503799814170353,
+            "train_accuracy": 0.9760319573901465
+          },
+          {
+            "epoch": 10,
+            "loss": 0.005950478469201434,
+            "train_accuracy": 0.9973368841544608
+          },
+          {
+            "epoch": 15,
+            "loss": 0.004196559216643618,
+            "train_accuracy": 0.9986684420772304
+          },
+          {
+            "epoch": 20,
+            "loss": 0.0011443984907922818,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 25,
+            "loss": 0.0011185314030400149,
+            "train_accuracy": 1.0
+          }
+        ],
+        "device": "cpu"
+      }
+    },
+    "next_subtask_forecast": {
+      "minimal": {
+        "accuracy": 0.02046783625730994,
+        "balanced_accuracy": 0.029166666666666667,
+        "macro_f1": 0.04545454545454545,
+        "weighted_f1": 0.03189792663476874,
+        "num_eval_windows": 342,
+        "num_classes": 14,
+        "status": "pass",
+        "task": "next_subtask_forecast",
+        "task_display_name": "Long-Horizon Next-Subtask Forecasting",
+        "tier": "tier2_extension",
+        "model_family": "minimal_softmax",
+        "input": "Current 20-frame non-caption multimodal window.",
+        "split": "single_episode_chronological",
+        "num_windows": 1141,
+        "num_train_windows": 799,
+        "num_test_windows": 342,
+        "num_train_classes": 11,
+        "majority_baseline_accuracy": 0.0,
+        "primary_metric": "macro_f1",
+        "primary_score": 0.04545454545454545,
+        "unseen_test_class_count": 3,
+        "unseen_test_classes": [
+          "Prepare for pouring",
+          "Pour coffee",
+          "Pour milk into coffee"
+        ],
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 2.55131196975708,
+            "train_accuracy": 0.1113892365456821
+          },
+          {
+            "epoch": 22,
+            "loss": 0.028098762035369873,
+            "train_accuracy": 0.9949937421777222
+          },
+          {
+            "epoch": 44,
+            "loss": 0.021430641412734985,
+            "train_accuracy": 0.9987484355444305
+          },
+          {
+            "epoch": 66,
+            "loss": 0.01899738796055317,
+            "train_accuracy": 0.9987484355444305
+          },
+          {
+            "epoch": 88,
+            "loss": 0.017645347863435745,
+            "train_accuracy": 0.9987484355444305
+          },
+          {
+            "epoch": 110,
+            "loss": 0.016760651022195816,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 132,
+            "loss": 0.016124067828059196,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 154,
+            "loss": 0.015635930001735687,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 176,
+            "loss": 0.015243873000144958,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 198,
+            "loss": 0.014917710795998573,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 220,
+            "loss": 0.014638766646385193,
+            "train_accuracy": 1.0
+          }
+        ]
+      },
+      "neural_mlp": {
+        "accuracy": 0.02046783625730994,
+        "balanced_accuracy": 0.029166666666666667,
+        "macro_f1": 0.050724637681159424,
+        "weighted_f1": 0.03559623696923468,
+        "num_eval_windows": 342,
+        "num_classes": 14,
+        "status": "pass",
+        "task": "next_subtask_forecast",
+        "task_display_name": "Long-Horizon Next-Subtask Forecasting",
+        "tier": "tier2_extension",
+        "model_family": "neural_mlp",
+        "input": "Current 20-frame non-caption multimodal window.",
+        "split": "single_episode_chronological",
+        "num_windows": 1141,
+        "num_train_windows": 799,
+        "num_test_windows": 342,
+        "primary_metric": "macro_f1",
+        "primary_score": 0.050724637681159424,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 1.578477246442038,
+            "train_accuracy": 0.46307884856070086
+          },
+          {
+            "epoch": 5,
+            "loss": 0.043756316020823686,
+            "train_accuracy": 0.9824780976220275
+          },
+          {
+            "epoch": 10,
+            "loss": 0.02675439281685182,
+            "train_accuracy": 0.9949937421777222
+          },
+          {
+            "epoch": 15,
+            "loss": 0.013605056314243094,
+            "train_accuracy": 0.9962453066332916
+          },
+          {
+            "epoch": 20,
+            "loss": 0.003073849640401996,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 25,
+            "loss": 0.0026577636194491153,
+            "train_accuracy": 0.9987484355444305
+          }
+        ],
+        "device": "cpu"
+      }
+    },
+    "interaction_text_prediction": {
+      "minimal": {
+        "accuracy": 0.017241379310344827,
+        "balanced_accuracy": 0.03333333333333333,
+        "macro_f1": 0.04444444444444444,
+        "weighted_f1": 0.022988505747126436,
+        "num_eval_windows": 58,
+        "num_classes": 46,
+        "status": "pass",
+        "task": "interaction_text_prediction",
+        "task_display_name": "Interaction Text Prediction",
+        "tier": "tier2_extension",
+        "model_family": "minimal_softmax",
+        "input": "Current 20-frame sensor window with caption-text features removed.",
+        "split": "single_episode_chronological",
+        "num_windows": 192,
+        "num_train_windows": 134,
+        "num_test_windows": 58,
+        "num_train_classes": 32,
+        "majority_baseline_accuracy": 0.0,
+        "primary_metric": "macro_f1",
+        "primary_score": 0.04444444444444444,
+        "unseen_test_class_count": 14,
+        "unseen_test_classes": [
+          "hand holding the white bottle over the workspace",
+          "hand maintaining grip on the white bottle",
+          "Hand placing the small bottle on the table surface",
+          "Hands released from objects, resting near the brewing station",
+          "Hands positioned near the coffee equipment, ready for the next step",
+          "hands resting near the coffee brewing equipment on the table",
+          "hands slightly adjusted in preparation for interacting with the equipment",
+          "The right hand is gripping the handle of the coffee carafe to initiate pouring.",
+          "The right hand is tilting the carafe to pour coffee into the mug.",
+          "The right hand holds the empty carafe after completing the pour.",
+          "The user is holding the milk pitcher over the coffee cup, initiating the pour.",
+          "The user is carefully pouring the milk into the cup with coffee, controlling the flow.",
+          "The milk continues to be poured into the coffee, creating a swirling motion in the cup.",
+          "The right hand is tilting the milk pitcher to pour milk into the coffee mug, while the left hand holds the mug steady on the table."
+        ],
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 3.447813034057617,
+            "train_accuracy": 0.05223880597014925
+          },
+          {
+            "epoch": 22,
+            "loss": 0.02874920144677162,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 44,
+            "loss": 0.02785160206258297,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 66,
+            "loss": 0.02734168991446495,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 88,
+            "loss": 0.026947205886244774,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 110,
+            "loss": 0.02660428173840046,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 132,
+            "loss": 0.02628966234624386,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 154,
+            "loss": 0.025992820039391518,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 176,
+            "loss": 0.0257082711905241,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 198,
+            "loss": 0.025432869791984558,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 220,
+            "loss": 0.025164704769849777,
+            "train_accuracy": 1.0
+          }
+        ]
+      },
+      "neural_mlp": {
+        "accuracy": 0.034482758620689655,
+        "balanced_accuracy": 0.06666666666666667,
+        "macro_f1": 0.0380952380952381,
+        "weighted_f1": 0.01970443349753695,
+        "num_eval_windows": 58,
+        "num_classes": 46,
+        "status": "pass",
+        "task": "interaction_text_prediction",
+        "task_display_name": "Interaction Text Prediction",
+        "tier": "tier2_extension",
+        "model_family": "neural_mlp",
+        "input": "Current 20-frame sensor window with caption-text features removed.",
+        "split": "single_episode_chronological",
+        "num_windows": 192,
+        "num_train_windows": 134,
+        "num_test_windows": 58,
+        "primary_metric": "macro_f1",
+        "primary_score": 0.0380952380952381,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 3.8020725890771665,
+            "train_accuracy": 0.04477611940298507
+          },
+          {
+            "epoch": 5,
+            "loss": 0.4838796658302421,
+            "train_accuracy": 0.9029850746268657
+          },
+          {
+            "epoch": 10,
+            "loss": 0.05817107102875389,
+            "train_accuracy": 0.9776119402985075
+          },
+          {
+            "epoch": 15,
+            "loss": 0.011369604450553211,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 20,
+            "loss": 0.006697736902913051,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 25,
+            "loss": 0.008224115385534936,
+            "train_accuracy": 1.0
+          }
+        ],
+        "device": "cpu"
+      }
+    },
+    "action_object_relation": {
+      "minimal": {
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0,
+        "weighted_f1": 0.0,
+        "num_eval_windows": 53,
+        "num_classes": 42,
+        "status": "pass",
+        "task": "action_object_relation",
+        "task_display_name": "Action-Object Relation Prediction",
+        "tier": "tier2_extension",
+        "model_family": "minimal_softmax",
+        "input": "Current 20-frame sensor window with caption-text features removed.",
+        "split": "single_episode_chronological",
+        "num_windows": 178,
+        "num_train_windows": 125,
+        "num_test_windows": 53,
+        "num_train_classes": 32,
+        "majority_baseline_accuracy": 0.0,
+        "primary_metric": "macro_f1",
+        "primary_score": 0.0,
+        "unseen_test_class_count": 10,
+        "unseen_test_classes": [
+          "Close bottle cap :: coffee dripper | scale | white bottle",
+          "Close bottle cap :: coffee equipment | small bottle | weighing scale | white mug",
+          "Place item on table :: coffee equipment | small bottle | weighing scale | white mug",
+          "Wait/Prepare for pouring :: coffee equipment | small bottle | weighing scale | white mug",
+          "Wait/Prepare for pouring :: digital scale with dripper | glass carafe | metal pitcher | water bottle | white coffee cup",
+          "Wait/Prepare for pouring :: carafe | coffee mug | scale",
+          "Pour coffee :: carafe | coffee mug | scale",
+          "Pour coffee :: bottle | coffee cup | digital scale | milk pitcher",
+          "Pour coffee :: coffee mug | digital scale | milk bottle | stainless steel milk pitcher | table",
+          "Pour milk into coffee :: coffee mug | digital scale | milk bottle | stainless steel milk pitcher | table"
+        ],
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 3.422329902648926,
+            "train_accuracy": 0.056
+          },
+          {
+            "epoch": 22,
+            "loss": 0.030762728303670883,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 44,
+            "loss": 0.029601721093058586,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 66,
+            "loss": 0.02893223613500595,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 88,
+            "loss": 0.028430834412574768,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 110,
+            "loss": 0.028011377900838852,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 132,
+            "loss": 0.027639301493763924,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 154,
+            "loss": 0.02729770354926586,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 176,
+            "loss": 0.026977315545082092,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 198,
+            "loss": 0.026672501116991043,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 220,
+            "loss": 0.026379700750112534,
+            "train_accuracy": 1.0
+          }
+        ]
+      },
+      "neural_mlp": {
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0,
+        "weighted_f1": 0.0,
+        "num_eval_windows": 53,
+        "num_classes": 42,
+        "status": "pass",
+        "task": "action_object_relation",
+        "task_display_name": "Action-Object Relation Prediction",
+        "tier": "tier2_extension",
+        "model_family": "neural_mlp",
+        "input": "Current 20-frame sensor window with caption-text features removed.",
+        "split": "single_episode_chronological",
+        "num_windows": 178,
+        "num_train_windows": 125,
+        "num_test_windows": 53,
+        "primary_metric": "macro_f1",
+        "primary_score": 0.0,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 3.753063440322876,
+            "train_accuracy": 0.008
+          },
+          {
+            "epoch": 5,
+            "loss": 0.8229753971099854,
+            "train_accuracy": 0.872
+          },
+          {
+            "epoch": 10,
+            "loss": 0.0829126164317131,
+            "train_accuracy": 0.968
+          },
+          {
+            "epoch": 15,
+            "loss": 0.07906360924243927,
+            "train_accuracy": 0.976
+          },
+          {
+            "epoch": 20,
+            "loss": 0.013344862498342991,
+            "train_accuracy": 1.0
+          },
+          {
+            "epoch": 25,
+            "loss": 0.0362895242869854,
+            "train_accuracy": 1.0
+          }
+        ],
+        "device": "cpu"
+      }
+    },
+    "object_set_forecast": {
+      "minimal": {
+        "precision": 0.12015503875968993,
+        "recall": 0.28703703703703703,
+        "micro_f1": 0.16939890710382516,
+        "macro_f1": 0.09796905529697701,
+        "exact_match": 0.0,
+        "status": "pass",
+        "task": "object_set_forecast",
+        "task_display_name": "Future Object-Set Forecasting",
+        "tier": "tier2_extension",
+        "model_family": "minimal_ridge_multilabel",
+        "input": "Current 20-frame sensor window with caption-text features removed.",
+        "split": "single_episode_chronological",
+        "num_windows": 188,
+        "num_train_windows": 132,
+        "num_test_windows": 56,
+        "num_objects": 23,
+        "future_horizon_frames": 100,
+        "primary_metric": "micro_f1",
+        "primary_score": 0.16939890710382516,
+        "unseen_test_objects": {
+          "coffee equipment": 16,
+          "small bottle": 16,
+          "weighing scale": 16,
+          "digital scale with dripper": 8,
+          "metal pitcher": 8,
+          "white coffee cup": 8,
+          "carafe": 8,
+          "coffee cup": 12,
+          "milk pitcher": 12,
+          "milk bottle": 4,
+          "stainless steel milk pitcher": 4
+        }
+      },
+      "neural_mlp": {
+        "precision": 0.1590909090909091,
+        "recall": 0.25925925925925924,
+        "micro_f1": 0.19718309859154928,
+        "macro_f1": 0.07845536106405672,
+        "exact_match": 0.0,
+        "status": "pass",
+        "task": "object_set_forecast",
+        "task_display_name": "Future Object-Set Forecasting",
+        "tier": "tier2_extension",
+        "model_family": "neural_mlp_multilabel",
+        "input": "Current 20-frame sensor window with caption-text features removed.",
+        "split": "single_episode_chronological",
+        "num_windows": 188,
+        "num_train_windows": 132,
+        "num_test_windows": 56,
+        "num_objects": 23,
+        "primary_metric": "micro_f1",
+        "primary_score": 0.19718309859154928,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 1.118124373031385
+          },
+          {
+            "epoch": 5,
+            "loss": 0.4309653134057016
+          },
+          {
+            "epoch": 10,
+            "loss": 0.17918715264761087
+          },
+          {
+            "epoch": 15,
+            "loss": 0.08946222806292953
+          },
+          {
+            "epoch": 20,
+            "loss": 0.07499222908959244
+          },
+          {
+            "epoch": 25,
+            "loss": 0.0528871344797539
+          }
+        ],
+        "device": "cpu"
+      }
+    },
+    "imu_to_hand_pose": {
+      "minimal": {
+        "mse": 0.005499584134668112,
+        "mae": 0.042049407958984375,
+        "r2": -0.35125992233237024,
+        "num_test": 348,
+        "status": "pass",
+        "task": "imu_to_hand_pose",
+        "task_display_name": "IMU-to-Hand Pose Reconstruction",
+        "tier": "tier2_extension",
+        "model_family": "minimal_ridge_regression",
+        "input": "Current IMU acceleration/gyroscope feature block only.",
+        "split": "single_episode_chronological",
+        "num_windows": 1161,
+        "num_train_windows": 813,
+        "num_test_windows": 348,
+        "target_dim": 882,
+        "primary_metric": "mae",
+        "primary_score": 0.042049407958984375
+      },
+      "neural_mlp": {
+        "mse": 0.005374640692025423,
+        "mae": 0.042562149465084076,
+        "r2": -0.32056106903460324,
+        "num_test": 348,
+        "status": "pass",
+        "task": "imu_to_hand_pose",
+        "task_display_name": "IMU-to-Hand Pose Reconstruction",
+        "tier": "tier2_extension",
+        "model_family": "neural_mlp_regression",
+        "input": "Current IMU acceleration/gyroscope feature block only.",
+        "split": "single_episode_chronological",
+        "num_windows": 1161,
+        "num_train_windows": 813,
+        "num_test_windows": 348,
+        "target_dim": 882,
+        "primary_metric": "mae",
+        "primary_score": 0.042562149465084076,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.9968642874690733
+          },
+          {
+            "epoch": 5,
+            "loss": 0.8155221368700523
+          },
+          {
+            "epoch": 10,
+            "loss": 0.6730313805489816
+          },
+          {
+            "epoch": 15,
+            "loss": 0.6062786274143984
+          },
+          {
+            "epoch": 20,
+            "loss": 0.5605393504451268
+          },
+          {
+            "epoch": 25,
+            "loss": 0.515976368574492
+          }
+        ],
+        "device": "cpu"
+      }
+    },
+    "camera_view_sync_retrieval": {
+      "minimal": {
+        "mrr": 0.4943004846572876,
+        "top1": 0.3448275862068966,
+        "top5": 0.6724137931034483,
+        "top10": 0.7614942528735632,
+        "median_rank": 2.0,
+        "num_test": 348,
+        "status": "pass",
+        "task": "camera_view_sync_retrieval",
+        "task_display_name": "Camera-View Synchronization Retrieval",
+        "tier": "tier2_extension",
+        "model_family": "minimal_ridge_projection_cosine_retrieval",
+        "input": "Fisheye camera-1 feature query projected into fisheye camera-3 feature space.",
+        "split": "single_episode_chronological",
+        "num_train_windows": 813,
+        "num_test_windows": 348,
+        "query_dim": 686,
+        "target_dim": 686,
+        "primary_metric": "mrr",
+        "primary_score": 0.4943004846572876
+      },
+      "neural_mlp": {
+        "mrr": 0.24086658656597137,
+        "top1": 0.12931034482758622,
+        "top5": 0.3390804597701149,
+        "top10": 0.46839080459770116,
+        "median_rank": 12.0,
+        "num_test": 348,
+        "status": "pass",
+        "task": "camera_view_sync_retrieval",
+        "task_display_name": "Camera-View Synchronization Retrieval",
+        "tier": "tier2_extension",
+        "model_family": "neural_mlp_projection_cosine_retrieval",
+        "input": "Fisheye camera-1 feature query projected into fisheye camera-3 feature space.",
+        "split": "single_episode_chronological",
+        "num_train_windows": 813,
+        "num_test_windows": 348,
+        "query_dim": 686,
+        "target_dim": 686,
+        "primary_metric": "mrr",
+        "primary_score": 0.24086658656597137,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.9819011160368409
+          },
+          {
+            "epoch": 5,
+            "loss": 0.5516944707979575
+          },
+          {
+            "epoch": 10,
+            "loss": 0.36679228487783105
+          },
+          {
+            "epoch": 15,
+            "loss": 0.2996834480967762
+          },
+          {
+            "epoch": 20,
+            "loss": 0.2610064353266912
+          },
+          {
+            "epoch": 25,
+            "loss": 0.23746319687014578
+          }
+        ],
+        "device": "cpu"
+      }
+    },
+    "time_to_transition": {
+      "minimal": {
+        "mse": 1345.12353515625,
+        "mae": 10.53735637664795,
+        "r2": -0.0899740955263848,
+        "num_test": 348,
+        "mae_frames": 10.53735637664795,
+        "status": "pass",
+        "task": "time_to_transition",
+        "task_display_name": "Time-to-Next-Transition Regression",
+        "tier": "tier2_extension",
+        "model_family": "minimal_ridge_regression",
+        "input": "Current 20-frame non-caption multimodal window.",
+        "split": "single_episode_chronological",
+        "num_windows": 1161,
+        "num_train_windows": 813,
+        "num_test_windows": 348,
+        "target_dim": 1,
+        "primary_metric": "mae",
+        "primary_score": 10.53735637664795
+      },
+      "neural_mlp": {
+        "mse": 1345.0997314453125,
+        "mae": 10.55449390411377,
+        "r2": -0.08995473993654857,
+        "num_test": 348,
+        "mae_frames": 10.55449390411377,
+        "status": "pass",
+        "task": "time_to_transition",
+        "task_display_name": "Time-to-Next-Transition Regression",
+        "tier": "tier2_extension",
+        "model_family": "neural_mlp_regression",
+        "input": "Current 20-frame non-caption multimodal window.",
+        "split": "single_episode_chronological",
+        "num_windows": 1161,
+        "num_train_windows": 813,
+        "num_test_windows": 348,
+        "target_dim": 1,
+        "primary_metric": "mae",
+        "primary_score": 10.55449390411377,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.1785692156992422
+          },
+          {
+            "epoch": 5,
+            "loss": 0.04815403889832608
+          },
+          {
+            "epoch": 10,
+            "loss": 0.010813283567347759
+          },
+          {
+            "epoch": 15,
+            "loss": 0.0039978047098556645
+          },
+          {
+            "epoch": 20,
+            "loss": 0.0023154149574845075
+          },
+          {
+            "epoch": 25,
+            "loss": 0.0012936348804051623
+          }
+        ],
+        "device": "cpu"
+      }
+    }
+  }
+}

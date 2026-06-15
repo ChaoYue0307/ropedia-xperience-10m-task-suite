@@ -1,0 +1,85 @@
+{
+  "accuracy": 0.02046783625730994,
+  "balanced_accuracy": 0.029166666666666667,
+  "macro_f1": 0.04545454545454545,
+  "weighted_f1": 0.03189792663476874,
+  "num_eval_windows": 342,
+  "num_classes": 14,
+  "status": "pass",
+  "task": "next_subtask_forecast",
+  "task_display_name": "Long-Horizon Next-Subtask Forecasting",
+  "tier": "tier2_extension",
+  "model_family": "minimal_softmax",
+  "input": "Current 20-frame non-caption multimodal window.",
+  "split": "single_episode_chronological",
+  "num_windows": 1141,
+  "num_train_windows": 799,
+  "num_test_windows": 342,
+  "num_train_classes": 11,
+  "majority_baseline_accuracy": 0.0,
+  "primary_metric": "macro_f1",
+  "primary_score": 0.04545454545454545,
+  "unseen_test_class_count": 3,
+  "unseen_test_classes": [
+    "Prepare for pouring",
+    "Pour coffee",
+    "Pour milk into coffee"
+  ],
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 2.55131196975708,
+      "train_accuracy": 0.1113892365456821
+    },
+    {
+      "epoch": 22,
+      "loss": 0.028098762035369873,
+      "train_accuracy": 0.9949937421777222
+    },
+    {
+      "epoch": 44,
+      "loss": 0.021430641412734985,
+      "train_accuracy": 0.9987484355444305
+    },
+    {
+      "epoch": 66,
+      "loss": 0.01899738796055317,
+      "train_accuracy": 0.9987484355444305
+    },
+    {
+      "epoch": 88,
+      "loss": 0.017645347863435745,
+      "train_accuracy": 0.9987484355444305
+    },
+    {
+      "epoch": 110,
+      "loss": 0.016760651022195816,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 132,
+      "loss": 0.016124067828059196,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 154,
+      "loss": 0.015635930001735687,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 176,
+      "loss": 0.015243873000144958,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 198,
+      "loss": 0.014917710795998573,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 220,
+      "loss": 0.014638766646385193,
+      "train_accuracy": 1.0
+    }
+  ]
+}

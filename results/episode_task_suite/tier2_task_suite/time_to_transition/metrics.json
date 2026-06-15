@@ -1,0 +1,20 @@
+{
+  "mse": 1345.12353515625,
+  "mae": 10.53735637664795,
+  "r2": -0.0899740955263848,
+  "num_test": 348,
+  "mae_frames": 10.53735637664795,
+  "status": "pass",
+  "task": "time_to_transition",
+  "task_display_name": "Time-to-Next-Transition Regression",
+  "tier": "tier2_extension",
+  "model_family": "minimal_ridge_regression",
+  "input": "Current 20-frame non-caption multimodal window.",
+  "split": "single_episode_chronological",
+  "num_windows": 1161,
+  "num_train_windows": 813,
+  "num_test_windows": 348,
+  "target_dim": 1,
+  "primary_metric": "mae",
+  "primary_score": 10.53735637664795
+}

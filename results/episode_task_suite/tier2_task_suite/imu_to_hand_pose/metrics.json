@@ -1,0 +1,19 @@
+{
+  "mse": 0.005499584134668112,
+  "mae": 0.042049407958984375,
+  "r2": -0.35125992233237024,
+  "num_test": 348,
+  "status": "pass",
+  "task": "imu_to_hand_pose",
+  "task_display_name": "IMU-to-Hand Pose Reconstruction",
+  "tier": "tier2_extension",
+  "model_family": "minimal_ridge_regression",
+  "input": "Current IMU acceleration/gyroscope feature block only.",
+  "split": "single_episode_chronological",
+  "num_windows": 1161,
+  "num_train_windows": 813,
+  "num_test_windows": 348,
+  "target_dim": 882,
+  "primary_metric": "mae",
+  "primary_score": 0.042049407958984375
+}

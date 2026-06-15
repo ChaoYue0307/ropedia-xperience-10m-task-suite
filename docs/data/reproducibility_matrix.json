@@ -50,6 +50,13 @@
       "boundary": "single-episode probes, not full research-direction solutions"
     },
     {
+      "id": "tier2_task_suite",
+      "status": "reproducible",
+      "command": "python scripts/tier2_task_suite.py",
+      "expected": "eight Tier-2 task metrics, prediction/rank artifacts, docs/data/tier2_task_suite.json, and docs/assets/charts/tier2_task_suite.svg",
+      "boundary": "requires local public-sample annotation.hdf5 plus HOMIE Toolkit or h5py; raw HDF5 and MP4 files are not redistributed"
+    },
+    {
       "id": "source_alignment_audit",
       "status": "reproducible",
       "command": "python scripts/validate_source_alignment.py",

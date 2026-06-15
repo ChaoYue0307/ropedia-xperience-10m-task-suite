@@ -41,7 +41,7 @@ embodied-AI research infrastructure:
 | Capability | What this project shows |
 | --- | --- |
 | Multimodal data understanding | Parses the public sample into synchronized windows across video, audio, depth, pose/SLAM, mocap, IMU, calibration, and language-derived signals |
-| Task design | Defines 12 human-readable tasks plus four direction-extension probes with inputs, outputs, process modules, metrics, and case-study walkthroughs |
+| Task design | Defines 12 human-readable tasks as the core benchmark, eight Tier-2 extension baselines, and four direction-extension probes with inputs, outputs, process modules, metrics, and case-study walkthroughs |
 | Model and evaluation discipline | Runs minimal and compact neural baselines, records predictions/metrics, keeps chronological split boundaries explicit, and separates sample evidence from held-out claims |
 | Scale-up planning | Connects the public-sample pipeline to 32/128-episode held-out pilots, Qwen3-Omni LoRA, Cosmos-style world-model branches, policy-model branches, and the future Xperience-native foundation-model pretraining goal |
 
@@ -58,7 +58,7 @@ should be compared.
 | --- | --- |
 | Understand the whole project quickly | [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md) |
 | See the visual research dashboard | [GitHub Pages dashboard](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/) |
-| Navigate the 12 tasks, four tracks, and scale-up plan | [Interactive research roadmap](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/research_roadmap.html), [`docs/data/research_roadmap_interactive.json`](docs/data/research_roadmap_interactive.json) |
+| Navigate the 12 core tasks, Tier-2 tasks, four tracks, and scale-up plan | [Interactive research roadmap](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/research_roadmap.html), [`docs/data/research_roadmap_interactive.json`](docs/data/research_roadmap_interactive.json), [`docs/data/tier2_task_suite.json`](docs/data/tier2_task_suite.json) |
 | Compare current task metrics | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) |
 | Compare possible foundation backbones | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json) |
 | Understand the future native pretraining goal | [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md) |
@@ -81,7 +81,7 @@ Public release checks are exposed as JSON for mirrors and dashboards:
 | --- | --- |
 | Dataset slice | One public Xperience-10M sample episode, 5,821 frames, 1,161 windows, and an 8,546-dimensional representation |
 | Modalities | Video, audio, depth, camera pose/SLAM, hand/body mocap, IMU, calibration, and language annotations |
-| Task suite | 12 human-readable embodied-AI task contracts with input, process, output, metrics, predictions, and case-study walkthroughs |
+| Task suite | 12 human-readable tasks form the core embodied-AI benchmark; eight Tier-2 extension baselines reuse the same public-sample windows, split discipline, and minimal/neural head pattern |
 | Baselines | Minimal linear/ridge/logistic heads plus compact PyTorch MLP task heads over the same chronological split; companion simple/NN metadata baselines are also aligned to the selected 128-episode 96/16/16 split |
 | Research directions | Task mapping and extension probes for human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling |
 | Scale-up path | The selected-episode Qwen3-Omni LoRA final diagnostic result is verified on the 96/16/16 split; same-split simple/NN metadata baselines now cover the 12 task ids as a companion comparison. The Qwen result proves the multi-episode export/train/eval/package loop and meets the strict-JSON target, but weak action/subtask metrics make it a baseline for error analysis rather than a strong model. Cosmos3 now has three verified diagnostics: Nano future-window compatibility, Super base-weight Reasoner evaluation, and Super forward-dynamics LoRA fine-tuning over camera-pose proxy targets. |
@@ -99,7 +99,8 @@ Current contributions:
 
 - manifested sliding-window features over the currently extracted modalities,
 - motion-only and current all-feature baseline models,
-- 12 end-to-end episode-level tasks,
+- 12 end-to-end episode-level core tasks,
+- eight Tier-2 extension tasks aligned to the same 20-frame windows and chronological split,
 - lightweight neural MLP heads for the same 12 task contracts,
 - a generated four-direction research taxonomy matching the Ropedia job tracks,
 - four additional direction-extension probes with minimal and neural baselines,
@@ -118,7 +119,7 @@ This project is best read as a staged embodied-AI research study:
 | Layer | Current scope | Where to start |
 | --- | --- | --- |
 | Data understanding | One public Xperience-10M sample episode is converted into 5,821 frames, 1,161 aligned windows, and an 8,546-dimensional multimodal representation. | [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md), [`PROJECT_STATUS.md`](PROJECT_STATUS.md) |
-| Task suite | Twelve human-readable tasks cover action, procedure, contact, object, language, retrieval, reconstruction, order, and synchronization questions. | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json) |
+| Task suite | Twelve human-readable core tasks cover action, procedure, contact, object, language, retrieval, reconstruction, order, and synchronization; eight Tier-2 extensions add long-horizon forecasting, interaction text, action-object binding, sensor bridging, camera sync, and transition timing. | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json), [`results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md`](results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md) |
 | Baselines | Minimal heads and compact PyTorch MLP heads provide a first controlled comparison on the same chronological split; the selected 128-episode setup also has same-split simple/NN metadata baselines for JSON-supported tasks. | [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/), [`results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`](results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md) |
 | Diagnostics | Audio contribution, modality ablations, timeline overlays, object labels, and alignment stress tests show which signals are useful and which tasks remain hard. | [`results/audio_ablation/AUDIO_ABLATION_SUMMARY.md`](results/audio_ablation/AUDIO_ABLATION_SUMMARY.md), [`docs/single_episode_explorer.html`](docs/single_episode_explorer.html) |
 | Scale-up | The selected 128-episode Qwen3-Omni LoRA diagnostic path now has a latest verified v6 held-out package: 96/16/16 selected episodes, 34,269 exported windows, 4,032 held-out test predictions, and public-safe metrics/predictions. v6 improves action macro-F1/contact accuracy versus v5, while v5 remains the pinned prior release row because it is stronger on several other metrics. Same-split simple/NN metadata baselines are published for the 12 task ids. Cosmos3-Nano has a verified future-window compatibility package. Cosmos3-Super now has two verified branches: a 448-window base-weight JSON-task Reasoner evaluation and a fine-tuned forward-dynamics LoRA package over camera-pose proxy targets with 2,848 train rows, 512 val rows, and 448 test rows. The 128-episode enhancement pack records the no-new-episode path: dense-window sizing, hierarchical action/subtask targets, task bottlenecks, and experiment cards for the next Qwen/Cosmos/policy pushes without overwriting existing results. | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`TASK_SUITE_ENHANCEMENT_128.md`](TASK_SUITE_ENHANCEMENT_128.md), [`docs/data/task_suite_enhancement_128.json`](docs/data/task_suite_enhancement_128.json), [`docs/data/omni_model_comparison.json`](docs/data/omni_model_comparison.json), [`docs/data/omni_finetune_verified_result.json`](docs/data/omni_finetune_verified_result.json), [`docs/data/qwen3_v5_v6_comparison.json`](docs/data/qwen3_v5_v6_comparison.json), [`results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md`](results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md), [`results/omni_finetune/OMNI_MODEL_COMPARISON.md`](results/omni_finetune/OMNI_MODEL_COMPARISON.md), [`results/omni_finetune/verified_public/`](results/omni_finetune/verified_public/), [`results/omni_finetune/task_suite_enhancement_128_v1_20260608/`](results/omni_finetune/task_suite_enhancement_128_v1_20260608/) |
@@ -169,7 +170,7 @@ If you are reading the project cold, open these in order:
 | 5 | How are tasks evaluated? | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md), [`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) | The window unit, chronological split, leakage controls, task metrics, and current limitations are explicit. |
 | 6 | What do the current results mean? | [`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md), [`docs/data/research_takeaways.json`](docs/data/research_takeaways.json), [`docs/data/summary_metrics.json`](docs/data/summary_metrics.json) | Current metrics describe sample-level task behavior and identify which signals need larger held-out experiments. |
 | 7 | Which models are implemented? | [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json), [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/), [HF baseline repo](https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines) | Each task has minimal and neural-head evidence over the same feature windows. |
-| 8 | What research directions does this support? | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`docs/data/research_directions.json`](docs/data/research_directions.json), [`docs/data/research_direction_extensions.json`](docs/data/research_direction_extensions.json) | The tasks are mapped to human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling. |
+| 8 | What research directions does this support? | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md), [`docs/data/research_directions.json`](docs/data/research_directions.json), [`docs/data/research_direction_extensions.json`](docs/data/research_direction_extensions.json), [`docs/data/tier2_task_suite.json`](docs/data/tier2_task_suite.json) | The core and Tier-2 tasks are mapped to human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling. |
 | 9 | Which foundation model comes next? | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md), [`docs/data/foundation_model_plan.json`](docs/data/foundation_model_plan.json), [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md) | Qwen3-Omni is the first held-out LoRA baseline; Cosmos 3 is now represented by Nano future-window compatibility and Super forward-dynamics LoRA; policy models wait for robot-compatible action targets; Xperience-native pretraining is the full-corpus future goal. |
 | 10 | How can the 128-episode suite be pushed without more data? | [`TASK_SUITE_ENHANCEMENT_128.md`](TASK_SUITE_ENHANCEMENT_128.md), [`docs/data/task_suite_enhancement_128.json`](docs/data/task_suite_enhancement_128.json) | The enhancement pack proposes dense windows, hierarchical action/subtask labels, raw-feature shard priorities, and `multiscale_20s10_40s20_80s40` as the next export target. |
 | 11 | How do I reproduce it? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) | Public commands and expected outputs are documented for the sample-episode task suite. |
@@ -336,6 +337,7 @@ scripts/
   neural_task_models.py             # optional PyTorch MLP heads for all 12 tasks
   research_direction_taxonomy.py    # maps 12 tasks to the four research tracks
   research_direction_extension_tasks.py # one extra data-backed probe per track
+  tier2_task_suite.py              # eight sample-supported Tier-2 extension baselines
   task_walkthroughs.py              # human-readable task-card and walkthrough-storyboard metadata
   generate_visualizations.py        # refreshes SVG charts + summary JSON
   render_task_suite_infographic.py  # renders the task-suite presentation PNG
@@ -366,6 +368,7 @@ results/
     neural_mlp/                     # optional neural baseline artifacts per task
     research_directions/            # four-track taxonomy, CSV, and summary
     research_direction_extensions/  # four extra direction probes + predictions
+    tier2_task_suite/               # eight Tier-2 extension baseline tasks + predictions
     task_walkthroughs/              # case-study walkthroughs for all 12 tasks
   omni_exploration/                 # ModelScope readiness-check artifacts
 
@@ -384,6 +387,7 @@ docs/
   data/research_roadmap.json        # multi-episode and omni-model roadmap
   data/research_directions.json     # four-track website data bundle
   data/research_direction_extensions.json # four extra probe data bundle
+  data/tier2_task_suite.json       # eight Tier-2 extension baseline bundle
   data/task_walkthroughs.json       # human-readable task-card and walkthrough-storyboard data
   data/modality_atlas.json          # responsive modality-card data
   assets/brand/*.png                # project logo, favicon, social card
@@ -926,6 +930,41 @@ These four probes make the four-direction mapping more concrete, but they are
 still single-episode extension baselines. Full research conclusions still require
 multi-episode training, held-out episode evaluation, and stronger task-specific
 models.
+
+## Tier-2 Extension Task Suite
+
+The sample can support more than the original 12 task contracts. The Tier-2
+runner adds eight extra baselines while keeping the same 20-frame window unit,
+5-frame stride, chronological split, and minimal/neural comparison style.
+
+- [`TIER2_TASK_BASELINES.md`](results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md)
+- [`tier2_task_suite_results.json`](results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json)
+- [`docs/data/tier2_task_suite.json`](docs/data/tier2_task_suite.json)
+- [`tier2_task_suite.svg`](docs/assets/charts/tier2_task_suite.svg)
+
+![Tier-2 extension task suite](docs/assets/charts/tier2_task_suite.svg)
+
+| Tier-2 task | Input | Output | Minimal | Neural MLP | Meaning |
+| --- | --- | --- | ---: | ---: | --- |
+| Long-Horizon Next-Action Forecasting | current non-caption multimodal window | action label five seconds later | `0.0750` macro-F1 | `0.0655` macro-F1 | Tests procedure context beyond the one-second next-action task. |
+| Long-Horizon Next-Subtask Forecasting | current non-caption multimodal window | subtask five seconds later | `0.0455` macro-F1 | `0.0507` macro-F1 | Moves anticipation from low-level action to high-level procedure state. |
+| Interaction Text Prediction | current sensor window without caption text | raw interaction phrase | `0.0444` macro-F1 | `0.0381` macro-F1 | Uses the original annotation interaction text instead of only hashed features. |
+| Action-Object Relation Prediction | current sensor window without caption text | joint action plus object-set label | `0.0000` macro-F1 | `0.0000` macro-F1 | Exposes a hard binding target for action-object reasoning. |
+| Future Object-Set Forecasting | current sensor window without caption text | object set five seconds later | `0.1694` micro-F1 | `0.1972` micro-F1 | Predicts which objects become relevant soon. |
+| IMU-to-Hand Pose Reconstruction | IMU feature block only | current left/right hand joints | `0.0420` MAE | `0.0426` MAE | Tests inertial-to-hand sensor bridging. |
+| Camera-View Synchronization Retrieval | fisheye camera-1 query | synchronized fisheye camera-3 window | `0.4943` MRR | `0.2409` MRR | Stress-tests multi-camera temporal alignment. |
+| Time-to-Next-Transition Regression | current non-caption multimodal window | capped frames until next action boundary | `10.5374` MAE frames | `10.5545` MAE frames | Converts boundary detection into continuous timing. |
+
+Run:
+
+```bash
+/path/to/python-with-h5py scripts/tier2_task_suite.py
+```
+
+Regeneration needs either `HOMIE-toolkit` or an environment with `h5py` because
+the interaction/object targets come from the raw public-sample
+`annotation.hdf5`. The raw HDF5 and MP4 files remain excluded from the public
+repo and Hugging Face mirrors.
 
 ## Task Walkthroughs For Juniors
 

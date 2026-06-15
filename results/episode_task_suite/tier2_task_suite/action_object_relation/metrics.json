@@ -1,0 +1,92 @@
+{
+  "accuracy": 0.0,
+  "balanced_accuracy": 0.0,
+  "macro_f1": 0.0,
+  "weighted_f1": 0.0,
+  "num_eval_windows": 53,
+  "num_classes": 42,
+  "status": "pass",
+  "task": "action_object_relation",
+  "task_display_name": "Action-Object Relation Prediction",
+  "tier": "tier2_extension",
+  "model_family": "minimal_softmax",
+  "input": "Current 20-frame sensor window with caption-text features removed.",
+  "split": "single_episode_chronological",
+  "num_windows": 178,
+  "num_train_windows": 125,
+  "num_test_windows": 53,
+  "num_train_classes": 32,
+  "majority_baseline_accuracy": 0.0,
+  "primary_metric": "macro_f1",
+  "primary_score": 0.0,
+  "unseen_test_class_count": 10,
+  "unseen_test_classes": [
+    "Close bottle cap :: coffee dripper | scale | white bottle",
+    "Close bottle cap :: coffee equipment | small bottle | weighing scale | white mug",
+    "Place item on table :: coffee equipment | small bottle | weighing scale | white mug",
+    "Wait/Prepare for pouring :: coffee equipment | small bottle | weighing scale | white mug",
+    "Wait/Prepare for pouring :: digital scale with dripper | glass carafe | metal pitcher | water bottle | white coffee cup",
+    "Wait/Prepare for pouring :: carafe | coffee mug | scale",
+    "Pour coffee :: carafe | coffee mug | scale",
+    "Pour coffee :: bottle | coffee cup | digital scale | milk pitcher",
+    "Pour coffee :: coffee mug | digital scale | milk bottle | stainless steel milk pitcher | table",
+    "Pour milk into coffee :: coffee mug | digital scale | milk bottle | stainless steel milk pitcher | table"
+  ],
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 3.422329902648926,
+      "train_accuracy": 0.056
+    },
+    {
+      "epoch": 22,
+      "loss": 0.030762728303670883,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 44,
+      "loss": 0.029601721093058586,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 66,
+      "loss": 0.02893223613500595,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 88,
+      "loss": 0.028430834412574768,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 110,
+      "loss": 0.028011377900838852,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 132,
+      "loss": 0.027639301493763924,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 154,
+      "loss": 0.02729770354926586,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 176,
+      "loss": 0.026977315545082092,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 198,
+      "loss": 0.026672501116991043,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 220,
+      "loss": 0.026379700750112534,
+      "train_accuracy": 1.0
+    }
+  ]
+}

@@ -171,6 +171,14 @@ FIGURES = [
         "surface": "website directions",
     },
     {
+        "id": "tier2_task_suite_chart",
+        "title": "Tier-2 extension task suite chart",
+        "path": "docs/assets/charts/tier2_task_suite.svg",
+        "role": "Eight sample-supported Tier-2 extension tasks with aligned minimal and neural baseline metrics.",
+        "source_script": "scripts/tier2_task_suite.py",
+        "surface": "website extensions, README, HF mirrors",
+    },
+    {
         "id": "feature_blocks_chart",
         "title": "Feature block chart",
         "path": "docs/assets/charts/feature_blocks.svg",

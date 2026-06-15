@@ -1,0 +1,43 @@
+class_id,class_name,support,predicted,precision,recall,f1
+0,Pick up kettle :: bottle | coffee dripper | kettle | scale,0,0,0.0,0.0,0.0
+1,Pick up kettle :: kettle,0,0,0.0,0.0,0.0
+2,Position kettle to pour :: coffee dripper | kettle | scale,0,0,0.0,0.0,0.0
+3,Position kettle to pour :: coffee dripper | digital scale | gooseneck kettle | table,0,1,0.0,0.0,0.0
+4,Position kettle to pour :: coffee dripper | digital scale | gooseneck kettle,0,1,0.0,0.0,0.0
+5,Position kettle to pour :: coffee filter | dripper | kettle | scale | table,0,0,0.0,0.0,0.0
+6,Move kettle :: coffee filter | dripper | kettle | scale | table,0,0,0.0,0.0,0.0
+7,Move kettle :: bottle | coffee dripper | coffee scale | glass carafe | white mug,0,7,0.0,0.0,0.0
+8,Hold coffee carafe :: bottle | coffee dripper | coffee scale | glass carafe | white mug,0,0,0.0,0.0,0.0
+9,Hold coffee carafe :: glass carafe | wooden scoop,0,0,0.0,0.0,0.0
+10,Grasp coffee scoop :: glass carafe | wooden scoop,0,0,0.0,0.0,0.0
+11,Grasp coffee scoop :: coffee jar | coffee scoop | dripper,0,0,0.0,0.0,0.0
+12,Grasp coffee scoop :: coffee jar | coffee scoop,0,0,0.0,0.0,0.0
+13,Transfer coffee to dripper :: coffee scoop | dripper,0,2,0.0,0.0,0.0
+14,Transfer coffee to dripper :: coffee container | coffee scoop | dripper | lid | scale,0,0,0.0,0.0,0.0
+15,Transfer coffee to dripper :: closed coffee container | dripper | scale,0,10,0.0,0.0,0.0
+16,Transfer coffee to dripper :: coffee dripper | coffee mug | digital scale | gooseneck kettle | water bottle,0,0,0.0,0.0,0.0
+17,Hold gooseneck kettle :: coffee dripper | coffee mug | digital scale | gooseneck kettle | water bottle,0,7,0.0,0.0,0.0
+18,Hold gooseneck kettle :: coffee dripper | gooseneck kettle | mug | scale | water bottle,0,8,0.0,0.0,0.0
+19,Hold gooseneck kettle :: coffee dripper | gooseneck kettle | scale | water bottle | white cup,0,0,0.0,0.0,0.0
+20,Grasp gooseneck kettle :: coffee dripper | gooseneck kettle | scale | water bottle | white cup,0,1,0.0,0.0,0.0
+21,Lift gooseneck kettle :: coffee dripper | gooseneck kettle | scale,0,0,0.0,0.0,0.0
+22,Lift gooseneck kettle :: coffee dripper | digital scale | gooseneck kettle | white mug,0,0,0.0,0.0,0.0
+23,Lift gooseneck kettle :: coffee dripper | gooseneck kettle | scale | white bottle,0,0,0.0,0.0,0.0
+24,Move kettle away :: coffee dripper | gooseneck kettle | scale | white bottle,0,0,0.0,0.0,0.0
+25,Place kettle on table :: coffee dripper | gooseneck kettle | scale | white bottle,0,0,0.0,0.0,0.0
+26,Pick up white bottle :: coffee dripper | gooseneck kettle | scale | white bottle,0,0,0.0,0.0,0.0
+27,Pick up white bottle :: coffee dripper | scale | white bottle,0,1,0.0,0.0,0.0
+28,Pour liquid from white bottle :: coffee dripper | scale | white bottle,0,9,0.0,0.0,0.0
+29,Pour liquid from white bottle :: white bottle,0,4,0.0,0.0,0.0
+30,Close bottle cap :: white bottle,0,0,0.0,0.0,0.0
+31,Close bottle cap :: coffee dripper | mug | scale | white bottle,0,2,0.0,0.0,0.0
+32,Close bottle cap :: coffee dripper | scale | white bottle,8,0,0.0,0.0,0.0
+33,Close bottle cap :: coffee equipment | small bottle | weighing scale | white mug,1,0,0.0,0.0,0.0
+34,Place item on table :: coffee equipment | small bottle | weighing scale | white mug,6,0,0.0,0.0,0.0
+35,Wait/Prepare for pouring :: coffee equipment | small bottle | weighing scale | white mug,8,0,0.0,0.0,0.0
+36,Wait/Prepare for pouring :: digital scale with dripper | glass carafe | metal pitcher | water bottle | white coffee cup,8,0,0.0,0.0,0.0
+37,Wait/Prepare for pouring :: carafe | coffee mug | scale,1,0,0.0,0.0,0.0
+38,Pour coffee :: carafe | coffee mug | scale,6,0,0.0,0.0,0.0
+39,Pour coffee :: bottle | coffee cup | digital scale | milk pitcher,12,0,0.0,0.0,0.0
+40,Pour coffee :: coffee mug | digital scale | milk bottle | stainless steel milk pitcher | table,1,0,0.0,0.0,0.0
+41,Pour milk into coffee :: coffee mug | digital scale | milk bottle | stainless steel milk pitcher | table,2,0,0.0,0.0,0.0

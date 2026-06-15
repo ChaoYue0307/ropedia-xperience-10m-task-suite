@@ -1,0 +1,53 @@
+{
+  "accuracy": 0.055900621118012424,
+  "balanced_accuracy": 0.072,
+  "macro_f1": 0.06545454545454546,
+  "weighted_f1": 0.05081874647092039,
+  "num_eval_windows": 322,
+  "num_classes": 18,
+  "status": "pass",
+  "task": "long_horizon_next_action",
+  "task_display_name": "Long-Horizon Next-Action Forecasting",
+  "tier": "tier2_extension",
+  "model_family": "neural_mlp",
+  "input": "Current 20-frame non-caption multimodal window.",
+  "split": "single_episode_chronological",
+  "num_windows": 1073,
+  "num_train_windows": 751,
+  "num_test_windows": 322,
+  "primary_metric": "macro_f1",
+  "primary_score": 0.06545454545454546,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 1.8488772948794612,
+      "train_accuracy": 0.4420772303595206
+    },
+    {
+      "epoch": 5,
+      "loss": 0.05503799814170353,
+      "train_accuracy": 0.9760319573901465
+    },
+    {
+      "epoch": 10,
+      "loss": 0.005950478469201434,
+      "train_accuracy": 0.9973368841544608
+    },
+    {
+      "epoch": 15,
+      "loss": 0.004196559216643618,
+      "train_accuracy": 0.9986684420772304
+    },
+    {
+      "epoch": 20,
+      "loss": 0.0011443984907922818,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 25,
+      "loss": 0.0011185314030400149,
+      "train_accuracy": 1.0
+    }
+  ],
+  "device": "cpu"
+}

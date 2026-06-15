@@ -1,0 +1,47 @@
+{
+  "mse": 1345.0997314453125,
+  "mae": 10.55449390411377,
+  "r2": -0.08995473993654857,
+  "num_test": 348,
+  "mae_frames": 10.55449390411377,
+  "status": "pass",
+  "task": "time_to_transition",
+  "task_display_name": "Time-to-Next-Transition Regression",
+  "tier": "tier2_extension",
+  "model_family": "neural_mlp_regression",
+  "input": "Current 20-frame non-caption multimodal window.",
+  "split": "single_episode_chronological",
+  "num_windows": 1161,
+  "num_train_windows": 813,
+  "num_test_windows": 348,
+  "target_dim": 1,
+  "primary_metric": "mae",
+  "primary_score": 10.55449390411377,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.1785692156992422
+    },
+    {
+      "epoch": 5,
+      "loss": 0.04815403889832608
+    },
+    {
+      "epoch": 10,
+      "loss": 0.010813283567347759
+    },
+    {
+      "epoch": 15,
+      "loss": 0.0039978047098556645
+    },
+    {
+      "epoch": 20,
+      "loss": 0.0023154149574845075
+    },
+    {
+      "epoch": 25,
+      "loss": 0.0012936348804051623
+    }
+  ],
+  "device": "cpu"
+}

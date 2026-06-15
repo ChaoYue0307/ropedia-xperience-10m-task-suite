@@ -10,6 +10,8 @@
     "episode_count_verified": 1,
     "window_count_verified": 1161,
     "feature_dim_verified": 8546,
+    "core_task_count": 12,
+    "tier2_extension_task_count": 8,
     "audio_featurized": true,
     "qwen3_omni_32_episode_claim": false,
     "qwen3_omni_verified_diagnostic_pilot": true,
@@ -88,6 +90,7 @@
     "modality_atlas": "docs/data/modality_atlas.json",
     "research_directions": "docs/data/research_directions.json",
     "research_direction_extensions": "docs/data/research_direction_extensions.json",
+    "tier2_task_suite": "docs/data/tier2_task_suite.json",
     "task_walkthroughs": "docs/data/task_walkthroughs.json"
   },
   "citation_files": {

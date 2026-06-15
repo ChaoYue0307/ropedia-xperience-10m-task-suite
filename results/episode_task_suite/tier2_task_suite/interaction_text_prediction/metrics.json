@@ -1,0 +1,96 @@
+{
+  "accuracy": 0.017241379310344827,
+  "balanced_accuracy": 0.03333333333333333,
+  "macro_f1": 0.04444444444444444,
+  "weighted_f1": 0.022988505747126436,
+  "num_eval_windows": 58,
+  "num_classes": 46,
+  "status": "pass",
+  "task": "interaction_text_prediction",
+  "task_display_name": "Interaction Text Prediction",
+  "tier": "tier2_extension",
+  "model_family": "minimal_softmax",
+  "input": "Current 20-frame sensor window with caption-text features removed.",
+  "split": "single_episode_chronological",
+  "num_windows": 192,
+  "num_train_windows": 134,
+  "num_test_windows": 58,
+  "num_train_classes": 32,
+  "majority_baseline_accuracy": 0.0,
+  "primary_metric": "macro_f1",
+  "primary_score": 0.04444444444444444,
+  "unseen_test_class_count": 14,
+  "unseen_test_classes": [
+    "hand holding the white bottle over the workspace",
+    "hand maintaining grip on the white bottle",
+    "Hand placing the small bottle on the table surface",
+    "Hands released from objects, resting near the brewing station",
+    "Hands positioned near the coffee equipment, ready for the next step",
+    "hands resting near the coffee brewing equipment on the table",
+    "hands slightly adjusted in preparation for interacting with the equipment",
+    "The right hand is gripping the handle of the coffee carafe to initiate pouring.",
+    "The right hand is tilting the carafe to pour coffee into the mug.",
+    "The right hand holds the empty carafe after completing the pour.",
+    "The user is holding the milk pitcher over the coffee cup, initiating the pour.",
+    "The user is carefully pouring the milk into the cup with coffee, controlling the flow.",
+    "The milk continues to be poured into the coffee, creating a swirling motion in the cup.",
+    "The right hand is tilting the milk pitcher to pour milk into the coffee mug, while the left hand holds the mug steady on the table."
+  ],
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 3.447813034057617,
+      "train_accuracy": 0.05223880597014925
+    },
+    {
+      "epoch": 22,
+      "loss": 0.02874920144677162,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 44,
+      "loss": 0.02785160206258297,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 66,
+      "loss": 0.02734168991446495,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 88,
+      "loss": 0.026947205886244774,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 110,
+      "loss": 0.02660428173840046,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 132,
+      "loss": 0.02628966234624386,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 154,
+      "loss": 0.025992820039391518,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 176,
+      "loss": 0.0257082711905241,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 198,
+      "loss": 0.025432869791984558,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 220,
+      "loss": 0.025164704769849777,
+      "train_accuracy": 1.0
+    }
+  ]
+}

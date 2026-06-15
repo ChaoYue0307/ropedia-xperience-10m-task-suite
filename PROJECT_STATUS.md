@@ -21,6 +21,7 @@ The current no-new-episode enhancement layer records how to push the selected
 | --- | --- | --- | --- |
 | Public-sample pipeline | Verified | `results/episode_task_suite/summary_report.json`, `results/episode_task_suite/windows.csv`, `results/episode_task_suite/feature_manifest.json` | One public Xperience-10M sample episode is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,546-dimensional current feature contract. |
 | Task suite | Verified | `scripts/episode_task_suite.py`, `results/episode_task_suite/`, `docs/data/summary_metrics.json` | All 12 task contracts have committed metrics, predictions, and minimal baseline outputs. |
+| Tier-2 extension suite | Verified | `scripts/tier2_task_suite.py`, `results/episode_task_suite/tier2_task_suite/`, `docs/data/tier2_task_suite.json` | Eight extra sample-supported tasks reuse the same 20-frame windows, 5-frame stride, chronological split, and minimal/neural head pattern: long-horizon action/subtask forecasting, interaction text, action-object relation, future object set, IMU-to-hand pose, camera-view sync, and time-to-transition regression. |
 | Neural heads | Verified | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split. |
 | Audio contribution study | Verified | `scripts/audio_ablation_and_raw_upgrade.py`, `results/audio_ablation/`, `docs/data/audio_ablation_summary.json` | Audio variants are compared across all 12 task contracts; audio improves the primary metric on 6 of 12 tasks, and a 588-d audio-window representation improves over the baseline audio variant on 6 of 12 tasks. |
 | Research takeaways | Verified | `RESEARCH_TAKEAWAYS.md`, `docs/data/research_takeaways.json`, `scripts/build_research_takeaways.py` | The main result interpretation is generated from committed metrics: chronological class shift, neural gains on dynamics/order/alignment, open retrieval/reconstruction problems, and the need for held-out episodes. |
@@ -58,19 +59,21 @@ The current no-new-episode enhancement layer records how to push the selected
    long-term full-corpus pretraining goal.
 8. Inspect `docs/data/summary_metrics.json` and
    `results/episode_task_suite/neural_mlp/` to check the 12-task outputs.
-9. Inspect `results/audio_ablation/AUDIO_ABLATION_SUMMARY.md` before judging
+9. Inspect `docs/data/tier2_task_suite.json` and
+   `results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md` to compare the eight Tier-2 extension tasks with the core 12.
+10. Inspect `results/audio_ablation/AUDIO_ABLATION_SUMMARY.md` before judging
    whether audio helps the current task suite.
-10. Inspect `EVALUATION_PROTOCOL.md` before judging task metrics or leakage
+11. Inspect `EVALUATION_PROTOCOL.md` before judging task metrics or leakage
    controls.
-11. Inspect `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` only if you need the
+12. Inspect `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` only if you need the
    detailed upstream dataset-card context.
-12. Inspect `results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`
+13. Inspect `results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`
    before comparing simple/NN baselines to the selected 128-episode setup.
-13. Inspect `TASK_SUITE_ENHANCEMENT_128.md` and
+14. Inspect `TASK_SUITE_ENHANCEMENT_128.md` and
    `docs/data/task_suite_enhancement_128.json` before deciding whether more
    episodes are needed; the current recommended no-new-episode export is
    `multiscale_20s10_40s20_80s40`.
-14. Inspect `docs/data/omni_finetune_verified_result.json` before judging the
+15. Inspect `docs/data/omni_finetune_verified_result.json` before judging the
    Qwen3-Omni diagnostic pilot.
 
 ## Current Reading Notes

@@ -56,12 +56,14 @@ DATA_FILES = [
     "task_suite_enhancement_128.json",
     "task_surface_integrity.json",
     "task_walkthroughs.json",
+    "tier2_task_suite.json",
     "website_integrity.json",
     "xperience10m_dataset_card_alignment.json",
 ]
 
 ASSET_FILES = [
     "charts/audio_ablation_delta.svg",
+    "charts/tier2_task_suite.svg",
     "brand/xperience10m-logo-apple-touch.png",
     "brand/xperience10m-logo-favicon-32.png",
     "brand/xperience10m-logo-favicon-64.png",
@@ -126,6 +128,7 @@ SCRIPT_FILES = [
     "validate_task_surface.py",
     "validate_website_integrity.py",
     "sync_hf_publish_mirrors.py",
+    "tier2_task_suite.py",
     "publish_hf_bundles.py",
 ]
 
@@ -292,6 +295,19 @@ def verified_public_result_files() -> list[str]:
     return sorted(files)
 
 
+def tier2_result_files() -> list[str]:
+    """Return every generated public-safe Tier-2 baseline artifact."""
+
+    tier2_root = ROOT / "results/episode_task_suite/tier2_task_suite"
+    if not tier2_root.exists():
+        return []
+    files: list[str] = []
+    for path in tier2_root.rglob("*"):
+        if path.is_file():
+            files.append(path.relative_to(ROOT / "results").as_posix())
+    return sorted(files)
+
+
 def parity_group(name: str, local_path: Path, mirrors: dict[str, Path], hf_root: Path) -> dict:
     local = file_record(local_path, hf_root)
     mirror_records = {surface: file_record(path, hf_root) for surface, path in mirrors.items()}
@@ -385,7 +401,7 @@ def build_report(hf_root: Path) -> dict:
             )
         )
 
-    result_files = sorted(set(RESULT_FILES) | set(verified_public_result_files()))
+    result_files = sorted(set(RESULT_FILES) | set(verified_public_result_files()) | set(tier2_result_files()))
     for filename in result_files:
         groups.append(
             parity_group(

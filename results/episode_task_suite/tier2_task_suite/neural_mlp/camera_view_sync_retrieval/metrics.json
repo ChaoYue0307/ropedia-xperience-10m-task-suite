@@ -1,0 +1,48 @@
+{
+  "mrr": 0.24086658656597137,
+  "top1": 0.12931034482758622,
+  "top5": 0.3390804597701149,
+  "top10": 0.46839080459770116,
+  "median_rank": 12.0,
+  "num_test": 348,
+  "status": "pass",
+  "task": "camera_view_sync_retrieval",
+  "task_display_name": "Camera-View Synchronization Retrieval",
+  "tier": "tier2_extension",
+  "model_family": "neural_mlp_projection_cosine_retrieval",
+  "input": "Fisheye camera-1 feature query projected into fisheye camera-3 feature space.",
+  "split": "single_episode_chronological",
+  "num_train_windows": 813,
+  "num_test_windows": 348,
+  "query_dim": 686,
+  "target_dim": 686,
+  "primary_metric": "mrr",
+  "primary_score": 0.24086658656597137,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.9819011160368409
+    },
+    {
+      "epoch": 5,
+      "loss": 0.5516944707979575
+    },
+    {
+      "epoch": 10,
+      "loss": 0.36679228487783105
+    },
+    {
+      "epoch": 15,
+      "loss": 0.2996834480967762
+    },
+    {
+      "epoch": 20,
+      "loss": 0.2610064353266912
+    },
+    {
+      "epoch": 25,
+      "loss": 0.23746319687014578
+    }
+  ],
+  "device": "cpu"
+}

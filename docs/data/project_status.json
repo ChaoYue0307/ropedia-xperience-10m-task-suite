@@ -8,8 +8,9 @@
         "aligned_frames": 5821,
         "sliding_windows": 1161,
         "current_feature_dimensions": 8546,
-        "core_task_count": 12,
-        "neural_head_count": 12,
+    "core_task_count": 12,
+    "tier2_extension_task_count": 8,
+    "neural_head_count": 12,
         "direction_extension_probe_count": 4,
         "audio_featurized": true,
         "raw_xperience10m_data_redistributed": false,
@@ -70,16 +71,26 @@
             ],
             "readout": "One public Xperience-10M sample episode is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,546-dimensional representation for repeatable task evaluation."
         },
-        {
-            "area": "Task suite",
-            "status": "verified",
+    {
+      "area": "Task suite",
+      "status": "verified",
             "evidence": [
                 "scripts/episode_task_suite.py",
                 "results/episode_task_suite/",
                 "docs/data/summary_metrics.json"
-            ],
-            "readout": "All 12 task contracts have committed metrics, predictions, and minimal baseline outputs."
-        },
+      ],
+      "readout": "All 12 task contracts have committed metrics, predictions, and minimal baseline outputs."
+    },
+    {
+      "area": "Tier-2 extension suite",
+      "status": "verified",
+      "evidence": [
+        "scripts/tier2_task_suite.py",
+        "results/episode_task_suite/tier2_task_suite/",
+        "docs/data/tier2_task_suite.json"
+      ],
+      "readout": "Eight extra sample-supported tasks reuse the same 20-frame windows, 5-frame stride, chronological split, and minimal/neural head pattern: long-horizon action/subtask forecasting, interaction text, action-object relation, future object set, IMU-to-hand pose, camera-view sync, and time-to-transition regression."
+    },
         {
             "area": "Neural heads",
             "status": "verified",

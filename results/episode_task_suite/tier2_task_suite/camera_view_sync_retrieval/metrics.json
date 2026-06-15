@@ -1,0 +1,21 @@
+{
+  "mrr": 0.4943004846572876,
+  "top1": 0.3448275862068966,
+  "top5": 0.6724137931034483,
+  "top10": 0.7614942528735632,
+  "median_rank": 2.0,
+  "num_test": 348,
+  "status": "pass",
+  "task": "camera_view_sync_retrieval",
+  "task_display_name": "Camera-View Synchronization Retrieval",
+  "tier": "tier2_extension",
+  "model_family": "minimal_ridge_projection_cosine_retrieval",
+  "input": "Fisheye camera-1 feature query projected into fisheye camera-3 feature space.",
+  "split": "single_episode_chronological",
+  "num_train_windows": 813,
+  "num_test_windows": 348,
+  "query_dim": 686,
+  "target_dim": 686,
+  "primary_metric": "mrr",
+  "primary_score": 0.4943004846572876
+}

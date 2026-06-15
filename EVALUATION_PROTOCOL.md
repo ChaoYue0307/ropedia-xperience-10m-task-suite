@@ -60,6 +60,25 @@ are not foundation models.
 | Temporal Order Verification | `temporal_order` | pairwise diagnostic | adjacent window pair | two adjacent windows -> correct versus reversed order | f1 (higher better) | 0.5400 | 0.8520 |
 | Multimodal Synchronization Detection | `misalignment_detection` | pairwise diagnostic | paired modality window | motion side plus visual/depth side -> aligned versus shifted by 8 windows | f1 (higher better) | 0.5052 | 0.7153 |
 
+## Tier-2 Extension Contracts
+
+The core 12-task suite remains the canonical benchmark. The Tier-2 layer
+adds sample-supported extension baselines using the same windows, feature
+manifest, chronological split, and minimal/neural head pattern. Regeneration
+requires the raw public-sample `annotation.hdf5` for interaction/object
+targets, but raw files are not redistributed.
+
+| Tier-2 task | Artifact id | Family | Input -> target | Primary metric | Minimal | Neural |
+| --- | --- | --- | --- | --- | ---: | ---: |
+| Long-Horizon Next-Action Forecasting | `long_horizon_next_action` | classification | Current 20-frame non-caption multimodal window. -> Action label five seconds later. | macro_f1 (higher better) | 0.0750 | 0.0655 |
+| Long-Horizon Next-Subtask Forecasting | `next_subtask_forecast` | classification | Current 20-frame non-caption multimodal window. -> Procedure subtask label five seconds later. | macro_f1 (higher better) | 0.0455 | 0.0507 |
+| Interaction Text Prediction | `interaction_text_prediction` | classification | Current 20-frame sensor window with caption-text features removed. -> Raw annotation interaction phrase for the same window. | macro_f1 (higher better) | 0.0444 | 0.0381 |
+| Action-Object Relation Prediction | `action_object_relation` | classification | Current 20-frame sensor window with caption-text features removed. -> Joint action plus active object-set relation. | macro_f1 (higher better) | 0.0000 | 0.0000 |
+| Future Object-Set Forecasting | `object_set_forecast` | multi_label | Current 20-frame sensor window with caption-text features removed. -> Object set active five seconds later. | micro_f1 (higher better) | 0.1694 | 0.1972 |
+| IMU-to-Hand Pose Reconstruction | `imu_to_hand_pose` | regression | Current IMU acceleration/gyroscope feature block only. -> Current left/right hand joint feature blocks. | mae (lower better) | 0.0420 | 0.0426 |
+| Camera-View Synchronization Retrieval | `camera_view_sync_retrieval` | retrieval | Fisheye camera-1 feature query projected into fisheye camera-3 feature space. -> The synchronized held-out camera-3 window. | mrr (higher better) | 0.4943 | 0.2409 |
+| Time-to-Next-Transition Regression | `time_to_transition` | regression | Current 20-frame non-caption multimodal window. -> Frames until the next action-label boundary, capped at 200 frames. | mae (lower better) | 10.5374 | 10.5545 |
+
 ## Leakage Controls
 
 - Use chronological train/test splits instead of random window shuffling.

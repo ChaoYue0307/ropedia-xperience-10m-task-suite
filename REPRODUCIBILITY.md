@@ -11,6 +11,7 @@ outside the current public data scope.
 | Sample download | Yes, from `ropedia-ai/xperience-10m-sample` or ModelScope sample mirror | Sample card lists `cc-by-nc-4.0`; raw data is not redistributed in this repo. |
 | Minimal baselines | Yes | One public sample episode, chronological split. |
 | 12-task suite | Yes | Uses the current 8,546-d synchronized multimodal feature contract. |
+| Tier-2 extension suite | Yes, when `annotation.hdf5` is present and `h5py` or HOMIE Toolkit is available | Adds eight sample-supported extension baselines aligned to the same windows and split. |
 | Neural MLP heads | Yes, when `torch` is installed | Compact task heads only, not a foundation model. |
 | Website figures and charts | Yes | Generated from committed metrics and sample thumbnails. |
 | Public bundle contents | Yes | Covers public repo and prepared HF bundles. |
@@ -75,6 +76,7 @@ python scripts/episode_task_suite.py \
 
 python scripts/research_direction_taxonomy.py
 python scripts/research_direction_extension_tasks.py
+python scripts/tier2_task_suite.py
 python scripts/task_walkthroughs.py
 python scripts/validate_source_alignment.py
 python scripts/build_evaluation_protocol.py
@@ -91,6 +93,11 @@ python scripts/build_artifact_index.py
 python scripts/validate_mirror_parity.py
 python scripts/validate_publication_package.py
 ```
+
+`scripts/tier2_task_suite.py` can use HOMIE Toolkit when present, or a direct
+`h5py` fallback for the public sample's caption JSON. It reads the local raw
+`annotation.hdf5` only to regenerate interaction/object targets; the raw HDF5
+is still ignored by git and excluded from public bundles.
 
 ## Owner-Side Staged Qwen3-Omni v6 Reproduction
 

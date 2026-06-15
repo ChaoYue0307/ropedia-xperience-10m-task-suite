@@ -2486,7 +2486,7 @@
         </p>
         <div class="hero-actions">
           <a class="button primary" href="research_roadmap.html">Open roadmap</a>
-          <a class="button" href="#suite">Inspect 12 tasks</a>
+          <a class="button" href="#suite">Inspect 12 core tasks</a>
           <a class="button" href="single_episode_explorer.html">Open explorer</a>
           <a class="button" href="https://cy0307-ropedia-xperience-10m-task-suite.static.hf.space/">Open HF app</a>
         </div>
@@ -2494,7 +2494,7 @@
           <div class="stat"><strong>5,821</strong><span>frames in sample episode</span></div>
           <div class="stat"><strong>1,161</strong><span>20-frame windows</span></div>
           <div class="stat"><strong>8,546</strong><span>feature dimensions</span></div>
-          <div class="stat"><strong>12+12+4</strong><span>core, neural, and extension probes</span></div>
+          <div class="stat"><strong>12+8</strong><span>core and Tier-2 task contracts</span></div>
         </div>
       </div>
       <div class="hero-panel" aria-label="Feature allocation summary">
@@ -2567,7 +2567,8 @@
               <strong>What is implemented</strong>
               <ul>
                 <li>1,161 aligned windows from one public sample episode</li>
-                <li>12 task contracts with minimal and neural heads</li>
+                <li>12 core task contracts with minimal and neural heads</li>
+                <li>8 Tier-2 extension baselines aligned to the same setup</li>
                 <li>Four research-direction maps and extension probes</li>
               </ul>
             </article>
@@ -2610,7 +2611,8 @@
             <p>Use this as the front door for the project: it links the 12 tasks, four research tracks, current sample evidence, and the multi-episode Qwen3-Omni scale-up path.</p>
             <div class="snapshot-meta">
               <span>tracks <strong>4</strong></span>
-              <span>task contracts <strong>12</strong></span>
+          <span>core tasks <strong>12</strong></span>
+          <span>Tier-2 tasks <strong>8</strong></span>
               <span>roadmap phases <strong>5</strong></span>
             </div>
             <div class="snapshot-actions">
@@ -2635,7 +2637,7 @@
             <div class="snapshot-meta">
               <span>core tasks <strong>12</strong></span>
               <span>neural heads <strong>12</strong></span>
-              <span>extension probes <strong>4</strong></span>
+              <span>Tier-2 extensions <strong>8</strong></span>
             </div>
           </article>
           <article class="snapshot-card">
@@ -3068,7 +3070,7 @@
           </article>
         </div>
         <div class="boundary-strip">
-          <div class="boundary-item"><strong>Verified now</strong><span>One public episode, 5,821 frames, 1,161 aligned windows, 8,546 dimensions, 12 minimal heads, 12 neural heads, and 4 direction-extension probes.</span></div>
+          <div class="boundary-item"><strong>Verified now</strong><span>One public episode, 5,821 frames, 1,161 aligned windows, 8,546 dimensions, 12 core tasks, 8 Tier-2 extension tasks, 12 neural core heads, and 4 direction-extension probes.</span></div>
           <div class="boundary-item"><strong>Next: no-new-episode scale</strong><span>The selected 128-episode suite should next use dense/multiscale windows, hierarchical labels, and raw-feature shards before adding more episodes.</span></div>
           <div class="boundary-item"><strong>Next: error analysis</strong><span>The selected 128-episode Qwen3-Omni LoRA result has a final verified diagnostic package; JSON validity meets target, and the next pass should improve action/subtask quality.</span></div>
           <div class="boundary-item"><strong>Not redistributed</strong><span>Raw videos, raw annotations, full Qwen weights, and private gated Xperience-10M data are not included in the public repo or HF bundles.</span></div>
@@ -3388,8 +3390,78 @@
     <section id="extensions" data-project-tab="directions" role="tabpanel" aria-labelledby="tab-directions" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Four extra probes make the directions actionable.</h2>
-          <p>These are new data-backed extension tasks computed from the same single-episode feature tensor. They add one concrete input, process, output, and metric for each research direction, while keeping the single-episode limitation explicit.</p>
+          <h2>Tier-2 extensions make the sample task space broader.</h2>
+          <p>The original four direction probes remain as focused examples. The new Tier-2 layer adds eight more sample-supported baselines using the same windows, feature manifest, chronological split, and minimal/neural head pattern as the core 12 tasks.</p>
+        </div>
+        <img class="chart" src="assets/charts/tier2_task_suite.svg?v=xperience10m-tier2" alt="Eight Xperience-10M Tier-2 extension tasks with minimal and neural metrics">
+        <div class="extension-grid">
+          <article class="extension-card">
+            <span class="status-pill">Tier-2 / forecast</span>
+            <h3>Long-Horizon Next-Action Forecasting</h3>
+            <p><strong>Input:</strong> current non-caption multimodal window.</p>
+            <p><strong>Output:</strong> action label five seconds later.</p>
+            <div class="extension-metrics"><span><strong>0.0750</strong>minimal macro-F1</span><span><strong>0.0655</strong>neural macro-F1</span></div>
+          </article>
+          <article class="extension-card">
+            <span class="status-pill">Tier-2 / procedure</span>
+            <h3>Long-Horizon Next-Subtask Forecasting</h3>
+            <p><strong>Input:</strong> current non-caption multimodal window.</p>
+            <p><strong>Output:</strong> procedure subtask five seconds later.</p>
+            <div class="extension-metrics"><span><strong>0.0455</strong>minimal macro-F1</span><span><strong>0.0507</strong>neural macro-F1</span></div>
+          </article>
+          <article class="extension-card">
+            <span class="status-pill">Tier-2 / language</span>
+            <h3>Interaction Text Prediction</h3>
+            <p><strong>Input:</strong> current sensor window with caption features removed.</p>
+            <p><strong>Output:</strong> raw annotation interaction phrase.</p>
+            <div class="extension-metrics"><span><strong>0.0444</strong>minimal macro-F1</span><span><strong>0.0381</strong>neural macro-F1</span></div>
+          </article>
+          <article class="extension-card">
+            <span class="status-pill">Tier-2 / relation</span>
+            <h3>Action-Object Relation Prediction</h3>
+            <p><strong>Input:</strong> current sensor window with caption features removed.</p>
+            <p><strong>Output:</strong> joint action plus active object-set label.</p>
+            <div class="extension-metrics"><span><strong>0.0000</strong>minimal macro-F1</span><span><strong>0.0000</strong>neural macro-F1</span></div>
+          </article>
+          <article class="extension-card">
+            <span class="status-pill">Tier-2 / objects</span>
+            <h3>Future Object-Set Forecasting</h3>
+            <p><strong>Input:</strong> current sensor window with caption features removed.</p>
+            <p><strong>Output:</strong> object set active five seconds later.</p>
+            <div class="extension-metrics"><span><strong>0.1694</strong>minimal micro-F1</span><span><strong>0.1972</strong>neural micro-F1</span></div>
+          </article>
+          <article class="extension-card">
+            <span class="status-pill">Tier-2 / sensor bridge</span>
+            <h3>IMU-to-Hand Pose Reconstruction</h3>
+            <p><strong>Input:</strong> IMU acceleration and gyroscope features only.</p>
+            <p><strong>Output:</strong> current left/right hand joint feature blocks.</p>
+            <div class="extension-metrics"><span><strong>0.0420</strong>minimal MAE</span><span><strong>0.0426</strong>neural MAE</span></div>
+          </article>
+          <article class="extension-card">
+            <span class="status-pill">Tier-2 / camera sync</span>
+            <h3>Camera-View Synchronization Retrieval</h3>
+            <p><strong>Input:</strong> fisheye camera-1 feature query.</p>
+            <p><strong>Output:</strong> synchronized fisheye camera-3 window rank.</p>
+            <div class="extension-metrics"><span><strong>0.4943</strong>minimal MRR</span><span><strong>0.2409</strong>neural MRR</span></div>
+          </article>
+          <article class="extension-card">
+            <span class="status-pill">Tier-2 / timing</span>
+            <h3>Time-to-Next-Transition Regression</h3>
+            <p><strong>Input:</strong> current non-caption multimodal window.</p>
+            <p><strong>Output:</strong> capped frames until the next action boundary.</p>
+            <div class="extension-metrics"><span><strong>10.5374</strong>minimal MAE frames</span><span><strong>10.5545</strong>neural MAE frames</span></div>
+          </article>
+        </div>
+        <div class="callout-row">
+          <div class="callout">
+            <h3>Tier-2 artifact package</h3>
+            <p>The eight-task package has JSON metrics, prediction/rank files, a Markdown summary, and a chart generated from the local public-sample annotation and committed shared-window tensor.</p>
+            <p><a href="data/tier2_task_suite.json">Open Tier-2 JSON</a></p>
+          </div>
+          <div class="callout">
+            <h3>Setup alignment</h3>
+            <p>Tier-2 uses the same 20-frame windows, 5-frame stride, 8,546-dimensional feature manifest, chronological split, and minimal/neural comparison pattern as the core 12 tasks.</p>
+          </div>
         </div>
         <img class="chart" src="assets/charts/research_direction_extension_tasks.svg?v=xperience10m-ext" alt="Four Xperience-10M research-direction extension probes with minimal and neural metrics">
         <div class="extension-grid">

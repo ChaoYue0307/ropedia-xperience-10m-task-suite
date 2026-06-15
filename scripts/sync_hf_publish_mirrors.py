@@ -37,6 +37,16 @@ and `docs/data/task_suite_enhancement_128.json`. It recommends
 label-normalized scoring, and compact raw-feature shards before adding more
 episodes.
 """
+TIER2_MARKER = "docs/data/tier2_task_suite.json"
+TIER2_CARD_BLOCK = """
+## Tier-2 Extension Baselines
+
+The public-sample task layer now includes eight Tier-2 extension baselines in
+`results/episode_task_suite/tier2_task_suite/` and
+`docs/data/tier2_task_suite.json`. They reuse the same 20-frame windows,
+5-frame stride, feature manifest, chronological split, and minimal/neural head
+pattern as the core 12 tasks.
+"""
 QWEN_COMPARISON_MARKER = "docs/data/qwen3_v5_v6_comparison.json"
 QWEN_COMPARISON_ROW = (
     "| Compare Qwen3 v5/v6 diagnostic branches | "
@@ -116,6 +126,26 @@ def ensure_enhancement_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
             text = text.replace(insert_before, ENHANCEMENT_CARD_BLOCK + insert_before, 1)
         else:
             text = text.rstrip() + "\n" + ENHANCEMENT_CARD_BLOCK
+        updated.append(relative_path)
+        if not dry_run:
+            path.write_text(text, encoding="utf-8")
+    return updated
+
+
+def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
+    updated = []
+    for relative_path in ("space/README.md", "artifacts/README.md", "model/README.md"):
+        path = hf_root / relative_path
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        if TIER2_MARKER in text:
+            continue
+        insert_before = "\n## Dataset Boundary" if relative_path.startswith("artifacts/") else "\n## Start Here"
+        if insert_before in text:
+            text = text.replace(insert_before, TIER2_CARD_BLOCK + insert_before, 1)
+        else:
+            text = text.rstrip() + "\n" + TIER2_CARD_BLOCK
         updated.append(relative_path)
         if not dry_run:
             path.write_text(text, encoding="utf-8")
@@ -253,7 +283,11 @@ def main() -> int:
             dry_run=args.dry_run,
         )
 
-    result_files = sorted(set(parity.RESULT_FILES) | set(parity.verified_public_result_files()))
+    result_files = sorted(
+        set(parity.RESULT_FILES)
+        | set(parity.verified_public_result_files())
+        | set(parity.tier2_result_files())
+    )
     for filename in result_files:
         src = ROOT / "results" / filename
         copied += copy_file(
@@ -279,6 +313,7 @@ def main() -> int:
         )
 
     card_updates = ensure_enhancement_card_links(hf_root, dry_run=args.dry_run)
+    card_updates += ensure_tier2_card_links(hf_root, dry_run=args.dry_run)
     card_updates += ensure_current_qwen_card_links(hf_root, dry_run=args.dry_run)
     summary = {
         "status": "dry_run" if args.dry_run else "synced",

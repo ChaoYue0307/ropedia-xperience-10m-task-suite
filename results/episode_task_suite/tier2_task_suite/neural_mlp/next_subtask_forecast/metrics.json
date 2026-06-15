@@ -1,0 +1,53 @@
+{
+  "accuracy": 0.02046783625730994,
+  "balanced_accuracy": 0.029166666666666667,
+  "macro_f1": 0.050724637681159424,
+  "weighted_f1": 0.03559623696923468,
+  "num_eval_windows": 342,
+  "num_classes": 14,
+  "status": "pass",
+  "task": "next_subtask_forecast",
+  "task_display_name": "Long-Horizon Next-Subtask Forecasting",
+  "tier": "tier2_extension",
+  "model_family": "neural_mlp",
+  "input": "Current 20-frame non-caption multimodal window.",
+  "split": "single_episode_chronological",
+  "num_windows": 1141,
+  "num_train_windows": 799,
+  "num_test_windows": 342,
+  "primary_metric": "macro_f1",
+  "primary_score": 0.050724637681159424,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 1.578477246442038,
+      "train_accuracy": 0.46307884856070086
+    },
+    {
+      "epoch": 5,
+      "loss": 0.043756316020823686,
+      "train_accuracy": 0.9824780976220275
+    },
+    {
+      "epoch": 10,
+      "loss": 0.02675439281685182,
+      "train_accuracy": 0.9949937421777222
+    },
+    {
+      "epoch": 15,
+      "loss": 0.013605056314243094,
+      "train_accuracy": 0.9962453066332916
+    },
+    {
+      "epoch": 20,
+      "loss": 0.003073849640401996,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 25,
+      "loss": 0.0026577636194491153,
+      "train_accuracy": 0.9987484355444305
+    }
+  ],
+  "device": "cpu"
+}

@@ -1,0 +1,86 @@
+{
+  "accuracy": 0.055900621118012424,
+  "balanced_accuracy": 0.072,
+  "macro_f1": 0.07499999999999998,
+  "weighted_f1": 0.058229813664596265,
+  "num_eval_windows": 322,
+  "num_classes": 18,
+  "status": "pass",
+  "task": "long_horizon_next_action",
+  "task_display_name": "Long-Horizon Next-Action Forecasting",
+  "tier": "tier2_extension",
+  "model_family": "minimal_softmax",
+  "input": "Current 20-frame non-caption multimodal window.",
+  "split": "single_episode_chronological",
+  "num_windows": 1073,
+  "num_train_windows": 751,
+  "num_test_windows": 322,
+  "num_train_classes": 14,
+  "majority_baseline_accuracy": 0.0,
+  "primary_metric": "macro_f1",
+  "primary_score": 0.07499999999999998,
+  "unseen_test_class_count": 4,
+  "unseen_test_classes": [
+    "Place item on table",
+    "Wait/Prepare for pouring",
+    "Pour coffee",
+    "Pour milk into coffee"
+  ],
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 2.9943459033966064,
+      "train_accuracy": 0.07190412782956059
+    },
+    {
+      "epoch": 22,
+      "loss": 0.022863121703267097,
+      "train_accuracy": 0.9986684420772304
+    },
+    {
+      "epoch": 44,
+      "loss": 0.019138943403959274,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 66,
+      "loss": 0.017911160364747047,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 88,
+      "loss": 0.017209626734256744,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 110,
+      "loss": 0.0167277492582798,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 132,
+      "loss": 0.016360996291041374,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 154,
+      "loss": 0.016062702983617783,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 176,
+      "loss": 0.015808619558811188,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 198,
+      "loss": 0.015584941953420639,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 220,
+      "loss": 0.015383150428533554,
+      "train_accuracy": 1.0
+    }
+  ]
+}

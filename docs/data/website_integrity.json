@@ -1,14 +1,14 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-15T14:01:19+00:00",
+  "generated_at_utc": "2026-06-15T17:24:18+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 151,
+    "local_references": 153,
     "external_reference_count": 121,
-    "json_files": 39,
-    "image_assets_referenced": 21,
+    "json_files": 40,
+    "image_assets_referenced": 22,
     "failure_count": 0
   },
   "failures": {
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 76658,
-      "evidence_index": 102305
+      "overview_index": 76656,
+      "evidence_index": 102436
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 76658,
-      "protocol_index": 98487,
-      "evidence_index": 102305
+      "overview_index": 76656,
+      "protocol_index": 98618,
+      "evidence_index": 102436
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -277,8 +277,8 @@
     {
       "path": "index.html",
       "id_count": 90,
-      "reference_count": 127,
-      "image_count": 24
+      "reference_count": 129,
+      "image_count": 25
     },
     {
       "path": "research_roadmap.html",
@@ -301,7 +301,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 90556,
+      "bytes": 92398,
       "top_level_type": "dict"
     },
     {
@@ -316,7 +316,7 @@
     },
     {
       "path": "data/evaluation_protocol.json",
-      "bytes": 14511,
+      "bytes": 21815,
       "top_level_type": "dict"
     },
     {
@@ -326,7 +326,7 @@
     },
     {
       "path": "data/figure_index.json",
-      "bytes": 14115,
+      "bytes": 14800,
       "top_level_type": "dict"
     },
     {
@@ -336,12 +336,12 @@
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 100625,
+      "bytes": 100705,
       "top_level_type": "dict"
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 566885,
+      "bytes": 627841,
       "top_level_type": "dict"
     },
     {
@@ -361,12 +361,12 @@
     },
     {
       "path": "data/project_brief.json",
-      "bytes": 3811,
+      "bytes": 4030,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_manifest.json",
-      "bytes": 5313,
+      "bytes": 5436,
       "top_level_type": "dict"
     },
     {
@@ -376,12 +376,12 @@
     },
     {
       "path": "data/project_status.json",
-      "bytes": 23535,
+      "bytes": 24109,
       "top_level_type": "dict"
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 5617,
+      "bytes": 5659,
       "top_level_type": "dict"
     },
     {
@@ -416,7 +416,7 @@
     },
     {
       "path": "data/reproducibility_matrix.json",
-      "bytes": 6123,
+      "bytes": 6545,
       "top_level_type": "dict"
     },
     {
@@ -480,8 +480,13 @@
       "top_level_type": "dict"
     },
     {
+      "path": "data/tier2_task_suite.json",
+      "bytes": 33010,
+      "top_level_type": "dict"
+    },
+    {
       "path": "data/website_integrity.json",
-      "bytes": 17443,
+      "bytes": 17710,
       "top_level_type": "dict"
     },
     {
@@ -559,6 +564,13 @@
       "path": "assets/charts/research_direction_extension_tasks.svg",
       "exists": true,
       "bytes": 6685,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/tier2_task_suite.svg",
+      "exists": true,
+      "bytes": 5420,
       "format": "SVG",
       "has_viewbox": true
     },

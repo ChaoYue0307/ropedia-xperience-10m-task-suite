@@ -1,0 +1,47 @@
+{
+  "precision": 0.1590909090909091,
+  "recall": 0.25925925925925924,
+  "micro_f1": 0.19718309859154928,
+  "macro_f1": 0.07845536106405672,
+  "exact_match": 0.0,
+  "status": "pass",
+  "task": "object_set_forecast",
+  "task_display_name": "Future Object-Set Forecasting",
+  "tier": "tier2_extension",
+  "model_family": "neural_mlp_multilabel",
+  "input": "Current 20-frame sensor window with caption-text features removed.",
+  "split": "single_episode_chronological",
+  "num_windows": 188,
+  "num_train_windows": 132,
+  "num_test_windows": 56,
+  "num_objects": 23,
+  "primary_metric": "micro_f1",
+  "primary_score": 0.19718309859154928,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 1.118124373031385
+    },
+    {
+      "epoch": 5,
+      "loss": 0.4309653134057016
+    },
+    {
+      "epoch": 10,
+      "loss": 0.17918715264761087
+    },
+    {
+      "epoch": 15,
+      "loss": 0.08946222806292953
+    },
+    {
+      "epoch": 20,
+      "loss": 0.07499222908959244
+    },
+    {
+      "epoch": 25,
+      "loss": 0.0528871344797539
+    }
+  ],
+  "device": "cpu"
+}

@@ -2,12 +2,14 @@
   "title": "Ropedia Xperience-10M Task Suite Evaluation Protocol",
   "status": "pass",
   "version": "2026-06-01",
-  "generated_at_utc": "2026-06-06T23:26:13+00:00",
+  "generated_at_utc": "2026-06-15T17:23:57+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
     "results/episode_task_suite/windows.csv",
-    "results/episode_task_suite/feature_manifest.json"
+    "results/episode_task_suite/feature_manifest.json",
+    "docs/data/tier2_task_suite.json",
+    "results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json"
   ],
   "scope": {
     "validated_episode_count": 1,
@@ -19,6 +21,19 @@
     "stride_frames": 5,
     "audio_featurized": true,
     "raw_data_redistributed": false
+  },
+  "task_tiers": {
+    "core_12": {
+      "status": "canonical_public_sample_suite",
+      "task_count": 12,
+      "results": "docs/data/summary_metrics.json"
+    },
+    "tier2_extension": {
+      "status": "generated_extension_baselines",
+      "task_count": 8,
+      "results": "docs/data/tier2_task_suite.json",
+      "combined_task_count": 20
+    }
   },
   "split_policy": {
     "name": "single_episode_chronological",
@@ -305,6 +320,128 @@
       "neural_primary_metric": 0.7152682255845944,
       "minimal_metric_source": "results/episode_task_suite/misalignment_detection/metrics.json",
       "neural_metric_source": "results/episode_task_suite/neural_mlp/misalignment_detection/metrics.json"
+    }
+  ],
+  "tier2_task_protocols": [
+    {
+      "task": "long_horizon_next_action",
+      "task_display_name": "Long-Horizon Next-Action Forecasting",
+      "family": "classification",
+      "unit": "single aligned window",
+      "input": "Current 20-frame non-caption multimodal window.",
+      "target": "Action label five seconds later.",
+      "primary_metric": "macro_f1",
+      "higher_is_better": true,
+      "minimal_primary_metric": 0.07499999999999998,
+      "neural_primary_metric": 0.06545454545454546,
+      "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/long_horizon_next_action/metrics.json",
+      "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/long_horizon_next_action/metrics.json",
+      "meaning": "Tests whether the current state carries enough procedure context to forecast beyond the one-second core next-action task."
+    },
+    {
+      "task": "next_subtask_forecast",
+      "task_display_name": "Long-Horizon Next-Subtask Forecasting",
+      "family": "classification",
+      "unit": "single aligned window",
+      "input": "Current 20-frame non-caption multimodal window.",
+      "target": "Procedure subtask label five seconds later.",
+      "primary_metric": "macro_f1",
+      "higher_is_better": true,
+      "minimal_primary_metric": 0.04545454545454545,
+      "neural_primary_metric": 0.050724637681159424,
+      "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/next_subtask_forecast/metrics.json",
+      "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/next_subtask_forecast/metrics.json",
+      "meaning": "Moves from immediate action anticipation to higher-level procedure-state prediction."
+    },
+    {
+      "task": "interaction_text_prediction",
+      "task_display_name": "Interaction Text Prediction",
+      "family": "classification",
+      "unit": "single aligned window",
+      "input": "Current 20-frame sensor window with caption-text features removed.",
+      "target": "Raw annotation interaction phrase for the same window.",
+      "primary_metric": "macro_f1",
+      "higher_is_better": true,
+      "minimal_primary_metric": 0.04444444444444444,
+      "neural_primary_metric": 0.0380952380952381,
+      "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/interaction_text_prediction/metrics.json",
+      "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/interaction_text_prediction/metrics.json",
+      "meaning": "Uses the raw caption JSON interaction field as a language target instead of only the hashed text feature."
+    },
+    {
+      "task": "action_object_relation",
+      "task_display_name": "Action-Object Relation Prediction",
+      "family": "classification",
+      "unit": "single aligned window",
+      "input": "Current 20-frame sensor window with caption-text features removed.",
+      "target": "Joint action plus active object-set relation.",
+      "primary_metric": "macro_f1",
+      "higher_is_better": true,
+      "minimal_primary_metric": 0.0,
+      "neural_primary_metric": 0.0,
+      "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/action_object_relation/metrics.json",
+      "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/action_object_relation/metrics.json",
+      "meaning": "Evaluates whether a model can bind what action is happening to which objects are involved."
+    },
+    {
+      "task": "object_set_forecast",
+      "task_display_name": "Future Object-Set Forecasting",
+      "family": "multi_label",
+      "unit": "single aligned window",
+      "input": "Current 20-frame sensor window with caption-text features removed.",
+      "target": "Object set active five seconds later.",
+      "primary_metric": "micro_f1",
+      "higher_is_better": true,
+      "minimal_primary_metric": 0.16939890710382516,
+      "neural_primary_metric": 0.19718309859154928,
+      "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/object_set_forecast/metrics.json",
+      "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/object_set_forecast/metrics.json",
+      "meaning": "Predicts which objects will become relevant soon, not only which objects are relevant now."
+    },
+    {
+      "task": "imu_to_hand_pose",
+      "task_display_name": "IMU-to-Hand Pose Reconstruction",
+      "family": "regression",
+      "unit": "single aligned window",
+      "input": "Current IMU acceleration/gyroscope feature block only.",
+      "target": "Current left/right hand joint feature blocks.",
+      "primary_metric": "mae",
+      "higher_is_better": false,
+      "minimal_primary_metric": 0.042049407958984375,
+      "neural_primary_metric": 0.042562149465084076,
+      "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/imu_to_hand_pose/metrics.json",
+      "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/imu_to_hand_pose/metrics.json",
+      "meaning": "A sensor-bridge probe for how much hand configuration can be recovered from inertial motion alone."
+    },
+    {
+      "task": "camera_view_sync_retrieval",
+      "task_display_name": "Camera-View Synchronization Retrieval",
+      "family": "retrieval",
+      "unit": "held-out query window",
+      "input": "Fisheye camera-1 feature query projected into fisheye camera-3 feature space.",
+      "target": "The synchronized held-out camera-3 window.",
+      "primary_metric": "mrr",
+      "higher_is_better": true,
+      "minimal_primary_metric": 0.4943004846572876,
+      "neural_primary_metric": 0.24086658656597137,
+      "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/camera_view_sync_retrieval/metrics.json",
+      "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/camera_view_sync_retrieval/metrics.json",
+      "meaning": "Stress-tests multi-camera time alignment beyond the core cross-modal retrieval task."
+    },
+    {
+      "task": "time_to_transition",
+      "task_display_name": "Time-to-Next-Transition Regression",
+      "family": "regression",
+      "unit": "single aligned window",
+      "input": "Current 20-frame non-caption multimodal window.",
+      "target": "Frames until the next action-label boundary, capped at 200 frames.",
+      "primary_metric": "mae",
+      "higher_is_better": false,
+      "minimal_primary_metric": 10.53735637664795,
+      "neural_primary_metric": 10.55449390411377,
+      "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/time_to_transition/metrics.json",
+      "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/time_to_transition/metrics.json",
+      "meaning": "Turns boundary detection into a continuous timing estimate for procedural control."
     }
   ],
   "global_leakage_controls": [

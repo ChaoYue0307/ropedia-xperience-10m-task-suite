@@ -1,0 +1,53 @@
+{
+  "accuracy": 0.0,
+  "balanced_accuracy": 0.0,
+  "macro_f1": 0.0,
+  "weighted_f1": 0.0,
+  "num_eval_windows": 53,
+  "num_classes": 42,
+  "status": "pass",
+  "task": "action_object_relation",
+  "task_display_name": "Action-Object Relation Prediction",
+  "tier": "tier2_extension",
+  "model_family": "neural_mlp",
+  "input": "Current 20-frame sensor window with caption-text features removed.",
+  "split": "single_episode_chronological",
+  "num_windows": 178,
+  "num_train_windows": 125,
+  "num_test_windows": 53,
+  "primary_metric": "macro_f1",
+  "primary_score": 0.0,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 3.753063440322876,
+      "train_accuracy": 0.008
+    },
+    {
+      "epoch": 5,
+      "loss": 0.8229753971099854,
+      "train_accuracy": 0.872
+    },
+    {
+      "epoch": 10,
+      "loss": 0.0829126164317131,
+      "train_accuracy": 0.968
+    },
+    {
+      "epoch": 15,
+      "loss": 0.07906360924243927,
+      "train_accuracy": 0.976
+    },
+    {
+      "epoch": 20,
+      "loss": 0.013344862498342991,
+      "train_accuracy": 1.0
+    },
+    {
+      "epoch": 25,
+      "loss": 0.0362895242869854,
+      "train_accuracy": 1.0
+    }
+  ],
+  "device": "cpu"
+}

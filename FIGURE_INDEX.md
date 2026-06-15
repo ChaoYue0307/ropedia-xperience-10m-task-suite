@@ -30,6 +30,7 @@ Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience
 | Minimal-vs-neural task score chart | `docs/assets/charts/episode_task_scores_minimal_vs_neural.svg` | 1100 x 964 | `scripts/generate_visualizations.py` | Side-by-side baseline comparison over the same window contracts. |
 | Research direction coverage chart | `docs/assets/charts/research_direction_coverage.svg` | 1180 x 700 | `scripts/generate_visualizations.py` | Four-track coverage map for Ropedia research directions. |
 | Research direction extension chart | `docs/assets/charts/research_direction_extension_tasks.svg` | 1420 x 920 | `scripts/generate_visualizations.py` | Four coded extension probes, one per Ropedia research direction. |
+| Tier-2 extension task suite chart | `docs/assets/charts/tier2_task_suite.svg` | 1440 x 832 | `scripts/tier2_task_suite.py` | Eight sample-supported Tier-2 extension tasks with aligned minimal and neural baseline metrics. |
 | Feature block chart | `docs/assets/charts/feature_blocks.svg` | 1100 x 760 | `scripts/generate_visualizations.py` | Feature allocation by modality block. |
 | Minimal task score chart | `docs/assets/charts/episode_task_scores.svg` | 1100 x 556 | `scripts/generate_visualizations.py` | Minimal baseline metric snapshot across the task suite. |
 | Cross-modal retrieval chart | `docs/assets/charts/cross_modal_retrieval.svg` | 1100 x 284 | `scripts/generate_visualizations.py` | Retrieval behavior chart for the cross-modal task. |
