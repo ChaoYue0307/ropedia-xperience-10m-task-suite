@@ -37,6 +37,27 @@ and `docs/data/task_suite_enhancement_128.json`. It recommends
 label-normalized scoring, and compact raw-feature shards before adding more
 episodes.
 """
+QWEN_COMPARISON_MARKER = "docs/data/qwen3_v5_v6_comparison.json"
+QWEN_COMPARISON_ROW = (
+    "| Compare Qwen3 v5/v6 diagnostic branches | "
+    "`docs/data/qwen3_v5_v6_comparison.json` |"
+)
+QWEN_ARTIFACT_OLD_BULLET = """- A current verified Qwen3-Omni strict-label v3 held-out package for the
+  selected 96/16/16 episode split, with 100.00% JSON validity and weak
+  action/subtask quality documented as the next error-analysis target."""
+QWEN_ARTIFACT_CURRENT_BULLET = """- The latest verified Qwen3-Omni LoRA v6 diagnostic package for the selected
+  96/16/16 episode split includes 34,269 exported windows, 4,032 held-out test
+  predictions, 99.90% JSON validity, and public-safe metrics/predictions."""
+README_QWEN_OLD_PARAGRAPH = """The current verified diagnostic package uses the same selected split and 8-GPU
+training path, records validation loss over 512 validation windows, and keeps
+the held-out test split sealed for final evaluation. The next pass should keep
+this package contract while tightening JSON decoding, target formatting, and
+action/subtask error analysis."""
+README_QWEN_CURRENT_PARAGRAPH = """The latest verified diagnostic package uses the same selected split and 8-GPU
+training path, includes the full held-out evaluation with 4,032 predictions and
+99.90% JSON validity, and keeps raw data plus full Qwen weights out of the
+public repos. The next pass should keep this package contract while improving
+action/subtask target quality and error analysis."""
 
 
 def load_parity_module():
@@ -98,6 +119,62 @@ def ensure_enhancement_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
         updated.append(relative_path)
         if not dry_run:
             path.write_text(text, encoding="utf-8")
+    return updated
+
+
+def read_current_scaleup_line() -> str:
+    for line in (ROOT / "README.md").read_text(encoding="utf-8").splitlines():
+        if line.startswith("| Scale-up |"):
+            return line
+    raise SystemExit("Could not find current Scale-up row in README.md")
+
+
+def ensure_current_qwen_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
+    updated = []
+
+    artifacts_readme = hf_root / "artifacts/README.md"
+    if artifacts_readme.exists():
+        text = artifacts_readme.read_text(encoding="utf-8")
+        original = text
+        if QWEN_COMPARISON_ROW not in text:
+            anchor = "| Compare current versions and model groups | `docs/data/omni_model_comparison.json` |"
+            text = text.replace(anchor, anchor + "\n" + QWEN_COMPARISON_ROW, 1)
+        if QWEN_ARTIFACT_OLD_BULLET in text:
+            text = text.replace(QWEN_ARTIFACT_OLD_BULLET, QWEN_ARTIFACT_CURRENT_BULLET, 1)
+        if "99.90% JSON validity" not in text:
+            text = text.rstrip() + "\n\n" + QWEN_ARTIFACT_CURRENT_BULLET + "\n"
+        if QWEN_COMPARISON_MARKER not in text:
+            text = text.rstrip() + f"\n\nQwen v5/v6 comparison: `{QWEN_COMPARISON_MARKER}`.\n"
+        if text != original:
+            updated.append("artifacts/README.md")
+            if not dry_run:
+                artifacts_readme.write_text(text, encoding="utf-8")
+
+    scaleup_line = read_current_scaleup_line()
+    for relative_path in ("model/README.md", "model/PROJECT_README.md"):
+        path = hf_root / relative_path
+        if not path.exists():
+            continue
+        original = path.read_text(encoding="utf-8")
+        text = original
+        if README_QWEN_OLD_PARAGRAPH in text:
+            text = text.replace(README_QWEN_OLD_PARAGRAPH, README_QWEN_CURRENT_PARAGRAPH, 1)
+        lines = text.splitlines()
+        changed = text != original
+        for idx, line in enumerate(lines):
+            if line.startswith("| Scale-up |"):
+                if line != scaleup_line:
+                    lines[idx] = scaleup_line
+                    changed = True
+                break
+        else:
+            lines.append(scaleup_line)
+            changed = True
+        if changed:
+            updated.append(relative_path)
+            if not dry_run:
+                path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
     return updated
 
 
@@ -168,8 +245,10 @@ def main() -> int:
             src,
             [
                 hf_root / "space" / filename,
+                hf_root / "artifacts" / filename,
                 hf_root / "artifacts/docs" / filename,
                 hf_root / "model" / filename,
+                hf_root / "model/docs" / filename,
             ],
             dry_run=args.dry_run,
         )
@@ -200,6 +279,7 @@ def main() -> int:
         )
 
     card_updates = ensure_enhancement_card_links(hf_root, dry_run=args.dry_run)
+    card_updates += ensure_current_qwen_card_links(hf_root, dry_run=args.dry_run)
     summary = {
         "status": "dry_run" if args.dry_run else "synced",
         "hf_root": hf_root.as_posix(),

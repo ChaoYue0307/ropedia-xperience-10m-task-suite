@@ -657,11 +657,11 @@ MAX_VAL_SAMPLES=512 \
 scripts/omni/run_128_fullsplit_parallel_export_8gpu.sh
 ```
 
-The current verified diagnostic package uses the same selected split and 8-GPU
-training path, records validation loss over 512 validation windows, and keeps
-the held-out test split sealed for final evaluation. The next pass should keep
-this package contract while tightening JSON decoding, target formatting, and
-action/subtask error analysis.
+The latest verified diagnostic package uses the same selected split and 8-GPU
+training path, includes the full held-out evaluation with 4,032 predictions and
+99.90% JSON validity, and keeps raw data plus full Qwen weights out of the
+public repos. The next pass should keep this package contract while improving
+action/subtask target quality and error analysis.
 
 Monitor the run with:
 
