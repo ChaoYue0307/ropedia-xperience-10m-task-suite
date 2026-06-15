@@ -29,8 +29,8 @@ STATUS_REPORTS = {
     "scale_up_status": ROOT / "docs/data/scope_claims_audit.json",
     "publication_package": ROOT / "docs/data/publication_audit.json",
     "mirror_parity": ROOT / "docs/data/mirror_parity.json",
-    "live_publication": ROOT / "docs/data/live_publication_status.json",
 }
+LIVE_PUBLICATION_REPORT = ROOT / "docs/data/live_publication_status.json"
 
 DISPLAY_LABELS = {
     "public_presentation_files_exist": "Public files",
@@ -120,6 +120,7 @@ def build_report() -> dict:
     all_surface_files_exist = all(path.exists() for path in SURFACES.values())
 
     status_records = {name: read_status(path) for name, path in STATUS_REPORTS.items()}
+    live_publication_record = read_status(LIVE_PUBLICATION_REPORT)
     status_failures = {
         name: record
         for name, record in status_records.items()
@@ -255,6 +256,7 @@ def build_report() -> dict:
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
         "checks": checks,
+        "live_publication_report": live_publication_record,
         "surface_files": {name: display_path(path) for name, path in SURFACES.items()},
         "scope_note": "This report covers the public repo, website, Hugging Face cards, and package contents. Multi-episode model metrics are tracked by the training and evaluation reports.",
     }

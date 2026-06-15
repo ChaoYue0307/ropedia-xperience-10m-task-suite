@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-14T05:39:44+00:00",
+  "generated_at_utc": "2026-06-15T06:47:07+00:00",
   "status": "pass",
   "artifact_count": 164,
   "missing": [],
@@ -417,8 +417,8 @@
       "surface": "repo_hf",
       "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 19019,
-      "sha256": "b50c681fc3b9e1255d38631c0ebe9d4653a8acb0607b3455f9f827638b9f65e6"
+      "bytes": 19677,
+      "sha256": "3a1fc1bcd83432be538bff201f55b2b6051d26cc7230deb380f2c76bca8b2c6d"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -462,7 +462,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "24076a6db867af49f9b82d24b68816a1d2bbb4b31f7031aa89699326cb33539b"
+      "sha256": "a906e1f0856187e3329c20bd0b8282ac6bb0fa8b7d24e9d312f602f05535aa57"
     },
     {
       "id": "source_alignment_validator",
@@ -737,7 +737,7 @@
       "volatile": true,
       "shows": "Machine-readable report for SEO/social metadata, accessible tab semantics, public links, project links, and clear project presentation.",
       "exists": true,
-      "bytes": 5640,
+      "bytes": 5617,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -748,8 +748,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the public presentation report before release.",
       "exists": true,
-      "bytes": 12034,
-      "sha256": "1a2f23dc2be5dfa3a10438162579b1304f7f069e333a5a6c715f9001b95ac2a9"
+      "bytes": 12162,
+      "sha256": "2ce304198af8dce90b600e95e76d8b7dfd8a6b6256bfb74db6aef9e2dde9e826"
     },
     {
       "id": "task_surface_integrity",
@@ -818,7 +818,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 97776,
+      "bytes": 100499,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -898,7 +898,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 550970,
+      "bytes": 555090,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -910,7 +910,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 15774,
+      "bytes": 15775,
       "hash_policy": "existence_and_size_only"
     },
     {
