@@ -431,7 +431,8 @@ MARKER_CHECKS = [
         "required": [
             "Single-Episode Research Explorer",
             "data/single_episode_explorer.json",
-            "window-level exported artifacts only",
+            "browser-preview clips",
+            "full raw MP4/HDF5/RRD source files",
             "Feature Blocks",
             "Diagnostics",
             "object labels",
@@ -448,7 +449,8 @@ MARKER_CHECKS = [
         "required": [
             "Single-Episode Research Explorer",
             "data/single_episode_explorer.json",
-            "window-level exported artifacts only",
+            "browser-preview clips",
+            "full raw MP4/HDF5/RRD source files",
             "Feature Blocks",
             "Diagnostics",
             "object labels",
