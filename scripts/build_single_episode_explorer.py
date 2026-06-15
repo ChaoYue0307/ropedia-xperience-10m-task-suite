@@ -354,7 +354,7 @@ HTML_TEMPLATE = """<!doctype html>
 <body>
   <header>
     <div class="wrap nav">
-      <a class="brand" href="index.html"><img src="assets/brand/xperience10m-logo-mark-192.png" alt=""><span>Ropedia Xperience-10M</span></a>
+      <a class="brand" href="index.html"><img src="assets/brand/xperience10m-logo-favicon-64.png" alt=""><span>Ropedia Xperience-10M</span></a>
       <nav class="nav-links"><a href="index.html">Project</a><a href="single_episode_explorer.html">Explorer</a><a href="data/single_episode_explorer.json">Data JSON</a></nav>
     </div>
   </header>

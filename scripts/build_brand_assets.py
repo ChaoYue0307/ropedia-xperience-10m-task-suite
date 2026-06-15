@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Build deterministic brand assets from the generated logo mark."""
+"""Build deterministic high-contrast brand assets for the project."""
 
 from __future__ import annotations
 
 import hashlib
 import json
+import math
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -34,6 +35,12 @@ CYAN = (122, 229, 195)
 BG = (2, 5, 2)
 PANEL = (5, 14, 8)
 LINE = (43, 92, 41)
+WHITE = (246, 250, 240)
+DEEP = (5, 12, 9)
+DEEP_2 = (8, 24, 18)
+NEON_GREEN = (205, 255, 105)
+NEON_CYAN = (99, 242, 229)
+YELLOW = (245, 255, 112)
 
 
 def resample():
@@ -51,6 +58,217 @@ def load_font(size: int, *, bold: bool = False) -> ImageFont.FreeTypeFont | Imag
         if path.exists():
             return ImageFont.truetype(str(path), size=size)
     return ImageFont.load_default()
+
+
+def unit(x: float, y: float) -> tuple[float, float]:
+    length = math.hypot(x, y)
+    return (x / length, y / length)
+
+
+def point(
+    center: tuple[float, float],
+    u: tuple[float, float],
+    p: tuple[float, float],
+    distance: float,
+    offset: float,
+) -> tuple[float, float]:
+    return (
+        center[0] + u[0] * distance + p[0] * offset,
+        center[1] + u[1] * distance + p[1] * offset,
+    )
+
+
+def arm_polygon(
+    center: tuple[float, float],
+    u: tuple[float, float],
+    p: tuple[float, float],
+    *,
+    inner: float,
+    shoulder: float,
+    outer: float,
+    tip: float,
+    inner_width: float,
+    shoulder_width: float,
+    outer_width: float,
+) -> list[tuple[float, float]]:
+    return [
+        point(center, u, p, inner, -inner_width / 2),
+        point(center, u, p, shoulder, -shoulder_width / 2),
+        point(center, u, p, outer, -outer_width / 2),
+        point(center, u, p, tip, 0),
+        point(center, u, p, outer, outer_width / 2),
+        point(center, u, p, shoulder, shoulder_width / 2),
+        point(center, u, p, inner, inner_width / 2),
+    ]
+
+
+def draw_polyline(draw: ImageDraw.ImageDraw, points: list[tuple[float, float]], *, fill: tuple[int, int, int, int], width: int) -> None:
+    draw.line(points, fill=fill, width=width, joint="curve")
+
+
+def draw_ring(
+    draw: ImageDraw.ImageDraw,
+    center: tuple[float, float],
+    radius: float,
+    *,
+    fill: tuple[int, int, int, int],
+    width: int,
+) -> None:
+    x, y = center
+    draw.ellipse((x - radius, y - radius, x + radius, y + radius), outline=fill, width=width)
+
+
+def make_source_mark(size: int = 1254) -> Image.Image:
+    """Create a crisp, small-size-first X/sensor mark.
+
+    The image-generation pass established the visual direction: a bold X-shaped
+    sensor mark with lime/cyan accents. This deterministic renderer keeps the
+    final logo sharp and reproducible across tiny favicons and large cards.
+    """
+    aa = 3
+    s = size * aa
+    canvas = Image.new("RGBA", (s, s), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(canvas)
+    center = (s / 2, s / 2)
+
+    # Thin outer orbits are deliberately secondary; the heavy X is the logo.
+    orbit_box = (s * 0.18, s * 0.18, s * 0.82, s * 0.82)
+    draw.arc(orbit_box, 18, 158, fill=(*NEON_GREEN, 185), width=14 * aa)
+    draw.arc(orbit_box, 198, 338, fill=(*NEON_CYAN, 175), width=14 * aa)
+    inner_orbit = (s * 0.27, s * 0.27, s * 0.73, s * 0.73)
+    draw.arc(inner_orbit, 70, 250, fill=(*YELLOW, 150), width=9 * aa)
+    draw.arc(inner_orbit, 250, 430, fill=(*NEON_CYAN, 145), width=9 * aa)
+
+    directions = [unit(-1, -1), unit(1, -1), unit(-1, 1), unit(1, 1)]
+    for u in directions:
+        p = (-u[1], u[0])
+        outline = arm_polygon(
+            center,
+            u,
+            p,
+            inner=96 * aa,
+            shoulder=326 * aa,
+            outer=494 * aa,
+            tip=574 * aa,
+            inner_width=142 * aa,
+            shoulder_width=196 * aa,
+            outer_width=172 * aa,
+        )
+        base = arm_polygon(
+            center,
+            u,
+            p,
+            inner=112 * aa,
+            shoulder=322 * aa,
+            outer=474 * aa,
+            tip=538 * aa,
+            inner_width=112 * aa,
+            shoulder_width=154 * aa,
+            outer_width=134 * aa,
+        )
+        facet = [
+            point(center, u, p, 148 * aa, -40 * aa),
+            point(center, u, p, 318 * aa, -68 * aa),
+            point(center, u, p, 454 * aa, -56 * aa),
+            point(center, u, p, 320 * aa, -6 * aa),
+        ]
+
+        draw.polygon(outline, fill=(*WHITE, 250))
+        draw.polygon(base, fill=(*DEEP, 255))
+        draw.polygon(facet, fill=(*DEEP_2, 255))
+
+        # Structural splits make the camera-arm metaphor visible at large sizes
+        # without turning into visual noise at favicon scale.
+        draw_polyline(
+            draw,
+            [
+                point(center, u, p, 126 * aa, 0),
+                point(center, u, p, 305 * aa, 0),
+                point(center, u, p, 492 * aa, 0),
+            ],
+            fill=(*WHITE, 225),
+            width=8 * aa,
+        )
+        draw_polyline(
+            draw,
+            [point(center, u, p, 176 * aa, 48 * aa), point(center, u, p, 424 * aa, 58 * aa)],
+            fill=(*NEON_GREEN, 255),
+            width=20 * aa,
+        )
+        draw_polyline(
+            draw,
+            [point(center, u, p, 188 * aa, -48 * aa), point(center, u, p, 388 * aa, -60 * aa)],
+            fill=(*NEON_CYAN, 230),
+            width=12 * aa,
+        )
+
+        lens_center = point(center, u, p, 448 * aa, 0)
+        draw.ellipse(
+            (
+                lens_center[0] - 54 * aa,
+                lens_center[1] - 54 * aa,
+                lens_center[0] + 54 * aa,
+                lens_center[1] + 54 * aa,
+            ),
+            fill=(2, 7, 8, 255),
+            outline=(*WHITE, 245),
+            width=8 * aa,
+        )
+        draw_ring(draw, lens_center, 38 * aa, fill=(*NEON_CYAN, 255), width=9 * aa)
+        draw_ring(draw, lens_center, 23 * aa, fill=(*NEON_GREEN, 220), width=5 * aa)
+        draw.ellipse(
+            (
+                lens_center[0] - 10 * aa,
+                lens_center[1] - 10 * aa,
+                lens_center[0] + 10 * aa,
+                lens_center[1] + 10 * aa,
+            ),
+            fill=(*INK, 255),
+        )
+
+    # Central data core: large, bright, and readable even after downsampling.
+    core_shadow = Image.new("RGBA", (s, s), (0, 0, 0, 0))
+    shadow_draw = ImageDraw.Draw(core_shadow)
+    shadow_draw.ellipse(
+        (center[0] - 135 * aa, center[1] - 135 * aa, center[0] + 135 * aa, center[1] + 135 * aa),
+        fill=(*NEON_GREEN, 72),
+    )
+    core_shadow = core_shadow.filter(ImageFilter.GaussianBlur(18 * aa))
+    canvas.alpha_composite(core_shadow)
+    draw = ImageDraw.Draw(canvas)
+    draw.ellipse(
+        (center[0] - 104 * aa, center[1] - 104 * aa, center[0] + 104 * aa, center[1] + 104 * aa),
+        fill=(*DEEP, 255),
+        outline=(*WHITE, 255),
+        width=9 * aa,
+    )
+    draw.ellipse(
+        (center[0] - 76 * aa, center[1] - 76 * aa, center[0] + 76 * aa, center[1] + 76 * aa),
+        fill=(*NEON_GREEN, 255),
+    )
+    draw.ellipse(
+        (center[0] - 42 * aa, center[1] - 42 * aa, center[0] + 42 * aa, center[1] + 42 * aa),
+        fill=(*DEEP, 255),
+    )
+    draw.ellipse(
+        (center[0] - 19 * aa, center[1] - 19 * aa, center[0] + 19 * aa, center[1] + 19 * aa),
+        fill=(*INK, 255),
+    )
+
+    for angle in range(0, 360, 45):
+        radians = math.radians(angle)
+        u = (math.cos(radians), math.sin(radians))
+        draw_polyline(
+            draw,
+            [
+                (center[0] + u[0] * 118 * aa, center[1] + u[1] * 118 * aa),
+                (center[0] + u[0] * 168 * aa, center[1] + u[1] * 168 * aa),
+            ],
+            fill=(*NEON_GREEN, 220),
+            width=8 * aa,
+        )
+
+    return canvas.resize((size, size), resample())
 
 
 def sha256(path: Path) -> str:
@@ -139,9 +357,45 @@ def make_dark_tile(mark: Image.Image, size: int) -> Image.Image:
         outline=(*CYAN, 92),
         width=max(1, size // 80),
     )
-    fitted = fit_on_canvas(mark, size, scale=0.87)
-    tile.alpha_composite(fitted)
+    if size <= 80:
+        tile.alpha_composite(make_compact_symbol(size))
+    else:
+        fitted = fit_on_canvas(mark, size, scale=0.84)
+        tile.alpha_composite(fitted)
     return tile
+
+
+def make_compact_symbol(size: int) -> Image.Image:
+    aa = 4
+    s = size * aa
+    icon = Image.new("RGBA", (s, s), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(icon)
+
+    def sx(value: float) -> float:
+        return value / 64 * s
+
+    x_points = [
+        (17, 16),
+        (32, 26),
+        (47, 16),
+        (38, 31),
+        (47, 48),
+        (32, 38),
+        (17, 48),
+        (26, 31),
+    ]
+    outer = [(sx(x), sx(y)) for x, y in x_points]
+    inner = [(sx(x), sx(y)) for x, y in [(20, 19), (32, 28), (44, 19), (36, 31), (44, 45), (32, 36), (20, 45), (28, 31)]]
+    draw.polygon(outer, fill=(*WHITE, 255))
+    draw.polygon(inner, fill=(3, 12, 8, 255))
+    draw.line([(sx(20), sx(18)), (sx(32), sx(28)), (sx(44), sx(18))], fill=(*NEON_GREEN, 255), width=max(2, int(3.1 * aa)), joint="curve")
+    draw.line([(sx(20), sx(46)), (sx(32), sx(36)), (sx(44), sx(46))], fill=(*NEON_GREEN, 255), width=max(2, int(3.1 * aa)), joint="curve")
+    draw.line([(sx(18), sx(20)), (sx(28), sx(32)), (sx(18), sx(44))], fill=(*NEON_CYAN, 255), width=max(2, int(2.5 * aa)), joint="curve")
+    draw.line([(sx(46), sx(20)), (sx(36), sx(32)), (sx(46), sx(44))], fill=(*NEON_CYAN, 255), width=max(2, int(2.5 * aa)), joint="curve")
+    draw.ellipse((sx(26.2), sx(26.2), sx(37.8), sx(37.8)), fill=(*WHITE, 255))
+    draw.ellipse((sx(28.2), sx(28.2), sx(35.8), sx(35.8)), fill=(*NEON_GREEN, 255))
+    draw.ellipse((sx(30.8), sx(30.8), sx(33.2), sx(33.2)), fill=(*BG, 255))
+    return icon.resize((size, size), resample())
 
 
 def draw_grid(draw: ImageDraw.ImageDraw, width: int, height: int) -> None:
@@ -200,7 +454,11 @@ def make_social_card(mark: Image.Image) -> Image.Image:
     x = 570
     draw = ImageDraw.Draw(card)
     draw.text((x, 145), "Ropedia", font=title_font, fill=INK)
-    draw.text((x, 218), "Xperience-10M", font=title_font, fill=GREEN)
+    draw.text((x, 218), "Xperience", font=title_font, fill=GREEN)
+    xp_width = int(draw.textlength("Xperience", font=title_font))
+    dash_x = x + xp_width + 8
+    draw.rounded_rectangle((dash_x, 257, dash_x + 28, 265), radius=4, fill=GREEN)
+    draw.text((dash_x + 38, 218), "10M", font=title_font, fill=GREEN)
     draw.text((x, 308), "Task Suite", font=subtitle_font, fill=CYAN)
     draw.text(
         (x, 370),
@@ -231,9 +489,8 @@ def make_social_card(mark: Image.Image) -> Image.Image:
 
 
 def main() -> int:
-    if not SOURCE_MARK.exists():
-        raise FileNotFoundError(f"Missing source logo mark: {SOURCE_MARK}")
     BRAND_DIR.mkdir(parents=True, exist_ok=True)
+    make_source_mark().save(SOURCE_MARK)
     mark = Image.open(SOURCE_MARK).convert("RGBA")
 
     fit_on_canvas(mark, 512).save(OUTPUTS["mark_512"])
@@ -251,8 +508,8 @@ def main() -> int:
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "source": {
             "path": SOURCE_MARK.relative_to(ROOT).as_posix(),
-            "kind": "custom generated logo mark with chroma-key background removed locally",
-            "prompt_summary": "X-shaped multimodal camera mark with near-black, lime, cyan, trajectory, and point-cloud styling.",
+            "kind": "deterministic high-contrast logo mark inspired by a ChatGPT Image direction",
+            "prompt_summary": "Small-size-first X-shaped multimodal sensor/camera mark with strong white edges, lime/cyan accents, thick geometry, and reduced micro-detail for favicon clarity.",
         },
         "assets": [
             image_record("logo_mark", SOURCE_MARK, "Transparent source logo mark."),
