@@ -3,9 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="0; url=/ropedia-xperience-10m-task-suite/">
   <title>Redirecting | Ropedia Xperience-10M Task Suite</title>
   <link rel="canonical" href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">
+  <script>
+    (function () {
+      var projectBase = "/ropedia-xperience-10m-task-suite/";
+      var target = window.location.pathname.indexOf(projectBase) === 0 ? projectBase : "/";
+      window.addEventListener("DOMContentLoaded", function () {
+        var homeLink = document.getElementById("homeLink");
+        if (homeLink) homeLink.href = target;
+      });
+      window.location.replace(target);
+    })();
+  </script>
   <style>
     body {
       margin: 0;
@@ -22,7 +32,7 @@
 <body>
   <main>
     <h1>Redirecting</h1>
-    <p>Go to <a href="/ropedia-xperience-10m-task-suite/">Ropedia Xperience-10M Task Suite</a>.</p>
+    <p>Go to <a id="homeLink" href="/">Ropedia Xperience-10M Task Suite</a>.</p>
   </main>
 </body>
 </html>
