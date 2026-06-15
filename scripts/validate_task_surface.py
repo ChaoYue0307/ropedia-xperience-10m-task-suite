@@ -55,7 +55,7 @@ REQUIRED_TASK_FIELDS = {
     "plain_goal",
 }
 
-DISPLAY_FIELDS = {
+DISPLAY_FIELDS = (
     "display_name",
     "research_name",
     "card_blurb",
@@ -63,7 +63,7 @@ DISPLAY_FIELDS = {
     "process_short",
     "output_short",
     "plain_goal",
-}
+)
 
 ALLOWED_FAMILIES = {"supervised", "forecast", "retrieval", "diagnostic"}
 MODALITY_ASSETS = {

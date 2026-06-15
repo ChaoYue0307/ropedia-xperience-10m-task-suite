@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-15T08:43:19+00:00",
+  "generated_at_utc": "2026-06-15T09:38:11+00:00",
   "status": "pass",
   "artifact_count": 165,
   "missing": [],
@@ -463,7 +463,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "e7538ef1a10abe11c4877e4f3775a006a4ccda73415d8d9deb6bd864900cdca0"
+      "sha256": "1dc5e6a2959fc9f681fc6e295de109f4cbfa0bb3342463fe128f4352e64eb71e"
     },
     {
       "id": "source_alignment_validator",
@@ -727,7 +727,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8097,
-      "sha256": "943eb9063fb8b0373878d3e140a74cfaf6be279a37f2123f8bee8fb803c456f1"
+      "sha256": "0c36450f6ca810069dc299639a4a1be2fc3707d89247484ca704fd04aa2bc575"
     },
     {
       "id": "public_surface_qa",
@@ -819,7 +819,7 @@
       "shows": "Regenerates the task-surface integrity report and fails if task cards expose raw artifact ids or lose the interactive player wiring.",
       "exists": true,
       "bytes": 15366,
-      "sha256": "8d4573b7a4b75e433da577067369e5221515184536a281c4d2e30c3422ddc4ad"
+      "sha256": "799796daabe24a9a26d2e3030c239f9a6352d5ff5eb80ecd5f94f9d2d8c1f7f3"
     },
     {
       "id": "live_publication_status",
@@ -830,7 +830,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 98032,
+      "bytes": 100625,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -841,8 +841,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 43133,
-      "sha256": "03127d12a40606f96d99354e604aca148390cc29552a4c3f88ac3b3fdd193c24"
+      "bytes": 43203,
+      "sha256": "3d33efa8e1ed56a78b3f57e827fcfd1c3ff9848e4cc8350701847042bafe88d0"
     },
     {
       "id": "reproducibility_contract",
@@ -910,7 +910,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 556838,
+      "bytes": 565479,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -922,7 +922,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 17210,
+      "bytes": 17443,
       "hash_policy": "existence_and_size_only"
     },
     {

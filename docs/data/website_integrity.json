@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-15T08:54:54+00:00",
+  "generated_at_utc": "2026-06-15T09:36:33+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
@@ -40,6 +40,12 @@
       "has_section_tab_map": true
     },
     {
+      "name": "homepage_hidden_attribute_not_overridden",
+      "status": "pass",
+      "reason": "Elements hidden by JavaScript should stay hidden even when component CSS sets display values.",
+      "marker_count": 1
+    },
+    {
       "name": "project_tabs_use_accessible_roles",
       "status": "pass",
       "reason": "The tabbed research dashboard should expose tablist/tab semantics.",
@@ -74,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 76615,
-      "evidence_index": 102262
+      "overview_index": 76658,
+      "evidence_index": 102305
     },
     {
       "name": "project_status_links_json",
@@ -153,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 76615,
-      "protocol_index": 98444,
-      "evidence_index": 102262
+      "overview_index": 76658,
+      "protocol_index": 98487,
+      "evidence_index": 102305
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -295,7 +301,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 90555,
+      "bytes": 90556,
       "top_level_type": "dict"
     },
     {
@@ -335,7 +341,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 565472,
+      "bytes": 565479,
       "top_level_type": "dict"
     },
     {
@@ -475,7 +481,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 17210,
+      "bytes": 17211,
       "top_level_type": "dict"
     },
     {

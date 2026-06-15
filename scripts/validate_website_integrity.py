@@ -269,6 +269,12 @@ def validate(docs_root: Path, site_base: str) -> dict:
             "Deep links should open the correct tab instead of landing on hidden content.",
         ),
         (
+            "homepage_hidden_attribute_not_overridden",
+            "[hidden] { display: none !important; }",
+            None,
+            "Elements hidden by JavaScript should stay hidden even when component CSS sets display values.",
+        ),
+        (
             "project_tabs_use_accessible_roles",
             'role="tab"',
             None,
@@ -557,6 +563,7 @@ def validate(docs_root: Path, site_base: str) -> dict:
             "roadmap_links_json",
             "interactive_roadmap_page_linked",
             "interactive_roadmap_links_json",
+            "homepage_hidden_attribute_not_overridden",
             "reader_resources_link_qwen_status",
             "visual_figures_link_task_suite_image",
             "task_player_surface_present",
