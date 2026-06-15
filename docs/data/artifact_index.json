@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-15T09:55:20+00:00",
+  "generated_at_utc": "2026-06-15T14:00:44+00:00",
   "status": "pass",
   "artifact_count": 165,
   "missing": [],
@@ -330,8 +330,8 @@
       "surface": "repo_hf",
       "shows": "Builds the upload-ready Hugging Face adapter folder from a verified Qwen3 LoRA result summary and adapter directory.",
       "exists": true,
-      "bytes": 12040,
-      "sha256": "93e7b0edba5cb37621171706df5e62bb2ecc3f4e6725fc78d24634aca9ac4175"
+      "bytes": 12059,
+      "sha256": "944d41412dddafd056eda12a2228c870e6631e2d640f7bc09b10d8007ee8e8bc"
     },
     {
       "id": "qwen3_private_gpu_repro_smoke",
@@ -484,8 +484,8 @@
       "surface": "repo_hf",
       "shows": "Publishes prepared Space, artifact dataset, and model bundles, including an explicit model-binary upload batch.",
       "exists": true,
-      "bytes": 20337,
-      "sha256": "1351c20614722fd033b3f5055f53adfbd11aae83449b0bb384d98d49388f18a4"
+      "bytes": 21636,
+      "sha256": "0d6350d2cfe2fb7a9172cf98e37a620e420f0a74f43e83c5e49839e8582ab9b5"
     },
     {
       "id": "github_package_dockerfile",
@@ -727,7 +727,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8097,
-      "sha256": "351bc7308d3a3a368cab22a6443482dbcb1a1efcde6272a5f19372ffe2cb5603"
+      "sha256": "22cc4f1e8383b2d58c7f65066caac2e63cafa62abe94d88ab381403bfe96ec5d"
     },
     {
       "id": "public_surface_qa",
@@ -841,8 +841,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 43203,
-      "sha256": "3d33efa8e1ed56a78b3f57e827fcfd1c3ff9848e4cc8350701847042bafe88d0"
+      "bytes": 43271,
+      "sha256": "e2ef9d0537a928e3e17965c2c2df15b98f2def3420c063e934926e3a81dfd79c"
     },
     {
       "id": "reproducibility_contract",
@@ -933,8 +933,8 @@
       "surface": "website_hf",
       "shows": "Lists public URLs, upstream sources, and machine-readable project metadata.",
       "exists": true,
-      "bytes": 5193,
-      "sha256": "1ae4c41fdcca6638e570e081d07f700d56ca490fecc25d681d5066b1ca8319ee"
+      "bytes": 5313,
+      "sha256": "0e080b270a30cb910045eb0c9f4adf4ec78643ace162bb1f2606416c5bd62fde"
     },
     {
       "id": "task_summary",
@@ -1109,8 +1109,8 @@
       "surface": "repo_hf",
       "shows": "Documents the final 128-episode LoRA adapter upload path, target model repo, package builder, and forbidden files.",
       "exists": true,
-      "bytes": 1877,
-      "sha256": "d12d0b15eb6374b380940a95d13d87c8f840bb5118cf4b57e57965e018ec14e6"
+      "bytes": 1906,
+      "sha256": "2af2e93ec325a57b322aa9eee981031e9c1152630b380856766a3afacc431615"
     },
     {
       "id": "multi_episode_access_status",

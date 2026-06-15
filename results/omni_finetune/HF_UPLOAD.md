@@ -7,7 +7,7 @@ audit pass.
 Current intended target:
 
 - Model repo: `cy0307/ropedia-qwen3-omni-lora-128ep`
-- Source package: `results/omni_finetune/hf_upload_qwen3_128ep_full/`
+- Source package: `results/omni_finetune/hf_upload_qwen3_128ep_v6_rank64/`
 - Package builder: `scripts/omni/prepare_qwen3_lora_hf_package.py`
 - Upload script: `scripts/omni/upload_qwen3_omni_lora_to_hf.py`
 
@@ -15,9 +15,9 @@ Prepare the upload directory from the completed adapter and verified summary:
 
 ```bash
 python3 scripts/omni/prepare_qwen3_lora_hf_package.py \
-  --adapter-dir checkpoints/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora/adapter_lora \
-  --verified-summary results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full/verified_result_summary.json \
-  --output-dir results/omni_finetune/hf_upload_qwen3_128ep_full \
+  --adapter-dir checkpoints/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora/adapter_lora \
+  --verified-summary results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/verified_result_summary.json \
+  --output-dir results/omni_finetune/hf_upload_qwen3_128ep_v6_rank64 \
   --repo-id cy0307/ropedia-qwen3-omni-lora-128ep
 ```
 
@@ -26,7 +26,7 @@ Upload when network and `HF_TOKEN` are available:
 ```bash
 HF_TOKEN=<your_token> python3 scripts/omni/upload_qwen3_omni_lora_to_hf.py \
   --repo-id cy0307/ropedia-qwen3-omni-lora-128ep \
-  --source-dir results/omni_finetune/hf_upload_qwen3_128ep_full \
+  --source-dir results/omni_finetune/hf_upload_qwen3_128ep_v6_rank64 \
   --message "Upload Xperience-10M 128-episode Qwen3-Omni LoRA adapter"
 ```
 

@@ -271,6 +271,8 @@ Hugging Face Space app:
 | GitHub Container package | [ghcr.io/chaoyue0307/ropedia-xperience-10m-task-suite](https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/pkgs/container/ropedia-xperience-10m-task-suite) |
 | Derived artifacts on Hugging Face | [huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts](https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts) |
 | Minimal and neural task baselines on Hugging Face | [huggingface.co/cy0307/ropedia-xperience-10m-task-baselines](https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines) |
+| Qwen3-Omni 128-episode LoRA adapter | [huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep](https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep) |
+| Cosmos3-Super forward-dynamics LoRA adapter | [huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep](https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep) |
 | Hugging Face collection | [huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite](https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite) |
 | Xperience-10M dataset website | [ropedia.com/dataset](https://ropedia.com/dataset) |
 | Xperience-10M release page | [ropedia.com/blog/20260316_xperience_10m](https://ropedia.com/blog/20260316_xperience_10m) |
@@ -598,6 +600,7 @@ Current status in this repo:
 - final_train_loss / final_val_loss: 0.0277 / 0.0278
 - current_quality_target: strict-label JSON validity 100.00%, meeting the 98% target; action/subtask quality remains weak
 - qwen3_lora_adapter_repo: https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep
+- cosmos3_super_lora_adapter_repo: https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep
 - 128_aligned_baselines: 12 task ids, 8 simple metadata/text baselines, 6 neural metadata/text baselines
 - cosmos3_nano_branch: verified Cosmos3-Nano future-window compatibility package, 378 held-out future-window predictions from 14 test episodes
 - cosmos3_super_branch: verified Cosmos3-Super Reasoner base-weight JSON-task evaluation, 448 held-out predictions from 14 test episodes; JSON validity 51.12%, action macro-F1 0.0008, contact accuracy 32.14%, transition accuracy 36.83%

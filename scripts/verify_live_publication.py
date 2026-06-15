@@ -29,6 +29,7 @@ USER_AGENT = "ropedia-xperience-10m-live-verifier/1.0"
 LOCAL_PATH_FORBIDDEN_MARKERS = ["/" + "Users/", "/" + "private/"]
 QWEN3_LORA_REPO_ID = "cy0307/ropedia-qwen3-omni-lora-128ep"
 QWEN3_LORA_UPLOAD_DIR_CANDIDATES = [
+    ROOT / "results/omni_finetune/hf_upload_qwen3_128ep_v6_rank64",
     ROOT.parent / "hf_publish/qwen3_lora_128ep",
     ROOT / "results/omni_finetune/hf_upload_qwen3_128ep_full",
 ]

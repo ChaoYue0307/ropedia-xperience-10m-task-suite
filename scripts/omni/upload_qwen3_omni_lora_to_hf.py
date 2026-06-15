@@ -55,7 +55,13 @@ def main() -> int:
 
     token = args.token or os.environ.get("HF_TOKEN", "")
     if not token:
-        raise SystemExit("HF token missing; pass --token or set HF_TOKEN")
+        try:
+            from huggingface_hub import get_token
+        except ImportError as exc:
+            raise SystemExit("huggingface_hub is required for cached-token lookup") from exc
+        token = get_token() or ""
+    if not token:
+        raise SystemExit("HF token missing; pass --token, set HF_TOKEN, or run `hf auth login`")
 
     source = Path(args.source_dir).expanduser().resolve()
     if not source.is_dir():

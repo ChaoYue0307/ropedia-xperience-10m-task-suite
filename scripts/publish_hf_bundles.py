@@ -32,6 +32,8 @@ DEFAULT_NAMESPACE = "cy0307"
 DEFAULT_SPACE_REPO = "ropedia-xperience-10m-task-suite"
 DEFAULT_ARTIFACT_REPO = "ropedia-xperience-10m-task-suite-artifacts"
 DEFAULT_MODEL_REPO = "ropedia-xperience-10m-task-baselines"
+DEFAULT_QWEN3_LORA_REPO = "ropedia-qwen3-omni-lora-128ep"
+DEFAULT_COSMOS3_SUPER_LORA_REPO = "ropedia-cosmos3-super-forward-dynamics-lora-128ep"
 COLLECTION_TITLE = "Ropedia Xperience-10M Task Suite"
 
 COMMON_IGNORE = [
@@ -126,6 +128,7 @@ datasets:
 models:
   - cy0307/ropedia-xperience-10m-task-baselines
   - cy0307/ropedia-qwen3-omni-lora-128ep
+  - cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep
 ---
 """
 
@@ -313,6 +316,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--space-repo", default=DEFAULT_SPACE_REPO)
     parser.add_argument("--artifact-repo", default=DEFAULT_ARTIFACT_REPO)
     parser.add_argument("--model-repo", default=DEFAULT_MODEL_REPO)
+    parser.add_argument("--qwen3-lora-repo", default=DEFAULT_QWEN3_LORA_REPO)
+    parser.add_argument("--cosmos3-super-lora-repo", default=DEFAULT_COSMOS3_SUPER_LORA_REPO)
     parser.add_argument("--token", default=os.environ.get("HF_TOKEN", "").strip())
     parser.add_argument("--skip-space", action="store_true")
     parser.add_argument("--skip-artifacts", action="store_true")
@@ -446,6 +451,25 @@ def upload_allowlisted_artifact_binaries(
         print(f"Uploaded allowlisted artifact binary: {repo_id}/{relative_path}")
 
 
+def upsert_collection_item_notes(
+    api: HfApi,
+    token: str,
+    collection_slug: str,
+    notes_by_repo: dict[str, str],
+) -> None:
+    collection = api.get_collection(collection_slug, token=token)
+    for item in collection.items:
+        note = notes_by_repo.get(item.item_id)
+        if note is None or item.note == note:
+            continue
+        api.update_collection_item(
+            collection_slug,
+            item.item_object_id,
+            note=note,
+            token=token,
+        )
+
+
 def main() -> int:
     args = parse_args()
     hf_root = args.hf_root.resolve()
@@ -469,6 +493,8 @@ def main() -> int:
     space_repo = full_repo(args.namespace, args.space_repo)
     artifact_repo = full_repo(args.namespace, args.artifact_repo)
     model_repo = full_repo(args.namespace, args.model_repo)
+    qwen3_lora_repo = full_repo(args.namespace, args.qwen3_lora_repo)
+    cosmos3_super_lora_repo = full_repo(args.namespace, args.cosmos3_super_lora_repo)
 
     api.create_repo(space_repo, repo_type="space", space_sdk="static", exist_ok=True, token=token)
     api.create_repo(artifact_repo, repo_type="dataset", exist_ok=True, token=token)
@@ -523,20 +549,52 @@ def main() -> int:
         )
 
     try:
+        collection_description = (
+            "Space, artifact dataset, minimal plus neural baseline model repos, "
+            "and verified Qwen3/Cosmos3 adapter repos for the Ropedia "
+            "Xperience-10M task suite."
+        )
+        collection_notes = {
+            space_repo: "Interactive/static dashboard with raw public-sample previews and task-suite analysis.",
+            artifact_repo: "Public-safe metrics, predictions, docs, scripts, diagrams, and verified_public result packages.",
+            model_repo: "Minimal numpy weights plus aligned neural MLP checkpoints and task-head metrics.",
+            qwen3_lora_repo: "Verified v6 rank64 Qwen3-Omni LoRA adapter for the selected 128-episode diagnostic branch.",
+            cosmos3_super_lora_repo: "Verified Cosmos3-Super forward-dynamics LoRA adapter over camera-pose proxy targets.",
+        }
         collection = api.create_collection(
             COLLECTION_TITLE,
             namespace=args.namespace,
-            description=(
-                "Space, artifact dataset, and minimal plus neural baseline model repos "
-                "for the Ropedia Xperience-10M single-episode task suite."
-            ),
+            description=collection_description,
             private=False,
             exists_ok=True,
             token=token,
         )
-        api.add_collection_item(collection.slug, space_repo, "space", note="Interactive/static dashboard.", exists_ok=True, token=token)
-        api.add_collection_item(collection.slug, artifact_repo, "dataset", note="Derived metrics, predictions, scripts, and diagrams.", exists_ok=True, token=token)
-        api.add_collection_item(collection.slug, model_repo, "model", note="Minimal numpy weights plus neural MLP checkpoints.", exists_ok=True, token=token)
+        api.update_collection_metadata(
+            collection.slug,
+            description=collection_description,
+            private=False,
+            token=token,
+        )
+        api.add_collection_item(collection.slug, space_repo, "space", note=collection_notes[space_repo], exists_ok=True, token=token)
+        api.add_collection_item(collection.slug, artifact_repo, "dataset", note=collection_notes[artifact_repo], exists_ok=True, token=token)
+        api.add_collection_item(collection.slug, model_repo, "model", note=collection_notes[model_repo], exists_ok=True, token=token)
+        api.add_collection_item(
+            collection.slug,
+            qwen3_lora_repo,
+            "model",
+            note=collection_notes[qwen3_lora_repo],
+            exists_ok=True,
+            token=token,
+        )
+        api.add_collection_item(
+            collection.slug,
+            cosmos3_super_lora_repo,
+            "model",
+            note=collection_notes[cosmos3_super_lora_repo],
+            exists_ok=True,
+            token=token,
+        )
+        upsert_collection_item_notes(api, token, collection.slug, collection_notes)
         print(f"Collection: https://huggingface.co/collections/{collection.slug}")
     except Exception as exc:
         print(f"Collection update skipped: {exc}")
@@ -545,6 +603,8 @@ def main() -> int:
     print(f"Space: https://huggingface.co/spaces/{space_repo}")
     print(f"Artifacts: https://huggingface.co/datasets/{artifact_repo}")
     print(f"Models: https://huggingface.co/{model_repo}")
+    print(f"Qwen3 LoRA: https://huggingface.co/{qwen3_lora_repo}")
+    print(f"Cosmos3-Super LoRA: https://huggingface.co/{cosmos3_super_lora_repo}")
     return 0
 
 
