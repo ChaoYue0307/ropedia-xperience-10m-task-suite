@@ -130,6 +130,7 @@ SCRIPT_FILES = [
 ]
 
 WEBSITE_FILES = [
+    "404.html",
     "apple-touch-icon.png",
     "favicon.png",
     "index.html",
