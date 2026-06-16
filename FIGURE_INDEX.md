@@ -14,10 +14,10 @@ Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience
 | Project logo mark | `docs/assets/brand/xperience10m-logo-mark-512.png` | 512 x 512 | `scripts/build_brand_assets.py` | Primary X-shaped multimodal camera mark used for the website header, README, HF cards, and brand identity. |
 | Project logo social card | `docs/assets/brand/xperience10m-logo-social-card.png` | 1200 x 630 | `scripts/build_brand_assets.py` | Large preview image for README, Hugging Face cards, and Open Graph/Twitter social sharing. |
 | Project favicon | `docs/assets/brand/xperience10m-logo-favicon-64.png` | 64 x 64 | `scripts/build_brand_assets.py` | Small dark-tile logo for browser tabs and compact navigation. |
-| 12-task suite infographic | `docs/assets/task_suite_infographic.png` | 1800 x 6600 | `scripts/render_task_suite_infographic.py` | Primary visual map of the task suite, verified metrics, and sample modalities. |
+| Original task-suite infographic | `docs/assets/task_suite_infographic.png` | 1800 x 6600 | `scripts/render_task_suite_infographic.py` | Primary visual map of the original task families, verified metrics, and sample modalities; the unified public suite is now documented as 20 tasks. |
 | Episode-to-task pipeline diagram | `docs/assets/pipeline_diagram.png` | 1800 x 1120 | `scripts/generate_visualizations.py` | End-to-end data processing and evaluation pipeline overview. |
 | Qwen3-Omni LoRA training pipeline | `docs/assets/qwen3_omni_lora_pipeline.png` | 1536 x 1024 | `docs/assets/qwen3_omni_lora_pipeline.prompt.md` | Detailed raw-data-to-adapter flow for staged Xperience-10M Qwen3-Omni LoRA training. |
-| Minimal and neural task architecture map | `docs/assets/task_architectures.png` | 1800 x 2450 | `scripts/render_overview_figures.py` | All 12 task heads and shared feature contracts. |
+| Minimal and neural task architecture map | `docs/assets/task_architectures.png` | 1800 x 2450 | `scripts/render_overview_figures.py` | Minimal and neural heads for the original task contracts and shared feature contracts. |
 | Video modality thumbnail | `docs/assets/modalities/video.jpg` | 880 x 520 | `scripts/export_modality_atlas_assets.py` | Derived thumbnail for synchronized camera streams. |
 | Audio modality thumbnail | `docs/assets/modalities/audio.png` | 880 x 520 | `scripts/export_modality_atlas_assets.py` | Derived waveform thumbnail for the MP4 AAC stream. |
 | Depth modality thumbnail | `docs/assets/modalities/depth.jpg` | 880 x 520 | `scripts/export_modality_atlas_assets.py` | Derived depth and confidence thumbnail. |
@@ -30,7 +30,7 @@ Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience
 | Minimal-vs-neural task score chart | `docs/assets/charts/episode_task_scores_minimal_vs_neural.svg` | 1100 x 964 | `scripts/generate_visualizations.py` | Side-by-side baseline comparison over the same window contracts. |
 | Research direction coverage chart | `docs/assets/charts/research_direction_coverage.svg` | 1180 x 700 | `scripts/generate_visualizations.py` | Four-track coverage map for Ropedia research directions. |
 | Research direction extension chart | `docs/assets/charts/research_direction_extension_tasks.svg` | 1420 x 920 | `scripts/generate_visualizations.py` | Four coded extension probes, one per Ropedia research direction. |
-| Tier-2 extension task suite chart | `docs/assets/charts/tier2_task_suite.svg` | 1440 x 832 | `scripts/tier2_task_suite.py` | Eight sample-supported Tier-2 extension tasks with aligned minimal and neural baseline metrics. |
+| Tasks 13-20 baseline chart | `docs/assets/charts/tier2_task_suite.svg` | 1440 x 832 | `scripts/tier2_task_suite.py` | Eight additional sample-supported tasks in the unified 20-task suite with aligned minimal and neural baseline metrics. |
 | Feature block chart | `docs/assets/charts/feature_blocks.svg` | 1100 x 760 | `scripts/generate_visualizations.py` | Feature allocation by modality block. |
 | Minimal task score chart | `docs/assets/charts/episode_task_scores.svg` | 1100 x 556 | `scripts/generate_visualizations.py` | Minimal baseline metric snapshot across the task suite. |
 | Cross-modal retrieval chart | `docs/assets/charts/cross_modal_retrieval.svg` | 1100 x 284 | `scripts/generate_visualizations.py` | Retrieval behavior chart for the cross-modal task. |

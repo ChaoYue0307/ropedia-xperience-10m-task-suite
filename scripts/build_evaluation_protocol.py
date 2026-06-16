@@ -13,6 +13,7 @@ from task_display import task_display_name
 ROOT = Path(__file__).resolve().parents[1]
 SUMMARY_PATH = ROOT / "docs/data/summary_metrics.json"
 TIER2_PATH = ROOT / "docs/data/tier2_task_suite.json"
+TASK_SUITE_20_PATH = ROOT / "docs/data/task_suite_20.json"
 OUTPUT_JSON = ROOT / "docs/data/evaluation_protocol.json"
 OUTPUT_MD = ROOT / "EVALUATION_PROTOCOL.md"
 
@@ -163,6 +164,7 @@ def build_payload() -> dict:
             {
                 "task": task_name,
                 "task_display_name": task_display_name(task_name),
+                "origin": "original_public_sample_tasks",
                 **protocol,
                 "counts": count_record(minimal),
                 "minimal_primary_metric": metric_value(minimal, primary),
@@ -181,6 +183,7 @@ def build_payload() -> dict:
     if tier2:
         source_files.extend(
             [
+                "docs/data/task_suite_20.json",
                 "docs/data/tier2_task_suite.json",
                 "results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json",
             ]
@@ -197,6 +200,7 @@ def build_payload() -> dict:
                 {
                     "task": task_name,
                     "task_display_name": spec.get("name", task_name),
+                    "origin": "additional_public_sample_tasks",
                     "family": spec.get("family"),
                     "unit": "single aligned window" if spec.get("family") != "retrieval" else "held-out query window",
                     "input": spec.get("input"),
@@ -210,6 +214,11 @@ def build_payload() -> dict:
                     "meaning": spec.get("meaning"),
                 }
             )
+
+    all_task_rows = task_rows + tier2_rows
+    for idx, row in enumerate(all_task_rows, start=1):
+        row["task_number"] = idx
+        row["suite_label"] = f"Task {idx:02d}"
 
     return {
         "title": "Ropedia Xperience-10M Task Suite Evaluation Protocol",
@@ -228,18 +237,14 @@ def build_payload() -> dict:
             "audio_featurized": True,
             "raw_data_redistributed": False,
         },
-        "task_tiers": {
-            "core_12": {
-                "status": "canonical_public_sample_suite",
-                "task_count": len(task_rows),
-                "results": "docs/data/summary_metrics.json",
-            },
-            "tier2_extension": {
-                "status": "generated_extension_baselines" if tier2 else "not_generated",
-                "task_count": len(tier2_rows),
-                "results": "docs/data/tier2_task_suite.json",
-                "combined_task_count": len(task_rows) + len(tier2_rows),
-            },
+        "task_suite": {
+            "status": "unified_public_sample_suite",
+            "task_count": len(all_task_rows),
+            "original_public_sample_tasks": len(task_rows),
+            "additional_public_sample_tasks": len(tier2_rows),
+            "unified_results": "docs/data/task_suite_20.json" if TASK_SUITE_20_PATH.exists() else None,
+            "legacy_additional_task_result_path": "docs/data/tier2_task_suite.json",
+            "legacy_path_note": "The tier2_task_suite path is retained for stable links only; tasks 13-20 are presented as part of the same 20-task suite.",
         },
         "split_policy": {
             "name": "single_episode_chronological",
@@ -267,8 +272,7 @@ def build_payload() -> dict:
                 "config": suite.get("neural_model", {}),
             },
         ],
-        "task_protocols": task_rows,
-        "tier2_task_protocols": tier2_rows,
+        "task_protocols": all_task_rows,
         "global_leakage_controls": [
             "Use chronological train/test splits instead of random window shuffling.",
             "Fit scalers and learned projections on train windows only.",
@@ -301,8 +305,8 @@ def build_payload() -> dict:
 
 def markdown_table(rows: list[dict]) -> list[str]:
     lines = [
-        "| Task | Artifact id | Family | Unit | Input -> target | Primary metric | Minimal | Neural |",
-        "| --- | --- | --- | --- | --- | --- | ---: | ---: |",
+        "| # | Task | Artifact id | Origin | Family | Unit | Input -> target | Primary metric | Minimal | Neural |",
+        "| ---: | --- | --- | --- | --- | --- | --- | --- | ---: | ---: |",
     ]
     for row in rows:
         metric = row["primary_metric"]
@@ -312,39 +316,13 @@ def markdown_table(rows: list[dict]) -> list[str]:
         neural_text = "n/a" if neural is None else f"{neural:.4f}"
         direction = "higher better" if row["higher_is_better"] else "lower better"
         lines.append(
-            "| {task} | `{artifact}` | {family} | {unit} | {input} -> {target} | {metric} ({direction}) | {minimal} | {neural} |".format(
+            "| {number} | {task} | `{artifact}` | {origin} | {family} | {unit} | {input} -> {target} | {metric} ({direction}) | {minimal} | {neural} |".format(
+                number=row.get("task_number", ""),
                 task=row["task_display_name"],
                 artifact=row["task"],
+                origin="original" if row.get("origin") == "original_public_sample_tasks" else "additional",
                 family=row["family"],
                 unit=row["unit"],
-                input=row["input"],
-                target=row["target"],
-                metric=metric,
-                direction=direction,
-                minimal=minimal_text,
-                neural=neural_text,
-            )
-        )
-    return lines
-
-
-def tier2_markdown_table(rows: list[dict]) -> list[str]:
-    lines = [
-        "| Tier-2 task | Artifact id | Family | Input -> target | Primary metric | Minimal | Neural |",
-        "| --- | --- | --- | --- | --- | ---: | ---: |",
-    ]
-    for row in rows:
-        metric = row["primary_metric"]
-        minimal = row["minimal_primary_metric"]
-        neural = row["neural_primary_metric"]
-        minimal_text = "n/a" if minimal is None else f"{minimal:.4f}"
-        neural_text = "n/a" if neural is None else f"{neural:.4f}"
-        direction = "higher better" if row["higher_is_better"] else "lower better"
-        lines.append(
-            "| {task} | `{artifact}` | {family} | {input} -> {target} | {metric} ({direction}) | {minimal} | {neural} |".format(
-                task=row["task_display_name"],
-                artifact=row["task"],
-                family=row["family"],
                 input=row["input"],
                 target=row["target"],
                 metric=metric,
@@ -406,19 +384,15 @@ def render_markdown(payload: dict) -> str:
         "Neural MLP heads reuse the same windows, splits, and feature tensors; they",
         "are not foundation models.",
         "",
-        "## Task Contracts",
+        "## Unified 20-Task Contracts",
+        "",
+        "Tasks 1-12 are the original public-sample task contracts. Tasks 13-20",
+        "are additional sample-supported contracts attached to the same 20-frame",
+        "window, feature, chronological split, leakage-control, and minimal/neural",
+        "baseline setup. Historical `tier2_task_suite` paths are retained only as",
+        "stable artifact locations for tasks 13-20.",
         "",
         *markdown_table(payload["task_protocols"]),
-        "",
-        "## Tier-2 Extension Contracts",
-        "",
-        "The core 12-task suite remains the canonical benchmark. The Tier-2 layer",
-        "adds sample-supported extension baselines using the same windows, feature",
-        "manifest, chronological split, and minimal/neural head pattern. Regeneration",
-        "requires the raw public-sample `annotation.hdf5` for interaction/object",
-        "targets, but raw files are not redistributed.",
-        "",
-        *tier2_markdown_table(payload.get("tier2_task_protocols", [])),
         "",
         "## Leakage Controls",
         "",

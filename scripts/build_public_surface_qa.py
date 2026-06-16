@@ -152,7 +152,7 @@ def build_report() -> dict:
     naming_markers = [
         "Ropedia Xperience-10M Task Suite",
         "Xperience-10M",
-        "12-task",
+        "20-task",
         "Qwen3-Omni",
         "128-episode pilot",
     ]
@@ -174,6 +174,7 @@ def build_report() -> dict:
         "data/public_surface_qa.json",
         "data/research_roadmap.json",
         "data/task_suite_enhancement_128.json",
+        "data/task_suite_20.json",
         "data/tier2_task_suite.json",
     ]
 

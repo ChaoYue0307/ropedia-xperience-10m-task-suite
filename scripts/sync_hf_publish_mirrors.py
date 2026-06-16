@@ -37,15 +37,16 @@ and `docs/data/task_suite_enhancement_128.json`. It recommends
 label-normalized scoring, and compact raw-feature shards before adding more
 episodes.
 """
-TIER2_MARKER = "docs/data/tier2_task_suite.json"
+TIER2_MARKER = "docs/data/task_suite_20.json"
 TIER2_CARD_BLOCK = """
-## Tier-2 Extension Baselines
+## Unified 20-Task Suite
 
-The public-sample task layer now includes eight Tier-2 extension baselines in
-`results/episode_task_suite/tier2_task_suite/` and
-`docs/data/tier2_task_suite.json`. They reuse the same 20-frame windows,
-5-frame stride, feature manifest, chronological split, and minimal/neural head
-pattern as the core 12 tasks.
+The public-sample task surface is now one unified 20-task suite in
+`TASK_SUITE_20.md` and `docs/data/task_suite_20.json`. Tasks 1-12 are the
+original sample tasks; tasks 13-20 reuse the same 20-frame windows, 5-frame
+stride, feature manifest, chronological split, and minimal/neural head pattern.
+The historical `tier2_task_suite` path is retained only for stable artifact
+links to tasks 13-20.
 """
 QWEN_COMPARISON_MARKER = "docs/data/qwen3_v5_v6_comparison.json"
 QWEN_COMPARISON_ROW = (

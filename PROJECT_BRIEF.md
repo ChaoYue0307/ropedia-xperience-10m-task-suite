@@ -19,7 +19,7 @@ results, and see what remains before multi-episode model-quality claims.
 | Capability | Evidence in this project |
 | --- | --- |
 | Data understanding | `feature_manifest.json`, `available_modalities.json`, modality atlas, episode-window HF viewer |
-| Task design | 12 core task contracts, eight Tier-2 extension baselines, task cards, case-study walkthroughs, and four research-direction extension probes |
+| Task design | 20 unified task contracts, task cards, case-study walkthroughs, and four research-direction extension probes |
 | Evaluation rigor | chronological split, per-task metrics, predictions, confusion matrices, leakage notes, and generated takeaways |
 | Scale-up planning | Final verified 96/16/16 Qwen3-Omni diagnostic result, same-split 128-episode baseline alignment, Cosmos3-Nano compatibility branch, and policy-model candidates after action-space conversion |
 
@@ -29,8 +29,8 @@ results, and see what remains before multi-episode model-quality claims.
 | --- | --- |
 | Data unit | 1 public sample episode, 5,821 frames, 1,161 synchronized 20-frame windows |
 | Modalities | Video-derived features, audio, depth, pose/SLAM, mocap, IMU, calibration, and language-derived features |
-| Task suite | 12 embodied-AI core task contracts plus eight Tier-2 extensions with inputs, targets, metrics, predictions, and setup alignment |
-| Models | Minimal linear/ridge/logistic baselines plus compact PyTorch MLP heads for the same 12 core tasks and Tier-2 extensions |
+| Task suite | 20 embodied-AI task contracts with inputs, targets, metrics, predictions, and setup alignment |
+| Models | Minimal linear/ridge/logistic baselines plus compact PyTorch MLP heads for the unified 20-task public-sample suite |
 | Research map | Four Ropedia research directions with direct, proxy, diagnostic, and extension-task coverage |
 | Scale-up path | A selected 96/16/16 Qwen3-Omni LoRA final diagnostic result is verified; strict-JSON validity meets target, while weak action/subtask metrics guide the next error-analysis pass |
 
@@ -42,7 +42,7 @@ results, and see what remains before multi-episode model-quality claims.
 3. Open `EVALUATION_PROTOCOL.md` before comparing task scores.
 4. Use `RESEARCH_TAKEAWAYS.md` for the current metric interpretation.
 5. Inspect `results/episode_task_suite/feature_manifest.json` to understand one model input.
-6. Use `docs/data/tier2_task_suite.json` to compare the 12 core tasks with the eight sample-supported extension tasks.
+6. Use `TASK_SUITE_20.md` and `docs/data/task_suite_20.json` to read the unified 20-task suite; the historical `docs/data/tier2_task_suite.json` path stores the tasks 13-20 result bundle.
 7. Use `docs/data/omni_finetune_verified_result.json` for the current multi-episode Qwen3-Omni pilot result.
 
 ## What This Enables

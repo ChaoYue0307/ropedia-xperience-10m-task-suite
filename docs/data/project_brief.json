@@ -9,7 +9,7 @@
     },
     {
       "capability": "Task design",
-      "evidence": "12 core task contracts, eight Tier-2 extension baselines, task cards, case-study walkthroughs, and four research-direction extension probes"
+      "evidence": "20 unified task contracts, task cards, case-study walkthroughs, and four research-direction extension probes"
     },
     {
       "capability": "Evaluation rigor",
@@ -31,11 +31,11 @@
     },
     {
       "layer": "Task suite",
-      "status": "12 embodied-AI core task contracts plus eight Tier-2 extension baselines with inputs, targets, metrics, predictions, and setup alignment"
+      "status": "20 embodied-AI task contracts with inputs, targets, metrics, predictions, and setup alignment"
     },
     {
       "layer": "Models",
-      "status": "Minimal linear/ridge/logistic baselines plus compact PyTorch MLP heads for the same 12 core tasks and Tier-2 extensions"
+      "status": "Minimal linear/ridge/logistic baselines plus compact PyTorch MLP heads for the unified 20-task public-sample suite"
     },
     {
       "layer": "Research map",
@@ -52,7 +52,7 @@
     "Open EVALUATION_PROTOCOL.md before comparing task scores.",
     "Use RESEARCH_TAKEAWAYS.md for the current metric interpretation.",
     "Inspect results/episode_task_suite/feature_manifest.json to understand one model input.",
-    "Use docs/data/tier2_task_suite.json to compare the 12 core tasks with the eight sample-supported Tier-2 tasks.",
+    "Use TASK_SUITE_20.md and docs/data/task_suite_20.json to read the unified 20-task suite; the historical docs/data/tier2_task_suite.json path stores the tasks 13-20 result bundle.",
     "Use docs/data/omni_finetune_verified_result.json for the current multi-episode Qwen3-Omni pilot result."
   ],
   "scope_boundary": "The public sample is enough to build and verify task definitions, feature contracts, metrics, visualization, and baseline code. The final multi-episode Qwen3-Omni diagnostic result verifies the training loop and strict-JSON output reliability, but does not yet show strong action/subtask model quality.",

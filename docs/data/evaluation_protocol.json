@@ -2,12 +2,13 @@
   "title": "Ropedia Xperience-10M Task Suite Evaluation Protocol",
   "status": "pass",
   "version": "2026-06-01",
-  "generated_at_utc": "2026-06-15T17:23:57+00:00",
+  "generated_at_utc": "2026-06-16T04:47:57+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
     "results/episode_task_suite/windows.csv",
     "results/episode_task_suite/feature_manifest.json",
+    "docs/data/task_suite_20.json",
     "docs/data/tier2_task_suite.json",
     "results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json"
   ],
@@ -22,18 +23,14 @@
     "audio_featurized": true,
     "raw_data_redistributed": false
   },
-  "task_tiers": {
-    "core_12": {
-      "status": "canonical_public_sample_suite",
-      "task_count": 12,
-      "results": "docs/data/summary_metrics.json"
-    },
-    "tier2_extension": {
-      "status": "generated_extension_baselines",
-      "task_count": 8,
-      "results": "docs/data/tier2_task_suite.json",
-      "combined_task_count": 20
-    }
+  "task_suite": {
+    "status": "unified_public_sample_suite",
+    "task_count": 20,
+    "original_public_sample_tasks": 12,
+    "additional_public_sample_tasks": 8,
+    "unified_results": "docs/data/task_suite_20.json",
+    "legacy_additional_task_result_path": "docs/data/tier2_task_suite.json",
+    "legacy_path_note": "The tier2_task_suite path is retained for stable links only; tasks 13-20 are presented as part of the same 20-task suite."
   },
   "split_policy": {
     "name": "single_episode_chronological",
@@ -85,6 +82,7 @@
     {
       "task": "timeline_action",
       "task_display_name": "Action Recognition",
+      "origin": "original_public_sample_tasks",
       "family": "supervised classification",
       "unit": "single window",
       "input": "current 20-frame all-feature window",
@@ -100,11 +98,14 @@
       "minimal_primary_metric": 0.05,
       "neural_primary_metric": 0.014814814814814814,
       "minimal_metric_source": "results/episode_task_suite/timeline_action/metrics.json",
-      "neural_metric_source": "results/episode_task_suite/neural_mlp/timeline_action/metrics.json"
+      "neural_metric_source": "results/episode_task_suite/neural_mlp/timeline_action/metrics.json",
+      "task_number": 1,
+      "suite_label": "Task 01"
     },
     {
       "task": "timeline_subtask",
       "task_display_name": "Procedure Step Recognition",
+      "origin": "original_public_sample_tasks",
       "family": "supervised classification",
       "unit": "single window",
       "input": "current 20-frame all-feature window",
@@ -120,11 +121,14 @@
       "minimal_primary_metric": 0.05056355513846935,
       "neural_primary_metric": 0.02810810810810811,
       "minimal_metric_source": "results/episode_task_suite/timeline_subtask/metrics.json",
-      "neural_metric_source": "results/episode_task_suite/neural_mlp/timeline_subtask/metrics.json"
+      "neural_metric_source": "results/episode_task_suite/neural_mlp/timeline_subtask/metrics.json",
+      "task_number": 2,
+      "suite_label": "Task 02"
     },
     {
       "task": "transition_detection",
       "task_display_name": "Action Boundary Detection",
+      "origin": "original_public_sample_tasks",
       "family": "temporal diagnostic",
       "unit": "single window",
       "input": "current 20-frame all-feature window",
@@ -140,11 +144,14 @@
       "minimal_primary_metric": 0.6118237590630229,
       "neural_primary_metric": 0.5862068965517241,
       "minimal_metric_source": "results/episode_task_suite/transition_detection/metrics.json",
-      "neural_metric_source": "results/episode_task_suite/neural_mlp/transition_detection/metrics.json"
+      "neural_metric_source": "results/episode_task_suite/neural_mlp/transition_detection/metrics.json",
+      "task_number": 3,
+      "suite_label": "Task 03"
     },
     {
       "task": "next_action",
       "task_display_name": "Next-Action Prediction",
+      "origin": "original_public_sample_tasks",
       "family": "short-horizon prediction",
       "unit": "single window",
       "input": "current 20-frame all-feature window at time t",
@@ -160,11 +167,14 @@
       "minimal_primary_metric": 0.05925925925925927,
       "neural_primary_metric": 0.04186046511627907,
       "minimal_metric_source": "results/episode_task_suite/next_action/metrics.json",
-      "neural_metric_source": "results/episode_task_suite/neural_mlp/next_action/metrics.json"
+      "neural_metric_source": "results/episode_task_suite/neural_mlp/next_action/metrics.json",
+      "task_number": 4,
+      "suite_label": "Task 04"
     },
     {
       "task": "hand_trajectory_forecast",
       "task_display_name": "Hand Trajectory Forecasting",
+      "origin": "original_public_sample_tasks",
       "family": "trajectory regression",
       "unit": "single window",
       "input": "current all-feature window",
@@ -180,11 +190,14 @@
       "minimal_primary_metric": 0.8646570444107056,
       "neural_primary_metric": 0.10785018652677536,
       "minimal_metric_source": "results/episode_task_suite/hand_trajectory_forecast/metrics.json",
-      "neural_metric_source": "results/episode_task_suite/neural_mlp/hand_trajectory_forecast/metrics.json"
+      "neural_metric_source": "results/episode_task_suite/neural_mlp/hand_trajectory_forecast/metrics.json",
+      "task_number": 5,
+      "suite_label": "Task 05"
     },
     {
       "task": "contact_prediction",
       "task_display_name": "Contact State Prediction",
+      "origin": "original_public_sample_tasks",
       "family": "binary classification",
       "unit": "single window",
       "input": "non-contact and non-caption feature blocks",
@@ -200,11 +213,14 @@
       "minimal_primary_metric": 1.0,
       "neural_primary_metric": 1.0,
       "minimal_metric_source": "results/episode_task_suite/contact_prediction/metrics.json",
-      "neural_metric_source": "results/episode_task_suite/neural_mlp/contact_prediction/metrics.json"
+      "neural_metric_source": "results/episode_task_suite/neural_mlp/contact_prediction/metrics.json",
+      "task_number": 6,
+      "suite_label": "Task 06"
     },
     {
       "task": "object_relevance",
       "task_display_name": "Object Relevance Prediction",
+      "origin": "original_public_sample_tasks",
       "family": "multi-label classification",
       "unit": "single window",
       "input": "non-caption feature blocks",
@@ -220,11 +236,14 @@
       "minimal_primary_metric": 0.18034382095361662,
       "neural_primary_metric": 0.1679279279279279,
       "minimal_metric_source": "results/episode_task_suite/object_relevance/metrics.json",
-      "neural_metric_source": "results/episode_task_suite/neural_mlp/object_relevance/metrics.json"
+      "neural_metric_source": "results/episode_task_suite/neural_mlp/object_relevance/metrics.json",
+      "task_number": 7,
+      "suite_label": "Task 07"
     },
     {
       "task": "caption_grounding",
       "task_display_name": "Language Grounding",
+      "origin": "original_public_sample_tasks",
       "family": "retrieval",
       "unit": "caption query",
       "input": "caption object/interaction query plus candidate sensor windows",
@@ -240,11 +259,14 @@
       "minimal_primary_metric": 0.016023479050338015,
       "neural_primary_metric": 0.01684125567132316,
       "minimal_metric_source": "results/episode_task_suite/caption_grounding/metrics.json",
-      "neural_metric_source": "results/episode_task_suite/neural_mlp/caption_grounding/metrics.json"
+      "neural_metric_source": "results/episode_task_suite/neural_mlp/caption_grounding/metrics.json",
+      "task_number": 8,
+      "suite_label": "Task 08"
     },
     {
       "task": "cross_modal_retrieval",
       "task_display_name": "Cross-Modal Retrieval",
+      "origin": "original_public_sample_tasks",
       "family": "retrieval",
       "unit": "sensor query",
       "input": "motion, IMU, and camera query features",
@@ -260,11 +282,14 @@
       "minimal_primary_metric": 0.367816091954023,
       "neural_primary_metric": 0.19827586206896552,
       "minimal_metric_source": "results/episode_task_suite/cross_modal_retrieval/metrics.json",
-      "neural_metric_source": "results/episode_task_suite/neural_mlp/cross_modal_retrieval/metrics.json"
+      "neural_metric_source": "results/episode_task_suite/neural_mlp/cross_modal_retrieval/metrics.json",
+      "task_number": 9,
+      "suite_label": "Task 09"
     },
     {
       "task": "modality_reconstruction",
       "task_display_name": "Cross-Modal Reconstruction",
+      "origin": "original_public_sample_tasks",
       "family": "cross-modal regression",
       "unit": "single window",
       "input": "motion, IMU, and camera features",
@@ -279,11 +304,14 @@
       "minimal_primary_metric": -0.015271898913936655,
       "neural_primary_metric": -0.010171410134180991,
       "minimal_metric_source": "results/episode_task_suite/modality_reconstruction/metrics.json",
-      "neural_metric_source": "results/episode_task_suite/neural_mlp/modality_reconstruction/metrics.json"
+      "neural_metric_source": "results/episode_task_suite/neural_mlp/modality_reconstruction/metrics.json",
+      "task_number": 10,
+      "suite_label": "Task 10"
     },
     {
       "task": "temporal_order",
       "task_display_name": "Temporal Order Verification",
+      "origin": "original_public_sample_tasks",
       "family": "pairwise diagnostic",
       "unit": "adjacent window pair",
       "input": "two adjacent windows",
@@ -299,11 +327,14 @@
       "minimal_primary_metric": 0.5399515738498789,
       "neural_primary_metric": 0.8520179372197308,
       "minimal_metric_source": "results/episode_task_suite/temporal_order/metrics.json",
-      "neural_metric_source": "results/episode_task_suite/neural_mlp/temporal_order/metrics.json"
+      "neural_metric_source": "results/episode_task_suite/neural_mlp/temporal_order/metrics.json",
+      "task_number": 11,
+      "suite_label": "Task 11"
     },
     {
       "task": "misalignment_detection",
       "task_display_name": "Multimodal Synchronization Detection",
+      "origin": "original_public_sample_tasks",
       "family": "pairwise diagnostic",
       "unit": "paired modality window",
       "input": "motion side plus visual/depth side",
@@ -319,13 +350,14 @@
       "minimal_primary_metric": 0.5051698670605613,
       "neural_primary_metric": 0.7152682255845944,
       "minimal_metric_source": "results/episode_task_suite/misalignment_detection/metrics.json",
-      "neural_metric_source": "results/episode_task_suite/neural_mlp/misalignment_detection/metrics.json"
-    }
-  ],
-  "tier2_task_protocols": [
+      "neural_metric_source": "results/episode_task_suite/neural_mlp/misalignment_detection/metrics.json",
+      "task_number": 12,
+      "suite_label": "Task 12"
+    },
     {
       "task": "long_horizon_next_action",
       "task_display_name": "Long-Horizon Next-Action Forecasting",
+      "origin": "additional_public_sample_tasks",
       "family": "classification",
       "unit": "single aligned window",
       "input": "Current 20-frame non-caption multimodal window.",
@@ -336,11 +368,14 @@
       "neural_primary_metric": 0.06545454545454546,
       "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/long_horizon_next_action/metrics.json",
       "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/long_horizon_next_action/metrics.json",
-      "meaning": "Tests whether the current state carries enough procedure context to forecast beyond the one-second core next-action task."
+      "meaning": "Tests whether the current state carries enough procedure context to forecast beyond the one-second core next-action task.",
+      "task_number": 13,
+      "suite_label": "Task 13"
     },
     {
       "task": "next_subtask_forecast",
       "task_display_name": "Long-Horizon Next-Subtask Forecasting",
+      "origin": "additional_public_sample_tasks",
       "family": "classification",
       "unit": "single aligned window",
       "input": "Current 20-frame non-caption multimodal window.",
@@ -351,11 +386,14 @@
       "neural_primary_metric": 0.050724637681159424,
       "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/next_subtask_forecast/metrics.json",
       "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/next_subtask_forecast/metrics.json",
-      "meaning": "Moves from immediate action anticipation to higher-level procedure-state prediction."
+      "meaning": "Moves from immediate action anticipation to higher-level procedure-state prediction.",
+      "task_number": 14,
+      "suite_label": "Task 14"
     },
     {
       "task": "interaction_text_prediction",
       "task_display_name": "Interaction Text Prediction",
+      "origin": "additional_public_sample_tasks",
       "family": "classification",
       "unit": "single aligned window",
       "input": "Current 20-frame sensor window with caption-text features removed.",
@@ -366,11 +404,14 @@
       "neural_primary_metric": 0.0380952380952381,
       "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/interaction_text_prediction/metrics.json",
       "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/interaction_text_prediction/metrics.json",
-      "meaning": "Uses the raw caption JSON interaction field as a language target instead of only the hashed text feature."
+      "meaning": "Uses the raw caption JSON interaction field as a language target instead of only the hashed text feature.",
+      "task_number": 15,
+      "suite_label": "Task 15"
     },
     {
       "task": "action_object_relation",
       "task_display_name": "Action-Object Relation Prediction",
+      "origin": "additional_public_sample_tasks",
       "family": "classification",
       "unit": "single aligned window",
       "input": "Current 20-frame sensor window with caption-text features removed.",
@@ -381,11 +422,14 @@
       "neural_primary_metric": 0.0,
       "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/action_object_relation/metrics.json",
       "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/action_object_relation/metrics.json",
-      "meaning": "Evaluates whether a model can bind what action is happening to which objects are involved."
+      "meaning": "Evaluates whether a model can bind what action is happening to which objects are involved.",
+      "task_number": 16,
+      "suite_label": "Task 16"
     },
     {
       "task": "object_set_forecast",
       "task_display_name": "Future Object-Set Forecasting",
+      "origin": "additional_public_sample_tasks",
       "family": "multi_label",
       "unit": "single aligned window",
       "input": "Current 20-frame sensor window with caption-text features removed.",
@@ -396,11 +440,14 @@
       "neural_primary_metric": 0.19718309859154928,
       "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/object_set_forecast/metrics.json",
       "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/object_set_forecast/metrics.json",
-      "meaning": "Predicts which objects will become relevant soon, not only which objects are relevant now."
+      "meaning": "Predicts which objects will become relevant soon, not only which objects are relevant now.",
+      "task_number": 17,
+      "suite_label": "Task 17"
     },
     {
       "task": "imu_to_hand_pose",
       "task_display_name": "IMU-to-Hand Pose Reconstruction",
+      "origin": "additional_public_sample_tasks",
       "family": "regression",
       "unit": "single aligned window",
       "input": "Current IMU acceleration/gyroscope feature block only.",
@@ -411,11 +458,14 @@
       "neural_primary_metric": 0.042562149465084076,
       "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/imu_to_hand_pose/metrics.json",
       "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/imu_to_hand_pose/metrics.json",
-      "meaning": "A sensor-bridge probe for how much hand configuration can be recovered from inertial motion alone."
+      "meaning": "A sensor-bridge probe for how much hand configuration can be recovered from inertial motion alone.",
+      "task_number": 18,
+      "suite_label": "Task 18"
     },
     {
       "task": "camera_view_sync_retrieval",
       "task_display_name": "Camera-View Synchronization Retrieval",
+      "origin": "additional_public_sample_tasks",
       "family": "retrieval",
       "unit": "held-out query window",
       "input": "Fisheye camera-1 feature query projected into fisheye camera-3 feature space.",
@@ -426,11 +476,14 @@
       "neural_primary_metric": 0.24086658656597137,
       "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/camera_view_sync_retrieval/metrics.json",
       "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/camera_view_sync_retrieval/metrics.json",
-      "meaning": "Stress-tests multi-camera time alignment beyond the core cross-modal retrieval task."
+      "meaning": "Stress-tests multi-camera time alignment beyond the core cross-modal retrieval task.",
+      "task_number": 19,
+      "suite_label": "Task 19"
     },
     {
       "task": "time_to_transition",
       "task_display_name": "Time-to-Next-Transition Regression",
+      "origin": "additional_public_sample_tasks",
       "family": "regression",
       "unit": "single aligned window",
       "input": "Current 20-frame non-caption multimodal window.",
@@ -441,7 +494,9 @@
       "neural_primary_metric": 10.55449390411377,
       "minimal_metric_source": "results/episode_task_suite/tier2_task_suite/time_to_transition/metrics.json",
       "neural_metric_source": "results/episode_task_suite/tier2_task_suite/neural_mlp/time_to_transition/metrics.json",
-      "meaning": "Turns boundary detection into a continuous timing estimate for procedural control."
+      "meaning": "Turns boundary detection into a continuous timing estimate for procedural control.",
+      "task_number": 20,
+      "suite_label": "Task 20"
     }
   ],
   "global_leakage_controls": [

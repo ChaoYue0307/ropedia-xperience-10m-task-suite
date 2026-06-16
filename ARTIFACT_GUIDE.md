@@ -50,7 +50,7 @@ Xperience-native pretraining goal.
 | [`docs/data/brand_assets.json`](docs/data/brand_assets.json) | Machine-readable logo/brand manifest for the website, README, Hugging Face cards, favicon, app icon, and social preview. |
 | [`docs/assets/brand/xperience10m-logo-social-card.png`](docs/assets/brand/xperience10m-logo-social-card.png) | Project logo card used by README and Hugging Face cards. |
 | [`scripts/build_brand_assets.py`](scripts/build_brand_assets.py) | Regenerates deterministic logo derivatives, favicon variants, app icons, and the social card from the generated logo mark. |
-| [`docs/assets/task_suite_infographic.png`](docs/assets/task_suite_infographic.png) | Primary 12-task suite map with sample modality thumbnails. |
+| [`docs/assets/task_suite_infographic.png`](docs/assets/task_suite_infographic.png) | Primary task-suite map with sample modality thumbnails. |
 | [`docs/assets/pipeline_diagram.png`](docs/assets/pipeline_diagram.png) | Episode-to-task pipeline overview. |
 | [`docs/assets/task_architectures.png`](docs/assets/task_architectures.png) | Minimal and neural task-head architecture map. |
 
@@ -69,10 +69,13 @@ Xperience-native pretraining goal.
 
 | Artifact | What it shows |
 | --- | --- |
-| [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json) | The 12 task contracts, chronological split, and minimal/neural metrics. |
+| [`TASK_SUITE_20.md`](TASK_SUITE_20.md) | Reader-facing table for the unified 20-task suite. |
+| [`docs/data/task_suite_20.json`](docs/data/task_suite_20.json) | Machine-readable unified 20-task suite for the website and Hugging Face mirrors. |
+| [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json) | The original task contracts, chronological split, and minimal/neural metrics. |
 | [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/) | Matching PyTorch MLP heads for the same task contracts and feature windows. |
 | [`results/episode_task_suite/research_directions/`](results/episode_task_suite/research_directions/) | Mapping from the 12 tasks to the four Ropedia research directions. |
 | [`results/episode_task_suite/research_direction_extensions/`](results/episode_task_suite/research_direction_extensions/) | Four additional coded probes, one per research direction. |
+| [`results/episode_task_suite/tier2_task_suite/`](results/episode_task_suite/tier2_task_suite/) | Historical result path for tasks 13-20 in the unified 20-task suite. |
 | [`results/episode_task_suite/task_walkthroughs/`](results/episode_task_suite/task_walkthroughs/) | Human-readable research names and case studies explaining input, process modules, output, metric, limitation, and the website task-player data. |
 | [`results/audio_ablation/audio_ablation_metrics.csv`](results/audio_ablation/audio_ablation_metrics.csv) | All 72 measured audio rows: 12 tasks times six variants, including no-audio, audio-only, alternate-audio-only, representation replacement, and all-input variants. |
 | [`results/audio_ablation/audio_delta_summary.csv`](results/audio_ablation/audio_delta_summary.csv) | Compact per-task audio delta table for quick manual inspection. |

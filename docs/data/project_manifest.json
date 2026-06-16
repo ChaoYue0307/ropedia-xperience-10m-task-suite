@@ -10,8 +10,6 @@
     "episode_count_verified": 1,
     "window_count_verified": 1161,
     "feature_dim_verified": 8546,
-    "core_task_count": 12,
-    "tier2_extension_task_count": 8,
     "audio_featurized": true,
     "qwen3_omni_32_episode_claim": false,
     "qwen3_omni_verified_diagnostic_pilot": true,
@@ -23,7 +21,11 @@
     "qwen3_omni_held_out_test_windows": 448,
     "qwen3_omni_json_validity_rate": 0.9977678571428571,
     "qwen3_omni_json_quality_target_met": true,
-    "qwen3_omni_lora_adapter_repo": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep"
+    "qwen3_omni_lora_adapter_repo": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep",
+    "task_count": 20,
+    "original_public_sample_task_count": 12,
+    "additional_public_sample_task_count": 8,
+    "legacy_tasks_13_to_20_result_path": "docs/data/tier2_task_suite.json"
   },
   "public_surfaces": {
     "github_repo": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite",
@@ -90,8 +92,10 @@
     "modality_atlas": "docs/data/modality_atlas.json",
     "research_directions": "docs/data/research_directions.json",
     "research_direction_extensions": "docs/data/research_direction_extensions.json",
-    "tier2_task_suite": "docs/data/tier2_task_suite.json",
-    "task_walkthroughs": "docs/data/task_walkthroughs.json"
+    "task_walkthroughs": "docs/data/task_walkthroughs.json",
+    "task_suite_20": "TASK_SUITE_20.md",
+    "task_suite_20_json": "docs/data/task_suite_20.json",
+    "tasks_13_to_20_result_bundle": "docs/data/tier2_task_suite.json"
   },
   "citation_files": {
     "citation_cff": "CITATION.cff",

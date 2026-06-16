@@ -65,8 +65,19 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "task_suite_20_json",
+        "title": "Unified 20-task suite JSON",
+        "local_path": "docs/data/task_suite_20.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/task_suite_20.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/task_suite_20.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/task_suite_20.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/task_suite_20.json",
+        },
+    },
+    {
         "id": "tier2_task_suite_json",
-        "title": "Tier-2 task-suite JSON",
+        "title": "Tasks 13-20 result JSON",
         "local_path": "docs/data/tier2_task_suite.json",
         "urls": {
             "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/tier2_task_suite.json",
@@ -77,7 +88,7 @@ HASH_GROUPS = [
     },
     {
         "id": "tier2_task_suite_chart",
-        "title": "Tier-2 task-suite chart",
+        "title": "Tasks 13-20 chart",
         "local_path": "docs/assets/charts/tier2_task_suite.svg",
         "urls": {
             "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/charts/tier2_task_suite.svg",
@@ -88,7 +99,7 @@ HASH_GROUPS = [
     },
     {
         "id": "tier2_result_summary",
-        "title": "Tier-2 result summary",
+        "title": "Tasks 13-20 result summary",
         "local_path": "results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json",
         "urls": {
             "github_raw": "https://raw.githubusercontent.com/ChaoYue0307/ropedia-xperience-10m-task-suite/main/results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json",
@@ -99,7 +110,7 @@ HASH_GROUPS = [
     },
     {
         "id": "tier2_baseline_report",
-        "title": "Tier-2 baseline report",
+        "title": "Tasks 13-20 baseline report",
         "local_path": "results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md",
         "urls": {
             "github_raw": "https://raw.githubusercontent.com/ChaoYue0307/ropedia-xperience-10m-task-suite/main/results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md",
@@ -110,7 +121,7 @@ HASH_GROUPS = [
     },
     {
         "id": "tier2_minimal_model_npz",
-        "title": "Tier-2 minimal model NPZ",
+        "title": "Tasks 13-20 minimal model NPZ",
         "local_path": "results/episode_task_suite/tier2_task_suite/long_horizon_next_action/model.npz",
         "urls": {
             "github_raw": "https://raw.githubusercontent.com/ChaoYue0307/ropedia-xperience-10m-task-suite/main/results/episode_task_suite/tier2_task_suite/long_horizon_next_action/model.npz",
@@ -425,8 +436,10 @@ MARKER_CHECKS = [
             "ropedia-qwen3-omni-lora-128ep",
             "ropedia-cosmos3-super-forward-dynamics-lora-128ep",
             "Cosmos3-Super has a verified base-weight JSON-task evaluation plus a fine-tuned forward-dynamics LoRA branch",
+            "task_suite_20.json",
+            "Unified 20-Task Suite",
             "tier2_task_suite.json",
-            "Tier-2 Extension Task Suite",
+            "Tasks 13-20",
             "Long-Horizon Next-Action Forecasting",
         ],
         "forbidden": [
@@ -462,8 +475,10 @@ MARKER_CHECKS = [
             "ropedia-qwen3-omni-lora-128ep",
             "ropedia-cosmos3-super-forward-dynamics-lora-128ep",
             "Cosmos3-Super has a verified base-weight JSON-task evaluation plus a fine-tuned forward-dynamics LoRA branch",
+            "task_suite_20.json",
+            "Unified 20-Task Suite",
             "tier2_task_suite.json",
-            "Tier-2 Extension Task Suite",
+            "Tasks 13-20",
             "Long-Horizon Next-Action Forecasting",
         ],
         "forbidden": [
@@ -485,8 +500,10 @@ MARKER_CHECKS = [
             "Cosmos3-Super",
             "ropedia-qwen3-omni-lora-128ep",
             "ropedia-cosmos3-super-forward-dynamics-lora-128ep",
+            "docs/data/task_suite_20.json",
+            "Unified 20-Task Suite",
             "docs/data/tier2_task_suite.json",
-            "Tier-2 Extension Baselines",
+            "Tasks 13-20",
         ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },
@@ -539,8 +556,10 @@ MARKER_CHECKS = [
             "Cosmos3-Super",
             "ropedia-qwen3-omni-lora-128ep",
             "ropedia-cosmos3-super-forward-dynamics-lora-128ep",
+            "docs/data/task_suite_20.json",
+            "Unified 20-Task Suite",
             "docs/data/tier2_task_suite.json",
-            "Tier-2 Extension Task Suite",
+            "Tasks 13-20",
         ],
         "forbidden": ["xperience10m-" + "taskfirst-v10"],
     },

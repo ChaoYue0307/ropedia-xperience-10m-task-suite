@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Tier-2 extension baselines for the Xperience-10M public sample.
+"""Additional tasks 13-20 for the Xperience-10M public sample.
 
-The core benchmark remains the 12-task suite in ``episode_task_suite.py``.  This
-runner adds a second, explicitly marked layer of tasks that the same public
-sample can support after the raw ``annotation.hdf5`` is available locally.
+The public benchmark is presented as one 20-task suite. The output path keeps
+its historical ``tier2_task_suite`` name for backwards-compatible public links,
+but the generated tasks are tasks 13-20 in the unified suite.
 """
 
 from __future__ import annotations
@@ -158,7 +158,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path, default=OUT_DIR)
     parser.add_argument("--train-fraction", type=float, default=0.70)
     parser.add_argument("--stride-frames", type=int, default=5)
-    parser.add_argument("--future-windows", type=int, default=20, help="Tier-2 long-horizon offset in 5-frame windows.")
+    parser.add_argument("--future-windows", type=int, default=20, help="Long-horizon offset in 5-frame windows for task 13.")
     parser.add_argument("--transition-cap-frames", type=int, default=200)
     parser.add_argument("--epochs", type=int, default=220)
     parser.add_argument("--learning-rate", type=float, default=0.12)
@@ -259,12 +259,12 @@ def ensure_frame_info(frame_info: dict[int, dict[str, Any]], frame: int) -> dict
 
 
 def load_annotation_direct(annotation: Path) -> dict[str, Any]:
-    """Load just the caption fields needed for Tier-2 tasks without HOMIE."""
+    """Load just the caption fields needed for tasks 13-20 without HOMIE."""
     try:
         import h5py
     except ImportError as exc:
         raise RuntimeError(
-            "Tier-2 regeneration needs HOMIE-toolkit or h5py. Use the project Ropedia virtualenv if system Python lacks h5py."
+            "Regenerating tasks 13-20 needs HOMIE-toolkit or h5py. Use the project Ropedia virtualenv if system Python lacks h5py."
         ) from exc
 
     with h5py.File(annotation, "r") as handle:
@@ -425,7 +425,7 @@ def softmax_classification(
             "status": "pass",
             "task": task_id,
             "task_display_name": TIER2_TASK_SPECS[task_id]["name"],
-            "tier": "tier2_extension",
+            "suite_position": "tasks_13_to_20",
             "model_family": "minimal_softmax",
             "input": input_description,
             "split": "single_episode_chronological",
@@ -475,7 +475,7 @@ def softmax_classification(
                 "status": "pass",
                 "task": task_id,
                 "task_display_name": TIER2_TASK_SPECS[task_id]["name"],
-                "tier": "tier2_extension",
+                "suite_position": "tasks_13_to_20",
                 "model_family": "neural_mlp",
                 "input": input_description,
                 "split": "single_episode_chronological",
@@ -589,7 +589,7 @@ def object_set_forecast(
             "status": "pass",
             "task": task_id,
             "task_display_name": TIER2_TASK_SPECS[task_id]["name"],
-            "tier": "tier2_extension",
+            "suite_position": "tasks_13_to_20",
             "model_family": "minimal_ridge_multilabel",
             "input": TIER2_TASK_SPECS[task_id]["input"],
             "split": "single_episode_chronological",
@@ -638,7 +638,7 @@ def object_set_forecast(
                 "status": "pass",
                 "task": task_id,
                 "task_display_name": TIER2_TASK_SPECS[task_id]["name"],
-                "tier": "tier2_extension",
+                "suite_position": "tasks_13_to_20",
                 "model_family": "neural_mlp_multilabel",
                 "input": TIER2_TASK_SPECS[task_id]["input"],
                 "split": "single_episode_chronological",
@@ -677,7 +677,7 @@ def regression_task(
             "status": "pass",
             "task": task_id,
             "task_display_name": TIER2_TASK_SPECS[task_id]["name"],
-            "tier": "tier2_extension",
+            "suite_position": "tasks_13_to_20",
             "model_family": "minimal_ridge_regression",
             "input": TIER2_TASK_SPECS[task_id]["input"],
             "split": "single_episode_chronological",
@@ -723,7 +723,7 @@ def regression_task(
                 "status": "pass",
                 "task": task_id,
                 "task_display_name": TIER2_TASK_SPECS[task_id]["name"],
-                "tier": "tier2_extension",
+                "suite_position": "tasks_13_to_20",
                 "model_family": "neural_mlp_regression",
                 "input": TIER2_TASK_SPECS[task_id]["input"],
                 "split": "single_episode_chronological",
@@ -760,7 +760,7 @@ def retrieval_task(
             "status": "pass",
             "task": task_id,
             "task_display_name": TIER2_TASK_SPECS[task_id]["name"],
-            "tier": "tier2_extension",
+            "suite_position": "tasks_13_to_20",
             "model_family": "minimal_ridge_projection_cosine_retrieval",
             "input": TIER2_TASK_SPECS[task_id]["input"],
             "split": "single_episode_chronological",
@@ -791,7 +791,7 @@ def retrieval_task(
                 "status": "pass",
                 "task": task_id,
                 "task_display_name": TIER2_TASK_SPECS[task_id]["name"],
-                "tier": "tier2_extension",
+                "suite_position": "tasks_13_to_20",
                 "model_family": "neural_mlp_projection_cosine_retrieval",
                 "input": TIER2_TASK_SPECS[task_id]["input"],
                 "split": "single_episode_chronological",
@@ -919,16 +919,17 @@ def build_payload(args: argparse.Namespace) -> dict[str, Any]:
     )
 
     payload = {
-        "title": "Ropedia Xperience-10M Tier-2 Extension Task Suite",
+        "title": "Ropedia Xperience-10M Unified Tasks 13-20 Result Bundle",
         "status": "pass",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "tier": "tier2_extension",
-        "integrated_with_core_12": {
-            "core_task_count": 12,
-            "tier2_task_count": len(TIER2_TASK_SPECS),
+        "suite_position": "tasks_13_to_20",
+        "legacy_path_note": "The tier2_task_suite file and directory names are retained for stable public links; these tasks are part of the unified 20-task suite, not a separate public tier.",
+        "integrated_with_tasks_1_to_12": {
+            "tasks_1_to_12_count": 12,
+            "additional_task_count": len(TIER2_TASK_SPECS),
             "combined_task_count": 12 + len(TIER2_TASK_SPECS),
-            "core_metrics": "docs/data/summary_metrics.json",
-            "core_protocol": "docs/data/evaluation_protocol.json",
+            "tasks_1_to_12_metrics": "docs/data/summary_metrics.json",
+            "unified_protocol": "docs/data/evaluation_protocol.json",
         },
         "dataset_scope": {
             "sample_episode_count": 1,
@@ -947,9 +948,9 @@ def build_payload(args: argparse.Namespace) -> dict[str, Any]:
             "raw_data_redistributed": False,
         },
         "setup_alignment": {
-            "same_window_unit_as_core_12": True,
-            "same_feature_manifest_as_core_12": "results/episode_task_suite/feature_manifest.json",
-            "same_shared_tensor_as_core_12": "results/episode_task_suite/shared_windows.npz",
+            "same_window_unit_as_tasks_1_to_12": True,
+            "same_feature_manifest_as_tasks_1_to_12": "results/episode_task_suite/feature_manifest.json",
+            "same_shared_tensor_as_tasks_1_to_12": "results/episode_task_suite/shared_windows.npz",
             "minimal_baselines": "softmax, ridge regression/projection, and ridge multilabel heads",
             "neural_baselines": "compact one-hidden-layer/two-layer PyTorch MLP heads with the same chronological split",
             "leakage_policy": "Caption-derived text features are removed whenever the target is a label, object, relation, interaction phrase, or future semantic state.",
@@ -974,35 +975,37 @@ def format_metric(value: float | None, metric_key: str) -> str:
 
 def write_markdown(payload: dict[str, Any], output_dir: Path) -> None:
     lines = [
-        "# Tier-2 Extension Task Baselines",
+        "# Tasks 13-20 Baselines",
         "",
-        "These tasks extend the original 12-task suite without changing the core benchmark. They reuse the same 20-frame windows, 5-frame stride, shared feature tensor, chronological split, and minimal/neural baseline discipline.",
+        "These eight tasks are part of the unified 20-task public-sample suite. They reuse the same 20-frame windows, 5-frame stride, shared feature tensor, chronological split, and minimal/neural baseline discipline as tasks 1-12.",
+        "",
+        "The file and directory names still contain `tier2_task_suite` for backwards-compatible public links, but this is not a separate benchmark tier.",
         "",
         "## Setup Alignment",
         "",
-        f"- Core tasks: `{payload['integrated_with_core_12']['core_task_count']}`",
-        f"- Tier-2 tasks: `{payload['integrated_with_core_12']['tier2_task_count']}`",
-        f"- Combined task contracts: `{payload['integrated_with_core_12']['combined_task_count']}`",
+        f"- Tasks 1-12: `{payload['integrated_with_tasks_1_to_12']['tasks_1_to_12_count']}`",
+        f"- Tasks 13-20: `{payload['integrated_with_tasks_1_to_12']['additional_task_count']}`",
+        f"- Unified task contracts: `{payload['integrated_with_tasks_1_to_12']['combined_task_count']}`",
         f"- Long-horizon offset: `{payload['dataset_scope']['future_horizon_frames']}` frames, about `{payload['dataset_scope']['future_horizon_seconds_at_20fps']:.1f}` seconds at 20 FPS",
         "- Raw public-sample HDF5 is required to regenerate the interaction/object targets; raw media/HDF5 files are not redistributed.",
         "",
         "## Results",
         "",
-        "| Tier-2 task | Input | Output | Minimal | Neural MLP | Meaning |",
-        "| --- | --- | --- | ---: | ---: | --- |",
+        "| # | Task | Input | Output | Minimal | Neural MLP | Meaning |",
+        "| ---: | --- | --- | --- | ---: | ---: | --- |",
     ]
-    for task_id, spec in payload["task_specs"].items():
+    for offset, (task_id, spec) in enumerate(payload["task_specs"].items(), start=13):
         result = payload["tasks"][task_id]
         key = spec["metric_key"]
         lines.append(
-            f"| {spec['name']} | {spec['input']} | {spec['target']} | {format_metric(metric_value(task_id, result.get('minimal')), key)} {spec['metric_name']} | {format_metric(metric_value(task_id, result.get('neural_mlp')), key)} {spec['metric_name']} | {spec['meaning']} |"
+            f"| {offset} | {spec['name']} | {spec['input']} | {spec['target']} | {format_metric(metric_value(task_id, result.get('minimal')), key)} {spec['metric_name']} | {format_metric(metric_value(task_id, result.get('neural_mlp')), key)} {spec['metric_name']} | {spec['meaning']} |"
         )
     lines.extend(
         [
             "",
             "## Interpretation Boundary",
             "",
-            "Tier-2 results are sample-level extension baselines. They prove that the public sample can support richer task contracts, but they do not prove cross-episode model quality.",
+            "Tasks 13-20 are sample-level baselines in the same unified public-sample suite. They prove that the sample can support richer task contracts, but they do not prove cross-episode model quality.",
             "",
         ]
     )
@@ -1019,8 +1022,8 @@ def write_svg(payload: dict[str, Any]) -> None:
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#020502"/>',
         '<rect x="32" y="32" width="1376" height="{}" rx="12" fill="#071207" stroke="#ccffa0" stroke-opacity="0.22"/>'.format(height - 64),
-        '<text x="72" y="82" fill="#f4f8ef" font-size="32" font-weight="760">Ropedia Xperience-10M Tier-2 extension baselines</text>',
-        '<text x="72" y="112" fill="#a5afa2" font-size="16">Eight extra task contracts aligned with the same 20-frame window, 5-frame stride, and chronological split as the core 12 tasks.</text>',
+        '<text x="72" y="82" fill="#f4f8ef" font-size="32" font-weight="760">Ropedia Xperience-10M tasks 13-20 baselines</text>',
+        '<text x="72" y="112" fill="#a5afa2" font-size="16">Eight additional task contracts in the same unified 20-task suite and aligned with the same 20-frame window, 5-frame stride, and chronological split.</text>',
     ]
     colors = ["#ccffa0", "#7ae5c3", "#9bdfff", "#d8f4a5"]
     for idx, (task_id, spec) in enumerate(TIER2_TASK_SPECS.items()):

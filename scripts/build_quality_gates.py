@@ -57,7 +57,7 @@ GATES = [
         "command": "python scripts/validate_task_surface.py",
         "report": "docs/data/task_surface_integrity.json",
         "blocks_if": "Task cards expose raw artifact ids, human-readable task names drift, modality thumbnails are missing, or the interactive task player is not wired to the generated JSON.",
-        "shows": "The public task cards and walkthrough/player stay aligned with generated 12-task metadata.",
+        "shows": "The public task cards and walkthrough/player stay aligned with generated task-suite metadata.",
     },
     {
         "id": "evaluation_protocol",

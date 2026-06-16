@@ -1014,13 +1014,13 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
   </style>
 </head>
 <body>
-  <main class="canvas" aria-label="Ropedia Xperience-10M 12-task suite infographic">
+  <main class="canvas" aria-label="Ropedia Xperience-10M original task infographic">
     {base_layer}
     <div class="content">
     <header class="header">
       <div>
-        <div class="kicker">verified single-episode task suite</div>
-        <h1>Ropedia Xperience-10M 12-task suite</h1>
+        <div class="kicker">verified single-episode original tasks</div>
+        <h1>Ropedia Xperience-10M original task map</h1>
         <p class="subtitle">A clean map from synchronized multimodal windows to 12 research task heads, comparing minimal heads with neural MLP results. Next milestone: Qwen3-Omni fine-tuning with sensor-bridge evaluation.</p>
       </div>
       <div class="stats">{stats_html}</div>

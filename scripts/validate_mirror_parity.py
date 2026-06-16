@@ -53,6 +53,7 @@ DATA_FILES = [
     "single_episode_explorer.json",
     "source_alignment_audit.json",
     "summary_metrics.json",
+    "task_suite_20.json",
     "task_suite_enhancement_128.json",
     "task_surface_integrity.json",
     "task_walkthroughs.json",
@@ -119,6 +120,7 @@ SCRIPT_FILES = [
     "build_interactive_research_roadmap.py",
     "build_single_episode_explorer.py",
     "build_research_takeaways.py",
+    "build_unified_task_suite.py",
     "single_episode_diagnostics.py",
     "verify_live_publication.py",
     "validate_mirror_parity.py",
@@ -230,6 +232,7 @@ DOC_FILES = [
     "PROJECT_STATUS.md",
     "REPRODUCIBILITY.md",
     "TASK_SUITE_ENHANCEMENT_128.md",
+    "TASK_SUITE_20.md",
     "PUBLIC_SURFACE_QA.md",
     "RESEARCH_TAKEAWAYS.md",
     "SOURCE_ALIGNMENT_AUDIT.md",
@@ -296,7 +299,10 @@ def verified_public_result_files() -> list[str]:
 
 
 def tier2_result_files() -> list[str]:
-    """Return every generated public-safe Tier-2 baseline artifact."""
+    """Return every generated public-safe artifact for tasks 13-20.
+
+    The directory name is historical and kept for stable public links.
+    """
 
     tier2_root = ROOT / "results/episode_task_suite/tier2_task_suite"
     if not tier2_root.exists():

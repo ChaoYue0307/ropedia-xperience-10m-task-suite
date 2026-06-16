@@ -10,8 +10,7 @@ outside the current public data scope.
 | --- | --- | --- |
 | Sample download | Yes, from `ropedia-ai/xperience-10m-sample` or ModelScope sample mirror | Sample card lists `cc-by-nc-4.0`; raw data is not redistributed in this repo. |
 | Minimal baselines | Yes | One public sample episode, chronological split. |
-| 12-task suite | Yes | Uses the current 8,546-d synchronized multimodal feature contract. |
-| Tier-2 extension suite | Yes, when `annotation.hdf5` is present and `h5py` or HOMIE Toolkit is available | Adds eight sample-supported extension baselines aligned to the same windows and split. |
+| Unified 20-task suite | Yes; tasks 13-20 require `annotation.hdf5` plus `h5py` or HOMIE Toolkit for regeneration | Uses the current 8,546-d synchronized multimodal feature contract, the same 20-frame windows, and the same chronological split. |
 | Neural MLP heads | Yes, when `torch` is installed | Compact task heads only, not a foundation model. |
 | Website figures and charts | Yes | Generated from committed metrics and sample thumbnails. |
 | Public bundle contents | Yes | Covers public repo and prepared HF bundles. |
@@ -77,6 +76,7 @@ python scripts/episode_task_suite.py \
 python scripts/research_direction_taxonomy.py
 python scripts/research_direction_extension_tasks.py
 python scripts/tier2_task_suite.py
+python scripts/build_unified_task_suite.py
 python scripts/task_walkthroughs.py
 python scripts/validate_source_alignment.py
 python scripts/build_evaluation_protocol.py
@@ -94,10 +94,11 @@ python scripts/validate_mirror_parity.py
 python scripts/validate_publication_package.py
 ```
 
-`scripts/tier2_task_suite.py` can use HOMIE Toolkit when present, or a direct
-`h5py` fallback for the public sample's caption JSON. It reads the local raw
-`annotation.hdf5` only to regenerate interaction/object targets; the raw HDF5
-is still ignored by git and excluded from public bundles.
+`scripts/tier2_task_suite.py` has a historical file name, but it now regenerates
+tasks 13-20 for the unified 20-task suite. It can use HOMIE Toolkit when
+present, or a direct `h5py` fallback for the public sample's caption JSON. It
+reads the local raw `annotation.hdf5` only to regenerate interaction/object
+targets; the raw HDF5 is still ignored by git and excluded from public bundles.
 
 ## Owner-Side Staged Qwen3-Omni v6 Reproduction
 
@@ -157,7 +158,7 @@ Verified staged-GPU smoke evidence from 2026-06-14:
 | Command group | Expected artifacts |
 | --- | --- |
 | Minimal baselines | `results/min_action_model/`, `results/min_all_modalities_action_model/`, metrics and model weights |
-| 12-task suite | `results/episode_task_suite/summary_report.json`, per-task `metrics.json`, predictions, confusion matrices |
+| Unified 20-task suite | `TASK_SUITE_20.md`, `docs/data/task_suite_20.json`, `results/episode_task_suite/summary_report.json`, per-task `metrics.json`, predictions, confusion matrices, and the tasks 13-20 historical `tier2_task_suite` result bundle |
 | Neural heads | `results/episode_task_suite/neural_mlp/**/metrics.json`, histories, model checkpoints |
 | Research directions | `results/episode_task_suite/research_directions/`, `docs/data/research_directions.json` |
 | Direction probes | `results/episode_task_suite/research_direction_extensions/`, `docs/data/research_direction_extensions.json` |
@@ -176,9 +177,10 @@ Verified staged-GPU smoke evidence from 2026-06-14:
 
 The last full metric reproduction run was completed on **2026-05-30
 Asia/Singapore** from a fresh output directory outside the repo. It rebuilt the
-minimal baselines, all-modality baselines, and the 12-task suite from the local
-public sample. The regenerated metrics matched the committed artifacts after
-float normalization.
+minimal baselines, all-modality baselines, and the original 12 task artifacts
+from the local public sample. The regenerated metrics matched the committed
+artifacts after float normalization; the current public framing now indexes
+those artifacts together with tasks 13-20 as one 20-task suite.
 
 Evidence:
 

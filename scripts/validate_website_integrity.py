@@ -380,7 +380,7 @@ def validate(docs_root: Path, site_base: str) -> dict:
             "suite_task_map_precedes_modality_atlas",
             '<div class="figure-pan" id="task-suite-map">',
             '<div class="modality-atlas-panel"',
-            "The Suite anchor should show the full 12-task map before the modality atlas.",
+            "The Suite anchor should show the task-suite map before the modality atlas.",
         ),
         (
             "suite_modality_atlas_contains_seven_cards",
