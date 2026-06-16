@@ -69,6 +69,8 @@ STALE_ARTIFACT_REMOTE_FOLDERS = [
 ]
 
 STALE_SPACE_REMOTE_FILES = [
+    "README_GRADIO_RUNTIME.md",
+    "README_SPACE_RUNTIME.md",
     LEGACY_SCORECARD_MD,
     "data/" + LEGACY_PACKET_JSON,
     "data/" + LEGACY_SCORECARD_JSON,
@@ -107,12 +109,13 @@ episodes.
 
 SPACE_CARD_METADATA = """---
 title: Ropedia Xperience-10M Task Suite
-sdk: static
-app_file: index.html
-license: mit
+emoji: 🚀
 colorFrom: blue
 colorTo: green
+sdk: gradio
+app_file: app.py
 pinned: false
+license: mit
 short_description: Xperience-10M embodied-AI task-suite dashboard.
 tags:
   - embodied-ai
@@ -130,6 +133,9 @@ models:
   - cy0307/ropedia-qwen3-omni-lora-128ep
   - cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep
 ---
+"""
+
+SPACE_REQUIREMENTS = """gradio>=4.44.0
 """
 
 BASELINE_MODEL_CARD_METADATA = """---
@@ -288,9 +294,23 @@ def ensure_repo_card_metadata(readme_path: Path, metadata: str) -> None:
     if not readme_path.exists():
         return
     readme = readme_path.read_text(encoding="utf-8")
+    normalized_metadata = metadata.rstrip() + "\n\n"
     if readme.startswith("---\n"):
-        return
-    readme_path.write_text(metadata.rstrip() + "\n\n" + readme, encoding="utf-8")
+        parts = readme.split("---", 2)
+        if len(parts) == 3:
+            new_readme = normalized_metadata + parts[2].lstrip("\n")
+            if new_readme != readme:
+                readme_path.write_text(new_readme, encoding="utf-8")
+            return
+    new_readme = normalized_metadata + readme.lstrip("\n")
+    if new_readme != readme:
+        readme_path.write_text(new_readme, encoding="utf-8")
+
+
+def ensure_space_runtime_files(hf_root: Path) -> None:
+    """Keep the Hub Space runtime small and explicit."""
+    requirements_path = hf_root / "space/requirements.txt"
+    requirements_path.write_text(SPACE_REQUIREMENTS, encoding="utf-8")
 
 
 def ensure_enhancement_card_links(hf_root: Path) -> None:
@@ -476,6 +496,7 @@ def main() -> int:
     prune_generated_artifacts(hf_root)
     prune_artifact_bundle(hf_root)
     ensure_artifact_dataset_viewer_config(hf_root)
+    ensure_space_runtime_files(hf_root)
     ensure_repo_card_metadata(hf_root / "space/README.md", SPACE_CARD_METADATA)
     ensure_repo_card_metadata(hf_root / "model/README.md", BASELINE_MODEL_CARD_METADATA)
     ensure_enhancement_card_links(hf_root)
@@ -496,7 +517,7 @@ def main() -> int:
     qwen3_lora_repo = full_repo(args.namespace, args.qwen3_lora_repo)
     cosmos3_super_lora_repo = full_repo(args.namespace, args.cosmos3_super_lora_repo)
 
-    api.create_repo(space_repo, repo_type="space", space_sdk="static", exist_ok=True, token=token)
+    api.create_repo(space_repo, repo_type="space", space_sdk="gradio", exist_ok=True, token=token)
     api.create_repo(artifact_repo, repo_type="dataset", exist_ok=True, token=token)
     api.create_repo(model_repo, repo_type=None, exist_ok=True, token=token)
 
