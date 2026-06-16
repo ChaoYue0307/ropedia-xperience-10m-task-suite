@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-16T13:36:07+00:00",
+  "generated_at_utc": "2026-06-16T13:50:37+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -222,7 +222,7 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 2331,
+      "file_count": 2340,
       "text_file_count": 1017,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
@@ -233,7 +233,7 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 2764,
+      "file_count": 2773,
       "text_file_count": 1177,
       "largest_file": {
         "path": "pytorch_model.bin",
