@@ -1,0 +1,49 @@
+{
+  "status": "pass",
+  "task": "object_relevance",
+  "task_display_name": "Object Relevance Prediction",
+  "model_family": "neural_mlp_metadata_multilabel",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "num_train_windows": 25629,
+  "num_val_windows": 4608,
+  "num_test_windows": 4032,
+  "num_objects": 256,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.4058696851584899
+    },
+    {
+      "epoch": 7,
+      "loss": 0.09452323860182607
+    },
+    {
+      "epoch": 14,
+      "loss": 0.0649013741077716
+    },
+    {
+      "epoch": 21,
+      "loss": 0.051641598512169685
+    },
+    {
+      "epoch": 28,
+      "loss": 0.04382737774332569
+    },
+    {
+      "epoch": 35,
+      "loss": 0.03924076092676235
+    }
+  ],
+  "device": "cuda",
+  "splits": {
+    "test": {
+      "precision": 0.1333896951763656,
+      "recall": 0.310586176727909,
+      "micro_f1": 0.18662723837686876,
+      "macro_f1": 0.030832742488360577,
+      "exact_match": 0.000992063492063492
+    }
+  },
+  "primary_metric": "micro_f1",
+  "primary_score": 0.18662723837686876
+}

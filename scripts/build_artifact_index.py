@@ -434,6 +434,14 @@ ARTIFACTS = [
         "shows": "Regenerates the direction-aware radar chart and machine-readable metric overlay JSON.",
     },
     {
+        "id": "a100_128_metadata_task_baselines",
+        "title": "128-episode metadata task baselines",
+        "path": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/summary_report.json",
+        "kind": "model_result",
+        "surface": "repo_hf",
+        "shows": "Rerun of JSONL metadata/text simple and neural baselines over the selected 128-episode multiscale dataset; supports radar overlays on JSONL-supported task axes.",
+    },
+    {
         "id": "research_takeaways",
         "title": "Research takeaways",
         "path": "RESEARCH_TAKEAWAYS.md",

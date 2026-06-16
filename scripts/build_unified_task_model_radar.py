@@ -37,6 +37,7 @@ COSMOS_SUPER_FD_METRICS_PATH = (
     / "xperience10m_cosmos3_super_forward_dynamics_lora_128ep_train1epoch_256_attn_full8gpu_20260608_eval_test_full_fsdp"
     / "eval/metrics.json"
 )
+METADATA128_BASELINE_DIR = ROOT / "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2"
 OUTPUT_JSON = ROOT / "docs/data/unified_task_model_radar.json"
 OUTPUT_SVG = ROOT / "docs/assets/charts/unified_task_model_radar.svg"
 
@@ -57,6 +58,22 @@ SERIES = {
         "kind": "full_20_task_baseline",
         "scope": "1 public sample episode",
         "stroke_dasharray": None,
+    },
+    "metadata128_simple": {
+        "label": "128ep Metadata Simple",
+        "short_label": "128-S",
+        "color": "#ffd166",
+        "kind": "partial_128_episode_metadata_baseline",
+        "scope": "128 selected episodes, JSONL metadata/text only",
+        "stroke_dasharray": "9 6",
+    },
+    "metadata128_neural_mlp": {
+        "label": "128ep Metadata NN",
+        "short_label": "128-NN",
+        "color": "#f472b6",
+        "kind": "partial_128_episode_metadata_baseline",
+        "scope": "128 selected episodes, JSONL metadata/text only",
+        "stroke_dasharray": "3 6",
     },
     "qwen3_omni_v6_lora": {
         "label": "Qwen3-Omni v6 LoRA",
@@ -118,6 +135,17 @@ FOUNDATION_TASK_METRICS = {
     },
 }
 
+METADATA128_TASKS = {
+    "timeline_action",
+    "timeline_subtask",
+    "transition_detection",
+    "next_action",
+    "contact_prediction",
+    "object_relevance",
+    "caption_grounding",
+    "temporal_order",
+}
+
 SHORT_TASK_LABELS = {
     "timeline_action": "Action",
     "timeline_subtask": "Step",
@@ -144,6 +172,26 @@ SHORT_TASK_LABELS = {
 
 def read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
+def read_a100_metadata_metric(task_id: str, *, neural: bool = False) -> dict[str, Any] | None:
+    if task_id not in METADATA128_TASKS:
+        return None
+    path = METADATA128_BASELINE_DIR / ("neural_mlp" if neural else "") / task_id / "metrics.json"
+    if not path.exists():
+        return None
+    payload = read_json(path)
+    if payload.get("status") != "pass":
+        return None
+    score = payload.get("primary_score")
+    if score is None:
+        return None
+    return {
+        "raw": score,
+        "metric_key": payload.get("primary_metric"),
+        "source": str(path.relative_to(ROOT)),
+        "scope": "multi_episode_128_metadata_baseline",
+    }
 
 
 def clamp01(value: float) -> float:
@@ -245,6 +293,12 @@ def build_payload() -> dict[str, Any]:
                 ),
                 "scope": "multi_episode_128_partial_model_overlay",
             }
+        metadata_simple = read_a100_metadata_metric(row["task_id"], neural=False)
+        if metadata_simple:
+            values["metadata128_simple"] = metadata_simple
+        metadata_neural = read_a100_metadata_metric(row["task_id"], neural=True)
+        if metadata_neural:
+            values["metadata128_neural_mlp"] = metadata_neural
 
         lower_values = [
             item["raw"]
@@ -293,10 +347,27 @@ def build_payload() -> dict[str, Any]:
             "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
             "raw_values": "raw metric values, metric keys, and sources are retained in this JSON; the SVG is an overview, not a replacement for the metric table",
             "foundation_model_overlay": "Qwen3/Cosmos points are plotted only on task-aligned axes. Missing axes mean the public result does not evaluate that task contract.",
+            "metadata_128_overlay": "128-episode metadata baselines are plotted only where the public JSONL contains enough task labels without raw feature blocks.",
         },
         "series": series_records,
         "tasks": tasks,
         "model_branch_cards": [
+            {
+                "id": "metadata128_simple",
+                "title": "128ep Metadata Simple",
+                "status": "a100_rerun_pass",
+                "coverage": f"{next(item for item in series_records if item['id'] == 'metadata128_simple')['covered_task_count']}/20 JSONL-supported axes",
+                "headline": "34,269 rows; train/val/test 25,629/4,608/4,032",
+                "source": str((METADATA128_BASELINE_DIR / "summary_report.json").relative_to(ROOT)),
+            },
+            {
+                "id": "metadata128_neural_mlp",
+                "title": "128ep Metadata NN",
+                "status": "a100_rerun_pass",
+                "coverage": f"{next(item for item in series_records if item['id'] == 'metadata128_neural_mlp')['covered_task_count']}/20 JSONL-supported axes",
+                "headline": "compact MLP heads over metadata/text features",
+                "source": str((METADATA128_BASELINE_DIR / "summary_report.json").relative_to(ROOT)),
+            },
             {
                 "id": "qwen3_omni_v6_lora",
                 "title": "Qwen3-Omni v6 LoRA",
@@ -335,7 +406,7 @@ def build_payload() -> dict[str, Any]:
 
 
 def render_svg(payload: dict[str, Any]) -> str:
-    width, height = 1720, 1220
+    width, height = 1720, 1360
     cx, cy, radius = 570, 585, 330
     tasks = payload["tasks"]
     n = len(tasks)
@@ -348,10 +419,10 @@ def render_svg(payload: dict[str, Any]) -> str:
         "</defs>",
         '<rect width="100%" height="100%" fill="#020502"/>',
         '<rect width="100%" height="100%" fill="url(#dots)" opacity="0.45"/>',
-        '<rect x="28" y="28" width="1664" height="1164" rx="18" fill="#061006" fill-opacity="0.86" stroke="#ccffa0" stroke-opacity="0.22"/>',
+        '<rect x="28" y="28" width="1664" height="1304" rx="18" fill="#061006" fill-opacity="0.86" stroke="#ccffa0" stroke-opacity="0.22"/>',
         svg_text(70, 86, "Unified 20-Task Model Radar", size=34, weight=800),
-        svg_text(70, 122, "Direction-aware normalized scores across the single-episode task suite, with Qwen3/Cosmos task-aligned overlays.", size=17, fill="#a5afa2", weight=560),
-        svg_text(70, 156, "Filled polygons: same 20 public-sample tasks. Points: 128-episode model branches only where the public metric maps to that task.", size=15, fill="#a5afa2", weight=560),
+        svg_text(70, 122, "Direction-aware normalized scores across the single-episode task suite, with 128ep metadata and Qwen3/Cosmos overlays.", size=17, fill="#a5afa2", weight=560),
+        svg_text(70, 156, "Filled polygons: same 20 public-sample tasks. Points: 128-episode branches only where their public metrics map to that task.", size=15, fill="#a5afa2", weight=560),
     ]
 
     for level in range(1, 6):
@@ -383,20 +454,21 @@ def render_svg(payload: dict[str, Any]) -> str:
         for x, y in points:
             parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4.0" fill="{spec["color"]}" stroke="#020502" stroke-width="1.1"/>')
 
-    for series_id in ("qwen3_omni_v6_lora", "cosmos3_super_reasoner", "cosmos3_nano_future_window"):
+    for series_id in ("metadata128_simple", "metadata128_neural_mlp", "qwen3_omni_v6_lora", "cosmos3_super_reasoner", "cosmos3_nano_future_window"):
         spec = SERIES[series_id]
         for task, angle in zip(tasks, angles):
             score = task["values"].get(series_id, {}).get("normalized_score")
             if score is None:
                 continue
             x, y = point(cx, cy, radius * float(score), angle)
+            radius_px = 6.5 if series_id.startswith("metadata128") else 8.0
             parts.append(
-                f'<circle cx="{x:.1f}" cy="{y:.1f}" r="8.0" fill="{spec["color"]}" fill-opacity="0.92" '
+                f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius_px:.1f}" fill="{spec["color"]}" fill-opacity="0.92" '
                 f'stroke="#020502" stroke-width="2.0"/>'
             )
 
     legend_x, legend_y = 1105, 210
-    parts.append(f'<rect x="{legend_x - 34}" y="{legend_y - 44}" width="520" height="860" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>')
+    parts.append(f'<rect x="{legend_x - 34}" y="{legend_y - 44}" width="520" height="900" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>')
     parts.append(svg_text(legend_x, legend_y, "How to read it", size=24, weight=800))
     parts.append(svg_text(legend_x, legend_y + 30, "Score radius is normalized by metric direction.", size=14, fill="#a5afa2", weight=560))
     parts.append(svg_text(legend_x, legend_y + 52, "Raw values stay in unified_task_model_radar.json.", size=14, fill="#a5afa2", weight=560))
@@ -409,23 +481,23 @@ def render_svg(payload: dict[str, Any]) -> str:
             parts.append(f'<circle cx="{legend_x + 24}" cy="{cursor - 4}" r="7" fill="{color}" stroke="#020502" stroke-width="2"/>')
         parts.append(svg_text(legend_x + 64, cursor, record["label"], size=16, weight=800))
         parts.append(svg_text(legend_x + 64, cursor + 22, f"{record['covered_task_count']}/20 axes · {record['scope']}", size=12, fill="#a5afa2", weight=560))
-        cursor += 62
+        cursor += 50
 
-    cursor += 16
+    cursor += 10
     parts.append(svg_text(legend_x, cursor, "Model branch notes", size=20, weight=800))
-    cursor += 32
+    cursor += 28
     for card in payload["model_branch_cards"]:
-        parts.append(f'<rect x="{legend_x}" y="{cursor - 18}" width="445" height="78" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>')
+        parts.append(f'<rect x="{legend_x}" y="{cursor - 18}" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>')
         parts.append(svg_text(legend_x + 16, cursor + 3, card["title"], size=14, weight=800))
         parts.append(svg_text(legend_x + 16, cursor + 24, card["coverage"], size=11, fill="#a5afa2", weight=600))
         parts.append(svg_text(legend_x + 16, cursor + 45, card["headline"], size=11, fill="#dce8d7", weight=600))
-        cursor += 92
+        cursor += 74
 
-    table_y = 1090
+    table_y = 1230
     parts.append(f'<rect x="70" y="{table_y - 35}" width="1540" height="86" rx="10" fill="#020502" fill-opacity="0.54" stroke="#ccffa0" stroke-opacity="0.16"/>')
     parts.append(svg_text(96, table_y - 8, "Caveat", size=15, fill="#ccffa0", weight=800))
     parts.append(svg_text(170, table_y - 8, "This chart compares normalized metric direction, not identical raw units.", size=14, fill="#dce8d7", weight=650))
-    parts.append(svg_text(170, table_y + 18, "Qwen3/Cosmos overlays use 128-episode held-out branches and are plotted only on semantically aligned task axes.", size=14, fill="#a5afa2", weight=560))
+    parts.append(svg_text(170, table_y + 18, "128-episode metadata, Qwen3, and Cosmos overlays are plotted only on semantically aligned task axes.", size=14, fill="#a5afa2", weight=560))
     parts.append(svg_text(170, table_y + 44, "Cosmos3-Super forward-dynamics LoRA is kept as a branch card because its camera-pose proxy MSE is not one of the 20 task metrics.", size=14, fill="#a5afa2", weight=560))
 
     parts.append("</svg>")

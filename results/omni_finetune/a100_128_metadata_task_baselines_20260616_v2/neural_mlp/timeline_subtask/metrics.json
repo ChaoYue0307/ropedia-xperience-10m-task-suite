@@ -1,0 +1,59 @@
+{
+  "status": "pass",
+  "task": "timeline_subtask",
+  "task_display_name": "Procedure Step Recognition",
+  "model_family": "neural_mlp_metadata",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+  "split_policy": "train on train split, report held-out test split",
+  "num_train_windows": 25629,
+  "num_val_windows": 4608,
+  "num_test_windows": 4032,
+  "num_classes": 892,
+  "num_train_classes": 652,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 5.569618365977556,
+      "train_accuracy": 0.0911857661243123
+    },
+    {
+      "epoch": 7,
+      "loss": 0.47209994588581444,
+      "train_accuracy": 0.7896523469507198
+    },
+    {
+      "epoch": 14,
+      "loss": 0.23723139243125638,
+      "train_accuracy": 0.8739318740489289
+    },
+    {
+      "epoch": 21,
+      "loss": 0.17663398678198855,
+      "train_accuracy": 0.9021421046470794
+    },
+    {
+      "epoch": 28,
+      "loss": 0.14758862570536332,
+      "train_accuracy": 0.9161496741971985
+    },
+    {
+      "epoch": 35,
+      "loss": 0.13797899680374573,
+      "train_accuracy": 0.9227827851262242
+    }
+  ],
+  "device": "cuda",
+  "splits": {
+    "test": {
+      "accuracy": 0.001488095238095238,
+      "balanced_accuracy": 0.004,
+      "macro_f1": 7.207207207207208e-05,
+      "weighted_f1": 2.6812526812526813e-05,
+      "num_eval_windows": 4032,
+      "num_classes": 892
+    }
+  },
+  "primary_metric": "macro_f1",
+  "primary_score": 7.207207207207208e-05
+}

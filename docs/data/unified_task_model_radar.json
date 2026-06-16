@@ -1,13 +1,14 @@
 {
   "title": "Unified 20-Task Model Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-16T05:26:39+00:00",
+  "generated_at_utc": "2026-06-16T06:32:05+00:00",
   "task_count": 20,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
     "raw_values": "raw metric values, metric keys, and sources are retained in this JSON; the SVG is an overview, not a replacement for the metric table",
-    "foundation_model_overlay": "Qwen3/Cosmos points are plotted only on task-aligned axes. Missing axes mean the public result does not evaluate that task contract."
+    "foundation_model_overlay": "Qwen3/Cosmos points are plotted only on task-aligned axes. Missing axes mean the public result does not evaluate that task contract.",
+    "metadata_128_overlay": "128-episode metadata baselines are plotted only where the public JSONL contains enough task labels without raw feature blocks."
   },
   "series": [
     {
@@ -31,6 +32,28 @@
       "stroke_dasharray": null,
       "covered_task_count": 20,
       "coverage_fraction": 1.0
+    },
+    {
+      "id": "metadata128_simple",
+      "label": "128ep Metadata Simple",
+      "short_label": "128-S",
+      "color": "#ffd166",
+      "kind": "partial_128_episode_metadata_baseline",
+      "scope": "128 selected episodes, JSONL metadata/text only",
+      "stroke_dasharray": "9 6",
+      "covered_task_count": 8,
+      "coverage_fraction": 0.4
+    },
+    {
+      "id": "metadata128_neural_mlp",
+      "label": "128ep Metadata NN",
+      "short_label": "128-NN",
+      "color": "#f472b6",
+      "kind": "partial_128_episode_metadata_baseline",
+      "scope": "128 selected episodes, JSONL metadata/text only",
+      "stroke_dasharray": "3 6",
+      "covered_task_count": 6,
+      "coverage_fraction": 0.3
     },
     {
       "id": "qwen3_omni_v6_lora",
@@ -116,6 +139,22 @@
           "scope": "multi_episode_128_partial_model_overlay",
           "normalized_score": 0.007936507936507936,
           "raw_text": "0.0079"
+        },
+        "metadata128_simple": {
+          "raw": 0.008252821966746326,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/timeline_action/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "normalized_score": 0.008252821966746326,
+          "raw_text": "0.0083"
+        },
+        "metadata128_neural_mlp": {
+          "raw": 0.004175793689174209,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/timeline_action/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "normalized_score": 0.004175793689174209,
+          "raw_text": "0.0042"
         }
       }
     },
@@ -160,6 +199,22 @@
           "scope": "multi_episode_128_partial_model_overlay",
           "normalized_score": 0.0,
           "raw_text": "0.0000"
+        },
+        "metadata128_simple": {
+          "raw": 0.00019512195121951218,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/timeline_subtask/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "normalized_score": 0.00019512195121951218,
+          "raw_text": "0.0002"
+        },
+        "metadata128_neural_mlp": {
+          "raw": 7.207207207207208e-05,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/timeline_subtask/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "normalized_score": 7.207207207207208e-05,
+          "raw_text": "0.0001"
         }
       }
     },
@@ -212,6 +267,22 @@
           "scope": "multi_episode_128_partial_model_overlay",
           "normalized_score": 0.9682539682539683,
           "raw_text": "0.9683"
+        },
+        "metadata128_simple": {
+          "raw": 0.29652162550029315,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/transition_detection/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "normalized_score": 0.29652162550029315,
+          "raw_text": "0.2965"
+        },
+        "metadata128_neural_mlp": {
+          "raw": 0.4841733292368365,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/transition_detection/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "normalized_score": 0.4841733292368365,
+          "raw_text": "0.4842"
         }
       }
     },
@@ -264,6 +335,22 @@
           "scope": "multi_episode_128_partial_model_overlay",
           "normalized_score": 0.007936507936507936,
           "raw_text": "0.0079"
+        },
+        "metadata128_simple": {
+          "raw": 0.006514774539765508,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/next_action/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "normalized_score": 0.006514774539765508,
+          "raw_text": "0.0065"
+        },
+        "metadata128_neural_mlp": {
+          "raw": 0.004910507980164745,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/next_action/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "normalized_score": 0.004910507980164745,
+          "raw_text": "0.0049"
         }
       }
     },
@@ -344,6 +431,22 @@
           "scope": "multi_episode_128_partial_model_overlay",
           "normalized_score": 0.7433862433862434,
           "raw_text": "0.7434"
+        },
+        "metadata128_simple": {
+          "raw": 0.4381481308057444,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/contact_prediction/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "normalized_score": 0.4381481308057444,
+          "raw_text": "0.4381"
+        },
+        "metadata128_neural_mlp": {
+          "raw": 0.5682695682695682,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/contact_prediction/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "normalized_score": 0.5682695682695682,
+          "raw_text": "0.5683"
         }
       }
     },
@@ -388,6 +491,22 @@
           "scope": "multi_episode_128_partial_model_overlay",
           "normalized_score": 0.13704276146316333,
           "raw_text": "0.1370"
+        },
+        "metadata128_simple": {
+          "raw": 0.17764578833693304,
+          "metric_key": "micro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/object_relevance/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "normalized_score": 0.17764578833693304,
+          "raw_text": "0.1776"
+        },
+        "metadata128_neural_mlp": {
+          "raw": 0.18662723837686876,
+          "metric_key": "micro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/object_relevance/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "normalized_score": 0.18662723837686876,
+          "raw_text": "0.1866"
         }
       }
     },
@@ -416,6 +535,14 @@
           "scope": "single_episode_public_sample",
           "normalized_score": 0.01684125567132316,
           "raw_text": "0.0168"
+        },
+        "metadata128_simple": {
+          "raw": 0.002332374220713973,
+          "metric_key": "mrr",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/caption_grounding/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "normalized_score": 0.002332374220713973,
+          "raw_text": "0.0023"
         }
       }
     },
@@ -508,6 +635,14 @@
           "scope": "single_episode_public_sample",
           "normalized_score": 0.8520179372197308,
           "raw_text": "0.8520"
+        },
+        "metadata128_simple": {
+          "raw": 0.4198864140782312,
+          "metric_key": "f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/temporal_order/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "normalized_score": 0.4198864140782312,
+          "raw_text": "0.4199"
         }
       }
     },
@@ -765,6 +900,22 @@
     }
   ],
   "model_branch_cards": [
+    {
+      "id": "metadata128_simple",
+      "title": "128ep Metadata Simple",
+      "status": "a100_rerun_pass",
+      "coverage": "8/20 JSONL-supported axes",
+      "headline": "34,269 rows; train/val/test 25,629/4,608/4,032",
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/summary_report.json"
+    },
+    {
+      "id": "metadata128_neural_mlp",
+      "title": "128ep Metadata NN",
+      "status": "a100_rerun_pass",
+      "coverage": "6/20 JSONL-supported axes",
+      "headline": "compact MLP heads over metadata/text features",
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/summary_report.json"
+    },
     {
       "id": "qwen3_omni_v6_lora",
       "title": "Qwen3-Omni v6 LoRA",

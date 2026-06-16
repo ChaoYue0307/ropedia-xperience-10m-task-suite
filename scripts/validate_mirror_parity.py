@@ -317,6 +317,19 @@ def tier2_result_files() -> list[str]:
     return sorted(files)
 
 
+def a100_128_metadata_result_files() -> list[str]:
+    """Return the public-safe 128-episode metadata baseline rerun artifacts."""
+
+    result_root = ROOT / "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2"
+    if not result_root.exists():
+        return []
+    files: list[str] = []
+    for path in result_root.rglob("*"):
+        if path.is_file():
+            files.append(path.relative_to(ROOT / "results").as_posix())
+    return sorted(files)
+
+
 def parity_group(name: str, local_path: Path, mirrors: dict[str, Path], hf_root: Path) -> dict:
     local = file_record(local_path, hf_root)
     mirror_records = {surface: file_record(path, hf_root) for surface, path in mirrors.items()}
@@ -410,7 +423,12 @@ def build_report(hf_root: Path) -> dict:
             )
         )
 
-    result_files = sorted(set(RESULT_FILES) | set(verified_public_result_files()) | set(tier2_result_files()))
+    result_files = sorted(
+        set(RESULT_FILES)
+        | set(verified_public_result_files())
+        | set(tier2_result_files())
+        | set(a100_128_metadata_result_files())
+    )
     for filename in result_files:
         groups.append(
             parity_group(

@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Figure Index",
   "status": "pass",
-  "generated_at_utc": "2026-06-16T05:26:50+00:00",
+  "generated_at_utc": "2026-06-16T06:28:50+00:00",
   "scope": "Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience-10M videos, annotations, RRD files, and Qwen weights are excluded.",
   "figure_count": 24,
   "figures": [
@@ -355,17 +355,17 @@
       "id": "unified_task_model_radar",
       "title": "Unified 20-task model radar",
       "path": "docs/assets/charts/unified_task_model_radar.svg",
-      "role": "Twenty-axis direction-aware comparison of minimal and neural MLP baselines, with Qwen3/Cosmos task-aligned overlay points and branch notes.",
+      "role": "Twenty-axis direction-aware comparison of minimal and neural MLP baselines, with 128-episode metadata, Qwen3, and Cosmos task-aligned overlay points and branch notes.",
       "source_script": "scripts/build_unified_task_model_radar.py",
       "surface": "website unified task section, README, HF mirrors",
       "exists": true,
-      "bytes": 26681,
-      "sha256": "418ab49da39a034a5aa6d465b1e8cb9b733d6eabfe98adb4e4df82f519b85e9d",
+      "bytes": 30823,
+      "sha256": "c26b73cdfd53ec81b9b4958a03309d11b297a09c841ce38e7309c90dcdeb17b0",
       "dimensions": {
         "format": "SVG",
         "width": 1720,
-        "height": 1220,
-        "view_box": "0 0 1720 1220"
+        "height": 1360,
+        "view_box": "0 0 1720 1360"
       },
       "source_script_exists": true
     },

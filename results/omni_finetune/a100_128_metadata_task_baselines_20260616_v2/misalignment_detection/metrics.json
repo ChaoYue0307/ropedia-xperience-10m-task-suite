@@ -1,0 +1,9 @@
+{
+  "status": "unsupported_without_raw_128_feature_blocks",
+  "task": "misalignment_detection",
+  "task_display_name": "Multimodal Synchronization Detection",
+  "primary_metric": "f1",
+  "primary_score": null,
+  "reason": "requires deliberately shifted cross-modal feature pairs, which cannot be reconstructed from the public JSONL labels alone",
+  "source": "128_episode_qwen_jsonl_metadata"
+}

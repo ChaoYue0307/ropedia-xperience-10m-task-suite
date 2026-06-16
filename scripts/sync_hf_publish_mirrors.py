@@ -346,6 +346,7 @@ def main() -> int:
         set(parity.RESULT_FILES)
         | set(parity.verified_public_result_files())
         | set(parity.tier2_result_files())
+        | set(parity.a100_128_metadata_result_files())
     )
     for filename in result_files:
         src = ROOT / "results" / filename

@@ -315,11 +315,13 @@ also have a compact chart and result bundle under the historical
 ![Unified 20-task model radar](docs/assets/charts/unified_task_model_radar.svg)
 
 The unified radar compares all 20 task axes with two filled colors for the
-minimal and neural MLP baselines. Qwen3-Omni and Cosmos3 overlays are plotted
-only where their verified 128-episode public metrics map to the same task
-semantics; Cosmos3-Super forward-dynamics LoRA remains a branch card because
-its camera-pose proxy MSE is not one of the 20 task metrics. The machine-readable
-copy is [`docs/data/unified_task_model_radar.json`](docs/data/unified_task_model_radar.json).
+minimal and neural MLP baselines. The 128-episode metadata simple/NN
+overlays are plotted on the JSONL-supported task axes; Qwen3-Omni and Cosmos3
+overlays are plotted only where their verified 128-episode public metrics map
+to the same task semantics. Cosmos3-Super forward-dynamics LoRA remains a branch
+card because its camera-pose proxy MSE is not one of the 20 task metrics. The
+machine-readable copy is
+[`docs/data/unified_task_model_radar.json`](docs/data/unified_task_model_radar.json).
 
 The website also includes a responsive native modality atlas backed by
 [`docs/data/modality_atlas.json`](docs/data/modality_atlas.json) and

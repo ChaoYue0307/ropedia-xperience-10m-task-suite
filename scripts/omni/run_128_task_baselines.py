@@ -92,6 +92,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--dataset-jsonl", type=Path, default=DEFAULT_DATASET)
     parser.add_argument("--verified-package", type=Path, default=DEFAULT_PACKAGE)
     parser.add_argument("--output-dir", type=Path, default=Path("results/omni_finetune/multi_episode_128_task_baselines"))
+    parser.add_argument(
+        "--dataset-manifest",
+        type=Path,
+        help="Optional manifest with split_counts for the selected JSONL. Defaults to dataset-jsonl parent/dataset_manifest.json when present.",
+    )
+    parser.add_argument(
+        "--skip-split-count-check",
+        action="store_true",
+        help="Record observed split counts without requiring a manifest or legacy expected count.",
+    )
     parser.add_argument("--hash-dim", type=int, default=384)
     parser.add_argument("--epochs", type=int, default=220)
     parser.add_argument("--learning-rate", type=float, default=0.16)
@@ -263,6 +273,23 @@ def load_episode_context(package_dir: Path) -> dict[str, dict[str, Any]]:
         return {}
     manifest = load_json(manifest_path)
     return {str(ep.get("episode_id")): ep for ep in manifest.get("episodes", [])}
+
+
+def expected_split_counts(args: argparse.Namespace) -> dict[str, int] | None:
+    if args.skip_split_count_check:
+        return None
+    manifest_candidates = []
+    if args.dataset_manifest:
+        manifest_candidates.append(args.dataset_manifest)
+    manifest_candidates.append(args.dataset_jsonl.parent / "dataset_manifest.json")
+    for path in manifest_candidates:
+        if not path.exists():
+            continue
+        payload = load_json(path)
+        split_counts = payload.get("split_counts")
+        if isinstance(split_counts, dict):
+            return {key: int(split_counts.get(key, 0) or 0) for key in ("train", "val", "test")}
+    return {"train": 2848, "val": 512, "test": 448}
 
 
 def row_text_features(row: dict[str, Any], episode: dict[str, Any] | None) -> str:
@@ -1019,8 +1046,8 @@ def main() -> int:
     log(f"built feature matrix {X.shape[0]}x{X.shape[1]}")
     splits = split_indices(rows)
     split_counts = {key: int(len(value)) for key, value in splits.items()}
-    expected = {"train": 2848, "val": 512, "test": 448}
-    if split_counts != expected:
+    expected = expected_split_counts(args)
+    if expected is not None and split_counts != expected:
         raise ValueError(f"Dataset split mismatch: observed {split_counts}, expected {expected}")
 
     out = args.output_dir

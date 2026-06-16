@@ -1,0 +1,17 @@
+{
+  "status": "pass",
+  "task": "caption_grounding",
+  "task_display_name": "Language Grounding",
+  "model_family": "simple_hashed_text_retrieval",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "limitation": "query text is derived from held-out labels, while candidate representations exclude answer_json fields; this is a public-safe retrieval proxy, not a raw caption-to-sensor grounding model",
+  "num_queries": 4032,
+  "mrr": 0.002332374220713973,
+  "median_rank": 2120.0,
+  "mean_rank": 2098.317626953125,
+  "top1_accuracy": 0.000248015873015873,
+  "top5_accuracy": 0.001488095238095238,
+  "top10_accuracy": 0.003472222222222222,
+  "primary_metric": "mrr",
+  "primary_score": 0.002332374220713973
+}

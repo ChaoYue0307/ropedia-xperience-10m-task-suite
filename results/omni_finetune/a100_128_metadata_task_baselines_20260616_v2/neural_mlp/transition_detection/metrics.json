@@ -1,0 +1,59 @@
+{
+  "status": "pass",
+  "task": "transition_detection",
+  "task_display_name": "Action Boundary Detection",
+  "model_family": "neural_mlp_metadata",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+  "split_policy": "train on train split, report held-out test split",
+  "num_train_windows": 25629,
+  "num_val_windows": 4608,
+  "num_test_windows": 4032,
+  "num_classes": 2,
+  "num_train_classes": 2,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.5077515304276972,
+      "train_accuracy": 0.7569550119005813
+    },
+    {
+      "epoch": 7,
+      "loss": 0.0737418585964086,
+      "train_accuracy": 0.9645323656795037
+    },
+    {
+      "epoch": 14,
+      "loss": 0.028951036420856224,
+      "train_accuracy": 0.9856412657536384
+    },
+    {
+      "epoch": 21,
+      "loss": 0.01610719518993791,
+      "train_accuracy": 0.9925475047797417
+    },
+    {
+      "epoch": 28,
+      "loss": 0.008669925502681265,
+      "train_accuracy": 0.9961762066409146
+    },
+    {
+      "epoch": 35,
+      "loss": 0.006408828645633639,
+      "train_accuracy": 0.9973857739279722
+    }
+  ],
+  "device": "cuda",
+  "splits": {
+    "test": {
+      "accuracy": 0.8715277777777778,
+      "balanced_accuracy": 0.5736833203666746,
+      "macro_f1": 0.4841733292368365,
+      "weighted_f1": 0.9229680937832146,
+      "num_eval_windows": 4032,
+      "num_classes": 2
+    }
+  },
+  "primary_metric": "macro_f1",
+  "primary_score": 0.4841733292368365
+}
