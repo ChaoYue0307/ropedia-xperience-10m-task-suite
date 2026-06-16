@@ -1,0 +1,24 @@
+{
+  "task": "object_relevance",
+  "task_display_name": "Object Relevance Prediction",
+  "task_family": "multi_label",
+  "model_family": "simple_raw128_ridge_multilabel",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "sensor features excluding hashed caption text",
+  "primary_metric": "micro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "num_labels": 256,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "splits": {
+    "test": {
+      "micro_f1": 0.0655376369662084,
+      "macro_f1": 0.03329109588301981,
+      "exact_match": 0.0
+    }
+  },
+  "primary_score": 0.0655376369662084
+}

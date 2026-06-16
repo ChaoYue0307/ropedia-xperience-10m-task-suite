@@ -1,0 +1,38 @@
+{
+  "task": "timeline_action",
+  "task_display_name": "Action Recognition",
+  "task_family": "classification",
+  "model_family": "simple_raw128_centroid",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "sensor features excluding hashed caption text",
+  "primary_metric": "macro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "num_train_windows": 25629,
+  "num_val_windows": 4608,
+  "num_test_windows": 4032,
+  "num_classes": 1222,
+  "num_train_classes": 896,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "selected_column_count": 2048,
+  "splits": {
+    "val": {
+      "accuracy": 0.004123263888888889,
+      "balanced_accuracy": 0.0019237860248963485,
+      "macro_f1": 0.001696988766136881,
+      "weighted_f1": 0.0035851535819492308,
+      "num_eval_windows": 4608,
+      "num_classes": 1222
+    },
+    "test": {
+      "accuracy": 0.00496031746031746,
+      "balanced_accuracy": 0.004244447179229788,
+      "macro_f1": 0.002915061325704321,
+      "weighted_f1": 0.0038963718552823897,
+      "num_eval_windows": 4032,
+      "num_classes": 1222
+    }
+  },
+  "primary_score": 0.002915061325704321
+}

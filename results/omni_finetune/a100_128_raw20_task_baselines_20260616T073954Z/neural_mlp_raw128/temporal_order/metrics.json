@@ -1,0 +1,62 @@
+{
+  "task": "temporal_order",
+  "task_display_name": "Temporal Order Verification",
+  "task_family": "classification",
+  "model_family": "neural_mlp_raw128",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "concatenated adjacent sensor-window pairs",
+  "primary_metric": "macro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.6823423368630226,
+      "train_accuracy": 0.534788566953798
+    },
+    {
+      "epoch": 5,
+      "loss": 0.47532859007268563,
+      "train_accuracy": 0.7526820673453406
+    },
+    {
+      "epoch": 10,
+      "loss": 0.3663804764708412,
+      "train_accuracy": 0.8226507439310885
+    },
+    {
+      "epoch": 15,
+      "loss": 0.30436070449387737,
+      "train_accuracy": 0.85561863743148
+    },
+    {
+      "epoch": 20,
+      "loss": 0.25795707907075516,
+      "train_accuracy": 0.8806382145653876
+    },
+    {
+      "epoch": 25,
+      "loss": 0.2276858064469268,
+      "train_accuracy": 0.8944988253719656
+    }
+  ],
+  "num_train_windows": 51080,
+  "num_test_windows": 8036,
+  "num_classes": 2,
+  "num_train_classes": 2,
+  "input_dim": 7068,
+  "fit_input_dim": 2048,
+  "selected_column_count": 2048,
+  "splits": {
+    "test": {
+      "accuracy": 0.8030114484818317,
+      "balanced_accuracy": 0.8030114484818318,
+      "macro_f1": 0.8030047098504103,
+      "weighted_f1": 0.8030047098504102,
+      "num_eval_windows": 8036,
+      "num_classes": 2
+    }
+  },
+  "primary_score": 0.8030047098504103
+}

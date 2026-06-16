@@ -1,14 +1,15 @@
 {
   "title": "Unified 20-Task Model Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-16T06:32:05+00:00",
+  "generated_at_utc": "2026-06-16T07:51:12+00:00",
   "task_count": 20,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
     "raw_values": "raw metric values, metric keys, and sources are retained in this JSON; the SVG is an overview, not a replacement for the metric table",
     "foundation_model_overlay": "Qwen3/Cosmos points are plotted only on task-aligned axes. Missing axes mean the public result does not evaluate that task contract.",
-    "metadata_128_overlay": "128-episode metadata baselines are plotted only where the public JSONL contains enough task labels without raw feature blocks."
+    "metadata_128_overlay": "128-episode metadata baselines are plotted only where the public JSONL contains enough task labels without raw feature blocks.",
+    "raw_128_overlay": "128-episode raw-feature baselines use staged sensor NPZ features and are plotted only on task axes supported by the exported feature blocks."
   },
   "series": [
     {
@@ -54,6 +55,28 @@
       "stroke_dasharray": "3 6",
       "covered_task_count": 6,
       "coverage_fraction": 0.3
+    },
+    {
+      "id": "raw128_simple",
+      "label": "128ep Raw Simple",
+      "short_label": "128-RS",
+      "color": "#f59e0b",
+      "kind": "partial_128_episode_raw_feature_baseline",
+      "scope": "128 selected episodes, staged 4430-dim sensor NPZ features",
+      "stroke_dasharray": "8 4",
+      "covered_task_count": 18,
+      "coverage_fraction": 0.9
+    },
+    {
+      "id": "raw128_neural_mlp",
+      "label": "128ep Raw NN",
+      "short_label": "128-RN",
+      "color": "#22d3ee",
+      "kind": "partial_128_episode_raw_feature_baseline",
+      "scope": "128 selected episodes, staged 4430-dim sensor NPZ features",
+      "stroke_dasharray": "2 5",
+      "covered_task_count": 18,
+      "coverage_fraction": 0.9
     },
     {
       "id": "qwen3_omni_v6_lora",
@@ -155,6 +178,22 @@
           "scope": "multi_episode_128_metadata_baseline",
           "normalized_score": 0.004175793689174209,
           "raw_text": "0.0042"
+        },
+        "raw128_simple": {
+          "raw": 0.002915061325704321,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/timeline_action/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.002915061325704321,
+          "raw_text": "0.0029"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.0014955083181204041,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/timeline_action/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.0014955083181204041,
+          "raw_text": "0.0015"
         }
       }
     },
@@ -214,6 +253,22 @@
           "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/timeline_subtask/metrics.json",
           "scope": "multi_episode_128_metadata_baseline",
           "normalized_score": 7.207207207207208e-05,
+          "raw_text": "0.0001"
+        },
+        "raw128_simple": {
+          "raw": 0.0,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/timeline_subtask/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.0,
+          "raw_text": "0.0000"
+        },
+        "raw128_neural_mlp": {
+          "raw": 7.35632183908046e-05,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/timeline_subtask/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 7.35632183908046e-05,
           "raw_text": "0.0001"
         }
       }
@@ -283,6 +338,22 @@
           "scope": "multi_episode_128_metadata_baseline",
           "normalized_score": 0.4841733292368365,
           "raw_text": "0.4842"
+        },
+        "raw128_simple": {
+          "raw": 0.4203613574238283,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/transition_detection/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.4203613574238283,
+          "raw_text": "0.4204"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.4902206914147213,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/transition_detection/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.4902206914147213,
+          "raw_text": "0.4902"
         }
       }
     },
@@ -351,6 +422,22 @@
           "scope": "multi_episode_128_metadata_baseline",
           "normalized_score": 0.004910507980164745,
           "raw_text": "0.0049"
+        },
+        "raw128_simple": {
+          "raw": 0.003285273363482094,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/next_action/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.003285273363482094,
+          "raw_text": "0.0033"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.0018477984371755407,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/next_action/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.0018477984371755407,
+          "raw_text": "0.0018"
         }
       }
     },
@@ -379,6 +466,22 @@
           "scope": "single_episode_public_sample",
           "normalized_score": 1.0,
           "raw_text": "0.1079"
+        },
+        "raw128_simple": {
+          "raw": 0.2729249894618988,
+          "metric_key": "mae",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/hand_trajectory_forecast/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.39516420515180267,
+          "raw_text": "0.2729"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.18475216627120972,
+          "metric_key": "mae",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/hand_trajectory_forecast/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.5837560051580399,
+          "raw_text": "0.1848"
         }
       }
     },
@@ -447,6 +550,22 @@
           "scope": "multi_episode_128_metadata_baseline",
           "normalized_score": 0.5682695682695682,
           "raw_text": "0.5683"
+        },
+        "raw128_simple": {
+          "raw": 0.886990707397193,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/contact_prediction/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.886990707397193,
+          "raw_text": "0.8870"
+        },
+        "raw128_neural_mlp": {
+          "raw": 1.0,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/contact_prediction/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 1.0,
+          "raw_text": "1.000"
         }
       }
     },
@@ -507,6 +626,22 @@
           "scope": "multi_episode_128_metadata_baseline",
           "normalized_score": 0.18662723837686876,
           "raw_text": "0.1866"
+        },
+        "raw128_simple": {
+          "raw": 0.0655376369662084,
+          "metric_key": "micro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/object_relevance/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.0655376369662084,
+          "raw_text": "0.0655"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.1765890386972509,
+          "metric_key": "micro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/object_relevance/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.1765890386972509,
+          "raw_text": "0.1766"
         }
       }
     },
@@ -543,6 +678,22 @@
           "scope": "multi_episode_128_metadata_baseline",
           "normalized_score": 0.002332374220713973,
           "raw_text": "0.0023"
+        },
+        "raw128_simple": {
+          "raw": 0.011150892823934555,
+          "metric_key": "mrr",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/caption_grounding/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.011150892823934555,
+          "raw_text": "0.0112"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.0063402121886610985,
+          "metric_key": "mrr",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/caption_grounding/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.0063402121886610985,
+          "raw_text": "0.0063"
         }
       }
     },
@@ -579,6 +730,22 @@
           "scope": "multi_episode_128_partial_model_overlay",
           "normalized_score": 0.022138720585222767,
           "raw_text": "0.0221"
+        },
+        "raw128_simple": {
+          "raw": 0.003459817497059703,
+          "metric_key": "mrr",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/cross_modal_retrieval/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.003459817497059703,
+          "raw_text": "0.0035"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.002535284962505102,
+          "metric_key": "mrr",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/cross_modal_retrieval/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.002535284962505102,
+          "raw_text": "0.0025"
         }
       }
     },
@@ -607,6 +774,22 @@
           "scope": "single_episode_public_sample",
           "normalized_score": 0.0,
           "raw_text": "-0.0102"
+        },
+        "raw128_simple": {
+          "raw": -1.3450960391924882,
+          "metric_key": "r2",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/modality_reconstruction/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.0,
+          "raw_text": "-1.345"
+        },
+        "raw128_neural_mlp": {
+          "raw": -1.3974418160502369,
+          "metric_key": "r2",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/modality_reconstruction/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.0,
+          "raw_text": "-1.397"
         }
       }
     },
@@ -643,6 +826,22 @@
           "scope": "multi_episode_128_metadata_baseline",
           "normalized_score": 0.4198864140782312,
           "raw_text": "0.4199"
+        },
+        "raw128_simple": {
+          "raw": 0.49824413370686593,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/temporal_order/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.49824413370686593,
+          "raw_text": "0.4982"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.8030047098504103,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/temporal_order/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.8030047098504103,
+          "raw_text": "0.8030"
         }
       }
     },
@@ -671,6 +870,22 @@
           "scope": "single_episode_public_sample",
           "normalized_score": 0.7152682255845944,
           "raw_text": "0.7153"
+        },
+        "raw128_simple": {
+          "raw": 0.4958867673901769,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/misalignment_detection/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.4958867673901769,
+          "raw_text": "0.4959"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.8272709077974252,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/misalignment_detection/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.8272709077974252,
+          "raw_text": "0.8273"
         }
       }
     },
@@ -699,6 +914,22 @@
           "scope": "single_episode_public_sample",
           "normalized_score": 0.06545454545454546,
           "raw_text": "0.0655"
+        },
+        "raw128_simple": {
+          "raw": 0.0024280172369056294,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/long_horizon_next_action/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.0024280172369056294,
+          "raw_text": "0.0024"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.001063859887389299,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/long_horizon_next_action/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.001063859887389299,
+          "raw_text": "0.0011"
         }
       }
     },
@@ -727,6 +958,22 @@
           "scope": "single_episode_public_sample",
           "normalized_score": 0.050724637681159424,
           "raw_text": "0.0507"
+        },
+        "raw128_simple": {
+          "raw": 0.0,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/next_subtask_forecast/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.0,
+          "raw_text": "0.0000"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.0,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/next_subtask_forecast/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.0,
+          "raw_text": "0.0000"
         }
       }
     },
@@ -783,6 +1030,22 @@
           "scope": "single_episode_public_sample",
           "normalized_score": 0.0,
           "raw_text": "0.0000"
+        },
+        "raw128_simple": {
+          "raw": 0.0,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/action_object_relation/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.0,
+          "raw_text": "0.0000"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.0,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/action_object_relation/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.0,
+          "raw_text": "0.0000"
         }
       }
     },
@@ -811,6 +1074,22 @@
           "scope": "single_episode_public_sample",
           "normalized_score": 0.19718309859154928,
           "raw_text": "0.1972"
+        },
+        "raw128_simple": {
+          "raw": 0.06469493412657774,
+          "metric_key": "micro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/object_set_forecast/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.06469493412657774,
+          "raw_text": "0.0647"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.17523098630012288,
+          "metric_key": "micro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/object_set_forecast/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.17523098630012288,
+          "raw_text": "0.1752"
         }
       }
     },
@@ -839,6 +1118,22 @@
           "scope": "single_episode_public_sample",
           "normalized_score": 0.9879531106266066,
           "raw_text": "0.0426"
+        },
+        "raw128_simple": {
+          "raw": 0.22941437363624573,
+          "metric_key": "mae",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/imu_to_hand_pose/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.1832902066792771,
+          "raw_text": "0.2294"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.252998411655426,
+          "metric_key": "mae",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/imu_to_hand_pose/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.1662042369509182,
+          "raw_text": "0.2530"
         }
       }
     },
@@ -895,6 +1190,22 @@
           "scope": "single_episode_public_sample",
           "normalized_score": 0.9983762814568361,
           "raw_text": "10.55"
+        },
+        "raw128_simple": {
+          "raw": 52.32759094238281,
+          "metric_key": "mae",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/time_to_transition/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.20137285487211684,
+          "raw_text": "52.33"
+        },
+        "raw128_neural_mlp": {
+          "raw": 42.374061584472656,
+          "metric_key": "mae",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/time_to_transition/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.24867468405504953,
+          "raw_text": "42.37"
         }
       }
     }
@@ -915,6 +1226,22 @@
       "coverage": "6/20 JSONL-supported axes",
       "headline": "compact MLP heads over metadata/text features",
       "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/summary_report.json"
+    },
+    {
+      "id": "raw128_simple",
+      "title": "128ep Raw Simple",
+      "status": "a100_raw20_pass_with_documented_gaps",
+      "coverage": "18/20 raw-feature-supported axes",
+      "headline": "34,269 windows; centroid/ridge heads over 4430-dim sensor feature blocks",
+      "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/run_summary_all.json"
+    },
+    {
+      "id": "raw128_neural_mlp",
+      "title": "128ep Raw NN",
+      "status": "a100_raw20_pass_with_documented_gaps",
+      "coverage": "18/20 raw-feature-supported axes",
+      "headline": "MLP heads ran on staged feature shards; raw interaction text and paired camera-view features are absent",
+      "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/run_summary_all.json"
     },
     {
       "id": "qwen3_omni_v6_lora",

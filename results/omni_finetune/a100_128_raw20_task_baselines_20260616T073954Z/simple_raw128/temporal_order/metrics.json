@@ -1,0 +1,38 @@
+{
+  "task": "temporal_order",
+  "task_display_name": "Temporal Order Verification",
+  "task_family": "classification",
+  "model_family": "simple_raw128_centroid",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "concatenated adjacent sensor-window pairs",
+  "primary_metric": "macro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "num_train_windows": 51080,
+  "num_val_windows": 9184,
+  "num_test_windows": 8036,
+  "num_classes": 2,
+  "num_train_classes": 2,
+  "input_dim": 7068,
+  "fit_input_dim": 2048,
+  "selected_column_count": 2048,
+  "splits": {
+    "val": {
+      "accuracy": 0.5078397212543554,
+      "balanced_accuracy": 0.5078397212543554,
+      "macro_f1": 0.5074920817518194,
+      "weighted_f1": 0.5074920817518193,
+      "num_eval_windows": 9184,
+      "num_classes": 2
+    },
+    "test": {
+      "accuracy": 0.49825783972125437,
+      "balanced_accuracy": 0.49825783972125437,
+      "macro_f1": 0.49824413370686593,
+      "weighted_f1": 0.49824413370686593,
+      "num_eval_windows": 8036,
+      "num_classes": 2
+    }
+  },
+  "primary_score": 0.49824413370686593
+}

@@ -1,0 +1,409 @@
+{
+  "num_records": 40,
+  "status_counts": {
+    "pass": 36,
+    "unsupported": 4
+  },
+  "records": [
+    {
+      "task": "action_object_relation",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.0,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "action_object_relation",
+      "model_family": "simple_raw128_centroid",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.0,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "camera_view_sync_retrieval",
+      "model_family": "neural_mlp_raw128",
+      "status": "unsupported",
+      "primary_metric": "mrr",
+      "primary_score": null,
+      "metric_direction": "higher",
+      "reason": "128-episode NPZ manifest has camera pose plus audio/depth/caption features, but no two explicit video-view feature blocks for camera-view synchronization",
+      "error": null
+    },
+    {
+      "task": "camera_view_sync_retrieval",
+      "model_family": "simple_raw128_ridge",
+      "status": "unsupported",
+      "primary_metric": "mrr",
+      "primary_score": null,
+      "metric_direction": "higher",
+      "reason": "128-episode NPZ manifest has camera pose plus audio/depth/caption features, but no two explicit video-view feature blocks for camera-view synchronization",
+      "error": null
+    },
+    {
+      "task": "caption_grounding",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "mrr",
+      "primary_score": 0.0063402121886610985,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "caption_grounding",
+      "model_family": "simple_raw128_ridge",
+      "status": "pass",
+      "primary_metric": "mrr",
+      "primary_score": 0.011150892823934555,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "contact_prediction",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 1.0,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "contact_prediction",
+      "model_family": "simple_raw128_centroid",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.886990707397193,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "cross_modal_retrieval",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "mrr",
+      "primary_score": 0.002535284962505102,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "cross_modal_retrieval",
+      "model_family": "simple_raw128_ridge",
+      "status": "pass",
+      "primary_metric": "mrr",
+      "primary_score": 0.003459817497059703,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "hand_trajectory_forecast",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "mae",
+      "primary_score": 0.18475216627120972,
+      "metric_direction": "lower",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "hand_trajectory_forecast",
+      "model_family": "simple_raw128_ridge",
+      "status": "pass",
+      "primary_metric": "mae",
+      "primary_score": 0.2729249894618988,
+      "metric_direction": "lower",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "imu_to_hand_pose",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "mae",
+      "primary_score": 0.252998411655426,
+      "metric_direction": "lower",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "imu_to_hand_pose",
+      "model_family": "simple_raw128_ridge",
+      "status": "pass",
+      "primary_metric": "mae",
+      "primary_score": 0.22941437363624573,
+      "metric_direction": "lower",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "interaction_text_prediction",
+      "model_family": "neural_mlp_raw128",
+      "status": "unsupported",
+      "primary_metric": "macro_f1",
+      "primary_score": null,
+      "metric_direction": "higher",
+      "reason": "raw 128-episode annotation.hdf5 interaction text is not present in the JSONL export; only hashed caption_objects_interaction_text features are available",
+      "error": null
+    },
+    {
+      "task": "interaction_text_prediction",
+      "model_family": "simple_raw128_centroid",
+      "status": "unsupported",
+      "primary_metric": "macro_f1",
+      "primary_score": null,
+      "metric_direction": "higher",
+      "reason": "raw 128-episode annotation.hdf5 interaction text is not present in the JSONL export; only hashed caption_objects_interaction_text features are available",
+      "error": null
+    },
+    {
+      "task": "long_horizon_next_action",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.001063859887389299,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "long_horizon_next_action",
+      "model_family": "simple_raw128_centroid",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.0024280172369056294,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "misalignment_detection",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.8272709077974252,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "misalignment_detection",
+      "model_family": "simple_raw128_centroid",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.4958867673901769,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "modality_reconstruction",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "r2",
+      "primary_score": -1.3974418160502369,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "modality_reconstruction",
+      "model_family": "simple_raw128_ridge",
+      "status": "pass",
+      "primary_metric": "r2",
+      "primary_score": -1.3450960391924882,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "next_action",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.0018477984371755407,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "next_action",
+      "model_family": "simple_raw128_centroid",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.003285273363482094,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "next_subtask_forecast",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.0,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "next_subtask_forecast",
+      "model_family": "simple_raw128_centroid",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.0,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "object_relevance",
+      "model_family": "neural_mlp_raw128_multilabel",
+      "status": "pass",
+      "primary_metric": "micro_f1",
+      "primary_score": 0.1765890386972509,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "object_relevance",
+      "model_family": "simple_raw128_ridge_multilabel",
+      "status": "pass",
+      "primary_metric": "micro_f1",
+      "primary_score": 0.0655376369662084,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "object_set_forecast",
+      "model_family": "neural_mlp_raw128_multilabel",
+      "status": "pass",
+      "primary_metric": "micro_f1",
+      "primary_score": 0.17523098630012288,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "object_set_forecast",
+      "model_family": "simple_raw128_ridge_multilabel",
+      "status": "pass",
+      "primary_metric": "micro_f1",
+      "primary_score": 0.06469493412657774,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "temporal_order",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.8030047098504103,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "temporal_order",
+      "model_family": "simple_raw128_centroid",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.49824413370686593,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "time_to_transition",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "mae",
+      "primary_score": 42.374061584472656,
+      "metric_direction": "lower",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "time_to_transition",
+      "model_family": "simple_raw128_ridge",
+      "status": "pass",
+      "primary_metric": "mae",
+      "primary_score": 52.32759094238281,
+      "metric_direction": "lower",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "timeline_action",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.0014955083181204041,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "timeline_action",
+      "model_family": "simple_raw128_centroid",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.002915061325704321,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "timeline_subtask",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 7.35632183908046e-05,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "timeline_subtask",
+      "model_family": "simple_raw128_centroid",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.0,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "transition_detection",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.4902206914147213,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "transition_detection",
+      "model_family": "simple_raw128_centroid",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.4203613574238283,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    }
+  ]
+}

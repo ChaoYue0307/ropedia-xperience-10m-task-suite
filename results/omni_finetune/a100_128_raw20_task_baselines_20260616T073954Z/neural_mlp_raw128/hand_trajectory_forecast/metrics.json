@@ -1,0 +1,52 @@
+{
+  "task": "hand_trajectory_forecast",
+  "task_display_name": "Hand Trajectory Forecasting",
+  "task_family": "regression",
+  "model_family": "neural_mlp_raw128",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "current non-hand/non-caption features; target hand joint feature block +20 frames",
+  "primary_metric": "mae",
+  "metric_direction": "lower",
+  "status": "pass",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.8031348615485111
+    },
+    {
+      "epoch": 5,
+      "loss": 0.5183512075500258
+    },
+    {
+      "epoch": 10,
+      "loss": 0.3657062302656374
+    },
+    {
+      "epoch": 15,
+      "loss": 0.28521906561420884
+    },
+    {
+      "epoch": 20,
+      "loss": 0.24974514583392887
+    },
+    {
+      "epoch": 25,
+      "loss": 0.22191785270443581
+    }
+  ],
+  "num_train_windows": 25502,
+  "num_test_windows": 4015,
+  "input_dim": 2652,
+  "fit_input_dim": 2048,
+  "target_dim": 882,
+  "splits": {
+    "test": {
+      "mae": 0.18475216627120972,
+      "rmse": 0.43915748596191406,
+      "r2": 0.11917128475110383,
+      "mean_l2": 9.090903282165527
+    }
+  },
+  "primary_score": 0.18475216627120972
+}

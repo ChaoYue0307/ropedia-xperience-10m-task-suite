@@ -1,0 +1,38 @@
+{
+  "task": "next_action",
+  "task_display_name": "Next-Action Prediction",
+  "task_family": "classification",
+  "model_family": "simple_raw128_centroid",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "sensor features excluding hashed caption text",
+  "primary_metric": "macro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "num_train_windows": 25629,
+  "num_val_windows": 4608,
+  "num_test_windows": 4032,
+  "num_classes": 1217,
+  "num_train_classes": 891,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "selected_column_count": 2048,
+  "splits": {
+    "val": {
+      "accuracy": 0.013888888888888888,
+      "balanced_accuracy": 0.005613101813261097,
+      "macro_f1": 0.005638673358940244,
+      "weighted_f1": 0.012786601575956909,
+      "num_eval_windows": 4608,
+      "num_classes": 1217
+    },
+    "test": {
+      "accuracy": 0.01711309523809524,
+      "balanced_accuracy": 0.005375847230789465,
+      "macro_f1": 0.003285273363482094,
+      "weighted_f1": 0.01286645185536608,
+      "num_eval_windows": 4032,
+      "num_classes": 1217
+    }
+  },
+  "primary_score": 0.003285273363482094
+}

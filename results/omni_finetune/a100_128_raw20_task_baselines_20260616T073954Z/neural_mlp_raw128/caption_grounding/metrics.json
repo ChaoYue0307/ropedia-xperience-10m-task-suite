@@ -1,0 +1,52 @@
+{
+  "task": "caption_grounding",
+  "task_display_name": "Language Grounding",
+  "task_family": "retrieval",
+  "model_family": "neural_mlp_raw128",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "non-caption sensor blocks projected to hashed caption/object/interaction block",
+  "primary_metric": "mrr",
+  "metric_direction": "higher",
+  "status": "pass",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.9730807784066104
+    },
+    {
+      "epoch": 5,
+      "loss": 0.8797651895419402
+    },
+    {
+      "epoch": 10,
+      "loss": 0.8487889279395084
+    },
+    {
+      "epoch": 15,
+      "loss": 0.8318103914064764
+    },
+    {
+      "epoch": 20,
+      "loss": 0.821267495579444
+    },
+    {
+      "epoch": 25,
+      "loss": 0.8125992868655396
+    }
+  ],
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "target_dim": 896,
+  "splits": {
+    "test": {
+      "mrr": 0.0063402121886610985,
+      "top1": 0.002232142857142857,
+      "median_rank": 1392.0,
+      "num_queries": 4032
+    }
+  },
+  "primary_score": 0.0063402121886610985
+}

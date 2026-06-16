@@ -1,0 +1,62 @@
+{
+  "task": "misalignment_detection",
+  "task_display_name": "Multimodal Synchronization Detection",
+  "task_family": "classification",
+  "model_family": "neural_mlp_raw128",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "motion/camera/IMU query paired with aligned or shifted depth/audio target",
+  "primary_metric": "macro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.584179866367518,
+      "train_accuracy": 0.6658104908295541
+    },
+    {
+      "epoch": 5,
+      "loss": 0.37274408434943146,
+      "train_accuracy": 0.8252598627443111
+    },
+    {
+      "epoch": 10,
+      "loss": 0.2720396854143376,
+      "train_accuracy": 0.8785969418469318
+    },
+    {
+      "epoch": 15,
+      "loss": 0.21012097329801926,
+      "train_accuracy": 0.9071116105470161
+    },
+    {
+      "epoch": 20,
+      "loss": 0.1713544537477405,
+      "train_accuracy": 0.925793634867761
+    },
+    {
+      "epoch": 25,
+      "loss": 0.14908742030340427,
+      "train_accuracy": 0.9357466789741943
+    }
+  ],
+  "num_train_windows": 49834,
+  "num_test_windows": 7840,
+  "num_classes": 2,
+  "num_train_classes": 2,
+  "input_dim": 3395,
+  "fit_input_dim": 2048,
+  "selected_column_count": 2048,
+  "splits": {
+    "test": {
+      "accuracy": 0.8274234693877551,
+      "balanced_accuracy": 0.8274234693877551,
+      "macro_f1": 0.8272709077974252,
+      "weighted_f1": 0.8272709077974253,
+      "num_eval_windows": 7840,
+      "num_classes": 2
+    }
+  },
+  "primary_score": 0.8272709077974252
+}

@@ -1,0 +1,25 @@
+{
+  "task": "hand_trajectory_forecast",
+  "task_display_name": "Hand Trajectory Forecasting",
+  "task_family": "regression",
+  "model_family": "simple_raw128_ridge",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "current non-hand/non-caption features; target hand joint feature block +20 frames",
+  "primary_metric": "mae",
+  "metric_direction": "lower",
+  "status": "pass",
+  "num_train_windows": 25502,
+  "num_test_windows": 4015,
+  "input_dim": 2652,
+  "fit_input_dim": 2048,
+  "target_dim": 882,
+  "splits": {
+    "test": {
+      "mae": 0.2729249894618988,
+      "rmse": 0.5156853199005127,
+      "r2": -0.21456409310612812,
+      "mean_l2": 13.391268730163574
+    }
+  },
+  "primary_score": 0.2729249894618988
+}

@@ -1,0 +1,25 @@
+{
+  "task": "modality_reconstruction",
+  "task_display_name": "Cross-Modal Reconstruction",
+  "task_family": "regression",
+  "model_family": "simple_raw128_ridge",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "all non-depth sensor blocks reconstruct depth-confidence block",
+  "primary_metric": "r2",
+  "metric_direction": "higher",
+  "status": "pass",
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "input_dim": 3450,
+  "fit_input_dim": 2048,
+  "target_dim": 980,
+  "splits": {
+    "test": {
+      "mae": 10433.9873046875,
+      "rmse": 377549.6875,
+      "r2": -1.3450960391924882,
+      "mean_l2": 7126639.0
+    }
+  },
+  "primary_score": -1.3450960391924882
+}

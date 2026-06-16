@@ -1,0 +1,51 @@
+{
+  "task": "object_relevance",
+  "task_display_name": "Object Relevance Prediction",
+  "task_family": "multi_label",
+  "model_family": "neural_mlp_raw128_multilabel",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "sensor features excluding hashed caption text",
+  "primary_metric": "micro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.3179367709060545
+    },
+    {
+      "epoch": 5,
+      "loss": 0.08152506840292292
+    },
+    {
+      "epoch": 10,
+      "loss": 0.05606942784121547
+    },
+    {
+      "epoch": 15,
+      "loss": 0.04551570554540027
+    },
+    {
+      "epoch": 20,
+      "loss": 0.03935748256850226
+    },
+    {
+      "epoch": 25,
+      "loss": 0.034496653577433256
+    }
+  ],
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "num_labels": 256,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "splits": {
+    "test": {
+      "micro_f1": 0.1765890386972509,
+      "macro_f1": 0.026473024044082846,
+      "exact_match": 0.010168650793650794
+    }
+  },
+  "primary_score": 0.1765890386972509
+}

@@ -1,0 +1,25 @@
+{
+  "task": "time_to_transition",
+  "task_display_name": "Time To Transition",
+  "task_family": "regression",
+  "model_family": "simple_raw128_ridge",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "non-caption sensor features regress frames to next action boundary capped at 200",
+  "primary_metric": "mae",
+  "metric_direction": "lower",
+  "status": "pass",
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "target_dim": 1,
+  "splits": {
+    "test": {
+      "mae": 52.32759094238281,
+      "rmse": 64.64363098144531,
+      "r2": -0.6643625204910037,
+      "mean_l2": 52.32759094238281
+    }
+  },
+  "primary_score": 52.32759094238281
+}

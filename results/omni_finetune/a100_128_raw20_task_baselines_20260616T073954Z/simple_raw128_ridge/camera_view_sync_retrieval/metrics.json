@@ -1,0 +1,13 @@
+{
+  "task": "camera_view_sync_retrieval",
+  "task_display_name": "Camera View Sync Retrieval",
+  "task_family": "retrieval",
+  "model_family": "simple_raw128_ridge",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "not run",
+  "primary_metric": "mrr",
+  "metric_direction": "higher",
+  "status": "unsupported",
+  "reason": "128-episode NPZ manifest has camera pose plus audio/depth/caption features, but no two explicit video-view feature blocks for camera-view synchronization",
+  "primary_score": null
+}

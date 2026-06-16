@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1720" height="1360" viewBox="0 0 1720 1360">
+<svg xmlns="http://www.w3.org/2000/svg" width="1720" height="1500" viewBox="0 0 1720 1500">
 <defs>
 <filter id="softGlow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.15" fill="#ccffa0" opacity="0.16"/></pattern>
 </defs>
 <rect width="100%" height="100%" fill="#020502"/>
 <rect width="100%" height="100%" fill="url(#dots)" opacity="0.45"/>
-<rect x="28" y="28" width="1664" height="1304" rx="18" fill="#061006" fill-opacity="0.86" stroke="#ccffa0" stroke-opacity="0.22"/>
+<rect x="28" y="28" width="1664" height="1444" rx="18" fill="#061006" fill-opacity="0.86" stroke="#ccffa0" stroke-opacity="0.22"/>
 <text x="70.0" y="86.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="34" font-weight="800" fill="#f4f8ef" opacity="1.000">Unified 20-Task Model Radar</text>
-<text x="70.0" y="122.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="17" font-weight="560" fill="#a5afa2" opacity="1.000">Direction-aware normalized scores across the single-episode task suite, with 128ep metadata and Qwen3/Cosmos overlays.</text>
+<text x="70.0" y="122.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="17" font-weight="560" fill="#a5afa2" opacity="1.000">Direction-aware normalized scores across the single-episode task suite, with 128ep metadata/raw and Qwen3/Cosmos overlays.</text>
 <text x="70.0" y="156.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="560" fill="#a5afa2" opacity="1.000">Filled polygons: same 20 public-sample tasks. Points: 128-episode branches only where their public metrics map to that task.</text>
 <polygon points="570.0,519.0 590.4,522.2 608.8,531.6 623.4,546.2 632.8,564.6 636.0,585.0 632.8,605.4 623.4,623.8 608.8,638.4 590.4,647.8 570.0,651.0 549.6,647.8 531.2,638.4 516.6,623.8 507.2,605.4 504.0,585.0 507.2,564.6 516.6,546.2 531.2,531.6 549.6,522.2" fill="none" stroke="#ccffa0" stroke-opacity="0.15" stroke-width="1.1"/>
 <text x="578.0" y="523.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="0.750">0.2</text>
@@ -135,6 +135,42 @@
 <circle cx="571.3" cy="584.0" r="6.5" fill="#f472b6" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="757.5" cy="585.0" r="6.5" fill="#f472b6" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="628.6" cy="604.0" r="6.5" fill="#f472b6" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="584.0" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="585.0" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="651.5" cy="472.8" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.9" cy="584.4" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="694.0" cy="544.7" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="862.7" cy="585.0" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="590.6" cy="591.7" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="573.0" cy="587.2" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.7" cy="585.9" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="585.0" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="749.4" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="519.4" cy="740.6" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="569.5" cy="585.6" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="585.0" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="585.0" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="549.7" cy="578.4" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="521.1" cy="549.4" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="549.5" cy="521.8" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="584.5" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="585.0" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="665.1" cy="454.1" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.5" cy="584.6" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="753.2" cy="525.5" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="900.0" cy="585.0" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="625.4" cy="603.0" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="571.7" cy="586.2" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.5" cy="585.7" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="585.0" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="850.0" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="485.6" cy="844.6" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="569.8" cy="585.3" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="585.0" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="585.0" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="515.0" cy="567.1" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="525.6" cy="552.8" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="544.6" cy="507.0" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="570.0" cy="584.0" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="570.4" cy="583.8" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="762.0" cy="320.7" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
@@ -152,7 +188,7 @@
 <circle cx="572.1" cy="583.5" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="815.3" cy="585.0" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="574.3" cy="590.9" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<rect x="1071" y="166" width="520" height="900" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>
+<rect x="1071" y="166" width="520" height="1030" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>
 <text x="1105.0" y="210.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="24" font-weight="800" fill="#f4f8ef" opacity="1.000">How to read it</text>
 <text x="1105.0" y="240.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="560" fill="#a5afa2" opacity="1.000">Score radius is normalized by metric direction.</text>
 <text x="1105.0" y="262.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="560" fill="#a5afa2" opacity="1.000">Raw values stay in unified_task_model_radar.json.</text>
@@ -170,46 +206,62 @@
 <circle cx="1129" cy="456" r="7" fill="#f472b6" stroke="#020502" stroke-width="2"/>
 <text x="1169.0" y="460.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#f4f8ef" opacity="1.000">128ep Metadata NN</text>
 <text x="1169.0" y="482.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="560" fill="#a5afa2" opacity="1.000">6/20 axes · 128 selected episodes, JSONL metadata/text only</text>
-<line x1="1105" y1="506" x2="1153" y2="506" stroke="#9bb8ff" stroke-width="7" stroke-linecap="round"/>
-<circle cx="1129" cy="506" r="7" fill="#9bb8ff" stroke="#020502" stroke-width="2"/>
-<text x="1169.0" y="510.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#f4f8ef" opacity="1.000">Qwen3-Omni v6 LoRA</text>
-<text x="1169.0" y="532.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="560" fill="#a5afa2" opacity="1.000">6/20 axes · 128 selected episodes, held-out test</text>
-<line x1="1105" y1="556" x2="1153" y2="556" stroke="#ff9c7a" stroke-width="7" stroke-linecap="round"/>
-<circle cx="1129" cy="556" r="7" fill="#ff9c7a" stroke="#020502" stroke-width="2"/>
-<text x="1169.0" y="560.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Super Reasoner</text>
-<text x="1169.0" y="582.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="560" fill="#a5afa2" opacity="1.000">6/20 axes · 128 selected episodes, held-out test</text>
-<line x1="1105" y1="606" x2="1153" y2="606" stroke="#d9c7ff" stroke-width="7" stroke-linecap="round"/>
-<circle cx="1129" cy="606" r="7" fill="#d9c7ff" stroke="#020502" stroke-width="2"/>
-<text x="1169.0" y="610.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Nano Future Window</text>
-<text x="1169.0" y="632.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="560" fill="#a5afa2" opacity="1.000">5/20 axes · 128 selected episodes, held-out test</text>
-<text x="1105.0" y="670.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef" opacity="1.000">Model branch notes</text>
-<rect x="1105" y="680" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
-<text x="1121.0" y="701.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">128ep Metadata Simple</text>
-<text x="1121.0" y="722.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">8/20 JSONL-supported axes</text>
-<text x="1121.0" y="743.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">34,269 rows; train/val/test 25,629/4,608/4,032</text>
-<rect x="1105" y="754" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
-<text x="1121.0" y="775.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">128ep Metadata NN</text>
-<text x="1121.0" y="796.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">6/20 JSONL-supported axes</text>
-<text x="1121.0" y="817.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">compact MLP heads over metadata/text features</text>
-<rect x="1105" y="828" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
-<text x="1121.0" y="849.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">Qwen3-Omni v6 LoRA</text>
-<text x="1121.0" y="870.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">6/20 task-aligned axes</text>
-<text x="1121.0" y="891.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">JSON validity 0.9990; action macro-F1 0.0029</text>
-<rect x="1105" y="902" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
-<text x="1121.0" y="923.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Super Reasoner</text>
-<text x="1121.0" y="944.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">6/20 task-aligned axes</text>
-<text x="1121.0" y="965.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">JSON validity 0.5112; action macro-F1 0.0008</text>
-<rect x="1105" y="976" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
-<text x="1121.0" y="997.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Nano Future Window</text>
-<text x="1121.0" y="1018.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">5/20 task-aligned axes</text>
-<text x="1121.0" y="1039.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">future retrieval MRR 0.0221; transition accuracy 0.9683</text>
-<rect x="1105" y="1050" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
-<text x="1121.0" y="1071.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Super Forward-Dynamics LoRA</text>
-<text x="1121.0" y="1092.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">separate camera-pose proxy target, not plotted on the 20 task axes</text>
-<text x="1121.0" y="1113.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">test MSE 3.685 over 448 held-out rows</text>
-<rect x="70" y="1195" width="1540" height="86" rx="10" fill="#020502" fill-opacity="0.54" stroke="#ccffa0" stroke-opacity="0.16"/>
-<text x="96.0" y="1222.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="800" fill="#ccffa0" opacity="1.000">Caveat</text>
-<text x="170.0" y="1222.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="650" fill="#dce8d7" opacity="1.000">This chart compares normalized metric direction, not identical raw units.</text>
-<text x="170.0" y="1248.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="560" fill="#a5afa2" opacity="1.000">128-episode metadata, Qwen3, and Cosmos overlays are plotted only on semantically aligned task axes.</text>
-<text x="170.0" y="1274.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="560" fill="#a5afa2" opacity="1.000">Cosmos3-Super forward-dynamics LoRA is kept as a branch card because its camera-pose proxy MSE is not one of the 20 task metrics.</text>
+<line x1="1105" y1="506" x2="1153" y2="506" stroke="#f59e0b" stroke-width="7" stroke-linecap="round"/>
+<circle cx="1129" cy="506" r="7" fill="#f59e0b" stroke="#020502" stroke-width="2"/>
+<text x="1169.0" y="510.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#f4f8ef" opacity="1.000">128ep Raw Simple</text>
+<text x="1169.0" y="532.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="560" fill="#a5afa2" opacity="1.000">18/20 axes · 128 selected episodes, staged 4430-dim sensor NPZ features</text>
+<line x1="1105" y1="556" x2="1153" y2="556" stroke="#22d3ee" stroke-width="7" stroke-linecap="round"/>
+<circle cx="1129" cy="556" r="7" fill="#22d3ee" stroke="#020502" stroke-width="2"/>
+<text x="1169.0" y="560.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#f4f8ef" opacity="1.000">128ep Raw NN</text>
+<text x="1169.0" y="582.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="560" fill="#a5afa2" opacity="1.000">18/20 axes · 128 selected episodes, staged 4430-dim sensor NPZ features</text>
+<line x1="1105" y1="606" x2="1153" y2="606" stroke="#9bb8ff" stroke-width="7" stroke-linecap="round"/>
+<circle cx="1129" cy="606" r="7" fill="#9bb8ff" stroke="#020502" stroke-width="2"/>
+<text x="1169.0" y="610.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#f4f8ef" opacity="1.000">Qwen3-Omni v6 LoRA</text>
+<text x="1169.0" y="632.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="560" fill="#a5afa2" opacity="1.000">6/20 axes · 128 selected episodes, held-out test</text>
+<line x1="1105" y1="656" x2="1153" y2="656" stroke="#ff9c7a" stroke-width="7" stroke-linecap="round"/>
+<circle cx="1129" cy="656" r="7" fill="#ff9c7a" stroke="#020502" stroke-width="2"/>
+<text x="1169.0" y="660.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Super Reasoner</text>
+<text x="1169.0" y="682.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="560" fill="#a5afa2" opacity="1.000">6/20 axes · 128 selected episodes, held-out test</text>
+<line x1="1105" y1="706" x2="1153" y2="706" stroke="#d9c7ff" stroke-width="7" stroke-linecap="round"/>
+<circle cx="1129" cy="706" r="7" fill="#d9c7ff" stroke="#020502" stroke-width="2"/>
+<text x="1169.0" y="710.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Nano Future Window</text>
+<text x="1169.0" y="732.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="560" fill="#a5afa2" opacity="1.000">5/20 axes · 128 selected episodes, held-out test</text>
+<text x="1105.0" y="770.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef" opacity="1.000">Model branch notes</text>
+<rect x="1105" y="780" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
+<text x="1121.0" y="801.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">128ep Metadata Simple</text>
+<text x="1121.0" y="822.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">8/20 JSONL-supported axes</text>
+<text x="1121.0" y="843.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">34,269 rows; train/val/test 25,629/4,608/4,032</text>
+<rect x="1105" y="854" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
+<text x="1121.0" y="875.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">128ep Metadata NN</text>
+<text x="1121.0" y="896.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">6/20 JSONL-supported axes</text>
+<text x="1121.0" y="917.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">compact MLP heads over metadata/text features</text>
+<rect x="1105" y="928" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
+<text x="1121.0" y="949.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">128ep Raw Simple</text>
+<text x="1121.0" y="970.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">18/20 raw-feature-supported axes</text>
+<text x="1121.0" y="991.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">34,269 windows; centroid/ridge heads over 4430-dim sensor feature blocks</text>
+<rect x="1105" y="1002" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
+<text x="1121.0" y="1023.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">128ep Raw NN</text>
+<text x="1121.0" y="1044.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">18/20 raw-feature-supported axes</text>
+<text x="1121.0" y="1065.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">MLP heads ran on staged feature shards; raw interaction text and paired camera-view features are absent</text>
+<rect x="1105" y="1076" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
+<text x="1121.0" y="1097.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">Qwen3-Omni v6 LoRA</text>
+<text x="1121.0" y="1118.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">6/20 task-aligned axes</text>
+<text x="1121.0" y="1139.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">JSON validity 0.9990; action macro-F1 0.0029</text>
+<rect x="1105" y="1150" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
+<text x="1121.0" y="1171.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Super Reasoner</text>
+<text x="1121.0" y="1192.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">6/20 task-aligned axes</text>
+<text x="1121.0" y="1213.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">JSON validity 0.5112; action macro-F1 0.0008</text>
+<rect x="1105" y="1224" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
+<text x="1121.0" y="1245.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Nano Future Window</text>
+<text x="1121.0" y="1266.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">5/20 task-aligned axes</text>
+<text x="1121.0" y="1287.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">future retrieval MRR 0.0221; transition accuracy 0.9683</text>
+<rect x="1105" y="1298" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
+<text x="1121.0" y="1319.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Super Forward-Dynamics LoRA</text>
+<text x="1121.0" y="1340.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">separate camera-pose proxy target, not plotted on the 20 task axes</text>
+<text x="1121.0" y="1361.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">test MSE 3.685 over 448 held-out rows</text>
+<rect x="70" y="1335" width="1540" height="86" rx="10" fill="#020502" fill-opacity="0.54" stroke="#ccffa0" stroke-opacity="0.16"/>
+<text x="96.0" y="1362.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="800" fill="#ccffa0" opacity="1.000">Caveat</text>
+<text x="170.0" y="1362.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="650" fill="#dce8d7" opacity="1.000">This chart compares normalized metric direction, not identical raw units.</text>
+<text x="170.0" y="1388.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="560" fill="#a5afa2" opacity="1.000">128-episode metadata/raw, Qwen3, and Cosmos overlays are plotted only on semantically aligned task axes.</text>
+<text x="170.0" y="1414.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="560" fill="#a5afa2" opacity="1.000">Raw-feature gaps mean missing raw interaction text and paired video-view features, not failed scores.</text>
 </svg>

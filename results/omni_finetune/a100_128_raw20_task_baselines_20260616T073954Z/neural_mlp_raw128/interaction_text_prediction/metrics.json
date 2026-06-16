@@ -1,0 +1,13 @@
+{
+  "task": "interaction_text_prediction",
+  "task_display_name": "Interaction Text Prediction",
+  "task_family": "classification",
+  "model_family": "neural_mlp_raw128",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "not run",
+  "primary_metric": "macro_f1",
+  "metric_direction": "higher",
+  "status": "unsupported",
+  "reason": "raw 128-episode annotation.hdf5 interaction text is not present in the JSONL export; only hashed caption_objects_interaction_text features are available",
+  "primary_score": null
+}

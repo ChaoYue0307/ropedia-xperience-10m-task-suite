@@ -1,0 +1,24 @@
+{
+  "task": "object_set_forecast",
+  "task_display_name": "Object Set Forecast",
+  "task_family": "multi_label",
+  "model_family": "simple_raw128_ridge_multilabel",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "current non-caption features; target object set +100 frames",
+  "primary_metric": "micro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "num_train_windows": 25068,
+  "num_test_windows": 3951,
+  "num_labels": 256,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "splits": {
+    "test": {
+      "micro_f1": 0.06469493412657774,
+      "macro_f1": 0.030207189323056556,
+      "exact_match": 0.0
+    }
+  },
+  "primary_score": 0.06469493412657774
+}

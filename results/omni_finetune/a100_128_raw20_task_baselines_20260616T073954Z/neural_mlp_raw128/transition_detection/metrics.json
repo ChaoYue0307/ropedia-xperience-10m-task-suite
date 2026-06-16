@@ -1,0 +1,62 @@
+{
+  "task": "transition_detection",
+  "task_display_name": "Action Boundary Detection",
+  "task_family": "classification",
+  "model_family": "neural_mlp_raw128",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "sensor features excluding hashed caption text",
+  "primary_metric": "macro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.5537091893220953,
+      "train_accuracy": 0.7428303874517148
+    },
+    {
+      "epoch": 5,
+      "loss": 0.19651318897678038,
+      "train_accuracy": 0.9144718873151508
+    },
+    {
+      "epoch": 10,
+      "loss": 0.09844583694868982,
+      "train_accuracy": 0.9596940965312731
+    },
+    {
+      "epoch": 15,
+      "loss": 0.10910748333434252,
+      "train_accuracy": 0.9566506691638378
+    },
+    {
+      "epoch": 20,
+      "loss": 0.07368280102906076,
+      "train_accuracy": 0.9692925982285692
+    },
+    {
+      "epoch": 25,
+      "loss": 0.030949957263201364,
+      "train_accuracy": 0.9879043271294237
+    }
+  ],
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "num_classes": 2,
+  "num_train_classes": 2,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "selected_column_count": 2048,
+  "splits": {
+    "test": {
+      "accuracy": 0.9446924603174603,
+      "balanced_accuracy": 0.49010925819436457,
+      "macro_f1": 0.4902206914147213,
+      "weighted_f1": 0.9627185273267364,
+      "num_eval_windows": 4032,
+      "num_classes": 2
+    }
+  },
+  "primary_score": 0.4902206914147213
+}

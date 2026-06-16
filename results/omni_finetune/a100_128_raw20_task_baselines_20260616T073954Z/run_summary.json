@@ -1,0 +1,43 @@
+{
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset.jsonl",
+  "feature_manifest_json": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset_dense_20f_stride10/dataset_manifest.json",
+  "tasks_requested": [
+    "action_object_relation"
+  ],
+  "load_report": {
+    "resolved_npz_files": 357,
+    "loaded_feature_rows": 34269,
+    "input_rows": 34269,
+    "dropped_rows": 0,
+    "missing_path_examples": [],
+    "feature_dim": 4430
+  },
+  "num_result_records": 2,
+  "status_counts": {
+    "pass": 2
+  },
+  "results": [
+    {
+      "task": "action_object_relation",
+      "task_display_name": "Action Object Relation",
+      "model_family": "simple_raw128_centroid",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.0,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "action_object_relation",
+      "task_display_name": "Action Object Relation",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.0,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    }
+  ]
+}

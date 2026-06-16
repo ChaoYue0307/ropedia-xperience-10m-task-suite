@@ -1,0 +1,25 @@
+{
+  "task": "caption_grounding",
+  "task_display_name": "Language Grounding",
+  "task_family": "retrieval",
+  "model_family": "simple_raw128_ridge",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "non-caption sensor blocks projected to hashed caption/object/interaction block",
+  "primary_metric": "mrr",
+  "metric_direction": "higher",
+  "status": "pass",
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "target_dim": 896,
+  "splits": {
+    "test": {
+      "mrr": 0.011150892823934555,
+      "top1": 0.003720238095238095,
+      "median_rank": 786.0,
+      "num_queries": 4032
+    }
+  },
+  "primary_score": 0.011150892823934555
+}

@@ -442,6 +442,14 @@ ARTIFACTS = [
         "shows": "Rerun of JSONL metadata/text simple and neural baselines over the selected 128-episode multiscale dataset; supports radar overlays on JSONL-supported task axes.",
     },
     {
+        "id": "a100_128_raw20_task_baselines",
+        "title": "128-episode raw-feature 20-task baselines",
+        "path": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/run_summary_all.json",
+        "kind": "model_result",
+        "surface": "repo_hf",
+        "shows": "Rerun of simple and neural baselines over 34,269 windows and staged 4430-dimensional sensor NPZ features; covers 18 of 20 task axes with documented raw-source gaps for interaction text and camera-view sync.",
+    },
+    {
         "id": "research_takeaways",
         "title": "Research takeaways",
         "path": "RESEARCH_TAKEAWAYS.md",

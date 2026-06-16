@@ -1,0 +1,38 @@
+{
+  "task": "next_subtask_forecast",
+  "task_display_name": "Next Subtask Forecast",
+  "task_family": "classification",
+  "model_family": "simple_raw128_centroid",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "current non-caption features; target subtask +100 frames",
+  "primary_metric": "macro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "num_train_windows": 25068,
+  "num_val_windows": 4496,
+  "num_test_windows": 3951,
+  "num_classes": 891,
+  "num_train_classes": 651,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "selected_column_count": 2048,
+  "splits": {
+    "val": {
+      "accuracy": 0.010676156583629894,
+      "balanced_accuracy": 0.00942727857238175,
+      "macro_f1": 0.004056185968713767,
+      "weighted_f1": 0.00420519243976352,
+      "num_eval_windows": 4496,
+      "num_classes": 891
+    },
+    "test": {
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0,
+      "weighted_f1": 0.0,
+      "num_eval_windows": 3951,
+      "num_classes": 891
+    }
+  },
+  "primary_score": 0.0
+}
