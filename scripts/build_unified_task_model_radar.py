@@ -40,6 +40,8 @@ COSMOS_SUPER_FD_METRICS_PATH = (
 METADATA128_BASELINE_DIR = ROOT / "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2"
 RAW128_BASELINE_DIR = ROOT / "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z"
 OUTPUT_JSON = ROOT / "docs/data/unified_task_model_radar.json"
+OUTPUT_MATRIX_JSON = ROOT / "docs/data/task_method_20_result_matrix.json"
+OUTPUT_MATRIX_MD = ROOT / "TASK_METHOD_20_RESULT_MATRIX.md"
 OUTPUT_SVG = ROOT / "docs/assets/charts/unified_task_model_radar.svg"
 
 
@@ -152,17 +154,6 @@ FOUNDATION_TASK_METRICS = {
     },
 }
 
-METADATA128_TASKS = {
-    "timeline_action",
-    "timeline_subtask",
-    "transition_detection",
-    "next_action",
-    "contact_prediction",
-    "object_relevance",
-    "caption_grounding",
-    "temporal_order",
-}
-
 SHORT_TASK_LABELS = {
     "timeline_action": "Action",
     "timeline_subtask": "Step",
@@ -200,28 +191,49 @@ METHOD_DETAILS = {
 
 PROXY_TASK_IDS = {"interaction_text_prediction", "camera_view_sync_retrieval"}
 
+STATUS_LABELS = {
+    "scored": "scored",
+    "proxy_scored": "proxy scored",
+    "unsupported_without_required_target": "unsupported",
+    "not_supported_by_metadata_only_package": "not supported",
+    "not_evaluated_in_verified_package": "not evaluated",
+    "missing_public_metric": "missing metric",
+}
+
+STATUS_SHORT = {
+    "scored": "score",
+    "proxy_scored": "proxy",
+    "unsupported_without_required_target": "unsupported",
+    "not_supported_by_metadata_only_package": "not supported",
+    "not_evaluated_in_verified_package": "not evaluated",
+    "missing_public_metric": "missing",
+}
+
 
 def read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
 
 
-def read_a100_metadata_metric(task_id: str, *, neural: bool = False) -> dict[str, Any] | None:
-    if task_id not in METADATA128_TASKS:
-        return None
+def read_a100_metadata_record(task_id: str, *, neural: bool = False) -> dict[str, Any] | None:
     path = METADATA128_BASELINE_DIR / ("neural_mlp" if neural else "") / task_id / "metrics.json"
     if not path.exists():
         return None
     payload = read_json(path)
-    if payload.get("status") != "pass":
-        return None
-    score = payload.get("primary_score")
-    if score is None:
-        return None
+    status = payload.get("status", "missing_public_metric")
+    score = payload.get("primary_score") if status == "pass" else None
     return {
         "raw": score,
         "metric_key": payload.get("primary_metric"),
         "source": str(path.relative_to(ROOT)),
         "scope": "multi_episode_128_metadata_baseline",
+        "status": "scored" if status == "pass" and score is not None else "unsupported_without_required_target",
+        "reason": payload.get("reason")
+        or payload.get("error")
+        or (
+            "metadata-only package has a metrics artifact for this task, but it does not contain a numeric public score"
+            if status != "pass"
+            else None
+        ),
     }
 
 
@@ -249,6 +261,8 @@ def read_a100_raw_metric(task_id: str, *, neural: bool = False) -> dict[str, Any
             "metric_key": payload.get("primary_metric"),
             "source": str(path.relative_to(ROOT)),
             "scope": "multi_episode_128_raw_sensor_feature_baseline",
+            "status": "proxy_scored" if task_id in PROXY_TASK_IDS else "scored",
+            "reason": "documented compact proxy completion for this raw128 task axis" if task_id in PROXY_TASK_IDS else None,
         }
     return None
 
@@ -277,6 +291,118 @@ def format_metric(value: float | None) -> str:
     if abs(value) >= 1:
         return f"{value:.3f}"
     return f"{value:.4f}"
+
+
+def status_label(status: str | None) -> str:
+    return STATUS_LABELS.get(status or "", status or "unknown")
+
+
+def make_missing_record(series_id: str, task_id: str, metric_key: str | None) -> dict[str, Any]:
+    if series_id.startswith("metadata128"):
+        status = "not_supported_by_metadata_only_package"
+        reason = (
+            "the 128-episode metadata/text rerun did not produce this task target; "
+            "raw sensor blocks or a task-specific metadata target builder are required"
+        )
+        scope = "multi_episode_128_metadata_baseline"
+    elif series_id in {"qwen3_omni_v6_lora", "cosmos3_super_reasoner", "cosmos3_nano_future_window"}:
+        status = "not_evaluated_in_verified_package"
+        reason = (
+            "the verified public model package did not ask this branch to emit that task target; "
+            "a new task-specific evaluation package is required for a numeric score"
+        )
+        scope = "multi_episode_128_partial_model_overlay"
+    else:
+        status = "missing_public_metric"
+        reason = "no public metric artifact was found for this method-task pair"
+        scope = SERIES.get(series_id, {}).get("scope")
+    return {
+        "raw": None,
+        "metric_key": metric_key,
+        "source": None,
+        "scope": scope,
+        "status": status,
+        "reason": reason,
+        "normalized_score": None,
+        "raw_text": "n/a",
+    }
+
+
+def finalize_value_record(item: dict[str, Any], direction: str, best_lower: float | None) -> None:
+    raw = item.get("raw")
+    item.setdefault("status", "scored" if isinstance(raw, (int, float)) else "missing_public_metric")
+    item["normalized_score"] = score_from_raw(raw if isinstance(raw, (int, float)) else None, direction, best_lower)
+    if item["normalized_score"] is None and item.get("status") in {"scored", "proxy_scored"}:
+        item["status"] = "missing_public_metric"
+        item.setdefault("reason", "numeric raw score could not be normalized for this task")
+    item["raw_text"] = format_metric(raw if isinstance(raw, (int, float)) else None)
+    item["status_label"] = status_label(item.get("status"))
+
+
+def matrix_rows(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for task in payload["tasks"]:
+        for series_id, series_spec in SERIES.items():
+            value = task["values"][series_id]
+            rows.append(
+                {
+                    "task_number": task["task_number"],
+                    "task_id": task["task_id"],
+                    "task_label": task["label"],
+                    "series_id": series_id,
+                    "method": series_spec["label"],
+                    "status": value.get("status"),
+                    "status_label": value.get("status_label", status_label(value.get("status"))),
+                    "scored": value.get("normalized_score") is not None,
+                    "proxy_scored": value.get("status") == "proxy_scored",
+                    "raw": value.get("raw"),
+                    "raw_text": value.get("raw_text", "n/a"),
+                    "normalized_score": value.get("normalized_score"),
+                    "metric_key": value.get("metric_key"),
+                    "source": value.get("source"),
+                    "scope": value.get("scope"),
+                    "reason": value.get("reason"),
+                }
+            )
+    return rows
+
+
+def render_matrix_markdown(payload: dict[str, Any]) -> str:
+    lines = [
+        "# Task Method 20-Result Matrix",
+        "",
+        "Every method has one record for each of the 20 unified task contracts. Numeric scores appear only where a committed runner or verified package produced that task target.",
+        "",
+        "Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy score, `unsupported` = artifact exists but required target is not present, `not supported` = metadata-only package cannot form that target, `not evaluated` = verified model package did not request that target.",
+        "",
+        "| Method | Records | Scored | Proxy scored | Scoreless | Status counts |",
+        "| --- | ---: | ---: | ---: | ---: | --- |",
+    ]
+    for record in payload["series"]:
+        counts = record["status_counts"]
+        count_text = ", ".join(f"{status_label(key)} {value}" for key, value in sorted(counts.items()))
+        lines.append(
+            f"| {record['label']} | {record['result_record_count']} | {record['scored_task_count']} | "
+            f"{record['proxy_scored_task_count']} | {record['scoreless_task_count']} | {count_text} |"
+        )
+    lines.extend(
+        [
+            "",
+            "| # | Task | " + " | ".join(spec["short_label"] for spec in SERIES.values()) + " |",
+            "| ---: | --- | " + " | ".join("---" for _ in SERIES) + " |",
+        ]
+    )
+    for task in payload["tasks"]:
+        cells = [STATUS_SHORT.get(task["values"][series_id].get("status"), "unknown") for series_id in SERIES]
+        lines.append(f"| {task['task_number']:02d} | {task['label']} | " + " | ".join(cells) + " |")
+    lines.extend(
+        [
+            "",
+            "Sources and raw values are in `docs/data/task_method_20_result_matrix.json` and `docs/data/unified_task_model_radar.json`.",
+            "",
+        ]
+    )
+    return "\n".join(lines)
 
 
 def point(cx: float, cy: float, radius: float, angle: float) -> tuple[float, float]:
@@ -364,12 +490,14 @@ def build_payload() -> dict[str, Any]:
                 "metric_key": row.get("metric_key"),
                 "source": row.get("artifact_sources", {}).get("minimal_metrics"),
                 "scope": "single_episode_public_sample",
+                "status": "scored",
             },
             "neural_mlp": {
                 "raw": row.get("neural_primary_metric"),
                 "metric_key": row.get("metric_key"),
                 "source": row.get("artifact_sources", {}).get("neural_metrics"),
                 "scope": "single_episode_public_sample",
+                "status": "scored",
             },
         }
         for series_id, metric_key in FOUNDATION_TASK_METRICS.get(row["task_id"], {}).items():
@@ -385,11 +513,13 @@ def build_payload() -> dict[str, Any]:
                     }[series_id].relative_to(ROOT)
                 ),
                 "scope": "multi_episode_128_partial_model_overlay",
+                "status": "scored" if isinstance(raw, (int, float)) else "missing_public_metric",
+                "reason": None if isinstance(raw, (int, float)) else f"metric {metric_key} is absent from the verified public package",
             }
-        metadata_simple = read_a100_metadata_metric(row["task_id"], neural=False)
+        metadata_simple = read_a100_metadata_record(row["task_id"], neural=False)
         if metadata_simple:
             values["metadata128_simple"] = metadata_simple
-        metadata_neural = read_a100_metadata_metric(row["task_id"], neural=True)
+        metadata_neural = read_a100_metadata_record(row["task_id"], neural=True)
         if metadata_neural:
             values["metadata128_neural_mlp"] = metadata_neural
         raw_simple = read_a100_raw_metric(row["task_id"], neural=False)
@@ -405,9 +535,10 @@ def build_payload() -> dict[str, Any]:
             if row.get("metric_direction") == "lower" and isinstance(item.get("raw"), (int, float)) and item["raw"] > 0
         ]
         best_lower = min(lower_values) if lower_values else None
+        for series_id in SERIES:
+            values.setdefault(series_id, make_missing_record(series_id, row["task_id"], row.get("metric_key")))
         for item in values.values():
-            item["normalized_score"] = score_from_raw(item.get("raw"), row.get("metric_direction", "higher"), best_lower)
-            item["raw_text"] = format_metric(item.get("raw"))
+            finalize_value_record(item, row.get("metric_direction", "higher"), best_lower)
 
         tasks.append(
             {
@@ -427,30 +558,54 @@ def build_payload() -> dict[str, Any]:
 
     series_records = []
     for series_id, spec in SERIES.items():
+        status_counts: dict[str, int] = {}
+        for task in tasks:
+            status = task["values"][series_id].get("status", "unknown")
+            status_counts[status] = status_counts.get(status, 0) + 1
         covered = sum(1 for task in tasks if task["values"].get(series_id, {}).get("normalized_score") is not None)
+        proxy_count = status_counts.get("proxy_scored", 0)
+        scoreless = len(tasks) - covered
         series_records.append(
             {
                 "id": series_id,
                 **spec,
                 "method_detail": METHOD_DETAILS.get(series_id, spec["scope"]),
                 "plotted_as": "filled polygon" if spec["kind"].startswith("full_20_task_baseline") else "colored point overlay",
+                "result_record_count": len(tasks),
+                "scored_task_count": covered,
                 "covered_task_count": covered,
+                "proxy_scored_task_count": proxy_count,
+                "scoreless_task_count": scoreless,
+                "unsupported_task_count": status_counts.get("unsupported_without_required_target", 0)
+                + status_counts.get("not_supported_by_metadata_only_package", 0),
+                "not_evaluated_task_count": status_counts.get("not_evaluated_in_verified_package", 0),
+                "status_counts": dict(sorted(status_counts.items())),
                 "coverage_fraction": covered / max(len(tasks), 1),
+                "result_record_fraction": len(tasks) / max(len(tasks), 1),
             }
         )
 
     fd_loss = (cosmos_fd.get("loss_summary") or {}).get("mean")
-    return {
+    payload = {
         "title": "Unified 20-Task Model Radar",
         "status": "pass",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "task_count": len(tasks),
+        "method_count": len(SERIES),
+        "method_task_record_count": len(tasks) * len(SERIES),
+        "scored_method_task_count": sum(
+            1
+            for task in tasks
+            for series_id in SERIES
+            if task["values"][series_id].get("normalized_score") is not None
+        ),
         "normalization_policy": {
             "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
             "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
             "raw_values": "raw metric values, metric keys, and sources are retained in this JSON; the SVG is an overview, not a replacement for the metric table",
-            "foundation_model_overlay": "Qwen3/Cosmos points are plotted only on task-aligned axes. Missing axes mean the public result does not evaluate that task contract.",
-            "metadata_128_overlay": "128-episode metadata baselines are plotted only where the public JSONL contains enough task labels without raw feature blocks.",
+            "result_record_policy": "every method has 20 task records; records without a numeric score carry explicit unsupported/not-evaluated status and reason fields",
+            "foundation_model_overlay": "Qwen3/Cosmos points are plotted only on task-aligned axes. Scoreless records mean the public result does not evaluate that task contract.",
+            "metadata_128_overlay": "128-episode metadata baselines have 20 records, but numeric scores only where the public JSONL contains enough task labels without raw feature blocks.",
             "raw_128_overlay": "128-episode raw-feature baselines use staged sensor NPZ features. Eighteen axes use direct task targets; interaction text and camera-view sync are completed with documented compact proxies because raw interaction strings and paired video-view embeddings are absent from the 128 export.",
         },
         "series": series_records,
@@ -460,7 +615,7 @@ def build_payload() -> dict[str, Any]:
                 "id": "metadata128_simple",
                 "title": "128ep Metadata Simple",
                 "status": "a100_rerun_pass",
-                "coverage": f"{next(item for item in series_records if item['id'] == 'metadata128_simple')['covered_task_count']}/20 JSONL-supported axes",
+                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'metadata128_simple')['scored_task_count']} scored JSONL-supported axes",
                 "headline": "34,269 rows; train/val/test 25,629/4,608/4,032",
                 "source": str((METADATA128_BASELINE_DIR / "summary_report.json").relative_to(ROOT)),
             },
@@ -468,7 +623,7 @@ def build_payload() -> dict[str, Any]:
                 "id": "metadata128_neural_mlp",
                 "title": "128ep Metadata NN",
                 "status": "a100_rerun_pass",
-                "coverage": f"{next(item for item in series_records if item['id'] == 'metadata128_neural_mlp')['covered_task_count']}/20 JSONL-supported axes",
+                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'metadata128_neural_mlp')['scored_task_count']} scored JSONL-supported axes",
                 "headline": "compact MLP heads over metadata/text features",
                 "source": str((METADATA128_BASELINE_DIR / "summary_report.json").relative_to(ROOT)),
             },
@@ -476,7 +631,7 @@ def build_payload() -> dict[str, Any]:
                 "id": "raw128_simple",
                 "title": "128ep Raw Simple",
                 "status": "a100_raw20_complete_with_documented_proxies",
-                "coverage": f"{next(item for item in series_records if item['id'] == 'raw128_simple')['covered_task_count']}/20 axes; 18 direct + 2 proxy",
+                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'raw128_simple')['scored_task_count']} scored axes; 18 direct + 2 proxy",
                 "headline": "34,269 windows; centroid/ridge heads over 4430-dim sensor blocks",
                 "source": str((RAW128_BASELINE_DIR / "run_summary_all.json").relative_to(ROOT)),
             },
@@ -484,7 +639,7 @@ def build_payload() -> dict[str, Any]:
                 "id": "raw128_neural_mlp",
                 "title": "128ep Raw NN",
                 "status": "a100_raw20_complete_with_documented_proxies",
-                "coverage": f"{next(item for item in series_records if item['id'] == 'raw128_neural_mlp')['covered_task_count']}/20 axes; 18 direct + 2 proxy",
+                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'raw128_neural_mlp')['scored_task_count']} scored axes; 18 direct + 2 proxy",
                 "headline": "MLP heads over staged features; tasks 15/19 use compact proxies",
                 "source": str((RAW128_BASELINE_DIR / "run_summary_all.json").relative_to(ROOT)),
             },
@@ -493,7 +648,7 @@ def build_payload() -> dict[str, Any]:
                 "title": "Qwen3-Omni v6 LoRA",
                 "status": "verified",
                 "task_aligned_axes": SERIES["qwen3_omni_v6_lora"]["short_label"],
-                "coverage": f"{next(item for item in series_records if item['id'] == 'qwen3_omni_v6_lora')['covered_task_count']}/20 task-aligned axes",
+                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'qwen3_omni_v6_lora')['scored_task_count']} scored task-aligned axes",
                 "headline": f"JSON validity {format_metric(qwen.get('json_validity_rate'))}; action macro-F1 {format_metric(qwen.get('action_macro_f1'))}",
                 "source": str(QWEN_V6_METRICS_PATH.relative_to(ROOT)),
             },
@@ -501,7 +656,7 @@ def build_payload() -> dict[str, Any]:
                 "id": "cosmos3_super_reasoner",
                 "title": "Cosmos3-Super Reasoner",
                 "status": "verified_base_weight_eval",
-                "coverage": f"{next(item for item in series_records if item['id'] == 'cosmos3_super_reasoner')['covered_task_count']}/20 task-aligned axes",
+                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'cosmos3_super_reasoner')['scored_task_count']} scored task-aligned axes",
                 "headline": f"JSON validity {format_metric(cosmos_super.get('json_validity_rate'))}; action macro-F1 {format_metric(cosmos_super.get('action_macro_f1'))}",
                 "source": str(COSMOS_SUPER_REASONER_METRICS_PATH.relative_to(ROOT)),
             },
@@ -509,7 +664,7 @@ def build_payload() -> dict[str, Any]:
                 "id": "cosmos3_nano_future_window",
                 "title": "Cosmos3-Nano Future Window",
                 "status": "verified_compatibility_eval",
-                "coverage": f"{next(item for item in series_records if item['id'] == 'cosmos3_nano_future_window')['covered_task_count']}/20 task-aligned axes",
+                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'cosmos3_nano_future_window')['scored_task_count']} scored task-aligned axes",
                 "headline": f"future retrieval MRR {format_metric(cosmos_nano.get('future_retrieval_mrr'))}; transition accuracy {format_metric(cosmos_nano.get('transition_accuracy'))}",
                 "source": str(COSMOS_NANO_METRICS_PATH.relative_to(ROOT)),
             },
@@ -523,6 +678,8 @@ def build_payload() -> dict[str, Any]:
             },
         ],
     }
+    payload["task_method_result_matrix"] = matrix_rows(payload)
+    return payload
 
 
 def render_svg(payload: dict[str, Any]) -> str:
@@ -547,13 +704,14 @@ def render_svg(payload: dict[str, Any]) -> str:
 
     chip_specs = [
         ("20 task axes", "#ccffa0"),
-        ("2 baseline polygons", "#67e8d1"),
+        (f"{payload['method_task_record_count']} method-task records", "#67e8d1"),
+        (f"{payload['scored_method_task_count']} scored axes", "#22d3ee"),
         ("40/40 raw128 pass", "#f59e0b"),
         ("2 compact proxy axes", "#f472b6"),
     ]
     chip_x = 70
     for label, color in chip_specs:
-        chip_w = 168 if len(label) < 15 else 206
+        chip_w = 168 if len(label) < 15 else 250
         parts.append(f'<rect x="{chip_x}" y="174" width="{chip_w}" height="34" rx="17" fill="{color}" fill-opacity="0.10" stroke="{color}" stroke-opacity="0.38"/>')
         parts.append(svg_text(chip_x + 16, 197, label, size=13, fill=color, weight=760))
         chip_x += chip_w + 12
@@ -615,7 +773,7 @@ def render_svg(payload: dict[str, Any]) -> str:
     legend_x, legend_y = 1030, 178
     parts.append(f'<rect x="{legend_x - 30}" y="{legend_y - 38}" width="820" height="560" rx="14" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>')
     parts.append(svg_text(legend_x, legend_y, "Methods compared", size=25, weight=800))
-    parts.append(svg_text(legend_x, legend_y + 30, "Coverage is shown per method; raw metric values and sources stay in the JSON mirror.", size=13, fill="#a5afa2", weight=560))
+    parts.append(svg_text(legend_x, legend_y + 30, "Each method has 20 records; scored axes and scoreless statuses stay in the JSON matrix.", size=13, fill="#a5afa2", weight=560))
 
     cursor = legend_y + 74
     for record in payload["series"]:
@@ -624,7 +782,7 @@ def render_svg(payload: dict[str, Any]) -> str:
         if not record["kind"].startswith("full_20_task_baseline"):
             parts.append(f'<circle cx="{legend_x + 25}" cy="{cursor - 7}" r="7" fill="{color}" stroke="#020502" stroke-width="2"/>')
         parts.append(svg_text(legend_x + 66, cursor - 12, record["label"], size=15, weight=800))
-        parts.append(svg_text(legend_x + 330, cursor - 12, f"{record['covered_task_count']}/20 axes", size=13, fill=color, weight=800))
+        parts.append(svg_text(legend_x + 330, cursor - 12, f"20 records / {record['scored_task_count']} scored", size=13, fill=color, weight=800))
         detail_lines = split_text(METHOD_DETAILS.get(record["id"], record["scope"]), 64)[:2]
         parts.extend(svg_text_lines(legend_x + 66, cursor + 8, detail_lines, size=11, fill="#a5afa2", weight=560, line_height=15))
         cursor += 50
@@ -652,9 +810,9 @@ def render_svg(payload: dict[str, Any]) -> str:
     table_y = 1468
     parts.append(f'<rect x="70" y="{table_y - 38}" width="1780" height="120" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.16"/>')
     parts.append(svg_text(100, table_y - 10, "Reading rules", size=16, fill="#ccffa0", weight=800))
-    parts.append(svg_text(220, table_y - 10, "Radius is direction-normalized, so compare shape first and raw values second.", size=14, fill="#dce8d7", weight=650))
+    parts.append(svg_text(220, table_y - 10, "Every method has 20 task records; radius appears only where a numeric task score exists.", size=14, fill="#dce8d7", weight=650))
     parts.append(svg_text(220, table_y + 18, "Raw128 completion: 18 direct task targets plus 2 compact proxies. Task 15 predicts the dominant caption/object/interaction hash bin; task 19 retrieves depth/audio sync from camera pose.", size=13, fill="#a5afa2", weight=560))
-    parts.append(svg_text(220, table_y + 44, "Single-episode task-head scores, 128-episode baselines, Qwen3, and Cosmos branches use different data/model contracts; sources and raw metrics are in docs/data/unified_task_model_radar.json.", size=13, fill="#a5afa2", weight=560))
+    parts.append(svg_text(220, table_y + 44, "Scoreless metadata/Qwen/Cosmos records are explicit unsupported or not-evaluated cells in docs/data/task_method_20_result_matrix.json.", size=13, fill="#a5afa2", weight=560))
 
     parts.append("</svg>")
     return "\n".join(parts) + "\n"
@@ -663,10 +821,26 @@ def render_svg(payload: dict[str, Any]) -> str:
 def main() -> int:
     payload = build_payload()
     OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_MATRIX_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_SVG.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_JSON.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    matrix_payload = {
+        "title": "Task Method 20-Result Matrix",
+        "status": "pass",
+        "generated_at_utc": payload["generated_at_utc"],
+        "task_count": payload["task_count"],
+        "method_count": payload["method_count"],
+        "method_task_record_count": payload["method_task_record_count"],
+        "scored_method_task_count": payload["scored_method_task_count"],
+        "series": payload["series"],
+        "records": payload["task_method_result_matrix"],
+    }
+    OUTPUT_MATRIX_JSON.write_text(json.dumps(matrix_payload, indent=2) + "\n", encoding="utf-8")
+    OUTPUT_MATRIX_MD.write_text(render_matrix_markdown(payload), encoding="utf-8")
     OUTPUT_SVG.write_text(render_svg(payload), encoding="utf-8")
     print(f"PASS: wrote {OUTPUT_JSON}")
+    print(f"PASS: wrote {OUTPUT_MATRIX_JSON}")
+    print(f"PASS: wrote {OUTPUT_MATRIX_MD}")
     print(f"PASS: wrote {OUTPUT_SVG}")
     return 0
 

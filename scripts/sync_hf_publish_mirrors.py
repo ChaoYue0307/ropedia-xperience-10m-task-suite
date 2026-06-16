@@ -48,7 +48,8 @@ stride, feature manifest, chronological split, and minimal/neural head pattern.
 The historical `tier2_task_suite` path is retained only for stable artifact
 links to tasks 13-20. The unified radar chart is published as
 `docs/assets/charts/unified_task_model_radar.svg` with values in
-`docs/data/unified_task_model_radar.json`.
+`docs/data/unified_task_model_radar.json`; the 9-method by 20-task completion
+matrix is in `docs/data/task_method_20_result_matrix.json`.
 """
 QWEN_COMPARISON_MARKER = "docs/data/qwen3_v5_v6_comparison.json"
 QWEN_COMPARISON_ROW = (
@@ -151,7 +152,18 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
                 "links to tasks 13-20.\n",
                 "links to tasks 13-20. The unified radar chart is published as\n"
                 "`docs/assets/charts/unified_task_model_radar.svg` with values in\n"
-                "`docs/data/unified_task_model_radar.json`.\n",
+                "`docs/data/unified_task_model_radar.json`; the 9-method by\n"
+                "20-task completion matrix is in\n"
+                "`docs/data/task_method_20_result_matrix.json`.\n",
+            )
+        if (
+            "docs/data/unified_task_model_radar.json" in text
+            and "docs/data/task_method_20_result_matrix.json" not in text
+        ):
+            text = text.replace(
+                "`docs/data/unified_task_model_radar.json`.",
+                "`docs/data/unified_task_model_radar.json`; the 9-method by 20-task\n"
+                "completion matrix is in `docs/data/task_method_20_result_matrix.json`.",
             )
         if TIER2_MARKER in text:
             if not dry_run:

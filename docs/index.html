@@ -2769,25 +2769,25 @@
       <div class="hero-radar-panel" aria-label="Unified 20-task radar comparison">
         <div class="hero-radar-top">
           <strong>home radar comparison</strong>
-          <span>20 named tasks / 9 method series / raw128 complete with 2 documented proxy axes</span>
+          <span>180 method-task records / 111 scored axes / raw128 complete with 2 documented proxy axes</span>
         </div>
         <div class="hero-radar-layout">
           <a class="hero-radar-frame" href="#suite" aria-label="Open full unified 20-task model radar">
-            <img src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v4" alt="Unified 20-task model radar with full task-name key, method legend, coverage counts, and raw128 proxy notes">
+            <img src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v5" alt="Unified 20-task model radar with full task-name key, method legend, 20-record counts, scored-axis counts, and raw128 proxy notes">
           </a>
           <div class="hero-radar-copy">
             <h2>Model comparison uses explicit task names and method contracts.</h2>
-            <p>The full SVG names every axis and keeps method coverage, raw metric sources, and proxy notes attached to the same comparison view.</p>
+            <p>The full SVG names every axis and keeps 20-result records, scored-axis counts, raw metric sources, and proxy notes attached to the same comparison view.</p>
             <div class="hero-radar-stats" aria-label="Radar coverage summary">
-              <div class="hero-radar-stat"><strong>20/20</strong><span>task axes named</span></div>
-              <div class="hero-radar-stat"><strong>9</strong><span>method series</span></div>
+              <div class="hero-radar-stat"><strong>180</strong><span>method-task records</span></div>
+              <div class="hero-radar-stat"><strong>111</strong><span>scored axes</span></div>
               <div class="hero-radar-stat"><strong>40/40</strong><span>raw128 pass</span></div>
               <div class="hero-radar-stat"><strong>34,269</strong><span>128ep windows</span></div>
             </div>
             <div class="hero-method-list" aria-label="Method families shown in the radar">
               <div class="hero-method" style="--method-color:#67e8d1"><strong>Minimal + Neural MLP</strong><span>Single public-sample episode, full 20-task filled polygons.</span></div>
-              <div class="hero-method" style="--method-color:#f59e0b"><strong>128ep Metadata + Raw Baselines</strong><span>Simple and MLP heads; raw NPZ features cover all 20 axes with tasks 15 and 19 marked as compact proxies.</span></div>
-              <div class="hero-method" style="--method-color:#9bb8ff"><strong>Qwen3-Omni + Cosmos</strong><span>Verified held-out model branches plotted only on task-aligned public metrics.</span></div>
+              <div class="hero-method" style="--method-color:#f59e0b"><strong>128ep Metadata + Raw Baselines</strong><span>Every method has 20 records; raw NPZ heads score all 20 axes, with tasks 15 and 19 marked as compact proxies.</span></div>
+              <div class="hero-method" style="--method-color:#9bb8ff"><strong>Qwen3-Omni + Cosmos</strong><span>Verified held-out model branches carry 20 records and plot only the task targets actually evaluated.</span></div>
             </div>
             <div class="hero-task-strip" aria-label="Radar task axis examples">
               <span>01 Action Recognition</span>
@@ -2803,6 +2803,7 @@
               <a href="#suite">Open full radar</a>
               <a href="assets/charts/unified_task_model_radar.svg">Open SVG</a>
               <a href="data/unified_task_model_radar.json">Open radar JSON</a>
+              <a href="data/task_method_20_result_matrix.json">Open 20-result matrix</a>
             </div>
           </div>
         </div>
@@ -3488,14 +3489,14 @@
         <div class="figure-brief">
           <article class="figure-brief-card">
             <h3>Unified 20-task polygon</h3>
-            <p>The radar uses all 20 tasks as axes and lists each full task name in the chart key. Minimal and neural MLP heads are filled single-episode polygons; 128-episode metadata/raw baselines, Qwen3, and Cosmos branches are colored method overlays with explicit coverage counts.</p>
+            <p>The radar uses all 20 tasks as axes and lists each full task name in the chart key. All 9 method series now expose 20 result records; colored overlays appear only where those records contain numeric scores.</p>
           </article>
           <article class="figure-brief-card">
             <h3>Metric normalization</h3>
-            <p>Higher-is-better metrics are plotted directly on 0-1 axes. Lower-is-better metrics are converted to best/value within the task, while raw metric values, method details, sources, and the two raw128 compact proxy notes remain in the JSON mirror.</p>
+            <p>Higher-is-better metrics are plotted directly on 0-1 axes. Lower-is-better metrics are converted to best/value within the task, while raw values, status reasons, sources, and the two raw128 compact proxy notes remain in the JSON mirrors.</p>
           </article>
         </div>
-        <img class="chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v4" alt="Unified 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, coverage counts, and proxy notes">
+        <img class="chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v5" alt="Unified 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, scored-axis counts, and proxy notes">
         <div class="modality-atlas-panel" id="modality-atlas" aria-labelledby="modality-atlas-title">
           <div class="atlas-head">
             <div>

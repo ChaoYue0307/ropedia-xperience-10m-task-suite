@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-16T09:46:21+00:00",
+  "generated_at_utc": "2026-06-16T10:35:38+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 161,
+    "local_references": 162,
     "external_reference_count": 121,
-    "json_files": 42,
+    "json_files": 43,
     "image_assets_referenced": 23,
     "failure_count": 0
   },
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 85350,
-      "evidence_index": 111180
+      "overview_index": 85521,
+      "evidence_index": 111351
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 85350,
-      "protocol_index": 107361,
-      "evidence_index": 111180
+      "overview_index": 85521,
+      "protocol_index": 107532,
+      "evidence_index": 111351
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -180,7 +180,7 @@
       "status": "pass",
       "reason": "The Suite anchor should show the task-suite map before the modality atlas.",
       "first_marker_index": 471,
-      "second_marker_index": 1880
+      "second_marker_index": 1831
     },
     {
       "name": "suite_modality_atlas_contains_seven_cards",
@@ -277,7 +277,7 @@
     {
       "path": "index.html",
       "id_count": 90,
-      "reference_count": 137,
+      "reference_count": 138,
       "image_count": 27
     },
     {
@@ -301,7 +301,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 96755,
+      "bytes": 97873,
       "top_level_type": "dict"
     },
     {
@@ -336,7 +336,7 @@
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 131877,
+      "bytes": 131884,
       "top_level_type": "dict"
     },
     {
@@ -446,7 +446,7 @@
     },
     {
       "path": "data/scope_claims_audit.json",
-      "bytes": 21795,
+      "bytes": 21630,
       "top_level_type": "dict"
     },
     {
@@ -462,6 +462,11 @@
     {
       "path": "data/summary_metrics.json",
       "bytes": 27807,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/task_method_20_result_matrix.json",
+      "bytes": 129711,
       "top_level_type": "dict"
     },
     {
@@ -491,12 +496,12 @@
     },
     {
       "path": "data/unified_task_model_radar.json",
-      "bytes": 59582,
+      "bytes": 231290,
       "top_level_type": "dict"
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 18100,
+      "bytes": 18101,
       "top_level_type": "dict"
     },
     {
@@ -587,7 +592,7 @@
     {
       "path": "assets/charts/unified_task_model_radar.svg",
       "exists": true,
-      "bytes": 51562,
+      "bytes": 51944,
       "format": "SVG",
       "has_viewbox": true
     },

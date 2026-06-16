@@ -315,17 +315,22 @@ also have a compact chart and result bundle under the historical
 ![Unified 20-task model radar](docs/assets/charts/unified_task_model_radar.svg)
 
 The unified radar compares all 20 task axes with two filled colors for the
-minimal and neural MLP baselines. The 128-episode metadata simple/NN overlays
-are plotted on JSONL-supported axes, and the raw-feature simple/NN overlays
-are plotted on all 20 axes backed by the exported 4430-dimensional sensor NPZ
-blocks. Tasks 15 and 19 are marked as compact-proxy completions because the
-128 export lacks raw interaction strings and paired video-view embeddings.
-Qwen3-Omni and Cosmos3 overlays are plotted only where their verified
-128-episode public metrics map to the same task semantics. Cosmos3-Super
-forward-dynamics LoRA remains a branch card because its camera-pose proxy MSE is
-not one of the 20 task metrics. The
-machine-readable copy is
-[`docs/data/unified_task_model_radar.json`](docs/data/unified_task_model_radar.json).
+minimal and neural MLP baselines. Every method now has 20 explicit result
+records in the public matrix; numeric points appear only where the runner or
+verified package produced that task target. The 128-episode raw-feature
+simple/NN overlays are plotted on all 20 axes backed by the exported
+4430-dimensional sensor NPZ blocks. Tasks 15 and 19 are marked as compact-proxy
+completions because the 128 export lacks raw interaction strings and paired
+video-view embeddings. Qwen3-Omni, Cosmos3-Super, Cosmos3-Nano, and the
+metadata-only baselines keep scoreless records for unsupported or not-evaluated
+targets instead of hiding those cells. Cosmos3-Super forward-dynamics LoRA
+remains a branch card because its camera-pose proxy MSE is not one of the 20
+task metrics. The machine-readable copies are
+[`docs/data/unified_task_model_radar.json`](docs/data/unified_task_model_radar.json)
+and
+[`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json);
+the reader-facing matrix is
+[`TASK_METHOD_20_RESULT_MATRIX.md`](TASK_METHOD_20_RESULT_MATRIX.md).
 
 The website also includes a responsive native modality atlas backed by
 [`docs/data/modality_atlas.json`](docs/data/modality_atlas.json) and
@@ -402,6 +407,7 @@ docs/
   data/summary_metrics.json         # website-readable metrics bundle
   data/task_suite_20.json           # unified 20-task suite bundle
   data/unified_task_model_radar.json # 20-task radar values and model-branch overlays
+  data/task_method_20_result_matrix.json # 9-method x 20-task result matrix
   data/evidence_contract.json       # machine-readable project scope
   data/artifact_index.json          # compact project-artifact catalog
   data/live_publication_status.json # live GitHub/HF publication verification
