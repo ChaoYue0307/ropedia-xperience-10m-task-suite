@@ -1,0 +1,52 @@
+{
+  "task": "time_to_transition",
+  "task_display_name": "Time To Transition",
+  "task_family": "regression",
+  "model_family": "neural_mlp_raw128",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "non-caption sensor features regress frames to next action boundary capped at 200",
+  "primary_metric": "mae",
+  "metric_direction": "lower",
+  "status": "pass",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.8273973769419527
+    },
+    {
+      "epoch": 5,
+      "loss": 0.4202246279718631
+    },
+    {
+      "epoch": 10,
+      "loss": 0.26081196071136065
+    },
+    {
+      "epoch": 15,
+      "loss": 0.1965682344275895
+    },
+    {
+      "epoch": 20,
+      "loss": 0.1588804939971577
+    },
+    {
+      "epoch": 25,
+      "loss": 0.13691731317311034
+    }
+  ],
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "target_dim": 1,
+  "splits": {
+    "test": {
+      "mae": 42.374061584472656,
+      "rmse": 55.66938400268555,
+      "r2": -0.23432442537520948,
+      "mean_l2": 42.374061584472656
+    }
+  },
+  "primary_score": 42.374061584472656
+}

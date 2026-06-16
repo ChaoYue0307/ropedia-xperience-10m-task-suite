@@ -1,0 +1,135 @@
+{
+  "dataset_jsonl": "/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset.jsonl",
+  "feature_manifest_json": "/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset_dense_20f_stride10/dataset_manifest.json",
+  "tasks_requested": [
+    "contact_prediction",
+    "object_relevance",
+    "caption_grounding",
+    "cross_modal_retrieval",
+    "modality_reconstruction"
+  ],
+  "load_report": {
+    "resolved_npz_files": 357,
+    "loaded_feature_rows": 34269,
+    "input_rows": 34269,
+    "dropped_rows": 0,
+    "missing_path_examples": [],
+    "feature_dim": 4430
+  },
+  "num_result_records": 10,
+  "status_counts": {
+    "pass": 10
+  },
+  "results": [
+    {
+      "task": "contact_prediction",
+      "task_display_name": "Contact State Prediction",
+      "model_family": "simple_raw128_centroid",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 0.886990707397193,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "contact_prediction",
+      "task_display_name": "Contact State Prediction",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "macro_f1",
+      "primary_score": 1.0,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "object_relevance",
+      "task_display_name": "Object Relevance Prediction",
+      "model_family": "simple_raw128_ridge_multilabel",
+      "status": "pass",
+      "primary_metric": "micro_f1",
+      "primary_score": 0.0655376369662084,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "object_relevance",
+      "task_display_name": "Object Relevance Prediction",
+      "model_family": "neural_mlp_raw128_multilabel",
+      "status": "pass",
+      "primary_metric": "micro_f1",
+      "primary_score": 0.1765890386972509,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "caption_grounding",
+      "task_display_name": "Language Grounding",
+      "model_family": "simple_raw128_ridge",
+      "status": "pass",
+      "primary_metric": "mrr",
+      "primary_score": 0.011138836853206158,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "caption_grounding",
+      "task_display_name": "Language Grounding",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "mrr",
+      "primary_score": 0.0063402121886610985,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "cross_modal_retrieval",
+      "task_display_name": "Cross-Modal Retrieval",
+      "model_family": "simple_raw128_ridge",
+      "status": "pass",
+      "primary_metric": "mrr",
+      "primary_score": 0.003459817497059703,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "cross_modal_retrieval",
+      "task_display_name": "Cross-Modal Retrieval",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "mrr",
+      "primary_score": 0.002535284962505102,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "modality_reconstruction",
+      "task_display_name": "Cross-Modal Reconstruction",
+      "model_family": "simple_raw128_ridge",
+      "status": "pass",
+      "primary_metric": "r2",
+      "primary_score": -1.3450960391924882,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    },
+    {
+      "task": "modality_reconstruction",
+      "task_display_name": "Cross-Modal Reconstruction",
+      "model_family": "neural_mlp_raw128",
+      "status": "pass",
+      "primary_metric": "r2",
+      "primary_score": -1.3974418160502369,
+      "metric_direction": "higher",
+      "reason": null,
+      "error": null
+    }
+  ]
+}

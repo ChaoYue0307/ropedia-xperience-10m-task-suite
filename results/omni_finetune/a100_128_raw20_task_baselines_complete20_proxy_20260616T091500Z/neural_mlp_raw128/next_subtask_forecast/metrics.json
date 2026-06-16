@@ -1,0 +1,62 @@
+{
+  "task": "next_subtask_forecast",
+  "task_display_name": "Next Subtask Forecast",
+  "task_family": "classification",
+  "model_family": "neural_mlp_raw128",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "current non-caption features; target subtask +100 frames",
+  "primary_metric": "macro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 4.954612842526032,
+      "train_accuracy": 0.13140258496888463
+    },
+    {
+      "epoch": 5,
+      "loss": 0.9000010563651207,
+      "train_accuracy": 0.6606430509015477
+    },
+    {
+      "epoch": 10,
+      "loss": 0.46146437387365996,
+      "train_accuracy": 0.7953566299664911
+    },
+    {
+      "epoch": 15,
+      "loss": 0.28807071359682185,
+      "train_accuracy": 0.8596218286261369
+    },
+    {
+      "epoch": 20,
+      "loss": 0.21170043317832615,
+      "train_accuracy": 0.8893011010052657
+    },
+    {
+      "epoch": 25,
+      "loss": 0.17162281766032153,
+      "train_accuracy": 0.9070927078346896
+    }
+  ],
+  "num_train_windows": 25068,
+  "num_test_windows": 3951,
+  "num_classes": 891,
+  "num_train_classes": 651,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "selected_column_count": 2048,
+  "splits": {
+    "test": {
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0,
+      "weighted_f1": 0.0,
+      "num_eval_windows": 3951,
+      "num_classes": 891
+    }
+  },
+  "primary_score": 0.0
+}

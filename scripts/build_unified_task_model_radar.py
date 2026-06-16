@@ -38,7 +38,7 @@ COSMOS_SUPER_FD_METRICS_PATH = (
     / "eval/metrics.json"
 )
 METADATA128_BASELINE_DIR = ROOT / "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2"
-RAW128_BASELINE_DIR = ROOT / "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z"
+RAW128_BASELINE_DIR = ROOT / "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z"
 OUTPUT_JSON = ROOT / "docs/data/unified_task_model_radar.json"
 OUTPUT_SVG = ROOT / "docs/assets/charts/unified_task_model_radar.svg"
 
@@ -80,16 +80,16 @@ SERIES = {
         "label": "128ep Raw Simple",
         "short_label": "128-RS",
         "color": "#f59e0b",
-        "kind": "partial_128_episode_raw_feature_baseline",
-        "scope": "128 selected episodes, staged 4430-dim sensor NPZ features",
+        "kind": "complete_128_episode_raw_feature_baseline",
+        "scope": "128 selected episodes, staged 4430-dim sensor NPZ features; 2 compact proxy axes",
         "stroke_dasharray": "8 4",
     },
     "raw128_neural_mlp": {
         "label": "128ep Raw NN",
         "short_label": "128-RN",
         "color": "#22d3ee",
-        "kind": "partial_128_episode_raw_feature_baseline",
-        "scope": "128 selected episodes, staged 4430-dim sensor NPZ features",
+        "kind": "complete_128_episode_raw_feature_baseline",
+        "scope": "128 selected episodes, staged 4430-dim sensor NPZ features; 2 compact proxy axes",
         "stroke_dasharray": "2 5",
     },
     "qwen3_omni_v6_lora": {
@@ -399,7 +399,7 @@ def build_payload() -> dict[str, Any]:
             "raw_values": "raw metric values, metric keys, and sources are retained in this JSON; the SVG is an overview, not a replacement for the metric table",
             "foundation_model_overlay": "Qwen3/Cosmos points are plotted only on task-aligned axes. Missing axes mean the public result does not evaluate that task contract.",
             "metadata_128_overlay": "128-episode metadata baselines are plotted only where the public JSONL contains enough task labels without raw feature blocks.",
-            "raw_128_overlay": "128-episode raw-feature baselines use staged sensor NPZ features and are plotted only on task axes supported by the exported feature blocks.",
+            "raw_128_overlay": "128-episode raw-feature baselines use staged sensor NPZ features. Eighteen axes use direct task targets; interaction text and camera-view sync are completed with documented compact proxies because raw interaction strings and paired video-view embeddings are absent from the 128 export.",
         },
         "series": series_records,
         "tasks": tasks,
@@ -423,17 +423,17 @@ def build_payload() -> dict[str, Any]:
             {
                 "id": "raw128_simple",
                 "title": "128ep Raw Simple",
-                "status": "a100_raw20_pass_with_documented_gaps",
-                "coverage": f"{next(item for item in series_records if item['id'] == 'raw128_simple')['covered_task_count']}/20 raw-feature-supported axes",
-                "headline": "34,269 windows; centroid/ridge heads over 4430-dim sensor feature blocks",
+                "status": "a100_raw20_complete_with_documented_proxies",
+                "coverage": f"{next(item for item in series_records if item['id'] == 'raw128_simple')['covered_task_count']}/20 axes; 18 direct + 2 proxy",
+                "headline": "34,269 windows; centroid/ridge heads over 4430-dim sensor blocks",
                 "source": str((RAW128_BASELINE_DIR / "run_summary_all.json").relative_to(ROOT)),
             },
             {
                 "id": "raw128_neural_mlp",
                 "title": "128ep Raw NN",
-                "status": "a100_raw20_pass_with_documented_gaps",
-                "coverage": f"{next(item for item in series_records if item['id'] == 'raw128_neural_mlp')['covered_task_count']}/20 raw-feature-supported axes",
-                "headline": "MLP heads ran on staged feature shards; raw interaction text and paired camera-view features are absent",
+                "status": "a100_raw20_complete_with_documented_proxies",
+                "coverage": f"{next(item for item in series_records if item['id'] == 'raw128_neural_mlp')['covered_task_count']}/20 axes; 18 direct + 2 proxy",
+                "headline": "MLP heads over staged features; tasks 15/19 use compact proxies",
                 "source": str((RAW128_BASELINE_DIR / "run_summary_all.json").relative_to(ROOT)),
             },
             {
@@ -553,7 +553,7 @@ def render_svg(payload: dict[str, Any]) -> str:
     for record in payload["series"]:
         color = record["color"]
         parts.append(f'<line x1="{legend_x}" y1="{cursor - 4}" x2="{legend_x + 48}" y2="{cursor - 4}" stroke="{color}" stroke-width="7" stroke-linecap="round"/>')
-        if record["kind"].startswith("partial"):
+        if not record["kind"].startswith("full_20_task_baseline"):
             parts.append(f'<circle cx="{legend_x + 24}" cy="{cursor - 4}" r="7" fill="{color}" stroke="#020502" stroke-width="2"/>')
         parts.append(svg_text(legend_x + 64, cursor, record["label"], size=16, weight=800))
         parts.append(svg_text(legend_x + 64, cursor + 22, f"{record['covered_task_count']}/20 axes · {record['scope']}", size=12, fill="#a5afa2", weight=560))
@@ -574,7 +574,7 @@ def render_svg(payload: dict[str, Any]) -> str:
     parts.append(svg_text(96, table_y - 8, "Caveat", size=15, fill="#ccffa0", weight=800))
     parts.append(svg_text(170, table_y - 8, "This chart compares normalized metric direction, not identical raw units.", size=14, fill="#dce8d7", weight=650))
     parts.append(svg_text(170, table_y + 18, "128-episode metadata/raw, Qwen3, and Cosmos overlays are plotted only on semantically aligned task axes.", size=14, fill="#a5afa2", weight=560))
-    parts.append(svg_text(170, table_y + 44, "Raw-feature gaps mean missing raw interaction text and paired video-view features, not failed scores.", size=14, fill="#a5afa2", weight=560))
+    parts.append(svg_text(170, table_y + 44, "Raw128 tasks 15 and 19 are documented compact proxies because raw interaction strings and paired video-view embeddings are absent.", size=14, fill="#a5afa2", weight=560))
 
     parts.append("</svg>")
     return "\n".join(parts) + "\n"

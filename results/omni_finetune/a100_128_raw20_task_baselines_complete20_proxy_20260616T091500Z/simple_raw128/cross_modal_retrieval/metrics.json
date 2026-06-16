@@ -1,0 +1,25 @@
+{
+  "task": "cross_modal_retrieval",
+  "task_display_name": "Cross-Modal Retrieval",
+  "task_family": "retrieval",
+  "model_family": "simple_raw128_ridge",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "all non-depth sensor blocks projected to depth-confidence block",
+  "primary_metric": "mrr",
+  "metric_direction": "higher",
+  "status": "pass",
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "input_dim": 3450,
+  "fit_input_dim": 2048,
+  "target_dim": 980,
+  "splits": {
+    "test": {
+      "mrr": 0.003459817497059703,
+      "top1": 0.000744047619047619,
+      "median_rank": 1797.5,
+      "num_queries": 4032
+    }
+  },
+  "primary_score": 0.003459817497059703
+}

@@ -1,0 +1,62 @@
+{
+  "task": "next_action",
+  "task_display_name": "Next-Action Prediction",
+  "task_family": "classification",
+  "model_family": "neural_mlp_raw128",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "sensor features excluding hashed caption text",
+  "primary_metric": "macro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 5.596322411365963,
+      "train_accuracy": 0.08123609973077374
+    },
+    {
+      "epoch": 5,
+      "loss": 1.0855037269383347,
+      "train_accuracy": 0.5211674275235085
+    },
+    {
+      "epoch": 10,
+      "loss": 0.5761551915229453,
+      "train_accuracy": 0.655780561083148
+    },
+    {
+      "epoch": 15,
+      "loss": 0.37495767347169556,
+      "train_accuracy": 0.7235943657575403
+    },
+    {
+      "epoch": 20,
+      "loss": 0.28612062079771855,
+      "train_accuracy": 0.758008505989309
+    },
+    {
+      "epoch": 25,
+      "loss": 0.2286090604913533,
+      "train_accuracy": 0.7849311327012369
+    }
+  ],
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "num_classes": 1217,
+  "num_train_classes": 891,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "selected_column_count": 2048,
+  "splits": {
+    "test": {
+      "accuracy": 0.004464285714285714,
+      "balanced_accuracy": 0.0034805255007437285,
+      "macro_f1": 0.0018477984371755407,
+      "weighted_f1": 0.003505490015635165,
+      "num_eval_windows": 4032,
+      "num_classes": 1217
+    }
+  },
+  "primary_score": 0.0018477984371755407
+}

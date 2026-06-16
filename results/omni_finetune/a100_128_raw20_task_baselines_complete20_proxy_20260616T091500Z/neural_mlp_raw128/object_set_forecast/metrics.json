@@ -1,0 +1,51 @@
+{
+  "task": "object_set_forecast",
+  "task_display_name": "Object Set Forecast",
+  "task_family": "multi_label",
+  "model_family": "neural_mlp_raw128_multilabel",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "current non-caption features; target object set +100 frames",
+  "primary_metric": "micro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.3173181395106896
+    },
+    {
+      "epoch": 5,
+      "loss": 0.08031858284117332
+    },
+    {
+      "epoch": 10,
+      "loss": 0.056561457963628554
+    },
+    {
+      "epoch": 15,
+      "loss": 0.04601203178259028
+    },
+    {
+      "epoch": 20,
+      "loss": 0.03955884521596166
+    },
+    {
+      "epoch": 25,
+      "loss": 0.03473486830971544
+    }
+  ],
+  "num_train_windows": 25068,
+  "num_test_windows": 3951,
+  "num_labels": 256,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "splits": {
+    "test": {
+      "micro_f1": 0.17523098630012288,
+      "macro_f1": 0.021405026097435987,
+      "exact_match": 0.0030372057706909645
+    }
+  },
+  "primary_score": 0.17523098630012288
+}

@@ -1,0 +1,28 @@
+{
+  "task": "camera_view_sync_retrieval",
+  "task_display_name": "Camera View Sync Retrieval",
+  "task_family": "retrieval",
+  "model_family": "simple_raw128_ridge",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "compact proxy: camera-pose block retrieves synchronized same-window depth/audio stream",
+  "primary_metric": "mrr",
+  "metric_direction": "higher",
+  "status": "pass",
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "input_dim": 84,
+  "fit_input_dim": 84,
+  "target_dim": 1148,
+  "splits": {
+    "test": {
+      "mrr": 0.0026625150348991156,
+      "top1": 0.000248015873015873,
+      "median_rank": 1741.0,
+      "num_queries": 4032
+    }
+  },
+  "primary_score": 0.0026625150348991156,
+  "proxy_completion": true,
+  "proxy_reason": "paired video-view embeddings are absent from the 128 NPZ export; camera pose and same-window depth/audio are used as a documented compact synchronization proxy",
+  "proxy_target": "same_window_depth_confidence_plus_audio_fisheye_cam0_aac"
+}

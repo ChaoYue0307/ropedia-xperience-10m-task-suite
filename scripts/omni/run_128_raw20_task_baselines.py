@@ -105,6 +105,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=7)
     parser.add_argument("--max-object-vocab", type=int, default=256)
     parser.add_argument("--skip-neural", action="store_true")
+    parser.add_argument(
+        "--compact-proxy-missing-tasks",
+        action="store_true",
+        help=(
+            "Complete task axes whose raw 128-export fields are absent with documented compact-feature proxies. "
+            "Task 15 uses the dominant hashed caption/object/interaction bin as the target; task 19 uses "
+            "camera-pose-to-depth/audio same-window retrieval when paired video-view blocks are absent."
+        ),
+    )
     parser.add_argument("--neural-epochs", type=int, default=25)
     parser.add_argument("--neural-hidden-dim", type=int, default=128)
     parser.add_argument("--neural-batch-size", type=int, default=256)
@@ -604,6 +613,19 @@ def write_unsupported(
     return metrics
 
 
+def metrics_output_path(out_root: Path, item: dict[str, Any]) -> Path:
+    family = str(item.get("model_family", ""))
+    subdir = "neural_mlp_raw128" if family.startswith("neural_mlp_raw128") else "simple_raw128"
+    return out_root / subdir / str(item.get("task")) / "metrics.json"
+
+
+def annotate_metrics(out_root: Path, results: list[dict[str, Any]], **fields: Any) -> list[dict[str, Any]]:
+    for item in results:
+        item.update(fields)
+        write_json(metrics_output_path(out_root, item), item)
+    return results
+
+
 def regression_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, float]:
     err = y_pred - y_true
     mae = float(np.mean(np.abs(err)))
@@ -962,6 +984,18 @@ def time_to_transition_targets(rows: list[dict[str, Any]], cap_frames: int) -> n
     return targets[:, None]
 
 
+def caption_hash_bucket_labels(caption_features: np.ndarray) -> list[str]:
+    if caption_features.size == 0:
+        return []
+    magnitudes = np.abs(caption_features)
+    top_bins = np.argmax(magnitudes, axis=1)
+    top_values = np.max(magnitudes, axis=1)
+    labels = []
+    for bin_idx, value in zip(top_bins, top_values):
+        labels.append(f"caption_hash_bin_{int(bin_idx):03d}" if float(value) > 1e-8 else "")
+    return labels
+
+
 def run_task(
     task: str,
     X: np.ndarray,
@@ -1062,6 +1096,38 @@ def run_task(
             data = answer(row)
             labels.append(next((normalize_label(data.get(field)) for field in candidate_fields if normalize_label(data.get(field))), ""))
         if not any(labels):
+            if args.compact_proxy_missing_tasks and len(caption_idx) > 0:
+                labels = caption_hash_bucket_labels(X[:, caption_idx])
+                simple = run_simple_classification(
+                    task,
+                    X[:, non_caption_idx],
+                    rows,
+                    splits,
+                    labels,
+                    out_root,
+                    args,
+                    "compact proxy: non-caption sensor features predict the dominant hashed caption/object/interaction bin",
+                )
+                neural = run_neural_classification(
+                    task,
+                    X[:, non_caption_idx],
+                    rows,
+                    splits,
+                    labels,
+                    out_root,
+                    args,
+                    "compact proxy: non-caption sensor features predict the dominant hashed caption/object/interaction bin",
+                )
+                return annotate_metrics(
+                    out_root,
+                    [x for x in [simple, neural] if x is not None],
+                    proxy_completion=True,
+                    proxy_reason=(
+                        "raw interaction strings are absent from the 128 JSONL/NPZ export; the published compact "
+                        "caption_objects_interaction_text hash block is used only as a documented interaction-text proxy"
+                    ),
+                    proxy_target="dominant_caption_objects_interaction_text_hash_bin",
+                )
             return [
                 write_unsupported(
                     task,
@@ -1101,6 +1167,32 @@ def run_task(
     if task == "camera_view_sync_retrieval":
         view_blocks = [block for block in manifest if any(token in str(block.get("name", "")) for token in ["fisheye_cam", "stereo_"]) and "audio" not in str(block.get("name", ""))]
         if len(view_blocks) < 2:
+            if args.compact_proxy_missing_tasks:
+                camera_idx = block_indices(manifest, include=["camera_translation", "camera_rotation_matrix"])
+                sync_target_idx = np.concatenate([depth_idx, block_indices(manifest, include=["audio_fisheye_cam0_aac"])])
+                if len(camera_idx) > 0 and len(sync_target_idx) > 0:
+                    results = run_regression_like(
+                        task,
+                        X[:, camera_idx],
+                        X[:, sync_target_idx],
+                        rows,
+                        splits,
+                        out_root,
+                        args,
+                        "compact proxy: camera-pose block retrieves synchronized same-window depth/audio stream",
+                        "mrr",
+                        retrieval=True,
+                    )
+                    return annotate_metrics(
+                        out_root,
+                        results,
+                        proxy_completion=True,
+                        proxy_reason=(
+                            "paired video-view embeddings are absent from the 128 NPZ export; camera pose and same-window "
+                            "depth/audio are used as a documented compact synchronization proxy"
+                        ),
+                        proxy_target="same_window_depth_confidence_plus_audio_fisheye_cam0_aac",
+                    )
             reason = "128-episode NPZ manifest has camera pose plus audio/depth/caption features, but no two explicit video-view feature blocks for camera-view synchronization"
             return [
                 write_unsupported(task, out_root, "simple_raw128_ridge", reason, "mrr"),

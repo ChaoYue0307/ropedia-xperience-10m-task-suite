@@ -1,0 +1,38 @@
+{
+  "task": "misalignment_detection",
+  "task_display_name": "Multimodal Synchronization Detection",
+  "task_family": "classification",
+  "model_family": "simple_raw128_centroid",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "motion/camera/IMU query paired with aligned or shifted depth/audio target",
+  "primary_metric": "macro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "num_train_windows": 49834,
+  "num_val_windows": 8960,
+  "num_test_windows": 7840,
+  "num_classes": 2,
+  "num_train_classes": 2,
+  "input_dim": 3395,
+  "fit_input_dim": 2048,
+  "selected_column_count": 2048,
+  "splits": {
+    "val": {
+      "accuracy": 0.5032366071428571,
+      "balanced_accuracy": 0.5032366071428571,
+      "macro_f1": 0.5023461977612882,
+      "weighted_f1": 0.5023461977612881,
+      "num_eval_windows": 8960,
+      "num_classes": 2
+    },
+    "test": {
+      "accuracy": 0.502295918367347,
+      "balanced_accuracy": 0.502295918367347,
+      "macro_f1": 0.4958867673901769,
+      "weighted_f1": 0.4958867673901769,
+      "num_eval_windows": 7840,
+      "num_classes": 2
+    }
+  },
+  "primary_score": 0.4958867673901769
+}

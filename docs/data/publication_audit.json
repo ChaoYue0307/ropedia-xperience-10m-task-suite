@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-16T07:54:48+00:00",
+  "generated_at_utc": "2026-06-16T08:51:12+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -193,8 +193,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 1112,
-      "text_file_count": 921,
+      "file_count": 1183,
+      "text_file_count": 988,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978
@@ -204,8 +204,8 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 895,
-      "text_file_count": 743,
+      "file_count": 966,
+      "text_file_count": 810,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978
@@ -215,8 +215,8 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 2081,
-      "text_file_count": 922,
+      "file_count": 2152,
+      "text_file_count": 989,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978
@@ -226,8 +226,8 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 2510,
-      "text_file_count": 1080,
+      "file_count": 2581,
+      "text_file_count": 1147,
       "largest_file": {
         "path": "pytorch_model.bin",
         "bytes": 93495480

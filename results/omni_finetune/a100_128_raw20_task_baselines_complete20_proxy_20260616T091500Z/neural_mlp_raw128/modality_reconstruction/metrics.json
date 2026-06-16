@@ -1,0 +1,52 @@
+{
+  "task": "modality_reconstruction",
+  "task_display_name": "Cross-Modal Reconstruction",
+  "task_family": "regression",
+  "model_family": "neural_mlp_raw128",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "all non-depth sensor blocks reconstruct depth-confidence block",
+  "primary_metric": "r2",
+  "metric_direction": "higher",
+  "status": "pass",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.795406650627551
+    },
+    {
+      "epoch": 5,
+      "loss": 0.5652745503729759
+    },
+    {
+      "epoch": 10,
+      "loss": 0.5144153572181445
+    },
+    {
+      "epoch": 15,
+      "loss": 0.4929477720702684
+    },
+    {
+      "epoch": 20,
+      "loss": 0.4814860376392508
+    },
+    {
+      "epoch": 25,
+      "loss": 0.4724465353307799
+    }
+  ],
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "input_dim": 3450,
+  "fit_input_dim": 2048,
+  "target_dim": 980,
+  "splits": {
+    "test": {
+      "mae": 4963.66650390625,
+      "rmse": 381740.15625,
+      "r2": -1.3974418160502369,
+      "mean_l2": 3501567.0
+    }
+  },
+  "primary_score": -1.3974418160502369
+}

@@ -333,7 +333,7 @@ def a100_128_metadata_result_files() -> list[str]:
 def a100_128_raw20_result_files() -> list[str]:
     """Return public-safe 128-episode raw-feature 20-task baseline artifacts."""
 
-    result_root = ROOT / "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z"
+    result_root = ROOT / "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z"
     if not result_root.exists():
         return []
     files: list[str] = []

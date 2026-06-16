@@ -1,0 +1,89 @@
+{
+  "load_report": {
+    "resolved_npz_files": 357,
+    "loaded_feature_rows": 34269,
+    "input_rows": 34269,
+    "dropped_rows": 0,
+    "missing_path_examples": [],
+    "feature_dim": 4430
+  },
+  "split_counts": {
+    "train": 25629,
+    "val": 4608,
+    "test": 4032
+  },
+  "feature_manifest": [
+    {
+      "name": "hand_left_joints",
+      "start": 0,
+      "end": 441,
+      "dim": 441
+    },
+    {
+      "name": "hand_right_joints",
+      "start": 441,
+      "end": 882,
+      "dim": 441
+    },
+    {
+      "name": "body_joints",
+      "start": 882,
+      "end": 1974,
+      "dim": 1092
+    },
+    {
+      "name": "body_contacts",
+      "start": 1974,
+      "end": 2121,
+      "dim": 147
+    },
+    {
+      "name": "camera_translation",
+      "start": 2121,
+      "end": 2142,
+      "dim": 21
+    },
+    {
+      "name": "camera_rotation_matrix",
+      "start": 2142,
+      "end": 2205,
+      "dim": 63
+    },
+    {
+      "name": "imu_accel_gyro",
+      "start": 2205,
+      "end": 2247,
+      "dim": 42
+    },
+    {
+      "name": "depth_confidence",
+      "start": 2247,
+      "end": 3227,
+      "dim": 980
+    },
+    {
+      "name": "audio_fisheye_cam0_aac",
+      "start": 3227,
+      "end": 3395,
+      "dim": 168
+    },
+    {
+      "name": "caption_objects_interaction_text",
+      "start": 3395,
+      "end": 4291,
+      "dim": 896
+    },
+    {
+      "name": "slam_point_cloud",
+      "start": 4291,
+      "end": 4313,
+      "dim": 22
+    },
+    {
+      "name": "calibration",
+      "start": 4313,
+      "end": 4430,
+      "dim": 117
+    }
+  ]
+}

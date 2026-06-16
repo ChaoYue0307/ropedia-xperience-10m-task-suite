@@ -1,0 +1,11 @@
+task,task_display_name,model_family,status,primary_metric,primary_score,metric_direction,reason,error
+contact_prediction,Contact State Prediction,simple_raw128_centroid,pass,macro_f1,0.886990707397193,higher,,
+contact_prediction,Contact State Prediction,neural_mlp_raw128,pass,macro_f1,1.0,higher,,
+object_relevance,Object Relevance Prediction,simple_raw128_ridge_multilabel,pass,micro_f1,0.0655376369662084,higher,,
+object_relevance,Object Relevance Prediction,neural_mlp_raw128_multilabel,pass,micro_f1,0.1765890386972509,higher,,
+caption_grounding,Language Grounding,simple_raw128_ridge,pass,mrr,0.011138836853206158,higher,,
+caption_grounding,Language Grounding,neural_mlp_raw128,pass,mrr,0.0063402121886610985,higher,,
+cross_modal_retrieval,Cross-Modal Retrieval,simple_raw128_ridge,pass,mrr,0.003459817497059703,higher,,
+cross_modal_retrieval,Cross-Modal Retrieval,neural_mlp_raw128,pass,mrr,0.002535284962505102,higher,,
+modality_reconstruction,Cross-Modal Reconstruction,simple_raw128_ridge,pass,r2,-1.3450960391924882,higher,,
+modality_reconstruction,Cross-Modal Reconstruction,neural_mlp_raw128,pass,r2,-1.3974418160502369,higher,,

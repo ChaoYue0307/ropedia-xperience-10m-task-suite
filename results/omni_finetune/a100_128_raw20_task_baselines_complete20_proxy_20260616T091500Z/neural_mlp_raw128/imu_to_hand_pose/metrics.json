@@ -1,0 +1,52 @@
+{
+  "task": "imu_to_hand_pose",
+  "task_display_name": "Imu To Hand Pose",
+  "task_family": "regression",
+  "model_family": "neural_mlp_raw128",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "IMU acceleration/gyroscope block reconstructs hand-joint blocks",
+  "primary_metric": "mae",
+  "metric_direction": "lower",
+  "status": "pass",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.9585941261004479
+    },
+    {
+      "epoch": 5,
+      "loss": 0.9127171490970956
+    },
+    {
+      "epoch": 10,
+      "loss": 0.8793233014191721
+    },
+    {
+      "epoch": 15,
+      "loss": 0.844667680290311
+    },
+    {
+      "epoch": 20,
+      "loss": 0.8032877514339916
+    },
+    {
+      "epoch": 25,
+      "loss": 0.7622054215548092
+    }
+  ],
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "input_dim": 42,
+  "fit_input_dim": 42,
+  "target_dim": 882,
+  "splits": {
+    "test": {
+      "mae": 0.252998411655426,
+      "rmse": 0.5090259909629822,
+      "r2": -0.1798296121579115,
+      "mean_l2": 12.296762466430664
+    }
+  },
+  "primary_score": 0.252998411655426
+}

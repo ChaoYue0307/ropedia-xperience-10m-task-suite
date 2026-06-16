@@ -1,0 +1,41 @@
+{
+  "task": "interaction_text_prediction",
+  "task_display_name": "Interaction Text Prediction",
+  "task_family": "classification",
+  "model_family": "simple_raw128_centroid",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "compact proxy: non-caption sensor features predict the dominant hashed caption/object/interaction bin",
+  "primary_metric": "macro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "num_train_windows": 25504,
+  "num_val_windows": 4569,
+  "num_test_windows": 4014,
+  "num_classes": 257,
+  "num_train_classes": 226,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "selected_column_count": 2048,
+  "splits": {
+    "val": {
+      "accuracy": 0.0415845918144014,
+      "balanced_accuracy": 0.007184051415358349,
+      "macro_f1": 0.005267319813137136,
+      "weighted_f1": 0.04429764724108772,
+      "num_eval_windows": 4569,
+      "num_classes": 257
+    },
+    "test": {
+      "accuracy": 0.03911310413552566,
+      "balanced_accuracy": 0.018203068172740127,
+      "macro_f1": 0.012611998261547169,
+      "weighted_f1": 0.036224078302598425,
+      "num_eval_windows": 4014,
+      "num_classes": 257
+    }
+  },
+  "primary_score": 0.012611998261547169,
+  "proxy_completion": true,
+  "proxy_reason": "raw interaction strings are absent from the 128 JSONL/NPZ export; the published compact caption_objects_interaction_text hash block is used only as a documented interaction-text proxy",
+  "proxy_target": "dominant_caption_objects_interaction_text_hash_bin"
+}

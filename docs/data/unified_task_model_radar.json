@@ -1,7 +1,7 @@
 {
   "title": "Unified 20-Task Model Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-16T07:51:12+00:00",
+  "generated_at_utc": "2026-06-16T08:49:30+00:00",
   "task_count": 20,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
@@ -9,7 +9,7 @@
     "raw_values": "raw metric values, metric keys, and sources are retained in this JSON; the SVG is an overview, not a replacement for the metric table",
     "foundation_model_overlay": "Qwen3/Cosmos points are plotted only on task-aligned axes. Missing axes mean the public result does not evaluate that task contract.",
     "metadata_128_overlay": "128-episode metadata baselines are plotted only where the public JSONL contains enough task labels without raw feature blocks.",
-    "raw_128_overlay": "128-episode raw-feature baselines use staged sensor NPZ features and are plotted only on task axes supported by the exported feature blocks."
+    "raw_128_overlay": "128-episode raw-feature baselines use staged sensor NPZ features. Eighteen axes use direct task targets; interaction text and camera-view sync are completed with documented compact proxies because raw interaction strings and paired video-view embeddings are absent from the 128 export."
   },
   "series": [
     {
@@ -61,22 +61,22 @@
       "label": "128ep Raw Simple",
       "short_label": "128-RS",
       "color": "#f59e0b",
-      "kind": "partial_128_episode_raw_feature_baseline",
-      "scope": "128 selected episodes, staged 4430-dim sensor NPZ features",
+      "kind": "complete_128_episode_raw_feature_baseline",
+      "scope": "128 selected episodes, staged 4430-dim sensor NPZ features; 2 compact proxy axes",
       "stroke_dasharray": "8 4",
-      "covered_task_count": 18,
-      "coverage_fraction": 0.9
+      "covered_task_count": 20,
+      "coverage_fraction": 1.0
     },
     {
       "id": "raw128_neural_mlp",
       "label": "128ep Raw NN",
       "short_label": "128-RN",
       "color": "#22d3ee",
-      "kind": "partial_128_episode_raw_feature_baseline",
-      "scope": "128 selected episodes, staged 4430-dim sensor NPZ features",
+      "kind": "complete_128_episode_raw_feature_baseline",
+      "scope": "128 selected episodes, staged 4430-dim sensor NPZ features; 2 compact proxy axes",
       "stroke_dasharray": "2 5",
-      "covered_task_count": 18,
-      "coverage_fraction": 0.9
+      "covered_task_count": 20,
+      "coverage_fraction": 1.0
     },
     {
       "id": "qwen3_omni_v6_lora",
@@ -182,7 +182,7 @@
         "raw128_simple": {
           "raw": 0.002915061325704321,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/timeline_action/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/timeline_action/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.002915061325704321,
           "raw_text": "0.0029"
@@ -190,7 +190,7 @@
         "raw128_neural_mlp": {
           "raw": 0.0014955083181204041,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/timeline_action/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/timeline_action/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.0014955083181204041,
           "raw_text": "0.0015"
@@ -258,7 +258,7 @@
         "raw128_simple": {
           "raw": 0.0,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/timeline_subtask/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/timeline_subtask/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.0,
           "raw_text": "0.0000"
@@ -266,7 +266,7 @@
         "raw128_neural_mlp": {
           "raw": 7.35632183908046e-05,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/timeline_subtask/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/timeline_subtask/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 7.35632183908046e-05,
           "raw_text": "0.0001"
@@ -342,7 +342,7 @@
         "raw128_simple": {
           "raw": 0.4203613574238283,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/transition_detection/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/transition_detection/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.4203613574238283,
           "raw_text": "0.4204"
@@ -350,7 +350,7 @@
         "raw128_neural_mlp": {
           "raw": 0.4902206914147213,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/transition_detection/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/transition_detection/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.4902206914147213,
           "raw_text": "0.4902"
@@ -426,7 +426,7 @@
         "raw128_simple": {
           "raw": 0.003285273363482094,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/next_action/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/next_action/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.003285273363482094,
           "raw_text": "0.0033"
@@ -434,7 +434,7 @@
         "raw128_neural_mlp": {
           "raw": 0.0018477984371755407,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/next_action/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/next_action/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.0018477984371755407,
           "raw_text": "0.0018"
@@ -470,7 +470,7 @@
         "raw128_simple": {
           "raw": 0.2729249894618988,
           "metric_key": "mae",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/hand_trajectory_forecast/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/hand_trajectory_forecast/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.39516420515180267,
           "raw_text": "0.2729"
@@ -478,7 +478,7 @@
         "raw128_neural_mlp": {
           "raw": 0.18475216627120972,
           "metric_key": "mae",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/hand_trajectory_forecast/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/hand_trajectory_forecast/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.5837560051580399,
           "raw_text": "0.1848"
@@ -554,7 +554,7 @@
         "raw128_simple": {
           "raw": 0.886990707397193,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/contact_prediction/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/contact_prediction/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.886990707397193,
           "raw_text": "0.8870"
@@ -562,7 +562,7 @@
         "raw128_neural_mlp": {
           "raw": 1.0,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/contact_prediction/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/contact_prediction/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 1.0,
           "raw_text": "1.000"
@@ -630,7 +630,7 @@
         "raw128_simple": {
           "raw": 0.0655376369662084,
           "metric_key": "micro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/object_relevance/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/object_relevance/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.0655376369662084,
           "raw_text": "0.0655"
@@ -638,7 +638,7 @@
         "raw128_neural_mlp": {
           "raw": 0.1765890386972509,
           "metric_key": "micro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/object_relevance/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/object_relevance/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.1765890386972509,
           "raw_text": "0.1766"
@@ -680,17 +680,17 @@
           "raw_text": "0.0023"
         },
         "raw128_simple": {
-          "raw": 0.011150892823934555,
+          "raw": 0.011138836853206158,
           "metric_key": "mrr",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/caption_grounding/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/caption_grounding/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
-          "normalized_score": 0.011150892823934555,
-          "raw_text": "0.0112"
+          "normalized_score": 0.011138836853206158,
+          "raw_text": "0.0111"
         },
         "raw128_neural_mlp": {
           "raw": 0.0063402121886610985,
           "metric_key": "mrr",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/caption_grounding/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/caption_grounding/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.0063402121886610985,
           "raw_text": "0.0063"
@@ -734,7 +734,7 @@
         "raw128_simple": {
           "raw": 0.003459817497059703,
           "metric_key": "mrr",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/cross_modal_retrieval/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/cross_modal_retrieval/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.003459817497059703,
           "raw_text": "0.0035"
@@ -742,7 +742,7 @@
         "raw128_neural_mlp": {
           "raw": 0.002535284962505102,
           "metric_key": "mrr",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/cross_modal_retrieval/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/cross_modal_retrieval/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.002535284962505102,
           "raw_text": "0.0025"
@@ -778,7 +778,7 @@
         "raw128_simple": {
           "raw": -1.3450960391924882,
           "metric_key": "r2",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/modality_reconstruction/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/modality_reconstruction/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.0,
           "raw_text": "-1.345"
@@ -786,7 +786,7 @@
         "raw128_neural_mlp": {
           "raw": -1.3974418160502369,
           "metric_key": "r2",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/modality_reconstruction/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/modality_reconstruction/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.0,
           "raw_text": "-1.397"
@@ -830,7 +830,7 @@
         "raw128_simple": {
           "raw": 0.49824413370686593,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/temporal_order/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/temporal_order/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.49824413370686593,
           "raw_text": "0.4982"
@@ -838,7 +838,7 @@
         "raw128_neural_mlp": {
           "raw": 0.8030047098504103,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/temporal_order/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/temporal_order/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.8030047098504103,
           "raw_text": "0.8030"
@@ -874,7 +874,7 @@
         "raw128_simple": {
           "raw": 0.4958867673901769,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/misalignment_detection/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/misalignment_detection/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.4958867673901769,
           "raw_text": "0.4959"
@@ -882,7 +882,7 @@
         "raw128_neural_mlp": {
           "raw": 0.8272709077974252,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/misalignment_detection/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/misalignment_detection/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.8272709077974252,
           "raw_text": "0.8273"
@@ -918,7 +918,7 @@
         "raw128_simple": {
           "raw": 0.0024280172369056294,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/long_horizon_next_action/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/long_horizon_next_action/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.0024280172369056294,
           "raw_text": "0.0024"
@@ -926,7 +926,7 @@
         "raw128_neural_mlp": {
           "raw": 0.001063859887389299,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/long_horizon_next_action/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/long_horizon_next_action/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.001063859887389299,
           "raw_text": "0.0011"
@@ -962,7 +962,7 @@
         "raw128_simple": {
           "raw": 0.0,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/next_subtask_forecast/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/next_subtask_forecast/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.0,
           "raw_text": "0.0000"
@@ -970,7 +970,7 @@
         "raw128_neural_mlp": {
           "raw": 0.0,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/next_subtask_forecast/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/next_subtask_forecast/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.0,
           "raw_text": "0.0000"
@@ -1002,6 +1002,22 @@
           "scope": "single_episode_public_sample",
           "normalized_score": 0.0380952380952381,
           "raw_text": "0.0381"
+        },
+        "raw128_simple": {
+          "raw": 0.012611998261547169,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/interaction_text_prediction/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.012611998261547169,
+          "raw_text": "0.0126"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.009791421280985521,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/interaction_text_prediction/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.009791421280985521,
+          "raw_text": "0.0098"
         }
       }
     },
@@ -1034,7 +1050,7 @@
         "raw128_simple": {
           "raw": 0.0,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/action_object_relation/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/action_object_relation/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.0,
           "raw_text": "0.0000"
@@ -1042,7 +1058,7 @@
         "raw128_neural_mlp": {
           "raw": 0.0,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/action_object_relation/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/action_object_relation/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.0,
           "raw_text": "0.0000"
@@ -1078,7 +1094,7 @@
         "raw128_simple": {
           "raw": 0.06469493412657774,
           "metric_key": "micro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/object_set_forecast/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/object_set_forecast/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.06469493412657774,
           "raw_text": "0.0647"
@@ -1086,7 +1102,7 @@
         "raw128_neural_mlp": {
           "raw": 0.17523098630012288,
           "metric_key": "micro_f1",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/object_set_forecast/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/object_set_forecast/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.17523098630012288,
           "raw_text": "0.1752"
@@ -1122,7 +1138,7 @@
         "raw128_simple": {
           "raw": 0.22941437363624573,
           "metric_key": "mae",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/imu_to_hand_pose/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/imu_to_hand_pose/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.1832902066792771,
           "raw_text": "0.2294"
@@ -1130,7 +1146,7 @@
         "raw128_neural_mlp": {
           "raw": 0.252998411655426,
           "metric_key": "mae",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/imu_to_hand_pose/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/imu_to_hand_pose/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.1662042369509182,
           "raw_text": "0.2530"
@@ -1162,6 +1178,22 @@
           "scope": "single_episode_public_sample",
           "normalized_score": 0.24086658656597137,
           "raw_text": "0.2409"
+        },
+        "raw128_simple": {
+          "raw": 0.0026625150348991156,
+          "metric_key": "mrr",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/camera_view_sync_retrieval/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.0026625150348991156,
+          "raw_text": "0.0027"
+        },
+        "raw128_neural_mlp": {
+          "raw": 0.0025448438245803118,
+          "metric_key": "mrr",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/camera_view_sync_retrieval/metrics.json",
+          "scope": "multi_episode_128_raw_sensor_feature_baseline",
+          "normalized_score": 0.0025448438245803118,
+          "raw_text": "0.0025"
         }
       }
     },
@@ -1192,17 +1224,17 @@
           "raw_text": "10.55"
         },
         "raw128_simple": {
-          "raw": 52.32759094238281,
+          "raw": 52.32759475708008,
           "metric_key": "mae",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/simple_raw128/time_to_transition/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/time_to_transition/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
-          "normalized_score": 0.20137285487211684,
+          "normalized_score": 0.20137284019197565,
           "raw_text": "52.33"
         },
         "raw128_neural_mlp": {
           "raw": 42.374061584472656,
           "metric_key": "mae",
-          "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/neural_mlp_raw128/time_to_transition/metrics.json",
+          "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/time_to_transition/metrics.json",
           "scope": "multi_episode_128_raw_sensor_feature_baseline",
           "normalized_score": 0.24867468405504953,
           "raw_text": "42.37"
@@ -1230,18 +1262,18 @@
     {
       "id": "raw128_simple",
       "title": "128ep Raw Simple",
-      "status": "a100_raw20_pass_with_documented_gaps",
-      "coverage": "18/20 raw-feature-supported axes",
-      "headline": "34,269 windows; centroid/ridge heads over 4430-dim sensor feature blocks",
-      "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/run_summary_all.json"
+      "status": "a100_raw20_complete_with_documented_proxies",
+      "coverage": "20/20 axes; 18 direct + 2 proxy",
+      "headline": "34,269 windows; centroid/ridge heads over 4430-dim sensor blocks",
+      "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/run_summary_all.json"
     },
     {
       "id": "raw128_neural_mlp",
       "title": "128ep Raw NN",
-      "status": "a100_raw20_pass_with_documented_gaps",
-      "coverage": "18/20 raw-feature-supported axes",
-      "headline": "MLP heads ran on staged feature shards; raw interaction text and paired camera-view features are absent",
-      "source": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/run_summary_all.json"
+      "status": "a100_raw20_complete_with_documented_proxies",
+      "coverage": "20/20 axes; 18 direct + 2 proxy",
+      "headline": "MLP heads over staged features; tasks 15/19 use compact proxies",
+      "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/run_summary_all.json"
     },
     {
       "id": "qwen3_omni_v6_lora",

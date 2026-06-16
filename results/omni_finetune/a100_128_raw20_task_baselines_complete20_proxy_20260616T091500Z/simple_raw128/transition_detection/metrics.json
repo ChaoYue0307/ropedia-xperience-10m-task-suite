@@ -1,0 +1,38 @@
+{
+  "task": "transition_detection",
+  "task_display_name": "Action Boundary Detection",
+  "task_family": "classification",
+  "model_family": "simple_raw128_centroid",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "sensor features excluding hashed caption text",
+  "primary_metric": "macro_f1",
+  "metric_direction": "higher",
+  "status": "pass",
+  "num_train_windows": 25629,
+  "num_val_windows": 4608,
+  "num_test_windows": 4032,
+  "num_classes": 2,
+  "num_train_classes": 2,
+  "input_dim": 3534,
+  "fit_input_dim": 2048,
+  "selected_column_count": 2048,
+  "splits": {
+    "val": {
+      "accuracy": 0.6746961805555556,
+      "balanced_accuracy": 0.4791146624701541,
+      "macro_f1": 0.44379119139897294,
+      "weighted_f1": 0.7598564914772321,
+      "num_eval_windows": 4608,
+      "num_classes": 2
+    },
+    "test": {
+      "accuracy": 0.6919642857142857,
+      "balanced_accuracy": 0.5500118391232284,
+      "macro_f1": 0.4203613574238283,
+      "weighted_f1": 0.8098557016896364,
+      "num_eval_windows": 4032,
+      "num_classes": 2
+    }
+  },
+  "primary_score": 0.4203613574238283
+}

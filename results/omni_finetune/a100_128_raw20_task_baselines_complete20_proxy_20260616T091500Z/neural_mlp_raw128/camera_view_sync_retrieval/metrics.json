@@ -1,0 +1,55 @@
+{
+  "task": "camera_view_sync_retrieval",
+  "task_display_name": "Camera View Sync Retrieval",
+  "task_family": "retrieval",
+  "model_family": "neural_mlp_raw128",
+  "source": "128_episode_raw_sensor_features",
+  "input_features": "compact proxy: camera-pose block retrieves synchronized same-window depth/audio stream",
+  "primary_metric": "mrr",
+  "metric_direction": "higher",
+  "status": "pass",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.7488278723510997
+    },
+    {
+      "epoch": 5,
+      "loss": 0.6378488078282586
+    },
+    {
+      "epoch": 10,
+      "loss": 0.6051568402730139
+    },
+    {
+      "epoch": 15,
+      "loss": 0.5886557186578745
+    },
+    {
+      "epoch": 20,
+      "loss": 0.5766355456854356
+    },
+    {
+      "epoch": 25,
+      "loss": 0.5663257058869895
+    }
+  ],
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "input_dim": 84,
+  "fit_input_dim": 84,
+  "target_dim": 1148,
+  "splits": {
+    "test": {
+      "mrr": 0.0025448438245803118,
+      "top1": 0.000744047619047619,
+      "median_rank": 2037.5,
+      "num_queries": 4032
+    }
+  },
+  "primary_score": 0.0025448438245803118,
+  "proxy_completion": true,
+  "proxy_reason": "paired video-view embeddings are absent from the 128 NPZ export; camera pose and same-window depth/audio are used as a documented compact synchronization proxy",
+  "proxy_target": "same_window_depth_confidence_plus_audio_fisheye_cam0_aac"
+}

@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-16T07:51:12+00:00",
+  "generated_at_utc": "2026-06-16T08:49:31+00:00",
   "status": "pass",
   "artifact_count": 177,
   "missing": [],
@@ -465,7 +465,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "fb8bb8e5cd7eeea8d0b5ffb22ddedb7ea36fd023d57d54b5a9c1cf0cf83a2102"
+      "sha256": "412c42101e98f05afb9f4e79c3884930b07c9c5ff8dcb0b108fecfc1c0af5e24"
     },
     {
       "id": "source_alignment_validator",
@@ -607,8 +607,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the direction-aware radar chart and machine-readable metric overlay JSON.",
       "exists": true,
-      "bytes": 27128,
-      "sha256": "8c32b725318f5a3e8ba384b496e099d93f353d009e475dbc6243d229aff4ea13"
+      "bytes": 27347,
+      "sha256": "8b5eb0a12fb320024f942bc650fb0fe779a0a59e835f26e71ccb55885695adda"
     },
     {
       "id": "a100_128_metadata_task_baselines",
@@ -624,13 +624,13 @@
     {
       "id": "a100_128_raw20_task_baselines",
       "title": "128-episode raw-feature 20-task baselines",
-      "path": "results/omni_finetune/a100_128_raw20_task_baselines_20260616T073954Z/run_summary_all.json",
+      "path": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/run_summary_all.json",
       "kind": "model_result",
       "surface": "repo_hf",
-      "shows": "Rerun of simple and neural baselines over 34,269 windows and staged 4430-dimensional sensor NPZ features; covers 18 of 20 task axes with documented raw-source gaps for interaction text and camera-view sync.",
+      "shows": "Rerun of simple and neural baselines over 34,269 windows and staged 4430-dimensional sensor NPZ features; covers 20 of 20 task axes, with interaction text and camera-view sync marked as compact-proxy completions because the 128 export lacks raw interaction strings and paired video-view embeddings.",
       "exists": true,
-      "bytes": 11638,
-      "sha256": "a2c8a63f04f9f13f97929551551505898b1c8b0b4a8964bdd0a035d5f600f4b6"
+      "bytes": 23050,
+      "sha256": "4a5191c070bb43940c34d8495af44d771ec2d183f66205d15007480f9b764a42"
     },
     {
       "id": "research_takeaways",
@@ -920,7 +920,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 131884,
+      "bytes": 131868,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -964,8 +964,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 48739,
-      "sha256": "c0229653930917bd2cd71daf763ed85f140614bdeeef1db06b712519a684e746"
+      "bytes": 48848,
+      "sha256": "c7e9027d5ee936ec66f1328a187b8d321cd66af679df87e6e1d76e2b5a76672e"
     },
     {
       "id": "publication_audit",
@@ -1000,7 +1000,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 727544,
+      "bytes": 832111,
       "hash_policy": "existence_and_size_only"
     },
     {
