@@ -321,9 +321,11 @@ verified package produced that task target. The 128-episode raw-feature
 simple/NN overlays are plotted on all 20 axes backed by the exported
 4430-dimensional sensor NPZ blocks. Tasks 15 and 19 are marked as compact-proxy
 completions because the 128 export lacks raw interaction strings and paired
-video-view embeddings. Qwen3-Omni, Cosmos3-Super, Cosmos3-Nano, and the
-metadata-only baselines keep scoreless records for unsupported or not-evaluated
-targets instead of hiding those cells. Cosmos3-Super forward-dynamics LoRA
+video-view embeddings. Qwen3-Omni and Cosmos3-Super also include a task-16
+action/object relation score derived from existing verified held-out JSON
+outputs; Cosmos3-Nano and the metadata-only baselines keep scoreless records for
+unsupported or not-evaluated targets instead of hiding those cells.
+Cosmos3-Super forward-dynamics LoRA
 remains a branch card because its camera-pose proxy MSE is not one of the 20
 task metrics. The machine-readable copies are
 [`docs/data/unified_task_model_radar.json`](docs/data/unified_task_model_radar.json)
@@ -345,7 +347,8 @@ The single-episode radar isolates Minimal vs Neural MLP, both with 20/20 scored
 public-sample axes. The 128-episode radar isolates metadata/raw baselines and
 Qwen3/Cosmos branches: raw-feature simple/NN baselines are the current complete
 20/20 scored multi-episode results, while metadata and foundation-model rows
-retain explicit scoreless records where no public target was evaluated.
+retain explicit scoreless records where no public target was evaluated. The
+current matrix has 113 numeric method-task scores out of 180 records.
 
 The website also includes a responsive native modality atlas backed by
 [`docs/data/modality_atlas.json`](docs/data/modality_atlas.json) and
@@ -382,7 +385,7 @@ scripts/
   tier2_task_suite.py              # historical-name builder for tasks 13-20
   build_unified_task_suite.py       # builds TASK_SUITE_20.md and task_suite_20.json
   build_unified_task_model_radar.py # builds the unified 20-axis model comparison chart
-  build_task_method_20_gap_audit.py # builds the explicit 111/180 scored-cell gap ledger
+  build_task_method_20_gap_audit.py # builds the explicit 113/180 scored-cell gap ledger
   task_walkthroughs.py              # human-readable task-card and walkthrough-storyboard metadata
   generate_visualizations.py        # refreshes SVG charts + summary JSON
   render_task_suite_infographic.py  # renders the task-suite presentation PNG
@@ -402,6 +405,7 @@ scripts/
     build_episode_manifest.py       # metadata-only multi-episode scanner
     plan_finetune_sample_budget.py  # storage/sample-count planner
     qwen3_omni_adapter_smoke.py     # real-data Qwen3-Omni adapter setup check
+    score_existing_model_output_task_probes.py # scores task targets already present in verified model outputs
     collect_qwen3_v4_release_artifacts.py # pulls verified v4 results after remote eval
 
 results/
@@ -416,6 +420,7 @@ results/
     tier2_task_suite/               # tasks 13-20 baseline tasks + predictions; historical path
     task_walkthroughs/              # case-study walkthroughs for original tasks
   omni_exploration/                 # ModelScope readiness-check artifacts
+  omni_finetune/model_output_task_probes_20260616/ # task-16 probe derived from verified model JSON
 
 docs/
   index.html                        # GitHub Pages dashboard
@@ -426,7 +431,7 @@ docs/
   data/single_episode_task_model_radar.json # 1-episode split radar values
   data/episode128_task_model_radar.json # 128-episode split radar values
   data/task_method_20_result_matrix.json # 9-method x 20-task result matrix
-  data/task_method_20_gap_audit.json # explicit 111/180 scored-cell gap ledger
+  data/task_method_20_gap_audit.json # explicit 113/180 scored-cell gap ledger
   data/evidence_contract.json       # machine-readable project scope
   data/artifact_index.json          # compact project-artifact catalog
   data/live_publication_status.json # live GitHub/HF publication verification

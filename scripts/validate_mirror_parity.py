@@ -114,6 +114,7 @@ SCRIPT_FILES = [
     "omni/patch_qwen3_omni_video_features.py",
     "omni/probe_cosmos3_super_training_readiness.py",
     "omni/run_private_gpu_qwen3_v6_repro_smoke.sh",
+    "omni/score_existing_model_output_task_probes.py",
     "omni/score_model_output_probes.py",
     "omni/run_128_task_baselines.py",
     "omni/build_task_suite_enhancement_128.py",
@@ -356,6 +357,19 @@ def a100_128_raw20_result_files() -> list[str]:
     return sorted(files)
 
 
+def model_output_task_probe_result_files() -> list[str]:
+    """Return task-specific scores derived from existing verified model outputs."""
+
+    result_root = ROOT / "results/omni_finetune/model_output_task_probes_20260616"
+    if not result_root.exists():
+        return []
+    files: list[str] = []
+    for path in result_root.rglob("*"):
+        if path.is_file():
+            files.append(path.relative_to(ROOT / "results").as_posix())
+    return sorted(files)
+
+
 def parity_group(name: str, local_path: Path, mirrors: dict[str, Path], hf_root: Path) -> dict:
     local = file_record(local_path, hf_root)
     mirror_records = {surface: file_record(path, hf_root) for surface, path in mirrors.items()}
@@ -455,6 +469,7 @@ def build_report(hf_root: Path) -> dict:
         | set(tier2_result_files())
         | set(a100_128_metadata_result_files())
         | set(a100_128_raw20_result_files())
+        | set(model_output_task_probe_result_files())
     )
     for filename in result_files:
         groups.append(

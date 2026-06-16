@@ -39,6 +39,13 @@ COSMOS_SUPER_FD_METRICS_PATH = (
 )
 METADATA128_BASELINE_DIR = ROOT / "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2"
 RAW128_BASELINE_DIR = ROOT / "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z"
+MODEL_OUTPUT_TASK_PROBE_DIR = ROOT / "results/omni_finetune/model_output_task_probes_20260616"
+QWEN_ACTION_OBJECT_METRICS_PATH = (
+    MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/qwen3_omni_v6_lora/metrics.json"
+)
+COSMOS_SUPER_ACTION_OBJECT_METRICS_PATH = (
+    MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/cosmos3_super_reasoner/metrics.json"
+)
 OUTPUT_JSON = ROOT / "docs/data/unified_task_model_radar.json"
 OUTPUT_SINGLE_JSON = ROOT / "docs/data/single_episode_task_model_radar.json"
 OUTPUT_128_JSON = ROOT / "docs/data/episode128_task_model_radar.json"
@@ -153,9 +160,24 @@ FOUNDATION_TASK_METRICS = {
         "qwen3_omni_v6_lora": "object_micro_f1",
         "cosmos3_super_reasoner": "object_micro_f1",
     },
+    "action_object_relation": {
+        "qwen3_omni_v6_lora": "action_object_relation_macro_f1",
+        "cosmos3_super_reasoner": "action_object_relation_macro_f1",
+    },
     "cross_modal_retrieval": {
         "cosmos3_nano_future_window": "future_retrieval_mrr",
     },
+}
+
+FOUNDATION_METRIC_PATHS = {
+    "qwen3_omni_v6_lora": QWEN_V6_METRICS_PATH,
+    "cosmos3_super_reasoner": COSMOS_SUPER_REASONER_METRICS_PATH,
+    "cosmos3_nano_future_window": COSMOS_NANO_METRICS_PATH,
+}
+
+FOUNDATION_METRIC_SOURCE_OVERRIDES = {
+    ("qwen3_omni_v6_lora", "action_object_relation"): QWEN_ACTION_OBJECT_METRICS_PATH,
+    ("cosmos3_super_reasoner", "action_object_relation"): COSMOS_SUPER_ACTION_OBJECT_METRICS_PATH,
 }
 
 SHORT_TASK_LABELS = {
@@ -188,8 +210,8 @@ METHOD_DETAILS = {
     "metadata128_neural_mlp": "128-episode JSONL metadata/text MLP baselines.",
     "raw128_simple": "128-episode 4430-dim sensor NPZ simple heads; tasks 15/19 use compact proxies.",
     "raw128_neural_mlp": "128-episode 4430-dim sensor NPZ MLP heads; tasks 15/19 use compact proxies.",
-    "qwen3_omni_v6_lora": "Verified held-out Qwen3-Omni v6 LoRA metrics on task-aligned JSON outputs.",
-    "cosmos3_super_reasoner": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation.",
+    "qwen3_omni_v6_lora": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 scored from existing verified action/object JSON.",
+    "cosmos3_super_reasoner": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 16 scored from existing verified action/object JSON.",
     "cosmos3_nano_future_window": "Verified Cosmos3-Nano future-window compatibility metrics.",
 }
 
@@ -531,6 +553,8 @@ def build_payload() -> dict[str, Any]:
     cosmos_super = read_json(COSMOS_SUPER_REASONER_METRICS_PATH)
     cosmos_nano = read_json(COSMOS_NANO_METRICS_PATH)
     cosmos_fd = read_json(COSMOS_SUPER_FD_METRICS_PATH)
+    qwen.update(read_json(QWEN_ACTION_OBJECT_METRICS_PATH))
+    cosmos_super.update(read_json(COSMOS_SUPER_ACTION_OBJECT_METRICS_PATH))
     foundation_metrics = {
         "qwen3_omni_v6_lora": qwen,
         "cosmos3_super_reasoner": cosmos_super,
@@ -561,11 +585,10 @@ def build_payload() -> dict[str, Any]:
                 "raw": raw,
                 "metric_key": metric_key,
                 "source": str(
-                    {
-                        "qwen3_omni_v6_lora": QWEN_V6_METRICS_PATH,
-                        "cosmos3_super_reasoner": COSMOS_SUPER_REASONER_METRICS_PATH,
-                        "cosmos3_nano_future_window": COSMOS_NANO_METRICS_PATH,
-                    }[series_id].relative_to(ROOT)
+                    FOUNDATION_METRIC_SOURCE_OVERRIDES.get(
+                        (series_id, row["task_id"]),
+                        FOUNDATION_METRIC_PATHS[series_id],
+                    ).relative_to(ROOT)
                 ),
                 "scope": "multi_episode_128_partial_model_overlay",
                 "status": "scored" if isinstance(raw, (int, float)) else "missing_public_metric",
@@ -971,14 +994,17 @@ def main() -> int:
             chip_specs=[
                 ("20 task axes", "#ccffa0"),
                 ("140 method-task records", "#67e8d1"),
-                ("71 scored axes", "#22d3ee"),
+                (f"{episode128_payload['scored_method_task_count']} scored axes", "#22d3ee"),
                 ("40/40 raw128 pass", "#f59e0b"),
-                ("69 explicit scoreless", "#f472b6"),
+                (
+                    f"{episode128_payload['method_task_record_count'] - episode128_payload['scored_method_task_count']} explicit scoreless",
+                    "#f472b6",
+                ),
             ],
             reading_rules=(
                 "Every 128-episode method has 20 result records; radius appears only where a numeric score exists.",
-                "Raw128 Simple and Raw128 NN are the current complete 20/20 scored multi-episode baselines; tasks 15/19 are documented compact proxies.",
-                "Metadata-only and Qwen/Cosmos scoreless cells are explicit not-supported or not-evaluated records, not hidden failures.",
+                "Raw128 Simple and Raw128 NN are complete 20/20 scored multi-episode baselines; tasks 15/19 are documented compact proxies.",
+                "Qwen3/Cosmos task 16 uses existing verified action/object JSON; other scoreless cells remain explicit not-supported or not-evaluated records.",
             ),
         ),
         encoding="utf-8",

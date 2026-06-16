@@ -147,7 +147,10 @@ def build_payload(matrix: dict) -> dict:
             {
                 "id": "gap_audit",
                 "artifact": "docs/data/task_method_20_gap_audit.json",
-                "purpose": "Keep the 69 scoreless cells visible and reproducible.",
+                "purpose": (
+                    f"Keep the {matrix['method_task_record_count'] - matrix['scored_method_task_count']} "
+                    "scoreless cells visible and reproducible."
+                ),
             },
             {
                 "id": "model_output_probe",

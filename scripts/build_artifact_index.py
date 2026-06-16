@@ -455,7 +455,7 @@ ARTIFACTS = [
         "path": "docs/data/task_method_20_gap_audit.json",
         "kind": "website_data",
         "surface": "website_hf",
-        "shows": "Machine-readable 180-record gap ledger with 111 numeric scores, 69 scoreless cells, explicit status reasons, and next evidence needed before new scores can be published.",
+        "shows": "Machine-readable 180-record gap ledger with numeric scores, scoreless cells, explicit status reasons, and next evidence needed before new scores can be published.",
     },
     {
         "id": "task_method_20_gap_audit",
@@ -528,6 +528,22 @@ ARTIFACTS = [
         "kind": "scaleup_status",
         "surface": "repo_hf",
         "shows": "Audits model-output split availability and writes a readiness report without assigning new numeric task scores.",
+    },
+    {
+        "id": "existing_model_output_task_probe",
+        "title": "Existing model-output task probe package",
+        "path": "results/omni_finetune/model_output_task_probes_20260616/summary.json",
+        "kind": "model_result",
+        "surface": "repo_hf",
+        "shows": "Scores task 16 action-object relation only where verified held-out prediction JSON already contains action and object-set fields.",
+    },
+    {
+        "id": "existing_model_output_task_probe_script",
+        "title": "Existing model-output task probe scorer",
+        "path": "scripts/omni/score_existing_model_output_task_probes.py",
+        "kind": "scaleup_status",
+        "surface": "repo_hf",
+        "shows": "Derives task-specific scores from committed verified model outputs without running new inference or backfilling absent targets.",
     },
     {
         "id": "a100_128_metadata_task_baselines",

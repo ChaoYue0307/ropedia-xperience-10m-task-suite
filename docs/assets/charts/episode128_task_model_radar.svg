@@ -14,11 +14,11 @@
 <rect x="250" y="174" width="250" height="34" rx="17" fill="#67e8d1" fill-opacity="0.10" stroke="#67e8d1" stroke-opacity="0.38"/>
 <text x="266.0" y="197.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="760" fill="#67e8d1" opacity="1.000">140 method-task records</text>
 <rect x="512" y="174" width="168" height="34" rx="17" fill="#22d3ee" fill-opacity="0.10" stroke="#22d3ee" stroke-opacity="0.38"/>
-<text x="528.0" y="197.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="760" fill="#22d3ee" opacity="1.000">71 scored axes</text>
+<text x="528.0" y="197.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="760" fill="#22d3ee" opacity="1.000">73 scored axes</text>
 <rect x="692" y="174" width="250" height="34" rx="17" fill="#f59e0b" fill-opacity="0.10" stroke="#f59e0b" stroke-opacity="0.38"/>
 <text x="708.0" y="197.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="760" fill="#f59e0b" opacity="1.000">40/40 raw128 pass</text>
 <rect x="954" y="174" width="250" height="34" rx="17" fill="#f472b6" fill-opacity="0.10" stroke="#f472b6" stroke-opacity="0.38"/>
-<text x="970.0" y="197.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="760" fill="#f472b6" opacity="1.000">69 explicit scoreless</text>
+<text x="970.0" y="197.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="760" fill="#f472b6" opacity="1.000">67 explicit scoreless</text>
 <rect x="54" y="235" width="1190" height="1190" rx="14" fill="#020502" fill-opacity="0.42" stroke="#ccffa0" stroke-opacity="0.14"/>
 <text x="84.0" y="276.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="23" font-weight="800" fill="#f4f8ef" opacity="1.000">Normalized task scores</text>
 <text x="84.0" y="302.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Each axis is one task. Longer radius means better after metric-direction normalization.</text>
@@ -154,12 +154,14 @@
 <circle cx="662.4" cy="851.0" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="940.3" cy="860.0" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="753.5" cy="893.6" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="649.9" cy="860.0" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="650.0" cy="859.7" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="650.0" cy="860.0" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="726.9" cy="754.2" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="653.8" cy="857.2" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="764.1" cy="860.0" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="696.3" cy="875.0" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="650.0" cy="860.0" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="650.0" cy="857.2" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="852.0" cy="581.9" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <circle cx="652.3" cy="858.3" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
@@ -189,13 +191,15 @@
 <line x1="1315" y1="445" x2="1365" y2="445" stroke="#9bb8ff" stroke-width="7" stroke-linecap="round"/>
 <circle cx="1340" cy="445" r="7" fill="#9bb8ff" stroke="#020502" stroke-width="2"/>
 <text x="1381.0" y="440.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="800" fill="#f4f8ef" opacity="1.000">Qwen3-Omni v6 LoRA</text>
-<text x="1707.0" y="440.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="800" fill="#9bb8ff" opacity="1.000">20 records / 6 scored</text>
-<text x="1381.0" y="460.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">Verified held-out Qwen3-Omni v6 LoRA metrics on task-aligned JSON outputs.</text>
+<text x="1707.0" y="440.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="800" fill="#9bb8ff" opacity="1.000">20 records / 7 scored</text>
+<text x="1381.0" y="460.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 scored from</text>
+<text x="1381.0" y="475.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">existing verified action/object JSON.</text>
 <line x1="1315" y1="495" x2="1365" y2="495" stroke="#ff9c7a" stroke-width="7" stroke-linecap="round"/>
 <circle cx="1340" cy="495" r="7" fill="#ff9c7a" stroke="#020502" stroke-width="2"/>
 <text x="1381.0" y="490.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Super Reasoner</text>
-<text x="1707.0" y="490.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="800" fill="#ff9c7a" opacity="1.000">20 records / 6 scored</text>
-<text x="1381.0" y="510.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation.</text>
+<text x="1707.0" y="490.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="800" fill="#ff9c7a" opacity="1.000">20 records / 7 scored</text>
+<text x="1381.0" y="510.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 16</text>
+<text x="1381.0" y="525.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">scored from existing verified action/object JSON.</text>
 <line x1="1315" y1="545" x2="1365" y2="545" stroke="#d9c7ff" stroke-width="7" stroke-linecap="round"/>
 <circle cx="1340" cy="545" r="7" fill="#d9c7ff" stroke="#020502" stroke-width="2"/>
 <text x="1381.0" y="540.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Nano Future Window</text>
@@ -287,6 +291,6 @@
 <rect x="70" y="1642" width="2260" height="120" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.16"/>
 <text x="100.0" y="1670.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#ccffa0" opacity="1.000">Reading rules</text>
 <text x="220.0" y="1670.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="650" fill="#dce8d7" opacity="1.000">Every 128-episode method has 20 result records; radius appears only where a numeric score exists.</text>
-<text x="220.0" y="1698.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Raw128 Simple and Raw128 NN are the current complete 20/20 scored multi-episode baselines; tasks 15/19 are documented compact proxies.</text>
-<text x="220.0" y="1724.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Metadata-only and Qwen/Cosmos scoreless cells are explicit not-supported or not-evaluated records, not hidden failures.</text>
+<text x="220.0" y="1698.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Raw128 Simple and Raw128 NN are complete 20/20 scored multi-episode baselines; tasks 15/19 are documented compact proxies.</text>
+<text x="220.0" y="1724.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Qwen3/Cosmos task 16 uses existing verified action/object JSON; other scoreless cells remain explicit not-supported or not-evaluated records.</text>
 </svg>

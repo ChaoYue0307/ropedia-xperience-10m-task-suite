@@ -1,6 +1,6 @@
 # Task Method 20-Result Gap Audit
 
-Generated: `2026-06-16T12:00:01+00:00`
+Generated: `2026-06-16T13:35:38+00:00`
 
 This audit is the explicit gap ledger for the 9-method x 20-task result matrix.
 It keeps missing cells visible while preserving the rule that a numeric score
@@ -9,8 +9,8 @@ requires a real task target and source artifact.
 ## Score Summary
 
 - Method-task records: `180`
-- Numeric scored records: `111`
-- Scoreless records: `69`
+- Numeric scored records: `113`
+- Scoreless records: `67`
 - Proxy-scored records: `4`
 - Source matrix: [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)
 
@@ -24,15 +24,15 @@ requires a real task target and source artifact.
 | 128ep Metadata NN | metadata128_neural_mlp | 6/20 | 14 | 0 | not_supported_by_metadata_only_package: 14, scored: 6 |
 | 128ep Raw Simple | raw128_simple | 20/20 | 0 | 2 | proxy_scored: 2, scored: 18 |
 | 128ep Raw NN | raw128_neural_mlp | 20/20 | 0 | 2 | proxy_scored: 2, scored: 18 |
-| Qwen3-Omni v6 LoRA | qwen3_omni_v6_lora | 6/20 | 14 | 0 | not_evaluated_in_verified_package: 14, scored: 6 |
-| Cosmos3-Super Reasoner | cosmos3_super_reasoner | 6/20 | 14 | 0 | not_evaluated_in_verified_package: 14, scored: 6 |
+| Qwen3-Omni v6 LoRA | qwen3_omni_v6_lora | 7/20 | 13 | 0 | not_evaluated_in_verified_package: 13, scored: 7 |
+| Cosmos3-Super Reasoner | cosmos3_super_reasoner | 7/20 | 13 | 0 | not_evaluated_in_verified_package: 13, scored: 7 |
 | Cosmos3-Nano Future Window | cosmos3_nano_future_window | 5/20 | 15 | 0 | not_evaluated_in_verified_package: 15, scored: 5 |
 
 ## Gap Classes
 
 | Status | Count | Next step |
 | --- | --- | --- |
-| not_evaluated_in_verified_package | 43 | Generate verified model outputs for this task contract and score them against the held-out labels. |
+| not_evaluated_in_verified_package | 41 | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | not_supported_by_metadata_only_package | 22 | Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score. |
 | unsupported_without_required_target | 4 | Export the missing target field for this 128-episode method, then rerun the same train/validation/test split. |
 
@@ -86,8 +86,6 @@ requires a real task target and source artifact.
 | 15 | Interaction Text Prediction | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 16 | Action-Object Relation Prediction | 128ep Metadata Simple | not supported | Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score. |
 | 16 | Action-Object Relation Prediction | 128ep Metadata NN | not supported | Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score. |
-| 16 | Action-Object Relation Prediction | Qwen3-Omni v6 LoRA | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| 16 | Action-Object Relation Prediction | Cosmos3-Super Reasoner | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 16 | Action-Object Relation Prediction | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 17 | Future Object-Set Forecasting | 128ep Metadata Simple | not supported | Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score. |
 | 17 | Future Object-Set Forecasting | 128ep Metadata NN | not supported | Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score. |
