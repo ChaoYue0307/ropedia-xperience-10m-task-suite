@@ -43,7 +43,7 @@ TIER2_CARD_BLOCK = """
 
 The public-sample task surface is now one unified 20-task suite in
 `TASK_SUITE_20.md` and `docs/data/task_suite_20.json`. Tasks 1-12 are the
-original sample tasks; tasks 13-20 reuse the same 20-frame windows, 5-frame
+original sample tasks; Tasks 13-20 reuse the same 20-frame windows, 5-frame
 stride, feature manifest, chronological split, and minimal/neural head pattern.
 The historical `tier2_task_suite` path is retained only for stable artifact
 links to tasks 13-20.
@@ -140,7 +140,13 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
         if not path.exists():
             continue
         text = path.read_text(encoding="utf-8")
+        text = text.replace(
+            "original sample tasks; tasks 13-20 reuse",
+            "original sample tasks; Tasks 13-20 reuse",
+        )
         if TIER2_MARKER in text:
+            if not dry_run:
+                path.write_text(text, encoding="utf-8")
             continue
         insert_before = "\n## Dataset Boundary" if relative_path.startswith("artifacts/") else "\n## Start Here"
         if insert_before in text:
