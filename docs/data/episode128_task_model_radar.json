@@ -1,7 +1,7 @@
 {
   "title": "128-Episode 20-Task Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-16T13:35:38+00:00",
+  "generated_at_utc": "2026-06-16T15:06:55+00:00",
   "description": "Selected 128-episode metadata/raw baselines plus verified Qwen3/Cosmos branches. Every method has 20 records; numeric scores appear only where the public artifact produced that task target.",
   "task_count": 20,
   "method_count": 7,
@@ -124,7 +124,7 @@
       "kind": "partial_128_episode_foundation_model_overlay",
       "scope": "128 selected episodes, held-out test",
       "stroke_dasharray": "7 7",
-      "method_detail": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 scored from existing verified action/object JSON.",
+      "method_detail": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 and any completed private-GPU future-task probes scored from task-specific JSON.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
       "scored_task_count": 7,

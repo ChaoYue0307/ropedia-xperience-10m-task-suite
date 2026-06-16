@@ -40,12 +40,27 @@ COSMOS_SUPER_FD_METRICS_PATH = (
 METADATA128_BASELINE_DIR = ROOT / "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2"
 RAW128_BASELINE_DIR = ROOT / "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z"
 MODEL_OUTPUT_TASK_PROBE_DIR = ROOT / "results/omni_finetune/model_output_task_probes_20260616"
+QWEN_FUTURE_TASK_PROBE_DIR = (
+    ROOT
+    / "results/omni_finetune"
+    / "xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z"
+)
 QWEN_ACTION_OBJECT_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/qwen3_omni_v6_lora/metrics.json"
 )
 COSMOS_SUPER_ACTION_OBJECT_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/cosmos3_super_reasoner/metrics.json"
 )
+QWEN_FUTURE_TASK_METRIC_PATHS = {
+    "long_horizon_next_action": QWEN_FUTURE_TASK_PROBE_DIR / "long_horizon_next_action/metrics.json",
+    "next_subtask_forecast": QWEN_FUTURE_TASK_PROBE_DIR / "next_subtask_forecast/metrics.json",
+    "object_set_forecast": QWEN_FUTURE_TASK_PROBE_DIR / "object_set_forecast/metrics.json",
+}
+QWEN_FUTURE_TASK_METRIC_KEYS = {
+    "long_horizon_next_action": "long_horizon_next_action_macro_f1",
+    "next_subtask_forecast": "next_subtask_forecast_macro_f1",
+    "object_set_forecast": "object_set_forecast_micro_f1",
+}
 OUTPUT_JSON = ROOT / "docs/data/unified_task_model_radar.json"
 OUTPUT_SINGLE_JSON = ROOT / "docs/data/single_episode_task_model_radar.json"
 OUTPUT_128_JSON = ROOT / "docs/data/episode128_task_model_radar.json"
@@ -178,6 +193,9 @@ FOUNDATION_METRIC_PATHS = {
 FOUNDATION_METRIC_SOURCE_OVERRIDES = {
     ("qwen3_omni_v6_lora", "action_object_relation"): QWEN_ACTION_OBJECT_METRICS_PATH,
     ("cosmos3_super_reasoner", "action_object_relation"): COSMOS_SUPER_ACTION_OBJECT_METRICS_PATH,
+    ("qwen3_omni_v6_lora", "long_horizon_next_action"): QWEN_FUTURE_TASK_METRIC_PATHS["long_horizon_next_action"],
+    ("qwen3_omni_v6_lora", "next_subtask_forecast"): QWEN_FUTURE_TASK_METRIC_PATHS["next_subtask_forecast"],
+    ("qwen3_omni_v6_lora", "object_set_forecast"): QWEN_FUTURE_TASK_METRIC_PATHS["object_set_forecast"],
 }
 
 SHORT_TASK_LABELS = {
@@ -210,7 +228,7 @@ METHOD_DETAILS = {
     "metadata128_neural_mlp": "128-episode JSONL metadata/text MLP baselines.",
     "raw128_simple": "128-episode 4430-dim sensor NPZ simple heads; tasks 15/19 use compact proxies.",
     "raw128_neural_mlp": "128-episode 4430-dim sensor NPZ MLP heads; tasks 15/19 use compact proxies.",
-    "qwen3_omni_v6_lora": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 scored from existing verified action/object JSON.",
+    "qwen3_omni_v6_lora": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 and any completed private-GPU future-task probes scored from task-specific JSON.",
     "cosmos3_super_reasoner": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 16 scored from existing verified action/object JSON.",
     "cosmos3_nano_future_window": "Verified Cosmos3-Nano future-window compatibility metrics.",
 }
@@ -248,6 +266,19 @@ STATUS_SHORT = {
 
 def read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
+def foundation_task_metric_mapping(qwen_metrics: dict[str, Any]) -> dict[str, dict[str, str]]:
+    mapping = {task_id: dict(series_metrics) for task_id, series_metrics in FOUNDATION_TASK_METRICS.items()}
+    for task_id, path in QWEN_FUTURE_TASK_METRIC_PATHS.items():
+        payload = read_json(path)
+        metric_key = QWEN_FUTURE_TASK_METRIC_KEYS[task_id]
+        metric_value = payload.get(metric_key)
+        if payload.get("status") != "pass" or not isinstance(metric_value, (int, float)):
+            continue
+        qwen_metrics[metric_key] = metric_value
+        mapping.setdefault(task_id, {})["qwen3_omni_v6_lora"] = metric_key
+    return mapping
 
 
 def read_a100_metadata_record(task_id: str, *, neural: bool = False) -> dict[str, Any] | None:
@@ -555,6 +586,7 @@ def build_payload() -> dict[str, Any]:
     cosmos_fd = read_json(COSMOS_SUPER_FD_METRICS_PATH)
     qwen.update(read_json(QWEN_ACTION_OBJECT_METRICS_PATH))
     cosmos_super.update(read_json(COSMOS_SUPER_ACTION_OBJECT_METRICS_PATH))
+    foundation_task_metrics = foundation_task_metric_mapping(qwen)
     foundation_metrics = {
         "qwen3_omni_v6_lora": qwen,
         "cosmos3_super_reasoner": cosmos_super,
@@ -579,7 +611,7 @@ def build_payload() -> dict[str, Any]:
                 "status": "scored",
             },
         }
-        for series_id, metric_key in FOUNDATION_TASK_METRICS.get(row["task_id"], {}).items():
+        for series_id, metric_key in foundation_task_metrics.get(row["task_id"], {}).items():
             raw = foundation_metrics.get(series_id, {}).get(metric_key)
             values[series_id] = {
                 "raw": raw,
