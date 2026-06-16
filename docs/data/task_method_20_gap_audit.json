@@ -1,0 +1,1210 @@
+{
+  "generated_at_utc": "2026-06-16T12:00:01+00:00",
+  "immediate_actions": [
+    {
+      "artifact": "docs/data/task_method_20_gap_audit.json",
+      "id": "gap_audit",
+      "purpose": "Keep the 69 scoreless cells visible and reproducible."
+    },
+    {
+      "artifact": "scripts/omni/score_model_output_probes.py",
+      "id": "model_output_probe",
+      "purpose": "Check whether train/validation/test model outputs exist before attempting all-task Qwen3/Cosmos scoring."
+    },
+    {
+      "artifact": "scripts/omni/launch_all_task_model_scoring_when_free.sh",
+      "id": "guarded_gpu_launcher",
+      "purpose": "Start a user-provided all-task scoring command only after enough private GPU capacity is idle."
+    }
+  ],
+  "methods": {
+    "cosmos3_nano_future_window": {
+      "kind": "partial_128_episode_world_model_overlay",
+      "label": "Cosmos3-Nano Future Window",
+      "proxy_scored_task_count": 0,
+      "result_record_count": 20,
+      "scope": "128 selected episodes, held-out test",
+      "scored_task_count": 5,
+      "scoreless_task_count": 15,
+      "status_counts": {
+        "not_evaluated_in_verified_package": 15,
+        "scored": 5
+      }
+    },
+    "cosmos3_super_reasoner": {
+      "kind": "partial_128_episode_foundation_model_overlay",
+      "label": "Cosmos3-Super Reasoner",
+      "proxy_scored_task_count": 0,
+      "result_record_count": 20,
+      "scope": "128 selected episodes, held-out test",
+      "scored_task_count": 6,
+      "scoreless_task_count": 14,
+      "status_counts": {
+        "not_evaluated_in_verified_package": 14,
+        "scored": 6
+      }
+    },
+    "metadata128_neural_mlp": {
+      "kind": "partial_128_episode_metadata_baseline",
+      "label": "128ep Metadata NN",
+      "proxy_scored_task_count": 0,
+      "result_record_count": 20,
+      "scope": "128 selected episodes, JSONL metadata/text only",
+      "scored_task_count": 6,
+      "scoreless_task_count": 14,
+      "status_counts": {
+        "not_supported_by_metadata_only_package": 14,
+        "scored": 6
+      }
+    },
+    "metadata128_simple": {
+      "kind": "partial_128_episode_metadata_baseline",
+      "label": "128ep Metadata Simple",
+      "proxy_scored_task_count": 0,
+      "result_record_count": 20,
+      "scope": "128 selected episodes, JSONL metadata/text only",
+      "scored_task_count": 8,
+      "scoreless_task_count": 12,
+      "status_counts": {
+        "not_supported_by_metadata_only_package": 8,
+        "scored": 8,
+        "unsupported_without_required_target": 4
+      }
+    },
+    "minimal": {
+      "kind": "full_20_task_baseline",
+      "label": "Minimal",
+      "proxy_scored_task_count": 0,
+      "result_record_count": 20,
+      "scope": "1 public sample episode",
+      "scored_task_count": 20,
+      "scoreless_task_count": 0,
+      "status_counts": {
+        "scored": 20
+      }
+    },
+    "neural_mlp": {
+      "kind": "full_20_task_baseline",
+      "label": "Neural MLP",
+      "proxy_scored_task_count": 0,
+      "result_record_count": 20,
+      "scope": "1 public sample episode",
+      "scored_task_count": 20,
+      "scoreless_task_count": 0,
+      "status_counts": {
+        "scored": 20
+      }
+    },
+    "qwen3_omni_v6_lora": {
+      "kind": "partial_128_episode_foundation_model_overlay",
+      "label": "Qwen3-Omni v6 LoRA",
+      "proxy_scored_task_count": 0,
+      "result_record_count": 20,
+      "scope": "128 selected episodes, held-out test",
+      "scored_task_count": 6,
+      "scoreless_task_count": 14,
+      "status_counts": {
+        "not_evaluated_in_verified_package": 14,
+        "scored": 6
+      }
+    },
+    "raw128_neural_mlp": {
+      "kind": "complete_128_episode_raw_feature_baseline",
+      "label": "128ep Raw NN",
+      "proxy_scored_task_count": 2,
+      "result_record_count": 20,
+      "scope": "128 selected episodes, staged 4430-dim sensor NPZ features; 2 compact proxy axes",
+      "scored_task_count": 20,
+      "scoreless_task_count": 0,
+      "status_counts": {
+        "proxy_scored": 2,
+        "scored": 18
+      }
+    },
+    "raw128_simple": {
+      "kind": "complete_128_episode_raw_feature_baseline",
+      "label": "128ep Raw Simple",
+      "proxy_scored_task_count": 2,
+      "result_record_count": 20,
+      "scope": "128 selected episodes, staged 4430-dim sensor NPZ features; 2 compact proxy axes",
+      "scored_task_count": 20,
+      "scoreless_task_count": 0,
+      "status_counts": {
+        "proxy_scored": 2,
+        "scored": 18
+      }
+    }
+  },
+  "missing_by_method": {
+    "cosmos3_nano_future_window": 15,
+    "cosmos3_super_reasoner": 14,
+    "metadata128_neural_mlp": 14,
+    "metadata128_simple": 12,
+    "qwen3_omni_v6_lora": 14
+  },
+  "missing_by_status": {
+    "not_evaluated_in_verified_package": 43,
+    "not_supported_by_metadata_only_package": 22,
+    "unsupported_without_required_target": 4
+  },
+  "missing_by_task": {
+    "02 Procedure Step Recognition": [
+      "cosmos3_nano_future_window"
+    ],
+    "05 Hand Trajectory Forecasting": [
+      "cosmos3_nano_future_window",
+      "cosmos3_super_reasoner",
+      "metadata128_neural_mlp",
+      "metadata128_simple",
+      "qwen3_omni_v6_lora"
+    ],
+    "07 Object Relevance Prediction": [
+      "cosmos3_nano_future_window"
+    ],
+    "08 Language Grounding": [
+      "cosmos3_nano_future_window",
+      "cosmos3_super_reasoner",
+      "metadata128_neural_mlp",
+      "qwen3_omni_v6_lora"
+    ],
+    "09 Cross-Modal Retrieval": [
+      "cosmos3_super_reasoner",
+      "metadata128_neural_mlp",
+      "metadata128_simple",
+      "qwen3_omni_v6_lora"
+    ],
+    "10 Cross-Modal Reconstruction": [
+      "cosmos3_nano_future_window",
+      "cosmos3_super_reasoner",
+      "metadata128_neural_mlp",
+      "metadata128_simple",
+      "qwen3_omni_v6_lora"
+    ],
+    "11 Temporal Order Verification": [
+      "cosmos3_nano_future_window",
+      "cosmos3_super_reasoner",
+      "metadata128_neural_mlp",
+      "qwen3_omni_v6_lora"
+    ],
+    "12 Multimodal Synchronization Detection": [
+      "cosmos3_nano_future_window",
+      "cosmos3_super_reasoner",
+      "metadata128_neural_mlp",
+      "metadata128_simple",
+      "qwen3_omni_v6_lora"
+    ],
+    "13 Long-Horizon Next-Action Forecasting": [
+      "cosmos3_nano_future_window",
+      "cosmos3_super_reasoner",
+      "metadata128_neural_mlp",
+      "metadata128_simple",
+      "qwen3_omni_v6_lora"
+    ],
+    "14 Long-Horizon Next-Subtask Forecasting": [
+      "cosmos3_nano_future_window",
+      "cosmos3_super_reasoner",
+      "metadata128_neural_mlp",
+      "metadata128_simple",
+      "qwen3_omni_v6_lora"
+    ],
+    "15 Interaction Text Prediction": [
+      "cosmos3_nano_future_window",
+      "cosmos3_super_reasoner",
+      "metadata128_neural_mlp",
+      "metadata128_simple",
+      "qwen3_omni_v6_lora"
+    ],
+    "16 Action-Object Relation Prediction": [
+      "cosmos3_nano_future_window",
+      "cosmos3_super_reasoner",
+      "metadata128_neural_mlp",
+      "metadata128_simple",
+      "qwen3_omni_v6_lora"
+    ],
+    "17 Future Object-Set Forecasting": [
+      "cosmos3_nano_future_window",
+      "cosmos3_super_reasoner",
+      "metadata128_neural_mlp",
+      "metadata128_simple",
+      "qwen3_omni_v6_lora"
+    ],
+    "18 IMU-to-Hand Pose Reconstruction": [
+      "cosmos3_nano_future_window",
+      "cosmos3_super_reasoner",
+      "metadata128_neural_mlp",
+      "metadata128_simple",
+      "qwen3_omni_v6_lora"
+    ],
+    "19 Camera-View Synchronization Retrieval": [
+      "cosmos3_nano_future_window",
+      "cosmos3_super_reasoner",
+      "metadata128_neural_mlp",
+      "metadata128_simple",
+      "qwen3_omni_v6_lora"
+    ],
+    "20 Time-to-Next-Transition Regression": [
+      "cosmos3_nano_future_window",
+      "cosmos3_super_reasoner",
+      "metadata128_neural_mlp",
+      "metadata128_simple",
+      "qwen3_omni_v6_lora"
+    ]
+  },
+  "missing_records": [
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "macro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "timeline_subtask",
+      "task_label": "Procedure Step Recognition",
+      "task_number": 2
+    },
+    {
+      "method": "128ep Metadata Simple",
+      "metric_key": "mpjpe",
+      "reason": "requires future hand-joint trajectories from raw sensor feature NPZ blocks, which are not in the public 128 package",
+      "recommended_next_step": "Export the missing target field for this 128-episode method, then rerun the same train/validation/test split.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_simple",
+      "status": "unsupported_without_required_target",
+      "status_label": "unsupported",
+      "task_id": "hand_trajectory_forecast",
+      "task_label": "Hand Trajectory Forecasting",
+      "task_number": 5
+    },
+    {
+      "method": "128ep Metadata NN",
+      "metric_key": "mpjpe",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_neural_mlp",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "hand_trajectory_forecast",
+      "task_label": "Hand Trajectory Forecasting",
+      "task_number": 5
+    },
+    {
+      "method": "Qwen3-Omni v6 LoRA",
+      "metric_key": "mpjpe",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "qwen3_omni_v6_lora",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "hand_trajectory_forecast",
+      "task_label": "Hand Trajectory Forecasting",
+      "task_number": 5
+    },
+    {
+      "method": "Cosmos3-Super Reasoner",
+      "metric_key": "mpjpe",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_super_reasoner",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "hand_trajectory_forecast",
+      "task_label": "Hand Trajectory Forecasting",
+      "task_number": 5
+    },
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "mpjpe",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "hand_trajectory_forecast",
+      "task_label": "Hand Trajectory Forecasting",
+      "task_number": 5
+    },
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "micro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "object_relevance",
+      "task_label": "Object Relevance Prediction",
+      "task_number": 7
+    },
+    {
+      "method": "128ep Metadata NN",
+      "metric_key": "mrr",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_neural_mlp",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "caption_grounding",
+      "task_label": "Language Grounding",
+      "task_number": 8
+    },
+    {
+      "method": "Qwen3-Omni v6 LoRA",
+      "metric_key": "mrr",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "qwen3_omni_v6_lora",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "caption_grounding",
+      "task_label": "Language Grounding",
+      "task_number": 8
+    },
+    {
+      "method": "Cosmos3-Super Reasoner",
+      "metric_key": "mrr",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_super_reasoner",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "caption_grounding",
+      "task_label": "Language Grounding",
+      "task_number": 8
+    },
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "mrr",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "caption_grounding",
+      "task_label": "Language Grounding",
+      "task_number": 8
+    },
+    {
+      "method": "128ep Metadata Simple",
+      "metric_key": "mrr",
+      "reason": "requires paired motion/IMU/camera/audio/depth feature blocks, which are not in the public 128 package",
+      "recommended_next_step": "Export the missing target field for this 128-episode method, then rerun the same train/validation/test split.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_simple",
+      "status": "unsupported_without_required_target",
+      "status_label": "unsupported",
+      "task_id": "cross_modal_retrieval",
+      "task_label": "Cross-Modal Retrieval",
+      "task_number": 9
+    },
+    {
+      "method": "128ep Metadata NN",
+      "metric_key": "mrr",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_neural_mlp",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "cross_modal_retrieval",
+      "task_label": "Cross-Modal Retrieval",
+      "task_number": 9
+    },
+    {
+      "method": "Qwen3-Omni v6 LoRA",
+      "metric_key": "mrr",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "qwen3_omni_v6_lora",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "cross_modal_retrieval",
+      "task_label": "Cross-Modal Retrieval",
+      "task_number": 9
+    },
+    {
+      "method": "Cosmos3-Super Reasoner",
+      "metric_key": "mrr",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_super_reasoner",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "cross_modal_retrieval",
+      "task_label": "Cross-Modal Retrieval",
+      "task_number": 9
+    },
+    {
+      "method": "128ep Metadata Simple",
+      "metric_key": "r2",
+      "reason": "requires source and target modality feature blocks such as depth/video vectors, which are not in the public 128 package",
+      "recommended_next_step": "Export the missing target field for this 128-episode method, then rerun the same train/validation/test split.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_simple",
+      "status": "unsupported_without_required_target",
+      "status_label": "unsupported",
+      "task_id": "modality_reconstruction",
+      "task_label": "Cross-Modal Reconstruction",
+      "task_number": 10
+    },
+    {
+      "method": "128ep Metadata NN",
+      "metric_key": "r2",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_neural_mlp",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "modality_reconstruction",
+      "task_label": "Cross-Modal Reconstruction",
+      "task_number": 10
+    },
+    {
+      "method": "Qwen3-Omni v6 LoRA",
+      "metric_key": "r2",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "qwen3_omni_v6_lora",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "modality_reconstruction",
+      "task_label": "Cross-Modal Reconstruction",
+      "task_number": 10
+    },
+    {
+      "method": "Cosmos3-Super Reasoner",
+      "metric_key": "r2",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_super_reasoner",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "modality_reconstruction",
+      "task_label": "Cross-Modal Reconstruction",
+      "task_number": 10
+    },
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "r2",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "modality_reconstruction",
+      "task_label": "Cross-Modal Reconstruction",
+      "task_number": 10
+    },
+    {
+      "method": "128ep Metadata NN",
+      "metric_key": "f1",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_neural_mlp",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "temporal_order",
+      "task_label": "Temporal Order Verification",
+      "task_number": 11
+    },
+    {
+      "method": "Qwen3-Omni v6 LoRA",
+      "metric_key": "f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "qwen3_omni_v6_lora",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "temporal_order",
+      "task_label": "Temporal Order Verification",
+      "task_number": 11
+    },
+    {
+      "method": "Cosmos3-Super Reasoner",
+      "metric_key": "f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_super_reasoner",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "temporal_order",
+      "task_label": "Temporal Order Verification",
+      "task_number": 11
+    },
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "temporal_order",
+      "task_label": "Temporal Order Verification",
+      "task_number": 11
+    },
+    {
+      "method": "128ep Metadata Simple",
+      "metric_key": "f1",
+      "reason": "requires deliberately shifted cross-modal feature pairs, which cannot be reconstructed from the public JSONL labels alone",
+      "recommended_next_step": "Export the missing target field for this 128-episode method, then rerun the same train/validation/test split.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_simple",
+      "status": "unsupported_without_required_target",
+      "status_label": "unsupported",
+      "task_id": "misalignment_detection",
+      "task_label": "Multimodal Synchronization Detection",
+      "task_number": 12
+    },
+    {
+      "method": "128ep Metadata NN",
+      "metric_key": "f1",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_neural_mlp",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "misalignment_detection",
+      "task_label": "Multimodal Synchronization Detection",
+      "task_number": 12
+    },
+    {
+      "method": "Qwen3-Omni v6 LoRA",
+      "metric_key": "f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "qwen3_omni_v6_lora",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "misalignment_detection",
+      "task_label": "Multimodal Synchronization Detection",
+      "task_number": 12
+    },
+    {
+      "method": "Cosmos3-Super Reasoner",
+      "metric_key": "f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_super_reasoner",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "misalignment_detection",
+      "task_label": "Multimodal Synchronization Detection",
+      "task_number": 12
+    },
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "misalignment_detection",
+      "task_label": "Multimodal Synchronization Detection",
+      "task_number": 12
+    },
+    {
+      "method": "128ep Metadata Simple",
+      "metric_key": "macro_f1",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_simple",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "long_horizon_next_action",
+      "task_label": "Long-Horizon Next-Action Forecasting",
+      "task_number": 13
+    },
+    {
+      "method": "128ep Metadata NN",
+      "metric_key": "macro_f1",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_neural_mlp",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "long_horizon_next_action",
+      "task_label": "Long-Horizon Next-Action Forecasting",
+      "task_number": 13
+    },
+    {
+      "method": "Qwen3-Omni v6 LoRA",
+      "metric_key": "macro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "qwen3_omni_v6_lora",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "long_horizon_next_action",
+      "task_label": "Long-Horizon Next-Action Forecasting",
+      "task_number": 13
+    },
+    {
+      "method": "Cosmos3-Super Reasoner",
+      "metric_key": "macro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_super_reasoner",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "long_horizon_next_action",
+      "task_label": "Long-Horizon Next-Action Forecasting",
+      "task_number": 13
+    },
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "macro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "long_horizon_next_action",
+      "task_label": "Long-Horizon Next-Action Forecasting",
+      "task_number": 13
+    },
+    {
+      "method": "128ep Metadata Simple",
+      "metric_key": "macro_f1",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_simple",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "next_subtask_forecast",
+      "task_label": "Long-Horizon Next-Subtask Forecasting",
+      "task_number": 14
+    },
+    {
+      "method": "128ep Metadata NN",
+      "metric_key": "macro_f1",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_neural_mlp",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "next_subtask_forecast",
+      "task_label": "Long-Horizon Next-Subtask Forecasting",
+      "task_number": 14
+    },
+    {
+      "method": "Qwen3-Omni v6 LoRA",
+      "metric_key": "macro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "qwen3_omni_v6_lora",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "next_subtask_forecast",
+      "task_label": "Long-Horizon Next-Subtask Forecasting",
+      "task_number": 14
+    },
+    {
+      "method": "Cosmos3-Super Reasoner",
+      "metric_key": "macro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_super_reasoner",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "next_subtask_forecast",
+      "task_label": "Long-Horizon Next-Subtask Forecasting",
+      "task_number": 14
+    },
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "macro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "next_subtask_forecast",
+      "task_label": "Long-Horizon Next-Subtask Forecasting",
+      "task_number": 14
+    },
+    {
+      "method": "128ep Metadata Simple",
+      "metric_key": "macro_f1",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_simple",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "interaction_text_prediction",
+      "task_label": "Interaction Text Prediction",
+      "task_number": 15
+    },
+    {
+      "method": "128ep Metadata NN",
+      "metric_key": "macro_f1",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_neural_mlp",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "interaction_text_prediction",
+      "task_label": "Interaction Text Prediction",
+      "task_number": 15
+    },
+    {
+      "method": "Qwen3-Omni v6 LoRA",
+      "metric_key": "macro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "qwen3_omni_v6_lora",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "interaction_text_prediction",
+      "task_label": "Interaction Text Prediction",
+      "task_number": 15
+    },
+    {
+      "method": "Cosmos3-Super Reasoner",
+      "metric_key": "macro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_super_reasoner",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "interaction_text_prediction",
+      "task_label": "Interaction Text Prediction",
+      "task_number": 15
+    },
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "macro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "interaction_text_prediction",
+      "task_label": "Interaction Text Prediction",
+      "task_number": 15
+    },
+    {
+      "method": "128ep Metadata Simple",
+      "metric_key": "macro_f1",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_simple",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "action_object_relation",
+      "task_label": "Action-Object Relation Prediction",
+      "task_number": 16
+    },
+    {
+      "method": "128ep Metadata NN",
+      "metric_key": "macro_f1",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_neural_mlp",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "action_object_relation",
+      "task_label": "Action-Object Relation Prediction",
+      "task_number": 16
+    },
+    {
+      "method": "Qwen3-Omni v6 LoRA",
+      "metric_key": "macro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "qwen3_omni_v6_lora",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "action_object_relation",
+      "task_label": "Action-Object Relation Prediction",
+      "task_number": 16
+    },
+    {
+      "method": "Cosmos3-Super Reasoner",
+      "metric_key": "macro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_super_reasoner",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "action_object_relation",
+      "task_label": "Action-Object Relation Prediction",
+      "task_number": 16
+    },
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "macro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "action_object_relation",
+      "task_label": "Action-Object Relation Prediction",
+      "task_number": 16
+    },
+    {
+      "method": "128ep Metadata Simple",
+      "metric_key": "micro_f1",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_simple",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "object_set_forecast",
+      "task_label": "Future Object-Set Forecasting",
+      "task_number": 17
+    },
+    {
+      "method": "128ep Metadata NN",
+      "metric_key": "micro_f1",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_neural_mlp",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "object_set_forecast",
+      "task_label": "Future Object-Set Forecasting",
+      "task_number": 17
+    },
+    {
+      "method": "Qwen3-Omni v6 LoRA",
+      "metric_key": "micro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "qwen3_omni_v6_lora",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "object_set_forecast",
+      "task_label": "Future Object-Set Forecasting",
+      "task_number": 17
+    },
+    {
+      "method": "Cosmos3-Super Reasoner",
+      "metric_key": "micro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_super_reasoner",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "object_set_forecast",
+      "task_label": "Future Object-Set Forecasting",
+      "task_number": 17
+    },
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "micro_f1",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "object_set_forecast",
+      "task_label": "Future Object-Set Forecasting",
+      "task_number": 17
+    },
+    {
+      "method": "128ep Metadata Simple",
+      "metric_key": "mae",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_simple",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "imu_to_hand_pose",
+      "task_label": "IMU-to-Hand Pose Reconstruction",
+      "task_number": 18
+    },
+    {
+      "method": "128ep Metadata NN",
+      "metric_key": "mae",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_neural_mlp",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "imu_to_hand_pose",
+      "task_label": "IMU-to-Hand Pose Reconstruction",
+      "task_number": 18
+    },
+    {
+      "method": "Qwen3-Omni v6 LoRA",
+      "metric_key": "mae",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "qwen3_omni_v6_lora",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "imu_to_hand_pose",
+      "task_label": "IMU-to-Hand Pose Reconstruction",
+      "task_number": 18
+    },
+    {
+      "method": "Cosmos3-Super Reasoner",
+      "metric_key": "mae",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_super_reasoner",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "imu_to_hand_pose",
+      "task_label": "IMU-to-Hand Pose Reconstruction",
+      "task_number": 18
+    },
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "mae",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "imu_to_hand_pose",
+      "task_label": "IMU-to-Hand Pose Reconstruction",
+      "task_number": 18
+    },
+    {
+      "method": "128ep Metadata Simple",
+      "metric_key": "mrr",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_simple",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "camera_view_sync_retrieval",
+      "task_label": "Camera-View Synchronization Retrieval",
+      "task_number": 19
+    },
+    {
+      "method": "128ep Metadata NN",
+      "metric_key": "mrr",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_neural_mlp",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "camera_view_sync_retrieval",
+      "task_label": "Camera-View Synchronization Retrieval",
+      "task_number": 19
+    },
+    {
+      "method": "Qwen3-Omni v6 LoRA",
+      "metric_key": "mrr",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "qwen3_omni_v6_lora",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "camera_view_sync_retrieval",
+      "task_label": "Camera-View Synchronization Retrieval",
+      "task_number": 19
+    },
+    {
+      "method": "Cosmos3-Super Reasoner",
+      "metric_key": "mrr",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_super_reasoner",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "camera_view_sync_retrieval",
+      "task_label": "Camera-View Synchronization Retrieval",
+      "task_number": 19
+    },
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "mrr",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "camera_view_sync_retrieval",
+      "task_label": "Camera-View Synchronization Retrieval",
+      "task_number": 19
+    },
+    {
+      "method": "128ep Metadata Simple",
+      "metric_key": "mae",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_simple",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "time_to_transition",
+      "task_label": "Time-to-Next-Transition Regression",
+      "task_number": 20
+    },
+    {
+      "method": "128ep Metadata NN",
+      "metric_key": "mae",
+      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
+      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
+      "scope": "multi_episode_128_metadata_baseline",
+      "series_id": "metadata128_neural_mlp",
+      "status": "not_supported_by_metadata_only_package",
+      "status_label": "not supported",
+      "task_id": "time_to_transition",
+      "task_label": "Time-to-Next-Transition Regression",
+      "task_number": 20
+    },
+    {
+      "method": "Qwen3-Omni v6 LoRA",
+      "metric_key": "mae",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "qwen3_omni_v6_lora",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "time_to_transition",
+      "task_label": "Time-to-Next-Transition Regression",
+      "task_number": 20
+    },
+    {
+      "method": "Cosmos3-Super Reasoner",
+      "metric_key": "mae",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_super_reasoner",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "time_to_transition",
+      "task_label": "Time-to-Next-Transition Regression",
+      "task_number": 20
+    },
+    {
+      "method": "Cosmos3-Nano Future Window",
+      "metric_key": "mae",
+      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
+      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
+      "scope": "multi_episode_128_partial_model_overlay",
+      "series_id": "cosmos3_nano_future_window",
+      "status": "not_evaluated_in_verified_package",
+      "status_label": "not evaluated",
+      "task_id": "time_to_transition",
+      "task_label": "Time-to-Next-Transition Regression",
+      "task_number": 20
+    }
+  ],
+  "proxy_records": [
+    {
+      "method": "128ep Raw Simple",
+      "metric_key": "macro_f1",
+      "reason": "documented compact proxy completion for this raw128 task axis",
+      "series_id": "raw128_simple",
+      "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/interaction_text_prediction/metrics.json",
+      "task_id": "interaction_text_prediction",
+      "task_label": "Interaction Text Prediction",
+      "task_number": 15
+    },
+    {
+      "method": "128ep Raw NN",
+      "metric_key": "macro_f1",
+      "reason": "documented compact proxy completion for this raw128 task axis",
+      "series_id": "raw128_neural_mlp",
+      "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/interaction_text_prediction/metrics.json",
+      "task_id": "interaction_text_prediction",
+      "task_label": "Interaction Text Prediction",
+      "task_number": 15
+    },
+    {
+      "method": "128ep Raw Simple",
+      "metric_key": "mrr",
+      "reason": "documented compact proxy completion for this raw128 task axis",
+      "series_id": "raw128_simple",
+      "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/camera_view_sync_retrieval/metrics.json",
+      "task_id": "camera_view_sync_retrieval",
+      "task_label": "Camera-View Synchronization Retrieval",
+      "task_number": 19
+    },
+    {
+      "method": "128ep Raw NN",
+      "metric_key": "mrr",
+      "reason": "documented compact proxy completion for this raw128 task axis",
+      "series_id": "raw128_neural_mlp",
+      "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/camera_view_sync_retrieval/metrics.json",
+      "task_id": "camera_view_sync_retrieval",
+      "task_label": "Camera-View Synchronization Retrieval",
+      "task_number": 19
+    }
+  ],
+  "score_summary": {
+    "method_count": 9,
+    "method_task_record_count": 180,
+    "proxy_scored_method_task_count": 4,
+    "scored_method_task_count": 111,
+    "scoreless_method_task_count": 69,
+    "task_count": 20
+  },
+  "source_matrix": "docs/data/task_method_20_result_matrix.json",
+  "status": "pass",
+  "target_policy": {
+    "numeric_score_gate": "A method-task cell is numeric only when a runner or verified package emits that exact task target and metric.",
+    "proxy_policy": "Proxy scores are allowed only when the matrix marks them as proxy_scored and keeps the reason/source attached.",
+    "scoreless_cell_policy": "Unsupported and not-evaluated cells stay explicit in the public matrix instead of being hidden or backfilled with proxy model claims."
+  },
+  "title": "Task Method 20-Result Gap Audit"
+}

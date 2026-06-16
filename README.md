@@ -329,6 +329,9 @@ task metrics. The machine-readable copies are
 [`docs/data/unified_task_model_radar.json`](docs/data/unified_task_model_radar.json)
 and
 [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json);
+the explicit score-gap ledger is
+[`docs/data/task_method_20_gap_audit.json`](docs/data/task_method_20_gap_audit.json)
+and [`TASK_METHOD_20_GAP_AUDIT.md`](TASK_METHOD_20_GAP_AUDIT.md);
 the reader-facing matrix is
 [`TASK_METHOD_20_RESULT_MATRIX.md`](TASK_METHOD_20_RESULT_MATRIX.md).
 
@@ -379,6 +382,7 @@ scripts/
   tier2_task_suite.py              # historical-name builder for tasks 13-20
   build_unified_task_suite.py       # builds TASK_SUITE_20.md and task_suite_20.json
   build_unified_task_model_radar.py # builds the unified 20-axis model comparison chart
+  build_task_method_20_gap_audit.py # builds the explicit 111/180 scored-cell gap ledger
   task_walkthroughs.py              # human-readable task-card and walkthrough-storyboard metadata
   generate_visualizations.py        # refreshes SVG charts + summary JSON
   render_task_suite_infographic.py  # renders the task-suite presentation PNG
@@ -422,6 +426,7 @@ docs/
   data/single_episode_task_model_radar.json # 1-episode split radar values
   data/episode128_task_model_radar.json # 128-episode split radar values
   data/task_method_20_result_matrix.json # 9-method x 20-task result matrix
+  data/task_method_20_gap_audit.json # explicit 111/180 scored-cell gap ledger
   data/evidence_contract.json       # machine-readable project scope
   data/artifact_index.json          # compact project-artifact catalog
   data/live_publication_status.json # live GitHub/HF publication verification
@@ -1007,6 +1012,8 @@ stable artifact links. They should be read as the result bundle for tasks
 - [`docs/data/single_episode_task_model_radar.json`](docs/data/single_episode_task_model_radar.json)
 - [`docs/data/episode128_task_model_radar.json`](docs/data/episode128_task_model_radar.json)
 - [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)
+- [`docs/data/task_method_20_gap_audit.json`](docs/data/task_method_20_gap_audit.json)
+- [`TASK_METHOD_20_GAP_AUDIT.md`](TASK_METHOD_20_GAP_AUDIT.md)
 - [`TIER2_TASK_BASELINES.md`](results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md)
 - [`tier2_task_suite_results.json`](results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json)
 - [`docs/data/tier2_task_suite.json`](docs/data/tier2_task_suite.json)

@@ -98,6 +98,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "task_method_20_gap_audit_json",
+        "title": "Task-method 20-result gap audit JSON",
+        "local_path": "docs/data/task_method_20_gap_audit.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/task_method_20_gap_audit.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/task_method_20_gap_audit.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/task_method_20_gap_audit.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/task_method_20_gap_audit.json",
+        },
+    },
+    {
         "id": "single_episode_task_model_radar_json",
         "title": "Single-episode 20-task model radar JSON",
         "local_path": "docs/data/single_episode_task_model_radar.json",

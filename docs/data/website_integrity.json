@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-16T11:33:51+00:00",
+  "generated_at_utc": "2026-06-16T12:01:39+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 176,
+    "local_references": 178,
     "external_reference_count": 121,
-    "json_files": 45,
+    "json_files": 46,
     "image_assets_referenced": 25,
     "failure_count": 0
   },
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 87077,
-      "evidence_index": 114423
+      "overview_index": 87155,
+      "evidence_index": 114501
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 87077,
-      "protocol_index": 110604,
-      "evidence_index": 114423
+      "overview_index": 87155,
+      "protocol_index": 110682,
+      "evidence_index": 114501
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -180,7 +180,7 @@
       "status": "pass",
       "reason": "The Suite anchor should show the task-suite map before the modality atlas.",
       "first_marker_index": 471,
-      "second_marker_index": 3362
+      "second_marker_index": 3776
     },
     {
       "name": "suite_modality_atlas_contains_seven_cards",
@@ -277,7 +277,7 @@
     {
       "path": "index.html",
       "id_count": 90,
-      "reference_count": 152,
+      "reference_count": 154,
       "image_count": 31
     },
     {
@@ -301,7 +301,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 99966,
+      "bytes": 103135,
       "top_level_type": "dict"
     },
     {
@@ -472,6 +472,11 @@
     {
       "path": "data/summary_metrics.json",
       "bytes": 27807,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/task_method_20_gap_audit.json",
+      "bytes": 59421,
       "top_level_type": "dict"
     },
     {

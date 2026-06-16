@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-16T11:34:16+00:00",
+  "generated_at_utc": "2026-06-16T12:04:24+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -102,6 +102,7 @@
     "docs/data/single_episode_task_model_radar.json": true,
     "docs/data/episode128_task_model_radar.json": true,
     "docs/data/task_method_20_result_matrix.json": true,
+    "docs/data/task_method_20_gap_audit.json": true,
     "docs/data/task_suite_enhancement_128.json": true,
     "docs/assets/modalities/video.jpg": true,
     "docs/assets/modalities/audio.png": true,
@@ -135,6 +136,7 @@
     "scripts/build_evaluation_protocol.py": true,
     "scripts/build_unified_task_suite.py": true,
     "scripts/build_unified_task_model_radar.py": true,
+    "scripts/build_task_method_20_gap_audit.py": true,
     "scripts/build_figure_index.py": true,
     "scripts/build_quality_gates.py": true,
     "scripts/build_public_surface_qa.py": true,
@@ -198,8 +200,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 1189,
-      "text_file_count": 994,
+      "file_count": 1196,
+      "text_file_count": 1001,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978
@@ -209,8 +211,8 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 972,
-      "text_file_count": 816,
+      "file_count": 976,
+      "text_file_count": 820,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978
@@ -220,8 +222,8 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 2306,
-      "text_file_count": 1000,
+      "file_count": 2314,
+      "text_file_count": 1008,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978
@@ -231,8 +233,8 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 2737,
-      "text_file_count": 1159,
+      "file_count": 2746,
+      "text_file_count": 1168,
       "largest_file": {
         "path": "pytorch_model.bin",
         "bytes": 93495480

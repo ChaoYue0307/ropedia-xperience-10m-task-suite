@@ -179,6 +179,7 @@ def build_report() -> dict:
         "data/single_episode_task_model_radar.json",
         "data/episode128_task_model_radar.json",
         "data/task_method_20_result_matrix.json",
+        "data/task_method_20_gap_audit.json",
         "assets/charts/unified_task_model_radar.svg",
         "assets/charts/single_episode_task_model_radar.svg",
         "assets/charts/episode128_task_model_radar.svg",

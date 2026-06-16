@@ -1,19 +1,19 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-16T11:33:21+00:00",
+  "generated_at_utc": "2026-06-16T12:01:29+00:00",
   "status": "pass",
-  "artifact_count": 183,
+  "artifact_count": 189,
   "missing": [],
   "by_kind": {
     "project_path": 14,
     "scaleup_contract": 7,
-    "scaleup_status": 38,
-    "publication_workflow": 5,
+    "scaleup_status": 41,
+    "publication_workflow": 6,
     "reproducibility": 4,
     "project_scope": 1,
     "source_alignment": 5,
-    "evaluation_protocol": 7,
-    "website_data": 9,
+    "evaluation_protocol": 8,
+    "website_data": 10,
     "generated_figure": 7,
     "visualization_builder": 1,
     "model_result": 2,
@@ -465,7 +465,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "20df8bf51a9e380bb67cc4f8c802088030f42e421d4e7232ecd2f2f62e0e6cc7"
+      "sha256": "fce9e1525d5bfb4ddbdd0d36febfcf7df9f7115e29457f85ff322db1e7418a1d"
     },
     {
       "id": "source_alignment_validator",
@@ -633,6 +633,28 @@
       "sha256": "fe14a0e1709a8bb5b9fb1fd720ffde0aecfed578329d8e1e71b352a83b23b1f8"
     },
     {
+      "id": "task_method_20_gap_audit_json",
+      "title": "Task-method 20-result gap audit JSON",
+      "path": "docs/data/task_method_20_gap_audit.json",
+      "kind": "website_data",
+      "surface": "website_hf",
+      "shows": "Machine-readable 180-record gap ledger with 111 numeric scores, 69 scoreless cells, explicit status reasons, and next evidence needed before new scores can be published.",
+      "exists": true,
+      "bytes": 59421,
+      "sha256": "872954cbf001c2286b186e17c8d590d9d637852cade0ecc2357c63247e4803fb"
+    },
+    {
+      "id": "task_method_20_gap_audit",
+      "title": "Task-method 20-result gap audit",
+      "path": "TASK_METHOD_20_GAP_AUDIT.md",
+      "kind": "evaluation_protocol",
+      "surface": "repo_hf",
+      "shows": "Reader-facing ledger that lists every scoreless method-task cell and the concrete target or model-output evidence required before it can become numeric.",
+      "exists": true,
+      "bytes": 16600,
+      "sha256": "e6bd5b49d01eb095fe6f0d38436e08f2c2ff1a4449f98a08928d51e965e563bb"
+    },
+    {
       "id": "unified_task_model_radar_chart",
       "title": "Unified 20-task model radar",
       "path": "docs/assets/charts/unified_task_model_radar.svg",
@@ -675,6 +697,50 @@
       "exists": true,
       "bytes": 47539,
       "sha256": "23a655bc2ba72e5326a0db8a5cad06d297d5fb76d7985135192f1d34368b966b"
+    },
+    {
+      "id": "task_method_20_gap_audit_builder",
+      "title": "Task-method gap-audit builder",
+      "path": "scripts/build_task_method_20_gap_audit.py",
+      "kind": "publication_workflow",
+      "surface": "repo_hf",
+      "shows": "Regenerates the public gap audit from the 9-method by 20-task matrix without inventing scores for unsupported or unevaluated cells.",
+      "exists": true,
+      "bytes": 9959,
+      "sha256": "6a0086ccbc567529b2b24061ca36228e8eac213331621bc66b96db2aea62e1f4"
+    },
+    {
+      "id": "all_task_model_scoring_waiter",
+      "title": "All-task model scoring guarded waiter",
+      "path": "scripts/omni/launch_all_task_model_scoring_when_free.sh",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Launches a user-provided all-task model scoring command only after enough private GPU capacity is idle, writing status logs under results/omni_finetune/deferred_launchers.",
+      "exists": true,
+      "bytes": 3537,
+      "sha256": "e7cf8e6dcffcee6840f45047835c8f68bee83d1a80d1da5e35bb8274b6cb89a0"
+    },
+    {
+      "id": "model_output_probe_readiness",
+      "title": "Model-output probe readiness",
+      "path": "results/omni_finetune/model_output_probe_readiness/model_output_probe_readiness.json",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Checks whether Qwen3/Cosmos branches have train, validation, and test prediction files before extending model overlays to all 20 task contracts.",
+      "exists": true,
+      "bytes": 5565,
+      "sha256": "62bde6c548c5c2dd70b41cd2c3967a92dc3bd1c93a12d2092643e220c7e4bdbd"
+    },
+    {
+      "id": "model_output_probe_script",
+      "title": "Model-output probe readiness script",
+      "path": "scripts/omni/score_model_output_probes.py",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Audits model-output split availability and writes a readiness report without assigning new numeric task scores.",
+      "exists": true,
+      "bytes": 9133,
+      "sha256": "3a867d0333fe591999715158e311011db25da018ca39c9b4638930841f35efb8"
     },
     {
       "id": "a100_128_metadata_task_baselines",
@@ -795,7 +861,7 @@
       "shows": "Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts.",
       "exists": true,
       "bytes": 6217,
-      "sha256": "d16e8f64afc588d6a69498244a9db6304350b14feee571b8c5e9c41f08541a00"
+      "sha256": "5ec54cfb09114042ada7aad54b3c8143b9b305bcd1f8ffd65d9f5116f3f19481"
     },
     {
       "id": "figure_index_json",
@@ -806,7 +872,7 @@
       "shows": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
       "bytes": 17287,
-      "sha256": "3a29f7fb5ea8f03231583df87e678384978911b52486e43f0d805d6d9f13f3d5"
+      "sha256": "66a495e656967f51f984f637c98aa4f3e5d16fdfdb05ae60660edebd84b0447d"
     },
     {
       "id": "figure_index_builder",
@@ -883,7 +949,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8100,
-      "sha256": "3f42f631cdd5bfbd7e51a911ae7c76b293818b0937428821a2a86c2a4dd5c98b"
+      "sha256": "9d6069e48f2ee57b910193ff3c5f52233c3864a85e3c4e753ecf6f2b411c54ac"
     },
     {
       "id": "public_surface_qa",
@@ -916,8 +982,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the public presentation report before release.",
       "exists": true,
-      "bytes": 12605,
-      "sha256": "3ad531eaea623a977b7f6831b9e1e49a60d61604f7639d5e7e47a1741cc05bab"
+      "bytes": 12651,
+      "sha256": "c95df2c4f875d9d6752619d81e139aa44d0192f5efc0cbf9948723a370905b3f"
     },
     {
       "id": "task_surface_integrity",
@@ -997,8 +1063,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 55921,
-      "sha256": "feacfcf3b228c4270645a07effadf28372fcc0c86d753bb85e1bb23535acacb4"
+      "bytes": 56713,
+      "sha256": "d716fcaf5fe20a38fd4aad7a2abdb51585bb58ffdcff81141da649e342d19c6d"
     },
     {
       "id": "reproducibility_contract",
@@ -1030,8 +1096,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 51367,
-      "sha256": "808ea80ed1c1a047121d86dd976822b96bf6da8176204a6121b8890955d3ab67"
+      "bytes": 53849,
+      "sha256": "c6407d4644cd6fee2981a6240c8087b0a83e43133aeb5bcff52d67b27f469e2d"
     },
     {
       "id": "publication_audit",
