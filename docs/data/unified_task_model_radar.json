@@ -1,7 +1,7 @@
 {
   "title": "Unified 20-Task Model Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-16T08:49:30+00:00",
+  "generated_at_utc": "2026-06-16T09:43:00+00:00",
   "task_count": 20,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
@@ -20,6 +20,8 @@
       "kind": "full_20_task_baseline",
       "scope": "1 public sample episode",
       "stroke_dasharray": null,
+      "method_detail": "Single-episode simple heads over the public sample split.",
+      "plotted_as": "filled polygon",
       "covered_task_count": 20,
       "coverage_fraction": 1.0
     },
@@ -31,6 +33,8 @@
       "kind": "full_20_task_baseline",
       "scope": "1 public sample episode",
       "stroke_dasharray": null,
+      "method_detail": "Single-episode compact PyTorch MLP heads on the same 20 task contracts.",
+      "plotted_as": "filled polygon",
       "covered_task_count": 20,
       "coverage_fraction": 1.0
     },
@@ -42,6 +46,8 @@
       "kind": "partial_128_episode_metadata_baseline",
       "scope": "128 selected episodes, JSONL metadata/text only",
       "stroke_dasharray": "9 6",
+      "method_detail": "128-episode JSONL metadata/text simple baselines.",
+      "plotted_as": "colored point overlay",
       "covered_task_count": 8,
       "coverage_fraction": 0.4
     },
@@ -53,6 +59,8 @@
       "kind": "partial_128_episode_metadata_baseline",
       "scope": "128 selected episodes, JSONL metadata/text only",
       "stroke_dasharray": "3 6",
+      "method_detail": "128-episode JSONL metadata/text MLP baselines.",
+      "plotted_as": "colored point overlay",
       "covered_task_count": 6,
       "coverage_fraction": 0.3
     },
@@ -64,6 +72,8 @@
       "kind": "complete_128_episode_raw_feature_baseline",
       "scope": "128 selected episodes, staged 4430-dim sensor NPZ features; 2 compact proxy axes",
       "stroke_dasharray": "8 4",
+      "method_detail": "128-episode 4430-dim sensor NPZ simple heads; tasks 15/19 use compact proxies.",
+      "plotted_as": "colored point overlay",
       "covered_task_count": 20,
       "coverage_fraction": 1.0
     },
@@ -75,6 +85,8 @@
       "kind": "complete_128_episode_raw_feature_baseline",
       "scope": "128 selected episodes, staged 4430-dim sensor NPZ features; 2 compact proxy axes",
       "stroke_dasharray": "2 5",
+      "method_detail": "128-episode 4430-dim sensor NPZ MLP heads; tasks 15/19 use compact proxies.",
+      "plotted_as": "colored point overlay",
       "covered_task_count": 20,
       "coverage_fraction": 1.0
     },
@@ -86,6 +98,8 @@
       "kind": "partial_128_episode_foundation_model_overlay",
       "scope": "128 selected episodes, held-out test",
       "stroke_dasharray": "7 7",
+      "method_detail": "Verified held-out Qwen3-Omni v6 LoRA metrics on task-aligned JSON outputs.",
+      "plotted_as": "colored point overlay",
       "covered_task_count": 6,
       "coverage_fraction": 0.3
     },
@@ -97,6 +111,8 @@
       "kind": "partial_128_episode_foundation_model_overlay",
       "scope": "128 selected episodes, held-out test",
       "stroke_dasharray": "4 7",
+      "method_detail": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation.",
+      "plotted_as": "colored point overlay",
       "covered_task_count": 6,
       "coverage_fraction": 0.3
     },
@@ -108,6 +124,8 @@
       "kind": "partial_128_episode_world_model_overlay",
       "scope": "128 selected episodes, held-out test",
       "stroke_dasharray": "2 7",
+      "method_detail": "Verified Cosmos3-Nano future-window compatibility metrics.",
+      "plotted_as": "colored point overlay",
       "covered_task_count": 5,
       "coverage_fraction": 0.25
     }
@@ -117,11 +135,13 @@
       "task_number": 1,
       "task_id": "timeline_action",
       "label": "Action Recognition",
+      "axis_label": "01 Action Recognition",
       "short_label": "Action",
       "origin": "original_public_sample_tasks",
       "metric_key": "macro_f1",
       "metric_name": "macro-F1",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.05,
@@ -201,11 +221,13 @@
       "task_number": 2,
       "task_id": "timeline_subtask",
       "label": "Procedure Step Recognition",
+      "axis_label": "02 Procedure Step Recognition",
       "short_label": "Step",
       "origin": "original_public_sample_tasks",
       "metric_key": "macro_f1",
       "metric_name": "macro-F1",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.05056355513846935,
@@ -277,11 +299,13 @@
       "task_number": 3,
       "task_id": "transition_detection",
       "label": "Action Boundary Detection",
+      "axis_label": "03 Action Boundary Detection",
       "short_label": "Boundary",
       "origin": "original_public_sample_tasks",
       "metric_key": "macro_f1",
       "metric_name": "macro-F1",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.6118237590630229,
@@ -361,11 +385,13 @@
       "task_number": 4,
       "task_id": "next_action",
       "label": "Next-Action Prediction",
+      "axis_label": "04 Next-Action Prediction",
       "short_label": "Next act",
       "origin": "original_public_sample_tasks",
       "metric_key": "macro_f1",
       "metric_name": "macro-F1",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.05925925925925927,
@@ -445,11 +471,13 @@
       "task_number": 5,
       "task_id": "hand_trajectory_forecast",
       "label": "Hand Trajectory Forecasting",
+      "axis_label": "05 Hand Trajectory Forecasting",
       "short_label": "Hand traj",
       "origin": "original_public_sample_tasks",
       "metric_key": "mpjpe",
       "metric_name": "MPJPE",
       "metric_direction": "lower",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.8646570444107056,
@@ -489,11 +517,13 @@
       "task_number": 6,
       "task_id": "contact_prediction",
       "label": "Contact State Prediction",
+      "axis_label": "06 Contact State Prediction",
       "short_label": "Contact",
       "origin": "original_public_sample_tasks",
       "metric_key": "macro_f1",
       "metric_name": "macro-F1",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 1.0,
@@ -573,11 +603,13 @@
       "task_number": 7,
       "task_id": "object_relevance",
       "label": "Object Relevance Prediction",
+      "axis_label": "07 Object Relevance Prediction",
       "short_label": "Objects",
       "origin": "original_public_sample_tasks",
       "metric_key": "micro_f1",
       "metric_name": "micro-F1",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.18034382095361662,
@@ -649,11 +681,13 @@
       "task_number": 8,
       "task_id": "caption_grounding",
       "label": "Language Grounding",
+      "axis_label": "08 Language Grounding",
       "short_label": "Language",
       "origin": "original_public_sample_tasks",
       "metric_key": "mrr",
       "metric_name": "MRR",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.016023479050338015,
@@ -701,11 +735,13 @@
       "task_number": 9,
       "task_id": "cross_modal_retrieval",
       "label": "Cross-Modal Retrieval",
+      "axis_label": "09 Cross-Modal Retrieval",
       "short_label": "X-modal",
       "origin": "original_public_sample_tasks",
       "metric_key": "mrr",
       "metric_name": "MRR",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.26925966892956127,
@@ -753,11 +789,13 @@
       "task_number": 10,
       "task_id": "modality_reconstruction",
       "label": "Cross-Modal Reconstruction",
+      "axis_label": "10 Cross-Modal Reconstruction",
       "short_label": "Recon",
       "origin": "original_public_sample_tasks",
       "metric_key": "r2",
       "metric_name": "R2",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": -0.015271898913936655,
@@ -797,11 +835,13 @@
       "task_number": 11,
       "task_id": "temporal_order",
       "label": "Temporal Order Verification",
+      "axis_label": "11 Temporal Order Verification",
       "short_label": "Order",
       "origin": "original_public_sample_tasks",
       "metric_key": "f1",
       "metric_name": "F1",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.5399515738498789,
@@ -849,11 +889,13 @@
       "task_number": 12,
       "task_id": "misalignment_detection",
       "label": "Multimodal Synchronization Detection",
+      "axis_label": "12 Multimodal Synchronization Detection",
       "short_label": "Sync",
       "origin": "original_public_sample_tasks",
       "metric_key": "f1",
       "metric_name": "F1",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.5051698670605613,
@@ -893,11 +935,13 @@
       "task_number": 13,
       "task_id": "long_horizon_next_action",
       "label": "Long-Horizon Next-Action Forecasting",
+      "axis_label": "13 Long-Horizon Next-Action Forecasting",
       "short_label": "Long act",
       "origin": "additional_public_sample_tasks",
       "metric_key": "macro_f1",
       "metric_name": "macro-F1",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.07499999999999998,
@@ -937,11 +981,13 @@
       "task_number": 14,
       "task_id": "next_subtask_forecast",
       "label": "Long-Horizon Next-Subtask Forecasting",
+      "axis_label": "14 Long-Horizon Next-Subtask Forecasting",
       "short_label": "Long step",
       "origin": "additional_public_sample_tasks",
       "metric_key": "macro_f1",
       "metric_name": "macro-F1",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.04545454545454545,
@@ -981,11 +1027,13 @@
       "task_number": 15,
       "task_id": "interaction_text_prediction",
       "label": "Interaction Text Prediction",
+      "axis_label": "15 Interaction Text Prediction",
       "short_label": "Interact txt",
       "origin": "additional_public_sample_tasks",
       "metric_key": "macro_f1",
       "metric_name": "macro-F1",
       "metric_direction": "higher",
+      "raw128_proxy_axis": true,
       "values": {
         "minimal": {
           "raw": 0.04444444444444444,
@@ -1025,11 +1073,13 @@
       "task_number": 16,
       "task_id": "action_object_relation",
       "label": "Action-Object Relation Prediction",
+      "axis_label": "16 Action-Object Relation Prediction",
       "short_label": "Act+obj",
       "origin": "additional_public_sample_tasks",
       "metric_key": "macro_f1",
       "metric_name": "macro-F1",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.0,
@@ -1069,11 +1119,13 @@
       "task_number": 17,
       "task_id": "object_set_forecast",
       "label": "Future Object-Set Forecasting",
+      "axis_label": "17 Future Object-Set Forecasting",
       "short_label": "Future obj",
       "origin": "additional_public_sample_tasks",
       "metric_key": "micro_f1",
       "metric_name": "micro-F1",
       "metric_direction": "higher",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.16939890710382516,
@@ -1113,11 +1165,13 @@
       "task_number": 18,
       "task_id": "imu_to_hand_pose",
       "label": "IMU-to-Hand Pose Reconstruction",
+      "axis_label": "18 IMU-to-Hand Pose Reconstruction",
       "short_label": "IMU->hand",
       "origin": "additional_public_sample_tasks",
       "metric_key": "mae",
       "metric_name": "MAE",
       "metric_direction": "lower",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 0.042049407958984375,
@@ -1157,11 +1211,13 @@
       "task_number": 19,
       "task_id": "camera_view_sync_retrieval",
       "label": "Camera-View Synchronization Retrieval",
+      "axis_label": "19 Camera-View Synchronization Retrieval",
       "short_label": "Cam sync",
       "origin": "additional_public_sample_tasks",
       "metric_key": "mrr",
       "metric_name": "MRR",
       "metric_direction": "higher",
+      "raw128_proxy_axis": true,
       "values": {
         "minimal": {
           "raw": 0.4943004846572876,
@@ -1201,11 +1257,13 @@
       "task_number": 20,
       "task_id": "time_to_transition",
       "label": "Time-to-Next-Transition Regression",
+      "axis_label": "20 Time-to-Next-Transition Regression",
       "short_label": "Time2bdry",
       "origin": "additional_public_sample_tasks",
       "metric_key": "mae",
       "metric_name": "MAE frames",
       "metric_direction": "lower",
+      "raw128_proxy_axis": false,
       "values": {
         "minimal": {
           "raw": 10.53735637664795,

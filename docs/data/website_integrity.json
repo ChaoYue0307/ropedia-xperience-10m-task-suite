@@ -1,11 +1,11 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-16T08:50:28+00:00",
+  "generated_at_utc": "2026-06-16T09:46:21+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 156,
+    "local_references": 161,
     "external_reference_count": 121,
     "json_files": 42,
     "image_assets_referenced": 23,
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 76641,
-      "evidence_index": 102471
+      "overview_index": 85350,
+      "evidence_index": 111180
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 76641,
-      "protocol_index": 98652,
-      "evidence_index": 102471
+      "overview_index": 85350,
+      "protocol_index": 107361,
+      "evidence_index": 111180
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -180,7 +180,7 @@
       "status": "pass",
       "reason": "The Suite anchor should show the task-suite map before the modality atlas.",
       "first_marker_index": 471,
-      "second_marker_index": 1726
+      "second_marker_index": 1880
     },
     {
       "name": "suite_modality_atlas_contains_seven_cards",
@@ -264,7 +264,7 @@
       "name": "task_cards_use_human_research_names",
       "status": "pass",
       "reason": "The public task surface should use readable research task names.",
-      "marker_count": 3
+      "marker_count": 4
     }
   ],
   "html_pages": [
@@ -277,8 +277,8 @@
     {
       "path": "index.html",
       "id_count": 90,
-      "reference_count": 132,
-      "image_count": 26
+      "reference_count": 137,
+      "image_count": 27
     },
     {
       "path": "research_roadmap.html",
@@ -336,12 +336,12 @@
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 131868,
+      "bytes": 131877,
       "top_level_type": "dict"
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 832111,
+      "bytes": 838389,
       "top_level_type": "dict"
     },
     {
@@ -491,7 +491,7 @@
     },
     {
       "path": "data/unified_task_model_radar.json",
-      "bytes": 56596,
+      "bytes": 59582,
       "top_level_type": "dict"
     },
     {
@@ -587,7 +587,7 @@
     {
       "path": "assets/charts/unified_task_model_radar.svg",
       "exists": true,
-      "bytes": 37974,
+      "bytes": 51562,
       "format": "SVG",
       "has_viewbox": true
     },

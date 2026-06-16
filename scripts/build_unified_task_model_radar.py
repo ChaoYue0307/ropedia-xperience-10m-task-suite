@@ -186,6 +186,20 @@ SHORT_TASK_LABELS = {
     "time_to_transition": "Time2bdry",
 }
 
+METHOD_DETAILS = {
+    "minimal": "Single-episode simple heads over the public sample split.",
+    "neural_mlp": "Single-episode compact PyTorch MLP heads on the same 20 task contracts.",
+    "metadata128_simple": "128-episode JSONL metadata/text simple baselines.",
+    "metadata128_neural_mlp": "128-episode JSONL metadata/text MLP baselines.",
+    "raw128_simple": "128-episode 4430-dim sensor NPZ simple heads; tasks 15/19 use compact proxies.",
+    "raw128_neural_mlp": "128-episode 4430-dim sensor NPZ MLP heads; tasks 15/19 use compact proxies.",
+    "qwen3_omni_v6_lora": "Verified held-out Qwen3-Omni v6 LoRA metrics on task-aligned JSON outputs.",
+    "cosmos3_super_reasoner": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation.",
+    "cosmos3_nano_future_window": "Verified Cosmos3-Nano future-window compatibility metrics.",
+}
+
+PROXY_TASK_IDS = {"interaction_text_prediction", "camera_view_sync_retrieval"}
+
 
 def read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
@@ -287,6 +301,40 @@ def svg_text(
     )
 
 
+def split_text(text: str, max_chars: int) -> list[str]:
+    words = text.split()
+    if not words:
+        return [""]
+    lines: list[str] = []
+    current = words[0]
+    for word in words[1:]:
+        if len(current) + 1 + len(word) <= max_chars:
+            current += " " + word
+        else:
+            lines.append(current)
+            current = word
+    lines.append(current)
+    return lines
+
+
+def svg_text_lines(
+    x: float,
+    y: float,
+    lines: list[str],
+    *,
+    size: int = 14,
+    fill: str = "#f4f8ef",
+    anchor: str = "start",
+    weight: int | str = 600,
+    line_height: float = 18,
+    opacity: float = 1.0,
+) -> list[str]:
+    return [
+        svg_text(x, y + idx * line_height, line, size=size, fill=fill, anchor=anchor, weight=weight, opacity=opacity)
+        for idx, line in enumerate(lines)
+    ]
+
+
 def polyline(points: list[tuple[float, float]], *, fill: str, stroke: str, opacity: float, stroke_width: float, dash: str | None = None) -> str:
     coords = " ".join(f"{x:.1f},{y:.1f}" for x, y in points)
     dash_attr = f' stroke-dasharray="{dash}"' if dash else ""
@@ -366,11 +414,13 @@ def build_payload() -> dict[str, Any]:
                 "task_number": row["task_number"],
                 "task_id": row["task_id"],
                 "label": row.get("task_display_name", row["task_id"]),
+                "axis_label": f"{row['task_number']:02d} {row.get('task_display_name', row['task_id'])}",
                 "short_label": SHORT_TASK_LABELS.get(row["task_id"], row["task_id"].replace("_", " ").title()),
                 "origin": row.get("origin"),
                 "metric_key": row.get("metric_key"),
                 "metric_name": row.get("metric_name"),
                 "metric_direction": row.get("metric_direction"),
+                "raw128_proxy_axis": row["task_id"] in PROXY_TASK_IDS,
                 "values": values,
             }
         )
@@ -382,6 +432,8 @@ def build_payload() -> dict[str, Any]:
             {
                 "id": series_id,
                 **spec,
+                "method_detail": METHOD_DETAILS.get(series_id, spec["scope"]),
+                "plotted_as": "filled polygon" if spec["kind"].startswith("full_20_task_baseline") else "colored point overlay",
                 "covered_task_count": covered,
                 "coverage_fraction": covered / max(len(tasks), 1),
             }
@@ -474,8 +526,8 @@ def build_payload() -> dict[str, Any]:
 
 
 def render_svg(payload: dict[str, Any]) -> str:
-    width, height = 1720, 1500
-    cx, cy, radius = 570, 585, 330
+    width, height = 1920, 1640
+    cx, cy, radius = 550, 760, 370
     tasks = payload["tasks"]
     n = len(tasks)
     angles = [-math.pi / 2 + 2 * math.pi * i / n for i in range(n)]
@@ -487,11 +539,28 @@ def render_svg(payload: dict[str, Any]) -> str:
         "</defs>",
         '<rect width="100%" height="100%" fill="#020502"/>',
         '<rect width="100%" height="100%" fill="url(#dots)" opacity="0.45"/>',
-        '<rect x="28" y="28" width="1664" height="1444" rx="18" fill="#061006" fill-opacity="0.86" stroke="#ccffa0" stroke-opacity="0.22"/>',
-        svg_text(70, 86, "Unified 20-Task Model Radar", size=34, weight=800),
-        svg_text(70, 122, "Direction-aware normalized scores across the single-episode task suite, with 128ep metadata/raw and Qwen3/Cosmos overlays.", size=17, fill="#a5afa2", weight=560),
-        svg_text(70, 156, "Filled polygons: same 20 public-sample tasks. Points: 128-episode branches only where their public metrics map to that task.", size=15, fill="#a5afa2", weight=560),
+        '<rect x="28" y="28" width="1864" height="1584" rx="18" fill="#061006" fill-opacity="0.88" stroke="#ccffa0" stroke-opacity="0.22"/>',
+        svg_text(70, 86, "Unified 20-Task Model Radar", size=36, weight=800),
+        svg_text(70, 122, "Task names, methods, coverage, and metric normalization in one comparison view.", size=18, fill="#dce8d7", weight=650),
+        svg_text(70, 150, "Filled areas show single-episode baselines; colored points show 128-episode and foundation-model branches on task-aligned axes.", size=15, fill="#a5afa2", weight=560),
     ]
+
+    chip_specs = [
+        ("20 task axes", "#ccffa0"),
+        ("2 baseline polygons", "#67e8d1"),
+        ("40/40 raw128 pass", "#f59e0b"),
+        ("2 compact proxy axes", "#f472b6"),
+    ]
+    chip_x = 70
+    for label, color in chip_specs:
+        chip_w = 168 if len(label) < 15 else 206
+        parts.append(f'<rect x="{chip_x}" y="174" width="{chip_w}" height="34" rx="17" fill="{color}" fill-opacity="0.10" stroke="{color}" stroke-opacity="0.38"/>')
+        parts.append(svg_text(chip_x + 16, 197, label, size=13, fill=color, weight=760))
+        chip_x += chip_w + 12
+
+    parts.append('<rect x="54" y="235" width="920" height="980" rx="14" fill="#020502" fill-opacity="0.42" stroke="#ccffa0" stroke-opacity="0.14"/>')
+    parts.append(svg_text(84, 276, "Normalized task scores", size=23, weight=800))
+    parts.append(svg_text(84, 302, "Each axis is one task. Longer radius means better after metric-direction normalization.", size=13, fill="#a5afa2", weight=560))
 
     for level in range(1, 6):
         r = radius * level / 5
@@ -503,14 +572,14 @@ def render_svg(payload: dict[str, Any]) -> str:
     for task, angle in zip(tasks, angles):
         x, y = point(cx, cy, radius, angle)
         parts.append(f'<line x1="{cx:.1f}" y1="{cy:.1f}" x2="{x:.1f}" y2="{y:.1f}" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>')
-        lx, ly = point(cx, cy, radius + 58, angle)
+        lx, ly = point(cx, cy, radius + 70, angle)
         anchor = "middle"
         if math.cos(angle) > 0.25:
             anchor = "start"
         elif math.cos(angle) < -0.25:
             anchor = "end"
-        parts.append(svg_text(lx, ly - 7, f"{task['task_number']:02d}", size=11, fill="#ccffa0", anchor=anchor, weight=800, opacity=0.9))
-        parts.append(svg_text(lx, ly + 13, task["short_label"], size=12, fill="#dce8d7", anchor=anchor, weight=650))
+        parts.append(svg_text(lx, ly - 7, f"{task['task_number']:02d}", size=12, fill="#ccffa0", anchor=anchor, weight=800, opacity=0.95))
+        parts.append(svg_text(lx, ly + 14, task["short_label"], size=12, fill="#dce8d7", anchor=anchor, weight=700))
 
     for series_id in ("minimal", "neural_mlp"):
         spec = SERIES[series_id]
@@ -543,38 +612,49 @@ def render_svg(payload: dict[str, Any]) -> str:
                 f'stroke="#020502" stroke-width="2.0"/>'
             )
 
-    legend_x, legend_y = 1105, 210
-    parts.append(f'<rect x="{legend_x - 34}" y="{legend_y - 44}" width="520" height="1030" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>')
-    parts.append(svg_text(legend_x, legend_y, "How to read it", size=24, weight=800))
-    parts.append(svg_text(legend_x, legend_y + 30, "Score radius is normalized by metric direction.", size=14, fill="#a5afa2", weight=560))
-    parts.append(svg_text(legend_x, legend_y + 52, "Raw values stay in unified_task_model_radar.json.", size=14, fill="#a5afa2", weight=560))
+    legend_x, legend_y = 1030, 178
+    parts.append(f'<rect x="{legend_x - 30}" y="{legend_y - 38}" width="820" height="560" rx="14" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>')
+    parts.append(svg_text(legend_x, legend_y, "Methods compared", size=25, weight=800))
+    parts.append(svg_text(legend_x, legend_y + 30, "Coverage is shown per method; raw metric values and sources stay in the JSON mirror.", size=13, fill="#a5afa2", weight=560))
 
-    cursor = legend_y + 100
+    cursor = legend_y + 74
     for record in payload["series"]:
         color = record["color"]
-        parts.append(f'<line x1="{legend_x}" y1="{cursor - 4}" x2="{legend_x + 48}" y2="{cursor - 4}" stroke="{color}" stroke-width="7" stroke-linecap="round"/>')
+        parts.append(f'<line x1="{legend_x}" y1="{cursor - 7}" x2="{legend_x + 50}" y2="{cursor - 7}" stroke="{color}" stroke-width="7" stroke-linecap="round"/>')
         if not record["kind"].startswith("full_20_task_baseline"):
-            parts.append(f'<circle cx="{legend_x + 24}" cy="{cursor - 4}" r="7" fill="{color}" stroke="#020502" stroke-width="2"/>')
-        parts.append(svg_text(legend_x + 64, cursor, record["label"], size=16, weight=800))
-        parts.append(svg_text(legend_x + 64, cursor + 22, f"{record['covered_task_count']}/20 axes · {record['scope']}", size=12, fill="#a5afa2", weight=560))
+            parts.append(f'<circle cx="{legend_x + 25}" cy="{cursor - 7}" r="7" fill="{color}" stroke="#020502" stroke-width="2"/>')
+        parts.append(svg_text(legend_x + 66, cursor - 12, record["label"], size=15, weight=800))
+        parts.append(svg_text(legend_x + 330, cursor - 12, f"{record['covered_task_count']}/20 axes", size=13, fill=color, weight=800))
+        detail_lines = split_text(METHOD_DETAILS.get(record["id"], record["scope"]), 64)[:2]
+        parts.extend(svg_text_lines(legend_x + 66, cursor + 8, detail_lines, size=11, fill="#a5afa2", weight=560, line_height=15))
         cursor += 50
 
-    cursor += 10
-    parts.append(svg_text(legend_x, cursor, "Model branch notes", size=20, weight=800))
-    cursor += 28
-    for card in payload["model_branch_cards"]:
-        parts.append(f'<rect x="{legend_x}" y="{cursor - 18}" width="445" height="64" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>')
-        parts.append(svg_text(legend_x + 16, cursor + 3, card["title"], size=14, weight=800))
-        parts.append(svg_text(legend_x + 16, cursor + 24, card["coverage"], size=11, fill="#a5afa2", weight=600))
-        parts.append(svg_text(legend_x + 16, cursor + 45, card["headline"], size=11, fill="#dce8d7", weight=600))
-        cursor += 74
+    key_x, key_y = 1030, 780
+    parts.append(f'<rect x="{key_x - 30}" y="{key_y - 44}" width="820" height="610" rx="14" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>')
+    parts.append(svg_text(key_x, key_y, "Task axis key", size=25, weight=800))
+    parts.append(svg_text(key_x, key_y + 30, "Full task names are listed here so the polygon remains readable at homepage scale.", size=13, fill="#a5afa2", weight=560))
+    for idx, task in enumerate(tasks):
+        col = 0 if idx < 10 else 1
+        row = idx if idx < 10 else idx - 10
+        x0 = key_x + col * 405
+        y0 = key_y + 74 + row * 48
+        proxy = task["task_id"] in PROXY_TASK_IDS
+        badge_fill = "#f472b6" if proxy else "#ccffa0"
+        parts.append(f'<rect x="{x0}" y="{y0 - 16}" width="36" height="26" rx="6" fill="{badge_fill}" fill-opacity="0.14" stroke="{badge_fill}" stroke-opacity="0.40"/>')
+        parts.append(svg_text(x0 + 18, y0 + 2, f"{task['task_number']:02d}", size=11, fill=badge_fill, anchor="middle", weight=800))
+        name_lines = split_text(str(task["label"]), 32)[:2]
+        parts.extend(svg_text_lines(x0 + 48, y0 - 3, name_lines, size=12, fill="#f4f8ef", weight=760, line_height=14))
+        metric_label = f"{task.get('metric_name') or task.get('metric_key')} / {'lower better' if task.get('metric_direction') == 'lower' else 'higher better'}"
+        if proxy:
+            metric_label += " / raw128 proxy"
+        parts.append(svg_text(x0 + 48, y0 + 29, metric_label, size=10, fill="#a5afa2", weight=560))
 
-    table_y = 1370
-    parts.append(f'<rect x="70" y="{table_y - 35}" width="1540" height="86" rx="10" fill="#020502" fill-opacity="0.54" stroke="#ccffa0" stroke-opacity="0.16"/>')
-    parts.append(svg_text(96, table_y - 8, "Caveat", size=15, fill="#ccffa0", weight=800))
-    parts.append(svg_text(170, table_y - 8, "This chart compares normalized metric direction, not identical raw units.", size=14, fill="#dce8d7", weight=650))
-    parts.append(svg_text(170, table_y + 18, "128-episode metadata/raw, Qwen3, and Cosmos overlays are plotted only on semantically aligned task axes.", size=14, fill="#a5afa2", weight=560))
-    parts.append(svg_text(170, table_y + 44, "Raw128 tasks 15 and 19 are documented compact proxies because raw interaction strings and paired video-view embeddings are absent.", size=14, fill="#a5afa2", weight=560))
+    table_y = 1468
+    parts.append(f'<rect x="70" y="{table_y - 38}" width="1780" height="120" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.16"/>')
+    parts.append(svg_text(100, table_y - 10, "Reading rules", size=16, fill="#ccffa0", weight=800))
+    parts.append(svg_text(220, table_y - 10, "Radius is direction-normalized, so compare shape first and raw values second.", size=14, fill="#dce8d7", weight=650))
+    parts.append(svg_text(220, table_y + 18, "Raw128 completion: 18 direct task targets plus 2 compact proxies. Task 15 predicts the dominant caption/object/interaction hash bin; task 19 retrieves depth/audio sync from camera pose.", size=13, fill="#a5afa2", weight=560))
+    parts.append(svg_text(220, table_y + 44, "Single-episode task-head scores, 128-episode baselines, Qwen3, and Cosmos branches use different data/model contracts; sources and raw metrics are in docs/data/unified_task_model_radar.json.", size=13, fill="#a5afa2", weight=560))
 
     parts.append("</svg>")
     return "\n".join(parts) + "\n"

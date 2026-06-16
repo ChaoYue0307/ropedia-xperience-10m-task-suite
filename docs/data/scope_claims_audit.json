@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-16T08:50:31+00:00",
+  "generated_at_utc": "2026-06-16T09:46:26+00:00",
   "summary": {
     "qwen3_omni_verified_diagnostic_pilot": true,
     "dataset_manifest_num_episodes": 119,
@@ -9,7 +9,7 @@
     "eval_num_samples": 4032,
     "eval_json_validity_rate": 0.9990079365079365,
     "quality_target_met": true,
-    "historical_identifier_count": 1800,
+    "historical_identifier_count": 1802,
     "public_32_episode_status_file_count": 1,
     "failure_count": 0
   },
@@ -84,7 +84,7 @@
     {
       "name": "historical_32ep_identifiers_are_confined_to_readiness_artifacts",
       "status": "pass",
-      "detail": "historical identifiers found in result provenance files=1800",
+      "detail": "historical identifiers found in result provenance files=1802",
       "evidence": [
         "results/omni_finetune/"
       ]
@@ -114,6 +114,24 @@
         "ropedia-episode-task-suite"
       ],
       "example": "export TRAINING_REPO=/path/to/ropedia-episode-task-suite"
+    },
+    {
+      "classification": "historical_identifier_in_readiness_artifact",
+      "path": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/run_summary.json",
+      "line": 2,
+      "patterns": [
+        "ropedia-episode-task-suite"
+      ],
+      "example": "\"dataset_jsonl\": \"/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset.jsonl\","
+    },
+    {
+      "classification": "historical_identifier_in_readiness_artifact",
+      "path": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/run_summary.json",
+      "line": 3,
+      "patterns": [
+        "ropedia-episode-task-suite"
+      ],
+      "example": "\"feature_manifest_json\": \"/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset_dense_20f_stride10/dataset_manifest.json\","
     },
     {
       "classification": "historical_identifier_in_readiness_artifact",
@@ -400,30 +418,8 @@
         "ropedia-episode-task-suite"
       ],
       "example": "{\"id\": \"xperience-10m-sample:qa:51\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 1020, \"end_frame\": 1039, \"num_frames\": 20}, \"media\": {\"video_path"
-    },
-    {
-      "classification": "historical_identifier_in_readiness_artifact",
-      "path": "results/omni_finetune/dataset.jsonl",
-      "line": 27,
-      "patterns": [
-        "qwen3_omni_32ep",
-        "xperience10m_qwen3_omni_32ep",
-        "ropedia-episode-task-suite"
-      ],
-      "example": "{\"id\": \"xperience-10m-sample:qa:52\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 1040, \"end_frame\": 1059, \"num_frames\": 20}, \"media\": {\"video_path"
-    },
-    {
-      "classification": "historical_identifier_in_readiness_artifact",
-      "path": "results/omni_finetune/dataset.jsonl",
-      "line": 28,
-      "patterns": [
-        "qwen3_omni_32ep",
-        "xperience10m_qwen3_omni_32ep",
-        "ropedia-episode-task-suite"
-      ],
-      "example": "{\"id\": \"xperience-10m-sample:qa:53\", \"episode_id\": \"xperience-10m-sample\", \"split\": \"train\", \"target\": \"episode_qa\", \"prompt_type\": \"json_episode_understanding\", \"center_window\": {\"start_frame\": 1060, \"end_frame\": 1079, \"num_frames\": 20}, \"media\": {\"video_path"
     }
   ],
-  "historical_identifier_total_count": 1800,
+  "historical_identifier_total_count": 1802,
   "failures": []
 }

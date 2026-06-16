@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-16T08:49:31+00:00",
+  "generated_at_utc": "2026-06-16T09:44:42+00:00",
   "status": "pass",
   "artifact_count": 177,
   "missing": [],
@@ -465,7 +465,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "412c42101e98f05afb9f4e79c3884930b07c9c5ff8dcb0b108fecfc1c0af5e24"
+      "sha256": "356ddd96f691b7194737e75be8bd33884c61dc83e3cb4dc16c7a842d168f6276"
     },
     {
       "id": "source_alignment_validator",
@@ -585,8 +585,8 @@
       "surface": "website_hf",
       "shows": "Stores normalized 20-axis radar values, raw task metrics, Qwen3/Cosmos overlay mappings, and branch-card caveats.",
       "exists": true,
-      "bytes": 54075,
-      "sha256": "86d82d6cb9dde65aded4fbfe4d621b511f4a7e7630aef357ce270e1bc37ab50a"
+      "bytes": 59582,
+      "sha256": "bccd1294d51b028775dc671d05ff9a1354fa4ae7ebe3f258c2e6a8161cdff5a8"
     },
     {
       "id": "unified_task_model_radar_chart",
@@ -596,8 +596,8 @@
       "surface": "website_hf",
       "shows": "Compares minimal and neural MLP baselines across all 20 tasks, with Qwen3/Cosmos task-aligned model overlays.",
       "exists": true,
-      "bytes": 37507,
-      "sha256": "4bb600ac9ce7901a3c94ca5851f6975751b0a7b6e1d72f397565ecfb8dfba0df"
+      "bytes": 51562,
+      "sha256": "c10c80db297ff1b955bae7826673755d626ddf278aad7f5975d99ba3a5379bbf"
     },
     {
       "id": "unified_task_model_radar_builder",
@@ -607,8 +607,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the direction-aware radar chart and machine-readable metric overlay JSON.",
       "exists": true,
-      "bytes": 27347,
-      "sha256": "8b5eb0a12fb320024f942bc650fb0fe779a0a59e835f26e71ccb55885695adda"
+      "bytes": 31577,
+      "sha256": "839f9310fb2bcd8db5b169a4f1190531cb66a8c4c4b0531a77112c245eee0acc"
     },
     {
       "id": "a100_128_metadata_task_baselines",
@@ -740,7 +740,7 @@
       "shows": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
       "bytes": 15726,
-      "sha256": "587fc0e7e9e93f06341f520acf89b7ef81eeb98caaa90135881bc0d681ac2679"
+      "sha256": "000936c696f2ff25c4404c0338fb3d6f00088fe98f67cfcf33bbae7491a663ff"
     },
     {
       "id": "figure_index_builder",
@@ -817,7 +817,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8100,
-      "sha256": "52c8d858159ef519fae7382a3cac2ae7edd755f22e8f3ac3b8a63a7a90dba96a"
+      "sha256": "04f623a8b53139b55711589a1168b0ece2f2dc4400bf5ed3b2dcd6a4d7bcd97d"
     },
     {
       "id": "public_surface_qa",
@@ -920,7 +920,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 131868,
+      "bytes": 131877,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1000,7 +1000,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 832111,
+      "bytes": 838389,
       "hash_policy": "existence_and_size_only"
     },
     {
