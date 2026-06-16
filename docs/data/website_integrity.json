@@ -1,14 +1,14 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-16T05:08:02+00:00",
+  "generated_at_utc": "2026-06-16T05:27:06+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 154,
+    "local_references": 156,
     "external_reference_count": 121,
-    "json_files": 41,
-    "image_assets_referenced": 22,
+    "json_files": 42,
+    "image_assets_referenced": 23,
     "failure_count": 0
   },
   "failures": {
@@ -180,7 +180,7 @@
       "status": "pass",
       "reason": "The Suite anchor should show the task-suite map before the modality atlas.",
       "first_marker_index": 471,
-      "second_marker_index": 763
+      "second_marker_index": 1676
     },
     {
       "name": "suite_modality_atlas_contains_seven_cards",
@@ -277,8 +277,8 @@
     {
       "path": "index.html",
       "id_count": 90,
-      "reference_count": 130,
-      "image_count": 25
+      "reference_count": 132,
+      "image_count": 26
     },
     {
       "path": "research_roadmap.html",
@@ -301,7 +301,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 93924,
+      "bytes": 95405,
       "top_level_type": "dict"
     },
     {
@@ -326,7 +326,7 @@
     },
     {
       "path": "data/figure_index.json",
-      "bytes": 14939,
+      "bytes": 15699,
       "top_level_type": "dict"
     },
     {
@@ -336,7 +336,7 @@
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 126966,
+      "bytes": 125973,
       "top_level_type": "dict"
     },
     {
@@ -381,7 +381,7 @@
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 5698,
+      "bytes": 5804,
       "top_level_type": "dict"
     },
     {
@@ -416,7 +416,7 @@
     },
     {
       "path": "data/reproducibility_matrix.json",
-      "bytes": 6673,
+      "bytes": 6815,
       "top_level_type": "dict"
     },
     {
@@ -487,6 +487,11 @@
     {
       "path": "data/tier2_task_suite.json",
       "bytes": 33402,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/unified_task_model_radar.json",
+      "bytes": 31157,
       "top_level_type": "dict"
     },
     {
@@ -576,6 +581,13 @@
       "path": "assets/charts/tier2_task_suite.svg",
       "exists": true,
       "bytes": 5437,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/unified_task_model_radar.svg",
+      "exists": true,
+      "bytes": 26681,
       "format": "SVG",
       "has_viewbox": true
     },

@@ -77,6 +77,7 @@ python scripts/research_direction_taxonomy.py
 python scripts/research_direction_extension_tasks.py
 python scripts/tier2_task_suite.py
 python scripts/build_unified_task_suite.py
+python scripts/build_unified_task_model_radar.py
 python scripts/task_walkthroughs.py
 python scripts/validate_source_alignment.py
 python scripts/build_evaluation_protocol.py
@@ -159,6 +160,7 @@ Verified staged-GPU smoke evidence from 2026-06-14:
 | --- | --- |
 | Minimal baselines | `results/min_action_model/`, `results/min_all_modalities_action_model/`, metrics and model weights |
 | Unified 20-task suite | `TASK_SUITE_20.md`, `docs/data/task_suite_20.json`, `results/episode_task_suite/summary_report.json`, per-task `metrics.json`, predictions, confusion matrices, and the tasks 13-20 historical `tier2_task_suite` result bundle |
+| Unified 20-task model radar | `docs/data/unified_task_model_radar.json`, `docs/assets/charts/unified_task_model_radar.svg` |
 | Neural heads | `results/episode_task_suite/neural_mlp/**/metrics.json`, histories, model checkpoints |
 | Research directions | `results/episode_task_suite/research_directions/`, `docs/data/research_directions.json` |
 | Direction probes | `results/episode_task_suite/research_direction_extensions/`, `docs/data/research_direction_extensions.json` |

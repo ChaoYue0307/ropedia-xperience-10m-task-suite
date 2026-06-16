@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1720" height="1220" viewBox="0 0 1720 1220">
+<defs>
+<filter id="softGlow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.15" fill="#ccffa0" opacity="0.16"/></pattern>
+</defs>
+<rect width="100%" height="100%" fill="#020502"/>
+<rect width="100%" height="100%" fill="url(#dots)" opacity="0.45"/>
+<rect x="28" y="28" width="1664" height="1164" rx="18" fill="#061006" fill-opacity="0.86" stroke="#ccffa0" stroke-opacity="0.22"/>
+<text x="70.0" y="86.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="34" font-weight="800" fill="#f4f8ef" opacity="1.000">Unified 20-Task Model Radar</text>
+<text x="70.0" y="122.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="17" font-weight="560" fill="#a5afa2" opacity="1.000">Direction-aware normalized scores across the single-episode task suite, with Qwen3/Cosmos task-aligned overlays.</text>
+<text x="70.0" y="156.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="560" fill="#a5afa2" opacity="1.000">Filled polygons: same 20 public-sample tasks. Points: 128-episode model branches only where the public metric maps to that task.</text>
+<polygon points="570.0,519.0 590.4,522.2 608.8,531.6 623.4,546.2 632.8,564.6 636.0,585.0 632.8,605.4 623.4,623.8 608.8,638.4 590.4,647.8 570.0,651.0 549.6,647.8 531.2,638.4 516.6,623.8 507.2,605.4 504.0,585.0 507.2,564.6 516.6,546.2 531.2,531.6 549.6,522.2" fill="none" stroke="#ccffa0" stroke-opacity="0.15" stroke-width="1.1"/>
+<text x="578.0" y="523.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="0.750">0.2</text>
+<polygon points="570.0,453.0 610.8,459.5 647.6,478.2 676.8,507.4 695.5,544.2 702.0,585.0 695.5,625.8 676.8,662.6 647.6,691.8 610.8,710.5 570.0,717.0 529.2,710.5 492.4,691.8 463.2,662.6 444.5,625.8 438.0,585.0 444.5,544.2 463.2,507.4 492.4,478.2 529.2,459.5" fill="none" stroke="#ccffa0" stroke-opacity="0.15" stroke-width="1.1"/>
+<text x="578.0" y="457.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="0.750">0.4</text>
+<polygon points="570.0,387.0 631.2,396.7 686.4,424.8 730.2,468.6 758.3,523.8 768.0,585.0 758.3,646.2 730.2,701.4 686.4,745.2 631.2,773.3 570.0,783.0 508.8,773.3 453.6,745.2 409.8,701.4 381.7,646.2 372.0,585.0 381.7,523.8 409.8,468.6 453.6,424.8 508.8,396.7" fill="none" stroke="#ccffa0" stroke-opacity="0.15" stroke-width="1.1"/>
+<text x="578.0" y="391.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="0.750">0.6</text>
+<polygon points="570.0,321.0 651.6,333.9 725.2,371.4 783.6,429.8 821.1,503.4 834.0,585.0 821.1,666.6 783.6,740.2 725.2,798.6 651.6,836.1 570.0,849.0 488.4,836.1 414.8,798.6 356.4,740.2 318.9,666.6 306.0,585.0 318.9,503.4 356.4,429.8 414.8,371.4 488.4,333.9" fill="none" stroke="#ccffa0" stroke-opacity="0.15" stroke-width="1.1"/>
+<text x="578.0" y="325.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="0.750">0.8</text>
+<polygon points="570.0,255.0 672.0,271.2 764.0,318.0 837.0,391.0 883.8,483.0 900.0,585.0 883.8,687.0 837.0,779.0 764.0,852.0 672.0,898.8 570.0,915.0 468.0,898.8 376.0,852.0 303.0,779.0 256.2,687.0 240.0,585.0 256.2,483.0 303.0,391.0 376.0,318.0 468.0,271.2" fill="none" stroke="#ccffa0" stroke-opacity="0.15" stroke-width="1.1"/>
+<text x="578.0" y="259.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="0.750">1.0</text>
+<line x1="570.0" y1="585.0" x2="570.0" y2="255.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="570.0" y="190.0" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">01</text>
+<text x="570.0" y="210.0" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Action</text>
+<line x1="570.0" y1="585.0" x2="672.0" y2="271.2" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="689.9" y="209.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">02</text>
+<text x="689.9" y="229.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Step</text>
+<line x1="570.0" y1="585.0" x2="764.0" y2="318.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="798.1" y="264.1" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">03</text>
+<text x="798.1" y="284.1" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Boundary</text>
+<line x1="570.0" y1="585.0" x2="837.0" y2="391.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="883.9" y="349.9" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">04</text>
+<text x="883.9" y="369.9" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Next act</text>
+<line x1="570.0" y1="585.0" x2="883.8" y2="483.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="939.0" y="458.1" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">05</text>
+<text x="939.0" y="478.1" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Hand traj</text>
+<line x1="570.0" y1="585.0" x2="900.0" y2="585.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="958.0" y="578.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">06</text>
+<text x="958.0" y="598.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Contact</text>
+<line x1="570.0" y1="585.0" x2="883.8" y2="687.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="939.0" y="697.9" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">07</text>
+<text x="939.0" y="717.9" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Objects</text>
+<line x1="570.0" y1="585.0" x2="837.0" y2="779.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="883.9" y="806.1" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">08</text>
+<text x="883.9" y="826.1" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Language</text>
+<line x1="570.0" y1="585.0" x2="764.0" y2="852.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="798.1" y="891.9" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">09</text>
+<text x="798.1" y="911.9" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">X-modal</text>
+<line x1="570.0" y1="585.0" x2="672.0" y2="898.8" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="689.9" y="947.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">10</text>
+<text x="689.9" y="967.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Recon</text>
+<line x1="570.0" y1="585.0" x2="570.0" y2="915.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="570.0" y="966.0" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">11</text>
+<text x="570.0" y="986.0" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Order</text>
+<line x1="570.0" y1="585.0" x2="468.0" y2="898.8" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="450.1" y="947.0" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">12</text>
+<text x="450.1" y="967.0" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Sync</text>
+<line x1="570.0" y1="585.0" x2="376.0" y2="852.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="341.9" y="891.9" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">13</text>
+<text x="341.9" y="911.9" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Long act</text>
+<line x1="570.0" y1="585.0" x2="303.0" y2="779.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="256.1" y="806.1" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">14</text>
+<text x="256.1" y="826.1" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Long step</text>
+<line x1="570.0" y1="585.0" x2="256.2" y2="687.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="201.0" y="697.9" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">15</text>
+<text x="201.0" y="717.9" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Interact txt</text>
+<line x1="570.0" y1="585.0" x2="240.0" y2="585.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="182.0" y="578.0" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">16</text>
+<text x="182.0" y="598.0" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Act+obj</text>
+<line x1="570.0" y1="585.0" x2="256.2" y2="483.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="201.0" y="458.1" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">17</text>
+<text x="201.0" y="478.1" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Future obj</text>
+<line x1="570.0" y1="585.0" x2="303.0" y2="391.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="256.1" y="349.9" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">18</text>
+<text x="256.1" y="369.9" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">IMU-&gt;hand</text>
+<line x1="570.0" y1="585.0" x2="376.0" y2="318.0" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="341.9" y="264.1" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">19</text>
+<text x="341.9" y="284.1" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Cam sync</text>
+<line x1="570.0" y1="585.0" x2="468.0" y2="271.2" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>
+<text x="450.1" y="209.0" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="800" fill="#ccffa0" opacity="0.900">20</text>
+<text x="450.1" y="229.0" text-anchor="end" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="650" fill="#dce8d7" opacity="1.000">Time2bdry</text>
+<polygon points="570.0,568.5 575.2,569.1 688.7,421.7 585.8,573.5 609.1,572.3 900.0,585.0 626.6,603.4 574.3,588.1 622.2,656.9 570.0,585.0 570.0,763.2 518.5,743.5 555.5,605.0 557.9,593.8 556.1,589.5 570.0,585.0 516.8,567.7 303.0,391.0 474.1,453.0 468.0,271.2" fill="#ccffa0" fill-opacity="0.180" stroke="#ccffa0" stroke-opacity="0.92" stroke-width="4.2"/>
+<circle cx="570.0" cy="568.5" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="575.2" cy="569.1" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="688.7" cy="421.7" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="585.8" cy="573.5" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="609.1" cy="572.3" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="900.0" cy="585.0" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="626.6" cy="603.4" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="574.3" cy="588.1" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="622.2" cy="656.9" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="570.0" cy="585.0" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="570.0" cy="763.2" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="518.5" cy="743.5" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="555.5" cy="605.0" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="557.9" cy="593.8" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="556.1" cy="589.5" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="570.0" cy="585.0" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="516.8" cy="567.7" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="303.0" cy="391.0" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="474.1" cy="453.0" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<circle cx="468.0" cy="271.2" r="4.0" fill="#ccffa0" stroke="#020502" stroke-width="1.1"/>
+<polygon points="570.0,580.1 572.9,576.2 683.7,428.5 581.2,576.9 883.8,483.0 900.0,585.0 622.7,602.1 574.5,588.3 595.2,619.7 570.0,585.0 570.0,866.2 497.1,809.5 557.3,602.5 556.5,594.8 558.0,588.9 570.0,585.0 508.1,564.9 306.2,393.4 523.3,520.7 468.2,271.7" fill="#67e8d1" fill-opacity="0.160" stroke="#67e8d1" stroke-opacity="0.92" stroke-width="4.2"/>
+<circle cx="570.0" cy="580.1" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="572.9" cy="576.2" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="683.7" cy="428.5" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="581.2" cy="576.9" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="883.8" cy="483.0" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="900.0" cy="585.0" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="622.7" cy="602.1" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="574.5" cy="588.3" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="595.2" cy="619.7" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="570.0" cy="585.0" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="570.0" cy="866.2" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="497.1" cy="809.5" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="557.3" cy="602.5" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="556.5" cy="594.8" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="558.0" cy="588.9" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="570.0" cy="585.0" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="508.1" cy="564.9" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="306.2" cy="393.4" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="523.3" cy="520.7" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="468.2" cy="271.7" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
+<circle cx="570.0" cy="584.0" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.4" cy="583.8" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="762.0" cy="320.7" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="581.5" cy="576.6" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="839.8" cy="585.0" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="666.2" cy="616.3" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="584.7" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="585.0" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="641.4" cy="486.7" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="573.6" cy="582.4" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="676.1" cy="585.0" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="613.0" cy="599.0" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="570.0" cy="582.4" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="757.8" cy="326.5" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="572.1" cy="583.5" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="815.3" cy="585.0" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<circle cx="574.3" cy="590.9" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
+<rect x="1071" y="166" width="520" height="860" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>
+<text x="1105.0" y="210.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="24" font-weight="800" fill="#f4f8ef" opacity="1.000">How to read it</text>
+<text x="1105.0" y="240.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="560" fill="#a5afa2" opacity="1.000">Score radius is normalized by metric direction.</text>
+<text x="1105.0" y="262.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="560" fill="#a5afa2" opacity="1.000">Raw values stay in unified_task_model_radar.json.</text>
+<line x1="1105" y1="306" x2="1153" y2="306" stroke="#ccffa0" stroke-width="7" stroke-linecap="round"/>
+<text x="1169.0" y="310.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#f4f8ef" opacity="1.000">Minimal</text>
+<text x="1169.0" y="332.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="560" fill="#a5afa2" opacity="1.000">20/20 axes · 1 public sample episode</text>
+<line x1="1105" y1="368" x2="1153" y2="368" stroke="#67e8d1" stroke-width="7" stroke-linecap="round"/>
+<text x="1169.0" y="372.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#f4f8ef" opacity="1.000">Neural MLP</text>
+<text x="1169.0" y="394.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="560" fill="#a5afa2" opacity="1.000">20/20 axes · 1 public sample episode</text>
+<line x1="1105" y1="430" x2="1153" y2="430" stroke="#9bb8ff" stroke-width="7" stroke-linecap="round"/>
+<circle cx="1129" cy="430" r="7" fill="#9bb8ff" stroke="#020502" stroke-width="2"/>
+<text x="1169.0" y="434.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#f4f8ef" opacity="1.000">Qwen3-Omni v6 LoRA</text>
+<text x="1169.0" y="456.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="560" fill="#a5afa2" opacity="1.000">6/20 axes · 128 selected episodes, held-out test</text>
+<line x1="1105" y1="492" x2="1153" y2="492" stroke="#ff9c7a" stroke-width="7" stroke-linecap="round"/>
+<circle cx="1129" cy="492" r="7" fill="#ff9c7a" stroke="#020502" stroke-width="2"/>
+<text x="1169.0" y="496.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Super Reasoner</text>
+<text x="1169.0" y="518.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="560" fill="#a5afa2" opacity="1.000">6/20 axes · 128 selected episodes, held-out test</text>
+<line x1="1105" y1="554" x2="1153" y2="554" stroke="#d9c7ff" stroke-width="7" stroke-linecap="round"/>
+<circle cx="1129" cy="554" r="7" fill="#d9c7ff" stroke="#020502" stroke-width="2"/>
+<text x="1169.0" y="558.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Nano Future Window</text>
+<text x="1169.0" y="580.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="12" font-weight="560" fill="#a5afa2" opacity="1.000">5/20 axes · 128 selected episodes, held-out test</text>
+<text x="1105.0" y="636.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="20" font-weight="800" fill="#f4f8ef" opacity="1.000">Model branch notes</text>
+<rect x="1105" y="650" width="445" height="78" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
+<text x="1121.0" y="671.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">Qwen3-Omni v6 LoRA</text>
+<text x="1121.0" y="692.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">6/20 task-aligned axes</text>
+<text x="1121.0" y="713.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">JSON validity 0.9990; action macro-F1 0.0029</text>
+<rect x="1105" y="742" width="445" height="78" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
+<text x="1121.0" y="763.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Super Reasoner</text>
+<text x="1121.0" y="784.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">6/20 task-aligned axes</text>
+<text x="1121.0" y="805.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">JSON validity 0.5112; action macro-F1 0.0008</text>
+<rect x="1105" y="834" width="445" height="78" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
+<text x="1121.0" y="855.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Nano Future Window</text>
+<text x="1121.0" y="876.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">5/20 task-aligned axes</text>
+<text x="1121.0" y="897.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">future retrieval MRR 0.0221; transition accuracy 0.9683</text>
+<rect x="1105" y="926" width="445" height="78" rx="8" fill="#081408" stroke="#ccffa0" stroke-opacity="0.15"/>
+<text x="1121.0" y="947.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Super Forward-Dynamics LoRA</text>
+<text x="1121.0" y="968.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#a5afa2" opacity="1.000">separate camera-pose proxy target, not plotted on the 20 task axes</text>
+<text x="1121.0" y="989.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="600" fill="#dce8d7" opacity="1.000">test MSE 3.685 over 448 held-out rows</text>
+<rect x="70" y="1055" width="1540" height="86" rx="10" fill="#020502" fill-opacity="0.54" stroke="#ccffa0" stroke-opacity="0.16"/>
+<text x="96.0" y="1082.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="800" fill="#ccffa0" opacity="1.000">Caveat</text>
+<text x="170.0" y="1082.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="650" fill="#dce8d7" opacity="1.000">This chart compares normalized metric direction, not identical raw units.</text>
+<text x="170.0" y="1108.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="560" fill="#a5afa2" opacity="1.000">Qwen3/Cosmos overlays use 128-episode held-out branches and are plotted only on semantically aligned task axes.</text>
+<text x="170.0" y="1134.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="560" fill="#a5afa2" opacity="1.000">Cosmos3-Super forward-dynamics LoRA is kept as a branch card because its camera-pose proxy MSE is not one of the 20 task metrics.</text>
+</svg>

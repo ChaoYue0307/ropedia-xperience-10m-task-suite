@@ -179,6 +179,14 @@ FIGURES = [
         "surface": "website unified task section, README, HF mirrors",
     },
     {
+        "id": "unified_task_model_radar",
+        "title": "Unified 20-task model radar",
+        "path": "docs/assets/charts/unified_task_model_radar.svg",
+        "role": "Twenty-axis direction-aware comparison of minimal and neural MLP baselines, with Qwen3/Cosmos task-aligned overlay points and branch notes.",
+        "source_script": "scripts/build_unified_task_model_radar.py",
+        "surface": "website unified task section, README, HF mirrors",
+    },
+    {
         "id": "feature_blocks_chart",
         "title": "Feature block chart",
         "path": "docs/assets/charts/feature_blocks.svg",

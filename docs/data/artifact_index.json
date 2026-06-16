@@ -1,8 +1,8 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-16T04:56:20+00:00",
+  "generated_at_utc": "2026-06-16T05:26:50+00:00",
   "status": "pass",
-  "artifact_count": 172,
+  "artifact_count": 175,
   "missing": [],
   "by_kind": {
     "project_path": 14,
@@ -13,7 +13,9 @@
     "project_scope": 1,
     "source_alignment": 5,
     "evaluation_protocol": 6,
-    "website_data": 5,
+    "website_data": 6,
+    "generated_figure": 5,
+    "visualization_builder": 1,
     "result_interpretation": 5,
     "metrics_source": 27,
     "visual_evidence": 7,
@@ -27,7 +29,6 @@
     "data_contract": 3,
     "result_directory": 1,
     "taxonomy": 1,
-    "generated_figure": 4,
     "onboarding_doc": 1,
     "generated_figure_assets": 1,
     "citation": 1,
@@ -463,7 +464,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "c5401a313bcc68152e590cf06fa7c5219d42617566dff9cf82cc80905a4c288e"
+      "sha256": "80aa58d6d2025ba77465889df31081662baa131296e5f39d7e212b9539625e72"
     },
     {
       "id": "source_alignment_validator",
@@ -576,6 +577,39 @@
       "sha256": "ad2ae2f918fb8362e47d271ae8f1c1f3807b009a7241fa7df94f84fbddccffe8"
     },
     {
+      "id": "unified_task_model_radar_json",
+      "title": "Unified 20-task model radar JSON",
+      "path": "docs/data/unified_task_model_radar.json",
+      "kind": "website_data",
+      "surface": "website_hf",
+      "shows": "Stores normalized 20-axis radar values, raw task metrics, Qwen3/Cosmos overlay mappings, and branch-card caveats.",
+      "exists": true,
+      "bytes": 31157,
+      "sha256": "f4d96879daf1fc7566b9f85e7ce26b46dc36d97e40a16b56348e591cdfe701ae"
+    },
+    {
+      "id": "unified_task_model_radar_chart",
+      "title": "Unified 20-task model radar",
+      "path": "docs/assets/charts/unified_task_model_radar.svg",
+      "kind": "generated_figure",
+      "surface": "website_hf",
+      "shows": "Compares minimal and neural MLP baselines across all 20 tasks, with Qwen3/Cosmos task-aligned model overlays.",
+      "exists": true,
+      "bytes": 26681,
+      "sha256": "418ab49da39a034a5aa6d465b1e8cb9b733d6eabfe98adb4e4df82f519b85e9d"
+    },
+    {
+      "id": "unified_task_model_radar_builder",
+      "title": "Unified 20-task model radar builder",
+      "path": "scripts/build_unified_task_model_radar.py",
+      "kind": "visualization_builder",
+      "surface": "repo_hf",
+      "shows": "Regenerates the direction-aware radar chart and machine-readable metric overlay JSON.",
+      "exists": true,
+      "bytes": 20521,
+      "sha256": "3dee4cc45daf62a8217123c31b30c5fbb8910d34ad82fb1da98f0ae10344b020"
+    },
+    {
       "id": "research_takeaways",
       "title": "Research takeaways",
       "path": "RESEARCH_TAKEAWAYS.md",
@@ -683,7 +717,7 @@
       "shows": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
       "bytes": 14939,
-      "sha256": "fdf8d2d06d580908cc7fe70974cbd28c7490180cb314f5d532ba55985edcea6d"
+      "sha256": "07ad9e56fd0102800ca66fbe4a4d134088aff664d02a8583f99a692b98d78724"
     },
     {
       "id": "figure_index_builder",
@@ -693,8 +727,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates visual-asset hashes, dimensions, and source-script provenance.",
       "exists": true,
-      "bytes": 13934,
-      "sha256": "a10e699097c86b645ecb03e42ac4fc2409e10170431a5bccbc38abad403ef209"
+      "bytes": 14404,
+      "sha256": "c7d8c538cc3ae23ee90d2da41213c92c2bcd271bca3266e8f45847aebe439e44"
     },
     {
       "id": "brand_assets_json",
@@ -793,8 +827,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the public presentation report before release.",
       "exists": true,
-      "bytes": 12235,
-      "sha256": "fc5742789d882ceca8b7ce8a21ed401c2731fa22036c406847167199a724f09d"
+      "bytes": 12335,
+      "sha256": "7db82698275cd3a9ffc1ae71e5dbfae3e0d2c3694fbe296dfafb1e01714e47d4"
     },
     {
       "id": "task_surface_integrity",
@@ -863,7 +897,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 123218,
+      "bytes": 125973,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -874,8 +908,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 49719,
-      "sha256": "db6769f5ed43301f123950e0e2d3d1e8564115dbc6b43ea7a9080da4c9d4c3aa"
+      "bytes": 51736,
+      "sha256": "9e5a9507bf6a8b1de06b2b1555c96411a6f420df3152c73ae65ce4e4f982aa59"
     },
     {
       "id": "reproducibility_contract",
@@ -885,8 +919,8 @@
       "surface": "repo_hf",
       "shows": "Defines public reproduction commands, expected outputs, and non-reproducible scale-up boundaries.",
       "exists": true,
-      "bytes": 9878,
-      "sha256": "3d0525785f9a1eaad399aeed249fc899d0b141efd778d0d2f3f229dd9b6594a3"
+      "bytes": 10054,
+      "sha256": "d12c020fd00c6a7b907300c9c5f20d613a0f033e32f7a62cbed3f8dfbbe95216"
     },
     {
       "id": "reproducibility_matrix",
@@ -896,8 +930,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable reproduction steps with expected artifacts and public boundaries.",
       "exists": true,
-      "bytes": 6673,
-      "sha256": "585c4e7c67b0bfca80628267b71c7fd5f0ac0c534bdc964c6509d8c53a0e0e83"
+      "bytes": 6815,
+      "sha256": "ff44893cac56c229d6eb5d20d8cb261ea38e0358e6444615406affd692d8d98e"
     },
     {
       "id": "artifact_index_builder",
@@ -907,8 +941,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 46648,
-      "sha256": "86feb8e47b9766762cd683c94bac88a195e36c877e0a470604ff708da738fd00"
+      "bytes": 47751,
+      "sha256": "0fe1eefff336f5fc6b12e7e49668973e45a12b7354e91a513dda90e2a5c9f582"
     },
     {
       "id": "publication_audit",

@@ -58,6 +58,7 @@ DATA_FILES = [
     "task_surface_integrity.json",
     "task_walkthroughs.json",
     "tier2_task_suite.json",
+    "unified_task_model_radar.json",
     "website_integrity.json",
     "xperience10m_dataset_card_alignment.json",
 ]
@@ -65,6 +66,7 @@ DATA_FILES = [
 ASSET_FILES = [
     "charts/audio_ablation_delta.svg",
     "charts/tier2_task_suite.svg",
+    "charts/unified_task_model_radar.svg",
     "brand/xperience10m-logo-apple-touch.png",
     "brand/xperience10m-logo-favicon-32.png",
     "brand/xperience10m-logo-favicon-64.png",
@@ -121,6 +123,7 @@ SCRIPT_FILES = [
     "build_single_episode_explorer.py",
     "build_research_takeaways.py",
     "build_unified_task_suite.py",
+    "build_unified_task_model_radar.py",
     "single_episode_diagnostics.py",
     "verify_live_publication.py",
     "validate_mirror_parity.py",

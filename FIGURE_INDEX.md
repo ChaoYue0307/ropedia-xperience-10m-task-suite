@@ -31,6 +31,7 @@ Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience
 | Research direction coverage chart | `docs/assets/charts/research_direction_coverage.svg` | 1180 x 700 | `scripts/generate_visualizations.py` | Four-track coverage map for Ropedia research directions. |
 | Research direction extension chart | `docs/assets/charts/research_direction_extension_tasks.svg` | 1420 x 920 | `scripts/generate_visualizations.py` | Four coded extension probes, one per Ropedia research direction. |
 | Tasks 13-20 baseline chart | `docs/assets/charts/tier2_task_suite.svg` | 1440 x 832 | `scripts/tier2_task_suite.py` | Eight additional sample-supported tasks in the unified 20-task suite with aligned minimal and neural baseline metrics. |
+| Unified 20-task model radar | `docs/assets/charts/unified_task_model_radar.svg` | 1720 x 1220 | `scripts/build_unified_task_model_radar.py` | Twenty-axis direction-aware comparison of minimal and neural MLP baselines, with Qwen3/Cosmos task-aligned overlay points and branch notes. |
 | Feature block chart | `docs/assets/charts/feature_blocks.svg` | 1100 x 760 | `scripts/generate_visualizations.py` | Feature allocation by modality block. |
 | Minimal task score chart | `docs/assets/charts/episode_task_scores.svg` | 1100 x 556 | `scripts/generate_visualizations.py` | Minimal baseline metric snapshot across the task suite. |
 | Cross-modal retrieval chart | `docs/assets/charts/cross_modal_retrieval.svg` | 1100 x 284 | `scripts/generate_visualizations.py` | Retrieval behavior chart for the cross-modal task. |

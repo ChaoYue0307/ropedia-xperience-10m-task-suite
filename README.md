@@ -312,6 +312,15 @@ and [`docs/data/task_suite_20.json`](docs/data/task_suite_20.json). Tasks 13-20
 also have a compact chart and result bundle under the historical
 `tier2_task_suite` path for stable public links.
 
+![Unified 20-task model radar](docs/assets/charts/unified_task_model_radar.svg)
+
+The unified radar compares all 20 task axes with two filled colors for the
+minimal and neural MLP baselines. Qwen3-Omni and Cosmos3 overlays are plotted
+only where their verified 128-episode public metrics map to the same task
+semantics; Cosmos3-Super forward-dynamics LoRA remains a branch card because
+its camera-pose proxy MSE is not one of the 20 task metrics. The machine-readable
+copy is [`docs/data/unified_task_model_radar.json`](docs/data/unified_task_model_radar.json).
+
 The website also includes a responsive native modality atlas backed by
 [`docs/data/modality_atlas.json`](docs/data/modality_atlas.json) and
 [`docs/assets/modalities/`](docs/assets/modalities/). Those assets are small
@@ -346,6 +355,7 @@ scripts/
   research_direction_extension_tasks.py # one extra data-backed probe per track
   tier2_task_suite.py              # historical-name builder for tasks 13-20
   build_unified_task_suite.py       # builds TASK_SUITE_20.md and task_suite_20.json
+  build_unified_task_model_radar.py # builds the unified 20-axis model comparison chart
   task_walkthroughs.py              # human-readable task-card and walkthrough-storyboard metadata
   generate_visualizations.py        # refreshes SVG charts + summary JSON
   render_task_suite_infographic.py  # renders the task-suite presentation PNG
@@ -385,6 +395,7 @@ docs/
   data/additional_development_directions.json # concrete non-backbone project directions
   data/summary_metrics.json         # website-readable metrics bundle
   data/task_suite_20.json           # unified 20-task suite bundle
+  data/unified_task_model_radar.json # 20-task radar values and model-branch overlays
   data/evidence_contract.json       # machine-readable project scope
   data/artifact_index.json          # compact project-artifact catalog
   data/live_publication_status.json # live GitHub/HF publication verification
@@ -405,6 +416,7 @@ docs/
   assets/pipeline_diagram.png       # verified episode pipeline graphic
   assets/qwen3_omni_lora_pipeline.png # Qwen3-Omni LoRA training-flow figure
   assets/task_architectures.png     # verified task-head architecture map
+  assets/charts/unified_task_model_radar.svg # 20-task minimal/NN/Qwen/Cosmos radar
   assets/charts/*.svg               # regenerated visualizations
 
 notes/
@@ -963,10 +975,14 @@ stable artifact links. They should be read as the result bundle for tasks
 
 - [`TASK_SUITE_20.md`](TASK_SUITE_20.md)
 - [`docs/data/task_suite_20.json`](docs/data/task_suite_20.json)
+- [`docs/data/unified_task_model_radar.json`](docs/data/unified_task_model_radar.json)
 - [`TIER2_TASK_BASELINES.md`](results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md)
 - [`tier2_task_suite_results.json`](results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json)
 - [`docs/data/tier2_task_suite.json`](docs/data/tier2_task_suite.json)
+- [`unified_task_model_radar.svg`](docs/assets/charts/unified_task_model_radar.svg)
 - [`tier2_task_suite.svg`](docs/assets/charts/tier2_task_suite.svg)
+
+![Unified 20-task model radar](docs/assets/charts/unified_task_model_radar.svg)
 
 ![Tasks 13-20 baseline chart](docs/assets/charts/tier2_task_suite.svg)
 

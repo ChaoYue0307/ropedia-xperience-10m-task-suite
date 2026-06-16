@@ -2951,10 +2951,11 @@
           <article class="evidence-card">
             <span class="status-pill">verified</span>
             <h3>Figures are indexed</h3>
-            <p>The visual set includes the logo, modality atlas, task-suite figure, model-architecture figure, tasks 13-20 chart, and Qwen3-Omni LoRA training-flow figure.</p>
+            <p>The visual set includes the logo, modality atlas, task-suite figure, unified 20-task model radar, model-architecture figure, tasks 13-20 chart, and Qwen3-Omni LoRA training-flow figure.</p>
             <div class="evidence-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FIGURE_INDEX.md">figure guide</a>
               <a href="assets/task_suite_infographic.png">task-suite figure</a>
+              <a href="assets/charts/unified_task_model_radar.svg">20-task radar</a>
               <a href="assets/qwen3_omni_lora_pipeline.png">LoRA figure</a>
             </div>
           </article>
@@ -3187,6 +3188,17 @@
         <div class="figure-pan" id="task-suite-map">
           <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-taskfirst-v13-modality-xl" alt="Infographic showing Ropedia Xperience-10M task families with enlarged full-width modality cards">
         </div>
+        <div class="figure-brief">
+          <article class="figure-brief-card">
+            <h3>Unified 20-task polygon</h3>
+            <p>The radar uses all 20 tasks as axes. Minimal and neural MLP heads are filled polygons because both cover the full suite; Qwen3/Cosmos branches are colored overlays only on task-aligned public metrics.</p>
+          </article>
+          <article class="figure-brief-card">
+            <h3>Metric normalization</h3>
+            <p>Higher-is-better metrics are plotted directly on 0-1 axes. Lower-is-better metrics are converted to best/value within the task, while raw metric values remain in the JSON mirror.</p>
+          </article>
+        </div>
+        <img class="chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v1" alt="Unified 20-task radar comparing minimal and neural MLP baselines with Qwen3 and Cosmos3 task-aligned overlays">
         <div class="modality-atlas-panel" id="modality-atlas" aria-labelledby="modality-atlas-title">
           <div class="atlas-head">
             <div>

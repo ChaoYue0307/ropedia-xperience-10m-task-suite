@@ -52,8 +52,8 @@
     {
       "id": "tasks_13_to_20_and_unified_index",
       "status": "reproducible",
-      "command": "python scripts/tier2_task_suite.py && python scripts/build_unified_task_suite.py",
-      "expected": "tasks 13-20 metrics, prediction/rank artifacts, TASK_SUITE_20.md, docs/data/task_suite_20.json, docs/data/tier2_task_suite.json, and docs/assets/charts/tier2_task_suite.svg",
+      "command": "python scripts/tier2_task_suite.py && python scripts/build_unified_task_suite.py && python scripts/build_unified_task_model_radar.py",
+      "expected": "tasks 13-20 metrics, prediction/rank artifacts, TASK_SUITE_20.md, docs/data/task_suite_20.json, docs/data/tier2_task_suite.json, docs/assets/charts/tier2_task_suite.svg, docs/data/unified_task_model_radar.json, and docs/assets/charts/unified_task_model_radar.svg",
       "boundary": "requires local public-sample annotation.hdf5 plus HOMIE Toolkit or h5py for tasks 13-20; raw HDF5 and MP4 files are not redistributed"
     },
     {
