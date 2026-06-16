@@ -53,6 +53,8 @@ DATA_FILES = [
     "single_episode_explorer.json",
     "source_alignment_audit.json",
     "summary_metrics.json",
+    "single_episode_task_model_radar.json",
+    "episode128_task_model_radar.json",
     "task_suite_20.json",
     "task_suite_enhancement_128.json",
     "task_surface_integrity.json",
@@ -66,6 +68,8 @@ DATA_FILES = [
 
 ASSET_FILES = [
     "charts/audio_ablation_delta.svg",
+    "charts/single_episode_task_model_radar.svg",
+    "charts/episode128_task_model_radar.svg",
     "charts/tier2_task_suite.svg",
     "charts/unified_task_model_radar.svg",
     "brand/xperience10m-logo-apple-touch.png",

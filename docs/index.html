@@ -583,6 +583,58 @@
       line-height: 1.6;
       font-size: 14px;
     }
+    .split-radar-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 22px 0 28px;
+    }
+    .split-radar-card {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.06), rgba(6, 14, 7, 0.82)),
+        var(--surface);
+      padding: 16px;
+    }
+    .split-radar-card h3 {
+      margin: 0;
+      font-family: var(--font-ui);
+      font-size: 18px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    .split-radar-card p {
+      margin: 8px 0 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .split-radar-card img {
+      display: block;
+      width: 100%;
+      border: 1px solid rgba(204, 255, 160, 0.14);
+      border-radius: 6px;
+      background: #020502;
+    }
+    .split-radar-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .split-radar-links a {
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 8px;
+      text-decoration: none;
+      background: rgba(2, 5, 2, 0.42);
+    }
+    .split-radar-links a:hover { border-color: var(--green); color: var(--ink); }
     .task-suite-image {
       display: block;
       margin-top: 30px;
@@ -2584,7 +2636,8 @@
       .signal:nth-child(2n + 1) { border-right: 0; }
       .project-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .section-tabs { padding-top: 10px; }
-      .figure-brief { grid-template-columns: 1fr; }
+      .figure-brief,
+      .split-radar-grid { grid-template-columns: 1fr; }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .brief-panel-head { grid-template-columns: 1fr; align-items: start; }
       .task-player { grid-template-columns: 1fr; }
@@ -2802,6 +2855,8 @@
             <div class="hero-radar-links">
               <a href="#suite">Open full radar</a>
               <a href="assets/charts/unified_task_model_radar.svg">Open SVG</a>
+              <a href="assets/charts/single_episode_task_model_radar.svg">1-episode radar</a>
+              <a href="assets/charts/episode128_task_model_radar.svg">128ep radar</a>
               <a href="data/unified_task_model_radar.json">Open radar JSON</a>
               <a href="data/task_method_20_result_matrix.json">Open 20-result matrix</a>
             </div>
@@ -2901,6 +2956,26 @@
             <a href="#reading-path">Reader path</a>
             <a href="#takeaways">Current takeaways</a>
           </div>
+        </div>
+        <div class="split-radar-grid" aria-label="Homepage split 20-task radar comparisons">
+          <article class="split-radar-card">
+            <h3>1-Episode 20-Task Radar</h3>
+            <p>Minimal and Neural MLP baselines over the original public-sample episode, with 40/40 scored method-task records.</p>
+            <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
+            <div class="split-radar-links">
+              <a href="assets/charts/single_episode_task_model_radar.svg">Open SVG</a>
+              <a href="data/single_episode_task_model_radar.json">Open JSON</a>
+            </div>
+          </article>
+          <article class="split-radar-card">
+            <h3>128-Episode 20-Task Radar</h3>
+            <p>Metadata, raw-feature, Qwen3-Omni, and Cosmos3 branches on the aligned 128-episode surface, with scoreless axes kept explicit.</p>
+            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="128-episode 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 branches with explicit scored-axis counts">
+            <div class="split-radar-links">
+              <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
+              <a href="data/episode128_task_model_radar.json">Open JSON</a>
+            </div>
+          </article>
         </div>
         <div class="snapshot-grid">
           <article class="snapshot-card">
@@ -3488,8 +3563,8 @@
         </div>
         <div class="figure-brief">
           <article class="figure-brief-card">
-            <h3>Unified 20-task polygon</h3>
-            <p>The radar uses all 20 tasks as axes and lists each full task name in the chart key. All 9 method series now expose 20 result records; colored overlays appear only where those records contain numeric scores.</p>
+            <h3>Unified plus split radars</h3>
+            <p>The unified radar keeps all 9 methods in one view. The two split radars separate the clean 1-episode Minimal/NN baseline comparison from the 128-episode metadata/raw/Qwen/Cosmos comparison.</p>
           </article>
           <article class="figure-brief-card">
             <h3>Metric normalization</h3>
@@ -3497,6 +3572,26 @@
           </article>
         </div>
         <img class="chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v5" alt="Unified 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, scored-axis counts, and proxy notes">
+        <div class="split-radar-grid" aria-label="Split 20-task radar comparisons">
+          <article class="split-radar-card">
+            <h3>1-Episode 20-Task Radar</h3>
+            <p>Minimal and Neural MLP are both scored on all 20 public-sample task contracts, shown as two filled polygons without 128-episode overlays.</p>
+            <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
+            <div class="split-radar-links">
+              <a href="assets/charts/single_episode_task_model_radar.svg">Open SVG</a>
+              <a href="data/single_episode_task_model_radar.json">Open JSON</a>
+            </div>
+          </article>
+          <article class="split-radar-card">
+            <h3>128-Episode 20-Task Radar</h3>
+            <p>Raw128 Simple and Raw128 NN score all 20 axes; metadata, Qwen3, and Cosmos branches keep 20 records but only plot evaluated numeric targets.</p>
+            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="128-episode 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 branches with explicit scored-axis counts">
+            <div class="split-radar-links">
+              <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
+              <a href="data/episode128_task_model_radar.json">Open JSON</a>
+            </div>
+          </article>
+        </div>
         <div class="modality-atlas-panel" id="modality-atlas" aria-labelledby="modality-atlas-title">
           <div class="atlas-head">
             <div>

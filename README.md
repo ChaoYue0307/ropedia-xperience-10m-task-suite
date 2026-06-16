@@ -332,6 +332,18 @@ and
 the reader-facing matrix is
 [`TASK_METHOD_20_RESULT_MATRIX.md`](TASK_METHOD_20_RESULT_MATRIX.md).
 
+For easier reading, the same source data is also split into two focused radars:
+
+![Single-episode 20-task model radar](docs/assets/charts/single_episode_task_model_radar.svg)
+
+![128-episode 20-task model radar](docs/assets/charts/episode128_task_model_radar.svg)
+
+The single-episode radar isolates Minimal vs Neural MLP, both with 20/20 scored
+public-sample axes. The 128-episode radar isolates metadata/raw baselines and
+Qwen3/Cosmos branches: raw-feature simple/NN baselines are the current complete
+20/20 scored multi-episode results, while metadata and foundation-model rows
+retain explicit scoreless records where no public target was evaluated.
+
 The website also includes a responsive native modality atlas backed by
 [`docs/data/modality_atlas.json`](docs/data/modality_atlas.json) and
 [`docs/assets/modalities/`](docs/assets/modalities/). Those assets are small
@@ -407,6 +419,8 @@ docs/
   data/summary_metrics.json         # website-readable metrics bundle
   data/task_suite_20.json           # unified 20-task suite bundle
   data/unified_task_model_radar.json # 20-task radar values and model-branch overlays
+  data/single_episode_task_model_radar.json # 1-episode split radar values
+  data/episode128_task_model_radar.json # 128-episode split radar values
   data/task_method_20_result_matrix.json # 9-method x 20-task result matrix
   data/evidence_contract.json       # machine-readable project scope
   data/artifact_index.json          # compact project-artifact catalog
@@ -429,6 +443,8 @@ docs/
   assets/qwen3_omni_lora_pipeline.png # Qwen3-Omni LoRA training-flow figure
   assets/task_architectures.png     # verified task-head architecture map
   assets/charts/unified_task_model_radar.svg # 20-task minimal/NN/Qwen/Cosmos radar
+  assets/charts/single_episode_task_model_radar.svg # 1-episode split radar
+  assets/charts/episode128_task_model_radar.svg # 128-episode split radar
   assets/charts/*.svg               # regenerated visualizations
 
 notes/
@@ -988,13 +1004,22 @@ stable artifact links. They should be read as the result bundle for tasks
 - [`TASK_SUITE_20.md`](TASK_SUITE_20.md)
 - [`docs/data/task_suite_20.json`](docs/data/task_suite_20.json)
 - [`docs/data/unified_task_model_radar.json`](docs/data/unified_task_model_radar.json)
+- [`docs/data/single_episode_task_model_radar.json`](docs/data/single_episode_task_model_radar.json)
+- [`docs/data/episode128_task_model_radar.json`](docs/data/episode128_task_model_radar.json)
+- [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)
 - [`TIER2_TASK_BASELINES.md`](results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md)
 - [`tier2_task_suite_results.json`](results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json)
 - [`docs/data/tier2_task_suite.json`](docs/data/tier2_task_suite.json)
 - [`unified_task_model_radar.svg`](docs/assets/charts/unified_task_model_radar.svg)
+- [`single_episode_task_model_radar.svg`](docs/assets/charts/single_episode_task_model_radar.svg)
+- [`episode128_task_model_radar.svg`](docs/assets/charts/episode128_task_model_radar.svg)
 - [`tier2_task_suite.svg`](docs/assets/charts/tier2_task_suite.svg)
 
 ![Unified 20-task model radar](docs/assets/charts/unified_task_model_radar.svg)
+
+![Single-episode 20-task model radar](docs/assets/charts/single_episode_task_model_radar.svg)
+
+![128-episode 20-task model radar](docs/assets/charts/episode128_task_model_radar.svg)
 
 ![Tasks 13-20 baseline chart](docs/assets/charts/tier2_task_suite.svg)
 

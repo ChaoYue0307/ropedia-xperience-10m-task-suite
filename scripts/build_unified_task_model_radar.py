@@ -40,9 +40,13 @@ COSMOS_SUPER_FD_METRICS_PATH = (
 METADATA128_BASELINE_DIR = ROOT / "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2"
 RAW128_BASELINE_DIR = ROOT / "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z"
 OUTPUT_JSON = ROOT / "docs/data/unified_task_model_radar.json"
+OUTPUT_SINGLE_JSON = ROOT / "docs/data/single_episode_task_model_radar.json"
+OUTPUT_128_JSON = ROOT / "docs/data/episode128_task_model_radar.json"
 OUTPUT_MATRIX_JSON = ROOT / "docs/data/task_method_20_result_matrix.json"
 OUTPUT_MATRIX_MD = ROOT / "TASK_METHOD_20_RESULT_MATRIX.md"
 OUTPUT_SVG = ROOT / "docs/assets/charts/unified_task_model_radar.svg"
+OUTPUT_SINGLE_SVG = ROOT / "docs/assets/charts/single_episode_task_model_radar.svg"
+OUTPUT_128_SVG = ROOT / "docs/assets/charts/episode128_task_model_radar.svg"
 
 
 SERIES = {
@@ -190,6 +194,16 @@ METHOD_DETAILS = {
 }
 
 PROXY_TASK_IDS = {"interaction_text_prediction", "camera_view_sync_retrieval"}
+SINGLE_EPISODE_SERIES = ("minimal", "neural_mlp")
+EPISODE128_SERIES = (
+    "metadata128_simple",
+    "metadata128_neural_mlp",
+    "raw128_simple",
+    "raw128_neural_mlp",
+    "qwen3_omni_v6_lora",
+    "cosmos3_super_reasoner",
+    "cosmos3_nano_future_window",
+)
 
 STATUS_LABELS = {
     "scored": "scored",
@@ -403,6 +417,47 @@ def render_matrix_markdown(payload: dict[str, Any]) -> str:
         ]
     )
     return "\n".join(lines)
+
+
+def filtered_radar_payload(
+    payload: dict[str, Any],
+    series_ids: tuple[str, ...],
+    *,
+    title: str,
+    description: str,
+) -> dict[str, Any]:
+    selected = set(series_ids)
+    series = [json.loads(json.dumps(record)) for record in payload["series"] if record["id"] in selected]
+    tasks = []
+    for task in payload["tasks"]:
+        task_copy = {key: json.loads(json.dumps(value)) for key, value in task.items() if key != "values"}
+        task_copy["values"] = {
+            series_id: json.loads(json.dumps(task["values"][series_id]))
+            for series_id in series_ids
+            if series_id in task["values"]
+        }
+        tasks.append(task_copy)
+    rows = [
+        json.loads(json.dumps(row))
+        for row in payload["task_method_result_matrix"]
+        if row.get("series_id") in selected
+    ]
+    return {
+        "title": title,
+        "status": payload["status"],
+        "generated_at_utc": payload["generated_at_utc"],
+        "description": description,
+        "task_count": payload["task_count"],
+        "method_count": len(series),
+        "method_task_record_count": sum(record.get("result_record_count", 0) for record in series),
+        "scored_method_task_count": sum(record.get("scored_task_count", 0) for record in series),
+        "normalization_policy": payload["normalization_policy"],
+        "source_unified_radar": "docs/data/unified_task_model_radar.json",
+        "source_result_matrix": "docs/data/task_method_20_result_matrix.json",
+        "series": series,
+        "tasks": tasks,
+        "task_method_result_matrix": rows,
+    }
 
 
 def point(cx: float, cy: float, radius: float, angle: float) -> tuple[float, float]:
@@ -682,12 +737,26 @@ def build_payload() -> dict[str, Any]:
     return payload
 
 
-def render_svg(payload: dict[str, Any]) -> str:
+def render_svg(
+    payload: dict[str, Any],
+    *,
+    series_ids: tuple[str, ...] | None = None,
+    polygon_series_ids: tuple[str, ...] = ("minimal", "neural_mlp"),
+    title: str | None = None,
+    subtitle: str | None = None,
+    context_line: str | None = None,
+    chip_specs: list[tuple[str, str]] | None = None,
+    reading_rules: tuple[str, str, str] | None = None,
+) -> str:
     width, height = 1920, 1640
     cx, cy, radius = 550, 760, 370
     tasks = payload["tasks"]
     n = len(tasks)
     angles = [-math.pi / 2 + 2 * math.pi * i / n for i in range(n)]
+    if series_ids is None:
+        series_ids = tuple(record["id"] for record in payload["series"])
+    polygon_series_set = set(polygon_series_ids)
+    series_records = [record for record in payload["series"] if record["id"] in set(series_ids)]
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         "<defs>",
@@ -697,18 +766,34 @@ def render_svg(payload: dict[str, Any]) -> str:
         '<rect width="100%" height="100%" fill="#020502"/>',
         '<rect width="100%" height="100%" fill="url(#dots)" opacity="0.45"/>',
         '<rect x="28" y="28" width="1864" height="1584" rx="18" fill="#061006" fill-opacity="0.88" stroke="#ccffa0" stroke-opacity="0.22"/>',
-        svg_text(70, 86, "Unified 20-Task Model Radar", size=36, weight=800),
-        svg_text(70, 122, "Task names, methods, coverage, and metric normalization in one comparison view.", size=18, fill="#dce8d7", weight=650),
-        svg_text(70, 150, "Filled areas show single-episode baselines; colored points show 128-episode and foundation-model branches on task-aligned axes.", size=15, fill="#a5afa2", weight=560),
+        svg_text(70, 86, title or payload.get("title", "20-Task Model Radar"), size=36, weight=800),
+        svg_text(
+            70,
+            122,
+            subtitle or "Task names, methods, coverage, and metric normalization in one comparison view.",
+            size=18,
+            fill="#dce8d7",
+            weight=650,
+        ),
+        svg_text(
+            70,
+            150,
+            context_line
+            or "Filled areas show complete scored baselines; colored points show partial branches on task-aligned axes.",
+            size=15,
+            fill="#a5afa2",
+            weight=560,
+        ),
     ]
 
-    chip_specs = [
-        ("20 task axes", "#ccffa0"),
-        (f"{payload['method_task_record_count']} method-task records", "#67e8d1"),
-        (f"{payload['scored_method_task_count']} scored axes", "#22d3ee"),
-        ("40/40 raw128 pass", "#f59e0b"),
-        ("2 compact proxy axes", "#f472b6"),
-    ]
+    if chip_specs is None:
+        chip_specs = [
+            ("20 task axes", "#ccffa0"),
+            (f"{payload['method_task_record_count']} method-task records", "#67e8d1"),
+            (f"{payload['scored_method_task_count']} scored axes", "#22d3ee"),
+            ("40/40 raw128 pass", "#f59e0b"),
+            ("2 compact proxy axes", "#f472b6"),
+        ]
     chip_x = 70
     for label, color in chip_specs:
         chip_w = 168 if len(label) < 15 else 250
@@ -739,25 +824,21 @@ def render_svg(payload: dict[str, Any]) -> str:
         parts.append(svg_text(lx, ly - 7, f"{task['task_number']:02d}", size=12, fill="#ccffa0", anchor=anchor, weight=800, opacity=0.95))
         parts.append(svg_text(lx, ly + 14, task["short_label"], size=12, fill="#dce8d7", anchor=anchor, weight=700))
 
-    for series_id in ("minimal", "neural_mlp"):
+    for series_id in series_ids:
+        if series_id not in polygon_series_set:
+            continue
         spec = SERIES[series_id]
         points = []
         for task, angle in zip(tasks, angles):
             score = task["values"].get(series_id, {}).get("normalized_score")
             points.append(point(cx, cy, radius * float(score or 0.0), angle))
-        parts.append(polyline(points, fill=spec["color"], stroke=spec["color"], opacity=0.18 if series_id == "minimal" else 0.16, stroke_width=4.2))
+        parts.append(polyline(points, fill=spec["color"], stroke=spec["color"], opacity=0.18 if series_id in {"minimal", "raw128_simple"} else 0.16, stroke_width=4.2, dash=spec.get("stroke_dasharray")))
         for x, y in points:
             parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4.0" fill="{spec["color"]}" stroke="#020502" stroke-width="1.1"/>')
 
-    for series_id in (
-        "metadata128_simple",
-        "metadata128_neural_mlp",
-        "raw128_simple",
-        "raw128_neural_mlp",
-        "qwen3_omni_v6_lora",
-        "cosmos3_super_reasoner",
-        "cosmos3_nano_future_window",
-    ):
+    for series_id in series_ids:
+        if series_id in polygon_series_set:
+            continue
         spec = SERIES[series_id]
         for task, angle in zip(tasks, angles):
             score = task["values"].get(series_id, {}).get("normalized_score")
@@ -776,10 +857,10 @@ def render_svg(payload: dict[str, Any]) -> str:
     parts.append(svg_text(legend_x, legend_y + 30, "Each method has 20 records; scored axes and scoreless statuses stay in the JSON matrix.", size=13, fill="#a5afa2", weight=560))
 
     cursor = legend_y + 74
-    for record in payload["series"]:
+    for record in series_records:
         color = record["color"]
         parts.append(f'<line x1="{legend_x}" y1="{cursor - 7}" x2="{legend_x + 50}" y2="{cursor - 7}" stroke="{color}" stroke-width="7" stroke-linecap="round"/>')
-        if not record["kind"].startswith("full_20_task_baseline"):
+        if record["id"] not in polygon_series_set:
             parts.append(f'<circle cx="{legend_x + 25}" cy="{cursor - 7}" r="7" fill="{color}" stroke="#020502" stroke-width="2"/>')
         parts.append(svg_text(legend_x + 66, cursor - 12, record["label"], size=15, weight=800))
         parts.append(svg_text(legend_x + 330, cursor - 12, f"20 records / {record['scored_task_count']} scored", size=13, fill=color, weight=800))
@@ -808,11 +889,17 @@ def render_svg(payload: dict[str, Any]) -> str:
         parts.append(svg_text(x0 + 48, y0 + 29, metric_label, size=10, fill="#a5afa2", weight=560))
 
     table_y = 1468
+    if reading_rules is None:
+        reading_rules = (
+            "Every method has 20 task records; radius appears only where a numeric task score exists.",
+            "Raw128 completion: 18 direct task targets plus 2 compact proxies. Task 15 predicts the dominant caption/object/interaction hash bin; task 19 retrieves depth/audio sync from camera pose.",
+            "Scoreless metadata/Qwen/Cosmos records are explicit unsupported or not-evaluated cells in docs/data/task_method_20_result_matrix.json.",
+        )
     parts.append(f'<rect x="70" y="{table_y - 38}" width="1780" height="120" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.16"/>')
     parts.append(svg_text(100, table_y - 10, "Reading rules", size=16, fill="#ccffa0", weight=800))
-    parts.append(svg_text(220, table_y - 10, "Every method has 20 task records; radius appears only where a numeric task score exists.", size=14, fill="#dce8d7", weight=650))
-    parts.append(svg_text(220, table_y + 18, "Raw128 completion: 18 direct task targets plus 2 compact proxies. Task 15 predicts the dominant caption/object/interaction hash bin; task 19 retrieves depth/audio sync from camera pose.", size=13, fill="#a5afa2", weight=560))
-    parts.append(svg_text(220, table_y + 44, "Scoreless metadata/Qwen/Cosmos records are explicit unsupported or not-evaluated cells in docs/data/task_method_20_result_matrix.json.", size=13, fill="#a5afa2", weight=560))
+    parts.append(svg_text(220, table_y - 10, reading_rules[0], size=14, fill="#dce8d7", weight=650))
+    parts.append(svg_text(220, table_y + 18, reading_rules[1], size=13, fill="#a5afa2", weight=560))
+    parts.append(svg_text(220, table_y + 44, reading_rules[2], size=13, fill="#a5afa2", weight=560))
 
     parts.append("</svg>")
     return "\n".join(parts) + "\n"
@@ -820,10 +907,28 @@ def render_svg(payload: dict[str, Any]) -> str:
 
 def main() -> int:
     payload = build_payload()
+    single_payload = filtered_radar_payload(
+        payload,
+        SINGLE_EPISODE_SERIES,
+        title="Single-Episode 20-Task Radar",
+        description="Minimal and Neural MLP baselines on the one public sample episode, both scored on all 20 task contracts.",
+    )
+    episode128_payload = filtered_radar_payload(
+        payload,
+        EPISODE128_SERIES,
+        title="128-Episode 20-Task Radar",
+        description="Selected 128-episode metadata/raw baselines plus verified Qwen3/Cosmos branches. Every method has 20 records; numeric scores appear only where the public artifact produced that task target.",
+    )
     OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_SINGLE_JSON.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_128_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_MATRIX_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_SVG.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_SINGLE_SVG.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_128_SVG.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_JSON.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    OUTPUT_SINGLE_JSON.write_text(json.dumps(single_payload, indent=2) + "\n", encoding="utf-8")
+    OUTPUT_128_JSON.write_text(json.dumps(episode128_payload, indent=2) + "\n", encoding="utf-8")
     matrix_payload = {
         "title": "Task Method 20-Result Matrix",
         "status": "pass",
@@ -838,10 +943,59 @@ def main() -> int:
     OUTPUT_MATRIX_JSON.write_text(json.dumps(matrix_payload, indent=2) + "\n", encoding="utf-8")
     OUTPUT_MATRIX_MD.write_text(render_matrix_markdown(payload), encoding="utf-8")
     OUTPUT_SVG.write_text(render_svg(payload), encoding="utf-8")
+    OUTPUT_SINGLE_SVG.write_text(
+        render_svg(
+            single_payload,
+            series_ids=SINGLE_EPISODE_SERIES,
+            polygon_series_ids=SINGLE_EPISODE_SERIES,
+            title="Single-Episode 20-Task Radar",
+            subtitle="One public sample episode; both baseline heads score every task axis.",
+            context_line="This view isolates the 1-episode task-head setup from the multi-episode model branches.",
+            chip_specs=[
+                ("20 task axes", "#ccffa0"),
+                ("40 method-task records", "#67e8d1"),
+                ("40 scored axes", "#22d3ee"),
+                ("2 filled baseline polygons", "#f472b6"),
+            ],
+            reading_rules=(
+                "Both single-episode methods have numeric scores on every one of the 20 task contracts.",
+                "This radar is the cleanest view of public-sample Minimal vs Neural MLP behavior before any 128-episode scale-up.",
+                "Raw metric values and sources remain in docs/data/single_episode_task_model_radar.json and docs/data/task_method_20_result_matrix.json.",
+            ),
+        ),
+        encoding="utf-8",
+    )
+    OUTPUT_128_SVG.write_text(
+        render_svg(
+            episode128_payload,
+            series_ids=EPISODE128_SERIES,
+            polygon_series_ids=("raw128_simple", "raw128_neural_mlp"),
+            title="128-Episode 20-Task Radar",
+            subtitle="Selected 96/16/16 episode split; raw-feature heads score all 20 axes.",
+            context_line="Raw128 baselines are filled polygons; metadata, Qwen3, and Cosmos branches plot only evaluated task targets.",
+            chip_specs=[
+                ("20 task axes", "#ccffa0"),
+                ("140 method-task records", "#67e8d1"),
+                ("71 scored axes", "#22d3ee"),
+                ("40/40 raw128 pass", "#f59e0b"),
+                ("69 explicit scoreless", "#f472b6"),
+            ],
+            reading_rules=(
+                "Every 128-episode method has 20 result records; radius appears only where a numeric score exists.",
+                "Raw128 Simple and Raw128 NN are the current complete 20/20 scored multi-episode baselines; tasks 15/19 are documented compact proxies.",
+                "Metadata-only and Qwen/Cosmos scoreless cells are explicit not-supported or not-evaluated records, not hidden failures.",
+            ),
+        ),
+        encoding="utf-8",
+    )
     print(f"PASS: wrote {OUTPUT_JSON}")
+    print(f"PASS: wrote {OUTPUT_SINGLE_JSON}")
+    print(f"PASS: wrote {OUTPUT_128_JSON}")
     print(f"PASS: wrote {OUTPUT_MATRIX_JSON}")
     print(f"PASS: wrote {OUTPUT_MATRIX_MD}")
     print(f"PASS: wrote {OUTPUT_SVG}")
+    print(f"PASS: wrote {OUTPUT_SINGLE_SVG}")
+    print(f"PASS: wrote {OUTPUT_128_SVG}")
     return 0
 
 

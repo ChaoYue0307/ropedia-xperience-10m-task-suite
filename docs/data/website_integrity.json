@@ -1,14 +1,14 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-16T10:35:38+00:00",
+  "generated_at_utc": "2026-06-16T11:08:31+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 162,
+    "local_references": 176,
     "external_reference_count": 121,
-    "json_files": 43,
-    "image_assets_referenced": 23,
+    "json_files": 45,
+    "image_assets_referenced": 25,
     "failure_count": 0
   },
   "failures": {
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 85521,
-      "evidence_index": 111351
+      "overview_index": 87077,
+      "evidence_index": 114423
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 85521,
-      "protocol_index": 107532,
-      "evidence_index": 111351
+      "overview_index": 87077,
+      "protocol_index": 110604,
+      "evidence_index": 114423
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -180,7 +180,7 @@
       "status": "pass",
       "reason": "The Suite anchor should show the task-suite map before the modality atlas.",
       "first_marker_index": 471,
-      "second_marker_index": 1831
+      "second_marker_index": 3362
     },
     {
       "name": "suite_modality_atlas_contains_seven_cards",
@@ -277,8 +277,8 @@
     {
       "path": "index.html",
       "id_count": 90,
-      "reference_count": 138,
-      "image_count": 27
+      "reference_count": 152,
+      "image_count": 31
     },
     {
       "path": "research_roadmap.html",
@@ -301,7 +301,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 97873,
+      "bytes": 99966,
       "top_level_type": "dict"
     },
     {
@@ -312,6 +312,11 @@
     {
       "path": "data/brand_assets.json",
       "bytes": 3967,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/episode128_task_model_radar.json",
+      "bytes": 187439,
       "top_level_type": "dict"
     },
     {
@@ -326,7 +331,7 @@
     },
     {
       "path": "data/figure_index.json",
-      "bytes": 15726,
+      "bytes": 17287,
       "top_level_type": "dict"
     },
     {
@@ -336,12 +341,12 @@
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 131884,
+      "bytes": 134796,
       "top_level_type": "dict"
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 838389,
+      "bytes": 847909,
       "top_level_type": "dict"
     },
     {
@@ -381,12 +386,12 @@
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 5806,
+      "bytes": 6096,
       "top_level_type": "dict"
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 7883,
+      "bytes": 8188,
       "top_level_type": "dict"
     },
     {
@@ -455,6 +460,11 @@
       "top_level_type": "dict"
     },
     {
+      "path": "data/single_episode_task_model_radar.json",
+      "bytes": 50973,
+      "top_level_type": "dict"
+    },
+    {
       "path": "data/source_alignment_audit.json",
       "bytes": 4432,
       "top_level_type": "dict"
@@ -501,7 +511,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 18101,
+      "bytes": 18814,
       "top_level_type": "dict"
     },
     {
@@ -530,6 +540,13 @@
       "path": "assets/charts/cross_modal_retrieval.svg",
       "exists": true,
       "bytes": 3196,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/episode128_task_model_radar.svg",
+      "exists": true,
+      "bytes": 45734,
       "format": "SVG",
       "has_viewbox": true
     },
@@ -583,6 +600,13 @@
       "has_viewbox": true
     },
     {
+      "path": "assets/charts/single_episode_task_model_radar.svg",
+      "exists": true,
+      "bytes": 37447,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
       "path": "assets/charts/tier2_task_suite.svg",
       "exists": true,
       "bytes": 5437,
@@ -592,7 +616,7 @@
     {
       "path": "assets/charts/unified_task_model_radar.svg",
       "exists": true,
-      "bytes": 51944,
+      "bytes": 51920,
       "format": "SVG",
       "has_viewbox": true
     },

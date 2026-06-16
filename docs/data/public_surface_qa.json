@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Project Surface",
   "status": "pass",
-  "generated_at_utc": "2026-06-16T10:46:48+00:00",
+  "generated_at_utc": "2026-06-16T11:08:23+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -18,7 +18,7 @@
         "website_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-16T10:35:38+00:00"
+          "generated_at_utc": "2026-06-16T11:00:25+00:00"
         },
         "rendered_site_check": {
           "exists": true,
@@ -28,27 +28,27 @@
         "task_surface_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-16T10:35:37+00:00"
+          "generated_at_utc": "2026-06-16T11:00:22+00:00"
         },
         "source_alignment": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-16T10:35:37+00:00"
+          "generated_at_utc": "2026-06-16T11:00:22+00:00"
         },
         "scale_up_status": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-16T10:35:40+00:00"
+          "generated_at_utc": "2026-06-16T11:00:26+00:00"
         },
         "publication_package": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-16T10:35:47+00:00"
+          "generated_at_utc": "2026-06-16T11:00:39+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-16T10:36:24+00:00"
+          "generated_at_utc": "2026-06-16T11:02:20+00:00"
         }
       },
       "failures": {}
@@ -81,7 +81,7 @@
         "aria-controls": 11,
         "moveProjectTabFocus": 2,
         "ArrowRight": 6,
-        "Home": 6,
+        "Home": 7,
         "End": 6
       }
     },
@@ -97,8 +97,8 @@
       "marker_counts": {
         "Ropedia Xperience-10M Task Suite": 16,
         "Xperience-10M": 149,
-        "20-task": 43,
-        "Qwen3-Omni": 148,
+        "20-task": 60,
+        "Qwen3-Omni": 151,
         "128-episode pilot": 1
       }
     },
@@ -131,7 +131,12 @@
         "data/task_suite_enhancement_128.json": 28,
         "data/task_suite_20.json": 42,
         "data/unified_task_model_radar.json": 17,
+        "data/single_episode_task_model_radar.json": 11,
+        "data/episode128_task_model_radar.json": 11,
+        "data/task_method_20_result_matrix.json": 17,
         "assets/charts/unified_task_model_radar.svg": 17,
+        "assets/charts/single_episode_task_model_radar.svg": 18,
+        "assets/charts/episode128_task_model_radar.svg": 18,
         "data/tier2_task_suite.json": 11
       }
     },

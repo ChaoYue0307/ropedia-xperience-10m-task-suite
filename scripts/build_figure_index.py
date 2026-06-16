@@ -187,6 +187,22 @@ FIGURES = [
         "surface": "website unified task section, README, HF mirrors",
     },
     {
+        "id": "single_episode_task_model_radar",
+        "title": "Single-episode 20-task model radar",
+        "path": "docs/assets/charts/single_episode_task_model_radar.svg",
+        "role": "Twenty-axis split radar for the one public-sample episode, comparing Minimal and Neural MLP as two complete 20/20 scored polygons.",
+        "source_script": "scripts/build_unified_task_model_radar.py",
+        "surface": "website unified task section, README, HF mirrors",
+    },
+    {
+        "id": "episode128_task_model_radar",
+        "title": "128-episode 20-task model radar",
+        "path": "docs/assets/charts/episode128_task_model_radar.svg",
+        "role": "Twenty-axis split radar for selected 128-episode methods: raw-feature simple/NN as complete scored polygons and metadata/Qwen/Cosmos as task-aligned overlays.",
+        "source_script": "scripts/build_unified_task_model_radar.py",
+        "surface": "website unified task section, README, HF mirrors",
+    },
+    {
         "id": "feature_blocks_chart",
         "title": "Feature block chart",
         "path": "docs/assets/charts/feature_blocks.svg",

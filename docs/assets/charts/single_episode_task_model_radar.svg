@@ -6,19 +6,17 @@
 <rect width="100%" height="100%" fill="#020502"/>
 <rect width="100%" height="100%" fill="url(#dots)" opacity="0.45"/>
 <rect x="28" y="28" width="1864" height="1584" rx="18" fill="#061006" fill-opacity="0.88" stroke="#ccffa0" stroke-opacity="0.22"/>
-<text x="70.0" y="86.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="36" font-weight="800" fill="#f4f8ef" opacity="1.000">Unified 20-Task Model Radar</text>
-<text x="70.0" y="122.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="18" font-weight="650" fill="#dce8d7" opacity="1.000">Task names, methods, coverage, and metric normalization in one comparison view.</text>
-<text x="70.0" y="150.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="560" fill="#a5afa2" opacity="1.000">Filled areas show complete scored baselines; colored points show partial branches on task-aligned axes.</text>
+<text x="70.0" y="86.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="36" font-weight="800" fill="#f4f8ef" opacity="1.000">Single-Episode 20-Task Radar</text>
+<text x="70.0" y="122.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="18" font-weight="650" fill="#dce8d7" opacity="1.000">One public sample episode; both baseline heads score every task axis.</text>
+<text x="70.0" y="150.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="560" fill="#a5afa2" opacity="1.000">This view isolates the 1-episode task-head setup from the multi-episode model branches.</text>
 <rect x="70" y="174" width="168" height="34" rx="17" fill="#ccffa0" fill-opacity="0.10" stroke="#ccffa0" stroke-opacity="0.38"/>
 <text x="86.0" y="197.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="760" fill="#ccffa0" opacity="1.000">20 task axes</text>
 <rect x="250" y="174" width="250" height="34" rx="17" fill="#67e8d1" fill-opacity="0.10" stroke="#67e8d1" stroke-opacity="0.38"/>
-<text x="266.0" y="197.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="760" fill="#67e8d1" opacity="1.000">180 method-task records</text>
-<rect x="512" y="174" width="250" height="34" rx="17" fill="#22d3ee" fill-opacity="0.10" stroke="#22d3ee" stroke-opacity="0.38"/>
-<text x="528.0" y="197.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="760" fill="#22d3ee" opacity="1.000">111 scored axes</text>
-<rect x="774" y="174" width="250" height="34" rx="17" fill="#f59e0b" fill-opacity="0.10" stroke="#f59e0b" stroke-opacity="0.38"/>
-<text x="790.0" y="197.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="760" fill="#f59e0b" opacity="1.000">40/40 raw128 pass</text>
-<rect x="1036" y="174" width="250" height="34" rx="17" fill="#f472b6" fill-opacity="0.10" stroke="#f472b6" stroke-opacity="0.38"/>
-<text x="1052.0" y="197.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="760" fill="#f472b6" opacity="1.000">2 compact proxy axes</text>
+<text x="266.0" y="197.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="760" fill="#67e8d1" opacity="1.000">40 method-task records</text>
+<rect x="512" y="174" width="168" height="34" rx="17" fill="#22d3ee" fill-opacity="0.10" stroke="#22d3ee" stroke-opacity="0.38"/>
+<text x="528.0" y="197.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="760" fill="#22d3ee" opacity="1.000">40 scored axes</text>
+<rect x="692" y="174" width="250" height="34" rx="17" fill="#f472b6" fill-opacity="0.10" stroke="#f472b6" stroke-opacity="0.38"/>
+<text x="708.0" y="197.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="760" fill="#f472b6" opacity="1.000">2 filled baseline polygons</text>
 <rect x="54" y="235" width="920" height="980" rx="14" fill="#020502" fill-opacity="0.42" stroke="#ccffa0" stroke-opacity="0.14"/>
 <text x="84.0" y="276.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="23" font-weight="800" fill="#f4f8ef" opacity="1.000">Normalized task scores</text>
 <text x="84.0" y="302.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Each axis is one task. Longer radius means better after metric-direction normalization.</text>
@@ -134,77 +132,6 @@
 <circle cx="254.3" cy="545.1" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
 <circle cx="497.6" cy="687.9" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
 <circle cx="435.8" cy="408.7" r="4.0" fill="#67e8d1" stroke="#020502" stroke-width="1.1"/>
-<circle cx="550.0" cy="756.9" r="6.5" fill="#ffd166" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="759.9" r="6.5" fill="#ffd166" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="614.5" cy="671.2" r="6.5" fill="#ffd166" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="552.0" cy="758.6" r="6.5" fill="#ffd166" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="712.1" cy="760.0" r="6.5" fill="#ffd166" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="612.5" cy="780.3" r="6.5" fill="#ffd166" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.7" cy="760.5" r="6.5" fill="#ffd166" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="915.4" r="6.5" fill="#ffd166" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="758.5" r="6.5" fill="#f472b6" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="760.0" r="6.5" fill="#f472b6" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="655.3" cy="615.1" r="6.5" fill="#f472b6" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="551.5" cy="758.9" r="6.5" fill="#f472b6" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="760.3" cy="760.0" r="6.5" fill="#f472b6" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="615.7" cy="781.3" r="6.5" fill="#f472b6" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="758.9" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="760.0" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="641.4" cy="634.2" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="551.0" cy="759.3" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="689.1" cy="714.8" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="878.2" cy="760.0" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="573.1" cy="767.5" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="553.3" cy="762.4" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.8" cy="761.0" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="760.0" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="944.4" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="493.3" cy="934.5" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="549.5" cy="760.7" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="760.0" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="545.6" cy="761.4" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="760.0" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="527.2" cy="752.6" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="495.1" cy="720.1" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="549.4" cy="759.2" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="527.0" cy="689.1" r="6.5" fill="#f59e0b" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="759.4" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="760.0" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="656.6" cy="613.3" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.6" cy="759.6" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="755.4" cy="693.3" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="920.0" cy="760.0" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="612.1" cy="780.2" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="551.9" cy="761.4" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.6" cy="760.8" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="760.0" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="1057.1" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="455.4" cy="1051.1" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="549.8" cy="760.3" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="760.0" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="546.6" cy="761.1" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="760.0" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="488.3" cy="740.0" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="500.2" cy="723.9" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="549.4" cy="759.2" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="521.6" cy="672.5" r="6.5" fill="#22d3ee" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="758.9" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.4" cy="758.7" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="765.3" cy="463.7" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="562.9" cy="750.6" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="852.6" cy="760.0" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="657.9" cy="795.0" r="8.0" fill="#9bb8ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="759.7" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="760.0" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="630.1" cy="649.8" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="554.0" cy="757.1" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="668.9" cy="760.0" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="598.2" cy="775.7" r="8.0" fill="#ff9c7a" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="550.0" cy="757.1" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="760.6" cy="470.2" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="552.4" cy="758.3" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="825.1" cy="760.0" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
-<circle cx="554.8" cy="766.6" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <rect x="1000" y="140" width="820" height="560" rx="14" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>
 <text x="1030.0" y="178.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="25" font-weight="800" fill="#f4f8ef" opacity="1.000">Methods compared</text>
 <text x="1030.0" y="208.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Each method has 20 records; scored axes and scoreless statuses stay in the JSON matrix.</text>
@@ -217,45 +144,6 @@
 <text x="1360.0" y="290.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="800" fill="#67e8d1" opacity="1.000">20 records / 20 scored</text>
 <text x="1096.0" y="310.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">Single-episode compact PyTorch MLP heads on the same 20 task</text>
 <text x="1096.0" y="325.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">contracts.</text>
-<line x1="1030" y1="345" x2="1080" y2="345" stroke="#ffd166" stroke-width="7" stroke-linecap="round"/>
-<circle cx="1055" cy="345" r="7" fill="#ffd166" stroke="#020502" stroke-width="2"/>
-<text x="1096.0" y="340.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="800" fill="#f4f8ef" opacity="1.000">128ep Metadata Simple</text>
-<text x="1360.0" y="340.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="800" fill="#ffd166" opacity="1.000">20 records / 8 scored</text>
-<text x="1096.0" y="360.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">128-episode JSONL metadata/text simple baselines.</text>
-<line x1="1030" y1="395" x2="1080" y2="395" stroke="#f472b6" stroke-width="7" stroke-linecap="round"/>
-<circle cx="1055" cy="395" r="7" fill="#f472b6" stroke="#020502" stroke-width="2"/>
-<text x="1096.0" y="390.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="800" fill="#f4f8ef" opacity="1.000">128ep Metadata NN</text>
-<text x="1360.0" y="390.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="800" fill="#f472b6" opacity="1.000">20 records / 6 scored</text>
-<text x="1096.0" y="410.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">128-episode JSONL metadata/text MLP baselines.</text>
-<line x1="1030" y1="445" x2="1080" y2="445" stroke="#f59e0b" stroke-width="7" stroke-linecap="round"/>
-<circle cx="1055" cy="445" r="7" fill="#f59e0b" stroke="#020502" stroke-width="2"/>
-<text x="1096.0" y="440.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="800" fill="#f4f8ef" opacity="1.000">128ep Raw Simple</text>
-<text x="1360.0" y="440.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="800" fill="#f59e0b" opacity="1.000">20 records / 20 scored</text>
-<text x="1096.0" y="460.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">128-episode 4430-dim sensor NPZ simple heads; tasks 15/19 use</text>
-<text x="1096.0" y="475.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">compact proxies.</text>
-<line x1="1030" y1="495" x2="1080" y2="495" stroke="#22d3ee" stroke-width="7" stroke-linecap="round"/>
-<circle cx="1055" cy="495" r="7" fill="#22d3ee" stroke="#020502" stroke-width="2"/>
-<text x="1096.0" y="490.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="800" fill="#f4f8ef" opacity="1.000">128ep Raw NN</text>
-<text x="1360.0" y="490.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="800" fill="#22d3ee" opacity="1.000">20 records / 20 scored</text>
-<text x="1096.0" y="510.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">128-episode 4430-dim sensor NPZ MLP heads; tasks 15/19 use</text>
-<text x="1096.0" y="525.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">compact proxies.</text>
-<line x1="1030" y1="545" x2="1080" y2="545" stroke="#9bb8ff" stroke-width="7" stroke-linecap="round"/>
-<circle cx="1055" cy="545" r="7" fill="#9bb8ff" stroke="#020502" stroke-width="2"/>
-<text x="1096.0" y="540.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="800" fill="#f4f8ef" opacity="1.000">Qwen3-Omni v6 LoRA</text>
-<text x="1360.0" y="540.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="800" fill="#9bb8ff" opacity="1.000">20 records / 6 scored</text>
-<text x="1096.0" y="560.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">Verified held-out Qwen3-Omni v6 LoRA metrics on task-aligned</text>
-<text x="1096.0" y="575.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">JSON outputs.</text>
-<line x1="1030" y1="595" x2="1080" y2="595" stroke="#ff9c7a" stroke-width="7" stroke-linecap="round"/>
-<circle cx="1055" cy="595" r="7" fill="#ff9c7a" stroke="#020502" stroke-width="2"/>
-<text x="1096.0" y="590.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Super Reasoner</text>
-<text x="1360.0" y="590.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="800" fill="#ff9c7a" opacity="1.000">20 records / 6 scored</text>
-<text x="1096.0" y="610.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">Verified Cosmos3-Super base-weight Reasoner JSON-task</text>
-<text x="1096.0" y="625.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">evaluation.</text>
-<line x1="1030" y1="645" x2="1080" y2="645" stroke="#d9c7ff" stroke-width="7" stroke-linecap="round"/>
-<circle cx="1055" cy="645" r="7" fill="#d9c7ff" stroke="#020502" stroke-width="2"/>
-<text x="1096.0" y="640.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="800" fill="#f4f8ef" opacity="1.000">Cosmos3-Nano Future Window</text>
-<text x="1360.0" y="640.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="800" fill="#d9c7ff" opacity="1.000">20 records / 5 scored</text>
-<text x="1096.0" y="660.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="11" font-weight="560" fill="#a5afa2" opacity="1.000">Verified Cosmos3-Nano future-window compatibility metrics.</text>
 <rect x="1000" y="736" width="820" height="610" rx="14" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>
 <text x="1030.0" y="780.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="25" font-weight="800" fill="#f4f8ef" opacity="1.000">Task axis key</text>
 <text x="1030.0" y="810.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Full task names are listed here so the polygon remains readable at homepage scale.</text>
@@ -347,7 +235,7 @@
 <text x="1483.0" y="1315.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="10" font-weight="560" fill="#a5afa2" opacity="1.000">MAE frames / lower better</text>
 <rect x="70" y="1430" width="1780" height="120" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.16"/>
 <text x="100.0" y="1458.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#ccffa0" opacity="1.000">Reading rules</text>
-<text x="220.0" y="1458.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="650" fill="#dce8d7" opacity="1.000">Every method has 20 task records; radius appears only where a numeric task score exists.</text>
-<text x="220.0" y="1486.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Raw128 completion: 18 direct task targets plus 2 compact proxies. Task 15 predicts the dominant caption/object/interaction hash bin; task 19 retrieves depth/audio sync from camera pose.</text>
-<text x="220.0" y="1512.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Scoreless metadata/Qwen/Cosmos records are explicit unsupported or not-evaluated cells in docs/data/task_method_20_result_matrix.json.</text>
+<text x="220.0" y="1458.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="650" fill="#dce8d7" opacity="1.000">Both single-episode methods have numeric scores on every one of the 20 task contracts.</text>
+<text x="220.0" y="1486.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">This radar is the cleanest view of public-sample Minimal vs Neural MLP behavior before any 128-episode scale-up.</text>
+<text x="220.0" y="1512.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Raw metric values and sources remain in docs/data/single_episode_task_model_radar.json and docs/data/task_method_20_result_matrix.json.</text>
 </svg>

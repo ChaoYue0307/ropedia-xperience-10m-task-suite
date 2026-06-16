@@ -49,7 +49,10 @@ The historical `tier2_task_suite` path is retained only for stable artifact
 links to tasks 13-20. The unified radar chart is published as
 `docs/assets/charts/unified_task_model_radar.svg` with values in
 `docs/data/unified_task_model_radar.json`; the 9-method by 20-task completion
-matrix is in `docs/data/task_method_20_result_matrix.json`.
+matrix is in `docs/data/task_method_20_result_matrix.json`. Split radars for
+the one-episode baselines and selected 128-episode methods are published as
+`docs/assets/charts/single_episode_task_model_radar.svg` and
+`docs/assets/charts/episode128_task_model_radar.svg`.
 """
 QWEN_COMPARISON_MARKER = "docs/data/qwen3_v5_v6_comparison.json"
 QWEN_COMPARISON_ROW = (
@@ -154,7 +157,9 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
                 "`docs/assets/charts/unified_task_model_radar.svg` with values in\n"
                 "`docs/data/unified_task_model_radar.json`; the 9-method by\n"
                 "20-task completion matrix is in\n"
-                "`docs/data/task_method_20_result_matrix.json`.\n",
+                "`docs/data/task_method_20_result_matrix.json`. Split radars are in\n"
+                "`docs/assets/charts/single_episode_task_model_radar.svg` and\n"
+                "`docs/assets/charts/episode128_task_model_radar.svg`.\n",
             )
         if (
             "docs/data/unified_task_model_radar.json" in text
@@ -164,6 +169,16 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
                 "`docs/data/unified_task_model_radar.json`.",
                 "`docs/data/unified_task_model_radar.json`; the 9-method by 20-task\n"
                 "completion matrix is in `docs/data/task_method_20_result_matrix.json`.",
+            )
+        if (
+            "docs/data/task_method_20_result_matrix.json" in text
+            and "docs/assets/charts/single_episode_task_model_radar.svg" not in text
+        ):
+            text = text.replace(
+                "`docs/data/task_method_20_result_matrix.json`.",
+                "`docs/data/task_method_20_result_matrix.json`. Split radars are in\n"
+                "`docs/assets/charts/single_episode_task_model_radar.svg` and\n"
+                "`docs/assets/charts/episode128_task_model_radar.svg`.",
             )
         if TIER2_MARKER in text:
             if not dry_run:

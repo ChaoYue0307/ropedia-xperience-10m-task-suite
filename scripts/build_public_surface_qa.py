@@ -176,7 +176,12 @@ def build_report() -> dict:
         "data/task_suite_enhancement_128.json",
         "data/task_suite_20.json",
         "data/unified_task_model_radar.json",
+        "data/single_episode_task_model_radar.json",
+        "data/episode128_task_model_radar.json",
+        "data/task_method_20_result_matrix.json",
         "assets/charts/unified_task_model_radar.svg",
+        "assets/charts/single_episode_task_model_radar.svg",
+        "assets/charts/episode128_task_model_radar.svg",
         "data/tier2_task_suite.json",
     ]
 

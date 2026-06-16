@@ -98,6 +98,28 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "single_episode_task_model_radar_json",
+        "title": "Single-episode 20-task model radar JSON",
+        "local_path": "docs/data/single_episode_task_model_radar.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/single_episode_task_model_radar.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/single_episode_task_model_radar.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/single_episode_task_model_radar.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/single_episode_task_model_radar.json",
+        },
+    },
+    {
+        "id": "episode128_task_model_radar_json",
+        "title": "128-episode 20-task model radar JSON",
+        "local_path": "docs/data/episode128_task_model_radar.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/episode128_task_model_radar.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/episode128_task_model_radar.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/episode128_task_model_radar.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/episode128_task_model_radar.json",
+        },
+    },
+    {
         "id": "unified_task_model_radar_svg",
         "title": "Unified 20-task model radar SVG",
         "local_path": "docs/assets/charts/unified_task_model_radar.svg",
@@ -106,6 +128,28 @@ HASH_GROUPS = [
             "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/resolve/main/assets/charts/unified_task_model_radar.svg",
             "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/assets/charts/unified_task_model_radar.svg",
             "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/assets/charts/unified_task_model_radar.svg",
+        },
+    },
+    {
+        "id": "single_episode_task_model_radar_svg",
+        "title": "Single-episode 20-task model radar SVG",
+        "local_path": "docs/assets/charts/single_episode_task_model_radar.svg",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/charts/single_episode_task_model_radar.svg",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/resolve/main/assets/charts/single_episode_task_model_radar.svg",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/assets/charts/single_episode_task_model_radar.svg",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/assets/charts/single_episode_task_model_radar.svg",
+        },
+    },
+    {
+        "id": "episode128_task_model_radar_svg",
+        "title": "128-episode 20-task model radar SVG",
+        "local_path": "docs/assets/charts/episode128_task_model_radar.svg",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/charts/episode128_task_model_radar.svg",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/resolve/main/assets/charts/episode128_task_model_radar.svg",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/assets/charts/episode128_task_model_radar.svg",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/assets/charts/episode128_task_model_radar.svg",
         },
     },
     {

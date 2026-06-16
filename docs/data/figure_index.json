@@ -1,9 +1,9 @@
 {
   "title": "Ropedia Xperience-10M Figure Index",
   "status": "pass",
-  "generated_at_utc": "2026-06-16T10:35:14+00:00",
+  "generated_at_utc": "2026-06-16T10:59:49+00:00",
   "scope": "Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience-10M videos, annotations, RRD files, and Qwen weights are excluded.",
-  "figure_count": 24,
+  "figure_count": 26,
   "figures": [
     {
       "id": "brand_logo_mark",
@@ -359,8 +359,44 @@
       "source_script": "scripts/build_unified_task_model_radar.py",
       "surface": "website unified task section, README, HF mirrors",
       "exists": true,
-      "bytes": 51944,
-      "sha256": "c7b460e28e6639958817b41e0f35290c32a87018714b13e4531cf5e5a44b8f72",
+      "bytes": 51920,
+      "sha256": "2350a795fed9630f88112a18af54f99bfbf27a57f24f9a2b5ed3398a2a2c053a",
+      "dimensions": {
+        "format": "SVG",
+        "width": 1920,
+        "height": 1640,
+        "view_box": "0 0 1920 1640"
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "single_episode_task_model_radar",
+      "title": "Single-episode 20-task model radar",
+      "path": "docs/assets/charts/single_episode_task_model_radar.svg",
+      "role": "Twenty-axis split radar for the one public-sample episode, comparing Minimal and Neural MLP as two complete 20/20 scored polygons.",
+      "source_script": "scripts/build_unified_task_model_radar.py",
+      "surface": "website unified task section, README, HF mirrors",
+      "exists": true,
+      "bytes": 37447,
+      "sha256": "4fe5979adc1f5b27edcb2f3527407a2cba1ccda94b05fc0a0dfa7b2767fc6795",
+      "dimensions": {
+        "format": "SVG",
+        "width": 1920,
+        "height": 1640,
+        "view_box": "0 0 1920 1640"
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "episode128_task_model_radar",
+      "title": "128-episode 20-task model radar",
+      "path": "docs/assets/charts/episode128_task_model_radar.svg",
+      "role": "Twenty-axis split radar for selected 128-episode methods: raw-feature simple/NN as complete scored polygons and metadata/Qwen/Cosmos as task-aligned overlays.",
+      "source_script": "scripts/build_unified_task_model_radar.py",
+      "surface": "website unified task section, README, HF mirrors",
+      "exists": true,
+      "bytes": 45734,
+      "sha256": "412169278a61e2dc27cf84528cd3c80dc9f9db2d711e624e5436cf4fd4299761",
       "dimensions": {
         "format": "SVG",
         "width": 1920,
