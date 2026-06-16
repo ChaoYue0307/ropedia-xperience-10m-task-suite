@@ -748,8 +748,8 @@ def render_svg(
     chip_specs: list[tuple[str, str]] | None = None,
     reading_rules: tuple[str, str, str] | None = None,
 ) -> str:
-    width, height = 1920, 1640
-    cx, cy, radius = 550, 760, 370
+    width, height = 2400, 1840
+    cx, cy, radius = 650, 860, 355
     tasks = payload["tasks"]
     n = len(tasks)
     angles = [-math.pi / 2 + 2 * math.pi * i / n for i in range(n)]
@@ -765,7 +765,7 @@ def render_svg(
         "</defs>",
         '<rect width="100%" height="100%" fill="#020502"/>',
         '<rect width="100%" height="100%" fill="url(#dots)" opacity="0.45"/>',
-        '<rect x="28" y="28" width="1864" height="1584" rx="18" fill="#061006" fill-opacity="0.88" stroke="#ccffa0" stroke-opacity="0.22"/>',
+        '<rect x="28" y="28" width="2344" height="1784" rx="18" fill="#061006" fill-opacity="0.88" stroke="#ccffa0" stroke-opacity="0.22"/>',
         svg_text(70, 86, title or payload.get("title", "20-Task Model Radar"), size=36, weight=800),
         svg_text(
             70,
@@ -801,7 +801,7 @@ def render_svg(
         parts.append(svg_text(chip_x + 16, 197, label, size=13, fill=color, weight=760))
         chip_x += chip_w + 12
 
-    parts.append('<rect x="54" y="235" width="920" height="980" rx="14" fill="#020502" fill-opacity="0.42" stroke="#ccffa0" stroke-opacity="0.14"/>')
+    parts.append('<rect x="54" y="235" width="1190" height="1190" rx="14" fill="#020502" fill-opacity="0.42" stroke="#ccffa0" stroke-opacity="0.14"/>')
     parts.append(svg_text(84, 276, "Normalized task scores", size=23, weight=800))
     parts.append(svg_text(84, 302, "Each axis is one task. Longer radius means better after metric-direction normalization.", size=13, fill="#a5afa2", weight=560))
 
@@ -815,14 +815,9 @@ def render_svg(
     for task, angle in zip(tasks, angles):
         x, y = point(cx, cy, radius, angle)
         parts.append(f'<line x1="{cx:.1f}" y1="{cy:.1f}" x2="{x:.1f}" y2="{y:.1f}" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>')
-        lx, ly = point(cx, cy, radius + 70, angle)
-        anchor = "middle"
-        if math.cos(angle) > 0.25:
-            anchor = "start"
-        elif math.cos(angle) < -0.25:
-            anchor = "end"
-        parts.append(svg_text(lx, ly - 7, f"{task['task_number']:02d}", size=12, fill="#ccffa0", anchor=anchor, weight=800, opacity=0.95))
-        parts.append(svg_text(lx, ly + 14, task["short_label"], size=12, fill="#dce8d7", anchor=anchor, weight=700))
+        lx, ly = point(cx, cy, radius + 82, angle)
+        parts.append(f'<circle cx="{lx:.1f}" cy="{ly:.1f}" r="15.5" fill="#ccffa0" fill-opacity="0.12" stroke="#ccffa0" stroke-opacity="0.34"/>')
+        parts.append(svg_text(lx, ly + 4, f"{task['task_number']:02d}", size=11, fill="#ccffa0", anchor="middle", weight=800, opacity=0.98))
 
     for series_id in series_ids:
         if series_id not in polygon_series_set:
@@ -851,8 +846,8 @@ def render_svg(
                 f'stroke="#020502" stroke-width="2.0"/>'
             )
 
-    legend_x, legend_y = 1030, 178
-    parts.append(f'<rect x="{legend_x - 30}" y="{legend_y - 38}" width="820" height="560" rx="14" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>')
+    legend_x, legend_y = 1315, 178
+    parts.append(f'<rect x="{legend_x - 30}" y="{legend_y - 38}" width="1000" height="560" rx="14" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>')
     parts.append(svg_text(legend_x, legend_y, "Methods compared", size=25, weight=800))
     parts.append(svg_text(legend_x, legend_y + 30, "Each method has 20 records; scored axes and scoreless statuses stay in the JSON matrix.", size=13, fill="#a5afa2", weight=560))
 
@@ -863,39 +858,39 @@ def render_svg(
         if record["id"] not in polygon_series_set:
             parts.append(f'<circle cx="{legend_x + 25}" cy="{cursor - 7}" r="7" fill="{color}" stroke="#020502" stroke-width="2"/>')
         parts.append(svg_text(legend_x + 66, cursor - 12, record["label"], size=15, weight=800))
-        parts.append(svg_text(legend_x + 330, cursor - 12, f"20 records / {record['scored_task_count']} scored", size=13, fill=color, weight=800))
-        detail_lines = split_text(METHOD_DETAILS.get(record["id"], record["scope"]), 64)[:2]
+        parts.append(svg_text(legend_x + 392, cursor - 12, f"20 records / {record['scored_task_count']} scored", size=13, fill=color, weight=800))
+        detail_lines = split_text(METHOD_DETAILS.get(record["id"], record["scope"]), 78)[:2]
         parts.extend(svg_text_lines(legend_x + 66, cursor + 8, detail_lines, size=11, fill="#a5afa2", weight=560, line_height=15))
         cursor += 50
 
-    key_x, key_y = 1030, 780
-    parts.append(f'<rect x="{key_x - 30}" y="{key_y - 44}" width="820" height="610" rx="14" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>')
+    key_x, key_y = 1315, 780
+    parts.append(f'<rect x="{key_x - 30}" y="{key_y - 44}" width="1000" height="680" rx="14" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>')
     parts.append(svg_text(key_x, key_y, "Task axis key", size=25, weight=800))
     parts.append(svg_text(key_x, key_y + 30, "Full task names are listed here so the polygon remains readable at homepage scale.", size=13, fill="#a5afa2", weight=560))
     for idx, task in enumerate(tasks):
         col = 0 if idx < 10 else 1
         row = idx if idx < 10 else idx - 10
-        x0 = key_x + col * 405
-        y0 = key_y + 74 + row * 48
+        x0 = key_x + col * 500
+        y0 = key_y + 74 + row * 54
         proxy = task["task_id"] in PROXY_TASK_IDS
         badge_fill = "#f472b6" if proxy else "#ccffa0"
         parts.append(f'<rect x="{x0}" y="{y0 - 16}" width="36" height="26" rx="6" fill="{badge_fill}" fill-opacity="0.14" stroke="{badge_fill}" stroke-opacity="0.40"/>')
         parts.append(svg_text(x0 + 18, y0 + 2, f"{task['task_number']:02d}", size=11, fill=badge_fill, anchor="middle", weight=800))
-        name_lines = split_text(str(task["label"]), 32)[:2]
+        name_lines = split_text(str(task["label"]), 42)[:2]
         parts.extend(svg_text_lines(x0 + 48, y0 - 3, name_lines, size=12, fill="#f4f8ef", weight=760, line_height=14))
         metric_label = f"{task.get('metric_name') or task.get('metric_key')} / {'lower better' if task.get('metric_direction') == 'lower' else 'higher better'}"
         if proxy:
             metric_label += " / raw128 proxy"
         parts.append(svg_text(x0 + 48, y0 + 29, metric_label, size=10, fill="#a5afa2", weight=560))
 
-    table_y = 1468
+    table_y = 1680
     if reading_rules is None:
         reading_rules = (
             "Every method has 20 task records; radius appears only where a numeric task score exists.",
             "Raw128 completion: 18 direct task targets plus 2 compact proxies. Task 15 predicts the dominant caption/object/interaction hash bin; task 19 retrieves depth/audio sync from camera pose.",
             "Scoreless metadata/Qwen/Cosmos records are explicit unsupported or not-evaluated cells in docs/data/task_method_20_result_matrix.json.",
         )
-    parts.append(f'<rect x="70" y="{table_y - 38}" width="1780" height="120" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.16"/>')
+    parts.append(f'<rect x="70" y="{table_y - 38}" width="2260" height="120" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.16"/>')
     parts.append(svg_text(100, table_y - 10, "Reading rules", size=16, fill="#ccffa0", weight=800))
     parts.append(svg_text(220, table_y - 10, reading_rules[0], size=14, fill="#dce8d7", weight=650))
     parts.append(svg_text(220, table_y + 18, reading_rules[1], size=13, fill="#a5afa2", weight=560))
