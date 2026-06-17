@@ -820,7 +820,7 @@ def sanitize_url(url: str) -> str:
     return urlunsplit((parts.scheme, parts.netloc, parts.path, "", ""))
 
 
-def fetch_once(url: str, *, timeout_seconds: int = TIMEOUT_SECONDS, prefer_curl: bool = False) -> dict:
+def fetch_once(url: str, *, timeout_seconds: int = TIMEOUT_SECONDS, prefer_curl: bool = True) -> dict:
     if prefer_curl:
         return fetch_with_curl(url, timeout_seconds=timeout_seconds)
     request = Request(url, headers={"User-Agent": USER_AGENT})
@@ -878,7 +878,7 @@ def fetch_once(url: str, *, timeout_seconds: int = TIMEOUT_SECONDS, prefer_curl:
         }
 
 
-def fetch(url: str, *, timeout_seconds: int = TIMEOUT_SECONDS, prefer_curl: bool = False) -> dict:
+def fetch(url: str, *, timeout_seconds: int = TIMEOUT_SECONDS, prefer_curl: bool = True) -> dict:
     last_result = None
     for attempt in range(1, FETCH_RETRIES + 1):
         result = fetch_once(url, timeout_seconds=timeout_seconds, prefer_curl=prefer_curl)
@@ -956,10 +956,7 @@ def hash_group_record(group: dict) -> dict:
     if not local["exists"]:
         failures.append({"surface": "local", "kind": "missing", "path": group["local_path"]})
     for surface, url in group["urls"].items():
-        prefer_curl = (
-            local["bytes"] >= LARGE_FILE_THRESHOLD_BYTES
-            or Path(urlsplit(url).path).suffix == ".safetensors"
-        )
+        prefer_curl = True
         timeout_seconds = LARGE_FILE_TIMEOUT_SECONDS if prefer_curl else TIMEOUT_SECONDS
         result = fetch(url, timeout_seconds=timeout_seconds, prefer_curl=prefer_curl)
         record = {key: value for key, value in result.items() if key != "body"}
