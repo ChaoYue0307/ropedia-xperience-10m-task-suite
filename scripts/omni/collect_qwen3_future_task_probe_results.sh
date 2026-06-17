@@ -40,6 +40,7 @@ run_id = sys.argv[2]
 task_ids = [item.strip() for item in sys.argv[3].split(",") if item.strip()]
 run_dir = root / "results/omni_finetune" / run_id
 metric_key_by_task = {
+    "caption_grounding": "caption_grounding_mrr",
     "temporal_order": "temporal_order_f1",
     "misalignment_detection": "misalignment_detection_f1",
     "long_horizon_next_action": "long_horizon_next_action_macro_f1",

@@ -1,0 +1,434 @@
+#!/usr/bin/env python3
+"""Build multilingual public README entry points for the project surfaces."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+UPDATED = "2026-06-18"
+LANGUAGES = [
+    ("en", "English", "README.md"),
+    ("zh", "中文", "README.zh.md"),
+    ("es", "Español", "README.es.md"),
+    ("fr", "Français", "README.fr.md"),
+    ("de", "Deutsch", "README.de.md"),
+    ("ja", "日本語", "README.ja.md"),
+    ("ko", "한국어", "README.ko.md"),
+    ("pt", "Português", "README.pt.md"),
+]
+
+
+def lang_bar(active: str) -> str:
+    parts = []
+    for code, label, filename in LANGUAGES:
+        text = f"<b>{label}</b>" if code == active else label
+        parts.append(f'  <a href="{filename}">{text}</a>')
+    return "<!-- LANG-BAR:START -->\n<p align=\"center\">\n" + " ·\n".join(parts) + "\n</p>\n<!-- LANG-BAR:END -->"
+
+
+def badges() -> str:
+    return """<p align="center">
+  <a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/"><img alt="GitHub Pages" src="https://img.shields.io/badge/site-GitHub%20Pages-1f63e9"></a>
+  <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite"><img alt="HF Space" src="https://img.shields.io/badge/Hugging%20Face-Space-ffb000"></a>
+  <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts"><img alt="artifact dataset" src="https://img.shields.io/badge/HF-artifacts-008b9a"></a>
+  <a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines"><img alt="baseline model repo" src="https://img.shields.io/badge/HF-baselines-7ae5c3"></a>
+  <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m"><img alt="Xperience-10M" src="https://img.shields.io/badge/dataset-Xperience--10M-344054"></a>
+  <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-ccffa0"></a>
+</p>"""
+
+
+def hero(title: str, tagline: str, active: str) -> str:
+    return f"""<p align="center">
+  <img src="docs/assets/brand/xperience10m-logo-social-card.png" alt="Ropedia Xperience-10M Task Suite cover" width="100%">
+</p>
+
+<h1 align="center">{title}</h1>
+
+<p align="center">
+  <img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Ropedia Xperience-10M logo" width="112">
+</p>
+
+<p align="center">
+  <strong>{tagline}</strong>
+</p>
+
+{lang_bar(active)}
+
+{badges()}
+"""
+
+
+ENGLISH_TOP = f"""{hero(
+    "Ropedia Xperience-10M Task Suite",
+    "A multilingual public research surface for Xperience-10M: sample data, 20 embodied-AI tasks, baselines, Qwen3/Cosmos diagnostics, and foundation-model training directions.",
+    "en",
+)}
+
+**Ropedia Xperience-10M Task Suite** turns the public Xperience-10M sample into a readable embodied-AI benchmark surface. It keeps the evidence trail explicit: what is derived from the one public sample episode, what is evaluated on selected 128-episode held-out splits, what is mirrored to Hugging Face, and what still requires gated raw data or new model-specific evaluators.
+
+**Updated:** {UPDATED}.
+
+**Scope:** one public sample episode for the fully reproducible task suite; selected 128-episode public-safe artifacts for Qwen3-Omni, Cosmos3, metadata baselines, and raw-feature baselines. Raw Xperience-10M MP4/HDF5/RRD files, full Qwen weights, and gated data are not redistributed here.
+
+## Contents
+
+- [How To Read This Project](#how-to-read-this-project)
+- [At A Glance](#at-a-glance)
+- [Fast Reader Map](#fast-reader-map)
+- [Why This Project Exists](#why-this-project-exists)
+- [Start Here](#start-here)
+- [Current Research Scope](#current-research-scope)
+- [Evaluation Protocol](#evaluation-protocol)
+- [Dataset Context](#dataset-context)
+- [Reproducibility](#reproducibility)
+- [Citation](#citation)
+
+## How To Read This Project
+
+Use the first two tables to orient yourself, then jump to the evidence artifact that matches your question. The dashboard is the best visual overview; the GitHub repo is the source of truth for scripts and generated JSON; Hugging Face mirrors contain public-safe cards, metrics, figures, and model artifacts.
+
+The multilingual README files are reader guides. The canonical technical evidence is still the committed task contracts, result matrices, validation JSON, and public-safe result packages.
+
+## At A Glance
+
+| Signal | Current public state |
+| --- | --- |
+| 20 task contracts | Action, procedure, transition, trajectory, contact, objects, language, retrieval, reconstruction, order, sync, long-horizon forecasting, interaction text, action-object binding, sensor bridging, camera sync, and transition timing. |
+| 180 method-task records | 9 methods x 20 tasks. Numeric scores appear only where a real task target and source artifact exist; unsupported and not-yet-evaluated cells stay visible. |
+| Public-sample baselines | Minimal and Neural MLP baselines cover all 20 tasks on the one public sample episode. |
+| 128-episode comparison layer | Metadata/simple, metadata/NN, raw-feature simple, raw-feature NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano branches are separated by evidence type. |
+| Foundation directions | Spatial intelligence, human-video world modeling, and vision-language-action pipelines are documented as trainable directions with task mappings and model-evidence requirements. |
+| Public mirrors | GitHub, GitHub Pages, HF Space, HF artifact dataset, HF baseline model repo, Qwen3/Cosmos model repos, and HF collection. |
+
+## Fast Reader Map
+
+| Reader goal | Start here | Then inspect |
+| --- | --- | --- |
+| Understand the project quickly | [Project brief](PROJECT_BRIEF.md), [project status](PROJECT_STATUS.md) | [Dashboard](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/) |
+| Choose the right public surface | [Public reader map](PUBLIC_READER_MAP.md) | [public_reader_map.json](docs/data/public_reader_map.json) |
+| Inspect the 20 task contracts | [TASK_SUITE_20.md](TASK_SUITE_20.md) | [task_suite_20.json](docs/data/task_suite_20.json), [task walkthroughs](results/episode_task_suite/task_walkthroughs/) |
+| Compare results | [Research takeaways](RESEARCH_TAKEAWAYS.md) | [20-result matrix](docs/data/task_method_20_result_matrix.json), [radar JSON](docs/data/unified_task_model_radar.json), [gap audit](docs/data/task_method_20_gap_audit.json) |
+| Understand one data sample | [Single-episode explorer](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html) | [raw sample file map](docs/data/raw_sample_files.json), [feature manifest](results/episode_task_suite/feature_manifest.json) |
+| Read foundation training directions | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md) | [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json), [foundation model plan](FOUNDATION_MODEL_PLAN.md) |
+| Reproduce or audit | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) | [quality gates](docs/data/quality_gates.json), [publication audit](docs/data/publication_audit.json), [mirror parity](docs/data/mirror_parity.json) |
+"""
+
+
+LANGUAGE_GUIDES = {
+    "zh": {
+        "title": "Ropedia Xperience-10M 任务套件",
+        "tagline": "面向 Xperience-10M 的多语言公开研究入口：样本数据、20 个具身智能任务、基线、Qwen3/Cosmos 诊断结果，以及基础模型训练方向。",
+        "body": f"""## 如何阅读这个项目
+
+这个仓库把 Ropedia 公开的 Xperience-10M sample episode 变成一个可检查的具身智能任务实验室。请先看仪表盘和项目状态，再进入 20 个任务、结果矩阵和 Hugging Face 镜像。
+
+**更新时间：** {UPDATED}。
+
+**范围：** 完整可复现的任务套件来自一个公开样本 episode；128-episode 结果只发布 public-safe 的指标、报告、预测摘要和模型卡。原始 MP4/HDF5/RRD、完整 Qwen 权重和 gated 数据不在本仓库重新分发。
+
+## 快速入口
+
+| 目标 | 入口 |
+| --- | --- |
+| 快速理解项目 | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
+| 选择 GitHub / 网页 / HF 的正确入口 | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
+| 查看 20 个任务定义 | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
+| 比较结果 | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
+| 查看一个 sample 的全部文件关系 | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
+| 阅读三个基础模型方向 | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
+| 复现与审计 | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+
+## 核心结构
+
+- 数据层：公开 sample episode 被切成 20-frame 窗口，并连接视频、音频、深度、pose/SLAM、mocap、IMU、calibration 和语言标注。
+- 任务层：20 个统一任务覆盖识别、预测、检索、重建、同步、长时预测、action-object 关系和 sensor bridge。
+- 结果层：单 episode minimal/NN 覆盖 20/20；128-episode metadata/raw/Qwen3/Cosmos 分开标注，不能评估的格子保留为显式 gap。
+- 训练方向：spatial intelligence、human-video world model、vision-language-action 三条 pipeline 已经有任务映射和需要的证据清单。
+
+## 公开边界
+
+本项目只发布小型 derived artifacts、指标、图表、README、模型卡和 public-safe 预测摘要。原始 Xperience-10M 数据使用仍以 Ropedia 官方 Hugging Face 数据卡和访问条款为准。
+""",
+    },
+    "es": {
+        "title": "Ropedia Xperience-10M Task Suite",
+        "tagline": "Superficie pública multilingüe para Xperience-10M: datos de muestra, 20 tareas embodied-AI, baselines, diagnósticos Qwen3/Cosmos y direcciones de entrenamiento.",
+        "body": f"""## Cómo Leer Este Proyecto
+
+Este repositorio convierte el episodio público de muestra de Xperience-10M en un laboratorio verificable de tareas para embodied AI. Empieza por el panel visual y el estado del proyecto; después entra en las tareas, matrices de resultados y espejos de Hugging Face.
+
+**Actualizado:** {UPDATED}.
+
+**Alcance:** la suite reproducible usa un episodio público; los resultados de 128 episodios publican solo métricas, reportes, predicciones seguras y tarjetas de modelo. No se redistribuyen MP4/HDF5/RRD originales, pesos completos de Qwen ni datos gated.
+
+## Ruta Rápida
+
+| Objetivo | Entrada |
+| --- | --- |
+| Entender el proyecto | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
+| Elegir la superficie correcta | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
+| Ver las 20 tareas | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
+| Comparar resultados | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
+| Inspeccionar una muestra | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
+| Leer las tres direcciones foundation | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
+| Reproducir o auditar | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+
+## Estructura
+
+- Datos: ventanas de 20 frames con video, audio, profundidad, pose/SLAM, mocap, IMU, calibración y lenguaje.
+- Tareas: 20 contratos para reconocimiento, predicción, recuperación, reconstrucción, sincronización, horizonte largo, relación acción-objeto y puentes de sensores.
+- Resultados: minimal/NN de un episodio cubren 20/20; las ramas de 128 episodios separan metadata, raw features, Qwen3 y Cosmos con gaps explícitos.
+- Direcciones: spatial intelligence, human-video world model y vision-language-action tienen mapeo de tareas y requisitos de evidencia.
+
+## Límite Público
+
+El proyecto publica solo artifacts derivados, métricas, figuras, tarjetas y resúmenes public-safe. El uso de Xperience-10M sigue las condiciones oficiales de Ropedia en Hugging Face.
+""",
+    },
+    "fr": {
+        "title": "Ropedia Xperience-10M Task Suite",
+        "tagline": "Surface publique multilingue pour Xperience-10M : échantillon, 20 tâches embodied-AI, baselines, diagnostics Qwen3/Cosmos et pistes d'entraînement.",
+        "body": f"""## Comment Lire Ce Projet
+
+Ce dépôt transforme l'épisode public d'exemple Xperience-10M en laboratoire de tâches vérifiable pour l'IA incarnée. Commencez par le tableau de bord et le statut du projet, puis ouvrez les contrats de tâches, les matrices de résultats et les miroirs Hugging Face.
+
+**Mise à jour :** {UPDATED}.
+
+**Portée :** la suite entièrement reproductible utilise un épisode public; les résultats 128 épisodes ne publient que des métriques, rapports, prédictions sûres et cartes de modèles. Les MP4/HDF5/RRD bruts, les poids Qwen complets et les données gated ne sont pas redistribués.
+
+## Parcours Rapide
+
+| Objectif | Point d'entrée |
+| --- | --- |
+| Comprendre le projet | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
+| Choisir la bonne surface publique | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
+| Lire les 20 tâches | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
+| Comparer les résultats | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
+| Inspecter un sample | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
+| Lire les trois pipelines foundation | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
+| Reproduire et auditer | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+
+## Structure
+
+- Données : fenêtres de 20 frames reliant vidéo, audio, profondeur, pose/SLAM, mocap, IMU, calibration et annotations de langage.
+- Tâches : 20 contrats couvrant reconnaissance, prévision, retrieval, reconstruction, ordre, synchronisation, horizon long, relations action-objet et sensor bridge.
+- Résultats : minimal/NN sur l'épisode public couvrent 20/20; les branches 128 épisodes séparent metadata, raw features, Qwen3 et Cosmos avec gaps explicites.
+- Directions : spatial intelligence, human-video world model et vision-language-action sont documentés avec tâches et preuves nécessaires.
+
+## Frontière Publique
+
+Le projet publie des artifacts dérivés, métriques, figures et cartes public-safe. L'accès aux données Xperience-10M reste régi par la carte officielle Ropedia sur Hugging Face.
+""",
+    },
+    "de": {
+        "title": "Ropedia Xperience-10M Task Suite",
+        "tagline": "Mehrsprachige öffentliche Forschungsoberfläche für Xperience-10M: Sample-Daten, 20 Embodied-AI-Aufgaben, Baselines, Qwen3/Cosmos-Diagnostik und Trainingsrichtungen.",
+        "body": f"""## So Liest Man Dieses Projekt
+
+Dieses Repository macht aus dem öffentlichen Xperience-10M-Sample eine prüfbare Aufgabenoberfläche für Embodied AI. Beginnen Sie mit Dashboard und Projektstatus, danach mit Aufgabenverträgen, Ergebnismatrizen und Hugging-Face-Spiegeln.
+
+**Aktualisiert:** {UPDATED}.
+
+**Umfang:** die vollständig reproduzierbare Suite nutzt ein öffentliches Sample-Episode; 128-Episode-Ergebnisse veröffentlichen nur public-safe Metriken, Berichte, Vorhersagen und Modellkarten. Rohdaten wie MP4/HDF5/RRD, vollständige Qwen-Gewichte und gated Daten werden nicht weitergegeben.
+
+## Schneller Einstieg
+
+| Ziel | Einstieg |
+| --- | --- |
+| Projekt verstehen | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
+| Richtige öffentliche Oberfläche wählen | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
+| 20 Aufgaben prüfen | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
+| Ergebnisse vergleichen | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
+| Ein Sample untersuchen | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
+| Drei Foundation-Pipelines lesen | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
+| Reproduzieren oder auditieren | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+
+## Struktur
+
+- Daten: 20-Frame-Fenster über Video, Audio, Tiefe, Pose/SLAM, Mocap, IMU, Kalibrierung und Sprachannotation.
+- Aufgaben: 20 Verträge für Erkennung, Vorhersage, Retrieval, Rekonstruktion, Ordnung, Synchronisierung, Langhorizont-Prognose, Aktion-Objekt-Bindung und Sensor-Brücken.
+- Ergebnisse: Single-Episode minimal/NN decken 20/20 ab; 128-Episode-Zweige trennen Metadata, Raw Features, Qwen3 und Cosmos mit sichtbaren Gaps.
+- Richtungen: spatial intelligence, human-video world model und vision-language-action sind mit Aufgaben und Evidenzanforderungen dokumentiert.
+
+## Öffentliche Grenze
+
+Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Karten und public-safe Zusammenfassungen. Xperience-10M bleibt unter den offiziellen Ropedia/Hugging-Face-Bedingungen.
+""",
+    },
+    "ja": {
+        "title": "Ropedia Xperience-10M Task Suite",
+        "tagline": "Xperience-10M の多言語公開研究面: サンプルデータ、20 個の embodied-AI タスク、ベースライン、Qwen3/Cosmos 診断、基盤モデル訓練方向。",
+        "body": f"""## このプロジェクトの読み方
+
+このリポジトリは、公開 Xperience-10M サンプル episode を、検証可能な embodied AI タスク実験面に変換します。まずダッシュボードとプロジェクト状態を見て、その後 20 タスク、結果行列、Hugging Face ミラーを確認してください。
+
+**更新日:** {UPDATED}。
+
+**範囲:** 完全に再現可能なタスク suite は 1 つの公開サンプル episode に基づきます。128-episode の結果は public-safe な指標、レポート、予測要約、モデルカードのみを公開します。元の MP4/HDF5/RRD、完全な Qwen 重み、gated データは再配布しません。
+
+## クイックルート
+
+| 目的 | 入口 |
+| --- | --- |
+| プロジェクトを素早く理解 | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
+| 公開面を選ぶ | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
+| 20 タスクを見る | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
+| 結果を比較 | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
+| 1 サンプルを調べる | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
+| 3 つの foundation pipeline を読む | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
+| 再現・監査 | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+
+## 構造
+
+- データ: 20-frame window が video、audio、depth、pose/SLAM、mocap、IMU、calibration、language annotation を結びます。
+- タスク: 認識、予測、retrieval、reconstruction、order、sync、long-horizon、action-object、sensor bridge など 20 契約。
+- 結果: single-episode minimal/NN は 20/20。128-episode 側は metadata、raw feature、Qwen3、Cosmos を証拠タイプ別に分け、未評価 gap を明示します。
+- 方向: spatial intelligence、human-video world model、vision-language-action に対して、タスク対応と必要証拠を記録しています。
+
+## 公開境界
+
+本プロジェクトは派生 artifacts、指標、図、カード、public-safe 要約のみを公開します。Xperience-10M の利用は Ropedia 公式 Hugging Face データカードとアクセス条件に従います。
+""",
+    },
+    "ko": {
+        "title": "Ropedia Xperience-10M Task Suite",
+        "tagline": "Xperience-10M을 위한 다국어 공개 연구 표면: 샘플 데이터, 20개 embodied-AI 과제, 베이스라인, Qwen3/Cosmos 진단, foundation 모델 학습 방향.",
+        "body": f"""## 이 프로젝트를 읽는 방법
+
+이 저장소는 공개 Xperience-10M sample episode를 검증 가능한 embodied AI 과제 실험 표면으로 정리합니다. 먼저 대시보드와 프로젝트 상태를 보고, 이후 20개 과제, 결과 행렬, Hugging Face 미러를 확인하세요.
+
+**업데이트:** {UPDATED}.
+
+**범위:** 완전히 재현 가능한 task suite는 공개 sample episode 하나를 사용합니다. 128-episode 결과는 public-safe 지표, 리포트, 예측 요약, 모델 카드만 공개합니다. 원본 MP4/HDF5/RRD, 전체 Qwen 가중치, gated 데이터는 재배포하지 않습니다.
+
+## 빠른 경로
+
+| 목표 | 시작점 |
+| --- | --- |
+| 프로젝트 빠르게 이해 | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
+| 공개 표면 선택 | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
+| 20개 과제 확인 | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
+| 결과 비교 | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
+| 샘플 하나 검사 | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
+| 세 foundation pipeline 읽기 | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
+| 재현 및 감사 | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+
+## 구조
+
+- 데이터: 20-frame window가 video, audio, depth, pose/SLAM, mocap, IMU, calibration, language annotation을 연결합니다.
+- 과제: 인식, 예측, retrieval, reconstruction, order, sync, long-horizon, action-object binding, sensor bridge 등 20개 계약.
+- 결과: single-episode minimal/NN은 20/20; 128-episode 레이어는 metadata, raw feature, Qwen3, Cosmos를 증거 유형별로 분리하고 gap을 명시합니다.
+- 방향: spatial intelligence, human-video world model, vision-language-action에 대해 과제 매핑과 필요한 증거를 기록합니다.
+
+## 공개 경계
+
+이 프로젝트는 파생 artifacts, 지표, 그림, 카드, public-safe 요약만 공개합니다. Xperience-10M 사용은 Ropedia 공식 Hugging Face 데이터 카드와 접근 조건을 따릅니다.
+""",
+    },
+    "pt": {
+        "title": "Ropedia Xperience-10M Task Suite",
+        "tagline": "Superfície pública multilíngue para Xperience-10M: dados de amostra, 20 tarefas embodied-AI, baselines, diagnósticos Qwen3/Cosmos e direções de treino.",
+        "body": f"""## Como Ler Este Projeto
+
+Este repositório transforma o episódio público de amostra do Xperience-10M em um laboratório verificável de tarefas para embodied AI. Comece pelo painel visual e pelo status do projeto; depois abra os contratos de tarefas, matrizes de resultados e espelhos no Hugging Face.
+
+**Atualizado:** {UPDATED}.
+
+**Escopo:** a suíte totalmente reproduzível usa um episódio público; os resultados de 128 episódios publicam apenas métricas, relatórios, predições seguras e model cards. MP4/HDF5/RRD originais, pesos completos do Qwen e dados gated não são redistribuídos.
+
+## Rota Rápida
+
+| Objetivo | Entrada |
+| --- | --- |
+| Entender o projeto | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
+| Escolher a superfície pública correta | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
+| Ver as 20 tarefas | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
+| Comparar resultados | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
+| Inspecionar uma amostra | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
+| Ler as três pipelines foundation | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
+| Reproduzir ou auditar | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+
+## Estrutura
+
+- Dados: janelas de 20 frames ligam vídeo, áudio, profundidade, pose/SLAM, mocap, IMU, calibração e anotações de linguagem.
+- Tarefas: 20 contratos cobrem reconhecimento, previsão, retrieval, reconstrução, ordem, sincronização, horizonte longo, relação ação-objeto e pontes de sensores.
+- Resultados: minimal/NN de um episódio cobrem 20/20; a camada de 128 episódios separa metadata, raw features, Qwen3 e Cosmos com gaps explícitos.
+- Direções: spatial intelligence, human-video world model e vision-language-action têm mapeamento de tarefas e requisitos de evidência.
+
+## Fronteira Pública
+
+O projeto publica apenas artifacts derivados, métricas, figuras, cards e resumos public-safe. O uso do Xperience-10M segue o dataset card oficial da Ropedia no Hugging Face.
+""",
+    },
+}
+
+
+COMMON_FOOTER = """## Public Surfaces
+
+| Surface | Link |
+| --- | --- |
+| GitHub | https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite |
+| Website | https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/ |
+| HF Space | https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite |
+| HF artifacts | https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts |
+| HF baselines | https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines |
+| HF collection | https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite |
+
+## Citation
+
+Use `CITATION.cff` and cite the upstream Ropedia Xperience-10M dataset according to its official card.
+"""
+
+
+def write_language_json() -> None:
+    rows = [
+        {
+            "code": code,
+            "label": label,
+            "readme": filename,
+            "github_url": f"https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/{filename}",
+        }
+        for code, label, filename in LANGUAGES
+    ]
+    payload = {
+        "title": "Ropedia Xperience-10M Task Suite Language Versions",
+        "status": "pass",
+        "updated": UPDATED,
+        "language_count": len(rows),
+        "languages": rows,
+    }
+    path = ROOT / "docs/data/language_versions.json"
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def current_body_suffix() -> str:
+    text = (ROOT / "README.md").read_text(encoding="utf-8")
+    marker = "\n## Why This Project Exists\n"
+    idx = text.find(marker)
+    if idx == -1:
+        raise SystemExit("Could not find README marker: ## Why This Project Exists")
+    return text[idx + 1 :].rstrip() + "\n"
+
+
+def main() -> int:
+    suffix = current_body_suffix()
+    (ROOT / "README.md").write_text(ENGLISH_TOP.rstrip() + "\n\n" + suffix, encoding="utf-8")
+    for code, payload in LANGUAGE_GUIDES.items():
+        filename = next(item[2] for item in LANGUAGES if item[0] == code)
+        content = (
+            hero(payload["title"], payload["tagline"], code).rstrip()
+            + "\n\n"
+            + payload["body"].rstrip()
+            + "\n\n"
+            + COMMON_FOOTER
+        )
+        (ROOT / filename).write_text(content, encoding="utf-8")
+    write_language_json()
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

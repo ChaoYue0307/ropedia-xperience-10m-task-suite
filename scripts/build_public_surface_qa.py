@@ -20,6 +20,16 @@ SURFACES = {
     "hf_artifact_card": HF_ROOT / "artifacts/README.md",
     "hf_model_card": HF_ROOT / "model/README.md",
 }
+LANGUAGE_FILES = [
+    "README.md",
+    "README.zh.md",
+    "README.es.md",
+    "README.fr.md",
+    "README.de.md",
+    "README.ja.md",
+    "README.ko.md",
+    "README.pt.md",
+]
 
 STATUS_REPORTS = {
     "website_integrity": ROOT / "docs/data/website_integrity.json",
@@ -42,6 +52,7 @@ DISPLAY_LABELS = {
     "public_links_cover_repo_hf_dataset_and_ropedia": "Public links",
     "public_artifact_qa_files_are_exposed": "Artifact links",
     "public_reader_map_is_exposed": "Reader map",
+    "multilingual_readmes_are_exposed": "Language versions",
     "public_copy_uses_reader_facing_language": "Project language",
 }
 
@@ -119,6 +130,21 @@ def build_report() -> dict:
     combined_public_text = "\n".join(texts.values())
     website = texts["website_html"]
     all_surface_files_exist = all(path.exists() for path in SURFACES.values())
+    language_paths = {
+        filename: [
+            ROOT / filename,
+            HF_ROOT / "space" / filename,
+            HF_ROOT / "artifacts" / filename,
+            HF_ROOT / "model" / filename,
+        ]
+        for filename in LANGUAGE_FILES
+    }
+    missing_language_files = [
+        display_path(path)
+        for paths in language_paths.values()
+        for path in paths
+        if not path.exists()
+    ]
 
     status_records = {name: read_status(path) for name, path in STATUS_REPORTS.items()}
     live_publication_record = read_status(LIVE_PUBLICATION_REPORT)
@@ -182,10 +208,22 @@ def build_report() -> dict:
         "data/episode128_task_model_radar.json",
         "data/task_method_20_result_matrix.json",
         "data/task_method_20_gap_audit.json",
+        "data/language_versions.json",
         "assets/charts/unified_task_model_radar.svg",
         "assets/charts/single_episode_task_model_radar.svg",
         "assets/charts/episode128_task_model_radar.svg",
         "data/tier2_task_suite.json",
+    ]
+    language_markers = [
+        "README.zh.md",
+        "README.es.md",
+        "README.fr.md",
+        "README.de.md",
+        "README.ja.md",
+        "README.ko.md",
+        "README.pt.md",
+        "docs/data/language_versions.json",
+        "data/language_versions.json",
     ]
 
     banned_hits = [
@@ -264,6 +302,15 @@ def build_report() -> dict:
                 combined_public_text,
                 ["PUBLIC_READER_MAP.md", "docs/data/public_reader_map.json", "data/public_reader_map.json"],
             ),
+        ),
+        check(
+            "multilingual_readmes_are_exposed",
+            not missing_language_files
+            and all(marker in combined_public_text for marker in language_markers)
+            and "language_versions.json" in website,
+            "The repo, dashboard, Space, artifact dataset, and model card should expose the eight-language reader layer.",
+            missing=missing_language_files,
+            marker_counts=marker_count(combined_public_text, language_markers),
         ),
         check(
             "public_copy_uses_reader_facing_language",

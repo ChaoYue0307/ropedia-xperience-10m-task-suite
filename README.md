@@ -1,30 +1,87 @@
-# Ropedia Xperience-10M Task Suite
-
-[![Website](https://img.shields.io/badge/site-GitHub%20Pages-1f63e9)](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/)
-[![HF Space](https://img.shields.io/badge/Hugging%20Face-Space-ffb000)](https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite)
-[![Dataset](https://img.shields.io/badge/dataset-Xperience--10M%20by%20Ropedia-008b9a)](https://huggingface.co/datasets/ropedia-ai/xperience-10m)
-[![GitHub Package](https://img.shields.io/badge/package-GHCR-2496ed)](https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/pkgs/container/ropedia-xperience-10m-task-suite)
-[![Scope](https://img.shields.io/badge/scope-single%20public%20sample-b65b04)](#scope)
-[![Citation](https://img.shields.io/badge/citation-CFF-7ae5c3)](CITATION.cff)
-[![License](https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-ccffa0)](LICENSE)
-
 <p align="center">
-  <img src="docs/assets/brand/xperience10m-logo-social-card.png" alt="Ropedia Xperience-10M Task Suite logo card" width="760">
+  <img src="docs/assets/brand/xperience10m-logo-social-card.png" alt="Ropedia Xperience-10M Task Suite cover" width="100%">
 </p>
 
-A research-development project built on the public Xperience-10M sample episode
-released by Ropedia. The goal is to make one richly multimodal egocentric
-episode understandable, turn it into concrete embodied-AI task definitions, and
-prepare the same pipeline for future held-out multi-episode training.
+<h1 align="center">Ropedia Xperience-10M Task Suite</h1>
 
-The central research questions are:
+<p align="center">
+  <img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Ropedia Xperience-10M logo" width="112">
+</p>
 
-- What can be learned from one aligned Xperience-10M episode while separating
-  sample-specific observations from later multi-episode questions?
-- Which input/output tasks are meaningful for embodied AI when video, depth,
-  pose, mocap, IMU, and language annotations are synchronized?
-- What baseline models and evaluation files should exist before scaling to
-  Qwen3-Omni or other multimodal foundation-model fine-tuning?
+<p align="center">
+  <strong>A multilingual public research surface for Xperience-10M: sample data, 20 embodied-AI tasks, baselines, Qwen3/Cosmos diagnostics, and foundation-model training directions.</strong>
+</p>
+
+<!-- LANG-BAR:START -->
+<p align="center">
+  <a href="README.md"><b>English</b></a> ·
+  <a href="README.zh.md">中文</a> ·
+  <a href="README.es.md">Español</a> ·
+  <a href="README.fr.md">Français</a> ·
+  <a href="README.de.md">Deutsch</a> ·
+  <a href="README.ja.md">日本語</a> ·
+  <a href="README.ko.md">한국어</a> ·
+  <a href="README.pt.md">Português</a>
+</p>
+<!-- LANG-BAR:END -->
+
+<p align="center">
+  <a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/"><img alt="GitHub Pages" src="https://img.shields.io/badge/site-GitHub%20Pages-1f63e9"></a>
+  <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite"><img alt="HF Space" src="https://img.shields.io/badge/Hugging%20Face-Space-ffb000"></a>
+  <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts"><img alt="artifact dataset" src="https://img.shields.io/badge/HF-artifacts-008b9a"></a>
+  <a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines"><img alt="baseline model repo" src="https://img.shields.io/badge/HF-baselines-7ae5c3"></a>
+  <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m"><img alt="Xperience-10M" src="https://img.shields.io/badge/dataset-Xperience--10M-344054"></a>
+  <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-ccffa0"></a>
+</p>
+
+
+**Ropedia Xperience-10M Task Suite** turns the public Xperience-10M sample into a readable embodied-AI benchmark surface. It keeps the evidence trail explicit: what is derived from the one public sample episode, what is evaluated on selected 128-episode held-out splits, what is mirrored to Hugging Face, and what still requires gated raw data or new model-specific evaluators.
+
+**Updated:** 2026-06-18.
+
+**Scope:** one public sample episode for the fully reproducible task suite; selected 128-episode public-safe artifacts for Qwen3-Omni, Cosmos3, metadata baselines, and raw-feature baselines. Raw Xperience-10M MP4/HDF5/RRD files, full Qwen weights, and gated data are not redistributed here.
+
+## Contents
+
+- [How To Read This Project](#how-to-read-this-project)
+- [At A Glance](#at-a-glance)
+- [Fast Reader Map](#fast-reader-map)
+- [Why This Project Exists](#why-this-project-exists)
+- [Start Here](#start-here)
+- [Current Research Scope](#current-research-scope)
+- [Evaluation Protocol](#evaluation-protocol)
+- [Dataset Context](#dataset-context)
+- [Reproducibility](#reproducibility)
+- [Citation](#citation)
+
+## How To Read This Project
+
+Use the first two tables to orient yourself, then jump to the evidence artifact that matches your question. The dashboard is the best visual overview; the GitHub repo is the source of truth for scripts and generated JSON; Hugging Face mirrors contain public-safe cards, metrics, figures, and model artifacts.
+
+The multilingual README files are reader guides. The canonical technical evidence is still the committed task contracts, result matrices, validation JSON, and public-safe result packages.
+
+## At A Glance
+
+| Signal | Current public state |
+| --- | --- |
+| 20 task contracts | Action, procedure, transition, trajectory, contact, objects, language, retrieval, reconstruction, order, sync, long-horizon forecasting, interaction text, action-object binding, sensor bridging, camera sync, and transition timing. |
+| 180 method-task records | 9 methods x 20 tasks. Numeric scores appear only where a real task target and source artifact exist; unsupported and not-yet-evaluated cells stay visible. |
+| Public-sample baselines | Minimal and Neural MLP baselines cover all 20 tasks on the one public sample episode. |
+| 128-episode comparison layer | Metadata/simple, metadata/NN, raw-feature simple, raw-feature NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano branches are separated by evidence type. |
+| Foundation directions | Spatial intelligence, human-video world modeling, and vision-language-action pipelines are documented as trainable directions with task mappings and model-evidence requirements. |
+| Public mirrors | GitHub, GitHub Pages, HF Space, HF artifact dataset, HF baseline model repo, Qwen3/Cosmos model repos, and HF collection. |
+
+## Fast Reader Map
+
+| Reader goal | Start here | Then inspect |
+| --- | --- | --- |
+| Understand the project quickly | [Project brief](PROJECT_BRIEF.md), [project status](PROJECT_STATUS.md) | [Dashboard](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/) |
+| Choose the right public surface | [Public reader map](PUBLIC_READER_MAP.md) | [public_reader_map.json](docs/data/public_reader_map.json) |
+| Inspect the 20 task contracts | [TASK_SUITE_20.md](TASK_SUITE_20.md) | [task_suite_20.json](docs/data/task_suite_20.json), [task walkthroughs](results/episode_task_suite/task_walkthroughs/) |
+| Compare results | [Research takeaways](RESEARCH_TAKEAWAYS.md) | [20-result matrix](docs/data/task_method_20_result_matrix.json), [radar JSON](docs/data/unified_task_model_radar.json), [gap audit](docs/data/task_method_20_gap_audit.json) |
+| Understand one data sample | [Single-episode explorer](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html) | [raw sample file map](docs/data/raw_sample_files.json), [feature manifest](results/episode_task_suite/feature_manifest.json) |
+| Read foundation training directions | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md) | [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json), [foundation model plan](FOUNDATION_MODEL_PLAN.md) |
+| Reproduce or audit | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) | [quality gates](docs/data/quality_gates.json), [publication audit](docs/data/publication_audit.json), [mirror parity](docs/data/mirror_parity.json) |
 
 ## Why This Project Exists
 

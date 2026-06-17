@@ -1,0 +1,81 @@
+<p align="center">
+  <img src="docs/assets/brand/xperience10m-logo-social-card.png" alt="Ropedia Xperience-10M Task Suite cover" width="100%">
+</p>
+
+<h1 align="center">Ropedia Xperience-10M Task Suite</h1>
+
+<p align="center">
+  <img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Ropedia Xperience-10M logo" width="112">
+</p>
+
+<p align="center">
+  <strong>Xperience-10M을 위한 다국어 공개 연구 표면: 샘플 데이터, 20개 embodied-AI 과제, 베이스라인, Qwen3/Cosmos 진단, foundation 모델 학습 방향.</strong>
+</p>
+
+<!-- LANG-BAR:START -->
+<p align="center">
+  <a href="README.md">English</a> ·
+  <a href="README.zh.md">中文</a> ·
+  <a href="README.es.md">Español</a> ·
+  <a href="README.fr.md">Français</a> ·
+  <a href="README.de.md">Deutsch</a> ·
+  <a href="README.ja.md">日本語</a> ·
+  <a href="README.ko.md"><b>한국어</b></a> ·
+  <a href="README.pt.md">Português</a>
+</p>
+<!-- LANG-BAR:END -->
+
+<p align="center">
+  <a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/"><img alt="GitHub Pages" src="https://img.shields.io/badge/site-GitHub%20Pages-1f63e9"></a>
+  <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite"><img alt="HF Space" src="https://img.shields.io/badge/Hugging%20Face-Space-ffb000"></a>
+  <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts"><img alt="artifact dataset" src="https://img.shields.io/badge/HF-artifacts-008b9a"></a>
+  <a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines"><img alt="baseline model repo" src="https://img.shields.io/badge/HF-baselines-7ae5c3"></a>
+  <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m"><img alt="Xperience-10M" src="https://img.shields.io/badge/dataset-Xperience--10M-344054"></a>
+  <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-ccffa0"></a>
+</p>
+
+## 이 프로젝트를 읽는 방법
+
+이 저장소는 공개 Xperience-10M sample episode를 검증 가능한 embodied AI 과제 실험 표면으로 정리합니다. 먼저 대시보드와 프로젝트 상태를 보고, 이후 20개 과제, 결과 행렬, Hugging Face 미러를 확인하세요.
+
+**업데이트:** 2026-06-18.
+
+**범위:** 완전히 재현 가능한 task suite는 공개 sample episode 하나를 사용합니다. 128-episode 결과는 public-safe 지표, 리포트, 예측 요약, 모델 카드만 공개합니다. 원본 MP4/HDF5/RRD, 전체 Qwen 가중치, gated 데이터는 재배포하지 않습니다.
+
+## 빠른 경로
+
+| 목표 | 시작점 |
+| --- | --- |
+| 프로젝트 빠르게 이해 | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
+| 공개 표면 선택 | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
+| 20개 과제 확인 | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
+| 결과 비교 | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
+| 샘플 하나 검사 | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
+| 세 foundation pipeline 읽기 | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
+| 재현 및 감사 | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+
+## 구조
+
+- 데이터: 20-frame window가 video, audio, depth, pose/SLAM, mocap, IMU, calibration, language annotation을 연결합니다.
+- 과제: 인식, 예측, retrieval, reconstruction, order, sync, long-horizon, action-object binding, sensor bridge 등 20개 계약.
+- 결과: single-episode minimal/NN은 20/20; 128-episode 레이어는 metadata, raw feature, Qwen3, Cosmos를 증거 유형별로 분리하고 gap을 명시합니다.
+- 방향: spatial intelligence, human-video world model, vision-language-action에 대해 과제 매핑과 필요한 증거를 기록합니다.
+
+## 공개 경계
+
+이 프로젝트는 파생 artifacts, 지표, 그림, 카드, public-safe 요약만 공개합니다. Xperience-10M 사용은 Ropedia 공식 Hugging Face 데이터 카드와 접근 조건을 따릅니다.
+
+## Public Surfaces
+
+| Surface | Link |
+| --- | --- |
+| GitHub | https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite |
+| Website | https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/ |
+| HF Space | https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite |
+| HF artifacts | https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts |
+| HF baselines | https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines |
+| HF collection | https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite |
+
+## Citation
+
+Use `CITATION.cff` and cite the upstream Ropedia Xperience-10M dataset according to its official card.

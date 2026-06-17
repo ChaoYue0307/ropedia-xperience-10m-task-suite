@@ -243,6 +243,37 @@
       line-height: 1.65;
       text-wrap: pretty;
     }
+    .language-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      max-width: 760px;
+      margin-top: 20px;
+      color: #dce8d7;
+      font-family: var(--font-btn);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .language-strip span {
+      color: var(--muted);
+      margin-right: 2px;
+    }
+    .language-strip a {
+      min-height: 32px;
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--soft-line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: rgba(255, 255, 255, 0.04);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .language-strip a:hover {
+      border-color: var(--green);
+      background: rgba(204, 255, 160, 0.10);
+    }
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -2923,6 +2954,18 @@
           Public raw-data boundaries stay explicit while staged derived
           artifacts keep the latest model evidence recoverable.
         </p>
+        <div class="language-strip" aria-label="README language versions">
+          <span>Readme</span>
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.md">English</a>
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.zh.md">中文</a>
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.es.md">Español</a>
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.fr.md">Français</a>
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.de.md">Deutsch</a>
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.ja.md">日本語</a>
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.ko.md">한국어</a>
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.pt.md">Português</a>
+          <a href="data/language_versions.json">JSON</a>
+        </div>
         <div class="hero-actions">
           <a class="button primary" href="research_roadmap.html">Open roadmap</a>
           <a class="button" href="#reader-map">Choose entry point</a>

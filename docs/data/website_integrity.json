@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-17T16:53:33+00:00",
+  "generated_at_utc": "2026-06-17T18:21:52+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 206,
-    "external_reference_count": 132,
-    "json_files": 48,
+    "local_references": 211,
+    "external_reference_count": 156,
+    "json_files": 49,
     "image_assets_referenced": 28,
     "failure_count": 0
   },
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 90323,
-      "evidence_index": 126827
+      "overview_index": 92212,
+      "evidence_index": 128716
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 90323,
-      "protocol_index": 123008,
-      "evidence_index": 126827
+      "overview_index": 92212,
+      "protocol_index": 124897,
+      "evidence_index": 128716
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -277,19 +277,19 @@
     {
       "path": "index.html",
       "id_count": 91,
-      "reference_count": 182,
+      "reference_count": 183,
       "image_count": 34
     },
     {
       "path": "research_roadmap.html",
       "id_count": 15,
-      "reference_count": 16,
+      "reference_count": 18,
       "image_count": 1
     },
     {
       "path": "single_episode_explorer.html",
       "id_count": 26,
-      "reference_count": 7,
+      "reference_count": 9,
       "image_count": 1
     }
   ],
@@ -340,13 +340,18 @@
       "top_level_type": "dict"
     },
     {
+      "path": "data/language_versions.json",
+      "bytes": 1762,
+      "top_level_type": "dict"
+    },
+    {
       "path": "data/live_publication_status.json",
-      "bytes": 161409,
+      "bytes": 166831,
       "top_level_type": "dict"
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 910892,
+      "bytes": 913665,
       "top_level_type": "dict"
     },
     {
@@ -391,12 +396,12 @@
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 6538,
+      "bytes": 7126,
       "top_level_type": "dict"
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 8604,
+      "bytes": 8684,
       "top_level_type": "dict"
     },
     {
@@ -526,7 +531,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 19664,
+      "bytes": 19884,
       "top_level_type": "dict"
     },
     {
