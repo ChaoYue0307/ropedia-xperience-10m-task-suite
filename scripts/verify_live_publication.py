@@ -428,6 +428,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "three_foundation_pipelines_json",
+        "title": "Three foundation pipeline tracks JSON",
+        "local_path": "docs/data/three_foundation_pipelines.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/three_foundation_pipelines.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/three_foundation_pipelines.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/three_foundation_pipelines.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/three_foundation_pipelines.json",
+        },
+    },
+    {
         "id": "figure_index_json",
         "title": "Figure index JSON",
         "local_path": "docs/data/figure_index.json",
