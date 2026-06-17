@@ -14,12 +14,9 @@ REMOTE_RUN_DIR="${REMOTE_ROOT}/${RESULT_ROOT}/${RUN_ID}"
 LOCAL_RUN_DIR="${PROJECT_ROOT}/${RESULT_ROOT}/${RUN_ID}"
 LOCAL_LAUNCHER_DIR="${PROJECT_ROOT}/${RESULT_ROOT}/deferred_launchers"
 REMOTE_LAUNCHER_LOG="${REMOTE_ROOT}/${RESULT_ROOT}/deferred_launchers/${RUN_ID}.launcher.log"
+TASKS_CSV="${TASKS_CSV:-long_horizon_next_action,next_subtask_forecast,object_set_forecast}"
 
-TASKS=(
-  long_horizon_next_action
-  next_subtask_forecast
-  object_set_forecast
-)
+IFS=',' read -r -a TASKS <<< "$TASKS_CSV"
 
 echo "checking remote run ${REMOTE_HOST}:${REMOTE_RUN_DIR}"
 ssh "$REMOTE_HOST" "cd '$REMOTE_ROOT' && test -s '${RESULT_ROOT}/${RUN_ID}/summary.json'"
@@ -33,19 +30,24 @@ ssh "$REMOTE_HOST" "test -s '$REMOTE_LAUNCHER_LOG'" >/dev/null 2>&1 \
   && rsync -av "${REMOTE_HOST}:${REMOTE_LAUNCHER_LOG}" "$LOCAL_LAUNCHER_DIR/" \
   || true
 
-python3 - "$PROJECT_ROOT" "$RUN_ID" <<'PY'
+python3 - "$PROJECT_ROOT" "$RUN_ID" "$TASKS_CSV" <<'PY'
 import json
 import sys
 from pathlib import Path
 
 root = Path(sys.argv[1])
 run_id = sys.argv[2]
+task_ids = [item.strip() for item in sys.argv[3].split(",") if item.strip()]
 run_dir = root / "results/omni_finetune" / run_id
-expected = {
+metric_key_by_task = {
+    "temporal_order": "temporal_order_f1",
+    "misalignment_detection": "misalignment_detection_f1",
     "long_horizon_next_action": "long_horizon_next_action_macro_f1",
     "next_subtask_forecast": "next_subtask_forecast_macro_f1",
     "object_set_forecast": "object_set_forecast_micro_f1",
+    "time_to_transition": "time_to_transition_mae",
 }
+expected = {task_id: metric_key_by_task[task_id] for task_id in task_ids}
 
 summary_path = run_dir / "summary.json"
 if not summary_path.exists():

@@ -45,6 +45,11 @@ QWEN_FUTURE_TASK_PROBE_DIR = (
     / "results/omni_finetune"
     / "xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z"
 )
+QWEN_ORDER_SYNC_TIME_PROBE_DIR = (
+    ROOT
+    / "results/omni_finetune"
+    / "xperience10m_qwen3_omni_v6_order_sync_time_probes_a100_20260617T132500Z"
+)
 QWEN_ACTION_OBJECT_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/qwen3_omni_v6_lora/metrics.json"
 )
@@ -52,14 +57,20 @@ COSMOS_SUPER_ACTION_OBJECT_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/cosmos3_super_reasoner/metrics.json"
 )
 QWEN_FUTURE_TASK_METRIC_PATHS = {
+    "temporal_order": QWEN_ORDER_SYNC_TIME_PROBE_DIR / "temporal_order/metrics.json",
+    "misalignment_detection": QWEN_ORDER_SYNC_TIME_PROBE_DIR / "misalignment_detection/metrics.json",
     "long_horizon_next_action": QWEN_FUTURE_TASK_PROBE_DIR / "long_horizon_next_action/metrics.json",
     "next_subtask_forecast": QWEN_FUTURE_TASK_PROBE_DIR / "next_subtask_forecast/metrics.json",
     "object_set_forecast": QWEN_FUTURE_TASK_PROBE_DIR / "object_set_forecast/metrics.json",
+    "time_to_transition": QWEN_ORDER_SYNC_TIME_PROBE_DIR / "time_to_transition/metrics.json",
 }
 QWEN_FUTURE_TASK_METRIC_KEYS = {
+    "temporal_order": "temporal_order_f1",
+    "misalignment_detection": "misalignment_detection_f1",
     "long_horizon_next_action": "long_horizon_next_action_macro_f1",
     "next_subtask_forecast": "next_subtask_forecast_macro_f1",
     "object_set_forecast": "object_set_forecast_micro_f1",
+    "time_to_transition": "time_to_transition_mae",
 }
 OUTPUT_JSON = ROOT / "docs/data/unified_task_model_radar.json"
 OUTPUT_SINGLE_JSON = ROOT / "docs/data/single_episode_task_model_radar.json"

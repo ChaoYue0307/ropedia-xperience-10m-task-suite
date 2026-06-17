@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """Evaluate Qwen3-Omni on future-target task probes from the 128-episode JSON.
 
-This runner scores only task targets that can be derived from the current
-multi-episode JSON export:
+This runner scores task targets that can be derived from the current
+multi-episode JSON export and staged media:
 
 - Task 13: long-horizon next action, +100 frames.
 - Task 14: long-horizon next subtask, +100 frames.
 - Task 17: future object set, +100 frames.
+- Task 11: temporal order from two staged video windows.
+- Task 12: audio-video misalignment from staged video/audio windows.
+- Task 20: capped frames until next action transition.
 
-It does not fabricate scores for regression, retrieval, raw-caption, or
+It does not fabricate scores for retrieval, raw-caption, raw hand-pose, or
 missing-modality targets.
 """
 
@@ -16,7 +19,9 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
+import re
 import time
 from collections import OrderedDict
 from pathlib import Path
@@ -37,6 +42,32 @@ from qwen3_omni_dataset_utils import (
 
 TASK_SPECS: OrderedDict[str, dict[str, Any]] = OrderedDict(
     [
+        (
+            "temporal_order",
+            {
+                "task_number": 11,
+                "label": "Temporal Order Verification",
+                "family": "classification",
+                "metric_key": "temporal_order_f1",
+                "prediction_key": "temporal_order",
+                "target_field": None,
+                "option_field": None,
+                "options": ["correct", "reversed"],
+            },
+        ),
+        (
+            "misalignment_detection",
+            {
+                "task_number": 12,
+                "label": "Multimodal Misalignment Detection",
+                "family": "classification",
+                "metric_key": "misalignment_detection_f1",
+                "prediction_key": "misalignment_detection",
+                "target_field": None,
+                "option_field": None,
+                "options": ["aligned", "shifted"],
+            },
+        ),
         (
             "long_horizon_next_action",
             {
@@ -70,6 +101,18 @@ TASK_SPECS: OrderedDict[str, dict[str, Any]] = OrderedDict(
                 "metric_key": "micro_f1",
                 "prediction_key": "object_set_forecast",
                 "target_field": "objects",
+                "option_field": None,
+            },
+        ),
+        (
+            "time_to_transition",
+            {
+                "task_number": 20,
+                "label": "Time to Transition",
+                "family": "regression",
+                "metric_key": "time_to_transition_mae",
+                "prediction_key": "time_to_transition_frames",
+                "target_field": None,
                 "option_field": None,
             },
         ),
@@ -207,6 +250,22 @@ def future_index_map(samples: list[dict[str, Any]], frame_offset: int) -> dict[i
     return mapping
 
 
+def time_to_transition_map(samples: list[dict[str, Any]], cap_frames: int = 200) -> dict[int, int]:
+    mapping: dict[int, int] = {}
+    for indices in by_episode_sorted(samples).values():
+        actions = [normalize_text(answer(samples[idx]).get("action")) for idx in indices]
+        starts = [row_start(samples[idx]) for idx in indices]
+        for pos, idx in enumerate(indices):
+            current_action = actions[pos]
+            target = cap_frames
+            for next_pos in range(pos + 1, len(indices)):
+                if actions[next_pos] and actions[next_pos] != current_action:
+                    target = min(cap_frames, max(0, starts[next_pos] - starts[pos]))
+                    break
+            mapping[idx] = target
+    return mapping
+
+
 def parse_json_object(text: str) -> dict[str, Any]:
     raw = str(text or "").strip()
     if raw.startswith("```"):
@@ -227,7 +286,25 @@ def parse_json_object(text: str) -> dict[str, Any]:
     return payload if isinstance(payload, dict) else {}
 
 
+def stable_variant(task_id: str, sample: dict[str, Any]) -> bool:
+    key = f"{task_id}::{sample.get('id')}"
+    digest = hashlib.sha1(key.encode("utf-8")).hexdigest()
+    return int(digest[:2], 16) % 2 == 0
+
+
+def media_video_path(sample: dict[str, Any]) -> str | None:
+    media = sample.get("media") if isinstance(sample.get("media"), dict) else {}
+    return media.get("mosaic_video_path") or sample.get("primary_video_path")
+
+
+def media_audio_path(sample: dict[str, Any]) -> str | None:
+    media = sample.get("media") if isinstance(sample.get("media"), dict) else {}
+    return media.get("audio_path")
+
+
 def task_options(sample: dict[str, Any], spec: dict[str, Any]) -> list[str]:
+    if isinstance(spec.get("options"), list):
+        return [str(item) for item in spec["options"]]
     option_field = spec.get("option_field")
     options = sample.get(option_field) if option_field else None
     if isinstance(options, list) and options:
@@ -247,8 +324,12 @@ def build_task_prompt(sample: dict[str, Any], future_sample: dict[str, Any], tas
         f"Task {spec['task_number']}: {spec['label']}",
         f"Episode: {sample.get('episode_id')}",
         f"Current visible/audio context frames: {start}-{end}",
-        f"Predict the target at the future window starting near frame {start + future_frames} (resolved target start frame {future_start}).",
     ]
+    if task_id in {"long_horizon_next_action", "next_subtask_forecast", "object_set_forecast"}:
+        lines.append(
+            f"Predict the target at the future window starting near frame {start + future_frames} "
+            f"(resolved target start frame {future_start})."
+        )
     options = task_options(sample, spec)
     if task_id == "long_horizon_next_action":
         lines.extend(
@@ -276,6 +357,35 @@ def build_task_prompt(sample: dict[str, Any], future_sample: dict[str, Any], tas
                 "List the objects likely to be active or manipulated in that future window. Use short object names.",
             ]
         )
+    elif task_id == "temporal_order":
+        lines.extend(
+            [
+                "You will receive two video clips named Clip A and Clip B.",
+                "Return JSON only with this schema:",
+                f'{{"{prediction_key}":"<correct or reversed>"}}',
+                "Answer correct if Clip A happens before Clip B in the same episode.",
+                "Answer reversed if Clip A happens after Clip B in the same episode.",
+            ]
+        )
+    elif task_id == "misalignment_detection":
+        lines.extend(
+            [
+                "You will receive one video clip and one audio clip.",
+                "Return JSON only with this schema:",
+                f'{{"{prediction_key}":"<aligned or shifted>"}}',
+                "Answer aligned if the audio belongs to the same time window as the video.",
+                "Answer shifted if the audio comes from a later shifted window in the same episode.",
+            ]
+        )
+    elif task_id == "time_to_transition":
+        lines.extend(
+            [
+                "Estimate how many frames remain until the next action-label boundary.",
+                "The answer is capped at 200 frames.",
+                "Return JSON only with this schema:",
+                f'{{"{prediction_key}":<integer from 0 to 200>}}',
+            ]
+        )
     else:
         raise ValueError(f"unknown task: {task_id}")
     return "\n".join(lines)
@@ -290,14 +400,30 @@ def build_messages(
     *,
     include_audio: bool = True,
 ) -> list[dict[str, Any]]:
-    media = sample.get("media") if isinstance(sample.get("media"), dict) else {}
-    video_path = media.get("mosaic_video_path") or sample.get("primary_video_path")
-    audio_path = media.get("audio_path")
+    video_path = media_video_path(sample)
+    audio_path = media_audio_path(sample)
     content: list[dict[str, Any]] = []
-    if video_path:
-        content.append({"type": "video", "video": video_path})
-    if include_audio and audio_path:
-        content.append({"type": "audio", "audio": audio_path})
+    if task_id == "temporal_order":
+        future_video_path = media_video_path(future_sample)
+        if stable_variant(task_id, sample):
+            first_video, second_video = video_path, future_video_path
+        else:
+            first_video, second_video = future_video_path, video_path
+        if first_video:
+            content.append({"type": "video", "video": first_video})
+        if second_video:
+            content.append({"type": "video", "video": second_video})
+    elif task_id == "misalignment_detection":
+        paired_audio_path = audio_path if stable_variant(task_id, sample) else media_audio_path(future_sample)
+        if video_path:
+            content.append({"type": "video", "video": video_path})
+        if include_audio and paired_audio_path:
+            content.append({"type": "audio", "audio": paired_audio_path})
+    else:
+        if video_path:
+            content.append({"type": "video", "video": video_path})
+        if include_audio and audio_path:
+            content.append({"type": "audio", "audio": audio_path})
     content.append({"type": "text", "text": build_task_prompt(sample, future_sample, task_id, spec, future_frames)})
     return [
         {"role": "system", "content": [{"type": "text", "text": SYSTEM_PROMPT}]},
@@ -394,8 +520,30 @@ def extract_prediction(raw: str, sample: dict[str, Any], spec: dict[str, Any]) -
     value = payload.get(spec["prediction_key"])
     if spec["family"] == "multi_label":
         return normalize_objects(value)
+    if spec["family"] == "regression":
+        match = re.search(r"-?\d+(?:\.\d+)?", str(value if value is not None else raw))
+        if not match:
+            return None
+        return max(0.0, min(200.0, float(match.group(0))))
     options = task_options(sample, spec)
     return match_label(str(value or raw), options) if options else normalize_text(value)
+
+
+def task_target_value(
+    task_id: str,
+    sample: dict[str, Any],
+    future_sample: dict[str, Any],
+    spec: dict[str, Any],
+    transition_targets: dict[int, int],
+    sample_idx: int,
+) -> Any:
+    if task_id == "temporal_order":
+        return "correct" if stable_variant(task_id, sample) else "reversed"
+    if task_id == "misalignment_detection":
+        return "aligned" if stable_variant(task_id, sample) else "shifted"
+    if task_id == "time_to_transition":
+        return float(transition_targets[sample_idx])
+    return task_target(future_sample, spec)
 
 
 def object_set_metrics(rows: list[dict[str, Any]]) -> dict[str, float]:
@@ -416,6 +564,26 @@ def object_set_metrics(rows: list[dict[str, Any]]) -> dict[str, float]:
         "precision": precision,
         "recall": recall,
         "exact_match": exact / len(rows) if rows else 0.0,
+    }
+
+
+def regression_metrics(rows: list[dict[str, Any]]) -> dict[str, float]:
+    errors = []
+    within_20 = 0
+    for row in rows:
+        true_value = float(row.get("true_value") or 0.0)
+        pred_value = row.get("predicted_value")
+        if pred_value is None:
+            pred_value = 200.0
+        err = abs(float(pred_value) - true_value)
+        errors.append(err)
+        within_20 += int(err <= 20.0)
+    mae = float(np.mean(errors)) if errors else 0.0
+    return {
+        "num_samples": len(rows),
+        "mae": mae,
+        "time_to_transition_mae": mae,
+        "within_20_frames": within_20 / len(rows) if rows else 0.0,
     }
 
 
@@ -471,11 +639,17 @@ def score_task(task_id: str, spec: dict[str, Any], rows: list[dict[str, Any]], o
         metrics[f"{task_id}_accuracy"] = metrics["accuracy"]
         write_csv(task_dir / "per_class_metrics.csv", per_class, ["class_name", "support", "predicted", "precision", "recall", "f1"])
         primary_score = metrics["macro_f1"]
-    else:
+    elif spec["family"] == "multi_label":
         metrics = object_set_metrics(rows)
         metrics[f"{task_id}_micro_f1"] = metrics["micro_f1"]
         metrics[f"{task_id}_exact_match"] = metrics["exact_match"]
         primary_score = metrics["micro_f1"]
+    elif spec["family"] == "regression":
+        metrics = regression_metrics(rows)
+        primary_score = metrics["mae"]
+    else:
+        raise ValueError(f"unsupported task family: {spec['family']}")
+    metrics[spec["metric_key"]] = primary_score
 
     metrics.update(
         {
@@ -516,6 +690,7 @@ def main() -> int:
     selected_tasks = select_tasks(args.tasks)
     samples = load_jsonl(args.dataset_jsonl)
     future_map = future_index_map(samples, args.future_frames)
+    transition_targets = time_to_transition_map(samples)
     eval_indices = [idx for idx in select_eval_indices(samples, args) if idx in future_map]
     if not eval_indices:
         raise ValueError("No evaluation samples with future targets selected.")
@@ -554,8 +729,14 @@ def main() -> int:
                 continue
             started = time.time()
             raw = generate_messages(model, processor, sample, future_sample, task_id, spec, args)
-            true_value = task_target(future_sample, spec)
+            true_value = task_target_value(task_id, sample, future_sample, spec, transition_targets, sample_idx)
             predicted_value = extract_prediction(raw, sample, spec)
+            if spec["family"] == "classification":
+                correct = int(true_value == predicted_value)
+            elif spec["family"] == "multi_label":
+                correct = int(set(true_value) == set(predicted_value))
+            else:
+                correct = int(predicted_value is not None and abs(float(true_value) - float(predicted_value)) <= 20.0)
             row = {
                 "prediction_id": pred_id,
                 "id": sample.get("id"),
@@ -571,7 +752,7 @@ def main() -> int:
                 "true_value": true_value,
                 "predicted_value": predicted_value,
                 "raw_prediction": raw,
-                "correct": int(true_value == predicted_value) if spec["family"] == "classification" else int(set(true_value) == set(predicted_value)),
+                "correct": correct,
             }
             partial_by_task[task_id][pred_id] = row
             append_jsonl(partial_path, row)
