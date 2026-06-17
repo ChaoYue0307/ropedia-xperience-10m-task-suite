@@ -1,0 +1,35 @@
+{
+  "run_id": "xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z",
+  "shard_dirs": [
+    "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z_shard0",
+    "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z_shard1"
+  ],
+  "status": "pass",
+  "tasks": {
+    "long_horizon_next_action": {
+      "metric_key": "macro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.0023356666867101906,
+      "task_label": "Long-Horizon Next-Action Forecasting",
+      "task_number": 13
+    },
+    "next_subtask_forecast": {
+      "metric_key": "macro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.004206715978529301,
+      "task_label": "Long-Horizon Next-Subtask Forecasting",
+      "task_number": 14
+    },
+    "object_set_forecast": {
+      "metric_key": "micro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/object_set_forecast/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.1659483964851402,
+      "task_label": "Future Object-Set Forecasting",
+      "task_number": 17
+    }
+  },
+  "title": "Qwen3-Omni v6 Future Task Probes"
+}

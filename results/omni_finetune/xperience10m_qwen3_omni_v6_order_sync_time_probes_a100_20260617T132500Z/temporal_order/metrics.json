@@ -1,0 +1,30 @@
+{
+  "accuracy": 0.48692403486924035,
+  "adapter_dir": "/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora/adapter_lora",
+  "dataset_jsonl": "/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
+  "eval_split": "test",
+  "future_frames": 20,
+  "labels": [
+    "correct",
+    "reversed"
+  ],
+  "macro_f1": 0.40984631701404173,
+  "metric_key": "temporal_order_f1",
+  "model_id": "/mnt/kgc/chaoyue/ropedia-h20-side/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct",
+  "num_samples": 4015,
+  "primary_metric": "temporal_order_f1",
+  "primary_score": 0.40984631701404173,
+  "run_id": "xperience10m_qwen3_omni_v6_order_sync_time_probes_a100_20260617T132500Z",
+  "sample_offset": 0,
+  "sample_stride": 1,
+  "scope": "held_out_test_qwen3_future_task_probe",
+  "score_policy": "GPU-backed Qwen3-Omni v6 generation for targets derivable from the current 128-episode JSON export. This package does not score tasks whose target fields are absent from the export.",
+  "status": "pass",
+  "task_id": "temporal_order",
+  "task_label": "Temporal Order Verification",
+  "task_number": 11,
+  "temporal_order_accuracy": 0.48692403486924035,
+  "temporal_order_f1": 0.40984631701404173,
+  "temporal_order_macro_f1": 0.40984631701404173,
+  "title": "Qwen3-Omni v6 Temporal Order Verification"
+}

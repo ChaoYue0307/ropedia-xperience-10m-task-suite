@@ -1,0 +1,35 @@
+{
+  "run_id": "xperience10m_qwen3_omni_v6_order_sync_time_probes_a100_20260617T132500Z",
+  "shard_dirs": [
+    "results/omni_finetune/xperience10m_qwen3_omni_v6_order_sync_time_probes_a100_20260617T132500Z_shard0",
+    "results/omni_finetune/xperience10m_qwen3_omni_v6_order_sync_time_probes_a100_20260617T132500Z_shard1"
+  ],
+  "status": "pass",
+  "tasks": {
+    "misalignment_detection": {
+      "metric_key": "misalignment_detection_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_qwen3_omni_v6_order_sync_time_probes_a100_20260617T132500Z/misalignment_detection/metrics.json",
+      "num_samples": 4015,
+      "primary_score": 0.3344936184319576,
+      "task_label": "Multimodal Misalignment Detection",
+      "task_number": 12
+    },
+    "temporal_order": {
+      "metric_key": "temporal_order_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_qwen3_omni_v6_order_sync_time_probes_a100_20260617T132500Z/temporal_order/metrics.json",
+      "num_samples": 4015,
+      "primary_score": 0.40984631701404173,
+      "task_label": "Temporal Order Verification",
+      "task_number": 11
+    },
+    "time_to_transition": {
+      "metric_key": "time_to_transition_mae",
+      "metrics_json": "results/omni_finetune/xperience10m_qwen3_omni_v6_order_sync_time_probes_a100_20260617T132500Z/time_to_transition/metrics.json",
+      "num_samples": 4015,
+      "primary_score": 134.0687422166874,
+      "task_label": "Time to Transition",
+      "task_number": 20
+    }
+  },
+  "title": "Qwen3-Omni v6 Future Task Probes"
+}

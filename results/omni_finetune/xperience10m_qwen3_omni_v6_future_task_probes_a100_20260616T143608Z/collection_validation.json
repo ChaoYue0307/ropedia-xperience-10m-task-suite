@@ -1,0 +1,30 @@
+{
+  "records": [
+    {
+      "metric_key": "long_horizon_next_action_macro_f1",
+      "num_samples": 3951,
+      "primary_score": 0.0023356666867101906,
+      "source": "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/metrics.json",
+      "task_id": "long_horizon_next_action"
+    },
+    {
+      "metric_key": "next_subtask_forecast_macro_f1",
+      "num_samples": 3951,
+      "primary_score": 0.004206715978529301,
+      "source": "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/metrics.json",
+      "task_id": "next_subtask_forecast"
+    },
+    {
+      "metric_key": "object_set_forecast_micro_f1",
+      "num_samples": 3951,
+      "primary_score": 0.1659483964851402,
+      "source": "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/object_set_forecast/metrics.json",
+      "task_id": "object_set_forecast"
+    }
+  ],
+  "run_id": "xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z",
+  "status": "pass",
+  "summary": "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/summary.json",
+  "title": "Qwen3 Future Task Probe Collection Validation",
+  "validated_task_count": 3
+}

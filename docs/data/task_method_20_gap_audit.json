@@ -1,10 +1,10 @@
 {
-  "generated_at_utc": "2026-06-17T13:55:12+00:00",
+  "generated_at_utc": "2026-06-17T21:17:51+00:00",
   "immediate_actions": [
     {
       "artifact": "docs/data/task_method_20_gap_audit.json",
       "id": "gap_audit",
-      "purpose": "Keep the 64 scoreless cells visible and reproducible."
+      "purpose": "Keep the 61 scoreless cells visible and reproducible."
     },
     {
       "artifact": "scripts/omni/score_model_output_probes.py",
@@ -101,11 +101,11 @@
       "proxy_scored_task_count": 0,
       "result_record_count": 20,
       "scope": "128 selected episodes, held-out test",
-      "scored_task_count": 10,
-      "scoreless_task_count": 10,
+      "scored_task_count": 13,
+      "scoreless_task_count": 7,
       "status_counts": {
-        "not_evaluated_in_verified_package": 10,
-        "scored": 10
+        "not_evaluated_in_verified_package": 7,
+        "scored": 13
       }
     },
     "raw128_neural_mlp": {
@@ -140,10 +140,10 @@
     "cosmos3_super_reasoner": 13,
     "metadata128_neural_mlp": 14,
     "metadata128_simple": 12,
-    "qwen3_omni_v6_lora": 10
+    "qwen3_omni_v6_lora": 7
   },
   "missing_by_status": {
-    "not_evaluated_in_verified_package": 38,
+    "not_evaluated_in_verified_package": 35,
     "not_supported_by_metadata_only_package": 22,
     "unsupported_without_required_target": 4
   },
@@ -183,15 +183,13 @@
     "11 Temporal Order Verification": [
       "cosmos3_nano_future_window",
       "cosmos3_super_reasoner",
-      "metadata128_neural_mlp",
-      "qwen3_omni_v6_lora"
+      "metadata128_neural_mlp"
     ],
     "12 Multimodal Synchronization Detection": [
       "cosmos3_nano_future_window",
       "cosmos3_super_reasoner",
       "metadata128_neural_mlp",
-      "metadata128_simple",
-      "qwen3_omni_v6_lora"
+      "metadata128_simple"
     ],
     "13 Long-Horizon Next-Action Forecasting": [
       "cosmos3_nano_future_window",
@@ -241,8 +239,7 @@
       "cosmos3_nano_future_window",
       "cosmos3_super_reasoner",
       "metadata128_neural_mlp",
-      "metadata128_simple",
-      "qwen3_omni_v6_lora"
+      "metadata128_simple"
     ]
   },
   "missing_records": [
@@ -520,19 +517,6 @@
       "task_number": 11
     },
     {
-      "method": "Qwen3-Omni v6 LoRA",
-      "metric_key": "f1",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
-      "scope": "multi_episode_128_partial_model_overlay",
-      "series_id": "qwen3_omni_v6_lora",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "task_id": "temporal_order",
-      "task_label": "Temporal Order Verification",
-      "task_number": 11
-    },
-    {
       "method": "Cosmos3-Super Reasoner",
       "metric_key": "f1",
       "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
@@ -585,19 +569,6 @@
       "task_number": 12
     },
     {
-      "method": "Qwen3-Omni v6 LoRA",
-      "metric_key": "f1",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
-      "scope": "multi_episode_128_partial_model_overlay",
-      "series_id": "qwen3_omni_v6_lora",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "task_id": "misalignment_detection",
-      "task_label": "Multimodal Synchronization Detection",
-      "task_number": 12
-    },
-    {
       "method": "Cosmos3-Super Reasoner",
       "metric_key": "f1",
       "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
@@ -1035,19 +1006,6 @@
       "series_id": "metadata128_neural_mlp",
       "status": "not_supported_by_metadata_only_package",
       "status_label": "not supported",
-      "task_id": "time_to_transition",
-      "task_label": "Time-to-Next-Transition Regression",
-      "task_number": 20
-    },
-    {
-      "method": "Qwen3-Omni v6 LoRA",
-      "metric_key": "mae",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
-      "scope": "multi_episode_128_partial_model_overlay",
-      "series_id": "qwen3_omni_v6_lora",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
       "task_id": "time_to_transition",
       "task_label": "Time-to-Next-Transition Regression",
       "task_number": 20
@@ -1125,8 +1083,8 @@
     "method_count": 9,
     "method_task_record_count": 180,
     "proxy_scored_method_task_count": 4,
-    "scored_method_task_count": 116,
-    "scoreless_method_task_count": 64,
+    "scored_method_task_count": 119,
+    "scoreless_method_task_count": 61,
     "task_count": 20
   },
   "source_matrix": "docs/data/task_method_20_result_matrix.json",
