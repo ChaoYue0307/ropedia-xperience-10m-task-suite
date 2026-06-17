@@ -1,9 +1,9 @@
 {
   "title": "Ropedia Xperience-10M Figure Index",
   "status": "pass",
-  "generated_at_utc": "2026-06-17T07:06:27+00:00",
+  "generated_at_utc": "2026-06-17T15:16:21+00:00",
   "scope": "Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience-10M videos, annotations, RRD files, and Qwen weights are excluded.",
-  "figure_count": 26,
+  "figure_count": 29,
   "figures": [
     {
       "id": "brand_logo_mark",
@@ -104,6 +104,57 @@
         "format": "PNG",
         "width": 1536,
         "height": 1024
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "spatial_intelligence_pipeline_placeholder",
+      "title": "Spatial intelligence pipeline placeholder",
+      "path": "docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
+      "role": "ChatGPT image-generated placeholder for the spatial intelligence training pipeline track.",
+      "source_script": "docs/assets/foundation-pipelines/prompts.md",
+      "surface": "README, website, HF Space, artifact dataset, model card",
+      "exists": true,
+      "bytes": 2337155,
+      "sha256": "ca98e2f5171497f6b97627ee8d0dee68f4aa929a2ba205e8b8e64e89f7f66f06",
+      "dimensions": {
+        "format": "PNG",
+        "width": 1672,
+        "height": 941
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "human_video_world_model_pipeline_placeholder",
+      "title": "Human-video world model pipeline placeholder",
+      "path": "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
+      "role": "ChatGPT image-generated placeholder for the human-video world-model training pipeline track.",
+      "source_script": "docs/assets/foundation-pipelines/prompts.md",
+      "surface": "README, website, HF Space, artifact dataset, model card",
+      "exists": true,
+      "bytes": 2356312,
+      "sha256": "cee2d717a97b88d8f5bae3e58fe202791a4f3073e488cb666acb0214117b735b",
+      "dimensions": {
+        "format": "PNG",
+        "width": 1672,
+        "height": 941
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "vision_language_action_pipeline_placeholder",
+      "title": "Vision-language-action pipeline placeholder",
+      "path": "docs/assets/foundation-pipelines/vision-language-action-pipeline.png",
+      "role": "ChatGPT image-generated placeholder for the VLA/action-policy training pipeline track.",
+      "source_script": "docs/assets/foundation-pipelines/prompts.md",
+      "surface": "README, website, HF Space, artifact dataset, model card",
+      "exists": true,
+      "bytes": 2421011,
+      "sha256": "f8554f7df26ab79fef348740ce45ac3da032cb4085c490d62910ad1147dd1ecf",
+      "dimensions": {
+        "format": "PNG",
+        "width": 1672,
+        "height": 941
       },
       "source_script_exists": true
     },

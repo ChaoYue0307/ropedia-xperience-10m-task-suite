@@ -3,6 +3,13 @@
   "status": "pipeline_plan",
   "source_document": "THREE_FOUNDATION_PIPELINES.md",
   "claim_boundary": "These are supported pipeline directions, not three completed model-quality claims.",
+  "placeholder_assets": {
+    "status": "published_placeholders",
+    "asset_root": "docs/assets/foundation-pipelines",
+    "source": "ChatGPT image generation with repo-local prompt notes",
+    "source_prompt_file": "docs/assets/foundation-pipelines/prompts.md",
+    "note": "Images are visual placeholders for pipeline tracks. Technical claims remain governed by the Markdown/JSON contracts and verified metrics."
+  },
   "shared_principles": [
     "Use episode-level train/validation/test separation.",
     "Build manifest-first exporters before training.",
@@ -44,6 +51,9 @@
       "first_pipeline": "Build a spatial-memory exporter, start with metric depth and pose consistency tasks, then evaluate spatial QA, object permanence, counting, retrieval, and pose-aware consistency.",
       "current_maturity": "Ready as a pipeline and evaluation contract.",
       "next_gate": "Raw depth and pose artifacts plus held-out multi-episode spatial metrics.",
+      "placeholder_image": "docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
+      "website_image": "assets/foundation-pipelines/spatial-intelligence-pipeline.png",
+      "image_alt": "Placeholder visual for the spatial intelligence pipeline: multiview video, depth, and pose inputs feeding scene memory and spatial reasoning outputs.",
       "avoid_claiming_now": [
         "full neural rendering",
         "full 3D reconstruction",
@@ -82,6 +92,9 @@
       "first_pipeline": "Keep Qwen-style structured future probes for task interpretability, keep Cosmos-style dynamics branches separate, and add latent or feature-reconstruction metrics before claiming world-model quality.",
       "current_maturity": "Partially evidenced by current future-task probes and Cosmos-style branch artifacts.",
       "next_gate": "Stronger future-state metrics, qualitative future examples, and held-out episode breakdowns.",
+      "placeholder_image": "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
+      "website_image": "assets/foundation-pipelines/human-video-world-model-pipeline.png",
+      "image_alt": "Placeholder visual for the human-video world model pipeline: observed interaction windows feeding temporal dynamics and future-state outputs.",
       "avoid_claiming_now": [
         "strong world model from structured future-task scores alone",
         "visual future quality without visual or latent future metrics"
@@ -118,6 +131,9 @@
       "first_pipeline": "Define the action space, use existing 20-task next-action/contact/object-conditioned tasks first, then add hand-trajectory or policy-compatible action chunks after conversion is traceable.",
       "current_maturity": "Feasible but gated by action-target conversion.",
       "next_gate": "Traceable action tokens, normalization, retargeting metadata, and held-out policy metrics.",
+      "placeholder_image": "docs/assets/foundation-pipelines/vision-language-action-pipeline.png",
+      "website_image": "assets/foundation-pipelines/vision-language-action-pipeline.png",
+      "image_alt": "Placeholder visual for the vision-language-action pipeline: video, language, motion, and contact cues feeding action-chunk outputs.",
       "avoid_claiming_now": [
         "robot policy quality",
         "policy generalization before action-space evidence exists"

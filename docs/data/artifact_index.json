@@ -1,11 +1,12 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-17T13:02:22+00:00",
+  "generated_at_utc": "2026-06-17T15:16:18+00:00",
   "status": "pass",
-  "artifact_count": 201,
+  "artifact_count": 204,
   "missing": [],
   "by_kind": {
     "project_path": 16,
+    "visual_asset": 3,
     "scaleup_contract": 7,
     "scaleup_status": 44,
     "publication_workflow": 6,
@@ -134,8 +135,8 @@
       "surface": "repo_hf",
       "shows": "Frames spatial intelligence, human-video world modeling, and vision-language-action as three pipeline tracks with explicit inputs, outputs, maturity, and next evidence gates.",
       "exists": true,
-      "bytes": 6538,
-      "sha256": "046c2873821962ab6d06fd21f8a2310358f9038b5bf543215fb962d850b92bab"
+      "bytes": 7437,
+      "sha256": "281a6349a7fd141460d7f911f0d80a841a38c99456363d1ffd6372cd94ca14b0"
     },
     {
       "id": "three_foundation_pipelines_json",
@@ -145,8 +146,41 @@
       "surface": "website_hf",
       "shows": "Machine-readable pipeline-track contract for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 5042,
-      "sha256": "3118aede3a63be4262839c9056278663e829e3a0a1deeb8a81c1f8ac977c1875"
+      "bytes": 6518,
+      "sha256": "e337901e7ddd2f8845987d4c41d9362e5fc780d3cb0659494576b7a0da53fb49"
+    },
+    {
+      "id": "spatial_intelligence_pipeline_placeholder",
+      "title": "Spatial intelligence pipeline placeholder",
+      "path": "docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
+      "kind": "visual_asset",
+      "surface": "website_hf",
+      "shows": "ChatGPT image-generated placeholder visual for the spatial intelligence model training pipeline.",
+      "exists": true,
+      "bytes": 2337155,
+      "sha256": "ca98e2f5171497f6b97627ee8d0dee68f4aa929a2ba205e8b8e64e89f7f66f06"
+    },
+    {
+      "id": "human_video_world_model_pipeline_placeholder",
+      "title": "Human-video world model pipeline placeholder",
+      "path": "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
+      "kind": "visual_asset",
+      "surface": "website_hf",
+      "shows": "ChatGPT image-generated placeholder visual for the human-video world-model training pipeline.",
+      "exists": true,
+      "bytes": 2356312,
+      "sha256": "cee2d717a97b88d8f5bae3e58fe202791a4f3073e488cb666acb0214117b735b"
+    },
+    {
+      "id": "vision_language_action_pipeline_placeholder",
+      "title": "Vision-language-action pipeline placeholder",
+      "path": "docs/assets/foundation-pipelines/vision-language-action-pipeline.png",
+      "kind": "visual_asset",
+      "surface": "website_hf",
+      "shows": "ChatGPT image-generated placeholder visual for the vision-language-action training pipeline.",
+      "exists": true,
+      "bytes": 2421011,
+      "sha256": "f8554f7df26ab79fef348740ce45ac3da032cb4085c490d62910ad1147dd1ecf"
     },
     {
       "id": "omni_model_extension_contract",
@@ -487,7 +521,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "0c3ac97fdf21dfa3799a1aec3a007c436145f8ff6d70dc29f1eb002d1757c053"
+      "sha256": "5d013c6820fb7f582b4b4b9a55f98de20168ea1947d4bea64e11d16dbd521428"
     },
     {
       "id": "source_alignment_validator",
@@ -608,7 +642,7 @@
       "shows": "Stores normalized 20-axis radar values, raw task metrics, Qwen3/Cosmos overlay mappings, branch-card caveats, and explicit scoreless status records.",
       "exists": true,
       "bytes": 231240,
-      "sha256": "394d494ab99e5d978415764ed785521c038881dd678f3036783be70fef068d25"
+      "sha256": "87eb194c326323167b356448678fc9e2cc4b39610c48e6e14d368d55261d2745"
     },
     {
       "id": "single_episode_task_model_radar_json",
@@ -619,7 +653,7 @@
       "shows": "Machine-readable split radar for the one-episode Minimal and Neural MLP baselines, both scored on all 20 task contracts.",
       "exists": true,
       "bytes": 50973,
-      "sha256": "fb1beb92720407bfe51933a064b2bb9f28d1e45fb17af0e673827d255ee92fab"
+      "sha256": "07a6a8026e48e60d6a1ee0686d615645590ac3d95cc938fc9f0b26cbdea5d3a6"
     },
     {
       "id": "episode128_task_model_radar_json",
@@ -630,7 +664,7 @@
       "shows": "Machine-readable split radar for selected 128-episode metadata/raw baselines and verified Qwen3/Cosmos branches, preserving explicit scoreless cells.",
       "exists": true,
       "bytes": 187388,
-      "sha256": "a3b71765b2435f085a7bb0492e05dbfc4c3c9b06cb65a4ec326160abb31f6ad8"
+      "sha256": "47e37a1b6bbbb3df98630dfab0de8e39e2c170400d1bce52054967a136dbc58c"
     },
     {
       "id": "task_method_20_result_matrix_json",
@@ -641,7 +675,7 @@
       "shows": "Machine-readable 9-method by 20-task matrix where every method has 20 records and scoreless cells carry unsupported/not-evaluated reasons.",
       "exists": true,
       "bytes": 129749,
-      "sha256": "985d210609e40f06cb7d3d2819cd5e9330671a4506b1fb67c1917dcf4e2ea6e9"
+      "sha256": "58636609d9145bce26857ddee8e0fe4751ebee8429d4bef60fbe9d9daf7d2bd4"
     },
     {
       "id": "task_method_20_result_matrix",
@@ -663,7 +697,7 @@
       "shows": "Machine-readable 180-record gap ledger with numeric scores, scoreless cells, explicit status reasons, and next evidence needed before new scores can be published.",
       "exists": true,
       "bytes": 55745,
-      "sha256": "0049d8f850af3b47c100effde7d65940b63c3af2f91a5f29016bc3b066866576"
+      "sha256": "7cc10a067d029ae4d55869b2db1181e01fb5063ec5637111255a4f3d79dbb082"
     },
     {
       "id": "task_method_20_gap_audit",
@@ -674,7 +708,7 @@
       "shows": "Reader-facing ledger that lists every scoreless method-task cell and the concrete target or model-output evidence required before it can become numeric.",
       "exists": true,
       "bytes": 15690,
-      "sha256": "2585cbb6ffbb87cff3e16347f93947930c7059f1053d68b6f98a4c70ecc58654"
+      "sha256": "bec8510557fee7505f68d697590eefdcaad96d70d9d9b201fab7a9bdc361a2ac"
     },
     {
       "id": "unified_task_model_radar_chart",
@@ -717,8 +751,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the direction-aware radar chart and machine-readable metric overlay JSON.",
       "exists": true,
-      "bytes": 50651,
-      "sha256": "c9c88870b9b6e72f290ea2f8ad5378dfb90f4aef5278f597f9a8d69c748ab352"
+      "bytes": 51243,
+      "sha256": "e0f995a01e8589a7f819dc5b766156c26e8b14e4db9c3c0c5e08be7a29b4de56"
     },
     {
       "id": "task_method_20_gap_audit_builder",
@@ -926,8 +960,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates visual-asset hashes, dimensions, and source-script provenance.",
       "exists": true,
-      "bytes": 15412,
-      "sha256": "12eb9fa001f911f90d228362bb67f0fbc4a99be46180147d85a65742190dfd13"
+      "bytes": 16864,
+      "sha256": "df362654a5c65d7adedc924f2af93e1fbd248fa861f20aea1576473daaeb0b0d"
     },
     {
       "id": "brand_assets_json",
@@ -1107,8 +1141,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 56578,
-      "sha256": "d79de14ace608fbefc4cd0dac4f0851161882ef92749df78a3bd00c32b856fb0"
+      "bytes": 60253,
+      "sha256": "ad4b408e9e19339285e37e0c47bffac6a450ddd1a439bf11ab80a90cec27b1fb"
     },
     {
       "id": "reproducibility_contract",
@@ -1140,8 +1174,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 58004,
-      "sha256": "ffbbe7e9ab74fbb8b12dbd27968c31fd0e608cad2272329e1505039f57452b99"
+      "bytes": 59218,
+      "sha256": "38985fa362861b3975240ec62cc186378c84a8d0e11727651dc3cd2a87bfdd11"
     },
     {
       "id": "publication_audit",
@@ -1176,7 +1210,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 899853,
+      "bytes": 902747,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1188,7 +1222,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 18933,
+      "bytes": 19052,
       "hash_policy": "existence_and_size_only"
     },
     {

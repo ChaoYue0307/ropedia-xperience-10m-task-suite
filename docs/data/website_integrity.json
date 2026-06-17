@@ -1,14 +1,14 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-17T13:02:53+00:00",
+  "generated_at_utc": "2026-06-17T15:17:21+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 181,
+    "local_references": 187,
     "external_reference_count": 123,
     "json_files": 47,
-    "image_assets_referenced": 25,
+    "image_assets_referenced": 28,
     "failure_count": 0
   },
   "failures": {
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 87197,
-      "evidence_index": 115940
+      "overview_index": 88890,
+      "evidence_index": 119623
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 87197,
-      "protocol_index": 112121,
-      "evidence_index": 115940
+      "overview_index": 88890,
+      "protocol_index": 115804,
+      "evidence_index": 119623
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -277,8 +277,8 @@
     {
       "path": "index.html",
       "id_count": 90,
-      "reference_count": 157,
-      "image_count": 31
+      "reference_count": 163,
+      "image_count": 34
     },
     {
       "path": "research_roadmap.html",
@@ -301,7 +301,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 109674,
+      "bytes": 111262,
       "top_level_type": "dict"
     },
     {
@@ -331,7 +331,7 @@
     },
     {
       "path": "data/figure_index.json",
-      "bytes": 17287,
+      "bytes": 19501,
       "top_level_type": "dict"
     },
     {
@@ -346,7 +346,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 899853,
+      "bytes": 902747,
       "top_level_type": "dict"
     },
     {
@@ -506,7 +506,7 @@
     },
     {
       "path": "data/three_foundation_pipelines.json",
-      "bytes": 5042,
+      "bytes": 6518,
       "top_level_type": "dict"
     },
     {
@@ -521,7 +521,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 18933,
+      "bytes": 19052,
       "top_level_type": "dict"
     },
     {
@@ -629,6 +629,30 @@
       "bytes": 50060,
       "format": "SVG",
       "has_viewbox": true
+    },
+    {
+      "path": "assets/foundation-pipelines/human-video-world-model-pipeline.png",
+      "exists": true,
+      "bytes": 2356312,
+      "width": 1672,
+      "height": 941,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/foundation-pipelines/spatial-intelligence-pipeline.png",
+      "exists": true,
+      "bytes": 2337155,
+      "width": 1672,
+      "height": 941,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/foundation-pipelines/vision-language-action-pipeline.png",
+      "exists": true,
+      "bytes": 2421011,
+      "width": 1672,
+      "height": 941,
+      "format": "PNG"
     },
     {
       "path": "assets/modalities/audio.png",

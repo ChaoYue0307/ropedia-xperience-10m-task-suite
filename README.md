@@ -881,6 +881,15 @@ so the public claims stay precise:
 | Human-video world models | Predict next action, next subtask, future object set, contact transition, and future state from observed interaction windows. | Partially evidenced by future-task probes and Cosmos-style branches; visual/latent future quality still needs stronger metrics. |
 | Vision-language-action models | Convert egocentric video, captions, hand/body motion, contacts, and objects into action chunks or policy-compatible targets. | Feasible, but gated by action-token conversion, normalization, retargeting evidence, and held-out policy metrics. |
 
+Placeholder visuals for the three tracks are published in
+[`docs/assets/foundation-pipelines`](docs/assets/foundation-pipelines). They
+are ChatGPT image-generated communication assets, not completed model-quality
+evidence.
+
+| Spatial intelligence | Human-video world model | Vision-language-action |
+| --- | --- | --- |
+| ![Spatial intelligence pipeline placeholder](docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png) | ![Human-video world model pipeline placeholder](docs/assets/foundation-pipelines/human-video-world-model-pipeline.png) | ![Vision-language-action pipeline placeholder](docs/assets/foundation-pipelines/vision-language-action-pipeline.png) |
+
 See [`THREE_FOUNDATION_PIPELINES.md`](THREE_FOUNDATION_PIPELINES.md) and
 [`docs/data/three_foundation_pipelines.json`](docs/data/three_foundation_pipelines.json).
 

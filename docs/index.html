@@ -618,6 +618,70 @@
       border-radius: 6px;
       background: #020502;
     }
+    .foundation-pipeline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin: 0 0 28px;
+    }
+    .foundation-pipeline-card {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.06), rgba(6, 14, 7, 0.86)),
+        var(--surface);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.3);
+    }
+    .foundation-pipeline-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-bottom: 1px solid var(--line);
+      background: #020502;
+    }
+    .foundation-pipeline-body {
+      padding: 18px;
+    }
+    .foundation-pipeline-body span {
+      display: inline-flex;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .foundation-pipeline-body h3 {
+      margin: 0 0 9px;
+      font-family: var(--font-ui);
+      font-size: 20px;
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+    .foundation-pipeline-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .foundation-pipeline-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .foundation-pipeline-links a {
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
     .split-radar-links {
       display: flex;
       flex-wrap: wrap;
@@ -2637,7 +2701,8 @@
       .project-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .section-tabs { padding-top: 10px; }
       .figure-brief,
-      .split-radar-grid { grid-template-columns: 1fr; }
+      .split-radar-grid,
+      .foundation-pipeline-grid { grid-template-columns: 1fr; }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .brief-panel-head { grid-template-columns: 1fr; align-items: start; }
       .task-player { grid-template-columns: 1fr; }
@@ -3198,10 +3263,45 @@
           <h2>Additional development directions.</h2>
           <p>Beyond the current task heads, Qwen3-Omni fine-tuning path, Cosmos/world-model branch, and future native pretraining goal, Xperience-10M can support three foundation pipeline tracks plus several concrete research-development tracks.</p>
         </div>
+        <div class="foundation-pipeline-grid" aria-label="Three foundation model training pipeline placeholders">
+          <article class="foundation-pipeline-card">
+            <img src="assets/foundation-pipelines/spatial-intelligence-pipeline.png?v=foundation-pipelines-v1" alt="Placeholder visual for the spatial intelligence pipeline: multiview video, depth, and pose inputs feeding scene memory and spatial reasoning outputs.">
+            <div class="foundation-pipeline-body">
+              <span>Pipeline placeholder</span>
+              <h3>Spatial intelligence models</h3>
+              <p>Build scene/object memory targets from multiview RGB, depth, pose, calibration, object cues, and language prompts, then evaluate spatial QA, object permanence, counting, retrieval, and pose-aware consistency.</p>
+              <div class="foundation-pipeline-links">
+                <a href="data/three_foundation_pipelines.json">Track JSON</a>
+                <a href="assets/foundation-pipelines/spatial-intelligence-pipeline.png">Open image</a>
+              </div>
+            </div>
+          </article>
+          <article class="foundation-pipeline-card">
+            <img src="assets/foundation-pipelines/human-video-world-model-pipeline.png?v=foundation-pipelines-v1" alt="Placeholder visual for the human-video world model pipeline: observed interaction windows feeding temporal dynamics and future-state outputs.">
+            <div class="foundation-pipeline-body">
+              <span>Pipeline placeholder</span>
+              <h3>Human-video world models</h3>
+              <p>Predict next action, next subtask, future object set, contact transitions, camera-motion deltas, and latent future state from observed interaction windows, with Cosmos-style dynamics metrics kept separate.</p>
+              <div class="foundation-pipeline-links">
+                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/THREE_FOUNDATION_PIPELINES.md">Track note</a>
+                <a href="assets/foundation-pipelines/human-video-world-model-pipeline.png">Open image</a>
+              </div>
+            </div>
+          </article>
+          <article class="foundation-pipeline-card">
+            <img src="assets/foundation-pipelines/vision-language-action-pipeline.png?v=foundation-pipelines-v1" alt="Placeholder visual for the vision-language-action pipeline: video, language, motion, and contact cues feeding action-chunk outputs.">
+            <div class="foundation-pipeline-body">
+              <span>Pipeline placeholder</span>
+              <h3>Vision-language-action models</h3>
+              <p>Convert egocentric video, captions, hand/body motion, contacts, and objects into traceable action chunks or policy-compatible targets before claiming VLA or robot policy quality.</p>
+              <div class="foundation-pipeline-links">
+                <a href="data/three_foundation_pipelines.json">Track contract</a>
+                <a href="assets/foundation-pipelines/vision-language-action-pipeline.png">Open image</a>
+              </div>
+            </div>
+          </article>
+        </div>
         <div class="artifact-grid">
-          <article class="artifact primary-artifact"><div><h3>Spatial intelligence models</h3><p>Use multiview RGB, depth, camera pose, calibration, object cues, and language to build scene/object memory targets for spatial QA, object permanence, counting, retrieval, and pose-aware consistency.</p></div><a href="data/three_foundation_pipelines.json">pipeline data</a></article>
-          <article class="artifact"><h3>Human-video world models</h3><p>Predict next action, next subtask, future object set, contact transition, camera-motion delta, or latent future state from observed interaction windows, with Cosmos-style metrics kept separate from JSON-task scores.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/THREE_FOUNDATION_PIPELINES.md">pipeline note</a></article>
-          <article class="artifact"><h3>Vision-language-action models</h3><p>Convert egocentric video, language captions, hand/body motion, contacts, and objects into traceable action chunks or policy-compatible targets before claiming VLA or policy quality.</p><a href="data/three_foundation_pipelines.json">track contract</a></article>
           <article class="artifact"><h3>Episode taxonomy and data engine</h3><p>Build an episode atlas, category tags, balance report, and split builder across activities, objects, scenes, sessions, people, and missing modalities.</p><a href="data/additional_development_directions.json">direction data</a></article>
           <article class="artifact"><h3>Standardized benchmark protocol</h3><p>Version train/val/test manifests, task cards, leakage checks, metric scripts, and reference baselines so future model scores are comparable.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ADDITIONAL_DEVELOPMENT_DIRECTIONS.md">direction note</a></article>
           <article class="artifact"><h3>Multimodal representation learning</h3><p>Train contrastive and masked-prediction encoders over synchronized video, audio, depth, pose, mocap, IMU, and language windows.</p><a href="data/additional_development_directions.json">JSON plan</a></article>

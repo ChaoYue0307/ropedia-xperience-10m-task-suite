@@ -439,6 +439,39 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "spatial_intelligence_pipeline_placeholder",
+        "title": "Spatial intelligence pipeline placeholder",
+        "local_path": "docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/resolve/main/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
+        },
+    },
+    {
+        "id": "human_video_world_model_pipeline_placeholder",
+        "title": "Human-video world model pipeline placeholder",
+        "local_path": "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/foundation-pipelines/human-video-world-model-pipeline.png",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/resolve/main/assets/foundation-pipelines/human-video-world-model-pipeline.png",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/assets/foundation-pipelines/human-video-world-model-pipeline.png",
+        },
+    },
+    {
+        "id": "vision_language_action_pipeline_placeholder",
+        "title": "Vision-language-action pipeline placeholder",
+        "local_path": "docs/assets/foundation-pipelines/vision-language-action-pipeline.png",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/foundation-pipelines/vision-language-action-pipeline.png",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/resolve/main/assets/foundation-pipelines/vision-language-action-pipeline.png",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/assets/foundation-pipelines/vision-language-action-pipeline.png",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/assets/foundation-pipelines/vision-language-action-pipeline.png",
+        },
+    },
+    {
         "id": "figure_index_json",
         "title": "Figure index JSON",
         "local_path": "docs/data/figure_index.json",

@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-17T13:03:53+00:00",
+  "generated_at_utc": "2026-06-17T15:17:33+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -122,6 +122,9 @@
     "docs/assets/charts/unified_task_model_radar.svg": true,
     "docs/assets/charts/single_episode_task_model_radar.svg": true,
     "docs/assets/charts/episode128_task_model_radar.svg": true,
+    "docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png": true,
+    "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png": true,
+    "docs/assets/foundation-pipelines/vision-language-action-pipeline.png": true,
     "docs/assets/pipeline_diagram.png": true,
     "docs/assets/task_architectures.png": true,
     "results/episode_task_suite/summary_report.json": true,
@@ -200,8 +203,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 1211,
-      "text_file_count": 1016,
+      "file_count": 1216,
+      "text_file_count": 1018,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978
@@ -222,7 +225,7 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 2386,
+      "file_count": 2389,
       "text_file_count": 1036,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
@@ -233,7 +236,7 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 2820,
+      "file_count": 2824,
       "text_file_count": 1197,
       "largest_file": {
         "path": "pytorch_model.bin",
