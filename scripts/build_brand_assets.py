@@ -312,7 +312,35 @@ def alpha_crop(image: Image.Image, padding_ratio: float = 0.08) -> Image.Image:
     return rgba.crop((left, top, right, bottom))
 
 
-def fit_on_canvas(image: Image.Image, size: int, *, scale: float = 0.88) -> Image.Image:
+def add_contrast_halo(image: Image.Image) -> Image.Image:
+    """Keep transparent logo marks readable on white README backgrounds."""
+    rgba = image.convert("RGBA")
+    alpha = rgba.getchannel("A")
+    max_filter_size = max(5, (rgba.width // 24) | 1)
+    soft_filter_size = max(3, (rgba.width // 42) | 1)
+
+    hard_alpha = alpha.filter(ImageFilter.MaxFilter(max_filter_size)).point(lambda value: int(value * 0.62))
+    soft_alpha = alpha.filter(ImageFilter.MaxFilter(max_filter_size + 4)).filter(
+        ImageFilter.GaussianBlur(max(1, rgba.width // 42))
+    ).point(lambda value: int(value * 0.36))
+    rim_alpha = alpha.filter(ImageFilter.MaxFilter(soft_filter_size)).point(lambda value: int(value * 0.34))
+
+    backing = Image.new("RGBA", rgba.size, (0, 0, 0, 0))
+    backing.alpha_composite(Image.new("RGBA", rgba.size, (0, 8, 6, 0)))
+    shadow = Image.new("RGBA", rgba.size, (0, 8, 6, 255))
+    shadow.putalpha(soft_alpha)
+    backing.alpha_composite(shadow)
+    core = Image.new("RGBA", rgba.size, (1, 12, 8, 255))
+    core.putalpha(hard_alpha)
+    backing.alpha_composite(core)
+    rim = Image.new("RGBA", rgba.size, (78, 180, 124, 255))
+    rim.putalpha(rim_alpha)
+    backing.alpha_composite(rim)
+    backing.alpha_composite(rgba)
+    return backing
+
+
+def fit_on_canvas(image: Image.Image, size: int, *, scale: float = 0.88, contrast_halo: bool = False) -> Image.Image:
     canvas = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     cropped = alpha_crop(image)
     max_side = int(size * scale)
@@ -320,6 +348,8 @@ def fit_on_canvas(image: Image.Image, size: int, *, scale: float = 0.88) -> Imag
     x = (size - cropped.width) // 2
     y = (size - cropped.height) // 2
     canvas.alpha_composite(cropped, (x, y))
+    if contrast_halo:
+        canvas = add_contrast_halo(canvas)
     return canvas
 
 
@@ -493,8 +523,8 @@ def main() -> int:
     make_source_mark().save(SOURCE_MARK)
     mark = Image.open(SOURCE_MARK).convert("RGBA")
 
-    fit_on_canvas(mark, 512).save(OUTPUTS["mark_512"])
-    fit_on_canvas(mark, 192).save(OUTPUTS["mark_192"])
+    fit_on_canvas(mark, 512, contrast_halo=True).save(OUTPUTS["mark_512"])
+    fit_on_canvas(mark, 192, contrast_halo=True).save(OUTPUTS["mark_192"])
     make_dark_tile(mark, 64).save(OUTPUTS["favicon_64"])
     make_dark_tile(mark, 32).save(OUTPUTS["favicon_32"])
     make_dark_tile(mark, 180).save(OUTPUTS["apple_touch"])
