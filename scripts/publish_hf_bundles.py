@@ -94,7 +94,7 @@ ARTIFACT_VIEWER_CONFIG = """configs:
   - config_name: episode_sample
     data_files:
       - split: public_sample
-        path: viewer/episode_windows.jsonl
+        path: viewer/episode_windows.parquet
 """
 ENHANCEMENT_MARKER = "docs/data/task_suite_enhancement_128.json"
 ENHANCEMENT_CARD_BLOCK = """
@@ -263,6 +263,13 @@ def ensure_artifact_dataset_viewer_config(hf_root: Path) -> None:
         "\n".join(json.dumps(row, ensure_ascii=True) for row in rows) + "\n",
         encoding="utf-8",
     )
+    try:
+        import pandas as pd
+
+        parquet_path = viewer_dir / "episode_windows.parquet"
+        pd.DataFrame(rows).to_parquet(parquet_path, index=False)
+    except ImportError:
+        print("pandas/pyarrow unavailable; wrote JSONL viewer fallback only")
     (viewer_dir / "dataset_viewer_summary.jsonl").unlink(missing_ok=True)
 
     if not readme_path.exists():
