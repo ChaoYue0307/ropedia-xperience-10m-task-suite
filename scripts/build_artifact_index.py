@@ -83,6 +83,22 @@ ARTIFACTS = [
         "shows": "Machine-readable foundation-model selection matrix with source links, entry conditions, and evaluation additions.",
     },
     {
+        "id": "three_foundation_pipelines",
+        "title": "Three foundation pipeline tracks",
+        "path": "THREE_FOUNDATION_PIPELINES.md",
+        "kind": "project_path",
+        "surface": "repo_hf",
+        "shows": "Frames spatial intelligence, human-video world modeling, and vision-language-action as three pipeline tracks with explicit inputs, outputs, maturity, and next evidence gates.",
+    },
+    {
+        "id": "three_foundation_pipelines_json",
+        "title": "Three foundation pipeline tracks JSON",
+        "path": "docs/data/three_foundation_pipelines.json",
+        "kind": "project_path",
+        "surface": "website_hf",
+        "shows": "Machine-readable pipeline-track contract for the website and Hugging Face mirrors.",
+    },
+    {
         "id": "omni_model_extension_contract",
         "title": "Omni model extension contract",
         "path": "OMNI_MODEL_EXTENSION_CONTRACT.md",

@@ -2,6 +2,16 @@
   "title": "Xperience-10M Foundation Model Plan",
   "status": "planning_artifact",
   "current_boundary": "Verified held-out multi-episode foundation-model diagnostics now exist for Qwen3-Omni LoRA, Cosmos3-Nano future-window compatibility, Cosmos3-Super base-weight Reasoner evaluation, and Cosmos3-Super Forward-Dynamics LoRA. Qwen remains the structured JSON baseline; the Cosmos branches answer world-model or base-reasoner questions with separate metrics.",
+  "pipeline_tracks": {
+    "source_document": "THREE_FOUNDATION_PIPELINES.md",
+    "data": "docs/data/three_foundation_pipelines.json",
+    "claim_boundary": "Spatial intelligence, human-video world modeling, and vision-language-action are supported pipeline directions with separate artifact gates, not three completed model-quality claims.",
+    "track_ids": [
+      "spatial_intelligence",
+      "human_video_world_models",
+      "vision_language_action"
+    ]
+  },
   "backbone_registry": {
     "config_dir": "configs/omni_backbones",
     "validator": "scripts/omni/backbone_registry.py --validate --json",

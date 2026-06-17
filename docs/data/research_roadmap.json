@@ -1,7 +1,12 @@
 {
     "title": "Ropedia Xperience-10M Research Roadmap",
     "summary": "Staged path from the public-sample task lab to verified Qwen3-Omni, Cosmos3-Nano, and Cosmos3-Super diagnostics, same-split 128-episode baseline alignment, a no-new-episode 128-suite enhancement pack, action/subtask error analysis, world/policy branches, and a future Xperience-native embodied foundation model.",
-    "current_decision_point": "Push the current selected 128 episodes harder before requesting more storage: keep the public-sample task suite as the development harness, use the latest verified selected-episode Qwen3-Omni v6 diagnostic branch plus the pinned v5 row as structured-task references, read Cosmos3-Nano and Cosmos3-Super Forward-Dynamics LoRA as separate world-model results, continue with hierarchical action/subtask targets and label-normalized scoring, and defer policy-model experiments until robot-compatible targets are implemented. The Xperience Embodied Foundation Model is a later full-corpus pretraining goal, not a current result.",
+    "current_decision_point": "Push the current selected 128 episodes harder before requesting more storage: keep the public-sample task suite as the development harness, use the latest verified selected-episode Qwen3-Omni v6 diagnostic branch plus the pinned v5 row as structured-task references, read Cosmos3-Nano and Cosmos3-Super Forward-Dynamics LoRA as separate world-model results, continue with hierarchical action/subtask targets and label-normalized scoring, and defer policy-model experiments until robot-compatible targets are implemented. The three headline directions should be organized as spatial-intelligence, human-video world-model, and vision-language-action pipeline tracks with separate artifact gates. The Xperience Embodied Foundation Model is a later full-corpus pretraining goal, not a current result.",
+    "three_foundation_pipelines": {
+        "source_document": "THREE_FOUNDATION_PIPELINES.md",
+        "source_json": "docs/data/three_foundation_pipelines.json",
+        "summary": "Three pipeline tracks organize the foundation-model story: spatial intelligence needs depth/pose-backed scene-memory targets and spatial metrics, human-video world modeling needs future-state or visual/latent future metrics, and vision-language-action needs action-token conversion plus policy-style held-out metrics."
+    },
     "additional_development_directions": {
         "source_document": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
         "source_json": "docs/data/additional_development_directions.json",

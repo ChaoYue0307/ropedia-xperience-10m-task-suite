@@ -119,6 +119,7 @@ def main() -> int:
     walkthroughs = load_json(DOCS_DATA / "task_walkthroughs.json")
     roadmap = load_json(DOCS_DATA / "research_roadmap.json")
     foundation_plan = load_json(DOCS_DATA / "foundation_model_plan.json")
+    three_foundation_pipelines = load_json(DOCS_DATA / "three_foundation_pipelines.json")
     additional_directions = load_json(DOCS_DATA / "additional_development_directions.json")
     summary_metrics = load_json(DOCS_DATA / "summary_metrics.json")
     episode_summary = load_json(RESULTS / "summary_report.json")
@@ -173,6 +174,7 @@ def main() -> int:
             "docs/data/task_walkthroughs.json",
             "docs/data/research_roadmap.json",
             "docs/data/foundation_model_plan.json",
+            "docs/data/three_foundation_pipelines.json",
             "docs/data/additional_development_directions.json",
             "docs/data/summary_metrics.json",
             "docs/data/research_direction_extensions.json",
@@ -228,6 +230,13 @@ def main() -> int:
             "execution_order": foundation_plan.get("execution_order", []),
             "evaluation_additions": foundation_plan.get("evaluation_additions", []),
             "source_links": foundation_plan.get("source_links", []),
+        },
+        "three_foundation_pipelines": {
+            "title": three_foundation_pipelines.get("title"),
+            "status": three_foundation_pipelines.get("status"),
+            "claim_boundary": three_foundation_pipelines.get("claim_boundary"),
+            "tracks": three_foundation_pipelines.get("tracks", []),
+            "source_document": three_foundation_pipelines.get("source_document"),
         },
         "additional_development_directions": {
             "title": additional_directions.get("title"),

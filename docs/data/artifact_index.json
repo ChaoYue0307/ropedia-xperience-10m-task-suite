@@ -1,11 +1,11 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-17T07:20:47+00:00",
+  "generated_at_utc": "2026-06-17T13:02:22+00:00",
   "status": "pass",
-  "artifact_count": 199,
+  "artifact_count": 201,
   "missing": [],
   "by_kind": {
-    "project_path": 14,
+    "project_path": 16,
     "scaleup_contract": 7,
     "scaleup_status": 44,
     "publication_workflow": 6,
@@ -90,8 +90,8 @@
       "surface": "repo_hf",
       "shows": "Defines the path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions.",
       "exists": true,
-      "bytes": 14503,
-      "sha256": "bb06fb0ccf336cafb0305883b7f93c2e1af547c9ff04b1fa6fc87481d54bcf61"
+      "bytes": 15276,
+      "sha256": "5004dea8de01cde4b4dfccd301fc826ed00b209ba1793e113a317402c3230173"
     },
     {
       "id": "research_roadmap_json",
@@ -101,8 +101,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable research roadmap for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 13450,
-      "sha256": "668220626950f8e55410b8f829dba6306d0b2feedafdf0198800ad9814992d84"
+      "bytes": 14133,
+      "sha256": "5d73996f9bf4c3539beb5d428b21423a583d439fcf439faf8ab17f7364d53d88"
     },
     {
       "id": "foundation_model_plan",
@@ -112,8 +112,8 @@
       "surface": "repo_hf",
       "shows": "Defines the post-data-gate backbone choices: Qwen3-Omni first, Cosmos 3 for world modeling, and VLA/policy models after action-target conversion.",
       "exists": true,
-      "bytes": 9550,
-      "sha256": "5adb6a3be92ccde189176cc618eb0814ec63f094191a61f7695d3f55fae36b3d"
+      "bytes": 10988,
+      "sha256": "a1eea5ddc88cb7878851a115def7ebfbefb41ed580f01bf8382a6660bea07edd"
     },
     {
       "id": "foundation_model_plan_json",
@@ -123,8 +123,30 @@
       "surface": "website_hf",
       "shows": "Machine-readable foundation-model selection matrix with source links, entry conditions, and evaluation additions.",
       "exists": true,
-      "bytes": 13457,
-      "sha256": "7d17f3c6a2cd9954c9632d7063d3aab7d5753c709215239257f065274ab394f3"
+      "bytes": 13926,
+      "sha256": "ccc80ed46eb961eb315f3060bdffa4676a05e73ef47ba25b1e5a675e25ce8754"
+    },
+    {
+      "id": "three_foundation_pipelines",
+      "title": "Three foundation pipeline tracks",
+      "path": "THREE_FOUNDATION_PIPELINES.md",
+      "kind": "project_path",
+      "surface": "repo_hf",
+      "shows": "Frames spatial intelligence, human-video world modeling, and vision-language-action as three pipeline tracks with explicit inputs, outputs, maturity, and next evidence gates.",
+      "exists": true,
+      "bytes": 6538,
+      "sha256": "046c2873821962ab6d06fd21f8a2310358f9038b5bf543215fb962d850b92bab"
+    },
+    {
+      "id": "three_foundation_pipelines_json",
+      "title": "Three foundation pipeline tracks JSON",
+      "path": "docs/data/three_foundation_pipelines.json",
+      "kind": "project_path",
+      "surface": "website_hf",
+      "shows": "Machine-readable pipeline-track contract for the website and Hugging Face mirrors.",
+      "exists": true,
+      "bytes": 5042,
+      "sha256": "3118aede3a63be4262839c9056278663e829e3a0a1deeb8a81c1f8ac977c1875"
     },
     {
       "id": "omni_model_extension_contract",
@@ -465,7 +487,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "620e3238bd99516a89261c649b8d825ba335c851b4ff3f25f50a217ff9f2c446"
+      "sha256": "0c3ac97fdf21dfa3799a1aec3a007c436145f8ff6d70dc29f1eb002d1757c053"
     },
     {
       "id": "source_alignment_validator",
@@ -1074,7 +1096,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 149715,
+      "bytes": 149465,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1085,8 +1107,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 56709,
-      "sha256": "15d7f587cfdef1a4169f1a376f2c9f189422bf00de38dc94decacad6f331b3a6"
+      "bytes": 56578,
+      "sha256": "d79de14ace608fbefc4cd0dac4f0851161882ef92749df78a3bd00c32b856fb0"
     },
     {
       "id": "reproducibility_contract",
@@ -1118,8 +1140,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 57239,
-      "sha256": "875106463eae01dc43f751fc5de15eb6f7ece55dc67bee7156b66fd85daebb5d"
+      "bytes": 58004,
+      "sha256": "ffbbe7e9ab74fbb8b12dbd27968c31fd0e608cad2272329e1505039f57452b99"
     },
     {
       "id": "publication_audit",
@@ -1130,7 +1152,7 @@
       "volatile": true,
       "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and credential text.",
       "exists": true,
-      "bytes": 13515,
+      "bytes": 8299,
       "hash_policy": "existence_and_size_only"
     },
     {

@@ -42,6 +42,18 @@ sample is already enough for task design, feature contracts, walkthroughs, and
 baseline comparisons. The first multi-episode pilot is enough to verify the
 end-to-end training loop, but its weak metrics are not final model quality.
 
+The three headline directions should therefore be organized as pipeline tracks:
+spatial intelligence models, human-video world models, and
+vision-language-action models. All three are legitimate directions for
+Xperience-10M, but each needs a different artifact gate. Spatial intelligence
+needs depth/pose-backed scene-memory targets and held-out spatial metrics;
+world modeling needs future-state or latent/visual future metrics beyond
+structured task probes; VLA needs traceable action-token conversion,
+normalization, and policy-style held-out metrics. The detailed track contract is
+[`THREE_FOUNDATION_PIPELINES.md`](THREE_FOUNDATION_PIPELINES.md), with the
+website data copy in
+[`docs/data/three_foundation_pipelines.json`](docs/data/three_foundation_pipelines.json).
+
 ## Additional Concrete Development Directions
 
 The project can also grow through smaller, high-leverage directions that do not

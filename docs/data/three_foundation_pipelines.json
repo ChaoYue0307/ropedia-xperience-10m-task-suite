@@ -1,0 +1,127 @@
+{
+  "title": "Three Foundation Pipeline Tracks",
+  "status": "pipeline_plan",
+  "source_document": "THREE_FOUNDATION_PIPELINES.md",
+  "claim_boundary": "These are supported pipeline directions, not three completed model-quality claims.",
+  "shared_principles": [
+    "Use episode-level train/validation/test separation.",
+    "Build manifest-first exporters before training.",
+    "Keep target-side future labels and captions out of inputs unless the task explicitly queries them.",
+    "Report task-specific metrics and saved predictions before updating public cards.",
+    "Exclude raw private data and heavyweight base model weights from public packages."
+  ],
+  "tracks": [
+    {
+      "id": "spatial_intelligence",
+      "title": "Spatial intelligence models",
+      "question": "Can the model recover and reason over space from video?",
+      "core_inputs": [
+        "multiview RGB",
+        "egocentric video",
+        "depth",
+        "camera pose",
+        "calibration",
+        "object cues",
+        "language questions"
+      ],
+      "intermediate_artifacts": [
+        "synchronized camera window manifest",
+        "pose and depth availability report",
+        "scene and object memory records",
+        "object permanence targets",
+        "spatial relation targets",
+        "spatial QA prompts"
+      ],
+      "outputs": [
+        "object count",
+        "object persistence",
+        "relative location",
+        "3D geometry consistency",
+        "multiview retrieval",
+        "camera-motion-aware scene memory",
+        "language answers grounded in the scene"
+      ],
+      "first_pipeline": "Build a spatial-memory exporter, start with metric depth and pose consistency tasks, then evaluate spatial QA, object permanence, counting, retrieval, and pose-aware consistency.",
+      "current_maturity": "Ready as a pipeline and evaluation contract.",
+      "next_gate": "Raw depth and pose artifacts plus held-out multi-episode spatial metrics.",
+      "avoid_claiming_now": [
+        "full neural rendering",
+        "full 3D reconstruction",
+        "general spatial intelligence without artifact-level evidence"
+      ]
+    },
+    {
+      "id": "human_video_world_models",
+      "title": "Human-video world models",
+      "question": "Can the model predict what happens next?",
+      "core_inputs": [
+        "observed video windows",
+        "audio",
+        "sensor windows",
+        "hand and body motion",
+        "object and contact state",
+        "action and subtask labels",
+        "future windows"
+      ],
+      "intermediate_artifacts": [
+        "observed and future window pairs",
+        "future label targets",
+        "action-conditioned target records",
+        "visual or latent reconstruction targets",
+        "temporal consistency metadata"
+      ],
+      "outputs": [
+        "next action",
+        "next subtask",
+        "future object set",
+        "future state embedding",
+        "camera-motion delta",
+        "contact transition",
+        "future-window quality metrics"
+      ],
+      "first_pipeline": "Keep Qwen-style structured future probes for task interpretability, keep Cosmos-style dynamics branches separate, and add latent or feature-reconstruction metrics before claiming world-model quality.",
+      "current_maturity": "Partially evidenced by current future-task probes and Cosmos-style branch artifacts.",
+      "next_gate": "Stronger future-state metrics, qualitative future examples, and held-out episode breakdowns.",
+      "avoid_claiming_now": [
+        "strong world model from structured future-task scores alone",
+        "visual future quality without visual or latent future metrics"
+      ]
+    },
+    {
+      "id": "vision_language_action",
+      "title": "Vision-language-action models",
+      "question": "Can the model turn what it sees and reads into action?",
+      "core_inputs": [
+        "egocentric video",
+        "language captions",
+        "hand and body motion",
+        "contacts",
+        "objects",
+        "procedure and subtask labels"
+      ],
+      "intermediate_artifacts": [
+        "action-token vocabulary",
+        "action-chunk windows",
+        "normalization stats",
+        "retargeting report",
+        "leakage audit",
+        "action-space model card"
+      ],
+      "outputs": [
+        "next action",
+        "action chunk",
+        "object-conditioned action",
+        "contact state",
+        "subtask transition",
+        "policy or VLA held-out metrics"
+      ],
+      "first_pipeline": "Define the action space, use existing 20-task next-action/contact/object-conditioned tasks first, then add hand-trajectory or policy-compatible action chunks after conversion is traceable.",
+      "current_maturity": "Feasible but gated by action-target conversion.",
+      "next_gate": "Traceable action tokens, normalization, retargeting metadata, and held-out policy metrics.",
+      "avoid_claiming_now": [
+        "robot policy quality",
+        "policy generalization before action-space evidence exists"
+      ]
+    }
+  ]
+}

@@ -3180,8 +3180,10 @@
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">roadmap document</a>
           <a href="data/research_roadmap.json">roadmap stages</a>
           <a href="data/foundation_model_plan.json">foundation model plan</a>
+          <a href="data/three_foundation_pipelines.json">three foundation pipelines</a>
           <a href="data/additional_development_directions.json">additional directions</a>
           <a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a>
+          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/THREE_FOUNDATION_PIPELINES.md">pipeline track note</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">native pretraining plan</a>
           <a href="data/research_roadmap_interactive.json">interactive map</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up status</a>
@@ -3194,10 +3196,13 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Additional development directions.</h2>
-          <p>Beyond the current task heads, Qwen3-Omni fine-tuning path, Cosmos/world-model branch, and future native pretraining goal, Xperience-10M can support several concrete research-development tracks.</p>
+          <p>Beyond the current task heads, Qwen3-Omni fine-tuning path, Cosmos/world-model branch, and future native pretraining goal, Xperience-10M can support three foundation pipeline tracks plus several concrete research-development tracks.</p>
         </div>
         <div class="artifact-grid">
-          <article class="artifact primary-artifact"><div><h3>Episode taxonomy and data engine</h3><p>Build an episode atlas, category tags, balance report, and split builder across activities, objects, scenes, sessions, people, and missing modalities.</p></div><a href="data/additional_development_directions.json">direction data</a></article>
+          <article class="artifact primary-artifact"><div><h3>Spatial intelligence models</h3><p>Use multiview RGB, depth, camera pose, calibration, object cues, and language to build scene/object memory targets for spatial QA, object permanence, counting, retrieval, and pose-aware consistency.</p></div><a href="data/three_foundation_pipelines.json">pipeline data</a></article>
+          <article class="artifact"><h3>Human-video world models</h3><p>Predict next action, next subtask, future object set, contact transition, camera-motion delta, or latent future state from observed interaction windows, with Cosmos-style metrics kept separate from JSON-task scores.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/THREE_FOUNDATION_PIPELINES.md">pipeline note</a></article>
+          <article class="artifact"><h3>Vision-language-action models</h3><p>Convert egocentric video, language captions, hand/body motion, contacts, and objects into traceable action chunks or policy-compatible targets before claiming VLA or policy quality.</p><a href="data/three_foundation_pipelines.json">track contract</a></article>
+          <article class="artifact"><h3>Episode taxonomy and data engine</h3><p>Build an episode atlas, category tags, balance report, and split builder across activities, objects, scenes, sessions, people, and missing modalities.</p><a href="data/additional_development_directions.json">direction data</a></article>
           <article class="artifact"><h3>Standardized benchmark protocol</h3><p>Version train/val/test manifests, task cards, leakage checks, metric scripts, and reference baselines so future model scores are comparable.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ADDITIONAL_DEVELOPMENT_DIRECTIONS.md">direction note</a></article>
           <article class="artifact"><h3>Multimodal representation learning</h3><p>Train contrastive and masked-prediction encoders over synchronized video, audio, depth, pose, mocap, IMU, and language windows.</p><a href="data/additional_development_directions.json">JSON plan</a></article>
           <article class="artifact"><h3>Skill and procedure graphs</h3><p>Mine action steps, transitions, preconditions, effects, and temporal graphs that connect egocentric perception to planning.</p><a href="data/research_directions.json">current task map</a></article>

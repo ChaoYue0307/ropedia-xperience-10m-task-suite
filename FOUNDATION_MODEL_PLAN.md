@@ -11,6 +11,22 @@ for structured JSON tasks, Cosmos3-Nano for future-window compatibility,
 Cosmos3-Super Reasoner as a base-weight JSON-task evaluation, and Cosmos3-Super
 Forward-Dynamics LoRA as the first fine-tuned Super adapter branch.
 
+## Three Pipeline Tracks
+
+The project can pursue the three presentation directions, but they should be
+treated as pipeline tracks with different maturity levels:
+
+| Track | Role | Current boundary | Next gate |
+| --- | --- | --- | --- |
+| Spatial intelligence models | Recover and reason over scene/object state from multiview RGB, depth, pose, calibration, object cues, and language. | Pipeline and evaluation contract, not a completed spatial model claim. | Raw depth/pose artifacts, spatial-memory exporter, and held-out spatial QA/object-memory metrics. |
+| Human-video world models | Predict future action, subtask, object set, contact transition, camera motion, or latent visual state from observed interaction windows. | Partially evidenced by future-task probes and Cosmos-style branch artifacts. | Stronger future-state metrics, qualitative future examples, and held-out episode breakdowns. |
+| Vision-language-action models | Convert egocentric video, language, hand/body motion, contacts, and objects into action chunks or policy-compatible targets. | Feasible but gated by action-space conversion. | Traceable action tokens, normalization, retargeting metadata, and policy/VLA held-out metrics. |
+
+The full pipeline-level contract is in
+[`THREE_FOUNDATION_PIPELINES.md`](THREE_FOUNDATION_PIPELINES.md), with a
+machine-readable copy at
+[`docs/data/three_foundation_pipelines.json`](docs/data/three_foundation_pipelines.json).
+
 ## Backbone Decision
 
 | Priority | Model family | Best role for this project | Why it fits Xperience-10M | Current decision |

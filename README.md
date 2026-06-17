@@ -872,6 +872,18 @@ additions. See
 [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md)
 for the long-term full-corpus pretraining plan.
 
+The three headline foundation directions are also separated as pipeline tracks
+so the public claims stay precise:
+
+| Pipeline track | First concrete pipeline | Claim boundary |
+| --- | --- | --- |
+| Spatial intelligence models | Build scene/object memory targets from multiview RGB, depth, pose, calibration, object cues, and language prompts. | Ready as a geometry/reasoning pipeline; strong claims need raw depth/pose artifacts and held-out spatial metrics. |
+| Human-video world models | Predict next action, next subtask, future object set, contact transition, and future state from observed interaction windows. | Partially evidenced by future-task probes and Cosmos-style branches; visual/latent future quality still needs stronger metrics. |
+| Vision-language-action models | Convert egocentric video, captions, hand/body motion, contacts, and objects into action chunks or policy-compatible targets. | Feasible, but gated by action-token conversion, normalization, retargeting evidence, and held-out policy metrics. |
+
+See [`THREE_FOUNDATION_PIPELINES.md`](THREE_FOUNDATION_PIPELINES.md) and
+[`docs/data/three_foundation_pipelines.json`](docs/data/three_foundation_pipelines.json).
+
 Backbone-specific contracts now live in [`configs/omni_backbones`](configs/omni_backbones).
 The extension contract is documented in
 [`OMNI_MODEL_EXTENSION_CONTRACT.md`](OMNI_MODEL_EXTENSION_CONTRACT.md), and the

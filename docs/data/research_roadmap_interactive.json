@@ -2222,7 +2222,7 @@
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-13T17:41:13+00:00",
+  "generated_at_utc": "2026-06-17T13:02:21+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -2493,6 +2493,7 @@
     "docs/data/task_walkthroughs.json",
     "docs/data/research_roadmap.json",
     "docs/data/foundation_model_plan.json",
+    "docs/data/three_foundation_pipelines.json",
     "docs/data/additional_development_directions.json",
     "docs/data/summary_metrics.json",
     "docs/data/research_direction_extensions.json",
@@ -3243,5 +3244,125 @@
       "why": "Detects temporal desynchronization, a key data-quality gate for multimodal reconstruction and world models."
     }
   ],
+  "three_foundation_pipelines": {
+    "claim_boundary": "These are supported pipeline directions, not three completed model-quality claims.",
+    "source_document": "THREE_FOUNDATION_PIPELINES.md",
+    "status": "pipeline_plan",
+    "title": "Three Foundation Pipeline Tracks",
+    "tracks": [
+      {
+        "avoid_claiming_now": [
+          "full neural rendering",
+          "full 3D reconstruction",
+          "general spatial intelligence without artifact-level evidence"
+        ],
+        "core_inputs": [
+          "multiview RGB",
+          "egocentric video",
+          "depth",
+          "camera pose",
+          "calibration",
+          "object cues",
+          "language questions"
+        ],
+        "current_maturity": "Ready as a pipeline and evaluation contract.",
+        "first_pipeline": "Build a spatial-memory exporter, start with metric depth and pose consistency tasks, then evaluate spatial QA, object permanence, counting, retrieval, and pose-aware consistency.",
+        "id": "spatial_intelligence",
+        "intermediate_artifacts": [
+          "synchronized camera window manifest",
+          "pose and depth availability report",
+          "scene and object memory records",
+          "object permanence targets",
+          "spatial relation targets",
+          "spatial QA prompts"
+        ],
+        "next_gate": "Raw depth and pose artifacts plus held-out multi-episode spatial metrics.",
+        "outputs": [
+          "object count",
+          "object persistence",
+          "relative location",
+          "3D geometry consistency",
+          "multiview retrieval",
+          "camera-motion-aware scene memory",
+          "language answers grounded in the scene"
+        ],
+        "question": "Can the model recover and reason over space from video?",
+        "title": "Spatial intelligence models"
+      },
+      {
+        "avoid_claiming_now": [
+          "strong world model from structured future-task scores alone",
+          "visual future quality without visual or latent future metrics"
+        ],
+        "core_inputs": [
+          "observed video windows",
+          "audio",
+          "sensor windows",
+          "hand and body motion",
+          "object and contact state",
+          "action and subtask labels",
+          "future windows"
+        ],
+        "current_maturity": "Partially evidenced by current future-task probes and Cosmos-style branch artifacts.",
+        "first_pipeline": "Keep Qwen-style structured future probes for task interpretability, keep Cosmos-style dynamics branches separate, and add latent or feature-reconstruction metrics before claiming world-model quality.",
+        "id": "human_video_world_models",
+        "intermediate_artifacts": [
+          "observed and future window pairs",
+          "future label targets",
+          "action-conditioned target records",
+          "visual or latent reconstruction targets",
+          "temporal consistency metadata"
+        ],
+        "next_gate": "Stronger future-state metrics, qualitative future examples, and held-out episode breakdowns.",
+        "outputs": [
+          "next action",
+          "next subtask",
+          "future object set",
+          "future state embedding",
+          "camera-motion delta",
+          "contact transition",
+          "future-window quality metrics"
+        ],
+        "question": "Can the model predict what happens next?",
+        "title": "Human-video world models"
+      },
+      {
+        "avoid_claiming_now": [
+          "robot policy quality",
+          "policy generalization before action-space evidence exists"
+        ],
+        "core_inputs": [
+          "egocentric video",
+          "language captions",
+          "hand and body motion",
+          "contacts",
+          "objects",
+          "procedure and subtask labels"
+        ],
+        "current_maturity": "Feasible but gated by action-target conversion.",
+        "first_pipeline": "Define the action space, use existing 20-task next-action/contact/object-conditioned tasks first, then add hand-trajectory or policy-compatible action chunks after conversion is traceable.",
+        "id": "vision_language_action",
+        "intermediate_artifacts": [
+          "action-token vocabulary",
+          "action-chunk windows",
+          "normalization stats",
+          "retargeting report",
+          "leakage audit",
+          "action-space model card"
+        ],
+        "next_gate": "Traceable action tokens, normalization, retargeting metadata, and held-out policy metrics.",
+        "outputs": [
+          "next action",
+          "action chunk",
+          "object-conditioned action",
+          "contact state",
+          "subtask transition",
+          "policy or VLA held-out metrics"
+        ],
+        "question": "Can the model turn what it sees and reads into action?",
+        "title": "Vision-language-action models"
+      }
+    ]
+  },
   "title": "Interactive Research Roadmap"
 }
