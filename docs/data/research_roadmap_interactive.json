@@ -2222,7 +2222,7 @@
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-17T13:02:21+00:00",
+  "generated_at_utc": "2026-06-17T16:20:57+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -3266,8 +3266,48 @@
           "language questions"
         ],
         "current_maturity": "Ready as a pipeline and evaluation contract.",
+        "diagram_flow": [
+          {
+            "items": [
+              "multiview RGB plus egocentric video",
+              "metric depth and confidence",
+              "camera pose, calibration, SLAM",
+              "object, contact, and language cues"
+            ],
+            "stage": "inputs"
+          },
+          {
+            "items": [
+              "spatial QA and object count",
+              "object permanence across windows",
+              "relative location and retrieval",
+              "pose-aware 3D consistency"
+            ],
+            "stage": "tasks_targets"
+          },
+          {
+            "items": [
+              "export scene/object memory records",
+              "train spatial-memory encoder",
+              "add geometry-aware QA and retrieval heads",
+              "keep episode-level split discipline"
+            ],
+            "stage": "train_models"
+          },
+          {
+            "items": [
+              "held-out episode spatial metrics",
+              "count and relation accuracy",
+              "retrieval rank and consistency",
+              "saved predictions before public claim"
+            ],
+            "stage": "evaluate_gates"
+          }
+        ],
+        "diagram_image": "docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
         "first_pipeline": "Build a spatial-memory exporter, start with metric depth and pose consistency tasks, then evaluate spatial QA, object permanence, counting, retrieval, and pose-aware consistency.",
         "id": "spatial_intelligence",
+        "image_alt": "Task-training diagram for the spatial intelligence pipeline: inputs, spatial task targets, model training route, and evaluation gates.",
         "intermediate_artifacts": [
           "synchronized camera window manifest",
           "pose and depth availability report",
@@ -3287,7 +3327,8 @@
           "language answers grounded in the scene"
         ],
         "question": "Can the model recover and reason over space from video?",
-        "title": "Spatial intelligence models"
+        "title": "Spatial intelligence models",
+        "website_image": "assets/foundation-pipelines/spatial-intelligence-pipeline.png"
       },
       {
         "avoid_claiming_now": [
@@ -3304,8 +3345,48 @@
           "future windows"
         ],
         "current_maturity": "Partially evidenced by current future-task probes and Cosmos-style branch artifacts.",
+        "diagram_flow": [
+          {
+            "items": [
+              "observed video/audio/sensor window",
+              "hand/body motion and camera pose",
+              "object/contact state",
+              "action and subtask labels"
+            ],
+            "stage": "inputs"
+          },
+          {
+            "items": [
+              "next action and next subtask",
+              "future object set",
+              "contact transition",
+              "camera-motion delta or latent future"
+            ],
+            "stage": "tasks_targets"
+          },
+          {
+            "items": [
+              "Qwen structured future probes",
+              "Cosmos/dynamics branch separately",
+              "latent rollout or reconstruction loss",
+              "no target-side future leakage"
+            ],
+            "stage": "train_models"
+          },
+          {
+            "items": [
+              "held-out future-task metrics",
+              "contact and object-set F1",
+              "rollout or latent consistency",
+              "per-episode breakdown and examples"
+            ],
+            "stage": "evaluate_gates"
+          }
+        ],
+        "diagram_image": "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
         "first_pipeline": "Keep Qwen-style structured future probes for task interpretability, keep Cosmos-style dynamics branches separate, and add latent or feature-reconstruction metrics before claiming world-model quality.",
         "id": "human_video_world_models",
+        "image_alt": "Task-training diagram for the human-video world model pipeline: observed-window inputs, future targets, model training route, and held-out evaluation gates.",
         "intermediate_artifacts": [
           "observed and future window pairs",
           "future label targets",
@@ -3324,7 +3405,8 @@
           "future-window quality metrics"
         ],
         "question": "Can the model predict what happens next?",
-        "title": "Human-video world models"
+        "title": "Human-video world models",
+        "website_image": "assets/foundation-pipelines/human-video-world-model-pipeline.png"
       },
       {
         "avoid_claiming_now": [
@@ -3340,8 +3422,48 @@
           "procedure and subtask labels"
         ],
         "current_maturity": "Feasible but gated by action-target conversion.",
+        "diagram_flow": [
+          {
+            "items": [
+              "egocentric video and captions",
+              "objects, contacts, and procedures",
+              "hand/body motion windows",
+              "subtask labels and language context"
+            ],
+            "stage": "inputs"
+          },
+          {
+            "items": [
+              "action-token vocabulary",
+              "next action and action chunks",
+              "object-conditioned actions",
+              "contact state and subtask transition"
+            ],
+            "stage": "tasks_targets"
+          },
+          {
+            "items": [
+              "build action-space converter",
+              "normalize and audit action chunks",
+              "train VLA/policy-compatible head",
+              "track leakage and retargeting reports"
+            ],
+            "stage": "train_models"
+          },
+          {
+            "items": [
+              "held-out action metrics",
+              "chunk and next-action accuracy",
+              "object/contact-conditioned scores",
+              "policy card before robot-policy claim"
+            ],
+            "stage": "evaluate_gates"
+          }
+        ],
+        "diagram_image": "docs/assets/foundation-pipelines/vision-language-action-pipeline.png",
         "first_pipeline": "Define the action space, use existing 20-task next-action/contact/object-conditioned tasks first, then add hand-trajectory or policy-compatible action chunks after conversion is traceable.",
         "id": "vision_language_action",
+        "image_alt": "Task-training diagram for the vision-language-action pipeline: observation and language inputs, action targets, VLA training route, and action evaluation gates.",
         "intermediate_artifacts": [
           "action-token vocabulary",
           "action-chunk windows",
@@ -3360,7 +3482,8 @@
           "policy or VLA held-out metrics"
         ],
         "question": "Can the model turn what it sees and reads into action?",
-        "title": "Vision-language-action models"
+        "title": "Vision-language-action models",
+        "website_image": "assets/foundation-pipelines/vision-language-action-pipeline.png"
       }
     ]
   },

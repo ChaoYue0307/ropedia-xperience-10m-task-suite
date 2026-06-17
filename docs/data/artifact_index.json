@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-17T15:16:18+00:00",
+  "generated_at_utc": "2026-06-17T16:20:42+00:00",
   "status": "pass",
   "artifact_count": 204,
   "missing": [],
@@ -135,8 +135,8 @@
       "surface": "repo_hf",
       "shows": "Frames spatial intelligence, human-video world modeling, and vision-language-action as three pipeline tracks with explicit inputs, outputs, maturity, and next evidence gates.",
       "exists": true,
-      "bytes": 7437,
-      "sha256": "281a6349a7fd141460d7f911f0d80a841a38c99456363d1ffd6372cd94ca14b0"
+      "bytes": 7710,
+      "sha256": "3992da548fa25edbf1d9634c094322c70f30c4d21ce14825ba15783f7f78926d"
     },
     {
       "id": "three_foundation_pipelines_json",
@@ -146,41 +146,41 @@
       "surface": "website_hf",
       "shows": "Machine-readable pipeline-track contract for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 6518,
-      "sha256": "e337901e7ddd2f8845987d4c41d9362e5fc780d3cb0659494576b7a0da53fb49"
+      "bytes": 10084,
+      "sha256": "8d4dbc86adb4487a57226bd47492561034b60515a1e075e905e06d07d804421e"
     },
     {
-      "id": "spatial_intelligence_pipeline_placeholder",
-      "title": "Spatial intelligence pipeline placeholder",
+      "id": "spatial_intelligence_task_training_diagram",
+      "title": "Spatial intelligence task-training diagram",
       "path": "docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
       "kind": "visual_asset",
       "surface": "website_hf",
-      "shows": "ChatGPT image-generated placeholder visual for the spatial intelligence model training pipeline.",
+      "shows": "Inputs-to-tasks-to-training-to-evaluation diagram for the spatial intelligence model training pipeline.",
       "exists": true,
-      "bytes": 2337155,
-      "sha256": "ca98e2f5171497f6b97627ee8d0dee68f4aa929a2ba205e8b8e64e89f7f66f06"
+      "bytes": 252509,
+      "sha256": "61b51641b4d2af8f87f02683fd6d2a578e3fd1ceabda5667c00c968e13b40ee7"
     },
     {
-      "id": "human_video_world_model_pipeline_placeholder",
-      "title": "Human-video world model pipeline placeholder",
+      "id": "human_video_world_model_task_training_diagram",
+      "title": "Human-video world model task-training diagram",
       "path": "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
       "kind": "visual_asset",
       "surface": "website_hf",
-      "shows": "ChatGPT image-generated placeholder visual for the human-video world-model training pipeline.",
+      "shows": "Observed-window-to-future-targets-to-training-to-evaluation diagram for the human-video world-model training pipeline.",
       "exists": true,
-      "bytes": 2356312,
-      "sha256": "cee2d717a97b88d8f5bae3e58fe202791a4f3073e488cb666acb0214117b735b"
+      "bytes": 249668,
+      "sha256": "220d234b91176cdbd904a66a55deaf096805fc955094f529e7c5d8f35b03bab1"
     },
     {
-      "id": "vision_language_action_pipeline_placeholder",
-      "title": "Vision-language-action pipeline placeholder",
+      "id": "vision_language_action_task_training_diagram",
+      "title": "Vision-language-action task-training diagram",
       "path": "docs/assets/foundation-pipelines/vision-language-action-pipeline.png",
       "kind": "visual_asset",
       "surface": "website_hf",
-      "shows": "ChatGPT image-generated placeholder visual for the vision-language-action training pipeline.",
+      "shows": "Observation-and-language-to-action-targets-to-VLA-training-to-evaluation diagram for the vision-language-action training pipeline.",
       "exists": true,
-      "bytes": 2421011,
-      "sha256": "f8554f7df26ab79fef348740ce45ac3da032cb4085c490d62910ad1147dd1ecf"
+      "bytes": 255706,
+      "sha256": "2efa63a771a9f5abf119207022a6a64a2b6763e529327399dff901d44d9b52d9"
     },
     {
       "id": "omni_model_extension_contract",
@@ -521,7 +521,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "5d013c6820fb7f582b4b4b9a55f98de20168ea1947d4bea64e11d16dbd521428"
+      "sha256": "f245383fc291681fcc62d1abd12bc37cf6d9806dcfcd8a46e48d41705bc87227"
     },
     {
       "id": "source_alignment_validator",
@@ -938,8 +938,8 @@
       "surface": "repo_hf",
       "shows": "Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts.",
       "exists": true,
-      "bytes": 6217,
-      "sha256": "5ec54cfb09114042ada7aad54b3c8143b9b305bcd1f8ffd65d9f5116f3f19481"
+      "bytes": 7116,
+      "sha256": "bfe0da08ee24878170206042daba4672bdff877f1d12577700a9c5fbe4adce25"
     },
     {
       "id": "figure_index_json",
@@ -949,8 +949,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 17287,
-      "sha256": "06a5854e14fb64e435d02e6fd5f476b37e9e3b981cf1d8b39fea3809f8ff5eaf"
+      "bytes": 19580,
+      "sha256": "7fd00f1d411f84c4816df435c025b2c3f419fd4c141c32faf8875dcf8caef679"
     },
     {
       "id": "figure_index_builder",
@@ -960,8 +960,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates visual-asset hashes, dimensions, and source-script provenance.",
       "exists": true,
-      "bytes": 16864,
-      "sha256": "df362654a5c65d7adedc924f2af93e1fbd248fa861f20aea1576473daaeb0b0d"
+      "bytes": 16943,
+      "sha256": "1622a59f86742c23d859cb05e7b7c36f3bfd598b111fe4ed7fd9c97442d52476"
     },
     {
       "id": "brand_assets_json",
@@ -1130,7 +1130,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 149465,
+      "bytes": 161420,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1141,8 +1141,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 60253,
-      "sha256": "ad4b408e9e19339285e37e0c47bffac6a450ddd1a439bf11ab80a90cec27b1fb"
+      "bytes": 60259,
+      "sha256": "f2f804eea4861a9a6f059fc3f5e7539b95ac28fd986f416020bbc345524eea90"
     },
     {
       "id": "reproducibility_contract",
@@ -1174,8 +1174,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 59218,
-      "sha256": "38985fa362861b3975240ec62cc186378c84a8d0e11727651dc3cd2a87bfdd11"
+      "bytes": 59294,
+      "sha256": "0980c49473eec3a58fc6dac65a5a94db7a60af79251c0303b9aeba641017b614"
     },
     {
       "id": "publication_audit",
@@ -1186,7 +1186,7 @@
       "volatile": true,
       "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and credential text.",
       "exists": true,
-      "bytes": 8299,
+      "bytes": 8544,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1210,7 +1210,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 902747,
+      "bytes": 910015,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1222,7 +1222,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 19052,
+      "bytes": 19663,
       "hash_policy": "existence_and_size_only"
     },
     {

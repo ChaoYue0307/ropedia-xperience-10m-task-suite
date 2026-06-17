@@ -356,6 +356,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "scripts/build_public_surface_qa.py",
         "scripts/build_rendered_site_check.py",
         "scripts/build_interactive_research_roadmap.py",
+        "scripts/render_foundation_pipeline_diagrams.py",
         "scripts/verify_live_publication.py",
         "scripts/validate_mirror_parity.py",
         "scripts/validate_scope_claims.py",

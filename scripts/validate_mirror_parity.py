@@ -140,6 +140,7 @@ SCRIPT_FILES = [
     "build_public_surface_qa.py",
     "build_rendered_site_check.py",
     "build_interactive_research_roadmap.py",
+    "render_foundation_pipeline_diagrams.py",
     "build_single_episode_explorer.py",
     "build_task_method_20_gap_audit.py",
     "build_research_takeaways.py",

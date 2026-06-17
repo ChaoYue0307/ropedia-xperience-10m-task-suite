@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Figure Index",
   "status": "pass",
-  "generated_at_utc": "2026-06-17T15:16:21+00:00",
+  "generated_at_utc": "2026-06-17T16:20:24+00:00",
   "scope": "Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience-10M videos, annotations, RRD files, and Qwen weights are excluded.",
   "figure_count": 29,
   "figures": [
@@ -108,53 +108,53 @@
       "source_script_exists": true
     },
     {
-      "id": "spatial_intelligence_pipeline_placeholder",
-      "title": "Spatial intelligence pipeline placeholder",
+      "id": "spatial_intelligence_task_training_diagram",
+      "title": "Spatial intelligence task-training diagram",
       "path": "docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
-      "role": "ChatGPT image-generated placeholder for the spatial intelligence training pipeline track.",
-      "source_script": "docs/assets/foundation-pipelines/prompts.md",
+      "role": "Readable inputs-to-tasks-to-training-to-evaluation diagram for the spatial intelligence pipeline track.",
+      "source_script": "scripts/render_foundation_pipeline_diagrams.py",
       "surface": "README, website, HF Space, artifact dataset, model card",
       "exists": true,
-      "bytes": 2337155,
-      "sha256": "ca98e2f5171497f6b97627ee8d0dee68f4aa929a2ba205e8b8e64e89f7f66f06",
+      "bytes": 252509,
+      "sha256": "61b51641b4d2af8f87f02683fd6d2a578e3fd1ceabda5667c00c968e13b40ee7",
       "dimensions": {
         "format": "PNG",
-        "width": 1672,
-        "height": 941
+        "width": 1800,
+        "height": 1012
       },
       "source_script_exists": true
     },
     {
-      "id": "human_video_world_model_pipeline_placeholder",
-      "title": "Human-video world model pipeline placeholder",
+      "id": "human_video_world_model_task_training_diagram",
+      "title": "Human-video world model task-training diagram",
       "path": "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
-      "role": "ChatGPT image-generated placeholder for the human-video world-model training pipeline track.",
-      "source_script": "docs/assets/foundation-pipelines/prompts.md",
+      "role": "Readable inputs-to-future-targets-to-training-to-evaluation diagram for the human-video world-model pipeline track.",
+      "source_script": "scripts/render_foundation_pipeline_diagrams.py",
       "surface": "README, website, HF Space, artifact dataset, model card",
       "exists": true,
-      "bytes": 2356312,
-      "sha256": "cee2d717a97b88d8f5bae3e58fe202791a4f3073e488cb666acb0214117b735b",
+      "bytes": 249668,
+      "sha256": "220d234b91176cdbd904a66a55deaf096805fc955094f529e7c5d8f35b03bab1",
       "dimensions": {
         "format": "PNG",
-        "width": 1672,
-        "height": 941
+        "width": 1800,
+        "height": 1012
       },
       "source_script_exists": true
     },
     {
-      "id": "vision_language_action_pipeline_placeholder",
-      "title": "Vision-language-action pipeline placeholder",
+      "id": "vision_language_action_task_training_diagram",
+      "title": "Vision-language-action task-training diagram",
       "path": "docs/assets/foundation-pipelines/vision-language-action-pipeline.png",
-      "role": "ChatGPT image-generated placeholder for the VLA/action-policy training pipeline track.",
-      "source_script": "docs/assets/foundation-pipelines/prompts.md",
+      "role": "Readable inputs-to-action-targets-to-VLA-training-to-evaluation diagram for the VLA/action-policy pipeline track.",
+      "source_script": "scripts/render_foundation_pipeline_diagrams.py",
       "surface": "README, website, HF Space, artifact dataset, model card",
       "exists": true,
-      "bytes": 2421011,
-      "sha256": "f8554f7df26ab79fef348740ce45ac3da032cb4085c490d62910ad1147dd1ecf",
+      "bytes": 255706,
+      "sha256": "2efa63a771a9f5abf119207022a6a64a2b6763e529327399dff901d44d9b52d9",
       "dimensions": {
         "format": "PNG",
-        "width": 1672,
-        "height": 941
+        "width": 1800,
+        "height": 1012
       },
       "source_script_exists": true
     },

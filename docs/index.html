@@ -620,12 +620,14 @@
     }
     .foundation-pipeline-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: 18px;
       margin: 0 0 28px;
     }
     .foundation-pipeline-card {
       min-width: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.55fr);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       overflow: hidden;
@@ -637,9 +639,11 @@
     .foundation-pipeline-card img {
       display: block;
       width: 100%;
+      height: 100%;
+      min-height: 320px;
       aspect-ratio: 16 / 9;
-      object-fit: cover;
-      border-bottom: 1px solid var(--line);
+      object-fit: contain;
+      border-right: 1px solid var(--line);
       background: #020502;
     }
     .foundation-pipeline-body {
@@ -2702,7 +2706,12 @@
       .section-tabs { padding-top: 10px; }
       .figure-brief,
       .split-radar-grid,
-      .foundation-pipeline-grid { grid-template-columns: 1fr; }
+      .foundation-pipeline-card { display: block; }
+      .foundation-pipeline-card img {
+        min-height: 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .brief-panel-head { grid-template-columns: 1fr; align-items: start; }
       .task-player { grid-template-columns: 1fr; }
@@ -3263,13 +3272,13 @@
           <h2>Additional development directions.</h2>
           <p>Beyond the current task heads, Qwen3-Omni fine-tuning path, Cosmos/world-model branch, and future native pretraining goal, Xperience-10M can support three foundation pipeline tracks plus several concrete research-development tracks.</p>
         </div>
-        <div class="foundation-pipeline-grid" aria-label="Three foundation model training pipeline placeholders">
+        <div class="foundation-pipeline-grid" aria-label="Three foundation model task-training diagrams">
           <article class="foundation-pipeline-card">
-            <img src="assets/foundation-pipelines/spatial-intelligence-pipeline.png?v=foundation-pipelines-v1" alt="Placeholder visual for the spatial intelligence pipeline: multiview video, depth, and pose inputs feeding scene memory and spatial reasoning outputs.">
+            <img src="assets/foundation-pipelines/spatial-intelligence-pipeline.png?v=foundation-pipelines-v2" alt="Task-training diagram for the spatial intelligence pipeline: inputs, spatial task targets, model training route, and evaluation gates.">
             <div class="foundation-pipeline-body">
-              <span>Pipeline placeholder</span>
+              <span>Task-training diagram</span>
               <h3>Spatial intelligence models</h3>
-              <p>Build scene/object memory targets from multiview RGB, depth, pose, calibration, object cues, and language prompts, then evaluate spatial QA, object permanence, counting, retrieval, and pose-aware consistency.</p>
+              <p>Train spatial-memory models from multiview RGB, egocentric video, depth, pose, calibration, object/contact cues, and language prompts; evaluate spatial QA, object permanence, counting, retrieval, and pose-aware consistency.</p>
               <div class="foundation-pipeline-links">
                 <a href="data/three_foundation_pipelines.json">Track JSON</a>
                 <a href="assets/foundation-pipelines/spatial-intelligence-pipeline.png">Open image</a>
@@ -3277,11 +3286,11 @@
             </div>
           </article>
           <article class="foundation-pipeline-card">
-            <img src="assets/foundation-pipelines/human-video-world-model-pipeline.png?v=foundation-pipelines-v1" alt="Placeholder visual for the human-video world model pipeline: observed interaction windows feeding temporal dynamics and future-state outputs.">
+            <img src="assets/foundation-pipelines/human-video-world-model-pipeline.png?v=foundation-pipelines-v2" alt="Task-training diagram for the human-video world model pipeline: observed-window inputs, future targets, model training route, and held-out evaluation gates.">
             <div class="foundation-pipeline-body">
-              <span>Pipeline placeholder</span>
+              <span>Task-training diagram</span>
               <h3>Human-video world models</h3>
-              <p>Predict next action, next subtask, future object set, contact transitions, camera-motion deltas, and latent future state from observed interaction windows, with Cosmos-style dynamics metrics kept separate.</p>
+              <p>Train future-prediction models from observed interaction windows to score next action, next subtask, future object set, contact transition, camera-motion delta, and latent future state, with Qwen-style probes and Cosmos-style dynamics kept separate.</p>
               <div class="foundation-pipeline-links">
                 <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/THREE_FOUNDATION_PIPELINES.md">Track note</a>
                 <a href="assets/foundation-pipelines/human-video-world-model-pipeline.png">Open image</a>
@@ -3289,11 +3298,11 @@
             </div>
           </article>
           <article class="foundation-pipeline-card">
-            <img src="assets/foundation-pipelines/vision-language-action-pipeline.png?v=foundation-pipelines-v1" alt="Placeholder visual for the vision-language-action pipeline: video, language, motion, and contact cues feeding action-chunk outputs.">
+            <img src="assets/foundation-pipelines/vision-language-action-pipeline.png?v=foundation-pipelines-v2" alt="Task-training diagram for the vision-language-action pipeline: observation and language inputs, action targets, VLA training route, and action evaluation gates.">
             <div class="foundation-pipeline-body">
-              <span>Pipeline placeholder</span>
+              <span>Task-training diagram</span>
               <h3>Vision-language-action models</h3>
-              <p>Convert egocentric video, captions, hand/body motion, contacts, and objects into traceable action chunks or policy-compatible targets before claiming VLA or robot policy quality.</p>
+              <p>Train VLA or policy-compatible heads only after converting egocentric video, captions, hand/body motion, contacts, objects, and procedures into traceable action tokens, chunks, and object-conditioned action targets.</p>
               <div class="foundation-pipeline-links">
                 <a href="data/three_foundation_pipelines.json">Track contract</a>
                 <a href="assets/foundation-pipelines/vision-language-action-pipeline.png">Open image</a>
