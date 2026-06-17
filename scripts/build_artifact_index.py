@@ -747,6 +747,22 @@ ARTIFACTS = [
         "shows": "Keeps the repo, website, and Hugging Face cards aligned as one cohesive research project surface.",
     },
     {
+        "id": "public_reader_map",
+        "title": "Public reader map",
+        "path": "PUBLIC_READER_MAP.md",
+        "kind": "project_path",
+        "surface": "repo_hf",
+        "shows": "Provides the first-pass navigation layer for GitHub, GitHub Pages, Hugging Face mirrors, model-branch repos, evidence layers, and claim boundaries.",
+    },
+    {
+        "id": "public_reader_map_json",
+        "title": "Public reader map JSON",
+        "path": "docs/data/public_reader_map.json",
+        "kind": "project_path",
+        "surface": "website_hf",
+        "shows": "Machine-readable public reader map used by the website and Hugging Face mirrors to keep entry points and surface responsibilities explicit.",
+    },
+    {
         "id": "public_surface_qa_json",
         "title": "Public project surface JSON",
         "path": "docs/data/public_surface_qa.json",

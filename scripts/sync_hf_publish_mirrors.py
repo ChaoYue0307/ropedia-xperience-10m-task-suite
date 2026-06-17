@@ -55,6 +55,19 @@ the one-episode baselines and selected 128-episode methods are published as
 `docs/assets/charts/single_episode_task_model_radar.svg` and
 `docs/assets/charts/episode128_task_model_radar.svg`.
 """
+READER_MAP_MARKER = "docs/data/public_reader_map.json"
+READER_MAP_ARTIFACT_ROW = (
+    "| Choose the right public surface | `PUBLIC_READER_MAP.md`, "
+    "`docs/data/public_reader_map.json` |"
+)
+READER_MAP_CARD_BLOCK = """
+## Public Surface Map
+
+Use `PUBLIC_READER_MAP.md` and `docs/data/public_reader_map.json` to choose
+between the GitHub repo, GitHub Pages dashboard, HF Space, artifact dataset,
+baseline model repo, Qwen3/Cosmos model repos, and release-health checks without
+losing the full evidence trail.
+"""
 QWEN_COMPARISON_MARKER = "docs/data/qwen3_v5_v6_comparison.json"
 QWEN_COMPARISON_ROW = (
     "| Compare Qwen3 v5/v6 diagnostic branches | "
@@ -204,6 +217,32 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
         updated.append(relative_path)
         if not dry_run:
             path.write_text(text, encoding="utf-8")
+    return updated
+
+
+def ensure_reader_map_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
+    updated = []
+    artifacts_readme = hf_root / "artifacts/README.md"
+    if not artifacts_readme.exists():
+        return updated
+    text = artifacts_readme.read_text(encoding="utf-8")
+    original = text
+    if READER_MAP_ARTIFACT_ROW not in text:
+        table_anchor = "| Reader goal | Artifact |\n| --- | --- |\n"
+        if table_anchor in text:
+            text = text.replace(table_anchor, table_anchor + READER_MAP_ARTIFACT_ROW + "\n", 1)
+        else:
+            text = text.rstrip() + "\n\n" + READER_MAP_ARTIFACT_ROW + "\n"
+    if "## Public Surface Map" not in text:
+        insert_before = "\n## Dataset Boundary"
+        if insert_before in text:
+            text = text.replace(insert_before, READER_MAP_CARD_BLOCK + insert_before, 1)
+        else:
+            text = text.rstrip() + "\n" + READER_MAP_CARD_BLOCK
+    if text != original:
+        updated.append("artifacts/README.md")
+        if not dry_run:
+            artifacts_readme.write_text(text, encoding="utf-8")
     return updated
 
 
@@ -415,6 +454,7 @@ def main() -> int:
         )
 
     card_updates = refresh_project_readme_cards(hf_root, dry_run=args.dry_run)
+    card_updates += ensure_reader_map_card_links(hf_root, dry_run=args.dry_run)
     card_updates += ensure_enhancement_card_links(hf_root, dry_run=args.dry_run)
     card_updates += ensure_tier2_card_links(hf_root, dry_run=args.dry_run)
     card_updates += ensure_current_qwen_card_links(hf_root, dry_run=args.dry_run)

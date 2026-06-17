@@ -18,6 +18,7 @@ This report covers the public repo, website, Hugging Face cards, and package con
 | Project naming | `pass` | Public copy should consistently present the project as Ropedia Xperience-10M, with the Qwen3-Omni scale-up status. |
 | Public links | `pass` | Public cards should link the repo, Space, artifacts, model baselines, upstream dataset, and Ropedia dataset page. |
 | Artifact links | `pass` | Readers should be able to find website reference, release package, mirror, and public presentation files from public copy. |
+| Reader map | `pass` | The public surfaces should expose the shared reader map in both Markdown and JSON form. |
 | Project language | `pass` | Project language is clear and avoids hardware details or irrelevant implementation details. |
 
 ## Scope

@@ -41,6 +41,7 @@ DISPLAY_LABELS = {
     "public_naming_consistent": "Project naming",
     "public_links_cover_repo_hf_dataset_and_ropedia": "Public links",
     "public_artifact_qa_files_are_exposed": "Artifact links",
+    "public_reader_map_is_exposed": "Reader map",
     "public_copy_uses_reader_facing_language": "Project language",
 }
 
@@ -166,6 +167,7 @@ def build_report() -> dict:
     ]
     artifact_markers = [
         "data/project_brief.json",
+        "data/public_reader_map.json",
         "data/website_integrity.json",
         "data/rendered_site_check.json",
         "data/task_surface_integrity.json",
@@ -251,6 +253,17 @@ def build_report() -> dict:
             all(marker in combined_public_text for marker in artifact_markers),
             "Readers should be able to find website reference, release package, mirror, and public presentation files from public copy.",
             marker_counts=marker_count(combined_public_text, artifact_markers),
+        ),
+        check(
+            "public_reader_map_is_exposed",
+            "PUBLIC_READER_MAP.md" in combined_public_text
+            and "docs/data/public_reader_map.json" in combined_public_text
+            and "data/public_reader_map.json" in website,
+            "The public surfaces should expose the shared reader map in both Markdown and JSON form.",
+            marker_counts=marker_count(
+                combined_public_text,
+                ["PUBLIC_READER_MAP.md", "docs/data/public_reader_map.json", "data/public_reader_map.json"],
+            ),
         ),
         check(
             "public_copy_uses_reader_facing_language",

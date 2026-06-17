@@ -10,6 +10,7 @@ Xperience-native pretraining goal.
 
 | Artifact | Why to open it first |
 | --- | --- |
+| [`PUBLIC_READER_MAP.md`](PUBLIC_READER_MAP.md) | Chooses the right public surface first: GitHub source, website, HF Space, artifact dataset, baseline model repo, model-branch repos, or release-health files. |
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current-state table: implemented, being improved, and outside current scope. |
 | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) | Shows the roadmap from public-sample task development to multi-episode data preparation, Qwen3-Omni LoRA, robustness runs, model branches, and the future native-pretraining goal. |
 | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md) | Explains which foundation backbones fit which Xperience-10M objective: Qwen3-Omni first, Cosmos 3 for world modeling, and VLA/policy models after action-target conversion. |

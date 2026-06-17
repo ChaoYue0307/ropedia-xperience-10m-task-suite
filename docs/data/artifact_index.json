@@ -1,11 +1,11 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-17T16:20:42+00:00",
+  "generated_at_utc": "2026-06-17T16:52:32+00:00",
   "status": "pass",
-  "artifact_count": 204,
+  "artifact_count": 206,
   "missing": [],
   "by_kind": {
-    "project_path": 16,
+    "project_path": 18,
     "visual_asset": 3,
     "scaleup_contract": 7,
     "scaleup_status": 44,
@@ -47,8 +47,8 @@
       "surface": "repo_hf",
       "shows": "Gives first-pass readers a concise project shape before the detailed artifact trail.",
       "exists": true,
-      "bytes": 4047,
-      "sha256": "b92d363caa8cc149a22647c6b8c340e86e850847fb1e1173a0245139850c87c7"
+      "bytes": 4343,
+      "sha256": "fa002a54a46f1789eab79c74b5203e03e9389ff83abea7dd491fd20a676f1da5"
     },
     {
       "id": "project_brief_json",
@@ -69,8 +69,8 @@
       "surface": "repo_hf",
       "shows": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 14218,
-      "sha256": "079868a224fd516aa4d90a545f21f6281f3b270ea98bd23d4a1fbdb08b722a20"
+      "bytes": 14335,
+      "sha256": "c5f9123cd11c710622d7e9819d1c744b6aca9dc259f7776b7e3012e8f8b91f4f"
     },
     {
       "id": "project_status_json",
@@ -476,8 +476,8 @@
       "surface": "repo_hf",
       "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 20096,
-      "sha256": "f4450170d655366ad7c1073a8468d61152ea27eea46f89b9e16e141e04bdfcf7"
+      "bytes": 20307,
+      "sha256": "276e7395caa1fb5f66f8de00df1fc2eb4d898109a74fbf709f2d7d9cc6a7aae4"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -521,7 +521,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "f245383fc291681fcc62d1abd12bc37cf6d9806dcfcd8a46e48d41705bc87227"
+      "sha256": "db0add24e50f7be74402bfbb356d967d3b4c2bb3ad003283500bbde3cfde2330"
     },
     {
       "id": "source_alignment_validator",
@@ -1041,6 +1041,28 @@
       "sha256": "516ca8e7b67460a6151785bfa186165f37e394ab56114bab05481c878265ffe5"
     },
     {
+      "id": "public_reader_map",
+      "title": "Public reader map",
+      "path": "PUBLIC_READER_MAP.md",
+      "kind": "project_path",
+      "surface": "repo_hf",
+      "shows": "Provides the first-pass navigation layer for GitHub, GitHub Pages, Hugging Face mirrors, model-branch repos, evidence layers, and claim boundaries.",
+      "exists": true,
+      "bytes": 4157,
+      "sha256": "27a3cf4d0b14aa5e283920fd6a1ad11b7238fb92abe3dc99c8b27f4024b8b473"
+    },
+    {
+      "id": "public_reader_map_json",
+      "title": "Public reader map JSON",
+      "path": "docs/data/public_reader_map.json",
+      "kind": "project_path",
+      "surface": "website_hf",
+      "shows": "Machine-readable public reader map used by the website and Hugging Face mirrors to keep entry points and surface responsibilities explicit.",
+      "exists": true,
+      "bytes": 4911,
+      "sha256": "14d07649683355c463e6555682659357e0cfd810ebb84601778421faad7596dd"
+    },
+    {
       "id": "public_surface_qa_json",
       "title": "Public project surface JSON",
       "path": "docs/data/public_surface_qa.json",
@@ -1060,8 +1082,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the public presentation report before release.",
       "exists": true,
-      "bytes": 12651,
-      "sha256": "c95df2c4f875d9d6752619d81e139aa44d0192f5efc0cbf9948723a370905b3f"
+      "bytes": 13307,
+      "sha256": "af93690f37c629dbbc0a5f5dd5db15c9bd12155f88caaa615e390ab2bb812aaf"
     },
     {
       "id": "task_surface_integrity",
@@ -1130,7 +1152,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 161420,
+      "bytes": 161409,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1141,8 +1163,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 60259,
-      "sha256": "f2f804eea4861a9a6f059fc3f5e7539b95ac28fd986f416020bbc345524eea90"
+      "bytes": 62022,
+      "sha256": "6d6890b07fee5174ddf9789836d6960049e997c5a0565780032449248cc2fa2f"
     },
     {
       "id": "reproducibility_contract",
@@ -1174,8 +1196,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 59294,
-      "sha256": "0980c49473eec3a58fc6dac65a5a94db7a60af79251c0303b9aeba641017b614"
+      "bytes": 60023,
+      "sha256": "0c79cefecf60f2433b0730e45942234908ab523ddc4ca3629abc2dd78f2e9fc2"
     },
     {
       "id": "publication_audit",
@@ -1186,7 +1208,7 @@
       "volatile": true,
       "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and credential text.",
       "exists": true,
-      "bytes": 8544,
+      "bytes": 8604,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1210,7 +1232,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 910015,
+      "bytes": 910892,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1222,7 +1244,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 19663,
+      "bytes": 19664,
       "hash_policy": "existence_and_size_only"
     },
     {

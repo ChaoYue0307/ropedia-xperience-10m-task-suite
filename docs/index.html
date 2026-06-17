@@ -1350,6 +1350,48 @@
       border-radius: 999px;
       background: var(--green);
     }
+    .reader-map-panel {
+      margin-bottom: 28px;
+    }
+    .reader-map-panel .brief-panel-head h3 {
+      font-size: clamp(26px, 3.8vw, 48px);
+    }
+    .reader-map-panel .brief-card {
+      min-height: 164px;
+    }
+    .reader-map-panel .brief-card small {
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .surface-map {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .surface-map a {
+      border: 1px solid var(--soft-line);
+      border-radius: 8px;
+      padding: 12px;
+      color: var(--ink);
+      text-decoration: none;
+      background: rgba(2, 5, 2, 0.46);
+    }
+    .surface-map a strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+    .surface-map a span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .surface-map a:hover { border-color: var(--green); }
     .brief-actions {
       display: flex;
       flex-wrap: wrap;
@@ -2712,7 +2754,7 @@
         border-right: 0;
         border-bottom: 1px solid var(--line);
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .brief-panel-head { grid-template-columns: 1fr; align-items: start; }
       .task-player { grid-template-columns: 1fr; }
       .task-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -2781,7 +2823,7 @@
         min-height: 52px;
       }
       main > section { scroll-margin-top: 112px; }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
       .hero::before {
         background:
           linear-gradient(180deg, rgba(2, 5, 2, 0.92) 0%, rgba(2, 5, 2, 0.76) 48%, rgba(2, 5, 2, 0.96) 100%),
@@ -2859,6 +2901,7 @@
         <a href="#models">Results</a>
         <a href="#directions">Directions</a>
         <a href="research_roadmap.html">Roadmap</a>
+        <a href="#reader-map">Reader Map</a>
         <a href="#walkthroughs">Demo</a>
         <a href="single_episode_explorer.html">Explorer</a>
         <a href="#artifacts">Files</a>
@@ -2877,11 +2920,12 @@
           A public research surface for physical 4D intelligence: sample-to-task
           contracts, multimodal baselines, verified multi-episode Qwen3-Omni
           results, and a clear path toward Xperience-native foundation models.
-          Public raw-data boundaries stay explicit while private staged-GPU
-          reproduction paths keep the latest model evidence recoverable.
+          Public raw-data boundaries stay explicit while staged derived
+          artifacts keep the latest model evidence recoverable.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="research_roadmap.html">Open roadmap</a>
+          <a class="button" href="#reader-map">Choose entry point</a>
           <a class="button" href="#suite">Inspect 20 tasks</a>
           <a class="button" href="single_episode_explorer.html">Open explorer</a>
           <a class="button" href="https://cy0307-ropedia-xperience-10m-task-suite.static.hf.space/">Open HF app</a>
@@ -2977,6 +3021,88 @@
         <div class="section-head">
           <h2>Project overview and contributions.</h2>
           <p>The page is organized like a compact research project: motivation and scope, dataset sample, task suite, method, baselines, research directions, interactive walkthroughs, and resources for continuing the work. The public sample is used as a real but bounded research system, not as a final full-dataset benchmark.</p>
+        </div>
+        <div class="brief-panel reader-map-panel" id="reader-map">
+          <div class="brief-panel-head">
+            <div>
+              <span>Public reader map</span>
+              <h3>Choose the right entry point without losing the evidence trail.</h3>
+            </div>
+            <p>The project keeps source code, visual explanation, derived artifacts, model outputs, and release checks on different public surfaces. This map shows what each surface is responsible for before you dive into the full file set.</p>
+          </div>
+          <div class="brief-grid" aria-label="Public reader paths">
+            <article class="brief-card">
+              <small>overview</small>
+              <strong>Understand the project quickly</strong>
+              <p>Start with the brief and status files, then use the dashboard for the visual story.</p>
+              <div class="reading-links">
+                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">brief</a>
+                <a href="data/project_status.json">status JSON</a>
+              </div>
+            </article>
+            <article class="brief-card">
+              <small>benchmark</small>
+              <strong>Inspect the 20-task suite</strong>
+              <p>Use the task contract, protocol, walkthroughs, and radar matrix to follow each scored axis.</p>
+              <div class="reading-links">
+                <a href="#suite">20 tasks</a>
+                <a href="data/task_suite_20.json">task JSON</a>
+                <a href="data/task_method_20_result_matrix.json">matrix</a>
+              </div>
+            </article>
+            <article class="brief-card">
+              <small>sample data</small>
+              <strong>Understand one data sample</strong>
+              <p>Open the sample explorer, raw-file manifest, and feature manifest before reading model scores.</p>
+              <div class="reading-links">
+                <a href="single_episode_explorer.html">explorer</a>
+                <a href="data/raw_sample_files.json">files</a>
+                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">features</a>
+              </div>
+            </article>
+            <article class="brief-card">
+              <small>results</small>
+              <strong>Compare methods cleanly</strong>
+              <p>Single-episode baselines, 128-episode aligned baselines, Qwen3, and Cosmos branches stay separated by evidence type.</p>
+              <div class="reading-links">
+                <a href="#takeaways">takeaways</a>
+                <a href="data/unified_task_model_radar.json">radar data</a>
+                <a href="data/omni_model_comparison.json">model comparison</a>
+              </div>
+            </article>
+            <article class="brief-card">
+              <small>directions</small>
+              <strong>Read the three foundation pipelines</strong>
+              <p>Spatial intelligence, human-video world modeling, and vision-language-action are documented as trainable directions with task mappings.</p>
+              <div class="reading-links">
+                <a href="#directions">directions</a>
+                <a href="data/three_foundation_pipelines.json">pipeline JSON</a>
+              </div>
+            </article>
+            <article class="brief-card">
+              <small>release health</small>
+              <strong>Verify public copies</strong>
+              <p>Publication checks validate source alignment, package contents, mirror parity, and live URL/hash status.</p>
+              <div class="reading-links">
+                <a href="data/public_reader_map.json">reader map JSON</a>
+                <a href="data/public_surface_qa.json">surface QA</a>
+                <a href="data/live_publication_status.json">live status</a>
+              </div>
+            </article>
+          </div>
+          <div class="surface-map" aria-label="Public surface responsibilities">
+            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite"><strong>GitHub repo</strong><span>Source of truth for docs, scripts, generated data, validators, and commit history.</span></a>
+            <a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/"><strong>GitHub Pages</strong><span>Visual dashboard for sample, tasks, results, directions, and resources.</span></a>
+            <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite"><strong>HF Space</strong><span>Hub-hosted dashboard and static app assets.</span></a>
+            <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts"><strong>HF artifacts</strong><span>Public-safe derived reports, metrics, website JSON, and result packages.</span></a>
+            <a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines"><strong>HF baselines</strong><span>Compact baseline weights, figures, metrics, and mirrored task artifacts.</span></a>
+            <a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite"><strong>HF collection</strong><span>Grouped project surfaces, baseline repos, and verified model-branch repos.</span></a>
+          </div>
+          <div class="brief-actions">
+            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PUBLIC_READER_MAP.md">Open full reader map</a>
+            <a href="data/public_reader_map.json">Open reader-map JSON</a>
+            <a href="#artifacts">Open artifact index</a>
+          </div>
         </div>
         <div class="brief-panel">
           <div class="brief-panel-head">
@@ -4194,6 +4320,7 @@
               <p>Use these files to navigate the whole project, open the published mirrors, or reproduce the public-sample pipeline.</p>
             </div>
             <div class="artifact-grid">
+              <article class="artifact primary-artifact"><div><h3>Public reader map</h3><p>Single navigation layer for GitHub, GitHub Pages, HF Space, artifact dataset, baseline model repo, model-branch repos, and public claim boundaries.</p></div><a href="data/public_reader_map.json">reader map</a></article>
               <article class="artifact primary-artifact"><div><h3>Artifact guide</h3><p>Human-readable map from project scope to data contract, task evidence, platform mirrors, and scale-up status.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ARTIFACT_GUIDE.md">artifact guide</a></article>
               <article class="artifact"><h3>Reproduction scripts</h3><p>Training, visualization, taxonomy, walkthrough, validator, and omni-readiness scripts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/scripts">scripts/</a></article>
               <article class="artifact"><h3>Hugging Face Space</h3><p>The dashboard packaged as a public static Space.</p><a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a></article>
@@ -4202,7 +4329,7 @@
               <article class="artifact"><h3>HF baseline models</h3><p>Minimal NumPy softmax, ridge baselines, and neural task-head model files.</p><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">model repo</a></article>
               <article class="artifact"><h3>HF collection</h3><p>Space, artifacts, baseline models, and verified Qwen3/Cosmos3 adapter repos grouped into one public project collection.</p><a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite">collection</a></article>
               <article class="artifact"><h3>Current all-feature action model</h3><p>Classifier metrics, predictions, confusion matrix, and model weights.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/min_all_modalities_action_model/metrics.json">model metrics</a></article>
-              <article class="artifact"><h3>Reader path</h3><p>Compact route through the project for readers who want the shortest path from scope to results.</p><a href="data/project_packet.json">reader path</a></article>
+              <article class="artifact"><h3>Project packet</h3><p>Compact route through the project for readers who want the shortest path from scope to results after choosing a surface.</p><a href="data/project_packet.json">project packet</a></article>
             </div>
           </section>
 

@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Project Surface",
   "status": "pass",
-  "generated_at_utc": "2026-06-17T16:21:20+00:00",
+  "generated_at_utc": "2026-06-17T16:58:30+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -18,7 +18,7 @@
         "website_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-17T15:17:21+00:00"
+          "generated_at_utc": "2026-06-17T16:53:33+00:00"
         },
         "rendered_site_check": {
           "exists": true,
@@ -28,27 +28,27 @@
         "task_surface_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-17T15:17:20+00:00"
+          "generated_at_utc": "2026-06-17T16:53:31+00:00"
         },
         "source_alignment": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-17T15:17:20+00:00"
+          "generated_at_utc": "2026-06-17T16:53:31+00:00"
         },
         "scale_up_status": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-17T07:22:37+00:00"
+          "generated_at_utc": "2026-06-17T16:53:35+00:00"
         },
         "publication_package": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-17T15:17:33+00:00"
+          "generated_at_utc": "2026-06-17T16:55:37+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-17T15:57:50+00:00"
+          "generated_at_utc": "2026-06-17T16:56:04+00:00"
         }
       },
       "failures": {}
@@ -97,8 +97,8 @@
       "marker_counts": {
         "Ropedia Xperience-10M Task Suite": 16,
         "Xperience-10M": 149,
-        "20-task": 60,
-        "Qwen3-Omni": 151,
+        "20-task": 61,
+        "Qwen3-Omni": 148,
         "128-episode pilot": 1
       }
     },
@@ -107,10 +107,10 @@
       "status": "pass",
       "reason": "Public cards should link the repo, Space, artifacts, model baselines, upstream dataset, and Ropedia dataset page.",
       "marker_counts": {
-        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 84,
-        "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite": 10,
-        "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts": 7,
-        "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines": 10,
+        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 88,
+        "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite": 11,
+        "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts": 8,
+        "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines": 11,
         "https://huggingface.co/datasets/ropedia-ai/xperience-10m": 38,
         "https://ropedia.com/dataset": 5
       }
@@ -121,24 +121,35 @@
       "reason": "Readers should be able to find website reference, release package, mirror, and public presentation files from public copy.",
       "marker_counts": {
         "data/project_brief.json": 8,
+        "data/public_reader_map.json": 17,
         "data/website_integrity.json": 6,
         "data/rendered_site_check.json": 6,
         "data/task_surface_integrity.json": 15,
         "data/publication_audit.json": 6,
         "data/mirror_parity.json": 6,
-        "data/public_surface_qa.json": 6,
+        "data/public_surface_qa.json": 7,
         "data/research_roadmap.json": 15,
         "data/task_suite_enhancement_128.json": 28,
-        "data/task_suite_20.json": 42,
-        "data/unified_task_model_radar.json": 17,
+        "data/task_suite_20.json": 43,
+        "data/unified_task_model_radar.json": 18,
         "data/single_episode_task_model_radar.json": 11,
         "data/episode128_task_model_radar.json": 11,
-        "data/task_method_20_result_matrix.json": 17,
+        "data/task_method_20_result_matrix.json": 18,
         "data/task_method_20_gap_audit.json": 18,
         "assets/charts/unified_task_model_radar.svg": 17,
         "assets/charts/single_episode_task_model_radar.svg": 18,
         "assets/charts/episode128_task_model_radar.svg": 18,
         "data/tier2_task_suite.json": 11
+      }
+    },
+    {
+      "name": "public_reader_map_is_exposed",
+      "status": "pass",
+      "reason": "The public surfaces should expose the shared reader map in both Markdown and JSON form.",
+      "marker_counts": {
+        "PUBLIC_READER_MAP.md": 15,
+        "docs/data/public_reader_map.json": 14,
+        "data/public_reader_map.json": 17
       }
     },
     {

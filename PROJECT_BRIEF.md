@@ -36,14 +36,17 @@ results, and see what remains before multi-episode model-quality claims.
 
 ## How To Read It
 
-1. Start with the website or this brief to understand the project shape.
-2. Open `RESEARCH_ROADMAP.md` to see how the work scales from the public
+1. Start with `PUBLIC_READER_MAP.md` if you need to choose between GitHub,
+   the website, Hugging Face artifacts, baseline weights, model branches, or
+   release-health files.
+2. Start with the website or this brief to understand the project shape.
+3. Open `RESEARCH_ROADMAP.md` to see how the work scales from the public
    sample to multi-episode modeling.
-3. Open `EVALUATION_PROTOCOL.md` before comparing task scores.
-4. Use `RESEARCH_TAKEAWAYS.md` for the current metric interpretation.
-5. Inspect `results/episode_task_suite/feature_manifest.json` to understand one model input.
-6. Use `TASK_SUITE_20.md` and `docs/data/task_suite_20.json` to read the unified 20-task suite; the historical `docs/data/tier2_task_suite.json` path stores the tasks 13-20 result bundle.
-7. Use `docs/data/omni_finetune_verified_result.json` for the current multi-episode Qwen3-Omni pilot result.
+4. Open `EVALUATION_PROTOCOL.md` before comparing task scores.
+5. Use `RESEARCH_TAKEAWAYS.md` for the current metric interpretation.
+6. Inspect `results/episode_task_suite/feature_manifest.json` to understand one model input.
+7. Use `TASK_SUITE_20.md` and `docs/data/task_suite_20.json` to read the unified 20-task suite; the historical `docs/data/tier2_task_suite.json` path stores the tasks 13-20 result bundle.
+8. Use `docs/data/omni_finetune_verified_result.json` for the current multi-episode Qwen3-Omni pilot result.
 
 ## What This Enables
 
@@ -59,6 +62,7 @@ alternative backbone claims.
 
 | Entry point | Link |
 | --- | --- |
+| Public reader map | https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PUBLIC_READER_MAP.md |
 | Visual dashboard | https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/ |
 | Interactive HF Space | https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite |
 | Derived artifacts | https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts |

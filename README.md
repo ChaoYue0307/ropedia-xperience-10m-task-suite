@@ -47,15 +47,16 @@ embodied-AI research infrastructure:
 
 ## Start Here
 
-For a first pass, use [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md) or the
-machine-readable [`docs/data/project_brief.json`](docs/data/project_brief.json).
-They give the project shape in one page: what exists now, what the public
-sample can support, where the 20 tasks and baselines live, and how the verified
-128-episode baseline, Qwen3-Omni, Cosmos3-Nano, and Cosmos3-Super branches
-should be compared.
+The public release is split across GitHub, the website, and Hugging Face. Use
+[`PUBLIC_READER_MAP.md`](PUBLIC_READER_MAP.md) first if you want the shortest
+route through those surfaces, or use the machine-readable companion
+[`docs/data/public_reader_map.json`](docs/data/public_reader_map.json).
+For the one-page project summary, use [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md)
+and [`docs/data/project_brief.json`](docs/data/project_brief.json).
 
 | Reader goal | Best entry point |
 | --- | --- |
+| Choose the right public surface | [`PUBLIC_READER_MAP.md`](PUBLIC_READER_MAP.md), [`docs/data/public_reader_map.json`](docs/data/public_reader_map.json) |
 | Understand the whole project quickly | [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md) |
 | See the visual research dashboard | [GitHub Pages dashboard](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/) |
 | Navigate the unified 20 tasks, four tracks, and scale-up plan | [Interactive research roadmap](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/research_roadmap.html), [`TASK_SUITE_20.md`](TASK_SUITE_20.md), [`docs/data/task_suite_20.json`](docs/data/task_suite_20.json), [`docs/data/research_roadmap_interactive.json`](docs/data/research_roadmap_interactive.json) |
@@ -65,6 +66,17 @@ should be compared.
 | See additional concrete project directions | [`ADDITIONAL_DEVELOPMENT_DIRECTIONS.md`](ADDITIONAL_DEVELOPMENT_DIRECTIONS.md), [`docs/data/additional_development_directions.json`](docs/data/additional_development_directions.json) |
 | Understand one model input | [`results/episode_task_suite/feature_manifest.json`](results/episode_task_suite/feature_manifest.json), [`results/episode_task_suite/windows.csv`](results/episode_task_suite/windows.csv) |
 | Check multi-episode data status | [`results/omni_finetune/DATA_ACCESS_STATUS.md`](results/omni_finetune/DATA_ACCESS_STATUS.md) |
+
+## Public Surface Map
+
+| Surface | What it is for |
+| --- | --- |
+| GitHub repo | Source of truth for docs, scripts, generated JSON, validators, and commit history |
+| GitHub Pages dashboard | Best visual overview of the sample, 20 tasks, radar results, foundation directions, and resources |
+| Hugging Face Space | Hub-hosted copy of the dashboard and static app assets |
+| HF artifact dataset | Public-safe metrics, reports, website JSON, result packages, and derived evidence files |
+| HF baseline model repo | Minimal/neural baseline weights, figures, metrics, and mirrored task artifacts |
+| Qwen3/Cosmos model repos | Adapter-specific public weights or package cards when a model branch is verified and publishable |
 
 Public release checks are exposed as JSON for mirrors and dashboards:
 [`docs/data/website_integrity.json`](docs/data/website_integrity.json),

@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-17T16:23:32+00:00",
+  "generated_at_utc": "2026-06-17T16:59:08+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -50,6 +50,7 @@
     "codemeta.json": true,
     "ARTIFACT_GUIDE.md": true,
     "PROJECT_STATUS.md": true,
+    "PUBLIC_READER_MAP.md": true,
     "RESEARCH_ROADMAP.md": true,
     "RESEARCH_TAKEAWAYS.md": true,
     "TASK_SUITE_ENHANCEMENT_128.md": true,
@@ -83,6 +84,7 @@
     "docs/data/quality_gates.json": true,
     "docs/data/project_manifest.json": true,
     "docs/data/project_packet.json": true,
+    "docs/data/public_reader_map.json": true,
     "docs/data/project_status.json": true,
     "docs/data/research_roadmap.json": true,
     "docs/data/research_roadmap_interactive.json": true,
@@ -163,7 +165,7 @@
       "surface": "github_repo",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 10,
+      "required_marker_count": 11,
       "missing_markers": [],
       "status": "pass"
     },
@@ -171,7 +173,7 @@
       "surface": "hf_space_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 10,
+      "required_marker_count": 11,
       "missing_markers": [],
       "status": "pass"
     },
@@ -179,7 +181,7 @@
       "surface": "hf_artifact_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 7,
+      "required_marker_count": 9,
       "missing_markers": [],
       "status": "pass"
     },
@@ -187,7 +189,7 @@
       "surface": "hf_artifact_bundle",
       "path": "PROJECT_README.md",
       "exists": true,
-      "required_marker_count": 10,
+      "required_marker_count": 11,
       "missing_markers": [],
       "status": "pass"
     },
@@ -195,7 +197,7 @@
       "surface": "hf_model_bundle",
       "path": "README.md",
       "exists": true,
-      "required_marker_count": 10,
+      "required_marker_count": 11,
       "missing_markers": [],
       "status": "pass"
     }
@@ -204,8 +206,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 1217,
-      "text_file_count": 1019,
+      "file_count": 1219,
+      "text_file_count": 1021,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978
@@ -215,8 +217,8 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 1010,
-      "text_file_count": 845,
+      "file_count": 1012,
+      "text_file_count": 847,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978
@@ -226,8 +228,8 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 2410,
-      "text_file_count": 1041,
+      "file_count": 2414,
+      "text_file_count": 1044,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978
@@ -237,8 +239,8 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 2835,
-      "text_file_count": 1200,
+      "file_count": 2840,
+      "text_file_count": 1204,
       "largest_file": {
         "path": "pytorch_model.bin",
         "bytes": 93495480

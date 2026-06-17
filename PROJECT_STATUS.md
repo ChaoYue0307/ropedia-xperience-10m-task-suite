@@ -42,38 +42,40 @@ The current no-new-episode enhancement layer records how to push the selected
 
 ## Fast Research Route
 
-1. Read this status file to establish the current project scope.
-2. Open the visual dashboard for the fastest overview of data, tasks,
+1. Read `PUBLIC_READER_MAP.md` if you need to choose the right public surface
+   before opening detailed artifacts.
+2. Read this status file to establish the current project scope.
+3. Open the visual dashboard for the fastest overview of data, tasks,
    directions, and scale-up status.
-3. Inspect `RESEARCH_TAKEAWAYS.md` and
+4. Inspect `RESEARCH_TAKEAWAYS.md` and
    `docs/data/research_takeaways.json` for the generated result interpretation.
-4. Inspect `RESEARCH_ROADMAP.md` and `docs/data/research_roadmap.json` for
+5. Inspect `RESEARCH_ROADMAP.md` and `docs/data/research_roadmap.json` for
    the path from public-sample task work to multi-episode modeling.
-5. Inspect `FOUNDATION_MODEL_PLAN.md` and
+6. Inspect `FOUNDATION_MODEL_PLAN.md` and
    `docs/data/foundation_model_plan.json` before choosing a backbone branch.
-6. Inspect `OMNI_MODEL_EXTENSION_CONTRACT.md` and run
+7. Inspect `OMNI_MODEL_EXTENSION_CONTRACT.md` and run
    `python scripts/omni/backbone_registry.py --validate --json` before adding
    a new Qwen, Cosmos-style, or VLA/policy branch.
-7. Inspect `XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md` for the
+8. Inspect `XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md` for the
    long-term full-corpus pretraining goal.
-8. Inspect `TASK_SUITE_20.md`, `docs/data/task_suite_20.json`,
+9. Inspect `TASK_SUITE_20.md`, `docs/data/task_suite_20.json`,
    `docs/data/summary_metrics.json`, and
    `results/episode_task_suite/neural_mlp/` to check the unified 20-task outputs.
-9. Inspect `docs/data/tier2_task_suite.json` and
+10. Inspect `docs/data/tier2_task_suite.json` and
    `results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md` only as the historical artifact path for tasks 13-20.
-10. Inspect `results/audio_ablation/AUDIO_ABLATION_SUMMARY.md` before judging
+11. Inspect `results/audio_ablation/AUDIO_ABLATION_SUMMARY.md` before judging
    whether audio helps the current task suite.
-11. Inspect `EVALUATION_PROTOCOL.md` before judging task metrics or leakage
+12. Inspect `EVALUATION_PROTOCOL.md` before judging task metrics or leakage
    controls.
-12. Inspect `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` only if you need the
+13. Inspect `XPERIENCE10M_DATASET_CARD_ALIGNMENT.md` only if you need the
    detailed upstream dataset-card context.
-13. Inspect `results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`
+14. Inspect `results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`
    before comparing simple/NN baselines to the selected 128-episode setup.
-14. Inspect `TASK_SUITE_ENHANCEMENT_128.md` and
+15. Inspect `TASK_SUITE_ENHANCEMENT_128.md` and
    `docs/data/task_suite_enhancement_128.json` before deciding whether more
    episodes are needed; the current recommended no-new-episode export is
    `multiscale_20s10_40s20_80s40`.
-15. Inspect `docs/data/omni_finetune_verified_result.json` before judging the
+16. Inspect `docs/data/omni_finetune_verified_result.json` before judging the
    Qwen3-Omni diagnostic pilot.
 
 ## Current Reading Notes
