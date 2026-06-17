@@ -545,7 +545,7 @@ def main() -> int:
             image_record("logo_mark", SOURCE_MARK, "Transparent source logo mark."),
             image_record("logo_mark_512", OUTPUTS["mark_512"], "512px transparent logo mark."),
             image_record("logo_mark_192", OUTPUTS["mark_192"], "192px transparent logo mark for app manifest use."),
-            image_record("favicon_64", OUTPUTS["favicon_64"], "64px dark-tile favicon and navigation logo."),
+            image_record("favicon_64", OUTPUTS["favicon_64"], "64px dark-tile favicon."),
             image_record("favicon_32", OUTPUTS["favicon_32"], "32px dark-tile favicon fallback."),
             image_record("apple_touch", OUTPUTS["apple_touch"], "180px apple-touch icon."),
             image_record("social_card", OUTPUTS["social_card"], "1200x630 Open Graph, Twitter, README, and HF-card logo card."),
