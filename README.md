@@ -503,7 +503,7 @@ Start with the visual dashboard:
 
 Hugging Face Space app:
 
-**[cy0307-ropedia-xperience-10m-task-suite.static.hf.space](https://cy0307-ropedia-xperience-10m-task-suite.static.hf.space/)**
+**[cy0307-ropedia-xperience-10m-task-suite.hf.space](https://cy0307-ropedia-xperience-10m-task-suite.hf.space/)**
 
 ## Read This Project In Three Layers
 
@@ -546,7 +546,7 @@ Hugging Face Space app:
     <tr><td><strong>This GitHub repo</strong></td><td><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite">github.com/ChaoYue0307/ropedia-xperience-10m-task-suite</a></td></tr>
     <tr><td><strong>This project website</strong></td><td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">chaoyue0307.github.io/ropedia-xperience-10m-task-suite</a></td></tr>
     <tr><td><strong>This Hugging Face Space</strong></td><td><a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite</a></td></tr>
-    <tr><td><strong>Live Hugging Face static app</strong></td><td><a href="https://cy0307-ropedia-xperience-10m-task-suite.static.hf.space/">cy0307-ropedia-xperience-10m-task-suite.static.hf.space</a></td></tr>
+    <tr><td><strong>Live Hugging Face app</strong></td><td><a href="https://cy0307-ropedia-xperience-10m-task-suite.hf.space/">cy0307-ropedia-xperience-10m-task-suite.hf.space</a></td></tr>
     <tr><td><strong>GitHub Container package</strong></td><td><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/pkgs/container/ropedia-xperience-10m-task-suite">ghcr.io/chaoyue0307/ropedia-xperience-10m-task-suite</a></td></tr>
     <tr><td><strong>Derived artifacts on Hugging Face</strong></td><td><a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts</a></td></tr>
     <tr><td><strong>Minimal and neural task baselines on Hugging Face</strong></td><td><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">huggingface.co/cy0307/ropedia-xperience-10m-task-baselines</a></td></tr>
