@@ -331,11 +331,18 @@ def refresh_project_readme_cards(hf_root: Path, *, dry_run: bool) -> list[str]:
     return updated
 
 
-def read_current_scaleup_line() -> str:
+def read_current_scaleup_line() -> str | None:
+    """Return the legacy Markdown scale-up row when the README still has one.
+
+    The current public README uses an HTML table for the research overview, so
+    mirrored full project cards no longer need a standalone Markdown row. Keep
+    this compatibility hook for older compact cards only.
+    """
+
     for line in (ROOT / "README.md").read_text(encoding="utf-8").splitlines():
         if line.startswith("| Scale-up |"):
             return line
-    raise SystemExit("Could not find current Scale-up row in README.md")
+    return None
 
 
 def ensure_current_qwen_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
@@ -368,17 +375,15 @@ def ensure_current_qwen_card_links(hf_root: Path, *, dry_run: bool) -> list[str]
         text = original
         if README_QWEN_OLD_PARAGRAPH in text:
             text = text.replace(README_QWEN_OLD_PARAGRAPH, README_QWEN_CURRENT_PARAGRAPH, 1)
-        lines = text.splitlines()
         changed = text != original
-        for idx, line in enumerate(lines):
-            if line.startswith("| Scale-up |"):
-                if line != scaleup_line:
-                    lines[idx] = scaleup_line
-                    changed = True
-                break
-        else:
-            lines.append(scaleup_line)
-            changed = True
+        lines = text.splitlines()
+        if scaleup_line:
+            for idx, line in enumerate(lines):
+                if line.startswith("| Scale-up |"):
+                    if line != scaleup_line:
+                        lines[idx] = scaleup_line
+                        changed = True
+                    break
         if changed:
             updated.append(relative_path)
             if not dry_run:

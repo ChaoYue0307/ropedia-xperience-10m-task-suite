@@ -94,26 +94,89 @@ The multilingual README files are reader guides. The canonical technical evidenc
 
 ## At A Glance
 
-| Signal | Current public state |
-| --- | --- |
-| 20 task contracts | Action, procedure, transition, trajectory, contact, objects, language, retrieval, reconstruction, order, sync, long-horizon forecasting, interaction text, action-object binding, sensor bridging, camera sync, and transition timing. |
-| 180 method-task records | 9 methods x 20 tasks. Numeric scores appear only where a real task target and source artifact exist; unsupported and not-yet-evaluated cells stay visible. |
-| Public-sample baselines | Minimal and Neural MLP baselines cover all 20 tasks on the one public sample episode. |
-| 128-episode comparison layer | Metadata/simple, metadata/NN, raw-feature simple, raw-feature NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano branches are separated by evidence type. |
-| Foundation directions | Spatial intelligence, human-video world modeling, and vision-language-action pipelines are documented as trainable directions with task mappings and model-evidence requirements. |
-| Public mirrors | GitHub, GitHub Pages, HF Space, HF artifact dataset, HF baseline model repo, Qwen3/Cosmos model repos, and HF collection. |
+<table>
+  <thead>
+    <tr>
+      <th width="24%">Signal</th>
+      <th>Current public state</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>20 task contracts</strong></td>
+      <td>Action, procedure, transition, trajectory, contact, objects, language, retrieval, reconstruction, order, sync, long-horizon forecasting, interaction text, action-object binding, sensor bridging, camera sync, and transition timing.</td>
+    </tr>
+    <tr>
+      <td><strong>180 method-task records</strong></td>
+      <td>9 methods x 20 tasks. Numeric scores appear only where a real task target and source artifact exist; unsupported and not-yet-evaluated cells stay visible.</td>
+    </tr>
+    <tr>
+      <td><strong>Public-sample baselines</strong></td>
+      <td>Minimal and Neural MLP baselines cover all 20 tasks on the one public sample episode.</td>
+    </tr>
+    <tr>
+      <td><strong>128-episode comparison layer</strong></td>
+      <td>Metadata/simple, metadata/NN, raw-feature simple, raw-feature NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano branches are separated by evidence type.</td>
+    </tr>
+    <tr>
+      <td><strong>Foundation directions</strong></td>
+      <td>Spatial intelligence, human-video world modeling, and vision-language-action pipelines are documented as trainable directions with task mappings and model-evidence requirements.</td>
+    </tr>
+    <tr>
+      <td><strong>Public mirrors</strong></td>
+      <td>GitHub, GitHub Pages, HF Space, HF artifact dataset, HF baseline model repo, Qwen3/Cosmos model repos, and HF collection.</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Fast Reader Map
 
-| Reader goal | Start here | Then inspect |
-| --- | --- | --- |
-| Understand the project quickly | [Project brief](PROJECT_BRIEF.md), [project status](PROJECT_STATUS.md) | [Dashboard](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/) |
-| Choose the right public surface | [Public reader map](PUBLIC_READER_MAP.md) | [public_reader_map.json](docs/data/public_reader_map.json) |
-| Inspect the 20 task contracts | [TASK_SUITE_20.md](TASK_SUITE_20.md) | [task_suite_20.json](docs/data/task_suite_20.json), [task walkthroughs](results/episode_task_suite/task_walkthroughs/) |
-| Compare results | [Research takeaways](RESEARCH_TAKEAWAYS.md) | [20-result matrix](docs/data/task_method_20_result_matrix.json), [radar JSON](docs/data/unified_task_model_radar.json), [gap audit](docs/data/task_method_20_gap_audit.json) |
-| Understand one data sample | [Single-episode explorer](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html) | [raw sample file map](docs/data/raw_sample_files.json), [feature manifest](results/episode_task_suite/feature_manifest.json) |
-| Read foundation training directions | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md) | [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json), [foundation model plan](FOUNDATION_MODEL_PLAN.md) |
-| Reproduce or audit | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) | [quality gates](docs/data/quality_gates.json), [publication audit](docs/data/publication_audit.json), [mirror parity](docs/data/mirror_parity.json) |
+<table>
+  <thead>
+    <tr>
+      <th width="26%">Reader goal</th>
+      <th width="32%">Start here</th>
+      <th>Then inspect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Understand quickly</strong></td>
+      <td><a href="PROJECT_BRIEF.md">Project brief</a><br><a href="PROJECT_STATUS.md">Project status</a></td>
+      <td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">Dashboard</a></td>
+    </tr>
+    <tr>
+      <td><strong>Choose the public surface</strong></td>
+      <td><a href="PUBLIC_READER_MAP.md">Public reader map</a></td>
+      <td><a href="docs/data/public_reader_map.json">public_reader_map.json</a></td>
+    </tr>
+    <tr>
+      <td><strong>Inspect the 20 tasks</strong></td>
+      <td><a href="TASK_SUITE_20.md">TASK_SUITE_20.md</a></td>
+      <td><a href="docs/data/task_suite_20.json">task_suite_20.json</a><br><a href="results/episode_task_suite/task_walkthroughs/">task walkthroughs</a></td>
+    </tr>
+    <tr>
+      <td><strong>Compare results</strong></td>
+      <td><a href="RESEARCH_TAKEAWAYS.md">Research takeaways</a></td>
+      <td><a href="docs/data/task_method_20_result_matrix.json">20-result matrix</a><br><a href="docs/data/unified_task_model_radar.json">radar JSON</a><br><a href="docs/data/task_method_20_gap_audit.json">gap audit</a></td>
+    </tr>
+    <tr>
+      <td><strong>Understand one sample</strong></td>
+      <td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html">Single-episode explorer</a></td>
+      <td><a href="docs/data/raw_sample_files.json">raw sample file map</a><br><a href="results/episode_task_suite/feature_manifest.json">feature manifest</a></td>
+    </tr>
+    <tr>
+      <td><strong>Read foundation directions</strong></td>
+      <td><a href="THREE_FOUNDATION_PIPELINES.md">Three foundation pipelines</a></td>
+      <td><a href="docs/data/three_foundation_pipelines.json">three_foundation_pipelines.json</a><br><a href="FOUNDATION_MODEL_PLAN.md">foundation model plan</a></td>
+    </tr>
+    <tr>
+      <td><strong>Reproduce or audit</strong></td>
+      <td><a href="REPRODUCIBILITY.md">Reproducibility</a><br><a href="EVIDENCE_CONTRACT.md">Evidence contract</a></td>
+      <td><a href="docs/data/quality_gates.json">quality gates</a><br><a href="docs/data/publication_audit.json">publication audit</a><br><a href="docs/data/mirror_parity.json">mirror parity</a></td>
+    </tr>
+  </tbody>
+</table>
 """
 
 
