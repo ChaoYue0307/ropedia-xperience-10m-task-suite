@@ -1,10 +1,10 @@
 {
-  "generated_at_utc": "2026-06-16T15:06:55+00:00",
+  "generated_at_utc": "2026-06-17T07:04:39+00:00",
   "immediate_actions": [
     {
       "artifact": "docs/data/task_method_20_gap_audit.json",
       "id": "gap_audit",
-      "purpose": "Keep the 67 scoreless cells visible and reproducible."
+      "purpose": "Keep the 64 scoreless cells visible and reproducible."
     },
     {
       "artifact": "scripts/omni/score_model_output_probes.py",
@@ -101,11 +101,11 @@
       "proxy_scored_task_count": 0,
       "result_record_count": 20,
       "scope": "128 selected episodes, held-out test",
-      "scored_task_count": 7,
-      "scoreless_task_count": 13,
+      "scored_task_count": 10,
+      "scoreless_task_count": 10,
       "status_counts": {
-        "not_evaluated_in_verified_package": 13,
-        "scored": 7
+        "not_evaluated_in_verified_package": 10,
+        "scored": 10
       }
     },
     "raw128_neural_mlp": {
@@ -140,10 +140,10 @@
     "cosmos3_super_reasoner": 13,
     "metadata128_neural_mlp": 14,
     "metadata128_simple": 12,
-    "qwen3_omni_v6_lora": 13
+    "qwen3_omni_v6_lora": 10
   },
   "missing_by_status": {
-    "not_evaluated_in_verified_package": 41,
+    "not_evaluated_in_verified_package": 38,
     "not_supported_by_metadata_only_package": 22,
     "unsupported_without_required_target": 4
   },
@@ -197,15 +197,13 @@
       "cosmos3_nano_future_window",
       "cosmos3_super_reasoner",
       "metadata128_neural_mlp",
-      "metadata128_simple",
-      "qwen3_omni_v6_lora"
+      "metadata128_simple"
     ],
     "14 Long-Horizon Next-Subtask Forecasting": [
       "cosmos3_nano_future_window",
       "cosmos3_super_reasoner",
       "metadata128_neural_mlp",
-      "metadata128_simple",
-      "qwen3_omni_v6_lora"
+      "metadata128_simple"
     ],
     "15 Interaction Text Prediction": [
       "cosmos3_nano_future_window",
@@ -223,8 +221,7 @@
       "cosmos3_nano_future_window",
       "cosmos3_super_reasoner",
       "metadata128_neural_mlp",
-      "metadata128_simple",
-      "qwen3_omni_v6_lora"
+      "metadata128_simple"
     ],
     "18 IMU-to-Hand Pose Reconstruction": [
       "cosmos3_nano_future_window",
@@ -653,19 +650,6 @@
       "task_number": 13
     },
     {
-      "method": "Qwen3-Omni v6 LoRA",
-      "metric_key": "macro_f1",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
-      "scope": "multi_episode_128_partial_model_overlay",
-      "series_id": "qwen3_omni_v6_lora",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "task_id": "long_horizon_next_action",
-      "task_label": "Long-Horizon Next-Action Forecasting",
-      "task_number": 13
-    },
-    {
       "method": "Cosmos3-Super Reasoner",
       "metric_key": "macro_f1",
       "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
@@ -713,19 +697,6 @@
       "series_id": "metadata128_neural_mlp",
       "status": "not_supported_by_metadata_only_package",
       "status_label": "not supported",
-      "task_id": "next_subtask_forecast",
-      "task_label": "Long-Horizon Next-Subtask Forecasting",
-      "task_number": 14
-    },
-    {
-      "method": "Qwen3-Omni v6 LoRA",
-      "metric_key": "macro_f1",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
-      "scope": "multi_episode_128_partial_model_overlay",
-      "series_id": "qwen3_omni_v6_lora",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
       "task_id": "next_subtask_forecast",
       "task_label": "Long-Horizon Next-Subtask Forecasting",
       "task_number": 14
@@ -882,19 +853,6 @@
       "series_id": "metadata128_neural_mlp",
       "status": "not_supported_by_metadata_only_package",
       "status_label": "not supported",
-      "task_id": "object_set_forecast",
-      "task_label": "Future Object-Set Forecasting",
-      "task_number": 17
-    },
-    {
-      "method": "Qwen3-Omni v6 LoRA",
-      "metric_key": "micro_f1",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
-      "scope": "multi_episode_128_partial_model_overlay",
-      "series_id": "qwen3_omni_v6_lora",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
       "task_id": "object_set_forecast",
       "task_label": "Future Object-Set Forecasting",
       "task_number": 17
@@ -1167,8 +1125,8 @@
     "method_count": 9,
     "method_task_record_count": 180,
     "proxy_scored_method_task_count": 4,
-    "scored_method_task_count": 113,
-    "scoreless_method_task_count": 67,
+    "scored_method_task_count": 116,
+    "scoreless_method_task_count": 64,
     "task_count": 20
   },
   "source_matrix": "docs/data/task_method_20_result_matrix.json",

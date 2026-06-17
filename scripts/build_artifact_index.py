@@ -15,6 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "docs/data/artifact_index.json"
+QWEN3_FUTURE_TASK_PROBE_RUN_ID = "xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z"
 
 ARTIFACTS = [
     {
@@ -1177,6 +1178,65 @@ def verified_public_package_artifacts() -> list[dict]:
     return artifacts
 
 
+def qwen3_future_task_probe_artifacts() -> list[dict]:
+    run_dir = ROOT / "results/omni_finetune" / QWEN3_FUTURE_TASK_PROBE_RUN_ID
+    if not run_dir.exists():
+        return []
+
+    artifacts: list[dict] = [
+        {
+            "id": "qwen3_future_task_probe_package",
+            "title": "Qwen3 v6 future-task probe package",
+            "path": run_dir.relative_to(ROOT).as_posix(),
+            "kind": "model_result",
+            "surface": "repo_hf",
+            "shows": (
+                "Two-shard Qwen3-Omni v6 inference probe for tasks 13, 14, "
+                "and 17, with public-safe metrics, predictions, progress logs, "
+                "and merge report."
+            ),
+        }
+    ]
+    for relative_path, kind, label in [
+        ("summary.json", "metrics_source", "merged summary"),
+        ("collection_validation.json", "publication_audit", "collection validation"),
+        ("RUN_REPORT.md", "scaleup_status", "run report"),
+        ("long_horizon_next_action/metrics.json", "metrics_source", "task 13 metrics"),
+        ("next_subtask_forecast/metrics.json", "metrics_source", "task 14 metrics"),
+        ("object_set_forecast/metrics.json", "metrics_source", "task 17 metrics"),
+    ]:
+        path = run_dir / relative_path
+        if path.exists():
+            artifacts.append(
+                {
+                    "id": f"qwen3_future_task_probe_{relative_path.replace('/', '_').replace('.', '_')}",
+                    "title": f"Qwen3 future-task probe {label}",
+                    "path": path.relative_to(ROOT).as_posix(),
+                    "kind": kind,
+                    "surface": "repo_hf",
+                    "shows": f"Public-safe {label} for {QWEN3_FUTURE_TASK_PROBE_RUN_ID}.",
+                }
+            )
+
+    launcher_log = (
+        ROOT
+        / "results/omni_finetune/deferred_launchers"
+        / f"{QWEN3_FUTURE_TASK_PROBE_RUN_ID}.launcher.log"
+    )
+    if launcher_log.exists():
+        artifacts.append(
+            {
+                "id": "qwen3_future_task_probe_launcher_log",
+                "title": "Qwen3 future-task probe launcher log",
+                "path": launcher_log.relative_to(ROOT).as_posix(),
+                "kind": "scaleup_status",
+                "surface": "repo_hf",
+                "shows": "Launch and merge log for the two-shard future-task probe.",
+            }
+        )
+    return artifacts
+
+
 def artifact_entry(item: dict) -> dict:
     path = ROOT / item["path"]
     entry = {
@@ -1199,6 +1259,7 @@ def artifact_entry(item: dict) -> dict:
 def main() -> int:
     artifacts = [dict(item) for item in ARTIFACTS]
     artifacts.extend(verified_public_package_artifacts())
+    artifacts.extend(qwen3_future_task_probe_artifacts())
     summary_path = ROOT / "results/episode_task_suite/summary_report.json"
     if summary_path.exists():
         summary = json.loads(summary_path.read_text(encoding="utf-8"))

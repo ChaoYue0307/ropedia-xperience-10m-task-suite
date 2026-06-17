@@ -12,7 +12,7 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 128ep Metadata NN | 20 | 6 | 0 | 14 | not supported 14, scored 6 |
 | 128ep Raw Simple | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
 | 128ep Raw NN | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
-| Qwen3-Omni v6 LoRA | 20 | 7 | 0 | 13 | not evaluated 13, scored 7 |
+| Qwen3-Omni v6 LoRA | 20 | 10 | 0 | 10 | not evaluated 10, scored 10 |
 | Cosmos3-Super Reasoner | 20 | 7 | 0 | 13 | not evaluated 13, scored 7 |
 | Cosmos3-Nano Future Window | 20 | 5 | 0 | 15 | not evaluated 15, scored 5 |
 
@@ -30,11 +30,11 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 10 | Cross-Modal Reconstruction | score | score | unsupported | not supported | score | score | not evaluated | not evaluated | not evaluated |
 | 11 | Temporal Order Verification | score | score | score | not supported | score | score | not evaluated | not evaluated | not evaluated |
 | 12 | Multimodal Synchronization Detection | score | score | unsupported | not supported | score | score | not evaluated | not evaluated | not evaluated |
-| 13 | Long-Horizon Next-Action Forecasting | score | score | not supported | not supported | score | score | not evaluated | not evaluated | not evaluated |
-| 14 | Long-Horizon Next-Subtask Forecasting | score | score | not supported | not supported | score | score | not evaluated | not evaluated | not evaluated |
+| 13 | Long-Horizon Next-Action Forecasting | score | score | not supported | not supported | score | score | score | not evaluated | not evaluated |
+| 14 | Long-Horizon Next-Subtask Forecasting | score | score | not supported | not supported | score | score | score | not evaluated | not evaluated |
 | 15 | Interaction Text Prediction | score | score | not supported | not supported | proxy | proxy | not evaluated | not evaluated | not evaluated |
 | 16 | Action-Object Relation Prediction | score | score | not supported | not supported | score | score | score | score | not evaluated |
-| 17 | Future Object-Set Forecasting | score | score | not supported | not supported | score | score | not evaluated | not evaluated | not evaluated |
+| 17 | Future Object-Set Forecasting | score | score | not supported | not supported | score | score | score | not evaluated | not evaluated |
 | 18 | IMU-to-Hand Pose Reconstruction | score | score | not supported | not supported | score | score | not evaluated | not evaluated | not evaluated |
 | 19 | Camera-View Synchronization Retrieval | score | score | not supported | not supported | proxy | proxy | not evaluated | not evaluated | not evaluated |
 | 20 | Time-to-Next-Transition Regression | score | score | not supported | not supported | score | score | not evaluated | not evaluated | not evaluated |

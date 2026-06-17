@@ -1,13 +1,13 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-16T15:06:56+00:00",
+  "generated_at_utc": "2026-06-17T07:20:47+00:00",
   "status": "pass",
-  "artifact_count": 191,
+  "artifact_count": 199,
   "missing": [],
   "by_kind": {
     "project_path": 14,
     "scaleup_contract": 7,
-    "scaleup_status": 42,
+    "scaleup_status": 44,
     "publication_workflow": 6,
     "reproducibility": 4,
     "project_scope": 1,
@@ -16,9 +16,9 @@
     "website_data": 10,
     "generated_figure": 7,
     "visualization_builder": 1,
-    "model_result": 3,
+    "model_result": 4,
     "result_interpretation": 5,
-    "metrics_source": 27,
+    "metrics_source": 31,
     "visual_evidence": 7,
     "dataset_context": 1,
     "quality_gate": 12,
@@ -35,7 +35,7 @@
     "citation": 1,
     "license": 1,
     "verified_public_package": 10,
-    "publication_audit": 7
+    "publication_audit": 8
   },
   "artifacts": [
     {
@@ -465,7 +465,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "9848a62718df2058294e77349fb0f9f5af4f778a929ff50bad7c761419634015"
+      "sha256": "620e3238bd99516a89261c649b8d825ba335c851b4ff3f25f50a217ff9f2c446"
     },
     {
       "id": "source_alignment_validator",
@@ -486,8 +486,8 @@
       "surface": "repo_hf",
       "shows": "Publishes prepared Space, artifact dataset, and model bundles, including an explicit model-binary upload batch.",
       "exists": true,
-      "bytes": 22929,
-      "sha256": "3683a3d6ac1438999a110583a821fd2164ca50d191d2d5dca7921f2fb90f0977"
+      "bytes": 23694,
+      "sha256": "d8814ca59f4ea213c3a974682486d2c7c0284e41eb81b8cb2e0a09c8200f40f3"
     },
     {
       "id": "github_package_dockerfile",
@@ -585,8 +585,8 @@
       "surface": "website_hf",
       "shows": "Stores normalized 20-axis radar values, raw task metrics, Qwen3/Cosmos overlay mappings, branch-card caveats, and explicit scoreless status records.",
       "exists": true,
-      "bytes": 231282,
-      "sha256": "f07f229a075ea63156b3ad87588ea5f495fbb6db6d33bd6055fc4c9343447564"
+      "bytes": 231240,
+      "sha256": "394d494ab99e5d978415764ed785521c038881dd678f3036783be70fef068d25"
     },
     {
       "id": "single_episode_task_model_radar_json",
@@ -597,7 +597,7 @@
       "shows": "Machine-readable split radar for the one-episode Minimal and Neural MLP baselines, both scored on all 20 task contracts.",
       "exists": true,
       "bytes": 50973,
-      "sha256": "7bb8c7045ce277bd14a4ea4e433373af594a43825ce0fd818d0171400df7cb92"
+      "sha256": "fb1beb92720407bfe51933a064b2bb9f28d1e45fb17af0e673827d255ee92fab"
     },
     {
       "id": "episode128_task_model_radar_json",
@@ -607,8 +607,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable split radar for selected 128-episode metadata/raw baselines and verified Qwen3/Cosmos branches, preserving explicit scoreless cells.",
       "exists": true,
-      "bytes": 187431,
-      "sha256": "cf65729b44a6a678d14e9970ac809eb4fef688505dd5578c80c194650d6c1322"
+      "bytes": 187388,
+      "sha256": "a3b71765b2435f085a7bb0492e05dbfc4c3c9b06cb65a4ec326160abb31f6ad8"
     },
     {
       "id": "task_method_20_result_matrix_json",
@@ -618,8 +618,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable 9-method by 20-task matrix where every method has 20 records and scoreless cells carry unsupported/not-evaluated reasons.",
       "exists": true,
-      "bytes": 129771,
-      "sha256": "fa81542abb5fe7f0b8fd0cbeb29f8a8c8ce4f19a6e6ac3647c1078a554ee04be"
+      "bytes": 129749,
+      "sha256": "985d210609e40f06cb7d3d2819cd5e9330671a4506b1fb67c1917dcf4e2ea6e9"
     },
     {
       "id": "task_method_20_result_matrix",
@@ -629,8 +629,8 @@
       "surface": "repo_hf",
       "shows": "Reader-facing table that separates 20 records per method from numeric scored axes, documented raw128 proxy scores, unsupported metadata targets, and model targets not evaluated in verified packages.",
       "exists": true,
-      "bytes": 4208,
-      "sha256": "bfe01b258fe121448d2b5b188c6995041c81d7ce1286dcd2ee0bf9c01d6a6193"
+      "bytes": 4186,
+      "sha256": "5a7f91a9d29e92ad66a698c0e3fb776b07f624a22f6eb972cbdb7354c3cfa4db"
     },
     {
       "id": "task_method_20_gap_audit_json",
@@ -640,8 +640,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable 180-record gap ledger with numeric scores, scoreless cells, explicit status reasons, and next evidence needed before new scores can be published.",
       "exists": true,
-      "bytes": 57943,
-      "sha256": "d9ce17695e9186e6ccb784d3c9af0d4e09addca71559526517bcc5f79f8bf89e"
+      "bytes": 55745,
+      "sha256": "0049d8f850af3b47c100effde7d65940b63c3af2f91a5f29016bc3b066866576"
     },
     {
       "id": "task_method_20_gap_audit",
@@ -651,8 +651,8 @@
       "surface": "repo_hf",
       "shows": "Reader-facing ledger that lists every scoreless method-task cell and the concrete target or model-output evidence required before it can become numeric.",
       "exists": true,
-      "bytes": 16234,
-      "sha256": "01ae782b632d9f5c23cce5ebd7b99963cca9c4419193865bff434d9ec0b51dce"
+      "bytes": 15690,
+      "sha256": "2585cbb6ffbb87cff3e16347f93947930c7059f1053d68b6f98a4c70ecc58654"
     },
     {
       "id": "unified_task_model_radar_chart",
@@ -662,8 +662,8 @@
       "surface": "website_hf",
       "shows": "Compares minimal and neural MLP baselines across all 20 tasks, with Qwen3/Cosmos task-aligned model overlays.",
       "exists": true,
-      "bytes": 49726,
-      "sha256": "1eb08975b1ee030bb2ca229eb68a68a6ffd8e7324d6870c7804997f676bc334a"
+      "bytes": 50060,
+      "sha256": "eed2e19190d9760c35f6a66487762922fe42d3bd8de887cafbdad6ba4fd4122c"
     },
     {
       "id": "single_episode_task_model_radar_chart",
@@ -684,8 +684,8 @@
       "surface": "website_hf",
       "shows": "Separates the selected 128-episode methods: raw-feature simple/NN as complete 20/20 scored polygons and metadata/Qwen/Cosmos as task-aligned overlays.",
       "exists": true,
-      "bytes": 43710,
-      "sha256": "b8086051008c30ff5c224099023eab58883cb1ca025b2612231f4578ceec29a0"
+      "bytes": 44044,
+      "sha256": "fcaa7b7bcfb6662e479c968c1c1395e059bd272dd79694ce88637278e1d14d87"
     },
     {
       "id": "unified_task_model_radar_builder",
@@ -894,7 +894,7 @@
       "shows": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
       "bytes": 17287,
-      "sha256": "66a495e656967f51f984f637c98aa4f3e5d16fdfdb05ae60660edebd84b0447d"
+      "sha256": "06a5854e14fb64e435d02e6fd5f476b37e9e3b981cf1d8b39fea3809f8ff5eaf"
     },
     {
       "id": "figure_index_builder",
@@ -971,7 +971,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8100,
-      "sha256": "78dfe9c4e3b517a5db4e66a745d56503222b581d9fe9feaa96d2645410657667"
+      "sha256": "5dcf67ec345cace894593651ebfba6e99c120614e93f2b137287fca75b93305f"
     },
     {
       "id": "public_surface_qa",
@@ -1118,8 +1118,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 54683,
-      "sha256": "0a9e7c7391f0e2822d8490ddd216f155e1ce3a50d2ba3c90476ee09685f74d65"
+      "bytes": 57239,
+      "sha256": "875106463eae01dc43f751fc5de15eb6f7ece55dc67bee7156b66fd85daebb5d"
     },
     {
       "id": "publication_audit",
@@ -1130,7 +1130,7 @@
       "volatile": true,
       "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and credential text.",
       "exists": true,
-      "bytes": 8298,
+      "bytes": 13515,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1154,7 +1154,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 871973,
+      "bytes": 899853,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -2147,6 +2147,94 @@
       "exists": true,
       "bytes": 624,
       "sha256": "0723ecb9dd5cef371e2120af10903fc84a3ef495edafc8959f5eec0a778abbf1"
+    },
+    {
+      "id": "qwen3_future_task_probe_package",
+      "title": "Qwen3 v6 future-task probe package",
+      "path": "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z",
+      "kind": "model_result",
+      "surface": "repo_hf",
+      "shows": "Two-shard Qwen3-Omni v6 inference probe for tasks 13, 14, and 17, with public-safe metrics, predictions, progress logs, and merge report.",
+      "exists": true,
+      "file_count": 17,
+      "bytes": 17786547
+    },
+    {
+      "id": "qwen3_future_task_probe_summary_json",
+      "title": "Qwen3 future-task probe merged summary",
+      "path": "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/summary.json",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Public-safe merged summary for xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z.",
+      "exists": true,
+      "bytes": 1523,
+      "sha256": "80d33f6cb834d02192da560893aed13c4a1ec8fd3389290af35419a353779f0a"
+    },
+    {
+      "id": "qwen3_future_task_probe_collection_validation_json",
+      "title": "Qwen3 future-task probe collection validation",
+      "path": "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/collection_validation.json",
+      "kind": "publication_audit",
+      "surface": "repo_hf",
+      "shows": "Public-safe collection validation for xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z.",
+      "exists": true,
+      "bytes": 1307,
+      "sha256": "33ac6bff7d7111fb90b196801b93dfa199b637fb04983ace517aeda01f69e31b"
+    },
+    {
+      "id": "qwen3_future_task_probe_RUN_REPORT_md",
+      "title": "Qwen3 future-task probe run report",
+      "path": "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/RUN_REPORT.md",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Public-safe run report for xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z.",
+      "exists": true,
+      "bytes": 399,
+      "sha256": "927bee96928f9fe1380939a7ef4714405cfcf8c5af9f7bfe1ab403196983234a"
+    },
+    {
+      "id": "qwen3_future_task_probe_long_horizon_next_action_metrics_json",
+      "title": "Qwen3 future-task probe task 13 metrics",
+      "path": "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/metrics.json",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Public-safe task 13 metrics for xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z.",
+      "exists": true,
+      "bytes": 13088,
+      "sha256": "5907654eba9013ada0e31302ce1cfe757c6f96510cdbdd2f97abadf383fedb3c"
+    },
+    {
+      "id": "qwen3_future_task_probe_next_subtask_forecast_metrics_json",
+      "title": "Qwen3 future-task probe task 14 metrics",
+      "path": "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/metrics.json",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Public-safe task 14 metrics for xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z.",
+      "exists": true,
+      "bytes": 11425,
+      "sha256": "2fbb3f0d71fa963536dc90e4b4a3dc8ea4f935900a465018f0b44484234d5817"
+    },
+    {
+      "id": "qwen3_future_task_probe_object_set_forecast_metrics_json",
+      "title": "Qwen3 future-task probe task 17 metrics",
+      "path": "results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/object_set_forecast/metrics.json",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Public-safe task 17 metrics for xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z.",
+      "exists": true,
+      "bytes": 1481,
+      "sha256": "8d5dea02b20fb4b09aa33ab82309f76fa3a7e53bb86360ebc99b205a2e750302"
+    },
+    {
+      "id": "qwen3_future_task_probe_launcher_log",
+      "title": "Qwen3 future-task probe launcher log",
+      "path": "results/omni_finetune/deferred_launchers/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z.launcher.log",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Launch and merge log for the two-shard future-task probe.",
+      "exists": true,
+      "bytes": 2048,
+      "sha256": "6952893720a78312f5a72b1f82cf59c1ec9b68520beb70cce96e2d0b8deb878b"
     }
   ]
 }

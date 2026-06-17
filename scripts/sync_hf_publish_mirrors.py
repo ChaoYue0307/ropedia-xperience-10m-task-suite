@@ -388,6 +388,7 @@ def main() -> int:
         | set(parity.a100_128_metadata_result_files())
         | set(parity.a100_128_raw20_result_files())
         | set(parity.model_output_task_probe_result_files())
+        | set(parity.qwen3_future_task_probe_result_files())
     )
     for filename in result_files:
         src = ROOT / "results" / filename
