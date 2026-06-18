@@ -22,6 +22,11 @@ STALE_MIRROR_FILES = [
     "artifacts/scripts/omni/collect_qwen3_v4_publication_artifacts.py",
     "model/scripts/omni/collect_qwen3_v4_publication_artifacts.py",
 ]
+STALE_MIRROR_DIRS = [
+    # Result bundles belong in the artifact dataset and model mirror. Keeping
+    # them in the Space pushes the app repo near Hugging Face's 1 GB limit.
+    "space/results",
+]
 GENERATED_REPORT_DATA_FILES = [
     # The parity validator rewrites this report, so it is synced after checks
     # rather than included in the self-referential hash parity file set.
@@ -156,6 +161,13 @@ def parse_args() -> argparse.Namespace:
 
 def prune_stale_files(hf_root: Path, *, dry_run: bool) -> list[str]:
     removed = []
+    for relative_path in STALE_MIRROR_DIRS:
+        path = hf_root / relative_path
+        if not path.exists():
+            continue
+        removed.append(path.as_posix())
+        if not dry_run:
+            shutil.rmtree(path)
     for relative_path in STALE_MIRROR_FILES:
         path = hf_root / relative_path
         if not path.exists():
@@ -530,7 +542,6 @@ def main() -> int:
         copied += copy_file(
             src,
             [
-                hf_root / "space/results" / filename,
                 hf_root / "artifacts/results" / filename,
                 hf_root / "model/results" / filename,
             ],
