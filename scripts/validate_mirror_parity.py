@@ -68,6 +68,7 @@ DATA_FILES = [
     "tier2_task_suite.json",
     "unified_task_model_radar.json",
     "website_integrity.json",
+    "xperience10m_128_episode_feature_index.json",
     "xperience10m_dataset_card_alignment.json",
 ]
 
@@ -112,6 +113,7 @@ SCRIPT_FILES = [
     "omni/audit_cosmos3_super_training_contract.py",
     "omni/build_omni_model_comparison.py",
     "omni/build_qwen3_full_parameter_gate_summary.py",
+    "omni/build_128_episode_feature_index.py",
     "omni/collect_qwen3_future_task_probe_results.sh",
     "omni/collect_qwen3_v4_release_artifacts.py",
     "omni/defer_cosmos3_super_after_qwen_v4.sh",
@@ -275,6 +277,7 @@ DOC_FILES = [
     "PROJECT_STATUS.md",
     "REPRODUCIBILITY.md",
     "TASK_SUITE_ENHANCEMENT_128.md",
+    "XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md",
     "TASK_METHOD_20_GAP_AUDIT.md",
     "TASK_METHOD_20_RESULT_MATRIX.md",
     "TASK_SUITE_20.md",
@@ -383,6 +386,30 @@ def a100_128_raw20_result_files() -> list[str]:
         if path.is_file():
             files.append(path.relative_to(ROOT / "results").as_posix())
     return sorted(files)
+
+
+def xperience10m_128_data_feature_files() -> list[str]:
+    """Return selected 128-episode source and processed-feature artifacts."""
+
+    explicit = [
+        ROOT / "results/omni_finetune/xperience10m_128_episode_selection.json",
+        ROOT / "results/omni_finetune/xperience10m_128_episode_selection.csv",
+        ROOT / "results/omni_finetune/xperience10m_128_episode_download_files.txt",
+        ROOT / "results/omni_finetune/episode_manifest.json",
+        ROOT / "results/omni_finetune/dataset_manifest.json",
+        ROOT / "results/omni_finetune/multi_episode_128_task_baselines/metadata_feature_matrix.npz",
+        ROOT / "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/metadata_feature_matrix.npz",
+    ]
+    dense_root = ROOT / "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608"
+    files: list[str] = []
+    for path in explicit:
+        if path.is_file():
+            files.append(path.relative_to(ROOT / "results").as_posix())
+    if dense_root.exists():
+        for path in dense_root.rglob("*"):
+            if path.is_file():
+                files.append(path.relative_to(ROOT / "results").as_posix())
+    return sorted(set(files))
 
 
 def model_output_task_probe_result_files() -> list[str]:
@@ -517,6 +544,7 @@ def build_report(hf_root: Path) -> dict:
         | set(tier2_result_files())
         | set(a100_128_metadata_result_files())
         | set(a100_128_raw20_result_files())
+        | set(xperience10m_128_data_feature_files())
         | set(model_output_task_probe_result_files())
         | set(qwen3_future_task_probe_result_files())
     )

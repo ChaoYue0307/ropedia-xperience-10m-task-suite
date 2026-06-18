@@ -12,6 +12,7 @@ trail.
 | Understand the project in one pass | `PROJECT_BRIEF.md` | `PROJECT_STATUS.md`, `RESEARCH_TAKEAWAYS.md` |
 | See the visual public dashboard | GitHub Pages or the HF Space | `docs/index.html`, `docs/data/project_packet.json` |
 | Understand the data unit | `results/episode_task_suite/windows.csv` | `results/episode_task_suite/feature_manifest.json`, `docs/data/raw_sample_files.json` |
+| Trace the 128-episode split | `XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md` | `docs/data/xperience10m_128_episode_feature_index.json`, `results/omni_finetune/xperience10m_128_episode_selection.csv` |
 | Inspect the 20-task benchmark | `TASK_SUITE_20.md` | `docs/data/task_suite_20.json`, `EVALUATION_PROTOCOL.md` |
 | Compare current results | `RESEARCH_TAKEAWAYS.md` | `docs/data/task_method_20_result_matrix.json`, `docs/data/unified_task_model_radar.json` |
 | Compare 1-episode and 128-episode methods | Homepage radar section | `docs/data/single_episode_task_model_radar.json`, `docs/data/episode128_task_model_radar.json` |
@@ -51,6 +52,6 @@ trail.
 | Claim type | Public evidence | Boundary |
 | --- | --- | --- |
 | Single public-sample task behavior | `results/episode_task_suite/`, `docs/data/task_suite_20.json` | Describes one public sample episode, not the full dataset distribution |
-| 128-episode baseline comparison | `results/omni_finetune/*128*`, `docs/data/omni_model_comparison.json` | Uses selected held-out episodes and derived public-safe summaries |
+| 128-episode baseline comparison | `XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md`, `docs/data/xperience10m_128_episode_feature_index.json`, `results/omni_finetune/*128*`, `docs/data/omni_model_comparison.json` | Uses selected held-out episodes and derived public-safe summaries; official raw files remain gated upstream |
 | Foundation-model branch quality | Verified Qwen3/Cosmos result packages and model cards | Numeric task scores appear only when a task-specific eval/probe exists |
 | Reproducibility | `REPRODUCIBILITY.md`, `QUALITY_GATES.md`, release validators | Raw gated Xperience-10M files and full foundation weights are not redistributed |

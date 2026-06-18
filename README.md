@@ -134,6 +134,11 @@ The multilingual README files are reader guides. The canonical technical evidenc
       <td><a href="docs/data/raw_sample_files.json">raw sample file map</a><br><a href="results/episode_task_suite/feature_manifest.json">feature manifest</a></td>
     </tr>
     <tr>
+      <td><strong>Trace 128 episodes</strong></td>
+      <td><a href="XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md">128-episode feature index</a></td>
+      <td><a href="docs/data/xperience10m_128_episode_feature_index.json">source/feature JSON</a><br><a href="results/omni_finetune/xperience10m_128_episode_selection.csv">selection CSV</a></td>
+    </tr>
+    <tr>
       <td><strong>Read foundation directions</strong></td>
       <td><a href="THREE_FOUNDATION_PIPELINES.md">Three foundation pipelines</a></td>
       <td><a href="docs/data/three_foundation_pipelines.json">three_foundation_pipelines.json</a><br><a href="FOUNDATION_MODEL_PLAN.md">foundation model plan</a></td>
@@ -353,6 +358,8 @@ This project is best read as a staged embodied-AI research study:
       <td>
         <a href="RESEARCH_ROADMAP.md">RESEARCH_ROADMAP.md</a><br>
         <a href="FOUNDATION_MODEL_PLAN.md">FOUNDATION_MODEL_PLAN.md</a><br>
+        <a href="XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md">XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md</a><br>
+        <a href="docs/data/xperience10m_128_episode_feature_index.json">xperience10m_128_episode_feature_index.json</a><br>
         <a href="TASK_SUITE_ENHANCEMENT_128.md">TASK_SUITE_ENHANCEMENT_128.md</a><br>
         <a href="docs/data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a><br>
         <a href="docs/data/omni_model_comparison.json">omni_model_comparison.json</a><br>
@@ -941,6 +948,8 @@ Current status in this repo:
 - gated_metadata_audit: 12,102 complete visible episodes across 802 complete sessions
 - selected_episode_plan: 128 source-balanced episodes, 96/16/16 train/val/test
 - selected_download_size: 277.71 GiB excluding `visualization.rrd`
+- selected_source_feature_index: `XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md` and `docs/data/xperience10m_128_episode_feature_index.json`
+- processed_128_feature_artifacts: 34,269 Qwen3-Omni v6 multiscale windows, 106,095 dense multiscale compact rows, and 34,269 x 394 metadata/text matrix rows, all linked back to official gated `ropedia-ai/xperience-10m` episode paths
 - verified_final_diagnostic_package: true
 - selected_split: 96 train / 16 validation / 16 held-out test episodes
 - exported_windows: 2,848 train / 512 validation / 448 test

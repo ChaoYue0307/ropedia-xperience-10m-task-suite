@@ -19,6 +19,11 @@
       "then_inspect": ["results/episode_task_suite/feature_manifest.json", "docs/data/raw_sample_files.json"]
     },
     {
+      "reader_goal": "Trace the 128-episode split",
+      "start_here": "XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md",
+      "then_inspect": ["docs/data/xperience10m_128_episode_feature_index.json", "results/omni_finetune/xperience10m_128_episode_selection.csv"]
+    },
+    {
       "reader_goal": "Inspect the 20-task benchmark",
       "start_here": "TASK_SUITE_20.md",
       "then_inspect": ["docs/data/task_suite_20.json", "EVALUATION_PROTOCOL.md"]
@@ -102,8 +107,8 @@
     },
     {
       "claim_type": "128-episode baseline comparison",
-      "public_evidence": ["results/omni_finetune/*128*", "docs/data/omni_model_comparison.json"],
-      "boundary": "Uses selected held-out episodes and derived public-safe summaries."
+      "public_evidence": ["XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md", "docs/data/xperience10m_128_episode_feature_index.json", "results/omni_finetune/*128*", "docs/data/omni_model_comparison.json"],
+      "boundary": "Uses selected held-out episodes and derived public-safe summaries; official raw files remain gated upstream."
     },
     {
       "claim_type": "Foundation-model branch quality",

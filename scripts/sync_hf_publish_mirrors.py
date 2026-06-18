@@ -68,6 +68,23 @@ between the GitHub repo, GitHub Pages dashboard, HF Space, artifact dataset,
 baseline model repo, Qwen3/Cosmos model repos, and release-health checks without
 losing the full evidence trail.
 """
+XPERIENCE128_MARKER = "docs/data/xperience10m_128_episode_feature_index.json"
+XPERIENCE128_ARTIFACT_ROW = (
+    "| Trace the 128-episode source and feature map | "
+    "`XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md`, "
+    "`docs/data/xperience10m_128_episode_feature_index.json` |"
+)
+XPERIENCE128_CARD_BLOCK = """
+## 128-Episode Source and Feature Index
+
+The selected 128-episode split is linked back to the official gated
+`ropedia-ai/xperience-10m` episode tree in
+`XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md` and
+`docs/data/xperience10m_128_episode_feature_index.json`. The public mirrors
+carry only public-safe processed artifacts: selection files, inspected
+manifests, dense multiscale window rows, metadata feature matrices, and result
+summaries.
+"""
 LANGUAGE_VERSIONS_MARKER = "docs/data/language_versions.json"
 LANGUAGE_VERSIONS_ROW = (
     "| Read the project in 8 languages | `README.md`, `README.zh.md`, "
@@ -255,6 +272,32 @@ def ensure_reader_map_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
             text = text.replace(insert_before, READER_MAP_CARD_BLOCK + insert_before, 1)
         else:
             text = text.rstrip() + "\n" + READER_MAP_CARD_BLOCK
+    if text != original:
+        updated.append("artifacts/README.md")
+        if not dry_run:
+            artifacts_readme.write_text(text, encoding="utf-8")
+    return updated
+
+
+def ensure_xperience128_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
+    updated = []
+    artifacts_readme = hf_root / "artifacts/README.md"
+    if not artifacts_readme.exists():
+        return updated
+    text = artifacts_readme.read_text(encoding="utf-8")
+    original = text
+    if XPERIENCE128_ARTIFACT_ROW not in text:
+        table_anchor = "| Reader goal | Artifact |\n| --- | --- |\n"
+        if table_anchor in text:
+            text = text.replace(table_anchor, table_anchor + XPERIENCE128_ARTIFACT_ROW + "\n", 1)
+        else:
+            text = text.rstrip() + "\n\n" + XPERIENCE128_ARTIFACT_ROW + "\n"
+    if XPERIENCE128_MARKER not in text:
+        insert_before = "\n## Dataset Boundary"
+        if insert_before in text:
+            text = text.replace(insert_before, XPERIENCE128_CARD_BLOCK + insert_before, 1)
+        else:
+            text = text.rstrip() + "\n" + XPERIENCE128_CARD_BLOCK
     if text != original:
         updated.append("artifacts/README.md")
         if not dry_run:
@@ -473,6 +516,7 @@ def main() -> int:
         | set(parity.tier2_result_files())
         | set(parity.a100_128_metadata_result_files())
         | set(parity.a100_128_raw20_result_files())
+        | set(parity.xperience10m_128_data_feature_files())
         | set(parity.model_output_task_probe_result_files())
         | set(parity.qwen3_future_task_probe_result_files())
     )
@@ -503,6 +547,7 @@ def main() -> int:
     card_updates = refresh_project_readme_cards(hf_root, dry_run=args.dry_run)
     card_updates += ensure_language_card_links(hf_root, dry_run=args.dry_run)
     card_updates += ensure_reader_map_card_links(hf_root, dry_run=args.dry_run)
+    card_updates += ensure_xperience128_card_links(hf_root, dry_run=args.dry_run)
     card_updates += ensure_enhancement_card_links(hf_root, dry_run=args.dry_run)
     card_updates += ensure_tier2_card_links(hf_root, dry_run=args.dry_run)
     card_updates += ensure_current_qwen_card_links(hf_root, dry_run=args.dry_run)

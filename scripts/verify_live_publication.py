@@ -131,6 +131,28 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "xperience10m_128_episode_feature_index_json",
+        "title": "Xperience-10M 128-episode source and feature index JSON",
+        "local_path": "docs/data/xperience10m_128_episode_feature_index.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/xperience10m_128_episode_feature_index.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/xperience10m_128_episode_feature_index.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/xperience10m_128_episode_feature_index.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/xperience10m_128_episode_feature_index.json",
+        },
+    },
+    {
+        "id": "xperience10m_128_episode_feature_index_markdown",
+        "title": "Xperience-10M 128-episode source and feature index Markdown",
+        "local_path": "XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md",
+        "urls": {
+            "github_raw": "https://raw.githubusercontent.com/ChaoYue0307/ropedia-xperience-10m-task-suite/main/XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/raw/main/XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/raw/main/XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md",
+        },
+    },
+    {
         "id": "single_episode_task_model_radar_json",
         "title": "Single-episode 20-task model radar JSON",
         "local_path": "docs/data/single_episode_task_model_radar.json",

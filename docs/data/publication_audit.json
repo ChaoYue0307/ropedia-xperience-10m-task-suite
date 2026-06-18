@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-18T06:46:43+00:00",
+  "generated_at_utc": "2026-06-18T07:18:06+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -59,6 +59,7 @@
     "RENDERED_SITE_CHECK.md": true,
     "EVALUATION_PROTOCOL.md": true,
     "TASK_SUITE_20.md": true,
+    "XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md": true,
     "FIGURE_INDEX.md": true,
     "SOURCE_ALIGNMENT_AUDIT.md": true,
     "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md": true,
@@ -106,6 +107,7 @@
     "docs/data/task_method_20_result_matrix.json": true,
     "docs/data/task_method_20_gap_audit.json": true,
     "docs/data/task_suite_enhancement_128.json": true,
+    "docs/data/xperience10m_128_episode_feature_index.json": true,
     "docs/assets/modalities/video.jpg": true,
     "docs/assets/modalities/audio.png": true,
     "docs/assets/modalities/depth.jpg": true,
@@ -155,6 +157,7 @@
     "scripts/validate_task_surface.py": true,
     "scripts/validate_website_integrity.py": true,
     "scripts/publish_hf_bundles.py": true,
+    "scripts/omni/build_128_episode_feature_index.py": true,
     "scripts/omni/build_task_suite_enhancement_128.py": true,
     "scripts/omni/train_qwen3_omni_lora.py": true,
     "results/omni_finetune/task_suite_enhancement_128_v1_20260608/enhancement_plan.json": true,
@@ -206,8 +209,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 1255,
-      "text_file_count": 1057,
+      "file_count": 1258,
+      "text_file_count": 1060,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978
@@ -217,33 +220,33 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 1020,
-      "text_file_count": 855,
+      "file_count": 1027,
+      "text_file_count": 861,
       "largest_file": {
-        "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
-        "bytes": 55702978
+        "path": "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608/dense_multiscale_windows.jsonl",
+        "bytes": 135591061
       },
       "violations": []
     },
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 2447,
-      "text_file_count": 1058,
+      "file_count": 2456,
+      "text_file_count": 1066,
       "largest_file": {
-        "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
-        "bytes": 55702978
+        "path": "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608/dense_multiscale_windows.jsonl",
+        "bytes": 135591061
       },
       "violations": []
     },
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 2874,
-      "text_file_count": 1219,
+      "file_count": 2884,
+      "text_file_count": 1228,
       "largest_file": {
-        "path": "pytorch_model.bin",
-        "bytes": 93495480
+        "path": "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608/dense_multiscale_windows.jsonl",
+        "bytes": 135591061
       },
       "violations": []
     }
