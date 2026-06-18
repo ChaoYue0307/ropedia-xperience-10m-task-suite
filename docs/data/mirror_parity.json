@@ -1,9 +1,9 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-18T22:28:27+00:00",
+  "generated_at_utc": "2026-06-18T22:36:57+00:00",
   "hf_root": "hf_publish",
   "summary": {
-    "group_count": 782,
+    "group_count": 855,
     "failure_count": 0,
     "failures_by_surface": {}
   },
@@ -5109,21 +5109,21 @@
       "local": {
         "path": "repo:scripts/validate_mirror_parity.py",
         "exists": true,
-        "bytes": 29932,
-        "sha256": "90eafb085d7576f7f1cc2004cbc6b7da192cc11297fd49ab5ad818a62b3b4ce1"
+        "bytes": 30470,
+        "sha256": "3bb5e673241fd28ec603d02fd5d6882e4e1bfef66ac06794cdcd8f9930340ec7"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 29932,
-          "sha256": "90eafb085d7576f7f1cc2004cbc6b7da192cc11297fd49ab5ad818a62b3b4ce1"
+          "bytes": 30470,
+          "sha256": "3bb5e673241fd28ec603d02fd5d6882e4e1bfef66ac06794cdcd8f9930340ec7"
         },
         "hf_model": {
           "path": "hf_model:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 29932,
-          "sha256": "90eafb085d7576f7f1cc2004cbc6b7da192cc11297fd49ab5ad818a62b3b4ce1"
+          "bytes": 30470,
+          "sha256": "3bb5e673241fd28ec603d02fd5d6882e4e1bfef66ac06794cdcd8f9930340ec7"
         }
       },
       "failures": []
@@ -5259,21 +5259,21 @@
       "local": {
         "path": "repo:scripts/sync_hf_publish_mirrors.py",
         "exists": true,
-        "bytes": 24829,
-        "sha256": "496fd1ffc4ffd855cbb2d421483e72250aa020283379454edda282a1e6424bd6"
+        "bytes": 25017,
+        "sha256": "2ab382c7159357f60ee24af9d3ef6b5d828fe780a75e2f13e3d187705df3a93e"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/sync_hf_publish_mirrors.py",
           "exists": true,
-          "bytes": 24829,
-          "sha256": "496fd1ffc4ffd855cbb2d421483e72250aa020283379454edda282a1e6424bd6"
+          "bytes": 25017,
+          "sha256": "2ab382c7159357f60ee24af9d3ef6b5d828fe780a75e2f13e3d187705df3a93e"
         },
         "hf_model": {
           "path": "hf_model:scripts/sync_hf_publish_mirrors.py",
           "exists": true,
-          "bytes": 24829,
-          "sha256": "496fd1ffc4ffd855cbb2d421483e72250aa020283379454edda282a1e6424bd6"
+          "bytes": 25017,
+          "sha256": "2ab382c7159357f60ee24af9d3ef6b5d828fe780a75e2f13e3d187705df3a93e"
         }
       },
       "failures": []
@@ -20600,6 +20600,1393 @@
           "exists": true,
           "bytes": 293339,
           "sha256": "b9fbdb43709e1c4fcea2632c3a8d157297009d82a11c3a3331de1eb92ae17bea"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/deferred_launchers/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z.launcher.log",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/deferred_launchers/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z.launcher.log",
+        "exists": true,
+        "bytes": 1367,
+        "sha256": "a875eaa1f46e1b3feb377290d5cfc5af65de34c774cac1caa3af150d99592dba"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/deferred_launchers/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z.launcher.log",
+          "exists": true,
+          "bytes": 1367,
+          "sha256": "a875eaa1f46e1b3feb377290d5cfc5af65de34c774cac1caa3af150d99592dba"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/deferred_launchers/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z.launch.log",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/deferred_launchers/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z.launch.log",
+        "exists": true,
+        "bytes": 1351,
+        "sha256": "6abc28a5fd6ed86ae8c1075a53891502d4214d483cd9ce060b976a01aa73ec8a"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/deferred_launchers/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z.launch.log",
+          "exists": true,
+          "bytes": 1351,
+          "sha256": "6abc28a5fd6ed86ae8c1075a53891502d4214d483cd9ce060b976a01aa73ec8a"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/deferred_launchers/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z.launcher.log",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/deferred_launchers/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z.launcher.log",
+        "exists": true,
+        "bytes": 2048,
+        "sha256": "6952893720a78312f5a72b1f82cf59c1ec9b68520beb70cce96e2d0b8deb878b"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/deferred_launchers/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z.launcher.log",
+          "exists": true,
+          "bytes": 2048,
+          "sha256": "6952893720a78312f5a72b1f82cf59c1ec9b68520beb70cce96e2d0b8deb878b"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/RUN_REPORT.md",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/RUN_REPORT.md",
+        "exists": true,
+        "bytes": 1421,
+        "sha256": "7f2156454573d3174ed5ddb029864fdf65214d9f8c09a151d0a3bd9a0ef86452"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/RUN_REPORT.md",
+          "exists": true,
+          "bytes": 1421,
+          "sha256": "7f2156454573d3174ed5ddb029864fdf65214d9f8c09a151d0a3bd9a0ef86452"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/action_object_relation/cosmos3_super_reasoner/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/action_object_relation/cosmos3_super_reasoner/metrics.json",
+        "exists": true,
+        "bytes": 21876,
+        "sha256": "a1d506a2c132d1d0e8bf31a9ba8618fec88bac75b056f99c50219514fdf3e22e"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/action_object_relation/cosmos3_super_reasoner/metrics.json",
+          "exists": true,
+          "bytes": 21876,
+          "sha256": "a1d506a2c132d1d0e8bf31a9ba8618fec88bac75b056f99c50219514fdf3e22e"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/action_object_relation/cosmos3_super_reasoner/per_class_metrics.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/action_object_relation/cosmos3_super_reasoner/per_class_metrics.csv",
+        "exists": true,
+        "bytes": 22569,
+        "sha256": "e5d85ed571b3647fab6dad7b46944a65981d57c51a87708cc5e86a20d71d1358"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/action_object_relation/cosmos3_super_reasoner/per_class_metrics.csv",
+          "exists": true,
+          "bytes": 22569,
+          "sha256": "e5d85ed571b3647fab6dad7b46944a65981d57c51a87708cc5e86a20d71d1358"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/action_object_relation/cosmos3_super_reasoner/predictions.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/action_object_relation/cosmos3_super_reasoner/predictions.csv",
+        "exists": true,
+        "bytes": 176633,
+        "sha256": "c198bd15c3a5589d4de1da072cb70840d245993d43801e60ca4682a267e3dfeb"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/action_object_relation/cosmos3_super_reasoner/predictions.csv",
+          "exists": true,
+          "bytes": 176633,
+          "sha256": "c198bd15c3a5589d4de1da072cb70840d245993d43801e60ca4682a267e3dfeb"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/action_object_relation/qwen3_omni_v6_lora/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/action_object_relation/qwen3_omni_v6_lora/metrics.json",
+        "exists": true,
+        "bytes": 169938,
+        "sha256": "e5754d22070d2b25b60e03e1c9acde49daacce48b871c7f4520d130355c07eb1"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/action_object_relation/qwen3_omni_v6_lora/metrics.json",
+          "exists": true,
+          "bytes": 169938,
+          "sha256": "e5754d22070d2b25b60e03e1c9acde49daacce48b871c7f4520d130355c07eb1"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/action_object_relation/qwen3_omni_v6_lora/per_class_metrics.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/action_object_relation/qwen3_omni_v6_lora/per_class_metrics.csv",
+        "exists": true,
+        "bytes": 188619,
+        "sha256": "1f4b312a07a8e0a67a1cd6a83e2c83d0c91804f2d8a51c4eeda207444ae262e9"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/action_object_relation/qwen3_omni_v6_lora/per_class_metrics.csv",
+          "exists": true,
+          "bytes": 188619,
+          "sha256": "1f4b312a07a8e0a67a1cd6a83e2c83d0c91804f2d8a51c4eeda207444ae262e9"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/action_object_relation/qwen3_omni_v6_lora/predictions.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/action_object_relation/qwen3_omni_v6_lora/predictions.csv",
+        "exists": true,
+        "bytes": 1848188,
+        "sha256": "521edd5ce67341b1a4dba1dcf0f6e097ab9477536ef9cce96ec3bd0908c35469"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/action_object_relation/qwen3_omni_v6_lora/predictions.csv",
+          "exists": true,
+          "bytes": 1848188,
+          "sha256": "521edd5ce67341b1a4dba1dcf0f6e097ab9477536ef9cce96ec3bd0908c35469"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/cosmos3_nano_future_window_source_window_map.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/cosmos3_nano_future_window_source_window_map.jsonl",
+        "exists": true,
+        "bytes": 110594,
+        "sha256": "03f67ea825bc33ce17feaed0c9a726a1836749ff0e759507f65b3dc801067b71"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/cosmos3_nano_future_window_source_window_map.jsonl",
+          "exists": true,
+          "bytes": 110594,
+          "sha256": "03f67ea825bc33ce17feaed0c9a726a1836749ff0e759507f65b3dc801067b71"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/cosmos3_nano_future_window_target_map.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/cosmos3_nano_future_window_target_map.jsonl",
+        "exists": true,
+        "bytes": 279944,
+        "sha256": "d418cc936d46d47f83eda7d9e75f1c82429e6b18c2612ae34fe5cf6eb0774968"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/cosmos3_nano_future_window_target_map.jsonl",
+          "exists": true,
+          "bytes": 279944,
+          "sha256": "d418cc936d46d47f83eda7d9e75f1c82429e6b18c2612ae34fe5cf6eb0774968"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_nano_future_window/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_nano_future_window/metrics.json",
+        "exists": true,
+        "bytes": 7404,
+        "sha256": "fe39f6894d2b71411b4272e555d1801e55f3b4ed419e0d4cd19e0e4ed53f60f1"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_nano_future_window/metrics.json",
+          "exists": true,
+          "bytes": 7404,
+          "sha256": "fe39f6894d2b71411b4272e555d1801e55f3b4ed419e0d4cd19e0e4ed53f60f1"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_nano_future_window/per_class_metrics.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_nano_future_window/per_class_metrics.csv",
+        "exists": true,
+        "bytes": 6415,
+        "sha256": "b49d62a83c62d34845dca0ee5be41f1ec0bcf0d3dd3846e4d79c536196064e2b"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_nano_future_window/per_class_metrics.csv",
+          "exists": true,
+          "bytes": 6415,
+          "sha256": "b49d62a83c62d34845dca0ee5be41f1ec0bcf0d3dd3846e4d79c536196064e2b"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_nano_future_window/predictions.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_nano_future_window/predictions.csv",
+        "exists": true,
+        "bytes": 127464,
+        "sha256": "e93ebc718f7da22561f13b4415626076f0b3a67dc5f0bccfee9e3c60089f9d06"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_nano_future_window/predictions.csv",
+          "exists": true,
+          "bytes": 127464,
+          "sha256": "e93ebc718f7da22561f13b4415626076f0b3a67dc5f0bccfee9e3c60089f9d06"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_super_reasoner/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_super_reasoner/metrics.json",
+        "exists": true,
+        "bytes": 10051,
+        "sha256": "b7773f4af1284dfb498c69ba174049056e038ce10465281b657223629d1dab5f"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_super_reasoner/metrics.json",
+          "exists": true,
+          "bytes": 10051,
+          "sha256": "b7773f4af1284dfb498c69ba174049056e038ce10465281b657223629d1dab5f"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_super_reasoner/per_class_metrics.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_super_reasoner/per_class_metrics.csv",
+        "exists": true,
+        "bytes": 4622,
+        "sha256": "e40257477efc268900d72fe6a1c24dc618e763ef89ba2eb5325851b0fc40f742"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_super_reasoner/per_class_metrics.csv",
+          "exists": true,
+          "bytes": 4622,
+          "sha256": "e40257477efc268900d72fe6a1c24dc618e763ef89ba2eb5325851b0fc40f742"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_super_reasoner/predictions.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_super_reasoner/predictions.csv",
+        "exists": true,
+        "bytes": 97516,
+        "sha256": "2510cb2c92085e456107d88f9eebda42f559c0c70ba9a8a074616cce43a8d5b0"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_super_reasoner/predictions.csv",
+          "exists": true,
+          "bytes": 97516,
+          "sha256": "2510cb2c92085e456107d88f9eebda42f559c0c70ba9a8a074616cce43a8d5b0"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/modality_reconstruction/cosmos3_nano_future_window/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/modality_reconstruction/cosmos3_nano_future_window/metrics.json",
+        "exists": true,
+        "bytes": 1825,
+        "sha256": "4d04bb2e461a76d0a8f9ec37f6b73915c87544472406b3ca576cb791f100db92"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/modality_reconstruction/cosmos3_nano_future_window/metrics.json",
+          "exists": true,
+          "bytes": 1825,
+          "sha256": "4d04bb2e461a76d0a8f9ec37f6b73915c87544472406b3ca576cb791f100db92"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/next_subtask_forecast/cosmos3_nano_future_window/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/next_subtask_forecast/cosmos3_nano_future_window/metrics.json",
+        "exists": true,
+        "bytes": 5594,
+        "sha256": "0f2b7b041ae7cd46b128427634d0328178303c1ede02643fb86a68933c149099"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/next_subtask_forecast/cosmos3_nano_future_window/metrics.json",
+          "exists": true,
+          "bytes": 5594,
+          "sha256": "0f2b7b041ae7cd46b128427634d0328178303c1ede02643fb86a68933c149099"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/next_subtask_forecast/cosmos3_nano_future_window/per_class_metrics.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/next_subtask_forecast/cosmos3_nano_future_window/per_class_metrics.csv",
+        "exists": true,
+        "bytes": 4239,
+        "sha256": "45c6a281318d1171854a60a36bad06e226688a9b85bdb4c19db4d4b7e489d866"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/next_subtask_forecast/cosmos3_nano_future_window/per_class_metrics.csv",
+          "exists": true,
+          "bytes": 4239,
+          "sha256": "45c6a281318d1171854a60a36bad06e226688a9b85bdb4c19db4d4b7e489d866"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/next_subtask_forecast/cosmos3_nano_future_window/predictions.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/next_subtask_forecast/cosmos3_nano_future_window/predictions.csv",
+        "exists": true,
+        "bytes": 101384,
+        "sha256": "1519e5b73da78c31d4bd802888bf6373bc788f74dae6805ca5cf73d2f7167b22"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/next_subtask_forecast/cosmos3_nano_future_window/predictions.csv",
+          "exists": true,
+          "bytes": 101384,
+          "sha256": "1519e5b73da78c31d4bd802888bf6373bc788f74dae6805ca5cf73d2f7167b22"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/object_set_forecast/cosmos3_nano_future_window/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/object_set_forecast/cosmos3_nano_future_window/metrics.json",
+        "exists": true,
+        "bytes": 2225,
+        "sha256": "f080f27c4457005ae1383d31cde22fc3c51b0c065eda3e0b5842135048254877"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/object_set_forecast/cosmos3_nano_future_window/metrics.json",
+          "exists": true,
+          "bytes": 2225,
+          "sha256": "f080f27c4457005ae1383d31cde22fc3c51b0c065eda3e0b5842135048254877"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/object_set_forecast/cosmos3_nano_future_window/predictions.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/object_set_forecast/cosmos3_nano_future_window/predictions.csv",
+        "exists": true,
+        "bytes": 115972,
+        "sha256": "9373a33d2792be6572923c3f556ed8ab2aa2336b4b8cdea7b5c452394cc288aa"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/object_set_forecast/cosmos3_nano_future_window/predictions.csv",
+          "exists": true,
+          "bytes": 115972,
+          "sha256": "9373a33d2792be6572923c3f556ed8ab2aa2336b4b8cdea7b5c452394cc288aa"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/summary.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/summary.json",
+        "exists": true,
+        "bytes": 5278,
+        "sha256": "4a27f39807e8ac13771e2109584a8b0265961bcea88445058cbfe87265457d7f"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/summary.json",
+          "exists": true,
+          "bytes": 5278,
+          "sha256": "4a27f39807e8ac13771e2109584a8b0265961bcea88445058cbfe87265457d7f"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_nano_future_window/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_nano_future_window/metrics.json",
+        "exists": true,
+        "bytes": 2398,
+        "sha256": "31b36b403d37ee21efed27e9c2c5c4b46806bb1caff9f9159c5914c6c104a61c"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_nano_future_window/metrics.json",
+          "exists": true,
+          "bytes": 2398,
+          "sha256": "31b36b403d37ee21efed27e9c2c5c4b46806bb1caff9f9159c5914c6c104a61c"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_nano_future_window/predictions.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_nano_future_window/predictions.csv",
+        "exists": true,
+        "bytes": 86727,
+        "sha256": "7c89b16f7bb322046d6407ef255ffefa80239b4cbb59d2a7b968dd5ddba8c592"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_nano_future_window/predictions.csv",
+          "exists": true,
+          "bytes": 86727,
+          "sha256": "7c89b16f7bb322046d6407ef255ffefa80239b4cbb59d2a7b968dd5ddba8c592"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_super_reasoner/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_super_reasoner/metrics.json",
+        "exists": true,
+        "bytes": 2049,
+        "sha256": "6eae6e5b12a4073e98531046451c8ef332f0ca469a741aab09e94c952dc754cb"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_super_reasoner/metrics.json",
+          "exists": true,
+          "bytes": 2049,
+          "sha256": "6eae6e5b12a4073e98531046451c8ef332f0ca469a741aab09e94c952dc754cb"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_super_reasoner/predictions.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_super_reasoner/predictions.csv",
+        "exists": true,
+        "bytes": 76139,
+        "sha256": "a373e6326d33262086b278a365f0612346950b17f0f3bc02b33440e58bde33c3"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_super_reasoner/predictions.csv",
+          "exists": true,
+          "bytes": 76139,
+          "sha256": "a373e6326d33262086b278a365f0612346950b17f0f3bc02b33440e58bde33c3"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/RUN_REPORT.md",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/RUN_REPORT.md",
+        "exists": true,
+        "bytes": 288,
+        "sha256": "3cd49847008210c75cc9373c2950a7e6163228413df795786516de8e91f9241c"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/RUN_REPORT.md",
+          "exists": true,
+          "bytes": 288,
+          "sha256": "3cd49847008210c75cc9373c2950a7e6163228413df795786516de8e91f9241c"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/camera_view_sync_retrieval/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/camera_view_sync_retrieval/metrics.json",
+        "exists": true,
+        "bytes": 1755,
+        "sha256": "29f247923231eeea16dc7dff24f32cd512439d934835923925c81237642d0e1b"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/camera_view_sync_retrieval/metrics.json",
+          "exists": true,
+          "bytes": 1755,
+          "sha256": "29f247923231eeea16dc7dff24f32cd512439d934835923925c81237642d0e1b"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/camera_view_sync_retrieval/predictions.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/camera_view_sync_retrieval/predictions.csv",
+        "exists": true,
+        "bytes": 876830,
+        "sha256": "b2d646750b831e96d60ef217162592be25024c0270f6c7ab409083c4eca8a8c0"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/camera_view_sync_retrieval/predictions.csv",
+          "exists": true,
+          "bytes": 876830,
+          "sha256": "b2d646750b831e96d60ef217162592be25024c0270f6c7ab409083c4eca8a8c0"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/camera_view_sync_retrieval/predictions.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/camera_view_sync_retrieval/predictions.jsonl",
+        "exists": true,
+        "bytes": 6932036,
+        "sha256": "9ab4c27daf6622035b07fea47da111ca18698224451d72d2c81d06699ab4ef56"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/camera_view_sync_retrieval/predictions.jsonl",
+          "exists": true,
+          "bytes": 6932036,
+          "sha256": "9ab4c27daf6622035b07fea47da111ca18698224451d72d2c81d06699ab4ef56"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/collection_validation.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/collection_validation.json",
+        "exists": true,
+        "bytes": 692,
+        "sha256": "141b2de994364ea4ed0a89dcad5d2680cede4caf2e0b991f60d10e39d813987a"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/collection_validation.json",
+          "exists": true,
+          "bytes": 692,
+          "sha256": "141b2de994364ea4ed0a89dcad5d2680cede4caf2e0b991f60d10e39d813987a"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/launch_env.txt",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/launch_env.txt",
+        "exists": true,
+        "bytes": 721,
+        "sha256": "c7479d97ece918e066b43fc74b1c15ec525393469a009b4b6906be40247350ff"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/launch_env.txt",
+          "exists": true,
+          "bytes": 721,
+          "sha256": "c7479d97ece918e066b43fc74b1c15ec525393469a009b4b6906be40247350ff"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/summary.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/summary.json",
+        "exists": true,
+        "bytes": 831,
+        "sha256": "144da8378b718a9d459f715776507e1f9bf8c0d56bdf804e81b9b1a5ce36deb8"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/summary.json",
+          "exists": true,
+          "bytes": 831,
+          "sha256": "144da8378b718a9d459f715776507e1f9bf8c0d56bdf804e81b9b1a5ce36deb8"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z_shard0.progress.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z_shard0.progress.jsonl",
+        "exists": true,
+        "bytes": 570722,
+        "sha256": "3b1635acd2b4adebea35edecb7a94bf5e928b5f09c54af20e54ae3e1c83394c2"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z_shard0.progress.jsonl",
+          "exists": true,
+          "bytes": 570722,
+          "sha256": "3b1635acd2b4adebea35edecb7a94bf5e928b5f09c54af20e54ae3e1c83394c2"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z_shard1.progress.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z_shard1.progress.jsonl",
+        "exists": true,
+        "bytes": 570714,
+        "sha256": "11e9db9fd3d61feeff7987e4ec227bb2373406b92cb6e0a01a883b4ee6e1573a"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z_shard1.progress.jsonl",
+          "exists": true,
+          "bytes": 570714,
+          "sha256": "11e9db9fd3d61feeff7987e4ec227bb2373406b92cb6e0a01a883b4ee6e1573a"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/RUN_REPORT.md",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/RUN_REPORT.md",
+        "exists": true,
+        "bytes": 279,
+        "sha256": "829549911df0a32bee5a93112541c8a3abbc6cad484ca61543e9c5f17afc860c"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/RUN_REPORT.md",
+          "exists": true,
+          "bytes": 279,
+          "sha256": "829549911df0a32bee5a93112541c8a3abbc6cad484ca61543e9c5f17afc860c"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/collection_validation.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/collection_validation.json",
+        "exists": true,
+        "bytes": 680,
+        "sha256": "1eb91851997862cc7059edf1cb3ae7c89380064dda50d1988f4e1a4a7b65b4f5"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/collection_validation.json",
+          "exists": true,
+          "bytes": 680,
+          "sha256": "1eb91851997862cc7059edf1cb3ae7c89380064dda50d1988f4e1a4a7b65b4f5"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/cross_modal_retrieval/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/cross_modal_retrieval/metrics.json",
+        "exists": true,
+        "bytes": 1576,
+        "sha256": "48fbc7ed3ea51a6de33de60ca30403ef0a865590cba32492b535ae1c1521692c"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/cross_modal_retrieval/metrics.json",
+          "exists": true,
+          "bytes": 1576,
+          "sha256": "48fbc7ed3ea51a6de33de60ca30403ef0a865590cba32492b535ae1c1521692c"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/cross_modal_retrieval/predictions.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/cross_modal_retrieval/predictions.csv",
+        "exists": true,
+        "bytes": 885386,
+        "sha256": "b057adf47156549fc422325bceb43c65b5e4de42a77e23685c187b647af85bb7"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/cross_modal_retrieval/predictions.csv",
+          "exists": true,
+          "bytes": 885386,
+          "sha256": "b057adf47156549fc422325bceb43c65b5e4de42a77e23685c187b647af85bb7"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/cross_modal_retrieval/predictions.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/cross_modal_retrieval/predictions.jsonl",
+        "exists": true,
+        "bytes": 9251901,
+        "sha256": "32609af80189913c29e9ac5aa24f161e91a938ef15d0f147d85caa2718b14f4e"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/cross_modal_retrieval/predictions.jsonl",
+          "exists": true,
+          "bytes": 9251901,
+          "sha256": "32609af80189913c29e9ac5aa24f161e91a938ef15d0f147d85caa2718b14f4e"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/launch_env.txt",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/launch_env.txt",
+        "exists": true,
+        "bytes": 717,
+        "sha256": "cf3bf92bb9d62375ae883b687372ab551fc2091661122234ce03b1ce852897d3"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/launch_env.txt",
+          "exists": true,
+          "bytes": 717,
+          "sha256": "cf3bf92bb9d62375ae883b687372ab551fc2091661122234ce03b1ce852897d3"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/summary.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/summary.json",
+        "exists": true,
+        "bytes": 814,
+        "sha256": "9e38acbfa285812b219b39a01b86fbfbf0c7d86185f13bbf7cb0c1e38d9a3e92"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/summary.json",
+          "exists": true,
+          "bytes": 814,
+          "sha256": "9e38acbfa285812b219b39a01b86fbfbf0c7d86185f13bbf7cb0c1e38d9a3e92"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z_shard0.progress.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z_shard0.progress.jsonl",
+        "exists": true,
+        "bytes": 560581,
+        "sha256": "74fcb20535cc956c5ebb58004f2dd07f5f322a196ad9e45097bb6a5fba8e1e79"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z_shard0.progress.jsonl",
+          "exists": true,
+          "bytes": 560581,
+          "sha256": "74fcb20535cc956c5ebb58004f2dd07f5f322a196ad9e45097bb6a5fba8e1e79"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z_shard1.progress.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z_shard1.progress.jsonl",
+        "exists": true,
+        "bytes": 560630,
+        "sha256": "a0e7c60240dd61bc1cfb579641c160b1252491f655b92959b26763d154fe13d2"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z_shard1.progress.jsonl",
+          "exists": true,
+          "bytes": 560630,
+          "sha256": "a0e7c60240dd61bc1cfb579641c160b1252491f655b92959b26763d154fe13d2"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/RUN_REPORT.md",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/RUN_REPORT.md",
+        "exists": true,
+        "bytes": 399,
+        "sha256": "927bee96928f9fe1380939a7ef4714405cfcf8c5af9f7bfe1ab403196983234a"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/RUN_REPORT.md",
+          "exists": true,
+          "bytes": 399,
+          "sha256": "927bee96928f9fe1380939a7ef4714405cfcf8c5af9f7bfe1ab403196983234a"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/collection_validation.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/collection_validation.json",
+        "exists": true,
+        "bytes": 1307,
+        "sha256": "33ac6bff7d7111fb90b196801b93dfa199b637fb04983ace517aeda01f69e31b"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/collection_validation.json",
+          "exists": true,
+          "bytes": 1307,
+          "sha256": "33ac6bff7d7111fb90b196801b93dfa199b637fb04983ace517aeda01f69e31b"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/launch_env.txt",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/launch_env.txt",
+        "exists": true,
+        "bytes": 753,
+        "sha256": "a0d0f5a43c87128d00ff0935bc108bd90d4a8f3ee9e64a3c389b76624310fe25"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/launch_env.txt",
+          "exists": true,
+          "bytes": 753,
+          "sha256": "a0d0f5a43c87128d00ff0935bc108bd90d4a8f3ee9e64a3c389b76624310fe25"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/metrics.json",
+        "exists": true,
+        "bytes": 13088,
+        "sha256": "5907654eba9013ada0e31302ce1cfe757c6f96510cdbdd2f97abadf383fedb3c"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/metrics.json",
+          "exists": true,
+          "bytes": 13088,
+          "sha256": "5907654eba9013ada0e31302ce1cfe757c6f96510cdbdd2f97abadf383fedb3c"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/per_class_metrics.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/per_class_metrics.csv",
+        "exists": true,
+        "bytes": 15870,
+        "sha256": "d2c4d74bcd617b025d2bf8e3977008773906168d514be9954ca2a3030f5cbd66"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/per_class_metrics.csv",
+          "exists": true,
+          "bytes": 15870,
+          "sha256": "d2c4d74bcd617b025d2bf8e3977008773906168d514be9954ca2a3030f5cbd66"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/predictions.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/predictions.csv",
+        "exists": true,
+        "bytes": 949184,
+        "sha256": "87bb97e999b1904ebcc10b9b0c0fb30dd35c3d29b4cbf034198da14d27479ff5"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/predictions.csv",
+          "exists": true,
+          "bytes": 949184,
+          "sha256": "87bb97e999b1904ebcc10b9b0c0fb30dd35c3d29b4cbf034198da14d27479ff5"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/predictions.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/predictions.jsonl",
+        "exists": true,
+        "bytes": 2863200,
+        "sha256": "b9bbfd396e0a0e07167738feb5fdc1a0b40195da68ae305aa193c7f941adeff6"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/long_horizon_next_action/predictions.jsonl",
+          "exists": true,
+          "bytes": 2863200,
+          "sha256": "b9bbfd396e0a0e07167738feb5fdc1a0b40195da68ae305aa193c7f941adeff6"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/metrics.json",
+        "exists": true,
+        "bytes": 11425,
+        "sha256": "2fbb3f0d71fa963536dc90e4b4a3dc8ea4f935900a465018f0b44484234d5817"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/metrics.json",
+          "exists": true,
+          "bytes": 11425,
+          "sha256": "2fbb3f0d71fa963536dc90e4b4a3dc8ea4f935900a465018f0b44484234d5817"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/per_class_metrics.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/per_class_metrics.csv",
+        "exists": true,
+        "bytes": 12913,
+        "sha256": "f9da097220bb67789486026e43710ea9501c286e3d002703957ddcca50040f6c"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/per_class_metrics.csv",
+          "exists": true,
+          "bytes": 12913,
+          "sha256": "f9da097220bb67789486026e43710ea9501c286e3d002703957ddcca50040f6c"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/predictions.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/predictions.csv",
+        "exists": true,
+        "bytes": 1016264,
+        "sha256": "76afe249274449368209b9903ffe4b8c2dee7397562f5a377c9b0b8621198b49"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/predictions.csv",
+          "exists": true,
+          "bytes": 1016264,
+          "sha256": "76afe249274449368209b9903ffe4b8c2dee7397562f5a377c9b0b8621198b49"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/predictions.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/predictions.jsonl",
+        "exists": true,
+        "bytes": 2910357,
+        "sha256": "9a56b6d48e8504b2ad8b25c8a649303f79ed0b4ace319fe87033dd4b817e704b"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/next_subtask_forecast/predictions.jsonl",
+          "exists": true,
+          "bytes": 2910357,
+          "sha256": "9a56b6d48e8504b2ad8b25c8a649303f79ed0b4ace319fe87033dd4b817e704b"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/object_set_forecast/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/object_set_forecast/metrics.json",
+        "exists": true,
+        "bytes": 1481,
+        "sha256": "8d5dea02b20fb4b09aa33ab82309f76fa3a7e53bb86360ebc99b205a2e750302"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/object_set_forecast/metrics.json",
+          "exists": true,
+          "bytes": 1481,
+          "sha256": "8d5dea02b20fb4b09aa33ab82309f76fa3a7e53bb86360ebc99b205a2e750302"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/object_set_forecast/predictions.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/object_set_forecast/predictions.csv",
+        "exists": true,
+        "bytes": 2472837,
+        "sha256": "30478142a3b8f7e0ea5d662a3019969760d864c95d5413ffd0fbc688d3fb95d4"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/object_set_forecast/predictions.csv",
+          "exists": true,
+          "bytes": 2472837,
+          "sha256": "30478142a3b8f7e0ea5d662a3019969760d864c95d5413ffd0fbc688d3fb95d4"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/object_set_forecast/predictions.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/object_set_forecast/predictions.jsonl",
+        "exists": true,
+        "bytes": 4217076,
+        "sha256": "be1493d344843174c8fd8cfe47533ba96666a4061942656808621622f5ff2df3"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/object_set_forecast/predictions.jsonl",
+          "exists": true,
+          "bytes": 4217076,
+          "sha256": "be1493d344843174c8fd8cfe47533ba96666a4061942656808621622f5ff2df3"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/summary.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/summary.json",
+        "exists": true,
+        "bytes": 1523,
+        "sha256": "80d33f6cb834d02192da560893aed13c4a1ec8fd3389290af35419a353779f0a"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/summary.json",
+          "exists": true,
+          "bytes": 1523,
+          "sha256": "80d33f6cb834d02192da560893aed13c4a1ec8fd3389290af35419a353779f0a"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z_shard0.progress.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z_shard0.progress.jsonl",
+        "exists": true,
+        "bytes": 1656477,
+        "sha256": "87cd7de0de6e57611da5e66e836d21230ca3f091e103affda83aba31a3914e40"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z_shard0.progress.jsonl",
+          "exists": true,
+          "bytes": 1656477,
+          "sha256": "87cd7de0de6e57611da5e66e836d21230ca3f091e103affda83aba31a3914e40"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z_shard1.progress.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z_shard1.progress.jsonl",
+        "exists": true,
+        "bytes": 1642393,
+        "sha256": "4fa85cd4d094eb4583f3f36f89f2662798268e33e2404fd440b39ff0199108ee"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z/xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z_shard1.progress.jsonl",
+          "exists": true,
+          "bytes": 1642393,
+          "sha256": "4fa85cd4d094eb4583f3f36f89f2662798268e33e2404fd440b39ff0199108ee"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/RUN_REPORT.md",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/RUN_REPORT.md",
+        "exists": true,
+        "bytes": 266,
+        "sha256": "7a4c25a4054231087e5c18a46700df14bbe9c1f354327a2fe4faabcd3e72f02d"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/RUN_REPORT.md",
+          "exists": true,
+          "bytes": 266,
+          "sha256": "7a4c25a4054231087e5c18a46700df14bbe9c1f354327a2fe4faabcd3e72f02d"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/caption_grounding/metrics.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/caption_grounding/metrics.json",
+        "exists": true,
+        "bytes": 1464,
+        "sha256": "4fd8f299b29e1827ba0e9829c37847f5986db58d4361517c3b09fe35f8bbfe42"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/caption_grounding/metrics.json",
+          "exists": true,
+          "bytes": 1464,
+          "sha256": "4fd8f299b29e1827ba0e9829c37847f5986db58d4361517c3b09fe35f8bbfe42"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/caption_grounding/predictions.csv",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/caption_grounding/predictions.csv",
+        "exists": true,
+        "bytes": 872395,
+        "sha256": "8c035a3c206a28c5b99f1bb7e69e81a2c40bece1372871efac6a84265b795de7"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/caption_grounding/predictions.csv",
+          "exists": true,
+          "bytes": 872395,
+          "sha256": "8c035a3c206a28c5b99f1bb7e69e81a2c40bece1372871efac6a84265b795de7"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/caption_grounding/predictions.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/caption_grounding/predictions.jsonl",
+        "exists": true,
+        "bytes": 6269216,
+        "sha256": "968755629de4a61b11cedb77620670c6cbb1f79a7585b4bf4fc44417f0845cc6"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/caption_grounding/predictions.jsonl",
+          "exists": true,
+          "bytes": 6269216,
+          "sha256": "968755629de4a61b11cedb77620670c6cbb1f79a7585b4bf4fc44417f0845cc6"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/collection_validation.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/collection_validation.json",
+        "exists": true,
+        "bytes": 647,
+        "sha256": "779bac9155a1f0535d6fe9e12b1b6b43dee5ce951cc0e712a351447d1d958ad1"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/collection_validation.json",
+          "exists": true,
+          "bytes": 647,
+          "sha256": "779bac9155a1f0535d6fe9e12b1b6b43dee5ce951cc0e712a351447d1d958ad1"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/launch_env.txt",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/launch_env.txt",
+        "exists": true,
+        "bytes": 707,
+        "sha256": "942ee9266e1f056c26ff7d3dc95c46fc8fadfcec0af3b18acc38e66921ce0095"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/launch_env.txt",
+          "exists": true,
+          "bytes": 707,
+          "sha256": "942ee9266e1f056c26ff7d3dc95c46fc8fadfcec0af3b18acc38e66921ce0095"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/summary.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/summary.json",
+        "exists": true,
+        "bytes": 775,
+        "sha256": "a4890022c4bb38c67ecab3890fc7561c298b8eb89f235796cfd15471fcaf6b65"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/summary.json",
+          "exists": true,
+          "bytes": 775,
+          "sha256": "a4890022c4bb38c67ecab3890fc7561c298b8eb89f235796cfd15471fcaf6b65"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z_shard0.progress.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z_shard0.progress.jsonl",
+        "exists": true,
+        "bytes": 552512,
+        "sha256": "25d30d03218fb52a7201d7536fc0ad774d443ba22aae25dceb629026629cd5ff"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z_shard0.progress.jsonl",
+          "exists": true,
+          "bytes": 552512,
+          "sha256": "25d30d03218fb52a7201d7536fc0ad774d443ba22aae25dceb629026629cd5ff"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "space_results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z_shard1.progress.jsonl",
+      "status": "pass",
+      "local": {
+        "path": "repo:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z_shard1.progress.jsonl",
+        "exists": true,
+        "bytes": 552588,
+        "sha256": "40e46fa8e8ae98fa2d2475bfbddf4d1cffb7891c35c81493f70096bcebe3a966"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z_shard1.progress.jsonl",
+          "exists": true,
+          "bytes": 552588,
+          "sha256": "40e46fa8e8ae98fa2d2475bfbddf4d1cffb7891c35c81493f70096bcebe3a966"
         }
       },
       "failures": []

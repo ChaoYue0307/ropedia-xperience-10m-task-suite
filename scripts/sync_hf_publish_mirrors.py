@@ -548,7 +548,12 @@ def main() -> int:
             dry_run=args.dry_run,
         )
 
-    for filename in sorted(parity.model_output_task_probe_result_files()):
+    space_result_files = sorted(
+        set(parity.model_output_task_probe_result_files())
+        | set(parity.qwen3_future_task_probe_result_files())
+        | set(parity.qwen3_retrieval_task_probe_result_files())
+    )
+    for filename in space_result_files:
         src = ROOT / "results" / filename
         copied += copy_file(
             src,

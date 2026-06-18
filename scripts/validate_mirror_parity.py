@@ -594,6 +594,23 @@ def build_report(hf_root: Path) -> dict:
             )
         )
 
+    space_result_files = sorted(
+        set(model_output_task_probe_result_files())
+        | set(qwen3_future_task_probe_result_files())
+        | set(qwen3_retrieval_task_probe_result_files())
+    )
+    for filename in space_result_files:
+        groups.append(
+            parity_group(
+                f"space_results/{filename}",
+                ROOT / "results" / filename,
+                {
+                    "hf_space": hf_root / "space/results" / filename,
+                },
+                hf_root,
+            )
+        )
+
     for filename in DOC_FILES:
         groups.append(
             parity_group(
