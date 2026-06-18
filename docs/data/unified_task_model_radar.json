@@ -1,11 +1,11 @@
 {
   "title": "Unified 20-Task Model Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-18T18:18:12+00:00",
+  "generated_at_utc": "2026-06-18T20:25:46+00:00",
   "task_count": 20,
   "method_count": 9,
   "method_task_record_count": 180,
-  "scored_method_task_count": 147,
+  "scored_method_task_count": 148,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
@@ -214,20 +214,20 @@
       "kind": "partial_128_episode_world_model_overlay",
       "scope": "128 selected episodes, held-out test",
       "stroke_dasharray": "2 7",
-      "method_detail": "Verified Cosmos3-Nano future-window compatibility metrics, plus task 10 reconstruction quality and task 13 scored from existing held-out future-window artifacts.",
+      "method_detail": "Verified Cosmos3-Nano future-window compatibility metrics, plus task 10 reconstruction quality, task 13, and a derived task-20 boundary timing probe scored from existing held-out future-window artifacts.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 7,
-      "covered_task_count": 7,
+      "scored_task_count": 8,
+      "covered_task_count": 8,
       "proxy_scored_task_count": 0,
-      "scoreless_task_count": 13,
+      "scoreless_task_count": 12,
       "unsupported_task_count": 0,
-      "not_evaluated_task_count": 13,
+      "not_evaluated_task_count": 12,
       "status_counts": {
-        "not_evaluated_in_verified_package": 13,
-        "scored": 7
+        "not_evaluated_in_verified_package": 12,
+        "scored": 8
       },
-      "coverage_fraction": 0.35,
+      "coverage_fraction": 0.4,
       "result_record_fraction": 1.0
     }
   ],
@@ -2384,6 +2384,17 @@
           "raw_text": "52.95",
           "status_label": "scored"
         },
+        "cosmos3_nano_future_window": {
+          "raw": 33.80952380952381,
+          "metric_key": "time_to_transition_mae",
+          "source": "results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_nano_future_window/metrics.json",
+          "scope": "multi_episode_128_partial_model_overlay",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.3116682871966295,
+          "raw_text": "33.81",
+          "status_label": "scored"
+        },
         "qwen3_omni_v6_lora": {
           "raw": 134.0687422166874,
           "metric_key": "time_to_transition_mae",
@@ -2438,17 +2449,6 @@
           "normalized_score": 0.24867468405504953,
           "raw_text": "42.37",
           "status_label": "scored"
-        },
-        "cosmos3_nano_future_window": {
-          "raw": null,
-          "metric_key": "mae",
-          "source": null,
-          "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
         }
       }
     }
@@ -2507,7 +2507,7 @@
       "id": "cosmos3_nano_future_window",
       "title": "Cosmos3-Nano Future Window",
       "status": "verified_compatibility_eval",
-      "coverage": "20 records / 7 scored task-aligned axes",
+      "coverage": "20 records / 8 scored task-aligned axes",
       "headline": "future retrieval MRR 0.0221; transition accuracy 0.9683",
       "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/eval/metrics.json"
     },
@@ -5749,17 +5749,17 @@
       "task_label": "Time-to-Next-Transition Regression",
       "series_id": "cosmos3_nano_future_window",
       "method": "Cosmos3-Nano Future Window",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "mae",
-      "source": null,
+      "raw": 33.80952380952381,
+      "raw_text": "33.81",
+      "normalized_score": 0.3116682871966295,
+      "metric_key": "time_to_transition_mae",
+      "source": "results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_nano_future_window/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     }
   ]
 }

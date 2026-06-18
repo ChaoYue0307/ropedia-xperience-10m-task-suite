@@ -59,6 +59,10 @@ MODEL_SPECS = {
             "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/"
             "dataset/dataset_manifest.json"
         ),
+        "source_window_map_jsonl": (
+            "results/omni_finetune/model_output_task_probes_20260616/"
+            "cosmos3_nano_future_window_source_window_map.jsonl"
+        ),
         "action_object_relation_unsupported_reason": "verified future-window predictions do not contain object-set fields",
     },
 }
@@ -711,6 +715,159 @@ def score_time_to_transition_from_action_sequence(
     return metrics
 
 
+def score_cosmos_nano_time_to_transition_from_future_windows(
+    *,
+    model_id: str,
+    spec: dict[str, Any],
+    prediction_jsonl: Path,
+    source_window_map_jsonl: Path,
+    output_dir: Path,
+    workspace: Path,
+    cap_frames: int = 200,
+) -> dict[str, Any]:
+    source_rows = read_jsonl(prediction_jsonl)
+    window_rows = read_jsonl(source_window_map_jsonl)
+    window_by_id = {str(row.get("id")): row for row in window_rows if row.get("id")}
+    rows: list[dict[str, Any]] = []
+    true_actions: list[str] = []
+    pred_actions: list[str] = []
+    missing_window_count = 0
+    missing_pred_action_count = 0
+
+    for row in source_rows:
+        future_id = str(row.get("future_record_id") or "")
+        window = window_by_id.get(future_id)
+        if not window:
+            missing_window_count += 1
+            continue
+        true_action = normalize_text(row.get("true_action") or window.get("action"))
+        if not true_action:
+            continue
+        pred_action = normalize_text(row.get("pred_action"))
+        if not pred_action:
+            pred_action = "<missing_pred_action>"
+            missing_pred_action_count += 1
+        rows.append(
+            {
+                **row,
+                "center_window": {
+                    "start_frame": window.get("start_frame"),
+                    "end_frame": window.get("end_frame"),
+                    "num_frames": window.get("num_frames"),
+                },
+                "future_record_id": future_id,
+                "future_window_action": window.get("action"),
+            }
+        )
+        true_actions.append(true_action)
+        pred_actions.append(pred_action)
+
+    if not rows:
+        raise RuntimeError(f"no future-window rows could be joined for time-to-transition scoring in {prediction_jsonl}")
+
+    true_dist = transition_distances(rows, true_actions, cap_frames)
+    pred_dist = transition_distances(rows, pred_actions, cap_frames)
+    errors = [abs(pred - true) for pred, true in zip(pred_dist, true_dist)]
+    mae = sum(errors) / len(errors)
+    rmse = (sum(error * error for error in errors) / len(errors)) ** 0.5
+    within_20 = sum(1 for error in errors if error <= 20.0) / len(errors)
+    within_50 = sum(1 for error in errors if error <= 50.0) / len(errors)
+
+    scored_rows = []
+    for row, true_action, pred_action, true_value, pred_value, error in zip(
+        rows,
+        true_actions,
+        pred_actions,
+        true_dist,
+        pred_dist,
+        errors,
+    ):
+        scored_rows.append(
+            {
+                "id": row.get("id"),
+                "split": row.get("split"),
+                "episode_id": row.get("episode_id"),
+                "future_record_id": row.get("future_record_id"),
+                "start_frame": row_start(row),
+                "true_action": true_action,
+                "pred_action": pred_action,
+                "true_time_to_transition_frames": true_value,
+                "pred_time_to_transition_frames": pred_value,
+                "absolute_error_frames": error,
+                "rank": row.get("rank"),
+                "top_k_hit": row.get("top_k_hit"),
+            }
+        )
+
+    metrics = {
+        "title": f"{spec['label']} Time-to-Transition Future-Window Probe",
+        "status": "pass",
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "model_id": model_id,
+        "model_label": spec["label"],
+        "task_id": "time_to_transition",
+        "task_number": 20,
+        "task_label": "Time to Transition",
+        "metric_key": "time_to_transition_mae",
+        "primary_metric": "time_to_transition_mae",
+        "primary_score": mae,
+        "metric_direction": "lower",
+        "time_to_transition_mae": mae,
+        "time_to_transition_rmse": rmse,
+        "within_20_frames": within_20,
+        "within_50_frames": within_50,
+        "cap_frames": cap_frames,
+        "source_prediction_jsonl": relpath(prediction_jsonl, workspace),
+        "source_window_map_jsonl": relpath(source_window_map_jsonl, workspace),
+        "scope": "held_out_test_existing_future_window_action_sequence_probe",
+        "score_policy": (
+            "Derived from existing verified held-out Cosmos3-Nano future-window predictions. "
+            "The model did not emit a direct scalar time-to-transition value; predicted boundary "
+            "timing is computed from changes in its predicted future-action sequence and compared "
+            "with the true held-out future-action boundary timing."
+        ),
+        "normalization_policy": (
+            "Rows are joined to the compact source-window map by future_record_id, grouped by "
+            "episode, and sorted by future-window start frame. The target and prediction are "
+            f"frames until the next action-label change, capped at {cap_frames} frames."
+        ),
+        "known_limitation": (
+            "This is a derived future-window action-sequence probe, not evidence of a separately "
+            "trained scalar time-regression head. It is included because task 20's boundary target "
+            "is deterministically derivable once future-window action predictions are verified."
+        ),
+        "total_prediction_rows": len(source_rows),
+        "source_window_rows": len(window_rows),
+        "scored_rows": len(scored_rows),
+        "missing_window_count": missing_window_count,
+        "missing_pred_action_count": missing_pred_action_count,
+        "artifact_files": {
+            "metrics_json": relpath(output_dir / "metrics.json", workspace),
+            "predictions_csv": relpath(output_dir / "predictions.csv", workspace),
+        },
+    }
+    write_json(output_dir / "metrics.json", metrics)
+    write_csv(
+        output_dir / "predictions.csv",
+        scored_rows,
+        [
+            "id",
+            "split",
+            "episode_id",
+            "future_record_id",
+            "start_frame",
+            "true_action",
+            "pred_action",
+            "true_time_to_transition_frames",
+            "pred_time_to_transition_frames",
+            "absolute_error_frames",
+            "rank",
+            "top_k_hit",
+        ],
+    )
+    return metrics
+
+
 def build_report(summary: dict[str, Any]) -> str:
     rows = []
     for model_id, result in summary["methods"].items():
@@ -828,6 +985,22 @@ def main() -> int:
                 "feature_reconstruction_error": metrics["feature_reconstruction_error"],
                 "num_samples": metrics.get("num_samples"),
             }
+            window_map_path = workspace / spec["source_window_map_jsonl"]
+            if window_map_path.exists():
+                metrics = score_cosmos_nano_time_to_transition_from_future_windows(
+                    model_id=model_id,
+                    spec=spec,
+                    prediction_jsonl=prediction_path,
+                    source_window_map_jsonl=window_map_path,
+                    output_dir=output_dir / "time_to_transition" / model_id,
+                    workspace=workspace,
+                )
+                task_results["time_to_transition"] = {
+                    "source_metrics_json": metrics["artifact_files"]["metrics_json"],
+                    "scored_rows": metrics["scored_rows"],
+                    "time_to_transition_mae": metrics["time_to_transition_mae"],
+                    "within_20_frames": metrics["within_20_frames"],
+                }
         if spec.get("time_to_transition_from_action_sequence"):
             metrics = score_long_horizon_next_action_from_verified_json(
                 model_id=model_id,
