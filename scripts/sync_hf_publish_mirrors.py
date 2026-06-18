@@ -23,8 +23,8 @@ STALE_MIRROR_FILES = [
     "model/scripts/omni/collect_qwen3_v4_publication_artifacts.py",
 ]
 STALE_MIRROR_DIRS = [
-    # Result bundles belong in the artifact dataset and model mirror. Keeping
-    # them in the Space pushes the app repo near Hugging Face's 1 GB limit.
+    # Large result bundles belong in the artifact dataset and model mirror.
+    # A compact allowlist is copied back into the Space below for source links.
     "space/results",
 ]
 GENERATED_REPORT_DATA_FILES = [
@@ -544,6 +544,16 @@ def main() -> int:
             [
                 hf_root / "artifacts/results" / filename,
                 hf_root / "model/results" / filename,
+            ],
+            dry_run=args.dry_run,
+        )
+
+    for filename in sorted(parity.model_output_task_probe_result_files()):
+        src = ROOT / "results" / filename
+        copied += copy_file(
+            src,
+            [
+                hf_root / "space/results" / filename,
             ],
             dry_run=args.dry_run,
         )
