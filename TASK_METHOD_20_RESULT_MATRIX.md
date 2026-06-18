@@ -8,8 +8,8 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | --- | ---: | ---: | ---: | ---: | --- |
 | Minimal | 20 | 20 | 0 | 0 | scored 20 |
 | Neural MLP | 20 | 20 | 0 | 0 | scored 20 |
-| 128ep Metadata Simple | 20 | 8 | 0 | 12 | not supported 8, scored 8, unsupported 4 |
-| 128ep Metadata NN | 20 | 8 | 0 | 12 | not supported 12, scored 8 |
+| 128ep Metadata Simple | 20 | 13 | 0 | 7 | scored 13, unsupported 7 |
+| 128ep Metadata NN | 20 | 13 | 0 | 7 | not supported 7, scored 13 |
 | 128ep Raw Simple | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
 | 128ep Raw NN | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
 | Qwen3-Omni v6 LoRA | 20 | 15 | 0 | 5 | not evaluated 5, scored 15 |
@@ -30,13 +30,13 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 10 | Cross-Modal Reconstruction | score | score | unsupported | not supported | score | score | not evaluated | not evaluated | not evaluated |
 | 11 | Temporal Order Verification | score | score | score | score | score | score | score | not evaluated | not evaluated |
 | 12 | Multimodal Synchronization Detection | score | score | unsupported | not supported | score | score | score | not evaluated | not evaluated |
-| 13 | Long-Horizon Next-Action Forecasting | score | score | not supported | not supported | score | score | score | not evaluated | not evaluated |
-| 14 | Long-Horizon Next-Subtask Forecasting | score | score | not supported | not supported | score | score | score | not evaluated | not evaluated |
-| 15 | Interaction Text Prediction | score | score | not supported | not supported | proxy | proxy | not evaluated | not evaluated | not evaluated |
-| 16 | Action-Object Relation Prediction | score | score | not supported | not supported | score | score | score | score | not evaluated |
-| 17 | Future Object-Set Forecasting | score | score | not supported | not supported | score | score | score | not evaluated | not evaluated |
-| 18 | IMU-to-Hand Pose Reconstruction | score | score | not supported | not supported | score | score | not evaluated | not evaluated | not evaluated |
-| 19 | Camera-View Synchronization Retrieval | score | score | not supported | not supported | proxy | proxy | not evaluated | not evaluated | not evaluated |
-| 20 | Time-to-Next-Transition Regression | score | score | not supported | not supported | score | score | score | not evaluated | not evaluated |
+| 13 | Long-Horizon Next-Action Forecasting | score | score | score | score | score | score | score | not evaluated | not evaluated |
+| 14 | Long-Horizon Next-Subtask Forecasting | score | score | score | score | score | score | score | not evaluated | not evaluated |
+| 15 | Interaction Text Prediction | score | score | unsupported | not supported | proxy | proxy | not evaluated | not evaluated | not evaluated |
+| 16 | Action-Object Relation Prediction | score | score | score | score | score | score | score | score | not evaluated |
+| 17 | Future Object-Set Forecasting | score | score | score | score | score | score | score | not evaluated | not evaluated |
+| 18 | IMU-to-Hand Pose Reconstruction | score | score | unsupported | not supported | score | score | not evaluated | not evaluated | not evaluated |
+| 19 | Camera-View Synchronization Retrieval | score | score | unsupported | not supported | proxy | proxy | not evaluated | not evaluated | not evaluated |
+| 20 | Time-to-Next-Transition Regression | score | score | score | score | score | score | score | not evaluated | not evaluated |
 
 Sources and raw values are in `docs/data/task_method_20_result_matrix.json` and `docs/data/unified_task_model_radar.json`.

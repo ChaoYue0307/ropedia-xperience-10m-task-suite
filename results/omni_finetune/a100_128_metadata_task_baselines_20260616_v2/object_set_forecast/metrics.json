@@ -1,0 +1,31 @@
+{
+  "status": "pass",
+  "task": "object_set_forecast",
+  "task_display_name": "Object Set Forecast",
+  "model_family": "simple_train_object_frequency",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "input_features": "current-window frame/context metadata plus hashed prompt/options/main_task text; target object set +100 frames",
+  "split_policy": "object vocabulary and frequencies are learned from train split only",
+  "num_train_windows": 25068,
+  "num_val_windows": 4496,
+  "num_test_windows": 3951,
+  "num_objects": 256,
+  "splits": {
+    "val": {
+      "precision": 0.14030990510083036,
+      "recall": 0.30465228589826143,
+      "micro_f1": 0.19213197969543147,
+      "macro_f1": 0.005663415026937471,
+      "exact_match": 0.0
+    },
+    "test": {
+      "precision": 0.12140386400067493,
+      "recall": 0.3236253232879793,
+      "micro_f1": 0.17656983343047333,
+      "macro_f1": 0.004886090601149431,
+      "exact_match": 0.0
+    }
+  },
+  "primary_metric": "micro_f1",
+  "primary_score": 0.17656983343047333
+}

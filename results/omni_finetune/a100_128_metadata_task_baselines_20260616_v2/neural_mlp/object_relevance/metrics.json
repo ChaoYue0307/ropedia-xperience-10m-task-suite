@@ -4,6 +4,7 @@
   "task_display_name": "Object Relevance Prediction",
   "model_family": "neural_mlp_metadata_multilabel",
   "source": "128_episode_qwen_jsonl_metadata",
+  "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
   "num_train_windows": 25629,
   "num_val_windows": 4608,
   "num_test_windows": 4032,

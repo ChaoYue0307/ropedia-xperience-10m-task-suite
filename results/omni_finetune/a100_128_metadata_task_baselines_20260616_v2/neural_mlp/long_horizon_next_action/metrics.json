@@ -1,0 +1,59 @@
+{
+  "status": "pass",
+  "task": "long_horizon_next_action",
+  "task_display_name": "Long Horizon Next Action",
+  "model_family": "neural_mlp_metadata",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+  "split_policy": "train on train split, report held-out test split",
+  "num_train_windows": 25068,
+  "num_val_windows": 4496,
+  "num_test_windows": 3951,
+  "num_classes": 1211,
+  "num_train_classes": 887,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 6.375938515657821,
+      "train_accuracy": 0.04727142173288655
+    },
+    {
+      "epoch": 7,
+      "loss": 0.8456897558598345,
+      "train_accuracy": 0.5882000957395883
+    },
+    {
+      "epoch": 14,
+      "loss": 0.4330858919101981,
+      "train_accuracy": 0.7174086484761449
+    },
+    {
+      "epoch": 21,
+      "loss": 0.30358839667507276,
+      "train_accuracy": 0.7692277006542205
+    },
+    {
+      "epoch": 28,
+      "loss": 0.2543138676669698,
+      "train_accuracy": 0.7985479495771501
+    },
+    {
+      "epoch": 35,
+      "loss": 0.22244240730425494,
+      "train_accuracy": 0.8177357587362374
+    }
+  ],
+  "device": "cuda",
+  "splits": {
+    "test": {
+      "accuracy": 0.009111617312072893,
+      "balanced_accuracy": 0.006243880590116362,
+      "macro_f1": 0.0029821307969142615,
+      "weighted_f1": 0.0061363154911862824,
+      "num_eval_windows": 3951,
+      "num_classes": 1211
+    }
+  },
+  "primary_metric": "macro_f1",
+  "primary_score": 0.0029821307969142615
+}

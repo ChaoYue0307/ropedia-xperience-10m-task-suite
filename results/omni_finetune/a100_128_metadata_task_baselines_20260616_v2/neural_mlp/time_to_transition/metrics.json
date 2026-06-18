@@ -1,0 +1,48 @@
+{
+  "status": "pass",
+  "task": "time_to_transition",
+  "task_display_name": "Time To Transition",
+  "model_family": "neural_mlp_metadata_regressor",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "input_features": "frame/context metadata plus hashed prompt/options/main_task text; target is frames to next action boundary capped at 200",
+  "split_policy": "train neural regressor on train split, report held-out test timing error",
+  "num_train_windows": 25629,
+  "num_test_windows": 4032,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.8395254544245428
+    },
+    {
+      "epoch": 7,
+      "loss": 0.4669298557358576
+    },
+    {
+      "epoch": 14,
+      "loss": 0.2693304531382335
+    },
+    {
+      "epoch": 21,
+      "loss": 0.19281703676294232
+    },
+    {
+      "epoch": 28,
+      "loss": 0.15983608896562138
+    },
+    {
+      "epoch": 35,
+      "loss": 0.13736773695386975
+    }
+  ],
+  "device": "cuda",
+  "splits": {
+    "test": {
+      "mae": 41.4664421081543,
+      "rmse": 55.98573684692383,
+      "r2": -0.24839289780206042
+    }
+  },
+  "primary_metric": "mae",
+  "metric_direction": "lower",
+  "primary_score": 41.4664421081543
+}

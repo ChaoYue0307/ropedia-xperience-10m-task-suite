@@ -27,6 +27,14 @@ The runner uses the derived Qwen JSONL export and public-safe metadata. It does 
 | Cross-Modal Reconstruction | `modality_reconstruction` | unsupported_without_raw_128_feature_blocks |  | not_run |  |
 | Temporal Order Verification | `temporal_order` | pass | 0.4199 | pass | 0.8252 |
 | Multimodal Synchronization Detection | `misalignment_detection` | unsupported_without_raw_128_feature_blocks |  | not_run |  |
+| Long Horizon Next Action | `long_horizon_next_action` | pass | 0.0046 | pass | 0.0030 |
+| Next Subtask Forecast | `next_subtask_forecast` | pass | 0.0001 | pass | 0.0000 |
+| Interaction Text Prediction | `interaction_text_prediction` | unsupported_without_raw_128_feature_blocks |  | not_run |  |
+| Action Object Relation | `action_object_relation` | pass | 0.0000 | pass | 0.0000 |
+| Object Set Forecast | `object_set_forecast` | pass | 0.1766 | pass | 0.1742 |
+| Imu To Hand Pose | `imu_to_hand_pose` | unsupported_without_raw_128_feature_blocks |  | not_run |  |
+| Camera View Sync Retrieval | `camera_view_sync_retrieval` | unsupported_without_raw_128_feature_blocks |  | not_run |  |
+| Time To Transition | `time_to_transition` | pass | 624.8109 | pass | 41.4664 |
 
 ## Interpretation
 

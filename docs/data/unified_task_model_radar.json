@@ -1,11 +1,11 @@
 {
   "title": "Unified 20-Task Model Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-18T11:15:02+00:00",
+  "generated_at_utc": "2026-06-18T12:07:15+00:00",
   "task_count": 20,
   "method_count": 9,
   "method_task_record_count": 180,
-  "scored_method_task_count": 123,
+  "scored_method_task_count": 133,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
@@ -73,18 +73,17 @@
       "method_detail": "128-episode JSONL metadata/text simple baselines.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 8,
-      "covered_task_count": 8,
+      "scored_task_count": 13,
+      "covered_task_count": 13,
       "proxy_scored_task_count": 0,
-      "scoreless_task_count": 12,
-      "unsupported_task_count": 12,
+      "scoreless_task_count": 7,
+      "unsupported_task_count": 7,
       "not_evaluated_task_count": 0,
       "status_counts": {
-        "not_supported_by_metadata_only_package": 8,
-        "scored": 8,
-        "unsupported_without_required_target": 4
+        "scored": 13,
+        "unsupported_without_required_target": 7
       },
-      "coverage_fraction": 0.4,
+      "coverage_fraction": 0.65,
       "result_record_fraction": 1.0
     },
     {
@@ -98,17 +97,17 @@
       "method_detail": "128-episode JSONL metadata/text MLP baselines.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 8,
-      "covered_task_count": 8,
+      "scored_task_count": 13,
+      "covered_task_count": 13,
       "proxy_scored_task_count": 0,
-      "scoreless_task_count": 12,
-      "unsupported_task_count": 12,
+      "scoreless_task_count": 7,
+      "unsupported_task_count": 7,
       "not_evaluated_task_count": 0,
       "status_counts": {
-        "not_supported_by_metadata_only_package": 12,
-        "scored": 8
+        "not_supported_by_metadata_only_package": 7,
+        "scored": 13
       },
-      "coverage_fraction": 0.4,
+      "coverage_fraction": 0.65,
       "result_record_fraction": 1.0
     },
     {
@@ -1608,6 +1607,28 @@
           "raw_text": "0.0023",
           "status_label": "scored"
         },
+        "metadata128_simple": {
+          "raw": 0.004579592783699693,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/long_horizon_next_action/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.004579592783699693,
+          "raw_text": "0.0046",
+          "status_label": "scored"
+        },
+        "metadata128_neural_mlp": {
+          "raw": 0.0029821307969142615,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/long_horizon_next_action/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.0029821307969142615,
+          "raw_text": "0.0030",
+          "status_label": "scored"
+        },
         "raw128_simple": {
           "raw": 0.0024280172369056294,
           "metric_key": "macro_f1",
@@ -1629,28 +1650,6 @@
           "normalized_score": 0.001063859887389299,
           "raw_text": "0.0011",
           "status_label": "scored"
-        },
-        "metadata128_simple": {
-          "raw": null,
-          "metric_key": "macro_f1",
-          "source": null,
-          "scope": "multi_episode_128_metadata_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
-        },
-        "metadata128_neural_mlp": {
-          "raw": null,
-          "metric_key": "macro_f1",
-          "source": null,
-          "scope": "multi_episode_128_metadata_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
         },
         "cosmos3_super_reasoner": {
           "raw": null,
@@ -1719,6 +1718,28 @@
           "raw_text": "0.0042",
           "status_label": "scored"
         },
+        "metadata128_simple": {
+          "raw": 0.0001206030150753769,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/next_subtask_forecast/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.0001206030150753769,
+          "raw_text": "0.0001",
+          "status_label": "scored"
+        },
+        "metadata128_neural_mlp": {
+          "raw": 2.086049543676662e-05,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/next_subtask_forecast/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 2.086049543676662e-05,
+          "raw_text": "0.0000",
+          "status_label": "scored"
+        },
         "raw128_simple": {
           "raw": 0.0,
           "metric_key": "macro_f1",
@@ -1740,28 +1761,6 @@
           "normalized_score": 0.0,
           "raw_text": "0.0000",
           "status_label": "scored"
-        },
-        "metadata128_simple": {
-          "raw": null,
-          "metric_key": "macro_f1",
-          "source": null,
-          "scope": "multi_episode_128_metadata_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
-        },
-        "metadata128_neural_mlp": {
-          "raw": null,
-          "metric_key": "macro_f1",
-          "source": null,
-          "scope": "multi_episode_128_metadata_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
         },
         "cosmos3_super_reasoner": {
           "raw": null,
@@ -1819,6 +1818,17 @@
           "raw_text": "0.0381",
           "status_label": "scored"
         },
+        "metadata128_simple": {
+          "raw": null,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/interaction_text_prediction/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "status": "unsupported_without_required_target",
+          "reason": "requires raw annotation.hdf5 caption interaction text; the public 128 JSONL keeps only structured labels and derived metadata",
+          "normalized_score": null,
+          "raw_text": "n/a",
+          "status_label": "unsupported"
+        },
         "raw128_simple": {
           "raw": 0.012611998261547169,
           "metric_key": "macro_f1",
@@ -1840,17 +1850,6 @@
           "normalized_score": 0.009791421280985521,
           "raw_text": "0.0098",
           "status_label": "proxy scored"
-        },
-        "metadata128_simple": {
-          "raw": null,
-          "metric_key": "macro_f1",
-          "source": null,
-          "scope": "multi_episode_128_metadata_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
         },
         "metadata128_neural_mlp": {
           "raw": null,
@@ -1952,6 +1951,28 @@
           "raw_text": "0.0000",
           "status_label": "scored"
         },
+        "metadata128_simple": {
+          "raw": 0.0,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/action_object_relation/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.0,
+          "raw_text": "0.0000",
+          "status_label": "scored"
+        },
+        "metadata128_neural_mlp": {
+          "raw": 0.0,
+          "metric_key": "macro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/action_object_relation/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.0,
+          "raw_text": "0.0000",
+          "status_label": "scored"
+        },
         "raw128_simple": {
           "raw": 0.0,
           "metric_key": "macro_f1",
@@ -1973,28 +1994,6 @@
           "normalized_score": 0.0,
           "raw_text": "0.0000",
           "status_label": "scored"
-        },
-        "metadata128_simple": {
-          "raw": null,
-          "metric_key": "macro_f1",
-          "source": null,
-          "scope": "multi_episode_128_metadata_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
-        },
-        "metadata128_neural_mlp": {
-          "raw": null,
-          "metric_key": "macro_f1",
-          "source": null,
-          "scope": "multi_episode_128_metadata_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
         },
         "cosmos3_nano_future_window": {
           "raw": null,
@@ -2052,6 +2051,28 @@
           "raw_text": "0.1659",
           "status_label": "scored"
         },
+        "metadata128_simple": {
+          "raw": 0.17656983343047333,
+          "metric_key": "micro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/object_set_forecast/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.17656983343047333,
+          "raw_text": "0.1766",
+          "status_label": "scored"
+        },
+        "metadata128_neural_mlp": {
+          "raw": 0.17418550827844048,
+          "metric_key": "micro_f1",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/object_set_forecast/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.17418550827844048,
+          "raw_text": "0.1742",
+          "status_label": "scored"
+        },
         "raw128_simple": {
           "raw": 0.06469493412657774,
           "metric_key": "micro_f1",
@@ -2073,28 +2094,6 @@
           "normalized_score": 0.17523098630012288,
           "raw_text": "0.1752",
           "status_label": "scored"
-        },
-        "metadata128_simple": {
-          "raw": null,
-          "metric_key": "micro_f1",
-          "source": null,
-          "scope": "multi_episode_128_metadata_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
-        },
-        "metadata128_neural_mlp": {
-          "raw": null,
-          "metric_key": "micro_f1",
-          "source": null,
-          "scope": "multi_episode_128_metadata_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
         },
         "cosmos3_super_reasoner": {
           "raw": null,
@@ -2152,6 +2151,17 @@
           "raw_text": "0.0426",
           "status_label": "scored"
         },
+        "metadata128_simple": {
+          "raw": null,
+          "metric_key": "mae",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/imu_to_hand_pose/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "status": "unsupported_without_required_target",
+          "reason": "requires raw IMU and hand-joint feature blocks, which are not in the public 128 JSONL metadata package",
+          "normalized_score": null,
+          "raw_text": "n/a",
+          "status_label": "unsupported"
+        },
         "raw128_simple": {
           "raw": 0.22941437363624573,
           "metric_key": "mae",
@@ -2173,17 +2183,6 @@
           "normalized_score": 0.1662042369509182,
           "raw_text": "0.2530",
           "status_label": "scored"
-        },
-        "metadata128_simple": {
-          "raw": null,
-          "metric_key": "mae",
-          "source": null,
-          "scope": "multi_episode_128_metadata_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
         },
         "metadata128_neural_mlp": {
           "raw": null,
@@ -2263,6 +2262,17 @@
           "raw_text": "0.2409",
           "status_label": "scored"
         },
+        "metadata128_simple": {
+          "raw": null,
+          "metric_key": "mrr",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/camera_view_sync_retrieval/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "status": "unsupported_without_required_target",
+          "reason": "requires paired camera-view feature blocks, which are not in the public 128 JSONL metadata package",
+          "normalized_score": null,
+          "raw_text": "n/a",
+          "status_label": "unsupported"
+        },
         "raw128_simple": {
           "raw": 0.0026625150348991156,
           "metric_key": "mrr",
@@ -2284,17 +2294,6 @@
           "normalized_score": 0.0025448438245803118,
           "raw_text": "0.0025",
           "status_label": "proxy scored"
-        },
-        "metadata128_simple": {
-          "raw": null,
-          "metric_key": "mrr",
-          "source": null,
-          "scope": "multi_episode_128_metadata_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
         },
         "metadata128_neural_mlp": {
           "raw": null,
@@ -2385,6 +2384,28 @@
           "raw_text": "134.07",
           "status_label": "scored"
         },
+        "metadata128_simple": {
+          "raw": 624.8108520507812,
+          "metric_key": "mae",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/time_to_transition/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.016864874132806403,
+          "raw_text": "624.81",
+          "status_label": "scored"
+        },
+        "metadata128_neural_mlp": {
+          "raw": 41.4664421081543,
+          "metric_key": "mae",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/time_to_transition/metrics.json",
+          "scope": "multi_episode_128_metadata_baseline",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.25411768748242325,
+          "raw_text": "41.47",
+          "status_label": "scored"
+        },
         "raw128_simple": {
           "raw": 52.32759475708008,
           "metric_key": "mae",
@@ -2406,28 +2427,6 @@
           "normalized_score": 0.24867468405504953,
           "raw_text": "42.37",
           "status_label": "scored"
-        },
-        "metadata128_simple": {
-          "raw": null,
-          "metric_key": "mae",
-          "source": null,
-          "scope": "multi_episode_128_metadata_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
-        },
-        "metadata128_neural_mlp": {
-          "raw": null,
-          "metric_key": "mae",
-          "source": null,
-          "scope": "multi_episode_128_metadata_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
         },
         "cosmos3_super_reasoner": {
           "raw": null,
@@ -2459,7 +2458,7 @@
       "id": "metadata128_simple",
       "title": "128ep Metadata Simple",
       "status": "a100_rerun_pass",
-      "coverage": "20 records / 8 scored JSONL-supported axes",
+      "coverage": "20 records / 13 scored JSONL-supported axes",
       "headline": "34,269 rows; train/val/test 25,629/4,608/4,032",
       "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/summary_report.json"
     },
@@ -2467,7 +2466,7 @@
       "id": "metadata128_neural_mlp",
       "title": "128ep Metadata NN",
       "status": "a100_rerun_pass",
-      "coverage": "20 records / 8 scored JSONL-supported axes",
+      "coverage": "20 records / 13 scored JSONL-supported axes",
       "headline": "compact MLP heads over metadata/text features",
       "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/summary_report.json"
     },
@@ -4508,17 +4507,17 @@
       "task_label": "Long-Horizon Next-Action Forecasting",
       "series_id": "metadata128_simple",
       "method": "128ep Metadata Simple",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 0.004579592783699693,
+      "raw_text": "0.0046",
+      "normalized_score": 0.004579592783699693,
       "metric_key": "macro_f1",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/long_horizon_next_action/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": null
     },
     {
       "task_number": 13,
@@ -4526,17 +4525,17 @@
       "task_label": "Long-Horizon Next-Action Forecasting",
       "series_id": "metadata128_neural_mlp",
       "method": "128ep Metadata NN",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 0.0029821307969142615,
+      "raw_text": "0.0030",
+      "normalized_score": 0.0029821307969142615,
       "metric_key": "macro_f1",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/long_horizon_next_action/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": null
     },
     {
       "task_number": 13,
@@ -4670,17 +4669,17 @@
       "task_label": "Long-Horizon Next-Subtask Forecasting",
       "series_id": "metadata128_simple",
       "method": "128ep Metadata Simple",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 0.0001206030150753769,
+      "raw_text": "0.0001",
+      "normalized_score": 0.0001206030150753769,
       "metric_key": "macro_f1",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/next_subtask_forecast/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": null
     },
     {
       "task_number": 14,
@@ -4688,17 +4687,17 @@
       "task_label": "Long-Horizon Next-Subtask Forecasting",
       "series_id": "metadata128_neural_mlp",
       "method": "128ep Metadata NN",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 2.086049543676662e-05,
+      "raw_text": "0.0000",
+      "normalized_score": 2.086049543676662e-05,
       "metric_key": "macro_f1",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/next_subtask_forecast/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": null
     },
     {
       "task_number": 14,
@@ -4832,17 +4831,17 @@
       "task_label": "Interaction Text Prediction",
       "series_id": "metadata128_simple",
       "method": "128ep Metadata Simple",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
+      "status": "unsupported_without_required_target",
+      "status_label": "unsupported",
       "scored": false,
       "proxy_scored": false,
       "raw": null,
       "raw_text": "n/a",
       "normalized_score": null,
       "metric_key": "macro_f1",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/interaction_text_prediction/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": "requires raw annotation.hdf5 caption interaction text; the public 128 JSONL keeps only structured labels and derived metadata"
     },
     {
       "task_number": 15,
@@ -4994,17 +4993,17 @@
       "task_label": "Action-Object Relation Prediction",
       "series_id": "metadata128_simple",
       "method": "128ep Metadata Simple",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 0.0,
+      "raw_text": "0.0000",
+      "normalized_score": 0.0,
       "metric_key": "macro_f1",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/action_object_relation/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": null
     },
     {
       "task_number": 16,
@@ -5012,17 +5011,17 @@
       "task_label": "Action-Object Relation Prediction",
       "series_id": "metadata128_neural_mlp",
       "method": "128ep Metadata NN",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 0.0,
+      "raw_text": "0.0000",
+      "normalized_score": 0.0,
       "metric_key": "macro_f1",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/action_object_relation/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": null
     },
     {
       "task_number": 16,
@@ -5156,17 +5155,17 @@
       "task_label": "Future Object-Set Forecasting",
       "series_id": "metadata128_simple",
       "method": "128ep Metadata Simple",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 0.17656983343047333,
+      "raw_text": "0.1766",
+      "normalized_score": 0.17656983343047333,
       "metric_key": "micro_f1",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/object_set_forecast/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": null
     },
     {
       "task_number": 17,
@@ -5174,17 +5173,17 @@
       "task_label": "Future Object-Set Forecasting",
       "series_id": "metadata128_neural_mlp",
       "method": "128ep Metadata NN",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 0.17418550827844048,
+      "raw_text": "0.1742",
+      "normalized_score": 0.17418550827844048,
       "metric_key": "micro_f1",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/object_set_forecast/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": null
     },
     {
       "task_number": 17,
@@ -5318,17 +5317,17 @@
       "task_label": "IMU-to-Hand Pose Reconstruction",
       "series_id": "metadata128_simple",
       "method": "128ep Metadata Simple",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
+      "status": "unsupported_without_required_target",
+      "status_label": "unsupported",
       "scored": false,
       "proxy_scored": false,
       "raw": null,
       "raw_text": "n/a",
       "normalized_score": null,
       "metric_key": "mae",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/imu_to_hand_pose/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": "requires raw IMU and hand-joint feature blocks, which are not in the public 128 JSONL metadata package"
     },
     {
       "task_number": 18,
@@ -5480,17 +5479,17 @@
       "task_label": "Camera-View Synchronization Retrieval",
       "series_id": "metadata128_simple",
       "method": "128ep Metadata Simple",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
+      "status": "unsupported_without_required_target",
+      "status_label": "unsupported",
       "scored": false,
       "proxy_scored": false,
       "raw": null,
       "raw_text": "n/a",
       "normalized_score": null,
       "metric_key": "mrr",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/camera_view_sync_retrieval/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": "requires paired camera-view feature blocks, which are not in the public 128 JSONL metadata package"
     },
     {
       "task_number": 19,
@@ -5642,17 +5641,17 @@
       "task_label": "Time-to-Next-Transition Regression",
       "series_id": "metadata128_simple",
       "method": "128ep Metadata Simple",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 624.8108520507812,
+      "raw_text": "624.81",
+      "normalized_score": 0.016864874132806403,
       "metric_key": "mae",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/time_to_transition/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": null
     },
     {
       "task_number": 20,
@@ -5660,17 +5659,17 @@
       "task_label": "Time-to-Next-Transition Regression",
       "series_id": "metadata128_neural_mlp",
       "method": "128ep Metadata NN",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 41.4664421081543,
+      "raw_text": "41.47",
+      "normalized_score": 0.25411768748242325,
       "metric_key": "mae",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/time_to_transition/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": null
     },
     {
       "task_number": 20,

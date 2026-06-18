@@ -1,0 +1,50 @@
+{
+  "status": "pass",
+  "task": "object_set_forecast",
+  "task_display_name": "Object Set Forecast",
+  "model_family": "neural_mlp_metadata_multilabel",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "input_features": "current-window frame/context metadata plus hashed prompt/options/main_task text; target object set +100 frames",
+  "num_train_windows": 25068,
+  "num_val_windows": 4496,
+  "num_test_windows": 3951,
+  "num_objects": 256,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.40618257693683624
+    },
+    {
+      "epoch": 7,
+      "loss": 0.09393147091218229
+    },
+    {
+      "epoch": 14,
+      "loss": 0.06462562757330076
+    },
+    {
+      "epoch": 21,
+      "loss": 0.051652751573515565
+    },
+    {
+      "epoch": 28,
+      "loss": 0.04472079514406202
+    },
+    {
+      "epoch": 35,
+      "loss": 0.040127100790633106
+    }
+  ],
+  "device": "cuda",
+  "splits": {
+    "test": {
+      "precision": 0.12744893705710714,
+      "recall": 0.27504779039694144,
+      "micro_f1": 0.17418550827844048,
+      "macro_f1": 0.02176780675052154,
+      "exact_match": 0.019994937990382183
+    }
+  },
+  "primary_metric": "micro_f1",
+  "primary_score": 0.17418550827844048
+}

@@ -7,9 +7,9 @@ The 128-episode public package intentionally does not redistribute raw sensor
 feature NPZ files, so this runner uses only public-safe JSONL metadata and
 strictly avoids answer fields as input features.
 
-The output keeps the same twelve task IDs.  Tasks with enough JSONL signal get
+The output keeps the unified 20 task IDs. Tasks with enough JSONL signal get
 simple and, where appropriate, neural baselines over the same train/val/test
-episode split used by the Qwen3-Omni pilot.  Tasks whose original target
+episode split used by the Qwen3-Omni pilot. Tasks whose original target
 requires missing raw motion/depth/audio feature blocks are emitted as explicit
 unsupported records instead of fabricated scores.
 """
@@ -49,6 +49,14 @@ TASKS = [
     "modality_reconstruction",
     "temporal_order",
     "misalignment_detection",
+    "long_horizon_next_action",
+    "next_subtask_forecast",
+    "interaction_text_prediction",
+    "action_object_relation",
+    "object_set_forecast",
+    "imu_to_hand_pose",
+    "camera_view_sync_retrieval",
+    "time_to_transition",
 ]
 
 CLASSIFICATION_TASKS = {
@@ -75,6 +83,18 @@ UNSUPPORTED_TASKS = {
     "misalignment_detection": {
         "primary_metric": "f1",
         "reason": "requires deliberately shifted cross-modal feature pairs, which cannot be reconstructed from the public JSONL labels alone",
+    },
+    "interaction_text_prediction": {
+        "primary_metric": "macro_f1",
+        "reason": "requires raw annotation.hdf5 caption interaction text; the public 128 JSONL keeps only structured labels and derived metadata",
+    },
+    "imu_to_hand_pose": {
+        "primary_metric": "mae",
+        "reason": "requires raw IMU and hand-joint feature blocks, which are not in the public 128 JSONL metadata package",
+    },
+    "camera_view_sync_retrieval": {
+        "primary_metric": "mrr",
+        "reason": "requires paired camera-view feature blocks, which are not in the public 128 JSONL metadata package",
     },
 }
 
@@ -122,6 +142,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--neural-dropout", type=float, default=0.10)
     parser.add_argument("--neural-device", default="auto", choices=["auto", "cpu", "cuda"])
     parser.add_argument("--max-object-vocab", type=int, default=256)
+    parser.add_argument("--future-frames", type=int, default=100)
+    parser.add_argument("--transition-cap-frames", type=int, default=200)
+    parser.add_argument(
+        "--max-neural-classes",
+        type=int,
+        default=4096,
+        help="Emit an explicit unsupported NN record instead of fitting very large classification heads.",
+    )
     return parser.parse_args()
 
 
@@ -376,6 +404,62 @@ def split_indices(rows: list[dict[str, Any]]) -> dict[str, np.ndarray]:
         if split in indices:
             indices[split].append(idx)
     return {key: np.asarray(value, dtype=np.int64) for key, value in indices.items()}
+
+
+def row_start(row: dict[str, Any]) -> int:
+    return int((row.get("center_window") or {}).get("start_frame", 0) or 0)
+
+
+def by_episode_sorted(rows: list[dict[str, Any]]) -> dict[str, list[int]]:
+    grouped: dict[str, list[int]] = {}
+    for idx, row in enumerate(rows):
+        grouped.setdefault(str(row.get("episode_id")), []).append(idx)
+    for episode_id in grouped:
+        grouped[episode_id].sort(key=lambda idx: row_start(rows[idx]))
+    return grouped
+
+
+def future_index_map(rows: list[dict[str, Any]], frame_offset: int) -> dict[int, int]:
+    mapping: dict[int, int] = {}
+    for indices in by_episode_sorted(rows).values():
+        starts = np.asarray([row_start(rows[idx]) for idx in indices], dtype=np.int64)
+        for idx in indices:
+            target_start = row_start(rows[idx]) + frame_offset
+            future_pos = int(np.searchsorted(starts, target_start, side="left"))
+            if future_pos < len(indices):
+                mapping[idx] = indices[future_pos]
+    return mapping
+
+
+def make_future_subset(rows: list[dict[str, Any]], frame_offset: int) -> tuple[np.ndarray, np.ndarray]:
+    mapping = future_index_map(rows, frame_offset)
+    current = np.asarray(sorted(mapping.keys()), dtype=np.int64)
+    future = np.asarray([mapping[int(idx)] for idx in current], dtype=np.int64)
+    return current, future
+
+
+def subset_splits(splits: dict[str, np.ndarray], keep: np.ndarray) -> dict[str, np.ndarray]:
+    local = {int(global_idx): local_idx for local_idx, global_idx in enumerate(keep)}
+    return {
+        split: np.asarray([local[int(idx)] for idx in values if int(idx) in local], dtype=np.int64)
+        for split, values in splits.items()
+    }
+
+
+def time_to_transition_targets(rows: list[dict[str, Any]], cap_frames: int) -> np.ndarray:
+    labels = [norm(answer(row).get("action")) for row in rows]
+    targets = np.full(len(rows), float(cap_frames), dtype=np.float32)
+    for indices in by_episode_sorted(rows).values():
+        for pos, idx in enumerate(indices):
+            label = labels[idx]
+            start = row_start(rows[idx])
+            distance = cap_frames
+            for next_idx in indices[pos + 1 :]:
+                if labels[next_idx] != label:
+                    distance = min(max(row_start(rows[next_idx]) - start, 0), cap_frames)
+                    break
+            targets[idx] = float(distance)
+    return targets[:, None]
 
 
 def encode_labels(values: list[str]) -> tuple[np.ndarray, list[str]]:
@@ -654,6 +738,19 @@ def neural_classification(
     from neural_task_models import train_classifier
 
     out_dir.mkdir(parents=True, exist_ok=True)
+    if train_class_count > args.max_neural_classes:
+        metrics = {
+            "status": "unsupported_large_label_space",
+            "task": task_id,
+            "task_display_name": task_display_name(task_id),
+            "model_family": "neural_mlp_metadata",
+            "source": "128_episode_qwen_jsonl_metadata",
+            "primary_metric": "macro_f1",
+            "primary_score": None,
+            "reason": f"train class count {train_class_count} exceeds --max-neural-classes {args.max_neural_classes}",
+        }
+        write_json(out_dir / "metrics.json", metrics)
+        return metrics
     result = train_classifier(
         X.astype(np.float32),
         y,
@@ -745,21 +842,24 @@ def multilabel_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, floa
 
 
 def simple_multilabel(
+    task_id: str,
     rows: list[dict[str, Any]],
+    target_rows: list[dict[str, Any]],
     feature_rows: list[dict[str, Any]],
     X: np.ndarray,
     splits: dict[str, np.ndarray],
     out_root: Path,
     args: argparse.Namespace,
+    input_features: str,
 ) -> dict[str, Any]:
     train_objects = Counter()
     for idx in splits["train"]:
-        for obj in answer(rows[int(idx)]).get("objects", []) or []:
+        for obj in answer(target_rows[int(idx)]).get("objects", []) or []:
             key = norm(obj).lower()
             if key:
                 train_objects[key] += 1
     vocab = [name for name, _count in train_objects.most_common(args.max_object_vocab)]
-    Y = object_matrix(rows, vocab)
+    Y = object_matrix(target_rows, vocab)
     train_idx, val_idx, test_idx = splits["train"], splits["val"], splits["test"]
     freq = Y[train_idx].mean(axis=0)
     # Public-safe simple baseline: predict object labels seen in at least 10% of
@@ -768,7 +868,7 @@ def simple_multilabel(
     pred_all = np.tile((freq >= 0.10).astype(np.float32), (len(rows), 1))
     test_metrics = multilabel_metrics(Y[test_idx], pred_all[test_idx])
     val_metrics = multilabel_metrics(Y[val_idx], pred_all[val_idx]) if len(val_idx) else {}
-    out_dir = out_root / "object_relevance"
+    out_dir = out_root / task_id
     out_dir.mkdir(parents=True, exist_ok=True)
     pred_rows = []
     for idx in test_idx:
@@ -778,10 +878,11 @@ def simple_multilabel(
         pred_rows.append({**feature_rows[idx], "true_objects": ";".join(true_objs), "predicted_objects": ";".join(pred_objs)})
     metrics = {
         "status": "pass",
-        "task": "object_relevance",
-        "task_display_name": task_display_name("object_relevance"),
+        "task": task_id,
+        "task_display_name": task_display_name(task_id),
         "model_family": "simple_train_object_frequency",
         "source": "128_episode_qwen_jsonl_metadata",
+        "input_features": input_features,
         "split_policy": "object vocabulary and frequencies are learned from train split only",
         "num_train_windows": int(len(train_idx)),
         "num_val_windows": int(len(val_idx)),
@@ -797,14 +898,14 @@ def simple_multilabel(
 
     neural_result = None
     if args.include_neural:
-        neural_dir = out_root / "neural_mlp" / "object_relevance"
+        neural_dir = out_root / "neural_mlp" / task_id
         try:
-            neural_result = neural_multilabel(rows, feature_rows, X, Y, splits, neural_dir, args, vocab)
+            neural_result = neural_multilabel(task_id, rows, feature_rows, X, Y, splits, neural_dir, args, vocab, input_features)
         except Exception as exc:  # pragma: no cover - protects long batch runs from optional NN environment failures.
             neural_result = {
                 "status": "failed",
-                "task": "object_relevance",
-                "task_display_name": task_display_name("object_relevance"),
+                "task": task_id,
+                "task_display_name": task_display_name(task_id),
                 "model_family": "neural_mlp_metadata_multilabel",
                 "source": "128_episode_qwen_jsonl_metadata",
                 "primary_metric": "micro_f1",
@@ -816,6 +917,7 @@ def simple_multilabel(
 
 
 def neural_multilabel(
+    task_id: str,
     rows: list[dict[str, Any]],
     feature_rows: list[dict[str, Any]],
     X: np.ndarray,
@@ -824,6 +926,7 @@ def neural_multilabel(
     out_dir: Path,
     args: argparse.Namespace,
     vocab: list[str],
+    input_features: str,
 ) -> dict[str, Any]:
     from neural_task_models import train_multilabel
 
@@ -838,10 +941,11 @@ def neural_multilabel(
         pred_rows.append({**feature_rows[idx], "true_objects": ";".join(true_objs), "predicted_objects": ";".join(pred_objs)})
     metrics = {
         "status": "pass",
-        "task": "object_relevance",
-        "task_display_name": task_display_name("object_relevance"),
+        "task": task_id,
+        "task_display_name": task_display_name(task_id),
         "model_family": "neural_mlp_metadata_multilabel",
         "source": "128_episode_qwen_jsonl_metadata",
+        "input_features": input_features,
         "num_train_windows": int(len(splits["train"])),
         "num_val_windows": int(len(splits["val"])),
         "num_test_windows": int(len(splits["test"])),
@@ -866,6 +970,15 @@ def caption_query_text(row: dict[str, Any]) -> str:
             " ".join(norm(x) for x in ans.get("objects", []) or []),
         ]
     )
+
+
+def action_object_relation_label(row: dict[str, Any]) -> str:
+    ans = answer(row)
+    action_label = norm(ans.get("action"))
+    objects = sorted({norm(obj).lower() for obj in ans.get("objects", []) or [] if norm(obj)})
+    if not action_label or not objects:
+        return ""
+    return f"{action_label}|{'+'.join(objects)}"
 
 
 def retrieval_metrics_from_scores(scores: np.ndarray, rows: list[dict[str, Any]], test_idx: np.ndarray) -> tuple[dict[str, Any], list[dict[str, Any]]]:
@@ -1167,6 +1280,174 @@ def temporal_order(rows: list[dict[str, Any]], X: np.ndarray, splits: dict[str, 
     return {"simple": payload, "neural": neural_result}
 
 
+def regression_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, float]:
+    err = y_pred - y_true
+    mae = float(np.mean(np.abs(err)))
+    rmse = float(np.sqrt(np.mean(err**2)))
+    denom = float(np.sum((y_true - y_true.mean(axis=0, keepdims=True)) ** 2))
+    r2 = 1.0 - float(np.sum(err**2)) / max(denom, 1e-12)
+    return {"mae": mae, "rmse": rmse, "r2": r2}
+
+
+def ridge_regression_predict(
+    X_train: np.ndarray,
+    y_train: np.ndarray,
+    X_test: np.ndarray,
+    l2: float,
+) -> tuple[np.ndarray, dict[str, np.ndarray]]:
+    mean, std = fit_scaler(X_train)
+    Xtr = (X_train - mean) / std
+    Xte = (X_test - mean) / std
+    Y = np.asarray(y_train, dtype=np.float32)
+    if Y.ndim == 1:
+        Y = Y[:, None]
+    y_mean = Y.mean(axis=0, dtype=np.float64).astype(np.float32)
+    y_std = Y.std(axis=0, dtype=np.float64).astype(np.float32)
+    y_std = np.where(y_std < 1e-6, 1.0, y_std).astype(np.float32)
+    Yz = ((Y - y_mean) / y_std).astype(np.float32)
+    eye = np.eye(Xtr.shape[1], dtype=np.float32) * float(l2)
+    W = np.linalg.solve(Xtr.T @ Xtr + eye, Xtr.T @ Yz).astype(np.float32)
+    pred = Xte @ W
+    pred = pred * y_std + y_mean
+    return pred.astype(np.float32), {"mean": mean, "std": std, "y_mean": y_mean, "y_std": y_std, "W": W}
+
+
+def regression_task(
+    task_id: str,
+    rows: list[dict[str, Any]],
+    feature_rows: list[dict[str, Any]],
+    X: np.ndarray,
+    y: np.ndarray,
+    splits: dict[str, np.ndarray],
+    out_root: Path,
+    args: argparse.Namespace,
+    input_features: str,
+) -> dict[str, Any]:
+    train_idx = splits["train"]
+    val_idx = splits["val"]
+    test_idx = splits["test"]
+    out_dir = out_root / task_id
+    out_dir.mkdir(parents=True, exist_ok=True)
+    pred, model = ridge_regression_predict(X[train_idx], y[train_idx], X[test_idx], args.l2)
+    test_metrics = regression_metrics(y[test_idx], pred)
+    val_metrics = {}
+    if len(val_idx):
+        val_pred, _ = ridge_regression_predict(X[train_idx], y[train_idx], X[val_idx], args.l2)
+        val_metrics = regression_metrics(y[val_idx], val_pred)
+    pred_rows = []
+    for local_k, idx in enumerate(test_idx):
+        idx = int(idx)
+        pred_rows.append(
+            {
+                **feature_rows[idx],
+                "true_value": float(y[idx, 0]),
+                "predicted_value": float(pred[local_k, 0]),
+                "absolute_error": float(abs(pred[local_k, 0] - y[idx, 0])),
+            }
+        )
+    metrics = {
+        "status": "pass",
+        "task": task_id,
+        "task_display_name": task_display_name(task_id),
+        "model_family": "simple_ridge_metadata",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "input_features": input_features,
+        "split_policy": "train ridge regressor on train split, report held-out test timing error",
+        "num_train_windows": int(len(train_idx)),
+        "num_val_windows": int(len(val_idx)),
+        "num_test_windows": int(len(test_idx)),
+        "splits": {"val": val_metrics, "test": test_metrics},
+        "primary_metric": "mae",
+        "metric_direction": "lower",
+        "primary_score": test_metrics["mae"],
+    }
+    write_json(out_dir / "metrics.json", metrics)
+    write_csv(out_dir / "predictions.csv", pred_rows)
+    np.savez_compressed(out_dir / "model.npz", **model)
+
+    neural_result = None
+    if args.include_neural:
+        neural_dir = out_root / "neural_mlp" / task_id
+        try:
+            neural_result = neural_regression_task(task_id, rows, feature_rows, X, y, splits, neural_dir, args, input_features)
+        except Exception as exc:  # pragma: no cover - protects long batch runs from optional NN environment failures.
+            neural_result = {
+                "status": "failed",
+                "task": task_id,
+                "task_display_name": task_display_name(task_id),
+                "model_family": "neural_mlp_metadata_regressor",
+                "source": "128_episode_qwen_jsonl_metadata",
+                "primary_metric": "mae",
+                "metric_direction": "lower",
+                "primary_score": None,
+                "error": str(exc),
+            }
+            write_json(neural_dir / "metrics.json", neural_result)
+    return {"simple": metrics, "neural": neural_result}
+
+
+def neural_regression_task(
+    task_id: str,
+    rows: list[dict[str, Any]],
+    feature_rows: list[dict[str, Any]],
+    X: np.ndarray,
+    y: np.ndarray,
+    splits: dict[str, np.ndarray],
+    out_dir: Path,
+    args: argparse.Namespace,
+    input_features: str,
+) -> dict[str, Any]:
+    from neural_task_models import save_torch_model, train_regressor
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    train_idx = splits["train"]
+    test_idx = splits["test"]
+    result = train_regressor(X.astype(np.float32), y.astype(np.float32), train_idx, test_idx, neural_config(args))
+    test_metrics = regression_metrics(y[test_idx], result["pred"])
+    pred_rows = []
+    for local_k, idx in enumerate(test_idx):
+        idx = int(idx)
+        pred_rows.append(
+            {
+                **feature_rows[idx],
+                "true_value": float(y[idx, 0]),
+                "predicted_value": float(result["pred"][local_k, 0]),
+                "absolute_error": float(abs(result["pred"][local_k, 0] - y[idx, 0])),
+            }
+        )
+    metrics = {
+        "status": "pass",
+        "task": task_id,
+        "task_display_name": task_display_name(task_id),
+        "model_family": "neural_mlp_metadata_regressor",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "input_features": input_features,
+        "split_policy": "train neural regressor on train split, report held-out test timing error",
+        "num_train_windows": int(len(train_idx)),
+        "num_test_windows": int(len(test_idx)),
+        "history": result["history"],
+        "device": result["device"],
+        "splits": {"test": test_metrics},
+        "primary_metric": "mae",
+        "metric_direction": "lower",
+        "primary_score": test_metrics["mae"],
+    }
+    write_json(out_dir / "metrics.json", metrics)
+    write_csv(out_dir / "predictions.csv", pred_rows)
+    save_torch_model(
+        out_dir / "model.pt",
+        {
+            "state_dict": result["state_dict"],
+            "x_mean": result["x_mean"],
+            "x_std": result["x_std"],
+            "y_mean": result["y_mean"],
+            "y_std": result["y_std"],
+            "metrics": metrics,
+        },
+    )
+    return metrics
+
+
 def unsupported_record(task_id: str, out_root: Path, reason: str, primary_metric: str) -> dict[str, Any]:
     payload = {
         "status": "unsupported_without_raw_128_feature_blocks",
@@ -1267,11 +1548,129 @@ def main() -> int:
         result = classification_baseline(task_id, rows, feature_rows, X, splits, lambda row, k=key: norm(answer(row).get(k)), out, args)
         task_results.append({"task": task_id, "task_display_name": task_display_name(task_id), **result})
     log("object_relevance: start")
-    task_results.append({"task": "object_relevance", "task_display_name": task_display_name("object_relevance"), **simple_multilabel(rows, feature_rows, X, splits, out, args)})
+    task_results.append(
+        {
+            "task": "object_relevance",
+            "task_display_name": task_display_name("object_relevance"),
+            **simple_multilabel(
+                "object_relevance",
+                rows,
+                rows,
+                feature_rows,
+                X,
+                splits,
+                out,
+                args,
+                "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+            ),
+        }
+    )
     log("caption_grounding: start")
     task_results.append({"task": "caption_grounding", "task_display_name": task_display_name("caption_grounding"), **caption_grounding(rows, episodes, splits, out, args)})
     log("temporal_order: start")
     task_results.append({"task": "temporal_order", "task_display_name": task_display_name("temporal_order"), **temporal_order(rows, X, splits, out, args)})
+    log("long_horizon_next_action / next_subtask_forecast / object_set_forecast: resolving future windows")
+    current_idx, future_idx = make_future_subset(rows, args.future_frames)
+    current_rows = [rows[int(idx)] for idx in current_idx]
+    future_rows = [rows[int(idx)] for idx in future_idx]
+    current_feature_rows = [feature_rows[int(idx)] for idx in current_idx]
+    current_splits = subset_splits(splits, current_idx)
+    current_X = X[current_idx]
+    future_action_by_id = {
+        str(current_rows[pos].get("id")): norm(answer(future_rows[pos]).get("action"))
+        for pos in range(len(current_rows))
+    }
+    future_subtask_by_id = {
+        str(current_rows[pos].get("id")): norm(answer(future_rows[pos]).get("subtask"))
+        for pos in range(len(current_rows))
+    }
+    log("long_horizon_next_action: start")
+    task_results.append(
+        {
+            "task": "long_horizon_next_action",
+            "task_display_name": task_display_name("long_horizon_next_action"),
+            **classification_baseline(
+                "long_horizon_next_action",
+                current_rows,
+                current_feature_rows,
+                current_X,
+                current_splits,
+                lambda row: future_action_by_id.get(str(row.get("id")), ""),
+                out,
+                args,
+            ),
+        }
+    )
+    log("next_subtask_forecast: start")
+    task_results.append(
+        {
+            "task": "next_subtask_forecast",
+            "task_display_name": task_display_name("next_subtask_forecast"),
+            **classification_baseline(
+                "next_subtask_forecast",
+                current_rows,
+                current_feature_rows,
+                current_X,
+                current_splits,
+                lambda row: future_subtask_by_id.get(str(row.get("id")), ""),
+                out,
+                args,
+            ),
+        }
+    )
+    log("action_object_relation: start")
+    task_results.append(
+        {
+            "task": "action_object_relation",
+            "task_display_name": task_display_name("action_object_relation"),
+            **classification_baseline(
+                "action_object_relation",
+                rows,
+                feature_rows,
+                X,
+                splits,
+                action_object_relation_label,
+                out,
+                args,
+            ),
+        }
+    )
+    log("object_set_forecast: start")
+    task_results.append(
+        {
+            "task": "object_set_forecast",
+            "task_display_name": task_display_name("object_set_forecast"),
+            **simple_multilabel(
+                "object_set_forecast",
+                current_rows,
+                future_rows,
+                current_feature_rows,
+                current_X,
+                current_splits,
+                out,
+                args,
+                f"current-window frame/context metadata plus hashed prompt/options/main_task text; target object set +{args.future_frames} frames",
+            ),
+        }
+    )
+    log("time_to_transition: start")
+    task_results.append(
+        {
+            "task": "time_to_transition",
+            "task_display_name": task_display_name("time_to_transition"),
+            **regression_task(
+                "time_to_transition",
+                rows,
+                feature_rows,
+                X,
+                time_to_transition_targets(rows, args.transition_cap_frames),
+                splits,
+                out,
+                args,
+                f"frame/context metadata plus hashed prompt/options/main_task text; target is frames to next action boundary capped at {args.transition_cap_frames}",
+            ),
+        }
+    )
     for task_id, spec in UNSUPPORTED_TASKS.items():
         log(f"{task_id}: recording unsupported status")
         task_results.append({"task": task_id, "task_display_name": task_display_name(task_id), **unsupported_record(task_id, out, spec["reason"], spec["primary_metric"])})

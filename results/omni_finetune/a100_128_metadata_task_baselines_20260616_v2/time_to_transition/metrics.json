@@ -1,0 +1,27 @@
+{
+  "status": "pass",
+  "task": "time_to_transition",
+  "task_display_name": "Time To Transition",
+  "model_family": "simple_ridge_metadata",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "input_features": "frame/context metadata plus hashed prompt/options/main_task text; target is frames to next action boundary capped at 200",
+  "split_policy": "train ridge regressor on train split, report held-out test timing error",
+  "num_train_windows": 25629,
+  "num_val_windows": 4608,
+  "num_test_windows": 4032,
+  "splits": {
+    "val": {
+      "mae": 45.11552429199219,
+      "rmse": 60.29076385498047,
+      "r2": -0.23003546180017276
+    },
+    "test": {
+      "mae": 624.8108520507812,
+      "rmse": 2155.601806640625,
+      "r2": -1849.6894201471944
+    }
+  },
+  "primary_metric": "mae",
+  "metric_direction": "lower",
+  "primary_score": 624.8108520507812
+}

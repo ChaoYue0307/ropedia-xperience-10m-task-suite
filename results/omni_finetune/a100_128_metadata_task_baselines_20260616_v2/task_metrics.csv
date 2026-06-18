@@ -11,3 +11,11 @@ cross_modal_retrieval,Cross-Modal Retrieval,unsupported_without_raw_128_feature_
 modality_reconstruction,Cross-Modal Reconstruction,unsupported_without_raw_128_feature_blocks,r2,,not_run,,
 temporal_order,Temporal Order Verification,pass,f1,0.4198864140782312,pass,f1,0.8252408266656923
 misalignment_detection,Multimodal Synchronization Detection,unsupported_without_raw_128_feature_blocks,f1,,not_run,,
+long_horizon_next_action,Long Horizon Next Action,pass,macro_f1,0.004579592783699693,pass,macro_f1,0.0029821307969142615
+next_subtask_forecast,Next Subtask Forecast,pass,macro_f1,0.0001206030150753769,pass,macro_f1,2.086049543676662e-05
+interaction_text_prediction,Interaction Text Prediction,unsupported_without_raw_128_feature_blocks,macro_f1,,not_run,,
+action_object_relation,Action Object Relation,pass,macro_f1,0.0,pass,macro_f1,0.0
+object_set_forecast,Object Set Forecast,pass,micro_f1,0.17656983343047333,pass,micro_f1,0.17418550827844048
+imu_to_hand_pose,Imu To Hand Pose,unsupported_without_raw_128_feature_blocks,mae,,not_run,,
+camera_view_sync_retrieval,Camera View Sync Retrieval,unsupported_without_raw_128_feature_blocks,mrr,,not_run,,
+time_to_transition,Time To Transition,pass,mae,624.8108520507812,pass,mae,41.4664421081543

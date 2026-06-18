@@ -1,0 +1,9 @@
+{
+  "status": "unsupported_without_raw_128_feature_blocks",
+  "task": "interaction_text_prediction",
+  "task_display_name": "Interaction Text Prediction",
+  "primary_metric": "macro_f1",
+  "primary_score": null,
+  "reason": "requires raw annotation.hdf5 caption interaction text; the public 128 JSONL keeps only structured labels and derived metadata",
+  "source": "128_episode_qwen_jsonl_metadata"
+}
