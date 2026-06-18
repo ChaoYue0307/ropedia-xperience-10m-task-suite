@@ -1,11 +1,11 @@
 {
   "title": "Unified 20-Task Model Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-17T21:17:41+00:00",
+  "generated_at_utc": "2026-06-18T06:01:21+00:00",
   "task_count": 20,
   "method_count": 9,
   "method_task_record_count": 180,
-  "scored_method_task_count": 119,
+  "scored_method_task_count": 120,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
@@ -170,17 +170,17 @@
       "method_detail": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 and any completed private-GPU future-task probes scored from task-specific JSON.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 13,
-      "covered_task_count": 13,
+      "scored_task_count": 14,
+      "covered_task_count": 14,
       "proxy_scored_task_count": 0,
-      "scoreless_task_count": 7,
+      "scoreless_task_count": 6,
       "unsupported_task_count": 0,
-      "not_evaluated_task_count": 7,
+      "not_evaluated_task_count": 6,
       "status_counts": {
-        "not_evaluated_in_verified_package": 7,
-        "scored": 13
+        "not_evaluated_in_verified_package": 6,
+        "scored": 14
       },
-      "coverage_fraction": 0.65,
+      "coverage_fraction": 0.7,
       "result_record_fraction": 1.0
     },
     {
@@ -1042,6 +1042,17 @@
           "raw_text": "0.0168",
           "status_label": "scored"
         },
+        "qwen3_omni_v6_lora": {
+          "raw": 0.8764467592592605,
+          "metric_key": "caption_grounding_mrr",
+          "source": "results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/caption_grounding/metrics.json",
+          "scope": "multi_episode_128_partial_model_overlay",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.8764467592592605,
+          "raw_text": "0.8764",
+          "status_label": "scored"
+        },
         "metadata128_simple": {
           "raw": 0.002332374220713973,
           "metric_key": "mrr",
@@ -1085,17 +1096,6 @@
           "normalized_score": null,
           "raw_text": "n/a",
           "status_label": "not supported"
-        },
-        "qwen3_omni_v6_lora": {
-          "raw": null,
-          "metric_key": "mrr",
-          "source": null,
-          "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
         },
         "cosmos3_super_reasoner": {
           "raw": null,
@@ -2492,7 +2492,7 @@
       "title": "Qwen3-Omni v6 LoRA",
       "status": "verified",
       "task_aligned_axes": "Qwen3",
-      "coverage": "20 records / 13 scored task-aligned axes",
+      "coverage": "20 records / 14 scored task-aligned axes",
       "headline": "JSON validity 0.9990; action macro-F1 0.0029",
       "source": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/eval/metrics.json"
     },
@@ -3770,17 +3770,17 @@
       "task_label": "Language Grounding",
       "series_id": "qwen3_omni_v6_lora",
       "method": "Qwen3-Omni v6 LoRA",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "mrr",
-      "source": null,
+      "raw": 0.8764467592592605,
+      "raw_text": "0.8764",
+      "normalized_score": 0.8764467592592605,
+      "metric_key": "caption_grounding_mrr",
+      "source": "results/omni_finetune/xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z/caption_grounding/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 8,

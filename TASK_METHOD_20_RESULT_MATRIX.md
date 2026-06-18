@@ -12,7 +12,7 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 128ep Metadata NN | 20 | 6 | 0 | 14 | not supported 14, scored 6 |
 | 128ep Raw Simple | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
 | 128ep Raw NN | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
-| Qwen3-Omni v6 LoRA | 20 | 13 | 0 | 7 | not evaluated 7, scored 13 |
+| Qwen3-Omni v6 LoRA | 20 | 14 | 0 | 6 | not evaluated 6, scored 14 |
 | Cosmos3-Super Reasoner | 20 | 7 | 0 | 13 | not evaluated 13, scored 7 |
 | Cosmos3-Nano Future Window | 20 | 5 | 0 | 15 | not evaluated 15, scored 5 |
 
@@ -25,7 +25,7 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 05 | Hand Trajectory Forecasting | score | score | unsupported | not supported | score | score | not evaluated | not evaluated | not evaluated |
 | 06 | Contact State Prediction | score | score | score | score | score | score | score | score | score |
 | 07 | Object Relevance Prediction | score | score | score | score | score | score | score | score | not evaluated |
-| 08 | Language Grounding | score | score | score | not supported | score | score | not evaluated | not evaluated | not evaluated |
+| 08 | Language Grounding | score | score | score | not supported | score | score | score | not evaluated | not evaluated |
 | 09 | Cross-Modal Retrieval | score | score | unsupported | not supported | score | score | not evaluated | not evaluated | score |
 | 10 | Cross-Modal Reconstruction | score | score | unsupported | not supported | score | score | not evaluated | not evaluated | not evaluated |
 | 11 | Temporal Order Verification | score | score | score | not supported | score | score | score | not evaluated | not evaluated |
