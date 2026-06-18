@@ -65,11 +65,13 @@
       --font-copy: "Inter Tight", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --font-btn: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --font-mono: "Space Grotesk", "SF Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --nav-height: 82px;
+      --tab-stack-offset: 218px;
     }
 
     * { box-sizing: border-box; }
     [hidden] { display: none !important; }
-    html { scroll-padding-top: 64px; }
+    html { scroll-padding-top: var(--nav-height); }
     body {
       margin: 0;
       font-family: var(--font-copy);
@@ -108,8 +110,12 @@
       backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--soft-line);
     }
+    .site-nav .wrap,
+    .project-tabs-shell .wrap {
+      width: min(100% - 80px, 1880px);
+    }
     .nav-inner {
-      height: 64px;
+      height: var(--nav-height);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -121,15 +127,16 @@
       gap: 12px;
       font-family: var(--font-ui);
       font-weight: 700;
+      font-size: clamp(18px, 1.36vw, 27px);
       letter-spacing: 0;
       text-decoration: none;
       white-space: nowrap;
     }
     .brand-logo {
-      width: 38px;
-      height: 38px;
+      width: 54px;
+      height: 54px;
       display: block;
-      border-radius: 8px;
+      border-radius: 10px;
       border: 1px solid rgba(204, 255, 160, 0.42);
       background: #061006;
       object-fit: contain;
@@ -138,18 +145,19 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 10px;
       font-family: var(--font-btn);
-      font-size: 13px;
+      font-size: clamp(14px, 0.93vw, 19px);
+      font-weight: 650;
       color: #c6d0c2;
       min-width: 0;
     }
     .nav-links a {
-      min-height: 36px;
+      min-height: 48px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0 10px;
+      padding: 0 17px;
       border: 1px solid transparent;
       border-radius: 999px;
       background: var(--ropedia-pill);
@@ -171,8 +179,8 @@
       border: 1px solid var(--green);
       background: var(--green);
       color: #020502;
-      height: 36px;
-      padding: 0 11px;
+      height: 48px;
+      padding: 0 18px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -180,6 +188,11 @@
       font-family: var(--font-btn);
       font-weight: 680;
       border-radius: 999px;
+    }
+    .nav-action-hf {
+      width: 56px;
+      min-width: 56px;
+      padding: 0;
     }
     .nav-links a.nav-action {
       border-color: var(--green);
@@ -373,37 +386,37 @@
       padding: 88px 0 96px;
       border-bottom: 1px solid var(--soft-line);
       background: rgba(2, 5, 2, 0.72);
-      scroll-margin-top: 132px;
+      scroll-margin-top: var(--tab-stack-offset);
     }
     main > section:focus { outline: none; }
     main.tabbed > section[hidden] { display: none; }
     .project-tabs-shell {
       order: 0;
       position: sticky;
-      top: 64px;
+      top: var(--nav-height);
       z-index: 14;
       border-bottom: 1px solid var(--soft-line);
       background: rgba(2, 5, 2, 0.88);
       backdrop-filter: blur(18px);
-      padding: 14px 0;
+      padding: 23px 0 25px;
     }
     .project-tabs {
       display: grid;
       grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 10px;
+      gap: 16px;
     }
     .project-tab {
       appearance: none;
       min-width: 0;
-      min-height: 62px;
+      min-height: 120px;
       border: 1px solid var(--soft-line);
-      border-radius: var(--radius);
+      border-radius: 58px;
       background:
         linear-gradient(180deg, rgba(204, 255, 160, 0.06), rgba(7, 18, 7, 0.82)),
         var(--surface);
       color: #dce8d6;
       cursor: pointer;
-      padding: 12px 13px;
+      padding: 24px 22px;
       text-align: left;
       font: inherit;
       transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms cubic-bezier(0.16, 1, 0.3, 1), background 220ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -413,15 +426,16 @@
       display: block;
       color: var(--ink);
       font-family: var(--font-ui);
-      font-size: 15px;
-      line-height: 1.12;
+      font-size: clamp(18px, 1.2vw, 25px);
+      line-height: 1.06;
     }
     .project-tab span {
       display: block;
-      margin-top: 5px;
+      margin-top: 8px;
       color: var(--muted);
-      font-size: 11px;
-      line-height: 1.25;
+      font-size: clamp(13px, 0.95vw, 19px);
+      line-height: 1.18;
+      max-width: 18ch;
     }
     .project-tab.active {
       border-color: var(--green);
@@ -433,9 +447,10 @@
     .project-tab.active span { color: #020502; }
     .section-tabs {
       display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-top: 12px;
+      flex-wrap: wrap;
+      gap: 12px;
+      overflow-x: visible;
+      padding-top: 19px;
       padding-bottom: 2px;
       scrollbar-width: thin;
       scrollbar-color: rgba(204, 255, 160, 0.42) rgba(7, 18, 7, 0.72);
@@ -446,15 +461,15 @@
       align-items: center;
       justify-content: center;
       flex: 0 0 auto;
-      min-height: 38px;
+      min-height: 58px;
       border: 1px solid rgba(204, 255, 160, 0.18);
-      border-radius: 6px;
+      border-radius: 999px;
       background: rgba(7, 18, 7, 0.78);
       color: #c8d5c2;
       cursor: pointer;
-      padding: 8px 12px;
+      padding: 0 22px;
       font-family: var(--font-ui);
-      font-size: 13px;
+      font-size: clamp(14px, 1.02vw, 20px);
       font-weight: 660;
       line-height: 1.15;
       text-align: center;
@@ -473,26 +488,27 @@
     }
     .content-tabs {
       display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 2px 0 4px;
-      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 12px;
+      overflow-x: visible;
+      padding: 2px 0 6px;
+      margin-bottom: 22px;
       scrollbar-width: thin;
       scrollbar-color: rgba(204, 255, 160, 0.42) rgba(7, 18, 7, 0.72);
     }
     .content-tab {
       appearance: none;
-      flex: 0 0 auto;
-      min-width: 190px;
-      min-height: 56px;
+      flex: 1 1 220px;
+      min-width: 210px;
+      min-height: 66px;
       border: 1px solid rgba(204, 255, 160, 0.18);
-      border-radius: 6px;
+      border-radius: 999px;
       background:
         linear-gradient(180deg, rgba(204, 255, 160, 0.05), rgba(7, 18, 7, 0.72)),
         rgba(2, 5, 2, 0.54);
       color: #dce8d6;
       cursor: pointer;
-      padding: 10px 12px;
+      padding: 12px 20px;
       text-align: left;
       font: inherit;
       transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms cubic-bezier(0.16, 1, 0.3, 1), background 220ms cubic-bezier(0.16, 1, 0.3, 1), color 220ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -506,14 +522,14 @@
       display: block;
       color: var(--ink);
       font-family: var(--font-ui);
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.15;
     }
     .content-tab span {
       display: block;
       margin-top: 4px;
       color: var(--muted);
-      font-size: 11px;
+      font-size: 12px;
       line-height: 1.25;
     }
     .content-tab.active {
@@ -2766,6 +2782,43 @@
         line-height: 1.25;
       }
     }
+    @media (max-width: 1280px) {
+      :root {
+        --nav-height: 68px;
+        --tab-stack-offset: 190px;
+      }
+      .site-nav .wrap,
+      .project-tabs-shell .wrap {
+        width: min(100% - 48px, var(--max));
+      }
+      .brand {
+        font-size: 20px;
+      }
+      .brand-logo {
+        width: 42px;
+        height: 42px;
+      }
+      .nav-links { display: none; }
+      .project-tabs {
+        gap: 10px;
+      }
+      .project-tab {
+        min-height: 84px;
+        padding: 16px 15px;
+        border-radius: 42px;
+      }
+      .project-tab strong {
+        font-size: 17px;
+      }
+      .project-tab span {
+        font-size: 12px;
+      }
+      .section-tab {
+        min-height: 42px;
+        padding: 0 14px;
+        font-size: 13px;
+      }
+    }
     @media (max-width: 960px) {
       .hero-inner, .two-col { grid-template-columns: 1fr; }
       .hero,
@@ -2776,7 +2829,7 @@
       .hero-radar-frame img { height: min(430px, 56vw); }
       .signal:nth-child(2n + 1) { border-right: 0; }
       .project-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .section-tabs { padding-top: 10px; }
+      .section-tabs { padding-top: 12px; }
       .figure-brief,
       .split-radar-grid,
       .foundation-pipeline-card { display: block; }
@@ -2805,11 +2858,27 @@
       .nav-links { display: none; }
     }
     @media (max-width: 640px) {
+      :root {
+        --nav-height: 64px;
+        --tab-stack-offset: 128px;
+      }
       .wrap { width: min(100% - 28px, var(--max)); }
-      .project-tabs-shell { top: 64px; padding: 10px 0; }
+      .site-nav .wrap,
+      .project-tabs-shell .wrap {
+        width: min(100% - 28px, var(--max));
+      }
+      .brand {
+        font-size: 16px;
+        gap: 9px;
+      }
+      .brand-logo {
+        width: 38px;
+        height: 38px;
+      }
+      .project-tabs-shell { top: var(--nav-height); padding: 10px 0; }
       .project-tabs {
         display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 6px;
         overflow: visible;
         padding-bottom: 0;
@@ -2819,8 +2888,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 44px;
+        min-height: 42px;
         padding: 8px 5px;
+        border-radius: 999px;
         text-align: center;
         scroll-snap-align: none;
       }
@@ -2847,9 +2917,12 @@
         white-space: nowrap;
       }
       .content-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
         margin-bottom: 14px;
       }
       .content-tab {
+        flex: 0 0 auto;
         min-width: min(76vw, 210px);
         min-height: 52px;
       }
@@ -2936,8 +3009,8 @@
         <a href="#walkthroughs">Demo</a>
         <a href="single_episode_explorer.html">Explorer</a>
         <a href="#artifacts">Files</a>
-        <a class="nav-action" href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF</a>
-        <a class="nav-action" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite">Repo</a>
+        <a class="nav-action nav-action-hf" href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF</a>
+        <a class="nav-action nav-action-repo" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite">Repo</a>
       </div>
     </div>
   </nav>
