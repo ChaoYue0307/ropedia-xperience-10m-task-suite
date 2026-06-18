@@ -13,8 +13,8 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 128ep Raw Simple | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
 | 128ep Raw NN | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
 | Qwen3-Omni v6 LoRA | 20 | 16 | 0 | 4 | not evaluated 4, scored 16 |
-| Cosmos3-Super Reasoner | 20 | 9 | 0 | 11 | not evaluated 11, scored 9 |
-| Cosmos3-Nano Future Window | 20 | 10 | 0 | 10 | not evaluated 10, scored 10 |
+| Cosmos3-Super Reasoner | 20 | 10 | 0 | 10 | not evaluated 10, scored 10 |
+| Cosmos3-Nano Future Window | 20 | 11 | 0 | 9 | not evaluated 9, scored 11 |
 
 | # | Task | Min | NN | 128-S | 128-NN | 128-RS | 128-RN | Qwen3 | C3-S | C3-N |
 | ---: | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -25,7 +25,7 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 05 | Hand Trajectory Forecasting | score | score | score | score | score | score | not evaluated | not evaluated | not evaluated |
 | 06 | Contact State Prediction | score | score | score | score | score | score | score | score | score |
 | 07 | Object Relevance Prediction | score | score | score | score | score | score | score | score | not evaluated |
-| 08 | Language Grounding | score | score | score | score | score | score | score | not evaluated | not evaluated |
+| 08 | Language Grounding | score | score | score | score | score | score | score | score | not evaluated |
 | 09 | Cross-Modal Retrieval | score | score | score | score | score | score | score | not evaluated | score |
 | 10 | Cross-Modal Reconstruction | score | score | score | score | score | score | not evaluated | not evaluated | score |
 | 11 | Temporal Order Verification | score | score | score | score | score | score | score | not evaluated | not evaluated |
@@ -33,7 +33,7 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 13 | Long-Horizon Next-Action Forecasting | score | score | score | score | score | score | score | score | score |
 | 14 | Long-Horizon Next-Subtask Forecasting | score | score | score | score | score | score | score | not evaluated | score |
 | 15 | Interaction Text Prediction | score | score | unsupported | not supported | proxy | proxy | not evaluated | not evaluated | not evaluated |
-| 16 | Action-Object Relation Prediction | score | score | score | score | score | score | score | score | not evaluated |
+| 16 | Action-Object Relation Prediction | score | score | score | score | score | score | score | score | score |
 | 17 | Future Object-Set Forecasting | score | score | score | score | score | score | score | not evaluated | score |
 | 18 | IMU-to-Hand Pose Reconstruction | score | score | score | score | score | score | not evaluated | not evaluated | not evaluated |
 | 19 | Camera-View Synchronization Retrieval | score | score | unsupported | not supported | proxy | proxy | score | not evaluated | not evaluated |

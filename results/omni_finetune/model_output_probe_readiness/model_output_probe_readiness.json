@@ -1,10 +1,10 @@
 {
-  "generated_at_utc": "2026-06-18T18:10:07+00:00",
+  "generated_at_utc": "2026-06-18T22:44:42+00:00",
   "methods": {
     "cosmos3_nano_future_window": {
       "label": "Cosmos3-Nano Future Window",
-      "matrix_scored_task_count": 7,
-      "matrix_scoreless_task_count": 13,
+      "matrix_scored_task_count": 10,
+      "matrix_scoreless_task_count": 10,
       "next_step": "Collect or generate train, validation, and test prediction JSONL files first.",
       "ready_for_all_task_probe": false,
       "required_splits": [
@@ -19,13 +19,10 @@
         "caption_grounding",
         "temporal_order",
         "misalignment_detection",
-        "next_subtask_forecast",
         "interaction_text_prediction",
         "action_object_relation",
-        "object_set_forecast",
         "imu_to_hand_pose",
-        "camera_view_sync_retrieval",
-        "time_to_transition"
+        "camera_view_sync_retrieval"
       ],
       "split_status": {
         "test": {
@@ -54,8 +51,8 @@
     },
     "cosmos3_super_reasoner": {
       "label": "Cosmos3-Super Reasoner",
-      "matrix_scored_task_count": 8,
-      "matrix_scoreless_task_count": 12,
+      "matrix_scored_task_count": 9,
+      "matrix_scoreless_task_count": 11,
       "next_step": "Collect or generate train, validation, and test prediction JSONL files first.",
       "ready_for_all_task_probe": false,
       "required_splits": [
@@ -70,7 +67,6 @@
         "modality_reconstruction",
         "temporal_order",
         "misalignment_detection",
-        "long_horizon_next_action",
         "next_subtask_forecast",
         "interaction_text_prediction",
         "object_set_forecast",
@@ -103,8 +99,8 @@
     },
     "qwen3_omni_v6_lora": {
       "label": "Qwen3-Omni v6 LoRA",
-      "matrix_scored_task_count": 15,
-      "matrix_scoreless_task_count": 5,
+      "matrix_scored_task_count": 16,
+      "matrix_scoreless_task_count": 4,
       "next_step": "Collect or generate train, validation, and test prediction JSONL files first.",
       "ready_for_all_task_probe": false,
       "required_splits": [
@@ -116,8 +112,7 @@
         "hand_trajectory_forecast",
         "modality_reconstruction",
         "interaction_text_prediction",
-        "imu_to_hand_pose",
-        "camera_view_sync_retrieval"
+        "imu_to_hand_pose"
       ],
       "split_status": {
         "test": {

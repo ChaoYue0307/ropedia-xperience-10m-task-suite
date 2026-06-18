@@ -1,11 +1,11 @@
 {
   "title": "Unified 20-Task Model Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-18T22:25:59+00:00",
+  "generated_at_utc": "2026-06-18T22:55:01+00:00",
   "task_count": 20,
   "method_count": 9,
   "method_task_record_count": 180,
-  "scored_method_task_count": 151,
+  "scored_method_task_count": 153,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
@@ -190,31 +190,7 @@
       "kind": "partial_128_episode_foundation_model_overlay",
       "scope": "128 selected episodes, held-out test",
       "stroke_dasharray": "4 7",
-      "method_detail": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 16 and a derived task-20 action-boundary timing probe scored from existing verified JSON.",
-      "plotted_as": "colored point overlay",
-      "result_record_count": 20,
-      "scored_task_count": 9,
-      "covered_task_count": 9,
-      "proxy_scored_task_count": 0,
-      "scoreless_task_count": 11,
-      "unsupported_task_count": 0,
-      "not_evaluated_task_count": 11,
-      "status_counts": {
-        "not_evaluated_in_verified_package": 11,
-        "scored": 9
-      },
-      "coverage_fraction": 0.45,
-      "result_record_fraction": 1.0
-    },
-    {
-      "id": "cosmos3_nano_future_window",
-      "label": "Cosmos3-Nano Future Window",
-      "short_label": "C3-N",
-      "color": "#d9c7ff",
-      "kind": "partial_128_episode_world_model_overlay",
-      "scope": "128 selected episodes, held-out test",
-      "stroke_dasharray": "2 7",
-      "method_detail": "Verified Cosmos3-Nano future-window compatibility metrics, plus tasks 10/13/14/17 and a derived task-20 boundary timing probe scored from existing held-out future-window artifacts.",
+      "method_detail": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 8/16 and a derived task-20 action-boundary timing probe scored from existing verified JSON.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
       "scored_task_count": 10,
@@ -228,6 +204,30 @@
         "scored": 10
       },
       "coverage_fraction": 0.5,
+      "result_record_fraction": 1.0
+    },
+    {
+      "id": "cosmos3_nano_future_window",
+      "label": "Cosmos3-Nano Future Window",
+      "short_label": "C3-N",
+      "color": "#d9c7ff",
+      "kind": "partial_128_episode_world_model_overlay",
+      "scope": "128 selected episodes, held-out test",
+      "stroke_dasharray": "2 7",
+      "method_detail": "Verified Cosmos3-Nano future-window compatibility metrics, plus tasks 10/13/14/16/17 and a derived task-20 boundary timing probe scored from existing held-out future-window artifacts.",
+      "plotted_as": "colored point overlay",
+      "result_record_count": 20,
+      "scored_task_count": 11,
+      "covered_task_count": 11,
+      "proxy_scored_task_count": 0,
+      "scoreless_task_count": 9,
+      "unsupported_task_count": 0,
+      "not_evaluated_task_count": 9,
+      "status_counts": {
+        "not_evaluated_in_verified_package": 9,
+        "scored": 11
+      },
+      "coverage_fraction": 0.55,
       "result_record_fraction": 1.0
     }
   ],
@@ -1041,6 +1041,17 @@
           "raw_text": "0.0168",
           "status_label": "scored"
         },
+        "cosmos3_super_reasoner": {
+          "raw": 0.30639899644580487,
+          "metric_key": "caption_grounding_iou",
+          "source": "results/omni_finetune/model_output_task_probes_20260616/caption_grounding/cosmos3_super_reasoner/metrics.json",
+          "scope": "multi_episode_128_partial_model_overlay",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.30639899644580487,
+          "raw_text": "0.3064",
+          "status_label": "scored"
+        },
         "qwen3_omni_v6_lora": {
           "raw": 0.8764467592592605,
           "metric_key": "caption_grounding_mrr",
@@ -1095,17 +1106,6 @@
           "normalized_score": 0.0063402121886610985,
           "raw_text": "0.0063",
           "status_label": "scored"
-        },
-        "cosmos3_super_reasoner": {
-          "raw": null,
-          "metric_key": "mrr",
-          "source": null,
-          "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
         },
         "cosmos3_nano_future_window": {
           "raw": null,
@@ -1951,6 +1951,17 @@
           "raw_text": "0.0000",
           "status_label": "scored"
         },
+        "cosmos3_nano_future_window": {
+          "raw": 0.002794157670325683,
+          "metric_key": "action_object_relation_macro_f1",
+          "source": "results/omni_finetune/model_output_task_probes_20260616/action_object_relation/cosmos3_nano_future_window/metrics.json",
+          "scope": "multi_episode_128_partial_model_overlay",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.002794157670325683,
+          "raw_text": "0.0028",
+          "status_label": "scored"
+        },
         "metadata128_simple": {
           "raw": 0.0,
           "metric_key": "macro_f1",
@@ -1994,17 +2005,6 @@
           "normalized_score": 0.0,
           "raw_text": "0.0000",
           "status_label": "scored"
-        },
-        "cosmos3_nano_future_window": {
-          "raw": null,
-          "metric_key": "macro_f1",
-          "source": null,
-          "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
         }
       }
     },
@@ -2499,7 +2499,7 @@
       "id": "cosmos3_super_reasoner",
       "title": "Cosmos3-Super Reasoner",
       "status": "verified_base_weight_eval",
-      "coverage": "20 records / 9 scored task-aligned axes",
+      "coverage": "20 records / 10 scored task-aligned axes",
       "headline": "JSON validity 0.5112; action macro-F1 0.0008",
       "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/eval/metrics.json"
     },
@@ -2507,7 +2507,7 @@
       "id": "cosmos3_nano_future_window",
       "title": "Cosmos3-Nano Future Window",
       "status": "verified_compatibility_eval",
-      "coverage": "20 records / 10 scored task-aligned axes",
+      "coverage": "20 records / 11 scored task-aligned axes",
       "headline": "future retrieval MRR 0.0221; transition accuracy 0.9683",
       "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/eval/metrics.json"
     },
@@ -3787,17 +3787,17 @@
       "task_label": "Language Grounding",
       "series_id": "cosmos3_super_reasoner",
       "method": "Cosmos3-Super Reasoner",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "mrr",
-      "source": null,
+      "raw": 0.30639899644580487,
+      "raw_text": "0.3064",
+      "normalized_score": 0.30639899644580487,
+      "metric_key": "caption_grounding_iou",
+      "source": "results/omni_finetune/model_output_task_probes_20260616/caption_grounding/cosmos3_super_reasoner/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 8,
@@ -5101,17 +5101,17 @@
       "task_label": "Action-Object Relation Prediction",
       "series_id": "cosmos3_nano_future_window",
       "method": "Cosmos3-Nano Future Window",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "macro_f1",
-      "source": null,
+      "raw": 0.002794157670325683,
+      "raw_text": "0.0028",
+      "normalized_score": 0.002794157670325683,
+      "metric_key": "action_object_relation_macro_f1",
+      "source": "results/omni_finetune/model_output_task_probes_20260616/action_object_relation/cosmos3_nano_future_window/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 17,

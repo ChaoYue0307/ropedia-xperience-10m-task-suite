@@ -71,6 +71,9 @@ QWEN_ACTION_OBJECT_METRICS_PATH = (
 COSMOS_SUPER_ACTION_OBJECT_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/cosmos3_super_reasoner/metrics.json"
 )
+COSMOS_SUPER_CAPTION_GROUNDING_METRICS_PATH = (
+    MODEL_OUTPUT_TASK_PROBE_DIR / "caption_grounding/cosmos3_super_reasoner/metrics.json"
+)
 COSMOS_SUPER_TIME_TO_TRANSITION_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "time_to_transition/cosmos3_super_reasoner/metrics.json"
 )
@@ -88,6 +91,9 @@ COSMOS_NANO_MODALITY_RECONSTRUCTION_METRICS_PATH = (
 )
 COSMOS_NANO_OBJECT_SET_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "object_set_forecast/cosmos3_nano_future_window/metrics.json"
+)
+COSMOS_NANO_ACTION_OBJECT_METRICS_PATH = (
+    MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/cosmos3_nano_future_window/metrics.json"
 )
 COSMOS_NANO_TIME_TO_TRANSITION_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "time_to_transition/cosmos3_nano_future_window/metrics.json"
@@ -231,6 +237,10 @@ FOUNDATION_TASK_METRICS = {
     "action_object_relation": {
         "qwen3_omni_v6_lora": "action_object_relation_macro_f1",
         "cosmos3_super_reasoner": "action_object_relation_macro_f1",
+        "cosmos3_nano_future_window": "action_object_relation_macro_f1",
+    },
+    "caption_grounding": {
+        "cosmos3_super_reasoner": "caption_grounding_iou",
     },
     "long_horizon_next_action": {
         "cosmos3_super_reasoner": "long_horizon_next_action_macro_f1",
@@ -263,6 +273,7 @@ FOUNDATION_METRIC_PATHS = {
 FOUNDATION_METRIC_SOURCE_OVERRIDES = {
     ("qwen3_omni_v6_lora", "action_object_relation"): QWEN_ACTION_OBJECT_METRICS_PATH,
     ("cosmos3_super_reasoner", "action_object_relation"): COSMOS_SUPER_ACTION_OBJECT_METRICS_PATH,
+    ("cosmos3_super_reasoner", "caption_grounding"): COSMOS_SUPER_CAPTION_GROUNDING_METRICS_PATH,
     ("qwen3_omni_v6_lora", "caption_grounding"): QWEN_FUTURE_TASK_METRIC_PATHS["caption_grounding"],
     ("qwen3_omni_v6_lora", "cross_modal_retrieval"): QWEN_FUTURE_TASK_METRIC_PATHS["cross_modal_retrieval"],
     ("qwen3_omni_v6_lora", "temporal_order"): QWEN_FUTURE_TASK_METRIC_PATHS["temporal_order"],
@@ -275,6 +286,7 @@ FOUNDATION_METRIC_SOURCE_OVERRIDES = {
     ("cosmos3_nano_future_window", "long_horizon_next_action"): COSMOS_NANO_LONG_HORIZON_METRICS_PATH,
     ("cosmos3_nano_future_window", "next_subtask_forecast"): COSMOS_NANO_NEXT_SUBTASK_METRICS_PATH,
     ("cosmos3_nano_future_window", "modality_reconstruction"): COSMOS_NANO_MODALITY_RECONSTRUCTION_METRICS_PATH,
+    ("cosmos3_nano_future_window", "action_object_relation"): COSMOS_NANO_ACTION_OBJECT_METRICS_PATH,
     ("cosmos3_nano_future_window", "object_set_forecast"): COSMOS_NANO_OBJECT_SET_METRICS_PATH,
     ("cosmos3_nano_future_window", "time_to_transition"): COSMOS_NANO_TIME_TO_TRANSITION_METRICS_PATH,
     ("cosmos3_super_reasoner", "long_horizon_next_action"): COSMOS_SUPER_LONG_HORIZON_METRICS_PATH,
@@ -312,8 +324,8 @@ METHOD_DETAILS = {
     "raw128_simple": "128-episode 4430-dim sensor NPZ simple heads; tasks 15/19 use compact proxies.",
     "raw128_neural_mlp": "128-episode 4430-dim sensor NPZ MLP heads; tasks 15/19 use compact proxies.",
     "qwen3_omni_v6_lora": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 and any completed private-GPU future-task probes scored from task-specific JSON.",
-    "cosmos3_super_reasoner": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 16 and a derived task-20 action-boundary timing probe scored from existing verified JSON.",
-    "cosmos3_nano_future_window": "Verified Cosmos3-Nano future-window compatibility metrics, plus tasks 10/13/14/17 and a derived task-20 boundary timing probe scored from existing held-out future-window artifacts.",
+    "cosmos3_super_reasoner": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 8/16 and a derived task-20 action-boundary timing probe scored from existing verified JSON.",
+    "cosmos3_nano_future_window": "Verified Cosmos3-Nano future-window compatibility metrics, plus tasks 10/13/14/16/17 and a derived task-20 boundary timing probe scored from existing held-out future-window artifacts.",
 }
 
 PROXY_TASK_IDS = {"interaction_text_prediction", "camera_view_sync_retrieval"}
@@ -669,11 +681,13 @@ def build_payload() -> dict[str, Any]:
     cosmos_fd = read_json(COSMOS_SUPER_FD_METRICS_PATH)
     qwen.update(read_json(QWEN_ACTION_OBJECT_METRICS_PATH))
     cosmos_super.update(read_json(COSMOS_SUPER_ACTION_OBJECT_METRICS_PATH))
+    cosmos_super.update(read_json(COSMOS_SUPER_CAPTION_GROUNDING_METRICS_PATH))
     cosmos_super.update(read_json(COSMOS_SUPER_LONG_HORIZON_METRICS_PATH))
     cosmos_super.update(read_json(COSMOS_SUPER_TIME_TO_TRANSITION_METRICS_PATH))
     cosmos_nano.update(read_json(COSMOS_NANO_LONG_HORIZON_METRICS_PATH))
     cosmos_nano.update(read_json(COSMOS_NANO_NEXT_SUBTASK_METRICS_PATH))
     cosmos_nano.update(read_json(COSMOS_NANO_MODALITY_RECONSTRUCTION_METRICS_PATH))
+    cosmos_nano.update(read_json(COSMOS_NANO_ACTION_OBJECT_METRICS_PATH))
     cosmos_nano.update(read_json(COSMOS_NANO_OBJECT_SET_METRICS_PATH))
     cosmos_nano.update(read_json(COSMOS_NANO_TIME_TO_TRANSITION_METRICS_PATH))
     foundation_task_metrics = foundation_task_metric_mapping(qwen)

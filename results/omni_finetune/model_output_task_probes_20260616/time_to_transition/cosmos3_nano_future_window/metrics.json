@@ -4,7 +4,7 @@
     "predictions_csv": "results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_nano_future_window/predictions.csv"
   },
   "cap_frames": 200,
-  "generated_at_utc": "2026-06-18T20:58:30+00:00",
+  "generated_at_utc": "2026-06-18T22:52:18+00:00",
   "known_limitation": "This is a derived future-window action-sequence probe, not evidence of a separately trained scalar time-regression head. It is included because task 20's boundary target is deterministically derivable once future-window action predictions are verified.",
   "metric_direction": "lower",
   "metric_key": "time_to_transition_mae",

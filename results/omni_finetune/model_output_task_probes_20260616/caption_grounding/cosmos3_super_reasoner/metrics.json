@@ -1,0 +1,28 @@
+{
+  "artifact_files": {
+    "metrics_json": "results/omni_finetune/model_output_task_probes_20260616/caption_grounding/cosmos3_super_reasoner/metrics.json",
+    "predictions_csv": "results/omni_finetune/model_output_task_probes_20260616/caption_grounding/cosmos3_super_reasoner/predictions.csv"
+  },
+  "caption_grounding_center_hit_rate": 0.3236607142857143,
+  "caption_grounding_iou": 0.30639899644580487,
+  "caption_grounding_within_20_frames": 0.35267857142857145,
+  "generated_at_utc": "2026-06-18T22:52:18+00:00",
+  "known_limitation": "This is an evidence-window localization score, not a candidate-set retrieval MRR.",
+  "metric_key": "caption_grounding_iou",
+  "missing_pred_evidence_window_count": 219,
+  "model_id": "cosmos3_super_reasoner",
+  "model_label": "Cosmos3-Super Reasoner",
+  "normalization_policy": "Evidence windows are frame intervals. The primary score is mean interval IoU; center-hit and within-20-frame rates are reported as diagnostics.",
+  "primary_metric": "caption_grounding_iou",
+  "primary_score": 0.30639899644580487,
+  "scope": "held_out_test_existing_verified_prediction_json",
+  "score_policy": "Derived from existing verified held-out structured JSON predictions. The task target is the evidence_window field already present in the true JSON; missing or invalid predicted evidence windows receive zero IoU.",
+  "scored_rows": 448,
+  "source_prediction_jsonl": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/eval/predictions.jsonl",
+  "status": "pass",
+  "task_id": "caption_grounding",
+  "task_label": "Language Grounding",
+  "task_number": 8,
+  "title": "Cosmos3-Super Reasoner Evidence-Window Grounding Probe",
+  "total_prediction_rows": 448
+}

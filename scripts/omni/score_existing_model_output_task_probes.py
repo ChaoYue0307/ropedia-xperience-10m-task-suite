@@ -67,7 +67,6 @@ MODEL_SPECS = {
             "results/omni_finetune/model_output_task_probes_20260616/"
             "cosmos3_nano_future_window_target_map.jsonl"
         ),
-        "action_object_relation_unsupported_reason": "verified future-window predictions do not contain object-set fields",
     },
 }
 
@@ -661,6 +660,263 @@ def score_cosmos_nano_object_set_from_target_map(
     return metrics
 
 
+def score_cosmos_nano_action_object_relation_from_target_map(
+    *,
+    model_id: str,
+    spec: dict[str, Any],
+    prediction_jsonl: Path,
+    target_map_jsonl: Path,
+    output_dir: Path,
+    workspace: Path,
+) -> dict[str, Any]:
+    source_rows = read_jsonl(prediction_jsonl)
+    target_by_id = load_target_map(target_map_jsonl)
+    scored_rows: list[dict[str, Any]] = []
+    y_true: list[str] = []
+    y_pred: list[str] = []
+    missing_true_target_count = 0
+    missing_pred_target_count = 0
+
+    for row in source_rows:
+        future_id = str(row.get("future_record_id") or "")
+        pred_future_id = str(row.get("pred_future_record_id") or "")
+        true_target = target_by_id.get(future_id)
+        if not true_target:
+            missing_true_target_count += 1
+            continue
+        pred_target = target_by_id.get(pred_future_id)
+        if not pred_target:
+            missing_pred_target_count += 1
+        true_relation = relation_label(true_target.get("action"), true_target.get("objects"))
+        if true_relation is None:
+            continue
+        pred_relation = relation_label(
+            pred_target.get("action") if pred_target else None,
+            pred_target.get("objects") if pred_target else None,
+            missing_label=MISSING_PRED_RELATION,
+        )
+        y_true.append(true_relation)
+        y_pred.append(pred_relation or MISSING_PRED_RELATION)
+        scored_rows.append(
+            {
+                "id": row.get("id"),
+                "split": row.get("split"),
+                "episode_id": row.get("episode_id"),
+                "future_record_id": future_id,
+                "pred_future_record_id": pred_future_id,
+                "true_relation": true_relation,
+                "pred_relation": pred_relation,
+                "correct": int(true_relation == pred_relation),
+                "rank": row.get("rank"),
+                "top_k_hit": row.get("top_k_hit"),
+            }
+        )
+
+    if not y_true:
+        raise RuntimeError(f"no joined future action-object relation targets found in {prediction_jsonl}")
+
+    label_options = sorted(set(y_true))
+    metrics, per_class, _ = class_metrics(y_true, y_pred, label_options)
+    metrics.update(
+        {
+            "title": f"{spec['label']} Future Action-Object Relation Probe",
+            "status": "pass",
+            "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "model_id": model_id,
+            "model_label": spec["label"],
+            "task_id": "action_object_relation",
+            "task_number": 16,
+            "task_label": "Action-Object Relation",
+            "metric_key": "action_object_relation_macro_f1",
+            "primary_metric": "action_object_relation_macro_f1",
+            "primary_score": metrics["macro_f1"],
+            "action_object_relation_macro_f1": metrics["macro_f1"],
+            "action_object_relation_accuracy": metrics["accuracy"],
+            "source_prediction_jsonl": relpath(prediction_jsonl, workspace),
+            "source_target_map_jsonl": relpath(target_map_jsonl, workspace),
+            "scope": "held_out_test_existing_future_window_retrieval_probe",
+            "score_policy": (
+                "Derived from existing verified held-out Cosmos3-Nano future-window predictions. "
+                "The true future record and retrieved future record are joined to the public-safe "
+                "target map, then scored on the action plus object-set relation."
+            ),
+            "normalization_policy": (
+                "Action text is whitespace-normalized. Objects are casefolded, deduplicated, "
+                "sorted, and joined into a canonical relation label before macro-F1 scoring."
+            ),
+            "known_limitation": (
+                "This is a retrieval-derived future relation score, not a separately prompted "
+                "action-object generation head."
+            ),
+            "total_prediction_rows": len(source_rows),
+            "target_map_rows": len(target_by_id),
+            "scored_rows": len(scored_rows),
+            "missing_true_target_count": missing_true_target_count,
+            "missing_pred_target_count": missing_pred_target_count,
+            "artifact_files": {
+                "metrics_json": relpath(output_dir / "metrics.json", workspace),
+                "predictions_csv": relpath(output_dir / "predictions.csv", workspace),
+                "per_class_metrics_csv": relpath(output_dir / "per_class_metrics.csv", workspace),
+            },
+        }
+    )
+    write_json(output_dir / "metrics.json", metrics)
+    write_csv(
+        output_dir / "predictions.csv",
+        scored_rows,
+        [
+            "id",
+            "split",
+            "episode_id",
+            "future_record_id",
+            "pred_future_record_id",
+            "true_relation",
+            "pred_relation",
+            "correct",
+            "rank",
+            "top_k_hit",
+        ],
+    )
+    write_csv(
+        output_dir / "per_class_metrics.csv",
+        per_class,
+        ["class_name", "support", "predicted", "precision", "recall", "f1"],
+    )
+    return metrics
+
+
+def parse_window(value: Any) -> tuple[float, float] | None:
+    if not isinstance(value, dict):
+        return None
+    try:
+        start = float(value.get("start_frame"))
+        end = float(value.get("end_frame"))
+    except (TypeError, ValueError):
+        return None
+    if end < start:
+        return None
+    return start, end
+
+
+def interval_iou(a: tuple[float, float], b: tuple[float, float]) -> float:
+    inter = max(0.0, min(a[1], b[1]) - max(a[0], b[0]) + 1.0)
+    union = max(a[1], b[1]) - min(a[0], b[0]) + 1.0
+    return inter / union if union > 0 else 0.0
+
+
+def score_caption_grounding_from_evidence_window(
+    *,
+    model_id: str,
+    spec: dict[str, Any],
+    prediction_jsonl: Path,
+    output_dir: Path,
+    workspace: Path,
+) -> dict[str, Any]:
+    source_rows = read_jsonl(prediction_jsonl)
+    scored_rows: list[dict[str, Any]] = []
+    ious: list[float] = []
+    center_hits = 0
+    within_20_hits = 0
+    missing_pred_count = 0
+
+    for row in source_rows:
+        true_json = row.get("true_json") if isinstance(row.get("true_json"), dict) else {}
+        pred_json = row.get("pred_json") if isinstance(row.get("pred_json"), dict) else {}
+        true_window = parse_window(true_json.get("evidence_window"))
+        if true_window is None:
+            continue
+        pred_window = parse_window(pred_json.get("evidence_window"))
+        if pred_window is None:
+            missing_pred_count += 1
+            iou = 0.0
+            pred_center = None
+            center_error = None
+        else:
+            iou = interval_iou(true_window, pred_window)
+            pred_center = (pred_window[0] + pred_window[1]) / 2.0
+            true_center = (true_window[0] + true_window[1]) / 2.0
+            center_error = abs(pred_center - true_center)
+            center_hits += int(true_window[0] <= pred_center <= true_window[1])
+            within_20_hits += int(center_error <= 20.0)
+        ious.append(iou)
+        scored_rows.append(
+            {
+                "id": row.get("id"),
+                "split": row.get("split"),
+                "episode_id": row.get("episode_id"),
+                "true_start_frame": true_window[0],
+                "true_end_frame": true_window[1],
+                "pred_start_frame": pred_window[0] if pred_window else None,
+                "pred_end_frame": pred_window[1] if pred_window else None,
+                "pred_center_frame": pred_center,
+                "center_error_frames": center_error,
+                "iou": iou,
+            }
+        )
+
+    if not scored_rows:
+        raise RuntimeError(f"no evidence-window targets found in {prediction_jsonl}")
+
+    mean_iou = sum(ious) / len(ious)
+    center_hit_rate = center_hits / len(scored_rows)
+    within_20_rate = within_20_hits / len(scored_rows)
+    metrics = {
+        "title": f"{spec['label']} Evidence-Window Grounding Probe",
+        "status": "pass",
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "model_id": model_id,
+        "model_label": spec["label"],
+        "task_id": "caption_grounding",
+        "task_number": 8,
+        "task_label": "Language Grounding",
+        "metric_key": "caption_grounding_iou",
+        "primary_metric": "caption_grounding_iou",
+        "primary_score": mean_iou,
+        "caption_grounding_iou": mean_iou,
+        "caption_grounding_center_hit_rate": center_hit_rate,
+        "caption_grounding_within_20_frames": within_20_rate,
+        "source_prediction_jsonl": relpath(prediction_jsonl, workspace),
+        "scope": "held_out_test_existing_verified_prediction_json",
+        "score_policy": (
+            "Derived from existing verified held-out structured JSON predictions. The task target is "
+            "the evidence_window field already present in the true JSON; missing or invalid predicted "
+            "evidence windows receive zero IoU."
+        ),
+        "normalization_policy": (
+            "Evidence windows are frame intervals. The primary score is mean interval IoU; center-hit "
+            "and within-20-frame rates are reported as diagnostics."
+        ),
+        "known_limitation": (
+            "This is an evidence-window localization score, not a candidate-set retrieval MRR."
+        ),
+        "total_prediction_rows": len(source_rows),
+        "scored_rows": len(scored_rows),
+        "missing_pred_evidence_window_count": missing_pred_count,
+        "artifact_files": {
+            "metrics_json": relpath(output_dir / "metrics.json", workspace),
+            "predictions_csv": relpath(output_dir / "predictions.csv", workspace),
+        },
+    }
+    write_json(output_dir / "metrics.json", metrics)
+    write_csv(
+        output_dir / "predictions.csv",
+        scored_rows,
+        [
+            "id",
+            "split",
+            "episode_id",
+            "true_start_frame",
+            "true_end_frame",
+            "pred_start_frame",
+            "pred_end_frame",
+            "pred_center_frame",
+            "center_error_frames",
+            "iou",
+        ],
+    )
+    return metrics
+
+
 def score_modality_reconstruction_from_feature_error(
     *,
     model_id: str,
@@ -1142,6 +1398,7 @@ def build_report(summary: dict[str, Any]) -> str:
         task16 = task_results.get("action_object_relation", {})
         task17 = task_results.get("object_set_forecast", {})
         task20 = task_results.get("time_to_transition", {})
+        task8 = task_results.get("caption_grounding", {})
         rows.append(
             "| "
             + " | ".join(
@@ -1175,6 +1432,11 @@ def build_report(summary: dict[str, Any]) -> str:
                         if task20.get("time_to_transition_mae") is not None
                         else "n/a"
                     ),
+                    (
+                        f"{task8.get('caption_grounding_iou', 0.0):.6f}"
+                        if task8.get("caption_grounding_iou") is not None
+                        else "n/a"
+                    ),
                     result.get("reason") or result.get("source_prediction_jsonl", ""),
                 ]
             )
@@ -1188,8 +1450,8 @@ This package scores only task targets already present in verified held-out
 prediction JSON. It does not run new inference and does not infer targets that
 are absent from a model branch.
 
-| Method | ID | Status | Scored tasks | Task 13 macro-F1 | Task 14 macro-F1 | Task 16 macro-F1 | Task 17 micro-F1 | Task 20 MAE | Evidence |
-| --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
+| Method | ID | Status | Scored tasks | Task 13 macro-F1 | Task 14 macro-F1 | Task 16 macro-F1 | Task 17 micro-F1 | Task 20 MAE | Task 8 IoU | Evidence |
+| --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
 {chr(10).join(rows)}
 """
 
@@ -1213,9 +1475,7 @@ def main() -> int:
             continue
         task_results: dict[str, Any] = {}
         unsupported: dict[str, str] = {}
-        if spec.get("action_object_relation_unsupported_reason"):
-            unsupported["action_object_relation"] = spec["action_object_relation_unsupported_reason"]
-        else:
+        if model_id != "cosmos3_nano_future_window":
             metrics = score_action_object_relation(
                 model_id=model_id,
                 spec=spec,
@@ -1229,6 +1489,21 @@ def main() -> int:
                 "valid_pred_relation_rate": metrics["valid_pred_relation_rate"],
                 "action_object_relation_macro_f1": metrics["action_object_relation_macro_f1"],
                 "action_object_relation_accuracy": metrics["action_object_relation_accuracy"],
+            }
+        if model_id == "cosmos3_super_reasoner":
+            metrics = score_caption_grounding_from_evidence_window(
+                model_id=model_id,
+                spec=spec,
+                prediction_jsonl=prediction_path,
+                output_dir=output_dir / "caption_grounding" / model_id,
+                workspace=workspace,
+            )
+            task_results["caption_grounding"] = {
+                "source_metrics_json": metrics["artifact_files"]["metrics_json"],
+                "scored_rows": metrics["scored_rows"],
+                "caption_grounding_iou": metrics["caption_grounding_iou"],
+                "caption_grounding_center_hit_rate": metrics["caption_grounding_center_hit_rate"],
+                "missing_pred_evidence_window_count": metrics["missing_pred_evidence_window_count"],
             }
         if model_id == "cosmos3_nano_future_window":
             manifest_path = workspace / spec["dataset_manifest"]
@@ -1277,6 +1552,20 @@ def main() -> int:
                     "object_set_forecast_micro_f1": metrics["object_set_forecast_micro_f1"],
                     "object_set_forecast_precision": metrics["object_set_forecast_precision"],
                     "object_set_forecast_recall": metrics["object_set_forecast_recall"],
+                }
+                metrics = score_cosmos_nano_action_object_relation_from_target_map(
+                    model_id=model_id,
+                    spec=spec,
+                    prediction_jsonl=prediction_path,
+                    target_map_jsonl=target_map_path,
+                    output_dir=output_dir / "action_object_relation" / model_id,
+                    workspace=workspace,
+                )
+                task_results["action_object_relation"] = {
+                    "source_metrics_json": metrics["artifact_files"]["metrics_json"],
+                    "scored_rows": metrics["scored_rows"],
+                    "action_object_relation_macro_f1": metrics["action_object_relation_macro_f1"],
+                    "action_object_relation_accuracy": metrics["action_object_relation_accuracy"],
                 }
             metrics_path = workspace / spec["metrics_json"]
             metrics = score_modality_reconstruction_from_feature_error(
@@ -1356,6 +1645,7 @@ def main() -> int:
         ),
         "task_ids_added_to_matrix": [
             "action_object_relation",
+            "caption_grounding",
             "long_horizon_next_action",
             "modality_reconstruction",
             "next_subtask_forecast",
