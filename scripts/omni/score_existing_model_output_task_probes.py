@@ -47,7 +47,12 @@ MODEL_SPECS = {
             "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/"
             "eval/future_predictions.jsonl"
         ),
-        "unsupported_reason": "verified future-window predictions do not contain object-set fields",
+        "dataset_manifest": (
+            "results/omni_finetune/verified_public/"
+            "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/"
+            "dataset/dataset_manifest.json"
+        ),
+        "action_object_relation_unsupported_reason": "verified future-window predictions do not contain object-set fields",
     },
 }
 
@@ -253,9 +258,139 @@ def score_action_object_relation(
     return metrics
 
 
+def score_cosmos_nano_long_horizon_next_action(
+    *,
+    model_id: str,
+    spec: dict[str, Any],
+    prediction_jsonl: Path,
+    dataset_manifest: Path,
+    output_dir: Path,
+    workspace: Path,
+) -> dict[str, Any]:
+    rows = read_jsonl(prediction_jsonl)
+    manifest = json.loads(dataset_manifest.read_text(encoding="utf-8")) if dataset_manifest.exists() else {}
+    scored_rows: list[dict[str, Any]] = []
+    y_true: list[str] = []
+    y_pred: list[str] = []
+
+    for row in rows:
+        true_action = normalize_text(row.get("true_action"))
+        pred_action = normalize_text(row.get("pred_action"))
+        if not true_action:
+            continue
+        if not pred_action:
+            pred_action = "<missing_pred_action>"
+        y_true.append(true_action)
+        y_pred.append(pred_action)
+        scored_rows.append(
+            {
+                "id": row.get("id"),
+                "split": row.get("split"),
+                "episode_id": row.get("episode_id"),
+                "context_record_id": row.get("context_record_id"),
+                "future_record_id": row.get("future_record_id"),
+                "pred_future_record_id": row.get("pred_future_record_id"),
+                "rank": row.get("rank"),
+                "true_action": true_action,
+                "pred_action": pred_action,
+                "correct": int(true_action == pred_action),
+                "top_k_hit": row.get("top_k_hit"),
+                "distance_to_true": row.get("distance_to_true"),
+                "distance_to_pred": row.get("distance_to_pred"),
+            }
+        )
+
+    if not y_true:
+        raise RuntimeError(f"no long-horizon action targets found in {prediction_jsonl}")
+
+    label_options = sorted(set(y_true))
+    metrics, per_class, _ = class_metrics(y_true, y_pred, label_options)
+    horizon_windows = manifest.get("horizon_windows")
+    dataset_contract = manifest.get("dataset_contract")
+    metrics.update(
+        {
+            "title": f"{spec['label']} Long-Horizon Next-Action Probe",
+            "status": "pass",
+            "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "model_id": model_id,
+            "model_label": spec["label"],
+            "task_id": "long_horizon_next_action",
+            "task_number": 13,
+            "task_label": "Long-Horizon Next Action",
+            "metric_key": "long_horizon_next_action_macro_f1",
+            "primary_metric": "long_horizon_next_action_macro_f1",
+            "primary_score": metrics["macro_f1"],
+            "long_horizon_next_action_macro_f1": metrics["macro_f1"],
+            "long_horizon_next_action_accuracy": metrics["accuracy"],
+            "source_prediction_jsonl": relpath(prediction_jsonl, workspace),
+            "source_dataset_manifest": relpath(dataset_manifest, workspace),
+            "dataset_contract": dataset_contract,
+            "horizon_windows": horizon_windows,
+            "scope": "held_out_test_existing_verified_future_window_prediction_json",
+            "score_policy": (
+                "Derived from existing verified held-out Cosmos3-Nano future-window "
+                "prediction JSON. No new model inference was run; true_action and "
+                "pred_action are scored directly for the long-horizon next-action "
+                "task axis."
+            ),
+            "normalization_policy": (
+                "Macro-F1 is computed over the true held-out future action labels. "
+                "Predicted labels absent from the true-label set remain in the "
+                "confusion matrix and receive zero support."
+            ),
+            "known_limitation": (
+                "The verified package records horizon_windows rather than a raw "
+                "wall-clock horizon. This score should be read as the Cosmos-Nano "
+                "future-window branch for task 13, not as independent proof of an "
+                "exact five-second raw-video target."
+            ),
+            "total_prediction_rows": len(rows),
+            "scored_rows": len(scored_rows),
+            "excluded_rows_without_true_action": len(rows) - len(scored_rows),
+            "unique_true_actions": len(set(y_true)),
+            "unique_pred_actions": len(set(y_pred)),
+            "artifact_files": {
+                "metrics_json": relpath(output_dir / "metrics.json", workspace),
+                "predictions_csv": relpath(output_dir / "predictions.csv", workspace),
+                "per_class_metrics_csv": relpath(output_dir / "per_class_metrics.csv", workspace),
+            },
+        }
+    )
+
+    write_json(output_dir / "metrics.json", metrics)
+    write_csv(
+        output_dir / "predictions.csv",
+        scored_rows,
+        [
+            "id",
+            "split",
+            "episode_id",
+            "context_record_id",
+            "future_record_id",
+            "pred_future_record_id",
+            "rank",
+            "true_action",
+            "pred_action",
+            "correct",
+            "top_k_hit",
+            "distance_to_true",
+            "distance_to_pred",
+        ],
+    )
+    write_csv(
+        output_dir / "per_class_metrics.csv",
+        per_class,
+        ["class_name", "support", "predicted", "precision", "recall", "f1"],
+    )
+    return metrics
+
+
 def build_report(summary: dict[str, Any]) -> str:
     rows = []
     for model_id, result in summary["methods"].items():
+        task_results = result.get("tasks", {})
+        task13 = task_results.get("long_horizon_next_action", {})
+        task16 = task_results.get("action_object_relation", {})
         rows.append(
             "| "
             + " | ".join(
@@ -263,10 +398,15 @@ def build_report(summary: dict[str, Any]) -> str:
                     result["label"],
                     model_id,
                     result["status"],
-                    str(result.get("scored_rows", "n/a")),
+                    ", ".join(sorted(task_results)) or "n/a",
                     (
-                        f"{result.get('action_object_relation_macro_f1', 0.0):.6f}"
-                        if result.get("action_object_relation_macro_f1") is not None
+                        f"{task13.get('long_horizon_next_action_macro_f1', 0.0):.6f}"
+                        if task13.get("long_horizon_next_action_macro_f1") is not None
+                        else "n/a"
+                    ),
+                    (
+                        f"{task16.get('action_object_relation_macro_f1', 0.0):.6f}"
+                        if task16.get("action_object_relation_macro_f1") is not None
                         else "n/a"
                     ),
                     result.get("reason") or result.get("source_prediction_jsonl", ""),
@@ -282,8 +422,8 @@ This package scores only task targets already present in verified held-out
 prediction JSON. It does not run new inference and does not infer targets that
 are absent from a model branch.
 
-| Method | ID | Status | Scored rows | Task 16 macro-F1 | Evidence |
-| --- | --- | --- | ---: | ---: | --- |
+| Method | ID | Status | Scored tasks | Task 13 macro-F1 | Task 16 macro-F1 | Evidence |
+| --- | --- | --- | --- | ---: | ---: | --- |
 {chr(10).join(rows)}
 """
 
@@ -292,45 +432,65 @@ def main() -> int:
     args = parse_args()
     workspace = args.workspace.resolve()
     output_dir = args.output_dir if args.output_dir.is_absolute() else workspace / args.output_dir
-    task_dir = output_dir / "action_object_relation"
     methods: dict[str, Any] = {}
 
     for model_id, spec in MODEL_SPECS.items():
         prediction_path = workspace / spec["prediction_jsonl"]
-        if spec.get("unsupported_reason"):
-            methods[model_id] = {
-                "label": spec["label"],
-                "status": "unsupported_without_required_fields",
-                "source_prediction_jsonl": spec["prediction_jsonl"],
-                "reason": spec["unsupported_reason"],
-            }
-            continue
         if not prediction_path.exists():
             methods[model_id] = {
                 "label": spec["label"],
                 "status": "missing_prediction_jsonl",
                 "source_prediction_jsonl": spec["prediction_jsonl"],
                 "reason": "verified prediction JSONL was not found in the local checkout",
+                "tasks": {},
             }
             continue
-        metrics = score_action_object_relation(
-            model_id=model_id,
-            spec=spec,
-            prediction_jsonl=prediction_path,
-            output_dir=task_dir / model_id,
-            workspace=workspace,
-        )
+        task_results: dict[str, Any] = {}
+        unsupported: dict[str, str] = {}
+        if spec.get("action_object_relation_unsupported_reason"):
+            unsupported["action_object_relation"] = spec["action_object_relation_unsupported_reason"]
+        else:
+            metrics = score_action_object_relation(
+                model_id=model_id,
+                spec=spec,
+                prediction_jsonl=prediction_path,
+                output_dir=output_dir / "action_object_relation" / model_id,
+                workspace=workspace,
+            )
+            task_results["action_object_relation"] = {
+                "source_metrics_json": metrics["artifact_files"]["metrics_json"],
+                "scored_rows": metrics["scored_rows"],
+                "valid_pred_relation_rate": metrics["valid_pred_relation_rate"],
+                "action_object_relation_macro_f1": metrics["action_object_relation_macro_f1"],
+                "action_object_relation_accuracy": metrics["action_object_relation_accuracy"],
+            }
+        if model_id == "cosmos3_nano_future_window":
+            manifest_path = workspace / spec["dataset_manifest"]
+            metrics = score_cosmos_nano_long_horizon_next_action(
+                model_id=model_id,
+                spec=spec,
+                prediction_jsonl=prediction_path,
+                dataset_manifest=manifest_path,
+                output_dir=output_dir / "long_horizon_next_action" / model_id,
+                workspace=workspace,
+            )
+            task_results["long_horizon_next_action"] = {
+                "source_metrics_json": metrics["artifact_files"]["metrics_json"],
+                "scored_rows": metrics["scored_rows"],
+                "horizon_windows": metrics.get("horizon_windows"),
+                "long_horizon_next_action_macro_f1": metrics["long_horizon_next_action_macro_f1"],
+                "long_horizon_next_action_accuracy": metrics["long_horizon_next_action_accuracy"],
+            }
         methods[model_id] = {
             "label": spec["label"],
-            "status": "scored",
-            "source_prediction_jsonl": metrics["source_prediction_jsonl"],
-            "source_metrics_json": metrics["artifact_files"]["metrics_json"],
-            "scored_rows": metrics["scored_rows"],
-            "valid_pred_relation_rate": metrics["valid_pred_relation_rate"],
-            "action_object_relation_macro_f1": metrics["action_object_relation_macro_f1"],
-            "action_object_relation_accuracy": metrics["action_object_relation_accuracy"],
+            "status": "scored" if task_results else "unsupported_without_required_fields",
+            "source_prediction_jsonl": spec["prediction_jsonl"],
+            "tasks": task_results,
+            "unsupported_tasks": unsupported,
+            "reason": "; ".join(unsupported.values()) if unsupported and not task_results else None,
         }
 
+    scored_count = sum(len(item.get("tasks", {})) for item in methods.values())
     summary = {
         "title": "Existing Model-Output Task Probes",
         "status": "pass",
@@ -339,8 +499,8 @@ def main() -> int:
             "Task-specific scoring from existing verified held-out model outputs. "
             "No new model inference, training, or target backfilling is performed."
         ),
-        "task_count_added_to_matrix": 1,
-        "scored_method_task_count_added": sum(1 for item in methods.values() if item["status"] == "scored"),
+        "task_ids_added_to_matrix": ["action_object_relation", "long_horizon_next_action"],
+        "scored_method_task_count_added": scored_count,
         "methods": methods,
     }
     write_json(output_dir / "summary.json", summary)

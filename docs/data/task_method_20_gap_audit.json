@@ -1,10 +1,10 @@
 {
-  "generated_at_utc": "2026-06-18T12:52:47+00:00",
+  "generated_at_utc": "2026-06-18T14:33:00+00:00",
   "immediate_actions": [
     {
       "artifact": "docs/data/task_method_20_gap_audit.json",
       "id": "gap_audit",
-      "purpose": "Keep the 37 scoreless cells visible and reproducible."
+      "purpose": "Keep the 36 scoreless cells visible and reproducible."
     },
     {
       "artifact": "scripts/omni/score_model_output_probes.py",
@@ -24,11 +24,11 @@
       "proxy_scored_task_count": 0,
       "result_record_count": 20,
       "scope": "128 selected episodes, held-out test",
-      "scored_task_count": 5,
-      "scoreless_task_count": 15,
+      "scored_task_count": 6,
+      "scoreless_task_count": 14,
       "status_counts": {
-        "not_evaluated_in_verified_package": 15,
-        "scored": 5
+        "not_evaluated_in_verified_package": 14,
+        "scored": 6
       }
     },
     "cosmos3_super_reasoner": {
@@ -135,14 +135,14 @@
     }
   },
   "missing_by_method": {
-    "cosmos3_nano_future_window": 15,
+    "cosmos3_nano_future_window": 14,
     "cosmos3_super_reasoner": 13,
     "metadata128_neural_mlp": 2,
     "metadata128_simple": 2,
     "qwen3_omni_v6_lora": 5
   },
   "missing_by_status": {
-    "not_evaluated_in_verified_package": 33,
+    "not_evaluated_in_verified_package": 32,
     "not_supported_by_metadata_only_package": 2,
     "unsupported_without_required_target": 2
   },
@@ -179,7 +179,6 @@
       "cosmos3_super_reasoner"
     ],
     "13 Long-Horizon Next-Action Forecasting": [
-      "cosmos3_nano_future_window",
       "cosmos3_super_reasoner"
     ],
     "14 Long-Horizon Next-Subtask Forecasting": [
@@ -420,19 +419,6 @@
       "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
       "scope": "multi_episode_128_partial_model_overlay",
       "series_id": "cosmos3_super_reasoner",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "task_id": "long_horizon_next_action",
-      "task_label": "Long-Horizon Next-Action Forecasting",
-      "task_number": 13
-    },
-    {
-      "method": "Cosmos3-Nano Future Window",
-      "metric_key": "macro_f1",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
-      "scope": "multi_episode_128_partial_model_overlay",
-      "series_id": "cosmos3_nano_future_window",
       "status": "not_evaluated_in_verified_package",
       "status_label": "not evaluated",
       "task_id": "long_horizon_next_action",
@@ -746,8 +732,8 @@
     "method_count": 9,
     "method_task_record_count": 180,
     "proxy_scored_method_task_count": 4,
-    "scored_method_task_count": 143,
-    "scoreless_method_task_count": 37,
+    "scored_method_task_count": 144,
+    "scoreless_method_task_count": 36,
     "task_count": 20
   },
   "source_matrix": "docs/data/task_method_20_result_matrix.json",
