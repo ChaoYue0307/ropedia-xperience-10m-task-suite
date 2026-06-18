@@ -1172,9 +1172,11 @@ High-resolution slide diagrams for the three tracks are published in
 [`docs/assets/foundation-pipelines`](docs/assets/foundation-pipelines). Spatial
 intelligence and human-video world modeling now use the clean slide PNGs, while
 the VLA card stays on the earlier restored slide source until a matching clean
-VLA slide PNG is supplied. They are communication assets, not completed
-model-quality evidence; the exact task, training, and evaluation contracts
-remain in the Markdown and JSON files.
+VLA slide PNG is supplied. The 2026-06-18 image refresh verified that the newly
+uploaded Spatial and Human-video PNGs are already the committed clean sources;
+the third uploaded file duplicated the Spatial slide. These images are
+communication assets, not completed model-quality evidence; the exact task,
+training, and evaluation contracts remain in the Markdown and JSON files.
 
 **Spatial intelligence models**
 
