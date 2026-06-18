@@ -8,9 +8,9 @@ manifests and mirrors already link here as the provenance note.
 Update on 2026-06-19: the latest supplied clean Spatial intelligence and
 Human-video world model PNGs are byte-identical to the committed source-slide
 cache and are published as 2560-pixel public images. The third uploaded image
-duplicates the Spatial intelligence PNG, so the Vision-language-action card
-continues to use the restored original presentation photo until a clean VLA
-slide PNG is supplied.
+duplicates the Spatial intelligence PNG, so the Vision-language-action card is
+published as a clean deterministic slide redraw from the original VLA
+presentation-photo content.
 
 | Track | Source | Enhanced public PNG |
 | --- | --- | --- |
@@ -25,8 +25,11 @@ Restoration is deterministic and local:
 - Autocontrast and moderate brightness/color/contrast correction.
 - Lanczos resize to a 2560-pixel public width.
 - Gentle sharpening and unsharp masking.
+- For VLA only, a deterministic clean slide redraw preserves the visible
+  presentation content from the source photo while matching the clean black and
+  lime public-slide style.
 
-The restoration script deliberately does not synthesize, redraw, or hallucinate
-slide text. Technical task/training/evaluation claims are maintained in
+The restoration script deliberately avoids hallucinated model claims or
+non-source concept art. Technical task/training/evaluation claims are maintained in
 `THREE_FOUNDATION_PIPELINES.md` and
 `docs/data/three_foundation_pipelines.json`.

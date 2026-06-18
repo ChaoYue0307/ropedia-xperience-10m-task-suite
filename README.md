@@ -1175,10 +1175,10 @@ High-resolution slide diagrams for the three tracks are published in
 intelligence and human-video world modeling use the clean slide PNGs supplied
 for publication and are exported as 2560-pixel public images. The 2026-06-19
 refresh verified that the latest uploaded Spatial and Human-video PNGs are
-byte-identical to the committed clean source cache. The third uploaded file
-duplicates the Spatial slide, so the VLA card intentionally stays on the
-restored original presentation-photo source until a matching clean VLA slide
-PNG is supplied. These images are
+byte-identical to the committed clean source cache. The VLA card is now a
+clean 2560-pixel deterministic slide redraw from the original presentation-photo
+source, because the third uploaded clean PNG duplicated the Spatial slide
+instead of providing a VLA export. These images are
 communication assets, not completed model-quality evidence; the exact task,
 training, and evaluation contracts remain in the Markdown and JSON files.
 

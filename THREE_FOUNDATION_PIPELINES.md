@@ -14,16 +14,16 @@ inertial signals, object/contact annotations, and language captions.
 | Human-video world models | Can the model predict what happens next? | Observed video/audio/sensor windows, hand/body motion, object/contact state, action/subtask labels, future windows. | Future-state and future-action probes over the existing split, then Cosmos-style or latent world-model training with separate dynamics metrics. | Partially evidenced through current future-task probes and Cosmos-style branch artifacts; still needs stronger visual/latent future metrics. |
 | Vision-language-action models | Can the model turn what it sees and reads into action? | Egocentric video, language captions, hand/body motion, contacts, objects, procedure/subtask labels. | Observation-language-to-action target conversion, action-chunk scoring, policy-token baselines, then VLA/policy model fine-tuning. | Feasible but gated by action-target conversion; do not claim policy quality until action tokens, normalization, and held-out policy metrics exist. |
 
-## Published Direction Photos
+## Published Direction Figures
 
 The repo and public mirrors include three high-resolution direction images from
 the original direction slides. Spatial intelligence and human-video world
 modeling use the clean high-resolution slide PNGs supplied for publication and
 are exported as 2560-pixel public assets. The 2026-06-19 refresh verified the
 latest two clean PNGs as byte-identical to the committed source-slide cache. The
-VLA card stays on the restored original presentation-photo source because the
-third uploaded image duplicates the Spatial intelligence slide. They are
-communication assets, not
+VLA card is a clean deterministic redraw from the original presentation-photo
+source because the third uploaded image duplicates the Spatial intelligence
+slide. They are communication assets, not
 evidence of completed model-quality training. The exact technical scope remains
 the text and JSON contract in this document and
 `docs/data/three_foundation_pipelines.json`.
@@ -35,9 +35,9 @@ the text and JSON contract in this document and
 | Vision-language-action models | `docs/assets/foundation-pipelines/vision-language-action-pipeline.png` | `docs/assets/foundation-pipelines/source-photos/vision-language-action-source.jpg` |
 
 The deterministic restoration script is
-`scripts/render_foundation_pipeline_diagrams.py`; it remains available for the
-photo-derived VLA card, while the two clean slide PNGs are used directly after
-public-resolution packaging.
+`scripts/render_foundation_pipeline_diagrams.py`; it uses the two clean slide
+PNGs directly and renders the VLA card from the presentation-photo content so
+the three public direction figures have a consistent slide style.
 
 ## 1. Spatial Intelligence Pipeline
 
