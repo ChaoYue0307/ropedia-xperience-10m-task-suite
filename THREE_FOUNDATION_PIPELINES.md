@@ -16,13 +16,14 @@ inertial signals, object/contact annotations, and language captions.
 
 ## Published Direction Photos
 
-The repo and public mirrors now include three high-resolution direction images
-from the original direction slides. Spatial intelligence and human-video world
-modeling now use the clean high-resolution slide PNGs supplied for publication;
-the VLA card stays on the earlier restored source until a matching clean VLA
-slide PNG is supplied. The 2026-06-18 refresh verified the two clean PNGs and
-left VLA on the photo-restored source because the third uploaded image was a
-duplicate of the Spatial intelligence slide. They are communication assets, not
+The repo and public mirrors include three high-resolution direction images from
+the original direction slides. Spatial intelligence and human-video world
+modeling use the clean high-resolution slide PNGs supplied for publication and
+are exported as 2560-pixel public assets. The 2026-06-19 refresh verified the
+latest two clean PNGs as byte-identical to the committed source-slide cache. The
+VLA card stays on the restored original presentation-photo source because the
+third uploaded image duplicates the Spatial intelligence slide. They are
+communication assets, not
 evidence of completed model-quality training. The exact technical scope remains
 the text and JSON contract in this document and
 `docs/data/three_foundation_pipelines.json`.

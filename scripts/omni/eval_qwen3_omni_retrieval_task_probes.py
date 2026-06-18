@@ -15,6 +15,8 @@ import csv
 import hashlib
 import json
 import re
+import shutil
+import subprocess
 import time
 from collections import OrderedDict
 from pathlib import Path
@@ -46,6 +48,16 @@ TASK_SPECS: OrderedDict[str, dict[str, Any]] = OrderedDict(
                 "label": "Cross-Modal Retrieval",
                 "family": "retrieval",
                 "metric_key": "cross_modal_retrieval_mrr",
+                "prediction_key": "ranked_candidates",
+            },
+        ),
+        (
+            "camera_view_sync_retrieval",
+            {
+                "task_number": 19,
+                "label": "Camera-View Sync Retrieval",
+                "family": "retrieval",
+                "metric_key": "camera_view_sync_retrieval_mrr",
                 "prediction_key": "ranked_candidates",
             },
         ),
@@ -161,6 +173,26 @@ def media_video_path(sample: dict[str, Any]) -> str | None:
     return media.get("mosaic_video_path") or sample.get("primary_video_path")
 
 
+def camera_view_paths(sample: dict[str, Any]) -> list[dict[str, str]]:
+    media = sample.get("media") if isinstance(sample.get("media"), dict) else {}
+    values = media.get("video_paths")
+    if not isinstance(values, list):
+        return []
+    views: list[dict[str, str]] = []
+    for item in values:
+        if not isinstance(item, dict):
+            continue
+        name = normalize_text(item.get("name"))
+        path = normalize_text(item.get("path"))
+        if name and path:
+            views.append({"name": name, "path": path})
+    return views
+
+
+def has_camera_view_pair(sample: dict[str, Any]) -> bool:
+    return len(camera_view_paths(sample)) >= 2
+
+
 def parse_json_object(text: str) -> dict[str, Any]:
     raw = str(text or "").strip()
     if raw.startswith("```"):
@@ -226,6 +258,21 @@ def build_candidate_indices(
     if candidate_count < 2 or candidate_count > 8:
         raise ValueError("--candidate-count must be between 2 and 8")
     sample = samples[sample_idx]
+    if task_id == "camera_view_sync_retrieval":
+        negatives = [
+            idx
+            for idx in eval_pool
+            if idx != sample_idx
+            and has_camera_view_pair(samples[idx])
+            and (
+                samples[idx].get("episode_id") != sample.get("episode_id")
+                or row_start(samples[idx]) != row_start(sample)
+            )
+        ]
+        negatives.sort(key=lambda idx: stable_score(task_id, sample.get("id"), samples[idx].get("id")))
+        selected = [sample_idx] + negatives[: candidate_count - 1]
+        selected.sort(key=lambda idx: stable_score(task_id, "order", sample.get("id"), samples[idx].get("id")))
+        return selected
     true_action = normalize_text(answer(sample).get("action")).casefold()
     true_episode = sample.get("episode_id")
     negatives = [
@@ -242,6 +289,91 @@ def build_candidate_indices(
     selected = [sample_idx] + negatives[: candidate_count - 1]
     selected.sort(key=lambda idx: stable_score(task_id, "order", sample.get("id"), samples[idx].get("id")))
     return selected
+
+
+def reference_camera_view(sample: dict[str, Any]) -> dict[str, str]:
+    views = camera_view_paths(sample)
+    if len(views) < 2:
+        raise ValueError(f"sample lacks paired camera views: {sample.get('id')}")
+    return views[0]
+
+
+def candidate_camera_view(sample: dict[str, Any]) -> dict[str, str]:
+    views = camera_view_paths(sample)
+    if len(views) < 2:
+        raise ValueError(f"sample lacks paired camera views: {sample.get('id')}")
+    return views[1]
+
+
+def camera_view_clip_path(sample: dict[str, Any], view: dict[str, str], clip_dir: Path) -> str:
+    start = row_start(sample)
+    end = row_end(sample)
+    source = Path(view["path"])
+    if end < start:
+        raise ValueError(f"invalid frame window for {sample.get('id')}: {start}-{end}")
+    digest = hashlib.sha1(
+        f"{sample.get('id')}::{view['name']}::{source}::{start}:{end}".encode("utf-8")
+    ).hexdigest()[:16]
+    safe_view = re.sub(r"[^A-Za-z0-9_.-]+", "_", view["name"]).strip("_") or "camera"
+    output = clip_dir / f"{digest}_{safe_view}_{start}_{end}.mp4"
+    if output.exists() and output.stat().st_size > 0:
+        return str(output)
+    if not source.exists():
+        raise FileNotFoundError(f"camera source video not found: {source}")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    if shutil.which("ffmpeg"):
+        frame_filter = f"select=between(n\\,{start}\\,{end}),setpts=N/FRAME_RATE/TB"
+        subprocess.run(
+            [
+                "ffmpeg",
+                "-hide_banner",
+                "-loglevel",
+                "error",
+                "-y",
+                "-i",
+                str(source),
+                "-vf",
+                frame_filter,
+                "-an",
+                "-pix_fmt",
+                "yuv420p",
+                str(output),
+            ],
+            check=True,
+        )
+    else:
+        import cv2
+
+        cap = cv2.VideoCapture(str(source))
+        if not cap.isOpened():
+            raise RuntimeError(f"unable to open camera source video: {source}")
+        fps = cap.get(cv2.CAP_PROP_FPS) or 30.0
+        width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH) or 0)
+        height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT) or 0)
+        if width <= 0 or height <= 0:
+            cap.release()
+            raise RuntimeError(f"invalid camera source dimensions for {source}: {width}x{height}")
+        writer = cv2.VideoWriter(str(output), cv2.VideoWriter_fourcc(*"mp4v"), float(fps), (width, height))
+        if not writer.isOpened():
+            cap.release()
+            raise RuntimeError(f"unable to open camera clip writer: {output}")
+        cap.set(cv2.CAP_PROP_POS_FRAMES, start)
+        frame_index = start
+        written = 0
+        while frame_index <= end:
+            ok, frame = cap.read()
+            if not ok:
+                break
+            writer.write(frame)
+            written += 1
+            frame_index += 1
+        writer.release()
+        cap.release()
+        if written == 0:
+            raise RuntimeError(f"no frames written for camera clip: {source} frames {start}-{end}")
+    if not output.exists() or output.stat().st_size == 0:
+        raise RuntimeError(f"failed to build camera clip: {output}")
+    return str(output)
 
 
 def query_text(sample: dict[str, Any]) -> str:
@@ -311,6 +443,23 @@ def sensor_query_text(sample: dict[str, Any], cache: SensorFeatureCache) -> str:
     return "\n".join(lines)
 
 
+def artifact_query_text(task_id: str, sample: dict[str, Any], sensor_cache: SensorFeatureCache | None) -> str:
+    if task_id == "cross_modal_retrieval":
+        if sensor_cache is None:
+            raise ValueError("cross_modal_retrieval requires a sensor feature cache")
+        return sensor_query_text(sample, sensor_cache)
+    if task_id == "camera_view_sync_retrieval":
+        ref = reference_camera_view(sample)
+        return "\n".join(
+            [
+                f"Reference camera view: {ref['name']}",
+                f"Window frames: {row_start(sample)}-{row_end(sample)}",
+                "Target is a different camera view from the same synchronized window.",
+            ]
+        )
+    return query_text(sample)
+
+
 def build_messages(
     samples: list[dict[str, Any]],
     sample_idx: int,
@@ -318,6 +467,7 @@ def build_messages(
     task_id: str,
     spec: dict[str, Any],
     sensor_cache: SensorFeatureCache | None = None,
+    camera_clip_dir: Path | None = None,
 ) -> tuple[list[dict[str, Any]], str, list[dict[str, Any]]]:
     letters = [chr(ord("A") + pos) for pos in range(len(candidate_indices))]
     true_letter = letters[candidate_indices.index(sample_idx)]
@@ -328,6 +478,20 @@ def build_messages(
         task_instruction = "Rank the candidate video windows by which one is synchronized with the sensor/motion query."
         query = sensor_query_text(samples[sample_idx], sensor_cache)
         query_header = "Sensor/motion query:"
+    elif task_id == "camera_view_sync_retrieval":
+        task_instruction = (
+            "Rank the candidate camera-view clips by which one is synchronized with the reference clip. "
+            "The correct candidate shows the same time window from a different camera; distractors are other windows."
+        )
+        ref = reference_camera_view(samples[sample_idx])
+        query = "\n".join(
+            [
+                f"Reference camera view: {ref['name']}",
+                f"Window frames: {row_start(samples[sample_idx])}-{row_end(samples[sample_idx])}",
+                "Use visual timing, hands, objects, and scene motion. Do not use action, subtask, or object labels.",
+            ]
+        )
+        query_header = "Reference clip:"
     else:
         task_instruction = "Rank the candidate video windows by how well they match the text query."
         query = query_text(samples[sample_idx])
@@ -349,8 +513,22 @@ def build_messages(
             ),
         }
     ]
+    if task_id == "camera_view_sync_retrieval":
+        if camera_clip_dir is None:
+            raise ValueError("camera_view_sync_retrieval requires a camera clip directory")
+        ref_view = reference_camera_view(samples[sample_idx])
+        content.append({"type": "video", "video": camera_view_clip_path(samples[sample_idx], ref_view, camera_clip_dir)})
     for letter, idx in zip(letters, candidate_indices):
         sample = samples[idx]
+        if task_id == "camera_view_sync_retrieval":
+            if camera_clip_dir is None:
+                raise ValueError("camera_view_sync_retrieval requires a camera clip directory")
+            view = candidate_camera_view(sample)
+            candidate_video = camera_view_clip_path(sample, view, camera_clip_dir)
+            candidate_view_name = view["name"]
+        else:
+            candidate_video = media_video_path(sample)
+            candidate_view_name = "mosaic"
         candidate_records.append(
             {
                 "letter": letter,
@@ -358,11 +536,12 @@ def build_messages(
                 "episode_id": sample.get("episode_id"),
                 "start_frame": row_start(sample),
                 "end_frame": row_end(sample),
+                "view_name": candidate_view_name,
                 "is_target": idx == sample_idx,
             }
         )
         content.append({"type": "text", "text": f"Candidate {letter} video window:"})
-        content.append({"type": "video", "video": media_video_path(sample)})
+        content.append({"type": "video", "video": candidate_video})
     return (
         [
             {"role": "system", "content": [{"type": "text", "text": SYSTEM_PROMPT}]},
@@ -447,6 +626,7 @@ def score_retrieval(rows: list[dict[str, Any]]) -> dict[str, float]:
         "mrr": mrr,
         "caption_grounding_mrr": mrr,
         "cross_modal_retrieval_mrr": mrr,
+        "camera_view_sync_retrieval_mrr": mrr,
         "top1_accuracy": top1 / len(rows) if rows else 0.0,
     }
 
@@ -494,6 +674,13 @@ def score_task(task_id: str, spec: dict[str, Any], rows: list[dict[str, Any]], o
             "candidates are shuffled staged mosaic video windows, and the score is MRR of the "
             "synchronized true window. No action/subtask/object labels are included in the query."
         )
+    elif task_id == "camera_view_sync_retrieval":
+        score_policy = (
+            "GPU-backed Qwen3-Omni v6 camera-view synchronization retrieval probe. The prompt shows "
+            "one raw camera view as the reference and asks the model to rank shuffled raw candidate "
+            "views; the true target is a different camera from the same held-out time window. No "
+            "action, subtask, object, or future labels are included."
+        )
     else:
         score_policy = (
             "GPU-backed Qwen3-Omni v6 text-to-video retrieval probe. The text query is built "
@@ -540,6 +727,9 @@ def main() -> int:
     if "cross_modal_retrieval" in selected_tasks:
         eval_indices = [idx for idx in eval_indices if has_sensor_feature(samples[idx])]
         eval_pool = [idx for idx in eval_pool if has_sensor_feature(samples[idx])]
+    if "camera_view_sync_retrieval" in selected_tasks:
+        eval_indices = [idx for idx in eval_indices if has_camera_view_pair(samples[idx])]
+        eval_pool = [idx for idx in eval_pool if has_camera_view_pair(samples[idx])]
     if not eval_indices:
         raise ValueError("No evaluation samples with retrieval candidates selected.")
 
@@ -559,6 +749,7 @@ def main() -> int:
 
     model, processor = load_model_processor(args)
     sensor_cache = SensorFeatureCache() if "cross_modal_retrieval" in selected_tasks else None
+    camera_clip_dir = args.output_dir / "camera_view_sync_clips" if "camera_view_sync_retrieval" in selected_tasks else None
     partial_by_task = {
         task_id: {
             row.get("prediction_id"): row
@@ -585,6 +776,7 @@ def main() -> int:
                 task_id,
                 spec,
                 sensor_cache=sensor_cache,
+                camera_clip_dir=camera_clip_dir,
             )
             raw = generate_messages(model, processor, messages, args)
             valid_letters = [record["letter"] for record in candidate_records]
@@ -599,7 +791,7 @@ def main() -> int:
                 "episode_id": sample.get("episode_id"),
                 "start_frame": row_start(sample),
                 "end_frame": row_end(sample),
-                "query_text": sensor_query_text(sample, sensor_cache) if task_id == "cross_modal_retrieval" else query_text(sample),
+                "query_text": artifact_query_text(task_id, sample, sensor_cache),
                 "candidates": candidate_records,
                 "true_letter": true_letter,
                 "predicted_ranking": ranking,

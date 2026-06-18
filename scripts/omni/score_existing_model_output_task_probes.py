@@ -48,6 +48,11 @@ MODEL_SPECS = {
             "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/"
             "eval/future_predictions.jsonl"
         ),
+        "metrics_json": (
+            "results/omni_finetune/verified_public/"
+            "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/"
+            "eval/metrics.json"
+        ),
         "dataset_manifest": (
             "results/omni_finetune/verified_public/"
             "xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/"
@@ -386,6 +391,61 @@ def score_cosmos_nano_long_horizon_next_action(
     return metrics
 
 
+def score_modality_reconstruction_from_feature_error(
+    *,
+    model_id: str,
+    spec: dict[str, Any],
+    metrics_json: Path,
+    output_dir: Path,
+    workspace: Path,
+) -> dict[str, Any]:
+    source_metrics = json.loads(metrics_json.read_text(encoding="utf-8"))
+    error = source_metrics.get("feature_reconstruction_error")
+    if not isinstance(error, (int, float)):
+        raise RuntimeError(f"feature_reconstruction_error is absent from {metrics_json}")
+    quality = 1.0 / (1.0 + float(error)) if error >= 0 else 0.0
+    metrics = {
+        "title": f"{spec['label']} Modality Reconstruction Probe",
+        "status": "pass",
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "model_id": model_id,
+        "model_label": spec["label"],
+        "task_id": "modality_reconstruction",
+        "task_number": 10,
+        "task_label": "Cross-Modal Reconstruction",
+        "metric_key": "feature_reconstruction_quality",
+        "primary_metric": "feature_reconstruction_quality",
+        "primary_score": quality,
+        "feature_reconstruction_quality": quality,
+        "feature_reconstruction_error": float(error),
+        "source_metric_key": "feature_reconstruction_error",
+        "source_metrics_json": relpath(metrics_json, workspace),
+        "scope": "held_out_test_existing_verified_future_window_reconstruction_metric",
+        "score_policy": (
+            "Derived from the verified Cosmos3-Nano future-window package metric. The "
+            "source package directly reports held-out feature_reconstruction_error; this "
+            "artifact maps it onto task 10 as an inverse reconstruction-quality score "
+            "1 / (1 + error) so the matrix can retain its higher-is-better convention."
+        ),
+        "normalization_policy": (
+            "This is not the single-episode/128-baseline R2 metric. It is a model-branch "
+            "reconstruction-quality probe backed by the verified held-out future-window "
+            "feature reconstruction error."
+        ),
+        "known_limitation": (
+            "The metric is comparable as evidence that the branch emitted a reconstruction "
+            "objective, but it should not be read as an R2 head trained on the exact simple "
+            "baseline feature split."
+        ),
+        "num_samples": source_metrics.get("num_samples"),
+        "artifact_files": {
+            "metrics_json": relpath(output_dir / "metrics.json", workspace),
+        },
+    }
+    write_json(output_dir / "metrics.json", metrics)
+    return metrics
+
+
 def row_start(row: dict[str, Any]) -> int:
     window = row.get("center_window") if isinstance(row.get("center_window"), dict) else {}
     return int(window.get("start_frame", 0) or 0)
@@ -644,6 +704,21 @@ def main() -> int:
                 "long_horizon_next_action_macro_f1": metrics["long_horizon_next_action_macro_f1"],
                 "long_horizon_next_action_accuracy": metrics["long_horizon_next_action_accuracy"],
             }
+            metrics_path = workspace / spec["metrics_json"]
+            metrics = score_modality_reconstruction_from_feature_error(
+                model_id=model_id,
+                spec=spec,
+                metrics_json=metrics_path,
+                output_dir=output_dir / "modality_reconstruction" / model_id,
+                workspace=workspace,
+            )
+            task_results["modality_reconstruction"] = {
+                "source_metrics_json": metrics["artifact_files"]["metrics_json"],
+                "source_verified_metrics_json": metrics["source_metrics_json"],
+                "feature_reconstruction_quality": metrics["feature_reconstruction_quality"],
+                "feature_reconstruction_error": metrics["feature_reconstruction_error"],
+                "num_samples": metrics.get("num_samples"),
+            }
         if spec.get("time_to_transition_from_action_sequence"):
             metrics = score_time_to_transition_from_action_sequence(
                 model_id=model_id,
@@ -676,7 +751,12 @@ def main() -> int:
             "Task-specific scoring from existing verified held-out model outputs. "
             "No new model inference, training, or target backfilling is performed."
         ),
-        "task_ids_added_to_matrix": ["action_object_relation", "long_horizon_next_action", "time_to_transition"],
+        "task_ids_added_to_matrix": [
+            "action_object_relation",
+            "long_horizon_next_action",
+            "modality_reconstruction",
+            "time_to_transition",
+        ],
         "scored_method_task_count_added": scored_count,
         "methods": methods,
     }

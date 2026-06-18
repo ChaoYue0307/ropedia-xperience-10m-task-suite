@@ -5,10 +5,10 @@ high-resolution PNGs rebuilt from original direction-slide sources supplied by
 the project owner. The filename is kept as `prompts.md` because older public
 manifests and mirrors already link here as the provenance note.
 
-Update on 2026-06-18: the newly supplied clean Spatial intelligence and
+Update on 2026-06-19: the latest supplied clean Spatial intelligence and
 Human-video world model PNGs are byte-identical to the committed source-slide
 cache and are published as 2560-pixel public images. The third uploaded image
-was a duplicate Spatial intelligence PNG, so the Vision-language-action card
+duplicates the Spatial intelligence PNG, so the Vision-language-action card
 continues to use the restored original presentation photo until a clean VLA
 slide PNG is supplied.
 

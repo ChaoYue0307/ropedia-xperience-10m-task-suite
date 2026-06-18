@@ -7,8 +7,9 @@ diagrams. They are used for the pipeline tracks documented in
 
 They replace the earlier concept-art images and keep the public visuals tied to
 the original direction slides. Spatial intelligence and human-video world
-modeling use the clean slide PNGs supplied for publication; VLA stays on the
-earlier restored slide source until a matching clean VLA slide PNG is supplied.
+modeling use the clean slide PNGs supplied for publication and are exported as
+2560-pixel public assets; VLA stays on the restored original presentation-photo
+source until a matching clean VLA slide PNG is supplied.
 They are still **pipeline communication assets**, not evidence of completed
 foundation-model quality. Exact technical claims live in the surrounding
 Markdown, JSON, and website labels.

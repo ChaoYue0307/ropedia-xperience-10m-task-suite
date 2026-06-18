@@ -1,0 +1,25 @@
+{
+  "artifact_files": {
+    "metrics_json": "results/omni_finetune/model_output_task_probes_20260616/modality_reconstruction/cosmos3_nano_future_window/metrics.json"
+  },
+  "feature_reconstruction_error": 3479.218317102503,
+  "feature_reconstruction_quality": 0.0002873382957286892,
+  "generated_at_utc": "2026-06-18T16:30:30+00:00",
+  "known_limitation": "The metric is comparable as evidence that the branch emitted a reconstruction objective, but it should not be read as an R2 head trained on the exact simple baseline feature split.",
+  "metric_key": "feature_reconstruction_quality",
+  "model_id": "cosmos3_nano_future_window",
+  "model_label": "Cosmos3-Nano Future Window",
+  "normalization_policy": "This is not the single-episode/128-baseline R2 metric. It is a model-branch reconstruction-quality probe backed by the verified held-out future-window feature reconstruction error.",
+  "num_samples": 378,
+  "primary_metric": "feature_reconstruction_quality",
+  "primary_score": 0.0002873382957286892,
+  "scope": "held_out_test_existing_verified_future_window_reconstruction_metric",
+  "score_policy": "Derived from the verified Cosmos3-Nano future-window package metric. The source package directly reports held-out feature_reconstruction_error; this artifact maps it onto task 10 as an inverse reconstruction-quality score 1 / (1 + error) so the matrix can retain its higher-is-better convention.",
+  "source_metric_key": "feature_reconstruction_error",
+  "source_metrics_json": "results/omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/eval/metrics.json",
+  "status": "pass",
+  "task_id": "modality_reconstruction",
+  "task_label": "Cross-Modal Reconstruction",
+  "task_number": 10,
+  "title": "Cosmos3-Nano Future Window Modality Reconstruction Probe"
+}

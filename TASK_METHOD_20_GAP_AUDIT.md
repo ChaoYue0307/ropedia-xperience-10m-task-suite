@@ -1,6 +1,6 @@
 # Task Method 20-Result Gap Audit
 
-Generated: `2026-06-18T15:28:01+00:00`
+Generated: `2026-06-18T16:37:05+00:00`
 
 This audit is the explicit gap ledger for the 9-method x 20-task result matrix.
 It keeps missing cells visible while preserving the rule that a numeric score
@@ -9,8 +9,8 @@ requires a real task target and source artifact.
 ## Score Summary
 
 - Method-task records: `180`
-- Numeric scored records: `145`
-- Scoreless records: `35`
+- Numeric scored records: `146`
+- Scoreless records: `34`
 - Proxy-scored records: `4`
 - Source matrix: [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)
 
@@ -26,13 +26,13 @@ requires a real task target and source artifact.
 | 128ep Raw NN | raw128_neural_mlp | 20/20 | 0 | 2 | proxy_scored: 2, scored: 18 |
 | Qwen3-Omni v6 LoRA | qwen3_omni_v6_lora | 15/20 | 5 | 0 | not_evaluated_in_verified_package: 5, scored: 15 |
 | Cosmos3-Super Reasoner | cosmos3_super_reasoner | 8/20 | 12 | 0 | not_evaluated_in_verified_package: 12, scored: 8 |
-| Cosmos3-Nano Future Window | cosmos3_nano_future_window | 6/20 | 14 | 0 | not_evaluated_in_verified_package: 14, scored: 6 |
+| Cosmos3-Nano Future Window | cosmos3_nano_future_window | 7/20 | 13 | 0 | not_evaluated_in_verified_package: 13, scored: 7 |
 
 ## Gap Classes
 
 | Status | Count | Next step |
 | --- | --- | --- |
-| not_evaluated_in_verified_package | 31 | Generate verified model outputs for this task contract and score them against the held-out labels. |
+| not_evaluated_in_verified_package | 30 | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | not_supported_by_metadata_only_package | 2 | Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score. |
 | unsupported_without_required_target | 2 | Export the missing target field for this 128-episode method, then rerun the same train/validation/test split. |
 
@@ -50,7 +50,6 @@ requires a real task target and source artifact.
 | 09 | Cross-Modal Retrieval | Cosmos3-Super Reasoner | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 10 | Cross-Modal Reconstruction | Qwen3-Omni v6 LoRA | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 10 | Cross-Modal Reconstruction | Cosmos3-Super Reasoner | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| 10 | Cross-Modal Reconstruction | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 11 | Temporal Order Verification | Cosmos3-Super Reasoner | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 11 | Temporal Order Verification | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 12 | Multimodal Synchronization Detection | Cosmos3-Super Reasoner | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |

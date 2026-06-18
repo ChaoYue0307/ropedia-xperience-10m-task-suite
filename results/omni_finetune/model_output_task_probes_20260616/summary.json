@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-18T15:25:22+00:00",
+  "generated_at_utc": "2026-06-18T16:30:30+00:00",
   "methods": {
     "cosmos3_nano_future_window": {
       "label": "Cosmos3-Nano Future Window",
@@ -13,6 +13,13 @@
           "long_horizon_next_action_macro_f1": 0.0024906600249066007,
           "scored_rows": 378,
           "source_metrics_json": "results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_nano_future_window/metrics.json"
+        },
+        "modality_reconstruction": {
+          "feature_reconstruction_error": 3479.218317102503,
+          "feature_reconstruction_quality": 0.0002873382957286892,
+          "num_samples": 378,
+          "source_metrics_json": "results/omni_finetune/model_output_task_probes_20260616/modality_reconstruction/cosmos3_nano_future_window/metrics.json",
+          "source_verified_metrics_json": "results/omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/eval/metrics.json"
         }
       },
       "unsupported_tasks": {
@@ -59,11 +66,12 @@
     }
   },
   "scope": "Task-specific scoring from existing verified held-out model outputs. No new model inference, training, or target backfilling is performed.",
-  "scored_method_task_count_added": 4,
+  "scored_method_task_count_added": 5,
   "status": "pass",
   "task_ids_added_to_matrix": [
     "action_object_relation",
     "long_horizon_next_action",
+    "modality_reconstruction",
     "time_to_transition"
   ],
   "title": "Existing Model-Output Task Probes"

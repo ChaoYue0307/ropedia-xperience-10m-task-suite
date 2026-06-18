@@ -1,12 +1,12 @@
 {
   "title": "128-Episode 20-Task Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-18T15:27:21+00:00",
+  "generated_at_utc": "2026-06-18T16:36:15+00:00",
   "description": "Selected 128-episode metadata/raw baselines plus verified Qwen3/Cosmos branches. Every method has 20 records; numeric scores appear only where the public artifact produced that task target.",
   "task_count": 20,
   "method_count": 7,
   "method_task_record_count": 140,
-  "scored_method_task_count": 105,
+  "scored_method_task_count": 106,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
@@ -171,20 +171,20 @@
       "kind": "partial_128_episode_world_model_overlay",
       "scope": "128 selected episodes, held-out test",
       "stroke_dasharray": "2 7",
-      "method_detail": "Verified Cosmos3-Nano future-window compatibility metrics, plus task 13 scored from existing held-out future-action predictions.",
+      "method_detail": "Verified Cosmos3-Nano future-window compatibility metrics, plus task 10 reconstruction quality and task 13 scored from existing held-out future-window artifacts.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 6,
-      "covered_task_count": 6,
+      "scored_task_count": 7,
+      "covered_task_count": 7,
       "proxy_scored_task_count": 0,
-      "scoreless_task_count": 14,
+      "scoreless_task_count": 13,
       "unsupported_task_count": 0,
-      "not_evaluated_task_count": 14,
+      "not_evaluated_task_count": 13,
       "status_counts": {
-        "not_evaluated_in_verified_package": 14,
-        "scored": 6
+        "not_evaluated_in_verified_package": 13,
+        "scored": 7
       },
-      "coverage_fraction": 0.3,
+      "coverage_fraction": 0.35,
       "result_record_fraction": 1.0
     }
   ],
@@ -1087,15 +1087,15 @@
           "status_label": "not evaluated"
         },
         "cosmos3_nano_future_window": {
-          "raw": null,
-          "metric_key": "r2",
-          "source": null,
+          "raw": 0.0002873382957286892,
+          "metric_key": "feature_reconstruction_quality",
+          "source": "results/omni_finetune/model_output_task_probes_20260616/modality_reconstruction/cosmos3_nano_future_window/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.0002873382957286892,
+          "raw_text": "0.0003",
+          "status_label": "scored"
         }
       }
     },
@@ -3259,17 +3259,17 @@
       "task_label": "Cross-Modal Reconstruction",
       "series_id": "cosmos3_nano_future_window",
       "method": "Cosmos3-Nano Future Window",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "r2",
-      "source": null,
+      "raw": 0.0002873382957286892,
+      "raw_text": "0.0003",
+      "normalized_score": 0.0002873382957286892,
+      "metric_key": "feature_reconstruction_quality",
+      "source": "results/omni_finetune/model_output_task_probes_20260616/modality_reconstruction/cosmos3_nano_future_window/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 11,
