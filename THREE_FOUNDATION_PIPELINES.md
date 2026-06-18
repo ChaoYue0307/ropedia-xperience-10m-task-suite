@@ -17,21 +17,23 @@ inertial signals, object/contact annotations, and language captions.
 ## Published Direction Photos
 
 The repo and public mirrors now include three restored high-resolution photos
-from the original direction slides. They replace the earlier concept-art
-images and keep the public visual language tied to the actual presentation.
-They are communication assets, not evidence of completed model-quality
-training. The exact technical scope remains the text and JSON contract in this
-document and `docs/data/three_foundation_pipelines.json`.
+from the original direction slides. Spatial intelligence and human-video world
+modeling now use the clean high-resolution slide PNGs supplied for publication;
+the VLA card stays on the earlier restored source until a matching clean VLA
+slide PNG is supplied. They are communication assets, not evidence of completed
+model-quality training. The exact technical scope remains the text and JSON
+contract in this document and `docs/data/three_foundation_pipelines.json`.
 
-| Track | Enhanced public asset | Committed source photo |
+| Track | Enhanced public asset | Committed source |
 | --- | --- | --- |
-| Spatial intelligence models | `docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png` | `docs/assets/foundation-pipelines/source-photos/spatial-intelligence-source.jpg` |
-| Human-video world models | `docs/assets/foundation-pipelines/human-video-world-model-pipeline.png` | `docs/assets/foundation-pipelines/source-photos/human-video-world-model-source.jpg` |
+| Spatial intelligence models | `docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png` | `docs/assets/foundation-pipelines/source-slides/spatial-intelligence-slide.png` |
+| Human-video world models | `docs/assets/foundation-pipelines/human-video-world-model-pipeline.png` | `docs/assets/foundation-pipelines/source-slides/human-video-world-model-slide.png` |
 | Vision-language-action models | `docs/assets/foundation-pipelines/vision-language-action-pipeline.png` | `docs/assets/foundation-pipelines/source-photos/vision-language-action-source.jpg` |
 
 The deterministic restoration script is
-`scripts/render_foundation_pipeline_diagrams.py`; it improves contrast,
-sharpness, and public-resolution packaging without hallucinating slide text.
+`scripts/render_foundation_pipeline_diagrams.py`; it remains available for the
+photo-derived VLA card, while the two clean slide PNGs are used directly after
+public-resolution packaging.
 
 ## 1. Spatial Intelligence Pipeline
 

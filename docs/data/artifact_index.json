@@ -1,12 +1,13 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-18T09:08:23+00:00",
+  "generated_at_utc": "2026-06-18T09:28:32+00:00",
   "status": "pass",
-  "artifact_count": 211,
+  "artifact_count": 213,
   "missing": [],
   "by_kind": {
     "project_path": 18,
     "visual_asset": 3,
+    "visual_asset_source": 2,
     "scaleup_contract": 7,
     "scaleup_status": 49,
     "publication_workflow": 6,
@@ -135,8 +136,8 @@
       "surface": "repo_hf",
       "shows": "Frames spatial intelligence, human-video world modeling, and vision-language-action as three pipeline tracks with explicit inputs, outputs, maturity, and next evidence gates.",
       "exists": true,
-      "bytes": 7842,
-      "sha256": "e030a88154fb6a2974b0da6b56fb7ec0b1969ca9e9120065b4125f3482510279"
+      "bytes": 7982,
+      "sha256": "cb9fff8f24bcf439cf2e40b6b864553d98923ba75ec209ebd42398dbd7210f6d"
     },
     {
       "id": "three_foundation_pipelines_json",
@@ -146,41 +147,63 @@
       "surface": "website_hf",
       "shows": "Machine-readable pipeline-track contract for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 10037,
-      "sha256": "8dbb58a0566d1fbcab5a1b9a89c5777566820a3464919291bed7be3b8664e94b"
+      "bytes": 10109,
+      "sha256": "ac5dc6ad392ba2b859d29b56e90e6705804ee5e09c4f693529bf1c78ccf56323"
     },
     {
-      "id": "spatial_intelligence_presentation_photo",
-      "title": "Spatial intelligence presentation photo",
+      "id": "spatial_intelligence_slide_diagram",
+      "title": "Spatial intelligence slide diagram",
       "path": "docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
       "kind": "visual_asset",
       "surface": "website_hf",
-      "shows": "Restored high-resolution presentation photo for the spatial intelligence model training pipeline direction.",
+      "shows": "High-resolution slide diagram for the spatial intelligence model training pipeline direction.",
       "exists": true,
-      "bytes": 2134790,
-      "sha256": "db944bd538ed5dc70e2342fa523ce3543b8ae8017b8c9a572d3423e74e413f1c"
+      "bytes": 1808109,
+      "sha256": "9bffa9c8e690f64f2c08b5bcfffd6d151b125dfe541bc059a199de797f6ca697"
     },
     {
-      "id": "human_video_world_model_presentation_photo",
-      "title": "Human-video world model presentation photo",
+      "id": "human_video_world_model_slide_diagram",
+      "title": "Human-video world model slide diagram",
       "path": "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
       "kind": "visual_asset",
       "surface": "website_hf",
-      "shows": "Restored high-resolution presentation photo for the human-video world-model training pipeline direction.",
+      "shows": "High-resolution slide diagram for the human-video world-model training pipeline direction.",
       "exists": true,
-      "bytes": 2381746,
-      "sha256": "b1fa6c17db40756557dbf45bbfd0bfaf4178cd06f2ddd87d4e03a39da18187c0"
+      "bytes": 1724429,
+      "sha256": "9e9828dea816a2e67cabbe5cd19237113df2edc8b5f1c038cb843f77b45cd818"
     },
     {
-      "id": "vision_language_action_presentation_photo",
-      "title": "Vision-language-action presentation photo",
+      "id": "vision_language_action_slide_diagram",
+      "title": "Vision-language-action slide diagram",
       "path": "docs/assets/foundation-pipelines/vision-language-action-pipeline.png",
       "kind": "visual_asset",
       "surface": "website_hf",
-      "shows": "Restored high-resolution presentation photo for the vision-language-action training pipeline direction.",
+      "shows": "High-resolution slide diagram for the vision-language-action training pipeline direction.",
       "exists": true,
       "bytes": 2911014,
       "sha256": "d4704ee28f747067c440845905cf2cacf6cbbf3fd5d17418ba16993f617ade29"
+    },
+    {
+      "id": "spatial_intelligence_source_slide",
+      "title": "Spatial intelligence source slide",
+      "path": "docs/assets/foundation-pipelines/source-slides/spatial-intelligence-slide.png",
+      "kind": "visual_asset_source",
+      "surface": "repo_hf",
+      "shows": "Clean source slide PNG supplied for the spatial intelligence public direction figure.",
+      "exists": true,
+      "bytes": 885718,
+      "sha256": "16060866d2e087acdbbfd0cbd0e7e324047915fb845b00ba4854d23eb722962e"
+    },
+    {
+      "id": "human_video_world_model_source_slide",
+      "title": "Human-video world model source slide",
+      "path": "docs/assets/foundation-pipelines/source-slides/human-video-world-model-slide.png",
+      "kind": "visual_asset_source",
+      "surface": "repo_hf",
+      "shows": "Clean source slide PNG supplied for the human-video world-model public direction figure.",
+      "exists": true,
+      "bytes": 865427,
+      "sha256": "cda791b7e0736391cd0e21202bb8acada68a3580442d5783b5598467b6221c01"
     },
     {
       "id": "omni_model_extension_contract",
@@ -576,7 +599,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "f42f0509489298fd8c5b62ec3946af43239e303dc1791504652664bd1fe5dd61"
+      "sha256": "499e62359f6db0afa32c1160a2c4ca90da511c1035efaac4e77943c4905751a7"
     },
     {
       "id": "source_alignment_validator",
@@ -993,8 +1016,8 @@
       "surface": "repo_hf",
       "shows": "Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts.",
       "exists": true,
-      "bytes": 7040,
-      "sha256": "141105b343f200176f0cc0d296f317057bda76f31113d7bb27cf4523831b3044"
+      "bytes": 6983,
+      "sha256": "84c4040a5a4dadeae164599fc937814cbb9d6a129593bd7c1bbd0614e36fa993"
     },
     {
       "id": "figure_index_json",
@@ -1004,8 +1027,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 19498,
-      "sha256": "6f2b0c4986556a422a2660f575b9123d8665dac199909af010a3d0459716438a"
+      "bytes": 19441,
+      "sha256": "7f641c6c5a595de09d291f17e4e2aad06a3cee73b6c64608220bf69996f0e581"
     },
     {
       "id": "figure_index_builder",
@@ -1015,8 +1038,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates visual-asset hashes, dimensions, and source-script provenance.",
       "exists": true,
-      "bytes": 16858,
-      "sha256": "25c63dc780e4dfc3364f05bbc154115953a0165debf0bd30c6c4335183eceafa"
+      "bytes": 16801,
+      "sha256": "b0e060c77a10d509ac471a83a7aa2f0ec9474a5b48fbb56cbc0d62c8ffa6fcd2"
     },
     {
       "id": "brand_assets_json",
@@ -1082,7 +1105,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8100,
-      "sha256": "29710a3b352a5a4e42dc8f2286bdd208e469919ccd72b4905f7f1821294cc63e"
+      "sha256": "42938d8fe2b86f4f74f27138c8099cc65bb37c092100544cda0913bf29144e09"
     },
     {
       "id": "public_surface_qa",
@@ -1218,8 +1241,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 63765,
-      "sha256": "956f303cf3b449db069fb728bf48bb99e1d4a1158b2acd33bded2baec7a4691a"
+      "bytes": 63750,
+      "sha256": "6f8680330f35e8806a3ba75be3deac7eb215b783063d3561f79b88ab320aa363"
     },
     {
       "id": "reproducibility_contract",
@@ -1251,8 +1274,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 62272,
-      "sha256": "df9d24468b2c6cc39b1551d01329463773926a23b511afa01c77c37806f10f68"
+      "bytes": 62992,
+      "sha256": "ec41730364bac15497c9cb71ee3b10d9b9ff0c2f2910ecec517e47be7c12a737"
     },
     {
       "id": "publication_audit",

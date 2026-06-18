@@ -4,14 +4,15 @@
   "source_document": "THREE_FOUNDATION_PIPELINES.md",
   "claim_boundary": "These are supported pipeline directions, not three completed model-quality claims.",
   "diagram_assets": {
-    "status": "published_restored_presentation_photos",
+    "status": "published_high_resolution_slide_diagrams",
     "asset_root": "docs/assets/foundation-pipelines",
-    "source": "Original presentation photos supplied by the project owner, restored locally for public-resolution use",
+    "source": "Clean direction-slide PNGs where supplied, plus restored original presentation photos where a clean slide PNG is not yet available",
+    "source_slide_root": "docs/assets/foundation-pipelines/source-slides",
     "source_photo_root": "docs/assets/foundation-pipelines/source-photos",
     "provenance_file": "docs/assets/foundation-pipelines/prompts.md",
     "renderer_script": "scripts/render_foundation_pipeline_diagrams.py",
-    "diagram_type": "restored_direction_slide_photo",
-    "note": "Images are restored presentation-photo communication assets for pipeline tracks. Technical claims remain governed by the Markdown/JSON contracts and verified metrics."
+    "diagram_type": "direction_slide_diagram",
+    "note": "Images are slide-diagram communication assets for pipeline tracks. Technical claims remain governed by the Markdown/JSON contracts and verified metrics."
   },
   "shared_principles": [
     "Use episode-level train/validation/test separation.",
@@ -56,7 +57,7 @@
       "next_gate": "Raw depth and pose artifacts plus held-out multi-episode spatial metrics.",
       "diagram_image": "docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
       "website_image": "assets/foundation-pipelines/spatial-intelligence-pipeline.png",
-      "image_alt": "Restored presentation photo showing the Spatial intelligence models direction slide for Xperience-10M.",
+      "image_alt": "High-resolution slide diagram showing the Spatial intelligence models direction for Xperience-10M.",
       "diagram_flow": [
         {
           "stage": "inputs",
@@ -135,7 +136,7 @@
       "next_gate": "Stronger future-state metrics, qualitative future examples, and held-out episode breakdowns.",
       "diagram_image": "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
       "website_image": "assets/foundation-pipelines/human-video-world-model-pipeline.png",
-      "image_alt": "Restored presentation photo showing the Human-video world models direction slide for Xperience-10M.",
+      "image_alt": "High-resolution slide diagram showing the Human-video world models direction for Xperience-10M.",
       "diagram_flow": [
         {
           "stage": "inputs",
@@ -212,7 +213,7 @@
       "next_gate": "Traceable action tokens, normalization, retargeting metadata, and held-out policy metrics.",
       "diagram_image": "docs/assets/foundation-pipelines/vision-language-action-pipeline.png",
       "website_image": "assets/foundation-pipelines/vision-language-action-pipeline.png",
-      "image_alt": "Restored presentation photo showing the Vision-language-action models direction slide for Xperience-10M.",
+      "image_alt": "High-resolution slide diagram showing the Vision-language-action models direction for Xperience-10M.",
       "diagram_flow": [
         {
           "stage": "inputs",

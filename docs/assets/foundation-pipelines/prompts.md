@@ -1,18 +1,19 @@
-# Foundation Pipeline Photo Restoration Notes
+# Foundation Pipeline Slide Source Notes
 
 The current public assets are not generated concept art. They are restored
-high-resolution PNGs rebuilt from original presentation photos supplied by the
-project owner. The filename is kept as `prompts.md` because older public
+high-resolution PNGs rebuilt from original direction-slide sources supplied by
+the project owner. The filename is kept as `prompts.md` because older public
 manifests and mirrors already link here as the provenance note.
 
-| Track | Source photo | Enhanced public PNG |
+| Track | Source | Enhanced public PNG |
 | --- | --- | --- |
-| Spatial intelligence models | `source-photos/spatial-intelligence-source.jpg` | `spatial-intelligence-pipeline.png` |
-| Human-video world models | `source-photos/human-video-world-model-source.jpg` | `human-video-world-model-pipeline.png` |
+| Spatial intelligence models | `source-slides/spatial-intelligence-slide.png` | `spatial-intelligence-pipeline.png` |
+| Human-video world models | `source-slides/human-video-world-model-slide.png` | `human-video-world-model-pipeline.png` |
 | Vision-language-action models | `source-photos/vision-language-action-source.jpg` | `vision-language-action-pipeline.png` |
 
 Restoration is deterministic and local:
 
+- Clean slide PNGs are used directly where available.
 - EXIF orientation normalization.
 - Autocontrast and moderate brightness/color/contrast correction.
 - Lanczos resize to a 2560-pixel public width.

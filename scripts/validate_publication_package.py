@@ -346,6 +346,8 @@ def required_assets(root: Path) -> dict[str, bool]:
         "docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
         "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
         "docs/assets/foundation-pipelines/vision-language-action-pipeline.png",
+        "docs/assets/foundation-pipelines/source-slides/spatial-intelligence-slide.png",
+        "docs/assets/foundation-pipelines/source-slides/human-video-world-model-slide.png",
         "docs/assets/foundation-pipelines/source-photos/spatial-intelligence-source.jpg",
         "docs/assets/foundation-pipelines/source-photos/human-video-world-model-source.jpg",
         "docs/assets/foundation-pipelines/source-photos/vision-language-action-source.jpg",
