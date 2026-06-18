@@ -1,0 +1,11 @@
+run_id=xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z
+dataset_jsonl=/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl
+model_dir=/mnt/kgc/chaoyue/ropedia-h20-side/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct
+adapter_dir=/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora/adapter_lora
+tasks=camera_view_sync_retrieval
+candidate_count=4
+cuda_device_groups=0,1 2,3
+shards=2
+started_at=2026-06-19T03:11:29+08:00
+finished_at=2026-06-19T06:22:55+08:00
+exit_code=0

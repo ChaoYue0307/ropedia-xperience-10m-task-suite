@@ -1,0 +1,19 @@
+{
+  "run_id": "xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z",
+  "shard_dirs": [
+    "results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z_shard0",
+    "results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z_shard1"
+  ],
+  "status": "pass",
+  "tasks": {
+    "camera_view_sync_retrieval": {
+      "metric_key": "camera_view_sync_retrieval_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z/camera_view_sync_retrieval/metrics.json",
+      "num_samples": 4032,
+      "primary_score": 0.6587714947089998,
+      "task_label": "Camera-View Sync Retrieval",
+      "task_number": 19
+    }
+  },
+  "title": "Qwen3-Omni v6 Retrieval Task Probes"
+}
