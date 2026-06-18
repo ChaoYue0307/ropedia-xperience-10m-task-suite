@@ -1,13 +1,13 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-18T17:18:54+00:00",
+  "generated_at_utc": "2026-06-18T17:41:14+00:00",
   "status": "pass",
-  "artifact_count": 213,
+  "artifact_count": 214,
   "missing": [],
   "by_kind": {
     "project_path": 18,
     "visual_asset": 3,
-    "visual_asset_source": 2,
+    "visual_asset_source": 3,
     "scaleup_contract": 7,
     "scaleup_status": 49,
     "publication_workflow": 6,
@@ -136,8 +136,8 @@
       "surface": "repo_hf",
       "shows": "Frames spatial intelligence, human-video world modeling, and vision-language-action as three pipeline tracks with explicit inputs, outputs, maturity, and next evidence gates.",
       "exists": true,
-      "bytes": 8234,
-      "sha256": "bad51748b2f9461d1246730131ee348714cfef146aae7080348f6d6b8d72ab22"
+      "bytes": 8008,
+      "sha256": "abd179631f1d204328fa5a2e018207eceeb7d46be12b7dab2826e70dfde97130"
     },
     {
       "id": "three_foundation_pipelines_json",
@@ -147,8 +147,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable pipeline-track contract for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 10520,
-      "sha256": "be07a1a44100047181636efe4fce53248d61df6ec0b76f341652032e45ef252e"
+      "bytes": 10312,
+      "sha256": "9eb30d098f1b3787255a5506e4299f2cd4904ef989f2eaeaa2e5f77519c17378"
     },
     {
       "id": "spatial_intelligence_slide_diagram",
@@ -180,8 +180,8 @@
       "surface": "website_hf",
       "shows": "High-resolution slide diagram for the vision-language-action training pipeline direction.",
       "exists": true,
-      "bytes": 156793,
-      "sha256": "43f2c9f741319abb64d652aa3cf52d35d740b6890efc7be099c701ebd01b4018"
+      "bytes": 1553916,
+      "sha256": "6d502580c9f11b170036843690dff0ef99e146890d9914046b5d4b165bd1f89b"
     },
     {
       "id": "spatial_intelligence_source_slide",
@@ -204,6 +204,17 @@
       "exists": true,
       "bytes": 865427,
       "sha256": "cda791b7e0736391cd0e21202bb8acada68a3580442d5783b5598467b6221c01"
+    },
+    {
+      "id": "vision_language_action_source_slide",
+      "title": "Vision-language-action source slide",
+      "path": "docs/assets/foundation-pipelines/source-slides/vision-language-action-slide.png",
+      "kind": "visual_asset_source",
+      "surface": "repo_hf",
+      "shows": "Clean source slide PNG supplied for the vision-language-action public direction figure.",
+      "exists": true,
+      "bytes": 1003621,
+      "sha256": "ad2ba5874015272023e2fb2e45bf479de7491faa97adeca343fdbc87421daba0"
     },
     {
       "id": "omni_model_extension_contract",
@@ -1027,8 +1038,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 19440,
-      "sha256": "f9616f6254547e0483b43d498fb4256546e4d5f844f5934934ba78a8adba70bb"
+      "bytes": 19441,
+      "sha256": "1c76dabbea235a44bc5570cb3d1533208583fc2160d97d4c99ed35077ecb38a5"
     },
     {
       "id": "figure_index_builder",
@@ -1241,8 +1252,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 65739,
-      "sha256": "1274232fcafe749d540c053311a72a1869e38c5d2fde1beb1dcbdbd403a9a00f"
+      "bytes": 66737,
+      "sha256": "ccbd7cbe14ad094a117c4c0b5e5608edc9b724a7dac311191011d6d68121ce5b"
     },
     {
       "id": "reproducibility_contract",
@@ -1274,8 +1285,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 62992,
-      "sha256": "ec41730364bac15497c9cb71ee3b10d9b9ff0c2f2910ecec517e47be7c12a737"
+      "bytes": 63390,
+      "sha256": "ff82763a5365c008bb45d86c32062c8acb85214c776dd035afd1b26a6976f84b"
     },
     {
       "id": "publication_audit",
@@ -1310,7 +1321,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 923179,
+      "bytes": 923177,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1322,7 +1333,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 20021,
+      "bytes": 20020,
       "hash_policy": "existence_and_size_only"
     },
     {

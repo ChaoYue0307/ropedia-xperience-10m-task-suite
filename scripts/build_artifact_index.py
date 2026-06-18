@@ -139,6 +139,14 @@ ARTIFACTS = [
         "shows": "Clean source slide PNG supplied for the human-video world-model public direction figure.",
     },
     {
+        "id": "vision_language_action_source_slide",
+        "title": "Vision-language-action source slide",
+        "path": "docs/assets/foundation-pipelines/source-slides/vision-language-action-slide.png",
+        "kind": "visual_asset_source",
+        "surface": "repo_hf",
+        "shows": "Clean source slide PNG supplied for the vision-language-action public direction figure.",
+    },
+    {
         "id": "omni_model_extension_contract",
         "title": "Omni model extension contract",
         "path": "OMNI_MODEL_EXTENSION_CONTRACT.md",

@@ -8,9 +8,8 @@ diagrams. They are used for the pipeline tracks documented in
 They replace the earlier concept-art images and keep the public visuals tied to
 the original direction slides. Spatial intelligence and human-video world
 modeling use the clean slide PNGs supplied for publication and are exported as
-2560-pixel public assets. VLA is now a clean 2560-pixel deterministic redraw
-from the original presentation-photo source because the latest third clean PNG
-duplicated the Spatial slide.
+2560-pixel public assets. VLA now uses the clean VLA slide PNG supplied
+afterward and is exported through the same 2560-pixel public path.
 They are still **pipeline communication assets**, not evidence of completed
 foundation-model quality. Exact technical claims live in the surrounding
 Markdown, JSON, and website labels.
@@ -19,7 +18,7 @@ Markdown, JSON, and website labels.
 | --- | --- | --- |
 | Spatial intelligence models | `spatial-intelligence-pipeline.png` | `source-slides/spatial-intelligence-slide.png` |
 | Human-video world models | `human-video-world-model-pipeline.png` | `source-slides/human-video-world-model-slide.png` |
-| Vision-language-action models | `vision-language-action-pipeline.png` | `source-photos/vision-language-action-source.jpg` |
+| Vision-language-action models | `vision-language-action-pipeline.png` | `source-slides/vision-language-action-slide.png` |
 
 The deterministic restoration script is
 `scripts/render_foundation_pipeline_diagrams.py`; restoration notes and source

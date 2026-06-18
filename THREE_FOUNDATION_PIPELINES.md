@@ -20,10 +20,8 @@ The repo and public mirrors include three high-resolution direction images from
 the original direction slides. Spatial intelligence and human-video world
 modeling use the clean high-resolution slide PNGs supplied for publication and
 are exported as 2560-pixel public assets. The 2026-06-19 refresh verified the
-latest two clean PNGs as byte-identical to the committed source-slide cache. The
-VLA card is a clean deterministic redraw from the original presentation-photo
-source because the third uploaded image duplicates the Spatial intelligence
-slide. They are communication assets, not
+Spatial, Human-video, and VLA clean PNGs as committed source-slide assets. They
+are communication assets, not
 evidence of completed model-quality training. The exact technical scope remains
 the text and JSON contract in this document and
 `docs/data/three_foundation_pipelines.json`.
@@ -32,12 +30,12 @@ the text and JSON contract in this document and
 | --- | --- | --- |
 | Spatial intelligence models | `docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png` | `docs/assets/foundation-pipelines/source-slides/spatial-intelligence-slide.png` |
 | Human-video world models | `docs/assets/foundation-pipelines/human-video-world-model-pipeline.png` | `docs/assets/foundation-pipelines/source-slides/human-video-world-model-slide.png` |
-| Vision-language-action models | `docs/assets/foundation-pipelines/vision-language-action-pipeline.png` | `docs/assets/foundation-pipelines/source-photos/vision-language-action-source.jpg` |
+| Vision-language-action models | `docs/assets/foundation-pipelines/vision-language-action-pipeline.png` | `docs/assets/foundation-pipelines/source-slides/vision-language-action-slide.png` |
 
 The deterministic restoration script is
-`scripts/render_foundation_pipeline_diagrams.py`; it uses the two clean slide
-PNGs directly and renders the VLA card from the presentation-photo content so
-the three public direction figures have a consistent slide style.
+`scripts/render_foundation_pipeline_diagrams.py`; it uses the three clean slide
+PNGs directly and keeps the original presentation-photo sources only as
+provenance.
 
 ## 1. Spatial Intelligence Pipeline
 

@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-18T17:20:16+00:00",
+  "generated_at_utc": "2026-06-18T17:43:02+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -131,6 +131,7 @@
     "docs/assets/foundation-pipelines/vision-language-action-pipeline.png": true,
     "docs/assets/foundation-pipelines/source-slides/spatial-intelligence-slide.png": true,
     "docs/assets/foundation-pipelines/source-slides/human-video-world-model-slide.png": true,
+    "docs/assets/foundation-pipelines/source-slides/vision-language-action-slide.png": true,
     "docs/assets/foundation-pipelines/source-photos/spatial-intelligence-source.jpg": true,
     "docs/assets/foundation-pipelines/source-photos/human-video-world-model-source.jpg": true,
     "docs/assets/foundation-pipelines/source-photos/vision-language-action-source.jpg": true,
@@ -215,7 +216,7 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 1358,
+      "file_count": 1359,
       "text_file_count": 1135,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
@@ -226,7 +227,7 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 247,
+      "file_count": 249,
       "text_file_count": 179,
       "largest_file": {
         "path": "docs/data/single_episode_explorer.json",
@@ -237,7 +238,7 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 2674,
+      "file_count": 3977,
       "text_file_count": 1147,
       "largest_file": {
         "path": "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608/dense_multiscale_windows.jsonl",
@@ -248,7 +249,7 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 3147,
+      "file_count": 4721,
       "text_file_count": 1315,
       "largest_file": {
         "path": "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608/dense_multiscale_windows.jsonl",

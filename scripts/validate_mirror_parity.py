@@ -99,6 +99,7 @@ ASSET_FILES = [
     "foundation-pipelines/prompts.md",
     "foundation-pipelines/source-slides/spatial-intelligence-slide.png",
     "foundation-pipelines/source-slides/human-video-world-model-slide.png",
+    "foundation-pipelines/source-slides/vision-language-action-slide.png",
     "foundation-pipelines/source-photos/spatial-intelligence-source.jpg",
     "foundation-pipelines/source-photos/human-video-world-model-source.jpg",
     "foundation-pipelines/source-photos/vision-language-action-source.jpg",

@@ -538,6 +538,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "vision_language_action_source_slide",
+        "title": "Vision-language-action source slide",
+        "local_path": "docs/assets/foundation-pipelines/source-slides/vision-language-action-slide.png",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/foundation-pipelines/source-slides/vision-language-action-slide.png",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/resolve/main/assets/foundation-pipelines/source-slides/vision-language-action-slide.png",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/assets/foundation-pipelines/source-slides/vision-language-action-slide.png",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/assets/foundation-pipelines/source-slides/vision-language-action-slide.png",
+        },
+    },
+    {
         "id": "figure_index_json",
         "title": "Figure index JSON",
         "local_path": "docs/data/figure_index.json",
