@@ -494,6 +494,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "spatial_intelligence_source_slide",
+        "title": "Spatial intelligence source slide",
+        "local_path": "docs/assets/foundation-pipelines/source-slides/spatial-intelligence-slide.png",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/foundation-pipelines/source-slides/spatial-intelligence-slide.png",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/resolve/main/assets/foundation-pipelines/source-slides/spatial-intelligence-slide.png",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/assets/foundation-pipelines/source-slides/spatial-intelligence-slide.png",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/assets/foundation-pipelines/source-slides/spatial-intelligence-slide.png",
+        },
+    },
+    {
         "id": "human_video_world_model_presentation_photo",
         "title": "Human-video world model slide diagram",
         "local_path": "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
@@ -502,6 +513,17 @@ HASH_GROUPS = [
             "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/resolve/main/assets/foundation-pipelines/human-video-world-model-pipeline.png",
             "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
             "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/assets/foundation-pipelines/human-video-world-model-pipeline.png",
+        },
+    },
+    {
+        "id": "human_video_world_model_source_slide",
+        "title": "Human-video world model source slide",
+        "local_path": "docs/assets/foundation-pipelines/source-slides/human-video-world-model-slide.png",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/foundation-pipelines/source-slides/human-video-world-model-slide.png",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/resolve/main/assets/foundation-pipelines/source-slides/human-video-world-model-slide.png",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/assets/foundation-pipelines/source-slides/human-video-world-model-slide.png",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/assets/foundation-pipelines/source-slides/human-video-world-model-slide.png",
         },
     },
     {
