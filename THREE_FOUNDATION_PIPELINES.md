@@ -14,24 +14,24 @@ inertial signals, object/contact annotations, and language captions.
 | Human-video world models | Can the model predict what happens next? | Observed video/audio/sensor windows, hand/body motion, object/contact state, action/subtask labels, future windows. | Future-state and future-action probes over the existing split, then Cosmos-style or latent world-model training with separate dynamics metrics. | Partially evidenced through current future-task probes and Cosmos-style branch artifacts; still needs stronger visual/latent future metrics. |
 | Vision-language-action models | Can the model turn what it sees and reads into action? | Egocentric video, language captions, hand/body motion, contacts, objects, procedure/subtask labels. | Observation-language-to-action target conversion, action-chunk scoring, policy-token baselines, then VLA/policy model fine-tuning. | Feasible but gated by action-target conversion; do not claim policy quality until action tokens, normalization, and held-out policy metrics exist. |
 
-## Published Task-Training Diagrams
+## Published Direction Photos
 
-The repo and public mirrors now include three stable diagrams for the
-foundation pipeline tracks. They replace the earlier concept-art images
-and explicitly show each direction as inputs -> task targets -> model training
--> evaluation gates. They are communication assets, not evidence of completed
-model-quality training. The exact technical scope remains the text and JSON
-contract in this document and `docs/data/three_foundation_pipelines.json`.
+The repo and public mirrors now include three restored high-resolution photos
+from the original direction slides. They replace the earlier concept-art
+images and keep the public visual language tied to the actual presentation.
+They are communication assets, not evidence of completed model-quality
+training. The exact technical scope remains the text and JSON contract in this
+document and `docs/data/three_foundation_pipelines.json`.
 
-| Track | Diagram asset | Source notes |
+| Track | Enhanced public asset | Committed source photo |
 | --- | --- | --- |
-| Spatial intelligence models | `docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png` | `docs/assets/foundation-pipelines/prompts.md` |
-| Human-video world models | `docs/assets/foundation-pipelines/human-video-world-model-pipeline.png` | `docs/assets/foundation-pipelines/prompts.md` |
-| Vision-language-action models | `docs/assets/foundation-pipelines/vision-language-action-pipeline.png` | `docs/assets/foundation-pipelines/prompts.md` |
+| Spatial intelligence models | `docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png` | `docs/assets/foundation-pipelines/source-photos/spatial-intelligence-source.jpg` |
+| Human-video world models | `docs/assets/foundation-pipelines/human-video-world-model-pipeline.png` | `docs/assets/foundation-pipelines/source-photos/human-video-world-model-source.jpg` |
+| Vision-language-action models | `docs/assets/foundation-pipelines/vision-language-action-pipeline.png` | `docs/assets/foundation-pipelines/source-photos/vision-language-action-source.jpg` |
 
-The deterministic renderer is
-`scripts/render_foundation_pipeline_diagrams.py`; it keeps the public labels
-readable and aligned with the machine-readable contract.
+The deterministic restoration script is
+`scripts/render_foundation_pipeline_diagrams.py`; it improves contrast,
+sharpness, and public-resolution packaging without hallucinating slide text.
 
 ## 1. Spatial Intelligence Pipeline
 

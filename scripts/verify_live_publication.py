@@ -483,8 +483,8 @@ HASH_GROUPS = [
         },
     },
     {
-        "id": "spatial_intelligence_task_training_diagram",
-        "title": "Spatial intelligence task-training diagram",
+        "id": "spatial_intelligence_presentation_photo",
+        "title": "Spatial intelligence presentation photo",
         "local_path": "docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
         "urls": {
             "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/foundation-pipelines/spatial-intelligence-pipeline.png",
@@ -494,8 +494,8 @@ HASH_GROUPS = [
         },
     },
     {
-        "id": "human_video_world_model_task_training_diagram",
-        "title": "Human-video world model task-training diagram",
+        "id": "human_video_world_model_presentation_photo",
+        "title": "Human-video world model presentation photo",
         "local_path": "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
         "urls": {
             "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/foundation-pipelines/human-video-world-model-pipeline.png",
@@ -505,8 +505,8 @@ HASH_GROUPS = [
         },
     },
     {
-        "id": "vision_language_action_task_training_diagram",
-        "title": "Vision-language-action task-training diagram",
+        "id": "vision_language_action_presentation_photo",
+        "title": "Vision-language-action presentation photo",
         "local_path": "docs/assets/foundation-pipelines/vision-language-action-pipeline.png",
         "urls": {
             "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/foundation-pipelines/vision-language-action-pipeline.png",

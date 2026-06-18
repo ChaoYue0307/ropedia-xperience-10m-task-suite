@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-18T07:38:20+00:00",
+  "generated_at_utc": "2026-06-18T08:27:52+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -129,6 +129,9 @@
     "docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png": true,
     "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png": true,
     "docs/assets/foundation-pipelines/vision-language-action-pipeline.png": true,
+    "docs/assets/foundation-pipelines/source-photos/spatial-intelligence-source.jpg": true,
+    "docs/assets/foundation-pipelines/source-photos/human-video-world-model-source.jpg": true,
+    "docs/assets/foundation-pipelines/source-photos/vision-language-action-source.jpg": true,
     "docs/assets/pipeline_diagram.png": true,
     "docs/assets/task_architectures.png": true,
     "results/episode_task_suite/summary_report.json": true,
@@ -209,7 +212,7 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 1258,
+      "file_count": 1261,
       "text_file_count": 1060,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
@@ -220,7 +223,7 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 1027,
+      "file_count": 1030,
       "text_file_count": 861,
       "largest_file": {
         "path": "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608/dense_multiscale_windows.jsonl",
@@ -231,7 +234,7 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 2465,
+      "file_count": 2471,
       "text_file_count": 1066,
       "largest_file": {
         "path": "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608/dense_multiscale_windows.jsonl",
@@ -242,7 +245,7 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 2894,
+      "file_count": 2897,
       "text_file_count": 1228,
       "largest_file": {
         "path": "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608/dense_multiscale_windows.jsonl",

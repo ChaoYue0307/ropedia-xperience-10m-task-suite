@@ -1168,23 +1168,24 @@ so the public claims stay precise:
 | Human-video world models | Predict next action, next subtask, future object set, contact transition, and future state from observed interaction windows. | Partially evidenced by future-task probes and Cosmos-style branches; visual/latent future quality still needs stronger metrics. |
 | Vision-language-action models | Convert egocentric video, captions, hand/body motion, contacts, and objects into action chunks or policy-compatible targets. | Feasible, but gated by action-token conversion, normalization, retargeting evidence, and held-out policy metrics. |
 
-Task-training diagrams for the three tracks are published in
+Restored presentation photos for the three tracks are published in
 [`docs/assets/foundation-pipelines`](docs/assets/foundation-pipelines). They
-replace the earlier concept-art images and show each direction as
-inputs -> task targets -> model training -> evaluation gates. They are
-communication assets, not completed model-quality evidence.
+replace the earlier concept-art images and use the original direction slides as
+the visual anchor. They are communication assets, not completed model-quality
+evidence; the exact task, training, and evaluation contracts remain in the
+Markdown and JSON files.
 
 **Spatial intelligence models**
 
-![Spatial intelligence task-training diagram](docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png)
+![Restored presentation photo for the Spatial intelligence models direction](docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png)
 
 **Human-video world models**
 
-![Human-video world-model task-training diagram](docs/assets/foundation-pipelines/human-video-world-model-pipeline.png)
+![Restored presentation photo for the Human-video world models direction](docs/assets/foundation-pipelines/human-video-world-model-pipeline.png)
 
 **Vision-language-action models**
 
-![Vision-language-action task-training diagram](docs/assets/foundation-pipelines/vision-language-action-pipeline.png)
+![Restored presentation photo for the Vision-language-action models direction](docs/assets/foundation-pipelines/vision-language-action-pipeline.png)
 
 See [`THREE_FOUNDATION_PIPELINES.md`](THREE_FOUNDATION_PIPELINES.md) and
 [`docs/data/three_foundation_pipelines.json`](docs/data/three_foundation_pipelines.json).
