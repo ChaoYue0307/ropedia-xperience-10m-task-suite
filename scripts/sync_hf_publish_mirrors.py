@@ -448,6 +448,7 @@ def main() -> int:
             src,
             [
                 hf_root / "space/data" / filename,
+                hf_root / "space/docs/data" / filename,
                 hf_root / "artifacts/data" / filename,
                 hf_root / "artifacts/docs/data" / filename,
                 hf_root / "model/data" / filename,
@@ -463,6 +464,7 @@ def main() -> int:
             src,
             [
                 hf_root / "space/data" / filename,
+                hf_root / "space/docs/data" / filename,
                 hf_root / "artifacts/data" / filename,
                 hf_root / "artifacts/docs/data" / filename,
                 hf_root / "model/data" / filename,
@@ -478,9 +480,11 @@ def main() -> int:
             src,
             [
                 hf_root / "space/assets" / filename,
+                hf_root / "space/docs/assets" / filename,
                 hf_root / "artifacts/docs/assets" / filename,
                 hf_root / "artifacts/assets" / filename,
                 hf_root / "model/assets" / filename,
+                hf_root / "model/docs/assets" / filename,
             ],
             dry_run=args.dry_run,
         )
