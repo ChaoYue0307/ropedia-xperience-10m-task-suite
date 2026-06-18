@@ -13,7 +13,7 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 128ep Raw Simple | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
 | 128ep Raw NN | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
 | Qwen3-Omni v6 LoRA | 20 | 15 | 0 | 5 | not evaluated 5, scored 15 |
-| Cosmos3-Super Reasoner | 20 | 7 | 0 | 13 | not evaluated 13, scored 7 |
+| Cosmos3-Super Reasoner | 20 | 8 | 0 | 12 | not evaluated 12, scored 8 |
 | Cosmos3-Nano Future Window | 20 | 6 | 0 | 14 | not evaluated 14, scored 6 |
 
 | # | Task | Min | NN | 128-S | 128-NN | 128-RS | 128-RN | Qwen3 | C3-S | C3-N |
@@ -37,6 +37,6 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 17 | Future Object-Set Forecasting | score | score | score | score | score | score | score | not evaluated | not evaluated |
 | 18 | IMU-to-Hand Pose Reconstruction | score | score | score | score | score | score | not evaluated | not evaluated | not evaluated |
 | 19 | Camera-View Synchronization Retrieval | score | score | unsupported | not supported | proxy | proxy | not evaluated | not evaluated | not evaluated |
-| 20 | Time-to-Next-Transition Regression | score | score | score | score | score | score | score | not evaluated | not evaluated |
+| 20 | Time-to-Next-Transition Regression | score | score | score | score | score | score | score | score | not evaluated |
 
 Sources and raw values are in `docs/data/task_method_20_result_matrix.json` and `docs/data/unified_task_model_radar.json`.

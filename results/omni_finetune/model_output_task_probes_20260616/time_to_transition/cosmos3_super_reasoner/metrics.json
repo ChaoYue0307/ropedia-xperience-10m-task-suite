@@ -1,0 +1,32 @@
+{
+  "artifact_files": {
+    "metrics_json": "results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_super_reasoner/metrics.json",
+    "predictions_csv": "results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_super_reasoner/predictions.csv"
+  },
+  "cap_frames": 200,
+  "excluded_rows_without_true_action": 0,
+  "generated_at_utc": "2026-06-18T15:25:22+00:00",
+  "known_limitation": "This is a derived action-sequence probe, not evidence of a separately trained time-regression head. It is included because task 20's target is deterministically derivable from a sequence of action labels.",
+  "metric_direction": "lower",
+  "metric_key": "time_to_transition_mae",
+  "missing_pred_action_count": 0,
+  "model_id": "cosmos3_super_reasoner",
+  "model_label": "Cosmos3-Super Reasoner",
+  "normalization_policy": "Rows are grouped by episode and sorted by center-window start frame. The target and prediction are frames until the next action-label change, capped at 200 frames.",
+  "primary_metric": "time_to_transition_mae",
+  "primary_score": 52.94642857142857,
+  "scope": "held_out_test_existing_action_sequence_derived_probe",
+  "score_policy": "Derived from existing verified held-out action predictions. The model did not emit a direct scalar time-to-transition value; predicted boundary timing is computed from changes in its predicted action sequence and compared with the true held-out action-boundary timing.",
+  "scored_rows": 448,
+  "source_prediction_jsonl": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/eval/predictions.jsonl",
+  "status": "pass",
+  "task_id": "time_to_transition",
+  "task_label": "Time to Transition",
+  "task_number": 20,
+  "time_to_transition_mae": 52.94642857142857,
+  "time_to_transition_rmse": 91.7877987534291,
+  "title": "Cosmos3-Super Reasoner Time-to-Transition Action-Sequence Probe",
+  "total_prediction_rows": 448,
+  "within_20_frames": 0.6473214285714286,
+  "within_50_frames": 0.6607142857142857
+}

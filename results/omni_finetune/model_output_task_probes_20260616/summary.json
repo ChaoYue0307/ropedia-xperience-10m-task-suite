@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-18T14:32:20+00:00",
+  "generated_at_utc": "2026-06-18T15:25:22+00:00",
   "methods": {
     "cosmos3_nano_future_window": {
       "label": "Cosmos3-Nano Future Window",
@@ -31,6 +31,12 @@
           "scored_rows": 446,
           "source_metrics_json": "results/omni_finetune/model_output_task_probes_20260616/action_object_relation/cosmos3_super_reasoner/metrics.json",
           "valid_pred_relation_rate": 0.49327354260089684
+        },
+        "time_to_transition": {
+          "scored_rows": 448,
+          "source_metrics_json": "results/omni_finetune/model_output_task_probes_20260616/time_to_transition/cosmos3_super_reasoner/metrics.json",
+          "time_to_transition_mae": 52.94642857142857,
+          "within_20_frames": 0.6473214285714286
         }
       },
       "unsupported_tasks": {}
@@ -53,11 +59,12 @@
     }
   },
   "scope": "Task-specific scoring from existing verified held-out model outputs. No new model inference, training, or target backfilling is performed.",
-  "scored_method_task_count_added": 3,
+  "scored_method_task_count_added": 4,
   "status": "pass",
   "task_ids_added_to_matrix": [
     "action_object_relation",
-    "long_horizon_next_action"
+    "long_horizon_next_action",
+    "time_to_transition"
   ],
   "title": "Existing Model-Output Task Probes"
 }

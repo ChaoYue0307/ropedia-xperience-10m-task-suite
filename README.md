@@ -672,7 +672,7 @@ scripts/
   tier2_task_suite.py              # historical-name builder for tasks 13-20
   build_unified_task_suite.py       # builds TASK_SUITE_20.md and task_suite_20.json
   build_unified_task_model_radar.py # builds the unified 20-axis model comparison chart
-  build_task_method_20_gap_audit.py # builds the explicit 144/180 scored-cell gap ledger
+  build_task_method_20_gap_audit.py # builds the explicit 145/180 scored-cell gap ledger
   task_walkthroughs.py              # human-readable task-card and walkthrough-storyboard metadata
   generate_visualizations.py        # refreshes SVG charts + summary JSON
   render_task_suite_infographic.py  # renders the task-suite presentation PNG
@@ -718,7 +718,7 @@ docs/
   data/single_episode_task_model_radar.json # 1-episode split radar values
   data/episode128_task_model_radar.json # 128-episode split radar values
   data/task_method_20_result_matrix.json # 9-method x 20-task result matrix
-  data/task_method_20_gap_audit.json # explicit 144/180 scored-cell gap ledger
+  data/task_method_20_gap_audit.json # explicit 145/180 scored-cell gap ledger
   data/evidence_contract.json       # machine-readable project scope
   data/artifact_index.json          # compact project-artifact catalog
   data/live_publication_status.json # live GitHub/HF publication verification

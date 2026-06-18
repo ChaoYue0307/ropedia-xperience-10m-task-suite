@@ -39,6 +39,7 @@ MODEL_SPECS = {
             "xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/"
             "eval/predictions.jsonl"
         ),
+        "time_to_transition_from_action_sequence": True,
     },
     "cosmos3_nano_future_window": {
         "label": "Cosmos3-Nano Future Window",
@@ -385,12 +386,169 @@ def score_cosmos_nano_long_horizon_next_action(
     return metrics
 
 
+def row_start(row: dict[str, Any]) -> int:
+    window = row.get("center_window") if isinstance(row.get("center_window"), dict) else {}
+    return int(window.get("start_frame", 0) or 0)
+
+
+def action_from_row(row: dict[str, Any], *, predicted: bool) -> str:
+    payload_key = "pred_json" if predicted else "true_json"
+    label_key = "predicted_label" if predicted else "true_label"
+    payload = row.get(payload_key) if isinstance(row.get(payload_key), dict) else {}
+    return normalize_text(row.get(label_key) or payload.get("action"))
+
+
+def transition_distances(rows: list[dict[str, Any]], labels: list[str], cap_frames: int) -> list[float]:
+    by_episode: dict[str, list[int]] = {}
+    for idx, row in enumerate(rows):
+        by_episode.setdefault(str(row.get("episode_id")), []).append(idx)
+    distances = [float(cap_frames)] * len(rows)
+    for indices in by_episode.values():
+        indices.sort(key=lambda idx: row_start(rows[idx]))
+        for pos, idx in enumerate(indices):
+            current = labels[idx]
+            start = row_start(rows[idx])
+            distance = cap_frames
+            for next_idx in indices[pos + 1 :]:
+                if labels[next_idx] != current:
+                    distance = min(max(row_start(rows[next_idx]) - start, 0), cap_frames)
+                    break
+            distances[idx] = float(distance)
+    return distances
+
+
+def score_time_to_transition_from_action_sequence(
+    *,
+    model_id: str,
+    spec: dict[str, Any],
+    prediction_jsonl: Path,
+    output_dir: Path,
+    workspace: Path,
+    cap_frames: int = 200,
+) -> dict[str, Any]:
+    source_rows = read_jsonl(prediction_jsonl)
+    rows: list[dict[str, Any]] = []
+    true_actions: list[str] = []
+    pred_actions: list[str] = []
+    missing_pred_action_count = 0
+
+    for row in source_rows:
+        true_action = action_from_row(row, predicted=False)
+        if not true_action:
+            continue
+        pred_action = action_from_row(row, predicted=True)
+        if not pred_action:
+            pred_action = "<missing_pred_action>"
+            missing_pred_action_count += 1
+        rows.append(row)
+        true_actions.append(true_action)
+        pred_actions.append(pred_action)
+
+    if not rows:
+        raise RuntimeError(f"no action labels found for time-to-transition scoring in {prediction_jsonl}")
+
+    true_dist = transition_distances(rows, true_actions, cap_frames)
+    pred_dist = transition_distances(rows, pred_actions, cap_frames)
+    errors = [abs(pred - true) for pred, true in zip(pred_dist, true_dist)]
+    mae = sum(errors) / len(errors)
+    rmse = (sum(error * error for error in errors) / len(errors)) ** 0.5
+    within_20 = sum(1 for error in errors if error <= 20.0) / len(errors)
+    within_50 = sum(1 for error in errors if error <= 50.0) / len(errors)
+
+    scored_rows = []
+    for row, true_action, pred_action, true_value, pred_value, error in zip(
+        rows,
+        true_actions,
+        pred_actions,
+        true_dist,
+        pred_dist,
+        errors,
+    ):
+        scored_rows.append(
+            {
+                "id": row.get("id"),
+                "split": row.get("split"),
+                "episode_id": row.get("episode_id"),
+                "start_frame": row_start(row),
+                "true_action": true_action,
+                "pred_action": pred_action,
+                "true_time_to_transition_frames": true_value,
+                "pred_time_to_transition_frames": pred_value,
+                "absolute_error_frames": error,
+            }
+        )
+
+    metrics = {
+        "title": f"{spec['label']} Time-to-Transition Action-Sequence Probe",
+        "status": "pass",
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "model_id": model_id,
+        "model_label": spec["label"],
+        "task_id": "time_to_transition",
+        "task_number": 20,
+        "task_label": "Time to Transition",
+        "metric_key": "time_to_transition_mae",
+        "primary_metric": "time_to_transition_mae",
+        "primary_score": mae,
+        "metric_direction": "lower",
+        "time_to_transition_mae": mae,
+        "time_to_transition_rmse": rmse,
+        "within_20_frames": within_20,
+        "within_50_frames": within_50,
+        "cap_frames": cap_frames,
+        "source_prediction_jsonl": relpath(prediction_jsonl, workspace),
+        "scope": "held_out_test_existing_action_sequence_derived_probe",
+        "score_policy": (
+            "Derived from existing verified held-out action predictions. The model did "
+            "not emit a direct scalar time-to-transition value; predicted boundary timing "
+            "is computed from changes in its predicted action sequence and compared with "
+            "the true held-out action-boundary timing."
+        ),
+        "normalization_policy": (
+            "Rows are grouped by episode and sorted by center-window start frame. The "
+            "target and prediction are frames until the next action-label change, capped "
+            f"at {cap_frames} frames."
+        ),
+        "known_limitation": (
+            "This is a derived action-sequence probe, not evidence of a separately "
+            "trained time-regression head. It is included because task 20's target is "
+            "deterministically derivable from a sequence of action labels."
+        ),
+        "total_prediction_rows": len(source_rows),
+        "scored_rows": len(scored_rows),
+        "excluded_rows_without_true_action": len(source_rows) - len(scored_rows),
+        "missing_pred_action_count": missing_pred_action_count,
+        "artifact_files": {
+            "metrics_json": relpath(output_dir / "metrics.json", workspace),
+            "predictions_csv": relpath(output_dir / "predictions.csv", workspace),
+        },
+    }
+    write_json(output_dir / "metrics.json", metrics)
+    write_csv(
+        output_dir / "predictions.csv",
+        scored_rows,
+        [
+            "id",
+            "split",
+            "episode_id",
+            "start_frame",
+            "true_action",
+            "pred_action",
+            "true_time_to_transition_frames",
+            "pred_time_to_transition_frames",
+            "absolute_error_frames",
+        ],
+    )
+    return metrics
+
+
 def build_report(summary: dict[str, Any]) -> str:
     rows = []
     for model_id, result in summary["methods"].items():
         task_results = result.get("tasks", {})
         task13 = task_results.get("long_horizon_next_action", {})
         task16 = task_results.get("action_object_relation", {})
+        task20 = task_results.get("time_to_transition", {})
         rows.append(
             "| "
             + " | ".join(
@@ -409,6 +567,11 @@ def build_report(summary: dict[str, Any]) -> str:
                         if task16.get("action_object_relation_macro_f1") is not None
                         else "n/a"
                     ),
+                    (
+                        f"{task20.get('time_to_transition_mae', 0.0):.3f}"
+                        if task20.get("time_to_transition_mae") is not None
+                        else "n/a"
+                    ),
                     result.get("reason") or result.get("source_prediction_jsonl", ""),
                 ]
             )
@@ -422,8 +585,8 @@ This package scores only task targets already present in verified held-out
 prediction JSON. It does not run new inference and does not infer targets that
 are absent from a model branch.
 
-| Method | ID | Status | Scored tasks | Task 13 macro-F1 | Task 16 macro-F1 | Evidence |
-| --- | --- | --- | --- | ---: | ---: | --- |
+| Method | ID | Status | Scored tasks | Task 13 macro-F1 | Task 16 macro-F1 | Task 20 MAE | Evidence |
+| --- | --- | --- | --- | ---: | ---: | ---: | --- |
 {chr(10).join(rows)}
 """
 
@@ -481,6 +644,20 @@ def main() -> int:
                 "long_horizon_next_action_macro_f1": metrics["long_horizon_next_action_macro_f1"],
                 "long_horizon_next_action_accuracy": metrics["long_horizon_next_action_accuracy"],
             }
+        if spec.get("time_to_transition_from_action_sequence"):
+            metrics = score_time_to_transition_from_action_sequence(
+                model_id=model_id,
+                spec=spec,
+                prediction_jsonl=prediction_path,
+                output_dir=output_dir / "time_to_transition" / model_id,
+                workspace=workspace,
+            )
+            task_results["time_to_transition"] = {
+                "source_metrics_json": metrics["artifact_files"]["metrics_json"],
+                "scored_rows": metrics["scored_rows"],
+                "time_to_transition_mae": metrics["time_to_transition_mae"],
+                "within_20_frames": metrics["within_20_frames"],
+            }
         methods[model_id] = {
             "label": spec["label"],
             "status": "scored" if task_results else "unsupported_without_required_fields",
@@ -499,7 +676,7 @@ def main() -> int:
             "Task-specific scoring from existing verified held-out model outputs. "
             "No new model inference, training, or target backfilling is performed."
         ),
-        "task_ids_added_to_matrix": ["action_object_relation", "long_horizon_next_action"],
+        "task_ids_added_to_matrix": ["action_object_relation", "long_horizon_next_action", "time_to_transition"],
         "scored_method_task_count_added": scored_count,
         "methods": methods,
     }
