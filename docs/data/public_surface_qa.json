@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Project Surface",
   "status": "pass",
-  "generated_at_utc": "2026-06-18T08:26:04+00:00",
+  "generated_at_utc": "2026-06-18T08:50:34+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -18,7 +18,7 @@
         "website_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-18T07:37:16+00:00"
+          "generated_at_utc": "2026-06-18T08:26:10+00:00"
         },
         "rendered_site_check": {
           "exists": true,
@@ -28,27 +28,27 @@
         "task_surface_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-18T07:16:07+00:00"
+          "generated_at_utc": "2026-06-18T08:26:58+00:00"
         },
         "source_alignment": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-18T07:16:07+00:00"
+          "generated_at_utc": "2026-06-18T08:26:57+00:00"
         },
         "scale_up_status": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-18T07:15:50+00:00"
+          "generated_at_utc": "2026-06-18T08:27:01+00:00"
         },
         "publication_package": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-18T07:38:20+00:00"
+          "generated_at_utc": "2026-06-18T08:27:52+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-18T07:38:54+00:00"
+          "generated_at_utc": "2026-06-18T08:27:49+00:00"
         }
       },
       "failures": {}
@@ -107,7 +107,7 @@
       "status": "pass",
       "reason": "Public cards should link the repo, Space, artifacts, model baselines, upstream dataset, and Ropedia dataset page.",
       "marker_counts": {
-        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 93,
+        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 85,
         "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite": 11,
         "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts": 11,
         "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines": 14,
@@ -159,13 +159,13 @@
       "reason": "The repo, dashboard, Space, artifact dataset, and model card should expose the eight-language reader layer.",
       "missing": [],
       "marker_counts": {
-        "README.zh.md": 5,
-        "README.es.md": 5,
-        "README.fr.md": 5,
-        "README.de.md": 5,
-        "README.ja.md": 5,
-        "README.ko.md": 5,
-        "README.pt.md": 5,
+        "README.zh.md": 4,
+        "README.es.md": 4,
+        "README.fr.md": 4,
+        "README.de.md": 4,
+        "README.ja.md": 4,
+        "README.ko.md": 4,
+        "README.pt.md": 4,
         "docs/data/language_versions.json": 2,
         "data/language_versions.json": 3
       }

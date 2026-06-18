@@ -194,6 +194,11 @@
       min-width: 56px;
       padding: 0;
     }
+    .nav-action:hover {
+      border-color: var(--green);
+      background: #f4f8ef;
+      color: #020502;
+    }
     .nav-links a.nav-action {
       border-color: var(--green);
       background: var(--green);
@@ -203,6 +208,82 @@
       border-color: var(--green);
       background: #f4f8ef;
       color: #020502;
+    }
+    .nav-tools {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+    }
+    .site-language {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(204, 255, 160, 0.24);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0 12px;
+      color: #dfeadc;
+      font-family: var(--font-btn);
+      font-size: clamp(13px, 0.84vw, 16px);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .site-language label {
+      color: rgba(244, 248, 239, 0.70);
+    }
+    .site-language select {
+      min-width: 122px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+      appearance: none;
+      padding: 0 22px 0 0;
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--green) 50%),
+        linear-gradient(135deg, var(--green) 50%, transparent 50%);
+      background-position:
+        calc(100% - 9px) 52%,
+        calc(100% - 4px) 52%;
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
+    }
+    .site-language select option {
+      background: #071207;
+      color: #f4f8ef;
+    }
+    .site-language-status {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    #google_translate_element {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    body > .skiptranslate,
+    .goog-te-banner-frame,
+    .goog-te-balloon-frame,
+    .goog-logo-link,
+    .goog-te-gadget span {
+      display: none !important;
+    }
+    body {
+      top: 0 !important;
     }
 
     .hero {
@@ -255,37 +336,6 @@
       font-size: 19px;
       line-height: 1.65;
       text-wrap: pretty;
-    }
-    .language-strip {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-      max-width: 760px;
-      margin-top: 20px;
-      color: #dce8d7;
-      font-family: var(--font-btn);
-      font-size: 13px;
-      font-weight: 700;
-    }
-    .language-strip span {
-      color: var(--muted);
-      margin-right: 2px;
-    }
-    .language-strip a {
-      min-height: 32px;
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid var(--soft-line);
-      border-radius: 999px;
-      padding: 6px 10px;
-      background: rgba(255, 255, 255, 0.04);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .language-strip a:hover {
-      border-color: var(--green);
-      background: rgba(204, 255, 160, 0.10);
     }
     .hero-actions {
       display: flex;
@@ -2248,6 +2298,17 @@
       color: var(--muted);
       font-size: 14px;
     }
+    .footer-meta {
+      display: block;
+      margin-top: 8px;
+      color: rgba(244, 248, 239, 0.62);
+      font-size: 13px;
+    }
+    .footer-meta a {
+      color: var(--cyan);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(122, 229, 195, 0.28);
+    }
 
     /* Ropedia component alignment layer */
     main > section {
@@ -2799,6 +2860,16 @@
         height: 42px;
       }
       .nav-links { display: none; }
+      .site-language {
+        min-height: 42px;
+        padding: 0 10px;
+      }
+      .site-language label {
+        display: none;
+      }
+      .site-language select {
+        min-width: 104px;
+      }
       .project-tabs {
         gap: 10px;
       }
@@ -2874,6 +2945,22 @@
       .brand-logo {
         width: 38px;
         height: 38px;
+      }
+      .site-language {
+        min-height: 38px;
+        padding: 0 8px;
+        font-size: 12px;
+      }
+      .site-language select {
+        min-width: 84px;
+      }
+      .nav-action-hf {
+        width: 42px;
+        min-width: 42px;
+        height: 38px;
+      }
+      .nav-action-repo {
+        display: none;
       }
       .project-tabs-shell { top: var(--nav-height); padding: 10px 0; }
       .project-tabs {
@@ -3009,9 +3096,26 @@
         <a href="#walkthroughs">Demo</a>
         <a href="single_episode_explorer.html">Explorer</a>
         <a href="#artifacts">Files</a>
+      </div>
+      <div class="nav-tools">
+        <div class="site-language notranslate" translate="no">
+          <label for="siteLanguage">Language</label>
+          <select id="siteLanguage" aria-label="Translate this website">
+            <option value="en">English</option>
+            <option value="zh-CN">中文</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="pt">Português</option>
+          </select>
+          <span id="siteLanguageStatus" class="site-language-status" aria-live="polite"></span>
+        </div>
         <a class="nav-action nav-action-hf" href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF</a>
         <a class="nav-action nav-action-repo" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite">Repo</a>
       </div>
+      <div id="google_translate_element" aria-hidden="true"></div>
     </div>
   </nav>
 
@@ -3027,18 +3131,6 @@
           Public raw-data boundaries stay explicit while staged derived
           artifacts keep the latest model evidence recoverable.
         </p>
-        <div class="language-strip" aria-label="README language versions">
-          <span>Readme</span>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.md">English</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.zh.md">中文</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.es.md">Español</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.fr.md">Français</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.de.md">Deutsch</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.ja.md">日本語</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.ko.md">한국어</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.pt.md">Português</a>
-          <a href="data/language_versions.json">JSON</a>
-        </div>
         <div class="hero-actions">
           <a class="button primary" href="research_roadmap.html">Open roadmap</a>
           <a class="button" href="#reader-map">Choose entry point</a>
@@ -4556,10 +4648,112 @@ python scripts/validate_publication_package.py</code></pre>
   <footer>
     <div class="wrap">
       Built as an embodied-AI learning lab with verified held-out diagnostic branches and a next stage focused on stronger action/subtask quality.
+      <span class="footer-meta">README translation metadata remains available at <a href="data/language_versions.json">language_versions.json</a>; use the header selector to translate this website in place.</span>
     </div>
   </footer>
 
   <script>
+    const siteLanguageNames = {
+      en: "English",
+      "zh-CN": "中文",
+      es: "Español",
+      fr: "Français",
+      de: "Deutsch",
+      ja: "日本語",
+      ko: "한국어",
+      pt: "Português"
+    };
+    const siteLanguageStorageKey = "ropedia-xperience-site-language";
+
+    function markTranslationStableRegions() {
+      document.querySelectorAll("pre, code, kbd, samp, .brand, .nav-action, .site-language").forEach((element) => {
+        element.classList.add("notranslate");
+        element.setAttribute("translate", "no");
+      });
+    }
+
+    function readStoredLanguage() {
+      try {
+        return localStorage.getItem(siteLanguageStorageKey) || "en";
+      } catch (error) {
+        return "en";
+      }
+    }
+
+    function storeLanguage(language) {
+      try {
+        localStorage.setItem(siteLanguageStorageKey, language);
+      } catch (error) {
+        return;
+      }
+    }
+
+    function setTranslateCookie(language) {
+      const target = language === "en" ? "/en/en" : `/en/${language}`;
+      const expires = "expires=Fri, 31 Dec 9999 23:59:59 GMT";
+      document.cookie = `googtrans=${target}; path=/; ${expires}; SameSite=Lax`;
+      if (location.hostname.includes(".")) {
+        document.cookie = `googtrans=${target}; path=/; domain=.${location.hostname}; ${expires}; SameSite=Lax`;
+      }
+    }
+
+    function updateLanguageStatus(language, state) {
+      const status = document.getElementById("siteLanguageStatus");
+      if (!status) return;
+      const name = siteLanguageNames[language] || language;
+      status.textContent = state === "ready"
+        ? `Website language set to ${name}.`
+        : `Preparing website translation for ${name}.`;
+    }
+
+    function googleTranslateCombo() {
+      return document.querySelector(".goog-te-combo");
+    }
+
+    function applySiteLanguage(language, retries = 18) {
+      const selector = document.getElementById("siteLanguage");
+      if (!selector) return;
+      selector.value = language;
+      document.documentElement.lang = language;
+      storeLanguage(language);
+      setTranslateCookie(language);
+      updateLanguageStatus(language, "pending");
+
+      const combo = googleTranslateCombo();
+      if (!combo) {
+        if (retries > 0) {
+          window.setTimeout(() => applySiteLanguage(language, retries - 1), 350);
+        }
+        return;
+      }
+      combo.value = language === "en" ? "" : language;
+      combo.dispatchEvent(new Event("change"));
+      updateLanguageStatus(language, "ready");
+    }
+
+    window.googleTranslateElementInit = function googleTranslateElementInit() {
+      if (!window.google?.translate?.TranslateElement) return;
+      new window.google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: "en,zh-CN,es,fr,de,ja,ko,pt",
+        autoDisplay: false
+      }, "google_translate_element");
+      window.setTimeout(() => applySiteLanguage(readStoredLanguage()), 450);
+    };
+
+    markTranslationStableRegions();
+    const siteLanguageSelector = document.getElementById("siteLanguage");
+    if (siteLanguageSelector) {
+      const storedLanguage = readStoredLanguage();
+      if (siteLanguageNames[storedLanguage]) {
+        siteLanguageSelector.value = storedLanguage;
+        setTranslateCookie(storedLanguage);
+      }
+      siteLanguageSelector.addEventListener("change", (event) => {
+        applySiteLanguage(event.target.value);
+      });
+    }
+
     const modalityMeta = {
       video: { label: "Video", src: "assets/modalities/video.jpg" },
       audio: { label: "Audio", src: "assets/modalities/audio.png" },
@@ -5234,5 +5428,6 @@ python scripts/validate_publication_package.py</code></pre>
     });
 
   </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 </body>
 </html>
