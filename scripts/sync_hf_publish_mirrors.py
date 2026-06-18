@@ -549,7 +549,9 @@ def main() -> int:
         )
 
     space_result_files = sorted(
-        set(parity.model_output_task_probe_result_files())
+        set(parity.RESULT_FILES)
+        | set(parity.tier2_result_files())
+        | set(parity.model_output_task_probe_result_files())
         | set(parity.qwen3_future_task_probe_result_files())
         | set(parity.qwen3_retrieval_task_probe_result_files())
     )

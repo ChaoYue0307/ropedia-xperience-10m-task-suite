@@ -595,7 +595,9 @@ def build_report(hf_root: Path) -> dict:
         )
 
     space_result_files = sorted(
-        set(model_output_task_probe_result_files())
+        set(RESULT_FILES)
+        | set(tier2_result_files())
+        | set(model_output_task_probe_result_files())
         | set(qwen3_future_task_probe_result_files())
         | set(qwen3_retrieval_task_probe_result_files())
     )
