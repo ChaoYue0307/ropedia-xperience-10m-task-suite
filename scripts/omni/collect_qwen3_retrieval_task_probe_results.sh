@@ -14,7 +14,11 @@ TASKS_CSV="${TASKS_CSV:-cross_modal_retrieval}"
 REMOTE_RUN_DIR="${REMOTE_ROOT}/${RESULT_ROOT}/${RUN_ID}"
 LOCAL_RUN_DIR="${PROJECT_ROOT}/${RESULT_ROOT}/${RUN_ID}"
 LOCAL_LAUNCHER_DIR="${PROJECT_ROOT}/${RESULT_ROOT}/deferred_launchers"
-REMOTE_LAUNCHER_LOG="${REMOTE_ROOT}/${RESULT_ROOT}/${RUN_ID}.launch.log"
+REMOTE_LAUNCHER_LOGS=(
+  "${REMOTE_ROOT}/${RESULT_ROOT}/${RUN_ID}.launch.log"
+  "${REMOTE_ROOT}/${RESULT_ROOT}/deferred_launchers/${RUN_ID}.launch.log"
+  "${REMOTE_ROOT}/${RESULT_ROOT}/deferred_launchers/${RUN_ID}.launcher.log"
+)
 
 IFS=',' read -r -a TASKS <<< "$TASKS_CSV"
 
@@ -26,9 +30,11 @@ done
 
 mkdir -p "$LOCAL_RUN_DIR" "$LOCAL_LAUNCHER_DIR"
 rsync -av "${REMOTE_HOST}:${REMOTE_RUN_DIR}/" "$LOCAL_RUN_DIR/"
-ssh "$REMOTE_HOST" "test -s '$REMOTE_LAUNCHER_LOG'" >/dev/null 2>&1 \
-  && rsync -av "${REMOTE_HOST}:${REMOTE_LAUNCHER_LOG}" "$LOCAL_LAUNCHER_DIR/" \
-  || true
+for remote_launcher_log in "${REMOTE_LAUNCHER_LOGS[@]}"; do
+  ssh "$REMOTE_HOST" "test -s '$remote_launcher_log'" >/dev/null 2>&1 \
+    && rsync -av "${REMOTE_HOST}:${remote_launcher_log}" "$LOCAL_LAUNCHER_DIR/" \
+    || true
+done
 
 python3 - "$PROJECT_ROOT" "$RUN_ID" "$TASKS_CSV" <<'PY'
 import json

@@ -189,6 +189,13 @@ def camera_view_paths(sample: dict[str, Any]) -> list[dict[str, str]]:
     return views
 
 
+def camera_view_index(sample: dict[str, Any], view: dict[str, str]) -> int:
+    for idx, item in enumerate(camera_view_paths(sample)):
+        if item["name"] == view["name"] and item["path"] == view["path"]:
+            return idx
+    return 0
+
+
 def has_camera_view_pair(sample: dict[str, Any]) -> bool:
     return len(camera_view_paths(sample)) >= 2
 
@@ -318,10 +325,8 @@ def camera_view_clip_path(sample: dict[str, Any], view: dict[str, str], clip_dir
     output = clip_dir / f"{digest}_{safe_view}_{start}_{end}.mp4"
     if output.exists() and output.stat().st_size > 0:
         return str(output)
-    if not source.exists():
-        raise FileNotFoundError(f"camera source video not found: {source}")
     output.parent.mkdir(parents=True, exist_ok=True)
-    if shutil.which("ffmpeg"):
+    if source.exists() and shutil.which("ffmpeg"):
         frame_filter = f"select=between(n\\,{start}\\,{end}),setpts=N/FRAME_RATE/TB"
         subprocess.run(
             [
@@ -344,26 +349,48 @@ def camera_view_clip_path(sample: dict[str, Any], view: dict[str, str], clip_dir
     else:
         import cv2
 
-        cap = cv2.VideoCapture(str(source))
+        mosaic = Path(media_video_path(sample) or "")
+        use_mosaic_tile = not source.exists() and mosaic.exists()
+        if not source.exists() and not use_mosaic_tile:
+            raise FileNotFoundError(f"camera source video not found: {source}")
+        cap = cv2.VideoCapture(str(mosaic if use_mosaic_tile else source))
         if not cap.isOpened():
-            raise RuntimeError(f"unable to open camera source video: {source}")
+            raise RuntimeError(f"unable to open camera source video: {mosaic if use_mosaic_tile else source}")
         fps = cap.get(cv2.CAP_PROP_FPS) or 30.0
         width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH) or 0)
         height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT) or 0)
         if width <= 0 or height <= 0:
             cap.release()
-            raise RuntimeError(f"invalid camera source dimensions for {source}: {width}x{height}")
-        writer = cv2.VideoWriter(str(output), cv2.VideoWriter_fourcc(*"mp4v"), float(fps), (width, height))
+            raise RuntimeError(f"invalid camera source dimensions for {mosaic if use_mosaic_tile else source}: {width}x{height}")
+        if use_mosaic_tile:
+            cols, rows = 3, 2
+            tile_w = width // cols
+            tile_h = height // rows
+            view_idx = camera_view_index(sample, view)
+            x0 = (view_idx % cols) * tile_w
+            y0 = (view_idx // cols) * tile_h
+            output_size = (tile_w, tile_h)
+        else:
+            x0 = y0 = 0
+            tile_w = width
+            tile_h = height
+            output_size = (width, height)
+        writer = cv2.VideoWriter(str(output), cv2.VideoWriter_fourcc(*"mp4v"), float(fps), output_size)
         if not writer.isOpened():
             cap.release()
             raise RuntimeError(f"unable to open camera clip writer: {output}")
-        cap.set(cv2.CAP_PROP_POS_FRAMES, start)
+        if not use_mosaic_tile:
+            cap.set(cv2.CAP_PROP_POS_FRAMES, start)
         frame_index = start
         written = 0
-        while frame_index <= end:
+        while True:
             ok, frame = cap.read()
             if not ok:
                 break
+            if not use_mosaic_tile and frame_index > end:
+                break
+            if use_mosaic_tile:
+                frame = frame[y0 : y0 + tile_h, x0 : x0 + tile_w]
             writer.write(frame)
             written += 1
             frame_index += 1
@@ -677,9 +704,10 @@ def score_task(task_id: str, spec: dict[str, Any], rows: list[dict[str, Any]], o
     elif task_id == "camera_view_sync_retrieval":
         score_policy = (
             "GPU-backed Qwen3-Omni v6 camera-view synchronization retrieval probe. The prompt shows "
-            "one raw camera view as the reference and asks the model to rank shuffled raw candidate "
-            "views; the true target is a different camera from the same held-out time window. No "
-            "action, subtask, object, or future labels are included."
+            "one camera view as the reference and asks the model to rank shuffled candidate views; "
+            "the true target is a different camera from the same held-out time window. When raw "
+            "per-view videos are absent, the evaluator crops the corresponding view tile from the "
+            "staged multi-view mosaic video. No action, subtask, object, or future labels are included."
         )
     else:
         score_policy = (

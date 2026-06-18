@@ -63,7 +63,7 @@ QWEN_CROSS_MODAL_RETRIEVAL_PROBE_DIR = (
 QWEN_CAMERA_VIEW_SYNC_PROBE_DIR = (
     ROOT
     / "results/omni_finetune"
-    / "xperience10m_qwen3_omni_v6_camera_view_sync_probe_a100_20260619T000000Z"
+    / "xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z"
 )
 QWEN_ACTION_OBJECT_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/qwen3_omni_v6_lora/metrics.json"
