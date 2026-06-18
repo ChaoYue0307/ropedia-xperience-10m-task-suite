@@ -63,6 +63,10 @@ MODEL_SPECS = {
             "results/omni_finetune/model_output_task_probes_20260616/"
             "cosmos3_nano_future_window_source_window_map.jsonl"
         ),
+        "target_map_jsonl": (
+            "results/omni_finetune/model_output_task_probes_20260616/"
+            "cosmos3_nano_future_window_target_map.jsonl"
+        ),
         "action_object_relation_unsupported_reason": "verified future-window predictions do not contain object-set fields",
     },
 }
@@ -137,6 +141,29 @@ def normalize_objects(value: Any) -> list[str]:
         seen.add(obj)
         objects.append(obj)
     return sorted(objects)
+
+
+def object_set_metrics(rows: list[dict[str, Any]]) -> dict[str, float]:
+    tp = fp = fn = exact = 0
+    for row in rows:
+        true_set = set(row["true_objects"])
+        pred_set = set(row["pred_objects"])
+        tp += len(true_set & pred_set)
+        fp += len(pred_set - true_set)
+        fn += len(true_set - pred_set)
+        exact += int(true_set == pred_set)
+    precision = tp / (tp + fp) if tp + fp else 0.0
+    recall = tp / (tp + fn) if tp + fn else 0.0
+    micro_f1 = 2.0 * precision * recall / (precision + recall) if precision + recall else 0.0
+    return {
+        "micro_f1": micro_f1,
+        "precision": precision,
+        "recall": recall,
+        "exact_match": exact / len(rows) if rows else 0.0,
+        "true_positive_objects": float(tp),
+        "false_positive_objects": float(fp),
+        "false_negative_objects": float(fn),
+    }
 
 
 def relation_label(action: Any, objects: Any, *, missing_label: str | None = None) -> str | None:
@@ -392,6 +419,244 @@ def score_cosmos_nano_long_horizon_next_action(
         output_dir / "per_class_metrics.csv",
         per_class,
         ["class_name", "support", "predicted", "precision", "recall", "f1"],
+    )
+    return metrics
+
+
+def load_target_map(path: Path) -> dict[str, dict[str, Any]]:
+    rows = read_jsonl(path)
+    return {str(row.get("id")): row for row in rows if row.get("id")}
+
+
+def score_cosmos_nano_next_subtask_from_target_map(
+    *,
+    model_id: str,
+    spec: dict[str, Any],
+    prediction_jsonl: Path,
+    target_map_jsonl: Path,
+    output_dir: Path,
+    workspace: Path,
+) -> dict[str, Any]:
+    source_rows = read_jsonl(prediction_jsonl)
+    target_by_id = load_target_map(target_map_jsonl)
+    scored_rows: list[dict[str, Any]] = []
+    y_true: list[str] = []
+    y_pred: list[str] = []
+    missing_true_target_count = 0
+    missing_pred_target_count = 0
+
+    for row in source_rows:
+        future_id = str(row.get("future_record_id") or "")
+        pred_future_id = str(row.get("pred_future_record_id") or "")
+        true_target = target_by_id.get(future_id)
+        if not true_target:
+            missing_true_target_count += 1
+            continue
+        pred_target = target_by_id.get(pred_future_id)
+        true_subtask = normalize_text(true_target.get("subtask"))
+        if not true_subtask:
+            continue
+        pred_subtask = normalize_text(pred_target.get("subtask") if pred_target else "")
+        if not pred_subtask:
+            pred_subtask = "<missing_pred_subtask>"
+            missing_pred_target_count += 1
+        y_true.append(true_subtask)
+        y_pred.append(pred_subtask)
+        scored_rows.append(
+            {
+                "id": row.get("id"),
+                "split": row.get("split"),
+                "episode_id": row.get("episode_id"),
+                "future_record_id": future_id,
+                "pred_future_record_id": pred_future_id,
+                "true_subtask": true_subtask,
+                "pred_subtask": pred_subtask,
+                "correct": int(true_subtask == pred_subtask),
+                "rank": row.get("rank"),
+                "top_k_hit": row.get("top_k_hit"),
+            }
+        )
+
+    if not y_true:
+        raise RuntimeError(f"no joined future-subtask targets found in {prediction_jsonl}")
+
+    label_options = sorted(set(y_true))
+    metrics, per_class, _ = class_metrics(y_true, y_pred, label_options)
+    metrics.update(
+        {
+            "title": f"{spec['label']} Next-Subtask Future-Window Probe",
+            "status": "pass",
+            "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "model_id": model_id,
+            "model_label": spec["label"],
+            "task_id": "next_subtask_forecast",
+            "task_number": 14,
+            "task_label": "Long-Horizon Next-Subtask Forecasting",
+            "metric_key": "next_subtask_forecast_macro_f1",
+            "primary_metric": "next_subtask_forecast_macro_f1",
+            "primary_score": metrics["macro_f1"],
+            "next_subtask_forecast_macro_f1": metrics["macro_f1"],
+            "next_subtask_forecast_accuracy": metrics["accuracy"],
+            "source_prediction_jsonl": relpath(prediction_jsonl, workspace),
+            "source_target_map_jsonl": relpath(target_map_jsonl, workspace),
+            "scope": "held_out_test_existing_future_window_retrieval_probe",
+            "score_policy": (
+                "Derived from existing verified held-out Cosmos3-Nano future-window "
+                "predictions. The model output is the retrieved future record; both the "
+                "true future record and retrieved future record are joined to a compact "
+                "public-safe target map, then scored on subtask labels."
+            ),
+            "normalization_policy": "Whitespace and surrounding quotes/punctuation are normalized before exact-label macro-F1 scoring.",
+            "known_limitation": (
+                "This is a retrieval-derived future-subtask score. It is not a separately "
+                "prompted generative subtask head, but it is target-backed by verified "
+                "future-record retrieval outputs."
+            ),
+            "total_prediction_rows": len(source_rows),
+            "target_map_rows": len(target_by_id),
+            "scored_rows": len(scored_rows),
+            "missing_true_target_count": missing_true_target_count,
+            "missing_pred_target_count": missing_pred_target_count,
+            "artifact_files": {
+                "metrics_json": relpath(output_dir / "metrics.json", workspace),
+                "predictions_csv": relpath(output_dir / "predictions.csv", workspace),
+                "per_class_metrics_csv": relpath(output_dir / "per_class_metrics.csv", workspace),
+            },
+        }
+    )
+    write_json(output_dir / "metrics.json", metrics)
+    write_csv(
+        output_dir / "predictions.csv",
+        scored_rows,
+        [
+            "id",
+            "split",
+            "episode_id",
+            "future_record_id",
+            "pred_future_record_id",
+            "true_subtask",
+            "pred_subtask",
+            "correct",
+            "rank",
+            "top_k_hit",
+        ],
+    )
+    write_csv(
+        output_dir / "per_class_metrics.csv",
+        per_class,
+        ["class_name", "support", "predicted", "precision", "recall", "f1"],
+    )
+    return metrics
+
+
+def score_cosmos_nano_object_set_from_target_map(
+    *,
+    model_id: str,
+    spec: dict[str, Any],
+    prediction_jsonl: Path,
+    target_map_jsonl: Path,
+    output_dir: Path,
+    workspace: Path,
+) -> dict[str, Any]:
+    source_rows = read_jsonl(prediction_jsonl)
+    target_by_id = load_target_map(target_map_jsonl)
+    scored_rows: list[dict[str, Any]] = []
+    missing_true_target_count = 0
+    missing_pred_target_count = 0
+
+    for row in source_rows:
+        future_id = str(row.get("future_record_id") or "")
+        pred_future_id = str(row.get("pred_future_record_id") or "")
+        true_target = target_by_id.get(future_id)
+        if not true_target:
+            missing_true_target_count += 1
+            continue
+        pred_target = target_by_id.get(pred_future_id)
+        if not pred_target:
+            missing_pred_target_count += 1
+        true_objects = normalize_objects(true_target.get("objects"))
+        pred_objects = normalize_objects(pred_target.get("objects") if pred_target else [])
+        scored_rows.append(
+            {
+                "id": row.get("id"),
+                "split": row.get("split"),
+                "episode_id": row.get("episode_id"),
+                "future_record_id": future_id,
+                "pred_future_record_id": pred_future_id,
+                "true_objects": true_objects,
+                "pred_objects": pred_objects,
+                "true_objects_json": json.dumps(true_objects, ensure_ascii=False),
+                "pred_objects_json": json.dumps(pred_objects, ensure_ascii=False),
+                "exact_match": int(set(true_objects) == set(pred_objects)),
+                "rank": row.get("rank"),
+                "top_k_hit": row.get("top_k_hit"),
+            }
+        )
+
+    if not scored_rows:
+        raise RuntimeError(f"no joined future-object targets found in {prediction_jsonl}")
+
+    metrics = object_set_metrics(scored_rows)
+    metrics.update(
+        {
+            "title": f"{spec['label']} Future Object-Set Probe",
+            "status": "pass",
+            "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "model_id": model_id,
+            "model_label": spec["label"],
+            "task_id": "object_set_forecast",
+            "task_number": 17,
+            "task_label": "Future Object-Set Forecasting",
+            "metric_key": "object_set_forecast_micro_f1",
+            "primary_metric": "object_set_forecast_micro_f1",
+            "primary_score": metrics["micro_f1"],
+            "object_set_forecast_micro_f1": metrics["micro_f1"],
+            "object_set_forecast_precision": metrics["precision"],
+            "object_set_forecast_recall": metrics["recall"],
+            "source_prediction_jsonl": relpath(prediction_jsonl, workspace),
+            "source_target_map_jsonl": relpath(target_map_jsonl, workspace),
+            "scope": "held_out_test_existing_future_window_retrieval_probe",
+            "score_policy": (
+                "Derived from existing verified held-out Cosmos3-Nano future-window "
+                "predictions. The retrieved future record is joined to a compact "
+                "target map and its object set is compared with the true future "
+                "record's object set."
+            ),
+            "normalization_policy": (
+                "Objects are casefolded, stripped, deduplicated, and scored with "
+                "micro-F1 over the held-out future object sets."
+            ),
+            "known_limitation": (
+                "This is a retrieval-derived object-set score, not a separately prompted "
+                "object-list generation head."
+            ),
+            "total_prediction_rows": len(source_rows),
+            "target_map_rows": len(target_by_id),
+            "scored_rows": len(scored_rows),
+            "missing_true_target_count": missing_true_target_count,
+            "missing_pred_target_count": missing_pred_target_count,
+            "artifact_files": {
+                "metrics_json": relpath(output_dir / "metrics.json", workspace),
+                "predictions_csv": relpath(output_dir / "predictions.csv", workspace),
+            },
+        }
+    )
+    write_json(output_dir / "metrics.json", metrics)
+    write_csv(
+        output_dir / "predictions.csv",
+        scored_rows,
+        [
+            "id",
+            "split",
+            "episode_id",
+            "future_record_id",
+            "pred_future_record_id",
+            "true_objects_json",
+            "pred_objects_json",
+            "exact_match",
+            "rank",
+            "top_k_hit",
+        ],
     )
     return metrics
 
@@ -873,7 +1138,9 @@ def build_report(summary: dict[str, Any]) -> str:
     for model_id, result in summary["methods"].items():
         task_results = result.get("tasks", {})
         task13 = task_results.get("long_horizon_next_action", {})
+        task14 = task_results.get("next_subtask_forecast", {})
         task16 = task_results.get("action_object_relation", {})
+        task17 = task_results.get("object_set_forecast", {})
         task20 = task_results.get("time_to_transition", {})
         rows.append(
             "| "
@@ -889,8 +1156,18 @@ def build_report(summary: dict[str, Any]) -> str:
                         else "n/a"
                     ),
                     (
+                        f"{task14.get('next_subtask_forecast_macro_f1', 0.0):.6f}"
+                        if task14.get("next_subtask_forecast_macro_f1") is not None
+                        else "n/a"
+                    ),
+                    (
                         f"{task16.get('action_object_relation_macro_f1', 0.0):.6f}"
                         if task16.get("action_object_relation_macro_f1") is not None
+                        else "n/a"
+                    ),
+                    (
+                        f"{task17.get('object_set_forecast_micro_f1', 0.0):.6f}"
+                        if task17.get("object_set_forecast_micro_f1") is not None
                         else "n/a"
                     ),
                     (
@@ -911,8 +1188,8 @@ This package scores only task targets already present in verified held-out
 prediction JSON. It does not run new inference and does not infer targets that
 are absent from a model branch.
 
-| Method | ID | Status | Scored tasks | Task 13 macro-F1 | Task 16 macro-F1 | Task 20 MAE | Evidence |
-| --- | --- | --- | --- | ---: | ---: | ---: | --- |
+| Method | ID | Status | Scored tasks | Task 13 macro-F1 | Task 14 macro-F1 | Task 16 macro-F1 | Task 17 micro-F1 | Task 20 MAE | Evidence |
+| --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
 {chr(10).join(rows)}
 """
 
@@ -970,6 +1247,37 @@ def main() -> int:
                 "long_horizon_next_action_macro_f1": metrics["long_horizon_next_action_macro_f1"],
                 "long_horizon_next_action_accuracy": metrics["long_horizon_next_action_accuracy"],
             }
+            target_map_path = workspace / spec["target_map_jsonl"]
+            if target_map_path.exists():
+                metrics = score_cosmos_nano_next_subtask_from_target_map(
+                    model_id=model_id,
+                    spec=spec,
+                    prediction_jsonl=prediction_path,
+                    target_map_jsonl=target_map_path,
+                    output_dir=output_dir / "next_subtask_forecast" / model_id,
+                    workspace=workspace,
+                )
+                task_results["next_subtask_forecast"] = {
+                    "source_metrics_json": metrics["artifact_files"]["metrics_json"],
+                    "scored_rows": metrics["scored_rows"],
+                    "next_subtask_forecast_macro_f1": metrics["next_subtask_forecast_macro_f1"],
+                    "next_subtask_forecast_accuracy": metrics["next_subtask_forecast_accuracy"],
+                }
+                metrics = score_cosmos_nano_object_set_from_target_map(
+                    model_id=model_id,
+                    spec=spec,
+                    prediction_jsonl=prediction_path,
+                    target_map_jsonl=target_map_path,
+                    output_dir=output_dir / "object_set_forecast" / model_id,
+                    workspace=workspace,
+                )
+                task_results["object_set_forecast"] = {
+                    "source_metrics_json": metrics["artifact_files"]["metrics_json"],
+                    "scored_rows": metrics["scored_rows"],
+                    "object_set_forecast_micro_f1": metrics["object_set_forecast_micro_f1"],
+                    "object_set_forecast_precision": metrics["object_set_forecast_precision"],
+                    "object_set_forecast_recall": metrics["object_set_forecast_recall"],
+                }
             metrics_path = workspace / spec["metrics_json"]
             metrics = score_modality_reconstruction_from_feature_error(
                 model_id=model_id,
@@ -1050,6 +1358,8 @@ def main() -> int:
             "action_object_relation",
             "long_horizon_next_action",
             "modality_reconstruction",
+            "next_subtask_forecast",
+            "object_set_forecast",
             "time_to_transition",
         ],
         "scored_method_task_count_added": scored_count,

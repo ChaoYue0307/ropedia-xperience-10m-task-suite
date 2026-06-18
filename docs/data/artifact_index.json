@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-18T20:26:34+00:00",
+  "generated_at_utc": "2026-06-18T21:00:45+00:00",
   "status": "pass",
   "artifact_count": 214,
   "missing": [],
@@ -610,7 +610,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "73db61959e3738db43f407fc6ca766f6f93ea65c35836b75dea530218acd812f"
+      "sha256": "2f0d7d3a1e131a193a6ea3bb871b8512db47ff49085641fb2e8eff887050b1f4"
     },
     {
       "id": "source_alignment_validator",
@@ -730,8 +730,8 @@
       "surface": "website_hf",
       "shows": "Stores normalized 20-axis radar values, raw task metrics, Qwen3/Cosmos overlay mappings, branch-card caveats, and explicit scoreless status records.",
       "exists": true,
-      "bytes": 229321,
-      "sha256": "255153784d1dbc49bcd1917762d55211e9f4eef0ac94debb74e62b5eddb50791"
+      "bytes": 229232,
+      "sha256": "53d0ae1e6b0a5cb76778284c09321f0653143fc1e3d1b4e37de095f2a8c77e40"
     },
     {
       "id": "single_episode_task_model_radar_json",
@@ -742,7 +742,7 @@
       "shows": "Machine-readable split radar for the one-episode Minimal and Neural MLP baselines, both scored on all 20 task contracts.",
       "exists": true,
       "bytes": 51064,
-      "sha256": "4a35c17c39fc8a74ebdbd2ce649935b8f94d819976cc4c24ff128b0d795ae797"
+      "sha256": "3e689763f505e96cfb20b358e2ae093ba66521e04285ba55a79afe93bff04f1d"
     },
     {
       "id": "episode128_task_model_radar_json",
@@ -752,8 +752,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable split radar for selected 128-episode metadata/raw baselines and verified Qwen3/Cosmos branches, preserving explicit scoreless cells.",
       "exists": true,
-      "bytes": 185469,
-      "sha256": "0fc1f8032b30a15da88809369e987ed86c0d050e43e008dedbd695e7571d118d"
+      "bytes": 185379,
+      "sha256": "20a2487af5ec3b00f99cc5e256b2ba7d3f931cf2be4724856c1d7685d1900ba5"
     },
     {
       "id": "task_method_20_result_matrix_json",
@@ -763,8 +763,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable 9-method by 20-task matrix where every method has 20 records and scoreless cells carry unsupported/not-evaluated reasons.",
       "exists": true,
-      "bytes": 128893,
-      "sha256": "4588be64142302e7f3d0ea917e0e7321fb84a44dbe38cf45227c6a20cc2f6dd4"
+      "bytes": 128837,
+      "sha256": "1d03ec8a0431d2e77b22da8f2289c75eb03248fece8def5b77bb8bea887869f7"
     },
     {
       "id": "task_method_20_result_matrix",
@@ -774,8 +774,8 @@
       "surface": "repo_hf",
       "shows": "Reader-facing table that separates 20 records per method from numeric scored axes, documented raw128 proxy scores, unsupported metadata targets, and model targets not evaluated in verified packages.",
       "exists": true,
-      "bytes": 3914,
-      "sha256": "ef9f888c424830cd96fe3f3340dd67a0202be650d5d90bcac51c5f007d2f83bf"
+      "bytes": 3900,
+      "sha256": "0778f0f778b1cd1b79dc96196d9531303c1a436a805cec3f54eee49cdbd35dac"
     },
     {
       "id": "task_method_20_gap_audit_json",
@@ -785,8 +785,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable 180-record gap ledger with numeric scores, scoreless cells, explicit status reasons, and next evidence needed before new scores can be published.",
       "exists": true,
-      "bytes": 32032,
-      "sha256": "9571c5c81cc71bc286125415e2fee3f647c0473d7b3b6190f97a21645682282a"
+      "bytes": 30524,
+      "sha256": "c23c4e9bcc72a00430b4a0ad14f024ac11c20ce807d30903e6420ca617e36676"
     },
     {
       "id": "task_method_20_gap_audit",
@@ -796,8 +796,8 @@
       "surface": "repo_hf",
       "shows": "Reader-facing ledger that lists every scoreless method-task cell and the concrete target or model-output evidence required before it can become numeric.",
       "exists": true,
-      "bytes": 9348,
-      "sha256": "822df9f0090f5381e709539a7b69f552e21cd2d929c89c69d5fee7ccaf1a3e25"
+      "bytes": 8972,
+      "sha256": "ecc4308561e01d4c472ea3980e348da62a5ce5b6ca910568de7d93d3784a211b"
     },
     {
       "id": "unified_task_model_radar_chart",
@@ -807,8 +807,8 @@
       "surface": "website_hf",
       "shows": "Compares minimal and neural MLP baselines across all 20 tasks, with Qwen3/Cosmos task-aligned model overlays.",
       "exists": true,
-      "bytes": 54385,
-      "sha256": "f8c4169fa9bf0896b246709de9ad901b83bcb2868d88737b25abfe8b009d18dc"
+      "bytes": 54606,
+      "sha256": "dc56ca1e269a2413d7bd4220c28db17f21df71c0398e3e9300041d9498ad968c"
     },
     {
       "id": "single_episode_task_model_radar_chart",
@@ -829,8 +829,8 @@
       "surface": "website_hf",
       "shows": "Separates the selected 128-episode methods: raw-feature simple/NN as complete 20/20 scored polygons and metadata/Qwen/Cosmos as task-aligned overlays.",
       "exists": true,
-      "bytes": 48372,
-      "sha256": "14b65dab2994a94e4057610dfe4fb2b7367cc136a8c23e014135cc4d05a546f5"
+      "bytes": 48593,
+      "sha256": "001bf9c48c52c8c475fea4d42e5f5513fbb6788d1919f13b3c74cb10418ecc62"
     },
     {
       "id": "unified_task_model_radar_builder",
@@ -840,8 +840,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the direction-aware radar chart and machine-readable metric overlay JSON.",
       "exists": true,
-      "bytes": 55482,
-      "sha256": "f23df02a4eddf580df164c549ec75f05fa43132aa93875523719cae84116d119"
+      "bytes": 56295,
+      "sha256": "237ef6a08dd81b9fcb0256f6f6b54394f74c14daea0cbba8f1726fdbbb7feff0"
     },
     {
       "id": "task_method_20_gap_audit_builder",
@@ -893,10 +893,10 @@
       "path": "results/omni_finetune/model_output_task_probes_20260616/summary.json",
       "kind": "model_result",
       "surface": "repo_hf",
-      "shows": "Scores task 16 action-object relation only where verified held-out prediction JSON already contains action and object-set fields.",
+      "shows": "Scores task-specific Qwen3/Cosmos overlays only where verified held-out prediction JSON or compact target maps already contain the required targets.",
       "exists": true,
-      "bytes": 4448,
-      "sha256": "2b1cc756776683e3969011a8c3504eef12f1246f8ef744fd7603376a63fb1a07"
+      "bytes": 5278,
+      "sha256": "4a27f39807e8ac13771e2109584a8b0265961bcea88445058cbfe87265457d7f"
     },
     {
       "id": "existing_model_output_task_probe_script",
@@ -906,8 +906,8 @@
       "surface": "repo_hf",
       "shows": "Derives task-specific scores from committed verified model outputs without running new inference or backfilling absent targets.",
       "exists": true,
-      "bytes": 44097,
-      "sha256": "bd9c966ef29b59da68ba2eb4401dfd91d18abf64596b3cdfe506a44e42f63ee9"
+      "bytes": 57470,
+      "sha256": "9a0708885c1a22addc0bec199488021e277c7a7b7e23d6a37344fbbb3e5f1b96"
     },
     {
       "id": "a100_128_metadata_task_baselines",
@@ -1116,7 +1116,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8100,
-      "sha256": "4a7bd01e852be18cc24370242474b35f72156ad34801406ed0a931fd73176f96"
+      "sha256": "12cec90cfb4bd783f397852f04ffba5b9d0ae9316667bdee4719cbd6f2d3579a"
     },
     {
       "id": "public_surface_qa",
@@ -1285,8 +1285,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 63390,
-      "sha256": "ff82763a5365c008bb45d86c32062c8acb85214c776dd035afd1b26a6976f84b"
+      "bytes": 63409,
+      "sha256": "0517eb612df190cea8997aab10804a2016f5a1ccf1bb9ac64d7d458172508173"
     },
     {
       "id": "publication_audit",
@@ -1321,7 +1321,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 928308,
+      "bytes": 931759,
       "hash_policy": "existence_and_size_only"
     },
     {

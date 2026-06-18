@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-18T20:25:45+00:00",
+  "generated_at_utc": "2026-06-18T20:58:30+00:00",
   "methods": {
     "cosmos3_nano_future_window": {
       "label": "Cosmos3-Nano Future Window",
@@ -20,6 +20,19 @@
           "num_samples": 378,
           "source_metrics_json": "results/omni_finetune/model_output_task_probes_20260616/modality_reconstruction/cosmos3_nano_future_window/metrics.json",
           "source_verified_metrics_json": "results/omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/eval/metrics.json"
+        },
+        "next_subtask_forecast": {
+          "next_subtask_forecast_accuracy": 0.015873015873015872,
+          "next_subtask_forecast_macro_f1": 0.006614876224708678,
+          "scored_rows": 378,
+          "source_metrics_json": "results/omni_finetune/model_output_task_probes_20260616/next_subtask_forecast/cosmos3_nano_future_window/metrics.json"
+        },
+        "object_set_forecast": {
+          "object_set_forecast_micro_f1": 0.01781970649895178,
+          "object_set_forecast_precision": 0.02225130890052356,
+          "object_set_forecast_recall": 0.01486013986013986,
+          "scored_rows": 378,
+          "source_metrics_json": "results/omni_finetune/model_output_task_probes_20260616/object_set_forecast/cosmos3_nano_future_window/metrics.json"
         },
         "time_to_transition": {
           "scored_rows": 378,
@@ -78,12 +91,14 @@
     }
   },
   "scope": "Task-specific scoring from existing verified held-out model outputs. No new model inference, training, or target backfilling is performed.",
-  "scored_method_task_count_added": 7,
+  "scored_method_task_count_added": 9,
   "status": "pass",
   "task_ids_added_to_matrix": [
     "action_object_relation",
     "long_horizon_next_action",
     "modality_reconstruction",
+    "next_subtask_forecast",
+    "object_set_forecast",
     "time_to_transition"
   ],
   "title": "Existing Model-Output Task Probes"

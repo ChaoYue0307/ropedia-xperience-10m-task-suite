@@ -640,7 +640,7 @@ ARTIFACTS = [
         "path": "results/omni_finetune/model_output_task_probes_20260616/summary.json",
         "kind": "model_result",
         "surface": "repo_hf",
-        "shows": "Scores task 16 action-object relation only where verified held-out prediction JSON already contains action and object-set fields.",
+        "shows": "Scores task-specific Qwen3/Cosmos overlays only where verified held-out prediction JSON or compact target maps already contain the required targets.",
     },
     {
         "id": "existing_model_output_task_probe_script",

@@ -1,6 +1,6 @@
 # Task Method 20-Result Gap Audit
 
-Generated: `2026-06-18T20:25:46+00:00`
+Generated: `2026-06-18T20:58:31+00:00`
 
 This audit is the explicit gap ledger for the 9-method x 20-task result matrix.
 It keeps missing cells visible while preserving the rule that a numeric score
@@ -9,8 +9,8 @@ requires a real task target and source artifact.
 ## Score Summary
 
 - Method-task records: `180`
-- Numeric scored records: `148`
-- Scoreless records: `32`
+- Numeric scored records: `150`
+- Scoreless records: `30`
 - Proxy-scored records: `4`
 - Source matrix: [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)
 
@@ -26,13 +26,13 @@ requires a real task target and source artifact.
 | 128ep Raw NN | raw128_neural_mlp | 20/20 | 0 | 2 | proxy_scored: 2, scored: 18 |
 | Qwen3-Omni v6 LoRA | qwen3_omni_v6_lora | 15/20 | 5 | 0 | not_evaluated_in_verified_package: 5, scored: 15 |
 | Cosmos3-Super Reasoner | cosmos3_super_reasoner | 9/20 | 11 | 0 | not_evaluated_in_verified_package: 11, scored: 9 |
-| Cosmos3-Nano Future Window | cosmos3_nano_future_window | 8/20 | 12 | 0 | not_evaluated_in_verified_package: 12, scored: 8 |
+| Cosmos3-Nano Future Window | cosmos3_nano_future_window | 10/20 | 10 | 0 | not_evaluated_in_verified_package: 10, scored: 10 |
 
 ## Gap Classes
 
 | Status | Count | Next step |
 | --- | --- | --- |
-| not_evaluated_in_verified_package | 28 | Generate verified model outputs for this task contract and score them against the held-out labels. |
+| not_evaluated_in_verified_package | 26 | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | not_supported_by_metadata_only_package | 2 | Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score. |
 | unsupported_without_required_target | 2 | Export the missing target field for this 128-episode method, then rerun the same train/validation/test split. |
 
@@ -55,7 +55,6 @@ requires a real task target and source artifact.
 | 12 | Multimodal Synchronization Detection | Cosmos3-Super Reasoner | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 12 | Multimodal Synchronization Detection | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 14 | Long-Horizon Next-Subtask Forecasting | Cosmos3-Super Reasoner | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| 14 | Long-Horizon Next-Subtask Forecasting | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 15 | Interaction Text Prediction | 128ep Aligned Simple | unsupported | Export the missing target field for this 128-episode method, then rerun the same train/validation/test split. |
 | 15 | Interaction Text Prediction | 128ep Aligned NN | not supported | Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score. |
 | 15 | Interaction Text Prediction | Qwen3-Omni v6 LoRA | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
@@ -63,7 +62,6 @@ requires a real task target and source artifact.
 | 15 | Interaction Text Prediction | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 16 | Action-Object Relation Prediction | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 17 | Future Object-Set Forecasting | Cosmos3-Super Reasoner | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| 17 | Future Object-Set Forecasting | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 18 | IMU-to-Hand Pose Reconstruction | Qwen3-Omni v6 LoRA | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 18 | IMU-to-Hand Pose Reconstruction | Cosmos3-Super Reasoner | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 18 | IMU-to-Hand Pose Reconstruction | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
