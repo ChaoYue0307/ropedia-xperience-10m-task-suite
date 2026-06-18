@@ -55,6 +55,11 @@ QWEN_RETRIEVAL_TASK_PROBE_DIR = (
     / "results/omni_finetune"
     / "xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z"
 )
+QWEN_CROSS_MODAL_RETRIEVAL_PROBE_DIR = (
+    ROOT
+    / "results/omni_finetune"
+    / "xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z"
+)
 QWEN_ACTION_OBJECT_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/qwen3_omni_v6_lora/metrics.json"
 )
@@ -63,6 +68,7 @@ COSMOS_SUPER_ACTION_OBJECT_METRICS_PATH = (
 )
 QWEN_FUTURE_TASK_METRIC_PATHS = {
     "caption_grounding": QWEN_RETRIEVAL_TASK_PROBE_DIR / "caption_grounding/metrics.json",
+    "cross_modal_retrieval": QWEN_CROSS_MODAL_RETRIEVAL_PROBE_DIR / "cross_modal_retrieval/metrics.json",
     "temporal_order": QWEN_ORDER_SYNC_TIME_PROBE_DIR / "temporal_order/metrics.json",
     "misalignment_detection": QWEN_ORDER_SYNC_TIME_PROBE_DIR / "misalignment_detection/metrics.json",
     "long_horizon_next_action": QWEN_FUTURE_TASK_PROBE_DIR / "long_horizon_next_action/metrics.json",
@@ -72,6 +78,7 @@ QWEN_FUTURE_TASK_METRIC_PATHS = {
 }
 QWEN_FUTURE_TASK_METRIC_KEYS = {
     "caption_grounding": "caption_grounding_mrr",
+    "cross_modal_retrieval": "cross_modal_retrieval_mrr",
     "temporal_order": "temporal_order_f1",
     "misalignment_detection": "misalignment_detection_f1",
     "long_horizon_next_action": "long_horizon_next_action_macro_f1",
@@ -212,6 +219,7 @@ FOUNDATION_METRIC_SOURCE_OVERRIDES = {
     ("qwen3_omni_v6_lora", "action_object_relation"): QWEN_ACTION_OBJECT_METRICS_PATH,
     ("cosmos3_super_reasoner", "action_object_relation"): COSMOS_SUPER_ACTION_OBJECT_METRICS_PATH,
     ("qwen3_omni_v6_lora", "caption_grounding"): QWEN_FUTURE_TASK_METRIC_PATHS["caption_grounding"],
+    ("qwen3_omni_v6_lora", "cross_modal_retrieval"): QWEN_FUTURE_TASK_METRIC_PATHS["cross_modal_retrieval"],
     ("qwen3_omni_v6_lora", "temporal_order"): QWEN_FUTURE_TASK_METRIC_PATHS["temporal_order"],
     ("qwen3_omni_v6_lora", "misalignment_detection"): QWEN_FUTURE_TASK_METRIC_PATHS["misalignment_detection"],
     ("qwen3_omni_v6_lora", "long_horizon_next_action"): QWEN_FUTURE_TASK_METRIC_PATHS["long_horizon_next_action"],

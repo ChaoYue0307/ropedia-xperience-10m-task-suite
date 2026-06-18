@@ -20,6 +20,7 @@ from collections import OrderedDict
 from pathlib import Path
 from typing import Any
 
+import numpy as np
 import torch
 
 from eval_qwen3_omni_lora import load_model_processor, move_inputs
@@ -38,6 +39,28 @@ TASK_SPECS: OrderedDict[str, dict[str, Any]] = OrderedDict(
                 "prediction_key": "ranked_candidates",
             },
         ),
+        (
+            "cross_modal_retrieval",
+            {
+                "task_number": 9,
+                "label": "Cross-Modal Retrieval",
+                "family": "retrieval",
+                "metric_key": "cross_modal_retrieval_mrr",
+                "prediction_key": "ranked_candidates",
+            },
+        ),
+    ]
+)
+
+MOTION_POSE_QUERY_BLOCKS: OrderedDict[str, tuple[int, int]] = OrderedDict(
+    [
+        ("hand_left_joints", (0, 441)),
+        ("hand_right_joints", (441, 882)),
+        ("body_joints", (882, 1974)),
+        ("body_contacts", (1974, 2121)),
+        ("camera_translation", (2121, 2142)),
+        ("camera_rotation_matrix", (2142, 2205)),
+        ("imu_accel_gyro", (2205, 2247)),
     ]
 )
 
@@ -234,29 +257,94 @@ def query_text(sample: dict[str, Any]) -> str:
     )
 
 
+class SensorFeatureCache:
+    def __init__(self) -> None:
+        self._features_by_path: dict[str, np.ndarray] = {}
+
+    def get(self, path_text: str, index: int) -> np.ndarray:
+        path = str(path_text)
+        if path not in self._features_by_path:
+            data = np.load(path, allow_pickle=False)
+            self._features_by_path[path] = np.asarray(data["features"], dtype=np.float32)
+        features = self._features_by_path[path]
+        if index < 0 or index >= features.shape[0]:
+            raise IndexError(f"sensor feature index {index} out of range for {path}")
+        return features[index]
+
+
+def has_sensor_feature(sample: dict[str, Any]) -> bool:
+    return bool(sample.get("sensor_feature_path")) and sample.get("sensor_feature_index") is not None
+
+
+def summarize_vector_block(values: np.ndarray) -> dict[str, float]:
+    finite = values[np.isfinite(values)]
+    if finite.size == 0:
+        return {"mean": 0.0, "std": 0.0, "mean_abs": 0.0, "l2": 0.0, "max_abs": 0.0}
+    return {
+        "mean": float(np.mean(finite)),
+        "std": float(np.std(finite)),
+        "mean_abs": float(np.mean(np.abs(finite))),
+        "l2": float(np.linalg.norm(finite)),
+        "max_abs": float(np.max(np.abs(finite))),
+    }
+
+
+def sensor_query_text(sample: dict[str, Any], cache: SensorFeatureCache) -> str:
+    vector = cache.get(str(sample.get("sensor_feature_path")), int(sample.get("sensor_feature_index")))
+    lines = [
+        "Sensor/motion query for the current 20-frame window.",
+        "Only motion capture, body contact, camera pose, and IMU blocks are summarized.",
+        "The target is the candidate depth/video window synchronized with this sensor window.",
+        f"Window frames: {row_start(sample)}-{row_end(sample)}",
+    ]
+    for name, (start, end) in MOTION_POSE_QUERY_BLOCKS.items():
+        if end > vector.shape[0]:
+            continue
+        stats = summarize_vector_block(vector[start:end])
+        lines.append(
+            (
+                f"{name}: mean={stats['mean']:.5g}, std={stats['std']:.5g}, "
+                f"mean_abs={stats['mean_abs']:.5g}, l2={stats['l2']:.5g}, "
+                f"max_abs={stats['max_abs']:.5g}"
+            )
+        )
+    return "\n".join(lines)
+
+
 def build_messages(
     samples: list[dict[str, Any]],
     sample_idx: int,
     candidate_indices: list[int],
     task_id: str,
     spec: dict[str, Any],
+    sensor_cache: SensorFeatureCache | None = None,
 ) -> tuple[list[dict[str, Any]], str, list[dict[str, Any]]]:
     letters = [chr(ord("A") + pos) for pos in range(len(candidate_indices))]
     true_letter = letters[candidate_indices.index(sample_idx)]
     candidate_records: list[dict[str, Any]] = []
+    if task_id == "cross_modal_retrieval":
+        if sensor_cache is None:
+            raise ValueError("cross_modal_retrieval requires a sensor feature cache")
+        task_instruction = "Rank the candidate video windows by which one is synchronized with the sensor/motion query."
+        query = sensor_query_text(samples[sample_idx], sensor_cache)
+        query_header = "Sensor/motion query:"
+    else:
+        task_instruction = "Rank the candidate video windows by how well they match the text query."
+        query = query_text(samples[sample_idx])
+        query_header = "Text query:"
     content: list[dict[str, Any]] = [
         {
             "type": "text",
             "text": "\n".join(
                 [
                     f"Task {spec['task_number']}: {spec['label']}",
-                    "Rank the candidate video windows by how well they match the text query.",
+                    task_instruction,
                     "Return JSON only with this schema:",
                     '{"ranked_candidates":["<best letter>","<next letter>", "..."]}',
                     "Use each candidate letter at most once.",
                     "",
-                    "Text query:",
-                    query_text(samples[sample_idx]),
+                    query_header,
+                    query,
                 ]
             ),
         }
@@ -358,6 +446,7 @@ def score_retrieval(rows: list[dict[str, Any]]) -> dict[str, float]:
         "num_samples": len(rows),
         "mrr": mrr,
         "caption_grounding_mrr": mrr,
+        "cross_modal_retrieval_mrr": mrr,
         "top1_accuracy": top1 / len(rows) if rows else 0.0,
     }
 
@@ -397,7 +486,21 @@ def score_task(task_id: str, spec: dict[str, Any], rows: list[dict[str, Any]], o
         ],
     )
     metrics = score_retrieval(rows)
-    primary_score = metrics["caption_grounding_mrr"]
+    primary_score = metrics[spec["metric_key"]]
+    if task_id == "cross_modal_retrieval":
+        score_policy = (
+            "GPU-backed Qwen3-Omni v6 sensor-to-video retrieval probe. The query is a compact "
+            "summary of held-out motion-capture, body-contact, camera-pose, and IMU feature blocks; "
+            "candidates are shuffled staged mosaic video windows, and the score is MRR of the "
+            "synchronized true window. No action/subtask/object labels are included in the query."
+        )
+    else:
+        score_policy = (
+            "GPU-backed Qwen3-Omni v6 text-to-video retrieval probe. The text query is built "
+            "from held-out action/subtask/object labels, candidates are shuffled staged mosaic "
+            "video windows, and the score is MRR of the true window. This does not score tasks "
+            "whose numeric/raw targets are absent from the export."
+        )
     metrics.update(
         {
             "title": f"Qwen3-Omni v6 {spec['label']}",
@@ -417,12 +520,7 @@ def score_task(task_id: str, spec: dict[str, Any], rows: list[dict[str, Any]], o
             "sample_offset": args.sample_offset,
             "sample_stride": args.sample_stride,
             "scope": "held_out_test_qwen3_retrieval_task_probe",
-            "score_policy": (
-                "GPU-backed Qwen3-Omni v6 text-to-video retrieval probe. The text query is built "
-                "from held-out action/subtask/object labels, candidates are shuffled staged mosaic "
-                "video windows, and the score is MRR of the true window. This does not score tasks "
-                "whose numeric/raw targets are absent from the export."
-            ),
+            "score_policy": score_policy,
         }
     )
     write_json(task_dir / "metrics.json", metrics)
@@ -439,6 +537,9 @@ def main() -> int:
     samples = load_jsonl(args.dataset_jsonl)
     eval_pool = [idx for idx, sample in enumerate(samples) if sample.get("split") == args.eval_split and media_video_path(sample)]
     eval_indices = select_eval_indices(samples, args)
+    if "cross_modal_retrieval" in selected_tasks:
+        eval_indices = [idx for idx in eval_indices if has_sensor_feature(samples[idx])]
+        eval_pool = [idx for idx in eval_pool if has_sensor_feature(samples[idx])]
     if not eval_indices:
         raise ValueError("No evaluation samples with retrieval candidates selected.")
 
@@ -457,6 +558,7 @@ def main() -> int:
     )
 
     model, processor = load_model_processor(args)
+    sensor_cache = SensorFeatureCache() if "cross_modal_retrieval" in selected_tasks else None
     partial_by_task = {
         task_id: {
             row.get("prediction_id"): row
@@ -476,7 +578,14 @@ def main() -> int:
                 continue
             started = time.time()
             candidate_indices = build_candidate_indices(samples, eval_pool, sample_idx, task_id, args.candidate_count)
-            messages, true_letter, candidate_records = build_messages(samples, sample_idx, candidate_indices, task_id, spec)
+            messages, true_letter, candidate_records = build_messages(
+                samples,
+                sample_idx,
+                candidate_indices,
+                task_id,
+                spec,
+                sensor_cache=sensor_cache,
+            )
             raw = generate_messages(model, processor, messages, args)
             valid_letters = [record["letter"] for record in candidate_records]
             ranking = extract_ranking(raw, valid_letters)
@@ -490,7 +599,7 @@ def main() -> int:
                 "episode_id": sample.get("episode_id"),
                 "start_frame": row_start(sample),
                 "end_frame": row_end(sample),
-                "query_text": query_text(sample),
+                "query_text": sensor_query_text(sample, sensor_cache) if task_id == "cross_modal_retrieval" else query_text(sample),
                 "candidates": candidate_records,
                 "true_letter": true_letter,
                 "predicted_ranking": ranking,
