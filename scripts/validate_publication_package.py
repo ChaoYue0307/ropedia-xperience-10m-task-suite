@@ -381,6 +381,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "scripts/publish_hf_bundles.py",
         "scripts/omni/build_128_episode_feature_index.py",
         "scripts/omni/build_task_suite_enhancement_128.py",
+        "scripts/omni/collect_qwen3_retrieval_task_probe_results.sh",
         "scripts/omni/train_qwen3_omni_lora.py",
         "results/omni_finetune/task_suite_enhancement_128_v1_20260608/enhancement_plan.json",
         "results/omni_finetune/task_suite_enhancement_128_v1_20260608/ENHANCEMENT_REPORT.md",

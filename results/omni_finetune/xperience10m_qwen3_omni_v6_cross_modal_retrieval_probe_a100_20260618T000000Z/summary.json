@@ -1,0 +1,19 @@
+{
+  "run_id": "xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z",
+  "shard_dirs": [
+    "results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z_shard0",
+    "results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z_shard1"
+  ],
+  "status": "pass",
+  "tasks": {
+    "cross_modal_retrieval": {
+      "metric_key": "cross_modal_retrieval_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z/cross_modal_retrieval/metrics.json",
+      "num_samples": 4032,
+      "primary_score": 0.5080191798941732,
+      "task_label": "Cross-Modal Retrieval",
+      "task_number": 9
+    }
+  },
+  "title": "Qwen3-Omni v6 Retrieval Task Probes"
+}

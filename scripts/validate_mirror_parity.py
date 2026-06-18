@@ -19,6 +19,10 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_HF_ROOT = ROOT.parent / "hf_publish"
 DEFAULT_OUTPUT = ROOT / "docs/data/mirror_parity.json"
 QWEN3_FUTURE_TASK_PROBE_RUN_ID = "xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z"
+QWEN3_RETRIEVAL_TASK_PROBE_RUN_IDS = [
+    "xperience10m_qwen3_omni_v6_retrieval_task_probes_a100_20260617T175919Z",
+    "xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z",
+]
 
 DATA_FILES = [
     "additional_development_directions.json",
@@ -118,6 +122,7 @@ SCRIPT_FILES = [
     "omni/build_qwen3_full_parameter_gate_summary.py",
     "omni/build_128_episode_feature_index.py",
     "omni/collect_qwen3_future_task_probe_results.sh",
+    "omni/collect_qwen3_retrieval_task_probe_results.sh",
     "omni/collect_qwen3_v4_release_artifacts.py",
     "omni/defer_cosmos3_super_after_qwen_v4.sh",
     "omni/defer_qwen3_retrieval_after_order_sync.sh",
@@ -448,6 +453,26 @@ def qwen3_future_task_probe_result_files() -> list[str]:
     return sorted(files)
 
 
+def qwen3_retrieval_task_probe_result_files() -> list[str]:
+    """Return public-safe Qwen3 retrieval probe outputs from task 08/09 runs."""
+
+    files: list[str] = []
+    for run_id in QWEN3_RETRIEVAL_TASK_PROBE_RUN_IDS:
+        result_root = ROOT / "results/omni_finetune" / run_id
+        if result_root.exists():
+            for path in result_root.rglob("*"):
+                if path.is_file():
+                    files.append(path.relative_to(ROOT / "results").as_posix())
+
+        launch_log = ROOT / "results/omni_finetune/deferred_launchers" / f"{run_id}.launch.log"
+        if launch_log.is_file():
+            files.append(launch_log.relative_to(ROOT / "results").as_posix())
+        direct_launch_log = ROOT / "results/omni_finetune/deferred_launchers" / f"{run_id}.launcher.log"
+        if direct_launch_log.is_file():
+            files.append(direct_launch_log.relative_to(ROOT / "results").as_posix())
+    return sorted(set(files))
+
+
 def parity_group(name: str, local_path: Path, mirrors: dict[str, Path], hf_root: Path) -> dict:
     local = file_record(local_path, hf_root)
     mirror_records = {surface: file_record(path, hf_root) for surface, path in mirrors.items()}
@@ -550,6 +575,7 @@ def build_report(hf_root: Path) -> dict:
         | set(xperience10m_128_data_feature_files())
         | set(model_output_task_probe_result_files())
         | set(qwen3_future_task_probe_result_files())
+        | set(qwen3_retrieval_task_probe_result_files())
     )
     for filename in result_files:
         groups.append(

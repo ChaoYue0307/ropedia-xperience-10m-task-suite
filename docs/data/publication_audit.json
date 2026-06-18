@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-18T09:30:36+00:00",
+  "generated_at_utc": "2026-06-18T10:04:59+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -164,6 +164,7 @@
     "scripts/publish_hf_bundles.py": true,
     "scripts/omni/build_128_episode_feature_index.py": true,
     "scripts/omni/build_task_suite_enhancement_128.py": true,
+    "scripts/omni/collect_qwen3_retrieval_task_probe_results.sh": true,
     "scripts/omni/train_qwen3_omni_lora.py": true,
     "results/omni_finetune/task_suite_enhancement_128_v1_20260608/enhancement_plan.json": true,
     "results/omni_finetune/task_suite_enhancement_128_v1_20260608/ENHANCEMENT_REPORT.md": true
@@ -214,8 +215,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 1263,
-      "text_file_count": 1060,
+      "file_count": 1264,
+      "text_file_count": 1061,
       "largest_file": {
         "path": "results/episode_task_suite/modality_reconstruction/predictions.npz",
         "bytes": 55702978

@@ -519,6 +519,7 @@ def main() -> int:
         | set(parity.xperience10m_128_data_feature_files())
         | set(parity.model_output_task_probe_result_files())
         | set(parity.qwen3_future_task_probe_result_files())
+        | set(parity.qwen3_retrieval_task_probe_result_files())
     )
     for filename in result_files:
         src = ROOT / "results" / filename
