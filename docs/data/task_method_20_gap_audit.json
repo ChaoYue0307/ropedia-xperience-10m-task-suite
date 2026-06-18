@@ -1,10 +1,10 @@
 {
-  "generated_at_utc": "2026-06-18T16:37:05+00:00",
+  "generated_at_utc": "2026-06-18T18:18:12+00:00",
   "immediate_actions": [
     {
       "artifact": "docs/data/task_method_20_gap_audit.json",
       "id": "gap_audit",
-      "purpose": "Keep the 34 scoreless cells visible and reproducible."
+      "purpose": "Keep the 33 scoreless cells visible and reproducible."
     },
     {
       "artifact": "scripts/omni/score_model_output_probes.py",
@@ -37,11 +37,11 @@
       "proxy_scored_task_count": 0,
       "result_record_count": 20,
       "scope": "128 selected episodes, held-out test",
-      "scored_task_count": 8,
-      "scoreless_task_count": 12,
+      "scored_task_count": 9,
+      "scoreless_task_count": 11,
       "status_counts": {
-        "not_evaluated_in_verified_package": 12,
-        "scored": 8
+        "not_evaluated_in_verified_package": 11,
+        "scored": 9
       }
     },
     "metadata128_neural_mlp": {
@@ -136,13 +136,13 @@
   },
   "missing_by_method": {
     "cosmos3_nano_future_window": 13,
-    "cosmos3_super_reasoner": 12,
+    "cosmos3_super_reasoner": 11,
     "metadata128_neural_mlp": 2,
     "metadata128_simple": 2,
     "qwen3_omni_v6_lora": 5
   },
   "missing_by_status": {
-    "not_evaluated_in_verified_package": 30,
+    "not_evaluated_in_verified_package": 29,
     "not_supported_by_metadata_only_package": 2,
     "unsupported_without_required_target": 2
   },
@@ -175,9 +175,6 @@
     ],
     "12 Multimodal Synchronization Detection": [
       "cosmos3_nano_future_window",
-      "cosmos3_super_reasoner"
-    ],
-    "13 Long-Horizon Next-Action Forecasting": [
       "cosmos3_super_reasoner"
     ],
     "14 Long-Horizon Next-Subtask Forecasting": [
@@ -396,19 +393,6 @@
       "task_id": "misalignment_detection",
       "task_label": "Multimodal Synchronization Detection",
       "task_number": 12
-    },
-    {
-      "method": "Cosmos3-Super Reasoner",
-      "metric_key": "macro_f1",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
-      "scope": "multi_episode_128_partial_model_overlay",
-      "series_id": "cosmos3_super_reasoner",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "task_id": "long_horizon_next_action",
-      "task_label": "Long-Horizon Next-Action Forecasting",
-      "task_number": 13
     },
     {
       "method": "Cosmos3-Super Reasoner",
@@ -704,8 +688,8 @@
     "method_count": 9,
     "method_task_record_count": 180,
     "proxy_scored_method_task_count": 4,
-    "scored_method_task_count": 146,
-    "scoreless_method_task_count": 34,
+    "scored_method_task_count": 147,
+    "scoreless_method_task_count": 33,
     "task_count": 20
   },
   "source_matrix": "docs/data/task_method_20_result_matrix.json",

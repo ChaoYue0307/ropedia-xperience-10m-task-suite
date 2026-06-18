@@ -1,12 +1,12 @@
 {
   "title": "128-Episode 20-Task Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-18T16:36:15+00:00",
+  "generated_at_utc": "2026-06-18T18:18:12+00:00",
   "description": "Selected 128-episode metadata/raw baselines plus verified Qwen3/Cosmos branches. Every method has 20 records; numeric scores appear only where the public artifact produced that task target.",
   "task_count": 20,
   "method_count": 7,
   "method_task_record_count": 140,
-  "scored_method_task_count": 106,
+  "scored_method_task_count": 107,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
@@ -150,17 +150,17 @@
       "method_detail": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 16 and a derived task-20 action-boundary timing probe scored from existing verified JSON.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 8,
-      "covered_task_count": 8,
+      "scored_task_count": 9,
+      "covered_task_count": 9,
       "proxy_scored_task_count": 0,
-      "scoreless_task_count": 12,
+      "scoreless_task_count": 11,
       "unsupported_task_count": 0,
-      "not_evaluated_task_count": 12,
+      "not_evaluated_task_count": 11,
       "status_counts": {
-        "not_evaluated_in_verified_package": 12,
-        "scored": 8
+        "not_evaluated_in_verified_package": 11,
+        "scored": 9
       },
-      "coverage_fraction": 0.4,
+      "coverage_fraction": 0.45,
       "result_record_fraction": 1.0
     },
     {
@@ -1349,15 +1349,15 @@
           "status_label": "scored"
         },
         "cosmos3_super_reasoner": {
-          "raw": null,
-          "metric_key": "macro_f1",
-          "source": null,
+          "raw": 0.008807588075880758,
+          "metric_key": "long_horizon_next_action_macro_f1",
+          "source": "results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_super_reasoner/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.008807588075880758,
+          "raw_text": "0.0088",
+          "status_label": "scored"
         },
         "cosmos3_nano_future_window": {
           "raw": 0.0024906600249066007,
@@ -3619,17 +3619,17 @@
       "task_label": "Long-Horizon Next-Action Forecasting",
       "series_id": "cosmos3_super_reasoner",
       "method": "Cosmos3-Super Reasoner",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "macro_f1",
-      "source": null,
+      "raw": 0.008807588075880758,
+      "raw_text": "0.0088",
+      "normalized_score": 0.008807588075880758,
+      "metric_key": "long_horizon_next_action_macro_f1",
+      "source": "results/omni_finetune/model_output_task_probes_20260616/long_horizon_next_action/cosmos3_super_reasoner/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 13,

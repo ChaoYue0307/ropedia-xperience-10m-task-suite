@@ -42,6 +42,7 @@ run_dir = root / "results/omni_finetune" / run_id
 metric_key_by_task = {
     "caption_grounding": "caption_grounding_mrr",
     "cross_modal_retrieval": "cross_modal_retrieval_mrr",
+    "camera_view_sync_retrieval": "camera_view_sync_retrieval_mrr",
 }
 expected = {task_id: metric_key_by_task[task_id] for task_id in task_ids}
 

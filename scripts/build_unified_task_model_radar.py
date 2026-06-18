@@ -74,6 +74,9 @@ COSMOS_SUPER_ACTION_OBJECT_METRICS_PATH = (
 COSMOS_SUPER_TIME_TO_TRANSITION_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "time_to_transition/cosmos3_super_reasoner/metrics.json"
 )
+COSMOS_SUPER_LONG_HORIZON_METRICS_PATH = (
+    MODEL_OUTPUT_TASK_PROBE_DIR / "long_horizon_next_action/cosmos3_super_reasoner/metrics.json"
+)
 COSMOS_NANO_LONG_HORIZON_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "long_horizon_next_action/cosmos3_nano_future_window/metrics.json"
 )
@@ -221,6 +224,7 @@ FOUNDATION_TASK_METRICS = {
         "cosmos3_super_reasoner": "action_object_relation_macro_f1",
     },
     "long_horizon_next_action": {
+        "cosmos3_super_reasoner": "long_horizon_next_action_macro_f1",
         "cosmos3_nano_future_window": "long_horizon_next_action_macro_f1",
     },
     "modality_reconstruction": {
@@ -254,6 +258,7 @@ FOUNDATION_METRIC_SOURCE_OVERRIDES = {
     ("qwen3_omni_v6_lora", "camera_view_sync_retrieval"): QWEN_FUTURE_TASK_METRIC_PATHS["camera_view_sync_retrieval"],
     ("cosmos3_nano_future_window", "long_horizon_next_action"): COSMOS_NANO_LONG_HORIZON_METRICS_PATH,
     ("cosmos3_nano_future_window", "modality_reconstruction"): COSMOS_NANO_MODALITY_RECONSTRUCTION_METRICS_PATH,
+    ("cosmos3_super_reasoner", "long_horizon_next_action"): COSMOS_SUPER_LONG_HORIZON_METRICS_PATH,
     ("cosmos3_super_reasoner", "time_to_transition"): COSMOS_SUPER_TIME_TO_TRANSITION_METRICS_PATH,
 }
 
@@ -645,6 +650,7 @@ def build_payload() -> dict[str, Any]:
     cosmos_fd = read_json(COSMOS_SUPER_FD_METRICS_PATH)
     qwen.update(read_json(QWEN_ACTION_OBJECT_METRICS_PATH))
     cosmos_super.update(read_json(COSMOS_SUPER_ACTION_OBJECT_METRICS_PATH))
+    cosmos_super.update(read_json(COSMOS_SUPER_LONG_HORIZON_METRICS_PATH))
     cosmos_super.update(read_json(COSMOS_SUPER_TIME_TO_TRANSITION_METRICS_PATH))
     cosmos_nano.update(read_json(COSMOS_NANO_LONG_HORIZON_METRICS_PATH))
     cosmos_nano.update(read_json(COSMOS_NANO_MODALITY_RECONSTRUCTION_METRICS_PATH))

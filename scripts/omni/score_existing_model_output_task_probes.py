@@ -22,6 +22,7 @@ from qwen3_omni_dataset_utils import class_metrics
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_OUTPUT_DIR = ROOT / "results/omni_finetune/model_output_task_probes_20260616"
 MISSING_PRED_RELATION = "<missing_pred_relation>"
+MISSING_PRED_NEXT_ACTION = "<missing_pred_next_action>"
 
 MODEL_SPECS = {
     "qwen3_omni_v6_lora": {
@@ -458,6 +459,114 @@ def action_from_row(row: dict[str, Any], *, predicted: bool) -> str:
     return normalize_text(row.get(label_key) or payload.get("action"))
 
 
+def next_action_from_row(row: dict[str, Any], *, predicted: bool) -> str:
+    payload_key = "pred_json" if predicted else "true_json"
+    label_key = "predicted_label" if predicted else "true_label"
+    payload = row.get(payload_key) if isinstance(row.get(payload_key), dict) else {}
+    return normalize_text(payload.get("next_action") or row.get(label_key) or payload.get("action"))
+
+
+def score_long_horizon_next_action_from_verified_json(
+    *,
+    model_id: str,
+    spec: dict[str, Any],
+    prediction_jsonl: Path,
+    output_dir: Path,
+    workspace: Path,
+) -> dict[str, Any]:
+    rows = read_jsonl(prediction_jsonl)
+    scored_rows: list[dict[str, Any]] = []
+    y_true: list[str] = []
+    y_pred: list[str] = []
+    missing_pred_count = 0
+
+    for row in rows:
+        true_next_action = next_action_from_row(row, predicted=False)
+        if not true_next_action:
+            continue
+        pred_next_action = next_action_from_row(row, predicted=True)
+        if not pred_next_action:
+            pred_next_action = MISSING_PRED_NEXT_ACTION
+            missing_pred_count += 1
+        y_true.append(true_next_action)
+        y_pred.append(pred_next_action)
+        scored_rows.append(
+            {
+                "id": row.get("id"),
+                "split": row.get("split"),
+                "episode_id": row.get("episode_id"),
+                "center_window": json.dumps(row.get("center_window"), sort_keys=True),
+                "true_next_action": true_next_action,
+                "pred_next_action": pred_next_action,
+                "correct": int(true_next_action == pred_next_action),
+            }
+        )
+
+    if not y_true:
+        raise RuntimeError(f"no next-action targets found in {prediction_jsonl}")
+
+    label_options = sorted(set(y_true))
+    metrics, per_class, _ = class_metrics(y_true, y_pred, label_options)
+    metrics.update(
+        {
+            "title": f"{spec['label']} Long-Horizon Next-Action Existing-Output Probe",
+            "status": "pass",
+            "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "model_id": model_id,
+            "model_label": spec["label"],
+            "task_id": "long_horizon_next_action",
+            "task_number": 13,
+            "task_label": "Long-Horizon Next Action",
+            "metric_key": "long_horizon_next_action_macro_f1",
+            "primary_metric": "long_horizon_next_action_macro_f1",
+            "primary_score": metrics["macro_f1"],
+            "long_horizon_next_action_macro_f1": metrics["macro_f1"],
+            "long_horizon_next_action_accuracy": metrics["accuracy"],
+            "missing_pred_next_action_count": missing_pred_count,
+            "source_prediction_jsonl": relpath(prediction_jsonl, workspace),
+            "scope": "held_out_test_existing_verified_prediction_json",
+            "score_policy": (
+                "Derived from the existing verified held-out prediction JSON next_action field. "
+                "No new model inference was run; rows without a predicted next_action are "
+                "counted as missing predictions."
+            ),
+            "normalization_policy": (
+                "Whitespace and surrounding quotes/punctuation are normalized before exact-label scoring."
+            ),
+            "known_limitation": (
+                "This uses the next_action field already emitted by the verified structured-output "
+                "eval. It is target-backed, but it is not a separately prompted future-task generation run."
+            ),
+            "scored_rows": len(y_true),
+            "artifact_files": {
+                "metrics_json": relpath(output_dir / "metrics.json", workspace),
+                "predictions_csv": relpath(output_dir / "predictions.csv", workspace),
+                "per_class_metrics_csv": relpath(output_dir / "per_class_metrics.csv", workspace),
+            },
+        }
+    )
+    write_csv(
+        output_dir / "predictions.csv",
+        scored_rows,
+        [
+            "id",
+            "split",
+            "episode_id",
+            "center_window",
+            "true_next_action",
+            "pred_next_action",
+            "correct",
+        ],
+    )
+    write_csv(
+        output_dir / "per_class_metrics.csv",
+        per_class,
+        ["label", "support", "predicted", "true_positive", "precision", "recall", "f1"],
+    )
+    write_json(output_dir / "metrics.json", metrics)
+    return metrics
+
+
 def transition_distances(rows: list[dict[str, Any]], labels: list[str], cap_frames: int) -> list[float]:
     by_episode: dict[str, list[int]] = {}
     for idx, row in enumerate(rows):
@@ -720,6 +829,19 @@ def main() -> int:
                 "num_samples": metrics.get("num_samples"),
             }
         if spec.get("time_to_transition_from_action_sequence"):
+            metrics = score_long_horizon_next_action_from_verified_json(
+                model_id=model_id,
+                spec=spec,
+                prediction_jsonl=prediction_path,
+                output_dir=output_dir / "long_horizon_next_action" / model_id,
+                workspace=workspace,
+            )
+            task_results["long_horizon_next_action"] = {
+                "source_metrics_json": metrics["artifact_files"]["metrics_json"],
+                "scored_rows": metrics["scored_rows"],
+                "long_horizon_next_action_macro_f1": metrics["long_horizon_next_action_macro_f1"],
+                "long_horizon_next_action_accuracy": metrics["long_horizon_next_action_accuracy"],
+            }
             metrics = score_time_to_transition_from_action_sequence(
                 model_id=model_id,
                 spec=spec,

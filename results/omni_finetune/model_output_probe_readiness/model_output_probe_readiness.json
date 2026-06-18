@@ -1,10 +1,10 @@
 {
-  "generated_at_utc": "2026-06-16T12:00:01+00:00",
+  "generated_at_utc": "2026-06-18T18:10:07+00:00",
   "methods": {
     "cosmos3_nano_future_window": {
       "label": "Cosmos3-Nano Future Window",
-      "matrix_scored_task_count": 5,
-      "matrix_scoreless_task_count": 15,
+      "matrix_scored_task_count": 7,
+      "matrix_scoreless_task_count": 13,
       "next_step": "Collect or generate train, validation, and test prediction JSONL files first.",
       "ready_for_all_task_probe": false,
       "required_splits": [
@@ -17,10 +17,8 @@
         "hand_trajectory_forecast",
         "object_relevance",
         "caption_grounding",
-        "modality_reconstruction",
         "temporal_order",
         "misalignment_detection",
-        "long_horizon_next_action",
         "next_subtask_forecast",
         "interaction_text_prediction",
         "action_object_relation",
@@ -56,8 +54,8 @@
     },
     "cosmos3_super_reasoner": {
       "label": "Cosmos3-Super Reasoner",
-      "matrix_scored_task_count": 6,
-      "matrix_scoreless_task_count": 14,
+      "matrix_scored_task_count": 8,
+      "matrix_scoreless_task_count": 12,
       "next_step": "Collect or generate train, validation, and test prediction JSONL files first.",
       "ready_for_all_task_probe": false,
       "required_splits": [
@@ -75,11 +73,9 @@
         "long_horizon_next_action",
         "next_subtask_forecast",
         "interaction_text_prediction",
-        "action_object_relation",
         "object_set_forecast",
         "imu_to_hand_pose",
-        "camera_view_sync_retrieval",
-        "time_to_transition"
+        "camera_view_sync_retrieval"
       ],
       "split_status": {
         "test": {
@@ -107,8 +103,8 @@
     },
     "qwen3_omni_v6_lora": {
       "label": "Qwen3-Omni v6 LoRA",
-      "matrix_scored_task_count": 6,
-      "matrix_scoreless_task_count": 14,
+      "matrix_scored_task_count": 15,
+      "matrix_scoreless_task_count": 5,
       "next_step": "Collect or generate train, validation, and test prediction JSONL files first.",
       "ready_for_all_task_probe": false,
       "required_splits": [
@@ -118,19 +114,10 @@
       ],
       "scoreless_task_ids": [
         "hand_trajectory_forecast",
-        "caption_grounding",
-        "cross_modal_retrieval",
         "modality_reconstruction",
-        "temporal_order",
-        "misalignment_detection",
-        "long_horizon_next_action",
-        "next_subtask_forecast",
         "interaction_text_prediction",
-        "action_object_relation",
-        "object_set_forecast",
         "imu_to_hand_pose",
-        "camera_view_sync_retrieval",
-        "time_to_transition"
+        "camera_view_sync_retrieval"
       ],
       "split_status": {
         "test": {
