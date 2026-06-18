@@ -857,19 +857,18 @@ def neural_multilabel(
     return metrics
 
 
-def caption_grounding(rows: list[dict[str, Any]], episodes: dict[str, dict[str, Any]], splits: dict[str, np.ndarray], out_root: Path, args: argparse.Namespace) -> dict[str, Any]:
-    test_idx = splits["test"]
-    candidate_texts = []
-    query_texts = []
-    for idx in test_idx:
-        row = rows[int(idx)]
-        ans = answer(row)
-        episode = episodes.get(str(row.get("episode_id")))
-        candidate_texts.append(row_text_features(row, episode))
-        query_texts.append(" ".join([norm(ans.get("action")), norm(ans.get("subtask")), " ".join(norm(x) for x in ans.get("objects", []) or [])]))
-    C = np.stack([hash_tokens(text, args.hash_dim, "caption_candidate") for text in candidate_texts])
-    Q = np.stack([hash_tokens(text, args.hash_dim, "caption_query") for text in query_texts])
-    scores = Q @ C.T
+def caption_query_text(row: dict[str, Any]) -> str:
+    ans = answer(row)
+    return " ".join(
+        [
+            norm(ans.get("action")),
+            norm(ans.get("subtask")),
+            " ".join(norm(x) for x in ans.get("objects", []) or []),
+        ]
+    )
+
+
+def retrieval_metrics_from_scores(scores: np.ndarray, rows: list[dict[str, Any]], test_idx: np.ndarray) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     ranks = []
     rank_rows = []
     for i in range(len(test_idx)):
@@ -888,12 +887,6 @@ def caption_grounding(rows: list[dict[str, Any]], episodes: dict[str, dict[str, 
         )
     ranks_arr = np.asarray(ranks, dtype=np.float32)
     metrics = {
-        "status": "pass",
-        "task": "caption_grounding",
-        "task_display_name": task_display_name("caption_grounding"),
-        "model_family": "simple_hashed_text_retrieval",
-        "source": "128_episode_qwen_jsonl_metadata",
-        "limitation": "query text is derived from held-out labels, while candidate representations exclude answer_json fields; this is a public-safe retrieval proxy, not a raw caption-to-sensor grounding model",
         "num_queries": int(len(test_idx)),
         "mrr": float(np.mean(1.0 / ranks_arr)) if len(ranks_arr) else 0.0,
         "median_rank": float(np.median(ranks_arr)) if len(ranks_arr) else 0.0,
@@ -901,13 +894,203 @@ def caption_grounding(rows: list[dict[str, Any]], episodes: dict[str, dict[str, 
         "top1_accuracy": float(np.mean(ranks_arr <= 1)) if len(ranks_arr) else 0.0,
         "top5_accuracy": float(np.mean(ranks_arr <= 5)) if len(ranks_arr) else 0.0,
         "top10_accuracy": float(np.mean(ranks_arr <= 10)) if len(ranks_arr) else 0.0,
+    }
+    return metrics, rank_rows
+
+
+def neural_caption_grounding(
+    rows: list[dict[str, Any]],
+    episodes: dict[str, dict[str, Any]],
+    splits: dict[str, np.ndarray],
+    out_root: Path,
+    args: argparse.Namespace,
+) -> dict[str, Any]:
+    import torch
+    import torch.nn as nn
+    import torch.nn.functional as F
+
+    from neural_task_models import _history_epoch, _resolve_device
+
+    train_idx = splits["train"]
+    test_idx = splits["test"]
+    candidate_inputs = np.stack(
+        [
+            hash_tokens(row_text_features(row, episodes.get(str(row.get("episode_id")))), args.hash_dim, "caption_candidate_neural")
+            for row in rows
+        ]
+    ).astype(np.float32)
+    query_inputs = np.stack([hash_tokens(caption_query_text(row), args.hash_dim, "caption_query_neural") for row in rows]).astype(np.float32)
+
+    device = _resolve_device(torch, args.neural_device)
+    torch.manual_seed(args.seed)
+    hidden_dim = int(args.neural_hidden_dim)
+    embed_dim = min(128, hidden_dim)
+
+    def make_encoder() -> nn.Module:
+        return nn.Sequential(
+            nn.LayerNorm(args.hash_dim),
+            nn.Linear(args.hash_dim, hidden_dim),
+            nn.GELU(),
+            nn.Dropout(args.neural_dropout),
+            nn.Linear(hidden_dim, embed_dim),
+        )
+
+    candidate_encoder = make_encoder().to(device)
+    query_encoder = make_encoder().to(device)
+    opt = torch.optim.AdamW(
+        list(candidate_encoder.parameters()) + list(query_encoder.parameters()),
+        lr=args.neural_learning_rate,
+        weight_decay=args.neural_weight_decay,
+    )
+    cand_tensor = torch.from_numpy(candidate_inputs)
+    query_tensor = torch.from_numpy(query_inputs)
+    train_tensor = torch.from_numpy(train_idx.astype(np.int64))
+    history = []
+    temperature = 0.07
+    for epoch in range(1, args.neural_epochs + 1):
+        candidate_encoder.train()
+        query_encoder.train()
+        generator = torch.Generator()
+        generator.manual_seed(args.seed + epoch)
+        perm = train_tensor[torch.randperm(len(train_tensor), generator=generator)]
+        total_loss = 0.0
+        total_seen = 0
+        for start in range(0, len(perm), args.neural_batch_size):
+            idx = perm[start : start + args.neural_batch_size]
+            if len(idx) < 2:
+                continue
+            cand = F.normalize(candidate_encoder(cand_tensor[idx].to(device)), dim=1)
+            query = F.normalize(query_encoder(query_tensor[idx].to(device)), dim=1)
+            logits = query @ cand.T / temperature
+            labels = torch.arange(len(idx), device=device)
+            loss = 0.5 * (F.cross_entropy(logits, labels) + F.cross_entropy(logits.T, labels))
+            opt.zero_grad(set_to_none=True)
+            loss.backward()
+            opt.step()
+            total_loss += float(loss.detach().cpu()) * len(idx)
+            total_seen += len(idx)
+        if _history_epoch(epoch, args.neural_epochs):
+            history.append({"epoch": epoch, "loss": total_loss / max(total_seen, 1)})
+
+    candidate_encoder.eval()
+    query_encoder.eval()
+    with torch.no_grad():
+        cand = F.normalize(candidate_encoder(cand_tensor[test_idx].to(device)), dim=1)
+        query = F.normalize(query_encoder(query_tensor[test_idx].to(device)), dim=1)
+        scores = (query @ cand.T).detach().cpu().numpy().astype(np.float32)
+    retrieval_metrics, rank_rows = retrieval_metrics_from_scores(scores, rows, test_idx)
+    metrics = {
+        "status": "pass",
+        "task": "caption_grounding",
+        "task_display_name": task_display_name("caption_grounding"),
+        "model_family": "neural_mlp_metadata_contrastive_retrieval",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "limitation": "query text is derived from held-out labels, while candidate representations exclude answer_json fields; this is a public-safe retrieval proxy, not a raw caption-to-sensor grounding model",
+        "split_policy": "train contrastive query/window alignment on train split, report held-out test retrieval",
+        "num_train_windows": int(len(train_idx)),
+        "num_test_windows": int(len(test_idx)),
+        "history": history,
+        "device": str(device),
+        **retrieval_metrics,
         "primary_metric": "mrr",
-        "primary_score": float(np.mean(1.0 / ranks_arr)) if len(ranks_arr) else 0.0,
+        "primary_score": retrieval_metrics["mrr"],
+    }
+    out_dir = out_root / "neural_mlp" / "caption_grounding"
+    write_json(out_dir / "metrics.json", metrics)
+    write_csv(out_dir / "ranks.csv", rank_rows)
+    return metrics
+
+
+def caption_grounding(rows: list[dict[str, Any]], episodes: dict[str, dict[str, Any]], splits: dict[str, np.ndarray], out_root: Path, args: argparse.Namespace) -> dict[str, Any]:
+    test_idx = splits["test"]
+    candidate_texts = []
+    query_texts = []
+    for idx in test_idx:
+        row = rows[int(idx)]
+        episode = episodes.get(str(row.get("episode_id")))
+        candidate_texts.append(row_text_features(row, episode))
+        query_texts.append(caption_query_text(row))
+    C = np.stack([hash_tokens(text, args.hash_dim, "caption_candidate") for text in candidate_texts])
+    Q = np.stack([hash_tokens(text, args.hash_dim, "caption_query") for text in query_texts])
+    scores = Q @ C.T
+    retrieval_metrics, rank_rows = retrieval_metrics_from_scores(scores, rows, test_idx)
+    metrics = {
+        "status": "pass",
+        "task": "caption_grounding",
+        "task_display_name": task_display_name("caption_grounding"),
+        "model_family": "simple_hashed_text_retrieval",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "limitation": "query text is derived from held-out labels, while candidate representations exclude answer_json fields; this is a public-safe retrieval proxy, not a raw caption-to-sensor grounding model",
+        **retrieval_metrics,
+        "primary_metric": "mrr",
+        "primary_score": retrieval_metrics["mrr"],
     }
     out_dir = out_root / "caption_grounding"
     write_json(out_dir / "metrics.json", metrics)
     write_csv(out_dir / "ranks.csv", rank_rows)
-    return {"simple": metrics, "neural": None}
+    neural_result = None
+    if args.include_neural:
+        neural_dir = out_root / "neural_mlp" / "caption_grounding"
+        try:
+            neural_result = neural_caption_grounding(rows, episodes, splits, out_root, args)
+        except Exception as exc:  # pragma: no cover - protects long batch runs from optional NN environment failures.
+            neural_result = {
+                "status": "failed",
+                "task": "caption_grounding",
+                "task_display_name": task_display_name("caption_grounding"),
+                "model_family": "neural_mlp_metadata_contrastive_retrieval",
+                "source": "128_episode_qwen_jsonl_metadata",
+                "primary_metric": "mrr",
+                "primary_score": None,
+                "error": str(exc),
+            }
+            write_json(neural_dir / "metrics.json", neural_result)
+    return {"simple": metrics, "neural": neural_result}
+
+
+def neural_temporal_order(
+    X_train: np.ndarray,
+    y_train: np.ndarray,
+    X_test: np.ndarray,
+    y_test: np.ndarray,
+    test_pair_rows: list[dict[str, Any]],
+    out_root: Path,
+    args: argparse.Namespace,
+) -> dict[str, Any]:
+    from neural_task_models import train_classifier
+
+    X_pair = np.concatenate([X_train, X_test], axis=0).astype(np.float32)
+    y_pair = np.concatenate([y_train, y_test], axis=0).astype(np.int64)
+    train_idx = np.arange(len(X_train), dtype=np.int64)
+    test_idx = np.arange(len(X_train), len(X_train) + len(X_test), dtype=np.int64)
+    result = train_classifier(X_pair, y_pair, train_idx, test_idx, n_classes=2, config=neural_config(args), use_class_weights=True)
+    pred = result["pred"]
+    metrics, per_class, cm = compute_metrics(y_test, pred, ["reversed", "correct"])
+    pred_rows = []
+    for k, row in enumerate(test_pair_rows):
+        pred_rows.append({**row, "predicted_order": int(pred[k]), "correct": int(pred[k] == y_test[k])})
+    payload = {
+        "status": "pass",
+        "task": "temporal_order",
+        "task_display_name": task_display_name("temporal_order"),
+        "model_family": "neural_mlp_metadata_pair",
+        "source": "128_episode_qwen_jsonl_metadata",
+        "limitation": "metadata-only pair features are weaker than the single-episode raw-feature temporal-order task",
+        "split_policy": "train on train-split adjacent window pairs, report held-out test-split adjacent window pairs",
+        "num_train_samples": int(len(train_idx)),
+        "num_test_samples": int(len(test_idx)),
+        "history": result["history"],
+        "device": result["device"],
+        **metrics,
+        "primary_metric": "f1",
+        "primary_score": metrics["macro_f1"],
+    }
+    out_dir = out_root / "neural_mlp" / "temporal_order"
+    write_json(out_dir / "metrics.json", payload)
+    write_csv(out_dir / "predictions.csv", pred_rows)
+    write_csv(out_dir / "per_class_metrics.csv", per_class)
+    write_confusion(out_dir / "confusion_matrix.csv", cm, ["reversed", "correct"])
+    return payload
 
 
 def temporal_order(rows: list[dict[str, Any]], X: np.ndarray, splits: dict[str, np.ndarray], out_root: Path, args: argparse.Namespace) -> dict[str, Any]:
@@ -964,7 +1147,24 @@ def temporal_order(rows: list[dict[str, Any]], X: np.ndarray, splits: dict[str, 
     write_csv(out_dir / "predictions.csv", pred_rows)
     write_csv(out_dir / "per_class_metrics.csv", per_class)
     write_confusion(out_dir / "confusion_matrix.csv", cm, ["reversed", "correct"])
-    return {"simple": payload, "neural": None}
+    neural_result = None
+    if args.include_neural:
+        neural_dir = out_root / "neural_mlp" / "temporal_order"
+        try:
+            neural_result = neural_temporal_order(X_train, y_train, X_test, y_test, test_pair_rows, out_root, args)
+        except Exception as exc:  # pragma: no cover - protects long batch runs from optional NN environment failures.
+            neural_result = {
+                "status": "failed",
+                "task": "temporal_order",
+                "task_display_name": task_display_name("temporal_order"),
+                "model_family": "neural_mlp_metadata_pair",
+                "source": "128_episode_qwen_jsonl_metadata",
+                "primary_metric": "f1",
+                "primary_score": None,
+                "error": str(exc),
+            }
+            write_json(neural_dir / "metrics.json", neural_result)
+    return {"simple": payload, "neural": neural_result}
 
 
 def unsupported_record(task_id: str, out_root: Path, reason: str, primary_metric: str) -> dict[str, Any]:

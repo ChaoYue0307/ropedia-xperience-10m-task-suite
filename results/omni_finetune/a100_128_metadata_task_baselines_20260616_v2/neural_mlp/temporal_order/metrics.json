@@ -1,0 +1,52 @@
+{
+  "status": "pass",
+  "task": "temporal_order",
+  "task_display_name": "Temporal Order Verification",
+  "model_family": "neural_mlp_metadata_pair",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "limitation": "metadata-only pair features are weaker than the single-episode raw-feature temporal-order task",
+  "split_policy": "train on train-split adjacent window pairs, report held-out test-split adjacent window pairs",
+  "num_train_samples": 25540,
+  "num_test_samples": 4018,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.5672330612770355,
+      "train_accuracy": 0.6666014095536413
+    },
+    {
+      "epoch": 7,
+      "loss": 0.0043020602993918,
+      "train_accuracy": 0.9985512920908379
+    },
+    {
+      "epoch": 14,
+      "loss": 0.004064371907577967,
+      "train_accuracy": 0.9989036805011746
+    },
+    {
+      "epoch": 21,
+      "loss": 0.002938282458758355,
+      "train_accuracy": 0.9990602975724354
+    },
+    {
+      "epoch": 28,
+      "loss": 0.0009582243631951243,
+      "train_accuracy": 0.9996476115896633
+    },
+    {
+      "epoch": 35,
+      "loss": 0.0010173755352853556,
+      "train_accuracy": 0.9997259201252937
+    }
+  ],
+  "device": "cuda",
+  "accuracy": 0.8257839721254355,
+  "balanced_accuracy": 0.8249003342027232,
+  "macro_f1": 0.8252408266656923,
+  "weighted_f1": 0.8254881518303968,
+  "num_eval_windows": 4018,
+  "num_classes": 2,
+  "primary_metric": "f1",
+  "primary_score": 0.8252408266656923
+}

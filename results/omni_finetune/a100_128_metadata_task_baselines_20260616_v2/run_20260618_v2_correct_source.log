@@ -1,0 +1,63 @@
+[128-baselines] loading compact rows from results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl
+[128-baselines] loaded 34269 rows
+[128-baselines] building metadata feature matrix
+[128-baselines] built feature matrix 34269x394
+[128-baselines] writing shared artifacts to results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2
+[128-baselines] timeline_action: start
+[128-baselines] timeline_action: 25629 train / 4608 val / 4032 test, 896 train classes, 1222 total classes
+[128-baselines] timeline_action: fitting centroid classifier
+[128-baselines] timeline_action: scoring val
+[128-baselines] timeline_action: scoring test
+[128-baselines] timeline_action: writing simple artifacts
+[128-baselines] timeline_action: fitting neural MLP
+[128-baselines] timeline_action: done
+[128-baselines] timeline_subtask: start
+[128-baselines] timeline_subtask: 25629 train / 4608 val / 4032 test, 652 train classes, 892 total classes
+[128-baselines] timeline_subtask: fitting centroid classifier
+[128-baselines] timeline_subtask: scoring val
+[128-baselines] timeline_subtask: scoring test
+[128-baselines] timeline_subtask: writing simple artifacts
+[128-baselines] timeline_subtask: fitting neural MLP
+[128-baselines] timeline_subtask: done
+[128-baselines] transition_detection: start
+[128-baselines] transition_detection: 25629 train / 4608 val / 4032 test, 2 train classes, 2 total classes
+[128-baselines] transition_detection: fitting softmax
+[128-baselines] transition_detection: scoring val
+[128-baselines] transition_detection: scoring test
+[128-baselines] transition_detection: scoring train
+[128-baselines] transition_detection: writing simple artifacts
+[128-baselines] transition_detection: fitting neural MLP
+[128-baselines] transition_detection: done
+[128-baselines] next_action: start
+[128-baselines] next_action: 25629 train / 4608 val / 4032 test, 891 train classes, 1217 total classes
+[128-baselines] next_action: fitting centroid classifier
+[128-baselines] next_action: scoring val
+[128-baselines] next_action: scoring test
+[128-baselines] next_action: writing simple artifacts
+[128-baselines] next_action: fitting neural MLP
+[128-baselines] next_action: done
+[128-baselines] contact_prediction: start
+[128-baselines] contact_prediction: 25629 train / 4608 val / 4032 test, 2 train classes, 2 total classes
+[128-baselines] contact_prediction: fitting softmax
+[128-baselines] contact_prediction: scoring val
+[128-baselines] contact_prediction: scoring test
+[128-baselines] contact_prediction: scoring train
+[128-baselines] contact_prediction: writing simple artifacts
+[128-baselines] contact_prediction: fitting neural MLP
+[128-baselines] contact_prediction: done
+[128-baselines] object_relevance: start
+[128-baselines] caption_grounding: start
+[128-baselines] temporal_order: start
+[128-baselines] hand_trajectory_forecast: recording unsupported status
+[128-baselines] cross_modal_retrieval: recording unsupported status
+[128-baselines] modality_reconstruction: recording unsupported status
+[128-baselines] misalignment_detection: recording unsupported status
+{
+  "status": "pass",
+  "output_dir": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2",
+  "split_counts": {
+    "train": 25629,
+    "val": 4608,
+    "test": 4032
+  }
+}

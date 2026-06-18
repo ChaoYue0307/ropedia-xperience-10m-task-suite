@@ -22,10 +22,10 @@ The runner uses the derived Qwen JSONL export and public-safe metadata. It does 
 | Hand Trajectory Forecasting | `hand_trajectory_forecast` | unsupported_without_raw_128_feature_blocks |  | not_run |  |
 | Contact State Prediction | `contact_prediction` | pass | 0.4381 | pass | 0.5683 |
 | Object Relevance Prediction | `object_relevance` | pass | 0.1776 | pass | 0.1866 |
-| Language Grounding | `caption_grounding` | pass | 0.0023 | not_run |  |
+| Language Grounding | `caption_grounding` | pass | 0.0023 | pass | 0.0082 |
 | Cross-Modal Retrieval | `cross_modal_retrieval` | unsupported_without_raw_128_feature_blocks |  | not_run |  |
 | Cross-Modal Reconstruction | `modality_reconstruction` | unsupported_without_raw_128_feature_blocks |  | not_run |  |
-| Temporal Order Verification | `temporal_order` | pass | 0.4199 | not_run |  |
+| Temporal Order Verification | `temporal_order` | pass | 0.4199 | pass | 0.8252 |
 | Multimodal Synchronization Detection | `misalignment_detection` | unsupported_without_raw_128_feature_blocks |  | not_run |  |
 
 ## Interpretation

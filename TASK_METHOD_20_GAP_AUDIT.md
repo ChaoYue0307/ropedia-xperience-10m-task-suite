@@ -1,6 +1,6 @@
 # Task Method 20-Result Gap Audit
 
-Generated: `2026-06-18T10:04:17+00:00`
+Generated: `2026-06-18T11:15:34+00:00`
 
 This audit is the explicit gap ledger for the 9-method x 20-task result matrix.
 It keeps missing cells visible while preserving the rule that a numeric score
@@ -9,8 +9,8 @@ requires a real task target and source artifact.
 ## Score Summary
 
 - Method-task records: `180`
-- Numeric scored records: `121`
-- Scoreless records: `59`
+- Numeric scored records: `123`
+- Scoreless records: `57`
 - Proxy-scored records: `4`
 - Source matrix: [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)
 
@@ -21,7 +21,7 @@ requires a real task target and source artifact.
 | Minimal | minimal | 20/20 | 0 | 0 | scored: 20 |
 | Neural MLP | neural_mlp | 20/20 | 0 | 0 | scored: 20 |
 | 128ep Metadata Simple | metadata128_simple | 8/20 | 12 | 0 | not_supported_by_metadata_only_package: 8, scored: 8, unsupported_without_required_target: 4 |
-| 128ep Metadata NN | metadata128_neural_mlp | 6/20 | 14 | 0 | not_supported_by_metadata_only_package: 14, scored: 6 |
+| 128ep Metadata NN | metadata128_neural_mlp | 8/20 | 12 | 0 | not_supported_by_metadata_only_package: 12, scored: 8 |
 | 128ep Raw Simple | raw128_simple | 20/20 | 0 | 2 | proxy_scored: 2, scored: 18 |
 | 128ep Raw NN | raw128_neural_mlp | 20/20 | 0 | 2 | proxy_scored: 2, scored: 18 |
 | Qwen3-Omni v6 LoRA | qwen3_omni_v6_lora | 15/20 | 5 | 0 | not_evaluated_in_verified_package: 5, scored: 15 |
@@ -33,7 +33,7 @@ requires a real task target and source artifact.
 | Status | Count | Next step |
 | --- | --- | --- |
 | not_evaluated_in_verified_package | 33 | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| not_supported_by_metadata_only_package | 22 | Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score. |
+| not_supported_by_metadata_only_package | 20 | Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score. |
 | unsupported_without_required_target | 4 | Export the missing target field for this 128-episode method, then rerun the same train/validation/test split. |
 
 ## Scoreless Records
@@ -47,7 +47,6 @@ requires a real task target and source artifact.
 | 05 | Hand Trajectory Forecasting | Cosmos3-Super Reasoner | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 05 | Hand Trajectory Forecasting | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 07 | Object Relevance Prediction | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| 08 | Language Grounding | 128ep Metadata NN | not supported | Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score. |
 | 08 | Language Grounding | Cosmos3-Super Reasoner | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 08 | Language Grounding | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 09 | Cross-Modal Retrieval | 128ep Metadata Simple | unsupported | Export the missing target field for this 128-episode method, then rerun the same train/validation/test split. |
@@ -58,7 +57,6 @@ requires a real task target and source artifact.
 | 10 | Cross-Modal Reconstruction | Qwen3-Omni v6 LoRA | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 10 | Cross-Modal Reconstruction | Cosmos3-Super Reasoner | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 10 | Cross-Modal Reconstruction | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| 11 | Temporal Order Verification | 128ep Metadata NN | not supported | Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score. |
 | 11 | Temporal Order Verification | Cosmos3-Super Reasoner | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 11 | Temporal Order Verification | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 12 | Multimodal Synchronization Detection | 128ep Metadata Simple | unsupported | Export the missing target field for this 128-episode method, then rerun the same train/validation/test split. |

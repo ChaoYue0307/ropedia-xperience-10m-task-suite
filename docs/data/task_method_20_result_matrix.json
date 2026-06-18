@@ -1,11 +1,11 @@
 {
   "title": "Task Method 20-Result Matrix",
   "status": "pass",
-  "generated_at_utc": "2026-06-18T10:04:17+00:00",
+  "generated_at_utc": "2026-06-18T11:15:02+00:00",
   "task_count": 20,
   "method_count": 9,
   "method_task_record_count": 180,
-  "scored_method_task_count": 121,
+  "scored_method_task_count": 123,
   "series": [
     {
       "id": "minimal",
@@ -89,17 +89,17 @@
       "method_detail": "128-episode JSONL metadata/text MLP baselines.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 6,
-      "covered_task_count": 6,
+      "scored_task_count": 8,
+      "covered_task_count": 8,
       "proxy_scored_task_count": 0,
-      "scoreless_task_count": 14,
-      "unsupported_task_count": 14,
+      "scoreless_task_count": 12,
+      "unsupported_task_count": 12,
       "not_evaluated_task_count": 0,
       "status_counts": {
-        "not_supported_by_metadata_only_package": 14,
-        "scored": 6
+        "not_supported_by_metadata_only_package": 12,
+        "scored": 8
       },
-      "coverage_fraction": 0.3,
+      "coverage_fraction": 0.4,
       "result_record_fraction": 1.0
     },
     {
@@ -1418,17 +1418,17 @@
       "task_label": "Language Grounding",
       "series_id": "metadata128_neural_mlp",
       "method": "128ep Metadata NN",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 0.008236799389123917,
+      "raw_text": "0.0082",
+      "normalized_score": 0.008236799389123917,
       "metric_key": "mrr",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/caption_grounding/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": null
     },
     {
       "task_number": 8,
@@ -1904,17 +1904,17 @@
       "task_label": "Temporal Order Verification",
       "series_id": "metadata128_neural_mlp",
       "method": "128ep Metadata NN",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 0.8252408266656923,
+      "raw_text": "0.8252",
+      "normalized_score": 0.8252408266656923,
       "metric_key": "f1",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/temporal_order/metrics.json",
       "scope": "multi_episode_128_metadata_baseline",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required"
+      "reason": null
     },
     {
       "task_number": 11,

@@ -6,8 +6,8 @@ next_action,Next-Action Prediction,pass,macro_f1,0.006514774539765508,pass,macro
 hand_trajectory_forecast,Hand Trajectory Forecasting,unsupported_without_raw_128_feature_blocks,mpjpe,,not_run,,
 contact_prediction,Contact State Prediction,pass,macro_f1,0.4381481308057444,pass,macro_f1,0.5682695682695682
 object_relevance,Object Relevance Prediction,pass,micro_f1,0.17764578833693304,pass,micro_f1,0.18662723837686876
-caption_grounding,Language Grounding,pass,mrr,0.002332374220713973,not_run,,
+caption_grounding,Language Grounding,pass,mrr,0.002332374220713973,pass,mrr,0.008236799389123917
 cross_modal_retrieval,Cross-Modal Retrieval,unsupported_without_raw_128_feature_blocks,mrr,,not_run,,
 modality_reconstruction,Cross-Modal Reconstruction,unsupported_without_raw_128_feature_blocks,r2,,not_run,,
-temporal_order,Temporal Order Verification,pass,f1,0.4198864140782312,not_run,,
+temporal_order,Temporal Order Verification,pass,f1,0.4198864140782312,pass,f1,0.8252408266656923
 misalignment_detection,Multimodal Synchronization Detection,unsupported_without_raw_128_feature_blocks,f1,,not_run,,

@@ -1,10 +1,10 @@
 {
-  "generated_at_utc": "2026-06-18T10:04:17+00:00",
+  "generated_at_utc": "2026-06-18T11:15:34+00:00",
   "immediate_actions": [
     {
       "artifact": "docs/data/task_method_20_gap_audit.json",
       "id": "gap_audit",
-      "purpose": "Keep the 59 scoreless cells visible and reproducible."
+      "purpose": "Keep the 57 scoreless cells visible and reproducible."
     },
     {
       "artifact": "scripts/omni/score_model_output_probes.py",
@@ -50,11 +50,11 @@
       "proxy_scored_task_count": 0,
       "result_record_count": 20,
       "scope": "128 selected episodes, JSONL metadata/text only",
-      "scored_task_count": 6,
-      "scoreless_task_count": 14,
+      "scored_task_count": 8,
+      "scoreless_task_count": 12,
       "status_counts": {
-        "not_supported_by_metadata_only_package": 14,
-        "scored": 6
+        "not_supported_by_metadata_only_package": 12,
+        "scored": 8
       }
     },
     "metadata128_simple": {
@@ -138,13 +138,13 @@
   "missing_by_method": {
     "cosmos3_nano_future_window": 15,
     "cosmos3_super_reasoner": 13,
-    "metadata128_neural_mlp": 14,
+    "metadata128_neural_mlp": 12,
     "metadata128_simple": 12,
     "qwen3_omni_v6_lora": 5
   },
   "missing_by_status": {
     "not_evaluated_in_verified_package": 33,
-    "not_supported_by_metadata_only_package": 22,
+    "not_supported_by_metadata_only_package": 20,
     "unsupported_without_required_target": 4
   },
   "missing_by_task": {
@@ -163,8 +163,7 @@
     ],
     "08 Language Grounding": [
       "cosmos3_nano_future_window",
-      "cosmos3_super_reasoner",
-      "metadata128_neural_mlp"
+      "cosmos3_super_reasoner"
     ],
     "09 Cross-Modal Retrieval": [
       "cosmos3_super_reasoner",
@@ -180,8 +179,7 @@
     ],
     "11 Temporal Order Verification": [
       "cosmos3_nano_future_window",
-      "cosmos3_super_reasoner",
-      "metadata128_neural_mlp"
+      "cosmos3_super_reasoner"
     ],
     "12 Multimodal Synchronization Detection": [
       "cosmos3_nano_future_window",
@@ -333,19 +331,6 @@
       "task_number": 7
     },
     {
-      "method": "128ep Metadata NN",
-      "metric_key": "mrr",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
-      "scope": "multi_episode_128_metadata_baseline",
-      "series_id": "metadata128_neural_mlp",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "task_id": "caption_grounding",
-      "task_label": "Language Grounding",
-      "task_number": 8
-    },
-    {
       "method": "Cosmos3-Super Reasoner",
       "metric_key": "mrr",
       "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
@@ -474,19 +459,6 @@
       "task_id": "modality_reconstruction",
       "task_label": "Cross-Modal Reconstruction",
       "task_number": 10
-    },
-    {
-      "method": "128ep Metadata NN",
-      "metric_key": "f1",
-      "reason": "the 128-episode metadata/text rerun did not produce this task target; raw sensor blocks or a task-specific metadata target builder are required",
-      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
-      "scope": "multi_episode_128_metadata_baseline",
-      "series_id": "metadata128_neural_mlp",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "task_id": "temporal_order",
-      "task_label": "Temporal Order Verification",
-      "task_number": 11
     },
     {
       "method": "Cosmos3-Super Reasoner",
@@ -1055,8 +1027,8 @@
     "method_count": 9,
     "method_task_record_count": 180,
     "proxy_scored_method_task_count": 4,
-    "scored_method_task_count": 121,
-    "scoreless_method_task_count": 59,
+    "scored_method_task_count": 123,
+    "scoreless_method_task_count": 57,
     "task_count": 20
   },
   "source_matrix": "docs/data/task_method_20_result_matrix.json",
