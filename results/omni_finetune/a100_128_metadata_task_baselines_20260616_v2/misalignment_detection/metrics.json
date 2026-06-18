@@ -1,9 +1,78 @@
 {
-  "status": "unsupported_without_raw_128_feature_blocks",
+  "status": "pass",
   "task": "misalignment_detection",
   "task_display_name": "Multimodal Synchronization Detection",
+  "model_family": "simple_softmax_128_sensor_block_pair",
+  "source": "128_episode_staged_sensor_feature_blocks",
+  "scope": "multi_episode_128_aligned_sensor_block_baseline",
+  "input_features": "motion-side staged feature blocks concatenated with visual/depth-side staged feature blocks",
+  "split_policy": "train on aligned/shifted train pairs, report held-out test pairs",
+  "num_train_samples": 51258,
+  "num_test_samples": 8064,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.8282408061027526,
+      "train_accuracy": 0.5004292012954076
+    },
+    {
+      "epoch": 22,
+      "loss": 8.225836847782135,
+      "train_accuracy": 0.49923914315814116
+    },
+    {
+      "epoch": 44,
+      "loss": 8.294862401723861,
+      "train_accuracy": 0.49939521635647116
+    },
+    {
+      "epoch": 66,
+      "loss": 8.353930386304855,
+      "train_accuracy": 0.4994342346560537
+    },
+    {
+      "epoch": 88,
+      "loss": 8.404563434362412,
+      "train_accuracy": 0.4994732529556362
+    },
+    {
+      "epoch": 110,
+      "loss": 8.448360115408898,
+      "train_accuracy": 0.49937570720667995
+    },
+    {
+      "epoch": 132,
+      "loss": 8.486553009748459,
+      "train_accuracy": 0.4992001248585587
+    },
+    {
+      "epoch": 154,
+      "loss": 8.520105887770653,
+      "train_accuracy": 0.49923914315814116
+    },
+    {
+      "epoch": 176,
+      "loss": 8.549865300893783,
+      "train_accuracy": 0.4992196340083499
+    },
+    {
+      "epoch": 198,
+      "loss": 8.576391756176948,
+      "train_accuracy": 0.49923914315814116
+    },
+    {
+      "epoch": 220,
+      "loss": 8.6000264595747,
+      "train_accuracy": 0.49916110655897616
+    }
+  ],
+  "accuracy": 0.49987599206349204,
+  "balanced_accuracy": 0.4998759920634921,
+  "macro_f1": 0.49980060227663614,
+  "weighted_f1": 0.49980060227663614,
+  "num_eval_windows": 8064,
+  "num_classes": 2,
   "primary_metric": "f1",
-  "primary_score": null,
-  "reason": "requires deliberately shifted cross-modal feature pairs, which cannot be reconstructed from the public JSONL labels alone",
-  "source": "128_episode_qwen_jsonl_metadata"
+  "metric_direction": "higher",
+  "primary_score": 0.49980060227663614
 }

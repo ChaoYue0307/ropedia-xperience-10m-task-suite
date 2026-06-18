@@ -1,6 +1,6 @@
 # Qwen3-Omni Full-Parameter Feasibility Gates
 
-Generated: `2026-06-13T18:14:32+00:00`
+Generated: `2026-06-18T12:53:13+00:00`
 
 The full-parameter gates prove that Qwen3-Omni full-parameter FSDP can load, prepare, run backward/optimizer steps, and complete guarded pilots up to 256 optimizer steps on an 8-GPU remote worker. They do not prove a production full-parameter fine-tune, and they intentionally save no full checkpoints or public weights.
 

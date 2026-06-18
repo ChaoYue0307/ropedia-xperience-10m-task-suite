@@ -1463,12 +1463,28 @@ def unsupported_record(task_id: str, out_root: Path, reason: str, primary_metric
 
 
 def build_markdown(summary: dict[str, Any]) -> str:
+    sensor_completion = bool((summary.get("feature_contract") or {}).get("sensor_block_completion"))
+    source_sentence = (
+        "The aligned runner uses the derived Qwen JSONL export for metadata/text tasks and staged processed sensor NPZ blocks only for the explicitly listed block-completion tasks. It still does not use raw Xperience-10M videos, raw annotation HDF5 files, Qwen weights, or LoRA weights."
+        if sensor_completion
+        else "The runner uses the derived Qwen JSONL export and public-safe metadata. It does not use raw Xperience-10M videos, HDF5 files, sensor NPZ blocks, Qwen weights, or LoRA weights."
+    )
+    unsupported_sentence = (
+        "Tasks still marked unsupported require raw annotation interaction text or paired camera-view embeddings that are absent from the staged 128 export."
+        if sensor_completion
+        else "Tasks marked `unsupported_without_raw_128_feature_blocks` still need the 128-run sensor feature NPZ blocks to reproduce the single-episode feature-level target exactly."
+    )
+    interpretation_sentence = (
+        "The trainable scores combine JSONL metadata/text tasks with staged sensor-block completion tasks. They are useful for checking split alignment, label difficulty, train/test target coverage, and whether the Qwen diagnostic run is being compared against the same 96/16/16 episode setup."
+        if sensor_completion
+        else "The trainable scores are metadata/text baselines, not replacements for full raw-modality baselines. They are useful for checking split alignment, label difficulty, train/test label coverage, and whether the Qwen diagnostic run is being compared against the same 96/16/16 episode setup."
+    )
     lines = [
         "# 128-Episode Aligned Baselines",
         "",
         "These results align the earlier simple and neural baseline framing to the same selected 128-episode split used by the Qwen3-Omni pilot.",
         "",
-        "The runner uses the derived Qwen JSONL export and public-safe metadata. It does not use raw Xperience-10M videos, HDF5 files, sensor NPZ blocks, Qwen weights, or LoRA weights.",
+        source_sentence,
         "",
         "## Split",
         "",
@@ -1502,9 +1518,9 @@ def build_markdown(summary: dict[str, Any]) -> str:
             "",
             "## Interpretation",
             "",
-            "The trainable scores are metadata/text baselines, not replacements for full raw-modality baselines. They are useful for checking split alignment, label difficulty, train/test label coverage, and whether the Qwen diagnostic run is being compared against the same 96/16/16 episode setup.",
+            interpretation_sentence,
             "",
-            "Tasks marked `unsupported_without_raw_128_feature_blocks` still need the 128-run sensor feature NPZ blocks to reproduce the single-episode feature-level target exactly.",
+            unsupported_sentence,
         ]
     )
     return "\n".join(lines) + "\n"

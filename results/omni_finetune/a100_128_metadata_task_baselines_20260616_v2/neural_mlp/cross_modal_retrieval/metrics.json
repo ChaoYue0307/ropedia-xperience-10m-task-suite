@@ -1,0 +1,51 @@
+{
+  "status": "pass",
+  "task": "cross_modal_retrieval",
+  "task_display_name": "Cross-Modal Retrieval",
+  "model_family": "neural_mlp_128_sensor_block_retrieval",
+  "source": "128_episode_staged_sensor_feature_blocks",
+  "scope": "multi_episode_128_aligned_sensor_block_baseline",
+  "input_features": "motion, body, contact, camera-pose, and IMU staged feature blocks",
+  "target_features": "depth-confidence, SLAM point-cloud, and calibration staged feature blocks",
+  "split_policy": "train neural projection on aligned train pairs, rank held-out target candidates",
+  "num_train_windows": 25629,
+  "num_val_windows": 4608,
+  "num_test_windows": 4032,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.838860526417564
+    },
+    {
+      "epoch": 7,
+      "loss": 0.6091954833197256
+    },
+    {
+      "epoch": 14,
+      "loss": 0.5609253323756321
+    },
+    {
+      "epoch": 21,
+      "loss": 0.5376405532563154
+    },
+    {
+      "epoch": 28,
+      "loss": 0.5249700822589354
+    },
+    {
+      "epoch": 35,
+      "loss": 0.5156429971107258
+    }
+  ],
+  "device": "cuda",
+  "num_queries": 4032,
+  "mrr": 0.0026067993603646755,
+  "median_rank": 2127.0,
+  "mean_rank": 2073.367919921875,
+  "top1_accuracy": 0.000496031746031746,
+  "top5_accuracy": 0.001488095238095238,
+  "top10_accuracy": 0.003968253968253968,
+  "primary_metric": "mrr",
+  "metric_direction": "higher",
+  "primary_score": 0.0026067993603646755
+}

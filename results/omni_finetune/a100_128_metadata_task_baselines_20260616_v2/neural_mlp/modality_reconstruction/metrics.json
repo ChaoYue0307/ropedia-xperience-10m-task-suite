@@ -1,0 +1,51 @@
+{
+  "status": "pass",
+  "task": "modality_reconstruction",
+  "task_display_name": "Cross-Modal Reconstruction",
+  "model_family": "neural_mlp_128_sensor_blocks",
+  "source": "128_episode_staged_sensor_feature_blocks",
+  "scope": "multi_episode_128_aligned_sensor_block_baseline",
+  "input_features": "motion, body, contact, camera-pose, and IMU staged feature blocks",
+  "target_features": "depth-confidence, SLAM point-cloud, and calibration staged feature blocks",
+  "split_policy": "train on 128-episode train split, report held-out test split",
+  "num_train_windows": 25629,
+  "num_val_windows": 4608,
+  "num_test_windows": 4032,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.838860526417564
+    },
+    {
+      "epoch": 7,
+      "loss": 0.6091954833197256
+    },
+    {
+      "epoch": 14,
+      "loss": 0.5609253323756321
+    },
+    {
+      "epoch": 21,
+      "loss": 0.5376405532563154
+    },
+    {
+      "epoch": 28,
+      "loss": 0.5249700822589354
+    },
+    {
+      "epoch": 35,
+      "loss": 0.5156429971107258
+    }
+  ],
+  "device": "cuda",
+  "splits": {
+    "test": {
+      "mae": 3952.547119140625,
+      "rmse": 276368.9375,
+      "r2": -0.43481132003942147
+    }
+  },
+  "primary_metric": "r2",
+  "metric_direction": "higher",
+  "primary_score": -0.43481132003942147
+}

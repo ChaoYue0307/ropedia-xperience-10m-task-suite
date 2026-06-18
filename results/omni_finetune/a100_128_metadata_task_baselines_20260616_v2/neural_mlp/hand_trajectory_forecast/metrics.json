@@ -1,0 +1,52 @@
+{
+  "status": "pass",
+  "task": "hand_trajectory_forecast",
+  "task_display_name": "Hand Trajectory Forecasting",
+  "model_family": "neural_mlp_128_sensor_blocks",
+  "source": "128_episode_staged_sensor_feature_blocks",
+  "scope": "multi_episode_128_aligned_sensor_block_baseline",
+  "input_features": "current staged 4430-dim sensor feature vector",
+  "target_features": "future left/right hand joint feature blocks at +100 frames",
+  "split_policy": "train on 128-episode train split, report held-out test split",
+  "num_train_windows": 25068,
+  "num_val_windows": 4496,
+  "num_test_windows": 3951,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.7950725318789387
+    },
+    {
+      "epoch": 7,
+      "loss": 0.43966529691107104
+    },
+    {
+      "epoch": 14,
+      "loss": 0.3061229042246408
+    },
+    {
+      "epoch": 21,
+      "loss": 0.2491274059665285
+    },
+    {
+      "epoch": 28,
+      "loss": 0.2130576595033929
+    },
+    {
+      "epoch": 35,
+      "loss": 0.19458772843632
+    }
+  ],
+  "device": "cuda",
+  "splits": {
+    "test": {
+      "mae": 0.21007874608039856,
+      "rmse": 0.41683468222618103,
+      "r2": 0.22650479817684366,
+      "mpjpe": 0.429434210062027
+    }
+  },
+  "primary_metric": "mpjpe",
+  "metric_direction": "lower",
+  "primary_score": 0.429434210062027
+}

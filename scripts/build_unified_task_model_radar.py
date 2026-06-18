@@ -114,19 +114,19 @@ SERIES = {
         "stroke_dasharray": None,
     },
     "metadata128_simple": {
-        "label": "128ep Metadata Simple",
+        "label": "128ep Aligned Simple",
         "short_label": "128-S",
         "color": "#ffd166",
-        "kind": "partial_128_episode_metadata_baseline",
-        "scope": "128 selected episodes, JSONL metadata/text only",
+        "kind": "partial_128_episode_aligned_baseline",
+        "scope": "128 selected episodes, JSONL metadata/text plus staged sensor-block targets where available",
         "stroke_dasharray": "9 6",
     },
     "metadata128_neural_mlp": {
-        "label": "128ep Metadata NN",
+        "label": "128ep Aligned NN",
         "short_label": "128-NN",
         "color": "#f472b6",
-        "kind": "partial_128_episode_metadata_baseline",
-        "scope": "128 selected episodes, JSONL metadata/text only",
+        "kind": "partial_128_episode_aligned_baseline",
+        "scope": "128 selected episodes, JSONL metadata/text plus staged sensor-block targets where available",
         "stroke_dasharray": "3 6",
     },
     "raw128_simple": {
@@ -254,8 +254,8 @@ SHORT_TASK_LABELS = {
 METHOD_DETAILS = {
     "minimal": "Single-episode simple heads over the public sample split.",
     "neural_mlp": "Single-episode compact PyTorch MLP heads on the same 20 task contracts.",
-    "metadata128_simple": "128-episode JSONL metadata/text simple baselines.",
-    "metadata128_neural_mlp": "128-episode JSONL metadata/text MLP baselines.",
+    "metadata128_simple": "128-episode aligned simple baselines: JSONL metadata/text tasks plus staged sensor-block tasks where the processed target exists.",
+    "metadata128_neural_mlp": "128-episode aligned MLP baselines: JSONL metadata/text tasks plus staged sensor-block tasks where the processed target exists.",
     "raw128_simple": "128-episode 4430-dim sensor NPZ simple heads; tasks 15/19 use compact proxies.",
     "raw128_neural_mlp": "128-episode 4430-dim sensor NPZ MLP heads; tasks 15/19 use compact proxies.",
     "qwen3_omni_v6_lora": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 and any completed private-GPU future-task probes scored from task-specific JSON.",
@@ -322,12 +322,12 @@ def read_a100_metadata_record(task_id: str, *, neural: bool = False) -> dict[str
         "raw": score,
         "metric_key": payload.get("primary_metric"),
         "source": str(path.relative_to(ROOT)),
-        "scope": "multi_episode_128_metadata_baseline",
+        "scope": payload.get("scope") or "multi_episode_128_aligned_baseline",
         "status": "scored" if status == "pass" and score is not None else "unsupported_without_required_target",
         "reason": payload.get("reason")
         or payload.get("error")
         or (
-            "metadata-only package has a metrics artifact for this task, but it does not contain a numeric public score"
+            "the 128-episode aligned artifact for this task does not contain a numeric public score"
             if status != "pass"
             else None
         ),
@@ -398,10 +398,10 @@ def make_missing_record(series_id: str, task_id: str, metric_key: str | None) ->
     if series_id.startswith("metadata128"):
         status = "not_supported_by_metadata_only_package"
         reason = (
-            "the 128-episode metadata/text rerun did not produce this task target; "
-            "raw sensor blocks or a task-specific metadata target builder are required"
+            "the 128-episode aligned rerun did not produce this task target; "
+            "raw interaction text, paired camera-view embeddings, or a task-specific target builder is required"
         )
-        scope = "multi_episode_128_metadata_baseline"
+        scope = "multi_episode_128_aligned_baseline"
     elif series_id in {"qwen3_omni_v6_lora", "cosmos3_super_reasoner", "cosmos3_nano_future_window"}:
         status = "not_evaluated_in_verified_package"
         reason = (
@@ -745,7 +745,7 @@ def build_payload() -> dict[str, Any]:
             "raw_values": "raw metric values, metric keys, and sources are retained in this JSON; the SVG is an overview, not a replacement for the metric table",
             "result_record_policy": "every method has 20 task records; records without a numeric score carry explicit unsupported/not-evaluated status and reason fields",
             "foundation_model_overlay": "Qwen3/Cosmos points are plotted only on task-aligned axes. Scoreless records mean the public result does not evaluate that task contract.",
-            "metadata_128_overlay": "128-episode metadata baselines have 20 records, but numeric scores only where the public JSONL contains enough task labels without raw feature blocks.",
+            "metadata_128_overlay": "128-episode aligned baselines have 20 records. Numeric scores come from JSONL metadata/text tasks plus staged sensor-block targets when the processed target exists; raw interaction text and paired camera-view embeddings remain explicit gaps.",
             "raw_128_overlay": "128-episode raw-feature baselines use staged sensor NPZ features. Eighteen axes use direct task targets; interaction text and camera-view sync are completed with documented compact proxies because raw interaction strings and paired video-view embeddings are absent from the 128 export.",
         },
         "series": series_records,
@@ -753,18 +753,18 @@ def build_payload() -> dict[str, Any]:
         "model_branch_cards": [
             {
                 "id": "metadata128_simple",
-                "title": "128ep Metadata Simple",
+                "title": "128ep Aligned Simple",
                 "status": "a100_rerun_pass",
-                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'metadata128_simple')['scored_task_count']} scored JSONL-supported axes",
+                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'metadata128_simple')['scored_task_count']} scored aligned axes",
                 "headline": "34,269 rows; train/val/test 25,629/4,608/4,032",
                 "source": str((METADATA128_BASELINE_DIR / "summary_report.json").relative_to(ROOT)),
             },
             {
                 "id": "metadata128_neural_mlp",
-                "title": "128ep Metadata NN",
+                "title": "128ep Aligned NN",
                 "status": "a100_rerun_pass",
-                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'metadata128_neural_mlp')['scored_task_count']} scored JSONL-supported axes",
-                "headline": "compact MLP heads over metadata/text features",
+                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'metadata128_neural_mlp')['scored_task_count']} scored aligned axes",
+                "headline": "compact MLP heads over metadata/text and staged block features",
                 "source": str((METADATA128_BASELINE_DIR / "summary_report.json").relative_to(ROOT)),
             },
             {

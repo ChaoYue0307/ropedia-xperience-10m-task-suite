@@ -1,0 +1,54 @@
+{
+  "status": "pass",
+  "task": "misalignment_detection",
+  "task_display_name": "Multimodal Synchronization Detection",
+  "model_family": "neural_mlp_128_sensor_block_pair",
+  "source": "128_episode_staged_sensor_feature_blocks",
+  "scope": "multi_episode_128_aligned_sensor_block_baseline",
+  "input_features": "motion-side staged feature blocks concatenated with visual/depth-side staged feature blocks",
+  "split_policy": "train on aligned/shifted train pairs, report held-out test pairs",
+  "num_train_samples": 51258,
+  "num_test_samples": 8064,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.6780329116973444,
+      "train_accuracy": 0.5538842717234382
+    },
+    {
+      "epoch": 7,
+      "loss": 0.4390202471778193,
+      "train_accuracy": 0.7839946935112568
+    },
+    {
+      "epoch": 14,
+      "loss": 0.34671012587736894,
+      "train_accuracy": 0.8382886573803113
+    },
+    {
+      "epoch": 21,
+      "loss": 0.29238996960661984,
+      "train_accuracy": 0.8666744703265832
+    },
+    {
+      "epoch": 28,
+      "loss": 0.2568857853046754,
+      "train_accuracy": 0.8842912325880838
+    },
+    {
+      "epoch": 35,
+      "loss": 0.22479272597481417,
+      "train_accuracy": 0.900561863513988
+    }
+  ],
+  "device": "cuda",
+  "accuracy": 0.7781498015873016,
+  "balanced_accuracy": 0.7781498015873016,
+  "macro_f1": 0.7773773780941162,
+  "weighted_f1": 0.7773773780941162,
+  "num_eval_windows": 8064,
+  "num_classes": 2,
+  "primary_metric": "f1",
+  "metric_direction": "higher",
+  "primary_score": 0.7773773780941162
+}

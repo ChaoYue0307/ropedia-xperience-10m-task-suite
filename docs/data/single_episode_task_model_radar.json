@@ -1,7 +1,7 @@
 {
   "title": "Single-Episode 20-Task Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-18T12:07:15+00:00",
+  "generated_at_utc": "2026-06-18T12:52:26+00:00",
   "description": "Minimal and Neural MLP baselines on the one public sample episode, both scored on all 20 task contracts.",
   "task_count": 20,
   "method_count": 2,
@@ -13,7 +13,7 @@
     "raw_values": "raw metric values, metric keys, and sources are retained in this JSON; the SVG is an overview, not a replacement for the metric table",
     "result_record_policy": "every method has 20 task records; records without a numeric score carry explicit unsupported/not-evaluated status and reason fields",
     "foundation_model_overlay": "Qwen3/Cosmos points are plotted only on task-aligned axes. Scoreless records mean the public result does not evaluate that task contract.",
-    "metadata_128_overlay": "128-episode metadata baselines have 20 records, but numeric scores only where the public JSONL contains enough task labels without raw feature blocks.",
+    "metadata_128_overlay": "128-episode aligned baselines have 20 records. Numeric scores come from JSONL metadata/text tasks plus staged sensor-block targets when the processed target exists; raw interaction text and paired camera-view embeddings remain explicit gaps.",
     "raw_128_overlay": "128-episode raw-feature baselines use staged sensor NPZ features. Eighteen axes use direct task targets; interaction text and camera-view sync are completed with documented compact proxies because raw interaction strings and paired video-view embeddings are absent from the 128 export."
   },
   "source_unified_radar": "docs/data/unified_task_model_radar.json",

@@ -3,7 +3,7 @@
   "run_id": "xperience10m_128_episode_aligned_task_baselines",
   "source_dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
   "verified_package": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval",
-  "source_policy": "derived JSONL metadata only; fetched dataset JSONL is not committed",
+  "source_policy": "derived JSONL metadata plus staged 128-episode sensor feature blocks for task cells whose targets are present; raw annotation interaction text and paired camera-view embeddings remain absent",
   "num_rows": 34269,
   "split_counts": {
     "train": 25629,
@@ -41,7 +41,71 @@
     "kind": "metadata_text_hash",
     "hash_dim": 384,
     "numeric_dim": 10,
-    "answer_json_used_as_input": false
+    "answer_json_used_as_input": false,
+    "sensor_block_completion": {
+      "kind": "private_staged_4430_dim_feature_blocks",
+      "blocks": {
+        "hand_left_joints": {
+          "start": 0,
+          "end": 441
+        },
+        "hand_right_joints": {
+          "start": 441,
+          "end": 882
+        },
+        "body_joints": {
+          "start": 882,
+          "end": 1974
+        },
+        "body_contacts": {
+          "start": 1974,
+          "end": 2121
+        },
+        "camera_translation": {
+          "start": 2121,
+          "end": 2142
+        },
+        "camera_rotation_matrix": {
+          "start": 2142,
+          "end": 2205
+        },
+        "imu_accel_gyro": {
+          "start": 2205,
+          "end": 2247
+        },
+        "depth_confidence": {
+          "start": 2247,
+          "end": 3227
+        },
+        "audio_fisheye_cam0_aac": {
+          "start": 3227,
+          "end": 3395
+        },
+        "caption_objects_interaction_text": {
+          "start": 3395,
+          "end": 4291
+        },
+        "slam_point_cloud": {
+          "start": 4291,
+          "end": 4313
+        },
+        "calibration": {
+          "start": 4313,
+          "end": 4430
+        }
+      },
+      "completed_task_ids": [
+        "hand_trajectory_forecast",
+        "cross_modal_retrieval",
+        "modality_reconstruction",
+        "misalignment_detection",
+        "imu_to_hand_pose"
+      ],
+      "not_completed_task_ids": [
+        "interaction_text_prediction",
+        "camera_view_sync_retrieval"
+      ]
+    }
   },
   "run_config": {
     "epochs": 220,
@@ -953,15 +1017,88 @@
       "task": "hand_trajectory_forecast",
       "task_display_name": "Hand Trajectory Forecasting",
       "simple": {
-        "status": "unsupported_without_raw_128_feature_blocks",
+        "status": "pass",
         "task": "hand_trajectory_forecast",
         "task_display_name": "Hand Trajectory Forecasting",
+        "model_family": "simple_ridge_128_sensor_blocks",
+        "source": "128_episode_staged_sensor_feature_blocks",
+        "scope": "multi_episode_128_aligned_sensor_block_baseline",
+        "input_features": "current staged 4430-dim sensor feature vector",
+        "target_features": "future left/right hand joint feature blocks at +100 frames",
+        "split_policy": "train ridge regressor on 128-episode train split, report held-out test split",
+        "num_train_windows": 25068,
+        "num_val_windows": 4496,
+        "num_test_windows": 3951,
+        "splits": {
+          "val": {
+            "mae": 4.1960601806640625,
+            "rmse": 95.36702728271484,
+            "r2": -13320.370302489013,
+            "mpjpe": 8.47559642791748
+          },
+          "test": {
+            "mae": 4.583844184875488,
+            "rmse": 49.88134765625,
+            "r2": -11075.59463236227,
+            "mpjpe": 8.817333221435547
+          }
+        },
         "primary_metric": "mpjpe",
-        "primary_score": null,
-        "reason": "requires future hand-joint trajectories from raw sensor feature NPZ blocks, which are not in the public 128 package",
-        "source": "128_episode_qwen_jsonl_metadata"
+        "metric_direction": "lower",
+        "primary_score": 8.817333221435547
       },
-      "neural": null
+      "neural": {
+        "status": "pass",
+        "task": "hand_trajectory_forecast",
+        "task_display_name": "Hand Trajectory Forecasting",
+        "model_family": "neural_mlp_128_sensor_blocks",
+        "source": "128_episode_staged_sensor_feature_blocks",
+        "scope": "multi_episode_128_aligned_sensor_block_baseline",
+        "input_features": "current staged 4430-dim sensor feature vector",
+        "target_features": "future left/right hand joint feature blocks at +100 frames",
+        "split_policy": "train on 128-episode train split, report held-out test split",
+        "num_train_windows": 25068,
+        "num_val_windows": 4496,
+        "num_test_windows": 3951,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.7950725318789387
+          },
+          {
+            "epoch": 7,
+            "loss": 0.43966529691107104
+          },
+          {
+            "epoch": 14,
+            "loss": 0.3061229042246408
+          },
+          {
+            "epoch": 21,
+            "loss": 0.2491274059665285
+          },
+          {
+            "epoch": 28,
+            "loss": 0.2130576595033929
+          },
+          {
+            "epoch": 35,
+            "loss": 0.19458772843632
+          }
+        ],
+        "device": "cuda",
+        "splits": {
+          "test": {
+            "mae": 0.21007874608039856,
+            "rmse": 0.41683468222618103,
+            "r2": 0.22650479817684366,
+            "mpjpe": 0.429434210062027
+          }
+        },
+        "primary_metric": "mpjpe",
+        "metric_direction": "lower",
+        "primary_score": 0.429434210062027
+      }
     },
     {
       "task": "contact_prediction",
@@ -1285,29 +1422,164 @@
       "task": "cross_modal_retrieval",
       "task_display_name": "Cross-Modal Retrieval",
       "simple": {
-        "status": "unsupported_without_raw_128_feature_blocks",
+        "status": "pass",
         "task": "cross_modal_retrieval",
         "task_display_name": "Cross-Modal Retrieval",
+        "model_family": "simple_ridge_128_sensor_block_retrieval",
+        "source": "128_episode_staged_sensor_feature_blocks",
+        "scope": "multi_episode_128_aligned_sensor_block_baseline",
+        "input_features": "motion, body, contact, camera-pose, and IMU staged feature blocks",
+        "target_features": "depth-confidence, SLAM point-cloud, and calibration staged feature blocks",
+        "split_policy": "train ridge projection on aligned train pairs, rank held-out target candidates",
+        "num_train_windows": 25629,
+        "num_val_windows": 4608,
+        "num_test_windows": 4032,
+        "num_queries": 4032,
+        "mrr": 0.002587692579254508,
+        "median_rank": 1794.0,
+        "mean_rank": 1913.1009521484375,
+        "top1_accuracy": 0.000496031746031746,
+        "top5_accuracy": 0.001488095238095238,
+        "top10_accuracy": 0.002976190476190476,
         "primary_metric": "mrr",
-        "primary_score": null,
-        "reason": "requires paired motion/IMU/camera/audio/depth feature blocks, which are not in the public 128 package",
-        "source": "128_episode_qwen_jsonl_metadata"
+        "metric_direction": "higher",
+        "primary_score": 0.002587692579254508
       },
-      "neural": null
+      "neural": {
+        "status": "pass",
+        "task": "cross_modal_retrieval",
+        "task_display_name": "Cross-Modal Retrieval",
+        "model_family": "neural_mlp_128_sensor_block_retrieval",
+        "source": "128_episode_staged_sensor_feature_blocks",
+        "scope": "multi_episode_128_aligned_sensor_block_baseline",
+        "input_features": "motion, body, contact, camera-pose, and IMU staged feature blocks",
+        "target_features": "depth-confidence, SLAM point-cloud, and calibration staged feature blocks",
+        "split_policy": "train neural projection on aligned train pairs, rank held-out target candidates",
+        "num_train_windows": 25629,
+        "num_val_windows": 4608,
+        "num_test_windows": 4032,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.838860526417564
+          },
+          {
+            "epoch": 7,
+            "loss": 0.6091954833197256
+          },
+          {
+            "epoch": 14,
+            "loss": 0.5609253323756321
+          },
+          {
+            "epoch": 21,
+            "loss": 0.5376405532563154
+          },
+          {
+            "epoch": 28,
+            "loss": 0.5249700822589354
+          },
+          {
+            "epoch": 35,
+            "loss": 0.5156429971107258
+          }
+        ],
+        "device": "cuda",
+        "num_queries": 4032,
+        "mrr": 0.0026067993603646755,
+        "median_rank": 2127.0,
+        "mean_rank": 2073.367919921875,
+        "top1_accuracy": 0.000496031746031746,
+        "top5_accuracy": 0.001488095238095238,
+        "top10_accuracy": 0.003968253968253968,
+        "primary_metric": "mrr",
+        "metric_direction": "higher",
+        "primary_score": 0.0026067993603646755
+      }
     },
     {
       "task": "modality_reconstruction",
       "task_display_name": "Cross-Modal Reconstruction",
       "simple": {
-        "status": "unsupported_without_raw_128_feature_blocks",
+        "status": "pass",
         "task": "modality_reconstruction",
         "task_display_name": "Cross-Modal Reconstruction",
+        "model_family": "simple_ridge_128_sensor_blocks",
+        "source": "128_episode_staged_sensor_feature_blocks",
+        "scope": "multi_episode_128_aligned_sensor_block_baseline",
+        "input_features": "motion, body, contact, camera-pose, and IMU staged feature blocks",
+        "target_features": "depth-confidence, SLAM point-cloud, and calibration staged feature blocks",
+        "split_policy": "train ridge regressor on 128-episode train split, report held-out test split",
+        "num_train_windows": 25629,
+        "num_val_windows": 4608,
+        "num_test_windows": 4032,
+        "splits": {
+          "val": {
+            "mae": 114160.109375,
+            "rmse": 3637002.25,
+            "r2": -104.27837406938856
+          },
+          "test": {
+            "mae": 94634.671875,
+            "rmse": 3194175.5,
+            "r2": -190.66106203944798
+          }
+        },
         "primary_metric": "r2",
-        "primary_score": null,
-        "reason": "requires source and target modality feature blocks such as depth/video vectors, which are not in the public 128 package",
-        "source": "128_episode_qwen_jsonl_metadata"
+        "metric_direction": "higher",
+        "primary_score": -190.66106203944798
       },
-      "neural": null
+      "neural": {
+        "status": "pass",
+        "task": "modality_reconstruction",
+        "task_display_name": "Cross-Modal Reconstruction",
+        "model_family": "neural_mlp_128_sensor_blocks",
+        "source": "128_episode_staged_sensor_feature_blocks",
+        "scope": "multi_episode_128_aligned_sensor_block_baseline",
+        "input_features": "motion, body, contact, camera-pose, and IMU staged feature blocks",
+        "target_features": "depth-confidence, SLAM point-cloud, and calibration staged feature blocks",
+        "split_policy": "train on 128-episode train split, report held-out test split",
+        "num_train_windows": 25629,
+        "num_val_windows": 4608,
+        "num_test_windows": 4032,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.838860526417564
+          },
+          {
+            "epoch": 7,
+            "loss": 0.6091954833197256
+          },
+          {
+            "epoch": 14,
+            "loss": 0.5609253323756321
+          },
+          {
+            "epoch": 21,
+            "loss": 0.5376405532563154
+          },
+          {
+            "epoch": 28,
+            "loss": 0.5249700822589354
+          },
+          {
+            "epoch": 35,
+            "loss": 0.5156429971107258
+          }
+        ],
+        "device": "cuda",
+        "splits": {
+          "test": {
+            "mae": 3952.547119140625,
+            "rmse": 276368.9375,
+            "r2": -0.43481132003942147
+          }
+        },
+        "primary_metric": "r2",
+        "metric_direction": "higher",
+        "primary_score": -0.43481132003942147
+      }
     },
     {
       "task": "temporal_order",
@@ -1444,15 +1716,137 @@
       "task": "misalignment_detection",
       "task_display_name": "Multimodal Synchronization Detection",
       "simple": {
-        "status": "unsupported_without_raw_128_feature_blocks",
+        "status": "pass",
         "task": "misalignment_detection",
         "task_display_name": "Multimodal Synchronization Detection",
+        "model_family": "simple_softmax_128_sensor_block_pair",
+        "source": "128_episode_staged_sensor_feature_blocks",
+        "scope": "multi_episode_128_aligned_sensor_block_baseline",
+        "input_features": "motion-side staged feature blocks concatenated with visual/depth-side staged feature blocks",
+        "split_policy": "train on aligned/shifted train pairs, report held-out test pairs",
+        "num_train_samples": 51258,
+        "num_test_samples": 8064,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.8282408061027526,
+            "train_accuracy": 0.5004292012954076
+          },
+          {
+            "epoch": 22,
+            "loss": 8.225836847782135,
+            "train_accuracy": 0.49923914315814116
+          },
+          {
+            "epoch": 44,
+            "loss": 8.294862401723861,
+            "train_accuracy": 0.49939521635647116
+          },
+          {
+            "epoch": 66,
+            "loss": 8.353930386304855,
+            "train_accuracy": 0.4994342346560537
+          },
+          {
+            "epoch": 88,
+            "loss": 8.404563434362412,
+            "train_accuracy": 0.4994732529556362
+          },
+          {
+            "epoch": 110,
+            "loss": 8.448360115408898,
+            "train_accuracy": 0.49937570720667995
+          },
+          {
+            "epoch": 132,
+            "loss": 8.486553009748459,
+            "train_accuracy": 0.4992001248585587
+          },
+          {
+            "epoch": 154,
+            "loss": 8.520105887770653,
+            "train_accuracy": 0.49923914315814116
+          },
+          {
+            "epoch": 176,
+            "loss": 8.549865300893783,
+            "train_accuracy": 0.4992196340083499
+          },
+          {
+            "epoch": 198,
+            "loss": 8.576391756176948,
+            "train_accuracy": 0.49923914315814116
+          },
+          {
+            "epoch": 220,
+            "loss": 8.6000264595747,
+            "train_accuracy": 0.49916110655897616
+          }
+        ],
+        "accuracy": 0.49987599206349204,
+        "balanced_accuracy": 0.4998759920634921,
+        "macro_f1": 0.49980060227663614,
+        "weighted_f1": 0.49980060227663614,
+        "num_eval_windows": 8064,
+        "num_classes": 2,
         "primary_metric": "f1",
-        "primary_score": null,
-        "reason": "requires deliberately shifted cross-modal feature pairs, which cannot be reconstructed from the public JSONL labels alone",
-        "source": "128_episode_qwen_jsonl_metadata"
+        "metric_direction": "higher",
+        "primary_score": 0.49980060227663614
       },
-      "neural": null
+      "neural": {
+        "status": "pass",
+        "task": "misalignment_detection",
+        "task_display_name": "Multimodal Synchronization Detection",
+        "model_family": "neural_mlp_128_sensor_block_pair",
+        "source": "128_episode_staged_sensor_feature_blocks",
+        "scope": "multi_episode_128_aligned_sensor_block_baseline",
+        "input_features": "motion-side staged feature blocks concatenated with visual/depth-side staged feature blocks",
+        "split_policy": "train on aligned/shifted train pairs, report held-out test pairs",
+        "num_train_samples": 51258,
+        "num_test_samples": 8064,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.6780329116973444,
+            "train_accuracy": 0.5538842717234382
+          },
+          {
+            "epoch": 7,
+            "loss": 0.4390202471778193,
+            "train_accuracy": 0.7839946935112568
+          },
+          {
+            "epoch": 14,
+            "loss": 0.34671012587736894,
+            "train_accuracy": 0.8382886573803113
+          },
+          {
+            "epoch": 21,
+            "loss": 0.29238996960661984,
+            "train_accuracy": 0.8666744703265832
+          },
+          {
+            "epoch": 28,
+            "loss": 0.2568857853046754,
+            "train_accuracy": 0.8842912325880838
+          },
+          {
+            "epoch": 35,
+            "loss": 0.22479272597481417,
+            "train_accuracy": 0.900561863513988
+          }
+        ],
+        "device": "cuda",
+        "accuracy": 0.7781498015873016,
+        "balanced_accuracy": 0.7781498015873016,
+        "macro_f1": 0.7773773780941162,
+        "weighted_f1": 0.7773773780941162,
+        "num_eval_windows": 8064,
+        "num_classes": 2,
+        "primary_metric": "f1",
+        "metric_direction": "higher",
+        "primary_score": 0.7773773780941162
+      }
     },
     {
       "task": "long_horizon_next_action",
@@ -2557,15 +2951,85 @@
       "task": "imu_to_hand_pose",
       "task_display_name": "Imu To Hand Pose",
       "simple": {
-        "status": "unsupported_without_raw_128_feature_blocks",
+        "status": "pass",
         "task": "imu_to_hand_pose",
         "task_display_name": "Imu To Hand Pose",
+        "model_family": "simple_ridge_128_sensor_blocks",
+        "source": "128_episode_staged_sensor_feature_blocks",
+        "scope": "multi_episode_128_aligned_sensor_block_baseline",
+        "input_features": "current IMU acceleration/gyroscope staged feature block only",
+        "target_features": "current left/right hand joint staged feature blocks",
+        "split_policy": "train ridge regressor on 128-episode train split, report held-out test split",
+        "num_train_windows": 25629,
+        "num_val_windows": 4608,
+        "num_test_windows": 4032,
+        "splits": {
+          "val": {
+            "mae": 0.2594413757324219,
+            "rmse": 0.8067219853401184,
+            "r2": -0.005687319479031228
+          },
+          "test": {
+            "mae": 0.2294670194387436,
+            "rmse": 0.47297459840774536,
+            "r2": -0.018626577129475796
+          }
+        },
         "primary_metric": "mae",
-        "primary_score": null,
-        "reason": "requires raw IMU and hand-joint feature blocks, which are not in the public 128 JSONL metadata package",
-        "source": "128_episode_qwen_jsonl_metadata"
+        "metric_direction": "lower",
+        "primary_score": 0.2294670194387436
       },
-      "neural": null
+      "neural": {
+        "status": "pass",
+        "task": "imu_to_hand_pose",
+        "task_display_name": "Imu To Hand Pose",
+        "model_family": "neural_mlp_128_sensor_blocks",
+        "source": "128_episode_staged_sensor_feature_blocks",
+        "scope": "multi_episode_128_aligned_sensor_block_baseline",
+        "input_features": "current IMU acceleration/gyroscope staged feature block only",
+        "target_features": "current left/right hand joint staged feature blocks",
+        "split_policy": "train on 128-episode train split, report held-out test split",
+        "num_train_windows": 25629,
+        "num_val_windows": 4608,
+        "num_test_windows": 4032,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 0.9585941261004479
+          },
+          {
+            "epoch": 7,
+            "loss": 0.9007774696252326
+          },
+          {
+            "epoch": 14,
+            "loss": 0.850051745689219
+          },
+          {
+            "epoch": 21,
+            "loss": 0.8010748637243981
+          },
+          {
+            "epoch": 28,
+            "loss": 0.7456092278683589
+          },
+          {
+            "epoch": 35,
+            "loss": 0.6969563992553535
+          }
+        ],
+        "device": "cuda",
+        "splits": {
+          "test": {
+            "mae": 0.2555866539478302,
+            "rmse": 0.5115720629692078,
+            "r2": -0.1916618344389971
+          }
+        },
+        "primary_metric": "mae",
+        "metric_direction": "lower",
+        "primary_score": 0.2555866539478302
+      }
     },
     {
       "task": "camera_view_sync_retrieval",

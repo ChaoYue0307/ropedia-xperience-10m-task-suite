@@ -3,19 +3,19 @@ timeline_action,Action Recognition,pass,macro_f1,0.008252821966746326,pass,macro
 timeline_subtask,Procedure Step Recognition,pass,macro_f1,0.00019512195121951218,pass,macro_f1,7.207207207207208e-05
 transition_detection,Action Boundary Detection,pass,macro_f1,0.29652162550029315,pass,macro_f1,0.4841733292368365
 next_action,Next-Action Prediction,pass,macro_f1,0.006514774539765508,pass,macro_f1,0.004910507980164745
-hand_trajectory_forecast,Hand Trajectory Forecasting,unsupported_without_raw_128_feature_blocks,mpjpe,,not_run,,
+hand_trajectory_forecast,Hand Trajectory Forecasting,pass,mpjpe,8.817333221435547,pass,mpjpe,0.429434210062027
 contact_prediction,Contact State Prediction,pass,macro_f1,0.4381481308057444,pass,macro_f1,0.5682695682695682
 object_relevance,Object Relevance Prediction,pass,micro_f1,0.17764578833693304,pass,micro_f1,0.18662723837686876
 caption_grounding,Language Grounding,pass,mrr,0.002332374220713973,pass,mrr,0.008236799389123917
-cross_modal_retrieval,Cross-Modal Retrieval,unsupported_without_raw_128_feature_blocks,mrr,,not_run,,
-modality_reconstruction,Cross-Modal Reconstruction,unsupported_without_raw_128_feature_blocks,r2,,not_run,,
+cross_modal_retrieval,Cross-Modal Retrieval,pass,mrr,0.002587692579254508,pass,mrr,0.0026067993603646755
+modality_reconstruction,Cross-Modal Reconstruction,pass,r2,-190.66106203944798,pass,r2,-0.43481132003942147
 temporal_order,Temporal Order Verification,pass,f1,0.4198864140782312,pass,f1,0.8252408266656923
-misalignment_detection,Multimodal Synchronization Detection,unsupported_without_raw_128_feature_blocks,f1,,not_run,,
+misalignment_detection,Multimodal Synchronization Detection,pass,f1,0.49980060227663614,pass,f1,0.7773773780941162
 long_horizon_next_action,Long Horizon Next Action,pass,macro_f1,0.004579592783699693,pass,macro_f1,0.0029821307969142615
 next_subtask_forecast,Next Subtask Forecast,pass,macro_f1,0.0001206030150753769,pass,macro_f1,2.086049543676662e-05
 interaction_text_prediction,Interaction Text Prediction,unsupported_without_raw_128_feature_blocks,macro_f1,,not_run,,
 action_object_relation,Action Object Relation,pass,macro_f1,0.0,pass,macro_f1,0.0
 object_set_forecast,Object Set Forecast,pass,micro_f1,0.17656983343047333,pass,micro_f1,0.17418550827844048
-imu_to_hand_pose,Imu To Hand Pose,unsupported_without_raw_128_feature_blocks,mae,,not_run,,
+imu_to_hand_pose,Imu To Hand Pose,pass,mae,0.2294670194387436,pass,mae,0.2555866539478302
 camera_view_sync_retrieval,Camera View Sync Retrieval,unsupported_without_raw_128_feature_blocks,mrr,,not_run,,
 time_to_transition,Time To Transition,pass,mae,624.8108520507812,pass,mae,41.4664421081543

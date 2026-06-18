@@ -1,0 +1,51 @@
+{
+  "status": "pass",
+  "task": "imu_to_hand_pose",
+  "task_display_name": "Imu To Hand Pose",
+  "model_family": "neural_mlp_128_sensor_blocks",
+  "source": "128_episode_staged_sensor_feature_blocks",
+  "scope": "multi_episode_128_aligned_sensor_block_baseline",
+  "input_features": "current IMU acceleration/gyroscope staged feature block only",
+  "target_features": "current left/right hand joint staged feature blocks",
+  "split_policy": "train on 128-episode train split, report held-out test split",
+  "num_train_windows": 25629,
+  "num_val_windows": 4608,
+  "num_test_windows": 4032,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.9585941261004479
+    },
+    {
+      "epoch": 7,
+      "loss": 0.9007774696252326
+    },
+    {
+      "epoch": 14,
+      "loss": 0.850051745689219
+    },
+    {
+      "epoch": 21,
+      "loss": 0.8010748637243981
+    },
+    {
+      "epoch": 28,
+      "loss": 0.7456092278683589
+    },
+    {
+      "epoch": 35,
+      "loss": 0.6969563992553535
+    }
+  ],
+  "device": "cuda",
+  "splits": {
+    "test": {
+      "mae": 0.2555866539478302,
+      "rmse": 0.5115720629692078,
+      "r2": -0.1916618344389971
+    }
+  },
+  "primary_metric": "mae",
+  "metric_direction": "lower",
+  "primary_score": 0.2555866539478302
+}

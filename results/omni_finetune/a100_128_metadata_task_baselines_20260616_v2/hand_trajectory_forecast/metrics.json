@@ -1,9 +1,31 @@
 {
-  "status": "unsupported_without_raw_128_feature_blocks",
+  "status": "pass",
   "task": "hand_trajectory_forecast",
   "task_display_name": "Hand Trajectory Forecasting",
+  "model_family": "simple_ridge_128_sensor_blocks",
+  "source": "128_episode_staged_sensor_feature_blocks",
+  "scope": "multi_episode_128_aligned_sensor_block_baseline",
+  "input_features": "current staged 4430-dim sensor feature vector",
+  "target_features": "future left/right hand joint feature blocks at +100 frames",
+  "split_policy": "train ridge regressor on 128-episode train split, report held-out test split",
+  "num_train_windows": 25068,
+  "num_val_windows": 4496,
+  "num_test_windows": 3951,
+  "splits": {
+    "val": {
+      "mae": 4.1960601806640625,
+      "rmse": 95.36702728271484,
+      "r2": -13320.370302489013,
+      "mpjpe": 8.47559642791748
+    },
+    "test": {
+      "mae": 4.583844184875488,
+      "rmse": 49.88134765625,
+      "r2": -11075.59463236227,
+      "mpjpe": 8.817333221435547
+    }
+  },
   "primary_metric": "mpjpe",
-  "primary_score": null,
-  "reason": "requires future hand-joint trajectories from raw sensor feature NPZ blocks, which are not in the public 128 package",
-  "source": "128_episode_qwen_jsonl_metadata"
+  "metric_direction": "lower",
+  "primary_score": 8.817333221435547
 }
