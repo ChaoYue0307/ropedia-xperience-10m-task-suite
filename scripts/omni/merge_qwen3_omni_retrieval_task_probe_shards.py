@@ -44,6 +44,7 @@ def fake_args(run_id: str, first_metrics: dict[str, Any]) -> argparse.Namespace:
         dataset_jsonl=Path(first_metrics.get("dataset_jsonl", "")),
         eval_split=first_metrics.get("eval_split", "test"),
         candidate_count=int(first_metrics.get("candidate_count", 4) or 4),
+        future_frames=int(first_metrics.get("future_frames", 100) or 100),
         sample_offset=0,
         sample_stride=1,
     )

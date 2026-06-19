@@ -65,6 +65,16 @@ QWEN_CAMERA_VIEW_SYNC_PROBE_DIR = (
     / "results/omni_finetune"
     / "xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z"
 )
+QWEN_SENSOR_TARGET_PROBE_DIR = (
+    ROOT
+    / "results/omni_finetune"
+    / "xperience10m_qwen3_omni_v6_sensor_target_probes_a100_20260619T000000Z"
+)
+COSMOS_SUPER_RETRIEVAL_TASK_PROBE_DIR = (
+    ROOT
+    / "results/omni_finetune"
+    / "xperience10m_cosmos3_super_retrieval_task_probes_a100_20260619T000000Z"
+)
 QWEN_ACTION_OBJECT_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/qwen3_omni_v6_lora/metrics.json"
 )
@@ -108,6 +118,9 @@ QWEN_FUTURE_TASK_METRIC_PATHS = {
     "object_set_forecast": QWEN_FUTURE_TASK_PROBE_DIR / "object_set_forecast/metrics.json",
     "time_to_transition": QWEN_ORDER_SYNC_TIME_PROBE_DIR / "time_to_transition/metrics.json",
     "camera_view_sync_retrieval": QWEN_CAMERA_VIEW_SYNC_PROBE_DIR / "camera_view_sync_retrieval/metrics.json",
+    "hand_trajectory_forecast": QWEN_SENSOR_TARGET_PROBE_DIR / "hand_trajectory_forecast/metrics.json",
+    "modality_reconstruction": QWEN_SENSOR_TARGET_PROBE_DIR / "modality_reconstruction/metrics.json",
+    "imu_to_hand_pose": QWEN_SENSOR_TARGET_PROBE_DIR / "imu_to_hand_pose/metrics.json",
 }
 QWEN_FUTURE_TASK_METRIC_KEYS = {
     "caption_grounding": "caption_grounding_mrr",
@@ -118,6 +131,23 @@ QWEN_FUTURE_TASK_METRIC_KEYS = {
     "next_subtask_forecast": "next_subtask_forecast_macro_f1",
     "object_set_forecast": "object_set_forecast_micro_f1",
     "time_to_transition": "time_to_transition_mae",
+    "camera_view_sync_retrieval": "camera_view_sync_retrieval_mrr",
+    "hand_trajectory_forecast": "hand_trajectory_forecast_mrr",
+    "modality_reconstruction": "modality_reconstruction_mrr",
+    "imu_to_hand_pose": "imu_to_hand_pose_mrr",
+}
+COSMOS_SUPER_RETRIEVAL_TASK_METRIC_PATHS = {
+    "hand_trajectory_forecast": COSMOS_SUPER_RETRIEVAL_TASK_PROBE_DIR / "hand_trajectory_forecast/metrics.json",
+    "cross_modal_retrieval": COSMOS_SUPER_RETRIEVAL_TASK_PROBE_DIR / "cross_modal_retrieval/metrics.json",
+    "modality_reconstruction": COSMOS_SUPER_RETRIEVAL_TASK_PROBE_DIR / "modality_reconstruction/metrics.json",
+    "imu_to_hand_pose": COSMOS_SUPER_RETRIEVAL_TASK_PROBE_DIR / "imu_to_hand_pose/metrics.json",
+    "camera_view_sync_retrieval": COSMOS_SUPER_RETRIEVAL_TASK_PROBE_DIR / "camera_view_sync_retrieval/metrics.json",
+}
+COSMOS_SUPER_RETRIEVAL_TASK_METRIC_KEYS = {
+    "hand_trajectory_forecast": "hand_trajectory_forecast_mrr",
+    "cross_modal_retrieval": "cross_modal_retrieval_mrr",
+    "modality_reconstruction": "modality_reconstruction_mrr",
+    "imu_to_hand_pose": "imu_to_hand_pose_mrr",
     "camera_view_sync_retrieval": "camera_view_sync_retrieval_mrr",
 }
 OUTPUT_JSON = ROOT / "docs/data/unified_task_model_radar.json"
@@ -283,6 +313,9 @@ FOUNDATION_METRIC_SOURCE_OVERRIDES = {
     ("qwen3_omni_v6_lora", "object_set_forecast"): QWEN_FUTURE_TASK_METRIC_PATHS["object_set_forecast"],
     ("qwen3_omni_v6_lora", "time_to_transition"): QWEN_FUTURE_TASK_METRIC_PATHS["time_to_transition"],
     ("qwen3_omni_v6_lora", "camera_view_sync_retrieval"): QWEN_FUTURE_TASK_METRIC_PATHS["camera_view_sync_retrieval"],
+    ("qwen3_omni_v6_lora", "hand_trajectory_forecast"): QWEN_FUTURE_TASK_METRIC_PATHS["hand_trajectory_forecast"],
+    ("qwen3_omni_v6_lora", "modality_reconstruction"): QWEN_FUTURE_TASK_METRIC_PATHS["modality_reconstruction"],
+    ("qwen3_omni_v6_lora", "imu_to_hand_pose"): QWEN_FUTURE_TASK_METRIC_PATHS["imu_to_hand_pose"],
     ("cosmos3_nano_future_window", "long_horizon_next_action"): COSMOS_NANO_LONG_HORIZON_METRICS_PATH,
     ("cosmos3_nano_future_window", "next_subtask_forecast"): COSMOS_NANO_NEXT_SUBTASK_METRICS_PATH,
     ("cosmos3_nano_future_window", "modality_reconstruction"): COSMOS_NANO_MODALITY_RECONSTRUCTION_METRICS_PATH,
@@ -291,6 +324,11 @@ FOUNDATION_METRIC_SOURCE_OVERRIDES = {
     ("cosmos3_nano_future_window", "time_to_transition"): COSMOS_NANO_TIME_TO_TRANSITION_METRICS_PATH,
     ("cosmos3_super_reasoner", "long_horizon_next_action"): COSMOS_SUPER_LONG_HORIZON_METRICS_PATH,
     ("cosmos3_super_reasoner", "time_to_transition"): COSMOS_SUPER_TIME_TO_TRANSITION_METRICS_PATH,
+    ("cosmos3_super_reasoner", "hand_trajectory_forecast"): COSMOS_SUPER_RETRIEVAL_TASK_METRIC_PATHS["hand_trajectory_forecast"],
+    ("cosmos3_super_reasoner", "cross_modal_retrieval"): COSMOS_SUPER_RETRIEVAL_TASK_METRIC_PATHS["cross_modal_retrieval"],
+    ("cosmos3_super_reasoner", "modality_reconstruction"): COSMOS_SUPER_RETRIEVAL_TASK_METRIC_PATHS["modality_reconstruction"],
+    ("cosmos3_super_reasoner", "imu_to_hand_pose"): COSMOS_SUPER_RETRIEVAL_TASK_METRIC_PATHS["imu_to_hand_pose"],
+    ("cosmos3_super_reasoner", "camera_view_sync_retrieval"): COSMOS_SUPER_RETRIEVAL_TASK_METRIC_PATHS["camera_view_sync_retrieval"],
 }
 
 SHORT_TASK_LABELS = {
@@ -323,7 +361,7 @@ METHOD_DETAILS = {
     "metadata128_neural_mlp": "128-episode aligned MLP baselines: JSONL metadata/text tasks plus staged sensor-block tasks where the processed target exists.",
     "raw128_simple": "128-episode 4430-dim sensor NPZ simple heads; tasks 15/19 use compact proxies.",
     "raw128_neural_mlp": "128-episode 4430-dim sensor NPZ MLP heads; tasks 15/19 use compact proxies.",
-    "qwen3_omni_v6_lora": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 and any completed private-GPU future-task probes scored from task-specific JSON.",
+    "qwen3_omni_v6_lora": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 and any completed private-GPU future/retrieval/sensor-target probes scored from task-specific JSON.",
     "cosmos3_super_reasoner": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 8/16 and a derived task-20 action-boundary timing probe scored from existing verified JSON.",
     "cosmos3_nano_future_window": "Verified Cosmos3-Nano future-window compatibility metrics, plus tasks 10/13/14/16/17 and a derived task-20 boundary timing probe scored from existing held-out future-window artifacts.",
 }
@@ -363,7 +401,10 @@ def read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
 
 
-def foundation_task_metric_mapping(qwen_metrics: dict[str, Any]) -> dict[str, dict[str, str]]:
+def foundation_task_metric_mapping(
+    qwen_metrics: dict[str, Any],
+    cosmos_super_metrics: dict[str, Any],
+) -> dict[str, dict[str, str]]:
     mapping = {task_id: dict(series_metrics) for task_id, series_metrics in FOUNDATION_TASK_METRICS.items()}
     for task_id, path in QWEN_FUTURE_TASK_METRIC_PATHS.items():
         payload = read_json(path)
@@ -373,6 +414,14 @@ def foundation_task_metric_mapping(qwen_metrics: dict[str, Any]) -> dict[str, di
             continue
         qwen_metrics[metric_key] = metric_value
         mapping.setdefault(task_id, {})["qwen3_omni_v6_lora"] = metric_key
+    for task_id, path in COSMOS_SUPER_RETRIEVAL_TASK_METRIC_PATHS.items():
+        payload = read_json(path)
+        metric_key = COSMOS_SUPER_RETRIEVAL_TASK_METRIC_KEYS[task_id]
+        metric_value = payload.get(metric_key)
+        if payload.get("status") != "pass" or not isinstance(metric_value, (int, float)):
+            continue
+        cosmos_super_metrics[metric_key] = metric_value
+        mapping.setdefault(task_id, {})["cosmos3_super_reasoner"] = metric_key
     return mapping
 
 
@@ -690,7 +739,7 @@ def build_payload() -> dict[str, Any]:
     cosmos_nano.update(read_json(COSMOS_NANO_ACTION_OBJECT_METRICS_PATH))
     cosmos_nano.update(read_json(COSMOS_NANO_OBJECT_SET_METRICS_PATH))
     cosmos_nano.update(read_json(COSMOS_NANO_TIME_TO_TRANSITION_METRICS_PATH))
-    foundation_task_metrics = foundation_task_metric_mapping(qwen)
+    foundation_task_metrics = foundation_task_metric_mapping(qwen, cosmos_super)
     foundation_metrics = {
         "qwen3_omni_v6_lora": qwen,
         "cosmos3_super_reasoner": cosmos_super,

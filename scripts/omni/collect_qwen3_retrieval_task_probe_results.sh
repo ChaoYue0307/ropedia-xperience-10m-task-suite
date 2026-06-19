@@ -7,15 +7,20 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 GPU_HOST_SUFFIX="${GPU_HOST_SUFFIX:-$(printf 'A%s-80Gx4' 100)}"
 REMOTE_HOST="${REMOTE_HOST:-ANGEL-${GPU_HOST_SUFFIX}}"
 REMOTE_ROOT="${REMOTE_ROOT:-/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite}"
-RUN_ID="${RUN_ID:-xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z}"
+RUN_ID="${RUN_ID:-xperience10m_qwen3_omni_v6_sensor_target_probes_a100_20260619T000000Z}"
 RESULT_ROOT="${RESULT_ROOT:-results/omni_finetune}"
-TASKS_CSV="${TASKS_CSV:-cross_modal_retrieval}"
+TASKS_CSV="${TASKS_CSV:-hand_trajectory_forecast,modality_reconstruction,imu_to_hand_pose}"
 
 REMOTE_RUN_DIR="${REMOTE_ROOT}/${RESULT_ROOT}/${RUN_ID}"
 LOCAL_RUN_DIR="${PROJECT_ROOT}/${RESULT_ROOT}/${RUN_ID}"
 LOCAL_LAUNCHER_DIR="${PROJECT_ROOT}/${RESULT_ROOT}/deferred_launchers"
 REMOTE_LAUNCHER_LOGS=(
   "${REMOTE_ROOT}/${RESULT_ROOT}/${RUN_ID}.launch.log"
+  "${REMOTE_ROOT}/${RESULT_ROOT}/${RUN_ID}.resume_when_free.log"
+  "${REMOTE_ROOT}/${RESULT_ROOT}/${RUN_ID}.resume_when_free.launch.log"
+  "${REMOTE_ROOT}/${RESULT_ROOT}/${RUN_ID}.shared_vram_resume.log"
+  "${REMOTE_ROOT}/${RESULT_ROOT}/${RUN_ID}.shared_vram_autoresume_guard.log"
+  "${REMOTE_ROOT}/${RESULT_ROOT}/${RUN_ID}.autoresume_guard.launch.log"
   "${REMOTE_ROOT}/${RESULT_ROOT}/deferred_launchers/${RUN_ID}.launch.log"
   "${REMOTE_ROOT}/${RESULT_ROOT}/deferred_launchers/${RUN_ID}.launcher.log"
 )
@@ -46,8 +51,11 @@ run_id = sys.argv[2]
 task_ids = [item.strip() for item in sys.argv[3].split(",") if item.strip()]
 run_dir = root / "results/omni_finetune" / run_id
 metric_key_by_task = {
+    "hand_trajectory_forecast": "hand_trajectory_forecast_mrr",
     "caption_grounding": "caption_grounding_mrr",
     "cross_modal_retrieval": "cross_modal_retrieval_mrr",
+    "modality_reconstruction": "modality_reconstruction_mrr",
+    "imu_to_hand_pose": "imu_to_hand_pose_mrr",
     "camera_view_sync_retrieval": "camera_view_sync_retrieval_mrr",
 }
 expected = {task_id: metric_key_by_task[task_id] for task_id in task_ids}

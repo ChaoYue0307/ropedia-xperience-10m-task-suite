@@ -12,7 +12,7 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 128ep Aligned NN | 20 | 18 | 0 | 2 | not supported 2, scored 18 |
 | 128ep Raw Simple | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
 | 128ep Raw NN | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
-| Qwen3-Omni v6 LoRA | 20 | 16 | 0 | 4 | not evaluated 4, scored 16 |
+| Qwen3-Omni v6 LoRA | 20 | 19 | 0 | 1 | not evaluated 1, scored 19 |
 | Cosmos3-Super Reasoner | 20 | 10 | 0 | 10 | not evaluated 10, scored 10 |
 | Cosmos3-Nano Future Window | 20 | 11 | 0 | 9 | not evaluated 9, scored 11 |
 
@@ -22,12 +22,12 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 02 | Procedure Step Recognition | score | score | score | score | score | score | score | score | not evaluated |
 | 03 | Action Boundary Detection | score | score | score | score | score | score | score | score | score |
 | 04 | Next-Action Prediction | score | score | score | score | score | score | score | score | score |
-| 05 | Hand Trajectory Forecasting | score | score | score | score | score | score | not evaluated | not evaluated | not evaluated |
+| 05 | Hand Trajectory Forecasting | score | score | score | score | score | score | score | not evaluated | not evaluated |
 | 06 | Contact State Prediction | score | score | score | score | score | score | score | score | score |
 | 07 | Object Relevance Prediction | score | score | score | score | score | score | score | score | not evaluated |
 | 08 | Language Grounding | score | score | score | score | score | score | score | score | not evaluated |
 | 09 | Cross-Modal Retrieval | score | score | score | score | score | score | score | not evaluated | score |
-| 10 | Cross-Modal Reconstruction | score | score | score | score | score | score | not evaluated | not evaluated | score |
+| 10 | Cross-Modal Reconstruction | score | score | score | score | score | score | score | not evaluated | score |
 | 11 | Temporal Order Verification | score | score | score | score | score | score | score | not evaluated | not evaluated |
 | 12 | Multimodal Synchronization Detection | score | score | score | score | score | score | score | not evaluated | not evaluated |
 | 13 | Long-Horizon Next-Action Forecasting | score | score | score | score | score | score | score | score | score |
@@ -35,7 +35,7 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 15 | Interaction Text Prediction | score | score | unsupported | not supported | proxy | proxy | not evaluated | not evaluated | not evaluated |
 | 16 | Action-Object Relation Prediction | score | score | score | score | score | score | score | score | score |
 | 17 | Future Object-Set Forecasting | score | score | score | score | score | score | score | not evaluated | score |
-| 18 | IMU-to-Hand Pose Reconstruction | score | score | score | score | score | score | not evaluated | not evaluated | not evaluated |
+| 18 | IMU-to-Hand Pose Reconstruction | score | score | score | score | score | score | score | not evaluated | not evaluated |
 | 19 | Camera-View Synchronization Retrieval | score | score | unsupported | not supported | proxy | proxy | score | not evaluated | not evaluated |
 | 20 | Time-to-Next-Transition Regression | score | score | score | score | score | score | score | score | score |
 

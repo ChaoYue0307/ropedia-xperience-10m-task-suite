@@ -2,10 +2,10 @@
 """Evaluate Qwen3-Omni on target-backed retrieval probes.
 
 This runner covers model-friendly retrieval tasks whose targets can be formed
-from the staged 128-episode JSON export without inventing labels. It currently
-implements Task 08, language grounding, as text-query-to-video-window retrieval:
-the query is derived from the held-out window's action/subtask/object labels,
-and Qwen ranks shuffled candidate mosaic video windows.
+from the staged 128-episode JSON export and 4430-dim sensor feature shards
+without inventing labels. It includes text/video retrieval probes plus numeric
+sensor-target probes where Qwen ranks compact target-block summaries instead of
+emitting high-dimensional vectors directly.
 """
 
 from __future__ import annotations
@@ -32,6 +32,16 @@ from qwen3_omni_dataset_utils import has_empty_audio_items, is_empty_audio_excep
 TASK_SPECS: OrderedDict[str, dict[str, Any]] = OrderedDict(
     [
         (
+            "hand_trajectory_forecast",
+            {
+                "task_number": 5,
+                "label": "Hand Trajectory Forecasting",
+                "family": "sensor_target_retrieval",
+                "metric_key": "hand_trajectory_forecast_mrr",
+                "prediction_key": "ranked_candidates",
+            },
+        ),
+        (
             "caption_grounding",
             {
                 "task_number": 8,
@@ -52,12 +62,32 @@ TASK_SPECS: OrderedDict[str, dict[str, Any]] = OrderedDict(
             },
         ),
         (
+            "modality_reconstruction",
+            {
+                "task_number": 10,
+                "label": "Cross-Modal Reconstruction",
+                "family": "sensor_target_retrieval",
+                "metric_key": "modality_reconstruction_mrr",
+                "prediction_key": "ranked_candidates",
+            },
+        ),
+        (
             "camera_view_sync_retrieval",
             {
                 "task_number": 19,
                 "label": "Camera-View Sync Retrieval",
                 "family": "retrieval",
                 "metric_key": "camera_view_sync_retrieval_mrr",
+                "prediction_key": "ranked_candidates",
+            },
+        ),
+        (
+            "imu_to_hand_pose",
+            {
+                "task_number": 18,
+                "label": "IMU-to-Hand Pose Reconstruction",
+                "family": "sensor_target_retrieval",
+                "metric_key": "imu_to_hand_pose_mrr",
                 "prediction_key": "ranked_candidates",
             },
         ),
@@ -75,6 +105,29 @@ MOTION_POSE_QUERY_BLOCKS: OrderedDict[str, tuple[int, int]] = OrderedDict(
         ("imu_accel_gyro", (2205, 2247)),
     ]
 )
+HAND_TARGET_BLOCKS: OrderedDict[str, tuple[int, int]] = OrderedDict(
+    [
+        ("hand_left_joints", (0, 441)),
+        ("hand_right_joints", (441, 882)),
+    ]
+)
+VISUAL_TARGET_BLOCKS: OrderedDict[str, tuple[int, int]] = OrderedDict(
+    [
+        ("depth_confidence", (2247, 3227)),
+        ("slam_point_cloud", (4291, 4313)),
+        ("calibration", (4313, 4430)),
+    ]
+)
+IMU_QUERY_BLOCKS: OrderedDict[str, tuple[int, int]] = OrderedDict(
+    [
+        ("imu_accel_gyro", (2205, 2247)),
+    ]
+)
+SENSOR_TARGET_TASKS = {
+    "hand_trajectory_forecast",
+    "modality_reconstruction",
+    "imu_to_hand_pose",
+}
 
 SYSTEM_PROMPT = (
     "You are an embodied episode-understanding model for Ropedia/Xperience-10M. "
@@ -93,6 +146,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--eval-split", default="test")
     parser.add_argument("--tasks", default="caption_grounding")
     parser.add_argument("--candidate-count", type=int, default=4)
+    parser.add_argument("--future-frames", type=int, default=100)
     parser.add_argument("--sample-limit", type=int, default=0)
     parser.add_argument("--sample-offset", type=int, default=0)
     parser.add_argument("--sample-stride", type=int, default=1)
@@ -247,6 +301,27 @@ def select_eval_indices(samples: list[dict[str, Any]], args: argparse.Namespace)
     return indices
 
 
+def by_episode_sorted(samples: list[dict[str, Any]]) -> dict[str, list[int]]:
+    grouped: dict[str, list[int]] = {}
+    for idx, sample in enumerate(samples):
+        grouped.setdefault(str(sample.get("episode_id")), []).append(idx)
+    for indices in grouped.values():
+        indices.sort(key=lambda i: row_start(samples[i]))
+    return grouped
+
+
+def future_index_map(samples: list[dict[str, Any]], frame_offset: int) -> dict[int, int]:
+    mapping: dict[int, int] = {}
+    for indices in by_episode_sorted(samples).values():
+        starts = np.asarray([row_start(samples[i]) for i in indices], dtype=np.int64)
+        for idx in indices:
+            target_start = row_start(samples[idx]) + frame_offset
+            future_pos = int(np.searchsorted(starts, target_start, side="left"))
+            if future_pos < len(indices):
+                mapping[idx] = indices[future_pos]
+    return mapping
+
+
 def prediction_id(task_id: str, sample: dict[str, Any]) -> str:
     return f"{task_id}::{sample.get('id')}"
 
@@ -261,15 +336,17 @@ def build_candidate_indices(
     sample_idx: int,
     task_id: str,
     candidate_count: int,
+    target_idx: int | None = None,
 ) -> list[int]:
     if candidate_count < 2 or candidate_count > 8:
         raise ValueError("--candidate-count must be between 2 and 8")
     sample = samples[sample_idx]
+    true_idx = sample_idx if target_idx is None else target_idx
     if task_id == "camera_view_sync_retrieval":
         negatives = [
             idx
             for idx in eval_pool
-            if idx != sample_idx
+            if idx != true_idx
             and has_camera_view_pair(samples[idx])
             and (
                 samples[idx].get("episode_id") != sample.get("episode_id")
@@ -277,7 +354,24 @@ def build_candidate_indices(
             )
         ]
         negatives.sort(key=lambda idx: stable_score(task_id, sample.get("id"), samples[idx].get("id")))
-        selected = [sample_idx] + negatives[: candidate_count - 1]
+        selected = [true_idx] + negatives[: candidate_count - 1]
+        selected.sort(key=lambda idx: stable_score(task_id, "order", sample.get("id"), samples[idx].get("id")))
+        return selected
+    if task_id in SENSOR_TARGET_TASKS:
+        negatives = [
+            idx
+            for idx in eval_pool
+            if idx != true_idx
+            and has_sensor_feature(samples[idx])
+            and (
+                samples[idx].get("episode_id") != samples[true_idx].get("episode_id")
+                or row_start(samples[idx]) != row_start(samples[true_idx])
+            )
+        ]
+        if len(negatives) < candidate_count - 1:
+            negatives = [idx for idx in eval_pool if idx != true_idx and has_sensor_feature(samples[idx])]
+        negatives.sort(key=lambda idx: stable_score(task_id, sample.get("id"), samples[idx].get("id")))
+        selected = [true_idx] + negatives[: candidate_count - 1]
         selected.sort(key=lambda idx: stable_score(task_id, "order", sample.get("id"), samples[idx].get("id")))
         return selected
     true_action = normalize_text(answer(sample).get("action")).casefold()
@@ -285,15 +379,15 @@ def build_candidate_indices(
     negatives = [
         idx
         for idx in eval_pool
-        if idx != sample_idx
+        if idx != true_idx
         and media_video_path(samples[idx])
         and samples[idx].get("episode_id") != true_episode
         and normalize_text(answer(samples[idx]).get("action")).casefold() != true_action
     ]
     if len(negatives) < candidate_count - 1:
-        negatives = [idx for idx in eval_pool if idx != sample_idx and media_video_path(samples[idx])]
+        negatives = [idx for idx in eval_pool if idx != true_idx and media_video_path(samples[idx])]
     negatives.sort(key=lambda idx: stable_score(task_id, sample.get("id"), samples[idx].get("id")))
-    selected = [sample_idx] + negatives[: candidate_count - 1]
+    selected = [true_idx] + negatives[: candidate_count - 1]
     selected.sort(key=lambda idx: stable_score(task_id, "order", sample.get("id"), samples[idx].get("id")))
     return selected
 
@@ -448,6 +542,28 @@ def summarize_vector_block(values: np.ndarray) -> dict[str, float]:
     }
 
 
+def block_summary_lines(
+    vector: np.ndarray,
+    blocks: OrderedDict[str, tuple[int, int]],
+    *,
+    prefix: str = "",
+) -> list[str]:
+    lines: list[str] = []
+    for name, (start, end) in blocks.items():
+        if end > vector.shape[0]:
+            continue
+        stats = summarize_vector_block(vector[start:end])
+        label = f"{prefix}{name}" if prefix else name
+        lines.append(
+            (
+                f"{label}: mean={stats['mean']:.5g}, std={stats['std']:.5g}, "
+                f"mean_abs={stats['mean_abs']:.5g}, l2={stats['l2']:.5g}, "
+                f"max_abs={stats['max_abs']:.5g}"
+            )
+        )
+    return lines
+
+
 def sensor_query_text(sample: dict[str, Any], cache: SensorFeatureCache) -> str:
     vector = cache.get(str(sample.get("sensor_feature_path")), int(sample.get("sensor_feature_index")))
     lines = [
@@ -456,25 +572,66 @@ def sensor_query_text(sample: dict[str, Any], cache: SensorFeatureCache) -> str:
         "The target is the candidate depth/video window synchronized with this sensor window.",
         f"Window frames: {row_start(sample)}-{row_end(sample)}",
     ]
-    for name, (start, end) in MOTION_POSE_QUERY_BLOCKS.items():
-        if end > vector.shape[0]:
-            continue
-        stats = summarize_vector_block(vector[start:end])
-        lines.append(
-            (
-                f"{name}: mean={stats['mean']:.5g}, std={stats['std']:.5g}, "
-                f"mean_abs={stats['mean_abs']:.5g}, l2={stats['l2']:.5g}, "
-                f"max_abs={stats['max_abs']:.5g}"
-            )
-        )
+    lines.extend(block_summary_lines(vector, MOTION_POSE_QUERY_BLOCKS))
     return "\n".join(lines)
 
 
-def artifact_query_text(task_id: str, sample: dict[str, Any], sensor_cache: SensorFeatureCache | None) -> str:
+def imu_query_text(sample: dict[str, Any], cache: SensorFeatureCache) -> str:
+    vector = cache.get(str(sample.get("sensor_feature_path")), int(sample.get("sensor_feature_index")))
+    lines = [
+        "IMU query for the current 20-frame window.",
+        "The target is the synchronized hand-pose candidate summary.",
+        f"Window frames: {row_start(sample)}-{row_end(sample)}",
+    ]
+    lines.extend(block_summary_lines(vector, IMU_QUERY_BLOCKS))
+    return "\n".join(lines)
+
+
+def target_summary_text(task_id: str, sample: dict[str, Any], cache: SensorFeatureCache) -> str:
+    vector = cache.get(str(sample.get("sensor_feature_path")), int(sample.get("sensor_feature_index")))
+    if task_id in {"hand_trajectory_forecast", "imu_to_hand_pose"}:
+        blocks = HAND_TARGET_BLOCKS
+        label = "hand-pose target summary"
+    elif task_id == "modality_reconstruction":
+        blocks = VISUAL_TARGET_BLOCKS
+        label = "visual/depth target summary"
+    else:
+        raise ValueError(f"task does not use sensor target summaries: {task_id}")
+    lines = [
+        f"{label}; candidate window frames {row_start(sample)}-{row_end(sample)}",
+        f"candidate_id={sample.get('id')}",
+    ]
+    lines.extend(block_summary_lines(vector, blocks))
+    return "\n".join(lines)
+
+
+def artifact_query_text(
+    task_id: str,
+    sample: dict[str, Any],
+    sensor_cache: SensorFeatureCache | None,
+    *,
+    future_frames: int = 100,
+) -> str:
     if task_id == "cross_modal_retrieval":
         if sensor_cache is None:
             raise ValueError("cross_modal_retrieval requires a sensor feature cache")
         return sensor_query_text(sample, sensor_cache)
+    if task_id == "modality_reconstruction":
+        if sensor_cache is None:
+            raise ValueError("modality_reconstruction requires a sensor feature cache")
+        return sensor_query_text(sample, sensor_cache)
+    if task_id == "imu_to_hand_pose":
+        if sensor_cache is None:
+            raise ValueError("imu_to_hand_pose requires a sensor feature cache")
+        return imu_query_text(sample, sensor_cache)
+    if task_id == "hand_trajectory_forecast":
+        return "\n".join(
+            [
+                "Current video query for future hand trajectory.",
+                f"Window frames: {row_start(sample)}-{row_end(sample)}",
+                f"Future offset: {future_frames} frames.",
+            ]
+        )
     if task_id == "camera_view_sync_retrieval":
         ref = reference_camera_view(sample)
         return "\n".join(
@@ -490,16 +647,48 @@ def artifact_query_text(task_id: str, sample: dict[str, Any], sensor_cache: Sens
 def build_messages(
     samples: list[dict[str, Any]],
     sample_idx: int,
+    target_idx: int,
     candidate_indices: list[int],
     task_id: str,
     spec: dict[str, Any],
     sensor_cache: SensorFeatureCache | None = None,
     camera_clip_dir: Path | None = None,
+    future_frames: int = 100,
 ) -> tuple[list[dict[str, Any]], str, list[dict[str, Any]]]:
     letters = [chr(ord("A") + pos) for pos in range(len(candidate_indices))]
-    true_letter = letters[candidate_indices.index(sample_idx)]
+    true_letter = letters[candidate_indices.index(target_idx)]
     candidate_records: list[dict[str, Any]] = []
-    if task_id == "cross_modal_retrieval":
+    if task_id == "hand_trajectory_forecast":
+        if sensor_cache is None:
+            raise ValueError("hand_trajectory_forecast requires a sensor feature cache")
+        task_instruction = (
+            f"Rank the candidate hand-pose summaries by which one best matches the likely hand trajectory "
+            f"{future_frames} frames after the query video window."
+        )
+        query = "\n".join(
+            [
+                "Current video query:",
+                f"Window frames: {row_start(samples[sample_idx])}-{row_end(samples[sample_idx])}",
+                "Use visible hand motion, object interaction, and scene context. Candidate summaries are numeric hand-pose targets.",
+            ]
+        )
+        query_header = "Current video context:"
+    elif task_id == "modality_reconstruction":
+        if sensor_cache is None:
+            raise ValueError("modality_reconstruction requires a sensor feature cache")
+        task_instruction = (
+            "Rank the candidate visual/depth summaries by which one is synchronized with the sensor/motion query. "
+            "The query uses motion-capture, body-contact, camera-pose, and IMU feature summaries only."
+        )
+        query = sensor_query_text(samples[sample_idx], sensor_cache)
+        query_header = "Sensor/motion query:"
+    elif task_id == "imu_to_hand_pose":
+        if sensor_cache is None:
+            raise ValueError("imu_to_hand_pose requires a sensor feature cache")
+        task_instruction = "Rank the candidate hand-pose summaries by which one is synchronized with the IMU query."
+        query = imu_query_text(samples[sample_idx], sensor_cache)
+        query_header = "IMU query:"
+    elif task_id == "cross_modal_retrieval":
         if sensor_cache is None:
             raise ValueError("cross_modal_retrieval requires a sensor feature cache")
         task_instruction = "Rank the candidate video windows by which one is synchronized with the sensor/motion query."
@@ -545,6 +734,8 @@ def build_messages(
             raise ValueError("camera_view_sync_retrieval requires a camera clip directory")
         ref_view = reference_camera_view(samples[sample_idx])
         content.append({"type": "video", "video": camera_view_clip_path(samples[sample_idx], ref_view, camera_clip_dir)})
+    elif task_id == "hand_trajectory_forecast":
+        content.append({"type": "video", "video": media_video_path(samples[sample_idx])})
     for letter, idx in zip(letters, candidate_indices):
         sample = samples[idx]
         if task_id == "camera_view_sync_retrieval":
@@ -553,9 +744,17 @@ def build_messages(
             view = candidate_camera_view(sample)
             candidate_video = camera_view_clip_path(sample, view, camera_clip_dir)
             candidate_view_name = view["name"]
+            candidate_summary = None
+        elif task_id in SENSOR_TARGET_TASKS:
+            if sensor_cache is None:
+                raise ValueError(f"{task_id} requires a sensor feature cache")
+            candidate_video = None
+            candidate_view_name = "sensor_target_summary"
+            candidate_summary = target_summary_text(task_id, sample, sensor_cache)
         else:
             candidate_video = media_video_path(sample)
             candidate_view_name = "mosaic"
+            candidate_summary = None
         candidate_records.append(
             {
                 "letter": letter,
@@ -564,11 +763,14 @@ def build_messages(
                 "start_frame": row_start(sample),
                 "end_frame": row_end(sample),
                 "view_name": candidate_view_name,
-                "is_target": idx == sample_idx,
+                "is_target": idx == target_idx,
             }
         )
-        content.append({"type": "text", "text": f"Candidate {letter} video window:"})
-        content.append({"type": "video", "video": candidate_video})
+        if task_id in SENSOR_TARGET_TASKS:
+            content.append({"type": "text", "text": f"Candidate {letter} target summary:\n{candidate_summary}"})
+        else:
+            content.append({"type": "text", "text": f"Candidate {letter} video window:"})
+            content.append({"type": "video", "video": candidate_video})
     return (
         [
             {"role": "system", "content": [{"type": "text", "text": SYSTEM_PROMPT}]},
@@ -651,8 +853,11 @@ def score_retrieval(rows: list[dict[str, Any]]) -> dict[str, float]:
     return {
         "num_samples": len(rows),
         "mrr": mrr,
+        "hand_trajectory_forecast_mrr": mrr,
         "caption_grounding_mrr": mrr,
         "cross_modal_retrieval_mrr": mrr,
+        "modality_reconstruction_mrr": mrr,
+        "imu_to_hand_pose_mrr": mrr,
         "camera_view_sync_retrieval_mrr": mrr,
         "top1_accuracy": top1 / len(rows) if rows else 0.0,
     }
@@ -671,6 +876,9 @@ def score_task(task_id: str, spec: dict[str, Any], rows: list[dict[str, Any]], o
                 "split": row["split"],
                 "start_frame": row["start_frame"],
                 "end_frame": row["end_frame"],
+                "target_id": row.get("target_id"),
+                "target_start_frame": row.get("target_start_frame"),
+                "target_end_frame": row.get("target_end_frame"),
                 "true_letter": row["true_letter"],
                 "predicted_ranking": json.dumps(row["predicted_ranking"], ensure_ascii=False),
                 "reciprocal_rank": row["reciprocal_rank"],
@@ -685,6 +893,9 @@ def score_task(task_id: str, spec: dict[str, Any], rows: list[dict[str, Any]], o
             "split",
             "start_frame",
             "end_frame",
+            "target_id",
+            "target_start_frame",
+            "target_end_frame",
             "true_letter",
             "predicted_ranking",
             "reciprocal_rank",
@@ -694,7 +905,28 @@ def score_task(task_id: str, spec: dict[str, Any], rows: list[dict[str, Any]], o
     )
     metrics = score_retrieval(rows)
     primary_score = metrics[spec["metric_key"]]
-    if task_id == "cross_modal_retrieval":
+    if task_id == "hand_trajectory_forecast":
+        score_policy = (
+            "GPU-backed Qwen3-Omni v6 future hand-trajectory retrieval probe. The prompt shows the "
+            "held-out current video window and asks the model to rank shuffled compact hand-pose "
+            "target summaries; the true target is the staged hand-joint feature block from the "
+            "window at the configured future-frame offset. This avoids asking the language model "
+            "to emit hundreds of raw pose floats while still scoring against real exported hand targets."
+        )
+    elif task_id == "modality_reconstruction":
+        score_policy = (
+            "GPU-backed Qwen3-Omni v6 cross-modal reconstruction retrieval probe. The query is a "
+            "compact summary of motion-capture, body-contact, camera-pose, and IMU feature blocks; "
+            "candidates are shuffled compact visual/depth/calibration target summaries from staged "
+            "sensor shards, and the score is MRR of the synchronized true target."
+        )
+    elif task_id == "imu_to_hand_pose":
+        score_policy = (
+            "GPU-backed Qwen3-Omni v6 IMU-to-hand-pose retrieval probe. The query is the held-out "
+            "IMU accel/gyro summary and candidates are shuffled compact hand-joint summaries from "
+            "the staged sensor shards; the score is MRR of the synchronized true hand-pose target."
+        )
+    elif task_id == "cross_modal_retrieval":
         score_policy = (
             "GPU-backed Qwen3-Omni v6 sensor-to-video retrieval probe. The query is a compact "
             "summary of held-out motion-capture, body-contact, camera-pose, and IMU feature blocks; "
@@ -732,6 +964,7 @@ def score_task(task_id: str, spec: dict[str, Any], rows: list[dict[str, Any]], o
             "dataset_jsonl": str(args.dataset_jsonl),
             "eval_split": args.eval_split,
             "candidate_count": args.candidate_count,
+            "future_frames": args.future_frames,
             "sample_offset": args.sample_offset,
             "sample_stride": args.sample_stride,
             "scope": "held_out_test_qwen3_retrieval_task_probe",
@@ -755,6 +988,16 @@ def main() -> int:
     if "cross_modal_retrieval" in selected_tasks:
         eval_indices = [idx for idx in eval_indices if has_sensor_feature(samples[idx])]
         eval_pool = [idx for idx in eval_pool if has_sensor_feature(samples[idx])]
+    if any(task_id in SENSOR_TARGET_TASKS for task_id in selected_tasks):
+        eval_indices = [idx for idx in eval_indices if has_sensor_feature(samples[idx])]
+        eval_pool = [idx for idx in eval_pool if has_sensor_feature(samples[idx])]
+    future_targets = future_index_map(samples, args.future_frames) if "hand_trajectory_forecast" in selected_tasks else {}
+    if "hand_trajectory_forecast" in selected_tasks:
+        eval_indices = [
+            idx
+            for idx in eval_indices
+            if idx in future_targets and has_sensor_feature(samples[future_targets[idx]])
+        ]
     if "camera_view_sync_retrieval" in selected_tasks:
         eval_indices = [idx for idx in eval_indices if has_camera_view_pair(samples[idx])]
         eval_pool = [idx for idx in eval_pool if has_camera_view_pair(samples[idx])]
@@ -772,11 +1015,17 @@ def main() -> int:
             "sample_offset": args.sample_offset,
             "sample_stride": args.sample_stride,
             "candidate_count": args.candidate_count,
+            "future_frames": args.future_frames,
         },
     )
 
     model, processor = load_model_processor(args)
-    sensor_cache = SensorFeatureCache() if "cross_modal_retrieval" in selected_tasks else None
+    sensor_cache = (
+        SensorFeatureCache()
+        if "cross_modal_retrieval" in selected_tasks
+        or any(task_id in SENSOR_TARGET_TASKS for task_id in selected_tasks)
+        else None
+    )
     camera_clip_dir = args.output_dir / "camera_view_sync_clips" if "camera_view_sync_retrieval" in selected_tasks else None
     partial_by_task = {
         task_id: {
@@ -796,15 +1045,25 @@ def main() -> int:
             if pred_id in partial_by_task[task_id]:
                 continue
             started = time.time()
-            candidate_indices = build_candidate_indices(samples, eval_pool, sample_idx, task_id, args.candidate_count)
+            target_idx = future_targets[sample_idx] if task_id == "hand_trajectory_forecast" else sample_idx
+            candidate_indices = build_candidate_indices(
+                samples,
+                eval_pool,
+                sample_idx,
+                task_id,
+                args.candidate_count,
+                target_idx=target_idx,
+            )
             messages, true_letter, candidate_records = build_messages(
                 samples,
                 sample_idx,
+                target_idx,
                 candidate_indices,
                 task_id,
                 spec,
                 sensor_cache=sensor_cache,
                 camera_clip_dir=camera_clip_dir,
+                future_frames=args.future_frames,
             )
             raw = generate_messages(model, processor, messages, args)
             valid_letters = [record["letter"] for record in candidate_records]
@@ -819,7 +1078,10 @@ def main() -> int:
                 "episode_id": sample.get("episode_id"),
                 "start_frame": row_start(sample),
                 "end_frame": row_end(sample),
-                "query_text": artifact_query_text(task_id, sample, sensor_cache),
+                "query_text": artifact_query_text(task_id, sample, sensor_cache, future_frames=args.future_frames),
+                "target_id": samples[target_idx].get("id"),
+                "target_start_frame": row_start(samples[target_idx]),
+                "target_end_frame": row_end(samples[target_idx]),
                 "candidates": candidate_records,
                 "true_letter": true_letter,
                 "predicted_ranking": ranking,
@@ -857,6 +1119,7 @@ def main() -> int:
         "dataset_jsonl": str(args.dataset_jsonl),
         "eval_split": args.eval_split,
         "candidate_count": args.candidate_count,
+        "future_frames": args.future_frames,
         "sample_offset": args.sample_offset,
         "sample_stride": args.sample_stride,
         "tasks": {
