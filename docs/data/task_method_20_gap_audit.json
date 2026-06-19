@@ -1,10 +1,10 @@
 {
-  "generated_at_utc": "2026-06-19T11:30:03+00:00",
+  "generated_at_utc": "2026-06-19T11:42:08+00:00",
   "immediate_actions": [
     {
       "artifact": "docs/data/task_method_20_gap_audit.json",
       "id": "gap_audit",
-      "purpose": "Keep the 27 scoreless cells visible and reproducible."
+      "purpose": "Keep the 24 scoreless cells visible and reproducible."
     },
     {
       "artifact": "scripts/omni/score_model_output_probes.py",
@@ -100,11 +100,11 @@
       "proxy_scored_task_count": 0,
       "result_record_count": 20,
       "scope": "128 selected episodes, held-out test",
-      "scored_task_count": 16,
-      "scoreless_task_count": 4,
+      "scored_task_count": 19,
+      "scoreless_task_count": 1,
       "status_counts": {
-        "not_evaluated_in_verified_package": 4,
-        "scored": 16
+        "not_evaluated_in_verified_package": 1,
+        "scored": 19
       }
     },
     "raw128_neural_mlp": {
@@ -139,10 +139,10 @@
     "cosmos3_super_reasoner": 10,
     "metadata128_neural_mlp": 2,
     "metadata128_simple": 2,
-    "qwen3_omni_v6_lora": 4
+    "qwen3_omni_v6_lora": 1
   },
   "missing_by_status": {
-    "not_evaluated_in_verified_package": 23,
+    "not_evaluated_in_verified_package": 20,
     "not_supported_by_metadata_only_package": 2,
     "unsupported_without_required_target": 2
   },
@@ -152,8 +152,7 @@
     ],
     "05 Hand Trajectory Forecasting": [
       "cosmos3_nano_future_window",
-      "cosmos3_super_reasoner",
-      "qwen3_omni_v6_lora"
+      "cosmos3_super_reasoner"
     ],
     "07 Object Relevance Prediction": [
       "cosmos3_nano_future_window"
@@ -165,8 +164,7 @@
       "cosmos3_super_reasoner"
     ],
     "10 Cross-Modal Reconstruction": [
-      "cosmos3_super_reasoner",
-      "qwen3_omni_v6_lora"
+      "cosmos3_super_reasoner"
     ],
     "11 Temporal Order Verification": [
       "cosmos3_nano_future_window",
@@ -191,8 +189,7 @@
     ],
     "18 IMU-to-Hand Pose Reconstruction": [
       "cosmos3_nano_future_window",
-      "cosmos3_super_reasoner",
-      "qwen3_omni_v6_lora"
+      "cosmos3_super_reasoner"
     ],
     "19 Camera-View Synchronization Retrieval": [
       "cosmos3_nano_future_window",
@@ -214,19 +211,6 @@
       "task_id": "timeline_subtask",
       "task_label": "Procedure Step Recognition",
       "task_number": 2
-    },
-    {
-      "method": "Qwen3-Omni v6 LoRA",
-      "metric_key": "mpjpe",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
-      "scope": "multi_episode_128_partial_model_overlay",
-      "series_id": "qwen3_omni_v6_lora",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "task_id": "hand_trajectory_forecast",
-      "task_label": "Hand Trajectory Forecasting",
-      "task_number": 5
     },
     {
       "method": "Cosmos3-Super Reasoner",
@@ -292,19 +276,6 @@
       "task_id": "cross_modal_retrieval",
       "task_label": "Cross-Modal Retrieval",
       "task_number": 9
-    },
-    {
-      "method": "Qwen3-Omni v6 LoRA",
-      "metric_key": "r2",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
-      "scope": "multi_episode_128_partial_model_overlay",
-      "series_id": "qwen3_omni_v6_lora",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "task_id": "modality_reconstruction",
-      "task_label": "Cross-Modal Reconstruction",
-      "task_number": 10
     },
     {
       "method": "Cosmos3-Super Reasoner",
@@ -463,19 +434,6 @@
       "task_number": 17
     },
     {
-      "method": "Qwen3-Omni v6 LoRA",
-      "metric_key": "mae",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
-      "scope": "multi_episode_128_partial_model_overlay",
-      "series_id": "qwen3_omni_v6_lora",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "task_id": "imu_to_hand_pose",
-      "task_label": "IMU-to-Hand Pose Reconstruction",
-      "task_number": 18
-    },
-    {
       "method": "Cosmos3-Super Reasoner",
       "metric_key": "mae",
       "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
@@ -600,8 +558,8 @@
     "method_count": 9,
     "method_task_record_count": 180,
     "proxy_scored_method_task_count": 4,
-    "scored_method_task_count": 153,
-    "scoreless_method_task_count": 27,
+    "scored_method_task_count": 156,
+    "scoreless_method_task_count": 24,
     "task_count": 20
   },
   "source_matrix": "docs/data/task_method_20_result_matrix.json",
