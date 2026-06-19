@@ -70,6 +70,11 @@ QWEN_SENSOR_TARGET_PROBE_DIR = (
     / "results/omni_finetune"
     / "xperience10m_qwen3_omni_v6_sensor_target_probes_a100_20260619T000000Z"
 )
+QWEN_INTERACTION_TEXT_PROBE_DIR = (
+    ROOT
+    / "results/omni_finetune"
+    / "xperience10m_qwen3_omni_v6_interaction_text_task15_a100_20260619T000000Z"
+)
 COSMOS_SUPER_RETRIEVAL_TASK_PROBE_DIR = (
     ROOT
     / "results/omni_finetune"
@@ -121,6 +126,7 @@ QWEN_FUTURE_TASK_METRIC_PATHS = {
     "hand_trajectory_forecast": QWEN_SENSOR_TARGET_PROBE_DIR / "hand_trajectory_forecast/metrics.json",
     "modality_reconstruction": QWEN_SENSOR_TARGET_PROBE_DIR / "modality_reconstruction/metrics.json",
     "imu_to_hand_pose": QWEN_SENSOR_TARGET_PROBE_DIR / "imu_to_hand_pose/metrics.json",
+    "interaction_text_prediction": QWEN_INTERACTION_TEXT_PROBE_DIR / "interaction_text_prediction/metrics.json",
 }
 QWEN_FUTURE_TASK_METRIC_KEYS = {
     "caption_grounding": "caption_grounding_mrr",
@@ -135,6 +141,7 @@ QWEN_FUTURE_TASK_METRIC_KEYS = {
     "hand_trajectory_forecast": "hand_trajectory_forecast_mrr",
     "modality_reconstruction": "modality_reconstruction_mrr",
     "imu_to_hand_pose": "imu_to_hand_pose_mrr",
+    "interaction_text_prediction": "macro_f1",
 }
 COSMOS_SUPER_RETRIEVAL_TASK_METRIC_PATHS = {
     "hand_trajectory_forecast": COSMOS_SUPER_RETRIEVAL_TASK_PROBE_DIR / "hand_trajectory_forecast/metrics.json",
