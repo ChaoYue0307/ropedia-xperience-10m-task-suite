@@ -24,7 +24,7 @@ ssh "$REMOTE_HOST" "cd '$REMOTE_ROOT' && test -s '${RESULT_ROOT}/${RUN_ID}/${TAS
 ssh "$REMOTE_HOST" "cd '$REMOTE_ROOT' && test -s '${RESULT_ROOT}/${RUN_ID}/${TASK_ID}/predictions.jsonl'"
 
 mkdir -p "$LOCAL_RUN_DIR" "$LOCAL_LAUNCHER_DIR"
-rsync -av "${REMOTE_HOST}:${REMOTE_RUN_DIR}/" "$LOCAL_RUN_DIR/"
+rsync -av --exclude 'tail_helper_supervisor*' "${REMOTE_HOST}:${REMOTE_RUN_DIR}/" "$LOCAL_RUN_DIR/"
 for remote_launcher_log in "$REMOTE_LAUNCHER_LOG" "$REMOTE_DEFERRED_LAUNCHER_LOG"; do
   ssh "$REMOTE_HOST" "test -s '$remote_launcher_log'" >/dev/null 2>&1 \
     && rsync -av "${REMOTE_HOST}:${remote_launcher_log}" "$LOCAL_LAUNCHER_DIR/" \

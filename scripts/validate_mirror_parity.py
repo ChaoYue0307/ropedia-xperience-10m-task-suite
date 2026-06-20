@@ -24,6 +24,7 @@ QWEN3_RETRIEVAL_TASK_PROBE_RUN_IDS = [
     "xperience10m_qwen3_omni_v6_cross_modal_retrieval_probe_a100_20260618T000000Z",
     "xperience10m_qwen3_omni_v6_camera_view_sync_mosaic_tile_a100_20260619T0305Z",
     "xperience10m_qwen3_omni_v6_sensor_target_probes_a100_20260619T000000Z",
+    "xperience10m_qwen3_omni_v6_interaction_text_task15_a100_20260620T010305Z",
 ]
 
 DATA_FILES = [

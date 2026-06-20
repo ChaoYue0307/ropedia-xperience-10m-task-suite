@@ -1,0 +1,12 @@
+run_id=xperience10m_qwen3_omni_v6_interaction_text_task15_a100_20260620T010305Z
+dataset_jsonl=/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl
+caption_jsonl=/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/results/omni_finetune/xperience10m_128_raw_caption_interactions_task15_20260619_full/caption_interactions.jsonl
+caption_manifest=/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/results/omni_finetune/xperience10m_128_raw_caption_interactions_task15_20260619_full/caption_interactions_manifest.json
+model_dir=/mnt/kgc/chaoyue/ropedia-h20-side/modelscope_models/Qwen__Qwen3-Omni-30B-A3B-Instruct
+adapter_dir=/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-task-suite/checkpoints/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora/adapter_lora
+candidate_count=4
+cuda_device_groups=0,1 2,3
+shards=2
+started_at=2026-06-20T09:03:53+08:00
+finished_at=2026-06-20T11:59:39+08:00
+exit_code=0
