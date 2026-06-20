@@ -78,7 +78,12 @@ QWEN_INTERACTION_TEXT_PROBE_DIR = (
 COSMOS_SUPER_RETRIEVAL_TASK_PROBE_DIR = (
     ROOT
     / "results/omni_finetune"
-    / "xperience10m_cosmos3_super_retrieval_task_probes_a100_20260619T000000Z"
+    / "xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620"
+)
+COSMOS_SUPER_FUTURE_TASK_PROBE_DIR = (
+    ROOT
+    / "results/omni_finetune"
+    / "xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620"
 )
 QWEN_ACTION_OBJECT_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/qwen3_omni_v6_lora/metrics.json"
@@ -156,6 +161,18 @@ COSMOS_SUPER_RETRIEVAL_TASK_METRIC_KEYS = {
     "modality_reconstruction": "modality_reconstruction_mrr",
     "imu_to_hand_pose": "imu_to_hand_pose_mrr",
     "camera_view_sync_retrieval": "camera_view_sync_retrieval_mrr",
+}
+COSMOS_SUPER_FUTURE_TASK_METRIC_PATHS = {
+    "temporal_order": COSMOS_SUPER_FUTURE_TASK_PROBE_DIR / "temporal_order/metrics.json",
+    "misalignment_detection": COSMOS_SUPER_FUTURE_TASK_PROBE_DIR / "misalignment_detection/metrics.json",
+    "next_subtask_forecast": COSMOS_SUPER_FUTURE_TASK_PROBE_DIR / "next_subtask_forecast/metrics.json",
+    "object_set_forecast": COSMOS_SUPER_FUTURE_TASK_PROBE_DIR / "object_set_forecast/metrics.json",
+}
+COSMOS_SUPER_FUTURE_TASK_METRIC_KEYS = {
+    "temporal_order": "temporal_order_f1",
+    "misalignment_detection": "misalignment_detection_f1",
+    "next_subtask_forecast": "next_subtask_forecast_macro_f1",
+    "object_set_forecast": "object_set_forecast_micro_f1",
 }
 OUTPUT_JSON = ROOT / "docs/data/unified_task_model_radar.json"
 OUTPUT_SINGLE_JSON = ROOT / "docs/data/single_episode_task_model_radar.json"
@@ -369,7 +386,7 @@ METHOD_DETAILS = {
     "raw128_simple": "128-episode 4430-dim sensor NPZ simple heads; tasks 15/19 use compact proxies.",
     "raw128_neural_mlp": "128-episode 4430-dim sensor NPZ MLP heads; tasks 15/19 use compact proxies.",
     "qwen3_omni_v6_lora": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 and any completed private-GPU future/retrieval/sensor-target probes scored from task-specific JSON.",
-    "cosmos3_super_reasoner": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 8/16 and a derived task-20 action-boundary timing probe scored from existing verified JSON.",
+    "cosmos3_super_reasoner": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 5/8/9/10/11/12/13/14/16/17/18/19/20 probes where public metrics exist.",
     "cosmos3_nano_future_window": "Verified Cosmos3-Nano future-window compatibility metrics, plus tasks 10/13/14/16/17 and a derived task-20 boundary timing probe scored from existing held-out future-window artifacts.",
 }
 
@@ -424,6 +441,14 @@ def foundation_task_metric_mapping(
     for task_id, path in COSMOS_SUPER_RETRIEVAL_TASK_METRIC_PATHS.items():
         payload = read_json(path)
         metric_key = COSMOS_SUPER_RETRIEVAL_TASK_METRIC_KEYS[task_id]
+        metric_value = payload.get(metric_key)
+        if payload.get("status") != "pass" or not isinstance(metric_value, (int, float)):
+            continue
+        cosmos_super_metrics[metric_key] = metric_value
+        mapping.setdefault(task_id, {})["cosmos3_super_reasoner"] = metric_key
+    for task_id, path in COSMOS_SUPER_FUTURE_TASK_METRIC_PATHS.items():
+        payload = read_json(path)
+        metric_key = COSMOS_SUPER_FUTURE_TASK_METRIC_KEYS[task_id]
         metric_value = payload.get(metric_key)
         if payload.get("status") != "pass" or not isinstance(metric_value, (int, float)):
             continue

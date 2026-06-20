@@ -1,0 +1,53 @@
+{
+  "run_id": "xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620",
+  "shard_dirs": [
+    "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard0",
+    "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard1",
+    "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard2",
+    "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard3"
+  ],
+  "status": "pass",
+  "tasks": {
+    "camera_view_sync_retrieval": {
+      "metric_key": "camera_view_sync_retrieval_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.9979751961528727,
+      "task_label": "Camera-View Sync Retrieval",
+      "task_number": 19
+    },
+    "cross_modal_retrieval": {
+      "metric_key": "cross_modal_retrieval_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.6628490677465636,
+      "task_label": "Cross-Modal Retrieval",
+      "task_number": 9
+    },
+    "hand_trajectory_forecast": {
+      "metric_key": "hand_trajectory_forecast_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.8915253522315043,
+      "task_label": "Hand Trajectory Forecasting",
+      "task_number": 5
+    },
+    "imu_to_hand_pose": {
+      "metric_key": "imu_to_hand_pose_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.9896650636969544,
+      "task_label": "IMU-to-Hand Pose Reconstruction",
+      "task_number": 18
+    },
+    "modality_reconstruction": {
+      "metric_key": "modality_reconstruction_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.9939466801653591,
+      "task_label": "Cross-Modal Reconstruction",
+      "task_number": 10
+    }
+  },
+  "title": "Cosmos3-Super Reasoner Retrieval Task Probes"
+}

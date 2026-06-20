@@ -26,6 +26,12 @@ QWEN3_RETRIEVAL_TASK_PROBE_RUN_IDS = [
     "xperience10m_qwen3_omni_v6_sensor_target_probes_a100_20260619T000000Z",
     "xperience10m_qwen3_omni_v6_interaction_text_task15_a100_20260620T010305Z",
 ]
+COSMOS3_SUPER_RETRIEVAL_TASK_PROBE_RUN_IDS = [
+    "xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620",
+]
+COSMOS3_SUPER_FUTURE_TASK_PROBE_RUN_IDS = [
+    "xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620",
+]
 
 DATA_FILES = [
     "additional_development_directions.json",
@@ -129,16 +135,21 @@ SCRIPT_FILES = [
     "omni/build_128_episode_feature_index.py",
     "omni/collect_qwen3_future_task_probe_results.sh",
     "omni/collect_qwen3_retrieval_task_probe_results.sh",
+    "omni/collect_cosmos3_super_retrieval_task_probe_results.sh",
+    "omni/collect_cosmos3_super_future_task_probe_results.sh",
     "omni/collect_qwen3_v4_release_artifacts.py",
     "omni/defer_cosmos3_super_after_qwen_v4.sh",
     "omni/defer_qwen3_retrieval_after_order_sync.sh",
     "omni/defer_qwen3_fullparam_after_verified_qwen.sh",
     "omni/eval_qwen3_omni_future_task_probes.py",
     "omni/eval_qwen3_omni_retrieval_task_probes.py",
+    "omni/eval_cosmos3_super_future_task_probes.py",
+    "omni/eval_cosmos3_super_retrieval_task_probes.py",
     "omni/export_cosmos3_camera_pose_targets.py",
     "omni/launch_all_task_model_scoring_when_free.sh",
     "omni/merge_qwen3_omni_future_task_probe_shards.py",
     "omni/merge_qwen3_omni_retrieval_task_probe_shards.py",
+    "omni/merge_cosmos3_super_future_task_probe_shards.py",
     "omni/pack_cosmos3_super_action_batch.py",
     "omni/prepare_cosmos3_super_lora_hf_package.py",
     "omni/prepare_qwen3_lora_hf_package.py",
@@ -147,6 +158,8 @@ SCRIPT_FILES = [
     "omni/run_private_gpu_qwen3_v6_repro_smoke.sh",
     "omni/run_qwen3_omni_future_task_probes_sharded.sh",
     "omni/run_qwen3_omni_retrieval_task_probes_sharded.sh",
+    "omni/run_cosmos3_super_future_task_probes_sharded.sh",
+    "omni/run_cosmos3_super_retrieval_task_probes_sharded.sh",
     "omni/score_existing_model_output_task_probes.py",
     "omni/score_model_output_probes.py",
     "omni/run_128_task_baselines.py",
@@ -479,6 +492,42 @@ def qwen3_retrieval_task_probe_result_files() -> list[str]:
     return sorted(set(files))
 
 
+def cosmos3_super_retrieval_task_probe_result_files() -> list[str]:
+    """Return public-safe Cosmos3-Super retrieval probe outputs."""
+
+    files: list[str] = []
+    for run_id in COSMOS3_SUPER_RETRIEVAL_TASK_PROBE_RUN_IDS:
+        result_root = ROOT / "results/omni_finetune" / run_id
+        if result_root.exists():
+            for path in result_root.rglob("*"):
+                if path.is_file():
+                    files.append(path.relative_to(ROOT / "results").as_posix())
+
+        for suffix in ("launch", "launcher", "runner"):
+            launch_log = ROOT / "results/omni_finetune/deferred_launchers" / f"{run_id}.{suffix}.log"
+            if launch_log.is_file():
+                files.append(launch_log.relative_to(ROOT / "results").as_posix())
+    return sorted(set(files))
+
+
+def cosmos3_super_future_task_probe_result_files() -> list[str]:
+    """Return public-safe Cosmos3-Super future-task probe outputs."""
+
+    files: list[str] = []
+    for run_id in COSMOS3_SUPER_FUTURE_TASK_PROBE_RUN_IDS:
+        result_root = ROOT / "results/omni_finetune" / run_id
+        if result_root.exists():
+            for path in result_root.rglob("*"):
+                if path.is_file():
+                    files.append(path.relative_to(ROOT / "results").as_posix())
+
+        for suffix in ("launch", "launcher", "runner"):
+            launch_log = ROOT / "results/omni_finetune/deferred_launchers" / f"{run_id}.{suffix}.log"
+            if launch_log.is_file():
+                files.append(launch_log.relative_to(ROOT / "results").as_posix())
+    return sorted(set(files))
+
+
 def parity_group(name: str, local_path: Path, mirrors: dict[str, Path], hf_root: Path) -> dict:
     local = file_record(local_path, hf_root)
     mirror_records = {surface: file_record(path, hf_root) for surface, path in mirrors.items()}
@@ -582,6 +631,8 @@ def build_report(hf_root: Path) -> dict:
         | set(model_output_task_probe_result_files())
         | set(qwen3_future_task_probe_result_files())
         | set(qwen3_retrieval_task_probe_result_files())
+        | set(cosmos3_super_retrieval_task_probe_result_files())
+        | set(cosmos3_super_future_task_probe_result_files())
     )
     for filename in result_files:
         groups.append(
@@ -602,6 +653,8 @@ def build_report(hf_root: Path) -> dict:
         | set(model_output_task_probe_result_files())
         | set(qwen3_future_task_probe_result_files())
         | set(qwen3_retrieval_task_probe_result_files())
+        | set(cosmos3_super_retrieval_task_probe_result_files())
+        | set(cosmos3_super_future_task_probe_result_files())
     )
     for filename in space_result_files:
         groups.append(

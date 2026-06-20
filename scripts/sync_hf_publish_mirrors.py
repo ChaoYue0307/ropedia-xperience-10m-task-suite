@@ -536,6 +536,8 @@ def main() -> int:
         | set(parity.model_output_task_probe_result_files())
         | set(parity.qwen3_future_task_probe_result_files())
         | set(parity.qwen3_retrieval_task_probe_result_files())
+        | set(parity.cosmos3_super_retrieval_task_probe_result_files())
+        | set(parity.cosmos3_super_future_task_probe_result_files())
     )
     for filename in result_files:
         src = ROOT / "results" / filename
@@ -554,6 +556,8 @@ def main() -> int:
         | set(parity.model_output_task_probe_result_files())
         | set(parity.qwen3_future_task_probe_result_files())
         | set(parity.qwen3_retrieval_task_probe_result_files())
+        | set(parity.cosmos3_super_retrieval_task_probe_result_files())
+        | set(parity.cosmos3_super_future_task_probe_result_files())
     )
     for filename in space_result_files:
         src = ROOT / "results" / filename

@@ -1,0 +1,44 @@
+{
+  "records": [
+    {
+      "metric_key": "hand_trajectory_forecast_mrr",
+      "num_samples": 3951,
+      "primary_score": 0.8915253522315043,
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/metrics.json",
+      "task_id": "hand_trajectory_forecast"
+    },
+    {
+      "metric_key": "cross_modal_retrieval_mrr",
+      "num_samples": 3951,
+      "primary_score": 0.6628490677465636,
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/metrics.json",
+      "task_id": "cross_modal_retrieval"
+    },
+    {
+      "metric_key": "modality_reconstruction_mrr",
+      "num_samples": 3951,
+      "primary_score": 0.9939466801653591,
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/metrics.json",
+      "task_id": "modality_reconstruction"
+    },
+    {
+      "metric_key": "imu_to_hand_pose_mrr",
+      "num_samples": 3951,
+      "primary_score": 0.9896650636969544,
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/metrics.json",
+      "task_id": "imu_to_hand_pose"
+    },
+    {
+      "metric_key": "camera_view_sync_retrieval_mrr",
+      "num_samples": 3951,
+      "primary_score": 0.9979751961528727,
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/metrics.json",
+      "task_id": "camera_view_sync_retrieval"
+    }
+  ],
+  "run_id": "xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620",
+  "status": "pass",
+  "summary": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/summary.json",
+  "title": "Cosmos3-Super Retrieval Task Probe Collection Validation",
+  "validated_task_count": 5
+}

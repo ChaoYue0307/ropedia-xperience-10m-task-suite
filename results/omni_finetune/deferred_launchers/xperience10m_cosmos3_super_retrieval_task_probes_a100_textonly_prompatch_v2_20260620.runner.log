@@ -1,0 +1,229 @@
+{
+  "base_url": "http://127.0.0.1:8000/v1",
+  "candidate_count": 4,
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
+  "eval_split": "test",
+  "future_frames": 100,
+  "media_mode": "text_only",
+  "model": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Super_reasoner_overlay",
+  "run_id": "xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard3",
+  "sample_offset": 3,
+  "sample_stride": 4,
+  "status": "pass",
+  "tasks": {
+    "camera_view_sync_retrieval": {
+      "metric_key": "camera_view_sync_retrieval_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard3/camera_view_sync_retrieval/metrics.json",
+      "num_samples": 979,
+      "primary_score": 0.9979570990806946,
+      "task_label": "Camera-View Sync Retrieval",
+      "task_number": 19
+    },
+    "cross_modal_retrieval": {
+      "metric_key": "cross_modal_retrieval_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard3/cross_modal_retrieval/metrics.json",
+      "num_samples": 979,
+      "primary_score": 0.6563670411985023,
+      "task_label": "Cross-Modal Retrieval",
+      "task_number": 9
+    },
+    "hand_trajectory_forecast": {
+      "metric_key": "hand_trajectory_forecast_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard3/hand_trajectory_forecast/metrics.json",
+      "num_samples": 979,
+      "primary_score": 0.882618318011577,
+      "task_label": "Hand Trajectory Forecasting",
+      "task_number": 5
+    },
+    "imu_to_hand_pose": {
+      "metric_key": "imu_to_hand_pose_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard3/imu_to_hand_pose/metrics.json",
+      "num_samples": 979,
+      "primary_score": 0.9909771876064011,
+      "task_label": "IMU-to-Hand Pose Reconstruction",
+      "task_number": 18
+    },
+    "modality_reconstruction": {
+      "metric_key": "modality_reconstruction_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard3/modality_reconstruction/metrics.json",
+      "num_samples": 979,
+      "primary_score": 0.9942969016002724,
+      "task_label": "Cross-Modal Reconstruction",
+      "task_number": 10
+    }
+  },
+  "title": "Cosmos3-Super Reasoner Retrieval Task Probes"
+}
+{
+  "base_url": "http://127.0.0.1:8000/v1",
+  "candidate_count": 4,
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
+  "eval_split": "test",
+  "future_frames": 100,
+  "media_mode": "text_only",
+  "model": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Super_reasoner_overlay",
+  "run_id": "xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard2",
+  "sample_offset": 2,
+  "sample_stride": 4,
+  "status": "pass",
+  "tasks": {
+    "camera_view_sync_retrieval": {
+      "metric_key": "camera_view_sync_retrieval_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard2/camera_view_sync_retrieval/metrics.json",
+      "num_samples": 983,
+      "primary_score": 0.9974567650050865,
+      "task_label": "Camera-View Sync Retrieval",
+      "task_number": 19
+    },
+    "cross_modal_retrieval": {
+      "metric_key": "cross_modal_retrieval_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard2/cross_modal_retrieval/metrics.json",
+      "num_samples": 983,
+      "primary_score": 0.6681926076636162,
+      "task_label": "Cross-Modal Retrieval",
+      "task_number": 9
+    },
+    "hand_trajectory_forecast": {
+      "metric_key": "hand_trajectory_forecast_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard2/hand_trajectory_forecast/metrics.json",
+      "num_samples": 983,
+      "primary_score": 0.8921668362156668,
+      "task_label": "Hand Trajectory Forecasting",
+      "task_number": 5
+    },
+    "imu_to_hand_pose": {
+      "metric_key": "imu_to_hand_pose_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard2/imu_to_hand_pose/metrics.json",
+      "num_samples": 983,
+      "primary_score": 0.9911834520176332,
+      "task_label": "IMU-to-Hand Pose Reconstruction",
+      "task_number": 18
+    },
+    "modality_reconstruction": {
+      "metric_key": "modality_reconstruction_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard2/modality_reconstruction/metrics.json",
+      "num_samples": 983,
+      "primary_score": 0.9933875890132248,
+      "task_label": "Cross-Modal Reconstruction",
+      "task_number": 10
+    }
+  },
+  "title": "Cosmos3-Super Reasoner Retrieval Task Probes"
+}
+{
+  "base_url": "http://127.0.0.1:8000/v1",
+  "candidate_count": 4,
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
+  "eval_split": "test",
+  "future_frames": 100,
+  "media_mode": "text_only",
+  "model": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Super_reasoner_overlay",
+  "run_id": "xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard1",
+  "sample_offset": 1,
+  "sample_stride": 4,
+  "status": "pass",
+  "tasks": {
+    "camera_view_sync_retrieval": {
+      "metric_key": "camera_view_sync_retrieval_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard1/camera_view_sync_retrieval/metrics.json",
+      "num_samples": 988,
+      "primary_score": 0.9984817813765182,
+      "task_label": "Camera-View Sync Retrieval",
+      "task_number": 19
+    },
+    "cross_modal_retrieval": {
+      "metric_key": "cross_modal_retrieval_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard1/cross_modal_retrieval/metrics.json",
+      "num_samples": 988,
+      "primary_score": 0.6621963562753049,
+      "task_label": "Cross-Modal Retrieval",
+      "task_number": 9
+    },
+    "hand_trajectory_forecast": {
+      "metric_key": "hand_trajectory_forecast_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard1/hand_trajectory_forecast/metrics.json",
+      "num_samples": 988,
+      "primary_score": 0.9067982456140359,
+      "task_label": "Hand Trajectory Forecasting",
+      "task_number": 5
+    },
+    "imu_to_hand_pose": {
+      "metric_key": "imu_to_hand_pose_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard1/imu_to_hand_pose/metrics.json",
+      "num_samples": 988,
+      "primary_score": 0.9881072874493927,
+      "task_label": "IMU-to-Hand Pose Reconstruction",
+      "task_number": 18
+    },
+    "modality_reconstruction": {
+      "metric_key": "modality_reconstruction_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard1/modality_reconstruction/metrics.json",
+      "num_samples": 988,
+      "primary_score": 0.9956983805668016,
+      "task_label": "Cross-Modal Reconstruction",
+      "task_number": 10
+    }
+  },
+  "title": "Cosmos3-Super Reasoner Retrieval Task Probes"
+}
+{
+  "base_url": "http://127.0.0.1:8000/v1",
+  "candidate_count": 4,
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
+  "eval_split": "test",
+  "future_frames": 100,
+  "media_mode": "text_only",
+  "model": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Super_reasoner_overlay",
+  "run_id": "xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard0",
+  "sample_offset": 0,
+  "sample_stride": 4,
+  "status": "pass",
+  "tasks": {
+    "camera_view_sync_retrieval": {
+      "metric_key": "camera_view_sync_retrieval_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard0/camera_view_sync_retrieval/metrics.json",
+      "num_samples": 1001,
+      "primary_score": 0.998001998001998,
+      "task_label": "Camera-View Sync Retrieval",
+      "task_number": 19
+    },
+    "cross_modal_retrieval": {
+      "metric_key": "cross_modal_retrieval_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard0/cross_modal_retrieval/metrics.json",
+      "num_samples": 1001,
+      "primary_score": 0.664585414585416,
+      "task_label": "Cross-Modal Retrieval",
+      "task_number": 9
+    },
+    "hand_trajectory_forecast": {
+      "metric_key": "hand_trajectory_forecast_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard0/hand_trajectory_forecast/metrics.json",
+      "num_samples": 1001,
+      "primary_score": 0.8845321345321352,
+      "task_label": "Hand Trajectory Forecasting",
+      "task_number": 5
+    },
+    "imu_to_hand_pose": {
+      "metric_key": "imu_to_hand_pose_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard0/imu_to_hand_pose/metrics.json",
+      "num_samples": 1001,
+      "primary_score": 0.9884282384282385,
+      "task_label": "IMU-to-Hand Pose Reconstruction",
+      "task_number": 18
+    },
+    "modality_reconstruction": {
+      "metric_key": "modality_reconstruction_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620_shard0/modality_reconstruction/metrics.json",
+      "num_samples": 1001,
+      "primary_score": 0.9924242424242425,
+      "task_label": "Cross-Modal Reconstruction",
+      "task_number": 10
+    }
+  },
+  "title": "Cosmos3-Super Reasoner Retrieval Task Probes"
+}
+usage: merge_qwen3_omni_retrieval_task_probe_shards.py [-h] --run-id RUN_ID
+                                                       --output-dir OUTPUT_DIR
+                                                       --shard-dir SHARD_DIR
+                                                       [SHARD_DIR ...]
+merge_qwen3_omni_retrieval_task_probe_shards.py: error: the following arguments are required: --shard-dir

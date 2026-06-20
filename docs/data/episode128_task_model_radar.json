@@ -1,12 +1,12 @@
 {
   "title": "128-Episode 20-Task Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-20T04:24:26+00:00",
+  "generated_at_utc": "2026-06-20T13:58:04+00:00",
   "description": "Selected 128-episode metadata/raw baselines plus verified Qwen3/Cosmos branches. Every method has 20 records; numeric scores appear only where the public artifact produced that task target.",
   "task_count": 20,
   "method_count": 7,
   "method_task_record_count": 140,
-  "scored_method_task_count": 119,
+  "scored_method_task_count": 124,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
@@ -146,20 +146,20 @@
       "kind": "partial_128_episode_foundation_model_overlay",
       "scope": "128 selected episodes, held-out test",
       "stroke_dasharray": "4 7",
-      "method_detail": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 8/16 and a derived task-20 action-boundary timing probe scored from existing verified JSON.",
+      "method_detail": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 5/8/9/10/11/12/13/14/16/17/18/19/20 probes where public metrics exist.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 10,
-      "covered_task_count": 10,
+      "scored_task_count": 15,
+      "covered_task_count": 15,
       "proxy_scored_task_count": 0,
-      "scoreless_task_count": 10,
+      "scoreless_task_count": 5,
       "unsupported_task_count": 0,
-      "not_evaluated_task_count": 10,
+      "not_evaluated_task_count": 5,
       "status_counts": {
-        "not_evaluated_in_verified_package": 10,
-        "scored": 10
+        "not_evaluated_in_verified_package": 5,
+        "scored": 15
       },
-      "coverage_fraction": 0.5,
+      "coverage_fraction": 0.75,
       "result_record_fraction": 1.0
     },
     {
@@ -620,15 +620,15 @@
           "status_label": "scored"
         },
         "cosmos3_super_reasoner": {
-          "raw": null,
-          "metric_key": "mpjpe",
-          "source": null,
+          "raw": 0.8915253522315043,
+          "metric_key": "hand_trajectory_forecast_mrr",
+          "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.12097265238372007,
+          "raw_text": "0.8915",
+          "status_label": "scored"
         },
         "cosmos3_nano_future_window": {
           "raw": null,
@@ -984,15 +984,15 @@
           "status_label": "scored"
         },
         "cosmos3_super_reasoner": {
-          "raw": null,
-          "metric_key": "mrr",
-          "source": null,
+          "raw": 0.6628490677465636,
+          "metric_key": "cross_modal_retrieval_mrr",
+          "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.6628490677465636,
+          "raw_text": "0.6628",
+          "status_label": "scored"
         },
         "cosmos3_nano_future_window": {
           "raw": 0.022138720585222767,
@@ -1075,15 +1075,15 @@
           "status_label": "scored"
         },
         "cosmos3_super_reasoner": {
-          "raw": null,
-          "metric_key": "r2",
-          "source": null,
+          "raw": 0.9939466801653591,
+          "metric_key": "modality_reconstruction_mrr",
+          "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.9939466801653591,
+          "raw_text": "0.9939",
+          "status_label": "scored"
         },
         "cosmos3_nano_future_window": {
           "raw": 0.0002873382957286892,
@@ -1803,15 +1803,15 @@
           "status_label": "scored"
         },
         "cosmos3_super_reasoner": {
-          "raw": null,
-          "metric_key": "mae",
-          "source": null,
+          "raw": 0.9896650636969544,
+          "metric_key": "imu_to_hand_pose_mrr",
+          "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.04248852414968175,
+          "raw_text": "0.9897",
+          "status_label": "scored"
         },
         "cosmos3_nano_future_window": {
           "raw": null,
@@ -1894,15 +1894,15 @@
           "status_label": "scored"
         },
         "cosmos3_super_reasoner": {
-          "raw": null,
-          "metric_key": "mrr",
-          "source": null,
+          "raw": 0.9979751961528727,
+          "metric_key": "camera_view_sync_retrieval_mrr",
+          "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.9979751961528727,
+          "raw_text": "0.9980",
+          "status_label": "scored"
         },
         "cosmos3_nano_future_window": {
           "raw": null,
@@ -2610,17 +2610,17 @@
       "task_label": "Hand Trajectory Forecasting",
       "series_id": "cosmos3_super_reasoner",
       "method": "Cosmos3-Super Reasoner",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "mpjpe",
-      "source": null,
+      "raw": 0.8915253522315043,
+      "raw_text": "0.8915",
+      "normalized_score": 0.12097265238372007,
+      "metric_key": "hand_trajectory_forecast_mrr",
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 5,
@@ -3114,17 +3114,17 @@
       "task_label": "Cross-Modal Retrieval",
       "series_id": "cosmos3_super_reasoner",
       "method": "Cosmos3-Super Reasoner",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "mrr",
-      "source": null,
+      "raw": 0.6628490677465636,
+      "raw_text": "0.6628",
+      "normalized_score": 0.6628490677465636,
+      "metric_key": "cross_modal_retrieval_mrr",
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 9,
@@ -3240,17 +3240,17 @@
       "task_label": "Cross-Modal Reconstruction",
       "series_id": "cosmos3_super_reasoner",
       "method": "Cosmos3-Super Reasoner",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "r2",
-      "source": null,
+      "raw": 0.9939466801653591,
+      "raw_text": "0.9939",
+      "normalized_score": 0.9939466801653591,
+      "metric_key": "modality_reconstruction_mrr",
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 10,
@@ -4248,17 +4248,17 @@
       "task_label": "IMU-to-Hand Pose Reconstruction",
       "series_id": "cosmos3_super_reasoner",
       "method": "Cosmos3-Super Reasoner",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "mae",
-      "source": null,
+      "raw": 0.9896650636969544,
+      "raw_text": "0.9897",
+      "normalized_score": 0.04248852414968175,
+      "metric_key": "imu_to_hand_pose_mrr",
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 18,
@@ -4374,17 +4374,17 @@
       "task_label": "Camera-View Synchronization Retrieval",
       "series_id": "cosmos3_super_reasoner",
       "method": "Cosmos3-Super Reasoner",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "mrr",
-      "source": null,
+      "raw": 0.9979751961528727,
+      "raw_text": "0.9980",
+      "normalized_score": 0.9979751961528727,
+      "metric_key": "camera_view_sync_retrieval_mrr",
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 19,
