@@ -45,5 +45,4 @@ wait
 "$VENV_PY" "$MERGE_SCRIPT" \
   --run-id "$RUN_ID" \
   --output-dir "$OUT_DIR" \
-  --tasks "$TASKS" \
   --shard-dir $(for (( shard=0; shard<SHARDS; shard++ )); do printf ' results/omni_finetune/%s_shard%d' "$RUN_ID" "$shard"; done)
