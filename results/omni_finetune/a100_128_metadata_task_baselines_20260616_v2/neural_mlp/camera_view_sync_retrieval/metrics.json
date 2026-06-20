@@ -2,25 +2,52 @@
   "status": "pass",
   "task": "camera_view_sync_retrieval",
   "task_display_name": "Camera View Sync Retrieval",
-  "model_family": "simple_ridge_metadata_sync_proxy",
+  "model_family": "neural_mlp_metadata_sync_proxy",
   "source": "128_episode_qwen_jsonl_metadata_plus_staged_sensor_proxy_target",
   "scope": "multi_episode_128_aligned_metadata_baseline",
   "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
   "target_features": "same-window staged depth_confidence plus audio_fisheye_cam0_aac feature block",
-  "split_policy": "train metadata-to-sync-target projection on train split, rank held-out same-window targets",
+  "split_policy": "train neural metadata-to-sync-target projection on train split, rank held-out same-window targets",
   "num_train_windows": 25629,
   "num_val_windows": 4608,
   "num_test_windows": 4032,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.7994030655195535
+    },
+    {
+      "epoch": 7,
+      "loss": 0.6187457061594399
+    },
+    {
+      "epoch": 14,
+      "loss": 0.5700872481820493
+    },
+    {
+      "epoch": 21,
+      "loss": 0.547241855683517
+    },
+    {
+      "epoch": 28,
+      "loss": 0.5312212669703809
+    },
+    {
+      "epoch": 35,
+      "loss": 0.5206103704486302
+    }
+  ],
+  "device": "cuda",
   "num_queries": 4032,
-  "mrr": 0.0021294241305440664,
-  "median_rank": 1799.0,
-  "mean_rank": 1856.8348388671875,
-  "top1_accuracy": 0.0,
-  "top5_accuracy": 0.000992063492063492,
-  "top10_accuracy": 0.002976190476190476,
+  "mrr": 0.0027218370232731104,
+  "median_rank": 1929.0,
+  "mean_rank": 1942.7081298828125,
+  "top1_accuracy": 0.000496031746031746,
+  "top5_accuracy": 0.001488095238095238,
+  "top10_accuracy": 0.00248015873015873,
   "primary_metric": "mrr",
   "metric_direction": "higher",
-  "primary_score": 0.0021294241305440664,
+  "primary_score": 0.0027218370232731104,
   "proxy_completion": true,
   "proxy_reason": "paired camera-view embeddings are absent from the 128 JSONL/feature export; metadata features retrieve the synchronized same-window depth/audio block as a documented compact synchronization proxy",
   "proxy_target": "same_window_depth_confidence_plus_audio_fisheye_cam0_aac"

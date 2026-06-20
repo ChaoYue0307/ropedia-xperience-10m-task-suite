@@ -8,8 +8,8 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | --- | ---: | ---: | ---: | ---: | --- |
 | Minimal | 20 | 20 | 0 | 0 | scored 20 |
 | Neural MLP | 20 | 20 | 0 | 0 | scored 20 |
-| 128ep Aligned Simple | 20 | 19 | 0 | 1 | scored 19, unsupported 1 |
-| 128ep Aligned NN | 20 | 19 | 0 | 1 | not supported 1, scored 19 |
+| 128ep Aligned Simple | 20 | 20 | 1 | 0 | proxy scored 1, scored 19 |
+| 128ep Aligned NN | 20 | 20 | 1 | 0 | proxy scored 1, scored 19 |
 | 128ep Raw Simple | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
 | 128ep Raw NN | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
 | Qwen3-Omni v6 LoRA | 20 | 20 | 0 | 0 | scored 20 |
@@ -36,7 +36,7 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 16 | Action-Object Relation Prediction | score | score | score | score | score | score | score | score | score |
 | 17 | Future Object-Set Forecasting | score | score | score | score | score | score | score | score | score |
 | 18 | IMU-to-Hand Pose Reconstruction | score | score | score | score | score | score | score | score | not evaluated |
-| 19 | Camera-View Synchronization Retrieval | score | score | unsupported | not supported | proxy | proxy | score | score | not evaluated |
+| 19 | Camera-View Synchronization Retrieval | score | score | proxy | proxy | proxy | proxy | score | score | not evaluated |
 | 20 | Time-to-Next-Transition Regression | score | score | score | score | score | score | score | score | score |
 
 Sources and raw values are in `docs/data/task_method_20_result_matrix.json` and `docs/data/unified_task_model_radar.json`.

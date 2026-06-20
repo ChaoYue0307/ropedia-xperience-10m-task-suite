@@ -1,11 +1,11 @@
 {
   "title": "Unified 20-Task Model Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-20T16:15:23+00:00",
+  "generated_at_utc": "2026-06-20T16:47:26+00:00",
   "task_count": 20,
   "method_count": 9,
   "method_task_record_count": 180,
-  "scored_method_task_count": 169,
+  "scored_method_task_count": 171,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
@@ -73,17 +73,17 @@
       "method_detail": "128-episode aligned simple baselines: JSONL metadata/text tasks plus staged sensor-block tasks where the processed target exists.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 19,
-      "covered_task_count": 19,
-      "proxy_scored_task_count": 0,
-      "scoreless_task_count": 1,
-      "unsupported_task_count": 1,
+      "scored_task_count": 20,
+      "covered_task_count": 20,
+      "proxy_scored_task_count": 1,
+      "scoreless_task_count": 0,
+      "unsupported_task_count": 0,
       "not_evaluated_task_count": 0,
       "status_counts": {
-        "scored": 19,
-        "unsupported_without_required_target": 1
+        "proxy_scored": 1,
+        "scored": 19
       },
-      "coverage_fraction": 0.95,
+      "coverage_fraction": 1.0,
       "result_record_fraction": 1.0
     },
     {
@@ -97,17 +97,17 @@
       "method_detail": "128-episode aligned MLP baselines: JSONL metadata/text tasks plus staged sensor-block tasks where the processed target exists.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 19,
-      "covered_task_count": 19,
-      "proxy_scored_task_count": 0,
-      "scoreless_task_count": 1,
-      "unsupported_task_count": 1,
+      "scored_task_count": 20,
+      "covered_task_count": 20,
+      "proxy_scored_task_count": 1,
+      "scoreless_task_count": 0,
+      "unsupported_task_count": 0,
       "not_evaluated_task_count": 0,
       "status_counts": {
-        "not_supported_by_metadata_only_package": 1,
+        "proxy_scored": 1,
         "scored": 19
       },
-      "coverage_fraction": 0.95,
+      "coverage_fraction": 1.0,
       "result_record_fraction": 1.0
     },
     {
@@ -2283,15 +2283,26 @@
           "status_label": "scored"
         },
         "metadata128_simple": {
-          "raw": null,
+          "raw": 0.0021294241305440664,
           "metric_key": "mrr",
           "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/camera_view_sync_retrieval/metrics.json",
-          "scope": "multi_episode_128_aligned_baseline",
-          "status": "unsupported_without_required_target",
-          "reason": "requires paired camera-view feature blocks, which are not in the public 128 JSONL metadata package",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "unsupported"
+          "scope": "multi_episode_128_aligned_metadata_baseline",
+          "status": "proxy_scored",
+          "reason": "paired camera-view embeddings are absent from the 128 JSONL/feature export; metadata features retrieve the synchronized same-window depth/audio block as a documented compact synchronization proxy",
+          "normalized_score": 0.0021294241305440664,
+          "raw_text": "0.0021",
+          "status_label": "proxy scored"
+        },
+        "metadata128_neural_mlp": {
+          "raw": 0.0027218370232731104,
+          "metric_key": "mrr",
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/camera_view_sync_retrieval/metrics.json",
+          "scope": "multi_episode_128_aligned_metadata_baseline",
+          "status": "proxy_scored",
+          "reason": "paired camera-view embeddings are absent from the 128 JSONL/feature export; metadata features retrieve the synchronized same-window depth/audio block as a documented compact synchronization proxy",
+          "normalized_score": 0.0027218370232731104,
+          "raw_text": "0.0027",
+          "status_label": "proxy scored"
         },
         "raw128_simple": {
           "raw": 0.0026625150348991156,
@@ -2314,17 +2325,6 @@
           "normalized_score": 0.0025448438245803118,
           "raw_text": "0.0025",
           "status_label": "proxy scored"
-        },
-        "metadata128_neural_mlp": {
-          "raw": null,
-          "metric_key": "mrr",
-          "source": null,
-          "scope": "multi_episode_128_aligned_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode aligned rerun did not produce this task target; raw interaction text, paired camera-view embeddings, or a task-specific target builder is required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
         },
         "cosmos3_nano_future_window": {
           "raw": null,
@@ -2456,7 +2456,7 @@
       "id": "metadata128_simple",
       "title": "128ep Aligned Simple",
       "status": "a100_rerun_pass",
-      "coverage": "20 records / 19 scored aligned axes",
+      "coverage": "20 records / 20 scored aligned axes",
       "headline": "34,269 rows; train/val/test 25,629/4,608/4,032",
       "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/summary_report.json"
     },
@@ -2464,7 +2464,7 @@
       "id": "metadata128_neural_mlp",
       "title": "128ep Aligned NN",
       "status": "a100_rerun_pass",
-      "coverage": "20 records / 19 scored aligned axes",
+      "coverage": "20 records / 20 scored aligned axes",
       "headline": "compact MLP heads over metadata/text and staged block features",
       "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/summary_report.json"
     },
@@ -5477,17 +5477,17 @@
       "task_label": "Camera-View Synchronization Retrieval",
       "series_id": "metadata128_simple",
       "method": "128ep Aligned Simple",
-      "status": "unsupported_without_required_target",
-      "status_label": "unsupported",
-      "scored": false,
-      "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "status": "proxy_scored",
+      "status_label": "proxy scored",
+      "scored": true,
+      "proxy_scored": true,
+      "raw": 0.0021294241305440664,
+      "raw_text": "0.0021",
+      "normalized_score": 0.0021294241305440664,
       "metric_key": "mrr",
       "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/camera_view_sync_retrieval/metrics.json",
-      "scope": "multi_episode_128_aligned_baseline",
-      "reason": "requires paired camera-view feature blocks, which are not in the public 128 JSONL metadata package"
+      "scope": "multi_episode_128_aligned_metadata_baseline",
+      "reason": "paired camera-view embeddings are absent from the 128 JSONL/feature export; metadata features retrieve the synchronized same-window depth/audio block as a documented compact synchronization proxy"
     },
     {
       "task_number": 19,
@@ -5495,17 +5495,17 @@
       "task_label": "Camera-View Synchronization Retrieval",
       "series_id": "metadata128_neural_mlp",
       "method": "128ep Aligned NN",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "scored": false,
-      "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "status": "proxy_scored",
+      "status_label": "proxy scored",
+      "scored": true,
+      "proxy_scored": true,
+      "raw": 0.0027218370232731104,
+      "raw_text": "0.0027",
+      "normalized_score": 0.0027218370232731104,
       "metric_key": "mrr",
-      "source": null,
-      "scope": "multi_episode_128_aligned_baseline",
-      "reason": "the 128-episode aligned rerun did not produce this task target; raw interaction text, paired camera-view embeddings, or a task-specific target builder is required"
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/camera_view_sync_retrieval/metrics.json",
+      "scope": "multi_episode_128_aligned_metadata_baseline",
+      "reason": "paired camera-view embeddings are absent from the 128 JSONL/feature export; metadata features retrieve the synchronized same-window depth/audio block as a documented compact synchronization proxy"
     },
     {
       "task_number": 19,

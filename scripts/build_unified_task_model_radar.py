@@ -484,14 +484,22 @@ def read_a100_metadata_record(task_id: str, *, neural: bool = False) -> dict[str
     payload = read_json(path)
     status = payload.get("status", "missing_public_metric")
     score = payload.get("primary_score") if status == "pass" else None
+    proxy_completion = bool(payload.get("proxy_completion"))
     return {
         "raw": score,
         "metric_key": payload.get("primary_metric"),
         "source": str(path.relative_to(ROOT)),
         "scope": payload.get("scope") or "multi_episode_128_aligned_baseline",
-        "status": "scored" if status == "pass" and score is not None else "unsupported_without_required_target",
+        "status": (
+            "proxy_scored"
+            if status == "pass" and score is not None and proxy_completion
+            else "scored"
+            if status == "pass" and score is not None
+            else "unsupported_without_required_target"
+        ),
         "reason": payload.get("reason")
         or payload.get("error")
+        or payload.get("proxy_reason")
         or (
             "the 128-episode aligned artifact for this task does not contain a numeric public score"
             if status != "pass"

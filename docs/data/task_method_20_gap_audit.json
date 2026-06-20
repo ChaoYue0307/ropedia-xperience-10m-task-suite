@@ -1,10 +1,10 @@
 {
-  "generated_at_utc": "2026-06-20T16:15:35+00:00",
+  "generated_at_utc": "2026-06-20T16:47:27+00:00",
   "immediate_actions": [
     {
       "artifact": "docs/data/task_method_20_gap_audit.json",
       "id": "gap_audit",
-      "purpose": "Keep the 11 scoreless cells visible and reproducible."
+      "purpose": "Keep the 9 scoreless cells visible and reproducible."
     },
     {
       "artifact": "scripts/omni/score_model_output_probes.py",
@@ -46,27 +46,27 @@
     "metadata128_neural_mlp": {
       "kind": "partial_128_episode_aligned_baseline",
       "label": "128ep Aligned NN",
-      "proxy_scored_task_count": 0,
+      "proxy_scored_task_count": 1,
       "result_record_count": 20,
       "scope": "128 selected episodes, JSONL metadata/text plus staged sensor-block targets where available",
-      "scored_task_count": 19,
-      "scoreless_task_count": 1,
+      "scored_task_count": 20,
+      "scoreless_task_count": 0,
       "status_counts": {
-        "not_supported_by_metadata_only_package": 1,
+        "proxy_scored": 1,
         "scored": 19
       }
     },
     "metadata128_simple": {
       "kind": "partial_128_episode_aligned_baseline",
       "label": "128ep Aligned Simple",
-      "proxy_scored_task_count": 0,
+      "proxy_scored_task_count": 1,
       "result_record_count": 20,
       "scope": "128 selected episodes, JSONL metadata/text plus staged sensor-block targets where available",
-      "scored_task_count": 19,
-      "scoreless_task_count": 1,
+      "scored_task_count": 20,
+      "scoreless_task_count": 0,
       "status_counts": {
-        "scored": 19,
-        "unsupported_without_required_target": 1
+        "proxy_scored": 1,
+        "scored": 19
       }
     },
     "minimal": {
@@ -133,14 +133,10 @@
     }
   },
   "missing_by_method": {
-    "cosmos3_nano_future_window": 9,
-    "metadata128_neural_mlp": 1,
-    "metadata128_simple": 1
+    "cosmos3_nano_future_window": 9
   },
   "missing_by_status": {
-    "not_evaluated_in_verified_package": 9,
-    "not_supported_by_metadata_only_package": 1,
-    "unsupported_without_required_target": 1
+    "not_evaluated_in_verified_package": 9
   },
   "missing_by_task": {
     "02 Procedure Step Recognition": [
@@ -168,9 +164,7 @@
       "cosmos3_nano_future_window"
     ],
     "19 Camera-View Synchronization Retrieval": [
-      "cosmos3_nano_future_window",
-      "metadata128_neural_mlp",
-      "metadata128_simple"
+      "cosmos3_nano_future_window"
     ]
   },
   "missing_records": [
@@ -279,32 +273,6 @@
       "task_number": 18
     },
     {
-      "method": "128ep Aligned Simple",
-      "metric_key": "mrr",
-      "reason": "requires paired camera-view feature blocks, which are not in the public 128 JSONL metadata package",
-      "recommended_next_step": "Export the missing target field for this 128-episode method, then rerun the same train/validation/test split.",
-      "scope": "multi_episode_128_aligned_baseline",
-      "series_id": "metadata128_simple",
-      "status": "unsupported_without_required_target",
-      "status_label": "unsupported",
-      "task_id": "camera_view_sync_retrieval",
-      "task_label": "Camera-View Synchronization Retrieval",
-      "task_number": 19
-    },
-    {
-      "method": "128ep Aligned NN",
-      "metric_key": "mrr",
-      "reason": "the 128-episode aligned rerun did not produce this task target; raw interaction text, paired camera-view embeddings, or a task-specific target builder is required",
-      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
-      "scope": "multi_episode_128_aligned_baseline",
-      "series_id": "metadata128_neural_mlp",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "task_id": "camera_view_sync_retrieval",
-      "task_label": "Camera-View Synchronization Retrieval",
-      "task_number": 19
-    },
-    {
       "method": "Cosmos3-Nano Future Window",
       "metric_key": "mrr",
       "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
@@ -340,6 +308,26 @@
       "task_number": 15
     },
     {
+      "method": "128ep Aligned Simple",
+      "metric_key": "mrr",
+      "reason": "paired camera-view embeddings are absent from the 128 JSONL/feature export; metadata features retrieve the synchronized same-window depth/audio block as a documented compact synchronization proxy",
+      "series_id": "metadata128_simple",
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/camera_view_sync_retrieval/metrics.json",
+      "task_id": "camera_view_sync_retrieval",
+      "task_label": "Camera-View Synchronization Retrieval",
+      "task_number": 19
+    },
+    {
+      "method": "128ep Aligned NN",
+      "metric_key": "mrr",
+      "reason": "paired camera-view embeddings are absent from the 128 JSONL/feature export; metadata features retrieve the synchronized same-window depth/audio block as a documented compact synchronization proxy",
+      "series_id": "metadata128_neural_mlp",
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/camera_view_sync_retrieval/metrics.json",
+      "task_id": "camera_view_sync_retrieval",
+      "task_label": "Camera-View Synchronization Retrieval",
+      "task_number": 19
+    },
+    {
       "method": "128ep Raw Simple",
       "metric_key": "mrr",
       "reason": "documented compact proxy completion for this raw128 task axis",
@@ -363,9 +351,9 @@
   "score_summary": {
     "method_count": 9,
     "method_task_record_count": 180,
-    "proxy_scored_method_task_count": 4,
-    "scored_method_task_count": 169,
-    "scoreless_method_task_count": 11,
+    "proxy_scored_method_task_count": 6,
+    "scored_method_task_count": 171,
+    "scoreless_method_task_count": 9,
     "task_count": 20
   },
   "source_matrix": "docs/data/task_method_20_result_matrix.json",

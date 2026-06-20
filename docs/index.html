@@ -3148,7 +3148,7 @@
       <div class="hero-radar-panel" aria-label="Unified 20-task radar comparison">
         <div class="hero-radar-top">
           <strong>home radar comparison</strong>
-          <span>180 method-task records / 169 scored axes / raw128 complete with 2 documented proxy axes</span>
+          <span>180 method-task records / 171 scored axes / metadata+raw128 complete with documented proxy axes</span>
         </div>
         <div class="hero-radar-layout">
           <a class="hero-radar-frame" href="#suite" aria-label="Open full unified 20-task model radar">
@@ -3159,13 +3159,13 @@
             <p>The full SVG names every axis and keeps 20-result records, scored-axis counts, raw metric sources, and proxy notes attached to the same comparison view.</p>
             <div class="hero-radar-stats" aria-label="Radar coverage summary">
               <div class="hero-radar-stat"><strong>180</strong><span>method-task records</span></div>
-              <div class="hero-radar-stat"><strong>169</strong><span>scored axes</span></div>
-              <div class="hero-radar-stat"><strong>40/40</strong><span>raw128 pass</span></div>
+              <div class="hero-radar-stat"><strong>171</strong><span>scored axes</span></div>
+              <div class="hero-radar-stat"><strong>80/80</strong><span>metadata+raw pass</span></div>
               <div class="hero-radar-stat"><strong>34,269</strong><span>128ep windows</span></div>
             </div>
             <div class="hero-method-list" aria-label="Method families shown in the radar">
               <div class="hero-method" style="--method-color:#67e8d1"><strong>Minimal + Neural MLP</strong><span>Single public-sample episode, full 20-task filled polygons.</span></div>
-              <div class="hero-method" style="--method-color:#f59e0b"><strong>128ep Metadata + Raw Baselines</strong><span>Every method has 20 records; raw NPZ heads score all 20 axes, with tasks 15 and 19 marked as compact proxies.</span></div>
+              <div class="hero-method" style="--method-color:#f59e0b"><strong>128ep Metadata + Raw Baselines</strong><span>Every method has 20 records; metadata and raw NPZ heads now score all 20 axes, with compact proxy notes attached where the paired raw target is absent.</span></div>
               <div class="hero-method" style="--method-color:#9bb8ff"><strong>Qwen3-Omni + Cosmos</strong><span>Verified held-out branches carry 20 records; Qwen3 is now 20/20, Cosmos3-Super is now 20/20 with retrieval, sensor, language, interaction-text, and future-task probes, and Cosmos3-Nano is 11/20 from future-window evidence.</span></div>
             </div>
             <div class="hero-task-strip" aria-label="Radar task axis examples">
@@ -4021,7 +4021,7 @@
           </article>
           <article class="figure-brief-card">
             <h3>Score gap audit</h3>
-            <p>The matrix has 180 method-task records and 169 numeric scores. The gap audit lists every scoreless metadata/Cosmos cell and the exact target or model-output evidence required before a new number can be published.</p>
+            <p>The matrix has 180 method-task records and 171 numeric scores. The gap audit now isolates the remaining Cosmos3-Nano cells and the exact target or model-output evidence required before a new number can be published.</p>
           </article>
         </div>
         <img class="chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v6" alt="Unified 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, scored-axis counts, and proxy notes">

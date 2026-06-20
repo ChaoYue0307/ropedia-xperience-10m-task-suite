@@ -1,6 +1,6 @@
 # Task Method 20-Result Gap Audit
 
-Generated: `2026-06-20T16:15:35+00:00`
+Generated: `2026-06-20T16:47:27+00:00`
 
 This audit is the explicit gap ledger for the 9-method x 20-task result matrix.
 It keeps missing cells visible while preserving the rule that a numeric score
@@ -9,9 +9,9 @@ requires a real task target and source artifact.
 ## Score Summary
 
 - Method-task records: `180`
-- Numeric scored records: `169`
-- Scoreless records: `11`
-- Proxy-scored records: `4`
+- Numeric scored records: `171`
+- Scoreless records: `9`
+- Proxy-scored records: `6`
 - Source matrix: [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)
 
 ## Method Coverage
@@ -20,8 +20,8 @@ requires a real task target and source artifact.
 | --- | --- | --- | --- | --- | --- |
 | Minimal | minimal | 20/20 | 0 | 0 | scored: 20 |
 | Neural MLP | neural_mlp | 20/20 | 0 | 0 | scored: 20 |
-| 128ep Aligned Simple | metadata128_simple | 19/20 | 1 | 0 | scored: 19, unsupported_without_required_target: 1 |
-| 128ep Aligned NN | metadata128_neural_mlp | 19/20 | 1 | 0 | not_supported_by_metadata_only_package: 1, scored: 19 |
+| 128ep Aligned Simple | metadata128_simple | 20/20 | 0 | 1 | proxy_scored: 1, scored: 19 |
+| 128ep Aligned NN | metadata128_neural_mlp | 20/20 | 0 | 1 | proxy_scored: 1, scored: 19 |
 | 128ep Raw Simple | raw128_simple | 20/20 | 0 | 2 | proxy_scored: 2, scored: 18 |
 | 128ep Raw NN | raw128_neural_mlp | 20/20 | 0 | 2 | proxy_scored: 2, scored: 18 |
 | Qwen3-Omni v6 LoRA | qwen3_omni_v6_lora | 20/20 | 0 | 0 | scored: 20 |
@@ -33,8 +33,6 @@ requires a real task target and source artifact.
 | Status | Count | Next step |
 | --- | --- | --- |
 | not_evaluated_in_verified_package | 9 | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| not_supported_by_metadata_only_package | 1 | Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score. |
-| unsupported_without_required_target | 1 | Export the missing target field for this 128-episode method, then rerun the same train/validation/test split. |
 
 ## Scoreless Records
 
@@ -48,8 +46,6 @@ requires a real task target and source artifact.
 | 12 | Multimodal Synchronization Detection | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 15 | Interaction Text Prediction | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 18 | IMU-to-Hand Pose Reconstruction | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| 19 | Camera-View Synchronization Retrieval | 128ep Aligned Simple | unsupported | Export the missing target field for this 128-episode method, then rerun the same train/validation/test split. |
-| 19 | Camera-View Synchronization Retrieval | 128ep Aligned NN | not supported | Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score. |
 | 19 | Camera-View Synchronization Retrieval | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 
 ## Proxy Records
@@ -58,6 +54,8 @@ requires a real task target and source artifact.
 | --- | --- | --- | --- | --- |
 | 15 | Interaction Text Prediction | 128ep Raw Simple | macro_f1 | documented compact proxy completion for this raw128 task axis |
 | 15 | Interaction Text Prediction | 128ep Raw NN | macro_f1 | documented compact proxy completion for this raw128 task axis |
+| 19 | Camera-View Synchronization Retrieval | 128ep Aligned Simple | mrr | paired camera-view embeddings are absent from the 128 JSONL/feature export; metadata features retrieve the synchronized same-window depth/audio block as a documented compact synchronization proxy |
+| 19 | Camera-View Synchronization Retrieval | 128ep Aligned NN | mrr | paired camera-view embeddings are absent from the 128 JSONL/feature export; metadata features retrieve the synchronized same-window depth/audio block as a documented compact synchronization proxy |
 | 19 | Camera-View Synchronization Retrieval | 128ep Raw Simple | mrr | documented compact proxy completion for this raw128 task axis |
 | 19 | Camera-View Synchronization Retrieval | 128ep Raw NN | mrr | documented compact proxy completion for this raw128 task axis |
 
