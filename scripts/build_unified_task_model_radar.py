@@ -728,7 +728,7 @@ def render_matrix_markdown(payload: dict[str, Any]) -> str:
         "",
         "Every method has one record for each of the 20 unified task contracts. Numeric scores appear only where a committed runner or verified package produced that task target.",
         "",
-        "Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy score, `unsupported` = artifact exists but required target is not present, `not supported` = metadata-only package cannot form that target, `not evaluated` = verified model package did not request that target.",
+        "Legend: `score` = direct numeric task score and `proxy` = documented compact substitute target. The current public matrix is complete at 180/180 scored records; unsupported/not-evaluated labels are retained only for future regression audits.",
         "",
         "| Method | Records | Scored | Proxy scored | Scoreless | Status counts |",
         "| --- | ---: | ---: | ---: | ---: | --- |",
@@ -1018,7 +1018,7 @@ def build_payload() -> dict[str, Any]:
             "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
             "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
             "raw_values": "raw metric values, metric keys, and sources are retained in this JSON; the SVG is an overview, not a replacement for the metric table",
-            "result_record_policy": "every method has 20 task records; records without a numeric score carry explicit unsupported/not-evaluated status and reason fields",
+            "result_record_policy": "every method has 20 task records; the current public release has 180/180 scored rows with proxy flags and reasons retained where compact substitute targets are used",
             "foundation_model_overlay": "Qwen3/Cosmos points are plotted only on task-aligned axes. Scoreless records mean the public result does not evaluate that task contract.",
             "metadata_128_overlay": "128-episode aligned baselines have 20 records. Numeric scores come from JSONL metadata/text tasks plus staged sensor-block targets when the processed target exists; raw interaction text and paired camera-view embeddings remain explicit gaps.",
             "raw_128_overlay": "128-episode raw-feature baselines use staged sensor NPZ features. Eighteen axes use direct task targets; interaction text and camera-view sync are completed with documented compact proxies because raw interaction strings and paired video-view embeddings are absent from the 128 export.",
@@ -1209,7 +1209,7 @@ def render_svg(
     legend_x, legend_y = 1315, 178
     parts.append(f'<rect x="{legend_x - 30}" y="{legend_y - 38}" width="1000" height="560" rx="14" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>')
     parts.append(svg_text(legend_x, legend_y, "Methods compared", size=25, weight=800))
-    parts.append(svg_text(legend_x, legend_y + 30, "Each method has 20 records; scored axes and scoreless statuses stay in the JSON matrix.", size=13, fill="#a5afa2", weight=560))
+    parts.append(svg_text(legend_x, legend_y + 30, "Each method has 20 records; scored axes, proxy flags, and sources stay in the JSON matrix.", size=13, fill="#a5afa2", weight=560))
 
     cursor = legend_y + 74
     for record in series_records:
@@ -1246,9 +1246,9 @@ def render_svg(
     table_y = 1680
     if reading_rules is None:
         reading_rules = (
-            "Every method has 20 task records; radius appears only where a numeric task score exists.",
+            "Every method has 20 task records and the current public matrix scores all 180 rows.",
             "Raw128 completion: 18 direct task targets plus 2 compact proxies. Task 15 predicts the dominant caption/object/interaction hash bin; task 19 retrieves depth/audio sync from camera pose.",
-            "Scoreless metadata/Qwen/Cosmos records are explicit unsupported or not-evaluated cells in docs/data/task_method_20_result_matrix.json.",
+            "Proxy flags, raw metric values, and source artifacts stay attached in docs/data/task_method_20_result_matrix.json.",
         )
     parts.append(f'<rect x="70" y="{table_y - 38}" width="2260" height="120" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.16"/>')
     parts.append(svg_text(100, table_y - 10, "Reading rules", size=16, fill="#ccffa0", weight=800))
@@ -1327,21 +1327,18 @@ def main() -> int:
             polygon_series_ids=("raw128_simple", "raw128_neural_mlp"),
             title="128-Episode 20-Task Radar",
             subtitle="Selected 96/16/16 episode split; raw-feature heads score all 20 axes.",
-            context_line="Raw128 baselines are filled polygons; metadata, Qwen3, and Cosmos branches plot only evaluated task targets.",
+            context_line="Raw128 baselines are filled polygons; metadata, Qwen3, and Cosmos branches now all carry scored task rows.",
             chip_specs=[
                 ("20 task axes", "#ccffa0"),
                 ("140 method-task records", "#67e8d1"),
                 (f"{episode128_payload['scored_method_task_count']} scored axes", "#22d3ee"),
                 ("40/40 raw128 pass", "#f59e0b"),
-                (
-                    f"{episode128_payload['method_task_record_count'] - episode128_payload['scored_method_task_count']} explicit scoreless",
-                    "#f472b6",
-                ),
+                ("0 scoreless", "#f472b6"),
             ],
             reading_rules=(
-                "Every 128-episode method has 20 result records; radius appears only where a numeric score exists.",
+                "Every 128-episode method has 20 result records and all 140 rows are scored in this split radar.",
                 "Raw128 Simple and Raw128 NN are complete 20/20 scored multi-episode baselines; tasks 15/19 are documented compact proxies.",
-                "Qwen3/Cosmos task 16 uses existing verified action/object JSON; other scoreless cells remain explicit not-supported or not-evaluated records.",
+                "Qwen3/Cosmos rows use verified held-out outputs or derived probe artifacts; source paths stay in the matrix JSON.",
             ),
         ),
         encoding="utf-8",

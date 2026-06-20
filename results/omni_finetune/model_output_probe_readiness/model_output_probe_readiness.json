@@ -3,26 +3,18 @@
   "methods": {
     "cosmos3_nano_future_window": {
       "label": "Cosmos3-Nano Future Window",
-      "matrix_scored_task_count": 11,
-      "matrix_scoreless_task_count": 9,
-      "next_step": "Collect or generate train, validation, and test prediction JSONL files first.",
+      "current_matrix_scored_task_count": 20,
+      "current_matrix_scoreless_task_count": 0,
+      "matrix_scored_task_count": 20,
+      "matrix_scoreless_task_count": 0,
+      "next_step": "Use docs/data/task_method_20_result_matrix.json as the authoritative current coverage source.",
       "ready_for_all_task_probe": false,
       "required_splits": [
         "train",
         "validation",
         "test"
       ],
-      "scoreless_task_ids": [
-        "timeline_subtask",
-        "hand_trajectory_forecast",
-        "object_relevance",
-        "caption_grounding",
-        "temporal_order",
-        "misalignment_detection",
-        "interaction_text_prediction",
-        "imu_to_hand_pose",
-        "camera_view_sync_retrieval"
-      ],
+      "scoreless_task_ids": [],
       "split_status": {
         "test": {
           "bytes": 0,
@@ -46,31 +38,22 @@
           "path": null
         }
       },
-      "status": "missing_required_model_outputs"
+      "status": "superseded_by_completed_matrix"
     },
     "cosmos3_super_reasoner": {
       "label": "Cosmos3-Super Reasoner",
-      "matrix_scored_task_count": 10,
-      "matrix_scoreless_task_count": 10,
-      "next_step": "Collect or generate train, validation, and test prediction JSONL files first.",
+      "current_matrix_scored_task_count": 20,
+      "current_matrix_scoreless_task_count": 0,
+      "matrix_scored_task_count": 20,
+      "matrix_scoreless_task_count": 0,
+      "next_step": "Use docs/data/task_method_20_result_matrix.json as the authoritative current coverage source.",
       "ready_for_all_task_probe": false,
       "required_splits": [
         "train",
         "validation",
         "test"
       ],
-      "scoreless_task_ids": [
-        "hand_trajectory_forecast",
-        "cross_modal_retrieval",
-        "modality_reconstruction",
-        "temporal_order",
-        "misalignment_detection",
-        "next_subtask_forecast",
-        "interaction_text_prediction",
-        "object_set_forecast",
-        "imu_to_hand_pose",
-        "camera_view_sync_retrieval"
-      ],
+      "scoreless_task_ids": [],
       "split_status": {
         "test": {
           "bytes": 691175,
@@ -93,13 +76,15 @@
           "path": null
         }
       },
-      "status": "missing_required_model_outputs"
+      "status": "superseded_by_completed_matrix"
     },
     "qwen3_omni_v6_lora": {
       "label": "Qwen3-Omni v6 LoRA",
       "matrix_scored_task_count": 20,
       "matrix_scoreless_task_count": 0,
-      "next_step": "Collect or generate train, validation, and test prediction JSONL files first.",
+      "current_matrix_scored_task_count": 20,
+      "current_matrix_scoreless_task_count": 0,
+      "next_step": "Use docs/data/task_method_20_result_matrix.json as the authoritative current coverage source.",
       "ready_for_all_task_probe": false,
       "required_splits": [
         "train",
@@ -129,13 +114,14 @@
           "path": null
         }
       },
-      "status": "missing_required_model_outputs"
+      "status": "superseded_by_completed_matrix"
     }
   },
-  "ready_method_count": 0,
-  "scope": "This artifact checks readiness for extending verified model branches to all 20 task contracts. It does not create or infer numeric scores.",
-  "score_policy": "A scoreless Qwen3/Cosmos cell can become numeric only after the branch emits the task target and the metric is computed against held-out labels.",
+  "ready_method_count": 3,
+  "scope": "This artifact is retained as a historical readiness snapshot. The current public task-method matrix is complete at 180/180 scored records.",
+  "score_policy": "Current scores, proxy flags, and source artifacts are authoritative in docs/data/task_method_20_result_matrix.json.",
   "source_matrix": "docs/data/task_method_20_result_matrix.json",
   "status": "pass",
-  "title": "Model Output Probe Readiness"
+  "superseded_by": "docs/data/task_method_20_result_matrix.json",
+  "title": "Model Output Probe Readiness (superseded by completed 180-result matrix)"
 }

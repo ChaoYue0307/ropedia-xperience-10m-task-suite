@@ -276,7 +276,7 @@
 <circle cx="615.8" cy="754.8" r="8.0" fill="#d9c7ff" fill-opacity="0.92" stroke="#020502" stroke-width="2.0"/>
 <rect x="1285" y="140" width="1000" height="560" rx="14" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>
 <text x="1315.0" y="178.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="25" font-weight="800" fill="#f4f8ef" opacity="1.000">Methods compared</text>
-<text x="1315.0" y="208.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Each method has 20 records; scored axes and scoreless statuses stay in the JSON matrix.</text>
+<text x="1315.0" y="208.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Each method has 20 records; scored axes, proxy flags, and sources stay in the JSON matrix.</text>
 <line x1="1315" y1="245" x2="1365" y2="245" stroke="#ccffa0" stroke-width="7" stroke-linecap="round"/>
 <text x="1381.0" y="240.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="15" font-weight="800" fill="#f4f8ef" opacity="1.000">Minimal</text>
 <text x="1707.0" y="240.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="800" fill="#ccffa0" opacity="1.000">20 records / 20 scored</text>
@@ -410,7 +410,7 @@
 <text x="1863.0" y="1369.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="10" font-weight="560" fill="#a5afa2" opacity="1.000">MAE frames / lower better</text>
 <rect x="70" y="1642" width="2260" height="120" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.16"/>
 <text x="100.0" y="1670.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="16" font-weight="800" fill="#ccffa0" opacity="1.000">Reading rules</text>
-<text x="220.0" y="1670.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="650" fill="#dce8d7" opacity="1.000">Every method has 20 task records; radius appears only where a numeric task score exists.</text>
+<text x="220.0" y="1670.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="14" font-weight="650" fill="#dce8d7" opacity="1.000">Every method has 20 task records and the current public matrix scores all 180 rows.</text>
 <text x="220.0" y="1698.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Raw128 completion: 18 direct task targets plus 2 compact proxies. Task 15 predicts the dominant caption/object/interaction hash bin; task 19 retrieves depth/audio sync from camera pose.</text>
-<text x="220.0" y="1724.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Scoreless metadata/Qwen/Cosmos records are explicit unsupported or not-evaluated cells in docs/data/task_method_20_result_matrix.json.</text>
+<text x="220.0" y="1724.0" text-anchor="start" font-family="Space Grotesk, Arial, sans-serif" font-size="13" font-weight="560" fill="#a5afa2" opacity="1.000">Proxy flags, raw metric values, and source artifacts stay attached in docs/data/task_method_20_result_matrix.json.</text>
 </svg>

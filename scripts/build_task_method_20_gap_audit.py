@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build an explicit score-gap audit for the 9-method x 20-task matrix."""
+"""Build an explicit completion/proxy audit for the 9-method x 20-task matrix."""
 
 from __future__ import annotations
 
@@ -108,7 +108,7 @@ def build_payload(matrix: dict) -> dict:
     }
 
     return {
-        "title": "Task Method 20-Result Gap Audit",
+        "title": "Task Method 20-Result Completion Audit",
         "status": "pass",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "source_matrix": "docs/data/task_method_20_result_matrix.json",
@@ -127,8 +127,9 @@ def build_payload(matrix: dict) -> dict:
                 "emits that exact task target and metric."
             ),
             "scoreless_cell_policy": (
-                "Unsupported and not-evaluated cells stay explicit in the public matrix "
-                "instead of being hidden or backfilled with proxy model claims."
+                "If future unsupported or not-evaluated cells appear, they must stay explicit "
+                "in the public matrix instead of being hidden or backfilled with proxy model "
+                "claims. The current release has zero scoreless cells."
             ),
             "proxy_policy": (
                 "Proxy scores are allowed only when the matrix marks them as proxy_scored "
@@ -148,24 +149,25 @@ def build_payload(matrix: dict) -> dict:
                 "id": "gap_audit",
                 "artifact": "docs/data/task_method_20_gap_audit.json",
                 "purpose": (
-                    f"Keep the {matrix['method_task_record_count'] - matrix['scored_method_task_count']} "
-                    "scoreless cells visible and reproducible."
+                    f"Verify the {matrix['scored_method_task_count']}/"
+                    f"{matrix['method_task_record_count']} scored result records and keep "
+                    "proxy flags reproducible."
                 ),
             },
             {
                 "id": "model_output_probe",
                 "artifact": "scripts/omni/score_model_output_probes.py",
                 "purpose": (
-                    "Check whether train/validation/test model outputs exist before "
-                    "attempting all-task Qwen3/Cosmos scoring."
+                    "Rescore verified model-output probes when new held-out artifacts arrive "
+                    "without fabricating unsupported cells."
                 ),
             },
             {
                 "id": "guarded_gpu_launcher",
                 "artifact": "scripts/omni/launch_all_task_model_scoring_when_free.sh",
                 "purpose": (
-                    "Start a user-provided all-task scoring command only after enough "
-                    "private GPU capacity is idle."
+                    "Launch future replacement scoring runs only after enough private GPU "
+                    "capacity is idle."
                 ),
             },
         ],
@@ -212,13 +214,14 @@ def write_markdown(payload: dict) -> None:
         for row in payload["proxy_records"]
     ]
 
-    text = f"""# Task Method 20-Result Gap Audit
+    text = f"""# Task Method 20-Result Completion Audit
 
 Generated: `{payload['generated_at_utc']}`
 
-This audit is the explicit gap ledger for the 9-method x 20-task result matrix.
-It keeps missing cells visible while preserving the rule that a numeric score
-requires a real task target and source artifact.
+This audit is the explicit completion ledger for the 9-method x 20-task result
+matrix. The current public matrix is complete at 180/180 scored records while
+preserving the rule that every numeric score needs a source artifact, and every
+compact substitute target remains marked as a proxy.
 
 ## Score Summary
 
@@ -232,7 +235,7 @@ requires a real task target and source artifact.
 
 {markdown_table(['Method', 'ID', 'Scored', 'Scoreless', 'Proxy', 'Status counts'], method_rows)}
 
-## Gap Classes
+## Scoreless Classes
 
 {markdown_table(['Status', 'Count', 'Next step'], status_rows)}
 
@@ -244,11 +247,11 @@ requires a real task target and source artifact.
 
 {markdown_table(['Task', 'Task label', 'Method', 'Metric', 'Proxy note'], proxy_rows)}
 
-## Immediate Actions
+## Reproducibility Actions
 
-- Keep [`docs/data/task_method_20_gap_audit.json`](docs/data/task_method_20_gap_audit.json) next to the radar and matrix so readers can distinguish scored, proxy-scored, and scoreless cells.
-- Use [`scripts/omni/score_model_output_probes.py`](scripts/omni/score_model_output_probes.py) to check whether train/validation/test model outputs are present before trying to extend Qwen3/Cosmos to all 20 task contracts.
-- Use [`scripts/omni/launch_all_task_model_scoring_when_free.sh`](scripts/omni/launch_all_task_model_scoring_when_free.sh) as the guarded waiter for a real all-task scoring command when private GPU capacity is available.
+- Keep [`docs/data/task_method_20_gap_audit.json`](docs/data/task_method_20_gap_audit.json) next to the radar and matrix so readers can distinguish direct scored rows from proxy-scored rows.
+- Use [`scripts/omni/score_model_output_probes.py`](scripts/omni/score_model_output_probes.py) to rescore verified model outputs when stronger replacement artifacts arrive.
+- Use [`scripts/omni/launch_all_task_model_scoring_when_free.sh`](scripts/omni/launch_all_task_model_scoring_when_free.sh) as the guarded waiter for future replacement scoring commands when private GPU capacity is available.
 """
     OUTPUT_MD.write_text(text, encoding="utf-8")
 

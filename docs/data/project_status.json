@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Project Status",
-  "version": "2026-06-14",
+  "version": "2026-06-20",
   "decision": "public_sample_pipeline_verified_128_enhancement_qwen3_v6_cosmos_comparison",
   "research_positioning": "A research-engineering study that makes one public Xperience-10M sample episode inspectable, defines embodied-AI tasks over synchronized modalities, records baseline behavior, aligns simple/NN baselines to the selected 128-episode split, compares verified Qwen3-Omni and Cosmos3 branch packages as early cross-episode diagnostics, and now records a no-new-episode enhancement pack for pushing the current 128-episode suite harder.",
   "scope_boundary": {
@@ -46,7 +46,11 @@
       "val": 512,
       "test": 448
     },
-    "multi_episode_128_baseline_task_count": 12,
+    "multi_episode_128_baseline_task_count": 20,
+    "task_method_matrix_method_count": 9,
+    "task_method_matrix_record_count": 180,
+    "task_method_matrix_scored_count": 180,
+    "task_method_matrix_proxy_scored_count": 6,
     "qwen3_omni_current_eval_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
     "qwen3_omni_current_train_epochs": 2,
     "qwen3_omni_action_macro_f1": 0.0028830723979596335,
@@ -83,6 +87,17 @@
         "results/episode_task_suite/tier2_task_suite/"
       ],
       "readout": "All 20 task contracts have committed minimal metrics; tasks 13-20 reuse the same 20-frame windows, 5-frame stride, chronological split, and minimal/neural head pattern. The tier2_task_suite path is historical and now stores tasks 13-20, not a separate public tier."
+    },
+    {
+      "area": "180-result method matrix",
+      "status": "verified_complete",
+      "evidence": [
+        "docs/data/task_method_20_result_matrix.json",
+        "TASK_METHOD_20_RESULT_MATRIX.md",
+        "docs/data/task_method_20_gap_audit.json",
+        "docs/assets/charts/unified_task_model_radar.svg"
+      ],
+      "readout": "The public comparison matrix now has 9 methods x 20 tasks = 180/180 scored method-task records. Six rows are explicitly marked as compact-proxy scores where the public 128-episode export lacks the direct raw target."
     },
     {
       "area": "Neural heads",
@@ -324,7 +339,8 @@
     "Inspect EVALUATION_PROTOCOL.md before judging task metrics or leakage controls.",
     "Inspect SOURCE_ALIGNMENT_AUDIT.md before judging source-card consistency across public surfaces.",
     "Inspect XPERIENCE10M_DATASET_CARD_ALIGNMENT.md before judging dataset wording.",
-    "Inspect results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md before comparing simple/NN baselines to the selected 128-episode setup.",
+    "Inspect docs/data/task_method_20_result_matrix.json and TASK_METHOD_20_RESULT_MATRIX.md before comparing the 180 scored method-task records.",
+    "Inspect results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md and results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/ before comparing simple/NN baselines to the selected 128-episode setup.",
     "Inspect TASK_SUITE_ENHANCEMENT_128.md and docs/data/task_suite_enhancement_128.json before deciding whether more episodes are needed; the current recommended no-new-episode export is multiscale_20s10_40s20_80s40.",
     "Inspect docs/data/omni_model_comparison.json before comparing the current three result versions or the model-family 1-episode versus 128-episode groupings.",
     "Inspect docs/data/omni_finetune_verified_result.json before judging the Qwen3-Omni diagnostic pilot."

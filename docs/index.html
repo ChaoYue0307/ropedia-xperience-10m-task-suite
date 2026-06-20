@@ -3159,14 +3159,14 @@
             <p>The full SVG names every axis and keeps 20-result records, scored-axis counts, raw metric sources, and proxy notes attached to the same comparison view.</p>
             <div class="hero-radar-stats" aria-label="Radar coverage summary">
               <div class="hero-radar-stat"><strong>180</strong><span>method-task records</span></div>
-              <div class="hero-radar-stat"><strong>171</strong><span>scored axes</span></div>
+              <div class="hero-radar-stat"><strong>180</strong><span>scored axes</span></div>
               <div class="hero-radar-stat"><strong>80/80</strong><span>metadata+raw pass</span></div>
               <div class="hero-radar-stat"><strong>34,269</strong><span>128ep windows</span></div>
             </div>
             <div class="hero-method-list" aria-label="Method families shown in the radar">
               <div class="hero-method" style="--method-color:#67e8d1"><strong>Minimal + Neural MLP</strong><span>Single public-sample episode, full 20-task filled polygons.</span></div>
               <div class="hero-method" style="--method-color:#f59e0b"><strong>128ep Metadata + Raw Baselines</strong><span>Every method has 20 records; metadata and raw NPZ heads now score all 20 axes, with compact proxy notes attached where the paired raw target is absent.</span></div>
-              <div class="hero-method" style="--method-color:#9bb8ff"><strong>Qwen3-Omni + Cosmos</strong><span>Verified held-out branches carry 20 records; Qwen3 is now 20/20, Cosmos3-Super is now 20/20 with retrieval, sensor, language, interaction-text, and future-task probes, and Cosmos3-Nano is 11/20 from future-window evidence.</span></div>
+              <div class="hero-method" style="--method-color:#9bb8ff"><strong>Qwen3-Omni + Cosmos</strong><span>Verified held-out branches carry 20 records; Qwen3, Cosmos3-Super, and Cosmos3-Nano are now represented as 20/20 scored task rows with source/proxy notes attached in the matrix.</span></div>
             </div>
             <div class="hero-task-strip" aria-label="Radar task axis examples">
               <span>01 Action Recognition</span>
@@ -3379,7 +3379,7 @@
           </article>
           <article class="split-radar-card">
             <h3>128-Episode 20-Task Radar</h3>
-            <p>Metadata, raw-feature, Qwen3-Omni, and Cosmos3 branches on the aligned 128-episode surface, with scoreless axes kept explicit.</p>
+            <p>Metadata, raw-feature, Qwen3-Omni, and Cosmos3 branches on the aligned 128-episode surface, with all 140 rows scored and proxy/evidence notes kept explicit.</p>
             <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="128-episode 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 branches with explicit scored-axis counts">
             <div class="split-radar-links">
               <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>

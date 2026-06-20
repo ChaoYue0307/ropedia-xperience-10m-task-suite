@@ -2,12 +2,14 @@
 
 Generated: `2026-06-20T04:32:11+00:00`
 
-This report checks whether verified model branches have the prediction files
-needed to extend them to every 20-task contract. It is readiness evidence only;
-it does not assign new task scores.
+This historical readiness report was generated before the final all-task matrix
+completion. It is retained as provenance for the probe-planning step, but the
+current public matrix is now complete at `180/180` scored method-task records.
+Use `docs/data/task_method_20_result_matrix.json` as the authoritative current
+coverage source.
 
-| Method | ID | Matrix scores | Status | Split files | Next step |
+| Method | ID | Current matrix scores | Status | Split files | Current note |
 | --- | --- | --- | --- | --- | --- |
-| Cosmos3-Nano Future Window | cosmos3_nano_future_window | 11/20 | missing_required_model_outputs | train: missing; validation: missing; test: missing | Collect or generate train, validation, and test prediction JSONL files first. |
-| Cosmos3-Super Reasoner | cosmos3_super_reasoner | 10/20 | missing_required_model_outputs | train: missing; validation: missing; test: present | Collect or generate train, validation, and test prediction JSONL files first. |
-| Qwen3-Omni v6 LoRA | qwen3_omni_v6_lora | 20/20 | missing_required_model_outputs | train: missing; validation: missing; test: present | Collect or generate train, validation, and test prediction JSONL files first. |
+| Cosmos3-Nano Future Window | cosmos3_nano_future_window | 20/20 | superseded_by_completed_matrix | train: historical check missing; validation: historical check missing; test: historical check missing | Current scores are in the 180-row matrix with source/proxy notes. |
+| Cosmos3-Super Reasoner | cosmos3_super_reasoner | 20/20 | superseded_by_completed_matrix | train: historical check missing; validation: historical check missing; test: present | Current scores are in the 180-row matrix with source/proxy notes. |
+| Qwen3-Omni v6 LoRA | qwen3_omni_v6_lora | 20/20 | superseded_by_completed_matrix | train: historical check missing; validation: historical check missing; test: present | Current scores are in the 180-row matrix with source/proxy notes. |

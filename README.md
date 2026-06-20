@@ -30,7 +30,6 @@
   <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite"><img alt="HF Space" src="https://img.shields.io/badge/Hugging%20Face-Space-ffb000"></a>
   <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts"><img alt="artifact dataset" src="https://img.shields.io/badge/HF-artifacts-008b9a"></a>
   <a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines"><img alt="baseline model repo" src="https://img.shields.io/badge/HF-baselines-7ae5c3"></a>
-  <a href="https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results"><img alt="weights and results repo" src="https://img.shields.io/badge/HF-weights%20%2B%20results-b9ff7a"></a>
   <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m"><img alt="Xperience-10M" src="https://img.shields.io/badge/dataset-Xperience--10M-344054"></a>
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-ccffa0"></a>
 </p>
@@ -77,7 +76,7 @@ The multilingual README files are reader guides. The canonical technical evidenc
     </tr>
     <tr>
       <td><strong>180 method-task records</strong></td>
-      <td>9 methods x 20 tasks. Numeric scores appear only where a real task target and source artifact exist; unsupported and not-yet-evaluated cells stay visible.</td>
+      <td>9 methods x 20 tasks. The current public matrix is complete at 180/180 scored records, with proxy flags kept visible where a compact substitute target is used.</td>
     </tr>
     <tr>
       <td><strong>Public-sample baselines</strong></td>
@@ -133,11 +132,6 @@ The multilingual README files are reader guides. The canonical technical evidenc
       <td><strong>Understand one sample</strong></td>
       <td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html">Single-episode explorer</a></td>
       <td><a href="docs/data/raw_sample_files.json">raw sample file map</a><br><a href="results/episode_task_suite/feature_manifest.json">feature manifest</a></td>
-    </tr>
-    <tr>
-      <td><strong>Trace 128 episodes</strong></td>
-      <td><a href="XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md">128-episode feature index</a></td>
-      <td><a href="docs/data/xperience10m_128_episode_feature_index.json">source/feature JSON</a><br><a href="results/omni_finetune/xperience10m_128_episode_selection.csv">selection CSV</a></td>
     </tr>
     <tr>
       <td><strong>Read foundation directions</strong></td>
@@ -612,8 +606,8 @@ video-view embeddings. The verified model-output probe package adds task-16
 action/object relation scores for Qwen3-Omni and Cosmos3-Super, plus a task-13
 long-horizon next-action score for Cosmos3-Nano derived from its existing
 held-out future-window predictions. Metadata-only baselines and model branches
-still keep scoreless records for unsupported or not-evaluated targets instead
-of hiding those cells.
+now have scored records on all 20 axes; six compact-proxy scores stay
+explicitly marked instead of being blended into direct-target metrics.
 Cosmos3-Super forward-dynamics LoRA
 remains a branch card because its camera-pose proxy MSE is not one of the 20
 task metrics. The machine-readable copies are
@@ -636,8 +630,8 @@ The single-episode radar isolates Minimal vs Neural MLP, both with 20/20 scored
 public-sample axes. The 128-episode radar isolates metadata/raw baselines and
 Qwen3/Cosmos branches: metadata and raw-feature simple/NN baselines are now
 complete 20/20 multi-episode records, with documented compact proxy notes where
-the public export lacks the original raw target. The current matrix has 171
-numeric method-task scores out of 180 records.
+the public export lacks the original raw target. The current matrix has 180/180
+scored method-task records.
 
 The website also includes a responsive native modality atlas backed by
 [`docs/data/modality_atlas.json`](docs/data/modality_atlas.json) and

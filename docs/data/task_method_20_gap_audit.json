@@ -1,20 +1,20 @@
 {
-  "generated_at_utc": "2026-06-20T18:44:28+00:00",
+  "generated_at_utc": "2026-06-20T19:54:37+00:00",
   "immediate_actions": [
     {
       "artifact": "docs/data/task_method_20_gap_audit.json",
       "id": "gap_audit",
-      "purpose": "Keep the 0 scoreless cells visible and reproducible."
+      "purpose": "Verify the 180/180 scored result records and keep proxy flags reproducible."
     },
     {
       "artifact": "scripts/omni/score_model_output_probes.py",
       "id": "model_output_probe",
-      "purpose": "Check whether train/validation/test model outputs exist before attempting all-task Qwen3/Cosmos scoring."
+      "purpose": "Rescore verified model-output probes when new held-out artifacts arrive without fabricating unsupported cells."
     },
     {
       "artifact": "scripts/omni/launch_all_task_model_scoring_when_free.sh",
       "id": "guarded_gpu_launcher",
-      "purpose": "Start a user-provided all-task scoring command only after enough private GPU capacity is idle."
+      "purpose": "Launch future replacement scoring runs only after enough private GPU capacity is idle."
     }
   ],
   "methods": {
@@ -210,7 +210,7 @@
   "target_policy": {
     "numeric_score_gate": "A method-task cell is numeric only when a runner or verified package emits that exact task target and metric.",
     "proxy_policy": "Proxy scores are allowed only when the matrix marks them as proxy_scored and keeps the reason/source attached.",
-    "scoreless_cell_policy": "Unsupported and not-evaluated cells stay explicit in the public matrix instead of being hidden or backfilled with proxy model claims."
+    "scoreless_cell_policy": "If future unsupported or not-evaluated cells appear, they must stay explicit in the public matrix instead of being hidden or backfilled with proxy model claims. The current release has zero scoreless cells."
   },
-  "title": "Task Method 20-Result Gap Audit"
+  "title": "Task Method 20-Result Completion Audit"
 }

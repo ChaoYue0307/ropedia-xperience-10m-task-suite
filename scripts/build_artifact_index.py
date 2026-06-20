@@ -523,7 +523,7 @@ ARTIFACTS = [
         "path": "docs/data/unified_task_model_radar.json",
         "kind": "website_data",
         "surface": "website_hf",
-        "shows": "Stores normalized 20-axis radar values, raw task metrics, Qwen3/Cosmos overlay mappings, branch-card caveats, and explicit scoreless status records.",
+        "shows": "Stores normalized 20-axis radar values, raw task metrics, Qwen3/Cosmos overlay mappings, branch-card caveats, proxy flags, and source artifacts.",
     },
     {
         "id": "single_episode_task_model_radar_json",
@@ -539,7 +539,7 @@ ARTIFACTS = [
         "path": "docs/data/episode128_task_model_radar.json",
         "kind": "website_data",
         "surface": "website_hf",
-        "shows": "Machine-readable split radar for selected 128-episode metadata/raw baselines and verified Qwen3/Cosmos branches, preserving explicit scoreless cells.",
+        "shows": "Machine-readable split radar for selected 128-episode metadata/raw baselines and verified Qwen3/Cosmos branches, now complete at 140/140 scored rows with proxy notes retained.",
     },
     {
         "id": "task_method_20_result_matrix_json",
@@ -547,7 +547,7 @@ ARTIFACTS = [
         "path": "docs/data/task_method_20_result_matrix.json",
         "kind": "website_data",
         "surface": "website_hf",
-        "shows": "Machine-readable 9-method by 20-task matrix where every method has 20 records and scoreless cells carry unsupported/not-evaluated reasons.",
+        "shows": "Machine-readable 9-method by 20-task matrix where every method has 20 records and the current release is complete at 180/180 scored rows.",
     },
     {
         "id": "task_method_20_result_matrix",
@@ -555,7 +555,7 @@ ARTIFACTS = [
         "path": "TASK_METHOD_20_RESULT_MATRIX.md",
         "kind": "evaluation_protocol",
         "surface": "repo_hf",
-        "shows": "Reader-facing table that separates 20 records per method from numeric scored axes, documented raw128 proxy scores, unsupported metadata targets, and model targets not evaluated in verified packages.",
+        "shows": "Reader-facing table that separates 20 records per method, direct numeric scores, documented compact-proxy scores, and source artifacts.",
     },
     {
         "id": "task_method_20_gap_audit_json",
@@ -563,7 +563,7 @@ ARTIFACTS = [
         "path": "docs/data/task_method_20_gap_audit.json",
         "kind": "website_data",
         "surface": "website_hf",
-        "shows": "Machine-readable 180-record gap ledger with numeric scores, scoreless cells, explicit status reasons, and next evidence needed before new scores can be published.",
+        "shows": "Machine-readable 180-record completion ledger with numeric scores, proxy flags, explicit status reasons, and source artifacts.",
     },
     {
         "id": "task_method_20_gap_audit",
@@ -571,7 +571,7 @@ ARTIFACTS = [
         "path": "TASK_METHOD_20_GAP_AUDIT.md",
         "kind": "evaluation_protocol",
         "surface": "repo_hf",
-        "shows": "Reader-facing ledger that lists every scoreless method-task cell and the concrete target or model-output evidence required before it can become numeric.",
+        "shows": "Reader-facing ledger confirming 180/180 scored method-task cells and listing the six compact-proxy records separately.",
     },
     {
         "id": "unified_task_model_radar_chart",
@@ -611,7 +611,7 @@ ARTIFACTS = [
         "path": "scripts/build_task_method_20_gap_audit.py",
         "kind": "publication_workflow",
         "surface": "repo_hf",
-        "shows": "Regenerates the public gap audit from the 9-method by 20-task matrix without inventing scores for unsupported or unevaluated cells.",
+        "shows": "Regenerates the public completion/proxy audit from the 9-method by 20-task matrix without inventing unsupported scores.",
     },
     {
         "id": "all_task_model_scoring_waiter",

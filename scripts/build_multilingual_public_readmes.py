@@ -108,7 +108,7 @@ The multilingual README files are reader guides. The canonical technical evidenc
     </tr>
     <tr>
       <td><strong>180 method-task records</strong></td>
-      <td>9 methods x 20 tasks. Numeric scores appear only where a real task target and source artifact exist; unsupported and not-yet-evaluated cells stay visible.</td>
+      <td>9 methods x 20 tasks. The current public matrix is complete at 180/180 scored records, with proxy flags kept visible where a compact substitute target is used.</td>
     </tr>
     <tr>
       <td><strong>Public-sample baselines</strong></td>

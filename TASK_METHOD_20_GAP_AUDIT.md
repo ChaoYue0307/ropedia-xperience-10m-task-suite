@@ -1,10 +1,11 @@
-# Task Method 20-Result Gap Audit
+# Task Method 20-Result Completion Audit
 
-Generated: `2026-06-20T18:44:28+00:00`
+Generated: `2026-06-20T19:54:37+00:00`
 
-This audit is the explicit gap ledger for the 9-method x 20-task result matrix.
-It keeps missing cells visible while preserving the rule that a numeric score
-requires a real task target and source artifact.
+This audit is the explicit completion ledger for the 9-method x 20-task result
+matrix. The current public matrix is complete at 180/180 scored records while
+preserving the rule that every numeric score needs a source artifact, and every
+compact substitute target remains marked as a proxy.
 
 ## Score Summary
 
@@ -28,7 +29,7 @@ requires a real task target and source artifact.
 | Cosmos3-Super Reasoner | cosmos3_super_reasoner | 20/20 | 0 | 0 | scored: 20 |
 | Cosmos3-Nano Future Window | cosmos3_nano_future_window | 20/20 | 0 | 0 | scored: 20 |
 
-## Gap Classes
+## Scoreless Classes
 
 | Status | Count | Next step |
 | --- | --- | --- |
@@ -49,8 +50,8 @@ requires a real task target and source artifact.
 | 19 | Camera-View Synchronization Retrieval | 128ep Raw Simple | mrr | documented compact proxy completion for this raw128 task axis |
 | 19 | Camera-View Synchronization Retrieval | 128ep Raw NN | mrr | documented compact proxy completion for this raw128 task axis |
 
-## Immediate Actions
+## Reproducibility Actions
 
-- Keep [`docs/data/task_method_20_gap_audit.json`](docs/data/task_method_20_gap_audit.json) next to the radar and matrix so readers can distinguish scored, proxy-scored, and scoreless cells.
-- Use [`scripts/omni/score_model_output_probes.py`](scripts/omni/score_model_output_probes.py) to check whether train/validation/test model outputs are present before trying to extend Qwen3/Cosmos to all 20 task contracts.
-- Use [`scripts/omni/launch_all_task_model_scoring_when_free.sh`](scripts/omni/launch_all_task_model_scoring_when_free.sh) as the guarded waiter for a real all-task scoring command when private GPU capacity is available.
+- Keep [`docs/data/task_method_20_gap_audit.json`](docs/data/task_method_20_gap_audit.json) next to the radar and matrix so readers can distinguish direct scored rows from proxy-scored rows.
+- Use [`scripts/omni/score_model_output_probes.py`](scripts/omni/score_model_output_probes.py) to rescore verified model outputs when stronger replacement artifacts arrive.
+- Use [`scripts/omni/launch_all_task_model_scoring_when_free.sh`](scripts/omni/launch_all_task_model_scoring_when_free.sh) as the guarded waiter for future replacement scoring commands when private GPU capacity is available.

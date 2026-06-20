@@ -2,7 +2,7 @@
 
 Every method has one record for each of the 20 unified task contracts. Numeric scores appear only where a committed runner or verified package produced that task target.
 
-Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy score, `unsupported` = artifact exists but required target is not present, `not supported` = metadata-only package cannot form that target, `not evaluated` = verified model package did not request that target.
+Legend: `score` = direct numeric task score and `proxy` = documented compact substitute target. The current public matrix is complete at 180/180 scored records; unsupported/not-evaluated labels are retained only for future regression audits.
 
 | Method | Records | Scored | Proxy scored | Scoreless | Status counts |
 | --- | ---: | ---: | ---: | ---: | --- |
