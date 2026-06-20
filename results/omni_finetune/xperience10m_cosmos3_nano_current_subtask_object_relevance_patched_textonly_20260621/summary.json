@@ -1,0 +1,29 @@
+{
+  "run_id": "xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621",
+  "shard_dirs": [
+    "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard0",
+    "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard1",
+    "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard2",
+    "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard3"
+  ],
+  "status": "pass",
+  "tasks": {
+    "object_relevance": {
+      "metric_key": "object_relevance_micro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621/object_relevance/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.00047209895194032665,
+      "task_label": "Object Relevance Prediction",
+      "task_number": 7
+    },
+    "timeline_subtask": {
+      "metric_key": "timeline_subtask_macro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621/timeline_subtask/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.0,
+      "task_label": "Procedure Step Recognition",
+      "task_number": 2
+    }
+  },
+  "title": "Cosmos3-Nano Future/Current Task Probes"
+}

@@ -51,6 +51,8 @@ task_ids = [item.strip() for item in sys.argv[3].split(",") if item.strip()]
 model_label = sys.argv[4]
 run_dir = root / "results/omni_finetune" / run_id
 metric_key_by_task = {
+    "timeline_subtask": "timeline_subtask_macro_f1",
+    "object_relevance": "object_relevance_micro_f1",
     "temporal_order": "temporal_order_f1",
     "misalignment_detection": "misalignment_detection_f1",
     "next_subtask_forecast": "next_subtask_forecast_macro_f1",
@@ -85,7 +87,7 @@ for task_id, metric_key in expected.items():
     )
 
 validation = {
-    "title": f"{model_label} Future Task Probe Collection Validation",
+    "title": f"{model_label} Future/Current Task Probe Collection Validation",
     "status": "pass",
     "run_id": run_id,
     "summary": str(summary_path.relative_to(root)),

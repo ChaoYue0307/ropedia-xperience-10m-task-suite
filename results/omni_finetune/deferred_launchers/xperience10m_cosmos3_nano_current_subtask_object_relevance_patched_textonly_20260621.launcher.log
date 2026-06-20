@@ -1,0 +1,153 @@
+{
+  "base_url": "http://127.0.0.1:8001/v1",
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
+  "eval_split": "test",
+  "future_frames": 100,
+  "media_mode": "text_only",
+  "model": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Nano_reasoner_overlay",
+  "run_id": "xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard3",
+  "sample_offset": 3,
+  "sample_stride": 4,
+  "status": "pass",
+  "tasks": {
+    "object_relevance": {
+      "metric_key": "object_relevance_micro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard3/object_relevance/metrics.json",
+      "num_samples": 979,
+      "primary_score": 0.0005712653527563553,
+      "task_label": "Object Relevance Prediction",
+      "task_number": 7
+    },
+    "timeline_subtask": {
+      "metric_key": "timeline_subtask_macro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard3/timeline_subtask/metrics.json",
+      "num_samples": 979,
+      "primary_score": 0.0,
+      "task_label": "Procedure Step Recognition",
+      "task_number": 2
+    }
+  },
+  "title": "Cosmos3-Nano Future/Current Task Probes"
+}
+{
+  "base_url": "http://127.0.0.1:8001/v1",
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
+  "eval_split": "test",
+  "future_frames": 100,
+  "media_mode": "text_only",
+  "model": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Nano_reasoner_overlay",
+  "run_id": "xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard2",
+  "sample_offset": 2,
+  "sample_stride": 4,
+  "status": "pass",
+  "tasks": {
+    "object_relevance": {
+      "metric_key": "object_relevance_micro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard2/object_relevance/metrics.json",
+      "num_samples": 983,
+      "primary_score": 0.00019122287025528253,
+      "task_label": "Object Relevance Prediction",
+      "task_number": 7
+    },
+    "timeline_subtask": {
+      "metric_key": "timeline_subtask_macro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard2/timeline_subtask/metrics.json",
+      "num_samples": 983,
+      "primary_score": 0.0,
+      "task_label": "Procedure Step Recognition",
+      "task_number": 2
+    }
+  },
+  "title": "Cosmos3-Nano Future/Current Task Probes"
+}
+{
+  "base_url": "http://127.0.0.1:8001/v1",
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
+  "eval_split": "test",
+  "future_frames": 100,
+  "media_mode": "text_only",
+  "model": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Nano_reasoner_overlay",
+  "run_id": "xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard0",
+  "sample_offset": 0,
+  "sample_stride": 4,
+  "status": "pass",
+  "tasks": {
+    "object_relevance": {
+      "metric_key": "object_relevance_micro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard0/object_relevance/metrics.json",
+      "num_samples": 1001,
+      "primary_score": 0.0005532503457814661,
+      "task_label": "Object Relevance Prediction",
+      "task_number": 7
+    },
+    "timeline_subtask": {
+      "metric_key": "timeline_subtask_macro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard0/timeline_subtask/metrics.json",
+      "num_samples": 1001,
+      "primary_score": 0.0,
+      "task_label": "Procedure Step Recognition",
+      "task_number": 2
+    }
+  },
+  "title": "Cosmos3-Nano Future/Current Task Probes"
+}
+{
+  "base_url": "http://127.0.0.1:8001/v1",
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
+  "eval_split": "test",
+  "future_frames": 100,
+  "media_mode": "text_only",
+  "model": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Nano_reasoner_overlay",
+  "run_id": "xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard1",
+  "sample_offset": 1,
+  "sample_stride": 4,
+  "status": "pass",
+  "tasks": {
+    "object_relevance": {
+      "metric_key": "object_relevance_micro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard1/object_relevance/metrics.json",
+      "num_samples": 988,
+      "primary_score": 0.0005683432793407218,
+      "task_label": "Object Relevance Prediction",
+      "task_number": 7
+    },
+    "timeline_subtask": {
+      "metric_key": "timeline_subtask_macro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard1/timeline_subtask/metrics.json",
+      "num_samples": 988,
+      "primary_score": 0.0,
+      "task_label": "Procedure Step Recognition",
+      "task_number": 2
+    }
+  },
+  "title": "Cosmos3-Nano Future/Current Task Probes"
+}
+{
+  "run_id": "xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621",
+  "shard_dirs": [
+    "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard0",
+    "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard1",
+    "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard2",
+    "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621_shard3"
+  ],
+  "status": "pass",
+  "tasks": {
+    "object_relevance": {
+      "metric_key": "object_relevance_micro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621/object_relevance/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.00047209895194032665,
+      "task_label": "Object Relevance Prediction",
+      "task_number": 7
+    },
+    "timeline_subtask": {
+      "metric_key": "timeline_subtask_macro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621/timeline_subtask/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.0,
+      "task_label": "Procedure Step Recognition",
+      "task_number": 2
+    }
+  },
+  "title": "Cosmos3-Nano Future/Current Task Probes"
+}

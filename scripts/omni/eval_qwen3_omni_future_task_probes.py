@@ -43,6 +43,30 @@ from qwen3_omni_dataset_utils import (
 TASK_SPECS: OrderedDict[str, dict[str, Any]] = OrderedDict(
     [
         (
+            "timeline_subtask",
+            {
+                "task_number": 2,
+                "label": "Procedure Step Recognition",
+                "family": "classification",
+                "metric_key": "timeline_subtask_macro_f1",
+                "prediction_key": "timeline_subtask",
+                "target_field": "subtask",
+                "option_field": "subtask_options",
+            },
+        ),
+        (
+            "object_relevance",
+            {
+                "task_number": 7,
+                "label": "Object Relevance Prediction",
+                "family": "multi_label",
+                "metric_key": "object_relevance_micro_f1",
+                "prediction_key": "object_relevance",
+                "target_field": "objects",
+                "option_field": None,
+            },
+        ),
+        (
             "temporal_order",
             {
                 "task_number": 11,
@@ -331,7 +355,26 @@ def build_task_prompt(sample: dict[str, Any], future_sample: dict[str, Any], tas
             f"(resolved target start frame {future_start})."
         )
     options = task_options(sample, spec)
-    if task_id == "long_horizon_next_action":
+    if task_id == "timeline_subtask":
+        lines.extend(
+            [
+                "Recognize the current procedure step from the current window.",
+                "Return JSON only with this schema:",
+                f'{{"{prediction_key}":"<exact subtask option or unknown>"}}',
+                "Copy exactly one subtask label from this list:",
+                "\n".join(f"- {option}" for option in options),
+            ]
+        )
+    elif task_id == "object_relevance":
+        lines.extend(
+            [
+                "Identify the objects currently relevant, active, or manipulated in this window.",
+                "Return JSON only with this schema:",
+                f'{{"{prediction_key}":["<0 to 8 short object names>"]}}',
+                "Use short object names and avoid repeating the same object.",
+            ]
+        )
+    elif task_id == "long_horizon_next_action":
         lines.extend(
             [
                 "Return JSON only with this schema:",
@@ -543,6 +586,8 @@ def task_target_value(
         return "aligned" if stable_variant(task_id, sample) else "shifted"
     if task_id == "time_to_transition":
         return float(transition_targets[sample_idx])
+    if task_id in {"timeline_subtask", "object_relevance"}:
+        return task_target(sample, spec)
     return task_target(future_sample, spec)
 
 

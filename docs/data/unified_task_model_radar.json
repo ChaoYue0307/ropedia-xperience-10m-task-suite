@@ -1,11 +1,11 @@
 {
   "title": "Unified 20-Task Model Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-20T17:46:52+00:00",
+  "generated_at_utc": "2026-06-20T18:43:29+00:00",
   "task_count": 20,
   "method_count": 9,
   "method_task_record_count": 180,
-  "scored_method_task_count": 178,
+  "scored_method_task_count": 180,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
@@ -212,20 +212,19 @@
       "kind": "partial_128_episode_world_model_overlay",
       "scope": "128 selected episodes, held-out test",
       "stroke_dasharray": "2 7",
-      "method_detail": "Verified Cosmos3-Nano future-window compatibility metrics, plus model-output probes for tasks 5/8/10/11/12/13/14/15/16/17/18/19 and a derived task-20 boundary timing probe scored from held-out future-window artifacts.",
+      "method_detail": "Verified Cosmos3-Nano future-window compatibility metrics, plus model-output probes for tasks 2/5/7/8/10/11/12/13/14/15/16/17/18/19 and a derived task-20 boundary timing probe scored from held-out future-window artifacts.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 18,
-      "covered_task_count": 18,
+      "scored_task_count": 20,
+      "covered_task_count": 20,
       "proxy_scored_task_count": 0,
-      "scoreless_task_count": 2,
+      "scoreless_task_count": 0,
       "unsupported_task_count": 0,
-      "not_evaluated_task_count": 2,
+      "not_evaluated_task_count": 0,
       "status_counts": {
-        "not_evaluated_in_verified_package": 2,
-        "scored": 18
+        "scored": 20
       },
-      "coverage_fraction": 0.9,
+      "coverage_fraction": 1.0,
       "result_record_fraction": 1.0
     }
   ],
@@ -395,6 +394,17 @@
           "raw_text": "0.0000",
           "status_label": "scored"
         },
+        "cosmos3_nano_future_window": {
+          "raw": 0.0,
+          "metric_key": "timeline_subtask_macro_f1",
+          "source": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621/timeline_subtask/metrics.json",
+          "scope": "multi_episode_128_partial_model_overlay",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.0,
+          "raw_text": "0.0000",
+          "status_label": "scored"
+        },
         "metadata128_simple": {
           "raw": 0.00019512195121951218,
           "metric_key": "macro_f1",
@@ -438,17 +448,6 @@
           "normalized_score": 7.35632183908046e-05,
           "raw_text": "0.0001",
           "status_label": "scored"
-        },
-        "cosmos3_nano_future_window": {
-          "raw": null,
-          "metric_key": "macro_f1",
-          "source": null,
-          "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
         }
       }
     },
@@ -950,6 +949,17 @@
           "raw_text": "0.1370",
           "status_label": "scored"
         },
+        "cosmos3_nano_future_window": {
+          "raw": 0.00047209895194032665,
+          "metric_key": "object_relevance_micro_f1",
+          "source": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621/object_relevance/metrics.json",
+          "scope": "multi_episode_128_partial_model_overlay",
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.00047209895194032665,
+          "raw_text": "0.0005",
+          "status_label": "scored"
+        },
         "metadata128_simple": {
           "raw": 0.17764578833693304,
           "metric_key": "micro_f1",
@@ -993,17 +1003,6 @@
           "normalized_score": 0.1765890386972509,
           "raw_text": "0.1766",
           "status_label": "scored"
-        },
-        "cosmos3_nano_future_window": {
-          "raw": null,
-          "metric_key": "micro_f1",
-          "source": null,
-          "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
         }
       }
     },
@@ -2505,7 +2504,7 @@
       "id": "cosmos3_nano_future_window",
       "title": "Cosmos3-Nano Future Window",
       "status": "verified_compatibility_eval",
-      "coverage": "20 records / 18 scored task-aligned axes",
+      "coverage": "20 records / 20 scored task-aligned axes",
       "headline": "future retrieval MRR 0.0221; transition accuracy 0.9683",
       "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/eval/metrics.json"
     },
@@ -2831,17 +2830,17 @@
       "task_label": "Procedure Step Recognition",
       "series_id": "cosmos3_nano_future_window",
       "method": "Cosmos3-Nano Future Window",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "macro_f1",
-      "source": null,
+      "raw": 0.0,
+      "raw_text": "0.0000",
+      "normalized_score": 0.0,
+      "metric_key": "timeline_subtask_macro_f1",
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621/timeline_subtask/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 3,
@@ -3641,17 +3640,17 @@
       "task_label": "Object Relevance Prediction",
       "series_id": "cosmos3_nano_future_window",
       "method": "Cosmos3-Nano Future Window",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "micro_f1",
-      "source": null,
+      "raw": 0.00047209895194032665,
+      "raw_text": "0.0005",
+      "normalized_score": 0.00047209895194032665,
+      "metric_key": "object_relevance_micro_f1",
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621/object_relevance/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 8,

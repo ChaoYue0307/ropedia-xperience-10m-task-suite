@@ -105,6 +105,11 @@ COSMOS_NANO_FUTURE_ORDER_PROBE_DIR = (
     / "results/omni_finetune"
     / "xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621"
 )
+COSMOS_NANO_CURRENT_TASK_PROBE_DIR = (
+    ROOT
+    / "results/omni_finetune"
+    / "xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621"
+)
 QWEN_ACTION_OBJECT_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/qwen3_omni_v6_lora/metrics.json"
 )
@@ -214,6 +219,14 @@ COSMOS_NANO_FUTURE_ORDER_TASK_METRIC_KEYS = {
     "temporal_order": "temporal_order_f1",
     "misalignment_detection": "misalignment_detection_f1",
 }
+COSMOS_NANO_CURRENT_TASK_METRIC_PATHS = {
+    "timeline_subtask": COSMOS_NANO_CURRENT_TASK_PROBE_DIR / "timeline_subtask/metrics.json",
+    "object_relevance": COSMOS_NANO_CURRENT_TASK_PROBE_DIR / "object_relevance/metrics.json",
+}
+COSMOS_NANO_CURRENT_TASK_METRIC_KEYS = {
+    "timeline_subtask": "timeline_subtask_macro_f1",
+    "object_relevance": "object_relevance_micro_f1",
+}
 COSMOS_SUPER_INTERACTION_TEXT_TASK_METRIC_PATHS = {
     "interaction_text_prediction": COSMOS_SUPER_INTERACTION_TEXT_PROBE_DIR / "interaction_text_prediction/metrics.json",
 }
@@ -320,6 +333,7 @@ FOUNDATION_TASK_METRICS = {
     "timeline_subtask": {
         "qwen3_omni_v6_lora": "subtask_accuracy",
         "cosmos3_super_reasoner": "subtask_accuracy",
+        "cosmos3_nano_future_window": "timeline_subtask_macro_f1",
     },
     "transition_detection": {
         "qwen3_omni_v6_lora": "transition_accuracy",
@@ -342,6 +356,7 @@ FOUNDATION_TASK_METRICS = {
     "object_relevance": {
         "qwen3_omni_v6_lora": "object_micro_f1",
         "cosmos3_super_reasoner": "object_micro_f1",
+        "cosmos3_nano_future_window": "object_relevance_micro_f1",
     },
     "action_object_relation": {
         "qwen3_omni_v6_lora": "action_object_relation_macro_f1",
@@ -424,6 +439,8 @@ FOUNDATION_METRIC_SOURCE_OVERRIDES = {
     ("cosmos3_nano_future_window", "interaction_text_prediction"): COSMOS_NANO_INTERACTION_TEXT_TASK_METRIC_PATHS["interaction_text_prediction"],
     ("cosmos3_nano_future_window", "temporal_order"): COSMOS_NANO_FUTURE_ORDER_TASK_METRIC_PATHS["temporal_order"],
     ("cosmos3_nano_future_window", "misalignment_detection"): COSMOS_NANO_FUTURE_ORDER_TASK_METRIC_PATHS["misalignment_detection"],
+    ("cosmos3_nano_future_window", "timeline_subtask"): COSMOS_NANO_CURRENT_TASK_METRIC_PATHS["timeline_subtask"],
+    ("cosmos3_nano_future_window", "object_relevance"): COSMOS_NANO_CURRENT_TASK_METRIC_PATHS["object_relevance"],
     ("cosmos3_super_reasoner", "long_horizon_next_action"): COSMOS_SUPER_LONG_HORIZON_METRICS_PATH,
     ("cosmos3_super_reasoner", "time_to_transition"): COSMOS_SUPER_TIME_TO_TRANSITION_METRICS_PATH,
     ("cosmos3_super_reasoner", "hand_trajectory_forecast"): COSMOS_SUPER_RETRIEVAL_TASK_METRIC_PATHS["hand_trajectory_forecast"],
@@ -466,7 +483,7 @@ METHOD_DETAILS = {
     "raw128_neural_mlp": "128-episode 4430-dim sensor NPZ MLP heads; tasks 15/19 use compact proxies.",
     "qwen3_omni_v6_lora": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 and any completed private-GPU future/retrieval/sensor-target probes scored from task-specific JSON.",
     "cosmos3_super_reasoner": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 5/8/9/10/11/12/13/14/16/17/18/19/20 probes where public metrics exist.",
-    "cosmos3_nano_future_window": "Verified Cosmos3-Nano future-window compatibility metrics, plus model-output probes for tasks 5/8/10/11/12/13/14/15/16/17/18/19 and a derived task-20 boundary timing probe scored from held-out future-window artifacts.",
+    "cosmos3_nano_future_window": "Verified Cosmos3-Nano future-window compatibility metrics, plus model-output probes for tasks 2/5/7/8/10/11/12/13/14/15/16/17/18/19 and a derived task-20 boundary timing probe scored from held-out future-window artifacts.",
 }
 
 PROXY_TASK_IDS = {"interaction_text_prediction", "camera_view_sync_retrieval"}
@@ -867,6 +884,8 @@ def build_payload() -> dict[str, Any]:
     cosmos_nano.update(read_json(COSMOS_NANO_OBJECT_SET_METRICS_PATH))
     cosmos_nano.update(read_json(COSMOS_NANO_TIME_TO_TRANSITION_METRICS_PATH))
     for metrics_path in COSMOS_NANO_RETRIEVAL_TASK_METRIC_PATHS.values():
+        cosmos_nano.update(read_json(metrics_path))
+    for metrics_path in COSMOS_NANO_CURRENT_TASK_METRIC_PATHS.values():
         cosmos_nano.update(read_json(metrics_path))
     foundation_task_metrics = foundation_task_metric_mapping(qwen, cosmos_super)
     foundation_metrics = {

@@ -14,17 +14,17 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 128ep Raw NN | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
 | Qwen3-Omni v6 LoRA | 20 | 20 | 0 | 0 | scored 20 |
 | Cosmos3-Super Reasoner | 20 | 20 | 0 | 0 | scored 20 |
-| Cosmos3-Nano Future Window | 20 | 18 | 0 | 2 | not evaluated 2, scored 18 |
+| Cosmos3-Nano Future Window | 20 | 20 | 0 | 0 | scored 20 |
 
 | # | Task | Min | NN | 128-S | 128-NN | 128-RS | 128-RN | Qwen3 | C3-S | C3-N |
 | ---: | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 01 | Action Recognition | score | score | score | score | score | score | score | score | score |
-| 02 | Procedure Step Recognition | score | score | score | score | score | score | score | score | not evaluated |
+| 02 | Procedure Step Recognition | score | score | score | score | score | score | score | score | score |
 | 03 | Action Boundary Detection | score | score | score | score | score | score | score | score | score |
 | 04 | Next-Action Prediction | score | score | score | score | score | score | score | score | score |
 | 05 | Hand Trajectory Forecasting | score | score | score | score | score | score | score | score | score |
 | 06 | Contact State Prediction | score | score | score | score | score | score | score | score | score |
-| 07 | Object Relevance Prediction | score | score | score | score | score | score | score | score | not evaluated |
+| 07 | Object Relevance Prediction | score | score | score | score | score | score | score | score | score |
 | 08 | Language Grounding | score | score | score | score | score | score | score | score | score |
 | 09 | Cross-Modal Retrieval | score | score | score | score | score | score | score | score | score |
 | 10 | Cross-Modal Reconstruction | score | score | score | score | score | score | score | score | score |

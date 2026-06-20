@@ -103,6 +103,15 @@ def server_info(args: argparse.Namespace) -> dict[str, Any]:
         return {"error": f"{type(exc).__name__}: {exc}"}
 
 
+def model_display_name(args: argparse.Namespace) -> str:
+    text = f"{args.run_id} {args.model}".casefold()
+    if "nano" in text:
+        return "Cosmos3-Nano"
+    if "super" in text:
+        return "Cosmos3-Super Reasoner"
+    return "Cosmos3"
+
+
 def qwen_content_to_openai(content: list[dict[str, Any]], args: argparse.Namespace) -> list[dict[str, Any]]:
     converted: list[dict[str, Any]] = []
     for item in content:
@@ -173,15 +182,16 @@ def score_task(task_id: str, spec: dict[str, Any], rows: list[dict[str, Any]], o
         sample_stride=args.sample_stride,
     )
     metrics = qwen_score_task(task_id, spec, rows, output_dir, fake_args)
+    display_name = model_display_name(args)
     metrics.update(
         {
-            "title": f"Cosmos3-Super Reasoner {spec['label']}",
+            "title": f"{display_name} {spec['label']}",
             "model": args.model,
             "base_url": args.base_url,
             "media_mode": args.media_mode,
-            "scope": "held_out_test_cosmos3_super_future_task_probe",
+            "scope": "held_out_test_cosmos3_future_task_probe",
             "score_policy": (
-                "GPU-backed Cosmos3-Super Reasoner future-task probe over real held-out "
+                f"GPU-backed {display_name} future/current task probe over real held-out "
                 "targets derivable from the 128-episode JSON export. In text_only mode, "
                 "raw video/audio is omitted and the artifact is labeled as a text-only "
                 "model-output probe; no labels are fabricated and no weights are updated."
@@ -303,8 +313,9 @@ def main() -> int:
         rows = [partial_by_task[task_id][prediction_id(task_id, samples[idx])] for idx in eval_indices]
         task_metrics[task_id] = score_task(task_id, TASK_SPECS[task_id], rows, args.output_dir, args)
 
+    display_name = model_display_name(args)
     summary = {
-        "title": "Cosmos3-Super Reasoner Future Task Probes",
+        "title": f"{display_name} Future/Current Task Probes",
         "status": "pass",
         "run_id": args.run_id,
         "model": args.model,
@@ -329,7 +340,7 @@ def main() -> int:
     }
     write_json(args.output_dir / "summary.json", summary)
     report_lines = [
-        "# Cosmos3-Super Reasoner Future Task Probes",
+        f"# {display_name} Future/Current Task Probes",
         "",
         f"- Run ID: `{args.run_id}`",
         f"- Model: `{args.model}`",

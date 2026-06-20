@@ -9,7 +9,7 @@ import shutil
 from pathlib import Path
 from typing import Any
 
-from eval_cosmos3_super_future_task_probes import TASK_SPECS, score_task, write_json
+from eval_cosmos3_super_future_task_probes import TASK_SPECS, model_display_name, score_task, write_json
 from eval_qwen3_omni_future_task_probes import write_jsonl
 
 
@@ -84,8 +84,9 @@ def main() -> int:
         if (shard_dir / "server_info.json").exists() and not (args.output_dir / "server_info.json").exists():
             shutil.copy2(shard_dir / "server_info.json", args.output_dir / "server_info.json")
 
+    display_name = model_display_name(fake_args(args.run_id, first_metrics or {}))
     summary = {
-        "title": "Cosmos3-Super Reasoner Future Task Probes",
+        "title": f"{display_name} Future/Current Task Probes",
         "status": "pass",
         "run_id": args.run_id,
         "shard_dirs": [str(path) for path in args.shard_dir],
@@ -103,7 +104,7 @@ def main() -> int:
     }
     write_json(args.output_dir / "summary.json", summary)
     report = [
-        "# Cosmos3-Super Reasoner Future Task Probes",
+        f"# {display_name} Future/Current Task Probes",
         "",
         f"- Run ID: `{args.run_id}`",
         f"- Shards: `{len(args.shard_dir)}`",

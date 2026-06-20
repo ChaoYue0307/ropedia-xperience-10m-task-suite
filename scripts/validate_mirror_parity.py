@@ -33,6 +33,7 @@ COSMOS3_SUPER_RETRIEVAL_TASK_PROBE_RUN_IDS = [
 COSMOS3_SUPER_FUTURE_TASK_PROBE_RUN_IDS = [
     "xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620",
     "xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621",
+    "xperience10m_cosmos3_nano_current_subtask_object_relevance_patched_textonly_20260621",
 ]
 COSMOS3_SUPER_INTERACTION_TEXT_TASK_PROBE_RUN_IDS = [
     "xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z",
@@ -524,7 +525,14 @@ def cosmos3_super_future_task_probe_result_files() -> list[str]:
     """Return public-safe Cosmos3-Super future-task probe outputs."""
 
     files: list[str] = []
-    compact_names = {"RUN_REPORT.md", "collection_validation.json", "metrics.json", "server_info.json", "summary.json"}
+    compact_names = {
+        "RUN_REPORT.md",
+        "collection_validation.json",
+        "metrics.json",
+        "per_class_metrics.csv",
+        "server_info.json",
+        "summary.json",
+    }
     for run_id in COSMOS3_SUPER_FUTURE_TASK_PROBE_RUN_IDS:
         result_root = ROOT / "results/omni_finetune" / run_id
         if result_root.exists():
