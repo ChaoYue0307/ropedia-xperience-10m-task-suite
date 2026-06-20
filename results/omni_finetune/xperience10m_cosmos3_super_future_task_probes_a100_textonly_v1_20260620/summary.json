@@ -1,0 +1,45 @@
+{
+  "run_id": "xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620",
+  "shard_dirs": [
+    "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620_shard0",
+    "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620_shard1",
+    "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620_shard2",
+    "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620_shard3"
+  ],
+  "status": "pass",
+  "tasks": {
+    "misalignment_detection": {
+      "metric_key": "misalignment_detection_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/misalignment_detection/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.37271645981034185,
+      "task_label": "Multimodal Misalignment Detection",
+      "task_number": 12
+    },
+    "next_subtask_forecast": {
+      "metric_key": "macro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/next_subtask_forecast/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.0,
+      "task_label": "Long-Horizon Next-Subtask Forecasting",
+      "task_number": 14
+    },
+    "object_set_forecast": {
+      "metric_key": "micro_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/object_set_forecast/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.0009279881217520415,
+      "task_label": "Future Object-Set Forecasting",
+      "task_number": 17
+    },
+    "temporal_order": {
+      "metric_key": "temporal_order_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/temporal_order/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.6286317274823326,
+      "task_label": "Temporal Order Verification",
+      "task_number": 11
+    }
+  },
+  "title": "Cosmos3-Super Reasoner Future Task Probes"
+}

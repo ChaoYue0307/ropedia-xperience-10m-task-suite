@@ -1,0 +1,33 @@
+{
+  "accuracy": 0.4986079473551,
+  "adapter_dir": ".",
+  "base_url": "http://127.0.0.1:8000/v1",
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
+  "eval_split": "test",
+  "future_frames": 100,
+  "labels": [
+    "aligned",
+    "shifted"
+  ],
+  "macro_f1": 0.37271645981034185,
+  "media_mode": "text_only",
+  "metric_key": "misalignment_detection_f1",
+  "misalignment_detection_accuracy": 0.4986079473551,
+  "misalignment_detection_f1": 0.37271645981034185,
+  "misalignment_detection_macro_f1": 0.37271645981034185,
+  "model": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Super_reasoner_overlay",
+  "model_id": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Super_reasoner_overlay",
+  "num_samples": 3951,
+  "primary_metric": "misalignment_detection_f1",
+  "primary_score": 0.37271645981034185,
+  "run_id": "xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620",
+  "sample_offset": 0,
+  "sample_stride": 1,
+  "scope": "held_out_test_cosmos3_super_future_task_probe",
+  "score_policy": "GPU-backed Cosmos3-Super Reasoner future-task probe over real held-out targets derivable from the 128-episode JSON export. In text_only mode, raw video/audio is omitted and the artifact is labeled as a text-only model-output probe; no labels are fabricated and no weights are updated.",
+  "status": "pass",
+  "task_id": "misalignment_detection",
+  "task_label": "Multimodal Misalignment Detection",
+  "task_number": 12,
+  "title": "Cosmos3-Super Reasoner Multimodal Misalignment Detection"
+}

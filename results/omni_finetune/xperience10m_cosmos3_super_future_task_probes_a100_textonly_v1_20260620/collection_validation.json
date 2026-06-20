@@ -1,0 +1,37 @@
+{
+  "records": [
+    {
+      "metric_key": "temporal_order_f1",
+      "num_samples": 3951,
+      "primary_score": 0.6286317274823326,
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/temporal_order/metrics.json",
+      "task_id": "temporal_order"
+    },
+    {
+      "metric_key": "misalignment_detection_f1",
+      "num_samples": 3951,
+      "primary_score": 0.37271645981034185,
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/misalignment_detection/metrics.json",
+      "task_id": "misalignment_detection"
+    },
+    {
+      "metric_key": "next_subtask_forecast_macro_f1",
+      "num_samples": 3951,
+      "primary_score": 0.0,
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/next_subtask_forecast/metrics.json",
+      "task_id": "next_subtask_forecast"
+    },
+    {
+      "metric_key": "object_set_forecast_micro_f1",
+      "num_samples": 3951,
+      "primary_score": 0.0009279881217520415,
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/object_set_forecast/metrics.json",
+      "task_id": "object_set_forecast"
+    }
+  ],
+  "run_id": "xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620",
+  "status": "pass",
+  "summary": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/summary.json",
+  "title": "Cosmos3-Super Future Task Probe Collection Validation",
+  "validated_task_count": 4
+}
