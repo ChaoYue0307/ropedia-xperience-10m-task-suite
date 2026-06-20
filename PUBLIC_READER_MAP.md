@@ -17,6 +17,7 @@ trail.
 | Compare current results | `RESEARCH_TAKEAWAYS.md` | `docs/data/task_method_20_result_matrix.json`, `docs/data/unified_task_model_radar.json` |
 | Compare 1-episode and 128-episode methods | Homepage radar section | `docs/data/single_episode_task_model_radar.json`, `docs/data/episode128_task_model_radar.json` |
 | Find all derived artifacts | `ARTIFACT_GUIDE.md` | HF artifact dataset, `docs/data/artifact_index.json` |
+| Download model weights with their matching results | Hugging Face weights/results repo | `manifest.json`, `analysis/docs/data/task_method_20_result_matrix.json`, `results/` |
 | Reproduce or extend the work | `REPRODUCIBILITY.md` | `QUALITY_GATES.md`, `scripts/`, `results/` |
 | Understand foundation-model directions | `THREE_FOUNDATION_PIPELINES.md` | `FOUNDATION_MODEL_PLAN.md`, `docs/data/three_foundation_pipelines.json` |
 | Check public-release health | `PUBLIC_SURFACE_QA.md` | `docs/data/live_publication_status.json`, `docs/data/mirror_parity.json` |
@@ -30,6 +31,7 @@ trail.
 | Hugging Face Space | Hub-hosted copy of the dashboard and static app assets | Sharing the visual dashboard from HF |
 | HF artifact dataset | Public-safe derived artifacts, reports, metrics, website JSON, and sanitized model result packages | Downloading evidence bundles |
 | HF baseline model repo | Baseline weights, metrics, figures, and mirrored task artifacts | Reusing compact baseline outputs |
+| HF weights/results repo | Consolidated baseline weights, Qwen3/Cosmos adapter weights, verified results, analysis files, and file-level manifest | Auditing all public-safe weight-bearing artifacts from one repo |
 | Qwen3/Cosmos model repos | Adapter-specific public weights or package cards when a branch is verified and publishable | Inspecting model-branch artifacts |
 
 ## Evidence Layers

@@ -30,6 +30,7 @@
   <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite"><img alt="HF Space" src="https://img.shields.io/badge/Hugging%20Face-Space-ffb000"></a>
   <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts"><img alt="artifact dataset" src="https://img.shields.io/badge/HF-artifacts-008b9a"></a>
   <a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines"><img alt="baseline model repo" src="https://img.shields.io/badge/HF-baselines-7ae5c3"></a>
+  <a href="https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results"><img alt="weights and results repo" src="https://img.shields.io/badge/HF-weights%20%2B%20results-b9ff7a"></a>
   <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m"><img alt="Xperience-10M" src="https://img.shields.io/badge/dataset-Xperience--10M-344054"></a>
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-ccffa0"></a>
 </p>
@@ -557,6 +558,7 @@ Hugging Face Space app:
     <tr><td><strong>GitHub Container package</strong></td><td><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/pkgs/container/ropedia-xperience-10m-task-suite">ghcr.io/chaoyue0307/ropedia-xperience-10m-task-suite</a></td></tr>
     <tr><td><strong>Derived artifacts on Hugging Face</strong></td><td><a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts</a></td></tr>
     <tr><td><strong>Minimal and neural task baselines on Hugging Face</strong></td><td><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">huggingface.co/cy0307/ropedia-xperience-10m-task-baselines</a></td></tr>
+    <tr><td><strong>Consolidated weights, results, and analysis package</strong></td><td><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results">huggingface.co/cy0307/ropedia-xperience-10m-weights-results</a></td></tr>
     <tr><td><strong>Qwen3-Omni 128-episode LoRA adapter</strong></td><td><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep</a></td></tr>
     <tr><td><strong>Cosmos3-Super forward-dynamics LoRA adapter</strong></td><td><a href="https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep">huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep</a></td></tr>
     <tr><td><strong>Hugging Face collection</strong></td><td><a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite">huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite</a></td></tr>

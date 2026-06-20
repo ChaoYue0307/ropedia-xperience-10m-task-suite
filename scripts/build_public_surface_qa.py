@@ -188,6 +188,7 @@ def build_report() -> dict:
         "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite",
         "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts",
         "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines",
+        "https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results",
         "https://huggingface.co/datasets/ropedia-ai/xperience-10m",
         "https://ropedia.com/dataset",
     ]

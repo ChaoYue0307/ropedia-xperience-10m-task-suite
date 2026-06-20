@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Reader Map",
   "status": "published",
-  "purpose": "Organize the GitHub repo, GitHub Pages dashboard, Hugging Face Space, artifact dataset, baseline model repo, and model-branch repos without removing evidence.",
+  "purpose": "Organize the GitHub repo, GitHub Pages dashboard, Hugging Face Space, artifact dataset, baseline model repo, consolidated weights/results repo, and model-branch repos without removing evidence.",
   "fast_paths": [
     {
       "reader_goal": "Understand the project in one pass",
@@ -44,6 +44,11 @@
       "then_inspect": ["Hugging Face artifact dataset", "docs/data/artifact_index.json"]
     },
     {
+      "reader_goal": "Download model weights with their matching results",
+      "start_here": "Hugging Face weights/results repo",
+      "then_inspect": ["manifest.json", "analysis/docs/data/task_method_20_result_matrix.json", "results/"]
+    },
+    {
       "reader_goal": "Reproduce or extend the work",
       "start_here": "REPRODUCIBILITY.md",
       "then_inspect": ["QUALITY_GATES.md", "scripts/", "results/"]
@@ -84,6 +89,11 @@
       "surface": "HF baseline model repo",
       "responsibility": "Baseline weights, metrics, figures, and mirrored task artifacts.",
       "best_use": "Reusing compact baseline outputs."
+    },
+    {
+      "surface": "HF weights/results repo",
+      "responsibility": "Consolidated baseline weights, Qwen3/Cosmos adapter weights, verified results, analysis files, and file-level manifest.",
+      "best_use": "Auditing all public-safe weight-bearing artifacts from one repo."
     },
     {
       "surface": "Qwen3/Cosmos model repos",

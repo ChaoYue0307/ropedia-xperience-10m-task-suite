@@ -32,6 +32,7 @@ DEFAULT_NAMESPACE = "cy0307"
 DEFAULT_SPACE_REPO = "ropedia-xperience-10m-task-suite"
 DEFAULT_ARTIFACT_REPO = "ropedia-xperience-10m-task-suite-artifacts"
 DEFAULT_MODEL_REPO = "ropedia-xperience-10m-task-baselines"
+DEFAULT_WEIGHTS_RESULTS_REPO = "ropedia-xperience-10m-weights-results"
 DEFAULT_QWEN3_LORA_REPO = "ropedia-qwen3-omni-lora-128ep"
 DEFAULT_COSMOS3_SUPER_LORA_REPO = "ropedia-cosmos3-super-forward-dynamics-lora-128ep"
 COLLECTION_TITLE = "Ropedia Xperience-10M Task Suite"
@@ -130,6 +131,7 @@ datasets:
   - ropedia-ai/xperience-10m
 models:
   - cy0307/ropedia-xperience-10m-task-baselines
+  - cy0307/ropedia-xperience-10m-weights-results
   - cy0307/ropedia-qwen3-omni-lora-128ep
   - cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep
 ---
@@ -343,12 +345,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--space-repo", default=DEFAULT_SPACE_REPO)
     parser.add_argument("--artifact-repo", default=DEFAULT_ARTIFACT_REPO)
     parser.add_argument("--model-repo", default=DEFAULT_MODEL_REPO)
+    parser.add_argument("--weights-results-repo", default=DEFAULT_WEIGHTS_RESULTS_REPO)
     parser.add_argument("--qwen3-lora-repo", default=DEFAULT_QWEN3_LORA_REPO)
     parser.add_argument("--cosmos3-super-lora-repo", default=DEFAULT_COSMOS3_SUPER_LORA_REPO)
     parser.add_argument("--token", default=os.environ.get("HF_TOKEN", "").strip())
     parser.add_argument("--skip-space", action="store_true")
     parser.add_argument("--skip-artifacts", action="store_true")
     parser.add_argument("--skip-model", action="store_true")
+    parser.add_argument("--skip-weights-results", action="store_true")
     return parser.parse_args()
 
 
@@ -521,12 +525,14 @@ def main() -> int:
     space_repo = full_repo(args.namespace, args.space_repo)
     artifact_repo = full_repo(args.namespace, args.artifact_repo)
     model_repo = full_repo(args.namespace, args.model_repo)
+    weights_results_repo = full_repo(args.namespace, args.weights_results_repo)
     qwen3_lora_repo = full_repo(args.namespace, args.qwen3_lora_repo)
     cosmos3_super_lora_repo = full_repo(args.namespace, args.cosmos3_super_lora_repo)
 
     api.create_repo(space_repo, repo_type="space", space_sdk="gradio", exist_ok=True, token=token)
     api.create_repo(artifact_repo, repo_type="dataset", exist_ok=True, token=token)
     api.create_repo(model_repo, repo_type=None, exist_ok=True, token=token)
+    api.create_repo(weights_results_repo, repo_type=None, exist_ok=True, token=token)
 
     if not args.skip_space:
         upload_folder(
@@ -575,17 +581,26 @@ def main() -> int:
             "Publish Ropedia Xperience-10M model binaries",
             allow_patterns=["**/*.npz", "**/*.pt"],
         )
+    if not args.skip_weights_results:
+        upload_folder(
+            api,
+            token,
+            weights_results_repo,
+            None,
+            hf_root / "weights_results",
+            "Publish consolidated Ropedia Xperience-10M weights/results bundle",
+        )
 
     try:
         collection_description = (
-            "Space, artifact dataset, minimal plus neural baseline model repos, "
-            "and verified Qwen3/Cosmos3 adapter repos for the Ropedia "
-            "Xperience-10M task suite."
+            "Ropedia Xperience-10M: dashboard, artifacts, baseline weights, "
+            "consolidated weights/results, and Qwen3/Cosmos adapters."
         )
         collection_notes = {
             space_repo: "Interactive/static dashboard with raw public-sample previews and task-suite analysis.",
             artifact_repo: "Public-safe metrics, predictions, docs, scripts, diagrams, and verified_public result packages.",
             model_repo: "Minimal numpy weights plus aligned neural MLP checkpoints and task-head metrics.",
+            weights_results_repo: "Consolidated baseline weights, Qwen3/Cosmos adapter weights, verified results, and analysis manifest.",
             qwen3_lora_repo: "Verified v6 rank64 Qwen3-Omni LoRA adapter for the selected 128-episode diagnostic branch.",
             cosmos3_super_lora_repo: "Verified Cosmos3-Super forward-dynamics LoRA adapter over camera-pose proxy targets.",
         }
@@ -606,6 +621,14 @@ def main() -> int:
         api.add_collection_item(collection.slug, space_repo, "space", note=collection_notes[space_repo], exists_ok=True, token=token)
         api.add_collection_item(collection.slug, artifact_repo, "dataset", note=collection_notes[artifact_repo], exists_ok=True, token=token)
         api.add_collection_item(collection.slug, model_repo, "model", note=collection_notes[model_repo], exists_ok=True, token=token)
+        api.add_collection_item(
+            collection.slug,
+            weights_results_repo,
+            "model",
+            note=collection_notes[weights_results_repo],
+            exists_ok=True,
+            token=token,
+        )
         api.add_collection_item(
             collection.slug,
             qwen3_lora_repo,
@@ -631,6 +654,7 @@ def main() -> int:
     print(f"Space: https://huggingface.co/spaces/{space_repo}")
     print(f"Artifacts: https://huggingface.co/datasets/{artifact_repo}")
     print(f"Models: https://huggingface.co/{model_repo}")
+    print(f"Weights/results: https://huggingface.co/{weights_results_repo}")
     print(f"Qwen3 LoRA: https://huggingface.co/{qwen3_lora_repo}")
     print(f"Cosmos3-Super LoRA: https://huggingface.co/{cosmos3_super_lora_repo}")
     return 0
