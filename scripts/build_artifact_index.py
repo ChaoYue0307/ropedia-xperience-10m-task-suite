@@ -574,6 +574,22 @@ ARTIFACTS = [
         "shows": "Reader-facing ledger confirming 180/180 scored method-task cells and listing the six compact-proxy records separately.",
     },
     {
+        "id": "task_method_20_source_audit_json",
+        "title": "Task-method 20-result source audit JSON",
+        "path": "docs/data/task_method_20_source_audit.json",
+        "kind": "website_data",
+        "surface": "website_hf",
+        "shows": "Machine-readable check that scored JSON-backed matrix cells match their declared metric source values.",
+    },
+    {
+        "id": "task_method_20_source_audit",
+        "title": "Task-method 20-result source audit",
+        "path": "TASK_METHOD_20_SOURCE_AUDIT.md",
+        "kind": "evaluation_protocol",
+        "surface": "repo_hf",
+        "shows": "Reader-facing source-value audit for the 180-result matrix.",
+    },
+    {
         "id": "unified_task_model_radar_chart",
         "title": "Unified 20-task model radar",
         "path": "docs/assets/charts/unified_task_model_radar.svg",
@@ -612,6 +628,14 @@ ARTIFACTS = [
         "kind": "publication_workflow",
         "surface": "repo_hf",
         "shows": "Regenerates the public completion/proxy audit from the 9-method by 20-task matrix without inventing unsupported scores.",
+    },
+    {
+        "id": "task_method_20_source_audit_validator",
+        "title": "Task-method source-audit validator",
+        "path": "scripts/validate_task_method_matrix_sources.py",
+        "kind": "publication_workflow",
+        "surface": "repo_hf",
+        "shows": "Fails release checks if a scored matrix row disagrees with its JSON metric source.",
     },
     {
         "id": "all_task_model_scoring_waiter",

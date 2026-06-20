@@ -133,7 +133,7 @@ def parse_args() -> argparse.Namespace:
         default=256,
         help="Use centroid classification instead of dense softmax when the train label space is larger than this.",
     )
-    parser.add_argument("--include-neural", action="store_true", default=True)
+    parser.add_argument("--include-neural", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--neural-epochs", type=int, default=35)
     parser.add_argument("--neural-hidden-dim", type=int, default=128)
     parser.add_argument("--neural-batch-size", type=int, default=256)
@@ -335,8 +335,6 @@ def row_text_features(row: dict[str, Any], episode: dict[str, Any] | None) -> st
         parts.extend([
             "main_task:",
             norm(episode.get("main_task")),
-            "episode_split:",
-            norm(episode.get("split")),
         ])
     media = row.get("media") or {}
     parts.extend([

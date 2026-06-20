@@ -1,8 +1,8 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-20T19:54:40+00:00",
+  "generated_at_utc": "2026-06-20T20:48:09+00:00",
   "status": "pass",
-  "artifact_count": 222,
+  "artifact_count": 225,
   "missing": [],
   "by_kind": {
     "project_path": 18,
@@ -10,12 +10,12 @@
     "visual_asset_source": 3,
     "scaleup_contract": 7,
     "scaleup_status": 52,
-    "publication_workflow": 6,
+    "publication_workflow": 7,
     "reproducibility": 4,
     "project_scope": 1,
     "source_alignment": 5,
-    "evaluation_protocol": 8,
-    "website_data": 10,
+    "evaluation_protocol": 9,
+    "website_data": 11,
     "generated_figure": 7,
     "visualization_builder": 1,
     "model_result": 5,
@@ -301,8 +301,8 @@
       "surface": "repo_hf",
       "shows": "Runs simple metadata and neural MLP baselines on the same selected 96/16/16 episode split used by the Qwen3-Omni diagnostic pilot.",
       "exists": true,
-      "bytes": 74368,
-      "sha256": "6f54bfb963d5102ebd61eb8f8b6d8f6919db673378c9d5940d89ec5ea6f3d4b2"
+      "bytes": 74316,
+      "sha256": "164c908bee1d4a6e0db344692833787582e45317b240ef5afbfbdb609a5175e6"
     },
     {
       "id": "task_suite_enhancement_128",
@@ -610,7 +610,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "169e325bc72c8de10a37b192948b69625ad51c3b9560b4249b03bbdc7f135f97"
+      "sha256": "c916b18a11917e46e8561520cf2307f190c671c82e710ebd0f3522ec8a4be2bd"
     },
     {
       "id": "source_alignment_validator",
@@ -730,8 +730,8 @@
       "surface": "website_hf",
       "shows": "Stores normalized 20-axis radar values, raw task metrics, Qwen3/Cosmos overlay mappings, branch-card caveats, proxy flags, and source artifacts.",
       "exists": true,
-      "bytes": 228743,
-      "sha256": "89ec87e0c5abe27e2273e59e959565103aca7d360f9cc1fb086f6d76f96c1097"
+      "bytes": 228799,
+      "sha256": "c9c708f64963dac10e764eaae8e1b14c7161a938afa5ef5723fe59dc4ce764af"
     },
     {
       "id": "single_episode_task_model_radar_json",
@@ -742,7 +742,7 @@
       "shows": "Machine-readable split radar for the one-episode Minimal and Neural MLP baselines, both scored on all 20 task contracts.",
       "exists": true,
       "bytes": 51097,
-      "sha256": "60ec85be6976c92f9719e693b4aa6e0b2a14cd23366433c412d5077e4a79cd79"
+      "sha256": "d5e882120633f4d3ae90f1491682701c7593a42fc09e39b83fc5f375258e76e7"
     },
     {
       "id": "episode128_task_model_radar_json",
@@ -752,8 +752,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable split radar for selected 128-episode metadata/raw baselines and verified Qwen3/Cosmos branches, now complete at 140/140 scored rows with proxy notes retained.",
       "exists": true,
-      "bytes": 184889,
-      "sha256": "b40c8f8721020b75c69a298e3650b6f469444e7c21dd1135e822d934960bab98"
+      "bytes": 184945,
+      "sha256": "8d4ef9c4cf1cf334fd41417d40fa0687ceefa964da9f8338c82f8cc6d36a3e76"
     },
     {
       "id": "task_method_20_result_matrix_json",
@@ -763,8 +763,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable 9-method by 20-task matrix where every method has 20 records and the current release is complete at 180/180 scored rows.",
       "exists": true,
-      "bytes": 128481,
-      "sha256": "9b8806f4e4be69e2a074af2a091e59dd5a2409d87b61b426283e21763c995dce"
+      "bytes": 128509,
+      "sha256": "382e538dff284c5e2cf19fe2b3eb014d1b48fb33082bb2ece532ce3de6c1e9bb"
     },
     {
       "id": "task_method_20_result_matrix",
@@ -786,7 +786,7 @@
       "shows": "Machine-readable 180-record completion ledger with numeric scores, proxy flags, explicit status reasons, and source artifacts.",
       "exists": true,
       "bytes": 8500,
-      "sha256": "2347b06517a9b43e78769ba97cc2da4bafaf1bffd6ebcffa8a07508093ca2059"
+      "sha256": "9cfd2ce8c4eb3bbe7e2af3f41df3b3ab74db9db08d9ea2e4f569f612358470dd"
     },
     {
       "id": "task_method_20_gap_audit",
@@ -797,7 +797,29 @@
       "shows": "Reader-facing ledger confirming 180/180 scored method-task cells and listing the six compact-proxy records separately.",
       "exists": true,
       "bytes": 3417,
-      "sha256": "1f3db1cacb53a26be98aeb71ac4ab9e9319ed7ad823b882d9c99b20ec9615626"
+      "sha256": "3afc5db9803b6419ce4f40d6fb0dd5380ae182fb85b4f7b0f6ea6a46ae065c63"
+    },
+    {
+      "id": "task_method_20_source_audit_json",
+      "title": "Task-method 20-result source audit JSON",
+      "path": "docs/data/task_method_20_source_audit.json",
+      "kind": "website_data",
+      "surface": "website_hf",
+      "shows": "Machine-readable check that scored JSON-backed matrix cells match their declared metric source values.",
+      "exists": true,
+      "bytes": 561,
+      "sha256": "c795c8f387648a90e66146efc44a4be2f272d4a44097f0b9b39a7347df83daa0"
+    },
+    {
+      "id": "task_method_20_source_audit",
+      "title": "Task-method 20-result source audit",
+      "path": "TASK_METHOD_20_SOURCE_AUDIT.md",
+      "kind": "evaluation_protocol",
+      "surface": "repo_hf",
+      "shows": "Reader-facing source-value audit for the 180-result matrix.",
+      "exists": true,
+      "bytes": 447,
+      "sha256": "2b8bc99b7157894d59fa2f23ebaee33ce9e6e01c0b7316c7555ab0071c85eb41"
     },
     {
       "id": "unified_task_model_radar_chart",
@@ -840,8 +862,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the direction-aware radar chart and machine-readable metric overlay JSON.",
       "exists": true,
-      "bytes": 67953,
-      "sha256": "3533f33e52af60edf49b1c1fa586d2b8c158e3925875ca46c38714018e6035a0"
+      "bytes": 68542,
+      "sha256": "470b4c8acc437114b51d96987cd6324b9bf1d2ca16e9721d7fb00708aa58b383"
     },
     {
       "id": "task_method_20_gap_audit_builder",
@@ -853,6 +875,17 @@
       "exists": true,
       "bytes": 10295,
       "sha256": "e2a3b41d3cca6efee7076b68c35693a4c53f5f2549e2eecbf035b98a717a3f65"
+    },
+    {
+      "id": "task_method_20_source_audit_validator",
+      "title": "Task-method source-audit validator",
+      "path": "scripts/validate_task_method_matrix_sources.py",
+      "kind": "publication_workflow",
+      "surface": "repo_hf",
+      "shows": "Fails release checks if a scored matrix row disagrees with its JSON metric source.",
+      "exists": true,
+      "bytes": 7877,
+      "sha256": "97edc3f064f77d544eff539bb7f16f8162e58ec581a63b91c473bada080f86ae"
     },
     {
       "id": "all_task_model_scoring_waiter",
@@ -873,8 +906,8 @@
       "surface": "repo_hf",
       "shows": "Checks whether Qwen3/Cosmos branches have train, validation, and test prediction files before extending model overlays to all 20 task contracts.",
       "exists": true,
-      "bytes": 4770,
-      "sha256": "ad701c03153c6755f284281640465efde3313f48bc0189942f5637bb19328bfb"
+      "bytes": 4320,
+      "sha256": "11cff26749bf6ad8b8ee028b18e0b4be5713ed8b5325578caa03be25d894263b"
     },
     {
       "id": "model_output_probe_script",
@@ -884,8 +917,8 @@
       "surface": "repo_hf",
       "shows": "Audits model-output split availability and writes a readiness report without assigning new numeric task scores.",
       "exists": true,
-      "bytes": 9133,
-      "sha256": "3a867d0333fe591999715158e311011db25da018ca39c9b4638930841f35efb8"
+      "bytes": 10520,
+      "sha256": "741ee733068e87c52c8da2bd15987e2b4538b5e705592182d76c42b5cf34fe96"
     },
     {
       "id": "existing_model_output_task_probe",
@@ -1104,8 +1137,8 @@
       "surface": "repo_hf",
       "shows": "Lists the automated and post-publish checks used to keep the release current.",
       "exists": true,
-      "bytes": 4880,
-      "sha256": "526a38edffdb8e96eb7be3fc4ae4c8fab5a43ac4ed6e57137e9e0857c75b0a27"
+      "bytes": 5184,
+      "sha256": "4931d4457c4c5b0978fdf31861b6e3e2da6e24368398cf1756120a32cbff98f0"
     },
     {
       "id": "quality_gate_manifest",
@@ -1115,8 +1148,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
-      "bytes": 8100,
-      "sha256": "48e27e70a590e881f25c6ee01dff8c0218b6b83bb2b5f8b17b68c8d38d1bf6a6"
+      "bytes": 8640,
+      "sha256": "445196830bb913bfa075ae4174e7b1f5b64f623cf13a2afde7513add9dbefc21"
     },
     {
       "id": "public_surface_qa",
@@ -1252,8 +1285,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 66834,
-      "sha256": "4cad7de030e0192ac2cf676738c30e070bf25414e482e594fbfe724aa3a7853a"
+      "bytes": 67647,
+      "sha256": "d2b4af98e6fd8b23fd86cd068f2bbf887e5d69686dd62fe3bfc7e8251a6d75d6"
     },
     {
       "id": "reproducibility_contract",
@@ -1285,8 +1318,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 66058,
-      "sha256": "cc9c83c7094ef36b73125f902c6d8776203f8abc910cedb61610dadc1bb823a5"
+      "bytes": 67105,
+      "sha256": "8fc1a2b5d4a50d49ff5738ec1e5e91088dbfa514c9f0485d3afe708add6d94a1"
     },
     {
       "id": "publication_audit",
@@ -1297,7 +1330,7 @@
       "volatile": true,
       "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and credential text.",
       "exists": true,
-      "bytes": 10502,
+      "bytes": 10662,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1321,7 +1354,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 1392513,
+      "bytes": 1395239,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1333,7 +1366,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 20022,
+      "bytes": 20141,
       "hash_policy": "existence_and_size_only"
     },
     {

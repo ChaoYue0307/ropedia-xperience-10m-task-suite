@@ -56,7 +56,8 @@ links to tasks 13-20. The unified radar chart is published as
 `docs/data/unified_task_model_radar.json`; the 9-method by 20-task completion
 matrix is complete at `180/180` scored method-task records and is published in
 `docs/data/task_method_20_result_matrix.json`, with the explicit audit in
-`docs/data/task_method_20_gap_audit.json`. Split radars for
+`docs/data/task_method_20_gap_audit.json` and source-value audit in
+`docs/data/task_method_20_source_audit.json`. Split radars for
 the one-episode baselines and selected 128-episode methods are published as
 `docs/assets/charts/single_episode_task_model_radar.svg` and
 `docs/assets/charts/episode128_task_model_radar.svg`.
@@ -219,7 +220,8 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
                 "20-task completion matrix is complete at `180/180` scored\n"
                 "method-task records and is published in\n"
                 "`docs/data/task_method_20_result_matrix.json`, with the explicit\n"
-                "audit in `docs/data/task_method_20_gap_audit.json`. Split radars are in\n"
+                "audit in `docs/data/task_method_20_gap_audit.json` and source-value\n"
+                "audit in `docs/data/task_method_20_source_audit.json`. Split radars are in\n"
                 "`docs/assets/charts/single_episode_task_model_radar.svg` and\n"
                 "`docs/assets/charts/episode128_task_model_radar.svg`.\n",
             )
@@ -232,7 +234,8 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
                 "`docs/data/unified_task_model_radar.json`; the 9-method by 20-task\n"
                 "completion matrix is complete at `180/180` scored method-task records\n"
                 "and is published in `docs/data/task_method_20_result_matrix.json`,\n"
-                "with the explicit audit in `docs/data/task_method_20_gap_audit.json`.",
+                "with the explicit audit in `docs/data/task_method_20_gap_audit.json`\n"
+                "and source-value audit in `docs/data/task_method_20_source_audit.json`.",
             )
         if "completion matrix is in `docs/data/task_method_20_result_matrix.json`" in text:
             text = text.replace(
@@ -240,7 +243,8 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
                 "with the explicit\ngap audit in `docs/data/task_method_20_gap_audit.json`.",
                 "completion matrix is complete at `180/180` scored method-task records "
                 "and is published in `docs/data/task_method_20_result_matrix.json`, "
-                "with the explicit\naudit in `docs/data/task_method_20_gap_audit.json`.",
+                "with the explicit\naudit in `docs/data/task_method_20_gap_audit.json` "
+                "and source-value audit in `docs/data/task_method_20_source_audit.json`.",
             )
         if (
             "docs/data/task_method_20_result_matrix.json" in text
@@ -250,6 +254,15 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
                 "`docs/data/task_method_20_result_matrix.json`.",
                 "`docs/data/task_method_20_result_matrix.json`, with the explicit\n"
                 "gap audit in `docs/data/task_method_20_gap_audit.json`.",
+            )
+        if (
+            "docs/data/task_method_20_gap_audit.json" in text
+            and "docs/data/task_method_20_source_audit.json" not in text
+        ):
+            text = text.replace(
+                "`docs/data/task_method_20_gap_audit.json`.",
+                "`docs/data/task_method_20_gap_audit.json` and source-value audit in\n"
+                "`docs/data/task_method_20_source_audit.json`.",
             )
         if (
             "docs/data/task_method_20_result_matrix.json" in text

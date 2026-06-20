@@ -1,13 +1,12 @@
 {
-  "generated_at_utc": "2026-06-20T04:32:11+00:00",
+  "completion_state": "completed_matrix",
+  "generated_at_utc": "2026-06-20T20:38:59+00:00",
   "methods": {
     "cosmos3_nano_future_window": {
       "label": "Cosmos3-Nano Future Window",
-      "current_matrix_scored_task_count": 20,
-      "current_matrix_scoreless_task_count": 0,
       "matrix_scored_task_count": 20,
       "matrix_scoreless_task_count": 0,
-      "next_step": "Use docs/data/task_method_20_result_matrix.json as the authoritative current coverage source.",
+      "next_step": "No gap-filling action is required for the current 20-task matrix; use this script only for future replacement artifacts.",
       "ready_for_all_task_probe": false,
       "required_splits": [
         "train",
@@ -42,11 +41,9 @@
     },
     "cosmos3_super_reasoner": {
       "label": "Cosmos3-Super Reasoner",
-      "current_matrix_scored_task_count": 20,
-      "current_matrix_scoreless_task_count": 0,
       "matrix_scored_task_count": 20,
       "matrix_scoreless_task_count": 0,
-      "next_step": "Use docs/data/task_method_20_result_matrix.json as the authoritative current coverage source.",
+      "next_step": "No gap-filling action is required for the current 20-task matrix; use this script only for future replacement artifacts.",
       "ready_for_all_task_probe": false,
       "required_splits": [
         "train",
@@ -82,9 +79,7 @@
       "label": "Qwen3-Omni v6 LoRA",
       "matrix_scored_task_count": 20,
       "matrix_scoreless_task_count": 0,
-      "current_matrix_scored_task_count": 20,
-      "current_matrix_scoreless_task_count": 0,
-      "next_step": "Use docs/data/task_method_20_result_matrix.json as the authoritative current coverage source.",
+      "next_step": "No gap-filling action is required for the current 20-task matrix; use this script only for future replacement artifacts.",
       "ready_for_all_task_probe": false,
       "required_splits": [
         "train",
@@ -117,11 +112,10 @@
       "status": "superseded_by_completed_matrix"
     }
   },
-  "ready_method_count": 3,
-  "scope": "This artifact is retained as a historical readiness snapshot. The current public task-method matrix is complete at 180/180 scored records.",
-  "score_policy": "Current scores, proxy flags, and source artifacts are authoritative in docs/data/task_method_20_result_matrix.json.",
+  "ready_method_count": 0,
+  "scope": "The current matrix is already complete. This artifact is retained as a guardrail for future replacement model-output probes and does not create or infer numeric scores.",
+  "score_policy": "The current matrix has zero scoreless cells. Future replacement scores must still come from task-specific held-out artifacts.",
   "source_matrix": "docs/data/task_method_20_result_matrix.json",
   "status": "pass",
-  "superseded_by": "docs/data/task_method_20_result_matrix.json",
-  "title": "Model Output Probe Readiness (superseded by completed 180-result matrix)"
+  "title": "Model Output Probe Readiness"
 }

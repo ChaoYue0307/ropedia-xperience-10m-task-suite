@@ -612,6 +612,7 @@ def main() -> int:
 
     history = []
     global_step = 0
+    optimizer_step = 0
     optimizer.zero_grad(set_to_none=True)
     model.train()
     if accelerator.is_main_process:
@@ -639,17 +640,25 @@ def main() -> int:
         for batch_start in range(0, len(rank_train_samples), args.batch_size):
             batch = rank_train_samples[batch_start : batch_start + args.batch_size]
             batch_loss = 0.0
+            batch_seen = 0
             for sample in batch:
                 with accelerator.accumulate(model):
                     inputs = prepare_sample(processor, sample, args.use_audio_in_video, device, dtype=model_dtype)
                     loss = compute_answer_token_loss(model, inputs, tail_only=args.loss_logit_tail_only)
                     accelerator.backward(loss)
                     batch_loss += float(loss.detach().cpu())
-                    if accelerator.sync_gradients:
+                    batch_seen += 1
+                    did_optimizer_step = accelerator.sync_gradients
+                    if did_optimizer_step:
                         accelerator.clip_grad_norm_(model.parameters(), args.max_grad_norm)
                     optimizer.step()
                     optimizer.zero_grad(set_to_none=True)
-            seen += len(batch)
+                    if did_optimizer_step:
+                        optimizer_step += 1
+                    if args.max_train_steps > 0 and optimizer_step >= args.max_train_steps:
+                        stop_training = True
+                        break
+            seen += batch_seen
             epoch_loss += batch_loss
             global_step += 1
             if accelerator.is_main_process and (global_step % args.progress_every == 0 or batch_start // max(args.batch_size, 1) == steps_in_epoch - 1):
@@ -657,19 +666,20 @@ def main() -> int:
                     "event": "train_step",
                     "epoch": epoch,
                     "global_step": global_step,
+                    "optimizer_step": optimizer_step,
                     "rank0_seen": seen,
                     "rank0_samples_per_epoch": len(rank_train_samples),
-                    "rank0_batch_loss": batch_loss / max(len(batch), 1),
+                    "rank0_batch_loss": batch_loss / max(batch_seen, 1),
                     "timestamp": time.time(),
                 })
-            if args.max_train_steps > 0 and global_step >= args.max_train_steps:
-                stop_training = True
+            if stop_training:
                 break
         if stop_training and accelerator.is_main_process:
             write_progress(progress_path, {
                 "event": "train_loop_stopped_max_steps",
                 "epoch": epoch,
                 "global_step": global_step,
+                "optimizer_step": optimizer_step,
                 "max_train_steps": args.max_train_steps,
                 "timestamp": time.time(),
             })
@@ -679,6 +689,7 @@ def main() -> int:
             "train_loss": epoch_loss / max(len(rank_train_samples), 1),
             "val_loss": val_loss,
             "global_step": global_step,
+            "optimizer_step": optimizer_step,
         }
         history.append(epoch_row)
         if accelerator.is_main_process:
@@ -747,6 +758,7 @@ def main() -> int:
         "tuning_mode": args.tuning_mode,
         "save_mode": resolved_save_mode,
         "max_train_steps": args.max_train_steps,
+        "optimizer_steps_completed": optimizer_step,
         "optimizer_init": args.optimizer_init,
         "history": history,
         "lora": {

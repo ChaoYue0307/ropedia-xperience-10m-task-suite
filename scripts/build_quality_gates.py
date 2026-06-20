@@ -68,6 +68,14 @@ GATES = [
         "shows": "The task evaluation protocol is generated from committed metric artifacts.",
     },
     {
+        "id": "task_method_source_audit",
+        "title": "Task-method source audit",
+        "command": "python scripts/validate_task_method_matrix_sources.py",
+        "report": "docs/data/task_method_20_source_audit.json",
+        "blocks_if": "A scored 20-task matrix cell points to a JSON metric source that does not contain the same metric value.",
+        "shows": "Public 20-task scores remain traceable to their task-specific metric artifacts.",
+    },
+    {
         "id": "figure_index",
         "title": "Figure index",
         "command": "python scripts/build_figure_index.py",
@@ -220,6 +228,7 @@ def markdown(payload: dict) -> str:
         "python scripts/validate_scope_claims.py",
         "python scripts/validate_source_alignment.py",
         "python scripts/build_evaluation_protocol.py",
+        "python scripts/validate_task_method_matrix_sources.py",
         "python scripts/build_brand_assets.py",
         "python scripts/build_figure_index.py",
         "python scripts/validate_website_integrity.py",

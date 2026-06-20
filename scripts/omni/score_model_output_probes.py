@@ -130,6 +130,7 @@ def records_for_method(matrix: dict, method_id: str) -> list[dict]:
 def build_readiness(workspace: Path, matrix: dict, overrides: dict[str, dict[str, list[str]]]) -> dict:
     methods = {}
     source_hints = DEFAULT_PREDICTION_HINTS.copy()
+    matrix_complete = matrix.get("scored_method_task_count") == matrix.get("method_task_record_count")
     for method, split_map in overrides.items():
         target = source_hints.setdefault(method, {name: [] for name in REQUIRED_SPLITS})
         for split, paths in split_map.items():
@@ -144,6 +145,16 @@ def build_readiness(workspace: Path, matrix: dict, overrides: dict[str, dict[str
         scored = [row for row in method_records if row.get("scored")]
         missing = [row for row in method_records if not row.get("scored")]
         ready_for_all_task_probe = all(split_status[split]["exists"] for split in REQUIRED_SPLITS)
+        if matrix_complete and not missing:
+            method_status = "superseded_by_completed_matrix"
+            next_step = "No gap-filling action is required for the current 20-task matrix; use this script only for future replacement artifacts."
+        else:
+            method_status = "ready" if ready_for_all_task_probe else "missing_required_model_outputs"
+            next_step = (
+                "Run the all-task probe scorer against train/validation/test outputs."
+                if ready_for_all_task_probe
+                else "Collect or generate train, validation, and test prediction JSONL files first."
+            )
         methods[method_id] = {
             "label": next((series["label"] for series in matrix["series"] if series["id"] == method_id), method_id),
             "matrix_scored_task_count": len(scored),
@@ -151,27 +162,32 @@ def build_readiness(workspace: Path, matrix: dict, overrides: dict[str, dict[str
             "required_splits": list(REQUIRED_SPLITS),
             "split_status": split_status,
             "ready_for_all_task_probe": ready_for_all_task_probe,
-            "status": "ready" if ready_for_all_task_probe else "missing_required_model_outputs",
+            "status": method_status,
             "scoreless_task_ids": [row["task_id"] for row in missing],
-            "next_step": (
-                "Run the all-task probe scorer against train/validation/test outputs."
-                if ready_for_all_task_probe
-                else "Collect or generate train, validation, and test prediction JSONL files first."
-            ),
+            "next_step": next_step,
         }
 
     ready_methods = [method for method, item in methods.items() if item["ready_for_all_task_probe"]]
+    completion_state = "completed_matrix" if matrix_complete else "readiness_check"
     return {
         "title": "Model Output Probe Readiness",
         "status": "pass",
+        "completion_state": completion_state,
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "source_matrix": "docs/data/task_method_20_result_matrix.json",
         "scope": (
-            "This artifact checks readiness for extending verified model branches "
+            "The current matrix is already complete. This artifact is retained as a "
+            "guardrail for future replacement model-output probes and does not create "
+            "or infer numeric scores."
+            if matrix_complete
+            else "This artifact checks readiness for extending verified model branches "
             "to all 20 task contracts. It does not create or infer numeric scores."
         ),
         "score_policy": (
-            "A scoreless Qwen3/Cosmos cell can become numeric only after the branch "
+            "The current matrix has zero scoreless cells. Future replacement scores "
+            "must still come from task-specific held-out artifacts."
+            if matrix_complete
+            else "A scoreless Qwen3/Cosmos cell can become numeric only after the branch "
             "emits the task target and the metric is computed against held-out labels."
         ),
         "ready_method_count": len(ready_methods),
@@ -205,13 +221,21 @@ def write_report(output_dir: Path, payload: dict) -> None:
             + " |"
         )
 
+    intro = (
+        "The 20-task matrix is already complete, so this readiness report is "
+        "superseded for the current release. It remains a guardrail for future "
+        "replacement model-output probes and does not assign new task scores."
+        if payload.get("completion_state") == "completed_matrix"
+        else "This report checks whether verified model branches have the prediction files\n"
+        "needed to extend them to every 20-task contract. It is readiness evidence only;\n"
+        "it does not assign new task scores."
+    )
+
     report = f"""# Model Output Probe Readiness
 
 Generated: `{payload['generated_at_utc']}`
 
-This report checks whether verified model branches have the prediction files
-needed to extend them to every 20-task contract. It is readiness evidence only;
-it does not assign new task scores.
+{intro}
 
 | Method | ID | Matrix scores | Status | Split files | Next step |
 | --- | --- | --- | --- | --- | --- |

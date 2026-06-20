@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Release Checks",
   "status": "pass",
-  "generated_at_utc": "2026-06-20T18:44:28+00:00",
+  "generated_at_utc": "2026-06-20T20:48:18+00:00",
   "rule": "A release is current when the automated reports pass and the live GitHub/Hugging Face mirrors are verified after publishing.",
   "automated_gates": [
     {
@@ -71,6 +71,18 @@
       "report": "docs/data/evaluation_protocol.json",
       "blocks_if": "Windowing, split policy, leakage controls, task metrics, or current limitations are not explicit.",
       "shows": "The task evaluation protocol is generated from committed metric artifacts.",
+      "current_report": {
+        "exists": true,
+        "status": "pass"
+      }
+    },
+    {
+      "id": "task_method_source_audit",
+      "title": "Task-method source audit",
+      "command": "python scripts/validate_task_method_matrix_sources.py",
+      "report": "docs/data/task_method_20_source_audit.json",
+      "blocks_if": "A scored 20-task matrix cell points to a JSON metric source that does not contain the same metric value.",
+      "shows": "Public 20-task scores remain traceable to their task-specific metric artifacts.",
       "current_report": {
         "exists": true,
         "status": "pass"

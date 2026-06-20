@@ -1,7 +1,7 @@
 {
   "title": "Unified 20-Task Model Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-20T19:54:37+00:00",
+  "generated_at_utc": "2026-06-20T20:38:21+00:00",
   "task_count": 20,
   "method_count": 9,
   "method_task_record_count": 180,
@@ -1396,7 +1396,7 @@
         "cosmos3_super_reasoner": {
           "raw": 0.6286317274823326,
           "metric_key": "temporal_order_f1",
-          "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/eval/metrics.json",
+          "source": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/temporal_order/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
           "status": "scored",
           "reason": null,
@@ -1507,7 +1507,7 @@
         "cosmos3_super_reasoner": {
           "raw": 0.37271645981034185,
           "metric_key": "misalignment_detection_f1",
-          "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/eval/metrics.json",
+          "source": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/misalignment_detection/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
           "status": "scored",
           "reason": null,
@@ -1729,7 +1729,7 @@
         "cosmos3_super_reasoner": {
           "raw": 0.0,
           "metric_key": "next_subtask_forecast_macro_f1",
-          "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/eval/metrics.json",
+          "source": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/next_subtask_forecast/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
           "status": "scored",
           "reason": null,
@@ -1829,7 +1829,7 @@
         "qwen3_omni_v6_lora": {
           "raw": 0.4318674027510605,
           "metric_key": "macro_f1",
-          "source": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/eval/metrics.json",
+          "source": "results/omni_finetune/xperience10m_qwen3_omni_v6_interaction_text_task15_a100_20260620T010305Z/interaction_text_prediction/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
           "status": "scored",
           "reason": null,
@@ -2062,7 +2062,7 @@
         "cosmos3_super_reasoner": {
           "raw": 0.0009279881217520415,
           "metric_key": "object_set_forecast_micro_f1",
-          "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/eval/metrics.json",
+          "source": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/object_set_forecast/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
           "status": "scored",
           "reason": null,
@@ -4278,7 +4278,7 @@
       "raw_text": "0.6286",
       "normalized_score": 0.6286317274823326,
       "metric_key": "temporal_order_f1",
-      "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/eval/metrics.json",
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/temporal_order/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
       "reason": null
     },
@@ -4440,7 +4440,7 @@
       "raw_text": "0.3727",
       "normalized_score": 0.37271645981034185,
       "metric_key": "misalignment_detection_f1",
-      "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/eval/metrics.json",
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/misalignment_detection/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
       "reason": null
     },
@@ -4764,7 +4764,7 @@
       "raw_text": "0.0000",
       "normalized_score": 0.0,
       "metric_key": "next_subtask_forecast_macro_f1",
-      "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/eval/metrics.json",
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/next_subtask_forecast/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
       "reason": null
     },
@@ -4908,7 +4908,7 @@
       "raw_text": "0.4319",
       "normalized_score": 0.4318674027510605,
       "metric_key": "macro_f1",
-      "source": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full/eval/metrics.json",
+      "source": "results/omni_finetune/xperience10m_qwen3_omni_v6_interaction_text_task15_a100_20260620T010305Z/interaction_text_prediction/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
       "reason": null
     },
@@ -5250,7 +5250,7 @@
       "raw_text": "0.0009",
       "normalized_score": 0.0009279881217520415,
       "metric_key": "object_set_forecast_micro_f1",
-      "source": "results/omni_finetune/verified_public/xperience10m_cosmos3_super_reasoner_128ep_test_full_20260607/eval/metrics.json",
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620/object_set_forecast/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
       "reason": null
     },

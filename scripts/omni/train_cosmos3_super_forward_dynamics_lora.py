@@ -884,7 +884,8 @@ def main() -> int:
         if accelerator.is_main_process:
             write_json(output_dir / "training_metadata.json", payload)
             write_report(output_dir, payload)
-            append_jsonl(progress_path, {"event": "complete", "timestamp": time.time(), "status": status})
+            final_event = "complete" if status in {"complete", "dry_run_complete"} else "finalized_failed"
+            append_jsonl(progress_path, {"event": final_event, "timestamp": time.time(), "status": status})
 
     if accelerator.is_main_process:
         print(json.dumps({"status": status, "output_dir": str(output_dir), "adapter_dir": str(adapter_dir) if adapter_dir else None}, indent=2))

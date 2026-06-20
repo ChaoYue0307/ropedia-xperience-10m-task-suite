@@ -64,7 +64,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--l2", type=float, default=2e-3)
     parser.add_argument("--seed", type=int, default=7)
     parser.add_argument("--softmax-max-train-classes", type=int, default=256)
-    parser.add_argument("--include-neural", action="store_true", default=True)
+    parser.add_argument("--include-neural", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--neural-epochs", type=int, default=35)
     parser.add_argument("--neural-hidden-dim", type=int, default=128)
     parser.add_argument("--neural-batch-size", type=int, default=256)

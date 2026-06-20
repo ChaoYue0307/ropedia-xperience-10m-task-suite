@@ -142,6 +142,13 @@ TASK_SPECS: OrderedDict[str, dict[str, Any]] = OrderedDict(
         ),
     ]
 )
+TASKS_REQUIRING_FUTURE_SAMPLE = {
+    "temporal_order",
+    "misalignment_detection",
+    "long_horizon_next_action",
+    "next_subtask_forecast",
+    "object_set_forecast",
+}
 
 
 SYSTEM_PROMPT = (
@@ -591,6 +598,10 @@ def task_target_value(
     return task_target(future_sample, spec)
 
 
+def task_requires_future_sample(task_id: str) -> bool:
+    return task_id in TASKS_REQUIRING_FUTURE_SAMPLE
+
+
 def object_set_metrics(rows: list[dict[str, Any]]) -> dict[str, float]:
     tp = fp = fn = exact = 0
     for row in rows:
@@ -736,9 +747,14 @@ def main() -> int:
     samples = load_jsonl(args.dataset_jsonl)
     future_map = future_index_map(samples, args.future_frames)
     transition_targets = time_to_transition_map(samples)
-    eval_indices = [idx for idx in select_eval_indices(samples, args) if idx in future_map]
-    if not eval_indices:
-        raise ValueError("No evaluation samples with future targets selected.")
+    base_eval_indices = select_eval_indices(samples, args)
+    eval_indices_by_task = {
+        task_id: [idx for idx in base_eval_indices if (not task_requires_future_sample(task_id) or idx in future_map)]
+        for task_id in selected_tasks
+    }
+    empty_tasks = [task_id for task_id, indices in eval_indices_by_task.items() if not indices]
+    if empty_tasks:
+        raise ValueError(f"No evaluation samples selected for tasks: {', '.join(empty_tasks)}")
 
     append_jsonl(
         args.progress_jsonl,
@@ -747,7 +763,9 @@ def main() -> int:
             "timestamp": time.time(),
             "run_id": args.run_id,
             "tasks": selected_tasks,
-            "num_eval_samples_with_future": len(eval_indices),
+            "num_base_eval_samples": len(base_eval_indices),
+            "num_eval_samples_by_task": {task_id: len(indices) for task_id, indices in eval_indices_by_task.items()},
+            "num_eval_samples_with_future": sum(1 for idx in base_eval_indices if idx in future_map),
             "sample_offset": args.sample_offset,
             "sample_stride": args.sample_stride,
         },
@@ -766,9 +784,10 @@ def main() -> int:
     for task_id in selected_tasks:
         spec = TASK_SPECS[task_id]
         partial_path = args.output_dir / task_id / "predictions.partial.jsonl"
-        for local_pos, sample_idx in enumerate(eval_indices, start=1):
+        task_eval_indices = eval_indices_by_task[task_id]
+        for local_pos, sample_idx in enumerate(task_eval_indices, start=1):
             sample = samples[sample_idx]
-            future_sample = samples[future_map[sample_idx]]
+            future_sample = samples[future_map[sample_idx]] if task_requires_future_sample(task_id) else sample
             pred_id = prediction_id(task_id, sample)
             if pred_id in partial_by_task[task_id]:
                 continue
@@ -808,7 +827,7 @@ def main() -> int:
                     "timestamp": time.time(),
                     "task_id": task_id,
                     "sample_index": local_pos,
-                    "num_eval_samples": len(eval_indices),
+                    "num_eval_samples": len(task_eval_indices),
                     "completed_samples_for_task": len(partial_by_task[task_id]),
                     "sample_id": sample.get("id"),
                     "seconds": round(time.time() - started, 3),
@@ -817,7 +836,7 @@ def main() -> int:
 
     task_metrics = {}
     for task_id in selected_tasks:
-        rows = [partial_by_task[task_id][prediction_id(task_id, samples[idx])] for idx in eval_indices]
+        rows = [partial_by_task[task_id][prediction_id(task_id, samples[idx])] for idx in eval_indices_by_task[task_id]]
         task_metrics[task_id] = score_task(task_id, TASK_SPECS[task_id], rows, args.output_dir, args)
 
     summary = {

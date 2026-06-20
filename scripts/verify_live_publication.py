@@ -109,6 +109,17 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "task_method_20_source_audit_json",
+        "title": "Task-method 20-result source audit JSON",
+        "local_path": "docs/data/task_method_20_source_audit.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/task_method_20_source_audit.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/task_method_20_source_audit.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/task_method_20_source_audit.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/task_method_20_source_audit.json",
+        },
+    },
+    {
         "id": "public_reader_map_json",
         "title": "Public reader map JSON",
         "local_path": "docs/data/public_reader_map.json",

@@ -18,6 +18,7 @@ These checks cover public packaging, project status wording, mirror parity, and 
 | Rendered website check | `python scripts/build_rendered_site_check.py --input /tmp/xperience_rendered_site_observations.json` | `docs/data/rendered_site_check.json` | `pass` | The local rendered site cannot load, switch tabs, deep-link to the walkthrough, update player controls, or stay console-clean. |
 | Task surface integrity | `python scripts/validate_task_surface.py` | `docs/data/task_surface_integrity.json` | `pass` | Task cards expose raw artifact ids, human-readable task names drift, modality thumbnails are missing, or the interactive task player is not wired to the generated JSON. |
 | Evaluation protocol | `python scripts/build_evaluation_protocol.py` | `docs/data/evaluation_protocol.json` | `pass` | Windowing, split policy, leakage controls, task metrics, or current limitations are not explicit. |
+| Task-method source audit | `python scripts/validate_task_method_matrix_sources.py` | `docs/data/task_method_20_source_audit.json` | `pass` | A scored 20-task matrix cell points to a JSON metric source that does not contain the same metric value. |
 | Figure index | `python scripts/build_figure_index.py` | `docs/data/figure_index.json` | `pass` | Public figures, charts, or modality thumbnails are missing, unreadable, or lack source-script provenance. |
 | Brand assets | `python scripts/build_brand_assets.py` | `docs/data/brand_assets.json` | `pass` | The generated logo system, favicon, social card, or app icons are missing or not reproducibly packaged. |
 | Release-check manifest | `python scripts/build_quality_gates.py` | `docs/data/quality_gates.json` | `pass` | A public reader cannot see the current release state in one place. |
@@ -40,6 +41,7 @@ These checks cover public packaging, project status wording, mirror parity, and 
 python scripts/validate_scope_claims.py
 python scripts/validate_source_alignment.py
 python scripts/build_evaluation_protocol.py
+python scripts/validate_task_method_matrix_sources.py
 python scripts/build_brand_assets.py
 python scripts/build_figure_index.py
 python scripts/validate_website_integrity.py

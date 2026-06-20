@@ -55,13 +55,27 @@ def main() -> int:
     args.output_dir.mkdir(parents=True, exist_ok=True)
     task_metrics: dict[str, dict[str, Any]] = {}
     first_metrics: dict[str, Any] | None = None
+    duplicate_predictions: list[dict[str, Any]] = []
 
     for task_id, spec in TASK_SPECS.items():
         rows_by_id: dict[str, dict[str, Any]] = {}
+        row_sources: dict[str, str] = {}
         for shard_dir in args.shard_dir:
             for row in read_jsonl(shard_dir / task_id / "predictions.jsonl"):
                 key = str(row.get("prediction_id") or f"{task_id}::{row.get('id')}")
-                rows_by_id.setdefault(key, row)
+                if key in rows_by_id:
+                    duplicate_predictions.append(
+                        {
+                            "task_id": task_id,
+                            "prediction_id": key,
+                            "kept_shard": row_sources.get(key),
+                            "duplicate_shard": str(shard_dir),
+                            "conflict": rows_by_id[key] != row,
+                        }
+                    )
+                    continue
+                rows_by_id[key] = row
+                row_sources[key] = str(shard_dir)
             shard_metrics = read_json(shard_dir / task_id / "metrics.json")
             if shard_metrics and first_metrics is None:
                 first_metrics = shard_metrics
@@ -86,6 +100,9 @@ def main() -> int:
         "status": "pass",
         "run_id": args.run_id,
         "shard_dirs": [str(path) for path in args.shard_dir],
+        "duplicate_prediction_count": len(duplicate_predictions),
+        "duplicate_prediction_conflict_count": sum(1 for row in duplicate_predictions if row["conflict"]),
+        "duplicate_predictions": duplicate_predictions[:50],
         "tasks": {
             task_id: {
                 "task_number": metrics["task_number"],
