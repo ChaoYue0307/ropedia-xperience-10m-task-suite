@@ -1,9 +1,9 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-20T14:05:24+00:00",
+  "generated_at_utc": "2026-06-20T14:21:25+00:00",
   "hf_root": "hf_publish",
   "summary": {
-    "group_count": 1108,
+    "group_count": 1088,
     "failure_count": 0,
     "failures_by_surface": {}
   },
@@ -4659,21 +4659,21 @@
       "local": {
         "path": "repo:scripts/omni/run_cosmos3_super_retrieval_task_probes_sharded.sh",
         "exists": true,
-        "bytes": 1867,
-        "sha256": "6ef0ca60e5c78bdbc76f261bf4c95a3c4559d551e4ead43810a521e19a62efe1"
+        "bytes": 1931,
+        "sha256": "c4011c61c5c837a60114e87d281f8d3895cc6b5380de1303332bb35ac48b223f"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/omni/run_cosmos3_super_retrieval_task_probes_sharded.sh",
           "exists": true,
-          "bytes": 1867,
-          "sha256": "6ef0ca60e5c78bdbc76f261bf4c95a3c4559d551e4ead43810a521e19a62efe1"
+          "bytes": 1931,
+          "sha256": "c4011c61c5c837a60114e87d281f8d3895cc6b5380de1303332bb35ac48b223f"
         },
         "hf_model": {
           "path": "hf_model:scripts/omni/run_cosmos3_super_retrieval_task_probes_sharded.sh",
           "exists": true,
-          "bytes": 1867,
-          "sha256": "6ef0ca60e5c78bdbc76f261bf4c95a3c4559d551e4ead43810a521e19a62efe1"
+          "bytes": 1931,
+          "sha256": "c4011c61c5c837a60114e87d281f8d3895cc6b5380de1303332bb35ac48b223f"
         }
       },
       "failures": []
@@ -5284,21 +5284,21 @@
       "local": {
         "path": "repo:scripts/validate_mirror_parity.py",
         "exists": true,
-        "bytes": 33214,
-        "sha256": "904b76c05189b45e644ba53b7529910a41568f399f7f42756cff3ca1a4c9eaec"
+        "bytes": 33602,
+        "sha256": "ac0c6f6b96aedf581723912bfece36c7b9b1a4733ac2131e43a96ad337e6d01f"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 33214,
-          "sha256": "904b76c05189b45e644ba53b7529910a41568f399f7f42756cff3ca1a4c9eaec"
+          "bytes": 33602,
+          "sha256": "ac0c6f6b96aedf581723912bfece36c7b9b1a4733ac2131e43a96ad337e6d01f"
         },
         "hf_model": {
           "path": "hf_model:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 33214,
-          "sha256": "904b76c05189b45e644ba53b7529910a41568f399f7f42756cff3ca1a4c9eaec"
+          "bytes": 33602,
+          "sha256": "ac0c6f6b96aedf581723912bfece36c7b9b1a4733ac2131e43a96ad337e6d01f"
         }
       },
       "failures": []
@@ -19205,56 +19205,6 @@
       "failures": []
     },
     {
-      "name": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/predictions.csv",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/predictions.csv",
-        "exists": true,
-        "bytes": 1155795,
-        "sha256": "6aa07af9b84b6106df9bba9172f0c244852c8ef43a7545279416e44593db7db5"
-      },
-      "mirrors": {
-        "hf_artifacts": {
-          "path": "hf_artifacts:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/predictions.csv",
-          "exists": true,
-          "bytes": 1155795,
-          "sha256": "6aa07af9b84b6106df9bba9172f0c244852c8ef43a7545279416e44593db7db5"
-        },
-        "hf_model": {
-          "path": "hf_model:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/predictions.csv",
-          "exists": true,
-          "bytes": 1155795,
-          "sha256": "6aa07af9b84b6106df9bba9172f0c244852c8ef43a7545279416e44593db7db5"
-        }
-      },
-      "failures": []
-    },
-    {
-      "name": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/predictions.jsonl",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/predictions.jsonl",
-        "exists": true,
-        "bytes": 7696888,
-        "sha256": "d28eeb0237ccbe735e53efc8f70236b0b27f3136ac5a4ff0b489ede36894c253"
-      },
-      "mirrors": {
-        "hf_artifacts": {
-          "path": "hf_artifacts:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/predictions.jsonl",
-          "exists": true,
-          "bytes": 7696888,
-          "sha256": "d28eeb0237ccbe735e53efc8f70236b0b27f3136ac5a4ff0b489ede36894c253"
-        },
-        "hf_model": {
-          "path": "hf_model:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/predictions.jsonl",
-          "exists": true,
-          "bytes": 7696888,
-          "sha256": "d28eeb0237ccbe735e53efc8f70236b0b27f3136ac5a4ff0b489ede36894c253"
-        }
-      },
-      "failures": []
-    },
-    {
       "name": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/collection_validation.json",
       "status": "pass",
       "local": {
@@ -19305,56 +19255,6 @@
       "failures": []
     },
     {
-      "name": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/predictions.csv",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/predictions.csv",
-        "exists": true,
-        "bytes": 1177393,
-        "sha256": "dc45f8e4bcdf32659dc85820df891f2dddf3ace47e5cb0261f31603dfa673230"
-      },
-      "mirrors": {
-        "hf_artifacts": {
-          "path": "hf_artifacts:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/predictions.csv",
-          "exists": true,
-          "bytes": 1177393,
-          "sha256": "dc45f8e4bcdf32659dc85820df891f2dddf3ace47e5cb0261f31603dfa673230"
-        },
-        "hf_model": {
-          "path": "hf_model:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/predictions.csv",
-          "exists": true,
-          "bytes": 1177393,
-          "sha256": "dc45f8e4bcdf32659dc85820df891f2dddf3ace47e5cb0261f31603dfa673230"
-        }
-      },
-      "failures": []
-    },
-    {
-      "name": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/predictions.jsonl",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/predictions.jsonl",
-        "exists": true,
-        "bytes": 10355488,
-        "sha256": "1afcd8fe1f15ae38fb73f3f6a8c058cc342d26de96cb85aad97d4cf1be2b2eae"
-      },
-      "mirrors": {
-        "hf_artifacts": {
-          "path": "hf_artifacts:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/predictions.jsonl",
-          "exists": true,
-          "bytes": 10355488,
-          "sha256": "1afcd8fe1f15ae38fb73f3f6a8c058cc342d26de96cb85aad97d4cf1be2b2eae"
-        },
-        "hf_model": {
-          "path": "hf_model:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/predictions.jsonl",
-          "exists": true,
-          "bytes": 10355488,
-          "sha256": "1afcd8fe1f15ae38fb73f3f6a8c058cc342d26de96cb85aad97d4cf1be2b2eae"
-        }
-      },
-      "failures": []
-    },
-    {
       "name": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/metrics.json",
       "status": "pass",
       "local": {
@@ -19375,56 +19275,6 @@
           "exists": true,
           "bytes": 1626,
           "sha256": "61484fa0875d0b6af1a54a98e57154807ea1e7ad4ef3172e2d9cca4fc3032f07"
-        }
-      },
-      "failures": []
-    },
-    {
-      "name": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/predictions.csv",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/predictions.csv",
-        "exists": true,
-        "bytes": 1172951,
-        "sha256": "2878ee83e05ecfbc5d666be4ee84eff1a20f2bad78b3e8a67595244a7ef27d83"
-      },
-      "mirrors": {
-        "hf_artifacts": {
-          "path": "hf_artifacts:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/predictions.csv",
-          "exists": true,
-          "bytes": 1172951,
-          "sha256": "2878ee83e05ecfbc5d666be4ee84eff1a20f2bad78b3e8a67595244a7ef27d83"
-        },
-        "hf_model": {
-          "path": "hf_model:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/predictions.csv",
-          "exists": true,
-          "bytes": 1172951,
-          "sha256": "2878ee83e05ecfbc5d666be4ee84eff1a20f2bad78b3e8a67595244a7ef27d83"
-        }
-      },
-      "failures": []
-    },
-    {
-      "name": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/predictions.jsonl",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/predictions.jsonl",
-        "exists": true,
-        "bytes": 7654812,
-        "sha256": "06e2ca7a06f2de2597f42433b2e24cff1ea79ee714e8ead11ff4deb55eb4ebbb"
-      },
-      "mirrors": {
-        "hf_artifacts": {
-          "path": "hf_artifacts:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/predictions.jsonl",
-          "exists": true,
-          "bytes": 7654812,
-          "sha256": "06e2ca7a06f2de2597f42433b2e24cff1ea79ee714e8ead11ff4deb55eb4ebbb"
-        },
-        "hf_model": {
-          "path": "hf_model:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/predictions.jsonl",
-          "exists": true,
-          "bytes": 7654812,
-          "sha256": "06e2ca7a06f2de2597f42433b2e24cff1ea79ee714e8ead11ff4deb55eb4ebbb"
         }
       },
       "failures": []
@@ -19455,56 +19305,6 @@
       "failures": []
     },
     {
-      "name": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/predictions.csv",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/predictions.csv",
-        "exists": true,
-        "bytes": 1165353,
-        "sha256": "eb2c0ec28c4c0b6ae6e188a7aa9acdd964b577421323d358a7a041e26167dc2f"
-      },
-      "mirrors": {
-        "hf_artifacts": {
-          "path": "hf_artifacts:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/predictions.csv",
-          "exists": true,
-          "bytes": 1165353,
-          "sha256": "eb2c0ec28c4c0b6ae6e188a7aa9acdd964b577421323d358a7a041e26167dc2f"
-        },
-        "hf_model": {
-          "path": "hf_model:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/predictions.csv",
-          "exists": true,
-          "bytes": 1165353,
-          "sha256": "eb2c0ec28c4c0b6ae6e188a7aa9acdd964b577421323d358a7a041e26167dc2f"
-        }
-      },
-      "failures": []
-    },
-    {
-      "name": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/predictions.jsonl",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/predictions.jsonl",
-        "exists": true,
-        "bytes": 8044905,
-        "sha256": "bc62c30b59bbbb1e92173c12b4cd85ad208a31a4f8467e1c91bbe53d3deeb2a2"
-      },
-      "mirrors": {
-        "hf_artifacts": {
-          "path": "hf_artifacts:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/predictions.jsonl",
-          "exists": true,
-          "bytes": 8044905,
-          "sha256": "bc62c30b59bbbb1e92173c12b4cd85ad208a31a4f8467e1c91bbe53d3deeb2a2"
-        },
-        "hf_model": {
-          "path": "hf_model:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/predictions.jsonl",
-          "exists": true,
-          "bytes": 8044905,
-          "sha256": "bc62c30b59bbbb1e92173c12b4cd85ad208a31a4f8467e1c91bbe53d3deeb2a2"
-        }
-      },
-      "failures": []
-    },
-    {
       "name": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/metrics.json",
       "status": "pass",
       "local": {
@@ -19525,56 +19325,6 @@
           "exists": true,
           "bytes": 1519,
           "sha256": "1fe0f9770ca5b071d84fe928f4231b081732b88e79fa18c2ef445a391ae9d9cb"
-        }
-      },
-      "failures": []
-    },
-    {
-      "name": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/predictions.csv",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/predictions.csv",
-        "exists": true,
-        "bytes": 1153643,
-        "sha256": "aa9cbee3889bf5662074727389e092bb3bed3a4137d2de9fb2eb7d56872f5f17"
-      },
-      "mirrors": {
-        "hf_artifacts": {
-          "path": "hf_artifacts:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/predictions.csv",
-          "exists": true,
-          "bytes": 1153643,
-          "sha256": "aa9cbee3889bf5662074727389e092bb3bed3a4137d2de9fb2eb7d56872f5f17"
-        },
-        "hf_model": {
-          "path": "hf_model:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/predictions.csv",
-          "exists": true,
-          "bytes": 1153643,
-          "sha256": "aa9cbee3889bf5662074727389e092bb3bed3a4137d2de9fb2eb7d56872f5f17"
-        }
-      },
-      "failures": []
-    },
-    {
-      "name": "results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/predictions.jsonl",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/predictions.jsonl",
-        "exists": true,
-        "bytes": 10603881,
-        "sha256": "0d463094aa4c1907f581b1407e50e0bdf65d1e624e3d5ad287705a86322c1c5c"
-      },
-      "mirrors": {
-        "hf_artifacts": {
-          "path": "hf_artifacts:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/predictions.jsonl",
-          "exists": true,
-          "bytes": 10603881,
-          "sha256": "0d463094aa4c1907f581b1407e50e0bdf65d1e624e3d5ad287705a86322c1c5c"
-        },
-        "hf_model": {
-          "path": "hf_model:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/predictions.jsonl",
-          "exists": true,
-          "bytes": 10603881,
-          "sha256": "0d463094aa4c1907f581b1407e50e0bdf65d1e624e3d5ad287705a86322c1c5c"
         }
       },
       "failures": []
@@ -24734,44 +24484,6 @@
       "failures": []
     },
     {
-      "name": "space_results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/predictions.csv",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/predictions.csv",
-        "exists": true,
-        "bytes": 1155795,
-        "sha256": "6aa07af9b84b6106df9bba9172f0c244852c8ef43a7545279416e44593db7db5"
-      },
-      "mirrors": {
-        "hf_space": {
-          "path": "hf_space:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/predictions.csv",
-          "exists": true,
-          "bytes": 1155795,
-          "sha256": "6aa07af9b84b6106df9bba9172f0c244852c8ef43a7545279416e44593db7db5"
-        }
-      },
-      "failures": []
-    },
-    {
-      "name": "space_results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/predictions.jsonl",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/predictions.jsonl",
-        "exists": true,
-        "bytes": 7696888,
-        "sha256": "d28eeb0237ccbe735e53efc8f70236b0b27f3136ac5a4ff0b489ede36894c253"
-      },
-      "mirrors": {
-        "hf_space": {
-          "path": "hf_space:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/camera_view_sync_retrieval/predictions.jsonl",
-          "exists": true,
-          "bytes": 7696888,
-          "sha256": "d28eeb0237ccbe735e53efc8f70236b0b27f3136ac5a4ff0b489ede36894c253"
-        }
-      },
-      "failures": []
-    },
-    {
       "name": "space_results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/collection_validation.json",
       "status": "pass",
       "local": {
@@ -24810,44 +24522,6 @@
       "failures": []
     },
     {
-      "name": "space_results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/predictions.csv",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/predictions.csv",
-        "exists": true,
-        "bytes": 1177393,
-        "sha256": "dc45f8e4bcdf32659dc85820df891f2dddf3ace47e5cb0261f31603dfa673230"
-      },
-      "mirrors": {
-        "hf_space": {
-          "path": "hf_space:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/predictions.csv",
-          "exists": true,
-          "bytes": 1177393,
-          "sha256": "dc45f8e4bcdf32659dc85820df891f2dddf3ace47e5cb0261f31603dfa673230"
-        }
-      },
-      "failures": []
-    },
-    {
-      "name": "space_results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/predictions.jsonl",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/predictions.jsonl",
-        "exists": true,
-        "bytes": 10355488,
-        "sha256": "1afcd8fe1f15ae38fb73f3f6a8c058cc342d26de96cb85aad97d4cf1be2b2eae"
-      },
-      "mirrors": {
-        "hf_space": {
-          "path": "hf_space:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/cross_modal_retrieval/predictions.jsonl",
-          "exists": true,
-          "bytes": 10355488,
-          "sha256": "1afcd8fe1f15ae38fb73f3f6a8c058cc342d26de96cb85aad97d4cf1be2b2eae"
-        }
-      },
-      "failures": []
-    },
-    {
       "name": "space_results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/metrics.json",
       "status": "pass",
       "local": {
@@ -24862,44 +24536,6 @@
           "exists": true,
           "bytes": 1626,
           "sha256": "61484fa0875d0b6af1a54a98e57154807ea1e7ad4ef3172e2d9cca4fc3032f07"
-        }
-      },
-      "failures": []
-    },
-    {
-      "name": "space_results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/predictions.csv",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/predictions.csv",
-        "exists": true,
-        "bytes": 1172951,
-        "sha256": "2878ee83e05ecfbc5d666be4ee84eff1a20f2bad78b3e8a67595244a7ef27d83"
-      },
-      "mirrors": {
-        "hf_space": {
-          "path": "hf_space:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/predictions.csv",
-          "exists": true,
-          "bytes": 1172951,
-          "sha256": "2878ee83e05ecfbc5d666be4ee84eff1a20f2bad78b3e8a67595244a7ef27d83"
-        }
-      },
-      "failures": []
-    },
-    {
-      "name": "space_results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/predictions.jsonl",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/predictions.jsonl",
-        "exists": true,
-        "bytes": 7654812,
-        "sha256": "06e2ca7a06f2de2597f42433b2e24cff1ea79ee714e8ead11ff4deb55eb4ebbb"
-      },
-      "mirrors": {
-        "hf_space": {
-          "path": "hf_space:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/hand_trajectory_forecast/predictions.jsonl",
-          "exists": true,
-          "bytes": 7654812,
-          "sha256": "06e2ca7a06f2de2597f42433b2e24cff1ea79ee714e8ead11ff4deb55eb4ebbb"
         }
       },
       "failures": []
@@ -24924,44 +24560,6 @@
       "failures": []
     },
     {
-      "name": "space_results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/predictions.csv",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/predictions.csv",
-        "exists": true,
-        "bytes": 1165353,
-        "sha256": "eb2c0ec28c4c0b6ae6e188a7aa9acdd964b577421323d358a7a041e26167dc2f"
-      },
-      "mirrors": {
-        "hf_space": {
-          "path": "hf_space:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/predictions.csv",
-          "exists": true,
-          "bytes": 1165353,
-          "sha256": "eb2c0ec28c4c0b6ae6e188a7aa9acdd964b577421323d358a7a041e26167dc2f"
-        }
-      },
-      "failures": []
-    },
-    {
-      "name": "space_results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/predictions.jsonl",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/predictions.jsonl",
-        "exists": true,
-        "bytes": 8044905,
-        "sha256": "bc62c30b59bbbb1e92173c12b4cd85ad208a31a4f8467e1c91bbe53d3deeb2a2"
-      },
-      "mirrors": {
-        "hf_space": {
-          "path": "hf_space:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/imu_to_hand_pose/predictions.jsonl",
-          "exists": true,
-          "bytes": 8044905,
-          "sha256": "bc62c30b59bbbb1e92173c12b4cd85ad208a31a4f8467e1c91bbe53d3deeb2a2"
-        }
-      },
-      "failures": []
-    },
-    {
       "name": "space_results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/metrics.json",
       "status": "pass",
       "local": {
@@ -24976,44 +24574,6 @@
           "exists": true,
           "bytes": 1519,
           "sha256": "1fe0f9770ca5b071d84fe928f4231b081732b88e79fa18c2ef445a391ae9d9cb"
-        }
-      },
-      "failures": []
-    },
-    {
-      "name": "space_results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/predictions.csv",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/predictions.csv",
-        "exists": true,
-        "bytes": 1153643,
-        "sha256": "aa9cbee3889bf5662074727389e092bb3bed3a4137d2de9fb2eb7d56872f5f17"
-      },
-      "mirrors": {
-        "hf_space": {
-          "path": "hf_space:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/predictions.csv",
-          "exists": true,
-          "bytes": 1153643,
-          "sha256": "aa9cbee3889bf5662074727389e092bb3bed3a4137d2de9fb2eb7d56872f5f17"
-        }
-      },
-      "failures": []
-    },
-    {
-      "name": "space_results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/predictions.jsonl",
-      "status": "pass",
-      "local": {
-        "path": "repo:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/predictions.jsonl",
-        "exists": true,
-        "bytes": 10603881,
-        "sha256": "0d463094aa4c1907f581b1407e50e0bdf65d1e624e3d5ad287705a86322c1c5c"
-      },
-      "mirrors": {
-        "hf_space": {
-          "path": "hf_space:results/omni_finetune/xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620/modality_reconstruction/predictions.jsonl",
-          "exists": true,
-          "bytes": 10603881,
-          "sha256": "0d463094aa4c1907f581b1407e50e0bdf65d1e624e3d5ad287705a86322c1c5c"
         }
       },
       "failures": []

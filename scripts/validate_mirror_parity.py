@@ -496,11 +496,12 @@ def cosmos3_super_retrieval_task_probe_result_files() -> list[str]:
     """Return public-safe Cosmos3-Super retrieval probe outputs."""
 
     files: list[str] = []
+    compact_names = {"RUN_REPORT.md", "collection_validation.json", "metrics.json", "server_info.json", "summary.json"}
     for run_id in COSMOS3_SUPER_RETRIEVAL_TASK_PROBE_RUN_IDS:
         result_root = ROOT / "results/omni_finetune" / run_id
         if result_root.exists():
             for path in result_root.rglob("*"):
-                if path.is_file():
+                if path.is_file() and (path.name in compact_names or path.name.endswith(".progress.jsonl")):
                     files.append(path.relative_to(ROOT / "results").as_posix())
 
         for suffix in ("launch", "launcher", "runner"):
@@ -514,11 +515,12 @@ def cosmos3_super_future_task_probe_result_files() -> list[str]:
     """Return public-safe Cosmos3-Super future-task probe outputs."""
 
     files: list[str] = []
+    compact_names = {"RUN_REPORT.md", "collection_validation.json", "metrics.json", "server_info.json", "summary.json"}
     for run_id in COSMOS3_SUPER_FUTURE_TASK_PROBE_RUN_IDS:
         result_root = ROOT / "results/omni_finetune" / run_id
         if result_root.exists():
             for path in result_root.rglob("*"):
-                if path.is_file():
+                if path.is_file() and (path.name in compact_names or path.name.endswith(".progress.jsonl")):
                     files.append(path.relative_to(ROOT / "results").as_posix())
 
         for suffix in ("launch", "launcher", "runner"):
