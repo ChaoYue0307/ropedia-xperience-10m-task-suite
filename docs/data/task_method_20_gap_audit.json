@@ -1,10 +1,10 @@
 {
-  "generated_at_utc": "2026-06-20T15:21:33+00:00",
+  "generated_at_utc": "2026-06-20T16:15:35+00:00",
   "immediate_actions": [
     {
       "artifact": "docs/data/task_method_20_gap_audit.json",
       "id": "gap_audit",
-      "purpose": "Keep the 12 scoreless cells visible and reproducible."
+      "purpose": "Keep the 11 scoreless cells visible and reproducible."
     },
     {
       "artifact": "scripts/omni/score_model_output_probes.py",
@@ -37,11 +37,10 @@
       "proxy_scored_task_count": 0,
       "result_record_count": 20,
       "scope": "128 selected episodes, held-out test",
-      "scored_task_count": 19,
-      "scoreless_task_count": 1,
+      "scored_task_count": 20,
+      "scoreless_task_count": 0,
       "status_counts": {
-        "not_evaluated_in_verified_package": 1,
-        "scored": 19
+        "scored": 20
       }
     },
     "metadata128_neural_mlp": {
@@ -135,12 +134,11 @@
   },
   "missing_by_method": {
     "cosmos3_nano_future_window": 9,
-    "cosmos3_super_reasoner": 1,
     "metadata128_neural_mlp": 1,
     "metadata128_simple": 1
   },
   "missing_by_status": {
-    "not_evaluated_in_verified_package": 10,
+    "not_evaluated_in_verified_package": 9,
     "not_supported_by_metadata_only_package": 1,
     "unsupported_without_required_target": 1
   },
@@ -164,8 +162,7 @@
       "cosmos3_nano_future_window"
     ],
     "15 Interaction Text Prediction": [
-      "cosmos3_nano_future_window",
-      "cosmos3_super_reasoner"
+      "cosmos3_nano_future_window"
     ],
     "18 IMU-to-Hand Pose Reconstruction": [
       "cosmos3_nano_future_window"
@@ -254,19 +251,6 @@
       "task_id": "misalignment_detection",
       "task_label": "Multimodal Synchronization Detection",
       "task_number": 12
-    },
-    {
-      "method": "Cosmos3-Super Reasoner",
-      "metric_key": "macro_f1",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-      "recommended_next_step": "Generate verified model outputs for this task contract and score them against the held-out labels.",
-      "scope": "multi_episode_128_partial_model_overlay",
-      "series_id": "cosmos3_super_reasoner",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "task_id": "interaction_text_prediction",
-      "task_label": "Interaction Text Prediction",
-      "task_number": 15
     },
     {
       "method": "Cosmos3-Nano Future Window",
@@ -380,8 +364,8 @@
     "method_count": 9,
     "method_task_record_count": 180,
     "proxy_scored_method_task_count": 4,
-    "scored_method_task_count": 168,
-    "scoreless_method_task_count": 12,
+    "scored_method_task_count": 169,
+    "scoreless_method_task_count": 11,
     "task_count": 20
   },
   "source_matrix": "docs/data/task_method_20_result_matrix.json",

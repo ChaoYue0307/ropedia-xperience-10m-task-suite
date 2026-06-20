@@ -1,11 +1,11 @@
 {
   "title": "Task Method 20-Result Matrix",
   "status": "pass",
-  "generated_at_utc": "2026-06-20T15:20:32+00:00",
+  "generated_at_utc": "2026-06-20T16:15:23+00:00",
   "task_count": 20,
   "method_count": 9,
   "method_task_record_count": 180,
-  "scored_method_task_count": 168,
+  "scored_method_task_count": 169,
   "series": [
     {
       "id": "minimal",
@@ -183,17 +183,16 @@
       "method_detail": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 5/8/9/10/11/12/13/14/16/17/18/19/20 probes where public metrics exist.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 19,
-      "covered_task_count": 19,
+      "scored_task_count": 20,
+      "covered_task_count": 20,
       "proxy_scored_task_count": 0,
-      "scoreless_task_count": 1,
+      "scoreless_task_count": 0,
       "unsupported_task_count": 0,
-      "not_evaluated_task_count": 1,
+      "not_evaluated_task_count": 0,
       "status_counts": {
-        "not_evaluated_in_verified_package": 1,
-        "scored": 19
+        "scored": 20
       },
-      "coverage_fraction": 0.95,
+      "coverage_fraction": 1.0,
       "result_record_fraction": 1.0
     },
     {
@@ -2622,17 +2621,17 @@
       "task_label": "Interaction Text Prediction",
       "series_id": "cosmos3_super_reasoner",
       "method": "Cosmos3-Super Reasoner",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 0.17949512355264183,
+      "raw_text": "0.1795",
+      "normalized_score": 0.17949512355264183,
       "metric_key": "macro_f1",
-      "source": null,
+      "source": "results/omni_finetune/xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z/interaction_text_prediction/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 15,

@@ -85,6 +85,11 @@ COSMOS_SUPER_FUTURE_TASK_PROBE_DIR = (
     / "results/omni_finetune"
     / "xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620"
 )
+COSMOS_SUPER_INTERACTION_TEXT_PROBE_DIR = (
+    ROOT
+    / "results/omni_finetune"
+    / "xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z"
+)
 QWEN_ACTION_OBJECT_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/qwen3_omni_v6_lora/metrics.json"
 )
@@ -173,6 +178,12 @@ COSMOS_SUPER_FUTURE_TASK_METRIC_KEYS = {
     "misalignment_detection": "misalignment_detection_f1",
     "next_subtask_forecast": "next_subtask_forecast_macro_f1",
     "object_set_forecast": "object_set_forecast_micro_f1",
+}
+COSMOS_SUPER_INTERACTION_TEXT_TASK_METRIC_PATHS = {
+    "interaction_text_prediction": COSMOS_SUPER_INTERACTION_TEXT_PROBE_DIR / "interaction_text_prediction/metrics.json",
+}
+COSMOS_SUPER_INTERACTION_TEXT_TASK_METRIC_KEYS = {
+    "interaction_text_prediction": "macro_f1",
 }
 OUTPUT_JSON = ROOT / "docs/data/unified_task_model_radar.json"
 OUTPUT_SINGLE_JSON = ROOT / "docs/data/single_episode_task_model_radar.json"
@@ -353,6 +364,7 @@ FOUNDATION_METRIC_SOURCE_OVERRIDES = {
     ("cosmos3_super_reasoner", "modality_reconstruction"): COSMOS_SUPER_RETRIEVAL_TASK_METRIC_PATHS["modality_reconstruction"],
     ("cosmos3_super_reasoner", "imu_to_hand_pose"): COSMOS_SUPER_RETRIEVAL_TASK_METRIC_PATHS["imu_to_hand_pose"],
     ("cosmos3_super_reasoner", "camera_view_sync_retrieval"): COSMOS_SUPER_RETRIEVAL_TASK_METRIC_PATHS["camera_view_sync_retrieval"],
+    ("cosmos3_super_reasoner", "interaction_text_prediction"): COSMOS_SUPER_INTERACTION_TEXT_TASK_METRIC_PATHS["interaction_text_prediction"],
 }
 
 SHORT_TASK_LABELS = {
@@ -449,6 +461,14 @@ def foundation_task_metric_mapping(
     for task_id, path in COSMOS_SUPER_FUTURE_TASK_METRIC_PATHS.items():
         payload = read_json(path)
         metric_key = COSMOS_SUPER_FUTURE_TASK_METRIC_KEYS[task_id]
+        metric_value = payload.get(metric_key)
+        if payload.get("status") != "pass" or not isinstance(metric_value, (int, float)):
+            continue
+        cosmos_super_metrics[metric_key] = metric_value
+        mapping.setdefault(task_id, {})["cosmos3_super_reasoner"] = metric_key
+    for task_id, path in COSMOS_SUPER_INTERACTION_TEXT_TASK_METRIC_PATHS.items():
+        payload = read_json(path)
+        metric_key = COSMOS_SUPER_INTERACTION_TEXT_TASK_METRIC_KEYS[task_id]
         metric_value = payload.get(metric_key)
         if payload.get("status") != "pass" or not isinstance(metric_value, (int, float)):
             continue

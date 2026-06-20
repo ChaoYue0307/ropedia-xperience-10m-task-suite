@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-20T15:48:55+00:00",
+  "generated_at_utc": "2026-06-20T16:17:43+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -169,9 +169,12 @@
     "scripts/omni/collect_cosmos3_super_retrieval_task_probe_results.sh": true,
     "scripts/omni/collect_cosmos3_super_future_task_probe_results.sh": true,
     "scripts/omni/eval_cosmos3_super_future_task_probes.py": true,
+    "scripts/omni/eval_cosmos3_super_interaction_text_task.py": true,
     "scripts/omni/eval_cosmos3_super_retrieval_task_probes.py": true,
     "scripts/omni/merge_cosmos3_super_future_task_probe_shards.py": true,
+    "scripts/omni/merge_cosmos3_super_interaction_text_task_shards.py": true,
     "scripts/omni/run_cosmos3_super_future_task_probes_sharded.sh": true,
+    "scripts/omni/run_cosmos3_super_interaction_text_task_sharded.sh": true,
     "scripts/omni/run_cosmos3_super_retrieval_task_probes_sharded.sh": true,
     "scripts/omni/train_qwen3_omni_lora.py": true,
     "results/omni_finetune/task_suite_enhancement_128_v1_20260608/enhancement_plan.json": true,
@@ -223,8 +226,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 1447,
-      "text_file_count": 1206,
+      "file_count": 1450,
+      "text_file_count": 1209,
       "largest_file": {
         "path": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/interaction_text_prediction/confusion_matrix.csv",
         "bytes": 73057076

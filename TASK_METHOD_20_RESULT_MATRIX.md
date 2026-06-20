@@ -13,7 +13,7 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 128ep Raw Simple | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
 | 128ep Raw NN | 20 | 20 | 2 | 0 | proxy scored 2, scored 18 |
 | Qwen3-Omni v6 LoRA | 20 | 20 | 0 | 0 | scored 20 |
-| Cosmos3-Super Reasoner | 20 | 19 | 0 | 1 | not evaluated 1, scored 19 |
+| Cosmos3-Super Reasoner | 20 | 20 | 0 | 0 | scored 20 |
 | Cosmos3-Nano Future Window | 20 | 11 | 0 | 9 | not evaluated 9, scored 11 |
 
 | # | Task | Min | NN | 128-S | 128-NN | 128-RS | 128-RN | Qwen3 | C3-S | C3-N |
@@ -32,7 +32,7 @@ Legend: `score` = numeric task score, `proxy` = documented raw128 compact proxy 
 | 12 | Multimodal Synchronization Detection | score | score | score | score | score | score | score | score | not evaluated |
 | 13 | Long-Horizon Next-Action Forecasting | score | score | score | score | score | score | score | score | score |
 | 14 | Long-Horizon Next-Subtask Forecasting | score | score | score | score | score | score | score | score | score |
-| 15 | Interaction Text Prediction | score | score | score | score | proxy | proxy | score | not evaluated | not evaluated |
+| 15 | Interaction Text Prediction | score | score | score | score | proxy | proxy | score | score | not evaluated |
 | 16 | Action-Object Relation Prediction | score | score | score | score | score | score | score | score | score |
 | 17 | Future Object-Set Forecasting | score | score | score | score | score | score | score | score | score |
 | 18 | IMU-to-Hand Pose Reconstruction | score | score | score | score | score | score | score | score | not evaluated |

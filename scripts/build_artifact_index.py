@@ -16,6 +16,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "docs/data/artifact_index.json"
 QWEN3_FUTURE_TASK_PROBE_RUN_ID = "xperience10m_qwen3_omni_v6_future_task_probes_a100_20260616T143608Z"
+COSMOS3_SUPER_INTERACTION_TEXT_TASK_PROBE_RUN_ID = (
+    "xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z"
+)
 
 ARTIFACTS = [
     {
@@ -1357,6 +1360,64 @@ def qwen3_future_task_probe_artifacts() -> list[dict]:
     return artifacts
 
 
+def cosmos3_super_interaction_text_probe_artifacts() -> list[dict]:
+    run_dir = ROOT / "results/omni_finetune" / COSMOS3_SUPER_INTERACTION_TEXT_TASK_PROBE_RUN_ID
+    if not run_dir.exists():
+        return []
+
+    artifacts: list[dict] = [
+        {
+            "id": "cosmos3_super_interaction_text_probe_package",
+            "title": "Cosmos3-Super interaction-text task-15 probe package",
+            "path": run_dir.relative_to(ROOT).as_posix(),
+            "kind": "model_result",
+            "surface": "repo_hf",
+            "shows": (
+                "Four-shard Cosmos3-Super text-only inference probe for task 15 "
+                "over raw annotation.hdf5 interaction text labels."
+            ),
+        }
+    ]
+    for relative_path, kind, label in [
+        ("summary.json", "metrics_source", "merged summary"),
+        ("launch_env.txt", "scaleup_status", "launch environment"),
+        ("interaction_text_prediction/RUN_REPORT.md", "scaleup_status", "task 15 run report"),
+        ("interaction_text_prediction/metrics.json", "metrics_source", "task 15 metrics"),
+        ("interaction_text_prediction/per_class_metrics.csv", "metrics_source", "task 15 per-class metrics"),
+        ("interaction_text_prediction/confusion_matrix.csv", "metrics_source", "task 15 confusion matrix"),
+    ]:
+        path = run_dir / relative_path
+        if path.exists():
+            artifacts.append(
+                {
+                    "id": f"cosmos3_super_interaction_text_{relative_path.replace('/', '_').replace('.', '_')}",
+                    "title": f"Cosmos3-Super interaction-text probe {label}",
+                    "path": path.relative_to(ROOT).as_posix(),
+                    "kind": kind,
+                    "surface": "repo_hf",
+                    "shows": f"Public-safe {label} for {COSMOS3_SUPER_INTERACTION_TEXT_TASK_PROBE_RUN_ID}.",
+                }
+            )
+
+    launcher_log = (
+        ROOT
+        / "results/omni_finetune/deferred_launchers"
+        / f"{COSMOS3_SUPER_INTERACTION_TEXT_TASK_PROBE_RUN_ID}.launcher.log"
+    )
+    if launcher_log.exists():
+        artifacts.append(
+            {
+                "id": "cosmos3_super_interaction_text_probe_launcher_log",
+                "title": "Cosmos3-Super interaction-text probe launcher log",
+                "path": launcher_log.relative_to(ROOT).as_posix(),
+                "kind": "scaleup_status",
+                "surface": "repo_hf",
+                "shows": "Launch and merge log for the four-shard task-15 probe.",
+            }
+        )
+    return artifacts
+
+
 def artifact_entry(item: dict) -> dict:
     path = ROOT / item["path"]
     entry = {
@@ -1380,6 +1441,7 @@ def main() -> int:
     artifacts = [dict(item) for item in ARTIFACTS]
     artifacts.extend(verified_public_package_artifacts())
     artifacts.extend(qwen3_future_task_probe_artifacts())
+    artifacts.extend(cosmos3_super_interaction_text_probe_artifacts())
     summary_path = ROOT / "results/episode_task_suite/summary_report.json"
     if summary_path.exists():
         summary = json.loads(summary_path.read_text(encoding="utf-8"))

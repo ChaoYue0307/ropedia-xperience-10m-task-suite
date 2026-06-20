@@ -1,15 +1,15 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-20T15:20:34+00:00",
+  "generated_at_utc": "2026-06-20T16:14:13+00:00",
   "status": "pass",
-  "artifact_count": 214,
+  "artifact_count": 222,
   "missing": [],
   "by_kind": {
     "project_path": 18,
     "visual_asset": 3,
     "visual_asset_source": 3,
     "scaleup_contract": 7,
-    "scaleup_status": 49,
+    "scaleup_status": 52,
     "publication_workflow": 6,
     "reproducibility": 4,
     "project_scope": 1,
@@ -18,9 +18,9 @@
     "website_data": 10,
     "generated_figure": 7,
     "visualization_builder": 1,
-    "model_result": 4,
+    "model_result": 5,
     "result_interpretation": 5,
-    "metrics_source": 31,
+    "metrics_source": 35,
     "visual_evidence": 7,
     "dataset_context": 1,
     "quality_gate": 12,
@@ -610,7 +610,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "98bffea722a8d50936e214538b37766d3952ca362854757bf31121031fdecbc8"
+      "sha256": "ba571e397b5dfe71f82efc83dc30a44ec693b92f1316e6dd52adca12811ad52f"
     },
     {
       "id": "source_alignment_validator",
@@ -730,8 +730,8 @@
       "surface": "website_hf",
       "shows": "Stores normalized 20-axis radar values, raw task metrics, Qwen3/Cosmos overlay mappings, branch-card caveats, and explicit scoreless status records.",
       "exists": true,
-      "bytes": 228423,
-      "sha256": "a84269541f448eb6b9d2ad29199dc2cab23c55ad4eacb1f0b4fbd2948e1b75c4"
+      "bytes": 228295,
+      "sha256": "c04390cfd6605ca4ace7bae08ad600057a763cab25c418b39d99b6bc3db096d3"
     },
     {
       "id": "single_episode_task_model_radar_json",
@@ -742,7 +742,7 @@
       "shows": "Machine-readable split radar for the one-episode Minimal and Neural MLP baselines, both scored on all 20 task contracts.",
       "exists": true,
       "bytes": 51064,
-      "sha256": "dad53d1c12eb8947b064372e5ccd7c416cefab6e57175cd990e60af9e56ec958"
+      "sha256": "133ab83c834c0206dd8f4adc3432caea93cb610efcda1eb664b0df0fe5c5685e"
     },
     {
       "id": "episode128_task_model_radar_json",
@@ -752,8 +752,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable split radar for selected 128-episode metadata/raw baselines and verified Qwen3/Cosmos branches, preserving explicit scoreless cells.",
       "exists": true,
-      "bytes": 184569,
-      "sha256": "a07df912c0909bd6067eb81a0f54856c1ed6da5ca5feee54f6b32d3296b3724e"
+      "bytes": 184441,
+      "sha256": "0cfb03171373439163ba53f618b619787bfcd9f9a6c81d6f1fab48c6b607516c"
     },
     {
       "id": "task_method_20_result_matrix_json",
@@ -763,8 +763,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable 9-method by 20-task matrix where every method has 20 records and scoreless cells carry unsupported/not-evaluated reasons.",
       "exists": true,
-      "bytes": 128400,
-      "sha256": "afee9a09eeb7406a8f2ef4eb4205697fb9e05e5bad132686f21d28f93ac204a2"
+      "bytes": 128311,
+      "sha256": "427ac1f5beadf4eef5e1fa6b98f845bb351af1df3668f4d0d4a6f81d2753036c"
     },
     {
       "id": "task_method_20_result_matrix",
@@ -774,8 +774,8 @@
       "surface": "repo_hf",
       "shows": "Reader-facing table that separates 20 records per method from numeric scored axes, documented raw128 proxy scores, unsupported metadata targets, and model targets not evaluated in verified packages.",
       "exists": true,
-      "bytes": 3739,
-      "sha256": "325df952cc73a1a530781c3f55cf87105a178ac3cb3553515c817d00916deb27"
+      "bytes": 3714,
+      "sha256": "419e00ed420d690e931dec87b0e76fa2b54683836b50665f38c896fe9ca8f7c0"
     },
     {
       "id": "task_method_20_gap_audit_json",
@@ -785,8 +785,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable 180-record gap ledger with numeric scores, scoreless cells, explicit status reasons, and next evidence needed before new scores can be published.",
       "exists": true,
-      "bytes": 20037,
-      "sha256": "20752c326190b793e2e89415a01c29c140a0ab1bff45825cdfbcca81fe8fcdec"
+      "bytes": 16154,
+      "sha256": "43fd5a2befcc7e4deaa6d63e1e2b3a167a948c036dc3e14945cca6e94b051471"
     },
     {
       "id": "task_method_20_gap_audit",
@@ -796,8 +796,8 @@
       "surface": "repo_hf",
       "shows": "Reader-facing ledger that lists every scoreless method-task cell and the concrete target or model-output evidence required before it can become numeric.",
       "exists": true,
-      "bytes": 6398,
-      "sha256": "ab8ccca20391194c3211ec3013fb0ec7f88bba1d6b94aadd46a5de3f0f5f3324"
+      "bytes": 5443,
+      "sha256": "618d8198df25fd054fe5a63c92e44cf0671849dbe3323a699d5343a0ce056551"
     },
     {
       "id": "unified_task_model_radar_chart",
@@ -807,8 +807,8 @@
       "surface": "website_hf",
       "shows": "Compares minimal and neural MLP baselines across all 20 tasks, with Qwen3/Cosmos task-aligned model overlays.",
       "exists": true,
-      "bytes": 56612,
-      "sha256": "03a3eb9369cda807197220eaa22282dec49b6119fa24c211a67c520daf63a611"
+      "bytes": 56723,
+      "sha256": "d22149d5b58f2f0a79a1dc9f2212c252a05932c79e86cb20d11ff9b46107e76e"
     },
     {
       "id": "single_episode_task_model_radar_chart",
@@ -829,8 +829,8 @@
       "surface": "website_hf",
       "shows": "Separates the selected 128-episode methods: raw-feature simple/NN as complete 20/20 scored polygons and metadata/Qwen/Cosmos as task-aligned overlays.",
       "exists": true,
-      "bytes": 50599,
-      "sha256": "ec9cbf2a69d5b5cd466500dfbeaf996fa666af94a47a597abcc2465bbfad0bad"
+      "bytes": 50710,
+      "sha256": "5f394f68aa09cfb23346f9dcf42028a3550d45bc3cb1e6f427353981c7ccec01"
     },
     {
       "id": "unified_task_model_radar_builder",
@@ -840,8 +840,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the direction-aware radar chart and machine-readable metric overlay JSON.",
       "exists": true,
-      "bytes": 61983,
-      "sha256": "01a709eaa65fce0747e4d05b96bba408090dc31dd73819aba54713dad7ad15cf"
+      "bytes": 62915,
+      "sha256": "dc3eb7d040ca378cd38fafa7b2469a02593e871056da068f0eab42577ede0bfd"
     },
     {
       "id": "task_method_20_gap_audit_builder",
@@ -1241,7 +1241,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 181991,
+      "bytes": 181774,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1252,8 +1252,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 66737,
-      "sha256": "ccbd7cbe14ad094a117c4c0b5e5608edc9b724a7dac311191011d6d68121ce5b"
+      "bytes": 66834,
+      "sha256": "4cad7de030e0192ac2cf676738c30e070bf25414e482e594fbfe724aa3a7853a"
     },
     {
       "id": "reproducibility_contract",
@@ -1285,8 +1285,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 63409,
-      "sha256": "0517eb612df190cea8997aab10804a2016f5a1ccf1bb9ac64d7d458172508173"
+      "bytes": 66182,
+      "sha256": "f4c169220db1ad224e6b559f42d5f2fecfef3d8ccac62ac5a461b9e2b3b16ffd"
     },
     {
       "id": "publication_audit",
@@ -1321,7 +1321,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 1231414,
+      "bytes": 1259705,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -2402,6 +2402,94 @@
       "exists": true,
       "bytes": 2048,
       "sha256": "6952893720a78312f5a72b1f82cf59c1ec9b68520beb70cce96e2d0b8deb878b"
+    },
+    {
+      "id": "cosmos3_super_interaction_text_probe_package",
+      "title": "Cosmos3-Super interaction-text task-15 probe package",
+      "path": "results/omni_finetune/xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z",
+      "kind": "model_result",
+      "surface": "repo_hf",
+      "shows": "Four-shard Cosmos3-Super text-only inference probe for task 15 over raw annotation.hdf5 interaction text labels.",
+      "exists": true,
+      "file_count": 6,
+      "bytes": 1268765
+    },
+    {
+      "id": "cosmos3_super_interaction_text_summary_json",
+      "title": "Cosmos3-Super interaction-text probe merged summary",
+      "path": "results/omni_finetune/xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z/summary.json",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Public-safe merged summary for xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z.",
+      "exists": true,
+      "bytes": 57147,
+      "sha256": "3ee2f2aa17d0cc1bda54ce7616a4685254741d5200f43f445d8869beaf3957bd"
+    },
+    {
+      "id": "cosmos3_super_interaction_text_launch_env_txt",
+      "title": "Cosmos3-Super interaction-text probe launch environment",
+      "path": "results/omni_finetune/xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z/launch_env.txt",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Public-safe launch environment for xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z.",
+      "exists": true,
+      "bytes": 739,
+      "sha256": "379150657776473e68516e64eba0055a3f2be2dc6cefb7c8371819e356639ff1"
+    },
+    {
+      "id": "cosmos3_super_interaction_text_interaction_text_prediction_RUN_REPORT_md",
+      "title": "Cosmos3-Super interaction-text probe task 15 run report",
+      "path": "results/omni_finetune/xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z/interaction_text_prediction/RUN_REPORT.md",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Public-safe task 15 run report for xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z.",
+      "exists": true,
+      "bytes": 192,
+      "sha256": "74fdb1935831c32c100dff232f7f71e5f3d45a41c2a39ea325179d3f4241af12"
+    },
+    {
+      "id": "cosmos3_super_interaction_text_interaction_text_prediction_metrics_json",
+      "title": "Cosmos3-Super interaction-text probe task 15 metrics",
+      "path": "results/omni_finetune/xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z/interaction_text_prediction/metrics.json",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Public-safe task 15 metrics for xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z.",
+      "exists": true,
+      "bytes": 53350,
+      "sha256": "bc1929cdb574f9850939983b192faae05ee3a013eb043362869b3dc22b38fa93"
+    },
+    {
+      "id": "cosmos3_super_interaction_text_interaction_text_prediction_per_class_metrics_csv",
+      "title": "Cosmos3-Super interaction-text probe task 15 per-class metrics",
+      "path": "results/omni_finetune/xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z/interaction_text_prediction/per_class_metrics.csv",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Public-safe task 15 per-class metrics for xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z.",
+      "exists": true,
+      "bytes": 67339,
+      "sha256": "b0525f0d3821e55acf4a65683c87e431a8857bc4eb0acf3e61244dd3ae382bae"
+    },
+    {
+      "id": "cosmos3_super_interaction_text_interaction_text_prediction_confusion_matrix_csv",
+      "title": "Cosmos3-Super interaction-text probe task 15 confusion matrix",
+      "path": "results/omni_finetune/xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z/interaction_text_prediction/confusion_matrix.csv",
+      "kind": "metrics_source",
+      "surface": "repo_hf",
+      "shows": "Public-safe task 15 confusion matrix for xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z.",
+      "exists": true,
+      "bytes": 1089998,
+      "sha256": "fdca44e8d6d59c7334d6612592bc88fd8fa45957b27d65bd9197b67e6e7bea4d"
+    },
+    {
+      "id": "cosmos3_super_interaction_text_probe_launcher_log",
+      "title": "Cosmos3-Super interaction-text probe launcher log",
+      "path": "results/omni_finetune/deferred_launchers/xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z.launcher.log",
+      "kind": "scaleup_status",
+      "surface": "repo_hf",
+      "shows": "Launch and merge log for the four-shard task-15 probe.",
+      "exists": true,
+      "bytes": 279,
+      "sha256": "2e73065ec629b69a1e98e130ebe15fa440ff02853b3cb686cc5e29459f4d89ad"
     }
   ]
 }

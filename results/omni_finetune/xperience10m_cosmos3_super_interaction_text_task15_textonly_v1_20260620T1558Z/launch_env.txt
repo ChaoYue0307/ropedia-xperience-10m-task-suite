@@ -1,0 +1,12 @@
+run_id=xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z
+dataset_jsonl=results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl
+caption_jsonl=results/omni_finetune/xperience10m_128_raw_caption_interactions_task15_20260619_full/caption_interactions.jsonl
+caption_manifest=results/omni_finetune/xperience10m_128_raw_caption_interactions_task15_20260619_full/caption_interactions_manifest.json
+base_url=http://127.0.0.1:8000/v1
+model=/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Super_reasoner_overlay
+candidate_count=4
+shards=4
+media_mode=text_only
+started_at=2026-06-21T00:02:46+08:00
+finished_at=2026-06-21T00:08:37+08:00
+exit_code=0
