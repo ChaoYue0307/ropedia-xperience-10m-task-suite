@@ -90,6 +90,21 @@ COSMOS_SUPER_INTERACTION_TEXT_PROBE_DIR = (
     / "results/omni_finetune"
     / "xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z"
 )
+COSMOS_NANO_RETRIEVAL_TASK_PROBE_DIR = (
+    ROOT
+    / "results/omni_finetune"
+    / "xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621"
+)
+COSMOS_NANO_INTERACTION_TEXT_PROBE_DIR = (
+    ROOT
+    / "results/omni_finetune"
+    / "xperience10m_cosmos3_nano_interaction_text_task15_patched_textonly_20260621"
+)
+COSMOS_NANO_FUTURE_ORDER_PROBE_DIR = (
+    ROOT
+    / "results/omni_finetune"
+    / "xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621"
+)
 QWEN_ACTION_OBJECT_METRICS_PATH = (
     MODEL_OUTPUT_TASK_PROBE_DIR / "action_object_relation/qwen3_omni_v6_lora/metrics.json"
 )
@@ -167,6 +182,18 @@ COSMOS_SUPER_RETRIEVAL_TASK_METRIC_KEYS = {
     "imu_to_hand_pose": "imu_to_hand_pose_mrr",
     "camera_view_sync_retrieval": "camera_view_sync_retrieval_mrr",
 }
+COSMOS_NANO_RETRIEVAL_TASK_METRIC_PATHS = {
+    "hand_trajectory_forecast": COSMOS_NANO_RETRIEVAL_TASK_PROBE_DIR / "hand_trajectory_forecast/metrics.json",
+    "caption_grounding": COSMOS_NANO_RETRIEVAL_TASK_PROBE_DIR / "caption_grounding/metrics.json",
+    "imu_to_hand_pose": COSMOS_NANO_RETRIEVAL_TASK_PROBE_DIR / "imu_to_hand_pose/metrics.json",
+    "camera_view_sync_retrieval": COSMOS_NANO_RETRIEVAL_TASK_PROBE_DIR / "camera_view_sync_retrieval/metrics.json",
+}
+COSMOS_NANO_RETRIEVAL_TASK_METRIC_KEYS = {
+    "hand_trajectory_forecast": "hand_trajectory_forecast_mrr",
+    "caption_grounding": "caption_grounding_mrr",
+    "imu_to_hand_pose": "imu_to_hand_pose_mrr",
+    "camera_view_sync_retrieval": "camera_view_sync_retrieval_mrr",
+}
 COSMOS_SUPER_FUTURE_TASK_METRIC_PATHS = {
     "temporal_order": COSMOS_SUPER_FUTURE_TASK_PROBE_DIR / "temporal_order/metrics.json",
     "misalignment_detection": COSMOS_SUPER_FUTURE_TASK_PROBE_DIR / "misalignment_detection/metrics.json",
@@ -179,10 +206,24 @@ COSMOS_SUPER_FUTURE_TASK_METRIC_KEYS = {
     "next_subtask_forecast": "next_subtask_forecast_macro_f1",
     "object_set_forecast": "object_set_forecast_micro_f1",
 }
+COSMOS_NANO_FUTURE_ORDER_TASK_METRIC_PATHS = {
+    "temporal_order": COSMOS_NANO_FUTURE_ORDER_PROBE_DIR / "temporal_order/metrics.json",
+    "misalignment_detection": COSMOS_NANO_FUTURE_ORDER_PROBE_DIR / "misalignment_detection/metrics.json",
+}
+COSMOS_NANO_FUTURE_ORDER_TASK_METRIC_KEYS = {
+    "temporal_order": "temporal_order_f1",
+    "misalignment_detection": "misalignment_detection_f1",
+}
 COSMOS_SUPER_INTERACTION_TEXT_TASK_METRIC_PATHS = {
     "interaction_text_prediction": COSMOS_SUPER_INTERACTION_TEXT_PROBE_DIR / "interaction_text_prediction/metrics.json",
 }
 COSMOS_SUPER_INTERACTION_TEXT_TASK_METRIC_KEYS = {
+    "interaction_text_prediction": "macro_f1",
+}
+COSMOS_NANO_INTERACTION_TEXT_TASK_METRIC_PATHS = {
+    "interaction_text_prediction": COSMOS_NANO_INTERACTION_TEXT_PROBE_DIR / "interaction_text_prediction/metrics.json",
+}
+COSMOS_NANO_INTERACTION_TEXT_TASK_METRIC_KEYS = {
     "interaction_text_prediction": "macro_f1",
 }
 OUTPUT_JSON = ROOT / "docs/data/unified_task_model_radar.json"
@@ -295,6 +336,9 @@ FOUNDATION_TASK_METRICS = {
         "cosmos3_super_reasoner": "contact_accuracy",
         "cosmos3_nano_future_window": "contact_accuracy",
     },
+    "hand_trajectory_forecast": {
+        "cosmos3_nano_future_window": "hand_trajectory_forecast_mrr",
+    },
     "object_relevance": {
         "qwen3_omni_v6_lora": "object_micro_f1",
         "cosmos3_super_reasoner": "object_micro_f1",
@@ -306,6 +350,7 @@ FOUNDATION_TASK_METRICS = {
     },
     "caption_grounding": {
         "cosmos3_super_reasoner": "caption_grounding_iou",
+        "cosmos3_nano_future_window": "caption_grounding_mrr",
     },
     "long_horizon_next_action": {
         "cosmos3_super_reasoner": "long_horizon_next_action_macro_f1",
@@ -322,6 +367,21 @@ FOUNDATION_TASK_METRICS = {
     },
     "cross_modal_retrieval": {
         "cosmos3_nano_future_window": "future_retrieval_mrr",
+    },
+    "temporal_order": {
+        "cosmos3_nano_future_window": "temporal_order_f1",
+    },
+    "misalignment_detection": {
+        "cosmos3_nano_future_window": "misalignment_detection_f1",
+    },
+    "imu_to_hand_pose": {
+        "cosmos3_nano_future_window": "imu_to_hand_pose_mrr",
+    },
+    "camera_view_sync_retrieval": {
+        "cosmos3_nano_future_window": "camera_view_sync_retrieval_mrr",
+    },
+    "interaction_text_prediction": {
+        "cosmos3_nano_future_window": "macro_f1",
     },
     "time_to_transition": {
         "cosmos3_super_reasoner": "time_to_transition_mae",
@@ -357,6 +417,13 @@ FOUNDATION_METRIC_SOURCE_OVERRIDES = {
     ("cosmos3_nano_future_window", "action_object_relation"): COSMOS_NANO_ACTION_OBJECT_METRICS_PATH,
     ("cosmos3_nano_future_window", "object_set_forecast"): COSMOS_NANO_OBJECT_SET_METRICS_PATH,
     ("cosmos3_nano_future_window", "time_to_transition"): COSMOS_NANO_TIME_TO_TRANSITION_METRICS_PATH,
+    ("cosmos3_nano_future_window", "hand_trajectory_forecast"): COSMOS_NANO_RETRIEVAL_TASK_METRIC_PATHS["hand_trajectory_forecast"],
+    ("cosmos3_nano_future_window", "caption_grounding"): COSMOS_NANO_RETRIEVAL_TASK_METRIC_PATHS["caption_grounding"],
+    ("cosmos3_nano_future_window", "imu_to_hand_pose"): COSMOS_NANO_RETRIEVAL_TASK_METRIC_PATHS["imu_to_hand_pose"],
+    ("cosmos3_nano_future_window", "camera_view_sync_retrieval"): COSMOS_NANO_RETRIEVAL_TASK_METRIC_PATHS["camera_view_sync_retrieval"],
+    ("cosmos3_nano_future_window", "interaction_text_prediction"): COSMOS_NANO_INTERACTION_TEXT_TASK_METRIC_PATHS["interaction_text_prediction"],
+    ("cosmos3_nano_future_window", "temporal_order"): COSMOS_NANO_FUTURE_ORDER_TASK_METRIC_PATHS["temporal_order"],
+    ("cosmos3_nano_future_window", "misalignment_detection"): COSMOS_NANO_FUTURE_ORDER_TASK_METRIC_PATHS["misalignment_detection"],
     ("cosmos3_super_reasoner", "long_horizon_next_action"): COSMOS_SUPER_LONG_HORIZON_METRICS_PATH,
     ("cosmos3_super_reasoner", "time_to_transition"): COSMOS_SUPER_TIME_TO_TRANSITION_METRICS_PATH,
     ("cosmos3_super_reasoner", "hand_trajectory_forecast"): COSMOS_SUPER_RETRIEVAL_TASK_METRIC_PATHS["hand_trajectory_forecast"],
@@ -399,7 +466,7 @@ METHOD_DETAILS = {
     "raw128_neural_mlp": "128-episode 4430-dim sensor NPZ MLP heads; tasks 15/19 use compact proxies.",
     "qwen3_omni_v6_lora": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 and any completed private-GPU future/retrieval/sensor-target probes scored from task-specific JSON.",
     "cosmos3_super_reasoner": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 5/8/9/10/11/12/13/14/16/17/18/19/20 probes where public metrics exist.",
-    "cosmos3_nano_future_window": "Verified Cosmos3-Nano future-window compatibility metrics, plus tasks 10/13/14/16/17 and a derived task-20 boundary timing probe scored from existing held-out future-window artifacts.",
+    "cosmos3_nano_future_window": "Verified Cosmos3-Nano future-window compatibility metrics, plus model-output probes for tasks 5/8/10/11/12/13/14/15/16/17/18/19 and a derived task-20 boundary timing probe scored from held-out future-window artifacts.",
 }
 
 PROXY_TASK_IDS = {"interaction_text_prediction", "camera_view_sync_retrieval"}
@@ -799,6 +866,8 @@ def build_payload() -> dict[str, Any]:
     cosmos_nano.update(read_json(COSMOS_NANO_ACTION_OBJECT_METRICS_PATH))
     cosmos_nano.update(read_json(COSMOS_NANO_OBJECT_SET_METRICS_PATH))
     cosmos_nano.update(read_json(COSMOS_NANO_TIME_TO_TRANSITION_METRICS_PATH))
+    for metrics_path in COSMOS_NANO_RETRIEVAL_TASK_METRIC_PATHS.values():
+        cosmos_nano.update(read_json(metrics_path))
     foundation_task_metrics = foundation_task_metric_mapping(qwen, cosmos_super)
     foundation_metrics = {
         "qwen3_omni_v6_lora": qwen,
@@ -825,16 +894,20 @@ def build_payload() -> dict[str, Any]:
             },
         }
         for series_id, metric_key in foundation_task_metrics.get(row["task_id"], {}).items():
-            raw = foundation_metrics.get(series_id, {}).get(metric_key)
+            source_path = FOUNDATION_METRIC_SOURCE_OVERRIDES.get(
+                (series_id, row["task_id"]),
+                FOUNDATION_METRIC_PATHS[series_id],
+            )
+            source_metrics = (
+                read_json(source_path)
+                if (series_id, row["task_id"]) in FOUNDATION_METRIC_SOURCE_OVERRIDES
+                else foundation_metrics.get(series_id, {})
+            )
+            raw = source_metrics.get(metric_key)
             values[series_id] = {
                 "raw": raw,
                 "metric_key": metric_key,
-                "source": str(
-                    FOUNDATION_METRIC_SOURCE_OVERRIDES.get(
-                        (series_id, row["task_id"]),
-                        FOUNDATION_METRIC_PATHS[series_id],
-                    ).relative_to(ROOT)
-                ),
+                "source": str(source_path.relative_to(ROOT)),
                 "scope": "multi_episode_128_partial_model_overlay",
                 "status": "scored" if isinstance(raw, (int, float)) else "missing_public_metric",
                 "reason": None if isinstance(raw, (int, float)) else f"metric {metric_key} is absent from the verified public package",

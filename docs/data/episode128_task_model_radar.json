@@ -1,12 +1,12 @@
 {
   "title": "128-Episode 20-Task Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-20T16:47:26+00:00",
+  "generated_at_utc": "2026-06-20T17:46:52+00:00",
   "description": "Selected 128-episode metadata/raw baselines plus verified Qwen3/Cosmos branches. Every method has 20 records; numeric scores appear only where the public artifact produced that task target.",
   "task_count": 20,
   "method_count": 7,
   "method_task_record_count": 140,
-  "scored_method_task_count": 131,
+  "scored_method_task_count": 138,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
@@ -169,20 +169,20 @@
       "kind": "partial_128_episode_world_model_overlay",
       "scope": "128 selected episodes, held-out test",
       "stroke_dasharray": "2 7",
-      "method_detail": "Verified Cosmos3-Nano future-window compatibility metrics, plus tasks 10/13/14/16/17 and a derived task-20 boundary timing probe scored from existing held-out future-window artifacts.",
+      "method_detail": "Verified Cosmos3-Nano future-window compatibility metrics, plus model-output probes for tasks 5/8/10/11/12/13/14/15/16/17/18/19 and a derived task-20 boundary timing probe scored from held-out future-window artifacts.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 11,
-      "covered_task_count": 11,
+      "scored_task_count": 18,
+      "covered_task_count": 18,
       "proxy_scored_task_count": 0,
-      "scoreless_task_count": 9,
+      "scoreless_task_count": 2,
       "unsupported_task_count": 0,
-      "not_evaluated_task_count": 9,
+      "not_evaluated_task_count": 2,
       "status_counts": {
-        "not_evaluated_in_verified_package": 9,
-        "scored": 11
+        "not_evaluated_in_verified_package": 2,
+        "scored": 18
       },
-      "coverage_fraction": 0.55,
+      "coverage_fraction": 0.9,
       "result_record_fraction": 1.0
     }
   ],
@@ -630,15 +630,15 @@
           "status_label": "scored"
         },
         "cosmos3_nano_future_window": {
-          "raw": null,
-          "metric_key": "mpjpe",
-          "source": null,
+          "raw": 0.6912806884333101,
+          "metric_key": "hand_trajectory_forecast_mrr",
+          "source": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/hand_trajectory_forecast/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.15601504328321764,
+          "raw_text": "0.6913",
+          "status_label": "scored"
         }
       }
     },
@@ -903,15 +903,15 @@
           "status_label": "scored"
         },
         "cosmos3_nano_future_window": {
-          "raw": null,
-          "metric_key": "mrr",
-          "source": null,
+          "raw": 0.5221041086644663,
+          "metric_key": "caption_grounding_mrr",
+          "source": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/caption_grounding/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.5221041086644663,
+          "raw_text": "0.5221",
+          "status_label": "scored"
         }
       }
     },
@@ -1176,15 +1176,15 @@
           "status_label": "scored"
         },
         "cosmos3_nano_future_window": {
-          "raw": null,
-          "metric_key": "f1",
-          "source": null,
+          "raw": 0.5954109425716205,
+          "metric_key": "temporal_order_f1",
+          "source": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621/temporal_order/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.5954109425716205,
+          "raw_text": "0.5954",
+          "status_label": "scored"
         }
       }
     },
@@ -1267,15 +1267,15 @@
           "status_label": "scored"
         },
         "cosmos3_nano_future_window": {
-          "raw": null,
-          "metric_key": "f1",
-          "source": null,
+          "raw": 0.477201691802725,
+          "metric_key": "misalignment_detection_f1",
+          "source": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621/misalignment_detection/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.477201691802725,
+          "raw_text": "0.4772",
+          "status_label": "scored"
         }
       }
     },
@@ -1540,15 +1540,15 @@
           "status_label": "scored"
         },
         "cosmos3_nano_future_window": {
-          "raw": null,
+          "raw": 0.1788367958939587,
           "metric_key": "macro_f1",
-          "source": null,
+          "source": "results/omni_finetune/xperience10m_cosmos3_nano_interaction_text_task15_patched_textonly_20260621/interaction_text_prediction/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.1788367958939587,
+          "raw_text": "0.1788",
+          "status_label": "scored"
         }
       }
     },
@@ -1813,15 +1813,15 @@
           "status_label": "scored"
         },
         "cosmos3_nano_future_window": {
-          "raw": null,
-          "metric_key": "mae",
-          "source": null,
+          "raw": 0.9920062431451954,
+          "metric_key": "imu_to_hand_pose_mrr",
+          "source": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/imu_to_hand_pose/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.04238824931752955,
+          "raw_text": "0.9920",
+          "status_label": "scored"
         }
       }
     },
@@ -1904,15 +1904,15 @@
           "status_label": "scored"
         },
         "cosmos3_nano_future_window": {
-          "raw": null,
-          "metric_key": "mrr",
-          "source": null,
+          "raw": 0.9989875980764363,
+          "metric_key": "camera_view_sync_retrieval_mrr",
+          "source": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/camera_view_sync_retrieval/metrics.json",
           "scope": "multi_episode_128_partial_model_overlay",
-          "status": "not_evaluated_in_verified_package",
-          "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not evaluated"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.9989875980764363,
+          "raw_text": "0.9990",
+          "status_label": "scored"
         }
       }
     },
@@ -2627,17 +2627,17 @@
       "task_label": "Hand Trajectory Forecasting",
       "series_id": "cosmos3_nano_future_window",
       "method": "Cosmos3-Nano Future Window",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "mpjpe",
-      "source": null,
+      "raw": 0.6912806884333101,
+      "raw_text": "0.6913",
+      "normalized_score": 0.15601504328321764,
+      "metric_key": "hand_trajectory_forecast_mrr",
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/hand_trajectory_forecast/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 6,
@@ -3005,17 +3005,17 @@
       "task_label": "Language Grounding",
       "series_id": "cosmos3_nano_future_window",
       "method": "Cosmos3-Nano Future Window",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "mrr",
-      "source": null,
+      "raw": 0.5221041086644663,
+      "raw_text": "0.5221",
+      "normalized_score": 0.5221041086644663,
+      "metric_key": "caption_grounding_mrr",
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/caption_grounding/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 9,
@@ -3383,17 +3383,17 @@
       "task_label": "Temporal Order Verification",
       "series_id": "cosmos3_nano_future_window",
       "method": "Cosmos3-Nano Future Window",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "f1",
-      "source": null,
+      "raw": 0.5954109425716205,
+      "raw_text": "0.5954",
+      "normalized_score": 0.5954109425716205,
+      "metric_key": "temporal_order_f1",
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621/temporal_order/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 12,
@@ -3509,17 +3509,17 @@
       "task_label": "Multimodal Synchronization Detection",
       "series_id": "cosmos3_nano_future_window",
       "method": "Cosmos3-Nano Future Window",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "f1",
-      "source": null,
+      "raw": 0.477201691802725,
+      "raw_text": "0.4772",
+      "normalized_score": 0.477201691802725,
+      "metric_key": "misalignment_detection_f1",
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621/misalignment_detection/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 13,
@@ -3887,17 +3887,17 @@
       "task_label": "Interaction Text Prediction",
       "series_id": "cosmos3_nano_future_window",
       "method": "Cosmos3-Nano Future Window",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 0.1788367958939587,
+      "raw_text": "0.1788",
+      "normalized_score": 0.1788367958939587,
       "metric_key": "macro_f1",
-      "source": null,
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_interaction_text_task15_patched_textonly_20260621/interaction_text_prediction/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 16,
@@ -4265,17 +4265,17 @@
       "task_label": "IMU-to-Hand Pose Reconstruction",
       "series_id": "cosmos3_nano_future_window",
       "method": "Cosmos3-Nano Future Window",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "mae",
-      "source": null,
+      "raw": 0.9920062431451954,
+      "raw_text": "0.9920",
+      "normalized_score": 0.04238824931752955,
+      "metric_key": "imu_to_hand_pose_mrr",
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/imu_to_hand_pose/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 19,
@@ -4391,17 +4391,17 @@
       "task_label": "Camera-View Synchronization Retrieval",
       "series_id": "cosmos3_nano_future_window",
       "method": "Cosmos3-Nano Future Window",
-      "status": "not_evaluated_in_verified_package",
-      "status_label": "not evaluated",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
-      "metric_key": "mrr",
-      "source": null,
+      "raw": 0.9989875980764363,
+      "raw_text": "0.9990",
+      "normalized_score": 0.9989875980764363,
+      "metric_key": "camera_view_sync_retrieval_mrr",
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/camera_view_sync_retrieval/metrics.json",
       "scope": "multi_episode_128_partial_model_overlay",
-      "reason": "the verified public model package did not ask this branch to emit that task target; a new task-specific evaluation package is required for a numeric score"
+      "reason": null
     },
     {
       "task_number": 20,

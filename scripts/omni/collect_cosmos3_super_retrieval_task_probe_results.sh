@@ -10,6 +10,7 @@ REMOTE_ROOT="${REMOTE_ROOT:-/mnt/kgc/chaoyue/ropedia-h20-side/ropedia-episode-ta
 RUN_ID="${RUN_ID:-xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620}"
 RESULT_ROOT="${RESULT_ROOT:-results/omni_finetune}"
 TASKS_CSV="${TASKS_CSV:-hand_trajectory_forecast,cross_modal_retrieval,modality_reconstruction,imu_to_hand_pose,camera_view_sync_retrieval}"
+MODEL_LABEL="${MODEL_LABEL:-Cosmos3-Super}"
 
 REMOTE_RUN_DIR="${REMOTE_ROOT}/${RESULT_ROOT}/${RUN_ID}"
 LOCAL_RUN_DIR="${PROJECT_ROOT}/${RESULT_ROOT}/${RUN_ID}"
@@ -40,7 +41,7 @@ for remote_launcher_log in "${REMOTE_LAUNCHER_LOGS[@]}"; do
     || true
 done
 
-python3 - "$PROJECT_ROOT" "$RUN_ID" "$TASKS_CSV" <<'PY'
+python3 - "$PROJECT_ROOT" "$RUN_ID" "$TASKS_CSV" "$MODEL_LABEL" <<'PY'
 import json
 import sys
 from pathlib import Path
@@ -48,6 +49,7 @@ from pathlib import Path
 root = Path(sys.argv[1])
 run_id = sys.argv[2]
 task_ids = [item.strip() for item in sys.argv[3].split(",") if item.strip()]
+model_label = sys.argv[4]
 run_dir = root / "results/omni_finetune" / run_id
 metric_key_by_task = {
     "hand_trajectory_forecast": "hand_trajectory_forecast_mrr",
@@ -86,7 +88,7 @@ for task_id, metric_key in expected.items():
     )
 
 validation = {
-    "title": "Cosmos3-Super Retrieval Task Probe Collection Validation",
+    "title": f"{model_label} Retrieval Task Probe Collection Validation",
     "status": "pass",
     "run_id": run_id,
     "summary": str(summary_path.relative_to(root)),

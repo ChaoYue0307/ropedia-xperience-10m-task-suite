@@ -1,0 +1,153 @@
+{
+  "base_url": "http://127.0.0.1:8001/v1",
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
+  "eval_split": "test",
+  "future_frames": 100,
+  "media_mode": "text_only",
+  "model": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Nano_reasoner_overlay",
+  "run_id": "xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard3",
+  "sample_offset": 3,
+  "sample_stride": 4,
+  "status": "pass",
+  "tasks": {
+    "misalignment_detection": {
+      "metric_key": "misalignment_detection_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard3/misalignment_detection/metrics.json",
+      "num_samples": 979,
+      "primary_score": 0.4829686058442622,
+      "task_label": "Multimodal Misalignment Detection",
+      "task_number": 12
+    },
+    "temporal_order": {
+      "metric_key": "temporal_order_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard3/temporal_order/metrics.json",
+      "num_samples": 979,
+      "primary_score": 0.5737128913491468,
+      "task_label": "Temporal Order Verification",
+      "task_number": 11
+    }
+  },
+  "title": "Cosmos3-Super Reasoner Future Task Probes"
+}
+{
+  "base_url": "http://127.0.0.1:8001/v1",
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
+  "eval_split": "test",
+  "future_frames": 100,
+  "media_mode": "text_only",
+  "model": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Nano_reasoner_overlay",
+  "run_id": "xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard2",
+  "sample_offset": 2,
+  "sample_stride": 4,
+  "status": "pass",
+  "tasks": {
+    "misalignment_detection": {
+      "metric_key": "misalignment_detection_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard2/misalignment_detection/metrics.json",
+      "num_samples": 983,
+      "primary_score": 0.4803897053470536,
+      "task_label": "Multimodal Misalignment Detection",
+      "task_number": 12
+    },
+    "temporal_order": {
+      "metric_key": "temporal_order_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard2/temporal_order/metrics.json",
+      "num_samples": 983,
+      "primary_score": 0.6103761379382551,
+      "task_label": "Temporal Order Verification",
+      "task_number": 11
+    }
+  },
+  "title": "Cosmos3-Super Reasoner Future Task Probes"
+}
+{
+  "base_url": "http://127.0.0.1:8001/v1",
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
+  "eval_split": "test",
+  "future_frames": 100,
+  "media_mode": "text_only",
+  "model": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Nano_reasoner_overlay",
+  "run_id": "xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard1",
+  "sample_offset": 1,
+  "sample_stride": 4,
+  "status": "pass",
+  "tasks": {
+    "misalignment_detection": {
+      "metric_key": "misalignment_detection_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard1/misalignment_detection/metrics.json",
+      "num_samples": 988,
+      "primary_score": 0.47196029776674936,
+      "task_label": "Multimodal Misalignment Detection",
+      "task_number": 12
+    },
+    "temporal_order": {
+      "metric_key": "temporal_order_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard1/temporal_order/metrics.json",
+      "num_samples": 988,
+      "primary_score": 0.590897988663893,
+      "task_label": "Temporal Order Verification",
+      "task_number": 11
+    }
+  },
+  "title": "Cosmos3-Super Reasoner Future Task Probes"
+}
+{
+  "base_url": "http://127.0.0.1:8001/v1",
+  "dataset_jsonl": "results/omni_finetune/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_dataset/dataset_a100_eval.jsonl",
+  "eval_split": "test",
+  "future_frames": 100,
+  "media_mode": "text_only",
+  "model": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Nano_reasoner_overlay",
+  "run_id": "xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard0",
+  "sample_offset": 0,
+  "sample_stride": 4,
+  "status": "pass",
+  "tasks": {
+    "misalignment_detection": {
+      "metric_key": "misalignment_detection_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard0/misalignment_detection/metrics.json",
+      "num_samples": 1001,
+      "primary_score": 0.4728413497856886,
+      "task_label": "Multimodal Misalignment Detection",
+      "task_number": 12
+    },
+    "temporal_order": {
+      "metric_key": "temporal_order_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard0/temporal_order/metrics.json",
+      "num_samples": 1001,
+      "primary_score": 0.6060606060606062,
+      "task_label": "Temporal Order Verification",
+      "task_number": 11
+    }
+  },
+  "title": "Cosmos3-Super Reasoner Future Task Probes"
+}
+{
+  "run_id": "xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621",
+  "shard_dirs": [
+    "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard0",
+    "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard1",
+    "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard2",
+    "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard3"
+  ],
+  "status": "pass",
+  "tasks": {
+    "misalignment_detection": {
+      "metric_key": "misalignment_detection_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621/misalignment_detection/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.477201691802725,
+      "task_label": "Multimodal Misalignment Detection",
+      "task_number": 12
+    },
+    "temporal_order": {
+      "metric_key": "temporal_order_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621/temporal_order/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.5954109425716205,
+      "task_label": "Temporal Order Verification",
+      "task_number": 11
+    }
+  },
+  "title": "Cosmos3-Super Reasoner Future Task Probes"
+}

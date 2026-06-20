@@ -1,0 +1,29 @@
+{
+  "run_id": "xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621",
+  "shard_dirs": [
+    "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard0",
+    "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard1",
+    "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard2",
+    "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621_shard3"
+  ],
+  "status": "pass",
+  "tasks": {
+    "misalignment_detection": {
+      "metric_key": "misalignment_detection_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621/misalignment_detection/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.477201691802725,
+      "task_label": "Multimodal Misalignment Detection",
+      "task_number": 12
+    },
+    "temporal_order": {
+      "metric_key": "temporal_order_f1",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621/temporal_order/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.5954109425716205,
+      "task_label": "Temporal Order Verification",
+      "task_number": 11
+    }
+  },
+  "title": "Cosmos3-Nano Future Task Probes"
+}

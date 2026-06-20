@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-20T17:14:37+00:00",
+  "generated_at_utc": "2026-06-20T17:56:28+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -226,8 +226,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 1466,
-      "text_file_count": 1221,
+      "file_count": 1497,
+      "text_file_count": 1241,
       "largest_file": {
         "path": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/interaction_text_prediction/confusion_matrix.csv",
         "bytes": 73057076
@@ -237,8 +237,8 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 508,
-      "text_file_count": 377,
+      "file_count": 539,
+      "text_file_count": 397,
       "largest_file": {
         "path": "results/omni_finetune/xperience10m_qwen3_omni_v6_sensor_target_probes_a100_20260619T000000Z/modality_reconstruction/predictions.jsonl",
         "bytes": 10221085
@@ -248,8 +248,8 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 4338,
-      "text_file_count": 1236,
+      "file_count": 4369,
+      "text_file_count": 1256,
       "largest_file": {
         "path": "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608/dense_multiscale_windows.jsonl",
         "bytes": 135591061
@@ -259,8 +259,8 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 5088,
-      "text_file_count": 1404,
+      "file_count": 5119,
+      "text_file_count": 1424,
       "largest_file": {
         "path": "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608/dense_multiscale_windows.jsonl",
         "bytes": 135591061

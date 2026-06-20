@@ -1,6 +1,6 @@
 # Task Method 20-Result Gap Audit
 
-Generated: `2026-06-20T16:47:27+00:00`
+Generated: `2026-06-20T17:47:04+00:00`
 
 This audit is the explicit gap ledger for the 9-method x 20-task result matrix.
 It keeps missing cells visible while preserving the rule that a numeric score
@@ -9,8 +9,8 @@ requires a real task target and source artifact.
 ## Score Summary
 
 - Method-task records: `180`
-- Numeric scored records: `171`
-- Scoreless records: `9`
+- Numeric scored records: `178`
+- Scoreless records: `2`
 - Proxy-scored records: `6`
 - Source matrix: [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)
 
@@ -26,27 +26,20 @@ requires a real task target and source artifact.
 | 128ep Raw NN | raw128_neural_mlp | 20/20 | 0 | 2 | proxy_scored: 2, scored: 18 |
 | Qwen3-Omni v6 LoRA | qwen3_omni_v6_lora | 20/20 | 0 | 0 | scored: 20 |
 | Cosmos3-Super Reasoner | cosmos3_super_reasoner | 20/20 | 0 | 0 | scored: 20 |
-| Cosmos3-Nano Future Window | cosmos3_nano_future_window | 11/20 | 9 | 0 | not_evaluated_in_verified_package: 9, scored: 11 |
+| Cosmos3-Nano Future Window | cosmos3_nano_future_window | 18/20 | 2 | 0 | not_evaluated_in_verified_package: 2, scored: 18 |
 
 ## Gap Classes
 
 | Status | Count | Next step |
 | --- | --- | --- |
-| not_evaluated_in_verified_package | 9 | Generate verified model outputs for this task contract and score them against the held-out labels. |
+| not_evaluated_in_verified_package | 2 | Generate verified model outputs for this task contract and score them against the held-out labels. |
 
 ## Scoreless Records
 
 | Task | Task label | Method | Status | Required evidence |
 | --- | --- | --- | --- | --- |
 | 02 | Procedure Step Recognition | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| 05 | Hand Trajectory Forecasting | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 | 07 | Object Relevance Prediction | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| 08 | Language Grounding | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| 11 | Temporal Order Verification | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| 12 | Multimodal Synchronization Detection | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| 15 | Interaction Text Prediction | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| 18 | IMU-to-Hand Pose Reconstruction | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
-| 19 | Camera-View Synchronization Retrieval | Cosmos3-Nano Future Window | not evaluated | Generate verified model outputs for this task contract and score them against the held-out labels. |
 
 ## Proxy Records
 

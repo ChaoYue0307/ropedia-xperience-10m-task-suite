@@ -28,12 +28,15 @@ QWEN3_RETRIEVAL_TASK_PROBE_RUN_IDS = [
 ]
 COSMOS3_SUPER_RETRIEVAL_TASK_PROBE_RUN_IDS = [
     "xperience10m_cosmos3_super_retrieval_task_probes_a100_textonly_prompatch_v2_20260620",
+    "xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621",
 ]
 COSMOS3_SUPER_FUTURE_TASK_PROBE_RUN_IDS = [
     "xperience10m_cosmos3_super_future_task_probes_a100_textonly_v1_20260620",
+    "xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621",
 ]
 COSMOS3_SUPER_INTERACTION_TEXT_TASK_PROBE_RUN_IDS = [
     "xperience10m_cosmos3_super_interaction_text_task15_textonly_v1_20260620T1558Z",
+    "xperience10m_cosmos3_nano_interaction_text_task15_patched_textonly_20260621",
 ]
 
 DATA_FILES = [
@@ -510,7 +513,7 @@ def cosmos3_super_retrieval_task_probe_result_files() -> list[str]:
                 if path.is_file() and (path.name in compact_names or path.name.endswith(".progress.jsonl")):
                     files.append(path.relative_to(ROOT / "results").as_posix())
 
-        for suffix in ("launch", "launcher", "runner"):
+        for suffix in ("launch", "launcher", "retrieval", "runner"):
             launch_log = ROOT / "results/omni_finetune/deferred_launchers" / f"{run_id}.{suffix}.log"
             if launch_log.is_file():
                 files.append(launch_log.relative_to(ROOT / "results").as_posix())

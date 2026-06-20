@@ -1,0 +1,23 @@
+{
+  "records": [
+    {
+      "metric_key": "temporal_order_f1",
+      "num_samples": 3951,
+      "primary_score": 0.5954109425716205,
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621/temporal_order/metrics.json",
+      "task_id": "temporal_order"
+    },
+    {
+      "metric_key": "misalignment_detection_f1",
+      "num_samples": 3951,
+      "primary_score": 0.477201691802725,
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621/misalignment_detection/metrics.json",
+      "task_id": "misalignment_detection"
+    }
+  ],
+  "run_id": "xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621",
+  "status": "pass",
+  "summary": "results/omni_finetune/xperience10m_cosmos3_nano_future_order_misalignment_patched_textonly_20260621/summary.json",
+  "title": "Cosmos3-Nano Future Task Probe Collection Validation",
+  "validated_task_count": 2
+}

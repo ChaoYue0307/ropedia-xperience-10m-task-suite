@@ -1,0 +1,30 @@
+{
+  "data": [
+    {
+      "created": 1781977163,
+      "id": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Nano_reasoner_overlay",
+      "max_model_len": 262144,
+      "object": "model",
+      "owned_by": "vllm",
+      "parent": null,
+      "permission": [
+        {
+          "allow_create_engine": false,
+          "allow_fine_tuning": false,
+          "allow_logprobs": true,
+          "allow_sampling": true,
+          "allow_search_indices": false,
+          "allow_view": true,
+          "created": 1781977163,
+          "group": null,
+          "id": "modelperm-b3237a494de82baa",
+          "is_blocking": false,
+          "object": "model_permission",
+          "organization": "*"
+        }
+      ],
+      "root": "/mnt/kgc/chaoyue/ropedia-xperience10m/models/nvidia__Cosmos3-Nano_reasoner_overlay"
+    }
+  ],
+  "object": "list"
+}

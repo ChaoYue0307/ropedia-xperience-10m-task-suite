@@ -11,6 +11,7 @@ RUN_ID="${RUN_ID:-xperience10m_qwen3_omni_v6_interaction_text_task15_a100_202606
 RESULT_ROOT="${RESULT_ROOT:-results/omni_finetune}"
 TASK_ID="${TASK_ID:-interaction_text_prediction}"
 METRIC_KEY="${METRIC_KEY:-macro_f1}"
+MODEL_LABEL="${MODEL_LABEL:-Qwen3}"
 
 REMOTE_RUN_DIR="${REMOTE_ROOT}/${RESULT_ROOT}/${RUN_ID}"
 LOCAL_RUN_DIR="${PROJECT_ROOT}/${RESULT_ROOT}/${RUN_ID}"
@@ -31,7 +32,7 @@ for remote_launcher_log in "$REMOTE_LAUNCHER_LOG" "$REMOTE_DEFERRED_LAUNCHER_LOG
     || true
 done
 
-python3 - "$PROJECT_ROOT" "$RUN_ID" "$TASK_ID" "$METRIC_KEY" <<'PY'
+python3 - "$PROJECT_ROOT" "$RUN_ID" "$TASK_ID" "$METRIC_KEY" "$MODEL_LABEL" <<'PY'
 import json
 import sys
 from pathlib import Path
@@ -40,6 +41,7 @@ root = Path(sys.argv[1])
 run_id = sys.argv[2]
 task_id = sys.argv[3]
 metric_key = sys.argv[4]
+model_label = sys.argv[5]
 run_dir = root / "results/omni_finetune" / run_id
 summary_path = run_dir / "summary.json"
 metrics_path = run_dir / task_id / "metrics.json"
@@ -75,7 +77,7 @@ if isinstance(declared_rows, int) and declared_rows != prediction_rows:
     )
 
 validation = {
-    "title": "Qwen3 Interaction Text Task-15 Collection Validation",
+    "title": f"{model_label} Interaction Text Task-15 Collection Validation",
     "status": "pass",
     "run_id": run_id,
     "summary": str(summary_path.relative_to(root)),

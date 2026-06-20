@@ -1,0 +1,45 @@
+{
+  "run_id": "xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621",
+  "shard_dirs": [
+    "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621_shard0",
+    "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621_shard1",
+    "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621_shard2",
+    "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621_shard3"
+  ],
+  "status": "pass",
+  "tasks": {
+    "camera_view_sync_retrieval": {
+      "metric_key": "camera_view_sync_retrieval_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/camera_view_sync_retrieval/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.9989875980764363,
+      "task_label": "Camera-View Sync Retrieval",
+      "task_number": 19
+    },
+    "caption_grounding": {
+      "metric_key": "caption_grounding_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/caption_grounding/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.5221041086644663,
+      "task_label": "Language Grounding",
+      "task_number": 8
+    },
+    "hand_trajectory_forecast": {
+      "metric_key": "hand_trajectory_forecast_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/hand_trajectory_forecast/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.6912806884333101,
+      "task_label": "Hand Trajectory Forecasting",
+      "task_number": 5
+    },
+    "imu_to_hand_pose": {
+      "metric_key": "imu_to_hand_pose_mrr",
+      "metrics_json": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/imu_to_hand_pose/metrics.json",
+      "num_samples": 3951,
+      "primary_score": 0.9920062431451954,
+      "task_label": "IMU-to-Hand Pose Reconstruction",
+      "task_number": 18
+    }
+  },
+  "title": "Cosmos3-Nano Retrieval Task Probes"
+}

@@ -1,0 +1,37 @@
+{
+  "records": [
+    {
+      "metric_key": "hand_trajectory_forecast_mrr",
+      "num_samples": 3951,
+      "primary_score": 0.6912806884333101,
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/hand_trajectory_forecast/metrics.json",
+      "task_id": "hand_trajectory_forecast"
+    },
+    {
+      "metric_key": "caption_grounding_mrr",
+      "num_samples": 3951,
+      "primary_score": 0.5221041086644663,
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/caption_grounding/metrics.json",
+      "task_id": "caption_grounding"
+    },
+    {
+      "metric_key": "imu_to_hand_pose_mrr",
+      "num_samples": 3951,
+      "primary_score": 0.9920062431451954,
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/imu_to_hand_pose/metrics.json",
+      "task_id": "imu_to_hand_pose"
+    },
+    {
+      "metric_key": "camera_view_sync_retrieval_mrr",
+      "num_samples": 3951,
+      "primary_score": 0.9989875980764363,
+      "source": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/camera_view_sync_retrieval/metrics.json",
+      "task_id": "camera_view_sync_retrieval"
+    }
+  ],
+  "run_id": "xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621",
+  "status": "pass",
+  "summary": "results/omni_finetune/xperience10m_cosmos3_nano_retrieval_task_probes_a100_patched_textonly_20260621/summary.json",
+  "title": "Cosmos3-Nano Retrieval Task Probe Collection Validation",
+  "validated_task_count": 4
+}
