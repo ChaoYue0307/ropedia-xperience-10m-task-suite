@@ -3523,7 +3523,7 @@
           <article class="roadmap-card" data-status="verified_companion_result">
             <span class="roadmap-status">verified companion result</span>
             <h3>128-Episode Same-Split Simple/NN Baselines</h3>
-            <p>Align simple metadata/text baselines and neural MLP baselines to the same selected 96/16/16 split and the same 12 task ids used by the Qwen3-Omni pilot.</p>
+            <p>Align simple metadata/text baselines, raw-feature proxies, and neural MLP baselines to the same selected 96/16/16 split and the unified 20-task axes used by the public result matrix.</p>
             <div class="roadmap-meta">
               <strong>Entry</strong><p>Derived Qwen JSONL export for the selected 96/16/16 split.</p>
               <strong>Evidence</strong><p>Baseline alignment report, summary metrics, task metrics, and the 128-task baseline runner.</p>
@@ -3696,8 +3696,8 @@
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>12 minimal heads + 12 neural MLP heads</h3>
-            <p>Every task has a minimal interpretable head and a matching neural MLP run over the same windows, splits, and task contract.</p>
+            <h3>20 task contracts + 180 public results</h3>
+            <p>The current release reports nine method families over the unified 20-task axes, with minimal, neural, 128-episode, Qwen3, Cosmos3, and proxy-scored rows kept source-linked.</p>
             <div class="evidence-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite">task artifacts</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural MLP outputs</a>
@@ -3706,7 +3706,7 @@
           <article class="evidence-card">
             <span class="status-pill">verified</span>
             <h3>Audio contribution is measured task by task</h3>
-            <p>Audio variants improve the primary metric on 6 of 12 task contracts in this single-episode setting.</p>
+            <p>Audio variants improve the primary metric on 6 of the original task contracts in this single-episode setting.</p>
             <div class="evidence-links">
               <a href="data/audio_ablation_summary.json">audio summary</a>
               <a href="assets/charts/audio_ablation_delta.svg">delta chart</a>
@@ -4145,7 +4145,7 @@
           </article>
           <article class="artifact">
             <h3>Chronological split exposes class shift</h3>
-            <p>All-feature action reaches 0.9829 macro-F1 on its local split, while the 12-task chronological action head is 0.0500 macro-F1 with four unseen later action labels.</p>
+            <p>All-feature action reaches 0.9829 macro-F1 on its local split, while the chronological action head in the core task suite is 0.0500 macro-F1 with four unseen later action labels.</p>
             <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_TAKEAWAYS.md">takeaways</a>
           </article>
           <article class="artifact">
@@ -4474,7 +4474,7 @@
           <img class="chart" src="assets/charts/cross_modal_retrieval.svg" alt="Cross modal retrieval chart">
           <img class="chart" src="assets/charts/episode_task_scores_neural_mlp.svg" alt="Neural MLP task score chart">
           <img class="chart" src="assets/charts/episode_task_scores_minimal_vs_neural.svg" alt="Minimal versus neural score chart">
-          <img class="chart" src="assets/charts/audio_ablation_delta.svg" alt="Measured audio delta chart across 12 task contracts">
+          <img class="chart" src="assets/charts/audio_ablation_delta.svg" alt="Measured audio delta chart across original task contracts">
         </div>
         <p class="section-note"><a href="single_episode_explorer.html">Open the single-episode explorer</a> to inspect window-level labels, predictions, modality statistics, object labels, and diagnostic scores. The <a href="data/audio_ablation_summary.json">audio ablation summary</a> records the task-by-task audio contribution.</p>
       </div>

@@ -179,7 +179,7 @@ Verified staged-GPU smoke evidence from 2026-06-14:
 
 The last full metric reproduction run was completed on **2026-05-30
 Asia/Singapore** from a fresh output directory outside the repo. It rebuilt the
-minimal baselines, all-modality baselines, and the original 12 task artifacts
+minimal baselines, all-modality baselines, and the original core task artifacts
 from the local public sample. The regenerated metrics matched the committed
 artifacts after float normalization; the current public framing now indexes
 those artifacts together with tasks 13-20 as one 20-task suite.

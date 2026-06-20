@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Organize the 12 Xperience-10M tasks into the four Ropedia research tracks.
+"""Organize the 20 Xperience-10M tasks into the four Ropedia research tracks.
 
 The script is intentionally deterministic: it reads the committed task metrics,
 adds a manually curated taxonomy, and writes machine-readable artifacts used by the
@@ -25,6 +25,7 @@ DOCS_DATA = ROOT / "docs" / "data"
 CHARTS = ROOT / "docs" / "assets" / "charts"
 
 SUMMARY_REPORT = RESULTS / "summary_report.json"
+TASK_SUITE_20 = DOCS_DATA / "task_suite_20.json"
 
 
 DIRECTIONS: OrderedDict[str, dict[str, Any]] = OrderedDict(
@@ -69,7 +70,7 @@ DIRECTIONS: OrderedDict[str, dict[str, Any]] = OrderedDict(
                 "focus": "Egocentric action and intention understanding, hand-object interaction, gaze/attention modeling, task structure modeling.",
                 "preferred_background": "Video understanding, action recognition, or egocentric vision.",
                 "current_status": "strongest implemented track",
-                "current_readout": "Most of the 12 tasks directly target egocentric action, task state, interaction, grounding, and alignment.",
+                "current_readout": "The unified 20-task suite directly targets egocentric action, task state, interaction, grounding, forecasting, and alignment.",
                 "next_steps": [
                     "Move from single-episode chronological splits to held-out-episode splits.",
                     "Use audio together with stronger multimodal backbones for action, intent, and grounding.",
@@ -255,6 +256,110 @@ TASK_TAXONOMY: OrderedDict[str, dict[str, Any]] = OrderedDict(
                 "current_limit": "Synthetic shifts diagnose alignment but do not solve calibration or mapping.",
             },
         ),
+        (
+            "long_horizon_next_action",
+            {
+                "name": "Long-horizon next-action forecasting",
+                "family": "classification",
+                "input": "current and historical windows",
+                "output": "future action label",
+                "primary_direction": "C",
+                "direction_roles": {"C": "direct", "D": "proxy"},
+                "why": "Extends short-horizon intention prediction into longer activity futures, a key egocentric and world-model signal.",
+                "current_limit": "Evaluated from sample-supported future labels, not full open-world action generation.",
+            },
+        ),
+        (
+            "next_subtask_forecast",
+            {
+                "name": "Long-horizon next-subtask forecasting",
+                "family": "classification",
+                "input": "current and historical windows",
+                "output": "future procedure-step label",
+                "primary_direction": "C",
+                "direction_roles": {"C": "direct", "D": "proxy"},
+                "why": "Measures whether the model can anticipate the next procedural phase rather than only the current frame state.",
+                "current_limit": "Subtask labels are constrained to the available annotation vocabulary.",
+            },
+        ),
+        (
+            "interaction_text_prediction",
+            {
+                "name": "Interaction text prediction",
+                "family": "classification",
+                "input": "window features without target text leakage",
+                "output": "natural-language interaction class",
+                "primary_direction": "C",
+                "direction_roles": {"C": "direct", "A": "proxy"},
+                "why": "Connects egocentric observations to the natural-language interaction semantics carried by the annotation.",
+                "current_limit": "Public derived features retain hashed text targets; raw full text requires the official annotation source.",
+            },
+        ),
+        (
+            "action_object_relation",
+            {
+                "name": "Action-object relation prediction",
+                "family": "classification",
+                "input": "window features with target-side relation leakage excluded",
+                "output": "action-object relation class",
+                "primary_direction": "C",
+                "direction_roles": {"C": "direct", "D": "proxy"},
+                "why": "Tests whether action recognition and object state are connected as a relational interaction representation.",
+                "current_limit": "Relation labels are derived from the public-sample annotation scope.",
+            },
+        ),
+        (
+            "object_set_forecast",
+            {
+                "name": "Future object-set forecasting",
+                "family": "multi-label",
+                "input": "current and historical windows",
+                "output": "future object set",
+                "primary_direction": "D",
+                "direction_roles": {"D": "direct", "C": "proxy"},
+                "why": "Asks whether the current scene state supports predicting which objects will matter later.",
+                "current_limit": "This is a set-level proxy, not a persistent 3D scene graph.",
+            },
+        ),
+        (
+            "imu_to_hand_pose",
+            {
+                "name": "IMU-to-hand pose reconstruction",
+                "family": "regression",
+                "input": "IMU and motion context",
+                "output": "hand pose target",
+                "primary_direction": "A",
+                "direction_roles": {"A": "direct", "B": "proxy"},
+                "why": "Measures human-motion reconstruction from wearable and motion cues.",
+                "current_limit": "Pose reconstruction is window-level and does not yet fit a full parametric hand/body model.",
+            },
+        ),
+        (
+            "camera_view_sync_retrieval",
+            {
+                "name": "Camera-view synchronization retrieval",
+                "family": "retrieval",
+                "input": "one camera-view/window query",
+                "output": "matching synchronized view",
+                "primary_direction": "B",
+                "direction_roles": {"B": "direct", "D": "proxy"},
+                "why": "Tests whether synchronized multi-view structure is recoverable across camera streams.",
+                "current_limit": "Retrieval checks view consistency but does not reconstruct geometry by itself.",
+            },
+        ),
+        (
+            "time_to_transition",
+            {
+                "name": "Time-to-next-transition regression",
+                "family": "regression",
+                "input": "current temporal window state",
+                "output": "frames/time until the next transition",
+                "primary_direction": "C",
+                "direction_roles": {"C": "diagnostic", "D": "diagnostic"},
+                "why": "Measures temporal boundary awareness as a continuous timing target.",
+                "current_limit": "Regression is local to the annotated public sample timeline.",
+            },
+        ),
     ]
 )
 
@@ -272,11 +377,30 @@ METRIC_SPECS = {
     "modality_reconstruction": ("r2", "R2", "higher"),
     "temporal_order": ("f1", "F1", "higher"),
     "misalignment_detection": ("f1", "F1", "higher"),
+    "long_horizon_next_action": ("macro_f1", "macro-F1", "higher"),
+    "next_subtask_forecast": ("macro_f1", "macro-F1", "higher"),
+    "interaction_text_prediction": ("macro_f1", "macro-F1", "higher"),
+    "action_object_relation": ("macro_f1", "macro-F1", "higher"),
+    "object_set_forecast": ("micro_f1", "micro-F1", "higher"),
+    "imu_to_hand_pose": ("mae", "MAE", "lower"),
+    "camera_view_sync_retrieval": ("mrr", "MRR", "higher"),
+    "time_to_transition": ("mae", "MAE", "lower"),
 }
 
 
 def load_summary() -> dict[str, Any]:
     return json.loads(SUMMARY_REPORT.read_text(encoding="utf-8"))
+
+
+def load_unified_tasks() -> dict[str, dict[str, Any]]:
+    if not TASK_SUITE_20.exists():
+        return {}
+    payload = json.loads(TASK_SUITE_20.read_text(encoding="utf-8"))
+    return {
+        task["task_id"]: task
+        for task in payload.get("tasks", [])
+        if isinstance(task, dict) and task.get("task_id")
+    }
 
 
 def metric_value(metrics: dict[str, Any] | None, task: str) -> float | None:
@@ -320,6 +444,7 @@ def baseline_readout(label: str) -> str:
 def build_taxonomy(summary: dict[str, Any]) -> dict[str, Any]:
     minimal_tasks = summary["tasks"]
     neural_tasks = summary.get("neural_tasks", {})
+    unified_tasks = load_unified_tasks()
 
     task_records: OrderedDict[str, dict[str, Any]] = OrderedDict()
     direction_counts = {
@@ -328,9 +453,19 @@ def build_taxonomy(summary: dict[str, Any]) -> dict[str, Any]:
     }
 
     for task, spec in TASK_TAXONOMY.items():
+        unified = unified_tasks.get(task, {})
         metric_key, metric_name, metric_direction = METRIC_SPECS[task]
-        minimal_metric = metric_value(minimal_tasks.get(task), task)
-        neural_metric = metric_value(neural_tasks.get(task), task)
+        metric_key = unified.get("metric_key") or metric_key
+        metric_name = unified.get("metric_name") or metric_name
+        metric_direction = unified.get("metric_direction") or metric_direction
+        if task in minimal_tasks:
+            minimal_metric = metric_value(minimal_tasks.get(task), task)
+            neural_metric = metric_value(neural_tasks.get(task), task)
+        else:
+            minimal = unified.get("minimal_primary_metric")
+            neural = unified.get("neural_primary_metric")
+            minimal_metric = float(minimal) if minimal is not None else None
+            neural_metric = float(neural) if neural is not None else None
         better = choose_better(task, minimal_metric, neural_metric)
 
         roles = spec["direction_roles"]
@@ -340,7 +475,7 @@ def build_taxonomy(summary: dict[str, Any]) -> dict[str, Any]:
 
         task_records[task] = {
             **spec,
-            "display_name": task_display_name(task),
+            "display_name": unified.get("task_display_name") or task_display_name(task),
             "artifact_id": task,
             "metric": {
                 "key": metric_key,
@@ -362,12 +497,12 @@ def build_taxonomy(summary: dict[str, Any]) -> dict[str, Any]:
         direction_records[code] = {
             **info,
             "tasks": linked_tasks,
-            "task_display_names": [task_display_name(task) for task in linked_tasks],
+            "task_display_names": [task_records[task]["display_name"] for task in linked_tasks],
             "counts": direction_counts[code],
         }
 
     return {
-        "source": "results/episode_task_suite/summary_report.json",
+        "source": "docs/data/task_suite_20.json plus results/episode_task_suite/summary_report.json",
         "dataset_scope": {
             "sample_episode_count": 1,
             "num_frames": summary.get("num_frames"),
@@ -379,6 +514,7 @@ def build_taxonomy(summary: dict[str, Any]) -> dict[str, Any]:
             "minimal": f"Interpretable softmax, logistic, ridge, and retrieval heads over the {summary.get('feature_dim'):,}-d window feature vector.",
             "neural_mlp": "Small PyTorch MLP classifiers/regressors using the same features, splits, and task contracts.",
         },
+        "task_count": len(task_records),
         "directions": direction_records,
         "tasks": task_records,
     }
@@ -433,7 +569,7 @@ def write_markdown(taxonomy: dict[str, Any]) -> None:
     lines = [
         "# Four-Direction Task Taxonomy",
         "",
-        "This file is generated by `scripts/research_direction_taxonomy.py` from the committed 12-task metrics.",
+        "This file is generated by `scripts/research_direction_taxonomy.py` from the unified 20-task index and committed metrics.",
         "It maps the current Xperience-10M sample tasks to the four Ropedia research directions and marks which parts require multi-episode evidence.",
         "",
         "## Baseline Families",
@@ -563,11 +699,11 @@ def write_svg(taxonomy: dict[str, Any]) -> None:
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Xperience-10M task coverage across four research directions">
   <rect width="100%" height="100%" fill="#020502"/>
   <rect x="24" y="24" width="1132" height="652" rx="20" fill="#050905" stroke="#ccffa0" stroke-opacity="0.24"/>
-  {svg_text(margin, 64, "Xperience-10M 12-Task Suite: Four Research Directions", 30, 800)}
-  {svg_text(margin, 96, "One public sample episode, two baseline families, explicit direct/proxy/diagnostic coverage.", 16, 500, "#a5afa2")}
+  {svg_text(margin, 64, "Xperience-10M 20-Task Suite: Four Research Directions", 30, 800)}
+  {svg_text(margin, 96, "One public sample episode, two baseline families, model branches, and explicit direct/proxy/diagnostic coverage.", 16, 500, "#a5afa2")}
   {"".join(cards)}
   {"".join(legend)}
-  {svg_text(margin, 670, "Generated from results/episode_task_suite/summary_report.json and scripts/research_direction_taxonomy.py", 13, 500, "#a5afa2")}
+  {svg_text(margin, 670, "Generated from docs/data/task_suite_20.json, committed metrics, and scripts/research_direction_taxonomy.py", 13, 500, "#a5afa2")}
 </svg>
 """
     (CHARTS / "research_direction_coverage.svg").write_text(svg, encoding="utf-8")

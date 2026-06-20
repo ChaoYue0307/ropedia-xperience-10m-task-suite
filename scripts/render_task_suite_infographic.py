@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Render a polished Ropedia Xperience-10M 12-task infographic.
+Render a polished Ropedia Xperience-10M 20-task infographic.
 
-The task names, inputs, and metrics are read from
-results/episode_task_suite/summary_report.json. The output is a deterministic
-PNG rendered from HTML/CSS so the labels stay legible and inspectable.
+The task names, inputs, and metrics are read from docs/data/task_suite_20.json.
+The output is a deterministic PNG rendered from HTML/CSS so the labels stay
+legible and inspectable.
 """
 
 from __future__ import annotations
@@ -23,60 +23,76 @@ from task_display import task_display_name
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SUMMARY_PATH = ROOT / "results/episode_task_suite/summary_report.json"
+SUMMARY_PATH = ROOT / "docs/data/task_suite_20.json"
 DEFAULT_BASE = ROOT / "docs/assets/task_suite_infographic_base.png"
 DEFAULT_SAMPLE_DIR = ROOT.parent / "data/sample/xperience-10m-sample"
 DROPBOX_SAMPLE_DIR = Path.home() / "Library/CloudStorage/Dropbox/Ropedia/data/sample/xperience-10m-sample"
 DEFAULT_OUTPUT = ROOT / "docs/assets/task_suite_infographic.png"
 CANVAS_WIDTH = 1800
-CANVAS_HEIGHT = 6600
+CANVAS_HEIGHT = 7600
 THUMB_WIDTH = 880
 THUMB_HEIGHT = 520
 
 
 GROUPS = [
     {
-        "name": "Label + State",
+        "name": "Action + Procedure",
         "tone": "teal",
         "color": "#9bdfff",
         "soft": "#071d20",
         "tasks": [
             ("timeline_action", "supervised"),
             ("timeline_subtask", "supervised"),
+            ("transition_detection", "diagnostic"),
             ("next_action", "supervised"),
         ],
     },
     {
-        "name": "Prediction + Reconstruction",
+        "name": "Motion + Objects",
         "tone": "blue",
         "color": "#ccffa0",
         "soft": "#10210a",
         "tasks": [
             ("hand_trajectory_forecast", "forecast"),
-            ("modality_reconstruction", "forecast"),
             ("contact_prediction", "supervised"),
+            ("object_relevance", "supervised"),
+            ("caption_grounding", "retrieval"),
         ],
     },
     {
-        "name": "Grounding + Retrieval",
+        "name": "Retrieval + Alignment",
         "tone": "amber",
         "color": "#7ae5c3",
         "soft": "#092019",
         "tasks": [
-            ("caption_grounding", "retrieval"),
             ("cross_modal_retrieval", "retrieval"),
-            ("object_relevance", "supervised"),
+            ("modality_reconstruction", "forecast"),
+            ("temporal_order", "diagnostic"),
+            ("misalignment_detection", "diagnostic"),
         ],
     },
     {
-        "name": "Temporal Diagnostics",
-        "tone": "red",
+        "name": "Long-Horizon Semantics",
+        "tone": "green",
         "color": "#d8f4a5",
         "soft": "#1b210d",
         "tasks": [
-            ("transition_detection", "diagnostic"),
-            ("temporal_order", "diagnostic"),
-            ("misalignment_detection", "diagnostic"),
+            ("long_horizon_next_action", "forecast"),
+            ("next_subtask_forecast", "forecast"),
+            ("interaction_text_prediction", "language"),
+            ("action_object_relation", "relation"),
+        ],
+    },
+    {
+        "name": "Future Sets + Sensors",
+        "tone": "red",
+        "color": "#b7ff91",
+        "soft": "#1b210d",
+        "tasks": [
+            ("object_set_forecast", "multi-label"),
+            ("imu_to_hand_pose", "regression"),
+            ("camera_view_sync_retrieval", "retrieval"),
+            ("time_to_transition", "regression"),
         ],
     },
 ]
@@ -470,6 +486,10 @@ def fmt(value: float) -> str:
 
 
 def metric_for(task_name: str, metrics: dict) -> tuple[str, str]:
+    if "minimal_primary_metric" in metrics:
+        label = metrics.get("metric_name") or metrics.get("metric_key") or "score"
+        value = metrics.get("minimal_primary_metric")
+        return str(label), "n/a" if value is None else fmt(value)
     if task_name == "hand_trajectory_forecast":
         return "MPJPE", fmt(metrics["mpjpe"])
     if task_name == "cross_modal_retrieval":
@@ -490,6 +510,10 @@ def metric_for(task_name: str, metrics: dict) -> tuple[str, str]:
 
 
 def short_io(task_name: str, metrics: dict) -> str:
+    if metrics.get("input_short") or metrics.get("output_short"):
+        left = metrics.get("input_short") or "input"
+        right = metrics.get("output_short") or "target"
+        return f"{left} -> {right}"
     custom = {
         "timeline_action": "all featurized modalities -> action label",
         "timeline_subtask": "all featurized modalities -> subtask label",
@@ -510,7 +534,16 @@ def short_io(task_name: str, metrics: dict) -> str:
 def task_card(task_name: str, kind: str, metrics: dict, group: dict, index: int, neural_metrics: dict | None = None) -> str:
     label, value = metric_for(task_name, metrics)
     neural_html = ""
-    if neural_metrics and "error" not in neural_metrics:
+    if "neural_primary_metric" in metrics and metrics.get("neural_primary_metric") is not None:
+        neural_label = metrics.get("metric_name") or metrics.get("metric_key") or "score"
+        neural_value = fmt(metrics["neural_primary_metric"])
+        neural_html = f"""
+        <div class="metric neural">
+          <span>NN {html.escape(str(neural_label))}</span>
+          <strong>{html.escape(neural_value)}</strong>
+        </div>
+        """
+    elif neural_metrics and "error" not in neural_metrics:
         neural_label, neural_value = metric_for(task_name, neural_metrics)
         neural_html = f"""
         <div class="metric neural">
@@ -525,7 +558,7 @@ def task_card(task_name: str, kind: str, metrics: dict, group: dict, index: int,
           <span class="index">{index:02d}</span>
           <span class="kind">{html.escape(kind)}</span>
         </div>
-        <h3>{html.escape(task_display_name(task_name))}</h3>
+        <h3>{html.escape(metrics.get("task_display_name") or task_display_name(task_name))}</h3>
         <p>{html.escape(io)}</p>
         <div class="metric">
           <span>min {html.escape(label)}</span>
@@ -565,17 +598,38 @@ def modality_card(name: str, modality_type: str, sample_text: str, feature_text:
 
 
 def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) -> str:
-    suite = summary["tasks"]
-    neural_suite = summary.get("neural_tasks", {})
+    if isinstance(summary.get("tasks"), list):
+        task_rows = summary["tasks"]
+        suite = {task["task_id"]: task for task in task_rows}
+        neural_suite = {}
+        dataset_scope = summary.get("dataset_scope", {})
+        num_frames = int(dataset_scope.get("num_frames", 0))
+        num_windows = int(dataset_scope.get("num_windows", 0))
+        feature_dim = int(dataset_scope.get("feature_dim", 0))
+        window_frames = int(dataset_scope.get("window_frames", 20))
+        stride_frames = int(dataset_scope.get("stride_frames", 5))
+        task_count = int(summary.get("task_count", len(suite)))
+        scored_records = 180
+    else:
+        suite = summary["tasks"]
+        neural_suite = summary.get("neural_tasks", {})
+        num_frames = int(summary["num_frames"])
+        num_windows = int(summary["num_windows"])
+        feature_dim = int(summary["feature_dim"])
+        window_frames = int(summary.get("window_frames", 20))
+        stride_frames = int(summary.get("stride_frames", 5))
+        task_count = len(suite)
+        scored_records = len(suite) + len(neural_suite)
     thumbnails = load_sample_thumbnails(sample_dir)
     base_layer = ""
     if base_image is not None and base_image.exists():
         base_layer = f'<div class="image-background" style="background-image:url(\'{base_image.resolve().as_uri()}\');"></div>'
     stats = [
-        (f"{summary['num_frames']:,}", "frames"),
-        (f"{summary['num_windows']:,}", "windows"),
-        (f"{summary['feature_dim']:,}", "features"),
-        (f"{len(suite)}+{len(neural_suite)}", "min + NN tasks"),
+        (f"{num_frames:,}", "frames"),
+        (f"{num_windows:,}", "windows"),
+        (f"{feature_dim:,}", "features"),
+        (f"{task_count}", "unified tasks"),
+        (f"{scored_records}", "method-task results"),
         ("70/30", "chronological split"),
     ]
     stats_html = "".join(
@@ -611,7 +665,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width={CANVAS_WIDTH}, initial-scale=1">
-  <title>Xperience-10M 12-Task Episode Suite Infographic</title>
+  <title>Xperience-10M 20-Task Episode Suite Infographic</title>
   <style>
     * {{ box-sizing: border-box; }}
     html,
@@ -1014,14 +1068,14 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
   </style>
 </head>
 <body>
-  <main class="canvas" aria-label="Ropedia Xperience-10M original task infographic">
+  <main class="canvas" aria-label="Ropedia Xperience-10M unified 20-task infographic">
     {base_layer}
     <div class="content">
     <header class="header">
       <div>
-        <div class="kicker">verified single-episode original tasks</div>
-        <h1>Ropedia Xperience-10M original task map</h1>
-        <p class="subtitle">A clean map from synchronized multimodal windows to 12 research task heads, comparing minimal heads with neural MLP results. Next milestone: Qwen3-Omni fine-tuning with sensor-bridge evaluation.</p>
+        <div class="kicker">verified unified 20-task release</div>
+        <h1>Ropedia Xperience-10M task map</h1>
+        <p class="subtitle">A clean map from synchronized multimodal windows to 20 task contracts, comparing minimal heads, neural MLP heads, and the public 180-result matrix.</p>
       </div>
       <div class="stats">{stats_html}</div>
     </header>
@@ -1029,16 +1083,16 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     <section class="shared-band" aria-label="shared processing contract">
       <div class="step"><strong>raw public episode</strong><span>video, audio, depth, pose, mocap, IMU, language</span></div>
       <div class="arrow">-></div>
-      <div class="step"><strong>20-frame windows</strong><span>stride 5, chronological order</span></div>
+      <div class="step"><strong>{window_frames}-frame windows</strong><span>stride {stride_frames}, chronological order</span></div>
       <div class="arrow">-></div>
-      <div class="step"><strong>{summary['feature_dim']:,}-d vector</strong><span>current manifest includes audio features</span></div>
+      <div class="step"><strong>{feature_dim:,}-d vector</strong><span>current manifest includes audio features</span></div>
       <div class="arrow">-></div>
-      <div class="step"><strong>12 minimal + NN heads</strong><span>softmax/ridge/logistic plus PyTorch MLP</span></div>
+      <div class="step"><strong>20 task contracts</strong><span>minimal/NN baselines plus model-branch results</span></div>
     </section>
 
     <div class="section-label">
-      <span>12 task families</span>
-      <span>Every task below has a minimal baseline and a neural MLP head over the same aligned window contract, making the suite easy to compare, extend, and scale to held-out episodes.</span>
+      <span>20 task contracts</span>
+      <span>Every task below is part of the unified public-sample suite. Tasks 1-12 are the original contracts; tasks 13-20 use the same window/split discipline and are scored in the 180-result matrix.</span>
     </div>
     <section class="families">{''.join(families)}</section>
 

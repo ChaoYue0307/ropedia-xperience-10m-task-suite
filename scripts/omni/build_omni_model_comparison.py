@@ -106,7 +106,7 @@ def single_episode_summary() -> dict[str, Any]:
         )
     return {
         "id": "v1_single_episode_public_sample",
-        "title": "Single-Episode Public-Sample Task Suite",
+        "title": "Single-Episode Public-Sample 20-Task Suite",
         "status": "verified",
         "scope": "one public Xperience-10M sample episode",
         "source": rel(path),
@@ -116,14 +116,17 @@ def single_episode_summary() -> dict[str, Any]:
             "windows": summary.get("num_windows"),
             "frames": summary.get("num_frames"),
             "feature_dim": summary.get("feature_dim"),
-            "task_count": len(tasks),
+            "core_task_count": len(tasks),
+            "unified_task_count": 20,
+            "method_task_record_count": 180,
             "neural_task_count": len(neural),
         },
         "models": ["minimal task heads", "compact neural MLP task heads"],
         "task_metrics": task_rows,
         "interpretation": (
-            "This layer verifies the 12 task contracts and raw multimodal feature "
-            "pipeline on the public sample. It is not a cross-episode benchmark."
+            "This layer verifies the original core task contracts, raw multimodal "
+            "feature pipeline, and unified 20-task public result surface. It is "
+            "not a cross-episode benchmark."
         ),
     }
 
@@ -752,7 +755,7 @@ def build_report() -> dict[str, Any]:
             "versus Super structured JSON Reasoner evaluation."
         ),
         "version_reading_notes": [
-            "Version 1 is the public-sample 12-task harness with minimal and neural heads.",
+            "Version 1 is the public-sample 20-task surface: original core heads, tasks 13-20, and the 180-row method-task matrix.",
             "Version 2 is the selected 128-episode same-split simple/NN baseline alignment.",
             "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, Cosmos3-Super Reasoner is a base-weight JSON-task evaluation, and Cosmos3-Super Forward-Dynamics LoRA is the first Super fine-tuned adapter branch.",
         ],

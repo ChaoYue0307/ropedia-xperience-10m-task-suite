@@ -116,7 +116,7 @@
         "results/audio_ablation/",
         "docs/data/audio_ablation_summary.json"
       ],
-      "readout": "Audio variants improve the primary metric on 6 of 12 task contracts in this single-episode setting."
+      "readout": "Audio variants improve the primary metric on 6 of the original task contracts in this single-episode setting."
     },
     {
       "area": "Evaluation protocol",
@@ -353,7 +353,7 @@
     "The Cosmos3-Nano future-window branch is verified as a compatibility adapter result, Cosmos3-Super Reasoner is verified as a base-weight evaluation, and Cosmos3-Super Forward-Dynamics LoRA is verified as the first fine-tuned Super adapter branch. Cosmos3-Super adapter weights belong in cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep; verified_public packages exclude safetensors.",
     "The current reconstruction task reconstructs feature vectors, not pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
     "Audio is one of the synchronized source modalities in the current task representation.",
-    "The audio ablation report compares audio/no-audio variants across all 12 task contracts in results/audio_ablation/.",
+    "The audio ablation report compares audio/no-audio variants across the original task contracts in results/audio_ablation/.",
     "Foundation-model selection is explicit: Qwen3-Omni is the structured JSON baseline, Cosmos 3 is the world-model branch with Nano compatibility and Super forward-dynamics LoRA results, and policy models such as OpenVLA/openpi/GR00T wait for robot-compatible action-target conversion.",
     "Future model branches should be added through the backbone registry and verified package contract, not as one-off result folders with incompatible metrics or publication rules.",
     "The Xperience Embodied Foundation Model is a future native-pretraining goal, not a completed model or current benchmark."

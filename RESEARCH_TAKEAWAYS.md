@@ -31,7 +31,7 @@ Current scope: This benchmark defines the task contract; cross-episode generaliz
 
 ### Chronological splits expose action-class shift
 
-Earlier all-feature action classifiers reach high macro-F1 on their local split, but the 12-task chronological action/subtask heads are much harder because later held-out windows include unseen labels.
+Earlier all-feature action classifiers reach high macro-F1 on their local split, but the core chronological action/subtask heads are much harder because later held-out windows include unseen labels.
 
 | Metric | Value |
 | --- | ---: |
@@ -80,7 +80,7 @@ Current scope: The current reconstruction task predicts feature vectors; depth, 
 
 ### Audio helps some tasks and hurts others on the public sample
 
-Audio improves the primary metric on 6 of 12 tasks, while raw log-mel replacement improves over the current handcrafted block on 6 of 12 tasks. The largest current-audio gain appears in feature reconstruction, not in action classification.
+Audio improves the primary metric on 6 of the original task contracts, while raw log-mel replacement improves over the current handcrafted block on 6 of those contracts. The largest current-audio gain appears in feature reconstruction, not in action classification.
 
 | Metric | Value |
 | --- | ---: |

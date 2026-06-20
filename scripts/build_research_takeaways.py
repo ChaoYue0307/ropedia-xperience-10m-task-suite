@@ -78,7 +78,7 @@ def build_payload() -> dict:
             "title": "Chronological splits expose action-class shift",
             "readout": (
                 "Earlier all-feature action classifiers reach high macro-F1 on their "
-                "local split, but the 12-task chronological action/subtask heads are "
+                "local split, but the core chronological action/subtask heads are "
                 "much harder because later held-out windows include unseen labels."
             ),
             "evidence": [
@@ -143,8 +143,8 @@ def build_payload() -> dict:
                 "id": "audio_contribution_is_task_specific",
                 "title": "Audio helps some tasks and hurts others on the public sample",
                 "readout": (
-                    "Audio improves the primary metric on 6 of 12 tasks, "
-                    "while raw log-mel replacement improves over the current handcrafted block on 6 of 12 tasks. "
+                    "Audio improves the primary metric on 6 of the original task contracts, "
+                    "while raw log-mel replacement improves over the current handcrafted block on 6 of those contracts. "
                     "The largest current-audio gain appears in feature reconstruction, not in action classification."
                 ),
                 "evidence": [

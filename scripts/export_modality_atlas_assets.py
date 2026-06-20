@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Export standalone modality thumbnails and a website data manifest.
 
-The large 12-task infographic embeds modality thumbnails as data URIs. This
+The large 20-task infographic embeds modality thumbnails as data URIs. This
 script writes those same sample-derived thumbnails as first-class public assets
 so the website can present a responsive, readable modality atlas on small
 screens without redistributing raw videos or annotations.

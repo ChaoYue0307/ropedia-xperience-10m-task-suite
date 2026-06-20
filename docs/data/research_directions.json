@@ -1,5 +1,5 @@
 {
-  "source": "results/episode_task_suite/summary_report.json",
+  "source": "docs/data/task_suite_20.json plus results/episode_task_suite/summary_report.json",
   "dataset_scope": {
     "sample_episode_count": 1,
     "num_frames": 5821,
@@ -11,6 +11,7 @@
     "minimal": "Interpretable softmax, logistic, ridge, and retrieval heads over the 8,546-d window feature vector.",
     "neural_mlp": "Small PyTorch MLP classifiers/regressors using the same features, splits, and task contracts."
   },
+  "task_count": 20,
   "directions": {
     "A": {
       "id": "human_motion",
@@ -28,19 +29,23 @@
         "timeline_action",
         "hand_trajectory_forecast",
         "contact_prediction",
-        "object_relevance"
+        "object_relevance",
+        "interaction_text_prediction",
+        "imu_to_hand_pose"
       ],
       "task_display_names": [
         "Action Recognition",
         "Hand Trajectory Forecasting",
         "Contact State Prediction",
-        "Object Relevance Prediction"
+        "Object Relevance Prediction",
+        "Interaction Text Prediction",
+        "IMU-to-Hand Pose Reconstruction"
       ],
       "counts": {
-        "direct": 2,
-        "proxy": 2,
+        "direct": 3,
+        "proxy": 3,
         "diagnostic": 0,
-        "total_links": 4
+        "total_links": 6
       }
     },
     "B": {
@@ -58,18 +63,22 @@
       "tasks": [
         "cross_modal_retrieval",
         "modality_reconstruction",
-        "misalignment_detection"
+        "misalignment_detection",
+        "imu_to_hand_pose",
+        "camera_view_sync_retrieval"
       ],
       "task_display_names": [
         "Cross-Modal Retrieval",
         "Cross-Modal Reconstruction",
-        "Multimodal Synchronization Detection"
+        "Multimodal Synchronization Detection",
+        "IMU-to-Hand Pose Reconstruction",
+        "Camera-View Synchronization Retrieval"
       ],
       "counts": {
-        "direct": 0,
-        "proxy": 2,
+        "direct": 1,
+        "proxy": 3,
         "diagnostic": 1,
-        "total_links": 3
+        "total_links": 5
       }
     },
     "C": {
@@ -78,7 +87,7 @@
       "focus": "Egocentric action and intention understanding, hand-object interaction, gaze/attention modeling, task structure modeling.",
       "preferred_background": "Video understanding, action recognition, or egocentric vision.",
       "current_status": "strongest implemented track",
-      "current_readout": "Most of the 12 tasks directly target egocentric action, task state, interaction, grounding, and alignment.",
+      "current_readout": "The unified 20-task suite directly targets egocentric action, task state, interaction, grounding, forecasting, and alignment.",
       "next_steps": [
         "Move from single-episode chronological splits to held-out-episode splits.",
         "Use audio together with stronger multimodal backbones for action, intent, and grounding.",
@@ -95,7 +104,13 @@
         "caption_grounding",
         "cross_modal_retrieval",
         "temporal_order",
-        "misalignment_detection"
+        "misalignment_detection",
+        "long_horizon_next_action",
+        "next_subtask_forecast",
+        "interaction_text_prediction",
+        "action_object_relation",
+        "object_set_forecast",
+        "time_to_transition"
       ],
       "task_display_names": [
         "Action Recognition",
@@ -108,13 +123,19 @@
         "Language Grounding",
         "Cross-Modal Retrieval",
         "Temporal Order Verification",
-        "Multimodal Synchronization Detection"
+        "Multimodal Synchronization Detection",
+        "Long-Horizon Next-Action Forecasting",
+        "Long-Horizon Next-Subtask Forecasting",
+        "Interaction Text Prediction",
+        "Action-Object Relation Prediction",
+        "Future Object-Set Forecasting",
+        "Time-to-Next-Transition Regression"
       ],
       "counts": {
-        "direct": 6,
-        "proxy": 2,
-        "diagnostic": 3,
-        "total_links": 11
+        "direct": 10,
+        "proxy": 3,
+        "diagnostic": 4,
+        "total_links": 17
       }
     },
     "D": {
@@ -138,7 +159,13 @@
         "cross_modal_retrieval",
         "modality_reconstruction",
         "temporal_order",
-        "misalignment_detection"
+        "misalignment_detection",
+        "long_horizon_next_action",
+        "next_subtask_forecast",
+        "action_object_relation",
+        "object_set_forecast",
+        "camera_view_sync_retrieval",
+        "time_to_transition"
       ],
       "task_display_names": [
         "Procedure Step Recognition",
@@ -149,13 +176,19 @@
         "Cross-Modal Retrieval",
         "Cross-Modal Reconstruction",
         "Temporal Order Verification",
-        "Multimodal Synchronization Detection"
+        "Multimodal Synchronization Detection",
+        "Long-Horizon Next-Action Forecasting",
+        "Long-Horizon Next-Subtask Forecasting",
+        "Action-Object Relation Prediction",
+        "Future Object-Set Forecasting",
+        "Camera-View Synchronization Retrieval",
+        "Time-to-Next-Transition Regression"
       ],
       "counts": {
-        "direct": 0,
-        "proxy": 6,
-        "diagnostic": 3,
-        "total_links": 9
+        "direct": 1,
+        "proxy": 10,
+        "diagnostic": 4,
+        "total_links": 15
       }
     }
   },
@@ -437,6 +470,190 @@
         "minimal": 0.5051698670605613,
         "neural_mlp": 0.7152682255845944,
         "better_baseline": "neural_mlp"
+      }
+    },
+    "long_horizon_next_action": {
+      "name": "Long-horizon next-action forecasting",
+      "family": "classification",
+      "input": "current and historical windows",
+      "output": "future action label",
+      "primary_direction": "C",
+      "direction_roles": {
+        "C": "direct",
+        "D": "proxy"
+      },
+      "why": "Extends short-horizon intention prediction into longer activity futures, a key egocentric and world-model signal.",
+      "current_limit": "Evaluated from sample-supported future labels, not full open-world action generation.",
+      "display_name": "Long-Horizon Next-Action Forecasting",
+      "artifact_id": "long_horizon_next_action",
+      "metric": {
+        "key": "macro_f1",
+        "name": "macro-F1",
+        "direction": "higher",
+        "minimal": 0.07499999999999998,
+        "neural_mlp": 0.06545454545454546,
+        "better_baseline": "minimal"
+      }
+    },
+    "next_subtask_forecast": {
+      "name": "Long-horizon next-subtask forecasting",
+      "family": "classification",
+      "input": "current and historical windows",
+      "output": "future procedure-step label",
+      "primary_direction": "C",
+      "direction_roles": {
+        "C": "direct",
+        "D": "proxy"
+      },
+      "why": "Measures whether the model can anticipate the next procedural phase rather than only the current frame state.",
+      "current_limit": "Subtask labels are constrained to the available annotation vocabulary.",
+      "display_name": "Long-Horizon Next-Subtask Forecasting",
+      "artifact_id": "next_subtask_forecast",
+      "metric": {
+        "key": "macro_f1",
+        "name": "macro-F1",
+        "direction": "higher",
+        "minimal": 0.04545454545454545,
+        "neural_mlp": 0.050724637681159424,
+        "better_baseline": "neural_mlp"
+      }
+    },
+    "interaction_text_prediction": {
+      "name": "Interaction text prediction",
+      "family": "classification",
+      "input": "window features without target text leakage",
+      "output": "natural-language interaction class",
+      "primary_direction": "C",
+      "direction_roles": {
+        "C": "direct",
+        "A": "proxy"
+      },
+      "why": "Connects egocentric observations to the natural-language interaction semantics carried by the annotation.",
+      "current_limit": "Public derived features retain hashed text targets; raw full text requires the official annotation source.",
+      "display_name": "Interaction Text Prediction",
+      "artifact_id": "interaction_text_prediction",
+      "metric": {
+        "key": "macro_f1",
+        "name": "macro-F1",
+        "direction": "higher",
+        "minimal": 0.04444444444444444,
+        "neural_mlp": 0.0380952380952381,
+        "better_baseline": "minimal"
+      }
+    },
+    "action_object_relation": {
+      "name": "Action-object relation prediction",
+      "family": "classification",
+      "input": "window features with target-side relation leakage excluded",
+      "output": "action-object relation class",
+      "primary_direction": "C",
+      "direction_roles": {
+        "C": "direct",
+        "D": "proxy"
+      },
+      "why": "Tests whether action recognition and object state are connected as a relational interaction representation.",
+      "current_limit": "Relation labels are derived from the public-sample annotation scope.",
+      "display_name": "Action-Object Relation Prediction",
+      "artifact_id": "action_object_relation",
+      "metric": {
+        "key": "macro_f1",
+        "name": "macro-F1",
+        "direction": "higher",
+        "minimal": 0.0,
+        "neural_mlp": 0.0,
+        "better_baseline": "tie"
+      }
+    },
+    "object_set_forecast": {
+      "name": "Future object-set forecasting",
+      "family": "multi-label",
+      "input": "current and historical windows",
+      "output": "future object set",
+      "primary_direction": "D",
+      "direction_roles": {
+        "D": "direct",
+        "C": "proxy"
+      },
+      "why": "Asks whether the current scene state supports predicting which objects will matter later.",
+      "current_limit": "This is a set-level proxy, not a persistent 3D scene graph.",
+      "display_name": "Future Object-Set Forecasting",
+      "artifact_id": "object_set_forecast",
+      "metric": {
+        "key": "micro_f1",
+        "name": "micro-F1",
+        "direction": "higher",
+        "minimal": 0.16939890710382516,
+        "neural_mlp": 0.19718309859154928,
+        "better_baseline": "neural_mlp"
+      }
+    },
+    "imu_to_hand_pose": {
+      "name": "IMU-to-hand pose reconstruction",
+      "family": "regression",
+      "input": "IMU and motion context",
+      "output": "hand pose target",
+      "primary_direction": "A",
+      "direction_roles": {
+        "A": "direct",
+        "B": "proxy"
+      },
+      "why": "Measures human-motion reconstruction from wearable and motion cues.",
+      "current_limit": "Pose reconstruction is window-level and does not yet fit a full parametric hand/body model.",
+      "display_name": "IMU-to-Hand Pose Reconstruction",
+      "artifact_id": "imu_to_hand_pose",
+      "metric": {
+        "key": "mae",
+        "name": "MAE",
+        "direction": "lower",
+        "minimal": 0.042049407958984375,
+        "neural_mlp": 0.042562149465084076,
+        "better_baseline": "minimal"
+      }
+    },
+    "camera_view_sync_retrieval": {
+      "name": "Camera-view synchronization retrieval",
+      "family": "retrieval",
+      "input": "one camera-view/window query",
+      "output": "matching synchronized view",
+      "primary_direction": "B",
+      "direction_roles": {
+        "B": "direct",
+        "D": "proxy"
+      },
+      "why": "Tests whether synchronized multi-view structure is recoverable across camera streams.",
+      "current_limit": "Retrieval checks view consistency but does not reconstruct geometry by itself.",
+      "display_name": "Camera-View Synchronization Retrieval",
+      "artifact_id": "camera_view_sync_retrieval",
+      "metric": {
+        "key": "mrr",
+        "name": "MRR",
+        "direction": "higher",
+        "minimal": 0.4943004846572876,
+        "neural_mlp": 0.24086658656597137,
+        "better_baseline": "minimal"
+      }
+    },
+    "time_to_transition": {
+      "name": "Time-to-next-transition regression",
+      "family": "regression",
+      "input": "current temporal window state",
+      "output": "frames/time until the next transition",
+      "primary_direction": "C",
+      "direction_roles": {
+        "C": "diagnostic",
+        "D": "diagnostic"
+      },
+      "why": "Measures temporal boundary awareness as a continuous timing target.",
+      "current_limit": "Regression is local to the annotated public sample timeline.",
+      "display_name": "Time-to-Next-Transition Regression",
+      "artifact_id": "time_to_transition",
+      "metric": {
+        "key": "mae",
+        "name": "MAE frames",
+        "direction": "lower",
+        "minimal": 10.53735637664795,
+        "neural_mlp": 10.55449390411377,
+        "better_baseline": "minimal"
       }
     }
   }

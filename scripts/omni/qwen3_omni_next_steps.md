@@ -72,6 +72,6 @@ python scripts/omni/omni_finetune_runbook.py \
 
 The bridge step is intentionally after native Qwen video/audio/text LoRA has
 overfit a tiny shard and evaluated on held-out episodes. The full 32-episode
-pilot should compare the existing 12-task baseline, adapter-only baseline,
-frozen Qwen zero-shot, Qwen LoRA without sensor bridge, and Qwen LoRA with
-sensor bridge before any scale-up decision.
+pilot should compare the unified 20-task baseline surface, adapter-only
+baseline, frozen Qwen zero-shot, Qwen LoRA without sensor bridge, and Qwen LoRA
+with sensor bridge before any scale-up decision.

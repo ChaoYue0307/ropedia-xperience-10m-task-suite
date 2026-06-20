@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = Path("/tmp/xperience_rendered_site_observations.json")
 OUTPUT_JSON = ROOT / "docs/data/rendered_site_check.json"
 OUTPUT_MD = ROOT / "RENDERED_SITE_CHECK.md"
+TASK_MATRIX_JSON = ROOT / "docs/data/task_method_20_result_matrix.json"
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -33,6 +34,10 @@ def check(name: str, passed: bool, reason: str, **detail: Any) -> dict[str, Any]
 
 def build_report(observations: dict[str, Any]) -> dict[str, Any]:
     viewport = observations.get("viewport") or {}
+    task_matrix = load_json(TASK_MATRIX_JSON) if TASK_MATRIX_JSON.exists() else {}
+    matrix_task_count = int(task_matrix.get("task_count", 0) or 0)
+    matrix_record_count = int(task_matrix.get("method_task_record_count", 0) or 0)
+    matrix_scored_count = int(task_matrix.get("scored_method_task_count", 0) or 0)
     checks = [
         check(
             "page_identity",
@@ -67,9 +72,17 @@ def build_report(observations: dict[str, Any]) -> dict[str, Any]:
         check(
             "task_and_modality_cards_render",
             observations.get("taskCardCount") == 12 and observations.get("atlasCardCount") == 7,
-            "The rendered task and modality sections should expose all 12 task cards and seven modality cards.",
+            "The rendered walkthrough should expose the original core task cards and seven modality cards.",
             task_card_count=observations.get("taskCardCount"),
             atlas_card_count=observations.get("atlasCardCount"),
+        ),
+        check(
+            "unified_20_task_matrix_available",
+            matrix_task_count == 20 and matrix_record_count == 180 and matrix_scored_count == 180,
+            "The rendered site data bundle should include the unified 20-task / 180-result matrix.",
+            matrix_task_count=matrix_task_count,
+            matrix_record_count=matrix_record_count,
+            matrix_scored_count=matrix_scored_count,
         ),
         check(
             "walkthrough_deep_link",

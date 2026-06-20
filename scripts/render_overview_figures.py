@@ -94,7 +94,7 @@ def arrow() -> str:
 
 def build_pipeline_html(summary: dict, base_path: Path) -> str:
     suite = summary["suite"]
-    task_count = len(suite["tasks"])
+    task_count = int(summary.get("unified_task_count") or len(suite["tasks"]))
     neural_count = len(suite.get("neural_tasks", {}))
     stage_rows = [
         [
@@ -141,7 +141,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
             stage_card(
                 "06",
                 "Ropedia Xperience-10M suite",
-                [f"{task_count} minimal + {neural_count} neural results", "forecast, retrieval, alignment", "chronological evaluation"],
+                [f"{task_count} task contracts", "180 public result rows", "forecast, retrieval, alignment", "chronological evaluation"],
                 COLORS["teal"],
             ),
             arrow(),
@@ -366,7 +366,8 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
           <div class="metric"><strong>{suite['num_frames']:,}</strong><span>frames</span></div>
           <div class="metric"><strong>{suite['num_windows']:,}</strong><span>windows</span></div>
           <div class="metric"><strong>{suite['feature_dim']:,}</strong><span>features</span></div>
-          <div class="metric"><strong>{task_count}+{neural_count}</strong><span>min + NN tasks</span></div>
+          <div class="metric"><strong>{task_count}</strong><span>unified task contracts</span></div>
+          <div class="metric"><strong>180</strong><span>public result rows</span></div>
         </div>
       </header>
       {rows_html}
@@ -408,6 +409,7 @@ def build_task_card(row: dict, color: str) -> str:
 def build_architecture_html(summary: dict, base_path: Path) -> str:
     suite = summary["suite"]
     neural_count = len(suite.get("neural_tasks", {}))
+    task_count = int(summary.get("unified_task_count") or len(suite["tasks"]))
     rows_by_task = {row["task"]: row for row in task_architecture_rows(summary)}
     group_html = []
     for title, color, task_names in TASK_GROUPS:
@@ -698,10 +700,10 @@ def build_architecture_html(summary: dict, base_path: Path) -> str:
       <header>
         <div>
           <div class="kicker">minimal + neural verified model architectures</div>
-          <h1>12 Ropedia Xperience-10M tasks, minimal and NN heads</h1>
-          <p class="subtitle">Each task uses the same aligned episode-window contract. The figure shows minimal heads beside neural MLP metrics; next milestone is Qwen3-Omni fine-tuning with sensor-bridge evaluation.</p>
+          <h1>Core architecture families for the 20-task suite</h1>
+          <p class="subtitle">The original core heads stay inspectable, and the unified release extends them into the 20-task / 180-result public matrix.</p>
         </div>
-        <div class="summary-pill"><strong>{len(suite['tasks'])}+{neural_count}</strong><span>min + NN tasks</span></div>
+        <div class="summary-pill"><strong>{task_count}</strong><span>unified tasks</span></div>
       </header>
       <section class="shared">
         <article><h2>Shared windows</h2><p>{suite['num_frames']:,} frames to {suite['num_windows']:,} windows over video, audio, depth, pose, mocap, inertial, and language features.</p></article>

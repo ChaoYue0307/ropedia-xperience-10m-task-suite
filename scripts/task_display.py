@@ -18,6 +18,14 @@ TASK_DISPLAY_NAMES = {
     "modality_reconstruction": "Cross-Modal Reconstruction",
     "temporal_order": "Temporal Order Verification",
     "misalignment_detection": "Multimodal Synchronization Detection",
+    "long_horizon_next_action": "Long-Horizon Next-Action Forecasting",
+    "next_subtask_forecast": "Long-Horizon Next-Subtask Forecasting",
+    "interaction_text_prediction": "Interaction Text Prediction",
+    "action_object_relation": "Action-Object Relation Prediction",
+    "object_set_forecast": "Future Object-Set Forecasting",
+    "imu_to_hand_pose": "IMU-to-Hand Pose Reconstruction",
+    "camera_view_sync_retrieval": "Camera-View Synchronization Retrieval",
+    "time_to_transition": "Time-to-Next-Transition Regression",
 }
 
 

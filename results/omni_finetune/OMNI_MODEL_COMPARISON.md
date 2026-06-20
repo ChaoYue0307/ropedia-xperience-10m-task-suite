@@ -1,6 +1,6 @@
 # Omni Model Comparison
 
-Generated: `2026-06-18T12:52:47+00:00`
+Generated: `2026-06-20T21:27:21+00:00`
 
 Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and the two Cosmos3 targets answer different questions: Nano future-window retrieval versus Super structured JSON Reasoner evaluation.
 
@@ -8,13 +8,13 @@ Compare only rows with the same scope and target. Single-episode raw-feature met
 
 | version | status | scope | source |
 | --- | --- | --- | --- |
-| Single-Episode Public-Sample Task Suite | verified | one public Xperience-10M sample episode | `results/episode_task_suite/summary_report.json` |
+| Single-Episode Public-Sample 20-Task Suite | verified | one public Xperience-10M sample episode | `results/episode_task_suite/summary_report.json` |
 | 128-Episode Aligned Simple/NN Baselines | pass | selected 128-episode 96/16/16 split | `results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md` |
 | 128-Episode Foundation-Model Branches | partial_verified | selected 128-episode split and compatible derived windows | `results/omni_finetune/verified_public/` |
 
 Read the three rows this way:
 
-- Version 1 is the public-sample 12-task harness with minimal and neural heads.
+- Version 1 is the public-sample 20-task surface: original core heads, tasks 13-20, and the 180-row method-task matrix.
 - Version 2 is the selected 128-episode same-split simple/NN baseline alignment.
 - Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, Cosmos3-Super Reasoner is a base-weight JSON-task evaluation, and Cosmos3-Super Forward-Dynamics LoRA is the first Super fine-tuned adapter branch.
 
@@ -34,7 +34,7 @@ This is the cleanest 1-episode versus 128-episode grouping for the same simple/N
 
 | scope | status | run | counts | metrics | source |
 | --- | --- | --- | --- | --- | --- |
-| 1 episode | verified | Single-Episode Public-Sample Task Suite | 1 episodes, 1161 windows/samples |  | `results/episode_task_suite/summary_report.json` |
+| 1 episode | verified | Single-Episode Public-Sample 20-Task Suite | 1 episodes, 1161 windows/samples |  | `results/episode_task_suite/summary_report.json` |
 | 128 episode | pass | 128-Episode Aligned Simple/NN Baselines | 3808 windows/samples |  | `results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md` |
 
 ### Qwen3-Omni LoRA

@@ -1,9 +1,12 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-20T19:55:17+00:00",
+  "generated_at_utc": "2026-06-20T21:41:50+00:00",
   "summary": {
-    "task_count": 12,
-    "expected_task_count": 12,
+    "original_walkthrough_task_count": 12,
+    "expected_original_walkthrough_task_count": 12,
+    "unified_task_count": 20,
+    "method_task_record_count": 180,
+    "scored_method_task_count": 180,
     "task_family_counts": {
       "diagnostic": 3,
       "forecast": 2,
@@ -36,13 +39,13 @@
       "status": "pass"
     },
     {
-      "name": "exactly_12_tasks",
+      "name": "original_walkthrough_task_count",
       "status": "pass",
       "observed": 12,
       "expected": 12
     },
     {
-      "name": "expected_task_ids_present",
+      "name": "expected_original_walkthrough_task_ids_present",
       "status": "pass",
       "missing": [],
       "extra": []
@@ -1522,7 +1525,7 @@
       "expected": "### Multimodal Synchronization Detection (`misalignment_detection`)"
     },
     {
-      "name": "markdown_has_12_task_sections",
+      "name": "markdown_has_original_walkthrough_sections",
       "status": "pass",
       "observed": 12
     },
@@ -1656,6 +1659,17 @@
       "name": "extension_probe_uses_human_name:ego_motion_forecast",
       "status": "pass",
       "expected": "Short-Horizon Ego-Motion Forecasting"
+    },
+    {
+      "name": "unified_20_task_suite_present",
+      "status": "pass",
+      "task_count": 20
+    },
+    {
+      "name": "unified_180_result_matrix_present",
+      "status": "pass",
+      "method_task_record_count": 180,
+      "scored_method_task_count": 180
     }
   ],
   "failures": []

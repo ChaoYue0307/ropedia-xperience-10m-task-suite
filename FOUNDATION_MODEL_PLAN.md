@@ -54,7 +54,7 @@ The immediate pilot is about proving the full data path:
 
 Qwen3-Omni is the most direct first target because the existing scripts already
 prepare video/audio/language prompts and adapter inputs. It is also suitable for
-the 12 current task contracts, which mostly produce labels, structured JSON, or
+the unified 20 current task contracts, which mostly produce labels, structured JSON, or
 short task answers.
 
 The executable Qwen branch and future branch contracts are now represented as
@@ -145,7 +145,7 @@ requires multi-episode diversity. The first useful policy experiment should be a
 
 ## Evaluation Additions
 
-The foundation-model stage should add metrics beyond the current 12-task suite:
+The foundation-model stage should add metrics beyond the current 20-task suite:
 
 | Evaluation target | Metric family | Applies to |
 | --- | --- | --- |

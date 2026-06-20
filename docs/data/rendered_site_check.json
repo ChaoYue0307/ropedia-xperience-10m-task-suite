@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Rendered Website Check",
   "status": "pass",
-  "generated_at_utc": "2026-06-03T01:38:26+00:00",
+  "generated_at_utc": "2026-06-20T21:34:06+00:00",
   "flow": "load current docs server -> open #walkthroughs deep link -> click Next -> click Process story chapter",
   "checked_at_local": "2026-06-03T01:32:46.099Z",
   "screenshot_path": "/tmp/xperience_site_walkthrough_fresh.png",
@@ -71,9 +71,17 @@
     {
       "name": "task_and_modality_cards_render",
       "status": "pass",
-      "reason": "The rendered task and modality sections should expose all 12 task cards and seven modality cards.",
+      "reason": "The rendered walkthrough should expose the original core task cards and seven modality cards.",
       "task_card_count": 12,
       "atlas_card_count": 7
+    },
+    {
+      "name": "unified_20_task_matrix_available",
+      "status": "pass",
+      "reason": "The rendered site data bundle should include the unified 20-task / 180-result matrix.",
+      "matrix_task_count": 20,
+      "matrix_record_count": 180,
+      "matrix_scored_count": 180
     },
     {
       "name": "walkthrough_deep_link",

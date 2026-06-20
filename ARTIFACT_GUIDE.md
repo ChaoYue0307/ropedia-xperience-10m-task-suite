@@ -19,7 +19,7 @@ Xperience-native pretraining goal.
 | [`XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md`](XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md) | Describes the future full-corpus Xperience Embodied Foundation Model goal, including modules, objectives, staged scale-up, hardware ranges, and evaluation. |
 | [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) | Defines the task unit, chronological split, metrics, leakage controls, and current limitations. |
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Defines public reproduction commands, expected outputs, and unreproducible boundaries. |
-| [`results/audio_ablation/AUDIO_ABLATION_SUMMARY.md`](results/audio_ablation/AUDIO_ABLATION_SUMMARY.md) | Shows measured current-audio and raw log-mel replacement deltas across the 12 task contracts. |
+| [`results/audio_ablation/AUDIO_ABLATION_SUMMARY.md`](results/audio_ablation/AUDIO_ABLATION_SUMMARY.md) | Shows measured current-audio and raw log-mel replacement deltas across the original task contracts. |
 | [`docs/single_episode_explorer.html`](docs/single_episode_explorer.html) | Gives a static window-level explorer for the public sample episode. |
 | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Optional detail for readers who need official dataset and access-term context. |
 
@@ -74,11 +74,11 @@ Xperience-native pretraining goal.
 | [`docs/data/task_suite_20.json`](docs/data/task_suite_20.json) | Machine-readable unified 20-task suite for the website and Hugging Face mirrors. |
 | [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json) | The original task contracts, chronological split, and minimal/neural metrics. |
 | [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/) | Matching PyTorch MLP heads for the same task contracts and feature windows. |
-| [`results/episode_task_suite/research_directions/`](results/episode_task_suite/research_directions/) | Mapping from the 12 tasks to the four Ropedia research directions. |
+| [`results/episode_task_suite/research_directions/`](results/episode_task_suite/research_directions/) | Mapping from the unified 20-task suite to the four Ropedia research directions. |
 | [`results/episode_task_suite/research_direction_extensions/`](results/episode_task_suite/research_direction_extensions/) | Four additional coded probes, one per research direction. |
 | [`results/episode_task_suite/tier2_task_suite/`](results/episode_task_suite/tier2_task_suite/) | Historical result path for tasks 13-20 in the unified 20-task suite. |
 | [`results/episode_task_suite/task_walkthroughs/`](results/episode_task_suite/task_walkthroughs/) | Human-readable research names and case studies explaining input, process modules, output, metric, limitation, and the website task-player data. |
-| [`results/audio_ablation/audio_ablation_metrics.csv`](results/audio_ablation/audio_ablation_metrics.csv) | All 72 measured audio rows: 12 tasks times six variants, including no-audio, audio-only, alternate-audio-only, representation replacement, and all-input variants. |
+| [`results/audio_ablation/audio_ablation_metrics.csv`](results/audio_ablation/audio_ablation_metrics.csv) | All measured audio rows for the original task contracts across six variants, including no-audio, audio-only, alternate-audio-only, representation replacement, and all-input variants. |
 | [`results/audio_ablation/audio_delta_summary.csv`](results/audio_ablation/audio_delta_summary.csv) | Compact per-task audio delta table for quick manual inspection. |
 | [`scripts/audio_ablation_and_raw_upgrade.py`](scripts/audio_ablation_and_raw_upgrade.py) | Regenerates audio contribution results from real task-suite artifacts plus the local public-sample MP4. |
 | [`scripts/validate_task_surface.py`](scripts/validate_task_surface.py) | Fails publication if public task cards drift back to raw artifact ids or lose their thumbnail/player wiring. |
@@ -122,7 +122,7 @@ research project.
 | [`results/omni_finetune/QWEN3_FULL_PARAMETER_GATES_20260609.md`](results/omni_finetune/QWEN3_FULL_PARAMETER_GATES_20260609.md) | Full-parameter Qwen3-Omni feasibility-gate summary: 1/8/32/64-step guarded 8-GPU runs passed, the opportunistic 128-step run was preempted for Qwen v5 handoff, and no full checkpoints or weights are published. |
 | [`docs/data/qwen3_full_parameter_gates.json`](docs/data/qwen3_full_parameter_gates.json) | Machine-readable full-parameter feasibility evidence and publication policy for the website and Hugging Face mirrors. |
 | [`scripts/omni/defer_qwen3_fullparam_after_verified_qwen.sh`](scripts/omni/defer_qwen3_fullparam_after_verified_qwen.sh) | Waits for a verified Qwen held-out package, then launches a bounded 128-step full-parameter feasibility pilot on the same multiscale v5 dataset with no checkpoints or weights saved. |
-| [`results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md`](results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md) | Same-split 128-episode simple and neural metadata baselines for the 12 task ids, aligned to the 96/16/16 Qwen3-Omni split and explicit about raw-feature-only tasks. |
+| [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json) | Same-split 128-episode simple and neural baselines reported on the unified 20-task axes, aligned to the 96/16/16 Qwen3-Omni split with source/proxy notes. |
 | [`results/omni_finetune/multi_episode_128_task_baselines/summary_report.json`](results/omni_finetune/multi_episode_128_task_baselines/summary_report.json) | Machine-readable split counts, run configuration, simple metrics, neural metrics, and unsupported raw-feature markers for the aligned 128-episode baseline suite. |
 | [`scripts/omni/run_128_task_baselines.py`](scripts/omni/run_128_task_baselines.py) | Runner for the aligned 128-episode metadata/text baselines; it consumes the derived Qwen JSONL export locally but does not publish raw data, Qwen weights, or LoRA weights. |
 | [`scripts/omni/discover_xperience10m_sources.py`](scripts/omni/discover_xperience10m_sources.py) | Discovery gate for valid multi-episode Xperience-10M sources. |

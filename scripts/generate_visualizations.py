@@ -25,6 +25,7 @@ RESULTS = ROOT / "results"
 DOCS = ROOT / "docs"
 ASSETS = DOCS / "assets"
 CHARTS = ASSETS / "charts"
+TASK_SUITE_20_PATH = DOCS / "data" / "task_suite_20.json"
 
 OMNI_RELAY = {
     "status": "verified_full_128_episode_diagnostic_result",
@@ -100,7 +101,7 @@ def svg_feature_blocks(path: Path, feature_manifest: list[dict]) -> None:
 def svg_pipeline_diagram(path: Path, summary: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     suite = summary["suite"]
-    task_count = len(suite["tasks"])
+    task_count = int(summary.get("unified_task_count") or len(suite["tasks"]))
     width, height = 1400, 760
     boxes = [
         (60, 110, 250, 132, "1. Raw public sample", [
@@ -131,7 +132,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
             "metrics and predictions",
         ], "#9bdfff"),
         (520, 380, 360, 168, "6. Ropedia Xperience-10M suite", [
-            f"{task_count} supervised/self-supervised tasks",
+            f"{task_count} unified task contracts",
             "chronological split",
             "retrieval, forecast, alignment",
             "per-task artifacts",
@@ -150,7 +151,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
         '<rect x="0" y="0" width="1400" height="760" fill="url(#dotgrid)" opacity="0.55"/>',
         '<circle cx="1120" cy="132" r="170" fill="#ccffa0" opacity="0.10"/>',
         '<text x="60" y="58" font-family="Inter Tight, Arial, sans-serif" font-size="32" font-weight="800" fill="#f4f8ef">Verified Ropedia Xperience-10M Pipeline</text>',
-        '<text x="60" y="88" font-family="Space Grotesk, Arial, sans-serif" font-size="16" fill="#a5afa2">Generated from committed scripts and metrics with traceable stage labels.</text>',
+        '<text x="60" y="88" font-family="Space Grotesk, Arial, sans-serif" font-size="16" fill="#a5afa2">Generated from committed scripts, the unified 20-task index, and traceable metrics.</text>',
     ]
     arrows = [
         (310, 176, 365, 176),
@@ -381,8 +382,8 @@ def svg_task_architectures(path: Path, summary: dict) -> None:
         '<rect width="100%" height="100%" fill="#020502"/>',
         '<rect width="100%" height="100%" fill="url(#dotgrid2)" opacity="0.58"/>',
         '<circle cx="1190" cy="150" r="210" fill="#ccffa0" opacity="0.08"/>',
-        '<text x="60" y="56" font-family="Inter Tight, Arial, sans-serif" font-size="34" font-weight="800" fill="#f4f8ef">Minimal Architectures for 12 Ropedia Xperience-10M Tasks</text>',
-        '<text x="60" y="88" font-family="Space Grotesk, Arial, sans-serif" font-size="16" fill="#a5afa2">Generated from scripts/episode_task_suite.py semantics and committed summary metrics. These are minimal baselines, not deep foundation models.</text>',
+        '<text x="60" y="56" font-family="Inter Tight, Arial, sans-serif" font-size="34" font-weight="800" fill="#f4f8ef">Core Architecture Families in the 20-Task Xperience-10M Suite</text>',
+        '<text x="60" y="88" font-family="Space Grotesk, Arial, sans-serif" font-size="16" fill="#a5afa2">Generated from the original task-head semantics and unified 20-task release metadata. These are baselines, not deep foundation models.</text>',
     ]
 
     setup = [
@@ -465,6 +466,7 @@ def collect_summary() -> dict:
     min_action = read_json(RESULTS / "min_action_model/metrics.json")
     min_subtask = read_json(RESULTS / "min_subtask_model/metrics.json")
     suite = read_json(RESULTS / "episode_task_suite/summary_report.json")
+    unified = read_json(TASK_SUITE_20_PATH) if TASK_SUITE_20_PATH.exists() else {}
     manifest = read_json(RESULTS / "episode_task_suite/feature_manifest.json")
     public_manifest = [
         {**block, "name": display_feature_name(block["name"])}
@@ -479,6 +481,7 @@ def collect_summary() -> dict:
             "all_modalities_subtask": all_subtask,
         },
         "suite": suite,
+        "unified_task_count": unified.get("task_count", len(suite.get("tasks", {}))),
         "feature_manifest": public_manifest,
     }
 

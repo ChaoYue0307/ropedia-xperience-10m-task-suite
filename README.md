@@ -252,7 +252,7 @@ Public release checks are exposed as JSON for mirrors and dashboards:
         <ul>
           <li>The selected-episode Qwen3-Omni LoRA v6 diagnostic package is verified on the 96/16/16 split with 34,269 exported windows and 4,032 held-out test predictions.</li>
           <li>v6 improves action macro-F1/contact accuracy versus v5; v5 remains a pinned prior-release row where it is stronger on other metrics.</li>
-          <li>Same-split simple/NN metadata baselines cover the 12 JSON-supported task ids, while the raw-feature simple/NN run covers 20/20 task axes with compact-proxy notes for tasks 15 and 19.</li>
+          <li>Same-split simple/NN metadata and raw-feature baselines are now reported on the unified 20-task axes, with compact-proxy notes retained where a target is derived from public-safe processed artifacts.</li>
           <li>The Qwen result proves the multi-episode export/train/eval/package loop and meets the strict-JSON target, but weak action/subtask metrics make it a baseline for error analysis rather than a strong model.</li>
           <li>Cosmos3 has three verified diagnostics: Nano future-window compatibility, Super base-weight Reasoner evaluation, and Super forward-dynamics LoRA fine-tuning over camera-pose proxy targets.</li>
         </ul>
@@ -580,7 +580,7 @@ terms. See [`LICENSE`](LICENSE) and [`DATA_NOTICE.md`](DATA_NOTICE.md).
 ![Ropedia Xperience-10M task-suite infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v13-modality-xl)
 
 The infographic uses a custom text-free research background and puts the shared
-processing contract plus all 12 task families before the modality atlas.
+processing contract plus all 20 unified task families before the modality atlas.
 Public-sample modality thumbnails remain enlarged below the task map. The task
 names, input/output summaries, and metrics are overlaid from
 [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json)
@@ -957,7 +957,7 @@ Current status in this repo:
 - current_quality_target: strict-label JSON validity 100.00%, meeting the 98% target; action/subtask quality remains weak
 - qwen3_lora_adapter_repo: https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep
 - cosmos3_super_lora_adapter_repo: https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep
-- 128_aligned_baselines: 12 task ids, 8 simple metadata/text baselines, 6 neural metadata/text baselines
+- 128_aligned_baselines: unified 20-task axes for simple and neural baselines, including metadata/text rows and public-safe compact-proxy rows where raw-feature targets are required
 - cosmos3_nano_branch: verified Cosmos3-Nano future-window compatibility package, 378 held-out future-window predictions from 14 test episodes
 - cosmos3_super_branch: verified Cosmos3-Super Reasoner base-weight JSON-task evaluation, 448 held-out predictions from 14 test episodes; JSON validity 51.12%, action macro-F1 0.0008, contact accuracy 32.14%, transition accuracy 36.83%
 - cosmos3_super_forward_dynamics_lora: verified 8-GPU FSDP LoRA branch over camera-pose proxy targets; 2,848 train rows, 512 val rows, 448 test rows, 26.2M adapter parameters, val MSE 4.0082, test MSE 3.6853; public package excludes safetensors
@@ -1412,7 +1412,7 @@ Compact map:
 | Temporal Order Verification | Tell whether reaching then pouring was reversed. | adjacent window pair -> pair combiner + binary classifier -> correct/reversed |
 | Multimodal Synchronization Detection | Catch motion paired with visual/depth features shifted in time. | motion side + visual side -> aligned/shifted pair builder + classifier -> aligned/shifted |
 
-## Minimal 12-Task Architectures
+## Core Architecture Families in the 20-Task Suite
 
 These are deliberately minimal baselines. They are useful because every
 input/output contract is explicit, not because they are strong embodied-AI
@@ -1442,7 +1442,7 @@ PyTorch MLP classifiers or regressors. Its outputs live under
 and the rollup is stored in the `neural_tasks` section of
 [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json).
 
-The task-specific heads are:
+The original task-specific heads are:
 
 | Task | Input | Minimal head | Output |
 | --- | --- | --- | --- |
@@ -1473,8 +1473,8 @@ The task-specific heads are:
 | Neural MLP hand forecast | 0.1079 MPJPE | n/a | Same features/split, nonlinear regression head |
 | Neural MLP temporal order | 0.8520 F1 | 0.8578 | Strong improvement on adjacent-window ordering |
 | Neural MLP misalignment | 0.7153 F1 | 0.7009 | Detects shifted motion/visual/audio pairs better than the linear head |
-| Audio ablation | +0.0418 mean delta | n/a | Current audio variant improves the primary metric on 6 of 12 task contracts |
-| Alternate audio representation | +0.0936 mean delta | n/a | Alternate audio-window representation improves over the baseline audio variant on 6 of 12 task contracts |
+| Audio ablation | +0.0418 mean delta | n/a | Current audio variant improves the primary metric on 6 of the original task contracts |
+| Alternate audio representation | +0.0936 mean delta | n/a | Alternate audio-window representation improves over the baseline audio variant on 6 of the original task contracts |
 
 ## Audio Contribution Study
 
@@ -1489,9 +1489,9 @@ The measured single-episode result is task-specific:
 
 | Readout | Value |
 | --- | ---: |
-| Tasks where current audio improves the primary metric | 6 / 12 |
+| Tasks where current audio improves the primary metric | 6 / 12 original contracts |
 | Mean current-audio delta | +0.0418 |
-| Tasks where alternate audio representation improves over baseline audio | 6 / 12 |
+| Tasks where alternate audio representation improves over baseline audio | 6 / 12 original contracts |
 | Mean alternate-representation delta vs baseline audio | +0.0936 |
 
 Full files:
@@ -1504,7 +1504,7 @@ Full files:
 
 ## Neural MLP Results
 
-The neural baseline was run locally with `--include-neural` for all 12 tasks
+The neural baseline was run locally with `--include-neural` for the original core task contracts
 using 80 epochs, hidden size 128, batch size 128, and CPU execution. It is not a
 foundation model result; it is a controlled nonlinear-head comparison over the
 same 8,546-dimensional multimodal representation.
@@ -1553,7 +1553,7 @@ episodes; they are not reported as multi-episode benchmark results.
 
 I re-ran the full pipeline from the local raw public sample into a temporary
 local workspace and compared regenerated metrics with the committed
-artifacts. The baseline metrics, 12 task metrics, feature manifest, and
+artifacts. The baseline metrics, original task metrics, feature manifest, and
 available modality manifest matched exactly after float normalization.
 
 See [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) for the

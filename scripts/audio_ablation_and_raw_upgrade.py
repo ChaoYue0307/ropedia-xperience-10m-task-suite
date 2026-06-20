@@ -856,7 +856,7 @@ def write_delta_chart(path: Path, summary: dict) -> None:
     lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#07110d"/>',
-        '<text x="36" y="42" fill="#e6f7ea" font-family="Arial, sans-serif" font-size="28" font-weight="700">Measured Audio Delta Across 12 Xperience-10M Tasks</text>',
+        '<text x="36" y="42" fill="#e6f7ea" font-family="Arial, sans-serif" font-size="28" font-weight="700">Measured Audio Delta Across Original Xperience-10M Task Contracts</text>',
         '<text x="36" y="70" fill="#a7b8ab" font-family="Arial, sans-serif" font-size="15">Positive means audio improved the task primary metric on the single public sample split.</text>',
         f'<line x1="{mid}" y1="92" x2="{mid}" y2="{height - 24}" stroke="#5b6f61" stroke-width="1"/>',
     ]

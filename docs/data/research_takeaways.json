@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Research Takeaways",
   "status": "pass",
-  "generated_at_utc": "2026-06-06T23:26:13+00:00",
+  "generated_at_utc": "2026-06-20T21:27:21+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
@@ -42,7 +42,7 @@
     {
       "id": "chronological_split_exposes_class_shift",
       "title": "Chronological splits expose action-class shift",
-      "readout": "Earlier all-feature action classifiers reach high macro-F1 on their local split, but the 12-task chronological action/subtask heads are much harder because later held-out windows include unseen labels.",
+      "readout": "Earlier all-feature action classifiers reach high macro-F1 on their local split, but the core chronological action/subtask heads are much harder because later held-out windows include unseen labels.",
       "evidence": [
         {
           "label": "all_feature_action_macro_f1",
@@ -133,7 +133,7 @@
     {
       "id": "audio_contribution_is_task_specific",
       "title": "Audio helps some tasks and hurts others on the public sample",
-      "readout": "Audio improves the primary metric on 6 of 12 tasks, while raw log-mel replacement improves over the current handcrafted block on 6 of 12 tasks. The largest current-audio gain appears in feature reconstruction, not in action classification.",
+      "readout": "Audio improves the primary metric on 6 of the original task contracts, while raw log-mel replacement improves over the current handcrafted block on 6 of those contracts. The largest current-audio gain appears in feature reconstruction, not in action classification.",
       "evidence": [
         {
           "label": "tasks_where_current_audio_improves",

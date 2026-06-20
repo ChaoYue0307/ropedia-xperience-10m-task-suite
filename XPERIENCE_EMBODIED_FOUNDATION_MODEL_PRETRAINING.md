@@ -88,7 +88,7 @@ Recommended scale:
 - frozen or lightly trainable video/audio encoders at first,
 - 0.3B-1B temporal fusion model,
 - all available sensor modalities represented as tokens,
-- evaluation on the existing 12-task suite plus future-state/retrieval probes.
+- evaluation on the unified 20-task suite, the 180-result matrix, and future-state/retrieval probes.
 
 ### Stage 2: 10K Episode Domain Model
 
@@ -159,7 +159,7 @@ The model should not be judged only by training loss. Evaluation should include:
 
 The current public project is the harness for this future model:
 
-- the 12-task suite defines concrete input/output contracts,
+- the unified 20-task suite defines concrete input/output contracts,
 - minimal and neural baselines provide initial supervised targets,
 - audio/modality diagnostics show which signals contribute,
 - Qwen3-Omni LoRA provides the first trainable multi-episode adapter path,

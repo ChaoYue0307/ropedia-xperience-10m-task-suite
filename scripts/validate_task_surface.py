@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the public 12-task card and walkthrough surface.
+"""Validate the public task card, walkthrough, and 20-task matrix surface.
 
 This gate is deliberately about presentation integrity, not model quality. The
 repo keeps snake_case artifact ids for reproducibility, but the public website
@@ -23,8 +23,27 @@ TASK_JSON = ROOT / "docs/data/task_walkthroughs.json"
 WEBSITE = ROOT / "docs/index.html"
 WALKTHROUGH_MD = ROOT / "results/episode_task_suite/task_walkthroughs/TASK_WALKTHROUGHS.md"
 OUTPUT = ROOT / "docs/data/task_surface_integrity.json"
+TASK_SUITE_20 = ROOT / "docs/data/task_suite_20.json"
+TASK_MATRIX_20 = ROOT / "docs/data/task_method_20_result_matrix.json"
 
-EXPECTED_TASKS = TASK_DISPLAY_NAMES
+ORIGINAL_WALKTHROUGH_TASK_IDS = (
+    "timeline_action",
+    "timeline_subtask",
+    "transition_detection",
+    "next_action",
+    "hand_trajectory_forecast",
+    "contact_prediction",
+    "object_relevance",
+    "caption_grounding",
+    "cross_modal_retrieval",
+    "modality_reconstruction",
+    "temporal_order",
+    "misalignment_detection",
+)
+EXPECTED_WALKTHROUGH_TASKS = {
+    task_id: TASK_DISPLAY_NAMES[task_id] for task_id in ORIGINAL_WALKTHROUGH_TASK_IDS
+}
+EXPECTED_UNIFIED_TASKS = TASK_DISPLAY_NAMES
 
 EXPECTED_EXTENSION_NAMES = {
     "body_motion_intensity": "Body and Hand Motion Intensity",
@@ -120,20 +139,20 @@ def validate_tasks(payload: dict[str, Any], failures: list[dict[str, Any]]) -> l
     task_ids = set(tasks)
     checks.append(
         check(
-            len(tasks) == len(EXPECTED_TASKS),
-            "exactly_12_tasks",
+            len(tasks) == len(EXPECTED_WALKTHROUGH_TASKS),
+            "original_walkthrough_task_count",
             failures,
             observed=len(tasks),
-            expected=len(EXPECTED_TASKS),
+            expected=len(EXPECTED_WALKTHROUGH_TASKS),
         )
     )
     checks.append(
         check(
-            task_ids == set(EXPECTED_TASKS),
-            "expected_task_ids_present",
+            task_ids == set(EXPECTED_WALKTHROUGH_TASKS),
+            "expected_original_walkthrough_task_ids_present",
             failures,
-            missing=sorted(set(EXPECTED_TASKS) - task_ids),
-            extra=sorted(task_ids - set(EXPECTED_TASKS)),
+            missing=sorted(set(EXPECTED_WALKTHROUGH_TASKS) - task_ids),
+            extra=sorted(task_ids - set(EXPECTED_WALKTHROUGH_TASKS)),
         )
     )
 
@@ -145,7 +164,7 @@ def validate_tasks(payload: dict[str, Any], failures: list[dict[str, Any]]) -> l
         checks.append(
             check(not missing_fields, f"{task_id}: required_fields", failures, missing=missing_fields)
         )
-        expected_name = EXPECTED_TASKS.get(task_id)
+        expected_name = EXPECTED_WALKTHROUGH_TASKS.get(task_id)
         checks.append(
             check(
                 task.get("display_name") == expected_name,
@@ -165,7 +184,11 @@ def validate_tasks(payload: dict[str, Any], failures: list[dict[str, Any]]) -> l
         )
         for field in DISPLAY_FIELDS:
             value = str(task.get(field, ""))
-            raw_hits = [hit for hit in RAW_ID_PATTERN.findall(value) if hit in EXPECTED_TASKS or hit in MODALITY_ASSETS]
+            raw_hits = [
+                hit
+                for hit in RAW_ID_PATTERN.findall(value)
+                if hit in EXPECTED_UNIFIED_TASKS or hit in MODALITY_ASSETS
+            ]
             checks.append(
                 check(
                     not raw_hits,
@@ -255,7 +278,7 @@ def validate_tasks(payload: dict[str, Any], failures: list[dict[str, Any]]) -> l
 
 def validate_markdown(source: str, tasks: dict[str, Any], failures: list[dict[str, Any]]) -> list[dict[str, Any]]:
     checks: list[dict[str, Any]] = []
-    for task_id, display_name in EXPECTED_TASKS.items():
+    for task_id, display_name in EXPECTED_WALKTHROUGH_TASKS.items():
         expected_heading = f"### {display_name} (`{task_id}`)"
         checks.append(
             check(
@@ -267,8 +290,8 @@ def validate_markdown(source: str, tasks: dict[str, Any], failures: list[dict[st
         )
     checks.append(
         check(
-            source.count("### ") == len(EXPECTED_TASKS),
-            "markdown_has_12_task_sections",
+            source.count("### ") == len(EXPECTED_WALKTHROUGH_TASKS),
+            "markdown_has_original_walkthrough_sections",
             failures,
             observed=source.count("### "),
         )
@@ -412,10 +435,30 @@ def build_report() -> dict[str, Any]:
     website_source = WEBSITE.read_text(encoding="utf-8")
     markdown_source = WALKTHROUGH_MD.read_text(encoding="utf-8")
     tasks = task_payload.get("tasks", {}) if isinstance(task_payload.get("tasks", {}), dict) else {}
+    task_suite_20 = load_json(TASK_SUITE_20) if TASK_SUITE_20.exists() else {}
+    task_matrix_20 = load_json(TASK_MATRIX_20) if TASK_MATRIX_20.exists() else {}
 
     checks.extend(validate_tasks(task_payload, failures))
     checks.extend(validate_markdown(markdown_source, tasks, failures))
     checks.extend(validate_website(website_source, failures))
+    checks.append(
+        check(
+            task_suite_20.get("task_count") == 20,
+            "unified_20_task_suite_present",
+            failures,
+            task_count=task_suite_20.get("task_count"),
+        )
+    )
+    checks.append(
+        check(
+            task_matrix_20.get("method_task_record_count") == 180
+            and task_matrix_20.get("scored_method_task_count") == 180,
+            "unified_180_result_matrix_present",
+            failures,
+            method_task_record_count=task_matrix_20.get("method_task_record_count"),
+            scored_method_task_count=task_matrix_20.get("scored_method_task_count"),
+        )
+    )
 
     task_families = {}
     task_modalities = {}
@@ -430,8 +473,11 @@ def build_report() -> dict[str, Any]:
         "status": "pass" if not failures else "fail",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "summary": {
-            "task_count": len(tasks),
-            "expected_task_count": len(EXPECTED_TASKS),
+            "original_walkthrough_task_count": len(tasks),
+            "expected_original_walkthrough_task_count": len(EXPECTED_WALKTHROUGH_TASKS),
+            "unified_task_count": task_suite_20.get("task_count"),
+            "method_task_record_count": task_matrix_20.get("method_task_record_count"),
+            "scored_method_task_count": task_matrix_20.get("scored_method_task_count"),
             "task_family_counts": dict(sorted(task_families.items())),
             "modality_usage_counts": dict(sorted(task_modalities.items())),
             "interactive_surface": "task cards plus scrub/play/chapter walkthrough storyboard",

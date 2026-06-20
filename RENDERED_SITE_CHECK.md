@@ -20,7 +20,8 @@ Current status: **pass**
 | First Meaningful Content | `pass` | The first meaningful heading should identify the research task lab. |
 | Responsive Viewport Recorded | `pass` | The browser run should record a narrow responsive viewport large enough to expose the mobile/tablet layout. |
 | Tabbed Research Navigation | `pass` | The rendered top-level tab system should switch to the Data tab for the walkthrough deep link. |
-| Task And Modality Cards Render | `pass` | The rendered task and modality sections should expose all 12 task cards and seven modality cards. |
+| Task And Modality Cards Render | `pass` | The rendered walkthrough should expose the original core task cards and seven modality cards. |
+| Unified 20 Task Matrix Available | `pass` | The rendered site data bundle should include the unified 20-task / 180-result matrix. |
 | Walkthrough Deep Link | `pass` | The walkthrough deep link should reveal the walkthrough player, all task selectors, and four chapter controls. |
 | Walkthrough Interaction | `pass` | Clicking Next and the Process chapter should update the active task, chapter, counter, and frame label. |
 | Rendered Check Resource Link | `pass` | The rendered page should expose the rendered website check JSON from the resource section. |
