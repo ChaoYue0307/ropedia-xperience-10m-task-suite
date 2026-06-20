@@ -1,0 +1,59 @@
+{
+  "status": "pass",
+  "task": "interaction_text_prediction",
+  "task_display_name": "Interaction Text Prediction",
+  "model_family": "neural_mlp_metadata",
+  "source": "128_episode_qwen_jsonl_metadata",
+  "input_features": "frame/context metadata plus hashed prompt/options/main_task text; answer_json fields are excluded from inputs",
+  "split_policy": "train on train split, report held-out test split",
+  "num_train_windows": 25629,
+  "num_val_windows": 4608,
+  "num_test_windows": 4032,
+  "num_classes": 6010,
+  "num_train_classes": 4448,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 8.382252775188762,
+      "train_accuracy": 0.0006633110929025714
+    },
+    {
+      "epoch": 7,
+      "loss": 4.2823109309548375,
+      "train_accuracy": 0.021343009871629796
+    },
+    {
+      "epoch": 14,
+      "loss": 3.807321997763117,
+      "train_accuracy": 0.03484334152717625
+    },
+    {
+      "epoch": 21,
+      "loss": 3.509477180911634,
+      "train_accuracy": 0.04530024581528737
+    },
+    {
+      "epoch": 28,
+      "loss": 3.29201147771104,
+      "train_accuracy": 0.05723984548753365
+    },
+    {
+      "epoch": 35,
+      "loss": 3.1352501233679257,
+      "train_accuracy": 0.0687502438643724
+    }
+  ],
+  "device": "cpu",
+  "splits": {
+    "test": {
+      "accuracy": 0.0,
+      "balanced_accuracy": 0.0,
+      "macro_f1": 0.0,
+      "weighted_f1": 0.0,
+      "num_eval_windows": 4032,
+      "num_classes": 6010
+    }
+  },
+  "primary_metric": "macro_f1",
+  "primary_score": 0.0
+}

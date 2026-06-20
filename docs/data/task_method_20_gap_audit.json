@@ -1,10 +1,10 @@
 {
-  "generated_at_utc": "2026-06-19T11:42:08+00:00",
+  "generated_at_utc": "2026-06-20T01:11:34+00:00",
   "immediate_actions": [
     {
       "artifact": "docs/data/task_method_20_gap_audit.json",
       "id": "gap_audit",
-      "purpose": "Keep the 24 scoreless cells visible and reproducible."
+      "purpose": "Keep the 22 scoreless cells visible and reproducible."
     },
     {
       "artifact": "scripts/omni/score_model_output_probes.py",
@@ -50,11 +50,11 @@
       "proxy_scored_task_count": 0,
       "result_record_count": 20,
       "scope": "128 selected episodes, JSONL metadata/text plus staged sensor-block targets where available",
-      "scored_task_count": 18,
-      "scoreless_task_count": 2,
+      "scored_task_count": 19,
+      "scoreless_task_count": 1,
       "status_counts": {
-        "not_supported_by_metadata_only_package": 2,
-        "scored": 18
+        "not_supported_by_metadata_only_package": 1,
+        "scored": 19
       }
     },
     "metadata128_simple": {
@@ -63,11 +63,11 @@
       "proxy_scored_task_count": 0,
       "result_record_count": 20,
       "scope": "128 selected episodes, JSONL metadata/text plus staged sensor-block targets where available",
-      "scored_task_count": 18,
-      "scoreless_task_count": 2,
+      "scored_task_count": 19,
+      "scoreless_task_count": 1,
       "status_counts": {
-        "scored": 18,
-        "unsupported_without_required_target": 2
+        "scored": 19,
+        "unsupported_without_required_target": 1
       }
     },
     "minimal": {
@@ -137,14 +137,14 @@
   "missing_by_method": {
     "cosmos3_nano_future_window": 9,
     "cosmos3_super_reasoner": 10,
-    "metadata128_neural_mlp": 2,
-    "metadata128_simple": 2,
+    "metadata128_neural_mlp": 1,
+    "metadata128_simple": 1,
     "qwen3_omni_v6_lora": 1
   },
   "missing_by_status": {
     "not_evaluated_in_verified_package": 20,
-    "not_supported_by_metadata_only_package": 2,
-    "unsupported_without_required_target": 2
+    "not_supported_by_metadata_only_package": 1,
+    "unsupported_without_required_target": 1
   },
   "missing_by_task": {
     "02 Procedure Step Recognition": [
@@ -180,8 +180,6 @@
     "15 Interaction Text Prediction": [
       "cosmos3_nano_future_window",
       "cosmos3_super_reasoner",
-      "metadata128_neural_mlp",
-      "metadata128_simple",
       "qwen3_omni_v6_lora"
     ],
     "17 Future Object-Set Forecasting": [
@@ -354,32 +352,6 @@
       "task_id": "next_subtask_forecast",
       "task_label": "Long-Horizon Next-Subtask Forecasting",
       "task_number": 14
-    },
-    {
-      "method": "128ep Aligned Simple",
-      "metric_key": "macro_f1",
-      "reason": "requires raw annotation.hdf5 caption interaction text; the public 128 JSONL keeps only structured labels and derived metadata",
-      "recommended_next_step": "Export the missing target field for this 128-episode method, then rerun the same train/validation/test split.",
-      "scope": "multi_episode_128_aligned_baseline",
-      "series_id": "metadata128_simple",
-      "status": "unsupported_without_required_target",
-      "status_label": "unsupported",
-      "task_id": "interaction_text_prediction",
-      "task_label": "Interaction Text Prediction",
-      "task_number": 15
-    },
-    {
-      "method": "128ep Aligned NN",
-      "metric_key": "macro_f1",
-      "reason": "the 128-episode aligned rerun did not produce this task target; raw interaction text, paired camera-view embeddings, or a task-specific target builder is required",
-      "recommended_next_step": "Run the task with raw sensor-feature blocks or add a task-specific metadata target builder before assigning a numeric score.",
-      "scope": "multi_episode_128_aligned_baseline",
-      "series_id": "metadata128_neural_mlp",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "task_id": "interaction_text_prediction",
-      "task_label": "Interaction Text Prediction",
-      "task_number": 15
     },
     {
       "method": "Qwen3-Omni v6 LoRA",
@@ -558,8 +530,8 @@
     "method_count": 9,
     "method_task_record_count": 180,
     "proxy_scored_method_task_count": 4,
-    "scored_method_task_count": 156,
-    "scoreless_method_task_count": 24,
+    "scored_method_task_count": 158,
+    "scoreless_method_task_count": 22,
     "task_count": 20
   },
   "source_matrix": "docs/data/task_method_20_result_matrix.json",

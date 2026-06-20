@@ -1,12 +1,12 @@
 {
   "title": "128-Episode 20-Task Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-19T11:30:03+00:00",
+  "generated_at_utc": "2026-06-20T01:11:21+00:00",
   "description": "Selected 128-episode metadata/raw baselines plus verified Qwen3/Cosmos branches. Every method has 20 records; numeric scores appear only where the public artifact produced that task target.",
   "task_count": 20,
   "method_count": 7,
   "method_task_record_count": 140,
-  "scored_method_task_count": 116,
+  "scored_method_task_count": 118,
   "normalization_policy": {
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
@@ -30,17 +30,17 @@
       "method_detail": "128-episode aligned simple baselines: JSONL metadata/text tasks plus staged sensor-block tasks where the processed target exists.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 18,
-      "covered_task_count": 18,
+      "scored_task_count": 19,
+      "covered_task_count": 19,
       "proxy_scored_task_count": 0,
-      "scoreless_task_count": 2,
-      "unsupported_task_count": 2,
+      "scoreless_task_count": 1,
+      "unsupported_task_count": 1,
       "not_evaluated_task_count": 0,
       "status_counts": {
-        "scored": 18,
-        "unsupported_without_required_target": 2
+        "scored": 19,
+        "unsupported_without_required_target": 1
       },
-      "coverage_fraction": 0.9,
+      "coverage_fraction": 0.95,
       "result_record_fraction": 1.0
     },
     {
@@ -54,17 +54,17 @@
       "method_detail": "128-episode aligned MLP baselines: JSONL metadata/text tasks plus staged sensor-block tasks where the processed target exists.",
       "plotted_as": "colored point overlay",
       "result_record_count": 20,
-      "scored_task_count": 18,
-      "covered_task_count": 18,
+      "scored_task_count": 19,
+      "covered_task_count": 19,
       "proxy_scored_task_count": 0,
-      "scoreless_task_count": 2,
-      "unsupported_task_count": 2,
+      "scoreless_task_count": 1,
+      "unsupported_task_count": 1,
       "not_evaluated_task_count": 0,
       "status_counts": {
-        "not_supported_by_metadata_only_package": 2,
-        "scored": 18
+        "not_supported_by_metadata_only_package": 1,
+        "scored": 19
       },
-      "coverage_fraction": 0.9,
+      "coverage_fraction": 0.95,
       "result_record_fraction": 1.0
     },
     {
@@ -1476,26 +1476,26 @@
       "raw128_proxy_axis": true,
       "values": {
         "metadata128_simple": {
-          "raw": null,
+          "raw": 0.0,
           "metric_key": "macro_f1",
           "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/interaction_text_prediction/metrics.json",
           "scope": "multi_episode_128_aligned_baseline",
-          "status": "unsupported_without_required_target",
-          "reason": "requires raw annotation.hdf5 caption interaction text; the public 128 JSONL keeps only structured labels and derived metadata",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "unsupported"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.0,
+          "raw_text": "0.0000",
+          "status_label": "scored"
         },
         "metadata128_neural_mlp": {
-          "raw": null,
+          "raw": 0.0,
           "metric_key": "macro_f1",
-          "source": null,
+          "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/interaction_text_prediction/metrics.json",
           "scope": "multi_episode_128_aligned_baseline",
-          "status": "not_supported_by_metadata_only_package",
-          "reason": "the 128-episode aligned rerun did not produce this task target; raw interaction text, paired camera-view embeddings, or a task-specific target builder is required",
-          "normalized_score": null,
-          "raw_text": "n/a",
-          "status_label": "not supported"
+          "status": "scored",
+          "reason": null,
+          "normalized_score": 0.0,
+          "raw_text": "0.0000",
+          "status_label": "scored"
         },
         "raw128_simple": {
           "raw": 0.012611998261547169,
@@ -3781,17 +3781,17 @@
       "task_label": "Interaction Text Prediction",
       "series_id": "metadata128_simple",
       "method": "128ep Aligned Simple",
-      "status": "unsupported_without_required_target",
-      "status_label": "unsupported",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 0.0,
+      "raw_text": "0.0000",
+      "normalized_score": 0.0,
       "metric_key": "macro_f1",
       "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/interaction_text_prediction/metrics.json",
       "scope": "multi_episode_128_aligned_baseline",
-      "reason": "requires raw annotation.hdf5 caption interaction text; the public 128 JSONL keeps only structured labels and derived metadata"
+      "reason": null
     },
     {
       "task_number": 15,
@@ -3799,17 +3799,17 @@
       "task_label": "Interaction Text Prediction",
       "series_id": "metadata128_neural_mlp",
       "method": "128ep Aligned NN",
-      "status": "not_supported_by_metadata_only_package",
-      "status_label": "not supported",
-      "scored": false,
+      "status": "scored",
+      "status_label": "scored",
+      "scored": true,
       "proxy_scored": false,
-      "raw": null,
-      "raw_text": "n/a",
-      "normalized_score": null,
+      "raw": 0.0,
+      "raw_text": "0.0000",
+      "normalized_score": 0.0,
       "metric_key": "macro_f1",
-      "source": null,
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/interaction_text_prediction/metrics.json",
       "scope": "multi_episode_128_aligned_baseline",
-      "reason": "the 128-episode aligned rerun did not produce this task target; raw interaction text, paired camera-view embeddings, or a task-specific target builder is required"
+      "reason": null
     },
     {
       "task_number": 15,
