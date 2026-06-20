@@ -1086,7 +1086,11 @@ def hash_group_record(group: dict) -> dict:
         failures.append({"surface": "local", "kind": "missing", "path": group["local_path"]})
     for surface, url in group["urls"].items():
         prefer_curl = True
-        timeout_seconds = LARGE_FILE_TIMEOUT_SECONDS if prefer_curl else TIMEOUT_SECONDS
+        timeout_seconds = (
+            LARGE_FILE_TIMEOUT_SECONDS
+            if prefer_curl and local["bytes"] >= LARGE_FILE_THRESHOLD_BYTES
+            else TIMEOUT_SECONDS
+        )
         result = fetch(url, timeout_seconds=timeout_seconds, prefer_curl=prefer_curl)
         record = {key: value for key, value in result.items() if key != "body"}
         record["url"] = url
