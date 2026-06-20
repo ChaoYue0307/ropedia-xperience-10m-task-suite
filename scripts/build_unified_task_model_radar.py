@@ -73,7 +73,7 @@ QWEN_SENSOR_TARGET_PROBE_DIR = (
 QWEN_INTERACTION_TEXT_PROBE_DIR = (
     ROOT
     / "results/omni_finetune"
-    / "xperience10m_qwen3_omni_v6_interaction_text_task15_a100_20260619T000000Z"
+    / "xperience10m_qwen3_omni_v6_interaction_text_task15_a100_20260620T010305Z"
 )
 COSMOS_SUPER_RETRIEVAL_TASK_PROBE_DIR = (
     ROOT

@@ -57,7 +57,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--dataset-jsonl", type=Path, default=DEFAULT_DATASET)
     parser.add_argument("--caption-jsonl", type=Path, default=DEFAULT_CAPTION_DIR / "caption_interactions.jsonl")
     parser.add_argument("--caption-manifest", type=Path, default=DEFAULT_CAPTION_DIR / "caption_interactions_manifest.json")
-    parser.add_argument("--run-id", default="xperience10m_qwen3_omni_v6_interaction_text_task15_a100_20260619T000000Z")
+    parser.add_argument("--run-id", default="xperience10m_qwen3_omni_v6_interaction_text_task15_a100_20260620T010305Z")
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--model-id", required=True)
     parser.add_argument("--adapter-dir", type=Path, required=True)
