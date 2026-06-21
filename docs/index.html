@@ -380,11 +380,61 @@
       border-color: var(--green);
       background: var(--green);
     }
+    .hero-paths {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+      max-width: 940px;
+    }
+    .hero-path {
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.08), rgba(7, 18, 7, 0.78)),
+        rgba(2, 5, 2, 0.52);
+      padding: 15px;
+      color: inherit;
+      text-decoration: none;
+      min-height: 136px;
+      display: grid;
+      align-content: start;
+      gap: 10px;
+      transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms cubic-bezier(0.16, 1, 0.3, 1), background 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hero-path:hover {
+      transform: translateY(-2px);
+      border-color: rgba(204, 255, 160, 0.58);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.13), rgba(7, 18, 7, 0.82)),
+        rgba(2, 5, 2, 0.56);
+    }
+    .hero-path small,
+    .reader-step small,
+    .resource-mode small {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 760;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .hero-path strong {
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 17px;
+      line-height: 1.08;
+    }
+    .hero-path span {
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.42;
+    }
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
-      margin-top: 42px;
+      margin-top: 28px;
       max-width: 760px;
     }
     .stat {
@@ -549,6 +599,37 @@
     .section-tab.active {
       border-color: rgba(204, 255, 160, 0.82);
       background: rgba(204, 255, 160, 0.14);
+      color: var(--green);
+    }
+    .section-orientation {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px;
+      padding: 12px 14px;
+      border: 1px solid rgba(204, 255, 160, 0.16);
+      border-radius: 14px;
+      background: rgba(7, 18, 7, 0.62);
+      color: #cbd8c5;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .section-orientation strong {
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 14px;
+    }
+    .section-orientation span {
+      color: var(--muted);
+    }
+    .section-orientation a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 760;
+    }
+    .section-orientation a:hover {
       color: var(--green);
     }
     .content-tabs {
@@ -1423,6 +1504,50 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
+    .reader-journey {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .reader-step {
+      display: grid;
+      gap: 11px;
+      align-content: start;
+      min-height: 184px;
+      border: 1px solid var(--soft-line);
+      border-radius: var(--radius);
+      padding: 18px;
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.08), rgba(2, 5, 2, 0.42)),
+        rgba(7, 18, 7, 0.58);
+    }
+    .reader-step strong,
+    .resource-mode strong {
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 19px;
+      line-height: 1.1;
+    }
+    .reader-step p,
+    .resource-mode p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.52;
+    }
+    .reader-step a,
+    .resource-mode a {
+      justify-self: start;
+      margin-top: auto;
+      color: var(--cyan);
+      font-weight: 760;
+      text-decoration: none;
+    }
+    .reader-step a:hover,
+    .resource-mode a:hover {
+      color: var(--green);
+    }
     .brief-card {
       border: 1px solid var(--soft-line);
       border-radius: var(--radius);
@@ -1805,6 +1930,24 @@
     .artifact-library {
       display: grid;
       gap: 24px;
+    }
+    .resource-mode-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .resource-mode {
+      display: grid;
+      gap: 10px;
+      min-height: 154px;
+      align-content: start;
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.08), rgba(2, 5, 2, 0.38)),
+        rgba(7, 18, 7, 0.56);
+      padding: 17px;
     }
     .artifact-group {
       border: 1px solid var(--soft-line);
@@ -2840,6 +2983,14 @@
         font-size: 12px;
         line-height: 1.40;
       }
+      .hero-paths {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 520px;
+      }
+      .hero-path {
+        min-height: 116px;
+        padding: 13px;
+      }
       .hero-radar-stats {
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
@@ -2951,6 +3102,11 @@
       .signal:nth-child(2n + 1) { border-right: 0; }
       .project-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .section-tabs { padding-top: 12px; }
+      .section-orientation {
+        align-items: start;
+        display: grid;
+        grid-template-columns: 1fr auto;
+      }
       .figure-brief,
       .split-radar-grid,
       .foundation-pipeline-card { display: block; }
@@ -2959,7 +3115,7 @@
         border-right: 0;
         border-bottom: 1px solid var(--line);
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .reader-journey, .resource-mode-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .brief-panel-head { grid-template-columns: 1fr; align-items: start; }
       .task-player { grid-template-columns: 1fr; }
       .task-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -3053,6 +3209,16 @@
         font-size: 12px;
         white-space: nowrap;
       }
+      .section-orientation {
+        grid-template-columns: 1fr;
+        gap: 7px;
+        margin-top: 8px;
+        padding: 10px;
+        font-size: 12px;
+      }
+      .section-orientation strong {
+        font-size: 12.5px;
+      }
       .content-tabs {
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -3064,13 +3230,28 @@
         min-height: 52px;
       }
       main > section { scroll-margin-top: 112px; }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows { grid-template-columns: 1fr; }
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+      .button {
+        width: 100%;
+        justify-content: center;
+      }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows, .hero-paths, .reader-journey, .resource-mode-grid { grid-template-columns: 1fr; }
       .hero::before {
         background:
           linear-gradient(180deg, rgba(2, 5, 2, 0.92) 0%, rgba(2, 5, 2, 0.76) 48%, rgba(2, 5, 2, 0.96) 100%),
           url("assets/task_suite_infographic.png?v=xperience10m-taskfirst-v13-modality-xl") center / cover no-repeat;
       }
       .hero-panel { grid-template-columns: 1fr; }
+      .hero-path {
+        min-height: 0;
+      }
+      .reader-step,
+      .resource-mode {
+        min-height: 0;
+      }
       .hero-radar-panel { padding: 12px; }
       .hero-radar-top { display: block; }
       .hero-radar-top span { display: block; margin-top: 5px; }
@@ -3182,11 +3363,32 @@
           artifacts keep the latest model evidence recoverable.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="research_roadmap.html">Open roadmap</a>
-          <a class="button" href="#reader-map">Choose entry point</a>
+          <a class="button primary" href="#reader-map">Start guided path</a>
+          <a class="button" href="#takeaways">See current results</a>
           <a class="button" href="#suite">Inspect 20 tasks</a>
           <a class="button" href="single_episode_explorer.html">Open explorer</a>
-          <a class="button" href="https://cy0307-ropedia-xperience-10m-task-suite.hf.space/">Open HF app</a>
+        </div>
+        <div class="hero-paths" aria-label="Choose a reader path">
+          <a class="hero-path" href="#overview">
+            <small>Understand</small>
+            <strong>Project in 5 minutes</strong>
+            <span>Brief, scope boundary, public sample, and what is complete today.</span>
+          </a>
+          <a class="hero-path" href="#suite">
+            <small>Inspect</small>
+            <strong>Tasks and results</strong>
+            <span>20 task contracts, radar views, method rows, and source audits.</span>
+          </a>
+          <a class="hero-path" href="#run">
+            <small>Reproduce</small>
+            <strong>Run the public pipeline</strong>
+            <span>Commands, validators, packaged mirrors, and release checks.</span>
+          </a>
+          <a class="hero-path" href="#directions">
+            <small>Extend</small>
+            <strong>Train next model branches</strong>
+            <span>Spatial intelligence, human-video world models, VLA, and scale-up plans.</span>
+          </a>
         </div>
         <div class="hero-stats">
           <div class="stat"><strong>5,821</strong><span>frames in sample episode</span></div>
@@ -3272,6 +3474,11 @@
         </button>
       </div>
       <div class="wrap section-tabs" id="sectionTabs" role="tablist" aria-label="Sections inside the selected project tab"></div>
+      <div class="wrap section-orientation" id="sectionOrientation" aria-live="polite">
+        <strong>You are in: Start / Project Overview</strong>
+        <span>Use the section pills to move within this layer, or jump to the full reader map.</span>
+        <a href="#reader-map">Reader map</a>
+      </div>
     </div>
 
     <section id="overview" data-project-tab="start" role="tabpanel" aria-labelledby="tab-start" tabindex="-1">
@@ -3279,6 +3486,32 @@
         <div class="section-head">
           <h2>Project overview and contributions.</h2>
           <p>The page is organized like a compact research project: motivation and scope, dataset sample, task suite, method, baselines, research directions, interactive walkthroughs, and resources for continuing the work. The public sample is used as a real but bounded research system, not as a final full-dataset benchmark.</p>
+        </div>
+        <div class="reader-journey" aria-label="Recommended reader journeys">
+          <article class="reader-step">
+            <small>01 understand</small>
+            <strong>Start with scope and status</strong>
+            <p>Use this route if you need the project story, what is public, and what claims are safe.</p>
+            <a href="#overview">Read overview</a>
+          </article>
+          <article class="reader-step">
+            <small>02 inspect</small>
+            <strong>Follow the task evidence</strong>
+            <p>Use the 20-task suite, radar, matrix, and source audit to compare methods without losing metric provenance.</p>
+            <a href="#suite">Open task suite</a>
+          </article>
+          <article class="reader-step">
+            <small>03 reproduce</small>
+            <strong>Run or verify the release</strong>
+            <p>Use scripts, validators, mirrors, and checks when you want to rerun or trust the public package.</p>
+            <a href="#run">Open reproduce path</a>
+          </article>
+          <article class="reader-step">
+            <small>04 extend</small>
+            <strong>Choose the next model branch</strong>
+            <p>Use directions and scale-up resources for spatial, world-model, VLA, Qwen3, and Cosmos follow-up work.</p>
+            <a href="#directions">Open directions</a>
+          </article>
         </div>
         <div class="brief-panel reader-map-panel" id="reader-map">
           <div class="brief-panel-head">
@@ -4536,6 +4769,32 @@
           <h2>Research artifacts for the next experiments.</h2>
           <p>Metrics, predictions, manifests, lightweight model weights, and derived window artifacts are organized so the project can be inspected, extended, and scaled before rerunning the full pipeline. Raw Xperience-10M data and Qwen weights are not redistributed.</p>
         </div>
+        <div class="resource-mode-grid" aria-label="Resource entry modes">
+          <article class="resource-mode">
+            <small>download</small>
+            <strong>Find the right public surface</strong>
+            <p>Open GitHub, HF Space, artifact dataset, baseline models, or consolidated weights/results without guessing.</p>
+            <a href="#artifact-panel-public-surfaces">Open public surfaces</a>
+          </article>
+          <article class="resource-mode">
+            <small>verify</small>
+            <strong>Check claims and parity</strong>
+            <p>Use validators, source alignment, mirror parity, and live URL/hash checks before trusting a number.</p>
+            <a href="#artifact-panel-checks">Open checks</a>
+          </article>
+          <article class="resource-mode">
+            <small>reproduce</small>
+            <strong>Run the task pipeline</strong>
+            <p>Start from scripts, windows, feature manifests, task contracts, and minimal/neural result outputs.</p>
+            <a href="#run">Open commands</a>
+          </article>
+          <article class="resource-mode">
+            <small>scale</small>
+            <strong>Continue model work</strong>
+            <p>Use Qwen3/Cosmos packages, 128-episode feature index, and foundation-model plans for the next runs.</p>
+            <a href="#omni-scale-up">Open scale-up</a>
+          </article>
+        </div>
         <div class="artifact-library">
           <div class="content-tabs" role="tablist" aria-label="Artifact categories">
             <button type="button" class="content-tab active" id="artifact-tab-task-heads" role="tab" data-panel-target="artifact-panel-task-heads" aria-selected="true" aria-pressed="true" aria-controls="artifact-panel-task-heads">
@@ -4936,6 +5195,7 @@ python scripts/validate_publication_package.py</code></pre>
     const tabSections = Array.from(document.querySelectorAll("[data-project-tab]"));
     const tabButtons = Array.from(document.querySelectorAll("[data-tab-key]"));
     const sectionTabs = document.getElementById("sectionTabs");
+    const sectionOrientation = document.getElementById("sectionOrientation");
     const sectionConfig = [
       { id: "overview", label: "Project Overview" },
       { id: "roadmap", label: "Roadmap" },
@@ -4961,7 +5221,34 @@ python scripts/validate_publication_package.py</code></pre>
       { id: "run", label: "Reproduce" }
     ];
     const sectionLabels = Object.fromEntries(sectionConfig.map((section) => [section.id, section.label]));
+    const sectionDescriptions = {
+      overview: "Best for first-time readers: scope, public boundaries, and recommended entry paths.",
+      roadmap: "Best for planning: what has shipped and what the next experiments should do.",
+      "reading-path": "Best for choosing an order through the repo, website, and HF surfaces.",
+      "dataset-card": "Best for source alignment and public-sample boundaries.",
+      "raw-sample": "Best for inspecting the sample files, media previews, and file relationships.",
+      suite: "Best for the unified 20-task contracts, radar, and score matrix.",
+      walkthroughs: "Best for case-study style task explanations.",
+      tasks: "Best for task-by-task input, output, and metric cards.",
+      pipeline: "Best for understanding how raw episode data becomes features and results.",
+      protocol: "Best for splits, leakage controls, metrics, and evaluation rules.",
+      architectures: "Best for how task heads and model branches are organized.",
+      features: "Best for modality and feature provenance.",
+      takeaways: "Best for the fastest read on what the current metrics mean.",
+      models: "Best for minimal baseline evidence.",
+      neural: "Best for neural MLP task-head comparisons.",
+      directions: "Best for mapping tasks to spatial, world-model, and VLA directions.",
+      extensions: "Best for tasks 13-20 and the extended task surface.",
+      diagnostics: "Best for charts and error-analysis evidence.",
+      artifacts: "Best for finding files, mirrors, weights, scripts, and checks.",
+      evidence: "Best for current experiment status and milestones.",
+      "omni-scale-up": "Best for Qwen3/Cosmos model-branch status.",
+      run: "Best for reproduction commands."
+    };
     const sectionTabMap = Object.fromEntries(tabSections.map((section) => [section.id, section.dataset.projectTab]));
+    const tabLabels = Object.fromEntries(
+      tabButtons.map((button) => [button.dataset.tabKey, button.querySelector("strong")?.textContent?.trim() || button.dataset.tabKey])
+    );
     const tabDefaultSections = Object.fromEntries(
       tabButtons.map((button) => [button.dataset.tabKey, button.dataset.defaultSection])
     );
@@ -4981,6 +5268,18 @@ python scripts/validate_publication_package.py</code></pre>
       return sectionLabels[section.id] ||
         section.querySelector("h2")?.textContent?.replace(/\.$/, "") ||
         section.id.replaceAll("-", " ");
+    }
+
+    function updateSectionOrientation(tabKey, sectionId) {
+      if (!sectionOrientation) return;
+      const tabLabel = tabLabels[tabKey] || tabKey;
+      const sectionLabel = sectionLabels[sectionId] || labelForSection(document.getElementById(sectionId));
+      const description = sectionDescriptions[sectionId] || "Use the section pills to move within this layer without losing the evidence trail.";
+      sectionOrientation.innerHTML = `
+        <strong>You are in: ${tabLabel} / ${sectionLabel}</strong>
+        <span>${description}</span>
+        <a href="#reader-map">Reader map</a>
+      `;
     }
 
     function renderSectionTabs(tabKey, activeSectionId) {
@@ -5050,6 +5349,7 @@ python scripts/validate_publication_package.py</code></pre>
         button.tabIndex = active ? 0 : -1;
       });
       renderSectionTabs(fallbackTab, targetId);
+      updateSectionOrientation(fallbackTab, targetId);
       if (options.pushHash) {
         history.pushState(null, "", `#${targetId}`);
       }
@@ -5106,6 +5406,7 @@ python scripts/validate_publication_package.py</code></pre>
     activateTabForHash({ scroll: Boolean(window.location.hash) });
 
     function initContentTabs() {
+      const panelActivators = new Map();
       document.querySelectorAll(".content-tabs").forEach((tablist) => {
         const buttons = Array.from(tablist.querySelectorAll("[data-panel-target]"));
         if (!buttons.length) return;
@@ -5121,9 +5422,19 @@ python scripts/validate_publication_package.py</code></pre>
             if (panel) panel.hidden = !active;
           });
           if (options.focus) activeButton.focus();
+          if (options.hash) history.pushState(null, "", `#${activeButton.dataset.panelTarget}`);
+          if (options.scroll) {
+            requestAnimationFrame(() => {
+              document.getElementById(activeButton.dataset.panelTarget)?.scrollIntoView({
+                behavior: options.smooth ? "smooth" : "auto",
+                block: "start"
+              });
+            });
+          }
         };
 
         buttons.forEach((button, index) => {
+          panelActivators.set(button.dataset.panelTarget, (options = {}) => activatePanel(button, options));
           button.addEventListener("click", () => activatePanel(button));
           button.addEventListener("keydown", (event) => {
             if (!["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp", "Home", "End"].includes(event.key)) return;
@@ -5139,6 +5450,29 @@ python scripts/validate_publication_package.py</code></pre>
         });
 
         activatePanel(buttons.find((button) => button.classList.contains("active")) || buttons[0]);
+      });
+
+      function activatePanelFromHash(hashId, options = {}) {
+        const activatePanel = panelActivators.get(hashId);
+        if (!activatePanel) return false;
+        setProjectTab("resources", { targetId: "artifacts", scroll: false });
+        activatePanel(options);
+        return true;
+      }
+
+      document.querySelectorAll('a[href^="#artifact-panel-"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const targetId = link.getAttribute("href").slice(1);
+          if (!activatePanelFromHash(targetId, { hash: true, scroll: true, smooth: true })) return;
+          event.preventDefault();
+        });
+      });
+
+      const initialHash = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+      if (initialHash) activatePanelFromHash(initialHash, { scroll: Boolean(window.location.hash) });
+      window.addEventListener("hashchange", () => {
+        const hashId = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+        if (hashId) activatePanelFromHash(hashId, { scroll: true });
       });
     }
     initContentTabs();
