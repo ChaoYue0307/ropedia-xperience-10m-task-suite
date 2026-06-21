@@ -1367,6 +1367,15 @@ so the public claims stay precise:
 | Human-video world models | Predict next action, next subtask, future object set, contact transition, and future state from observed interaction windows. | Partially evidenced by future-task probes and Cosmos-style artifacts; visual/latent future quality still needs stronger metrics. |
 | Vision-language-action models | Convert egocentric video, captions, hand/body motion, contacts, and objects into action chunks or policy-compatible targets. | Feasible, but gated by action-token conversion, normalization, retargeting evidence, and held-out policy metrics. |
 
+For the single public sample, each direction is now shown as an explicit
+training-pair recipe:
+
+| Direction | One-sample input | One-sample output target |
+| --- | --- | --- |
+| Spatial intelligence | 20-frame windows from `windows.csv` / `shared_windows.npz`, joined with six MP4 camera streams plus `annotation.hdf5` depth, pose, SLAM/calibration, object/contact cues, and optional language questions. | Camera-view match, object relevance, object-set memory, depth/pose reconstruction proxy, caption-grounded retrieval, and spatial QA targets. |
+| Human-video world model | Current observed window at time `t`: RGB/audio/sensor summaries, hand/body motion, camera pose, current object/contact state, and current action/subtask context only. | Shifted future targets: next action, next subtask, future object set, contact transition, time-to-transition, camera-motion delta, or latent/future feature. |
+| Vision-language-action | Egocentric/fisheye video, caption/object context, hand/body mocap, contact state, and current subtask text as observation-language input. | Action-token proxies: current/next action, object-conditioned action relation, contact state, interaction-text class, subtask transition, or hand-trajectory/action-chunk proxy. |
+
 High-resolution slide diagrams for the three tracks are published in
 [`docs/assets/foundation-pipelines`](docs/assets/foundation-pipelines). Spatial
 intelligence and human-video world modeling use the clean slide PNGs supplied

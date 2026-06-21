@@ -20,6 +20,14 @@ Markdown, JSON, and website labels.
 | Human-video world models | `human-video-world-model-pipeline.png` | `source-slides/human-video-world-model-slide.png` |
 | Vision-language-action models | `vision-language-action-pipeline.png` | `source-slides/vision-language-action-slide.png` |
 
+The website places each figure beside a one-sample training I/O recipe:
+
+| Track | One-sample training pair |
+| --- | --- |
+| Spatial intelligence models | Current 20-frame multiview/depth/pose/object window -> spatial relation, retrieval, reconstruction-proxy, or QA target. |
+| Human-video world models | Current observed 20-frame window at time `t` -> shifted future action, subtask, object-set, contact, transition-time, or future-feature target. |
+| Vision-language-action models | Egocentric video + caption/object/motion/contact context -> action-token, object-action, contact, interaction-text, subtask, or hand-trajectory proxy target. |
+
 The deterministic restoration script is
 `scripts/render_foundation_pipeline_diagrams.py`; restoration notes and source
 mapping are in `prompts.md`.

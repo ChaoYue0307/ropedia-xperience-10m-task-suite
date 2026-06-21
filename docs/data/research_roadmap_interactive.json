@@ -2862,7 +2862,7 @@
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-21T10:51:52+00:00",
+  "generated_at_utc": "2026-06-21T19:51:24+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -4269,6 +4269,26 @@
           "spatial QA prompts"
         ],
         "next_gate": "Raw depth and pose artifacts plus held-out multi-episode spatial metrics.",
+        "one_sample_training_io": {
+          "boundary": "This yields a one-episode spatial training-pair recipe and proxy tasks; full spatial-intelligence claims require held-out multi-episode depth/pose/scene-memory metrics.",
+          "existing_task_hooks": [
+            "object_relevance",
+            "modality_reconstruction",
+            "caption_grounding",
+            "object_set_forecast",
+            "camera_view_sync_retrieval"
+          ],
+          "input_builder": "Slice each 20-frame window, then join multiview RGB summaries with depth, camera pose, SLAM/calibration, object cues, contact cues, and optional language questions from the public annotation timeline.",
+          "sample_basis": "Single public sample episode: 5,821 frames, 1,161 overlapping 20-frame windows, 5-frame stride, about 20 FPS.",
+          "source_artifacts": [
+            "results/episode_task_suite/windows.csv",
+            "results/episode_task_suite/shared_windows.npz",
+            "results/episode_task_suite/feature_manifest.json",
+            "official sample annotation.hdf5",
+            "official sample six MP4 camera streams"
+          ],
+          "target_builder": "Create spatial targets such as camera-view match, object relevance, object-set memory, depth/pose reconstruction proxy, caption-grounded retrieval, and spatial QA answers."
+        },
         "outputs": [
           "object count",
           "object persistence",
@@ -4347,6 +4367,26 @@
           "temporal consistency metadata"
         ],
         "next_gate": "Stronger future-state metrics, qualitative future examples, and held-out episode breakdowns.",
+        "one_sample_training_io": {
+          "boundary": "Future labels and future windows must stay out of the input. Structured future probes are evidence for the pipeline, not a full visual world-model claim by themselves.",
+          "existing_task_hooks": [
+            "next_action",
+            "long_horizon_next_action",
+            "next_subtask_forecast",
+            "object_set_forecast",
+            "time_to_transition",
+            "ego_motion_forecast"
+          ],
+          "input_builder": "Use the current 20-frame observed window at time t: RGB/audio/sensor summaries, hand/body motion, camera pose, current object/contact state, and current action/subtask context only.",
+          "sample_basis": "Single public sample episode: current observed windows are paired with shifted future labels or future-window features from the same timeline.",
+          "source_artifacts": [
+            "results/episode_task_suite/windows.csv",
+            "results/episode_task_suite/shared_windows.npz",
+            "results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json",
+            "results/episode_task_suite/research_direction_extensions/research_direction_extension_results.json"
+          ],
+          "target_builder": "Shift the episode timeline forward to produce next-action, next-subtask, future object-set, contact-transition, time-to-transition, camera-motion delta, or latent/future-feature targets."
+        },
         "outputs": [
           "next action",
           "next subtask",
@@ -4425,6 +4465,26 @@
           "action-space model card"
         ],
         "next_gate": "Traceable action tokens, normalization, retargeting metadata, and held-out policy metrics.",
+        "one_sample_training_io": {
+          "boundary": "This is a VLA/policy data-conversion recipe for the one-sample suite. Robot policy claims require a later action-space converter, normalization, retargeting report, and held-out policy metrics.",
+          "existing_task_hooks": [
+            "timeline_action",
+            "next_action",
+            "hand_trajectory_forecast",
+            "contact_prediction",
+            "interaction_text_prediction",
+            "action_object_relation"
+          ],
+          "input_builder": "Use egocentric/fisheye video windows, caption and object context, hand/body mocap, contact state, and current subtask text as the observation-language side of each training pair.",
+          "sample_basis": "Single public sample episode: observation-language windows are paired with action-token proxies because robot retargeted action chunks are not part of the public sample yet.",
+          "source_artifacts": [
+            "results/episode_task_suite/windows.csv",
+            "results/episode_task_suite/shared_windows.npz",
+            "results/episode_task_suite/task_walkthroughs/task_walkthroughs.json",
+            "official sample annotation.hdf5"
+          ],
+          "target_builder": "Create action-token proxy targets: current or next action, object-conditioned action relation, contact state, interaction-text class, subtask transition, or hand-trajectory/action-chunk proxy."
+        },
         "outputs": [
           "next action",
           "action chunk",

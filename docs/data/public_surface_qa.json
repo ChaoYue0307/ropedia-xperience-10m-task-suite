@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Project Surface",
   "status": "pass",
-  "generated_at_utc": "2026-06-21T19:32:19+00:00",
+  "generated_at_utc": "2026-06-21T20:01:39+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -18,7 +18,7 @@
         "website_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T19:32:05+00:00"
+          "generated_at_utc": "2026-06-21T20:01:18+00:00"
         },
         "rendered_site_check": {
           "exists": true,
@@ -43,12 +43,12 @@
         "publication_package": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T19:27:12+00:00"
+          "generated_at_utc": "2026-06-21T19:57:53+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T19:29:46+00:00"
+          "generated_at_utc": "2026-06-21T20:00:18+00:00"
         }
       },
       "failures": {}
@@ -97,7 +97,7 @@
       "marker_counts": {
         "Ropedia Xperience-10M Task Suite": 22,
         "Xperience-10M": 173,
-        "20-task": 109,
+        "20-task": 110,
         "Qwen3-Omni": 246,
         "128-episode pilot": 1
       }
@@ -107,7 +107,7 @@
       "status": "pass",
       "reason": "Public cards should link the repo, Space, artifacts, model baselines, upstream dataset, and Ropedia dataset page.",
       "marker_counts": {
-        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 90,
+        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 92,
         "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite": 12,
         "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts": 14,
         "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines": 13,
@@ -131,10 +131,10 @@
         "data/public_surface_qa.json": 8,
         "data/research_roadmap.json": 15,
         "data/task_suite_enhancement_128.json": 22,
-        "data/task_suite_20.json": 36,
+        "data/task_suite_20.json": 37,
         "data/two_evidence_lines.json": 5,
         "data/two_evidence_line_result_summary.json": 10,
-        "data/unified_task_model_radar.json": 21,
+        "data/unified_task_model_radar.json": 22,
         "data/single_episode_task_model_radar.json": 17,
         "data/episode128_task_model_radar.json": 16,
         "data/task_method_20_result_matrix.json": 28,

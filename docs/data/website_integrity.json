@@ -1,12 +1,12 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-21T19:32:05+00:00",
+  "generated_at_utc": "2026-06-21T20:01:18+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 260,
-    "external_reference_count": 156,
+    "local_references": 267,
+    "external_reference_count": 158,
     "json_files": 55,
     "image_assets_referenced": 22,
     "failure_count": 0
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 135119,
-      "evidence_index": 182290
+      "overview_index": 136413,
+      "evidence_index": 187740
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 135119,
-      "protocol_index": 178478,
-      "evidence_index": 182290
+      "overview_index": 136413,
+      "protocol_index": 183928,
+      "evidence_index": 187740
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -174,6 +174,13 @@
       "status": "pass",
       "reason": "The website should expose the main task-suite figure.",
       "marker_count": 4
+    },
+    {
+      "name": "foundation_direction_cards_explain_one_sample_io",
+      "status": "pass",
+      "reason": "The three foundation direction cards should explain one-sample training inputs and outputs.",
+      "panel_count": 3,
+      "missing_terms": []
     },
     {
       "name": "suite_task_map_precedes_radar_surface",
@@ -265,7 +272,7 @@
       "name": "task_player_uses_walkthrough_json",
       "status": "pass",
       "reason": "The task player and task cards should read the generated walkthrough JSON.",
-      "marker_count": 2
+      "marker_count": 3
     },
     {
       "name": "task_cards_use_human_research_names",
@@ -284,7 +291,7 @@
     {
       "path": "index.html",
       "id_count": 99,
-      "reference_count": 232,
+      "reference_count": 239,
       "image_count": 28
     },
     {
@@ -363,7 +370,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 1420747,
+      "bytes": 1420751,
       "top_level_type": "dict"
     },
     {
@@ -468,7 +475,7 @@
     },
     {
       "path": "data/research_roadmap_interactive.json",
-      "bytes": 186755,
+      "bytes": 191028,
       "top_level_type": "dict"
     },
     {
@@ -538,7 +545,7 @@
     },
     {
       "path": "data/three_foundation_pipelines.json",
-      "bytes": 10312,
+      "bytes": 14465,
       "top_level_type": "dict"
     },
     {
@@ -563,7 +570,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 19914,
+      "bytes": 20178,
       "top_level_type": "dict"
     },
     {

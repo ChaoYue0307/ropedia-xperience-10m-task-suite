@@ -14,6 +14,23 @@ inertial signals, object/contact annotations, and language captions.
 | Human-video world models | Can the model predict what happens next? | Observed video/audio/sensor windows, hand/body motion, object/contact state, action/subtask labels, future windows. | Future-state and future-action probes over the existing split, then Cosmos-style or latent world-model training with separate dynamics metrics. | Partially evidenced through current future-task probes and Cosmos-style branch artifacts; still needs stronger visual/latent future metrics. |
 | Vision-language-action models | Can the model turn what it sees and reads into action? | Egocentric video, language captions, hand/body motion, contacts, objects, procedure/subtask labels. | Observation-language-to-action target conversion, action-chunk scoring, policy-token baselines, then VLA/policy model fine-tuning. | Feasible but gated by action-target conversion; do not claim policy quality until action tokens, normalization, and held-out policy metrics exist. |
 
+## One-Sample Training-Pair Recipes
+
+These recipes describe how to obtain input/output pairs from the **single public
+sample episode**. They are development contracts, not claims that the three full
+foundation models are already trained.
+
+| Track | Input from the one public sample | Output target from the same sample | Existing hooks |
+| --- | --- | --- | --- |
+| Spatial intelligence models | Slice `results/episode_task_suite/windows.csv` and `shared_windows.npz` into 20-frame windows, then join the six MP4 camera streams with `annotation.hdf5` depth, camera pose, SLAM/calibration, object cues, contacts, and optional language questions. | Camera-view match, object relevance, object-set memory, depth/pose reconstruction proxy, caption-grounded retrieval, and spatial QA answers derived from the annotation timeline. | `object_relevance`, `modality_reconstruction`, `caption_grounding`, `object_set_forecast`, `camera_view_sync_retrieval`. |
+| Human-video world models | Use the current observed 20-frame window at time `t`: RGB/audio/sensor summaries, hand/body motion, camera pose, current object/contact state, and current action/subtask context only. | Shift the same episode timeline forward to create next-action, next-subtask, future object-set, contact-transition, time-to-transition, camera-motion delta, or latent/future-feature targets. | `next_action`, `long_horizon_next_action`, `next_subtask_forecast`, `object_set_forecast`, `time_to_transition`, `ego_motion_forecast`. |
+| Vision-language-action models | Use egocentric/fisheye video windows, caption/object context, hand/body mocap, contact state, and current subtask text as the observation-language side. | Action-token proxies: current/next action, object-conditioned action relation, contact state, interaction-text class, subtask transition, or hand-trajectory/action-chunk proxy. | `timeline_action`, `next_action`, `hand_trajectory_forecast`, `contact_prediction`, `interaction_text_prediction`, `action_object_relation`. |
+
+The one-sample windowization is 5,821 frames, 1,161 overlapping 20-frame windows,
+5-frame stride, and about 20 FPS. Future labels or future windows must not leak
+into inputs for world-model targets. VLA/policy claims require a later action
+space converter, normalization, retargeting report, and held-out policy metrics.
+
 ## Published Direction Figures
 
 The repo and public mirrors include three high-resolution direction images from
@@ -46,12 +63,19 @@ Data contract:
 
 - Inputs: multiview RGB, egocentric RGB, depth, camera pose, calibration, object
   labels, contact labels, optional language queries.
+- One-sample input builder: slice 20-frame windows from `windows.csv` and
+  `shared_windows.npz`, then join the six MP4 camera streams with
+  `annotation.hdf5` depth, camera pose, SLAM/calibration, object cues, contacts,
+  and optional language questions.
 - Intermediate artifacts: synchronized camera window manifest, pose/depth
   availability report, scene/object memory records, object permanence targets,
   spatial relation targets, and spatial QA prompts.
 - Outputs: object count, object persistence, relative location, 3D geometry
   consistency, multiview retrieval, camera-motion-aware scene memory, and
   language answers grounded in the scene.
+- One-sample output builder: camera-view match, object relevance, object-set
+  memory, depth/pose reconstruction proxy, caption-grounded retrieval, and
+  spatial QA targets.
 
 First practical implementation:
 
@@ -75,11 +99,17 @@ Data contract:
 
 - Inputs: observed video/audio/sensor windows, hand/body motion, camera pose,
   object/contact state, action/subtask labels, and optional language context.
+- One-sample input builder: use only the current observed 20-frame window at
+  time `t`, including RGB/audio/sensor summaries, hand/body motion, camera pose,
+  current object/contact state, and current action/subtask context.
 - Intermediate artifacts: observed/future window pairs, future label targets,
   action-conditioned target records, visual or latent reconstruction targets,
   and temporal consistency metadata.
 - Outputs: next action, next subtask, future object set, future state embedding,
   camera-motion delta, contact transition, and future-window quality metrics.
+- One-sample output builder: shift the episode timeline forward for next-action,
+  next-subtask, future object-set, contact-transition, time-to-transition,
+  camera-motion delta, or latent/future-feature targets.
 
 First practical implementation:
 
@@ -104,11 +134,17 @@ Data contract:
 
 - Inputs: egocentric video, language captions, hand/body motion, object/contact
   state, action/subtask labels, and optional retargeting metadata.
+- One-sample input builder: use egocentric/fisheye video windows,
+  caption/object context, hand/body mocap, contact state, and current subtask
+  text as the observation-language side.
 - Intermediate artifacts: action-token vocabulary, action-chunk windows,
   normalization stats, retargeting report, leakage audit, and action-space
   model card.
 - Outputs: next action, action chunk, object-conditioned action, contact state,
   subtask transition, and policy/VLA held-out metrics.
+- One-sample output builder: action-token proxies such as current/next action,
+  object-conditioned action relation, contact state, interaction-text class,
+  subtask transition, or hand-trajectory/action-chunk proxy.
 
 First practical implementation:
 

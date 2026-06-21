@@ -989,6 +989,57 @@
       font-size: 13px;
       line-height: 1.55;
     }
+    .foundation-io-panel {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--soft-line);
+    }
+    .foundation-io-row {
+      border: 1px solid rgba(204, 255, 160, 0.13);
+      border-radius: 6px;
+      background: rgba(2, 5, 2, 0.34);
+      padding: 10px 11px;
+    }
+    .foundation-io-row strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1.2;
+    }
+    .foundation-io-row p {
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+    .foundation-io-row code {
+      color: var(--accent-2);
+      font-size: 0.95em;
+    }
+    .foundation-io-tasks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .foundation-io-tasks a {
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      color: var(--accent-2);
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1;
+      padding: 6px 7px;
+      text-decoration: none;
+      background: rgba(2, 5, 2, 0.52);
+    }
+    .foundation-io-tasks a:hover {
+      border-color: var(--green);
+      color: var(--ink);
+    }
     .foundation-pipeline-links {
       display: flex;
       flex-wrap: wrap;
@@ -4034,7 +4085,9 @@
       .split-radar-grid,
       .foundation-pipeline-card { display: block; }
       .foundation-pipeline-card img {
+        height: auto;
         min-height: 0;
+        aspect-ratio: auto;
         border-right: 0;
         border-bottom: 1px solid var(--line);
       }
@@ -5255,6 +5308,24 @@
               <span>High-resolution direction slide</span>
               <h3>Spatial intelligence models</h3>
               <p>Train spatial-memory models from multiview RGB, egocentric video, depth, pose, calibration, object/contact cues, and language prompts; evaluate spatial QA, object permanence, counting, retrieval, and pose-aware consistency.</p>
+              <div class="foundation-io-panel" aria-label="Spatial intelligence one-sample training input and output">
+                <div class="foundation-io-row">
+                  <strong>Sample input</strong>
+                  <p>Use <code>windows.csv</code> and <code>shared_windows.npz</code> to slice each 20-frame window, then join six MP4 RGB streams with <code>annotation.hdf5</code> depth, camera pose, SLAM/calibration, object cues, contacts, and optional language questions.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Training output</strong>
+                  <p>Build targets such as camera-view match, object relevance, object-set memory, depth/pose reconstruction proxy, caption-grounded retrieval, and spatial QA answers derived from the same public annotation timeline.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Existing hooks</strong>
+                  <div class="foundation-io-tasks">
+                    <a href="#suite">Tasks 8/10/12/14/16</a>
+                    <a href="data/task_suite_20.json">20-task JSON</a>
+                    <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">window manifest</a>
+                  </div>
+                </div>
+              </div>
               <div class="foundation-pipeline-links">
                 <a href="data/three_foundation_pipelines.json">Track JSON</a>
                 <a href="assets/foundation-pipelines/spatial-intelligence-pipeline.png">Open image</a>
@@ -5267,6 +5338,24 @@
               <span>High-resolution direction slide</span>
               <h3>Human-video world models</h3>
               <p>Train future-prediction models from observed interaction windows to score next action, next subtask, future object set, contact transition, camera-motion delta, and latent future state, with Qwen-style probes and Cosmos-style dynamics kept separate.</p>
+              <div class="foundation-io-panel" aria-label="Human-video world-model one-sample training input and output">
+                <div class="foundation-io-row">
+                  <strong>Sample input</strong>
+                  <p>Take the current 20-frame observed window at time <code>t</code> from <code>shared_windows.npz</code>: RGB/audio/sensor summaries, hand/body motion, camera pose, current object/contact state, and current action/subtask context only.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Training output</strong>
+                  <p>Shift the same episode timeline forward to produce next-action, next-subtask, future object-set, contact-transition, time-to-transition, camera-motion delta, or latent/future-feature targets. Future labels stay out of the input.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Existing hooks</strong>
+                  <div class="foundation-io-tasks">
+                    <a href="#suite">Tasks 4/13/14/17/20</a>
+                    <a href="data/unified_task_model_radar.json">model scores</a>
+                    <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json">future probes</a>
+                  </div>
+                </div>
+              </div>
               <div class="foundation-pipeline-links">
                 <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/THREE_FOUNDATION_PIPELINES.md">Track note</a>
                 <a href="assets/foundation-pipelines/human-video-world-model-pipeline.png">Open image</a>
@@ -5279,6 +5368,24 @@
               <span>High-resolution direction slide</span>
               <h3>Vision-language-action models</h3>
               <p>Train VLA or policy-compatible heads only after converting egocentric video, captions, hand/body motion, contacts, objects, and procedures into traceable action tokens, chunks, and object-conditioned action targets.</p>
+              <div class="foundation-io-panel" aria-label="Vision-language-action one-sample training input and output">
+                <div class="foundation-io-row">
+                  <strong>Sample input</strong>
+                  <p>Use egocentric/fisheye video windows, caption/object context from <code>annotation.hdf5</code>, hand/body mocap, contact state, and current subtask text as the observation-language side of each training pair.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Training output</strong>
+                  <p>For the one-sample suite, output action-token proxies: current/next action, object-conditioned action relation, contact state, interaction-text class, subtask transition, or hand-trajectory/action-chunk proxy. Robot action chunks need a later retargeting converter.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Existing hooks</strong>
+                  <div class="foundation-io-tasks">
+                    <a href="#suite">Tasks 1/4/5/6/15/18</a>
+                    <a href="data/task_walkthroughs.json">task walkthroughs</a>
+                    <a href="data/three_foundation_pipelines.json">track contract</a>
+                  </div>
+                </div>
+              </div>
               <div class="foundation-pipeline-links">
                 <a href="data/three_foundation_pipelines.json">Track contract</a>
                 <a href="assets/foundation-pipelines/vision-language-action-pipeline.png">Open image</a>

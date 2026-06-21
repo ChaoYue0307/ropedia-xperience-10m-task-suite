@@ -380,6 +380,12 @@ def validate(docs_root: Path, site_base: str) -> dict:
             "The website should expose the main task-suite figure.",
         ),
         (
+            "foundation_direction_cards_explain_one_sample_io",
+            'class="foundation-io-panel"',
+            None,
+            "The three foundation direction cards should explain one-sample training inputs and outputs.",
+        ),
+        (
             "suite_task_map_precedes_radar_surface",
             '<div class="figure-pan" id="task-suite-map">',
             'class="chart radar-chart unified-radar-chart"',
@@ -562,6 +568,19 @@ def validate(docs_root: Path, site_base: str) -> dict:
                 "modality_count": len(present_terms),
                 "missing_modalities": [term for term in modality_terms if term not in present_terms],
             }
+        elif name == "foundation_direction_cards_explain_one_sample_io":
+            panel_count = index_text.count(marker)
+            required_terms = [
+                "Sample input",
+                "Training output",
+                "Existing hooks",
+                "Spatial intelligence models",
+                "Human-video world models",
+                "Vision-language-action models",
+            ]
+            missing_terms = [term for term in required_terms if term not in index_text]
+            passed = panel_count == 3 and not missing_terms
+            detail = {"panel_count": panel_count, "missing_terms": missing_terms}
         elif name.startswith("dataset_card_section_"):
             marker_count = dataset_text.count(marker)
             passed = marker_count >= 1
