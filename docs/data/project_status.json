@@ -2,7 +2,7 @@
   "title": "Ropedia Xperience-10M Task Suite Project Status",
   "version": "2026-06-20",
   "decision": "public_sample_pipeline_verified_128_enhancement_qwen3_v6_cosmos_comparison",
-  "research_positioning": "A research-engineering study that makes one public Xperience-10M sample episode inspectable, defines embodied-AI tasks over synchronized modalities, records baseline behavior, aligns simple/NN baselines to the selected 128-episode split, compares verified Qwen3-Omni and Cosmos3 packages as early cross-episode diagnostics, and now records a no-new-episode enhancement pack for pushing the current 128-episode suite harder.",
+  "research_positioning": "A research-engineering study with two public evidence lines: Line 1 makes one public Xperience-10M sample episode inspectable and reproducible as a 20-task lab; Line 2 aligns selected 128-episode baselines with verified Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano diagnostics, then records a no-new-episode enhancement pack for pushing the 128-episode suite harder.",
   "scope_boundary": {
     "validated_episode_count": 1,
     "aligned_frames": 5821,
@@ -259,6 +259,8 @@
       "area": "Qwen3-Omni fine-tuning",
       "status": "final_verified_diagnostic_result_json_target_met",
       "evidence": [
+        "QWEN3_OMNI_RUN_LINEAGE.md",
+        "docs/data/qwen3_omni_run_lineage.json",
         "docs/data/omni_finetune_verified_result.json",
         "docs/data/qwen3_v5_v6_comparison.json",
         "results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md",
@@ -268,7 +270,7 @@
         "scripts/omni/audit_verified_omni_package.py",
         "scripts/omni/analyze_qwen3_omni_errors.py"
       ],
-      "readout": "The selected 96/16/16 episode split now has a current v6 rank64/lr5e-5 public-safe held-out package with 34,269 exported windows, 4,032 test predictions, validation/audit summaries, and a public LoRA adapter repo. JSON validity is 99.90%, meeting the 98% target; transition accuracy is 98.98%, contact accuracy is 81.77%, object micro-F1 is 30.65%, next-action accuracy is 4.31%, and action/subtask metrics remain weak. v6 improves action macro-F1 and contact accuracy versus v5, but v5 remains stronger on JSON validity, subtask, next-action, transition, and object metrics."
+      "readout": "Qwen3-Omni v1-v6 are one selected-128 run lineage, not six project evidence lines. v1-v4 harden the pipeline and record ablations, v5 is the pinned prior multiscale release, and v6 is the current public 20-task Qwen row. The v6 rank64/lr5e-5 public-safe held-out package has 34,269 exported windows, 4,032 test predictions, validation/audit summaries, and a public LoRA adapter repo. JSON validity is 99.90%, meeting the 98% target; transition accuracy is 98.98%, contact accuracy is 81.77%, object micro-F1 is 30.65%, next-action accuracy is 4.31%, and action/subtask metrics remain weak. v6 improves action macro-F1 and contact accuracy versus v5, but v5 remains stronger on JSON validity, subtask, next-action, transition, and object metrics."
     },
     {
       "area": "Cosmos3-Nano future-window package",

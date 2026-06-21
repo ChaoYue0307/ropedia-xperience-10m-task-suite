@@ -35,11 +35,11 @@
 </p>
 
 
-**Ropedia Xperience-10M Task Suite** is organized as two public result lines, not one blended benchmark. The 1-sample line is a fully inspectable task lab. The selected-128 line is the comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Every score points back to a source artifact and keeps direct-vs-proxy status visible.
+**Ropedia Xperience-10M Task Suite** has two public evidence lines. **Line 1** is the 1-sample task lab for raw-file inspection, task construction, and reproducibility. **Line 2** is the selected-128 comparison surface for aligned metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Every score points to a source artifact and keeps direct-vs-proxy status visible.
 
 **Updated:** 2026-06-21.
 
-**Scope:** one public sample episode for raw-file inspection and reproducible task construction; selected 128-episode public-safe artifacts for same-split metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Raw Xperience-10M MP4/HDF5/RRD files, Qwen3 base weights, Cosmos3 base weights, and gated data are not redistributed here.
+**Scope:** Line 1 uses one public sample episode. Line 2 uses selected 128-episode public-safe artifacts linked back to official gated episode paths. Raw Xperience-10M MP4/HDF5/RRD files, Qwen3 base weights, Cosmos3 base weights, and gated data are not redistributed here.
 
 ## Contents
 
@@ -59,6 +59,8 @@
 
 Use the two evidence lines first, then choose the artifact that answers your question. The dashboard is the best visual overview; the GitHub repo is the source of truth for scripts and generated JSON; Hugging Face mirrors contain public-safe cards, metrics, figures, and model artifacts.
 
+Quick rule: use **Line 1** for “can I inspect and reproduce the task?” Use **Line 2** for “how do aligned baselines and model diagnostics compare on the selected 128 episodes?”
+
 The multilingual README files are reader guides. The canonical technical evidence is still the committed task contracts, result matrices, validation JSON, and public-safe result packages.
 
 ## At A Glance
@@ -72,8 +74,8 @@ The multilingual README files are reader guides. The canonical technical evidenc
   </thead>
   <tbody>
     <tr>
-      <td><strong>Two result lines</strong></td>
-      <td><strong>1 sample episode</strong> for task construction and reproducibility. <strong>128 selected episodes</strong> for same-split metadata/raw baselines plus Qwen3-Omni v6 and Cosmos3 diagnostics.</td>
+      <td><strong>Two-line contract</strong></td>
+      <td><strong>Line 1: 1 sample episode</strong> for task construction and reproducibility. <strong>Line 2: 128 selected episodes</strong> for same-split metadata/raw baselines, Qwen3-Omni v6, and Cosmos3 diagnostics.</td>
     </tr>
     <tr>
       <td><strong>180 method-task records</strong></td>
@@ -104,7 +106,7 @@ The multilingual README files are reader guides. The canonical technical evidenc
 
 ## Two Evidence Lines
 
-The public suite is organized around two result lines. Keep them separate when reading metrics.
+The public suite is organized around two evidence lines. Keep them separate when reading metrics.
 
 <p align="center">
   <img src="docs/assets/charts/two_evidence_line_map.svg" alt="Two evidence-line map: 1 sample episode and 128 selected episodes combine into 180 scored method-task records" width="100%">
@@ -645,10 +647,12 @@ robotics, spatial intelligence, and world modeling. The public
 [`ropedia-ai/xperience-10m-sample`](https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample)
 repo provides the sample episode used for the implemented task suite here.
 
-This project keeps those layers separate: the public sample supports the
-current 20-task study, while the gated full dataset is used only for the
-selected multi-episode Qwen3-Omni pilot. Raw Xperience-10M MP4/HDF5/RRD files
-are not redistributed in this repo or in the Hugging Face mirrors.
+This project keeps two evidence lines separate. Line 1 uses the public sample
+for raw-file inspection, task construction, and local reproducibility. Line 2
+uses selected 128-episode public-safe artifacts for same-split method
+comparison, Qwen3-Omni v6 diagnostics, and Cosmos3 diagnostics. Raw
+Xperience-10M MP4/HDF5/RRD files are not redistributed in this repo or in the
+Hugging Face mirrors.
 
 The current verified public-sample subset is:
 
@@ -663,9 +667,9 @@ Detailed dataset notes are available in
 [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md)
 and [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json)
 for readers who need the full upstream-card and access-term context. The
-practical boundary is simple: current task-suite results come from the public
-sample, and the first multi-episode Qwen3-Omni diagnostic pilot is verified but
-not yet strong model quality.
+practical boundary is simple: task-lab claims come from Line 1, selected-128
+comparison claims come from Line 2, and compact-proxy cells stay explicitly
+marked where direct raw targets are missing.
 
 Start with the visual dashboard:
 
@@ -675,12 +679,12 @@ Hugging Face Space app:
 
 **[cy0307-ropedia-xperience-10m-task-suite.hf.space](https://cy0307-ropedia-xperience-10m-task-suite.hf.space/)**
 
-## Read This Project In Three Layers
+## Read This Project By Evidence View
 
 <table>
   <thead>
     <tr>
-      <th width="24%">Layer</th>
+      <th width="24%">View</th>
       <th width="34%">What to inspect</th>
       <th>Why it matters</th>
     </tr>
@@ -697,7 +701,7 @@ Hugging Face Space app:
     <tr><td><strong>Minimal heads</strong></td><td>softmax<br>ridge projection/regression<br>multi-label logistic heads</td><td>Keeps every input/output contract visible and inspectable.</td></tr>
     <tr><td><strong>Neural heads</strong></td><td>PyTorch MLP classifiers/regressors under <a href="results/episode_task_suite/neural_mlp/">neural_mlp/</a></td><td>Checks whether nonlinear heads improve each task without changing features.</td></tr>
     <tr><td><strong>Evidence</strong></td><td>metrics<br>predictions<br>confusion matrices<br>diagrams<br>dashboard</td><td>Makes the single-episode task development inspectable without rerunning first.</td></tr>
-    <tr><td><strong>Artifact guide</strong></td><td><a href="ARTIFACT_GUIDE.md">ARTIFACT_GUIDE.md</a></td><td>Groups the public evidence into research-project layers after the first-pass overview.</td></tr>
+    <tr><td><strong>Artifact guide</strong></td><td><a href="ARTIFACT_GUIDE.md">ARTIFACT_GUIDE.md</a></td><td>Groups the public evidence into reader-facing views after the first-pass overview.</td></tr>
     <tr><td><strong>Reproducibility contract</strong></td><td><a href="REPRODUCIBILITY.md">REPRODUCIBILITY.md</a><br><a href="docs/data/reproducibility_matrix.json">reproducibility_matrix.json</a></td><td>States public commands, expected outputs, exact-match reproduction evidence, and non-reproducible boundaries.</td></tr>
     <tr><td><strong>Citation metadata</strong></td><td><a href="CITATION.cff">CITATION.cff</a><br><a href="codemeta.json">codemeta.json</a><br><a href="LICENSE">LICENSE</a></td><td>Makes the repo easier to cite, index, and reuse without confusing code license and dataset terms.</td></tr>
   </tbody>
@@ -820,9 +824,10 @@ overlays exact labels, dimensions, and metrics from the committed result files.
 
 ## Scope
 
-This is a learning, inspection, and pipeline-validation repo built from one
-public sample episode. The next model-quality stage is to run the same suite
-over many episodes and split train/test by held-out episode.
+This is a learning, inspection, and pipeline-validation repo with two public
+evidence lines. Line 1 is built from one public sample episode. Line 2 uses a
+selected 96/16/16 split over 128 episode paths, public-safe processed features,
+and verified Qwen3-Omni/Cosmos3 diagnostic artifacts.
 
 ## What Is Inside
 
@@ -1068,14 +1073,17 @@ baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future W
 files also include `model_groups`: a model-first view that pairs 1-episode and
 128-episode entries for the same family. Use that section when comparing task
 heads against task heads, Qwen3-Omni smoke/LoRA against Qwen3-Omni LoRA, or
-Cosmos3-Nano compatibility against future Cosmos weight releases.
+Cosmos3-Nano compatibility against future Cosmos weight releases. For
+Qwen3-Omni specifically, read `QWEN3_OMNI_RUN_LINEAGE.md`: v1-v4 are
+pipeline-hardening and ablation evidence, v5 is the pinned prior multiscale
+release, and v6 is the current public 20-task Qwen row.
 
-The no-new-episode enhancement layer is recorded in
+The no-new-episode enhancement plan is recorded in
 [`docs/data/task_suite_enhancement_128.json`](docs/data/task_suite_enhancement_128.json)
 and [`TASK_SUITE_ENHANCEMENT_128.md`](TASK_SUITE_ENHANCEMENT_128.md). It keeps
 the current Qwen3-Omni v6 and Cosmos3 packages as baselines, then defines dense-window
 scenarios, hierarchical action/subtask targets, task bottlenecks, and experiment
-cards for a stronger 128-episode v5 run without overwriting earlier results.
+cards for stronger selected-128 runs without overwriting earlier results.
 
 ### Sample Count Decision
 

@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-21T10:47:04+00:00",
+  "generated_at_utc": "2026-06-21T11:49:06+00:00",
   "interpretation_rule": "Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for same-split metadata/raw baselines, Qwen3-Omni v6 LoRA diagnostics, and Cosmos3 diagnostics.",
   "lines": [
     {
@@ -337,7 +337,7 @@
     "selected_128_episode_surface": "Use for held-out comparison, metadata/raw-feature baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, Cosmos3-Nano Future Window, and scale-up decisions.",
     "single_public_sample_episode": "Use for task construction, raw-file inspection, local reproducibility, and controlled Minimal-vs-Neural baseline behavior."
   },
-  "reader_summary": "The suite has two public result lines. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Do not mix the two when reading scores.",
+  "reader_summary": "The suite has two public evidence lines. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Do not mix the two when reading scores.",
   "reading_order": [
     {
       "reason": "Line 1 answers task-lab and reproducibility questions; line 2 answers selected-128 comparison questions.",

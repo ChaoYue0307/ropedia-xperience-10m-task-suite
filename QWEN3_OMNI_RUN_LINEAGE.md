@@ -1,6 +1,6 @@
 # Qwen3-Omni v1-v6 Run Lineage
 
-Generated: `2026-06-21T10:54:46+00:00`.
+Generated: `2026-06-21T11:47:45+00:00`.
 
 Scope: Verified public-safe Qwen3-Omni LoRA/eval packages over the selected Xperience-10M 128-episode surface.
 

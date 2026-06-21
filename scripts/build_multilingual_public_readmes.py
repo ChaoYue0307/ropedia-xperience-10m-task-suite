@@ -67,11 +67,11 @@ ENGLISH_TOP = f"""{hero(
     "en",
 )}
 
-**Ropedia Xperience-10M Task Suite** is organized as two public result lines, not one blended benchmark. The 1-sample line is a fully inspectable task lab. The selected-128 line is the comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Every score points back to a source artifact and keeps direct-vs-proxy status visible.
+**Ropedia Xperience-10M Task Suite** has two public evidence lines. **Line 1** is the 1-sample task lab for raw-file inspection, task construction, and reproducibility. **Line 2** is the selected-128 comparison surface for aligned metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Every score points to a source artifact and keeps direct-vs-proxy status visible.
 
 **Updated:** {UPDATED}.
 
-**Scope:** one public sample episode for raw-file inspection and reproducible task construction; selected 128-episode public-safe artifacts for same-split metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Raw Xperience-10M MP4/HDF5/RRD files, Qwen3 base weights, Cosmos3 base weights, and gated data are not redistributed here.
+**Scope:** Line 1 uses one public sample episode. Line 2 uses selected 128-episode public-safe artifacts linked back to official gated episode paths. Raw Xperience-10M MP4/HDF5/RRD files, Qwen3 base weights, Cosmos3 base weights, and gated data are not redistributed here.
 
 ## Contents
 
@@ -91,6 +91,8 @@ ENGLISH_TOP = f"""{hero(
 
 Use the two evidence lines first, then choose the artifact that answers your question. The dashboard is the best visual overview; the GitHub repo is the source of truth for scripts and generated JSON; Hugging Face mirrors contain public-safe cards, metrics, figures, and model artifacts.
 
+Quick rule: use **Line 1** for “can I inspect and reproduce the task?” Use **Line 2** for “how do aligned baselines and model diagnostics compare on the selected 128 episodes?”
+
 The multilingual README files are reader guides. The canonical technical evidence is still the committed task contracts, result matrices, validation JSON, and public-safe result packages.
 
 ## At A Glance
@@ -104,8 +106,8 @@ The multilingual README files are reader guides. The canonical technical evidenc
   </thead>
   <tbody>
     <tr>
-      <td><strong>Two result lines</strong></td>
-      <td><strong>1 sample episode</strong> for task construction and reproducibility. <strong>128 selected episodes</strong> for same-split metadata/raw baselines plus Qwen3-Omni v6 and Cosmos3 diagnostics.</td>
+      <td><strong>Two-line contract</strong></td>
+      <td><strong>Line 1: 1 sample episode</strong> for task construction and reproducibility. <strong>Line 2: 128 selected episodes</strong> for same-split metadata/raw baselines, Qwen3-Omni v6, and Cosmos3 diagnostics.</td>
     </tr>
     <tr>
       <td><strong>180 method-task records</strong></td>
@@ -136,7 +138,7 @@ The multilingual README files are reader guides. The canonical technical evidenc
 
 ## Two Evidence Lines
 
-The public suite is organized around two result lines. Keep them separate when reading metrics.
+The public suite is organized around two evidence lines. Keep them separate when reading metrics.
 
 <p align="center">
   <img src="docs/assets/charts/two_evidence_line_map.svg" alt="Two evidence-line map: 1 sample episode and 128 selected episodes combine into 180 scored method-task records" width="100%">

@@ -1,6 +1,6 @@
 # Two Evidence-Line Result Summary
 
-Generated: `2026-06-21T10:47:04+00:00`.
+Generated: `2026-06-21T11:49:06+00:00`.
 
 Source matrix: [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)
 
@@ -8,7 +8,7 @@ Interpretation rule: Use the 1-episode line for task construction and reproducib
 
 ## Read This First
 
-The suite has two public result lines. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Do not mix the two when reading scores.
+The suite has two public evidence lines. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Do not mix the two when reading scores.
 
 Score formula: 2 single-episode methods x 20 tasks = 40 records; 7 selected-128 methods x 20 tasks = 140 records; total public matrix = 180/180 scored records.
 

@@ -1,6 +1,6 @@
 # Two Evidence Lines
 
-The public Xperience-10M suite has two result lines. Read them separately.
+The public Xperience-10M suite has two evidence lines. Read them separately.
 
 ![Two evidence-line map](docs/assets/charts/two_evidence_line_map.svg)
 
@@ -9,7 +9,7 @@ Score formula: 2 single-episode methods x 20 tasks = 40 records; 7 selected-128 
 | Line | Data unit | Score statement | Valid claim | Do not claim |
 | --- | --- | --- | --- | --- |
 | 1 sample episode | One public sample episode; 5,821 frames; 1,161 aligned 20-frame windows; 8,546 feature dimensions. | 40/40 direct scores from Minimal and Neural MLP heads. | Task construction, raw-file inspection, local reproducibility, and controlled single-episode baselines. | Multi-episode generalization. |
-| 128 selected episodes | Selected held-out 96/16/16 split; 34,269 exported windows; public-safe processed features linked to official gated episode paths. | 140/140 selected-128 scores: 134 direct + 6 compact-proxy. | Same-split baseline/model comparison, Qwen3-Omni v6 LoRA diagnostics, Cosmos3-Super/Cosmos3-Nano diagnostics, and scale-up planning. | Reading compact-proxy cells as direct raw-target measurements. |
+| 128 selected episodes | Selected held-out 96/16/16 split; 34,269 exported windows; public-safe processed features linked to official gated episode paths. | 140/140 selected-128 scores: 134 direct + 6 compact-proxy. | Same-split method comparison, Qwen3-Omni v6 LoRA diagnostics, Cosmos3-Super/Cosmos3-Nano diagnostics, and scale-up planning. | Reading compact-proxy cells as direct raw-target measurements. |
 
 ## Result Ledger
 
@@ -28,7 +28,7 @@ Score formula: 2 single-episode methods x 20 tasks = 40 records; 7 selected-128 
 | 128 selected episodes | Qwen3-Omni series | Qwen3-Omni v6 LoRA | 20/20 direct scores from verified selected-128 LoRA and task-specific probes. | Current trainable Qwen3-Omni diagnostic baseline on the selected-128 surface. |
 | 128 selected episodes | Cosmos3 series | Cosmos3-Super Reasoner; Cosmos3-Nano Future Window | 40/40 direct scores from verified public-safe reasoner and future-window artifacts. | Cosmos3 reasoner and future-window diagnostics on the selected-128 surface. |
 
-Qwen3 run v1-v6 is a LoRA/evaluation lineage, not the project-level result layer numbering. The 20-task matrix uses Qwen3-Omni v6 LoRA; v5 remains the pinned prior release. Cosmos3-Super Forward-Dynamics LoRA is a separate adapter artifact and is not counted as a 20-task matrix method row.
+Qwen3 run v1-v6 is a LoRA/evaluation lineage inside the 128-episode line, not the project evidence-line numbering. The 20-task matrix uses Qwen3-Omni v6 LoRA; v5 remains the pinned prior release. Cosmos3-Super Forward-Dynamics LoRA is a separate adapter artifact and is not counted as a 20-task matrix method row.
 
 ## Result Files
 
@@ -46,7 +46,7 @@ Qwen3 run v1-v6 is a LoRA/evaluation lineage, not the project-level result layer
 ## Interpretation Rule
 
 Use the 1-episode line for task construction and reproducibility claims.
-Use the 128-episode line for held-out comparison and model-branch claims.
+Use the 128-episode line for held-out same-split comparison and model-diagnostic claims.
 Do not mix those claims without naming the evidence line.
 
 ## Reading Order
