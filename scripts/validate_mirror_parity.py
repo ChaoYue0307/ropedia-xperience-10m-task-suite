@@ -97,6 +97,7 @@ DATA_FILES = [
 
 ASSET_FILES = [
     "charts/audio_ablation_delta.svg",
+    "charts/two_evidence_line_map.svg",
     "charts/single_episode_task_model_radar.svg",
     "charts/episode128_task_model_radar.svg",
     "charts/tier2_task_suite.svg",

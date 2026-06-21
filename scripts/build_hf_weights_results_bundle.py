@@ -66,6 +66,7 @@ ANALYSIS_FILES = [
     "docs/data/two_evidence_line_result_summary.json",
     "docs/data/website_integrity.json",
     "docs/data/xperience10m_128_episode_feature_index.json",
+    "docs/assets/charts/two_evidence_line_map.svg",
 ]
 
 VERIFIED_RESULT_GLOBS = [
