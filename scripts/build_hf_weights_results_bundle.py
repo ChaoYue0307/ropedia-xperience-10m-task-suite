@@ -41,6 +41,7 @@ ANALYSIS_FILES = [
     "SOURCE_ALIGNMENT_AUDIT.md",
     "TWO_EVIDENCE_LINES.md",
     "TWO_EVIDENCE_LINE_RESULT_SUMMARY.md",
+    "QWEN3_OMNI_RUN_LINEAGE.md",
     "TASK_METHOD_20_RESULT_MATRIX.md",
     "TASK_METHOD_20_GAP_AUDIT.md",
     "TASK_METHOD_20_SOURCE_AUDIT.md",
@@ -64,6 +65,7 @@ ANALYSIS_FILES = [
     "docs/data/task_surface_integrity.json",
     "docs/data/two_evidence_lines.json",
     "docs/data/two_evidence_line_result_summary.json",
+    "docs/data/qwen3_omni_run_lineage.json",
     "docs/data/website_integrity.json",
     "docs/data/xperience10m_128_episode_feature_index.json",
     "docs/assets/charts/two_evidence_line_map.svg",
@@ -196,6 +198,10 @@ canonical per-adapter repositories.
 - `weights/cosmos3_super_forward_dynamics_lora/`: the Cosmos3-Super
   forward-dynamics LoRA adapter over camera-pose proxy targets.
 - `analysis/`: compact analysis files and the 20-task result matrix.
+- `analysis/QWEN3_OMNI_RUN_LINEAGE.md` and
+  `analysis/docs/data/qwen3_omni_run_lineage.json`: the Qwen3-Omni v1-v6
+  run lineage, where v6 is the current 20-task matrix row and v5 is the
+  pinned prior release.
 - `results/`: verified public result summaries, package audits, metrics, and
   run reports that correspond to the included model branches.
 - `manifest.json`: file-level size and SHA-256 manifest for this staged bundle.
@@ -207,7 +213,7 @@ canonical per-adapter repositories.
 - Evidence line 2: 128 selected episodes, 7 methods x 20 tasks = 140/140 scores; 134 direct + 6 compact-proxy.
 - Task surface: 20 tasks x 9 method families = 180/180 public records.
 - Scope boundary: public sample for reproducible task construction; selected public-safe 128-episode artifacts for same-split comparison and model diagnostics.
-- Excluded: raw Xperience-10M MP4/HDF5/RRD files, Qwen/Cosmos base weights,
+- Excluded: raw Xperience-10M MP4/HDF5/RRD files, Qwen3/Cosmos3 base weights,
   full fine-tune checkpoints, private data, logs with machine-local state, and
   generated Hugging Face cache files.
 
@@ -311,7 +317,7 @@ def main() -> int:
         ],
         "exclusions": [
             "raw Xperience-10M MP4/HDF5/RRD files",
-            "Qwen/Cosmos base model weights",
+            "Qwen3/Cosmos3 base model weights",
             "full fine-tune checkpoints",
             "machine-local logs and PID files",
             "Hugging Face cache state",
