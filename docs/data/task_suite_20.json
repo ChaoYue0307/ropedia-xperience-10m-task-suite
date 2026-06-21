@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Unified 20-Task Suite",
   "status": "pass",
-  "generated_at_utc": "2026-06-16T06:26:17+00:00",
+  "generated_at_utc": "2026-06-21T14:40:33+00:00",
   "task_count": 20,
   "task_count_breakdown": {
     "original_public_sample_tasks": 12,
@@ -9,7 +9,7 @@
     "total_unified_tasks": 20
   },
   "unification_policy": {
-    "public_framing": "The suite is presented as one 20-task benchmark surface. Tasks 1-12 are the original public-sample tasks; tasks 13-20 are additional sample-supported tasks that use the same window/split/baseline contract.",
+    "public_framing": "The suite is presented as one 20-task benchmark surface. All task contracts share the same window, split, feature, baseline, and leakage-control language.",
     "legacy_path_note": "The directory and file name tier2_task_suite are retained only for backward-compatible artifact links; they are not a separate public benchmark tier."
   },
   "dataset_scope": {

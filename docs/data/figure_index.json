@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Figure Index",
   "status": "pass",
-  "generated_at_utc": "2026-06-21T10:52:12+00:00",
+  "generated_at_utc": "2026-06-21T14:40:33+00:00",
   "scope": "Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience-10M videos, annotations, RRD files, and Qwen weights are excluded.",
   "figure_count": 29,
   "figures": [
@@ -386,9 +386,9 @@
     },
     {
       "id": "tier2_task_suite_chart",
-      "title": "Tasks 13-20 baseline chart",
+      "title": "Unified 20-task provenance chart",
       "path": "docs/assets/charts/tier2_task_suite.svg",
-      "role": "Eight additional sample-supported tasks in the unified 20-task suite with aligned minimal and neural baseline metrics.",
+      "role": "Historical provenance rows inside the unified 20-task suite with aligned minimal and neural baseline metrics.",
       "source_script": "scripts/tier2_task_suite.py",
       "surface": "website unified task section, README, HF mirrors",
       "exists": true,

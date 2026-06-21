@@ -30,7 +30,7 @@ prior multiscale release, and v6 is the current public 20-task Qwen3-Omni row.
 | Area | Current state | Evidence | Research readout |
 | --- | --- | --- | --- |
 | Public-sample pipeline | Verified | `results/episode_task_suite/summary_report.json`, `results/episode_task_suite/windows.csv`, `results/episode_task_suite/feature_manifest.json` | One public Xperience-10M sample episode is converted into 5,821 frames, 1,161 aligned 20-frame windows, and an 8,546-dimensional current feature contract. |
-| Unified 20-task suite | Verified | `TASK_SUITE_20.md`, `docs/data/task_suite_20.json`, `results/episode_task_suite/`, `results/episode_task_suite/tier2_task_suite/` | All 20 task contracts have committed minimal metrics; tasks 13-20 reuse the same 20-frame windows, 5-frame stride, chronological split, and minimal/neural head pattern. The `tier2_task_suite` path is historical and now stores tasks 13-20, not a separate public tier. |
+| Unified 20-task suite | Verified | `TASK_SUITE_20.md`, `docs/data/task_suite_20.json`, `results/episode_task_suite/`, `results/episode_task_suite/tier2_task_suite/` | All 20 task contracts have committed minimal metrics and share the same 20-frame windows, 5-frame stride, chronological split, and minimal/neural head pattern. The `tier2_task_suite` path is historical provenance inside the unified suite, not a separate public tier. |
 | 180-result method matrix | Verified complete | `docs/data/task_method_20_result_matrix.json`, `TASK_METHOD_20_RESULT_MATRIX.md`, `docs/data/task_method_20_gap_audit.json`, `docs/assets/charts/unified_task_model_radar.svg` | The public comparison matrix now has 9 methods x 20 tasks = 180/180 scored method-task records. Six rows are explicitly marked as compact-proxy scores where the public 128-episode export lacks the direct raw target. |
 | Neural heads | Verified | `scripts/neural_task_models.py`, `results/episode_task_suite/neural_mlp/` | Each task also has a compact PyTorch MLP run over the same feature tensor and chronological split. |
 | Audio contribution study | Verified | `scripts/audio_ablation_and_raw_upgrade.py`, `results/audio_ablation/`, `docs/data/audio_ablation_summary.json` | Audio variants are compared across the original task contracts; audio improves the primary metric on 6 of those contracts, and a 588-d audio-window representation improves over the baseline audio variant on 6 of those contracts. |
@@ -73,7 +73,7 @@ prior multiscale release, and v6 is the current public 20-task Qwen3-Omni row.
    `docs/data/summary_metrics.json`, and
    `results/episode_task_suite/neural_mlp/` to check the unified 20-task outputs.
 10. Inspect `docs/data/tier2_task_suite.json` and
-   `results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md` only as the historical artifact path for tasks 13-20.
+   `results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md` only as historical provenance paths inside the unified 20-task suite.
 11. Inspect `results/audio_ablation/AUDIO_ABLATION_SUMMARY.md` before judging
    whether audio helps the current task suite.
 12. Inspect `EVALUATION_PROTOCOL.md` before judging task metrics or leakage

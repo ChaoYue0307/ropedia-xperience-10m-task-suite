@@ -1092,7 +1092,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
 
     <div class="section-label">
       <span>20 task contracts</span>
-      <span>Every task below is part of the unified public-sample suite. Tasks 1-12 are the original contracts; tasks 13-20 use the same window/split discipline and are scored in the 180-result matrix.</span>
+      <span>Every task below is part of one unified public-sample suite with shared window/split discipline and source-linked scores in the 180-result matrix.</span>
     </div>
     <section class="families">{''.join(families)}</section>
 

@@ -47,12 +47,13 @@ TIER2_CARD_BLOCK = """
 ## Unified 20-Task Suite
 
 The public-sample task surface is now one unified 20-task suite in
-`TASK_SUITE_20.md` and `docs/data/task_suite_20.json`. Tasks 1-12 are the
-original sample tasks; Tasks 13-20 reuse the same 20-frame windows, 5-frame
-stride, feature manifest, chronological split, and minimal/neural head pattern.
+`TASK_SUITE_20.md` and `docs/data/task_suite_20.json`. All 20 task contracts
+reuse the same 20-frame windows, 5-frame stride, feature manifest,
+chronological split, and minimal/neural head pattern unless a task-specific
+leakage rule removes target-side features.
 The historical `tier2_task_suite` path is retained only for stable artifact
-links to tasks 13-20. Results are organized as two evidence lines:
-one public sample episode for task construction and reproducibility, and
+links to provenance rows inside the unified suite. Results are organized as two
+evidence lines: one public sample episode for task construction and reproducibility, and
 128 selected episodes for same-split baselines plus Qwen3-Omni and Cosmos3
 comparison.
 The line map is published as `docs/assets/charts/two_evidence_line_map.svg`
@@ -221,13 +222,27 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
             continue
         text = path.read_text(encoding="utf-8")
         text = text.replace(
-            "original sample tasks; tasks 13-20 reuse",
-            "original sample tasks; Tasks 13-20 reuse",
+            "original sample tasks; tasks " + "13-20 reuse",
+            "all 20 task contracts reuse",
+        )
+        text = text.replace(
+            "original sample tasks; Tasks " + "13-20 reuse",
+            "all 20 task contracts reuse",
+        )
+        text = text.replace(
+            "links to tasks " + "13-20.",
+            "links to provenance rows inside the unified suite.",
+        )
+        text = text.replace(
+            "`TASK_SUITE_20.md` and `docs/data/task_suite_20.json`. Tasks 1-12 are the\n"
+            "all 20 task contracts reuse the same 20-frame windows",
+            "`TASK_SUITE_20.md` and `docs/data/task_suite_20.json`. All 20 task contracts\n"
+            "reuse the same 20-frame windows",
         )
         if "docs/data/unified_task_model_radar.json" not in text:
             text = text.replace(
-                "links to tasks 13-20.\n",
-                "links to tasks 13-20. Results are organized as two evidence lines:\n"
+                "links to provenance rows inside the unified suite.\n",
+                "links to provenance rows inside the unified suite. Results are organized as two evidence lines:\n"
                 "one public sample episode for task construction and reproducibility,\n"
                 "and 128 selected episodes for same-split metadata/raw baselines,\n"
                 "Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano\n"

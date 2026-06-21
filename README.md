@@ -428,7 +428,7 @@ Public release checks are exposed as JSON for mirrors and dashboards:
   <tbody>
     <tr><td><strong>Dataset slice</strong></td><td>One public Xperience-10M sample episode, 5,821 frames, 1,161 windows, and an 8,546-dimensional representation.</td></tr>
     <tr><td><strong>Modalities</strong></td><td>Video, audio, depth, camera pose/SLAM, hand/body mocap, IMU, calibration, and language annotations.</td></tr>
-    <tr><td><strong>Task suite</strong></td><td>20 human-readable tasks form one embodied-AI public-sample suite; tasks 1-12 are the original contracts and tasks 13-20 reuse the same windows, split discipline, and minimal/neural head pattern.</td></tr>
+    <tr><td><strong>Task suite</strong></td><td>20 human-readable tasks form one embodied-AI public-sample suite with shared windowing, split discipline, leakage controls, and minimal/neural head pattern.</td></tr>
     <tr><td><strong>Baselines</strong></td><td>Minimal linear/ridge/logistic heads plus compact PyTorch MLP task heads over the same chronological split; companion simple/NN metadata baselines are also aligned to the selected 128-episode 96/16/16 split.</td></tr>
     <tr><td><strong>Research directions</strong></td><td>Task mapping and extension probes for human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling.</td></tr>
     <tr>
@@ -460,7 +460,7 @@ Current contributions:
 - manifested sliding-window features over the currently extracted modalities,
 - motion-only and current all-feature baseline models,
 - 20 end-to-end episode-level task contracts,
-- tasks 13-20 aligned to the same 20-frame windows and chronological split as tasks 1-12,
+- one shared 20-frame window and chronological split contract across the public-sample task suite,
 - lightweight neural MLP heads for the same task contracts,
 - a generated four-direction research taxonomy matching the Ropedia job tracks,
 - four additional direction-extension probes with minimal and neural baselines,
@@ -494,7 +494,7 @@ This project is best read as a staged embodied-AI research study:
       <td><strong>Task suite</strong></td>
       <td>
         Twenty human-readable tasks cover recognition, prediction, retrieval, reconstruction, synchronization, long-horizon forecasting, interaction text, action-object binding, sensor bridging, camera sync, and transition timing.
-        Tasks 13-20 keep the historical <code>tier2_task_suite</code> artifact path for link stability, but they are part of the same suite.
+        Historical <code>tier2_task_suite</code> artifact paths are kept for link stability, but they are provenance paths inside the same suite.
       </td>
       <td>
         <a href="TASK_SUITE_20.md">TASK_SUITE_20.md</a><br>
@@ -775,10 +775,10 @@ with [`scripts/render_task_suite_infographic.py`](scripts/render_task_suite_info
 so the published PNG is a presentation graphic with verified labels and metrics,
 not a hallucinated metric sheet.
 
-The complete unified task list is now documented in [`TASK_SUITE_20.md`](TASK_SUITE_20.md)
-and [`docs/data/task_suite_20.json`](docs/data/task_suite_20.json). Tasks 13-20
-also have a compact chart and result bundle under the historical
-`tier2_task_suite` path for stable public links.
+The complete unified task list is documented in [`TASK_SUITE_20.md`](TASK_SUITE_20.md)
+and [`docs/data/task_suite_20.json`](docs/data/task_suite_20.json). Historical
+`tier2_task_suite` paths remain only as stable provenance links inside the same
+suite.
 
 ![Unified 20-task model radar](docs/assets/charts/unified_task_model_radar.svg)
 
@@ -854,7 +854,7 @@ scripts/
   neural_task_models.py             # optional PyTorch MLP heads for task contracts
   research_direction_taxonomy.py    # maps original tasks to the four research tracks
   research_direction_extension_tasks.py # one extra data-backed probe per track
-  tier2_task_suite.py              # historical-name builder for tasks 13-20
+  tier2_task_suite.py              # historical-name provenance builder for unified task rows
   build_unified_task_suite.py       # builds TASK_SUITE_20.md and task_suite_20.json
   build_unified_task_model_radar.py # builds the unified 20-axis model comparison chart
   build_task_method_20_gap_audit.py # builds the explicit 180/180 scored-cell ledger
@@ -889,7 +889,7 @@ results/
     neural_mlp/                     # optional neural baseline artifacts per task
     research_directions/            # four-track taxonomy, CSV, and summary
     research_direction_extensions/  # four extra direction probes + predictions
-    tier2_task_suite/               # tasks 13-20 baseline tasks + predictions; historical path
+    tier2_task_suite/               # provenance baseline tasks + predictions; historical path
     task_walkthroughs/              # case-study walkthroughs for original tasks
   omni_exploration/                 # ModelScope readiness-check artifacts
   omni_finetune/model_output_task_probes_20260616/ # task-13/task-16 probes derived from verified model JSON
@@ -915,7 +915,7 @@ docs/
   data/research_roadmap.json        # multi-episode and omni-model roadmap
   data/research_directions.json     # four-track website data bundle
   data/research_direction_extensions.json # four extra probe data bundle
-  data/tier2_task_suite.json       # tasks 13-20 baseline bundle; historical path
+  data/tier2_task_suite.json       # provenance baseline bundle; historical path
   data/task_walkthroughs.json       # human-readable task-card and walkthrough-storyboard data
   data/modality_atlas.json          # responsive modality-card data
   assets/brand/*.png                # project logo, favicon, social card
@@ -1037,7 +1037,7 @@ python scripts/episode_task_suite.py \
   --include-neural
 ```
 
-Then rebuild the unified 20-task index after tasks 13-20 are generated:
+Then rebuild the unified 20-task index after the historical provenance bundle is regenerated:
 
 ```bash
 python scripts/tier2_task_suite.py --workspace /path/to/workspace
@@ -1512,16 +1512,14 @@ models.
 
 ## Unified 20-Task Suite
 
-The sample task surface is now presented as 20 tasks in one suite. Tasks 1-12
-are the original public-sample contracts; tasks 13-20 add long-horizon
-forecasting, interaction text, action-object binding, object-set forecasting,
-IMU-to-hand reconstruction, camera synchronization, and transition timing while
-keeping the same 20-frame window unit, 5-frame stride, chronological split, and
-minimal/neural comparison style.
+The sample task surface is presented as 20 tasks in one suite. All task rows
+share the same 20-frame window unit, 5-frame stride, chronological split, and
+minimal/neural comparison style, with task-specific leakage rules when a target
+would otherwise leak through caption, object, contact, or future features.
 
 The historical `tier2_task_suite` file and directory names remain only for
-stable artifact links. They should be read as the result bundle for tasks
-13-20, not as a separate benchmark tier.
+stable artifact links. They should be read as provenance bundles inside the
+unified 20-task suite, not as a separate benchmark tier.
 
 - [`TASK_SUITE_20.md`](TASK_SUITE_20.md)
 - [`docs/data/task_suite_20.json`](docs/data/task_suite_20.json)
@@ -1545,7 +1543,7 @@ stable artifact links. They should be read as the result bundle for tasks
 
 ![128-episode 20-task model radar](docs/assets/charts/episode128_task_model_radar.svg)
 
-![Tasks 13-20 baseline chart](docs/assets/charts/tier2_task_suite.svg)
+![Unified 20-task provenance chart](docs/assets/charts/tier2_task_suite.svg)
 
 | # | Task | Input | Output | Minimal | Neural MLP | Meaning |
 | ---: | --- | --- | --- | ---: | ---: | --- |

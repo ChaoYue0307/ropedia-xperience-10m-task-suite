@@ -196,9 +196,9 @@ FIGURES = [
     },
     {
         "id": "tier2_task_suite_chart",
-        "title": "Tasks 13-20 baseline chart",
+        "title": "Unified 20-task provenance chart",
         "path": "docs/assets/charts/tier2_task_suite.svg",
-        "role": "Eight additional sample-supported tasks in the unified 20-task suite with aligned minimal and neural baseline metrics.",
+        "role": "Historical provenance rows inside the unified 20-task suite with aligned minimal and neural baseline metrics.",
         "source_script": "scripts/tier2_task_suite.py",
         "surface": "website unified task section, README, HF mirrors",
     },

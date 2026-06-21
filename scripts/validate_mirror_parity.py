@@ -408,7 +408,7 @@ def verified_public_result_files() -> list[str]:
 
 
 def tier2_result_files() -> list[str]:
-    """Return every generated public-safe artifact for tasks 13-20.
+    """Return every generated public-safe artifact for the historical provenance bundle.
 
     The directory name is historical and kept for stable public links.
     """

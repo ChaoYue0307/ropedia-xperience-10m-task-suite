@@ -1,14 +1,13 @@
-# Tasks 13-20 Baselines
+# Unified 20-Task Provenance Baselines
 
-These eight tasks are part of the unified 20-task public-sample suite. They reuse the same 20-frame windows, 5-frame stride, shared feature tensor, chronological split, and minimal/neural baseline discipline as tasks 1-12.
+This historical result bundle is part of the unified 20-task public-sample suite. The rows here reuse the same 20-frame windows, 5-frame stride, shared feature tensor, chronological split, and minimal/neural baseline discipline as the rest of the suite.
 
 The file and directory names still contain `tier2_task_suite` for backwards-compatible public links, but this is not a separate benchmark tier.
 
 ## Setup Alignment
 
-- Tasks 1-12: `12`
-- Tasks 13-20: `8`
 - Unified task contracts: `20`
+- Provenance rows in this historical bundle: `8`
 - Long-horizon offset: `100` frames, about `5.0` seconds at 20 FPS
 - Raw public-sample HDF5 is required to regenerate the interaction/object targets; raw media/HDF5 files are not redistributed.
 
@@ -27,4 +26,4 @@ The file and directory names still contain `tier2_task_suite` for backwards-comp
 
 ## Interpretation Boundary
 
-Tasks 13-20 are sample-level baselines in the same unified public-sample suite. They prove that the sample can support richer task contracts, but they do not prove cross-episode model quality.
+These sample-level baselines are part of the same unified public-sample suite. They prove that the sample can support richer task contracts, but they do not prove cross-episode model quality.

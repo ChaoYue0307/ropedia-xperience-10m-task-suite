@@ -35,7 +35,7 @@ machine-readable form.
 | Interaction text | Natural-language interaction/caption content. | Used by task 15 and some derived text features; public matrices record when text targets are direct or compact-proxy. | Numeric action ids or subtask ids. |
 | Modality | A type of signal. | Video, audio, depth, pose/SLAM, motion capture, inertial, calibration, and language-derived signals. | A task target. |
 | Task contract | The definition of one benchmark task. | Includes input, target/output, metric, split, source artifact, and limitation. | A model architecture. |
-| Unified 20-task suite | The current task surface. | Tasks 1-12 plus tasks 13-20 are presented together and scored across methods where real artifacts exist. | The historical tier-2 label; tasks 13-20 are now part of the same 20-task suite. |
+| Unified 20-task suite | The current task surface. | All 20 task contracts are presented together and scored across methods where real artifacts exist. | Historical `tier2_task_suite` filenames; those are provenance paths, not a second suite. |
 | Task-method record | One method evaluated on one task. | 9 methods x 20 tasks gives 180 public result records. | A single prediction row. |
 | Direct score | A metric computed against the task target directly. | The preferred score type in the 20-task matrix. | Compact-proxy score. |
 | Compact-proxy score | A bounded proxy metric when a direct raw target is not publicly available. | Kept explicit in the matrix and gap audit so readers do not over-read it. | A direct target measurement. |

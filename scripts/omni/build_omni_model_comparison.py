@@ -755,7 +755,7 @@ def build_report() -> dict[str, Any]:
             "versus Super structured JSON Reasoner evaluation."
         ),
         "version_reading_notes": [
-            "Version 1 is the public-sample 20-task surface: original core heads, tasks 13-20, and the 180-row method-task matrix.",
+            "Version 1 is the public-sample 20-task surface: unified task heads, historical provenance rows, and the 180-row method-task matrix.",
             "Version 2 is the selected 128-episode same-split simple/NN baseline alignment.",
             "The selected-128 model-diagnostic group contains the current Qwen3-Omni LoRA JSON-task row, Cosmos3-Nano future-window compatibility result, Cosmos3-Super Reasoner base-weight JSON-task evaluation, and the separate Cosmos3-Super Forward-Dynamics LoRA adapter artifact.",
         ],

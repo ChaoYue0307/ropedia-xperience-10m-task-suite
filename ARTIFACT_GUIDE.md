@@ -78,7 +78,7 @@ Xperience-native pretraining goal.
 | [`results/episode_task_suite/neural_mlp/`](results/episode_task_suite/neural_mlp/) | Matching PyTorch MLP heads for the same task contracts and feature windows. |
 | [`results/episode_task_suite/research_directions/`](results/episode_task_suite/research_directions/) | Mapping from the unified 20-task suite to the four Ropedia research directions. |
 | [`results/episode_task_suite/research_direction_extensions/`](results/episode_task_suite/research_direction_extensions/) | Four additional coded probes, one per research direction. |
-| [`results/episode_task_suite/tier2_task_suite/`](results/episode_task_suite/tier2_task_suite/) | Historical result path for tasks 13-20 in the unified 20-task suite. |
+| [`results/episode_task_suite/tier2_task_suite/`](results/episode_task_suite/tier2_task_suite/) | Historical provenance path inside the unified 20-task suite. |
 | [`results/episode_task_suite/task_walkthroughs/`](results/episode_task_suite/task_walkthroughs/) | Human-readable research names and case studies explaining input, process modules, output, metric, limitation, and the website task-player data. |
 | [`results/audio_ablation/audio_ablation_metrics.csv`](results/audio_ablation/audio_ablation_metrics.csv) | All measured audio rows for the original task contracts across six variants, including no-audio, audio-only, alternate-audio-only, representation replacement, and all-input variants. |
 | [`results/audio_ablation/audio_delta_summary.csv`](results/audio_ablation/audio_delta_summary.csv) | Compact per-task audio delta table for quick manual inspection. |

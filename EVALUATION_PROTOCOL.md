@@ -45,11 +45,10 @@ are not foundation models.
 
 ## Unified 20-Task Contracts
 
-Tasks 1-12 are the original public-sample task contracts. Tasks 13-20
-are additional sample-supported contracts attached to the same 20-frame
-window, feature, chronological split, leakage-control, and minimal/neural
-baseline setup. Historical `tier2_task_suite` paths are retained only as
-stable artifact locations for tasks 13-20.
+All 20 public-sample task contracts are presented together under the same
+20-frame window, feature, chronological split, leakage-control, and
+minimal/neural baseline setup. Historical `tier2_task_suite` paths are
+retained only as stable provenance artifact locations inside the unified suite.
 
 | # | Task | Artifact id | Origin | Family | Unit | Input -> target | Primary metric | Minimal | Neural |
 | ---: | --- | --- | --- | --- | --- | --- | --- | ---: | ---: |

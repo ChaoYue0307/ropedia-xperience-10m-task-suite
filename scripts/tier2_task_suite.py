@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Additional tasks 13-20 for the Xperience-10M public sample.
+"""Historical provenance rows for the Xperience-10M unified 20-task suite.
 
 The public benchmark is presented as one 20-task suite. The output path keeps
 its historical ``tier2_task_suite`` name for backwards-compatible public links,
-but the generated tasks are tasks 13-20 in the unified suite.
+but the generated rows are read inside the unified suite.
 """
 
 from __future__ import annotations
@@ -259,12 +259,12 @@ def ensure_frame_info(frame_info: dict[int, dict[str, Any]], frame: int) -> dict
 
 
 def load_annotation_direct(annotation: Path) -> dict[str, Any]:
-    """Load just the caption fields needed for tasks 13-20 without HOMIE."""
+    """Load just the caption fields needed for the provenance rows without HOMIE."""
     try:
         import h5py
     except ImportError as exc:
         raise RuntimeError(
-            "Regenerating tasks 13-20 needs HOMIE-toolkit or h5py. Use the project Ropedia virtualenv if system Python lacks h5py."
+            "Regenerating the historical provenance rows needs HOMIE-toolkit or h5py. Use the project Ropedia virtualenv if system Python lacks h5py."
         ) from exc
 
     with h5py.File(annotation, "r") as handle:
@@ -919,7 +919,7 @@ def build_payload(args: argparse.Namespace) -> dict[str, Any]:
     )
 
     payload = {
-        "title": "Ropedia Xperience-10M Unified Tasks 13-20 Result Bundle",
+        "title": "Ropedia Xperience-10M Unified 20-Task Provenance Bundle",
         "status": "pass",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "suite_position": "tasks_13_to_20",
@@ -975,17 +975,16 @@ def format_metric(value: float | None, metric_key: str) -> str:
 
 def write_markdown(payload: dict[str, Any], output_dir: Path) -> None:
     lines = [
-        "# Tasks 13-20 Baselines",
+        "# Unified 20-Task Provenance Baselines",
         "",
-        "These eight tasks are part of the unified 20-task public-sample suite. They reuse the same 20-frame windows, 5-frame stride, shared feature tensor, chronological split, and minimal/neural baseline discipline as tasks 1-12.",
+        "This historical result bundle is part of the unified 20-task public-sample suite. The rows here reuse the same 20-frame windows, 5-frame stride, shared feature tensor, chronological split, and minimal/neural baseline discipline as the rest of the suite.",
         "",
         "The file and directory names still contain `tier2_task_suite` for backwards-compatible public links, but this is not a separate benchmark tier.",
         "",
         "## Setup Alignment",
         "",
-        f"- Tasks 1-12: `{payload['integrated_with_tasks_1_to_12']['tasks_1_to_12_count']}`",
-        f"- Tasks 13-20: `{payload['integrated_with_tasks_1_to_12']['additional_task_count']}`",
         f"- Unified task contracts: `{payload['integrated_with_tasks_1_to_12']['combined_task_count']}`",
+        f"- Provenance rows in this historical bundle: `{payload['integrated_with_tasks_1_to_12']['additional_task_count']}`",
         f"- Long-horizon offset: `{payload['dataset_scope']['future_horizon_frames']}` frames, about `{payload['dataset_scope']['future_horizon_seconds_at_20fps']:.1f}` seconds at 20 FPS",
         "- Raw public-sample HDF5 is required to regenerate the interaction/object targets; raw media/HDF5 files are not redistributed.",
         "",
@@ -1005,7 +1004,7 @@ def write_markdown(payload: dict[str, Any], output_dir: Path) -> None:
             "",
             "## Interpretation Boundary",
             "",
-            "Tasks 13-20 are sample-level baselines in the same unified public-sample suite. They prove that the sample can support richer task contracts, but they do not prove cross-episode model quality.",
+            "These sample-level baselines are part of the same unified public-sample suite. They prove that the sample can support richer task contracts, but they do not prove cross-episode model quality.",
             "",
         ]
     )
@@ -1022,8 +1021,8 @@ def write_svg(payload: dict[str, Any]) -> None:
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#020502"/>',
         '<rect x="32" y="32" width="1376" height="{}" rx="12" fill="#071207" stroke="#ccffa0" stroke-opacity="0.22"/>'.format(height - 64),
-        '<text x="72" y="82" fill="#f4f8ef" font-size="32" font-weight="760">Ropedia Xperience-10M tasks 13-20 baselines</text>',
-        '<text x="72" y="112" fill="#a5afa2" font-size="16">Eight additional task contracts in the same unified 20-task suite and aligned with the same 20-frame window, 5-frame stride, and chronological split.</text>',
+        '<text x="72" y="82" fill="#f4f8ef" font-size="32" font-weight="760">Ropedia Xperience-10M unified 20-task provenance</text>',
+        '<text x="72" y="112" fill="#a5afa2" font-size="16">Historical bundle rows retained for stable links inside the same 20-task suite, aligned with the same 20-frame window, 5-frame stride, and chronological split.</text>',
     ]
     colors = ["#ccffa0", "#7ae5c3", "#9bdfff", "#d8f4a5"]
     for idx, (task_id, spec) in enumerate(TIER2_TASK_SPECS.items()):

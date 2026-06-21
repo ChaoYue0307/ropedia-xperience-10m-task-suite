@@ -1,12 +1,11 @@
 # Unified 20-Task Suite
 
 The public Xperience-10M sample task surface is one unified set of 20 tasks.
-Tasks 1-12 are the original public-sample tasks. Tasks 13-20 are additional
-sample-supported tasks attached to the same window, split, feature, baseline,
-and leakage-control contract.
+All task contracts are presented together under the same window, split,
+feature, baseline, and leakage-control contract.
 
 Historical artifact paths containing `tier2_task_suite` are kept for stable
-links, but they should be read as the result directory for tasks 13-20, not
+links, but they should be read as provenance directories inside the unified task suite, not
 as a separate benchmark tier.
 
 ## Shared Setup

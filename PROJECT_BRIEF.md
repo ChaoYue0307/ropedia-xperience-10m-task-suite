@@ -47,7 +47,7 @@ model-quality claims.
 4. Open `EVALUATION_PROTOCOL.md` before comparing task scores.
 5. Use `RESEARCH_TAKEAWAYS.md` for the current metric interpretation.
 6. Inspect `results/episode_task_suite/feature_manifest.json` to understand one model input.
-7. Use `TASK_SUITE_20.md` and `docs/data/task_suite_20.json` to read the unified 20-task suite; the historical `docs/data/tier2_task_suite.json` path stores the tasks 13-20 result bundle.
+7. Use `TASK_SUITE_20.md` and `docs/data/task_suite_20.json` to read the unified 20-task suite; the historical `docs/data/tier2_task_suite.json` path stores provenance rows inside that same suite.
 8. Use `QWEN3_OMNI_RUN_LINEAGE.md` and `docs/data/qwen3_omni_run_lineage.json` to read v1-v6 correctly.
 9. Use `docs/data/omni_finetune_verified_result.json` for the current multi-episode Qwen3-Omni v6 result.
 

@@ -10,7 +10,7 @@ outside the current public data scope.
 | --- | --- | --- |
 | Sample download | Yes, from `ropedia-ai/xperience-10m-sample` or ModelScope sample mirror | Sample card lists `cc-by-nc-4.0`; raw data is not redistributed in this repo. |
 | Minimal baselines | Yes | One public sample episode, chronological split. |
-| Unified 20-task suite | Yes; tasks 13-20 require `annotation.hdf5` plus `h5py` or HOMIE Toolkit for regeneration | Uses the current 8,546-d synchronized multimodal feature contract, the same 20-frame windows, and the same chronological split. |
+| Unified 20-task suite | Yes; the historical provenance bundle requires `annotation.hdf5` plus `h5py` or HOMIE Toolkit for regeneration | Uses the current 8,546-d synchronized multimodal feature contract, the same 20-frame windows, and the same chronological split. |
 | Neural MLP heads | Yes, when `torch` is installed | Compact task heads only, not a foundation model. |
 | Website figures and charts | Yes | Generated from committed metrics and sample thumbnails. |
 | Public bundle contents | Yes | Covers public repo and prepared HF bundles. |
@@ -96,7 +96,7 @@ python scripts/validate_publication_package.py
 ```
 
 `scripts/tier2_task_suite.py` has a historical file name, but it now regenerates
-tasks 13-20 for the unified 20-task suite. It can use HOMIE Toolkit when
+provenance rows inside the unified 20-task suite. It can use HOMIE Toolkit when
 present, or a direct `h5py` fallback for the public sample's caption JSON. It
 reads the local raw `annotation.hdf5` only to regenerate interaction/object
 targets; the raw HDF5 is still ignored by git and excluded from public bundles.
@@ -159,7 +159,7 @@ Verified staged-GPU smoke evidence from 2026-06-14:
 | Command group | Expected artifacts |
 | --- | --- |
 | Minimal baselines | `results/min_action_model/`, `results/min_all_modalities_action_model/`, metrics and model weights |
-| Unified 20-task suite | `TASK_SUITE_20.md`, `docs/data/task_suite_20.json`, `results/episode_task_suite/summary_report.json`, per-task `metrics.json`, predictions, confusion matrices, and the tasks 13-20 historical `tier2_task_suite` result bundle |
+| Unified 20-task suite | `TASK_SUITE_20.md`, `docs/data/task_suite_20.json`, `results/episode_task_suite/summary_report.json`, per-task `metrics.json`, predictions, confusion matrices, and the historical `tier2_task_suite` provenance bundle |
 | Unified 20-task model radar | `docs/data/unified_task_model_radar.json`, `docs/assets/charts/unified_task_model_radar.svg` |
 | Neural heads | `results/episode_task_suite/neural_mlp/**/metrics.json`, histories, model checkpoints |
 | Research directions | `results/episode_task_suite/research_directions/`, `docs/data/research_directions.json` |
@@ -182,7 +182,7 @@ Asia/Singapore** from a fresh output directory outside the repo. It rebuilt the
 minimal baselines, all-modality baselines, and the original core task artifacts
 from the local public sample. The regenerated metrics matched the committed
 artifacts after float normalization; the current public framing now indexes
-those artifacts together with tasks 13-20 as one 20-task suite.
+those artifacts together as one 20-task suite.
 
 Evidence:
 
