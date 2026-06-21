@@ -1,9 +1,9 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-21T10:15:42+00:00",
+  "generated_at_utc": "2026-06-21T10:25:58+00:00",
   "hf_root": "hf_publish",
   "summary": {
-    "group_count": 1253,
+    "group_count": 1256,
     "failure_count": 0,
     "failures_by_surface": {}
   },
@@ -1064,6 +1064,55 @@
       "failures": []
     },
     {
+      "name": "data/qwen3_omni_run_lineage.json",
+      "status": "pass",
+      "local": {
+        "path": "repo:docs/data/qwen3_omni_run_lineage.json",
+        "exists": true,
+        "bytes": 9211,
+        "sha256": "98e322fa0bec38aab93b924f4f1fcd13eee848bf9b6791fea7adcfb0db3c2953"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:data/qwen3_omni_run_lineage.json",
+          "exists": true,
+          "bytes": 9211,
+          "sha256": "98e322fa0bec38aab93b924f4f1fcd13eee848bf9b6791fea7adcfb0db3c2953"
+        },
+        "hf_artifacts_data": {
+          "path": "hf_artifacts:data/qwen3_omni_run_lineage.json",
+          "exists": true,
+          "bytes": 9211,
+          "sha256": "98e322fa0bec38aab93b924f4f1fcd13eee848bf9b6791fea7adcfb0db3c2953"
+        },
+        "hf_artifacts": {
+          "path": "hf_artifacts:docs/data/qwen3_omni_run_lineage.json",
+          "exists": true,
+          "bytes": 9211,
+          "sha256": "98e322fa0bec38aab93b924f4f1fcd13eee848bf9b6791fea7adcfb0db3c2953"
+        },
+        "hf_model_data": {
+          "path": "hf_model:data/qwen3_omni_run_lineage.json",
+          "exists": true,
+          "bytes": 9211,
+          "sha256": "98e322fa0bec38aab93b924f4f1fcd13eee848bf9b6791fea7adcfb0db3c2953"
+        },
+        "hf_model_docs_data": {
+          "path": "hf_model:docs/data/qwen3_omni_run_lineage.json",
+          "exists": true,
+          "bytes": 9211,
+          "sha256": "98e322fa0bec38aab93b924f4f1fcd13eee848bf9b6791fea7adcfb0db3c2953"
+        },
+        "hf_model": {
+          "path": "hf_model:metrics/qwen3_omni_run_lineage.json",
+          "exists": true,
+          "bytes": 9211,
+          "sha256": "98e322fa0bec38aab93b924f4f1fcd13eee848bf9b6791fea7adcfb0db3c2953"
+        }
+      },
+      "failures": []
+    },
+    {
       "name": "data/qwen3_v5_v6_comparison.json",
       "status": "pass",
       "local": {
@@ -1119,44 +1168,44 @@
         "path": "repo:docs/data/quality_gates.json",
         "exists": true,
         "bytes": 8640,
-        "sha256": "1f3ce25972faa14964e3ad517de9daf1fe2d03e85b071369c3cc80c0083b87e6"
+        "sha256": "3cb0aca2dca01448cb9bc5cbb519a91bc6397c08a1eaaa84c031e773221e5a0a"
       },
       "mirrors": {
         "hf_space": {
           "path": "hf_space:data/quality_gates.json",
           "exists": true,
           "bytes": 8640,
-          "sha256": "1f3ce25972faa14964e3ad517de9daf1fe2d03e85b071369c3cc80c0083b87e6"
+          "sha256": "3cb0aca2dca01448cb9bc5cbb519a91bc6397c08a1eaaa84c031e773221e5a0a"
         },
         "hf_artifacts_data": {
           "path": "hf_artifacts:data/quality_gates.json",
           "exists": true,
           "bytes": 8640,
-          "sha256": "1f3ce25972faa14964e3ad517de9daf1fe2d03e85b071369c3cc80c0083b87e6"
+          "sha256": "3cb0aca2dca01448cb9bc5cbb519a91bc6397c08a1eaaa84c031e773221e5a0a"
         },
         "hf_artifacts": {
           "path": "hf_artifacts:docs/data/quality_gates.json",
           "exists": true,
           "bytes": 8640,
-          "sha256": "1f3ce25972faa14964e3ad517de9daf1fe2d03e85b071369c3cc80c0083b87e6"
+          "sha256": "3cb0aca2dca01448cb9bc5cbb519a91bc6397c08a1eaaa84c031e773221e5a0a"
         },
         "hf_model_data": {
           "path": "hf_model:data/quality_gates.json",
           "exists": true,
           "bytes": 8640,
-          "sha256": "1f3ce25972faa14964e3ad517de9daf1fe2d03e85b071369c3cc80c0083b87e6"
+          "sha256": "3cb0aca2dca01448cb9bc5cbb519a91bc6397c08a1eaaa84c031e773221e5a0a"
         },
         "hf_model_docs_data": {
           "path": "hf_model:docs/data/quality_gates.json",
           "exists": true,
           "bytes": 8640,
-          "sha256": "1f3ce25972faa14964e3ad517de9daf1fe2d03e85b071369c3cc80c0083b87e6"
+          "sha256": "3cb0aca2dca01448cb9bc5cbb519a91bc6397c08a1eaaa84c031e773221e5a0a"
         },
         "hf_model": {
           "path": "hf_model:metrics/quality_gates.json",
           "exists": true,
           "bytes": 8640,
-          "sha256": "1f3ce25972faa14964e3ad517de9daf1fe2d03e85b071369c3cc80c0083b87e6"
+          "sha256": "3cb0aca2dca01448cb9bc5cbb519a91bc6397c08a1eaaa84c031e773221e5a0a"
         }
       },
       "failures": []
@@ -5349,6 +5398,31 @@
       "failures": []
     },
     {
+      "name": "scripts/build_qwen3_omni_run_lineage.py",
+      "status": "pass",
+      "local": {
+        "path": "repo:scripts/build_qwen3_omni_run_lineage.py",
+        "exists": true,
+        "bytes": 7934,
+        "sha256": "76b68613e3470d3a00642a516e9fb1272de94503d22877c845af105e8d651a6e"
+      },
+      "mirrors": {
+        "hf_artifacts": {
+          "path": "hf_artifacts:scripts/build_qwen3_omni_run_lineage.py",
+          "exists": true,
+          "bytes": 7934,
+          "sha256": "76b68613e3470d3a00642a516e9fb1272de94503d22877c845af105e8d651a6e"
+        },
+        "hf_model": {
+          "path": "hf_model:scripts/build_qwen3_omni_run_lineage.py",
+          "exists": true,
+          "bytes": 7934,
+          "sha256": "76b68613e3470d3a00642a516e9fb1272de94503d22877c845af105e8d651a6e"
+        }
+      },
+      "failures": []
+    },
+    {
       "name": "scripts/build_public_surface_qa.py",
       "status": "pass",
       "local": {
@@ -5829,21 +5903,21 @@
       "local": {
         "path": "repo:scripts/validate_mirror_parity.py",
         "exists": true,
-        "bytes": 36363,
-        "sha256": "24cfad669a2f77794e30acf75c0df5560991f2aab110d751f73e4f0739b2b06f"
+        "bytes": 36470,
+        "sha256": "0617ffc2fd6ed22b4202c4ec532e50796923e74b4ccd7e1fb3e1ff301995bb2c"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 36363,
-          "sha256": "24cfad669a2f77794e30acf75c0df5560991f2aab110d751f73e4f0739b2b06f"
+          "bytes": 36470,
+          "sha256": "0617ffc2fd6ed22b4202c4ec532e50796923e74b4ccd7e1fb3e1ff301995bb2c"
         },
         "hf_model": {
           "path": "hf_model:scripts/validate_mirror_parity.py",
           "exists": true,
-          "bytes": 36363,
-          "sha256": "24cfad669a2f77794e30acf75c0df5560991f2aab110d751f73e4f0739b2b06f"
+          "bytes": 36470,
+          "sha256": "0617ffc2fd6ed22b4202c4ec532e50796923e74b4ccd7e1fb3e1ff301995bb2c"
         }
       },
       "failures": []
@@ -6004,21 +6078,21 @@
       "local": {
         "path": "repo:scripts/sync_hf_publish_mirrors.py",
         "exists": true,
-        "bytes": 28655,
-        "sha256": "75ec8d1c324317c8f8e5c4a483e7aef43e95c30ee3b581c0108d1de059cd68f0"
+        "bytes": 29242,
+        "sha256": "60566f5c6922d02c249a33d6c57b9474453369de038a30c9285febc7bd0347fa"
       },
       "mirrors": {
         "hf_artifacts": {
           "path": "hf_artifacts:scripts/sync_hf_publish_mirrors.py",
           "exists": true,
-          "bytes": 28655,
-          "sha256": "75ec8d1c324317c8f8e5c4a483e7aef43e95c30ee3b581c0108d1de059cd68f0"
+          "bytes": 29242,
+          "sha256": "60566f5c6922d02c249a33d6c57b9474453369de038a30c9285febc7bd0347fa"
         },
         "hf_model": {
           "path": "hf_model:scripts/sync_hf_publish_mirrors.py",
           "exists": true,
-          "bytes": 28655,
-          "sha256": "75ec8d1c324317c8f8e5c4a483e7aef43e95c30ee3b581c0108d1de059cd68f0"
+          "bytes": 29242,
+          "sha256": "60566f5c6922d02c249a33d6c57b9474453369de038a30c9285febc7bd0347fa"
         }
       },
       "failures": []
@@ -31080,6 +31154,37 @@
           "exists": true,
           "bytes": 8603,
           "sha256": "4424e131a7d6a22a89f9f522f15fbdde6419d7debcffd6e6755ca4c3f47731b9"
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "docs/QWEN3_OMNI_RUN_LINEAGE.md",
+      "status": "pass",
+      "local": {
+        "path": "repo:QWEN3_OMNI_RUN_LINEAGE.md",
+        "exists": true,
+        "bytes": 4595,
+        "sha256": "dfb1b8e931cc2dd7a15e8e3489047b5ee198495932961680b86875c169f92a68"
+      },
+      "mirrors": {
+        "hf_space": {
+          "path": "hf_space:QWEN3_OMNI_RUN_LINEAGE.md",
+          "exists": true,
+          "bytes": 4595,
+          "sha256": "dfb1b8e931cc2dd7a15e8e3489047b5ee198495932961680b86875c169f92a68"
+        },
+        "hf_artifacts": {
+          "path": "hf_artifacts:QWEN3_OMNI_RUN_LINEAGE.md",
+          "exists": true,
+          "bytes": 4595,
+          "sha256": "dfb1b8e931cc2dd7a15e8e3489047b5ee198495932961680b86875c169f92a68"
+        },
+        "hf_model": {
+          "path": "hf_model:QWEN3_OMNI_RUN_LINEAGE.md",
+          "exists": true,
+          "bytes": 4595,
+          "sha256": "dfb1b8e931cc2dd7a15e8e3489047b5ee198495932961680b86875c169f92a68"
         }
       },
       "failures": []

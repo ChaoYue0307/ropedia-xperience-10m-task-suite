@@ -53,7 +53,8 @@ stride, feature manifest, chronological split, and minimal/neural head pattern.
 The historical `tier2_task_suite` path is retained only for stable artifact
 links to tasks 13-20. Results are organized as two evidence lines:
 one public sample episode for task construction and reproducibility, and
-128 selected episodes for same-split baselines plus Qwen3/Cosmos comparison.
+128 selected episodes for same-split baselines plus Qwen3-Omni and Cosmos3
+comparison.
 The line map is published as `docs/assets/charts/two_evidence_line_map.svg`
 with machine-readable summaries in `docs/data/two_evidence_lines.json` and
 `docs/data/two_evidence_line_result_summary.json`.
@@ -119,6 +120,11 @@ QWEN_COMPARISON_MARKER = "docs/data/qwen3_v5_v6_comparison.json"
 QWEN_COMPARISON_ROW = (
     "| Compare Qwen3 v5/v6 diagnostic branches | "
     "`docs/data/qwen3_v5_v6_comparison.json` |"
+)
+QWEN_LINEAGE_MARKER = "docs/data/qwen3_omni_run_lineage.json"
+QWEN_LINEAGE_ROW = (
+    "| Explain Qwen3-Omni v1-v6 run lineage | "
+    "`QWEN3_OMNI_RUN_LINEAGE.md`, `docs/data/qwen3_omni_run_lineage.json` |"
 )
 QWEN_ARTIFACT_OLD_BULLET = """- A current verified Qwen3-Omni strict-label v3 held-out package for the
   selected 96/16/16 episode split, with 100.00% JSON validity and weak
@@ -460,12 +466,19 @@ def ensure_current_qwen_card_links(hf_root: Path, *, dry_run: bool) -> list[str]
         if QWEN_COMPARISON_ROW not in text:
             anchor = "| Compare current versions and model groups | `docs/data/omni_model_comparison.json` |"
             text = text.replace(anchor, anchor + "\n" + QWEN_COMPARISON_ROW, 1)
+        if QWEN_LINEAGE_ROW not in text:
+            text = text.replace(QWEN_COMPARISON_ROW, QWEN_COMPARISON_ROW + "\n" + QWEN_LINEAGE_ROW, 1)
         if QWEN_ARTIFACT_OLD_BULLET in text:
             text = text.replace(QWEN_ARTIFACT_OLD_BULLET, QWEN_ARTIFACT_CURRENT_BULLET, 1)
         if "99.90% JSON validity" not in text:
             text = text.rstrip() + "\n\n" + QWEN_ARTIFACT_CURRENT_BULLET + "\n"
         if QWEN_COMPARISON_MARKER not in text:
             text = text.rstrip() + f"\n\nQwen v5/v6 comparison: `{QWEN_COMPARISON_MARKER}`.\n"
+        if QWEN_LINEAGE_MARKER not in text:
+            text = text.rstrip() + (
+                f"\n\nQwen3-Omni v1-v6 lineage: `QWEN3_OMNI_RUN_LINEAGE.md` "
+                f"and `{QWEN_LINEAGE_MARKER}`.\n"
+            )
         if text != original:
             updated.append("artifacts/README.md")
             if not dry_run:
