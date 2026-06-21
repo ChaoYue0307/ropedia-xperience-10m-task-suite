@@ -55,16 +55,38 @@
       --color-main: #ccffa0;
       --amber: #d8f4a5;
       --red: #ff8f7a;
+      --proxy: #f472b6;
+      --proxy-ink: #1b0612;
+      --accent: var(--green);
+      --accent-2: var(--cyan);
+      --text-strong: #f7fff0;
+      --text: #f4f8ef;
+      --text-ui: #dce8d6;
+      --text-soft: #c7d1c3;
+      --text-subtle: rgba(245, 247, 240, 0.76);
+      --text-faint: rgba(245, 247, 240, 0.66);
+      --text-inverse: #020502;
       --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
       --radius: 8px;
+      --card-radius: var(--radius);
       --max: 1220px;
       --ropedia-card: rgba(5, 10, 6, 0.84);
       --ropedia-card-strong: rgba(5, 10, 6, 0.96);
       --ropedia-pill: rgba(255, 255, 255, 0.05);
       --font-ui: "Inter Tight", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --font-copy: "Inter Tight", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-sans: var(--font-copy);
       --font-btn: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --font-mono: "Space Grotesk", "SF Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --type-xxs: 9px;
+      --type-micro: 10px;
+      --type-xs: 11px;
+      --type-sm: 12px;
+      --type-body-sm: 13px;
+      --type-body: 14px;
+      --type-body-lg: 16px;
+      --type-title-sm: 18px;
+      --type-title: 21px;
       --nav-height: 82px;
       --tab-stack-offset: 98px;
     }
@@ -106,7 +128,7 @@
       top: 12px;
       transform: translateY(-160%);
       background: var(--ink);
-      color: #020502;
+      color: var(--text-inverse);
       padding: 10px 12px;
       border-radius: 6px;
       z-index: 40;
@@ -1442,7 +1464,7 @@
       box-shadow: 0 18px 46px rgba(0, 0, 0, 0.42);
       color: #edf6e8;
       padding: 10px 11px;
-      font-family: var(--font-sans);
+      font-family: var(--font-copy);
       font-size: 12px;
       font-weight: 620;
       letter-spacing: 0;
@@ -1612,7 +1634,7 @@
       display: block;
       margin-top: 0;
       color: #edf6e8;
-      font-family: var(--font-sans);
+      font-family: var(--font-copy);
       font-size: 12px;
       font-weight: 620;
       line-height: 1.4;
@@ -3522,6 +3544,140 @@
     .player-progress span,
     .bar span {
       background: linear-gradient(90deg, var(--green), rgba(204, 255, 160, 0.45));
+    }
+    /* Typography and color consistency layer for repeated long-page components. */
+    .button,
+    .nav-action,
+    .section-tab,
+    .project-tab,
+    .content-tab,
+    .filter,
+    .story-button,
+    .selector-button,
+    .brief-actions a,
+    .reading-links a,
+    .evidence-links a,
+    .roadmap-links a,
+    .atlas-head a,
+    .player-controls button,
+    .code-panel button,
+    .surface-map a,
+    .glossary-links a,
+    .result-matrix-actions a,
+    .split-radar-links a,
+    .raw-link-row a {
+      font-family: var(--font-btn);
+      font-weight: 720;
+      letter-spacing: 0;
+    }
+    .snapshot-card h3,
+    .roadmap-card h3,
+    .brief-card strong,
+    .reading-card h3,
+    .boundary-item strong,
+    .evidence-card h3,
+    .model h3,
+    .task-card h3,
+    .direction-card h3,
+    .extension-card h3,
+    .artifact h3,
+    .callout h3,
+    .figure-brief-card h3,
+    .suite-line-card h3,
+    .raw-detail-card h3,
+    .reader-step strong,
+    .resource-mode strong,
+    .surface-map a strong {
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-weight: 740;
+      letter-spacing: 0;
+    }
+    .snapshot-card p,
+    .roadmap-card p,
+    .brief-card p,
+    .brief-card li,
+    .reading-card p,
+    .evidence-card p,
+    .task-card p,
+    .direction-card p,
+    .extension-card p,
+    .artifact p,
+    .callout p,
+    .figure-brief-card p,
+    .suite-line-card p,
+    .raw-detail-card p,
+    .reader-step p,
+    .resource-mode p,
+    .surface-map a span {
+      color: var(--muted);
+      font-size: var(--type-body-sm);
+      line-height: 1.55;
+    }
+    .eyebrow,
+    .atlas-index,
+    .atlas-type,
+    .roadmap-status,
+    .status-pill,
+    .tag,
+    .player-frame-chip,
+    .player-badge,
+    .line-table td[data-label]::before,
+    .method-summary-table th,
+    .result-score-table th,
+    .glossary-table th {
+      font-family: var(--font-mono);
+      font-size: var(--type-xs);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .line-table,
+    .method-summary-table,
+    .result-score-table,
+    .glossary-table {
+      font-variant-numeric: tabular-nums;
+    }
+    .score-chip.proxy em {
+      color: var(--proxy-ink);
+      background: var(--proxy);
+    }
+    .project-tab strong,
+    .content-tab strong {
+      font-weight: 760;
+    }
+    .project-tab span,
+    .content-tab span {
+      font-family: var(--font-copy);
+      font-weight: 500;
+    }
+    .term-help {
+      color: var(--green);
+      font-size: var(--type-micro);
+      line-height: 1;
+    }
+    .result-matrix-stat .term-help,
+    .matrix-legend-pill .term-help,
+    .method-cell .term-help,
+    .task-header .term-help,
+    .method-summary-table th .term-help,
+    .result-score-table th .term-help {
+      color: var(--green);
+      font-size: var(--type-micro);
+      line-height: 1;
+    }
+    .term-tooltip,
+    .result-matrix-stat .term-tooltip,
+    .matrix-legend-pill .term-tooltip,
+    .method-cell .term-tooltip,
+    .task-header .term-tooltip,
+    .method-summary-table th .term-tooltip,
+    .result-score-table th .term-tooltip {
+      color: var(--text);
+      font-family: var(--font-copy);
+      font-size: var(--type-sm);
+      font-weight: 620;
+      line-height: 1.4;
     }
     /* Product-design polish: align with ropedia.com through real project visuals,
        restrained surfaces, and a clear first-viewport research story. */
