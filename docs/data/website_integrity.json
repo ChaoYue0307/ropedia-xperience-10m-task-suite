@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-21T05:30:08+00:00",
+  "generated_at_utc": "2026-06-21T06:20:06+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 226,
-    "external_reference_count": 151,
-    "json_files": 51,
+    "local_references": 235,
+    "external_reference_count": 152,
+    "json_files": 52,
     "image_assets_referenced": 28,
     "failure_count": 0
   },
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 103632,
-      "evidence_index": 141695
+      "overview_index": 110375,
+      "evidence_index": 150293
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 103632,
-      "protocol_index": 137876,
-      "evidence_index": 141695
+      "overview_index": 110375,
+      "protocol_index": 146474,
+      "evidence_index": 150293
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -180,7 +180,7 @@
       "status": "pass",
       "reason": "The Suite anchor should show the task-suite map before the modality atlas.",
       "first_marker_index": 471,
-      "second_marker_index": 3778
+      "second_marker_index": 3805
     },
     {
       "name": "suite_modality_atlas_contains_seven_cards",
@@ -277,7 +277,7 @@
     {
       "path": "index.html",
       "id_count": 95,
-      "reference_count": 198,
+      "reference_count": 207,
       "image_count": 34
     },
     {
@@ -351,7 +351,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 1407249,
+      "bytes": 1410035,
       "top_level_type": "dict"
     },
     {
@@ -530,13 +530,18 @@
       "top_level_type": "dict"
     },
     {
+      "path": "data/two_evidence_lines.json",
+      "bytes": 2421,
+      "top_level_type": "dict"
+    },
+    {
       "path": "data/unified_task_model_radar.json",
       "bytes": 228799,
       "top_level_type": "dict"
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 20143,
+      "bytes": 20254,
       "top_level_type": "dict"
     },
     {

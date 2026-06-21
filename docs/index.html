@@ -175,6 +175,8 @@
       background: var(--ropedia-pill);
       backdrop-filter: blur(2px);
       text-decoration: none;
+      line-height: 1;
+      white-space: nowrap;
       transition: color 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms cubic-bezier(0.16, 1, 0.3, 1), background 220ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     .nav-links a:hover {
@@ -188,39 +190,67 @@
       outline-offset: 3px;
     }
     .nav-action {
-      border: 1px solid rgba(204, 255, 160, 0.34);
-      background: rgba(204, 255, 160, 0.10);
-      color: #effbe7;
+      border: 1px solid rgba(204, 255, 160, 0.46);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.16), rgba(204, 255, 160, 0.08)),
+        rgba(6, 16, 6, 0.82);
+      color: #f4f8ef;
       height: 44px;
-      min-width: 58px;
-      padding: 0 14px;
+      min-width: 96px;
+      padding: 0 16px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
       text-decoration: none;
       font-family: var(--font-btn);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 760;
+      line-height: 1;
+      white-space: nowrap;
       border-radius: 999px;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
-      transition: color 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms cubic-bezier(0.16, 1, 0.3, 1), background 220ms cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035), 0 10px 28px rgba(0, 0, 0, 0.20);
+      transition: color 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms cubic-bezier(0.16, 1, 0.3, 1), background 220ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .nav-action-hf {
-      padding: 0;
+    .nav-action::before {
+      content: attr(data-mark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(204, 255, 160, 0.14);
+      border: 1px solid rgba(204, 255, 160, 0.26);
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      flex: 0 0 auto;
     }
     .nav-action-repo {
-      min-width: 82px;
       background: var(--green);
       border-color: rgba(204, 255, 160, 0.92);
       color: #020502;
-      box-shadow: 0 10px 30px rgba(204, 255, 160, 0.10);
+      box-shadow: 0 10px 30px rgba(204, 255, 160, 0.12);
+    }
+    .nav-action-repo::before {
+      background: rgba(2, 5, 2, 0.10);
+      border-color: rgba(2, 5, 2, 0.18);
+      color: #020502;
+    }
+    .nav-action-text-short {
+      display: none;
     }
     .nav-action:hover {
       transform: translateY(-1px);
       border-color: rgba(204, 255, 160, 0.74);
-      background: rgba(204, 255, 160, 0.18);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.22), rgba(204, 255, 160, 0.12)),
+        rgba(6, 16, 6, 0.88);
       color: var(--green);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 12px 32px rgba(204, 255, 160, 0.08);
     }
     .nav-action-repo:hover {
       background: #eaffd5;
@@ -240,9 +270,11 @@
     .nav-tools {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       flex: 0 0 auto;
       margin-left: auto;
+      padding-left: 10px;
+      border-left: 1px solid rgba(204, 255, 160, 0.16);
       position: relative;
       z-index: 2;
     }
@@ -253,7 +285,7 @@
       gap: 8px;
       border: 1px solid rgba(204, 255, 160, 0.24);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.045);
       padding: 0 10px;
       color: #dfeadc;
       font-family: var(--font-btn);
@@ -262,10 +294,18 @@
       white-space: nowrap;
     }
     .site-language label {
-      color: rgba(244, 248, 239, 0.70);
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+      white-space: nowrap;
     }
     .site-language select {
-      min-width: 108px;
+      min-width: 112px;
       border: 0;
       outline: 0;
       background: transparent;
@@ -912,6 +952,115 @@
       background: rgba(2, 5, 2, 0.42);
     }
     .split-radar-links a:hover { border-color: var(--green); color: var(--ink); }
+    .suite-lines {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .suite-line-card {
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.08), rgba(6, 14, 7, 0.76)),
+        var(--surface);
+      padding: 18px;
+      min-width: 0;
+    }
+    .suite-line-card small {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 760;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .suite-line-card h3 {
+      margin: 8px 0;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 21px;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+    .suite-line-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.52;
+    }
+    .suite-line-facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .suite-line-facts span {
+      border: 1px solid rgba(204, 255, 160, 0.13);
+      border-radius: 8px;
+      background: rgba(2, 5, 2, 0.46);
+      padding: 9px;
+      color: rgba(245, 247, 240, 0.74);
+      font-size: 11.5px;
+      line-height: 1.28;
+    }
+    .suite-line-facts strong {
+      display: block;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1;
+      margin-bottom: 5px;
+      font-variant-numeric: tabular-nums;
+    }
+    .suite-line-card a {
+      display: inline-flex;
+      margin-top: 14px;
+      color: var(--cyan);
+      font-weight: 760;
+      text-decoration: none;
+    }
+    .suite-line-card a:hover { color: var(--green); }
+    .line-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0 28px;
+      border: 1px solid var(--soft-line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(7, 18, 7, 0.54);
+    }
+    .line-table th,
+    .line-table td {
+      border-bottom: 1px solid var(--soft-line);
+      padding: 13px 14px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .line-table th {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 760;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      background: rgba(204, 255, 160, 0.07);
+    }
+    .line-table tr:last-child td { border-bottom: 0; }
+    .line-table td:first-child {
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-weight: 760;
+      width: 18%;
+    }
+    .line-table a {
+      color: var(--cyan);
+      font-weight: 760;
+      text-decoration: none;
+    }
+    .line-table a:hover { color: var(--green); }
     .task-suite-image {
       display: block;
       margin-top: 30px;
@@ -3072,7 +3221,7 @@
         font-size: 13px;
       }
     }
-    @media (max-width: 1680px) {
+    @media (max-width: 1740px) {
       .nav-links {
         gap: 6px;
         font-size: clamp(12px, 0.76vw, 15px);
@@ -3081,23 +3230,26 @@
         min-height: 42px;
         padding: 0 11px;
       }
-      .site-language label {
-        display: none;
-      }
       .site-language select {
         min-width: 98px;
       }
       .nav-action {
         height: 42px;
+        min-width: 78px;
+        padding: 0 12px;
       }
-      .nav-action-hf {
-        min-width: 54px;
+      .nav-action::before {
+        width: 20px;
+        height: 20px;
       }
-      .nav-action-repo {
-        min-width: 76px;
+      .nav-action-text-full {
+        display: none;
+      }
+      .nav-action-text-short {
+        display: inline;
       }
     }
-    @media (max-width: 1480px) {
+    @media (max-width: 1560px) {
       .nav-links a.nav-optional {
         display: none;
       }
@@ -3133,7 +3285,7 @@
         border-right: 0;
         border-bottom: 1px solid var(--line);
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .reader-journey, .resource-mode-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .reader-journey, .resource-mode-grid, .suite-lines { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .brief-panel-head { grid-template-columns: 1fr; align-items: start; }
       .task-player { grid-template-columns: 1fr; }
       .task-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -3178,9 +3330,18 @@
       .site-language select {
         min-width: 84px;
       }
-      .nav-action-hf {
+      .nav-tools {
+        gap: 6px;
+        padding-left: 0;
+        border-left: 0;
+      }
+      .nav-action {
         min-width: 46px;
         height: 38px;
+        padding: 0 10px;
+      }
+      .nav-action::before {
+        display: none;
       }
       .nav-action-repo {
         display: none;
@@ -3255,7 +3416,32 @@
         width: 100%;
         justify-content: center;
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows, .hero-paths, .reader-journey, .resource-mode-grid { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts { grid-template-columns: 1fr; }
+      .line-table,
+      .line-table thead,
+      .line-table tbody,
+      .line-table tr,
+      .line-table th,
+      .line-table td {
+        display: block;
+      }
+      .line-table thead {
+        display: none;
+      }
+      .line-table tr {
+        border-bottom: 1px solid var(--soft-line);
+      }
+      .line-table tr:last-child {
+        border-bottom: 0;
+      }
+      .line-table td {
+        border-bottom: 0;
+        padding: 10px 12px;
+      }
+      .line-table td:first-child {
+        width: auto;
+        padding-top: 14px;
+      }
       .hero::before {
         background:
           linear-gradient(180deg, rgba(2, 5, 2, 0.92) 0%, rgba(2, 5, 2, 0.76) 48%, rgba(2, 5, 2, 0.96) 100%),
@@ -3360,8 +3546,14 @@
           </select>
           <span id="siteLanguageStatus" class="site-language-status" aria-live="polite"></span>
         </div>
-        <a class="nav-action nav-action-hf" href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF</a>
-        <a class="nav-action nav-action-repo" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite">Repo</a>
+        <a class="nav-action nav-action-hf" data-mark="HF" href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite" aria-label="Open Hugging Face Space">
+          <span class="nav-action-text-full">HF Space</span>
+          <span class="nav-action-text-short">HF</span>
+        </a>
+        <a class="nav-action nav-action-repo" data-mark="GH" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite" aria-label="Open GitHub repository">
+          <span class="nav-action-text-full">GitHub</span>
+          <span class="nav-action-text-short">Repo</span>
+        </a>
       </div>
       <div id="google_translate_element" aria-hidden="true"></div>
     </div>
@@ -3384,6 +3576,30 @@
           <a class="button" href="#takeaways">See current results</a>
           <a class="button" href="#suite">Inspect 20 tasks</a>
           <a class="button" href="single_episode_explorer.html">Open explorer</a>
+        </div>
+        <div class="suite-lines" aria-label="Two evidence lines">
+          <article class="suite-line-card">
+            <small>line 1 / public sample</small>
+            <h3>1 episode: task construction and reproducible baselines</h3>
+            <p>Use this line to inspect one full sample, understand each file, and rerun Minimal and Neural MLP task heads locally.</p>
+            <div class="suite-line-facts">
+              <span><strong>5,821</strong>frames</span>
+              <span><strong>1,161</strong>20-frame windows</span>
+              <span><strong>40/40</strong>Minimal + NN task scores</span>
+            </div>
+            <a href="#raw-sample">Open sample line</a>
+          </article>
+          <article class="suite-line-card">
+            <small>line 2 / selected held-out suite</small>
+            <h3>128 episodes: aligned baselines and model branches</h3>
+            <p>Use this line to compare same-split metadata/raw baselines, Qwen3-Omni, and Cosmos diagnostics on the 20-task surface.</p>
+            <div class="suite-line-facts">
+              <span><strong>128</strong>selected episodes</span>
+              <span><strong>34,269</strong>exported windows</span>
+              <span><strong>140/140</strong>128-line task scores</span>
+            </div>
+            <a href="#suite">Open 128-episode line</a>
+          </article>
         </div>
         <div class="hero-paths" aria-label="Choose a reader path">
           <a class="hero-path" href="#overview">
@@ -3501,9 +3717,36 @@
     <section id="overview" data-project-tab="start" role="tabpanel" aria-labelledby="tab-start" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Project overview and contributions.</h2>
-          <p>The page is organized like a compact research project: motivation and scope, dataset sample, task suite, method, baselines, research directions, interactive walkthroughs, and resources for continuing the work. The public sample is used as a real but bounded research system, not as a final full-dataset benchmark.</p>
+          <h2>Two evidence lines: 1 episode and 128 episodes.</h2>
+          <p>The project has two public reading paths. The 1-episode line is the fully inspectable task lab. The 128-episode line is the aligned comparison layer for same-split baselines and model branches. Keep them separate when interpreting results.</p>
         </div>
+        <table class="line-table" aria-label="Two evidence-line comparison">
+          <thead>
+            <tr>
+              <th>Line</th>
+              <th>Data unit</th>
+              <th>Methods shown</th>
+              <th>Use this line for</th>
+              <th>Start here</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 sample episode</td>
+              <td>One public Xperience-10M sample episode; 5,821 frames; 1,161 aligned 20-frame windows; 8,546-dimensional feature contract.</td>
+              <td>Minimal heads and Neural MLP heads. Both cover all 20 task contracts, for 40/40 scored method-task records.</td>
+              <td>Raw sample inspection, file organization, task definitions, local reproducibility, and controlled baseline behavior.</td>
+              <td><a href="#raw-sample">Raw browser</a><br><a href="data/single_episode_task_model_radar.json">1-episode radar JSON</a><br><a href="data/two_evidence_lines.json">line JSON</a></td>
+            </tr>
+            <tr>
+              <td>128 selected episodes</td>
+              <td>Selected held-out 96/16/16 split; 34,269 exported windows; public-safe metadata/raw-feature artifacts linked to official gated episode paths.</td>
+              <td>Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano. Together they form 140/140 scored 128-line method-task records.</td>
+              <td>Same-split comparison, model-branch diagnostics, Qwen/Cosmos evidence, and the next scale-up decisions.</td>
+              <td><a href="data/episode128_task_model_radar.json">128-episode radar JSON</a><br><a href="data/xperience10m_128_episode_feature_index.json">feature index JSON</a><br><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/TWO_EVIDENCE_LINES.md">line doc</a></td>
+            </tr>
+          </tbody>
+        </table>
         <div class="reader-journey" aria-label="Recommended reader journeys">
           <article class="reader-step">
             <small>01 understand</small>
@@ -4315,7 +4558,7 @@
         <div class="figure-brief">
           <article class="figure-brief-card">
             <h3>Unified plus split radars</h3>
-            <p>The unified radar keeps all 9 methods in one view. The two split radars separate the clean 1-episode Minimal/NN baseline comparison from the 128-episode metadata/raw/Qwen/Cosmos comparison.</p>
+            <p>The unified radar keeps all 9 methods in one view. The split radars separate the 1-episode Minimal/NN baseline comparison from the 128-episode metadata/raw/Qwen/Cosmos comparison.</p>
           </article>
           <article class="figure-brief-card">
             <h3>Metric normalization</h3>
@@ -4339,7 +4582,7 @@
           </article>
           <article class="split-radar-card">
             <h3>128-Episode 20-Task Radar</h3>
-            <p>Raw128 Simple and Raw128 NN score all 20 axes; metadata, Qwen3, and Cosmos branches keep 20 records but only plot evaluated numeric targets.</p>
+            <p>Seven aligned 128-episode methods cover all 20 axes: metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano. Proxy axes stay labeled in the JSON.</p>
             <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="128-episode 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 branches with explicit scored-axis counts">
             <div class="split-radar-links">
               <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
@@ -4432,8 +4675,32 @@
     <section id="takeaways" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>What the current results actually say.</h2>
-          <p>A generated takeaways layer reads the committed metrics, summarizes useful research signals, and identifies what still needs held-out episodes.</p>
+          <h2>Results by evidence line.</h2>
+          <p>Read the results as two layers. The 1-episode layer explains task behavior and reproducible baselines. The 128-episode layer compares aligned baselines and model branches, with proxy notes kept visible.</p>
+        </div>
+        <div class="suite-lines" aria-label="Results split by evidence line">
+          <article class="suite-line-card">
+            <small>1 episode results</small>
+            <h3>Task-lab evidence</h3>
+            <p>Minimal and Neural MLP heads are both scored on all 20 public-sample task contracts. This is the cleanest place to inspect whether each task is well-posed.</p>
+            <div class="suite-line-facts">
+              <span><strong>2</strong>methods</span>
+              <span><strong>20</strong>task axes</span>
+              <span><strong>40/40</strong>scores</span>
+            </div>
+            <a href="assets/charts/single_episode_task_model_radar.svg">Open 1-episode radar</a>
+          </article>
+          <article class="suite-line-card">
+            <small>128 episode results</small>
+            <h3>Scale-up evidence</h3>
+            <p>Metadata/raw baselines and Qwen/Cosmos branches use the aligned 128-episode surface. Compact proxy scores remain marked where a direct raw target is absent.</p>
+            <div class="suite-line-facts">
+              <span><strong>7</strong>methods</span>
+              <span><strong>20</strong>task axes</span>
+              <span><strong>140/140</strong>scores</span>
+            </div>
+            <a href="assets/charts/episode128_task_model_radar.svg">Open 128-episode radar</a>
+          </article>
         </div>
         <div class="artifact-grid">
           <article class="artifact primary-artifact">

@@ -1,0 +1,69 @@
+{
+  "status": "current",
+  "updated_utc": "2026-06-21T00:00:00Z",
+  "interpretation_rule": "Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for held-out comparison and model-branch claims.",
+  "lines": [
+    {
+      "id": "single_public_sample_episode",
+      "label": "1 sample episode",
+      "data_unit": "One public Xperience-10M sample episode",
+      "frames": 5821,
+      "windows": 1161,
+      "window_definition": "20-frame aligned windows with 5-frame stride",
+      "feature_dimensions": 8546,
+      "methods": [
+        "Minimal heads",
+        "Neural MLP heads"
+      ],
+      "task_axes": 20,
+      "method_task_records": 40,
+      "scored_records": 40,
+      "best_use": "Inspect raw files, understand each task, rerun local baselines, and debug task quality.",
+      "primary_artifacts": [
+        "docs/data/single_episode_task_model_radar.json",
+        "results/episode_task_suite/summary_report.json",
+        "results/episode_task_suite/feature_manifest.json",
+        "docs/single_episode_explorer.html"
+      ]
+    },
+    {
+      "id": "selected_128_episode_surface",
+      "label": "128 selected episodes",
+      "data_unit": "Selected held-out 96/16/16 split with public-safe processed features linked to official gated episode paths",
+      "episodes": 128,
+      "split": {
+        "train": 96,
+        "validation": 16,
+        "test": 16
+      },
+      "exported_windows": 34269,
+      "methods": [
+        "Metadata simple",
+        "Metadata NN",
+        "Raw-feature simple",
+        "Raw-feature NN",
+        "Qwen3-Omni",
+        "Cosmos3-Super",
+        "Cosmos3-Nano"
+      ],
+      "task_axes": 20,
+      "method_task_records": 140,
+      "scored_records": 140,
+      "proxy_policy": "Proxy flags remain visible where the public export lacks a direct raw target.",
+      "best_use": "Compare same-split baselines and model branches while keeping evidence type explicit.",
+      "primary_artifacts": [
+        "docs/data/episode128_task_model_radar.json",
+        "docs/data/xperience10m_128_episode_feature_index.json",
+        "docs/data/omni_model_comparison.json",
+        "docs/data/task_method_20_gap_audit.json"
+      ]
+    }
+  ],
+  "combined_public_matrix": {
+    "task_axes": 20,
+    "methods": 9,
+    "method_task_records": 180,
+    "scored_records": 180,
+    "artifact": "docs/data/task_method_20_result_matrix.json"
+  }
+}

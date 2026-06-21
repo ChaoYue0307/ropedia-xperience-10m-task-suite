@@ -37,7 +37,7 @@
 
 **Ropedia Xperience-10M Task Suite** turns the public Xperience-10M sample into a readable embodied-AI benchmark surface. It keeps the evidence trail explicit: what is derived from the one public sample episode, what is evaluated on selected 128-episode held-out splits, what is mirrored to Hugging Face, and what still requires gated raw data or new model-specific evaluators.
 
-**Updated:** 2026-06-18.
+**Updated:** 2026-06-21.
 
 **Scope:** one public sample episode for the fully reproducible task suite; selected 128-episode public-safe artifacts for Qwen3-Omni, Cosmos3, metadata baselines, and raw-feature baselines. Raw Xperience-10M MP4/HDF5/RRD files, full Qwen weights, and gated data are not redistributed here.
 
@@ -45,6 +45,7 @@
 
 - [How To Read This Project](#how-to-read-this-project)
 - [At A Glance](#at-a-glance)
+- [Two Evidence Lines](#two-evidence-lines)
 - [Fast Reader Map](#fast-reader-map)
 - [Why This Project Exists](#why-this-project-exists)
 - [Start Here](#start-here)
@@ -96,6 +97,44 @@ The multilingual README files are reader guides. The canonical technical evidenc
     </tr>
   </tbody>
 </table>
+
+## Two Evidence Lines
+
+The public suite is organized around two result lines. Keep them separate when
+reading metrics.
+
+<table>
+  <thead>
+    <tr>
+      <th width="20%">Line</th>
+      <th width="26%">Data unit</th>
+      <th width="24%">Methods</th>
+      <th>Primary use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1 sample episode</strong></td>
+      <td>One public Xperience-10M sample episode: 5,821 frames, 1,161 aligned 20-frame windows, 8,546 feature dimensions.</td>
+      <td>Minimal heads and Neural MLP heads on all 20 tasks: 40/40 scored method-task records.</td>
+      <td>Inspect raw sample files, understand task definitions, rerun local baselines, and debug whether each task is well-posed.</td>
+    </tr>
+    <tr>
+      <td><strong>128 selected episodes</strong></td>
+      <td>Selected held-out 96/16/16 split: 34,269 exported windows with public-safe processed features linked to official gated episode paths.</td>
+      <td>Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano: 140/140 scored 128-line records.</td>
+      <td>Compare same-split baselines and model branches; use proxy flags where the public export lacks a direct raw target.</td>
+    </tr>
+  </tbody>
+</table>
+
+Result entry points:
+[`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md),
+[`two_evidence_lines.json`](docs/data/two_evidence_lines.json),
+[`single_episode_task_model_radar.json`](docs/data/single_episode_task_model_radar.json),
+[`episode128_task_model_radar.json`](docs/data/episode128_task_model_radar.json),
+[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), and
+[`xperience10m_128_episode_feature_index.json`](docs/data/xperience10m_128_episode_feature_index.json).
 
 ## Fast Reader Map
 
