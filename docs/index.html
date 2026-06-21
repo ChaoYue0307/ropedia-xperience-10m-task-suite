@@ -66,7 +66,7 @@
       --font-btn: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --font-mono: "Space Grotesk", "SF Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
       --nav-height: 82px;
-      --tab-stack-offset: 176px;
+      --tab-stack-offset: 98px;
     }
 
     * { box-sizing: border-box; }
@@ -582,6 +582,7 @@
     main > section:focus { outline: none; }
     main.tabbed > section[hidden] { display: none; }
     .project-tabs-shell {
+      display: none;
       order: 0;
       position: sticky;
       top: var(--nav-height);
@@ -813,11 +814,24 @@
     .architecture-image,
     .task-suite-image,
     .chart {
+      display: block;
       width: 100%;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--surface);
       box-shadow: 0 18px 46px rgba(0, 0, 0, 0.36);
+    }
+    .radar-chart {
+      background: #020502;
+      object-fit: contain;
+    }
+    .unified-radar-chart {
+      height: min(88vh, 1080px);
+      min-height: clamp(700px, 58vw, 980px);
+      padding: 8px;
+    }
+    #suite .split-radar-card img {
+      min-height: clamp(560px, 45vw, 860px);
     }
     .lora-pipeline-image {
       display: block;
@@ -852,9 +866,9 @@
     }
     .split-radar-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      margin: 22px 0 28px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      margin: 26px 0 34px;
     }
     .split-radar-card {
       min-width: 0;
@@ -863,7 +877,7 @@
       background:
         linear-gradient(180deg, rgba(204, 255, 160, 0.06), rgba(6, 14, 7, 0.82)),
         var(--surface);
-      padding: 16px;
+      padding: 20px;
     }
     .split-radar-card h3 {
       margin: 0;
@@ -881,6 +895,8 @@
     .split-radar-card img {
       display: block;
       width: 100%;
+      min-height: clamp(420px, 34vw, 660px);
+      object-fit: contain;
       border: 1px solid rgba(204, 255, 160, 0.14);
       border-radius: 6px;
       background: #020502;
@@ -3244,8 +3260,8 @@
         gap: 12px;
       }
       .hero-radar-frame img {
-        height: 250px;
-        min-height: 230px;
+        height: clamp(380px, 33vw, 540px);
+        min-height: 360px;
       }
       .hero-radar-copy {
         gap: 8px;
@@ -3287,7 +3303,7 @@
     @media (max-width: 1280px) {
       :root {
         --nav-height: 68px;
-        --tab-stack-offset: 152px;
+        --tab-stack-offset: 84px;
       }
       .site-nav .wrap,
       .project-tabs-shell .wrap {
@@ -3445,7 +3461,7 @@
     @media (max-width: 640px) {
       :root {
         --nav-height: 104px;
-        --tab-stack-offset: 188px;
+        --tab-stack-offset: 120px;
       }
       .site-nav {
         min-height: var(--nav-height);
@@ -3733,7 +3749,9 @@
       .hero-radar-panel { padding: 12px; }
       .hero-radar-top { display: block; }
       .hero-radar-top span { display: block; margin-top: 5px; }
-      .hero-radar-frame img { height: 320px; min-height: 260px; }
+      .hero-radar-frame img { height: 360px; min-height: 320px; }
+      .unified-radar-chart { height: 560px; min-height: 560px; }
+      .split-radar-card img { min-height: 500px; }
       .hero-radar-stats,
       .hero-task-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .signal { border-right: 0; border-bottom: 1px solid rgba(245, 247, 240, 0.10); }
@@ -4012,8 +4030,8 @@
     </div>
   </header>
 
-  <main id="main" class="tabbed" data-active-tab="start">
-    <div class="project-tabs-shell" aria-label="Current section navigation">
+  <main id="main" class="continuous" data-active-tab="start">
+    <div class="project-tabs-shell" aria-label="Current section navigation" hidden aria-hidden="true">
       <div class="wrap project-tabs" role="tablist" aria-label="Project sections" hidden aria-hidden="true">
         <button type="button" class="project-tab active" id="tab-start" role="tab" data-tab-key="start" data-default-section="overview" aria-selected="true" aria-pressed="true" aria-controls="overview roadmap development-directions reading-path">
           <strong>Start</strong>
@@ -5007,7 +5025,7 @@
             <p>The matrix has 180/180 scored method-task records: 174 direct scores and 6 compact-proxy scores. The audit records the source artifact, metric key, and proxy reason for each marked cell.</p>
           </article>
         </div>
-        <img class="chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v6" alt="Unified 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, score counts, and proxy notes">
+        <img class="chart radar-chart unified-radar-chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v6" alt="Unified 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, score counts, and proxy notes">
         <div class="split-radar-grid" aria-label="Split 20-task radar comparisons">
           <article class="split-radar-card">
             <h3>1-Episode 20-Task Radar</h3>
@@ -6189,13 +6207,13 @@ python scripts/validate_publication_package.py</code></pre>
     function setProjectTab(tabKey, options = {}) {
       const fallbackTab = tabDefaultSections[tabKey] ? tabKey : "start";
       const requestedId = options.targetId || tabDefaultSections[fallbackTab] || "overview";
-      const targetId = sectionTabMap[requestedId] === fallbackTab
+      const targetId = document.getElementById(requestedId)
         ? requestedId
         : tabDefaultSections[fallbackTab] || "overview";
       document.getElementById("main").dataset.activeTab = fallbackTab;
       document.getElementById("main").dataset.activeSection = targetId;
       tabSections.forEach((section) => {
-        section.hidden = section.id !== targetId;
+        section.hidden = false;
       });
       tabButtons.forEach((button) => {
         const active = button.dataset.tabKey === fallbackTab;
@@ -6221,6 +6239,7 @@ python scripts/validate_publication_package.py</code></pre>
 
     function activateTabForHash(options = {}) {
       const hashId = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+      if (hashId && !sectionTabMap[hashId]) return;
       const tabKey = sectionTabMap[hashId] || "start";
       const targetId = sectionTabMap[hashId] ? hashId : tabDefaultSections[tabKey];
       setProjectTab(tabKey, { targetId, scroll: options.scroll, smooth: options.smooth });
