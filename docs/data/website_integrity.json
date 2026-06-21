@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-21T12:58:22+00:00",
+  "generated_at_utc": "2026-06-21T13:32:48+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 247,
-    "external_reference_count": 153,
-    "json_files": 54,
+    "local_references": 254,
+    "external_reference_count": 157,
+    "json_files": 55,
     "image_assets_referenced": 29,
     "failure_count": 0
   },
@@ -30,7 +30,7 @@
       "name": "project_sections_are_assigned_to_tabs",
       "status": "pass",
       "reason": "Every major research section should be assigned to a tab group.",
-      "section_count": 23
+      "section_count": 24
     },
     {
       "name": "project_hash_router_preserves_deep_links",
@@ -58,8 +58,8 @@
       "name": "project_sections_are_labeled_tabpanels",
       "status": "pass",
       "reason": "Every tabbed research section should expose a labeled panel role.",
-      "panel_count": 27,
-      "labeled_panel_count": 23
+      "panel_count": 28,
+      "labeled_panel_count": 24
     },
     {
       "name": "project_tabs_update_selected_state",
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 119024,
-      "evidence_index": 164298
+      "overview_index": 121816,
+      "evidence_index": 167676
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 119024,
-      "protocol_index": 160486,
-      "evidence_index": 164298
+      "overview_index": 121816,
+      "protocol_index": 163864,
+      "evidence_index": 167676
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -276,8 +276,8 @@
     },
     {
       "path": "index.html",
-      "id_count": 95,
-      "reference_count": 219,
+      "id_count": 96,
+      "reference_count": 226,
       "image_count": 35
     },
     {
@@ -301,7 +301,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 123419,
+      "bytes": 124252,
       "top_level_type": "dict"
     },
     {
@@ -337,6 +337,11 @@
     {
       "path": "data/foundation_model_plan.json",
       "bytes": 13925,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/glossary.json",
+      "bytes": 17321,
       "top_level_type": "dict"
     },
     {
@@ -391,7 +396,7 @@
     },
     {
       "path": "data/public_reader_map.json",
-      "bytes": 6757,
+      "bytes": 6951,
       "top_level_type": "dict"
     },
     {

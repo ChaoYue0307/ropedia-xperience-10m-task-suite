@@ -12,6 +12,7 @@ trail.
 | Understand the project in one pass | `PROJECT_BRIEF.md` | `PROJECT_STATUS.md`, `RESEARCH_TAKEAWAYS.md` |
 | Understand the two evidence lines | `TWO_EVIDENCE_LINES.md` | `docs/data/two_evidence_lines.json`, `docs/data/two_evidence_line_result_summary.json` |
 | See the visual public dashboard | GitHub Pages or the HF Space | `docs/index.html`, `docs/data/project_packet.json` |
+| Decode project terminology | `GLOSSARY.md` | `docs/data/glossary.json`, homepage Glossary section |
 | Understand the data unit | `results/episode_task_suite/windows.csv` | `results/episode_task_suite/feature_manifest.json`, `docs/data/raw_sample_files.json` |
 | Trace the 128-episode split | `XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md` | `docs/data/xperience10m_128_episode_feature_index.json`, `results/omni_finetune/xperience10m_128_episode_selection.csv` |
 | Inspect the 20-task benchmark | `TASK_SUITE_20.md` | `docs/data/task_suite_20.json`, `EVALUATION_PROTOCOL.md` |
@@ -40,16 +41,18 @@ trail.
 
 1. Dataset/source boundary: upstream Xperience-10M links, public sample scope,
    raw-data exclusion, and derived-file policy.
-2. Data contract: 20-frame windows, feature blocks, modality availability,
+2. Glossary: definitions for evidence line, 20-frame window, compact-proxy
+   score, Qwen v1-v6, Cosmos3 branches, LoRA adapters, and HF surfaces.
+3. Data contract: 20-frame windows, feature blocks, modality availability,
    split policy, and leakage controls.
-3. Task suite: 20 named tasks with inputs, outputs, metrics, baseline
+4. Task suite: 20 named tasks with inputs, outputs, metrics, baseline
    artifacts, and walkthroughs.
-4. Results: Line 1 minimal/neural heads, Line 2 selected-128 aligned baselines,
+5. Results: Line 1 minimal/neural heads, Line 2 selected-128 aligned baselines,
    Qwen3-Omni v6 diagnostics, Cosmos diagnostics, radar views, and explicit
    direct-vs-proxy labels.
-5. Foundation directions: spatial intelligence, human-video world modeling, and
+6. Foundation directions: spatial intelligence, human-video world modeling, and
    vision-language-action training pipelines.
-6. Public-release checks: website integrity, source alignment, mirror parity,
+7. Public-release checks: website integrity, source alignment, mirror parity,
    publication package scan, and live URL/hash verification.
 
 ## Claim Boundaries

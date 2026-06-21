@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-21T12:58:43+00:00",
+  "generated_at_utc": "2026-06-21T13:34:02+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -49,6 +49,7 @@
     "LICENSE": true,
     "codemeta.json": true,
     "ARTIFACT_GUIDE.md": true,
+    "GLOSSARY.md": true,
     "PROJECT_STATUS.md": true,
     "PUBLIC_READER_MAP.md": true,
     "RESEARCH_ROADMAP.md": true,
@@ -81,6 +82,7 @@
     "docs/data/evidence_contract.json": true,
     "docs/data/evaluation_protocol.json": true,
     "docs/data/figure_index.json": true,
+    "docs/data/glossary.json": true,
     "docs/data/source_alignment_audit.json": true,
     "docs/data/artifact_index.json": true,
     "docs/data/live_publication_status.json": true,
@@ -233,8 +235,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 1522,
-      "text_file_count": 1261,
+      "file_count": 1524,
+      "text_file_count": 1263,
       "largest_file": {
         "path": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/interaction_text_prediction/confusion_matrix.csv",
         "bytes": 73057076
@@ -244,8 +246,8 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 572,
-      "text_file_count": 425,
+      "file_count": 575,
+      "text_file_count": 428,
       "largest_file": {
         "path": "results/omni_finetune/xperience10m_qwen3_omni_v6_sensor_target_probes_a100_20260619T000000Z/modality_reconstruction/predictions.jsonl",
         "bytes": 10221085
@@ -255,8 +257,8 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 4519,
-      "text_file_count": 1283,
+      "file_count": 4522,
+      "text_file_count": 1286,
       "largest_file": {
         "path": "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608/dense_multiscale_windows.jsonl",
         "bytes": 135591061
@@ -266,8 +268,8 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 5281,
-      "text_file_count": 1455,
+      "file_count": 5285,
+      "text_file_count": 1459,
       "largest_file": {
         "path": "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608/dense_multiscale_windows.jsonl",
         "bytes": 135591061

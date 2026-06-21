@@ -90,6 +90,12 @@ Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Kar
 | HF weights/results | https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results |
 | HF collection | https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite |
 
+## Glossary
+
+Use `GLOSSARY.md` and `docs/data/glossary.json` for project terminology:
+evidence line, 20-frame window, compact-proxy score, Qwen v1-v6,
+Cosmos3-Super, LoRA adapter, HF artifact dataset, and related terms.
+
 ## Citation
 
 Use `CITATION.cff` and cite the upstream Ropedia Xperience-10M dataset according to its official card.

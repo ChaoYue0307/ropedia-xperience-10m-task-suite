@@ -780,9 +780,10 @@
     #features { order: 17; }
     #diagnostics { order: 18; }
     #evidence { order: 19; }
-    #artifacts { order: 20; }
-    #omni-scale-up { order: 21; }
-    #run { order: 22; }
+    #glossary { order: 20; }
+    #artifacts { order: 21; }
+    #omni-scale-up { order: 22; }
+    #run { order: 23; }
     #suite { padding: 62px 0 76px; }
     #suite .wrap { width: min(1680px, calc(100% - 48px)); }
     #suite .section-head { max-width: var(--max); margin-inline: auto; }
@@ -1920,6 +1921,110 @@
       line-height: 1.45;
     }
     .surface-map a:hover { border-color: var(--green); }
+    .glossary-panel {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.88fr) minmax(0, 1.42fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .glossary-summary {
+      display: grid;
+      gap: 12px;
+    }
+    .glossary-summary article {
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(204, 255, 160, 0.1), rgba(122, 229, 195, 0.025));
+    }
+    .glossary-summary small {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .glossary-summary strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 20px;
+      line-height: 1.15;
+    }
+    .glossary-summary p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .glossary-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      background: rgba(2, 5, 2, 0.58);
+    }
+    .glossary-table {
+      width: 100%;
+      min-width: 920px;
+      border-collapse: collapse;
+      font-size: 13px;
+      line-height: 1.46;
+    }
+    .glossary-table th,
+    .glossary-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(204, 255, 160, 0.14);
+      vertical-align: top;
+      text-align: left;
+    }
+    .glossary-table th {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(204, 255, 160, 0.07);
+    }
+    .glossary-table td:first-child {
+      width: 18%;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 15px;
+      font-weight: 750;
+    }
+    .glossary-table td:nth-child(2) {
+      width: 32%;
+      color: #d8e2d4;
+    }
+    .glossary-table td:nth-child(3),
+    .glossary-table td:nth-child(4) {
+      color: var(--muted);
+    }
+    .glossary-table tr:last-child td {
+      border-bottom: 0;
+    }
+    .glossary-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .glossary-links a {
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      padding: 9px 11px;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.035);
+    }
+    .glossary-links a:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
     .brief-actions {
       display: flex;
       flex-wrap: wrap;
@@ -3341,6 +3446,9 @@
       .project-tab span {
         font-size: 12px;
       }
+      .glossary-panel {
+        grid-template-columns: 1fr;
+      }
       .section-tab {
         min-height: 42px;
         padding: 0 14px;
@@ -3867,6 +3975,7 @@
         <a href="#models">Results</a>
         <a href="#directions">Directions</a>
         <a href="research_roadmap.html">Roadmap</a>
+        <a href="#glossary">Glossary</a>
         <a class="nav-optional" href="#reader-map">Reader Map</a>
         <a class="nav-optional" href="#walkthroughs">Demo</a>
         <a class="nav-optional" href="single_episode_explorer.html">Explorer</a>
@@ -4053,7 +4162,7 @@
           <strong>Directions</strong>
           <span>four tracks and probes</span>
         </button>
-        <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="artifacts" aria-selected="false" aria-pressed="false" aria-controls="evidence artifacts omni-scale-up run" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="artifacts" aria-selected="false" aria-pressed="false" aria-controls="evidence glossary artifacts omni-scale-up run" tabindex="-1">
           <strong>Resources</strong>
           <span>research artifacts and scale-up</span>
         </button>
@@ -4265,6 +4374,16 @@
                 <a href="single_episode_explorer.html">explorer</a>
                 <a href="data/raw_sample_files.json">files</a>
                 <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">features</a>
+              </div>
+            </article>
+            <article class="brief-card">
+              <small>terms</small>
+              <strong>Decode terminology</strong>
+              <p>Use the glossary when evidence lines, direct/proxy scores, Qwen v1-v6, Cosmos branches, or HF surfaces are unclear.</p>
+              <div class="reading-links">
+                <a href="#glossary">glossary</a>
+                <a href="data/glossary.json">glossary JSON</a>
+                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/GLOSSARY.md">Markdown</a>
               </div>
             </article>
             <article class="brief-card">
@@ -5619,6 +5738,68 @@
       </div>
     </section>
 
+    <section id="glossary" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Glossary for overloaded terms.</h2>
+          <p>These are the terms readers most often confuse when moving between the repo, website, Hugging Face mirrors, result matrices, and model-package cards. The full glossary is mirrored as Markdown and JSON.</p>
+        </div>
+        <div class="glossary-panel">
+          <div class="glossary-summary" aria-label="Glossary categories">
+            <article>
+              <small>scope</small>
+              <strong>Separate data, claims, and mirrors</strong>
+              <p>Evidence lines, public-safe artifacts, and gated upstream data are different objects. The glossary keeps those boundaries visible.</p>
+            </article>
+            <article>
+              <small>results</small>
+              <strong>Read scores by source type</strong>
+              <p>Direct scores, compact-proxy scores, gap audits, and task-method records should not be interpreted as the same kind of evidence.</p>
+            </article>
+            <article>
+              <small>models</small>
+              <strong>Keep branches distinct</strong>
+              <p>Minimal/NN heads, metadata/raw baselines, Qwen3-Omni v1-v6, Cosmos3-Super, Cosmos3-Nano, LoRA adapters, and full-parameter gates each mean something specific.</p>
+            </article>
+          </div>
+          <div>
+            <div class="glossary-table-wrap">
+              <table class="glossary-table">
+                <thead>
+                  <tr>
+                    <th>Term</th>
+                    <th>Meaning here</th>
+                    <th>Use it for</th>
+                    <th>Do not confuse with</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Evidence line</td><td>A claim boundary for results.</td><td>Line 1 is the public sample episode; Line 2 is selected-128 held-out comparison.</td><td>Qwen v1-v6 run versions.</td></tr>
+                  <tr><td>Public sample episode</td><td>The one fully inspectable official sample episode.</td><td>Raw-file browsing, task construction, single-episode baselines.</td><td>Multi-episode generalization.</td></tr>
+                  <tr><td>Selected 128 episodes</td><td>Public-safe derived features linked to official gated episode paths.</td><td>Same-split Line 2 baseline/model comparisons.</td><td>Redistributed raw MP4/HDF5/RRD files.</td></tr>
+                  <tr><td>20-frame window</td><td>A fixed short clip slice used as a model input unit.</td><td>Feature rows, labels, tasks, and many baseline heads.</td><td>A full episode.</td></tr>
+                  <tr><td>Task-method record</td><td>One method evaluated on one task.</td><td>The 9 x 20 public matrix, now 180 scored records.</td><td>A single prediction row.</td></tr>
+                  <tr><td>Direct score</td><td>A metric computed against the task target directly.</td><td>Primary interpretation in the result matrix.</td><td>Compact-proxy score.</td></tr>
+                  <tr><td>Compact-proxy score</td><td>A bounded proxy when the direct raw target is not public.</td><td>Explicitly marked cells in the gap audit and matrix.</td><td>A direct target measurement.</td></tr>
+                  <tr><td>Qwen3-Omni v6</td><td>The current public Qwen 20-task row.</td><td>Qwen3-Omni LoRA plus task-specific probes.</td><td>All Qwen v1-v6 experiments.</td></tr>
+                  <tr><td>Cosmos3-Super</td><td>The larger Cosmos-style branch.</td><td>Reasoner diagnostics and a verified forward-dynamics LoRA branch.</td><td>Cosmos3-Nano Future Window.</td></tr>
+                  <tr><td>LoRA adapter</td><td>Lightweight trainable adapter weights.</td><td>Public model-branch artifacts when verified.</td><td>Full base-model weights.</td></tr>
+                  <tr><td>HF artifact dataset</td><td>Hugging Face dataset repo for derived evidence.</td><td>Reports, metrics, website JSON, sanitized result packages.</td><td>The upstream Xperience-10M dataset.</td></tr>
+                  <tr><td>Mirror parity</td><td>A check that public copies match source files.</td><td>Verifying GitHub, website, and HF mirrors.</td><td>A model-quality metric.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="glossary-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/GLOSSARY.md">Open full glossary</a>
+              <a href="data/glossary.json">Open glossary JSON</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PUBLIC_READER_MAP.md">Reader map</a>
+              <a href="data/task_method_20_gap_audit.json">Score/proxy audit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="artifacts" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
@@ -5696,6 +5877,7 @@
             </div>
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Public reader map</h3><p>Single navigation view for GitHub, GitHub Pages, HF Space, artifact dataset, baseline model repo, Qwen3-Omni/Cosmos3 repos, and public claim boundaries.</p></div><a href="data/public_reader_map.json">reader map</a></article>
+              <article class="artifact primary-artifact"><div><h3>Glossary</h3><p>Definitions for evidence lines, windows, direct/proxy scores, Qwen v1-v6, Cosmos3 branches, adapters, and public mirror terms.</p></div><a href="data/glossary.json">glossary JSON</a><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/GLOSSARY.md">Markdown</a></article>
               <article class="artifact primary-artifact"><div><h3>Artifact guide</h3><p>Human-readable map from project scope to data contract, task evidence, platform mirrors, and scale-up status.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ARTIFACT_GUIDE.md">artifact guide</a></article>
               <article class="artifact"><h3>Reproduction scripts</h3><p>Training, visualization, taxonomy, walkthrough, validator, and omni-readiness scripts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/scripts">scripts/</a></article>
               <article class="artifact"><h3>Hugging Face Space</h3><p>The dashboard packaged as a public static Space.</p><a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a></article>
@@ -5734,6 +5916,7 @@
             </div>
             <div class="artifact-grid">
               <article class="artifact"><h3>Project brief</h3><p>The fastest written overview of the dataset sample, tasks, baselines, and scale-up plan.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">brief</a></article>
+              <article class="artifact"><h3>Glossary</h3><p>Plain-language definitions for the terms most likely to confuse first-time readers and reviewers.</p><a href="data/glossary.json">glossary</a></article>
               <article class="artifact"><h3>Task walkthroughs</h3><p>Human-readable case studies for the original tasks, including input, process modules, output, metric, and limitation.</p><a href="data/task_walkthroughs.json">walkthroughs</a></article>
               <article class="artifact"><h3>Task results</h3><p>Minimal and neural-head metrics for the same sample windows and chronological split.</p><a href="data/summary_metrics.json">metrics</a></article>
               <article class="artifact"><h3>Visual figures</h3><p>Task-suite map, modality atlas, pipeline diagram, model architecture figure, and Qwen3-Omni LoRA training-flow figure.</p><a href="assets/task_suite_infographic.png">task-suite figure</a></article>
@@ -6089,8 +6272,9 @@ python scripts/validate_publication_package.py</code></pre>
       { id: "directions", label: "Four Directions" },
       { id: "extensions", label: "Tasks 13-20" },
       { id: "diagnostics", label: "Diagnostic Charts" },
-      { id: "artifacts", label: "Research Artifacts" },
       { id: "evidence", label: "Research Progress" },
+      { id: "glossary", label: "Glossary" },
+      { id: "artifacts", label: "Research Artifacts" },
       { id: "omni-scale-up", label: "Omni Scale-Up" },
       { id: "run", label: "Reproduce" }
     ];
@@ -6114,6 +6298,7 @@ python scripts/validate_publication_package.py</code></pre>
       directions: "Best for mapping tasks to spatial, world-model, and VLA directions.",
       extensions: "Best for tasks 13-20 and the extended task surface.",
       diagnostics: "Best for charts and error-analysis evidence.",
+      glossary: "Best for terms that can be confused across data, tasks, models, metrics, and public mirrors.",
       artifacts: "Best for finding files, mirrors, weights, scripts, and checks.",
       evidence: "Best for current experiment status and milestones.",
       "omni-scale-up": "Best for Qwen3-Omni and Cosmos3 status.",

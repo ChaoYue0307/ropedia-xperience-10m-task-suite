@@ -1,0 +1,352 @@
+{
+  "title": "Ropedia Xperience-10M Glossary",
+  "status": "published",
+  "purpose": "Define reader-facing terms that can be confused across the repo, website, Hugging Face mirrors, result matrices, and model-package surfaces.",
+  "categories": [
+    {
+      "id": "dataset_scope",
+      "label": "Dataset and scope",
+      "description": "Public data boundaries, evidence lines, and what each result can claim."
+    },
+    {
+      "id": "files_features",
+      "label": "Files and features",
+      "description": "How raw sample files, windows, feature manifests, and public-safe derivatives relate."
+    },
+    {
+      "id": "tasks_metrics",
+      "label": "Tasks and metrics",
+      "description": "Task contracts, scored records, direct scores, compact proxies, and audits."
+    },
+    {
+      "id": "models_runs",
+      "label": "Models and runs",
+      "description": "Baseline families, Qwen3-Omni, Cosmos3, LoRA adapters, and full-parameter gates."
+    },
+    {
+      "id": "public_surfaces",
+      "label": "Public surfaces",
+      "description": "GitHub, website, Hugging Face repos, parity checks, and package validation."
+    }
+  ],
+  "entries": [
+    {
+      "term": "Xperience-10M",
+      "category": "dataset_scope",
+      "plain_meaning": "The upstream embodied human-interaction dataset.",
+      "project_usage": "Source dataset behind the public sample, selected-128 features, task suite, and model diagnostics.",
+      "do_not_confuse_with": "This repo, which only redistributes public-safe derived artifacts.",
+      "primary_files": ["XPERIENCE10M_DATASET_CARD_ALIGNMENT.md", "docs/data/xperience10m_dataset_card_alignment.json"]
+    },
+    {
+      "term": "Public sample episode",
+      "category": "dataset_scope",
+      "plain_meaning": "One officially available sample episode.",
+      "project_usage": "The fully inspectable Line 1 unit used for raw-file browsing, 20-frame windows, task construction, and single-episode baselines.",
+      "do_not_confuse_with": "Multi-episode generalization.",
+      "primary_files": ["docs/data/raw_sample_files.json", "docs/single_episode_explorer.html"]
+    },
+    {
+      "term": "Selected 128 episodes",
+      "category": "dataset_scope",
+      "plain_meaning": "A public-safe selected subset of official gated episode paths.",
+      "project_usage": "Line 2 uses derived windows/features and keeps links back to official episode ids and gated source paths.",
+      "do_not_confuse_with": "Redistributed raw MP4/HDF5/RRD data.",
+      "primary_files": ["XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md", "docs/data/xperience10m_128_episode_feature_index.json"]
+    },
+    {
+      "term": "Evidence line",
+      "category": "dataset_scope",
+      "plain_meaning": "A claim boundary for a group of results.",
+      "project_usage": "Line 1 is one public sample episode; Line 2 is selected-128 held-out comparison.",
+      "do_not_confuse_with": "Qwen run versions v1-v6, which are model-run lineage.",
+      "primary_files": ["TWO_EVIDENCE_LINES.md", "docs/data/two_evidence_lines.json"]
+    },
+    {
+      "term": "Official gated data",
+      "category": "dataset_scope",
+      "plain_meaning": "Upstream files that require official dataset access.",
+      "project_usage": "Raw Xperience-10M MP4/HDF5/RRD files and full source directories remain outside the public repo.",
+      "do_not_confuse_with": "Public-safe metrics, derived features, figures, and manifests.",
+      "primary_files": ["DATA_NOTICE.md", "REPRODUCIBILITY.md"]
+    },
+    {
+      "term": "Public-safe artifact",
+      "category": "public_surfaces",
+      "plain_meaning": "A file that can be mirrored publicly without raw gated content.",
+      "project_usage": "Metrics, JSON summaries, model cards, figures, derived manifests, and approved lightweight weights/adapters.",
+      "do_not_confuse_with": "Raw dataset redistribution.",
+      "primary_files": ["ARTIFACT_GUIDE.md", "docs/data/artifact_index.json"]
+    },
+    {
+      "term": "Episode",
+      "category": "files_features",
+      "plain_meaning": "One recorded interaction sequence.",
+      "project_usage": "The basic source unit behind windows, labels, and train/val/test splits.",
+      "do_not_confuse_with": "A 20-frame window.",
+      "primary_files": ["docs/data/raw_sample_files.json", "docs/data/xperience10m_128_episode_feature_index.json"]
+    },
+    {
+      "term": "20-frame window",
+      "category": "files_features",
+      "plain_meaning": "A fixed short clip slice.",
+      "project_usage": "The sample episode is converted into aligned 20-frame units for features, labels, and many task heads.",
+      "do_not_confuse_with": "A full episode or arbitrary video segment.",
+      "primary_files": ["results/episode_task_suite/windows.csv", "EVALUATION_PROTOCOL.md"]
+    },
+    {
+      "term": "Feature manifest",
+      "category": "files_features",
+      "plain_meaning": "A map from model-input columns to source modalities.",
+      "project_usage": "Explains feature groups and dimensions for the sample task suite.",
+      "do_not_confuse_with": "The raw annotation file.",
+      "primary_files": ["results/episode_task_suite/feature_manifest.json"]
+    },
+    {
+      "term": "annotation.hdf5",
+      "category": "files_features",
+      "plain_meaning": "Upstream annotation container for the sample.",
+      "project_usage": "Contains original labels/metadata; some public derived files expose processed features instead of every raw text field.",
+      "do_not_confuse_with": "Task result summaries.",
+      "primary_files": ["docs/data/raw_sample_files.json"]
+    },
+    {
+      "term": "Interaction text",
+      "category": "files_features",
+      "plain_meaning": "Natural-language interaction/caption content.",
+      "project_usage": "Used by task 15 and some derived text features; public matrices record direct or compact-proxy status.",
+      "do_not_confuse_with": "Numeric action ids or subtask ids.",
+      "primary_files": ["TASK_SUITE_20.md", "docs/data/task_method_20_result_matrix.json"]
+    },
+    {
+      "term": "Modality",
+      "category": "files_features",
+      "plain_meaning": "A type of signal.",
+      "project_usage": "Video, audio, depth, pose/SLAM, motion capture, inertial, calibration, and language-derived signals.",
+      "do_not_confuse_with": "A task target.",
+      "primary_files": ["docs/data/modality_atlas.json", "results/episode_task_suite/feature_manifest.json"]
+    },
+    {
+      "term": "Task contract",
+      "category": "tasks_metrics",
+      "plain_meaning": "The definition of one benchmark task.",
+      "project_usage": "Includes input, target/output, metric, split, source artifact, and limitation.",
+      "do_not_confuse_with": "A model architecture.",
+      "primary_files": ["TASK_SUITE_20.md", "docs/data/task_suite_20.json"]
+    },
+    {
+      "term": "Unified 20-task suite",
+      "category": "tasks_metrics",
+      "plain_meaning": "The current task surface.",
+      "project_usage": "Tasks 1-12 plus tasks 13-20 are presented together and scored across methods where real artifacts exist.",
+      "do_not_confuse_with": "The historical tier-2 label.",
+      "primary_files": ["TASK_SUITE_20.md", "docs/data/task_suite_20.json"]
+    },
+    {
+      "term": "Task-method record",
+      "category": "tasks_metrics",
+      "plain_meaning": "One method evaluated on one task.",
+      "project_usage": "9 methods x 20 tasks gives 180 public result records.",
+      "do_not_confuse_with": "A single prediction row.",
+      "primary_files": ["TASK_METHOD_20_RESULT_MATRIX.md", "docs/data/task_method_20_result_matrix.json"]
+    },
+    {
+      "term": "Direct score",
+      "category": "tasks_metrics",
+      "plain_meaning": "A metric computed against the task target directly.",
+      "project_usage": "The preferred score type in the 20-task matrix.",
+      "do_not_confuse_with": "Compact-proxy score.",
+      "primary_files": ["TASK_METHOD_20_GAP_AUDIT.md", "docs/data/task_method_20_gap_audit.json"]
+    },
+    {
+      "term": "Compact-proxy score",
+      "category": "tasks_metrics",
+      "plain_meaning": "A bounded proxy metric when a direct raw target is not publicly available.",
+      "project_usage": "Kept explicit in the matrix and gap audit so readers do not over-read it.",
+      "do_not_confuse_with": "A direct target measurement.",
+      "primary_files": ["TASK_METHOD_20_GAP_AUDIT.md", "docs/data/task_method_20_gap_audit.json"]
+    },
+    {
+      "term": "Gap audit",
+      "category": "tasks_metrics",
+      "plain_meaning": "A coverage and source-status audit.",
+      "project_usage": "Explains scored, proxy, and unsupported cells.",
+      "do_not_confuse_with": "A performance leaderboard.",
+      "primary_files": ["TASK_METHOD_20_GAP_AUDIT.md", "docs/data/task_method_20_gap_audit.json"]
+    },
+    {
+      "term": "Leakage control",
+      "category": "tasks_metrics",
+      "plain_meaning": "A split or feature rule that prevents using target information unfairly.",
+      "project_usage": "Chronological splits, held-out splits, and source audits protect task interpretation.",
+      "do_not_confuse_with": "Lower training accuracy.",
+      "primary_files": ["EVALUATION_PROTOCOL.md", "docs/data/evaluation_protocol.json"]
+    },
+    {
+      "term": "Minimal baseline",
+      "category": "models_runs",
+      "plain_meaning": "A simple non-neural task head.",
+      "project_usage": "Provides a reproducible lower-complexity comparison for task feasibility.",
+      "do_not_confuse_with": "Metadata-only selected-128 baseline family.",
+      "primary_files": ["RESEARCH_TAKEAWAYS.md", "docs/data/task_method_20_result_matrix.json"]
+    },
+    {
+      "term": "Neural MLP",
+      "category": "models_runs",
+      "plain_meaning": "A compact neural task head.",
+      "project_usage": "Used for single-episode and selected-128 baseline comparisons.",
+      "do_not_confuse_with": "Foundation-model fine-tuning.",
+      "primary_files": ["results/episode_task_suite/neural_mlp/", "docs/data/task_method_20_result_matrix.json"]
+    },
+    {
+      "term": "Qwen3-Omni",
+      "category": "models_runs",
+      "plain_meaning": "The multimodal foundation-model family used for the Qwen branch.",
+      "project_usage": "The current public 20-task Qwen row is Qwen3-Omni v6 LoRA plus task-specific probes.",
+      "do_not_confuse_with": "Cosmos3 or single-episode task-head baselines.",
+      "primary_files": ["QWEN3_OMNI_RUN_LINEAGE.md", "docs/data/qwen3_omni_run_lineage.json"]
+    },
+    {
+      "term": "Qwen v1-v6",
+      "category": "models_runs",
+      "plain_meaning": "The Qwen3-Omni run lineage.",
+      "project_usage": "v1-v4 are earlier pipeline/ablation evidence, v5 is the prior pinned release, and v6 is the current public 20-task row.",
+      "do_not_confuse_with": "Six different evidence lines.",
+      "primary_files": ["QWEN3_OMNI_RUN_LINEAGE.md", "docs/data/qwen3_omni_run_lineage.json"]
+    },
+    {
+      "term": "Cosmos3-Super",
+      "category": "models_runs",
+      "plain_meaning": "The larger Cosmos3-style branch tracked in this project.",
+      "project_usage": "Published as Reasoner diagnostics and a separate forward-dynamics LoRA adapter/result branch when verified.",
+      "do_not_confuse_with": "Cosmos3-Nano.",
+      "primary_files": ["docs/data/omni_model_comparison.json"]
+    },
+    {
+      "term": "Cosmos3-Nano",
+      "category": "models_runs",
+      "plain_meaning": "A smaller Cosmos3 compatibility/future-window branch.",
+      "project_usage": "Used for the Nano Future Window row and related diagnostics.",
+      "do_not_confuse_with": "Cosmos3-Super fine-tuned adapter.",
+      "primary_files": ["docs/data/omni_model_comparison.json"]
+    },
+    {
+      "term": "LoRA adapter",
+      "category": "models_runs",
+      "plain_meaning": "A lightweight set of trainable adapter weights.",
+      "project_usage": "Published only when the package is verified and public-safe.",
+      "do_not_confuse_with": "Full base-model weights.",
+      "primary_files": ["OMNI_MODEL_EXTENSION_CONTRACT.md", "docs/data/omni_model_comparison.json"]
+    },
+    {
+      "term": "Full-parameter fine-tuning",
+      "category": "models_runs",
+      "plain_meaning": "Updating the whole model rather than only adapters.",
+      "project_usage": "This project records feasibility gates and short pilots, but does not publish full checkpoints.",
+      "do_not_confuse_with": "LoRA adapter publication.",
+      "primary_files": ["docs/data/qwen3_full_parameter_gates.json"]
+    },
+    {
+      "term": "Foundation pipeline",
+      "category": "models_runs",
+      "plain_meaning": "A high-level training direction.",
+      "project_usage": "Spatial intelligence, human-video world modeling, and vision-language-action are documented as trainable directions with task mappings.",
+      "do_not_confuse_with": "A completed public result row.",
+      "primary_files": ["THREE_FOUNDATION_PIPELINES.md", "docs/data/three_foundation_pipelines.json"]
+    },
+    {
+      "term": "Spatial intelligence",
+      "category": "models_runs",
+      "plain_meaning": "Learning geometry and spatial reasoning from egocentric data.",
+      "project_usage": "Uses video, depth, camera pose, and language tasks to target 3D/space reasoning.",
+      "do_not_confuse_with": "World-model future prediction.",
+      "primary_files": ["THREE_FOUNDATION_PIPELINES.md", "docs/data/three_foundation_pipelines.json"]
+    },
+    {
+      "term": "Human-video world model",
+      "category": "models_runs",
+      "plain_meaning": "Learning future frames, actions, and interaction dynamics from human video.",
+      "project_usage": "Uses temporal prediction, next-action, transition, and object-forecast tasks.",
+      "do_not_confuse_with": "Robot policy execution.",
+      "primary_files": ["THREE_FOUNDATION_PIPELINES.md", "docs/data/three_foundation_pipelines.json"]
+    },
+    {
+      "term": "Vision-language-action",
+      "category": "models_runs",
+      "plain_meaning": "Mapping perception and language to action chunks.",
+      "project_usage": "A future policy/VLA direction that needs action-target conversion and stronger policy packaging.",
+      "do_not_confuse_with": "Qwen3-Omni diagnostic scoring.",
+      "primary_files": ["THREE_FOUNDATION_PIPELINES.md", "docs/data/three_foundation_pipelines.json"]
+    },
+    {
+      "term": "HF Space",
+      "category": "public_surfaces",
+      "plain_meaning": "Hugging Face-hosted app/site surface.",
+      "project_usage": "Mirrors the dashboard and static website assets.",
+      "do_not_confuse_with": "HF artifact dataset or model repo.",
+      "primary_files": ["PUBLIC_READER_MAP.md", "docs/data/public_reader_map.json"]
+    },
+    {
+      "term": "HF artifact dataset",
+      "category": "public_surfaces",
+      "plain_meaning": "Hugging Face dataset repo for derived evidence.",
+      "project_usage": "Stores public-safe reports, metrics, website JSON, and sanitized result packages.",
+      "do_not_confuse_with": "Original Xperience-10M dataset.",
+      "primary_files": ["ARTIFACT_GUIDE.md", "docs/data/artifact_index.json"]
+    },
+    {
+      "term": "HF baseline model repo",
+      "category": "public_surfaces",
+      "plain_meaning": "Hugging Face model repo for lightweight baseline artifacts.",
+      "project_usage": "Mirrors baseline weights, figures, metrics, and task artifacts.",
+      "do_not_confuse_with": "Qwen/Cosmos adapter-specific repos.",
+      "primary_files": ["PUBLIC_READER_MAP.md", "docs/data/public_reader_map.json"]
+    },
+    {
+      "term": "Mirror parity",
+      "category": "public_surfaces",
+      "plain_meaning": "A check that public copies match the source files.",
+      "project_usage": "Records whether GitHub, website, and HF mirrors agree.",
+      "do_not_confuse_with": "A model-quality metric.",
+      "primary_files": ["docs/data/mirror_parity.json"]
+    },
+    {
+      "term": "Verified package",
+      "category": "public_surfaces",
+      "plain_meaning": "A result or artifact bundle that passed local/public validators.",
+      "project_usage": "Only verified packages are promoted to README, website, and HF surfaces as public evidence.",
+      "do_not_confuse_with": "A running or exploratory experiment.",
+      "primary_files": ["docs/data/publication_audit.json", "PUBLIC_SURFACE_QA.md"]
+    }
+  ],
+  "file_entry_points": [
+    {
+      "need": "Reader navigation",
+      "files": ["PUBLIC_READER_MAP.md", "docs/data/public_reader_map.json"]
+    },
+    {
+      "need": "Task definitions",
+      "files": ["TASK_SUITE_20.md", "docs/data/task_suite_20.json"]
+    },
+    {
+      "need": "Result matrix",
+      "files": ["TASK_METHOD_20_RESULT_MATRIX.md", "docs/data/task_method_20_result_matrix.json"]
+    },
+    {
+      "need": "Direct/proxy status",
+      "files": ["TASK_METHOD_20_GAP_AUDIT.md", "docs/data/task_method_20_gap_audit.json"]
+    },
+    {
+      "need": "Qwen lineage",
+      "files": ["QWEN3_OMNI_RUN_LINEAGE.md", "docs/data/qwen3_omni_run_lineage.json"]
+    },
+    {
+      "need": "128-episode source/features",
+      "files": ["XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md", "docs/data/xperience10m_128_episode_feature_index.json"]
+    },
+    {
+      "need": "Public mirrors",
+      "files": ["PUBLIC_SURFACE_QA.md", "docs/data/mirror_parity.json", "docs/data/live_publication_status.json"]
+    }
+  ]
+}

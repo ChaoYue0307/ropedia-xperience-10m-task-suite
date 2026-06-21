@@ -52,6 +52,7 @@ DISPLAY_LABELS = {
     "public_links_cover_repo_hf_dataset_and_ropedia": "Public links",
     "public_artifact_qa_files_are_exposed": "Artifact links",
     "public_reader_map_is_exposed": "Reader map",
+    "public_glossary_is_exposed": "Glossary",
     "multilingual_readmes_are_exposed": "Language versions",
     "public_copy_uses_reader_facing_language": "Project language",
 }
@@ -305,6 +306,18 @@ def build_report() -> dict:
             marker_counts=marker_count(
                 combined_public_text,
                 ["PUBLIC_READER_MAP.md", "docs/data/public_reader_map.json", "data/public_reader_map.json"],
+            ),
+        ),
+        check(
+            "public_glossary_is_exposed",
+            "GLOSSARY.md" in combined_public_text
+            and "docs/data/glossary.json" in combined_public_text
+            and "data/glossary.json" in website
+            and "#glossary" in website,
+            "The public surfaces should expose terminology definitions in Markdown, JSON, and the homepage.",
+            marker_counts=marker_count(
+                combined_public_text,
+                ["GLOSSARY.md", "docs/data/glossary.json", "data/glossary.json"],
             ),
         ),
         check(

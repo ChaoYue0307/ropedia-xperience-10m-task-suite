@@ -142,6 +142,28 @@ HASH_GROUPS = [
         },
     },
     {
+        "id": "glossary_json",
+        "title": "Glossary JSON",
+        "local_path": "docs/data/glossary.json",
+        "urls": {
+            "github_pages": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/data/glossary.json",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/data/glossary.json",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/resolve/main/docs/data/glossary.json",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/resolve/main/metrics/glossary.json",
+        },
+    },
+    {
+        "id": "glossary_markdown",
+        "title": "Glossary Markdown",
+        "local_path": "GLOSSARY.md",
+        "urls": {
+            "github_raw": "https://raw.githubusercontent.com/ChaoYue0307/ropedia-xperience-10m-task-suite/main/GLOSSARY.md",
+            "hf_space": "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite/raw/main/GLOSSARY.md",
+            "hf_artifacts": "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/raw/main/GLOSSARY.md",
+            "hf_model": "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines/raw/main/GLOSSARY.md",
+        },
+    },
+    {
         "id": "xperience10m_128_episode_feature_index_json",
         "title": "Xperience-10M 128-episode source and feature index JSON",
         "local_path": "docs/data/xperience10m_128_episode_feature_index.json",
@@ -662,6 +684,8 @@ MARKER_CHECKS = [
             "home radar comparison",
             "Public reader map",
             "data/public_reader_map.json",
+            "Glossary",
+            "data/glossary.json",
             "tier2_task_suite.json",
             "Tasks 13-20",
             "Long-Horizon Next-Action Forecasting",

@@ -49,6 +49,7 @@
 - [Fast Reader Map](#fast-reader-map)
 - [Why This Project Exists](#why-this-project-exists)
 - [Start Here](#start-here)
+- [Glossary](#glossary)
 - [Current Research Scope](#current-research-scope)
 - [Evaluation Protocol](#evaluation-protocol)
 - [Dataset Context](#dataset-context)
@@ -289,6 +290,11 @@ Result entry points:
       <td><a href="docs/data/public_reader_map.json">public_reader_map.json</a></td>
     </tr>
     <tr>
+      <td><strong>Decode project terms</strong></td>
+      <td><a href="GLOSSARY.md">Glossary</a></td>
+      <td><a href="docs/data/glossary.json">glossary.json</a></td>
+    </tr>
+    <tr>
       <td><strong>Inspect the 20 tasks</strong></td>
       <td><a href="TASK_SUITE_20.md">TASK_SUITE_20.md</a></td>
       <td><a href="docs/data/task_suite_20.json">task_suite_20.json</a><br><a href="results/episode_task_suite/task_walkthroughs/">task walkthroughs</a></td>
@@ -361,6 +367,7 @@ and [`docs/data/project_brief.json`](docs/data/project_brief.json).
   </thead>
   <tbody>
     <tr><td><strong>Choose the right public surface</strong></td><td><a href="PUBLIC_READER_MAP.md">PUBLIC_READER_MAP.md</a><br><a href="docs/data/public_reader_map.json">public_reader_map.json</a></td></tr>
+    <tr><td><strong>Resolve confusing terms and abbreviations</strong></td><td><a href="GLOSSARY.md">GLOSSARY.md</a><br><a href="docs/data/glossary.json">glossary.json</a></td></tr>
     <tr><td><strong>Understand the whole project quickly</strong></td><td><a href="PROJECT_BRIEF.md">PROJECT_BRIEF.md</a></td></tr>
     <tr><td><strong>See the visual research dashboard</strong></td><td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">GitHub Pages dashboard</a></td></tr>
     <tr><td><strong>Navigate the unified 20 tasks, four tracks, and scale-up plan</strong></td><td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/research_roadmap.html">Interactive research roadmap</a><br><a href="TASK_SUITE_20.md">TASK_SUITE_20.md</a><br><a href="docs/data/task_suite_20.json">task_suite_20.json</a><br><a href="docs/data/research_roadmap_interactive.json">research_roadmap_interactive.json</a></td></tr>
@@ -372,6 +379,14 @@ and [`docs/data/project_brief.json`](docs/data/project_brief.json).
     <tr><td><strong>Check multi-episode data status</strong></td><td><a href="results/omni_finetune/DATA_ACCESS_STATUS.md">DATA_ACCESS_STATUS.md</a></td></tr>
   </tbody>
 </table>
+
+## Glossary
+
+Use [`GLOSSARY.md`](GLOSSARY.md) when a term such as evidence line,
+20-frame window, compact-proxy score, Qwen v1-v6, Cosmos3-Super, LoRA adapter,
+or HF artifact dataset is unclear. The same definitions are mirrored as
+[`docs/data/glossary.json`](docs/data/glossary.json) for the website and
+Hugging Face repos.
 
 ## Public Surface Map
 

@@ -1,11 +1,11 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-21T10:52:12+00:00",
+  "generated_at_utc": "2026-06-21T13:31:38+00:00",
   "status": "pass",
-  "artifact_count": 226,
+  "artifact_count": 228,
   "missing": [],
   "by_kind": {
-    "project_path": 18,
+    "project_path": 20,
     "visual_asset": 3,
     "visual_asset_source": 3,
     "scaleup_contract": 7,
@@ -48,8 +48,8 @@
       "surface": "repo_hf",
       "shows": "Gives first-pass readers a concise project shape before the detailed artifact trail.",
       "exists": true,
-      "bytes": 4343,
-      "sha256": "fa002a54a46f1789eab79c74b5203e03e9389ff83abea7dd491fd20a676f1da5"
+      "bytes": 4817,
+      "sha256": "4bf611b5ab6959424d8a31ff6ccbaa460bb97496a59b6405830a3878036e49cb"
     },
     {
       "id": "project_brief_json",
@@ -70,8 +70,8 @@
       "surface": "repo_hf",
       "shows": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 14845,
-      "sha256": "128daeed89b672d89b4c422956bf4900ffe8efd54356ec657fb9cf6dcb880ba5"
+      "bytes": 15977,
+      "sha256": "6ce8ca736b0ad2f8fef463c62530294e414cfc0a0e4ed501907fbf1536de0aa9"
     },
     {
       "id": "project_status_json",
@@ -81,8 +81,30 @@
       "surface": "website_hf",
       "shows": "Machine-readable copy of the current project status for website and HF mirrors.",
       "exists": true,
-      "bytes": 23049,
-      "sha256": "9a06cc54d3b43362867a2fde9edc61d09f53df2d9ad761ecf95c862c76af31d2"
+      "bytes": 23255,
+      "sha256": "874f1133ee75f060735f0c9e763cf81463f304432f1dbca3ebc9837225c0259d"
+    },
+    {
+      "id": "glossary",
+      "title": "Glossary",
+      "path": "GLOSSARY.md",
+      "kind": "project_path",
+      "surface": "repo_hf",
+      "shows": "Defines terminology that can be confused across data scope, task metrics, model branches, and public mirrors.",
+      "exists": true,
+      "bytes": 10218,
+      "sha256": "a87fa41946625ae7a23e794fd1925885918e5fb9244424bacbe9673941d09533"
+    },
+    {
+      "id": "glossary_json",
+      "title": "Glossary JSON",
+      "path": "docs/data/glossary.json",
+      "kind": "project_path",
+      "surface": "website_hf",
+      "shows": "Machine-readable terminology layer for the website, artifact dataset, model mirror, and public QA checks.",
+      "exists": true,
+      "bytes": 17321,
+      "sha256": "9aedc1f34704eb6c5e1c66656a5df85616a029ecbb3d1119d7aed413d5de7945"
     },
     {
       "id": "research_roadmap",
@@ -565,8 +587,8 @@
       "surface": "repo_hf",
       "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 20256,
-      "sha256": "f869cd640dc0296435a5574d4778ecd5ca97e0a91fb6af191525b5fb1742fbe0"
+      "bytes": 20579,
+      "sha256": "eae0b6789de32e0f3d7f92800627ca54026faeb9ae0cb4c4edfab9ec21ea5772"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -610,7 +632,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "db279081759eebb09a4ba53c56fb17a14f3546e13d058100494ac7745b901a1c"
+      "sha256": "de3e31d0b528837aa894cb7b7c6efb1c834658474fb1671aa6e58f69b61b6044"
     },
     {
       "id": "source_alignment_validator",
@@ -631,8 +653,8 @@
       "surface": "repo_hf",
       "shows": "Publishes prepared Space, artifact dataset, and model bundles, including an explicit model-binary upload batch.",
       "exists": true,
-      "bytes": 25159,
-      "sha256": "a74451a7d717661e1499b98631d825f4db8c6b51b1e9bafd73966697eb04258a"
+      "bytes": 25115,
+      "sha256": "31866958ffaa3954f1bc4f920fbf80d5b41fd95228be50989dadb6e8cbe619e3"
     },
     {
       "id": "github_package_dockerfile",
@@ -808,7 +830,7 @@
       "shows": "Machine-readable check that scored JSON-backed matrix cells match their declared metric source values.",
       "exists": true,
       "bytes": 561,
-      "sha256": "cbe9be1ea3d62b253780aade9c51cb7f3a5882df185927186ee6a1d6516ad3a6"
+      "sha256": "bb50000bb681f1ed12c4089bd3541f14b8e121ea5a1fe06e1a6a559cb8960e0b"
     },
     {
       "id": "task_method_20_source_audit",
@@ -819,7 +841,7 @@
       "shows": "Reader-facing source-value audit for the 180-result matrix.",
       "exists": true,
       "bytes": 447,
-      "sha256": "dfcde22c9350858d0df6d881533f63ba6838fc980b62f0b68770f9b708fcde85"
+      "sha256": "1a0583629368cee3abadc49d4a0220dead924326a04e82b3a22a9fc6d6b0d252"
     },
     {
       "id": "two_evidence_line_map_chart",
@@ -1160,7 +1182,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8640,
-      "sha256": "3cb0aca2dca01448cb9bc5cbb519a91bc6397c08a1eaaa84c031e773221e5a0a"
+      "sha256": "55a3205414cac47c20720694ce5965b3fd270c0060d488b59f4217d3e794f0fa"
     },
     {
       "id": "public_surface_qa",
@@ -1181,8 +1203,8 @@
       "surface": "repo_hf",
       "shows": "Provides the first-pass navigation layer for GitHub, GitHub Pages, Hugging Face mirrors, Qwen3-Omni/Cosmos3 repos, evidence lines, and claim boundaries.",
       "exists": true,
-      "bytes": 4948,
-      "sha256": "7a7128fdde08f770338c3fe2d473565918c5633f948dec6a78a6b2a67938e91a"
+      "bytes": 5746,
+      "sha256": "99ede76679880537bcf65d9503a848c9cd6ca464b3cd92c48eaa62ec5a8655eb"
     },
     {
       "id": "public_reader_map_json",
@@ -1192,8 +1214,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable public reader map used by the website and Hugging Face mirrors to keep entry points and surface responsibilities explicit.",
       "exists": true,
-      "bytes": 5971,
-      "sha256": "3474f84ffa53aefabdbf8a75c466c271675162ce0f8a23ea3b6660951048072f"
+      "bytes": 6951,
+      "sha256": "4d166eed1e19f029494ed879aa5774d678a5da7a3607468349ec4bbf23527f4b"
     },
     {
       "id": "public_surface_qa_json",
@@ -1215,8 +1237,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the public presentation report before release.",
       "exists": true,
-      "bytes": 15008,
-      "sha256": "324a7332481f8065c7942659307994429f505d2ffd4a1c8169891ec017be68c2"
+      "bytes": 15611,
+      "sha256": "fe697c3f18bb51239941d4098b618d42a78d11b96ab1441b3af32510930da248"
     },
     {
       "id": "task_surface_integrity",
@@ -1296,8 +1318,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 67652,
-      "sha256": "47c6e5e0d93a881db045842ef98656d04c74cf7605f33a56b8d4daecf97fb547"
+      "bytes": 69027,
+      "sha256": "501c8ac16d564054404d486b4fa2c510159a1dad09b43b4b6598e3b9eac8fb3a"
     },
     {
       "id": "reproducibility_contract",
@@ -1329,8 +1351,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 67587,
-      "sha256": "28a93ec92c91886388f5d42ab8e25af0b218e4644b733bc8f8230bc0f91aab65"
+      "bytes": 68190,
+      "sha256": "b76704eaae7755412a9a2ceadb258c8385f719b1651a8d17a22eb0f09848627c"
     },
     {
       "id": "publication_audit",
@@ -1365,7 +1387,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 1418066,
+      "bytes": 1418076,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1377,7 +1399,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 20657,
+      "bytes": 20658,
       "hash_policy": "existence_and_size_only"
     },
     {

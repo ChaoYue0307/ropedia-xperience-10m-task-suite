@@ -11,6 +11,7 @@ Xperience-native pretraining goal.
 | Artifact | Why to open it first |
 | --- | --- |
 | [`PUBLIC_READER_MAP.md`](PUBLIC_READER_MAP.md) | Chooses the right public surface first: GitHub source, website, HF Space, artifact dataset, baseline model repo, model-branch repos, or release-health files. |
+| [`GLOSSARY.md`](GLOSSARY.md) | Defines terms that can be confused across the repo, website, Hugging Face mirrors, result matrix, Qwen/Cosmos branches, and public-safe package checks. |
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Gives the fastest current-state table: implemented, being improved, and outside current scope. |
 | [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) | Shows the roadmap from public-sample task development to multi-episode data preparation, Qwen3-Omni LoRA, robustness runs, model branches, and the future native-pretraining goal. |
 | [`FOUNDATION_MODEL_PLAN.md`](FOUNDATION_MODEL_PLAN.md) | Explains which foundation backbones fit which Xperience-10M objective: Qwen3-Omni first, Cosmos 3 for world modeling, and VLA/policy models after action-target conversion. |
@@ -27,6 +28,7 @@ Xperience-native pretraining goal.
 
 | Artifact | What it shows |
 | --- | --- |
+| [`docs/data/glossary.json`](docs/data/glossary.json) | Machine-readable terminology layer for the website and Hugging Face mirrors. |
 | [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md) | Human-readable summary of the official gated Xperience-10M dataset, public sample, modalities, access terms, intended uses, and limitations. |
 | [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json) | Machine-readable dataset-context bundle for the website and Hub pages. |
 | [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md) | Supporting provenance note for maintainers who want to inspect how public dataset descriptions were checked. |

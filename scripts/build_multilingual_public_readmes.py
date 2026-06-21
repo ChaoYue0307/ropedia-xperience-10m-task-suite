@@ -81,6 +81,7 @@ ENGLISH_TOP = f"""{hero(
 - [Fast Reader Map](#fast-reader-map)
 - [Why This Project Exists](#why-this-project-exists)
 - [Start Here](#start-here)
+- [Glossary](#glossary)
 - [Current Research Scope](#current-research-scope)
 - [Evaluation Protocol](#evaluation-protocol)
 - [Dataset Context](#dataset-context)
@@ -319,6 +320,11 @@ Result entry points:
       <td><strong>Choose the public surface</strong></td>
       <td><a href="PUBLIC_READER_MAP.md">Public reader map</a></td>
       <td><a href="docs/data/public_reader_map.json">public_reader_map.json</a></td>
+    </tr>
+    <tr>
+      <td><strong>Decode project terms</strong></td>
+      <td><a href="GLOSSARY.md">Glossary</a></td>
+      <td><a href="docs/data/glossary.json">glossary.json</a></td>
     </tr>
     <tr>
       <td><strong>Inspect the 20 tasks</strong></td>
@@ -701,6 +707,12 @@ COMMON_FOOTER = """## Public Surfaces
 | HF baselines | https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines |
 | HF weights/results | https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results |
 | HF collection | https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite |
+
+## Glossary
+
+Use `GLOSSARY.md` and `docs/data/glossary.json` for project terminology:
+evidence line, 20-frame window, compact-proxy score, Qwen v1-v6,
+Cosmos3-Super, LoRA adapter, HF artifact dataset, and related terms.
 
 ## Citation
 

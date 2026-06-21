@@ -54,6 +54,22 @@ ARTIFACTS = [
         "shows": "Machine-readable copy of the current project status for website and HF mirrors.",
     },
     {
+        "id": "glossary",
+        "title": "Glossary",
+        "path": "GLOSSARY.md",
+        "kind": "project_path",
+        "surface": "repo_hf",
+        "shows": "Defines terminology that can be confused across data scope, task metrics, model branches, and public mirrors.",
+    },
+    {
+        "id": "glossary_json",
+        "title": "Glossary JSON",
+        "path": "docs/data/glossary.json",
+        "kind": "project_path",
+        "surface": "website_hf",
+        "shows": "Machine-readable terminology layer for the website, artifact dataset, model mirror, and public QA checks.",
+    },
+    {
         "id": "research_roadmap",
         "title": "Research roadmap",
         "path": "RESEARCH_ROADMAP.md",
