@@ -1,7 +1,7 @@
 {
   "title": "Unified 20-Task Model Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-21T15:20:34+00:00",
+  "generated_at_utc": "2026-06-21T20:35:16+00:00",
   "task_count": 20,
   "method_count": 9,
   "method_task_record_count": 180,
@@ -10,10 +10,53 @@
     "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
     "raw_values": "raw metric values, metric keys, and sources are retained in this JSON; the SVG is an overview, not a replacement for the metric table",
+    "radar_visual_radius": "SVG radar panels use sqrt(normalized_score) for radius so polygon area remains closer to the score and low-valued but real differences stay visible; the JSON and matrix retain exact linear normalized_score values",
     "result_record_policy": "every method has 20 task records; the current public release has 180/180 scored rows with proxy flags and reasons retained where compact substitute targets are used",
-    "foundation_model_overlay": "Qwen3-Omni and Cosmos3 points are plotted only on task-aligned axes. Scoreless records mean the public result does not evaluate that task contract.",
-    "metadata_128_overlay": "128-episode aligned baselines have 20 records. Numeric scores come from JSONL metadata/text tasks plus staged sensor-block targets when the processed target exists; raw interaction text and paired camera-view embeddings remain explicit gaps.",
-    "raw_128_overlay": "128-episode raw-feature baselines use staged sensor NPZ features. Eighteen axes use direct task targets; interaction text and camera-view sync are completed with documented compact proxies because raw interaction strings and paired video-view embeddings are absent from the 128 export."
+    "foundation_model_overlay": "Qwen3-Omni and Cosmos3 are grouped in the foundation-model radar panel. All current public model rows have 20 scored task records, with source paths retained for every metric.",
+    "metadata_128_overlay": "128-episode aligned baselines are grouped in the metadata/text radar panel. Numeric scores come from JSONL metadata/text tasks plus staged sensor-block targets when the processed target exists.",
+    "raw_128_overlay": "128-episode raw-feature baselines are grouped in the raw-feature radar panel. Eighteen axes use direct task targets; interaction text and camera-view sync are completed with documented compact proxies because raw interaction strings and paired video-view embeddings are absent from the 128 export."
+  },
+  "chart_design": {
+    "mode": "grouped_small_multiples",
+    "method_count": 9,
+    "reason": "The public release has nine methods and 180 scored records; small-multiple radar panels avoid a nine-polygon overlay while keeping every method visible.",
+    "groups": [
+      {
+        "id": "single_episode",
+        "title": "Single-episode sample",
+        "series_ids": [
+          "minimal",
+          "neural_mlp"
+        ]
+      },
+      {
+        "id": "metadata_128",
+        "title": "128-episode metadata/text",
+        "series_ids": [
+          "metadata128_simple",
+          "metadata128_neural_mlp"
+        ]
+      },
+      {
+        "id": "raw_128",
+        "title": "128-episode raw features",
+        "series_ids": [
+          "raw128_simple",
+          "raw128_neural_mlp"
+        ]
+      },
+      {
+        "id": "foundation_models",
+        "title": "Foundation-model probes",
+        "series_ids": [
+          "qwen3_omni_v6_lora",
+          "cosmos3_super_reasoner",
+          "cosmos3_nano_future_window"
+        ]
+      }
+    ],
+    "visual_radius_transform": "sqrt(normalized_score)",
+    "exact_value_source": "docs/data/task_method_20_result_matrix.json"
   },
   "series": [
     {
@@ -25,7 +68,7 @@
       "scope": "1 public sample episode",
       "stroke_dasharray": null,
       "method_detail": "Single-episode simple heads over the public sample split.",
-      "plotted_as": "filled polygon",
+      "plotted_as": "grouped small-multiple radar panel with direct legend and coverage badges",
       "result_record_count": 20,
       "scored_task_count": 20,
       "covered_task_count": 20,
@@ -48,7 +91,7 @@
       "scope": "1 public sample episode",
       "stroke_dasharray": null,
       "method_detail": "Single-episode compact PyTorch MLP heads on the same 20 task contracts.",
-      "plotted_as": "filled polygon",
+      "plotted_as": "grouped small-multiple radar panel with direct legend and coverage badges",
       "result_record_count": 20,
       "scored_task_count": 20,
       "covered_task_count": 20,
@@ -71,7 +114,7 @@
       "scope": "128 selected episodes, JSONL metadata/text plus staged sensor-block targets where available",
       "stroke_dasharray": "9 6",
       "method_detail": "128-episode aligned simple baselines: JSONL metadata/text tasks plus staged sensor-block tasks where the processed target exists.",
-      "plotted_as": "colored point overlay",
+      "plotted_as": "grouped small-multiple radar panel with direct legend and coverage badges",
       "result_record_count": 20,
       "scored_task_count": 20,
       "covered_task_count": 20,
@@ -95,7 +138,7 @@
       "scope": "128 selected episodes, JSONL metadata/text plus staged sensor-block targets where available",
       "stroke_dasharray": "3 6",
       "method_detail": "128-episode aligned MLP baselines: JSONL metadata/text tasks plus staged sensor-block tasks where the processed target exists.",
-      "plotted_as": "colored point overlay",
+      "plotted_as": "grouped small-multiple radar panel with direct legend and coverage badges",
       "result_record_count": 20,
       "scored_task_count": 20,
       "covered_task_count": 20,
@@ -119,7 +162,7 @@
       "scope": "128 selected episodes, staged 4430-dim sensor NPZ features; 2 compact proxy axes",
       "stroke_dasharray": "8 4",
       "method_detail": "128-episode 4430-dim sensor NPZ simple heads; tasks 15/19 use compact proxies.",
-      "plotted_as": "colored point overlay",
+      "plotted_as": "grouped small-multiple radar panel with direct legend and coverage badges",
       "result_record_count": 20,
       "scored_task_count": 20,
       "covered_task_count": 20,
@@ -143,7 +186,7 @@
       "scope": "128 selected episodes, staged 4430-dim sensor NPZ features; 2 compact proxy axes",
       "stroke_dasharray": "2 5",
       "method_detail": "128-episode 4430-dim sensor NPZ MLP heads; tasks 15/19 use compact proxies.",
-      "plotted_as": "colored point overlay",
+      "plotted_as": "grouped small-multiple radar panel with direct legend and coverage badges",
       "result_record_count": 20,
       "scored_task_count": 20,
       "covered_task_count": 20,
@@ -167,7 +210,7 @@
       "scope": "128 selected episodes, held-out test",
       "stroke_dasharray": "7 7",
       "method_detail": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 and any completed private-GPU future/retrieval/sensor-target probes scored from task-specific JSON.",
-      "plotted_as": "colored point overlay",
+      "plotted_as": "grouped small-multiple radar panel with direct legend and coverage badges",
       "result_record_count": 20,
       "scored_task_count": 20,
       "covered_task_count": 20,
@@ -190,7 +233,7 @@
       "scope": "128 selected episodes, held-out test",
       "stroke_dasharray": "4 7",
       "method_detail": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 5/8/9/10/11/12/13/14/16/17/18/19/20 probes where public metrics exist.",
-      "plotted_as": "colored point overlay",
+      "plotted_as": "grouped small-multiple radar panel with direct legend and coverage badges",
       "result_record_count": 20,
       "scored_task_count": 20,
       "covered_task_count": 20,
@@ -213,7 +256,7 @@
       "scope": "128 selected episodes, held-out test",
       "stroke_dasharray": "2 7",
       "method_detail": "Verified Cosmos3-Nano future-window compatibility metrics, plus model-output probes for tasks 2/5/7/8/10/11/12/13/14/15/16/17/18/19 and a derived task-20 boundary timing probe scored from held-out future-window artifacts.",
-      "plotted_as": "colored point overlay",
+      "plotted_as": "grouped small-multiple radar panel with direct legend and coverage badges",
       "result_record_count": 20,
       "scored_task_count": 20,
       "covered_task_count": 20,

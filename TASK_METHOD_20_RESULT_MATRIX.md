@@ -18,7 +18,7 @@ Legend: `score` = direct numeric task score and `proxy` = documented compact sub
 
 ## Compact Score Matrix
 
-Cells show `raw metric value`, then `direct/proxy; normalized radar value; metric key`. The raw metric is the value to cite; the normalized value is the 0-1 plotting value used by the radar.
+Cells show `raw metric value`, then `direct/proxy; normalized radar value; metric key`. The raw metric is the value to cite; the normalized value is the exact linear 0-1 score retained in JSON. The SVG radar uses sqrt(normalized score) only for visual radius, so low but real differences remain visible without changing the table values.
 
 | # | Task | Min | NN | 128-S | 128-NN | 128-RS | 128-RN | Qwen3 | C3-S | C3-N |
 | ---: | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

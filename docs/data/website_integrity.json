@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-21T20:01:18+00:00",
+  "generated_at_utc": "2026-06-21T20:35:18+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 136413,
-      "evidence_index": 187740
+      "overview_index": 136346,
+      "evidence_index": 187681
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 136413,
-      "protocol_index": 183928,
-      "evidence_index": 187740
+      "overview_index": 136346,
+      "protocol_index": 183869,
+      "evidence_index": 187681
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -187,7 +187,7 @@
       "status": "pass",
       "reason": "The Suite anchor should show the task-suite map before the radar/results surface.",
       "first_marker_index": 468,
-      "second_marker_index": 1838
+      "second_marker_index": 2000
     },
     {
       "name": "raw_sample_stream_ledger_contains_seven_modalities",
@@ -315,7 +315,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 124341,
+      "bytes": 124471,
       "top_level_type": "dict"
     },
     {
@@ -330,7 +330,7 @@
     },
     {
       "path": "data/episode128_task_model_radar.json",
-      "bytes": 185212,
+      "bytes": 186828,
       "top_level_type": "dict"
     },
     {
@@ -345,7 +345,7 @@
     },
     {
       "path": "data/figure_index.json",
-      "bytes": 19485,
+      "bytes": 19526,
       "top_level_type": "dict"
     },
     {
@@ -495,7 +495,7 @@
     },
     {
       "path": "data/single_episode_task_model_radar.json",
-      "bytes": 51327,
+      "bytes": 52256,
       "top_level_type": "dict"
     },
     {
@@ -515,7 +515,7 @@
     },
     {
       "path": "data/task_method_20_result_matrix.json",
-      "bytes": 128509,
+      "bytes": 128991,
       "top_level_type": "dict"
     },
     {
@@ -565,7 +565,7 @@
     },
     {
       "path": "data/unified_task_model_radar.json",
-      "bytes": 229035,
+      "bytes": 230938,
       "top_level_type": "dict"
     },
     {
@@ -610,7 +610,7 @@
     {
       "path": "assets/charts/episode128_task_model_radar.svg",
       "exists": true,
-      "bytes": 51915,
+      "bytes": 79370,
       "format": "SVG",
       "has_viewbox": true
     },
@@ -666,7 +666,7 @@
     {
       "path": "assets/charts/single_episode_task_model_radar.svg",
       "exists": true,
-      "bytes": 35232,
+      "bytes": 36930,
       "format": "SVG",
       "has_viewbox": true
     },
@@ -680,7 +680,7 @@
     {
       "path": "assets/charts/unified_task_model_radar.svg",
       "exists": true,
-      "bytes": 57938,
+      "bytes": 98527,
       "format": "SVG",
       "has_viewbox": true
     },

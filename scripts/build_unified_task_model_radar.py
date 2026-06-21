@@ -503,6 +503,33 @@ EPISODE128_SERIES = (
     "cosmos3_nano_future_window",
 )
 
+RADAR_GROUP_SPECS = (
+    {
+        "id": "single_episode",
+        "title": "Single-episode sample",
+        "subtitle": "Public-sample simple and neural task heads.",
+        "series_ids": ("minimal", "neural_mlp"),
+    },
+    {
+        "id": "metadata_128",
+        "title": "128-episode metadata/text",
+        "subtitle": "Aligned JSONL metadata/text plus staged target blocks.",
+        "series_ids": ("metadata128_simple", "metadata128_neural_mlp"),
+    },
+    {
+        "id": "raw_128",
+        "title": "128-episode raw features",
+        "subtitle": "4430-dim sensor-block heads; proxy axes are flagged.",
+        "series_ids": ("raw128_simple", "raw128_neural_mlp"),
+    },
+    {
+        "id": "foundation_models",
+        "title": "Foundation-model probes",
+        "subtitle": "Verified Qwen3 and Cosmos task-specific outputs.",
+        "series_ids": ("qwen3_omni_v6_lora", "cosmos3_super_reasoner", "cosmos3_nano_future_window"),
+    },
+)
+
 STATUS_LABELS = {
     "scored": "scored",
     "proxy_scored": "proxy scored",
@@ -760,7 +787,7 @@ def render_matrix_markdown(payload: dict[str, Any]) -> str:
             "",
             "## Compact Score Matrix",
             "",
-            "Cells show `raw metric value`, then `direct/proxy; normalized radar value; metric key`. The raw metric is the value to cite; the normalized value is the 0-1 plotting value used by the radar.",
+            "Cells show `raw metric value`, then `direct/proxy; normalized radar value; metric key`. The raw metric is the value to cite; the normalized value is the exact linear 0-1 score retained in JSON. The SVG radar uses sqrt(normalized score) only for visual radius, so low but real differences remain visible without changing the table values.",
             "",
             "| # | Task | " + " | ".join(spec["short_label"] for spec in SERIES.values()) + " |",
             "| ---: | --- | " + " | ".join("---" for _ in SERIES) + " |",
@@ -814,6 +841,21 @@ def filtered_radar_payload(
         for row in payload["task_method_result_matrix"]
         if row.get("series_id") in selected
     ]
+    selected_groups = radar_groups_for_series(series_ids)
+    chart_design = json.loads(json.dumps(payload.get("chart_design", {})))
+    chart_design["method_count"] = len(series)
+    chart_design["reason"] = (
+        f"This split view has {len(series)} methods and {sum(record.get('result_record_count', 0) for record in series)} "
+        "method-task records; grouped radar panels keep related methods readable while retaining the unified source matrix."
+    )
+    chart_design["groups"] = [
+        {
+            "id": group["id"],
+            "title": group["title"],
+            "series_ids": list(group["series_ids"]),
+        }
+        for group in selected_groups
+    ]
     return {
         "title": title,
         "status": payload["status"],
@@ -824,6 +866,7 @@ def filtered_radar_payload(
         "method_task_record_count": sum(record.get("result_record_count", 0) for record in series),
         "scored_method_task_count": sum(record.get("scored_task_count", 0) for record in series),
         "normalization_policy": payload["normalization_policy"],
+        "chart_design": chart_design,
         "source_unified_radar": "docs/data/unified_task_model_radar.json",
         "source_result_matrix": "docs/data/task_method_20_result_matrix.json",
         "series": series,
@@ -1016,7 +1059,7 @@ def build_payload() -> dict[str, Any]:
                 "id": series_id,
                 **spec,
                 "method_detail": METHOD_DETAILS.get(series_id, spec["scope"]),
-                "plotted_as": "filled polygon" if spec["kind"].startswith("full_20_task_baseline") else "colored point overlay",
+                "plotted_as": "grouped small-multiple radar panel with direct legend and coverage badges",
                 "result_record_count": len(tasks),
                 "scored_task_count": covered,
                 "covered_task_count": covered,
@@ -1049,10 +1092,26 @@ def build_payload() -> dict[str, Any]:
             "higher_is_better": "bounded metrics are plotted directly on 0-1 axes after clipping to [0, 1]",
             "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
             "raw_values": "raw metric values, metric keys, and sources are retained in this JSON; the SVG is an overview, not a replacement for the metric table",
+            "radar_visual_radius": "SVG radar panels use sqrt(normalized_score) for radius so polygon area remains closer to the score and low-valued but real differences stay visible; the JSON and matrix retain exact linear normalized_score values",
             "result_record_policy": "every method has 20 task records; the current public release has 180/180 scored rows with proxy flags and reasons retained where compact substitute targets are used",
-            "foundation_model_overlay": "Qwen3-Omni and Cosmos3 points are plotted only on task-aligned axes. Scoreless records mean the public result does not evaluate that task contract.",
-            "metadata_128_overlay": "128-episode aligned baselines have 20 records. Numeric scores come from JSONL metadata/text tasks plus staged sensor-block targets when the processed target exists; raw interaction text and paired camera-view embeddings remain explicit gaps.",
-            "raw_128_overlay": "128-episode raw-feature baselines use staged sensor NPZ features. Eighteen axes use direct task targets; interaction text and camera-view sync are completed with documented compact proxies because raw interaction strings and paired video-view embeddings are absent from the 128 export.",
+            "foundation_model_overlay": "Qwen3-Omni and Cosmos3 are grouped in the foundation-model radar panel. All current public model rows have 20 scored task records, with source paths retained for every metric.",
+            "metadata_128_overlay": "128-episode aligned baselines are grouped in the metadata/text radar panel. Numeric scores come from JSONL metadata/text tasks plus staged sensor-block targets when the processed target exists.",
+            "raw_128_overlay": "128-episode raw-feature baselines are grouped in the raw-feature radar panel. Eighteen axes use direct task targets; interaction text and camera-view sync are completed with documented compact proxies because raw interaction strings and paired video-view embeddings are absent from the 128 export.",
+        },
+        "chart_design": {
+            "mode": "grouped_small_multiples",
+            "method_count": len(SERIES),
+            "reason": "The public release has nine methods and 180 scored records; small-multiple radar panels avoid a nine-polygon overlay while keeping every method visible.",
+            "groups": [
+                {
+                    "id": group["id"],
+                    "title": group["title"],
+                    "series_ids": list(group["series_ids"]),
+                }
+                for group in RADAR_GROUP_SPECS
+            ],
+            "visual_radius_transform": "sqrt(normalized_score)",
+            "exact_value_source": "docs/data/task_method_20_result_matrix.json",
         },
         "series": series_records,
         "tasks": tasks,
@@ -1128,6 +1187,266 @@ def build_payload() -> dict[str, Any]:
     return payload
 
 
+def svg_shape(
+    tag: str,
+    points: list[tuple[float, float]],
+    *,
+    fill: str,
+    fill_opacity: float,
+    stroke: str,
+    stroke_opacity: float = 0.92,
+    stroke_width: float = 2.0,
+    dash: str | None = None,
+) -> str:
+    coords = " ".join(f"{x:.1f},{y:.1f}" for x, y in points)
+    dash_attr = f' stroke-dasharray="{dash}"' if dash else ""
+    return (
+        f'<{tag} points="{coords}" fill="{fill}" fill-opacity="{fill_opacity:.3f}" '
+        f'stroke="{stroke}" stroke-opacity="{stroke_opacity:.3f}" stroke-width="{stroke_width:.1f}" '
+        f'stroke-linejoin="round" stroke-linecap="round"{dash_attr}/>'
+    )
+
+
+def radar_radius(score: float | None, radius: float) -> float | None:
+    if score is None:
+        return None
+    return radius * math.sqrt(clamp01(float(score)))
+
+
+def radar_groups_for_series(series_ids: tuple[str, ...]) -> list[dict[str, Any]]:
+    selected = set(series_ids)
+    groups: list[dict[str, Any]] = []
+    assigned: set[str] = set()
+    for group in RADAR_GROUP_SPECS:
+        present = tuple(series_id for series_id in group["series_ids"] if series_id in selected)
+        if not present:
+            continue
+        groups.append({**group, "series_ids": present})
+        assigned.update(present)
+    remaining = tuple(series_id for series_id in series_ids if series_id not in assigned)
+    if remaining:
+        groups.append(
+            {
+                "id": "other_methods",
+                "title": "Other methods",
+                "subtitle": "Additional method rows retained from the matrix.",
+                "series_ids": remaining,
+            }
+        )
+    return groups
+
+
+def draw_radar_grid(
+    parts: list[str],
+    *,
+    cx: float,
+    cy: float,
+    radius: float,
+    tasks: list[dict[str, Any]],
+    angles: list[float],
+    label_size: int,
+) -> None:
+    for value in (0.05, 0.25, 0.50, 0.75, 1.0):
+        ring_radius = radius * math.sqrt(value)
+        ring = [point(cx, cy, ring_radius, angle) for angle in angles]
+        parts.append(
+            svg_shape(
+                "polygon",
+                ring,
+                fill="none",
+                fill_opacity=0,
+                stroke="#ccffa0",
+                stroke_opacity=0.16,
+                stroke_width=1.0,
+            )
+        )
+        parts.append(svg_text(cx + 8, cy - ring_radius + 4, f"{value:.2g}", size=max(9, label_size - 2), fill="#a5afa2", weight=620, opacity=0.72))
+    for task, angle in zip(tasks, angles):
+        x, y = point(cx, cy, radius, angle)
+        parts.append(f'<line x1="{cx:.1f}" y1="{cy:.1f}" x2="{x:.1f}" y2="{y:.1f}" stroke="#ccffa0" stroke-opacity="0.11" stroke-width="1"/>')
+        lx, ly = point(cx, cy, radius + 28, angle)
+        proxy = task["task_id"] in PROXY_TASK_IDS
+        color = "#f472b6" if proxy else "#ccffa0"
+        parts.append(f'<circle cx="{lx:.1f}" cy="{ly:.1f}" r="{label_size + 2:.1f}" fill="{color}" fill-opacity="0.12" stroke="{color}" stroke-opacity="0.34"/>')
+        parts.append(svg_text(lx, ly + label_size * 0.33, f"{task['task_number']:02d}", size=label_size, fill=color, anchor="middle", weight=850, opacity=0.98))
+
+
+def draw_radar_series(
+    parts: list[str],
+    *,
+    cx: float,
+    cy: float,
+    radius: float,
+    tasks: list[dict[str, Any]],
+    angles: list[float],
+    series_id: str,
+    stroke_width: float,
+    fill_opacity: float,
+) -> None:
+    spec = SERIES[series_id]
+    valid_points: list[tuple[float, float]] = []
+    scored_count = 0
+    for task, angle in zip(tasks, angles):
+        value = task["values"].get(series_id, {})
+        score = value.get("normalized_score")
+        plotted_radius = radar_radius(score, radius)
+        if plotted_radius is None:
+            continue
+        scored_count += 1
+        valid_points.append(point(cx, cy, plotted_radius, angle))
+    if len(valid_points) >= 3 and scored_count == len(tasks):
+        parts.append(
+            svg_shape(
+                "polygon",
+                valid_points,
+                fill=spec["color"],
+                fill_opacity=fill_opacity,
+                stroke=spec["color"],
+                stroke_width=stroke_width,
+                dash=spec.get("stroke_dasharray"),
+            )
+        )
+    elif len(valid_points) >= 2:
+        parts.append(
+            svg_shape(
+                "polyline",
+                valid_points,
+                fill="none",
+                fill_opacity=0,
+                stroke=spec["color"],
+                stroke_width=stroke_width,
+                dash=spec.get("stroke_dasharray"),
+            )
+        )
+    for task, angle in zip(tasks, angles):
+        value = task["values"].get(series_id, {})
+        plotted_radius = radar_radius(value.get("normalized_score"), radius)
+        if plotted_radius is None:
+            continue
+        px, py = point(cx, cy, plotted_radius, angle)
+        proxy = value.get("status") == "proxy_scored"
+        parts.append(
+            f'<circle cx="{px:.1f}" cy="{py:.1f}" r="{5.5 if proxy else 4.4:.1f}" '
+            f'fill="{spec["color"]}" fill-opacity="0.95" stroke="{"#f4f8ef" if proxy else "#020502"}" '
+            f'stroke-width="{2.1 if proxy else 1.3:.1f}"/>'
+        )
+
+
+def draw_radar_panel(
+    parts: list[str],
+    *,
+    x: float,
+    y: float,
+    width: float,
+    height: float,
+    group: dict[str, Any],
+    payload: dict[str, Any],
+    series_record_by_id: dict[str, dict[str, Any]],
+    large: bool = False,
+) -> None:
+    tasks = payload["tasks"]
+    angles = [-math.pi / 2 + 2 * math.pi * i / len(tasks) for i in range(len(tasks))]
+    panel_bg = "#071007"
+    parts.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{width:.1f}" height="{height:.1f}" rx="18" fill="{panel_bg}" fill-opacity="0.90" stroke="#ccffa0" stroke-opacity="0.22"/>')
+    parts.append(svg_text(x + 28, y + 44, str(group["title"]), size=26 if large else 20, weight=850))
+    parts.append(svg_text(x + 28, y + 74, str(group["subtitle"]), size=14 if large else 12, fill="#a5afa2", weight=600))
+
+    if large:
+        cx = x + width * 0.39
+        cy = y + height * 0.56
+        radius = min(width * 0.20, height * 0.34)
+        legend_x = x + width * 0.68
+        legend_y = y + 160
+        label_size = 12
+    else:
+        cx = x + width * 0.38
+        cy = y + height * 0.57
+        radius = min(width * 0.18, height * 0.30)
+        legend_x = x + width * 0.67
+        legend_y = y + 122
+        label_size = 8
+
+    draw_radar_grid(parts, cx=cx, cy=cy, radius=radius, tasks=tasks, angles=angles, label_size=label_size)
+
+    series_ids = tuple(group["series_ids"])
+    fill_opacity = 0.065 if len(series_ids) <= 2 else 0.040
+    for idx, series_id in enumerate(series_ids):
+        draw_radar_series(
+            parts,
+            cx=cx,
+            cy=cy,
+            radius=radius,
+            tasks=tasks,
+            angles=angles,
+            series_id=series_id,
+            stroke_width=4.3 if large else 3.2,
+            fill_opacity=max(0.026, fill_opacity - idx * 0.010),
+        )
+
+    parts.append(svg_text(legend_x, legend_y - 34, "Methods", size=17 if large else 14, fill="#ccffa0", weight=850))
+    for idx, series_id in enumerate(series_ids):
+        record = series_record_by_id[series_id]
+        color = record["color"]
+        row_y = legend_y + idx * (92 if large else 74)
+        parts.append(f'<line x1="{legend_x:.1f}" y1="{row_y:.1f}" x2="{legend_x + 58:.1f}" y2="{row_y:.1f}" stroke="{color}" stroke-width="{6 if large else 5}" stroke-linecap="round" stroke-dasharray="{record.get("stroke_dasharray") or ""}"/>')
+        parts.append(f'<circle cx="{legend_x + 29:.1f}" cy="{row_y:.1f}" r="{6 if large else 5}" fill="{color}" stroke="#020502" stroke-width="1.5"/>')
+        parts.append(svg_text(legend_x + 74, row_y + 5, record["label"], size=15 if large else 12, weight=850))
+        coverage = f"{record['scored_task_count']}/20 scored"
+        proxy = record.get("proxy_scored_task_count", 0)
+        if proxy:
+            coverage += f" · {proxy} proxy"
+        parts.append(svg_text(legend_x + 74, row_y + (28 if large else 22), coverage, size=12 if large else 10, fill=color, weight=800))
+        detail = split_text(METHOD_DETAILS.get(series_id, record["scope"]), 50 if large else 44)[:2]
+        parts.extend(svg_text_lines(legend_x + 74, row_y + (49 if large else 40), detail, size=10 if large else 8, fill="#a5afa2", weight=560, line_height=13 if large else 10))
+
+    parts.append(svg_text(x + 28, y + height - 30, "Radius = sqrt(normalized score); exact raw and normalized values are in the matrix.", size=11 if large else 9, fill="#a5afa2", weight=600, opacity=0.88))
+
+
+def draw_task_key(parts: list[str], *, x: float, y: float, width: float, tasks: list[dict[str, Any]], compact: bool = False) -> None:
+    height = 292 if not compact else 250
+    parts.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{width:.1f}" height="{height:.1f}" rx="16" fill="#020502" fill-opacity="0.62" stroke="#ccffa0" stroke-opacity="0.18"/>')
+    parts.append(svg_text(x + 28, y + 42, "20-task axis key", size=20, weight=850))
+    parts.append(svg_text(x + 250, y + 42, "Task numbers stay on the radar; full names and proxy axes stay here.", size=13, fill="#a5afa2", weight=600))
+    col_count = 4
+    col_w = (width - 56) / col_count
+    row_h = 42 if not compact else 36
+    for idx, task in enumerate(tasks):
+        col = idx // 5
+        row = idx % 5
+        x0 = x + 28 + col * col_w
+        y0 = y + 84 + row * row_h
+        proxy = task["task_id"] in PROXY_TASK_IDS
+        color = "#f472b6" if proxy else "#ccffa0"
+        parts.append(f'<rect x="{x0:.1f}" y="{y0 - 17:.1f}" width="35" height="25" rx="6" fill="{color}" fill-opacity="0.13" stroke="{color}" stroke-opacity="0.40"/>')
+        parts.append(svg_text(x0 + 17.5, y0 + 1, f"{task['task_number']:02d}", size=10, fill=color, anchor="middle", weight=850))
+        task_name = str(task["label"])
+        if len(task_name) > 34:
+            task_name = task_name[:31].rstrip() + "..."
+        parts.append(svg_text(x0 + 46, y0 - 2, task_name, size=11 if not compact else 10, fill="#f4f8ef", weight=800))
+        metric = str(task.get("metric_name") or task.get("metric_key") or "")
+        direction = "lower" if task.get("metric_direction") == "lower" else "higher"
+        metric_text = f"{metric}; {direction} better"
+        if proxy:
+            metric_text += "; proxy axis"
+        if len(metric_text) > 43:
+            metric_text = metric_text[:40].rstrip() + "..."
+        parts.append(svg_text(x0 + 46, y0 + 16, metric_text, size=9, fill="#a5afa2", weight=560))
+
+
+def draw_reading_rules(parts: list[str], *, y: float, reading_rules: tuple[str, str, str] | None) -> None:
+    if reading_rules is None:
+        reading_rules = (
+            "Use the panels for shape and coverage; use docs/data/task_method_20_result_matrix.json for exact ranks, raw values, direct/proxy flags, and sources.",
+            "The old nine-method overlay was replaced by grouped small multiples so each radar compares only related methods.",
+            "SVG radius uses sqrt(normalized_score) for readable area; JSON normalized_score remains linear and unchanged.",
+        )
+    parts.append(f'<rect x="70" y="{y:.1f}" width="2260" height="118" rx="14" fill="#020502" fill-opacity="0.62" stroke="#ccffa0" stroke-opacity="0.16"/>')
+    parts.append(svg_text(100, y + 33, "Reading rules", size=16, fill="#ccffa0", weight=850))
+    parts.append(svg_text(230, y + 33, reading_rules[0], size=13, fill="#dce8d7", weight=650))
+    parts.append(svg_text(230, y + 61, reading_rules[1], size=12, fill="#a5afa2", weight=560))
+    parts.append(svg_text(230, y + 87, reading_rules[2], size=12, fill="#a5afa2", weight=560))
+
+
 def render_svg(
     payload: dict[str, Any],
     *,
@@ -1139,29 +1458,27 @@ def render_svg(
     chip_specs: list[tuple[str, str]] | None = None,
     reading_rules: tuple[str, str, str] | None = None,
 ) -> str:
-    width, height = 2400, 1840
-    cx, cy, radius = 650, 860, 355
+    del polygon_series_ids
+    width, height = 2400, 1900
     tasks = payload["tasks"]
-    n = len(tasks)
-    angles = [-math.pi / 2 + 2 * math.pi * i / n for i in range(n)]
     if series_ids is None:
         series_ids = tuple(record["id"] for record in payload["series"])
-    polygon_series_set = set(polygon_series_ids)
-    series_records = [record for record in payload["series"] if record["id"] in set(series_ids)]
+    groups = radar_groups_for_series(series_ids)
+    series_record_by_id = {record["id"]: record for record in payload["series"]}
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         "<defs>",
-        '<filter id="softGlow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>',
-        '<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.15" fill="#ccffa0" opacity="0.16"/></pattern>',
+        '<filter id="softGlow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>',
+        '<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.15" fill="#ccffa0" opacity="0.12"/></pattern>',
         "</defs>",
         '<rect width="100%" height="100%" fill="#020502"/>',
-        '<rect width="100%" height="100%" fill="url(#dots)" opacity="0.45"/>',
-        '<rect x="28" y="28" width="2344" height="1784" rx="18" fill="#061006" fill-opacity="0.88" stroke="#ccffa0" stroke-opacity="0.22"/>',
-        svg_text(70, 86, title or payload.get("title", "20-Task Model Radar"), size=36, weight=800),
+        '<rect width="100%" height="100%" fill="url(#dots)" opacity="0.40"/>',
+        '<rect x="28" y="28" width="2344" height="1844" rx="22" fill="#061006" fill-opacity="0.90" stroke="#ccffa0" stroke-opacity="0.22"/>',
+        svg_text(70, 86, title or payload.get("title", "20-Task Model Radar"), size=36, weight=850),
         svg_text(
             70,
             122,
-            subtitle or "Task names, methods, coverage, and metric normalization in one comparison view.",
+            subtitle or "Grouped small-multiple radars for the nine-method, 180-result comparison.",
             size=18,
             fill="#dce8d7",
             weight=650,
@@ -1170,7 +1487,7 @@ def render_svg(
             70,
             150,
             context_line
-            or "Filled areas show complete scored baselines; colored points show partial branches on task-aligned axes.",
+            or "Related methods are compared in separate panels to avoid the unreadable nine-polygon overlay.",
             size=15,
             fill="#a5afa2",
             weight=560,
@@ -1182,111 +1499,77 @@ def render_svg(
             ("20 task axes", "#ccffa0"),
             (f"{payload['method_task_record_count']} method-task records", "#67e8d1"),
             (f"{payload['scored_method_task_count']} scored records", "#22d3ee"),
-            ("40/40 raw128 pass", "#f59e0b"),
-            ("2 compact proxy records", "#f472b6"),
+            ("grouped small multiples", "#f59e0b"),
+            ("sqrt visual radius", "#f472b6"),
         ]
     chip_x = 70
     for label, color in chip_specs:
-        chip_w = 168 if len(label) < 15 else 250
-        parts.append(f'<rect x="{chip_x}" y="174" width="{chip_w}" height="34" rx="17" fill="{color}" fill-opacity="0.10" stroke="{color}" stroke-opacity="0.38"/>')
-        parts.append(svg_text(chip_x + 16, 197, label, size=13, fill=color, weight=760))
+        chip_w = max(128, min(280, 18 + len(label) * 8.3))
+        parts.append(f'<rect x="{chip_x:.1f}" y="174" width="{chip_w:.1f}" height="34" rx="17" fill="{color}" fill-opacity="0.10" stroke="{color}" stroke-opacity="0.38"/>')
+        parts.append(svg_text(chip_x + 16, 197, label, size=13, fill=color, weight=780))
         chip_x += chip_w + 12
 
-    parts.append('<rect x="54" y="235" width="1190" height="1190" rx="14" fill="#020502" fill-opacity="0.42" stroke="#ccffa0" stroke-opacity="0.14"/>')
-    parts.append(svg_text(84, 276, "Normalized task scores", size=23, weight=800))
-    parts.append(svg_text(84, 302, "Each axis is one task. Longer radius means better after metric-direction normalization.", size=13, fill="#a5afa2", weight=560))
-
-    for level in range(1, 6):
-        r = radius * level / 5
-        ring = [point(cx, cy, r, angle) for angle in angles]
-        parts.append(polyline(ring, fill="none", stroke="#ccffa0", opacity=0, stroke_width=1.1))
-        parts[-1] = parts[-1].replace('fill="none" fill-opacity="0.000"', 'fill="none"').replace('stroke-opacity="0.92"', 'stroke-opacity="0.15"')
-        parts.append(svg_text(cx + 8, cy - r + 4, f"{level / 5:.1f}", size=11, fill="#a5afa2", weight=600, opacity=0.75))
-
-    for task, angle in zip(tasks, angles):
-        x, y = point(cx, cy, radius, angle)
-        parts.append(f'<line x1="{cx:.1f}" y1="{cy:.1f}" x2="{x:.1f}" y2="{y:.1f}" stroke="#ccffa0" stroke-opacity="0.12" stroke-width="1"/>')
-        lx, ly = point(cx, cy, radius + 82, angle)
-        parts.append(f'<circle cx="{lx:.1f}" cy="{ly:.1f}" r="15.5" fill="#ccffa0" fill-opacity="0.12" stroke="#ccffa0" stroke-opacity="0.34"/>')
-        parts.append(svg_text(lx, ly + 4, f"{task['task_number']:02d}", size=11, fill="#ccffa0", anchor="middle", weight=800, opacity=0.98))
-
-    for series_id in series_ids:
-        if series_id not in polygon_series_set:
-            continue
-        spec = SERIES[series_id]
-        points = []
-        for task, angle in zip(tasks, angles):
-            score = task["values"].get(series_id, {}).get("normalized_score")
-            points.append(point(cx, cy, radius * float(score or 0.0), angle))
-        parts.append(polyline(points, fill=spec["color"], stroke=spec["color"], opacity=0.18 if series_id in {"minimal", "raw128_simple"} else 0.16, stroke_width=4.2, dash=spec.get("stroke_dasharray")))
-        for x, y in points:
-            parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4.0" fill="{spec["color"]}" stroke="#020502" stroke-width="1.1"/>')
-
-    for series_id in series_ids:
-        if series_id in polygon_series_set:
-            continue
-        spec = SERIES[series_id]
-        for task, angle in zip(tasks, angles):
-            score = task["values"].get(series_id, {}).get("normalized_score")
-            if score is None:
-                continue
-            x, y = point(cx, cy, radius * float(score), angle)
-            radius_px = 6.5 if series_id.startswith(("metadata128", "raw128")) else 8.0
-            parts.append(
-                f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius_px:.1f}" fill="{spec["color"]}" fill-opacity="0.92" '
-                f'stroke="#020502" stroke-width="2.0"/>'
-            )
-
-    legend_x, legend_y = 1315, 178
-    parts.append(f'<rect x="{legend_x - 30}" y="{legend_y - 38}" width="1000" height="560" rx="14" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>')
-    parts.append(svg_text(legend_x, legend_y, "Methods compared", size=25, weight=800))
-    parts.append(svg_text(legend_x, legend_y + 30, "Each method has 20 records; scores, proxy flags, and sources stay in the JSON matrix.", size=13, fill="#a5afa2", weight=560))
-
-    cursor = legend_y + 74
-    for record in series_records:
-        color = record["color"]
-        parts.append(f'<line x1="{legend_x}" y1="{cursor - 7}" x2="{legend_x + 50}" y2="{cursor - 7}" stroke="{color}" stroke-width="7" stroke-linecap="round"/>')
-        if record["id"] not in polygon_series_set:
-            parts.append(f'<circle cx="{legend_x + 25}" cy="{cursor - 7}" r="7" fill="{color}" stroke="#020502" stroke-width="2"/>')
-        parts.append(svg_text(legend_x + 66, cursor - 12, record["label"], size=15, weight=800))
-        parts.append(svg_text(legend_x + 392, cursor - 12, f"20 records / {record['scored_task_count']} scored", size=13, fill=color, weight=800))
-        detail_lines = split_text(METHOD_DETAILS.get(record["id"], record["scope"]), 78)[:2]
-        parts.extend(svg_text_lines(legend_x + 66, cursor + 8, detail_lines, size=11, fill="#a5afa2", weight=560, line_height=15))
-        cursor += 50
-
-    key_x, key_y = 1315, 780
-    parts.append(f'<rect x="{key_x - 30}" y="{key_y - 44}" width="1000" height="680" rx="14" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>')
-    parts.append(svg_text(key_x, key_y, "Task axis key", size=25, weight=800))
-    parts.append(svg_text(key_x, key_y + 30, "Full task names are listed here so the polygon remains readable at homepage scale.", size=13, fill="#a5afa2", weight=560))
-    for idx, task in enumerate(tasks):
-        col = 0 if idx < 10 else 1
-        row = idx if idx < 10 else idx - 10
-        x0 = key_x + col * 500
-        y0 = key_y + 74 + row * 54
-        proxy = task["task_id"] in PROXY_TASK_IDS
-        badge_fill = "#f472b6" if proxy else "#ccffa0"
-        parts.append(f'<rect x="{x0}" y="{y0 - 16}" width="36" height="26" rx="6" fill="{badge_fill}" fill-opacity="0.14" stroke="{badge_fill}" stroke-opacity="0.40"/>')
-        parts.append(svg_text(x0 + 18, y0 + 2, f"{task['task_number']:02d}", size=11, fill=badge_fill, anchor="middle", weight=800))
-        name_lines = split_text(str(task["label"]), 42)[:2]
-        parts.extend(svg_text_lines(x0 + 48, y0 - 3, name_lines, size=12, fill="#f4f8ef", weight=760, line_height=14))
-        metric_label = f"{task.get('metric_name') or task.get('metric_key')} / {'lower better' if task.get('metric_direction') == 'lower' else 'higher better'}"
-        if proxy:
-            metric_label += " / raw128 proxy"
-        parts.append(svg_text(x0 + 48, y0 + 29, metric_label, size=10, fill="#a5afa2", weight=560))
-
-    table_y = 1680
-    if reading_rules is None:
-        reading_rules = (
-            "Every method has 20 task records and the current public matrix scores all 180 rows.",
-            "Raw128 completion: 18 direct task targets plus 2 compact proxies. Task 15 predicts the dominant caption/object/interaction hash bin; task 19 retrieves depth/audio sync from camera pose.",
-            "Proxy flags, raw metric values, and source artifacts stay attached in docs/data/task_method_20_result_matrix.json.",
+    if len(groups) == 1:
+        draw_radar_panel(
+            parts,
+            x=70,
+            y=242,
+            width=2260,
+            height=1040,
+            group=groups[0],
+            payload=payload,
+            series_record_by_id=series_record_by_id,
+            large=True,
         )
-    parts.append(f'<rect x="70" y="{table_y - 38}" width="2260" height="120" rx="12" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.16"/>')
-    parts.append(svg_text(100, table_y - 10, "Reading rules", size=16, fill="#ccffa0", weight=800))
-    parts.append(svg_text(220, table_y - 10, reading_rules[0], size=14, fill="#dce8d7", weight=650))
-    parts.append(svg_text(220, table_y + 18, reading_rules[1], size=13, fill="#a5afa2", weight=560))
-    parts.append(svg_text(220, table_y + 44, reading_rules[2], size=13, fill="#a5afa2", weight=560))
+        key_y = 1322
+    elif len(groups) == 3:
+        panel_w, panel_h = 1100, 545
+        start_x, start_y = 70, 248
+        gap_x, gap_y = 30, 34
+        for idx, group in enumerate(groups[:2]):
+            draw_radar_panel(
+                parts,
+                x=start_x + idx * (panel_w + gap_x),
+                y=start_y,
+                width=panel_w,
+                height=panel_h,
+                group=group,
+                payload=payload,
+                series_record_by_id=series_record_by_id,
+            )
+        draw_radar_panel(
+            parts,
+            x=start_x,
+            y=start_y + panel_h + gap_y,
+            width=panel_w * 2 + gap_x,
+            height=panel_h,
+            group=groups[2],
+            payload=payload,
+            series_record_by_id=series_record_by_id,
+            large=True,
+        )
+        key_y = 1438
+    else:
+        panel_w, panel_h = 1100, 545
+        start_x, start_y = 70, 248
+        gap_x, gap_y = 30, 34
+        for idx, group in enumerate(groups):
+            col = idx % 2
+            row = idx // 2
+            draw_radar_panel(
+                parts,
+                x=start_x + col * (panel_w + gap_x),
+                y=start_y + row * (panel_h + gap_y),
+                width=panel_w,
+                height=panel_h,
+                group=group,
+                payload=payload,
+                series_record_by_id=series_record_by_id,
+            )
+        key_y = 1438
 
+    draw_task_key(parts, x=70, y=key_y, width=2260, tasks=tasks, compact=len(groups) == 1)
+    draw_reading_rules(parts, y=1750 if len(groups) > 1 else 1632, reading_rules=reading_rules)
     parts.append("</svg>")
     return "\n".join(parts) + "\n"
 
@@ -1357,8 +1640,8 @@ def main() -> int:
             series_ids=EPISODE128_SERIES,
             polygon_series_ids=("raw128_simple", "raw128_neural_mlp"),
             title="128-Episode 20-Task Radar",
-            subtitle="Selected 96/16/16 episode split; raw-feature heads score all 20 axes.",
-            context_line="Raw128 baselines are filled polygons; metadata, Qwen3, and Cosmos branches now all carry scored task rows.",
+            subtitle="Selected 96/16/16 episode split; all seven 128-episode rows score all 20 axes.",
+            context_line="Metadata, raw-feature, and foundation-model methods are separated into grouped radar panels instead of one crowded overlay.",
             chip_specs=[
                 ("20 task axes", "#ccffa0"),
                 ("140 method-task records", "#67e8d1"),
@@ -1368,7 +1651,7 @@ def main() -> int:
             ],
             reading_rules=(
                 "Every 128-episode method has 20 result records and all 140 rows are scored in this split radar.",
-                "Raw128 Simple and Raw128 NN are complete 20/20 scored multi-episode baselines; tasks 15/19 are documented compact proxies.",
+                "Raw128 Simple and Raw128 NN are complete 20/20 scored multi-episode baselines; tasks 15/19 are documented compact proxies and are marked in the task key.",
                 "Qwen3-Omni and Cosmos3 rows use verified held-out outputs or derived probe artifacts; source paths stay in the matrix JSON.",
             ),
         ),

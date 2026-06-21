@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Figure Index",
   "status": "pass",
-  "generated_at_utc": "2026-06-21T15:19:00+00:00",
+  "generated_at_utc": "2026-06-21T20:35:17+00:00",
   "scope": "Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience-10M videos, annotations, RRD files, and Qwen weights are excluded.",
   "figure_count": 29,
   "figures": [
@@ -406,17 +406,17 @@
       "id": "unified_task_model_radar",
       "title": "Unified 20-task model radar",
       "path": "docs/assets/charts/unified_task_model_radar.svg",
-      "role": "Twenty-axis direction-aware comparison of minimal and neural MLP baselines, with 128-episode metadata, Qwen3, and Cosmos task-aligned overlay points and branch notes.",
+      "role": "Grouped small-multiple 20-task radar board for all nine methods, separating single-episode, 128-episode metadata/text, 128-episode raw-feature, and foundation-model rows while preserving task keys and proxy notes.",
       "source_script": "scripts/build_unified_task_model_radar.py",
       "surface": "website unified task section, README, HF mirrors",
       "exists": true,
-      "bytes": 57938,
-      "sha256": "bb83b80b47fe679ebdce2c99378a4548120f1c8cc2d725b88e409d8c386dcbf8",
+      "bytes": 98527,
+      "sha256": "5b034b22d2a772a57e7db50f300cb70d00bd31ac89d0c039c16ac8c23a5137ec",
       "dimensions": {
         "format": "SVG",
         "width": 2400,
-        "height": 1840,
-        "view_box": "0 0 2400 1840"
+        "height": 1900,
+        "view_box": "0 0 2400 1900"
       },
       "source_script_exists": true
     },
@@ -428,13 +428,13 @@
       "source_script": "scripts/build_unified_task_model_radar.py",
       "surface": "website unified task section, README, HF mirrors",
       "exists": true,
-      "bytes": 35232,
-      "sha256": "87b52a7dead40358f1778dda43ade4d2e875ac98e507e01ca007084363e5977e",
+      "bytes": 36930,
+      "sha256": "96e609b0577e66db0ee8c63939c11b1fb28018285a1d259362de0bff415cc939",
       "dimensions": {
         "format": "SVG",
         "width": 2400,
-        "height": 1840,
-        "view_box": "0 0 2400 1840"
+        "height": 1900,
+        "view_box": "0 0 2400 1900"
       },
       "source_script_exists": true
     },
@@ -442,17 +442,17 @@
       "id": "episode128_task_model_radar",
       "title": "128-episode 20-task model radar",
       "path": "docs/assets/charts/episode128_task_model_radar.svg",
-      "role": "Twenty-axis split radar for selected 128-episode methods: raw-feature simple/NN as complete scored polygons plus metadata, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano task-aligned overlays.",
+      "role": "Grouped 20-task radar for selected 128-episode methods: metadata/text baselines, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano with local legends and proxy notes.",
       "source_script": "scripts/build_unified_task_model_radar.py",
       "surface": "website unified task section, README, HF mirrors",
       "exists": true,
-      "bytes": 51915,
-      "sha256": "047ea4b05a04f6734e2afcf792863559dc8f3091eae88a97ff90e8b038a423f4",
+      "bytes": 79370,
+      "sha256": "5151c8aca22bd4aeda60b143b1164c1d1b9eb4babbeabf6da598701ccbbbf5c9",
       "dimensions": {
         "format": "SVG",
         "width": 2400,
-        "height": 1840,
-        "view_box": "0 0 2400 1840"
+        "height": 1900,
+        "view_box": "0 0 2400 1900"
       },
       "source_script_exists": true
     },

@@ -539,7 +539,7 @@ ARTIFACTS = [
         "path": "docs/data/unified_task_model_radar.json",
         "kind": "website_data",
         "surface": "website_hf",
-        "shows": "Stores normalized 20-axis radar values, raw task metrics, Qwen3-Omni/Cosmos3 overlay mappings, method-card caveats, proxy flags, and source artifacts.",
+        "shows": "Stores normalized 20-axis radar values, raw task metrics, grouped chart-design metadata, Qwen3-Omni/Cosmos3 source mappings, method-card caveats, proxy flags, and source artifacts.",
     },
     {
         "id": "single_episode_task_model_radar_json",
@@ -619,7 +619,7 @@ ARTIFACTS = [
         "path": "docs/assets/charts/unified_task_model_radar.svg",
         "kind": "generated_figure",
         "surface": "website_hf",
-        "shows": "Compares minimal and neural MLP baselines across all 20 tasks, with Qwen3-Omni and Cosmos3 task-aligned overlays.",
+        "shows": "Groups all nine methods into small-multiple 20-task radar panels so single-episode, 128-episode metadata/text, 128-episode raw-feature, and foundation-model rows remain readable.",
     },
     {
         "id": "single_episode_task_model_radar_chart",
@@ -627,7 +627,7 @@ ARTIFACTS = [
         "path": "docs/assets/charts/single_episode_task_model_radar.svg",
         "kind": "generated_figure",
         "surface": "website_hf",
-        "shows": "Separates the one-episode Minimal and Neural MLP 20/20 scored baselines into a clean two-polygon radar.",
+        "shows": "Shows the one-episode Minimal and Neural MLP 20/20 scored baselines in one enlarged radar panel with local legend and task key.",
     },
     {
         "id": "episode128_task_model_radar_chart",
@@ -635,7 +635,7 @@ ARTIFACTS = [
         "path": "docs/assets/charts/episode128_task_model_radar.svg",
         "kind": "generated_figure",
         "surface": "website_hf",
-        "shows": "Separates the selected 128-episode methods: raw-feature simple/NN as complete 20/20 scored polygons plus metadata, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano task-aligned overlays.",
+        "shows": "Separates selected 128-episode methods into metadata/text, raw-feature, and foundation-model radar panels with all 140 result rows scored and proxy notes retained.",
     },
     {
         "id": "unified_task_model_radar_builder",
@@ -643,7 +643,7 @@ ARTIFACTS = [
         "path": "scripts/build_unified_task_model_radar.py",
         "kind": "visualization_builder",
         "surface": "repo_hf",
-        "shows": "Regenerates the direction-aware radar chart and machine-readable metric overlay JSON.",
+        "shows": "Regenerates grouped 20-task radar charts plus machine-readable metric, source, chart-design, and proxy metadata.",
     },
     {
         "id": "task_method_20_gap_audit_builder",

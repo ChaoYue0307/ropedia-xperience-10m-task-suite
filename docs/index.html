@@ -4654,15 +4654,15 @@
       <div class="hero-radar-panel" aria-label="Unified 20-task radar comparison">
         <div class="hero-radar-top">
           <strong>home radar comparison</strong>
-          <span>two evidence lines / 180 scored records / 174 direct + 6 compact-proxy</span>
+          <span>4 grouped panels / 180 scored records / 174 direct + 6 compact-proxy</span>
         </div>
         <div class="hero-radar-layout">
           <a class="hero-radar-frame" href="#suite" aria-label="Open full unified 20-task model radar">
-            <img src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v6" alt="Unified 20-task model radar with full task-name key, method legend, 20-record counts, score counts, and raw128 proxy notes">
+            <img src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v7" alt="Unified 20-task grouped radar board with method-family panels, task key, score counts, and raw128 proxy notes">
           </a>
           <div class="hero-radar-copy">
-            <h2>Model comparison is split by evidence line.</h2>
-            <p>The full SVG names every task axis and keeps method records, source artifacts, and proxy notes attached to the same comparison view.</p>
+            <h2>Model comparison is grouped by method family.</h2>
+            <p>The full SVG names every task axis, separates the nine methods into readable panels, and keeps source artifacts plus proxy notes attached to the same comparison view.</p>
             <div class="hero-radar-stats" aria-label="Radar coverage summary">
               <div class="hero-radar-stat"><strong>180</strong><span>method-task records</span></div>
               <div class="hero-radar-stat"><strong>174</strong><span>direct scores</span></div>
@@ -4670,10 +4670,10 @@
               <div class="hero-radar-stat"><strong>34,269</strong><span>128ep windows</span></div>
             </div>
             <div class="hero-method-list" aria-label="Method families shown in the radar">
-              <div class="hero-method" style="--method-color:#67e8d1"><strong>Line 1: Minimal + Neural MLP</strong><span>Single public-sample episode; 40/40 direct task scores.</span></div>
-              <div class="hero-method" style="--method-color:#f59e0b"><strong>Line 2: metadata + raw baselines</strong><span>Same selected-128 split; all four baseline rows have 20 records, with proxy notes where direct raw targets are absent.</span></div>
-              <div class="hero-method" style="--method-color:#9bb8ff"><strong>Line 2: Qwen3-Omni v6 LoRA</strong><span>One trainable selected-128 model row; 20/20 direct scores from verified LoRA and task-specific probe artifacts.</span></div>
-              <div class="hero-method" style="--method-color:#d8f4a5"><strong>Line 2: Cosmos3 series</strong><span>Cosmos3-Super Reasoner and Cosmos3-Nano Future Window are separate selected-128 method rows; 40/40 direct scores.</span></div>
+              <div class="hero-method" style="--method-color:#67e8d1"><strong>Panel 1: Minimal + Neural MLP</strong><span>Single public-sample episode; 40/40 direct task scores.</span></div>
+              <div class="hero-method" style="--method-color:#ffd166"><strong>Panel 2: 128ep metadata/text</strong><span>Aligned JSONL and staged-target baselines; 40/40 scored with proxy flags retained.</span></div>
+              <div class="hero-method" style="--method-color:#22d3ee"><strong>Panel 3: 128ep raw features</strong><span>Sensor-block simple/NN heads; 40/40 scored with task 15/19 compact proxies marked.</span></div>
+              <div class="hero-method" style="--method-color:#9bb8ff"><strong>Panel 4: Qwen3 + Cosmos3</strong><span>Qwen3-Omni v6 LoRA, Cosmos3-Super, and Cosmos3-Nano; 60/60 scored from verified artifacts.</span></div>
             </div>
             <div class="hero-task-strip" aria-label="Radar task axis examples">
               <span>01 Action Recognition</span>
@@ -5065,7 +5065,7 @@
           <article class="split-radar-card">
             <h3>1-Episode 20-Task Radar</h3>
             <p>Minimal and Neural MLP baselines over the original public-sample episode, with 40/40 scored method-task records.</p>
-            <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
+            <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v2" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
             <div class="split-radar-links">
               <a href="assets/charts/single_episode_task_model_radar.svg">Open SVG</a>
               <a href="data/single_episode_task_model_radar.json">Open JSON</a>
@@ -5074,7 +5074,7 @@
           <article class="split-radar-card">
             <h3>128-Episode 20-Task Radar</h3>
             <p>Metadata, raw-feature, Qwen3-Omni, and Cosmos3 methods on the aligned 128-episode surface, with all 140 rows scored and proxy/evidence notes kept explicit.</p>
-            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="128-episode 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
+            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v2" alt="128-episode grouped 20-task radar comparing metadata baselines, raw-feature baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
             <div class="split-radar-links">
               <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
               <a href="data/episode128_task_model_radar.json">Open JSON</a>
@@ -5777,23 +5777,23 @@
         <div class="figure-brief">
           <article class="figure-brief-card">
             <h3>Unified plus split radars</h3>
-            <p>The unified radar keeps all 9 methods in one view. The split radars separate the 1-episode Minimal/NN baseline comparison from the 128-episode metadata/raw, Qwen3-Omni v6 LoRA, and Cosmos3-Super/Nano comparison.</p>
+            <p>The unified radar keeps all nine methods in one comparison board, but groups them into small-multiple panels so each method family can be read directly. The split radars separate the 1-episode Minimal/NN baseline comparison from the 128-episode metadata/raw, Qwen3-Omni v6 LoRA, and Cosmos3-Super/Nano comparison.</p>
           </article>
           <article class="figure-brief-card">
             <h3>Metric normalization</h3>
-            <p>Higher-is-better metrics are plotted directly on 0-1 axes. Lower-is-better metrics are converted to best/value within the task, while raw values, status reasons, sources, and the two raw128 compact proxy notes remain in the JSON mirrors.</p>
+            <p>Higher-is-better metrics are normalized to 0-1; lower-is-better metrics are converted to best/value within the task. The SVG uses sqrt(normalized score) only for visual radius, while raw values, linear normalized scores, status reasons, sources, and compact proxy notes remain in the JSON mirrors.</p>
           </article>
           <article class="figure-brief-card">
             <h3>Score/proxy audit</h3>
             <p>The matrix has 180/180 scored method-task records: 174 direct scores and 6 compact-proxy scores. The audit records the source artifact, metric key, and proxy reason for each marked cell.</p>
           </article>
         </div>
-        <img class="chart radar-chart unified-radar-chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v6" alt="Unified 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, score counts, and proxy notes">
+        <img class="chart radar-chart unified-radar-chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v7" alt="Unified grouped 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, score counts, and proxy notes">
         <div class="split-radar-grid" aria-label="Split 20-task radar comparisons">
           <article class="split-radar-card">
             <h3>1-Episode 20-Task Radar</h3>
-            <p>Minimal and Neural MLP are both scored on all 20 public-sample task contracts, shown as two filled polygons without 128-episode overlays.</p>
-            <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
+            <p>Minimal and Neural MLP are both scored on all 20 public-sample task contracts in one enlarged panel without 128-episode methods competing for attention.</p>
+            <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v2" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
             <div class="split-radar-links">
               <a href="assets/charts/single_episode_task_model_radar.svg">Open SVG</a>
               <a href="data/single_episode_task_model_radar.json">Open JSON</a>
@@ -5801,8 +5801,8 @@
           </article>
           <article class="split-radar-card">
             <h3>128-Episode 20-Task Radar</h3>
-            <p>Seven aligned 128-episode methods cover all 20 axes: metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano. Proxy axes stay labeled in the JSON.</p>
-            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="128-episode 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
+            <p>Seven aligned 128-episode methods cover all 20 axes across metadata/text, raw-feature, and foundation-model panels. Proxy axes stay labeled in the SVG and JSON.</p>
+            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v2" alt="128-episode grouped 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
             <div class="split-radar-links">
               <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
               <a href="data/episode128_task_model_radar.json">Open JSON</a>

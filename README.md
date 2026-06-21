@@ -788,22 +788,21 @@ suite.
 
 ![Unified 20-task model radar](docs/assets/charts/unified_task_model_radar.svg)
 
-The unified radar compares all 20 task axes with two filled colors for the
-minimal and neural MLP baselines. Every method now has 20 explicit result
-records in the public matrix; numeric points appear only where the runner or
-verified package produced that task target. The 128-episode raw-feature
-simple/NN overlays are plotted on all 20 axes backed by the exported
-4430-dimensional sensor NPZ blocks. Tasks 15 and 19 are marked as compact-proxy
-completions because the 128 export lacks raw interaction strings and paired
-video-view embeddings. The verified model-output probe package adds task-16
-action/object relation scores for Qwen3-Omni and Cosmos3-Super, plus a task-13
-long-horizon next-action score for Cosmos3-Nano derived from its existing
-held-out future-window predictions. Metadata-only baselines and model diagnostics
-now have scored records on all 20 axes; six compact-proxy scores stay
-explicitly marked instead of being blended into direct-target metrics.
+The unified radar is now a grouped small-multiple comparison board instead of a
+nine-method overlay. It keeps all 20 task axes and all 9 method rows visible,
+but separates the methods into single-episode, 128-episode metadata/text,
+128-episode raw-feature, and foundation-model panels. Every method has 20
+explicit result records in the public matrix. Tasks 15 and 19 are marked as
+compact-proxy completions where the 128 export lacks raw interaction strings or
+paired video-view embeddings; those six proxy cells stay explicitly marked
+instead of being blended into direct-target metrics. The SVG uses
+`sqrt(normalized_score)` only for visual radius so small but real differences
+are readable; raw metrics and exact linear normalized scores remain in JSON and
+the table.
 Cosmos3-Super forward-dynamics LoRA
-remains a separate artifact card because its camera-pose proxy MSE is not one of the 20
-task metrics. The machine-readable copies are
+remains a separate artifact card because its camera-pose proxy MSE is not one of
+the 20 task metrics.
+The machine-readable copies are
 [`docs/data/unified_task_model_radar.json`](docs/data/unified_task_model_radar.json)
 and
 [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json);
@@ -822,13 +821,13 @@ For easier reading, the same source data is also split into two focused radars:
 
 ![128-episode 20-task model radar](docs/assets/charts/episode128_task_model_radar.svg)
 
-The single-episode radar isolates Minimal vs Neural MLP, both with 20/20 scored
-public-sample axes. The 128-episode radar isolates metadata/raw baselines,
-Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window:
-metadata and raw-feature simple/NN baselines are now complete 20/20
-multi-episode records, with documented compact proxy notes where the public
-export lacks the original raw target. The current matrix has 180/180 scored
-method-task records.
+The single-episode radar uses one enlarged panel for Minimal vs Neural MLP, both
+with 20/20 scored public-sample axes. The 128-episode radar uses three grouped
+panels for metadata/text baselines, raw-feature baselines, and foundation-model
+rows: metadata and raw-feature simple/NN baselines are now complete 20/20
+multi-episode records, and Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and
+Cosmos3-Nano Future Window each carry 20 scored task records. The current matrix
+has 180/180 scored method-task records.
 
 The website raw sample browser includes a concise stream-to-feature ledger
 backed by [`docs/data/modality_atlas.json`](docs/data/modality_atlas.json) and
@@ -865,7 +864,7 @@ scripts/
   research_direction_extension_tasks.py # one extra data-backed probe per track
   tier2_task_suite.py              # historical-name provenance builder for unified task rows
   build_unified_task_suite.py       # builds TASK_SUITE_20.md and task_suite_20.json
-  build_unified_task_model_radar.py # builds the unified 20-axis model comparison chart
+  build_unified_task_model_radar.py # builds grouped 20-axis model comparison radars
   build_task_method_20_gap_audit.py # builds the explicit 180/180 scored-cell ledger
   task_walkthroughs.py              # human-readable task-card and walkthrough-storyboard metadata
   generate_visualizations.py        # refreshes SVG charts + summary JSON
@@ -908,9 +907,9 @@ docs/
   data/additional_development_directions.json # concrete non-backbone project directions
   data/summary_metrics.json         # website-readable metrics bundle
   data/task_suite_20.json           # unified 20-task suite bundle
-  data/unified_task_model_radar.json # 20-task radar values and method overlays
-  data/single_episode_task_model_radar.json # 1-episode split radar values
-  data/episode128_task_model_radar.json # 128-episode split radar values
+  data/unified_task_model_radar.json # 20-task radar values, groups, and sources
+  data/single_episode_task_model_radar.json # 1-episode grouped radar values
+  data/episode128_task_model_radar.json # 128-episode grouped radar values
   data/task_method_20_result_matrix.json # 9-method x 20-task result matrix
   data/task_method_20_gap_audit.json # explicit 180/180 scored-cell ledger
   data/evidence_contract.json       # machine-readable project scope
@@ -933,9 +932,9 @@ docs/
   assets/pipeline_diagram.png       # verified episode pipeline graphic
   assets/qwen3_omni_lora_pipeline.png # Qwen3-Omni LoRA training-flow figure
   assets/task_architectures.png     # verified task-head architecture map
-  assets/charts/unified_task_model_radar.svg # 20-task minimal/NN/Qwen3-Omni/Cosmos3 radar
-  assets/charts/single_episode_task_model_radar.svg # 1-episode split radar
-  assets/charts/episode128_task_model_radar.svg # 128-episode split radar
+  assets/charts/unified_task_model_radar.svg # 9-method grouped small-multiple radar board
+  assets/charts/single_episode_task_model_radar.svg # 1-episode enlarged radar panel
+  assets/charts/episode128_task_model_radar.svg # 128-episode grouped radar panels
   assets/charts/*.svg               # regenerated visualizations
 
 notes/
