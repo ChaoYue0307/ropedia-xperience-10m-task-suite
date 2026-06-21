@@ -32,7 +32,7 @@ machine-readable copy at
 | Priority | Model family | Best role for this project | Why it fits Xperience-10M | Current decision |
 | --- | --- | --- | --- | --- |
 | 1 | Qwen3-Omni | Multimodal instruction model and JSON task predictor | Accepts video/audio/language directly; depth, pose, mocap, and IMU can enter through the existing sensor bridge | Keep as the first selected-episode LoRA pilot |
-| 2 | Cosmos 3 | Embodied world model, action generation, and synthetic future prediction | Designed for physical-world video generation, action-conditioned world modeling, and robot/world simulation style objectives | Add as the first world-model branch after the data gate |
+| 2 | Cosmos 3 | Embodied world model, action generation, and synthetic future prediction | Designed for physical-world video generation, action-conditioned world modeling, and robot/world simulation style objectives | Add as the first world-model track after the data gate |
 | 3 | NVIDIA GR00T | Humanoid/action-policy foundation model | Xperience-10M mocap, hand motion, contacts, and egocentric interaction can support retargeting and action-understanding probes | Track as a humanoid policy branch, not the first LoRA pilot |
 | 4 | OpenVLA / OpenVLA-OFT | Open vision-language-action policy baseline | Useful when windows are converted into visual observation plus action-token targets | Use after action-space design is explicit |
 | 5 | openpi pi0/pi0.5 | Open robot policy and action expert baseline | Useful for action chunking, policy fine-tuning, and embodiment transfer experiments | Candidate for policy branch once action labels are retargeted |
@@ -100,7 +100,7 @@ The full plan is documented in
 ## Why Cosmos 3 Should Be Added Next
 
 Cosmos 3 should not replace the Qwen3-Omni pilot. It should become the first
-world-model branch after the data gate. The reason is that the Xperience-10M
+world-model track after the data gate. The reason is that the Xperience-10M
 modalities are unusually aligned with physical-world modeling:
 
 - video streams for visual state,
@@ -159,7 +159,7 @@ The foundation-model stage should add metrics beyond the current 20-task suite:
 
 1. Keep the selected 96/16/16 split as the comparison spine.
 2. Treat the verified Qwen3-Omni LoRA package as the structured JSON baseline.
-3. Treat Cosmos3-Nano compatibility and Cosmos3-Super Forward-Dynamics LoRA as separate world-model branches with different metrics.
+3. Treat Cosmos3-Nano compatibility and Cosmos3-Super Forward-Dynamics LoRA as separate Cosmos3 world-model artifacts with different metrics.
 4. Run a model-selection dry run on 3-8 episodes for any next backbone before scaling beyond the selected split.
 5. Promote Cosmos 3 to larger world-model experiments if video/sensor
    preprocessing, storage, and loss metrics justify the extra cost.

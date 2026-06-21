@@ -31,8 +31,8 @@ trail.
 | Hugging Face Space | Hub-hosted copy of the dashboard and static app assets | Sharing the visual dashboard from HF |
 | HF artifact dataset | Public-safe derived artifacts, reports, metrics, website JSON, and sanitized model result packages | Downloading evidence bundles |
 | HF baseline model repo | Baseline weights, metrics, figures, and mirrored task artifacts | Reusing compact baseline outputs |
-| HF weights/results repo | Consolidated baseline weights, Qwen3/Cosmos adapter weights, verified results, analysis files, and file-level manifest | Auditing all public-safe weight-bearing artifacts from one repo |
-| Qwen3/Cosmos model repos | Adapter-specific public weights or package cards when a branch is verified and publishable | Inspecting model-branch artifacts |
+| HF weights/results repo | Consolidated baseline weights, Qwen3-Omni v6 LoRA, Cosmos3-Super adapter/result artifacts, verified results, analysis files, and file-level manifest | Auditing all public-safe weight-bearing artifacts from one repo |
+| Qwen3-Omni and Cosmos3 model repos | Adapter-specific public weights or package cards when a run is verified and publishable | Inspecting Qwen3-Omni and Cosmos3 artifacts |
 
 ## Evidence Layers
 
@@ -55,5 +55,5 @@ trail.
 | --- | --- | --- |
 | Single public-sample task behavior | `results/episode_task_suite/`, `docs/data/task_suite_20.json` | Describes one public sample episode, not the full dataset distribution |
 | 128-episode baseline comparison | `XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md`, `docs/data/xperience10m_128_episode_feature_index.json`, `results/omni_finetune/*128*`, `docs/data/omni_model_comparison.json` | Uses selected held-out episodes and derived public-safe summaries; official raw files remain gated upstream |
-| Foundation-model branch quality | Verified Qwen3/Cosmos result packages and model cards | Numeric task scores appear only when a task-specific eval/probe exists |
+| Foundation-model track quality | Verified Qwen3-Omni and Cosmos3 result packages and model cards | Numeric task scores appear only when a task-specific eval/probe exists |
 | Reproducibility | `REPRODUCIBILITY.md`, `QUALITY_GATES.md`, release validators | Raw gated Xperience-10M files and full foundation weights are not redistributed |

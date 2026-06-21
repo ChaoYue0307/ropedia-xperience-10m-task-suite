@@ -39,7 +39,7 @@
 
 **Updated:** 2026-06-21.
 
-**Scope:** one public sample episode for raw-file inspection and reproducible task construction; selected 128-episode public-safe artifacts for same-split comparison and model-branch diagnostics. Raw Xperience-10M MP4/HDF5/RRD files, full Qwen weights, and gated data are not redistributed here.
+**Scope:** one public sample episode for raw-file inspection and reproducible task construction; selected 128-episode public-safe artifacts for same-split metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Raw Xperience-10M MP4/HDF5/RRD files, Qwen3 base weights, Cosmos3 base weights, and gated data are not redistributed here.
 
 ## Contents
 
@@ -73,7 +73,7 @@ The multilingual README files are reader guides. The canonical technical evidenc
   <tbody>
     <tr>
       <td><strong>Two result lines</strong></td>
-      <td><strong>1 sample episode</strong> for task construction and reproducibility. <strong>128 selected episodes</strong> for same-split baselines and model-branch comparison.</td>
+      <td><strong>1 sample episode</strong> for task construction and reproducibility. <strong>128 selected episodes</strong> for same-split metadata/raw baselines plus Qwen3-Omni v6 and Cosmos3 diagnostics.</td>
     </tr>
     <tr>
       <td><strong>180 method-task records</strong></td>
@@ -132,7 +132,7 @@ The public suite is organized around two result lines. Keep them separate when r
       <td><strong>128 selected episodes</strong></td>
       <td>Selected held-out 96/16/16 split: 34,269 exported windows with public-safe processed features linked to official gated episode paths.</td>
       <td>140/140 selected-128 scores: 134 direct + 6 compact-proxy.</td>
-      <td>Same-split comparison, model-branch diagnostics, and scale-up planning.</td>
+      <td>Same-split metadata/raw baseline comparison, Qwen3-Omni v6 diagnostics, Cosmos3 diagnostics, and scale-up planning.</td>
       <td>Reading proxy cells as direct raw-target measurements.</td>
     </tr>
   </tbody>
@@ -227,26 +227,25 @@ Cosmos3-Super Forward-Dynamics LoRA is published as a separate fine-tuned adapte
 
 ### Qwen3-Omni Run Versions
 
-These are Qwen3-Omni run versions, not the three project-level public result layers. The 20-task matrix uses **Qwen3-Omni v6 LoRA**. v5 remains the pinned prior release. v1-v4 are lineage/ablation evidence.
+These are Qwen3-Omni run versions inside **Line 2: selected 128 episodes**. They are not the project evidence lines. The 20-task matrix uses **Qwen3-Omni v6 LoRA**; **v5** remains the pinned prior multiscale release; **v1-v4** are lineage and ablation evidence.
 
 <table>
   <thead>
     <tr>
-      <th width="10%">Run</th>
-      <th width="26%">What changed</th>
-      <th width="12%">Eval samples</th>
-      <th width="12%">JSON validity</th>
-      <th width="12%">Contact acc.</th>
-      <th>Public role</th>
+      <th width="8%">Run</th>
+      <th width="26%">Purpose</th>
+      <th width="28%">Main change</th>
+      <th width="16%">Eval signal</th>
+      <th>Use now</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td><strong>v1</strong></td><td>Selected-128 validation-aware LoRA baseline.</td><td>448</td><td>0.8750</td><td>0.6451</td><td>Superseded lineage evidence.</td></tr>
-    <tr><td><strong>v2</strong></td><td>Structured-JSON reuse full-8-GPU LoRA.</td><td>448</td><td>0.9978</td><td>0.7188</td><td>Superseded lineage evidence.</td></tr>
-    <tr><td><strong>v3</strong></td><td>Strict-label prompt/eval over the v2 adapter.</td><td>448</td><td>1.0000</td><td>0.7210</td><td>Prompt/eval lineage evidence.</td></tr>
-    <tr><td><strong>v4</strong></td><td>Four-epoch structured-JSON LoRA.</td><td>448</td><td>1.0000</td><td>0.7299</td><td>Superseded metric tradeoff run.</td></tr>
-    <tr><td><strong>v5</strong></td><td>Multiscale cap96 LoRA.</td><td>4,032</td><td>1.0000</td><td>0.7865</td><td>Pinned prior release and comparison baseline.</td></tr>
-    <tr><td><strong>v6</strong></td><td>Rank64/lr5e-5 multiscale LoRA.</td><td>4,032</td><td>0.9990</td><td>0.8177</td><td>Current public 20-task Qwen row.</td></tr>
+    <tr><td><strong>v1</strong></td><td>Prove the selected-128 LoRA/eval/package loop.</td><td>First verified 96/16/16 selected-episode Qwen3-Omni LoRA run.</td><td>448 eval; JSON 0.8750; contact 0.6451.</td><td>Lineage only.</td></tr>
+    <tr><td><strong>v2</strong></td><td>Make answers schema-checked.</td><td>Structured-JSON contract with full-8-GPU LoRA on the same split.</td><td>448 eval; JSON 0.9978; contact 0.7188.</td><td>Structured-output ablation.</td></tr>
+    <tr><td><strong>v3</strong></td><td>Separate prompt/eval effects from training.</td><td>Strict-label prompt/eval over the v2 adapter; no new adapter training.</td><td>448 eval; JSON 1.0000; contact 0.7210.</td><td>Prompt/eval ablation.</td></tr>
+    <tr><td><strong>v4</strong></td><td>Test longer structured-JSON LoRA training.</td><td>New four-epoch full-8-GPU adapter on the same selected split.</td><td>448 eval; JSON 1.0000; contact 0.7299.</td><td>Overfit/metric-tradeoff evidence.</td></tr>
+    <tr><td><strong>v5</strong></td><td>Move to denser multiscale evaluation.</td><td>Multiscale cap96 export with 4,032 held-out predictions.</td><td>4,032 eval; JSON 1.0000; contact 0.7865.</td><td>Pinned prior release; stronger on several non-contact metrics.</td></tr>
+    <tr><td><strong>v6</strong></td><td>Publish the current Qwen 20-task row.</td><td>Rank64/lr5e-5 multiscale LoRA plus verified task-specific probes.</td><td>4,032 eval; JSON 0.9990; contact 0.8177.</td><td>Current public 20-task Qwen3-Omni row.</td></tr>
   </tbody>
 </table>
 
@@ -338,7 +337,7 @@ embodied-AI research infrastructure:
     <tr><td><strong>Multimodal data understanding</strong></td><td>Parses the public sample into synchronized windows across video, audio, depth, pose/SLAM, mocap, IMU, calibration, and language-derived signals.</td></tr>
     <tr><td><strong>Task design</strong></td><td>Defines 20 human-readable tasks in one unified public-sample suite, plus four direction-extension probes with inputs, outputs, process modules, metrics, and case-study walkthroughs.</td></tr>
     <tr><td><strong>Model and evaluation discipline</strong></td><td>Runs minimal and compact neural baselines, records predictions/metrics, keeps chronological split boundaries explicit, and separates sample evidence from held-out claims.</td></tr>
-    <tr><td><strong>Scale-up planning</strong></td><td>Connects the public-sample pipeline to 32/128-episode held-out pilots, Qwen3-Omni LoRA, Cosmos-style world-model branches, policy-model branches, and the future Xperience-native foundation-model pretraining goal.</td></tr>
+    <tr><td><strong>Scale-up planning</strong></td><td>Connects the public-sample pipeline to 32/128-episode held-out pilots, Qwen3-Omni LoRA, Cosmos-style world-model tracks, policy/VLA tracks, and the future Xperience-native foundation-model pretraining goal.</td></tr>
   </tbody>
 </table>
 
@@ -387,7 +386,7 @@ and [`docs/data/project_brief.json`](docs/data/project_brief.json).
     <tr><td><strong>Hugging Face Space</strong></td><td>Hub-hosted copy of the dashboard and static app assets.</td></tr>
     <tr><td><strong>HF artifact dataset</strong></td><td>Public-safe metrics, reports, website JSON, result packages, and derived evidence files.</td></tr>
     <tr><td><strong>HF baseline model repo</strong></td><td>Minimal/neural baseline weights, figures, metrics, and mirrored task artifacts.</td></tr>
-    <tr><td><strong>Qwen3-Omni and Cosmos3 model repos</strong></td><td>Adapter-specific public weights or package cards when Qwen3-Omni v6, Cosmos3-Super, or Cosmos3-Nano branches are verified and publishable.</td></tr>
+    <tr><td><strong>Qwen3-Omni and Cosmos3 model repos</strong></td><td>Adapter-specific public weights or package cards when Qwen3-Omni v6, Cosmos3-Super, or Cosmos3-Nano runs are verified and publishable.</td></tr>
   </tbody>
 </table>
 
@@ -449,7 +448,7 @@ Current contributions:
 - a generated four-direction research taxonomy matching the Ropedia job tracks,
 - four additional direction-extension probes with minimal and neural baselines,
 - human-readable research task cards and an interactive scrub/play walkthrough storyboard for every task,
-- an interactive research roadmap connecting 20 tasks, four research tracks, current sample evidence, the Qwen3-Omni scale-up path, and foundation-model branch selection,
+- an interactive research roadmap connecting 20 tasks, four research tracks, current sample evidence, the Qwen3-Omni scale-up path, and foundation-model track selection,
 - a next-milestone track for Qwen3-Omni fine-tuning, Cosmos 3 world modeling, and sensor-bridge evaluation,
 - a future pretraining plan for an Xperience Embodied Foundation Model over the full corpus after smaller multi-episode stages prove value,
 - metrics, predictions, model weights, manifests, charts, and a two-level
@@ -692,7 +691,7 @@ Hugging Face Space app:
     <tr><td><strong>Dataset context</strong></td><td><a href="XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">XPERIENCE10M_DATASET_CARD_ALIGNMENT.md</a><br>official dataset links</td><td>Explains the official dataset, public sample, modalities, access boundary, and what this repo uses.</td></tr>
     <tr><td><strong>Visual assets</strong></td><td><a href="FIGURE_INDEX.md">FIGURE_INDEX.md</a><br><a href="docs/assets/">docs/assets/</a></td><td>Shows the task-suite graphic, modality thumbnails, pipeline diagrams, charts, and logo assets.</td></tr>
     <tr><td><strong>Evaluation protocol</strong></td><td><a href="EVALUATION_PROTOCOL.md">EVALUATION_PROTOCOL.md</a><br><a href="docs/data/evaluation_protocol.json">evaluation_protocol.json</a></td><td>Defines the task unit, split, metrics, leakage controls, and current limitations.</td></tr>
-    <tr><td><strong>Research roadmap</strong></td><td><a href="RESEARCH_ROADMAP.md">RESEARCH_ROADMAP.md</a><br><a href="docs/data/research_roadmap.json">research_roadmap.json</a></td><td>Shows the path from sample-level task development to multi-episode work, larger model branches, and the future native-pretraining goal.</td></tr>
+    <tr><td><strong>Research roadmap</strong></td><td><a href="RESEARCH_ROADMAP.md">RESEARCH_ROADMAP.md</a><br><a href="docs/data/research_roadmap.json">research_roadmap.json</a></td><td>Shows the path from sample-level task development to multi-episode work, larger model tracks, and the future native-pretraining goal.</td></tr>
     <tr><td><strong>Additional development directions</strong></td><td><a href="ADDITIONAL_DEVELOPMENT_DIRECTIONS.md">ADDITIONAL_DEVELOPMENT_DIRECTIONS.md</a><br><a href="docs/data/additional_development_directions.json">additional_development_directions.json</a></td><td>Records concrete non-backbone tracks: taxonomy, benchmark protocol, representation learning, skill graphs, affordances, 3D/4D memory, QA, and policy transfer.</td></tr>
     <tr><td><strong>Xperience Embodied Foundation Model plan</strong></td><td><a href="XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md</a></td><td>Describes the long-term full-corpus pretraining goal, target modules, objectives, staged scale-up, hardware ranges, and evaluation protocol.</td></tr>
     <tr><td><strong>Minimal heads</strong></td><td>softmax<br>ridge projection/regression<br>multi-label logistic heads</td><td>Keeps every input/output contract visible and inspectable.</td></tr>
@@ -774,11 +773,11 @@ completions because the 128 export lacks raw interaction strings and paired
 video-view embeddings. The verified model-output probe package adds task-16
 action/object relation scores for Qwen3-Omni and Cosmos3-Super, plus a task-13
 long-horizon next-action score for Cosmos3-Nano derived from its existing
-held-out future-window predictions. Metadata-only baselines and model branches
+held-out future-window predictions. Metadata-only baselines and model diagnostics
 now have scored records on all 20 axes; six compact-proxy scores stay
 explicitly marked instead of being blended into direct-target metrics.
 Cosmos3-Super forward-dynamics LoRA
-remains a branch card because its camera-pose proxy MSE is not one of the 20
+remains a separate artifact card because its camera-pose proxy MSE is not one of the 20
 task metrics. The machine-readable copies are
 [`docs/data/unified_task_model_radar.json`](docs/data/unified_task_model_radar.json)
 and
@@ -880,7 +879,7 @@ docs/
   data/additional_development_directions.json # concrete non-backbone project directions
   data/summary_metrics.json         # website-readable metrics bundle
   data/task_suite_20.json           # unified 20-task suite bundle
-  data/unified_task_model_radar.json # 20-task radar values and model-branch overlays
+  data/unified_task_model_radar.json # 20-task radar values and method overlays
   data/single_episode_task_model_radar.json # 1-episode split radar values
   data/episode128_task_model_radar.json # 128-episode split radar values
   data/task_method_20_result_matrix.json # 9-method x 20-task result matrix
@@ -1128,9 +1127,9 @@ Current status in this repo:
 - qwen3_lora_adapter_repo: https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep
 - cosmos3_super_lora_adapter_repo: https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep
 - 128_aligned_baselines: unified 20-task axes for simple and neural baselines, including metadata/text rows and public-safe compact-proxy rows where raw-feature targets are required
-- cosmos3_nano_branch: verified Cosmos3-Nano future-window compatibility package, 378 held-out future-window predictions from 14 test episodes
-- cosmos3_super_branch: verified Cosmos3-Super Reasoner base-weight JSON-task evaluation, 448 held-out predictions from 14 test episodes; JSON validity 51.12%, action macro-F1 0.0008, contact accuracy 32.14%, transition accuracy 36.83%
-- cosmos3_super_forward_dynamics_lora: verified 8-GPU FSDP LoRA branch over camera-pose proxy targets; 2,848 train rows, 512 val rows, 448 test rows, 26.2M adapter parameters, val MSE 4.0082, test MSE 3.6853; public package excludes safetensors
+- cosmos3_nano: verified Cosmos3-Nano future-window compatibility package, 378 held-out future-window predictions from 14 test episodes
+- cosmos3_super_reasoner: verified Cosmos3-Super Reasoner base-weight JSON-task evaluation, 448 held-out predictions from 14 test episodes; JSON validity 51.12%, action macro-F1 0.0008, contact accuracy 32.14%, transition accuracy 36.83%
+- cosmos3_super_forward_dynamics_lora: verified 8-GPU FSDP LoRA artifact over camera-pose proxy targets; 2,848 train rows, 512 val rows, 448 test rows, 26.2M adapter parameters, val MSE 4.0082, test MSE 3.6853; public package excludes safetensors
 - gated dataset: available for selected multi-episode data preparation
 - source_discovery: `results/omni_finetune/source_discovery.json`
 - data_status: `results/omni_finetune/DATA_ACCESS_STATUS.md`
@@ -1249,7 +1248,7 @@ The package copies only small derived artifacts such as metrics, predictions,
 confusion matrices, run reports, manifests, validation summaries, and training
 metadata. The exact required eval files and primary metrics come from the
 selected backbone contract in `configs/omni_backbones`, so Qwen3-Omni,
-Cosmos-style world models, and VLA/policy branches can share the same verified
+Cosmos-style world models, and VLA/policy tracks can share the same verified
 publication gate once their model-specific evaluators exist. The package
 excludes raw Xperience-10M files, base-model weights, adapter or checkpoint
 weights, full checkpoints, and large archives.
@@ -1277,7 +1276,7 @@ python scripts/omni/export_model_neutral_window_index.py \
 ```
 
 This produces `window_index.jsonl` and `window_index_manifest.json` so Cosmos-
-style world models and VLA/policy branches can reuse the same split-checked
+style world models and VLA/policy tracks can reuse the same split-checked
 windows without depending on Qwen chat-message records.
 
 ### Uploading Qwen3-Omni LoRA artifacts
@@ -1308,14 +1307,14 @@ Network availability to `huggingface.co` is required.
 
 ### Foundation Backbone Plan
 
-The next modeling plan tracks several foundation-model branches instead of
+The next modeling plan tracks several foundation-model tracks instead of
 assuming one backbone solves every Xperience-10M objective.
 
 | Branch | Current role | When to use it |
 | --- | --- | --- |
 | Qwen3-Omni | First trainable multimodal LoRA pilot | Use for the selected 128-episode held-out baseline over video/audio/language plus sensor-bridge features. |
-| Cosmos 3 | First world-model/action-generation branch | Use now for future-window compatibility analysis and the verified Cosmos3-Super forward-dynamics LoRA branch; compare its loss metrics separately from Qwen JSON-task accuracy. |
-| GR00T | Humanoid/action-policy branch | Use after mocap/contact retargeting creates well-defined humanoid action targets. |
+| Cosmos 3 | First world-model/action-generation track | Use now for future-window compatibility analysis and the verified Cosmos3-Super forward-dynamics LoRA artifact; compare its loss metrics separately from Qwen JSON-task accuracy. |
+| GR00T | Humanoid/action-policy track | Use after mocap/contact retargeting creates well-defined humanoid action targets. |
 | OpenVLA / openpi | Open VLA/policy baselines | Use after the project defines robot-compatible or action-token targets. |
 | Gemini Robotics | External reasoning reference | Use only for qualitative comparison or annotation support unless local trainable access exists. |
 | Xperience Embodied Foundation Model | Future Xperience-native pretraining goal | Use only after multi-episode pilots, full-corpus storage, distributed training infrastructure, and scaling evidence justify a from-scratch domain model. |
@@ -1333,7 +1332,7 @@ so the public claims stay precise:
 | Pipeline track | First concrete pipeline | Claim boundary |
 | --- | --- | --- |
 | Spatial intelligence models | Build scene/object memory targets from multiview RGB, depth, pose, calibration, object cues, and language prompts. | Ready as a geometry/reasoning pipeline; strong claims need raw depth/pose artifacts and held-out spatial metrics. |
-| Human-video world models | Predict next action, next subtask, future object set, contact transition, and future state from observed interaction windows. | Partially evidenced by future-task probes and Cosmos-style branches; visual/latent future quality still needs stronger metrics. |
+| Human-video world models | Predict next action, next subtask, future object set, contact transition, and future state from observed interaction windows. | Partially evidenced by future-task probes and Cosmos-style artifacts; visual/latent future quality still needs stronger metrics. |
 | Vision-language-action models | Convert egocentric video, captions, hand/body motion, contacts, and objects into action chunks or policy-compatible targets. | Feasible, but gated by action-token conversion, normalization, retargeting evidence, and held-out policy metrics. |
 
 High-resolution slide diagrams for the three tracks are published in
@@ -1386,7 +1385,7 @@ python scripts/omni/audit_verified_omni_package.py \
   --package-dir results/omni_finetune/verified_public/<eval_run_id>
 ```
 
-Create a new planned backbone branch from an existing contract template with:
+Create a new planned backbone track from an existing contract template with:
 
 ```bash
 python scripts/omni/scaffold_omni_backbone.py \
@@ -1402,7 +1401,7 @@ python scripts/omni/scaffold_omni_backbone.py \
 
 Each backbone config declares the checkpoint gate, required train/eval files,
 allowed public artifacts, and forbidden private or heavyweight artifacts. This
-keeps Qwen3-Omni, Cosmos-style world models, and policy/VLA branches on the same
+keeps Qwen3-Omni, Cosmos-style world models, and policy/VLA tracks on the same
 split, validation, and publication discipline even though their training targets
 are different.
 

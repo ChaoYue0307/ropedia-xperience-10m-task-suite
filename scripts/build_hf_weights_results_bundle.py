@@ -182,7 +182,7 @@ metrics:
 
 This repository is the consolidated public-safe weight and result package for
 the Ropedia Xperience-10M task suite. It is intended to make the current model
-artifacts auditable from one Hugging Face location while preserving the
+artifacts traceable from one Hugging Face location while preserving the
 canonical per-adapter repositories.
 
 ## What Is Included
@@ -203,7 +203,7 @@ canonical per-adapter repositories.
   run lineage, where v6 is the current 20-task matrix row and v5 is the
   pinned prior release.
 - `results/`: verified public result summaries, package audits, metrics, and
-  run reports that correspond to the included model branches.
+  run reports that correspond to the included Qwen3-Omni and Cosmos3 artifacts.
 - `manifest.json`: file-level size and SHA-256 manifest for this staged bundle.
 
 ## Current Result Coverage
@@ -213,7 +213,7 @@ canonical per-adapter repositories.
 - Evidence line 2: 128 selected episodes, 7 methods x 20 tasks = 140/140 scores; 134 direct + 6 compact-proxy.
 - Task surface: 20 tasks x 9 method families = 180/180 public records.
 - Scope boundary: public sample for reproducible task construction; selected public-safe 128-episode artifacts for same-split comparison and model diagnostics.
-- Excluded: raw Xperience-10M MP4/HDF5/RRD files, Qwen3/Cosmos3 base weights,
+- Excluded: raw Xperience-10M MP4/HDF5/RRD files, Qwen3 base weights and Cosmos3 base weights,
   full fine-tune checkpoints, private data, logs with machine-local state, and
   generated Hugging Face cache files.
 
@@ -317,7 +317,7 @@ def main() -> int:
         ],
         "exclusions": [
             "raw Xperience-10M MP4/HDF5/RRD files",
-            "Qwen3/Cosmos3 base model weights",
+            "Qwen3 base model weights and Cosmos3 base model weights",
             "full fine-tune checkpoints",
             "machine-local logs and PID files",
             "Hugging Face cache state",

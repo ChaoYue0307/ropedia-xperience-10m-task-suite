@@ -1,7 +1,7 @@
 {
   "current_public_matrix_row": "qwen3_omni_v6_lora",
-  "generated_at_utc": "2026-06-21T09:58:19+00:00",
-  "interpretation_rule": "Do not confuse the Qwen run versions with the project-level public result layers. The 20-task matrix uses Qwen3-Omni v6 LoRA; v5 remains the pinned prior release; v1-v4 are lineage and ablation evidence.",
+  "generated_at_utc": "2026-06-21T10:54:46+00:00",
+  "interpretation_rule": "Do not confuse the Qwen run versions with the project evidence lines. The project evidence lines are one public sample episode and selected 128-episode artifacts. Qwen v1-v6 are only the Qwen3-Omni run lineage inside the selected-128 line. The 20-task matrix uses Qwen3-Omni v6 LoRA; v5 remains the pinned prior release; v1-v4 are lineage and ablation evidence.",
   "pinned_prior_release": "v5",
   "related_engineering_artifacts": [
     {
@@ -17,6 +17,7 @@
   ],
   "runs": [
     {
+      "change_from_previous": "First verified Qwen3-Omni selected-128 LoRA run.",
       "dataset_contract": "xperience10m_episode_json_qa_v1",
       "dataset_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605",
       "eval_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval",
@@ -33,6 +34,8 @@
       "package": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval",
       "package_path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605_eval",
       "public_matrix_role": "superseded lineage evidence, not the current 20-task Qwen row",
+      "purpose": "Prove that the selected-128 split, LoRA training, held-out eval, validation, and public packaging loop works end to end.",
+      "reader_use": "Use only as lineage evidence for the first working pipeline.",
       "role": "First verified 96/16/16 selected-episode Qwen3-Omni LoRA package; establishes dataset, training, eval, and packaging plumbing.",
       "status": "verified",
       "title": "Selected-128 validation-aware LoRA baseline",
@@ -40,6 +43,7 @@
       "version": "v1"
     },
     {
+      "change_from_previous": "Reused the selected-128 split with a stricter structured-JSON answer contract and full 8-GPU LoRA training.",
       "dataset_contract": "xperience10m_episode_json_qa_v1",
       "dataset_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605",
       "eval_run_id": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
@@ -56,6 +60,8 @@
       "package": "xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
       "package_path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v2_reuse_full8gpu_lora_eval_test_full",
       "public_matrix_role": "superseded lineage evidence, not the current 20-task Qwen row",
+      "purpose": "Make the answer format schema-checked and reduce invalid JSON before expanding scale.",
+      "reader_use": "Use as evidence that schema-constrained evaluation improved validity and contact accuracy over v1.",
       "role": "Reuses the selected-128 split with a stricter structured JSON answer contract and full 8-GPU LoRA training.",
       "status": "verified",
       "title": "Structured-JSON reuse full-8-GPU LoRA",
@@ -63,6 +69,7 @@
       "version": "v2"
     },
     {
+      "change_from_previous": "Evaluated the v2 adapter with stricter labels and prompts; no new adapter training.",
       "dataset_contract": "xperience10m_episode_json_qa_v1",
       "dataset_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605",
       "eval_run_id": "xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full",
@@ -79,6 +86,8 @@
       "package": "xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full",
       "package_path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v3_strict_label_prompt_reuse_lora_eval_test_full",
       "public_matrix_role": "superseded prompt/eval lineage evidence",
+      "purpose": "Separate prompt/eval formatting effects from adapter-training effects.",
+      "reader_use": "Use as prompt/eval ablation evidence, not as a separate trained model.",
       "role": "Strict-label prompt/eval pass over the v2 adapter; improves JSON validity without introducing a new adapter training run.",
       "status": "verified",
       "title": "Strict-label prompt evaluation",
@@ -86,6 +95,7 @@
       "version": "v3"
     },
     {
+      "change_from_previous": "Trained a new four-epoch full-8-GPU LoRA adapter on the structured-JSON setup.",
       "dataset_contract": "xperience10m_episode_json_qa_v1",
       "dataset_run_id": "xperience10m_qwen3_omni_128ep_96train_16val_16test_valmon_20260605",
       "eval_run_id": "xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full",
@@ -102,6 +112,8 @@
       "package": "xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full",
       "package_path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_structured_json_v4_4epoch_full8gpu_lora_eval_test_full",
       "public_matrix_role": "superseded lineage evidence, not the current 20-task Qwen row",
+      "purpose": "Test whether longer structured-JSON LoRA training improves the same selected split.",
+      "reader_use": "Use as overfit and metric-tradeoff evidence before the multiscale export.",
       "role": "Four-epoch full-8-GPU LoRA run on the same selected split; useful for overfit/metric tradeoff analysis.",
       "status": "verified",
       "title": "Four-epoch structured-JSON LoRA",
@@ -109,6 +121,7 @@
       "version": "v4"
     },
     {
+      "change_from_previous": "Introduced the multiscale cap96 export and larger held-out evaluation surface.",
       "dataset_contract": "xperience10m_episode_json_qa_v1",
       "dataset_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora",
       "eval_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full",
@@ -125,6 +138,8 @@
       "package": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full",
       "package_path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora_eval_test_full",
       "public_matrix_role": "pinned prior release row and comparison baseline",
+      "purpose": "Move from the 448-sample compact eval to a denser multiscale 4,032-sample held-out eval.",
+      "reader_use": "Use as the pinned prior release; it remains stronger on JSON validity, subtask, next-action, object, and transition metrics.",
       "role": "Dense/multiscale selected-128 run with 4,032 held-out predictions; kept as the pinned prior release because several metrics remain stronger than v6.",
       "status": "verified",
       "title": "Multiscale cap96 LoRA",
@@ -132,6 +147,7 @@
       "version": "v5"
     },
     {
+      "change_from_previous": "Kept the multiscale setup, changed LoRA rank/lr to rank64/lr5e-5, and added verified task-specific probes for full 20-task coverage.",
       "dataset_contract": "xperience10m_episode_json_qa_v1",
       "dataset_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v5_full8gpu_lora",
       "eval_run_id": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
@@ -148,6 +164,8 @@
       "package": "xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
       "package_path": "results/omni_finetune/verified_public/xperience10m_qwen3_omni_128ep_multiscale_cap96_v6_rank64_lr5e5_full8gpu_lora_eval_test_full",
       "public_matrix_role": "current public 20-task Qwen3-Omni v6 LoRA row",
+      "purpose": "Promote the current public Qwen3-Omni 20-task row with multiscale LoRA plus task-specific probes.",
+      "reader_use": "Use as the current public 20-task Qwen row; it improves action macro-F1 and contact accuracy while v5 remains the prior comparator.",
       "role": "Current verified Qwen3-Omni row: rank64/lr5e-5 multiscale LoRA plus task-specific probe artifacts used for the 20/20 Qwen matrix coverage.",
       "status": "verified",
       "title": "Rank64 lr5e-5 multiscale LoRA",

@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-21T08:55:13+00:00",
+  "generated_at_utc": "2026-06-21T10:52:12+00:00",
   "status": "pass",
   "artifact_count": 226,
   "missing": [],
@@ -81,8 +81,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable copy of the current project status for website and HF mirrors.",
       "exists": true,
-      "bytes": 23057,
-      "sha256": "aa24087a4c80390869cbf771571dd04923f8cf1b5a2f773c70586a4bae10bd48"
+      "bytes": 23049,
+      "sha256": "9a06cc54d3b43362867a2fde9edc61d09f53df2d9ad761ecf95c862c76af31d2"
     },
     {
       "id": "research_roadmap",
@@ -92,8 +92,8 @@
       "surface": "repo_hf",
       "shows": "Defines the path from public-sample task development to multi-episode held-out evaluation and larger omni-model extensions.",
       "exists": true,
-      "bytes": 15275,
-      "sha256": "b7774813c9cddb49181d9589cf07aa9496756c09ddede41c7661a41b6e81a3a0"
+      "bytes": 15272,
+      "sha256": "559fa9e818f2c6fc7b926f880e9183200911317e70a26391f1830f4119ebc6b0"
     },
     {
       "id": "research_roadmap_json",
@@ -103,8 +103,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable research roadmap for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 14133,
-      "sha256": "5d73996f9bf4c3539beb5d428b21423a583d439fcf439faf8ab17f7364d53d88"
+      "bytes": 14129,
+      "sha256": "a06d6525d9532b8608bf7be81eb9387deca3159b7c42bf38e107b4096953f351"
     },
     {
       "id": "foundation_model_plan",
@@ -114,8 +114,8 @@
       "surface": "repo_hf",
       "shows": "Defines the post-data-gate backbone choices: Qwen3-Omni first, Cosmos 3 for world modeling, and VLA/policy models after action-target conversion.",
       "exists": true,
-      "bytes": 10996,
-      "sha256": "a78e960ae0f0e815c2e26a69ec3b6071099fa7ccfb6ad860144cd7ee94e77e56"
+      "bytes": 11003,
+      "sha256": "24047e8692f69927d3fabf3c01058278e85651355f3749886493159971120cc6"
     },
     {
       "id": "foundation_model_plan_json",
@@ -125,8 +125,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable foundation-model selection matrix with source links, entry conditions, and evaluation additions.",
       "exists": true,
-      "bytes": 13926,
-      "sha256": "ccc80ed46eb961eb315f3060bdffa4676a05e73ef47ba25b1e5a675e25ce8754"
+      "bytes": 13925,
+      "sha256": "77d4b2d5918ef1f776de6d29d34d523de95ba58df9526e2b255bed567434f932"
     },
     {
       "id": "three_foundation_pipelines",
@@ -222,7 +222,7 @@
       "path": "OMNI_MODEL_EXTENSION_CONTRACT.md",
       "kind": "scaleup_contract",
       "surface": "repo_hf",
-      "shows": "Defines the shared manifest, episode split, held-out evaluation, packaging, and public-safety rules for Qwen3-Omni, Cosmos-style, and VLA/policy model branches.",
+      "shows": "Defines the shared manifest, episode split, held-out evaluation, packaging, and public-safety rules for Qwen3-Omni, Cosmos3, and VLA/policy model tracks.",
       "exists": true,
       "bytes": 8900,
       "sha256": "c4e51d0aa7536045c229418603a67c6b3c5f31c9d756ca7395cb0c9455f0ed6d"
@@ -323,8 +323,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable enhancement pack for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 20181,
-      "sha256": "17453f9a949278b1f3038d68124f8f0e2441584d4c1384d482d2ac9ca295e97e"
+      "bytes": 20196,
+      "sha256": "9e1a3339425981dcf7931bf08684860864598bf679d0df86f93c656bacdb71bf"
     },
     {
       "id": "task_suite_enhancement_128_result",
@@ -345,8 +345,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the enhancement pack from committed 128-episode windows, baseline summaries, verified Qwen predictions, and Cosmos reference metrics.",
       "exists": true,
-      "bytes": 27210,
-      "sha256": "0e098d7c1a5c91ec8472d5eb8fc0ebab0305cf647d1f0f4f2ba6bd4c1d531546"
+      "bytes": 27225,
+      "sha256": "86e6098506b365cc92a9658d347645c285c5f61b5113eeaf1d170df0e2d7cc8f"
     },
     {
       "id": "xperience10m_128_episode_feature_index",
@@ -510,8 +510,8 @@
       "surface": "repo_hf",
       "shows": "Records concrete non-backbone Xperience-10M development tracks: taxonomy, benchmark protocol, representation learning, skill graphs, affordances, 3D/4D memory, QA, and policy transfer.",
       "exists": true,
-      "bytes": 3137,
-      "sha256": "cb4077bcd7e2b33efdd0306c7cb1f28dec547c71739fd52f7233218f90c54941"
+      "bytes": 3136,
+      "sha256": "decdd359d89694fe10873dcce6cee23e991de1b874ade72643314e879ade784e"
     },
     {
       "id": "additional_development_directions_json",
@@ -521,8 +521,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable additional development directions for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 6121,
-      "sha256": "4458c5b82062aed8c19bcc914f795ec217114422e9b6d54b624371c4b3c8681f"
+      "bytes": 6120,
+      "sha256": "669d1523f767a8eda22bbe96ab54af99e102496a3d27f7dd850e08e2724e661f"
     },
     {
       "id": "xperience_embodied_foundation_pretraining",
@@ -610,7 +610,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "7e921c5225389e3481f6133e6c3a1afb7f7f79ea5cdc4638ed3d1bfde48c63cf"
+      "sha256": "db279081759eebb09a4ba53c56fb17a14f3546e13d058100494ac7745b901a1c"
     },
     {
       "id": "source_alignment_validator",
@@ -631,8 +631,8 @@
       "surface": "repo_hf",
       "shows": "Publishes prepared Space, artifact dataset, and model bundles, including an explicit model-binary upload batch.",
       "exists": true,
-      "bytes": 25097,
-      "sha256": "7775c5e8767c0dba207fb5fda2d9f0d4a47280d978a1947baa39469fba977a69"
+      "bytes": 25159,
+      "sha256": "a74451a7d717661e1499b98631d825f4db8c6b51b1e9bafd73966697eb04258a"
     },
     {
       "id": "github_package_dockerfile",
@@ -728,10 +728,10 @@
       "path": "docs/data/unified_task_model_radar.json",
       "kind": "website_data",
       "surface": "website_hf",
-      "shows": "Stores normalized 20-axis radar values, raw task metrics, Qwen3/Cosmos overlay mappings, branch-card caveats, proxy flags, and source artifacts.",
+      "shows": "Stores normalized 20-axis radar values, raw task metrics, Qwen3-Omni/Cosmos3 overlay mappings, method-card caveats, proxy flags, and source artifacts.",
       "exists": true,
-      "bytes": 228805,
-      "sha256": "e947ff0579014d5f2c928f689077958d94304a3ac9d978d8475ce5b799e03df8"
+      "bytes": 228815,
+      "sha256": "862376178e8b0d01b536f49a18b7934a373494f8b36080790f616438ec0e035e"
     },
     {
       "id": "single_episode_task_model_radar_json",
@@ -741,8 +741,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable split radar for the one-episode Minimal and Neural MLP baselines, both scored on all 20 task contracts.",
       "exists": true,
-      "bytes": 51097,
-      "sha256": "f4975e8a1d02dd3a168660827fc92257257d18107887abc83ca225950fb283d7"
+      "bytes": 51107,
+      "sha256": "5f2ebb41e8488446ea5c5cd2cb75bbedce688433feffe1412288de56b133bd5c"
     },
     {
       "id": "episode128_task_model_radar_json",
@@ -750,10 +750,10 @@
       "path": "docs/data/episode128_task_model_radar.json",
       "kind": "website_data",
       "surface": "website_hf",
-      "shows": "Machine-readable split radar for selected 128-episode metadata/raw baselines and verified Qwen3/Cosmos branches, now complete at 140/140 scored rows with proxy notes retained.",
+      "shows": "Machine-readable split radar for selected 128-episode metadata/raw baselines, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano, now complete at 140/140 scored rows with proxy notes retained.",
       "exists": true,
-      "bytes": 184945,
-      "sha256": "36d500a4f64614a88ed80af88594289adf06753ea85a2273b9bdaf6cb8ca7f44"
+      "bytes": 184992,
+      "sha256": "385704db90443d74903f365e90b27538020f5574c96f296bbf63173f488a645d"
     },
     {
       "id": "task_method_20_result_matrix_json",
@@ -764,7 +764,7 @@
       "shows": "Machine-readable 9-method by 20-task matrix where every method has 20 records and the current release is complete at 180/180 scored rows.",
       "exists": true,
       "bytes": 128509,
-      "sha256": "5b02cd11edffe2e8f6f9d882bf5b895c308b8686cb6672e5df3c88e8e17a9ddd"
+      "sha256": "96082daa33771963ac40b7d719df00a76ec443508a3d3101cb6dd82d87965729"
     },
     {
       "id": "task_method_20_result_matrix",
@@ -808,7 +808,7 @@
       "shows": "Machine-readable check that scored JSON-backed matrix cells match their declared metric source values.",
       "exists": true,
       "bytes": 561,
-      "sha256": "a2c684b7c6a60dc5868b796eec41adbc3a1eb37235d357271f3171b20f85c28f"
+      "sha256": "cbe9be1ea3d62b253780aade9c51cb7f3a5882df185927186ee6a1d6516ad3a6"
     },
     {
       "id": "task_method_20_source_audit",
@@ -819,7 +819,7 @@
       "shows": "Reader-facing source-value audit for the 180-result matrix.",
       "exists": true,
       "bytes": 447,
-      "sha256": "0b1bc352200143957a177947b197cab6ee46602cda338b94bfc81922568ee9ea"
+      "sha256": "dfcde22c9350858d0df6d881533f63ba6838fc980b62f0b68770f9b708fcde85"
     },
     {
       "id": "two_evidence_line_map_chart",
@@ -838,7 +838,7 @@
       "path": "docs/assets/charts/unified_task_model_radar.svg",
       "kind": "generated_figure",
       "surface": "website_hf",
-      "shows": "Compares minimal and neural MLP baselines across all 20 tasks, with Qwen3/Cosmos task-aligned model overlays.",
+      "shows": "Compares minimal and neural MLP baselines across all 20 tasks, with Qwen3-Omni and Cosmos3 task-aligned overlays.",
       "exists": true,
       "bytes": 57938,
       "sha256": "bb83b80b47fe679ebdce2c99378a4548120f1c8cc2d725b88e409d8c386dcbf8"
@@ -851,8 +851,8 @@
       "surface": "website_hf",
       "shows": "Separates the one-episode Minimal and Neural MLP 20/20 scored baselines into a clean two-polygon radar.",
       "exists": true,
-      "bytes": 35230,
-      "sha256": "e5516268336fd7289f38c0b80937d40080f3b1c804e82a409405d60e6eab03b0"
+      "bytes": 35232,
+      "sha256": "87b52a7dead40358f1778dda43ade4d2e875ac98e507e01ca007084363e5977e"
     },
     {
       "id": "episode128_task_model_radar_chart",
@@ -860,10 +860,10 @@
       "path": "docs/assets/charts/episode128_task_model_radar.svg",
       "kind": "generated_figure",
       "surface": "website_hf",
-      "shows": "Separates the selected 128-episode methods: raw-feature simple/NN as complete 20/20 scored polygons and metadata/Qwen/Cosmos as task-aligned overlays.",
+      "shows": "Separates the selected 128-episode methods: raw-feature simple/NN as complete 20/20 scored polygons plus metadata, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano task-aligned overlays.",
       "exists": true,
-      "bytes": 51905,
-      "sha256": "03e78b45fc91bab4c88e54bd0c3dc03afda4d55ef1f96569d7aedb2506d99065"
+      "bytes": 51915,
+      "sha256": "047ea4b05a04f6734e2afcf792863559dc8f3091eae88a97ff90e8b038a423f4"
     },
     {
       "id": "unified_task_model_radar_builder",
@@ -873,8 +873,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the direction-aware radar chart and machine-readable metric overlay JSON.",
       "exists": true,
-      "bytes": 68555,
-      "sha256": "e7cf9d1d3e25117ccd0a2b93c69850d4201cd34bda97bf294fb3b037fc1aa351"
+      "bytes": 68610,
+      "sha256": "96bc2df0de5a9e512d69961ddb13ea87b26ef01f1f943f5a78a6dc373400949d"
     },
     {
       "id": "task_method_20_gap_audit_builder",
@@ -915,7 +915,7 @@
       "path": "results/omni_finetune/model_output_probe_readiness/model_output_probe_readiness.json",
       "kind": "scaleup_status",
       "surface": "repo_hf",
-      "shows": "Checks whether Qwen3/Cosmos branches have train, validation, and test prediction files before extending model overlays to all 20 task contracts.",
+      "shows": "Checks whether Qwen3-Omni and Cosmos3 runs have train, validation, and test prediction files before extending model overlays to all 20 task contracts.",
       "exists": true,
       "bytes": 4320,
       "sha256": "11cff26749bf6ad8b8ee028b18e0b4be5713ed8b5325578caa03be25d894263b"
@@ -928,8 +928,8 @@
       "surface": "repo_hf",
       "shows": "Audits model-output split availability and writes a readiness report without assigning new numeric task scores.",
       "exists": true,
-      "bytes": 10520,
-      "sha256": "741ee733068e87c52c8da2bd15987e2b4538b5e705592182d76c42b5cf34fe96"
+      "bytes": 10526,
+      "sha256": "2b95834c75b0c90ceefe2c20381b3997a63f283b733186e07dea9e2778c78fad"
     },
     {
       "id": "existing_model_output_task_probe",
@@ -937,7 +937,7 @@
       "path": "results/omni_finetune/model_output_task_probes_20260616/summary.json",
       "kind": "model_result",
       "surface": "repo_hf",
-      "shows": "Scores task-specific Qwen3/Cosmos overlays only where verified held-out prediction JSON or compact target maps already contain the required targets.",
+      "shows": "Scores task-specific Qwen3-Omni and Cosmos3 overlays only where verified held-out prediction JSON or compact target maps already contain the required targets.",
       "exists": true,
       "bytes": 5951,
       "sha256": "910477d2fba648605dda128d0ecd2a2c13cfa460573e350dc850014ac91c6c2b"
@@ -950,8 +950,8 @@
       "surface": "repo_hf",
       "shows": "Derives task-specific scores from committed verified model outputs without running new inference or backfilling absent targets.",
       "exists": true,
-      "bytes": 69411,
-      "sha256": "a78889e5225405fcbb0156aa8c63cbbe79022a12283d0b398c5f2bb015175fe7"
+      "bytes": 69423,
+      "sha256": "43086745ba53f5a4da1a39b9c223914707ab51b027555c91bea27c0bc152a27f"
     },
     {
       "id": "a100_128_metadata_task_baselines",
@@ -1071,8 +1071,8 @@
       "surface": "repo_hf",
       "shows": "Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts.",
       "exists": true,
-      "bytes": 6983,
-      "sha256": "48ea04c063df0745f2a31483d15baa71d420906b2ad7ce15fdb10760f41907e6"
+      "bytes": 7014,
+      "sha256": "1087774a85614f12871418bb9fa375b98121596eb11dcdc22d324b943fb9d313"
     },
     {
       "id": "figure_index_json",
@@ -1082,8 +1082,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 19441,
-      "sha256": "b14b9cb1561db131827a8898fc42629c772eb173108d1fcbf1fbf931389da285"
+      "bytes": 19472,
+      "sha256": "e56f76038a56ffc61e882d0201f13912af5cba3e5ade08b1bb912fba0acdcd24"
     },
     {
       "id": "figure_index_builder",
@@ -1093,8 +1093,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates visual-asset hashes, dimensions, and source-script provenance.",
       "exists": true,
-      "bytes": 16801,
-      "sha256": "b0e060c77a10d509ac471a83a7aa2f0ec9474a5b48fbb56cbc0d62c8ffa6fcd2"
+      "bytes": 16832,
+      "sha256": "7c526bff01c282d81e4f64bbdb31c059953ea7868b75b0c3104826241280165f"
     },
     {
       "id": "brand_assets_json",
@@ -1160,7 +1160,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8640,
-      "sha256": "1046f75bd4529244290822c67fde137ae1465a3b65e6308b75acb856e4bee191"
+      "sha256": "3cb0aca2dca01448cb9bc5cbb519a91bc6397c08a1eaaa84c031e773221e5a0a"
     },
     {
       "id": "public_surface_qa",
@@ -1179,10 +1179,10 @@
       "path": "PUBLIC_READER_MAP.md",
       "kind": "project_path",
       "surface": "repo_hf",
-      "shows": "Provides the first-pass navigation layer for GitHub, GitHub Pages, Hugging Face mirrors, model-branch repos, evidence layers, and claim boundaries.",
+      "shows": "Provides the first-pass navigation layer for GitHub, GitHub Pages, Hugging Face mirrors, Qwen3-Omni/Cosmos3 repos, evidence lines, and claim boundaries.",
       "exists": true,
-      "bytes": 4892,
-      "sha256": "d1121455dbd547a5f6111c8ec0edc3380586d824c853dff521ef640d872ae1fb"
+      "bytes": 4948,
+      "sha256": "7a7128fdde08f770338c3fe2d473565918c5633f948dec6a78a6b2a67938e91a"
     },
     {
       "id": "public_reader_map_json",
@@ -1192,8 +1192,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable public reader map used by the website and Hugging Face mirrors to keep entry points and surface responsibilities explicit.",
       "exists": true,
-      "bytes": 5906,
-      "sha256": "4a229fc7f084dbaab14bf11e00e5128d0b73dd074fafbbd732b8b0cbf92c01df"
+      "bytes": 5971,
+      "sha256": "3474f84ffa53aefabdbf8a75c466c271675162ce0f8a23ea3b6660951048072f"
     },
     {
       "id": "public_surface_qa_json",
@@ -1285,7 +1285,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 184684,
+      "bytes": 184689,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1296,8 +1296,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 67647,
-      "sha256": "d2b4af98e6fd8b23fd86cd068f2bbf887e5d69686dd62fe3bfc7e8251a6d75d6"
+      "bytes": 67652,
+      "sha256": "47c6e5e0d93a881db045842ef98656d04c74cf7605f33a56b8d4daecf97fb547"
     },
     {
       "id": "reproducibility_contract",
@@ -1329,8 +1329,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 67519,
-      "sha256": "eae86845582f2551782fa7a81837bc3b30d67a050aced1a5f5158644ea0e6512"
+      "bytes": 67587,
+      "sha256": "28a93ec92c91886388f5d42ab8e25af0b218e4644b733bc8f8230bc0f91aab65"
     },
     {
       "id": "publication_audit",
@@ -1365,7 +1365,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 1413010,
+      "bytes": 1418066,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1377,7 +1377,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 20542,
+      "bytes": 20657,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1542,8 +1542,8 @@
       "surface": "website_hf",
       "shows": "Presents the task suite and sample modality thumbnails with metrics generated from committed files.",
       "exists": true,
-      "bytes": 1899884,
-      "sha256": "7bbd5b3c54ef151d598c827f5cb5416566c3106b198e7ad5c4665a03f2566a35"
+      "bytes": 1903454,
+      "sha256": "6667eb856cf61ada9f868807b5d5c6ccde06e4f791b2f9dd567d98b71b307415"
     },
     {
       "id": "modality_atlas",
@@ -1674,8 +1674,8 @@
       "surface": "repo_hf",
       "shows": "Reader-facing comparison of the single-episode task suite, 128-episode aligned baselines, Qwen3-Omni packages, and Cosmos3 future-window branch.",
       "exists": true,
-      "bytes": 16045,
-      "sha256": "130578a51a77e2be0230da1288beee3528cff2c7a39830c91f0509682da4b404"
+      "bytes": 15983,
+      "sha256": "4db248566972e811aac6ca06582f233414821624f00f9d4fc4a1b66b2e00401f"
     },
     {
       "id": "omni_model_comparison_json",
@@ -1685,8 +1685,8 @@
       "surface": "repo_hf",
       "shows": "Machine-readable comparison of the current result versions, per-task aligned baselines, verified Qwen3 packages, and Cosmos3 package.",
       "exists": true,
-      "bytes": 82110,
-      "sha256": "ebbb0d0d28a1f4a5c7c9f015d772624eddadc0d382e4917c8dbdcc512a5b276d"
+      "bytes": 82088,
+      "sha256": "82ccc2932cad63a9ebad85da53e694b18ef626aa3720bda3ed5da30f3dc5e121"
     },
     {
       "id": "cosmos3_nano_verified_summary",

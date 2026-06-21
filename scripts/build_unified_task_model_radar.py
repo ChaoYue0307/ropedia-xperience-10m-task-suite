@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a unified 20-task radar chart for baseline and model-branch metrics."""
+"""Build unified 20-task radar charts for baseline and model diagnostics."""
 
 from __future__ import annotations
 
@@ -1024,7 +1024,7 @@ def build_payload() -> dict[str, Any]:
             "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
             "raw_values": "raw metric values, metric keys, and sources are retained in this JSON; the SVG is an overview, not a replacement for the metric table",
             "result_record_policy": "every method has 20 task records; the current public release has 180/180 scored rows with proxy flags and reasons retained where compact substitute targets are used",
-            "foundation_model_overlay": "Qwen3/Cosmos points are plotted only on task-aligned axes. Scoreless records mean the public result does not evaluate that task contract.",
+            "foundation_model_overlay": "Qwen3-Omni and Cosmos3 points are plotted only on task-aligned axes. Scoreless records mean the public result does not evaluate that task contract.",
             "metadata_128_overlay": "128-episode aligned baselines have 20 records. Numeric scores come from JSONL metadata/text tasks plus staged sensor-block targets when the processed target exists; raw interaction text and paired camera-view embeddings remain explicit gaps.",
             "raw_128_overlay": "128-episode raw-feature baselines use staged sensor NPZ features. Eighteen axes use direct task targets; interaction text and camera-view sync are completed with documented compact proxies because raw interaction strings and paired video-view embeddings are absent from the 128 export.",
         },
@@ -1277,7 +1277,7 @@ def main() -> int:
         payload,
         EPISODE128_SERIES,
         title="128-Episode 20-Task Radar",
-        description="Selected 128-episode metadata/raw baselines plus verified Qwen3/Cosmos branches. Every method has 20 records; numeric scores appear only where the public artifact produced that task target.",
+        description="Selected 128-episode metadata/raw baselines plus verified Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano diagnostics. Every method has 20 records; numeric scores appear only where the public artifact produced that task target.",
     )
     OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_SINGLE_JSON.parent.mkdir(parents=True, exist_ok=True)
@@ -1310,7 +1310,7 @@ def main() -> int:
             polygon_series_ids=SINGLE_EPISODE_SERIES,
             title="Single-Episode 20-Task Radar",
             subtitle="One public sample episode; both baseline heads score every task axis.",
-            context_line="This view isolates the 1-episode task-head setup from the multi-episode model branches.",
+            context_line="This view isolates the 1-episode task-head setup from the selected-128 model diagnostics.",
             chip_specs=[
                 ("20 task axes", "#ccffa0"),
                 ("40 method-task records", "#67e8d1"),
@@ -1343,7 +1343,7 @@ def main() -> int:
             reading_rules=(
                 "Every 128-episode method has 20 result records and all 140 rows are scored in this split radar.",
                 "Raw128 Simple and Raw128 NN are complete 20/20 scored multi-episode baselines; tasks 15/19 are documented compact proxies.",
-                "Qwen3/Cosmos rows use verified held-out outputs or derived probe artifacts; source paths stay in the matrix JSON.",
+                "Qwen3-Omni and Cosmos3 rows use verified held-out outputs or derived probe artifacts; source paths stay in the matrix JSON.",
             ),
         ),
         encoding="utf-8",

@@ -363,7 +363,7 @@ def hierarchical_contract() -> dict[str, Any]:
         ],
         "public_safety": [
             "No raw MP4/HDF5/RRD files are written.",
-            "No full Qwen/Cosmos weights are mirrored.",
+            "No full Qwen3-Omni or Cosmos3 base weights are mirrored.",
             "Generated labels and aggregate metrics remain public-safe derived metadata.",
         ],
     }

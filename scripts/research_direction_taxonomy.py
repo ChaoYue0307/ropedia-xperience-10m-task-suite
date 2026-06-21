@@ -700,7 +700,7 @@ def write_svg(taxonomy: dict[str, Any]) -> None:
   <rect width="100%" height="100%" fill="#020502"/>
   <rect x="24" y="24" width="1132" height="652" rx="20" fill="#050905" stroke="#ccffa0" stroke-opacity="0.24"/>
   {svg_text(margin, 64, "Xperience-10M 20-Task Suite: Four Research Directions", 30, 800)}
-  {svg_text(margin, 96, "One public sample episode, two baseline families, model branches, and explicit direct/proxy/diagnostic coverage.", 16, 500, "#a5afa2")}
+  {svg_text(margin, 96, "One public sample episode, two baseline families, Qwen3-Omni/Cosmos3 diagnostics, and explicit direct/proxy coverage.", 16, 500, "#a5afa2")}
   {"".join(cards)}
   {"".join(legend)}
   {svg_text(margin, 670, "Generated from docs/data/task_suite_20.json, committed metrics, and scripts/research_direction_taxonomy.py", 13, 500, "#a5afa2")}

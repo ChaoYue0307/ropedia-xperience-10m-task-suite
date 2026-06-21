@@ -80,7 +80,7 @@ READER_MAP_CARD_BLOCK = """
 
 Use `PUBLIC_READER_MAP.md` and `docs/data/public_reader_map.json` to choose
 between the GitHub repo, GitHub Pages dashboard, HF Space, artifact dataset,
-baseline model repo, Qwen3/Cosmos model repos, and release-health checks without
+baseline model repo, Qwen3-Omni and Cosmos3 model repos, and release-health checks without
 losing the full evidence trail.
 """
 XPERIENCE128_MARKER = "docs/data/xperience10m_128_episode_feature_index.json"
@@ -229,8 +229,9 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
                 "links to tasks 13-20.\n",
                 "links to tasks 13-20. Results are organized as two evidence lines:\n"
                 "one public sample episode for task construction and reproducibility,\n"
-                "and 128 selected episodes for same-split baselines plus Qwen3/Cosmos\n"
-                "comparison. The line map is published as\n"
+                "and 128 selected episodes for same-split metadata/raw baselines,\n"
+                "Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano\n"
+                "Future Window. The line map is published as\n"
                 "`docs/assets/charts/two_evidence_line_map.svg` with summaries in\n"
                 "`docs/data/two_evidence_lines.json` and\n"
                 "`docs/data/two_evidence_line_result_summary.json`.\n\n"

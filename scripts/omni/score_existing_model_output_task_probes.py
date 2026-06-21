@@ -954,7 +954,7 @@ def score_modality_reconstruction_from_feature_error(
             "1 / (1 + error) so the matrix can retain its higher-is-better convention."
         ),
         "normalization_policy": (
-            "This is not the single-episode/128-baseline R2 metric. It is a model-branch "
+            "This is not the single-episode/128-baseline R2 metric. It is a Qwen3-Omni/Cosmos3 "
             "reconstruction-quality probe backed by the verified held-out future-window "
             "feature reconstruction error."
         ),
@@ -1448,7 +1448,7 @@ Generated: `{summary['generated_at_utc']}`
 
 This package scores only task targets already present in verified held-out
 prediction JSON. It does not run new inference and does not infer targets that
-are absent from a model branch.
+are absent from a verified model run.
 
 | Method | ID | Status | Scored tasks | Task 13 macro-F1 | Task 14 macro-F1 | Task 16 macro-F1 | Task 17 micro-F1 | Task 20 MAE | Task 8 IoU | Evidence |
 | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |

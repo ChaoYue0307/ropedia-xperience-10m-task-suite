@@ -1,6 +1,6 @@
 # Omni Model Comparison
 
-Generated: `2026-06-20T21:27:21+00:00`
+Generated: `2026-06-21T10:47:04+00:00`
 
 Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and the two Cosmos3 targets answer different questions: Nano future-window retrieval versus Super structured JSON Reasoner evaluation.
 
@@ -16,7 +16,7 @@ Read the three rows this way:
 
 - Version 1 is the public-sample 20-task surface: original core heads, tasks 13-20, and the 180-row method-task matrix.
 - Version 2 is the selected 128-episode same-split simple/NN baseline alignment.
-- Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, Cosmos3-Super Reasoner is a base-weight JSON-task evaluation, and Cosmos3-Super Forward-Dynamics LoRA is the first Super fine-tuned adapter branch.
+- The selected-128 model-diagnostic group contains the current Qwen3-Omni LoRA JSON-task row, Cosmos3-Nano future-window compatibility result, Cosmos3-Super Reasoner base-weight JSON-task evaluation, and the separate Cosmos3-Super Forward-Dynamics LoRA adapter artifact.
 
 ## Model-Family Grouped View
 
@@ -74,7 +74,7 @@ The current 128-episode Cosmos result is a public-safe future-window compatibili
 
 ### Cosmos3-Super Reasoner
 
-Cosmos3-Super is now represented by a verified 448-window held-out Reasoner evaluation on the same JSON task as Qwen3. It uses staged base weights through vLLM, so it is a model-branch diagnostic, not a weight release. A camera-pose proxy forward-dynamics target export now passes the contract audit and schema-only packer smoke; the separate Forward-Dynamics LoRA group records the trainable adapter run and loss-based held-out evaluation.
+Cosmos3-Super is now represented by a verified 448-window held-out Reasoner evaluation on the same JSON task as Qwen3. It uses staged base weights through vLLM, so it is a Cosmos3 diagnostic, not a weight release. A camera-pose proxy forward-dynamics target export now passes the contract audit and schema-only packer smoke; the separate Forward-Dynamics LoRA group records the trainable adapter run and loss-based held-out evaluation.
 
 - Weight repo policy: none for this run; staged base weights only, no new fine-tuned weights
 

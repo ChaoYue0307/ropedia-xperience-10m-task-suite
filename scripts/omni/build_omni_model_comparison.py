@@ -176,7 +176,7 @@ def aligned_baseline_summary() -> dict[str, Any]:
         "task_metrics": task_rows,
         "interpretation": (
             "This layer aligns the previous simple and neural baseline framing to "
-            "the same selected 96/16/16 split used by the model branches. It uses "
+            "the same selected 96/16/16 split used by the Qwen3-Omni and Cosmos3 diagnostics. It uses "
             "public-safe JSONL metadata/text features, so raw-feature-only tasks "
             "remain explicitly unsupported until 128-run sensor feature blocks exist."
         ),
@@ -601,7 +601,7 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     aligned_128,
                     run_id="task_heads_128_episode_metadata_baselines",
                     weights="metadata/text baseline artifacts; raw 128 sensor-feature model weights not yet complete",
-                    interpretation="Same selected 96/16/16 split and task ids as the model branches, but metadata/text features only.",
+                    interpretation="Same selected 96/16/16 split and task ids as the Qwen3-Omni and Cosmos3 diagnostics, but metadata/text features only.",
                 )
             ],
             "comparison_note": (
@@ -684,7 +684,7 @@ def model_grouped_view(versions: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "comparison_note": (
                 "Cosmos3-Super is now represented by a verified 448-window held-out "
                 "Reasoner evaluation on the same JSON task as Qwen3. It uses staged base "
-                "weights through vLLM, so it is a model-branch diagnostic, not a weight release. "
+                "weights through vLLM, so it is a Cosmos3 diagnostic, not a weight release. "
                 "A camera-pose proxy forward-dynamics target export now passes the contract audit "
                 "and schema-only packer smoke; the separate Forward-Dynamics LoRA group records "
                 "the trainable adapter run and loss-based held-out evaluation."
@@ -757,7 +757,7 @@ def build_report() -> dict[str, Any]:
         "version_reading_notes": [
             "Version 1 is the public-sample 20-task surface: original core heads, tasks 13-20, and the 180-row method-task matrix.",
             "Version 2 is the selected 128-episode same-split simple/NN baseline alignment.",
-            "Version 3 is the verified model-branch layer: the current final Qwen3-Omni LoRA package is the JSON-task diagnostic result, Cosmos3-Nano is a future-window compatibility result, Cosmos3-Super Reasoner is a base-weight JSON-task evaluation, and Cosmos3-Super Forward-Dynamics LoRA is the first Super fine-tuned adapter branch.",
+            "The selected-128 model-diagnostic group contains the current Qwen3-Omni LoRA JSON-task row, Cosmos3-Nano future-window compatibility result, Cosmos3-Super Reasoner base-weight JSON-task evaluation, and the separate Cosmos3-Super Forward-Dynamics LoRA adapter artifact.",
         ],
         "versions": versions,
         "model_groups": model_groups,

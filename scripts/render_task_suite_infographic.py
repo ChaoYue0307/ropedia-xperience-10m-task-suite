@@ -1087,7 +1087,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       <div class="arrow">-></div>
       <div class="step"><strong>{feature_dim:,}-d vector</strong><span>current manifest includes audio features</span></div>
       <div class="arrow">-></div>
-      <div class="step"><strong>20 task contracts</strong><span>minimal/NN baselines plus model-branch results</span></div>
+      <div class="step"><strong>20 task contracts</strong><span>minimal/NN baselines plus Qwen3-Omni/Cosmos3 diagnostics</span></div>
     </section>
 
     <div class="section-label">

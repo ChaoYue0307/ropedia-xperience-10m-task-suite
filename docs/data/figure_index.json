@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Figure Index",
   "status": "pass",
-  "generated_at_utc": "2026-06-18T18:18:13+00:00",
+  "generated_at_utc": "2026-06-21T10:52:12+00:00",
   "scope": "Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience-10M videos, annotations, RRD files, and Qwen weights are excluded.",
   "figure_count": 29,
   "figures": [
@@ -64,12 +64,12 @@
       "source_script": "scripts/render_task_suite_infographic.py",
       "surface": "README, website, HF Space, artifact dataset, model card",
       "exists": true,
-      "bytes": 1591194,
-      "sha256": "95ab73e01cfba86538b63247869fae4091934ddedf9e22523ab4cead9c59086d",
+      "bytes": 1903454,
+      "sha256": "6667eb856cf61ada9f868807b5d5c6ccde06e4f791b2f9dd567d98b71b307415",
       "dimensions": {
         "format": "PNG",
         "width": 1800,
-        "height": 6600
+        "height": 7600
       },
       "source_script_exists": true
     },
@@ -81,8 +81,8 @@
       "source_script": "scripts/generate_visualizations.py",
       "surface": "README, website, HF artifact dataset",
       "exists": true,
-      "bytes": 704575,
-      "sha256": "c90723cc4b1bf5490269af2df594849030ae8d4cc8176e1d1eab96fabf9412f9",
+      "bytes": 711222,
+      "sha256": "4db6a6353d3f1e49bae12447e1a78a874aa780d60e9817f3052ac0d0acf2f7b2",
       "dimensions": {
         "format": "PNG",
         "width": 1800,
@@ -149,8 +149,8 @@
       "source_script": "scripts/render_foundation_pipeline_diagrams.py",
       "surface": "README, website, HF Space, artifact dataset, model card",
       "exists": true,
-      "bytes": 1553916,
-      "sha256": "6d502580c9f11b170036843690dff0ef99e146890d9914046b5d4b165bd1f89b",
+      "bytes": 1853350,
+      "sha256": "e8d863cc5104602e464048b4bf48f9acf3a108495298d9ec15b2e9cf346f41f9",
       "dimensions": {
         "format": "PNG",
         "width": 2560,
@@ -166,8 +166,8 @@
       "source_script": "scripts/render_overview_figures.py",
       "surface": "README, website, HF artifact dataset, model card",
       "exists": true,
-      "bytes": 774391,
-      "sha256": "f08b03bc21e194efe382347d74cf89cd6ac65dede51889971dbfc2fb9d1de3c2",
+      "bytes": 757827,
+      "sha256": "d83b75a6778033a716f1086dbe61298662d4b8f80cb8f52193d2cbdb1e8e31f7",
       "dimensions": {
         "format": "PNG",
         "width": 1800,
@@ -356,8 +356,8 @@
       "source_script": "scripts/generate_visualizations.py",
       "surface": "website directions",
       "exists": true,
-      "bytes": 5078,
-      "sha256": "fd4ba0a9d6d525bdfa8677c66e1a751efc83936dc032ce229bfca1ea106acb40",
+      "bytes": 5352,
+      "sha256": "506e12aa1b6c4fd50fb0c65714c7f0a92c02c40069cb879503471ba9b63d4afb",
       "dimensions": {
         "format": "SVG",
         "width": 1180,
@@ -410,8 +410,8 @@
       "source_script": "scripts/build_unified_task_model_radar.py",
       "surface": "website unified task section, README, HF mirrors",
       "exists": true,
-      "bytes": 54276,
-      "sha256": "66b3f285ecb9a3bf7d1125495fc3b6d4400edacb59700e06e9b504c9767d434e",
+      "bytes": 57938,
+      "sha256": "bb83b80b47fe679ebdce2c99378a4548120f1c8cc2d725b88e409d8c386dcbf8",
       "dimensions": {
         "format": "SVG",
         "width": 2400,
@@ -428,8 +428,8 @@
       "source_script": "scripts/build_unified_task_model_radar.py",
       "surface": "website unified task section, README, HF mirrors",
       "exists": true,
-      "bytes": 35229,
-      "sha256": "eae52facf93c6c674a82178e4ec1592f9d77fd5d5fcf8b11845deff7dbca3f6c",
+      "bytes": 35232,
+      "sha256": "87b52a7dead40358f1778dda43ade4d2e875ac98e507e01ca007084363e5977e",
       "dimensions": {
         "format": "SVG",
         "width": 2400,
@@ -442,12 +442,12 @@
       "id": "episode128_task_model_radar",
       "title": "128-episode 20-task model radar",
       "path": "docs/assets/charts/episode128_task_model_radar.svg",
-      "role": "Twenty-axis split radar for selected 128-episode methods: raw-feature simple/NN as complete scored polygons and metadata/Qwen/Cosmos as task-aligned overlays.",
+      "role": "Twenty-axis split radar for selected 128-episode methods: raw-feature simple/NN as complete scored polygons plus metadata, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano task-aligned overlays.",
       "source_script": "scripts/build_unified_task_model_radar.py",
       "surface": "website unified task section, README, HF mirrors",
       "exists": true,
-      "bytes": 48263,
-      "sha256": "9538bfb512f16bbd280151923adf8a23377bfaed2a8be5961a25eaf0a11d1404",
+      "bytes": 51915,
+      "sha256": "047ea4b05a04f6734e2afcf792863559dc8f3091eae88a97ff90e8b038a423f4",
       "dimensions": {
         "format": "SVG",
         "width": 2400,

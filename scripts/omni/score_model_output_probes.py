@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit model-output readiness for extending model branches to all 20 tasks."""
+"""Audit Qwen3-Omni/Cosmos3 output readiness for all 20 tasks."""
 
 from __future__ import annotations
 
@@ -180,14 +180,14 @@ def build_readiness(workspace: Path, matrix: dict, overrides: dict[str, dict[str
             "guardrail for future replacement model-output probes and does not create "
             "or infer numeric scores."
             if matrix_complete
-            else "This artifact checks readiness for extending verified model branches "
+            else "This artifact checks readiness for extending verified Qwen3-Omni/Cosmos3 runs "
             "to all 20 task contracts. It does not create or infer numeric scores."
         ),
         "score_policy": (
             "The current matrix has zero scoreless cells. Future replacement scores "
             "must still come from task-specific held-out artifacts."
             if matrix_complete
-            else "A scoreless Qwen3/Cosmos cell can become numeric only after the branch "
+            else "A scoreless Qwen3-Omni/Cosmos3 cell can become numeric only after the run "
             "emits the task target and the metric is computed against held-out labels."
         ),
         "ready_method_count": len(ready_methods),
@@ -226,7 +226,7 @@ def write_report(output_dir: Path, payload: dict) -> None:
         "superseded for the current release. It remains a guardrail for future "
         "replacement model-output probes and does not assign new task scores."
         if payload.get("completion_state") == "completed_matrix"
-        else "This report checks whether verified model branches have the prediction files\n"
+        else "This report checks whether verified Qwen3-Omni/Cosmos3 runs have the prediction files\n"
         "needed to extend them to every 20-task contract. It is readiness evidence only;\n"
         "it does not assign new task scores."
     )

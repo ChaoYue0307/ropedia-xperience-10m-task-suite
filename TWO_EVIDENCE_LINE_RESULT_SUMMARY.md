@@ -1,10 +1,10 @@
 # Two Evidence-Line Result Summary
 
-Generated: `2026-06-21T10:00:36+00:00`.
+Generated: `2026-06-21T10:47:04+00:00`.
 
 Source matrix: [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)
 
-Interpretation rule: Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for held-out comparison and model-branch claims.
+Interpretation rule: Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for same-split metadata/raw baselines, Qwen3-Omni v6 LoRA diagnostics, and Cosmos3 diagnostics.
 
 ## Read This First
 
@@ -15,7 +15,7 @@ Score formula: 2 single-episode methods x 20 tasks = 40 records; 7 selected-128 
 | Line | What the scores mean | Valid claim | Do not claim |
 | --- | --- | --- | --- |
 | 1 sample episode | 40/40 direct scores from Minimal and Neural MLP heads on the same 20 task contracts. | Supports task construction, file inspection, local reproducibility, and controlled single-episode baseline claims. | Do not use this line as evidence of multi-episode generalization. |
-| 128 selected episodes | 140/140 selected-128 scores across seven method branches: 134 direct scores plus 6 documented compact-proxy scores. | Supports same-split comparison, model-branch diagnostics, and scale-up planning on public-safe processed artifacts. | Do not read compact-proxy cells as direct raw-target measurements. |
+| 128 selected episodes | 140/140 selected-128 scores across seven methods: 134 direct scores plus 6 documented compact-proxy scores. | Supports same-split metadata/raw baseline comparison, Qwen3-Omni v6 diagnostics, Cosmos3 diagnostics, and scale-up planning on public-safe processed artifacts. | Do not read compact-proxy cells as direct raw-target measurements. |
 
 ## Public Score Totals
 
@@ -79,7 +79,7 @@ Score formula: 2 single-episode methods x 20 tasks = 40 records; 7 selected-128 
 | Step | Reason |
 | --- | --- |
 | Choose the evidence line | Line 1 answers task-lab and reproducibility questions; line 2 answers selected-128 comparison questions. |
-| Open the matching radar | Use the 1-episode radar for Minimal-vs-Neural behavior and the 128-episode radar for baseline/model-branch comparison. |
+| Open the matching radar | Use the 1-episode radar for Minimal-vs-Neural behavior and the 128-episode radar for metadata/raw baselines, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano. |
 | Inspect the matrix row | Every numeric score is tied to a method, task, metric key, source artifact, and proxy flag. |
 | Check proxy cells before interpreting totals | The six compact-proxy cells are numeric but are not direct raw-target measurements. |
 

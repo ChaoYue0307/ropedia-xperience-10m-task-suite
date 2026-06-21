@@ -379,7 +379,7 @@ def write_report(path: Path, manifest: dict[str, Any], stats: dict[str, Any]) ->
         "- `hierarchical_label_stats.json`: label cardinality and unseen-label diagnostics.",
         "- `split_scale_counts.csv`: split/scale window counts.",
         "",
-        "This package is intended for fast baselines and for planning the heavier raw-media Qwen/Cosmos runs.",
+        "This package is intended for fast baselines and for planning the heavier raw-media Qwen3-Omni and Cosmos3 runs.",
     ])
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 

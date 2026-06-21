@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-06-21T10:00:36+00:00",
-  "interpretation_rule": "Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for held-out comparison and model-branch claims.",
+  "generated_at_utc": "2026-06-21T10:47:04+00:00",
+  "interpretation_rule": "Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for same-split metadata/raw baselines, Qwen3-Omni v6 LoRA diagnostics, and Cosmos3 diagnostics.",
   "lines": [
     {
       "artifact_entry_points": [
@@ -66,7 +66,7 @@
         "docs/data/qwen3_omni_run_lineage.json",
         "docs/data/task_method_20_gap_audit.json"
       ],
-      "claim_boundary": "Supports same-split comparison, model-branch diagnostics, and scale-up planning on public-safe processed artifacts.",
+      "claim_boundary": "Supports same-split metadata/raw baseline comparison, Qwen3-Omni v6 diagnostics, Cosmos3 diagnostics, and scale-up planning on public-safe processed artifacts.",
       "data_unit": "Selected held-out 96/16/16 split with public-safe processed features linked to official gated episode paths",
       "direct_scored_method_task_count": 134,
       "id": "selected_128_episode_surface",
@@ -171,14 +171,14 @@
         }
       ],
       "not_for": "Do not read compact-proxy cells as direct raw-target measurements.",
-      "primary_use": "Compare same-split baselines and model branches while keeping evidence type explicit.",
+      "primary_use": "Compare same-split metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window while keeping evidence type explicit.",
       "primary_visuals": [
         "docs/assets/charts/two_evidence_line_map.svg",
         "docs/assets/charts/episode128_task_model_radar.svg",
         "docs/assets/charts/unified_task_model_radar.svg"
       ],
       "proxy_scored_method_task_count": 6,
-      "result_statement": "140/140 selected-128 scores across seven method branches: 134 direct scores plus 6 documented compact-proxy scores.",
+      "result_statement": "140/140 selected-128 scores across seven methods: 134 direct scores plus 6 documented compact-proxy scores.",
       "scored_method_task_count": 140,
       "short_label": "Line 2",
       "task_count": 20
@@ -344,7 +344,7 @@
       "step": "Choose the evidence line"
     },
     {
-      "reason": "Use the 1-episode radar for Minimal-vs-Neural behavior and the 128-episode radar for baseline/model-branch comparison.",
+      "reason": "Use the 1-episode radar for Minimal-vs-Neural behavior and the 128-episode radar for metadata/raw baselines, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano.",
       "step": "Open the matching radar"
     },
     {

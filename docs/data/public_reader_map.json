@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Reader Map",
   "status": "published",
-  "purpose": "Organize the GitHub repo, GitHub Pages dashboard, Hugging Face Space, artifact dataset, baseline model repo, consolidated weights/results repo, and model-branch repos without removing evidence.",
+  "purpose": "Organize the GitHub repo, GitHub Pages dashboard, Hugging Face Space, artifact dataset, baseline model repo, consolidated weights/results repo, and Qwen3-Omni/Cosmos3 repos without removing evidence.",
   "fast_paths": [
     {
       "reader_goal": "Understand the project in one pass",
@@ -92,13 +92,13 @@
     },
     {
       "surface": "HF weights/results repo",
-      "responsibility": "Consolidated baseline weights, Qwen3/Cosmos adapter weights, verified results, analysis files, and file-level manifest.",
+      "responsibility": "Consolidated baseline weights, Qwen3-Omni v6 LoRA, Cosmos3-Super adapter/result artifacts, verified results, analysis files, and file-level manifest.",
       "best_use": "Auditing all public-safe weight-bearing artifacts from one repo."
     },
     {
-      "surface": "Qwen3/Cosmos model repos",
-      "responsibility": "Adapter-specific public weights or package cards when a branch is verified and publishable.",
-      "best_use": "Inspecting model-branch artifacts."
+      "surface": "Qwen3-Omni and Cosmos3 model repos",
+      "responsibility": "Adapter-specific public weights or package cards when a Qwen3-Omni or Cosmos3 run is verified and publishable.",
+      "best_use": "Inspecting Qwen3-Omni and Cosmos3 artifacts."
     }
   ],
   "evidence_layers": [
@@ -121,8 +121,8 @@
       "boundary": "Uses selected held-out episodes and derived public-safe summaries; official raw files remain gated upstream."
     },
     {
-      "claim_type": "Foundation-model branch quality",
-      "public_evidence": ["Verified Qwen3/Cosmos result packages", "model cards"],
+      "claim_type": "Foundation-model track quality",
+      "public_evidence": ["Verified Qwen3-Omni and Cosmos3 result packages", "model cards"],
       "boundary": "Numeric task scores appear only when a task-specific eval or probe exists."
     },
     {

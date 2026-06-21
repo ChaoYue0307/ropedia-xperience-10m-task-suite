@@ -213,7 +213,7 @@ def build_payload(matrix: dict, lines: dict) -> dict:
             },
             {
                 "step": "Open the matching radar",
-                "reason": "Use the 1-episode radar for Minimal-vs-Neural behavior and the 128-episode radar for baseline/model-branch comparison.",
+                "reason": "Use the 1-episode radar for Minimal-vs-Neural behavior and the 128-episode radar for metadata/raw baselines, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano.",
             },
             {
                 "step": "Inspect the matrix row",

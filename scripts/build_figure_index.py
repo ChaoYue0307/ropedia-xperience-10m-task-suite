@@ -222,7 +222,7 @@ FIGURES = [
         "id": "episode128_task_model_radar",
         "title": "128-episode 20-task model radar",
         "path": "docs/assets/charts/episode128_task_model_radar.svg",
-        "role": "Twenty-axis split radar for selected 128-episode methods: raw-feature simple/NN as complete scored polygons and metadata/Qwen/Cosmos as task-aligned overlays.",
+        "role": "Twenty-axis split radar for selected 128-episode methods: raw-feature simple/NN as complete scored polygons plus metadata, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano task-aligned overlays.",
         "source_script": "scripts/build_unified_task_model_radar.py",
         "surface": "website unified task section, README, HF mirrors",
     },

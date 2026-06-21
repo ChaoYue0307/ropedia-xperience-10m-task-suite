@@ -1,7 +1,7 @@
 {
   "title": "Single-Episode 20-Task Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-21T08:37:32+00:00",
+  "generated_at_utc": "2026-06-21T10:47:17+00:00",
   "description": "Minimal and Neural MLP baselines on the one public sample episode, both scored on all 20 task contracts.",
   "task_count": 20,
   "method_count": 2,
@@ -12,7 +12,7 @@
     "lower_is_better": "lower-error metrics are converted to best_observed_value / raw_value within the same task",
     "raw_values": "raw metric values, metric keys, and sources are retained in this JSON; the SVG is an overview, not a replacement for the metric table",
     "result_record_policy": "every method has 20 task records; the current public release has 180/180 scored rows with proxy flags and reasons retained where compact substitute targets are used",
-    "foundation_model_overlay": "Qwen3/Cosmos points are plotted only on task-aligned axes. Scoreless records mean the public result does not evaluate that task contract.",
+    "foundation_model_overlay": "Qwen3-Omni and Cosmos3 points are plotted only on task-aligned axes. Scoreless records mean the public result does not evaluate that task contract.",
     "metadata_128_overlay": "128-episode aligned baselines have 20 records. Numeric scores come from JSONL metadata/text tasks plus staged sensor-block targets when the processed target exists; raw interaction text and paired camera-view embeddings remain explicit gaps.",
     "raw_128_overlay": "128-episode raw-feature baselines use staged sensor NPZ features. Eighteen axes use direct task targets; interaction text and camera-view sync are completed with documented compact proxies because raw interaction strings and paired video-view embeddings are absent from the 128 export."
   },

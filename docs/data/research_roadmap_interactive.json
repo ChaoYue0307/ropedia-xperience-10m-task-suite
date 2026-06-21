@@ -132,23 +132,23 @@
     "public_boundary": "These are proposed development tracks. They are not reported as completed held-out benchmark results.",
     "source_document": "ADDITIONAL_DEVELOPMENT_DIRECTIONS.md",
     "status": "planned_research_directions",
-    "summary": "Concrete Xperience-10M project directions beyond the current minimal baselines, Qwen3-Omni LoRA plan, Cosmos/world-model branch, and long-term native pretraining goal.",
+    "summary": "Concrete Xperience-10M project directions beyond the current minimal baselines, Qwen3-Omni LoRA plan, Cosmos/world-model track, and long-term native pretraining goal.",
     "title": "Additional Development Directions"
   },
   "baseline_summary": {
     "baseline_heads": "minimal and neural MLP heads",
     "current_use": "task design, data-contract validation, case studies, and baseline comparison",
     "split": "chronological single-episode split for public-sample diagnostics",
-    "task_count": 12
+    "task_count": 20
   },
   "directions": [
     {
       "code": "A",
       "counts": {
         "diagnostic": 0,
-        "direct": 2,
-        "proxy": 2,
-        "total_links": 4
+        "direct": 3,
+        "proxy": 3,
+        "total_links": 6
       },
       "current_readout": "The sample supports hand trajectory forecasting and contact/object probes, but it does not yet include a full body/shape model or multi-person priors.",
       "current_status": "partially implemented",
@@ -174,7 +174,9 @@
         "timeline_action",
         "hand_trajectory_forecast",
         "contact_prediction",
-        "object_relevance"
+        "object_relevance",
+        "interaction_text_prediction",
+        "imu_to_hand_pose"
       ],
       "tasks": [
         {
@@ -429,6 +431,84 @@
           "process_short": "object vocabulary -> multi-hot labels -> sigmoid heads",
           "research_name": "Object-Centric Interaction Recognition",
           "why": "Connects egocentric activity to manipulated objects and early object-centric state."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "Public derived features retain hashed text targets; raw full text requires the official annotation source.",
+          "direction_roles": {
+            "A": "proxy",
+            "C": "direct"
+          },
+          "display_name": "Interaction text prediction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "classification",
+          "id": "interaction_text_prediction",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.0444,
+            "name": "macro-F1",
+            "neural_mlp": 0.0381
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "C",
+          "process_short": null,
+          "research_name": "Interaction text prediction",
+          "why": "Connects egocentric observations to the natural-language interaction semantics carried by the annotation."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "Pose reconstruction is window-level and does not yet fit a full parametric hand/body model.",
+          "direction_roles": {
+            "A": "direct",
+            "B": "proxy"
+          },
+          "display_name": "IMU-to-hand pose reconstruction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "regression",
+          "id": "imu_to_hand_pose",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "lower",
+            "key": "mae",
+            "minimal": 0.042,
+            "name": "MAE",
+            "neural_mlp": 0.0426
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "A",
+          "process_short": null,
+          "research_name": "IMU-to-hand pose reconstruction",
+          "why": "Measures human-motion reconstruction from wearable and motion cues."
         }
       ]
     },
@@ -436,9 +516,9 @@
       "code": "B",
       "counts": {
         "diagnostic": 1,
-        "direct": 0,
-        "proxy": 2,
-        "total_links": 3
+        "direct": 1,
+        "proxy": 3,
+        "total_links": 5
       },
       "current_readout": "The current suite checks cross-modal alignment and depth/video reconstruction proxies; it does not yet train a renderer or reconstruct geometry.",
       "current_status": "proxy tasks only",
@@ -463,7 +543,9 @@
       "task_ids": [
         "cross_modal_retrieval",
         "modality_reconstruction",
-        "misalignment_detection"
+        "misalignment_detection",
+        "imu_to_hand_pose",
+        "camera_view_sync_retrieval"
       ],
       "tasks": [
         {
@@ -634,18 +716,96 @@
           "process_short": "aligned/shifted pairs -> feature combiner -> binary classifier",
           "research_name": "Cross-Modal Misalignment Detection",
           "why": "Detects temporal desynchronization, a key data-quality gate for multimodal reconstruction and world models."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "Pose reconstruction is window-level and does not yet fit a full parametric hand/body model.",
+          "direction_roles": {
+            "A": "direct",
+            "B": "proxy"
+          },
+          "display_name": "IMU-to-hand pose reconstruction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "regression",
+          "id": "imu_to_hand_pose",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "lower",
+            "key": "mae",
+            "minimal": 0.042,
+            "name": "MAE",
+            "neural_mlp": 0.0426
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "A",
+          "process_short": null,
+          "research_name": "IMU-to-hand pose reconstruction",
+          "why": "Measures human-motion reconstruction from wearable and motion cues."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "Retrieval checks view consistency but does not reconstruct geometry by itself.",
+          "direction_roles": {
+            "B": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Camera-view synchronization retrieval",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "retrieval",
+          "id": "camera_view_sync_retrieval",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "mrr",
+            "minimal": 0.4943,
+            "name": "MRR",
+            "neural_mlp": 0.2409
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "B",
+          "process_short": null,
+          "research_name": "Camera-view synchronization retrieval",
+          "why": "Tests whether synchronized multi-view structure is recoverable across camera streams."
         }
       ]
     },
     {
       "code": "C",
       "counts": {
-        "diagnostic": 3,
-        "direct": 6,
-        "proxy": 2,
-        "total_links": 11
+        "diagnostic": 4,
+        "direct": 10,
+        "proxy": 3,
+        "total_links": 17
       },
-      "current_readout": "Most of the 12 tasks directly target egocentric action, task state, interaction, grounding, and alignment.",
+      "current_readout": "The unified 20-task suite directly targets egocentric action, task state, interaction, grounding, forecasting, and alignment.",
       "current_status": "strongest implemented track",
       "extension_tasks": [
         {
@@ -676,7 +836,13 @@
         "caption_grounding",
         "cross_modal_retrieval",
         "temporal_order",
-        "misalignment_detection"
+        "misalignment_detection",
+        "long_horizon_next_action",
+        "next_subtask_forecast",
+        "interaction_text_prediction",
+        "action_object_relation",
+        "object_set_forecast",
+        "time_to_transition"
       ],
       "tasks": [
         {
@@ -1367,16 +1533,250 @@
           "process_short": "aligned/shifted pairs -> feature combiner -> binary classifier",
           "research_name": "Cross-Modal Misalignment Detection",
           "why": "Detects temporal desynchronization, a key data-quality gate for multimodal reconstruction and world models."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "Evaluated from sample-supported future labels, not full open-world action generation.",
+          "direction_roles": {
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Long-horizon next-action forecasting",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "classification",
+          "id": "long_horizon_next_action",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.075,
+            "name": "macro-F1",
+            "neural_mlp": 0.0655
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "C",
+          "process_short": null,
+          "research_name": "Long-horizon next-action forecasting",
+          "why": "Extends short-horizon intention prediction into longer activity futures, a key egocentric and world-model signal."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "Subtask labels are constrained to the available annotation vocabulary.",
+          "direction_roles": {
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Long-horizon next-subtask forecasting",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "classification",
+          "id": "next_subtask_forecast",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.0455,
+            "name": "macro-F1",
+            "neural_mlp": 0.0507
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "C",
+          "process_short": null,
+          "research_name": "Long-horizon next-subtask forecasting",
+          "why": "Measures whether the model can anticipate the next procedural phase rather than only the current frame state."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "Public derived features retain hashed text targets; raw full text requires the official annotation source.",
+          "direction_roles": {
+            "A": "proxy",
+            "C": "direct"
+          },
+          "display_name": "Interaction text prediction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "classification",
+          "id": "interaction_text_prediction",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.0444,
+            "name": "macro-F1",
+            "neural_mlp": 0.0381
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "C",
+          "process_short": null,
+          "research_name": "Interaction text prediction",
+          "why": "Connects egocentric observations to the natural-language interaction semantics carried by the annotation."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "Relation labels are derived from the public-sample annotation scope.",
+          "direction_roles": {
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Action-object relation prediction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "classification",
+          "id": "action_object_relation",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "tie",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.0,
+            "name": "macro-F1",
+            "neural_mlp": 0.0
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "C",
+          "process_short": null,
+          "research_name": "Action-object relation prediction",
+          "why": "Tests whether action recognition and object state are connected as a relational interaction representation."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "This is a set-level proxy, not a persistent 3D scene graph.",
+          "direction_roles": {
+            "C": "proxy",
+            "D": "direct"
+          },
+          "display_name": "Future object-set forecasting",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "multi-label",
+          "id": "object_set_forecast",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "higher",
+            "key": "micro_f1",
+            "minimal": 0.1694,
+            "name": "micro-F1",
+            "neural_mlp": 0.1972
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "D",
+          "process_short": null,
+          "research_name": "Future object-set forecasting",
+          "why": "Asks whether the current scene state supports predicting which objects will matter later."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "Regression is local to the annotated public sample timeline.",
+          "direction_roles": {
+            "C": "diagnostic",
+            "D": "diagnostic"
+          },
+          "display_name": "Time-to-next-transition regression",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "regression",
+          "id": "time_to_transition",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "lower",
+            "key": "mae",
+            "minimal": 10.5374,
+            "name": "MAE frames",
+            "neural_mlp": 10.5545
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "C",
+          "process_short": null,
+          "research_name": "Time-to-next-transition regression",
+          "why": "Measures temporal boundary awareness as a continuous timing target."
         }
       ]
     },
     {
       "code": "D",
       "counts": {
-        "diagnostic": 3,
-        "direct": 0,
-        "proxy": 6,
-        "total_links": 9
+        "diagnostic": 4,
+        "direct": 1,
+        "proxy": 10,
+        "total_links": 15
       },
       "current_readout": "The current tasks probe temporal structure, object relevance, cross-modal retrieval, and modality prediction, but they do not yet build persistent maps or scene graphs.",
       "current_status": "early proxy tasks",
@@ -1407,7 +1807,13 @@
         "cross_modal_retrieval",
         "modality_reconstruction",
         "temporal_order",
-        "misalignment_detection"
+        "misalignment_detection",
+        "long_horizon_next_action",
+        "next_subtask_forecast",
+        "action_object_relation",
+        "object_set_forecast",
+        "camera_view_sync_retrieval",
+        "time_to_transition"
       ],
       "tasks": [
         {
@@ -1960,6 +2366,240 @@
           "process_short": "aligned/shifted pairs -> feature combiner -> binary classifier",
           "research_name": "Cross-Modal Misalignment Detection",
           "why": "Detects temporal desynchronization, a key data-quality gate for multimodal reconstruction and world models."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "Evaluated from sample-supported future labels, not full open-world action generation.",
+          "direction_roles": {
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Long-horizon next-action forecasting",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "classification",
+          "id": "long_horizon_next_action",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.075,
+            "name": "macro-F1",
+            "neural_mlp": 0.0655
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "C",
+          "process_short": null,
+          "research_name": "Long-horizon next-action forecasting",
+          "why": "Extends short-horizon intention prediction into longer activity futures, a key egocentric and world-model signal."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "Subtask labels are constrained to the available annotation vocabulary.",
+          "direction_roles": {
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Long-horizon next-subtask forecasting",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "classification",
+          "id": "next_subtask_forecast",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.0455,
+            "name": "macro-F1",
+            "neural_mlp": 0.0507
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "C",
+          "process_short": null,
+          "research_name": "Long-horizon next-subtask forecasting",
+          "why": "Measures whether the model can anticipate the next procedural phase rather than only the current frame state."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "Relation labels are derived from the public-sample annotation scope.",
+          "direction_roles": {
+            "C": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Action-object relation prediction",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "classification",
+          "id": "action_object_relation",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "tie",
+            "direction": "higher",
+            "key": "macro_f1",
+            "minimal": 0.0,
+            "name": "macro-F1",
+            "neural_mlp": 0.0
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "C",
+          "process_short": null,
+          "research_name": "Action-object relation prediction",
+          "why": "Tests whether action recognition and object state are connected as a relational interaction representation."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "This is a set-level proxy, not a persistent 3D scene graph.",
+          "direction_roles": {
+            "C": "proxy",
+            "D": "direct"
+          },
+          "display_name": "Future object-set forecasting",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "multi-label",
+          "id": "object_set_forecast",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "neural_mlp",
+            "direction": "higher",
+            "key": "micro_f1",
+            "minimal": 0.1694,
+            "name": "micro-F1",
+            "neural_mlp": 0.1972
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "D",
+          "process_short": null,
+          "research_name": "Future object-set forecasting",
+          "why": "Asks whether the current scene state supports predicting which objects will matter later."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "Retrieval checks view consistency but does not reconstruct geometry by itself.",
+          "direction_roles": {
+            "B": "direct",
+            "D": "proxy"
+          },
+          "display_name": "Camera-view synchronization retrieval",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "retrieval",
+          "id": "camera_view_sync_retrieval",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "higher",
+            "key": "mrr",
+            "minimal": 0.4943,
+            "name": "MRR",
+            "neural_mlp": 0.2409
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "B",
+          "process_short": null,
+          "research_name": "Camera-view synchronization retrieval",
+          "why": "Tests whether synchronized multi-view structure is recoverable across camera streams."
+        },
+        {
+          "architecture_family": null,
+          "case_study": null,
+          "current_limit": "Regression is local to the annotated public sample timeline.",
+          "direction_roles": {
+            "C": "diagnostic",
+            "D": "diagnostic"
+          },
+          "display_name": "Time-to-next-transition regression",
+          "evidence_links": [
+            {
+              "href": "data/task_walkthroughs.json",
+              "label": "Task walkthrough"
+            },
+            {
+              "href": "single_episode_explorer.html",
+              "label": "Single-episode explorer"
+            }
+          ],
+          "family": "regression",
+          "id": "time_to_transition",
+          "input": null,
+          "input_short": null,
+          "metric": {
+            "better_baseline": "minimal",
+            "direction": "lower",
+            "key": "mae",
+            "minimal": 10.5374,
+            "name": "MAE frames",
+            "neural_mlp": 10.5545
+          },
+          "modalities": [],
+          "module_summary": null,
+          "output_short": null,
+          "primary_direction": "C",
+          "process_short": null,
+          "research_name": "Time-to-next-transition regression",
+          "why": "Measures temporal boundary awareness as a continuous timing target."
         }
       ]
     }
@@ -2046,7 +2686,7 @@
       },
       {
         "action": "Promote Cosmos 3 beyond the current Nano compatibility and Super forward-dynamics runs only when loss metrics, preprocessing, and storage justify the added compute.",
-        "name": "World-model branch",
+        "name": "World-model track",
         "step": 4
       },
       {
@@ -2222,7 +2862,7 @@
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-18T16:36:15+00:00",
+  "generated_at_utc": "2026-06-21T10:51:52+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -2385,7 +3025,7 @@
       ],
       "deliverables": [
         "backbone registry",
-        "Cosmos 3 world-model branch plan",
+        "Cosmos 3 world-model track plan",
         "Cosmos3-Super Forward-Dynamics LoRA verified package",
         "Qwen3-Omni LoRA baseline plan",
         "OpenVLA/openpi/GR00T policy-branch candidates",
@@ -2394,7 +3034,7 @@
       "entry_condition": "The selected episodes are prepared or a 3-8 episode dry run is available for preprocessing checks.",
       "id": "foundation_model_selection_matrix",
       "name": "Foundation-Model Selection Matrix",
-      "reader_takeaway": "Qwen3-Omni remains the structured JSON held-out pilot; Cosmos 3 is the first world-model branch. Cosmos3-Super now has a verified forward-dynamics LoRA over camera-pose proxy targets, while VLA/policy models wait for robot-compatible action targets.",
+      "reader_takeaway": "Qwen3-Omni remains the structured JSON held-out pilot; Cosmos 3 is the first world-model track. Cosmos3-Super now has a verified forward-dynamics LoRA over camera-pose proxy targets, while VLA/policy models wait for robot-compatible action targets.",
       "stage": "future",
       "status": "current"
     },
@@ -2436,7 +3076,7 @@
       "entry_condition": "Enough multi-episode data, compute budget, and model-specific action/world-state targets.",
       "id": "foundation_world_model_extensions",
       "name": "Cosmos 3 and Policy-Model Extensions",
-      "reader_takeaway": "The Cosmos branch now includes Nano future-window compatibility and Super forward-dynamics LoRA; the long-term direction remains richer multimodal representation learning with model branches chosen by task fit rather than by a single default backbone.",
+      "reader_takeaway": "The Cosmos3 track now includes Nano future-window compatibility and Super forward-dynamics LoRA; the long-term direction remains richer multimodal representation learning with model tracks chosen by task fit rather than by a single default backbone.",
       "stage": "future",
       "status": "planned"
     },
@@ -3242,6 +3882,318 @@
       "process_short": "aligned/shifted pairs -> feature combiner -> binary classifier",
       "research_name": "Cross-Modal Misalignment Detection",
       "why": "Detects temporal desynchronization, a key data-quality gate for multimodal reconstruction and world models."
+    },
+    {
+      "architecture_family": null,
+      "case_study": null,
+      "current_limit": "Evaluated from sample-supported future labels, not full open-world action generation.",
+      "direction_roles": {
+        "C": "direct",
+        "D": "proxy"
+      },
+      "display_name": "Long-horizon next-action forecasting",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        }
+      ],
+      "family": "classification",
+      "id": "long_horizon_next_action",
+      "input": null,
+      "input_short": null,
+      "metric": {
+        "better_baseline": "minimal",
+        "direction": "higher",
+        "key": "macro_f1",
+        "minimal": 0.075,
+        "name": "macro-F1",
+        "neural_mlp": 0.0655
+      },
+      "modalities": [],
+      "module_summary": null,
+      "output_short": null,
+      "primary_direction": "C",
+      "process_short": null,
+      "research_name": "Long-horizon next-action forecasting",
+      "why": "Extends short-horizon intention prediction into longer activity futures, a key egocentric and world-model signal."
+    },
+    {
+      "architecture_family": null,
+      "case_study": null,
+      "current_limit": "Subtask labels are constrained to the available annotation vocabulary.",
+      "direction_roles": {
+        "C": "direct",
+        "D": "proxy"
+      },
+      "display_name": "Long-horizon next-subtask forecasting",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        }
+      ],
+      "family": "classification",
+      "id": "next_subtask_forecast",
+      "input": null,
+      "input_short": null,
+      "metric": {
+        "better_baseline": "neural_mlp",
+        "direction": "higher",
+        "key": "macro_f1",
+        "minimal": 0.0455,
+        "name": "macro-F1",
+        "neural_mlp": 0.0507
+      },
+      "modalities": [],
+      "module_summary": null,
+      "output_short": null,
+      "primary_direction": "C",
+      "process_short": null,
+      "research_name": "Long-horizon next-subtask forecasting",
+      "why": "Measures whether the model can anticipate the next procedural phase rather than only the current frame state."
+    },
+    {
+      "architecture_family": null,
+      "case_study": null,
+      "current_limit": "Public derived features retain hashed text targets; raw full text requires the official annotation source.",
+      "direction_roles": {
+        "A": "proxy",
+        "C": "direct"
+      },
+      "display_name": "Interaction text prediction",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        }
+      ],
+      "family": "classification",
+      "id": "interaction_text_prediction",
+      "input": null,
+      "input_short": null,
+      "metric": {
+        "better_baseline": "minimal",
+        "direction": "higher",
+        "key": "macro_f1",
+        "minimal": 0.0444,
+        "name": "macro-F1",
+        "neural_mlp": 0.0381
+      },
+      "modalities": [],
+      "module_summary": null,
+      "output_short": null,
+      "primary_direction": "C",
+      "process_short": null,
+      "research_name": "Interaction text prediction",
+      "why": "Connects egocentric observations to the natural-language interaction semantics carried by the annotation."
+    },
+    {
+      "architecture_family": null,
+      "case_study": null,
+      "current_limit": "Relation labels are derived from the public-sample annotation scope.",
+      "direction_roles": {
+        "C": "direct",
+        "D": "proxy"
+      },
+      "display_name": "Action-object relation prediction",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        }
+      ],
+      "family": "classification",
+      "id": "action_object_relation",
+      "input": null,
+      "input_short": null,
+      "metric": {
+        "better_baseline": "tie",
+        "direction": "higher",
+        "key": "macro_f1",
+        "minimal": 0.0,
+        "name": "macro-F1",
+        "neural_mlp": 0.0
+      },
+      "modalities": [],
+      "module_summary": null,
+      "output_short": null,
+      "primary_direction": "C",
+      "process_short": null,
+      "research_name": "Action-object relation prediction",
+      "why": "Tests whether action recognition and object state are connected as a relational interaction representation."
+    },
+    {
+      "architecture_family": null,
+      "case_study": null,
+      "current_limit": "This is a set-level proxy, not a persistent 3D scene graph.",
+      "direction_roles": {
+        "C": "proxy",
+        "D": "direct"
+      },
+      "display_name": "Future object-set forecasting",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        }
+      ],
+      "family": "multi-label",
+      "id": "object_set_forecast",
+      "input": null,
+      "input_short": null,
+      "metric": {
+        "better_baseline": "neural_mlp",
+        "direction": "higher",
+        "key": "micro_f1",
+        "minimal": 0.1694,
+        "name": "micro-F1",
+        "neural_mlp": 0.1972
+      },
+      "modalities": [],
+      "module_summary": null,
+      "output_short": null,
+      "primary_direction": "D",
+      "process_short": null,
+      "research_name": "Future object-set forecasting",
+      "why": "Asks whether the current scene state supports predicting which objects will matter later."
+    },
+    {
+      "architecture_family": null,
+      "case_study": null,
+      "current_limit": "Pose reconstruction is window-level and does not yet fit a full parametric hand/body model.",
+      "direction_roles": {
+        "A": "direct",
+        "B": "proxy"
+      },
+      "display_name": "IMU-to-hand pose reconstruction",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        }
+      ],
+      "family": "regression",
+      "id": "imu_to_hand_pose",
+      "input": null,
+      "input_short": null,
+      "metric": {
+        "better_baseline": "minimal",
+        "direction": "lower",
+        "key": "mae",
+        "minimal": 0.042,
+        "name": "MAE",
+        "neural_mlp": 0.0426
+      },
+      "modalities": [],
+      "module_summary": null,
+      "output_short": null,
+      "primary_direction": "A",
+      "process_short": null,
+      "research_name": "IMU-to-hand pose reconstruction",
+      "why": "Measures human-motion reconstruction from wearable and motion cues."
+    },
+    {
+      "architecture_family": null,
+      "case_study": null,
+      "current_limit": "Retrieval checks view consistency but does not reconstruct geometry by itself.",
+      "direction_roles": {
+        "B": "direct",
+        "D": "proxy"
+      },
+      "display_name": "Camera-view synchronization retrieval",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        }
+      ],
+      "family": "retrieval",
+      "id": "camera_view_sync_retrieval",
+      "input": null,
+      "input_short": null,
+      "metric": {
+        "better_baseline": "minimal",
+        "direction": "higher",
+        "key": "mrr",
+        "minimal": 0.4943,
+        "name": "MRR",
+        "neural_mlp": 0.2409
+      },
+      "modalities": [],
+      "module_summary": null,
+      "output_short": null,
+      "primary_direction": "B",
+      "process_short": null,
+      "research_name": "Camera-view synchronization retrieval",
+      "why": "Tests whether synchronized multi-view structure is recoverable across camera streams."
+    },
+    {
+      "architecture_family": null,
+      "case_study": null,
+      "current_limit": "Regression is local to the annotated public sample timeline.",
+      "direction_roles": {
+        "C": "diagnostic",
+        "D": "diagnostic"
+      },
+      "display_name": "Time-to-next-transition regression",
+      "evidence_links": [
+        {
+          "href": "data/task_walkthroughs.json",
+          "label": "Task walkthrough"
+        },
+        {
+          "href": "single_episode_explorer.html",
+          "label": "Single-episode explorer"
+        }
+      ],
+      "family": "regression",
+      "id": "time_to_transition",
+      "input": null,
+      "input_short": null,
+      "metric": {
+        "better_baseline": "minimal",
+        "direction": "lower",
+        "key": "mae",
+        "minimal": 10.5374,
+        "name": "MAE frames",
+        "neural_mlp": 10.5545
+      },
+      "modalities": [],
+      "module_summary": null,
+      "output_short": null,
+      "primary_direction": "C",
+      "process_short": null,
+      "research_name": "Time-to-next-transition regression",
+      "why": "Measures temporal boundary awareness as a continuous timing target."
     }
   ],
   "three_foundation_pipelines": {

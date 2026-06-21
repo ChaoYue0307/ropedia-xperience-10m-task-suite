@@ -594,13 +594,13 @@ def main() -> int:
     try:
         collection_description = (
             "Ropedia Xperience-10M: dashboard, artifacts, baseline weights, "
-            "consolidated weights/results, and Qwen3/Cosmos adapters."
+            "consolidated weights/results, Qwen3-Omni v6 LoRA, and Cosmos3-Super/Cosmos3-Nano artifacts."
         )
         collection_notes = {
             space_repo: "Interactive/static dashboard with raw public-sample previews and task-suite analysis.",
             artifact_repo: "Public-safe metrics, predictions, docs, scripts, diagrams, and verified_public result packages.",
             model_repo: "Minimal numpy weights plus aligned neural MLP checkpoints and task-head metrics.",
-            weights_results_repo: "Consolidated baseline weights, Qwen3/Cosmos adapter weights, verified results, and analysis manifest.",
+            weights_results_repo: "Consolidated baseline weights, Qwen3-Omni v6 LoRA, Cosmos3-Super forward-dynamics LoRA, verified results, and analysis manifest.",
             qwen3_lora_repo: "Verified v6 rank64 Qwen3-Omni LoRA adapter for the selected 128-episode diagnostic branch.",
             cosmos3_super_lora_repo: "Verified Cosmos3-Super forward-dynamics LoRA adapter over camera-pose proxy targets.",
         }

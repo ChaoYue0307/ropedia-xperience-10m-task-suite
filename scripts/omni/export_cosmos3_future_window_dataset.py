@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export same-episode future-window pairs for the Cosmos3 world-model branch."""
+"""Export same-episode future-window pairs for the Cosmos3 world-model track."""
 
 from __future__ import annotations
 
@@ -129,7 +129,7 @@ def make_pair(current: dict[str, Any], future: dict[str, Any], horizon: int, ord
             "cosmos3_nano": {
                 "sample_contract": "context video/audio/text/action metadata -> future window target",
                 "target_modalities": ["future_sensor_features", "future_action", "future_contact", "future_transition"],
-                "model_role": "Cosmos3-Nano compatibility and future-window world-model branch",
+                "model_role": "Cosmos3-Nano compatibility and future-window world-model track",
             }
         },
     }

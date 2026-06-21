@@ -1,7 +1,7 @@
 # Additional Development Directions
 
 This note records concrete directions that can grow from Xperience-10M beyond
-the current minimal baselines, Qwen3-Omni LoRA plan, Cosmos/world-model branch,
+the current minimal baselines, Qwen3-Omni LoRA plan, Cosmos/world-model track,
 and long-term Xperience-native pretraining goal. These are project directions,
 not completed benchmark results.
 

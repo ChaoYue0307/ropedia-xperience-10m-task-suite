@@ -1175,7 +1175,7 @@ def build_report() -> dict:
         "checked_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "scope": (
             "Live GitHub Pages, GitHub raw, Hugging Face Space, artifact dataset, "
-            "baseline model mirrors, and the Qwen3/Cosmos3 LoRA adapter repos when "
+            "baseline model mirrors, and the Qwen3-Omni/Cosmos3 LoRA adapter repos when "
             "their upload packages exist locally."
         ),
         "hash_groups": hash_records,

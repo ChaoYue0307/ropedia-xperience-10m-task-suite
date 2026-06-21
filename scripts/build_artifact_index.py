@@ -155,7 +155,7 @@ ARTIFACTS = [
         "path": "OMNI_MODEL_EXTENSION_CONTRACT.md",
         "kind": "scaleup_contract",
         "surface": "repo_hf",
-        "shows": "Defines the shared manifest, episode split, held-out evaluation, packaging, and public-safety rules for Qwen3-Omni, Cosmos-style, and VLA/policy model branches.",
+        "shows": "Defines the shared manifest, episode split, held-out evaluation, packaging, and public-safety rules for Qwen3-Omni, Cosmos3, and VLA/policy model tracks.",
     },
     {
         "id": "omni_backbone_registry_configs",
@@ -523,7 +523,7 @@ ARTIFACTS = [
         "path": "docs/data/unified_task_model_radar.json",
         "kind": "website_data",
         "surface": "website_hf",
-        "shows": "Stores normalized 20-axis radar values, raw task metrics, Qwen3/Cosmos overlay mappings, branch-card caveats, proxy flags, and source artifacts.",
+        "shows": "Stores normalized 20-axis radar values, raw task metrics, Qwen3-Omni/Cosmos3 overlay mappings, method-card caveats, proxy flags, and source artifacts.",
     },
     {
         "id": "single_episode_task_model_radar_json",
@@ -539,7 +539,7 @@ ARTIFACTS = [
         "path": "docs/data/episode128_task_model_radar.json",
         "kind": "website_data",
         "surface": "website_hf",
-        "shows": "Machine-readable split radar for selected 128-episode metadata/raw baselines and verified Qwen3/Cosmos branches, now complete at 140/140 scored rows with proxy notes retained.",
+        "shows": "Machine-readable split radar for selected 128-episode metadata/raw baselines, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano, now complete at 140/140 scored rows with proxy notes retained.",
     },
     {
         "id": "task_method_20_result_matrix_json",
@@ -603,7 +603,7 @@ ARTIFACTS = [
         "path": "docs/assets/charts/unified_task_model_radar.svg",
         "kind": "generated_figure",
         "surface": "website_hf",
-        "shows": "Compares minimal and neural MLP baselines across all 20 tasks, with Qwen3/Cosmos task-aligned model overlays.",
+        "shows": "Compares minimal and neural MLP baselines across all 20 tasks, with Qwen3-Omni and Cosmos3 task-aligned overlays.",
     },
     {
         "id": "single_episode_task_model_radar_chart",
@@ -619,7 +619,7 @@ ARTIFACTS = [
         "path": "docs/assets/charts/episode128_task_model_radar.svg",
         "kind": "generated_figure",
         "surface": "website_hf",
-        "shows": "Separates the selected 128-episode methods: raw-feature simple/NN as complete 20/20 scored polygons and metadata/Qwen/Cosmos as task-aligned overlays.",
+        "shows": "Separates the selected 128-episode methods: raw-feature simple/NN as complete 20/20 scored polygons plus metadata, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano task-aligned overlays.",
     },
     {
         "id": "unified_task_model_radar_builder",
@@ -659,7 +659,7 @@ ARTIFACTS = [
         "path": "results/omni_finetune/model_output_probe_readiness/model_output_probe_readiness.json",
         "kind": "scaleup_status",
         "surface": "repo_hf",
-        "shows": "Checks whether Qwen3/Cosmos branches have train, validation, and test prediction files before extending model overlays to all 20 task contracts.",
+        "shows": "Checks whether Qwen3-Omni and Cosmos3 runs have train, validation, and test prediction files before extending model overlays to all 20 task contracts.",
     },
     {
         "id": "model_output_probe_script",
@@ -675,7 +675,7 @@ ARTIFACTS = [
         "path": "results/omni_finetune/model_output_task_probes_20260616/summary.json",
         "kind": "model_result",
         "surface": "repo_hf",
-        "shows": "Scores task-specific Qwen3/Cosmos overlays only where verified held-out prediction JSON or compact target maps already contain the required targets.",
+        "shows": "Scores task-specific Qwen3-Omni and Cosmos3 overlays only where verified held-out prediction JSON or compact target maps already contain the required targets.",
     },
     {
         "id": "existing_model_output_task_probe_script",
@@ -851,7 +851,7 @@ ARTIFACTS = [
         "path": "PUBLIC_READER_MAP.md",
         "kind": "project_path",
         "surface": "repo_hf",
-        "shows": "Provides the first-pass navigation layer for GitHub, GitHub Pages, Hugging Face mirrors, model-branch repos, evidence layers, and claim boundaries.",
+        "shows": "Provides the first-pass navigation layer for GitHub, GitHub Pages, Hugging Face mirrors, Qwen3-Omni/Cosmos3 repos, evidence lines, and claim boundaries.",
     },
     {
         "id": "public_reader_map_json",

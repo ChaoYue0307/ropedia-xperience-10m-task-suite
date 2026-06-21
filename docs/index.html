@@ -1147,6 +1147,16 @@
       font-weight: 760;
       width: 18%;
     }
+    .qwen-lineage-table td:first-child {
+      width: 8%;
+      min-width: 58px;
+    }
+    .qwen-lineage-table th:nth-child(2),
+    .qwen-lineage-table td:nth-child(2),
+    .qwen-lineage-table th:nth-child(3),
+    .qwen-lineage-table td:nth-child(3) {
+      width: 28%;
+    }
     .line-table a {
       color: var(--cyan);
       font-weight: 760;
@@ -3913,9 +3923,9 @@
           <article class="suite-line-card">
             <small>line 2 / 128 selected episodes</small>
             <h3>128 selected episodes: comparison layer</h3>
-            <p>Seven method branches share the selected-episode surface and the same 20 task axes.</p>
+            <p>Seven methods share the selected-episode surface and the same 20 task axes.</p>
             <div class="line-claim">
-              <div><span>valid claim</span><p>Same-split baseline/model comparison and scale-up planning.</p></div>
+              <div><span>valid claim</span><p>Same-split method comparison and scale-up planning.</p></div>
               <div><span>do not claim</span><p>Proxy cells as direct raw-target measurements.</p></div>
             </div>
             <div class="suite-line-facts">
@@ -3944,7 +3954,7 @@
           </a>
           <a class="hero-path" href="#directions">
             <small>Extend</small>
-            <strong>Train next model branches</strong>
+            <strong>Plan next training tracks</strong>
             <span>Spatial intelligence, human-video world models, VLA, and scale-up plans.</span>
           </a>
         </div>
@@ -4044,7 +4054,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Two evidence lines: 1 episode and 128 episodes.</h2>
-          <p>Read the suite as two lines. Line 1 proves the task lab is inspectable and reproducible. Line 2 compares selected-128 baselines and model branches. Keep the lines separate when interpreting scores.</p>
+          <p>Read the suite as two lines. Line 1 proves the task lab is inspectable and reproducible. Line 2 compares selected-128 metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Keep the lines separate when interpreting scores.</p>
         </div>
         <figure class="line-map-figure">
           <img src="assets/charts/two_evidence_line_map.svg?v=two-line-map-v1" alt="Two evidence-line map showing 1 sample episode, 128 selected episodes, and the combined 180 scored method-task records">
@@ -4121,69 +4131,62 @@
           </tbody>
         </table>
         <p class="table-note">Cosmos3-Super Forward-Dynamics LoRA is published as a separate fine-tuned adapter with weights/results; it is not counted as a 20-task matrix method row.</p>
-        <table class="line-table" aria-label="Qwen3-Omni run version ladder">
+        <table class="line-table qwen-lineage-table" aria-label="Qwen3-Omni run version ladder">
           <thead>
             <tr>
               <th>Qwen run</th>
-              <th>What changed</th>
-              <th>Eval samples</th>
-              <th>JSON validity</th>
-              <th>Contact acc.</th>
-              <th>Public role</th>
+              <th>Purpose</th>
+              <th>Main change</th>
+              <th>Eval signal</th>
+              <th>Use now</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>v1</td>
-              <td>Selected-128 validation-aware LoRA baseline.</td>
-              <td>448</td>
-              <td>0.8750</td>
-              <td>0.6451</td>
-              <td>Superseded lineage evidence.</td>
+              <td>Prove the selected-128 LoRA/eval/package loop.</td>
+              <td>First verified 96/16/16 selected-episode Qwen3-Omni LoRA run.</td>
+              <td>448 eval; JSON 0.8750; contact 0.6451.</td>
+              <td>Lineage only.</td>
             </tr>
             <tr>
               <td>v2</td>
-              <td>Structured-JSON reuse full-8-GPU LoRA.</td>
-              <td>448</td>
-              <td>0.9978</td>
-              <td>0.7188</td>
-              <td>Superseded lineage evidence.</td>
+              <td>Make answers schema-checked.</td>
+              <td>Structured-JSON contract with full-8-GPU LoRA on the same split.</td>
+              <td>448 eval; JSON 0.9978; contact 0.7188.</td>
+              <td>Structured-output ablation.</td>
             </tr>
             <tr>
               <td>v3</td>
-              <td>Strict-label prompt/eval over the v2 adapter.</td>
-              <td>448</td>
-              <td>1.0000</td>
-              <td>0.7210</td>
-              <td>Prompt/eval lineage evidence.</td>
+              <td>Separate prompt/eval effects from training.</td>
+              <td>Strict-label prompt/eval over the v2 adapter; no new adapter training.</td>
+              <td>448 eval; JSON 1.0000; contact 0.7210.</td>
+              <td>Prompt/eval ablation.</td>
             </tr>
             <tr>
               <td>v4</td>
-              <td>Four-epoch structured-JSON LoRA.</td>
-              <td>448</td>
-              <td>1.0000</td>
-              <td>0.7299</td>
-              <td>Superseded metric-tradeoff run.</td>
+              <td>Test longer structured-JSON LoRA training.</td>
+              <td>New four-epoch full-8-GPU adapter on the same selected split.</td>
+              <td>448 eval; JSON 1.0000; contact 0.7299.</td>
+              <td>Overfit/metric-tradeoff evidence.</td>
             </tr>
             <tr>
               <td>v5</td>
-              <td>Multiscale cap96 LoRA.</td>
-              <td>4,032</td>
-              <td>1.0000</td>
-              <td>0.7865</td>
-              <td>Pinned prior release and comparison baseline.</td>
+              <td>Move to denser multiscale evaluation.</td>
+              <td>Multiscale cap96 export with 4,032 held-out predictions.</td>
+              <td>4,032 eval; JSON 1.0000; contact 0.7865.</td>
+              <td>Pinned prior release; stronger on several non-contact metrics.</td>
             </tr>
             <tr>
               <td>v6</td>
-              <td>Rank64/lr5e-5 multiscale LoRA plus task-specific probes.</td>
-              <td>4,032</td>
-              <td>0.9990</td>
-              <td>0.8177</td>
+              <td>Publish the current Qwen 20-task row.</td>
+              <td>Rank64/lr5e-5 multiscale LoRA plus verified task-specific probes.</td>
+              <td>4,032 eval; JSON 0.9990; contact 0.8177.</td>
               <td>Current public 20-task Qwen3-Omni row.</td>
             </tr>
           </tbody>
         </table>
-        <p class="table-note">Qwen v1-v6 are run-lineage labels, not the project-level result layers. The public matrix row is Qwen3-Omni v6 LoRA; v5 stays pinned as the prior release. Full details: <a href="data/qwen3_omni_run_lineage.json">qwen3_omni_run_lineage.json</a> and <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/QWEN3_OMNI_RUN_LINEAGE.md">QWEN3_OMNI_RUN_LINEAGE.md</a>.</p>
+        <p class="table-note">Qwen v1-v6 are run-lineage labels inside the selected-128 evidence line, not project-level result lines. Use v6 for the public 20-task Qwen3-Omni row; keep v5 as the pinned prior multiscale comparator; read v1-v4 as pipeline-hardening and ablation evidence. Full details: <a href="data/qwen3_omni_run_lineage.json">qwen3_omni_run_lineage.json</a> and <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/QWEN3_OMNI_RUN_LINEAGE.md">QWEN3_OMNI_RUN_LINEAGE.md</a>.</p>
         <div class="reader-journey" aria-label="Recommended reader journeys">
           <article class="reader-step">
             <small>01 understand</small>
@@ -4205,7 +4208,7 @@
           </article>
           <article class="reader-step">
             <small>04 extend</small>
-            <strong>Choose the next model branch</strong>
+            <strong>Choose the next model track</strong>
             <p>Use directions and scale-up resources for spatial, world-model, VLA, Qwen3-Omni, and Cosmos3 follow-up work.</p>
             <a href="#directions">Open directions</a>
           </article>
@@ -4251,7 +4254,7 @@
             <article class="brief-card">
               <small>results</small>
               <strong>Compare methods cleanly</strong>
-              <p>Single-episode baselines, 128-episode aligned baselines, Qwen3-Omni v6 LoRA, and Cosmos3-Super/Nano branches stay separated by evidence type.</p>
+              <p>Single-episode baselines, 128-episode aligned baselines, Qwen3-Omni v6 LoRA, and Cosmos3-Super/Nano diagnostics stay separated by evidence type.</p>
               <div class="reading-links">
                 <a href="#takeaways">takeaways</a>
                 <a href="data/unified_task_model_radar.json">radar data</a>
@@ -4285,7 +4288,7 @@
             <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts"><strong>HF artifacts</strong><span>Public-safe derived reports, metrics, website JSON, and result packages.</span></a>
             <a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines"><strong>HF baselines</strong><span>Compact baseline weights, figures, metrics, and mirrored task artifacts.</span></a>
             <a href="https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results"><strong>HF weights + results</strong><span>Consolidated baseline weights, adapters, result summaries, analysis, and manifest.</span></a>
-            <a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite"><strong>HF collection</strong><span>Grouped project surfaces, baseline repos, and verified model-branch repos.</span></a>
+            <a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite"><strong>HF collection</strong><span>Grouped project surfaces, baseline repos, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano repos.</span></a>
           </div>
           <div class="brief-actions">
             <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PUBLIC_READER_MAP.md">Open full reader map</a>
@@ -4335,7 +4338,7 @@
             </article>
             <article class="brief-card">
               <strong>Scale-up readiness</strong>
-              <p>Connects the same data contract to 128-episode baselines, a no-new-episode enhancement pack, Qwen3-Omni LoRA, Cosmos-style world modeling, policy-model branches, and the later Xperience-native pretraining goal.</p>
+              <p>Connects the same data contract to 128-episode baselines, a no-new-episode enhancement pack, Qwen3-Omni LoRA, Cosmos-style world modeling, policy/VLA tracks, and the later Xperience-native pretraining goal.</p>
             </article>
           </div>
           <div class="brief-actions">
@@ -4359,8 +4362,8 @@
           </article>
           <article class="split-radar-card">
             <h3>128-Episode 20-Task Radar</h3>
-            <p>Metadata, raw-feature, Qwen3-Omni, and Cosmos3 branches on the aligned 128-episode surface, with all 140 rows scored and proxy/evidence notes kept explicit.</p>
-            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="128-episode 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 branches with explicit score counts">
+            <p>Metadata, raw-feature, Qwen3-Omni, and Cosmos3 methods on the aligned 128-episode surface, with all 140 rows scored and proxy/evidence notes kept explicit.</p>
+            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="128-episode 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
             <div class="split-radar-links">
               <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
               <a href="data/episode128_task_model_radar.json">Open JSON</a>
@@ -4470,7 +4473,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Research roadmap.</h2>
-          <p>The project path moves from the current public-sample task lab to the latest verified Qwen3-Omni diagnostic branch, same-split 128-episode baseline alignment, a no-new-episode enhancement pack, action/subtask error analysis, robustness runs, world/policy branches, and the future Xperience Embodied Foundation Model pretraining goal.</p>
+          <p>The project path moves from the current public-sample task lab to the latest verified Qwen3-Omni diagnostic run, same-split 128-episode baseline alignment, a no-new-episode enhancement pack, action/subtask error analysis, robustness runs, world/policy tracks, and the future Xperience Embodied Foundation Model pretraining goal.</p>
         </div>
         <div class="roadmap-grid" aria-label="Research roadmap stages">
           <article class="roadmap-card" data-status="implemented">
@@ -4492,7 +4495,7 @@
             </div>
           </article>
           <article class="roadmap-card" data-status="verified_latest_branch">
-            <span class="roadmap-status">verified latest branch</span>
+            <span class="roadmap-status">verified latest run</span>
             <h3>Qwen3-Omni LoRA Latest Diagnostic Branch</h3>
             <p>Train lightweight adapters on selected prepared episodes and evaluate on held-out episodes with committed predictions, metrics, and run reports.</p>
             <div class="roadmap-meta">
@@ -4585,7 +4588,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Additional development directions.</h2>
-          <p>Beyond the current task heads, Qwen3-Omni fine-tuning path, Cosmos/world-model branch, and future native pretraining goal, Xperience-10M can support three foundation pipeline tracks plus several concrete research-development tracks.</p>
+          <p>Beyond the current task heads, Qwen3-Omni fine-tuning path, Cosmos/world-model track, and future native pretraining goal, Xperience-10M can support three foundation pipeline tracks plus several concrete research-development tracks.</p>
         </div>
         <div class="foundation-pipeline-grid" aria-label="Three high-resolution foundation direction slide diagrams">
           <article class="foundation-pipeline-card">
@@ -4631,7 +4634,7 @@
           <article class="artifact"><h3>Multimodal representation learning</h3><p>Train contrastive and masked-prediction encoders over synchronized video, audio, depth, pose, mocap, IMU, and language windows.</p><a href="data/additional_development_directions.json">JSON plan</a></article>
           <article class="artifact"><h3>Skill and procedure graphs</h3><p>Mine action steps, transitions, preconditions, effects, and temporal graphs that connect egocentric perception to planning.</p><a href="data/research_directions.json">current task map</a></article>
           <article class="artifact"><h3>Human-object affordances</h3><p>Add contact, reachable-object, tool-use, and next-affordance tasks using hands, mocap, objects, contacts, video, and language.</p><a href="data/task_walkthroughs.json">task walkthroughs</a></article>
-          <article class="artifact"><h3>3D/4D scene and object memory</h3><p>Fuse depth, pose/SLAM, multiview video, and object cues into persistent scene/object maps for spatial reasoning and object permanence.</p><a href="data/foundation_model_plan.json">model branches</a></article>
+          <article class="artifact"><h3>3D/4D scene and object memory</h3><p>Fuse depth, pose/SLAM, multiview video, and object cues into persistent scene/object maps for spatial reasoning and object permanence.</p><a href="data/foundation_model_plan.json">model tracks</a></article>
           <article class="artifact"><h3>Quality and sync diagnostics</h3><p>Track timestamp drift, missing streams, calibration consistency, corrupted files, and degraded-mode manifests before large training runs.</p><a href="data/evidence_contract.json">evidence contract</a></article>
           <article class="artifact"><h3>Policy and simulation transfer</h3><p>Convert mocap, hand trajectories, contacts, and object states into action tokens, robot-compatible targets, and imitation-learning examples.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">foundation plan</a></article>
         </div>
@@ -4650,10 +4653,10 @@
           <article class="artifact"><h3>Metric contract</h3><p>All 20 tasks list input, target, primary metric, baseline score, and source artifact path in the unified suite file.</p><a href="data/task_suite_20.json">task_suite_20.json</a></article>
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target-side signals, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
           <article class="artifact"><h3>Audio ablation</h3><p>Audio and no-audio variants are evaluated across the original task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
-          <article class="artifact"><h3>Foundation branch selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 becomes the world-model branch with a camera-pose proxy forward-dynamics contract ready for trainer work, policy models wait for robot-compatible action targets, and Xperience-native pretraining remains a later full-corpus goal.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
-          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. The selected multi-episode Qwen3-Omni final diagnostic result is verified and meets the JSON-validity target; Cosmos3-Nano has a verified future-window compatibility package; and Cosmos3-Super has a verified base-weight JSON-task evaluation plus a fine-tuned forward-dynamics LoRA branch. The next stage is action/subtask error analysis, stronger model-quality runs, and policy-target conversion.</p><a href="data/omni_model_comparison.json">result comparison</a></article>
+          <article class="artifact"><h3>Foundation track selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 is the world-model track with a camera-pose proxy forward-dynamics contract ready for trainer work, policy models wait for robot-compatible action targets, and Xperience-native pretraining remains a later full-corpus goal.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
+          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. The selected multi-episode Qwen3-Omni final diagnostic result is verified and meets the JSON-validity target; Cosmos3-Nano has a verified future-window compatibility package; and Cosmos3-Super has a verified base-weight JSON-task evaluation plus a fine-tuned forward-dynamics LoRA artifact. The next stage is action/subtask error analysis, stronger model-quality runs, and policy-target conversion.</p><a href="data/omni_model_comparison.json">result comparison</a></article>
           <article class="artifact"><h3>128-Episode Task Suite Enhancement Pack</h3><p>Before adding episodes, the suite should try `multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets, label-normalized scoring, and compact raw-feature shards for unsupported tasks.</p><a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a></article>
-          <article class="artifact"><h3>Scale-up requirement</h3><p>Future Omni, Cosmos, and policy branches use the same episode split discipline, training metadata, held-out predictions, metrics, run report, and public-safe package gate.</p><a href="data/foundation_model_plan.json">scale-up status</a></article>
+          <article class="artifact"><h3>Scale-up requirement</h3><p>Future Omni, Cosmos, and policy tracks use the same episode split discipline, training metadata, held-out predictions, metrics, run report, and public-safe package gate.</p><a href="data/foundation_model_plan.json">scale-up status</a></article>
         </div>
       </div>
     </section>
@@ -4705,7 +4708,7 @@
           <article class="evidence-card">
             <span class="status-pill">current plan</span>
             <h3>Foundation backbones are separated by role</h3>
-            <p>Qwen3-Omni stays first for held-out LoRA; Cosmos 3 is the world-model branch with camera-pose proxy forward-dynamics targets ready for trainer work; OpenVLA/openpi/GR00T are policy candidates after robot-compatible action conversion; Xperience-native pretraining is the later full-corpus goal.</p>
+            <p>Qwen3-Omni stays first for held-out LoRA; Cosmos 3 is the world-model track with camera-pose proxy forward-dynamics targets ready for trainer work; OpenVLA/openpi/GR00T are policy candidates after robot-compatible action conversion; Xperience-native pretraining is the later full-corpus goal.</p>
             <div class="evidence-links">
               <a href="data/foundation_model_plan.json">foundation model plan</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">plan doc</a>
@@ -4714,7 +4717,7 @@
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified diagnostic</span>
-            <h3>Qwen3-Omni and Cosmos3 branches</h3>
+            <h3>Qwen3-Omni and Cosmos3 series</h3>
             <p>The selected 96/16/16 episode split now has a verified Qwen3-Omni v6 package with 4,032 held-out test predictions and 99.90% JSON validity. Cosmos3-Nano has 378 held-out future-window predictions, Cosmos3-Super Reasoner has 448 held-out base-weight JSON-task predictions, and Cosmos3-Super Forward-Dynamics LoRA has 448 held-out loss records.</p>
             <div class="evidence-links">
               <a href="data/omni_model_comparison.json">result comparison</a>
@@ -4891,9 +4894,9 @@
         </div>
         <div class="artifact-grid">
           <article class="artifact primary-artifact"><div><h3>Official dataset</h3><p>Xperience-10M is a gated large-scale egocentric multimodal dataset for embodied AI, robotics, spatial intelligence, and world modeling.</p></div><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official HF dataset</a></article>
-          <article class="artifact"><h3>Public sample</h3><p>The current unified 20-task suite is built from one public sample episode, not from the entire gated dataset.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
+          <article class="artifact"><h3>Line 1 public sample</h3><p>The one-episode line builds the inspectable 20-task lab. It is not evidence of multi-episode generalization.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
           <article class="artifact"><h3>Modalities</h3><p>The sample exposes synchronized video, audio, depth, pose/SLAM, motion capture, inertial signals, calibration, and language annotations.</p><a href="data/modality_atlas.json">modality atlas</a></article>
-          <article class="artifact"><h3>Multi-episode pilot</h3><p>The selected 128-episode Qwen3-Omni LoRA v6 diagnostic branch is verified with 4,032 held-out test predictions and 99.90% JSON validity. Action/subtask metrics are still weak, so this remains a baseline for error analysis.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a><a href="data/qwen3_v5_v6_comparison.json">v5/v6 comparison</a></article>
+          <article class="artifact"><h3>Multi-episode pilot</h3><p>The selected 128-episode Qwen3-Omni LoRA v6 diagnostic run is verified with 4,032 held-out test predictions and 99.90% JSON validity. Action/subtask metrics are still weak, so this remains a baseline for error analysis.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a><a href="data/qwen3_v5_v6_comparison.json">v5/v6 comparison</a></article>
           <article class="artifact"><h3>Raw sample browser</h3><p>The Data tab now exposes the official public sample files directly, including playable MP4 video streams and the audio track embedded in fisheye_cam0.mp4.</p><a href="#raw-sample">open raw browser</a><a href="data/raw_sample_files.json">raw manifest</a></article>
           <article class="artifact"><h3>Data boundary</h3><p>Raw MP4, HDF5, RRD files are streamed from the official public sample source when opened here; private gated data and full Qwen weights are not redistributed in this project.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a></article>
           <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, plus direct links to the official raw sample files.</p><a href="data/modality_atlas.json">modality atlas</a></article>
@@ -5020,7 +5023,7 @@
           <article class="split-radar-card">
             <h3>128-Episode 20-Task Radar</h3>
             <p>Seven aligned 128-episode methods cover all 20 axes: metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano. Proxy axes stay labeled in the JSON.</p>
-            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="128-episode 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 branches with explicit score counts">
+            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="128-episode 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
             <div class="split-radar-links">
               <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
               <a href="data/episode128_task_model_radar.json">Open JSON</a>
@@ -5124,7 +5127,7 @@
           <article class="result-reading-step">
             <span>02</span>
             <strong>Open the radar</strong>
-            <p>Single-episode radar shows Minimal vs Neural MLP. 128 radar shows baseline and model branches.</p>
+            <p>Single-episode radar shows Minimal vs Neural MLP. The 128-episode radar shows metadata/raw baselines, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano.</p>
           </article>
           <article class="result-reading-step">
             <span>03</span>
@@ -5676,7 +5679,7 @@
               <p>Use these files to navigate the whole project, open the published mirrors, or reproduce the public-sample pipeline.</p>
             </div>
             <div class="artifact-grid">
-              <article class="artifact primary-artifact"><div><h3>Public reader map</h3><p>Single navigation layer for GitHub, GitHub Pages, HF Space, artifact dataset, baseline model repo, model-branch repos, and public claim boundaries.</p></div><a href="data/public_reader_map.json">reader map</a></article>
+              <article class="artifact primary-artifact"><div><h3>Public reader map</h3><p>Single navigation layer for GitHub, GitHub Pages, HF Space, artifact dataset, baseline model repo, Qwen3-Omni/Cosmos3 repos, and public claim boundaries.</p></div><a href="data/public_reader_map.json">reader map</a></article>
               <article class="artifact primary-artifact"><div><h3>Artifact guide</h3><p>Human-readable map from project scope to data contract, task evidence, platform mirrors, and scale-up status.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ARTIFACT_GUIDE.md">artifact guide</a></article>
               <article class="artifact"><h3>Reproduction scripts</h3><p>Training, visualization, taxonomy, walkthrough, validator, and omni-readiness scripts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/scripts">scripts/</a></article>
               <article class="artifact"><h3>Hugging Face Space</h3><p>The dashboard packaged as a public static Space.</p><a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a></article>
@@ -5696,13 +5699,13 @@
               <p>The multi-episode Qwen3-Omni path is documented, scripted, and verified as a validation-monitored diagnostic held-out pilot. Stronger model-quality metrics require structured-output and error-analysis improvements.</p>
             </div>
             <div class="artifact-grid">
-              <article class="artifact primary-artifact"><div><h3>Model-family comparison</h3><p>Compares the three result layers and also groups 1-episode and 128-episode entries by model family: task heads, Qwen3-Omni LoRA, Cosmos3-Nano, and Cosmos3-Super.</p></div><a href="data/omni_model_comparison.json">result comparison</a></article>
+              <article class="artifact primary-artifact"><div><h3>Two-line model comparison</h3><p>Groups Line 1 task-head baselines and Line 2 selected-128 methods: metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Nano Future Window, and Cosmos3-Super Reasoner.</p></div><a href="data/omni_model_comparison.json">result comparison</a></article>
               <article class="artifact primary-artifact"><div><h3>128-episode source + features</h3><p>Maps every selected official Xperience-10M episode id to its gated source tree and the public-safe processed features: Qwen v6 multiscale windows, dense multiscale rows, and metadata matrices.</p></div><a href="data/xperience10m_128_episode_feature_index.json">source/feature index</a></article>
               <article class="artifact"><h3>128-Episode Task Suite Enhancement Pack</h3><p>No-new-episode plan for denser supervision: `multiscale_20s10_40s20_80s40`, hierarchical action/subtask labels, stronger scoring slices, and raw-feature shard priorities.</p><a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a></article>
               <article class="artifact"><h3>Foundation-model plan</h3><p>Backbone selection matrix covering Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, SmolVLA-style policy candidates, and the future Xperience-native pretraining goal.</p><a href="data/foundation_model_plan.json">foundation model plan</a></article>
               <article class="artifact"><h3>Multi-episode data access</h3><p>Public data-access path, selected 128-episode pilot plan, and preparation requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">data access</a></article>
               <article class="artifact"><h3>Qwen3-Omni LoRA group</h3><p>Separates the 1-episode sensor-adapter smoke test from Qwen run v1-v6. v6 is the current 20-task matrix row, while v5 remains the pinned prior release.</p><a href="data/qwen3_omni_run_lineage.json">Qwen v1-v6 lineage</a><a href="data/omni_model_comparison.json">Qwen group</a></article>
-              <article class="artifact"><h3>Cosmos3 groups</h3><p>Shows the verified Nano future-window compatibility package, the Super base-weight Reasoner JSON-task evaluation, and the Super fine-tuned forward-dynamics LoRA branch with separate loss metrics.</p><a href="data/omni_model_comparison.json">Cosmos groups</a></article>
+              <article class="artifact"><h3>Cosmos3 groups</h3><p>Shows the verified Nano future-window compatibility package, the Super base-weight Reasoner JSON-task evaluation, and the Super fine-tuned forward-dynamics LoRA artifact with separate loss metrics.</p><a href="data/omni_model_comparison.json">Cosmos groups</a></article>
               <article class="artifact"><h3>Scale-up requirement</h3><p>Future runs need validation tracking, held-out predictions, quality-target reporting, and the same public-safe package gate.</p><a href="data/foundation_model_plan.json">training requirements</a></article>
               <article class="artifact"><h3>Xperience-native pretraining</h3><p>Future plan for a domain-specific embodied foundation model trained from scratch over full-corpus video, audio, geometry, motion, inertial, and language streams.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a></article>
             </div>
@@ -5721,7 +5724,7 @@
               <article class="artifact"><h3>Dataset notes</h3><p>Official dataset links, public sample source, modalities, access boundary, and current project subset.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">dataset notes</a></article>
               <article class="artifact"><h3>Reproducibility</h3><p>Commands and expected outputs for rebuilding the public-sample task suite and visual artifacts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">reproduce</a></article>
               <article class="artifact"><h3>Qwen3-Omni status</h3><p>Data requirements and evaluation boundary for the selected multi-episode LoRA pilot.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">training status</a></article>
-              <article class="artifact"><h3>Foundation-model plan</h3><p>Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, SmolVLA-style branches, and the Xperience-native pretraining goal by role.</p><a href="data/foundation_model_plan.json">model plan</a></article>
+              <article class="artifact"><h3>Foundation-model plan</h3><p>Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, SmolVLA-style tracks, and the Xperience-native pretraining goal by role.</p><a href="data/foundation_model_plan.json">model plan</a></article>
               <article class="artifact"><h3>Hub artifacts</h3><p>Derived CSV/JSON/Markdown/figure artifacts without redistributing raw Xperience-10M data.</p><a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">artifact dataset</a></article>
               <article class="artifact"><h3>Baseline models</h3><p>Lightweight minimal and neural task-head model files for the task contracts.</p><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">model repo</a></article>
             </div>
@@ -5733,7 +5736,7 @@
     <section id="omni-scale-up" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Qwen3-Omni diagnostic branch is verified.</h2>
+          <h2>Qwen3-Omni diagnostic run is verified.</h2>
           <p>The selected pilot uses 128 source-balanced episodes across 128 different session UUIDs. The latest v6 held-out package is verified, and its weak metrics define the next structured-output and error-analysis pass.</p>
         </div>
         <div class="artifact-grid">
@@ -5741,7 +5744,7 @@
           <article class="artifact"><h3>Transfer</h3><p>Download raw episodes only from official gated sources, exclude visualization.rrd, validate files, then stage them for training.</p></article>
           <article class="artifact"><h3>Current LoRA artifact</h3><p>The current Qwen3-Omni LoRA artifact is the verified v6 selected 128-episode diagnostic adapter. The v5 row remains pinned as the prior release, and the 1-episode Qwen entry is only a sensor-adapter smoke test.</p><a href="data/omni_model_comparison.json">model groups</a></article>
           <article class="artifact"><h3>128-Episode Task Suite Enhancement Pack</h3><p>The next suite push does not need more episodes first: use `multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets, and raw-feature shards while keeping the held-out split fixed.</p><a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a></article>
-          <article class="artifact"><h3>Backbone branches</h3><p>Qwen3-Omni uses a separate LoRA model repo; Cosmos3-Nano remains a compatibility package; Cosmos3-Super now has a verified forward-dynamics LoRA branch with weights in a dedicated model repo.</p><a href="https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep">Cosmos3-Super weights</a></article>
+          <article class="artifact"><h3>Backbone tracks</h3><p>Qwen3-Omni uses a separate LoRA model repo; Cosmos3-Nano remains a compatibility package; Cosmos3-Super now has a verified forward-dynamics LoRA artifact with weights in a dedicated model repo.</p><a href="https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep">Cosmos3-Super weights</a></article>
           <article class="artifact"><h3>Native foundation model</h3><p>The long-term goal is a full-corpus Xperience Embodied Foundation Model trained on synchronized perception, geometry, motion, inertial, audio, and language streams after smaller scaling stages validate the approach.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a></article>
         </div>
       </div>
@@ -5758,7 +5761,7 @@
           <article class="artifact"><h3>Reproducibility matrix</h3><p>Machine-readable command matrix covering sample download, baselines, the unified 20-task suite, figures, and validation.</p><a href="data/reproducibility_matrix.json">reproducibility matrix</a></article>
           <article class="artifact"><h3>Exact-match reproduction record</h3><p>The last metric rebuild reproduced the public-sample outputs from a fresh cache and matched the committed metrics.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">reproduction audit</a></article>
           <article class="artifact"><h3>Project dashboard</h3><p>The website organizes the dataset sample, tasks, methods, results, directions, and scale-up path in one tabbed reader flow.</p><a href="#artifacts">project materials</a></article>
-          <article class="artifact"><h3>Multi-episode pilot status</h3><p>The comparison JSON now supports both the three-version reading and model-family grouping, with Qwen3 v5/v6 detail kept as a separate machine-readable audit.</p><a href="data/omni_model_comparison.json">comparison</a><a href="data/qwen3_v5_v6_comparison.json">Qwen v5/v6</a></article>
+          <article class="artifact"><h3>Line 2 model status</h3><p>The comparison JSON groups selected-128 baselines, Qwen3-Omni v6 LoRA, Cosmos3-Nano Future Window, and Cosmos3-Super Reasoner. Qwen v5/v6 detail stays in a separate lineage audit.</p><a href="data/omni_model_comparison.json">comparison</a><a href="data/qwen3_v5_v6_comparison.json">Qwen v5/v6</a></article>
         </div>
         <p class="repro-note">Minimal path: install the toolkit dependencies, download the official sample, run the task suite with neural heads, regenerate tasks 13-20, build the unified 20-task index, regenerate visualizations, then rebuild the supporting project reports.</p>
         <pre class="code-panel"><button type="button" data-copy="setup">Copy</button><code id="setup">git clone https://github.com/Ropedia/HOMIE-toolkit.git
@@ -5796,7 +5799,7 @@ python scripts/validate_publication_package.py</code></pre>
 
   <footer>
     <div class="wrap">
-      Built as an embodied-AI learning lab with verified held-out diagnostic branches and a next stage focused on stronger action/subtask quality.
+      Built as an embodied-AI learning lab with verified held-out diagnostic runs and a next stage focused on stronger action/subtask quality.
       <span class="footer-meta">README translation metadata remains available at <a href="data/language_versions.json">language_versions.json</a>; use the header selector to translate this website in place.</span>
     </div>
   </footer>
@@ -6087,7 +6090,7 @@ python scripts/validate_publication_package.py</code></pre>
       tasks: "Best for task-by-task input, output, and metric cards.",
       pipeline: "Best for understanding how raw episode data becomes features and results.",
       protocol: "Best for splits, leakage controls, metrics, and evaluation rules.",
-      architectures: "Best for how task heads and model branches are organized.",
+      architectures: "Best for how task heads and model tracks are organized.",
       features: "Best for modality and feature provenance.",
       takeaways: "Best for the fastest read on what the current metrics mean.",
       models: "Best for minimal baseline evidence.",
@@ -6097,7 +6100,7 @@ python scripts/validate_publication_package.py</code></pre>
       diagnostics: "Best for charts and error-analysis evidence.",
       artifacts: "Best for finding files, mirrors, weights, scripts, and checks.",
       evidence: "Best for current experiment status and milestones.",
-      "omni-scale-up": "Best for Qwen3-Omni and Cosmos3 model-branch status.",
+      "omni-scale-up": "Best for Qwen3-Omni and Cosmos3 status.",
       run: "Best for reproduction commands."
     };
     const sectionTabMap = Object.fromEntries(tabSections.map((section) => [section.id, section.dataset.projectTab]));

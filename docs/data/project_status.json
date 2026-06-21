@@ -2,7 +2,7 @@
   "title": "Ropedia Xperience-10M Task Suite Project Status",
   "version": "2026-06-20",
   "decision": "public_sample_pipeline_verified_128_enhancement_qwen3_v6_cosmos_comparison",
-  "research_positioning": "A research-engineering study that makes one public Xperience-10M sample episode inspectable, defines embodied-AI tasks over synchronized modalities, records baseline behavior, aligns simple/NN baselines to the selected 128-episode split, compares verified Qwen3-Omni and Cosmos3 branch packages as early cross-episode diagnostics, and now records a no-new-episode enhancement pack for pushing the current 128-episode suite harder.",
+  "research_positioning": "A research-engineering study that makes one public Xperience-10M sample episode inspectable, defines embodied-AI tasks over synchronized modalities, records baseline behavior, aligns simple/NN baselines to the selected 128-episode split, compares verified Qwen3-Omni and Cosmos3 packages as early cross-episode diagnostics, and now records a no-new-episode enhancement pack for pushing the current 128-episode suite harder.",
   "scope_boundary": {
     "validated_episode_count": 1,
     "aligned_frames": 5821,
@@ -145,7 +145,7 @@
         "RESEARCH_ROADMAP.md",
         "docs/data/research_roadmap.json"
       ],
-      "readout": "The roadmap connects public-sample task development to the final verified Qwen3-Omni diagnostic result, same-split baseline alignment, the no-new-episode 128-suite enhancement pack, action/subtask error analysis, robustness runs, world/policy branches, and the future Xperience-native pretraining goal."
+      "readout": "The roadmap connects public-sample task development to the final verified Qwen3-Omni diagnostic result, same-split baseline alignment, the no-new-episode 128-suite enhancement pack, action/subtask error analysis, robustness runs, world/policy tracks, and the future Xperience-native pretraining goal."
     },
     {
       "area": "128-episode task-suite enhancement pack",
@@ -156,7 +156,7 @@
         "results/omni_finetune/task_suite_enhancement_128_v1_20260608/enhancement_plan.json",
         "scripts/omni/build_task_suite_enhancement_128.py"
       ],
-      "readout": "The current 3,808-window selected split can be stressed without more episodes by exporting denser and multiscale windows. The recommended next export is multiscale_20s10_40s20_80s40, estimated at 106,095 windows from observed frame spans; the pack also defines hierarchical action/subtask targets, raw-feature shard priorities for unsupported tasks, and Qwen/Cosmos follow-up run cards."
+      "readout": "The current 3,808-window selected split can be stressed without more episodes by exporting denser and multiscale windows. The recommended next export is multiscale_20s10_40s20_80s40, estimated at 106,095 windows from observed frame spans; the pack also defines hierarchical action/subtask targets, raw-feature shard priorities for unsupported tasks, and Qwen3-Omni/Cosmos3 follow-up run cards."
     },
     {
       "area": "Foundation-model plan",
@@ -176,7 +176,7 @@
         "scripts/omni/backbone_registry.py",
         "scripts/omni/smoke_test_backbone_packaging.py"
       ],
-      "readout": "Future Qwen, Cosmos-style, and VLA/policy branches must keep the same episode split discipline, held-out metrics, validation gate, public-safe package contract, and explicit forbidden-artifact policy before reporting results."
+      "readout": "Future Qwen3-Omni, Cosmos3-style, and VLA/policy tracks must keep the same episode split discipline, held-out metrics, validation gate, public-safe package contract, and explicit forbidden-artifact policy before reporting results."
     },
     {
       "area": "Xperience Embodied Foundation Model",
@@ -253,7 +253,7 @@
         "results/omni_finetune/OMNI_MODEL_COMPARISON.md",
         "scripts/omni/build_omni_model_comparison.py"
       ],
-      "readout": "The public comparison now has two views: the three result layers and a model-family grouping. The model grouping pairs 1-episode and 128-episode entries for task-head baselines, separates Qwen3-Omni sensor-adapter smoke from 128-episode LoRA diagnostics, separates Cosmos3-Nano future-window compatibility from Cosmos3-Super base-weight Reasoner evaluation, and adds Cosmos3-Super Forward-Dynamics LoRA as a loss-based fine-tuned adapter branch."
+      "readout": "The public comparison now has two evidence lines plus a model-family grouping. The model grouping pairs 1-episode and 128-episode entries for task-head baselines, separates Qwen3-Omni sensor-adapter smoke from 128-episode LoRA diagnostics, separates Cosmos3-Nano future-window compatibility from Cosmos3-Super base-weight Reasoner evaluation, and adds Cosmos3-Super Forward-Dynamics LoRA as a loss-based fine-tuned adapter artifact."
     },
     {
       "area": "Qwen3-Omni fine-tuning",
@@ -271,7 +271,7 @@
       "readout": "The selected 96/16/16 episode split now has a current v6 rank64/lr5e-5 public-safe held-out package with 34,269 exported windows, 4,032 test predictions, validation/audit summaries, and a public LoRA adapter repo. JSON validity is 99.90%, meeting the 98% target; transition accuracy is 98.98%, contact accuracy is 81.77%, object micro-F1 is 30.65%, next-action accuracy is 4.31%, and action/subtask metrics remain weak. v6 improves action macro-F1 and contact accuracy versus v5, but v5 remains stronger on JSON validity, subtask, next-action, transition, and object metrics."
     },
     {
-      "area": "Cosmos3-Nano future-window branch",
+      "area": "Cosmos3-Nano future-window package",
       "status": "verified_compatibility_result",
       "evidence": [
         "configs/omni_backbones/cosmos_world_model.json",
@@ -279,10 +279,10 @@
         "scripts/omni/eval_cosmos3_future_window_retrieval.py",
         "results/omni_finetune/verified_public/xperience10m_cosmos3_nano_128ep_future_window_h5_compat_adapter_eval_test_full/verified_result_summary.json"
       ],
-      "readout": "The Cosmos3-Nano branch now has a public-safe verified future-window compatibility package with 3,213 future-window samples, 378 held-out test predictions, future retrieval MRR 0.0221, temporal consistency 0.0952, transition accuracy 0.9683, and contact accuracy 0.7434. It is a compatibility adapter result, not a full Cosmos diffusion-weight fine-tune."
+      "readout": "The Cosmos3-Nano package now has a public-safe verified future-window compatibility result with 3,213 future-window samples, 378 held-out test predictions, future retrieval MRR 0.0221, temporal consistency 0.0952, transition accuracy 0.9683, and contact accuracy 0.7434. It is a compatibility adapter result, not a full Cosmos diffusion-weight fine-tune."
     },
     {
-      "area": "Cosmos3-Super Reasoner branch",
+      "area": "Cosmos3-Super Reasoner package",
       "status": "verified_base_weight_result",
       "evidence": [
         "configs/omni_backbones/cosmos3_super_reasoner.json",
@@ -314,7 +314,7 @@
         "results/omni_finetune/verified_public/xperience10m_cosmos3_super_forward_dynamics_lora_128ep_train1epoch_256_attn_full8gpu_20260608_eval_test_full_fsdp/verified_result_summary.json",
         "results/omni_finetune/verified_public/xperience10m_cosmos3_super_forward_dynamics_lora_128ep_train1epoch_256_attn_full8gpu_20260608_eval_test_full_fsdp/package_audit.json"
       ],
-      "readout": "The first fine-tuned Cosmos3-Super adapter branch is verified as a public-safe package: 8-GPU FSDP LoRA, 26.2M adapter parameters, 2,848 train rows, 512 validation rows, 448 held-out test rows, validation MSE 4.0082, and test MSE 3.6853. The package excludes adapter safetensors; weights are published separately at cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep."
+      "readout": "The first fine-tuned Cosmos3-Super adapter artifact is verified as a public-safe package: 8-GPU FSDP LoRA, 26.2M adapter parameters, 2,848 train rows, 512 validation rows, 448 held-out test rows, validation MSE 4.0082, and test MSE 3.6853. The package excludes adapter safetensors; weights are published separately at cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep."
     },
     {
       "area": "Raw Xperience-10M redistribution",
@@ -331,8 +331,8 @@
     "Open docs/data/project_packet.json for the machine-readable project path.",
     "Inspect RESEARCH_TAKEAWAYS.md and docs/data/research_takeaways.json before interpreting model scores.",
     "Inspect RESEARCH_ROADMAP.md and docs/data/research_roadmap.json for the path from public-sample task work to multi-episode modeling.",
-    "Inspect FOUNDATION_MODEL_PLAN.md and docs/data/foundation_model_plan.json before choosing a backbone branch.",
-    "Inspect OMNI_MODEL_EXTENSION_CONTRACT.md and run python scripts/omni/backbone_registry.py --validate --json before adding a new Qwen, Cosmos-style, or VLA/policy branch.",
+    "Inspect FOUNDATION_MODEL_PLAN.md and docs/data/foundation_model_plan.json before choosing a backbone track.",
+    "Inspect OMNI_MODEL_EXTENSION_CONTRACT.md and run python scripts/omni/backbone_registry.py --validate --json before adding a new Qwen3-Omni, Cosmos3-style, or VLA/policy track.",
     "Inspect XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md for the long-term full-corpus pretraining goal.",
     "Inspect TASK_SUITE_20.md, docs/data/task_suite_20.json, docs/data/summary_metrics.json, and results/episode_task_suite/neural_mlp/ to check the unified 20-task outputs.",
     "Inspect results/audio_ablation/AUDIO_ABLATION_SUMMARY.md before judging whether audio helps the current task suite.",
@@ -346,16 +346,16 @@
     "Inspect docs/data/omni_finetune_verified_result.json before judging the Qwen3-Omni diagnostic pilot."
   ],
   "current_reading_notes": [
-    "The latest Qwen3-Omni v6 diagnostic branch is verified and meets the strict-JSON target, but action/subtask held-out quality is still weak: JSON validity is 99.90%, action macro-F1 is 0.0029, and subtask accuracy is 0.0037. v5 remains the pinned prior release row because it is still stronger on several metrics.",
+    "The latest Qwen3-Omni v6 diagnostic run is verified and meets the strict-JSON target, but action/subtask held-out quality is still weak: JSON validity is 99.90%, action macro-F1 is 0.0029, and subtask accuracy is 0.0037. v5 remains the pinned prior release row because it is still stronger on several metrics.",
     "Use TASK_SUITE_ENHANCEMENT_128.md and docs/data/task_suite_enhancement_128.json to push the current 128-episode suite without more raw episodes through multiscale_20s10_40s20_80s40, hierarchical labels, label-normalized scoring, and raw-feature shard export.",
-    "Use docs/data/omni_model_comparison.json to compare both views: the single-episode/128-baseline/model-branch result layers and the model-family grouping for task heads, Qwen3-Omni LoRA, Cosmos3-Nano, and Cosmos3-Super.",
+    "Use docs/data/omni_model_comparison.json to compare both views: the 1-sample evidence line, the selected-128 evidence line, and the model-family grouping for task heads, Qwen3-Omni LoRA, Cosmos3-Nano, and Cosmos3-Super.",
     "The 128-episode aligned simple/NN baselines use metadata/text features from the derived Qwen JSONL export; they align the split and task ids but do not replace raw-modality baselines for trajectory, retrieval, reconstruction, or misalignment tasks.",
-    "The Cosmos3-Nano future-window branch is verified as a compatibility adapter result, Cosmos3-Super Reasoner is verified as a base-weight evaluation, and Cosmos3-Super Forward-Dynamics LoRA is verified as the first fine-tuned Super adapter branch. Cosmos3-Super adapter weights belong in cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep; verified_public packages exclude safetensors.",
+    "The Cosmos3-Nano future-window package is verified as a compatibility adapter result, Cosmos3-Super Reasoner is verified as a base-weight evaluation, and Cosmos3-Super Forward-Dynamics LoRA is verified as the first fine-tuned Super adapter artifact. Cosmos3-Super adapter weights belong in cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep; verified_public packages exclude safetensors.",
     "The current reconstruction task reconstructs feature vectors, not pixel-depth, mesh, NeRF, or Gaussian reconstruction.",
     "Audio is one of the synchronized source modalities in the current task representation.",
     "The audio ablation report compares audio/no-audio variants across the original task contracts in results/audio_ablation/.",
-    "Foundation-model selection is explicit: Qwen3-Omni is the structured JSON baseline, Cosmos 3 is the world-model branch with Nano compatibility and Super forward-dynamics LoRA results, and policy models such as OpenVLA/openpi/GR00T wait for robot-compatible action-target conversion.",
-    "Future model branches should be added through the backbone registry and verified package contract, not as one-off result folders with incompatible metrics or publication rules.",
+    "Foundation-model selection is explicit: Qwen3-Omni is the structured JSON baseline, Cosmos 3 is the world-model track with Nano compatibility and Super forward-dynamics LoRA results, and policy models such as OpenVLA/openpi/GR00T wait for robot-compatible action-target conversion.",
+    "Future model tracks should be added through the backbone registry and verified package contract, not as one-off result folders with incompatible metrics or publication rules.",
     "The Xperience Embodied Foundation Model is a future native-pretraining goal, not a completed model or current benchmark."
   ]
 }

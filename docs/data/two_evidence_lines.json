@@ -1,7 +1,7 @@
 {
   "status": "current",
   "updated_utc": "2026-06-21T00:00:00Z",
-  "interpretation_rule": "Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for held-out comparison and model-branch claims.",
+  "interpretation_rule": "Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for same-split metadata/raw baselines, Qwen3-Omni v6 LoRA diagnostics, and Cosmos3 diagnostics.",
   "reader_summary": "The suite has two public result lines. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Do not mix the two when reading scores.",
   "score_formula": "2 single-episode methods x 20 tasks = 40 records; 7 selected-128 methods x 20 tasks = 140 records; total public matrix = 180/180 scored records.",
   "lines": [
@@ -44,8 +44,8 @@
       "label": "128 selected episodes",
       "short_label": "Line 2",
       "data_unit": "Selected held-out 96/16/16 split with public-safe processed features linked to official gated episode paths",
-      "result_statement": "140/140 selected-128 scores across seven method branches: 134 direct scores plus 6 documented compact-proxy scores.",
-      "claim_boundary": "Supports same-split comparison, model-branch diagnostics, and scale-up planning on public-safe processed artifacts.",
+      "result_statement": "140/140 selected-128 scores across seven methods: 134 direct scores plus 6 documented compact-proxy scores.",
+      "claim_boundary": "Supports same-split metadata/raw baseline comparison, Qwen3-Omni v6 diagnostics, Cosmos3 diagnostics, and scale-up planning on public-safe processed artifacts.",
       "not_for": "Do not read compact-proxy cells as direct raw-target measurements.",
       "episodes": 128,
       "split": {
@@ -69,7 +69,7 @@
       "direct_scored_records": 134,
       "proxy_scored_records": 6,
       "proxy_policy": "Proxy flags remain visible where the public export lacks a direct raw target.",
-      "best_use": "Compare same-split baselines and model branches while keeping evidence type explicit.",
+      "best_use": "Compare same-split metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window while keeping evidence type explicit.",
       "primary_visuals": [
         "docs/assets/charts/two_evidence_line_map.svg",
         "docs/assets/charts/episode128_task_model_radar.svg",
