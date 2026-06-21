@@ -117,6 +117,27 @@ Hugging Face mirror carries the same translated README files so readers can
 move between GitHub, the dashboard, the Space, the artifact dataset, and model
 cards without losing the evidence trail.
 """
+PROJECT_IDENTITY_ARTIFACT_ROW = (
+    "| Use the shared project identity assets | "
+    "`docs/assets/brand/xperience10m-logo-mark-192.png`, "
+    "`docs/assets/brand/xperience10m-logo-mark-512.png`, "
+    "`docs/assets/brand/xperience10m-logo-social-card.png` |"
+)
+PROJECT_IDENTITY_CARD_BLOCK = """
+## Project Identity
+
+The Project identity mark is shared across the GitHub README, GitHub Pages
+dashboard, Hugging Face Space, artifact dataset, model mirrors, favicon, and
+social preview.
+
+<p align="center">
+  <img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Ropedia Xperience-10M logo" width="96">
+</p>
+
+Reusable assets: `docs/assets/brand/xperience10m-logo-mark-512.png` for the
+logo mark and `docs/assets/brand/xperience10m-logo-social-card.png` for the
+social card.
+"""
 QWEN_COMPARISON_MARKER = "docs/data/qwen3_v5_v6_comparison.json"
 QWEN_COMPARISON_ROW = (
     "| Compare Qwen3-Omni v5/v6 diagnostic runs | "
@@ -423,6 +444,32 @@ def ensure_language_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
     return updated
 
 
+def ensure_project_identity_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
+    updated = []
+    artifacts_readme = hf_root / "artifacts/README.md"
+    if not artifacts_readme.exists():
+        return updated
+    text = artifacts_readme.read_text(encoding="utf-8")
+    original = text
+    if PROJECT_IDENTITY_ARTIFACT_ROW not in text:
+        table_anchor = "| Reader goal | Artifact |\n| --- | --- |\n"
+        if table_anchor in text:
+            text = text.replace(table_anchor, table_anchor + PROJECT_IDENTITY_ARTIFACT_ROW + "\n", 1)
+        else:
+            text = text.rstrip() + "\n\n" + PROJECT_IDENTITY_ARTIFACT_ROW + "\n"
+    if "## Project Identity" not in text:
+        insert_before = "\n## What To Open First"
+        if insert_before in text:
+            text = text.replace(insert_before, PROJECT_IDENTITY_CARD_BLOCK + insert_before, 1)
+        else:
+            text = text.rstrip() + "\n" + PROJECT_IDENTITY_CARD_BLOCK
+    if text != original:
+        updated.append("artifacts/README.md")
+        if not dry_run:
+            artifacts_readme.write_text(text, encoding="utf-8")
+    return updated
+
+
 def split_hf_frontmatter(text: str) -> tuple[str, str]:
     lines = text.splitlines()
     if not lines or lines[0].strip() != "---":
@@ -671,6 +718,7 @@ def main() -> int:
         )
 
     card_updates = refresh_project_readme_cards(hf_root, dry_run=args.dry_run)
+    card_updates += ensure_project_identity_card_links(hf_root, dry_run=args.dry_run)
     card_updates += ensure_language_card_links(hf_root, dry_run=args.dry_run)
     card_updates += ensure_reader_map_card_links(hf_root, dry_run=args.dry_run)
     card_updates += ensure_xperience128_card_links(hf_root, dry_run=args.dry_run)
