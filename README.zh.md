@@ -46,10 +46,10 @@
 
 | 线 | 数据单元 | 方法与结果 | 用途 |
 | --- | --- | --- | --- |
-| 1 sample episode | 5,821 帧；1,161 个 20-frame 对齐窗口；8,546 维特征。 | Minimal + Neural MLP；20 个任务全覆盖；40/40 scored records。 | 检查原始 sample 文件、任务定义、可复现基线和每个任务是否成立。 |
-| 128 selected episodes | 96/16/16 split；34,269 个导出窗口；public-safe 特征链接到官方 gated episode path。 | Metadata simple/NN、raw-feature simple/NN、Qwen3-Omni、Cosmos3-Super、Cosmos3-Nano；140/140 scored records。 | 比较同一 split 上的基线和模型分支；proxy target 会显式标注。 |
+| 1 sample episode | 5,821 帧；1,161 个 20-frame 对齐窗口；8,546 维特征。 | Minimal + Neural MLP；20 个任务全覆盖；40/40 scored records；全部为 direct scores。 | 检查原始 sample 文件、任务定义、可复现基线和每个任务是否成立。 |
+| 128 selected episodes | 96/16/16 split；34,269 个导出窗口；public-safe 特征链接到官方 gated episode path。 | Metadata simple/NN、raw-feature simple/NN、Qwen3-Omni、Cosmos3-Super、Cosmos3-Nano；140/140 scored records；134 direct + 6 compact proxy。 | 比较同一 split 上的基线和模型分支；proxy target 会显式标注。 |
 
-入口：[`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)。
+入口：[`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)、[`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json)。
 
 ## 快速入口
 
@@ -67,7 +67,7 @@
 
 - 数据层：公开 sample episode 被切成 20-frame 窗口，并连接视频、音频、深度、pose/SLAM、mocap、IMU、calibration 和语言标注。
 - 任务层：20 个统一任务覆盖识别、预测、检索、重建、同步、长时预测、action-object 关系和 sensor bridge。
-- 结果层：单 episode minimal/NN 覆盖 20/20；128-episode metadata/raw/Qwen3/Cosmos 分开标注；当前公开矩阵为 180/180 scored records，proxy target 显式保留。
+- 结果层：单 episode minimal/NN 覆盖 20/20；128-episode metadata/raw/Qwen3/Cosmos 分开标注；当前公开矩阵为 180/180 scored records，其中 174 direct、6 compact proxy，proxy target 显式保留。
 - 训练方向：spatial intelligence、human-video world model、vision-language-action 三条 pipeline 已经有任务映射和需要的证据清单。
 
 ## 公开边界

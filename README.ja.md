@@ -46,10 +46,10 @@
 
 | ライン | データ単位 | 手法と結果 | 用途 |
 | --- | --- | --- | --- |
-| 1 sample episode | 5,821 frames、1,161 aligned 20-frame windows、8,546 dimensions。 | Minimal + Neural MLP が 20 tasks を覆盖; 40/40 scored records。 | Raw sample files、task definitions、reproducible baselines、task validity を確認。 |
-| 128 selected episodes | 96/16/16 split、34,269 exported windows、public-safe features が official gated episode paths に対応。 | Metadata simple/NN、raw-feature simple/NN、Qwen3-Omni、Cosmos3-Super、Cosmos3-Nano; 140/140 scored records。 | 同一 split の baselines と model branches を比較; proxy targets は明示。 |
+| 1 sample episode | 5,821 frames、1,161 aligned 20-frame windows、8,546 dimensions。 | Minimal + Neural MLP が 20 tasks を覆盖; 40/40 scored records; すべて direct scores。 | Raw sample files、task definitions、reproducible baselines、task validity を確認。 |
+| 128 selected episodes | 96/16/16 split、34,269 exported windows、public-safe features が official gated episode paths に対応。 | Metadata simple/NN、raw-feature simple/NN、Qwen3-Omni、Cosmos3-Super、Cosmos3-Nano; 140/140 scored records; 134 direct + 6 compact proxy。 | 同一 split の baselines と model branches を比較; proxy targets は明示。 |
 
-入口: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)。
+入口: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)、[`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json)。
 
 ## クイックルート
 
@@ -67,7 +67,7 @@
 
 - データ: 20-frame window が video、audio、depth、pose/SLAM、mocap、IMU、calibration、language annotation を結びます。
 - タスク: 認識、予測、retrieval、reconstruction、order、sync、long-horizon、action-object、sensor bridge など 20 契約。
-- 結果: single-episode minimal/NN は 20/20。128-episode 側は metadata、raw feature、Qwen3、Cosmos を証拠タイプ別に分けます。公開 matrix は 180/180 scored records で、proxy targets は明示します。
+- 結果: single-episode minimal/NN は 20/20。128-episode 側は metadata、raw feature、Qwen3、Cosmos を証拠タイプ別に分けます。公開 matrix は 180/180 scored records で、174 direct と 6 compact proxy を分離し、proxy targets は明示します。
 - 方向: spatial intelligence、human-video world model、vision-language-action に対して、タスク対応と必要証拠を記録しています。
 
 ## 公開境界

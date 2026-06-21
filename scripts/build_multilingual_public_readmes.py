@@ -160,9 +160,52 @@ reading metrics.
   </tbody>
 </table>
 
+### Result Ledger
+
+<table>
+  <thead>
+    <tr>
+      <th width="20%">Line</th>
+      <th width="14%">Methods</th>
+      <th width="14%">Tasks</th>
+      <th width="18%">Scored records</th>
+      <th width="16%">Direct scores</th>
+      <th>Proxy scores</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1 sample episode</strong></td>
+      <td>2</td>
+      <td>20</td>
+      <td>40/40</td>
+      <td>40</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><strong>128 selected episodes</strong></td>
+      <td>7</td>
+      <td>20</td>
+      <td>140/140</td>
+      <td>134</td>
+      <td>6 compact-proxy scores, each source-linked and reasoned.</td>
+    </tr>
+    <tr>
+      <td><strong>Total public matrix</strong></td>
+      <td>9</td>
+      <td>20</td>
+      <td>180/180</td>
+      <td>174</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+
 Result entry points:
 [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md),
 [`two_evidence_lines.json`](docs/data/two_evidence_lines.json),
+[`TWO_EVIDENCE_LINE_RESULT_SUMMARY.md`](TWO_EVIDENCE_LINE_RESULT_SUMMARY.md),
+[`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json),
 [`single_episode_task_model_radar.json`](docs/data/single_episode_task_model_radar.json),
 [`episode128_task_model_radar.json`](docs/data/episode128_task_model_radar.json),
 [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), and
@@ -197,7 +240,7 @@ Result entry points:
     <tr>
       <td><strong>Compare results</strong></td>
       <td><a href="RESEARCH_TAKEAWAYS.md">Research takeaways</a></td>
-      <td><a href="docs/data/task_method_20_result_matrix.json">20-result matrix</a><br><a href="docs/data/unified_task_model_radar.json">radar JSON</a><br><a href="docs/data/task_method_20_gap_audit.json">gap audit</a></td>
+      <td><a href="docs/data/two_evidence_line_result_summary.json">two-line result summary</a><br><a href="docs/data/task_method_20_result_matrix.json">20-result matrix</a><br><a href="docs/data/unified_task_model_radar.json">radar JSON</a><br><a href="docs/data/task_method_20_gap_audit.json">score/proxy audit</a></td>
     </tr>
     <tr>
       <td><strong>Understand one sample</strong></td>
@@ -235,10 +278,10 @@ LANGUAGE_GUIDES = {
 
 | 线 | 数据单元 | 方法与结果 | 用途 |
 | --- | --- | --- | --- |
-| 1 sample episode | 5,821 帧；1,161 个 20-frame 对齐窗口；8,546 维特征。 | Minimal + Neural MLP；20 个任务全覆盖；40/40 scored records。 | 检查原始 sample 文件、任务定义、可复现基线和每个任务是否成立。 |
-| 128 selected episodes | 96/16/16 split；34,269 个导出窗口；public-safe 特征链接到官方 gated episode path。 | Metadata simple/NN、raw-feature simple/NN、Qwen3-Omni、Cosmos3-Super、Cosmos3-Nano；140/140 scored records。 | 比较同一 split 上的基线和模型分支；proxy target 会显式标注。 |
+| 1 sample episode | 5,821 帧；1,161 个 20-frame 对齐窗口；8,546 维特征。 | Minimal + Neural MLP；20 个任务全覆盖；40/40 scored records；全部为 direct scores。 | 检查原始 sample 文件、任务定义、可复现基线和每个任务是否成立。 |
+| 128 selected episodes | 96/16/16 split；34,269 个导出窗口；public-safe 特征链接到官方 gated episode path。 | Metadata simple/NN、raw-feature simple/NN、Qwen3-Omni、Cosmos3-Super、Cosmos3-Nano；140/140 scored records；134 direct + 6 compact proxy。 | 比较同一 split 上的基线和模型分支；proxy target 会显式标注。 |
 
-入口：[`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)。
+入口：[`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)、[`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json)。
 
 ## 快速入口
 
@@ -256,7 +299,7 @@ LANGUAGE_GUIDES = {
 
 - 数据层：公开 sample episode 被切成 20-frame 窗口，并连接视频、音频、深度、pose/SLAM、mocap、IMU、calibration 和语言标注。
 - 任务层：20 个统一任务覆盖识别、预测、检索、重建、同步、长时预测、action-object 关系和 sensor bridge。
-- 结果层：单 episode minimal/NN 覆盖 20/20；128-episode metadata/raw/Qwen3/Cosmos 分开标注；当前公开矩阵为 180/180 scored records，proxy target 显式保留。
+- 结果层：单 episode minimal/NN 覆盖 20/20；128-episode metadata/raw/Qwen3/Cosmos 分开标注；当前公开矩阵为 180/180 scored records，其中 174 direct、6 compact proxy，proxy target 显式保留。
 - 训练方向：spatial intelligence、human-video world model、vision-language-action 三条 pipeline 已经有任务映射和需要的证据清单。
 
 ## 公开边界
@@ -279,10 +322,10 @@ Este repositorio convierte el episodio público de muestra de Xperience-10M en u
 
 | Línea | Unidad de datos | Métodos y resultados | Uso |
 | --- | --- | --- | --- |
-| 1 episodio de muestra | 5,821 frames; 1,161 ventanas alineadas de 20 frames; 8,546 dimensiones. | Minimal + Neural MLP en 20 tareas; 40/40 registros con score. | Inspeccionar archivos de muestra, definiciones de tarea, baselines reproducibles y validez de tareas. |
-| 128 episodios seleccionados | Split 96/16/16; 34,269 ventanas exportadas; features public-safe ligadas a episode paths oficiales gated. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super y Cosmos3-Nano; 140/140 registros con score. | Comparar baselines y ramas de modelo en el mismo split; los proxy targets permanecen visibles. |
+| 1 episodio de muestra | 5,821 frames; 1,161 ventanas alineadas de 20 frames; 8,546 dimensiones. | Minimal + Neural MLP en 20 tareas; 40/40 registros con score; todos son direct scores. | Inspeccionar archivos de muestra, definiciones de tarea, baselines reproducibles y validez de tareas. |
+| 128 episodios seleccionados | Split 96/16/16; 34,269 ventanas exportadas; features public-safe ligadas a episode paths oficiales gated. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super y Cosmos3-Nano; 140/140 registros con score; 134 direct + 6 compact proxy. | Comparar baselines y ramas de modelo en el mismo split; los proxy targets permanecen visibles. |
 
-Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json).
+Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
 
 ## Ruta Rápida
 
@@ -300,7 +343,7 @@ Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines
 
 - Datos: ventanas de 20 frames con video, audio, profundidad, pose/SLAM, mocap, IMU, calibración y lenguaje.
 - Tareas: 20 contratos para reconocimiento, predicción, recuperación, reconstrucción, sincronización, horizonte largo, relación acción-objeto y puentes de sensores.
-- Resultados: minimal/NN de un episodio cubren 20/20; las ramas de 128 episodios separan metadata, raw features, Qwen3 y Cosmos; la matriz pública está en 180/180 registros con score y mantiene visibles los proxy targets.
+- Resultados: minimal/NN de un episodio cubren 20/20; las ramas de 128 episodios separan metadata, raw features, Qwen3 y Cosmos; la matriz pública está en 180/180 registros con score: 174 direct y 6 compact proxy, con proxy targets visibles.
 - Direcciones: spatial intelligence, human-video world model y vision-language-action tienen mapeo de tareas y requisitos de evidencia.
 
 ## Límite Público
@@ -323,10 +366,10 @@ Ce dépôt transforme l'épisode public d'exemple Xperience-10M en laboratoire d
 
 | Ligne | Unité de données | Méthodes et résultats | Usage |
 | --- | --- | --- | --- |
-| 1 épisode d'exemple | 5,821 frames; 1,161 fenêtres alignées de 20 frames; 8,546 dimensions. | Minimal + Neural MLP sur 20 tâches; 40/40 enregistrements scorés. | Inspecter les fichiers sample, les définitions de tâches, les baselines reproductibles et la validité des tâches. |
-| 128 épisodes sélectionnés | Split 96/16/16; 34,269 fenêtres exportées; features public-safe liées aux chemins gated officiels. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super et Cosmos3-Nano; 140/140 enregistrements scorés. | Comparer les baselines et branches de modèles sur le même split; les proxy targets restent visibles. |
+| 1 épisode d'exemple | 5,821 frames; 1,161 fenêtres alignées de 20 frames; 8,546 dimensions. | Minimal + Neural MLP sur 20 tâches; 40/40 enregistrements scorés; tous sont des direct scores. | Inspecter les fichiers sample, les définitions de tâches, les baselines reproductibles et la validité des tâches. |
+| 128 épisodes sélectionnés | Split 96/16/16; 34,269 fenêtres exportées; features public-safe liées aux chemins gated officiels. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super et Cosmos3-Nano; 140/140 enregistrements scorés; 134 direct + 6 compact proxy. | Comparer les baselines et branches de modèles sur le même split; les proxy targets restent visibles. |
 
-Entrées : [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json).
+Entrées : [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
 
 ## Parcours Rapide
 
@@ -344,7 +387,7 @@ Entrées : [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_line
 
 - Données : fenêtres de 20 frames reliant vidéo, audio, profondeur, pose/SLAM, mocap, IMU, calibration et annotations de langage.
 - Tâches : 20 contrats couvrant reconnaissance, prévision, retrieval, reconstruction, ordre, synchronisation, horizon long, relations action-objet et sensor bridge.
-- Résultats : minimal/NN sur l'épisode public couvrent 20/20; les branches 128 épisodes séparent metadata, raw features, Qwen3 et Cosmos; la matrice publique atteint 180/180 enregistrements scorés avec proxy targets visibles.
+- Résultats : minimal/NN sur l'épisode public couvrent 20/20; les branches 128 épisodes séparent metadata, raw features, Qwen3 et Cosmos; la matrice publique atteint 180/180 enregistrements scorés: 174 direct et 6 compact proxy, avec proxy targets visibles.
 - Directions : spatial intelligence, human-video world model et vision-language-action sont documentés avec tâches et preuves nécessaires.
 
 ## Frontière Publique
@@ -367,10 +410,10 @@ Dieses Repository macht aus dem öffentlichen Xperience-10M-Sample eine prüfbar
 
 | Linie | Dateneinheit | Methoden und Ergebnisse | Zweck |
 | --- | --- | --- | --- |
-| 1 Sample-Episode | 5,821 Frames; 1,161 ausgerichtete 20-Frame-Fenster; 8,546 Dimensionen. | Minimal + Neural MLP auf 20 Aufgaben; 40/40 gescorte Einträge. | Sample-Dateien, Aufgaben, reproduzierbare Baselines und Aufgabenqualität prüfen. |
-| 128 ausgewählte Episoden | 96/16/16 Split; 34,269 exportierte Fenster; public-safe Features mit offiziellen gated Episode-Pfaden. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super und Cosmos3-Nano; 140/140 gescorte Einträge. | Baselines und Modellzweige auf demselben Split vergleichen; Proxy-Targets bleiben sichtbar. |
+| 1 Sample-Episode | 5,821 Frames; 1,161 ausgerichtete 20-Frame-Fenster; 8,546 Dimensionen. | Minimal + Neural MLP auf 20 Aufgaben; 40/40 gescorte Einträge; alle sind direct scores. | Sample-Dateien, Aufgaben, reproduzierbare Baselines und Aufgabenqualität prüfen. |
+| 128 ausgewählte Episoden | 96/16/16 Split; 34,269 exportierte Fenster; public-safe Features mit offiziellen gated Episode-Pfaden. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super und Cosmos3-Nano; 140/140 gescorte Einträge; 134 direct + 6 compact proxy. | Baselines und Modellzweige auf demselben Split vergleichen; Proxy-Targets bleiben sichtbar. |
 
-Einstieg: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json).
+Einstieg: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
 
 ## Schneller Einstieg
 
@@ -388,7 +431,7 @@ Einstieg: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines
 
 - Daten: 20-Frame-Fenster über Video, Audio, Tiefe, Pose/SLAM, Mocap, IMU, Kalibrierung und Sprachannotation.
 - Aufgaben: 20 Verträge für Erkennung, Vorhersage, Retrieval, Rekonstruktion, Ordnung, Synchronisierung, Langhorizont-Prognose, Aktion-Objekt-Bindung und Sensor-Brücken.
-- Ergebnisse: Single-Episode minimal/NN decken 20/20 ab; 128-Episode-Zweige trennen Metadata, Raw Features, Qwen3 und Cosmos; die öffentliche Matrix steht bei 180/180 gescorten Einträgen mit sichtbaren Proxy-Targets.
+- Ergebnisse: Single-Episode minimal/NN decken 20/20 ab; 128-Episode-Zweige trennen Metadata, Raw Features, Qwen3 und Cosmos; die öffentliche Matrix steht bei 180/180 gescorten Einträgen: 174 direct und 6 compact proxy, mit sichtbaren Proxy-Targets.
 - Richtungen: spatial intelligence, human-video world model und vision-language-action sind mit Aufgaben und Evidenzanforderungen dokumentiert.
 
 ## Öffentliche Grenze
@@ -411,10 +454,10 @@ Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Kar
 
 | ライン | データ単位 | 手法と結果 | 用途 |
 | --- | --- | --- | --- |
-| 1 sample episode | 5,821 frames、1,161 aligned 20-frame windows、8,546 dimensions。 | Minimal + Neural MLP が 20 tasks を覆盖; 40/40 scored records。 | Raw sample files、task definitions、reproducible baselines、task validity を確認。 |
-| 128 selected episodes | 96/16/16 split、34,269 exported windows、public-safe features が official gated episode paths に対応。 | Metadata simple/NN、raw-feature simple/NN、Qwen3-Omni、Cosmos3-Super、Cosmos3-Nano; 140/140 scored records。 | 同一 split の baselines と model branches を比較; proxy targets は明示。 |
+| 1 sample episode | 5,821 frames、1,161 aligned 20-frame windows、8,546 dimensions。 | Minimal + Neural MLP が 20 tasks を覆盖; 40/40 scored records; すべて direct scores。 | Raw sample files、task definitions、reproducible baselines、task validity を確認。 |
+| 128 selected episodes | 96/16/16 split、34,269 exported windows、public-safe features が official gated episode paths に対応。 | Metadata simple/NN、raw-feature simple/NN、Qwen3-Omni、Cosmos3-Super、Cosmos3-Nano; 140/140 scored records; 134 direct + 6 compact proxy。 | 同一 split の baselines と model branches を比較; proxy targets は明示。 |
 
-入口: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)。
+入口: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)、[`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json)。
 
 ## クイックルート
 
@@ -432,7 +475,7 @@ Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Kar
 
 - データ: 20-frame window が video、audio、depth、pose/SLAM、mocap、IMU、calibration、language annotation を結びます。
 - タスク: 認識、予測、retrieval、reconstruction、order、sync、long-horizon、action-object、sensor bridge など 20 契約。
-- 結果: single-episode minimal/NN は 20/20。128-episode 側は metadata、raw feature、Qwen3、Cosmos を証拠タイプ別に分けます。公開 matrix は 180/180 scored records で、proxy targets は明示します。
+- 結果: single-episode minimal/NN は 20/20。128-episode 側は metadata、raw feature、Qwen3、Cosmos を証拠タイプ別に分けます。公開 matrix は 180/180 scored records で、174 direct と 6 compact proxy を分離し、proxy targets は明示します。
 - 方向: spatial intelligence、human-video world model、vision-language-action に対して、タスク対応と必要証拠を記録しています。
 
 ## 公開境界
@@ -455,10 +498,10 @@ Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Kar
 
 | 라인 | 데이터 단위 | 방법과 결과 | 용도 |
 | --- | --- | --- | --- |
-| 1 sample episode | 5,821 frames, 1,161 aligned 20-frame windows, 8,546 dimensions. | Minimal + Neural MLP가 20 tasks 전체를 평가; 40/40 scored records. | Raw sample files, task definitions, reproducible baselines, task validity 확인. |
-| 128 selected episodes | 96/16/16 split, 34,269 exported windows, public-safe features가 official gated episode paths에 연결됨. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, Cosmos3-Nano; 140/140 scored records. | 같은 split에서 baselines와 model branches 비교; proxy targets는 명시 유지. |
+| 1 sample episode | 5,821 frames, 1,161 aligned 20-frame windows, 8,546 dimensions. | Minimal + Neural MLP가 20 tasks 전체를 평가; 40/40 scored records; 모두 direct scores. | Raw sample files, task definitions, reproducible baselines, task validity 확인. |
+| 128 selected episodes | 96/16/16 split, 34,269 exported windows, public-safe features가 official gated episode paths에 연결됨. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, Cosmos3-Nano; 140/140 scored records; 134 direct + 6 compact proxy. | 같은 split에서 baselines와 model branches 비교; proxy targets는 명시 유지. |
 
-입구: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json).
+입구: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
 
 ## 빠른 경로
 
@@ -476,7 +519,7 @@ Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Kar
 
 - 데이터: 20-frame window가 video, audio, depth, pose/SLAM, mocap, IMU, calibration, language annotation을 연결합니다.
 - 과제: 인식, 예측, retrieval, reconstruction, order, sync, long-horizon, action-object binding, sensor bridge 등 20개 계약.
-- 결과: single-episode minimal/NN은 20/20; 128-episode 레이어는 metadata, raw feature, Qwen3, Cosmos를 증거 유형별로 분리합니다. 공개 matrix는 180/180 scored records이며 proxy targets를 명시합니다.
+- 결과: single-episode minimal/NN은 20/20; 128-episode 레이어는 metadata, raw feature, Qwen3, Cosmos를 증거 유형별로 분리합니다. 공개 matrix는 180/180 scored records이며 174 direct와 6 compact proxy를 분리하고 proxy targets를 명시합니다.
 - 방향: spatial intelligence, human-video world model, vision-language-action에 대해 과제 매핑과 필요한 증거를 기록합니다.
 
 ## 공개 경계
@@ -499,10 +542,10 @@ Este repositório transforma o episódio público de amostra do Xperience-10M em
 
 | Linha | Unidade de dados | Métodos e resultados | Uso |
 | --- | --- | --- | --- |
-| 1 episódio de amostra | 5,821 frames; 1,161 janelas alinhadas de 20 frames; 8,546 dimensões. | Minimal + Neural MLP em 20 tarefas; 40/40 registros com score. | Inspecionar arquivos da amostra, definições de tarefas, baselines reproduzíveis e validade das tarefas. |
-| 128 episódios selecionados | Split 96/16/16; 34,269 janelas exportadas; features public-safe ligadas aos caminhos oficiais gated. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super e Cosmos3-Nano; 140/140 registros com score. | Comparar baselines e ramos de modelo no mesmo split; proxy targets permanecem visíveis. |
+| 1 episódio de amostra | 5,821 frames; 1,161 janelas alinhadas de 20 frames; 8,546 dimensões. | Minimal + Neural MLP em 20 tarefas; 40/40 registros com score; todos são direct scores. | Inspecionar arquivos da amostra, definições de tarefas, baselines reproduzíveis e validade das tarefas. |
+| 128 episódios selecionados | Split 96/16/16; 34,269 janelas exportadas; features public-safe ligadas aos caminhos oficiais gated. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super e Cosmos3-Nano; 140/140 registros com score; 134 direct + 6 compact proxy. | Comparar baselines e ramos de modelo no mesmo split; proxy targets permanecem visíveis. |
 
-Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json).
+Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
 
 ## Rota Rápida
 
@@ -520,7 +563,7 @@ Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines
 
 - Dados: janelas de 20 frames ligam vídeo, áudio, profundidade, pose/SLAM, mocap, IMU, calibração e anotações de linguagem.
 - Tarefas: 20 contratos cobrem reconhecimento, previsão, retrieval, reconstrução, ordem, sincronização, horizonte longo, relação ação-objeto e pontes de sensores.
-- Resultados: minimal/NN de um episódio cobrem 20/20; a camada de 128 episódios separa metadata, raw features, Qwen3 e Cosmos; a matriz pública está em 180/180 registros com score e mantém proxy targets visíveis.
+- Resultados: minimal/NN de um episódio cobrem 20/20; a camada de 128 episódios separa metadata, raw features, Qwen3 e Cosmos; a matriz pública está em 180/180 registros com score: 174 direct e 6 compact proxy, com proxy targets visíveis.
 - Direções: spatial intelligence, human-video world model e vision-language-action têm mapeamento de tarefas e requisitos de evidência.
 
 ## Fronteira Pública

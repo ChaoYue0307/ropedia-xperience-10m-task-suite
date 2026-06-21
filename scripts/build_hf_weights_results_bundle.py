@@ -40,6 +40,7 @@ ANALYSIS_FILES = [
     "PUBLIC_SURFACE_QA.md",
     "SOURCE_ALIGNMENT_AUDIT.md",
     "TWO_EVIDENCE_LINES.md",
+    "TWO_EVIDENCE_LINE_RESULT_SUMMARY.md",
     "TASK_METHOD_20_RESULT_MATRIX.md",
     "TASK_METHOD_20_GAP_AUDIT.md",
     "TASK_METHOD_20_SOURCE_AUDIT.md",
@@ -62,6 +63,7 @@ ANALYSIS_FILES = [
     "docs/data/source_alignment_audit.json",
     "docs/data/task_surface_integrity.json",
     "docs/data/two_evidence_lines.json",
+    "docs/data/two_evidence_line_result_summary.json",
     "docs/data/website_integrity.json",
     "docs/data/xperience10m_128_episode_feature_index.json",
 ]

@@ -234,7 +234,7 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
                 "`docs/data/unified_task_model_radar.json`; the 9-method by 20-task\n"
                 "completion matrix is complete at `180/180` scored method-task records\n"
                 "and is published in `docs/data/task_method_20_result_matrix.json`,\n"
-                "with the explicit audit in `docs/data/task_method_20_gap_audit.json`\n"
+                "with the explicit score/proxy audit in `docs/data/task_method_20_gap_audit.json`\n"
                 "and source-value audit in `docs/data/task_method_20_source_audit.json`.",
             )
         if "completion matrix is in `docs/data/task_method_20_result_matrix.json`" in text:
@@ -243,7 +243,7 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
                 "with the explicit\ngap audit in `docs/data/task_method_20_gap_audit.json`.",
                 "completion matrix is complete at `180/180` scored method-task records "
                 "and is published in `docs/data/task_method_20_result_matrix.json`, "
-                "with the explicit\naudit in `docs/data/task_method_20_gap_audit.json` "
+                "with the explicit\nscore/proxy audit in `docs/data/task_method_20_gap_audit.json` "
                 "and source-value audit in `docs/data/task_method_20_source_audit.json`.",
             )
         if (
@@ -253,7 +253,7 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
             text = text.replace(
                 "`docs/data/task_method_20_result_matrix.json`.",
                 "`docs/data/task_method_20_result_matrix.json`, with the explicit\n"
-                "gap audit in `docs/data/task_method_20_gap_audit.json`.",
+                "score/proxy audit in `docs/data/task_method_20_gap_audit.json`.",
             )
         if (
             "docs/data/task_method_20_gap_audit.json" in text

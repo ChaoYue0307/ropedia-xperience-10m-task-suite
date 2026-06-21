@@ -1,0 +1,255 @@
+{
+  "generated_at_utc": "2026-06-21T07:36:39+00:00",
+  "interpretation_rule": "Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for held-out comparison and model-branch claims.",
+  "lines": [
+    {
+      "artifact_entry_points": [
+        "docs/data/single_episode_task_model_radar.json",
+        "docs/data/two_evidence_line_result_summary.json",
+        "results/episode_task_suite/summary_report.json",
+        "results/episode_task_suite/feature_manifest.json",
+        "docs/single_episode_explorer.html"
+      ],
+      "data_unit": "One public Xperience-10M sample episode",
+      "direct_scored_method_task_count": 40,
+      "id": "single_public_sample_episode",
+      "label": "1 sample episode",
+      "method_count": 2,
+      "method_task_record_count": 40,
+      "methods": [
+        {
+          "direct_scored_task_count": 20,
+          "id": "minimal",
+          "label": "Minimal",
+          "method_detail": "Single-episode simple heads over the public sample split.",
+          "proxy_scored_task_count": 0,
+          "result_record_count": 20,
+          "scope": "1 public sample episode",
+          "scored_task_count": 20,
+          "status_counts": {
+            "scored": 20
+          }
+        },
+        {
+          "direct_scored_task_count": 20,
+          "id": "neural_mlp",
+          "label": "Neural MLP",
+          "method_detail": "Single-episode compact PyTorch MLP heads on the same 20 task contracts.",
+          "proxy_scored_task_count": 0,
+          "result_record_count": 20,
+          "scope": "1 public sample episode",
+          "scored_task_count": 20,
+          "status_counts": {
+            "scored": 20
+          }
+        }
+      ],
+      "primary_use": "Inspect raw files, understand each task, rerun local baselines, and debug task quality.",
+      "proxy_scored_method_task_count": 0,
+      "scored_method_task_count": 40,
+      "task_count": 20
+    },
+    {
+      "artifact_entry_points": [
+        "docs/data/episode128_task_model_radar.json",
+        "docs/data/two_evidence_line_result_summary.json",
+        "docs/data/xperience10m_128_episode_feature_index.json",
+        "docs/data/omni_model_comparison.json",
+        "docs/data/task_method_20_gap_audit.json"
+      ],
+      "data_unit": "Selected held-out 96/16/16 split with public-safe processed features linked to official gated episode paths",
+      "direct_scored_method_task_count": 134,
+      "id": "selected_128_episode_surface",
+      "label": "128 selected episodes",
+      "method_count": 7,
+      "method_task_record_count": 140,
+      "methods": [
+        {
+          "direct_scored_task_count": 19,
+          "id": "metadata128_simple",
+          "label": "128ep Aligned Simple",
+          "method_detail": "128-episode aligned simple baselines: JSONL metadata/text tasks plus staged sensor-block tasks where the processed target exists.",
+          "proxy_scored_task_count": 1,
+          "result_record_count": 20,
+          "scope": "128 selected episodes, JSONL metadata/text plus staged sensor-block targets where available",
+          "scored_task_count": 20,
+          "status_counts": {
+            "proxy_scored": 1,
+            "scored": 19
+          }
+        },
+        {
+          "direct_scored_task_count": 19,
+          "id": "metadata128_neural_mlp",
+          "label": "128ep Aligned NN",
+          "method_detail": "128-episode aligned MLP baselines: JSONL metadata/text tasks plus staged sensor-block tasks where the processed target exists.",
+          "proxy_scored_task_count": 1,
+          "result_record_count": 20,
+          "scope": "128 selected episodes, JSONL metadata/text plus staged sensor-block targets where available",
+          "scored_task_count": 20,
+          "status_counts": {
+            "proxy_scored": 1,
+            "scored": 19
+          }
+        },
+        {
+          "direct_scored_task_count": 18,
+          "id": "raw128_simple",
+          "label": "128ep Raw Simple",
+          "method_detail": "128-episode 4430-dim sensor NPZ simple heads; tasks 15/19 use compact proxies.",
+          "proxy_scored_task_count": 2,
+          "result_record_count": 20,
+          "scope": "128 selected episodes, staged 4430-dim sensor NPZ features; 2 compact proxy axes",
+          "scored_task_count": 20,
+          "status_counts": {
+            "proxy_scored": 2,
+            "scored": 18
+          }
+        },
+        {
+          "direct_scored_task_count": 18,
+          "id": "raw128_neural_mlp",
+          "label": "128ep Raw NN",
+          "method_detail": "128-episode 4430-dim sensor NPZ MLP heads; tasks 15/19 use compact proxies.",
+          "proxy_scored_task_count": 2,
+          "result_record_count": 20,
+          "scope": "128 selected episodes, staged 4430-dim sensor NPZ features; 2 compact proxy axes",
+          "scored_task_count": 20,
+          "status_counts": {
+            "proxy_scored": 2,
+            "scored": 18
+          }
+        },
+        {
+          "direct_scored_task_count": 20,
+          "id": "qwen3_omni_v6_lora",
+          "label": "Qwen3-Omni v6 LoRA",
+          "method_detail": "Verified held-out Qwen3-Omni v6 LoRA metrics, plus task 16 and any completed private-GPU future/retrieval/sensor-target probes scored from task-specific JSON.",
+          "proxy_scored_task_count": 0,
+          "result_record_count": 20,
+          "scope": "128 selected episodes, held-out test",
+          "scored_task_count": 20,
+          "status_counts": {
+            "scored": 20
+          }
+        },
+        {
+          "direct_scored_task_count": 20,
+          "id": "cosmos3_super_reasoner",
+          "label": "Cosmos3-Super Reasoner",
+          "method_detail": "Verified Cosmos3-Super base-weight Reasoner JSON-task evaluation, plus task 5/8/9/10/11/12/13/14/16/17/18/19/20 probes where public metrics exist.",
+          "proxy_scored_task_count": 0,
+          "result_record_count": 20,
+          "scope": "128 selected episodes, held-out test",
+          "scored_task_count": 20,
+          "status_counts": {
+            "scored": 20
+          }
+        },
+        {
+          "direct_scored_task_count": 20,
+          "id": "cosmos3_nano_future_window",
+          "label": "Cosmos3-Nano Future Window",
+          "method_detail": "Verified Cosmos3-Nano future-window compatibility metrics, plus model-output probes for tasks 2/5/7/8/10/11/12/13/14/15/16/17/18/19 and a derived task-20 boundary timing probe scored from held-out future-window artifacts.",
+          "proxy_scored_task_count": 0,
+          "result_record_count": 20,
+          "scope": "128 selected episodes, held-out test",
+          "scored_task_count": 20,
+          "status_counts": {
+            "scored": 20
+          }
+        }
+      ],
+      "primary_use": "Compare same-split baselines and model branches while keeping evidence type explicit.",
+      "proxy_scored_method_task_count": 6,
+      "scored_method_task_count": 140,
+      "task_count": 20
+    }
+  ],
+  "proxy_records": [
+    {
+      "line_id": "selected_128_episode_surface",
+      "method": "128ep Raw Simple",
+      "metric_key": "macro_f1",
+      "reason": "documented compact proxy completion for this raw128 task axis",
+      "series_id": "raw128_simple",
+      "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/interaction_text_prediction/metrics.json",
+      "task_id": "interaction_text_prediction",
+      "task_label": "Interaction Text Prediction",
+      "task_number": 15
+    },
+    {
+      "line_id": "selected_128_episode_surface",
+      "method": "128ep Raw NN",
+      "metric_key": "macro_f1",
+      "reason": "documented compact proxy completion for this raw128 task axis",
+      "series_id": "raw128_neural_mlp",
+      "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/interaction_text_prediction/metrics.json",
+      "task_id": "interaction_text_prediction",
+      "task_label": "Interaction Text Prediction",
+      "task_number": 15
+    },
+    {
+      "line_id": "selected_128_episode_surface",
+      "method": "128ep Aligned Simple",
+      "metric_key": "mrr",
+      "reason": "paired camera-view embeddings are absent from the 128 JSONL/feature export; metadata features retrieve the synchronized same-window depth/audio block as a documented compact synchronization proxy",
+      "series_id": "metadata128_simple",
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/camera_view_sync_retrieval/metrics.json",
+      "task_id": "camera_view_sync_retrieval",
+      "task_label": "Camera-View Synchronization Retrieval",
+      "task_number": 19
+    },
+    {
+      "line_id": "selected_128_episode_surface",
+      "method": "128ep Aligned NN",
+      "metric_key": "mrr",
+      "reason": "paired camera-view embeddings are absent from the 128 JSONL/feature export; metadata features retrieve the synchronized same-window depth/audio block as a documented compact synchronization proxy",
+      "series_id": "metadata128_neural_mlp",
+      "source": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/neural_mlp/camera_view_sync_retrieval/metrics.json",
+      "task_id": "camera_view_sync_retrieval",
+      "task_label": "Camera-View Synchronization Retrieval",
+      "task_number": 19
+    },
+    {
+      "line_id": "selected_128_episode_surface",
+      "method": "128ep Raw Simple",
+      "metric_key": "mrr",
+      "reason": "documented compact proxy completion for this raw128 task axis",
+      "series_id": "raw128_simple",
+      "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/simple_raw128/camera_view_sync_retrieval/metrics.json",
+      "task_id": "camera_view_sync_retrieval",
+      "task_label": "Camera-View Synchronization Retrieval",
+      "task_number": 19
+    },
+    {
+      "line_id": "selected_128_episode_surface",
+      "method": "128ep Raw NN",
+      "metric_key": "mrr",
+      "reason": "documented compact proxy completion for this raw128 task axis",
+      "series_id": "raw128_neural_mlp",
+      "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/neural_mlp_raw128/camera_view_sync_retrieval/metrics.json",
+      "task_id": "camera_view_sync_retrieval",
+      "task_label": "Camera-View Synchronization Retrieval",
+      "task_number": 19
+    }
+  ],
+  "reader_policy": {
+    "proxy_policy": "Proxy-scored cells stay numeric only when the source artifact and reason are attached; they should not be read as direct raw-target measurements.",
+    "selected_128_episode_surface": "Use for held-out comparison, metadata/raw-feature baselines, Qwen3/Cosmos branches, and scale-up decisions.",
+    "single_public_sample_episode": "Use for task construction, raw-file inspection, local reproducibility, and controlled Minimal-vs-Neural baseline behavior."
+  },
+  "source_lines": "docs/data/two_evidence_lines.json",
+  "source_matrix": "docs/data/task_method_20_result_matrix.json",
+  "status": "pass",
+  "summary": {
+    "direct_scored_method_task_count": 174,
+    "line_count": 2,
+    "method_count": 9,
+    "method_task_record_count": 180,
+    "proxy_scored_method_task_count": 6,
+    "scored_method_task_count": 180,
+    "task_count": 20
+  },
+  "title": "Two Evidence-Line Result Summary"
+}

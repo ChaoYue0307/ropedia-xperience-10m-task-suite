@@ -189,44 +189,69 @@
       outline: 2px solid rgba(204, 255, 160, 0.54);
       outline-offset: 3px;
     }
-    .nav-action {
-      border: 1px solid rgba(204, 255, 160, 0.46);
+    .nav-external-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid rgba(204, 255, 160, 0.24);
+      border-radius: 999px;
       background:
-        linear-gradient(180deg, rgba(204, 255, 160, 0.11), rgba(204, 255, 160, 0.055)),
-        rgba(6, 16, 6, 0.86);
-      color: #f4f8ef;
-      height: 42px;
-      min-width: 82px;
-      padding: 0 14px;
+        linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025)),
+        rgba(4, 9, 4, 0.82);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.018), 0 14px 38px rgba(0, 0, 0, 0.18);
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+    .nav-action {
+      border: 0;
+      background: transparent;
+      color: #dfeadc;
+      height: 34px;
+      min-width: 0;
+      padding: 0 11px 0 6px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 7px;
       text-decoration: none;
       font-family: var(--font-btn);
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 760;
       line-height: 1;
       white-space: nowrap;
       border-radius: 999px;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.028), 0 8px 24px rgba(0, 0, 0, 0.16);
-      transition: color 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms cubic-bezier(0.16, 1, 0.3, 1), background 220ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: none;
+      transition: color 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1), background 220ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     .nav-action::before {
-      content: none;
+      content: attr(data-mark);
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(204, 255, 160, 0.28);
+      border-radius: 999px;
+      background: rgba(204, 255, 160, 0.08);
+      color: var(--green);
+      font-size: 9.5px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0;
+      flex: 0 0 auto;
     }
     .nav-action-hf {
-      min-width: 74px;
+      min-width: 76px;
     }
     .nav-action-repo {
-      min-width: 88px;
-      background: var(--green);
-      border-color: rgba(204, 255, 160, 0.92);
-      color: #020502;
-      box-shadow: 0 10px 30px rgba(204, 255, 160, 0.12);
+      min-width: 86px;
+      background: rgba(204, 255, 160, 0.14);
+      color: var(--green);
     }
     .nav-action-repo::before {
-      background: rgba(2, 5, 2, 0.10);
-      border-color: rgba(2, 5, 2, 0.18);
+      background: var(--green);
+      border-color: var(--green);
       color: #020502;
     }
     .nav-action-text-short {
@@ -234,26 +259,12 @@
     }
     .nav-action:hover {
       transform: translateY(-1px);
-      border-color: rgba(204, 255, 160, 0.74);
-      background:
-        linear-gradient(180deg, rgba(204, 255, 160, 0.18), rgba(204, 255, 160, 0.09)),
-        rgba(6, 16, 6, 0.88);
+      background: rgba(204, 255, 160, 0.11);
       color: var(--green);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 12px 32px rgba(204, 255, 160, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(204, 255, 160, 0.08);
     }
     .nav-action-repo:hover {
-      background: #eaffd5;
-      border-color: #eaffd5;
-      color: #020502;
-    }
-    .nav-links a.nav-action {
-      border-color: var(--green);
       background: var(--green);
-      color: #020502;
-    }
-    .nav-links a.nav-action:hover {
-      border-color: var(--green);
-      background: #f4f8ef;
       color: #020502;
     }
     .nav-tools {
@@ -285,6 +296,12 @@
       flex: 0 1 auto;
       max-width: 128px;
       overflow: hidden;
+      position: relative;
+    }
+    .site-language::before {
+      content: attr(data-short);
+      display: none;
+      pointer-events: none;
     }
     .site-language label {
       position: absolute;
@@ -3233,16 +3250,20 @@
       .site-language select {
         max-width: 92px;
       }
+      .nav-external-actions {
+        gap: 3px;
+        padding: 3px;
+      }
       .nav-action {
-        height: 42px;
+        height: 34px;
         min-width: 58px;
-        padding: 0 12px;
+        padding: 0 10px 0 5px;
       }
       .nav-action-hf {
-        min-width: 48px;
+        min-width: 56px;
       }
       .nav-action-repo {
-        min-width: 64px;
+        min-width: 68px;
       }
       .nav-action-text-full {
         display: none;
@@ -3316,9 +3337,15 @@
       .project-tabs-shell .wrap {
         width: min(100% - 28px, var(--max));
       }
+      .nav-inner {
+        position: relative;
+      }
       .brand {
         font-size: 16px;
         gap: 9px;
+      }
+      .brand span {
+        display: none;
       }
       .brand-logo {
         width: 38px;
@@ -3328,25 +3355,72 @@
         min-height: 38px;
         padding: 0 8px;
         font-size: 12px;
+        width: 58px;
+        max-width: 58px;
+        justify-content: center;
+        position: absolute;
+        left: 146px;
+        right: auto;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .site-language::before {
+        display: block;
+        position: absolute;
+        left: 11px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--ink);
+        font-weight: 780;
+        line-height: 1;
       }
       .site-language select {
-        max-width: 84px;
+        width: 100%;
+        max-width: none;
+        color: transparent;
+        padding-right: 17px;
+        background-position:
+          calc(100% - 9px) 52%,
+          calc(100% - 4px) 52%;
       }
       .nav-tools {
         gap: 6px;
         padding-left: 0;
         border-left: 0;
+        flex: 0 0 auto;
+        width: 0;
+        justify-content: flex-end;
+        overflow: visible;
+        position: static;
+      }
+      .nav-external-actions {
+        padding: 3px;
+        flex: 0 0 auto;
+        position: absolute;
+        left: 58px;
+        right: auto;
+        top: 50%;
+        transform: translateY(-50%);
       }
       .nav-action {
-        min-width: 42px;
-        height: 38px;
-        padding: 0 9px;
+        min-width: 28px;
+        height: 32px;
+        padding: 0 4px;
         font-size: 11.5px;
+        gap: 5px;
+      }
+      .nav-action::before {
+        width: 22px;
+        height: 22px;
+        font-size: 9px;
       }
       .nav-action-repo {
         display: inline-flex;
-        min-width: 52px;
-        padding: 0 10px;
+        min-width: 28px;
+        padding: 0 4px;
+      }
+      .nav-action-text-short {
+        display: none;
       }
       .project-tabs-shell { top: var(--nav-height); padding: 10px 0; }
       .project-tabs {
@@ -3502,26 +3576,44 @@
       }
     }
     @media (max-width: 460px) {
-      .brand span {
-        max-width: 138px;
+      .nav-inner {
+        gap: 7px;
+      }
+      .brand {
+        gap: 7px;
       }
       .site-language {
-        max-width: 82px;
-        padding: 0 7px;
+        width: 54px;
+        max-width: 54px;
+        padding: 0 6px;
       }
       .site-language select {
-        max-width: 68px;
+        max-width: none;
+        padding-right: 17px;
       }
       .nav-tools {
-        gap: 5px;
+        gap: 4px;
+      }
+      .nav-external-actions {
+        gap: 2px;
+        padding: 2px;
       }
       .nav-action {
-        min-width: 38px;
-        padding: 0 7px;
+        min-width: 24px;
+        height: 30px;
+        padding: 0 3px;
+      }
+      .nav-action::before {
+        width: 20px;
+        height: 20px;
+        font-size: 8.5px;
+      }
+      .nav-action-text-short {
+        display: none;
       }
       .nav-action-repo {
-        min-width: 46px;
-        padding: 0 8px;
+        min-width: 24px;
+        padding: 0 3px;
       }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -3557,7 +3649,7 @@
         <a class="nav-optional" href="#artifacts">Files</a>
       </div>
       <div class="nav-tools">
-        <div class="site-language notranslate" translate="no">
+        <div class="site-language notranslate" translate="no" data-short="EN">
           <label for="siteLanguage">Language</label>
           <select id="siteLanguage" aria-label="Translate this website">
             <option value="en">English</option>
@@ -3571,14 +3663,16 @@
           </select>
           <span id="siteLanguageStatus" class="site-language-status" aria-live="polite"></span>
         </div>
-        <a class="nav-action nav-action-hf" data-mark="HF" href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite" aria-label="Open Hugging Face Space">
-          <span class="nav-action-text-full">HF Space</span>
-          <span class="nav-action-text-short">HF</span>
-        </a>
-        <a class="nav-action nav-action-repo" data-mark="GH" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite" aria-label="Open GitHub repository">
-          <span class="nav-action-text-full">GitHub</span>
-          <span class="nav-action-text-short">Repo</span>
-        </a>
+        <div class="nav-external-actions" aria-label="External project links">
+          <a class="nav-action nav-action-hf" data-mark="HF" href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite" aria-label="Open Hugging Face Space">
+            <span class="nav-action-text-full">HF Space</span>
+            <span class="nav-action-text-short">HF</span>
+          </a>
+          <a class="nav-action nav-action-repo" data-mark="GH" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite" aria-label="Open GitHub repository">
+            <span class="nav-action-text-full">GitHub</span>
+            <span class="nav-action-text-short">Repo</span>
+          </a>
+        </div>
       </div>
       <div id="google_translate_element" aria-hidden="true"></div>
     </div>
@@ -3695,7 +3789,7 @@
               <a href="assets/charts/episode128_task_model_radar.svg">128ep radar</a>
               <a href="data/unified_task_model_radar.json">Open radar JSON</a>
               <a href="data/task_method_20_result_matrix.json">Open 20-result matrix</a>
-              <a href="data/task_method_20_gap_audit.json">Open gap audit</a>
+              <a href="data/task_method_20_gap_audit.json">Open score/proxy audit</a>
             </div>
           </div>
         </div>
@@ -3761,14 +3855,14 @@
               <td>One public Xperience-10M sample episode; 5,821 frames; 1,161 aligned 20-frame windows; 8,546-dimensional feature contract.</td>
               <td>Minimal heads and Neural MLP heads. Both cover all 20 task contracts, for 40/40 scored method-task records.</td>
               <td>Raw sample inspection, file organization, task definitions, local reproducibility, and controlled baseline behavior.</td>
-              <td><a href="#raw-sample">Raw browser</a><br><a href="data/single_episode_task_model_radar.json">1-episode radar JSON</a><br><a href="data/two_evidence_lines.json">line JSON</a></td>
+              <td><a href="#raw-sample">Raw browser</a><br><a href="data/single_episode_task_model_radar.json">1-episode radar JSON</a><br><a href="data/two_evidence_line_result_summary.json">result summary JSON</a><br><a href="data/two_evidence_lines.json">line JSON</a></td>
             </tr>
             <tr>
               <td>128 selected episodes</td>
               <td>Selected held-out 96/16/16 split; 34,269 exported windows; public-safe metadata/raw-feature artifacts linked to official gated episode paths.</td>
               <td>Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano. Together they form 140/140 scored 128-line method-task records.</td>
               <td>Same-split comparison, model-branch diagnostics, Qwen/Cosmos evidence, and the next scale-up decisions.</td>
-              <td><a href="data/episode128_task_model_radar.json">128-episode radar JSON</a><br><a href="data/xperience10m_128_episode_feature_index.json">feature index JSON</a><br><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/TWO_EVIDENCE_LINES.md">line doc</a></td>
+              <td><a href="data/episode128_task_model_radar.json">128-episode radar JSON</a><br><a href="data/xperience10m_128_episode_feature_index.json">feature index JSON</a><br><a href="data/two_evidence_line_result_summary.json">result summary JSON</a><br><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/TWO_EVIDENCE_LINES.md">line doc</a></td>
             </tr>
           </tbody>
         </table>
@@ -4590,8 +4684,8 @@
             <p>Higher-is-better metrics are plotted directly on 0-1 axes. Lower-is-better metrics are converted to best/value within the task, while raw values, status reasons, sources, and the two raw128 compact proxy notes remain in the JSON mirrors.</p>
           </article>
           <article class="figure-brief-card">
-            <h3>Score gap audit</h3>
-            <p>The matrix has 180 method-task records and 180 numeric scores. The gap audit remains published as the evidence ledger for which artifacts support each score, including documented proxy axes where raw targets are absent.</p>
+            <h3>Score/proxy audit</h3>
+            <p>The matrix has 180 method-task records and 180 numeric scores. The audit records which artifacts support each score and marks compact-proxy axes where raw targets are absent.</p>
           </article>
         </div>
         <img class="chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v6" alt="Unified 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, scored-axis counts, and proxy notes">
@@ -4707,7 +4801,7 @@
           <article class="suite-line-card">
             <small>1 episode results</small>
             <h3>Task-lab evidence</h3>
-            <p>Minimal and Neural MLP heads are both scored on all 20 public-sample task contracts. This is the cleanest place to inspect whether each task is well-posed.</p>
+            <p>Minimal and Neural MLP heads are both scored on all 20 public-sample task contracts. All 40 scores are direct task-target metrics.</p>
             <div class="suite-line-facts">
               <span><strong>2</strong>methods</span>
               <span><strong>20</strong>task axes</span>
@@ -4718,7 +4812,7 @@
           <article class="suite-line-card">
             <small>128 episode results</small>
             <h3>Scale-up evidence</h3>
-            <p>Metadata/raw baselines and Qwen/Cosmos branches use the aligned 128-episode surface. Compact proxy scores remain marked where a direct raw target is absent.</p>
+            <p>Metadata/raw baselines and Qwen/Cosmos branches use the aligned 128-episode surface. It has 134 direct scores plus 6 compact-proxy scores.</p>
             <div class="suite-line-facts">
               <span><strong>7</strong>methods</span>
               <span><strong>20</strong>task axes</span>
@@ -4727,6 +4821,48 @@
             <a href="assets/charts/episode128_task_model_radar.svg">Open 128-episode radar</a>
           </article>
         </div>
+        <table class="line-table" aria-label="Direct and proxy score ledger by evidence line">
+          <thead>
+            <tr>
+              <th>Line</th>
+              <th>Methods</th>
+              <th>Tasks</th>
+              <th>Scored records</th>
+              <th>Direct scores</th>
+              <th>Proxy scores</th>
+              <th>Machine-readable source</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 sample episode</td>
+              <td>2</td>
+              <td>20</td>
+              <td>40/40</td>
+              <td>40</td>
+              <td>0</td>
+              <td><a href="data/single_episode_task_model_radar.json">single-episode radar JSON</a></td>
+            </tr>
+            <tr>
+              <td>128 selected episodes</td>
+              <td>7</td>
+              <td>20</td>
+              <td>140/140</td>
+              <td>134</td>
+              <td>6 compact-proxy scores, each source-linked and reasoned.</td>
+              <td><a href="data/episode128_task_model_radar.json">128-episode radar JSON</a></td>
+            </tr>
+            <tr>
+              <td>Total public matrix</td>
+              <td>9</td>
+              <td>20</td>
+              <td>180/180</td>
+              <td>174</td>
+              <td>6</td>
+              <td><a href="data/two_evidence_line_result_summary.json">two-line result summary JSON</a></td>
+            </tr>
+          </tbody>
+        </table>
         <div class="artifact-grid">
           <article class="artifact primary-artifact">
             <div>
@@ -5284,6 +5420,16 @@ python scripts/validate_publication_package.py</code></pre>
       ko: "한국어",
       pt: "Português"
     };
+    const siteLanguageShortNames = {
+      en: "EN",
+      "zh-CN": "中",
+      es: "ES",
+      fr: "FR",
+      de: "DE",
+      ja: "日",
+      ko: "한",
+      pt: "PT"
+    };
     const siteLanguageStorageKey = "ropedia-xperience-site-language";
 
     function markTranslationStableRegions() {
@@ -5319,6 +5465,10 @@ python scripts/validate_publication_package.py</code></pre>
     }
 
     function updateLanguageStatus(language, state) {
+      const control = document.querySelector(".site-language");
+      if (control) {
+        control.dataset.short = siteLanguageShortNames[language] || "EN";
+      }
       const status = document.getElementById("siteLanguageStatus");
       if (!status) return;
       const name = siteLanguageNames[language] || language;
@@ -5368,6 +5518,10 @@ python scripts/validate_publication_package.py</code></pre>
       const storedLanguage = readStoredLanguage();
       if (siteLanguageNames[storedLanguage]) {
         siteLanguageSelector.value = storedLanguage;
+        const control = document.querySelector(".site-language");
+        if (control) {
+          control.dataset.short = siteLanguageShortNames[storedLanguage] || "EN";
+        }
         setTranslateCookie(storedLanguage);
       }
       siteLanguageSelector.addEventListener("change", (event) => {

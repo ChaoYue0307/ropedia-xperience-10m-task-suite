@@ -128,9 +128,52 @@ reading metrics.
   </tbody>
 </table>
 
+### Result Ledger
+
+<table>
+  <thead>
+    <tr>
+      <th width="20%">Line</th>
+      <th width="14%">Methods</th>
+      <th width="14%">Tasks</th>
+      <th width="18%">Scored records</th>
+      <th width="16%">Direct scores</th>
+      <th>Proxy scores</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1 sample episode</strong></td>
+      <td>2</td>
+      <td>20</td>
+      <td>40/40</td>
+      <td>40</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><strong>128 selected episodes</strong></td>
+      <td>7</td>
+      <td>20</td>
+      <td>140/140</td>
+      <td>134</td>
+      <td>6 compact-proxy scores, each source-linked and reasoned.</td>
+    </tr>
+    <tr>
+      <td><strong>Total public matrix</strong></td>
+      <td>9</td>
+      <td>20</td>
+      <td>180/180</td>
+      <td>174</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+
 Result entry points:
 [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md),
 [`two_evidence_lines.json`](docs/data/two_evidence_lines.json),
+[`TWO_EVIDENCE_LINE_RESULT_SUMMARY.md`](TWO_EVIDENCE_LINE_RESULT_SUMMARY.md),
+[`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json),
 [`single_episode_task_model_radar.json`](docs/data/single_episode_task_model_radar.json),
 [`episode128_task_model_radar.json`](docs/data/episode128_task_model_radar.json),
 [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), and
@@ -165,7 +208,7 @@ Result entry points:
     <tr>
       <td><strong>Compare results</strong></td>
       <td><a href="RESEARCH_TAKEAWAYS.md">Research takeaways</a></td>
-      <td><a href="docs/data/task_method_20_result_matrix.json">20-result matrix</a><br><a href="docs/data/unified_task_model_radar.json">radar JSON</a><br><a href="docs/data/task_method_20_gap_audit.json">gap audit</a></td>
+      <td><a href="docs/data/two_evidence_line_result_summary.json">two-line result summary</a><br><a href="docs/data/task_method_20_result_matrix.json">20-result matrix</a><br><a href="docs/data/unified_task_model_radar.json">radar JSON</a><br><a href="docs/data/task_method_20_gap_audit.json">score/proxy audit</a></td>
     </tr>
     <tr>
       <td><strong>Understand one sample</strong></td>
@@ -653,7 +696,7 @@ task metrics. The machine-readable copies are
 [`docs/data/unified_task_model_radar.json`](docs/data/unified_task_model_radar.json)
 and
 [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json);
-the explicit score-gap ledger is
+the explicit score/proxy ledger is
 [`docs/data/task_method_20_gap_audit.json`](docs/data/task_method_20_gap_audit.json)
 and [`TASK_METHOD_20_GAP_AUDIT.md`](TASK_METHOD_20_GAP_AUDIT.md);
 the reader-facing matrix is

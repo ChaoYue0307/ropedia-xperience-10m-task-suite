@@ -46,10 +46,10 @@ Ce dépôt transforme l'épisode public d'exemple Xperience-10M en laboratoire d
 
 | Ligne | Unité de données | Méthodes et résultats | Usage |
 | --- | --- | --- | --- |
-| 1 épisode d'exemple | 5,821 frames; 1,161 fenêtres alignées de 20 frames; 8,546 dimensions. | Minimal + Neural MLP sur 20 tâches; 40/40 enregistrements scorés. | Inspecter les fichiers sample, les définitions de tâches, les baselines reproductibles et la validité des tâches. |
-| 128 épisodes sélectionnés | Split 96/16/16; 34,269 fenêtres exportées; features public-safe liées aux chemins gated officiels. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super et Cosmos3-Nano; 140/140 enregistrements scorés. | Comparer les baselines et branches de modèles sur le même split; les proxy targets restent visibles. |
+| 1 épisode d'exemple | 5,821 frames; 1,161 fenêtres alignées de 20 frames; 8,546 dimensions. | Minimal + Neural MLP sur 20 tâches; 40/40 enregistrements scorés; tous sont des direct scores. | Inspecter les fichiers sample, les définitions de tâches, les baselines reproductibles et la validité des tâches. |
+| 128 épisodes sélectionnés | Split 96/16/16; 34,269 fenêtres exportées; features public-safe liées aux chemins gated officiels. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super et Cosmos3-Nano; 140/140 enregistrements scorés; 134 direct + 6 compact proxy. | Comparer les baselines et branches de modèles sur le même split; les proxy targets restent visibles. |
 
-Entrées : [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json).
+Entrées : [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
 
 ## Parcours Rapide
 
@@ -67,7 +67,7 @@ Entrées : [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_line
 
 - Données : fenêtres de 20 frames reliant vidéo, audio, profondeur, pose/SLAM, mocap, IMU, calibration et annotations de langage.
 - Tâches : 20 contrats couvrant reconnaissance, prévision, retrieval, reconstruction, ordre, synchronisation, horizon long, relations action-objet et sensor bridge.
-- Résultats : minimal/NN sur l'épisode public couvrent 20/20; les branches 128 épisodes séparent metadata, raw features, Qwen3 et Cosmos; la matrice publique atteint 180/180 enregistrements scorés avec proxy targets visibles.
+- Résultats : minimal/NN sur l'épisode public couvrent 20/20; les branches 128 épisodes séparent metadata, raw features, Qwen3 et Cosmos; la matrice publique atteint 180/180 enregistrements scorés: 174 direct et 6 compact proxy, avec proxy targets visibles.
 - Directions : spatial intelligence, human-video world model et vision-language-action sont documentés avec tâches et preuves nécessaires.
 
 ## Frontière Publique

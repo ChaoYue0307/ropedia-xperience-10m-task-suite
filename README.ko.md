@@ -46,10 +46,10 @@
 
 | 라인 | 데이터 단위 | 방법과 결과 | 용도 |
 | --- | --- | --- | --- |
-| 1 sample episode | 5,821 frames, 1,161 aligned 20-frame windows, 8,546 dimensions. | Minimal + Neural MLP가 20 tasks 전체를 평가; 40/40 scored records. | Raw sample files, task definitions, reproducible baselines, task validity 확인. |
-| 128 selected episodes | 96/16/16 split, 34,269 exported windows, public-safe features가 official gated episode paths에 연결됨. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, Cosmos3-Nano; 140/140 scored records. | 같은 split에서 baselines와 model branches 비교; proxy targets는 명시 유지. |
+| 1 sample episode | 5,821 frames, 1,161 aligned 20-frame windows, 8,546 dimensions. | Minimal + Neural MLP가 20 tasks 전체를 평가; 40/40 scored records; 모두 direct scores. | Raw sample files, task definitions, reproducible baselines, task validity 확인. |
+| 128 selected episodes | 96/16/16 split, 34,269 exported windows, public-safe features가 official gated episode paths에 연결됨. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, Cosmos3-Nano; 140/140 scored records; 134 direct + 6 compact proxy. | 같은 split에서 baselines와 model branches 비교; proxy targets는 명시 유지. |
 
-입구: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json).
+입구: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
 
 ## 빠른 경로
 
@@ -67,7 +67,7 @@
 
 - 데이터: 20-frame window가 video, audio, depth, pose/SLAM, mocap, IMU, calibration, language annotation을 연결합니다.
 - 과제: 인식, 예측, retrieval, reconstruction, order, sync, long-horizon, action-object binding, sensor bridge 등 20개 계약.
-- 결과: single-episode minimal/NN은 20/20; 128-episode 레이어는 metadata, raw feature, Qwen3, Cosmos를 증거 유형별로 분리합니다. 공개 matrix는 180/180 scored records이며 proxy targets를 명시합니다.
+- 결과: single-episode minimal/NN은 20/20; 128-episode 레이어는 metadata, raw feature, Qwen3, Cosmos를 증거 유형별로 분리합니다. 공개 matrix는 180/180 scored records이며 174 direct와 6 compact proxy를 분리하고 proxy targets를 명시합니다.
 - 방향: spatial intelligence, human-video world model, vision-language-action에 대해 과제 매핑과 필요한 증거를 기록합니다.
 
 ## 공개 경계

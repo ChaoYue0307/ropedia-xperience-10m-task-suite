@@ -18,9 +18,12 @@
       "task_axes": 20,
       "method_task_records": 40,
       "scored_records": 40,
+      "direct_scored_records": 40,
+      "proxy_scored_records": 0,
       "best_use": "Inspect raw files, understand each task, rerun local baselines, and debug task quality.",
       "primary_artifacts": [
         "docs/data/single_episode_task_model_radar.json",
+        "docs/data/two_evidence_line_result_summary.json",
         "results/episode_task_suite/summary_report.json",
         "results/episode_task_suite/feature_manifest.json",
         "docs/single_episode_explorer.html"
@@ -49,10 +52,13 @@
       "task_axes": 20,
       "method_task_records": 140,
       "scored_records": 140,
+      "direct_scored_records": 134,
+      "proxy_scored_records": 6,
       "proxy_policy": "Proxy flags remain visible where the public export lacks a direct raw target.",
       "best_use": "Compare same-split baselines and model branches while keeping evidence type explicit.",
       "primary_artifacts": [
         "docs/data/episode128_task_model_radar.json",
+        "docs/data/two_evidence_line_result_summary.json",
         "docs/data/xperience10m_128_episode_feature_index.json",
         "docs/data/omni_model_comparison.json",
         "docs/data/task_method_20_gap_audit.json"
@@ -64,6 +70,9 @@
     "methods": 9,
     "method_task_records": 180,
     "scored_records": 180,
+    "direct_scored_records": 174,
+    "proxy_scored_records": 6,
+    "summary_artifact": "docs/data/two_evidence_line_result_summary.json",
     "artifact": "docs/data/task_method_20_result_matrix.json"
   }
 }

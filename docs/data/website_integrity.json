@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-21T07:14:14+00:00",
+  "generated_at_utc": "2026-06-21T08:12:52+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 235,
+    "local_references": 240,
     "external_reference_count": 152,
-    "json_files": 52,
+    "json_files": 53,
     "image_assets_referenced": 28,
     "failure_count": 0
   },
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 110785,
-      "evidence_index": 150703
+      "overview_index": 112836,
+      "evidence_index": 152914
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 110785,
-      "protocol_index": 146884,
-      "evidence_index": 150703
+      "overview_index": 112836,
+      "protocol_index": 149095,
+      "evidence_index": 152914
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -180,7 +180,7 @@
       "status": "pass",
       "reason": "The Suite anchor should show the task-suite map before the modality atlas.",
       "first_marker_index": 471,
-      "second_marker_index": 3805
+      "second_marker_index": 3762
     },
     {
       "name": "suite_modality_atlas_contains_seven_cards",
@@ -277,7 +277,7 @@
     {
       "path": "index.html",
       "id_count": 95,
-      "reference_count": 207,
+      "reference_count": 212,
       "image_count": 34
     },
     {
@@ -351,7 +351,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 1410035,
+      "bytes": 1413010,
       "top_level_type": "dict"
     },
     {
@@ -401,7 +401,7 @@
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 10662,
+      "bytes": 10819,
       "top_level_type": "dict"
     },
     {
@@ -530,8 +530,13 @@
       "top_level_type": "dict"
     },
     {
+      "path": "data/two_evidence_line_result_summary.json",
+      "bytes": 11383,
+      "top_level_type": "dict"
+    },
+    {
       "path": "data/two_evidence_lines.json",
-      "bytes": 2421,
+      "bytes": 2816,
       "top_level_type": "dict"
     },
     {
@@ -541,7 +546,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 20254,
+      "bytes": 20380,
       "top_level_type": "dict"
     },
     {
