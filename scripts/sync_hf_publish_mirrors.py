@@ -118,7 +118,7 @@ cards without losing the evidence trail.
 """
 QWEN_COMPARISON_MARKER = "docs/data/qwen3_v5_v6_comparison.json"
 QWEN_COMPARISON_ROW = (
-    "| Compare Qwen3 v5/v6 diagnostic branches | "
+    "| Compare Qwen3-Omni v5/v6 diagnostic runs | "
     "`docs/data/qwen3_v5_v6_comparison.json` |"
 )
 QWEN_LINEAGE_MARKER = "docs/data/qwen3_omni_run_lineage.json"

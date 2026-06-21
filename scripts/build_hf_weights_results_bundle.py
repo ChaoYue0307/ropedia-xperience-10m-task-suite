@@ -194,7 +194,7 @@ canonical per-adapter repositories.
   retained for provenance because it is byte-identical between the old
   `adapter_lora` and `hf_upload` local folders.
 - `weights/qwen3_omni_v6_rank64_lora/`: the current verified Qwen3-Omni v6
-  rank64 LoRA adapter for the selected 128-episode diagnostic branch.
+  rank64 LoRA adapter for the selected 128-episode diagnostic row.
 - `weights/cosmos3_super_forward_dynamics_lora/`: the Cosmos3-Super
   forward-dynamics LoRA adapter over camera-pose proxy targets.
 - `analysis/`: compact analysis files and the 20-task result matrix.
