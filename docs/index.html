@@ -66,7 +66,7 @@
       --font-btn: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --font-mono: "Space Grotesk", "SF Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
       --nav-height: 82px;
-      --tab-stack-offset: 218px;
+      --tab-stack-offset: 176px;
     }
 
     * { box-sizing: border-box; }
@@ -587,9 +587,9 @@
       top: var(--nav-height);
       z-index: 14;
       border-bottom: 1px solid var(--soft-line);
-      background: rgba(2, 5, 2, 0.88);
+      background: rgba(2, 5, 2, 0.94);
       backdrop-filter: blur(18px);
-      padding: 23px 0 25px;
+      padding: 10px 0 12px;
     }
     .project-tabs {
       display: grid;
@@ -639,9 +639,9 @@
     .section-tabs {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 8px;
       overflow-x: visible;
-      padding-top: 19px;
+      padding-top: 0;
       padding-bottom: 2px;
       scrollbar-width: thin;
       scrollbar-color: rgba(204, 255, 160, 0.42) rgba(7, 18, 7, 0.72);
@@ -652,15 +652,15 @@
       align-items: center;
       justify-content: center;
       flex: 0 0 auto;
-      min-height: 58px;
+      min-height: 40px;
       border: 1px solid rgba(204, 255, 160, 0.18);
       border-radius: 999px;
       background: rgba(7, 18, 7, 0.78);
       color: #c8d5c2;
       cursor: pointer;
-      padding: 0 22px;
+      padding: 0 15px;
       font-family: var(--font-ui);
-      font-size: clamp(14px, 1.02vw, 20px);
+      font-size: clamp(12px, 0.82vw, 15px);
       font-weight: 660;
       line-height: 1.15;
       text-align: center;
@@ -682,20 +682,18 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      margin-top: 14px;
-      padding: 12px 14px;
-      border: 1px solid rgba(204, 255, 160, 0.16);
-      border-radius: 14px;
-      background: rgba(7, 18, 7, 0.62);
+      gap: 10px;
+      margin-top: 7px;
+      padding: 8px 0 0;
+      border-top: 1px solid rgba(204, 255, 160, 0.12);
       color: #cbd8c5;
-      font-size: 13px;
+      font-size: 12px;
       line-height: 1.35;
     }
     .section-orientation strong {
       color: var(--ink);
       font-family: var(--font-ui);
-      font-size: 14px;
+      font-size: 13px;
     }
     .section-orientation span {
       color: var(--muted);
@@ -3289,7 +3287,7 @@
     @media (max-width: 1280px) {
       :root {
         --nav-height: 68px;
-        --tab-stack-offset: 190px;
+        --tab-stack-offset: 152px;
       }
       .site-nav .wrap,
       .project-tabs-shell .wrap {
@@ -3447,7 +3445,7 @@
     @media (max-width: 640px) {
       :root {
         --nav-height: 104px;
-        --tab-stack-offset: 168px;
+        --tab-stack-offset: 188px;
       }
       .site-nav {
         min-height: var(--nav-height);
@@ -3618,7 +3616,7 @@
         min-width: min(76vw, 210px);
         min-height: 52px;
       }
-      main > section { scroll-margin-top: 112px; }
+      main > section { scroll-margin-top: var(--tab-stack-offset); }
       html,
       body {
         max-width: 100%;
@@ -4015,8 +4013,8 @@
   </header>
 
   <main id="main" class="tabbed" data-active-tab="start">
-    <div class="project-tabs-shell" aria-label="Project section tabs">
-      <div class="wrap project-tabs" role="tablist" aria-label="Project sections">
+    <div class="project-tabs-shell" aria-label="Current section navigation">
+      <div class="wrap project-tabs" role="tablist" aria-label="Project sections" hidden aria-hidden="true">
         <button type="button" class="project-tab active" id="tab-start" role="tab" data-tab-key="start" data-default-section="overview" aria-selected="true" aria-pressed="true" aria-controls="overview roadmap development-directions reading-path">
           <strong>Start</strong>
           <span>project overview and roadmap</span>
@@ -4042,10 +4040,10 @@
           <span>research artifacts and scale-up</span>
         </button>
       </div>
-      <div class="wrap section-tabs" id="sectionTabs" role="tablist" aria-label="Sections inside the selected project tab"></div>
+      <div class="wrap section-tabs" id="sectionTabs" role="tablist" aria-label="Sections in the current area"></div>
       <div class="wrap section-orientation" id="sectionOrientation" aria-live="polite">
-        <strong>You are in: Start / Project Overview</strong>
-        <span>Use the section pills to move within this section, or jump to the full reader map.</span>
+        <strong>Start / Project Overview</strong>
+        <span>Scope, evidence boundaries, and recommended entry paths.</span>
         <a href="#reader-map">Reader map</a>
       </div>
     </div>
@@ -6132,9 +6130,9 @@ python scripts/validate_publication_package.py</code></pre>
       if (!sectionOrientation) return;
       const tabLabel = tabLabels[tabKey] || tabKey;
       const sectionLabel = sectionLabels[sectionId] || labelForSection(document.getElementById(sectionId));
-      const description = sectionDescriptions[sectionId] || "Use the section pills to move within this section without losing the evidence trail.";
+      const description = sectionDescriptions[sectionId] || "Evidence, files, and source links for this part of the suite.";
       sectionOrientation.innerHTML = `
-        <strong>You are in: ${tabLabel} / ${sectionLabel}</strong>
+        <strong>${tabLabel} / ${sectionLabel}</strong>
         <span>${description}</span>
         <a href="#reader-map">Reader map</a>
       `;
