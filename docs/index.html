@@ -119,7 +119,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 14px;
     }
     .brand {
       display: flex;
@@ -192,31 +192,29 @@
     .nav-external-actions {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      padding: 4px;
-      border: 1px solid rgba(204, 255, 160, 0.24);
+      gap: 5px;
+      padding: 0;
+      border: 0;
       border-radius: 999px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025)),
-        rgba(4, 9, 4, 0.82);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.018), 0 14px 38px rgba(0, 0, 0, 0.18);
+      background: transparent;
+      box-shadow: none;
       flex: 0 0 auto;
       white-space: nowrap;
     }
     .nav-action {
-      border: 0;
-      background: transparent;
+      border: 1px solid rgba(204, 255, 160, 0.26);
+      background: rgba(204, 255, 160, 0.07);
       color: #dfeadc;
-      height: 34px;
+      height: 42px;
       min-width: 0;
-      padding: 0 11px 0 6px;
+      padding: 0 14px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
+      gap: 8px;
       text-decoration: none;
       font-family: var(--font-btn);
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 760;
       line-height: 1;
       white-space: nowrap;
@@ -226,9 +224,9 @@
     }
     .nav-action::before {
       content: attr(data-mark);
-      width: 24px;
-      height: 24px;
-      display: inline-flex;
+      width: 26px;
+      height: 26px;
+      display: none;
       align-items: center;
       justify-content: center;
       border: 1px solid rgba(204, 255, 160, 0.28);
@@ -242,16 +240,17 @@
       flex: 0 0 auto;
     }
     .nav-action-hf {
-      min-width: 76px;
+      min-width: 54px;
     }
     .nav-action-repo {
-      min-width: 86px;
-      background: rgba(204, 255, 160, 0.14);
-      color: var(--green);
-    }
-    .nav-action-repo::before {
+      min-width: 78px;
       background: var(--green);
       border-color: var(--green);
+      color: #020502;
+    }
+    .nav-action-repo::before {
+      background: rgba(2, 5, 2, 0.10);
+      border-color: rgba(2, 5, 2, 0.24);
       color: #020502;
     }
     .nav-action-text-short {
@@ -261,20 +260,24 @@
       transform: translateY(-1px);
       background: rgba(204, 255, 160, 0.11);
       color: var(--green);
-      box-shadow: inset 0 0 0 1px rgba(204, 255, 160, 0.08);
+      border-color: rgba(204, 255, 160, 0.52);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
     }
     .nav-action-repo:hover {
-      background: var(--green);
+      background: #d8ffb7;
       color: #020502;
     }
     .nav-tools {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex: 0 1 auto;
+      gap: 10px;
+      flex: 0 0 auto;
       margin-left: auto;
-      padding-left: 10px;
-      border-left: 1px solid rgba(204, 255, 160, 0.16);
+      padding: 7px;
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: 999px;
+      background: rgba(2, 5, 2, 0.92);
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.24);
       position: relative;
       z-index: 2;
       min-width: 0;
@@ -294,7 +297,7 @@
       font-weight: 700;
       white-space: nowrap;
       flex: 0 1 auto;
-      max-width: 128px;
+      max-width: 118px;
       overflow: hidden;
       position: relative;
     }
@@ -317,7 +320,7 @@
     .site-language select {
       width: 100%;
       min-width: 0;
-      max-width: 104px;
+      max-width: 94px;
       border: 0;
       outline: 0;
       background: transparent;
@@ -3310,6 +3313,11 @@
         font-size: 13px;
       }
     }
+    @media (max-width: 1880px) {
+      .nav-links a.nav-optional {
+        display: none;
+      }
+    }
     @media (max-width: 1740px) {
       .nav-links {
         gap: 6px;
@@ -3319,23 +3327,43 @@
         min-height: 42px;
         padding: 0 11px;
       }
+      .site-language {
+        width: 58px;
+        max-width: 58px;
+        justify-content: center;
+      }
+      .site-language::before {
+        display: block;
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--ink);
+        font-weight: 780;
+        line-height: 1;
+      }
       .site-language select {
-        max-width: 92px;
+        min-width: 0;
+        max-width: none;
+        color: transparent;
+        padding-right: 18px;
+        background-position:
+          calc(100% - 9px) 52%,
+          calc(100% - 4px) 52%;
       }
       .nav-external-actions {
-        gap: 3px;
-        padding: 3px;
+        gap: 5px;
       }
       .nav-action {
-        height: 34px;
-        min-width: 58px;
-        padding: 0 10px 0 5px;
+        height: 38px;
+        min-width: 52px;
+        padding: 0 13px;
       }
       .nav-action-hf {
-        min-width: 56px;
+        min-width: 54px;
       }
       .nav-action-repo {
-        min-width: 68px;
+        min-width: 72px;
       }
       .nav-action-text-full {
         display: none;
@@ -3345,9 +3373,6 @@
       }
     }
     @media (max-width: 1560px) {
-      .nav-links a.nav-optional {
-        display: none;
-      }
       .brand-logo {
         width: 46px;
         height: 46px;
@@ -3401,8 +3426,11 @@
     }
     @media (max-width: 640px) {
       :root {
-        --nav-height: 64px;
-        --tab-stack-offset: 128px;
+        --nav-height: 104px;
+        --tab-stack-offset: 168px;
+      }
+      .site-nav {
+        min-height: var(--nav-height);
       }
       .wrap { width: min(100% - 28px, var(--max)); }
       .site-nav .wrap,
@@ -3411,6 +3439,7 @@
       }
       .nav-inner {
         position: relative;
+        height: 64px;
       }
       .brand {
         font-size: 16px;
@@ -3431,10 +3460,10 @@
         max-width: 58px;
         justify-content: center;
         position: absolute;
-        left: 146px;
+        left: 62px;
         right: auto;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 13px;
+        transform: none;
       }
       .site-language::before {
         display: block;
@@ -3448,6 +3477,7 @@
       }
       .site-language select {
         width: 100%;
+        min-width: 0;
         max-width: none;
         color: transparent;
         padding-right: 17px;
@@ -3457,27 +3487,32 @@
       }
       .nav-tools {
         gap: 6px;
-        padding-left: 0;
-        border-left: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
         flex: 0 0 auto;
-        width: 0;
+        width: auto;
+        margin-left: 0;
+        margin-right: 0;
         justify-content: flex-end;
         overflow: visible;
         position: static;
       }
       .nav-external-actions {
-        padding: 3px;
+        padding: 0;
         flex: 0 0 auto;
         position: absolute;
-        left: 58px;
+        left: 62px;
         right: auto;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 66px;
+        transform: none;
       }
       .nav-action {
-        min-width: 28px;
+        min-width: 42px;
         height: 32px;
-        padding: 0 4px;
+        padding: 0 10px;
         font-size: 11.5px;
         gap: 5px;
       }
@@ -3488,11 +3523,18 @@
       }
       .nav-action-repo {
         display: inline-flex;
-        min-width: 28px;
-        padding: 0 4px;
+        min-width: 42px;
+        padding: 0 10px;
+      }
+      .nav-action-repo .nav-action-text-short {
+        font-size: 0;
+      }
+      .nav-action-repo .nav-action-text-short::after {
+        content: "GH";
+        font-size: 11.5px;
       }
       .nav-action-text-short {
-        display: none;
+        display: inline;
       }
       .project-tabs-shell { top: var(--nav-height); padding: 10px 0; }
       .project-tabs {
@@ -3655,25 +3697,29 @@
         gap: 7px;
       }
       .site-language {
-        width: 54px;
-        max-width: 54px;
+        width: 50px;
+        max-width: 50px;
         padding: 0 6px;
       }
       .site-language select {
+        min-width: 0;
         max-width: none;
         padding-right: 17px;
       }
       .nav-tools {
-        gap: 4px;
+        gap: 3px;
+        padding: 4px;
+        margin-right: 0;
       }
       .nav-external-actions {
-        gap: 2px;
-        padding: 2px;
+        gap: 3px;
+        padding: 0;
       }
       .nav-action {
-        min-width: 24px;
+        min-width: 34px;
         height: 30px;
-        padding: 0 3px;
+        padding: 0 7px;
+        font-size: 10.8px;
       }
       .nav-action::before {
         width: 20px;
@@ -3681,11 +3727,14 @@
         font-size: 8.5px;
       }
       .nav-action-text-short {
-        display: none;
+        display: inline;
       }
       .nav-action-repo {
-        min-width: 24px;
-        padding: 0 3px;
+        min-width: 34px;
+        padding: 0 7px;
+      }
+      .nav-action-repo .nav-action-text-short::after {
+        font-size: 10.8px;
       }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -3737,11 +3786,11 @@
         </div>
         <div class="nav-external-actions" aria-label="External project links">
           <a class="nav-action nav-action-hf" data-mark="HF" href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite" aria-label="Open Hugging Face Space">
-            <span class="nav-action-text-full">HF Space</span>
+            <span class="nav-action-text-full">HF</span>
             <span class="nav-action-text-short">HF</span>
           </a>
           <a class="nav-action nav-action-repo" data-mark="GH" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite" aria-label="Open GitHub repository">
-            <span class="nav-action-text-full">GitHub</span>
+            <span class="nav-action-text-full">Repo</span>
             <span class="nav-action-text-short">Repo</span>
           </a>
         </div>
