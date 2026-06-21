@@ -112,29 +112,36 @@
     }
     .site-nav .wrap,
     .project-tabs-shell .wrap {
-      width: min(100% - 80px, 1880px);
+      width: min(100% - 48px, 1900px);
     }
     .nav-inner {
       height: var(--nav-height);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
     }
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
+      flex: 0 1 auto;
+      min-width: 0;
       font-family: var(--font-ui);
       font-weight: 700;
-      font-size: clamp(18px, 1.36vw, 27px);
+      font-size: clamp(18px, 1.22vw, 25px);
       letter-spacing: 0;
       text-decoration: none;
       white-space: nowrap;
     }
+    .brand span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     .brand-logo {
-      width: 54px;
-      height: 54px;
+      width: 50px;
+      height: 50px;
+      flex: 0 0 auto;
       display: block;
       border-radius: 10px;
       border: 1px solid rgba(204, 255, 160, 0.42);
@@ -145,19 +152,24 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: flex-end;
+      gap: 8px;
+      flex: 1 1 auto;
       font-family: var(--font-btn);
-      font-size: clamp(14px, 0.93vw, 19px);
+      font-size: clamp(13px, 0.82vw, 17px);
       font-weight: 650;
       color: #c6d0c2;
       min-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
     }
     .nav-links a {
-      min-height: 48px;
+      min-height: 44px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0 17px;
+      flex: 0 0 auto;
+      padding: 0 14px;
       border: 1px solid transparent;
       border-radius: 999px;
       background: var(--ropedia-pill);
@@ -179,8 +191,8 @@
       border: 1px solid var(--green);
       background: var(--green);
       color: #020502;
-      height: 48px;
-      padding: 0 18px;
+      height: 44px;
+      padding: 0 16px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -190,8 +202,8 @@
       border-radius: 999px;
     }
     .nav-action-hf {
-      width: 56px;
-      min-width: 56px;
+      width: 52px;
+      min-width: 52px;
       padding: 0;
     }
     .nav-action:hover {
@@ -212,18 +224,21 @@
     .nav-tools {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      flex: 0 0 auto;
       margin-left: auto;
+      position: relative;
+      z-index: 2;
     }
     .site-language {
-      min-height: 48px;
+      min-height: 44px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       border: 1px solid rgba(204, 255, 160, 0.24);
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.05);
-      padding: 0 12px;
+      padding: 0 10px;
       color: #dfeadc;
       font-family: var(--font-btn);
       font-size: clamp(13px, 0.84vw, 16px);
@@ -234,7 +249,7 @@
       color: rgba(244, 248, 239, 0.70);
     }
     .site-language select {
-      min-width: 122px;
+      min-width: 108px;
       border: 0;
       outline: 0;
       background: transparent;
@@ -2890,6 +2905,41 @@
         font-size: 13px;
       }
     }
+    @media (max-width: 1680px) {
+      .nav-links {
+        gap: 6px;
+        font-size: clamp(12px, 0.76vw, 15px);
+      }
+      .nav-links a {
+        min-height: 42px;
+        padding: 0 11px;
+      }
+      .site-language label {
+        display: none;
+      }
+      .site-language select {
+        min-width: 98px;
+      }
+      .nav-action {
+        height: 42px;
+      }
+      .nav-action-hf {
+        width: 48px;
+        min-width: 48px;
+      }
+    }
+    @media (max-width: 1480px) {
+      .nav-links a.nav-optional {
+        display: none;
+      }
+      .brand-logo {
+        width: 46px;
+        height: 46px;
+      }
+    }
+    @media (max-width: 1360px) {
+      .nav-links { display: none; }
+    }
     @media (max-width: 960px) {
       .hero-inner, .two-col { grid-template-columns: 1fr; }
       .hero,
@@ -3092,10 +3142,10 @@
         <a href="#models">Results</a>
         <a href="#directions">Directions</a>
         <a href="research_roadmap.html">Roadmap</a>
-        <a href="#reader-map">Reader Map</a>
-        <a href="#walkthroughs">Demo</a>
-        <a href="single_episode_explorer.html">Explorer</a>
-        <a href="#artifacts">Files</a>
+        <a class="nav-optional" href="#reader-map">Reader Map</a>
+        <a class="nav-optional" href="#walkthroughs">Demo</a>
+        <a class="nav-optional" href="single_episode_explorer.html">Explorer</a>
+        <a class="nav-optional" href="#artifacts">Files</a>
       </div>
       <div class="nav-tools">
         <div class="site-language notranslate" translate="no">
