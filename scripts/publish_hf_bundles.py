@@ -96,6 +96,10 @@ ARTIFACT_VIEWER_CONFIG = """configs:
     data_files:
       - split: public_sample
         path: viewer/episode_windows.parquet
+  - config_name: selected_128_windows
+    data_files:
+      - split: selected_128
+        path: viewer/selected128_windows.parquet
 """
 ENHANCEMENT_MARKER = "docs/data/task_suite_enhancement_128.json"
 ENHANCEMENT_CARD_BLOCK = """
@@ -199,8 +203,101 @@ def modality_summary(modality_atlas: dict) -> str:
     return "|".join(names)
 
 
+def parse_multiscale_window_id(window_id: str) -> dict[str, int | str]:
+    prefix = window_id.split(":", 1)[0]
+    parts = prefix.split("_")
+    parsed: dict[str, int | str] = {
+        "window_scale": parts[0] if parts else "",
+        "window_frames": 0,
+        "stride_frames": 0,
+    }
+    for part in parts:
+        if part.endswith("f") and part[:-1].isdigit():
+            parsed["window_frames"] = int(part[:-1])
+        elif part.startswith("stride") and part.removeprefix("stride").isdigit():
+            parsed["stride_frames"] = int(part.removeprefix("stride"))
+    return parsed
+
+
+def selected128_episode_key_to_path(episode_key: str) -> str:
+    if "__" not in episode_key:
+        return episode_key.replace("__", "/")
+    session_id, ep_id = episode_key.split("__", 1)
+    return f"{session_id}/{ep_id}"
+
+
+def write_selected128_viewer_table(artifact_root: Path, viewer_dir: Path) -> None:
+    """Expose selected-128 exported windows as a separate HF dataset config."""
+    windows_path = artifact_root / "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/windows.csv"
+    feature_index_path = artifact_root / "docs/data/xperience10m_128_episode_feature_index.json"
+    feature_index = load_json(feature_index_path)
+    selection_summary = feature_index.get("selection_summary", {})
+    processed_summary = feature_index.get("processed_summary", {})
+    qwen_export = processed_summary.get("qwen_v6_multiscale_export", {})
+    selected_source_episode_count = int(selection_summary.get("selected_episode_count", 128) or 128)
+    expected_rows = int(qwen_export.get("num_samples", 34269) or 34269)
+    expected_window_episode_count = int(qwen_export.get("num_episodes", 119) or 119)
+
+    rows = []
+    with windows_path.open("r", encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle):
+            parsed = parse_multiscale_window_id(row["id"])
+            start_frame = int(row["start_frame"])
+            end_frame = int(row["end_frame"])
+            row_id = row["id"]
+            episode_id = row["episode_id"]
+            rows.append(
+                {
+                    "evidence_line": "selected_128_episodes",
+                    "source_dataset_repo": "ropedia-ai/xperience-10m",
+                    "source_access": "gated_upstream_not_redistributed",
+                    "source_episode_id": episode_id,
+                    "official_episode_path": selected128_episode_key_to_path(episode_id),
+                    "window_id": row_id,
+                    "window_scale": parsed["window_scale"],
+                    "window_frames": parsed["window_frames"],
+                    "stride_frames": parsed["stride_frames"],
+                    "split": row["split"],
+                    "start_frame": start_frame,
+                    "end_frame": end_frame,
+                    "center_frame": (start_frame + end_frame) // 2,
+                    "main_task": row["main_task"],
+                    "selected_source_episode_count": selected_source_episode_count,
+                    "exported_window_episode_count": expected_window_episode_count,
+                    "exported_window_count": expected_rows,
+                    "split_policy": "selected 96/16/16 episode split",
+                    "feature_index": "docs/data/xperience10m_128_episode_feature_index.json",
+                    "source_window_table": windows_path.relative_to(artifact_root).as_posix(),
+                    "raw_data_included": False,
+                }
+            )
+
+    if len(rows) != expected_rows:
+        raise RuntimeError(f"Expected {expected_rows} selected-128 rows, found {len(rows)} in {windows_path}")
+    episode_count = len({row["source_episode_id"] for row in rows})
+    if episode_count != expected_window_episode_count:
+        raise RuntimeError(f"Expected {expected_window_episode_count} exported-window episodes, found {episode_count}")
+    if selected_source_episode_count < episode_count:
+        raise RuntimeError(
+            f"Selected source episode count {selected_source_episode_count} is smaller than exported episode count {episode_count}"
+        )
+
+    jsonl_path = viewer_dir / "selected128_windows.jsonl"
+    jsonl_path.write_text(
+        "\n".join(json.dumps(row, ensure_ascii=True) for row in rows) + "\n",
+        encoding="utf-8",
+    )
+    try:
+        import pandas as pd
+
+        parquet_path = viewer_dir / "selected128_windows.parquet"
+        pd.DataFrame(rows).to_parquet(parquet_path, index=False)
+    except ImportError:
+        print("pandas/pyarrow unavailable; wrote selected-128 JSONL viewer fallback only")
+
+
 def ensure_artifact_dataset_viewer_config(hf_root: Path) -> None:
-    """Expose the public sample episode as HF-viewable window rows."""
+    """Expose public sample and selected-128 windows as separate HF-viewable tables."""
     artifact_root = hf_root / "artifacts"
     readme_path = artifact_root / "README.md"
     viewer_dir = artifact_root / "viewer"
@@ -272,6 +369,7 @@ def ensure_artifact_dataset_viewer_config(hf_root: Path) -> None:
         pd.DataFrame(rows).to_parquet(parquet_path, index=False)
     except ImportError:
         print("pandas/pyarrow unavailable; wrote JSONL viewer fallback only")
+    write_selected128_viewer_table(artifact_root, viewer_dir)
     (viewer_dir / "dataset_viewer_summary.jsonl").unlink(missing_ok=True)
 
     if not readme_path.exists():

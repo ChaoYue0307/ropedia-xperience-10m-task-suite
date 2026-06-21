@@ -109,6 +109,8 @@ CARD_FRESHNESS_EXPECTATIONS = [
             "xperience10m-logo-social-card.png",
             "derived artifacts",
             "Raw Xperience-10M videos",
+            "selected_128_windows",
+            "viewer/selected128_windows.parquet",
             "Qwen3-Omni",
         ],
     },

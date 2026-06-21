@@ -90,7 +90,13 @@ XPERIENCE128_ARTIFACT_ROW = (
     "`XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md`, "
     "`docs/data/xperience10m_128_episode_feature_index.json` |"
 )
-XPERIENCE128_CARD_BLOCK = """
+XPERIENCE128_VIEWER_NOTE = """The Hugging Face artifact dataset exposes the 34,269 selected-128 exported
+windows as a separate viewer config, `selected_128_windows`, with split
+`selected_128` at `viewer/selected128_windows.parquet`. The one-sample episode
+viewer remains separate as `episode_sample/public_sample`; do not concatenate
+the two evidence lines when reading scores or dataset rows.
+"""
+XPERIENCE128_CARD_BLOCK = f"""
 ## 128-Episode Source and Feature Index
 
 The selected 128-episode split is linked back to the official gated
@@ -100,6 +106,8 @@ The selected 128-episode split is linked back to the official gated
 carry only public-safe processed artifacts: selection files, inspected
 manifests, dense multiscale window rows, metadata feature matrices, and result
 summaries.
+
+{XPERIENCE128_VIEWER_NOTE.rstrip()}
 """
 LANGUAGE_VERSIONS_MARKER = "docs/data/language_versions.json"
 LANGUAGE_VERSIONS_ROW = (
@@ -399,18 +407,26 @@ def ensure_xperience128_card_links(hf_root: Path, *, dry_run: bool) -> list[str]
         return updated
     text = artifacts_readme.read_text(encoding="utf-8")
     original = text
+    while text.count(XPERIENCE128_VIEWER_NOTE) > 1:
+        text = text.replace("\n" + XPERIENCE128_VIEWER_NOTE, "", 1)
     if XPERIENCE128_ARTIFACT_ROW not in text:
         table_anchor = "| Reader goal | Artifact |\n| --- | --- |\n"
         if table_anchor in text:
             text = text.replace(table_anchor, table_anchor + XPERIENCE128_ARTIFACT_ROW + "\n", 1)
         else:
             text = text.rstrip() + "\n\n" + XPERIENCE128_ARTIFACT_ROW + "\n"
-    if XPERIENCE128_MARKER not in text:
+    if "## 128-Episode Source and Feature Index" not in text:
         insert_before = "\n## Dataset Boundary"
         if insert_before in text:
             text = text.replace(insert_before, XPERIENCE128_CARD_BLOCK + insert_before, 1)
         else:
             text = text.rstrip() + "\n" + XPERIENCE128_CARD_BLOCK
+    elif "do not concatenate" not in text:
+        insert_before = "\n## Dataset Boundary"
+        if insert_before in text:
+            text = text.replace(insert_before, "\n" + XPERIENCE128_VIEWER_NOTE + insert_before, 1)
+        else:
+            text = text.rstrip() + "\n" + XPERIENCE128_VIEWER_NOTE
     if text != original:
         updated.append("artifacts/README.md")
         if not dry_run:

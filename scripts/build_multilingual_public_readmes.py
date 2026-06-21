@@ -169,7 +169,7 @@ The public suite is organized around two evidence lines. Keep them separate when
     </tr>
     <tr>
       <td><strong>128 selected episodes</strong></td>
-      <td>Selected held-out 96/16/16 split: 34,269 exported windows with public-safe processed features linked to official gated episode paths.</td>
+      <td>Selected held-out 96/16/16 split: 34,269 exported windows with public-safe processed features linked to official gated episode paths. The Hugging Face artifact dataset exposes these rows separately as <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/viewer/selected_128_windows/selected_128"><code>selected_128_windows/selected_128</code></a>; it is not mixed with the one-sample <code>episode_sample/public_sample</code> viewer.</td>
       <td>140/140 selected-128 scores: 134 direct + 6 compact-proxy.</td>
       <td>Same-split metadata/raw baseline comparison, Qwen3-Omni v6 diagnostics, Cosmos3 diagnostics, and scale-up planning.</td>
       <td>Reading proxy cells as direct raw-target measurements.</td>
