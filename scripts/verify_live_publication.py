@@ -688,7 +688,7 @@ MARKER_CHECKS = [
             "data/glossary.json",
             "tier2_task_suite.json",
             "Unified task artifact package",
-            "Long-Horizon Next-Action Forecasting",
+            "Open 180-record matrix",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
@@ -731,7 +731,7 @@ MARKER_CHECKS = [
             "data/public_reader_map.json",
             "tier2_task_suite.json",
             "Unified task artifact package",
-            "Long-Horizon Next-Action Forecasting",
+            "Open 180-record matrix",
         ],
         "forbidden": [
             "xperience10m-" + "taskfirst-v10",
