@@ -38,9 +38,18 @@
 
 Ce dépôt transforme l'épisode public d'exemple Xperience-10M en laboratoire de tâches vérifiable pour l'IA incarnée. Commencez par le tableau de bord et le statut du projet, puis ouvrez les contrats de tâches, les matrices de résultats et les miroirs Hugging Face.
 
-**Mise à jour :** 2026-06-18.
+**Mise à jour :** 2026-06-21.
 
 **Portée :** la suite entièrement reproductible utilise un épisode public; les résultats 128 épisodes ne publient que des métriques, rapports, prédictions sûres et cartes de modèles. Les MP4/HDF5/RRD bruts, les poids Qwen complets et les données gated ne sont pas redistribués.
+
+## Deux Lignes de Preuve
+
+| Ligne | Unité de données | Méthodes et résultats | Usage |
+| --- | --- | --- | --- |
+| 1 épisode d'exemple | 5,821 frames; 1,161 fenêtres alignées de 20 frames; 8,546 dimensions. | Minimal + Neural MLP sur 20 tâches; 40/40 enregistrements scorés. | Inspecter les fichiers sample, les définitions de tâches, les baselines reproductibles et la validité des tâches. |
+| 128 épisodes sélectionnés | Split 96/16/16; 34,269 fenêtres exportées; features public-safe liées aux chemins gated officiels. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super et Cosmos3-Nano; 140/140 enregistrements scorés. | Comparer les baselines et branches de modèles sur le même split; les proxy targets restent visibles. |
+
+Entrées : [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json).
 
 ## Parcours Rapide
 
@@ -58,7 +67,7 @@ Ce dépôt transforme l'épisode public d'exemple Xperience-10M en laboratoire d
 
 - Données : fenêtres de 20 frames reliant vidéo, audio, profondeur, pose/SLAM, mocap, IMU, calibration et annotations de langage.
 - Tâches : 20 contrats couvrant reconnaissance, prévision, retrieval, reconstruction, ordre, synchronisation, horizon long, relations action-objet et sensor bridge.
-- Résultats : minimal/NN sur l'épisode public couvrent 20/20; les branches 128 épisodes séparent metadata, raw features, Qwen3 et Cosmos avec gaps explicites.
+- Résultats : minimal/NN sur l'épisode public couvrent 20/20; les branches 128 épisodes séparent metadata, raw features, Qwen3 et Cosmos; la matrice publique atteint 180/180 enregistrements scorés avec proxy targets visibles.
 - Directions : spatial intelligence, human-video world model et vision-language-action sont documentés avec tâches et preuves nécessaires.
 
 ## Frontière Publique
@@ -74,6 +83,7 @@ Le projet publie des artifacts dérivés, métriques, figures et cartes public-s
 | HF Space | https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite |
 | HF artifacts | https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts |
 | HF baselines | https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines |
+| HF weights/results | https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results |
 | HF collection | https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite |
 
 ## Citation

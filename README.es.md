@@ -38,9 +38,18 @@
 
 Este repositorio convierte el episodio público de muestra de Xperience-10M en un laboratorio verificable de tareas para embodied AI. Empieza por el panel visual y el estado del proyecto; después entra en las tareas, matrices de resultados y espejos de Hugging Face.
 
-**Actualizado:** 2026-06-18.
+**Actualizado:** 2026-06-21.
 
 **Alcance:** la suite reproducible usa un episodio público; los resultados de 128 episodios publican solo métricas, reportes, predicciones seguras y tarjetas de modelo. No se redistribuyen MP4/HDF5/RRD originales, pesos completos de Qwen ni datos gated.
+
+## Dos Líneas de Evidencia
+
+| Línea | Unidad de datos | Métodos y resultados | Uso |
+| --- | --- | --- | --- |
+| 1 episodio de muestra | 5,821 frames; 1,161 ventanas alineadas de 20 frames; 8,546 dimensiones. | Minimal + Neural MLP en 20 tareas; 40/40 registros con score. | Inspeccionar archivos de muestra, definiciones de tarea, baselines reproducibles y validez de tareas. |
+| 128 episodios seleccionados | Split 96/16/16; 34,269 ventanas exportadas; features public-safe ligadas a episode paths oficiales gated. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super y Cosmos3-Nano; 140/140 registros con score. | Comparar baselines y ramas de modelo en el mismo split; los proxy targets permanecen visibles. |
+
+Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json).
 
 ## Ruta Rápida
 
@@ -58,7 +67,7 @@ Este repositorio convierte el episodio público de muestra de Xperience-10M en u
 
 - Datos: ventanas de 20 frames con video, audio, profundidad, pose/SLAM, mocap, IMU, calibración y lenguaje.
 - Tareas: 20 contratos para reconocimiento, predicción, recuperación, reconstrucción, sincronización, horizonte largo, relación acción-objeto y puentes de sensores.
-- Resultados: minimal/NN de un episodio cubren 20/20; las ramas de 128 episodios separan metadata, raw features, Qwen3 y Cosmos con gaps explícitos.
+- Resultados: minimal/NN de un episodio cubren 20/20; las ramas de 128 episodios separan metadata, raw features, Qwen3 y Cosmos; la matriz pública está en 180/180 registros con score y mantiene visibles los proxy targets.
 - Direcciones: spatial intelligence, human-video world model y vision-language-action tienen mapeo de tareas y requisitos de evidencia.
 
 ## Límite Público
@@ -74,6 +83,7 @@ El proyecto publica solo artifacts derivados, métricas, figuras, tarjetas y res
 | HF Space | https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite |
 | HF artifacts | https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts |
 | HF baselines | https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines |
+| HF weights/results | https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results |
 | HF collection | https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite |
 
 ## Citation

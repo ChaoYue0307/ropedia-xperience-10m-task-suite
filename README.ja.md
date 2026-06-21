@@ -38,9 +38,18 @@
 
 このリポジトリは、公開 Xperience-10M サンプル episode を、検証可能な embodied AI タスク実験面に変換します。まずダッシュボードとプロジェクト状態を見て、その後 20 タスク、結果行列、Hugging Face ミラーを確認してください。
 
-**更新日:** 2026-06-18。
+**更新日:** 2026-06-21。
 
 **範囲:** 完全に再現可能なタスク suite は 1 つの公開サンプル episode に基づきます。128-episode の結果は public-safe な指標、レポート、予測要約、モデルカードのみを公開します。元の MP4/HDF5/RRD、完全な Qwen 重み、gated データは再配布しません。
+
+## 2 つの証拠ライン
+
+| ライン | データ単位 | 手法と結果 | 用途 |
+| --- | --- | --- | --- |
+| 1 sample episode | 5,821 frames、1,161 aligned 20-frame windows、8,546 dimensions。 | Minimal + Neural MLP が 20 tasks を覆盖; 40/40 scored records。 | Raw sample files、task definitions、reproducible baselines、task validity を確認。 |
+| 128 selected episodes | 96/16/16 split、34,269 exported windows、public-safe features が official gated episode paths に対応。 | Metadata simple/NN、raw-feature simple/NN、Qwen3-Omni、Cosmos3-Super、Cosmos3-Nano; 140/140 scored records。 | 同一 split の baselines と model branches を比較; proxy targets は明示。 |
+
+入口: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)。
 
 ## クイックルート
 
@@ -58,7 +67,7 @@
 
 - データ: 20-frame window が video、audio、depth、pose/SLAM、mocap、IMU、calibration、language annotation を結びます。
 - タスク: 認識、予測、retrieval、reconstruction、order、sync、long-horizon、action-object、sensor bridge など 20 契約。
-- 結果: single-episode minimal/NN は 20/20。128-episode 側は metadata、raw feature、Qwen3、Cosmos を証拠タイプ別に分け、未評価 gap を明示します。
+- 結果: single-episode minimal/NN は 20/20。128-episode 側は metadata、raw feature、Qwen3、Cosmos を証拠タイプ別に分けます。公開 matrix は 180/180 scored records で、proxy targets は明示します。
 - 方向: spatial intelligence、human-video world model、vision-language-action に対して、タスク対応と必要証拠を記録しています。
 
 ## 公開境界
@@ -74,6 +83,7 @@
 | HF Space | https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite |
 | HF artifacts | https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts |
 | HF baselines | https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines |
+| HF weights/results | https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results |
 | HF collection | https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite |
 
 ## Citation
