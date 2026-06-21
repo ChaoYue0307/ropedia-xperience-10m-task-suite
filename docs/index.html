@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ropedia Xperience-10M Task Suite</title>
-  <meta name="description" content="Ropedia Xperience-10M Task Suite organized into two evidence lines: one public sample episode for reproducible task construction and 128 selected episodes for aligned baselines plus Qwen3/Cosmos comparison.">
+  <meta name="description" content="Ropedia Xperience-10M Task Suite organized into two evidence lines: one public sample episode for reproducible task construction and 128 selected episodes for aligned baselines, Qwen3-Omni v6 LoRA, and Cosmos3 series comparison.">
   <meta name="theme-color" content="#020502">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">
@@ -12,7 +12,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta property="og:title" content="Ropedia Xperience-10M Task Suite">
-  <meta property="og:description" content="A two-line Ropedia Xperience-10M public suite: 1 sample episode for task construction, 128 selected episodes for same-split baselines and Qwen3/Cosmos comparison.">
+  <meta property="og:description" content="A two-line Ropedia Xperience-10M public suite: 1 sample episode for task construction, 128 selected episodes for same-split baselines, Qwen3-Omni v6 LoRA, and Cosmos3 series comparison.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">
   <meta property="og:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/brand/xperience10m-logo-social-card.png?v=xperience10m-logo-v4">
@@ -1153,6 +1153,16 @@
       text-decoration: none;
     }
     .line-table a:hover { color: var(--green); }
+    .line-table td[data-label]::before {
+      display: none;
+    }
+    .table-note {
+      margin: -14px 0 28px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      max-width: 900px;
+    }
     .task-suite-image {
       display: block;
       margin-top: 30px;
@@ -3432,10 +3442,11 @@
       .site-nav {
         min-height: var(--nav-height);
       }
-      .wrap { width: min(100% - 28px, var(--max)); }
+      .wrap { width: calc(100vw - 28px); max-width: calc(100vw - 28px); }
       .site-nav .wrap,
       .project-tabs-shell .wrap {
-        width: min(100% - 28px, var(--max));
+        width: calc(100vw - 28px);
+        max-width: calc(100vw - 28px);
       }
       .nav-inner {
         position: relative;
@@ -3598,6 +3609,61 @@
         min-height: 52px;
       }
       main > section { scroll-margin-top: 112px; }
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+      .hero-inner,
+      .hero-inner > *,
+      .hero-radar-panel,
+      .hero-radar-layout,
+      .hero-radar-copy {
+        min-width: 0;
+        max-width: 100%;
+      }
+      .hero-inner {
+        display: block;
+        width: 100%;
+      }
+      .hero,
+      main,
+      .site-nav {
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+      .hero .wrap {
+        width: min(360px, calc(100% - 28px));
+        max-width: 360px;
+        margin-inline: auto;
+        padding-inline: 0;
+      }
+      h1 {
+        max-width: 100%;
+        font-size: 34px;
+        line-height: 1.04;
+        text-wrap: balance;
+        overflow-wrap: normal;
+      }
+      .eyebrow {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+        font-size: 11px;
+        line-height: 1.25;
+        text-align: center;
+      }
+      .eyebrow::before {
+        display: none;
+      }
+      .hero-copy {
+        max-width: 100%;
+        font-size: 16px;
+        line-height: 1.56;
+        white-space: normal;
+        overflow-wrap: break-word;
+      }
       .hero-actions {
         display: grid;
         grid-template-columns: 1fr;
@@ -3627,6 +3693,17 @@
       .line-table td {
         border-bottom: 0;
         padding: 10px 12px;
+      }
+      .line-table td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 4px;
+        color: var(--green);
+        font-family: var(--font-mono);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
       }
       .line-table td:first-child {
         width: auto;
@@ -3807,8 +3884,8 @@
         <p class="hero-copy">
           The public suite has two result lines. Line 1 uses one public sample
           episode to make the 20-task lab inspectable and reproducible. Line 2
-          uses 128 selected episodes to compare aligned baselines, Qwen3-Omni,
-          and Cosmos branches. The public matrix is complete at 180/180 scored
+          uses 128 selected episodes to compare aligned baselines, Qwen3-Omni
+          v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. The public matrix is complete at 180/180 scored
           method-task records, with six compact-proxy cells explicitly marked.
         </p>
         <div class="hero-actions">
@@ -3899,7 +3976,8 @@
             <div class="hero-method-list" aria-label="Method families shown in the radar">
               <div class="hero-method" style="--method-color:#67e8d1"><strong>Line 1: Minimal + Neural MLP</strong><span>Single public-sample episode; 40/40 direct task scores.</span></div>
               <div class="hero-method" style="--method-color:#f59e0b"><strong>Line 2: metadata + raw baselines</strong><span>Same selected-128 split; all four baseline rows have 20 records, with proxy notes where direct raw targets are absent.</span></div>
-              <div class="hero-method" style="--method-color:#9bb8ff"><strong>Line 2: Qwen3-Omni + Cosmos</strong><span>Qwen3, Cosmos3-Super, and Cosmos3-Nano are represented as selected-128 method rows with source notes in the matrix.</span></div>
+              <div class="hero-method" style="--method-color:#9bb8ff"><strong>Line 2: Qwen3-Omni v6 LoRA</strong><span>One trainable selected-128 model row; 20/20 direct scores from verified LoRA and task-specific probe artifacts.</span></div>
+              <div class="hero-method" style="--method-color:#d8f4a5"><strong>Line 2: Cosmos3 series</strong><span>Cosmos3-Super Reasoner and Cosmos3-Nano Future Window are separate selected-128 method rows; 40/40 direct scores.</span></div>
             </div>
             <div class="hero-task-strip" aria-label="Radar task axis examples">
               <span>01 Action Recognition</span>
@@ -3995,12 +4073,117 @@
               <td>128 selected episodes</td>
               <td>Selected held-out 96/16/16 split; 34,269 exported windows; public-safe metadata/raw-feature artifacts linked to official gated episode paths.</td>
               <td>140/140 selected-128 scores: 134 direct + 6 compact-proxy.</td>
-              <td>Same-split comparison, model-branch diagnostics, Qwen/Cosmos evidence, and scale-up decisions.</td>
+              <td>Same-split comparison, Qwen3-Omni v6 LoRA diagnostics, Cosmos3-Super/Cosmos3-Nano diagnostics, and scale-up decisions.</td>
               <td>Reading compact-proxy cells as direct raw-target measurements.</td>
               <td><a href="data/episode128_task_model_radar.json">128-episode radar JSON</a><br><a href="data/xperience10m_128_episode_feature_index.json">feature index JSON</a><br><a href="data/two_evidence_line_result_summary.json">result summary JSON</a><br><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/TWO_EVIDENCE_LINES.md">line doc</a></td>
             </tr>
           </tbody>
         </table>
+        <table class="line-table" aria-label="Two-line method-block architecture">
+          <thead>
+            <tr>
+              <th>Evidence line</th>
+              <th>Method block</th>
+              <th>Methods</th>
+              <th>Score statement</th>
+              <th>Read as</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 sample episode</td>
+              <td>Task-head baselines</td>
+              <td>Minimal; Neural MLP</td>
+              <td>40/40 direct scores.</td>
+              <td>Task-lab reproducibility and simple-vs-neural behavior.</td>
+            </tr>
+            <tr>
+              <td>128 selected episodes</td>
+              <td>Aligned baseline heads</td>
+              <td>Metadata simple/NN; raw-feature simple/NN</td>
+              <td>80/80 scores: 74 direct + 6 compact-proxy.</td>
+              <td>Same-split metadata/raw-feature baseline comparison.</td>
+            </tr>
+            <tr>
+              <td>128 selected episodes</td>
+              <td>Qwen3-Omni series</td>
+              <td>Qwen3-Omni v6 LoRA</td>
+              <td>20/20 direct scores from verified selected-128 Qwen3-Omni LoRA and task-specific probes.</td>
+              <td>Trainable Qwen3-Omni diagnostic baseline on the selected-128 surface.</td>
+            </tr>
+            <tr>
+              <td>128 selected episodes</td>
+              <td>Cosmos3 series</td>
+              <td>Cosmos3-Super Reasoner; Cosmos3-Nano Future Window</td>
+              <td>40/40 direct scores from verified public-safe reasoner and future-window artifacts.</td>
+              <td>Cosmos3 reasoner and future-window diagnostics on the selected-128 surface.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="table-note">Cosmos3-Super Forward-Dynamics LoRA is published as a separate fine-tuned adapter with weights/results; it is not counted as a 20-task matrix method row.</p>
+        <table class="line-table" aria-label="Qwen3-Omni run version ladder">
+          <thead>
+            <tr>
+              <th>Qwen run</th>
+              <th>What changed</th>
+              <th>Eval samples</th>
+              <th>JSON validity</th>
+              <th>Contact acc.</th>
+              <th>Public role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>v1</td>
+              <td>Selected-128 validation-aware LoRA baseline.</td>
+              <td>448</td>
+              <td>0.8750</td>
+              <td>0.6451</td>
+              <td>Superseded lineage evidence.</td>
+            </tr>
+            <tr>
+              <td>v2</td>
+              <td>Structured-JSON reuse full-8-GPU LoRA.</td>
+              <td>448</td>
+              <td>0.9978</td>
+              <td>0.7188</td>
+              <td>Superseded lineage evidence.</td>
+            </tr>
+            <tr>
+              <td>v3</td>
+              <td>Strict-label prompt/eval over the v2 adapter.</td>
+              <td>448</td>
+              <td>1.0000</td>
+              <td>0.7210</td>
+              <td>Prompt/eval lineage evidence.</td>
+            </tr>
+            <tr>
+              <td>v4</td>
+              <td>Four-epoch structured-JSON LoRA.</td>
+              <td>448</td>
+              <td>1.0000</td>
+              <td>0.7299</td>
+              <td>Superseded metric-tradeoff run.</td>
+            </tr>
+            <tr>
+              <td>v5</td>
+              <td>Multiscale cap96 LoRA.</td>
+              <td>4,032</td>
+              <td>1.0000</td>
+              <td>0.7865</td>
+              <td>Pinned prior release and comparison baseline.</td>
+            </tr>
+            <tr>
+              <td>v6</td>
+              <td>Rank64/lr5e-5 multiscale LoRA plus task-specific probes.</td>
+              <td>4,032</td>
+              <td>0.9990</td>
+              <td>0.8177</td>
+              <td>Current public 20-task Qwen3-Omni row.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="table-note">Qwen v1-v6 are run-lineage labels, not the project-level result layers. The public matrix row is Qwen3-Omni v6 LoRA; v5 stays pinned as the prior release. Full details: <a href="data/qwen3_omni_run_lineage.json">qwen3_omni_run_lineage.json</a> and <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/QWEN3_OMNI_RUN_LINEAGE.md">QWEN3_OMNI_RUN_LINEAGE.md</a>.</p>
         <div class="reader-journey" aria-label="Recommended reader journeys">
           <article class="reader-step">
             <small>01 understand</small>
@@ -4023,7 +4206,7 @@
           <article class="reader-step">
             <small>04 extend</small>
             <strong>Choose the next model branch</strong>
-            <p>Use directions and scale-up resources for spatial, world-model, VLA, Qwen3, and Cosmos follow-up work.</p>
+            <p>Use directions and scale-up resources for spatial, world-model, VLA, Qwen3-Omni, and Cosmos3 follow-up work.</p>
             <a href="#directions">Open directions</a>
           </article>
         </div>
@@ -4068,7 +4251,7 @@
             <article class="brief-card">
               <small>results</small>
               <strong>Compare methods cleanly</strong>
-              <p>Single-episode baselines, 128-episode aligned baselines, Qwen3, and Cosmos branches stay separated by evidence type.</p>
+              <p>Single-episode baselines, 128-episode aligned baselines, Qwen3-Omni v6 LoRA, and Cosmos3-Super/Nano branches stay separated by evidence type.</p>
               <div class="reading-links">
                 <a href="#takeaways">takeaways</a>
                 <a href="data/unified_task_model_radar.json">radar data</a>
@@ -4812,7 +4995,7 @@
         <div class="figure-brief">
           <article class="figure-brief-card">
             <h3>Unified plus split radars</h3>
-            <p>The unified radar keeps all 9 methods in one view. The split radars separate the 1-episode Minimal/NN baseline comparison from the 128-episode metadata/raw/Qwen/Cosmos comparison.</p>
+            <p>The unified radar keeps all 9 methods in one view. The split radars separate the 1-episode Minimal/NN baseline comparison from the 128-episode metadata/raw, Qwen3-Omni v6 LoRA, and Cosmos3-Super/Nano comparison.</p>
           </article>
           <article class="figure-brief-card">
             <h3>Metric normalization</h3>
@@ -4972,7 +5155,7 @@
           <article class="suite-line-card">
             <small>128 episode results</small>
             <h3>Scale-up evidence</h3>
-            <p>Metadata/raw baselines and Qwen/Cosmos branches use the aligned 128-episode surface. It has 134 direct scores plus 6 compact-proxy scores.</p>
+            <p>Metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window use the aligned 128-episode surface. It has 134 direct scores plus 6 compact-proxy scores.</p>
             <div class="line-claim">
               <div><span>best read as</span><p>A same-split comparison table with explicit source and proxy status.</p></div>
             </div>
@@ -5023,6 +5206,52 @@
               <td>174</td>
               <td>6</td>
               <td><a href="data/two_evidence_line_result_summary.json">two-line result summary JSON</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="line-table" aria-label="Method ownership inside each evidence line">
+          <thead>
+            <tr>
+              <th>Line</th>
+              <th>Block</th>
+              <th>Methods</th>
+              <th>Records</th>
+              <th>Evidence type</th>
+              <th>Primary artifact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 sample episode</td>
+              <td>Task-head baselines</td>
+              <td>Minimal; Neural MLP</td>
+              <td>40 direct</td>
+              <td>Direct target metrics on the public sample windows.</td>
+              <td><a href="data/single_episode_task_model_radar.json">single-episode radar JSON</a></td>
+            </tr>
+            <tr>
+              <td>128 selected episodes</td>
+              <td>Aligned baseline heads</td>
+              <td>Metadata simple/NN; raw-feature simple/NN</td>
+              <td>74 direct + 6 compact-proxy</td>
+              <td>Processed-target metrics where available; proxy cells remain source-linked.</td>
+              <td><a href="data/task_method_20_gap_audit.json">score/proxy audit</a></td>
+            </tr>
+            <tr>
+              <td>128 selected episodes</td>
+              <td>Qwen3-Omni series</td>
+              <td>Qwen3-Omni v6 LoRA</td>
+              <td>20 direct</td>
+              <td>Verified selected-128 LoRA and task-specific probe artifacts.</td>
+              <td><a href="data/omni_model_comparison.json">model comparison JSON</a></td>
+            </tr>
+            <tr>
+              <td>128 selected episodes</td>
+              <td>Cosmos3 series</td>
+              <td>Cosmos3-Super Reasoner; Cosmos3-Nano Future Window</td>
+              <td>40 direct</td>
+              <td>Verified reasoner and future-window public-safe artifacts; forward-dynamics LoRA is a separate adapter artifact outside the 20-task method rows.</td>
+              <td><a href="data/omni_model_comparison.json">model comparison JSON</a></td>
             </tr>
           </tbody>
         </table>
@@ -5399,7 +5628,7 @@
           <article class="resource-mode">
             <small>scale</small>
             <strong>Continue model work</strong>
-            <p>Use Qwen3/Cosmos packages, 128-episode feature index, and foundation-model plans for the next runs.</p>
+            <p>Use Qwen3-Omni v6, Cosmos3-Super/Nano packages, the 128-episode feature index, and foundation-model plans for the next runs.</p>
             <a href="#omni-scale-up">Open scale-up</a>
           </article>
         </div>
@@ -5454,8 +5683,8 @@
               <article class="artifact"><h3>GitHub Package</h3><p>Static dashboard container published to GitHub Container Registry for local browsing with Docker, without raw data or model weights.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/pkgs/container/ropedia-xperience-10m-task-suite">GHCR package</a></article>
               <article class="artifact"><h3>Derived HF artifacts</h3><p>Metrics, predictions, docs, and lightweight derived files without raw data redistribution.</p><a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">artifact collection</a></article>
               <article class="artifact"><h3>HF baseline models</h3><p>Minimal NumPy softmax, ridge baselines, and neural task-head model files.</p><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">model repo</a></article>
-              <article class="artifact"><h3>HF weights + results</h3><p>Consolidated public-safe baseline weights, Qwen3/Cosmos adapters, verified results, analysis files, and manifest.</p><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results">weights/results repo</a></article>
-              <article class="artifact"><h3>HF collection</h3><p>Space, artifacts, baseline models, and verified Qwen3/Cosmos3 adapter repos grouped into one public project collection.</p><a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite">collection</a></article>
+              <article class="artifact"><h3>HF weights + results</h3><p>Consolidated public-safe baseline weights, Qwen3-Omni and Cosmos3 adapters/packages, verified results, analysis files, and manifest.</p><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results">weights/results repo</a></article>
+              <article class="artifact"><h3>HF collection</h3><p>Space, artifacts, baseline models, Qwen3-Omni v6 LoRA, Cosmos3-Super, and Cosmos3-Nano repos grouped into one public project collection.</p><a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite">collection</a></article>
               <article class="artifact"><h3>Current all-feature action model</h3><p>Classifier metrics, predictions, confusion matrix, and model weights.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/min_all_modalities_action_model/metrics.json">model metrics</a></article>
               <article class="artifact"><h3>Project packet</h3><p>Compact route through the project for readers who want the shortest path from scope to results after choosing a surface.</p><a href="data/project_packet.json">project packet</a></article>
             </div>
@@ -5472,7 +5701,7 @@
               <article class="artifact"><h3>128-Episode Task Suite Enhancement Pack</h3><p>No-new-episode plan for denser supervision: `multiscale_20s10_40s20_80s40`, hierarchical action/subtask labels, stronger scoring slices, and raw-feature shard priorities.</p><a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a></article>
               <article class="artifact"><h3>Foundation-model plan</h3><p>Backbone selection matrix covering Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, SmolVLA-style policy candidates, and the future Xperience-native pretraining goal.</p><a href="data/foundation_model_plan.json">foundation model plan</a></article>
               <article class="artifact"><h3>Multi-episode data access</h3><p>Public data-access path, selected 128-episode pilot plan, and preparation requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">data access</a></article>
-              <article class="artifact"><h3>Qwen3-Omni LoRA group</h3><p>Separates the 1-episode sensor-adapter smoke test from the current 128-episode LoRA adapter package and older diagnostics.</p><a href="data/omni_model_comparison.json">Qwen group</a></article>
+              <article class="artifact"><h3>Qwen3-Omni LoRA group</h3><p>Separates the 1-episode sensor-adapter smoke test from Qwen run v1-v6. v6 is the current 20-task matrix row, while v5 remains the pinned prior release.</p><a href="data/qwen3_omni_run_lineage.json">Qwen v1-v6 lineage</a><a href="data/omni_model_comparison.json">Qwen group</a></article>
               <article class="artifact"><h3>Cosmos3 groups</h3><p>Shows the verified Nano future-window compatibility package, the Super base-weight Reasoner JSON-task evaluation, and the Super fine-tuned forward-dynamics LoRA branch with separate loss metrics.</p><a href="data/omni_model_comparison.json">Cosmos groups</a></article>
               <article class="artifact"><h3>Scale-up requirement</h3><p>Future runs need validation tracking, held-out predictions, quality-target reporting, and the same public-safe package gate.</p><a href="data/foundation_model_plan.json">training requirements</a></article>
               <article class="artifact"><h3>Xperience-native pretraining</h3><p>Future plan for a domain-specific embodied foundation model trained from scratch over full-corpus video, audio, geometry, motion, inertial, and language streams.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a></article>
@@ -5868,7 +6097,7 @@ python scripts/validate_publication_package.py</code></pre>
       diagnostics: "Best for charts and error-analysis evidence.",
       artifacts: "Best for finding files, mirrors, weights, scripts, and checks.",
       evidence: "Best for current experiment status and milestones.",
-      "omni-scale-up": "Best for Qwen3/Cosmos model-branch status.",
+      "omni-scale-up": "Best for Qwen3-Omni and Cosmos3 model-branch status.",
       run: "Best for reproduction commands."
     };
     const sectionTabMap = Object.fromEntries(tabSections.map((section) => [section.id, section.dataset.projectTab]));
@@ -6394,6 +6623,19 @@ python scripts/validate_publication_package.py</code></pre>
       playerTimer = window.setInterval(advancePlayer, 2600);
     }
 
+    function labelResponsiveTables() {
+      document.querySelectorAll(".line-table").forEach((table) => {
+        const headers = Array.from(table.querySelectorAll("thead th")).map((header) => header.textContent.trim());
+        table.querySelectorAll("tbody tr").forEach((row) => {
+          Array.from(row.children).forEach((cell, index) => {
+            if (headers[index] && !cell.dataset.label) {
+              cell.dataset.label = headers[index];
+            }
+          });
+        });
+      });
+    }
+
     async function initTaskSurface() {
       try {
         const response = await fetch("data/task_walkthroughs.json", { cache: "no-cache" });
@@ -6424,6 +6666,7 @@ python scripts/validate_publication_package.py</code></pre>
         setActiveStage(Number(button.dataset.stage));
       });
     });
+    labelResponsiveTables();
     initTaskSurface();
 
     document.querySelectorAll("[data-copy]").forEach((button) => {

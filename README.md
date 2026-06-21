@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>A multilingual public research surface for Xperience-10M: sample data, 20 embodied-AI tasks, baselines, Qwen3/Cosmos diagnostics, and foundation-model training directions.</strong>
+  <strong>A multilingual public research surface for Xperience-10M: sample data, 20 embodied-AI tasks, baselines, Qwen3-Omni and Cosmos3 diagnostics, and foundation-model training directions.</strong>
 </p>
 
 <!-- LANG-BAR:START -->
@@ -35,7 +35,7 @@
 </p>
 
 
-**Ropedia Xperience-10M Task Suite** is organized as two public result lines, not one blended benchmark. The 1-sample line is a fully inspectable task lab. The selected-128 line is the comparison surface for aligned baselines, Qwen3-Omni, and Cosmos branches. Every score points back to a source artifact and keeps direct-vs-proxy status visible.
+**Ropedia Xperience-10M Task Suite** is organized as two public result lines, not one blended benchmark. The 1-sample line is a fully inspectable task lab. The selected-128 line is the comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Every score points back to a source artifact and keeps direct-vs-proxy status visible.
 
 **Updated:** 2026-06-21.
 
@@ -89,7 +89,7 @@ The multilingual README files are reader guides. The canonical technical evidenc
     </tr>
     <tr>
       <td><strong>Line 2 methods</strong></td>
-      <td>Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano cover all 20 selected-128 task axes: 140/140 scores.</td>
+      <td>Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window cover all 20 selected-128 task axes: 140/140 scores.</td>
     </tr>
     <tr>
       <td><strong>Foundation directions</strong></td>
@@ -97,7 +97,7 @@ The multilingual README files are reader guides. The canonical technical evidenc
     </tr>
     <tr>
       <td><strong>Public mirrors</strong></td>
-      <td>GitHub, GitHub Pages, HF Space, HF artifact dataset, HF baseline model repo, Qwen3/Cosmos model repos, and HF collection.</td>
+      <td>GitHub, GitHub Pages, HF Space, HF artifact dataset, HF baseline model repo, Qwen3-Omni and Cosmos3 model repos, and HF collection.</td>
     </tr>
   </tbody>
 </table>
@@ -179,11 +179,88 @@ The public suite is organized around two result lines. Keep them separate when r
   </tbody>
 </table>
 
+### Method Blocks
+
+<table>
+  <thead>
+    <tr>
+      <th width="20%">Evidence line</th>
+      <th width="20%">Method block</th>
+      <th width="24%">Methods</th>
+      <th width="18%">Score statement</th>
+      <th>Read as</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1 sample episode</strong></td>
+      <td>Task-head baselines</td>
+      <td>Minimal; Neural MLP</td>
+      <td>40/40 direct scores.</td>
+      <td>Task-lab reproducibility and simple-vs-neural behavior.</td>
+    </tr>
+    <tr>
+      <td><strong>128 selected episodes</strong></td>
+      <td>Aligned baseline heads</td>
+      <td>Metadata simple/NN; raw-feature simple/NN</td>
+      <td>80/80 scores: 74 direct + 6 compact-proxy.</td>
+      <td>Same-split metadata/raw-feature baseline comparison.</td>
+    </tr>
+    <tr>
+      <td><strong>128 selected episodes</strong></td>
+      <td>Qwen3-Omni series</td>
+      <td>Qwen3-Omni v6 LoRA</td>
+      <td>20/20 direct scores from verified selected-128 Qwen3-Omni LoRA and task-specific probes.</td>
+      <td>Trainable Qwen3-Omni diagnostic baseline on the selected-128 surface.</td>
+    </tr>
+    <tr>
+      <td><strong>128 selected episodes</strong></td>
+      <td>Cosmos3 series</td>
+      <td>Cosmos3-Super Reasoner; Cosmos3-Nano Future Window</td>
+      <td>40/40 direct scores from verified public-safe reasoner and future-window artifacts.</td>
+      <td>Cosmos3 reasoner and future-window diagnostics on the selected-128 surface.</td>
+    </tr>
+  </tbody>
+</table>
+
+Cosmos3-Super Forward-Dynamics LoRA is published as a separate fine-tuned adapter artifact with weights/results; it is not counted as a 20-task matrix method row.
+
+### Qwen3-Omni Run Versions
+
+These are Qwen3-Omni run versions, not the three project-level public result layers. The 20-task matrix uses **Qwen3-Omni v6 LoRA**. v5 remains the pinned prior release. v1-v4 are lineage/ablation evidence.
+
+<table>
+  <thead>
+    <tr>
+      <th width="10%">Run</th>
+      <th width="26%">What changed</th>
+      <th width="12%">Eval samples</th>
+      <th width="12%">JSON validity</th>
+      <th width="12%">Contact acc.</th>
+      <th>Public role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>v1</strong></td><td>Selected-128 validation-aware LoRA baseline.</td><td>448</td><td>0.8750</td><td>0.6451</td><td>Superseded lineage evidence.</td></tr>
+    <tr><td><strong>v2</strong></td><td>Structured-JSON reuse full-8-GPU LoRA.</td><td>448</td><td>0.9978</td><td>0.7188</td><td>Superseded lineage evidence.</td></tr>
+    <tr><td><strong>v3</strong></td><td>Strict-label prompt/eval over the v2 adapter.</td><td>448</td><td>1.0000</td><td>0.7210</td><td>Prompt/eval lineage evidence.</td></tr>
+    <tr><td><strong>v4</strong></td><td>Four-epoch structured-JSON LoRA.</td><td>448</td><td>1.0000</td><td>0.7299</td><td>Superseded metric tradeoff run.</td></tr>
+    <tr><td><strong>v5</strong></td><td>Multiscale cap96 LoRA.</td><td>4,032</td><td>1.0000</td><td>0.7865</td><td>Pinned prior release and comparison baseline.</td></tr>
+    <tr><td><strong>v6</strong></td><td>Rank64/lr5e-5 multiscale LoRA.</td><td>4,032</td><td>0.9990</td><td>0.8177</td><td>Current public 20-task Qwen row.</td></tr>
+  </tbody>
+</table>
+
+Detailed lineage:
+[`QWEN3_OMNI_RUN_LINEAGE.md`](QWEN3_OMNI_RUN_LINEAGE.md) and
+[`qwen3_omni_run_lineage.json`](docs/data/qwen3_omni_run_lineage.json).
+
 Result entry points:
 [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md),
 [`two_evidence_lines.json`](docs/data/two_evidence_lines.json),
 [`TWO_EVIDENCE_LINE_RESULT_SUMMARY.md`](TWO_EVIDENCE_LINE_RESULT_SUMMARY.md),
 [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json),
+[`QWEN3_OMNI_RUN_LINEAGE.md`](QWEN3_OMNI_RUN_LINEAGE.md),
+[`qwen3_omni_run_lineage.json`](docs/data/qwen3_omni_run_lineage.json),
 [`single_episode_task_model_radar.json`](docs/data/single_episode_task_model_radar.json),
 [`episode128_task_model_radar.json`](docs/data/episode128_task_model_radar.json),
 [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), and
@@ -310,7 +387,7 @@ and [`docs/data/project_brief.json`](docs/data/project_brief.json).
     <tr><td><strong>Hugging Face Space</strong></td><td>Hub-hosted copy of the dashboard and static app assets.</td></tr>
     <tr><td><strong>HF artifact dataset</strong></td><td>Public-safe metrics, reports, website JSON, result packages, and derived evidence files.</td></tr>
     <tr><td><strong>HF baseline model repo</strong></td><td>Minimal/neural baseline weights, figures, metrics, and mirrored task artifacts.</td></tr>
-    <tr><td><strong>Qwen3/Cosmos model repos</strong></td><td>Adapter-specific public weights or package cards when a model branch is verified and publishable.</td></tr>
+    <tr><td><strong>Qwen3-Omni and Cosmos3 model repos</strong></td><td>Adapter-specific public weights or package cards when Qwen3-Omni v6, Cosmos3-Super, or Cosmos3-Nano branches are verified and publishable.</td></tr>
   </tbody>
 </table>
 
@@ -719,11 +796,12 @@ For easier reading, the same source data is also split into two focused radars:
 ![128-episode 20-task model radar](docs/assets/charts/episode128_task_model_radar.svg)
 
 The single-episode radar isolates Minimal vs Neural MLP, both with 20/20 scored
-public-sample axes. The 128-episode radar isolates metadata/raw baselines and
-Qwen3/Cosmos branches: metadata and raw-feature simple/NN baselines are now
-complete 20/20 multi-episode records, with documented compact proxy notes where
-the public export lacks the original raw target. The current matrix has 180/180
-scored method-task records.
+public-sample axes. The 128-episode radar isolates metadata/raw baselines,
+Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window:
+metadata and raw-feature simple/NN baselines are now complete 20/20
+multi-episode records, with documented compact proxy notes where the public
+export lacks the original raw target. The current matrix has 180/180 scored
+method-task records.
 
 The website also includes a responsive native modality atlas backed by
 [`docs/data/modality_atlas.json`](docs/data/modality_atlas.json) and
@@ -827,7 +905,7 @@ docs/
   assets/pipeline_diagram.png       # verified episode pipeline graphic
   assets/qwen3_omni_lora_pipeline.png # Qwen3-Omni LoRA training-flow figure
   assets/task_architectures.png     # verified task-head architecture map
-  assets/charts/unified_task_model_radar.svg # 20-task minimal/NN/Qwen/Cosmos radar
+  assets/charts/unified_task_model_radar.svg # 20-task minimal/NN/Qwen3-Omni/Cosmos3 radar
   assets/charts/single_episode_task_model_radar.svg # 1-episode split radar
   assets/charts/episode128_task_model_radar.svg # 128-episode split radar
   assets/charts/*.svg               # regenerated visualizations
@@ -987,7 +1065,7 @@ The current cross-version comparison is generated at
 [`docs/data/omni_model_comparison.json`](docs/data/omni_model_comparison.json)
 and [`results/omni_finetune/OMNI_MODEL_COMPARISON.md`](results/omni_finetune/OMNI_MODEL_COMPARISON.md);
 it separates the single-episode task suite, 128-episode aligned simple/NN
-baselines, and verified Qwen3/Cosmos model-branch packages. The same generated
+baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window packages. The same generated
 files also include `model_groups`: a model-first view that pairs 1-episode and
 128-episode entries for the same family. Use that section when comparing task
 heads against task heads, Qwen3-Omni smoke/LoRA against Qwen3-Omni LoRA, or
@@ -996,7 +1074,7 @@ Cosmos3-Nano compatibility against future Cosmos weight releases.
 The no-new-episode enhancement layer is recorded in
 [`docs/data/task_suite_enhancement_128.json`](docs/data/task_suite_enhancement_128.json)
 and [`TASK_SUITE_ENHANCEMENT_128.md`](TASK_SUITE_ENHANCEMENT_128.md). It keeps
-the current Qwen/Cosmos packages as baselines, then defines dense-window
+the current Qwen3-Omni v6 and Cosmos3 packages as baselines, then defines dense-window
 scenarios, hierarchical action/subtask targets, task bottlenecks, and experiment
 cards for a stronger 128-episode v5 run without overwriting earlier results.
 

@@ -43,6 +43,70 @@ def line_for_series(scope: str) -> str:
     raise ValueError(f"Cannot map series scope to evidence line: {scope}")
 
 
+def build_method_blocks(lines_out: list[dict]) -> list[dict]:
+    methods_by_id = {
+        method["id"]: {**method, "line_label": line["label"], "line_id": line["id"]}
+        for line in lines_out
+        for method in line["methods"]
+    }
+
+    def summarize(method_ids: list[str]) -> dict:
+        methods = [methods_by_id[method_id] for method_id in method_ids]
+        return {
+            "methods": [method["label"] for method in methods],
+            "scored_method_task_count": sum(method["scored_task_count"] for method in methods),
+            "method_task_record_count": sum(method["result_record_count"] for method in methods),
+            "direct_scored_method_task_count": sum(method["direct_scored_task_count"] for method in methods),
+            "proxy_scored_method_task_count": sum(method["proxy_scored_task_count"] for method in methods),
+        }
+
+    blocks = [
+        {
+            "line_id": "single_public_sample_episode",
+            "line_label": "1 sample episode",
+            "block": "Task-head baselines",
+            "method_ids": ["minimal", "neural_mlp"],
+            "evidence_type": "Direct target metrics on the public sample windows.",
+            "read_as": "Task construction, local reproducibility, and Minimal-vs-Neural behavior.",
+        },
+        {
+            "line_id": "selected_128_episode_surface",
+            "line_label": "128 selected episodes",
+            "block": "Aligned baseline heads",
+            "method_ids": [
+                "metadata128_simple",
+                "metadata128_neural_mlp",
+                "raw128_simple",
+                "raw128_neural_mlp",
+            ],
+            "evidence_type": "Direct processed-target metrics where available; compact proxies for documented raw-target gaps.",
+            "read_as": "Same-split metadata/raw-feature baseline comparison.",
+        },
+        {
+            "line_id": "selected_128_episode_surface",
+            "line_label": "128 selected episodes",
+            "block": "Qwen3-Omni series",
+            "method_ids": ["qwen3_omni_v6_lora"],
+            "evidence_type": "Verified selected-128 Qwen3-Omni v6 LoRA plus source-linked task-specific probes.",
+            "read_as": "Trainable Qwen3-Omni diagnostic baseline on the selected-128 surface.",
+        },
+        {
+            "line_id": "selected_128_episode_surface",
+            "line_label": "128 selected episodes",
+            "block": "Cosmos3 series",
+            "method_ids": [
+                "cosmos3_super_reasoner",
+                "cosmos3_nano_future_window",
+            ],
+            "evidence_type": "Verified Cosmos3-Super Reasoner and Cosmos3-Nano Future Window public-safe artifacts.",
+            "read_as": "Cosmos3 reasoner and future-window diagnostics on the selected-128 surface.",
+        },
+    ]
+    for block in blocks:
+        block.update(summarize(block["method_ids"]))
+    return blocks
+
+
 def build_payload(matrix: dict, lines: dict) -> dict:
     line_meta = {line["id"]: line for line in lines["lines"]}
     line_rows: dict[str, dict] = {
@@ -139,6 +203,8 @@ def build_payload(matrix: dict, lines: dict) -> dict:
             "proxy_scored_method_task_count": total_proxy,
         },
         "lines": lines_out,
+        "method_blocks": build_method_blocks(lines_out),
+        "related_model_artifacts": lines.get("related_model_artifacts", []),
         "proxy_records": proxy_records,
         "reading_order": [
             {
@@ -164,8 +230,8 @@ def build_payload(matrix: dict, lines: dict) -> dict:
                 "and controlled Minimal-vs-Neural baseline behavior."
             ),
             "selected_128_episode_surface": (
-                "Use for held-out comparison, metadata/raw-feature baselines, Qwen3/Cosmos "
-                "branches, and scale-up decisions."
+                "Use for held-out comparison, metadata/raw-feature baselines, Qwen3-Omni v6 LoRA, "
+                "Cosmos3-Super Reasoner, Cosmos3-Nano Future Window, and scale-up decisions."
             ),
             "proxy_policy": (
                 "Proxy-scored cells stay numeric only when the source artifact and reason "
@@ -224,6 +290,23 @@ def write_markdown(payload: dict) -> None:
         ]
         for row in payload["proxy_records"]
     ]
+    method_block_rows = [
+        [
+            block["line_label"],
+            block["block"],
+            ", ".join(block["methods"]),
+            f"{block['scored_method_task_count']}/{block['method_task_record_count']}",
+            str(block["direct_scored_method_task_count"]),
+            str(block["proxy_scored_method_task_count"]),
+            block["evidence_type"],
+            block["read_as"],
+        ]
+        for block in payload["method_blocks"]
+    ]
+    related_artifact_rows = [
+        [row.get("name", ""), row.get("role", ""), row.get("repo", "")]
+        for row in payload.get("related_model_artifacts", [])
+    ]
 
     text = f"""# Two Evidence-Line Result Summary
 
@@ -259,9 +342,17 @@ Score formula: {payload.get('score_formula') or ''}
 
 {markdown_table(['Line', 'Methods', 'Tasks', 'Scored records', 'Direct scores', 'Proxy scores', 'Primary visuals', 'Source artifacts'], entry_rows)}
 
+## Method Blocks By Evidence Line
+
+{markdown_table(['Line', 'Method block', 'Methods', 'Scored records', 'Direct scores', 'Proxy scores', 'Evidence type', 'Read as'], method_block_rows)}
+
 ## Method Detail By Line
 
 {markdown_table(['Line', 'Method', 'Method detail', 'Scored records', 'Direct scores', 'Proxy scores'], method_rows)}
+
+## Related Model Artifacts
+
+{markdown_table(['Artifact', 'Role', 'Link or path'], related_artifact_rows)}
 
 ## Proxy-Scored Cells
 

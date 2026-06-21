@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-21T08:38:20+00:00",
+  "generated_at_utc": "2026-06-21T10:00:36+00:00",
   "interpretation_rule": "Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for held-out comparison and model-branch claims.",
   "lines": [
     {
@@ -63,6 +63,7 @@
         "docs/data/two_evidence_line_result_summary.json",
         "docs/data/xperience10m_128_episode_feature_index.json",
         "docs/data/omni_model_comparison.json",
+        "docs/data/qwen3_omni_run_lineage.json",
         "docs/data/task_method_20_gap_audit.json"
       ],
       "claim_boundary": "Supports same-split comparison, model-branch diagnostics, and scale-up planning on public-safe processed artifacts.",
@@ -183,6 +184,86 @@
       "task_count": 20
     }
   ],
+  "method_blocks": [
+    {
+      "block": "Task-head baselines",
+      "direct_scored_method_task_count": 40,
+      "evidence_type": "Direct target metrics on the public sample windows.",
+      "line_id": "single_public_sample_episode",
+      "line_label": "1 sample episode",
+      "method_ids": [
+        "minimal",
+        "neural_mlp"
+      ],
+      "method_task_record_count": 40,
+      "methods": [
+        "Minimal",
+        "Neural MLP"
+      ],
+      "proxy_scored_method_task_count": 0,
+      "read_as": "Task construction, local reproducibility, and Minimal-vs-Neural behavior.",
+      "scored_method_task_count": 40
+    },
+    {
+      "block": "Aligned baseline heads",
+      "direct_scored_method_task_count": 74,
+      "evidence_type": "Direct processed-target metrics where available; compact proxies for documented raw-target gaps.",
+      "line_id": "selected_128_episode_surface",
+      "line_label": "128 selected episodes",
+      "method_ids": [
+        "metadata128_simple",
+        "metadata128_neural_mlp",
+        "raw128_simple",
+        "raw128_neural_mlp"
+      ],
+      "method_task_record_count": 80,
+      "methods": [
+        "128ep Aligned Simple",
+        "128ep Aligned NN",
+        "128ep Raw Simple",
+        "128ep Raw NN"
+      ],
+      "proxy_scored_method_task_count": 6,
+      "read_as": "Same-split metadata/raw-feature baseline comparison.",
+      "scored_method_task_count": 80
+    },
+    {
+      "block": "Qwen3-Omni series",
+      "direct_scored_method_task_count": 20,
+      "evidence_type": "Verified selected-128 Qwen3-Omni v6 LoRA plus source-linked task-specific probes.",
+      "line_id": "selected_128_episode_surface",
+      "line_label": "128 selected episodes",
+      "method_ids": [
+        "qwen3_omni_v6_lora"
+      ],
+      "method_task_record_count": 20,
+      "methods": [
+        "Qwen3-Omni v6 LoRA"
+      ],
+      "proxy_scored_method_task_count": 0,
+      "read_as": "Trainable Qwen3-Omni diagnostic baseline on the selected-128 surface.",
+      "scored_method_task_count": 20
+    },
+    {
+      "block": "Cosmos3 series",
+      "direct_scored_method_task_count": 40,
+      "evidence_type": "Verified Cosmos3-Super Reasoner and Cosmos3-Nano Future Window public-safe artifacts.",
+      "line_id": "selected_128_episode_surface",
+      "line_label": "128 selected episodes",
+      "method_ids": [
+        "cosmos3_super_reasoner",
+        "cosmos3_nano_future_window"
+      ],
+      "method_task_record_count": 40,
+      "methods": [
+        "Cosmos3-Super Reasoner",
+        "Cosmos3-Nano Future Window"
+      ],
+      "proxy_scored_method_task_count": 0,
+      "read_as": "Cosmos3 reasoner and future-window diagnostics on the selected-128 surface.",
+      "scored_method_task_count": 40
+    }
+  ],
   "proxy_records": [
     {
       "line_id": "selected_128_episode_surface",
@@ -253,10 +334,10 @@
   ],
   "reader_policy": {
     "proxy_policy": "Proxy-scored cells stay numeric only when the source artifact and reason are attached; they should not be read as direct raw-target measurements.",
-    "selected_128_episode_surface": "Use for held-out comparison, metadata/raw-feature baselines, Qwen3/Cosmos branches, and scale-up decisions.",
+    "selected_128_episode_surface": "Use for held-out comparison, metadata/raw-feature baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, Cosmos3-Nano Future Window, and scale-up decisions.",
     "single_public_sample_episode": "Use for task construction, raw-file inspection, local reproducibility, and controlled Minimal-vs-Neural baseline behavior."
   },
-  "reader_summary": "The suite has two public result lines. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, Qwen3-Omni, and Cosmos branches. Do not mix the two when reading scores.",
+  "reader_summary": "The suite has two public result lines. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Do not mix the two when reading scores.",
   "reading_order": [
     {
       "reason": "Line 1 answers task-lab and reproducibility questions; line 2 answers selected-128 comparison questions.",
@@ -273,6 +354,18 @@
     {
       "reason": "The six compact-proxy cells are numeric but are not direct raw-target measurements.",
       "step": "Check proxy cells before interpreting totals"
+    }
+  ],
+  "related_model_artifacts": [
+    {
+      "name": "Qwen3-Omni v1-v6 run lineage",
+      "repo": "docs/data/qwen3_omni_run_lineage.json",
+      "role": "Explains the LoRA/evaluation version ladder; v6 is the current 20-task matrix row, v5 remains the pinned prior release, and v1-v4 are lineage/ablation evidence."
+    },
+    {
+      "name": "Cosmos3-Super Forward-Dynamics LoRA",
+      "repo": "https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep",
+      "role": "Separate fine-tuned adapter artifact for forward-dynamics loss metrics; published with weights/results but not counted as a 20-task matrix method row."
     }
   ],
   "score_formula": "2 single-episode methods x 20 tasks = 40 records; 7 selected-128 methods x 20 tasks = 140 records; total public matrix = 180/180 scored records.",

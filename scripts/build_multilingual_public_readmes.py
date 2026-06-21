@@ -63,11 +63,11 @@ def hero(title: str, tagline: str, active: str) -> str:
 
 ENGLISH_TOP = f"""{hero(
     "Ropedia Xperience-10M Task Suite",
-    "A multilingual public research surface for Xperience-10M: sample data, 20 embodied-AI tasks, baselines, Qwen3/Cosmos diagnostics, and foundation-model training directions.",
+    "A multilingual public research surface for Xperience-10M: sample data, 20 embodied-AI tasks, baselines, Qwen3-Omni and Cosmos3 diagnostics, and foundation-model training directions.",
     "en",
 )}
 
-**Ropedia Xperience-10M Task Suite** is organized as two public result lines, not one blended benchmark. The 1-sample line is a fully inspectable task lab. The selected-128 line is the comparison surface for aligned baselines, Qwen3-Omni, and Cosmos branches. Every score points back to a source artifact and keeps direct-vs-proxy status visible.
+**Ropedia Xperience-10M Task Suite** is organized as two public result lines, not one blended benchmark. The 1-sample line is a fully inspectable task lab. The selected-128 line is the comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Every score points back to a source artifact and keeps direct-vs-proxy status visible.
 
 **Updated:** {UPDATED}.
 
@@ -121,7 +121,7 @@ The multilingual README files are reader guides. The canonical technical evidenc
     </tr>
     <tr>
       <td><strong>Line 2 methods</strong></td>
-      <td>Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano cover all 20 selected-128 task axes: 140/140 scores.</td>
+      <td>Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window cover all 20 selected-128 task axes: 140/140 scores.</td>
     </tr>
     <tr>
       <td><strong>Foundation directions</strong></td>
@@ -129,7 +129,7 @@ The multilingual README files are reader guides. The canonical technical evidenc
     </tr>
     <tr>
       <td><strong>Public mirrors</strong></td>
-      <td>GitHub, GitHub Pages, HF Space, HF artifact dataset, HF baseline model repo, Qwen3/Cosmos model repos, and HF collection.</td>
+      <td>GitHub, GitHub Pages, HF Space, HF artifact dataset, HF baseline model repo, Qwen3-Omni and Cosmos3 model repos, and HF collection.</td>
     </tr>
   </tbody>
 </table>
@@ -211,11 +211,88 @@ The public suite is organized around two result lines. Keep them separate when r
   </tbody>
 </table>
 
+### Method Blocks
+
+<table>
+  <thead>
+    <tr>
+      <th width="20%">Evidence line</th>
+      <th width="20%">Method block</th>
+      <th width="24%">Methods</th>
+      <th width="18%">Score statement</th>
+      <th>Read as</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1 sample episode</strong></td>
+      <td>Task-head baselines</td>
+      <td>Minimal; Neural MLP</td>
+      <td>40/40 direct scores.</td>
+      <td>Task-lab reproducibility and simple-vs-neural behavior.</td>
+    </tr>
+    <tr>
+      <td><strong>128 selected episodes</strong></td>
+      <td>Aligned baseline heads</td>
+      <td>Metadata simple/NN; raw-feature simple/NN</td>
+      <td>80/80 scores: 74 direct + 6 compact-proxy.</td>
+      <td>Same-split metadata/raw-feature baseline comparison.</td>
+    </tr>
+    <tr>
+      <td><strong>128 selected episodes</strong></td>
+      <td>Qwen3-Omni series</td>
+      <td>Qwen3-Omni v6 LoRA</td>
+      <td>20/20 direct scores from verified selected-128 Qwen3-Omni LoRA and task-specific probes.</td>
+      <td>Trainable Qwen3-Omni diagnostic baseline on the selected-128 surface.</td>
+    </tr>
+    <tr>
+      <td><strong>128 selected episodes</strong></td>
+      <td>Cosmos3 series</td>
+      <td>Cosmos3-Super Reasoner; Cosmos3-Nano Future Window</td>
+      <td>40/40 direct scores from verified public-safe reasoner and future-window artifacts.</td>
+      <td>Cosmos3 reasoner and future-window diagnostics on the selected-128 surface.</td>
+    </tr>
+  </tbody>
+</table>
+
+Cosmos3-Super Forward-Dynamics LoRA is published as a separate fine-tuned adapter artifact with weights/results; it is not counted as a 20-task matrix method row.
+
+### Qwen3-Omni Run Versions
+
+These are Qwen3-Omni run versions, not the three project-level public result layers. The 20-task matrix uses **Qwen3-Omni v6 LoRA**. v5 remains the pinned prior release. v1-v4 are lineage/ablation evidence.
+
+<table>
+  <thead>
+    <tr>
+      <th width="10%">Run</th>
+      <th width="26%">What changed</th>
+      <th width="12%">Eval samples</th>
+      <th width="12%">JSON validity</th>
+      <th width="12%">Contact acc.</th>
+      <th>Public role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>v1</strong></td><td>Selected-128 validation-aware LoRA baseline.</td><td>448</td><td>0.8750</td><td>0.6451</td><td>Superseded lineage evidence.</td></tr>
+    <tr><td><strong>v2</strong></td><td>Structured-JSON reuse full-8-GPU LoRA.</td><td>448</td><td>0.9978</td><td>0.7188</td><td>Superseded lineage evidence.</td></tr>
+    <tr><td><strong>v3</strong></td><td>Strict-label prompt/eval over the v2 adapter.</td><td>448</td><td>1.0000</td><td>0.7210</td><td>Prompt/eval lineage evidence.</td></tr>
+    <tr><td><strong>v4</strong></td><td>Four-epoch structured-JSON LoRA.</td><td>448</td><td>1.0000</td><td>0.7299</td><td>Superseded metric tradeoff run.</td></tr>
+    <tr><td><strong>v5</strong></td><td>Multiscale cap96 LoRA.</td><td>4,032</td><td>1.0000</td><td>0.7865</td><td>Pinned prior release and comparison baseline.</td></tr>
+    <tr><td><strong>v6</strong></td><td>Rank64/lr5e-5 multiscale LoRA.</td><td>4,032</td><td>0.9990</td><td>0.8177</td><td>Current public 20-task Qwen row.</td></tr>
+  </tbody>
+</table>
+
+Detailed lineage:
+[`QWEN3_OMNI_RUN_LINEAGE.md`](QWEN3_OMNI_RUN_LINEAGE.md) and
+[`qwen3_omni_run_lineage.json`](docs/data/qwen3_omni_run_lineage.json).
+
 Result entry points:
 [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md),
 [`two_evidence_lines.json`](docs/data/two_evidence_lines.json),
 [`TWO_EVIDENCE_LINE_RESULT_SUMMARY.md`](TWO_EVIDENCE_LINE_RESULT_SUMMARY.md),
 [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json),
+[`QWEN3_OMNI_RUN_LINEAGE.md`](QWEN3_OMNI_RUN_LINEAGE.md),
+[`qwen3_omni_run_lineage.json`](docs/data/qwen3_omni_run_lineage.json),
 [`single_episode_task_model_radar.json`](docs/data/single_episode_task_model_radar.json),
 [`episode128_task_model_radar.json`](docs/data/episode128_task_model_radar.json),
 [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), and
@@ -275,7 +352,7 @@ Result entry points:
 LANGUAGE_GUIDES = {
     "zh": {
         "title": "Ropedia Xperience-10M 任务套件",
-        "tagline": "面向 Xperience-10M 的多语言公开研究入口：样本数据、20 个具身智能任务、基线、Qwen3/Cosmos 诊断结果，以及基础模型训练方向。",
+        "tagline": "面向 Xperience-10M 的多语言公开研究入口：样本数据、20 个具身智能任务、基线、Qwen3-Omni 与 Cosmos3 诊断结果，以及基础模型训练方向。",
         "body": f"""## 如何阅读这个项目
 
 这个仓库把 Ropedia 公开的 Xperience-10M sample episode 变成一个可检查的具身智能任务实验室。请先看仪表盘和项目状态，再进入 20 个任务、结果矩阵和 Hugging Face 镜像。
@@ -292,6 +369,8 @@ LANGUAGE_GUIDES = {
 | 128 selected episodes | 96/16/16 split；34,269 个导出窗口；public-safe 特征链接到官方 gated episode path。 | Metadata simple/NN、raw-feature simple/NN、Qwen3-Omni、Cosmos3-Super、Cosmos3-Nano；140/140 scored records；134 direct + 6 compact proxy。 | 比较同一 split 上的基线和模型分支；proxy target 会显式标注。 |
 
 公式：2 个单 episode 方法 x 20 个任务 = 40；7 个 128-episode 方法 x 20 个任务 = 140；公开矩阵总计 180/180 scored records。
+
+方法块：Line 1 是 task-head baselines（Minimal、Neural MLP）。Line 2 分成 aligned baseline heads（metadata simple/NN、raw-feature simple/NN）、Qwen3-Omni series（Qwen3-Omni v6 LoRA）和 Cosmos3 series（Cosmos3-Super Reasoner、Cosmos3-Nano Future Window）。Qwen3 run v1-v6 是 LoRA/评估演进线，不是项目级三层版本；20-task matrix 使用 v6，v5 是 pinned prior release。Cosmos3-Super Forward-Dynamics LoRA 是单独发布的 adapter 权重/结果，不计入 20-task matrix method row。
 
 入口：[`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)、[`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json)。
 
@@ -311,7 +390,7 @@ LANGUAGE_GUIDES = {
 
 - 数据层：公开 sample episode 被切成 20-frame 窗口，并连接视频、音频、深度、pose/SLAM、mocap、IMU、calibration 和语言标注。
 - 任务层：20 个统一任务覆盖识别、预测、检索、重建、同步、长时预测、action-object 关系和 sensor bridge。
-- 结果层：单 episode minimal/NN 覆盖 20/20；128-episode metadata/raw/Qwen3/Cosmos 分开标注；当前公开矩阵为 180/180 scored records，其中 174 direct、6 compact proxy，proxy target 显式保留。
+- 结果层：单 episode minimal/NN 覆盖 20/20；128-episode metadata/raw、Qwen3-Omni v6 LoRA、Cosmos3-Super Reasoner、Cosmos3-Nano Future Window 分开标注；当前公开矩阵为 180/180 scored records，其中 174 direct、6 compact proxy，proxy target 显式保留。
 - 训练方向：spatial intelligence、human-video world model、vision-language-action 三条 pipeline 已经有任务映射和需要的证据清单。
 
 ## 公开边界
@@ -321,7 +400,7 @@ LANGUAGE_GUIDES = {
     },
     "es": {
         "title": "Ropedia Xperience-10M Task Suite",
-        "tagline": "Superficie pública multilingüe para Xperience-10M: datos de muestra, 20 tareas embodied-AI, baselines, diagnósticos Qwen3/Cosmos y direcciones de entrenamiento.",
+        "tagline": "Superficie pública multilingüe para Xperience-10M: datos de muestra, 20 tareas embodied-AI, baselines, diagnósticos Qwen3-Omni y Cosmos3, y direcciones de entrenamiento.",
         "body": f"""## Cómo Leer Este Proyecto
 
 Este repositorio convierte el episodio público de muestra de Xperience-10M en un laboratorio verificable de tareas para embodied AI. Empieza por el panel visual y el estado del proyecto; después entra en las tareas, matrices de resultados y espejos de Hugging Face.
@@ -338,6 +417,8 @@ Este repositorio convierte el episodio público de muestra de Xperience-10M en u
 | 128 episodios seleccionados | Split 96/16/16; 34,269 ventanas exportadas; features public-safe ligadas a episode paths oficiales gated. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super y Cosmos3-Nano; 140/140 registros con score; 134 direct + 6 compact proxy. | Comparar baselines y ramas de modelo en el mismo split; los proxy targets permanecen visibles. |
 
 Fórmula: 2 métodos de un episodio x 20 tareas = 40; 7 métodos de 128 episodios x 20 tareas = 140; matriz pública total = 180/180 registros con score.
+
+Bloques de métodos: la línea 1 contiene task-head baselines (Minimal, Neural MLP). La línea 2 separa aligned baseline heads (metadata simple/NN, raw-feature simple/NN), la serie Qwen3-Omni (Qwen3-Omni v6 LoRA) y la serie Cosmos3 (Cosmos3-Super Reasoner, Cosmos3-Nano Future Window). Qwen3 v1-v6 es una línea de evolución LoRA/evaluación, no las tres capas públicas del proyecto; la matriz de 20 tareas usa v6 y v5 queda como pinned prior release. Cosmos3-Super Forward-Dynamics LoRA se publica como adapter/pesos/resultados aparte y no cuenta como fila de método en la matriz de 20 tareas.
 
 Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
 
@@ -367,7 +448,7 @@ El proyecto publica solo artifacts derivados, métricas, figuras, tarjetas y res
     },
     "fr": {
         "title": "Ropedia Xperience-10M Task Suite",
-        "tagline": "Surface publique multilingue pour Xperience-10M : échantillon, 20 tâches embodied-AI, baselines, diagnostics Qwen3/Cosmos et pistes d'entraînement.",
+        "tagline": "Surface publique multilingue pour Xperience-10M : échantillon, 20 tâches embodied-AI, baselines, diagnostics Qwen3-Omni et Cosmos3, et pistes d'entraînement.",
         "body": f"""## Comment Lire Ce Projet
 
 Ce dépôt transforme l'épisode public d'exemple Xperience-10M en laboratoire de tâches vérifiable pour l'IA incarnée. Commencez par le tableau de bord et le statut du projet, puis ouvrez les contrats de tâches, les matrices de résultats et les miroirs Hugging Face.
@@ -384,6 +465,8 @@ Ce dépôt transforme l'épisode public d'exemple Xperience-10M en laboratoire d
 | 128 épisodes sélectionnés | Split 96/16/16; 34,269 fenêtres exportées; features public-safe liées aux chemins gated officiels. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super et Cosmos3-Nano; 140/140 enregistrements scorés; 134 direct + 6 compact proxy. | Comparer les baselines et branches de modèles sur le même split; les proxy targets restent visibles. |
 
 Formule : 2 méthodes sur 1 épisode x 20 tâches = 40; 7 méthodes sur 128 épisodes x 20 tâches = 140; matrice publique totale = 180/180 enregistrements scorés.
+
+Blocs de méthodes : la ligne 1 contient les task-head baselines (Minimal, Neural MLP). La ligne 2 sépare les aligned baseline heads (metadata simple/NN, raw-feature simple/NN), la série Qwen3-Omni (Qwen3-Omni v6 LoRA) et la série Cosmos3 (Cosmos3-Super Reasoner, Cosmos3-Nano Future Window). Qwen3 v1-v6 est une lignée LoRA/évaluation, pas les trois couches publiques du projet; la matrice 20 tâches utilise v6 et v5 reste le pinned prior release. Cosmos3-Super Forward-Dynamics LoRA est publié comme adapter/poids/résultats séparé et ne compte pas comme ligne de méthode dans la matrice 20 tâches.
 
 Entrées : [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
 
@@ -413,7 +496,7 @@ Le projet publie des artifacts dérivés, métriques, figures et cartes public-s
     },
     "de": {
         "title": "Ropedia Xperience-10M Task Suite",
-        "tagline": "Mehrsprachige öffentliche Forschungsoberfläche für Xperience-10M: Sample-Daten, 20 Embodied-AI-Aufgaben, Baselines, Qwen3/Cosmos-Diagnostik und Trainingsrichtungen.",
+        "tagline": "Mehrsprachige öffentliche Forschungsoberfläche für Xperience-10M: Sample-Daten, 20 Embodied-AI-Aufgaben, Baselines, Qwen3-Omni- und Cosmos3-Diagnostik und Trainingsrichtungen.",
         "body": f"""## So Liest Man Dieses Projekt
 
 Dieses Repository macht aus dem öffentlichen Xperience-10M-Sample eine prüfbare Aufgabenoberfläche für Embodied AI. Beginnen Sie mit Dashboard und Projektstatus, danach mit Aufgabenverträgen, Ergebnismatrizen und Hugging-Face-Spiegeln.
@@ -430,6 +513,8 @@ Dieses Repository macht aus dem öffentlichen Xperience-10M-Sample eine prüfbar
 | 128 ausgewählte Episoden | 96/16/16 Split; 34,269 exportierte Fenster; public-safe Features mit offiziellen gated Episode-Pfaden. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super und Cosmos3-Nano; 140/140 gescorte Einträge; 134 direct + 6 compact proxy. | Baselines und Modellzweige auf demselben Split vergleichen; Proxy-Targets bleiben sichtbar. |
 
 Formel: 2 Single-Episode-Methoden x 20 Aufgaben = 40; 7 128-Episode-Methoden x 20 Aufgaben = 140; öffentliche Gesamtmatrix = 180/180 gescorte Einträge.
+
+Methodenblöcke: Linie 1 enthält task-head baselines (Minimal, Neural MLP). Linie 2 trennt aligned baseline heads (metadata simple/NN, raw-feature simple/NN), die Qwen3-Omni series (Qwen3-Omni v6 LoRA) und die Cosmos3 series (Cosmos3-Super Reasoner, Cosmos3-Nano Future Window). Qwen3 v1-v6 ist eine LoRA-/Evaluationslinie, nicht die drei öffentlichen Projektebenen; die 20-Task-Matrix nutzt v6 und v5 bleibt der pinned prior release. Cosmos3-Super Forward-Dynamics LoRA ist ein separat veröffentlichter Adapter/Gewichts-/Ergebnis-Artefakt und zählt nicht als Methodenreihe der 20-Task-Matrix.
 
 Einstieg: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
 
@@ -459,7 +544,7 @@ Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Kar
     },
     "ja": {
         "title": "Ropedia Xperience-10M Task Suite",
-        "tagline": "Xperience-10M の多言語公開研究面: サンプルデータ、20 個の embodied-AI タスク、ベースライン、Qwen3/Cosmos 診断、基盤モデル訓練方向。",
+        "tagline": "Xperience-10M の多言語公開研究面: サンプルデータ、20 個の embodied-AI タスク、ベースライン、Qwen3-Omni と Cosmos3 診断、基盤モデル訓練方向。",
         "body": f"""## このプロジェクトの読み方
 
 このリポジトリは、公開 Xperience-10M サンプル episode を、検証可能な embodied AI タスク実験面に変換します。まずダッシュボードとプロジェクト状態を見て、その後 20 タスク、結果行列、Hugging Face ミラーを確認してください。
@@ -476,6 +561,8 @@ Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Kar
 | 128 selected episodes | 96/16/16 split、34,269 exported windows、public-safe features が official gated episode paths に対応。 | Metadata simple/NN、raw-feature simple/NN、Qwen3-Omni、Cosmos3-Super、Cosmos3-Nano; 140/140 scored records; 134 direct + 6 compact proxy。 | 同一 split の baselines と model branches を比較; proxy targets は明示。 |
 
 式: 1-episode methods 2 個 x 20 tasks = 40、128-episode methods 7 個 x 20 tasks = 140、公開 matrix 合計は 180/180 scored records。
+
+Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2 は aligned baseline heads（metadata simple/NN、raw-feature simple/NN）、Qwen3-Omni series（Qwen3-Omni v6 LoRA）、Cosmos3 series（Cosmos3-Super Reasoner、Cosmos3-Nano Future Window）に分かれます。Qwen3 v1-v6 は LoRA/eval の lineage で、project-level の 3 version とは別です。20-task matrix は v6 を使い、v5 は pinned prior release です。Cosmos3-Super Forward-Dynamics LoRA は別の adapter/weights/results artifact として公開され、20-task matrix の method row には含めません。
 
 入口: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)、[`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json)。
 
@@ -505,7 +592,7 @@ Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Kar
     },
     "ko": {
         "title": "Ropedia Xperience-10M Task Suite",
-        "tagline": "Xperience-10M을 위한 다국어 공개 연구 표면: 샘플 데이터, 20개 embodied-AI 과제, 베이스라인, Qwen3/Cosmos 진단, foundation 모델 학습 방향.",
+        "tagline": "Xperience-10M을 위한 다국어 공개 연구 표면: 샘플 데이터, 20개 embodied-AI 과제, 베이스라인, Qwen3-Omni 및 Cosmos3 진단, foundation 모델 학습 방향.",
         "body": f"""## 이 프로젝트를 읽는 방법
 
 이 저장소는 공개 Xperience-10M sample episode를 검증 가능한 embodied AI 과제 실험 표면으로 정리합니다. 먼저 대시보드와 프로젝트 상태를 보고, 이후 20개 과제, 결과 행렬, Hugging Face 미러를 확인하세요.
@@ -522,6 +609,8 @@ Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Kar
 | 128 selected episodes | 96/16/16 split, 34,269 exported windows, public-safe features가 official gated episode paths에 연결됨. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, Cosmos3-Nano; 140/140 scored records; 134 direct + 6 compact proxy. | 같은 split에서 baselines와 model branches 비교; proxy targets는 명시 유지. |
 
 공식: single-episode 방법 2개 x 20 tasks = 40; 128-episode 방법 7개 x 20 tasks = 140; 전체 공개 matrix = 180/180 scored records.
+
+방법 블록: Line 1은 task-head baselines(Minimal, Neural MLP)입니다. Line 2는 aligned baseline heads(metadata simple/NN, raw-feature simple/NN), Qwen3-Omni series(Qwen3-Omni v6 LoRA), Cosmos3 series(Cosmos3-Super Reasoner, Cosmos3-Nano Future Window)로 분리됩니다. Qwen3 v1-v6은 LoRA/eval lineage이며 project-level 3개 버전과 다릅니다. 20-task matrix는 v6을 사용하고 v5는 pinned prior release입니다. Cosmos3-Super Forward-Dynamics LoRA는 별도의 adapter/weights/results artifact로 공개되며 20-task matrix method row에는 포함되지 않습니다.
 
 입구: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
 
@@ -551,7 +640,7 @@ Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Kar
     },
     "pt": {
         "title": "Ropedia Xperience-10M Task Suite",
-        "tagline": "Superfície pública multilíngue para Xperience-10M: dados de amostra, 20 tarefas embodied-AI, baselines, diagnósticos Qwen3/Cosmos e direções de treino.",
+        "tagline": "Superfície pública multilíngue para Xperience-10M: dados de amostra, 20 tarefas embodied-AI, baselines, diagnósticos Qwen3-Omni e Cosmos3 e direções de treino.",
         "body": f"""## Como Ler Este Projeto
 
 Este repositório transforma o episódio público de amostra do Xperience-10M em um laboratório verificável de tarefas para embodied AI. Comece pelo painel visual e pelo status do projeto; depois abra os contratos de tarefas, matrizes de resultados e espelhos no Hugging Face.
@@ -568,6 +657,8 @@ Este repositório transforma o episódio público de amostra do Xperience-10M em
 | 128 episódios selecionados | Split 96/16/16; 34,269 janelas exportadas; features public-safe ligadas aos caminhos oficiais gated. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super e Cosmos3-Nano; 140/140 registros com score; 134 direct + 6 compact proxy. | Comparar baselines e ramos de modelo no mesmo split; proxy targets permanecem visíveis. |
 
 Fórmula: 2 métodos de um episódio x 20 tarefas = 40; 7 métodos de 128 episódios x 20 tarefas = 140; matriz pública total = 180/180 registros com score.
+
+Blocos de métodos: a linha 1 contém task-head baselines (Minimal, Neural MLP). A linha 2 separa aligned baseline heads (metadata simple/NN, raw-feature simple/NN), a série Qwen3-Omni (Qwen3-Omni v6 LoRA) e a série Cosmos3 (Cosmos3-Super Reasoner, Cosmos3-Nano Future Window). Qwen3 v1-v6 é uma linhagem LoRA/eval, não as três camadas públicas do projeto; a matriz de 20 tarefas usa v6 e v5 fica como pinned prior release. Cosmos3-Super Forward-Dynamics LoRA é publicado como adapter/pesos/resultados separado e não conta como linha de método na matriz de 20 tarefas.
 
 Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
 

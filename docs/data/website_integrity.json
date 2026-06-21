@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-21T09:20:28+00:00",
+  "generated_at_utc": "2026-06-21T10:08:12+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 241,
-    "external_reference_count": 152,
-    "json_files": 53,
+    "local_references": 247,
+    "external_reference_count": 153,
+    "json_files": 54,
     "image_assets_referenced": 29,
     "failure_count": 0
   },
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 116163,
-      "evidence_index": 156473
+      "overview_index": 118264,
+      "evidence_index": 163038
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 116163,
-      "protocol_index": 152654,
-      "evidence_index": 156473
+      "overview_index": 118264,
+      "protocol_index": 159219,
+      "evidence_index": 163038
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -180,7 +180,7 @@
       "status": "pass",
       "reason": "The Suite anchor should show the task-suite map before the modality atlas.",
       "first_marker_index": 471,
-      "second_marker_index": 3762
+      "second_marker_index": 3794
     },
     {
       "name": "suite_modality_atlas_contains_seven_cards",
@@ -277,7 +277,7 @@
     {
       "path": "index.html",
       "id_count": 95,
-      "reference_count": 213,
+      "reference_count": 219,
       "image_count": 35
     },
     {
@@ -415,6 +415,11 @@
       "top_level_type": "dict"
     },
     {
+      "path": "data/qwen3_omni_run_lineage.json",
+      "bytes": 9211,
+      "top_level_type": "dict"
+    },
+    {
       "path": "data/qwen3_v5_v6_comparison.json",
       "bytes": 2814,
       "top_level_type": "dict"
@@ -531,12 +536,12 @@
     },
     {
       "path": "data/two_evidence_line_result_summary.json",
-      "bytes": 13689,
+      "bytes": 17223,
       "top_level_type": "dict"
     },
     {
       "path": "data/two_evidence_lines.json",
-      "bytes": 4388,
+      "bytes": 7196,
       "top_level_type": "dict"
     },
     {
@@ -546,7 +551,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 20542,
+      "bytes": 20657,
       "top_level_type": "dict"
     },
     {

@@ -2,7 +2,7 @@
   "status": "current",
   "updated_utc": "2026-06-21T00:00:00Z",
   "interpretation_rule": "Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for held-out comparison and model-branch claims.",
-  "reader_summary": "The suite has two public result lines. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, Qwen3-Omni, and Cosmos branches. Do not mix the two when reading scores.",
+  "reader_summary": "The suite has two public result lines. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Do not mix the two when reading scores.",
   "score_formula": "2 single-episode methods x 20 tasks = 40 records; 7 selected-128 methods x 20 tasks = 140 records; total public matrix = 180/180 scored records.",
   "lines": [
     {
@@ -80,8 +80,80 @@
         "docs/data/two_evidence_line_result_summary.json",
         "docs/data/xperience10m_128_episode_feature_index.json",
         "docs/data/omni_model_comparison.json",
+        "docs/data/qwen3_omni_run_lineage.json",
         "docs/data/task_method_20_gap_audit.json"
       ]
+    }
+  ],
+  "method_blocks": [
+    {
+      "line_id": "single_public_sample_episode",
+      "line_label": "1 sample episode",
+      "block": "Task-head baselines",
+      "methods": [
+        "Minimal",
+        "Neural MLP"
+      ],
+      "scored_records": 40,
+      "direct_scored_records": 40,
+      "proxy_scored_records": 0,
+      "evidence_type": "Direct target metrics on the public sample windows.",
+      "read_as": "Task-lab reproducibility and simple-vs-neural behavior."
+    },
+    {
+      "line_id": "selected_128_episode_surface",
+      "line_label": "128 selected episodes",
+      "block": "Aligned baseline heads",
+      "methods": [
+        "Metadata simple",
+        "Metadata NN",
+        "Raw-feature simple",
+        "Raw-feature NN"
+      ],
+      "scored_records": 80,
+      "direct_scored_records": 74,
+      "proxy_scored_records": 6,
+      "evidence_type": "Direct processed-target metrics where available; compact proxies for documented raw-target gaps.",
+      "read_as": "Same-split metadata/raw-feature baseline comparison."
+    },
+    {
+      "line_id": "selected_128_episode_surface",
+      "line_label": "128 selected episodes",
+      "block": "Qwen3-Omni series",
+      "methods": [
+        "Qwen3-Omni v6 LoRA"
+      ],
+      "scored_records": 20,
+      "direct_scored_records": 20,
+      "proxy_scored_records": 0,
+      "evidence_type": "Verified selected-128 Qwen3-Omni v6 LoRA plus source-linked task-specific probes.",
+      "read_as": "Trainable Qwen3-Omni diagnostic baseline on the selected-128 surface."
+    },
+    {
+      "line_id": "selected_128_episode_surface",
+      "line_label": "128 selected episodes",
+      "block": "Cosmos3 series",
+      "methods": [
+        "Cosmos3-Super Reasoner",
+        "Cosmos3-Nano Future Window"
+      ],
+      "scored_records": 40,
+      "direct_scored_records": 40,
+      "proxy_scored_records": 0,
+      "evidence_type": "Verified Cosmos3-Super Reasoner and Cosmos3-Nano Future Window public-safe artifacts.",
+      "read_as": "Cosmos3 reasoner and future-window diagnostics on the selected-128 surface."
+    }
+  ],
+  "related_model_artifacts": [
+    {
+      "name": "Qwen3-Omni v1-v6 run lineage",
+      "role": "Explains the LoRA/evaluation version ladder; v6 is the current 20-task matrix row, v5 remains the pinned prior release, and v1-v4 are lineage/ablation evidence.",
+      "repo": "docs/data/qwen3_omni_run_lineage.json"
+    },
+    {
+      "name": "Cosmos3-Super Forward-Dynamics LoRA",
+      "role": "Separate fine-tuned adapter artifact for forward-dynamics loss metrics; published with weights/results but not counted as a 20-task matrix method row.",
+      "repo": "https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep"
     }
   ],
   "combined_public_matrix": {
