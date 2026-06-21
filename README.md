@@ -75,6 +75,10 @@ The multilingual README files are reader guides. The canonical technical evidenc
   </thead>
   <tbody>
     <tr>
+      <td><strong>Project identity</strong><br><img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Ropedia Xperience-10M logo" width="56"></td>
+      <td>The same logo mark is used across the GitHub README, GitHub Pages dashboard, Hugging Face Space, artifact dataset, model mirrors, favicon, and social preview. Reusable assets: <a href="docs/assets/brand/xperience10m-logo-mark-512.png">logo mark</a> and <a href="docs/assets/brand/xperience10m-logo-social-card.png">social card</a>.</td>
+    </tr>
+    <tr>
       <td><strong>Two-line contract</strong></td>
       <td><strong>Line 1: 1 sample episode</strong> for task construction and reproducibility. <strong>Line 2: 128 selected episodes</strong> for same-split metadata/raw baselines, Qwen3-Omni v6, and Cosmos3 diagnostics.</td>
     </tr>

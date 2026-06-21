@@ -1094,6 +1094,80 @@
       height: auto;
       background: #020502;
     }
+    .about-identity {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 20px;
+      align-items: center;
+      margin: 24px 0 30px;
+      padding: 20px;
+      border: 1px solid rgba(204, 255, 160, 0.24);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(204, 255, 160, 0.11), rgba(7, 18, 7, 0.68) 42%),
+        rgba(2, 5, 2, 0.84);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
+    }
+    .about-identity img {
+      width: 92px;
+      height: 92px;
+      display: block;
+      border: 1px solid rgba(204, 255, 160, 0.42);
+      border-radius: var(--radius);
+      background: #061006;
+      object-fit: contain;
+      box-shadow: 0 0 22px rgba(122, 229, 195, 0.16);
+    }
+    .about-identity span {
+      display: block;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .about-identity strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: clamp(22px, 2.2vw, 34px);
+      line-height: 1.08;
+    }
+    .about-identity p {
+      max-width: 980px;
+      margin: 10px 0 0;
+      color: rgba(245, 247, 240, 0.76);
+      font-size: 15px;
+      line-height: 1.58;
+    }
+    .about-identity-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .about-identity-links a {
+      min-height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      border: 1px solid rgba(204, 255, 160, 0.20);
+      border-radius: 999px;
+      background: rgba(204, 255, 160, 0.07);
+      color: #dfeadc;
+      font-family: var(--font-btn);
+      font-size: 12px;
+      font-weight: 760;
+      text-decoration: none;
+    }
+    .about-identity-links a:hover {
+      color: var(--green);
+      border-color: rgba(204, 255, 160, 0.44);
+      background: rgba(204, 255, 160, 0.12);
+    }
     .result-reading-order {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -3841,6 +3915,15 @@
         width: auto;
         padding-top: 14px;
       }
+      .about-identity {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 18px;
+      }
+      .about-identity img {
+        width: 72px;
+        height: 72px;
+      }
       .hero::before {
         background:
           linear-gradient(180deg, rgba(2, 5, 2, 0.92) 0%, rgba(2, 5, 2, 0.76) 48%, rgba(2, 5, 2, 0.96) 100%),
@@ -4180,6 +4263,20 @@
         <div class="section-head">
           <h2>Two evidence lines: 1 episode and 128 episodes.</h2>
           <p>Read the suite as two lines. Line 1 proves the task lab is inspectable and reproducible. Line 2 compares selected-128 metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Keep the lines separate when interpreting scores.</p>
+        </div>
+        <div class="about-identity" aria-label="About Ropedia Xperience-10M Task Suite">
+          <img src="assets/brand/xperience10m-logo-mark-192.png" alt="Ropedia Xperience-10M project logo" width="92" height="92" loading="eager" decoding="async">
+          <div>
+            <span>About this public surface</span>
+            <strong>Ropedia Xperience-10M Task Suite</strong>
+            <p>The mark identifies the shared public package across the GitHub repository, GitHub Pages dashboard, Hugging Face Space, artifact dataset, model mirrors, and social preview. Use this area as the project identity checkpoint before reading the 1-episode and selected-128 evidence lines.</p>
+            <div class="about-identity-links" aria-label="Project identity links">
+              <a href="assets/brand/xperience10m-logo-mark-512.png">Logo mark</a>
+              <a href="assets/brand/xperience10m-logo-social-card.png">Social card</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite">GitHub repo</a>
+              <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a>
+            </div>
+          </div>
         </div>
         <figure class="line-map-figure">
           <img src="assets/charts/two_evidence_line_map.svg?v=two-line-map-v1" alt="Two evidence-line map showing 1 sample episode, 128 selected episodes, and the combined 180 scored method-task records">

@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Project Surface",
   "status": "pass",
-  "generated_at_utc": "2026-06-21T15:21:42+00:00",
+  "generated_at_utc": "2026-06-21T16:08:43+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -18,7 +18,7 @@
         "website_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T14:45:02+00:00"
+          "generated_at_utc": "2026-06-21T16:07:45+00:00"
         },
         "rendered_site_check": {
           "exists": true,
@@ -28,27 +28,27 @@
         "task_surface_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T14:45:00+00:00"
+          "generated_at_utc": "2026-06-21T15:21:55+00:00"
         },
         "source_alignment": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T14:46:49+00:00"
+          "generated_at_utc": "2026-06-21T15:21:55+00:00"
         },
         "scale_up_status": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T14:47:03+00:00"
+          "generated_at_utc": "2026-06-21T15:23:13+00:00"
         },
         "publication_package": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T14:46:11+00:00"
+          "generated_at_utc": "2026-06-21T15:22:42+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T14:53:27+00:00"
+          "generated_at_utc": "2026-06-21T15:26:25+00:00"
         }
       },
       "failures": {}
@@ -95,9 +95,9 @@
       "status": "pass",
       "reason": "Public copy should consistently present the project as Ropedia Xperience-10M, with the Qwen3-Omni scale-up status.",
       "marker_counts": {
-        "Ropedia Xperience-10M Task Suite": 20,
-        "Xperience-10M": 166,
-        "20-task": 100,
+        "Ropedia Xperience-10M Task Suite": 22,
+        "Xperience-10M": 172,
+        "20-task": 102,
         "Qwen3-Omni": 245,
         "128-episode pilot": 1
       }
@@ -107,8 +107,8 @@
       "status": "pass",
       "reason": "Public cards should link the repo, Space, artifacts, model baselines, upstream dataset, and Ropedia dataset page.",
       "marker_counts": {
-        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 91,
-        "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite": 11,
+        "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite": 92,
+        "https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite": 12,
         "https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts": 11,
         "https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines": 14,
         "https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results": 6,
