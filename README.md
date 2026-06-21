@@ -387,8 +387,9 @@ and [`docs/data/project_brief.json`](docs/data/project_brief.json).
 ## Glossary
 
 Use [`GLOSSARY.md`](GLOSSARY.md) when a term such as evidence line,
-20-frame window, compact-proxy score, Qwen v1-v6, Cosmos3-Super, LoRA adapter,
-or HF artifact dataset is unclear. The same definitions are mirrored as
+20-frame window, direct score, compact-proxy score, raw metric value,
+normalized radar value, minimal/minimum baseline, simple baseline, Qwen v1-v6,
+Cosmos3-Super, LoRA adapter, or HF artifact dataset is unclear. The same definitions are mirrored as
 [`docs/data/glossary.json`](docs/data/glossary.json) for the website and
 Hugging Face repos.
 

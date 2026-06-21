@@ -1397,6 +1397,104 @@
       background: var(--pill-color, var(--green));
       box-shadow: 0 0 0 3px rgba(204, 255, 160, 0.08);
     }
+    .term-with-help {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-width: 0;
+    }
+    .term-help {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 17px;
+      height: 17px;
+      flex: 0 0 auto;
+      border: 1px solid rgba(204, 255, 160, 0.40);
+      border-radius: 999px;
+      color: #ccffa0;
+      background: rgba(204, 255, 160, 0.075);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 840;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: 0;
+      cursor: help;
+    }
+    .term-help:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 2px;
+    }
+    .term-tooltip {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 9px);
+      z-index: 30;
+      width: min(280px, 78vw);
+      transform: translate(-50%, 4px);
+      opacity: 0;
+      pointer-events: none;
+      border: 1px solid rgba(204, 255, 160, 0.28);
+      border-radius: 8px;
+      background: rgba(2, 5, 2, 0.98);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.42);
+      color: #edf6e8;
+      padding: 10px 11px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 620;
+      letter-spacing: 0;
+      line-height: 1.4;
+      text-align: left;
+      text-transform: none;
+      transition: opacity 140ms ease, transform 140ms ease;
+      white-space: normal;
+    }
+    .term-help:hover .term-tooltip,
+    .term-help:focus .term-tooltip,
+    .term-help:focus-within .term-tooltip {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+    .term-tooltip::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      width: 8px;
+      height: 8px;
+      transform: translate(-50%, -4px) rotate(45deg);
+      border-right: 1px solid rgba(204, 255, 160, 0.28);
+      border-bottom: 1px solid rgba(204, 255, 160, 0.28);
+      background: rgba(2, 5, 2, 0.98);
+    }
+    .result-matrix-stat .term-with-help,
+    .matrix-legend-pill .term-with-help,
+    .method-cell .term-with-help,
+    .task-header .term-with-help {
+      display: inline-flex;
+    }
+    .result-matrix-stat .term-with-help {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.3;
+    }
+    .result-matrix-stat .term-with-help span:first-child,
+    .matrix-legend-pill .term-with-help span:first-child,
+    .method-cell .term-with-help span:first-child,
+    .task-header .term-with-help span:first-child {
+      display: inline;
+      margin-top: 0;
+    }
+    .method-cell .term-help,
+    .task-header .term-help {
+      width: 15px;
+      height: 15px;
+      font-size: 9px;
+    }
     .method-summary-scroll,
     .result-matrix-scroll {
       overflow-x: auto;
@@ -1474,6 +1572,50 @@
       font-family: var(--font-mono);
       font-size: 10px;
       line-height: 1.25;
+    }
+    .method-cell .term-with-help,
+    .task-header .term-with-help,
+    .method-summary-table th .term-with-help,
+    .result-score-table th .term-with-help {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 0;
+      color: inherit;
+      font: inherit;
+      line-height: inherit;
+    }
+    .method-cell .term-with-help > span:first-child,
+    .task-header .term-with-help > span:first-child,
+    .method-summary-table th .term-with-help > span:first-child,
+    .result-score-table th .term-with-help > span:first-child {
+      display: inline;
+      margin-top: 0;
+      color: inherit;
+      font: inherit;
+      line-height: inherit;
+    }
+    .method-cell .term-help,
+    .task-header .term-help,
+    .method-summary-table th .term-help,
+    .result-score-table th .term-help {
+      display: inline-flex;
+      margin-top: 0;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      line-height: 1;
+    }
+    .method-cell .term-tooltip,
+    .task-header .term-tooltip,
+    .method-summary-table th .term-tooltip,
+    .result-score-table th .term-tooltip {
+      display: block;
+      margin-top: 0;
+      color: #edf6e8;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 620;
+      line-height: 1.4;
     }
     .score-chip {
       display: block;
@@ -5799,20 +5941,20 @@
           </div>
           <div class="result-matrix-body">
             <div class="result-matrix-legend" aria-label="Result table legend">
-              <span class="matrix-legend-pill" style="--pill-color:#ccffa0">direct task score</span>
-              <span class="matrix-legend-pill" style="--pill-color:#f472b6">compact proxy score</span>
-              <span class="matrix-legend-pill" style="--pill-color:#9bb8ff">raw value is citeable</span>
-              <span class="matrix-legend-pill" style="--pill-color:#67e8d1">normalized value is radar-only</span>
+              <span class="matrix-legend-pill" style="--pill-color:#ccffa0"><span class="term-with-help"><span>direct task score</span><span class="term-help" tabindex="0" aria-label="Direct score: A metric computed against the task target directly." title="A metric computed against the task target directly.">i<span class="term-tooltip" role="tooltip">A metric computed against the task target directly. This is the preferred score type in the 20-task matrix.</span></span></span></span>
+              <span class="matrix-legend-pill" style="--pill-color:#f472b6"><span class="term-with-help"><span>compact proxy score</span><span class="term-help" tabindex="0" aria-label="Compact-proxy score: A bounded proxy metric when a direct raw target is not publicly available." title="A bounded proxy metric when a direct raw target is not publicly available.">i<span class="term-tooltip" role="tooltip">A bounded proxy metric when a direct raw target is not publicly available. It stays explicit so readers do not over-read it.</span></span></span></span>
+              <span class="matrix-legend-pill" style="--pill-color:#9bb8ff"><span class="term-with-help"><span>raw value is citeable</span><span class="term-help" tabindex="0" aria-label="Raw metric value: The original metric value emitted by the runner or verified package." title="The original metric value emitted by the runner or verified package.">i<span class="term-tooltip" role="tooltip">The original metric value emitted by the runner or verified package. This is the value to cite.</span></span></span></span>
+              <span class="matrix-legend-pill" style="--pill-color:#67e8d1"><span class="term-with-help"><span>normalized value is radar-only</span><span class="term-help" tabindex="0" aria-label="Normalized radar value: A 0-1 plotting value used only to draw comparable radar polygons." title="A 0-1 plotting value used only to draw comparable radar polygons.">i<span class="term-tooltip" role="tooltip">A 0-1 plotting value used only to draw comparable radar polygons across metrics with different scales.</span></span></span></span>
             </div>
             <div class="method-summary-scroll" aria-label="Method summary table container">
               <table class="method-summary-table" id="resultMethodSummary">
                 <thead>
                   <tr>
-                    <th>Method</th>
-                    <th>Line</th>
-                    <th>Records</th>
-                    <th>Direct</th>
-                    <th>Proxy</th>
+                    <th><span class="term-with-help"><span>Method</span><span class="term-help" tabindex="0" aria-label="Method row: One named method family in the matrix." title="One named method family in the matrix.">i<span class="term-tooltip" role="tooltip">One named method family in the matrix, such as Minimal, 128ep Raw NN, Qwen3-Omni v6, or Cosmos3-Super.</span></span></span></th>
+                    <th><span class="term-with-help"><span>Line</span><span class="term-help" tabindex="0" aria-label="Evidence line: A claim boundary for a group of results." title="A claim boundary for a group of results.">i<span class="term-tooltip" role="tooltip">A claim boundary for a group of results: Line 1 is one public sample episode; Line 2 is selected-128 held-out comparison.</span></span></span></th>
+                    <th><span class="term-with-help"><span>Records</span><span class="term-help" tabindex="0" aria-label="Task-method record: One method evaluated on one task." title="One method evaluated on one task.">i<span class="term-tooltip" role="tooltip">One method evaluated on one task. 9 methods x 20 tasks gives 180 public result records.</span></span></span></th>
+                    <th><span class="term-with-help"><span>Direct</span><span class="term-help" tabindex="0" aria-label="Direct score: A metric computed against the task target directly." title="A metric computed against the task target directly.">i<span class="term-tooltip" role="tooltip">A metric computed against the task target directly. This is the preferred score type in the 20-task matrix.</span></span></span></th>
+                    <th><span class="term-with-help"><span>Proxy</span><span class="term-help" tabindex="0" aria-label="Compact-proxy score: A bounded proxy metric when a direct raw target is not publicly available." title="A bounded proxy metric when a direct raw target is not publicly available.">i<span class="term-tooltip" role="tooltip">A bounded proxy metric when a direct raw target is not publicly available. It stays explicit so readers do not over-read it.</span></span></span></th>
                     <th>Scope</th>
                   </tr>
                 </thead>
@@ -6165,6 +6307,10 @@
                   <tr><td>Task-method record</td><td>One method evaluated on one task.</td><td>The 9 x 20 public matrix, now 180 scored records.</td><td>A single prediction row.</td></tr>
                   <tr><td>Direct score</td><td>A metric computed against the task target directly.</td><td>Primary interpretation in the result matrix.</td><td>Compact-proxy score.</td></tr>
                   <tr><td>Compact-proxy score</td><td>A bounded proxy when the direct raw target is not public.</td><td>Explicitly marked cells in the gap audit and matrix.</td><td>A direct target measurement.</td></tr>
+                  <tr><td>Raw metric value</td><td>The original value emitted by the runner or verified package.</td><td>The value to cite from the 180-result table.</td><td>Normalized radar value.</td></tr>
+                  <tr><td>Normalized radar value</td><td>A 0-1 plotting value used only for comparable radar polygons.</td><td>Visual comparison across metrics with different scales.</td><td>The raw metric value to cite.</td></tr>
+                  <tr><td>Minimal baseline</td><td>A simple non-neural task head; the "minimum" reference row in casual wording.</td><td>Single-episode lower-complexity comparison.</td><td>Selected-128 Simple baseline rows.</td></tr>
+                  <tr><td>Simple baseline</td><td>A non-neural selected-128 baseline family.</td><td>Metadata/text and raw-feature 128-episode comparisons before NN/foundation rows.</td><td>The single-episode Minimal baseline.</td></tr>
                   <tr><td>Qwen3-Omni v6</td><td>The current public Qwen 20-task row.</td><td>Qwen3-Omni LoRA plus task-specific probes.</td><td>All Qwen v1-v6 experiments.</td></tr>
                   <tr><td>Cosmos3-Super</td><td>The larger Cosmos-style branch.</td><td>Reasoner diagnostics and a verified forward-dynamics LoRA branch.</td><td>Cosmos3-Nano Future Window.</td></tr>
                   <tr><td>LoRA adapter</td><td>Lightweight trainable adapter weights.</td><td>Public model-branch artifacts when verified.</td><td>Full base-model weights.</td></tr>
@@ -7031,20 +7177,119 @@ python scripts/validate_publication_package.py</code></pre>
         : "128 selected episodes";
     };
 
+    let glossaryTermMap = new Map();
+    const fallbackTermDefinitions = {
+      "direct score": "A metric computed against the task target directly. This is the preferred score type in the 20-task matrix.",
+      "direct": "A metric computed against the task target directly. This is the preferred score type in the 20-task matrix.",
+      "compact-proxy score": "A bounded proxy metric when a direct raw target is not publicly available. It stays explicit so readers do not over-read it.",
+      "proxy": "A bounded proxy metric when a direct raw target is not publicly available. It stays explicit so readers do not over-read it.",
+      "raw metric value": "The original metric value emitted by the runner or verified package. This is the value to cite.",
+      "normalized radar value": "A 0-1 plotting value used only to draw comparable radar polygons across metrics with different scales.",
+      "task-method record": "One method evaluated on one task. 9 methods x 20 tasks gives 180 public result records.",
+      "unified 20-task suite": "The current task surface: all 20 task contracts presented together and scored across methods where real artifacts exist.",
+      "evidence line": "A claim boundary for a group of results: Line 1 is one public sample episode; Line 2 is selected-128 held-out comparison.",
+      "public sample episode": "The fully inspectable Line 1 unit used for raw-file browsing, task construction, and single-episode baselines.",
+      "selected 128 episodes": "Line 2 uses derived windows/features and keeps links back to official gated episode ids and source paths.",
+      "minimal baseline": "A simple non-neural task head used as a low-complexity comparison on the public sample episode.",
+      "minimal": "A simple non-neural task head used as a low-complexity comparison on the public sample episode.",
+      "minimum": "A simple non-neural task head used as a low-complexity comparison on the public sample episode.",
+      "simple baseline": "A non-neural selected-128 baseline family used before NN and foundation-model rows.",
+      "simple": "A non-neural selected-128 baseline family used before NN and foundation-model rows.",
+      "neural mlp": "A compact PyTorch MLP task head used for single-episode and selected-128 baseline comparisons.",
+      "nn": "A compact PyTorch MLP task head used for single-episode and selected-128 baseline comparisons.",
+      "metadata baseline": "A selected-128 baseline using metadata/text-derived public-safe features.",
+      "raw-feature baseline": "A selected-128 baseline using exported public-safe raw-feature groups, not raw gated media.",
+      "qwen3-omni": "The multimodal foundation-model family used for the Qwen branch; v6 is the current public 20-task row.",
+      "qwen v1-v6": "The Qwen3-Omni run lineage: v1-v4 are earlier evidence, v5 is the prior pinned release, and v6 is current.",
+      "cosmos3-super": "The larger Cosmos3-style branch tracked as Reasoner diagnostics and a separate forward-dynamics LoRA branch.",
+      "cosmos3-nano": "A smaller Cosmos3 compatibility/future-window branch used for the Nano Future Window row.",
+      "lora adapter": "A lightweight trainable adapter-weight package, published only when verified and public-safe.",
+      "method row": "One named method family in the matrix, such as Minimal, 128ep Raw NN, Qwen3-Omni v6, or Cosmos3-Super."
+    };
+
+    const normalizeTermKey = (term) => String(term || "")
+      .trim()
+      .toLowerCase()
+      .replace(/[–—]/g, "-")
+      .replace(/\s+/g, " ");
+
+    function registerGlossaryTerms(payload) {
+      glossaryTermMap = new Map();
+      (payload?.entries || []).forEach((entry) => {
+        glossaryTermMap.set(normalizeTermKey(entry.term), entry);
+      });
+    }
+
+    function termDefinition(term) {
+      const key = normalizeTermKey(term);
+      const entry = glossaryTermMap.get(key);
+      if (entry) return [entry.plain_meaning, entry.project_usage].filter(Boolean).join(" ");
+      return fallbackTermDefinitions[key] || "";
+    }
+
+    function infoIcon(title, body) {
+      if (!body) return "";
+      return `
+        <span class="term-help" tabindex="0" aria-label="${escapeHtml(title)}: ${escapeHtml(body)}" title="${escapeHtml(body)}">i
+          <span class="term-tooltip" role="tooltip">${escapeHtml(body)}</span>
+        </span>
+      `;
+    }
+
+    function termHelp(term, label = term) {
+      return `<span class="term-with-help"><span>${escapeHtml(label)}</span>${infoIcon(term, termDefinition(term))}</span>`;
+    }
+
+    function methodGlossaryTerms(method) {
+      const text = `${method.id || ""} ${method.label || ""} ${method.short_label || ""} ${method.method_detail || ""}`.toLowerCase();
+      const terms = [];
+      if (text.includes("minimal")) terms.push("Minimal baseline");
+      if (text.includes("simple")) terms.push("Simple baseline");
+      if (text.includes("neural") || text.includes("mlp") || text.includes(" nn")) terms.push("Neural MLP");
+      if (text.includes("metadata")) terms.push("Metadata baseline");
+      if (text.includes("raw")) terms.push("Raw-feature baseline");
+      if (text.includes("qwen3") || text.includes("qwen")) terms.push("Qwen3-Omni");
+      if (text.includes("lora")) terms.push("LoRA adapter");
+      if (text.includes("cosmos3-super")) terms.push("Cosmos3-Super");
+      if (text.includes("cosmos3-nano")) terms.push("Cosmos3-Nano");
+      return Array.from(new Set(terms));
+    }
+
+    function methodInfo(method) {
+      const direct = Number(method.scored_task_count || 0) - Number(method.proxy_scored_task_count || 0);
+      const glossaryNotes = methodGlossaryTerms(method)
+        .map((term) => {
+          const body = termDefinition(term);
+          return body ? `${term}: ${body}` : "";
+        })
+        .filter(Boolean)
+        .join(" ");
+      return [
+        method.method_detail || method.scope || "",
+        glossaryNotes,
+        `Evidence line: ${evidenceLineLabel(method)}.`,
+        `Records: ${method.result_record_count || 0}/20; direct ${direct}; proxy ${method.proxy_scored_task_count || 0}.`
+      ].filter(Boolean).join(" ");
+    }
+
+    function methodLabelWithHelp(method) {
+      return `<span class="term-with-help"><span>${escapeHtml(method.label)}</span>${infoIcon(method.label, methodInfo(method))}</span>`;
+    }
+
     function renderResultMatrixStats(payload, records) {
       const stats = document.getElementById("resultMatrixStats");
       if (!stats) return;
       const direct = records.filter((record) => record.scored && !record.proxy_scored).length;
       const proxy = records.filter((record) => record.proxy_scored).length;
       const items = [
-        [payload.method_task_record_count ?? records.length, "method-task records"],
-        [payload.method_count ?? 9, "method rows"],
-        [payload.task_count ?? 20, "task columns"],
-        [direct, "direct scores"],
-        [proxy, "compact-proxy scores"]
+        [payload.method_task_record_count ?? records.length, "method-task records", "Task-method record"],
+        [payload.method_count ?? 9, "method rows", "Method row"],
+        [payload.task_count ?? 20, "task columns", "Unified 20-task suite"],
+        [direct, "direct scores", "Direct score"],
+        [proxy, "compact-proxy scores", "Compact-proxy score"]
       ];
-      stats.innerHTML = items.map(([value, label]) => `
-        <div class="result-matrix-stat"><strong>${escapeHtml(value)}</strong><span>${escapeHtml(label)}</span></div>
+      stats.innerHTML = items.map(([value, label, term]) => `
+        <div class="result-matrix-stat"><strong>${escapeHtml(value)}</strong>${termHelp(term, label)}</div>
       `).join("");
     }
 
@@ -7056,7 +7301,7 @@ python scripts/validate_publication_package.py</code></pre>
         const direct = Number(method.scored_task_count || 0) - Number(method.proxy_scored_task_count || 0);
         return `
           <tr>
-            <td><span class="method-cell"><strong>${escapeHtml(method.label)}</strong><span>${escapeHtml(method.short_label || method.id)}</span></span></td>
+            <td><span class="method-cell"><strong>${methodLabelWithHelp(method)}</strong><span>${escapeHtml(method.short_label || method.id)}</span></span></td>
             <td>${escapeHtml(evidenceLineLabel(method))}</td>
             <td>${escapeHtml(method.result_record_count)} / 20</td>
             <td>${escapeHtml(direct)}</td>
@@ -7088,7 +7333,7 @@ python scripts/validate_publication_package.py</code></pre>
       renderResultMethodSummary(payload);
       table.querySelector("thead").innerHTML = `
         <tr>
-          <th>Method</th>
+          <th>${termHelp("Method row", "Method")}</th>
           ${tasks.map((task) => `
             <th title="${escapeHtml(task.task_label)}">
               <span class="task-header">
@@ -7111,13 +7356,16 @@ python scripts/validate_publication_package.py</code></pre>
           const proxy = Boolean(record.proxy_scored);
           const status = proxy ? "proxy" : "direct";
           const color = method.color || "#ccffa0";
+          const statusTerm = proxy ? "Compact-proxy score" : "Direct score";
+          const statusHelp = termDefinition(statusTerm);
+          const cellLabel = `${method.label}, task ${String(task.task_number).padStart(2, "0")} ${task.task_label}: ${status} score, raw ${rawValue}, normalized ${normalized}, metric ${record.metric_key || "metric"}.`;
           return `
             <td>
               <a class="score-source-link" href="${escapeHtml(resultSourceUrl(record.source))}" title="${escapeHtml(record.source || "matrix source")}">
-                <span class="score-chip ${proxy ? "proxy" : "direct"}" style="--score-color:${escapeHtml(color)}">
+                <span class="score-chip ${proxy ? "proxy" : "direct"}" style="--score-color:${escapeHtml(color)}" aria-label="${escapeHtml(cellLabel)}" title="${escapeHtml(statusHelp)}">
                   <strong>${escapeHtml(rawValue)}</strong>
                   <span>norm ${escapeHtml(normalized)}<br>${escapeHtml(record.metric_key || "metric")}</span>
-                  <em>${status}</em>
+                  <em title="${escapeHtml(statusHelp)}">${status}</em>
                 </span>
               </a>
             </td>
@@ -7127,7 +7375,7 @@ python scripts/validate_publication_package.py</code></pre>
           <tr>
             <td>
               <span class="method-cell">
-                <strong>${escapeHtml(method.label)}</strong>
+                <strong>${methodLabelWithHelp(method)}</strong>
                 <span>${escapeHtml(method.short_label || method.id)} · ${escapeHtml(line)}</span>
               </span>
             </td>
@@ -7141,8 +7389,12 @@ python scripts/validate_publication_package.py</code></pre>
       const table = document.getElementById("resultScoreTable");
       if (!table) return;
       try {
-        const response = await fetch("data/task_method_20_result_matrix.json", { cache: "no-cache" });
+        const [response, glossaryResponse] = await Promise.all([
+          fetch("data/task_method_20_result_matrix.json", { cache: "no-cache" }),
+          fetch("data/glossary.json", { cache: "no-cache" }).catch(() => null)
+        ]);
         if (!response.ok) throw new Error(`matrix ${response.status}`);
+        if (glossaryResponse?.ok) registerGlossaryTerms(await glossaryResponse.json());
         renderResultScoreTable(await response.json());
       } catch (error) {
         table.querySelector("tbody").innerHTML = '<tr><td colspan="2">Result matrix could not be loaded. Open the JSON link above.</td></tr>';

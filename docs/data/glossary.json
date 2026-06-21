@@ -167,6 +167,22 @@
       "primary_files": ["TASK_METHOD_20_GAP_AUDIT.md", "docs/data/task_method_20_gap_audit.json"]
     },
     {
+      "term": "Raw metric value",
+      "category": "tasks_metrics",
+      "plain_meaning": "The original metric value emitted by the runner or verified result package.",
+      "project_usage": "This is the value to cite from the 180-result table.",
+      "do_not_confuse_with": "The normalized radar value.",
+      "primary_files": ["TASK_METHOD_20_RESULT_MATRIX.md", "docs/data/task_method_20_result_matrix.json"]
+    },
+    {
+      "term": "Normalized radar value",
+      "category": "tasks_metrics",
+      "plain_meaning": "A 0-1 plotting value used only to draw comparable radar polygons.",
+      "project_usage": "Helps visualize metrics with different scales and directions.",
+      "do_not_confuse_with": "The raw metric value to cite.",
+      "primary_files": ["docs/data/unified_task_model_radar.json", "docs/assets/charts/unified_task_model_radar.svg"]
+    },
+    {
       "term": "Gap audit",
       "category": "tasks_metrics",
       "plain_meaning": "A coverage and source-status audit.",
@@ -185,9 +201,17 @@
     {
       "term": "Minimal baseline",
       "category": "models_runs",
-      "plain_meaning": "A simple non-neural task head.",
+      "plain_meaning": "A simple non-neural task head; the \"minimum\" reference row in casual wording.",
       "project_usage": "Provides a reproducible lower-complexity comparison for task feasibility.",
       "do_not_confuse_with": "Metadata-only selected-128 baseline family.",
+      "primary_files": ["RESEARCH_TAKEAWAYS.md", "docs/data/task_method_20_result_matrix.json"]
+    },
+    {
+      "term": "Simple baseline",
+      "category": "models_runs",
+      "plain_meaning": "A non-neural baseline family for the selected-128 rows.",
+      "project_usage": "Used for metadata/text and raw-feature 128-episode comparisons before NN/foundation-model rows.",
+      "do_not_confuse_with": "The single-episode Minimal baseline.",
       "primary_files": ["RESEARCH_TAKEAWAYS.md", "docs/data/task_method_20_result_matrix.json"]
     },
     {

@@ -39,9 +39,12 @@ machine-readable form.
 | Task-method record | One method evaluated on one task. | 9 methods x 20 tasks gives 180 public result records. | A single prediction row. |
 | Direct score | A metric computed against the task target directly. | The preferred score type in the 20-task matrix. | Compact-proxy score. |
 | Compact-proxy score | A bounded proxy metric when a direct raw target is not publicly available. | Kept explicit in the matrix and gap audit so readers do not over-read it. | A direct target measurement. |
+| Raw metric value | The original metric value emitted by the runner or verified result package. | This is the value to cite from the 180-result table. | The normalized radar value. |
+| Normalized radar value | A 0-1 plotting value used only to draw comparable radar polygons. | Helps visualize metrics with different scales and directions. | The raw metric value to cite. |
 | Gap audit | A coverage and source-status audit. | `docs/data/task_method_20_gap_audit.json` explains scored, proxy, and unsupported cells. | A performance leaderboard. |
 | Leakage control | A split or feature rule that prevents using future/target information unfairly. | Chronological splits, held-out splits, and source audits protect task interpretation. | Lower training accuracy. |
-| Minimal baseline | A simple non-neural task head. | Provides a reproducible lower-complexity comparison for task feasibility. | The metadata-only baseline family in the selected-128 matrix. |
+| Minimal baseline | A simple non-neural task head; the "minimum" reference row in casual wording. | Provides a reproducible lower-complexity comparison for task feasibility. | The metadata-only baseline family in the selected-128 matrix. |
+| Simple baseline | A non-neural baseline family for the selected-128 rows. | Used for metadata/text and raw-feature 128-episode comparisons before NN/foundation-model rows. | The single-episode Minimal baseline. |
 | Neural MLP | A compact neural task head. | Used for single-episode and selected-128 baseline comparisons. | Foundation-model fine-tuning. |
 | Metadata baseline | A selected-128 baseline using metadata/text-derived public-safe features. | Helps compare simple and neural heads on the held-out split. | Raw video/depth/audio feature baselines. |
 | Raw-feature baseline | A selected-128 baseline using exported public-safe raw-feature groups. | Tracks what non-foundation heads can do with richer processed inputs. | Raw gated media redistribution. |
