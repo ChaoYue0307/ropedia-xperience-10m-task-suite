@@ -728,6 +728,16 @@ def matrix_rows(payload: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def render_matrix_markdown(payload: dict[str, Any]) -> str:
+    def score_cell(value: dict[str, Any]) -> str:
+        if value.get("normalized_score") is None:
+            return status_label(value.get("status"))
+        raw_text = str(value.get("raw_text") or "n/a")
+        norm = value.get("normalized_score")
+        norm_text = f"{float(norm):.3f}" if norm is not None else "n/a"
+        metric_key = str(value.get("metric_key") or "metric")
+        status = "proxy" if value.get("status") == "proxy_scored" else "direct"
+        return f"{raw_text}<br><sub>{status}; norm {norm_text}; {metric_key}</sub>"
+
     lines = [
         "# Task Method 20-Result Matrix",
         "",
@@ -747,6 +757,22 @@ def render_matrix_markdown(payload: dict[str, Any]) -> str:
         )
     lines.extend(
         [
+            "",
+            "## Compact Score Matrix",
+            "",
+            "Cells show `raw metric value`, then `direct/proxy; normalized radar value; metric key`. The raw metric is the value to cite; the normalized value is the 0-1 plotting value used by the radar.",
+            "",
+            "| # | Task | " + " | ".join(spec["short_label"] for spec in SERIES.values()) + " |",
+            "| ---: | --- | " + " | ".join("---" for _ in SERIES) + " |",
+        ]
+    )
+    for task in payload["tasks"]:
+        cells = [score_cell(task["values"][series_id]) for series_id in SERIES]
+        lines.append(f"| {task['task_number']:02d} | {task['label']} | " + " | ".join(cells) + " |")
+    lines.extend(
+        [
+            "",
+            "## Status Matrix",
             "",
             "| # | Task | " + " | ".join(spec["short_label"] for spec in SERIES.values()) + " |",
             "| ---: | --- | " + " | ".join("---" for _ in SERIES) + " |",
