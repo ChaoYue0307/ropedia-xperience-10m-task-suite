@@ -4787,7 +4787,7 @@
           <article class="artifact"><h3>Split policy</h3><p>Single-episode chronological 70/30 train/test split. This avoids random future-window mixing; cross-episode generalization is measured in the later multi-episode pilot.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVALUATION_PROTOCOL.md">protocol document</a></article>
           <article class="artifact"><h3>Metric contract</h3><p>All 20 tasks list input, target, primary metric, baseline score, and source artifact path in the unified suite file.</p><a href="data/task_suite_20.json">task_suite_20.json</a></article>
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target-side signals, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
-          <article class="artifact"><h3>Audio ablation</h3><p>Audio and no-audio variants are evaluated across the original task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
+          <article class="artifact"><h3>Audio ablation</h3><p>Audio and no-audio variants are evaluated across the walkthrough-backed task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
           <article class="artifact"><h3>Foundation track selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 is the world-model track with a camera-pose proxy forward-dynamics contract ready for trainer work, policy models wait for robot-compatible action targets, and Xperience-native pretraining remains a later full-corpus goal.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
           <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. The selected multi-episode Qwen3-Omni final diagnostic result is verified and meets the JSON-validity target; Cosmos3-Nano has a verified future-window compatibility package; and Cosmos3-Super has a verified base-weight JSON-task evaluation plus a fine-tuned forward-dynamics LoRA branch. The next stage is action/subtask error analysis, stronger model-quality runs, and policy-target conversion.</p><a href="data/omni_model_comparison.json">result comparison</a></article>
           <article class="artifact"><h3>128-Episode Task Suite Enhancement Pack</h3><p>Before adding episodes, the suite should try `multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets, label-normalized scoring, and compact raw-feature shards for unsupported tasks.</p><a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a></article>
@@ -4824,7 +4824,7 @@
           <article class="evidence-card">
             <span class="status-pill">verified</span>
             <h3>Audio contribution is measured task by task</h3>
-            <p>Audio variants improve the primary metric on 6 of the original task contracts in this single-episode setting.</p>
+            <p>Audio variants improve the primary metric on 6 walkthrough-backed task contracts in this single-episode setting.</p>
             <div class="evidence-links">
               <a href="data/audio_ablation_summary.json">audio summary</a>
               <a href="assets/charts/audio_ablation_delta.svg">delta chart</a>
@@ -5463,7 +5463,7 @@
     <section id="directions" data-project-tab="directions" role="tabpanel" aria-labelledby="tab-directions" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>The original tasks organized into four research directions.</h2>
+          <h2>The walkthrough-backed tasks organized into four research directions.</h2>
           <p>Each task is mapped as direct, proxy, or diagnostic evidence for the Ropedia research tracks. The mapping uses two current baselines: minimal interpretable heads and neural MLP heads over the same feature contract.</p>
         </div>
         <div class="direction-grid">
@@ -5510,76 +5510,18 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Unified 20-task evidence and provenance.</h2>
-          <p>All 20 tasks now live in the same task table, task-card grid, radar, and 180-record result matrix. The chart below is retained as provenance for the historically named result bundle, not as a separate task tier.</p>
-        </div>
-        <img class="chart" src="assets/charts/tier2_task_suite.svg?v=xperience10m-tier2" alt="Historical additional-task provenance chart for the unified Xperience-10M 20-task suite">
-        <div class="extension-grid">
-          <article class="extension-card">
-            <span class="status-pill">Task 13 / forecast</span>
-            <h3>Long-Horizon Next-Action Forecasting</h3>
-            <p><strong>Input:</strong> current non-caption multimodal window.</p>
-            <p><strong>Output:</strong> action label five seconds later.</p>
-            <div class="extension-metrics"><span><strong>0.0750</strong>minimal macro-F1</span><span><strong>0.0655</strong>neural macro-F1</span></div>
-          </article>
-          <article class="extension-card">
-            <span class="status-pill">Task 14 / procedure</span>
-            <h3>Long-Horizon Next-Subtask Forecasting</h3>
-            <p><strong>Input:</strong> current non-caption multimodal window.</p>
-            <p><strong>Output:</strong> procedure subtask five seconds later.</p>
-            <div class="extension-metrics"><span><strong>0.0455</strong>minimal macro-F1</span><span><strong>0.0507</strong>neural macro-F1</span></div>
-          </article>
-          <article class="extension-card">
-            <span class="status-pill">Task 15 / language</span>
-            <h3>Interaction Text Prediction</h3>
-            <p><strong>Input:</strong> current sensor window with caption features removed.</p>
-            <p><strong>Output:</strong> raw annotation interaction phrase.</p>
-            <div class="extension-metrics"><span><strong>0.0444</strong>minimal macro-F1</span><span><strong>0.0381</strong>neural macro-F1</span></div>
-          </article>
-          <article class="extension-card">
-            <span class="status-pill">Task 16 / relation</span>
-            <h3>Action-Object Relation Prediction</h3>
-            <p><strong>Input:</strong> current sensor window with caption features removed.</p>
-            <p><strong>Output:</strong> joint action plus active object-set label.</p>
-            <div class="extension-metrics"><span><strong>0.0000</strong>minimal macro-F1</span><span><strong>0.0000</strong>neural macro-F1</span></div>
-          </article>
-          <article class="extension-card">
-            <span class="status-pill">Task 17 / objects</span>
-            <h3>Future Object-Set Forecasting</h3>
-            <p><strong>Input:</strong> current sensor window with caption features removed.</p>
-            <p><strong>Output:</strong> object set active five seconds later.</p>
-            <div class="extension-metrics"><span><strong>0.1694</strong>minimal micro-F1</span><span><strong>0.1972</strong>neural micro-F1</span></div>
-          </article>
-          <article class="extension-card">
-            <span class="status-pill">Task 18 / sensor bridge</span>
-            <h3>IMU-to-Hand Pose Reconstruction</h3>
-            <p><strong>Input:</strong> IMU acceleration and gyroscope features only.</p>
-            <p><strong>Output:</strong> current left/right hand joint feature blocks.</p>
-            <div class="extension-metrics"><span><strong>0.0420</strong>minimal MAE</span><span><strong>0.0426</strong>neural MAE</span></div>
-          </article>
-          <article class="extension-card">
-            <span class="status-pill">Task 19 / camera sync</span>
-            <h3>Camera-View Synchronization Retrieval</h3>
-            <p><strong>Input:</strong> fisheye camera-1 feature query.</p>
-            <p><strong>Output:</strong> synchronized fisheye camera-3 window rank.</p>
-            <div class="extension-metrics"><span><strong>0.4943</strong>minimal MRR</span><span><strong>0.2409</strong>neural MRR</span></div>
-          </article>
-          <article class="extension-card">
-            <span class="status-pill">Task 20 / timing</span>
-            <h3>Time-to-Next-Transition Regression</h3>
-            <p><strong>Input:</strong> current non-caption multimodal window.</p>
-            <p><strong>Output:</strong> capped frames until the next action boundary.</p>
-            <div class="extension-metrics"><span><strong>10.5374</strong>minimal MAE frames</span><span><strong>10.5545</strong>neural MAE frames</span></div>
-          </article>
+          <p>All 20 tasks live in the same task table, task-card grid, radar, and 180-record result matrix. Historical result paths are retained only for exact provenance links.</p>
         </div>
         <div class="callout-row">
           <div class="callout">
             <h3>Unified task artifact package</h3>
-            <p>The public task package has the 20-task JSON, per-task metrics, prediction/rank files, Markdown summaries, and charts generated from the local public-sample annotation and committed shared-window tensor.</p>
-            <p><a href="data/task_suite_20.json">Open unified 20-task JSON</a> · <a href="data/tier2_task_suite.json">Open historical provenance JSON</a></p>
+            <p>The public task package has one 20-task JSON, per-task metrics, prediction/rank files, Markdown summaries, radar charts, and the 180-record method-task matrix.</p>
+            <p><a href="data/task_suite_20.json">Open unified 20-task JSON</a> · <a href="data/task_method_20_result_matrix.json">Open 180-record matrix</a> · <a href="assets/charts/unified_task_model_radar.svg">Open unified radar</a></p>
           </div>
           <div class="callout">
             <h3>One setup, one task surface</h3>
             <p>Every task uses the same 20-frame window unit, 5-frame stride, 8,546-dimensional feature manifest, chronological split discipline, and minimal/neural comparison pattern unless a task-specific leakage rule removes target-side features.</p>
+            <p><a href="data/tier2_task_suite.json">Historical provenance JSON</a> and <a href="assets/charts/tier2_task_suite.svg">historical provenance chart</a> remain available for exact source tracing.</p>
           </div>
         </div>
         <img class="chart" src="assets/charts/research_direction_extension_tasks.svg?v=xperience10m-ext" alt="Four Xperience-10M research-direction extension probes with minimal and neural metrics">
@@ -5633,7 +5575,7 @@
     <section id="architectures" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>The original task heads share four head families.</h2>
+          <h2>The baseline task heads share four head families.</h2>
           <p>The diagram separates the shared episode-window representation from the task-specific heads, so the task contracts stay readable before scaling to larger models.</p>
         </div>
         <img class="architecture-image" src="assets/task_architectures.png?v=xperience10m-nn" alt="Verified minimal and neural architecture diagram for Ropedia Xperience-10M task heads">
@@ -5732,7 +5674,7 @@
           <img class="chart" src="assets/charts/cross_modal_retrieval.svg" alt="Cross modal retrieval chart">
           <img class="chart" src="assets/charts/episode_task_scores_neural_mlp.svg" alt="Neural MLP task score chart">
           <img class="chart" src="assets/charts/episode_task_scores_minimal_vs_neural.svg" alt="Minimal versus neural score chart">
-          <img class="chart" src="assets/charts/audio_ablation_delta.svg" alt="Measured audio delta chart across original task contracts">
+          <img class="chart" src="assets/charts/audio_ablation_delta.svg" alt="Measured audio delta chart across walkthrough-backed task contracts">
         </div>
         <p class="section-note"><a href="single_episode_explorer.html">Open the single-episode explorer</a> to inspect window-level labels, predictions, modality statistics, object labels, and diagnostic scores. The <a href="data/audio_ablation_summary.json">audio ablation summary</a> records the task-by-task audio contribution.</p>
       </div>
@@ -5861,9 +5803,9 @@
               <article class="artifact"><h3>Windows table</h3><p>Window start/end frames and aligned action/subtask labels for the public sample episode.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">window table</a></article>
               <article class="artifact"><h3>Feature inputs</h3><p>Source map for the current modality inputs used by the task suite.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature inputs</a></article>
               <article class="artifact"><h3>Neural MLP task results</h3><p>Per-task PyTorch MLP metrics, predictions, histories, and checkpoints for the unified task contracts, with historical result-bundle paths retained for provenance.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural MLP outputs</a></article>
-              <article class="artifact"><h3>Four-direction taxonomy</h3><p>Maps the original tasks to the four research tracks: human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_directions">research direction outputs</a></article>
+              <article class="artifact"><h3>Four-direction taxonomy</h3><p>Maps the walkthrough-backed task contracts to the four research tracks: human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_directions">research direction outputs</a></article>
               <article class="artifact"><h3>Direction extension probes</h3><p>Four coded probes, one per research direction, with minimal and neural metrics plus prediction/rank CSVs.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/research_direction_extensions">extension probe outputs</a></article>
-              <article class="artifact"><h3>Task walkthroughs</h3><p>Case studies for the original tasks, including input, middle process modules, output, metric, limitation, and task-player data.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/task_walkthroughs">walkthrough outputs</a></article>
+              <article class="artifact"><h3>Task walkthroughs</h3><p>Case studies for the walkthrough-backed task contracts, including input, middle process modules, output, metric, limitation, and task-player data.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/task_walkthroughs">walkthrough outputs</a></article>
               <article class="artifact"><h3>Audio ablation and raw upgrade</h3><p>All 72 task/variant rows comparing current audio, no audio, raw audio, replacement, and combined-input settings.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/audio_ablation">audio ablation outputs</a></article>
               <article class="artifact"><h3>Single-episode explorer</h3><p>Interactive window-level view of labels, predictions, modality statistics, object labels, and diagnostics.</p><a href="single_episode_explorer.html">open explorer</a></article>
               <article class="artifact"><h3>Cross-modal retrieval</h3><p>The strongest self-supervised signal from the single episode.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/cross_modal_retrieval/metrics.json">retrieval metrics</a></article>
@@ -5917,7 +5859,7 @@
             <div class="artifact-grid">
               <article class="artifact"><h3>Project brief</h3><p>The fastest written overview of the dataset sample, tasks, baselines, and scale-up plan.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">brief</a></article>
               <article class="artifact"><h3>Glossary</h3><p>Plain-language definitions for the terms most likely to confuse first-time readers and reviewers.</p><a href="data/glossary.json">glossary</a></article>
-              <article class="artifact"><h3>Task walkthroughs</h3><p>Human-readable case studies for the original tasks, including input, process modules, output, metric, and limitation.</p><a href="data/task_walkthroughs.json">walkthroughs</a></article>
+              <article class="artifact"><h3>Task walkthroughs</h3><p>Human-readable case studies for the walkthrough-backed task contracts, including input, process modules, output, metric, and limitation.</p><a href="data/task_walkthroughs.json">walkthroughs</a></article>
               <article class="artifact"><h3>Task results</h3><p>Minimal and neural-head metrics for the same sample windows and chronological split.</p><a href="data/summary_metrics.json">metrics</a></article>
               <article class="artifact"><h3>Visual figures</h3><p>Task-suite map, modality atlas, pipeline diagram, model architecture figure, and Qwen3-Omni LoRA training-flow figure.</p><a href="assets/task_suite_infographic.png">task-suite figure</a></article>
               <article class="artifact"><h3>Dataset notes</h3><p>Official dataset links, public sample source, modalities, access boundary, and current project subset.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">dataset notes</a></article>

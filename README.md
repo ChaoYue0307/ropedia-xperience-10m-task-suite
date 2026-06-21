@@ -850,9 +850,9 @@ and verified Qwen3-Omni/Cosmos3 diagnostic artifacts.
 scripts/
   train_min_action_model.py         # motion/IMU baseline
   train_all_modalities_model.py     # current all-feature lightweight baseline
-  episode_task_suite.py             # original end-to-end task definitions
+  episode_task_suite.py             # public-sample task definitions
   neural_task_models.py             # optional PyTorch MLP heads for task contracts
-  research_direction_taxonomy.py    # maps original tasks to the four research tracks
+  research_direction_taxonomy.py    # maps walkthrough-backed tasks to the four research tracks
   research_direction_extension_tasks.py # one extra data-backed probe per track
   tier2_task_suite.py              # historical-name provenance builder for unified task rows
   build_unified_task_suite.py       # builds TASK_SUITE_20.md and task_suite_20.json
@@ -890,7 +890,7 @@ results/
     research_directions/            # four-track taxonomy, CSV, and summary
     research_direction_extensions/  # four extra direction probes + predictions
     tier2_task_suite/               # provenance baseline tasks + predictions; historical path
-    task_walkthroughs/              # case-study walkthroughs for original tasks
+    task_walkthroughs/              # case-study walkthroughs for walkthrough-backed tasks
   omni_exploration/                 # ModelScope readiness-check artifacts
   omni_finetune/model_output_task_probes_20260616/ # task-13/task-16 probes derived from verified model JSON
 
@@ -1028,7 +1028,7 @@ cd ropedia-xperience-10m-task-suite
 python scripts/episode_task_suite.py --workspace /path/to/workspace
 ```
 
-Run the original task definitions with lightweight neural heads:
+Run the public-sample task definitions with lightweight neural heads:
 
 ```bash
 pip install torch
@@ -1449,7 +1449,7 @@ and [`docs/data/additional_development_directions.json`](docs/data/additional_de
 
 ## Four Research Directions
 
-The original task contracts are organized against the four Ropedia research directions in
+The walkthrough-backed task contracts are organized against the four Ropedia research directions in
 a generated artifact, not only in prose:
 
 - [`research_direction_taxonomy.json`](results/episode_task_suite/research_directions/research_direction_taxonomy.json)
@@ -1475,13 +1475,13 @@ Current direction-level coverage:
 
 The important interpretation is that all four directions can be **started** from
 the Xperience-10M sample modalities, but only direction C is strongly represented
-by the original task suite. Directions A, B, and D need additional targets and
+by the current task evidence. Directions A, B, and D need additional targets and
 multi-episode training before they become full research deliverables.
 
-## Four Direction-Extension Probes
+## Four Direction Probes
 
-Beyond the original task contracts, the repo now includes one extra data-backed
-probe for each research direction. These probes are computed from the same
+Alongside the unified 20-task suite, the repo includes one data-backed probe for
+each research direction. These probes are computed from the same
 `shared_windows.npz`, `windows.csv`, and `feature_manifest.json` artifacts, so
 the reported numbers are computed from sample-derived features and saved metric artifacts.
 
@@ -1543,18 +1543,10 @@ unified 20-task suite, not as a separate benchmark tier.
 
 ![128-episode 20-task model radar](docs/assets/charts/episode128_task_model_radar.svg)
 
-![Unified 20-task provenance chart](docs/assets/charts/tier2_task_suite.svg)
-
-| # | Task | Input | Output | Minimal | Neural MLP | Meaning |
-| ---: | --- | --- | --- | ---: | ---: | --- |
-| 13 | Long-Horizon Next-Action Forecasting | current non-caption multimodal window | action label five seconds later | `0.0750` macro-F1 | `0.0655` macro-F1 | Tests procedure context beyond the one-second next-action task. |
-| 14 | Long-Horizon Next-Subtask Forecasting | current non-caption multimodal window | subtask five seconds later | `0.0455` macro-F1 | `0.0507` macro-F1 | Moves anticipation from low-level action to high-level procedure state. |
-| 15 | Interaction Text Prediction | current sensor window without caption text | raw interaction phrase | `0.0444` macro-F1 | `0.0381` macro-F1 | Uses the original annotation interaction text instead of only hashed features. |
-| 16 | Action-Object Relation Prediction | current sensor window without caption text | joint action plus object-set label | `0.0000` macro-F1 | `0.0000` macro-F1 | Exposes a hard binding target for action-object reasoning. |
-| 17 | Future Object-Set Forecasting | current sensor window without caption text | object set five seconds later | `0.1694` micro-F1 | `0.1972` micro-F1 | Predicts which objects become relevant soon. |
-| 18 | IMU-to-Hand Pose Reconstruction | IMU feature block only | current left/right hand joints | `0.0420` MAE | `0.0426` MAE | Tests inertial-to-hand sensor bridging. |
-| 19 | Camera-View Synchronization Retrieval | fisheye camera-1 query | synchronized fisheye camera-3 window | `0.4943` MRR | `0.2409` MRR | Stress-tests multi-camera temporal alignment. |
-| 20 | Time-to-Next-Transition Regression | current non-caption multimodal window | capped frames until next action boundary | `10.5374` MAE frames | `10.5545` MAE frames | Converts boundary detection into continuous timing. |
+The all-task table, including every input/output contract and minimal/neural
+metric, is in [`TASK_SUITE_20.md`](TASK_SUITE_20.md). Historical provenance
+links remain listed above for exact source tracing, but the public task surface
+should be read as one integrated 20-task suite.
 
 Run:
 
@@ -1632,7 +1624,7 @@ PyTorch MLP classifiers or regressors. Its outputs live under
 and the rollup is stored in the `neural_tasks` section of
 [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json).
 
-The original task-specific heads are:
+The walkthrough-backed task heads are:
 
 | Task | Input | Minimal head | Output |
 | --- | --- | --- | --- |
@@ -1663,8 +1655,8 @@ The original task-specific heads are:
 | Neural MLP hand forecast | 0.1079 MPJPE | n/a | Same features/split, nonlinear regression head |
 | Neural MLP temporal order | 0.8520 F1 | 0.8578 | Strong improvement on adjacent-window ordering |
 | Neural MLP misalignment | 0.7153 F1 | 0.7009 | Detects shifted motion/visual/audio pairs better than the linear head |
-| Audio ablation | +0.0418 mean delta | n/a | Current audio variant improves the primary metric on 6 of the original task contracts |
-| Alternate audio representation | +0.0936 mean delta | n/a | Alternate audio-window representation improves over the baseline audio variant on 6 of the original task contracts |
+| Audio ablation | +0.0418 mean delta | n/a | Current audio variant improves the primary metric on 6 walkthrough-backed task contracts |
+| Alternate audio representation | +0.0936 mean delta | n/a | Alternate audio-window representation improves over the baseline audio variant on 6 walkthrough-backed task contracts |
 
 ## Audio Contribution Study
 
@@ -1743,7 +1735,7 @@ episodes; they are not reported as multi-episode benchmark results.
 
 I re-ran the full pipeline from the local raw public sample into a temporary
 local workspace and compared regenerated metrics with the committed
-artifacts. The baseline metrics, original task metrics, feature manifest, and
+artifacts. The baseline metrics, task metrics, feature manifest, and
 available modality manifest matched exactly after float normalization.
 
 See [`notes/reproducibility_audit.md`](notes/reproducibility_audit.md) for the

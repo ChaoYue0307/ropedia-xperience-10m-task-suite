@@ -52,7 +52,7 @@
     "Open EVALUATION_PROTOCOL.md before comparing task scores.",
     "Use RESEARCH_TAKEAWAYS.md for the current metric interpretation.",
     "Inspect results/episode_task_suite/feature_manifest.json to understand one model input.",
-    "Use TASK_SUITE_20.md and docs/data/task_suite_20.json to read the unified 20-task suite; the historical docs/data/tier2_task_suite.json path stores the tasks 13-20 result bundle.",
+    "Use TASK_SUITE_20.md and docs/data/task_suite_20.json to read the unified 20-task suite; the historical docs/data/tier2_task_suite.json path is retained only for provenance inside that suite.",
     "Use docs/data/omni_finetune_verified_result.json for the current multi-episode Qwen3-Omni pilot result."
   ],
   "scope_boundary": "The public sample is enough to build and verify task definitions, feature contracts, metrics, visualization, and baseline code. The final multi-episode Qwen3-Omni diagnostic result verifies the training loop and strict-JSON output reliability, but does not yet show strong action/subtask model quality.",

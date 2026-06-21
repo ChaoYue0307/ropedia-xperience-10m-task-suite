@@ -39,7 +39,7 @@
       "id": "original_task_suite",
       "status": "reproducible",
       "command": "python scripts/episode_task_suite.py --workspace $WORKSPACE --include-neural",
-      "expected": "original task metrics, predictions, manifests, and neural_mlp task-head artifacts",
+      "expected": "walkthrough-backed task metrics, predictions, manifests, and neural_mlp task-head artifacts",
       "boundary": "8,546-dimensional multimodal window contract"
     },
     {
@@ -50,11 +50,11 @@
       "boundary": "single-episode probes, not full research-direction solutions"
     },
     {
-      "id": "tasks_13_to_20_and_unified_index",
+      "id": "unified_20_task_index",
       "status": "reproducible",
       "command": "python scripts/tier2_task_suite.py && python scripts/build_unified_task_suite.py && python scripts/build_unified_task_model_radar.py",
-      "expected": "tasks 13-20 metrics, prediction/rank artifacts, TASK_SUITE_20.md, docs/data/task_suite_20.json, docs/data/tier2_task_suite.json, docs/assets/charts/tier2_task_suite.svg, docs/data/unified_task_model_radar.json, and docs/assets/charts/unified_task_model_radar.svg",
-      "boundary": "requires local public-sample annotation.hdf5 plus HOMIE Toolkit or h5py for tasks 13-20; raw HDF5 and MP4 files are not redistributed"
+      "expected": "unified 20-task metrics, prediction/rank artifacts, TASK_SUITE_20.md, docs/data/task_suite_20.json, docs/data/tier2_task_suite.json, docs/assets/charts/tier2_task_suite.svg, docs/data/unified_task_model_radar.json, and docs/assets/charts/unified_task_model_radar.svg",
+      "boundary": "requires local public-sample annotation.hdf5 plus HOMIE Toolkit or h5py for full public-task regeneration; raw HDF5 and MP4 files are not redistributed"
     },
     {
       "id": "source_alignment_audit",

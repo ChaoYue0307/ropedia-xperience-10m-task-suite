@@ -50,28 +50,28 @@ All 20 public-sample task contracts are presented together under the same
 minimal/neural baseline setup. Historical `tier2_task_suite` paths are
 retained only as stable provenance artifact locations inside the unified suite.
 
-| # | Task | Artifact id | Origin | Family | Unit | Input -> target | Primary metric | Minimal | Neural |
-| ---: | --- | --- | --- | --- | --- | --- | --- | ---: | ---: |
-| 1 | Action Recognition | `timeline_action` | original | supervised classification | single window | current 20-frame all-feature window -> current action label | macro_f1 (higher better) | 0.0500 | 0.0148 |
-| 2 | Procedure Step Recognition | `timeline_subtask` | original | supervised classification | single window | current 20-frame all-feature window -> current subtask label | macro_f1 (higher better) | 0.0506 | 0.0281 |
-| 3 | Action Boundary Detection | `transition_detection` | original | temporal diagnostic | single window | current 20-frame all-feature window -> action boundary versus steady | macro_f1 (higher better) | 0.6118 | 0.5862 |
-| 4 | Next-Action Prediction | `next_action` | original | short-horizon prediction | single window | current 20-frame all-feature window at time t -> action label at t + 20 frames | macro_f1 (higher better) | 0.0593 | 0.0419 |
-| 5 | Hand Trajectory Forecasting | `hand_trajectory_forecast` | original | trajectory regression | single window | current all-feature window -> future left/right hand 3D joints for 10 frames | mpjpe (lower better) | 0.8647 | 0.1079 |
-| 6 | Contact State Prediction | `contact_prediction` | original | binary classification | single window | non-contact and non-caption feature blocks -> any body contact | macro_f1 (higher better) | 1.0000 | 1.0000 |
-| 7 | Object Relevance Prediction | `object_relevance` | original | multi-label classification | single window | non-caption feature blocks -> current relevant object set | micro_f1 (higher better) | 0.1803 | 0.1679 |
-| 8 | Language Grounding | `caption_grounding` | original | retrieval | caption query | caption object/interaction query plus candidate sensor windows -> matching time window | mrr (higher better) | 0.0160 | 0.0168 |
-| 9 | Cross-Modal Retrieval | `cross_modal_retrieval` | original | retrieval | sensor query | motion, IMU, and camera query features -> matching depth/video window | top5_accuracy (higher better) | 0.3678 | 0.1983 |
-| 10 | Cross-Modal Reconstruction | `modality_reconstruction` | original | cross-modal regression | single window | motion, IMU, and camera features -> depth/video feature vector | r2 (higher better) | -0.0153 | -0.0102 |
-| 11 | Temporal Order Verification | `temporal_order` | original | pairwise diagnostic | adjacent window pair | two adjacent windows -> correct versus reversed order | f1 (higher better) | 0.5400 | 0.8520 |
-| 12 | Multimodal Synchronization Detection | `misalignment_detection` | original | pairwise diagnostic | paired modality window | motion side plus visual/depth side -> aligned versus shifted by 8 windows | f1 (higher better) | 0.5052 | 0.7153 |
-| 13 | Long-Horizon Next-Action Forecasting | `long_horizon_next_action` | additional | classification | single aligned window | Current 20-frame non-caption multimodal window. -> Action label five seconds later. | macro_f1 (higher better) | 0.0750 | 0.0655 |
-| 14 | Long-Horizon Next-Subtask Forecasting | `next_subtask_forecast` | additional | classification | single aligned window | Current 20-frame non-caption multimodal window. -> Procedure subtask label five seconds later. | macro_f1 (higher better) | 0.0455 | 0.0507 |
-| 15 | Interaction Text Prediction | `interaction_text_prediction` | additional | classification | single aligned window | Current 20-frame sensor window with caption-text features removed. -> Raw annotation interaction phrase for the same window. | macro_f1 (higher better) | 0.0444 | 0.0381 |
-| 16 | Action-Object Relation Prediction | `action_object_relation` | additional | classification | single aligned window | Current 20-frame sensor window with caption-text features removed. -> Joint action plus active object-set relation. | macro_f1 (higher better) | 0.0000 | 0.0000 |
-| 17 | Future Object-Set Forecasting | `object_set_forecast` | additional | multi_label | single aligned window | Current 20-frame sensor window with caption-text features removed. -> Object set active five seconds later. | micro_f1 (higher better) | 0.1694 | 0.1972 |
-| 18 | IMU-to-Hand Pose Reconstruction | `imu_to_hand_pose` | additional | regression | single aligned window | Current IMU acceleration/gyroscope feature block only. -> Current left/right hand joint feature blocks. | mae (lower better) | 0.0420 | 0.0426 |
-| 19 | Camera-View Synchronization Retrieval | `camera_view_sync_retrieval` | additional | retrieval | held-out query window | Fisheye camera-1 feature query projected into fisheye camera-3 feature space. -> The synchronized held-out camera-3 window. | mrr (higher better) | 0.4943 | 0.2409 |
-| 20 | Time-to-Next-Transition Regression | `time_to_transition` | additional | regression | single aligned window | Current 20-frame non-caption multimodal window. -> Frames until the next action-label boundary, capped at 200 frames. | mae (lower better) | 10.5374 | 10.5545 |
+| # | Task | Artifact id | Family | Unit | Input -> target | Primary metric | Minimal | Neural |
+| ---: | --- | --- | --- | --- | --- | --- | ---: | ---: |
+| 1 | Action Recognition | `timeline_action` | supervised classification | single window | current 20-frame all-feature window -> current action label | macro_f1 (higher better) | 0.0500 | 0.0148 |
+| 2 | Procedure Step Recognition | `timeline_subtask` | supervised classification | single window | current 20-frame all-feature window -> current subtask label | macro_f1 (higher better) | 0.0506 | 0.0281 |
+| 3 | Action Boundary Detection | `transition_detection` | temporal diagnostic | single window | current 20-frame all-feature window -> action boundary versus steady | macro_f1 (higher better) | 0.6118 | 0.5862 |
+| 4 | Next-Action Prediction | `next_action` | short-horizon prediction | single window | current 20-frame all-feature window at time t -> action label at t + 20 frames | macro_f1 (higher better) | 0.0593 | 0.0419 |
+| 5 | Hand Trajectory Forecasting | `hand_trajectory_forecast` | trajectory regression | single window | current all-feature window -> future left/right hand 3D joints for 10 frames | mpjpe (lower better) | 0.8647 | 0.1079 |
+| 6 | Contact State Prediction | `contact_prediction` | binary classification | single window | non-contact and non-caption feature blocks -> any body contact | macro_f1 (higher better) | 1.0000 | 1.0000 |
+| 7 | Object Relevance Prediction | `object_relevance` | multi-label classification | single window | non-caption feature blocks -> current relevant object set | micro_f1 (higher better) | 0.1803 | 0.1679 |
+| 8 | Language Grounding | `caption_grounding` | retrieval | caption query | caption object/interaction query plus candidate sensor windows -> matching time window | mrr (higher better) | 0.0160 | 0.0168 |
+| 9 | Cross-Modal Retrieval | `cross_modal_retrieval` | retrieval | sensor query | motion, IMU, and camera query features -> matching depth/video window | top5_accuracy (higher better) | 0.3678 | 0.1983 |
+| 10 | Cross-Modal Reconstruction | `modality_reconstruction` | cross-modal regression | single window | motion, IMU, and camera features -> depth/video feature vector | r2 (higher better) | -0.0153 | -0.0102 |
+| 11 | Temporal Order Verification | `temporal_order` | pairwise diagnostic | adjacent window pair | two adjacent windows -> correct versus reversed order | f1 (higher better) | 0.5400 | 0.8520 |
+| 12 | Multimodal Synchronization Detection | `misalignment_detection` | pairwise diagnostic | paired modality window | motion side plus visual/depth side -> aligned versus shifted by 8 windows | f1 (higher better) | 0.5052 | 0.7153 |
+| 13 | Long-Horizon Next-Action Forecasting | `long_horizon_next_action` | classification | single aligned window | Current 20-frame non-caption multimodal window. -> Action label five seconds later. | macro_f1 (higher better) | 0.0750 | 0.0655 |
+| 14 | Long-Horizon Next-Subtask Forecasting | `next_subtask_forecast` | classification | single aligned window | Current 20-frame non-caption multimodal window. -> Procedure subtask label five seconds later. | macro_f1 (higher better) | 0.0455 | 0.0507 |
+| 15 | Interaction Text Prediction | `interaction_text_prediction` | classification | single aligned window | Current 20-frame sensor window with caption-text features removed. -> Raw annotation interaction phrase for the same window. | macro_f1 (higher better) | 0.0444 | 0.0381 |
+| 16 | Action-Object Relation Prediction | `action_object_relation` | classification | single aligned window | Current 20-frame sensor window with caption-text features removed. -> Joint action plus active object-set relation. | macro_f1 (higher better) | 0.0000 | 0.0000 |
+| 17 | Future Object-Set Forecasting | `object_set_forecast` | multi_label | single aligned window | Current 20-frame sensor window with caption-text features removed. -> Object set active five seconds later. | micro_f1 (higher better) | 0.1694 | 0.1972 |
+| 18 | IMU-to-Hand Pose Reconstruction | `imu_to_hand_pose` | regression | single aligned window | Current IMU acceleration/gyroscope feature block only. -> Current left/right hand joint feature blocks. | mae (lower better) | 0.0420 | 0.0426 |
+| 19 | Camera-View Synchronization Retrieval | `camera_view_sync_retrieval` | retrieval | held-out query window | Fisheye camera-1 feature query projected into fisheye camera-3 feature space. -> The synchronized held-out camera-3 window. | mrr (higher better) | 0.4943 | 0.2409 |
+| 20 | Time-to-Next-Transition Regression | `time_to_transition` | regression | single aligned window | Current 20-frame non-caption multimodal window. -> Frames until the next action-label boundary, capped at 200 frames. | mae (lower better) | 10.5374 | 10.5545 |
 
 ## Leakage Controls
 

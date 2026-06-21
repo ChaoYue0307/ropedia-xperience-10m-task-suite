@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Project Surface",
   "status": "pass",
-  "generated_at_utc": "2026-06-21T14:46:49+00:00",
+  "generated_at_utc": "2026-06-21T15:21:42+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -33,12 +33,12 @@
         "source_alignment": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T13:32:47+00:00"
+          "generated_at_utc": "2026-06-21T14:46:49+00:00"
         },
         "scale_up_status": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T13:32:50+00:00"
+          "generated_at_utc": "2026-06-21T14:47:03+00:00"
         },
         "publication_package": {
           "exists": true,
@@ -48,7 +48,7 @@
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T14:13:08+00:00"
+          "generated_at_utc": "2026-06-21T14:53:27+00:00"
         }
       },
       "failures": {}
@@ -96,7 +96,7 @@
       "reason": "Public copy should consistently present the project as Ropedia Xperience-10M, with the Qwen3-Omni scale-up status.",
       "marker_counts": {
         "Ropedia Xperience-10M Task Suite": 20,
-        "Xperience-10M": 167,
+        "Xperience-10M": 166,
         "20-task": 100,
         "Qwen3-Omni": 245,
         "128-episode pilot": 1
@@ -137,11 +137,11 @@
         "data/unified_task_model_radar.json": 21,
         "data/single_episode_task_model_radar.json": 17,
         "data/episode128_task_model_radar.json": 16,
-        "data/task_method_20_result_matrix.json": 24,
+        "data/task_method_20_result_matrix.json": 25,
         "data/task_method_20_gap_audit.json": 23,
         "data/language_versions.json": 3,
         "assets/charts/two_evidence_line_map.svg": 5,
-        "assets/charts/unified_task_model_radar.svg": 17,
+        "assets/charts/unified_task_model_radar.svg": 18,
         "assets/charts/single_episode_task_model_radar.svg": 19,
         "assets/charts/episode128_task_model_radar.svg": 19,
         "data/tier2_task_suite.json": 11

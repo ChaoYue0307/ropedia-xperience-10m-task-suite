@@ -747,7 +747,7 @@ ARTIFACTS = [
         "path": "scripts/audio_ablation_and_raw_upgrade.py",
         "kind": "result_interpretation",
         "surface": "repo_hf",
-        "shows": "Measures audio contribution variants across the original task contracts.",
+        "shows": "Measures audio contribution variants across the walkthrough-backed task contracts.",
     },
     {
         "id": "audio_ablation_summary",
@@ -779,7 +779,7 @@ ARTIFACTS = [
         "path": "docs/assets/charts/audio_ablation_delta.svg",
         "kind": "visual_evidence",
         "surface": "website_hf",
-        "shows": "Bar chart of measured current-audio primary-metric deltas across the original tasks.",
+        "shows": "Bar chart of measured current-audio primary-metric deltas across the walkthrough-backed tasks.",
     },
     {
         "id": "figure_index",
@@ -1068,7 +1068,7 @@ ARTIFACTS = [
         "path": "results/episode_task_suite/neural_mlp",
         "kind": "result_directory",
         "surface": "repo_hf_model",
-        "shows": "Stores matching PyTorch MLP results for the original task contracts.",
+        "shows": "Stores matching PyTorch MLP results for the walkthrough-backed task contracts.",
     },
     {
         "id": "research_direction_taxonomy",
@@ -1076,7 +1076,7 @@ ARTIFACTS = [
         "path": "results/episode_task_suite/research_directions/research_direction_taxonomy.json",
         "kind": "taxonomy",
         "surface": "repo_hf",
-        "shows": "Maps the original tasks to the four Ropedia research directions as direct/proxy/diagnostic.",
+        "shows": "Maps the walkthrough-backed tasks to the four Ropedia research directions as direct/proxy/diagnostic.",
     },
     {
         "id": "research_direction_extensions",
@@ -1212,7 +1212,7 @@ ARTIFACTS = [
         "path": "results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md",
         "kind": "scaleup_status",
         "surface": "repo_hf",
-        "shows": "Summarizes same-split simple and neural metadata baselines for the 12 original task ids, with unsupported markers for tasks that need missing raw 128 feature blocks.",
+        "shows": "Summarizes same-split simple and neural metadata baselines for the walkthrough-backed task ids, with unsupported markers for tasks that need missing raw 128 feature blocks.",
     },
     {
         "id": "multi_episode_128_baseline_summary",

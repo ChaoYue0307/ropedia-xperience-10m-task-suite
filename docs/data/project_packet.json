@@ -15,9 +15,8 @@
     "cosmos3_super_forward_dynamics_lora_status": "The first Cosmos3-Super fine-tuned adapter branch is verified as a forward-dynamics LoRA over camera-pose proxy targets; it reports loss metrics, not JSON action-label accuracy.",
     "task_suite_enhancement_128_status": "Current no-new-episode enhancement pack recommends multiscale_20s10_40s20_80s40, hierarchical action/subtask targets, label-normalized scoring, and raw-feature shards before adding more episodes.",
     "task_count": 20,
-    "original_public_sample_task_count": 12,
-    "additional_public_sample_task_count": 8,
-    "legacy_tasks_13_to_20_result_path": "docs/data/tier2_task_suite.json"
+    "task_surface_framing": "unified_20_task_suite",
+    "legacy_provenance_result_path": "docs/data/tier2_task_suite.json"
   },
   "reading_path": [
     {
@@ -110,7 +109,7 @@
         "results/episode_task_suite/neural_mlp/",
         "docs/data/summary_metrics.json"
       ],
-      "readout": "The unified suite has 20 task contracts; tasks 1-12 have walkthroughs and neural MLP heads, and tasks 13-20 have aligned minimal/neural result bundles under the historical tier2_task_suite path."
+      "readout": "The unified suite has 20 task contracts in one task surface. Walkthrough-backed tasks, aligned minimal/neural result bundles, and historical tier2_task_suite provenance paths are all linked from TASK_SUITE_20.md and docs/data/task_suite_20.json."
     },
     {
       "step": 8,

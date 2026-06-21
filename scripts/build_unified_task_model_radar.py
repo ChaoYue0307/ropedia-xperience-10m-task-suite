@@ -967,7 +967,7 @@ def build_payload() -> dict[str, Any]:
                 "label": row.get("task_display_name", row["task_id"]),
                 "axis_label": f"{row['task_number']:02d} {row.get('task_display_name', row['task_id'])}",
                 "short_label": SHORT_TASK_LABELS.get(row["task_id"], row["task_id"].replace("_", " ").title()),
-                "origin": row.get("origin"),
+                "provenance_source": row.get("provenance_source"),
                 "metric_key": row.get("metric_key"),
                 "metric_name": row.get("metric_name"),
                 "metric_direction": row.get("metric_direction"),

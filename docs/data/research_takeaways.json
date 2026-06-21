@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Research Takeaways",
   "status": "pass",
-  "generated_at_utc": "2026-06-20T21:27:21+00:00",
+  "generated_at_utc": "2026-06-21T15:18:59+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
@@ -133,7 +133,7 @@
     {
       "id": "audio_contribution_is_task_specific",
       "title": "Audio helps some tasks and hurts others on the public sample",
-      "readout": "Audio improves the primary metric on 6 of the original task contracts, while raw log-mel replacement improves over the current handcrafted block on 6 of those contracts. The largest current-audio gain appears in feature reconstruction, not in action classification.",
+      "readout": "Audio improves the primary metric on 6 walkthrough-backed task contracts, while raw log-mel replacement improves over the current handcrafted block on 6 of those contracts. The largest current-audio gain appears in feature reconstruction, not in action classification.",
       "evidence": [
         {
           "label": "tasks_where_current_audio_improves",

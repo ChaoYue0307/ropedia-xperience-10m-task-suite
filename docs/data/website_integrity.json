@@ -1,14 +1,14 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-21T14:45:02+00:00",
+  "generated_at_utc": "2026-06-21T15:21:58+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 254,
+    "local_references": 256,
     "external_reference_count": 157,
     "json_files": 55,
-    "image_assets_referenced": 29,
+    "image_assets_referenced": 28,
     "failure_count": 0
   },
   "failures": {
@@ -81,7 +81,7 @@
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
       "overview_index": 121816,
-      "evidence_index": 167645
+      "evidence_index": 167655
     },
     {
       "name": "project_status_links_json",
@@ -161,7 +161,7 @@
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
       "overview_index": 121816,
       "protocol_index": 163835,
-      "evidence_index": 167645
+      "evidence_index": 167655
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -277,8 +277,8 @@
     {
       "path": "index.html",
       "id_count": 96,
-      "reference_count": 226,
-      "image_count": 35
+      "reference_count": 228,
+      "image_count": 34
     },
     {
       "path": "research_roadmap.html",
@@ -301,7 +301,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 124294,
+      "bytes": 124341,
       "top_level_type": "dict"
     },
     {
@@ -316,12 +316,12 @@
     },
     {
       "path": "data/episode128_task_model_radar.json",
-      "bytes": 184992,
+      "bytes": 185212,
       "top_level_type": "dict"
     },
     {
       "path": "data/evaluation_protocol.json",
-      "bytes": 24007,
+      "bytes": 24267,
       "top_level_type": "dict"
     },
     {
@@ -331,7 +331,7 @@
     },
     {
       "path": "data/figure_index.json",
-      "bytes": 19469,
+      "bytes": 19485,
       "top_level_type": "dict"
     },
     {
@@ -351,7 +351,7 @@
     },
     {
       "path": "data/live_publication_status.json",
-      "bytes": 189922,
+      "bytes": 189990,
       "top_level_type": "dict"
     },
     {
@@ -371,27 +371,27 @@
     },
     {
       "path": "data/omni_model_comparison.json",
-      "bytes": 82088,
+      "bytes": 82102,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_brief.json",
-      "bytes": 4019,
+      "bytes": 4032,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_manifest.json",
-      "bytes": 5774,
+      "bytes": 5739,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_packet.json",
-      "bytes": 10009,
+      "bytes": 10018,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_status.json",
-      "bytes": 23255,
+      "bytes": 23232,
       "top_level_type": "dict"
     },
     {
@@ -401,7 +401,7 @@
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 7690,
+      "bytes": 7691,
       "top_level_type": "dict"
     },
     {
@@ -441,7 +441,7 @@
     },
     {
       "path": "data/reproducibility_matrix.json",
-      "bytes": 6815,
+      "bytes": 6836,
       "top_level_type": "dict"
     },
     {
@@ -466,7 +466,7 @@
     },
     {
       "path": "data/research_takeaways.json",
-      "bytes": 7162,
+      "bytes": 7165,
       "top_level_type": "dict"
     },
     {
@@ -481,7 +481,7 @@
     },
     {
       "path": "data/single_episode_task_model_radar.json",
-      "bytes": 51107,
+      "bytes": 51327,
       "top_level_type": "dict"
     },
     {
@@ -511,7 +511,7 @@
     },
     {
       "path": "data/task_suite_20.json",
-      "bytes": 34597,
+      "bytes": 34805,
       "top_level_type": "dict"
     },
     {
@@ -536,7 +536,7 @@
     },
     {
       "path": "data/tier2_task_suite.json",
-      "bytes": 33411,
+      "bytes": 33575,
       "top_level_type": "dict"
     },
     {
@@ -551,7 +551,7 @@
     },
     {
       "path": "data/unified_task_model_radar.json",
-      "bytes": 228815,
+      "bytes": 229035,
       "top_level_type": "dict"
     },
     {
@@ -653,13 +653,6 @@
       "path": "assets/charts/single_episode_task_model_radar.svg",
       "exists": true,
       "bytes": 35232,
-      "format": "SVG",
-      "has_viewbox": true
-    },
-    {
-      "path": "assets/charts/tier2_task_suite.svg",
-      "exists": true,
-      "bytes": 5453,
       "format": "SVG",
       "has_viewbox": true
     },

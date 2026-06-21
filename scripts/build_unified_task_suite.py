@@ -46,7 +46,7 @@ def count_fields(metrics: dict[str, Any]) -> dict[str, Any]:
 
 
 def source_for(task_id: str, origin: str, neural: bool = False) -> str:
-    if origin == "original_public_sample_tasks":
+    if origin == "walkthrough_backed":
         prefix = "results/episode_task_suite/neural_mlp" if neural else "results/episode_task_suite"
         return f"{prefix}/{task_id}/metrics.json"
     prefix = "results/episode_task_suite/tier2_task_suite/neural_mlp" if neural else "results/episode_task_suite/tier2_task_suite"
@@ -68,8 +68,8 @@ def build_core_tasks(summary: dict[str, Any], walkthroughs: dict[str, Any]) -> l
                 "task_id": task_id,
                 "task_display_name": walkthrough.get("display_name") or walkthrough.get("research_name") or task_id,
                 "research_name": walkthrough.get("research_name"),
-                "origin": "original_public_sample_tasks",
-                "origin_count_label": "original task",
+                "provenance_source": "walkthrough_backed_task_contract",
+                "origin_count_label": "unified task",
                 "family": walkthrough.get("task_family"),
                 "architecture_family": walkthrough.get("architecture_family"),
                 "primary_direction": walkthrough.get("primary_direction"),
@@ -87,8 +87,8 @@ def build_core_tasks(summary: dict[str, Any], walkthroughs: dict[str, Any]) -> l
                 "meaning": walkthrough.get("card_blurb") or walkthrough.get("plain_goal"),
                 "artifact_sources": {
                     "walkthrough": f"results/episode_task_suite/task_walkthroughs/{task_id}.md",
-                    "minimal_metrics": source_for(task_id, "original_public_sample_tasks", neural=False),
-                    "neural_metrics": source_for(task_id, "original_public_sample_tasks", neural=True),
+                    "minimal_metrics": source_for(task_id, "walkthrough_backed", neural=False),
+                    "neural_metrics": source_for(task_id, "walkthrough_backed", neural=True),
                 },
             }
         )
@@ -107,8 +107,8 @@ def build_additional_tasks(additional: dict[str, Any]) -> list[dict[str, Any]]:
                 "task_id": task_id,
                 "task_display_name": spec.get("name", task_id.replace("_", " ").title()),
                 "research_name": spec.get("name", task_id.replace("_", " ").title()),
-                "origin": "additional_public_sample_tasks",
-                "origin_count_label": "additional task",
+                "provenance_source": "historical_result_bundle",
+                "origin_count_label": "unified task",
                 "family": spec.get("family"),
                 "architecture_family": minimal.get("model_family"),
                 "primary_direction": spec.get("research_direction", "sample-supported extension"),
@@ -126,8 +126,8 @@ def build_additional_tasks(additional: dict[str, Any]) -> list[dict[str, Any]]:
                 "meaning": spec.get("meaning"),
                 "artifact_sources": {
                     "legacy_result_directory": "results/episode_task_suite/tier2_task_suite/",
-                    "minimal_metrics": source_for(task_id, "additional_public_sample_tasks", neural=False),
-                    "neural_metrics": source_for(task_id, "additional_public_sample_tasks", neural=True),
+                    "minimal_metrics": source_for(task_id, "historical_provenance", neural=False),
+                    "neural_metrics": source_for(task_id, "historical_provenance", neural=True),
                 },
             }
         )
@@ -149,10 +149,10 @@ def build_payload() -> dict[str, Any]:
         "status": "pass",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "task_count": len(tasks),
-        "task_count_breakdown": {
-            "original_public_sample_tasks": 12,
-            "additional_public_sample_tasks": len(tasks) - 12,
+        "task_count_summary": {
             "total_unified_tasks": len(tasks),
+            "public_framing": "all 20 task contracts are presented as one suite",
+            "legacy_provenance_rows": len(tasks) - 12,
         },
         "unification_policy": {
             "public_framing": "The suite is presented as one 20-task benchmark surface. All task contracts share the same window, split, feature, baseline, and leakage-control language.",
@@ -167,7 +167,7 @@ def build_payload() -> dict[str, Any]:
             "window_frames": suite.get("window_frames"),
             "stride_frames": suite.get("stride_frames"),
             "split_policy": "single_episode_chronological_70_30",
-            "raw_hdf5_required_for_tasks_13_20_regeneration": True,
+            "raw_hdf5_required_for_full_public_regeneration": True,
             "raw_data_redistributed": False,
         },
         "setup_alignment": {
@@ -221,17 +221,16 @@ def render_markdown(payload: dict[str, Any]) -> str:
         "",
         "## Task Table",
         "",
-        "| # | Task | Artifact id | Origin | Input -> output | Primary metric | Minimal | Neural |",
-        "| ---: | --- | --- | --- | --- | --- | ---: | ---: |",
+        "| # | Task | Artifact id | Input -> output | Primary metric | Minimal | Neural |",
+        "| ---: | --- | --- | --- | --- | ---: | ---: |",
     ]
     for row in payload["tasks"]:
         metric_direction = "higher better" if row.get("metric_direction") == "higher" else "lower better"
         lines.append(
-            "| {num} | {name} | `{task_id}` | {origin} | {inp} -> {out} | {metric} ({direction}) | {minimal} | {neural} |".format(
+            "| {num} | {name} | `{task_id}` | {inp} -> {out} | {metric} ({direction}) | {minimal} | {neural} |".format(
                 num=row["task_number"],
                 name=row["task_display_name"],
                 task_id=row["task_id"],
-                origin=row["origin_count_label"],
                 inp=row.get("input_short") or row.get("input"),
                 out=row.get("output_short") or row.get("output"),
                 metric=row.get("metric_name") or row.get("metric_key"),

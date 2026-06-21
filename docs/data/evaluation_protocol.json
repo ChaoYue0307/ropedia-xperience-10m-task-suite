@@ -2,7 +2,7 @@
   "title": "Ropedia Xperience-10M Task Suite Evaluation Protocol",
   "status": "pass",
   "version": "2026-06-01",
-  "generated_at_utc": "2026-06-21T14:40:33+00:00",
+  "generated_at_utc": "2026-06-21T15:20:33+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
@@ -26,8 +26,8 @@
   "task_suite": {
     "status": "unified_public_sample_suite",
     "task_count": 20,
-    "original_public_sample_tasks": 12,
-    "additional_public_sample_tasks": 8,
+    "public_framing": "all 20 public-sample task contracts are presented as one suite",
+    "legacy_provenance_rows": 8,
     "unified_results": "docs/data/task_suite_20.json",
     "legacy_additional_task_result_path": "docs/data/tier2_task_suite.json",
     "legacy_path_note": "The tier2_task_suite path is retained for stable links only; it is provenance inside the same 20-task suite."
@@ -82,7 +82,7 @@
     {
       "task": "timeline_action",
       "task_display_name": "Action Recognition",
-      "origin": "original_public_sample_tasks",
+      "provenance_source": "walkthrough_backed_task_contract",
       "family": "supervised classification",
       "unit": "single window",
       "input": "current 20-frame all-feature window",
@@ -105,7 +105,7 @@
     {
       "task": "timeline_subtask",
       "task_display_name": "Procedure Step Recognition",
-      "origin": "original_public_sample_tasks",
+      "provenance_source": "walkthrough_backed_task_contract",
       "family": "supervised classification",
       "unit": "single window",
       "input": "current 20-frame all-feature window",
@@ -128,7 +128,7 @@
     {
       "task": "transition_detection",
       "task_display_name": "Action Boundary Detection",
-      "origin": "original_public_sample_tasks",
+      "provenance_source": "walkthrough_backed_task_contract",
       "family": "temporal diagnostic",
       "unit": "single window",
       "input": "current 20-frame all-feature window",
@@ -151,7 +151,7 @@
     {
       "task": "next_action",
       "task_display_name": "Next-Action Prediction",
-      "origin": "original_public_sample_tasks",
+      "provenance_source": "walkthrough_backed_task_contract",
       "family": "short-horizon prediction",
       "unit": "single window",
       "input": "current 20-frame all-feature window at time t",
@@ -174,7 +174,7 @@
     {
       "task": "hand_trajectory_forecast",
       "task_display_name": "Hand Trajectory Forecasting",
-      "origin": "original_public_sample_tasks",
+      "provenance_source": "walkthrough_backed_task_contract",
       "family": "trajectory regression",
       "unit": "single window",
       "input": "current all-feature window",
@@ -197,7 +197,7 @@
     {
       "task": "contact_prediction",
       "task_display_name": "Contact State Prediction",
-      "origin": "original_public_sample_tasks",
+      "provenance_source": "walkthrough_backed_task_contract",
       "family": "binary classification",
       "unit": "single window",
       "input": "non-contact and non-caption feature blocks",
@@ -220,7 +220,7 @@
     {
       "task": "object_relevance",
       "task_display_name": "Object Relevance Prediction",
-      "origin": "original_public_sample_tasks",
+      "provenance_source": "walkthrough_backed_task_contract",
       "family": "multi-label classification",
       "unit": "single window",
       "input": "non-caption feature blocks",
@@ -243,7 +243,7 @@
     {
       "task": "caption_grounding",
       "task_display_name": "Language Grounding",
-      "origin": "original_public_sample_tasks",
+      "provenance_source": "walkthrough_backed_task_contract",
       "family": "retrieval",
       "unit": "caption query",
       "input": "caption object/interaction query plus candidate sensor windows",
@@ -266,7 +266,7 @@
     {
       "task": "cross_modal_retrieval",
       "task_display_name": "Cross-Modal Retrieval",
-      "origin": "original_public_sample_tasks",
+      "provenance_source": "walkthrough_backed_task_contract",
       "family": "retrieval",
       "unit": "sensor query",
       "input": "motion, IMU, and camera query features",
@@ -289,7 +289,7 @@
     {
       "task": "modality_reconstruction",
       "task_display_name": "Cross-Modal Reconstruction",
-      "origin": "original_public_sample_tasks",
+      "provenance_source": "walkthrough_backed_task_contract",
       "family": "cross-modal regression",
       "unit": "single window",
       "input": "motion, IMU, and camera features",
@@ -311,7 +311,7 @@
     {
       "task": "temporal_order",
       "task_display_name": "Temporal Order Verification",
-      "origin": "original_public_sample_tasks",
+      "provenance_source": "walkthrough_backed_task_contract",
       "family": "pairwise diagnostic",
       "unit": "adjacent window pair",
       "input": "two adjacent windows",
@@ -334,7 +334,7 @@
     {
       "task": "misalignment_detection",
       "task_display_name": "Multimodal Synchronization Detection",
-      "origin": "original_public_sample_tasks",
+      "provenance_source": "walkthrough_backed_task_contract",
       "family": "pairwise diagnostic",
       "unit": "paired modality window",
       "input": "motion side plus visual/depth side",
@@ -357,7 +357,7 @@
     {
       "task": "long_horizon_next_action",
       "task_display_name": "Long-Horizon Next-Action Forecasting",
-      "origin": "additional_public_sample_tasks",
+      "provenance_source": "historical_result_bundle",
       "family": "classification",
       "unit": "single aligned window",
       "input": "Current 20-frame non-caption multimodal window.",
@@ -375,7 +375,7 @@
     {
       "task": "next_subtask_forecast",
       "task_display_name": "Long-Horizon Next-Subtask Forecasting",
-      "origin": "additional_public_sample_tasks",
+      "provenance_source": "historical_result_bundle",
       "family": "classification",
       "unit": "single aligned window",
       "input": "Current 20-frame non-caption multimodal window.",
@@ -393,7 +393,7 @@
     {
       "task": "interaction_text_prediction",
       "task_display_name": "Interaction Text Prediction",
-      "origin": "additional_public_sample_tasks",
+      "provenance_source": "historical_result_bundle",
       "family": "classification",
       "unit": "single aligned window",
       "input": "Current 20-frame sensor window with caption-text features removed.",
@@ -411,7 +411,7 @@
     {
       "task": "action_object_relation",
       "task_display_name": "Action-Object Relation Prediction",
-      "origin": "additional_public_sample_tasks",
+      "provenance_source": "historical_result_bundle",
       "family": "classification",
       "unit": "single aligned window",
       "input": "Current 20-frame sensor window with caption-text features removed.",
@@ -429,7 +429,7 @@
     {
       "task": "object_set_forecast",
       "task_display_name": "Future Object-Set Forecasting",
-      "origin": "additional_public_sample_tasks",
+      "provenance_source": "historical_result_bundle",
       "family": "multi_label",
       "unit": "single aligned window",
       "input": "Current 20-frame sensor window with caption-text features removed.",
@@ -447,7 +447,7 @@
     {
       "task": "imu_to_hand_pose",
       "task_display_name": "IMU-to-Hand Pose Reconstruction",
-      "origin": "additional_public_sample_tasks",
+      "provenance_source": "historical_result_bundle",
       "family": "regression",
       "unit": "single aligned window",
       "input": "Current IMU acceleration/gyroscope feature block only.",
@@ -465,7 +465,7 @@
     {
       "task": "camera_view_sync_retrieval",
       "task_display_name": "Camera-View Synchronization Retrieval",
-      "origin": "additional_public_sample_tasks",
+      "provenance_source": "historical_result_bundle",
       "family": "retrieval",
       "unit": "held-out query window",
       "input": "Fisheye camera-1 feature query projected into fisheye camera-3 feature space.",
@@ -483,7 +483,7 @@
     {
       "task": "time_to_transition",
       "task_display_name": "Time-to-Next-Transition Regression",
-      "origin": "additional_public_sample_tasks",
+      "provenance_source": "historical_result_bundle",
       "family": "regression",
       "unit": "single aligned window",
       "input": "Current 20-frame non-caption multimodal window.",

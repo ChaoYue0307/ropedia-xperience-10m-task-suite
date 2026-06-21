@@ -143,7 +143,7 @@ def build_payload() -> dict:
                 "id": "audio_contribution_is_task_specific",
                 "title": "Audio helps some tasks and hurts others on the public sample",
                 "readout": (
-                    "Audio improves the primary metric on 6 of the original task contracts, "
+                    "Audio improves the primary metric on 6 walkthrough-backed task contracts, "
                     "while raw log-mel replacement improves over the current handcrafted block on 6 of those contracts. "
                     "The largest current-audio gain appears in feature reconstruction, not in action classification."
                 ),

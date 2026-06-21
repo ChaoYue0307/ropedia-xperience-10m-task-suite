@@ -164,7 +164,7 @@ def build_payload() -> dict:
             {
                 "task": task_name,
                 "task_display_name": task_display_name(task_name),
-                "origin": "original_public_sample_tasks",
+                "provenance_source": "walkthrough_backed_task_contract",
                 **protocol,
                 "counts": count_record(minimal),
                 "minimal_primary_metric": metric_value(minimal, primary),
@@ -200,7 +200,7 @@ def build_payload() -> dict:
                 {
                     "task": task_name,
                     "task_display_name": spec.get("name", task_name),
-                    "origin": "additional_public_sample_tasks",
+                    "provenance_source": "historical_result_bundle",
                     "family": spec.get("family"),
                     "unit": "single aligned window" if spec.get("family") != "retrieval" else "held-out query window",
                     "input": spec.get("input"),
@@ -240,8 +240,8 @@ def build_payload() -> dict:
         "task_suite": {
             "status": "unified_public_sample_suite",
             "task_count": len(all_task_rows),
-            "original_public_sample_tasks": len(task_rows),
-            "additional_public_sample_tasks": len(tier2_rows),
+            "public_framing": "all 20 public-sample task contracts are presented as one suite",
+            "legacy_provenance_rows": len(tier2_rows),
             "unified_results": "docs/data/task_suite_20.json" if TASK_SUITE_20_PATH.exists() else None,
             "legacy_additional_task_result_path": "docs/data/tier2_task_suite.json",
             "legacy_path_note": "The tier2_task_suite path is retained for stable links only; it is provenance inside the same 20-task suite.",
@@ -305,8 +305,8 @@ def build_payload() -> dict:
 
 def markdown_table(rows: list[dict]) -> list[str]:
     lines = [
-        "| # | Task | Artifact id | Origin | Family | Unit | Input -> target | Primary metric | Minimal | Neural |",
-        "| ---: | --- | --- | --- | --- | --- | --- | --- | ---: | ---: |",
+        "| # | Task | Artifact id | Family | Unit | Input -> target | Primary metric | Minimal | Neural |",
+        "| ---: | --- | --- | --- | --- | --- | --- | ---: | ---: |",
     ]
     for row in rows:
         metric = row["primary_metric"]
@@ -316,11 +316,10 @@ def markdown_table(rows: list[dict]) -> list[str]:
         neural_text = "n/a" if neural is None else f"{neural:.4f}"
         direction = "higher better" if row["higher_is_better"] else "lower better"
         lines.append(
-            "| {number} | {task} | `{artifact}` | {origin} | {family} | {unit} | {input} -> {target} | {metric} ({direction}) | {minimal} | {neural} |".format(
+            "| {number} | {task} | `{artifact}` | {family} | {unit} | {input} -> {target} | {metric} ({direction}) | {minimal} | {neural} |".format(
                 number=row.get("task_number", ""),
                 task=row["task_display_name"],
                 artifact=row["task"],
-                origin="original" if row.get("origin") == "original_public_sample_tasks" else "additional",
                 family=row["family"],
                 unit=row["unit"],
                 input=row["input"],

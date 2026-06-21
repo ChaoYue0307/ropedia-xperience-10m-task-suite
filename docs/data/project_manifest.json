@@ -23,9 +23,8 @@
     "qwen3_omni_json_quality_target_met": true,
     "qwen3_omni_lora_adapter_repo": "https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep",
     "task_count": 20,
-    "original_public_sample_task_count": 12,
-    "additional_public_sample_task_count": 8,
-    "legacy_tasks_13_to_20_result_path": "docs/data/tier2_task_suite.json"
+    "task_surface_framing": "unified_20_task_suite",
+    "legacy_provenance_result_path": "docs/data/tier2_task_suite.json"
   },
   "public_surfaces": {
     "github_repo": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite",
@@ -96,7 +95,7 @@
     "task_walkthroughs": "docs/data/task_walkthroughs.json",
     "task_suite_20": "TASK_SUITE_20.md",
     "task_suite_20_json": "docs/data/task_suite_20.json",
-    "tasks_13_to_20_result_bundle": "docs/data/tier2_task_suite.json"
+    "historical_provenance_result_bundle": "docs/data/tier2_task_suite.json"
   },
   "citation_files": {
     "citation_cff": "CITATION.cff",

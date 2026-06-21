@@ -383,7 +383,7 @@ def svg_task_architectures(path: Path, summary: dict) -> None:
         '<rect width="100%" height="100%" fill="url(#dotgrid2)" opacity="0.58"/>',
         '<circle cx="1190" cy="150" r="210" fill="#ccffa0" opacity="0.08"/>',
         '<text x="60" y="56" font-family="Inter Tight, Arial, sans-serif" font-size="34" font-weight="800" fill="#f4f8ef">Core Architecture Families in the 20-Task Xperience-10M Suite</text>',
-        '<text x="60" y="88" font-family="Space Grotesk, Arial, sans-serif" font-size="16" fill="#a5afa2">Generated from the original task-head semantics and unified 20-task release metadata. These are baselines, not deep foundation models.</text>',
+        '<text x="60" y="88" font-family="Space Grotesk, Arial, sans-serif" font-size="16" fill="#a5afa2">Generated from the walkthrough-backed task-head semantics and unified 20-task release metadata. These are baselines, not deep foundation models.</text>',
     ]
 
     setup = [

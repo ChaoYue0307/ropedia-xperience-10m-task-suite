@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-21T14:40:34+00:00",
+  "generated_at_utc": "2026-06-21T15:19:00+00:00",
   "status": "pass",
   "artifact_count": 228,
   "missing": [],
@@ -59,8 +59,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable first-reader project brief for the website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 4019,
-      "sha256": "9521556a750941a0f9ee8e9541903acbb0fbec2501fd05ed4e7a017fc18cf794"
+      "bytes": 4032,
+      "sha256": "328d601390fdd61c836434e00cfe27670ef5fb96252270975c4ca339f2a51bfa"
     },
     {
       "id": "project_status",
@@ -70,8 +70,8 @@
       "surface": "repo_hf",
       "shows": "Gives a compact current-state table for first-pass readers.",
       "exists": true,
-      "bytes": 15993,
-      "sha256": "96bf5d894ace804aea2f3889a4d99a802a5e015405e7eed573eb3a98882ce968"
+      "bytes": 16013,
+      "sha256": "5ad142b601ad982ce59620bd7fa50446c8837050b0331b2be4a357280b295c21"
     },
     {
       "id": "project_status_json",
@@ -81,8 +81,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable copy of the current project status for website and HF mirrors.",
       "exists": true,
-      "bytes": 23255,
-      "sha256": "874f1133ee75f060735f0c9e763cf81463f304432f1dbca3ebc9837225c0259d"
+      "bytes": 23232,
+      "sha256": "406c48ec858b5f288c7ebef6eefc0ed94dc8bad11bf9221f435b9c8aca547ea3"
     },
     {
       "id": "glossary",
@@ -576,8 +576,8 @@
       "surface": "website_hf",
       "shows": "Gives a short project path with scope status and public surfaces.",
       "exists": true,
-      "bytes": 10009,
-      "sha256": "e0f8bd65cd15b0fe68c8079045b4c72552daaf644c35b8a7a68426250a4aa441"
+      "bytes": 10018,
+      "sha256": "6b7ae7fe0df1a9e4a12d241a3162540b0cf1ade86803dec8aac68e3dc99bfc66"
     },
     {
       "id": "artifact_guide",
@@ -587,8 +587,8 @@
       "surface": "repo_hf",
       "shows": "Gives the human-readable map from project scope to data, tasks, platform mirrors, and scale-up status.",
       "exists": true,
-      "bytes": 20571,
-      "sha256": "217e3eb2cf82999f75ce6e132f567fa1ed08d319bf7a44f77b7150a45fae5274"
+      "bytes": 20601,
+      "sha256": "e0e4ad50271ab1d58d2fe97de5b3451a52f034996b54d0ee9499b562b9decbbf"
     },
     {
       "id": "official_dataset_card_alignment",
@@ -632,7 +632,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "3def3dc923162ad0d2802acdca8a689a4e9ad1408f36edae8f77f49c4507cef1"
+      "sha256": "5ab2ea4bfefe9f5bc7854f02b2e1e2b5206766a54447647191828da1a1a2077c"
     },
     {
       "id": "source_alignment_validator",
@@ -686,8 +686,8 @@
       "surface": "repo_hf",
       "shows": "Defines the window unit, chronological split, task metrics, leakage controls, and current limitations.",
       "exists": true,
-      "bytes": 9156,
-      "sha256": "cfc23b3115ebce2b41a349b8a2cd6989aaf2294790c79e2b17545ebede2b2df0"
+      "bytes": 8905,
+      "sha256": "f82e9b9c4a07e95776005968788e7acdaae9e322991113d79432d59057181add"
     },
     {
       "id": "evaluation_protocol_json",
@@ -697,8 +697,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable protocol generated from committed task metrics for website and HF mirrors.",
       "exists": true,
-      "bytes": 24007,
-      "sha256": "dde490d175f0d6828f5973f1b24e696a3d1b3b09d65a59cb9c1dde5c38845b66"
+      "bytes": 24047,
+      "sha256": "d8f61b646a2f3f1e0af901dbdaff310ebfeea90622c93a34b9e35f34be98b896"
     },
     {
       "id": "evaluation_protocol_builder",
@@ -708,8 +708,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the protocol from committed summary metrics and task artifacts.",
       "exists": true,
-      "bytes": 19931,
-      "sha256": "080f894b50c609e3a467c8c513dfe441f90ba0dad3586dd1cb88de6e58eedb3b"
+      "bytes": 19825,
+      "sha256": "aa9de1582f8fa79c1850e10e69fb125c0e3c1add433c7ebedc104c2efb42272e"
     },
     {
       "id": "task_suite_20",
@@ -719,8 +719,8 @@
       "surface": "repo_hf",
       "shows": "Reader-facing table for the single unified public-sample task suite under the same window, split, feature, and baseline contract.",
       "exists": true,
-      "bytes": 5196,
-      "sha256": "473891503dcd1251a2cc9a16e6642ce16fbca9d264a734d2397c2afc60977195"
+      "bytes": 4845,
+      "sha256": "076a68734f20e2660d1eddba460672c1246951b893494396f1281d6423f3627a"
     },
     {
       "id": "task_suite_20_json",
@@ -730,8 +730,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable unified 20-task index for the website, Hugging Face mirrors, and live verification.",
       "exists": true,
-      "bytes": 34597,
-      "sha256": "2029f7f9744001861ac00acabdb578fe97d3b39a1c16a7c2d19c56347ded22d7"
+      "bytes": 34585,
+      "sha256": "75145285cf71bc3bb9a10377a1921b60e85c4546dc8b858102b3c26e94c11a01"
     },
     {
       "id": "task_suite_20_builder",
@@ -741,8 +741,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the unified 20-task JSON and Markdown from the public-sample metrics plus the historical provenance result bundle.",
       "exists": true,
-      "bytes": 12213,
-      "sha256": "1421593f05e345799007bbcdf138f81dfdb7c511ec1e31b56d00e2cdaed3d7de"
+      "bytes": 12157,
+      "sha256": "157265b5c025f279ce1eb56c52dd720ce0969b8426d5887030bfa179a3b565e0"
     },
     {
       "id": "unified_task_model_radar_json",
@@ -1005,8 +1005,8 @@
       "surface": "repo_hf",
       "shows": "Summarizes the main research lessons from committed metrics and identifies which experiments need held-out episodes.",
       "exists": true,
-      "bytes": 5172,
-      "sha256": "39978c1e30b6aa76c5fd2684e9a1111ec2e813423feaff6053084b0335968db8"
+      "bytes": 5175,
+      "sha256": "385d1b77b41c632925bbd27878c334839303462d03a3b9d358326951b1088da8"
     },
     {
       "id": "research_takeaways_json",
@@ -1016,8 +1016,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable result interpretation for the website, HF cards, and mirror checks.",
       "exists": true,
-      "bytes": 7162,
-      "sha256": "9899c5cb6b92bcfe5e64f98503af5b7d0759ad1a9c5098dbfe4146f54ee26656"
+      "bytes": 7165,
+      "sha256": "f1ddead60f986e3036206bc3c70d4bdda422a8be4761b285eb89c9c49d9832b6"
     },
     {
       "id": "research_takeaways_builder",
@@ -1027,8 +1027,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the research takeaways from committed summary metrics and task result artifacts.",
       "exists": true,
-      "bytes": 13496,
-      "sha256": "c35995607dc16fa2a318c626b84323eb47b61a373a492c22cf9fdac851b4d9b5"
+      "bytes": 13499,
+      "sha256": "fc749125f9be87ee0db5b66918342da5c0378d6c97fb1acabe9688f920554c39"
     },
     {
       "id": "audio_ablation_script",
@@ -1036,7 +1036,7 @@
       "path": "scripts/audio_ablation_and_raw_upgrade.py",
       "kind": "result_interpretation",
       "surface": "repo_hf",
-      "shows": "Measures audio contribution variants across the original task contracts.",
+      "shows": "Measures audio contribution variants across the walkthrough-backed task contracts.",
       "exists": true,
       "bytes": 43159,
       "sha256": "2444f2e52efb975be931b33d66b7180d53031e1d5e821719122160f92f4540aa"
@@ -1080,7 +1080,7 @@
       "path": "docs/assets/charts/audio_ablation_delta.svg",
       "kind": "visual_evidence",
       "surface": "website_hf",
-      "shows": "Bar chart of measured current-audio primary-metric deltas across the original tasks.",
+      "shows": "Bar chart of measured current-audio primary-metric deltas across the walkthrough-backed tasks.",
       "exists": true,
       "bytes": 4146,
       "sha256": "187dbabe01f9ff18841ff61a1e7fbf85bebdd188cc0f248bb5090d64528e7568"
@@ -1093,8 +1093,8 @@
       "surface": "repo_hf",
       "shows": "Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts.",
       "exists": true,
-      "bytes": 7011,
-      "sha256": "f6554cd980efa6c0b3b8feac5ff3e19c3e2e74ccf2d446ac4afb5ee5d65413f3"
+      "bytes": 7027,
+      "sha256": "b7b507c35cd3cba2765586e9703a447c8025c89658c3daa390df67db4211d0fc"
     },
     {
       "id": "figure_index_json",
@@ -1104,8 +1104,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 19469,
-      "sha256": "11a06ee64d28f81f3280eb99327d99b47dc58fb1521332434b9df11c97b9b4e8"
+      "bytes": 19485,
+      "sha256": "4f225bf08f00fbe843999d6bd2b3d5f5d6c17f2ff67e1f6a85eee9094c6bb6a3"
     },
     {
       "id": "figure_index_builder",
@@ -1115,8 +1115,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates visual-asset hashes, dimensions, and source-script provenance.",
       "exists": true,
-      "bytes": 16829,
-      "sha256": "14f1ed7f94630c8f70fbc14547071db251647f3d527cf760341b7a233883d069"
+      "bytes": 16845,
+      "sha256": "3f91f7f13a3fb08ab57c2f0a6b320102e9d5ae19b102b71499edb5b8fd5a2cec"
     },
     {
       "id": "brand_assets_json",
@@ -1182,7 +1182,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8640,
-      "sha256": "c8ce99ac63ab70e3696386671bf201f5605b6a88c8be8f288d44a122bad9025e"
+      "sha256": "6e54f6828b8fef97e963a9a56bccc91162b8a632f6897743095e32407fa0db98"
     },
     {
       "id": "public_surface_qa",
@@ -1226,7 +1226,7 @@
       "volatile": true,
       "shows": "Machine-readable report for SEO/social metadata, accessible tab semantics, public links, project links, and clear project presentation.",
       "exists": true,
-      "bytes": 7690,
+      "bytes": 7691,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1307,7 +1307,7 @@
       "volatile": true,
       "shows": "Records the last live GitHub/HF URL verification after upload.",
       "exists": true,
-      "bytes": 189922,
+      "bytes": 189990,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1340,8 +1340,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable reproduction steps with expected artifacts and public boundaries.",
       "exists": true,
-      "bytes": 6815,
-      "sha256": "ff44893cac56c229d6eb5d20d8cb261ea38e0358e6444615406affd692d8d98e"
+      "bytes": 6836,
+      "sha256": "3f1e1615c6c0853d21bc14a8eab20af3757ecc443e72dab7744b3c0ec149fa87"
     },
     {
       "id": "artifact_index_builder",
@@ -1351,8 +1351,8 @@
       "surface": "repo_hf",
       "shows": "Generates the selective artifact catalog from local files.",
       "exists": true,
-      "bytes": 68232,
-      "sha256": "ee1b210688c1b722d6ca94d1c1706c1a510218c964298b91dd3e596fa19ed2a1"
+      "bytes": 68279,
+      "sha256": "69b43ad5d3dc5a6893c4592fa47fff6a7a87691728ec2c61b121ec262d00bf2a"
     },
     {
       "id": "publication_audit",
@@ -1410,8 +1410,8 @@
       "surface": "website_hf",
       "shows": "Lists public URLs, upstream sources, and machine-readable project metadata.",
       "exists": true,
-      "bytes": 5774,
-      "sha256": "8da6063de9e0b888089aa62daac6d323057dd80247b8f38be5fbce0b370ef6ac"
+      "bytes": 5739,
+      "sha256": "d972f30552dd346ec296f88d004c70bf2fb99e92e44ddc8d3a6dad5634f0336d"
     },
     {
       "id": "task_summary",
@@ -1474,7 +1474,7 @@
       "path": "results/episode_task_suite/neural_mlp",
       "kind": "result_directory",
       "surface": "repo_hf_model",
-      "shows": "Stores matching PyTorch MLP results for the original task contracts.",
+      "shows": "Stores matching PyTorch MLP results for the walkthrough-backed task contracts.",
       "exists": true,
       "file_count": 60,
       "bytes": 90609517
@@ -1485,7 +1485,7 @@
       "path": "results/episode_task_suite/research_directions/research_direction_taxonomy.json",
       "kind": "taxonomy",
       "surface": "repo_hf",
-      "shows": "Maps the original tasks to the four Ropedia research directions as direct/proxy/diagnostic.",
+      "shows": "Maps the walkthrough-backed tasks to the four Ropedia research directions as direct/proxy/diagnostic.",
       "exists": true,
       "bytes": 25046,
       "sha256": "0e3c442e5eb9057b04b1e8c8fa723dfde6f72e7fae1378d5ea022d93f7d25ca3"
@@ -1509,8 +1509,8 @@
       "surface": "repo_hf",
       "shows": "Stores the historical result bundle for provenance rows with minimal and neural baselines aligned to the same 20-task window/split setup.",
       "exists": true,
-      "bytes": 33402,
-      "sha256": "5a1051d25ceafe53c60dbd5b81d4b686a421c493ad09a462ad96bac100c5f3f3"
+      "bytes": 33575,
+      "sha256": "d6d2f851325a691e77aed6d948f7355b16cf8d81ca35bf115e7309a7b7308efd"
     },
     {
       "id": "tier2_task_suite_json",
@@ -1520,8 +1520,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable provenance definitions, setup alignment, metrics, and public source paths; the file name is historical.",
       "exists": true,
-      "bytes": 33402,
-      "sha256": "5a1051d25ceafe53c60dbd5b81d4b686a421c493ad09a462ad96bac100c5f3f3"
+      "bytes": 33575,
+      "sha256": "d6d2f851325a691e77aed6d948f7355b16cf8d81ca35bf115e7309a7b7308efd"
     },
     {
       "id": "tier2_task_suite_chart",
@@ -1531,8 +1531,8 @@
       "surface": "website_hf",
       "shows": "Visual summary of the historical provenance baseline metrics inside the unified 20-task suite.",
       "exists": true,
-      "bytes": 5437,
-      "sha256": "3e35e476f559cd6188e5417e4d28c25efc130abafc9cab2d941bc77d559177a1"
+      "bytes": 5453,
+      "sha256": "e9da29c57f42b29a7a05622fee1335089ac2b6fc9692a3b49fa5b753904db9dc"
     },
     {
       "id": "tier2_task_suite_builder",
@@ -1542,8 +1542,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the historical provenance rows from shared windows plus the local public-sample annotation HDF5; the script name is historical.",
       "exists": true,
-      "bytes": 47102,
-      "sha256": "3cddefaaeedd8efb65e6db956cbd13605e4a5b3772d98fa831d34fd6f92850de"
+      "bytes": 47155,
+      "sha256": "569f05c1299f5186778ec75280188969fe1a5a76ae8553738fd44fc2faaab195"
     },
     {
       "id": "task_walkthroughs",
@@ -1564,8 +1564,8 @@
       "surface": "website_hf",
       "shows": "Presents the task suite and sample modality thumbnails with metrics generated from committed files.",
       "exists": true,
-      "bytes": 1903454,
-      "sha256": "6667eb856cf61ada9f868807b5d5c6ccde06e4f791b2f9dd567d98b71b307415"
+      "bytes": 1897278,
+      "sha256": "71b1ab150e952cf902488226c65b3822d8016974f63d111204c1eb1a7745faad"
     },
     {
       "id": "modality_atlas",
@@ -1672,7 +1672,7 @@
       "path": "results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md",
       "kind": "scaleup_status",
       "surface": "repo_hf",
-      "shows": "Summarizes same-split simple and neural metadata baselines for the 12 original task ids, with unsupported markers for tasks that need missing raw 128 feature blocks.",
+      "shows": "Summarizes same-split simple and neural metadata baselines for the walkthrough-backed task ids, with unsupported markers for tasks that need missing raw 128 feature blocks.",
       "exists": true,
       "bytes": 2238,
       "sha256": "c70440aa502ec569a840159ab7e05b8e7d4ed70e0091ad9a4b2fb3fb0d3803c1"
@@ -1696,8 +1696,8 @@
       "surface": "repo_hf",
       "shows": "Reader-facing comparison of the single-episode task suite, 128-episode aligned baselines, Qwen3-Omni packages, and Cosmos3 future-window branch.",
       "exists": true,
-      "bytes": 15983,
-      "sha256": "4db248566972e811aac6ca06582f233414821624f00f9d4fc4a1b66b2e00401f"
+      "bytes": 15997,
+      "sha256": "c8296c51eb1d67d155b84e3a39f703642d30e855fee7ee7d6ca437966b5c760b"
     },
     {
       "id": "omni_model_comparison_json",
@@ -1707,8 +1707,8 @@
       "surface": "repo_hf",
       "shows": "Machine-readable comparison of the current result versions, per-task aligned baselines, verified Qwen3 packages, and Cosmos3 package.",
       "exists": true,
-      "bytes": 82088,
-      "sha256": "82ccc2932cad63a9ebad85da53e694b18ef626aa3720bda3ed5da30f3dc5e121"
+      "bytes": 82102,
+      "sha256": "6b246dbdb2685efdc9d0a92bb8c446a89523a1787ebc8a883805b4179e266dd1"
     },
     {
       "id": "cosmos3_nano_verified_summary",

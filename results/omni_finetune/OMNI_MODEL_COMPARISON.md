@@ -1,6 +1,6 @@
 # Omni Model Comparison
 
-Generated: `2026-06-21T10:47:04+00:00`
+Generated: `2026-06-21T15:17:00+00:00`
 
 Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and the two Cosmos3 targets answer different questions: Nano future-window retrieval versus Super structured JSON Reasoner evaluation.
 
@@ -14,7 +14,7 @@ Compare only rows with the same scope and target. Single-episode raw-feature met
 
 Read the three rows this way:
 
-- Version 1 is the public-sample 20-task surface: original core heads, tasks 13-20, and the 180-row method-task matrix.
+- Version 1 is the public-sample 20-task surface: unified task heads, historical provenance rows, and the 180-row method-task matrix.
 - Version 2 is the selected 128-episode same-split simple/NN baseline alignment.
 - The selected-128 model-diagnostic group contains the current Qwen3-Omni LoRA JSON-task row, Cosmos3-Nano future-window compatibility result, Cosmos3-Super Reasoner base-weight JSON-task evaluation, and the separate Cosmos3-Super Forward-Dynamics LoRA adapter artifact.
 
