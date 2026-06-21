@@ -39,6 +39,7 @@ ANALYSIS_FILES = [
     "QUALITY_GATES.md",
     "PUBLIC_SURFACE_QA.md",
     "SOURCE_ALIGNMENT_AUDIT.md",
+    "TWO_EVIDENCE_LINES.md",
     "TASK_METHOD_20_RESULT_MATRIX.md",
     "TASK_METHOD_20_GAP_AUDIT.md",
     "TASK_METHOD_20_SOURCE_AUDIT.md",
@@ -53,9 +54,15 @@ ANALYSIS_FILES = [
     "docs/data/episode128_task_model_radar.json",
     "docs/data/single_episode_task_model_radar.json",
     "docs/data/project_status.json",
+    "docs/data/mirror_parity.json",
+    "docs/data/publication_audit.json",
     "docs/data/quality_gates.json",
     "docs/data/public_surface_qa.json",
+    "docs/data/scope_claims_audit.json",
     "docs/data/source_alignment_audit.json",
+    "docs/data/task_surface_integrity.json",
+    "docs/data/two_evidence_lines.json",
+    "docs/data/website_integrity.json",
     "docs/data/xperience10m_128_episode_feature_index.json",
 ]
 
