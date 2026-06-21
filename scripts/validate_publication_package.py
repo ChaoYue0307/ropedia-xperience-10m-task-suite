@@ -345,6 +345,7 @@ def required_assets(root: Path) -> dict[str, bool]:
         "docs/assets/brand/xperience10m-logo-mark-512.png",
         "docs/assets/brand/xperience10m-logo-social-card.png",
         "docs/assets/task_suite_infographic.png",
+        "docs/assets/charts/two_evidence_line_map.svg",
         "docs/assets/charts/unified_task_model_radar.svg",
         "docs/assets/charts/single_episode_task_model_radar.svg",
         "docs/assets/charts/episode128_task_model_radar.svg",

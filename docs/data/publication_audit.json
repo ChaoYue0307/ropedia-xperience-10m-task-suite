@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-21T08:15:07+00:00",
+  "generated_at_utc": "2026-06-21T08:46:15+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -128,6 +128,7 @@
     "docs/assets/brand/xperience10m-logo-mark-512.png": true,
     "docs/assets/brand/xperience10m-logo-social-card.png": true,
     "docs/assets/task_suite_infographic.png": true,
+    "docs/assets/charts/two_evidence_line_map.svg": true,
     "docs/assets/charts/unified_task_model_radar.svg": true,
     "docs/assets/charts/single_episode_task_model_radar.svg": true,
     "docs/assets/charts/episode128_task_model_radar.svg": true,
@@ -232,8 +233,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 1518,
-      "text_file_count": 1257,
+      "file_count": 1519,
+      "text_file_count": 1258,
       "largest_file": {
         "path": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/interaction_text_prediction/confusion_matrix.csv",
         "bytes": 73057076
@@ -254,7 +255,7 @@
     "hf_artifact_bundle": {
       "root": "hf_publish/artifacts",
       "exists": true,
-      "file_count": 4489,
+      "file_count": 3037,
       "text_file_count": 1277,
       "largest_file": {
         "path": "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608/dense_multiscale_windows.jsonl",
@@ -265,7 +266,7 @@
     "hf_model_bundle": {
       "root": "hf_publish/model",
       "exists": true,
-      "file_count": 5244,
+      "file_count": 3519,
       "text_file_count": 1448,
       "largest_file": {
         "path": "results/omni_finetune/xperience10m_128ep_dense_multiscale_hierarchical_v1_20260608/dense_multiscale_windows.jsonl",

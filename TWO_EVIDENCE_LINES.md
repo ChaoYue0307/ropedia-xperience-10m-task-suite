@@ -1,11 +1,15 @@
 # Two Evidence Lines
 
-The public Xperience-10M task suite has two result lines. Read them separately.
+The public Xperience-10M suite has two result lines. Read them separately.
 
-| Line | Data unit | Methods | Best use |
-| --- | --- | --- | --- |
-| 1 sample episode | One public sample episode; 5,821 frames; 1,161 aligned 20-frame windows; 8,546 feature dimensions. | Minimal heads and Neural MLP heads on all 20 tasks; 40/40 scored method-task records. | Inspect raw files, understand each task, rerun local baselines, and debug task quality. |
-| 128 selected episodes | Selected held-out 96/16/16 split; 34,269 exported windows; public-safe processed features linked to official gated episode paths. | Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, Cosmos3-Nano; 140/140 scored 128-line records: 134 direct + 6 compact-proxy scores. | Compare same-split baselines and model branches; keep proxy flags visible when direct raw targets are unavailable. |
+![Two evidence-line map](docs/assets/charts/two_evidence_line_map.svg)
+
+Score formula: 2 single-episode methods x 20 tasks = 40 records; 7 selected-128 methods x 20 tasks = 140 records; total public matrix = 180/180 scored records.
+
+| Line | Data unit | Score statement | Valid claim | Do not claim |
+| --- | --- | --- | --- | --- |
+| 1 sample episode | One public sample episode; 5,821 frames; 1,161 aligned 20-frame windows; 8,546 feature dimensions. | 40/40 direct scores from Minimal and Neural MLP heads. | Task construction, raw-file inspection, local reproducibility, and controlled single-episode baselines. | Multi-episode generalization. |
+| 128 selected episodes | Selected held-out 96/16/16 split; 34,269 exported windows; public-safe processed features linked to official gated episode paths. | 140/140 selected-128 scores: 134 direct + 6 compact-proxy. | Same-split baseline/model comparison, Qwen3/Cosmos diagnostics, and scale-up planning. | Reading compact-proxy cells as direct raw-target measurements. |
 
 ## Result Ledger
 
@@ -19,6 +23,7 @@ The public Xperience-10M task suite has two result lines. Read them separately.
 
 | Purpose | Artifact |
 | --- | --- |
+| Two-line map figure | [`docs/assets/charts/two_evidence_line_map.svg`](docs/assets/charts/two_evidence_line_map.svg) |
 | Unified 9-method x 20-task matrix | [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json) |
 | Two-line result summary | [`docs/data/two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json) |
 | 1-episode radar data | [`docs/data/single_episode_task_model_radar.json`](docs/data/single_episode_task_model_radar.json) |
@@ -31,3 +36,10 @@ The public Xperience-10M task suite has two result lines. Read them separately.
 Use the 1-episode line for task construction and reproducibility claims.
 Use the 128-episode line for held-out comparison and model-branch claims.
 Do not mix those claims without naming the evidence line.
+
+## Reading Order
+
+1. Choose the evidence line.
+2. Open the matching radar.
+3. Inspect the matrix row for method, task, metric, source artifact, and proxy flag.
+4. Check compact-proxy cells before interpreting totals.

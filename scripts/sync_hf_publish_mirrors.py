@@ -51,14 +51,21 @@ The public-sample task surface is now one unified 20-task suite in
 original sample tasks; Tasks 13-20 reuse the same 20-frame windows, 5-frame
 stride, feature manifest, chronological split, and minimal/neural head pattern.
 The historical `tier2_task_suite` path is retained only for stable artifact
-links to tasks 13-20. The unified radar chart is published as
+links to tasks 13-20. Results are organized as two evidence lines:
+one public sample episode for task construction and reproducibility, and
+128 selected episodes for same-split baselines plus Qwen3/Cosmos comparison.
+The line map is published as `docs/assets/charts/two_evidence_line_map.svg`
+with machine-readable summaries in `docs/data/two_evidence_lines.json` and
+`docs/data/two_evidence_line_result_summary.json`.
+
+The unified radar chart is published as
 `docs/assets/charts/unified_task_model_radar.svg` with values in
 `docs/data/unified_task_model_radar.json`; the 9-method by 20-task completion
 matrix is complete at `180/180` scored method-task records and is published in
 `docs/data/task_method_20_result_matrix.json`, with the explicit audit in
 `docs/data/task_method_20_gap_audit.json` and source-value audit in
-`docs/data/task_method_20_source_audit.json`. Split radars for
-the one-episode baselines and selected 128-episode methods are published as
+`docs/data/task_method_20_source_audit.json`. Split radars for the one-episode
+baselines and selected 128-episode methods are published as
 `docs/assets/charts/single_episode_task_model_radar.svg` and
 `docs/assets/charts/episode128_task_model_radar.svg`.
 """
@@ -214,7 +221,14 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
         if "docs/data/unified_task_model_radar.json" not in text:
             text = text.replace(
                 "links to tasks 13-20.\n",
-                "links to tasks 13-20. The unified radar chart is published as\n"
+                "links to tasks 13-20. Results are organized as two evidence lines:\n"
+                "one public sample episode for task construction and reproducibility,\n"
+                "and 128 selected episodes for same-split baselines plus Qwen3/Cosmos\n"
+                "comparison. The line map is published as\n"
+                "`docs/assets/charts/two_evidence_line_map.svg` with summaries in\n"
+                "`docs/data/two_evidence_lines.json` and\n"
+                "`docs/data/two_evidence_line_result_summary.json`.\n\n"
+                "The unified radar chart is published as\n"
                 "`docs/assets/charts/unified_task_model_radar.svg` with values in\n"
                 "`docs/data/unified_task_model_radar.json`; the 9-method by\n"
                 "20-task completion matrix is complete at `180/180` scored\n"
@@ -236,6 +250,18 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
                 "and is published in `docs/data/task_method_20_result_matrix.json`,\n"
                 "with the explicit score/proxy audit in `docs/data/task_method_20_gap_audit.json`\n"
                 "and source-value audit in `docs/data/task_method_20_source_audit.json`.",
+            )
+        if (
+            "docs/data/task_method_20_result_matrix.json" in text
+            and "docs/assets/charts/two_evidence_line_map.svg" not in text
+        ):
+            text = text.replace(
+                "`docs/data/task_method_20_result_matrix.json`,",
+                "`docs/data/task_method_20_result_matrix.json`, with two-line summaries in\n"
+                "`docs/assets/charts/two_evidence_line_map.svg`,\n"
+                "`docs/data/two_evidence_lines.json`, and\n"
+                "`docs/data/two_evidence_line_result_summary.json`,",
+                1,
             )
         if "completion matrix is in `docs/data/task_method_20_result_matrix.json`" in text:
             text = text.replace(

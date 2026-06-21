@@ -1051,7 +1051,7 @@ def build_payload() -> dict[str, Any]:
                 "id": "raw128_simple",
                 "title": "128ep Raw Simple",
                 "status": "a100_raw20_complete_with_documented_proxies",
-                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'raw128_simple')['scored_task_count']} scored axes; 18 direct + 2 proxy",
+                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'raw128_simple')['scored_task_count']} scored records; 18 direct + 2 proxy",
                 "headline": "34,269 windows; centroid/ridge heads over 4430-dim sensor blocks",
                 "source": str((RAW128_BASELINE_DIR / "run_summary_all.json").relative_to(ROOT)),
             },
@@ -1059,7 +1059,7 @@ def build_payload() -> dict[str, Any]:
                 "id": "raw128_neural_mlp",
                 "title": "128ep Raw NN",
                 "status": "a100_raw20_complete_with_documented_proxies",
-                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'raw128_neural_mlp')['scored_task_count']} scored axes; 18 direct + 2 proxy",
+                "coverage": f"20 records / {next(item for item in series_records if item['id'] == 'raw128_neural_mlp')['scored_task_count']} scored records; 18 direct + 2 proxy",
                 "headline": "MLP heads over staged features; tasks 15/19 use compact proxies",
                 "source": str((RAW128_BASELINE_DIR / "run_summary_all.json").relative_to(ROOT)),
             },
@@ -1155,9 +1155,9 @@ def render_svg(
         chip_specs = [
             ("20 task axes", "#ccffa0"),
             (f"{payload['method_task_record_count']} method-task records", "#67e8d1"),
-            (f"{payload['scored_method_task_count']} scored axes", "#22d3ee"),
+            (f"{payload['scored_method_task_count']} scored records", "#22d3ee"),
             ("40/40 raw128 pass", "#f59e0b"),
-            ("2 compact proxy axes", "#f472b6"),
+            ("2 compact proxy records", "#f472b6"),
         ]
     chip_x = 70
     for label, color in chip_specs:
@@ -1214,7 +1214,7 @@ def render_svg(
     legend_x, legend_y = 1315, 178
     parts.append(f'<rect x="{legend_x - 30}" y="{legend_y - 38}" width="1000" height="560" rx="14" fill="#020502" fill-opacity="0.58" stroke="#ccffa0" stroke-opacity="0.20"/>')
     parts.append(svg_text(legend_x, legend_y, "Methods compared", size=25, weight=800))
-    parts.append(svg_text(legend_x, legend_y + 30, "Each method has 20 records; scored axes, proxy flags, and sources stay in the JSON matrix.", size=13, fill="#a5afa2", weight=560))
+    parts.append(svg_text(legend_x, legend_y + 30, "Each method has 20 records; scores, proxy flags, and sources stay in the JSON matrix.", size=13, fill="#a5afa2", weight=560))
 
     cursor = legend_y + 74
     for record in series_records:
@@ -1314,7 +1314,7 @@ def main() -> int:
             chip_specs=[
                 ("20 task axes", "#ccffa0"),
                 ("40 method-task records", "#67e8d1"),
-                ("40 scored axes", "#22d3ee"),
+                ("40 scored records", "#22d3ee"),
                 ("2 filled baseline polygons", "#f472b6"),
             ],
             reading_rules=(
@@ -1336,7 +1336,7 @@ def main() -> int:
             chip_specs=[
                 ("20 task axes", "#ccffa0"),
                 ("140 method-task records", "#67e8d1"),
-                (f"{episode128_payload['scored_method_task_count']} scored axes", "#22d3ee"),
+                (f"{episode128_payload['scored_method_task_count']} scored records", "#22d3ee"),
                 ("40/40 raw128 pass", "#f59e0b"),
                 ("0 scoreless", "#f472b6"),
             ],

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="680" viewBox="0 0 1400 680" role="img" aria-labelledby="title desc">
+  <title id="title">Ropedia Xperience-10M two evidence-line map</title>
+  <desc id="desc">The suite is organized into a one-sample task-lab line and a selected-128 comparison line. Together they produce 180 scored method-task records.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#020502"/>
+      <stop offset="0.56" stop-color="#061006"/>
+      <stop offset="1" stop-color="#0b1709"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1c0c"/>
+      <stop offset="1" stop-color="#040904"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.65 0 0 0 0 1 0 0 0 0 0.42 0 0 0 0.55 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      text { font-family: Inter, Arial, Helvetica, sans-serif; letter-spacing: 0; }
+      .title { fill: #f4f8ef; font-size: 58px; font-weight: 800; }
+      .subtitle { fill: #c7d1c3; font-size: 24px; font-weight: 500; }
+      .line-label { fill: #ccffa0; font-size: 22px; font-weight: 800; text-transform: uppercase; }
+      .card-title { fill: #f4f8ef; font-size: 34px; font-weight: 800; }
+      .body { fill: #c7d1c3; font-size: 22px; font-weight: 500; }
+      .metric { fill: #f4f8ef; font-size: 34px; font-weight: 800; }
+      .metric-label { fill: #a5afa2; font-size: 17px; font-weight: 700; text-transform: uppercase; }
+      .pill { fill: #020502; font-size: 18px; font-weight: 800; }
+      .small { fill: #a5afa2; font-size: 18px; font-weight: 600; }
+      .warn { fill: #d8f4a5; font-size: 18px; font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1400" height="680" fill="url(#bg)"/>
+  <circle cx="1180" cy="90" r="230" fill="#ccffa0" opacity="0.08"/>
+  <circle cx="280" cy="540" r="260" fill="#7ae5c3" opacity="0.06"/>
+
+  <text x="64" y="88" class="title">Two evidence lines, one public matrix</text>
+  <text x="66" y="128" class="subtitle">Read scores by line: the sample line proves the task lab; the 128-episode line compares methods and model branches.</text>
+
+  <g transform="translate(64 176)">
+    <rect x="0" y="0" width="600" height="310" rx="18" fill="url(#card)" stroke="#ccffa0" stroke-opacity="0.72" stroke-width="2"/>
+    <text x="34" y="50" class="line-label">Line 1 / public sample</text>
+    <text x="34" y="98" class="card-title">1 sample episode</text>
+    <text x="34" y="142" class="body">Fully inspectable task lab.</text>
+    <text x="34" y="176" class="body">Use for files, task definitions, and local baselines.</text>
+
+    <g transform="translate(34 214)">
+      <rect x="0" y="0" width="152" height="66" rx="12" fill="#071207" stroke="#ccffa0" stroke-opacity="0.38"/>
+      <text x="20" y="34" class="metric">5,821</text>
+      <text x="20" y="55" class="metric-label">frames</text>
+      <rect x="174" y="0" width="160" height="66" rx="12" fill="#071207" stroke="#ccffa0" stroke-opacity="0.38"/>
+      <text x="194" y="34" class="metric">1,161</text>
+      <text x="194" y="55" class="metric-label">windows</text>
+      <rect x="356" y="0" width="176" height="66" rx="12" fill="#071207" stroke="#ccffa0" stroke-opacity="0.38"/>
+      <text x="376" y="34" class="metric">40/40</text>
+      <text x="376" y="55" class="metric-label">direct scores</text>
+    </g>
+  </g>
+
+  <g transform="translate(736 176)">
+    <rect x="0" y="0" width="600" height="310" rx="18" fill="url(#card)" stroke="#7ae5c3" stroke-opacity="0.66" stroke-width="2"/>
+    <text x="34" y="50" class="line-label">Line 2 / selected held-out surface</text>
+    <text x="34" y="98" class="card-title">128 selected episodes</text>
+    <text x="34" y="142" class="body">Aligned comparison layer.</text>
+    <text x="34" y="176" class="body">Use for baselines, Qwen3-Omni, and Cosmos branches.</text>
+
+    <g transform="translate(34 214)">
+      <rect x="0" y="0" width="152" height="66" rx="12" fill="#071207" stroke="#7ae5c3" stroke-opacity="0.38"/>
+      <text x="20" y="34" class="metric">128</text>
+      <text x="20" y="55" class="metric-label">episodes</text>
+      <rect x="174" y="0" width="178" height="66" rx="12" fill="#071207" stroke="#7ae5c3" stroke-opacity="0.38"/>
+      <text x="194" y="34" class="metric">34,269</text>
+      <text x="194" y="55" class="metric-label">windows</text>
+      <rect x="374" y="0" width="180" height="66" rx="12" fill="#071207" stroke="#7ae5c3" stroke-opacity="0.38"/>
+      <text x="394" y="34" class="metric">140/140</text>
+      <text x="394" y="55" class="metric-label">134 direct + 6 proxy</text>
+    </g>
+  </g>
+
+  <g transform="translate(176 536)" filter="url(#glow)">
+    <rect x="0" y="0" width="1048" height="88" rx="18" fill="#ccffa0"/>
+    <text x="34" y="54" class="pill">Combined public matrix: 9 methods x 20 tasks = 180/180 scored method-task records</text>
+  </g>
+  <text x="238" y="654" class="warn">Proxy rule: six selected-128 cells are compact-proxy scores; each keeps its source artifact and reason visible.</text>
+</svg>

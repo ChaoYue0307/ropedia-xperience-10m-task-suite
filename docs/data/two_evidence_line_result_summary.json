@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-21T07:36:39+00:00",
+  "generated_at_utc": "2026-06-21T08:38:20+00:00",
   "interpretation_rule": "Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for held-out comparison and model-branch claims.",
   "lines": [
     {
@@ -10,6 +10,7 @@
         "results/episode_task_suite/feature_manifest.json",
         "docs/single_episode_explorer.html"
       ],
+      "claim_boundary": "Supports task construction, file inspection, local reproducibility, and controlled single-episode baseline claims.",
       "data_unit": "One public Xperience-10M sample episode",
       "direct_scored_method_task_count": 40,
       "id": "single_public_sample_episode",
@@ -44,9 +45,16 @@
           }
         }
       ],
+      "not_for": "Do not use this line as evidence of multi-episode generalization.",
       "primary_use": "Inspect raw files, understand each task, rerun local baselines, and debug task quality.",
+      "primary_visuals": [
+        "docs/assets/charts/two_evidence_line_map.svg",
+        "docs/assets/charts/single_episode_task_model_radar.svg"
+      ],
       "proxy_scored_method_task_count": 0,
+      "result_statement": "40/40 direct scores from Minimal and Neural MLP heads on the same 20 task contracts.",
       "scored_method_task_count": 40,
+      "short_label": "Line 1",
       "task_count": 20
     },
     {
@@ -57,6 +65,7 @@
         "docs/data/omni_model_comparison.json",
         "docs/data/task_method_20_gap_audit.json"
       ],
+      "claim_boundary": "Supports same-split comparison, model-branch diagnostics, and scale-up planning on public-safe processed artifacts.",
       "data_unit": "Selected held-out 96/16/16 split with public-safe processed features linked to official gated episode paths",
       "direct_scored_method_task_count": 134,
       "id": "selected_128_episode_surface",
@@ -160,9 +169,17 @@
           }
         }
       ],
+      "not_for": "Do not read compact-proxy cells as direct raw-target measurements.",
       "primary_use": "Compare same-split baselines and model branches while keeping evidence type explicit.",
+      "primary_visuals": [
+        "docs/assets/charts/two_evidence_line_map.svg",
+        "docs/assets/charts/episode128_task_model_radar.svg",
+        "docs/assets/charts/unified_task_model_radar.svg"
+      ],
       "proxy_scored_method_task_count": 6,
+      "result_statement": "140/140 selected-128 scores across seven method branches: 134 direct scores plus 6 documented compact-proxy scores.",
       "scored_method_task_count": 140,
+      "short_label": "Line 2",
       "task_count": 20
     }
   ],
@@ -239,6 +256,26 @@
     "selected_128_episode_surface": "Use for held-out comparison, metadata/raw-feature baselines, Qwen3/Cosmos branches, and scale-up decisions.",
     "single_public_sample_episode": "Use for task construction, raw-file inspection, local reproducibility, and controlled Minimal-vs-Neural baseline behavior."
   },
+  "reader_summary": "The suite has two public result lines. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, Qwen3-Omni, and Cosmos branches. Do not mix the two when reading scores.",
+  "reading_order": [
+    {
+      "reason": "Line 1 answers task-lab and reproducibility questions; line 2 answers selected-128 comparison questions.",
+      "step": "Choose the evidence line"
+    },
+    {
+      "reason": "Use the 1-episode radar for Minimal-vs-Neural behavior and the 128-episode radar for baseline/model-branch comparison.",
+      "step": "Open the matching radar"
+    },
+    {
+      "reason": "Every numeric score is tied to a method, task, metric key, source artifact, and proxy flag.",
+      "step": "Inspect the matrix row"
+    },
+    {
+      "reason": "The six compact-proxy cells are numeric but are not direct raw-target measurements.",
+      "step": "Check proxy cells before interpreting totals"
+    }
+  ],
+  "score_formula": "2 single-episode methods x 20 tasks = 40 records; 7 selected-128 methods x 20 tasks = 140 records; total public matrix = 180/180 scored records.",
   "source_lines": "docs/data/two_evidence_lines.json",
   "source_matrix": "docs/data/task_method_20_result_matrix.json",
   "status": "pass",

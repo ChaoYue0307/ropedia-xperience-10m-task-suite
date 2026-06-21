@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ropedia Xperience-10M Task Suite</title>
-  <meta name="description" content="A research-development task lab for Ropedia Xperience-10M: multimodal sample exploration, 20 embodied-AI tasks, baseline models, and a multi-episode fine-tuning path.">
+  <meta name="description" content="Ropedia Xperience-10M Task Suite organized into two evidence lines: one public sample episode for reproducible task construction and 128 selected episodes for aligned baselines plus Qwen3/Cosmos comparison.">
   <meta name="theme-color" content="#020502">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">
@@ -12,7 +12,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta property="og:title" content="Ropedia Xperience-10M Task Suite">
-  <meta property="og:description" content="A Ropedia Xperience-10M research task lab with multimodal sample exploration, 20 task contracts, minimal and neural baselines, metrics, diagrams, and a scale-up plan.">
+  <meta property="og:description" content="A two-line Ropedia Xperience-10M public suite: 1 sample episode for task construction, 128 selected episodes for same-split baselines and Qwen3/Cosmos comparison.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">
   <meta property="og:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/brand/xperience10m-logo-social-card.png?v=xperience10m-logo-v4">
@@ -20,7 +20,7 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ropedia Xperience-10M Task Suite">
-  <meta name="twitter:description" content="Xperience-10M research task lab with multimodal sample exploration, 20 task contracts, and minimal plus neural baselines.">
+  <meta name="twitter:description" content="Two evidence lines for Xperience-10M: 1 public sample episode and 128 selected episodes, with 180/180 scored method-task records.">
   <meta name="twitter:image" content="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/assets/brand/xperience10m-logo-social-card.png?v=xperience10m-logo-v4">
   <script type="application/ld+json">
     {
@@ -1006,6 +1006,30 @@
       font-size: 13px;
       line-height: 1.52;
     }
+    .line-claim {
+      display: grid;
+      gap: 8px;
+      margin: 14px 0 0;
+      padding: 13px;
+      border: 1px solid rgba(204, 255, 160, 0.14);
+      border-radius: var(--radius);
+      background: rgba(2, 5, 2, 0.38);
+    }
+    .line-claim span {
+      display: block;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .line-claim p {
+      margin: 2px 0 0;
+      color: #d7e2d0;
+      font-size: 12.5px;
+      line-height: 1.42;
+    }
     .suite-line-facts {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1038,6 +1062,54 @@
       text-decoration: none;
     }
     .suite-line-card a:hover { color: var(--green); }
+    .line-map-figure {
+      margin: 28px 0;
+      border: 1px solid rgba(204, 255, 160, 0.20);
+      border-radius: var(--radius);
+      background: rgba(2, 5, 2, 0.78);
+      overflow: hidden;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+    }
+    .line-map-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #020502;
+    }
+    .result-reading-order {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 24px 0 28px;
+    }
+    .result-reading-step {
+      border: 1px solid rgba(204, 255, 160, 0.16);
+      border-radius: var(--radius);
+      background: rgba(7, 18, 7, 0.72);
+      padding: 16px;
+    }
+    .result-reading-step span {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .result-reading-step strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 17px;
+      line-height: 1.1;
+    }
+    .result-reading-step p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
     .line-table {
       width: 100%;
       border-collapse: collapse;
@@ -3308,7 +3380,7 @@
         border-right: 0;
         border-bottom: 1px solid var(--line);
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .reader-journey, .resource-mode-grid, .suite-lines { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .reader-journey, .resource-mode-grid, .suite-lines, .result-reading-order { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .brief-panel-head { grid-template-columns: 1fr; align-items: start; }
       .task-player { grid-template-columns: 1fr; }
       .task-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -3492,7 +3564,7 @@
         width: 100%;
         justify-content: center;
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order { grid-template-columns: 1fr; }
       .line-table,
       .line-table thead,
       .line-table tbody,
@@ -3681,14 +3753,14 @@
   <header class="hero" id="top">
     <div class="wrap hero-inner">
       <div>
-        <div class="eyebrow">public sample episode / multimodal task lab</div>
+        <div class="eyebrow">two evidence lines / 180 scored records</div>
         <h1>Ropedia Xperience-10M Task Suite.</h1>
         <p class="hero-copy">
-          A public research surface for physical 4D intelligence: sample-to-task
-          contracts, multimodal baselines, verified multi-episode Qwen3-Omni
-          results, and a clear path toward Xperience-native foundation models.
-          Public raw-data boundaries stay explicit while staged derived
-          artifacts keep the latest model evidence recoverable.
+          The public suite has two result lines. Line 1 uses one public sample
+          episode to make the 20-task lab inspectable and reproducible. Line 2
+          uses 128 selected episodes to compare aligned baselines, Qwen3-Omni,
+          and Cosmos branches. The public matrix is complete at 180/180 scored
+          method-task records, with six compact-proxy cells explicitly marked.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#reader-map">Start guided path</a>
@@ -3699,23 +3771,31 @@
         <div class="suite-lines" aria-label="Two evidence lines">
           <article class="suite-line-card">
             <small>line 1 / public sample</small>
-            <h3>1 episode: task construction and reproducible baselines</h3>
-            <p>Use this line to inspect one full sample, understand each file, and rerun Minimal and Neural MLP task heads locally.</p>
+            <h3>1 sample episode: task lab</h3>
+            <p>One public episode becomes aligned windows, task targets, Minimal heads, and Neural MLP heads.</p>
+            <div class="line-claim">
+              <div><span>valid claim</span><p>Task construction, file inspection, and local reproducibility.</p></div>
+              <div><span>do not claim</span><p>Multi-episode generalization.</p></div>
+            </div>
             <div class="suite-line-facts">
               <span><strong>5,821</strong>frames</span>
               <span><strong>1,161</strong>20-frame windows</span>
-              <span><strong>40/40</strong>Minimal + NN task scores</span>
+              <span><strong>40/40</strong>direct task scores</span>
             </div>
             <a href="#raw-sample">Open sample line</a>
           </article>
           <article class="suite-line-card">
-            <small>line 2 / selected held-out suite</small>
-            <h3>128 episodes: aligned baselines and model branches</h3>
-            <p>Use this line to compare same-split metadata/raw baselines, Qwen3-Omni, and Cosmos diagnostics on the 20-task surface.</p>
+            <small>line 2 / 128 selected episodes</small>
+            <h3>128 selected episodes: comparison layer</h3>
+            <p>Seven method branches share the selected-episode surface and the same 20 task axes.</p>
+            <div class="line-claim">
+              <div><span>valid claim</span><p>Same-split baseline/model comparison and scale-up planning.</p></div>
+              <div><span>do not claim</span><p>Proxy cells as direct raw-target measurements.</p></div>
+            </div>
             <div class="suite-line-facts">
               <span><strong>128</strong>selected episodes</span>
               <span><strong>34,269</strong>exported windows</span>
-              <span><strong>140/140</strong>128-line task scores</span>
+              <span><strong>140/140</strong>134 direct + 6 proxy</span>
             </div>
             <a href="#suite">Open 128-episode line</a>
           </article>
@@ -3752,25 +3832,25 @@
       <div class="hero-radar-panel" aria-label="Unified 20-task radar comparison">
         <div class="hero-radar-top">
           <strong>home radar comparison</strong>
-          <span>180 method-task records / 180 scored axes / metadata+raw128 complete with documented proxy axes</span>
+          <span>two evidence lines / 180 scored records / 174 direct + 6 compact-proxy</span>
         </div>
         <div class="hero-radar-layout">
           <a class="hero-radar-frame" href="#suite" aria-label="Open full unified 20-task model radar">
-            <img src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v6" alt="Unified 20-task model radar with full task-name key, method legend, 20-record counts, scored-axis counts, and raw128 proxy notes">
+            <img src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v6" alt="Unified 20-task model radar with full task-name key, method legend, 20-record counts, score counts, and raw128 proxy notes">
           </a>
           <div class="hero-radar-copy">
-            <h2>Model comparison uses explicit task names and method contracts.</h2>
-            <p>The full SVG names every axis and keeps 20-result records, scored-axis counts, raw metric sources, and proxy notes attached to the same comparison view.</p>
+            <h2>Model comparison is split by evidence line.</h2>
+            <p>The full SVG names every task axis and keeps method records, source artifacts, and proxy notes attached to the same comparison view.</p>
             <div class="hero-radar-stats" aria-label="Radar coverage summary">
               <div class="hero-radar-stat"><strong>180</strong><span>method-task records</span></div>
-              <div class="hero-radar-stat"><strong>180</strong><span>scored axes</span></div>
-              <div class="hero-radar-stat"><strong>80/80</strong><span>metadata+raw pass</span></div>
+              <div class="hero-radar-stat"><strong>174</strong><span>direct scores</span></div>
+              <div class="hero-radar-stat"><strong>6</strong><span>compact-proxy scores</span></div>
               <div class="hero-radar-stat"><strong>34,269</strong><span>128ep windows</span></div>
             </div>
             <div class="hero-method-list" aria-label="Method families shown in the radar">
-              <div class="hero-method" style="--method-color:#67e8d1"><strong>Minimal + Neural MLP</strong><span>Single public-sample episode, full 20-task filled polygons.</span></div>
-              <div class="hero-method" style="--method-color:#f59e0b"><strong>128ep Metadata + Raw Baselines</strong><span>Every method has 20 records; metadata and raw NPZ heads now score all 20 axes, with compact proxy notes attached where the paired raw target is absent.</span></div>
-              <div class="hero-method" style="--method-color:#9bb8ff"><strong>Qwen3-Omni + Cosmos</strong><span>Verified held-out branches carry 20 records; Qwen3, Cosmos3-Super, and Cosmos3-Nano are now represented as 20/20 scored task rows with source/proxy notes attached in the matrix.</span></div>
+              <div class="hero-method" style="--method-color:#67e8d1"><strong>Line 1: Minimal + Neural MLP</strong><span>Single public-sample episode; 40/40 direct task scores.</span></div>
+              <div class="hero-method" style="--method-color:#f59e0b"><strong>Line 2: metadata + raw baselines</strong><span>Same selected-128 split; all four baseline rows have 20 records, with proxy notes where direct raw targets are absent.</span></div>
+              <div class="hero-method" style="--method-color:#9bb8ff"><strong>Line 2: Qwen3-Omni + Cosmos</strong><span>Qwen3, Cosmos3-Super, and Cosmos3-Nano are represented as selected-128 method rows with source notes in the matrix.</span></div>
             </div>
             <div class="hero-task-strip" aria-label="Radar task axis examples">
               <span>01 Action Recognition</span>
@@ -3837,15 +3917,19 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Two evidence lines: 1 episode and 128 episodes.</h2>
-          <p>The project has two public reading paths. The 1-episode line is the fully inspectable task lab. The 128-episode line is the aligned comparison layer for same-split baselines and model branches. Keep them separate when interpreting results.</p>
+          <p>Read the suite as two lines. Line 1 proves the task lab is inspectable and reproducible. Line 2 compares selected-128 baselines and model branches. Keep the lines separate when interpreting scores.</p>
         </div>
+        <figure class="line-map-figure">
+          <img src="assets/charts/two_evidence_line_map.svg?v=two-line-map-v1" alt="Two evidence-line map showing 1 sample episode, 128 selected episodes, and the combined 180 scored method-task records">
+        </figure>
         <table class="line-table" aria-label="Two evidence-line comparison">
           <thead>
             <tr>
               <th>Line</th>
               <th>Data unit</th>
-              <th>Methods shown</th>
-              <th>Use this line for</th>
+              <th>Score statement</th>
+              <th>Valid claim</th>
+              <th>Do not claim</th>
               <th>Start here</th>
             </tr>
           </thead>
@@ -3853,15 +3937,17 @@
             <tr>
               <td>1 sample episode</td>
               <td>One public Xperience-10M sample episode; 5,821 frames; 1,161 aligned 20-frame windows; 8,546-dimensional feature contract.</td>
-              <td>Minimal heads and Neural MLP heads. Both cover all 20 task contracts, for 40/40 scored method-task records.</td>
+              <td>40/40 direct scores from Minimal and Neural MLP heads.</td>
               <td>Raw sample inspection, file organization, task definitions, local reproducibility, and controlled baseline behavior.</td>
+              <td>Multi-episode generalization.</td>
               <td><a href="#raw-sample">Raw browser</a><br><a href="data/single_episode_task_model_radar.json">1-episode radar JSON</a><br><a href="data/two_evidence_line_result_summary.json">result summary JSON</a><br><a href="data/two_evidence_lines.json">line JSON</a></td>
             </tr>
             <tr>
               <td>128 selected episodes</td>
               <td>Selected held-out 96/16/16 split; 34,269 exported windows; public-safe metadata/raw-feature artifacts linked to official gated episode paths.</td>
-              <td>Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano. Together they form 140/140 scored 128-line method-task records.</td>
-              <td>Same-split comparison, model-branch diagnostics, Qwen/Cosmos evidence, and the next scale-up decisions.</td>
+              <td>140/140 selected-128 scores: 134 direct + 6 compact-proxy.</td>
+              <td>Same-split comparison, model-branch diagnostics, Qwen/Cosmos evidence, and scale-up decisions.</td>
+              <td>Reading compact-proxy cells as direct raw-target measurements.</td>
               <td><a href="data/episode128_task_model_radar.json">128-episode radar JSON</a><br><a href="data/xperience10m_128_episode_feature_index.json">feature index JSON</a><br><a href="data/two_evidence_line_result_summary.json">result summary JSON</a><br><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/TWO_EVIDENCE_LINES.md">line doc</a></td>
             </tr>
           </tbody>
@@ -4042,7 +4128,7 @@
           <article class="split-radar-card">
             <h3>128-Episode 20-Task Radar</h3>
             <p>Metadata, raw-feature, Qwen3-Omni, and Cosmos3 branches on the aligned 128-episode surface, with all 140 rows scored and proxy/evidence notes kept explicit.</p>
-            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="128-episode 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 branches with explicit scored-axis counts">
+            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="128-episode 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 branches with explicit score counts">
             <div class="split-radar-links">
               <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
               <a href="data/episode128_task_model_radar.json">Open JSON</a>
@@ -4685,10 +4771,10 @@
           </article>
           <article class="figure-brief-card">
             <h3>Score/proxy audit</h3>
-            <p>The matrix has 180 method-task records and 180 numeric scores. The audit records which artifacts support each score and marks compact-proxy axes where raw targets are absent.</p>
+            <p>The matrix has 180/180 scored method-task records: 174 direct scores and 6 compact-proxy scores. The audit records the source artifact, metric key, and proxy reason for each marked cell.</p>
           </article>
         </div>
-        <img class="chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v6" alt="Unified 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, scored-axis counts, and proxy notes">
+        <img class="chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v6" alt="Unified 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, score counts, and proxy notes">
         <div class="split-radar-grid" aria-label="Split 20-task radar comparisons">
           <article class="split-radar-card">
             <h3>1-Episode 20-Task Radar</h3>
@@ -4702,7 +4788,7 @@
           <article class="split-radar-card">
             <h3>128-Episode 20-Task Radar</h3>
             <p>Seven aligned 128-episode methods cover all 20 axes: metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano. Proxy axes stay labeled in the JSON.</p>
-            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="128-episode 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 branches with explicit scored-axis counts">
+            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v1" alt="128-episode 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 branches with explicit score counts">
             <div class="split-radar-links">
               <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
               <a href="data/episode128_task_model_radar.json">Open JSON</a>
@@ -4795,13 +4881,38 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Results by evidence line.</h2>
-          <p>Read the results as two layers. The 1-episode layer explains task behavior and reproducible baselines. The 128-episode layer compares aligned baselines and model branches, with proxy notes kept visible.</p>
+          <p>Read results in this order: choose the line, open the matching radar, inspect the matrix row, then check proxy flags before interpreting totals.</p>
+        </div>
+        <div class="result-reading-order" aria-label="How to read the result evidence">
+          <article class="result-reading-step">
+            <span>01</span>
+            <strong>Choose the line</strong>
+            <p>Use 1 episode for task-lab claims. Use 128 episodes for comparison claims.</p>
+          </article>
+          <article class="result-reading-step">
+            <span>02</span>
+            <strong>Open the radar</strong>
+            <p>Single-episode radar shows Minimal vs Neural MLP. 128 radar shows baseline and model branches.</p>
+          </article>
+          <article class="result-reading-step">
+            <span>03</span>
+            <strong>Inspect the matrix</strong>
+            <p>Each score keeps method, task, metric key, source artifact, and status.</p>
+          </article>
+          <article class="result-reading-step">
+            <span>04</span>
+            <strong>Check proxy cells</strong>
+            <p>Six selected-128 scores are compact proxies and stay marked in the audit.</p>
+          </article>
         </div>
         <div class="suite-lines" aria-label="Results split by evidence line">
           <article class="suite-line-card">
             <small>1 episode results</small>
             <h3>Task-lab evidence</h3>
             <p>Minimal and Neural MLP heads are both scored on all 20 public-sample task contracts. All 40 scores are direct task-target metrics.</p>
+            <div class="line-claim">
+              <div><span>best read as</span><p>A reproducible public task suite and baseline behavior check.</p></div>
+            </div>
             <div class="suite-line-facts">
               <span><strong>2</strong>methods</span>
               <span><strong>20</strong>task axes</span>
@@ -4813,6 +4924,9 @@
             <small>128 episode results</small>
             <h3>Scale-up evidence</h3>
             <p>Metadata/raw baselines and Qwen/Cosmos branches use the aligned 128-episode surface. It has 134 direct scores plus 6 compact-proxy scores.</p>
+            <div class="line-claim">
+              <div><span>best read as</span><p>A same-split comparison table with explicit source and proxy status.</p></div>
+            </div>
             <div class="suite-line-facts">
               <span><strong>7</strong>methods</span>
               <span><strong>20</strong>task axes</span>

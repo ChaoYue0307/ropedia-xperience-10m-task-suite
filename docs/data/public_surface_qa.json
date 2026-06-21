@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Project Surface",
   "status": "pass",
-  "generated_at_utc": "2026-06-21T08:13:59+00:00",
+  "generated_at_utc": "2026-06-21T08:41:37+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -18,7 +18,7 @@
         "website_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T08:12:52+00:00"
+          "generated_at_utc": "2026-06-21T08:38:53+00:00"
         },
         "rendered_site_check": {
           "exists": true,
@@ -28,27 +28,27 @@
         "task_surface_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T07:37:47+00:00"
+          "generated_at_utc": "2026-06-21T08:38:50+00:00"
         },
         "source_alignment": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T07:38:04+00:00"
+          "generated_at_utc": "2026-06-21T08:38:50+00:00"
         },
         "scale_up_status": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T07:37:51+00:00"
+          "generated_at_utc": "2026-06-21T08:38:55+00:00"
         },
         "publication_package": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T07:43:11+00:00"
+          "generated_at_utc": "2026-06-21T08:41:14+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-21T07:43:36+00:00"
+          "generated_at_utc": "2026-06-21T08:41:09+00:00"
         }
       },
       "failures": {}
@@ -95,10 +95,10 @@
       "status": "pass",
       "reason": "Public copy should consistently present the project as Ropedia Xperience-10M, with the Qwen3-Omni scale-up status.",
       "marker_counts": {
-        "Ropedia Xperience-10M Task Suite": 19,
-        "Xperience-10M": 169,
-        "20-task": 72,
-        "Qwen3-Omni": 159,
+        "Ropedia Xperience-10M Task Suite": 20,
+        "Xperience-10M": 166,
+        "20-task": 71,
+        "Qwen3-Omni": 154,
         "128-episode pilot": 1
       }
     },
@@ -132,12 +132,15 @@
         "data/research_roadmap.json": 15,
         "data/task_suite_enhancement_128.json": 22,
         "data/task_suite_20.json": 34,
+        "data/two_evidence_lines.json": 5,
+        "data/two_evidence_line_result_summary.json": 10,
         "data/unified_task_model_radar.json": 21,
         "data/single_episode_task_model_radar.json": 16,
         "data/episode128_task_model_radar.json": 16,
         "data/task_method_20_result_matrix.json": 24,
         "data/task_method_20_gap_audit.json": 21,
         "data/language_versions.json": 3,
+        "assets/charts/two_evidence_line_map.svg": 5,
         "assets/charts/unified_task_model_radar.svg": 17,
         "assets/charts/single_episode_task_model_radar.svg": 19,
         "assets/charts/episode128_task_model_radar.svg": 19,

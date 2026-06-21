@@ -35,11 +35,11 @@
 </p>
 
 
-**Ropedia Xperience-10M Task Suite** turns the public Xperience-10M sample into a readable embodied-AI benchmark surface. It keeps the evidence trail explicit: what is derived from the one public sample episode, what is evaluated on selected 128-episode held-out splits, what is mirrored to Hugging Face, and what still requires gated raw data or new model-specific evaluators.
+**Ropedia Xperience-10M Task Suite** is organized as two public result lines, not one blended benchmark. The 1-sample line is a fully inspectable task lab. The selected-128 line is the comparison surface for aligned baselines, Qwen3-Omni, and Cosmos branches. Every score points back to a source artifact and keeps direct-vs-proxy status visible.
 
 **Updated:** 2026-06-21.
 
-**Scope:** one public sample episode for the fully reproducible task suite; selected 128-episode public-safe artifacts for Qwen3-Omni, Cosmos3, metadata baselines, and raw-feature baselines. Raw Xperience-10M MP4/HDF5/RRD files, full Qwen weights, and gated data are not redistributed here.
+**Scope:** one public sample episode for raw-file inspection and reproducible task construction; selected 128-episode public-safe artifacts for same-split comparison and model-branch diagnostics. Raw Xperience-10M MP4/HDF5/RRD files, full Qwen weights, and gated data are not redistributed here.
 
 ## Contents
 
@@ -57,7 +57,7 @@
 
 ## How To Read This Project
 
-Use the first two tables to orient yourself, then jump to the evidence artifact that matches your question. The dashboard is the best visual overview; the GitHub repo is the source of truth for scripts and generated JSON; Hugging Face mirrors contain public-safe cards, metrics, figures, and model artifacts.
+Use the two evidence lines first, then choose the artifact that answers your question. The dashboard is the best visual overview; the GitHub repo is the source of truth for scripts and generated JSON; Hugging Face mirrors contain public-safe cards, metrics, figures, and model artifacts.
 
 The multilingual README files are reader guides. The canonical technical evidence is still the committed task contracts, result matrices, validation JSON, and public-safe result packages.
 
@@ -72,20 +72,24 @@ The multilingual README files are reader guides. The canonical technical evidenc
   </thead>
   <tbody>
     <tr>
+      <td><strong>Two result lines</strong></td>
+      <td><strong>1 sample episode</strong> for task construction and reproducibility. <strong>128 selected episodes</strong> for same-split baselines and model-branch comparison.</td>
+    </tr>
+    <tr>
+      <td><strong>180 method-task records</strong></td>
+      <td>9 methods x 20 tasks = 180/180 scored records. The ledger separates 174 direct scores from 6 compact-proxy scores.</td>
+    </tr>
+    <tr>
       <td><strong>20 task contracts</strong></td>
       <td>Action, procedure, transition, trajectory, contact, objects, language, retrieval, reconstruction, order, sync, long-horizon forecasting, interaction text, action-object binding, sensor bridging, camera sync, and transition timing.</td>
     </tr>
     <tr>
-      <td><strong>180 method-task records</strong></td>
-      <td>9 methods x 20 tasks. The current public matrix is complete at 180/180 scored records, with proxy flags kept visible where a compact substitute target is used.</td>
+      <td><strong>Line 1 methods</strong></td>
+      <td>Minimal and Neural MLP baselines cover all 20 tasks on the one public sample episode: 40/40 direct scores.</td>
     </tr>
     <tr>
-      <td><strong>Public-sample baselines</strong></td>
-      <td>Minimal and Neural MLP baselines cover all 20 tasks on the one public sample episode.</td>
-    </tr>
-    <tr>
-      <td><strong>128-episode comparison layer</strong></td>
-      <td>Metadata/simple, metadata/NN, raw-feature simple, raw-feature NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano branches are separated by evidence type.</td>
+      <td><strong>Line 2 methods</strong></td>
+      <td>Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano cover all 20 selected-128 task axes: 140/140 scores.</td>
     </tr>
     <tr>
       <td><strong>Foundation directions</strong></td>
@@ -100,30 +104,36 @@ The multilingual README files are reader guides. The canonical technical evidenc
 
 ## Two Evidence Lines
 
-The public suite is organized around two result lines. Keep them separate when
-reading metrics.
+The public suite is organized around two result lines. Keep them separate when reading metrics.
+
+<p align="center">
+  <img src="docs/assets/charts/two_evidence_line_map.svg" alt="Two evidence-line map: 1 sample episode and 128 selected episodes combine into 180 scored method-task records" width="100%">
+</p>
 
 <table>
   <thead>
     <tr>
       <th width="20%">Line</th>
-      <th width="26%">Data unit</th>
-      <th width="24%">Methods</th>
-      <th>Primary use</th>
+      <th width="24%">Data unit</th>
+      <th width="22%">Score statement</th>
+      <th width="20%">Valid claim</th>
+      <th>Do not claim</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><strong>1 sample episode</strong></td>
       <td>One public Xperience-10M sample episode: 5,821 frames, 1,161 aligned 20-frame windows, 8,546 feature dimensions.</td>
-      <td>Minimal heads and Neural MLP heads on all 20 tasks: 40/40 scored method-task records.</td>
-      <td>Inspect raw sample files, understand task definitions, rerun local baselines, and debug whether each task is well-posed.</td>
+      <td>40/40 direct scores from Minimal and Neural MLP heads.</td>
+      <td>Task construction, file inspection, local reproducibility, and controlled single-episode baselines.</td>
+      <td>Multi-episode generalization.</td>
     </tr>
     <tr>
       <td><strong>128 selected episodes</strong></td>
       <td>Selected held-out 96/16/16 split: 34,269 exported windows with public-safe processed features linked to official gated episode paths.</td>
-      <td>Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni, Cosmos3-Super, and Cosmos3-Nano: 140/140 scored 128-line records.</td>
-      <td>Compare same-split baselines and model branches; use proxy flags where the public export lacks a direct raw target.</td>
+      <td>140/140 selected-128 scores: 134 direct + 6 compact-proxy.</td>
+      <td>Same-split comparison, model-branch diagnostics, and scale-up planning.</td>
+      <td>Reading proxy cells as direct raw-target measurements.</td>
     </tr>
   </tbody>
 </table>

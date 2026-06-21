@@ -49,7 +49,11 @@ def build_payload(matrix: dict, lines: dict) -> dict:
         line_id: {
             "id": line_id,
             "label": meta["label"],
+            "short_label": meta.get("short_label"),
             "data_unit": meta["data_unit"],
+            "result_statement": meta.get("result_statement"),
+            "claim_boundary": meta.get("claim_boundary"),
+            "not_for": meta.get("not_for"),
             "primary_use": meta["best_use"],
             "task_count": matrix["task_count"],
             "method_count": 0,
@@ -58,6 +62,7 @@ def build_payload(matrix: dict, lines: dict) -> dict:
             "direct_scored_method_task_count": 0,
             "proxy_scored_method_task_count": 0,
             "methods": [],
+            "primary_visuals": meta.get("primary_visuals", []),
             "artifact_entry_points": meta["primary_artifacts"],
         }
         for line_id, meta in line_meta.items()
@@ -122,6 +127,8 @@ def build_payload(matrix: dict, lines: dict) -> dict:
         "source_matrix": "docs/data/task_method_20_result_matrix.json",
         "source_lines": "docs/data/two_evidence_lines.json",
         "interpretation_rule": lines["interpretation_rule"],
+        "reader_summary": lines.get("reader_summary"),
+        "score_formula": lines.get("score_formula"),
         "summary": {
             "line_count": len(lines_out),
             "task_count": matrix["task_count"],
@@ -133,6 +140,24 @@ def build_payload(matrix: dict, lines: dict) -> dict:
         },
         "lines": lines_out,
         "proxy_records": proxy_records,
+        "reading_order": [
+            {
+                "step": "Choose the evidence line",
+                "reason": "Line 1 answers task-lab and reproducibility questions; line 2 answers selected-128 comparison questions.",
+            },
+            {
+                "step": "Open the matching radar",
+                "reason": "Use the 1-episode radar for Minimal-vs-Neural behavior and the 128-episode radar for baseline/model-branch comparison.",
+            },
+            {
+                "step": "Inspect the matrix row",
+                "reason": "Every numeric score is tied to a method, task, metric key, source artifact, and proxy flag.",
+            },
+            {
+                "step": "Check proxy cells before interpreting totals",
+                "reason": "The six compact-proxy cells are numeric but are not direct raw-target measurements.",
+            },
+        ],
         "reader_policy": {
             "single_public_sample_episode": (
                 "Use for task construction, raw-file inspection, local reproducibility, "
@@ -153,9 +178,19 @@ def build_payload(matrix: dict, lines: dict) -> dict:
 def write_markdown(payload: dict) -> None:
     summary = payload["summary"]
     line_rows = []
+    entry_rows = []
+    method_rows = []
     for line in payload["lines"]:
         method_labels = ", ".join(method["label"] for method in line["methods"])
         line_rows.append(
+            [
+                line["label"],
+                line.get("result_statement") or "",
+                line.get("claim_boundary") or line["primary_use"],
+                line.get("not_for") or "",
+            ]
+        )
+        entry_rows.append(
             [
                 line["label"],
                 str(line["method_count"]),
@@ -163,9 +198,21 @@ def write_markdown(payload: dict) -> None:
                 f"{line['scored_method_task_count']}/{line['method_task_record_count']}",
                 str(line["direct_scored_method_task_count"]),
                 str(line["proxy_scored_method_task_count"]),
-                method_labels,
+                "<br>".join(line.get("primary_visuals", [])),
+                "<br>".join(line["artifact_entry_points"]),
             ]
         )
+        for method in line["methods"]:
+            method_rows.append(
+                [
+                    line["label"],
+                    method["label"],
+                    method.get("method_detail") or "",
+                    f"{method['scored_task_count']}/{method['result_record_count']}",
+                    str(method["direct_scored_task_count"]),
+                    str(method["proxy_scored_task_count"]),
+                ]
+            )
 
     proxy_rows = [
         [
@@ -186,6 +233,19 @@ Source matrix: [`{payload['source_matrix']}`]({payload['source_matrix']})
 
 Interpretation rule: {payload['interpretation_rule']}
 
+## Read This First
+
+{payload.get('reader_summary') or ''}
+
+Score formula: {payload.get('score_formula') or ''}
+
+| Line | What the scores mean | Valid claim | Do not claim |
+| --- | --- | --- | --- |
+""" + "\n".join(
+        "| " + " | ".join(str(cell).replace("|", "\\|") for cell in row) + " |"
+        for row in line_rows
+    ) + f"""
+
 ## Public Score Totals
 
 - Lines: {summary['line_count']}
@@ -193,15 +253,23 @@ Interpretation rule: {payload['interpretation_rule']}
 - Methods: {summary['method_count']}
 - Scored records: {summary['scored_method_task_count']}/{summary['method_task_record_count']}
 - Direct scores: {summary['direct_scored_method_task_count']}
-- Compact-proxy scores: {summary['proxy_scored_method_task_count']}
+- Compact-proxy scores: {summary['proxy_scored_method_task_count']} documented cells
 
-## Line Ledger
+## Line Ledger And Entry Points
 
-{markdown_table(['Line', 'Methods', 'Tasks', 'Scored records', 'Direct scores', 'Proxy scores', 'Method families'], line_rows)}
+{markdown_table(['Line', 'Methods', 'Tasks', 'Scored records', 'Direct scores', 'Proxy scores', 'Primary visuals', 'Source artifacts'], entry_rows)}
+
+## Method Detail By Line
+
+{markdown_table(['Line', 'Method', 'Method detail', 'Scored records', 'Direct scores', 'Proxy scores'], method_rows)}
 
 ## Proxy-Scored Cells
 
 {markdown_table(['Task', 'Task label', 'Method', 'Metric', 'Reason'], proxy_rows)}
+
+## Reading Order
+
+{markdown_table(['Step', 'Reason'], [[row['step'], row['reason']] for row in payload['reading_order']])}
 
 ## Reader Policy
 

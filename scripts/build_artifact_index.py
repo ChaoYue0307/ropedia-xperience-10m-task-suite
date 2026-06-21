@@ -590,6 +590,14 @@ ARTIFACTS = [
         "shows": "Reader-facing source-value audit for the 180-result matrix.",
     },
     {
+        "id": "two_evidence_line_map_chart",
+        "title": "Two evidence-line map",
+        "path": "docs/assets/charts/two_evidence_line_map.svg",
+        "kind": "generated_figure",
+        "surface": "website_hf",
+        "shows": "Explains the public result organization: one sample-episode task-lab line, one selected-128 comparison line, and the combined 180/180 scored method-task ledger.",
+    },
+    {
         "id": "unified_task_model_radar_chart",
         "title": "Unified 20-task model radar",
         "path": "docs/assets/charts/unified_task_model_radar.svg",

@@ -202,8 +202,10 @@ canonical per-adapter repositories.
 ## Current Result Coverage
 
 - Method-task records: `{scored}/{total}` scored.
-- Task surface: 20 tasks x 9 method families.
-- Scope boundary: public sample and selected public-safe 128-episode artifacts.
+- Evidence line 1: 1 public sample episode, 2 methods x 20 tasks = 40/40 direct scores.
+- Evidence line 2: 128 selected episodes, 7 methods x 20 tasks = 140/140 scores; 134 direct + 6 compact-proxy.
+- Task surface: 20 tasks x 9 method families = 180/180 public records.
+- Scope boundary: public sample for reproducible task construction; selected public-safe 128-episode artifacts for same-split comparison and model diagnostics.
 - Excluded: raw Xperience-10M MP4/HDF5/RRD files, Qwen/Cosmos base weights,
   full fine-tune checkpoints, private data, logs with machine-local state, and
   generated Hugging Face cache files.

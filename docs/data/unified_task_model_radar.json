@@ -1,7 +1,7 @@
 {
   "title": "Unified 20-Task Model Radar",
   "status": "pass",
-  "generated_at_utc": "2026-06-20T20:38:21+00:00",
+  "generated_at_utc": "2026-06-21T08:37:32+00:00",
   "task_count": 20,
   "method_count": 9,
   "method_task_record_count": 180,
@@ -2471,7 +2471,7 @@
       "id": "raw128_simple",
       "title": "128ep Raw Simple",
       "status": "a100_raw20_complete_with_documented_proxies",
-      "coverage": "20 records / 20 scored axes; 18 direct + 2 proxy",
+      "coverage": "20 records / 20 scored records; 18 direct + 2 proxy",
       "headline": "34,269 windows; centroid/ridge heads over 4430-dim sensor blocks",
       "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/run_summary_all.json"
     },
@@ -2479,7 +2479,7 @@
       "id": "raw128_neural_mlp",
       "title": "128ep Raw NN",
       "status": "a100_raw20_complete_with_documented_proxies",
-      "coverage": "20 records / 20 scored axes; 18 direct + 2 proxy",
+      "coverage": "20 records / 20 scored records; 18 direct + 2 proxy",
       "headline": "MLP heads over staged features; tasks 15/19 use compact proxies",
       "source": "results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/run_summary_all.json"
     },
