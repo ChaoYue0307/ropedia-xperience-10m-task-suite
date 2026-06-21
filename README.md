@@ -772,8 +772,9 @@ terms. See [`LICENSE`](LICENSE) and [`DATA_NOTICE.md`](DATA_NOTICE.md).
 ![Ropedia Xperience-10M task-suite infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v13-modality-xl)
 
 The infographic uses a custom text-free research background and puts the shared
-processing contract plus all 20 unified task families before the modality atlas.
-Public-sample modality thumbnails remain enlarged below the task map. The task
+processing contract plus all 20 unified task families in one figure. Public
+sample stream thumbnails remain available through the raw sample browser and
+derived modality assets instead of a separate repeated atlas panel. The task
 names, input/output summaries, and metrics are overlaid from
 [`results/episode_task_suite/summary_report.json`](results/episode_task_suite/summary_report.json)
 with [`scripts/render_task_suite_infographic.py`](scripts/render_task_suite_infographic.py),
@@ -829,8 +830,8 @@ multi-episode records, with documented compact proxy notes where the public
 export lacks the original raw target. The current matrix has 180/180 scored
 method-task records.
 
-The website also includes a responsive native modality atlas backed by
-[`docs/data/modality_atlas.json`](docs/data/modality_atlas.json) and
+The website raw sample browser includes a concise stream-to-feature ledger
+backed by [`docs/data/modality_atlas.json`](docs/data/modality_atlas.json) and
 [`docs/assets/modalities/`](docs/assets/modalities/). Those assets are small
 derived thumbnails from the public sample, not raw Xperience-10M files.
 

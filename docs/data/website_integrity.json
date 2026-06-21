@@ -1,14 +1,14 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-21T18:43:36+00:00",
+  "generated_at_utc": "2026-06-21T19:32:05+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 262,
-    "external_reference_count": 162,
+    "local_references": 260,
+    "external_reference_count": 156,
     "json_files": 55,
-    "image_assets_referenced": 28,
+    "image_assets_referenced": 22,
     "failure_count": 0
   },
   "failures": {
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 139498,
-      "evidence_index": 186699
+      "overview_index": 135119,
+      "evidence_index": 182290
     },
     {
       "name": "project_status_links_json",
@@ -125,7 +125,7 @@
       "name": "reader_resources_link_qwen_status",
       "status": "pass",
       "reason": "The website should expose the Qwen3-Omni scale-up status.",
-      "marker_count": 5
+      "marker_count": 4
     },
     {
       "name": "roadmap_html_matches_json_phases",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 139498,
-      "protocol_index": 182879,
-      "evidence_index": 186699
+      "overview_index": 135119,
+      "protocol_index": 178478,
+      "evidence_index": 182290
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -173,20 +173,27 @@
       "name": "visual_figures_link_task_suite_image",
       "status": "pass",
       "reason": "The website should expose the main task-suite figure.",
-      "marker_count": 5
+      "marker_count": 4
     },
     {
-      "name": "suite_task_map_precedes_modality_atlas",
+      "name": "suite_task_map_precedes_radar_surface",
       "status": "pass",
-      "reason": "The Suite anchor should show the task-suite map before the modality atlas.",
+      "reason": "The Suite anchor should show the task-suite map before the radar/results surface.",
       "first_marker_index": 468,
-      "second_marker_index": 3821
+      "second_marker_index": 1838
     },
     {
-      "name": "suite_modality_atlas_contains_seven_cards",
+      "name": "raw_sample_stream_ledger_contains_seven_modalities",
       "status": "pass",
-      "reason": "The modality atlas should expose seven sample modalities.",
-      "card_count": 7
+      "reason": "The raw sample browser should expose the seven source streams without a separate repeated atlas component.",
+      "modality_count": 7,
+      "missing_modalities": []
+    },
+    {
+      "name": "raw_sample_browser_links_modality_metadata",
+      "status": "pass",
+      "reason": "The raw sample browser should keep the machine-readable modality metadata link.",
+      "marker_count": 1
     },
     {
       "name": "dataset_card_section_links_official_dataset",
@@ -216,7 +223,7 @@
       "name": "raw_sample_browser_links_manifest",
       "status": "pass",
       "reason": "The raw sample browser should expose a machine-readable file manifest.",
-      "marker_count": 3
+      "marker_count": 4
     },
     {
       "name": "raw_sample_browser_has_video_player",
@@ -258,7 +265,7 @@
       "name": "task_player_uses_walkthrough_json",
       "status": "pass",
       "reason": "The task player and task cards should read the generated walkthrough JSON.",
-      "marker_count": 3
+      "marker_count": 2
     },
     {
       "name": "task_cards_use_human_research_names",
@@ -276,9 +283,9 @@
     },
     {
       "path": "index.html",
-      "id_count": 101,
-      "reference_count": 234,
-      "image_count": 35
+      "id_count": 99,
+      "reference_count": 232,
+      "image_count": 28
     },
     {
       "path": "research_roadmap.html",
@@ -401,7 +408,7 @@
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 7691,
+      "bytes": 7693,
       "top_level_type": "dict"
     },
     {
@@ -556,7 +563,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 20604,
+      "bytes": 19914,
       "top_level_type": "dict"
     },
     {
@@ -692,54 +699,6 @@
       "bytes": 1853350,
       "width": 2560,
       "height": 1920,
-      "format": "PNG"
-    },
-    {
-      "path": "assets/modalities/audio.png",
-      "exists": true,
-      "bytes": 7075,
-      "width": 880,
-      "height": 520,
-      "format": "PNG"
-    },
-    {
-      "path": "assets/modalities/depth.jpg",
-      "exists": true,
-      "bytes": 45018,
-      "width": 880,
-      "height": 520,
-      "format": "JPEG"
-    },
-    {
-      "path": "assets/modalities/inertial.png",
-      "exists": true,
-      "bytes": 46655,
-      "width": 880,
-      "height": 520,
-      "format": "PNG"
-    },
-    {
-      "path": "assets/modalities/language.png",
-      "exists": true,
-      "bytes": 15428,
-      "width": 880,
-      "height": 520,
-      "format": "PNG"
-    },
-    {
-      "path": "assets/modalities/motion_capture.png",
-      "exists": true,
-      "bytes": 15078,
-      "width": 880,
-      "height": 520,
-      "format": "PNG"
-    },
-    {
-      "path": "assets/modalities/pose_slam.png",
-      "exists": true,
-      "bytes": 68057,
-      "width": 880,
-      "height": 520,
       "format": "PNG"
     },
     {

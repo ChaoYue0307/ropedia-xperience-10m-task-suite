@@ -1708,144 +1708,6 @@
       max-width: 100%;
       height: auto;
     }
-    .modality-atlas-panel {
-      margin-top: 0;
-      margin-bottom: 34px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(180deg, rgba(204, 255, 160, 0.08), rgba(7, 18, 7, 0.88)),
-        var(--surface);
-      padding: clamp(26px, 3.2vw, 44px);
-      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
-    }
-    .atlas-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 18px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--soft-line);
-    }
-    .atlas-head h3 {
-      margin: 0;
-      font-family: var(--font-ui);
-      font-size: clamp(24px, 3vw, 36px);
-      line-height: 1.05;
-    }
-    .atlas-head p {
-      margin: 8px 0 0;
-      max-width: 780px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.55;
-    }
-    .atlas-head a {
-      flex: none;
-      color: var(--cyan);
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      border: 1px solid var(--soft-line);
-      border-radius: 6px;
-      padding: 9px 10px;
-      background: rgba(2, 5, 2, 0.44);
-    }
-    .atlas-head a:hover { border-color: var(--green); color: var(--ink); }
-    .modality-atlas {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(420px, 1fr));
-      gap: clamp(24px, 2.4vw, 36px);
-    }
-    .atlas-card {
-      min-width: 0;
-      border: 1px solid var(--soft-line);
-      border-radius: var(--radius);
-      background: rgba(2, 9, 2, 0.84);
-      padding: clamp(24px, 2.4vw, 34px);
-      display: grid;
-      gap: 24px;
-      align-content: start;
-    }
-    .atlas-card.wide { grid-column: 1 / -1; }
-    .atlas-card img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      display: block;
-      border: 1px solid rgba(204, 255, 160, 0.16);
-      border-radius: 8px;
-      background: #020502;
-    }
-    .atlas-card.wide img {
-      aspect-ratio: 1500 / 470;
-    }
-    .atlas-top {
-      display: flex;
-      align-items: start;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .atlas-index {
-      display: block;
-      color: var(--muted);
-      font-family: var(--font-mono);
-      font-size: 15px;
-      font-variant-numeric: tabular-nums;
-    }
-    .atlas-card h4 {
-      margin: 6px 0 0;
-      font-family: var(--font-ui);
-      font-size: clamp(38px, 4.2vw, 64px);
-      line-height: 0.96;
-      text-transform: uppercase;
-    }
-    .atlas-type {
-      color: var(--green);
-      font-family: var(--font-mono);
-      font-size: 13.5px;
-      line-height: 1.2;
-      text-align: right;
-      text-transform: uppercase;
-    }
-    .atlas-rows {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0;
-    }
-    .atlas-row {
-      display: grid;
-      grid-template-columns: minmax(156px, 0.32fr) minmax(0, 1fr);
-      gap: 22px;
-      align-items: baseline;
-      border-top: 1px solid var(--soft-line);
-      padding: 13px 0 0;
-      min-width: 0;
-    }
-    .atlas-row + .atlas-row { margin-top: 12px; }
-    .atlas-row span {
-      display: block;
-      color: var(--muted);
-      font-family: var(--font-mono);
-      font-size: 12.5px;
-      line-height: 1.35;
-      text-transform: uppercase;
-    }
-    .atlas-row p {
-      margin: 0;
-      color: #edf8e8;
-      font-size: clamp(21px, 1.85vw, 28px);
-      font-weight: 700;
-      line-height: 1.18;
-    }
-    .atlas-card.audio-card {
-      border-color: rgba(216, 244, 165, 0.32);
-      background:
-        linear-gradient(180deg, rgba(216, 244, 165, 0.08), rgba(2, 9, 2, 0.88)),
-        rgba(2, 9, 2, 0.84);
-    }
-    .atlas-card.audio-card .atlas-type { color: var(--amber); }
     .atlas-note {
       margin: 16px 0 0;
       color: var(--muted);
@@ -3391,8 +3253,6 @@
     .roadmap-status,
     .artifact-group-head span,
     .brief-panel-head span,
-    .atlas-index,
-    .atlas-type,
     .task-contract strong,
     .walk-flow strong,
     .flow-step strong,
@@ -3411,7 +3271,6 @@
     .roadmap-links a,
     .brief-actions a,
     .evidence-links a,
-    .atlas-head a,
     .player-controls button,
     .story-button,
     .selector-button,
@@ -3460,8 +3319,6 @@
       color: #020502;
     }
     .hero-panel,
-    .modality-atlas-panel,
-    .atlas-card,
     .snapshot-card,
     .roadmap-card,
     .brief-panel,
@@ -3481,7 +3338,6 @@
       background: var(--ropedia-card);
     }
     .hero-panel,
-    .modality-atlas-panel,
     .brief-panel,
     .task-player,
     .artifact.primary-artifact {
@@ -3558,7 +3414,6 @@
     .reading-links a,
     .evidence-links a,
     .roadmap-links a,
-    .atlas-head a,
     .player-controls button,
     .code-panel button,
     .surface-map a,
@@ -3615,8 +3470,6 @@
       line-height: 1.55;
     }
     .eyebrow,
-    .atlas-index,
-    .atlas-type,
     .roadmap-status,
     .status-pill,
     .tag,
@@ -4190,7 +4043,6 @@
       .task-player { grid-template-columns: 1fr; }
       .task-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .storyboard-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .modality-atlas { grid-template-columns: 1fr; }
       .raw-sample-layout,
       .raw-detail-grid { grid-template-columns: 1fr; }
       .hdf5-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -4198,8 +4050,6 @@
       .chart-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
       .section-head p { margin-top: 14px; }
-      .atlas-head { display: block; }
-      .atlas-head a { display: inline-flex; margin-top: 14px; }
     }
     @media (max-width: 1120px) {
       .nav-links { display: none; }
@@ -4442,7 +4292,7 @@
         width: 100%;
         justify-content: center;
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .atlas-rows, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order { grid-template-columns: 1fr; }
       .result-matrix-head {
         grid-template-columns: 1fr;
       }
@@ -4533,7 +4383,6 @@
       .signal:last-child { border-bottom: 0; }
       .brief-panel { padding: 18px; }
       .artifact-group { padding: 16px; }
-      .modality-atlas-panel { padding: 14px; }
       .raw-player-panel,
       .raw-file-panel,
       .raw-detail-card { padding: 14px; }
@@ -4542,14 +4391,6 @@
       .raw-file-button { grid-template-columns: 1fr; }
       .raw-file-button em { text-align: left; }
       .hdf5-map { grid-template-columns: 1fr; }
-      .atlas-card { padding: 12px; }
-      .atlas-top { display: block; }
-      .atlas-type { margin-top: 8px; text-align: left; }
-      .atlas-row { grid-template-columns: 1fr; gap: 6px; }
-      .atlas-card.wide img {
-        aspect-ratio: 760 / 470;
-        object-fit: cover;
-      }
       .artifact.primary-artifact { grid-template-columns: 1fr; }
       .evidence-card:last-child { grid-column: auto; }
       .hero-inner, section { padding: 46px 0; }
@@ -5255,7 +5096,7 @@
           </article>
           <article class="snapshot-card gated">
             <span class="status-pill">current plan</span>
-            <h3>128-Episode Task Suite Enhancement Pack</h3>
+            <h3>No-new-episode stress plan</h3>
             <p>Shows how the current selected split can be stressed without more episodes: dense windows, hierarchical labels, raw-feature shards, and `multiscale_20s10_40s20_80s40` as the next export target.</p>
             <div class="snapshot-meta">
               <span>current windows <strong>3,808</strong></span>
@@ -5331,7 +5172,7 @@
           </article>
           <article class="roadmap-card" data-status="current">
             <span class="roadmap-status">current no-new-episode plan</span>
-            <h3>128-Episode Task Suite Enhancement Pack</h3>
+            <h3>Selected-128 enhancement stage</h3>
             <p>Use the same selected split, estimate dense/multiscale window exports, define hierarchical action/subtask targets, and prioritize raw-feature shards for tasks that metadata baselines cannot cover.</p>
             <div class="roadmap-meta">
               <strong>Entry</strong><p>Current 3,808-window selected 96/16/16 export and verified Qwen v4 metrics.</p>
@@ -5472,8 +5313,8 @@
           <article class="artifact"><h3>Audio ablation</h3><p>Audio and no-audio variants are evaluated across the walkthrough-backed task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
           <article class="artifact"><h3>Foundation track selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 is the world-model track with a camera-pose proxy forward-dynamics contract ready for trainer work, policy models wait for robot-compatible action targets, and Xperience-native pretraining remains a later full-corpus goal.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
           <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. The selected multi-episode Qwen3-Omni final diagnostic result is verified and meets the JSON-validity target; Cosmos3-Nano has a verified future-window compatibility package; and Cosmos3-Super has a verified base-weight JSON-task evaluation plus a fine-tuned forward-dynamics LoRA branch. The next stage is action/subtask error analysis, stronger model-quality runs, and policy-target conversion.</p><a href="data/omni_model_comparison.json">result comparison</a></article>
-          <article class="artifact"><h3>128-Episode Task Suite Enhancement Pack</h3><p>Before adding episodes, the suite should try `multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets, label-normalized scoring, and compact raw-feature shards for unsupported tasks.</p><a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a></article>
-          <article class="artifact"><h3>Scale-up requirement</h3><p>Future Omni, Cosmos, and policy tracks use the same episode split discipline, training metadata, held-out predictions, metrics, run report, and public-safe package gate.</p><a href="data/foundation_model_plan.json">scale-up status</a></article>
+          <article class="artifact"><h3>Selected-128 next stressor</h3><p>Before adding episodes, the suite should try `multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets, label-normalized scoring, and compact raw-feature shards for unsupported tasks.</p><a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a></article>
+          <article class="artifact"><h3>Public-safe scale-up gate</h3><p>Future Omni, Cosmos, and policy tracks use the same episode split discipline, training metadata, held-out predictions, metrics, run report, and public-safe package gate.</p><a href="data/foundation_model_plan.json">scale-up status</a></article>
         </div>
       </div>
     </section>
@@ -5544,7 +5385,7 @@
           </article>
           <article class="evidence-card">
             <span class="status-pill">current plan</span>
-            <h3>128-Episode Task Suite Enhancement Pack</h3>
+            <h3>Dense selected-128 export path</h3>
             <p>The current 3,808-window export can be expanded through dense/multiscale windows without changing the held-out episode split; the recommended scenario is `multiscale_20s10_40s20_80s40`.</p>
             <div class="evidence-links">
               <a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a>
@@ -5575,7 +5416,7 @@
           <article class="evidence-card">
             <span class="status-pill">verified</span>
             <h3>Figures are indexed</h3>
-            <p>The visual set includes the logo, modality atlas, task-suite figure, unified 20-task model radar, model-architecture figure, provenance baseline chart, and Qwen3-Omni LoRA training-flow figure.</p>
+            <p>The visual set includes the logo, raw-sample stream thumbnails, task-suite figure, unified 20-task model radar, model-architecture figure, provenance baseline chart, and Qwen3-Omni LoRA training-flow figure.</p>
             <div class="evidence-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FIGURE_INDEX.md">figure guide</a>
               <a href="assets/task_suite_infographic.png">task-suite figure</a>
@@ -5712,11 +5553,11 @@
         <div class="artifact-grid">
           <article class="artifact primary-artifact"><div><h3>Official dataset</h3><p>Xperience-10M is a gated large-scale egocentric multimodal dataset for embodied AI, robotics, spatial intelligence, and world modeling.</p></div><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official HF dataset</a></article>
           <article class="artifact"><h3>Line 1 public sample</h3><p>The one-episode line builds the inspectable 20-task lab. It is not evidence of multi-episode generalization.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
-          <article class="artifact"><h3>Modalities</h3><p>The sample exposes synchronized video, audio, depth, pose/SLAM, motion capture, inertial signals, calibration, and language annotations.</p><a href="data/modality_atlas.json">modality atlas</a></article>
+          <article class="artifact"><h3>Sample streams</h3><p>The raw browser is the canonical place to inspect synchronized video, embedded audio, HDF5 annotation groups, depth, pose/SLAM, mocap, IMU, calibration, and language-derived signals.</p><a href="#raw-sample">open raw browser</a><a href="data/modality_atlas.json">stream metadata</a></article>
           <article class="artifact"><h3>Multi-episode pilot</h3><p>The selected 128-episode Qwen3-Omni LoRA v6 diagnostic run is verified with 4,032 held-out test predictions and 99.90% JSON validity. Action/subtask metrics are still weak, so this remains a baseline for error analysis.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a><a href="data/qwen3_v5_v6_comparison.json">v5/v6 comparison</a></article>
           <article class="artifact"><h3>Raw sample browser</h3><p>The Data tab now exposes the official public sample files directly, including playable MP4 video streams and the audio track embedded in fisheye_cam0.mp4.</p><a href="#raw-sample">open raw browser</a><a href="data/raw_sample_files.json">raw manifest</a></article>
           <article class="artifact"><h3>Data boundary</h3><p>Raw MP4, HDF5, RRD files are streamed from the official public sample source when opened here; private gated data and full Qwen weights are not redistributed in this project.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a></article>
-          <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, plus direct links to the official raw sample files.</p><a href="data/modality_atlas.json">modality atlas</a></article>
+          <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, and direct links to the official raw sample files.</p><a href="#suite">task suite</a><a href="data/raw_sample_files.json">raw manifest</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, misalignment, long-horizon forecasting, interaction text, action-object relation, sensor bridging, camera sync, and transition timing.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Responsible use</h3><p>This project is for research exploration and excludes identity recognition, surveillance, biometric profiling, sensitive-attribute inference, and safety-critical deployment.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">use notes</a></article>
           <article class="artifact"><h3>Later milestones</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, held-out Qwen3-Omni evaluation, and future Xperience-native pretraining.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">native pretraining</a></article>
@@ -5799,6 +5640,20 @@
               <article><strong>video</strong><span>Video metadata and per-frame alignment information.</span></article>
             </div>
           </article>
+          <article class="raw-detail-card">
+            <h3>Stream-to-feature use</h3>
+            <p>The source streams are summarized once here, next to the playable files and HDF5 map.</p>
+            <div class="hdf5-map">
+              <article><strong>Video</strong><span>Six synchronized MP4 streams feed RGB, fisheye, stereo, and frame-statistic task inputs.</span></article>
+              <article><strong>Audio</strong><span>The embedded fisheye_cam0 audio feeds acoustic feature blocks and audio ablations.</span></article>
+              <article><strong>Depth</strong><span>Depth maps and confidence channels provide geometry signals for spatial and reconstruction probes.</span></article>
+              <article><strong>Pose / SLAM</strong><span>Trajectory, camera pose, and sparse map values become position and orientation features.</span></article>
+              <article><strong>Motion capture</strong><span>Body and hand joint tracks support motion, contact, hand forecast, and policy-style targets.</span></article>
+              <article><strong>Inertial</strong><span>Accelerometer and gyroscope streams become wearable-motion statistics.</span></article>
+              <article><strong>Language</strong><span>Object tags and caption-derived labels become semantic targets; raw caption text remains governed by the official sample.</span></article>
+            </div>
+            <p class="atlas-note">Small derived modality thumbnails remain in <a href="data/modality_atlas.json">modality_atlas.json</a>; raw MP4, HDF5, and RRD files are not redistributed.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -5847,53 +5702,6 @@
               <a href="data/task_method_20_gap_audit.json">Gap audit</a>
             </div>
           </article>
-        </div>
-        <div class="modality-atlas-panel" id="modality-atlas" aria-labelledby="modality-atlas-title">
-          <div class="atlas-head">
-            <div>
-              <h3 id="modality-atlas-title">Readable modality atlas.</h3>
-              <p>Each Xperience-10M stream gets a large thumbnail, a plain sample-content line, and the exact current-baseline use. These are small derived images only; no raw MP4, HDF5, or RRD data is redistributed.</p>
-            </div>
-            <a href="data/modality_atlas.json">modality atlas</a>
-          </div>
-          <div class="modality-atlas">
-            <article class="atlas-card">
-              <div class="atlas-top"><div><span class="atlas-index">01</span><h4>Video</h4></div><span class="atlas-type">visual stream</span></div>
-              <img src="assets/modalities/video.jpg" alt="Public sample fisheye and stereo camera thumbnails" loading="eager" decoding="async">
-              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>6 synchronized camera MP4 streams</p></div><div class="atlas-row"><span>current baseline use</span><p>RGB/fisheye/stereo frame statistics</p></div></div>
-            </article>
-            <article class="atlas-card audio-card">
-              <div class="atlas-top"><div><span class="atlas-index">02</span><h4>Audio</h4></div><span class="atlas-type">acoustic stream</span></div>
-              <img src="assets/modalities/audio.png" alt="AAC waveform thumbnail from the public sample MP4 stream" loading="eager" decoding="async">
-              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>Audio stream embedded in MP4</p></div><div class="atlas-row"><span>current baseline use</span><p>Acoustic signal</p></div></div>
-            </article>
-            <article class="atlas-card">
-              <div class="atlas-top"><div><span class="atlas-index">03</span><h4>Depth</h4></div><span class="atlas-type">geometry map</span></div>
-              <img src="assets/modalities/depth.jpg" alt="Public sample depth and confidence thumbnails" loading="eager" decoding="async">
-              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>Depth map + confidence channel</p></div><div class="atlas-row"><span>current baseline use</span><p>Spatial geometry signal</p></div></div>
-            </article>
-            <article class="atlas-card">
-              <div class="atlas-top"><div><span class="atlas-index">04</span><h4>Pose / SLAM</h4></div><span class="atlas-type">camera pose</span></div>
-              <img src="assets/modalities/pose_slam.png" alt="Public sample camera trajectory and sparse SLAM map thumbnail" loading="eager" decoding="async">
-              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>Trajectory + sparse SLAM map</p></div><div class="atlas-row"><span>current baseline use</span><p>Position + orientation features</p></div></div>
-            </article>
-            <article class="atlas-card">
-              <div class="atlas-top"><div><span class="atlas-index">05</span><h4>Motion Capture</h4></div><span class="atlas-type">human motion</span></div>
-              <img src="assets/modalities/motion_capture.png" alt="Public sample body and hand motion capture thumbnail" loading="eager" decoding="async">
-              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>Body + hand joint tracks</p></div><div class="atlas-row"><span>current baseline use</span><p>3D mocap feature statistics</p></div></div>
-            </article>
-            <article class="atlas-card">
-              <div class="atlas-top"><div><span class="atlas-index">06</span><h4>Inertial</h4></div><span class="atlas-type">wearable sensor</span></div>
-              <img src="assets/modalities/inertial.png" alt="Public sample accelerometer and gyroscope time-series thumbnail" loading="eager" decoding="async">
-              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>Accelerometer + gyroscope</p></div><div class="atlas-row"><span>current baseline use</span><p>Wearable motion statistics</p></div></div>
-            </article>
-            <article class="atlas-card wide">
-              <div class="atlas-top"><div><span class="atlas-index">07</span><h4>Language</h4></div><span class="atlas-type">semantic annotation</span></div>
-              <img src="assets/modalities/language.png" alt="Public sample object tags and action caption thumbnail" loading="eager" decoding="async">
-              <div class="atlas-rows"><div class="atlas-row"><span>sample contains</span><p>Object tags + action captions</p></div><div class="atlas-row"><span>current baseline use</span><p>Task labels + semantic targets</p></div></div>
-            </article>
-          </div>
-          <p class="atlas-note">The atlas redistributes only small derived thumbnails and metadata. Raw MP4, HDF5, and RRD files remain excluded from this repo and the Hugging Face mirrors.</p>
         </div>
       </div>
     </section>
@@ -6585,7 +6393,7 @@
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Two-line model comparison</h3><p>Groups Line 1 task-head baselines and Line 2 selected-128 methods: metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Nano Future Window, and Cosmos3-Super Reasoner.</p></div><a href="data/omni_model_comparison.json">result comparison</a></article>
               <article class="artifact primary-artifact"><div><h3>128-episode source + features</h3><p>Maps every selected official Xperience-10M episode id to its gated source tree and the public-safe processed features: Qwen v6 multiscale windows, dense multiscale rows, and metadata matrices.</p></div><a href="data/xperience10m_128_episode_feature_index.json">source/feature index</a></article>
-              <article class="artifact"><h3>128-Episode Task Suite Enhancement Pack</h3><p>No-new-episode plan for denser supervision: `multiscale_20s10_40s20_80s40`, hierarchical action/subtask labels, stronger scoring slices, and raw-feature shard priorities.</p><a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a></article>
+              <article class="artifact"><h3>128-Episode Task Suite Enhancement Pack</h3><p>Canonical no-new-episode plan for denser supervision: `multiscale_20s10_40s20_80s40`, hierarchical action/subtask labels, stronger scoring slices, and raw-feature shard priorities.</p><a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a></article>
               <article class="artifact"><h3>Foundation-model plan</h3><p>Backbone selection matrix covering Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, SmolVLA-style policy candidates, and the future Xperience-native pretraining goal.</p><a href="data/foundation_model_plan.json">foundation model plan</a></article>
               <article class="artifact"><h3>Multi-episode data access</h3><p>Public data-access path, selected 128-episode pilot plan, and preparation requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">data access</a></article>
               <article class="artifact"><h3>Qwen3-Omni LoRA group</h3><p>Separates the 1-episode sensor-adapter smoke test from Qwen run v1-v6. v6 is the current 20-task matrix row, while v5 remains the pinned prior release.</p><a href="data/qwen3_omni_run_lineage.json">Qwen v1-v6 lineage</a><a href="data/omni_model_comparison.json">Qwen group</a></article>
@@ -6597,21 +6405,18 @@
 
           <section class="artifact-group tabbed-panel" id="artifact-panel-checks" role="tabpanel" aria-labelledby="artifact-tab-checks" hidden>
             <div class="artifact-group-head">
-              <div><span>Supporting resources</span><h3>Project files behind the research site</h3></div>
-              <p>These resources are useful after the first pass: they collect the project brief, task evidence, visuals, dataset notes, reproduction path, and public pages.</p>
+              <div><span>Release checks</span><h3>Validators and parity records</h3></div>
+              <p>This tab now does one job: show the audit files that prove the public pages, mirrors, and package contents are internally consistent.</p>
             </div>
             <div class="artifact-grid">
-              <article class="artifact"><h3>Project brief</h3><p>The fastest written overview of the dataset sample, tasks, baselines, and scale-up plan.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">brief</a></article>
-              <article class="artifact"><h3>Glossary</h3><p>Plain-language definitions for the terms most likely to confuse first-time readers and reviewers.</p><a href="data/glossary.json">glossary</a></article>
-              <article class="artifact"><h3>Task walkthroughs</h3><p>Human-readable case studies for the walkthrough-backed task contracts, including input, process modules, output, metric, and limitation.</p><a href="data/task_walkthroughs.json">walkthroughs</a></article>
-              <article class="artifact"><h3>Task results</h3><p>Minimal and neural-head metrics for the same sample windows and chronological split.</p><a href="data/summary_metrics.json">metrics</a></article>
-              <article class="artifact"><h3>Visual figures</h3><p>Task-suite map, modality atlas, pipeline diagram, model architecture figure, and Qwen3-Omni LoRA training-flow figure.</p><a href="assets/task_suite_infographic.png">task-suite figure</a></article>
-              <article class="artifact"><h3>Dataset notes</h3><p>Official dataset links, public sample source, modalities, access boundary, and current project subset.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">dataset notes</a></article>
-              <article class="artifact"><h3>Reproducibility</h3><p>Commands and expected outputs for rebuilding the public-sample task suite and visual artifacts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">reproduce</a></article>
-              <article class="artifact"><h3>Qwen3-Omni status</h3><p>Data requirements and evaluation boundary for the selected multi-episode LoRA pilot.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">training status</a></article>
-              <article class="artifact"><h3>Foundation-model plan</h3><p>Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, SmolVLA-style tracks, and the Xperience-native pretraining goal by role.</p><a href="data/foundation_model_plan.json">model plan</a></article>
-              <article class="artifact"><h3>Hub artifacts</h3><p>Derived CSV/JSON/Markdown/figure artifacts without redistributing raw Xperience-10M data.</p><a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">artifact dataset</a></article>
-              <article class="artifact"><h3>Baseline models</h3><p>Lightweight minimal and neural task-head model files for the task contracts.</p><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">model repo</a></article>
+              <article class="artifact primary-artifact"><div><h3>Publication audit</h3><p>Checks the expected public package files, docs, figures, data JSONs, and artifact boundaries before a release is trusted.</p></div><a href="data/publication_audit.json">publication audit</a></article>
+              <article class="artifact"><h3>Website integrity</h3><p>Validates local website links, referenced data files, asset paths, and generated dashboard dependencies.</p><a href="data/website_integrity.json">website integrity</a></article>
+              <article class="artifact"><h3>Mirror parity</h3><p>Compares GitHub, HF Space, artifact dataset, baseline model repo, and weights/results mirror snapshots.</p><a href="data/mirror_parity.json">mirror parity</a></article>
+              <article class="artifact"><h3>Public surface QA</h3><p>Records public-surface readiness, reader-map links, live status pointers, and cross-repo publication checks.</p><a href="data/public_surface_qa.json">surface QA</a></article>
+              <article class="artifact"><h3>Live publication status</h3><p>Tracks live URLs and hash checks used after publishing to GitHub Pages and Hugging Face surfaces.</p><a href="data/live_publication_status.json">live status</a></article>
+              <article class="artifact"><h3>Source alignment audit</h3><p>Separates official Xperience-10M dataset claims from local/public project inventory and derived artifacts.</p><a href="data/source_alignment_audit.json">source alignment</a></article>
+              <article class="artifact"><h3>Task surface validation</h3><p>Checks task-count, task-contract, and result-matrix consistency across generated public data files.</p><a href="data/task_surface_integrity.json">task surface</a></article>
+              <article class="artifact"><h3>Quality gates</h3><p>Summarizes build, validation, mirror, and publication gates that should pass before readers rely on the release.</p><a href="data/quality_gates.json">quality gates</a></article>
             </div>
           </section>
         </div>
@@ -6628,7 +6433,7 @@
           <article class="artifact"><h3>Selection</h3><p>128 complete episodes selected from 128 unique top-level sessions, balanced across episode-size bands and split 96/16/16 for train/val/test.</p><a href="data/xperience10m_128_episode_feature_index.json">source/feature index</a></article>
           <article class="artifact"><h3>Transfer</h3><p>Download raw episodes only from official gated sources, exclude visualization.rrd, validate files, then stage them for training.</p></article>
           <article class="artifact"><h3>Current LoRA artifact</h3><p>The current Qwen3-Omni LoRA artifact is the verified v6 selected 128-episode diagnostic adapter. The v5 row remains pinned as the prior release, and the 1-episode Qwen entry is only a sensor-adapter smoke test.</p><a href="data/omni_model_comparison.json">model groups</a></article>
-          <article class="artifact"><h3>128-Episode Task Suite Enhancement Pack</h3><p>The next suite push does not need more episodes first: use `multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets, and raw-feature shards while keeping the held-out split fixed.</p><a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a></article>
+          <article class="artifact"><h3>No-new-episode suite push</h3><p>The next suite push does not need more episodes first: use `multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets, and raw-feature shards while keeping the held-out split fixed.</p><a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a></article>
           <article class="artifact"><h3>Backbone tracks</h3><p>Qwen3-Omni uses a separate LoRA model repo; Cosmos3-Nano remains a compatibility package; Cosmos3-Super now has a verified forward-dynamics LoRA artifact with weights in a dedicated model repo.</p><a href="https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep">Cosmos3-Super weights</a></article>
           <article class="artifact"><h3>Native foundation model</h3><p>The long-term goal is a full-corpus Xperience Embodied Foundation Model trained on synchronized perception, geometry, motion, inertial, audio, and language streams after smaller scaling stages validate the approach.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a></article>
         </div>

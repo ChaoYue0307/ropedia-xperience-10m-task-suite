@@ -247,6 +247,9 @@ def validate(docs_root: Path, site_base: str) -> dict:
     dataset_start = section_pos("dataset-card")
     dataset_end = section_pos("suite")
     dataset_text = index_text[dataset_start:dataset_end] if dataset_start >= 0 and dataset_end > dataset_start else ""
+    raw_sample_start = section_pos("raw-sample")
+    raw_sample_end = section_pos("suite")
+    raw_sample_text = index_text[raw_sample_start:raw_sample_end] if raw_sample_start >= 0 and raw_sample_end > raw_sample_start else ""
     roadmap_page = docs_root / "research_roadmap.html"
     roadmap_page_text = roadmap_page.read_text(encoding="utf-8", errors="ignore") if roadmap_page.exists() else ""
     semantic_rules = [
@@ -377,16 +380,22 @@ def validate(docs_root: Path, site_base: str) -> dict:
             "The website should expose the main task-suite figure.",
         ),
         (
-            "suite_task_map_precedes_modality_atlas",
+            "suite_task_map_precedes_radar_surface",
             '<div class="figure-pan" id="task-suite-map">',
-            '<div class="modality-atlas-panel"',
-            "The Suite anchor should show the task-suite map before the modality atlas.",
+            'class="chart radar-chart unified-radar-chart"',
+            "The Suite anchor should show the task-suite map before the radar/results surface.",
         ),
         (
-            "suite_modality_atlas_contains_seven_cards",
-            'class="atlas-card',
+            "raw_sample_stream_ledger_contains_seven_modalities",
+            "",
             None,
-            "The modality atlas should expose seven sample modalities.",
+            "The raw sample browser should expose the seven source streams without a separate repeated atlas component.",
+        ),
+        (
+            "raw_sample_browser_links_modality_metadata",
+            'data/modality_atlas.json',
+            None,
+            "The raw sample browser should keep the machine-readable modality metadata link.",
         ),
         (
             "dataset_card_section_links_official_dataset",
@@ -537,10 +546,22 @@ def validate(docs_root: Path, site_base: str) -> dict:
                 "missing_statuses": missing_statuses,
                 "roadmap_json_error": roadmap_json_error,
             }
-        elif name == "suite_modality_atlas_contains_seven_cards":
-            card_count = len(re.findall(r'class="atlas-card(?:\s|")', suite_text))
-            passed = card_count == 7
-            detail = {"card_count": card_count}
+        elif name == "raw_sample_stream_ledger_contains_seven_modalities":
+            modality_terms = [
+                "Video",
+                "Audio",
+                "Depth",
+                "Pose / SLAM",
+                "Motion capture",
+                "Inertial",
+                "Language",
+            ]
+            present_terms = [term for term in modality_terms if term in raw_sample_text]
+            passed = len(present_terms) == len(modality_terms)
+            detail = {
+                "modality_count": len(present_terms),
+                "missing_modalities": [term for term in modality_terms if term not in present_terms],
+            }
         elif name.startswith("dataset_card_section_"):
             marker_count = dataset_text.count(marker)
             passed = marker_count >= 1
@@ -548,6 +569,8 @@ def validate(docs_root: Path, site_base: str) -> dict:
         elif name.startswith("raw_sample_browser_"):
             if name == "raw_sample_browser_section_present":
                 marker_count = len(re.findall(r'<section\b[^>]*\bid=["\']raw-sample["\']', index_text))
+            elif name == "raw_sample_browser_links_modality_metadata":
+                marker_count = raw_sample_text.count(marker)
             else:
                 marker_count = index_text.count(marker)
             passed = marker_count >= 1
