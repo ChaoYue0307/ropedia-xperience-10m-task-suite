@@ -3929,26 +3929,38 @@
     }
     .hero-task-strip {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 6px;
-      margin-top: 2px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(245, 247, 240, 0.12);
+    }
+    .hero-task-strip-head {
+      grid-column: 1 / -1;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 820;
+      letter-spacing: 0.06em;
+      line-height: 1.15;
+      text-transform: uppercase;
     }
     .hero-task-strip span {
       min-width: 0;
       border: 1px solid rgba(245, 247, 240, 0.10);
       border-radius: 5px;
       background: rgba(255, 255, 255, 0.04);
-      padding: 6px 7px;
+      padding: 7px 8px;
       color: rgba(245, 247, 240, 0.80);
-      font-size: 10px;
-      line-height: 1.15;
+      font-size: 10.5px;
+      line-height: 1.18;
       overflow-wrap: anywhere;
     }
     .hero-radar-links {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: auto;
+      margin-top: 12px;
     }
     .hero-radar-links a {
       min-height: 34px;
@@ -4182,10 +4194,10 @@
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
       .hero-task-strip {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(5, minmax(0, 1fr));
       }
       .hero-task-strip span {
-        font-size: 9px;
+        font-size: 9.5px;
         padding: 5px 6px;
       }
       .hero-method {
@@ -4928,27 +4940,40 @@
               <div class="hero-method" style="--method-color:#22d3ee"><strong>Panel 3: 128ep raw features</strong><span>Sensor-block simple/NN heads; 40/40 scored with task 15/19 compact proxies marked.</span></div>
               <div class="hero-method" style="--method-color:#9bb8ff"><strong>Panel 4: Qwen3 + Cosmos3</strong><span>Qwen3-Omni v6 LoRA, Cosmos3-Super, and Cosmos3-Nano; 60/60 scored from verified artifacts.</span></div>
             </div>
-            <div class="hero-task-strip" aria-label="Radar task axis examples">
-              <span>01 Action Recognition</span>
-              <span>05 Hand Trajectory Forecasting</span>
-              <span>08 Language Grounding</span>
-              <span>12 Multimodal Sync Detection</span>
-              <span>15 Interaction Text Prediction</span>
-              <span>18 IMU-to-Hand Pose Reconstruction</span>
-              <span>19 Camera-View Sync Retrieval</span>
-              <span>20 Time-to-Next-Transition Regression</span>
-            </div>
-            <div class="hero-radar-links">
-              <a href="#suite">Open full radar</a>
-              <a href="assets/charts/unified_task_model_radar.svg">Open SVG</a>
-              <a href="assets/charts/single_episode_task_model_radar.svg">1-episode radar</a>
-              <a href="assets/charts/episode128_task_model_radar.svg">128ep radar</a>
-              <a href="data/unified_task_model_radar.json">Open radar JSON</a>
-              <a href="#result-matrix-table">Open 180-result table</a>
-              <a href="data/task_method_20_result_matrix.json">Open 20-result matrix</a>
-              <a href="data/task_method_20_gap_audit.json">Open score/proxy audit</a>
-            </div>
           </div>
+        </div>
+        <div class="hero-task-strip" aria-label="All 20 radar task axes">
+          <strong class="hero-task-strip-head">All 20 radar task axes</strong>
+          <span>01 Action Recognition</span>
+          <span>02 Procedure Step Recognition</span>
+          <span>03 Action Boundary Detection</span>
+          <span>04 Next-Action Prediction</span>
+          <span>05 Hand Trajectory Forecasting</span>
+          <span>06 Contact State Prediction</span>
+          <span>07 Object Relevance Prediction</span>
+          <span>08 Language Grounding</span>
+          <span>09 Cross-Modal Retrieval</span>
+          <span>10 Cross-Modal Reconstruction</span>
+          <span>11 Temporal Order Verification</span>
+          <span>12 Multimodal Synchronization Detection</span>
+          <span>13 Long-Horizon Next-Action Forecasting</span>
+          <span>14 Long-Horizon Next-Subtask Forecasting</span>
+          <span>15 Interaction Text Prediction</span>
+          <span>16 Action-Object Relation Prediction</span>
+          <span>17 Future Object-Set Forecasting</span>
+          <span>18 IMU-to-Hand Pose Reconstruction</span>
+          <span>19 Camera-View Synchronization Retrieval</span>
+          <span>20 Time-to-Next-Transition Regression</span>
+        </div>
+        <div class="hero-radar-links">
+          <a href="#suite">Open full radar</a>
+          <a href="assets/charts/unified_task_model_radar.svg">Open SVG</a>
+          <a href="assets/charts/single_episode_task_model_radar.svg">1-episode radar</a>
+          <a href="assets/charts/episode128_task_model_radar.svg">128ep radar</a>
+          <a href="data/unified_task_model_radar.json">Open radar JSON</a>
+          <a href="#result-matrix-table">Open 180-result table</a>
+          <a href="data/task_method_20_result_matrix.json">Open 20-result matrix</a>
+          <a href="data/task_method_20_gap_audit.json">Open score/proxy audit</a>
         </div>
       </div>
     </div>
