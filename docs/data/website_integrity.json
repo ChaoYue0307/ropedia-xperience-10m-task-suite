@@ -1,14 +1,14 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-22T20:12:15+00:00",
+  "generated_at_utc": "2026-06-22T21:04:19+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 339,
+    "local_references": 340,
     "external_reference_count": 151,
     "json_files": 56,
-    "image_assets_referenced": 49,
+    "image_assets_referenced": 50,
     "failure_count": 0
   },
   "failures": {
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 175852,
-      "evidence_index": 228141
+      "overview_index": 180162,
+      "evidence_index": 236160
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 175852,
-      "protocol_index": 224346,
-      "evidence_index": 228141
+      "overview_index": 180162,
+      "protocol_index": 232365,
+      "evidence_index": 236160
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -278,7 +278,7 @@
       "name": "task_cards_use_human_research_names",
       "status": "pass",
       "reason": "The public task surface should use readable research task names.",
-      "marker_count": 5
+      "marker_count": 6
     }
   ],
   "html_pages": [
@@ -291,8 +291,8 @@
     {
       "path": "index.html",
       "id_count": 109,
-      "reference_count": 311,
-      "image_count": 74
+      "reference_count": 312,
+      "image_count": 75
     },
     {
       "path": "research_roadmap.html",
@@ -345,7 +345,7 @@
     },
     {
       "path": "data/figure_index.json",
-      "bytes": 19526,
+      "bytes": 20339,
       "top_level_type": "dict"
     },
     {
@@ -420,7 +420,7 @@
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 10940,
+      "bytes": 12101,
       "top_level_type": "dict"
     },
     {
@@ -575,7 +575,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 24949,
+      "bytes": 25144,
       "top_level_type": "dict"
     },
     {
@@ -674,6 +674,14 @@
       "bytes": 37832,
       "format": "SVG",
       "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/task_direction_pipeline_relationship.png",
+      "exists": true,
+      "bytes": 1412546,
+      "width": 1672,
+      "height": 941,
+      "format": "PNG"
     },
     {
       "path": "assets/charts/two_evidence_line_map.svg",

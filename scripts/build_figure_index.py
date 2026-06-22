@@ -67,6 +67,14 @@ FIGURES = [
         "surface": "README, website, HF Space, artifact dataset, model card",
     },
     {
+        "id": "task_direction_pipeline_relationship",
+        "title": "20-task / 4-direction / 3-pipeline relationship map",
+        "path": "docs/assets/charts/task_direction_pipeline_relationship.png",
+        "role": "Overview map showing the exact 20 task tiles, four research-direction groups, and three foundation-pipeline columns used by the public reader flow.",
+        "source_script": "docs/assets/charts/task_direction_pipeline_relationship.prompt.md",
+        "surface": "website overview, HF Space, artifact dataset, model card",
+    },
+    {
         "id": "spatial_intelligence_presentation_photo",
         "title": "Spatial intelligence slide diagram",
         "path": "docs/assets/foundation-pipelines/spatial-intelligence-pipeline.png",

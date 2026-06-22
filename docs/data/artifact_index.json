@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-22T20:16:22+00:00",
+  "generated_at_utc": "2026-06-22T21:09:25+00:00",
   "status": "pass",
   "artifact_count": 228,
   "missing": [],
@@ -632,7 +632,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "367be6bfc1dec4b22e445b62b3d8f172e5fc6909ad9f058644a00b0bca9a1ebb"
+      "sha256": "98bba813ab55889d5e04451bd8f8315f9064917e3da57af109ac082cc5d95936"
     },
     {
       "id": "source_alignment_validator",
@@ -1093,8 +1093,8 @@
       "surface": "repo_hf",
       "shows": "Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts.",
       "exists": true,
-      "bytes": 7068,
-      "sha256": "cc64c0bb070e7eb0035ba590a6d83ed07fcc68fb56081668caebf40b49b9900f"
+      "bytes": 7421,
+      "sha256": "76306997bd59ee0219d5f990fb92358a25ec0d15a70d4eed213215abf6fd152c"
     },
     {
       "id": "figure_index_json",
@@ -1104,8 +1104,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 19526,
-      "sha256": "601acd715891bb148b0a1706573a2fdb015ca3c5967f02a169577b483b0dcd43"
+      "bytes": 20339,
+      "sha256": "3e6108a7365e8169d4695a177abf27a5f076032d4f46f4b7ee85ecb2342f9e92"
     },
     {
       "id": "figure_index_builder",
@@ -1115,8 +1115,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates visual-asset hashes, dimensions, and source-script provenance.",
       "exists": true,
-      "bytes": 16886,
-      "sha256": "fc44ea60b6f491d290a56d4c1097fcfc37c024f8a9bc3b3db013252f45d96e64"
+      "bytes": 17444,
+      "sha256": "521f69760ba5f7d2993222495833f56f883aca6b832e71dd36c410a757bc1e20"
     },
     {
       "id": "brand_assets_json",
@@ -1182,7 +1182,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8640,
-      "sha256": "8faa4ad9a74fdefe207240102e2181eb7afa05f77387bcf311e8fae6f9d6c723"
+      "sha256": "70fc0719d08de4d455e0c9d15dca25932c458ec15d1590eb4ff14ebb4ca12839"
     },
     {
       "id": "public_surface_qa",
@@ -1399,7 +1399,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 24949,
+      "bytes": 25144,
       "hash_policy": "existence_and_size_only"
     },
     {

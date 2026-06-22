@@ -1,9 +1,9 @@
 {
   "title": "Ropedia Xperience-10M Figure Index",
   "status": "pass",
-  "generated_at_utc": "2026-06-21T20:35:17+00:00",
+  "generated_at_utc": "2026-06-22T21:04:18+00:00",
   "scope": "Public figures, diagrams, charts, and derived modality thumbnails. Raw Xperience-10M videos, annotations, RRD files, and Qwen weights are excluded.",
-  "figure_count": 29,
+  "figure_count": 30,
   "figures": [
     {
       "id": "brand_logo_mark",
@@ -64,12 +64,12 @@
       "source_script": "scripts/render_task_suite_infographic.py",
       "surface": "README, website, HF Space, artifact dataset, model card",
       "exists": true,
-      "bytes": 1897278,
-      "sha256": "71b1ab150e952cf902488226c65b3822d8016974f63d111204c1eb1a7745faad",
+      "bytes": 2071256,
+      "sha256": "41b58e41b69ed8114b58f0f3cc1371d8a394f255602ad3fa26a1e8b8b38cbdcb",
       "dimensions": {
         "format": "PNG",
         "width": 1800,
-        "height": 7600
+        "height": 5000
       },
       "source_script_exists": true
     },
@@ -104,6 +104,23 @@
         "format": "PNG",
         "width": 1536,
         "height": 1024
+      },
+      "source_script_exists": true
+    },
+    {
+      "id": "task_direction_pipeline_relationship",
+      "title": "20-task / 4-direction / 3-pipeline relationship map",
+      "path": "docs/assets/charts/task_direction_pipeline_relationship.png",
+      "role": "Overview map showing the exact 20 task tiles, four research-direction groups, and three foundation-pipeline columns used by the public reader flow.",
+      "source_script": "docs/assets/charts/task_direction_pipeline_relationship.prompt.md",
+      "surface": "website overview, HF Space, artifact dataset, model card",
+      "exists": true,
+      "bytes": 1412546,
+      "sha256": "5d8cb6b758ae70b91e82d5bd7ac906c5b782a0f27e404ca5917de42466cc6d86",
+      "dimensions": {
+        "format": "PNG",
+        "width": 1672,
+        "height": 941
       },
       "source_script_exists": true
     },
@@ -356,8 +373,8 @@
       "source_script": "scripts/generate_visualizations.py",
       "surface": "website directions",
       "exists": true,
-      "bytes": 5352,
-      "sha256": "506e12aa1b6c4fd50fb0c65714c7f0a92c02c40069cb879503471ba9b63d4afb",
+      "bytes": 5359,
+      "sha256": "f448d5f9e2e0536c64b180f8807e1725e4ccd3ed748d5d469227b1fde0adb9e2",
       "dimensions": {
         "format": "SVG",
         "width": 1180,
@@ -410,13 +427,13 @@
       "source_script": "scripts/build_unified_task_model_radar.py",
       "surface": "website unified task section, README, HF mirrors",
       "exists": true,
-      "bytes": 98527,
-      "sha256": "5b034b22d2a772a57e7db50f300cb70d00bd31ac89d0c039c16ac8c23a5137ec",
+      "bytes": 100660,
+      "sha256": "cde1fc85b9b91489dfd432de669fc4c75a8f805f92e44c7515c4c7a1ed381b13",
       "dimensions": {
         "format": "SVG",
-        "width": 2400,
-        "height": 1900,
-        "view_box": "0 0 2400 1900"
+        "width": 2600,
+        "height": 2300,
+        "view_box": "0 0 2600 2300"
       },
       "source_script_exists": true
     },
@@ -428,13 +445,13 @@
       "source_script": "scripts/build_unified_task_model_radar.py",
       "surface": "website unified task section, README, HF mirrors",
       "exists": true,
-      "bytes": 36930,
-      "sha256": "96e609b0577e66db0ee8c63939c11b1fb28018285a1d259362de0bff415cc939",
+      "bytes": 37832,
+      "sha256": "cfe1213cae50afdecd85702e6d40f556381eec796b9e7b6d0bc0f15b3632c0d5",
       "dimensions": {
         "format": "SVG",
-        "width": 2400,
-        "height": 1900,
-        "view_box": "0 0 2400 1900"
+        "width": 2600,
+        "height": 2300,
+        "view_box": "0 0 2600 2300"
       },
       "source_script_exists": true
     },
@@ -446,13 +463,13 @@
       "source_script": "scripts/build_unified_task_model_radar.py",
       "surface": "website unified task section, README, HF mirrors",
       "exists": true,
-      "bytes": 79370,
-      "sha256": "5151c8aca22bd4aeda60b143b1164c1d1b9eb4babbeabf6da598701ccbbbf5c9",
+      "bytes": 81106,
+      "sha256": "3d870118e4174cdcad19d0443e3774f1a7d97b7f03ae634c8ec15d89d0586d5b",
       "dimensions": {
         "format": "SVG",
-        "width": 2400,
-        "height": 1900,
-        "view_box": "0 0 2400 1900"
+        "width": 2600,
+        "height": 2300,
+        "view_box": "0 0 2600 2300"
       },
       "source_script_exists": true
     },
