@@ -1909,16 +1909,16 @@
     .raw-file-button {
       appearance: none;
       width: 100%;
-      min-height: 78px;
+      min-height: 86px;
       border: 1px solid rgba(204, 255, 160, 0.14);
       border-radius: 6px;
       background: rgba(2, 5, 2, 0.48);
       color: var(--ink);
       cursor: pointer;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-columns: 78px minmax(0, 1fr) auto;
       gap: 5px 12px;
-      align-items: start;
+      align-items: center;
       padding: 12px;
       text-align: left;
       font: inherit;
@@ -1929,6 +1929,7 @@
       background: rgba(204, 255, 160, 0.10);
     }
     .raw-file-button strong {
+      grid-column: 2;
       min-width: 0;
       font-family: var(--font-ui);
       font-size: 15px;
@@ -1936,12 +1937,13 @@
       overflow-wrap: anywhere;
     }
     .raw-file-button span {
-      grid-column: 1 / -1;
+      grid-column: 2 / -1;
       color: var(--muted);
       font-size: 12px;
       line-height: 1.35;
     }
     .raw-file-button em {
+      grid-column: 3;
       color: var(--green);
       font-style: normal;
       font-family: var(--font-mono);
@@ -1949,6 +1951,27 @@
       line-height: 1.2;
       text-align: right;
       white-space: nowrap;
+    }
+    .raw-file-button .raw-file-thumb {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      width: 78px;
+      height: 58px;
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: 6px;
+      object-fit: cover;
+      background: rgba(0, 0, 0, 0.36);
+      box-shadow: inset 0 0 0 1px rgba(245, 247, 240, 0.04);
+    }
+    .raw-file-button .raw-file-kind {
+      display: grid;
+      place-items: center;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
     }
     .raw-detail-grid {
       display: grid;
@@ -4667,8 +4690,11 @@
       .raw-detail-card { padding: 14px; }
       .raw-player-top { display: block; }
       .raw-kind-pill { display: inline-flex; margin-top: 12px; }
-      .raw-file-button { grid-template-columns: 1fr; }
-      .raw-file-button em { text-align: left; }
+      .raw-file-button { grid-template-columns: 64px minmax(0, 1fr); }
+      .raw-file-button .raw-file-thumb { width: 64px; height: 48px; }
+      .raw-file-button strong,
+      .raw-file-button em { grid-column: 2; text-align: left; }
+      .raw-file-button span { grid-column: 1 / -1; }
       .hdf5-map { grid-template-columns: 1fr; }
       .artifact.primary-artifact { grid-template-columns: 1fr; }
       .evidence-card:last-child { grid-column: auto; }
@@ -5915,7 +5941,7 @@
               <span class="raw-kind-pill" id="rawKindPill">video + audio</span>
             </div>
             <div class="raw-video-frame" id="rawVideoFrame">
-              <video id="rawVideo" controls preload="metadata" playsinline poster="assets/modalities/video.jpg">
+              <video id="rawVideo" controls preload="metadata" playsinline poster="assets/raw-sample-preview/fisheye_cam0_poster.jpg">
                 <source src="assets/raw-sample-preview/fisheye_cam0_preview.mp4" type="video/mp4">
               </video>
             </div>
@@ -5935,14 +5961,14 @@
             </div>
           </article>
           <aside class="raw-file-panel" aria-label="Raw sample files">
-            <button type="button" class="raw-file-button active" data-raw-file="fisheye_cam0.mp4"><strong>fisheye_cam0.mp4</strong><em>89.84 MB</em><span>Fisheye video plus embedded audio. Playable preview, full raw source linked.</span></button>
-            <button type="button" class="raw-file-button" data-raw-file="fisheye_cam1.mp4"><strong>fisheye_cam1.mp4</strong><em>127.09 MB</em><span>Second synchronized fisheye camera stream. Playable preview.</span></button>
-            <button type="button" class="raw-file-button" data-raw-file="fisheye_cam2.mp4"><strong>fisheye_cam2.mp4</strong><em>113.41 MB</em><span>Third synchronized fisheye camera stream. Playable preview.</span></button>
-            <button type="button" class="raw-file-button" data-raw-file="fisheye_cam3.mp4"><strong>fisheye_cam3.mp4</strong><em>95.02 MB</em><span>Fourth synchronized fisheye camera stream. Playable preview.</span></button>
-            <button type="button" class="raw-file-button" data-raw-file="stereo_left.mp4"><strong>stereo_left.mp4</strong><em>22.67 MB</em><span>Left stereo RGB stream. Playable preview.</span></button>
-            <button type="button" class="raw-file-button" data-raw-file="stereo_right.mp4"><strong>stereo_right.mp4</strong><em>25.42 MB</em><span>Right stereo RGB stream. Playable preview.</span></button>
-            <button type="button" class="raw-file-button" data-raw-file="annotation.hdf5"><strong>annotation.hdf5</strong><em>1.93 GB</em><span>Sensor, labels, pose, mocap, IMU, depth, calibration, and captions.</span></button>
-            <button type="button" class="raw-file-button" data-raw-file="visualization.rrd"><strong>visualization.rrd</strong><em>2.70 GB</em><span>Optional Rerun viewer recording. Download/open with Rerun 0.29.0.</span></button>
+            <button type="button" class="raw-file-button active" data-raw-file="fisheye_cam0.mp4"><img class="raw-file-thumb" src="assets/raw-sample-preview/fisheye_cam0_poster.jpg" alt="" loading="lazy"><strong>fisheye_cam0.mp4</strong><em>89.84 MB</em><span>Fisheye video plus embedded audio. Playable preview, full raw source linked.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="fisheye_cam1.mp4"><img class="raw-file-thumb" src="assets/raw-sample-preview/fisheye_cam1_poster.jpg" alt="" loading="lazy"><strong>fisheye_cam1.mp4</strong><em>127.09 MB</em><span>Second synchronized fisheye camera stream. Playable preview.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="fisheye_cam2.mp4"><img class="raw-file-thumb" src="assets/raw-sample-preview/fisheye_cam2_poster.jpg" alt="" loading="lazy"><strong>fisheye_cam2.mp4</strong><em>113.41 MB</em><span>Third synchronized fisheye camera stream. Playable preview.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="fisheye_cam3.mp4"><img class="raw-file-thumb" src="assets/raw-sample-preview/fisheye_cam3_poster.jpg" alt="" loading="lazy"><strong>fisheye_cam3.mp4</strong><em>95.02 MB</em><span>Fourth synchronized fisheye camera stream. Playable preview.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="stereo_left.mp4"><img class="raw-file-thumb" src="assets/raw-sample-preview/stereo_left_poster.jpg" alt="" loading="lazy"><strong>stereo_left.mp4</strong><em>22.67 MB</em><span>Left stereo RGB stream. Playable preview.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="stereo_right.mp4"><img class="raw-file-thumb" src="assets/raw-sample-preview/stereo_right_poster.jpg" alt="" loading="lazy"><strong>stereo_right.mp4</strong><em>25.42 MB</em><span>Right stereo RGB stream. Playable preview.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="annotation.hdf5"><span class="raw-file-thumb raw-file-kind" aria-hidden="true">H5</span><strong>annotation.hdf5</strong><em>1.93 GB</em><span>Sensor, labels, pose, mocap, IMU, depth, calibration, and captions.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="visualization.rrd"><span class="raw-file-thumb raw-file-kind" aria-hidden="true">RRD</span><strong>visualization.rrd</strong><em>2.70 GB</em><span>Optional Rerun viewer recording. Download/open with Rerun 0.29.0.</span></button>
           </aside>
         </div>
         <div class="raw-detail-grid">
@@ -7065,6 +7091,7 @@ python scripts/validate_publication_package.py</code></pre>
         use: "Video features feed visual tasks; the embedded audio stream feeds audio ablation and acoustic feature blocks.",
         url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/fisheye_cam0.mp4",
         previewUrl: "assets/raw-sample-preview/fisheye_cam0_preview.mp4",
+        posterUrl: "assets/raw-sample-preview/fisheye_cam0_poster.jpg",
         previewBytes: 506126,
         previewNote: "Playing a 12 second fast-start preview derived from the official raw MP4. Use the source link for the complete file.",
         mediaType: "video",
@@ -7078,6 +7105,7 @@ python scripts/validate_publication_package.py</code></pre>
         use: "Used as one of the synchronized visual feature streams.",
         url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/fisheye_cam1.mp4",
         previewUrl: "assets/raw-sample-preview/fisheye_cam1_preview.mp4",
+        posterUrl: "assets/raw-sample-preview/fisheye_cam1_poster.jpg",
         previewBytes: 648798,
         previewNote: "Playing a 12 second fast-start preview derived from the official raw MP4. Use the source link for the complete file.",
         mediaType: "video",
@@ -7091,6 +7119,7 @@ python scripts/validate_publication_package.py</code></pre>
         use: "Used as one of the synchronized visual feature streams.",
         url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/fisheye_cam2.mp4",
         previewUrl: "assets/raw-sample-preview/fisheye_cam2_preview.mp4",
+        posterUrl: "assets/raw-sample-preview/fisheye_cam2_poster.jpg",
         previewBytes: 659709,
         previewNote: "Playing a 12 second fast-start preview derived from the official raw MP4. Use the source link for the complete file.",
         mediaType: "video",
@@ -7104,6 +7133,7 @@ python scripts/validate_publication_package.py</code></pre>
         use: "Used as one of the synchronized visual feature streams.",
         url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/fisheye_cam3.mp4",
         previewUrl: "assets/raw-sample-preview/fisheye_cam3_preview.mp4",
+        posterUrl: "assets/raw-sample-preview/fisheye_cam3_poster.jpg",
         previewBytes: 330306,
         previewNote: "Playing a 12 second fast-start preview derived from the official raw MP4. Use the source link for the complete file.",
         mediaType: "video",
@@ -7117,6 +7147,7 @@ python scripts/validate_publication_package.py</code></pre>
         use: "Used for visual features and multi-view consistency retrieval targets.",
         url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/stereo_left.mp4",
         previewUrl: "assets/raw-sample-preview/stereo_left_preview.mp4",
+        posterUrl: "assets/raw-sample-preview/stereo_left_poster.jpg",
         previewBytes: 594158,
         previewNote: "Playing a 12 second fast-start preview derived from the official raw MP4. Use the source link for the complete file.",
         mediaType: "video",
@@ -7130,6 +7161,7 @@ python scripts/validate_publication_package.py</code></pre>
         use: "Used as a paired stereo visual stream.",
         url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/stereo_right.mp4",
         previewUrl: "assets/raw-sample-preview/stereo_right_preview.mp4",
+        posterUrl: "assets/raw-sample-preview/stereo_right_poster.jpg",
         previewBytes: 650983,
         previewNote: "Playing a 12 second fast-start preview derived from the official raw MP4. Use the source link for the complete file.",
         mediaType: "video",
@@ -7485,6 +7517,7 @@ python scripts/validate_publication_package.py</code></pre>
 
       if (file.mediaType === "video") {
         videoFrame.hidden = false;
+        video.poster = file.posterUrl || "assets/modalities/video.jpg";
         if (video.querySelector("source").getAttribute("src") !== mediaUrl) {
           video.pause();
           video.querySelector("source").src = mediaUrl;

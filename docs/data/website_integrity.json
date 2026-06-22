@@ -1,14 +1,14 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-21T20:58:58+00:00",
+  "generated_at_utc": "2026-06-22T06:24:44+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 267,
+    "local_references": 273,
     "external_reference_count": 158,
     "json_files": 55,
-    "image_assets_referenced": 22,
+    "image_assets_referenced": 28,
     "failure_count": 0
   },
   "failures": {
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 143848,
-      "evidence_index": 195183
+      "overview_index": 144681,
+      "evidence_index": 196016
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 143848,
-      "protocol_index": 191371,
-      "evidence_index": 195183
+      "overview_index": 144681,
+      "protocol_index": 192204,
+      "evidence_index": 196016
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -291,8 +291,8 @@
     {
       "path": "index.html",
       "id_count": 99,
-      "reference_count": 239,
-      "image_count": 28
+      "reference_count": 245,
+      "image_count": 34
     },
     {
       "path": "research_roadmap.html",
@@ -570,7 +570,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 20178,
+      "bytes": 21305,
       "top_level_type": "dict"
     },
     {
@@ -731,6 +731,54 @@
       "width": 1536,
       "height": 1024,
       "format": "PNG"
+    },
+    {
+      "path": "assets/raw-sample-preview/fisheye_cam0_poster.jpg",
+      "exists": true,
+      "bytes": 29694,
+      "width": 640,
+      "height": 752,
+      "format": "JPEG"
+    },
+    {
+      "path": "assets/raw-sample-preview/fisheye_cam1_poster.jpg",
+      "exists": true,
+      "bytes": 47502,
+      "width": 640,
+      "height": 752,
+      "format": "JPEG"
+    },
+    {
+      "path": "assets/raw-sample-preview/fisheye_cam2_poster.jpg",
+      "exists": true,
+      "bytes": 45929,
+      "width": 640,
+      "height": 752,
+      "format": "JPEG"
+    },
+    {
+      "path": "assets/raw-sample-preview/fisheye_cam3_poster.jpg",
+      "exists": true,
+      "bytes": 25681,
+      "width": 640,
+      "height": 752,
+      "format": "JPEG"
+    },
+    {
+      "path": "assets/raw-sample-preview/stereo_left_poster.jpg",
+      "exists": true,
+      "bytes": 30861,
+      "width": 640,
+      "height": 640,
+      "format": "JPEG"
+    },
+    {
+      "path": "assets/raw-sample-preview/stereo_right_poster.jpg",
+      "exists": true,
+      "bytes": 33938,
+      "width": 640,
+      "height": 640,
+      "format": "JPEG"
     },
     {
       "path": "assets/task_architectures.png",
