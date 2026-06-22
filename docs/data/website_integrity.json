@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-22T06:24:44+00:00",
+  "generated_at_utc": "2026-06-22T07:10:40+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 144681,
-      "evidence_index": 196016
+      "overview_index": 144691,
+      "evidence_index": 196026
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 144681,
-      "protocol_index": 192204,
-      "evidence_index": 196016
+      "overview_index": 144691,
+      "protocol_index": 192214,
+      "evidence_index": 196026
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -187,7 +187,7 @@
       "status": "pass",
       "reason": "The Suite anchor should show the task-suite map before the radar/results surface.",
       "first_marker_index": 468,
-      "second_marker_index": 2000
+      "second_marker_index": 2016
     },
     {
       "name": "raw_sample_stream_ledger_contains_seven_modalities",
@@ -370,7 +370,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 1420751,
+      "bytes": 1442464,
       "top_level_type": "dict"
     },
     {
@@ -791,9 +791,9 @@
     {
       "path": "assets/task_suite_infographic.png",
       "exists": true,
-      "bytes": 1897278,
+      "bytes": 2071256,
       "width": 1800,
-      "height": 7600,
+      "height": 5000,
       "format": "PNG"
     }
   ]

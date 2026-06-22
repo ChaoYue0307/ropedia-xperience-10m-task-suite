@@ -29,9 +29,18 @@ DEFAULT_SAMPLE_DIR = ROOT.parent / "data/sample/xperience-10m-sample"
 DROPBOX_SAMPLE_DIR = Path.home() / "Library/CloudStorage/Dropbox/Ropedia/data/sample/xperience-10m-sample"
 DEFAULT_OUTPUT = ROOT / "docs/assets/task_suite_infographic.png"
 CANVAS_WIDTH = 1800
-CANVAS_HEIGHT = 7600
+CANVAS_HEIGHT = 5000
 THUMB_WIDTH = 880
 THUMB_HEIGHT = 520
+MODALITY_ASSET_FALLBACKS = {
+    "video": "video.jpg",
+    "audio": "audio.png",
+    "depth": "depth.jpg",
+    "pose / SLAM": "pose_slam.png",
+    "motion capture": "motion_capture.png",
+    "inertial": "inertial.png",
+    "language": "language.png",
+}
 
 
 GROUPS = [
@@ -621,6 +630,12 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
         task_count = len(suite)
         scored_records = len(suite) + len(neural_suite)
     thumbnails = load_sample_thumbnails(sample_dir)
+    for modality_name, asset_name in MODALITY_ASSET_FALLBACKS.items():
+        if thumbnails.get(modality_name):
+            continue
+        fallback = ROOT / "docs/assets/modalities" / asset_name
+        if fallback.exists():
+            thumbnails[modality_name] = fallback.resolve().as_uri()
     base_layer = ""
     if base_image is not None and base_image.exists():
         base_layer = f'<div class="image-background" style="background-image:url(\'{base_image.resolve().as_uri()}\');"></div>'
@@ -794,27 +809,27 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     }}
     .modalities {{
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 34px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
     }}
     .modality {{
-      min-height: 560px;
-      padding: 34px;
+      min-height: 254px;
+      padding: 22px;
       border: 1px solid rgba(167,240,120,0.22);
       background: rgba(7,18,7,0.84);
       border-radius: 8px;
       display: grid;
-      grid-template-columns: 880px minmax(0, 1fr);
+      grid-template-columns: 310px minmax(0, 1fr);
       grid-template-areas:
         "thumb heading"
         "thumb copy";
-      column-gap: 46px;
-      row-gap: 28px;
+      column-gap: 24px;
+      row-gap: 16px;
       align-items: start;
     }}
     .modality-thumb {{
       grid-area: thumb;
-      height: 492px;
+      height: 210px;
       overflow: hidden;
       border: 1px solid rgba(167,240,120,0.16);
       border-radius: 8px;
@@ -836,43 +851,43 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       display: flex;
       align-items: start;
       justify-content: space-between;
-      gap: 24px;
-      padding-bottom: 26px;
+      gap: 16px;
+      padding-bottom: 14px;
       border-bottom: 1px solid rgba(167,240,120,0.16);
     }}
     .modality-index {{
       color: #a5afa2;
-      font-size: 24px;
+      font-size: 18px;
     }}
     .modality-type {{
       color: #ccffa0;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
-      font-size: 16px;
+      font-size: 13px;
       line-height: 1.15;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       text-align: right;
-      max-width: 330px;
-      padding-top: 8px;
+      max-width: 210px;
+      padding-top: 4px;
     }}
     .modality h3 {{
-      margin: 14px 0 0;
-      font-size: 76px;
-      line-height: 0.98;
+      margin: 8px 0 0;
+      font-size: 36px;
+      line-height: 1.02;
       text-transform: uppercase;
     }}
     .modality-copy {{
       grid-area: copy;
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 22px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }}
     .modality-row {{
       display: grid;
       grid-template-columns: 1fr;
-      gap: 10px;
+      gap: 8px;
       align-items: baseline;
-      padding: 22px 24px;
+      padding: 14px 16px;
       border: 1px solid rgba(167,240,120,0.16);
       border-radius: 8px;
       background: rgba(2,5,2,0.40);
@@ -881,7 +896,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
       display: block;
       color: #a5afa2;
       font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
-      font-size: 16px;
+      font-size: 12px;
       letter-spacing: 0.06em;
       line-height: 1.25;
       text-transform: uppercase;
@@ -889,9 +904,9 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
     .modality-row p {{
       margin: 0;
       color: #dce8d7;
-      font-size: 40px;
+      font-size: 21px;
       font-weight: 650;
-      line-height: 1.15;
+      line-height: 1.2;
     }}
     .shared-band {{
       display: grid;
@@ -1098,7 +1113,7 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
 
     <div class="section-label">
       <span>Xperience-10M modalities</span>
-      <span>Public-sample thumbnails are enlarged here so each data stream is legible. Audio is present in the sample MP4 stream and is now extracted into the current baseline manifest.</span>
+      <span>Each public-sample stream is shown with a compact derived thumbnail, what the sample contains, and how the current baseline uses it. Audio is present in the sample MP4 stream and is now extracted into the current baseline manifest.</span>
     </div>
     <section class="modalities">{modalities_html}</section>
 

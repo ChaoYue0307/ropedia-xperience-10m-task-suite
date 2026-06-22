@@ -769,7 +769,7 @@ The code files are MIT-licensed. Raw Xperience-10M data is not redistributed
 here, and dataset use remains governed by the official Ropedia/Xperience-10M
 terms. See [`LICENSE`](LICENSE) and [`DATA_NOTICE.md`](DATA_NOTICE.md).
 
-![Ropedia Xperience-10M task-suite infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v13-modality-xl)
+![Ropedia Xperience-10M task-suite infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v14-modality-compact)
 
 The infographic uses a custom text-free research background and puts the shared
 processing contract plus all 20 unified task families in one figure. Public
