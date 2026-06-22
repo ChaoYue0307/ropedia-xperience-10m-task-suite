@@ -106,6 +106,8 @@ ASSET_FILES = [
     "charts/tier2_task_suite.svg",
     "charts/unified_task_model_radar.svg",
     "charts/research_direction_coverage.svg",
+    "charts/task_direction_pipeline_relationship.png",
+    "charts/task_direction_pipeline_relationship.prompt.md",
     "brand/xperience10m-logo-apple-touch.png",
     "brand/xperience10m-logo-favicon-32.png",
     "brand/xperience10m-logo-favicon-64.png",
