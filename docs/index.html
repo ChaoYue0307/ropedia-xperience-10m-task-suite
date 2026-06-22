@@ -2828,6 +2828,20 @@
       font-variant-numeric: tabular-nums;
       word-break: break-word;
     }
+    .task-score-note {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: #aebaa8;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .task-score-note span {
+      min-width: 0;
+    }
     .mini-bar { height: 7px; background: rgba(204, 255, 160, 0.14); border-radius: 999px; overflow: hidden; }
     .mini-bar span { display: block; height: 100%; width: var(--w); background: var(--c); }
 
@@ -6593,7 +6607,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Task cards and metrics.</h2>
-          <p>All 20 task contracts are shown together with readable research names, assigned task icons, compact modality chips, explicit input-process-output contracts, and verified minimal versus neural scores. Full modality imagery stays in the modality atlas, raw sample browser, and interactive walkthrough where it has context.</p>
+          <p>All 20 task contracts are shown together with readable research names, assigned task icons, compact modality chips, explicit input-process-output contracts, and verified public-sample Minimal versus Neural MLP primary metrics. The full 180-record method matrix is separate; these cards are the quick single-episode task-head read.</p>
         </div>
         <article class="task-icon-atlas">
           <div>
@@ -7976,6 +7990,19 @@ python scripts/validate_publication_package.py</code></pre>
       return Math.max(4, Math.min(100, value * 100));
     };
 
+    const metricBarSource = (task) => Number.isFinite(Number(task.metric?.neural_mlp))
+      ? "Neural MLP"
+      : "Minimal";
+
+    const metricBarMeaning = (task) => {
+      const metric = task.metric?.name || "primary metric";
+      const source = metricBarSource(task);
+      const direction = task.metric?.direction === "lower"
+        ? "lower-is-better converted for visual width"
+        : "higher-is-better display width";
+      return `${source} ${metric}; ${direction}; color shows task family.`;
+    };
+
     const normalizeWalkthroughTasks = (payload) => Object.values(payload.tasks || {});
     const normalizeSuiteTasks = (payload) => Array.isArray(payload.tasks) ? payload.tasks : Object.values(payload.tasks || {});
 
@@ -8083,6 +8110,8 @@ python scripts/validate_publication_package.py</code></pre>
         const icon = taskIconFor(task);
         const minimal = formatMetric(task.metric?.minimal);
         const neural = formatMetric(task.metric?.neural_mlp);
+        const barSource = metricBarSource(task);
+        const barMeaning = metricBarMeaning(task);
         const modalityChips = (task.modalities || [])
           .map((key) => modalityMeta[key]?.label || key)
           .filter(Boolean)
@@ -8112,7 +8141,11 @@ python scripts/validate_publication_package.py</code></pre>
               <span><strong>${minimal}</strong>minimal ${escapeHtml(task.metric?.name)}</span>
               <span><strong>${neural}</strong>neural MLP</span>
             </div>
-            <div class="mini-bar"><span style="--w:${metricBarWidth(task).toFixed(1)}%;--c:${familyAccent[family] || "#ccffa0"}"></span></div>
+            <div class="task-score-note">
+              <span>Public-sample task-head scores</span>
+              <span>Bar: ${escapeHtml(barSource)} normalized</span>
+            </div>
+            <div class="mini-bar" aria-label="${escapeHtml(barMeaning)}" title="${escapeHtml(barMeaning)}"><span style="--w:${metricBarWidth(task).toFixed(1)}%;--c:${familyAccent[family] || "#ccffa0"}"></span></div>
           </button>
         `;
       }).join("");
