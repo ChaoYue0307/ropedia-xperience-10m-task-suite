@@ -32,6 +32,7 @@ machine-readable form.
 | Feature manifest | A map from model-input columns to source modalities. | `results/episode_task_suite/feature_manifest.json` explains the feature groups and dimensions. | The raw annotation file. |
 | Raw sample file map | A human-readable inventory of the sample episode files. | `docs/data/raw_sample_files.json` explains videos, annotations, calibration, motion, and derived previews. | A training manifest. |
 | annotation.hdf5 | Upstream annotation container for the sample. | Contains original labels/metadata; some public derived files expose hashed or processed features rather than every raw text field. | `summary_report.json` or task result JSON. |
+| visualization.rrd | Rerun viewer recording for visual inspection. | Lets readers inspect the sample episode in Rerun 0.29.0 when they download the official file. It is not used for the published training or metric rows. | MP4 video streams or model inputs. |
 | Interaction text | Natural-language interaction/caption content. | Used by task 15 and some derived text features; public matrices record when text targets are direct or compact-proxy. | Numeric action ids or subtask ids. |
 | Modality | A type of signal. | Video, audio, depth, pose/SLAM, motion capture, inertial, calibration, and language-derived signals. | A task target. |
 | Task contract | The definition of one benchmark task. | Includes input, target/output, metric, split, source artifact, and limitation. | A model architecture. |

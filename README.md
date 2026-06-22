@@ -987,7 +987,10 @@ sample file, plays compact browser-preview clips derived from the official MP4
 streams, exposes the audio track embedded in `fisheye_cam0.mp4`, links the full
 raw Hugging Face source for each MP4/HDF5/RRD file, and describes the
 `annotation.hdf5` group organization without copying large raw files into this
-repository.
+repository. The same manifest also lists what the non-playable
+`annotation.hdf5` and `visualization.rrd` files contain, how each relates to
+the synchronized MP4 streams and 20-frame windows, and which external tools can
+open them.
 
 The public sample dataset identifier is:
 

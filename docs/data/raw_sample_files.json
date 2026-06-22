@@ -93,7 +93,21 @@
         "IMU accelerometer and gyroscope",
         "calibration and metadata"
       ],
-      "task_suite_use": "Loaded by HOMIE and task-suite scripts to build aligned labels, sensor features, windows, object labels, and diagnostics."
+      "task_suite_use": "Loaded by HOMIE and task-suite scripts to build aligned labels, sensor features, windows, object labels, and diagnostics.",
+      "reader_sections": [
+        {
+          "title": "Inside",
+          "text": "Caption JSON, object and interaction labels, depth/confidence arrays, camera pose and SLAM values, full-body and hand mocap, IMU, calibration, timestamps, and source metadata."
+        },
+        {
+          "title": "How it relates",
+          "text": "The six MP4 streams provide synchronized video/audio. annotation.hdf5 supplies the aligned labels and non-RGB sensor timelines used to build 20-frame windows, task targets, and derived public-safe features."
+        },
+        {
+          "title": "Open with",
+          "text": "Use h5py, HDFView, or HOMIE Toolkit readers. Inspect groups/datasets selectively instead of loading the whole 1.93 GB file into memory."
+        }
+      ]
     },
     {
       "name": "fisheye_cam0.mp4",
@@ -227,7 +241,21 @@
       "contains": [
         "prebuilt Rerun visualization state"
       ],
-      "task_suite_use": "Not used for training or metrics; useful for external visual inspection with Rerun 0.29.0."
+      "task_suite_use": "Not used for training or metrics; useful for external visual inspection with Rerun 0.29.0.",
+      "reader_sections": [
+        {
+          "title": "Inside",
+          "text": "A prebuilt Rerun recording of the sample episode for visual inspection of the episode timeline and viewer state."
+        },
+        {
+          "title": "How it relates",
+          "text": "It is a convenience viewer artifact beside the raw MP4 and annotation files. It helps inspect alignment, but it is not an input to the published task scores."
+        },
+        {
+          "title": "Open with",
+          "text": "Download the .rrd file and open it in Rerun 0.29.0. The browser links the official source instead of embedding the 2.70 GB binary."
+        }
+      ]
     }
   ],
   "hdf5_organization": [

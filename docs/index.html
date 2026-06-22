@@ -2031,6 +2031,12 @@
       font-size: 12px;
       line-height: 1.45;
     }
+    .raw-file-detail-map {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .raw-file-detail-map[hidden] {
+      display: none;
+    }
     .architecture-image {
       display: block;
     }
@@ -6078,6 +6084,7 @@
               </audio>
             </div>
             <p class="atlas-note" id="rawFileUse">Video features feed visual tasks; the embedded audio stream feeds audio ablation and acoustic feature blocks.</p>
+            <div class="raw-file-detail-map hdf5-map" id="rawFileDetails" hidden></div>
             <div class="raw-link-row">
               <a id="rawOpenPreview" href="assets/raw-sample-preview/fisheye_cam0_preview.mp4">open playable preview</a>
               <a id="rawOpenSource" href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/fisheye_cam0.mp4">open full raw source</a>
@@ -6092,8 +6099,8 @@
             <button type="button" class="raw-file-button" data-raw-file="fisheye_cam3.mp4"><img class="raw-file-thumb" src="assets/raw-sample-preview/fisheye_cam3_poster.jpg" alt="" loading="lazy"><strong>fisheye_cam3.mp4</strong><em>95.02 MB</em><span>Fourth synchronized fisheye camera stream. Playable preview.</span></button>
             <button type="button" class="raw-file-button" data-raw-file="stereo_left.mp4"><img class="raw-file-thumb" src="assets/raw-sample-preview/stereo_left_poster.jpg" alt="" loading="lazy"><strong>stereo_left.mp4</strong><em>22.67 MB</em><span>Left stereo RGB stream. Playable preview.</span></button>
             <button type="button" class="raw-file-button" data-raw-file="stereo_right.mp4"><img class="raw-file-thumb" src="assets/raw-sample-preview/stereo_right_poster.jpg" alt="" loading="lazy"><strong>stereo_right.mp4</strong><em>25.42 MB</em><span>Right stereo RGB stream. Playable preview.</span></button>
-            <button type="button" class="raw-file-button" data-raw-file="annotation.hdf5"><span class="raw-file-thumb raw-file-kind" aria-hidden="true">H5</span><strong>annotation.hdf5</strong><em>1.93 GB</em><span>Sensor, labels, pose, mocap, IMU, depth, calibration, and captions.</span></button>
-            <button type="button" class="raw-file-button" data-raw-file="visualization.rrd"><span class="raw-file-thumb raw-file-kind" aria-hidden="true">RRD</span><strong>visualization.rrd</strong><em>2.70 GB</em><span>Optional Rerun viewer recording. Download/open with Rerun 0.29.0.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="annotation.hdf5"><span class="raw-file-thumb raw-file-kind" aria-hidden="true">H5</span><strong>annotation.hdf5</strong><em>1.93 GB</em><span>Canonical annotation container: captions, labels, depth, pose/SLAM, mocap, IMU, calibration.</span></button>
+            <button type="button" class="raw-file-button" data-raw-file="visualization.rrd"><span class="raw-file-thumb raw-file-kind" aria-hidden="true">RRD</span><strong>visualization.rrd</strong><em>2.70 GB</em><span>Rerun viewer recording for visual inspection; separate from training and evaluation inputs.</span></button>
           </aside>
         </div>
         <div class="raw-detail-grid">
@@ -7331,7 +7338,21 @@ python scripts/validate_publication_package.py</code></pre>
         use: "Loaded by HOMIE and task-suite scripts to build aligned labels, sensor features, windows, object labels, and diagnostics.",
         url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/annotation.hdf5",
         mediaType: "binary",
-        hasAudio: false
+        hasAudio: false,
+        details: [
+          {
+            title: "Inside",
+            text: "Caption JSON, object and interaction labels, depth/confidence arrays, camera pose and SLAM values, full-body and hand mocap, IMU, calibration, timestamps, and source metadata."
+          },
+          {
+            title: "How it relates",
+            text: "The six MP4 streams provide synchronized video/audio. annotation.hdf5 supplies the aligned labels and non-RGB sensor timelines used to build 20-frame windows, task targets, and derived public-safe features."
+          },
+          {
+            title: "Open with",
+            text: "Use h5py, HDFView, or HOMIE Toolkit readers. Inspect groups/datasets selectively instead of loading the whole 1.93 GB file into memory."
+          }
+        ]
       },
       {
         name: "visualization.rrd",
@@ -7341,7 +7362,21 @@ python scripts/validate_publication_package.py</code></pre>
         use: "Not used for training or metrics; useful for external visual inspection with Rerun 0.29.0.",
         url: "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample/resolve/main/visualization.rrd",
         mediaType: "binary",
-        hasAudio: false
+        hasAudio: false,
+        details: [
+          {
+            title: "Inside",
+            text: "A prebuilt Rerun recording of the sample episode for visual inspection of the episode timeline and viewer state."
+          },
+          {
+            title: "How it relates",
+            text: "It is a convenience viewer artifact beside the raw MP4 and annotation files. It helps inspect alignment, but it is not an input to the published task scores."
+          },
+          {
+            title: "Open with",
+            text: "Download the .rrd file and open it in Rerun 0.29.0. The browser links the official source instead of embedding the 2.70 GB binary."
+          }
+        ]
       }
     ];
     const tabSections = Array.from(document.querySelectorAll("[data-project-tab]"));
@@ -7652,6 +7687,7 @@ python scripts/validate_publication_package.py</code></pre>
       const sourceLink = document.getElementById("rawOpenSource");
       const previewLink = document.getElementById("rawOpenPreview");
       const previewNote = document.getElementById("rawPreviewNote");
+      const detailMap = document.getElementById("rawFileDetails");
       const mediaUrl = file.previewUrl || file.url;
       document.getElementById("rawFileTitle").textContent = file.name;
       document.getElementById("rawFileDescription").textContent = file.description;
@@ -7694,6 +7730,24 @@ python scripts/validate_publication_package.py</code></pre>
       } else {
         audio.pause();
         audioFrame.hidden = true;
+      }
+
+      if (detailMap) {
+        detailMap.replaceChildren();
+        if (Array.isArray(file.details) && file.details.length) {
+          file.details.forEach((detail) => {
+            const card = document.createElement("article");
+            const title = document.createElement("strong");
+            const text = document.createElement("span");
+            title.textContent = detail.title;
+            text.textContent = detail.text;
+            card.append(title, text);
+            detailMap.appendChild(card);
+          });
+          detailMap.hidden = false;
+        } else {
+          detailMap.hidden = true;
+        }
       }
 
       document.querySelectorAll("[data-raw-file]").forEach((button) => {

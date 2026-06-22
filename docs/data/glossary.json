@@ -111,6 +111,14 @@
       "primary_files": ["docs/data/raw_sample_files.json"]
     },
     {
+      "term": "visualization.rrd",
+      "category": "files_features",
+      "plain_meaning": "Rerun viewer recording for visual inspection.",
+      "project_usage": "Can be downloaded from the official sample dataset and opened in Rerun 0.29.0 to inspect the sample episode. It is not used for published training or metric rows.",
+      "do_not_confuse_with": "MP4 video streams or model inputs.",
+      "primary_files": ["docs/data/raw_sample_files.json", "REPRODUCIBILITY.md"]
+    },
+    {
       "term": "Interaction text",
       "category": "files_features",
       "plain_meaning": "Natural-language interaction/caption content.",
