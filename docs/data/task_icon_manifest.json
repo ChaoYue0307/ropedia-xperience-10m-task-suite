@@ -1,0 +1,147 @@
+{
+  "schema": "ropedia.task_icons.v1",
+  "description": "Assigned icon assets for the unified 20-task Xperience-10M suite.",
+  "overall_sheet": "assets/task-icons/task-icon-atlas.png",
+  "tasks": [
+    {
+      "task_id": "timeline_action",
+      "task_number": 1,
+      "display_name": "Action Recognition",
+      "motif": "person action pose",
+      "icon": "assets/task-icons/01_timeline_action.svg"
+    },
+    {
+      "task_id": "timeline_subtask",
+      "task_number": 2,
+      "display_name": "Procedure Step Recognition",
+      "motif": "ordered step checklist",
+      "icon": "assets/task-icons/02_timeline_subtask.svg"
+    },
+    {
+      "task_id": "transition_detection",
+      "task_number": 3,
+      "display_name": "Action Boundary Detection",
+      "motif": "timeline boundary",
+      "icon": "assets/task-icons/03_transition_detection.svg"
+    },
+    {
+      "task_id": "next_action",
+      "task_number": 4,
+      "display_name": "Next-Action Prediction",
+      "motif": "next action arrow",
+      "icon": "assets/task-icons/04_next_action.svg"
+    },
+    {
+      "task_id": "hand_trajectory_forecast",
+      "task_number": 5,
+      "display_name": "Hand Trajectory Forecasting",
+      "motif": "future hand path",
+      "icon": "assets/task-icons/05_hand_trajectory_forecast.svg"
+    },
+    {
+      "task_id": "contact_prediction",
+      "task_number": 6,
+      "display_name": "Contact State Prediction",
+      "motif": "touch contact point",
+      "icon": "assets/task-icons/06_contact_prediction.svg"
+    },
+    {
+      "task_id": "object_relevance",
+      "task_number": 7,
+      "display_name": "Object Relevance Prediction",
+      "motif": "highlighted relevant object",
+      "icon": "assets/task-icons/07_object_relevance.svg"
+    },
+    {
+      "task_id": "caption_grounding",
+      "task_number": 8,
+      "display_name": "Language Grounding",
+      "motif": "caption grounded to frame",
+      "icon": "assets/task-icons/08_caption_grounding.svg"
+    },
+    {
+      "task_id": "cross_modal_retrieval",
+      "task_number": 9,
+      "display_name": "Cross-Modal Retrieval",
+      "motif": "search across modalities",
+      "icon": "assets/task-icons/09_cross_modal_retrieval.svg"
+    },
+    {
+      "task_id": "modality_reconstruction",
+      "task_number": 10,
+      "display_name": "Cross-Modal Reconstruction",
+      "motif": "missing modality rebuilt",
+      "icon": "assets/task-icons/10_modality_reconstruction.svg"
+    },
+    {
+      "task_id": "temporal_order",
+      "task_number": 11,
+      "display_name": "Temporal Order Verification",
+      "motif": "ordered event nodes",
+      "icon": "assets/task-icons/11_temporal_order.svg"
+    },
+    {
+      "task_id": "misalignment_detection",
+      "task_number": 12,
+      "display_name": "Multimodal Synchronization Detection",
+      "motif": "sync mismatch warning",
+      "icon": "assets/task-icons/12_misalignment_detection.svg"
+    },
+    {
+      "task_id": "long_horizon_next_action",
+      "task_number": 13,
+      "display_name": "Long-Horizon Next-Action Forecasting",
+      "motif": "long future action path",
+      "icon": "assets/task-icons/13_long_horizon_next_action.svg"
+    },
+    {
+      "task_id": "next_subtask_forecast",
+      "task_number": 14,
+      "display_name": "Long-Horizon Next-Subtask Forecasting",
+      "motif": "future step branch",
+      "icon": "assets/task-icons/14_next_subtask_forecast.svg"
+    },
+    {
+      "task_id": "interaction_text_prediction",
+      "task_number": 15,
+      "display_name": "Interaction Text Prediction",
+      "motif": "hand action to text",
+      "icon": "assets/task-icons/15_interaction_text_prediction.svg"
+    },
+    {
+      "task_id": "action_object_relation",
+      "task_number": 16,
+      "display_name": "Action-Object Relation Prediction",
+      "motif": "hand object relation graph",
+      "icon": "assets/task-icons/16_action_object_relation.svg"
+    },
+    {
+      "task_id": "object_set_forecast",
+      "task_number": 17,
+      "display_name": "Future Object-Set Forecasting",
+      "motif": "future object cluster",
+      "icon": "assets/task-icons/17_object_set_forecast.svg"
+    },
+    {
+      "task_id": "imu_to_hand_pose",
+      "task_number": 18,
+      "display_name": "IMU-to-Hand Pose Reconstruction",
+      "motif": "imu waveform to hand pose",
+      "icon": "assets/task-icons/18_imu_to_hand_pose.svg"
+    },
+    {
+      "task_id": "camera_view_sync_retrieval",
+      "task_number": 19,
+      "display_name": "Camera-View Synchronization Retrieval",
+      "motif": "multi-camera sync",
+      "icon": "assets/task-icons/19_camera_view_sync_retrieval.svg"
+    },
+    {
+      "task_id": "time_to_transition",
+      "task_number": 20,
+      "display_name": "Time-to-Next-Transition Regression",
+      "motif": "clock to transition",
+      "icon": "assets/task-icons/20_time_to_transition.svg"
+    }
+  ]
+}

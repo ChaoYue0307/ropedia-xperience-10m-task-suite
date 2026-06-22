@@ -1,14 +1,14 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-22T07:40:17+00:00",
+  "generated_at_utc": "2026-06-22T08:57:54+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 273,
+    "local_references": 295,
     "external_reference_count": 158,
-    "json_files": 55,
-    "image_assets_referenced": 28,
+    "json_files": 56,
+    "image_assets_referenced": 49,
     "failure_count": 0
   },
   "failures": {
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 145712,
-      "evidence_index": 197047
+      "overview_index": 151055,
+      "evidence_index": 202390
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 145712,
-      "protocol_index": 193235,
-      "evidence_index": 197047
+      "overview_index": 151055,
+      "protocol_index": 198578,
+      "evidence_index": 202390
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -290,9 +290,9 @@
     },
     {
       "path": "index.html",
-      "id_count": 99,
-      "reference_count": 245,
-      "image_count": 34
+      "id_count": 100,
+      "reference_count": 267,
+      "image_count": 56
     },
     {
       "path": "research_roadmap.html",
@@ -370,7 +370,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 1429319,
+      "bytes": 1460402,
       "top_level_type": "dict"
     },
     {
@@ -509,6 +509,11 @@
       "top_level_type": "dict"
     },
     {
+      "path": "data/task_icon_manifest.json",
+      "bytes": 4872,
+      "top_level_type": "dict"
+    },
+    {
       "path": "data/task_method_20_gap_audit.json",
       "bytes": 8500,
       "top_level_type": "dict"
@@ -570,7 +575,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 21305,
+      "bytes": 24946,
       "top_level_type": "dict"
     },
     {
@@ -779,6 +784,154 @@
       "width": 640,
       "height": 640,
       "format": "JPEG"
+    },
+    {
+      "path": "assets/task-icons/01_timeline_action.svg",
+      "exists": true,
+      "bytes": 1486,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/02_timeline_subtask.svg",
+      "exists": true,
+      "bytes": 1513,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/03_transition_detection.svg",
+      "exists": true,
+      "bytes": 1531,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/04_next_action.svg",
+      "exists": true,
+      "bytes": 1484,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/05_hand_trajectory_forecast.svg",
+      "exists": true,
+      "bytes": 1552,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/06_contact_prediction.svg",
+      "exists": true,
+      "bytes": 1540,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/07_object_relevance.svg",
+      "exists": true,
+      "bytes": 1623,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/08_caption_grounding.svg",
+      "exists": true,
+      "bytes": 1503,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/09_cross_modal_retrieval.svg",
+      "exists": true,
+      "bytes": 1607,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/10_modality_reconstruction.svg",
+      "exists": true,
+      "bytes": 1587,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/11_temporal_order.svg",
+      "exists": true,
+      "bytes": 1543,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/12_misalignment_detection.svg",
+      "exists": true,
+      "bytes": 1582,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/13_long_horizon_next_action.svg",
+      "exists": true,
+      "bytes": 1595,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/14_next_subtask_forecast.svg",
+      "exists": true,
+      "bytes": 1625,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/15_interaction_text_prediction.svg",
+      "exists": true,
+      "bytes": 1578,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/16_action_object_relation.svg",
+      "exists": true,
+      "bytes": 1574,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/17_object_set_forecast.svg",
+      "exists": true,
+      "bytes": 1688,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/18_imu_to_hand_pose.svg",
+      "exists": true,
+      "bytes": 1566,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/19_camera_view_sync_retrieval.svg",
+      "exists": true,
+      "bytes": 1645,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/20_time_to_transition.svg",
+      "exists": true,
+      "bytes": 1526,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/task-icons/task-icon-atlas.png",
+      "exists": true,
+      "bytes": 1079800,
+      "width": 1122,
+      "height": 1402,
+      "format": "PNG"
     },
     {
       "path": "assets/task_architectures.png",

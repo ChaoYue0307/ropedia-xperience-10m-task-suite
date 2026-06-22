@@ -2704,6 +2704,29 @@
       object-fit: cover;
       transform: scale(1.01);
     }
+    .task-title-wrap {
+      display: grid;
+      grid-template-columns: 46px minmax(0, 1fr);
+      gap: 11px;
+      align-items: start;
+      min-width: 0;
+    }
+    .task-card-icon,
+    .task-axis-icon,
+    .selector-task-icon,
+    .player-task-icon {
+      display: block;
+      object-fit: contain;
+      flex: 0 0 auto;
+      filter: drop-shadow(0 0 10px rgba(167, 255, 79, 0.20));
+    }
+    .task-card-icon {
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(204, 255, 160, 0.26);
+      border-radius: 10px;
+      background: rgba(2, 5, 2, 0.72);
+    }
     .task-top { display: flex; justify-content: space-between; gap: 14px; align-items: start; }
     .task-name {
       display: block;
@@ -2972,9 +2995,22 @@
       color: #f4f8ef;
       padding: 10px 12px;
       backdrop-filter: blur(12px);
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 9px 10px;
+      align-items: center;
+    }
+    .player-task-icon {
+      width: 44px;
+      height: 44px;
+      grid-row: 1 / span 2;
+      border: 1px solid rgba(204, 255, 160, 0.30);
+      border-radius: 10px;
+      background: rgba(2, 5, 2, 0.72);
     }
     .player-badge strong {
       display: block;
+      grid-column: 2;
       font-family: var(--font-ui);
       font-size: clamp(20px, 2.4vw, 34px);
       line-height: 1.08;
@@ -2983,6 +3019,7 @@
     }
     .player-badge span {
       display: block;
+      grid-column: 2;
       margin-top: 3px;
       color: var(--green);
       font-family: var(--font-mono);
@@ -3223,9 +3260,20 @@
       padding: 10px;
       text-align: left;
       cursor: pointer;
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 2px 9px;
+      align-items: center;
+    }
+    .selector-task-icon {
+      width: 34px;
+      height: 34px;
+      grid-row: 1 / span 2;
+      border-radius: 8px;
     }
     .selector-button strong {
       display: block;
+      grid-column: 2;
       color: var(--ink);
       font-family: var(--font-ui);
       font-size: 14px;
@@ -3233,6 +3281,7 @@
     }
     .selector-button span {
       display: block;
+      grid-column: 2;
       margin-top: 4px;
       color: var(--muted);
       font-family: var(--font-mono);
@@ -3242,6 +3291,38 @@
     .selector-button.active {
       border-color: rgba(204, 255, 160, 0.72);
       background: rgba(204, 255, 160, 0.12);
+    }
+    .task-icon-atlas {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.55fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 18px;
+      border: 1px solid rgba(204, 255, 160, 0.20);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(204, 255, 160, 0.08), rgba(122, 229, 195, 0.04)),
+        rgba(7, 18, 7, 0.58);
+      padding: clamp(16px, 2vw, 22px);
+    }
+    .task-icon-atlas h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.18;
+    }
+    .task-icon-atlas p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .task-icon-atlas img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: 10px;
+      background: #020502;
     }
     .walk-flow {
       display: grid;
@@ -3929,8 +4010,8 @@
     }
     .hero-task-strip {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 6px;
+      grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+      gap: 8px;
       margin-top: 16px;
       padding-top: 14px;
       border-top: 1px solid rgba(245, 247, 240, 0.12);
@@ -3947,6 +4028,10 @@
     }
     .hero-task-strip span {
       min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 44px;
       border: 1px solid rgba(245, 247, 240, 0.10);
       border-radius: 5px;
       background: rgba(255, 255, 255, 0.04);
@@ -3954,7 +4039,17 @@
       color: rgba(245, 247, 240, 0.80);
       font-size: 10.5px;
       line-height: 1.18;
-      overflow-wrap: anywhere;
+      overflow-wrap: normal;
+      word-break: normal;
+    }
+    .task-axis-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+    }
+    .hero-task-strip .task-axis-label {
+      min-width: 0;
+      line-height: 1.22;
     }
     .hero-radar-links {
       display: flex;
@@ -4194,11 +4289,15 @@
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
       .hero-task-strip {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
       }
       .hero-task-strip span {
         font-size: 9.5px;
         padding: 5px 6px;
+      }
+      .task-axis-icon {
+        width: 24px;
+        height: 24px;
       }
       .hero-method {
         padding: 8px;
@@ -4362,6 +4461,7 @@
       .hdf5-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .artifact-group-head { grid-template-columns: 1fr; align-items: start; }
       .chart-grid { grid-template-columns: 1fr; }
+      .task-icon-atlas { grid-template-columns: 1fr; }
       .section-head { display: block; }
       .section-head p { margin-top: 14px; }
     }
@@ -4944,26 +5044,26 @@
         </div>
         <div class="hero-task-strip" aria-label="All 20 radar task axes">
           <strong class="hero-task-strip-head">All 20 radar task axes</strong>
-          <span>01 Action Recognition</span>
-          <span>02 Procedure Step Recognition</span>
-          <span>03 Action Boundary Detection</span>
-          <span>04 Next-Action Prediction</span>
-          <span>05 Hand Trajectory Forecasting</span>
-          <span>06 Contact State Prediction</span>
-          <span>07 Object Relevance Prediction</span>
-          <span>08 Language Grounding</span>
-          <span>09 Cross-Modal Retrieval</span>
-          <span>10 Cross-Modal Reconstruction</span>
-          <span>11 Temporal Order Verification</span>
-          <span>12 Multimodal Synchronization Detection</span>
-          <span>13 Long-Horizon Next-Action Forecasting</span>
-          <span>14 Long-Horizon Next-Subtask Forecasting</span>
-          <span>15 Interaction Text Prediction</span>
-          <span>16 Action-Object Relation Prediction</span>
-          <span>17 Future Object-Set Forecasting</span>
-          <span>18 IMU-to-Hand Pose Reconstruction</span>
-          <span>19 Camera-View Synchronization Retrieval</span>
-          <span>20 Time-to-Next-Transition Regression</span>
+          <span><img class="task-axis-icon" src="assets/task-icons/01_timeline_action.svg" alt="" loading="lazy"><span class="task-axis-label">01 Action Recognition</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/02_timeline_subtask.svg" alt="" loading="lazy"><span class="task-axis-label">02 Procedure Step Recognition</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/03_transition_detection.svg" alt="" loading="lazy"><span class="task-axis-label">03 Action Boundary Detection</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/04_next_action.svg" alt="" loading="lazy"><span class="task-axis-label">04 Next-Action Prediction</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/05_hand_trajectory_forecast.svg" alt="" loading="lazy"><span class="task-axis-label">05 Hand Trajectory Forecasting</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/06_contact_prediction.svg" alt="" loading="lazy"><span class="task-axis-label">06 Contact State Prediction</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/07_object_relevance.svg" alt="" loading="lazy"><span class="task-axis-label">07 Object Relevance Prediction</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/08_caption_grounding.svg" alt="" loading="lazy"><span class="task-axis-label">08 Language Grounding</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/09_cross_modal_retrieval.svg" alt="" loading="lazy"><span class="task-axis-label">09 Cross-Modal Retrieval</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/10_modality_reconstruction.svg" alt="" loading="lazy"><span class="task-axis-label">10 Cross-Modal Reconstruction</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/11_temporal_order.svg" alt="" loading="lazy"><span class="task-axis-label">11 Temporal Order Verification</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/12_misalignment_detection.svg" alt="" loading="lazy"><span class="task-axis-label">12 Multimodal Synchronization Detection</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/13_long_horizon_next_action.svg" alt="" loading="lazy"><span class="task-axis-label">13 Long-Horizon Next-Action Forecasting</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/14_next_subtask_forecast.svg" alt="" loading="lazy"><span class="task-axis-label">14 Long-Horizon Next-Subtask Forecasting</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/15_interaction_text_prediction.svg" alt="" loading="lazy"><span class="task-axis-label">15 Interaction Text Prediction</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/16_action_object_relation.svg" alt="" loading="lazy"><span class="task-axis-label">16 Action-Object Relation Prediction</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/17_object_set_forecast.svg" alt="" loading="lazy"><span class="task-axis-label">17 Future Object-Set Forecasting</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/18_imu_to_hand_pose.svg" alt="" loading="lazy"><span class="task-axis-label">18 IMU-to-Hand Pose Reconstruction</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/19_camera_view_sync_retrieval.svg" alt="" loading="lazy"><span class="task-axis-label">19 Camera-View Synchronization Retrieval</span></span>
+          <span><img class="task-axis-icon" src="assets/task-icons/20_time_to_transition.svg" alt="" loading="lazy"><span class="task-axis-label">20 Time-to-Next-Transition Regression</span></span>
         </div>
         <div class="hero-radar-links">
           <a href="#suite">Open full radar</a>
@@ -6527,6 +6627,7 @@
               <img id="playerPoster" src="assets/modalities/video.jpg" alt="Representative sample modality for the selected task">
               <div class="player-frame-chip" id="playerFrameChip">Step 1 / 4 · Input</div>
               <div class="player-badge">
+                <img class="player-task-icon" id="playerTaskIcon" src="assets/task-icons/01_timeline_action.svg" alt="" loading="lazy">
                 <strong id="playerBadgeTitle">Action Recognition</strong>
                 <span id="playerBadgeMeta">Egocentric Action Recognition</span>
               </div>
@@ -6575,6 +6676,13 @@
           <h2>Task cards and metrics.</h2>
           <p>All 20 task contracts are shown together with readable research names, representative modality thumbnails, explicit input-process-output contracts, and verified minimal versus neural scores. Rich interactive walkthroughs are available for the first 12 task cards; the remaining cards use the same unified task JSON contract.</p>
         </div>
+        <article class="task-icon-atlas">
+          <div>
+            <h3>Assigned visual language for the 20 tasks.</h3>
+            <p>The overall generated atlas keeps the icon family visible, while each task card below uses its own crisp assigned SVG for reliable loading and public mirrors.</p>
+          </div>
+          <img src="assets/task-icons/task-icon-atlas.png" alt="Generated 4 by 5 atlas of the 20 Ropedia Xperience-10M task icons" loading="lazy">
+        </article>
         <div class="task-toolbar" aria-label="Task filters">
           <button class="filter active" data-filter="all">All tasks</button>
           <button class="filter" data-filter="supervised">Supervised</button>
@@ -7090,6 +7198,29 @@ python scripts/validate_publication_package.py</code></pre>
       inertial: { label: "Inertial", src: "assets/modalities/inertial.png" },
       language: { label: "Language", src: "assets/modalities/language.png" }
     };
+    const taskIconMeta = {
+      timeline_action: { src: "assets/task-icons/01_timeline_action.svg", alt: "Action recognition task icon" },
+      timeline_subtask: { src: "assets/task-icons/02_timeline_subtask.svg", alt: "Procedure step recognition task icon" },
+      transition_detection: { src: "assets/task-icons/03_transition_detection.svg", alt: "Action boundary detection task icon" },
+      next_action: { src: "assets/task-icons/04_next_action.svg", alt: "Next-action prediction task icon" },
+      hand_trajectory_forecast: { src: "assets/task-icons/05_hand_trajectory_forecast.svg", alt: "Hand trajectory forecasting task icon" },
+      contact_prediction: { src: "assets/task-icons/06_contact_prediction.svg", alt: "Contact state prediction task icon" },
+      object_relevance: { src: "assets/task-icons/07_object_relevance.svg", alt: "Object relevance prediction task icon" },
+      caption_grounding: { src: "assets/task-icons/08_caption_grounding.svg", alt: "Language grounding task icon" },
+      cross_modal_retrieval: { src: "assets/task-icons/09_cross_modal_retrieval.svg", alt: "Cross-modal retrieval task icon" },
+      modality_reconstruction: { src: "assets/task-icons/10_modality_reconstruction.svg", alt: "Cross-modal reconstruction task icon" },
+      temporal_order: { src: "assets/task-icons/11_temporal_order.svg", alt: "Temporal order verification task icon" },
+      misalignment_detection: { src: "assets/task-icons/12_misalignment_detection.svg", alt: "Multimodal synchronization detection task icon" },
+      long_horizon_next_action: { src: "assets/task-icons/13_long_horizon_next_action.svg", alt: "Long-horizon next-action forecasting task icon" },
+      next_subtask_forecast: { src: "assets/task-icons/14_next_subtask_forecast.svg", alt: "Long-horizon next-subtask forecasting task icon" },
+      interaction_text_prediction: { src: "assets/task-icons/15_interaction_text_prediction.svg", alt: "Interaction text prediction task icon" },
+      action_object_relation: { src: "assets/task-icons/16_action_object_relation.svg", alt: "Action-object relation prediction task icon" },
+      object_set_forecast: { src: "assets/task-icons/17_object_set_forecast.svg", alt: "Future object-set forecasting task icon" },
+      imu_to_hand_pose: { src: "assets/task-icons/18_imu_to_hand_pose.svg", alt: "IMU-to-hand pose reconstruction task icon" },
+      camera_view_sync_retrieval: { src: "assets/task-icons/19_camera_view_sync_retrieval.svg", alt: "Camera-view synchronization retrieval task icon" },
+      time_to_transition: { src: "assets/task-icons/20_time_to_transition.svg", alt: "Time-to-next-transition regression task icon" }
+    };
+    const taskIconFor = (task) => taskIconMeta[task?.task_id] || taskIconMeta.timeline_action;
     const familyAccent = {
       supervised: "#9bdfff",
       forecast: "#ccffa0",
@@ -7873,6 +8004,7 @@ python scripts/validate_publication_package.py</code></pre>
       const modalities = modalitiesFromSuiteTask(task);
       const family = familyFromSuiteTask(task);
       return {
+        task_id: task.task_id,
         display_name: task.task_display_name || task.task_id || "Task",
         research_name: `${task.suite_label || "Task"} · ${task.research_name || task.primary_direction || "Unified task contract"}`,
         task_family: family,
@@ -7910,6 +8042,7 @@ python scripts/validate_publication_package.py</code></pre>
         if (rich) {
           return {
             ...rich,
+            task_id: task.task_id || rich.task_id,
             display_name: task.task_display_name || rich.display_name,
             research_name: `${task.suite_label || ""} · ${rich.research_name || task.research_name || ""}`.replace(/^ · /, ""),
             metric: {
@@ -7947,6 +8080,7 @@ python scripts/validate_publication_package.py</code></pre>
       grid.innerHTML = taskEntries.map((task, index) => {
         const family = task.task_family;
         const poster = modalityMeta[task.poster_modality] || modalityMeta.video;
+        const icon = taskIconFor(task);
         const minimal = formatMetric(task.metric?.minimal);
         const neural = formatMetric(task.metric?.neural_mlp);
         return `
@@ -7955,9 +8089,12 @@ python scripts/validate_publication_package.py</code></pre>
               <img src="${poster.src}" alt="">
             </span>
             <div class="task-top">
-              <span>
-                <span class="task-name">${escapeHtml(task.display_name)}</span>
-                <span class="task-research-name">${escapeHtml(task.research_name)}</span>
+              <span class="task-title-wrap">
+                <img class="task-card-icon" src="${escapeHtml(icon.src)}" alt="${escapeHtml(icon.alt)}" loading="lazy">
+                <span>
+                  <span class="task-name">${escapeHtml(task.display_name)}</span>
+                  <span class="task-research-name">${escapeHtml(task.research_name)}</span>
+                </span>
               </span>
               <span class="tag ${escapeHtml(family)}">${escapeHtml(family)}</span>
             </div>
@@ -7988,12 +8125,16 @@ python scripts/validate_publication_package.py</code></pre>
 
     function renderSelector() {
       const selector = document.getElementById("walkthroughSelector");
-      selector.innerHTML = taskEntries.map((task, index) => `
-        <button type="button" class="selector-button" data-index="${index}" aria-pressed="false">
-          <strong>${escapeHtml(task.display_name)}</strong>
-          <span>${escapeHtml(task.task_family)}</span>
-        </button>
-      `).join("");
+      selector.innerHTML = taskEntries.map((task, index) => {
+        const icon = taskIconFor(task);
+        return `
+          <button type="button" class="selector-button" data-index="${index}" aria-pressed="false">
+            <img class="selector-task-icon" src="${escapeHtml(icon.src)}" alt="" loading="lazy" aria-hidden="true">
+            <strong>${escapeHtml(task.display_name)}</strong>
+            <span>${escapeHtml(task.task_family)}</span>
+          </button>
+        `;
+      }).join("");
       selector.querySelectorAll(".selector-button").forEach((button) => {
         button.addEventListener("click", () => {
           pausePlayer();
@@ -8004,8 +8145,11 @@ python scripts/validate_publication_package.py</code></pre>
 
     function renderPlayer(task, index) {
       const poster = modalityMeta[task.poster_modality] || modalityMeta.video;
+      const icon = taskIconFor(task);
       document.getElementById("playerPoster").src = poster.src;
       document.getElementById("playerPoster").alt = `${task.display_name} representative ${poster.label} modality`;
+      document.getElementById("playerTaskIcon").src = icon.src;
+      document.getElementById("playerTaskIcon").alt = icon.alt;
       document.getElementById("playerBadgeTitle").textContent = task.display_name;
       document.getElementById("playerBadgeMeta").textContent = task.research_name;
       document.getElementById("playerFamily").className = `tag ${task.task_family}`;

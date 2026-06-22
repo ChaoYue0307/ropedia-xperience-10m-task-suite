@@ -912,6 +912,7 @@ docs/
   data/episode128_task_model_radar.json # 128-episode grouped radar values
   data/task_method_20_result_matrix.json # 9-method x 20-task result matrix
   data/task_method_20_gap_audit.json # explicit 180/180 scored-cell ledger
+  data/task_icon_manifest.json     # assigned icon asset map for all 20 tasks
   data/evidence_contract.json       # machine-readable project scope
   data/artifact_index.json          # compact project-artifact catalog
   data/live_publication_status.json # live GitHub/HF publication verification
@@ -923,6 +924,8 @@ docs/
   data/research_roadmap.json        # multi-episode and omni-model roadmap
   data/research_directions.json     # four-track website data bundle
   data/research_direction_extensions.json # four extra probe data bundle
+  assets/task-icons/*.svg           # one crisp assigned icon per task
+  assets/task-icons/task-icon-atlas.png # generated overview atlas for the 20-task visual language
   data/tier2_task_suite.json       # provenance baseline bundle; historical path
   data/task_walkthroughs.json       # human-readable task-card and walkthrough-storyboard data
   data/modality_atlas.json          # responsive modality-card data
