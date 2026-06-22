@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-22T19:39:25+00:00",
+  "generated_at_utc": "2026-06-22T20:17:13+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -246,11 +246,11 @@
     "hf_space_bundle": {
       "root": "hf_publish/space",
       "exists": true,
-      "file_count": 640,
-      "text_file_count": 479,
+      "file_count": 324,
+      "text_file_count": 240,
       "largest_file": {
-        "path": "results/omni_finetune/xperience10m_qwen3_omni_v6_sensor_target_probes_a100_20260619T000000Z/modality_reconstruction/predictions.jsonl",
-        "bytes": 10221085
+        "path": "docs/data/single_episode_explorer.json",
+        "bytes": 4305626
       },
       "violations": []
     },

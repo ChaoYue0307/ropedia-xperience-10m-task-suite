@@ -1166,6 +1166,48 @@
       line-height: 1.6;
       font-size: 14px;
     }
+    .method-flow-panel {
+      margin: 24px 0 26px;
+      padding: 20px;
+    }
+    .method-flow-steps {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      counter-reset: methodFlow;
+    }
+    .method-flow-steps article {
+      position: relative;
+      min-width: 0;
+      border: 1px solid rgba(204, 255, 160, 0.14);
+      border-radius: var(--radius);
+      background: rgba(2, 5, 2, 0.46);
+      padding: 15px;
+    }
+    .method-flow-steps article::before {
+      counter-increment: methodFlow;
+      content: "0" counter(methodFlow);
+      display: inline-flex;
+      margin-bottom: 10px;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+    }
+    .method-flow-steps strong {
+      display: block;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 16px;
+      line-height: 1.14;
+    }
+    .method-flow-steps p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
     .split-radar-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
@@ -1610,6 +1652,168 @@
     .reader-priority-grid a:hover {
       color: var(--green);
     }
+    .reader-route-panel,
+    .task-axis-panel,
+    .method-flow-panel {
+      border: 1px solid rgba(204, 255, 160, 0.20);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 16% 0%, rgba(204, 255, 160, 0.12), transparent 32%),
+        linear-gradient(180deg, rgba(7, 18, 7, 0.78), rgba(2, 5, 2, 0.72));
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.26);
+    }
+    .reader-route-panel {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.62fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: stretch;
+      margin: 12px 0 26px;
+      padding: 18px;
+    }
+    .reader-route-copy {
+      padding: 6px 4px;
+    }
+    .reader-route-copy small,
+    .task-axis-head small,
+    .method-flow-head small,
+    .citation-ledger caption {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 820;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .reader-route-copy strong,
+    .task-axis-head strong,
+    .method-flow-head strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: clamp(22px, 2.4vw, 34px);
+      line-height: 1.05;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .reader-route-copy p,
+    .task-axis-head p,
+    .method-flow-head p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.58;
+    }
+    .reader-route-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .reader-route-list a {
+      min-width: 0;
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      border: 1px solid rgba(204, 255, 160, 0.15);
+      border-radius: var(--radius);
+      background: rgba(2, 5, 2, 0.50);
+      color: var(--muted);
+      padding: 14px;
+      text-decoration: none;
+    }
+    .reader-route-list a:hover {
+      border-color: rgba(204, 255, 160, 0.45);
+      background: rgba(204, 255, 160, 0.08);
+      color: var(--ink);
+    }
+    .reader-route-list span {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 820;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .reader-route-list strong {
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 16px;
+      line-height: 1.14;
+    }
+    .reader-route-list em {
+      color: var(--muted);
+      font-style: normal;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .task-axis-panel {
+      margin: 24px 0 28px;
+      padding: 20px;
+    }
+    .task-axis-head,
+    .method-flow-head {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.58fr) minmax(0, 1fr);
+      gap: 22px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+    .task-axis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .task-axis-card {
+      border: 1px solid rgba(204, 255, 160, 0.15);
+      border-radius: var(--radius);
+      background: rgba(2, 5, 2, 0.46);
+      padding: 16px;
+      min-width: 0;
+    }
+    .task-axis-card span {
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 820;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .task-axis-card strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 19px;
+      line-height: 1.12;
+    }
+    .task-axis-card p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .task-axis-flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      color: rgba(245, 247, 240, 0.82);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .task-axis-flow strong {
+      border: 1px solid rgba(204, 255, 160, 0.14);
+      border-radius: 8px;
+      background: rgba(204, 255, 160, 0.06);
+      padding: 10px 12px;
+      font-family: var(--font-ui);
+    }
+    .task-axis-flow span {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-weight: 850;
+    }
     .result-reading-order {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1680,6 +1884,14 @@
       color: var(--muted);
       font-size: 13px;
       line-height: 1.48;
+    }
+    .citation-ledger {
+      margin-top: 8px;
+    }
+    .citation-ledger caption {
+      caption-side: top;
+      text-align: left;
+      padding: 0 0 10px;
     }
     .line-table {
       width: 100%;
@@ -5080,6 +5292,22 @@
         border-bottom: 1px solid var(--line);
       }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .reader-journey, .resource-mode-grid, .suite-lines, .result-reading-order, .reader-priority-grid, .result-rules-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .reader-route-panel,
+      .task-axis-head,
+      .method-flow-head {
+        grid-template-columns: 1fr;
+      }
+      .reader-route-list,
+      .task-axis-grid,
+      .method-flow-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .task-axis-flow {
+        grid-template-columns: 1fr;
+      }
+      .task-axis-flow span {
+        display: none;
+      }
       .suite-task-index-head,
       .task-map-details summary,
       .split-radar-details summary {
@@ -5364,7 +5592,7 @@
         width: 100%;
         justify-content: center;
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .reader-priority-grid, .result-rules-panel, .suite-task-index-head { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .reader-priority-grid, .result-rules-panel, .reader-route-list, .task-axis-grid, .method-flow-steps, .suite-task-index-head { grid-template-columns: 1fr; }
       .task-index-grid {
         grid-template-columns: 1fr;
       }
@@ -5854,6 +6082,52 @@
             <p>Direct scores, compact-proxy scores, normalized radar values, adapters, and public mirrors stay labeled separately so the evidence type is visible before interpretation.</p>
             <a href="#glossary">Check the glossary</a>
           </article>
+        </div>
+        <div class="reader-route-panel" aria-label="Reader-first route through the project">
+          <div class="reader-route-copy">
+            <small>reader-first route</small>
+            <strong>Read the project in four passes, then use the detailed tables as evidence.</strong>
+            <p>The page keeps every public artifact, but the fastest path is: understand the 20 tasks, inspect the sample files, compare the two result lines, then open the exact reproducibility surface you need.</p>
+          </div>
+          <div class="reader-route-list">
+            <a href="#suite"><span>01 tasks</span><strong>20-task suite</strong><em>One task vocabulary for all methods and both evidence lines.</em></a>
+            <a href="#raw-sample"><span>02 data</span><strong>Raw sample browser</strong><em>Playable files, HDF5/RRD roles, and what each file contributes to training.</em></a>
+            <a href="#takeaways"><span>03 results</span><strong>Result ledger</strong><em>Raw citeable scores first; radar values remain visual summaries.</em></a>
+            <a href="#artifacts"><span>04 reuse</span><strong>Artifacts and mirrors</strong><em>GitHub, GitHub Pages, HF Space, datasets, weights, and validation outputs.</em></a>
+          </div>
+        </div>
+        <div class="task-axis-panel" aria-label="Relationship between tasks, research directions, and training pipelines">
+          <div class="task-axis-head">
+            <div>
+              <small>relationship map</small>
+              <strong>20 tasks, 4 research directions, 3 foundation-pipeline tracks.</strong>
+            </div>
+            <p>These are not three separate benchmarks. The 20 tasks are the scored contracts; the four directions group what those tasks study; the three foundation tracks describe how the same files can train larger models.</p>
+          </div>
+          <div class="task-axis-grid">
+            <article class="task-axis-card">
+              <span>scored contracts</span>
+              <strong>20 tasks</strong>
+              <p>Action, subtask, object, language, motion, synchronization, retrieval, and forecasting targets evaluated by each public method row.</p>
+            </article>
+            <article class="task-axis-card">
+              <span>reader grouping</span>
+              <strong>4 directions</strong>
+              <p>Human interaction, 3D/4D spatial understanding, egocentric reasoning, and world-model forecasting views over the same task suite.</p>
+            </article>
+            <article class="task-axis-card">
+              <span>training tracks</span>
+              <strong>3 foundation pipelines</strong>
+              <p>Spatial intelligence, human-video world modeling, and vision-language-action training recipes built from the public sample and selected-128 contracts.</p>
+            </article>
+          </div>
+          <div class="task-axis-flow" aria-label="Tasks directions and pipelines reading formula">
+            <strong>Tasks produce measurements.</strong>
+            <span>-></span>
+            <strong>Directions explain why the measurements matter.</strong>
+            <span>-></span>
+            <strong>Pipelines show how to train larger models from the same modalities.</strong>
+          </div>
         </div>
         <figure class="line-map-figure">
           <img src="assets/charts/two_evidence_line_map.svg?v=two-line-map-v1" alt="Two evidence-line map showing 1 sample episode, 128 selected episodes, and the combined 180 scored method-task records">
@@ -6883,6 +7157,22 @@
           <h2>From raw episode to research artifacts.</h2>
           <p>Every script works from one data contract: aligned multimodal windows, explicit labels, cached feature extraction, and a manifest that makes omitted modalities visible.</p>
         </div>
+        <div class="method-flow-panel" aria-label="From data to score method flow">
+          <div class="method-flow-head">
+            <div>
+              <small>from data to score</small>
+              <strong>One pipeline, five reader-visible checkpoints.</strong>
+            </div>
+            <p>This is the shortest way to understand the method section: start from official synchronized files, build aligned windows, create task targets, run method heads or model probes, then publish source-linked metrics.</p>
+          </div>
+          <div class="method-flow-steps">
+            <article><strong>Official streams</strong><p>RGB/fisheye/stereo video, audio, HDF5 annotations, pose, depth, calibration, IMU, mocap, and Rerun visualization sources.</p></article>
+            <article><strong>Aligned windows</strong><p>20-frame windows with a 5-frame stride keep the input unit consistent across task heads and selected-128 exports.</p></article>
+            <article><strong>Task targets</strong><p>Each window maps to one of the 20 contracts: classification, forecasting, retrieval, reconstruction, synchronization, or regression.</p></article>
+            <article><strong>Method rows</strong><p>Minimal, Neural MLP, selected-128 metadata/raw baselines, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano produce the public method rows.</p></article>
+            <article><strong>Verified outputs</strong><p>Metrics, predictions, matrices, radar data, validators, and mirror parity checks are published with direct/proxy status preserved.</p></article>
+          </div>
+        </div>
         <img class="pipeline-image" src="assets/pipeline_diagram.png?v=xperience10m-nn" alt="Verified Xperience-10M multimodal pipeline diagram">
         <div class="figure-brief">
           <article class="figure-brief-card">
@@ -6938,6 +7228,37 @@
             <p>Direct scores use the task target. Compact-proxy scores are bounded substitutes where a raw public target is unavailable, and stay marked before comparison.</p>
           </article>
         </div>
+        <table class="line-table citation-ledger" aria-label="What result values can be cited">
+          <caption>Result citation ledger</caption>
+          <thead>
+            <tr>
+              <th>Reader need</th>
+              <th>Use this value</th>
+              <th>Why</th>
+              <th>Where it appears</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Write a paper or README number</td>
+              <td>Raw metric value</td>
+              <td>This is emitted by the runner or verified result package and keeps the original metric scale.</td>
+              <td>180-result table cells, result JSON, method summaries.</td>
+            </tr>
+            <tr>
+              <td>Compare shapes across many tasks</td>
+              <td>Normalized radar value</td>
+              <td>This is a 0-1 plotting transform for visual comparison only; cite the raw metric beside it.</td>
+              <td>Unified radar and split radar charts.</td>
+            </tr>
+            <tr>
+              <td>Interpret a low-availability target</td>
+              <td>Compact-proxy score plus its audit note</td>
+              <td>The task target is represented by a bounded substitute, so the proxy label and reason travel with the value.</td>
+              <td>Proxy audit, matrix badges, selected-128 baseline rows.</td>
+            </tr>
+          </tbody>
+        </table>
         <div class="result-reading-order" id="result-lines" aria-label="How to read the result evidence">
           <article class="result-reading-step">
             <span>01</span>
