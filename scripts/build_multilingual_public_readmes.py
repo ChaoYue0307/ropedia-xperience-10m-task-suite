@@ -123,6 +123,10 @@ The multilingual README files are reader guides. The canonical technical evidenc
       <td>Action, procedure, transition, trajectory, contact, objects, language, retrieval, reconstruction, order, sync, long-horizon forecasting, interaction text, action-object binding, sensor bridging, camera sync, and transition timing.</td>
     </tr>
     <tr>
+      <td><strong>4 research directions</strong></td>
+      <td>Human Modeling & Motion Understanding; 3D/4D Reconstruction & Neural Rendering; Egocentric Vision & Interaction; Scene Reconstruction & World Modeling. These are reading groups over the same 20 tasks, not separate benchmark tiers.</td>
+    </tr>
+    <tr>
       <td><strong>Line 1 methods</strong></td>
       <td>Minimal and Neural MLP baselines cover all 20 tasks on the one public sample episode: 40/40 direct scores.</td>
     </tr>
@@ -131,8 +135,8 @@ The multilingual README files are reader guides. The canonical technical evidenc
       <td>Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window cover all 20 selected-128 task axes: 140/140 scores.</td>
     </tr>
     <tr>
-      <td><strong>Foundation directions</strong></td>
-      <td>Spatial intelligence, human-video world modeling, and vision-language-action pipelines are documented as trainable directions with task mappings and model-evidence requirements.</td>
+      <td><strong>3 foundation pipelines</strong></td>
+      <td>Spatial intelligence, human-video world modeling, and vision-language-action pipelines are documented as training recipes with task mappings, input-output contracts, and model-evidence requirements.</td>
     </tr>
     <tr>
       <td><strong>Public mirrors</strong></td>
@@ -140,6 +144,22 @@ The multilingual README files are reader guides. The canonical technical evidenc
     </tr>
   </tbody>
 </table>
+
+## Public Structure: 20 Tasks / 4 Directions / 3 Pipelines
+
+Read the project as three layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are reader-facing research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets. They are related, but they are not three competing task sets.
+
+Reader rule: if it has a metric, it is a **task**; if it explains what the evidence studies, it is a **direction**; if it describes model inputs and training targets, it is a **pipeline**.
+
+<p align="center">
+  <img src="docs/assets/charts/task_direction_pipeline_relationship.png" alt="Relationship map showing 20 task contracts, 4 research directions, and 3 foundation-model pipeline tracks" width="100%">
+</p>
+
+| Layer | Count | Reader role | Exact public labels |
+| --- | ---: | --- | --- |
+| Task contracts | 20 | Score axes used by the matrix, radars, task cards, and method rows. | Action Recognition; Procedure Step Recognition; Action Boundary Detection; Next-Action Prediction; Hand Trajectory Forecasting; Contact State Prediction; Object Relevance Prediction; Language Grounding; Cross-Modal Retrieval; Cross-Modal Reconstruction; Temporal Order Verification; Multimodal Synchronization Detection; Long-Horizon Next-Action Forecasting; Long-Horizon Next-Subtask Forecasting; Interaction Text Prediction; Action-Object Relation Prediction; Future Object-Set Forecasting; IMU-to-Hand Pose Reconstruction; Camera-View Synchronization Retrieval; Time-to-Next-Transition Regression. |
+| Research directions | 4 | Ways to interpret what the 20 tasks study; not separate benchmark tiers. | Human Modeling & Motion Understanding; 3D/4D Reconstruction & Neural Rendering; Egocentric Vision & Interaction; Scene Reconstruction & World Modeling. |
+| Foundation pipelines | 3 | Larger-model training tracks with separate input-output recipes and result gates. | Spatial intelligence models; Human-video world models; Vision-language-action models. |
 
 ## Two Evidence Lines
 
@@ -399,6 +419,7 @@ LANGUAGE_GUIDES = {
 
 ## 核心结构
 
+- 识别规则：有 metric 的是 20 个任务层；解释这些 evidence 研究什么的是 4 个 research directions；描述模型 input/output 和训练目标的是 3 条 foundation pipelines。
 - 数据层：公开 sample episode 被切成 20-frame 窗口，并连接视频、音频、深度、pose/SLAM、mocap、IMU、calibration 和语言标注。
 - 任务层：20 个统一任务覆盖识别、预测、检索、重建、同步、长时预测、action-object 关系和 sensor bridge。
 - 结果层：单 episode minimal/NN 覆盖 20/20；128-episode metadata/raw、Qwen3-Omni v6 LoRA、Cosmos3-Super Reasoner、Cosmos3-Nano Future Window 分开标注；当前公开矩阵为 180/180 scored records，其中 174 direct、6 compact proxy，proxy target 显式保留。
@@ -447,6 +468,7 @@ Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines
 
 ## Estructura
 
+- Regla de lectura: si tiene una métrica, es una tarea de las 20; si explica qué estudia la evidencia, es una de las 4 research directions; si define inputs/outputs de entrenamiento, es una de las 3 foundation pipelines.
 - Datos: ventanas de 20 frames con video, audio, profundidad, pose/SLAM, mocap, IMU, calibración y lenguaje.
 - Tareas: 20 contratos para reconocimiento, predicción, recuperación, reconstrucción, sincronización, horizonte largo, relación acción-objeto y puentes de sensores.
 - Resultados: minimal/NN de un episodio cubren 20/20; las ramas de 128 episodios separan metadata, raw features, Qwen3 y Cosmos; la matriz pública está en 180/180 registros con score: 174 direct y 6 compact proxy, con proxy targets visibles.
@@ -495,6 +517,7 @@ Entrées : [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_line
 
 ## Structure
 
+- Règle de lecture : avec une métrique, c'est l'une des 20 tâches; si cela explique ce que les preuves étudient, c'est l'une des 4 research directions; si cela définit des inputs/outputs d'entraînement, c'est l'une des 3 foundation pipelines.
 - Données : fenêtres de 20 frames reliant vidéo, audio, profondeur, pose/SLAM, mocap, IMU, calibration et annotations de langage.
 - Tâches : 20 contrats couvrant reconnaissance, prévision, retrieval, reconstruction, ordre, synchronisation, horizon long, relations action-objet et sensor bridge.
 - Résultats : minimal/NN sur l'épisode public couvrent 20/20; la ligne 128 épisodes sépare metadata, raw features, Qwen3-Omni et Cosmos3; la matrice publique atteint 180/180 enregistrements scorés: 174 direct et 6 compact proxy, avec proxy targets visibles.
@@ -543,6 +566,7 @@ Einstieg: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines
 
 ## Struktur
 
+- Leseregel: Hat es eine Metrik, gehört es zu den 20 Aufgaben; erklärt es, was die Evidenz untersucht, gehört es zu den 4 research directions; beschreibt es Trainings-Inputs und Targets, gehört es zu den 3 foundation pipelines.
 - Daten: 20-Frame-Fenster über Video, Audio, Tiefe, Pose/SLAM, Mocap, IMU, Kalibrierung und Sprachannotation.
 - Aufgaben: 20 Verträge für Erkennung, Vorhersage, Retrieval, Rekonstruktion, Ordnung, Synchronisierung, Langhorizont-Prognose, Aktion-Objekt-Bindung und Sensor-Brücken.
 - Ergebnisse: Single-Episode minimal/NN decken 20/20 ab; 128-Episode-Zweige trennen Metadata, Raw Features, Qwen3 und Cosmos; die öffentliche Matrix steht bei 180/180 gescorten Einträgen: 174 direct und 6 compact proxy, mit sichtbaren Proxy-Targets.
@@ -591,6 +615,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 
 ## 構造
 
+- 読み方のルール: metric があるものは 20 tasks、evidence が何を調べるかを説明するものは 4 research directions、training input/output を定義するものは 3 foundation pipelines です。
 - データ: 20-frame window が video、audio、depth、pose/SLAM、mocap、IMU、calibration、language annotation を結びます。
 - タスク: 認識、予測、retrieval、reconstruction、order、sync、long-horizon、action-object、sensor bridge など 20 契約。
 - 結果: single-episode minimal/NN は 20/20。128-episode 側は metadata、raw feature、Qwen3、Cosmos を証拠タイプ別に分けます。公開 matrix は 180/180 scored records で、174 direct と 6 compact proxy を分離し、proxy targets は明示します。
@@ -639,6 +664,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 
 ## 구조
 
+- 읽기 규칙: metric이 있으면 20개 task layer이고, evidence가 무엇을 연구하는지 설명하면 4개 research direction layer이며, model input/output과 training target을 설명하면 3개 foundation pipeline layer입니다.
 - 데이터: 20-frame window가 video, audio, depth, pose/SLAM, mocap, IMU, calibration, language annotation을 연결합니다.
 - 과제: 인식, 예측, retrieval, reconstruction, order, sync, long-horizon, action-object binding, sensor bridge 등 20개 계약.
 - 결과: single-episode minimal/NN은 20/20; 128-episode 레이어는 metadata, raw feature, Qwen3, Cosmos를 증거 유형별로 분리합니다. 공개 matrix는 180/180 scored records이며 174 direct와 6 compact proxy를 분리하고 proxy targets를 명시합니다.
@@ -687,6 +713,7 @@ Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines
 
 ## Estrutura
 
+- Regra de leitura: se tem uma métrica, pertence às 20 tarefas; se explica o que a evidência estuda, pertence às 4 research directions; se define inputs/outputs de treino, pertence às 3 foundation pipelines.
 - Dados: janelas de 20 frames ligam vídeo, áudio, profundidade, pose/SLAM, mocap, IMU, calibração e anotações de linguagem.
 - Tarefas: 20 contratos cobrem reconhecimento, previsão, retrieval, reconstrução, ordem, sincronização, horizonte longo, relação ação-objeto e pontes de sensores.
 - Resultados: minimal/NN de um episódio cobrem 20/20; a camada de 128 episódios separa metadata, raw features, Qwen3 e Cosmos; a matriz pública está em 180/180 registros com score: 174 direct e 6 compact proxy, com proxy targets visíveis.

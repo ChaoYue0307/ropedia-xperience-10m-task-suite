@@ -1875,6 +1875,43 @@
       font-size: 12px;
       line-height: 1.48;
     }
+    .task-axis-reader-rule {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0 0 16px;
+    }
+    .task-axis-reader-rule article {
+      min-width: 0;
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.075), rgba(2, 5, 2, 0.62)),
+        rgba(2, 5, 2, 0.56);
+      padding: 14px;
+    }
+    .task-axis-reader-rule span {
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .task-axis-reader-rule strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 17px;
+      line-height: 1.12;
+    }
+    .task-axis-reader-rule p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
     .task-axis-key {
       display: grid;
       grid-template-columns: minmax(0, 1.24fr) minmax(0, 0.92fr) minmax(0, 0.84fr);
@@ -2263,6 +2300,40 @@
       color: var(--muted);
       font-size: 12px;
       line-height: 1.3;
+    }
+    .result-matrix-details {
+      border-top: 1px solid rgba(204, 255, 160, 0.14);
+      background: rgba(2, 5, 2, 0.26);
+    }
+    .result-matrix-details summary {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: minmax(0, 0.34fr) minmax(260px, 1fr);
+      gap: 16px;
+      align-items: center;
+      padding: 18px 24px;
+      color: var(--muted);
+    }
+    .result-matrix-details summary::-webkit-details-marker {
+      display: none;
+    }
+    .result-matrix-details summary span {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 820;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .result-matrix-details summary strong {
+      color: rgba(245, 247, 240, 0.76);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .result-matrix-details[open] summary {
+      border-bottom: 1px solid rgba(204, 255, 160, 0.12);
+      background: rgba(204, 255, 160, 0.06);
     }
     .result-matrix-body {
       padding: 22px 24px 24px;
@@ -5525,6 +5596,7 @@
       .reader-route-list,
       .task-axis-grid,
       .task-axis-summary,
+      .task-axis-reader-rule,
       .task-axis-key,
       .task-axis-visual figcaption,
       .method-flow-steps {
@@ -5820,7 +5892,7 @@
         width: 100%;
         justify-content: center;
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .reader-priority-grid, .result-rules-panel, .reader-route-list, .task-axis-grid, .task-axis-summary, .task-axis-key, .task-axis-task-list, .task-axis-visual figcaption, .method-flow-steps, .suite-task-index-head { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .reader-priority-grid, .result-rules-panel, .reader-route-list, .task-axis-grid, .task-axis-summary, .task-axis-reader-rule, .task-axis-key, .task-axis-task-list, .task-axis-visual figcaption, .method-flow-steps, .suite-task-index-head { grid-template-columns: 1fr; }
       .task-axis-summary-card {
         grid-template-columns: auto 1fr;
       }
@@ -6376,6 +6448,23 @@
                 <strong>Three ways to train larger models.</strong>
                 <p>Spatial intelligence, human-video world models, and vision-language-action models reuse the same files with different input-output recipes.</p>
               </div>
+            </article>
+          </div>
+          <div class="task-axis-reader-rule" aria-label="How to identify the three public layers">
+            <article>
+              <span>score question</span>
+              <strong>If it has a metric, it belongs to the 20-task layer.</strong>
+              <p>Task cards, radars, and the 180-record table all use the same numbered task IDs.</p>
+            </article>
+            <article>
+              <span>research question</span>
+              <strong>If it explains what the evidence studies, it belongs to the 4-direction layer.</strong>
+              <p>Directions A-D group the same 20 tasks. They are not extra tasks or a second tier.</p>
+            </article>
+            <article>
+              <span>training question</span>
+              <strong>If it describes model inputs and targets, it belongs to the 3-pipeline layer.</strong>
+              <p>Spatial, world-model, and VLA pipelines are recipes for future scale-up and task-grounded model training.</p>
             </article>
           </div>
           <figure class="task-axis-visual">
@@ -7758,43 +7847,49 @@
             <div class="result-matrix-stat"><strong>174</strong><span>direct scores</span></div>
             <div class="result-matrix-stat"><strong>6</strong><span>compact-proxy scores</span></div>
           </div>
-          <div class="result-matrix-body">
-            <div class="result-matrix-legend" aria-label="Result table legend">
-              <span class="matrix-legend-pill" style="--pill-color:#ccffa0"><span class="term-with-help"><span>direct task score</span><span class="term-help" tabindex="0" aria-label="Direct score: A metric computed against the task target directly." title="A metric computed against the task target directly.">i<span class="term-tooltip" role="tooltip">A metric computed against the task target directly. This is the preferred score type in the 20-task matrix.</span></span></span></span>
-              <span class="matrix-legend-pill" style="--pill-color:#f472b6"><span class="term-with-help"><span>compact proxy score</span><span class="term-help" tabindex="0" aria-label="Compact-proxy score: A bounded proxy metric when a direct raw target is not publicly available." title="A bounded proxy metric when a direct raw target is not publicly available.">i<span class="term-tooltip" role="tooltip">A bounded proxy metric when a direct raw target is not publicly available. It stays explicit so readers do not over-read it.</span></span></span></span>
-              <span class="matrix-legend-pill" style="--pill-color:#9bb8ff"><span class="term-with-help"><span>raw value is citeable</span><span class="term-help" tabindex="0" aria-label="Raw metric value: The original metric value emitted by the runner or verified package." title="The original metric value emitted by the runner or verified package.">i<span class="term-tooltip" role="tooltip">The original metric value emitted by the runner or verified package. This is the value to cite.</span></span></span></span>
-              <span class="matrix-legend-pill" style="--pill-color:#67e8d1"><span class="term-with-help"><span>normalized value is radar-only</span><span class="term-help" tabindex="0" aria-label="Normalized radar value: A 0-1 plotting value used only to draw comparable radar polygons." title="A 0-1 plotting value used only to draw comparable radar polygons.">i<span class="term-tooltip" role="tooltip">A 0-1 plotting value used only to draw comparable radar polygons across metrics with different scales.</span></span></span></span>
+          <details class="result-matrix-details">
+            <summary>
+              <span>open full 180-score audit table</span>
+              <strong>Use this after the citation ledger. It contains the method summary, every method-task cell, direct/proxy badges, raw metric values, normalized radar values, and source-aligned evidence notes.</strong>
+            </summary>
+            <div class="result-matrix-body">
+              <div class="result-matrix-legend" aria-label="Result table legend">
+                <span class="matrix-legend-pill" style="--pill-color:#ccffa0"><span class="term-with-help"><span>direct task score</span><span class="term-help" tabindex="0" aria-label="Direct score: A metric computed against the task target directly." title="A metric computed against the task target directly.">i<span class="term-tooltip" role="tooltip">A metric computed against the task target directly. This is the preferred score type in the 20-task matrix.</span></span></span></span>
+                <span class="matrix-legend-pill" style="--pill-color:#f472b6"><span class="term-with-help"><span>compact proxy score</span><span class="term-help" tabindex="0" aria-label="Compact-proxy score: A bounded proxy metric when a direct raw target is not publicly available." title="A bounded proxy metric when a direct raw target is not publicly available.">i<span class="term-tooltip" role="tooltip">A bounded proxy metric when a direct raw target is not publicly available. It stays explicit so readers do not over-read it.</span></span></span></span>
+                <span class="matrix-legend-pill" style="--pill-color:#9bb8ff"><span class="term-with-help"><span>raw value is citeable</span><span class="term-help" tabindex="0" aria-label="Raw metric value: The original metric value emitted by the runner or verified package." title="The original metric value emitted by the runner or verified package.">i<span class="term-tooltip" role="tooltip">The original metric value emitted by the runner or verified package. This is the value to cite.</span></span></span></span>
+                <span class="matrix-legend-pill" style="--pill-color:#67e8d1"><span class="term-with-help"><span>normalized value is radar-only</span><span class="term-help" tabindex="0" aria-label="Normalized radar value: A 0-1 plotting value used only to draw comparable radar polygons." title="A 0-1 plotting value used only to draw comparable radar polygons.">i<span class="term-tooltip" role="tooltip">A 0-1 plotting value used only to draw comparable radar polygons across metrics with different scales.</span></span></span></span>
+              </div>
+              <div class="method-summary-scroll" aria-label="Method summary table container">
+                <table class="method-summary-table" id="resultMethodSummary">
+                  <thead>
+                    <tr>
+                      <th><span class="term-with-help"><span>Method</span><span class="term-help" tabindex="0" aria-label="Method row: One named method family in the matrix." title="One named method family in the matrix.">i<span class="term-tooltip" role="tooltip">One named method family in the matrix, such as Minimal, 128ep Raw NN, Qwen3-Omni v6, or Cosmos3-Super.</span></span></span></th>
+                      <th><span class="term-with-help"><span>Line</span><span class="term-help" tabindex="0" aria-label="Evidence line: A reading lane for a group of results." title="A reading lane for a group of results.">i<span class="term-tooltip" role="tooltip">A reading lane for a group of results: Line 1 is one public sample episode; Line 2 is selected-128 held-out comparison.</span></span></span></th>
+                      <th><span class="term-with-help"><span>Records</span><span class="term-help" tabindex="0" aria-label="Task-method record: One method evaluated on one task." title="One method evaluated on one task.">i<span class="term-tooltip" role="tooltip">One method evaluated on one task. 9 methods x 20 tasks gives 180 public result records.</span></span></span></th>
+                      <th><span class="term-with-help"><span>Direct</span><span class="term-help" tabindex="0" aria-label="Direct score: A metric computed against the task target directly." title="A metric computed against the task target directly.">i<span class="term-tooltip" role="tooltip">A metric computed against the task target directly. This is the preferred score type in the 20-task matrix.</span></span></span></th>
+                      <th><span class="term-with-help"><span>Proxy</span><span class="term-help" tabindex="0" aria-label="Compact-proxy score: A bounded proxy metric when a direct raw target is not publicly available." title="A bounded proxy metric when a direct raw target is not publicly available.">i<span class="term-tooltip" role="tooltip">A bounded proxy metric when a direct raw target is not publicly available. It stays explicit so readers do not over-read it.</span></span></span></th>
+                      <th>Scope</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td colspan="6">Loading result summary...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="result-matrix-scroll" aria-label="Scrollable 180-result score table">
+                <table class="result-score-table" id="resultScoreTable">
+                  <caption class="sr-only">Raw and normalized scores for 9 methods across 20 Xperience-10M tasks.</caption>
+                  <thead>
+                    <tr><th>Method</th><th>Loading tasks...</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td colspan="2">Loading 180-result matrix...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="result-matrix-foot">Best-practice reading rule: compare methods within the same evidence line first, then use the proxy badges before interpreting cross-method totals. Six compact-proxy cells are intentionally visible rather than blended into direct raw-target scores.</p>
             </div>
-            <div class="method-summary-scroll" aria-label="Method summary table container">
-              <table class="method-summary-table" id="resultMethodSummary">
-                <thead>
-                  <tr>
-                    <th><span class="term-with-help"><span>Method</span><span class="term-help" tabindex="0" aria-label="Method row: One named method family in the matrix." title="One named method family in the matrix.">i<span class="term-tooltip" role="tooltip">One named method family in the matrix, such as Minimal, 128ep Raw NN, Qwen3-Omni v6, or Cosmos3-Super.</span></span></span></th>
-                    <th><span class="term-with-help"><span>Line</span><span class="term-help" tabindex="0" aria-label="Evidence line: A reading lane for a group of results." title="A reading lane for a group of results.">i<span class="term-tooltip" role="tooltip">A reading lane for a group of results: Line 1 is one public sample episode; Line 2 is selected-128 held-out comparison.</span></span></span></th>
-                    <th><span class="term-with-help"><span>Records</span><span class="term-help" tabindex="0" aria-label="Task-method record: One method evaluated on one task." title="One method evaluated on one task.">i<span class="term-tooltip" role="tooltip">One method evaluated on one task. 9 methods x 20 tasks gives 180 public result records.</span></span></span></th>
-                    <th><span class="term-with-help"><span>Direct</span><span class="term-help" tabindex="0" aria-label="Direct score: A metric computed against the task target directly." title="A metric computed against the task target directly.">i<span class="term-tooltip" role="tooltip">A metric computed against the task target directly. This is the preferred score type in the 20-task matrix.</span></span></span></th>
-                    <th><span class="term-with-help"><span>Proxy</span><span class="term-help" tabindex="0" aria-label="Compact-proxy score: A bounded proxy metric when a direct raw target is not publicly available." title="A bounded proxy metric when a direct raw target is not publicly available.">i<span class="term-tooltip" role="tooltip">A bounded proxy metric when a direct raw target is not publicly available. It stays explicit so readers do not over-read it.</span></span></span></th>
-                    <th>Scope</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td colspan="6">Loading result summary...</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="result-matrix-scroll" aria-label="Scrollable 180-result score table">
-              <table class="result-score-table" id="resultScoreTable">
-                <caption class="sr-only">Raw and normalized scores for 9 methods across 20 Xperience-10M tasks.</caption>
-                <thead>
-                  <tr><th>Method</th><th>Loading tasks...</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td colspan="2">Loading 180-result matrix...</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="result-matrix-foot">Best-practice reading rule: compare methods within the same evidence line first, then use the proxy badges before interpreting cross-method totals. Six compact-proxy cells are intentionally visible rather than blended into direct raw-target scores.</p>
-          </div>
+          </details>
         </div>
         <div class="result-subsection" id="models">
           <div class="result-subsection-head">
@@ -8174,30 +8269,30 @@
     <section id="artifacts" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Research artifacts for the next experiments.</h2>
-          <p>Metrics, predictions, manifests, lightweight model weights, and derived window artifacts are organized so the project can be inspected, extended, and scaled before rerunning the full pipeline. Raw Xperience-10M data and Qwen weights are not redistributed.</p>
+          <h2>Choose the artifact by the question you have.</h2>
+          <p>If you want a public surface, a score check, a reproducible run, or the next model-training package, start with the route cards below. The full artifact library remains available after that first choice. Raw Xperience-10M data and Qwen weights are not redistributed.</p>
         </div>
         <div class="resource-mode-grid" aria-label="Resource entry modes">
           <article class="resource-mode">
-            <small>download</small>
-            <strong>Find the right public surface</strong>
+            <small>if you want public links</small>
+            <strong>Open the right public surface</strong>
             <p>Open GitHub, HF Space, artifact dataset, baseline models, or consolidated weights/results without guessing.</p>
             <a href="#artifact-panel-public-surfaces">Open public surfaces</a>
           </article>
           <article class="resource-mode">
-            <small>verify</small>
+            <small>if you want to trust a score</small>
             <strong>Check result parity</strong>
             <p>Use validators, source alignment, mirror parity, and live URL/hash checks before trusting a number.</p>
             <a href="#artifact-panel-checks">Open checks</a>
           </article>
           <article class="resource-mode">
-            <small>reproduce</small>
+            <small>if you want to rerun</small>
             <strong>Run the task pipeline</strong>
             <p>Start from scripts, windows, feature manifests, task contracts, and minimal/neural result outputs.</p>
             <a href="#run">Open commands</a>
           </article>
           <article class="resource-mode">
-            <small>scale</small>
+            <small>if you want next models</small>
             <strong>Continue model work</strong>
             <p>Use Qwen3-Omni v6, Cosmos3-Super/Nano packages, the 128-episode feature index, and foundation-model plans for the next runs.</p>
             <a href="#omni-scale-up">Open scale-up</a>
@@ -8509,7 +8604,6 @@ python scripts/validate_publication_package.py</code></pre>
       ".result-matrix-panel",
       ".result-matrix-stat",
       ".direction-card",
-      ".artifact",
       ".artifact-group",
       ".glossary-summary article"
     ].join(",");

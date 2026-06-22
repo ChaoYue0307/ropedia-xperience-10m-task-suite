@@ -69,11 +69,11 @@ Entrées : [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_line
 
 ## Structure
 
+- Règle de lecture : avec une métrique, c'est l'une des 20 tâches; si cela explique ce que les preuves étudient, c'est l'une des 4 research directions; si cela définit des inputs/outputs d'entraînement, c'est l'une des 3 foundation pipelines.
 - Données : fenêtres de 20 frames reliant vidéo, audio, profondeur, pose/SLAM, mocap, IMU, calibration et annotations de langage.
 - Tâches : 20 contrats couvrant reconnaissance, prévision, retrieval, reconstruction, ordre, synchronisation, horizon long, relations action-objet et sensor bridge.
-- Structure : 20 tâches / 4 research directions / 3 foundation pipelines. Les 20 tâches sont les axes de score; les 4 directions regroupent ces mêmes tâches pour la lecture et la recherche; les 3 pipelines sont des pistes d'entraînement, pas de nouveaux tiers de tâches.
 - Résultats : minimal/NN sur l'épisode public couvrent 20/20; la ligne 128 épisodes sépare metadata, raw features, Qwen3-Omni et Cosmos3; la matrice publique atteint 180/180 enregistrements scorés: 174 direct et 6 compact proxy, avec proxy targets visibles.
-- Pipelines : spatial intelligence models, human-video world models et vision-language-action models sont documentés avec tâches et preuves nécessaires.
+- Directions : spatial intelligence, human-video world model et vision-language-action sont documentés avec tâches et preuves nécessaires.
 
 ## Frontière Publique
 

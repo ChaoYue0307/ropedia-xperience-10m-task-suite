@@ -59,7 +59,7 @@ async function inspectViewport(page, baseUrl, viewport, name) {
   await page.setViewportSize(viewport);
   await page.goto(`${baseUrl}#takeaways`, { waitUntil: "networkidle" });
   await page.waitForSelector("#takeaways #result-matrix-table", { timeout: 20000 });
-  await page.waitForSelector("#resultScoreTable tbody tr:nth-child(2)", { timeout: 20000 });
+  await page.waitForSelector("#resultScoreTable tbody tr:nth-child(2)", { state: "attached", timeout: 20000 });
   await page.locator("#takeaways").scrollIntoViewIfNeeded();
   await page.waitForTimeout(500);
 
@@ -89,6 +89,14 @@ async function inspectViewport(page, baseUrl, viewport, name) {
     };
     const resultJumpLinks = [...document.querySelectorAll(".result-jump-row a")].map((link) => link.getAttribute("href"));
     const directionJumpLinks = [...document.querySelectorAll(".direction-jump-row a")].map((link) => link.getAttribute("href"));
+    const taskAxisRuleCards = [...document.querySelectorAll(".task-axis-reader-rule article")].map((card) => (
+      card.textContent.replace(/\s+/g, " ").trim()
+    ));
+    const taskAxisSummaryCounts = [...document.querySelectorAll(".task-axis-summary-card .task-axis-count")].map((node) => (
+      node.textContent.trim()
+    ));
+    const resultMatrixDetails = document.querySelector(".result-matrix-details");
+    const resultScoreRows = document.querySelectorAll("#resultScoreTable tbody tr").length;
     const resultBlocks = [...document.querySelectorAll("#takeaways .result-subsection")].map((block) => ({
       id: block.id,
       rect: rectFor(`#${block.id}`),
@@ -105,6 +113,10 @@ async function inspectViewport(page, baseUrl, viewport, name) {
       anchors,
       resultJumpLinks,
       directionJumpLinks,
+      taskAxisRuleCards,
+      taskAxisSummaryCounts,
+      resultMatrixDetails: resultMatrixDetails ? { open: resultMatrixDetails.open } : null,
+      resultScoreRows,
       resultBlocks,
       sectionCount: document.querySelectorAll("main > section[data-project-tab]").length
     };
@@ -122,7 +134,17 @@ async function inspectViewport(page, baseUrl, viewport, name) {
   for (const href of ["#direction-coverage", "#direction-baselines", "#extensions", "#suite"]) {
     if (!metrics.directionJumpLinks.includes(href)) failures.push(`missing Directions quick link ${href}`);
   }
+  for (const count of ["20", "4", "3"]) {
+    if (!metrics.taskAxisSummaryCounts.includes(count)) failures.push(`missing public structure count ${count}`);
+  }
+  if (metrics.taskAxisRuleCards.length !== 3) failures.push(`expected 3 public-structure reader-rule cards, found ${metrics.taskAxisRuleCards.length}`);
+  for (const marker of ["20-task layer", "4-direction layer", "3-pipeline layer"]) {
+    if (!metrics.taskAxisRuleCards.some((text) => text.includes(marker))) failures.push(`missing reader-rule marker: ${marker}`);
+  }
   if (metrics.resultBlocks.length !== 3) failures.push(`expected 3 integrated result subsections, found ${metrics.resultBlocks.length}`);
+  if (!metrics.resultMatrixDetails) failures.push("result matrix disclosure is missing");
+  if (metrics.resultMatrixDetails?.open) failures.push("result matrix disclosure should be closed by default");
+  if (metrics.resultScoreRows < 2) failures.push(`result matrix table did not populate enough rows: ${metrics.resultScoreRows}`);
   if (metrics.resultBlocks.some((block) => !block.rect || block.rect.width < 260 || block.rect.height < 160)) {
     failures.push("one or more result subsections collapsed below readable size");
   }

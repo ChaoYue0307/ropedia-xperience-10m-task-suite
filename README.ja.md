@@ -69,11 +69,11 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 
 ## 構造
 
+- 読み方のルール: metric があるものは 20 tasks、evidence が何を調べるかを説明するものは 4 research directions、training input/output を定義するものは 3 foundation pipelines です。
 - データ: 20-frame window が video、audio、depth、pose/SLAM、mocap、IMU、calibration、language annotation を結びます。
 - タスク: 認識、予測、retrieval、reconstruction、order、sync、long-horizon、action-object、sensor bridge など 20 契約。
-- 構造: 20 tasks / 4 research directions / 3 foundation pipelines。20 tasks は scoring axes、4 directions は同じタスクを読むための研究グループ、3 pipelines は大規模モデルの training tracks であり、新しい task tier ではありません。
 - 結果: single-episode minimal/NN は 20/20。128-episode 側は metadata、raw feature、Qwen3、Cosmos を証拠タイプ別に分けます。公開 matrix は 180/180 scored records で、174 direct と 6 compact proxy を分離し、proxy targets は明示します。
-- パイプライン: spatial intelligence models、human-video world models、vision-language-action models に対して、タスク対応と必要証拠を記録しています。
+- 方向: spatial intelligence、human-video world model、vision-language-action に対して、タスク対応と必要証拠を記録しています。
 
 ## 公開境界
 

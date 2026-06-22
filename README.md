@@ -117,6 +117,8 @@ The multilingual README files are reader guides. The canonical technical evidenc
 
 Read the project as three layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are reader-facing research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets. They are related, but they are not three competing task sets.
 
+Reader rule: if it has a metric, it is a **task**; if it explains what the evidence studies, it is a **direction**; if it describes model inputs and training targets, it is a **pipeline**.
+
 <p align="center">
   <img src="docs/assets/charts/task_direction_pipeline_relationship.png" alt="Relationship map showing 20 task contracts, 4 research directions, and 3 foundation-model pipeline tracks" width="100%">
 </p>
@@ -275,20 +277,20 @@ These are Qwen3-Omni run versions inside **Line 2: selected 128 episodes**. They
 </table>
 
 Detailed lineage:
-[Qwen lineage note](QWEN3_OMNI_RUN_LINEAGE.md) and
-[Qwen lineage data](docs/data/qwen3_omni_run_lineage.json).
+[`QWEN3_OMNI_RUN_LINEAGE.md`](QWEN3_OMNI_RUN_LINEAGE.md) and
+[`qwen3_omni_run_lineage.json`](docs/data/qwen3_omni_run_lineage.json).
 
 Result entry points:
-[two evidence-line note](TWO_EVIDENCE_LINES.md),
-[two evidence-line data](docs/data/two_evidence_lines.json),
-[result summary note](TWO_EVIDENCE_LINE_RESULT_SUMMARY.md),
-[result summary data](docs/data/two_evidence_line_result_summary.json),
-[Qwen lineage note](QWEN3_OMNI_RUN_LINEAGE.md),
-[Qwen lineage data](docs/data/qwen3_omni_run_lineage.json),
-[1-episode radar data](docs/data/single_episode_task_model_radar.json),
-[128-episode radar data](docs/data/episode128_task_model_radar.json),
-[180-result matrix data](docs/data/task_method_20_result_matrix.json), and
-[selected-128 source and feature index](docs/data/xperience10m_128_episode_feature_index.json).
+[`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md),
+[`two_evidence_lines.json`](docs/data/two_evidence_lines.json),
+[`TWO_EVIDENCE_LINE_RESULT_SUMMARY.md`](TWO_EVIDENCE_LINE_RESULT_SUMMARY.md),
+[`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json),
+[`QWEN3_OMNI_RUN_LINEAGE.md`](QWEN3_OMNI_RUN_LINEAGE.md),
+[`qwen3_omni_run_lineage.json`](docs/data/qwen3_omni_run_lineage.json),
+[`single_episode_task_model_radar.json`](docs/data/single_episode_task_model_radar.json),
+[`episode128_task_model_radar.json`](docs/data/episode128_task_model_radar.json),
+[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), and
+[`xperience10m_128_episode_feature_index.json`](docs/data/xperience10m_128_episode_feature_index.json).
 
 ## Fast Reader Map
 
@@ -309,22 +311,22 @@ Result entry points:
     <tr>
       <td><strong>Choose the public surface</strong></td>
       <td><a href="PUBLIC_READER_MAP.md">Public reader map</a></td>
-      <td><a href="docs/data/public_reader_map.json">reader-map data</a></td>
+      <td><a href="docs/data/public_reader_map.json">public_reader_map.json</a></td>
     </tr>
     <tr>
       <td><strong>Decode project terms</strong></td>
       <td><a href="GLOSSARY.md">Glossary</a></td>
-      <td><a href="docs/data/glossary.json">glossary data</a></td>
+      <td><a href="docs/data/glossary.json">glossary.json</a></td>
     </tr>
     <tr>
       <td><strong>Inspect the 20 tasks</strong></td>
-      <td><a href="TASK_SUITE_20.md">20-task suite note</a></td>
-      <td><a href="docs/data/task_suite_20.json">task contract data</a><br><a href="results/episode_task_suite/task_walkthroughs/">task walkthroughs</a></td>
+      <td><a href="TASK_SUITE_20.md">TASK_SUITE_20.md</a></td>
+      <td><a href="docs/data/task_suite_20.json">task_suite_20.json</a><br><a href="results/episode_task_suite/task_walkthroughs/">task walkthroughs</a></td>
     </tr>
     <tr>
       <td><strong>Compare results</strong></td>
       <td><a href="RESEARCH_TAKEAWAYS.md">Research takeaways</a></td>
-      <td><a href="docs/data/two_evidence_line_result_summary.json">two-line result summary</a><br><a href="docs/data/task_method_20_result_matrix.json">20-result matrix</a><br><a href="docs/data/unified_task_model_radar.json">radar data</a><br><a href="docs/data/task_method_20_gap_audit.json">score/proxy audit</a></td>
+      <td><a href="docs/data/two_evidence_line_result_summary.json">two-line result summary</a><br><a href="docs/data/task_method_20_result_matrix.json">20-result matrix</a><br><a href="docs/data/unified_task_model_radar.json">radar JSON</a><br><a href="docs/data/task_method_20_gap_audit.json">score/proxy audit</a></td>
     </tr>
     <tr>
       <td><strong>Understand one sample</strong></td>
@@ -334,7 +336,7 @@ Result entry points:
     <tr>
       <td><strong>Read foundation directions</strong></td>
       <td><a href="THREE_FOUNDATION_PIPELINES.md">Three foundation pipelines</a></td>
-      <td><a href="docs/data/three_foundation_pipelines.json">pipeline data</a><br><a href="FOUNDATION_MODEL_PLAN.md">foundation model plan</a></td>
+      <td><a href="docs/data/three_foundation_pipelines.json">three_foundation_pipelines.json</a><br><a href="FOUNDATION_MODEL_PLAN.md">foundation model plan</a></td>
     </tr>
     <tr>
       <td><strong>Reproduce or audit</strong></td>

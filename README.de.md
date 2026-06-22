@@ -69,11 +69,11 @@ Einstieg: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines
 
 ## Struktur
 
+- Leseregel: Hat es eine Metrik, gehört es zu den 20 Aufgaben; erklärt es, was die Evidenz untersucht, gehört es zu den 4 research directions; beschreibt es Trainings-Inputs und Targets, gehört es zu den 3 foundation pipelines.
 - Daten: 20-Frame-Fenster über Video, Audio, Tiefe, Pose/SLAM, Mocap, IMU, Kalibrierung und Sprachannotation.
 - Aufgaben: 20 Verträge für Erkennung, Vorhersage, Retrieval, Rekonstruktion, Ordnung, Synchronisierung, Langhorizont-Prognose, Aktion-Objekt-Bindung und Sensor-Brücken.
-- Struktur: 20 Aufgaben / 4 research directions / 3 foundation pipelines. Die 20 Aufgaben sind die Score-Achsen; die 4 directions gruppieren dieselben Aufgaben für Lesen und Forschung; die 3 pipelines sind Trainingspfade, keine neuen Aufgaben-Tiers.
 - Ergebnisse: Single-Episode minimal/NN decken 20/20 ab; 128-Episode-Zweige trennen Metadata, Raw Features, Qwen3 und Cosmos; die öffentliche Matrix steht bei 180/180 gescorten Einträgen: 174 direct und 6 compact proxy, mit sichtbaren Proxy-Targets.
-- Pipelines: spatial intelligence models, human-video world models und vision-language-action models sind mit Aufgaben und Evidenzanforderungen dokumentiert.
+- Richtungen: spatial intelligence, human-video world model und vision-language-action sind mit Aufgaben und Evidenzanforderungen dokumentiert.
 
 ## Öffentliche Grenze
 
