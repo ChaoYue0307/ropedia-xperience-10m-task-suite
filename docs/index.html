@@ -2699,7 +2699,7 @@
       cursor: pointer;
       display: grid;
       gap: 15px;
-      min-height: 324px;
+      min-height: 292px;
       align-content: start;
       transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), border-color 240ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 240ms cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -2709,19 +2709,6 @@
       box-shadow: 0 20px 48px rgba(204, 255, 160, 0.08);
     }
     .task-card.hide { display: none; }
-    .task-card-media {
-      overflow: hidden;
-      border: 1px solid rgba(204, 255, 160, 0.18);
-      border-radius: 7px;
-      background: #020502;
-    }
-    .task-card-media img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 8.5;
-      object-fit: cover;
-      transform: scale(1.01);
-    }
     .task-title-wrap {
       display: grid;
       grid-template-columns: 46px minmax(0, 1fr);
@@ -2775,6 +2762,27 @@
     .tag.retrieval { background: rgba(122, 229, 195, 0.12); color: #7ae5c3; }
     .tag.diagnostic { background: rgba(216, 244, 165, 0.12); color: #d8f4a5; }
     .task-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .task-modality-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .task-modality-chips span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: 999px;
+      padding: 5px 8px;
+      color: #d8ead2;
+      background: rgba(204, 255, 160, 0.07);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.035em;
+      text-transform: uppercase;
+    }
     .task-contract {
       display: grid;
       gap: 8px;
@@ -6585,7 +6593,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Task cards and metrics.</h2>
-          <p>All 20 task contracts are shown together with readable research names, representative modality thumbnails, explicit input-process-output contracts, and verified minimal versus neural scores. Rich interactive walkthroughs are available for the first 12 task cards; the remaining cards use the same unified task contract.</p>
+          <p>All 20 task contracts are shown together with readable research names, assigned task icons, compact modality chips, explicit input-process-output contracts, and verified minimal versus neural scores. Full modality imagery stays in the modality atlas, raw sample browser, and interactive walkthrough where it has context.</p>
         </div>
         <article class="task-icon-atlas">
           <div>
@@ -8072,15 +8080,17 @@ python scripts/validate_publication_package.py</code></pre>
       const grid = document.getElementById("taskGrid");
       grid.innerHTML = taskEntries.map((task, index) => {
         const family = task.task_family;
-        const poster = modalityMeta[task.poster_modality] || modalityMeta.video;
         const icon = taskIconFor(task);
         const minimal = formatMetric(task.metric?.minimal);
         const neural = formatMetric(task.metric?.neural_mlp);
+        const modalityChips = (task.modalities || [])
+          .map((key) => modalityMeta[key]?.label || key)
+          .filter(Boolean)
+          .slice(0, 5)
+          .map((label) => `<span>${escapeHtml(label)}</span>`)
+          .join("");
         return `
           <button type="button" class="task-card" data-kind="${escapeHtml(family)}" data-index="${index}" aria-pressed="false">
-            <span class="task-card-media" aria-hidden="true">
-              <img src="${poster.src}" alt="">
-            </span>
             <div class="task-top">
               <span class="task-title-wrap">
                 <img class="task-card-icon" src="${escapeHtml(icon.src)}" alt="${escapeHtml(icon.alt)}" loading="lazy">
@@ -8097,6 +8107,7 @@ python scripts/validate_publication_package.py</code></pre>
               <span><strong>Middle</strong>${escapeHtml(task.process_short)}</span>
               <span><strong>Output</strong>${escapeHtml(task.output_short)}</span>
             </div>
+            <div class="task-modality-chips" aria-label="Modalities used by ${escapeHtml(task.display_name)}">${modalityChips}</div>
             <div class="metric-row">
               <span><strong>${minimal}</strong>minimal ${escapeHtml(task.metric?.name)}</span>
               <span><strong>${neural}</strong>neural MLP</span>
