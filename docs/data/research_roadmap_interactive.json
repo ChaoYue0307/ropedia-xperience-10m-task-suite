@@ -521,7 +521,7 @@
         "total_links": 5
       },
       "current_readout": "The current suite checks cross-modal alignment and depth/video reconstruction proxies; it does not yet train a renderer or reconstruct geometry.",
-      "current_status": "proxy tasks only",
+      "current_status": "prerequisite evidence",
       "extension_tasks": [
         {
           "current_limit": "This checks calibrated multi-view signal, but it is still feature retrieval, not NeRF, Gaussian Splatting, or novel-view synthesis.",
@@ -806,7 +806,7 @@
         "total_links": 17
       },
       "current_readout": "The unified 20-task suite directly targets egocentric action, task state, interaction, grounding, forecasting, and alignment.",
-      "current_status": "strongest implemented track",
+      "current_status": "strongest implemented",
       "extension_tasks": [
         {
           "current_limit": "This is an action-structure probe inside one episode, not a general intent model across homes, people, or tasks.",
@@ -1779,7 +1779,7 @@
         "total_links": 15
       },
       "current_readout": "The current tasks probe temporal structure, object relevance, cross-modal retrieval, and modality prediction, but they do not yet build persistent maps or scene graphs.",
-      "current_status": "early proxy tasks",
+      "current_status": "world-model prerequisites",
       "extension_tasks": [
         {
           "current_limit": "This is a compact world-model proxy; it does not build a persistent map, scene graph, or object permanence model.",
@@ -2862,7 +2862,7 @@
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-22T10:07:43+00:00",
+  "generated_at_utc": "2026-06-22T19:32:30+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",

@@ -59,6 +59,7 @@ async function inspectViewport(page, baseUrl, viewport, name) {
   await page.setViewportSize(viewport);
   await page.goto(`${baseUrl}#takeaways`, { waitUntil: "networkidle" });
   await page.waitForSelector("#takeaways #result-matrix-table", { timeout: 20000 });
+  await page.waitForSelector("#resultScoreTable tbody tr:nth-child(2)", { timeout: 20000 });
   await page.locator("#takeaways").scrollIntoViewIfNeeded();
   await page.waitForTimeout(500);
 

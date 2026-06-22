@@ -53,7 +53,7 @@
       "name": "3D/4D Reconstruction & Neural Rendering",
       "focus": "Multi-view dynamic scene reconstruction, NeRF/Gaussian Splatting, novel-view synthesis.",
       "preferred_background": "3D reconstruction, neural rendering, camera calibration, and bundle adjustment.",
-      "current_status": "proxy tasks only",
+      "current_status": "prerequisite evidence",
       "current_readout": "The current suite checks cross-modal alignment and depth/video reconstruction proxies; it does not yet train a renderer or reconstruct geometry.",
       "next_steps": [
         "Use calibrated multi-view video plus SLAM pose to build per-episode camera trajectories.",
@@ -86,7 +86,7 @@
       "name": "Egocentric Vision & Interaction",
       "focus": "Egocentric action and intention understanding, hand-object interaction, gaze/attention modeling, task structure modeling.",
       "preferred_background": "Video understanding, action recognition, or egocentric vision.",
-      "current_status": "strongest implemented track",
+      "current_status": "strongest implemented",
       "current_readout": "The unified 20-task suite directly targets egocentric action, task state, interaction, grounding, forecasting, and alignment.",
       "next_steps": [
         "Move from single-episode chronological splits to held-out-episode splits.",
@@ -143,7 +143,7 @@
       "name": "Scene Reconstruction & World Modeling",
       "focus": "Long-term consistent 3D/4D scene mapping, scene graphs, object- and space-centric representations, spatial reasoning.",
       "preferred_background": "Large-scale mapping, semantic reconstruction, or agent world models.",
-      "current_status": "early proxy tasks",
+      "current_status": "world-model prerequisites",
       "current_readout": "The current tasks probe temporal structure, object relevance, cross-modal retrieval, and modality prediction, but they do not yet build persistent maps or scene graphs.",
       "next_steps": [
         "Convert windows into persistent object/scene-state nodes with timestamps and camera poses.",

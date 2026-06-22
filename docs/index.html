@@ -943,6 +943,151 @@
       line-height: 1.6;
       text-wrap: pretty;
     }
+    .suite-task-index {
+      scroll-margin-top: var(--tab-stack-offset);
+      border: 1px solid rgba(204, 255, 160, 0.22);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(122, 229, 195, 0.10), transparent 34%),
+        linear-gradient(180deg, rgba(204, 255, 160, 0.07), rgba(2, 5, 2, 0.82)),
+        rgba(7, 18, 7, 0.78);
+      padding: clamp(18px, 2.6vw, 28px);
+      margin: 20px 0 24px;
+    }
+    .suite-task-index-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.62fr);
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 16px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(204, 255, 160, 0.16);
+    }
+    .suite-task-index-head span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 820;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .suite-task-index-head h3 {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: clamp(24px, 3vw, 38px);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+    .suite-task-index-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      text-wrap: pretty;
+    }
+    .task-index-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .task-index-grid a {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      column-gap: 9px;
+      row-gap: 2px;
+      align-items: center;
+      border: 1px solid rgba(204, 255, 160, 0.15);
+      border-radius: 8px;
+      background: rgba(2, 5, 2, 0.44);
+      color: var(--ink);
+      padding: 9px;
+      text-decoration: none;
+      transition: transform 200ms var(--motion-ease), border-color 200ms var(--motion-ease), background 200ms var(--motion-ease);
+    }
+    .task-index-grid a:hover {
+      transform: translateY(-1px);
+      border-color: rgba(204, 255, 160, 0.48);
+      background: rgba(204, 255, 160, 0.08);
+    }
+    .task-index-grid img {
+      grid-row: 1 / span 2;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(204, 255, 160, 0.20);
+      border-radius: 8px;
+      background: rgba(2, 5, 2, 0.78);
+      object-fit: contain;
+    }
+    .task-index-grid strong {
+      min-width: 0;
+      color: #f6ffef;
+      font-family: var(--font-ui);
+      font-size: 12.5px;
+      line-height: 1.14;
+    }
+    .task-index-grid span {
+      min-width: 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.2;
+    }
+    .task-map-details {
+      scroll-margin-top: var(--tab-stack-offset);
+      margin: 22px 0 24px;
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: var(--radius);
+      background: rgba(2, 5, 2, 0.52);
+      overflow: hidden;
+    }
+    .task-map-details summary {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: minmax(0, 0.54fr) minmax(280px, 1fr);
+      gap: 16px;
+      align-items: center;
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(204, 255, 160, 0.12);
+    }
+    .task-map-details summary::-webkit-details-marker {
+      display: none;
+    }
+    .task-map-details summary span {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 820;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .task-map-details summary strong {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .task-map-details[open] summary {
+      background: rgba(204, 255, 160, 0.06);
+    }
+    .figure-pan#task-suite-map {
+      margin: 22px 0 24px;
+      overflow: visible;
+      padding-bottom: 0;
+    }
+    .figure-pan#task-suite-map .task-map-details {
+      margin: 0;
+    }
+    .task-map-figure-frame {
+      overflow-x: auto;
+      padding: 0 16px 16px;
+    }
+    .task-map-figure-frame .task-suite-image {
+      margin-top: 16px;
+    }
     .section-head {
       display: flex;
       justify-content: space-between;
@@ -1026,6 +1171,46 @@
       grid-template-columns: minmax(0, 1fr);
       gap: 24px;
       margin: 26px 0 34px;
+    }
+    .split-radar-details {
+      margin: 18px 0 28px;
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: var(--radius);
+      background: rgba(2, 5, 2, 0.46);
+      overflow: hidden;
+    }
+    .split-radar-details summary {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: minmax(0, 0.38fr) minmax(280px, 1fr);
+      gap: 16px;
+      align-items: center;
+      padding: 16px 18px;
+    }
+    .split-radar-details summary::-webkit-details-marker {
+      display: none;
+    }
+    .split-radar-details summary span {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 820;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .split-radar-details summary strong {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .split-radar-details[open] summary {
+      border-bottom: 1px solid rgba(204, 255, 160, 0.12);
+      background: rgba(204, 255, 160, 0.06);
+    }
+    .split-radar-details .split-radar-grid {
+      margin: 0;
+      padding: 18px;
     }
     .split-radar-card {
       min-width: 0;
@@ -1376,6 +1561,55 @@
       border-color: rgba(204, 255, 160, 0.44);
       background: rgba(204, 255, 160, 0.12);
     }
+    .reader-priority-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 26px 0 30px;
+    }
+    .reader-priority-grid article {
+      min-width: 0;
+      border: 1px solid rgba(204, 255, 160, 0.20);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.075), rgba(2, 5, 2, 0.58)),
+        rgba(7, 18, 7, 0.72);
+      padding: 18px;
+    }
+    .reader-priority-grid small {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 820;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .reader-priority-grid strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 20px;
+      line-height: 1.12;
+    }
+    .reader-priority-grid p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.52;
+    }
+    .reader-priority-grid a {
+      display: inline-flex;
+      margin-top: 13px;
+      color: var(--cyan);
+      font-family: var(--font-btn);
+      font-size: 12px;
+      font-weight: 780;
+      text-decoration: none;
+    }
+    .reader-priority-grid a:hover {
+      color: var(--green);
+    }
     .result-reading-order {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1409,6 +1643,43 @@
       color: var(--muted);
       font-size: 13px;
       line-height: 1.45;
+    }
+    .result-rules-panel {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 22px 0 22px;
+    }
+    .result-rules-panel article {
+      border: 1px solid rgba(204, 255, 160, 0.20);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.08), rgba(7, 18, 7, 0.72)),
+        rgba(2, 5, 2, 0.70);
+      padding: 16px;
+      min-width: 0;
+    }
+    .result-rules-panel small {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 820;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .result-rules-panel strong {
+      display: block;
+      margin-top: 7px;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 18px;
+      line-height: 1.12;
+    }
+    .result-rules-panel p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.48;
     }
     .line-table {
       width: 100%;
@@ -2493,12 +2764,13 @@
     .surface-map a:hover { border-color: var(--green); }
     .glossary-panel {
       display: grid;
-      grid-template-columns: minmax(260px, 0.88fr) minmax(0, 1.42fr);
+      grid-template-columns: 1fr;
       gap: 18px;
       align-items: start;
     }
     .glossary-summary {
       display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
     }
     .glossary-summary article {
@@ -2528,6 +2800,77 @@
       color: var(--muted);
       font-size: 13px;
       line-height: 1.5;
+    }
+    .glossary-controls {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(204, 255, 160, 0.16);
+      border-radius: var(--card-radius);
+      background: rgba(2, 5, 2, 0.48);
+      padding: 14px;
+    }
+    .glossary-search {
+      display: grid;
+      gap: 7px;
+    }
+    .glossary-search span,
+    .glossary-count {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 820;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .glossary-search input {
+      width: 100%;
+      border: 1px solid rgba(204, 255, 160, 0.22);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.28);
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+      line-height: 1.2;
+      padding: 11px 12px;
+      outline: none;
+    }
+    .glossary-search input:focus {
+      border-color: rgba(204, 255, 160, 0.62);
+      box-shadow: 0 0 0 3px rgba(204, 255, 160, 0.10);
+    }
+    .glossary-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .glossary-filter {
+      min-height: 32px;
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: 999px;
+      background: rgba(204, 255, 160, 0.055);
+      color: #dce8d6;
+      cursor: pointer;
+      font-family: var(--font-btn);
+      font-size: 11.5px;
+      font-weight: 760;
+      padding: 0 11px;
+      transition: background 180ms var(--motion-ease), border-color 180ms var(--motion-ease), color 180ms var(--motion-ease);
+    }
+    .glossary-filter:hover {
+      border-color: rgba(204, 255, 160, 0.48);
+      color: var(--ink);
+    }
+    .glossary-filter.active {
+      border-color: var(--green);
+      background: var(--green);
+      color: #020502;
+    }
+    .glossary-count {
+      margin: 0;
+      color: rgba(204, 255, 160, 0.74);
+      text-transform: none;
+      letter-spacing: 0.02em;
     }
     .glossary-table-wrap {
       overflow-x: auto;
@@ -2585,6 +2928,9 @@
     }
     .glossary-table tr:last-child td {
       border-bottom: 0;
+    }
+    .glossary-table tr[hidden] {
+      display: none;
     }
     .glossary-links {
       display: flex;
@@ -4626,6 +4972,9 @@
       .glossary-panel {
         grid-template-columns: 1fr;
       }
+      .glossary-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
       .source-map-grid,
       .source-map-legend {
         grid-template-columns: 1fr;
@@ -4730,7 +5079,16 @@
         border-right: 0;
         border-bottom: 1px solid var(--line);
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .reader-journey, .resource-mode-grid, .suite-lines, .result-reading-order { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .reader-journey, .resource-mode-grid, .suite-lines, .result-reading-order, .reader-priority-grid, .result-rules-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .suite-task-index-head,
+      .task-map-details summary,
+      .split-radar-details summary {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+      .task-index-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
       .brief-panel-head { grid-template-columns: 1fr; align-items: start; }
       .task-player { grid-template-columns: 1fr; }
       .task-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -5006,7 +5364,10 @@
         width: 100%;
         justify-content: center;
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .reader-priority-grid, .result-rules-panel, .suite-task-index-head { grid-template-columns: 1fr; }
+      .task-index-grid {
+        grid-template-columns: 1fr;
+      }
       .result-matrix-head {
         grid-template-columns: 1fr;
       }
@@ -5062,6 +5423,49 @@
       .line-table td:first-child {
         width: auto;
         padding-top: 14px;
+      }
+      .glossary-table {
+        min-width: 0;
+      }
+      .glossary-summary {
+        grid-template-columns: 1fr;
+      }
+      .glossary-table,
+      .glossary-table thead,
+      .glossary-table tbody,
+      .glossary-table tr,
+      .glossary-table th,
+      .glossary-table td {
+        display: block;
+      }
+      .glossary-table thead {
+        display: none;
+      }
+      .glossary-table tr {
+        border-bottom: 1px solid rgba(204, 255, 160, 0.14);
+        padding: 10px 0;
+      }
+      .glossary-table tr:last-child {
+        border-bottom: 0;
+      }
+      .glossary-table td {
+        border-bottom: 0;
+        padding: 8px 12px;
+      }
+      .glossary-table td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 3px;
+        color: var(--green);
+        font-family: var(--font-mono);
+        font-size: 9.5px;
+        font-weight: 820;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+      .glossary-table td:first-child {
+        width: auto;
+        font-size: 16px;
       }
       .about-identity {
         grid-template-columns: 1fr;
@@ -5198,14 +5602,10 @@
         <a href="#dataset-card">Data</a>
         <a href="#suite">Tasks</a>
         <a href="#pipeline">Method</a>
-        <a href="#models">Results</a>
+        <a href="#takeaways">Results</a>
         <a href="#directions">Directions</a>
-        <a href="research_roadmap.html">Roadmap</a>
         <a href="#glossary">Glossary</a>
-        <a class="nav-optional" href="#reader-map">Reader Map</a>
-        <a class="nav-optional" href="#walkthroughs">Demo</a>
-        <a class="nav-optional" href="single_episode_explorer.html">Explorer</a>
-        <a class="nav-optional" href="#artifacts">Files</a>
+        <a href="research_roadmap.html">Roadmap</a>
       </div>
       <div class="nav-tools">
         <div class="site-language notranslate" translate="no" data-short="EN">
@@ -5434,6 +5834,26 @@
               <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a>
             </div>
           </div>
+        </div>
+        <div class="reader-priority-grid" aria-label="Fast reader orientation">
+          <article>
+            <small>first question</small>
+            <strong>What is this?</strong>
+            <p>A public Xperience-10M task-suite package: one inspectable sample line plus a selected-128 comparison line, both organized around the same 20 task contracts.</p>
+            <a href="#suite">Open the 20 tasks</a>
+          </article>
+          <article>
+            <small>second question</small>
+            <strong>What should I compare?</strong>
+            <p>Use the 1-episode line for reproducible task-head baselines. Use the 128-episode line for metadata/raw baselines, Qwen3-Omni v6, and Cosmos3 diagnostics.</p>
+            <a href="#takeaways">Open the result table</a>
+          </article>
+          <article>
+            <small>third question</small>
+            <strong>What is not overclaimed?</strong>
+            <p>Direct scores, compact-proxy scores, normalized radar values, adapters, and public mirrors stay labeled separately so the evidence type is visible before interpretation.</p>
+            <a href="#glossary">Check the glossary</a>
+          </article>
         </div>
         <figure class="line-map-figure">
           <img src="assets/charts/two_evidence_line_map.svg?v=two-line-map-v1" alt="Two evidence-line map showing 1 sample episode, 128 selected episodes, and the combined 180 scored method-task records">
@@ -6343,13 +6763,51 @@
           <p>Task map, radar comparisons, task cards, and the 180-result table are kept in one reading flow. Start with the map, inspect the score surfaces, then open each task card for its input, process, output, and metric.</p>
         </div>
         <nav class="suite-jump-row" aria-label="20-task suite quick links">
-          <a href="#task-suite-map">Task map</a>
+          <a href="#suite-task-index">20-task index</a>
           <a href="#suite-radars">Radars</a>
           <a href="#tasks">Task cards</a>
+          <a href="#task-suite-map">Full map figure</a>
           <a href="#result-matrix-table">180-result table</a>
         </nav>
+        <div class="suite-task-index" id="suite-task-index" aria-label="Compact list of all 20 task contracts">
+          <div class="suite-task-index-head">
+            <span>unified task index</span>
+            <h3>All 20 tasks are one suite, not a separate tier.</h3>
+            <p>Each axis below has a task card, raw metric value, normalized radar value, source artifact, and method-row entry in the 180-result matrix.</p>
+          </div>
+          <div class="task-index-grid">
+            <a href="#tasks"><img src="assets/task-icons/01_timeline_action.svg" alt="" loading="lazy"><strong>01 Action Recognition</strong><span>current action label</span></a>
+            <a href="#tasks"><img src="assets/task-icons/02_timeline_subtask.svg" alt="" loading="lazy"><strong>02 Procedure Step Recognition</strong><span>current subtask label</span></a>
+            <a href="#tasks"><img src="assets/task-icons/03_transition_detection.svg" alt="" loading="lazy"><strong>03 Action Boundary Detection</strong><span>temporal transition</span></a>
+            <a href="#tasks"><img src="assets/task-icons/04_next_action.svg" alt="" loading="lazy"><strong>04 Next-Action Prediction</strong><span>near future action</span></a>
+            <a href="#tasks"><img src="assets/task-icons/05_hand_trajectory_forecast.svg" alt="" loading="lazy"><strong>05 Hand Trajectory Forecasting</strong><span>future hand path</span></a>
+            <a href="#tasks"><img src="assets/task-icons/06_contact_prediction.svg" alt="" loading="lazy"><strong>06 Contact State Prediction</strong><span>hand/object contact</span></a>
+            <a href="#tasks"><img src="assets/task-icons/07_object_relevance.svg" alt="" loading="lazy"><strong>07 Object Relevance Prediction</strong><span>task-relevant object</span></a>
+            <a href="#tasks"><img src="assets/task-icons/08_caption_grounding.svg" alt="" loading="lazy"><strong>08 Language Grounding</strong><span>caption target</span></a>
+            <a href="#tasks"><img src="assets/task-icons/09_cross_modal_retrieval.svg" alt="" loading="lazy"><strong>09 Cross-Modal Retrieval</strong><span>matched modality window</span></a>
+            <a href="#tasks"><img src="assets/task-icons/10_modality_reconstruction.svg" alt="" loading="lazy"><strong>10 Cross-Modal Reconstruction</strong><span>missing stream features</span></a>
+            <a href="#tasks"><img src="assets/task-icons/11_temporal_order.svg" alt="" loading="lazy"><strong>11 Temporal Order Verification</strong><span>before/after order</span></a>
+            <a href="#tasks"><img src="assets/task-icons/12_misalignment_detection.svg" alt="" loading="lazy"><strong>12 Multimodal Sync Detection</strong><span>aligned vs shifted streams</span></a>
+            <a href="#tasks"><img src="assets/task-icons/13_long_horizon_next_action.svg" alt="" loading="lazy"><strong>13 Long-Horizon Next-Action Forecasting</strong><span>future action label</span></a>
+            <a href="#tasks"><img src="assets/task-icons/14_next_subtask_forecast.svg" alt="" loading="lazy"><strong>14 Long-Horizon Next-Subtask Forecasting</strong><span>future subtask label</span></a>
+            <a href="#tasks"><img src="assets/task-icons/15_interaction_text_prediction.svg" alt="" loading="lazy"><strong>15 Interaction Text Prediction</strong><span>natural interaction class</span></a>
+            <a href="#tasks"><img src="assets/task-icons/16_action_object_relation.svg" alt="" loading="lazy"><strong>16 Action-Object Relation Prediction</strong><span>action/object pair</span></a>
+            <a href="#tasks"><img src="assets/task-icons/17_object_set_forecast.svg" alt="" loading="lazy"><strong>17 Future Object-Set Forecasting</strong><span>future object set</span></a>
+            <a href="#tasks"><img src="assets/task-icons/18_imu_to_hand_pose.svg" alt="" loading="lazy"><strong>18 IMU-to-Hand Pose Reconstruction</strong><span>inertial to hand pose</span></a>
+            <a href="#tasks"><img src="assets/task-icons/19_camera_view_sync_retrieval.svg" alt="" loading="lazy"><strong>19 Camera-View Sync Retrieval</strong><span>matching camera view</span></a>
+            <a href="#tasks"><img src="assets/task-icons/20_time_to_transition.svg" alt="" loading="lazy"><strong>20 Time-to-Next-Transition Regression</strong><span>seconds to boundary</span></a>
+          </div>
+        </div>
         <div class="figure-pan" id="task-suite-map">
-          <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-taskfirst-v14-modality-compact" alt="Infographic showing Ropedia Xperience-10M task families with compact modality cards and visible thumbnails">
+          <details class="task-map-details">
+            <summary>
+              <span>Open full generated task-map figure</span>
+              <strong>Large overview kept here for visual scanning after the compact index.</strong>
+            </summary>
+            <div class="task-map-figure-frame">
+              <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-taskfirst-v14-modality-compact" alt="Infographic showing Ropedia Xperience-10M task families with compact modality cards and visible thumbnails">
+            </div>
+          </details>
         </div>
         <div class="figure-brief">
           <article class="figure-brief-card">
@@ -6367,27 +6825,33 @@
         </div>
         <div class="suite-radar-block" id="suite-radars">
           <img class="chart radar-chart unified-radar-chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v8-readable" alt="Unified grouped 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, score counts, and proxy notes">
-          <div class="split-radar-grid" aria-label="Split 20-task radar comparisons">
-            <article class="split-radar-card">
-              <h3>1-Episode 20-Task Radar</h3>
-              <p>Minimal and Neural MLP are both scored on all 20 public-sample task contracts in one enlarged panel without 128-episode methods competing for attention.</p>
-              <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
-              <div class="split-radar-links">
-                <a href="assets/charts/single_episode_task_model_radar.svg">Open SVG</a>
-                <a href="data/single_episode_task_model_radar.json">Open chart data</a>
-              </div>
-            </article>
-            <article class="split-radar-card">
-              <h3>128-Episode 20-Task Radar</h3>
-              <p>Seven aligned 128-episode methods cover all 20 axes across metadata/text, raw-feature, and foundation-model panels. Proxy axes stay labeled in the chart and source data.</p>
-              <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="128-episode grouped 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
-              <div class="split-radar-links">
-                <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
-                <a href="data/episode128_task_model_radar.json">Open chart data</a>
-                <a href="data/task_method_20_gap_audit.json">Gap audit</a>
-              </div>
-            </article>
-          </div>
+          <details class="split-radar-details">
+            <summary>
+              <span>Open split radars</span>
+              <strong>Use these when you want the 1-episode and 128-episode comparisons separated into larger dedicated panels.</strong>
+            </summary>
+            <div class="split-radar-grid" aria-label="Split 20-task radar comparisons">
+              <article class="split-radar-card">
+                <h3>1-Episode 20-Task Radar</h3>
+                <p>Minimal and Neural MLP are both scored on all 20 public-sample task contracts in one enlarged panel without 128-episode methods competing for attention.</p>
+                <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
+                <div class="split-radar-links">
+                  <a href="assets/charts/single_episode_task_model_radar.svg">Open SVG</a>
+                  <a href="data/single_episode_task_model_radar.json">Open chart data</a>
+                </div>
+              </article>
+              <article class="split-radar-card">
+                <h3>128-Episode 20-Task Radar</h3>
+                <p>Seven aligned 128-episode methods cover all 20 axes across metadata/text, raw-feature, and foundation-model panels. Proxy axes stay labeled in the chart and source data.</p>
+                <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="128-episode grouped 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
+                <div class="split-radar-links">
+                  <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
+                  <a href="data/episode128_task_model_radar.json">Open chart data</a>
+                  <a href="data/task_method_20_gap_audit.json">Gap audit</a>
+                </div>
+              </article>
+            </div>
+          </details>
         </div>
         <div class="suite-task-cards-block" id="tasks">
           <div class="task-suite-subhead">
@@ -6457,6 +6921,23 @@
           <a href="#neural">Neural heads</a>
           <a href="#diagnostics">Diagnostic charts</a>
         </nav>
+        <div class="result-rules-panel" aria-label="Result reading rules">
+          <article>
+            <small>cite this</small>
+            <strong>Raw metric value</strong>
+            <p>The score printed in each table cell is the value emitted by the runner or verified package. Use this value in text, tables, and comparisons.</p>
+          </article>
+          <article>
+            <small>visual only</small>
+            <strong>Normalized radar value</strong>
+            <p>The radar converts mixed metrics to a 0-1 plotting scale. It helps pattern recognition, but it is not a replacement for the raw metric.</p>
+          </article>
+          <article>
+            <small>status first</small>
+            <strong>Direct vs compact-proxy</strong>
+            <p>Direct scores use the task target. Compact-proxy scores are bounded substitutes where a raw public target is unavailable, and stay marked before comparison.</p>
+          </article>
+        </div>
         <div class="result-reading-order" id="result-lines" aria-label="How to read the result evidence">
           <article class="result-reading-step">
             <span>01</span>
@@ -6750,7 +7231,7 @@
             <div class="direction-counts"><span><strong>2</strong>direct</span><span><strong>2</strong>proxy</span><span><strong>0</strong>diagnostic</span></div>
           </article>
           <article class="direction-card">
-            <span class="status-pill">proxy tasks only</span>
+            <span class="status-pill">prerequisite evidence</span>
             <h3>B. 3D/4D Reconstruction & Neural Rendering</h3>
             <p>Cross-modal retrieval, modality reconstruction, and misalignment detection check reconstruction prerequisites, not full geometry.</p>
             <div class="direction-counts"><span><strong>0</strong>direct</span><span><strong>2</strong>proxy</span><span><strong>1</strong>diagnostic</span></div>
@@ -6762,7 +7243,7 @@
             <div class="direction-counts"><span><strong>6</strong>direct</span><span><strong>2</strong>proxy</span><span><strong>3</strong>diagnostic</span></div>
           </article>
           <article class="direction-card">
-            <span class="status-pill">early proxy tasks</span>
+            <span class="status-pill">world-model prerequisites</span>
             <h3>D. Scene Reconstruction & World Modeling</h3>
             <p>Current probes cover task state, object relevance, retrieval, reconstruction, temporal order, and alignment but no persistent map yet.</p>
             <div class="direction-counts"><span><strong>0</strong>direct</span><span><strong>6</strong>proxy</span><span><strong>3</strong>diagnostic</span></div>
@@ -6983,6 +7464,22 @@
             </article>
           </div>
           <div>
+            <div class="glossary-controls" aria-label="Glossary search and filters">
+              <label class="glossary-search" for="glossarySearch">
+                <span>Search glossary</span>
+                <input id="glossarySearch" type="search" placeholder="Search terms, meanings, task names, metrics, models..." autocomplete="off">
+              </label>
+              <div class="glossary-filter-bar" aria-label="Filter glossary by category">
+                <button type="button" class="glossary-filter active" data-glossary-filter="all">All</button>
+                <button type="button" class="glossary-filter" data-glossary-filter="data">Data</button>
+                <button type="button" class="glossary-filter" data-glossary-filter="tasks">Tasks</button>
+                <button type="button" class="glossary-filter" data-glossary-filter="metrics">Metrics</button>
+                <button type="button" class="glossary-filter" data-glossary-filter="models">Models</button>
+                <button type="button" class="glossary-filter" data-glossary-filter="robotics">Robotics</button>
+                <button type="button" class="glossary-filter" data-glossary-filter="public">Public artifacts</button>
+              </div>
+              <p class="glossary-count" id="glossaryCount" aria-live="polite">Loading glossary terms...</p>
+            </div>
             <div class="glossary-table-wrap">
               <table class="glossary-table">
                 <thead>
@@ -8022,6 +8519,7 @@ python scripts/validate_publication_package.py</code></pre>
     };
 
     let glossaryTermMap = new Map();
+    let activeGlossaryFilter = "all";
     const fallbackTermDefinitions = {
       "direct score": "A metric computed against the task target directly. This is the preferred score type in the 20-task matrix.",
       "direct": "A metric computed against the task target directly. This is the preferred score type in the 20-task matrix.",
@@ -8070,8 +8568,15 @@ python scripts/validate_publication_package.py</code></pre>
       const categoryLabels = new Map((payload.categories || []).map((category) => [category.id, category.label]));
       tableBody.innerHTML = payload.entries.map((entry) => {
         const category = categoryLabels.get(entry.category) || entry.category || "Glossary";
+        const searchable = [
+          entry.term,
+          category,
+          entry.plain_meaning,
+          entry.project_usage,
+          entry.do_not_confuse_with
+        ].filter(Boolean).join(" ");
         return `
-          <tr>
+          <tr data-glossary-category="${escapeHtml(entry.category || "other")}" data-glossary-search="${escapeHtml(searchable.toLowerCase())}">
             <td>${escapeHtml(entry.term)}<small>${escapeHtml(category)}</small></td>
             <td>${escapeHtml(entry.plain_meaning || "")}</td>
             <td>${escapeHtml(entry.project_usage || "")}</td>
@@ -8079,6 +8584,52 @@ python scripts/validate_publication_package.py</code></pre>
           </tr>
         `;
       }).join("");
+      labelResponsiveTables();
+      applyGlossaryFilter();
+    }
+
+    function glossaryCategoryMatches(category, filter) {
+      const value = String(category || "").toLowerCase();
+      if (filter === "all") return true;
+      if (filter === "data") return value.includes("data") || value.includes("scope") || value.includes("file") || value.includes("feature") || value.includes("multimodal") || value.includes("sensing") || value.includes("spatial") || value.includes("temporal");
+      if (filter === "tasks") return value.includes("task") || value.includes("suite") || value.includes("window");
+      if (filter === "metrics") return value.includes("metric") || value.includes("evaluation") || value.includes("score");
+      if (filter === "models") return value.includes("model") || value.includes("training") || value.includes("adapter") || value.includes("qwen") || value.includes("cosmos");
+      if (filter === "robotics") return value.includes("robot") || value.includes("vla") || value.includes("policy") || value.includes("action");
+      if (filter === "public") return value.includes("public") || value.includes("artifact") || value.includes("mirror") || value.includes("hugging") || value.includes("repo");
+      return value.includes(filter);
+    }
+
+    function applyGlossaryFilter() {
+      const rows = Array.from(document.querySelectorAll("#glossaryRows tr"));
+      if (!rows.length) return;
+      const query = String(document.getElementById("glossarySearch")?.value || "").trim().toLowerCase();
+      let visible = 0;
+      rows.forEach((row) => {
+        const category = row.dataset.glossaryCategory || "";
+        const text = row.dataset.glossarySearch || row.textContent.toLowerCase();
+        const show = glossaryCategoryMatches(category, activeGlossaryFilter) && (!query || text.includes(query));
+        row.hidden = !show;
+        if (show) visible += 1;
+      });
+      const count = document.getElementById("glossaryCount");
+      if (count) count.textContent = `${visible} of ${rows.length} terms shown`;
+    }
+
+    function initGlossaryControls() {
+      const search = document.getElementById("glossarySearch");
+      if (search) search.addEventListener("input", applyGlossaryFilter);
+      document.querySelectorAll(".glossary-filter").forEach((button) => {
+        button.addEventListener("click", () => {
+          activeGlossaryFilter = button.dataset.glossaryFilter || "all";
+          document.querySelectorAll(".glossary-filter").forEach((candidate) => {
+            const active = candidate === button;
+            candidate.classList.toggle("active", active);
+            candidate.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+          applyGlossaryFilter();
+        });
+      });
     }
 
     let glossaryDataPromise = null;
@@ -8619,7 +9170,7 @@ python scripts/validate_publication_package.py</code></pre>
     }
 
     function labelResponsiveTables() {
-      document.querySelectorAll(".line-table").forEach((table) => {
+      document.querySelectorAll(".line-table, .glossary-table").forEach((table) => {
         const headers = Array.from(table.querySelectorAll("thead th")).map((header) => header.textContent.trim());
         table.querySelectorAll("tbody tr").forEach((row) => {
           Array.from(row.children).forEach((cell, index) => {
@@ -8666,6 +9217,7 @@ python scripts/validate_publication_package.py</code></pre>
       });
     });
     labelResponsiveTables();
+    initGlossaryControls();
     initGlossaryData();
     initResultMatrixTable();
     initTaskSurface();

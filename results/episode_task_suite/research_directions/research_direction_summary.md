@@ -15,9 +15,9 @@ It maps the current Xperience-10M sample tasks to the four Ropedia research dire
 | Direction | Current status | Direct | Proxy | Diagnostic | Current readout |
 | --- | --- | ---: | ---: | ---: | --- |
 | A. Human Modeling & Motion Understanding | partially implemented | 3 | 3 | 0 | The sample supports hand trajectory forecasting and contact/object probes, but it does not yet include a full body/shape model or multi-person priors. |
-| B. 3D/4D Reconstruction & Neural Rendering | proxy tasks only | 1 | 3 | 1 | The current suite checks cross-modal alignment and depth/video reconstruction proxies; it does not yet train a renderer or reconstruct geometry. |
-| C. Egocentric Vision & Interaction | strongest implemented track | 10 | 3 | 4 | The unified 20-task suite directly targets egocentric action, task state, interaction, grounding, forecasting, and alignment. |
-| D. Scene Reconstruction & World Modeling | early proxy tasks | 1 | 10 | 4 | The current tasks probe temporal structure, object relevance, cross-modal retrieval, and modality prediction, but they do not yet build persistent maps or scene graphs. |
+| B. 3D/4D Reconstruction & Neural Rendering | prerequisite evidence | 1 | 3 | 1 | The current suite checks cross-modal alignment and depth/video reconstruction proxies; it does not yet train a renderer or reconstruct geometry. |
+| C. Egocentric Vision & Interaction | strongest implemented | 10 | 3 | 4 | The unified 20-task suite directly targets egocentric action, task state, interaction, grounding, forecasting, and alignment. |
+| D. Scene Reconstruction & World Modeling | world-model prerequisites | 1 | 10 | 4 | The current tasks probe temporal structure, object relevance, cross-modal retrieval, and modality prediction, but they do not yet build persistent maps or scene graphs. |
 
 ## Task Mapping With Two Baselines
 

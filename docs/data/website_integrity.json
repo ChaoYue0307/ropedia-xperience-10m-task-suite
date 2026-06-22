@@ -1,11 +1,11 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-22T18:14:28+00:00",
+  "generated_at_utc": "2026-06-22T19:37:45+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 295,
+    "local_references": 335,
     "external_reference_count": 151,
     "json_files": 56,
     "image_assets_referenced": 49,
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 158999,
-      "evidence_index": 206813
+      "overview_index": 169879,
+      "evidence_index": 218891
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 158999,
-      "protocol_index": 203018,
-      "evidence_index": 206813
+      "overview_index": 169879,
+      "protocol_index": 215096,
+      "evidence_index": 218891
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -186,8 +186,8 @@
       "name": "suite_task_map_precedes_radar_surface",
       "status": "pass",
       "reason": "The Suite anchor should show the task-suite map before the radar/results surface.",
-      "first_marker_index": 760,
-      "second_marker_index": 2368
+      "first_marker_index": 5187,
+      "second_marker_index": 7141
     },
     {
       "name": "raw_sample_stream_ledger_contains_seven_modalities",
@@ -278,7 +278,7 @@
       "name": "task_cards_use_human_research_names",
       "status": "pass",
       "reason": "The public task surface should use readable research task names.",
-      "marker_count": 4
+      "marker_count": 5
     }
   ],
   "html_pages": [
@@ -290,9 +290,9 @@
     },
     {
       "path": "index.html",
-      "id_count": 106,
-      "reference_count": 267,
-      "image_count": 54
+      "id_count": 109,
+      "reference_count": 307,
+      "image_count": 74
     },
     {
       "path": "research_roadmap.html",
@@ -465,7 +465,7 @@
     },
     {
       "path": "data/research_directions.json",
-      "bytes": 25046,
+      "bytes": 25053,
       "top_level_type": "dict"
     },
     {
@@ -475,7 +475,7 @@
     },
     {
       "path": "data/research_roadmap_interactive.json",
-      "bytes": 191136,
+      "bytes": 191143,
       "top_level_type": "dict"
     },
     {
@@ -575,7 +575,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 24948,
+      "bytes": 24949,
       "top_level_type": "dict"
     },
     {
@@ -657,7 +657,7 @@
     {
       "path": "assets/charts/research_direction_coverage.svg",
       "exists": true,
-      "bytes": 5352,
+      "bytes": 5359,
       "format": "SVG",
       "has_viewbox": true
     },
