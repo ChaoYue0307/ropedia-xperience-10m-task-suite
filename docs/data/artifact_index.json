@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-22T12:38:32+00:00",
+  "generated_at_utc": "2026-06-22T13:17:00+00:00",
   "status": "pass",
   "artifact_count": 228,
   "missing": [],
@@ -632,7 +632,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "eba3e0b1ca07770d1d0ac5a07fc8599bf6db342791d1e1b880bb9f332320a790"
+      "sha256": "19dbac26925964991212bfc358099ace02d848c55c8a6d3c2c12c55885d6f3b8"
     },
     {
       "id": "source_alignment_validator",
@@ -753,7 +753,7 @@
       "shows": "Stores normalized 20-axis radar values, raw task metrics, grouped chart-design metadata, Qwen3-Omni/Cosmos3 source mappings, method-card caveats, proxy flags, and source artifacts.",
       "exists": true,
       "bytes": 230938,
-      "sha256": "bd7b8fd8a169273c5cec2beab050a583307dcc64e5e3fefcd690484b4a0754bc"
+      "sha256": "e5d76959b72fe841741a62ed5fdd4c5cb6efe163ac418b077f33533daf000279"
     },
     {
       "id": "single_episode_task_model_radar_json",
@@ -764,7 +764,7 @@
       "shows": "Machine-readable split radar for the one-episode Minimal and Neural MLP baselines, both scored on all 20 task contracts.",
       "exists": true,
       "bytes": 52256,
-      "sha256": "f282dc0c4c654fe6f2cd646612fd0942d267dec60c6143cc36688edbc27c13da"
+      "sha256": "02225b9843135b1482fa098cc8e0e3395bf3e7fbc9b5f3bd8e45f226796fc596"
     },
     {
       "id": "episode128_task_model_radar_json",
@@ -775,7 +775,7 @@
       "shows": "Machine-readable split radar for selected 128-episode metadata/raw baselines, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano, now complete at 140/140 scored rows with proxy notes retained.",
       "exists": true,
       "bytes": 186828,
-      "sha256": "f904cf9eb3160a50e4469989e44557e77d710e459f812ba7b194d0ed8d9746bd"
+      "sha256": "2e28580113363f679a2e22bfde0967a578a87081a886310fab1f043bb114a7f1"
     },
     {
       "id": "task_method_20_result_matrix_json",
@@ -786,7 +786,7 @@
       "shows": "Machine-readable 9-method by 20-task matrix where every method has 20 records and the current release is complete at 180/180 scored rows.",
       "exists": true,
       "bytes": 128991,
-      "sha256": "bacb549e64b6d1936b55fe7593cfbaeb1dbf5bfe824c8507ea75e493230212fe"
+      "sha256": "8c95318646e7c473b5b25d311f5ba9372eb068480a2378c0102aea0131e455ff"
     },
     {
       "id": "task_method_20_result_matrix",
@@ -862,8 +862,8 @@
       "surface": "website_hf",
       "shows": "Groups all nine methods into small-multiple 20-task radar panels so single-episode, 128-episode metadata/text, 128-episode raw-feature, and foundation-model rows remain readable.",
       "exists": true,
-      "bytes": 98527,
-      "sha256": "5b034b22d2a772a57e7db50f300cb70d00bd31ac89d0c039c16ac8c23a5137ec"
+      "bytes": 100660,
+      "sha256": "cde1fc85b9b91489dfd432de669fc4c75a8f805f92e44c7515c4c7a1ed381b13"
     },
     {
       "id": "single_episode_task_model_radar_chart",
@@ -873,8 +873,8 @@
       "surface": "website_hf",
       "shows": "Shows the one-episode Minimal and Neural MLP 20/20 scored baselines in one enlarged radar panel with local legend and task key.",
       "exists": true,
-      "bytes": 36930,
-      "sha256": "96e609b0577e66db0ee8c63939c11b1fb28018285a1d259362de0bff415cc939"
+      "bytes": 37832,
+      "sha256": "cfe1213cae50afdecd85702e6d40f556381eec796b9e7b6d0bc0f15b3632c0d5"
     },
     {
       "id": "episode128_task_model_radar_chart",
@@ -884,8 +884,8 @@
       "surface": "website_hf",
       "shows": "Separates selected 128-episode methods into metadata/text, raw-feature, and foundation-model radar panels with all 140 result rows scored and proxy notes retained.",
       "exists": true,
-      "bytes": 79370,
-      "sha256": "5151c8aca22bd4aeda60b143b1164c1d1b9eb4babbeabf6da598701ccbbbf5c9"
+      "bytes": 81106,
+      "sha256": "3d870118e4174cdcad19d0443e3774f1a7d97b7f03ae634c8ec15d89d0586d5b"
     },
     {
       "id": "unified_task_model_radar_builder",
@@ -895,8 +895,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates grouped 20-task radar charts plus machine-readable metric, source, chart-design, and proxy metadata.",
       "exists": true,
-      "bytes": 79396,
-      "sha256": "78949d7030cf6995edbb1d46a35692c7fe835d102df619cdf8c9d8ea9c5318e2"
+      "bytes": 79472,
+      "sha256": "f62519864d1993e21704810058df92c150f60a1c5dc311a02bfd76238d02c53f"
     },
     {
       "id": "task_method_20_gap_audit_builder",
@@ -1182,7 +1182,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8640,
-      "sha256": "b3d609ef68cafdd53e789b3c56edc3e7f984312bdabfa6388edb8c15cea78af3"
+      "sha256": "49e5ef70aed0d219d5ba1914d57ae38ff3d5a0bc8d3018267411f18b5a47feaa"
     },
     {
       "id": "public_surface_qa",
@@ -1226,7 +1226,7 @@
       "volatile": true,
       "shows": "Machine-readable report for SEO/social metadata, accessible tab semantics, public links, project links, and clear project presentation.",
       "exists": true,
-      "bytes": 7691,
+      "bytes": 7690,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1363,7 +1363,7 @@
       "volatile": true,
       "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and credential text.",
       "exists": true,
-      "bytes": 10940,
+      "bytes": 10844,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1399,7 +1399,7 @@
       "volatile": true,
       "shows": "Confirms local website links, anchors, JSON data files, and referenced images resolve.",
       "exists": true,
-      "bytes": 24947,
+      "bytes": 24948,
       "hash_policy": "existence_and_size_only"
     },
     {
