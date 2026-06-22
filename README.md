@@ -1364,7 +1364,7 @@ for the long-term full-corpus pretraining plan.
 The three headline foundation directions are also separated as pipeline tracks
 so each track is easy to read without mixing current results and future work:
 
-| Pipeline track | First concrete pipeline | Claim boundary |
+| Pipeline track | First concrete pipeline | Current scope |
 | --- | --- | --- |
 | Spatial intelligence models | Build scene/object memory targets from multiview RGB, depth, pose, calibration, object cues, and language prompts. | Ready as a geometry/reasoning pipeline; the next readout is held-out spatial QA, pose consistency, counting, and scene-memory metrics. |
 | Human-video world models | Predict next action, next subtask, future object set, contact transition, and future state from observed interaction windows. | Partially evidenced by future-task probes and Cosmos-style artifacts; visual/latent future quality still needs stronger metrics. |

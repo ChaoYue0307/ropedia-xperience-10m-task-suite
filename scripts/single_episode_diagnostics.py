@@ -6,7 +6,7 @@ This script is intentionally artifact-driven. It consumes the already exported
 one-episode shared feature table and prediction files, validates their shape and
 hashes, and writes diagnostics that can be manually traced back to those inputs.
 
-It does not invent labels or present multi-episode generalization.
+It does not invent labels or present cross-episode behavior.
 """
 
 from __future__ import annotations

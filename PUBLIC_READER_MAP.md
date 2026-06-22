@@ -55,9 +55,9 @@ trail.
 7. Public-release checks: website integrity, source alignment, mirror parity,
    publication package scan, and live URL/hash verification.
 
-## Claim Boundaries
+## Reading Scope
 
-| Claim type | Public evidence | Boundary |
+| Topic | Public evidence | Scope note |
 | --- | --- | --- |
 | Single public-sample task behavior | `results/episode_task_suite/`, `docs/data/task_suite_20.json` | Describes one public sample episode, not the full dataset distribution |
 | 128-episode method comparison | `XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md`, `docs/data/xperience10m_128_episode_feature_index.json`, `results/omni_finetune/*128*`, `docs/data/omni_model_comparison.json` | Uses selected held-out episodes and derived public-safe summaries; official raw files remain gated upstream |
