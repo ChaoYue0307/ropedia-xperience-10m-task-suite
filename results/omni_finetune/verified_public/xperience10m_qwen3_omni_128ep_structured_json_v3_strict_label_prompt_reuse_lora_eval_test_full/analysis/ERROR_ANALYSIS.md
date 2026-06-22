@@ -66,7 +66,7 @@ This report is computed from public-safe predictions and an episode manifest. It
 
 ## Interpretation
 
-The diagnostic pilot is dominated by invalid or weak structured outputs and exact-label failures. These tables identify where to tighten JSON constraints, action/subtask target formatting, object vocabularies, and missing-modality robustness before claiming stronger model quality.
+The diagnostic pilot is dominated by invalid or weak structured outputs and exact-label failures. These tables identify where to tighten JSON constraints, action/subtask target formatting, object vocabularies, and missing-modality robustness before presenting stronger model quality.
 
 Generated files:
 

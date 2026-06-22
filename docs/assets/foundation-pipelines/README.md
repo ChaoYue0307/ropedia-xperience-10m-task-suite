@@ -11,7 +11,7 @@ modeling use the clean slide PNGs supplied for publication and are exported as
 2560-pixel public assets. VLA now uses the clean VLA slide PNG supplied
 afterward and is exported through the same 2560-pixel public path.
 They are still **pipeline communication assets**, not evidence of completed
-foundation-model quality. Exact technical claims live in the surrounding
+foundation-model quality. Exact technical scope lives in the surrounding
 Markdown, JSON, and website labels.
 
 | Track | Enhanced asset | Source |

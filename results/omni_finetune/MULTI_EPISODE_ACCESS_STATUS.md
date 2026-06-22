@@ -36,7 +36,7 @@ final train loss of 0.4130 plus a validation loss of 0.0331. The result verifies
 the multi-episode pipeline and gives a real error-analysis baseline; it is still
 not a strong final model.
 
-A stronger model-quality pilot should be claimed only after:
+A stronger model-quality pilot should be presented only after:
 
 - selected valid episodes are available locally,
 - the manifest builder confirms complete held-out episode splits,

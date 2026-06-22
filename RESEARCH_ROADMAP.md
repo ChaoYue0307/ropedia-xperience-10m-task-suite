@@ -26,7 +26,7 @@ The useful next decision is model-quality improvement plus backbone fit without
 requiring more raw episodes first: keep the public-sample task suite as the
 development harness, use the verified Qwen3-Omni v6 diagnostic branch plus the
 pinned v5 row as the current cross-episode references, then improve action/subtask quality before
-claiming model quality. The earlier simple and neural baseline framing is now
+presenting model-quality gains. The earlier simple and neural baseline framing is now
 aligned to the same 96/16/16 split through metadata/text baselines for
 JSON-supported task ids; raw-feature-only tasks remain marked as needing the
 128-run sensor feature blocks. The current no-new-episode recommendation is to

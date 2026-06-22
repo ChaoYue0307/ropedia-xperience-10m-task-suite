@@ -91,7 +91,7 @@ retained only as stable provenance artifact locations inside the unified suite.
 ## Scale-Up Gate
 
 The next Qwen3-Omni quality pilot requires all of the following before
-claiming improved held-out model quality:
+presenting improved held-out model quality:
 
 - selected prepared Xperience-10M episodes
 - held-out episode split with no train/test episode leakage

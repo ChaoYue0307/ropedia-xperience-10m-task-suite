@@ -202,7 +202,7 @@ def main() -> int:
         "category_counts": dict(category_counts.most_common()),
         "split_category_counts": {split or "unknown": dict(counts.most_common()) for split, counts in split_category_counts.items()},
         "rows": rows,
-        "note": "Categories are keyword-derived from caption text and should be reviewed before final training claims.",
+        "note": "Categories are keyword-derived from caption text and should be reviewed before final training use.",
     }
     args.output_json.parent.mkdir(parents=True, exist_ok=True)
     args.output_json.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")

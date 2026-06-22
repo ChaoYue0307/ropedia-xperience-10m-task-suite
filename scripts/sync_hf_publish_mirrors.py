@@ -18,6 +18,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_HF_ROOT = ROOT.parent / "hf_publish"
 PARITY_SCRIPT = ROOT / "scripts/validate_mirror_parity.py"
+WEIGHTS_SNAPSHOT_ROOT = Path("weights_results/baselines_and_analysis_snapshot")
+WEIGHTS_ANALYSIS_ROOT = Path("weights_results/analysis")
 STALE_MIRROR_FILES = [
     "artifacts/scripts/omni/collect_qwen3_v4_publication_artifacts.py",
     "model/scripts/omni/collect_qwen3_v4_publication_artifacts.py",
@@ -503,7 +505,12 @@ def refresh_project_readme_cards(hf_root: Path, *, dry_run: bool) -> list[str]:
 
     project_readme = (ROOT / "README.md").read_text(encoding="utf-8").rstrip() + "\n"
     updated = []
-    for relative_path in ("space/PROJECT_README.md", "artifacts/PROJECT_README.md", "model/PROJECT_README.md"):
+    for relative_path in (
+        "space/PROJECT_README.md",
+        "artifacts/PROJECT_README.md",
+        "model/PROJECT_README.md",
+        "weights_results/baselines_and_analysis_snapshot/PROJECT_README.md",
+    ):
         path = hf_root / relative_path
         if not path.exists():
             continue
@@ -514,7 +521,11 @@ def refresh_project_readme_cards(hf_root: Path, *, dry_run: bool) -> list[str]:
         if not dry_run:
             path.write_text(project_readme, encoding="utf-8")
 
-    for relative_path in ("space/README.md", "model/README.md"):
+    for relative_path in (
+        "space/README.md",
+        "model/README.md",
+        "weights_results/baselines_and_analysis_snapshot/README.md",
+    ):
         path = hf_root / relative_path
         if not path.exists():
             continue
@@ -616,6 +627,10 @@ def main() -> int:
                 hf_root / "model/data" / filename,
                 hf_root / "model/docs/data" / filename,
                 hf_root / "model/metrics" / filename,
+                hf_root / WEIGHTS_SNAPSHOT_ROOT / "data" / filename,
+                hf_root / WEIGHTS_SNAPSHOT_ROOT / "docs/data" / filename,
+                hf_root / WEIGHTS_SNAPSHOT_ROOT / "metrics" / filename,
+                hf_root / WEIGHTS_ANALYSIS_ROOT / "docs/data" / filename,
             ],
             dry_run=args.dry_run,
         )
@@ -632,6 +647,10 @@ def main() -> int:
                 hf_root / "model/data" / filename,
                 hf_root / "model/docs/data" / filename,
                 hf_root / "model/metrics" / filename,
+                hf_root / WEIGHTS_SNAPSHOT_ROOT / "data" / filename,
+                hf_root / WEIGHTS_SNAPSHOT_ROOT / "docs/data" / filename,
+                hf_root / WEIGHTS_SNAPSHOT_ROOT / "metrics" / filename,
+                hf_root / WEIGHTS_ANALYSIS_ROOT / "docs/data" / filename,
             ],
             dry_run=args.dry_run,
         )
@@ -647,6 +666,9 @@ def main() -> int:
                 hf_root / "artifacts/assets" / filename,
                 hf_root / "model/assets" / filename,
                 hf_root / "model/docs/assets" / filename,
+                hf_root / WEIGHTS_SNAPSHOT_ROOT / "assets" / filename,
+                hf_root / WEIGHTS_SNAPSHOT_ROOT / "docs/assets" / filename,
+                hf_root / WEIGHTS_ANALYSIS_ROOT / "docs/assets" / filename,
             ],
             dry_run=args.dry_run,
         )
@@ -658,6 +680,7 @@ def main() -> int:
             [
                 hf_root / "artifacts/scripts" / filename,
                 hf_root / "model/scripts" / filename,
+                hf_root / WEIGHTS_SNAPSHOT_ROOT / "scripts" / filename,
             ],
             dry_run=args.dry_run,
         )
@@ -672,6 +695,9 @@ def main() -> int:
                 hf_root / "artifacts/docs" / filename,
                 hf_root / "model" / filename,
                 hf_root / "model/docs" / filename,
+                hf_root / WEIGHTS_SNAPSHOT_ROOT / filename,
+                hf_root / WEIGHTS_SNAPSHOT_ROOT / "docs" / filename,
+                hf_root / WEIGHTS_ANALYSIS_ROOT / "docs" / filename,
             ],
             dry_run=args.dry_run,
         )
@@ -697,6 +723,8 @@ def main() -> int:
             [
                 hf_root / "artifacts/results" / filename,
                 hf_root / "model/results" / filename,
+                hf_root / "weights_results/results" / filename,
+                hf_root / WEIGHTS_SNAPSHOT_ROOT / "results" / filename,
             ],
             dry_run=args.dry_run,
         )
@@ -729,6 +757,8 @@ def main() -> int:
                 hf_root / "space" / filename,
                 hf_root / "artifacts" / filename,
                 hf_root / "model" / filename,
+                hf_root / WEIGHTS_SNAPSHOT_ROOT / filename,
+                hf_root / WEIGHTS_ANALYSIS_ROOT / filename,
             ],
             dry_run=args.dry_run,
         )

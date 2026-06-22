@@ -92,7 +92,7 @@ CURRENT_PROJECT_LIMIT_MARKERS = [
     "neural rendering",
     "policy learning",
     "cross-episode generalization",
-    "real held-out multi-episode Qwen3-Omni model quality",
+    "held-out multi-episode Qwen3-Omni model quality",
 ]
 
 PRESENTATION_MARKERS = {
@@ -330,7 +330,7 @@ def build_report(hf_root: Path) -> dict:
         )
     )
 
-    not_claimed = set(current.get("not_yet_claimed", []))
+    not_yet_demonstrated = set(current.get("not_yet_demonstrated", []))
     checks.append(
         check(
             "current_project_scope_is_explicit",
@@ -340,7 +340,7 @@ def build_report(hf_root: Path) -> dict:
             and current.get("current_feature_dim") == 8546
             and current.get("raw_data_redistributed") is False
             and "extracted into the current baseline feature vector" in current.get("audio_feature_status", "")
-            and set(CURRENT_PROJECT_LIMIT_MARKERS).issubset(not_claimed),
+            and set(CURRENT_PROJECT_LIMIT_MARKERS).issubset(not_yet_demonstrated),
             "one-episode scope, audio status, raw-data exclusion, and current project coverage are present",
             ["docs/data/xperience10m_dataset_card_alignment.json"],
         )

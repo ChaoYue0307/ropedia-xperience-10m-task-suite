@@ -332,7 +332,7 @@ def main() -> int:
         "interpretation": (
             "The diagnostic pilot is dominated by invalid or weak structured outputs and exact-label failures. "
             "These tables identify where to tighten JSON constraints, action/subtask target formatting, object vocabularies, "
-            "and missing-modality robustness before claiming stronger model quality."
+            "and missing-modality robustness before presenting stronger model quality."
         ),
     }
     (output_dir / "error_analysis_summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")

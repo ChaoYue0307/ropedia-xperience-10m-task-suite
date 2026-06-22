@@ -108,7 +108,7 @@ The selected Qwen3-Omni path now has a verified two-epoch held-out diagnostic re
 
 Source: `docs/data/omni_finetune_verified_result.json`.
 
-Current scope: The selected-episode Qwen3-Omni diagnostic pilot is verified on the 96/16/16 split and now meets the 98% target for JSON validity; action/subtask quality remains weak, so current results are diagnostic baselines, not strong model-quality claims.
+Current scope: The selected-episode Qwen3-Omni diagnostic pilot is verified on the 96/16/16 split and now meets the 98% target for JSON validity; action/subtask quality remains weak, so current results are diagnostic baselines rather than a final model-quality ranking.
 
 ## How To Read These Results
 

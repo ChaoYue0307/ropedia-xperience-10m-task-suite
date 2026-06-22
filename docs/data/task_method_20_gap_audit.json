@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-21T15:21:42+00:00",
+  "generated_at_utc": "2026-06-22T11:00:00+00:00",
   "immediate_actions": [
     {
       "artifact": "docs/data/task_method_20_gap_audit.json",
@@ -210,7 +210,7 @@
   "target_policy": {
     "numeric_score_gate": "A method-task cell is numeric only when a runner or verified package emits that exact task target and metric.",
     "proxy_policy": "Proxy scores are allowed only when the matrix marks them as proxy_scored and keeps the reason/source attached.",
-    "scoreless_cell_policy": "If future unsupported or not-evaluated cells appear, they must stay explicit in the public matrix instead of being hidden or backfilled with proxy model claims. The current release has zero scoreless cells."
+    "scoreless_cell_policy": "If future unsupported or not-evaluated cells appear, they must stay explicit in the public matrix instead of being hidden or backfilled with proxy model numbers. The current release has zero scoreless cells."
   },
   "title": "Task Method 20-Result Completion Audit"
 }

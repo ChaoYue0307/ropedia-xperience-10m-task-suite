@@ -26,5 +26,5 @@ not completed benchmark results.
    labels and action targets are measurable.
 
 The current public sample is useful for prototyping the contracts and visual
-explanations. Strong claims for these directions require multi-episode training,
+explanations. Stronger direction-level results require multi-episode training,
 held-out evaluation, and artifact-level evidence.

@@ -5,7 +5,7 @@ This is the server-backed Cosmos3-Super counterpart to
 eval_qwen3_omni_future_task_probes.py. It keeps the same 128-episode task
 contracts and metrics, but calls an OpenAI-compatible Cosmos3-Super server
 instead of loading Qwen locally. In text_only mode the run is explicitly a
-text-only model-output probe; it does not claim video/audio evidence was used.
+text-only model-output probe; it does not present video/audio evidence.
 """
 
 from __future__ import annotations

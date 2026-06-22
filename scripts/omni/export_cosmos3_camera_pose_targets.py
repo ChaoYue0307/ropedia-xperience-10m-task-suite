@@ -227,7 +227,7 @@ def augment_rows(rows: list[dict[str, Any]], args: argparse.Namespace) -> tuple[
         "issues": issues[:100],
         "limitations": [
             "This is an egocentric camera-motion proxy, not a robot gripper or human hand-control action.",
-            "Use it for Cosmos3 action-packer and one-episode overfit smoke tests before claiming model-quality improvement.",
+            "Use it for Cosmos3 action-packer and one-episode overfit smoke tests before reporting model-quality improvement.",
             "Fit any normalization on train episodes only before a full publishable Cosmos adapter run.",
         ],
     }

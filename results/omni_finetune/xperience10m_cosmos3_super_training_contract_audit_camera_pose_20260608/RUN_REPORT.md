@@ -31,5 +31,5 @@
 ## Next Steps
 
 - Run the one-sample action batch packer that calls Cosmos3OmniPipeline.prepare_latents and the static segment helpers, then records whether the current target supervises vision or action tokens.
-- For the current camera_pose forward_dynamics target, implement a one-sample overfit with vision velocity/rectified-flow loss under action conditioning; add a policy/inverse target export before claiming supervised action-token prediction.
+- For the current camera_pose forward_dynamics target, implement a one-sample overfit with vision velocity/rectified-flow loss under action conditioning; add a policy/inverse target export before presenting supervised action-token prediction.
 - Run a one-episode overfit before scheduling a 96/16/16 Super LoRA run; only publish a Cosmos model repo after new adapter/checkpoint weights exist.

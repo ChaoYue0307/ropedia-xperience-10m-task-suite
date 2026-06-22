@@ -43,7 +43,7 @@ HISTORICAL_PATTERNS = [
 ]
 MISLEADING_PHRASES = [
     re.compile(r"\breal\s+32-episode\s+(?:result|metric|fine-?tune)\b", re.IGNORECASE),
-    re.compile(r"\b32-episode\s+(?:result|metric|fine-?tune)\s+is\s+claimed\b", re.IGNORECASE),
+    re.compile(r"\b32-episode\s+(?:result|metric|fine-?tune)\s+is\s+(?:presented|reported)\b", re.IGNORECASE),
     re.compile(r"\bfull\s+32-episode\s+(?:result|metric|fine-?tune)\b", re.IGNORECASE),
 ]
 NEGATION_HINTS = {

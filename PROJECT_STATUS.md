@@ -93,7 +93,7 @@ prior multiscale release, and v6 is the current public 20-task Qwen3-Omni row.
 
 - Line 1 uses one public sample episode. Line 2 uses selected-128 public-safe
   processed artifacts linked to official gated episode paths. Do not merge
-  those claims when reading scores.
+  those evidence lines when reading scores.
 - Public-facing fine-tuning results should come from the verified result
   package, not from live process logs or setup-only artifacts.
 - The latest Qwen3-Omni v6 held-out package verifies the current dense

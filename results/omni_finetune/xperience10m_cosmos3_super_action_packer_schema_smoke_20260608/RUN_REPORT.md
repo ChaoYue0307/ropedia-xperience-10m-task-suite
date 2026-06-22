@@ -16,4 +16,4 @@
 ## Next Step
 
 - Implement the one-sample overfit with a vision velocity/rectified-flow loss under camera-pose action conditioning.
-- Add a separate policy or inverse-dynamics target export before claiming supervised action-token prediction.
+- Add a separate policy or inverse-dynamics target export before presenting supervised action-token prediction.

@@ -40,7 +40,7 @@ OMNI_RELAY = {
     "estimated_bytes": 298188841943,
     "exclude": ["visualization.rrd"],
     "access_status": "The gated Xperience-10M dataset is available for selected multi-episode pilot preparation.",
-    "current_scope": "The selected-episode Qwen3-Omni diagnostic pilot is verified on the 96/16/16 split and now meets the 98% target for JSON validity; action/subtask quality remains weak, so current results are diagnostic baselines, not strong model-quality claims.",
+    "current_scope": "The selected-episode Qwen3-Omni diagnostic pilot is verified on the 96/16/16 split and now meets the 98% target for JSON validity; action/subtask quality remains weak, so current results are diagnostic baselines rather than a final model-quality ranking.",
 }
 
 

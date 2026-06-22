@@ -46,8 +46,9 @@ The API file listing is useful for planning, but it is not the same as local
 access. The public metadata snapshot listed 85,258 repository siblings, 803
 session folders, 12,103 episode folders with `annotation.hdf5`, 72,612 MP4
 files, and 541 `visualization.rrd` files. This repo treats those as upstream
-metadata only; no full-dataset files are redistributed here, and model claims
-remain limited to the one public sample episode actually processed.
+metadata only; no full-dataset files are redistributed here, and model results
+are reported only for the public sample episode and selected processed splits
+that this repo actually evaluates.
 
 ## Official Modalities
 
@@ -204,7 +205,7 @@ evaluation and safeguards.
 When describing Xperience-10M in this repo, keep these limitations visible:
 
 - one public sample episode cannot prove cross-environment generalization
-- full-dataset claims require gated access, many episodes, and held-out episode splits
+- full-dataset performance requires gated access, many episodes, and held-out episode splits
 - motion capture, SLAM, depth, captions, and other annotations can contain noise
 - language annotations are not exhaustive descriptions of every scene state
 - large-scale training requires substantial storage, preprocessing, and compute

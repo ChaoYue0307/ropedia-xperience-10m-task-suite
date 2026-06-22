@@ -5,7 +5,7 @@ This trains the first real Cosmos3-Super adapter path for Xperience-10M. The
 current camera-pose targets are forward-dynamics targets: raw camera-pose
 actions are conditioning, and the supervised loss is the future vision velocity
 under rectified-flow noise. This script therefore updates LoRA weights on the
-Cosmos3 transformer and does not claim supervised action-token prediction.
+Cosmos3 transformer and does not present supervised action-token prediction.
 """
 
 from __future__ import annotations

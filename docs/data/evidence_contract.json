@@ -1,170 +1,169 @@
 {
   "project": "Ropedia Xperience-10M Task Suite",
   "scope": "single public Xperience-10M sample episode",
-  "claims": [
+  "readouts": [
     {
       "id": "project_status",
-      "claim": "A first-pass reader has a compact current-state summary.",
       "status": "verified",
       "evidence": [
         "PROJECT_STATUS.md",
         "docs/data/project_status.json"
       ],
-      "boundary": "summarizes existing evidence and current limitations"
+      "readout": "A first-pass reader has a compact current-state summary.",
+      "scope_note": "summarizes existing evidence and current limitations"
     },
     {
       "id": "research_roadmap",
-      "claim": "The research roadmap is explicit.",
       "status": "current",
       "evidence": [
         "RESEARCH_ROADMAP.md",
         "docs/data/research_roadmap.json"
       ],
-      "boundary": "connects public-sample task development to multi-episode data preparation, Qwen3-Omni LoRA, robustness runs, and larger omni-model extensions"
+      "readout": "The research roadmap is explicit.",
+      "scope_note": "connects public-sample task development to multi-episode data preparation, Qwen3-Omni LoRA, robustness runs, and larger omni-model extensions"
     },
-        {
-            "id": "official_dataset_card_alignment",
-            "claim": "The public dataset description is aligned with the official gated Xperience-10M dataset card and public sample card.",
+    {
+      "id": "official_dataset_card_alignment",
       "status": "verified",
       "evidence": [
         "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md",
         "docs/data/xperience10m_dataset_card_alignment.json",
         "https://huggingface.co/datasets/ropedia-ai/xperience-10m"
       ],
-            "boundary": "summarizes upstream public metadata, API listing facts, sample license/tooling, and dataset-card facts; does not grant access or mirror raw data"
-        },
-        {
-            "id": "source_alignment",
-            "claim": "Source facts, sample details, API-listing notes, and project coverage are validated across repo, website, and HF cards.",
-            "status": "verified",
-            "evidence": [
-                "SOURCE_ALIGNMENT_AUDIT.md",
-                "docs/data/source_alignment_audit.json",
-                "scripts/validate_source_alignment.py"
-            ],
-            "boundary": "offline committed-fact check; does not fetch private gated data"
-        },
-        {
-            "id": "aligned_windows",
-      "claim": "The public Xperience-10M sample has been converted into aligned model windows.",
+      "readout": "The public dataset description is aligned with the official gated Xperience-10M dataset card and public sample card.",
+      "scope_note": "summarizes upstream public metadata, API listing facts, sample license/tooling, and dataset-card facts; does not grant access or mirror raw data"
+    },
+    {
+      "id": "source_alignment",
+      "status": "verified",
+      "evidence": [
+        "SOURCE_ALIGNMENT_AUDIT.md",
+        "docs/data/source_alignment_audit.json",
+        "scripts/validate_source_alignment.py"
+      ],
+      "readout": "Source facts, sample details, API-listing notes, and project coverage are validated across repo, website, and HF cards.",
+      "scope_note": "offline committed-fact check; does not fetch private gated data"
+    },
+    {
+      "id": "aligned_windows",
       "status": "verified",
       "evidence": [
         "results/episode_task_suite/windows.csv",
         "results/episode_task_suite/shared_windows.npz",
         "results/episode_task_suite/summary_report.json"
       ],
-      "boundary": "5,821 frames, 1,161 windows, one public sample episode"
+      "readout": "The public Xperience-10M sample has been converted into aligned model windows.",
+      "scope_note": "5,821 frames, 1,161 windows, one public sample episode"
     },
-        {
-            "id": "feature_contract",
-            "claim": "The current feature contract is explicit and inspectable.",
-            "status": "verified",
-            "evidence": [
-                "results/episode_task_suite/feature_manifest.json",
-                "results/episode_task_suite/available_modalities.json"
-            ],
-            "boundary": "8,546-dimensional aligned multimodal window representation"
-        },
-        {
-            "id": "evaluation_protocol",
-            "claim": "The task evaluation protocol is explicit and generated from committed metrics.",
-            "status": "verified",
-            "evidence": [
-                "EVALUATION_PROTOCOL.md",
-                "docs/data/evaluation_protocol.json",
-                "scripts/build_evaluation_protocol.py"
-            ],
-            "boundary": "defines windows, split, per-task metrics, leakage controls, and current limitations"
-        },
+    {
+      "id": "feature_contract",
+      "status": "verified",
+      "evidence": [
+        "results/episode_task_suite/feature_manifest.json",
+        "results/episode_task_suite/available_modalities.json"
+      ],
+      "readout": "The current feature contract is explicit and inspectable.",
+      "scope_note": "8,546-dimensional aligned multimodal window representation"
+    },
+    {
+      "id": "evaluation_protocol",
+      "status": "verified",
+      "evidence": [
+        "EVALUATION_PROTOCOL.md",
+        "docs/data/evaluation_protocol.json",
+        "scripts/build_evaluation_protocol.py"
+      ],
+      "readout": "The task evaluation protocol is explicit and generated from committed metrics.",
+      "scope_note": "defines windows, split, per-task metrics, leakage controls, and current limitations"
+    },
     {
       "id": "modality_atlas",
-      "claim": "The public sample modalities are inspectable without raw data redistribution.",
       "status": "verified",
       "evidence": [
         "docs/data/modality_atlas.json",
         "docs/assets/modalities/",
         "docs/index.html"
       ],
-      "boundary": "derived thumbnails for presentation; raw data remains excluded"
+      "readout": "The public sample modalities are inspectable without raw data redistribution.",
+      "scope_note": "derived thumbnails for presentation; raw data remains excluded"
     },
     {
       "id": "task_surface_integrity",
-      "claim": "Public task cards stay readable for non-expert readers.",
       "status": "verified",
       "evidence": [
         "docs/data/task_surface_integrity.json",
         "scripts/validate_task_surface.py",
         "docs/index.html"
       ],
-      "boundary": "presentation integrity for the public task surface"
+      "readout": "Public task cards stay readable for non-expert readers.",
+      "scope_note": "presentation integrity for the public task surface"
     },
     {
       "id": "figure_index",
-      "claim": "Public figures, charts, and modality thumbnails are indexed as project evidence.",
       "status": "verified",
       "evidence": [
         "FIGURE_INDEX.md",
         "docs/data/figure_index.json",
         "scripts/build_figure_index.py"
       ],
-      "boundary": "records derived visual assets, dimensions, hashes, roles, and source scripts; raw Xperience-10M data remains excluded"
+      "readout": "Public figures, charts, and modality thumbnails are indexed as project evidence.",
+      "scope_note": "records derived visual assets, dimensions, hashes, roles, and source scripts; raw Xperience-10M data remains excluded"
     },
     {
       "id": "brand_assets",
-      "claim": "A project logo is consistently applied across public surfaces.",
       "status": "verified",
       "evidence": [
         "docs/assets/brand/",
         "docs/data/brand_assets.json",
         "scripts/build_brand_assets.py"
       ],
-      "boundary": "generated logo and deterministic derivatives only; no raw dataset data or model weights"
+      "readout": "A project logo is consistently applied across public surfaces.",
+      "scope_note": "generated logo and deterministic derivatives only; no raw dataset data or model weights"
     },
     {
       "id": "twelve_tasks",
-      "claim": "The 12 task heads are implemented as scripts with saved metrics and predictions.",
       "status": "verified",
       "evidence": [
         "scripts/episode_task_suite.py",
         "results/episode_task_suite/*/metrics.json",
         "results/episode_task_suite/*/predictions.*"
       ],
-      "boundary": "chronological single-episode split, not cross-episode generalization"
+      "readout": "The 12 task heads are implemented as scripts with saved metrics and predictions.",
+      "scope_note": "chronological single-episode split, not cross-episode generalization"
     },
     {
       "id": "minimal_vs_neural",
-      "claim": "Minimal and neural heads use the same task contracts.",
       "status": "verified",
       "evidence": [
         "scripts/neural_task_models.py",
         "results/episode_task_suite/neural_mlp/",
         "docs/assets/task_architectures.png"
       ],
-      "boundary": "small heads only; not a foundation model"
+      "readout": "Minimal and neural heads use the same task contracts.",
+      "scope_note": "small heads only; not a foundation model"
     },
     {
       "id": "research_directions",
-      "claim": "Four Ropedia research directions are mapped honestly as direct, proxy, or diagnostic evidence.",
       "status": "verified",
       "evidence": [
         "results/episode_task_suite/research_directions/research_direction_taxonomy.json",
         "docs/data/research_directions.json"
       ],
-      "boundary": "some directions remain proxy-only"
+      "readout": "Four Ropedia research directions are mapped honestly as direct, proxy, or diagnostic evidence.",
+      "scope_note": "some directions remain proxy-only"
     },
     {
       "id": "direction_extensions",
-      "claim": "Four extra direction probes are coded and evaluated.",
       "status": "verified",
       "evidence": [
         "results/episode_task_suite/research_direction_extensions/research_direction_extension_results.json",
         "docs/data/research_direction_extensions.json"
       ],
-      "boundary": "single-episode probes, not full research-direction solutions"
+      "readout": "Four extra direction probes are coded and evaluated.",
+      "scope_note": "single-episode probes, not full research-direction solutions"
     },
     {
       "id": "qwen3_omni_diagnostic_pilot",
-      "claim": "Qwen3-Omni has a verified selected-episode held-out diagnostic pilot.",
       "status": "verified_diagnostic",
       "evidence": [
         "docs/data/omni_finetune_verified_result.json",
@@ -172,94 +171,94 @@
         "scripts/omni/package_verified_omni_result.py",
         "scripts/omni/audit_verified_omni_package.py"
       ],
-      "boundary": "the pipeline is verified, but model quality is weak: JSON validity is below target and action/subtask metrics are low"
+      "readout": "Qwen3-Omni has a verified selected-episode held-out diagnostic pilot.",
+      "scope_note": "the pipeline is verified, but model quality is weak: JSON validity is below target and action/subtask metrics are low"
     },
     {
       "id": "multi_episode_quality_improvement",
-      "claim": "The next Qwen3-Omni step is structured-output and task-quality improvement on the same selected split.",
       "status": "active_next_step",
       "evidence": [
         "scripts/omni/run_128_fullsplit_parallel_export_8gpu.sh",
         "docs/data/omni_finetune_verified_result.json",
         "FOUNDATION_MODEL_PLAN.md"
       ],
-      "boundary": "stronger model quality requires output-format improvements and action/subtask error analysis"
+      "readout": "The next Qwen3-Omni step is structured-output and task-quality improvement on the same selected split.",
+      "scope_note": "stronger model quality requires output-format improvements and action/subtask error analysis"
     },
     {
       "id": "scale_up_status_check",
-      "claim": "Older pilot path strings are tracked as setup-file provenance.",
       "status": "verified",
       "evidence": [
         "scripts/validate_scope_claims.py",
         "docs/data/scope_claims_audit.json"
       ],
-      "boundary": "run/path identifiers stay separate from completed held-out-episode results"
+      "readout": "Older pilot path strings are tracked as setup-file provenance.",
+      "scope_note": "run/path identifiers stay separate from completed held-out-episode results"
     },
     {
       "id": "mirror_parity",
-      "claim": "Prepared GitHub and Hugging Face mirrors carry matching critical data, visual, HTML, and validator files.",
       "status": "verified",
       "evidence": [
         "scripts/validate_mirror_parity.py",
         "docs/data/mirror_parity.json"
       ],
-      "boundary": "compares prepared local mirror bundles before upload; live URLs are checked after publishing"
+      "readout": "Prepared GitHub and Hugging Face mirrors carry matching critical data, visual, HTML, and validator files.",
+      "scope_note": "compares prepared local mirror bundles before upload; live URLs are checked after publishing"
     },
     {
       "id": "publication_package",
-      "claim": "The public GitHub and Hugging Face bundles contain the intended release files.",
       "status": "verified",
       "evidence": [
         "scripts/validate_publication_package.py",
         "docs/data/publication_audit.json"
       ],
-      "boundary": "checks public files, HF bundles, and current public-card assets; temporary local outputs are excluded"
+      "readout": "The public GitHub and Hugging Face bundles contain the intended release files.",
+      "scope_note": "checks public files, HF bundles, and current public-card assets; temporary local outputs are excluded"
     },
     {
       "id": "website_integrity",
-      "claim": "The public website has checked local references.",
       "status": "verified",
       "evidence": [
         "scripts/validate_website_integrity.py",
         "docs/data/website_integrity.json"
       ],
-      "boundary": "checks local links, anchors, JSON data, and referenced images; external URLs are not fetched"
+      "readout": "The public website has checked local references.",
+      "scope_note": "checks local links, anchors, JSON data, and referenced images; external URLs are not fetched"
     },
     {
       "id": "rendered_site_check",
-      "claim": "The rendered website walkthrough has a browser-level interaction check.",
       "status": "verified",
       "evidence": [
         "RENDERED_SITE_CHECK.md",
         "scripts/build_rendered_site_check.py",
         "docs/data/rendered_site_check.json"
       ],
-      "boundary": "checks local page load, tab switch, walkthrough deep link, player controls, and console health"
+      "readout": "The rendered website walkthrough has a browser-level interaction check.",
+      "scope_note": "checks local page load, tab switch, walkthrough deep link, player controls, and console health"
     },
     {
       "id": "quality_gates",
-      "claim": "The release gate is explicit.",
       "status": "verified",
       "evidence": [
         "QUALITY_GATES.md",
         "scripts/build_quality_gates.py",
         "docs/data/quality_gates.json"
       ],
-      "boundary": "summarizes packaging and live-mirror checks; cross-episode model quality is measured by later held-out reports"
+      "readout": "The release gate is explicit.",
+      "scope_note": "summarizes packaging and live-mirror checks; cross-episode model quality is measured by later held-out reports"
     },
     {
       "id": "live_publication_status",
-      "claim": "The live public mirrors are checked after upload.",
       "status": "verified",
       "evidence": [
         "scripts/verify_live_publication.py",
         "docs/data/live_publication_status.json"
       ],
-      "boundary": "fetches public GitHub/HF URLs; it does not validate private training state"
+      "readout": "The live public mirrors are checked after upload.",
+      "scope_note": "fetches public GitHub/HF URLs; it does not validate private training state"
     },
     {
       "id": "citation_metadata",
-      "claim": "The project is externally citable and machine-readable.",
       "status": "verified",
       "evidence": [
         "CITATION.cff",
@@ -267,11 +266,11 @@
         "docs/data/project_manifest.json",
         "LICENSE"
       ],
-      "boundary": "code license does not override original Xperience-10M dataset terms"
+      "readout": "The project is externally citable and machine-readable.",
+      "scope_note": "code license does not override original Xperience-10M dataset terms"
     },
     {
       "id": "project_path",
-      "claim": "A first-time reader has an explicit project path.",
       "status": "verified",
       "evidence": [
         "docs/data/project_packet.json",
@@ -280,29 +279,30 @@
         "README.md",
         "docs/index.html"
       ],
-      "boundary": "guides inspection across data, tasks, results, and scale-up status"
+      "readout": "A first-time reader has an explicit project path.",
+      "scope_note": "guides inspection across data, tasks, results, and scale-up status"
     },
     {
       "id": "artifact_index",
-      "claim": "The core project artifacts are grouped for human reading and indexed with existence, size, and hash metadata where stable.",
       "status": "verified",
       "evidence": [
         "ARTIFACT_GUIDE.md",
         "scripts/build_artifact_index.py",
         "docs/data/artifact_index.json"
       ],
-      "boundary": "selective source-of-truth catalog, not a complete inventory of every output file"
+      "readout": "The core project artifacts are grouped for human reading and indexed with existence, size, and hash metadata where stable.",
+      "scope_note": "selective source-of-truth catalog, not a complete inventory of every output file"
     },
     {
       "id": "reproducibility_contract",
-      "claim": "The public reproduction path is documented with commands, expected outputs, and exact-match reproduction evidence.",
       "status": "verified",
       "evidence": [
         "REPRODUCIBILITY.md",
         "docs/data/reproducibility_matrix.json",
         "notes/reproducibility_audit.md"
       ],
-      "boundary": "publicly reproduces the single-episode pipeline; multi-episode Qwen3-Omni metrics are added only after data preparation and held-out evaluation"
+      "readout": "The public reproduction path is documented with commands, expected outputs, and exact-match reproduction evidence.",
+      "scope_note": "publicly reproduces the single-episode pipeline; multi-episode Qwen3-Omni metrics are added only after data preparation and held-out evaluation"
     }
   ]
 }

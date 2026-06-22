@@ -6,77 +6,124 @@
     {
       "reader_goal": "Understand the project in one pass",
       "start_here": "PROJECT_BRIEF.md",
-      "then_inspect": ["PROJECT_STATUS.md", "RESEARCH_TAKEAWAYS.md"]
+      "then_inspect": [
+        "PROJECT_STATUS.md",
+        "RESEARCH_TAKEAWAYS.md"
+      ]
     },
     {
       "reader_goal": "Understand the two evidence lines",
       "start_here": "TWO_EVIDENCE_LINES.md",
-      "then_inspect": ["docs/data/two_evidence_lines.json", "docs/data/two_evidence_line_result_summary.json"]
+      "then_inspect": [
+        "docs/data/two_evidence_lines.json",
+        "docs/data/two_evidence_line_result_summary.json"
+      ]
     },
     {
       "reader_goal": "See the visual public dashboard",
       "start_here": "GitHub Pages dashboard or Hugging Face Space",
-      "then_inspect": ["docs/index.html", "docs/data/project_packet.json"]
+      "then_inspect": [
+        "docs/index.html",
+        "docs/data/project_packet.json"
+      ]
     },
     {
       "reader_goal": "Decode project terminology",
       "start_here": "GLOSSARY.md",
-      "then_inspect": ["docs/data/glossary.json", "Homepage Glossary section"]
+      "then_inspect": [
+        "docs/data/glossary.json",
+        "Homepage Glossary section"
+      ]
     },
     {
       "reader_goal": "Understand the data unit",
       "start_here": "results/episode_task_suite/windows.csv",
-      "then_inspect": ["results/episode_task_suite/feature_manifest.json", "docs/data/raw_sample_files.json"]
+      "then_inspect": [
+        "results/episode_task_suite/feature_manifest.json",
+        "docs/data/raw_sample_files.json"
+      ]
     },
     {
       "reader_goal": "Trace the 128-episode split",
       "start_here": "XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md",
-      "then_inspect": ["docs/data/xperience10m_128_episode_feature_index.json", "results/omni_finetune/xperience10m_128_episode_selection.csv"]
+      "then_inspect": [
+        "docs/data/xperience10m_128_episode_feature_index.json",
+        "results/omni_finetune/xperience10m_128_episode_selection.csv"
+      ]
     },
     {
       "reader_goal": "Inspect the 20-task benchmark",
       "start_here": "TASK_SUITE_20.md",
-      "then_inspect": ["docs/data/task_suite_20.json", "EVALUATION_PROTOCOL.md"]
+      "then_inspect": [
+        "docs/data/task_suite_20.json",
+        "EVALUATION_PROTOCOL.md"
+      ]
     },
     {
       "reader_goal": "Compare current results",
       "start_here": "RESEARCH_TAKEAWAYS.md",
-      "then_inspect": ["docs/data/task_method_20_result_matrix.json", "docs/data/unified_task_model_radar.json"]
+      "then_inspect": [
+        "docs/data/task_method_20_result_matrix.json",
+        "docs/data/unified_task_model_radar.json"
+      ]
     },
     {
       "reader_goal": "Compare 1-episode and 128-episode methods",
       "start_here": "Homepage radar section",
-      "then_inspect": ["docs/data/single_episode_task_model_radar.json", "docs/data/episode128_task_model_radar.json"]
+      "then_inspect": [
+        "docs/data/single_episode_task_model_radar.json",
+        "docs/data/episode128_task_model_radar.json"
+      ]
     },
     {
       "reader_goal": "Read Qwen3-Omni v1-v6 correctly",
       "start_here": "QWEN3_OMNI_RUN_LINEAGE.md",
-      "then_inspect": ["docs/data/qwen3_omni_run_lineage.json", "docs/data/qwen3_v5_v6_comparison.json"]
+      "then_inspect": [
+        "docs/data/qwen3_omni_run_lineage.json",
+        "docs/data/qwen3_v5_v6_comparison.json"
+      ]
     },
     {
       "reader_goal": "Find all derived artifacts",
       "start_here": "ARTIFACT_GUIDE.md",
-      "then_inspect": ["Hugging Face artifact dataset", "docs/data/artifact_index.json"]
+      "then_inspect": [
+        "Hugging Face artifact dataset",
+        "docs/data/artifact_index.json"
+      ]
     },
     {
       "reader_goal": "Download model weights with their matching results",
       "start_here": "Hugging Face weights/results repo",
-      "then_inspect": ["manifest.json", "analysis/docs/data/task_method_20_result_matrix.json", "results/"]
+      "then_inspect": [
+        "manifest.json",
+        "analysis/docs/data/task_method_20_result_matrix.json",
+        "results/"
+      ]
     },
     {
       "reader_goal": "Reproduce or extend the work",
       "start_here": "REPRODUCIBILITY.md",
-      "then_inspect": ["QUALITY_GATES.md", "scripts/", "results/"]
+      "then_inspect": [
+        "QUALITY_GATES.md",
+        "scripts/",
+        "results/"
+      ]
     },
     {
       "reader_goal": "Understand foundation-model directions",
       "start_here": "THREE_FOUNDATION_PIPELINES.md",
-      "then_inspect": ["FOUNDATION_MODEL_PLAN.md", "docs/data/three_foundation_pipelines.json"]
+      "then_inspect": [
+        "FOUNDATION_MODEL_PLAN.md",
+        "docs/data/three_foundation_pipelines.json"
+      ]
     },
     {
       "reader_goal": "Check public-release health",
       "start_here": "PUBLIC_SURFACE_QA.md",
-      "then_inspect": ["docs/data/live_publication_status.json", "docs/data/mirror_parity.json"]
+      "then_inspect": [
+        "docs/data/live_publication_status.json",
+        "docs/data/mirror_parity.json"
+      ]
     }
   ],
   "public_surfaces": [
@@ -125,31 +172,49 @@
     "Foundation directions",
     "Public-release checks"
   ],
-  "claim_boundaries": [
+  "reading_scopes": [
     {
-      "claim_type": "Single public-sample task behavior",
-      "public_evidence": ["results/episode_task_suite/", "docs/data/task_suite_20.json"],
-      "boundary": "Describes one public sample episode, not the full dataset distribution."
+      "public_evidence": [
+        "results/episode_task_suite/",
+        "docs/data/task_suite_20.json"
+      ],
+      "topic": "Single public-sample task behavior",
+      "scope_note": "Describes one public sample episode, not the full dataset distribution."
     },
     {
-      "claim_type": "128-episode method comparison",
-      "public_evidence": ["XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md", "docs/data/xperience10m_128_episode_feature_index.json", "results/omni_finetune/*128*", "docs/data/omni_model_comparison.json"],
-      "boundary": "Uses selected held-out episodes and derived public-safe summaries; official raw files remain gated upstream."
+      "public_evidence": [
+        "XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md",
+        "docs/data/xperience10m_128_episode_feature_index.json",
+        "results/omni_finetune/*128*",
+        "docs/data/omni_model_comparison.json"
+      ],
+      "topic": "128-episode method comparison",
+      "scope_note": "Uses selected held-out episodes and derived public-safe summaries; official raw files remain gated upstream."
     },
     {
-      "claim_type": "Qwen3-Omni v1-v6 lineage",
-      "public_evidence": ["QWEN3_OMNI_RUN_LINEAGE.md", "docs/data/qwen3_omni_run_lineage.json"],
-      "boundary": "v1-v4 are pipeline and ablation evidence, v5 is the pinned prior release, and v6 is the current public 20-task Qwen row."
+      "public_evidence": [
+        "QWEN3_OMNI_RUN_LINEAGE.md",
+        "docs/data/qwen3_omni_run_lineage.json"
+      ],
+      "topic": "Qwen3-Omni v1-v6 lineage",
+      "scope_note": "v1-v4 are pipeline and ablation evidence, v5 is the pinned prior release, and v6 is the current public 20-task Qwen row."
     },
     {
-      "claim_type": "Foundation-model track quality",
-      "public_evidence": ["Verified Qwen3-Omni and Cosmos3 result packages", "model cards"],
-      "boundary": "Numeric task scores appear only when a task-specific eval or probe exists."
+      "public_evidence": [
+        "Verified Qwen3-Omni and Cosmos3 result packages",
+        "model cards"
+      ],
+      "topic": "Foundation-model track quality",
+      "scope_note": "Numeric task scores appear only when a task-specific eval or probe exists."
     },
     {
-      "claim_type": "Reproducibility",
-      "public_evidence": ["REPRODUCIBILITY.md", "QUALITY_GATES.md", "release validators"],
-      "boundary": "Raw gated Xperience-10M files and full foundation weights are not redistributed."
+      "public_evidence": [
+        "REPRODUCIBILITY.md",
+        "QUALITY_GATES.md",
+        "release validators"
+      ],
+      "topic": "Reproducibility",
+      "scope_note": "Raw gated Xperience-10M files and full foundation weights are not redistributed."
     }
   ]
 }

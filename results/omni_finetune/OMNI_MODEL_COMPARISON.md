@@ -1,6 +1,6 @@
 # Omni Model Comparison
 
-Generated: `2026-06-21T15:17:00+00:00`
+Generated: `2026-06-22T10:59:59+00:00`
 
 Compare only rows with the same scope and target. Single-episode raw-feature metrics, 128-episode metadata baselines, Qwen3 structured JSON metrics, and the two Cosmos3 targets answer different questions: Nano future-window retrieval versus Super structured JSON Reasoner evaluation.
 
@@ -133,4 +133,4 @@ This is the first verified Cosmos3-Super fine-tuned adapter branch. Its metric i
 ## Pending
 
 - Use the verified Qwen3 v6 rank64/lr5e-5 dense multiscale full-eval package as the latest current Qwen row; the v5 release tag remains pinned as the previous verified release.
-- Read results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md before claiming v6 is globally better than v5, because v6 improves action macro-F1 and contact accuracy but regresses subtask, next-action, object micro-F1, and JSON validity slightly.
+- Read results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md before presenting v6 as globally better than v5, because v6 improves action macro-F1 and contact accuracy but regresses subtask, next-action, object micro-F1, and JSON validity slightly.

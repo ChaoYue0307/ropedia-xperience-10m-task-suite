@@ -1,7 +1,7 @@
 # Xperience-10M 128-Episode Data Preparation and Fine-Tune Plan
 
 This is the executable plan for moving from metadata selection to real
-multi-episode training. It does not claim model-quality results until data is
+multi-episode training. It does not present model-quality results until data is
 downloaded, staged, audited, trained, and evaluated on held-out sessions.
 
 ## Current Preflight
@@ -21,7 +21,7 @@ Current execution status:
 - a 128-episode data-preparation job has been launched on an HF-reachable host,
 - staged-file transfer is active,
 - later batches are scheduled after storage checks,
-- no multi-episode model-quality training result is claimed yet.
+- no multi-episode model-quality training result is reported yet.
 
 ## Selected Data
 

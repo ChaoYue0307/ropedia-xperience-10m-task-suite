@@ -24,7 +24,7 @@ Restoration is deterministic and local:
 - Autocontrast and moderate brightness/color/contrast correction.
 - Lanczos resize to a 2560-pixel public width.
 - Gentle sharpening and unsharp masking.
-The restoration script deliberately avoids hallucinated model claims or
-non-source concept art. Technical task/training/evaluation claims are maintained in
+The restoration script deliberately avoids hallucinated model results or
+non-source concept art. Technical task/training/evaluation scope is maintained in
 `THREE_FOUNDATION_PIPELINES.md` and
 `docs/data/three_foundation_pipelines.json`.

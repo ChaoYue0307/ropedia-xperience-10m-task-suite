@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-22T10:20:29+00:00",
+  "generated_at_utc": "2026-06-22T11:17:10+00:00",
   "summary": {
     "qwen3_omni_verified_diagnostic_pilot": true,
     "dataset_manifest_num_episodes": 119,
@@ -25,7 +25,7 @@
     {
       "name": "summary_metrics_preserves_verified_diagnostic_status",
       "status": "pass",
-      "detail": "The selected-episode Qwen3-Omni diagnostic pilot is verified on the 96/16/16 split and now meets the 98% target for JSON validity; action/subtask quality remains weak, so current results are diagnostic baselines, not strong model-quality claims.",
+      "detail": "The selected-episode Qwen3-Omni diagnostic pilot is verified on the 96/16/16 split and now meets the 98% target for JSON validity; action/subtask quality remains weak, so current results are diagnostic baselines rather than a final model-quality ranking.",
       "evidence": [
         "docs/data/summary_metrics.json"
       ]

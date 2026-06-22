@@ -407,7 +407,7 @@ def render_markdown(payload: dict) -> str:
         "## Scale-Up Gate",
         "",
         "The next Qwen3-Omni quality pilot requires all of the following before",
-        "claiming improved held-out model quality:",
+        "presenting improved held-out model quality:",
         "",
     ])
     lines.extend(f"- {item}" for item in payload["scale_up_gate"]["required_before_next_omni_quality_pilot"])

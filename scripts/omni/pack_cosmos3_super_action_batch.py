@@ -386,7 +386,7 @@ def write_report(path: Path, payload: dict[str, Any]) -> None:
     ]
     if contract.get("mode") == "forward_dynamics":
         lines.append("- Implement the one-sample overfit with a vision velocity/rectified-flow loss under camera-pose action conditioning.")
-        lines.append("- Add a separate policy or inverse-dynamics target export before claiming supervised action-token prediction.")
+        lines.append("- Add a separate policy or inverse-dynamics target export before presenting supervised action-token prediction.")
     else:
         lines.append("- Implement the one-sample overfit with action velocity loss over noisy action tokens.")
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")

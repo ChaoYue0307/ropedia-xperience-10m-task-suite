@@ -129,7 +129,7 @@ def build_payload(matrix: dict) -> dict:
             "scoreless_cell_policy": (
                 "If future unsupported or not-evaluated cells appear, they must stay explicit "
                 "in the public matrix instead of being hidden or backfilled with proxy model "
-                "claims. The current release has zero scoreless cells."
+                "numbers. The current release has zero scoreless cells."
             ),
             "proxy_policy": (
                 "Proxy scores are allowed only when the matrix marks them as proxy_scored "

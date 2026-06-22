@@ -18,7 +18,7 @@ treated as pipeline tracks with different maturity levels:
 
 | Track | Role | Current boundary | Next gate |
 | --- | --- | --- | --- |
-| Spatial intelligence models | Recover and reason over scene/object state from multiview RGB, depth, pose, calibration, object cues, and language. | Pipeline and evaluation contract, not a completed spatial model claim. | Raw depth/pose artifacts, spatial-memory exporter, and held-out spatial QA/object-memory metrics. |
+| Spatial intelligence models | Recover and reason over scene/object state from multiview RGB, depth, pose, calibration, object cues, and language. | Pipeline and evaluation contract; completed spatial-model results need the next gate. | Raw depth/pose artifacts, spatial-memory exporter, and held-out spatial QA/object-memory metrics. |
 | Human-video world models | Predict future action, subtask, object set, contact transition, camera motion, or latent visual state from observed interaction windows. | Partially evidenced by future-task probes and Cosmos-style branch artifacts. | Stronger future-state metrics, qualitative future examples, and held-out episode breakdowns. |
 | Vision-language-action models | Convert egocentric video, language, hand/body motion, contacts, and objects into action chunks or policy-compatible targets. | Feasible but gated by action-space conversion. | Traceable action tokens, normalization, retargeting metadata, and policy/VLA held-out metrics. |
 

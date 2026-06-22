@@ -729,7 +729,7 @@ def build_report() -> dict[str, Any]:
     if QWEN_V6_EVAL_RUN_ID in qwen_branch_ids:
         pending = [
             "Use the verified Qwen3 v6 rank64/lr5e-5 dense multiscale full-eval package as the latest current Qwen row; the v5 release tag remains pinned as the previous verified release.",
-            "Read results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md before claiming v6 is globally better than v5, because v6 improves action macro-F1 and contact accuracy but regresses subtask, next-action, object micro-F1, and JSON validity slightly.",
+            "Read results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md before presenting v6 as globally better than v5, because v6 improves action macro-F1 and contact accuracy but regresses subtask, next-action, object micro-F1, and JSON validity slightly.",
         ]
     elif QWEN_V5_EVAL_RUN_ID in qwen_branch_ids:
         pending = [
