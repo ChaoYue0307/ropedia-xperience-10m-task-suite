@@ -136,11 +136,17 @@ ASSET_FILES = [
     "modalities/pose_slam.png",
     "modalities/video.jpg",
     "raw-sample-preview/fisheye_cam0_preview.mp4",
+    "raw-sample-preview/fisheye_cam0_poster.jpg",
     "raw-sample-preview/fisheye_cam1_preview.mp4",
+    "raw-sample-preview/fisheye_cam1_poster.jpg",
     "raw-sample-preview/fisheye_cam2_preview.mp4",
+    "raw-sample-preview/fisheye_cam2_poster.jpg",
     "raw-sample-preview/fisheye_cam3_preview.mp4",
+    "raw-sample-preview/fisheye_cam3_poster.jpg",
     "raw-sample-preview/stereo_left_preview.mp4",
+    "raw-sample-preview/stereo_left_poster.jpg",
     "raw-sample-preview/stereo_right_preview.mp4",
+    "raw-sample-preview/stereo_right_poster.jpg",
 ]
 
 SCRIPT_FILES = [
