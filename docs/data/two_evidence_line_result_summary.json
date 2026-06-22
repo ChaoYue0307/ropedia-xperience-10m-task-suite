@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-06-21T11:49:06+00:00",
-  "interpretation_rule": "Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for same-split metadata/raw baselines, Qwen3-Omni v6 LoRA diagnostics, and Cosmos3 diagnostics.",
+  "generated_at_utc": "2026-06-22T09:56:30+00:00",
+  "interpretation_rule": "Read the 1-episode line as the inspectable task lab. Read the 128-episode line as the selected comparison surface for metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super, and Cosmos3-Nano.",
   "lines": [
     {
       "artifact_entry_points": [
@@ -10,7 +10,7 @@
         "results/episode_task_suite/feature_manifest.json",
         "docs/single_episode_explorer.html"
       ],
-      "claim_boundary": "Supports task construction, file inspection, local reproducibility, and controlled single-episode baseline claims.",
+      "best_read_as": "Inspect the raw sample, understand file organization, reproduce the 20 task targets, and compare Minimal vs Neural MLP behavior inside one episode.",
       "data_unit": "One public Xperience-10M sample episode",
       "direct_scored_method_task_count": 40,
       "id": "single_public_sample_episode",
@@ -45,13 +45,13 @@
           }
         }
       ],
-      "not_for": "Do not use this line as evidence of multi-episode generalization.",
       "primary_use": "Inspect raw files, understand each task, rerun local baselines, and debug task quality.",
       "primary_visuals": [
         "docs/assets/charts/two_evidence_line_map.svg",
         "docs/assets/charts/single_episode_task_model_radar.svg"
       ],
       "proxy_scored_method_task_count": 0,
+      "read_separately_from": "The selected-128 comparison rows and broader held-out model behavior.",
       "result_statement": "40/40 direct scores from Minimal and Neural MLP heads on the same 20 task contracts.",
       "scored_method_task_count": 40,
       "short_label": "Line 1",
@@ -66,7 +66,7 @@
         "docs/data/qwen3_omni_run_lineage.json",
         "docs/data/task_method_20_gap_audit.json"
       ],
-      "claim_boundary": "Supports same-split metadata/raw baseline comparison, Qwen3-Omni v6 diagnostics, Cosmos3 diagnostics, and scale-up planning on public-safe processed artifacts.",
+      "best_read_as": "Compare same-split metadata/raw baselines, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano while keeping the 6 compact-proxy cells visible.",
       "data_unit": "Selected held-out 96/16/16 split with public-safe processed features linked to official gated episode paths",
       "direct_scored_method_task_count": 134,
       "id": "selected_128_episode_surface",
@@ -170,7 +170,6 @@
           }
         }
       ],
-      "not_for": "Do not read compact-proxy cells as direct raw-target measurements.",
       "primary_use": "Compare same-split metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window while keeping evidence type explicit.",
       "primary_visuals": [
         "docs/assets/charts/two_evidence_line_map.svg",
@@ -178,6 +177,7 @@
         "docs/assets/charts/unified_task_model_radar.svg"
       ],
       "proxy_scored_method_task_count": 6,
+      "read_separately_from": "Direct raw-target interpretation for the proxy-marked cells.",
       "result_statement": "140/140 selected-128 scores across seven methods: 134 direct scores plus 6 documented compact-proxy scores.",
       "scored_method_task_count": 140,
       "short_label": "Line 2",
@@ -337,7 +337,7 @@
     "selected_128_episode_surface": "Use for held-out comparison, metadata/raw-feature baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, Cosmos3-Nano Future Window, and scale-up decisions.",
     "single_public_sample_episode": "Use for task construction, raw-file inspection, local reproducibility, and controlled Minimal-vs-Neural baseline behavior."
   },
-  "reader_summary": "The suite has two public evidence lines. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Do not mix the two when reading scores.",
+  "reader_summary": "The suite has two public reading lanes. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Compare scores within the same lane first.",
   "reading_order": [
     {
       "reason": "Line 1 answers task-lab and reproducibility questions; line 2 answers selected-128 comparison questions.",

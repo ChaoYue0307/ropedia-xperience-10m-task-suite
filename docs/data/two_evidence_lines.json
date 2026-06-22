@@ -1,8 +1,8 @@
 {
   "status": "current",
   "updated_utc": "2026-06-21T00:00:00Z",
-  "interpretation_rule": "Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for same-split metadata/raw baselines, Qwen3-Omni v6 LoRA diagnostics, and Cosmos3 diagnostics.",
-  "reader_summary": "The suite has two public evidence lines. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Do not mix the two when reading scores.",
+  "interpretation_rule": "Read the 1-episode line as the inspectable task lab. Read the 128-episode line as the selected comparison surface for metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super, and Cosmos3-Nano.",
+  "reader_summary": "The suite has two public reading lanes. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Compare scores within the same lane first.",
   "score_formula": "2 single-episode methods x 20 tasks = 40 records; 7 selected-128 methods x 20 tasks = 140 records; total public matrix = 180/180 scored records.",
   "lines": [
     {
@@ -11,8 +11,8 @@
       "short_label": "Line 1",
       "data_unit": "One public Xperience-10M sample episode",
       "result_statement": "40/40 direct scores from Minimal and Neural MLP heads on the same 20 task contracts.",
-      "claim_boundary": "Supports task construction, file inspection, local reproducibility, and controlled single-episode baseline claims.",
-      "not_for": "Do not use this line as evidence of multi-episode generalization.",
+      "best_read_as": "Inspect the raw sample, understand file organization, reproduce the 20 task targets, and compare Minimal vs Neural MLP behavior inside one episode.",
+      "read_separately_from": "The selected-128 comparison rows and broader held-out model behavior.",
       "frames": 5821,
       "windows": 1161,
       "window_definition": "20-frame aligned windows with 5-frame stride",
@@ -45,8 +45,8 @@
       "short_label": "Line 2",
       "data_unit": "Selected held-out 96/16/16 split with public-safe processed features linked to official gated episode paths",
       "result_statement": "140/140 selected-128 scores across seven methods: 134 direct scores plus 6 documented compact-proxy scores.",
-      "claim_boundary": "Supports same-split metadata/raw baseline comparison, Qwen3-Omni v6 diagnostics, Cosmos3 diagnostics, and scale-up planning on public-safe processed artifacts.",
-      "not_for": "Do not read compact-proxy cells as direct raw-target measurements.",
+      "best_read_as": "Compare same-split metadata/raw baselines, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano while keeping the 6 compact-proxy cells visible.",
+      "read_separately_from": "Direct raw-target interpretation for the proxy-marked cells.",
       "episodes": 128,
       "split": {
         "train": 96,

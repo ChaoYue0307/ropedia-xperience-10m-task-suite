@@ -2862,7 +2862,7 @@
     ],
     "status": "planning_artifact"
   },
-  "generated_at_utc": "2026-06-21T19:51:24+00:00",
+  "generated_at_utc": "2026-06-22T10:07:43+00:00",
   "omni_plan": {
     "adapter": "LoRA rank 16, alpha 32, dropout 0.05",
     "backbone": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
@@ -3013,7 +3013,7 @@
       "entry_condition": "The final diagnostic package meets strict JSON validity but has weak action/subtask held-out quality.",
       "id": "qwen3_omni_structured_output_error_analysis",
       "name": "Action/Subtask Error-Analysis Pass",
-      "reader_takeaway": "The next pass should improve action/subtask quality before larger model-quality claims.",
+      "reader_takeaway": "The next pass should improve action/subtask quality before presenting stronger model-quality numbers.",
       "stage": "future",
       "status": "active_next_step"
     },
@@ -4197,17 +4197,12 @@
     }
   ],
   "three_foundation_pipelines": {
-    "claim_boundary": "These are supported pipeline directions, not three completed model-quality claims.",
+    "reader_note": "These are supported pipeline directions with concrete data exports, training recipes, and evaluation gates.",
     "source_document": "THREE_FOUNDATION_PIPELINES.md",
     "status": "pipeline_plan",
     "title": "Three Foundation Pipeline Tracks",
     "tracks": [
       {
-        "avoid_claiming_now": [
-          "full neural rendering",
-          "full 3D reconstruction",
-          "general spatial intelligence without artifact-level evidence"
-        ],
         "core_inputs": [
           "multiview RGB",
           "egocentric video",
@@ -4251,7 +4246,7 @@
               "held-out episode spatial metrics",
               "count and relation accuracy",
               "retrieval rank and consistency",
-              "saved predictions before public claim"
+              "saved predictions before public package update"
             ],
             "stage": "evaluate_gates"
           }
@@ -4269,8 +4264,13 @@
           "spatial QA prompts"
         ],
         "next_gate": "Raw depth and pose artifacts plus held-out multi-episode spatial metrics.",
+        "next_readout_before_stronger_positioning": [
+          "held-out spatial QA",
+          "pose consistency",
+          "object-counting and scene-memory metrics"
+        ],
         "one_sample_training_io": {
-          "boundary": "This yields a one-episode spatial training-pair recipe and proxy tasks; full spatial-intelligence claims require held-out multi-episode depth/pose/scene-memory metrics.",
+          "boundary": "This yields a one-episode spatial training-pair recipe and proxy tasks; the next spatial-intelligence readout is held-out depth, pose, and scene-memory metrics.",
           "existing_task_hooks": [
             "object_relevance",
             "modality_reconstruction",
@@ -4303,10 +4303,6 @@
         "website_image": "assets/foundation-pipelines/spatial-intelligence-pipeline.png"
       },
       {
-        "avoid_claiming_now": [
-          "strong world model from structured future-task scores alone",
-          "visual future quality without visual or latent future metrics"
-        ],
         "core_inputs": [
           "observed video windows",
           "audio",
@@ -4356,7 +4352,7 @@
           }
         ],
         "diagram_image": "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
-        "first_pipeline": "Keep Qwen-style structured future probes for task interpretability, keep Cosmos-style dynamics branches separate, and add latent or feature-reconstruction metrics before claiming world-model quality.",
+        "first_pipeline": "Keep Qwen-style structured future probes for task interpretability, keep Cosmos-style dynamics branches separate, and add latent or feature-reconstruction metrics before presenting world-model quality.",
         "id": "human_video_world_models",
         "image_alt": "High-resolution slide diagram showing the Human-video world models direction for Xperience-10M.",
         "intermediate_artifacts": [
@@ -4367,8 +4363,13 @@
           "temporal consistency metadata"
         ],
         "next_gate": "Stronger future-state metrics, qualitative future examples, and held-out episode breakdowns.",
+        "next_readout_before_stronger_positioning": [
+          "latent or visual future metrics",
+          "per-episode future-task breakdowns",
+          "qualitative examples backed by saved targets"
+        ],
         "one_sample_training_io": {
-          "boundary": "Future labels and future windows must stay out of the input. Structured future probes are evidence for the pipeline, not a full visual world-model claim by themselves.",
+          "boundary": "Future labels and future windows must stay out of the input. Structured future probes show the pipeline, while visual world-model readouts need latent or visual future metrics.",
           "existing_task_hooks": [
             "next_action",
             "long_horizon_next_action",
@@ -4401,10 +4402,6 @@
         "website_image": "assets/foundation-pipelines/human-video-world-model-pipeline.png"
       },
       {
-        "avoid_claiming_now": [
-          "robot policy quality",
-          "policy generalization before action-space evidence exists"
-        ],
         "core_inputs": [
           "egocentric video",
           "language captions",
@@ -4447,7 +4444,7 @@
               "held-out action metrics",
               "chunk and next-action accuracy",
               "object/contact-conditioned scores",
-              "policy card before robot-policy claim"
+              "policy card before robot-policy quality readout"
             ],
             "stage": "evaluate_gates"
           }
@@ -4465,8 +4462,13 @@
           "action-space model card"
         ],
         "next_gate": "Traceable action tokens, normalization, retargeting metadata, and held-out policy metrics.",
+        "next_readout_before_stronger_positioning": [
+          "action-space conversion",
+          "normalized action chunks",
+          "held-out policy metrics"
+        ],
         "one_sample_training_io": {
-          "boundary": "This is a VLA/policy data-conversion recipe for the one-sample suite. Robot policy claims require a later action-space converter, normalization, retargeting report, and held-out policy metrics.",
+          "boundary": "This is a VLA/policy data-conversion recipe for the one-sample suite. Robot policy readouts require a later action-space converter, normalization, retargeting report, and held-out policy metrics.",
           "existing_task_hooks": [
             "timeline_action",
             "next_action",

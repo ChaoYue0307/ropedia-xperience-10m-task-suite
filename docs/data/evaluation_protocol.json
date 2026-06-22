@@ -2,7 +2,7 @@
   "title": "Ropedia Xperience-10M Task Suite Evaluation Protocol",
   "status": "pass",
   "version": "2026-06-01",
-  "generated_at_utc": "2026-06-21T15:20:33+00:00",
+  "generated_at_utc": "2026-06-22T09:56:30+00:00",
   "source_files": [
     "docs/data/summary_metrics.json",
     "results/episode_task_suite/summary_report.json",
@@ -509,7 +509,7 @@
   "current_limitations": [
     "Cross-episode generalization for Qwen3-Omni has a first verified diagnostic pilot, but strong model quality is not yet shown.",
     "Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.",
-    "The final verified Qwen3-Omni diagnostic result meets the strict-JSON target, but action/subtask held-out quality remains weak and needs error analysis before larger model-quality claims.",
+    "The final verified Qwen3-Omni diagnostic result meets the strict-JSON target, but action/subtask held-out quality remains weak and needs error analysis before presenting stronger model-quality numbers.",
     "Full audio-visual representation learning still needs multi-episode training; the current report includes single-episode audio/no-audio ablations."
   ],
   "scale_up_gate": {

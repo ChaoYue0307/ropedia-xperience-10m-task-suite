@@ -1,21 +1,21 @@
 # Two Evidence-Line Result Summary
 
-Generated: `2026-06-21T11:49:06+00:00`.
+Generated: `2026-06-22T09:56:30+00:00`.
 
 Source matrix: [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)
 
-Interpretation rule: Use the 1-episode line for task construction and reproducibility claims. Use the 128-episode line for same-split metadata/raw baselines, Qwen3-Omni v6 LoRA diagnostics, and Cosmos3 diagnostics.
+Interpretation rule: Read the 1-episode line as the inspectable task lab. Read the 128-episode line as the selected comparison surface for metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super, and Cosmos3-Nano.
 
 ## Read This First
 
-The suite has two public evidence lines. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Do not mix the two when reading scores.
+The suite has two public reading lanes. Line 1 is the fully inspectable one-episode task lab. Line 2 is the 128-episode comparison surface for aligned baselines, the Qwen3-Omni series, and the Cosmos3 series. Compare scores within the same lane first.
 
 Score formula: 2 single-episode methods x 20 tasks = 40 records; 7 selected-128 methods x 20 tasks = 140 records; total public matrix = 180/180 scored records.
 
-| Line | What the scores mean | Valid claim | Do not claim |
+| Line | What the scores mean | Best use | Read separately from |
 | --- | --- | --- | --- |
-| 1 sample episode | 40/40 direct scores from Minimal and Neural MLP heads on the same 20 task contracts. | Supports task construction, file inspection, local reproducibility, and controlled single-episode baseline claims. | Do not use this line as evidence of multi-episode generalization. |
-| 128 selected episodes | 140/140 selected-128 scores across seven methods: 134 direct scores plus 6 documented compact-proxy scores. | Supports same-split metadata/raw baseline comparison, Qwen3-Omni v6 diagnostics, Cosmos3 diagnostics, and scale-up planning on public-safe processed artifacts. | Do not read compact-proxy cells as direct raw-target measurements. |
+| 1 sample episode | 40/40 direct scores from Minimal and Neural MLP heads on the same 20 task contracts. | Inspect the raw sample, understand file organization, reproduce the 20 task targets, and compare Minimal vs Neural MLP behavior inside one episode. | The selected-128 comparison rows and broader held-out model behavior. |
+| 128 selected episodes | 140/140 selected-128 scores across seven methods: 134 direct scores plus 6 documented compact-proxy scores. | Compare same-split metadata/raw baselines, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano while keeping the 6 compact-proxy cells visible. | Direct raw-target interpretation for the proxy-marked cells. |
 
 ## Public Score Totals
 

@@ -6,7 +6,7 @@
     {
       "id": "dataset_scope",
       "label": "Dataset and scope",
-      "description": "Public data boundaries, evidence lines, and what each result can claim."
+      "description": "Public data boundaries, evidence lines, and how each result family should be read."
     },
     {
       "id": "files_features",
@@ -43,7 +43,7 @@
       "category": "dataset_scope",
       "plain_meaning": "One officially available sample episode.",
       "project_usage": "The fully inspectable Line 1 unit used for raw-file browsing, 20-frame windows, task construction, and single-episode baselines.",
-      "do_not_confuse_with": "Multi-episode generalization.",
+      "do_not_confuse_with": "The selected-128 comparison rows.",
       "primary_files": ["docs/data/raw_sample_files.json", "docs/single_episode_explorer.html"]
     },
     {
@@ -57,7 +57,7 @@
     {
       "term": "Evidence line",
       "category": "dataset_scope",
-      "plain_meaning": "A claim boundary for a group of results.",
+      "plain_meaning": "A reading lane for a group of results.",
       "project_usage": "Line 1 is one public sample episode; Line 2 is selected-128 held-out comparison.",
       "do_not_confuse_with": "Qwen run versions v1-v6, which are model-run lineage.",
       "primary_files": ["TWO_EVIDENCE_LINES.md", "docs/data/two_evidence_lines.json"]

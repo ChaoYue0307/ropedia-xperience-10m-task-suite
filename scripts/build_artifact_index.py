@@ -867,7 +867,7 @@ ARTIFACTS = [
         "path": "PUBLIC_READER_MAP.md",
         "kind": "project_path",
         "surface": "repo_hf",
-        "shows": "Provides the first-pass navigation layer for GitHub, GitHub Pages, Hugging Face mirrors, Qwen3-Omni/Cosmos3 repos, evidence lines, and claim boundaries.",
+        "shows": "Provides the first-pass navigation layer for GitHub, GitHub Pages, Hugging Face mirrors, Qwen3-Omni/Cosmos3 repos, evidence lines, and result-reading lanes.",
     },
     {
         "id": "public_reader_map_json",

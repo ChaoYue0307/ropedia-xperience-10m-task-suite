@@ -123,8 +123,8 @@ The public suite is organized around two evidence lines. Keep them separate when
       <th width="20%">Line</th>
       <th width="24%">Data unit</th>
       <th width="22%">Score statement</th>
-      <th width="20%">Valid claim</th>
-      <th>Do not claim</th>
+      <th width="20%">Best use</th>
+      <th>Read separately from</th>
     </tr>
   </thead>
   <tbody>
@@ -132,15 +132,15 @@ The public suite is organized around two evidence lines. Keep them separate when
       <td><strong>1 sample episode</strong></td>
       <td>One public Xperience-10M sample episode: 5,821 frames, 1,161 aligned 20-frame windows, 8,546 feature dimensions.</td>
       <td>40/40 direct scores from Minimal and Neural MLP heads.</td>
-      <td>Task construction, file inspection, local reproducibility, and controlled single-episode baselines.</td>
-      <td>Multi-episode generalization.</td>
+      <td>Inspect the raw sample, understand file organization, reproduce the 20 task targets, and compare Minimal vs Neural MLP behavior inside one episode.</td>
+      <td>The selected-128 comparison rows and any broader held-out model behavior.</td>
     </tr>
     <tr>
       <td><strong>128 selected episodes</strong></td>
       <td>Selected held-out 96/16/16 split: 34,269 exported windows with public-safe processed features linked to official gated episode paths. The Hugging Face artifact dataset exposes these rows separately as <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/viewer/selected_128_windows/selected_128"><code>selected_128_windows/selected_128</code></a>; it is not mixed with the one-sample <code>episode_sample/public_sample</code> viewer.</td>
       <td>140/140 selected-128 scores: 134 direct + 6 compact-proxy.</td>
-      <td>Same-split metadata/raw baseline comparison, Qwen3-Omni v6 diagnostics, Cosmos3 diagnostics, and scale-up planning.</td>
-      <td>Reading proxy cells as direct raw-target measurements.</td>
+      <td>Compare same-split metadata/raw baselines, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano while keeping the 6 compact-proxy cells visible.</td>
+      <td>Direct raw-target measurements for the proxy-marked cells.</td>
     </tr>
   </tbody>
 </table>
@@ -306,7 +306,7 @@ Result entry points:
     <tr>
       <td><strong>Compare results</strong></td>
       <td><a href="RESEARCH_TAKEAWAYS.md">Research takeaways</a></td>
-      <td><a href="docs/data/two_evidence_line_result_summary.json">two-line result summary</a><br><a href="docs/data/task_method_20_result_matrix.json">180-result matrix</a><br><a href="docs/data/unified_task_model_radar.json">radar JSON</a><br><a href="docs/data/task_method_20_gap_audit.json">score/proxy audit</a></td>
+      <td><a href="docs/data/two_evidence_line_result_summary.json">two-line result summary</a><br><a href="docs/data/task_method_20_result_matrix.json">20-result matrix</a><br><a href="docs/data/unified_task_model_radar.json">radar JSON</a><br><a href="docs/data/task_method_20_gap_audit.json">score/proxy audit</a></td>
     </tr>
     <tr>
       <td><strong>Understand one sample</strong></td>
@@ -332,8 +332,9 @@ This project is organized as a compact research artifact around Xperience-10M:
 start from a real public episode, make every modality and label path inspectable,
 turn the data into concrete embodied-AI tasks, and keep the evaluation boundary
 clear while preparing the next multi-episode experiments. The emphasis is on
-research judgment as much as implementation: what the sample can show, what it
-cannot show, and what evidence should exist before claiming model quality.
+research judgment as much as implementation: what the sample can show, where
+the selected-128 comparison begins, and what evidence should exist before
+presenting stronger model quality.
 
 The work is designed to demonstrate four capabilities that matter for
 embodied-AI research infrastructure:
@@ -348,7 +349,7 @@ embodied-AI research infrastructure:
   <tbody>
     <tr><td><strong>Multimodal data understanding</strong></td><td>Parses the public sample into synchronized windows across video, audio, depth, pose/SLAM, mocap, IMU, calibration, and language-derived signals.</td></tr>
     <tr><td><strong>Task design</strong></td><td>Defines 20 human-readable tasks in one unified public-sample suite, plus four direction-extension probes with inputs, outputs, process modules, metrics, and case-study walkthroughs.</td></tr>
-    <tr><td><strong>Model and evaluation discipline</strong></td><td>Runs minimal and compact neural baselines, records predictions/metrics, keeps chronological split boundaries explicit, and separates sample evidence from held-out claims.</td></tr>
+    <tr><td><strong>Model and evaluation discipline</strong></td><td>Runs minimal and compact neural baselines, records predictions/metrics, keeps chronological split boundaries explicit, and separates the sample readout from held-out comparison rows.</td></tr>
     <tr><td><strong>Scale-up planning</strong></td><td>Connects the public-sample pipeline to 32/128-episode held-out pilots, Qwen3-Omni LoRA, Cosmos-style world-model tracks, policy/VLA tracks, and the future Xperience-native foundation-model pretraining goal.</td></tr>
   </tbody>
 </table>
@@ -687,9 +688,9 @@ Detailed dataset notes are available in
 [`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md)
 and [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json)
 for readers who need the full upstream-card and access-term context. The
-practical boundary is simple: task-lab claims come from Line 1, selected-128
-comparison claims come from Line 2, and compact-proxy cells stay explicitly
-marked where direct raw targets are missing.
+practical reading rule is simple: Line 1 is the task lab, Line 2 is the
+selected-128 comparison surface, and compact-proxy cells stay explicitly marked
+where direct raw targets are missing.
 
 Start with the visual dashboard:
 
@@ -1361,11 +1362,11 @@ additions. See
 for the long-term full-corpus pretraining plan.
 
 The three headline foundation directions are also separated as pipeline tracks
-so the public claims stay precise:
+so each track is easy to read without mixing current results and future work:
 
 | Pipeline track | First concrete pipeline | Claim boundary |
 | --- | --- | --- |
-| Spatial intelligence models | Build scene/object memory targets from multiview RGB, depth, pose, calibration, object cues, and language prompts. | Ready as a geometry/reasoning pipeline; strong claims need raw depth/pose artifacts and held-out spatial metrics. |
+| Spatial intelligence models | Build scene/object memory targets from multiview RGB, depth, pose, calibration, object cues, and language prompts. | Ready as a geometry/reasoning pipeline; the next readout is held-out spatial QA, pose consistency, counting, and scene-memory metrics. |
 | Human-video world models | Predict next action, next subtask, future object set, contact transition, and future state from observed interaction windows. | Partially evidenced by future-task probes and Cosmos-style artifacts; visual/latent future quality still needs stronger metrics. |
 | Vision-language-action models | Convert egocentric video, captions, hand/body motion, contacts, and objects into action chunks or policy-compatible targets. | Feasible, but gated by action-token conversion, normalization, retargeting evidence, and held-out policy metrics. |
 

@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-22T08:57:54+00:00",
+  "generated_at_utc": "2026-06-22T10:09:34+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 151055,
-      "evidence_index": 202390
+      "overview_index": 151125,
+      "evidence_index": 202548
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 151055,
-      "protocol_index": 198578,
-      "evidence_index": 202390
+      "overview_index": 151125,
+      "protocol_index": 198738,
+      "evidence_index": 202548
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -315,7 +315,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 124471,
+      "bytes": 124475,
       "top_level_type": "dict"
     },
     {
@@ -335,7 +335,7 @@
     },
     {
       "path": "data/evaluation_protocol.json",
-      "bytes": 24267,
+      "bytes": 24281,
       "top_level_type": "dict"
     },
     {
@@ -350,12 +350,12 @@
     },
     {
       "path": "data/foundation_model_plan.json",
-      "bytes": 13925,
+      "bytes": 13918,
       "top_level_type": "dict"
     },
     {
       "path": "data/glossary.json",
-      "bytes": 18754,
+      "bytes": 18767,
       "top_level_type": "dict"
     },
     {
@@ -470,12 +470,12 @@
     },
     {
       "path": "data/research_roadmap.json",
-      "bytes": 14129,
+      "bytes": 14143,
       "top_level_type": "dict"
     },
     {
       "path": "data/research_roadmap_interactive.json",
-      "bytes": 191028,
+      "bytes": 191136,
       "top_level_type": "dict"
     },
     {
@@ -550,7 +550,7 @@
     },
     {
       "path": "data/three_foundation_pipelines.json",
-      "bytes": 14465,
+      "bytes": 14557,
       "top_level_type": "dict"
     },
     {
@@ -560,12 +560,12 @@
     },
     {
       "path": "data/two_evidence_line_result_summary.json",
-      "bytes": 17416,
+      "bytes": 17451,
       "top_level_type": "dict"
     },
     {
       "path": "data/two_evidence_lines.json",
-      "bytes": 7351,
+      "bytes": 7386,
       "top_level_type": "dict"
     },
     {
@@ -788,140 +788,140 @@
     {
       "path": "assets/task-icons/01_timeline_action.svg",
       "exists": true,
-      "bytes": 1486,
+      "bytes": 1481,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/02_timeline_subtask.svg",
       "exists": true,
-      "bytes": 1513,
+      "bytes": 1508,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/03_transition_detection.svg",
       "exists": true,
-      "bytes": 1531,
+      "bytes": 1526,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/04_next_action.svg",
       "exists": true,
-      "bytes": 1484,
+      "bytes": 1479,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/05_hand_trajectory_forecast.svg",
       "exists": true,
-      "bytes": 1552,
+      "bytes": 1547,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/06_contact_prediction.svg",
       "exists": true,
-      "bytes": 1540,
+      "bytes": 1535,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/07_object_relevance.svg",
       "exists": true,
-      "bytes": 1623,
+      "bytes": 1618,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/08_caption_grounding.svg",
       "exists": true,
-      "bytes": 1503,
+      "bytes": 1498,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/09_cross_modal_retrieval.svg",
       "exists": true,
-      "bytes": 1607,
+      "bytes": 1602,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/10_modality_reconstruction.svg",
       "exists": true,
-      "bytes": 1587,
+      "bytes": 1582,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/11_temporal_order.svg",
       "exists": true,
-      "bytes": 1543,
+      "bytes": 1538,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/12_misalignment_detection.svg",
       "exists": true,
-      "bytes": 1582,
+      "bytes": 1577,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/13_long_horizon_next_action.svg",
       "exists": true,
-      "bytes": 1595,
+      "bytes": 1590,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/14_next_subtask_forecast.svg",
       "exists": true,
-      "bytes": 1625,
+      "bytes": 1620,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/15_interaction_text_prediction.svg",
       "exists": true,
-      "bytes": 1578,
+      "bytes": 1573,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/16_action_object_relation.svg",
       "exists": true,
-      "bytes": 1574,
+      "bytes": 1569,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/17_object_set_forecast.svg",
       "exists": true,
-      "bytes": 1688,
+      "bytes": 1683,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/18_imu_to_hand_pose.svg",
       "exists": true,
-      "bytes": 1566,
+      "bytes": 1561,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/19_camera_view_sync_retrieval.svg",
       "exists": true,
-      "bytes": 1645,
+      "bytes": 1640,
       "format": "SVG",
       "has_viewbox": true
     },
     {
       "path": "assets/task-icons/20_time_to_transition.svg",
       "exists": true,
-      "bytes": 1526,
+      "bytes": 1521,
       "format": "SVG",
       "has_viewbox": true
     },

@@ -1,8 +1,9 @@
 # Three Foundation Pipeline Tracks
 
-Xperience-10M can support the three directions shown in the presentation, but
-they should be positioned as **pipeline tracks**, not as three already solved
-model claims. The same dataset can feed all three tracks because it combines
+Xperience-10M can support the three directions shown in the presentation. This
+document presents them as **pipeline tracks** with data exports, training
+recipes, and evaluation gates. The same dataset can feed all three tracks
+because it combines
 egocentric and multiview video, audio, depth, camera pose, hand/body motion,
 inertial signals, object/contact annotations, and language captions.
 
@@ -10,15 +11,15 @@ inertial signals, object/contact annotations, and language captions.
 
 | Track | Question | Core inputs | First public pipeline | Current maturity |
 | --- | --- | --- | --- | --- |
-| Spatial intelligence models | Can the model recover and reason over space from video? | Multiview RGB, egocentric video, depth, camera pose, calibration, object cues, language questions. | Window or episode exporter that builds scene/object memory targets, then evaluates spatial QA, object permanence, counting, retrieval, and pose-aware consistency. | Ready as a pipeline and evaluation contract; strong claims require raw depth/pose access and held-out multi-episode evaluation. |
+| Spatial intelligence models | Can the model recover and reason over space from video? | Multiview RGB, egocentric video, depth, camera pose, calibration, object cues, language questions. | Window or episode exporter that builds scene/object memory targets, then evaluates spatial QA, object permanence, counting, retrieval, and pose-aware consistency. | Ready as a pipeline and evaluation contract; the next readout is held-out spatial QA, pose consistency, counting, and scene-memory metrics. |
 | Human-video world models | Can the model predict what happens next? | Observed video/audio/sensor windows, hand/body motion, object/contact state, action/subtask labels, future windows. | Future-state and future-action probes over the existing split, then Cosmos-style or latent world-model training with separate dynamics metrics. | Partially evidenced through current future-task probes and Cosmos-style branch artifacts; still needs stronger visual/latent future metrics. |
-| Vision-language-action models | Can the model turn what it sees and reads into action? | Egocentric video, language captions, hand/body motion, contacts, objects, procedure/subtask labels. | Observation-language-to-action target conversion, action-chunk scoring, policy-token baselines, then VLA/policy model fine-tuning. | Feasible but gated by action-target conversion; do not claim policy quality until action tokens, normalization, and held-out policy metrics exist. |
+| Vision-language-action models | Can the model turn what it sees and reads into action? | Egocentric video, language captions, hand/body motion, contacts, objects, procedure/subtask labels. | Observation-language-to-action target conversion, action-chunk scoring, policy-token baselines, then VLA/policy model fine-tuning. | Feasible after action-target conversion; present policy quality once action tokens, normalization, and held-out policy metrics exist. |
 
 ## One-Sample Training-Pair Recipes
 
 These recipes describe how to obtain input/output pairs from the **single public
-sample episode**. They are development contracts, not claims that the three full
-foundation models are already trained.
+sample episode**. They are development contracts for building the three tracks,
+not finished foundation-model rows.
 
 | Track | Input from the one public sample | Output target from the same sample | Existing hooks |
 | --- | --- | --- | --- |
@@ -28,7 +29,7 @@ foundation models are already trained.
 
 The one-sample windowization is 5,821 frames, 1,161 overlapping 20-frame windows,
 5-frame stride, and about 20 FPS. Future labels or future windows must not leak
-into inputs for world-model targets. VLA/policy claims require a later action
+into inputs for world-model targets. VLA/policy readouts require a later action
 space converter, normalization, retargeting report, and held-out policy metrics.
 
 ## Published Direction Figures
@@ -87,8 +88,9 @@ First practical implementation:
 4. Add qualitative scene-memory examples only when they are backed by saved
    target files and metrics.
 
-What to avoid claiming now: full neural rendering, full 3D reconstruction, or
-general spatial intelligence unless those artifacts and held-out metrics exist.
+Next readout before stronger positioning: held-out spatial QA, pose
+consistency, object-counting, and scene-memory metrics. Full neural rendering
+and full 3D reconstruction should be separate follow-up artifacts.
 
 ## 2. Human-Video World Model Pipeline
 
@@ -116,14 +118,14 @@ First practical implementation:
 1. Keep Qwen-style structured future probes for task-level interpretability.
 2. Keep Cosmos-style branches separate because they answer dynamics and visual
    future questions, not JSON task classification.
-3. Add latent or feature-reconstruction metrics before claiming world-model
+3. Add latent or feature-reconstruction metrics before presenting world-model
    quality.
 4. Compare future-task metrics by held-out episode, task family, and visible
    object/action family.
 
-What to avoid claiming now: a strong world model from low structured scores
-alone. The public result should say that the pipeline and first probes exist,
-while stronger future-state training remains the next step.
+Next readout before stronger positioning: latent or visual future metrics,
+per-episode future-task breakdowns, and qualitative examples backed by saved
+targets. The current public result shows the pipeline and first probes.
 
 ## 3. Vision-Language-Action Pipeline
 
@@ -156,9 +158,9 @@ First practical implementation:
 4. Treat OpenVLA, openpi, GR00T, Octo, and SmolVLA-style models as policy
    branches that inherit the same split, manifest, and package rules.
 
-What to avoid claiming now: robot policy quality. The current project can
-build the conversion and scoring pipeline; policy quality needs action-space
-evidence and held-out model results.
+Next readout before stronger positioning: action-space conversion, normalized
+action chunks, retargeting notes, and held-out policy metrics. The current
+project can build the conversion and scoring pipeline.
 
 ## Shared Pipeline Discipline
 
@@ -174,6 +176,6 @@ All three tracks should reuse the same public discipline:
 - website and model cards updated only after validators pass.
 
 This framing lets the project pursue all three directions at once while keeping
-the claims precise: spatial intelligence is the geometry/reasoning pipeline,
+the readout precise: spatial intelligence is the geometry/reasoning pipeline,
 world modeling is the future-state pipeline, and VLA is the action-conversion
 and policy pipeline.

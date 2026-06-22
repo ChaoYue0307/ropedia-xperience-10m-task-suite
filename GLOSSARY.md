@@ -10,7 +10,7 @@ machine-readable form.
 
 | Category | What it clarifies |
 | --- | --- |
-| Dataset and scope | Which data is public, which data is gated upstream, and what each evidence line can support. |
+| Dataset and scope | Which data is public, which data is gated upstream, and how each evidence line should be read. |
 | Files and features | How raw sample files, derived windows, feature manifests, and public-safe artifacts relate to each other. |
 | Tasks and metrics | What a scored task row means, when a score is direct, and when a compact proxy is being used. |
 | Models and runs | How simple/NN baselines, Qwen3-Omni, Cosmos3, LoRA adapters, and full-parameter gates differ. |
@@ -21,9 +21,9 @@ machine-readable form.
 | Term | Plain meaning | In this project | Do not confuse with |
 | --- | --- | --- | --- |
 | Xperience-10M | The upstream embodied human-interaction dataset. | The source dataset behind the public sample, selected-128 features, task suite, and model diagnostics. | This repo itself; the repo only redistributes public-safe derived artifacts. |
-| Public sample episode | One officially available sample episode. | The fully inspectable Line 1 unit used for raw-file browsing, 20-frame windows, task construction, and single-episode baselines. | Multi-episode generalization. |
+| Public sample episode | One officially available sample episode. | The fully inspectable Line 1 unit used for raw-file browsing, 20-frame windows, task construction, and single-episode baselines. | The selected-128 comparison rows. |
 | Selected 128 episodes | A public-safe selected subset of official gated episode paths. | Line 2 uses derived windows/features and keeps links back to official episode ids and gated source paths. | Redistributed raw MP4/HDF5/RRD data. |
-| Evidence line | A claim boundary for a group of results. | Line 1 is one public sample episode; Line 2 is selected-128 held-out comparison. | Qwen run versions v1-v6, which are model-run lineage, not evidence lines. |
+| Evidence line | A reading lane for a group of results. | Line 1 is one public sample episode; Line 2 is selected-128 held-out comparison. | Qwen run versions v1-v6, which are model-run lineage, not evidence lines. |
 | Official gated data | Upstream files that require official dataset access. | Raw Xperience-10M MP4/HDF5/RRD files and full source directories remain outside the public repo. | Public-safe metrics, derived features, figures, and manifests. |
 | Public-safe artifact | A file that can be mirrored publicly without raw gated content. | Metrics, JSON summaries, model cards, figures, derived manifests, and approved lightweight weights/adapters. | Raw dataset redistribution. |
 | Episode | One recorded interaction sequence. | The basic source unit behind windows, labels, and train/val/test splits. | A 20-frame window, which is a smaller model input slice. |

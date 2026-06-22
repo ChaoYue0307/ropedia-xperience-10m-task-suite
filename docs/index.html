@@ -1132,7 +1132,7 @@
       font-size: 13px;
       line-height: 1.52;
     }
-    .line-claim {
+    .line-readout {
       display: grid;
       gap: 8px;
       margin: 14px 0 0;
@@ -1141,7 +1141,7 @@
       border-radius: var(--radius);
       background: rgba(2, 5, 2, 0.38);
     }
-    .line-claim span {
+    .line-readout span {
       display: block;
       color: var(--green);
       font-family: var(--font-mono);
@@ -1150,7 +1150,7 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    .line-claim p {
+    .line-readout p {
       margin: 2px 0 0;
       color: #d7e2d0;
       font-size: 12.5px;
@@ -4960,9 +4960,9 @@
             <small>line 1 / public sample</small>
             <h3>1 sample episode: task lab</h3>
             <p>One public episode becomes aligned windows, task targets, Minimal heads, and Neural MLP heads.</p>
-            <div class="line-claim">
-              <div><span>valid claim</span><p>Task construction, file inspection, and local reproducibility.</p></div>
-              <div><span>do not claim</span><p>Multi-episode generalization.</p></div>
+            <div class="line-readout">
+              <div><span>best use</span><p>Inspect the sample files, task targets, and local baseline runs.</p></div>
+              <div><span>read separately from</span><p>Selected-128 comparison rows and held-out model behavior.</p></div>
             </div>
             <div class="suite-line-facts">
               <span><strong>5,821</strong>frames</span>
@@ -4975,9 +4975,9 @@
             <small>line 2 / 128 selected episodes</small>
             <h3>128 selected episodes: comparison surface</h3>
             <p>Seven methods share the selected-episode surface and the same 20 task axes.</p>
-            <div class="line-claim">
-              <div><span>valid claim</span><p>Same-split method comparison and scale-up planning.</p></div>
-              <div><span>do not claim</span><p>Proxy cells as direct raw-target measurements.</p></div>
+            <div class="line-readout">
+              <div><span>best use</span><p>Compare same-split baselines, Qwen3-Omni v6, and Cosmos3 rows.</p></div>
+              <div><span>read separately from</span><p>Direct raw-target metrics for the 6 proxy-marked cells.</p></div>
             </div>
             <div class="suite-line-facts">
               <span><strong>128</strong>selected episodes</span>
@@ -5144,8 +5144,8 @@
               <th>Line</th>
               <th>Data unit</th>
               <th>Score statement</th>
-              <th>Valid claim</th>
-              <th>Do not claim</th>
+              <th>Best use</th>
+              <th>Read separately from</th>
               <th>Start here</th>
             </tr>
           </thead>
@@ -5154,16 +5154,16 @@
               <td>1 sample episode</td>
               <td>One public Xperience-10M sample episode; 5,821 frames; 1,161 aligned 20-frame windows; 8,546-dimensional feature contract.</td>
               <td>40/40 direct scores from Minimal and Neural MLP heads.</td>
-              <td>Raw sample inspection, file organization, task definitions, local reproducibility, and controlled baseline behavior.</td>
-              <td>Multi-episode generalization.</td>
+              <td>Raw sample inspection, file organization, task definitions, local reproduction, and controlled Minimal-vs-Neural baseline behavior.</td>
+              <td>The selected-128 comparison rows and broader held-out model behavior.</td>
               <td><a href="#raw-sample">Raw browser</a><br><a href="data/single_episode_task_model_radar.json">1-episode radar JSON</a><br><a href="data/two_evidence_line_result_summary.json">result summary JSON</a><br><a href="data/two_evidence_lines.json">line JSON</a></td>
             </tr>
             <tr>
               <td>128 selected episodes</td>
               <td>Selected held-out 96/16/16 split; 34,269 exported windows; public-safe metadata/raw-feature artifacts linked to official gated episode paths.</td>
               <td>140/140 selected-128 scores: 134 direct + 6 compact-proxy.</td>
-              <td>Same-split comparison, Qwen3-Omni v6 LoRA diagnostics, Cosmos3-Super/Cosmos3-Nano diagnostics, and scale-up decisions.</td>
-              <td>Reading compact-proxy cells as direct raw-target measurements.</td>
+              <td>Same-split comparison across metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super, Cosmos3-Nano, and scale-up decisions.</td>
+              <td>Direct raw-target interpretation for the proxy-marked cells.</td>
               <td><a href="data/episode128_task_model_radar.json">128-episode radar JSON</a><br><a href="data/xperience10m_128_episode_feature_index.json">feature index JSON</a><br><a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/viewer/selected_128_windows/selected_128">HF selected-128 windows</a><br><a href="data/two_evidence_line_result_summary.json">result summary JSON</a><br><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/TWO_EVIDENCE_LINES.md">line doc</a></td>
             </tr>
           </tbody>
@@ -5270,7 +5270,7 @@
           <article class="reader-step">
             <small>01 understand</small>
             <strong>Start with scope and status</strong>
-            <p>Use this route if you need the project story, what is public, and what claims are safe.</p>
+            <p>Use this route if you need the project story, what is public, and how to read each result family.</p>
             <a href="#overview">Read overview</a>
           </article>
           <article class="reader-step">
@@ -5423,7 +5423,7 @@
             </article>
             <article class="brief-card">
               <strong>Evaluation discipline</strong>
-              <p>Keeps chronological splits, predictions, confusion matrices, leakage notes, and single-episode limitations explicit before claiming broader model quality.</p>
+              <p>Keeps chronological splits, predictions, confusion matrices, leakage notes, and single-episode limits visible before moving to broader model-quality reads.</p>
             </article>
             <article class="brief-card">
               <strong>Scale-up readiness</strong>
@@ -5613,7 +5613,7 @@
           <article class="roadmap-card" data-status="active_next_step">
             <span class="roadmap-status">active next step</span>
             <h3>Action/Subtask Error-Analysis Pass</h3>
-            <p>Keep the 96/16/16 split, tighten JSON decoding or target formatting, and analyze action/subtask failures before larger model-quality claims.</p>
+            <p>Keep the 96/16/16 split, tighten JSON decoding or target formatting, and analyze action/subtask failures before presenting stronger model-quality numbers.</p>
             <div class="roadmap-meta">
               <strong>Entry</strong><p>The final diagnostic package is verified, meets strict JSON validity, and exposes weak action/subtask quality.</p>
               <strong>Evidence</strong><p>Updated quality-target report, error-analysis tables, held-out metrics, and public-safe package.</p>
@@ -5797,7 +5797,7 @@
           <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target-side signals, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
           <article class="artifact"><h3>Audio ablation</h3><p>Audio and no-audio variants are evaluated across the walkthrough-backed task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
           <article class="artifact"><h3>Foundation track selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 is the world-model track with a camera-pose proxy forward-dynamics contract ready for trainer work, policy models wait for robot-compatible action targets, and Xperience-native pretraining remains a later full-corpus goal.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
-          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. The selected multi-episode Qwen3-Omni final diagnostic result is verified and meets the JSON-validity target; Cosmos3-Nano has a verified future-window compatibility package; and Cosmos3-Super has a verified base-weight JSON-task evaluation plus a fine-tuned forward-dynamics LoRA branch. The next stage is action/subtask error analysis, stronger model-quality runs, and policy-target conversion.</p><a href="data/omni_model_comparison.json">result comparison</a></article>
+          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. The selected multi-episode Qwen3-Omni final diagnostic result is verified and meets the JSON-validity target; Cosmos3-Nano has a verified future-window compatibility package; and Cosmos3-Super has a verified base-weight JSON-task evaluation plus a fine-tuned forward-dynamics LoRA branch. The next stage is action/subtask error analysis, stronger held-out metrics, and policy-target conversion.</p><a href="data/omni_model_comparison.json">result comparison</a></article>
           <article class="artifact"><h3>Selected-128 next stressor</h3><p>Before adding episodes, the suite should try `multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets, label-normalized scoring, and compact raw-feature shards for unsupported tasks.</p><a href="data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a></article>
           <article class="artifact"><h3>Public-safe scale-up gate</h3><p>Future Omni, Cosmos, and policy tracks use the same episode split discipline, training metadata, held-out predictions, metrics, run report, and public-safe package gate.</p><a href="data/foundation_model_plan.json">scale-up status</a></article>
         </div>
@@ -6037,7 +6037,7 @@
         </div>
         <div class="artifact-grid">
           <article class="artifact primary-artifact"><div><h3>Official dataset</h3><p>Xperience-10M is a gated large-scale egocentric multimodal dataset for embodied AI, robotics, spatial intelligence, and world modeling.</p></div><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official HF dataset</a></article>
-          <article class="artifact"><h3>Line 1 public sample</h3><p>The one-episode line builds the inspectable 20-task lab. It is not evidence of multi-episode generalization.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
+          <article class="artifact"><h3>Line 1 public sample</h3><p>The one-episode line builds the inspectable 20-task lab. Use Line 2 for selected-128 held-out comparison.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
           <article class="artifact"><h3>Sample streams</h3><p>The raw browser is the canonical place to inspect synchronized video, embedded audio, HDF5 annotation groups, depth, pose/SLAM, mocap, IMU, calibration, and language-derived signals.</p><a href="#raw-sample">open raw browser</a><a href="data/modality_atlas.json">stream metadata</a></article>
           <article class="artifact"><h3>Multi-episode pilot</h3><p>The selected 128-episode Qwen3-Omni LoRA v6 diagnostic run is verified with 4,032 held-out test predictions and 99.90% JSON validity. Action/subtask metrics are still weak, so this remains a baseline for error analysis.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a><a href="data/qwen3_v5_v6_comparison.json">v5/v6 comparison</a></article>
           <article class="artifact"><h3>Raw sample browser</h3><p>The Data tab now exposes the official public sample files directly, including playable MP4 video streams and the audio track embedded in fisheye_cam0.mp4.</p><a href="#raw-sample">open raw browser</a><a href="data/raw_sample_files.json">raw manifest</a></article>
@@ -6205,7 +6205,7 @@
           </article>
           <article class="figure-brief-card">
             <h3>What the figure represents</h3>
-            <p>It documents the selected 128-episode final diagnostic result and the action/subtask improvement path needed for stronger model-quality numbers.</p>
+            <p>It documents the selected 128-episode final diagnostic result and the action/subtask improvement path for stronger held-out metrics.</p>
           </article>
         </div>
         <img class="pipeline-image lora-pipeline-image" src="assets/qwen3_omni_lora_pipeline.png?v=qwen3-lora-v1" alt="Detailed Qwen3-Omni LoRA training pipeline from raw Xperience-10M episodes to adapter outputs, predictions, metrics, and reports">
@@ -6232,7 +6232,7 @@
           <article class="result-reading-step">
             <span>01</span>
             <strong>Choose the line</strong>
-            <p>Use 1 episode for task-lab claims. Use 128 episodes for comparison claims.</p>
+            <p>Use 1 episode for the task lab. Use 128 episodes for the selected comparison surface.</p>
           </article>
           <article class="result-reading-step">
             <span>02</span>
@@ -6255,7 +6255,7 @@
             <small>1 episode results</small>
             <h3>Task-lab evidence</h3>
             <p>Minimal and Neural MLP heads are both scored on all 20 public-sample task contracts. All 40 scores are direct task-target metrics.</p>
-            <div class="line-claim">
+            <div class="line-readout">
               <div><span>best read as</span><p>A reproducible public task suite and baseline behavior check.</p></div>
             </div>
             <div class="suite-line-facts">
@@ -6269,7 +6269,7 @@
             <small>128 episode results</small>
             <h3>Scale-up evidence</h3>
             <p>Metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window use the aligned 128-episode surface. It has 134 direct scores plus 6 compact-proxy scores.</p>
-            <div class="line-claim">
+            <div class="line-readout">
               <div><span>best read as</span><p>A same-split comparison table with explicit source and proxy status.</p></div>
             </div>
             <div class="suite-line-facts">
@@ -6400,7 +6400,7 @@
                 <thead>
                   <tr>
                     <th><span class="term-with-help"><span>Method</span><span class="term-help" tabindex="0" aria-label="Method row: One named method family in the matrix." title="One named method family in the matrix.">i<span class="term-tooltip" role="tooltip">One named method family in the matrix, such as Minimal, 128ep Raw NN, Qwen3-Omni v6, or Cosmos3-Super.</span></span></span></th>
-                    <th><span class="term-with-help"><span>Line</span><span class="term-help" tabindex="0" aria-label="Evidence line: A claim boundary for a group of results." title="A claim boundary for a group of results.">i<span class="term-tooltip" role="tooltip">A claim boundary for a group of results: Line 1 is one public sample episode; Line 2 is selected-128 held-out comparison.</span></span></span></th>
+                    <th><span class="term-with-help"><span>Line</span><span class="term-help" tabindex="0" aria-label="Evidence line: A reading lane for a group of results." title="A reading lane for a group of results.">i<span class="term-tooltip" role="tooltip">A reading lane for a group of results: Line 1 is one public sample episode; Line 2 is selected-128 held-out comparison.</span></span></span></th>
                     <th><span class="term-with-help"><span>Records</span><span class="term-help" tabindex="0" aria-label="Task-method record: One method evaluated on one task." title="One method evaluated on one task.">i<span class="term-tooltip" role="tooltip">One method evaluated on one task. 9 methods x 20 tasks gives 180 public result records.</span></span></span></th>
                     <th><span class="term-with-help"><span>Direct</span><span class="term-help" tabindex="0" aria-label="Direct score: A metric computed against the task target directly." title="A metric computed against the task target directly.">i<span class="term-tooltip" role="tooltip">A metric computed against the task target directly. This is the preferred score type in the 20-task matrix.</span></span></span></th>
                     <th><span class="term-with-help"><span>Proxy</span><span class="term-help" tabindex="0" aria-label="Compact-proxy score: A bounded proxy metric when a direct raw target is not publicly available." title="A bounded proxy metric when a direct raw target is not publicly available.">i<span class="term-tooltip" role="tooltip">A bounded proxy metric when a direct raw target is not publicly available. It stays explicit so readers do not over-read it.</span></span></span></th>
@@ -6731,7 +6731,7 @@
           <div class="glossary-summary" aria-label="Glossary categories">
             <article>
               <small>scope</small>
-              <strong>Separate data, claims, and mirrors</strong>
+              <strong>Separate data, result lanes, and mirrors</strong>
               <p>Evidence lines, public-safe artifacts, and gated upstream data are different objects. The glossary keeps those boundaries visible.</p>
             </article>
             <article>
@@ -6757,8 +6757,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>Evidence line</td><td>A claim boundary for results.</td><td>Line 1 is the public sample episode; Line 2 is selected-128 held-out comparison.</td><td>Qwen v1-v6 run versions.</td></tr>
-                  <tr><td>Public sample episode</td><td>The one fully inspectable official sample episode.</td><td>Raw-file browsing, task construction, single-episode baselines.</td><td>Multi-episode generalization.</td></tr>
+                  <tr><td>Evidence line</td><td>A reading lane for a group of results.</td><td>Line 1 is the public sample episode; Line 2 is selected-128 held-out comparison.</td><td>Qwen v1-v6 run versions.</td></tr>
+                  <tr><td>Public sample episode</td><td>The one fully inspectable official sample episode.</td><td>Raw-file browsing, task construction, single-episode baselines.</td><td>The selected-128 comparison rows.</td></tr>
                   <tr><td>Selected 128 episodes</td><td>Public-safe derived features linked to official gated episode paths.</td><td>Same-split Line 2 baseline/model comparisons.</td><td>Redistributed raw MP4/HDF5/RRD files.</td></tr>
                   <tr><td>20-frame window</td><td>A fixed short clip slice used as a model input unit.</td><td>Feature rows, labels, tasks, and many baseline heads.</td><td>A full episode.</td></tr>
                   <tr><td>Task-method record</td><td>One method evaluated on one task.</td><td>The 9 x 20 public matrix, now 180 scored records.</td><td>A single prediction row.</td></tr>
@@ -6802,7 +6802,7 @@
           </article>
           <article class="resource-mode">
             <small>verify</small>
-            <strong>Check claims and parity</strong>
+            <strong>Check result parity</strong>
             <p>Use validators, source alignment, mirror parity, and live URL/hash checks before trusting a number.</p>
             <a href="#artifact-panel-checks">Open checks</a>
           </article>
@@ -6863,7 +6863,7 @@
               <p>Use these files to navigate the whole project, open the published mirrors, or reproduce the public-sample pipeline.</p>
             </div>
             <div class="artifact-grid">
-              <article class="artifact primary-artifact"><div><h3>Public reader map</h3><p>Single navigation view for GitHub, GitHub Pages, HF Space, artifact dataset, baseline model repo, Qwen3-Omni/Cosmos3 repos, and public claim boundaries.</p></div><a href="data/public_reader_map.json">reader map</a></article>
+              <article class="artifact primary-artifact"><div><h3>Public reader map</h3><p>Single navigation view for GitHub, GitHub Pages, HF Space, artifact dataset, baseline model repo, Qwen3-Omni/Cosmos3 repos, and result-reading lanes.</p></div><a href="data/public_reader_map.json">reader map</a></article>
               <article class="artifact primary-artifact"><div><h3>Glossary</h3><p>Definitions for evidence lines, windows, direct/proxy scores, Qwen v1-v6, Cosmos3 branches, adapters, and public mirror terms.</p></div><a href="data/glossary.json">glossary JSON</a><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/GLOSSARY.md">Markdown</a></article>
               <article class="artifact primary-artifact"><div><h3>Artifact guide</h3><p>Human-readable map from project scope to data contract, task evidence, platform mirrors, and scale-up status.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ARTIFACT_GUIDE.md">artifact guide</a></article>
               <article class="artifact"><h3>Reproduction scripts</h3><p>Training, visualization, taxonomy, walkthrough, validator, and omni-readiness scripts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/scripts">scripts/</a></article>
@@ -6881,7 +6881,7 @@
           <section class="artifact-group tabbed-panel" id="artifact-panel-scale-up" role="tabpanel" aria-labelledby="artifact-tab-scale-up" hidden>
             <div class="artifact-group-head">
               <div><span>Scale-up path</span><h3>Verified diagnostic pilot</h3></div>
-              <p>The multi-episode Qwen3-Omni path is documented, scripted, and verified as a validation-monitored diagnostic held-out pilot. Stronger model-quality metrics require structured-output and error-analysis improvements.</p>
+              <p>The multi-episode Qwen3-Omni path is documented, scripted, and verified as a validation-monitored held-out pilot. The next stronger metrics come from structured-output and error-analysis improvements.</p>
             </div>
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Two-line model comparison</h3><p>Groups Line 1 task-head baselines and Line 2 selected-128 methods: metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Nano Future Window, and Cosmos3-Super Reasoner.</p></div><a href="data/omni_model_comparison.json">result comparison</a></article>
@@ -6907,7 +6907,7 @@
               <article class="artifact"><h3>Mirror parity</h3><p>Compares GitHub, HF Space, artifact dataset, baseline model repo, and weights/results mirror snapshots.</p><a href="data/mirror_parity.json">mirror parity</a></article>
               <article class="artifact"><h3>Public surface QA</h3><p>Records public-surface readiness, reader-map links, live status pointers, and cross-repo publication checks.</p><a href="data/public_surface_qa.json">surface QA</a></article>
               <article class="artifact"><h3>Live publication status</h3><p>Tracks live URLs and hash checks used after publishing to GitHub Pages and Hugging Face surfaces.</p><a href="data/live_publication_status.json">live status</a></article>
-              <article class="artifact"><h3>Source alignment audit</h3><p>Separates official Xperience-10M dataset claims from local/public project inventory and derived artifacts.</p><a href="data/source_alignment_audit.json">source alignment</a></article>
+              <article class="artifact"><h3>Source alignment audit</h3><p>Separates official Xperience-10M source facts from local/public project inventory and derived artifacts.</p><a href="data/source_alignment_audit.json">source alignment</a></article>
               <article class="artifact"><h3>Task surface validation</h3><p>Checks task-count, task-contract, and result-matrix consistency across generated public data files.</p><a href="data/task_surface_integrity.json">task surface</a></article>
               <article class="artifact"><h3>Quality gates</h3><p>Summarizes build, validation, mirror, and publication gates that should pass before readers rely on the release.</p><a href="data/quality_gates.json">quality gates</a></article>
             </div>
@@ -7753,7 +7753,7 @@ python scripts/validate_publication_package.py</code></pre>
       "normalized radar value": "A 0-1 plotting value used only to draw comparable radar polygons across metrics with different scales.",
       "task-method record": "One method evaluated on one task. 9 methods x 20 tasks gives 180 public result records.",
       "unified 20-task suite": "The current task surface: all 20 task contracts presented together and scored across methods where real artifacts exist.",
-      "evidence line": "A claim boundary for a group of results: Line 1 is one public sample episode; Line 2 is selected-128 held-out comparison.",
+      "evidence line": "A reading lane for a group of results: Line 1 is one public sample episode; Line 2 is selected-128 held-out comparison.",
       "public sample episode": "The fully inspectable Line 1 unit used for raw-file browsing, task construction, and single-episode baselines.",
       "selected 128 episodes": "Line 2 uses derived windows/features and keeps links back to official gated episode ids and source paths.",
       "minimal baseline": "A simple non-neural task head used as a low-complexity comparison on the public sample episode.",

@@ -2,7 +2,7 @@
   "title": "Three Foundation Pipeline Tracks",
   "status": "pipeline_plan",
   "source_document": "THREE_FOUNDATION_PIPELINES.md",
-  "claim_boundary": "These are supported pipeline directions, not three completed model-quality claims.",
+  "reader_note": "These are supported pipeline directions with concrete data exports, training recipes, and evaluation gates.",
   "diagram_assets": {
     "status": "published_high_resolution_slide_diagrams",
     "asset_root": "docs/assets/foundation-pipelines",
@@ -13,7 +13,7 @@
     "renderer_script": "scripts/render_foundation_pipeline_diagrams.py",
     "diagram_type": "direction_slide_diagram",
     "source_update": "2026-06-19: clean Spatial intelligence, Human-video world model, and Vision-language-action PNGs are committed as source-slide assets and published as 2560-pixel public images.",
-    "note": "Images are slide-diagram communication assets for pipeline tracks. Technical claims remain governed by the Markdown/JSON contracts and verified metrics."
+    "note": "Images are slide-diagram communication assets for pipeline tracks. Technical readouts remain governed by the Markdown/JSON contracts and verified metrics."
   },
   "shared_principles": [
     "Use episode-level train/validation/test separation.",
@@ -77,7 +77,7 @@
           "object_set_forecast",
           "camera_view_sync_retrieval"
         ],
-        "boundary": "This yields a one-episode spatial training-pair recipe and proxy tasks; full spatial-intelligence claims require held-out multi-episode depth/pose/scene-memory metrics."
+        "boundary": "This yields a one-episode spatial training-pair recipe and proxy tasks; the next spatial-intelligence readout is held-out depth, pose, and scene-memory metrics."
       },
       "diagram_flow": [
         {
@@ -113,14 +113,14 @@
             "held-out episode spatial metrics",
             "count and relation accuracy",
             "retrieval rank and consistency",
-            "saved predictions before public claim"
+            "saved predictions before public package update"
           ]
         }
       ],
-      "avoid_claiming_now": [
-        "full neural rendering",
-        "full 3D reconstruction",
-        "general spatial intelligence without artifact-level evidence"
+      "next_readout_before_stronger_positioning": [
+        "held-out spatial QA",
+        "pose consistency",
+        "object-counting and scene-memory metrics"
       ]
     },
     {
@@ -152,7 +152,7 @@
         "contact transition",
         "future-window quality metrics"
       ],
-      "first_pipeline": "Keep Qwen-style structured future probes for task interpretability, keep Cosmos-style dynamics branches separate, and add latent or feature-reconstruction metrics before claiming world-model quality.",
+      "first_pipeline": "Keep Qwen-style structured future probes for task interpretability, keep Cosmos-style dynamics branches separate, and add latent or feature-reconstruction metrics before presenting world-model quality.",
       "current_maturity": "Partially evidenced by current future-task probes and Cosmos-style branch artifacts.",
       "next_gate": "Stronger future-state metrics, qualitative future examples, and held-out episode breakdowns.",
       "diagram_image": "docs/assets/foundation-pipelines/human-video-world-model-pipeline.png",
@@ -176,7 +176,7 @@
           "time_to_transition",
           "ego_motion_forecast"
         ],
-        "boundary": "Future labels and future windows must stay out of the input. Structured future probes are evidence for the pipeline, not a full visual world-model claim by themselves."
+        "boundary": "Future labels and future windows must stay out of the input. Structured future probes show the pipeline, while visual world-model readouts need latent or visual future metrics."
       },
       "diagram_flow": [
         {
@@ -216,9 +216,10 @@
           ]
         }
       ],
-      "avoid_claiming_now": [
-        "strong world model from structured future-task scores alone",
-        "visual future quality without visual or latent future metrics"
+      "next_readout_before_stronger_positioning": [
+        "latent or visual future metrics",
+        "per-episode future-task breakdowns",
+        "qualitative examples backed by saved targets"
       ]
     },
     {
@@ -273,7 +274,7 @@
           "interaction_text_prediction",
           "action_object_relation"
         ],
-        "boundary": "This is a VLA/policy data-conversion recipe for the one-sample suite. Robot policy claims require a later action-space converter, normalization, retargeting report, and held-out policy metrics."
+        "boundary": "This is a VLA/policy data-conversion recipe for the one-sample suite. Robot policy readouts require a later action-space converter, normalization, retargeting report, and held-out policy metrics."
       },
       "diagram_flow": [
         {
@@ -309,13 +310,14 @@
             "held-out action metrics",
             "chunk and next-action accuracy",
             "object/contact-conditioned scores",
-            "policy card before robot-policy claim"
+            "policy card before robot-policy quality readout"
           ]
         }
       ],
-      "avoid_claiming_now": [
-        "robot policy quality",
-        "policy generalization before action-space evidence exists"
+      "next_readout_before_stronger_positioning": [
+        "action-space conversion",
+        "normalized action chunks",
+        "held-out policy metrics"
       ]
     }
   ]

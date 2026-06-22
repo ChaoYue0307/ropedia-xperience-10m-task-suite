@@ -11,8 +11,8 @@ The public sample is treated as a small but real research system, while the
 selected-128 line shows the first same-split scale-up comparison. The project
 does not blend those two evidence types. A reader should be able to trace one
 model input, understand each task, reproduce the public-sample results, compare
-the 128-episode method rows, and see what remains before stronger
-model-quality claims.
+the 128-episode method rows, and see what remains before presenting stronger
+model-quality numbers.
 
 ## Capability Map
 
@@ -58,7 +58,7 @@ metrics, visualization, and baseline code. It is not enough to measure final
 general embodied-AI model quality. Line 2 verifies the selected-128 held-out
 comparison surface and the Qwen3-Omni v6 diagnostic row; the next research
 stage is action/subtask error analysis, stronger structured-output training,
-and policy-target conversion before larger backbone claims.
+and policy-target conversion before broader backbone comparisons.
 
 ## Best Entry Points
 

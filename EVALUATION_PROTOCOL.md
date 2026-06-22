@@ -85,7 +85,7 @@ retained only as stable provenance artifact locations inside the unified suite.
 
 - Cross-episode generalization for Qwen3-Omni has a first verified diagnostic pilot, but strong model quality is not yet shown.
 - Feature-vector reconstruction is separate from pixel depth, mesh, NeRF, or Gaussian reconstruction.
-- The final verified Qwen3-Omni diagnostic result meets the strict-JSON target, but action/subtask held-out quality remains weak and needs error analysis before larger model-quality claims.
+- The final verified Qwen3-Omni diagnostic result meets the strict-JSON target, but action/subtask held-out quality remains weak and needs error analysis before presenting stronger model-quality numbers.
 - Full audio-visual representation learning still needs multi-episode training; the current report includes single-episode audio/no-audio ablations.
 
 ## Scale-Up Gate

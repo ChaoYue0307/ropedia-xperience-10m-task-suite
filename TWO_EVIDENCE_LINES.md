@@ -6,10 +6,10 @@ The public Xperience-10M suite has two evidence lines. Read them separately.
 
 Score formula: 2 single-episode methods x 20 tasks = 40 records; 7 selected-128 methods x 20 tasks = 140 records; total public matrix = 180/180 scored records.
 
-| Line | Data unit | Score statement | Valid claim | Do not claim |
+| Line | Data unit | Score statement | Best use | Read separately from |
 | --- | --- | --- | --- | --- |
-| 1 sample episode | One public sample episode; 5,821 frames; 1,161 aligned 20-frame windows; 8,546 feature dimensions. | 40/40 direct scores from Minimal and Neural MLP heads. | Task construction, raw-file inspection, local reproducibility, and controlled single-episode baselines. | Multi-episode generalization. |
-| 128 selected episodes | Selected held-out 96/16/16 split; 34,269 exported windows; public-safe processed features linked to official gated episode paths. | 140/140 selected-128 scores: 134 direct + 6 compact-proxy. | Same-split method comparison, Qwen3-Omni v6 LoRA diagnostics, Cosmos3-Super/Cosmos3-Nano diagnostics, and scale-up planning. | Reading compact-proxy cells as direct raw-target measurements. |
+| 1 sample episode | One public sample episode; 5,821 frames; 1,161 aligned 20-frame windows; 8,546 feature dimensions. | 40/40 direct scores from Minimal and Neural MLP heads. | Inspect the raw sample, understand file organization, reproduce the 20 task targets, and compare Minimal vs Neural MLP behavior inside one episode. | The selected-128 comparison rows and broader held-out model behavior. |
+| 128 selected episodes | Selected held-out 96/16/16 split; 34,269 exported windows; public-safe processed features linked to official gated episode paths. | 140/140 selected-128 scores: 134 direct + 6 compact-proxy. | Compare same-split metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super, and Cosmos3-Nano while keeping the 6 compact-proxy cells visible. | Direct raw-target interpretation for the proxy-marked cells. |
 
 ## Result Ledger
 
@@ -45,9 +45,9 @@ Qwen3 run v1-v6 is a LoRA/evaluation lineage inside the 128-episode line, not th
 
 ## Interpretation Rule
 
-Use the 1-episode line for task construction and reproducibility claims.
-Use the 128-episode line for held-out same-split comparison and model-diagnostic claims.
-Do not mix those claims without naming the evidence line.
+Read the 1-episode line as the inspectable task lab.
+Read the 128-episode line as the selected held-out comparison surface.
+Compare scores within the same line first, then check proxy badges before combining totals.
 
 ## Reading Order
 

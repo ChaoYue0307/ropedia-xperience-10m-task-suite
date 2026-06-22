@@ -116,8 +116,8 @@ def build_payload(matrix: dict, lines: dict) -> dict:
             "short_label": meta.get("short_label"),
             "data_unit": meta["data_unit"],
             "result_statement": meta.get("result_statement"),
-            "claim_boundary": meta.get("claim_boundary"),
-            "not_for": meta.get("not_for"),
+            "best_read_as": meta.get("best_read_as"),
+            "read_separately_from": meta.get("read_separately_from"),
             "primary_use": meta["best_use"],
             "task_count": matrix["task_count"],
             "method_count": 0,
@@ -252,8 +252,8 @@ def write_markdown(payload: dict) -> None:
             [
                 line["label"],
                 line.get("result_statement") or "",
-                line.get("claim_boundary") or line["primary_use"],
-                line.get("not_for") or "",
+                line.get("best_read_as") or line["primary_use"],
+                line.get("read_separately_from") or "",
             ]
         )
         entry_rows.append(
@@ -322,7 +322,7 @@ Interpretation rule: {payload['interpretation_rule']}
 
 Score formula: {payload.get('score_formula') or ''}
 
-| Line | What the scores mean | Valid claim | Do not claim |
+| Line | What the scores mean | Best use | Read separately from |
 | --- | --- | --- | --- |
 """ + "\n".join(
         "| " + " | ".join(str(cell).replace("|", "\\|") for cell in row) + " |"

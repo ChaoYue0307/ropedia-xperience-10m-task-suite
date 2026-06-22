@@ -155,8 +155,8 @@ The public suite is organized around two evidence lines. Keep them separate when
       <th width="20%">Line</th>
       <th width="24%">Data unit</th>
       <th width="22%">Score statement</th>
-      <th width="20%">Valid claim</th>
-      <th>Do not claim</th>
+      <th width="20%">Best use</th>
+      <th>Read separately from</th>
     </tr>
   </thead>
   <tbody>
@@ -164,15 +164,15 @@ The public suite is organized around two evidence lines. Keep them separate when
       <td><strong>1 sample episode</strong></td>
       <td>One public Xperience-10M sample episode: 5,821 frames, 1,161 aligned 20-frame windows, 8,546 feature dimensions.</td>
       <td>40/40 direct scores from Minimal and Neural MLP heads.</td>
-      <td>Task construction, file inspection, local reproducibility, and controlled single-episode baselines.</td>
-      <td>Multi-episode generalization.</td>
+      <td>Inspect the raw sample, understand file organization, reproduce the 20 task targets, and compare Minimal vs Neural MLP behavior inside one episode.</td>
+      <td>The selected-128 comparison rows and any broader held-out model behavior.</td>
     </tr>
     <tr>
       <td><strong>128 selected episodes</strong></td>
       <td>Selected held-out 96/16/16 split: 34,269 exported windows with public-safe processed features linked to official gated episode paths. The Hugging Face artifact dataset exposes these rows separately as <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts/viewer/selected_128_windows/selected_128"><code>selected_128_windows/selected_128</code></a>; it is not mixed with the one-sample <code>episode_sample/public_sample</code> viewer.</td>
       <td>140/140 selected-128 scores: 134 direct + 6 compact-proxy.</td>
-      <td>Same-split metadata/raw baseline comparison, Qwen3-Omni v6 diagnostics, Cosmos3 diagnostics, and scale-up planning.</td>
-      <td>Reading proxy cells as direct raw-target measurements.</td>
+      <td>Compare same-split metadata/raw baselines, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano while keeping the 6 compact-proxy cells visible.</td>
+      <td>Direct raw-target measurements for the proxy-marked cells.</td>
     </tr>
   </tbody>
 </table>

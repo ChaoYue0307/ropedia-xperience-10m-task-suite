@@ -234,7 +234,7 @@ def main() -> int:
         "three_foundation_pipelines": {
             "title": three_foundation_pipelines.get("title"),
             "status": three_foundation_pipelines.get("status"),
-            "claim_boundary": three_foundation_pipelines.get("claim_boundary"),
+            "reader_note": three_foundation_pipelines.get("reader_note"),
             "tracks": three_foundation_pipelines.get("tracks", []),
             "source_document": three_foundation_pipelines.get("source_document"),
         },
