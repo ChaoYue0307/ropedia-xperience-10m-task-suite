@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-22T13:17:00+00:00",
+  "generated_at_utc": "2026-06-22T14:40:39+00:00",
   "status": "pass",
   "artifact_count": 228,
   "missing": [],
@@ -632,7 +632,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "19dbac26925964991212bfc358099ace02d848c55c8a6d3c2c12c55885d6f3b8"
+      "sha256": "77199b03fc4d589a648033e359183a252d43dd6900e19ca609349bd972939e84"
     },
     {
       "id": "source_alignment_validator",
@@ -1182,7 +1182,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8640,
-      "sha256": "49e5ef70aed0d219d5ba1914d57ae38ff3d5a0bc8d3018267411f18b5a47feaa"
+      "sha256": "745b9c41da785ab84af8aba58babe3d8decd3c0bb07e3187b64f82ae42d91ec5"
     },
     {
       "id": "public_surface_qa",
@@ -1363,7 +1363,7 @@
       "volatile": true,
       "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and credential text.",
       "exists": true,
-      "bytes": 10844,
+      "bytes": 10940,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1387,7 +1387,7 @@
       "volatile": true,
       "shows": "Confirms prepared GitHub/HF Space/artifact/model mirrors share the same critical data, figure, website HTML, and validator files.",
       "exists": true,
-      "bytes": 1479518,
+      "bytes": 1479523,
       "hash_policy": "existence_and_size_only"
     },
     {

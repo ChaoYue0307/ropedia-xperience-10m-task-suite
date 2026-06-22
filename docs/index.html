@@ -5307,76 +5307,7 @@
             </div>
             <p>The project keeps source code, visual explanation, derived artifacts, model outputs, and release checks on different public surfaces. This map shows what each surface is responsible for before you dive into the full file set.</p>
           </div>
-          <div class="brief-grid" aria-label="Public reader paths">
-            <article class="brief-card">
-              <small>overview</small>
-              <strong>Understand the project quickly</strong>
-              <p>Start with the brief and status files, then use the dashboard for the visual story.</p>
-              <div class="reading-links">
-                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">brief</a>
-                <a href="data/project_status.json">status data</a>
-              </div>
-            </article>
-            <article class="brief-card">
-              <small>benchmark</small>
-              <strong>Inspect the 20-task suite</strong>
-              <p>Use the task contract, protocol, walkthroughs, and radar matrix to follow each scored axis.</p>
-              <div class="reading-links">
-                <a href="#suite">20 tasks</a>
-                <a href="data/task_suite_20.json">task contract data</a>
-                <a href="data/task_method_20_result_matrix.json">matrix</a>
-              </div>
-            </article>
-            <article class="brief-card">
-              <small>sample data</small>
-              <strong>Understand one data sample</strong>
-              <p>Open the sample explorer, raw-file manifest, and feature manifest before reading model scores.</p>
-              <div class="reading-links">
-                <a href="single_episode_explorer.html">explorer</a>
-                <a href="data/raw_sample_files.json">files</a>
-                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">features</a>
-              </div>
-            </article>
-            <article class="brief-card">
-              <small>terms</small>
-              <strong>Decode terminology</strong>
-              <p>Use the glossary when evidence lines, direct/proxy scores, Qwen v1-v6, Cosmos branches, or HF surfaces are unclear.</p>
-              <div class="reading-links">
-                <a href="#glossary">glossary</a>
-                <a href="data/glossary.json">glossary data</a>
-                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/GLOSSARY.md">full glossary note</a>
-              </div>
-            </article>
-            <article class="brief-card">
-              <small>results</small>
-              <strong>Compare methods cleanly</strong>
-              <p>Single-episode baselines, 128-episode aligned baselines, Qwen3-Omni v6 LoRA, and Cosmos3-Super/Nano diagnostics stay separated by evidence type.</p>
-              <div class="reading-links">
-                <a href="#takeaways">takeaways</a>
-                <a href="data/unified_task_model_radar.json">radar data</a>
-                <a href="data/omni_model_comparison.json">model comparison</a>
-              </div>
-            </article>
-            <article class="brief-card">
-              <small>directions</small>
-              <strong>Read the three foundation pipelines</strong>
-              <p>Spatial intelligence, human-video world modeling, and vision-language-action are documented as trainable directions with task mappings.</p>
-              <div class="reading-links">
-                <a href="#directions">directions</a>
-                <a href="data/three_foundation_pipelines.json">pipeline data</a>
-              </div>
-            </article>
-            <article class="brief-card">
-              <small>release health</small>
-              <strong>Verify public copies</strong>
-              <p>Publication checks validate source alignment, package contents, mirror parity, and live URL/hash status.</p>
-              <div class="reading-links">
-                <a href="data/public_reader_map.json">reader map data</a>
-                <a href="data/public_surface_qa.json">surface QA</a>
-                <a href="data/live_publication_status.json">live status</a>
-              </div>
-            </article>
-          </div>
+          <p class="table-note">This panel now does one job: explain which public surface owns which type of evidence. Use the dedicated <a href="#reading-path">reading path</a> for step-by-step onboarding, the <a href="#glossary">glossary</a> for terminology, and the <a href="#artifacts">artifact library</a> for detailed file-level links.</p>
           <div class="surface-map" aria-label="Public surface responsibilities">
             <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite"><strong>GitHub repo</strong><span>Source of truth for docs, scripts, generated data, validators, and commit history.</span></a>
             <a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/"><strong>GitHub Pages</strong><span>Visual dashboard for sample, tasks, results, directions, and resources.</span></a>
@@ -5446,25 +5377,33 @@
             <a href="#takeaways">Current takeaways</a>
           </div>
         </div>
-        <div class="split-radar-grid" aria-label="Homepage split 20-task radar comparisons">
-          <article class="split-radar-card">
-            <h3>1-Episode 20-Task Radar</h3>
-            <p>Minimal and Neural MLP baselines over the original public-sample episode, with 40/40 scored method-task records.</p>
-            <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
-            <div class="split-radar-links">
-              <a href="assets/charts/single_episode_task_model_radar.svg">Open SVG</a>
-              <a href="data/single_episode_task_model_radar.json">Open chart data</a>
+        <div class="brief-panel">
+          <div class="brief-panel-head">
+            <div>
+              <span>Result snapshot</span>
+              <h3>One comparison story, detailed charts in the task-suite section.</h3>
             </div>
-          </article>
-          <article class="split-radar-card">
-            <h3>128-Episode 20-Task Radar</h3>
-            <p>Metadata, raw-feature, Qwen3-Omni, and Cosmos3 methods on the aligned 128-episode surface, with all 140 rows scored and proxy/evidence notes kept explicit.</p>
-            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="128-episode grouped 20-task radar comparing metadata baselines, raw-feature baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
-            <div class="split-radar-links">
-              <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
-              <a href="data/episode128_task_model_radar.json">Open chart data</a>
-            </div>
-          </article>
+            <p>The overview keeps only the headline comparison so the same radar visuals are not repeated. Open the task-suite section for the enlarged unified radar, the 1-episode split radar, the 128-episode split radar, and the source-linked 180-record table.</p>
+          </div>
+          <div class="brief-grid">
+            <article class="brief-card">
+              <strong>1-episode line</strong>
+              <p>Minimal and Neural MLP baselines cover 40/40 method-task records on the original public-sample episode.</p>
+            </article>
+            <article class="brief-card">
+              <strong>128-episode line</strong>
+              <p>Metadata, raw-feature, Qwen3-Omni, and Cosmos3 methods cover 140/140 rows with direct/proxy evidence notes preserved.</p>
+            </article>
+            <article class="brief-card">
+              <strong>Best detailed view</strong>
+              <p>The task-suite section holds the large readable radars, normalized-score notes, and the downloadable chart data.</p>
+            </article>
+          </div>
+          <div class="brief-actions">
+            <a href="#suite">Open detailed radars</a>
+            <a href="data/task_method_20_result_matrix.json">Open 180-result matrix</a>
+            <a href="data/unified_task_model_radar.json">Open radar data</a>
+          </div>
         </div>
         <div class="snapshot-grid">
           <article class="snapshot-card">
@@ -5820,45 +5759,41 @@
         <div class="evidence-grid">
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>Aligned Xperience-10M sample windows</h3>
-            <p>5,821 frames become 1,161 synchronized 20-frame windows with an 8,546-dimensional representation.</p>
+            <h3>Sample windows and 20-task results</h3>
+            <p>5,821 frames become 1,161 synchronized 20-frame windows with an 8,546-dimensional representation, 20 task contracts, and the current 180-record public result matrix.</p>
             <div class="evidence-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">task results</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature inputs</a>
+              <a href="data/task_method_20_result_matrix.json">result matrix</a>
+              <a href="#suite">20-task suite</a>
             </div>
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>20 task contracts + 180 public results</h3>
-            <p>The current release reports nine method families over the unified 20-task axes, with minimal, neural, 128-episode, Qwen3, Cosmos3, and proxy-scored rows kept source-linked.</p>
-            <div class="evidence-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite">task artifacts</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural MLP outputs</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Audio contribution is measured task by task</h3>
-            <p>Audio variants improve the primary metric on 6 walkthrough-backed task contracts in this single-episode setting.</p>
+            <h3>Audio and modality evidence</h3>
+            <p>Audio variants improve the primary metric on 6 walkthrough-backed task contracts, while the feature manifest and raw browser keep each modality source inspectable.</p>
             <div class="evidence-links">
               <a href="data/audio_ablation_summary.json">audio summary</a>
               <a href="assets/charts/audio_ablation_delta.svg">delta chart</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/audio_ablation/AUDIO_ABLATION_SUMMARY.md">audio findings</a>
+              <a href="#raw-sample">raw browser</a>
             </div>
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>Four research directions are mapped by evidence type</h3>
-            <p>The Ropedia directions are labeled as direct, proxy, or diagnostic coverage, plus one coded extension probe per direction.</p>
+            <h3>Research directions and foundation pipelines</h3>
+            <p>The Ropedia directions are labeled as direct, proxy, or diagnostic coverage and connected to spatial intelligence, human-video world-model, and vision-language-action training paths.</p>
             <div class="evidence-links">
               <a href="data/research_directions.json">direction map</a>
               <a href="data/research_direction_extensions.json">extension probes</a>
+              <a href="data/three_foundation_pipelines.json">pipeline data</a>
+              <a href="#directions">directions</a>
             </div>
           </article>
           <article class="evidence-card">
             <span class="status-pill">current plan</span>
             <h3>Foundation backbones are separated by role</h3>
-            <p>Qwen3-Omni stays first for held-out LoRA; Cosmos 3 is the world-model track with camera-pose proxy forward-dynamics targets ready for trainer work; OpenVLA/openpi/GR00T are policy candidates after robot-compatible action conversion; Xperience-native pretraining is the later full-corpus goal.</p>
+            <p>Qwen3-Omni is the trainable held-out LoRA track; Cosmos3 covers world-model diagnostics; OpenVLA/openpi/GR00T become policy candidates after robot-compatible action conversion; Xperience-native pretraining remains the later full-corpus goal.</p>
             <div class="evidence-links">
               <a href="data/foundation_model_plan.json">foundation model plan</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">plan doc</a>
@@ -5867,19 +5802,21 @@
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified diagnostic</span>
-            <h3>Qwen3-Omni and Cosmos3 series</h3>
-            <p>The selected 96/16/16 episode split now has a verified Qwen3-Omni v6 package with 4,032 held-out test predictions and 99.90% JSON validity. Cosmos3-Nano has 378 held-out future-window predictions, Cosmos3-Super Reasoner has 448 held-out base-weight JSON-task predictions, and Cosmos3-Super Forward-Dynamics LoRA has 448 held-out loss records.</p>
+            <h3>Qwen3-Omni and Cosmos3 model evidence</h3>
+            <p>The selected 96/16/16 split has a verified Qwen3-Omni v6 package with 4,032 held-out predictions and 99.90% JSON validity. Cosmos3-Nano, Cosmos3-Super Reasoner, and Cosmos3-Super Forward-Dynamics LoRA remain separate public-safe diagnostic branches.</p>
             <div class="evidence-links">
               <a href="data/omni_model_comparison.json">result comparison</a>
               <a href="data/omni_finetune_verified_result.json">pilot result</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/omni_finetune/verified_public">verified package</a>
+              <a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a>
             </div>
           </article>
           <article class="evidence-card">
             <span class="status-pill">current plan</span>
-            <h3>Dense selected-128 export path</h3>
-            <p>The current 3,808-window export can be expanded through dense/multiscale windows without changing the held-out episode split; the recommended scenario is `multiscale_20s10_40s20_80s40`.</p>
+            <h3>Selected-128 export and enhancement path</h3>
+            <p>The current selected-128 line has a source/feature index and can be pushed through dense/multiscale windows without changing the held-out episode split; the recommended scenario is `multiscale_20s10_40s20_80s40`.</p>
             <div class="evidence-links">
+              <a href="data/xperience10m_128_episode_feature_index.json">source/feature index</a>
               <a href="data/task_suite_enhancement_128.json">enhancement data</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/TASK_SUITE_ENHANCEMENT_128.md">enhancement report</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/task_suite_enhancement_128_v1_20260608/dense_window_scenarios.csv">dense scenarios</a>
@@ -5887,80 +5824,36 @@
           </article>
           <article class="evidence-card">
             <span class="status-pill">verified</span>
-            <h3>Multi-episode pilot status is explicit</h3>
-            <p>The Qwen3-Omni notes separate earlier diagnostic packages, the final 128-episode LoRA result, and the next action/subtask error-analysis pass.</p>
-            <div class="evidence-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">training status</a>
-              <a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Public pages are connected</h3>
-            <p>The website, GitHub repo, Hugging Face Space, artifact dataset, baseline model repo, consolidated weights/results repo, and collection point to the same research project.</p>
+            <h3>Public surfaces and source anchors</h3>
+            <p>The website, GitHub repo, HF Space, artifact dataset, baseline model repo, consolidated weights/results repo, collection, official dataset, and HOMIE toolkit point to the same research package.</p>
             <div class="evidence-links">
               <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a>
               <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">artifact dataset</a>
-              <a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">baseline models</a>
-              <a href="https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results">weights + results</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Figures are indexed</h3>
-            <p>The visual set includes the logo, raw-sample stream thumbnails, task-suite figure, unified 20-task model radar, model-architecture figure, provenance baseline chart, and Qwen3-Omni LoRA training-flow figure.</p>
-            <div class="evidence-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FIGURE_INDEX.md">figure guide</a>
-              <a href="assets/task_suite_infographic.png">task-suite figure</a>
-              <a href="assets/charts/unified_task_model_radar.svg">20-task radar</a>
-              <a href="assets/qwen3_omni_lora_pipeline.png">LoRA figure</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Brand assets are packaged consistently</h3>
-            <p>The project logo is used consistently in the website header, favicon, README/HF cards, and social preview.</p>
-            <div class="evidence-links">
-              <a href="assets/brand/xperience10m-logo-social-card.png">logo card</a>
-              <a href="assets/brand/xperience10m-logo-mark-512.png">logo mark</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Raw dataset files are not redistributed</h3>
-            <p>The public project shares derived task artifacts, figures, reports, and lightweight baseline files. Raw Xperience-10M videos, HDF5 annotations, RRD visualizations, gated data, and full Qwen weights stay outside the repo.</p>
-            <div class="evidence-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a>
-              <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official dataset</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>The dashboard is designed as the visual entry point</h3>
-            <p>Tabs organize the sample data, 20 tasks, model method, results, research directions, and next-stage resources.</p>
-            <div class="evidence-links">
-              <a href="#dataset-card">dataset</a>
-              <a href="#tasks">tasks</a>
-              <a href="#directions">directions</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Reproduction path is documented</h3>
-            <p>The reproduction guide lists the public sample setup, task-suite rebuild, neural heads, figure generation, and expected outputs.</p>
-            <div class="evidence-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">reproducibility</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">latest rebuild</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Official dataset source is linked</h3>
-            <p>The project keeps the official Xperience-10M dataset, public sample, dataset website, and HOMIE toolkit visible so readers can trace the data source.</p>
-            <div class="evidence-links">
-              <a href="https://ropedia.com/dataset">dataset website</a>
+              <a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite">collection</a>
               <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official dataset</a>
               <a href="https://github.com/Ropedia/HOMIE-toolkit">HOMIE toolkit</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Visual system and figure index</h3>
+            <p>The logo, raw-sample stream thumbnails, task-suite figure, unified radar, model-architecture figures, and LoRA training-flow figure are indexed and reused across public surfaces.</p>
+            <div class="evidence-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FIGURE_INDEX.md">figure guide</a>
+              <a href="assets/charts/unified_task_model_radar.svg">20-task radar</a>
+              <a href="assets/qwen3_omni_lora_pipeline.png">LoRA figure</a>
+              <a href="assets/brand/xperience10m-logo-social-card.png">logo card</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Governance and reproduction</h3>
+            <p>The project shares derived task artifacts, figures, reports, lightweight baselines, reproduction commands, validators, and audit records. Raw videos, raw annotations, RRD visualizations, gated data, and full Qwen weights stay outside the repo.</p>
+            <div class="evidence-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">reproducibility</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">latest rebuild</a>
+              <a href="data/publication_audit.json">publication audit</a>
             </div>
           </article>
         </div>
@@ -6045,11 +5938,10 @@
         <div class="artifact-grid">
           <article class="artifact primary-artifact"><div><h3>Official dataset</h3><p>Xperience-10M is a gated large-scale egocentric multimodal dataset for embodied AI, robotics, spatial intelligence, and world modeling.</p></div><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official HF dataset</a></article>
           <article class="artifact"><h3>Line 1 public sample</h3><p>The one-episode line builds the inspectable 20-task lab. Use Line 2 for selected-128 held-out comparison.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
-          <article class="artifact"><h3>Sample streams</h3><p>The raw browser is the canonical place to inspect synchronized video, embedded audio, HDF5 annotation groups, depth, pose/SLAM, mocap, IMU, calibration, and language-derived signals.</p><a href="#raw-sample">open raw browser</a><a href="data/modality_atlas.json">stream metadata</a></article>
+          <article class="artifact"><h3>Public sample inspection</h3><p>One public sample episode is exposed through the raw browser and modality atlas: synchronized video, embedded audio, HDF5 annotation groups, depth, pose/SLAM, mocap, IMU, calibration, language-derived signals, and source links in one place.</p><a href="#raw-sample">open raw browser</a><a href="data/raw_sample_files.json">raw manifest</a><a href="data/modality_atlas.json">stream metadata</a></article>
           <article class="artifact"><h3>Multi-episode pilot</h3><p>The selected 128-episode Qwen3-Omni LoRA v6 diagnostic run is verified with 4,032 held-out test predictions and 99.90% JSON validity. Action/subtask metrics are still weak, so this remains a baseline for error analysis.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a><a href="data/qwen3_v5_v6_comparison.json">v5/v6 comparison</a></article>
-          <article class="artifact"><h3>Raw sample browser</h3><p>The Data tab now exposes the official public sample files directly, including playable MP4 video streams and the audio track embedded in fisheye_cam0.mp4.</p><a href="#raw-sample">open raw browser</a><a href="data/raw_sample_files.json">raw manifest</a></article>
           <article class="artifact"><h3>Data boundary</h3><p>Raw MP4, HDF5, RRD files are streamed from the official public sample source when opened here; private gated data and full Qwen weights are not redistributed in this project.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a></article>
-          <article class="artifact"><h3>Current project subset</h3><p>One public sample episode, 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, and direct links to the official raw sample files.</p><a href="#suite">task suite</a><a href="data/raw_sample_files.json">raw manifest</a></article>
+          <article class="artifact"><h3>Implemented subset</h3><p>The public task lab uses one sample episode with 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, and 20 integrated task contracts.</p><a href="#suite">task suite</a><a href="data/task_suite_20.json">task contract data</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, misalignment, long-horizon forecasting, interaction text, action-object relation, sensor bridging, camera sync, and transition timing.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Responsible use</h3><p>This project is for research exploration and excludes identity recognition, surveillance, biometric profiling, sensitive-attribute inference, and safety-critical deployment.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">use notes</a></article>
           <article class="artifact"><h3>Later milestones</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, held-out Qwen3-Omni evaluation, and future Xperience-native pretraining.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">native pretraining</a></article>

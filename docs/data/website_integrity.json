@@ -1,12 +1,12 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-22T13:16:31+00:00",
+  "generated_at_utc": "2026-06-22T14:39:11+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 295,
-    "external_reference_count": 158,
+    "local_references": 280,
+    "external_reference_count": 149,
     "json_files": 56,
     "image_assets_referenced": 49,
     "failure_count": 0
@@ -81,13 +81,13 @@
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
       "overview_index": 151226,
-      "evidence_index": 202724
+      "evidence_index": 199040
     },
     {
       "name": "project_status_links_json",
       "status": "pass",
       "reason": "The website should expose the machine-readable project status.",
-      "marker_count": 3
+      "marker_count": 2
     },
     {
       "name": "roadmap_links_json",
@@ -125,7 +125,7 @@
       "name": "reader_resources_link_qwen_status",
       "status": "pass",
       "reason": "The website should expose the Qwen3-Omni scale-up status.",
-      "marker_count": 4
+      "marker_count": 3
     },
     {
       "name": "roadmap_html_matches_json_phases",
@@ -160,8 +160,8 @@
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
       "overview_index": 151226,
-      "protocol_index": 198929,
-      "evidence_index": 202724
+      "protocol_index": 195245,
+      "evidence_index": 199040
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -173,7 +173,7 @@
       "name": "visual_figures_link_task_suite_image",
       "status": "pass",
       "reason": "The website should expose the main task-suite figure.",
-      "marker_count": 4
+      "marker_count": 3
     },
     {
       "name": "foundation_direction_cards_explain_one_sample_io",
@@ -230,7 +230,7 @@
       "name": "raw_sample_browser_links_manifest",
       "status": "pass",
       "reason": "The raw sample browser should expose a machine-readable file manifest.",
-      "marker_count": 4
+      "marker_count": 2
     },
     {
       "name": "raw_sample_browser_has_video_player",
@@ -291,8 +291,8 @@
     {
       "path": "index.html",
       "id_count": 101,
-      "reference_count": 267,
-      "image_count": 56
+      "reference_count": 252,
+      "image_count": 54
     },
     {
       "path": "research_roadmap.html",
@@ -315,7 +315,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 124476,
+      "bytes": 124477,
       "top_level_type": "dict"
     },
     {
@@ -370,7 +370,7 @@
     },
     {
       "path": "data/mirror_parity.json",
-      "bytes": 1479518,
+      "bytes": 1479523,
       "top_level_type": "dict"
     },
     {
@@ -415,12 +415,12 @@
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 7691,
+      "bytes": 7690,
       "top_level_type": "dict"
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 10844,
+      "bytes": 10940,
       "top_level_type": "dict"
     },
     {
@@ -575,7 +575,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 24947,
+      "bytes": 24948,
       "top_level_type": "dict"
     },
     {
