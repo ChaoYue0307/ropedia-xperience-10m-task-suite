@@ -318,7 +318,8 @@ def validate_website(source: str, failures: list[dict[str, Any]]) -> list[dict[s
         'id="playerScrub"',
         'fetch("data/task_walkthroughs.json"',
         'class="task-card"',
-        'class="task-card-media"',
+        'class="task-card-icon"',
+        'class="task-modality-chips"',
         'class="story-button',
         'class="flow-step',
         'id="playerPlay"',
@@ -362,8 +363,11 @@ def validate_website(source: str, failures: list[dict[str, Any]]) -> list[dict[s
     )
     checks.append(
         check(
-            "task.poster_modality" in task_card_renderer and "task-card-media" in task_card_renderer,
-            "task_cards_use_representative_modality_thumbnail",
+            "taskIconFor(task)" in task_card_renderer
+            and "task-card-icon" in task_card_renderer
+            and "task-modality-chips" in task_card_renderer
+            and "task.modalities" in task_card_renderer,
+            "task_cards_use_assigned_icons_and_modality_chips",
             failures,
         )
     )

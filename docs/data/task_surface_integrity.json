@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-22T15:07:48+00:00",
+  "generated_at_utc": "2026-06-22T17:45:19+00:00",
   "summary": {
     "original_walkthrough_task_count": 12,
     "expected_original_walkthrough_task_count": 12,
@@ -1579,9 +1579,14 @@
       "marker": "class=\"task-card\""
     },
     {
-      "name": "website_marker_present:class=\"task-card-media\"",
+      "name": "website_marker_present:class=\"task-card-icon\"",
       "status": "pass",
-      "marker": "class=\"task-card-media\""
+      "marker": "class=\"task-card-icon\""
+    },
+    {
+      "name": "website_marker_present:class=\"task-modality-chips\"",
+      "status": "pass",
+      "marker": "class=\"task-modality-chips\""
     },
     {
       "name": "website_marker_present:class=\"story-button",
@@ -1625,7 +1630,7 @@
       "status": "pass"
     },
     {
-      "name": "task_cards_use_representative_modality_thumbnail",
+      "name": "task_cards_use_assigned_icons_and_modality_chips",
       "status": "pass"
     },
     {

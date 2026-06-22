@@ -833,7 +833,6 @@
     #extensions { order: 13; }
     #architectures { order: 14; }
     #walkthroughs { order: 15; }
-    #tasks { order: 16; }
     #features { order: 17; }
     #diagnostics { order: 18; }
     #evidence { order: 19; }
@@ -844,6 +843,68 @@
     #suite { padding: 62px 0 76px; }
     #suite .wrap { width: min(1680px, calc(100% - 48px)); }
     #suite .section-head { max-width: var(--max); margin-inline: auto; }
+    .suite-jump-row {
+      max-width: var(--max);
+      margin: -8px auto 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .suite-jump-row a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      border: 1px solid rgba(204, 255, 160, 0.22);
+      border-radius: 999px;
+      padding: 0 14px;
+      color: var(--accent-2);
+      background: rgba(6, 14, 7, 0.74);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .suite-jump-row a:hover {
+      border-color: rgba(204, 255, 160, 0.72);
+      color: var(--ink);
+      background: rgba(204, 255, 160, 0.10);
+    }
+    .suite-radar-block {
+      scroll-margin-top: var(--tab-stack-offset);
+    }
+    .suite-task-cards-block {
+      scroll-margin-top: var(--tab-stack-offset);
+      margin-top: clamp(28px, 4vw, 48px);
+      border: 1px solid rgba(204, 255, 160, 0.22);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at top left, rgba(204, 255, 160, 0.10), transparent 34%),
+        linear-gradient(180deg, rgba(6, 14, 7, 0.86), rgba(2, 5, 2, 0.88));
+      padding: clamp(20px, 3vw, 32px);
+    }
+    .task-suite-subhead {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.62fr);
+      gap: 22px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+    .task-suite-subhead h3 {
+      margin: 0;
+      font-family: var(--font-ui);
+      font-size: clamp(26px, 3vw, 40px);
+      line-height: 1.04;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .task-suite-subhead p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
     .section-head {
       display: flex;
       justify-content: space-between;
@@ -5287,7 +5348,7 @@
           <strong>Start</strong>
           <span>project overview and roadmap</span>
         </button>
-        <button type="button" class="project-tab" id="tab-data" role="tab" data-tab-key="data" data-default-section="dataset-card" aria-selected="false" aria-pressed="false" aria-controls="dataset-card suite walkthroughs tasks" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-data" role="tab" data-tab-key="data" data-default-section="dataset-card" aria-selected="false" aria-pressed="false" aria-controls="dataset-card raw-sample suite walkthroughs extensions" tabindex="-1">
           <strong>Data & Tasks</strong>
           <span>dataset sample and task suite</span>
         </button>
@@ -6240,9 +6301,15 @@
     <section id="suite" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Ropedia Xperience-10M Unified 20-Task Suite.</h2>
-          <p>The suite connects synchronized multimodal windows to 20 task contracts in one table, one radar surface, and one source-linked result matrix. Historical filenames remain only for stable artifact links.</p>
+          <h2>Ropedia Xperience-10M 20-task suite.</h2>
+          <p>Task map, radar comparisons, task cards, and the 180-result table are kept in one reading flow. Start with the map, inspect the score surfaces, then open each task card for its input, process, output, and metric.</p>
         </div>
+        <nav class="suite-jump-row" aria-label="20-task suite quick links">
+          <a href="#task-suite-map">Task map</a>
+          <a href="#suite-radars">Radars</a>
+          <a href="#tasks">Task cards</a>
+          <a href="#result-matrix-table">180-result table</a>
+        </nav>
         <div class="figure-pan" id="task-suite-map">
           <img class="task-suite-image" src="assets/task_suite_infographic.png?v=xperience10m-taskfirst-v14-modality-compact" alt="Infographic showing Ropedia Xperience-10M task families with compact modality cards and visible thumbnails">
         </div>
@@ -6260,27 +6327,50 @@
             <p>The matrix has 180/180 scored method-task records: 174 direct scores and 6 compact-proxy scores. The audit records the source artifact, metric key, and proxy reason for each marked cell.</p>
           </article>
         </div>
-        <img class="chart radar-chart unified-radar-chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v8-readable" alt="Unified grouped 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, score counts, and proxy notes">
-        <div class="split-radar-grid" aria-label="Split 20-task radar comparisons">
-          <article class="split-radar-card">
-            <h3>1-Episode 20-Task Radar</h3>
-            <p>Minimal and Neural MLP are both scored on all 20 public-sample task contracts in one enlarged panel without 128-episode methods competing for attention.</p>
-            <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
-            <div class="split-radar-links">
-              <a href="assets/charts/single_episode_task_model_radar.svg">Open SVG</a>
-              <a href="data/single_episode_task_model_radar.json">Open chart data</a>
+        <div class="suite-radar-block" id="suite-radars">
+          <img class="chart radar-chart unified-radar-chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v8-readable" alt="Unified grouped 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, score counts, and proxy notes">
+          <div class="split-radar-grid" aria-label="Split 20-task radar comparisons">
+            <article class="split-radar-card">
+              <h3>1-Episode 20-Task Radar</h3>
+              <p>Minimal and Neural MLP are both scored on all 20 public-sample task contracts in one enlarged panel without 128-episode methods competing for attention.</p>
+              <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
+              <div class="split-radar-links">
+                <a href="assets/charts/single_episode_task_model_radar.svg">Open SVG</a>
+                <a href="data/single_episode_task_model_radar.json">Open chart data</a>
+              </div>
+            </article>
+            <article class="split-radar-card">
+              <h3>128-Episode 20-Task Radar</h3>
+              <p>Seven aligned 128-episode methods cover all 20 axes across metadata/text, raw-feature, and foundation-model panels. Proxy axes stay labeled in the chart and source data.</p>
+              <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="128-episode grouped 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
+              <div class="split-radar-links">
+                <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
+                <a href="data/episode128_task_model_radar.json">Open chart data</a>
+                <a href="data/task_method_20_gap_audit.json">Gap audit</a>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="suite-task-cards-block" id="tasks">
+          <div class="task-suite-subhead">
+            <h3>All 20 task cards in the same suite.</h3>
+            <p>Each card uses its assigned icon and shows the task name, input sources, process, output target, metric, current Minimal score, and Neural MLP score. Use the filters for scanning; the cards stay tied to the task map and radar axes above.</p>
+          </div>
+          <article class="task-icon-atlas">
+            <div>
+              <h3>Assigned visual language for the 20 tasks.</h3>
+              <p>The overall generated atlas keeps the icon family visible, while each task card below uses its own crisp assigned SVG for reliable loading and public mirrors.</p>
             </div>
+            <img src="assets/task-icons/task-icon-atlas.png" alt="Generated 4 by 5 atlas of the 20 Ropedia Xperience-10M task icons" loading="lazy">
           </article>
-          <article class="split-radar-card">
-            <h3>128-Episode 20-Task Radar</h3>
-            <p>Seven aligned 128-episode methods cover all 20 axes across metadata/text, raw-feature, and foundation-model panels. Proxy axes stay labeled in the chart and source data.</p>
-            <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="128-episode grouped 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
-            <div class="split-radar-links">
-              <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
-              <a href="data/episode128_task_model_radar.json">Open chart data</a>
-              <a href="data/task_method_20_gap_audit.json">Gap audit</a>
-            </div>
-          </article>
+          <div class="task-toolbar" aria-label="Task filters">
+            <button class="filter active" data-filter="all">All tasks</button>
+            <button class="filter" data-filter="supervised">Supervised</button>
+            <button class="filter" data-filter="forecast">Forecast</button>
+            <button class="filter" data-filter="retrieval">Retrieval</button>
+            <button class="filter" data-filter="diagnostic">Diagnostic</button>
+          </div>
+          <div class="task-grid" id="taskGrid" aria-live="polite"></div>
         </div>
       </div>
     </section>
@@ -6764,30 +6854,6 @@
       </div>
     </section>
 
-    <section id="tasks" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Task cards and metrics.</h2>
-          <p>All 20 task contracts are shown together with readable research names, assigned task icons, compact modality chips, explicit input-process-output contracts, and verified public-sample Minimal versus Neural MLP primary metrics. The full 180-record method matrix is separate; these cards are the quick single-episode task-head read.</p>
-        </div>
-        <article class="task-icon-atlas">
-          <div>
-            <h3>Assigned visual language for the 20 tasks.</h3>
-            <p>The overall generated atlas keeps the icon family visible, while each task card below uses its own crisp assigned SVG for reliable loading and public mirrors.</p>
-          </div>
-          <img src="assets/task-icons/task-icon-atlas.png" alt="Generated 4 by 5 atlas of the 20 Ropedia Xperience-10M task icons" loading="lazy">
-        </article>
-        <div class="task-toolbar" aria-label="Task filters">
-          <button class="filter active" data-filter="all">All tasks</button>
-          <button class="filter" data-filter="supervised">Supervised</button>
-          <button class="filter" data-filter="forecast">Forecast</button>
-          <button class="filter" data-filter="retrieval">Retrieval</button>
-          <button class="filter" data-filter="diagnostic">Diagnostic</button>
-        </div>
-        <div class="task-grid" id="taskGrid" aria-live="polite"></div>
-      </div>
-    </section>
-
     <section id="features" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
@@ -7249,8 +7315,7 @@ python scripts/validate_publication_package.py</code></pre>
       ".direction-card",
       ".artifact",
       ".artifact-group",
-      ".glossary-summary article",
-      ".task-card"
+      ".glossary-summary article"
     ].join(",");
 
     function updatePageProgress() {
@@ -7530,9 +7595,9 @@ python scripts/validate_publication_package.py</code></pre>
       "reading-path": "Best for choosing an order through the repo, website, and HF surfaces.",
       "dataset-card": "Best for source alignment and public-sample boundaries.",
       "raw-sample": "Best for inspecting the sample files, media previews, and file relationships.",
-      suite: "Best for the unified 20-task contracts, radar, and score matrix.",
+      suite: "Best for the unified 20-task map, radar comparisons, task cards, and score matrix.",
       walkthroughs: "Best for case-study style task explanations.",
-      tasks: "Best for task-by-task input, output, and metric cards.",
+      tasks: "Best for the integrated task-card grid inside the 20-task suite.",
       pipeline: "Best for understanding how raw episode data becomes features and results.",
       protocol: "Best for splits, leakage controls, metrics, and evaluation rules.",
       architectures: "Best for how task heads and model tracks are organized.",
@@ -7550,6 +7615,7 @@ python scripts/validate_publication_package.py</code></pre>
       run: "Best for reproduction commands."
     };
     const sectionTabMap = Object.fromEntries(tabSections.map((section) => [section.id, section.dataset.projectTab]));
+    if (document.getElementById("tasks")) sectionTabMap.tasks = "data";
     const tabLabels = Object.fromEntries(
       tabButtons.map((button) => [button.dataset.tabKey, button.querySelector("strong")?.textContent?.trim() || button.dataset.tabKey])
     );
