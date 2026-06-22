@@ -2465,6 +2465,17 @@
       font-size: 15px;
       font-weight: 750;
     }
+    .glossary-table td:first-child small {
+      display: block;
+      margin-top: 6px;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      opacity: 0.82;
+    }
     .glossary-table td:nth-child(2) {
       width: 32%;
       color: #d8e2d4;
@@ -6624,25 +6635,30 @@
     <section id="glossary" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Glossary for overloaded terms.</h2>
-          <p>These are the terms readers most often confuse when moving between the repo, website, Hugging Face mirrors, result matrices, and model-package cards. The full glossary is mirrored as a reader note and structured data.</p>
+          <h2>Glossary for project and field terms.</h2>
+          <p>This glossary covers the overloaded project terms plus adjacent technical terms from embodied AI, egocentric multimodal data, spatial geometry, world models, VLA/policy learning, training, evaluation, and public artifact reading.</p>
         </div>
         <div class="glossary-panel">
           <div class="glossary-summary" aria-label="Glossary categories">
             <article>
-              <small>scope</small>
-              <strong>Separate data, result lanes, and mirrors</strong>
-              <p>Evidence lines, public-safe artifacts, and gated upstream data are different objects. The glossary keeps those boundaries visible.</p>
+              <small>data</small>
+              <strong>Read multimodal sample terms</strong>
+              <p>Episode, window, modality, fisheye, depth, IMU, calibration, and synchronization terms are grouped with the project data boundary terms.</p>
             </article>
             <article>
-              <small>results</small>
-              <strong>Read scores by source type</strong>
-              <p>Direct scores, compact-proxy scores, gap audits, and task-method records should not be interpreted as the same kind of evidence.</p>
+              <small>space + time</small>
+              <strong>Decode geometry and world-model language</strong>
+              <p>Camera pose, SLAM, point clouds, rollouts, forward dynamics, long-horizon forecasting, and temporal leakage are defined next to the relevant tasks.</p>
             </article>
             <article>
-              <small>models</small>
-              <strong>Keep branches distinct</strong>
-              <p>Minimal/NN heads, metadata/raw baselines, Qwen3-Omni v1-v6, Cosmos3-Super, Cosmos3-Nano, LoRA adapters, and full-parameter gates each mean something specific.</p>
+              <small>robotics</small>
+              <strong>Connect VLA and policy terms</strong>
+              <p>Action chunks, policies, imitation learning, behavior cloning, end effectors, dexterity, contact, and language grounding are included for extension readers.</p>
+            </article>
+            <article>
+              <small>evidence</small>
+              <strong>Keep scores and public surfaces distinct</strong>
+              <p>Direct/proxy scores, raw metrics, radar values, held-out evaluation, Qwen/Cosmos branches, adapters, and HF mirrors remain explicitly separated.</p>
             </article>
           </div>
           <div>
@@ -6656,29 +6672,19 @@
                     <th>Do not confuse with</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr><td>Evidence line</td><td>A reading lane for a group of results.</td><td>Line 1 is the public sample episode; Line 2 is selected-128 held-out comparison.</td><td>Qwen v1-v6 run versions.</td></tr>
-                  <tr><td>Public sample episode</td><td>The one fully inspectable official sample episode.</td><td>Raw-file browsing, task construction, single-episode baselines.</td><td>The selected-128 comparison rows.</td></tr>
-                  <tr><td>Selected 128 episodes</td><td>Public-safe derived features linked to official gated episode paths.</td><td>Same-split Line 2 baseline/model comparisons.</td><td>Redistributed raw MP4/HDF5/RRD files.</td></tr>
-                  <tr><td>20-frame window</td><td>A fixed short clip slice used as a model input unit.</td><td>Feature rows, labels, tasks, and many baseline heads.</td><td>A full episode.</td></tr>
-                  <tr><td>Task-method record</td><td>One method evaluated on one task.</td><td>The 9 x 20 public matrix, now 180 scored records.</td><td>A single prediction row.</td></tr>
-                  <tr><td>Direct score</td><td>A metric computed against the task target directly.</td><td>Primary interpretation in the result matrix.</td><td>Compact-proxy score.</td></tr>
-                  <tr><td>Compact-proxy score</td><td>A bounded proxy when the direct raw target is not public.</td><td>Explicitly marked cells in the gap audit and matrix.</td><td>A direct target measurement.</td></tr>
-                  <tr><td>Raw metric value</td><td>The original value emitted by the runner or verified package.</td><td>The value to cite from the 180-result table.</td><td>Normalized radar value.</td></tr>
-                  <tr><td>Normalized radar value</td><td>A 0-1 plotting value used only for comparable radar polygons.</td><td>Visual comparison across metrics with different scales.</td><td>The raw metric value to cite.</td></tr>
-                  <tr><td>Minimal baseline</td><td>A simple non-neural task head; the "minimum" reference row in casual wording.</td><td>Single-episode lower-complexity comparison.</td><td>Selected-128 Simple baseline rows.</td></tr>
-                  <tr><td>Simple baseline</td><td>A non-neural selected-128 baseline family.</td><td>Metadata/text and raw-feature 128-episode comparisons before NN/foundation rows.</td><td>The single-episode Minimal baseline.</td></tr>
-                  <tr><td>Qwen3-Omni v6</td><td>The current public Qwen 20-task row.</td><td>Qwen3-Omni LoRA plus task-specific probes.</td><td>All Qwen v1-v6 experiments.</td></tr>
-                  <tr><td>Cosmos3-Super</td><td>The larger Cosmos-style branch.</td><td>Reasoner diagnostics and a verified forward-dynamics LoRA branch.</td><td>Cosmos3-Nano Future Window.</td></tr>
-                  <tr><td>LoRA adapter</td><td>Lightweight trainable adapter weights.</td><td>Public model-branch artifacts when verified.</td><td>Full base-model weights.</td></tr>
-                  <tr><td>HF artifact dataset</td><td>Hugging Face dataset repo for derived evidence.</td><td>Reports, metrics, website data, sanitized result packages.</td><td>The upstream Xperience-10M dataset.</td></tr>
-                  <tr><td>Mirror parity</td><td>A check that public copies match source files.</td><td>Verifying GitHub, website, and HF mirrors.</td><td>A model-quality metric.</td></tr>
+                <tbody id="glossaryRows">
+                  <tr><td>Egocentric video<small>multimodal sensing</small></td><td>Video captured from a first-person or body-mounted viewpoint.</td><td>The sample streams are egocentric views of human interaction and are the visual basis for many tasks.</td><td>Third-person robot-camera footage.</td></tr>
+                  <tr><td>Camera pose<small>spatial geometry</small></td><td>The camera position and orientation at a time step.</td><td>Supports spatial-intelligence tasks, view synchronization, and geometry diagnostics.</td><td>The human body pose.</td></tr>
+                  <tr><td>Forward dynamics<small>temporal and world models</small></td><td>Predicting the next state from the current state and action/context.</td><td>The Cosmos3-Super LoRA branch uses a forward-dynamics-style diagnostic contract.</td><td>Reverse inference from result back to cause.</td></tr>
+                  <tr><td>Vision-language-action model<small>robotics and VLA</small></td><td>A model that maps visual context and language into actions.</td><td>The VLA direction is a future path after action targets are converted into robot-compatible chunks.</td><td>A vision-language model that only answers text.</td></tr>
+                  <tr><td>Direct score<small>tasks and metrics</small></td><td>A metric computed against the task target directly.</td><td>The preferred score type in the 20-task matrix.</td><td>Compact-proxy score.</td></tr>
+                  <tr><td>Held-out evaluation<small>training and evaluation</small></td><td>Testing on examples not used for training.</td><td>Required before promoting Qwen/Cosmos results to public evidence.</td><td>Training-set loss.</td></tr>
                 </tbody>
               </table>
             </div>
             <div class="glossary-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/GLOSSARY.md">Open full glossary</a>
-              <a href="data/glossary.json">Open glossary data</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/GLOSSARY.md">Open complete glossary note</a>
+              <a href="data/glossary.json">Open structured glossary data</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PUBLIC_READER_MAP.md">Reader map</a>
               <a href="data/task_method_20_gap_audit.json">Score/proxy audit</a>
             </div>
@@ -6764,7 +6770,7 @@
             </div>
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Public reader map</h3><p>Single navigation view for GitHub, GitHub Pages, HF Space, artifact dataset, baseline model repo, Qwen3-Omni/Cosmos3 repos, and result-reading lanes.</p></div><a href="data/public_reader_map.json">reader map</a></article>
-              <article class="artifact primary-artifact"><div><h3>Glossary</h3><p>Definitions for evidence lines, windows, direct/proxy scores, Qwen v1-v6, Cosmos3 branches, adapters, and public mirror terms.</p></div><a href="data/glossary.json">glossary data</a><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/GLOSSARY.md">full glossary note</a></article>
+              <article class="artifact primary-artifact"><div><h3>Glossary</h3><p>Definitions for project-specific terms plus broader embodied-AI, egocentric multimodal data, spatial geometry, world-model, VLA, training, evaluation, adapter, and public mirror terms.</p></div><a href="data/glossary.json">glossary data</a><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/GLOSSARY.md">full glossary note</a></article>
               <article class="artifact primary-artifact"><div><h3>Artifact guide</h3><p>Human-readable map from project scope to data contract, task evidence, platform mirrors, and scale-up status.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ARTIFACT_GUIDE.md">artifact guide</a></article>
               <article class="artifact"><h3>Reproduction scripts</h3><p>Training, visualization, taxonomy, walkthrough, validator, and omni-readiness scripts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/scripts">scripts/</a></article>
               <article class="artifact"><h3>Hugging Face Space</h3><p>The dashboard packaged as a public static Space.</p><a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a></article>
@@ -7733,6 +7739,47 @@ python scripts/validate_publication_package.py</code></pre>
       });
     }
 
+    function renderGlossaryTable(payload) {
+      const tableBody = document.getElementById("glossaryRows");
+      if (!tableBody || !Array.isArray(payload?.entries)) return;
+      const categoryLabels = new Map((payload.categories || []).map((category) => [category.id, category.label]));
+      tableBody.innerHTML = payload.entries.map((entry) => {
+        const category = categoryLabels.get(entry.category) || entry.category || "Glossary";
+        return `
+          <tr>
+            <td>${escapeHtml(entry.term)}<small>${escapeHtml(category)}</small></td>
+            <td>${escapeHtml(entry.plain_meaning || "")}</td>
+            <td>${escapeHtml(entry.project_usage || "")}</td>
+            <td>${escapeHtml(entry.do_not_confuse_with || "")}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    let glossaryDataPromise = null;
+
+    async function loadGlossaryData() {
+      if (!glossaryDataPromise) {
+        glossaryDataPromise = fetch("data/glossary.json", { cache: "no-cache" })
+          .then((response) => {
+            if (!response.ok) throw new Error(`glossary ${response.status}`);
+            return response.json();
+          });
+      }
+      const payload = await glossaryDataPromise;
+      registerGlossaryTerms(payload);
+      renderGlossaryTable(payload);
+      return payload;
+    }
+
+    async function initGlossaryData() {
+      try {
+        await loadGlossaryData();
+      } catch (error) {
+        // Keep the static fallback rows if the structured glossary is unavailable.
+      }
+    }
+
     function termDefinition(term) {
       const key = normalizeTermKey(term);
       const entry = glossaryTermMap.get(key);
@@ -7902,12 +7949,11 @@ python scripts/validate_publication_package.py</code></pre>
       const table = document.getElementById("resultScoreTable");
       if (!table) return;
       try {
-        const [response, glossaryResponse] = await Promise.all([
+        const [response] = await Promise.all([
           fetch("data/task_method_20_result_matrix.json", { cache: "no-cache" }),
-          fetch("data/glossary.json", { cache: "no-cache" }).catch(() => null)
+          loadGlossaryData().catch(() => null)
         ]);
         if (!response.ok) throw new Error(`matrix ${response.status}`);
-        if (glossaryResponse?.ok) registerGlossaryTerms(await glossaryResponse.json());
         renderResultScoreTable(await response.json());
       } catch (error) {
         table.querySelector("tbody").innerHTML = '<tr><td colspan="2">Result matrix could not be loaded. Open the source-data link above.</td></tr>';
@@ -8249,6 +8295,7 @@ python scripts/validate_publication_package.py</code></pre>
       });
     });
     labelResponsiveTables();
+    initGlossaryData();
     initResultMatrixTable();
     initTaskSurface();
 
