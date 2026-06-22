@@ -1,0 +1,23 @@
+{
+  "name": "ropedia-xperience-10m-task-suite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Public documentation and browser-verification tooling for the Ropedia Xperience-10M Task Suite.",
+  "type": "commonjs",
+  "scripts": {
+    "verify:source-map": "node scripts/verify_source_map_layout.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite.git"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/issues"
+  },
+  "homepage": "https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/",
+  "devDependencies": {
+    "playwright": "^1.61.0",
+    "puppeteer": "^25.2.0"
+  }
+}

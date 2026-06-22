@@ -2951,6 +2951,107 @@
       gap: 22px;
       align-items: start;
     }
+    .source-map-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .source-map-card {
+      border: 1px solid rgba(204, 255, 160, 0.20);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.055), rgba(7, 18, 7, 0.70)),
+        rgba(2, 5, 2, 0.72);
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+      min-height: 190px;
+      align-content: start;
+    }
+    .source-map-card small,
+    .source-map-legend small,
+    .source-map-caption strong {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 820;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .source-map-card h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 19px;
+      line-height: 1.12;
+    }
+    .source-map-card p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+    .source-map-card a,
+    .source-map-caption a {
+      color: var(--cyan);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(122, 229, 195, 0.30);
+      width: fit-content;
+    }
+    .source-map-panel {
+      border: 1px solid rgba(204, 255, 160, 0.22);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(122, 229, 195, 0.09), transparent 24%),
+        rgba(5, 10, 6, 0.82);
+      padding: 16px;
+      display: grid;
+      gap: 14px;
+      overflow: hidden;
+    }
+    .source-map-legend {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .source-map-legend article {
+      border: 1px solid rgba(204, 255, 160, 0.14);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.035);
+      padding: 12px;
+      display: grid;
+      gap: 6px;
+    }
+    .source-map-legend p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+    .source-map-chart-frame {
+      margin: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      border-radius: var(--radius);
+      scrollbar-color: rgba(204, 255, 160, 0.45) rgba(204, 255, 160, 0.10);
+    }
+    .source-map-chart-frame .chart {
+      min-width: 920px;
+      box-shadow: none;
+    }
+    .source-map-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+    .source-map-caption p {
+      margin: 0;
+      max-width: 760px;
+    }
     .direction-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4426,6 +4527,10 @@
       .glossary-panel {
         grid-template-columns: 1fr;
       }
+      .source-map-grid,
+      .source-map-legend {
+        grid-template-columns: 1fr;
+      }
       .section-tab {
         min-height: 42px;
         padding: 0 14px;
@@ -4724,6 +4829,19 @@
         flex: 0 0 auto;
         min-width: min(76vw, 210px);
         min-height: 52px;
+      }
+      .source-map-card {
+        min-height: 0;
+      }
+      .source-map-panel {
+        padding: 12px;
+      }
+      .source-map-chart-frame .chart {
+        min-width: 840px;
+      }
+      .source-map-caption {
+        display: grid;
+        gap: 10px;
       }
       main > section { scroll-margin-top: var(--tab-stack-offset); }
       html,
@@ -6673,10 +6791,43 @@
     <section id="features" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Every model input has a source.</h2>
-          <p>The point is not hidden complexity. Every input group maps back to a source modality and a manifest entry.</p>
+          <h2>Model inputs are traceable.</h2>
+          <p>Each task reads an aligned window, not a black-box feature blob. The cards below show the path from public-sample streams to window rows and feature groups, then the chart shows the size of each input block.</p>
         </div>
-        <img class="chart" src="assets/charts/feature_blocks.svg" alt="All modality source chart">
+        <div class="source-map-grid" aria-label="Model input provenance path">
+          <article class="source-map-card">
+            <small>1 / raw source</small>
+            <h3>Start from official streams</h3>
+            <p>Six synchronized MP4 camera streams, embedded audio, HDF5 annotations, depth, pose/SLAM, mocap, IMU, calibration, and language-derived fields remain tied to the public sample episode.</p>
+            <a href="#raw-sample">Open sample browser</a>
+          </article>
+          <article class="source-map-card">
+            <small>2 / aligned window</small>
+            <h3>Slice into the same unit</h3>
+            <p>The task suite builds 20-frame windows with a 5-frame stride. Each row records episode id, start frame, end frame, center frame, timestamps, and split assignment.</p>
+            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">Open window manifest</a>
+          </article>
+          <article class="source-map-card">
+            <small>3 / feature contract</small>
+            <h3>Name every input block</h3>
+            <p>The feature contract groups the 8,546 dimensions by modality and derived signal. Omitted or target-side fields stay visible so leakage checks can be audited.</p>
+            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">Open feature contract</a>
+          </article>
+        </div>
+        <div class="source-map-panel">
+          <div class="source-map-legend" aria-label="How to read the feature block chart">
+            <article><small>source modality</small><p>Where the signal comes from: video, audio, depth, pose/SLAM, mocap, IMU, calibration, or language-derived annotation fields.</p></article>
+            <article><small>feature block</small><p>The named column group used by Minimal baselines, Neural MLP heads, and public-sample task cards.</p></article>
+            <article><small>chart width</small><p>Bar length means number of input dimensions. It is not a model score and it is not a task ranking.</p></article>
+          </div>
+          <figure class="source-map-chart-frame">
+            <img class="chart" src="assets/charts/feature_blocks.svg" alt="Feature block chart showing input dimension counts for hand joints, body joints, pose, IMU, depth, six video streams, audio, language text, SLAM point cloud, and calibration">
+          </figure>
+          <div class="source-map-caption">
+            <p><strong>Read this as provenance.</strong> A task card may say “20-frame multimodal window”; this section shows which source streams and derived feature groups make up that window before any task-specific label is attached.</p>
+            <a href="#tasks">Back to task cards</a>
+          </div>
+        </div>
       </div>
     </section>
 
