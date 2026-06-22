@@ -1655,6 +1655,7 @@
     .reader-route-panel,
     .task-axis-panel,
     .method-flow-panel {
+      scroll-margin-top: calc(var(--nav-height) + 20px);
       border: 1px solid rgba(204, 255, 160, 0.20);
       border-radius: var(--radius);
       background:
@@ -1810,6 +1811,64 @@
       letter-spacing: 0.08em;
       margin-bottom: 4px;
       text-transform: uppercase;
+    }
+    .task-axis-summary {
+      display: grid;
+      grid-template-columns: 1.08fr 1fr 0.92fr;
+      gap: 12px;
+      margin: 0 0 16px;
+    }
+    .task-axis-summary-card {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 13px;
+      align-items: start;
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(204, 255, 160, 0.12), transparent 34%),
+        rgba(2, 5, 2, 0.58);
+      padding: 14px;
+    }
+    .task-axis-count {
+      width: 54px;
+      height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(204, 255, 160, 0.28);
+      border-radius: 12px;
+      background: rgba(204, 255, 160, 0.10);
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+    }
+    .task-axis-summary-card small {
+      display: block;
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .task-axis-summary-card strong {
+      display: block;
+      margin-top: 5px;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 18px;
+      line-height: 1.1;
+    }
+    .task-axis-summary-card p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.48;
     }
     .task-axis-key {
       display: grid;
@@ -5452,6 +5511,7 @@
       }
       .reader-route-list,
       .task-axis-grid,
+      .task-axis-summary,
       .task-axis-key,
       .task-axis-visual figcaption,
       .method-flow-steps {
@@ -5747,7 +5807,10 @@
         width: 100%;
         justify-content: center;
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .reader-priority-grid, .result-rules-panel, .reader-route-list, .task-axis-grid, .task-axis-key, .task-axis-task-list, .task-axis-visual figcaption, .method-flow-steps, .suite-task-index-head { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .reader-priority-grid, .result-rules-panel, .reader-route-list, .task-axis-grid, .task-axis-summary, .task-axis-key, .task-axis-task-list, .task-axis-visual figcaption, .method-flow-steps, .suite-task-index-head { grid-template-columns: 1fr; }
+      .task-axis-summary-card {
+        grid-template-columns: auto 1fr;
+      }
       .task-axis-visual img {
         min-height: 0;
       }
@@ -6267,6 +6330,32 @@
             </div>
             <p>These are not three separate benchmarks. The 20 tasks are the scored contracts; the four directions group what those tasks study; the three foundation tracks describe how the same files can train larger models.</p>
           </div>
+          <div class="task-axis-summary" aria-label="Reader key for the public structure">
+            <article class="task-axis-summary-card">
+              <span class="task-axis-count">20</span>
+              <div>
+                <small>scored task layer</small>
+                <strong>One unified task suite.</strong>
+                <p>Every metric, radar axis, and method row uses these same 20 task contracts.</p>
+              </div>
+            </article>
+            <article class="task-axis-summary-card">
+              <span class="task-axis-count">4</span>
+              <div>
+                <small>research direction layer</small>
+                <strong>Four ways to read the tasks.</strong>
+                <p>Human motion, 3D/4D reconstruction, egocentric interaction, and world modeling are groupings over the same tasks.</p>
+              </div>
+            </article>
+            <article class="task-axis-summary-card">
+              <span class="task-axis-count">3</span>
+              <div>
+                <small>foundation-pipeline layer</small>
+                <strong>Three training tracks.</strong>
+                <p>Spatial intelligence, human-video world models, and vision-language-action models reuse the same files with different input-output recipes.</p>
+              </div>
+            </article>
+          </div>
           <figure class="task-axis-visual">
             <img src="assets/charts/task_direction_pipeline_relationship.png?v=relationship-map-v1" alt="Text-free visual relationship map: twenty task nodes flow into four research grouping sectors, then into three foundation-model training pipelines.">
             <figcaption aria-label="Relationship map legend">
@@ -6334,20 +6423,20 @@
             <article class="task-axis-card">
               <span>reader grouping</span>
               <strong>4 directions</strong>
-              <p>Human interaction, 3D/4D spatial understanding, egocentric reasoning, and world-model forecasting views over the same task suite.</p>
+              <p>Human Modeling &amp; Motion Understanding; 3D/4D Reconstruction &amp; Neural Rendering; Egocentric Vision &amp; Interaction; Scene Reconstruction &amp; World Modeling.</p>
             </article>
             <article class="task-axis-card">
               <span>training tracks</span>
               <strong>3 foundation pipelines</strong>
-              <p>Spatial intelligence, human-video world modeling, and vision-language-action training recipes built from the public sample and selected-128 contracts.</p>
+              <p>Spatial intelligence models; Human-video world models; Vision-language-action models.</p>
             </article>
           </div>
           <div class="task-axis-flow" aria-label="Tasks directions and pipelines reading formula">
-            <strong>Tasks produce measurements.</strong>
+            <strong>20 tasks are the score axes.</strong>
             <span>-></span>
-            <strong>Directions explain why the measurements matter.</strong>
+            <strong>4 directions organize what the scores study.</strong>
             <span>-></span>
-            <strong>Pipelines show how to train larger models from the same modalities.</strong>
+            <strong>3 pipelines describe larger-model training recipes.</strong>
           </div>
         </div>
         <figure class="line-map-figure">

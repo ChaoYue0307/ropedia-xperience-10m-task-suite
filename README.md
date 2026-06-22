@@ -109,6 +109,20 @@ The multilingual README files are reader guides. The canonical technical evidenc
   </tbody>
 </table>
 
+## Public Structure: 20 Tasks, 4 Directions, 3 Pipelines
+
+Read the project as three layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are reader-facing research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets.
+
+<p align="center">
+  <img src="docs/assets/charts/task_direction_pipeline_relationship.png" alt="Relationship map showing 20 task contracts, 4 research directions, and 3 foundation-model pipeline tracks" width="100%">
+</p>
+
+| Layer | Count | Reader role | Exact public labels |
+| --- | ---: | --- | --- |
+| Task contracts | 20 | Score axes used by the matrix, radars, task cards, and method rows. | Action Recognition; Procedure Step Recognition; Action Boundary Detection; Next-Action Prediction; Hand Trajectory Forecasting; Contact State Prediction; Object Relevance Prediction; Language Grounding; Cross-Modal Retrieval; Cross-Modal Reconstruction; Temporal Order Verification; Multimodal Synchronization Detection; Long-Horizon Next-Action Forecasting; Long-Horizon Next-Subtask Forecasting; Interaction Text Prediction; Action-Object Relation Prediction; Future Object-Set Forecasting; IMU-to-Hand Pose Reconstruction; Camera-View Synchronization Retrieval; Time-to-Next-Transition Regression. |
+| Research directions | 4 | Ways to interpret what the 20 tasks study; not separate benchmark tiers. | Human Modeling & Motion Understanding; 3D/4D Reconstruction & Neural Rendering; Egocentric Vision & Interaction; Scene Reconstruction & World Modeling. |
+| Foundation pipelines | 3 | Larger-model training tracks with separate input-output recipes and result gates. | Spatial intelligence models; Human-video world models; Vision-language-action models. |
+
 ## Two Evidence Lines
 
 The public suite is organized around two evidence lines. Keep them separate when reading metrics.

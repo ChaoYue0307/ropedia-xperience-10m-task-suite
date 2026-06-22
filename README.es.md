@@ -71,8 +71,9 @@ Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines
 
 - Datos: ventanas de 20 frames con video, audio, profundidad, pose/SLAM, mocap, IMU, calibración y lenguaje.
 - Tareas: 20 contratos para reconocimiento, predicción, recuperación, reconstrucción, sincronización, horizonte largo, relación acción-objeto y puentes de sensores.
+- Estructura: las 20 tareas son ejes de puntuación; las 4 research directions son agrupaciones de lectura; las 3 foundation pipelines son rutas de entrenamiento para modelos más grandes.
 - Resultados: minimal/NN de un episodio cubren 20/20; las ramas de 128 episodios separan metadata, raw features, Qwen3 y Cosmos; la matriz pública está en 180/180 registros con score: 174 direct y 6 compact proxy, con proxy targets visibles.
-- Direcciones: spatial intelligence, human-video world model y vision-language-action tienen mapeo de tareas y requisitos de evidencia.
+- Pipelines: spatial intelligence models, human-video world models y vision-language-action models tienen mapeo de tareas y requisitos de evidencia.
 
 ## Límite Público
 
