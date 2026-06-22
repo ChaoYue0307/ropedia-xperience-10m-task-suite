@@ -1254,6 +1254,11 @@
       margin: 0;
       padding: 18px;
     }
+    .full-radar-frame {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+    }
     .split-radar-card {
       min-width: 0;
       border: 1px solid var(--line);
@@ -5023,6 +5028,8 @@
       gap: 10px;
       padding: 10px;
       align-items: start;
+      color: inherit;
+      text-decoration: none;
     }
     .hero-method::before {
       content: "";
@@ -5119,6 +5126,12 @@
     .hero-radar-links a:hover {
       border-color: var(--green);
       color: var(--ink);
+    }
+    .hero-radar-details {
+      margin: 14px 0 0;
+    }
+    .hero-radar-details .hero-radar-frame {
+      margin: 16px;
     }
     main > section {
       position: relative;
@@ -6170,32 +6183,41 @@
           <div class="stat"><strong>20</strong><span>unified task contracts</span></div>
         </div>
       </div>
-      <div class="hero-radar-panel" aria-label="Unified 20-task radar comparison">
+      <div class="hero-radar-panel" aria-label="Reader mode and public result orientation">
         <div class="hero-radar-top">
-          <strong>home radar comparison</strong>
-          <span>4 grouped panels / 180 scored records / 174 direct + 6 compact-proxy</span>
+          <strong>reader mode</strong>
+          <span>what it is / what is public / what to inspect first</span>
         </div>
         <div class="hero-radar-layout">
-          <a class="hero-radar-frame" href="#suite" aria-label="Open full unified 20-task model radar">
-            <img src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v8-readable" alt="Unified 20-task grouped radar board with method-family panels, task key, score counts, and raw128 proxy notes">
-          </a>
           <div class="hero-radar-copy">
-            <h2>Model comparison is grouped by method family.</h2>
-            <p>The full SVG names every task axis, separates the nine methods into readable panels, and keeps source artifacts plus proxy notes attached to the same comparison view.</p>
+            <h2>Start with the public task suite, then open the evidence.</h2>
+            <p>This page is a guided entry point for one inspectable Xperience-10M sample line and one selected-128 comparison line. Use the detailed tables after you know which evidence line and task layer you are reading.</p>
             <div class="hero-radar-stats" aria-label="Radar coverage summary">
               <div class="hero-radar-stat"><strong>180</strong><span>method-task records</span></div>
               <div class="hero-radar-stat"><strong>174</strong><span>direct scores</span></div>
               <div class="hero-radar-stat"><strong>6</strong><span>compact-proxy scores</span></div>
               <div class="hero-radar-stat"><strong>34,269</strong><span>128ep windows</span></div>
             </div>
-            <div class="hero-method-list" aria-label="Method families shown in the radar">
-              <div class="hero-method" style="--method-color:#67e8d1"><strong>Panel 1: Minimal + Neural MLP</strong><span>Single public-sample episode; 40/40 direct task scores.</span></div>
-              <div class="hero-method" style="--method-color:#ffd166"><strong>Panel 2: 128ep metadata/text</strong><span>Aligned JSONL and staged-target baselines; 40/40 scored with proxy flags retained.</span></div>
-              <div class="hero-method" style="--method-color:#22d3ee"><strong>Panel 3: 128ep raw features</strong><span>Sensor-block simple/NN heads; 40/40 scored with task 15/19 compact proxies marked.</span></div>
-              <div class="hero-method" style="--method-color:#9bb8ff"><strong>Panel 4: Qwen3 + Cosmos3</strong><span>Qwen3-Omni v6 LoRA, Cosmos3-Super, and Cosmos3-Nano; 60/60 scored from verified artifacts.</span></div>
+          </div>
+          <div class="hero-radar-copy">
+            <h2>Three first clicks.</h2>
+            <p>Each click answers one reader question before the archive-level evidence begins.</p>
+            <div class="hero-method-list" aria-label="Reader mode first clicks">
+              <a class="hero-method" style="--method-color:#67e8d1" href="#suite"><strong>What are the 20 tasks?</strong><span>Open the compact task index first; the large map and radars are secondary visual analysis.</span></a>
+              <a class="hero-method" style="--method-color:#ffd166" href="#raw-sample"><strong>What data is public?</strong><span>Inspect playable sample files, HDF5 organization, and what each file contributes to training.</span></a>
+              <a class="hero-method" style="--method-color:#9bb8ff" href="#takeaways"><strong>Which numbers can I cite?</strong><span>Cite raw metric values from the matrix; radar values are visualization only.</span></a>
             </div>
           </div>
         </div>
+        <details class="split-radar-details hero-radar-details">
+          <summary>
+            <span>open full 9-method radar</span>
+            <strong>The full grouped radar is useful for pattern scanning after reading the split 1-episode and 128-episode views.</strong>
+          </summary>
+          <a class="hero-radar-frame" href="#suite-radars" aria-label="Open full unified 20-task model radar">
+            <img src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v8-readable" alt="Unified 20-task grouped radar board with method-family panels, task key, score counts, and raw128 proxy notes">
+          </a>
+        </details>
         <div class="hero-task-strip" aria-label="All 20 radar task axes">
           <strong class="hero-task-strip-head">All 20 radar task axes</strong>
           <span><img class="task-axis-icon" src="assets/task-icons/01_timeline_action.svg" alt="" loading="lazy"><span class="task-axis-label">01 Action Recognition</span></span>
@@ -6272,8 +6294,8 @@
     <section id="overview" data-project-tab="start" role="tabpanel" aria-labelledby="tab-start" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Two evidence lines: 1 episode and 128 episodes.</h2>
-          <p>Read the suite as two lines. Line 1 proves the task lab is inspectable and reproducible. Line 2 compares selected-128 metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Keep the lines separate when interpreting scores.</p>
+          <h2>Reader mode: what to inspect first.</h2>
+          <p>Use this landing section to understand the project before opening the archive-level evidence. First identify the two evidence lines, then the 20-task suite, then the result table and public mirrors.</p>
         </div>
         <div class="about-identity" aria-label="About Ropedia Xperience-10M Task Suite">
           <img src="assets/brand/xperience10m-logo-mark-192.png" alt="Ropedia Xperience-10M project logo" width="92" height="92" loading="eager" decoding="async">
@@ -6326,9 +6348,9 @@
           <div class="task-axis-head">
             <div>
               <small>relationship map</small>
-              <strong>20 tasks, 4 research directions, 3 foundation-pipeline tracks.</strong>
+              <strong>20 tasks / 4 directions / 3 foundation pipelines.</strong>
             </div>
-            <p>These are not three separate benchmarks. The 20 tasks are the scored contracts; the four directions group what those tasks study; the three foundation tracks describe how the same files can train larger models.</p>
+            <p>Read the project in that order. The 20 tasks are the scored contracts; the four directions are reader-facing research groupings over those tasks; the three foundation pipelines are model-training recipes that reuse the same episode files.</p>
           </div>
           <div class="task-axis-summary" aria-label="Reader key for the public structure">
             <article class="task-axis-summary-card">
@@ -6342,16 +6364,16 @@
             <article class="task-axis-summary-card">
               <span class="task-axis-count">4</span>
               <div>
-                <small>research direction layer</small>
-                <strong>Four ways to read the tasks.</strong>
+                <small>4-direction layer</small>
+                <strong>Four ways to read the same tasks.</strong>
                 <p>Human motion, 3D/4D reconstruction, egocentric interaction, and world modeling are groupings over the same tasks.</p>
               </div>
             </article>
             <article class="task-axis-summary-card">
               <span class="task-axis-count">3</span>
               <div>
-                <small>foundation-pipeline layer</small>
-                <strong>Three training tracks.</strong>
+                <small>3-pipeline layer</small>
+                <strong>Three ways to train larger models.</strong>
                 <p>Spatial intelligence, human-video world models, and vision-language-action models reuse the same files with different input-output recipes.</p>
               </div>
             </article>
@@ -6359,9 +6381,9 @@
           <figure class="task-axis-visual">
             <img src="assets/charts/task_direction_pipeline_relationship.png?v=relationship-map-v1" alt="Text-free visual relationship map: twenty task nodes flow into four research grouping sectors, then into three foundation-model training pipelines.">
             <figcaption aria-label="Relationship map legend">
-              <span><strong>20 tasks</strong>Benchmark contracts and score axes.</span>
-              <span><strong>4 directions</strong>Research groupings over the same tasks.</span>
-              <span><strong>3 pipelines</strong>Future model-training tracks from the same modalities.</span>
+              <span><strong>20 tasks</strong>Score axes used by every method row.</span>
+              <span><strong>4 directions</strong>Research questions for reading those scores.</span>
+              <span><strong>3 pipelines</strong>Training recipes for larger foundation models.</span>
             </figcaption>
           </figure>
           <div class="task-axis-key" aria-label="Explicit relationship key for the map">
@@ -6395,7 +6417,7 @@
             <article class="task-axis-key-card">
               <span>4 research directions</span>
               <strong>The same tasks are grouped by research question.</strong>
-              <p>Tasks can support more than one direction; the direction group is an interpretation layer, not a separate benchmark.</p>
+              <p>Tasks can support more than one direction. This layer answers what the scores study; it is not a separate benchmark or task tier.</p>
               <ol class="task-axis-mini-list">
                 <li><b>A</b>Human Modeling &amp; Motion Understanding</li>
                 <li><b>B</b>3D/4D Reconstruction &amp; Neural Rendering</li>
@@ -6406,7 +6428,7 @@
             <article class="task-axis-key-card">
               <span>3 foundation pipelines</span>
               <strong>The training tracks reuse the task and modality contracts.</strong>
-              <p>These are scale-up recipes for model training, with separate gates before any result claim.</p>
+              <p>These are scale-up recipes for model training. They answer how the same files can be turned into larger model inputs and targets.</p>
               <ol class="task-axis-mini-list">
                 <li><b>1</b>Spatial intelligence models</li>
                 <li><b>2</b>Human-video world models</li>
@@ -6436,7 +6458,7 @@
             <span>-></span>
             <strong>4 directions organize what the scores study.</strong>
             <span>-></span>
-            <strong>3 pipelines describe larger-model training recipes.</strong>
+            <strong>3 pipelines describe how to train larger models.</strong>
           </div>
         </div>
         <figure class="line-map-figure">
@@ -6919,8 +6941,8 @@
     <section id="development-directions" data-project-tab="start" role="tabpanel" aria-labelledby="tab-start" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Additional development directions.</h2>
-          <p>Beyond the current task heads, Qwen3-Omni fine-tuning path, Cosmos/world-model track, and future native pretraining goal, Xperience-10M can support three foundation pipeline tracks plus several concrete research-development tracks.</p>
+          <h2>Three foundation-model training pipelines.</h2>
+          <p>This is the 3-pipeline layer of the public structure. It is separate from the four research directions: directions organize what the 20 task scores study, while these pipelines describe how Xperience-10M files can train larger spatial, world-model, and vision-language-action models.</p>
         </div>
         <div class="foundation-pipeline-grid" aria-label="Three high-resolution foundation direction slide diagrams">
           <article class="foundation-pipeline-card">
@@ -7015,9 +7037,9 @@
           </article>
         </div>
         <div class="artifact-grid">
-          <article class="artifact"><h3>Episode taxonomy and data engine</h3><p>Build an episode atlas, category tags, balance report, and split builder across activities, objects, scenes, sessions, people, and missing modalities.</p><a href="data/additional_development_directions.json">direction data</a></article>
-          <article class="artifact"><h3>Standardized benchmark protocol</h3><p>Version train/val/test manifests, task cards, leakage checks, metric scripts, and reference baselines so future model scores are comparable.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ADDITIONAL_DEVELOPMENT_DIRECTIONS.md">direction note</a></article>
-          <article class="artifact"><h3>Multimodal representation learning</h3><p>Train contrastive and masked-prediction encoders over synchronized video, audio, depth, pose, mocap, IMU, and language windows.</p><a href="data/additional_development_directions.json">direction plan</a></article>
+          <article class="artifact"><h3>Episode taxonomy and data engine</h3><p>Build an episode atlas, category tags, balance report, and split builder across activities, objects, scenes, sessions, people, and missing modalities.</p><a href="data/additional_development_directions.json">Open development plan</a></article>
+          <article class="artifact"><h3>Standardized benchmark protocol</h3><p>Version train/val/test manifests, task cards, leakage checks, metric scripts, and reference baselines so future model scores are comparable.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ADDITIONAL_DEVELOPMENT_DIRECTIONS.md">Open benchmark protocol note</a></article>
+          <article class="artifact"><h3>Multimodal representation learning</h3><p>Train contrastive and masked-prediction encoders over synchronized video, audio, depth, pose, mocap, IMU, and language windows.</p><a href="data/additional_development_directions.json">Open representation-learning plan</a></article>
           <article class="artifact"><h3>Skill and procedure graphs</h3><p>Mine action steps, transitions, preconditions, effects, and temporal graphs that connect egocentric perception to planning.</p><a href="data/research_directions.json">current task map</a></article>
           <article class="artifact"><h3>Human-object affordances</h3><p>Add contact, reachable-object, tool-use, and next-affordance tasks using hands, mocap, objects, contacts, video, and language.</p><a href="data/task_walkthroughs.json">task walkthroughs</a></article>
           <article class="artifact"><h3>3D/4D scene and object memory</h3><p>Fuse depth, pose/SLAM, multiview video, and object cues into persistent scene/object maps for spatial reasoning and object permanence.</p><a href="data/foundation_model_plan.json">model tracks</a></article>
@@ -7408,32 +7430,39 @@
           </article>
         </div>
         <div class="suite-radar-block" id="suite-radars">
-          <img class="chart radar-chart unified-radar-chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v8-readable" alt="Unified grouped 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, score counts, and proxy notes">
-          <details class="split-radar-details">
+          <div class="split-radar-grid" aria-label="Default split 20-task radar comparisons">
+            <article class="split-radar-card">
+              <h3>1-Episode 20-Task Radar</h3>
+              <p>Minimal and Neural MLP are both scored on all 20 public-sample task contracts in one enlarged panel without 128-episode methods competing for attention.</p>
+              <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
+              <div class="split-radar-links">
+                <a href="assets/charts/single_episode_task_model_radar.svg">Open SVG</a>
+                <a href="data/single_episode_task_model_radar.json">Open chart data</a>
+              </div>
+            </article>
+            <article class="split-radar-card">
+              <h3>128-Episode 20-Task Radar</h3>
+              <p>Seven aligned 128-episode methods cover all 20 axes across metadata/text, raw-feature, and foundation-model panels. Proxy axes stay labeled in the chart and source data.</p>
+              <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="128-episode grouped 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
+              <div class="split-radar-links">
+                <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
+                <a href="data/episode128_task_model_radar.json">Open chart data</a>
+                <a href="data/task_method_20_gap_audit.json">Gap audit</a>
+              </div>
+            </article>
+          </div>
+          <details class="split-radar-details full-radar-details">
             <summary>
-              <span>Open split radars</span>
-              <strong>Use these when you want the 1-episode and 128-episode comparisons separated into larger dedicated panels.</strong>
+              <span>Open full 9-method radar board</span>
+              <strong>Use after the split radars when you need all methods in one grouped visual analysis board.</strong>
             </summary>
-            <div class="split-radar-grid" aria-label="Split 20-task radar comparisons">
-              <article class="split-radar-card">
-                <h3>1-Episode 20-Task Radar</h3>
-                <p>Minimal and Neural MLP are both scored on all 20 public-sample task contracts in one enlarged panel without 128-episode methods competing for attention.</p>
-                <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
-                <div class="split-radar-links">
-                  <a href="assets/charts/single_episode_task_model_radar.svg">Open SVG</a>
-                  <a href="data/single_episode_task_model_radar.json">Open chart data</a>
-                </div>
-              </article>
-              <article class="split-radar-card">
-                <h3>128-Episode 20-Task Radar</h3>
-                <p>Seven aligned 128-episode methods cover all 20 axes across metadata/text, raw-feature, and foundation-model panels. Proxy axes stay labeled in the chart and source data.</p>
-                <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="128-episode grouped 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
-                <div class="split-radar-links">
-                  <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
-                  <a href="data/episode128_task_model_radar.json">Open chart data</a>
-                  <a href="data/task_method_20_gap_audit.json">Gap audit</a>
-                </div>
-              </article>
+            <div class="full-radar-frame">
+              <img class="chart radar-chart unified-radar-chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v8-readable" alt="Unified grouped 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, score counts, and proxy notes">
+              <div class="split-radar-links">
+                <a href="assets/charts/unified_task_model_radar.svg">Open SVG</a>
+                <a href="data/unified_task_model_radar.json">Open chart data</a>
+                <a href="#result-matrix-table">Open raw-score table</a>
+              </div>
             </div>
           </details>
         </div>
@@ -7845,8 +7874,8 @@
     <section id="directions" data-project-tab="directions" role="tabpanel" aria-labelledby="tab-directions" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>The walkthrough-backed tasks organized into four research directions.</h2>
-          <p>Each task is mapped as direct, proxy, or diagnostic evidence for the Ropedia research tracks. The mapping uses two current baselines: minimal interpretable heads and neural MLP heads over the same feature contract.</p>
+          <h2>Four research directions over the same 20 tasks.</h2>
+          <p>This is the 4-direction layer of the public structure. Each direction groups task evidence by research question; it does not create a separate task set. Each task is mapped as direct, proxy, or diagnostic evidence using the same minimal and Neural MLP baseline contracts.</p>
         </div>
         <nav class="direction-jump-row" aria-label="Direction evidence quick links">
           <a href="#direction-coverage">Direction coverage</a>

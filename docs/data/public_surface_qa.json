@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Project Surface",
   "status": "pass",
-  "generated_at_utc": "2026-06-22T22:09:29+00:00",
+  "generated_at_utc": "2026-06-22T22:32:18+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -18,7 +18,7 @@
         "website_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-22T22:05:29+00:00"
+          "generated_at_utc": "2026-06-22T22:31:43+00:00"
         },
         "rendered_site_check": {
           "exists": true,
@@ -28,12 +28,12 @@
         "task_surface_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-22T22:05:30+00:00"
+          "generated_at_utc": "2026-06-22T22:31:43+00:00"
         },
         "source_alignment": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-22T22:05:30+00:00"
+          "generated_at_utc": "2026-06-22T22:31:43+00:00"
         },
         "scale_up_status": {
           "exists": true,
@@ -43,12 +43,12 @@
         "publication_package": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-22T22:07:08+00:00"
+          "generated_at_utc": "2026-06-22T22:31:59+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-22T22:08:31+00:00"
+          "generated_at_utc": "2026-06-22T22:10:10+00:00"
         }
       },
       "failures": {}
@@ -96,9 +96,9 @@
       "reason": "Public copy should consistently present the project as Ropedia Xperience-10M, with the Qwen3-Omni scale-up status.",
       "marker_counts": {
         "Ropedia Xperience-10M Task Suite": 22,
-        "Xperience-10M": 171,
+        "Xperience-10M": 172,
         "20-task": 122,
-        "Qwen3-Omni": 235,
+        "Qwen3-Omni": 232,
         "128-episode pilot": 1
       }
     },
@@ -134,14 +134,14 @@
         "data/task_suite_20.json": 37,
         "data/two_evidence_lines.json": 5,
         "data/two_evidence_line_result_summary.json": 10,
-        "data/unified_task_model_radar.json": 22,
+        "data/unified_task_model_radar.json": 23,
         "data/single_episode_task_model_radar.json": 16,
         "data/episode128_task_model_radar.json": 15,
         "data/task_method_20_result_matrix.json": 29,
         "data/task_method_20_gap_audit.json": 24,
         "data/language_versions.json": 3,
         "assets/charts/two_evidence_line_map.svg": 5,
-        "assets/charts/unified_task_model_radar.svg": 18,
+        "assets/charts/unified_task_model_radar.svg": 19,
         "assets/charts/single_episode_task_model_radar.svg": 17,
         "assets/charts/episode128_task_model_radar.svg": 17,
         "data/tier2_task_suite.json": 11

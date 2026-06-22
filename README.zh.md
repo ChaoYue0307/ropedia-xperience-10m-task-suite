@@ -71,7 +71,7 @@
 
 - 数据层：公开 sample episode 被切成 20-frame 窗口，并连接视频、音频、深度、pose/SLAM、mocap、IMU、calibration 和语言标注。
 - 任务层：20 个统一任务覆盖识别、预测、检索、重建、同步、长时预测、action-object 关系和 sensor bridge。
-- 结构层：20 个任务是评分轴；4 个 research directions 是阅读和研究分组；3 个 foundation pipelines 是更大模型的训练路线。
+- 结构层：20 个任务 / 4 个 research directions / 3 个 foundation pipelines。20 个任务是评分轴；4 个 directions 是同一批任务上的阅读和研究分组；3 个 pipelines 是更大模型的训练路线，不是新的任务 tier。
 - 结果层：单 episode minimal/NN 覆盖 20/20；128-episode metadata/raw、Qwen3-Omni v6 LoRA、Cosmos3-Super Reasoner、Cosmos3-Nano Future Window 分开标注；当前公开矩阵为 180/180 scored records，其中 174 direct、6 compact proxy，proxy target 显式保留。
 - 训练路线：spatial intelligence models、human-video world models、vision-language-action models 三条 pipeline 已经有任务映射和需要的证据清单。
 

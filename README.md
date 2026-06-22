@@ -91,6 +91,10 @@ The multilingual README files are reader guides. The canonical technical evidenc
       <td>Action, procedure, transition, trajectory, contact, objects, language, retrieval, reconstruction, order, sync, long-horizon forecasting, interaction text, action-object binding, sensor bridging, camera sync, and transition timing.</td>
     </tr>
     <tr>
+      <td><strong>4 research directions</strong></td>
+      <td>Human Modeling & Motion Understanding; 3D/4D Reconstruction & Neural Rendering; Egocentric Vision & Interaction; Scene Reconstruction & World Modeling. These are reading groups over the same 20 tasks, not separate benchmark tiers.</td>
+    </tr>
+    <tr>
       <td><strong>Line 1 methods</strong></td>
       <td>Minimal and Neural MLP baselines cover all 20 tasks on the one public sample episode: 40/40 direct scores.</td>
     </tr>
@@ -99,8 +103,8 @@ The multilingual README files are reader guides. The canonical technical evidenc
       <td>Metadata simple/NN, raw-feature simple/NN, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window cover all 20 selected-128 task axes: 140/140 scores.</td>
     </tr>
     <tr>
-      <td><strong>Foundation directions</strong></td>
-      <td>Spatial intelligence, human-video world modeling, and vision-language-action pipelines are documented as trainable directions with task mappings and model-evidence requirements.</td>
+      <td><strong>3 foundation pipelines</strong></td>
+      <td>Spatial intelligence, human-video world modeling, and vision-language-action pipelines are documented as training recipes with task mappings, input-output contracts, and model-evidence requirements.</td>
     </tr>
     <tr>
       <td><strong>Public mirrors</strong></td>
@@ -109,9 +113,9 @@ The multilingual README files are reader guides. The canonical technical evidenc
   </tbody>
 </table>
 
-## Public Structure: 20 Tasks, 4 Directions, 3 Pipelines
+## Public Structure: 20 Tasks / 4 Directions / 3 Pipelines
 
-Read the project as three layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are reader-facing research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets.
+Read the project as three layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are reader-facing research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets. They are related, but they are not three competing task sets.
 
 <p align="center">
   <img src="docs/assets/charts/task_direction_pipeline_relationship.png" alt="Relationship map showing 20 task contracts, 4 research directions, and 3 foundation-model pipeline tracks" width="100%">

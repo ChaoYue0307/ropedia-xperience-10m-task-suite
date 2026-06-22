@@ -71,7 +71,7 @@
 
 - 데이터: 20-frame window가 video, audio, depth, pose/SLAM, mocap, IMU, calibration, language annotation을 연결합니다.
 - 과제: 인식, 예측, retrieval, reconstruction, order, sync, long-horizon, action-object binding, sensor bridge 등 20개 계약.
-- 구조: 20 tasks는 scoring axes이고, 4 research directions는 읽기/연구 grouping이며, 3 foundation pipelines는 더 큰 모델을 위한 training tracks입니다.
+- 구조: 20 tasks / 4 research directions / 3 foundation pipelines. 20 tasks는 scoring axes이고, 4 directions는 같은 tasks를 읽기/연구 관점으로 grouping하며, 3 pipelines는 더 큰 모델을 위한 training tracks이지 새로운 task tier가 아닙니다.
 - 결과: single-episode minimal/NN은 20/20; 128-episode 레이어는 metadata, raw feature, Qwen3, Cosmos를 증거 유형별로 분리합니다. 공개 matrix는 180/180 scored records이며 174 direct와 6 compact proxy를 분리하고 proxy targets를 명시합니다.
 - 파이프라인: spatial intelligence models, human-video world models, vision-language-action models에 대해 과제 매핑과 필요한 증거를 기록합니다.
 

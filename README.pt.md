@@ -71,7 +71,7 @@ Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines
 
 - Dados: janelas de 20 frames ligam vídeo, áudio, profundidade, pose/SLAM, mocap, IMU, calibração e anotações de linguagem.
 - Tarefas: 20 contratos cobrem reconhecimento, previsão, retrieval, reconstrução, ordem, sincronização, horizonte longo, relação ação-objeto e pontes de sensores.
-- Estrutura: as 20 tarefas são eixos de pontuação; as 4 research directions são agrupamentos de leitura; as 3 foundation pipelines são rotas de treinamento para modelos maiores.
+- Estrutura: 20 tarefas / 4 research directions / 3 foundation pipelines. As 20 tarefas são eixos de pontuação; as 4 directions agrupam as mesmas tarefas para leitura e pesquisa; as 3 pipelines são rotas de treinamento, não novos tiers de tarefas.
 - Resultados: minimal/NN de um episódio cobrem 20/20; a camada de 128 episódios separa metadata, raw features, Qwen3 e Cosmos; a matriz pública está em 180/180 registros com score: 174 direct e 6 compact proxy, com proxy targets visíveis.
 - Pipelines: spatial intelligence models, human-video world models e vision-language-action models têm mapeamento de tarefas e requisitos de evidência.
 
