@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-22T17:35:20+00:00",
+  "generated_at_utc": "2026-06-22T18:16:48+00:00",
   "status": "pass",
   "artifact_count": 228,
   "missing": [],
@@ -632,7 +632,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "fd964392bdc7397f24b463964226a10cadbd5c12459df067baf1c56782a829e4"
+      "sha256": "4299d70350b2d299645d2e0e60ef53ab1c48888ec9c94e72d443b70682a23d19"
     },
     {
       "id": "source_alignment_validator",
@@ -1182,7 +1182,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8640,
-      "sha256": "12334406b10e1fb6dd04434d25aaa617b2b4f6144752afa9a27a91f7273e3994"
+      "sha256": "bedff006bb7f8b9af9e9af4e72637b83762f14532c65a0b4726d4e1ba05cddd5"
     },
     {
       "id": "public_surface_qa",
@@ -1249,7 +1249,7 @@
       "volatile": true,
       "shows": "Confirms the public original-task cards use human-readable research names, representative modality thumbnails, and the interactive walkthrough/player JSON contract.",
       "exists": true,
-      "bytes": 46497,
+      "bytes": 46399,
       "hash_policy": "existence_and_size_only"
     },
     {
@@ -1295,8 +1295,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates the task-surface integrity report and fails if task cards expose raw artifact ids or lose the interactive player wiring.",
       "exists": true,
-      "bytes": 17305,
-      "sha256": "9689a0bffcf301d3e7e0da8cc90d40eda4b39eceb0859608072c23d5bde3d836"
+      "bytes": 17467,
+      "sha256": "3094cdd1642f38a04685cf27cfca6b8181f365c1dead6e64cf066f0fd9b7d3a7"
     },
     {
       "id": "live_publication_status",

@@ -5,6 +5,7 @@
   "description": "Public documentation and browser-verification tooling for the Ropedia Xperience-10M Task Suite.",
   "type": "commonjs",
   "scripts": {
+    "verify:integrated-sections": "node scripts/verify_integrated_sections_layout.mjs",
     "verify:source-map": "node scripts/verify_source_map_layout.mjs",
     "verify:suite": "node scripts/verify_suite_layout.mjs"
   },

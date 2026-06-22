@@ -827,14 +827,10 @@
     #pipeline { order: 7; }
     #protocol { order: 8; }
     #takeaways { order: 9; }
-    #models { order: 10; }
-    #neural { order: 11; }
     #directions { order: 12; }
-    #extensions { order: 13; }
     #architectures { order: 14; }
     #walkthroughs { order: 15; }
     #features { order: 17; }
-    #diagnostics { order: 18; }
     #evidence { order: 19; }
     #glossary { order: 20; }
     #artifacts { order: 21; }
@@ -843,14 +839,18 @@
     #suite { padding: 62px 0 76px; }
     #suite .wrap { width: min(1680px, calc(100% - 48px)); }
     #suite .section-head { max-width: var(--max); margin-inline: auto; }
-    .suite-jump-row {
+    .suite-jump-row,
+    .result-jump-row,
+    .direction-jump-row {
       max-width: var(--max);
       margin: -8px auto 24px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
-    .suite-jump-row a {
+    .suite-jump-row a,
+    .result-jump-row a,
+    .direction-jump-row a {
       display: inline-flex;
       align-items: center;
       min-height: 38px;
@@ -865,10 +865,48 @@
       text-decoration: none;
       text-transform: uppercase;
     }
-    .suite-jump-row a:hover {
+    .suite-jump-row a:hover,
+    .result-jump-row a:hover,
+    .direction-jump-row a:hover {
       border-color: rgba(204, 255, 160, 0.72);
       color: var(--ink);
       background: rgba(204, 255, 160, 0.10);
+    }
+    .result-subsection,
+    .direction-subsection {
+      scroll-margin-top: var(--tab-stack-offset);
+      margin-top: clamp(28px, 4vw, 48px);
+      border: 1px solid rgba(204, 255, 160, 0.20);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at top right, rgba(103, 232, 209, 0.08), transparent 30%),
+        linear-gradient(180deg, rgba(6, 14, 7, 0.72), rgba(2, 5, 2, 0.82));
+      padding: clamp(20px, 3vw, 32px);
+    }
+    .result-subsection-head,
+    .direction-subsection-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.58fr);
+      gap: 22px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+    .result-subsection-head h3,
+    .direction-subsection-head h3 {
+      margin: 0;
+      font-family: var(--font-ui);
+      font-size: clamp(24px, 2.4vw, 34px);
+      line-height: 1.05;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .result-subsection-head p,
+    .direction-subsection-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      text-wrap: pretty;
     }
     .suite-radar-block {
       scroll-margin-top: var(--tab-stack-offset);
@@ -5348,7 +5386,7 @@
           <strong>Start</strong>
           <span>project overview and roadmap</span>
         </button>
-        <button type="button" class="project-tab" id="tab-data" role="tab" data-tab-key="data" data-default-section="dataset-card" aria-selected="false" aria-pressed="false" aria-controls="dataset-card raw-sample suite walkthroughs extensions" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-data" role="tab" data-tab-key="data" data-default-section="dataset-card" aria-selected="false" aria-pressed="false" aria-controls="dataset-card raw-sample suite walkthroughs" tabindex="-1">
           <strong>Data & Tasks</strong>
           <span>dataset sample and task suite</span>
         </button>
@@ -5356,11 +5394,11 @@
           <strong>Method</strong>
           <span>pipeline and model design</span>
         </button>
-        <button type="button" class="project-tab" id="tab-results" role="tab" data-tab-key="results" data-default-section="takeaways" aria-selected="false" aria-pressed="false" aria-controls="takeaways models neural diagnostics" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-results" role="tab" data-tab-key="results" data-default-section="takeaways" aria-selected="false" aria-pressed="false" aria-controls="takeaways" tabindex="-1">
           <strong>Results</strong>
           <span>takeaways and baselines</span>
         </button>
-        <button type="button" class="project-tab" id="tab-directions" role="tab" data-tab-key="directions" data-default-section="directions" aria-selected="false" aria-pressed="false" aria-controls="directions extensions" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-directions" role="tab" data-tab-key="directions" data-default-section="directions" aria-selected="false" aria-pressed="false" aria-controls="directions" tabindex="-1">
           <strong>Directions</strong>
           <span>four tracks and probes</span>
         </button>
@@ -6412,7 +6450,14 @@
           <h2>Results by evidence line.</h2>
           <p>Read results in this order: choose the line, open the matching radar, inspect the matrix row, then check proxy flags before interpreting totals.</p>
         </div>
-        <div class="result-reading-order" aria-label="How to read the result evidence">
+        <nav class="result-jump-row" aria-label="Results quick links">
+          <a href="#result-lines">Evidence lines</a>
+          <a href="#result-matrix-table">180-result table</a>
+          <a href="#models">Baseline snapshots</a>
+          <a href="#neural">Neural heads</a>
+          <a href="#diagnostics">Diagnostic charts</a>
+        </nav>
+        <div class="result-reading-order" id="result-lines" aria-label="How to read the result evidence">
           <article class="result-reading-step">
             <span>01</span>
             <strong>Choose the line</strong>
@@ -6610,6 +6655,49 @@
             <p class="result-matrix-foot">Best-practice reading rule: compare methods within the same evidence line first, then use the proxy badges before interpreting cross-method totals. Six compact-proxy cells are intentionally visible rather than blended into direct raw-target scores.</p>
           </div>
         </div>
+        <div class="result-subsection" id="models">
+          <div class="result-subsection-head">
+            <h3>Small baselines, no hidden machinery.</h3>
+            <p>Motion-only and all-feature classifiers use lightweight heads so the comparison stays readable on a laptop and easy to inspect. They now sit beside the result matrix instead of opening a separate results page.</p>
+          </div>
+          <div class="models">
+            <article class="model"><h3>Motion-only action</h3><span class="score">0.9688</span><span class="meta">macro-F1, 18 classes</span></article>
+            <article class="model"><h3>Current all-feature action</h3><span class="score">0.9829</span><span class="meta">macro-F1, 8,546 dimensions</span></article>
+            <article class="model"><h3>Motion-only subtask</h3><span class="score">0.9528</span><span class="meta">macro-F1, 14 classes</span></article>
+            <article class="model"><h3>Current all-feature subtask</h3><span class="score">0.9173</span><span class="meta">macro-F1, chronological caveats</span></article>
+          </div>
+          <img class="chart" src="assets/charts/model_macro_f1.svg" alt="Macro-F1 comparison chart">
+        </div>
+        <div class="result-subsection" id="neural">
+          <div class="result-subsection-head">
+            <h3>Neural MLP heads, same task contracts.</h3>
+            <p>The neural baseline keeps the same windows, splits, and leakage filters, then swaps in small PyTorch MLP heads. Read it as a nonlinear-head check before heavier Qwen3/Cosmos model branches.</p>
+          </div>
+          <div class="models">
+            <article class="model"><h3>Neural hand forecast</h3><span class="score">0.1079</span><span class="meta">MPJPE, down from 0.8647 minimal</span></article>
+            <article class="model"><h3>Neural temporal order</h3><span class="score">0.8520</span><span class="meta">F1, adjacent-window diagnostic</span></article>
+            <article class="model"><h3>Neural misalignment</h3><span class="score">0.7153</span><span class="meta">F1, shifted motion/visual/audio pairs</span></article>
+            <article class="model"><h3>Neural cross-modal retrieval</h3><span class="score">0.1300</span><span class="meta">MRR; ridge remains stronger here</span></article>
+          </div>
+          <div class="chart-grid">
+            <img class="chart" src="assets/charts/episode_task_scores_neural_mlp.svg" alt="Neural MLP episode task score chart">
+            <img class="chart" src="assets/charts/episode_task_scores_minimal_vs_neural.svg" alt="Minimal versus neural MLP episode task score chart">
+          </div>
+        </div>
+        <div class="result-subsection" id="diagnostics">
+          <div class="result-subsection-head">
+            <h3>Diagnostics separate memorization from signal.</h3>
+            <p>These charts keep the main lesson visible: within-episode labels can be easy under some splits, while retrieval, grounding, forecasting, and alignment remain the useful probes.</p>
+          </div>
+          <div class="chart-grid">
+            <img class="chart" src="assets/charts/episode_task_scores.svg" alt="Episode task suite score chart">
+            <img class="chart" src="assets/charts/cross_modal_retrieval.svg" alt="Cross modal retrieval chart">
+            <img class="chart" src="assets/charts/episode_task_scores_neural_mlp.svg" alt="Neural MLP task score chart">
+            <img class="chart" src="assets/charts/episode_task_scores_minimal_vs_neural.svg" alt="Minimal versus neural score chart">
+            <img class="chart" src="assets/charts/audio_ablation_delta.svg" alt="Measured audio delta chart across walkthrough-backed task contracts">
+          </div>
+          <p class="section-note"><a href="single_episode_explorer.html">Open the single-episode explorer</a> to inspect window-level labels, predictions, modality statistics, object labels, and diagnostic scores. The <a href="data/audio_ablation_summary.json">audio ablation summary</a> records the task-by-task audio contribution.</p>
+        </div>
         <div class="artifact-grid">
           <article class="artifact primary-artifact">
             <div>
@@ -6642,48 +6730,19 @@
       </div>
     </section>
 
-    <section id="models" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Small baselines, no hidden machinery.</h2>
-          <p>Motion-only and current all-feature classifiers use lightweight heads so the comparison stays readable on a laptop and easy to inspect. The neural run keeps the same features and splits, then swaps in PyTorch MLP heads.</p>
-        </div>
-        <div class="models">
-          <article class="model"><h3>Motion-only action</h3><span class="score">0.9688</span><span class="meta">macro-F1, 18 classes</span></article>
-          <article class="model"><h3>Current all-feature action</h3><span class="score">0.9829</span><span class="meta">macro-F1, 8,546 dimensions</span></article>
-          <article class="model"><h3>Motion-only subtask</h3><span class="score">0.9528</span><span class="meta">macro-F1, 14 classes</span></article>
-          <article class="model"><h3>Current all-feature subtask</h3><span class="score">0.9173</span><span class="meta">macro-F1, chronological caveats</span></article>
-        </div>
-        <img class="chart" src="assets/charts/model_macro_f1.svg" alt="Macro-F1 comparison chart">
-      </div>
-    </section>
-
-    <section id="neural" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Neural MLP heads, same task contracts.</h2>
-          <p>The neural baseline uses small PyTorch MLP classifiers/regressors on the same 8,546-dimensional windows, chronological splits, and leakage filters. This isolates the value of a nonlinear head before moving to heavier Qwen/Omni experiments.</p>
-        </div>
-        <div class="models">
-          <article class="model"><h3>Neural hand forecast</h3><span class="score">0.1079</span><span class="meta">MPJPE, down from 0.8647 minimal</span></article>
-          <article class="model"><h3>Neural temporal order</h3><span class="score">0.8520</span><span class="meta">F1, adjacent-window diagnostic</span></article>
-          <article class="model"><h3>Neural misalignment</h3><span class="score">0.7153</span><span class="meta">F1, shifted motion/visual/audio pairs</span></article>
-          <article class="model"><h3>Neural cross-modal retrieval</h3><span class="score">0.1300</span><span class="meta">MRR; ridge remains stronger here</span></article>
-        </div>
-        <div class="chart-grid">
-          <img class="chart" src="assets/charts/episode_task_scores_neural_mlp.svg" alt="Neural MLP episode task score chart">
-          <img class="chart" src="assets/charts/episode_task_scores_minimal_vs_neural.svg" alt="Minimal versus neural MLP episode task score chart">
-        </div>
-      </div>
-    </section>
-
     <section id="directions" data-project-tab="directions" role="tabpanel" aria-labelledby="tab-directions" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>The walkthrough-backed tasks organized into four research directions.</h2>
           <p>Each task is mapped as direct, proxy, or diagnostic evidence for the Ropedia research tracks. The mapping uses two current baselines: minimal interpretable heads and neural MLP heads over the same feature contract.</p>
         </div>
-        <div class="direction-grid">
+        <nav class="direction-jump-row" aria-label="Direction evidence quick links">
+          <a href="#direction-coverage">Direction coverage</a>
+          <a href="#direction-baselines">Baselines</a>
+          <a href="#extensions">Unified provenance</a>
+          <a href="#suite">20-task suite</a>
+        </nav>
+        <div class="direction-grid" id="direction-coverage">
           <article class="direction-card">
             <span class="status-pill">partially implemented</span>
             <h3>A. Human Modeling & Motion Understanding</h3>
@@ -6710,7 +6769,7 @@
           </article>
         </div>
         <img class="chart" src="assets/charts/research_direction_coverage.svg" alt="Coverage of the original Xperience-10M tasks across four research directions">
-        <div class="baseline-strip">
+        <div class="baseline-strip" id="direction-baselines">
           <div class="callout">
             <h3>Baseline 1: minimal heads</h3>
             <p>Softmax, logistic, ridge, and retrieval heads keep every input/output contract readable. They are the first sanity check for whether a task is well-posed.</p>
@@ -6720,15 +6779,11 @@
             <p>Small PyTorch MLP classifiers/regressors reuse the same features and splits. They test nonlinear gains before heavier Omni fine-tuning.</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="extensions" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Unified 20-task evidence and provenance.</h2>
-          <p>All 20 tasks live in the same task table, task-card grid, radar, and 180-record result matrix. Historical result paths are retained only for exact provenance links.</p>
-        </div>
+        <div class="direction-subsection" id="extensions">
+          <div class="direction-subsection-head">
+            <h3>Unified 20-task evidence and provenance.</h3>
+            <p>All 20 tasks live in the same task table, task-card grid, radar, and 180-record result matrix. Historical result paths are retained only for exact provenance links.</p>
+          </div>
         <div class="callout-row">
           <div class="callout">
             <h3>Unified task artifact package</h3>
@@ -6785,6 +6840,7 @@
             <h3>What still needs scale</h3>
             <p>A full research result still needs many Xperience-10M episodes, held-out episode splits, stronger encoders, and direction-specific models such as body priors, renderers, or persistent scene graphs.</p>
           </div>
+        </div>
         </div>
       </div>
     </section>
@@ -6894,23 +6950,6 @@
             <a href="#tasks">Back to task cards</a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="diagnostics" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Diagnostics separate memorization from signal.</h2>
-          <p>The charts make the main lesson visible: within-episode supervised labels are easy under some splits, while retrieval, grounding, forecasting, and alignment remain the useful probes.</p>
-        </div>
-        <div class="chart-grid">
-          <img class="chart" src="assets/charts/episode_task_scores.svg" alt="Episode task suite score chart">
-          <img class="chart" src="assets/charts/cross_modal_retrieval.svg" alt="Cross modal retrieval chart">
-          <img class="chart" src="assets/charts/episode_task_scores_neural_mlp.svg" alt="Neural MLP task score chart">
-          <img class="chart" src="assets/charts/episode_task_scores_minimal_vs_neural.svg" alt="Minimal versus neural score chart">
-          <img class="chart" src="assets/charts/audio_ablation_delta.svg" alt="Measured audio delta chart across walkthrough-backed task contracts">
-        </div>
-        <p class="section-note"><a href="single_episode_explorer.html">Open the single-episode explorer</a> to inspect window-level labels, predictions, modality statistics, object labels, and diagnostic scores. The <a href="data/audio_ablation_summary.json">audio ablation summary</a> records the task-by-task audio contribution.</p>
       </div>
     </section>
 
@@ -7602,12 +7641,12 @@ python scripts/validate_publication_package.py</code></pre>
       protocol: "Best for splits, leakage controls, metrics, and evaluation rules.",
       architectures: "Best for how task heads and model tracks are organized.",
       features: "Best for modality and feature provenance.",
-      takeaways: "Best for the fastest read on what the current metrics mean.",
-      models: "Best for minimal baseline evidence.",
-      neural: "Best for neural MLP task-head comparisons.",
+      takeaways: "Best for the fastest read on evidence lines, the 180-result matrix, baseline snapshots, neural heads, and diagnostic charts.",
+      models: "Integrated subsection for minimal baseline evidence inside Results.",
+      neural: "Integrated subsection for neural MLP task-head comparisons inside Results.",
       directions: "Best for mapping tasks to spatial, world-model, and VLA directions.",
-      extensions: "Best for historical provenance links inside the unified 20-task surface.",
-      diagnostics: "Best for charts and error-analysis evidence.",
+      extensions: "Integrated subsection for unified task provenance inside Directions.",
+      diagnostics: "Integrated subsection for charts and error-analysis evidence inside Results.",
       glossary: "Best for terms that can be confused across data, tasks, models, metrics, and public mirrors.",
       artifacts: "Best for finding files, mirrors, weights, scripts, and checks.",
       evidence: "Best for current experiment status and milestones.",
@@ -7615,7 +7654,11 @@ python scripts/validate_publication_package.py</code></pre>
       run: "Best for reproduction commands."
     };
     const sectionTabMap = Object.fromEntries(tabSections.map((section) => [section.id, section.dataset.projectTab]));
-    if (document.getElementById("tasks")) sectionTabMap.tasks = "data";
+    ["tasks", "models", "neural", "diagnostics", "extensions"].forEach((id) => {
+      const anchor = document.getElementById(id);
+      const parentSection = anchor?.closest("[data-project-tab]");
+      if (parentSection) sectionTabMap[id] = parentSection.dataset.projectTab;
+    });
     const tabLabels = Object.fromEntries(
       tabButtons.map((button) => [button.dataset.tabKey, button.querySelector("strong")?.textContent?.trim() || button.dataset.tabKey])
     );
