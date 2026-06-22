@@ -2842,8 +2842,43 @@
     .task-score-note span {
       min-width: 0;
     }
-    .mini-bar { height: 7px; background: rgba(204, 255, 160, 0.14); border-radius: 999px; overflow: hidden; }
-    .mini-bar span { display: block; height: 100%; width: var(--w); background: var(--c); }
+    .method-bars {
+      display: grid;
+      gap: 7px;
+    }
+    .method-bar {
+      display: grid;
+      grid-template-columns: minmax(68px, 0.58fr) minmax(90px, 1fr) minmax(54px, auto);
+      gap: 9px;
+      align-items: center;
+      color: #c7d1c3;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.035em;
+      text-transform: uppercase;
+    }
+    .method-bar-line {
+      height: 9px;
+      border: 1px solid rgba(204, 255, 160, 0.12);
+      background: rgba(204, 255, 160, 0.12);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .method-bar-fill {
+      display: block;
+      width: var(--w);
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--c), rgba(204, 255, 160, 0.42));
+    }
+    .method-bar-value {
+      color: var(--ink);
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .method-bar.minimal { --c: var(--green); }
+    .method-bar.neural { --c: var(--cyan); }
 
     .artifact-grid {
       display: grid;
@@ -3609,16 +3644,16 @@
       color: #020502;
     }
     .track,
-    .mini-bar,
+    .method-bar-line,
     .player-progress {
       background: rgba(204, 255, 160, 0.16);
     }
     .track > span,
     .roadmap-card::before,
-    .mini-bar span,
+    .method-bar-fill,
     .player-progress span,
     .bar span {
-      background: linear-gradient(90deg, var(--green), rgba(204, 255, 160, 0.45));
+      background: linear-gradient(90deg, var(--c, var(--green)), rgba(204, 255, 160, 0.45));
     }
     /* Typography and color consistency layer for repeated long-page components. */
     .button,
@@ -4197,11 +4232,11 @@
       text-shadow: 0 0 16px rgba(204, 255, 160, 0.12);
     }
     .track > span,
-    .mini-bar > span {
+    .method-bar-fill {
       transform-origin: left center;
     }
     .motion-ready .track > span,
-    .motion-ready .mini-bar > span {
+    .motion-ready .method-bar-fill {
       animation: xperienceGrow 860ms var(--motion-ease) both;
     }
     .motion-ready .count-highlight {
@@ -4525,6 +4560,14 @@
       .nav-inner {
         position: relative;
         height: 64px;
+      }
+      .method-bar {
+        grid-template-columns: 58px minmax(82px, 1fr) minmax(46px, auto);
+        gap: 7px;
+        font-size: 9px;
+      }
+      .method-bar-value {
+        font-size: 9px;
       }
       .brand {
         font-size: 16px;
@@ -7982,25 +8025,37 @@ python scripts/validate_publication_package.py</code></pre>
       }
     }
 
-    const metricBarWidth = (task) => {
-      const value = Number(task.metric?.neural_mlp ?? task.metric?.minimal ?? 0);
-      if (!Number.isFinite(value)) return 4;
-      if (task.metric?.name === "R2") return Math.max(4, Math.min(100, (value + 1) * 50));
-      if (task.metric?.direction === "lower") return Math.max(4, Math.min(100, 100 / (1 + Math.max(value, 0))));
-      return Math.max(4, Math.min(100, value * 100));
+    const metricNumber = (value) => {
+      if (value === null || value === undefined || value === "") return null;
+      const number = Number(value);
+      return Number.isFinite(number) ? number : null;
     };
 
-    const metricBarSource = (task) => Number.isFinite(Number(task.metric?.neural_mlp))
-      ? "Neural MLP"
-      : "Minimal";
+    const metricQuality = (task, value) => {
+      const number = metricNumber(value);
+      if (number === null) return null;
+      if (task.metric?.name === "R2") return Math.max(0, number + 1);
+      if (task.metric?.direction === "lower") return 1 / (1 + Math.max(number, 0));
+      return Math.max(0, number);
+    };
 
-    const metricBarMeaning = (task) => {
+    const methodBarWidth = (task, value) => {
+      const quality = metricQuality(task, value);
+      if (quality === null) return 0;
+      const allQualities = [task.metric?.minimal, task.metric?.neural_mlp]
+        .map((candidate) => metricQuality(task, candidate))
+        .filter((candidate) => candidate !== null);
+      const best = Math.max(0, ...allQualities);
+      if (best <= 0) return 6;
+      return Math.max(6, Math.min(100, (quality / best) * 100));
+    };
+
+    const methodBarMeaning = (task) => {
       const metric = task.metric?.name || "primary metric";
-      const source = metricBarSource(task);
       const direction = task.metric?.direction === "lower"
-        ? "lower-is-better converted for visual width"
-        : "higher-is-better display width";
-      return `${source} ${metric}; ${direction}; color shows task family.`;
+        ? "lower values are better"
+        : "higher values are better";
+      return `Minimal and Neural MLP ${metric} compared within this task; ${direction}; exact scores are printed above.`;
     };
 
     const normalizeWalkthroughTasks = (payload) => Object.values(payload.tasks || {});
@@ -8110,8 +8165,9 @@ python scripts/validate_publication_package.py</code></pre>
         const icon = taskIconFor(task);
         const minimal = formatMetric(task.metric?.minimal);
         const neural = formatMetric(task.metric?.neural_mlp);
-        const barSource = metricBarSource(task);
-        const barMeaning = metricBarMeaning(task);
+        const barMeaning = methodBarMeaning(task);
+        const minimalWidth = methodBarWidth(task, task.metric?.minimal);
+        const neuralWidth = methodBarWidth(task, task.metric?.neural_mlp);
         const modalityChips = (task.modalities || [])
           .map((key) => modalityMeta[key]?.label || key)
           .filter(Boolean)
@@ -8143,9 +8199,20 @@ python scripts/validate_publication_package.py</code></pre>
             </div>
             <div class="task-score-note">
               <span>Public-sample task-head scores</span>
-              <span>Bar: ${escapeHtml(barSource)} normalized · color: family</span>
+              <span>Bars compare methods within task</span>
             </div>
-            <div class="mini-bar" aria-label="${escapeHtml(barMeaning)}" title="${escapeHtml(barMeaning)}"><span style="--w:${metricBarWidth(task).toFixed(1)}%;--c:${familyAccent[family] || "#ccffa0"}"></span></div>
+            <div class="method-bars" aria-label="${escapeHtml(barMeaning)}" title="${escapeHtml(barMeaning)}">
+              <span class="method-bar minimal">
+                <span>Minimal</span>
+                <span class="method-bar-line"><span class="method-bar-fill" style="--w:${minimalWidth.toFixed(1)}%"></span></span>
+                <span class="method-bar-value">${minimal}</span>
+              </span>
+              <span class="method-bar neural">
+                <span>Neural</span>
+                <span class="method-bar-line"><span class="method-bar-fill" style="--w:${neuralWidth.toFixed(1)}%"></span></span>
+                <span class="method-bar-value">${neural}</span>
+              </span>
+            </div>
           </button>
         `;
       }).join("");
