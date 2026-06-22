@@ -257,20 +257,20 @@ These are Qwen3-Omni run versions inside **Line 2: selected 128 episodes**. They
 </table>
 
 Detailed lineage:
-[`QWEN3_OMNI_RUN_LINEAGE.md`](QWEN3_OMNI_RUN_LINEAGE.md) and
-[`qwen3_omni_run_lineage.json`](docs/data/qwen3_omni_run_lineage.json).
+[Qwen lineage note](QWEN3_OMNI_RUN_LINEAGE.md) and
+[Qwen lineage data](docs/data/qwen3_omni_run_lineage.json).
 
 Result entry points:
-[`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md),
-[`two_evidence_lines.json`](docs/data/two_evidence_lines.json),
-[`TWO_EVIDENCE_LINE_RESULT_SUMMARY.md`](TWO_EVIDENCE_LINE_RESULT_SUMMARY.md),
-[`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json),
-[`QWEN3_OMNI_RUN_LINEAGE.md`](QWEN3_OMNI_RUN_LINEAGE.md),
-[`qwen3_omni_run_lineage.json`](docs/data/qwen3_omni_run_lineage.json),
-[`single_episode_task_model_radar.json`](docs/data/single_episode_task_model_radar.json),
-[`episode128_task_model_radar.json`](docs/data/episode128_task_model_radar.json),
-[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), and
-[`xperience10m_128_episode_feature_index.json`](docs/data/xperience10m_128_episode_feature_index.json).
+[two evidence-line note](TWO_EVIDENCE_LINES.md),
+[two evidence-line data](docs/data/two_evidence_lines.json),
+[result summary note](TWO_EVIDENCE_LINE_RESULT_SUMMARY.md),
+[result summary data](docs/data/two_evidence_line_result_summary.json),
+[Qwen lineage note](QWEN3_OMNI_RUN_LINEAGE.md),
+[Qwen lineage data](docs/data/qwen3_omni_run_lineage.json),
+[1-episode radar data](docs/data/single_episode_task_model_radar.json),
+[128-episode radar data](docs/data/episode128_task_model_radar.json),
+[180-result matrix data](docs/data/task_method_20_result_matrix.json), and
+[selected-128 source and feature index](docs/data/xperience10m_128_episode_feature_index.json).
 
 ## Fast Reader Map
 
@@ -291,22 +291,22 @@ Result entry points:
     <tr>
       <td><strong>Choose the public surface</strong></td>
       <td><a href="PUBLIC_READER_MAP.md">Public reader map</a></td>
-      <td><a href="docs/data/public_reader_map.json">public_reader_map.json</a></td>
+      <td><a href="docs/data/public_reader_map.json">reader-map data</a></td>
     </tr>
     <tr>
       <td><strong>Decode project terms</strong></td>
       <td><a href="GLOSSARY.md">Glossary</a></td>
-      <td><a href="docs/data/glossary.json">glossary.json</a></td>
+      <td><a href="docs/data/glossary.json">glossary data</a></td>
     </tr>
     <tr>
       <td><strong>Inspect the 20 tasks</strong></td>
-      <td><a href="TASK_SUITE_20.md">TASK_SUITE_20.md</a></td>
-      <td><a href="docs/data/task_suite_20.json">task_suite_20.json</a><br><a href="results/episode_task_suite/task_walkthroughs/">task walkthroughs</a></td>
+      <td><a href="TASK_SUITE_20.md">20-task suite note</a></td>
+      <td><a href="docs/data/task_suite_20.json">task contract data</a><br><a href="results/episode_task_suite/task_walkthroughs/">task walkthroughs</a></td>
     </tr>
     <tr>
       <td><strong>Compare results</strong></td>
       <td><a href="RESEARCH_TAKEAWAYS.md">Research takeaways</a></td>
-      <td><a href="docs/data/two_evidence_line_result_summary.json">two-line result summary</a><br><a href="docs/data/task_method_20_result_matrix.json">20-result matrix</a><br><a href="docs/data/unified_task_model_radar.json">radar JSON</a><br><a href="docs/data/task_method_20_gap_audit.json">score/proxy audit</a></td>
+      <td><a href="docs/data/two_evidence_line_result_summary.json">two-line result summary</a><br><a href="docs/data/task_method_20_result_matrix.json">20-result matrix</a><br><a href="docs/data/unified_task_model_radar.json">radar data</a><br><a href="docs/data/task_method_20_gap_audit.json">score/proxy audit</a></td>
     </tr>
     <tr>
       <td><strong>Understand one sample</strong></td>
@@ -316,7 +316,7 @@ Result entry points:
     <tr>
       <td><strong>Read foundation directions</strong></td>
       <td><a href="THREE_FOUNDATION_PIPELINES.md">Three foundation pipelines</a></td>
-      <td><a href="docs/data/three_foundation_pipelines.json">three_foundation_pipelines.json</a><br><a href="FOUNDATION_MODEL_PLAN.md">foundation model plan</a></td>
+      <td><a href="docs/data/three_foundation_pipelines.json">pipeline data</a><br><a href="FOUNDATION_MODEL_PLAN.md">foundation model plan</a></td>
     </tr>
     <tr>
       <td><strong>Reproduce or audit</strong></td>
@@ -357,11 +357,11 @@ embodied-AI research infrastructure:
 ## Start Here
 
 The public release is split across GitHub, the website, and Hugging Face. Use
-[`PUBLIC_READER_MAP.md`](PUBLIC_READER_MAP.md) first if you want the shortest
+[the public reader map](PUBLIC_READER_MAP.md) first if you want the shortest
 route through those surfaces, or use the machine-readable companion
-[`docs/data/public_reader_map.json`](docs/data/public_reader_map.json).
-For the one-page project summary, use [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md)
-and [`docs/data/project_brief.json`](docs/data/project_brief.json).
+[reader-map data](docs/data/public_reader_map.json).
+For the one-page project summary, use [the project brief](PROJECT_BRIEF.md)
+and [project-summary data](docs/data/project_brief.json).
 
 <table>
   <thead>
@@ -371,27 +371,27 @@ and [`docs/data/project_brief.json`](docs/data/project_brief.json).
     </tr>
   </thead>
   <tbody>
-    <tr><td><strong>Choose the right public surface</strong></td><td><a href="PUBLIC_READER_MAP.md">PUBLIC_READER_MAP.md</a><br><a href="docs/data/public_reader_map.json">public_reader_map.json</a></td></tr>
-    <tr><td><strong>Resolve confusing terms and abbreviations</strong></td><td><a href="GLOSSARY.md">GLOSSARY.md</a><br><a href="docs/data/glossary.json">glossary.json</a></td></tr>
-    <tr><td><strong>Understand the whole project quickly</strong></td><td><a href="PROJECT_BRIEF.md">PROJECT_BRIEF.md</a></td></tr>
+    <tr><td><strong>Choose the right public surface</strong></td><td><a href="PUBLIC_READER_MAP.md">Public reader map</a><br><a href="docs/data/public_reader_map.json">reader-map data</a></td></tr>
+    <tr><td><strong>Resolve confusing terms and abbreviations</strong></td><td><a href="GLOSSARY.md">Glossary</a><br><a href="docs/data/glossary.json">glossary data</a></td></tr>
+    <tr><td><strong>Understand the whole project quickly</strong></td><td><a href="PROJECT_BRIEF.md">Project brief</a></td></tr>
     <tr><td><strong>See the visual research dashboard</strong></td><td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">GitHub Pages dashboard</a></td></tr>
-    <tr><td><strong>Navigate the unified 20 tasks, four tracks, and scale-up plan</strong></td><td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/research_roadmap.html">Interactive research roadmap</a><br><a href="TASK_SUITE_20.md">TASK_SUITE_20.md</a><br><a href="docs/data/task_suite_20.json">task_suite_20.json</a><br><a href="docs/data/research_roadmap_interactive.json">research_roadmap_interactive.json</a></td></tr>
-    <tr><td><strong>Compare current task metrics</strong></td><td><a href="RESEARCH_TAKEAWAYS.md">RESEARCH_TAKEAWAYS.md</a><br><a href="docs/data/summary_metrics.json">summary_metrics.json</a></td></tr>
-    <tr><td><strong>Compare possible foundation backbones</strong></td><td><a href="FOUNDATION_MODEL_PLAN.md">FOUNDATION_MODEL_PLAN.md</a><br><a href="docs/data/foundation_model_plan.json">foundation_model_plan.json</a></td></tr>
-    <tr><td><strong>Understand the future native pretraining goal</strong></td><td><a href="XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md</a></td></tr>
-    <tr><td><strong>See additional concrete project directions</strong></td><td><a href="ADDITIONAL_DEVELOPMENT_DIRECTIONS.md">ADDITIONAL_DEVELOPMENT_DIRECTIONS.md</a><br><a href="docs/data/additional_development_directions.json">additional_development_directions.json</a></td></tr>
-    <tr><td><strong>Understand one model input</strong></td><td><a href="results/episode_task_suite/feature_manifest.json">feature_manifest.json</a><br><a href="results/episode_task_suite/windows.csv">windows.csv</a></td></tr>
-    <tr><td><strong>Check multi-episode data status</strong></td><td><a href="results/omni_finetune/DATA_ACCESS_STATUS.md">DATA_ACCESS_STATUS.md</a></td></tr>
+    <tr><td><strong>Navigate the unified 20 tasks, four tracks, and scale-up plan</strong></td><td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/research_roadmap.html">Interactive research roadmap</a><br><a href="TASK_SUITE_20.md">20-task suite note</a><br><a href="docs/data/task_suite_20.json">task contract data</a><br><a href="docs/data/research_roadmap_interactive.json">interactive roadmap data</a></td></tr>
+    <tr><td><strong>Compare current task metrics</strong></td><td><a href="RESEARCH_TAKEAWAYS.md">Research takeaways</a><br><a href="docs/data/summary_metrics.json">summary metrics</a></td></tr>
+    <tr><td><strong>Compare possible foundation backbones</strong></td><td><a href="FOUNDATION_MODEL_PLAN.md">Foundation-model plan</a><br><a href="docs/data/foundation_model_plan.json">foundation-model data</a></td></tr>
+    <tr><td><strong>Understand the future native pretraining goal</strong></td><td><a href="XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">Native pretraining plan</a></td></tr>
+    <tr><td><strong>See additional concrete project directions</strong></td><td><a href="ADDITIONAL_DEVELOPMENT_DIRECTIONS.md">Additional development directions</a><br><a href="docs/data/additional_development_directions.json">direction data</a></td></tr>
+    <tr><td><strong>Understand one model input</strong></td><td><a href="results/episode_task_suite/feature_manifest.json">feature manifest</a><br><a href="results/episode_task_suite/windows.csv">window table</a></td></tr>
+    <tr><td><strong>Check multi-episode data status</strong></td><td><a href="results/omni_finetune/DATA_ACCESS_STATUS.md">multi-episode data status</a></td></tr>
   </tbody>
 </table>
 
 ## Glossary
 
-Use [`GLOSSARY.md`](GLOSSARY.md) when a term such as evidence line,
+Use [the glossary](GLOSSARY.md) when a term such as evidence line,
 20-frame window, direct score, compact-proxy score, raw metric value,
 normalized radar value, minimal/minimum baseline, simple baseline, Qwen v1-v6,
 Cosmos3-Super, LoRA adapter, or HF artifact dataset is unclear. The same definitions are mirrored as
-[`docs/data/glossary.json`](docs/data/glossary.json) for the website and
+[glossary data](docs/data/glossary.json) for the website and
 Hugging Face repos.
 
 ## Public Surface Map
@@ -404,23 +404,23 @@ Hugging Face repos.
     </tr>
   </thead>
   <tbody>
-    <tr><td><strong>GitHub repo</strong></td><td>Source of truth for docs, scripts, generated JSON, validators, and commit history.</td></tr>
+    <tr><td><strong>GitHub repo</strong></td><td>Source of truth for docs, scripts, generated data, validators, and commit history.</td></tr>
     <tr><td><strong>GitHub Pages dashboard</strong></td><td>Best visual overview of the sample, 20 tasks, radar results, foundation directions, and resources.</td></tr>
     <tr><td><strong>Hugging Face Space</strong></td><td>Hub-hosted copy of the dashboard and static app assets.</td></tr>
-    <tr><td><strong>HF artifact dataset</strong></td><td>Public-safe metrics, reports, website JSON, result packages, and derived evidence files.</td></tr>
+    <tr><td><strong>HF artifact dataset</strong></td><td>Public-safe metrics, reports, website data, result packages, and derived evidence files.</td></tr>
     <tr><td><strong>HF baseline model repo</strong></td><td>Minimal/neural baseline weights, figures, metrics, and mirrored task artifacts.</td></tr>
     <tr><td><strong>Qwen3-Omni and Cosmos3 model repos</strong></td><td>Adapter-specific public weights or package cards when Qwen3-Omni v6, Cosmos3-Super, or Cosmos3-Nano runs are verified and publishable.</td></tr>
   </tbody>
 </table>
 
-Public release checks are exposed as JSON for mirrors and dashboards:
-[`docs/data/website_integrity.json`](docs/data/website_integrity.json),
-[`docs/data/rendered_site_check.json`](docs/data/rendered_site_check.json),
-[`docs/data/task_surface_integrity.json`](docs/data/task_surface_integrity.json),
-[`docs/data/publication_audit.json`](docs/data/publication_audit.json),
-[`docs/data/mirror_parity.json`](docs/data/mirror_parity.json),
-[`docs/data/public_surface_qa.json`](docs/data/public_surface_qa.json), and
-[`docs/data/research_roadmap.json`](docs/data/research_roadmap.json).
+Public release checks are exposed as structured records for mirrors and dashboards:
+[website integrity](docs/data/website_integrity.json),
+[rendered-site check](docs/data/rendered_site_check.json),
+[task-surface integrity](docs/data/task_surface_integrity.json),
+[publication audit](docs/data/publication_audit.json),
+[mirror parity](docs/data/mirror_parity.json),
+[public-surface QA](docs/data/public_surface_qa.json), and
+[roadmap data](docs/data/research_roadmap.json).
 
 ## Research Project Overview
 
@@ -454,8 +454,8 @@ Public release checks are exposed as JSON for mirrors and dashboards:
 </table>
 
 For the fastest interpretation of the current metrics, start with
-[`RESEARCH_TAKEAWAYS.md`](RESEARCH_TAKEAWAYS.md) and
-[`docs/data/research_takeaways.json`](docs/data/research_takeaways.json).
+[the research takeaways](RESEARCH_TAKEAWAYS.md) and
+[takeaway data](docs/data/research_takeaways.json).
 They summarize what the public sample results actually show: class shift under
 chronological splits, neural gains on dynamics/order/alignment, harder
 retrieval/reconstruction probes, and why the next model-quality step needs
@@ -503,11 +503,11 @@ This project is best read as a staged embodied-AI research study:
         Historical <code>tier2_task_suite</code> artifact paths are kept for link stability, but they are provenance paths inside the same suite.
       </td>
       <td>
-        <a href="TASK_SUITE_20.md">TASK_SUITE_20.md</a><br>
-        <a href="docs/data/task_suite_20.json">task_suite_20.json</a><br>
-        <a href="RESEARCH_TAKEAWAYS.md">RESEARCH_TAKEAWAYS.md</a><br>
-        <a href="results/episode_task_suite/summary_report.json">summary_report.json</a><br>
-        <a href="results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md">TIER2_TASK_BASELINES.md</a>
+        <a href="TASK_SUITE_20.md">20-task suite note</a><br>
+        <a href="docs/data/task_suite_20.json">task contract data</a><br>
+        <a href="RESEARCH_TAKEAWAYS.md">research takeaways</a><br>
+        <a href="results/episode_task_suite/summary_report.json">summary report</a><br>
+        <a href="results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md">historical provenance baselines</a>
       </td>
     </tr>
     <tr>
@@ -518,15 +518,15 @@ This project is best read as a staged embodied-AI research study:
         Tasks 15 and 19 are explicitly marked as compact-proxy completions.
       </td>
       <td>
-        <a href="results/episode_task_suite/neural_mlp/">neural_mlp/</a><br>
-        <a href="results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md">BASELINE_ALIGNMENT_REPORT.md</a><br>
+        <a href="results/episode_task_suite/neural_mlp/">neural MLP outputs</a><br>
+        <a href="results/omni_finetune/multi_episode_128_task_baselines/BASELINE_ALIGNMENT_REPORT.md">baseline alignment report</a><br>
         <a href="results/omni_finetune/a100_128_raw20_task_baselines_complete20_proxy_20260616T091500Z/run_summary_all.json">raw20 run summary</a>
       </td>
     </tr>
     <tr>
       <td><strong>Diagnostics</strong></td>
       <td>Audio contribution, modality ablations, timeline overlays, object labels, and alignment stress tests show which signals are useful and which tasks remain hard.</td>
-      <td><a href="results/audio_ablation/AUDIO_ABLATION_SUMMARY.md">AUDIO_ABLATION_SUMMARY.md</a><br><a href="docs/single_episode_explorer.html">single_episode_explorer.html</a></td>
+      <td><a href="results/audio_ablation/AUDIO_ABLATION_SUMMARY.md">audio ablation summary</a><br><a href="docs/single_episode_explorer.html">single-episode explorer</a></td>
     </tr>
     <tr>
       <td><strong>Scale-up</strong></td>
@@ -542,31 +542,31 @@ This project is best read as a staged embodied-AI research study:
         </ul>
       </td>
       <td>
-        <a href="RESEARCH_ROADMAP.md">RESEARCH_ROADMAP.md</a><br>
-        <a href="FOUNDATION_MODEL_PLAN.md">FOUNDATION_MODEL_PLAN.md</a><br>
-        <a href="XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md">XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md</a><br>
-        <a href="docs/data/xperience10m_128_episode_feature_index.json">xperience10m_128_episode_feature_index.json</a><br>
-        <a href="TASK_SUITE_ENHANCEMENT_128.md">TASK_SUITE_ENHANCEMENT_128.md</a><br>
-        <a href="docs/data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a><br>
-        <a href="docs/data/omni_model_comparison.json">omni_model_comparison.json</a><br>
-        <a href="docs/data/omni_finetune_verified_result.json">omni_finetune_verified_result.json</a><br>
-        <a href="docs/data/qwen3_v5_v6_comparison.json">qwen3_v5_v6_comparison.json</a><br>
-        <a href="results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md">QWEN3_V5_V6_COMPARISON_20260614.md</a><br>
-        <a href="results/omni_finetune/OMNI_MODEL_COMPARISON.md">OMNI_MODEL_COMPARISON.md</a><br>
-        <a href="results/omni_finetune/verified_public/">verified_public/</a><br>
-        <a href="results/omni_finetune/task_suite_enhancement_128_v1_20260608/">task_suite_enhancement_128_v1_20260608/</a>
+        <a href="RESEARCH_ROADMAP.md">research roadmap</a><br>
+        <a href="FOUNDATION_MODEL_PLAN.md">foundation-model plan</a><br>
+        <a href="XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md">selected-128 feature index note</a><br>
+        <a href="docs/data/xperience10m_128_episode_feature_index.json">selected-128 feature-index data</a><br>
+        <a href="TASK_SUITE_ENHANCEMENT_128.md">selected-128 enhancement note</a><br>
+        <a href="docs/data/task_suite_enhancement_128.json">selected-128 enhancement data</a><br>
+        <a href="docs/data/omni_model_comparison.json">model comparison data</a><br>
+        <a href="docs/data/omni_finetune_verified_result.json">verified Omni result data</a><br>
+        <a href="docs/data/qwen3_v5_v6_comparison.json">Qwen v5/v6 comparison data</a><br>
+        <a href="results/omni_finetune/QWEN3_V5_V6_COMPARISON_20260614.md">Qwen v5/v6 comparison note</a><br>
+        <a href="results/omni_finetune/OMNI_MODEL_COMPARISON.md">Omni model comparison note</a><br>
+        <a href="results/omni_finetune/verified_public/">verified public package</a><br>
+        <a href="results/omni_finetune/task_suite_enhancement_128_v1_20260608/">selected-128 enhancement run</a>
       </td>
     </tr>
   </tbody>
 </table>
 
-Detailed dataset notes, reproduction checks, and generated JSON reports are
+Detailed dataset notes, reproduction checks, and generated data reports are
 included for readers who want to inspect the implementation, but they are
 supporting materials rather than the main reading path. Use
-[`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md) when you want the full file map.
+[the artifact guide](ARTIFACT_GUIDE.md) when you want the full file map.
 
-Source alignment is tracked in [`SOURCE_ALIGNMENT_AUDIT.md`](SOURCE_ALIGNMENT_AUDIT.md)
-and [`docs/data/source_alignment_audit.json`](docs/data/source_alignment_audit.json).
+Source alignment is tracked in the [source-alignment note](SOURCE_ALIGNMENT_AUDIT.md)
+and [source-alignment data](docs/data/source_alignment_audit.json).
 The official gated `ropedia-ai/xperience-10m` card reports `31.9 TB` on the
 live HF surface and an `about-1PB` full-scale storage statement; the committed
 API-listing snapshot records `12,103 episode folders` as upstream `metadata only`,
@@ -579,8 +579,8 @@ that the data is `limited in diversity` is preserved.
 ## Project Status
 
 If you only have one minute, use
-[`PROJECT_STATUS.md`](PROJECT_STATUS.md) and
-[`docs/data/project_status.json`](docs/data/project_status.json).
+[the project status note](PROJECT_STATUS.md) and
+[project-status data](docs/data/project_status.json).
 They give the current research state in one compact table:
 
 <table>
@@ -616,39 +616,39 @@ If you are reading the project cold, open these in order:
     </tr>
   </thead>
   <tbody>
-    <tr><td><strong>1</strong></td><td>What is this project?</td><td><a href="PROJECT_BRIEF.md">PROJECT_BRIEF.md</a><br><a href="PROJECT_STATUS.md">PROJECT_STATUS.md</a><br><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">Dashboard</a></td><td>A public-sample Xperience-10M research project with 20 tasks, baselines, and a scale-up plan.</td></tr>
+    <tr><td><strong>1</strong></td><td>What is this project?</td><td><a href="PROJECT_BRIEF.md">Project brief</a><br><a href="PROJECT_STATUS.md">Project status</a><br><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">Dashboard</a></td><td>A public-sample Xperience-10M research project with 20 tasks, baselines, and a scale-up plan.</td></tr>
     <tr><td><strong>2</strong></td><td>What data is used?</td><td><a href="XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">Dataset-card alignment</a><br><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">Official HF dataset</a><br><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">Sample HF dataset</a></td><td>The implemented suite uses one public sample episode; the gated dataset is reserved for selected multi-episode training.</td></tr>
-    <tr><td><strong>3</strong></td><td>What does one model input contain?</td><td><a href="results/episode_task_suite/windows.csv">windows.csv</a><br><a href="results/episode_task_suite/feature_manifest.json">feature_manifest.json</a><br><a href="results/episode_task_suite/available_modalities.json">available_modalities.json</a></td><td>Each window is an aligned multimodal unit with video, audio, depth, pose/SLAM, mocap, IMU, calibration, and language-derived signals.</td></tr>
-    <tr><td><strong>4</strong></td><td>What are the 20 tasks?</td><td><a href="TASK_SUITE_20.md">TASK_SUITE_20.md</a><br><a href="docs/data/task_suite_20.json">task_suite_20.json</a><br><a href="results/episode_task_suite/task_walkthroughs/">task walkthroughs</a><br><a href="docs/data/task_walkthroughs.json">task_walkthroughs.json</a></td><td>Every task has a human-readable name, input, output, metric, baseline scores, and an explicit artifact path.</td></tr>
-    <tr><td><strong>5</strong></td><td>How are tasks evaluated?</td><td><a href="EVALUATION_PROTOCOL.md">EVALUATION_PROTOCOL.md</a><br><a href="docs/data/evaluation_protocol.json">evaluation_protocol.json</a></td><td>The window unit, chronological split, leakage controls, task metrics, and current limitations are explicit.</td></tr>
-    <tr><td><strong>6</strong></td><td>What do current results mean?</td><td><a href="RESEARCH_TAKEAWAYS.md">RESEARCH_TAKEAWAYS.md</a><br><a href="docs/data/research_takeaways.json">research_takeaways.json</a><br><a href="docs/data/summary_metrics.json">summary_metrics.json</a></td><td>Current metrics describe sample-level task behavior and identify which signals need larger held-out experiments.</td></tr>
-    <tr><td><strong>7</strong></td><td>Which models are implemented?</td><td><a href="results/episode_task_suite/summary_report.json">summary_report.json</a><br><a href="results/episode_task_suite/neural_mlp/">neural_mlp/</a><br><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">HF baseline repo</a></td><td>Each task has minimal and neural-head evidence over the same feature windows.</td></tr>
-    <tr><td><strong>8</strong></td><td>What research directions does this support?</td><td><a href="RESEARCH_ROADMAP.md">RESEARCH_ROADMAP.md</a><br><a href="docs/data/research_directions.json">research_directions.json</a><br><a href="docs/data/research_direction_extensions.json">research_direction_extensions.json</a><br><a href="docs/data/task_suite_20.json">task_suite_20.json</a></td><td>The unified tasks are mapped to human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling.</td></tr>
-    <tr><td><strong>9</strong></td><td>Which foundation model comes next?</td><td><a href="FOUNDATION_MODEL_PLAN.md">FOUNDATION_MODEL_PLAN.md</a><br><a href="docs/data/foundation_model_plan.json">foundation_model_plan.json</a><br><a href="XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">Native pretraining plan</a></td><td>Qwen3-Omni is the first held-out LoRA baseline; Cosmos 3 has Nano compatibility and Super forward-dynamics LoRA; policy models wait for robot-compatible action targets.</td></tr>
-    <tr><td><strong>10</strong></td><td>How can the 128-episode suite be pushed without more data?</td><td><a href="TASK_SUITE_ENHANCEMENT_128.md">TASK_SUITE_ENHANCEMENT_128.md</a><br><a href="docs/data/task_suite_enhancement_128.json">task_suite_enhancement_128.json</a></td><td>The enhancement pack proposes dense windows, hierarchical action/subtask labels, raw-feature shard priorities, and <code>multiscale_20s10_40s20_80s40</code> as the next export target.</td></tr>
-    <tr><td><strong>11</strong></td><td>How do I reproduce it?</td><td><a href="REPRODUCIBILITY.md">REPRODUCIBILITY.md</a><br><a href="notes/reproducibility_audit.md">reproducibility_audit.md</a></td><td>Public commands and expected outputs are documented for the sample-episode task suite.</td></tr>
-    <tr><td><strong>12</strong></td><td>What is still pending?</td><td><a href="docs/data/omni_finetune_verified_result.json">omni_finetune_verified_result.json</a><br><a href="results/omni_finetune/DATA_ACCESS_STATUS.md">DATA_ACCESS_STATUS.md</a><br><a href="results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">MULTI_EPISODE_ACCESS_STATUS.md</a></td><td>The final held-out diagnostic Qwen pass is verified and JSON-validity target is met; strong action/subtask model quality remains pending.</td></tr>
+    <tr><td><strong>3</strong></td><td>What does one model input contain?</td><td><a href="results/episode_task_suite/windows.csv">window table</a><br><a href="results/episode_task_suite/feature_manifest.json">feature manifest</a><br><a href="results/episode_task_suite/available_modalities.json">available-modality data</a></td><td>Each window is an aligned multimodal unit with video, audio, depth, pose/SLAM, mocap, IMU, calibration, and language-derived signals.</td></tr>
+    <tr><td><strong>4</strong></td><td>What are the 20 tasks?</td><td><a href="TASK_SUITE_20.md">20-task suite note</a><br><a href="docs/data/task_suite_20.json">task contract data</a><br><a href="results/episode_task_suite/task_walkthroughs/">task walkthroughs</a><br><a href="docs/data/task_walkthroughs.json">walkthrough data</a></td><td>Every task has a human-readable name, input, output, metric, baseline scores, and an explicit artifact path.</td></tr>
+    <tr><td><strong>5</strong></td><td>How are tasks evaluated?</td><td><a href="EVALUATION_PROTOCOL.md">evaluation protocol note</a><br><a href="docs/data/evaluation_protocol.json">evaluation-protocol data</a></td><td>The window unit, chronological split, leakage controls, task metrics, and current limitations are explicit.</td></tr>
+    <tr><td><strong>6</strong></td><td>What do current results mean?</td><td><a href="RESEARCH_TAKEAWAYS.md">research takeaways</a><br><a href="docs/data/research_takeaways.json">takeaway data</a><br><a href="docs/data/summary_metrics.json">summary metrics</a></td><td>Current metrics describe sample-level task behavior and identify which signals need larger held-out experiments.</td></tr>
+    <tr><td><strong>7</strong></td><td>Which models are implemented?</td><td><a href="results/episode_task_suite/summary_report.json">summary report</a><br><a href="results/episode_task_suite/neural_mlp/">neural MLP outputs</a><br><a href="https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines">HF baseline repo</a></td><td>Each task has minimal and neural-head evidence over the same feature windows.</td></tr>
+    <tr><td><strong>8</strong></td><td>What research directions does this support?</td><td><a href="RESEARCH_ROADMAP.md">research roadmap</a><br><a href="docs/data/research_directions.json">direction data</a><br><a href="docs/data/research_direction_extensions.json">extension-probe data</a><br><a href="docs/data/task_suite_20.json">task contract data</a></td><td>The unified tasks are mapped to human modeling, 3D/4D reconstruction, egocentric interaction, and world modeling.</td></tr>
+    <tr><td><strong>9</strong></td><td>Which foundation model comes next?</td><td><a href="FOUNDATION_MODEL_PLAN.md">foundation-model plan</a><br><a href="docs/data/foundation_model_plan.json">foundation-model data</a><br><a href="XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">Native pretraining plan</a></td><td>Qwen3-Omni is the first held-out LoRA baseline; Cosmos 3 has Nano compatibility and Super forward-dynamics LoRA; policy models wait for robot-compatible action targets.</td></tr>
+    <tr><td><strong>10</strong></td><td>How can the 128-episode suite be pushed without more data?</td><td><a href="TASK_SUITE_ENHANCEMENT_128.md">selected-128 enhancement note</a><br><a href="docs/data/task_suite_enhancement_128.json">selected-128 enhancement data</a></td><td>The enhancement pack proposes dense windows, hierarchical action/subtask labels, raw-feature shard priorities, and <code>multiscale_20s10_40s20_80s40</code> as the next export target.</td></tr>
+    <tr><td><strong>11</strong></td><td>How do I reproduce it?</td><td><a href="REPRODUCIBILITY.md">reproducibility guide</a><br><a href="notes/reproducibility_audit.md">reproduction audit</a></td><td>Public commands and expected outputs are documented for the sample-episode task suite.</td></tr>
+    <tr><td><strong>12</strong></td><td>What is still pending?</td><td><a href="docs/data/omni_finetune_verified_result.json">verified Omni result data</a><br><a href="results/omni_finetune/DATA_ACCESS_STATUS.md">data access status</a><br><a href="results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">multi-episode access status</a></td><td>The final held-out diagnostic Qwen pass is verified and JSON-validity target is met; strong action/subtask model quality remains pending.</td></tr>
   </tbody>
 </table>
 
 A compact reader-path summary is available at
-[`docs/data/project_packet.json`](docs/data/project_packet.json).
+[project-packet data](docs/data/project_packet.json).
 
 ## Supporting Files
 
-[`ARTIFACT_GUIDE.md`](ARTIFACT_GUIDE.md) is the human-readable map for readers
+[The artifact guide](ARTIFACT_GUIDE.md) is the human-readable map for readers
 who want to inspect the project files after the first pass. It groups the main
 briefs, task outputs, baseline results, visual assets, data notes, and
 scale-up documents.
 
-[`docs/data/artifact_index.json`](docs/data/artifact_index.json) is the compact
+[The artifact index](docs/data/artifact_index.json) is the compact
 machine-readable companion used by the website and Hugging Face artifact
 dataset.
 
 ## Evaluation Protocol
 
-[`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md) and
-[`docs/data/evaluation_protocol.json`](docs/data/evaluation_protocol.json) are
+[The evaluation protocol](EVALUATION_PROTOCOL.md) and
+[evaluation-protocol data](docs/data/evaluation_protocol.json) are
 generated from committed metric artifacts. They define:
 
 - the 20-frame window unit, stride, feature dimension, and raw-data policy,
@@ -685,8 +685,8 @@ The current verified public-sample subset is:
   pose/SLAM, mocap, IMU, calibration, and language-derived signals.
 
 Detailed dataset notes are available in
-[`XPERIENCE10M_DATASET_CARD_ALIGNMENT.md`](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md)
-and [`docs/data/xperience10m_dataset_card_alignment.json`](docs/data/xperience10m_dataset_card_alignment.json)
+[the dataset-card alignment note](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md)
+and [dataset-alignment data](docs/data/xperience10m_dataset_card_alignment.json)
 for readers who need the full upstream-card and access-term context. The
 practical reading rule is simple: Line 1 is the task lab, Line 2 is the
 selected-128 comparison surface, and compact-proxy cells stay explicitly marked
@@ -711,20 +711,20 @@ Hugging Face Space app:
     </tr>
   </thead>
   <tbody>
-    <tr><td><strong>Project status</strong></td><td><a href="PROJECT_STATUS.md">PROJECT_STATUS.md</a><br><a href="docs/data/project_status.json">project_status.json</a></td><td>Gives a one-table current project summary before reading the full artifact trail.</td></tr>
-    <tr><td><strong>Data contract</strong></td><td><a href="results/episode_task_suite/windows.csv">windows.csv</a><br><a href="results/episode_task_suite/feature_manifest.json">feature_manifest.json</a><br>modality manifests</td><td>Confirms what each sample window contains before modeling.</td></tr>
-    <tr><td><strong>Dataset context</strong></td><td><a href="XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">XPERIENCE10M_DATASET_CARD_ALIGNMENT.md</a><br>official dataset links</td><td>Explains the official dataset, public sample, modalities, access boundary, and what this repo uses.</td></tr>
-    <tr><td><strong>Visual assets</strong></td><td><a href="FIGURE_INDEX.md">FIGURE_INDEX.md</a><br><a href="docs/assets/">docs/assets/</a></td><td>Shows the task-suite graphic, modality thumbnails, pipeline diagrams, charts, and logo assets.</td></tr>
-    <tr><td><strong>Evaluation protocol</strong></td><td><a href="EVALUATION_PROTOCOL.md">EVALUATION_PROTOCOL.md</a><br><a href="docs/data/evaluation_protocol.json">evaluation_protocol.json</a></td><td>Defines the task unit, split, metrics, leakage controls, and current limitations.</td></tr>
-    <tr><td><strong>Research roadmap</strong></td><td><a href="RESEARCH_ROADMAP.md">RESEARCH_ROADMAP.md</a><br><a href="docs/data/research_roadmap.json">research_roadmap.json</a></td><td>Shows the path from sample-level task development to multi-episode work, larger model tracks, and the future native-pretraining goal.</td></tr>
-    <tr><td><strong>Additional development directions</strong></td><td><a href="ADDITIONAL_DEVELOPMENT_DIRECTIONS.md">ADDITIONAL_DEVELOPMENT_DIRECTIONS.md</a><br><a href="docs/data/additional_development_directions.json">additional_development_directions.json</a></td><td>Records concrete non-backbone tracks: taxonomy, benchmark protocol, representation learning, skill graphs, affordances, 3D/4D memory, QA, and policy transfer.</td></tr>
-    <tr><td><strong>Xperience Embodied Foundation Model plan</strong></td><td><a href="XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md</a></td><td>Describes the long-term full-corpus pretraining goal, target modules, objectives, staged scale-up, hardware ranges, and evaluation protocol.</td></tr>
+    <tr><td><strong>Project status</strong></td><td><a href="PROJECT_STATUS.md">project status</a><br><a href="docs/data/project_status.json">project-status data</a></td><td>Gives a one-table current project summary before reading the full artifact trail.</td></tr>
+    <tr><td><strong>Data contract</strong></td><td><a href="results/episode_task_suite/windows.csv">window table</a><br><a href="results/episode_task_suite/feature_manifest.json">feature manifest</a><br>modality manifests</td><td>Confirms what each sample window contains before modeling.</td></tr>
+    <tr><td><strong>Dataset context</strong></td><td><a href="XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">dataset-card alignment</a><br>official dataset links</td><td>Explains the official dataset, public sample, modalities, access boundary, and what this repo uses.</td></tr>
+    <tr><td><strong>Visual assets</strong></td><td><a href="FIGURE_INDEX.md">figure index</a><br><a href="docs/assets/">site assets</a></td><td>Shows the task-suite graphic, modality thumbnails, pipeline diagrams, charts, and logo assets.</td></tr>
+    <tr><td><strong>Evaluation protocol</strong></td><td><a href="EVALUATION_PROTOCOL.md">evaluation protocol note</a><br><a href="docs/data/evaluation_protocol.json">evaluation-protocol data</a></td><td>Defines the task unit, split, metrics, leakage controls, and current limitations.</td></tr>
+    <tr><td><strong>Research roadmap</strong></td><td><a href="RESEARCH_ROADMAP.md">research roadmap</a><br><a href="docs/data/research_roadmap.json">roadmap data</a></td><td>Shows the path from sample-level task development to multi-episode work, larger model tracks, and the future native-pretraining goal.</td></tr>
+    <tr><td><strong>Additional development directions</strong></td><td><a href="ADDITIONAL_DEVELOPMENT_DIRECTIONS.md">additional development directions</a><br><a href="docs/data/additional_development_directions.json">direction data</a></td><td>Records concrete non-backbone tracks: taxonomy, benchmark protocol, representation learning, skill graphs, affordances, 3D/4D memory, QA, and policy transfer.</td></tr>
+    <tr><td><strong>Xperience Embodied Foundation Model plan</strong></td><td><a href="XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">native pretraining plan</a></td><td>Describes the long-term full-corpus pretraining goal, target modules, objectives, staged scale-up, hardware ranges, and evaluation protocol.</td></tr>
     <tr><td><strong>Minimal heads</strong></td><td>softmax<br>ridge projection/regression<br>multi-label logistic heads</td><td>Keeps every input/output contract visible and inspectable.</td></tr>
     <tr><td><strong>Neural heads</strong></td><td>PyTorch MLP classifiers/regressors under <a href="results/episode_task_suite/neural_mlp/">neural_mlp/</a></td><td>Checks whether nonlinear heads improve each task without changing features.</td></tr>
     <tr><td><strong>Evidence</strong></td><td>metrics<br>predictions<br>confusion matrices<br>diagrams<br>dashboard</td><td>Makes the single-episode task development inspectable without rerunning first.</td></tr>
-    <tr><td><strong>Artifact guide</strong></td><td><a href="ARTIFACT_GUIDE.md">ARTIFACT_GUIDE.md</a></td><td>Groups the public evidence into reader-facing views after the first-pass overview.</td></tr>
-    <tr><td><strong>Reproducibility contract</strong></td><td><a href="REPRODUCIBILITY.md">REPRODUCIBILITY.md</a><br><a href="docs/data/reproducibility_matrix.json">reproducibility_matrix.json</a></td><td>States public commands, expected outputs, exact-match reproduction evidence, and non-reproducible boundaries.</td></tr>
-    <tr><td><strong>Citation metadata</strong></td><td><a href="CITATION.cff">CITATION.cff</a><br><a href="codemeta.json">codemeta.json</a><br><a href="LICENSE">LICENSE</a></td><td>Makes the repo easier to cite, index, and reuse without confusing code license and dataset terms.</td></tr>
+    <tr><td><strong>Artifact guide</strong></td><td><a href="ARTIFACT_GUIDE.md">artifact guide</a></td><td>Groups the public evidence into reader-facing views after the first-pass overview.</td></tr>
+    <tr><td><strong>Reproducibility contract</strong></td><td><a href="REPRODUCIBILITY.md">reproducibility guide</a><br><a href="docs/data/reproducibility_matrix.json">reproducibility matrix</a></td><td>States public commands, expected outputs, exact-match reproduction evidence, and non-reproducible boundaries.</td></tr>
+    <tr><td><strong>Citation metadata</strong></td><td><a href="CITATION.cff">citation metadata</a><br><a href="codemeta.json">software metadata</a><br><a href="LICENSE">license</a></td><td>Makes the repo easier to cite, index, and reuse without confusing code license and dataset terms.</td></tr>
   </tbody>
 </table>
 

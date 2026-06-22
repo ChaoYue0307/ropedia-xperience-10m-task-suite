@@ -1,7 +1,7 @@
 {
   "title": "Ropedia Xperience-10M Public Project Surface",
   "status": "pass",
-  "generated_at_utc": "2026-06-22T11:43:00+00:00",
+  "generated_at_utc": "2026-06-22T12:38:31+00:00",
   "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",
   "checks": [
     {
@@ -18,7 +18,7 @@
         "website_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-22T11:42:36+00:00"
+          "generated_at_utc": "2026-06-22T12:38:09+00:00"
         },
         "rendered_site_check": {
           "exists": true,
@@ -28,12 +28,12 @@
         "task_surface_integrity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-22T11:42:36+00:00"
+          "generated_at_utc": "2026-06-22T12:38:08+00:00"
         },
         "source_alignment": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-22T11:26:46+00:00"
+          "generated_at_utc": "2026-06-22T11:43:30+00:00"
         },
         "scale_up_status": {
           "exists": true,
@@ -43,12 +43,12 @@
         "publication_package": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-22T11:27:50+00:00"
+          "generated_at_utc": "2026-06-22T11:43:47+00:00"
         },
         "mirror_parity": {
           "exists": true,
           "status": "pass",
-          "generated_at_utc": "2026-06-22T11:27:46+00:00"
+          "generated_at_utc": "2026-06-22T11:44:57+00:00"
         }
       },
       "failures": {}
@@ -97,7 +97,7 @@
       "marker_counts": {
         "Ropedia Xperience-10M Task Suite": 22,
         "Xperience-10M": 174,
-        "20-task": 110,
+        "20-task": 113,
         "Qwen3-Omni": 240,
         "128-episode pilot": 1
       }
@@ -121,15 +121,15 @@
       "status": "pass",
       "reason": "Readers should be able to find website reference, release package, mirror, and public presentation files from public copy.",
       "marker_counts": {
-        "data/project_brief.json": 8,
-        "data/public_reader_map.json": 17,
-        "data/website_integrity.json": 7,
-        "data/rendered_site_check.json": 6,
-        "data/task_surface_integrity.json": 16,
-        "data/publication_audit.json": 10,
-        "data/mirror_parity.json": 10,
-        "data/public_surface_qa.json": 8,
-        "data/research_roadmap.json": 15,
+        "data/project_brief.json": 7,
+        "data/public_reader_map.json": 16,
+        "data/website_integrity.json": 6,
+        "data/rendered_site_check.json": 5,
+        "data/task_surface_integrity.json": 15,
+        "data/publication_audit.json": 9,
+        "data/mirror_parity.json": 9,
+        "data/public_surface_qa.json": 7,
+        "data/research_roadmap.json": 14,
         "data/task_suite_enhancement_128.json": 22,
         "data/task_suite_20.json": 37,
         "data/two_evidence_lines.json": 5,
@@ -152,9 +152,9 @@
       "status": "pass",
       "reason": "The public surfaces should expose the shared reader map in both Markdown and JSON form.",
       "marker_counts": {
-        "PUBLIC_READER_MAP.md": 19,
-        "docs/data/public_reader_map.json": 14,
-        "data/public_reader_map.json": 17
+        "PUBLIC_READER_MAP.md": 17,
+        "docs/data/public_reader_map.json": 13,
+        "data/public_reader_map.json": 16
       }
     },
     {
@@ -162,9 +162,9 @@
       "status": "pass",
       "reason": "The public surfaces should expose terminology definitions in Markdown, JSON, and the homepage.",
       "marker_counts": {
-        "GLOSSARY.md": 18,
-        "docs/data/glossary.json": 12,
-        "data/glossary.json": 16
+        "GLOSSARY.md": 16,
+        "docs/data/glossary.json": 11,
+        "data/glossary.json": 15
       }
     },
     {
