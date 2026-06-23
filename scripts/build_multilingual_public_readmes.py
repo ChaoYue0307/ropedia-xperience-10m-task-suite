@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-UPDATED = "2026-06-21"
+UPDATED = "2026-06-23"
 LANGUAGES = [
     ("en", "English", "README.md"),
     ("zh", "中文", "README.zh.md"),
@@ -77,6 +77,7 @@ ENGLISH_TOP = f"""{hero(
 
 - [How To Read This Project](#how-to-read-this-project)
 - [At A Glance](#at-a-glance)
+- [Data Explorer Analysis](#data-explorer-analysis)
 - [Two Evidence Lines](#two-evidence-lines)
 - [Fast Reader Map](#fast-reader-map)
 - [Why This Project Exists](#why-this-project-exists)
@@ -113,6 +114,10 @@ The multilingual README files are reader guides. The canonical technical evidenc
     <tr>
       <td><strong>Two-line contract</strong></td>
       <td><strong>Line 1: 1 sample episode</strong> for task construction and reproducibility. <strong>Line 2: 128 selected episodes</strong> for same-split metadata/raw baselines, Qwen3-Omni v6, and Cosmos3 diagnostics.</td>
+    </tr>
+    <tr>
+      <td><strong>Data explorer analysis</strong></td>
+      <td>A generated analysis layer separates the public sample, selected-128 feature exports, and authenticated full-dataset Hugging Face metadata with scope stats, split counts, modality breakdowns, and chart assets.</td>
     </tr>
     <tr>
       <td><strong>180 method-task records</strong></td>
@@ -165,6 +170,18 @@ Reader rule: if it has a metric, it is a **task**; if it explains what the evide
 | Research directions | 4 | Ways to interpret what the 20 tasks study; not separate benchmark tiers. | Human Modeling & Motion Understanding; 3D/4D Reconstruction & Neural Rendering; Egocentric Vision & Interaction; Scene Reconstruction & World Modeling. |
 | Foundation pipelines | 3 | Larger-model training tracks with separate input-output recipes and result gates. | Spatial intelligence models; Human-video world models; Vision-language-action models. |
 | Unified embodied model target | 1 | Long-term integration target, not a task/method row in the 180-result matrix. | Perception; 3D memory; language-grounded reasoning; action; planning. |
+
+## Data Explorer Analysis
+
+The data explorer is now a three-scope analysis layer, not only a raw-file browser. It compares the public sample episode, selected 128-episode feature exports, and the full gated upstream dataset metadata without mixing their evidence boundaries.
+
+| Scope | Reader question | Current public analysis |
+| --- | --- | --- |
+| Public sample | What files and signals are directly inspectable? | 1 episode, 5,821 frames, 1,161 aligned 20-frame windows, 8,546 feature dimensions, raw-file browser, modality breakdowns, action-window distribution. |
+| Selected 128 | What selected-episode surface supports model comparison? | 96/16/16 split, 34,269 Qwen3-Omni v6 multiscale rows, 106,095 dense compact rows, selected episode links, public-safe matrices. |
+| Full HF dataset | How large is the official upstream dataset? | Authenticated Hub file metadata: 804 sessions, 12,103 episode-like folders, 85,257 files, 24.63 TiB training-byte view, without redistributing raw gated data. |
+
+Entry points: [website analysis section](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis), [analysis report](DATA_EXPLORER_ANALYSIS.md), and [structured analysis record](docs/data/data_explorer_analysis.json).
 
 ## Two Evidence Lines
 
@@ -361,6 +378,11 @@ Result entry points:
       <td><a href="docs/data/task_suite_20.json">task contract data</a><br><a href="results/episode_task_suite/task_walkthroughs/">task walkthroughs</a></td>
     </tr>
     <tr>
+      <td><strong>Explore data scales</strong></td>
+      <td><a href="DATA_EXPLORER_ANALYSIS.md">Data explorer analysis</a></td>
+      <td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis">website analysis section</a><br><a href="docs/data/data_explorer_analysis.json">structured analysis record</a></td>
+    </tr>
+    <tr>
       <td><strong>Compare results</strong></td>
       <td><a href="RESEARCH_TAKEAWAYS.md">Research takeaways</a></td>
       <td><a href="docs/data/two_evidence_line_result_summary.json">two-line result summary</a><br><a href="docs/data/task_method_20_result_matrix.json">180-record result table</a><br><a href="docs/data/unified_task_model_radar.json">radar data</a><br><a href="docs/data/task_method_20_gap_audit.json">score/proxy audit</a></td>
@@ -419,6 +441,7 @@ LANGUAGE_GUIDES = {
 | 查看 20 个任务定义 | [20 任务指南](TASK_SUITE_20.md), [任务契约数据](docs/data/task_suite_20.json) |
 | 比较结果 | [研究结论](RESEARCH_TAKEAWAYS.md), [180 条结果表](docs/data/task_method_20_result_matrix.json) |
 | 查看一个 sample 的全部文件关系 | [单 episode 浏览器](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample 文件地图](docs/data/raw_sample_files.json) |
+| 对比 sample / 128 / 全量数据规模 | [数据探索分析](DATA_EXPLORER_ANALYSIS.md), [网页分析区](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
 | 阅读三个基础模型方向 | [三条基础模型 pipeline](THREE_FOUNDATION_PIPELINES.md), [pipeline 契约数据](docs/data/three_foundation_pipelines.json) |
 | 复现与审计 | [复现指南](REPRODUCIBILITY.md), [证据契约](EVIDENCE_CONTRACT.md) |
 
@@ -426,6 +449,7 @@ LANGUAGE_GUIDES = {
 
 - 识别规则：有 metric 的是 20 个任务层；解释这些 evidence 研究什么的是 4 个 research directions；描述模型 input/output 和训练目标的是 3 条 foundation pipelines；把感知、3D 记忆、语言推理、action 和 planning 合并起来的是 unified embodied model target，不是新的评分轴。
 - 数据层：公开 sample episode 被切成 20-frame 窗口，并连接视频、音频、深度、pose/SLAM、mocap、IMU、calibration 和语言标注。
+- 数据探索：新增分析层把 1 sample、selected 128 feature exports 和官方 gated full-dataset metadata 分开呈现，避免把 raw inspection、derived features 和 full-corpus metadata 混在一起。
 - 任务层：20 个统一任务覆盖识别、预测、检索、重建、同步、长时预测、action-object 关系和 sensor bridge。
 - 结果层：单 episode minimal/NN 覆盖 20/20；128-episode metadata/raw、Qwen3-Omni v6 LoRA、Cosmos3-Super Reasoner、Cosmos3-Nano Future Window 分开标注；当前公开矩阵为 180/180 scored records，其中 174 direct、6 compact proxy，proxy target 显式保留。
 - 训练方向：spatial intelligence、human-video world model、vision-language-action 三条 pipeline 已经有任务映射和需要的证据清单；长期目标是一个 unified embodied foundation model。
@@ -468,6 +492,7 @@ Entradas: [guia de dos lineas de evidencia](TWO_EVIDENCE_LINES.md), [datos de do
 | Ver las 20 tareas | [guia de 20 tareas](TASK_SUITE_20.md), [datos de contratos de tarea](docs/data/task_suite_20.json) |
 | Comparar resultados | [conclusiones de investigacion](RESEARCH_TAKEAWAYS.md), [tabla de 180 resultados](docs/data/task_method_20_result_matrix.json) |
 | Inspeccionar una muestra | [explorador de un episodio](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [mapa de archivos de muestra](docs/data/raw_sample_files.json) |
+| Comparar sample / 128 / dataset completo | [analisis del data explorer](DATA_EXPLORER_ANALYSIS.md), [seccion web de analisis](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
 | Leer las tres direcciones foundation | [tres pipelines foundation](THREE_FOUNDATION_PIPELINES.md), [datos de contratos de pipeline](docs/data/three_foundation_pipelines.json) |
 | Reproducir o auditar | [guia de reproducibilidad](REPRODUCIBILITY.md), [contrato de evidencia](EVIDENCE_CONTRACT.md) |
 
@@ -475,6 +500,7 @@ Entradas: [guia de dos lineas de evidencia](TWO_EVIDENCE_LINES.md), [datos de do
 
 - Regla de lectura: si tiene una métrica, es una tarea de las 20; si explica qué estudia la evidencia, es una de las 4 research directions; si define inputs/outputs de entrenamiento, es una de las 3 foundation pipelines; si combina percepción, memoria 3D, lenguaje, acción y planificación, es el unified embodied model target, no otro eje de score.
 - Datos: ventanas de 20 frames con video, audio, profundidad, pose/SLAM, mocap, IMU, calibración y lenguaje.
+- Exploracion de datos: la nueva capa separa el sample publico, los exports selected-128 y la metadata del dataset gated completo.
 - Tareas: 20 contratos para reconocimiento, predicción, recuperación, reconstrucción, sincronización, horizonte largo, relación acción-objeto y puentes de sensores.
 - Resultados: minimal/NN de un episodio cubren 20/20; las ramas de 128 episodios separan metadata, raw features, Qwen3 y Cosmos; la matriz pública está en 180/180 registros con score: 174 direct y 6 compact proxy, con proxy targets visibles.
 - Direcciones: spatial intelligence, human-video world model y vision-language-action tienen mapeo de tareas y requisitos de evidencia; el objetivo largo plazo es un unified embodied foundation model.
@@ -517,6 +543,7 @@ Entrées : [guide des deux lignes de preuve](TWO_EVIDENCE_LINES.md), [données d
 | Lire les 20 tâches | [guide des 20 tâches](TASK_SUITE_20.md), [données des contrats de tâche](docs/data/task_suite_20.json) |
 | Comparer les résultats | [conclusions de recherche](RESEARCH_TAKEAWAYS.md), [table des 180 résultats](docs/data/task_method_20_result_matrix.json) |
 | Inspecter un sample | [explorateur d'un épisode](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [carte des fichiers sample](docs/data/raw_sample_files.json) |
+| Comparer sample / 128 / dataset complet | [analyse data explorer](DATA_EXPLORER_ANALYSIS.md), [section web d'analyse](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
 | Lire les trois pipelines foundation | [trois pipelines foundation](THREE_FOUNDATION_PIPELINES.md), [données des contrats de pipeline](docs/data/three_foundation_pipelines.json) |
 | Reproduire et auditer | [guide de reproductibilité](REPRODUCIBILITY.md), [contrat de preuve](EVIDENCE_CONTRACT.md) |
 
@@ -524,6 +551,7 @@ Entrées : [guide des deux lignes de preuve](TWO_EVIDENCE_LINES.md), [données d
 
 - Règle de lecture : avec une métrique, c'est l'une des 20 tâches; si cela explique ce que les preuves étudient, c'est l'une des 4 research directions; si cela définit des inputs/outputs d'entraînement, c'est l'une des 3 foundation pipelines; si cela combine perception, mémoire 3D, langage, action et planification, c'est la cible unified embodied model, pas un nouvel axe de score.
 - Données : fenêtres de 20 frames reliant vidéo, audio, profondeur, pose/SLAM, mocap, IMU, calibration et annotations de langage.
+- Exploration des donnees : la nouvelle couche separe le sample public, les exports selected-128 et les metadonnees du dataset gated complet.
 - Tâches : 20 contrats couvrant reconnaissance, prévision, retrieval, reconstruction, ordre, synchronisation, horizon long, relations action-objet et sensor bridge.
 - Résultats : minimal/NN sur l'épisode public couvrent 20/20; la ligne 128 épisodes sépare metadata, raw features, Qwen3-Omni et Cosmos3; la matrice publique atteint 180/180 enregistrements scorés: 174 direct et 6 compact proxy, avec proxy targets visibles.
 - Directions : spatial intelligence, human-video world model et vision-language-action sont documentés avec tâches et preuves nécessaires; l'objectif à long terme est un unified embodied foundation model.
@@ -566,6 +594,7 @@ Einstieg: [Leitfaden zu zwei Evidenzlinien](TWO_EVIDENCE_LINES.md), [Daten der z
 | 20 Aufgaben prüfen | [20-Aufgaben-Leitfaden](TASK_SUITE_20.md), [Aufgabenvertragsdaten](docs/data/task_suite_20.json) |
 | Ergebnisse vergleichen | [Forschungsergebnisse](RESEARCH_TAKEAWAYS.md), [Tabelle mit 180 Ergebnissen](docs/data/task_method_20_result_matrix.json) |
 | Ein Sample untersuchen | [Ein-Episode-Explorer](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [Sample-Dateikarte](docs/data/raw_sample_files.json) |
+| Sample / 128 / Gesamtdatensatz vergleichen | [Data-Explorer-Analyse](DATA_EXPLORER_ANALYSIS.md), [Web-Analysebereich](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
 | Drei Foundation-Pipelines lesen | [drei Foundation-Pipelines](THREE_FOUNDATION_PIPELINES.md), [Pipeline-Vertragsdaten](docs/data/three_foundation_pipelines.json) |
 | Reproduzieren oder auditieren | [Reproduzierbarkeitsleitfaden](REPRODUCIBILITY.md), [Evidenzvertrag](EVIDENCE_CONTRACT.md) |
 
@@ -573,6 +602,7 @@ Einstieg: [Leitfaden zu zwei Evidenzlinien](TWO_EVIDENCE_LINES.md), [Daten der z
 
 - Leseregel: Hat es eine Metrik, gehört es zu den 20 Aufgaben; erklärt es, was die Evidenz untersucht, gehört es zu den 4 research directions; beschreibt es Trainings-Inputs und Targets, gehört es zu den 3 foundation pipelines; verbindet es Wahrnehmung, 3D-Gedächtnis, Sprache, Aktion und Planung, ist es das unified embodied model target, keine zusätzliche Score-Achse.
 - Daten: 20-Frame-Fenster über Video, Audio, Tiefe, Pose/SLAM, Mocap, IMU, Kalibrierung und Sprachannotation.
+- Datenexploration: Die neue Analyse trennt Public Sample, Selected-128-Exports und Full-Dataset-Metadaten des gated Upstreams.
 - Aufgaben: 20 Verträge für Erkennung, Vorhersage, Retrieval, Rekonstruktion, Ordnung, Synchronisierung, Langhorizont-Prognose, Aktion-Objekt-Bindung und Sensor-Brücken.
 - Ergebnisse: Single-Episode minimal/NN decken 20/20 ab; 128-Episode-Zweige trennen Metadata, Raw Features, Qwen3 und Cosmos; die öffentliche Matrix steht bei 180/180 gescorten Einträgen: 174 direct und 6 compact proxy, mit sichtbaren Proxy-Targets.
 - Richtungen: spatial intelligence, human-video world model und vision-language-action sind mit Aufgaben und Evidenzanforderungen dokumentiert; das langfristige Ziel ist ein unified embodied foundation model.
@@ -615,6 +645,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 | 20 タスクを見る | [20 タスクガイド](TASK_SUITE_20.md), [タスク契約データ](docs/data/task_suite_20.json) |
 | 結果を比較 | [研究結果まとめ](RESEARCH_TAKEAWAYS.md), [180 件の結果表](docs/data/task_method_20_result_matrix.json) |
 | 1 サンプルを調べる | [1 episode ブラウザ](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample ファイルマップ](docs/data/raw_sample_files.json) |
+| sample / 128 / full dataset を比較 | [data explorer analysis](DATA_EXPLORER_ANALYSIS.md), [web analysis section](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
 | 3 つの foundation pipeline を読む | [3 つの foundation pipeline](THREE_FOUNDATION_PIPELINES.md), [pipeline 契約データ](docs/data/three_foundation_pipelines.json) |
 | 再現・監査 | [再現ガイド](REPRODUCIBILITY.md), [証拠契約](EVIDENCE_CONTRACT.md) |
 
@@ -622,6 +653,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 
 - 読み方のルール: metric があるものは 20 tasks、evidence が何を調べるかを説明するものは 4 research directions、training input/output を定義するものは 3 foundation pipelines です。perception、3D memory、language reasoning、action、planning を統合するものは unified embodied model target であり、新しい score axis ではありません。
 - データ: 20-frame window が video、audio、depth、pose/SLAM、mocap、IMU、calibration、language annotation を結びます。
+- データ探索: 新しい analysis layer は public sample、selected-128 exports、gated full dataset metadata を分けて提示します。
 - タスク: 認識、予測、retrieval、reconstruction、order、sync、long-horizon、action-object、sensor bridge など 20 契約。
 - 結果: single-episode minimal/NN は 20/20。128-episode 側は metadata、raw feature、Qwen3、Cosmos を証拠タイプ別に分けます。公開 matrix は 180/180 scored records で、174 direct と 6 compact proxy を分離し、proxy targets は明示します。
 - 方向: spatial intelligence、human-video world model、vision-language-action に対して、タスク対応と必要証拠を記録しています。長期目標は unified embodied foundation model です。
@@ -664,6 +696,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 | 20개 과제 확인 | [20개 과제 가이드](TASK_SUITE_20.md), [과제 계약 데이터](docs/data/task_suite_20.json) |
 | 결과 비교 | [연구 결과 요약](RESEARCH_TAKEAWAYS.md), [180개 결과 표](docs/data/task_method_20_result_matrix.json) |
 | 샘플 하나 검사 | [단일 episode 브라우저](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample 파일 지도](docs/data/raw_sample_files.json) |
+| sample / 128 / full dataset 비교 | [data explorer analysis](DATA_EXPLORER_ANALYSIS.md), [web analysis section](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
 | 세 foundation pipeline 읽기 | [세 foundation pipeline](THREE_FOUNDATION_PIPELINES.md), [pipeline 계약 데이터](docs/data/three_foundation_pipelines.json) |
 | 재현 및 감사 | [재현 가이드](REPRODUCIBILITY.md), [증거 계약](EVIDENCE_CONTRACT.md) |
 
@@ -671,6 +704,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 
 - 읽기 규칙: metric이 있으면 20개 task layer이고, evidence가 무엇을 연구하는지 설명하면 4개 research direction layer이며, model input/output과 training target을 설명하면 3개 foundation pipeline layer입니다. perception, 3D memory, language reasoning, action, planning을 합치는 것은 unified embodied model target이며 새 score axis가 아닙니다.
 - 데이터: 20-frame window가 video, audio, depth, pose/SLAM, mocap, IMU, calibration, language annotation을 연결합니다.
+- 데이터 탐색: 새 분석 레이어는 public sample, selected-128 exports, gated full dataset metadata를 분리해 보여줍니다.
 - 과제: 인식, 예측, retrieval, reconstruction, order, sync, long-horizon, action-object binding, sensor bridge 등 20개 계약.
 - 결과: single-episode minimal/NN은 20/20; 128-episode 레이어는 metadata, raw feature, Qwen3, Cosmos를 증거 유형별로 분리합니다. 공개 matrix는 180/180 scored records이며 174 direct와 6 compact proxy를 분리하고 proxy targets를 명시합니다.
 - 방향: spatial intelligence, human-video world model, vision-language-action에 대해 과제 매핑과 필요한 증거를 기록합니다. 장기 목표는 unified embodied foundation model입니다.
@@ -713,6 +747,7 @@ Entradas: [guia de duas linhas de evidencia](TWO_EVIDENCE_LINES.md), [dados das 
 | Ver as 20 tarefas | [guia das 20 tarefas](TASK_SUITE_20.md), [dados dos contratos de tarefa](docs/data/task_suite_20.json) |
 | Comparar resultados | [conclusões de pesquisa](RESEARCH_TAKEAWAYS.md), [tabela de 180 resultados](docs/data/task_method_20_result_matrix.json) |
 | Inspecionar uma amostra | [explorador de um episódio](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [mapa dos arquivos de amostra](docs/data/raw_sample_files.json) |
+| Comparar sample / 128 / dataset completo | [analise do data explorer](DATA_EXPLORER_ANALYSIS.md), [secao web de analise](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
 | Ler as três pipelines foundation | [três pipelines foundation](THREE_FOUNDATION_PIPELINES.md), [dados dos contratos de pipeline](docs/data/three_foundation_pipelines.json) |
 | Reproduzir ou auditar | [guia de reprodutibilidade](REPRODUCIBILITY.md), [contrato de evidencia](EVIDENCE_CONTRACT.md) |
 
@@ -720,6 +755,7 @@ Entradas: [guia de duas linhas de evidencia](TWO_EVIDENCE_LINES.md), [dados das 
 
 - Regra de leitura: se tem uma métrica, pertence às 20 tarefas; se explica o que a evidência estuda, pertence às 4 research directions; se define inputs/outputs de treino, pertence às 3 foundation pipelines; se combina percepção, memória 3D, linguagem, ação e planejamento, pertence ao unified embodied model target, não a um novo eixo de score.
 - Dados: janelas de 20 frames ligam vídeo, áudio, profundidade, pose/SLAM, mocap, IMU, calibração e anotações de linguagem.
+- Exploracao de dados: a nova camada separa o sample publico, os exports selected-128 e a metadata do dataset gated completo.
 - Tarefas: 20 contratos cobrem reconhecimento, previsão, retrieval, reconstrução, ordem, sincronização, horizonte longo, relação ação-objeto e pontes de sensores.
 - Resultados: minimal/NN de um episódio cobrem 20/20; a camada de 128 episódios separa metadata, raw features, Qwen3 e Cosmos; a matriz pública está em 180/180 registros com score: 174 direct e 6 compact proxy, com proxy targets visíveis.
 - Direções: spatial intelligence, human-video world model e vision-language-action têm mapeamento de tarefas e requisitos de evidência; o objetivo de longo prazo é um unified embodied foundation model.

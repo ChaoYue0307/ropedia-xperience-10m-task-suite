@@ -822,11 +822,12 @@
     #roadmap { order: 2; }
     #reading-path { order: 3; }
     #dataset-card { order: 4; }
-    #raw-sample { order: 5; }
-    #suite { order: 6; }
-    #pipeline { order: 7; }
-    #protocol { order: 8; }
-    #takeaways { order: 9; }
+    #data-analysis { order: 5; }
+    #raw-sample { order: 6; }
+    #suite { order: 7; }
+    #pipeline { order: 8; }
+    #protocol { order: 9; }
+    #takeaways { order: 10; }
     #directions { order: 12; }
     #architectures { order: 14; }
     #walkthroughs { order: 15; }
@@ -4220,6 +4221,158 @@
       gap: 22px;
       align-items: start;
     }
+    .data-analysis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 22px 0;
+    }
+    .data-analysis-card {
+      border: 1px solid rgba(204, 255, 160, 0.20);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.06), rgba(7, 18, 7, 0.66)),
+        rgba(2, 5, 2, 0.78);
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      min-height: 280px;
+    }
+    .data-analysis-card small,
+    .data-analysis-table small,
+    .data-chart-card small {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .data-analysis-card h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(24px, 2.4vw, 34px);
+      line-height: 1.02;
+    }
+    .data-analysis-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .data-analysis-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+      margin-top: 2px;
+    }
+    .data-analysis-metrics span {
+      border: 1px solid rgba(204, 255, 160, 0.15);
+      border-radius: 12px;
+      background: rgba(204, 255, 160, 0.055);
+      padding: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.25;
+    }
+    .data-analysis-metrics strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 17px;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+    .data-analysis-table {
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(2, 5, 2, 0.64);
+      margin: 18px 0 24px;
+    }
+    .data-analysis-table-header {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(280px, 1fr);
+      gap: 20px;
+      padding: 18px;
+      border-bottom: 1px solid rgba(204, 255, 160, 0.16);
+      align-items: end;
+    }
+    .data-analysis-table-header h3 {
+      margin: 6px 0 0;
+      font-size: 24px;
+      line-height: 1.08;
+    }
+    .data-analysis-table-header p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .data-analysis-table .line-table {
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+    }
+    .data-analysis-chart-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+    .data-chart-card {
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.04), rgba(2, 5, 2, 0.72)),
+        rgba(7, 18, 7, 0.58);
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+    }
+    .data-chart-card.wide {
+      grid-column: 1 / -1;
+    }
+    .data-chart-card h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 20px;
+      line-height: 1.12;
+    }
+    .data-chart-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .data-chart-card img {
+      display: block;
+      width: 100%;
+      min-height: 360px;
+      border-radius: 12px;
+      border: 1px solid rgba(204, 255, 160, 0.12);
+      background: #020502;
+      object-fit: contain;
+    }
+    .data-chart-card.wide img {
+      min-height: 430px;
+    }
+    .data-analysis-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .data-analysis-note {
+      margin: 16px 0 0;
+      border-left: 3px solid rgba(204, 255, 160, 0.72);
+      padding: 12px 14px;
+      color: var(--muted);
+      background: rgba(204, 255, 160, 0.055);
+      line-height: 1.55;
+    }
     .source-map-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -5906,7 +6059,7 @@
         border-right: 0;
         border-bottom: 1px solid var(--line);
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .reader-journey, .resource-mode-grid, .suite-lines, .result-reading-order, .reader-priority-grid, .result-rules-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .reader-journey, .resource-mode-grid, .suite-lines, .result-reading-order, .reader-priority-grid, .result-rules-panel, .data-analysis-grid, .data-analysis-chart-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .reader-route-panel,
       .task-axis-head,
       .method-flow-head {
@@ -5929,7 +6082,8 @@
       }
       .suite-task-index-head,
       .task-map-details summary,
-      .split-radar-details summary {
+      .split-radar-details summary,
+      .data-analysis-table-header {
         grid-template-columns: 1fr;
         align-items: start;
       }
@@ -6236,7 +6390,7 @@
         width: 100%;
         justify-content: center;
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .reader-priority-grid, .result-rules-panel, .reader-route-list, .task-axis-grid, .task-axis-summary, .task-axis-reader-rule, .task-axis-key, .task-axis-task-list, .task-axis-visual figcaption, .method-flow-steps, .suite-task-index-head { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .reader-priority-grid, .result-rules-panel, .reader-route-list, .task-axis-grid, .task-axis-summary, .task-axis-reader-rule, .task-axis-key, .task-axis-task-list, .task-axis-visual figcaption, .method-flow-steps, .suite-task-index-head, .data-analysis-grid, .data-analysis-chart-grid, .data-analysis-table-header { grid-template-columns: 1fr; }
       .roadmap-entry-steps,
       .roadmap-resource-grid {
         grid-template-columns: 1fr;
@@ -6246,6 +6400,10 @@
       }
       .task-axis-visual img {
         min-height: 0;
+      }
+      .data-chart-card img,
+      .data-chart-card.wide img {
+        min-height: 240px;
       }
       .task-axis-visual figcaption {
         position: static;
@@ -6692,7 +6850,7 @@
           <strong>Start</strong>
           <span>project overview and roadmap</span>
         </button>
-        <button type="button" class="project-tab" id="tab-data" role="tab" data-tab-key="data" data-default-section="dataset-card" aria-selected="false" aria-pressed="false" aria-controls="dataset-card raw-sample suite walkthroughs" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-data" role="tab" data-tab-key="data" data-default-section="dataset-card" aria-selected="false" aria-pressed="false" aria-controls="dataset-card data-analysis raw-sample suite walkthroughs" tabindex="-1">
           <strong>Data & Tasks</strong>
           <span>dataset sample and task suite</span>
         </button>
@@ -7801,12 +7959,138 @@
           <article class="artifact primary-artifact"><div><h3>Official dataset</h3><p>Xperience-10M is a gated large-scale egocentric multimodal dataset for embodied AI, robotics, spatial intelligence, and world modeling.</p></div><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official HF dataset</a></article>
           <article class="artifact"><h3>Line 1 public sample</h3><p>The one-episode line builds the inspectable 20-task lab. Use Line 2 for selected-128 held-out comparison.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
           <article class="artifact"><h3>Public sample inspection</h3><p>One public sample episode is exposed through the raw browser and modality atlas: synchronized video, embedded audio, HDF5 annotation groups, depth, pose/SLAM, mocap, IMU, calibration, language-derived signals, and source links in one place.</p><a href="#raw-sample">open raw browser</a><a href="data/raw_sample_files.json">raw manifest</a><a href="data/modality_atlas.json">stream metadata</a></article>
+          <article class="artifact"><h3>Data explorer analysis</h3><p>Compare the one-sample line, selected-128 feature exports, and full gated dataset metadata with scope stats, split counts, modality breakdowns, and readable charts.</p><a href="#data-analysis">open analysis</a><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_EXPLORER_ANALYSIS.md">analysis report</a></article>
           <article class="artifact"><h3>Multi-episode pilot</h3><p>The selected 128-episode Qwen3-Omni LoRA v6 diagnostic run is verified with 4,032 held-out test predictions and 99.90% JSON validity. Action/subtask metrics are still weak, so this remains a baseline for error analysis.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a><a href="data/qwen3_v5_v6_comparison.json">v5/v6 comparison</a></article>
           <article class="artifact"><h3>Data boundary</h3><p>Raw MP4, HDF5, RRD files are streamed from the official public sample source when opened here; private gated data and full Qwen weights are not redistributed in this project.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a></article>
           <article class="artifact"><h3>Implemented subset</h3><p>The public task lab uses one sample episode with 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, and 20 integrated task contracts.</p><a href="#suite">task suite</a><a href="data/task_suite_20.json">task contract data</a></article>
           <article class="artifact"><h3>Covered now</h3><p>Action/subtask labels, next-action prediction, temporal diagnostics, hand trajectory, contact, object relevance, caption grounding, retrieval, reconstruction, misalignment, long-horizon forecasting, interaction text, action-object relation, sensor bridging, camera sync, and transition timing.</p><a href="data/summary_metrics.json">summary metrics</a></article>
           <article class="artifact"><h3>Responsible use</h3><p>This project is for research exploration and excludes identity recognition, surveillance, biometric profiling, sensitive-attribute inference, and safety-critical deployment.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">use notes</a></article>
           <article class="artifact"><h3>Later milestones</h3><p>Full audio-visual learning, caption generation, depth-pixel prediction, SLAM estimation, neural rendering, policy learning, cross-episode generalization, held-out Qwen3-Omni evaluation, and future Xperience-native pretraining.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">native pretraining</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="data-analysis" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Data explorer analysis.</h2>
+          <p>Read the data at three separate scales: the official public sample episode, the selected 128-episode feature surface, and authenticated file metadata for the full gated Hugging Face dataset. The charts are generated by a reproducible script and keep raw data boundaries explicit.</p>
+        </div>
+        <div class="data-analysis-grid" aria-label="Three Xperience-10M data scopes">
+          <article class="data-analysis-card">
+            <small>scope 1 / public sample</small>
+            <h3>One inspectable episode.</h3>
+            <p>The browser-facing sample is the concrete data lab: six synchronized videos, embedded audio, one annotation HDF5, one Rerun recording, and aligned 20-frame windows.</p>
+            <div class="data-analysis-metrics">
+              <span><strong>5,821</strong>frames</span>
+              <span><strong>1,161</strong>20-frame windows</span>
+              <span><strong>8,546</strong>input dimensions</span>
+              <span><strong>4.76 GiB</strong>sample files</span>
+            </div>
+          </article>
+          <article class="data-analysis-card">
+            <small>scope 2 / selected 128</small>
+            <h3>Held-out comparison surface.</h3>
+            <p>The selected-128 line keeps one episode per top-level session, a fixed train/val/test split, public-safe feature matrices, and multiscale JSONL windows for model scoring.</p>
+            <div class="data-analysis-metrics">
+              <span><strong>96/16/16</strong>train/val/test episodes</span>
+              <span><strong>34,269</strong>Qwen v6 rows</span>
+              <span><strong>106,095</strong>dense compact rows</span>
+              <span><strong>277.71 GiB</strong>source size view</span>
+            </div>
+          </article>
+          <article class="data-analysis-card">
+            <small>scope 3 / full gated dataset</small>
+            <h3>Full-corpus metadata.</h3>
+            <p>The official dataset remains gated. This project records file-level Hub metadata so readers can understand scale without downloading private raw MP4, HDF5, or RRD files.</p>
+            <div class="data-analysis-metrics">
+              <span><strong>804</strong>top-level sessions</span>
+              <span><strong>12,103</strong>episode-like folders</span>
+              <span><strong>85,257</strong>files</span>
+              <span><strong>24.63 TiB</strong>training bytes</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="data-analysis-table">
+          <div class="data-analysis-table-header">
+            <div>
+              <small>reader map</small>
+              <h3>What each data scale can answer.</h3>
+            </div>
+            <p>The goal is to make the data understandable without mixing raw public sample inspection, selected-128 derived artifacts, and full gated-dataset metadata into one ambiguous inventory.</p>
+          </div>
+          <table class="line-table">
+            <thead>
+              <tr>
+                <th>Data scale</th>
+                <th>Best for understanding</th>
+                <th>What is counted</th>
+                <th>Boundary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Public sample</strong></td>
+                <td>Raw file roles, synchronized streams, action/object timelines, and how one episode becomes task windows.</td>
+                <td>Files, frames, 20-frame windows, modality feature dimensions, action labels, object labels, HDF5 groups.</td>
+                <td>One official sample episode only; it is not a diversity or generalization claim.</td>
+              </tr>
+              <tr>
+                <td><strong>Selected 128</strong></td>
+                <td>Same-split baselines, model scoring surfaces, feature export density, and 128-episode task coverage.</td>
+                <td>Selected episodes, splits, size bands, feature rows, multiscale exports, raw20/proxy status.</td>
+                <td>Public-safe derived artifacts; raw selected-episode data remains governed by the official gated dataset.</td>
+              </tr>
+              <tr>
+                <td><strong>Full HF dataset</strong></td>
+                <td>Scale of the upstream dataset: sessions, episode folders, file counts, file types, and storage footprint.</td>
+                <td>Authenticated Hub file metadata: HDF5 count, MP4 count, RRD count, complete episode folders, total bytes.</td>
+                <td>Metadata-only. Dataset Viewer row/stat endpoints are gated and raw contents are not redistributed.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="data-analysis-chart-grid" aria-label="Generated data explorer charts">
+          <article class="data-chart-card wide">
+            <small>scale comparison</small>
+            <h3>One sample, selected 128, and full dataset are different reading scopes.</h3>
+            <p>Log-scale bars keep the large jumps visible without hiding the small public-sample line.</p>
+            <img src="assets/charts/data_explorer_scope_ladder.svg?v=xperience10m-data-explorer-v1" alt="Scope ladder chart comparing public sample, selected 128 episodes, and full gated dataset by episode count, window rows, and training bytes.">
+          </article>
+          <article class="data-chart-card">
+            <small>sample feature anatomy</small>
+            <h3>Video dominates the 8,546-dimensional public-sample input.</h3>
+            <p>Motion capture, depth, language, pose/SLAM, audio, and inertial signals remain explicit feature groups.</p>
+            <img src="assets/charts/data_explorer_sample_feature_modalities.svg?v=xperience10m-data-explorer-v1" alt="Bar chart of public sample feature dimensions by modality group.">
+          </article>
+          <article class="data-chart-card">
+            <small>sample timeline labels</small>
+            <h3>Window labels show which actions occupy the sample.</h3>
+            <p>This helps readers see what the one-episode line can and cannot represent before opening task cards.</p>
+            <img src="assets/charts/data_explorer_sample_action_distribution.svg?v=xperience10m-data-explorer-v1" alt="Bar chart of the most frequent action labels by 20-frame window count.">
+          </article>
+          <article class="data-chart-card">
+            <small>selected-128 exports</small>
+            <h3>Feature rows grow by export density and window scale.</h3>
+            <p>The selected-128 split is stable; sparse, Qwen v6 multiscale, and dense compact exports expose different row counts.</p>
+            <img src="assets/charts/data_explorer_selected128_split_rows.svg?v=xperience10m-data-explorer-v1" alt="Stacked bar chart of selected-128 processed rows by train, validation, and test split.">
+          </article>
+          <article class="data-chart-card">
+            <small>full dataset metadata</small>
+            <h3>The upstream dataset is mostly repeated episode file structure.</h3>
+            <p>Each complete episode usually has one annotation HDF5 and six MP4 streams; RRD viewer recordings are optional.</p>
+            <img src="assets/charts/data_explorer_full_file_composition.svg?v=xperience10m-data-explorer-v1" alt="Log-scale file composition chart for the gated full dataset metadata.">
+          </article>
+        </div>
+
+        <p class="data-analysis-note"><strong>Source boundary:</strong> the full-corpus counts come from authenticated Hugging Face Hub file metadata for <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">ropedia-ai/xperience-10m</a>. They describe repository scale and file organization; they do not inspect private row contents or redistribute raw data.</p>
+        <div class="data-analysis-actions">
+          <a class="button" href="#raw-sample">Open raw sample browser</a>
+          <a class="button" href="#suite">Open 20-task suite</a>
+          <a class="button" href="data/data_explorer_analysis.json">Open structured analysis</a>
+          <a class="button" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_EXPLORER_ANALYSIS.md">Open analysis report</a>
         </div>
       </div>
     </section>
@@ -9327,6 +9611,7 @@ python scripts/validate_publication_package.py</code></pre>
       { id: "roadmap", label: "Roadmap" },
       { id: "reading-path", label: "Reading Path" },
       { id: "dataset-card", label: "Dataset Card" },
+      { id: "data-analysis", label: "Data Explorer Analysis" },
       { id: "raw-sample", label: "Raw Sample Browser" },
       { id: "suite", label: "20-Task Suite" },
       { id: "walkthroughs", label: "Interactive Walkthrough" },
@@ -9353,6 +9638,7 @@ python scripts/validate_publication_package.py</code></pre>
       roadmap: "Best for planning: what has shipped and what the next experiments should do.",
       "reading-path": "Best for choosing an order through the repo, website, and HF surfaces.",
       "dataset-card": "Best for source alignment and public-sample boundaries.",
+      "data-analysis": "Best for comparing the public sample, selected 128 episodes, and full gated dataset metadata.",
       "raw-sample": "Best for inspecting the sample files, media previews, and file relationships.",
       suite: "Best for the unified 20-task map, radar comparisons, task cards, and score matrix.",
       walkthroughs: "Best for case-study style task explanations.",

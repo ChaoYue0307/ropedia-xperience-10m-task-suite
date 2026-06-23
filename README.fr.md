@@ -38,7 +38,7 @@
 
 Ce dépôt transforme l'épisode public d'exemple Xperience-10M en laboratoire de tâches vérifiable pour l'IA incarnée. Commencez par le tableau de bord et le statut du projet, puis ouvrez les contrats de tâches, les matrices de résultats et les miroirs Hugging Face.
 
-**Mise à jour :** 2026-06-21.
+**Mise à jour :** 2026-06-23.
 
 **Portée :** la suite entièrement reproductible utilise un épisode public; les résultats 128 épisodes ne publient que des métriques, rapports, prédictions sûres et cartes de modèles. Les MP4/HDF5/RRD bruts, les poids Qwen complets et les données gated ne sont pas redistribués.
 
@@ -64,6 +64,7 @@ Entrées : [guide des deux lignes de preuve](TWO_EVIDENCE_LINES.md), [données d
 | Lire les 20 tâches | [guide des 20 tâches](TASK_SUITE_20.md), [données des contrats de tâche](docs/data/task_suite_20.json) |
 | Comparer les résultats | [conclusions de recherche](RESEARCH_TAKEAWAYS.md), [table des 180 résultats](docs/data/task_method_20_result_matrix.json) |
 | Inspecter un sample | [explorateur d'un épisode](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [carte des fichiers sample](docs/data/raw_sample_files.json) |
+| Comparer sample / 128 / dataset complet | [analyse data explorer](DATA_EXPLORER_ANALYSIS.md), [section web d'analyse](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
 | Lire les trois pipelines foundation | [trois pipelines foundation](THREE_FOUNDATION_PIPELINES.md), [données des contrats de pipeline](docs/data/three_foundation_pipelines.json) |
 | Reproduire et auditer | [guide de reproductibilité](REPRODUCIBILITY.md), [contrat de preuve](EVIDENCE_CONTRACT.md) |
 
@@ -71,6 +72,7 @@ Entrées : [guide des deux lignes de preuve](TWO_EVIDENCE_LINES.md), [données d
 
 - Règle de lecture : avec une métrique, c'est l'une des 20 tâches; si cela explique ce que les preuves étudient, c'est l'une des 4 research directions; si cela définit des inputs/outputs d'entraînement, c'est l'une des 3 foundation pipelines; si cela combine perception, mémoire 3D, langage, action et planification, c'est la cible unified embodied model, pas un nouvel axe de score.
 - Données : fenêtres de 20 frames reliant vidéo, audio, profondeur, pose/SLAM, mocap, IMU, calibration et annotations de langage.
+- Exploration des donnees : la nouvelle couche separe le sample public, les exports selected-128 et les metadonnees du dataset gated complet.
 - Tâches : 20 contrats couvrant reconnaissance, prévision, retrieval, reconstruction, ordre, synchronisation, horizon long, relations action-objet et sensor bridge.
 - Résultats : minimal/NN sur l'épisode public couvrent 20/20; la ligne 128 épisodes sépare metadata, raw features, Qwen3-Omni et Cosmos3; la matrice publique atteint 180/180 enregistrements scorés: 174 direct et 6 compact proxy, avec proxy targets visibles.
 - Directions : spatial intelligence, human-video world model et vision-language-action sont documentés avec tâches et preuves nécessaires; l'objectif à long terme est un unified embodied foundation model.

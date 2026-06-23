@@ -37,7 +37,7 @@
 
 **Ropedia Xperience-10M Task Suite** has two public evidence lines. **Line 1** is the 1-sample task lab for raw-file inspection, task construction, and reproducibility. **Line 2** is the selected-128 comparison surface for aligned metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Every score points to a source artifact and keeps direct-vs-proxy status visible.
 
-**Updated:** 2026-06-21.
+**Updated:** 2026-06-23.
 
 **Scope:** Line 1 uses one public sample episode. Line 2 uses selected 128-episode public-safe artifacts linked back to official gated episode paths. Raw Xperience-10M MP4/HDF5/RRD files, Qwen3 base weights, Cosmos3 base weights, and gated data are not redistributed here.
 
@@ -45,6 +45,7 @@
 
 - [How To Read This Project](#how-to-read-this-project)
 - [At A Glance](#at-a-glance)
+- [Data Explorer Analysis](#data-explorer-analysis)
 - [Two Evidence Lines](#two-evidence-lines)
 - [Fast Reader Map](#fast-reader-map)
 - [Why This Project Exists](#why-this-project-exists)
@@ -81,6 +82,10 @@ The multilingual README files are reader guides. The canonical technical evidenc
     <tr>
       <td><strong>Two-line contract</strong></td>
       <td><strong>Line 1: 1 sample episode</strong> for task construction and reproducibility. <strong>Line 2: 128 selected episodes</strong> for same-split metadata/raw baselines, Qwen3-Omni v6, and Cosmos3 diagnostics.</td>
+    </tr>
+    <tr>
+      <td><strong>Data explorer analysis</strong></td>
+      <td>A generated analysis layer separates the public sample, selected-128 feature exports, and authenticated full-dataset Hugging Face metadata with scope stats, split counts, modality breakdowns, and chart assets.</td>
     </tr>
     <tr>
       <td><strong>180 method-task records</strong></td>
@@ -133,6 +138,18 @@ Reader rule: if it has a metric, it is a **task**; if it explains what the evide
 | Research directions | 4 | Ways to interpret what the 20 tasks study; not separate benchmark tiers. | Human Modeling & Motion Understanding; 3D/4D Reconstruction & Neural Rendering; Egocentric Vision & Interaction; Scene Reconstruction & World Modeling. |
 | Foundation pipelines | 3 | Larger-model training tracks with separate input-output recipes and result gates. | Spatial intelligence models; Human-video world models; Vision-language-action models. |
 | Unified embodied model target | 1 | Long-term integration target, not a task/method row in the 180-result matrix. | Perception; 3D memory; language-grounded reasoning; action; planning. |
+
+## Data Explorer Analysis
+
+The data explorer is now a three-scope analysis layer, not only a raw-file browser. It compares the public sample episode, selected 128-episode feature exports, and the full gated upstream dataset metadata without mixing their evidence boundaries.
+
+| Scope | Reader question | Current public analysis |
+| --- | --- | --- |
+| Public sample | What files and signals are directly inspectable? | 1 episode, 5,821 frames, 1,161 aligned 20-frame windows, 8,546 feature dimensions, raw-file browser, modality breakdowns, action-window distribution. |
+| Selected 128 | What selected-episode surface supports model comparison? | 96/16/16 split, 34,269 Qwen3-Omni v6 multiscale rows, 106,095 dense compact rows, selected episode links, public-safe matrices. |
+| Full HF dataset | How large is the official upstream dataset? | Authenticated Hub file metadata: 804 sessions, 12,103 episode-like folders, 85,257 files, 24.63 TiB training-byte view, without redistributing raw gated data. |
+
+Entry points: [website analysis section](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis), [analysis report](DATA_EXPLORER_ANALYSIS.md), and [structured analysis record](docs/data/data_explorer_analysis.json).
 
 ## Two Evidence Lines
 
@@ -327,6 +344,11 @@ Result entry points:
       <td><strong>Inspect the 20 tasks</strong></td>
       <td><a href="TASK_SUITE_20.md">20-task guide</a></td>
       <td><a href="docs/data/task_suite_20.json">task contract data</a><br><a href="results/episode_task_suite/task_walkthroughs/">task walkthroughs</a></td>
+    </tr>
+    <tr>
+      <td><strong>Explore data scales</strong></td>
+      <td><a href="DATA_EXPLORER_ANALYSIS.md">Data explorer analysis</a></td>
+      <td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis">website analysis section</a><br><a href="docs/data/data_explorer_analysis.json">structured analysis record</a></td>
     </tr>
     <tr>
       <td><strong>Compare results</strong></td>

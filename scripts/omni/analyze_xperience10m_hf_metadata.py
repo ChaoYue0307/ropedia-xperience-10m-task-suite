@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import getpass
 import json
 import os
 from collections import Counter, defaultdict
@@ -117,17 +116,22 @@ def md_table(headers: list[str], rows: list[list[Any]]) -> list[str]:
 
 def main() -> int:
     args = parse_args()
-    token = args.token or getpass.getpass("HF token: ").strip()
-    if not token:
-        raise SystemExit("HF token is required for gated dataset metadata.")
+    token = args.token or None
 
     api = HfApi(token=token)
-    info = api.repo_info(
-        repo_id=args.repo_id,
-        repo_type="dataset",
-        files_metadata=True,
-        token=token,
-    )
+    try:
+        info = api.repo_info(
+            repo_id=args.repo_id,
+            repo_type="dataset",
+            files_metadata=True,
+            token=token,
+        )
+    except Exception as exc:
+        raise SystemExit(
+            "Unable to read gated Hugging Face dataset metadata. "
+            "Run `hf auth login` or pass `--token`/HF_TOKEN on a trusted machine, "
+            "then rerun this script."
+        ) from exc
     siblings = list(info.siblings or [])
 
     files = []

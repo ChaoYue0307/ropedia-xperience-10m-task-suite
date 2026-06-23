@@ -1,0 +1,782 @@
+{
+  "charts": [
+    {
+      "path": "assets/charts/data_explorer_scope_ladder.svg",
+      "question": "How do the public sample, selected 128 episodes, and full gated dataset differ in scale?",
+      "title": "Scope ladder"
+    },
+    {
+      "path": "assets/charts/data_explorer_sample_feature_modalities.svg",
+      "question": "Which modality groups dominate the one-sample task input?",
+      "title": "Public sample feature dimensions"
+    },
+    {
+      "path": "assets/charts/data_explorer_sample_action_distribution.svg",
+      "question": "Which action labels occupy the most 20-frame windows in the sample?",
+      "title": "Public sample action distribution"
+    },
+    {
+      "path": "assets/charts/data_explorer_selected128_split_rows.svg",
+      "question": "How many rows are available per selected-128 export and split?",
+      "title": "Selected-128 split rows"
+    },
+    {
+      "path": "assets/charts/data_explorer_full_file_composition.svg",
+      "question": "What file types dominate the gated full-dataset metadata?",
+      "title": "Full dataset file composition"
+    }
+  ],
+  "full_hf_dataset": {
+    "annotation_file_size_summary": {
+      "count": 12103,
+      "max_bytes": 2000432556,
+      "max_human": "1.86 GiB",
+      "mean_bytes": 1830083732,
+      "mean_human": "1.70 GiB",
+      "median_bytes": 1969457752,
+      "median_human": "1.83 GiB",
+      "min_bytes": 6687192,
+      "min_human": "6.38 MiB",
+      "p25_bytes": 1869556164,
+      "p75_bytes": 1989975784
+    },
+    "basename_counts": {
+      "README.md": 1,
+      "annotation.hdf5": 12103,
+      "fisheye_cam0.mp4": 12102,
+      "fisheye_cam1.mp4": 12102,
+      "fisheye_cam2.mp4": 12102,
+      "fisheye_cam3.mp4": 12102,
+      "stereo_left.mp4": 12102,
+      "stereo_right.mp4": 12102,
+      "visualization.rrd": 541
+    },
+    "card_data": {
+      "extra_gated_button_content": "I have signed the access control agreement",
+      "extra_gated_description": "Access is reviewed manually and is limited to approved non-commercial use. Completion of an external agreement-signing step may be required before approval. Please sign the agreement via [DocuSign](https://ropedia.docsend.com/view/ra7ej7gs6s98sw87)",
+      "extra_gated_heading": "Request controlled access to Xperience-10M",
+      "language": [
+        "en"
+      ],
+      "license": "other",
+      "pretty_name": "Xperience-10M",
+      "size_categories": [
+        "1M<n<10M"
+      ],
+      "tags": [
+        "egocentric",
+        "first-person",
+        "multimodal",
+        "3d",
+        "4d",
+        "embodied-ai",
+        "robotics",
+        "human-motion",
+        "mocap",
+        "imu",
+        "audio",
+        "depth",
+        "captions",
+        "video"
+      ],
+      "task_categories": [
+        "video-classification",
+        "image-to-text",
+        "depth-estimation",
+        "robotics"
+      ]
+    },
+    "complete_episode_training_size_summary": {
+      "count": 12102,
+      "max_bytes": 2721499520,
+      "max_human": "2.53 GiB",
+      "mean_bytes": 2237801505,
+      "mean_human": "2.08 GiB",
+      "median_bytes": 2365869284,
+      "median_human": "2.20 GiB",
+      "min_bytes": 8158968,
+      "min_human": "7.78 MiB",
+      "p25_bytes": 2286228606,
+      "p75_bytes": 2412829381
+    },
+    "episode_count_per_session_summary": {
+      "count": 803,
+      "max": 51,
+      "mean": 15.07,
+      "median": 11,
+      "min": 1,
+      "p25": 8,
+      "p75": 13
+    },
+    "episode_size_summary": {
+      "count": 12103,
+      "max_bytes": 5108045286,
+      "max_human": "4.76 GiB",
+      "mean_bytes": 2318233840,
+      "mean_human": "2.16 GiB",
+      "median_bytes": 2369826102,
+      "median_human": "2.21 GiB",
+      "min_bytes": 8158968,
+      "min_human": "7.78 MiB",
+      "p25_bytes": 2292986495,
+      "p75_bytes": 2420801956
+    },
+    "file_type_counts": {
+      ".hdf5": 12103,
+      ".md": 1,
+      ".mp4": 72612,
+      ".rrd": 541
+    },
+    "gated": "manual",
+    "incomplete_episode_records": [
+      {
+        "episode_id": "ep1",
+        "episode_path": "dc3f4139-f499-4de7-b057-e25b7dfb2d83/ep1",
+        "file_count": 1,
+        "has_all_six_videos": false,
+        "has_annotation": true,
+        "has_fisheye_cam0": false,
+        "has_visualization_rrd": false,
+        "is_complete": false,
+        "is_degraded_valid": false,
+        "missing_required_files": [
+          "fisheye_cam0.mp4",
+          "fisheye_cam1.mp4",
+          "fisheye_cam2.mp4",
+          "fisheye_cam3.mp4",
+          "stereo_left.mp4",
+          "stereo_right.mp4"
+        ],
+        "top_level_session": "dc3f4139-f499-4de7-b057-e25b7dfb2d83",
+        "total_bytes": 1418232696,
+        "training_bytes_excluding_visualization_rrd": 1418232696,
+        "video_count": 0
+      }
+    ],
+    "last_modified": "2026-04-21T05:03:45+00:00",
+    "metadata_note": "The official dataset is gated. These full-corpus figures use authenticated Hugging Face Hub file metadata only; they do not inspect private row content or redistribute raw MP4/HDF5/RRD files.",
+    "pilot_scale_estimates": {
+      "all_complete_episodes_windows_at_256_each": 3098112,
+      "episode_100_windows_at_256_each": 25600,
+      "episode_32_windows_at_256_each": 8192,
+      "episode_500_windows_at_256_each": 128000,
+      "mean_based_32_episode_training_bytes": 71609648160,
+      "mean_based_32_episode_training_human": "66.69 GiB",
+      "median_based_32_episode_training_bytes": 75707817088,
+      "median_based_32_episode_training_human": "70.51 GiB",
+      "windows_per_episode": 256
+    },
+    "repo_id": "ropedia-ai/xperience-10m",
+    "repo_sha": "ce943cf271a758b60240084892d05cf6dc12dd90",
+    "summary": {
+      "all_complete_episode_training_bytes_excluding_visualization_rrd": 27081873816281,
+      "all_complete_episode_training_human_excluding_visualization_rrd": "24.63 TiB",
+      "annotation_hdf5_count": 12103,
+      "complete_episode_count": 12102,
+      "complete_episode_pct": 99.9917,
+      "complete_sessions": 802,
+      "degraded_valid_episode_count": 12102,
+      "degraded_valid_episode_pct": 99.9917,
+      "degraded_valid_sessions": 802,
+      "episode_like_folder_count": 12103,
+      "file_count_excluding_gitattributes": 85257,
+      "mp4_count": 72612,
+      "sibling_count": 85258,
+      "top_level_session_count": 804,
+      "total_bytes_from_file_metadata": 28057584187079,
+      "total_human_from_file_metadata": "25.52 TiB",
+      "training_bytes_excluding_visualization_rrd": 27083292060675,
+      "training_human_excluding_visualization_rrd": "24.63 TiB",
+      "visualization_rrd_bytes": 974292126404,
+      "visualization_rrd_count": 541,
+      "visualization_rrd_human": "907.38 GiB"
+    },
+    "video_count_histogram": {
+      "0": 1,
+      "6": 12102
+    }
+  },
+  "generated_at_utc": "2026-06-23T09:35:08Z",
+  "public_sample": {
+    "dataset": {
+      "episode_id": "xperience-10m-sample",
+      "hosting_policy": "Raw files are streamed or downloaded from the official public sample dataset. This task-suite repo mirrors derived artifacts and metadata only.",
+      "license": "cc-by-nc-4.0",
+      "repo_commit": "2d80b5af8085a18ffe702e1420968308007f6204",
+      "repo_id": "ropedia-ai/xperience-10m-sample",
+      "repo_url": "https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample"
+    },
+    "feature_blocks": [
+      {
+        "dim": 1092,
+        "display": "Body Joints",
+        "modality": "motion_capture",
+        "name": "body_joints"
+      },
+      {
+        "dim": 980,
+        "display": "Depth + Confidence",
+        "modality": "depth",
+        "name": "depth_confidence"
+      },
+      {
+        "dim": 896,
+        "display": "Language Text",
+        "modality": "language",
+        "name": "caption_objects_interaction_text"
+      },
+      {
+        "dim": 686,
+        "display": "Video Fisheye Cam0",
+        "modality": "video",
+        "name": "video_fisheye_cam0"
+      },
+      {
+        "dim": 686,
+        "display": "Video Fisheye Cam1",
+        "modality": "video",
+        "name": "video_fisheye_cam1"
+      },
+      {
+        "dim": 686,
+        "display": "Video Fisheye Cam2",
+        "modality": "video",
+        "name": "video_fisheye_cam2"
+      },
+      {
+        "dim": 686,
+        "display": "Video Fisheye Cam3",
+        "modality": "video",
+        "name": "video_fisheye_cam3"
+      },
+      {
+        "dim": 686,
+        "display": "Video Stereo Left",
+        "modality": "video",
+        "name": "video_stereo_left"
+      },
+      {
+        "dim": 686,
+        "display": "Video Stereo Right",
+        "modality": "video",
+        "name": "video_stereo_right"
+      },
+      {
+        "dim": 441,
+        "display": "Left Hand",
+        "modality": "motion_capture",
+        "name": "hand_left_joints"
+      },
+      {
+        "dim": 441,
+        "display": "Right Hand",
+        "modality": "motion_capture",
+        "name": "hand_right_joints"
+      },
+      {
+        "dim": 168,
+        "display": "Audio",
+        "modality": "audio",
+        "name": "audio_fisheye_cam0_aac"
+      },
+      {
+        "dim": 147,
+        "display": "Body Contacts",
+        "modality": "motion_capture",
+        "name": "body_contacts"
+      },
+      {
+        "dim": 117,
+        "display": "Calibration",
+        "modality": "pose_slam",
+        "name": "calibration"
+      },
+      {
+        "dim": 63,
+        "display": "Camera Rotation",
+        "modality": "pose_slam",
+        "name": "camera_rotation_matrix"
+      },
+      {
+        "dim": 42,
+        "display": "IMU Accel/Gyro",
+        "modality": "inertial",
+        "name": "imu_accel_gyro"
+      },
+      {
+        "dim": 22,
+        "display": "SLAM Point Cloud",
+        "modality": "pose_slam",
+        "name": "slam_point_cloud"
+      },
+      {
+        "dim": 21,
+        "display": "Camera Translation",
+        "modality": "pose_slam",
+        "name": "camera_translation"
+      }
+    ],
+    "feature_dim_by_modality": {
+      "audio": 168,
+      "depth": 980,
+      "inertial": 42,
+      "language": 896,
+      "motion_capture": 2121,
+      "pose_slam": 223,
+      "video": 4116
+    },
+    "file_bytes_by_kind": {
+      "hdf5_annotation_container": {
+        "bytes": 1931496028,
+        "count": 1,
+        "human": "1.80 GiB"
+      },
+      "rerun_viewer_recording": {
+        "bytes": 2702924036,
+        "count": 1,
+        "human": "2.52 GiB"
+      },
+      "video": {
+        "bytes": 383606257,
+        "count": 5,
+        "human": "365.84 MiB"
+      },
+      "video_with_audio": {
+        "bytes": 89842251,
+        "count": 1,
+        "human": "85.68 MiB"
+      }
+    },
+    "file_count": 8,
+    "hdf5_groups": [
+      {
+        "description": "Camera intrinsics/extrinsics and static calibration values used to align sensor streams.",
+        "group": "calibration"
+      },
+      {
+        "description": "JSON text with task config, action segments, object mentions, interaction descriptions, and global summary.",
+        "group": "caption"
+      },
+      {
+        "description": "Depth maps and confidence channels aligned to the episode timeline.",
+        "group": "depth"
+      },
+      {
+        "description": "Full-body joint and contact signals for human motion modeling.",
+        "group": "full_body_mocap"
+      },
+      {
+        "description": "Left and right hand joint trajectories used by hand-motion and forecast tasks.",
+        "group": "hand_mocap"
+      },
+      {
+        "description": "Accelerometer and gyroscope streams sampled at higher frequency than the video frames.",
+        "group": "imu"
+      },
+      {
+        "description": "Episode metadata, frame indexing, and source bookkeeping.",
+        "group": "metadata"
+      },
+      {
+        "description": "Camera trajectory, pose, and sparse SLAM point-cloud information.",
+        "group": "slam"
+      },
+      {
+        "description": "Video stream metadata and per-frame alignment information.",
+        "group": "video"
+      }
+    ],
+    "object_vocab_count": 34,
+    "segment_count": 35,
+    "source_policy": "Window-level labels, features, predictions, and diagnostics are embedded here. Official raw MP4/HDF5/RRD files are linked from the Raw Sample Browser, with compact browser-preview clips for immediate MP4/audio playback.",
+    "top_actions": [
+      {
+        "count": 159,
+        "name": "Hold gooseneck kettle"
+      },
+      {
+        "count": 159,
+        "name": "Pour coffee"
+      },
+      {
+        "count": 127,
+        "name": "Position kettle to pour"
+      },
+      {
+        "count": 95,
+        "name": "Lift gooseneck kettle"
+      },
+      {
+        "count": 95,
+        "name": "Close bottle cap"
+      },
+      {
+        "count": 95,
+        "name": "Wait/Prepare for pouring"
+      },
+      {
+        "count": 87,
+        "name": "Transfer coffee to dripper"
+      },
+      {
+        "count": 63,
+        "name": "Grasp coffee scoop"
+      },
+      {
+        "count": 47,
+        "name": "Hold coffee carafe"
+      },
+      {
+        "count": 39,
+        "name": "Move kettle"
+      },
+      {
+        "count": 31,
+        "name": "Move kettle away"
+      },
+      {
+        "count": 30,
+        "name": "Pick up kettle"
+      }
+    ],
+    "top_objects": [
+      {
+        "count": 636,
+        "name": "coffee dripper"
+      },
+      {
+        "count": 517,
+        "name": "scale"
+      },
+      {
+        "count": 446,
+        "name": "gooseneck kettle"
+      },
+      {
+        "count": 333,
+        "name": "digital scale"
+      },
+      {
+        "count": 238,
+        "name": "water bottle"
+      },
+      {
+        "count": 217,
+        "name": "white mug"
+      },
+      {
+        "count": 203,
+        "name": "white bottle"
+      },
+      {
+        "count": 170,
+        "name": "coffee mug"
+      },
+      {
+        "count": 158,
+        "name": "bottle"
+      },
+      {
+        "count": 145,
+        "name": "dripper"
+      },
+      {
+        "count": 126,
+        "name": "glass carafe"
+      },
+      {
+        "count": 123,
+        "name": "kettle"
+      }
+    ],
+    "top_subtasks": [
+      {
+        "count": 166,
+        "name": "Handle gooseneck kettle"
+      },
+      {
+        "count": 151,
+        "name": "Pour coffee"
+      },
+      {
+        "count": 150,
+        "name": "Pick up and position kettle"
+      },
+      {
+        "count": 119,
+        "name": "Prepare for pouring"
+      },
+      {
+        "count": 111,
+        "name": "Prepare coffee equipment and scoop grounds"
+      },
+      {
+        "count": 111,
+        "name": "Lift gooseneck kettle"
+      },
+      {
+        "count": 111,
+        "name": "Pour and close white bottle"
+      },
+      {
+        "count": 79,
+        "name": "Transfer coffee grounds to dripper"
+      },
+      {
+        "count": 79,
+        "name": "Set down kettle and retrieve white bottle"
+      },
+      {
+        "count": 39,
+        "name": "Move kettle"
+      },
+      {
+        "count": 14,
+        "name": ""
+      },
+      {
+        "count": 10,
+        "name": "Pour milk into coffee"
+      }
+    ],
+    "total_bytes": 5107868572,
+    "total_human": "4.76 GiB",
+    "windowization": {
+      "audio_sample_rate": 16000,
+      "duration_human": "4.85 min",
+      "duration_sec": 291.03000343524565,
+      "feature_dim": 8546,
+      "fps_observed": 20.00137419266181,
+      "note": "The public task suite converts the raw episode into overlapping 20-frame windows with a 5-frame stride.",
+      "num_frames": 5821,
+      "num_windows": 1161,
+      "stride_frames": 5,
+      "window_frames": 20
+    }
+  },
+  "selected_128": {
+    "bytes_by_size_band": {
+      "long": {
+        "bytes": 75928334176,
+        "human": "70.71 GiB"
+      },
+      "lower_mid": {
+        "bytes": 75730496234,
+        "human": "70.53 GiB"
+      },
+      "short": {
+        "bytes": 70693191518,
+        "human": "65.84 GiB"
+      },
+      "upper_mid": {
+        "bytes": 75837737335,
+        "human": "70.63 GiB"
+      }
+    },
+    "bytes_by_split": {
+      "test": {
+        "bytes": 37243648205,
+        "human": "34.69 GiB"
+      },
+      "train": {
+        "bytes": 223733297061,
+        "human": "208.37 GiB"
+      },
+      "val": {
+        "bytes": 37212813997,
+        "human": "34.66 GiB"
+      }
+    },
+    "exports": [
+      {
+        "episodes": 119,
+        "key": "sparse_export",
+        "label": "Sparse selected-128 export",
+        "samples": 3808,
+        "scale_counts": {},
+        "split_counts": {
+          "test": 448,
+          "train": 2848,
+          "val": 512
+        }
+      },
+      {
+        "episodes": 119,
+        "key": "qwen_v6_multiscale_export",
+        "label": "Qwen3-Omni v6 multiscale JSONL",
+        "samples": 34269,
+        "scale_counts": {},
+        "split_counts": {
+          "test": 4032,
+          "train": 25629,
+          "val": 4608
+        }
+      },
+      {
+        "episodes": 119,
+        "key": "dense_multiscale_compact_export",
+        "label": "Dense multiscale compact export",
+        "samples": 106095,
+        "scale_counts": {
+          "dense_20f_stride10": 60725,
+          "long_80f_stride40": 15067,
+          "medium_40f_stride20": 30303
+        },
+        "split_counts": {
+          "test": 11795,
+          "train": 79593,
+          "val": 14707
+        }
+      }
+    ],
+    "metadata_matrix_sparse": {
+      "bytes": 217477,
+      "feature_dim": 394,
+      "human": "212.38 KiB",
+      "row_count": 3808,
+      "sha256": "cdaa55ea3bb229d70bee845f05628ed7a984dd46f95080358d51943b4b8975df",
+      "split_counts": {
+        "test": 448,
+        "train": 2848,
+        "val": 512
+      }
+    },
+    "metadata_matrix_v2": {
+      "bytes": 3375193,
+      "feature_dim": 394,
+      "human": "3.22 MiB",
+      "row_count": 34269,
+      "sha256": "3c2a23b681c9f257a4c04710c72441650844ede6279d3e67be57ccc3abd4fa90",
+      "split_counts": {
+        "test": 4032,
+        "train": 25629,
+        "val": 4608
+      }
+    },
+    "official_dataset": {
+      "access_note": "Episode directory pages are browsable on Hugging Face. Raw annotation/video file downloads require access to the gated official dataset and are not redistributed here.",
+      "gated_resolve_base_url": "https://huggingface.co/datasets/ropedia-ai/xperience-10m/resolve/main",
+      "repo_id": "ropedia-ai/xperience-10m",
+      "repo_sha": "ce943cf271a758b60240084892d05cf6dc12dd90",
+      "tree_base_url": "https://huggingface.co/datasets/ropedia-ai/xperience-10m/tree/main"
+    },
+    "raw20_proxy_tasks": [
+      "camera_view_sync_retrieval",
+      "interaction_text_prediction"
+    ],
+    "raw20_result_records": 40,
+    "selection_summary": {
+      "one_episode_per_top_level_session": true,
+      "selected_download_size_excluding_visualization_rrd_bytes": 298189759263,
+      "selected_episode_count": 128,
+      "selected_split_counts": {
+        "test": 16,
+        "train": 96,
+        "val": 16
+      },
+      "size_band_counts": {
+        "long": 32,
+        "lower_mid": 32,
+        "short": 32,
+        "upper_mid": 32
+      }
+    },
+    "size_band_counts": {
+      "long": 32,
+      "lower_mid": 32,
+      "short": 32,
+      "upper_mid": 32
+    },
+    "sparse_main_task_counts": [
+      {
+        "count": 96,
+        "name": "Stocking grocery shelves"
+      },
+      {
+        "count": 96,
+        "name": "Stocking grocery store shelves"
+      },
+      {
+        "count": 96,
+        "name": "Measuring and marking cardboard"
+      },
+      {
+        "count": 64,
+        "name": "Stocking supermarket shelves"
+      },
+      {
+        "count": 64,
+        "name": "Stocking retail store shelves"
+      },
+      {
+        "count": 64,
+        "name": "Assembling a jigsaw puzzle"
+      },
+      {
+        "count": 64,
+        "name": "Crafting cardboard shapes"
+      },
+      {
+        "count": 64,
+        "name": "Stocking shelves in a retail store"
+      },
+      {
+        "count": 64,
+        "name": "Playing Mahjong"
+      },
+      {
+        "count": 64,
+        "name": "Stocking canned goods on a supermarket shelf"
+      },
+      {
+        "count": 32,
+        "name": "Sorting and organizing colorful buttons on a table"
+      },
+      {
+        "count": 32,
+        "name": "Crafting cardboard shapes and preparing workspace"
+      }
+    ],
+    "sparse_windows_by_split": {
+      "test": 448,
+      "train": 2848,
+      "val": 512
+    },
+    "split_episode_counts": {
+      "test": 16,
+      "train": 96,
+      "val": 16
+    }
+  },
+  "sources": [
+    {
+      "path": "docs/data/raw_sample_files.json",
+      "scope": "public_sample"
+    },
+    {
+      "path": "docs/data/single_episode_explorer.json",
+      "scope": "public_sample"
+    },
+    {
+      "path": "results/episode_task_suite/windows.csv",
+      "scope": "public_sample"
+    },
+    {
+      "path": "docs/data/xperience10m_128_episode_feature_index.json",
+      "scope": "selected_128"
+    },
+    {
+      "path": "results/omni_finetune/xperience10m_128_episode_selection.csv",
+      "scope": "selected_128"
+    },
+    {
+      "path": "results/omni_finetune/multi_episode_128_task_baselines/windows.csv",
+      "scope": "selected_128"
+    },
+    {
+      "path": "results/omni_finetune/full_dataset_metadata_audit.json",
+      "scope": "full_hf_dataset"
+    }
+  ],
+  "status": "pass"
+}

@@ -1,14 +1,14 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-23T08:21:38+00:00",
+  "generated_at_utc": "2026-06-23T09:38:23+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 358,
-    "external_reference_count": 144,
-    "json_files": 56,
-    "image_assets_referenced": 50,
+    "local_references": 367,
+    "external_reference_count": 147,
+    "json_files": 57,
+    "image_assets_referenced": 55,
     "failure_count": 0
   },
   "failures": {
@@ -30,7 +30,7 @@
       "name": "project_sections_are_assigned_to_tabs",
       "status": "pass",
       "reason": "Every major research section should be assigned to a tab group.",
-      "section_count": 19
+      "section_count": 20
     },
     {
       "name": "project_hash_router_preserves_deep_links",
@@ -58,8 +58,8 @@
       "name": "project_sections_are_labeled_tabpanels",
       "status": "pass",
       "reason": "Every tabbed research section should expose a labeled panel role.",
-      "panel_count": 23,
-      "labeled_panel_count": 19
+      "panel_count": 24,
+      "labeled_panel_count": 20
     },
     {
       "name": "project_tabs_update_selected_state",
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 194763,
-      "evidence_index": 259776
+      "overview_index": 198989,
+      "evidence_index": 264002
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 194763,
-      "protocol_index": 255981,
-      "evidence_index": 259776
+      "overview_index": 198989,
+      "protocol_index": 260207,
+      "evidence_index": 264002
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -206,7 +206,7 @@
       "name": "dataset_card_section_links_official_dataset",
       "status": "pass",
       "reason": "The dataset-card section should link the official gated dataset.",
-      "marker_count": 4
+      "marker_count": 5
     },
     {
       "name": "dataset_card_section_links_public_sample",
@@ -290,9 +290,9 @@
     },
     {
       "path": "index.html",
-      "id_count": 110,
-      "reference_count": 324,
-      "image_count": 75
+      "id_count": 111,
+      "reference_count": 333,
+      "image_count": 80
     },
     {
       "path": "research_roadmap.html",
@@ -326,6 +326,11 @@
     {
       "path": "data/brand_assets.json",
       "bytes": 3947,
+      "top_level_type": "dict"
+    },
+    {
+      "path": "data/data_explorer_analysis.json",
+      "bytes": 21206,
       "top_level_type": "dict"
     },
     {
@@ -575,7 +580,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 25144,
+      "bytes": 26146,
       "top_level_type": "dict"
     },
     {
@@ -609,6 +614,41 @@
       "path": "assets/charts/cross_modal_retrieval.svg",
       "exists": true,
       "bytes": 3196,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/data_explorer_full_file_composition.svg",
+      "exists": true,
+      "bytes": 49697,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/data_explorer_sample_action_distribution.svg",
+      "exists": true,
+      "bytes": 59497,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/data_explorer_sample_feature_modalities.svg",
+      "exists": true,
+      "bytes": 48782,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/data_explorer_scope_ladder.svg",
+      "exists": true,
+      "bytes": 94443,
+      "format": "SVG",
+      "has_viewbox": true
+    },
+    {
+      "path": "assets/charts/data_explorer_selected128_split_rows.svg",
+      "exists": true,
+      "bytes": 50637,
       "format": "SVG",
       "has_viewbox": true
     },

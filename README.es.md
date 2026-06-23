@@ -38,7 +38,7 @@
 
 Este repositorio convierte el episodio público de muestra de Xperience-10M en un laboratorio verificable de tareas para embodied AI. Empieza por el panel visual y el estado del proyecto; después entra en las tareas, matrices de resultados y espejos de Hugging Face.
 
-**Actualizado:** 2026-06-21.
+**Actualizado:** 2026-06-23.
 
 **Alcance:** la suite reproducible usa un episodio público; los resultados de 128 episodios publican solo métricas, reportes, predicciones seguras y tarjetas de modelo. No se redistribuyen MP4/HDF5/RRD originales, pesos completos de Qwen ni datos gated.
 
@@ -64,6 +64,7 @@ Entradas: [guia de dos lineas de evidencia](TWO_EVIDENCE_LINES.md), [datos de do
 | Ver las 20 tareas | [guia de 20 tareas](TASK_SUITE_20.md), [datos de contratos de tarea](docs/data/task_suite_20.json) |
 | Comparar resultados | [conclusiones de investigacion](RESEARCH_TAKEAWAYS.md), [tabla de 180 resultados](docs/data/task_method_20_result_matrix.json) |
 | Inspeccionar una muestra | [explorador de un episodio](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [mapa de archivos de muestra](docs/data/raw_sample_files.json) |
+| Comparar sample / 128 / dataset completo | [analisis del data explorer](DATA_EXPLORER_ANALYSIS.md), [seccion web de analisis](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
 | Leer las tres direcciones foundation | [tres pipelines foundation](THREE_FOUNDATION_PIPELINES.md), [datos de contratos de pipeline](docs/data/three_foundation_pipelines.json) |
 | Reproducir o auditar | [guia de reproducibilidad](REPRODUCIBILITY.md), [contrato de evidencia](EVIDENCE_CONTRACT.md) |
 
@@ -71,6 +72,7 @@ Entradas: [guia de dos lineas de evidencia](TWO_EVIDENCE_LINES.md), [datos de do
 
 - Regla de lectura: si tiene una métrica, es una tarea de las 20; si explica qué estudia la evidencia, es una de las 4 research directions; si define inputs/outputs de entrenamiento, es una de las 3 foundation pipelines; si combina percepción, memoria 3D, lenguaje, acción y planificación, es el unified embodied model target, no otro eje de score.
 - Datos: ventanas de 20 frames con video, audio, profundidad, pose/SLAM, mocap, IMU, calibración y lenguaje.
+- Exploracion de datos: la nueva capa separa el sample publico, los exports selected-128 y la metadata del dataset gated completo.
 - Tareas: 20 contratos para reconocimiento, predicción, recuperación, reconstrucción, sincronización, horizonte largo, relación acción-objeto y puentes de sensores.
 - Resultados: minimal/NN de un episodio cubren 20/20; las ramas de 128 episodios separan metadata, raw features, Qwen3 y Cosmos; la matriz pública está en 180/180 registros con score: 174 direct y 6 compact proxy, con proxy targets visibles.
 - Direcciones: spatial intelligence, human-video world model y vision-language-action tienen mapeo de tareas y requisitos de evidencia; el objetivo largo plazo es un unified embodied foundation model.
