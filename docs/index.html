@@ -599,6 +599,57 @@
       line-height: 1.65;
       text-wrap: pretty;
     }
+    .hero-author-card {
+      display: grid;
+      gap: 14px;
+      max-width: 720px;
+      margin-top: 22px;
+      padding: 16px;
+      border: 1px solid rgba(204, 255, 160, 0.24);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(204, 255, 160, 0.14), transparent 34%),
+        linear-gradient(180deg, rgba(204, 255, 160, 0.07), rgba(2, 5, 2, 0.66));
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+    }
+    .hero-author-card strong {
+      display: block;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: clamp(20px, 2vw, 28px);
+      line-height: 1.1;
+    }
+    .hero-author-card p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .hero-author-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+    .hero-author-links a {
+      display: inline-flex;
+      min-height: 36px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 13px;
+      border: 1px solid rgba(103, 232, 209, 0.28);
+      border-radius: 999px;
+      background: rgba(103, 232, 209, 0.08);
+      color: var(--cyan);
+      font-family: var(--font-btn);
+      font-size: 12px;
+      font-weight: 780;
+      text-decoration: none;
+    }
+    .hero-author-links a:hover {
+      border-color: rgba(204, 255, 160, 0.54);
+      background: rgba(204, 255, 160, 0.10);
+      color: var(--green);
+    }
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -7116,6 +7167,18 @@
         <p class="hero-copy">
           This project builds on the Xperience-10M egocentric dataset released by Ropedia and turns it into public, reproducible embodied-AI evaluation materials. It defines 20 task contracts, provides a fully inspectable sample-episode line, and adds a selected-128 comparison line for baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Across 180 scored method-task records, direct scores stay separate from six clearly marked compact-proxy estimates, so public-safe feature results are not confused with direct raw-target measurements.
         </p>
+        <div class="hero-author-card" aria-label="Project author and primary links">
+          <div>
+            <strong>Built by Chaoyue He</strong>
+            <p>AI / Multimodal / Embodied-AI evaluation showcase for the Ropedia application.</p>
+          </div>
+          <div class="hero-author-links">
+            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite">View GitHub</a>
+            <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">View HF Space</a>
+            <a href="#result-matrix-table">View Result Matrix</a>
+            <a href="https://chaoyue0307.github.io/">Contact</a>
+          </div>
+        </div>
         <div class="hero-actions">
           <a class="button primary" href="#overview">Start: project scope</a>
           <a class="button" href="#takeaways">Cite current results</a>
@@ -9723,6 +9786,7 @@
       ".hero .eyebrow",
       ".hero h1",
       ".hero-copy",
+      ".hero-author-card",
       ".hero-actions",
       ".suite-line-card",
       ".hero-path",
