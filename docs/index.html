@@ -6986,8 +6986,8 @@
         <a href="#pipeline">Method</a>
         <a href="#takeaways">Results</a>
         <a href="#directions">Directions</a>
-        <a href="#glossary">Glossary</a>
         <a href="#roadmap">Roadmap</a>
+        <a href="#glossary">Glossary</a>
       </div>
       <div class="nav-tools">
         <div class="site-language notranslate" translate="no" data-short="EN">
@@ -7074,20 +7074,20 @@
           </article>
         </div>
         <div class="hero-paths" aria-label="Choose a project path">
-          <a class="hero-path" href="#overview">
-            <small>Understand</small>
-            <strong>Project in 5 minutes</strong>
-            <span>Brief, scope boundary, public sample, and what is complete today.</span>
+          <a class="hero-path" href="#dataset-card">
+            <small>Start with data</small>
+            <strong>Dataset scope</strong>
+            <span>Official Xperience-10M context, public sample files, and selected-128 boundaries.</span>
           </a>
           <a class="hero-path" href="#suite">
             <small>Inspect</small>
-            <strong>Tasks and results</strong>
-            <span>20 task contracts, radar views, method rows, and source audits.</span>
+            <strong>Tasks and method</strong>
+            <span>20 task contracts, feature construction, leakage controls, and baseline heads.</span>
           </a>
-          <a class="hero-path" href="#run">
-            <small>Reproduce</small>
-            <strong>Run the public pipeline</strong>
-            <span>Commands, validators, packaged mirrors, and release checks.</span>
+          <a class="hero-path" href="#takeaways">
+            <small>Compare</small>
+            <strong>Results</strong>
+            <span>Evidence lines, 180 scored records, direct/proxy status, and model diagnostics.</span>
           </a>
           <a class="hero-path" href="#directions">
             <small>Extend</small>
@@ -7183,29 +7183,29 @@
   <main id="main" class="continuous" data-active-tab="start">
     <div class="project-tabs-shell" aria-label="Current section navigation" hidden aria-hidden="true">
       <div class="wrap project-tabs" role="tablist" aria-label="Project sections" hidden aria-hidden="true">
-        <button type="button" class="project-tab active" id="tab-start" role="tab" data-tab-key="start" data-default-section="overview" aria-selected="true" aria-pressed="true" aria-controls="overview roadmap development-directions reading-path">
+        <button type="button" class="project-tab active" id="tab-start" role="tab" data-tab-key="start" data-default-section="overview" aria-selected="true" aria-pressed="true" aria-controls="overview">
           <strong>Start</strong>
-          <span>project overview and roadmap</span>
+          <span>scope and project identity</span>
         </button>
         <button type="button" class="project-tab" id="tab-data" role="tab" data-tab-key="data" data-default-section="dataset-card" aria-selected="false" aria-pressed="false" aria-controls="dataset-card data-analysis raw-sample suite walkthroughs" tabindex="-1">
           <strong>Data & Tasks</strong>
           <span>dataset sample and task suite</span>
         </button>
-        <button type="button" class="project-tab" id="tab-method" role="tab" data-tab-key="method" data-default-section="pipeline" aria-selected="false" aria-pressed="false" aria-controls="protocol pipeline architectures features" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-method" role="tab" data-tab-key="method" data-default-section="pipeline" aria-selected="false" aria-pressed="false" aria-controls="protocol pipeline features architectures" tabindex="-1">
           <strong>Method</strong>
           <span>pipeline and model design</span>
         </button>
-        <button type="button" class="project-tab" id="tab-results" role="tab" data-tab-key="results" data-default-section="takeaways" aria-selected="false" aria-pressed="false" aria-controls="takeaways" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-results" role="tab" data-tab-key="results" data-default-section="takeaways" aria-selected="false" aria-pressed="false" aria-controls="takeaways evidence" tabindex="-1">
           <strong>Results</strong>
           <span>takeaways and baselines</span>
         </button>
-        <button type="button" class="project-tab" id="tab-directions" role="tab" data-tab-key="directions" data-default-section="directions" aria-selected="false" aria-pressed="false" aria-controls="directions" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-directions" role="tab" data-tab-key="directions" data-default-section="directions" aria-selected="false" aria-pressed="false" aria-controls="directions development-directions roadmap" tabindex="-1">
           <strong>Directions</strong>
-          <span>four tracks and probes</span>
+          <span>directions, pipelines, roadmap</span>
         </button>
-        <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="artifacts" aria-selected="false" aria-pressed="false" aria-controls="evidence glossary artifacts omni-scale-up run" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="reading-path" aria-selected="false" aria-pressed="false" aria-controls="reading-path glossary artifacts omni-scale-up run" tabindex="-1">
           <strong>Resources</strong>
-          <span>research artifacts and scale-up</span>
+          <span>project path, mirrors, commands</span>
         </button>
       </div>
       <div class="wrap section-tabs" id="sectionTabs" role="tablist" aria-label="Sections in the current area"></div>
@@ -7239,14 +7239,14 @@
         <div class="reader-route-panel" aria-label="Project route through the task suite">
           <div class="reader-route-copy">
             <small>project route</small>
-            <strong>Four project layers connect scope, data, results, and reuse.</strong>
-            <p>The project starts with the shared 20-task vocabulary, then links source files, 1-episode and selected-128 evidence lines, direct/proxy status, and the exact reproduction or extension artifacts.</p>
+            <strong>Four project layers connect data, tasks, methods, and results.</strong>
+            <p>The project starts with the Xperience-10M data scope, then explains the 20-task contracts, the baseline/model pipeline, the result table, and the exact reproduction or extension artifacts.</p>
           </div>
           <div class="reader-route-list">
-            <a href="#suite"><span>01 tasks</span><strong>20-task suite</strong><em>One task vocabulary for all methods and both evidence lines.</em></a>
-            <a href="#raw-sample"><span>02 data</span><strong>Raw sample browser</strong><em>Playable files, HDF5/RRD roles, and what each file contributes to training.</em></a>
-            <a href="#takeaways"><span>03 results</span><strong>Result ledger</strong><em>Raw citeable scores first; radar values remain visual summaries.</em></a>
-            <a href="#artifacts"><span>04 reuse</span><strong>Artifacts and mirrors</strong><em>Reproduction commands, extension paths, GitHub/HF mirrors, weights, and validation outputs.</em></a>
+            <a href="#dataset-card"><span>01 data</span><strong>Dataset scope</strong><em>Official Xperience-10M context, public sample files, and selected-128 boundaries.</em></a>
+            <a href="#suite"><span>02 tasks</span><strong>20-task suite</strong><em>One task vocabulary for all methods and both evidence lines.</em></a>
+            <a href="#pipeline"><span>03 method</span><strong>Pipeline and protocol</strong><em>Feature construction, leakage controls, model heads, and evaluation rules.</em></a>
+            <a href="#takeaways"><span>04 results</span><strong>Result ledger</strong><em>Direct scores, compact-proxy cells, model diagnostics, and citeable tables.</em></a>
           </div>
         </div>
         <div class="task-axis-panel" aria-label="Relationship between tasks, research directions, training pipelines, and unified embodied model target">
@@ -7751,495 +7751,6 @@
       </div>
     </section>
 
-    <section id="roadmap" data-project-tab="start" role="tabpanel" aria-labelledby="tab-start" tabindex="-1">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Research roadmap.</h2>
-          <p>The project path moves from the current public-sample task lab to the latest verified Qwen3-Omni diagnostic run, same-split 128-episode baseline alignment, a no-new-episode enhancement pack, action/subtask error analysis, robustness runs, world/policy tracks, and the future Xperience Embodied Foundation Model pretraining goal.</p>
-        </div>
-        <div class="roadmap-entry-panel" aria-label="How to read the roadmap">
-          <div class="roadmap-entry-copy">
-            <span>Roadmap route</span>
-            <h3>Stage cards first, full task-track details second.</h3>
-            <p>The main page shows what has shipped, what is active, and what evidence supports each step. The detail page expands the same track, task, scale-up, and evidence content in one linear view.</p>
-            <div class="roadmap-quick-actions">
-              <a href="#roadmap-stages">Review stage cards</a>
-              <a href="research_roadmap.html">Roadmap details</a>
-              <a href="#development-directions">Foundation pipelines</a>
-              <a href="#result-matrix-table">180-result table</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">Roadmap note</a>
-            </div>
-          </div>
-          <ol class="roadmap-entry-steps">
-            <li><strong>1. Check the stage cards</strong><span>Follow the path from public sample to selected-128 results and future model training.</span></li>
-            <li><strong>2. Open details only when needed</strong><span>The detail page lists every track, linked task, scale-up gate, and evidence link in one sequence.</span></li>
-            <li><strong>3. Keep files as evidence</strong><span>Machine-readable mirrors stay available for validators, HF mirrors, and reproducibility scripts.</span></li>
-          </ol>
-        </div>
-        <div class="roadmap-grid" id="roadmap-stages" aria-label="Research roadmap stages">
-          <article class="roadmap-card" data-status="implemented">
-            <span class="roadmap-status">implemented</span>
-            <h3>Public-Sample Task Lab</h3>
-            <p>One public episode is converted into aligned windows, task contracts, minimal baselines, neural heads, walkthroughs, and figures.</p>
-            <div class="roadmap-meta">
-              <strong>Entry</strong><p>Public Xperience-10M sample episode available.</p>
-              <strong>Evidence</strong><p>Status, protocol, takeaways, summary metrics, and episode-task outputs.</p>
-            </div>
-          </article>
-          <article class="roadmap-card" data-status="implemented_for_first_pilot">
-            <span class="roadmap-status">implemented</span>
-            <h3>Multi-Episode Data Preparation</h3>
-            <p>Prepare official gated episodes while preserving episode-level separation and recording missing-view coverage. The first selected split is available for Qwen3-Omni diagnostics.</p>
-            <div class="roadmap-meta">
-              <strong>Entry</strong><p>Gated data access and enough storage for selected episodes.</p>
-              <strong>Evidence</strong><p>Selected-episode plan, data boundary, preparation notes, and verified package summary.</p>
-            </div>
-          </article>
-          <article class="roadmap-card" data-status="verified_latest_branch">
-            <span class="roadmap-status">verified latest run</span>
-            <h3>Qwen3-Omni LoRA Latest Diagnostic Branch</h3>
-            <p>Train lightweight adapters on selected prepared episodes and evaluate on held-out episodes with committed predictions, metrics, and run reports.</p>
-            <div class="roadmap-meta">
-              <strong>Entry</strong><p>Selected episodes prepared with no train/test episode leakage.</p>
-              <strong>Evidence</strong><p>Verified result summary, v5/v6 comparison, dataset manifest, training metadata, progress logs, metrics, and predictions.</p>
-            </div>
-          </article>
-          <article class="roadmap-card" data-status="verified_companion_result">
-            <span class="roadmap-status">verified companion result</span>
-            <h3>128-Episode Same-Split Simple/NN Baselines</h3>
-            <p>Align simple metadata/text baselines, raw-feature proxies, and neural MLP baselines to the same selected 96/16/16 split and the unified 20-task axes used by the public result matrix.</p>
-            <div class="roadmap-meta">
-              <strong>Entry</strong><p>Derived Qwen JSONL export for the selected 96/16/16 split.</p>
-              <strong>Evidence</strong><p>Baseline alignment report, summary metrics, task metrics, and the 128-task baseline runner.</p>
-            </div>
-          </article>
-          <article class="roadmap-card" data-status="current">
-            <span class="roadmap-status">current no-new-episode plan</span>
-            <h3>Selected-128 enhancement stage</h3>
-            <p>Use the same selected split, estimate dense/multiscale window exports, define hierarchical action/subtask targets, and prioritize raw-feature shards for tasks that metadata baselines cannot cover.</p>
-            <div class="roadmap-meta">
-              <strong>Entry</strong><p>Current 3,808-window selected 96/16/16 export and verified Qwen v4 metrics.</p>
-              <strong>Evidence</strong><p>Enhancement note, structured enhancement data, dense-window CSV, and the enhancement builder script.</p>
-            </div>
-          </article>
-          <article class="roadmap-card" data-status="active_next_step">
-            <span class="roadmap-status">active next step</span>
-            <h3>Action/Subtask Error-Analysis Pass</h3>
-            <p>Keep the 96/16/16 split, tighten JSON decoding or target formatting, and analyze action/subtask failures before presenting stronger model-quality numbers.</p>
-            <div class="roadmap-meta">
-              <strong>Entry</strong><p>The final diagnostic package is verified, meets strict JSON validity, and exposes weak action/subtask quality.</p>
-              <strong>Evidence</strong><p>Updated quality-target report, error-analysis tables, held-out metrics, and public-safe package.</p>
-            </div>
-          </article>
-          <article class="roadmap-card" data-status="current">
-            <span class="roadmap-status">current</span>
-            <h3>Foundation-Model Selection Matrix</h3>
-            <p>Keep Qwen3-Omni as the first trainable held-out pilot, use Cosmos 3 for world modeling and forward-dynamics trainer development, and stage policy candidates after robot-compatible action targets are explicit.</p>
-            <div class="roadmap-meta">
-              <strong>Entry</strong><p>Completed 128-episode preparation or a smaller 3-8 episode preprocessing dry run.</p>
-              <strong>Evidence</strong><p>Foundation model plan, source links, model-specific entry conditions, and evaluation additions.</p>
-            </div>
-          </article>
-          <article class="roadmap-card" data-status="partially_implemented">
-            <span class="roadmap-status">partially implemented</span>
-            <h3>64-128 Episode Robustness Run</h3>
-            <p>Test whether pilot conclusions survive broader sessions, missing modalities, and stronger ablations.</p>
-            <div class="roadmap-meta">
-              <strong>Entry</strong><p>Selected multi-episode pilot trains and evaluates cleanly.</p>
-              <strong>Evidence</strong><p>Metrics by session, task, modality, ablation, and failure type.</p>
-            </div>
-          </article>
-          <article class="roadmap-card" data-status="planned">
-            <span class="roadmap-status">planned</span>
-            <h3>Cosmos 3 and Policy-Model Extensions</h3>
-            <p>Extend toward future-window prediction, action-conditioned world modeling, synthetic-data tests, policy-style next action, and affordance reasoning.</p>
-            <div class="roadmap-meta">
-              <strong>Entry</strong><p>Enough multi-episode data, compute budget, and model-specific action or world-state targets.</p>
-              <strong>Evidence</strong><p>Task-specific held-out evaluations, qualitative inspection, and updated model cards.</p>
-            </div>
-          </article>
-          <article class="roadmap-card" data-status="future">
-            <span class="roadmap-status">future</span>
-            <h3>Xperience Embodied Foundation Model Pretraining</h3>
-            <p>Pretrain an Xperience-native domain model over synchronized video, audio, depth, pose, mocap, IMU, and language after smaller scaling stages prove value.</p>
-            <div class="roadmap-meta">
-              <strong>Entry</strong><p>Full-corpus access, PB-scale storage path, multi-node compute, and positive scaling evidence.</p>
-              <strong>Evidence</strong><p>Pretraining manifests, scaling curves, held-out evaluations, checkpoint inventory, model card, and data-boundary report.</p>
-            </div>
-          </article>
-        </div>
-        <div class="roadmap-resource-panel" aria-label="Roadmap resources and source mirrors">
-          <div class="roadmap-resource-head">
-            <div>
-              <span>Roadmap resources</span>
-              <h3>Open roadmap details; source mirrors stay attached.</h3>
-            </div>
-            <p>The roadmap has three layers: this concise planning view, a focused detail page for the full track and task map, and structured mirrors used by validators and HF/GitHub publication scripts.</p>
-          </div>
-          <div class="roadmap-resource-grid">
-            <article class="roadmap-resource-card primary">
-              <small>detail page</small>
-              <h3>Focused roadmap detail page</h3>
-              <p>The detail page keeps the four research directions, linked task heads, stage gates, current evidence, and next steps in one sequence without nested controls.</p>
-              <div class="roadmap-resource-actions">
-                <a href="research_roadmap.html">Open details</a>
-                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">Read roadmap note</a>
-              </div>
-            </article>
-            <article class="roadmap-resource-card">
-              <small>training plan</small>
-              <h3>Three foundation pipelines</h3>
-              <p>Spatial intelligence, human-video world modeling, and VLA training use different inputs and outputs while sharing the Xperience-10M sample structure.</p>
-              <div class="roadmap-resource-actions">
-                <a href="#development-directions">Open pipelines</a>
-                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/THREE_FOUNDATION_PIPELINES.md">Pipeline note</a>
-              </div>
-            </article>
-            <article class="roadmap-resource-card">
-              <small>scale-up state</small>
-              <h3>Selected-128 and data-boundary evidence</h3>
-              <p>Use these notes to understand which selected-episode artifacts are public-safe, which raw files remain gated, and how the 128-episode comparison is staged.</p>
-              <div class="roadmap-resource-actions">
-                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_STATUS.md">Project status</a>
-                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">Data status</a>
-              </div>
-            </article>
-            <article class="roadmap-resource-card">
-              <small>future model</small>
-              <h3>Xperience-native pretraining plan</h3>
-              <p>The long-range goal is an Xperience-native embodied foundation model after smaller selected-episode stages prove value and infrastructure is ready.</p>
-              <div class="roadmap-resource-actions">
-                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">Pretraining plan</a>
-                <a href="#directions">Four directions</a>
-              </div>
-            </article>
-          </div>
-          <details class="structured-mirrors">
-            <summary>Structured mirrors for validators and reproducibility scripts</summary>
-            <p class="structured-mirror-note">These are not the best first reading path. They are kept here so the public site, README mirrors, HF bundles, and local validators point to the same source records.</p>
-            <div class="structured-mirror-grid">
-              <a href="data/research_roadmap.json">Roadmap stage mirror</a>
-              <a href="data/research_roadmap_interactive.json">Roadmap detail data</a>
-              <a href="data/foundation_model_plan.json">Foundation-plan mirror</a>
-              <a href="data/three_foundation_pipelines.json">Three-pipeline mirror</a>
-              <a href="data/additional_development_directions.json">Development-direction mirror</a>
-              <a href="data/task_suite_enhancement_128.json">Selected-128 enhancement mirror</a>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section id="development-directions" data-project-tab="start" role="tabpanel" aria-labelledby="tab-start" tabindex="-1">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Three foundation-model training pipelines.</h2>
-          <p>This is the 3-pipeline layer of the public structure. It is separate from the four research directions: directions organize what the 20 task scores study, while these pipelines describe how Xperience-10M files can train larger spatial, world-model, and vision-language-action models.</p>
-        </div>
-        <div class="foundation-pipeline-grid" aria-label="Three high-resolution foundation direction slide diagrams">
-          <article class="foundation-pipeline-card">
-            <img src="assets/foundation-pipelines/spatial-intelligence-pipeline.png?v=foundation-slides-v10" alt="High-resolution slide diagram showing the Spatial intelligence models direction for Xperience-10M.">
-            <div class="foundation-pipeline-body">
-              <span>High-resolution direction slide</span>
-              <h3>Spatial intelligence models</h3>
-              <p>Train spatial-memory models from multiview RGB, egocentric video, depth, pose, calibration, object/contact cues, and language prompts; evaluate spatial QA, object permanence, counting, retrieval, and pose-aware consistency.</p>
-              <div class="foundation-io-panel" aria-label="Spatial intelligence one-sample training input and output">
-                <div class="foundation-io-row">
-                  <strong>Sample input</strong>
-                  <p>Use <code>windows.csv</code> and <code>shared_windows.npz</code> to slice each 20-frame window, then join six MP4 RGB streams with <code>annotation.hdf5</code> depth, camera pose, SLAM/calibration, object cues, contacts, and optional language questions.</p>
-                </div>
-                <div class="foundation-io-row">
-                  <strong>Training output</strong>
-                  <p>Build targets such as camera-view match, object relevance, object-set memory, depth/pose reconstruction proxy, caption-grounded retrieval, and spatial QA answers derived from the same public annotation timeline.</p>
-                </div>
-                <div class="foundation-io-row">
-                  <strong>Existing hooks</strong>
-                  <div class="foundation-io-tasks">
-                    <a href="#suite">Tasks 8/10/12/14/16</a>
-                    <a href="data/task_suite_20.json">20-task contract data</a>
-                    <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">window manifest</a>
-                  </div>
-                </div>
-              </div>
-              <div class="foundation-pipeline-links">
-                <a href="data/three_foundation_pipelines.json">Structured pipeline mirror</a>
-                <a href="assets/foundation-pipelines/spatial-intelligence-pipeline.png">Open image</a>
-              </div>
-            </div>
-          </article>
-          <article class="foundation-pipeline-card">
-            <img src="assets/foundation-pipelines/human-video-world-model-pipeline.png?v=foundation-slides-v10" alt="High-resolution slide diagram showing the Human-video world models direction for Xperience-10M.">
-            <div class="foundation-pipeline-body">
-              <span>High-resolution direction slide</span>
-              <h3>Human-video world models</h3>
-              <p>Train future-prediction models from observed interaction windows to score next action, next subtask, future object set, contact transition, camera-motion delta, and latent future state, with Qwen-style probes and Cosmos-style dynamics kept separate.</p>
-              <div class="foundation-io-panel" aria-label="Human-video world-model one-sample training input and output">
-                <div class="foundation-io-row">
-                  <strong>Sample input</strong>
-                  <p>Take the current 20-frame observed window at time <code>t</code> from <code>shared_windows.npz</code>: RGB/audio/sensor summaries, hand/body motion, camera pose, current object/contact state, and current action/subtask context only.</p>
-                </div>
-                <div class="foundation-io-row">
-                  <strong>Training output</strong>
-                  <p>Shift the same episode timeline forward to produce next-action, next-subtask, future object-set, contact-transition, time-to-transition, camera-motion delta, or latent/future-feature targets. Future labels stay out of the input.</p>
-                </div>
-                <div class="foundation-io-row">
-                  <strong>Existing hooks</strong>
-                  <div class="foundation-io-tasks">
-                    <a href="#suite">Tasks 4/13/14/17/20</a>
-                    <a href="data/unified_task_model_radar.json">model scores</a>
-                    <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json">future probes</a>
-                  </div>
-                </div>
-              </div>
-              <div class="foundation-pipeline-links">
-                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/THREE_FOUNDATION_PIPELINES.md">Track note</a>
-                <a href="assets/foundation-pipelines/human-video-world-model-pipeline.png">Open image</a>
-              </div>
-            </div>
-          </article>
-          <article class="foundation-pipeline-card">
-            <img src="assets/foundation-pipelines/vision-language-action-pipeline.png?v=foundation-slides-v11" alt="High-resolution slide diagram showing the Vision-language-action models direction for Xperience-10M.">
-            <div class="foundation-pipeline-body">
-              <span>High-resolution direction slide</span>
-              <h3>Vision-language-action models</h3>
-              <p>Train VLA or policy-compatible heads only after converting egocentric video, captions, hand/body motion, contacts, objects, and procedures into traceable action tokens, chunks, and object-conditioned action targets.</p>
-              <div class="foundation-io-panel" aria-label="Vision-language-action one-sample training input and output">
-                <div class="foundation-io-row">
-                  <strong>Sample input</strong>
-                  <p>Use egocentric/fisheye video windows, caption/object context from <code>annotation.hdf5</code>, hand/body mocap, contact state, and current subtask text as the observation-language side of each training pair.</p>
-                </div>
-                <div class="foundation-io-row">
-                  <strong>Training output</strong>
-                  <p>For the one-sample suite, output action-token proxies: current/next action, object-conditioned action relation, contact state, interaction-text class, subtask transition, or hand-trajectory/action-chunk proxy. Robot action chunks need a later retargeting converter.</p>
-                </div>
-                <div class="foundation-io-row">
-                  <strong>Existing hooks</strong>
-                  <div class="foundation-io-tasks">
-                    <a href="#suite">Tasks 1/4/5/6/15/18</a>
-                    <a href="data/task_walkthroughs.json">task walkthroughs</a>
-                    <a href="data/three_foundation_pipelines.json">track contract</a>
-                  </div>
-                </div>
-              </div>
-              <div class="foundation-pipeline-links">
-                <a href="data/three_foundation_pipelines.json">Structured pipeline mirror</a>
-                <a href="assets/foundation-pipelines/vision-language-action-pipeline.png">Open image</a>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="artifact-grid">
-          <article class="artifact"><h3>Episode taxonomy and data engine</h3><p>Build an episode atlas, category tags, balance report, and split builder across activities, objects, scenes, sessions, people, and missing modalities.</p><a href="data/additional_development_directions.json">Open development plan</a></article>
-          <article class="artifact"><h3>Standardized benchmark protocol</h3><p>Version train/val/test manifests, task cards, leakage checks, metric scripts, and reference baselines so future model scores are comparable.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ADDITIONAL_DEVELOPMENT_DIRECTIONS.md">Open benchmark protocol note</a></article>
-          <article class="artifact"><h3>Multimodal representation learning</h3><p>Train contrastive and masked-prediction encoders over synchronized video, audio, depth, pose, mocap, IMU, and language windows.</p><a href="data/additional_development_directions.json">Open representation-learning plan</a></article>
-          <article class="artifact"><h3>Skill and procedure graphs</h3><p>Mine action steps, transitions, preconditions, effects, and temporal graphs that connect egocentric perception to planning.</p><a href="data/research_directions.json">current task map</a></article>
-          <article class="artifact"><h3>Human-object affordances</h3><p>Add contact, reachable-object, tool-use, and next-affordance tasks using hands, mocap, objects, contacts, video, and language.</p><a href="data/task_walkthroughs.json">task walkthroughs</a></article>
-          <article class="artifact"><h3>3D/4D scene and object memory</h3><p>Fuse depth, pose/SLAM, multiview video, and object cues into persistent scene/object maps for spatial reasoning and object permanence.</p><a href="data/foundation_model_plan.json">model tracks</a></article>
-          <article class="artifact"><h3>Quality and sync diagnostics</h3><p>Track timestamp drift, missing streams, calibration consistency, corrupted files, and degraded-mode manifests before large training runs.</p><a href="data/evidence_contract.json">evidence contract</a></article>
-          <article class="artifact"><h3>Policy and simulation transfer</h3><p>Convert mocap, hand trajectories, contacts, and object states into action tokens, robot-compatible targets, and imitation-learning examples.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">foundation plan</a></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="protocol" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Evaluation protocol is explicit.</h2>
-          <p>The protocol is generated from committed metric artifacts and records the exact data unit, split, task targets, leakage controls, and current limitations before score comparison.</p>
-        </div>
-        <div class="artifact-grid">
-          <article class="artifact primary-artifact"><div><h3>Data unit</h3><p>One 20-frame aligned window from the public sample episode, stride 5 frames, 1,161 windows total, represented by 8,546 synchronized multimodal dimensions.</p></div><a href="data/evaluation_protocol.json">evaluation protocol</a></article>
-          <article class="artifact"><h3>Split policy</h3><p>Single-episode chronological 70/30 train/test split. This avoids random future-window mixing; cross-episode generalization is measured in the later multi-episode pilot.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVALUATION_PROTOCOL.md">protocol document</a></article>
-          <article class="artifact"><h3>Metric contract</h3><p>All 20 tasks list input, target, primary metric, baseline score, and source artifact path in the unified suite file.</p><a href="data/task_suite_20.json">task contract data</a></article>
-          <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target-side signals, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
-          <article class="artifact"><h3>Audio ablation</h3><p>Audio and no-audio variants are evaluated across the walkthrough-backed task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
-          <article class="artifact"><h3>Foundation track selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 is the world-model track with a camera-pose proxy forward-dynamics contract ready for trainer work, policy models wait for robot-compatible action targets, and Xperience-native pretraining remains a later full-corpus goal.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
-          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. The selected multi-episode Qwen3-Omni final diagnostic result is verified and meets the JSON-validity target; Cosmos3-Nano has a verified future-window compatibility package; and Cosmos3-Super has a verified base-weight JSON-task evaluation plus a fine-tuned forward-dynamics LoRA branch. The next stage is action/subtask error analysis, stronger held-out metrics, and policy-target conversion.</p><a href="data/omni_model_comparison.json">result comparison</a></article>
-          <article class="artifact"><h3>Selected-128 next stressor</h3><p>Before adding episodes, the suite should try `multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets, label-normalized scoring, and compact raw-feature shards for unsupported tasks.</p><a href="data/task_suite_enhancement_128.json">enhancement data</a></article>
-          <article class="artifact"><h3>Public-safe scale-up gate</h3><p>Future Omni, Cosmos, and policy tracks use the same episode split discipline, training metadata, held-out predictions, metrics, run report, and public-safe package gate.</p><a href="data/foundation_model_plan.json">scale-up status</a></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="evidence" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Current experiments and next milestones.</h2>
-          <p>The project shows the completed public-sample task suite and the first verified multi-episode Qwen3-Omni diagnostic pilot, then lays out the next quality-improvement and model-extension steps.</p>
-        </div>
-        <div class="evidence-grid">
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Sample windows and 20-task results</h3>
-            <p>5,821 frames become 1,161 synchronized 20-frame windows with an 8,546-dimensional representation, 20 task contracts, and the current 180-record public result matrix.</p>
-            <div class="evidence-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">task results</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature inputs</a>
-              <a href="data/task_method_20_result_matrix.json">result matrix</a>
-              <a href="#suite">20-task suite</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Audio and modality evidence</h3>
-            <p>Audio variants improve the primary metric on 6 walkthrough-backed task contracts, while the feature manifest and raw browser keep each modality source inspectable.</p>
-            <div class="evidence-links">
-              <a href="data/audio_ablation_summary.json">audio summary</a>
-              <a href="assets/charts/audio_ablation_delta.svg">delta chart</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/audio_ablation/AUDIO_ABLATION_SUMMARY.md">audio findings</a>
-              <a href="#raw-sample">raw browser</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Research directions and foundation pipelines</h3>
-            <p>The Ropedia directions are labeled as direct, proxy, or diagnostic coverage and connected to spatial intelligence, human-video world-model, and vision-language-action training paths.</p>
-            <div class="evidence-links">
-              <a href="data/research_directions.json">direction map</a>
-              <a href="data/research_direction_extensions.json">extension probes</a>
-              <a href="data/three_foundation_pipelines.json">pipeline data</a>
-              <a href="#directions">directions</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">current plan</span>
-            <h3>Foundation backbones are separated by role</h3>
-            <p>Qwen3-Omni is the trainable held-out LoRA track; Cosmos3 covers world-model diagnostics; OpenVLA/openpi/GR00T become policy candidates after robot-compatible action conversion; Xperience-native pretraining remains the later full-corpus goal.</p>
-            <div class="evidence-links">
-              <a href="data/foundation_model_plan.json">foundation model plan</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">plan doc</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified diagnostic</span>
-            <h3>Qwen3-Omni and Cosmos3 model evidence</h3>
-            <p>The selected 96/16/16 split has a verified Qwen3-Omni v6 package with 4,032 held-out predictions and 99.90% JSON validity. Cosmos3-Nano, Cosmos3-Super Reasoner, and Cosmos3-Super Forward-Dynamics LoRA remain separate public-safe diagnostic branches.</p>
-            <div class="evidence-links">
-              <a href="data/omni_model_comparison.json">result comparison</a>
-              <a href="data/omni_finetune_verified_result.json">pilot result</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/omni_finetune/verified_public">verified package</a>
-              <a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">current plan</span>
-            <h3>Selected-128 export and enhancement path</h3>
-            <p>The current selected-128 line has a source/feature index and can be pushed through dense/multiscale windows without changing the held-out episode split; the recommended scenario is `multiscale_20s10_40s20_80s40`.</p>
-            <div class="evidence-links">
-              <a href="data/xperience10m_128_episode_feature_index.json">source/feature index</a>
-              <a href="data/task_suite_enhancement_128.json">enhancement data</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/TASK_SUITE_ENHANCEMENT_128.md">enhancement report</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/task_suite_enhancement_128_v1_20260608/dense_window_scenarios.csv">dense scenarios</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Published mirrors and source anchors</h3>
-            <p>The website, GitHub repo, HF Space, artifact dataset, baseline model repo, consolidated weights/results repo, collection, official dataset, and HOMIE toolkit point to the same research package.</p>
-            <div class="evidence-links">
-              <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a>
-              <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">artifact dataset</a>
-              <a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite">collection</a>
-              <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official dataset</a>
-              <a href="https://github.com/Ropedia/HOMIE-toolkit">HOMIE toolkit</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Visual system and figure index</h3>
-            <p>The logo, raw-sample stream thumbnails, task-suite figure, unified radar, model-architecture figures, and LoRA training-flow figure are indexed and reused across published mirrors.</p>
-            <div class="evidence-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FIGURE_INDEX.md">figure guide</a>
-              <a href="assets/charts/unified_task_model_radar.svg">20-task radar</a>
-              <a href="assets/qwen3_omni_lora_pipeline.png">LoRA figure</a>
-              <a href="assets/brand/xperience10m-logo-social-card.png">logo card</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Governance and reproduction</h3>
-            <p>The project shares derived task artifacts, figures, reports, lightweight baselines, reproduction commands, validators, and audit records. Raw videos, raw annotations, RRD visualizations, gated data, and full Qwen weights stay outside the repo.</p>
-            <div class="evidence-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">reproducibility</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">latest rebuild</a>
-              <a href="data/publication_audit.json">publication audit</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="reading-path" data-project-tab="start" role="tabpanel" aria-labelledby="tab-start" tabindex="-1">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Research reading path.</h2>
-          <p>A newcomer should be able to move from the dataset sample to the task design, model baselines, current limitations, and scale-up plan without reading every file first.</p>
-        </div>
-        <div class="reading-grid">
-          <article class="reading-card">
-            <span class="step-index">01</span>
-            <h3>Understand the current scope</h3>
-            <p>Start with the project brief, status, dataset context, task results, roadmap, and Qwen3-Omni scale-up notes. They separate implemented single-episode work from the prepared multi-episode stage.</p>
-            <div class="reading-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">brief</a>
-              <a href="data/project_status.json">current status</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">dataset notes</a>
-              <a href="data/summary_metrics.json">task metrics</a>
-              <a href="data/research_roadmap.json">roadmap</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up</a>
-            </div>
-          </article>
-          <article class="reading-card">
-            <span class="step-index">02</span>
-            <h3>Inspect one model input</h3>
-            <p>Use the window table and feature manifest to see the aligned sample unit, modality sources, and leakage controls.</p>
-            <div class="reading-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">windows</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">features</a>
-            </div>
-          </article>
-          <article class="reading-card">
-            <span class="step-index">03</span>
-            <h3>Compare minimal vs neural heads</h3>
-            <p>Every task has a small interpretable baseline and a matching neural MLP head over the same feature contract and chronological split.</p>
-            <div class="reading-links">
-              <a href="data/summary_metrics.json">summary metrics</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural heads</a>
-            </div>
-          </article>
-          <article class="reading-card">
-            <span class="step-index">04</span>
-            <h3>Check the scale-up gate</h3>
-            <p>The multi-episode Qwen3-Omni path now has a final verified diagnostic package and public LoRA adapter. The native-pretraining plan shows how this can grow into a full-corpus research direction after action/subtask improvements and stronger task metrics.</p>
-            <div class="reading-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up status</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">data access</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">native pretraining</a>
-              <a href="data/project_packet.json">project packet</a>
-            </div>
-          </article>
-          <article class="reading-card">
-            <span class="step-index">05</span>
-            <h3>Push the current 128 episodes harder</h3>
-            <p>Use the no-new-episode enhancement pack before requesting more storage: it records dense-window estimates, `multiscale_20s10_40s20_80s40`, hierarchical labels, and raw-feature shard priorities.</p>
-            <div class="reading-links">
-            <a href="data/task_suite_enhancement_128.json">enhancement data</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/TASK_SUITE_ENHANCEMENT_128.md">enhancement report</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/omni/build_task_suite_enhancement_128.py">builder script</a>
-            </div>
-          </article>
-        </div>
-        <div class="boundary-strip">
-          <div class="boundary-item"><strong>Verified now</strong><span>One public episode, 5,821 frames, 1,161 aligned windows, 8,546 dimensions, 20 unified task contracts, 12 original neural heads, and 4 direction-extension probes.</span></div>
-          <div class="boundary-item"><strong>Next: no-new-episode scale</strong><span>The selected 128-episode suite should next use dense/multiscale windows, hierarchical labels, and raw-feature shards before adding more episodes.</span></div>
-          <div class="boundary-item"><strong>Next: error analysis</strong><span>The selected 128-episode Qwen3-Omni LoRA result has a final verified diagnostic package; JSON validity meets target, and the next pass should improve action/subtask quality.</span></div>
-          <div class="boundary-item"><strong>Not redistributed</strong><span>Raw videos, raw annotations, full Qwen weights, and private gated Xperience-10M data are not included in the public repo or HF bundles.</span></div>
-        </div>
-      </div>
-    </section>
-
     <section id="dataset-card" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
@@ -8630,6 +8141,81 @@
       </div>
     </section>
 
+    <section id="walkthroughs" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Interactive task walkthrough.</h2>
+          <p>Each task uses a common research name and a concrete case study, then opens into the input, middle modules, output, modality evidence, metric, and current limitation.</p>
+        </div>
+        <div class="task-player" id="taskPlayer">
+          <div class="player-stage">
+            <div class="player-screen">
+              <img id="playerPoster" src="assets/modalities/video.jpg" alt="Representative sample modality for the selected task">
+              <div class="player-frame-chip" id="playerFrameChip">Step 1 / 4 · Input</div>
+              <div class="player-badge">
+                <img class="player-task-icon" id="playerTaskIcon" src="assets/task-icons/01_timeline_action.svg" alt="" loading="lazy">
+                <strong id="playerBadgeTitle">Action Recognition</strong>
+                <span id="playerBadgeMeta">Egocentric Action Recognition</span>
+              </div>
+            </div>
+            <p class="player-frame-caption" id="playerFrameCaption">Input: inspect the 20-frame multimodal window before choosing the target.</p>
+            <div class="modality-strip" id="playerModalities" aria-label="Selected task modality evidence"></div>
+            <div class="player-controls">
+              <button type="button" id="playerPrev">Previous</button>
+              <button type="button" class="primary-control" id="playerPlay">Play</button>
+              <button type="button" id="playerNext">Next</button>
+              <input class="task-scrubber" id="playerScrub" type="range" min="0" max="11" value="0" step="1" aria-label="Scrub through task cards">
+              <span class="player-counter" id="playerCounter">01 / 12</span>
+            </div>
+            <div class="storyboard-steps" id="playerStoryboard" aria-label="Interactive walkthrough chapters">
+              <button type="button" class="story-button active" data-stage="0" aria-pressed="true"><strong>Input</strong><span>What enters the model</span></button>
+              <button type="button" class="story-button" data-stage="1" aria-pressed="false"><strong>Process</strong><span>How the target is built</span></button>
+              <button type="button" class="story-button" data-stage="2" aria-pressed="false"><strong>Output</strong><span>What is predicted</span></button>
+              <button type="button" class="story-button" data-stage="3" aria-pressed="false"><strong>Evaluate</strong><span>Metric and limitation</span></button>
+            </div>
+            <div class="player-progress" aria-hidden="true"><span id="playerProgress"></span></div>
+          </div>
+          <article class="player-copy" aria-live="polite">
+            <div class="player-kicker">
+              <span class="tag supervised" id="playerFamily">supervised</span>
+              <span class="status-pill" id="playerArchitecture">multiclass classifier</span>
+            </div>
+            <h3 id="playerTitle">Action Recognition</h3>
+            <p class="player-case" id="playerCase">In the coffee-making sample, a pouring window maps to the current action label.</p>
+            <div class="flow-steps">
+              <button type="button" class="flow-step active" data-stage="0" aria-pressed="true"><strong>Input</strong><em id="playerInput">20-frame multimodal window</em></button>
+              <button type="button" class="flow-step" data-stage="1" aria-pressed="false"><strong>Process</strong><em id="playerProcess">window features -> classifier</em></button>
+              <button type="button" class="flow-step" data-stage="2" aria-pressed="false"><strong>Output</strong><em id="playerOutput">current action class</em></button>
+            </div>
+            <ul class="module-list" id="playerModules"></ul>
+            <p id="playerMetric">Metric: macro-F1. Minimal 0.0500; neural MLP 0.0148.</p>
+            <p id="playerLimit">Current limitation: single-episode chronological split.</p>
+          </article>
+        </div>
+        <div class="task-selector" id="walkthroughSelector" aria-label="Task walkthrough selector"></div>
+      </div>
+    </section>
+
+    <section id="protocol" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Evaluation protocol is explicit.</h2>
+          <p>The protocol is generated from committed metric artifacts and records the exact data unit, split, task targets, leakage controls, and current limitations before score comparison.</p>
+        </div>
+        <div class="artifact-grid">
+          <article class="artifact primary-artifact"><div><h3>Data unit</h3><p>One 20-frame aligned window from the public sample episode, stride 5 frames, 1,161 windows total, represented by 8,546 synchronized multimodal dimensions.</p></div><a href="data/evaluation_protocol.json">evaluation protocol</a></article>
+          <article class="artifact"><h3>Split policy</h3><p>Single-episode chronological 70/30 train/test split. This avoids random future-window mixing; cross-episode generalization is measured in the later multi-episode pilot.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/EVALUATION_PROTOCOL.md">protocol document</a></article>
+          <article class="artifact"><h3>Metric contract</h3><p>All 20 tasks list input, target, primary metric, baseline score, and source artifact path in the unified suite file.</p><a href="data/task_suite_20.json">task contract data</a></article>
+          <article class="artifact"><h3>Leakage controls</h3><p>Scalers fit on train windows only; future labels, target-side signals, caption/object labels, and contact labels stay on the target side unless explicitly queried.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/build_evaluation_protocol.py">builder script</a></article>
+          <article class="artifact"><h3>Audio ablation</h3><p>Audio and no-audio variants are evaluated across the walkthrough-backed task contracts under the same chronological split.</p><a href="data/audio_ablation_summary.json">audio summary</a></article>
+          <article class="artifact"><h3>Foundation track selection</h3><p>Qwen3-Omni is the first trainable baseline, Cosmos 3 is the world-model track with a camera-pose proxy forward-dynamics contract ready for trainer work, policy models wait for robot-compatible action targets, and Xperience-native pretraining remains a later full-corpus goal.</p><a href="data/foundation_model_plan.json">backbone plan</a></article>
+          <article class="artifact"><h3>Next evaluation stage</h3><p>This public-sample run covers single-episode task development. The selected multi-episode Qwen3-Omni final diagnostic result is verified and meets the JSON-validity target; Cosmos3-Nano has a verified future-window compatibility package; and Cosmos3-Super has a verified base-weight JSON-task evaluation plus a fine-tuned forward-dynamics LoRA branch. The next stage is action/subtask error analysis, stronger held-out metrics, and policy-target conversion.</p><a href="data/omni_model_comparison.json">result comparison</a></article>
+          <article class="artifact"><h3>Selected-128 next stressor</h3><p>Before adding episodes, the suite should try `multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets, label-normalized scoring, and compact raw-feature shards for unsupported tasks.</p><a href="data/task_suite_enhancement_128.json">enhancement data</a></article>
+          <article class="artifact"><h3>Public-safe scale-up gate</h3><p>Future Omni, Cosmos, and policy tracks use the same episode split discipline, training metadata, held-out predictions, metrics, run report, and public-safe package gate.</p><a href="data/foundation_model_plan.json">scale-up status</a></article>
+        </div>
+      </div>
+    </section>
+
     <section id="pipeline" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
@@ -8674,6 +8260,59 @@
             <p>General embodied-intelligence model quality requires many episodes and held-out episode splits; the public sample is the development harness for that next stage.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="features" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Model inputs are traceable.</h2>
+          <p>Each task reads an aligned window, not a black-box feature blob. The cards below show the path from public-sample streams to window rows and feature groups, then the chart shows the size of each input block.</p>
+        </div>
+        <div class="source-map-grid" aria-label="Model input provenance path">
+          <article class="source-map-card">
+            <small>1 / raw source</small>
+            <h3>Start from official streams</h3>
+            <p>Six synchronized MP4 camera streams, embedded audio, HDF5 annotations, depth, pose/SLAM, mocap, IMU, calibration, and language-derived fields remain tied to the public sample episode.</p>
+            <a href="#raw-sample">Open sample browser</a>
+          </article>
+          <article class="source-map-card">
+            <small>2 / aligned window</small>
+            <h3>Slice into the same unit</h3>
+            <p>The task suite builds 20-frame windows with a 5-frame stride. Each row records episode id, start frame, end frame, center frame, timestamps, and split assignment.</p>
+            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">Open window manifest</a>
+          </article>
+          <article class="source-map-card">
+            <small>3 / feature contract</small>
+            <h3>Name every input block</h3>
+            <p>The feature contract groups the 8,546 dimensions by modality and derived signal. Omitted or target-side fields stay visible so leakage checks can be audited.</p>
+            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">Open feature contract</a>
+          </article>
+        </div>
+        <div class="source-map-panel">
+          <div class="source-map-legend" aria-label="How to read the feature block chart">
+            <article><small>source modality</small><p>Where the signal comes from: video, audio, depth, pose/SLAM, mocap, IMU, calibration, or language-derived annotation fields.</p></article>
+            <article><small>feature block</small><p>The named column group used by Minimal baselines, Neural MLP heads, and public-sample task cards.</p></article>
+            <article><small>chart width</small><p>Bar length means number of input dimensions. It is not a model score and it is not a task ranking.</p></article>
+          </div>
+          <figure class="source-map-chart-frame">
+            <img class="chart" src="assets/charts/feature_blocks.svg" alt="Feature block chart showing input dimension counts for hand joints, body joints, pose, IMU, depth, six video streams, audio, language text, SLAM point cloud, and calibration">
+          </figure>
+          <div class="source-map-caption">
+            <p><strong>Read this as provenance.</strong> A task card may say “20-frame multimodal window”; this section shows which source streams and derived feature groups make up that window before any task-specific label is attached.</p>
+            <a href="#tasks">Back to task cards</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="architectures" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The baseline task heads share four head families.</h2>
+          <p>The diagram separates the shared episode-window representation from the task-specific heads, so the task contracts stay readable before scaling to larger models.</p>
+        </div>
+        <img class="architecture-image" src="assets/task_architectures.png?v=xperience10m-nn" alt="Verified minimal and neural architecture diagram for Xperience-10M task heads">
       </div>
     </section>
 
@@ -9024,6 +8663,116 @@
       </div>
     </section>
 
+    <section id="evidence" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Current experiments and next milestones.</h2>
+          <p>The project shows the completed public-sample task suite and the first verified multi-episode Qwen3-Omni diagnostic pilot, then lays out the next quality-improvement and model-extension steps.</p>
+        </div>
+        <div class="evidence-grid">
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Sample windows and 20-task results</h3>
+            <p>5,821 frames become 1,161 synchronized 20-frame windows with an 8,546-dimensional representation, 20 task contracts, and the current 180-record public result matrix.</p>
+            <div class="evidence-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">task results</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature inputs</a>
+              <a href="data/task_method_20_result_matrix.json">result matrix</a>
+              <a href="#suite">20-task suite</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Audio and modality evidence</h3>
+            <p>Audio variants improve the primary metric on 6 walkthrough-backed task contracts, while the feature manifest and raw browser keep each modality source inspectable.</p>
+            <div class="evidence-links">
+              <a href="data/audio_ablation_summary.json">audio summary</a>
+              <a href="assets/charts/audio_ablation_delta.svg">delta chart</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/audio_ablation/AUDIO_ABLATION_SUMMARY.md">audio findings</a>
+              <a href="#raw-sample">raw browser</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Research directions and foundation pipelines</h3>
+            <p>The Ropedia directions are labeled as direct, proxy, or diagnostic coverage and connected to spatial intelligence, human-video world-model, and vision-language-action training paths.</p>
+            <div class="evidence-links">
+              <a href="data/research_directions.json">direction map</a>
+              <a href="data/research_direction_extensions.json">extension probes</a>
+              <a href="data/three_foundation_pipelines.json">pipeline data</a>
+              <a href="#directions">directions</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">current plan</span>
+            <h3>Foundation backbones are separated by role</h3>
+            <p>Qwen3-Omni is the trainable held-out LoRA track; Cosmos3 covers world-model diagnostics; OpenVLA/openpi/GR00T become policy candidates after robot-compatible action conversion; Xperience-native pretraining remains the later full-corpus goal.</p>
+            <div class="evidence-links">
+              <a href="data/foundation_model_plan.json">foundation model plan</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">plan doc</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified diagnostic</span>
+            <h3>Qwen3-Omni and Cosmos3 model evidence</h3>
+            <p>The selected 96/16/16 split has a verified Qwen3-Omni v6 package with 4,032 held-out predictions and 99.90% JSON validity. Cosmos3-Nano, Cosmos3-Super Reasoner, and Cosmos3-Super Forward-Dynamics LoRA remain separate public-safe diagnostic branches.</p>
+            <div class="evidence-links">
+              <a href="data/omni_model_comparison.json">result comparison</a>
+              <a href="data/omni_finetune_verified_result.json">pilot result</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/omni_finetune/verified_public">verified package</a>
+              <a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">current plan</span>
+            <h3>Selected-128 export and enhancement path</h3>
+            <p>The current selected-128 line has a source/feature index and can be pushed through dense/multiscale windows without changing the held-out episode split; the recommended scenario is `multiscale_20s10_40s20_80s40`.</p>
+            <div class="evidence-links">
+              <a href="data/xperience10m_128_episode_feature_index.json">source/feature index</a>
+              <a href="data/task_suite_enhancement_128.json">enhancement data</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/TASK_SUITE_ENHANCEMENT_128.md">enhancement report</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/task_suite_enhancement_128_v1_20260608/dense_window_scenarios.csv">dense scenarios</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Published mirrors and source anchors</h3>
+            <p>The website, GitHub repo, HF Space, artifact dataset, baseline model repo, consolidated weights/results repo, collection, official dataset, and HOMIE toolkit point to the same research package.</p>
+            <div class="evidence-links">
+              <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a>
+              <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">artifact dataset</a>
+              <a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite">collection</a>
+              <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official dataset</a>
+              <a href="https://github.com/Ropedia/HOMIE-toolkit">HOMIE toolkit</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Visual system and figure index</h3>
+            <p>The logo, raw-sample stream thumbnails, task-suite figure, unified radar, model-architecture figures, and LoRA training-flow figure are indexed and reused across published mirrors.</p>
+            <div class="evidence-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FIGURE_INDEX.md">figure guide</a>
+              <a href="assets/charts/unified_task_model_radar.svg">20-task radar</a>
+              <a href="assets/qwen3_omni_lora_pipeline.png">LoRA figure</a>
+              <a href="assets/brand/xperience10m-logo-social-card.png">logo card</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Governance and reproduction</h3>
+            <p>The project shares derived task artifacts, figures, reports, lightweight baselines, reproduction commands, validators, and audit records. Raw videos, raw annotations, RRD visualizations, gated data, and full Qwen weights stay outside the repo.</p>
+            <div class="evidence-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">reproducibility</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">latest rebuild</a>
+              <a href="data/publication_audit.json">publication audit</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="directions" data-project-tab="directions" role="tabpanel" aria-labelledby="tab-directions" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
@@ -9139,110 +8888,361 @@
       </div>
     </section>
 
-    <section id="architectures" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
+    <section id="development-directions" data-project-tab="directions" role="tabpanel" aria-labelledby="tab-directions" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>The baseline task heads share four head families.</h2>
-          <p>The diagram separates the shared episode-window representation from the task-specific heads, so the task contracts stay readable before scaling to larger models.</p>
+          <h2>Three foundation-model training pipelines.</h2>
+          <p>This is the 3-pipeline layer of the public structure. It is separate from the four research directions: directions organize what the 20 task scores study, while these pipelines describe how Xperience-10M files can train larger spatial, world-model, and vision-language-action models.</p>
         </div>
-        <img class="architecture-image" src="assets/task_architectures.png?v=xperience10m-nn" alt="Verified minimal and neural architecture diagram for Xperience-10M task heads">
-      </div>
-    </section>
-
-    <section id="walkthroughs" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Interactive task walkthrough.</h2>
-          <p>Each task uses a common research name and a concrete case study, then opens into the input, middle modules, output, modality evidence, metric, and current limitation.</p>
-        </div>
-        <div class="task-player" id="taskPlayer">
-          <div class="player-stage">
-            <div class="player-screen">
-              <img id="playerPoster" src="assets/modalities/video.jpg" alt="Representative sample modality for the selected task">
-              <div class="player-frame-chip" id="playerFrameChip">Step 1 / 4 · Input</div>
-              <div class="player-badge">
-                <img class="player-task-icon" id="playerTaskIcon" src="assets/task-icons/01_timeline_action.svg" alt="" loading="lazy">
-                <strong id="playerBadgeTitle">Action Recognition</strong>
-                <span id="playerBadgeMeta">Egocentric Action Recognition</span>
+        <div class="foundation-pipeline-grid" aria-label="Three high-resolution foundation direction slide diagrams">
+          <article class="foundation-pipeline-card">
+            <img src="assets/foundation-pipelines/spatial-intelligence-pipeline.png?v=foundation-slides-v10" alt="High-resolution slide diagram showing the Spatial intelligence models direction for Xperience-10M.">
+            <div class="foundation-pipeline-body">
+              <span>High-resolution direction slide</span>
+              <h3>Spatial intelligence models</h3>
+              <p>Train spatial-memory models from multiview RGB, egocentric video, depth, pose, calibration, object/contact cues, and language prompts; evaluate spatial QA, object permanence, counting, retrieval, and pose-aware consistency.</p>
+              <div class="foundation-io-panel" aria-label="Spatial intelligence one-sample training input and output">
+                <div class="foundation-io-row">
+                  <strong>Sample input</strong>
+                  <p>Use <code>windows.csv</code> and <code>shared_windows.npz</code> to slice each 20-frame window, then join six MP4 RGB streams with <code>annotation.hdf5</code> depth, camera pose, SLAM/calibration, object cues, contacts, and optional language questions.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Training output</strong>
+                  <p>Build targets such as camera-view match, object relevance, object-set memory, depth/pose reconstruction proxy, caption-grounded retrieval, and spatial QA answers derived from the same public annotation timeline.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Existing hooks</strong>
+                  <div class="foundation-io-tasks">
+                    <a href="#suite">Tasks 8/10/12/14/16</a>
+                    <a href="data/task_suite_20.json">20-task contract data</a>
+                    <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">window manifest</a>
+                  </div>
+                </div>
+              </div>
+              <div class="foundation-pipeline-links">
+                <a href="data/three_foundation_pipelines.json">Structured pipeline mirror</a>
+                <a href="assets/foundation-pipelines/spatial-intelligence-pipeline.png">Open image</a>
               </div>
             </div>
-            <p class="player-frame-caption" id="playerFrameCaption">Input: inspect the 20-frame multimodal window before choosing the target.</p>
-            <div class="modality-strip" id="playerModalities" aria-label="Selected task modality evidence"></div>
-            <div class="player-controls">
-              <button type="button" id="playerPrev">Previous</button>
-              <button type="button" class="primary-control" id="playerPlay">Play</button>
-              <button type="button" id="playerNext">Next</button>
-              <input class="task-scrubber" id="playerScrub" type="range" min="0" max="11" value="0" step="1" aria-label="Scrub through task cards">
-              <span class="player-counter" id="playerCounter">01 / 12</span>
+          </article>
+          <article class="foundation-pipeline-card">
+            <img src="assets/foundation-pipelines/human-video-world-model-pipeline.png?v=foundation-slides-v10" alt="High-resolution slide diagram showing the Human-video world models direction for Xperience-10M.">
+            <div class="foundation-pipeline-body">
+              <span>High-resolution direction slide</span>
+              <h3>Human-video world models</h3>
+              <p>Train future-prediction models from observed interaction windows to score next action, next subtask, future object set, contact transition, camera-motion delta, and latent future state, with Qwen-style probes and Cosmos-style dynamics kept separate.</p>
+              <div class="foundation-io-panel" aria-label="Human-video world-model one-sample training input and output">
+                <div class="foundation-io-row">
+                  <strong>Sample input</strong>
+                  <p>Take the current 20-frame observed window at time <code>t</code> from <code>shared_windows.npz</code>: RGB/audio/sensor summaries, hand/body motion, camera pose, current object/contact state, and current action/subtask context only.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Training output</strong>
+                  <p>Shift the same episode timeline forward to produce next-action, next-subtask, future object-set, contact-transition, time-to-transition, camera-motion delta, or latent/future-feature targets. Future labels stay out of the input.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Existing hooks</strong>
+                  <div class="foundation-io-tasks">
+                    <a href="#suite">Tasks 4/13/14/17/20</a>
+                    <a href="data/unified_task_model_radar.json">model scores</a>
+                    <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json">future probes</a>
+                  </div>
+                </div>
+              </div>
+              <div class="foundation-pipeline-links">
+                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/THREE_FOUNDATION_PIPELINES.md">Track note</a>
+                <a href="assets/foundation-pipelines/human-video-world-model-pipeline.png">Open image</a>
+              </div>
             </div>
-            <div class="storyboard-steps" id="playerStoryboard" aria-label="Interactive walkthrough chapters">
-              <button type="button" class="story-button active" data-stage="0" aria-pressed="true"><strong>Input</strong><span>What enters the model</span></button>
-              <button type="button" class="story-button" data-stage="1" aria-pressed="false"><strong>Process</strong><span>How the target is built</span></button>
-              <button type="button" class="story-button" data-stage="2" aria-pressed="false"><strong>Output</strong><span>What is predicted</span></button>
-              <button type="button" class="story-button" data-stage="3" aria-pressed="false"><strong>Evaluate</strong><span>Metric and limitation</span></button>
+          </article>
+          <article class="foundation-pipeline-card">
+            <img src="assets/foundation-pipelines/vision-language-action-pipeline.png?v=foundation-slides-v11" alt="High-resolution slide diagram showing the Vision-language-action models direction for Xperience-10M.">
+            <div class="foundation-pipeline-body">
+              <span>High-resolution direction slide</span>
+              <h3>Vision-language-action models</h3>
+              <p>Train VLA or policy-compatible heads only after converting egocentric video, captions, hand/body motion, contacts, objects, and procedures into traceable action tokens, chunks, and object-conditioned action targets.</p>
+              <div class="foundation-io-panel" aria-label="Vision-language-action one-sample training input and output">
+                <div class="foundation-io-row">
+                  <strong>Sample input</strong>
+                  <p>Use egocentric/fisheye video windows, caption/object context from <code>annotation.hdf5</code>, hand/body mocap, contact state, and current subtask text as the observation-language side of each training pair.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Training output</strong>
+                  <p>For the one-sample suite, output action-token proxies: current/next action, object-conditioned action relation, contact state, interaction-text class, subtask transition, or hand-trajectory/action-chunk proxy. Robot action chunks need a later retargeting converter.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Existing hooks</strong>
+                  <div class="foundation-io-tasks">
+                    <a href="#suite">Tasks 1/4/5/6/15/18</a>
+                    <a href="data/task_walkthroughs.json">task walkthroughs</a>
+                    <a href="data/three_foundation_pipelines.json">track contract</a>
+                  </div>
+                </div>
+              </div>
+              <div class="foundation-pipeline-links">
+                <a href="data/three_foundation_pipelines.json">Structured pipeline mirror</a>
+                <a href="assets/foundation-pipelines/vision-language-action-pipeline.png">Open image</a>
+              </div>
             </div>
-            <div class="player-progress" aria-hidden="true"><span id="playerProgress"></span></div>
-          </div>
-          <article class="player-copy" aria-live="polite">
-            <div class="player-kicker">
-              <span class="tag supervised" id="playerFamily">supervised</span>
-              <span class="status-pill" id="playerArchitecture">multiclass classifier</span>
-            </div>
-            <h3 id="playerTitle">Action Recognition</h3>
-            <p class="player-case" id="playerCase">In the coffee-making sample, a pouring window maps to the current action label.</p>
-            <div class="flow-steps">
-              <button type="button" class="flow-step active" data-stage="0" aria-pressed="true"><strong>Input</strong><em id="playerInput">20-frame multimodal window</em></button>
-              <button type="button" class="flow-step" data-stage="1" aria-pressed="false"><strong>Process</strong><em id="playerProcess">window features -> classifier</em></button>
-              <button type="button" class="flow-step" data-stage="2" aria-pressed="false"><strong>Output</strong><em id="playerOutput">current action class</em></button>
-            </div>
-            <ul class="module-list" id="playerModules"></ul>
-            <p id="playerMetric">Metric: macro-F1. Minimal 0.0500; neural MLP 0.0148.</p>
-            <p id="playerLimit">Current limitation: single-episode chronological split.</p>
           </article>
         </div>
-        <div class="task-selector" id="walkthroughSelector" aria-label="Task walkthrough selector"></div>
+        <div class="artifact-grid">
+          <article class="artifact"><h3>Episode taxonomy and data engine</h3><p>Build an episode atlas, category tags, balance report, and split builder across activities, objects, scenes, sessions, people, and missing modalities.</p><a href="data/additional_development_directions.json">Open development plan</a></article>
+          <article class="artifact"><h3>Standardized benchmark protocol</h3><p>Version train/val/test manifests, task cards, leakage checks, metric scripts, and reference baselines so future model scores are comparable.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ADDITIONAL_DEVELOPMENT_DIRECTIONS.md">Open benchmark protocol note</a></article>
+          <article class="artifact"><h3>Multimodal representation learning</h3><p>Train contrastive and masked-prediction encoders over synchronized video, audio, depth, pose, mocap, IMU, and language windows.</p><a href="data/additional_development_directions.json">Open representation-learning plan</a></article>
+          <article class="artifact"><h3>Skill and procedure graphs</h3><p>Mine action steps, transitions, preconditions, effects, and temporal graphs that connect egocentric perception to planning.</p><a href="data/research_directions.json">current task map</a></article>
+          <article class="artifact"><h3>Human-object affordances</h3><p>Add contact, reachable-object, tool-use, and next-affordance tasks using hands, mocap, objects, contacts, video, and language.</p><a href="data/task_walkthroughs.json">task walkthroughs</a></article>
+          <article class="artifact"><h3>3D/4D scene and object memory</h3><p>Fuse depth, pose/SLAM, multiview video, and object cues into persistent scene/object maps for spatial reasoning and object permanence.</p><a href="data/foundation_model_plan.json">model tracks</a></article>
+          <article class="artifact"><h3>Quality and sync diagnostics</h3><p>Track timestamp drift, missing streams, calibration consistency, corrupted files, and degraded-mode manifests before large training runs.</p><a href="data/evidence_contract.json">evidence contract</a></article>
+          <article class="artifact"><h3>Policy and simulation transfer</h3><p>Convert mocap, hand trajectories, contacts, and object states into action tokens, robot-compatible targets, and imitation-learning examples.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">foundation plan</a></article>
+        </div>
       </div>
     </section>
 
-    <section id="features" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
+    <section id="roadmap" data-project-tab="directions" role="tabpanel" aria-labelledby="tab-directions" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
-          <h2>Model inputs are traceable.</h2>
-          <p>Each task reads an aligned window, not a black-box feature blob. The cards below show the path from public-sample streams to window rows and feature groups, then the chart shows the size of each input block.</p>
+          <h2>Research roadmap.</h2>
+          <p>The project path moves from the current public-sample task lab to the latest verified Qwen3-Omni diagnostic run, same-split 128-episode baseline alignment, a no-new-episode enhancement pack, action/subtask error analysis, robustness runs, world/policy tracks, and the future Xperience Embodied Foundation Model pretraining goal.</p>
         </div>
-        <div class="source-map-grid" aria-label="Model input provenance path">
-          <article class="source-map-card">
-            <small>1 / raw source</small>
-            <h3>Start from official streams</h3>
-            <p>Six synchronized MP4 camera streams, embedded audio, HDF5 annotations, depth, pose/SLAM, mocap, IMU, calibration, and language-derived fields remain tied to the public sample episode.</p>
-            <a href="#raw-sample">Open sample browser</a>
+        <div class="roadmap-entry-panel" aria-label="How to read the roadmap">
+          <div class="roadmap-entry-copy">
+            <span>Roadmap route</span>
+            <h3>Stage cards first, full task-track details second.</h3>
+            <p>The main page shows what has shipped, what is active, and what evidence supports each step. The detail page expands the same track, task, scale-up, and evidence content in one linear view.</p>
+            <div class="roadmap-quick-actions">
+              <a href="#roadmap-stages">Review stage cards</a>
+              <a href="research_roadmap.html">Roadmap details</a>
+              <a href="#development-directions">Foundation pipelines</a>
+              <a href="#result-matrix-table">180-result table</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">Roadmap note</a>
+            </div>
+          </div>
+          <ol class="roadmap-entry-steps">
+            <li><strong>1. Check the stage cards</strong><span>Follow the path from public sample to selected-128 results and future model training.</span></li>
+            <li><strong>2. Open details only when needed</strong><span>The detail page lists every track, linked task, scale-up gate, and evidence link in one sequence.</span></li>
+            <li><strong>3. Keep files as evidence</strong><span>Machine-readable mirrors stay available for validators, HF mirrors, and reproducibility scripts.</span></li>
+          </ol>
+        </div>
+        <div class="roadmap-grid" id="roadmap-stages" aria-label="Research roadmap stages">
+          <article class="roadmap-card" data-status="implemented">
+            <span class="roadmap-status">implemented</span>
+            <h3>Public-Sample Task Lab</h3>
+            <p>One public episode is converted into aligned windows, task contracts, minimal baselines, neural heads, walkthroughs, and figures.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>Public Xperience-10M sample episode available.</p>
+              <strong>Evidence</strong><p>Status, protocol, takeaways, summary metrics, and episode-task outputs.</p>
+            </div>
           </article>
-          <article class="source-map-card">
-            <small>2 / aligned window</small>
-            <h3>Slice into the same unit</h3>
-            <p>The task suite builds 20-frame windows with a 5-frame stride. Each row records episode id, start frame, end frame, center frame, timestamps, and split assignment.</p>
-            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">Open window manifest</a>
+          <article class="roadmap-card" data-status="implemented_for_first_pilot">
+            <span class="roadmap-status">implemented</span>
+            <h3>Multi-Episode Data Preparation</h3>
+            <p>Prepare official gated episodes while preserving episode-level separation and recording missing-view coverage. The first selected split is available for Qwen3-Omni diagnostics.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>Gated data access and enough storage for selected episodes.</p>
+              <strong>Evidence</strong><p>Selected-episode plan, data boundary, preparation notes, and verified package summary.</p>
+            </div>
           </article>
-          <article class="source-map-card">
-            <small>3 / feature contract</small>
-            <h3>Name every input block</h3>
-            <p>The feature contract groups the 8,546 dimensions by modality and derived signal. Omitted or target-side fields stay visible so leakage checks can be audited.</p>
-            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">Open feature contract</a>
+          <article class="roadmap-card" data-status="verified_latest_branch">
+            <span class="roadmap-status">verified latest run</span>
+            <h3>Qwen3-Omni LoRA Latest Diagnostic Branch</h3>
+            <p>Train lightweight adapters on selected prepared episodes and evaluate on held-out episodes with committed predictions, metrics, and run reports.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>Selected episodes prepared with no train/test episode leakage.</p>
+              <strong>Evidence</strong><p>Verified result summary, v5/v6 comparison, dataset manifest, training metadata, progress logs, metrics, and predictions.</p>
+            </div>
+          </article>
+          <article class="roadmap-card" data-status="verified_companion_result">
+            <span class="roadmap-status">verified companion result</span>
+            <h3>128-Episode Same-Split Simple/NN Baselines</h3>
+            <p>Align simple metadata/text baselines, raw-feature proxies, and neural MLP baselines to the same selected 96/16/16 split and the unified 20-task axes used by the public result matrix.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>Derived Qwen JSONL export for the selected 96/16/16 split.</p>
+              <strong>Evidence</strong><p>Baseline alignment report, summary metrics, task metrics, and the 128-task baseline runner.</p>
+            </div>
+          </article>
+          <article class="roadmap-card" data-status="current">
+            <span class="roadmap-status">current no-new-episode plan</span>
+            <h3>Selected-128 enhancement stage</h3>
+            <p>Use the same selected split, estimate dense/multiscale window exports, define hierarchical action/subtask targets, and prioritize raw-feature shards for tasks that metadata baselines cannot cover.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>Current 3,808-window selected 96/16/16 export and verified Qwen v4 metrics.</p>
+              <strong>Evidence</strong><p>Enhancement note, structured enhancement data, dense-window CSV, and the enhancement builder script.</p>
+            </div>
+          </article>
+          <article class="roadmap-card" data-status="active_next_step">
+            <span class="roadmap-status">active next step</span>
+            <h3>Action/Subtask Error-Analysis Pass</h3>
+            <p>Keep the 96/16/16 split, tighten JSON decoding or target formatting, and analyze action/subtask failures before presenting stronger model-quality numbers.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>The final diagnostic package is verified, meets strict JSON validity, and exposes weak action/subtask quality.</p>
+              <strong>Evidence</strong><p>Updated quality-target report, error-analysis tables, held-out metrics, and public-safe package.</p>
+            </div>
+          </article>
+          <article class="roadmap-card" data-status="current">
+            <span class="roadmap-status">current</span>
+            <h3>Foundation-Model Selection Matrix</h3>
+            <p>Keep Qwen3-Omni as the first trainable held-out pilot, use Cosmos 3 for world modeling and forward-dynamics trainer development, and stage policy candidates after robot-compatible action targets are explicit.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>Completed 128-episode preparation or a smaller 3-8 episode preprocessing dry run.</p>
+              <strong>Evidence</strong><p>Foundation model plan, source links, model-specific entry conditions, and evaluation additions.</p>
+            </div>
+          </article>
+          <article class="roadmap-card" data-status="partially_implemented">
+            <span class="roadmap-status">partially implemented</span>
+            <h3>64-128 Episode Robustness Run</h3>
+            <p>Test whether pilot conclusions survive broader sessions, missing modalities, and stronger ablations.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>Selected multi-episode pilot trains and evaluates cleanly.</p>
+              <strong>Evidence</strong><p>Metrics by session, task, modality, ablation, and failure type.</p>
+            </div>
+          </article>
+          <article class="roadmap-card" data-status="planned">
+            <span class="roadmap-status">planned</span>
+            <h3>Cosmos 3 and Policy-Model Extensions</h3>
+            <p>Extend toward future-window prediction, action-conditioned world modeling, synthetic-data tests, policy-style next action, and affordance reasoning.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>Enough multi-episode data, compute budget, and model-specific action or world-state targets.</p>
+              <strong>Evidence</strong><p>Task-specific held-out evaluations, qualitative inspection, and updated model cards.</p>
+            </div>
+          </article>
+          <article class="roadmap-card" data-status="future">
+            <span class="roadmap-status">future</span>
+            <h3>Xperience Embodied Foundation Model Pretraining</h3>
+            <p>Pretrain an Xperience-native domain model over synchronized video, audio, depth, pose, mocap, IMU, and language after smaller scaling stages prove value.</p>
+            <div class="roadmap-meta">
+              <strong>Entry</strong><p>Full-corpus access, PB-scale storage path, multi-node compute, and positive scaling evidence.</p>
+              <strong>Evidence</strong><p>Pretraining manifests, scaling curves, held-out evaluations, checkpoint inventory, model card, and data-boundary report.</p>
+            </div>
           </article>
         </div>
-        <div class="source-map-panel">
-          <div class="source-map-legend" aria-label="How to read the feature block chart">
-            <article><small>source modality</small><p>Where the signal comes from: video, audio, depth, pose/SLAM, mocap, IMU, calibration, or language-derived annotation fields.</p></article>
-            <article><small>feature block</small><p>The named column group used by Minimal baselines, Neural MLP heads, and public-sample task cards.</p></article>
-            <article><small>chart width</small><p>Bar length means number of input dimensions. It is not a model score and it is not a task ranking.</p></article>
+        <div class="roadmap-resource-panel" aria-label="Roadmap resources and source mirrors">
+          <div class="roadmap-resource-head">
+            <div>
+              <span>Roadmap resources</span>
+              <h3>Open roadmap details; source mirrors stay attached.</h3>
+            </div>
+            <p>The roadmap has three layers: this concise planning view, a focused detail page for the full track and task map, and structured mirrors used by validators and HF/GitHub publication scripts.</p>
           </div>
-          <figure class="source-map-chart-frame">
-            <img class="chart" src="assets/charts/feature_blocks.svg" alt="Feature block chart showing input dimension counts for hand joints, body joints, pose, IMU, depth, six video streams, audio, language text, SLAM point cloud, and calibration">
-          </figure>
-          <div class="source-map-caption">
-            <p><strong>Read this as provenance.</strong> A task card may say “20-frame multimodal window”; this section shows which source streams and derived feature groups make up that window before any task-specific label is attached.</p>
-            <a href="#tasks">Back to task cards</a>
+          <div class="roadmap-resource-grid">
+            <article class="roadmap-resource-card primary">
+              <small>detail page</small>
+              <h3>Focused roadmap detail page</h3>
+              <p>The detail page keeps the four research directions, linked task heads, stage gates, current evidence, and next steps in one sequence without nested controls.</p>
+              <div class="roadmap-resource-actions">
+                <a href="research_roadmap.html">Open details</a>
+                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">Read roadmap note</a>
+              </div>
+            </article>
+            <article class="roadmap-resource-card">
+              <small>training plan</small>
+              <h3>Three foundation pipelines</h3>
+              <p>Spatial intelligence, human-video world modeling, and VLA training use different inputs and outputs while sharing the Xperience-10M sample structure.</p>
+              <div class="roadmap-resource-actions">
+                <a href="#development-directions">Open pipelines</a>
+                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/THREE_FOUNDATION_PIPELINES.md">Pipeline note</a>
+              </div>
+            </article>
+            <article class="roadmap-resource-card">
+              <small>scale-up state</small>
+              <h3>Selected-128 and data-boundary evidence</h3>
+              <p>Use these notes to understand which selected-episode artifacts are public-safe, which raw files remain gated, and how the 128-episode comparison is staged.</p>
+              <div class="roadmap-resource-actions">
+                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_STATUS.md">Project status</a>
+                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">Data status</a>
+              </div>
+            </article>
+            <article class="roadmap-resource-card">
+              <small>future model</small>
+              <h3>Xperience-native pretraining plan</h3>
+              <p>The long-range goal is an Xperience-native embodied foundation model after smaller selected-episode stages prove value and infrastructure is ready.</p>
+              <div class="roadmap-resource-actions">
+                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">Pretraining plan</a>
+                <a href="#directions">Four directions</a>
+              </div>
+            </article>
           </div>
+          <details class="structured-mirrors">
+            <summary>Structured mirrors for validators and reproducibility scripts</summary>
+            <p class="structured-mirror-note">These are not the best first reading path. They are kept here so the public site, README mirrors, HF bundles, and local validators point to the same source records.</p>
+            <div class="structured-mirror-grid">
+              <a href="data/research_roadmap.json">Roadmap stage mirror</a>
+              <a href="data/research_roadmap_interactive.json">Roadmap detail data</a>
+              <a href="data/foundation_model_plan.json">Foundation-plan mirror</a>
+              <a href="data/three_foundation_pipelines.json">Three-pipeline mirror</a>
+              <a href="data/additional_development_directions.json">Development-direction mirror</a>
+              <a href="data/task_suite_enhancement_128.json">Selected-128 enhancement mirror</a>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="reading-path" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Research reading path.</h2>
+          <p>A newcomer should be able to move from the dataset sample to the task design, model baselines, current limitations, and scale-up plan without reading every file first.</p>
+        </div>
+        <div class="reading-grid">
+          <article class="reading-card">
+            <span class="step-index">01</span>
+            <h3>Understand the current scope</h3>
+            <p>Start with the project brief, status, dataset context, task results, roadmap, and Qwen3-Omni scale-up notes. They separate implemented single-episode work from the prepared multi-episode stage.</p>
+            <div class="reading-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">brief</a>
+              <a href="data/project_status.json">current status</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">dataset notes</a>
+              <a href="data/summary_metrics.json">task metrics</a>
+              <a href="data/research_roadmap.json">roadmap</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up</a>
+            </div>
+          </article>
+          <article class="reading-card">
+            <span class="step-index">02</span>
+            <h3>Inspect one model input</h3>
+            <p>Use the window table and feature manifest to see the aligned sample unit, modality sources, and leakage controls.</p>
+            <div class="reading-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">windows</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">features</a>
+            </div>
+          </article>
+          <article class="reading-card">
+            <span class="step-index">03</span>
+            <h3>Compare minimal vs neural heads</h3>
+            <p>Every task has a small interpretable baseline and a matching neural MLP head over the same feature contract and chronological split.</p>
+            <div class="reading-links">
+              <a href="data/summary_metrics.json">summary metrics</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/episode_task_suite/neural_mlp">neural heads</a>
+            </div>
+          </article>
+          <article class="reading-card">
+            <span class="step-index">04</span>
+            <h3>Check the scale-up gate</h3>
+            <p>The multi-episode Qwen3-Omni path now has a final verified diagnostic package and public LoRA adapter. The native-pretraining plan shows how this can grow into a full-corpus research direction after action/subtask improvements and stronger task metrics.</p>
+            <div class="reading-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/DATA_ACCESS_STATUS.md">scale-up status</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">data access</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">native pretraining</a>
+              <a href="data/project_packet.json">project packet</a>
+            </div>
+          </article>
+          <article class="reading-card">
+            <span class="step-index">05</span>
+            <h3>Push the current 128 episodes harder</h3>
+            <p>Use the no-new-episode enhancement pack before requesting more storage: it records dense-window estimates, `multiscale_20s10_40s20_80s40`, hierarchical labels, and raw-feature shard priorities.</p>
+            <div class="reading-links">
+            <a href="data/task_suite_enhancement_128.json">enhancement data</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/TASK_SUITE_ENHANCEMENT_128.md">enhancement report</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/scripts/omni/build_task_suite_enhancement_128.py">builder script</a>
+            </div>
+          </article>
+        </div>
+        <div class="boundary-strip">
+          <div class="boundary-item"><strong>Verified now</strong><span>One public episode, 5,821 frames, 1,161 aligned windows, 8,546 dimensions, 20 unified task contracts, 12 original neural heads, and 4 direction-extension probes.</span></div>
+          <div class="boundary-item"><strong>Next: no-new-episode scale</strong><span>The selected 128-episode suite should next use dense/multiscale windows, hierarchical labels, and raw-feature shards before adding more episodes.</span></div>
+          <div class="boundary-item"><strong>Next: error analysis</strong><span>The selected 128-episode Qwen3-Omni LoRA result has a final verified diagnostic package; JSON validity meets target, and the next pass should improve action/subtask quality.</span></div>
+          <div class="boundary-item"><strong>Not redistributed</strong><span>Raw videos, raw annotations, full Qwen weights, and private gated Xperience-10M data are not included in the public repo or HF bundles.</span></div>
         </div>
       </div>
     </section>
@@ -10037,25 +10037,26 @@ python scripts/validate_publication_package.py</code></pre>
     const sectionOrientation = document.getElementById("sectionOrientation");
     const sectionConfig = [
       { id: "overview", label: "Project Overview" },
-      { id: "roadmap", label: "Roadmap" },
-      { id: "reading-path", label: "Reading Path" },
-      { id: "dataset-card", label: "Dataset Card" },
+      { id: "dataset-card", label: "Dataset Scope" },
       { id: "data-analysis", label: "Data Explorer Analysis" },
       { id: "raw-sample", label: "Raw Sample Browser" },
       { id: "suite", label: "20-Task Suite" },
       { id: "walkthroughs", label: "Interactive Walkthrough" },
       { id: "tasks", label: "Task Cards" },
-      { id: "pipeline", label: "Pipeline" },
       { id: "protocol", label: "Evaluation Protocol" },
-      { id: "architectures", label: "Model Architectures" },
+      { id: "pipeline", label: "Pipeline" },
       { id: "features", label: "Feature Blocks" },
+      { id: "architectures", label: "Model Architectures" },
       { id: "takeaways", label: "Research Takeaways" },
       { id: "models", label: "Minimal Baselines" },
       { id: "neural", label: "Neural Heads" },
-      { id: "directions", label: "Four Directions" },
-      { id: "extensions", label: "Unified Task Evidence" },
       { id: "diagnostics", label: "Diagnostic Charts" },
       { id: "evidence", label: "Research Progress" },
+      { id: "directions", label: "Four Directions" },
+      { id: "extensions", label: "Unified Task Evidence" },
+      { id: "development-directions", label: "Foundation Pipelines" },
+      { id: "roadmap", label: "Roadmap" },
+      { id: "reading-path", label: "Project Path" },
       { id: "glossary", label: "Glossary" },
       { id: "artifacts", label: "Research Artifacts" },
       { id: "omni-scale-up", label: "Omni Scale-Up" },
@@ -10064,27 +10065,27 @@ python scripts/validate_publication_package.py</code></pre>
     const sectionLabels = Object.fromEntries(sectionConfig.map((section) => [section.id, section.label]));
     const sectionDescriptions = {
       overview: "Project scope, public boundaries, and entry paths.",
-      roadmap: "Best for planning: what has shipped and what the next experiments should do.",
-      "reading-path": "Best for choosing an order through the repo, website, and HF surfaces.",
-      "dataset-card": "Best for source alignment and public-sample boundaries.",
+      roadmap: "Best after results and directions: what has shipped and what the next experiments should do.",
+      "reading-path": "Best for choosing an order through the repo, website, and HF mirrors after the main evidence sections.",
+      "dataset-card": "Best first: official dataset context, public-sample boundaries, and selected-128 scope.",
       "data-analysis": "Best for comparing the public sample, selected 128 episodes, and Hugging Face gated full-dataset metadata.",
       "raw-sample": "Best for inspecting the sample files, media previews, and file relationships.",
       suite: "Best for the unified 20-task map, radar comparisons, task cards, and score matrix.",
       walkthroughs: "Best for case-study style task explanations.",
       tasks: "Best for the integrated task-card grid inside the 20-task suite.",
-      pipeline: "Best for understanding how raw episode data becomes features and results.",
+      pipeline: "Best after data and tasks: how raw episode data becomes features and results.",
       protocol: "Best for splits, leakage controls, metrics, and evaluation rules.",
       architectures: "Best for how task heads and model tracks are organized.",
       features: "Best for modality and feature provenance.",
-      takeaways: "Best for the fastest read on evidence lines, the 180-result matrix, baseline snapshots, neural heads, and diagnostic charts.",
+      takeaways: "Best after method/protocol: evidence lines, the 180-result matrix, baseline snapshots, neural heads, and diagnostic charts.",
       models: "Integrated subsection for minimal baseline evidence inside Results.",
       neural: "Integrated subsection for neural MLP task-head comparisons inside Results.",
-      directions: "Best for mapping tasks to spatial, world-model, and VLA directions.",
+      directions: "Best after results: how the same tasks support spatial, world-model, and VLA directions.",
       extensions: "Integrated subsection for unified task provenance inside Directions.",
       diagnostics: "Integrated subsection for charts and error-analysis evidence inside Results.",
       glossary: "Best for terms that can be confused across data, tasks, models, metrics, and public mirrors.",
       artifacts: "Best for finding files, mirrors, weights, scripts, and checks.",
-      evidence: "Best for current experiment status and milestones.",
+      evidence: "Best after the result table: current experiment status, model evidence, and milestones.",
       "omni-scale-up": "Best for Qwen3-Omni and Cosmos3 status.",
       run: "Best for reproduction commands."
     };
