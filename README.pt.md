@@ -53,19 +53,19 @@ Fórmula: 2 métodos de um episódio x 20 tarefas = 40; 7 métodos de 128 episó
 
 Blocos de métodos: a linha 1 contém task-head baselines (Minimal, Neural MLP). A linha 2 separa aligned baseline heads (metadata simple/NN, raw-feature simple/NN), a série Qwen3-Omni (Qwen3-Omni v6 LoRA) e a série Cosmos3 (Cosmos3-Super Reasoner, Cosmos3-Nano Future Window). Qwen3 v1-v6 é uma linhagem LoRA/eval interna à linha 2, não as evidence lines do projeto; a matriz de 20 tarefas usa v6 e v5 fica como pinned prior release. Cosmos3-Super Forward-Dynamics LoRA é publicado como adapter/pesos/resultados separado e não conta como linha de método na matriz de 20 tarefas.
 
-Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
+Entradas: [guia de duas linhas de evidencia](TWO_EVIDENCE_LINES.md), [dados das duas linhas](docs/data/two_evidence_lines.json), [tabela de 180 resultados](docs/data/task_method_20_result_matrix.json), [resumo de resultados das duas linhas](docs/data/two_evidence_line_result_summary.json).
 
 ## Rota Rápida
 
 | Objetivo | Entrada |
 | --- | --- |
-| Entender o projeto | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
-| Escolher a superfície pública correta | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
-| Ver as 20 tarefas | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
-| Comparar resultados | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
-| Inspecionar uma amostra | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
-| Ler as três pipelines foundation | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
-| Reproduzir ou auditar | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+| Entender o projeto | [resumo do projeto](PROJECT_BRIEF.md), [status do projeto](PROJECT_STATUS.md) |
+| Escolher a superfície pública correta | [mapa publico de leitura](PUBLIC_READER_MAP.md) |
+| Ver as 20 tarefas | [guia das 20 tarefas](TASK_SUITE_20.md), [dados dos contratos de tarefa](docs/data/task_suite_20.json) |
+| Comparar resultados | [conclusões de pesquisa](RESEARCH_TAKEAWAYS.md), [tabela de 180 resultados](docs/data/task_method_20_result_matrix.json) |
+| Inspecionar uma amostra | [explorador de um episódio](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [mapa dos arquivos de amostra](docs/data/raw_sample_files.json) |
+| Ler as três pipelines foundation | [três pipelines foundation](THREE_FOUNDATION_PIPELINES.md), [dados dos contratos de pipeline](docs/data/three_foundation_pipelines.json) |
+| Reproduzir ou auditar | [guia de reprodutibilidade](REPRODUCIBILITY.md), [contrato de evidencia](EVIDENCE_CONTRACT.md) |
 
 ## Estrutura
 

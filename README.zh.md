@@ -53,19 +53,19 @@
 
 方法块：Line 1 是 task-head baselines（Minimal、Neural MLP）。Line 2 分成 aligned baseline heads（metadata simple/NN、raw-feature simple/NN）、Qwen3-Omni series（Qwen3-Omni v6 LoRA）和 Cosmos3 series（Cosmos3-Super Reasoner、Cosmos3-Nano Future Window）。Qwen3 run v1-v6 是 Line 2 内部的 LoRA/评估演进线，不是项目的 evidence lines；20-task matrix 使用 v6，v5 是 pinned prior release。Cosmos3-Super Forward-Dynamics LoRA 是单独发布的 adapter 权重/结果，不计入 20-task matrix method row。
 
-入口：[`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)、[`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json)。
+入口：[双证据线说明](TWO_EVIDENCE_LINES.md)、[双证据线数据](docs/data/two_evidence_lines.json)、[180 条结果表](docs/data/task_method_20_result_matrix.json)、[双线结果摘要](docs/data/two_evidence_line_result_summary.json)。
 
 ## 快速入口
 
 | 目标 | 入口 |
 | --- | --- |
-| 快速理解项目 | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
-| 选择 GitHub / 网页 / HF 的正确入口 | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
-| 查看 20 个任务定义 | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
-| 比较结果 | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
-| 查看一个 sample 的全部文件关系 | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
-| 阅读三个基础模型方向 | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
-| 复现与审计 | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+| 快速理解项目 | [项目简报](PROJECT_BRIEF.md), [项目状态](PROJECT_STATUS.md) |
+| 选择 GitHub / 网页 / HF 的正确入口 | [公共阅读地图](PUBLIC_READER_MAP.md) |
+| 查看 20 个任务定义 | [20 任务指南](TASK_SUITE_20.md), [任务契约数据](docs/data/task_suite_20.json) |
+| 比较结果 | [研究结论](RESEARCH_TAKEAWAYS.md), [180 条结果表](docs/data/task_method_20_result_matrix.json) |
+| 查看一个 sample 的全部文件关系 | [单 episode 浏览器](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample 文件地图](docs/data/raw_sample_files.json) |
+| 阅读三个基础模型方向 | [三条基础模型 pipeline](THREE_FOUNDATION_PIPELINES.md), [pipeline 契约数据](docs/data/three_foundation_pipelines.json) |
+| 复现与审计 | [复现指南](REPRODUCIBILITY.md), [证据契约](EVIDENCE_CONTRACT.md) |
 
 ## 核心结构
 

@@ -53,19 +53,19 @@
 
 Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2 は aligned baseline heads（metadata simple/NN、raw-feature simple/NN）、Qwen3-Omni series（Qwen3-Omni v6 LoRA）、Cosmos3 series（Cosmos3-Super Reasoner、Cosmos3-Nano Future Window）に分かれます。Qwen3 v1-v6 は Line 2 内の LoRA/eval lineage で、project evidence lines とは別です。20-task matrix は v6 を使い、v5 は pinned prior release です。Cosmos3-Super Forward-Dynamics LoRA は別の adapter/weights/results artifact として公開され、20-task matrix の method row には含めません。
 
-入口: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)、[`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json)。
+入口: [2 つの証拠ラインのガイド](TWO_EVIDENCE_LINES.md)、[2 ラインのデータ](docs/data/two_evidence_lines.json)、[180 件の結果表](docs/data/task_method_20_result_matrix.json)、[2 ライン結果サマリ](docs/data/two_evidence_line_result_summary.json)。
 
 ## クイックルート
 
 | 目的 | 入口 |
 | --- | --- |
-| プロジェクトを素早く理解 | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
-| 公開面を選ぶ | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
-| 20 タスクを見る | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
-| 結果を比較 | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
-| 1 サンプルを調べる | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
-| 3 つの foundation pipeline を読む | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
-| 再現・監査 | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+| プロジェクトを素早く理解 | [プロジェクト概要](PROJECT_BRIEF.md), [プロジェクト状態](PROJECT_STATUS.md) |
+| 公開面を選ぶ | [公開リーダーマップ](PUBLIC_READER_MAP.md) |
+| 20 タスクを見る | [20 タスクガイド](TASK_SUITE_20.md), [タスク契約データ](docs/data/task_suite_20.json) |
+| 結果を比較 | [研究結果まとめ](RESEARCH_TAKEAWAYS.md), [180 件の結果表](docs/data/task_method_20_result_matrix.json) |
+| 1 サンプルを調べる | [1 episode ブラウザ](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample ファイルマップ](docs/data/raw_sample_files.json) |
+| 3 つの foundation pipeline を読む | [3 つの foundation pipeline](THREE_FOUNDATION_PIPELINES.md), [pipeline 契約データ](docs/data/three_foundation_pipelines.json) |
+| 再現・監査 | [再現ガイド](REPRODUCIBILITY.md), [証拠契約](EVIDENCE_CONTRACT.md) |
 
 ## 構造
 

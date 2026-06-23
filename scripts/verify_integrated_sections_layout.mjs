@@ -97,6 +97,7 @@ async function inspectViewport(page, baseUrl, viewport, name) {
     ));
     const resultMatrixDetails = document.querySelector(".result-matrix-details");
     const resultScoreRows = document.querySelectorAll("#resultScoreTable tbody tr").length;
+    const resultCitationBanner = document.querySelector(".result-citation-banner")?.textContent.replace(/\s+/g, " ").trim() || "";
     const resultBlocks = [...document.querySelectorAll("#takeaways .result-subsection")].map((block) => ({
       id: block.id,
       rect: rectFor(`#${block.id}`),
@@ -117,6 +118,7 @@ async function inspectViewport(page, baseUrl, viewport, name) {
       taskAxisSummaryCounts,
       resultMatrixDetails: resultMatrixDetails ? { open: resultMatrixDetails.open } : null,
       resultScoreRows,
+      resultCitationBanner,
       resultBlocks,
       sectionCount: document.querySelectorAll("main > section[data-project-tab]").length
     };
@@ -142,6 +144,8 @@ async function inspectViewport(page, baseUrl, viewport, name) {
     if (!metrics.taskAxisRuleCards.some((text) => text.includes(marker))) failures.push(`missing reader-rule marker: ${marker}`);
   }
   if (metrics.resultBlocks.length !== 3) failures.push(`expected 3 integrated result subsections, found ${metrics.resultBlocks.length}`);
+  if (!metrics.resultCitationBanner.includes("Cite raw metric values")) failures.push("result citation banner is missing the raw-metric citation rule");
+  if (!metrics.resultCitationBanner.includes("radar values only as visual summaries")) failures.push("result citation banner is missing the radar visualization rule");
   if (!metrics.resultMatrixDetails) failures.push("result matrix disclosure is missing");
   if (metrics.resultMatrixDetails?.open) failures.push("result matrix disclosure should be closed by default");
   if (metrics.resultScoreRows < 2) failures.push(`result matrix table did not populate enough rows: ${metrics.resultScoreRows}`);

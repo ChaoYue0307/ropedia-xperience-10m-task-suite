@@ -53,19 +53,19 @@ Formule : 2 méthodes sur 1 épisode x 20 tâches = 40; 7 méthodes sur 128 épi
 
 Blocs de méthodes : la ligne 1 contient les task-head baselines (Minimal, Neural MLP). La ligne 2 sépare les aligned baseline heads (metadata simple/NN, raw-feature simple/NN), la série Qwen3-Omni (Qwen3-Omni v6 LoRA) et la série Cosmos3 (Cosmos3-Super Reasoner, Cosmos3-Nano Future Window). Qwen3 v1-v6 est une lignée LoRA/évaluation interne à la ligne 2, pas les evidence lines du projet; la matrice 20 tâches utilise v6 et v5 reste le pinned prior release. Cosmos3-Super Forward-Dynamics LoRA est publié comme adapter/poids/résultats séparé et ne compte pas comme ligne de méthode dans la matrice 20 tâches.
 
-Entrées : [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
+Entrées : [guide des deux lignes de preuve](TWO_EVIDENCE_LINES.md), [données des deux lignes](docs/data/two_evidence_lines.json), [table des 180 résultats](docs/data/task_method_20_result_matrix.json), [résumé des résultats par ligne](docs/data/two_evidence_line_result_summary.json).
 
 ## Parcours Rapide
 
 | Objectif | Point d'entrée |
 | --- | --- |
-| Comprendre le projet | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
-| Choisir la bonne surface publique | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
-| Lire les 20 tâches | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
-| Comparer les résultats | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
-| Inspecter un sample | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
-| Lire les trois pipelines foundation | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
-| Reproduire et auditer | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+| Comprendre le projet | [résumé du projet](PROJECT_BRIEF.md), [état du projet](PROJECT_STATUS.md) |
+| Choisir la bonne surface publique | [carte de lecture publique](PUBLIC_READER_MAP.md) |
+| Lire les 20 tâches | [guide des 20 tâches](TASK_SUITE_20.md), [données des contrats de tâche](docs/data/task_suite_20.json) |
+| Comparer les résultats | [conclusions de recherche](RESEARCH_TAKEAWAYS.md), [table des 180 résultats](docs/data/task_method_20_result_matrix.json) |
+| Inspecter un sample | [explorateur d'un épisode](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [carte des fichiers sample](docs/data/raw_sample_files.json) |
+| Lire les trois pipelines foundation | [trois pipelines foundation](THREE_FOUNDATION_PIPELINES.md), [données des contrats de pipeline](docs/data/three_foundation_pipelines.json) |
+| Reproduire et auditer | [guide de reproductibilité](REPRODUCIBILITY.md), [contrat de preuve](EVIDENCE_CONTRACT.md) |
 
 ## Structure
 

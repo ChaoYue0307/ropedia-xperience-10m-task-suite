@@ -53,19 +53,19 @@
 
 방법 블록: Line 1은 task-head baselines(Minimal, Neural MLP)입니다. Line 2는 aligned baseline heads(metadata simple/NN, raw-feature simple/NN), Qwen3-Omni series(Qwen3-Omni v6 LoRA), Cosmos3 series(Cosmos3-Super Reasoner, Cosmos3-Nano Future Window)로 분리됩니다. Qwen3 v1-v6은 Line 2 내부의 LoRA/eval lineage이며 project evidence lines와 다릅니다. 20-task matrix는 v6을 사용하고 v5는 pinned prior release입니다. Cosmos3-Super Forward-Dynamics LoRA는 별도의 adapter/weights/results artifact로 공개되며 20-task matrix method row에는 포함되지 않습니다.
 
-입구: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
+입구: [두 증거 라인 가이드](TWO_EVIDENCE_LINES.md), [두 라인 데이터](docs/data/two_evidence_lines.json), [180개 결과 표](docs/data/task_method_20_result_matrix.json), [두 라인 결과 요약](docs/data/two_evidence_line_result_summary.json).
 
 ## 빠른 경로
 
 | 목표 | 시작점 |
 | --- | --- |
-| 프로젝트 빠르게 이해 | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
-| 공개 표면 선택 | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
-| 20개 과제 확인 | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
-| 결과 비교 | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
-| 샘플 하나 검사 | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
-| 세 foundation pipeline 읽기 | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
-| 재현 및 감사 | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+| 프로젝트 빠르게 이해 | [프로젝트 요약](PROJECT_BRIEF.md), [프로젝트 상태](PROJECT_STATUS.md) |
+| 공개 표면 선택 | [공개 리더 맵](PUBLIC_READER_MAP.md) |
+| 20개 과제 확인 | [20개 과제 가이드](TASK_SUITE_20.md), [과제 계약 데이터](docs/data/task_suite_20.json) |
+| 결과 비교 | [연구 결과 요약](RESEARCH_TAKEAWAYS.md), [180개 결과 표](docs/data/task_method_20_result_matrix.json) |
+| 샘플 하나 검사 | [단일 episode 브라우저](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample 파일 지도](docs/data/raw_sample_files.json) |
+| 세 foundation pipeline 읽기 | [세 foundation pipeline](THREE_FOUNDATION_PIPELINES.md), [pipeline 계약 데이터](docs/data/three_foundation_pipelines.json) |
+| 재현 및 감사 | [재현 가이드](REPRODUCIBILITY.md), [증거 계약](EVIDENCE_CONTRACT.md) |
 
 ## 구조
 

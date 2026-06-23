@@ -115,7 +115,7 @@ The multilingual README files are reader guides. The canonical technical evidenc
 
 ## Public Structure: 20 Tasks / 4 Directions / 3 Pipelines
 
-Read the project as three layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are reader-facing research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets. They are related, but they are not three competing task sets.
+Read the project as three layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are reader-facing research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets. Use them in that order when reading the project.
 
 Reader rule: if it has a metric, it is a **task**; if it explains what the evidence studies, it is a **direction**; if it describes model inputs and training targets, it is a **pipeline**.
 
@@ -311,32 +311,32 @@ Result entry points:
     <tr>
       <td><strong>Choose the public surface</strong></td>
       <td><a href="PUBLIC_READER_MAP.md">Public reader map</a></td>
-      <td><a href="docs/data/public_reader_map.json">public_reader_map.json</a></td>
+      <td><a href="docs/data/public_reader_map.json">reader-map data</a></td>
     </tr>
     <tr>
       <td><strong>Decode project terms</strong></td>
       <td><a href="GLOSSARY.md">Glossary</a></td>
-      <td><a href="docs/data/glossary.json">glossary.json</a></td>
+      <td><a href="docs/data/glossary.json">glossary data</a></td>
     </tr>
     <tr>
       <td><strong>Inspect the 20 tasks</strong></td>
-      <td><a href="TASK_SUITE_20.md">TASK_SUITE_20.md</a></td>
-      <td><a href="docs/data/task_suite_20.json">task_suite_20.json</a><br><a href="results/episode_task_suite/task_walkthroughs/">task walkthroughs</a></td>
+      <td><a href="TASK_SUITE_20.md">20-task guide</a></td>
+      <td><a href="docs/data/task_suite_20.json">task contract data</a><br><a href="results/episode_task_suite/task_walkthroughs/">task walkthroughs</a></td>
     </tr>
     <tr>
       <td><strong>Compare results</strong></td>
       <td><a href="RESEARCH_TAKEAWAYS.md">Research takeaways</a></td>
-      <td><a href="docs/data/two_evidence_line_result_summary.json">two-line result summary</a><br><a href="docs/data/task_method_20_result_matrix.json">20-result matrix</a><br><a href="docs/data/unified_task_model_radar.json">radar JSON</a><br><a href="docs/data/task_method_20_gap_audit.json">score/proxy audit</a></td>
+      <td><a href="docs/data/two_evidence_line_result_summary.json">two-line result summary</a><br><a href="docs/data/task_method_20_result_matrix.json">180-record result table</a><br><a href="docs/data/unified_task_model_radar.json">radar data</a><br><a href="docs/data/task_method_20_gap_audit.json">score/proxy audit</a></td>
     </tr>
     <tr>
       <td><strong>Understand one sample</strong></td>
       <td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html">Single-episode explorer</a></td>
-      <td><a href="docs/data/raw_sample_files.json">raw sample file map</a><br><a href="results/episode_task_suite/feature_manifest.json">feature manifest</a></td>
+      <td><a href="docs/data/raw_sample_files.json">sample-file map</a><br><a href="results/episode_task_suite/feature_manifest.json">feature manifest</a></td>
     </tr>
     <tr>
       <td><strong>Read foundation directions</strong></td>
       <td><a href="THREE_FOUNDATION_PIPELINES.md">Three foundation pipelines</a></td>
-      <td><a href="docs/data/three_foundation_pipelines.json">three_foundation_pipelines.json</a><br><a href="FOUNDATION_MODEL_PLAN.md">foundation model plan</a></td>
+      <td><a href="docs/data/three_foundation_pipelines.json">pipeline contract data</a><br><a href="FOUNDATION_MODEL_PLAN.md">foundation model plan</a></td>
     </tr>
     <tr>
       <td><strong>Reproduce or audit</strong></td>
@@ -1494,12 +1494,12 @@ and [`docs/data/additional_development_directions.json`](docs/data/additional_de
 ## Four Research Directions
 
 The walkthrough-backed task contracts are organized against the four Ropedia research directions in
-a generated artifact, not only in prose:
+a source-linked companion set:
 
-- [`research_direction_taxonomy.json`](results/episode_task_suite/research_directions/research_direction_taxonomy.json)
-- [`research_direction_task_map.csv`](results/episode_task_suite/research_directions/research_direction_task_map.csv)
-- [`research_direction_summary.md`](results/episode_task_suite/research_directions/research_direction_summary.md)
-- [`docs/data/research_directions.json`](docs/data/research_directions.json)
+- [Direction taxonomy data](results/episode_task_suite/research_directions/research_direction_taxonomy.json)
+- [Task-to-direction map](results/episode_task_suite/research_directions/research_direction_task_map.csv)
+- [Direction summary note](results/episode_task_suite/research_directions/research_direction_summary.md)
+- [Public direction data](docs/data/research_directions.json)
 
 The taxonomy uses two current baselines for every task:
 
@@ -1513,9 +1513,9 @@ Current direction-level coverage:
 | Direction | Current status | Covered task evidence | What is not solved yet |
 | --- | --- | --- | --- |
 | A. Human Modeling & Motion Understanding | Partially implemented | Hand Trajectory Forecasting and Contact State Prediction are direct; Action Recognition and Object Relevance Prediction are proxies. Neural MLP improves hand forecasting from `0.8647` to `0.1079` MPJPE. | No full body/shape model, SMPL/MANO target, deformation prior, or multi-episode motion-generation evaluation yet. |
-| B. 3D/4D Reconstruction & Neural Rendering | Proxy tasks only | Cross-Modal Retrieval, Cross-Modal Reconstruction, and Multimodal Synchronization Detection test alignment/reconstruction prerequisites. | No NeRF, Gaussian Splatting, TSDF, mesh, novel-view synthesis, or calibrated 4D reconstruction model yet. |
+| B. 3D/4D Reconstruction & Neural Rendering | Prerequisite evidence | Cross-Modal Retrieval, Cross-Modal Reconstruction, and Multimodal Synchronization Detection test alignment/reconstruction prerequisites. | No NeRF, Gaussian Splatting, TSDF, mesh, novel-view synthesis, or calibrated 4D reconstruction model yet. |
 | C. Egocentric Vision & Interaction | Strongest implemented track | 6 direct tasks: action, subtask, transition, next-action, object relevance, and caption grounding, plus alignment/order diagnostics and audio ablation. | Single-episode chronological split limits generalization; stronger audio and video-language backbones still need multi-episode testing. |
-| D. Scene Reconstruction & World Modeling | Early proxy tasks | Procedure Step Recognition, Next-Action Prediction, Object Relevance Prediction, Cross-Modal Retrieval, Cross-Modal Reconstruction, Temporal Order Verification, and Multimodal Synchronization Detection provide state/world-model probes. | No persistent scene graph, object permanence task, long-term map, or held-out-episode world model yet. |
+| D. Scene Reconstruction & World Modeling | World-model prerequisite evidence | Procedure Step Recognition, Next-Action Prediction, Object Relevance Prediction, Cross-Modal Retrieval, Cross-Modal Reconstruction, Temporal Order Verification, and Multimodal Synchronization Detection provide state/world-model probes. | No persistent scene graph, object permanence task, long-term map, or held-out-episode world model yet. |
 
 The important interpretation is that all four directions can be **started** from
 the Xperience-10M sample modalities, but only direction C is strongly represented
@@ -1549,10 +1549,9 @@ Run:
 python scripts/research_direction_extension_tasks.py
 ```
 
-These four probes make the four-direction mapping more concrete, but they are
-still single-episode extension baselines. Full research conclusions still require
-multi-episode training, held-out episode evaluation, and stronger task-specific
-models.
+These four probes make the direction mapping concrete while staying within the
+same single-episode evidence line. They should be read as task-backed probes, not
+as claims that the larger foundation-model directions are solved.
 
 ## Unified 20-Task Suite
 
@@ -1565,14 +1564,14 @@ The historical `tier2_task_suite` file and directory names remain only for
 stable artifact links. They should be read as provenance bundles inside the
 unified 20-task suite, not as a separate benchmark tier.
 
-- [`TASK_SUITE_20.md`](TASK_SUITE_20.md)
-- [`docs/data/task_suite_20.json`](docs/data/task_suite_20.json)
-- [`docs/data/unified_task_model_radar.json`](docs/data/unified_task_model_radar.json)
-- [`docs/data/single_episode_task_model_radar.json`](docs/data/single_episode_task_model_radar.json)
-- [`docs/data/episode128_task_model_radar.json`](docs/data/episode128_task_model_radar.json)
-- [`docs/data/task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)
-- [`docs/data/task_method_20_gap_audit.json`](docs/data/task_method_20_gap_audit.json)
-- [`TASK_METHOD_20_GAP_AUDIT.md`](TASK_METHOD_20_GAP_AUDIT.md)
+- [20-task guide](TASK_SUITE_20.md)
+- [Task contract data](docs/data/task_suite_20.json)
+- [All-method radar data](docs/data/unified_task_model_radar.json)
+- [Single-episode radar data](docs/data/single_episode_task_model_radar.json)
+- [128-episode radar data](docs/data/episode128_task_model_radar.json)
+- [180-record result table](docs/data/task_method_20_result_matrix.json)
+- [Score/proxy audit data](docs/data/task_method_20_gap_audit.json)
+- [Score/proxy audit note](TASK_METHOD_20_GAP_AUDIT.md)
 - [`TIER2_TASK_BASELINES.md`](results/episode_task_suite/tier2_task_suite/TIER2_TASK_BASELINES.md)
 - [`tier2_task_suite_results.json`](results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json)
 - [`docs/data/tier2_task_suite.json`](docs/data/tier2_task_suite.json)

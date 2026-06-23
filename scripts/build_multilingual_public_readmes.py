@@ -147,7 +147,7 @@ The multilingual README files are reader guides. The canonical technical evidenc
 
 ## Public Structure: 20 Tasks / 4 Directions / 3 Pipelines
 
-Read the project as three layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are reader-facing research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets. They are related, but they are not three competing task sets.
+Read the project as three layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are reader-facing research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets. Use them in that order when reading the project.
 
 Reader rule: if it has a metric, it is a **task**; if it explains what the evidence studies, it is a **direction**; if it describes model inputs and training targets, it is a **pipeline**.
 
@@ -343,32 +343,32 @@ Result entry points:
     <tr>
       <td><strong>Choose the public surface</strong></td>
       <td><a href="PUBLIC_READER_MAP.md">Public reader map</a></td>
-      <td><a href="docs/data/public_reader_map.json">public_reader_map.json</a></td>
+      <td><a href="docs/data/public_reader_map.json">reader-map data</a></td>
     </tr>
     <tr>
       <td><strong>Decode project terms</strong></td>
       <td><a href="GLOSSARY.md">Glossary</a></td>
-      <td><a href="docs/data/glossary.json">glossary.json</a></td>
+      <td><a href="docs/data/glossary.json">glossary data</a></td>
     </tr>
     <tr>
       <td><strong>Inspect the 20 tasks</strong></td>
-      <td><a href="TASK_SUITE_20.md">TASK_SUITE_20.md</a></td>
-      <td><a href="docs/data/task_suite_20.json">task_suite_20.json</a><br><a href="results/episode_task_suite/task_walkthroughs/">task walkthroughs</a></td>
+      <td><a href="TASK_SUITE_20.md">20-task guide</a></td>
+      <td><a href="docs/data/task_suite_20.json">task contract data</a><br><a href="results/episode_task_suite/task_walkthroughs/">task walkthroughs</a></td>
     </tr>
     <tr>
       <td><strong>Compare results</strong></td>
       <td><a href="RESEARCH_TAKEAWAYS.md">Research takeaways</a></td>
-      <td><a href="docs/data/two_evidence_line_result_summary.json">two-line result summary</a><br><a href="docs/data/task_method_20_result_matrix.json">20-result matrix</a><br><a href="docs/data/unified_task_model_radar.json">radar JSON</a><br><a href="docs/data/task_method_20_gap_audit.json">score/proxy audit</a></td>
+      <td><a href="docs/data/two_evidence_line_result_summary.json">two-line result summary</a><br><a href="docs/data/task_method_20_result_matrix.json">180-record result table</a><br><a href="docs/data/unified_task_model_radar.json">radar data</a><br><a href="docs/data/task_method_20_gap_audit.json">score/proxy audit</a></td>
     </tr>
     <tr>
       <td><strong>Understand one sample</strong></td>
       <td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html">Single-episode explorer</a></td>
-      <td><a href="docs/data/raw_sample_files.json">raw sample file map</a><br><a href="results/episode_task_suite/feature_manifest.json">feature manifest</a></td>
+      <td><a href="docs/data/raw_sample_files.json">sample-file map</a><br><a href="results/episode_task_suite/feature_manifest.json">feature manifest</a></td>
     </tr>
     <tr>
       <td><strong>Read foundation directions</strong></td>
       <td><a href="THREE_FOUNDATION_PIPELINES.md">Three foundation pipelines</a></td>
-      <td><a href="docs/data/three_foundation_pipelines.json">three_foundation_pipelines.json</a><br><a href="FOUNDATION_MODEL_PLAN.md">foundation model plan</a></td>
+      <td><a href="docs/data/three_foundation_pipelines.json">pipeline contract data</a><br><a href="FOUNDATION_MODEL_PLAN.md">foundation model plan</a></td>
     </tr>
     <tr>
       <td><strong>Reproduce or audit</strong></td>
@@ -403,19 +403,19 @@ LANGUAGE_GUIDES = {
 
 方法块：Line 1 是 task-head baselines（Minimal、Neural MLP）。Line 2 分成 aligned baseline heads（metadata simple/NN、raw-feature simple/NN）、Qwen3-Omni series（Qwen3-Omni v6 LoRA）和 Cosmos3 series（Cosmos3-Super Reasoner、Cosmos3-Nano Future Window）。Qwen3 run v1-v6 是 Line 2 内部的 LoRA/评估演进线，不是项目的 evidence lines；20-task matrix 使用 v6，v5 是 pinned prior release。Cosmos3-Super Forward-Dynamics LoRA 是单独发布的 adapter 权重/结果，不计入 20-task matrix method row。
 
-入口：[`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)、[`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json)。
+入口：[双证据线说明](TWO_EVIDENCE_LINES.md)、[双证据线数据](docs/data/two_evidence_lines.json)、[180 条结果表](docs/data/task_method_20_result_matrix.json)、[双线结果摘要](docs/data/two_evidence_line_result_summary.json)。
 
 ## 快速入口
 
 | 目标 | 入口 |
 | --- | --- |
-| 快速理解项目 | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
-| 选择 GitHub / 网页 / HF 的正确入口 | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
-| 查看 20 个任务定义 | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
-| 比较结果 | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
-| 查看一个 sample 的全部文件关系 | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
-| 阅读三个基础模型方向 | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
-| 复现与审计 | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+| 快速理解项目 | [项目简报](PROJECT_BRIEF.md), [项目状态](PROJECT_STATUS.md) |
+| 选择 GitHub / 网页 / HF 的正确入口 | [公共阅读地图](PUBLIC_READER_MAP.md) |
+| 查看 20 个任务定义 | [20 任务指南](TASK_SUITE_20.md), [任务契约数据](docs/data/task_suite_20.json) |
+| 比较结果 | [研究结论](RESEARCH_TAKEAWAYS.md), [180 条结果表](docs/data/task_method_20_result_matrix.json) |
+| 查看一个 sample 的全部文件关系 | [单 episode 浏览器](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample 文件地图](docs/data/raw_sample_files.json) |
+| 阅读三个基础模型方向 | [三条基础模型 pipeline](THREE_FOUNDATION_PIPELINES.md), [pipeline 契约数据](docs/data/three_foundation_pipelines.json) |
+| 复现与审计 | [复现指南](REPRODUCIBILITY.md), [证据契约](EVIDENCE_CONTRACT.md) |
 
 ## 核心结构
 
@@ -452,19 +452,19 @@ Fórmula: 2 métodos de un episodio x 20 tareas = 40; 7 métodos de 128 episodio
 
 Bloques de métodos: la línea 1 contiene task-head baselines (Minimal, Neural MLP). La línea 2 separa aligned baseline heads (metadata simple/NN, raw-feature simple/NN), la serie Qwen3-Omni (Qwen3-Omni v6 LoRA) y la serie Cosmos3 (Cosmos3-Super Reasoner, Cosmos3-Nano Future Window). Qwen3 v1-v6 es una línea interna de evolución LoRA/evaluación dentro de la línea 2, no las evidence lines del proyecto; la matriz de 20 tareas usa v6 y v5 queda como pinned prior release. Cosmos3-Super Forward-Dynamics LoRA se publica como adapter/pesos/resultados aparte y no cuenta como fila de método en la matriz de 20 tareas.
 
-Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
+Entradas: [guia de dos lineas de evidencia](TWO_EVIDENCE_LINES.md), [datos de dos lineas](docs/data/two_evidence_lines.json), [tabla de 180 resultados](docs/data/task_method_20_result_matrix.json), [resumen de resultados de dos lineas](docs/data/two_evidence_line_result_summary.json).
 
 ## Ruta Rápida
 
 | Objetivo | Entrada |
 | --- | --- |
-| Entender el proyecto | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
-| Elegir la superficie correcta | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
-| Ver las 20 tareas | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
-| Comparar resultados | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
-| Inspeccionar una muestra | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
-| Leer las tres direcciones foundation | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
-| Reproducir o auditar | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+| Entender el proyecto | [resumen del proyecto](PROJECT_BRIEF.md), [estado del proyecto](PROJECT_STATUS.md) |
+| Elegir la superficie correcta | [mapa publico de lectura](PUBLIC_READER_MAP.md) |
+| Ver las 20 tareas | [guia de 20 tareas](TASK_SUITE_20.md), [datos de contratos de tarea](docs/data/task_suite_20.json) |
+| Comparar resultados | [conclusiones de investigacion](RESEARCH_TAKEAWAYS.md), [tabla de 180 resultados](docs/data/task_method_20_result_matrix.json) |
+| Inspeccionar una muestra | [explorador de un episodio](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [mapa de archivos de muestra](docs/data/raw_sample_files.json) |
+| Leer las tres direcciones foundation | [tres pipelines foundation](THREE_FOUNDATION_PIPELINES.md), [datos de contratos de pipeline](docs/data/three_foundation_pipelines.json) |
+| Reproducir o auditar | [guia de reproducibilidad](REPRODUCIBILITY.md), [contrato de evidencia](EVIDENCE_CONTRACT.md) |
 
 ## Estructura
 
@@ -501,19 +501,19 @@ Formule : 2 méthodes sur 1 épisode x 20 tâches = 40; 7 méthodes sur 128 épi
 
 Blocs de méthodes : la ligne 1 contient les task-head baselines (Minimal, Neural MLP). La ligne 2 sépare les aligned baseline heads (metadata simple/NN, raw-feature simple/NN), la série Qwen3-Omni (Qwen3-Omni v6 LoRA) et la série Cosmos3 (Cosmos3-Super Reasoner, Cosmos3-Nano Future Window). Qwen3 v1-v6 est une lignée LoRA/évaluation interne à la ligne 2, pas les evidence lines du projet; la matrice 20 tâches utilise v6 et v5 reste le pinned prior release. Cosmos3-Super Forward-Dynamics LoRA est publié comme adapter/poids/résultats séparé et ne compte pas comme ligne de méthode dans la matrice 20 tâches.
 
-Entrées : [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
+Entrées : [guide des deux lignes de preuve](TWO_EVIDENCE_LINES.md), [données des deux lignes](docs/data/two_evidence_lines.json), [table des 180 résultats](docs/data/task_method_20_result_matrix.json), [résumé des résultats par ligne](docs/data/two_evidence_line_result_summary.json).
 
 ## Parcours Rapide
 
 | Objectif | Point d'entrée |
 | --- | --- |
-| Comprendre le projet | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
-| Choisir la bonne surface publique | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
-| Lire les 20 tâches | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
-| Comparer les résultats | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
-| Inspecter un sample | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
-| Lire les trois pipelines foundation | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
-| Reproduire et auditer | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+| Comprendre le projet | [résumé du projet](PROJECT_BRIEF.md), [état du projet](PROJECT_STATUS.md) |
+| Choisir la bonne surface publique | [carte de lecture publique](PUBLIC_READER_MAP.md) |
+| Lire les 20 tâches | [guide des 20 tâches](TASK_SUITE_20.md), [données des contrats de tâche](docs/data/task_suite_20.json) |
+| Comparer les résultats | [conclusions de recherche](RESEARCH_TAKEAWAYS.md), [table des 180 résultats](docs/data/task_method_20_result_matrix.json) |
+| Inspecter un sample | [explorateur d'un épisode](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [carte des fichiers sample](docs/data/raw_sample_files.json) |
+| Lire les trois pipelines foundation | [trois pipelines foundation](THREE_FOUNDATION_PIPELINES.md), [données des contrats de pipeline](docs/data/three_foundation_pipelines.json) |
+| Reproduire et auditer | [guide de reproductibilité](REPRODUCIBILITY.md), [contrat de preuve](EVIDENCE_CONTRACT.md) |
 
 ## Structure
 
@@ -550,19 +550,19 @@ Formel: 2 Single-Episode-Methoden x 20 Aufgaben = 40; 7 128-Episode-Methoden x 2
 
 Methodenblöcke: Linie 1 enthält task-head baselines (Minimal, Neural MLP). Linie 2 trennt aligned baseline heads (metadata simple/NN, raw-feature simple/NN), die Qwen3-Omni series (Qwen3-Omni v6 LoRA) und die Cosmos3 series (Cosmos3-Super Reasoner, Cosmos3-Nano Future Window). Qwen3 v1-v6 ist eine LoRA-/Evaluationslinie innerhalb von Linie 2, nicht die evidence lines des Projekts; die 20-Task-Matrix nutzt v6 und v5 bleibt der pinned prior release. Cosmos3-Super Forward-Dynamics LoRA ist ein separat veröffentlichter Adapter/Gewichts-/Ergebnis-Artefakt und zählt nicht als Methodenreihe der 20-Task-Matrix.
 
-Einstieg: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
+Einstieg: [Leitfaden zu zwei Evidenzlinien](TWO_EVIDENCE_LINES.md), [Daten der zwei Evidenzlinien](docs/data/two_evidence_lines.json), [Tabelle mit 180 Ergebnissen](docs/data/task_method_20_result_matrix.json), [Ergebniszusammenfassung der zwei Linien](docs/data/two_evidence_line_result_summary.json).
 
 ## Schneller Einstieg
 
 | Ziel | Einstieg |
 | --- | --- |
-| Projekt verstehen | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
-| Richtige öffentliche Oberfläche wählen | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
-| 20 Aufgaben prüfen | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
-| Ergebnisse vergleichen | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
-| Ein Sample untersuchen | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
-| Drei Foundation-Pipelines lesen | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
-| Reproduzieren oder auditieren | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+| Projekt verstehen | [Projektbrief](PROJECT_BRIEF.md), [Projektstatus](PROJECT_STATUS.md) |
+| Richtige öffentliche Oberfläche wählen | [öffentliche Lesekarte](PUBLIC_READER_MAP.md) |
+| 20 Aufgaben prüfen | [20-Aufgaben-Leitfaden](TASK_SUITE_20.md), [Aufgabenvertragsdaten](docs/data/task_suite_20.json) |
+| Ergebnisse vergleichen | [Forschungsergebnisse](RESEARCH_TAKEAWAYS.md), [Tabelle mit 180 Ergebnissen](docs/data/task_method_20_result_matrix.json) |
+| Ein Sample untersuchen | [Ein-Episode-Explorer](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [Sample-Dateikarte](docs/data/raw_sample_files.json) |
+| Drei Foundation-Pipelines lesen | [drei Foundation-Pipelines](THREE_FOUNDATION_PIPELINES.md), [Pipeline-Vertragsdaten](docs/data/three_foundation_pipelines.json) |
+| Reproduzieren oder auditieren | [Reproduzierbarkeitsleitfaden](REPRODUCIBILITY.md), [Evidenzvertrag](EVIDENCE_CONTRACT.md) |
 
 ## Struktur
 
@@ -599,19 +599,19 @@ Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Kar
 
 Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2 は aligned baseline heads（metadata simple/NN、raw-feature simple/NN）、Qwen3-Omni series（Qwen3-Omni v6 LoRA）、Cosmos3 series（Cosmos3-Super Reasoner、Cosmos3-Nano Future Window）に分かれます。Qwen3 v1-v6 は Line 2 内の LoRA/eval lineage で、project evidence lines とは別です。20-task matrix は v6 を使い、v5 は pinned prior release です。Cosmos3-Super Forward-Dynamics LoRA は別の adapter/weights/results artifact として公開され、20-task matrix の method row には含めません。
 
-入口: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md)、[`two_evidence_lines.json`](docs/data/two_evidence_lines.json)、[`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json)、[`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json)。
+入口: [2 つの証拠ラインのガイド](TWO_EVIDENCE_LINES.md)、[2 ラインのデータ](docs/data/two_evidence_lines.json)、[180 件の結果表](docs/data/task_method_20_result_matrix.json)、[2 ライン結果サマリ](docs/data/two_evidence_line_result_summary.json)。
 
 ## クイックルート
 
 | 目的 | 入口 |
 | --- | --- |
-| プロジェクトを素早く理解 | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
-| 公開面を選ぶ | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
-| 20 タスクを見る | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
-| 結果を比較 | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
-| 1 サンプルを調べる | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
-| 3 つの foundation pipeline を読む | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
-| 再現・監査 | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+| プロジェクトを素早く理解 | [プロジェクト概要](PROJECT_BRIEF.md), [プロジェクト状態](PROJECT_STATUS.md) |
+| 公開面を選ぶ | [公開リーダーマップ](PUBLIC_READER_MAP.md) |
+| 20 タスクを見る | [20 タスクガイド](TASK_SUITE_20.md), [タスク契約データ](docs/data/task_suite_20.json) |
+| 結果を比較 | [研究結果まとめ](RESEARCH_TAKEAWAYS.md), [180 件の結果表](docs/data/task_method_20_result_matrix.json) |
+| 1 サンプルを調べる | [1 episode ブラウザ](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample ファイルマップ](docs/data/raw_sample_files.json) |
+| 3 つの foundation pipeline を読む | [3 つの foundation pipeline](THREE_FOUNDATION_PIPELINES.md), [pipeline 契約データ](docs/data/three_foundation_pipelines.json) |
+| 再現・監査 | [再現ガイド](REPRODUCIBILITY.md), [証拠契約](EVIDENCE_CONTRACT.md) |
 
 ## 構造
 
@@ -648,19 +648,19 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 
 방법 블록: Line 1은 task-head baselines(Minimal, Neural MLP)입니다. Line 2는 aligned baseline heads(metadata simple/NN, raw-feature simple/NN), Qwen3-Omni series(Qwen3-Omni v6 LoRA), Cosmos3 series(Cosmos3-Super Reasoner, Cosmos3-Nano Future Window)로 분리됩니다. Qwen3 v1-v6은 Line 2 내부의 LoRA/eval lineage이며 project evidence lines와 다릅니다. 20-task matrix는 v6을 사용하고 v5는 pinned prior release입니다. Cosmos3-Super Forward-Dynamics LoRA는 별도의 adapter/weights/results artifact로 공개되며 20-task matrix method row에는 포함되지 않습니다.
 
-입구: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
+입구: [두 증거 라인 가이드](TWO_EVIDENCE_LINES.md), [두 라인 데이터](docs/data/two_evidence_lines.json), [180개 결과 표](docs/data/task_method_20_result_matrix.json), [두 라인 결과 요약](docs/data/two_evidence_line_result_summary.json).
 
 ## 빠른 경로
 
 | 목표 | 시작점 |
 | --- | --- |
-| 프로젝트 빠르게 이해 | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
-| 공개 표면 선택 | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
-| 20개 과제 확인 | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
-| 결과 비교 | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
-| 샘플 하나 검사 | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
-| 세 foundation pipeline 읽기 | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
-| 재현 및 감사 | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+| 프로젝트 빠르게 이해 | [프로젝트 요약](PROJECT_BRIEF.md), [프로젝트 상태](PROJECT_STATUS.md) |
+| 공개 표면 선택 | [공개 리더 맵](PUBLIC_READER_MAP.md) |
+| 20개 과제 확인 | [20개 과제 가이드](TASK_SUITE_20.md), [과제 계약 데이터](docs/data/task_suite_20.json) |
+| 결과 비교 | [연구 결과 요약](RESEARCH_TAKEAWAYS.md), [180개 결과 표](docs/data/task_method_20_result_matrix.json) |
+| 샘플 하나 검사 | [단일 episode 브라우저](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample 파일 지도](docs/data/raw_sample_files.json) |
+| 세 foundation pipeline 읽기 | [세 foundation pipeline](THREE_FOUNDATION_PIPELINES.md), [pipeline 계약 데이터](docs/data/three_foundation_pipelines.json) |
+| 재현 및 감사 | [재현 가이드](REPRODUCIBILITY.md), [증거 계약](EVIDENCE_CONTRACT.md) |
 
 ## 구조
 
@@ -697,19 +697,19 @@ Fórmula: 2 métodos de um episódio x 20 tarefas = 40; 7 métodos de 128 episó
 
 Blocos de métodos: a linha 1 contém task-head baselines (Minimal, Neural MLP). A linha 2 separa aligned baseline heads (metadata simple/NN, raw-feature simple/NN), a série Qwen3-Omni (Qwen3-Omni v6 LoRA) e a série Cosmos3 (Cosmos3-Super Reasoner, Cosmos3-Nano Future Window). Qwen3 v1-v6 é uma linhagem LoRA/eval interna à linha 2, não as evidence lines do projeto; a matriz de 20 tarefas usa v6 e v5 fica como pinned prior release. Cosmos3-Super Forward-Dynamics LoRA é publicado como adapter/pesos/resultados separado e não conta como linha de método na matriz de 20 tarefas.
 
-Entradas: [`TWO_EVIDENCE_LINES.md`](TWO_EVIDENCE_LINES.md), [`two_evidence_lines.json`](docs/data/two_evidence_lines.json), [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), [`two_evidence_line_result_summary.json`](docs/data/two_evidence_line_result_summary.json).
+Entradas: [guia de duas linhas de evidencia](TWO_EVIDENCE_LINES.md), [dados das duas linhas](docs/data/two_evidence_lines.json), [tabela de 180 resultados](docs/data/task_method_20_result_matrix.json), [resumo de resultados das duas linhas](docs/data/two_evidence_line_result_summary.json).
 
 ## Rota Rápida
 
 | Objetivo | Entrada |
 | --- | --- |
-| Entender o projeto | [PROJECT_BRIEF.md](PROJECT_BRIEF.md), [PROJECT_STATUS.md](PROJECT_STATUS.md) |
-| Escolher a superfície pública correta | [PUBLIC_READER_MAP.md](PUBLIC_READER_MAP.md) |
-| Ver as 20 tarefas | [TASK_SUITE_20.md](TASK_SUITE_20.md), [task_suite_20.json](docs/data/task_suite_20.json) |
-| Comparar resultados | [RESEARCH_TAKEAWAYS.md](RESEARCH_TAKEAWAYS.md), [task_method_20_result_matrix.json](docs/data/task_method_20_result_matrix.json) |
-| Inspecionar uma amostra | [single_episode_explorer.html](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [raw_sample_files.json](docs/data/raw_sample_files.json) |
-| Ler as três pipelines foundation | [THREE_FOUNDATION_PIPELINES.md](THREE_FOUNDATION_PIPELINES.md), [three_foundation_pipelines.json](docs/data/three_foundation_pipelines.json) |
-| Reproduzir ou auditar | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [EVIDENCE_CONTRACT.md](EVIDENCE_CONTRACT.md) |
+| Entender o projeto | [resumo do projeto](PROJECT_BRIEF.md), [status do projeto](PROJECT_STATUS.md) |
+| Escolher a superfície pública correta | [mapa publico de leitura](PUBLIC_READER_MAP.md) |
+| Ver as 20 tarefas | [guia das 20 tarefas](TASK_SUITE_20.md), [dados dos contratos de tarefa](docs/data/task_suite_20.json) |
+| Comparar resultados | [conclusões de pesquisa](RESEARCH_TAKEAWAYS.md), [tabela de 180 resultados](docs/data/task_method_20_result_matrix.json) |
+| Inspecionar uma amostra | [explorador de um episódio](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [mapa dos arquivos de amostra](docs/data/raw_sample_files.json) |
+| Ler as três pipelines foundation | [três pipelines foundation](THREE_FOUNDATION_PIPELINES.md), [dados dos contratos de pipeline](docs/data/three_foundation_pipelines.json) |
+| Reproduzir ou auditar | [guia de reprodutibilidade](REPRODUCIBILITY.md), [contrato de evidencia](EVIDENCE_CONTRACT.md) |
 
 ## Estrutura
 
