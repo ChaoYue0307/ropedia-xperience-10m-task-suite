@@ -1422,6 +1422,8 @@
       display: grid;
       gap: 12px;
       padding: 18px;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
     }
     .split-radar-card {
       min-width: 0;
@@ -1431,6 +1433,8 @@
         linear-gradient(180deg, rgba(204, 255, 160, 0.06), rgba(6, 14, 7, 0.82)),
         var(--surface);
       padding: 20px;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
     }
     .split-radar-card h3 {
       margin: 0;
@@ -1448,12 +1452,19 @@
     .split-radar-card img {
       display: block;
       width: 100%;
+      min-width: 1680px;
+      max-width: none;
       height: auto;
       min-height: 0;
       object-fit: contain;
       border: 1px solid rgba(204, 255, 160, 0.14);
       border-radius: 6px;
       background: #020502;
+    }
+    .full-radar-frame .radar-chart {
+      width: 100%;
+      min-width: 1680px;
+      max-width: none;
     }
     .foundation-pipeline-grid {
       display: grid;
@@ -7278,7 +7289,7 @@
             <strong>The full grouped radar is useful for pattern scanning after comparing the 1-episode and 128-episode views.</strong>
           </summary>
           <a class="hero-radar-frame" href="#suite-radars" aria-label="Open full unified 20-task model radar">
-            <img src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v8-readable" alt="Unified 20-task grouped radar board with method-family panels, task key, score counts, and raw128 proxy notes">
+            <img src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v9-polished" alt="Unified 20-task grouped radar board with method-family panels, task key, score counts, and raw128 proxy notes">
           </a>
         </details>
         <details class="split-radar-details hero-task-details">
@@ -8086,7 +8097,7 @@
             <article class="split-radar-card">
               <h3>1-Episode 20-Task Radar</h3>
               <p>Minimal and Neural MLP are both scored on all 20 public-sample task contracts in one enlarged panel without 128-episode methods competing for attention.</p>
-              <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
+              <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v4-polished" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
               <div class="split-radar-links">
                 <a href="assets/charts/single_episode_task_model_radar.svg">View chart source</a>
                 <a href="data/single_episode_task_model_radar.json">Inspect chart source</a>
@@ -8095,7 +8106,7 @@
             <article class="split-radar-card">
               <h3>128-Episode 20-Task Radar</h3>
               <p>Seven aligned 128-episode methods cover all 20 axes across metadata/text, raw-feature, and foundation-model panels. Proxy axes stay labeled in the chart and source data.</p>
-              <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="128-episode grouped 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
+              <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v4-polished" alt="128-episode grouped 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
               <div class="split-radar-links">
                 <a href="assets/charts/episode128_task_model_radar.svg">View chart source</a>
                 <a href="data/episode128_task_model_radar.json">Inspect chart source</a>
@@ -8109,7 +8120,7 @@
               <strong>Use after the split radars when you need all methods in one grouped visual analysis board.</strong>
             </summary>
             <div class="full-radar-frame">
-              <img class="chart radar-chart unified-radar-chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v8-readable" alt="Unified grouped 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, score counts, and proxy notes">
+              <img class="chart radar-chart unified-radar-chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v9-polished" alt="Unified grouped 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, score counts, and proxy notes">
               <div class="split-radar-links">
                 <a href="assets/charts/unified_task_model_radar.svg">View chart source</a>
                 <a href="data/unified_task_model_radar.json">Inspect chart source</a>
