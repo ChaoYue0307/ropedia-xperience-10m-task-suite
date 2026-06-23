@@ -25,7 +25,7 @@
       "name": "Multimodal Representation Learning",
       "data_signals": ["video", "audio", "depth", "pose/SLAM", "mocap", "IMU", "language"],
       "first_build": "Contrastive and masked-prediction objectives over synchronized multimodal windows.",
-      "evaluation": "Cross-modal retrieval, missing-modality reconstruction, transfer to the 12 task heads, and held-out episode generalization.",
+      "evaluation": "Cross-modal retrieval, missing-modality reconstruction, transfer to the 20 task heads, and held-out episode generalization.",
       "why_it_matters": "Xperience-10M can train reusable encoders before committing to expensive large-model fine-tuning or pretraining."
     },
     {

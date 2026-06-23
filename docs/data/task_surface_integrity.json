@@ -2,8 +2,6 @@
   "status": "pass",
   "generated_at_utc": "2026-06-23T11:40:15+00:00",
   "summary": {
-    "original_walkthrough_task_count": 12,
-    "expected_original_walkthrough_task_count": 12,
     "unified_task_count": 20,
     "method_task_record_count": 180,
     "scored_method_task_count": 180,
@@ -22,7 +20,9 @@
       "video": 12
     },
     "interactive_surface": "task cards plus scrub/play/chapter walkthrough storyboard",
-    "failure_count": 0
+    "failure_count": 0,
+    "walkthrough_case_study_count": 12,
+    "expected_walkthrough_case_study_count": 12
   },
   "checks": [
     {
@@ -39,13 +39,13 @@
       "status": "pass"
     },
     {
-      "name": "original_walkthrough_task_count",
+      "name": "walkthrough_case_study_count",
       "status": "pass",
       "observed": 12,
       "expected": 12
     },
     {
-      "name": "expected_original_walkthrough_task_ids_present",
+      "name": "expected_walkthrough_case_study_ids_present",
       "status": "pass",
       "missing": [],
       "extra": []

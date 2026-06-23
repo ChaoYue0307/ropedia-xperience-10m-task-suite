@@ -71,8 +71,8 @@ def build_report(observations: dict[str, Any]) -> dict[str, Any]:
         ),
         check(
             "task_and_modality_cards_render",
-            observations.get("taskCardCount") == 12 and observations.get("atlasCardCount") == 7,
-            "The rendered walkthrough should expose the original core task cards and seven modality cards.",
+            observations.get("taskCardCount") == 20 and observations.get("atlasCardCount") == 7,
+            "The rendered page should expose all 20 unified task cards and seven modality cards.",
             task_card_count=observations.get("taskCardCount"),
             atlas_card_count=observations.get("atlasCardCount"),
         ),
@@ -87,7 +87,7 @@ def build_report(observations: dict[str, Any]) -> dict[str, Any]:
         check(
             "walkthrough_deep_link",
             observations.get("visibleWalkthrough") is True
-            and observations.get("selectorButtonCount") == 12
+            and observations.get("selectorButtonCount") == 20
             and observations.get("storyButtonCount") == 4,
             "The walkthrough deep link should reveal the walkthrough player, all task selectors, and four chapter controls.",
             visible_walkthrough=observations.get("visibleWalkthrough"),

@@ -15,7 +15,6 @@
     "hop_length": 160,
     "feature_description": "Per-window raw waveform STFT log-mel statistics plus delta and waveform envelope statistics."
   },
-  "num_tasks": 12,
   "variants": {
     "all_handcrafted_audio": "All Current Features",
     "all_except_audio": "All Except Audio",
@@ -231,5 +230,7 @@
     "audio_source": "local_public_sample/fisheye_cam0.mp4",
     "annotation_source": "local_public_sample/annotation.hdf5",
     "homie_toolkit_available": true
-  }
+  },
+  "unified_task_count": 20,
+  "audio_ablation_measured_rows": 12
 }

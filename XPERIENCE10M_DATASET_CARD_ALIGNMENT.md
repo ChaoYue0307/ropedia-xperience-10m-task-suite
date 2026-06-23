@@ -175,12 +175,14 @@ The official dataset card supports research directions such as:
 - depth estimation, visual odometry, camera trajectory, SLAM, and scene reconstruction
 - hand/body pose, human motion understanding, and sensor fusion
 
-This repo currently implements a single-episode task suite that starts several
-of those directions, but it does not solve the full official task list. The 12
-current tasks cover action/subtask labels, next-action prediction, transition
-and temporal diagnostics, hand trajectory forecasting, contact prediction,
-object relevance, caption grounding, cross-modal retrieval, modality
-reconstruction, and misalignment detection. Missing or only-proxy coverage
+This repo currently implements a unified 20-task suite that starts several
+of those directions, but it does not solve the full official task list. The 20
+current task contracts cover action/subtask labels, next-action prediction,
+transition and temporal diagnostics, hand trajectory forecasting, contact
+prediction, object relevance, caption grounding, cross-modal retrieval, modality
+reconstruction, synchronization, long-horizon forecasting, action-object
+relations, future object sets, IMU-to-hand pose reconstruction, camera-view
+synchronization retrieval, and transition timing. Missing or only-proxy coverage
 includes real audio-visual modeling, full caption generation, depth-pixel
 estimation, full SLAM estimation, neural rendering, policy learning, and
 cross-episode generalization.

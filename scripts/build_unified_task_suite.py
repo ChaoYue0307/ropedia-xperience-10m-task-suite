@@ -139,7 +139,9 @@ def build_payload() -> dict[str, Any]:
     walkthroughs = read_json(WALKTHROUGHS_PATH)
     additional = read_json(ADDITIONAL_TASKS_PATH)
     suite = summary["suite"]
-    tasks = build_core_tasks(summary, walkthroughs) + build_additional_tasks(additional)
+    core_tasks = build_core_tasks(summary, walkthroughs)
+    additional_tasks = build_additional_tasks(additional)
+    tasks = core_tasks + additional_tasks
     for idx, row in enumerate(tasks, start=1):
         row["task_number"] = idx
         row["suite_label"] = f"Task {idx:02d}"
@@ -152,7 +154,7 @@ def build_payload() -> dict[str, Any]:
         "task_count_summary": {
             "total_unified_tasks": len(tasks),
             "public_framing": "all 20 task contracts are presented as one suite",
-            "legacy_provenance_rows": len(tasks) - 12,
+            "legacy_provenance_rows": len(additional_tasks),
         },
         "unification_policy": {
             "public_framing": "The suite is presented as one 20-task benchmark surface. All task contracts share the same window, split, feature, baseline, and leakage-control language.",

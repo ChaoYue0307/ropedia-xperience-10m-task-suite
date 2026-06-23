@@ -40,7 +40,7 @@
           "IMU",
           "language"
         ],
-        "evaluation": "Cross-modal retrieval, missing-modality reconstruction, transfer to the 12 task heads, and held-out episode generalization.",
+        "evaluation": "Cross-modal retrieval, missing-modality reconstruction, transfer to the 20 task heads, and held-out episode generalization.",
         "first_build": "Contrastive and masked-prediction objectives over synchronized multimodal windows.",
         "id": "multimodal_representation_learning",
         "name": "Multimodal Representation Learning",
@@ -2890,7 +2890,7 @@
       ],
       "deliverables": [
         "1161 aligned windows",
-        "12 task contracts",
+        "20 task contracts",
         "minimal baseline heads",
         "neural MLP heads",
         "modality atlas",
@@ -2963,7 +2963,7 @@
         "scripts/omni/run_128_task_baselines.py"
       ],
       "deliverables": [
-        "same 12 task ids",
+        "same 20 task ids",
         "simple metadata/text baselines",
         "neural MLP baselines for JSON-supported labels",
         "explicit unsupported markers for raw-feature-only tasks"

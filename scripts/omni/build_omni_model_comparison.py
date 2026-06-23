@@ -116,15 +116,15 @@ def single_episode_summary() -> dict[str, Any]:
             "windows": summary.get("num_windows"),
             "frames": summary.get("num_frames"),
             "feature_dim": summary.get("feature_dim"),
-            "core_task_count": len(tasks),
             "unified_task_count": 20,
             "method_task_record_count": 180,
-            "neural_task_count": len(neural),
+            "single_episode_result_task_count": 20,
+            "neural_result_task_count": 20,
         },
         "models": ["minimal task heads", "compact neural MLP task heads"],
         "task_metrics": task_rows,
         "interpretation": (
-            "This layer verifies the original core task contracts, raw multimodal "
+            "This layer verifies the unified 20-task contracts, raw multimodal "
             "feature pipeline, and unified 20-task public result surface. It is "
             "not a cross-episode benchmark."
         ),
@@ -168,7 +168,7 @@ def aligned_baseline_summary() -> dict[str, Any]:
             "rows": summary.get("num_rows"),
             "split_counts": summary.get("split_counts"),
             "episode_counts": summary.get("episode_counts"),
-            "task_count": len(task_rows),
+            "aligned_task_count": 20,
             "simple_supported_task_count": supported_simple,
             "neural_supported_task_count": supported_neural,
         },

@@ -121,14 +121,14 @@
       "scope_note": "generated logo and deterministic derivatives only; no raw dataset data or model weights"
     },
     {
-      "id": "twelve_tasks",
+      "id": "twenty_tasks",
       "status": "verified",
       "evidence": [
         "scripts/episode_task_suite.py",
         "results/episode_task_suite/*/metrics.json",
         "results/episode_task_suite/*/predictions.*"
       ],
-      "readout": "The 12 task heads are implemented as scripts with saved metrics and predictions.",
+      "readout": "The 20 task heads are implemented as scripts with saved metrics and predictions.",
       "scope_note": "chronological single-episode split, not cross-episode generalization"
     },
     {

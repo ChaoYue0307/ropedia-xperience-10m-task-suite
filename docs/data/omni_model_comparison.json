@@ -23,10 +23,10 @@
         "windows": 1161,
         "frames": 5821,
         "feature_dim": 8546,
-        "core_task_count": 12,
         "unified_task_count": 20,
         "method_task_record_count": 180,
-        "neural_task_count": 12
+        "single_episode_result_task_count": 20,
+        "neural_result_task_count": 20
       },
       "models": [
         "minimal task heads",
@@ -154,7 +154,7 @@
           "neural_primary_score": 0.5862068965517241
         }
       ],
-      "interpretation": "This layer verifies the original core task contracts, raw multimodal feature pipeline, and unified 20-task public result surface. It is not a cross-episode benchmark."
+      "interpretation": "This layer verifies the unified 20-task contracts, raw multimodal feature pipeline, and unified 20-task public result surface. It is not a cross-episode benchmark."
     },
     {
       "id": "v2_multi_episode_128_aligned_metadata_baselines",
@@ -175,9 +175,9 @@
           "train": 96,
           "val": 16
         },
-        "task_count": 12,
         "simple_supported_task_count": 8,
-        "neural_supported_task_count": 6
+        "neural_supported_task_count": 6,
+        "aligned_task_count": 20
       },
       "models": [
         "metadata/text simple baselines",
@@ -836,10 +836,10 @@
             "windows": 1161,
             "frames": 5821,
             "feature_dim": 8546,
-            "core_task_count": 12,
             "unified_task_count": 20,
             "method_task_record_count": 180,
-            "neural_task_count": 12
+            "single_episode_result_task_count": 20,
+            "neural_result_task_count": 20
           },
           "weights": "baseline model files in the baseline model repo; no foundation-model weights",
           "interpretation": "Raw multimodal feature task harness on the public sample."
@@ -865,9 +865,9 @@
               "train": 96,
               "val": 16
             },
-            "task_count": 12,
             "simple_supported_task_count": 8,
-            "neural_supported_task_count": 6
+            "neural_supported_task_count": 6,
+            "aligned_task_count": 20
           },
           "weights": "metadata/text baseline artifacts; raw 128 sensor-feature model weights not yet complete",
           "interpretation": "Same selected 96/16/16 split and task ids as the Qwen3-Omni and Cosmos3 diagnostics, but metadata/text features only."

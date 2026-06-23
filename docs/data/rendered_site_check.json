@@ -14,21 +14,21 @@
     "checked_at_local": "2026-06-03T01:32:46.099Z",
     "consoleWarningsOrErrors": 0,
     "exercised_flow": "load current docs server -> open #walkthroughs deep link -> click Next -> click Process story chapter",
-    "frameChip": "Step 2 / 4 \u00b7 Process",
+    "frameChip": "Step 2 / 4 · Process",
     "h1": "Ropedia Xperience-10M Research Task Lab.",
     "panelCount": 25,
-    "playerCounter": "02 / 12 \u00b7 Process",
+    "playerCounter": "02 / 20 · Process",
     "playerTitle": "Procedure Step Recognition",
-    "progressWidth": "12.5%",
+    "progressWidth": "5%",
     "projectTabCount": 5,
     "renderedSiteCheckLinkPresent": true,
     "screenshot_path": "/tmp/xperience_site_walkthrough_fresh.png",
     "scrubValue": "1",
     "selectedProjectTab": "tab-data",
-    "selectorButtonCount": 12,
+    "selectorButtonCount": 20,
     "storyButtonCount": 4,
     "tabCount": 13,
-    "taskCardCount": 12,
+    "taskCardCount": 20,
     "title": "Ropedia Xperience-10M Task Suite",
     "url": "http://127.0.0.1:8765/#walkthroughs",
     "viewport": {
@@ -71,8 +71,8 @@
     {
       "name": "task_and_modality_cards_render",
       "status": "pass",
-      "reason": "The rendered walkthrough should expose the original core task cards and seven modality cards.",
-      "task_card_count": 12,
+      "reason": "The rendered page should expose all 20 unified task cards and seven modality cards.",
+      "task_card_count": 20,
       "atlas_card_count": 7
     },
     {
@@ -88,7 +88,7 @@
       "status": "pass",
       "reason": "The walkthrough deep link should reveal the walkthrough player, all task selectors, and four chapter controls.",
       "visible_walkthrough": true,
-      "selector_button_count": 12,
+      "selector_button_count": 20,
       "story_button_count": 4
     },
     {
@@ -97,8 +97,8 @@
       "reason": "Clicking Next and the Process chapter should update the active task, chapter, counter, and frame label.",
       "active_task": "Procedure Step Recognition",
       "active_story": "Process",
-      "player_counter": "02 / 12 \u00b7 Process",
-      "frame_chip": "Step 2 / 4 \u00b7 Process",
+      "player_counter": "02 / 20 · Process",
+      "frame_chip": "Step 2 / 4 · Process",
       "active_selector_count": 1,
       "active_story_count": 1
     },

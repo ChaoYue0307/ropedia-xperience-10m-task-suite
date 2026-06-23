@@ -251,32 +251,6 @@ def ensure_tier2_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
         if not path.exists():
             continue
         text = path.read_text(encoding="utf-8")
-        text = text.replace(
-            "original sample tasks; tasks " + "13-20 reuse",
-            "all 20 task contracts reuse",
-        )
-        text = text.replace(
-            "original sample tasks; Tasks " + "13-20 reuse",
-            "all 20 task contracts reuse",
-        )
-        text = text.replace(
-            "links to tasks " + "13-20.",
-            "links to provenance rows inside the unified suite.",
-        )
-        text = text.replace(
-            "`TASK_SUITE_20.md` and `docs/data/task_suite_20.json`. Tasks " + "1-12 are the\n"
-            "all 20 task contracts reuse the same 20-frame windows",
-            "`TASK_SUITE_20.md` and `docs/data/task_suite_20.json`. All 20 task contracts\n"
-            "reuse the same 20-frame windows",
-        )
-        text = text.replace(
-            "`TASK_SUITE_20.md` and `docs/data/task_suite_20.json`. Tasks " + "1-12 have\n"
-            "walkthroughs and the historical `tier2_task_suite` paths retain\n"
-            "provenance links to provenance rows inside the unified suite.",
-            "`TASK_SUITE_20.md` and `docs/data/task_suite_20.json`. All 20 task contracts\n"
-            "are presented together; historical `tier2_task_suite` paths only retain\n"
-            "stable provenance links inside the unified suite.",
-        )
         if "docs/data/unified_task_model_radar.json" not in text:
             text = text.replace(
                 "links to provenance rows inside the unified suite.\n",

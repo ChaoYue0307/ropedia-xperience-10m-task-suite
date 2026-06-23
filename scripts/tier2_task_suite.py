@@ -925,7 +925,7 @@ def build_payload(args: argparse.Namespace) -> dict[str, Any]:
         "suite_position": "unified_20_task_provenance",
         "legacy_path_note": "The tier2_task_suite file and directory names are retained for stable public links; these tasks are part of the unified 20-task suite, not a separate public tier.",
         "unified_task_integration": {
-            "total_task_count": 12 + len(TIER2_TASK_SPECS),
+            "total_task_count": 20,
             "legacy_provenance_row_count": len(TIER2_TASK_SPECS),
             "shared_metrics": "docs/data/summary_metrics.json",
             "unified_protocol": "docs/data/evaluation_protocol.json",

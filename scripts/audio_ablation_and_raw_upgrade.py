@@ -780,7 +780,8 @@ def build_summary(rows: list[dict], raw_meta: dict) -> dict:
         "description": "Measured audio ablation and raw log-mel audio upgrade over the single public Xperience-10M sample episode.",
         "scope": "single public sample episode; chronological split; ridge heads over fixed feature contracts",
         "raw_audio_metadata": raw_meta,
-        "num_tasks": len(task_summaries),
+        "unified_task_count": 20,
+        "audio_ablation_measured_rows": len(task_summaries),
         "variants": VARIANT_DISPLAY,
         "task_summaries": task_summaries,
         "aggregate": {

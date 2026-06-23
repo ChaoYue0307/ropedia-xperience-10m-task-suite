@@ -140,7 +140,7 @@ def validate_tasks(payload: dict[str, Any], failures: list[dict[str, Any]]) -> l
     checks.append(
         check(
             len(tasks) == len(EXPECTED_WALKTHROUGH_TASKS),
-            "original_walkthrough_task_count",
+            "walkthrough_case_study_count",
             failures,
             observed=len(tasks),
             expected=len(EXPECTED_WALKTHROUGH_TASKS),
@@ -149,7 +149,7 @@ def validate_tasks(payload: dict[str, Any], failures: list[dict[str, Any]]) -> l
     checks.append(
         check(
             task_ids == set(EXPECTED_WALKTHROUGH_TASKS),
-            "expected_original_walkthrough_task_ids_present",
+            "expected_walkthrough_case_study_ids_present",
             failures,
             missing=sorted(set(EXPECTED_WALKTHROUGH_TASKS) - task_ids),
             extra=sorted(task_ids - set(EXPECTED_WALKTHROUGH_TASKS)),
@@ -477,8 +477,8 @@ def build_report() -> dict[str, Any]:
         "status": "pass" if not failures else "fail",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "summary": {
-            "original_walkthrough_task_count": len(tasks),
-            "expected_original_walkthrough_task_count": len(EXPECTED_WALKTHROUGH_TASKS),
+            "walkthrough_case_study_count": len(tasks),
+            "expected_walkthrough_case_study_count": len(EXPECTED_WALKTHROUGH_TASKS),
             "unified_task_count": task_suite_20.get("task_count"),
             "method_task_record_count": task_matrix_20.get("method_task_record_count"),
             "scored_method_task_count": task_matrix_20.get("scored_method_task_count"),
