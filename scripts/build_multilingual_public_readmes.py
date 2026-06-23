@@ -67,7 +67,7 @@ ENGLISH_TOP = f"""{hero(
     "en",
 )}
 
-**Ropedia Xperience-10M Task Suite** is the public task-suite and evaluation layer built on the Xperience-10M dataset released by Ropedia. It has two public evidence lines. **Line 1** is the 1-sample task lab for raw-file inspection, task construction, and reproducibility. **Line 2** is the selected-128 comparison surface for aligned metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Every score points to a source artifact and keeps direct-vs-proxy status visible.
+**Ropedia Xperience-10M Task Suite** builds on the Xperience-10M dataset released by Ropedia to provide public, reproducible embodied-AI evaluation materials. The project is organized into two evidence lines. **Line 1** turns one public sample episode into inspectable tasks, targets, and baseline runs. **Line 2** uses selected 128-episode public-safe artifacts for aligned metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Every score links back to its source artifact, and direct scores remain clearly separated from compact-proxy estimates.
 
 **Updated:** {UPDATED}.
 
