@@ -23,6 +23,11 @@ import os
 import shutil
 from pathlib import Path
 
+# The local macOS Python environment can mix x86_64 Python with an arm64
+# hf_xet wheel. Disable Xet by default so public bundle uploads use the stable
+# HTTP/LFS path unless the caller explicitly opts back in.
+os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
+
 from huggingface_hub import HfApi, get_token
 
 
