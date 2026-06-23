@@ -153,6 +153,72 @@
       transition: width 90ms linear;
     }
 
+    .scroll-companion {
+      position: fixed;
+      right: max(18px, env(safe-area-inset-right));
+      bottom: max(18px, env(safe-area-inset-bottom));
+      z-index: 58;
+      display: grid;
+      grid-template-columns: minmax(160px, auto) auto;
+      gap: 8px;
+      align-items: stretch;
+      pointer-events: none;
+      transform: translateY(14px);
+      opacity: 0;
+      transition: opacity 180ms var(--motion-ease), transform 180ms var(--motion-ease);
+    }
+    .scroll-companion.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .scroll-status {
+      min-height: 44px;
+      display: grid;
+      align-content: center;
+      gap: 2px;
+      padding: 8px 12px;
+      border: 1px solid rgba(204, 255, 160, 0.22);
+      border-radius: 14px;
+      background: rgba(2, 5, 2, 0.86);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.30);
+      pointer-events: auto;
+    }
+    .scroll-status strong {
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1;
+    }
+    .scroll-status span {
+      max-width: 240px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .back-to-top {
+      min-width: 54px;
+      min-height: 44px;
+      border: 1px solid rgba(204, 255, 160, 0.34);
+      border-radius: 14px;
+      background: var(--green);
+      color: #020502;
+      font-family: var(--font-btn);
+      font-size: 12px;
+      font-weight: 820;
+      cursor: pointer;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.30);
+      pointer-events: auto;
+    }
+    .back-to-top:hover,
+    .back-to-top:focus-visible {
+      background: #f4f8ef;
+      border-color: #f4f8ef;
+    }
+
     .site-nav {
       position: sticky;
       top: 0;
@@ -6207,6 +6273,23 @@
       .site-nav {
         min-height: var(--nav-height);
       }
+      .scroll-companion {
+        right: max(12px, env(safe-area-inset-right));
+        bottom: max(12px, env(safe-area-inset-bottom));
+        grid-template-columns: minmax(0, 1fr) auto;
+        max-width: calc(100vw - 24px);
+      }
+      .scroll-status {
+        min-width: 0;
+        padding: 7px 10px;
+      }
+      .scroll-status span {
+        max-width: 52vw;
+      }
+      .back-to-top {
+        min-width: 48px;
+        padding: 0 10px;
+      }
       .wrap { width: calc(100vw - 28px); max-width: calc(100vw - 28px); }
       .site-nav .wrap,
       .project-tabs-shell .wrap {
@@ -6734,6 +6817,13 @@
 </head>
 <body>
   <div class="page-progress" aria-hidden="true"><span></span></div>
+  <div class="scroll-companion" id="scrollCompanion" aria-live="polite">
+    <div class="scroll-status" aria-label="Reading progress">
+      <strong id="scrollPercent">0%</strong>
+      <span id="scrollSection">Top</span>
+    </div>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">Top</button>
+  </div>
   <a class="skip-link" href="#main">Skip to content</a>
   <nav class="site-nav">
     <div class="wrap nav-inner">
@@ -9429,12 +9519,35 @@ python scripts/validate_publication_package.py</code></pre>
       ".glossary-summary article"
     ].join(",");
 
+    function currentReadingSection() {
+      const candidates = Array.from(document.querySelectorAll("main > section[id], .reader-section[id]"));
+      const offset = Math.max(96, Number.parseInt(getComputedStyle(document.documentElement).getPropertyValue("--tab-stack-offset"), 10) || 96);
+      let current = "Top";
+      for (const section of candidates) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= offset + 24) {
+          const heading = section.querySelector("h2, h1");
+          current = (heading?.textContent || section.id).replace(/\.$/, "").trim();
+        } else {
+          break;
+        }
+      }
+      return current;
+    }
+
     function updatePageProgress() {
       const nav = document.querySelector(".site-nav");
+      const companion = document.getElementById("scrollCompanion");
+      const percentLabel = document.getElementById("scrollPercent");
+      const sectionLabel = document.getElementById("scrollSection");
       const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       const progress = Math.min(1, Math.max(0, window.scrollY / maxScroll));
+      const percent = Math.round(progress * 100);
       document.documentElement.style.setProperty("--scroll-progress", progress.toFixed(4));
       nav?.classList.toggle("is-scrolled", window.scrollY > 12);
+      companion?.classList.toggle("is-visible", window.scrollY > 420);
+      if (percentLabel) percentLabel.textContent = `${percent}%`;
+      if (sectionLabel) sectionLabel.textContent = currentReadingSection();
     }
 
     function animateCounter(element) {
@@ -9460,6 +9573,9 @@ python scripts/validate_publication_package.py</code></pre>
       updatePageProgress();
       window.addEventListener("scroll", updatePageProgress, { passive: true });
       window.addEventListener("resize", updatePageProgress);
+      document.getElementById("backToTop")?.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: prefersReducedMotion.matches ? "auto" : "smooth" });
+      });
 
       const counters = Array.from(document.querySelectorAll(
         ".hero-stats .stat strong, .suite-line-facts strong, .hero-radar-stat strong, .result-matrix-stat strong"
