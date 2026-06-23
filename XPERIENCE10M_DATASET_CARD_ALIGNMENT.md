@@ -45,10 +45,11 @@ before approval. The API snapshot checked for this project reported:
 The API file listing is useful for planning, but it is not the same as local
 access. The public metadata snapshot listed 85,258 repository siblings, 803
 session folders, 12,103 episode folders with `annotation.hdf5`, 72,612 MP4
-files, and 541 `visualization.rrd` files. This repo treats those as upstream
-metadata only; no full-dataset files are redistributed here, and model results
-are reported only for the public sample episode and selected processed splits
-that this repo actually evaluates.
+files, and 541 `visualization.rrd` files from the Hugging Face-hosted gated
+dataset version. This repo treats those as upstream HF metadata only; no
+full-dataset files are redistributed here, and model results are reported only
+for the public sample episode and selected processed splits that this repo
+actually evaluates.
 
 ## Official Modalities
 
@@ -90,8 +91,8 @@ The public Hugging Face page/API currently shows a separate live hosted
 file-size display of 31.9 TB (`usedStorage` observed as 31,871,115,497,224
 bytes). This project keeps those concepts separate: the official card scale
 describes the full dataset design, the HF display describes the currently
-reported hosted file size, and this repo validates only the files that are
-actually available to the project.
+reported hosted file size for the Hugging Face dataset version, and this repo
+validates only the files that are actually available to the project.
 
 ## Public Sample Dataset Card
 
@@ -114,7 +115,7 @@ The sample card metadata observed for this project is:
 | visualization tool | Rerun 0.29.0 for `.rrd` |
 
 This project uses the public sample to build the 5,821-frame / 1,161-window
-task-development suite. The sample license and the full gated dataset terms are both
+task-development suite. The sample license and the Hugging Face gated full-dataset terms are both
 preserved in the public documentation; this repo's MIT code license does not
 grant additional rights to the raw data.
 
@@ -205,7 +206,7 @@ evaluation and safeguards.
 When describing Xperience-10M in this repo, keep these limitations visible:
 
 - one public sample episode cannot prove cross-environment generalization
-- full-dataset performance requires gated access, many episodes, and held-out episode splits
+- full-dataset performance requires Hugging Face gated access, many episodes, and held-out episode splits
 - motion capture, SLAM, depth, captions, and other annotations can contain noise
 - language annotations are not exhaustive descriptions of every scene state
 - large-scale training requires substantial storage, preprocessing, and compute

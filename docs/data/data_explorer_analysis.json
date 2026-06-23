@@ -2,7 +2,7 @@
   "charts": [
     {
       "path": "assets/charts/data_explorer_scope_ladder.svg",
-      "question": "How do the public sample, selected 128 episodes, and full gated dataset differ in scale?",
+      "question": "How do the public sample, selected 128 episodes, and Hugging Face gated full dataset version differ in scale?",
       "title": "Scope ladder"
     },
     {
@@ -22,8 +22,8 @@
     },
     {
       "path": "assets/charts/data_explorer_full_file_composition.svg",
-      "question": "What file types dominate the gated full-dataset metadata?",
-      "title": "Full dataset file composition"
+      "question": "What file types dominate the Hugging Face gated full-dataset metadata?",
+      "title": "Hugging Face full dataset file composition"
     }
   ],
   "full_hf_dataset": {
@@ -154,7 +154,7 @@
       }
     ],
     "last_modified": "2026-04-21T05:03:45+00:00",
-    "metadata_note": "The official dataset is gated. These full-corpus figures use authenticated Hugging Face Hub file metadata only; they do not inspect private row content or redistribute raw MP4/HDF5/RRD files.",
+    "metadata_note": "The official dataset is gated on Hugging Face. These full-corpus figures use authenticated Hugging Face Hub file metadata for the HF-hosted dataset version only; they do not inspect private row content or redistribute raw MP4/HDF5/RRD files.",
     "pilot_scale_estimates": {
       "all_complete_episodes_windows_at_256_each": 3098112,
       "episode_100_windows_at_256_each": 25600,
@@ -196,7 +196,7 @@
       "6": 12102
     }
   },
-  "generated_at_utc": "2026-06-23T09:35:08Z",
+  "generated_at_utc": "2026-06-23T11:37:29Z",
   "public_sample": {
     "dataset": {
       "episode_id": "xperience-10m-sample",

@@ -1,8 +1,8 @@
 # Ropedia Xperience-10M Data Explorer Analysis
 
-Generated: 2026-06-23T09:35:08Z
+Generated: 2026-06-23T11:37:29Z
 
-This report summarizes three data scopes without mixing them: the official public sample episode, the selected 128-episode public-safe feature surface, and authenticated metadata for the full gated Hugging Face dataset.
+This report summarizes three data scopes without mixing them: the official public sample episode, the selected 128-episode public-safe feature surface, and authenticated metadata for the Hugging Face-hosted gated full dataset.
 
 ## Scope Summary
 
@@ -26,9 +26,10 @@ This report summarizes three data scopes without mixing them: the official publi
 - Qwen3-Omni v6 multiscale export: 34,269 rows.
 - Dense multiscale compact export: 106,095 rows.
 
-## Full Gated Dataset Metadata
+## Hugging Face Full Dataset Metadata
 
-- Repo: `ropedia-ai/xperience-10m` at `ce943cf271a758b60240084892d05cf6dc12dd90`.
+- Repo: Hugging Face gated dataset `ropedia-ai/xperience-10m` at `ce943cf271a758b60240084892d05cf6dc12dd90`.
+- Scope note: this is the HF-hosted full dataset version and file-listing metadata, not a local raw-data mirror.
 - 85,257 files excluding `.gitattributes`.
 - 12,102 complete episode folders (99.9917%).
 - 72,612 MP4 files and 12,103 `annotation.hdf5` files.
@@ -39,4 +40,4 @@ This report summarizes three data scopes without mixing them: the official publi
 - Public sample feature dimensions: `assets/charts/data_explorer_sample_feature_modalities.svg`
 - Public sample action distribution: `assets/charts/data_explorer_sample_action_distribution.svg`
 - Selected-128 split rows: `assets/charts/data_explorer_selected128_split_rows.svg`
-- Full dataset file composition: `assets/charts/data_explorer_full_file_composition.svg`
+- Hugging Face full dataset file composition: `assets/charts/data_explorer_full_file_composition.svg`

@@ -238,7 +238,7 @@ def render_markdown(payload: dict) -> str:
         "",
         "| Layer | Current value |",
         "| --- | --- |",
-        f"| Full dataset repo | `{alignment['full_dataset_repo']}` |",
+        f"| Full dataset repo | Hugging Face gated dataset `{alignment['full_dataset_repo']}` |",
         f"| Full dataset access | {alignment['full_dataset_access']} |",
         f"| Live HF file-size display | {alignment['live_hf_file_size_display']} |",
         f"| Full-scale storage statement | {alignment['full_scale_storage_statement']} |",
@@ -259,9 +259,9 @@ def render_markdown(payload: dict) -> str:
         "",
         "## Current Project Scope",
         "",
-        "- HF API file counts are source-listing metadata, not local data possession.",
+        "- HF API file counts are source-listing metadata for the Hugging Face full dataset version, not local data possession.",
         "- The live HF 31.9 TB file-size display is recorded separately from the card's about-1PB full-scale storage statement.",
-        "- The public sample license is preserved separately from the gated full dataset license field.",
+        "- The public sample license is preserved separately from the Hugging Face gated full-dataset license field.",
         "- The official limited-diversity / showcase-quality disclaimer is preserved in the responsible-use notes.",
         "- Raw MP4, HDF5, RRD, private gated data, and full Qwen weights are not redistributed.",
         "- Current model evidence remains one public sample episode, not cross-episode generalization.",
@@ -314,7 +314,7 @@ def build_report(hf_root: Path) -> dict:
             and sample.get("pretty_name") == EXPECTED_SAMPLE["pretty_name"]
             and sample.get("license") == EXPECTED_SAMPLE["license"]
             and set(sample.get("tooling", [])) == EXPECTED_SAMPLE["tooling"],
-            "public sample card license and tooling are recorded separately from the gated full dataset",
+            "public sample card license and tooling are recorded separately from the Hugging Face gated full dataset version",
             ["docs/data/xperience10m_dataset_card_alignment.json"],
         )
     )

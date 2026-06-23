@@ -9,7 +9,7 @@ Current status: **pass**
 
 | Layer | Current value |
 | --- | --- |
-| Full dataset repo | `ropedia-ai/xperience-10m` |
+| Full dataset repo | Hugging Face gated dataset `ropedia-ai/xperience-10m` |
 | Full dataset access | manual |
 | Live HF file-size display | 31.9 TB |
 | Full-scale storage statement | about 1 PB |
@@ -33,9 +33,9 @@ Current status: **pass**
 
 ## Current Project Scope
 
-- HF API file counts are source-listing metadata, not local data possession.
+- HF API file counts are source-listing metadata for the Hugging Face full dataset version, not local data possession.
 - The live HF 31.9 TB file-size display is recorded separately from the card's about-1PB full-scale storage statement.
-- The public sample license is preserved separately from the gated full dataset license field.
+- The public sample license is preserved separately from the Hugging Face gated full-dataset license field.
 - The official limited-diversity / showcase-quality disclaimer is preserved in the responsible-use notes.
 - Raw MP4, HDF5, RRD, private gated data, and full Qwen weights are not redistributed.
 - Current model evidence remains one public sample episode, not cross-episode generalization.

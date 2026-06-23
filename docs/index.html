@@ -7279,9 +7279,9 @@
           <article class="snapshot-card">
             <span class="status-pill">verified</span>
             <h3>Dataset source alignment</h3>
-            <p>The public description is aligned to the official gated Xperience-10M dataset card, including modalities, scale, access, and current project coverage. The source snapshot records 31.9 TB on the HF surface, an about-1PB full-scale storage statement, 12,103 episode folders as upstream metadata, not a local data inventory, public sample license cc-by-nc-4.0, HOMIE Toolkit and Rerun 0.29.0 source tooling, and the official limited diversity note. See the source-alignment record for exact provenance.</p>
+            <p>The public description is aligned to the official gated Xperience-10M Hugging Face dataset card, including modalities, scale, access, and current project coverage. The source snapshot records 31.9 TB on the HF dataset surface, an about-1PB full-scale storage statement, 12,103 episode folders as upstream metadata, not a local data inventory, public sample license cc-by-nc-4.0, HOMIE Toolkit and Rerun 0.29.0 source tooling, and the official limited diversity note. See the source-alignment record for exact provenance.</p>
             <div class="snapshot-meta">
-              <span>full dataset <strong>gated</strong></span>
+              <span>full dataset <strong>HF gated</strong></span>
               <span>sample scope <strong>1 episode</strong></span>
               <span>raw data mirrored <strong>no</strong></span>
             </div>
@@ -7838,7 +7838,7 @@
           <article class="artifact primary-artifact"><div><h3>Official dataset</h3><p>Xperience-10M is a gated large-scale egocentric multimodal dataset for embodied AI, robotics, spatial intelligence, and world modeling.</p></div><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official HF dataset</a></article>
           <article class="artifact"><h3>Line 1 public sample</h3><p>The one-episode line builds the inspectable 20-task lab. Use Line 2 for selected-128 held-out comparison.</p><a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample">sample dataset</a></article>
           <article class="artifact"><h3>Public sample inspection</h3><p>One public sample episode is exposed through the raw browser and modality atlas: synchronized video, embedded audio, HDF5 annotation groups, depth, pose/SLAM, mocap, IMU, calibration, language-derived signals, and source links in one place.</p><a href="#raw-sample">open raw browser</a><a href="data/raw_sample_files.json">raw manifest</a><a href="data/modality_atlas.json">stream metadata</a></article>
-          <article class="artifact"><h3>Data explorer analysis</h3><p>Compare the one-sample line, selected-128 feature exports, and full gated dataset metadata with scope stats, split counts, modality breakdowns, and readable charts.</p><a href="#data-analysis">open analysis</a><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_EXPLORER_ANALYSIS.md">analysis report</a></article>
+          <article class="artifact"><h3>Data explorer analysis</h3><p>Compare the one-sample line, selected-128 feature exports, and Hugging Face gated full-dataset metadata with scope stats, split counts, modality breakdowns, and readable charts.</p><a href="#data-analysis">open analysis</a><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_EXPLORER_ANALYSIS.md">analysis report</a></article>
           <article class="artifact"><h3>Multi-episode pilot</h3><p>The selected 128-episode Qwen3-Omni LoRA v6 diagnostic run is verified with 4,032 held-out test predictions and 99.90% JSON validity. Action/subtask metrics are still weak, so this remains a baseline for error analysis.</p><a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a><a href="data/qwen3_v5_v6_comparison.json">v5/v6 comparison</a></article>
           <article class="artifact"><h3>Data boundary</h3><p>Raw MP4, HDF5, RRD files are streamed from the official public sample source when opened here; private gated data and full Qwen weights are not redistributed in this project.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a></article>
           <article class="artifact"><h3>Implemented subset</h3><p>The public task lab uses one sample episode with 5,821 frames, 1,161 aligned windows, 8,546-dimensional task inputs, and 20 integrated task contracts.</p><a href="#suite">task suite</a><a href="data/task_suite_20.json">task contract data</a></article>
@@ -7853,7 +7853,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Data explorer analysis.</h2>
-          <p>Read the data at three separate scales: the official public sample episode, the selected 128-episode feature surface, and authenticated file metadata for the full gated Hugging Face dataset. The charts are generated by a reproducible script and keep raw data boundaries explicit.</p>
+          <p>Read the data at three separate scales: the official public sample episode, the selected 128-episode feature surface, and authenticated file metadata for the Hugging Face-hosted gated full dataset. The charts are generated by a reproducible script and keep raw data boundaries explicit.</p>
         </div>
         <div class="data-analysis-grid" aria-label="Three Xperience-10M data scopes">
           <article class="data-analysis-card">
@@ -7879,7 +7879,7 @@
             </div>
           </article>
           <article class="data-analysis-card">
-            <small>scope 3 / full gated dataset</small>
+            <small>scope 3 / HF gated full dataset</small>
             <h3>Full-corpus metadata.</h3>
             <p>The official dataset remains gated. This project records file-level Hub metadata so readers can understand scale without downloading private raw MP4, HDF5, or RRD files.</p>
             <div class="data-analysis-metrics">
@@ -7897,7 +7897,7 @@
               <small>reader map</small>
               <h3>What each data scale can answer.</h3>
             </div>
-            <p>The goal is to make the data understandable without mixing raw public sample inspection, selected-128 derived artifacts, and full gated-dataset metadata into one ambiguous inventory.</p>
+            <p>The goal is to make the data understandable without mixing raw public sample inspection, selected-128 derived artifacts, and Hugging Face gated full-dataset metadata into one ambiguous inventory.</p>
           </div>
           <table class="line-table">
             <thead>
@@ -7934,9 +7934,9 @@
         <div class="data-analysis-chart-grid" aria-label="Generated data explorer charts">
           <article class="data-chart-card wide">
             <small>scale comparison</small>
-            <h3>One sample, selected 128, and full dataset are different reading scopes.</h3>
+            <h3>One sample, selected 128, and the HF full dataset are different reading scopes.</h3>
             <p>Log-scale bars keep the large jumps visible without hiding the small public-sample line.</p>
-            <img src="assets/charts/data_explorer_scope_ladder.svg?v=xperience10m-data-explorer-v1" alt="Scope ladder chart comparing public sample, selected 128 episodes, and full gated dataset by episode count, window rows, and training bytes.">
+            <img src="assets/charts/data_explorer_scope_ladder.svg?v=xperience10m-data-explorer-v1" alt="Scope ladder chart comparing public sample, selected 128 episodes, and the Hugging Face gated full dataset by episode count, window rows, and training bytes.">
           </article>
           <article class="data-chart-card">
             <small>sample feature anatomy</small>
@@ -7957,14 +7957,14 @@
             <img src="assets/charts/data_explorer_selected128_split_rows.svg?v=xperience10m-data-explorer-v1" alt="Stacked bar chart of selected-128 processed rows by train, validation, and test split.">
           </article>
           <article class="data-chart-card">
-            <small>full dataset metadata</small>
-            <h3>The upstream dataset is mostly repeated episode file structure.</h3>
-            <p>Each complete episode usually has one annotation HDF5 and six MP4 streams; RRD viewer recordings are optional.</p>
-            <img src="assets/charts/data_explorer_full_file_composition.svg?v=xperience10m-data-explorer-v1" alt="Log-scale file composition chart for the gated full dataset metadata.">
+            <small>HF full-dataset metadata</small>
+            <h3>The Hugging Face full dataset is mostly repeated episode file structure.</h3>
+            <p>The counts come from the gated <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">ropedia-ai/xperience-10m</a> repository on Hugging Face. Each complete episode usually has one annotation HDF5 and six MP4 streams; RRD viewer recordings are optional.</p>
+            <img src="assets/charts/data_explorer_full_file_composition.svg?v=xperience10m-data-explorer-v1" alt="Log-scale file composition chart for the gated Hugging Face full-dataset metadata.">
           </article>
         </div>
 
-        <p class="data-analysis-note"><strong>Source boundary:</strong> the full-corpus counts come from authenticated Hugging Face Hub file metadata for <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">ropedia-ai/xperience-10m</a>. They describe repository scale and file organization; they do not inspect private row contents or redistribute raw data.</p>
+        <p class="data-analysis-note"><strong>Source boundary:</strong> the full-corpus counts are the Hugging Face-hosted dataset version: authenticated Hugging Face Hub file metadata for <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">ropedia-ai/xperience-10m</a>. They describe repository scale and file organization; they do not inspect private row contents or redistribute raw data.</p>
         <div class="data-analysis-actions">
           <a class="button" href="#raw-sample">Open raw sample browser</a>
           <a class="button" href="#suite">Open 20-task suite</a>
@@ -9517,7 +9517,7 @@ python scripts/validate_publication_package.py</code></pre>
       roadmap: "Best for planning: what has shipped and what the next experiments should do.",
       "reading-path": "Best for choosing an order through the repo, website, and HF surfaces.",
       "dataset-card": "Best for source alignment and public-sample boundaries.",
-      "data-analysis": "Best for comparing the public sample, selected 128 episodes, and full gated dataset metadata.",
+      "data-analysis": "Best for comparing the public sample, selected 128 episodes, and Hugging Face gated full-dataset metadata.",
       "raw-sample": "Best for inspecting the sample files, media previews, and file relationships.",
       suite: "Best for the unified 20-task map, radar comparisons, task cards, and score matrix.",
       walkthroughs: "Best for case-study style task explanations.",

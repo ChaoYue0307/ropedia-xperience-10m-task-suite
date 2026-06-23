@@ -285,9 +285,10 @@ def build_full_hf_dataset(root: Path) -> dict[str, Any]:
         "incomplete_episode_records": audit.get("incomplete_episode_records", []),
         "pilot_scale_estimates": audit.get("pilot_scale_estimates", {}),
         "metadata_note": (
-            "The official dataset is gated. These full-corpus figures use authenticated "
-            "Hugging Face Hub file metadata only; they do not inspect private row content "
-            "or redistribute raw MP4/HDF5/RRD files."
+            "The official dataset is gated on Hugging Face. These full-corpus figures "
+            "use authenticated Hugging Face Hub file metadata for the HF-hosted dataset "
+            "version only; they do not inspect private row content or redistribute raw "
+            "MP4/HDF5/RRD files."
         ),
     }
 
@@ -297,7 +298,7 @@ def plot_scope_ladder(payload: dict[str, Any], out: Path) -> None:
     selected = payload["selected_128"]
     full = payload["full_hf_dataset"]
 
-    labels = ["Sample", "Selected-128", "Full dataset"]
+    labels = ["Sample", "Selected-128", "HF full dataset"]
     episodes = [
         1,
         selected["selection_summary"].get("selected_episode_count", 0),
@@ -480,7 +481,7 @@ def render_markdown(payload: dict[str, Any]) -> str:
         "",
         f"Generated: {payload['generated_at_utc']}",
         "",
-        "This report summarizes three data scopes without mixing them: the official public sample episode, the selected 128-episode public-safe feature surface, and authenticated metadata for the full gated Hugging Face dataset.",
+        "This report summarizes three data scopes without mixing them: the official public sample episode, the selected 128-episode public-safe feature surface, and authenticated metadata for the Hugging Face-hosted gated full dataset.",
         "",
         "## Scope Summary",
         "",
@@ -504,9 +505,10 @@ def render_markdown(payload: dict[str, Any]) -> str:
         f"- Qwen3-Omni v6 multiscale export: {next((item['samples'] for item in selected['exports'] if item['key'] == 'qwen_v6_multiscale_export'), 0):,} rows.",
         f"- Dense multiscale compact export: {next((item['samples'] for item in selected['exports'] if item['key'] == 'dense_multiscale_compact_export'), 0):,} rows.",
         "",
-        "## Full Gated Dataset Metadata",
+        "## Hugging Face Full Dataset Metadata",
         "",
-        f"- Repo: `{full['repo_id']}` at `{full['repo_sha']}`.",
+        f"- Repo: Hugging Face gated dataset `{full['repo_id']}` at `{full['repo_sha']}`.",
+        "- Scope note: this is the HF-hosted full dataset version and file-listing metadata, not a local raw-data mirror.",
         f"- {full['summary'].get('file_count_excluding_gitattributes', 0):,} files excluding `.gitattributes`.",
         f"- {full['summary'].get('complete_episode_count', 0):,} complete episode folders ({full['summary'].get('complete_episode_pct', 0):.4f}%).",
         f"- {full['summary'].get('mp4_count', 0):,} MP4 files and {full['summary'].get('annotation_hdf5_count', 0):,} `annotation.hdf5` files.",
@@ -540,7 +542,7 @@ def build_payload(root: Path) -> dict[str, Any]:
         {
             "title": "Scope ladder",
             "path": "assets/charts/data_explorer_scope_ladder.svg",
-            "question": "How do the public sample, selected 128 episodes, and full gated dataset differ in scale?",
+            "question": "How do the public sample, selected 128 episodes, and Hugging Face gated full dataset version differ in scale?",
         },
         {
             "title": "Public sample feature dimensions",
@@ -558,9 +560,9 @@ def build_payload(root: Path) -> dict[str, Any]:
             "question": "How many rows are available per selected-128 export and split?",
         },
         {
-            "title": "Full dataset file composition",
+            "title": "Hugging Face full dataset file composition",
             "path": "assets/charts/data_explorer_full_file_composition.svg",
-            "question": "What file types dominate the gated full-dataset metadata?",
+            "question": "What file types dominate the Hugging Face gated full-dataset metadata?",
         },
     ]
     return payload

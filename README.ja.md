@@ -64,7 +64,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 | 20 タスクを見る | [20 タスクガイド](TASK_SUITE_20.md), [タスク契約データ](docs/data/task_suite_20.json) |
 | 結果を比較 | [研究結果まとめ](RESEARCH_TAKEAWAYS.md), [180 件の結果表](docs/data/task_method_20_result_matrix.json) |
 | 1 サンプルを調べる | [1 episode ブラウザ](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample ファイルマップ](docs/data/raw_sample_files.json) |
-| sample / 128 / full dataset を比較 | [data explorer analysis](DATA_EXPLORER_ANALYSIS.md), [web analysis section](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
+| sample / 128 / HF full dataset を比較 | [data explorer analysis](DATA_EXPLORER_ANALYSIS.md), [web analysis section](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
 | 3 つの foundation pipeline を読む | [3 つの foundation pipeline](THREE_FOUNDATION_PIPELINES.md), [pipeline 契約データ](docs/data/three_foundation_pipelines.json) |
 | 再現・監査 | [再現ガイド](REPRODUCIBILITY.md), [証拠契約](EVIDENCE_CONTRACT.md) |
 
@@ -72,7 +72,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 
 - 読み方のルール: metric があるものは 20 tasks、evidence が何を調べるかを説明するものは 4 research directions、training input/output を定義するものは 3 foundation pipelines です。perception、3D memory、language reasoning、action、planning を統合するものは unified embodied model target であり、新しい score axis ではありません。
 - データ: 20-frame window が video、audio、depth、pose/SLAM、mocap、IMU、calibration、language annotation を結びます。
-- データ探索: 新しい analysis layer は public sample、selected-128 exports、gated full dataset metadata を分けて提示します。
+- データ探索: 新しい analysis layer は public sample、selected-128 exports、Hugging Face gated full dataset metadata を分けて提示します。
 - タスク: 認識、予測、retrieval、reconstruction、order、sync、long-horizon、action-object、sensor bridge など 20 契約。
 - 結果: single-episode minimal/NN は 20/20。128-episode 側は metadata、raw feature、Qwen3、Cosmos を証拠タイプ別に分けます。公開 matrix は 180/180 scored records で、174 direct と 6 compact proxy を分離し、proxy targets は明示します。
 - 方向: spatial intelligence、human-video world model、vision-language-action に対して、タスク対応と必要証拠を記録しています。長期目標は unified embodied foundation model です。

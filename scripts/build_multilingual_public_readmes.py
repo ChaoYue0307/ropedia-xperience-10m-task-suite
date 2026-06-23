@@ -117,7 +117,7 @@ The multilingual README files are reader guides. The canonical technical evidenc
     </tr>
     <tr>
       <td><strong>Data explorer analysis</strong></td>
-      <td>A generated analysis layer separates the public sample, selected-128 feature exports, and authenticated full-dataset Hugging Face metadata with scope stats, split counts, modality breakdowns, and chart assets.</td>
+      <td>A generated analysis layer separates the public sample, selected-128 feature exports, and authenticated Hugging Face gated full-dataset metadata with scope stats, split counts, modality breakdowns, and chart assets.</td>
     </tr>
     <tr>
       <td><strong>180 method-task records</strong></td>
@@ -173,7 +173,7 @@ Reader rule: if it has a metric, it is a **task**; if it explains what the evide
 
 ## Data Explorer Analysis
 
-The data explorer is now a three-scope analysis layer, not only a raw-file browser. It compares the public sample episode, selected 128-episode feature exports, and the full gated upstream dataset metadata without mixing their evidence boundaries.
+The data explorer is now a three-scope analysis layer, not only a raw-file browser. It compares the public sample episode, selected 128-episode feature exports, and the Hugging Face-hosted gated full-dataset metadata without mixing their evidence boundaries.
 
 | Scope | Reader question | Current public analysis |
 | --- | --- | --- |
@@ -645,7 +645,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 | 20 タスクを見る | [20 タスクガイド](TASK_SUITE_20.md), [タスク契約データ](docs/data/task_suite_20.json) |
 | 結果を比較 | [研究結果まとめ](RESEARCH_TAKEAWAYS.md), [180 件の結果表](docs/data/task_method_20_result_matrix.json) |
 | 1 サンプルを調べる | [1 episode ブラウザ](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample ファイルマップ](docs/data/raw_sample_files.json) |
-| sample / 128 / full dataset を比較 | [data explorer analysis](DATA_EXPLORER_ANALYSIS.md), [web analysis section](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
+| sample / 128 / HF full dataset を比較 | [data explorer analysis](DATA_EXPLORER_ANALYSIS.md), [web analysis section](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
 | 3 つの foundation pipeline を読む | [3 つの foundation pipeline](THREE_FOUNDATION_PIPELINES.md), [pipeline 契約データ](docs/data/three_foundation_pipelines.json) |
 | 再現・監査 | [再現ガイド](REPRODUCIBILITY.md), [証拠契約](EVIDENCE_CONTRACT.md) |
 
@@ -653,7 +653,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 
 - 読み方のルール: metric があるものは 20 tasks、evidence が何を調べるかを説明するものは 4 research directions、training input/output を定義するものは 3 foundation pipelines です。perception、3D memory、language reasoning、action、planning を統合するものは unified embodied model target であり、新しい score axis ではありません。
 - データ: 20-frame window が video、audio、depth、pose/SLAM、mocap、IMU、calibration、language annotation を結びます。
-- データ探索: 新しい analysis layer は public sample、selected-128 exports、gated full dataset metadata を分けて提示します。
+- データ探索: 新しい analysis layer は public sample、selected-128 exports、Hugging Face gated full dataset metadata を分けて提示します。
 - タスク: 認識、予測、retrieval、reconstruction、order、sync、long-horizon、action-object、sensor bridge など 20 契約。
 - 結果: single-episode minimal/NN は 20/20。128-episode 側は metadata、raw feature、Qwen3、Cosmos を証拠タイプ別に分けます。公開 matrix は 180/180 scored records で、174 direct と 6 compact proxy を分離し、proxy targets は明示します。
 - 方向: spatial intelligence、human-video world model、vision-language-action に対して、タスク対応と必要証拠を記録しています。長期目標は unified embodied foundation model です。
@@ -696,7 +696,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 | 20개 과제 확인 | [20개 과제 가이드](TASK_SUITE_20.md), [과제 계약 데이터](docs/data/task_suite_20.json) |
 | 결과 비교 | [연구 결과 요약](RESEARCH_TAKEAWAYS.md), [180개 결과 표](docs/data/task_method_20_result_matrix.json) |
 | 샘플 하나 검사 | [단일 episode 브라우저](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample 파일 지도](docs/data/raw_sample_files.json) |
-| sample / 128 / full dataset 비교 | [data explorer analysis](DATA_EXPLORER_ANALYSIS.md), [web analysis section](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
+| sample / 128 / HF full dataset 비교 | [data explorer analysis](DATA_EXPLORER_ANALYSIS.md), [web analysis section](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/#data-analysis) |
 | 세 foundation pipeline 읽기 | [세 foundation pipeline](THREE_FOUNDATION_PIPELINES.md), [pipeline 계약 데이터](docs/data/three_foundation_pipelines.json) |
 | 재현 및 감사 | [재현 가이드](REPRODUCIBILITY.md), [증거 계약](EVIDENCE_CONTRACT.md) |
 
@@ -704,7 +704,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 
 - 읽기 규칙: metric이 있으면 20개 task layer이고, evidence가 무엇을 연구하는지 설명하면 4개 research direction layer이며, model input/output과 training target을 설명하면 3개 foundation pipeline layer입니다. perception, 3D memory, language reasoning, action, planning을 합치는 것은 unified embodied model target이며 새 score axis가 아닙니다.
 - 데이터: 20-frame window가 video, audio, depth, pose/SLAM, mocap, IMU, calibration, language annotation을 연결합니다.
-- 데이터 탐색: 새 분석 레이어는 public sample, selected-128 exports, gated full dataset metadata를 분리해 보여줍니다.
+- 데이터 탐색: 새 분석 레이어는 public sample, selected-128 exports, Hugging Face gated full dataset metadata를 분리해 보여줍니다.
 - 과제: 인식, 예측, retrieval, reconstruction, order, sync, long-horizon, action-object binding, sensor bridge 등 20개 계약.
 - 결과: single-episode minimal/NN은 20/20; 128-episode 레이어는 metadata, raw feature, Qwen3, Cosmos를 증거 유형별로 분리합니다. 공개 matrix는 180/180 scored records이며 174 direct와 6 compact proxy를 분리하고 proxy targets를 명시합니다.
 - 방향: spatial intelligence, human-video world model, vision-language-action에 대해 과제 매핑과 필요한 증거를 기록합니다. 장기 목표는 unified embodied foundation model입니다.

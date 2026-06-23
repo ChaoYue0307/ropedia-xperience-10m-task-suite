@@ -85,7 +85,7 @@ The multilingual README files are reader guides. The canonical technical evidenc
     </tr>
     <tr>
       <td><strong>Data explorer analysis</strong></td>
-      <td>A generated analysis layer separates the public sample, selected-128 feature exports, and authenticated full-dataset Hugging Face metadata with scope stats, split counts, modality breakdowns, and chart assets.</td>
+      <td>A generated analysis layer separates the public sample, selected-128 feature exports, and authenticated Hugging Face gated full-dataset metadata with scope stats, split counts, modality breakdowns, and chart assets.</td>
     </tr>
     <tr>
       <td><strong>180 method-task records</strong></td>
@@ -141,7 +141,7 @@ Reader rule: if it has a metric, it is a **task**; if it explains what the evide
 
 ## Data Explorer Analysis
 
-The data explorer is now a three-scope analysis layer, not only a raw-file browser. It compares the public sample episode, selected 128-episode feature exports, and the full gated upstream dataset metadata without mixing their evidence boundaries.
+The data explorer is now a three-scope analysis layer, not only a raw-file browser. It compares the public sample episode, selected 128-episode feature exports, and the Hugging Face-hosted gated full-dataset metadata without mixing their evidence boundaries.
 
 | Scope | Reader question | Current public analysis |
 | --- | --- | --- |
@@ -614,8 +614,10 @@ supporting materials rather than the main reading path. Use
 
 Source alignment is tracked in the [source-alignment note](SOURCE_ALIGNMENT_AUDIT.md)
 and [source-alignment data](docs/data/source_alignment_audit.json).
-The official gated `ropedia-ai/xperience-10m` card reports `31.9 TB` on the
-live HF surface and an `about-1PB` full-scale storage statement; the committed
+Whenever this repo says "full dataset," it refers to the Hugging Face-hosted
+gated dataset version at `ropedia-ai/xperience-10m`, not a local raw-data
+mirror. The official gated `ropedia-ai/xperience-10m` card reports `31.9 TB`
+on the live HF dataset surface and an `about-1PB` full-scale storage statement; the committed
 API-listing snapshot records `12,103 episode folders` as upstream `metadata only`,
 not a local raw-data inventory. In other words, those episode folders are
 upstream listing metadata only for this project. The public sample remains

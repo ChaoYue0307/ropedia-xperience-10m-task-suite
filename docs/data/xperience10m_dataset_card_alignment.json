@@ -54,10 +54,10 @@
       "source": "Hugging Face dataset page/API public metadata",
       "total_file_size_display": "31.9 TB",
       "used_storage_bytes_observed": 31871115497224,
-      "note": "This live HF-hosted file-size display is separate from the dataset card's about-1PB full-scale data statement."
+      "note": "This live HF-hosted file-size display describes the Hugging Face dataset version and is separate from the dataset card's about-1PB full-scale data statement."
     },
     "api_file_listing_observed": {
-      "scope": "public Hugging Face API metadata, not local data possession",
+      "scope": "public Hugging Face API metadata for the HF-hosted full dataset version, not local data possession",
       "sibling_count": 85258,
       "session_folder_count": 803,
       "episode_folder_count": 12103,
@@ -199,7 +199,7 @@
   },
   "responsible_use_boundary": [
     "No raw MP4, raw annotation.hdf5, private gated data, raw visualization.rrd, or full Qwen weights are redistributed.",
-    "The public sample card lists cc-by-nc-4.0; the full gated dataset uses the official Ropedia/Xperience-10M access terms and license field.",
+    "The public sample card lists cc-by-nc-4.0; the Hugging Face gated full dataset uses the official Ropedia/Xperience-10M access terms and license field.",
     "The official card describes the open-source dataset as limited in diversity and showcase/production quality, so robust evaluation and downstream safeguards are still required.",
     "The project does not support identity recognition, re-identification, biometric profiling, surveillance, sensitive attribute inference, or safety-critical deployment.",
     "Dataset use remains governed by the official Ropedia/Xperience-10M terms."
