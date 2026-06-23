@@ -165,32 +165,6 @@
       line-height: 1.65;
       text-wrap: pretty;
     }
-    .language-strip {
-      max-width: 880px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 22px;
-      font-family: var(--font-btn);
-      font-size: 12px;
-    }
-    .language-strip a {
-      min-height: 32px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 10px;
-      border: 1px solid rgba(204, 255, 160, 0.18);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.05);
-      color: #dfeadc;
-      text-decoration: none;
-    }
-    .language-strip a:hover {
-      color: var(--green);
-      border-color: var(--green);
-      background: rgba(204, 255, 160, 0.08);
-    }
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -408,7 +382,7 @@
     }
     .phase-strip {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: 8px;
     }
     .phase {
@@ -556,6 +530,12 @@
       gap: 10px;
       margin-top: 20px;
     }
+    .artifact-note {
+      margin: 20px 0 -8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
     .artifact-row a {
       min-height: 38px;
       display: inline-flex;
@@ -614,9 +594,10 @@
         <a href="index.html">Project</a>
         <a class="active" href="research_roadmap.html">Roadmap</a>
         <a href="index.html#suite">Tasks</a>
+        <a href="index.html#takeaways">Results</a>
+        <a href="index.html#development-directions">Pipelines</a>
+        <a href="index.html#glossary">Glossary</a>
         <a href="single_episode_explorer.html">Explorer</a>
-        <a href="data/language_versions.json">Languages</a>
-        <a href="data/research_roadmap_interactive.json">Data</a>
         <a class="primary" href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF</a>
         <a class="primary" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite">Repo</a>
       </div>
@@ -636,20 +617,10 @@
           directly from generated project artifacts, so the track and task views stay
           tied to the real sample metrics and scale-up status.
         </p>
-        <div class="language-strip" aria-label="README language versions">
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.md">English</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.zh.md">中文</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.es.md">Español</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.fr.md">Français</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.de.md">Deutsch</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.ja.md">日本語</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.ko.md">한국어</a>
-          <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.pt.md">Português</a>
-          <a href="data/language_versions.json">Manifest</a>
-        </div>
         <div class="hero-actions">
           <a class="button primary" href="#roadmap-app">Open roadmap</a>
-          <a class="button" href="data/research_roadmap_interactive.json">View data contract</a>
+          <a class="button" href="index.html#roadmap">Back to main roadmap</a>
+          <a class="button" href="index.html#development-directions">Foundation pipelines</a>
           <a class="button" href="index.html#directions">Four-track summary</a>
         </div>
       </div>
@@ -707,12 +678,13 @@
           <aside class="panel detail-panel" id="detailPanel" aria-label="Selected roadmap detail"></aside>
         </div>
 
-        <div class="artifact-row">
-          <a href="data/research_roadmap_interactive.json">Roadmap data</a>
-          <a href="data/foundation_model_plan.json">Foundation model plan</a>
-          <a href="data/research_directions.json">Research directions</a>
-          <a href="data/task_walkthroughs.json">Task walkthroughs</a>
-          <a href="data/summary_metrics.json">Summary metrics</a>
+        <p class="artifact-note">Structured mirrors for scripts and validators are attached here after the interactive reader. Most readers should use the panels above before opening these records.</p>
+        <div class="artifact-row" aria-label="Structured roadmap mirrors">
+          <a href="data/research_roadmap_interactive.json">Explorer data mirror</a>
+          <a href="data/foundation_model_plan.json">Foundation-plan mirror</a>
+          <a href="data/research_directions.json">Research-track mirror</a>
+          <a href="data/task_walkthroughs.json">Task walkthrough mirror</a>
+          <a href="data/summary_metrics.json">Summary-metric mirror</a>
           <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">Roadmap document</a>
         </div>
       </div>
