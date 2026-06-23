@@ -3609,11 +3609,63 @@
       text-transform: none;
       letter-spacing: 0.02em;
     }
-    .glossary-table-wrap {
-      overflow-x: auto;
+    .glossary-table-shell {
       border: 1px solid var(--line);
       border-radius: var(--card-radius);
-      background: rgba(2, 5, 2, 0.58);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.055), rgba(2, 5, 2, 0.62)),
+        rgba(2, 5, 2, 0.58);
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.018);
+    }
+    .glossary-scroll-note {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(204, 255, 160, 0.14);
+      background: rgba(2, 5, 2, 0.78);
+    }
+    .glossary-scroll-note span {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .glossary-scroll-note p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+      text-align: right;
+    }
+    .glossary-table-wrap {
+      max-height: clamp(430px, 58vh, 760px);
+      overflow: auto;
+      overscroll-behavior: contain;
+      background: rgba(2, 5, 2, 0.36);
+      scrollbar-color: rgba(204, 255, 160, 0.45) rgba(204, 255, 160, 0.08);
+      scrollbar-width: thin;
+    }
+    .glossary-table-wrap:focus-visible {
+      outline: 3px solid rgba(204, 255, 160, 0.26);
+      outline-offset: -3px;
+    }
+    .glossary-table-wrap::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    .glossary-table-wrap::-webkit-scrollbar-track {
+      background: rgba(204, 255, 160, 0.06);
+    }
+    .glossary-table-wrap::-webkit-scrollbar-thumb {
+      border: 2px solid rgba(2, 5, 2, 0.72);
+      border-radius: 999px;
+      background: rgba(204, 255, 160, 0.50);
     }
     .glossary-table {
       width: 100%;
@@ -3635,7 +3687,11 @@
       font-size: 11px;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      background: rgba(204, 255, 160, 0.07);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: rgba(15, 25, 11, 0.96);
+      backdrop-filter: blur(12px);
     }
     .glossary-table td:first-child {
       width: 18%;
@@ -6261,6 +6317,16 @@
       .glossary-summary {
         grid-template-columns: 1fr;
       }
+      .glossary-scroll-note {
+        display: block;
+      }
+      .glossary-scroll-note p {
+        margin-top: 6px;
+        text-align: left;
+      }
+      .glossary-table-wrap {
+        max-height: min(66vh, 560px);
+      }
       .glossary-table,
       .glossary-table thead,
       .glossary-table tbody,
@@ -8630,25 +8696,31 @@
               </div>
               <p class="glossary-count" id="glossaryCount" aria-live="polite">Loading glossary terms...</p>
             </div>
-            <div class="glossary-table-wrap">
-              <table class="glossary-table">
-                <thead>
-                  <tr>
-                    <th>Term</th>
-                    <th>Meaning here</th>
-                    <th>Use it for</th>
-                    <th>Do not confuse with</th>
-                  </tr>
-                </thead>
-                <tbody id="glossaryRows">
-                  <tr><td>Egocentric video<small>multimodal sensing</small></td><td>Video captured from a first-person or body-mounted viewpoint.</td><td>The sample streams are egocentric views of human interaction and are the visual basis for many tasks.</td><td>Third-person robot-camera footage.</td></tr>
-                  <tr><td>Camera pose<small>spatial geometry</small></td><td>The camera position and orientation at a time step.</td><td>Supports spatial-intelligence tasks, view synchronization, and geometry diagnostics.</td><td>The human body pose.</td></tr>
-                  <tr><td>Forward dynamics<small>temporal and world models</small></td><td>Predicting the next state from the current state and action/context.</td><td>The Cosmos3-Super LoRA branch uses a forward-dynamics-style diagnostic contract.</td><td>Reverse inference from result back to cause.</td></tr>
-                  <tr><td>Vision-language-action model<small>robotics and VLA</small></td><td>A model that maps visual context and language into actions.</td><td>The VLA direction is a future path after action targets are converted into robot-compatible chunks.</td><td>A vision-language model that only answers text.</td></tr>
-                  <tr><td>Direct score<small>tasks and metrics</small></td><td>A metric computed against the task target directly.</td><td>The preferred score type in the 20-task matrix.</td><td>Compact-proxy score.</td></tr>
-                  <tr><td>Held-out evaluation<small>training and evaluation</small></td><td>Testing on examples not used for training.</td><td>Required before promoting Qwen/Cosmos results to public evidence.</td><td>Training-set loss.</td></tr>
-                </tbody>
-              </table>
+            <div class="glossary-table-shell">
+              <div class="glossary-scroll-note">
+                <span>Scrollable term index</span>
+                <p>Search and filters update this box; scroll inside it to scan the full glossary without stretching the page.</p>
+              </div>
+              <div class="glossary-table-wrap" tabindex="0" role="region" aria-label="Scrollable glossary term table">
+                <table class="glossary-table">
+                  <thead>
+                    <tr>
+                      <th>Term</th>
+                      <th>Meaning here</th>
+                      <th>Use it for</th>
+                      <th>Do not confuse with</th>
+                    </tr>
+                  </thead>
+                  <tbody id="glossaryRows">
+                    <tr><td>Egocentric video<small>multimodal sensing</small></td><td>Video captured from a first-person or body-mounted viewpoint.</td><td>The sample streams are egocentric views of human interaction and are the visual basis for many tasks.</td><td>Third-person robot-camera footage.</td></tr>
+                    <tr><td>Camera pose<small>spatial geometry</small></td><td>The camera position and orientation at a time step.</td><td>Supports spatial-intelligence tasks, view synchronization, and geometry diagnostics.</td><td>The human body pose.</td></tr>
+                    <tr><td>Forward dynamics<small>temporal and world models</small></td><td>Predicting the next state from the current state and action/context.</td><td>The Cosmos3-Super LoRA branch uses a forward-dynamics-style diagnostic contract.</td><td>Reverse inference from result back to cause.</td></tr>
+                    <tr><td>Vision-language-action model<small>robotics and VLA</small></td><td>A model that maps visual context and language into actions.</td><td>The VLA direction is a future path after action targets are converted into robot-compatible chunks.</td><td>A vision-language model that only answers text.</td></tr>
+                    <tr><td>Direct score<small>tasks and metrics</small></td><td>A metric computed against the task target directly.</td><td>The preferred score type in the 20-task matrix.</td><td>Compact-proxy score.</td></tr>
+                    <tr><td>Held-out evaluation<small>training and evaluation</small></td><td>Testing on examples not used for training.</td><td>Required before promoting Qwen/Cosmos results to public evidence.</td><td>Training-set loss.</td></tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
             <div class="glossary-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/GLOSSARY.md">Open complete glossary note</a>
