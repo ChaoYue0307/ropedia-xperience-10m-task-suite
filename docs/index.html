@@ -1776,7 +1776,7 @@
     }
     .reader-route-list {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 10px;
     }
     .reader-route-list a {
@@ -3482,6 +3482,17 @@
       color: var(--muted);
       font-size: 13px;
       line-height: 1.55;
+    }
+    .brief-card a {
+      align-self: end;
+      color: var(--cyan);
+      font-weight: 760;
+      text-decoration: none;
+    }
+    .brief-card a:hover {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
     .brief-card ul {
       display: grid;
@@ -7021,21 +7032,12 @@
       <label for="mobileSectionJump">Jump to section</label>
       <select id="mobileSectionJump">
         <option value="top">Top / Hero</option>
-        <option value="overview">Project overview</option>
-        <option value="dataset-card">Dataset scope</option>
-        <option value="data-analysis">Data explorer analysis</option>
-        <option value="raw-sample">Raw sample browser</option>
-        <option value="suite">20-task suite</option>
-        <option value="pipeline">Method pipeline</option>
-        <option value="takeaways">Results and takeaways</option>
-        <option value="directions">Research directions</option>
-        <option value="roadmap">Roadmap</option>
-        <option value="evidence">Research progress</option>
-        <option value="reading-path">Project path</option>
-        <option value="glossary">Glossary</option>
-        <option value="artifacts">Research artifacts</option>
-        <option value="omni-scale-up">Model scale-up</option>
-        <option value="foundation-model-paths">Foundation paths</option>
+        <option value="overview">Overview</option>
+        <option value="dataset-card">Data</option>
+        <option value="suite">Tasks</option>
+        <option value="takeaways">Results</option>
+        <option value="omni-scale-up">Scale-up</option>
+        <option value="artifacts">Artifacts</option>
       </select>
     </div>
   </div>
@@ -7050,11 +7052,9 @@
         <a href="#overview">Overview</a>
         <a href="#dataset-card">Data</a>
         <a href="#suite">Tasks</a>
-        <a href="#pipeline">Method</a>
         <a href="#takeaways">Results</a>
-        <a href="#directions">Directions</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#glossary">Glossary</a>
+        <a href="#omni-scale-up">Scale-up</a>
+        <a href="#artifacts">Artifacts</a>
       </div>
       <div class="nav-tools">
         <div class="site-language notranslate" translate="no" data-short="EN">
@@ -7156,10 +7156,10 @@
             <strong>Results</strong>
             <span>Evidence lines, 180 scored records, direct/proxy status, and model diagnostics.</span>
           </a>
-          <a class="hero-path" href="#directions">
+          <a class="hero-path" href="#omni-scale-up">
             <small>Extend</small>
-            <strong>Directions after results</strong>
-            <span>Research directions, roadmap, and scale-up plans after the result table.</span>
+            <strong>Scale-up after results</strong>
+            <span>Qwen3-Omni, Cosmos3, roadmap, research progress, and foundation paths after the result table.</span>
           </a>
         </div>
         <div class="hero-stats">
@@ -7247,43 +7247,43 @@
     </div>
   </header>
 
-  <main id="main" class="continuous" data-active-tab="start">
+  <main id="main" class="continuous" data-active-tab="overview">
     <div class="project-tabs-shell" aria-label="Current section navigation" hidden aria-hidden="true">
       <div class="wrap project-tabs" role="tablist" aria-label="Project sections" hidden aria-hidden="true">
-        <button type="button" class="project-tab active" id="tab-start" role="tab" data-tab-key="start" data-default-section="overview" aria-selected="true" aria-pressed="true" aria-controls="overview">
-          <strong>Start</strong>
-          <span>scope and project identity</span>
+        <button type="button" class="project-tab active" id="tab-overview" role="tab" data-tab-key="overview" data-default-section="overview" aria-selected="true" aria-pressed="true" aria-controls="overview">
+          <strong>Overview</strong>
+          <span>scope and reader path</span>
         </button>
-        <button type="button" class="project-tab" id="tab-data" role="tab" data-tab-key="data" data-default-section="dataset-card" aria-selected="false" aria-pressed="false" aria-controls="dataset-card data-analysis raw-sample suite walkthroughs" tabindex="-1">
-          <strong>Data & Tasks</strong>
-          <span>dataset sample and task suite</span>
+        <button type="button" class="project-tab" id="tab-data" role="tab" data-tab-key="data" data-default-section="dataset-card" aria-selected="false" aria-pressed="false" aria-controls="dataset-card data-analysis raw-sample" tabindex="-1">
+          <strong>Data</strong>
+          <span>dataset sample and boundaries</span>
         </button>
-        <button type="button" class="project-tab" id="tab-method" role="tab" data-tab-key="method" data-default-section="pipeline" aria-selected="false" aria-pressed="false" aria-controls="protocol pipeline features architectures" tabindex="-1">
-          <strong>Method</strong>
-          <span>pipeline and model design</span>
+        <button type="button" class="project-tab" id="tab-tasks" role="tab" data-tab-key="tasks" data-default-section="suite" aria-selected="false" aria-pressed="false" aria-controls="suite walkthroughs protocol pipeline features architectures" tabindex="-1">
+          <strong>Tasks</strong>
+          <span>20 tasks and method pipeline</span>
         </button>
         <button type="button" class="project-tab" id="tab-results" role="tab" data-tab-key="results" data-default-section="takeaways" aria-selected="false" aria-pressed="false" aria-controls="takeaways" tabindex="-1">
           <strong>Results</strong>
           <span>takeaways and baselines</span>
         </button>
-        <button type="button" class="project-tab" id="tab-directions" role="tab" data-tab-key="directions" data-default-section="directions" aria-selected="false" aria-pressed="false" aria-controls="directions roadmap" tabindex="-1">
-          <strong>Directions</strong>
-          <span>directions and roadmap</span>
+        <button type="button" class="project-tab" id="tab-scale-up" role="tab" data-tab-key="scale-up" data-default-section="omni-scale-up" aria-selected="false" aria-pressed="false" aria-controls="directions roadmap evidence omni-scale-up foundation-model-paths" tabindex="-1">
+          <strong>Scale-up</strong>
+          <span>roadmap and model paths</span>
         </button>
-        <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="reading-path" aria-selected="false" aria-pressed="false" aria-controls="evidence reading-path glossary artifacts omni-scale-up foundation-model-paths" tabindex="-1">
-          <strong>Resources</strong>
-          <span>artifacts, models, commands</span>
+        <button type="button" class="project-tab" id="tab-artifacts" role="tab" data-tab-key="artifacts" data-default-section="artifacts" aria-selected="false" aria-pressed="false" aria-controls="reading-path glossary artifacts" tabindex="-1">
+          <strong>Artifacts</strong>
+          <span>mirrors, glossary, files</span>
         </button>
       </div>
       <div class="wrap section-tabs" id="sectionTabs" role="tablist" aria-label="Sections in the current area"></div>
       <div class="wrap section-orientation" id="sectionOrientation" aria-live="polite">
-        <strong>Start / Project Overview</strong>
+        <strong>Overview / Project Overview</strong>
         <span>Scope, evidence boundaries, and project entry points.</span>
         <a href="#reader-map">Evidence map</a>
       </div>
     </div>
 
-    <section id="overview" data-project-tab="start" role="tabpanel" aria-labelledby="tab-start" tabindex="-1">
+    <section id="overview" data-project-tab="overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Project overview and evidence map.</h2>
@@ -7305,16 +7305,39 @@
         </div>
         <div class="reader-route-panel" aria-label="Project route through the task suite">
           <div class="reader-route-copy">
-            <small>project route</small>
-            <strong>Four project layers connect data, tasks, methods, and results.</strong>
-            <p>The project starts with the Xperience-10M data scope, then explains the 20-task contracts, method design, result table, and exact reproduction or extension artifacts.</p>
+            <small>new reader path</small>
+            <strong>Five steps give the cleanest first read.</strong>
+            <p>Start with the short project summary, then move through the evidence map, task suite, result matrix, and scale-up plan. Roadmap, glossary, research progress, and foundation paths stay available as secondary cards instead of competing in the first navigation row.</p>
           </div>
           <div class="reader-route-list">
-            <a href="#dataset-card"><span>01 data</span><strong>Dataset scope</strong><em>Official Xperience-10M context, public sample files, and selected-128 boundaries.</em></a>
-            <a href="#suite"><span>02 tasks</span><strong>20-task suite</strong><em>One task vocabulary for all methods and both evidence lines.</em></a>
-            <a href="#pipeline"><span>03 method</span><strong>Pipeline and protocol</strong><em>Feature construction, leakage controls, model heads, and evaluation rules.</em></a>
-            <a href="#takeaways"><span>04 results</span><strong>Result ledger</strong><em>Direct scores, compact-proxy cells, model diagnostics, and citeable tables.</em></a>
+            <a href="#project-brief"><span>01 summary</span><strong>Read 30-second summary</strong><em>Understand what this project is, what is implemented, and what comes next.</em></a>
+            <a href="#reader-map"><span>02 evidence</span><strong>Open evidence map</strong><em>See how GitHub, GitHub Pages, HF Space, artifacts, and model repos connect.</em></a>
+            <a href="#suite"><span>03 tasks</span><strong>Inspect 20-task suite</strong><em>Check the task vocabulary, source links, radars, and task cards.</em></a>
+            <a href="#result-matrix-table"><span>04 results</span><strong>Check result matrix</strong><em>Read direct/proxy status, method rows, raw metrics, and source artifacts.</em></a>
+            <a href="#omni-scale-up"><span>05 scale-up</span><strong>Read scale-up plan</strong><em>Move to Qwen3-Omni, Cosmos3, roadmap, and foundation-model paths.</em></a>
           </div>
+        </div>
+        <div class="brief-grid" aria-label="Secondary project links">
+          <article class="brief-card">
+            <strong>Roadmap</strong>
+            <p>Shipped stages, active work, and scale-up targets after the result table.</p>
+            <a href="#roadmap">Open roadmap</a>
+          </article>
+          <article class="brief-card">
+            <strong>Glossary</strong>
+            <p>Definitions for project terms, metrics, model families, public mirrors, and proxy scores.</p>
+            <a href="#glossary">Open glossary</a>
+          </article>
+          <article class="brief-card">
+            <strong>Research progress</strong>
+            <p>Current experiments, verified model evidence, public mirrors, and milestone boundaries.</p>
+            <a href="#evidence">Open progress</a>
+          </article>
+          <article class="brief-card">
+            <strong>Foundation paths</strong>
+            <p>Spatial-intelligence, world-model, and VLA paths placed after current results and scale-up status.</p>
+            <a href="#foundation-model-paths">Open foundation paths</a>
+          </article>
         </div>
         <figure class="line-map-figure">
           <img src="assets/charts/two_evidence_line_map.svg?v=two-line-map-v2" alt="Two evidence-line map showing 1 sample episode, 128 selected episodes, and the combined 180 scored method-task records">
@@ -7471,7 +7494,7 @@
             <a href="#artifacts">Open artifact index</a>
           </div>
         </div>
-        <div class="brief-panel">
+        <div class="brief-panel" id="project-brief">
           <div class="brief-panel-head">
             <div>
               <span>Project brief</span>
@@ -7914,7 +7937,7 @@
       </div>
     </section>
 
-    <section id="suite" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
+    <section id="suite" data-project-tab="tasks" role="tabpanel" aria-labelledby="tab-tasks" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Xperience-10M 20-task suite.</h2>
@@ -8042,7 +8065,7 @@
       </div>
     </section>
 
-    <section id="walkthroughs" data-project-tab="data" role="tabpanel" aria-labelledby="tab-data" tabindex="-1">
+    <section id="walkthroughs" data-project-tab="tasks" role="tabpanel" aria-labelledby="tab-tasks" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Interactive task walkthrough.</h2>
@@ -8097,7 +8120,7 @@
       </div>
     </section>
 
-    <section id="protocol" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
+    <section id="protocol" data-project-tab="tasks" role="tabpanel" aria-labelledby="tab-tasks" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Evaluation protocol is explicit.</h2>
@@ -8117,7 +8140,7 @@
       </div>
     </section>
 
-    <section id="pipeline" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
+    <section id="pipeline" data-project-tab="tasks" role="tabpanel" aria-labelledby="tab-tasks" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>From raw episode to research artifacts.</h2>
@@ -8164,7 +8187,7 @@
       </div>
     </section>
 
-    <section id="features" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
+    <section id="features" data-project-tab="tasks" role="tabpanel" aria-labelledby="tab-tasks" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Model inputs are traceable.</h2>
@@ -8207,7 +8230,7 @@
       </div>
     </section>
 
-    <section id="architectures" data-project-tab="method" role="tabpanel" aria-labelledby="tab-method" tabindex="-1">
+    <section id="architectures" data-project-tab="tasks" role="tabpanel" aria-labelledby="tab-tasks" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>The baseline task heads share four head families.</h2>
@@ -8564,7 +8587,7 @@
       </div>
     </section>
 
-    <section id="directions" data-project-tab="directions" role="tabpanel" aria-labelledby="tab-directions" tabindex="-1">
+    <section id="directions" data-project-tab="scale-up" role="tabpanel" aria-labelledby="tab-scale-up" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Four research directions over the same 20 tasks.</h2>
@@ -8846,7 +8869,7 @@
       </div>
     </section>
 
-    <section id="roadmap" data-project-tab="directions" role="tabpanel" aria-labelledby="tab-directions" tabindex="-1">
+    <section id="roadmap" data-project-tab="scale-up" role="tabpanel" aria-labelledby="tab-scale-up" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Research roadmap.</h2>
@@ -9025,7 +9048,7 @@
       </div>
     </section>
 
-    <section id="evidence" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
+    <section id="evidence" data-project-tab="scale-up" role="tabpanel" aria-labelledby="tab-scale-up" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Current experiments and next milestones.</h2>
@@ -9135,7 +9158,7 @@
       </div>
     </section>
 
-    <section id="reading-path" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
+    <section id="reading-path" data-project-tab="artifacts" role="tabpanel" aria-labelledby="tab-artifacts" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Research reading path.</h2>
@@ -9204,7 +9227,7 @@
       </div>
     </section>
 
-    <section id="glossary" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
+    <section id="glossary" data-project-tab="artifacts" role="tabpanel" aria-labelledby="tab-artifacts" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Glossary for project and field terms.</h2>
@@ -9287,7 +9310,7 @@
       </div>
     </section>
 
-    <section id="artifacts" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
+    <section id="artifacts" data-project-tab="artifacts" role="tabpanel" aria-labelledby="tab-artifacts" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Choose the artifact by the question you have.</h2>
@@ -9416,7 +9439,7 @@
       </div>
     </section>
 
-    <section id="omni-scale-up" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
+    <section id="omni-scale-up" data-project-tab="scale-up" role="tabpanel" aria-labelledby="tab-scale-up" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Qwen3-Omni diagnostic run is verified.</h2>
@@ -9434,7 +9457,7 @@
     </section>
 
 
-    <section id="foundation-model-paths" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
+    <section id="foundation-model-paths" data-project-tab="scale-up" role="tabpanel" aria-labelledby="tab-scale-up" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Foundation-model scale-up paths.</h2>
@@ -10127,17 +10150,17 @@
       { id: "extensions", label: "Unified Task Evidence" },
       { id: "roadmap", label: "Roadmap" },
       { id: "evidence", label: "Research Progress" },
-      { id: "reading-path", label: "Project Path" },
+      { id: "reading-path", label: "Detailed Reading Path" },
       { id: "glossary", label: "Glossary" },
-      { id: "artifacts", label: "Research Artifacts" },
-      { id: "omni-scale-up", label: "Omni Scale-Up" },
+      { id: "artifacts", label: "Artifacts" },
+      { id: "omni-scale-up", label: "Scale-Up Plan" },
       { id: "foundation-model-paths", label: "Foundation Paths" }
     ];
     const sectionLabels = Object.fromEntries(sectionConfig.map((section) => [section.id, section.label]));
     const sectionDescriptions = {
       overview: "Project scope, public boundaries, and entry paths.",
-      roadmap: "Shipped stages, active work, and scale-up targets.",
-      "reading-path": "Project path across the repo, website, and Hugging Face mirrors.",
+      roadmap: "Secondary roadmap details for shipped stages, active work, and scale-up targets.",
+      "reading-path": "Detailed route across the repo, website, and Hugging Face mirrors.",
       "dataset-card": "Official dataset context, public-sample boundaries, and selected-128 scope.",
       "data-analysis": "Public sample, selected 128 episodes, and Hugging Face gated full-dataset metadata.",
       "raw-sample": "Sample files, media previews, and file relationships.",
@@ -10151,14 +10174,14 @@
       takeaways: "Evidence lines, 180-result matrix, baseline snapshots, neural heads, and diagnostic charts.",
       models: "Minimal baseline evidence inside Results.",
       neural: "Neural MLP task-head comparisons inside Results.",
-      directions: "How the same tasks support spatial, world-model, and VLA directions.",
+      directions: "Secondary research-direction map for spatial, world-model, and VLA tracks.",
       extensions: "Unified task provenance inside Directions.",
       diagnostics: "Charts and error-analysis evidence inside Results.",
-      glossary: "Definitions for data, tasks, models, metrics, and public mirrors.",
+      glossary: "Secondary definitions for data, tasks, models, metrics, and public mirrors.",
       artifacts: "Files, mirrors, weights, scripts, and release checks.",
-      evidence: "Current experiment status, model evidence, mirrors, and milestones.",
+      evidence: "Secondary current experiment status, model evidence, mirrors, and milestones.",
       "omni-scale-up": "Qwen3-Omni and Cosmos3 status.",
-      "foundation-model-paths": "Three larger training paths after current model status."
+      "foundation-model-paths": "Secondary foundation-model training paths after current model status."
     };
     const sectionTabMap = Object.fromEntries(tabSections.map((section) => [section.id, section.dataset.projectTab]));
     ["tasks", "models", "neural", "diagnostics", "extensions"].forEach((id) => {
@@ -10251,7 +10274,7 @@
     }
 
     function setProjectTab(tabKey, options = {}) {
-      const fallbackTab = tabDefaultSections[tabKey] ? tabKey : "start";
+      const fallbackTab = tabDefaultSections[tabKey] ? tabKey : "overview";
       const requestedId = options.targetId || tabDefaultSections[fallbackTab] || "overview";
       const targetId = document.getElementById(requestedId)
         ? requestedId
@@ -10286,7 +10309,7 @@
     function activateTabForHash(options = {}) {
       const hashId = decodeURIComponent(window.location.hash.replace(/^#/, ""));
       if (hashId && !sectionTabMap[hashId]) return;
-      const tabKey = sectionTabMap[hashId] || "start";
+      const tabKey = sectionTabMap[hashId] || "overview";
       const targetId = sectionTabMap[hashId] ? hashId : tabDefaultSections[tabKey];
       setProjectTab(tabKey, { targetId, scroll: options.scroll, smooth: options.smooth });
     }
