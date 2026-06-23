@@ -7199,11 +7199,11 @@
           <strong>Results</strong>
           <span>takeaways and baselines</span>
         </button>
-        <button type="button" class="project-tab" id="tab-directions" role="tab" data-tab-key="directions" data-default-section="directions" aria-selected="false" aria-pressed="false" aria-controls="directions roadmap development-directions" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-directions" role="tab" data-tab-key="directions" data-default-section="directions" aria-selected="false" aria-pressed="false" aria-controls="directions roadmap" tabindex="-1">
           <strong>Directions</strong>
-          <span>directions, pipelines, roadmap</span>
+          <span>directions and roadmap</span>
         </button>
-        <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="reading-path" aria-selected="false" aria-pressed="false" aria-controls="evidence reading-path glossary artifacts omni-scale-up run" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="reading-path" aria-selected="false" aria-pressed="false" aria-controls="evidence foundation-pipeline-appendix reading-path glossary artifacts omni-scale-up run" tabindex="-1">
           <strong>Resources</strong>
           <span>project path, mirrors, commands</span>
         </button>
@@ -8793,7 +8793,7 @@
             <div class="roadmap-quick-actions">
               <a href="#roadmap-stages">Review stage cards</a>
               <a href="research_roadmap.html">Roadmap details</a>
-              <a href="#development-directions">Foundation pipelines</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/THREE_FOUNDATION_PIPELINES.md">Pipeline note</a>
               <a href="#result-matrix-table">180-result table</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">Roadmap note</a>
             </div>
@@ -8916,10 +8916,10 @@
             </article>
             <article class="roadmap-resource-card">
               <small>training plan</small>
-              <h3>Three foundation pipelines</h3>
+              <h3>Foundation model paths</h3>
               <p>Spatial intelligence, human-video world modeling, and VLA training use different inputs and outputs while sharing the Xperience-10M sample structure.</p>
               <div class="roadmap-resource-actions">
-                <a href="#development-directions">Open pipelines</a>
+                <a href="data/three_foundation_pipelines.json">Pipeline data</a>
                 <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/THREE_FOUNDATION_PIPELINES.md">Pipeline note</a>
               </div>
             </article>
@@ -8954,117 +8954,6 @@
               <a href="data/task_suite_enhancement_128.json">Selected-128 enhancement mirror</a>
             </div>
           </details>
-        </div>
-      </div>
-    </section>
-
-    <section id="development-directions" data-project-tab="directions" role="tabpanel" aria-labelledby="tab-directions" tabindex="-1">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Three foundation-model training pipelines.</h2>
-          <p>This is the 3-pipeline layer of the public structure. It is separate from the four research directions: directions organize what the 20 task scores study, while these pipelines describe how Xperience-10M files can train larger spatial, world-model, and vision-language-action models.</p>
-        </div>
-        <div class="foundation-pipeline-grid" aria-label="Three high-resolution foundation direction slide diagrams">
-          <article class="foundation-pipeline-card">
-            <img src="assets/foundation-pipelines/spatial-intelligence-pipeline.png?v=foundation-slides-v10" alt="High-resolution slide diagram showing the Spatial intelligence models direction for Xperience-10M.">
-            <div class="foundation-pipeline-body">
-              <span>High-resolution direction slide</span>
-              <h3>Spatial intelligence models</h3>
-              <p>Train spatial-memory models from multiview RGB, egocentric video, depth, pose, calibration, object/contact cues, and language prompts; evaluate spatial QA, object permanence, counting, retrieval, and pose-aware consistency.</p>
-              <div class="foundation-io-panel" aria-label="Spatial intelligence one-sample training input and output">
-                <div class="foundation-io-row">
-                  <strong>Sample input</strong>
-                  <p>Use <code>windows.csv</code> and <code>shared_windows.npz</code> to slice each 20-frame window, then join six MP4 RGB streams with <code>annotation.hdf5</code> depth, camera pose, SLAM/calibration, object cues, contacts, and optional language questions.</p>
-                </div>
-                <div class="foundation-io-row">
-                  <strong>Training output</strong>
-                  <p>Build targets such as camera-view match, object relevance, object-set memory, depth/pose reconstruction proxy, caption-grounded retrieval, and spatial QA answers derived from the same public annotation timeline.</p>
-                </div>
-                <div class="foundation-io-row">
-                  <strong>Existing hooks</strong>
-                  <div class="foundation-io-tasks">
-                    <a href="#suite">Tasks 8/10/12/14/16</a>
-                    <a href="data/task_suite_20.json">20-task contract data</a>
-                    <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">window manifest</a>
-                  </div>
-                </div>
-              </div>
-              <div class="foundation-pipeline-links">
-                <a href="data/three_foundation_pipelines.json">Structured pipeline mirror</a>
-                <a href="assets/foundation-pipelines/spatial-intelligence-pipeline.png">Open image</a>
-              </div>
-            </div>
-          </article>
-          <article class="foundation-pipeline-card">
-            <img src="assets/foundation-pipelines/human-video-world-model-pipeline.png?v=foundation-slides-v10" alt="High-resolution slide diagram showing the Human-video world models direction for Xperience-10M.">
-            <div class="foundation-pipeline-body">
-              <span>High-resolution direction slide</span>
-              <h3>Human-video world models</h3>
-              <p>Train future-prediction models from observed interaction windows to score next action, next subtask, future object set, contact transition, camera-motion delta, and latent future state, with Qwen-style probes and Cosmos-style dynamics kept separate.</p>
-              <div class="foundation-io-panel" aria-label="Human-video world-model one-sample training input and output">
-                <div class="foundation-io-row">
-                  <strong>Sample input</strong>
-                  <p>Take the current 20-frame observed window at time <code>t</code> from <code>shared_windows.npz</code>: RGB/audio/sensor summaries, hand/body motion, camera pose, current object/contact state, and current action/subtask context only.</p>
-                </div>
-                <div class="foundation-io-row">
-                  <strong>Training output</strong>
-                  <p>Shift the same episode timeline forward to produce next-action, next-subtask, future object-set, contact-transition, time-to-transition, camera-motion delta, or latent/future-feature targets. Future labels stay out of the input.</p>
-                </div>
-                <div class="foundation-io-row">
-                  <strong>Existing hooks</strong>
-                  <div class="foundation-io-tasks">
-                    <a href="#suite">Tasks 4/13/14/17/20</a>
-                    <a href="data/unified_task_model_radar.json">model scores</a>
-                    <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json">future probes</a>
-                  </div>
-                </div>
-              </div>
-              <div class="foundation-pipeline-links">
-                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/THREE_FOUNDATION_PIPELINES.md">Track note</a>
-                <a href="assets/foundation-pipelines/human-video-world-model-pipeline.png">Open image</a>
-              </div>
-            </div>
-          </article>
-          <article class="foundation-pipeline-card">
-            <img src="assets/foundation-pipelines/vision-language-action-pipeline.png?v=foundation-slides-v11" alt="High-resolution slide diagram showing the Vision-language-action models direction for Xperience-10M.">
-            <div class="foundation-pipeline-body">
-              <span>High-resolution direction slide</span>
-              <h3>Vision-language-action models</h3>
-              <p>Train VLA or policy-compatible heads only after converting egocentric video, captions, hand/body motion, contacts, objects, and procedures into traceable action tokens, chunks, and object-conditioned action targets.</p>
-              <div class="foundation-io-panel" aria-label="Vision-language-action one-sample training input and output">
-                <div class="foundation-io-row">
-                  <strong>Sample input</strong>
-                  <p>Use egocentric/fisheye video windows, caption/object context from <code>annotation.hdf5</code>, hand/body mocap, contact state, and current subtask text as the observation-language side of each training pair.</p>
-                </div>
-                <div class="foundation-io-row">
-                  <strong>Training output</strong>
-                  <p>For the one-sample suite, output action-token proxies: current/next action, object-conditioned action relation, contact state, interaction-text class, subtask transition, or hand-trajectory/action-chunk proxy. Robot action chunks need a later retargeting converter.</p>
-                </div>
-                <div class="foundation-io-row">
-                  <strong>Existing hooks</strong>
-                  <div class="foundation-io-tasks">
-                    <a href="#suite">Tasks 1/4/5/6/15/18</a>
-                    <a href="data/task_walkthroughs.json">task walkthroughs</a>
-                    <a href="data/three_foundation_pipelines.json">track contract</a>
-                  </div>
-                </div>
-              </div>
-              <div class="foundation-pipeline-links">
-                <a href="data/three_foundation_pipelines.json">Structured pipeline mirror</a>
-                <a href="assets/foundation-pipelines/vision-language-action-pipeline.png">Open image</a>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="artifact-grid">
-          <article class="artifact"><h3>Episode taxonomy and data engine</h3><p>Build an episode atlas, category tags, balance report, and split builder across activities, objects, scenes, sessions, people, and missing modalities.</p><a href="data/additional_development_directions.json">Open development plan</a></article>
-          <article class="artifact"><h3>Standardized benchmark protocol</h3><p>Version train/val/test manifests, task cards, leakage checks, metric scripts, and reference baselines so future model scores are comparable.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ADDITIONAL_DEVELOPMENT_DIRECTIONS.md">Open benchmark protocol note</a></article>
-          <article class="artifact"><h3>Multimodal representation learning</h3><p>Train contrastive and masked-prediction encoders over synchronized video, audio, depth, pose, mocap, IMU, and language windows.</p><a href="data/additional_development_directions.json">Open representation-learning plan</a></article>
-          <article class="artifact"><h3>Skill and procedure graphs</h3><p>Mine action steps, transitions, preconditions, effects, and temporal graphs that connect egocentric perception to planning.</p><a href="data/research_directions.json">current task map</a></article>
-          <article class="artifact"><h3>Human-object affordances</h3><p>Add contact, reachable-object, tool-use, and next-affordance tasks using hands, mocap, objects, contacts, video, and language.</p><a href="data/task_walkthroughs.json">task walkthroughs</a></article>
-          <article class="artifact"><h3>3D/4D scene and object memory</h3><p>Fuse depth, pose/SLAM, multiview video, and object cues into persistent scene/object maps for spatial reasoning and object permanence.</p><a href="data/foundation_model_plan.json">model tracks</a></article>
-          <article class="artifact"><h3>Quality and sync diagnostics</h3><p>Track timestamp drift, missing streams, calibration consistency, corrupted files, and degraded-mode manifests before large training runs.</p><a href="data/evidence_contract.json">evidence contract</a></article>
-          <article class="artifact"><h3>Policy and simulation transfer</h3><p>Convert mocap, hand trajectories, contacts, and object states into action tokens, robot-compatible targets, and imitation-learning examples.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">foundation plan</a></article>
         </div>
       </div>
     </section>
@@ -9175,6 +9064,117 @@
               <a href="data/publication_audit.json">publication audit</a>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="foundation-pipeline-appendix" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Foundation-model scale-up paths.</h2>
+          <p>This later appendix keeps the three training paths without making them the first reading stop. The four research directions organize what the 20 task scores study; these pipeline cards describe how Xperience-10M files can train larger spatial, world-model, and vision-language-action models.</p>
+        </div>
+        <div class="foundation-pipeline-grid" aria-label="Three high-resolution foundation direction slide diagrams">
+          <article class="foundation-pipeline-card">
+            <img src="assets/foundation-pipelines/spatial-intelligence-pipeline.png?v=foundation-slides-v10" alt="High-resolution slide diagram showing the Spatial intelligence models direction for Xperience-10M.">
+            <div class="foundation-pipeline-body">
+              <span>High-resolution direction slide</span>
+              <h3>Spatial intelligence models</h3>
+              <p>Train spatial-memory models from multiview RGB, egocentric video, depth, pose, calibration, object/contact cues, and language prompts; evaluate spatial QA, object permanence, counting, retrieval, and pose-aware consistency.</p>
+              <div class="foundation-io-panel" aria-label="Spatial intelligence one-sample training input and output">
+                <div class="foundation-io-row">
+                  <strong>Sample input</strong>
+                  <p>Use <code>windows.csv</code> and <code>shared_windows.npz</code> to slice each 20-frame window, then join six MP4 RGB streams with <code>annotation.hdf5</code> depth, camera pose, SLAM/calibration, object cues, contacts, and optional language questions.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Training output</strong>
+                  <p>Build targets such as camera-view match, object relevance, object-set memory, depth/pose reconstruction proxy, caption-grounded retrieval, and spatial QA answers derived from the same public annotation timeline.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Existing hooks</strong>
+                  <div class="foundation-io-tasks">
+                    <a href="#suite">Tasks 8/10/12/14/16</a>
+                    <a href="data/task_suite_20.json">20-task contract data</a>
+                    <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/windows.csv">window manifest</a>
+                  </div>
+                </div>
+              </div>
+              <div class="foundation-pipeline-links">
+                <a href="data/three_foundation_pipelines.json">Structured pipeline mirror</a>
+                <a href="assets/foundation-pipelines/spatial-intelligence-pipeline.png">Open image</a>
+              </div>
+            </div>
+          </article>
+          <article class="foundation-pipeline-card">
+            <img src="assets/foundation-pipelines/human-video-world-model-pipeline.png?v=foundation-slides-v10" alt="High-resolution slide diagram showing the Human-video world models direction for Xperience-10M.">
+            <div class="foundation-pipeline-body">
+              <span>High-resolution direction slide</span>
+              <h3>Human-video world models</h3>
+              <p>Train future-prediction models from observed interaction windows to score next action, next subtask, future object set, contact transition, camera-motion delta, and latent future state, with Qwen-style probes and Cosmos-style dynamics kept separate.</p>
+              <div class="foundation-io-panel" aria-label="Human-video world-model one-sample training input and output">
+                <div class="foundation-io-row">
+                  <strong>Sample input</strong>
+                  <p>Take the current 20-frame observed window at time <code>t</code> from <code>shared_windows.npz</code>: RGB/audio/sensor summaries, hand/body motion, camera pose, current object/contact state, and current action/subtask context only.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Training output</strong>
+                  <p>Shift the same episode timeline forward to produce next-action, next-subtask, future object-set, contact-transition, time-to-transition, camera-motion delta, or latent/future-feature targets. Future labels stay out of the input.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Existing hooks</strong>
+                  <div class="foundation-io-tasks">
+                    <a href="#suite">Tasks 4/13/14/17/20</a>
+                    <a href="data/unified_task_model_radar.json">model scores</a>
+                    <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/tier2_task_suite/tier2_task_suite_results.json">future probes</a>
+                  </div>
+                </div>
+              </div>
+              <div class="foundation-pipeline-links">
+                <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/THREE_FOUNDATION_PIPELINES.md">Track note</a>
+                <a href="assets/foundation-pipelines/human-video-world-model-pipeline.png">Open image</a>
+              </div>
+            </div>
+          </article>
+          <article class="foundation-pipeline-card">
+            <img src="assets/foundation-pipelines/vision-language-action-pipeline.png?v=foundation-slides-v11" alt="High-resolution slide diagram showing the Vision-language-action models direction for Xperience-10M.">
+            <div class="foundation-pipeline-body">
+              <span>High-resolution direction slide</span>
+              <h3>Vision-language-action models</h3>
+              <p>Train VLA or policy-compatible heads only after converting egocentric video, captions, hand/body motion, contacts, objects, and procedures into traceable action tokens, chunks, and object-conditioned action targets.</p>
+              <div class="foundation-io-panel" aria-label="Vision-language-action one-sample training input and output">
+                <div class="foundation-io-row">
+                  <strong>Sample input</strong>
+                  <p>Use egocentric/fisheye video windows, caption/object context from <code>annotation.hdf5</code>, hand/body mocap, contact state, and current subtask text as the observation-language side of each training pair.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Training output</strong>
+                  <p>For the one-sample suite, output action-token proxies: current/next action, object-conditioned action relation, contact state, interaction-text class, subtask transition, or hand-trajectory/action-chunk proxy. Robot action chunks need a later retargeting converter.</p>
+                </div>
+                <div class="foundation-io-row">
+                  <strong>Existing hooks</strong>
+                  <div class="foundation-io-tasks">
+                    <a href="#suite">Tasks 1/4/5/6/15/18</a>
+                    <a href="data/task_walkthroughs.json">task walkthroughs</a>
+                    <a href="data/three_foundation_pipelines.json">track contract</a>
+                  </div>
+                </div>
+              </div>
+              <div class="foundation-pipeline-links">
+                <a href="data/three_foundation_pipelines.json">Structured pipeline mirror</a>
+                <a href="assets/foundation-pipelines/vision-language-action-pipeline.png">Open image</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="artifact-grid">
+          <article class="artifact"><h3>Episode taxonomy and data engine</h3><p>Build an episode atlas, category tags, balance report, and split builder across activities, objects, scenes, sessions, people, and missing modalities.</p><a href="data/additional_development_directions.json">Open development plan</a></article>
+          <article class="artifact"><h3>Standardized benchmark protocol</h3><p>Version train/val/test manifests, task cards, leakage checks, metric scripts, and reference baselines so future model scores are comparable.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ADDITIONAL_DEVELOPMENT_DIRECTIONS.md">Open benchmark protocol note</a></article>
+          <article class="artifact"><h3>Multimodal representation learning</h3><p>Train contrastive and masked-prediction encoders over synchronized video, audio, depth, pose, mocap, IMU, and language windows.</p><a href="data/additional_development_directions.json">Open representation-learning plan</a></article>
+          <article class="artifact"><h3>Skill and procedure graphs</h3><p>Mine action steps, transitions, preconditions, effects, and temporal graphs that connect egocentric perception to planning.</p><a href="data/research_directions.json">current task map</a></article>
+          <article class="artifact"><h3>Human-object affordances</h3><p>Add contact, reachable-object, tool-use, and next-affordance tasks using hands, mocap, objects, contacts, video, and language.</p><a href="data/task_walkthroughs.json">task walkthroughs</a></article>
+          <article class="artifact"><h3>3D/4D scene and object memory</h3><p>Fuse depth, pose/SLAM, multiview video, and object cues into persistent scene/object maps for spatial reasoning and object permanence.</p><a href="data/foundation_model_plan.json">model tracks</a></article>
+          <article class="artifact"><h3>Quality and sync diagnostics</h3><p>Track timestamp drift, missing streams, calibration consistency, corrupted files, and degraded-mode manifests before large training runs.</p><a href="data/evidence_contract.json">evidence contract</a></article>
+          <article class="artifact"><h3>Policy and simulation transfer</h3><p>Convert mocap, hand trajectories, contacts, and object states into action tokens, robot-compatible targets, and imitation-learning examples.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">foundation plan</a></article>
         </div>
       </div>
     </section>
@@ -10055,8 +10055,8 @@ python scripts/validate_publication_package.py</code></pre>
       { id: "directions", label: "Four Directions" },
       { id: "extensions", label: "Unified Task Evidence" },
       { id: "roadmap", label: "Roadmap" },
-      { id: "development-directions", label: "Foundation Pipelines" },
       { id: "evidence", label: "Research Progress" },
+      { id: "foundation-pipeline-appendix", label: "Scale-Up Paths" },
       { id: "reading-path", label: "Project Path" },
       { id: "glossary", label: "Glossary" },
       { id: "artifacts", label: "Research Artifacts" },
@@ -10086,7 +10086,8 @@ python scripts/validate_publication_package.py</code></pre>
       diagnostics: "Integrated subsection for charts and error-analysis evidence inside Results.",
       glossary: "Best for terms that can be confused across data, tasks, models, metrics, and public mirrors.",
       artifacts: "Best for finding files, mirrors, weights, scripts, and checks.",
-      evidence: "Best after the roadmap and pipeline plan: current experiment status, model evidence, mirrors, and milestones.",
+      evidence: "Best after the roadmap: current experiment status, model evidence, mirrors, and milestones.",
+      "foundation-pipeline-appendix": "Best after current progress: three larger training paths kept as a later scale-up appendix.",
       "omni-scale-up": "Best for Qwen3-Omni and Cosmos3 status.",
       run: "Best for reproduction commands."
     };
