@@ -6267,11 +6267,11 @@
     }
     @media (max-width: 640px) {
       :root {
-        --nav-height: 104px;
-        --tab-stack-offset: 120px;
+        --nav-height: 64px;
+        --tab-stack-offset: 82px;
       }
       .site-nav {
-        min-height: var(--nav-height);
+        min-height: 0;
       }
       .scroll-companion {
         right: max(12px, env(safe-area-inset-right));
@@ -6297,8 +6297,9 @@
         max-width: calc(100vw - 28px);
       }
       .nav-inner {
-        position: relative;
-        height: 64px;
+        position: static;
+        height: var(--nav-height);
+        gap: 10px;
       }
       .task-results-head {
         display: grid;
@@ -6333,16 +6334,17 @@
         height: 38px;
       }
       .site-language {
-        min-height: 38px;
-        padding: 0 8px;
+        min-height: 36px;
+        padding: 0 7px;
         font-size: 12px;
-        width: 58px;
-        max-width: 58px;
+        width: 52px;
+        max-width: 52px;
+        flex: 0 0 52px;
         justify-content: center;
-        position: absolute;
-        left: 62px;
+        position: relative;
+        left: auto;
         right: auto;
-        top: 13px;
+        top: auto;
         transform: none;
       }
       .site-language::before {
@@ -6366,33 +6368,35 @@
           calc(100% - 4px) 52%;
       }
       .nav-tools {
-        gap: 6px;
-        padding: 0;
-        border: 0;
-        border-radius: 0;
-        background: transparent;
-        box-shadow: none;
-        flex: 0 0 auto;
+        gap: 5px;
+        padding: 4px;
+        border: 1px solid rgba(204, 255, 160, 0.16);
+        border-radius: 999px;
+        background: rgba(2, 5, 2, 0.76);
+        box-shadow: 0 10px 32px rgba(0, 0, 0, 0.26);
+        flex: 0 1 auto;
         width: auto;
-        margin-left: 0;
+        max-width: calc(100% - 50px);
+        margin-left: auto;
         margin-right: 0;
         justify-content: flex-end;
-        overflow: visible;
-        position: static;
+        overflow: hidden;
+        position: relative;
       }
       .nav-external-actions {
         padding: 0;
         flex: 0 0 auto;
-        position: absolute;
-        left: 62px;
+        position: static;
+        left: auto;
         right: auto;
-        top: 66px;
+        top: auto;
         transform: none;
+        gap: 5px;
       }
       .nav-action {
-        min-width: 42px;
-        height: 32px;
-        padding: 0 10px;
+        min-width: 40px;
+        height: 36px;
+        padding: 0 9px;
         font-size: 11.5px;
         gap: 5px;
       }
@@ -6403,8 +6407,8 @@
       }
       .nav-action-repo {
         display: inline-flex;
-        min-width: 42px;
-        padding: 0 10px;
+        min-width: 40px;
+        padding: 0 9px;
       }
       .nav-action-repo .nav-action-text-short {
         font-size: 0;
