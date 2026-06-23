@@ -1,42 +1,72 @@
 # Task-Direction-Pipeline Relationship Map
 
-Generated with ChatGPT image for the public website relationship block.
+Generated as a public infographic asset for the website relationship block.
 
 ## Public Asset
 
 - `docs/assets/charts/task_direction_pipeline_relationship.png`
 
-## Prompt
+## Generation Prompt
 
-Use case: infographic diagram for a research project website. Create a polished
-16:9 dark Ropedia-style relationship-map image with deep black background,
-neon lime and cyan accents, high contrast, no text, no letters, no numerals, no
-logos, no watermarks.
+Use case: infographic-diagram.
 
-Composition must be mathematically clear:
+Asset type: high-resolution website figure for Ropedia Xperience-10M.
 
-- Left: exactly 20 square task tiles, arranged as a clean 4 columns by 5 rows
-  grid. No extra task tiles, no partial tiles, no hidden tiles. Each tile
-  contains a simple abstract icon for embodied AI tasks such as action, hand
-  motion, object, language, retrieval, reconstruction, temporal order, sync,
-  forecast, IMU, camera view, transition.
-- Center: exactly 4 large translucent grouped sectors or rounded panels,
-  stacked vertically or fanned slightly, representing four research directions.
-  Use four visually distinct but harmonious neon accents. No labels.
-- Right: exactly 3 vertical foundation-pipeline columns, equally spaced, each
-  built from stacked model/data blocks with upward light beams, representing
-  three training pipelines. No extra columns.
-- Connect the 20 task grid to the 4 center groups with thin luminous lines,
-  then connect the 4 groups to the 3 right pipeline columns with clean arrows.
+Primary request: generate a polished, readable, dark neon Ropedia-style
+infographic that clearly explains the current expandable structure:
+20 task contracts -> 4 research directions -> 3 foundation training pipelines.
 
-The visual should be easy to understand at webpage size, modern, elegant,
-scientific, and consistent with a black/neon-lime Ropedia website. Avoid tiny
-decorative clutter. Ensure the exact structure 20 -> 4 -> 3 is visually obvious
-without relying on text.
+Critical text accuracy and layout:
+
+- Make the numbers 20, 4, and 3 unmistakable. Use large section headings:
+  `20 TASKS`, `4 RESEARCH DIRECTIONS`, `3 FOUNDATION PIPELINES`.
+- Add the subtitle: `Current public release, open to expand`.
+- Left side: exactly twenty task tiles in a 5 x 4 grid. Use large numbers
+  `01` through `20` plus simple icons. Keep task labels short and readable:
+  Action, Step, Boundary, Next Action, Hand Path, Contact, Object, Grounding,
+  Retrieval, Reconstruct, Order, Sync, Horizon, Subtask, Text, Relation,
+  Object Set, IMU Pose, View Sync, Time.
+- Middle: exactly four large direction panels labeled A, B, C, D. Use these
+  direction names:
+  - A. Human Modeling & Motion Understanding
+  - B. 3D/4D Reconstruction & Neural Rendering
+  - C. Egocentric Vision & Interaction
+  - D. Scene Reconstruction & World Modeling
+- Under each direction, include one concise focus line:
+  - A: pose, hand/body motion, human-object interaction
+  - B: multi-view 3D/4D reconstruction, NeRF/GS, novel views
+  - C: egocentric actions, intention, objects, language
+  - D: scene graphs, spatial reasoning, future world state
+- Right side: exactly three foundation pipeline cards:
+  - 1 Spatial Intelligence
+  - 2 Human-Video World Model
+  - 3 Vision-Language-Action
+- Each pipeline card shows inputs -> targets:
+  - Spatial Intelligence: RGB + depth + pose -> 3D geometry + spatial reasoning
+  - Human-Video World Model: video + action + motion -> future frame + future action
+  - Vision-Language-Action: video + language + motion -> robot action chunk
+- Draw clean arrows from the 20-task grid into the 4 direction panels, then
+  arrows into the 3 pipeline cards.
+- Add a footer line: `Tasks, directions, and pipelines can expand as new evidence is added.`
+
+Visual style:
+
+- Deep black background, neon lime as primary, cyan/blue/violet accents,
+  consistent with the Ropedia visual style.
+- Clean scientific dashboard infographic, high contrast, sharp typography,
+  generous spacing.
+- No photorealistic presenter, no white page background, no watermark.
+- Avoid tiny decorative clutter; prioritize readability at website size.
+
+## Post-Processing
+
+The generated image output was used as the visual base. The top title band was
+locally corrected with an exact text overlay to avoid generated-text spelling
+drift while preserving the generated diagram content.
 
 ## Verification
 
-The committed asset was visually checked in Playwright screenshots at desktop
-and mobile sizes. The page also includes an HTML key that lists the exact 20
-task names, four canonical research directions, and three foundation-pipeline
-tracks, so reader-facing counts do not depend only on the image.
+The committed asset was visually checked after post-processing. The page also
+includes an HTML key that lists the exact 20 task names, four canonical research
+directions, and three foundation-pipeline tracks, so reader-facing counts do
+not depend only on the image.
