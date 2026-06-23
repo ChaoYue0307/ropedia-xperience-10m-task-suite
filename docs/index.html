@@ -7205,7 +7205,7 @@
         </button>
         <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="reading-path" aria-selected="false" aria-pressed="false" aria-controls="evidence reading-path glossary artifacts omni-scale-up foundation-model-paths run" tabindex="-1">
           <strong>Resources</strong>
-          <span>project path, mirrors, commands</span>
+          <span>artifacts, models, commands</span>
         </button>
       </div>
       <div class="wrap section-tabs" id="sectionTabs" role="tablist" aria-label="Sections in the current area"></div>
@@ -7220,7 +7220,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Project overview and evidence map.</h2>
-          <p>This landing section separates the two evidence lines, the 20-task suite, the result table, and the public mirrors before the archive-level files.</p>
+          <p>The project separates the two evidence lines, the 20-task suite, the result table, and the public artifact mirrors before deeper archive-level files.</p>
         </div>
         <div class="about-identity" aria-label="About the Ropedia Xperience-10M Task Suite">
           <img src="assets/brand/xperience10m-logo-mark-192.png" alt="Ropedia Xperience-10M Task Suite project logo" width="92" height="92" loading="eager" decoding="async">
@@ -7386,7 +7386,7 @@
               <span>Evidence map</span>
               <h3>Project links stay tied to the evidence trail.</h3>
             </div>
-            <p>The project keeps source code, visual explanations, derived artifacts, model outputs, and release checks in separate published mirrors. This map shows what each mirror contains.</p>
+            <p>Source code, visual explanations, derived artifacts, model outputs, and release checks are organized across GitHub, GitHub Pages, and Hugging Face.</p>
           </div>
           <p class="table-note">This panel maps each published mirror to its evidence type. The <a href="#reading-path">project path</a> gives the sequence, the <a href="#glossary">glossary</a> defines terminology, and the <a href="#artifacts">artifact library</a> keeps file-level links.</p>
           <div class="surface-map" aria-label="Published mirror responsibilities">
@@ -7400,7 +7400,7 @@
           </div>
           <div class="brief-actions">
             <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PUBLIC_READER_MAP.md">Open evidence-map guide</a>
-            <a href="data/public_reader_map.json">Inspect map source</a>
+            <a href="data/public_reader_map.json">Open map data</a>
             <a href="#artifacts">Open artifact index</a>
           </div>
         </div>
@@ -7682,7 +7682,7 @@
             <thead>
               <tr>
                 <th>Data scale</th>
-                <th>Best for understanding</th>
+                <th>Use case</th>
                 <th>What is counted</th>
                 <th>Boundary</th>
               </tr>
@@ -8124,7 +8124,7 @@
           </article>
         </div>
         <div class="source-map-panel">
-          <div class="source-map-legend" aria-label="How to read the feature block chart">
+          <div class="source-map-legend" aria-label="Feature block chart legend">
             <article><small>source modality</small><p>Where the signal comes from: video, audio, depth, pose/SLAM, mocap, IMU, calibration, or language-derived annotation fields.</p></article>
             <article><small>feature block</small><p>The named column group used by Minimal baselines, Neural MLP heads, and public-sample task cards.</p></article>
             <article><small>chart width</small><p>Bar length means number of input dimensions. It is not a model score and it is not a task ranking.</p></article>
@@ -8218,7 +8218,7 @@
             </tr>
           </tbody>
         </table>
-        <div class="result-reading-order" id="result-lines" aria-label="How to read the result evidence">
+        <div class="result-reading-order" id="result-lines" aria-label="Result evidence lines">
           <article class="result-reading-step">
             <span>01</span>
             <strong>Choose the line</strong>
@@ -8545,7 +8545,7 @@
               </div>
             </article>
           </div>
-          <div class="task-axis-reader-rule" aria-label="How to identify the public layers">
+          <div class="task-axis-reader-rule" aria-label="Public layer labels">
             <article>
               <span>score question</span>
               <strong>If it has a metric, it belongs to the 20-task layer.</strong>
@@ -8768,7 +8768,7 @@
         <div class="callout-row">
           <div class="callout">
             <h3>What changed</h3>
-            <p>The four research directions now have coded extension probes, prediction/rank CSVs, structured metrics, a reader summary, and a website chart generated from real sample-window features.</p>
+            <p>The four research directions now have coded extension probes, prediction/rank CSVs, structured metrics, project summaries, and charts generated from real sample-window features.</p>
           </div>
           <div class="callout">
             <h3>What still needs scale</h3>
@@ -8785,11 +8785,11 @@
           <h2>Research roadmap.</h2>
           <p>The project path moves from the current public-sample task lab to the latest verified Qwen3-Omni diagnostic run, same-split 128-episode baseline alignment, a no-new-episode enhancement pack, action/subtask error analysis, robustness runs, world/policy tracks, and the future Xperience Embodied Foundation Model pretraining goal.</p>
         </div>
-        <div class="roadmap-entry-panel" aria-label="How to read the roadmap">
+        <div class="roadmap-entry-panel" aria-label="Roadmap stage overview">
           <div class="roadmap-entry-copy">
-            <span>Roadmap route</span>
-            <h3>Stage cards first, full task-track details second.</h3>
-            <p>The main page shows what has shipped, what is active, and what evidence supports each step. The detail page expands the same track, task, scale-up, and evidence content in one linear view.</p>
+            <span>Roadmap stages</span>
+            <h3>Current results, next gates, and scale-up targets.</h3>
+            <p>The roadmap connects shipped public-sample work, the selected-128 pilot, active quality work, and later model-training goals.</p>
             <div class="roadmap-quick-actions">
               <a href="#roadmap-stages">Review stage cards</a>
               <a href="research_roadmap.html">Roadmap details</a>
@@ -8799,9 +8799,9 @@
             </div>
           </div>
           <ol class="roadmap-entry-steps">
-            <li><strong>1. Check the stage cards</strong><span>Follow the path from public sample to selected-128 results and future model training.</span></li>
-            <li><strong>2. Open details only when needed</strong><span>The detail page lists every track, linked task, scale-up gate, and evidence link in one sequence.</span></li>
-            <li><strong>3. Keep files as evidence</strong><span>Machine-readable mirrors stay available for validators, HF mirrors, and reproducibility scripts.</span></li>
+            <li><strong>1. Public-sample task lab</strong><span>Task contracts, windows, baselines, neural heads, walkthroughs, and figures.</span></li>
+            <li><strong>2. Selected-128 pilot</strong><span>Same-split baselines, Qwen3-Omni diagnostics, and public-safe result packages.</span></li>
+            <li><strong>3. Scale-up path</strong><span>Quality analysis, robustness runs, world/policy tracks, and Xperience-native pretraining.</span></li>
           </ol>
         </div>
         <div class="roadmap-grid" id="roadmap-stages" aria-label="Research roadmap stages">
@@ -8896,13 +8896,13 @@
             </div>
           </article>
         </div>
-        <div class="roadmap-resource-panel" aria-label="Roadmap resources and source mirrors">
+        <div class="roadmap-resource-panel" aria-label="Roadmap resources and source records">
           <div class="roadmap-resource-head">
             <div>
               <span>Roadmap resources</span>
-              <h3>Open roadmap details; source mirrors stay attached.</h3>
+              <h3>Roadmap details and source records.</h3>
             </div>
-            <p>The roadmap has three layers: this concise planning view, a focused detail page for the full track and task map, and structured mirrors used by validators and HF/GitHub publication scripts.</p>
+            <p>The roadmap links the concise stage view, the full track-and-task detail page, and structured data records used for the public release.</p>
           </div>
           <div class="roadmap-resource-grid">
             <article class="roadmap-resource-card primary">
@@ -8943,8 +8943,8 @@
             </article>
           </div>
           <details class="structured-mirrors">
-            <summary>Structured mirrors for validators and reproducibility scripts</summary>
-            <p class="structured-mirror-note">These are not the best first reading path. They are kept here so the public site, README mirrors, HF bundles, and local validators point to the same source records.</p>
+            <summary>Structured roadmap data</summary>
+            <p class="structured-mirror-note">These records keep roadmap stages, foundation-model plans, and selected-128 enhancement data aligned across the public release.</p>
             <div class="structured-mirror-grid">
               <a href="data/research_roadmap.json">Roadmap stage mirror</a>
               <a href="data/research_roadmap_interactive.json">Roadmap detail data</a>
@@ -9236,7 +9236,7 @@
           <article class="resource-mode">
             <small>if you want to trust a score</small>
             <strong>Check result parity</strong>
-            <p>Use validators, source alignment, mirror parity, and live URL/hash checks before trusting a number.</p>
+            <p>Check source alignment, mirror parity, live URL hashes, and result audits before citing a number.</p>
             <a href="#artifact-panel-checks">Open checks</a>
           </article>
           <article class="resource-mode">
@@ -9268,7 +9268,7 @@
             </button>
             <button type="button" class="content-tab" id="artifact-tab-checks" role="tab" data-panel-target="artifact-panel-checks" aria-selected="false" aria-pressed="false" aria-controls="artifact-panel-checks" tabindex="-1">
               <strong>Checks</strong>
-              <span>validators and parity</span>
+              <span>audits and parity</span>
             </button>
           </div>
           <section class="artifact-group tabbed-panel" id="artifact-panel-task-heads" role="tabpanel" aria-labelledby="artifact-tab-task-heads">
@@ -9293,7 +9293,7 @@
           <section class="artifact-group tabbed-panel" id="artifact-panel-public-surfaces" role="tabpanel" aria-labelledby="artifact-tab-public-surfaces" hidden>
             <div class="artifact-group-head">
               <div><span>Published mirrors</span><h3>Project map, mirrors, and runnable code</h3></div>
-              <p>Use these files to navigate the whole project, open the published mirrors, or reproduce the public-sample pipeline.</p>
+              <p>Project files, published mirrors, and scripts for the public-sample pipeline.</p>
             </div>
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Evidence map</h3><p>Single navigation view for GitHub, GitHub Pages, HF Space, artifact dataset, baseline model repo, Qwen3-Omni/Cosmos3 repos, and result lanes.</p></div><a href="data/public_reader_map.json">evidence map</a></article>
@@ -9332,7 +9332,7 @@
           <section class="artifact-group tabbed-panel" id="artifact-panel-checks" role="tabpanel" aria-labelledby="artifact-tab-checks" hidden>
             <div class="artifact-group-head">
               <div><span>Release checks</span><h3>Validators and parity records</h3></div>
-              <p>This tab now does one job: show the audit files that prove the public pages, mirrors, and package contents are internally consistent.</p>
+              <p>Audit files for website integrity, mirror parity, live publication status, source alignment, and release quality gates.</p>
             </div>
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Publication audit</h3><p>Checks the expected public package files, docs, figures, structured data, and artifact boundaries before a release is trusted.</p></div><a href="data/publication_audit.json">publication audit</a></article>
@@ -9371,7 +9371,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Foundation-model scale-up paths.</h2>
-          <p>This later appendix keeps the three training paths without making them the first reading stop. The four research directions organize what the 20 task scores study; these pipeline cards describe how Xperience-10M files can train larger spatial, world-model, and vision-language-action models.</p>
+          <p>These three paths translate Xperience-10M files into larger spatial, world-model, and vision-language-action training directions after the current task suite and selected-128 diagnostic results.</p>
         </div>
         <div class="foundation-pipeline-grid" aria-label="Three high-resolution foundation direction slide diagrams">
           <article class="foundation-pipeline-card">
@@ -9527,8 +9527,7 @@ python scripts/validate_publication_package.py</code></pre>
 
   <footer>
     <div class="wrap">
-      Built as an embodied-AI learning lab with verified held-out diagnostic runs and a next stage focused on stronger action/subtask quality.
-      <span class="footer-meta">README translation metadata remains available as <a href="data/language_versions.json">language metadata</a>; use the header selector to translate this website in place.</span>
+      Made by Chao Yue. <span class="footer-meta">Contact: <a href="https://github.com/ChaoYue0307">GitHub</a> · <a href="https://huggingface.co/cy0307">Hugging Face</a></span>
     </div>
   </footer>
 
@@ -10067,30 +10066,30 @@ python scripts/validate_publication_package.py</code></pre>
     const sectionLabels = Object.fromEntries(sectionConfig.map((section) => [section.id, section.label]));
     const sectionDescriptions = {
       overview: "Project scope, public boundaries, and entry paths.",
-      roadmap: "Best after results and directions: what has shipped, what is active, and what scale-up should do next.",
-      "reading-path": "Best for choosing an order through the repo, website, and HF mirrors after the main evidence sections.",
-      "dataset-card": "Best first: official dataset context, public-sample boundaries, and selected-128 scope.",
-      "data-analysis": "Best for comparing the public sample, selected 128 episodes, and Hugging Face gated full-dataset metadata.",
-      "raw-sample": "Best for inspecting the sample files, media previews, and file relationships.",
-      suite: "Best for the unified 20-task map, radar comparisons, task cards, and score matrix.",
-      walkthroughs: "Best for case-study style task explanations.",
-      tasks: "Best for the integrated task-card grid inside the 20-task suite.",
-      pipeline: "Best after data and tasks: how raw episode data becomes features and results.",
-      protocol: "Best for splits, leakage controls, metrics, and evaluation rules.",
-      architectures: "Best for how task heads and model tracks are organized.",
-      features: "Best for modality and feature provenance.",
-      takeaways: "Best after method/protocol: evidence lines, the 180-result matrix, baseline snapshots, neural heads, and diagnostic charts.",
-      models: "Integrated subsection for minimal baseline evidence inside Results.",
-      neural: "Integrated subsection for neural MLP task-head comparisons inside Results.",
-      directions: "Best after results: how the same tasks support spatial, world-model, and VLA directions.",
-      extensions: "Integrated subsection for unified task provenance inside Directions.",
-      diagnostics: "Integrated subsection for charts and error-analysis evidence inside Results.",
-      glossary: "Best for terms that can be confused across data, tasks, models, metrics, and public mirrors.",
-      artifacts: "Best for finding files, mirrors, weights, scripts, and checks.",
-      evidence: "Best after the roadmap: current experiment status, model evidence, mirrors, and milestones.",
-      "omni-scale-up": "Best for Qwen3-Omni and Cosmos3 status.",
-      "foundation-model-paths": "Later scale-up section: three larger training paths after current model status.",
-      run: "Best for reproduction commands."
+      roadmap: "Shipped stages, active work, and scale-up targets.",
+      "reading-path": "Project path across the repo, website, and Hugging Face mirrors.",
+      "dataset-card": "Official dataset context, public-sample boundaries, and selected-128 scope.",
+      "data-analysis": "Public sample, selected 128 episodes, and Hugging Face gated full-dataset metadata.",
+      "raw-sample": "Sample files, media previews, and file relationships.",
+      suite: "Unified 20-task map, radar comparisons, task cards, and score matrix.",
+      walkthroughs: "Case-study style task explanations.",
+      tasks: "Integrated task-card grid inside the 20-task suite.",
+      pipeline: "How raw episode data becomes features and results.",
+      protocol: "Splits, leakage controls, metrics, and evaluation rules.",
+      architectures: "Task-head and model-track organization.",
+      features: "Modality and feature provenance.",
+      takeaways: "Evidence lines, 180-result matrix, baseline snapshots, neural heads, and diagnostic charts.",
+      models: "Minimal baseline evidence inside Results.",
+      neural: "Neural MLP task-head comparisons inside Results.",
+      directions: "How the same tasks support spatial, world-model, and VLA directions.",
+      extensions: "Unified task provenance inside Directions.",
+      diagnostics: "Charts and error-analysis evidence inside Results.",
+      glossary: "Definitions for data, tasks, models, metrics, and public mirrors.",
+      artifacts: "Files, mirrors, weights, scripts, and release checks.",
+      evidence: "Current experiment status, model evidence, mirrors, and milestones.",
+      "omni-scale-up": "Qwen3-Omni and Cosmos3 status.",
+      "foundation-model-paths": "Three larger training paths after current model status.",
+      run: "Reproduction commands and expected outputs."
     };
     const sectionTabMap = Object.fromEntries(tabSections.map((section) => [section.id, section.dataset.projectTab]));
     ["tasks", "models", "neural", "diagnostics", "extensions"].forEach((id) => {
