@@ -181,7 +181,7 @@ metrics:
 # Ropedia Xperience-10M Weights, Results, and Analysis
 
 This repository is the consolidated public-safe weight and result package for
-the Ropedia Xperience-10M task suite. It is intended to make the current model
+the Xperience-10M Task Suite. It is intended to make the current model
 artifacts traceable from one Hugging Face location while preserving the
 canonical per-adapter repositories.
 

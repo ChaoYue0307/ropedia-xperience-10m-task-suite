@@ -140,7 +140,7 @@ def build_pipeline_html(summary: dict, base_path: Path) -> str:
             arrow(),
             stage_card(
                 "06",
-                "Ropedia Xperience-10M suite",
+                "Xperience-10M suite",
                 [f"{task_count} task contracts", "180 public result rows", "forecast, retrieval, alignment", "chronological evaluation"],
                 COLORS["teal"],
             ),

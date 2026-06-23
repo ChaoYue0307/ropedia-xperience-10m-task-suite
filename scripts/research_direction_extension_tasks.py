@@ -707,7 +707,7 @@ def write_svg(payload: dict[str, Any]) -> None:
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="1420" height="920" fill="#020502"/>',
         '<rect x="28" y="28" width="1364" height="864" rx="18" fill="#050905" stroke="#ccffa0" stroke-opacity="0.24"/>',
-        svg_text(66, 88, "Ropedia Xperience-10M: four direction extension probes", 32, 760),
+        svg_text(66, 88, "Xperience-10M: four direction extension probes", 32, 760),
         svg_text(66, 122, "Data-backed from the same 1,161-window public sample feature tensor; extension probes for later held-out studies.", 17, 500, "#a5afa2"),
     ]
     x0 = 66

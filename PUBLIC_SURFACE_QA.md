@@ -15,7 +15,7 @@ This report covers the public repo, website, Hugging Face cards, and package con
 | Website metadata | `pass` | The website should expose search/social metadata and structured project metadata. |
 | Keyboard navigation | `pass` | The long research dashboard should be navigable as real tabs, including keyboard support. |
 | Responsive navigation | `pass` | Tablet/mobile navigation should not overflow and deep links should land below sticky navigation. |
-| Project naming | `pass` | Public copy should consistently present the project as Ropedia Xperience-10M, with the Qwen3-Omni scale-up status. |
+| Project naming | `pass` | Public copy should present the project as the Xperience-10M Task Suite, while crediting Ropedia as the dataset provider and releaser. |
 | Public links | `pass` | Public cards should link the repo, Space, artifacts, model baselines, upstream dataset, and Ropedia dataset page. |
 | Artifact links | `pass` | Readers should be able to find website reference, release package, mirror, and public presentation files from public copy. |
 | Reader map | `pass` | The public surfaces should expose the shared reader map in both Markdown and JSON form. |

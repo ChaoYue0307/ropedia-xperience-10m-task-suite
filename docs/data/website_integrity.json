@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-23T13:34:48+00:00",
+  "generated_at_utc": "2026-06-23T13:44:44+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 204874,
-      "evidence_index": 267400
+      "overview_index": 205102,
+      "evidence_index": 267676
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 204874,
-      "protocol_index": 263605,
-      "evidence_index": 267400
+      "overview_index": 205102,
+      "protocol_index": 263881,
+      "evidence_index": 267676
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -186,8 +186,8 @@
       "name": "suite_task_map_precedes_radar_surface",
       "status": "pass",
       "reason": "The Suite anchor should show the task-suite map before the radar/results surface.",
-      "first_marker_index": 5241,
-      "second_marker_index": 9320
+      "first_marker_index": 5233,
+      "second_marker_index": 9304
     },
     {
       "name": "raw_sample_stream_ledger_contains_seven_modalities",
@@ -315,7 +315,7 @@
     },
     {
       "path": "data/artifact_index.json",
-      "bytes": 124477,
+      "bytes": 124469,
       "top_level_type": "dict"
     },
     {
@@ -340,12 +340,12 @@
     },
     {
       "path": "data/evaluation_protocol.json",
-      "bytes": 24281,
+      "bytes": 24273,
       "top_level_type": "dict"
     },
     {
       "path": "data/evidence_contract.json",
-      "bytes": 12101,
+      "bytes": 12093,
       "top_level_type": "dict"
     },
     {
@@ -365,7 +365,7 @@
     },
     {
       "path": "data/language_versions.json",
-      "bytes": 1762,
+      "bytes": 1754,
       "top_level_type": "dict"
     },
     {
@@ -400,17 +400,17 @@
     },
     {
       "path": "data/project_manifest.json",
-      "bytes": 5739,
+      "bytes": 5731,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_packet.json",
-      "bytes": 10018,
+      "bytes": 10010,
       "top_level_type": "dict"
     },
     {
       "path": "data/project_status.json",
-      "bytes": 23232,
+      "bytes": 23224,
       "top_level_type": "dict"
     },
     {
@@ -420,7 +420,7 @@
     },
     {
       "path": "data/public_surface_qa.json",
-      "bytes": 7690,
+      "bytes": 7693,
       "top_level_type": "dict"
     },
     {
@@ -455,12 +455,12 @@
     },
     {
       "path": "data/rendered_site_check.json",
-      "bytes": 4318,
+      "bytes": 4302,
       "top_level_type": "dict"
     },
     {
       "path": "data/reproducibility_matrix.json",
-      "bytes": 6836,
+      "bytes": 6828,
       "top_level_type": "dict"
     },
     {
@@ -704,7 +704,7 @@
     {
       "path": "assets/charts/research_direction_extension_tasks.svg",
       "exists": true,
-      "bytes": 6685,
+      "bytes": 6677,
       "format": "SVG",
       "has_viewbox": true
     },

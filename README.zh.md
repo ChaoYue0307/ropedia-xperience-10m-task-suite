@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="docs/assets/brand/xperience10m-logo-social-card.png" alt="Ropedia Xperience-10M Task Suite cover" width="100%">
+  <img src="docs/assets/brand/xperience10m-logo-social-card.png" alt="Xperience-10M Task Suite cover" width="100%">
 </p>
 
-<h1 align="center">Ropedia Xperience-10M 任务套件</h1>
+<h1 align="center">Xperience-10M 任务套件</h1>
 
 <p align="center">
-  <img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Ropedia Xperience-10M logo" width="112">
+  <img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Xperience-10M Task Suite logo" width="112">
 </p>
 
 <p align="center">

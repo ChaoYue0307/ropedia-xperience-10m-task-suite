@@ -156,7 +156,7 @@ def build_report() -> dict:
     }
 
     seo_markers = [
-        "<title>Ropedia Xperience-10M Task Suite</title>",
+        "<title>Xperience-10M Task Suite | Built on Ropedia Data</title>",
         'name="description"',
         'rel="canonical"',
         'property="og:title"',
@@ -178,7 +178,7 @@ def build_report() -> dict:
         "End",
     ]
     naming_markers = [
-        "Ropedia Xperience-10M Task Suite",
+        "Xperience-10M Task Suite",
         "Xperience-10M",
         "20-task",
         "Qwen3-Omni",
@@ -282,7 +282,7 @@ def build_report() -> dict:
         check(
             "public_naming_consistent",
             all(marker in combined_public_text for marker in naming_markers),
-            "Public copy should consistently present the project as Ropedia Xperience-10M, with the Qwen3-Omni scale-up status.",
+            "Public copy should present the project as the Xperience-10M Task Suite, while crediting Ropedia as the dataset provider and releaser.",
             marker_counts=marker_count(combined_public_text, naming_markers),
         ),
         check(
@@ -338,7 +338,7 @@ def build_report() -> dict:
     ]
     status = "pass" if all(item["status"] == "pass" for item in checks) else "fail"
     return {
-        "title": "Ropedia Xperience-10M Public Project Surface",
+        "title": "Xperience-10M Public Project Surface",
         "status": status,
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "scope": "Repo README, GitHub Pages HTML, Hugging Face Space card, artifact dataset card, and model card.",

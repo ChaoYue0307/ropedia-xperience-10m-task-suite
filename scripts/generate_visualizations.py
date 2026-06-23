@@ -131,7 +131,7 @@ def svg_pipeline_diagram(path: Path, summary: dict) -> None:
             "numpy softmax classifier",
             "metrics and predictions",
         ], "#9bdfff"),
-        (520, 380, 360, 168, "6. Ropedia Xperience-10M suite", [
+        (520, 380, 360, 168, "6. Xperience-10M suite", [
             f"{task_count} unified task contracts",
             "chronological split",
             "retrieval, forecast, alignment",

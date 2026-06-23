@@ -1083,13 +1083,13 @@ def build_html(summary: dict, base_image: Path | None, sample_dir: Path | None) 
   </style>
 </head>
 <body>
-  <main class="canvas" aria-label="Ropedia Xperience-10M unified 20-task infographic">
+  <main class="canvas" aria-label="Xperience-10M unified 20-task infographic">
     {base_layer}
     <div class="content">
     <header class="header">
       <div>
         <div class="kicker">verified unified 20-task release</div>
-        <h1>Ropedia Xperience-10M task map</h1>
+        <h1>Xperience-10M task map</h1>
         <p class="subtitle">A clean map from synchronized multimodal windows to 20 task contracts, comparing minimal heads, neural MLP heads, and the public 180-result matrix.</p>
       </div>
       <div class="stats">{stats_html}</div>

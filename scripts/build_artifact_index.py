@@ -1504,7 +1504,7 @@ def main() -> int:
         by_kind[entry["kind"]] = by_kind.get(entry["kind"], 0) + 1
 
     report = {
-        "title": "Ropedia Xperience-10M Task Suite Artifact Index",
+        "title": "Xperience-10M Task Suite Artifact Index",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "status": "pass" if not missing else "fail",
         "artifact_count": len(entries),

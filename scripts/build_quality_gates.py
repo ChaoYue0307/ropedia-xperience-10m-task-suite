@@ -193,7 +193,7 @@ def markdown(payload: dict) -> str:
     lines = [
         "# Release Checks",
         "",
-        "This file is the release map for the Ropedia Xperience-10M Task Suite.",
+        "This file is the release map for the Xperience-10M Task Suite.",
         "",
         f"Current gate status: **{payload['status']}**",
         "",

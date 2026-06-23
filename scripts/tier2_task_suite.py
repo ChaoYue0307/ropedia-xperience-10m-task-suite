@@ -1020,7 +1020,7 @@ def write_svg(payload: dict[str, Any]) -> None:
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#020502"/>',
         '<rect x="32" y="32" width="1376" height="{}" rx="12" fill="#071207" stroke="#ccffa0" stroke-opacity="0.22"/>'.format(height - 64),
-        '<text x="72" y="82" fill="#f4f8ef" font-size="32" font-weight="760">Ropedia Xperience-10M unified 20-task provenance</text>',
+        '<text x="72" y="82" fill="#f4f8ef" font-size="32" font-weight="760">Xperience-10M unified 20-task provenance</text>',
         '<text x="72" y="112" fill="#a5afa2" font-size="16">Historical bundle rows retained for stable links inside the same 20-task suite, aligned with the same 20-frame window, 5-frame stride, and chronological split.</text>',
     ]
     colors = ["#ccffa0", "#7ae5c3", "#9bdfff", "#d8f4a5"]
