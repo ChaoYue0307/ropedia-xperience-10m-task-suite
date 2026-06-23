@@ -7070,10 +7070,10 @@
             </article>
           </div>
           <div class="brief-actions">
-            <a href="research_roadmap.html">Open interactive roadmap</a>
+            <a href="#roadmap">Open roadmap summary</a>
             <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_BRIEF.md">Read the brief</a>
             <a href="data/project_brief.json">Project summary</a>
-            <a href="#roadmap">Roadmap summary</a>
+            <a href="research_roadmap.html">Roadmap details</a>
             <a href="#reading-path">Reader path</a>
             <a href="#takeaways">Current takeaways</a>
           </div>
@@ -7109,7 +7109,7 @@
         <div class="snapshot-grid">
           <article class="snapshot-card">
             <span class="status-pill">featured</span>
-            <h3>Interactive research roadmap</h3>
+            <h3>Research roadmap details</h3>
             <p>Use this as the front door for the project: it links the unified 20 tasks, four research tracks, current sample evidence, and the multi-episode Qwen3-Omni scale-up path.</p>
             <div class="snapshot-meta">
               <span>tracks <strong>4</strong></span>
@@ -7118,8 +7118,8 @@
               <span>roadmap phases <strong>5</strong></span>
             </div>
             <div class="snapshot-actions">
-              <a href="research_roadmap.html">Open roadmap</a>
-              <a href="data/research_roadmap_interactive.json">Structured roadmap mirror</a>
+              <a href="#roadmap">Open roadmap summary</a>
+              <a href="research_roadmap.html">Roadmap details</a>
             </div>
           </article>
           <article class="snapshot-card">
@@ -7214,10 +7214,11 @@
         <div class="roadmap-entry-panel" aria-label="How to read the roadmap">
           <div class="roadmap-entry-copy">
             <span>Reader route</span>
-            <h3>Use this section for planning; use the explorer for task-track detail.</h3>
-            <p>The main page keeps the roadmap readable: stage cards show what has shipped, what is active, and what evidence supports each step. The standalone roadmap remains available when you want to click through every track, task, and evidence link.</p>
+            <h3>Start here, then open details only when you need the full task-track map.</h3>
+            <p>The main page keeps the roadmap readable: stage cards show what has shipped, what is active, and what evidence supports each step. The focused detail page shows the same track, task, scale-up, and evidence content in a single linear reader path.</p>
             <div class="roadmap-quick-actions">
-              <a href="research_roadmap.html">Open interactive explorer</a>
+              <a href="#roadmap-stages">Review stage cards</a>
+              <a href="research_roadmap.html">Roadmap details</a>
               <a href="#development-directions">Foundation pipelines</a>
               <a href="#result-matrix-table">180-result table</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">Roadmap note</a>
@@ -7225,11 +7226,11 @@
           </div>
           <ol class="roadmap-entry-steps">
             <li><strong>1. Read the stage cards</strong><span>Start with the visible path from public sample to selected-128 results and future model training.</span></li>
-            <li><strong>2. Open the explorer only when needed</strong><span>The explorer is for task-by-track inspection, not the first reading surface.</span></li>
+            <li><strong>2. Open details only when needed</strong><span>The detail page lists every track, linked task, scale-up gate, and evidence link in one reader flow.</span></li>
             <li><strong>3. Keep files as evidence</strong><span>Machine-readable mirrors stay available for validators, HF mirrors, and reproducibility scripts.</span></li>
           </ol>
         </div>
-        <div class="roadmap-grid" aria-label="Research roadmap stages">
+        <div class="roadmap-grid" id="roadmap-stages" aria-label="Research roadmap stages">
           <article class="roadmap-card" data-status="implemented">
             <span class="roadmap-status">implemented</span>
             <h3>Public-Sample Task Lab</h3>
@@ -7327,15 +7328,15 @@
               <span>Roadmap resources</span>
               <h3>Open the reader surface first; source mirrors stay attached.</h3>
             </div>
-            <p>The roadmap has three public surfaces: this concise planning view, an interactive task-track explorer, and structured mirrors used by validators and HF/GitHub publication scripts.</p>
+            <p>The roadmap has three public surfaces: this concise planning view, a focused detail page for the full track and task map, and structured mirrors used by validators and HF/GitHub publication scripts.</p>
           </div>
           <div class="roadmap-resource-grid">
             <article class="roadmap-resource-card primary">
               <small>reader surface</small>
-              <h3>Interactive task-track explorer</h3>
-              <p>Click through the four research directions, linked task heads, stage gates, current evidence, and next steps without leaving the project style system.</p>
+              <h3>Focused roadmap detail page</h3>
+              <p>Read the four research directions, linked task heads, stage gates, current evidence, and next steps in one clean sequence without nested controls.</p>
               <div class="roadmap-resource-actions">
-                <a href="research_roadmap.html">Open explorer</a>
+                <a href="research_roadmap.html">Open details</a>
                 <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/RESEARCH_ROADMAP.md">Read roadmap note</a>
               </div>
             </article>
@@ -7372,7 +7373,7 @@
             <p class="structured-mirror-note">These are not the best first reading path. They are kept here so the public site, README mirrors, HF bundles, and local validators point to the same source records.</p>
             <div class="structured-mirror-grid">
               <a href="data/research_roadmap.json">Roadmap stage mirror</a>
-              <a href="data/research_roadmap_interactive.json">Explorer data mirror</a>
+              <a href="data/research_roadmap_interactive.json">Roadmap detail data</a>
               <a href="data/foundation_model_plan.json">Foundation-plan mirror</a>
               <a href="data/three_foundation_pipelines.json">Three-pipeline mirror</a>
               <a href="data/additional_development_directions.json">Development-direction mirror</a>

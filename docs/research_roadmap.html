@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Research Roadmap | Ropedia Xperience-10M</title>
-  <meta name="description" content="Interactive research roadmap connecting the Ropedia Xperience-10M 20-task suite, four research tracks, current sample results, Qwen3-Omni fine-tuning, and foundation-model branch selection.">
+  <meta name="description" content="Focused research roadmap connecting the Ropedia Xperience-10M 20-task suite, four research tracks, current sample results, Qwen3-Omni fine-tuning, and foundation-model branch selection.">
   <meta name="theme-color" content="#020502">
   <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -284,52 +284,70 @@
       font-size: 17px;
       line-height: 1.62;
     }
-    .stage-tabs {
+    .roadmap-jump-nav {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin: 26px 0 18px;
     }
-    .stage-tab,
-    .track-button,
-    .task-node {
-      appearance: none;
+    .roadmap-jump-nav a {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
       border: 1px solid var(--soft-line);
       border-radius: 999px;
       background: var(--pill);
-      cursor: pointer;
+      color: #dce8d6;
       font-family: var(--font-btn);
+      font-size: 13px;
       font-weight: 700;
+      text-decoration: none;
     }
-    .stage-tab {
-      min-height: 42px;
-      padding: 0 16px;
-    }
-    .stage-tab.active {
+    .roadmap-jump-nav a:first-child,
+    .roadmap-jump-nav a:hover {
       color: #020502;
       border-color: var(--green);
       background: var(--green);
     }
-    .roadmap-app {
+    .roadmap-detail-flow {
       display: grid;
-      grid-template-columns: 260px minmax(0, 1fr) 390px;
-      gap: 16px;
-      align-items: stretch;
+      gap: 30px;
     }
-    .panel {
+    #roadmap-app,
+    #stage-timeline,
+    #research-tracks,
+    #scale-up,
+    #task-coverage,
+    #source-mirrors {
+      scroll-margin-top: 92px;
+    }
+    .reader-section {
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: var(--radius-lg);
       background: var(--card);
-      min-width: 0;
-      box-shadow: 0 18px 54px rgba(0, 0, 0, 0.26);
+      padding: 24px;
+      box-shadow: 0 18px 54px rgba(0, 0, 0, 0.24);
     }
-    .track-rail {
-      padding: 14px;
+    .reader-section-head {
       display: grid;
-      gap: 10px;
-      align-content: start;
+      grid-template-columns: minmax(0, 0.75fr) minmax(320px, 0.55fr);
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 18px;
     }
-    .rail-title,
+    .reader-section-head h2 {
+      margin: 6px 0 0;
+      font-size: clamp(28px, 3.4vw, 46px);
+      line-height: 1.04;
+    }
+    .reader-section-head p {
+      margin: 0;
+      color: #c7d1c3;
+      font-size: 16px;
+      line-height: 1.58;
+    }
     .panel-label {
       color: var(--green);
       font-family: var(--font-btn);
@@ -338,63 +356,48 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    .track-button {
-      width: 100%;
+    .stage-timeline,
+    .scale-grid,
+    .track-stack,
+    .task-index-grid {
       display: grid;
-      grid-template-columns: 34px 1fr;
       gap: 10px;
-      align-items: center;
-      min-height: 72px;
-      padding: 12px;
-      border-radius: var(--radius);
-      text-align: left;
-      color: var(--ink);
     }
-    .track-button.active {
-      color: #020502;
-      border-color: var(--green);
-      background: var(--green);
+    .stage-timeline {
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     }
-    .track-button b {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border: 1px solid currentColor;
-      border-radius: 999px;
+    .scale-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
-    .track-button span {
-      display: block;
-      font-size: 12px;
-      line-height: 1.24;
+    .track-stack {
+      grid-template-columns: 1fr;
     }
-    .track-button small {
-      display: block;
-      margin-top: 4px;
-      color: inherit;
-      opacity: 0.72;
-      font-size: 11px;
+    .task-index-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
-    .map-panel {
-      padding: 18px;
-      display: grid;
-      gap: 18px;
-    }
-    .phase-strip {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 8px;
-    }
-    .phase {
-      min-height: 112px;
-      padding: 12px;
+    .phase,
+    .scale-card,
+    .track-card,
+    .task-mini-card {
       border: 1px solid var(--soft-line);
       border-radius: var(--radius);
       background: rgba(2, 8, 2, 0.76);
     }
+    .phase,
+    .scale-card,
+    .task-mini-card {
+      padding: 14px;
+    }
+    .track-card {
+      padding: 18px;
+    }
     .phase[data-stage="now"],
     .phase[data-stage="scale_up"],
-    .phase[data-stage="omni"] { border-color: rgba(204, 255, 160, 0.42); }
+    .phase[data-stage="omni"],
+    .track-card[data-status*="implemented"],
+    .track-card[data-status*="current"] {
+      border-color: rgba(204, 255, 160, 0.42);
+    }
     .phase span {
       display: inline-flex;
       margin-bottom: 8px;
@@ -414,38 +417,94 @@
       font-size: 12px;
       line-height: 1.4;
     }
-    .task-map {
+    .track-card-head {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
+      grid-template-columns: minmax(0, 0.68fr) minmax(260px, 0.42fr);
+      gap: 20px;
+      align-items: start;
     }
-    .task-node {
-      min-height: 138px;
-      display: grid;
-      gap: 8px;
-      padding: 13px;
-      border-radius: var(--radius);
-      text-align: left;
-      color: var(--ink);
-    }
-    .task-node.active {
-      border-color: var(--green);
-      background: rgba(204, 255, 160, 0.12);
-    }
-    .task-node strong {
-      font-size: 16px;
+    .track-card h3,
+    .scale-card h3,
+    .task-mini-card h3 {
+      margin: 0;
       line-height: 1.12;
     }
-    .task-node span {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.36;
+    .track-card h3 {
+      font-size: 28px;
     }
+    .track-card p,
+    .scale-card p,
+    .task-mini-card p,
+    .track-card li {
+      color: #c7d1c3;
+      line-height: 1.52;
+    }
+    .track-card p,
+    .scale-card p {
+      margin: 10px 0 0;
+      font-size: 15px;
+    }
+    .track-summary {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+    .track-summary strong {
+      color: var(--ink);
+    }
+    .track-meta,
     .task-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      align-self: end;
+      margin-top: 10px;
+    }
+    .direction-task-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--soft-line);
+    }
+    .task-mini-card {
+      display: grid;
+      gap: 9px;
+      min-height: 190px;
+    }
+    .task-mini-card h3 {
+      font-size: 17px;
+    }
+    .task-mini-card p {
+      margin: 0;
+      font-size: 13px;
+    }
+    .task-mini-card .task-metric {
+      display: grid;
+      gap: 5px;
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid var(--soft-line);
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+    .track-details {
+      margin-top: 16px;
+      border-top: 1px solid var(--soft-line);
+      padding-top: 14px;
+    }
+    .track-details summary {
+      cursor: pointer;
+      color: var(--green);
+      font-family: var(--font-btn);
+      font-weight: 700;
+    }
+    .track-details ul {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0 0;
+      padding-left: 18px;
     }
     .chip {
       display: inline-flex;
@@ -464,43 +523,6 @@
     .chip.blue { color: var(--blue); }
     .chip.cyan { color: var(--cyan); }
     .chip.amber { color: var(--amber); }
-    .detail-panel {
-      padding: 18px;
-      display: grid;
-      gap: 16px;
-      align-content: start;
-    }
-    .detail-title {
-      margin: 0;
-      font-size: 30px;
-      line-height: 1.06;
-      text-wrap: balance;
-    }
-    .detail-copy {
-      margin: 0;
-      color: #c7d1c3;
-      line-height: 1.58;
-    }
-    .detail-block {
-      border-top: 1px solid var(--soft-line);
-      padding-top: 14px;
-    }
-    .detail-block h3 {
-      margin: 0 0 10px;
-      font-size: 15px;
-    }
-    .detail-block p,
-    .detail-block li {
-      color: #c7d1c3;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    .detail-block ul {
-      display: grid;
-      gap: 8px;
-      margin: 0;
-      padding-left: 18px;
-    }
     .metric-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -563,9 +585,8 @@
     @media (max-width: 1180px) {
       .hero-grid,
       .section-head,
-      .roadmap-app { grid-template-columns: 1fr; }
-      .track-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .rail-title { grid-column: 1 / -1; }
+      .reader-section-head,
+      .track-card-head { grid-template-columns: 1fr; }
     }
     @media (max-width: 760px) {
       .wrap { width: min(100% - 28px, var(--max)); }
@@ -573,9 +594,10 @@
       .hero { padding-top: 52px; }
       .hero-copy { font-size: 17px; }
       .facts,
-      .phase-strip,
-      .task-map,
-      .track-rail,
+      .stage-timeline,
+      .scale-grid,
+      .task-index-grid,
+      .direction-task-grid,
       .metric-grid { grid-template-columns: 1fr; }
       .route-step { grid-template-columns: 38px 1fr; }
       .route-step em { grid-column: 2; }
@@ -608,20 +630,20 @@
     <div class="wrap hero-grid">
       <div>
         <div class="eyebrow">20 tasks / 4 tracks / scale-up path</div>
-        <h1>Interactive Research Roadmap.</h1>
+        <h1>Research Roadmap Details.</h1>
         <p class="hero-copy">
-          This page connects the current public-sample task lab to the four research
-          directions, the next multi-episode Qwen3-Omni fine-tuning path, the
-          later Cosmos 3 / policy-model branch choices, and the future
-          Xperience-native foundation-model pretraining goal. It loads
-          directly from generated project artifacts, so the track and task views stay
-          tied to the real sample metrics and scale-up status.
+          A focused reader page for the project path: current public-sample task
+          evidence, four research tracks, the selected-episode Qwen3-Omni scale-up
+          path, Cosmos 3 / policy-model branch choices, and the future
+          Xperience-native foundation-model pretraining goal. The page is generated
+          from the same artifact data as the public matrix, but the navigation is
+          simple anchors instead of nested controls.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#roadmap-app">Open roadmap</a>
+          <a class="button primary" href="#stage-timeline">Stage timeline</a>
+          <a class="button" href="#research-tracks">Research tracks</a>
+          <a class="button" href="#task-coverage">20-task coverage</a>
           <a class="button" href="index.html#roadmap">Back to main roadmap</a>
-          <a class="button" href="index.html#development-directions">Foundation pipelines</a>
-          <a class="button" href="index.html#directions">Four-track summary</a>
         </div>
       </div>
       <aside class="hero-panel" aria-label="Roadmap route">
@@ -652,35 +674,73 @@
     <section class="roadmap-section" id="roadmap-app">
       <div class="wrap">
         <div class="section-head">
-          <h2>From one sample to multi-episode embodied-AI experiments.</h2>
+          <h2>From one public sample to multi-episode embodied-AI experiments.</h2>
           <p>
-            Select a research track, inspect the linked task heads, and switch between
-            the current sample evidence, the data scale-up gate, the Omni-model pilot plan, and the foundation-model branch matrix.
+            Read down the page in order. The roadmap keeps stage timing, research
+            tracks, linked tasks, scale-up gates, and source mirrors visible without
+            asking readers to click through a separate track selector.
           </p>
         </div>
 
-        <div class="stage-tabs" role="tablist" aria-label="Roadmap mode">
-          <button class="stage-tab active" type="button" data-stage="now" role="tab" aria-selected="true">Now: sample task lab</button>
-          <button class="stage-tab" type="button" data-stage="scale_up" role="tab" aria-selected="false">Scale-up: episodes</button>
-          <button class="stage-tab" type="button" data-stage="omni" role="tab" aria-selected="false">Omni + branches</button>
+        <div class="roadmap-jump-nav" aria-label="Roadmap detail sections">
+          <a href="#stage-timeline">Stage timeline</a>
+          <a href="#research-tracks">Research tracks</a>
+          <a href="#scale-up">Scale-up gates</a>
+          <a href="#task-coverage">20-task coverage</a>
+          <a href="#source-mirrors">Source mirrors</a>
         </div>
 
         <div id="loading" class="loading">Loading roadmap artifacts...</div>
-        <div class="roadmap-app" id="app" hidden>
-          <aside class="panel track-rail" id="trackRail" aria-label="Research tracks"></aside>
-          <section class="panel map-panel" aria-label="Task and phase map">
-            <div class="phase-strip" id="phaseStrip"></div>
-            <div>
-              <div class="panel-label" id="taskMapLabel">Linked tasks</div>
-              <div class="task-map" id="taskMap"></div>
+
+        <div class="roadmap-detail-flow" id="app" hidden>
+          <section class="reader-section" id="stage-timeline" aria-label="Stage timeline">
+            <div class="reader-section-head">
+              <div>
+                <div class="panel-label">01 / Stage timeline</div>
+                <h2>What has shipped, what is active, and what remains future work.</h2>
+              </div>
+              <p>The timeline keeps implementation state separate from ambition: public-sample task work, selected-episode baselines, Qwen3-Omni diagnostics, branch experiments, and the long-range pretraining goal.</p>
             </div>
+            <div class="stage-timeline" id="phaseTimeline"></div>
           </section>
-          <aside class="panel detail-panel" id="detailPanel" aria-label="Selected roadmap detail"></aside>
+
+          <section class="reader-section" id="research-tracks" aria-label="Research tracks and linked tasks">
+            <div class="reader-section-head">
+              <div>
+                <div class="panel-label">02 / Research tracks</div>
+                <h2>Four tracks with their task evidence kept together.</h2>
+              </div>
+              <p>Each track lists the linked 20-task-suite heads, current evidence state, next steps, and extension probes in one card. Nothing is hidden behind a selected-track side panel.</p>
+            </div>
+            <div class="track-stack" id="trackStack"></div>
+          </section>
+
+          <section class="reader-section" id="scale-up" aria-label="Scale-up and model branch gates">
+            <div class="reader-section-head">
+              <div>
+                <div class="panel-label">03 / Scale-up gates</div>
+                <h2>Data preparation and model-branch decisions.</h2>
+              </div>
+              <p>This section keeps the selected-episode gate, Qwen3-Omni pilot contract, and foundation-model branch matrix separate from the task cards so readers can see the training route clearly.</p>
+            </div>
+            <div class="scale-grid" id="scaleCards"></div>
+          </section>
+
+          <section class="reader-section" id="task-coverage" aria-label="All 20 task coverage">
+            <div class="reader-section-head">
+              <div>
+                <div class="panel-label">04 / 20-task coverage</div>
+                <h2>All task contracts in one index.</h2>
+              </div>
+              <p>The compact task index is for scanning. It shows each task’s output, metric, and direction roles without forcing another navigation layer.</p>
+            </div>
+            <div class="task-index-grid" id="taskIndex"></div>
+          </section>
         </div>
 
-        <p class="artifact-note">Structured mirrors for scripts and validators are attached here after the interactive reader. Most readers should use the panels above before opening these records.</p>
+        <p class="artifact-note" id="source-mirrors">Structured mirrors for scripts and validators are attached here after the reader page. Most readers should use the sections above before opening these records.</p>
         <div class="artifact-row" aria-label="Structured roadmap mirrors">
-          <a href="data/research_roadmap_interactive.json">Explorer data mirror</a>
+          <a href="data/research_roadmap_interactive.json">Roadmap detail data</a>
           <a href="data/foundation_model_plan.json">Foundation-plan mirror</a>
           <a href="data/research_directions.json">Research-track mirror</a>
           <a href="data/task_walkthroughs.json">Task walkthrough mirror</a>
@@ -692,32 +752,25 @@
   </main>
 
   <script>
-    const state = {
-      data: null,
-      directionCode: "C",
-      taskId: null,
-      stage: "now"
-    };
-
-    const stageCopy = {
-      now: {
-        title: "Current sample evidence",
-        summary: "Use the single public episode to validate task contracts, feature construction, baselines, walkthroughs, and visualization.",
-      },
-      scale_up: {
-        title: "Episode scale-up gate",
-        summary: "Stage enough valid episodes, keep train/test separation at the episode level, and record missing-view coverage before training.",
-      },
-      omni: {
-        title: "Omni pilot and foundation branches",
-        summary: "Run Qwen3-Omni first for the held-out LoRA pilot, evaluate Cosmos 3 for world modeling and policy candidates after action targets are explicit, then treat Xperience-native pretraining as the full-corpus future goal.",
-      }
-    };
+    function esc(value) {
+      if (value === null || value === undefined || value === "") return "-";
+      return String(value).replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[char]));
+    }
 
     function fmt(value) {
       if (value === null || value === undefined || value === "") return "-";
       if (typeof value === "number") return new Intl.NumberFormat("en-US").format(value);
       return String(value);
+    }
+
+    function humanize(value) {
+      return fmt(value).replace(/_/g, " ");
     }
 
     function metricText(metric) {
@@ -734,211 +787,165 @@
       return "blue";
     }
 
-    function currentDirection() {
-      return state.data.directions.find((direction) => direction.code === state.directionCode) ||
-        state.data.directions[0];
+    function roleChips(roles = {}) {
+      return Object.entries(roles).map(([code, role]) => (
+        `<span class="chip ${cssRole(role)}">${esc(code)}: ${esc(role)}</span>`
+      )).join("");
     }
 
-    function currentTask(direction) {
-      return direction.tasks.find((task) => task.id === state.taskId) || direction.tasks[0] || state.data.tasks[0];
+    function evidenceDetails(links = []) {
+      if (!links.length) return "";
+      return `
+        <details class="track-details">
+          <summary>Evidence links</summary>
+          <div class="artifact-row">
+            ${links.map((link) => `<a href="${esc(link.href)}">${esc(link.label)}</a>`).join("")}
+          </div>
+        </details>
+      `;
     }
 
-    function setFacts() {
-      const scope = state.data.scope;
-      const scale = state.data.scale_up;
+    function setFacts(data) {
+      const scope = data.scope;
+      const scale = data.scale_up;
       const facts = [
         ["Sample episodes", scope.sample_episode_count],
         ["Aligned windows", scope.num_windows],
         ["Feature dimensions", scope.feature_dim],
-        ["Research tasks", state.data.tasks.length],
+        ["Research tasks", data.tasks.length],
         ["Pilot target episodes", scale.target_episodes]
       ];
       document.getElementById("facts").innerHTML = facts.map(([label, value]) => (
-        `<div class="fact"><strong>${fmt(value)}</strong><span>${label}</span></div>`
+        `<div class="fact"><strong>${esc(fmt(value))}</strong><span>${esc(label)}</span></div>`
       )).join("");
       document.getElementById("routeSample").textContent = `${fmt(scope.sample_episode_count)} episode`;
       document.getElementById("routeData").textContent = `${fmt(scale.target_episodes)} target`;
-      document.getElementById("routeOmni").textContent = state.data.omni_plan.backbone.replace("Qwen/", "");
+      document.getElementById("routeOmni").textContent = data.omni_plan.backbone.replace("Qwen/", "");
     }
 
-    function renderTrackRail() {
-      const rail = document.getElementById("trackRail");
-      rail.innerHTML = `<div class="rail-title">Research tracks</div>` + state.data.directions.map((direction) => {
-        const taskCount = direction.tasks.length;
-        const active = direction.code === state.directionCode ? " active" : "";
-        return `
-          <button class="track-button${active}" type="button" data-direction="${direction.code}">
-            <b>${direction.code}</b>
-            <span>${direction.name}<small>${taskCount} linked suite tasks</small></span>
-          </button>
-        `;
-      }).join("");
-      rail.querySelectorAll("[data-direction]").forEach((button) => {
-        button.addEventListener("click", () => {
-          state.directionCode = button.dataset.direction;
-          const direction = currentDirection();
-          state.taskId = direction.tasks[0]?.id || state.data.tasks[0]?.id;
-          render();
-        });
-      });
-    }
-
-    function renderPhases() {
-      document.getElementById("phaseStrip").innerHTML = state.data.phases.map((phase) => `
-        <article class="phase" data-stage="${phase.stage}">
-          <span>${phase.status}</span>
-          <strong>${phase.name}</strong>
-          <p>${phase.reader_takeaway || phase.entry_condition || ""}</p>
+    function renderPhases(data) {
+      document.getElementById("phaseTimeline").innerHTML = data.phases.map((phase) => `
+        <article class="phase" data-stage="${esc(phase.stage)}">
+          <span>${esc(humanize(phase.status))}</span>
+          <strong>${esc(phase.name)}</strong>
+          <p>${esc(phase.reader_takeaway || phase.entry_condition || "")}</p>
         </article>
       `).join("");
     }
 
-    function renderTasks(direction) {
-      document.getElementById("taskMapLabel").textContent =
-        `${direction.code}. ${direction.name} - linked suite tasks`;
-      document.getElementById("taskMap").innerHTML = direction.tasks.map((task) => {
-        const role = task.direction_roles?.[direction.code] || "linked";
-        const active = task.id === state.taskId ? " active" : "";
+    function renderTaskCard(task, directionCode = null) {
+      const role = directionCode ? task.direction_roles?.[directionCode] : null;
+      return `
+        <article class="task-mini-card">
+          <div>
+            <h3>${esc(task.display_name)}</h3>
+            <p>${esc(task.why || task.research_name || "Task contract in the unified suite.")}</p>
+          </div>
+          <p><strong>Input:</strong> ${esc(task.input_short || task.input || "see task walkthrough")}</p>
+          <p><strong>Output:</strong> ${esc(task.output_short || task.research_name || "task target")}</p>
+          <div class="task-meta">
+            ${role ? `<span class="chip ${cssRole(role)}">${esc(role)}</span>` : roleChips(task.direction_roles)}
+            <span class="chip">${esc(task.family || "task")}</span>
+          </div>
+          <div class="task-metric">
+            <span>${esc(metricText(task.metric))}</span>
+            <span>${esc(task.current_limit || "")}</span>
+          </div>
+          ${evidenceDetails(task.evidence_links || [])}
+        </article>
+      `;
+    }
+
+    function renderTracks(data) {
+      document.getElementById("trackStack").innerHTML = data.directions.map((direction) => {
+        const extensions = (direction.extension_tasks || []).map((item) => (
+          `<li><strong>${esc(item.name)}:</strong> ${esc(item.metric_name)}; ${esc(item.current_limit)}</li>`
+        )).join("");
+        const nextSteps = (direction.next_steps || []).map((step) => `<li>${esc(step)}</li>`).join("");
+        const tasks = (direction.tasks || []).map((task) => renderTaskCard(task, direction.code)).join("");
         return `
-          <button class="task-node${active}" type="button" data-task="${task.id}">
-            <strong>${task.display_name}</strong>
-            <span>${task.output_short || task.research_name}</span>
-            <span>${metricText(task.metric)}</span>
-            <span class="task-meta">
-              <em class="chip ${cssRole(role)}">${role}</em>
-              <em class="chip">${task.family || "task"}</em>
-            </span>
-          </button>
+          <article class="track-card" id="track-${esc(direction.code.toLowerCase())}" data-status="${esc(direction.current_status)}">
+            <div class="track-card-head">
+              <div>
+                <div class="panel-label">Track ${esc(direction.code)}</div>
+                <h3>${esc(direction.name)}</h3>
+                <p>${esc(direction.current_readout || direction.focus)}</p>
+                <div class="track-meta">
+                  <span class="chip green">${esc(humanize(direction.current_status))}</span>
+                  <span class="chip">${esc(fmt(direction.counts?.direct || 0))} direct</span>
+                  <span class="chip cyan">${esc(fmt(direction.counts?.proxy || 0))} proxy</span>
+                  <span class="chip amber">${esc(fmt(direction.counts?.diagnostic || 0))} diagnostic</span>
+                </div>
+              </div>
+              <div class="track-summary">
+                <p><strong>Focus:</strong> ${esc(direction.focus)}</p>
+                <p><strong>Useful background:</strong> ${esc(direction.preferred_background || "embodied AI and multimodal learning")}</p>
+              </div>
+            </div>
+            <div class="direction-task-grid">${tasks}</div>
+            <details class="track-details" open>
+              <summary>Next steps and extension probes</summary>
+              <ul>${nextSteps || "<li>No next step is currently mapped.</li>"}</ul>
+              <ul>${extensions || "<li>No extension probe is currently mapped to this track.</li>"}</ul>
+            </details>
+          </article>
         `;
       }).join("");
-      document.querySelectorAll("[data-task]").forEach((button) => {
-        button.addEventListener("click", () => {
-          state.taskId = button.dataset.task;
-          render();
-        });
-      });
     }
 
-    function stageBlock(direction, task) {
-      if (state.stage === "scale_up") {
-        const scale = state.data.scale_up;
-        return `
-          <div class="detail-block">
-            <h3>${stageCopy.scale_up.title}</h3>
-            <div class="metric-grid">
-              <div class="metric"><strong>${fmt(scale.target_episodes)}</strong><span>target episodes</span></div>
-              <div class="metric"><strong>${fmt(scale.valid_candidates)}</strong><span>valid candidates found in scan</span></div>
-              <div class="metric"><strong>${fmt(scale.candidate_scan_top_level_sessions)}</strong><span>top-level sessions scanned</span></div>
-              <div class="metric"><strong>${fmt(Math.round((scale.estimated_bytes || 0) / 1e9))} GB</strong><span>estimated selected data</span></div>
-            </div>
-            <p>${scale.access_status || stageCopy.scale_up.summary}</p>
-          </div>
-        `;
-      }
-      if (state.stage === "omni") {
-        const plan = state.data.omni_plan;
-        return `
-          <div class="detail-block">
-            <h3>${stageCopy.omni.title}</h3>
-            <p>${stageCopy.omni.summary}</p>
-            <ul>
-              <li><strong>Backbone:</strong> ${plan.backbone}</li>
-              <li><strong>Adapter:</strong> ${plan.adapter}</li>
-              <li><strong>Training unit:</strong> ${plan.training_unit}</li>
-              <li><strong>First pilot:</strong> ${plan.first_pilot}</li>
-            </ul>
-          </div>
-        `;
-      }
-      return `
-        <div class="detail-block">
-          <h3>${stageCopy.now.title}</h3>
-          <p>${stageCopy.now.summary}</p>
-          <div class="metric-grid">
-            <div class="metric"><strong>${fmt(state.data.scope.num_windows)}</strong><span>windows in current sample</span></div>
-            <div class="metric"><strong>${fmt(state.data.scope.feature_dim)}</strong><span>feature dimensions</span></div>
-            <div class="metric"><strong>${fmt(state.data.baseline_summary.task_count)}</strong><span>task contracts</span></div>
-            <div class="metric"><strong>${fmt(state.data.scope.feature_blocks)}</strong><span>feature blocks</span></div>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderDetail(direction, task) {
-      const roles = Object.entries(task.direction_roles || {})
-        .map(([code, role]) => `<span class="chip ${cssRole(role)}">${code}: ${role}</span>`)
-        .join("");
-      const evidenceLinks = (task.evidence_links || [])
-        .map((link) => `<a href="${link.href}">${link.label}</a>`)
-        .join("");
-      const extensions = direction.extension_tasks.map((item) => (
-        `<li>${item.name}: ${item.metric_name}; ${item.current_limit}</li>`
+    function renderScaleCards(data) {
+      const scope = data.scope;
+      const scale = data.scale_up;
+      const omni = data.omni_plan;
+      const foundation = data.foundation_model_plan;
+      const execution = (foundation.execution_order || []).map((item) => (
+        `<li><strong>${esc(item.step)}. ${esc(item.name)}:</strong> ${esc(item.action)}</li>`
       )).join("");
-      document.getElementById("detailPanel").innerHTML = `
-        <div>
-          <div class="panel-label">Selected track</div>
-          <h2 class="detail-title">${direction.code}. ${direction.name}</h2>
-          <p class="detail-copy">${direction.current_readout}</p>
-        </div>
-        <div class="task-meta">
-          <span class="chip green">${direction.current_status}</span>
-          <span class="chip">${fmt(direction.counts.direct || 0)} direct</span>
-          <span class="chip">${fmt(direction.counts.proxy || 0)} proxy</span>
-        </div>
-        ${stageBlock(direction, task)}
-        <div class="detail-block">
-          <h3>Selected task: ${task.display_name}</h3>
-          <p>${task.case_study || task.why || ""}</p>
-          <div class="task-meta">${roles}</div>
-          <div class="artifact-row">${evidenceLinks}</div>
-        </div>
-        <div class="detail-block">
-          <h3>Input -> process -> output</h3>
-          <ul>
-            <li><strong>Input:</strong> ${task.input_short || task.input}</li>
-            <li><strong>Process:</strong> ${task.process_short || task.module_summary}</li>
-            <li><strong>Output:</strong> ${task.output_short || task.research_name}</li>
-            <li><strong>Metric:</strong> ${metricText(task.metric)}</li>
-          </ul>
-        </div>
-        <div class="detail-block">
-          <h3>Next steps for this track</h3>
-          <ul>${direction.next_steps.map((step) => `<li>${step}</li>`).join("")}</ul>
-        </div>
-        <div class="detail-block">
-          <h3>Extension probes</h3>
-          <ul>${extensions || "<li>No extension probe is currently mapped to this track.</li>"}</ul>
-        </div>
+      document.getElementById("scaleCards").innerHTML = `
+        <article class="scale-card">
+          <div class="panel-label">Current public sample</div>
+          <h3>Task lab evidence</h3>
+          <p>${esc(data.baseline_summary.current_use)}</p>
+          <div class="metric-grid">
+            <div class="metric"><strong>${esc(fmt(scope.num_windows))}</strong><span>windows</span></div>
+            <div class="metric"><strong>${esc(fmt(scope.feature_dim))}</strong><span>feature dimensions</span></div>
+            <div class="metric"><strong>${esc(fmt(data.baseline_summary.task_count))}</strong><span>task contracts</span></div>
+            <div class="metric"><strong>${esc(fmt(scope.feature_blocks))}</strong><span>feature blocks</span></div>
+          </div>
+        </article>
+        <article class="scale-card">
+          <div class="panel-label">Selected-episode gate</div>
+          <h3>Multi-episode data preparation</h3>
+          <p>${esc(scale.access_status)}</p>
+          <div class="metric-grid">
+            <div class="metric"><strong>${esc(fmt(scale.target_episodes))}</strong><span>target episodes</span></div>
+            <div class="metric"><strong>${esc(fmt(scale.valid_candidates))}</strong><span>valid candidates</span></div>
+            <div class="metric"><strong>${esc(fmt(scale.candidate_scan_top_level_sessions))}</strong><span>sessions scanned</span></div>
+            <div class="metric"><strong>${esc(fmt(Math.round((scale.estimated_bytes || 0) / 1e9)))} GB</strong><span>estimated selected data</span></div>
+          </div>
+        </article>
+        <article class="scale-card">
+          <div class="panel-label">First model pilot</div>
+          <h3>Qwen3-Omni LoRA branch</h3>
+          <p>Backbone ${esc(omni.backbone)} with ${esc(omni.adapter)} over ${esc(omni.training_unit)}.</p>
+          <p><strong>First pilot:</strong> ${esc(omni.first_pilot)}</p>
+          <p><strong>Evaluation:</strong> ${esc(omni.evaluation)}</p>
+        </article>
+        <article class="scale-card">
+          <div class="panel-label">Foundation-model branch order</div>
+          <h3>What scales after the pilot</h3>
+          <p>${esc(foundation.decision?.long_term_native_pretraining_goal || "Xperience-native pretraining remains a later stage.")}</p>
+          <details class="track-details" open>
+            <summary>Execution order</summary>
+            <ul>${execution}</ul>
+          </details>
+        </article>
       `;
     }
 
-    function renderStageTabs() {
-      document.querySelectorAll(".stage-tab").forEach((button) => {
-        const active = button.dataset.stage === state.stage;
-        button.classList.toggle("active", active);
-        button.setAttribute("aria-selected", active ? "true" : "false");
-      });
+    function renderTaskIndex(data) {
+      document.getElementById("taskIndex").innerHTML = data.tasks.map((task) => renderTaskCard(task)).join("");
     }
-
-    function render() {
-      const direction = currentDirection();
-      if (!state.taskId || !direction.tasks.some((task) => task.id === state.taskId)) {
-        state.taskId = direction.tasks[0]?.id || state.data.tasks[0]?.id;
-      }
-      const task = currentTask(direction);
-      renderStageTabs();
-      renderTrackRail();
-      renderPhases();
-      renderTasks(direction);
-      renderDetail(direction, task);
-    }
-
-    document.querySelectorAll(".stage-tab").forEach((button) => {
-      button.addEventListener("click", () => {
-        state.stage = button.dataset.stage;
-        render();
-      });
-    });
 
     fetch("data/research_roadmap_interactive.json", { cache: "no-cache" })
       .then((response) => {
@@ -946,13 +953,13 @@
         return response.json();
       })
       .then((data) => {
-        state.data = data;
-        state.directionCode = data.directions.find((direction) => direction.code === "C") ? "C" : data.directions[0].code;
-        state.taskId = currentDirection().tasks[0]?.id || data.tasks[0]?.id;
-        setFacts();
+        setFacts(data);
+        renderPhases(data);
+        renderTracks(data);
+        renderScaleCards(data);
+        renderTaskIndex(data);
         document.getElementById("loading").hidden = true;
         document.getElementById("app").hidden = false;
-        render();
       })
       .catch((error) => {
         document.getElementById("loading").textContent = `Roadmap data could not be loaded: ${error.message}`;
