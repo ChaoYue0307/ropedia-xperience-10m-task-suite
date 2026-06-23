@@ -81,7 +81,7 @@
 
 本项目只发布小型 derived artifacts、指标、图表、README、模型卡和 public-safe 预测摘要。原始 Xperience-10M 数据使用仍以 Ropedia 官方 Hugging Face 数据卡和访问条款为准。
 
-## Public Surfaces
+## Published Mirrors
 
 | Surface | Link |
 | --- | --- |

@@ -43,11 +43,11 @@
 
 ## Contents
 
-- [How To Read This Project](#how-to-read-this-project)
+- [Project Entry Points](#project-entry-points)
 - [At A Glance](#at-a-glance)
 - [Data Explorer Analysis](#data-explorer-analysis)
 - [Two Evidence Lines](#two-evidence-lines)
-- [Fast Reader Map](#fast-reader-map)
+- [Fast Project Map](#fast-project-map)
 - [Why This Project Exists](#why-this-project-exists)
 - [Start Here](#start-here)
 - [Glossary](#glossary)
@@ -57,13 +57,13 @@
 - [Reproducibility](#reproducibility)
 - [Citation](#citation)
 
-## How To Read This Project
+## Project Entry Points
 
 Use the two evidence lines first, then choose the artifact that answers your question. The dashboard is the best visual overview; the GitHub repo is the source of truth for scripts and generated JSON; Hugging Face mirrors contain public-safe cards, metrics, figures, and model artifacts.
 
 Quick rule: use **Line 1** for “can I inspect and reproduce the task?” Use **Line 2** for “how do aligned baselines and model diagnostics compare on the selected 128 episodes?”
 
-The multilingual README files are reader guides. The canonical technical evidence is still the committed task contracts, result matrices, validation JSON, and public-safe result packages.
+The multilingual README files provide project overviews. The canonical technical evidence is still the committed task contracts, result matrices, validation JSON, and public-safe result packages.
 
 ## At A Glance
 
@@ -97,7 +97,7 @@ The multilingual README files are reader guides. The canonical technical evidenc
     </tr>
     <tr>
       <td><strong>4 research directions</strong></td>
-      <td>Human Modeling & Motion Understanding; 3D/4D Reconstruction & Neural Rendering; Egocentric Vision & Interaction; Scene Reconstruction & World Modeling. These are reading groups over the same 20 tasks, not separate benchmark tiers.</td>
+      <td>Human Modeling & Motion Understanding; 3D/4D Reconstruction & Neural Rendering; Egocentric Vision & Interaction; Scene Reconstruction & World Modeling. These are analysis groups over the same 20 tasks, not separate benchmark tiers.</td>
     </tr>
     <tr>
       <td><strong>Line 1 methods</strong></td>
@@ -124,15 +124,15 @@ The multilingual README files are reader guides. The canonical technical evidenc
 
 ## Public Structure: 20 Tasks / 4 Directions / 3 Pipelines / 1 Unified Target
 
-Read the project as four connected layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are reader-facing research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets. The **1 unified embodied model target** is the long-term integration goal after those pipelines mature. Use them in that order when reading the project.
+The project has four connected layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets. The **1 unified embodied model target** is the long-term integration goal after those pipelines mature.
 
-Reader rule: if it has a metric, it is a **task**; if it explains what the evidence studies, it is a **direction**; if it describes model inputs and training targets, it is a **pipeline**; if it combines perception, 3D memory, language, action, and planning, it is the **unified target** rather than an extra score axis.
+Layer rule: if it has a metric, it is a **task**; if it explains what the evidence studies, it is a **direction**; if it describes model inputs and training targets, it is a **pipeline**; if it combines perception, 3D memory, language, action, and planning, it is the **unified target** rather than an extra score axis.
 
 <p align="center">
   <img src="docs/assets/charts/task_direction_pipeline_relationship.png" alt="Relationship map showing 20 task contracts, 4 research directions, 3 foundation-model pipeline tracks, and 1 unified embodied model target" width="100%">
 </p>
 
-| Layer | Count | Reader role | Exact public labels |
+| Layer | Count | Role | Exact public labels |
 | --- | ---: | --- | --- |
 | Task contracts | 20 | Score axes used by the matrix, radars, task cards, and method rows. | Action Recognition; Procedure Step Recognition; Action Boundary Detection; Next-Action Prediction; Hand Trajectory Forecasting; Contact State Prediction; Object Relevance Prediction; Language Grounding; Cross-Modal Retrieval; Cross-Modal Reconstruction; Temporal Order Verification; Multimodal Synchronization Detection; Long-Horizon Next-Action Forecasting; Long-Horizon Next-Subtask Forecasting; Interaction Text Prediction; Action-Object Relation Prediction; Future Object-Set Forecasting; IMU-to-Hand Pose Reconstruction; Camera-View Synchronization Retrieval; Time-to-Next-Transition Regression. |
 | Research directions | 4 | Ways to interpret what the 20 tasks study; not separate benchmark tiers. | Human Modeling & Motion Understanding; 3D/4D Reconstruction & Neural Rendering; Egocentric Vision & Interaction; Scene Reconstruction & World Modeling. |
@@ -143,7 +143,7 @@ Reader rule: if it has a metric, it is a **task**; if it explains what the evide
 
 The data explorer is now a three-scope analysis layer, not only a raw-file browser. It compares the public sample episode, selected 128-episode feature exports, and the Hugging Face-hosted gated full-dataset metadata without mixing their evidence boundaries.
 
-| Scope | Reader question | Current public analysis |
+| Scope | Question | Current public analysis |
 | --- | --- | --- |
 | Public sample | What files and signals are directly inspectable? | 1 episode, 5,821 frames, 1,161 aligned 20-frame windows, 8,546 feature dimensions, raw-file browser, modality breakdowns, action-window distribution. |
 | Selected 128 | What selected-episode surface supports model comparison? | 96/16/16 split, 34,269 Qwen3-Omni v6 multiscale rows, 106,095 dense compact rows, selected episode links, public-safe matrices. |
@@ -153,7 +153,7 @@ Entry points: [website analysis section](https://chaoyue0307.github.io/ropedia-x
 
 ## Two Evidence Lines
 
-The public suite is organized around two evidence lines. Keep them separate when reading metrics.
+The public suite is organized around two evidence lines. Keep them separate when comparing metrics.
 
 <p align="center">
   <img src="docs/assets/charts/two_evidence_line_map.svg" alt="Two evidence-line map: 1 sample episode and 128 selected episodes combine into 180 scored method-task records" width="100%">
@@ -314,12 +314,12 @@ Result entry points:
 [`task_method_20_result_matrix.json`](docs/data/task_method_20_result_matrix.json), and
 [`xperience10m_128_episode_feature_index.json`](docs/data/xperience10m_128_episode_feature_index.json).
 
-## Fast Reader Map
+## Fast Project Map
 
 <table>
   <thead>
     <tr>
-      <th width="26%">Reader goal</th>
+      <th width="26%">Goal</th>
       <th width="32%">Start here</th>
       <th>Then inspect</th>
     </tr>
@@ -331,9 +331,9 @@ Result entry points:
       <td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">Dashboard</a></td>
     </tr>
     <tr>
-      <td><strong>Choose the public surface</strong></td>
-      <td><a href="PUBLIC_READER_MAP.md">Public reader map</a></td>
-      <td><a href="docs/data/public_reader_map.json">reader-map data</a></td>
+      <td><strong>Choose the published mirror</strong></td>
+      <td><a href="PUBLIC_READER_MAP.md">Public evidence map</a></td>
+      <td><a href="docs/data/public_reader_map.json">evidence-map data</a></td>
     </tr>
     <tr>
       <td><strong>Decode project terms</strong></td>
@@ -404,21 +404,21 @@ embodied-AI research infrastructure:
 ## Start Here
 
 The public release is split across GitHub, the website, and Hugging Face. Use
-[the public reader map](PUBLIC_READER_MAP.md) first if you want the shortest
-route through those surfaces, or use the machine-readable companion
-[reader-map data](docs/data/public_reader_map.json).
+[the public evidence map](PUBLIC_READER_MAP.md) first for the shortest
+route through those mirrors, or use the machine-readable companion
+[evidence-map data](docs/data/public_reader_map.json).
 For the one-page project summary, use [the project brief](PROJECT_BRIEF.md)
 and [project-summary data](docs/data/project_brief.json).
 
 <table>
   <thead>
     <tr>
-      <th width="32%">Reader goal</th>
+      <th width="32%">Goal</th>
       <th>Best entry point</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td><strong>Choose the right public surface</strong></td><td><a href="PUBLIC_READER_MAP.md">Public reader map</a><br><a href="docs/data/public_reader_map.json">reader-map data</a></td></tr>
+    <tr><td><strong>Choose the right published mirror</strong></td><td><a href="PUBLIC_READER_MAP.md">Public evidence map</a><br><a href="docs/data/public_reader_map.json">evidence-map data</a></td></tr>
     <tr><td><strong>Resolve confusing terms and abbreviations</strong></td><td><a href="GLOSSARY.md">Glossary</a><br><a href="docs/data/glossary.json">glossary data</a></td></tr>
     <tr><td><strong>Understand the whole project quickly</strong></td><td><a href="PROJECT_BRIEF.md">Project brief</a></td></tr>
     <tr><td><strong>See the visual research dashboard</strong></td><td><a href="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/">GitHub Pages dashboard</a></td></tr>
@@ -441,7 +441,7 @@ Cosmos3-Super, LoRA adapter, or HF artifact dataset is unclear. The same definit
 [glossary data](docs/data/glossary.json) for the website and
 Hugging Face repos.
 
-## Public Surface Map
+## Published Mirror Map
 
 <table>
   <thead>
@@ -496,7 +496,7 @@ Public release checks are exposed as structured records for mirrors and dashboar
         </ul>
       </td>
     </tr>
-    <tr><td><strong>Public surfaces</strong></td><td>GitHub repo, GitHub Pages dashboard, GHCR static-site package, HF Space, HF artifact dataset, HF baseline-model repo, and HF collection.</td></tr>
+    <tr><td><strong>Published mirrors</strong></td><td>GitHub repo, GitHub Pages dashboard, GHCR static-site package, HF Space, HF artifact dataset, HF baseline-model repo, and HF collection.</td></tr>
   </tbody>
 </table>
 
@@ -608,7 +608,7 @@ This project is best read as a staged embodied-AI research study:
 </table>
 
 Detailed dataset notes, reproduction checks, and generated data reports are
-included for readers who want to inspect the implementation, but they are
+included for implementation inspection, but they are
 supporting materials rather than the main reading path. Use
 [the artifact guide](ARTIFACT_GUIDE.md) when you want the full file map.
 
@@ -653,7 +653,7 @@ They give the current research state in one compact table:
 
 ## 90-Second Research Project Path
 
-If you are reading the project cold, open these in order:
+Recommended project sequence:
 
 <table>
   <thead>
@@ -680,12 +680,12 @@ If you are reading the project cold, open these in order:
   </tbody>
 </table>
 
-A compact reader-path summary is available at
+A compact project-path summary is available at
 [project-packet data](docs/data/project_packet.json).
 
 ## Supporting Files
 
-[The artifact guide](ARTIFACT_GUIDE.md) is the human-readable map for readers
+[The artifact guide](ARTIFACT_GUIDE.md) maps the public evidence
 who want to inspect the project files after the first pass. It groups the main
 briefs, task outputs, baseline results, visual assets, data notes, and
 scale-up documents.
@@ -736,7 +736,7 @@ The current verified public-sample subset is:
 Detailed dataset notes are available in
 [the dataset-card alignment note](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md)
 and [dataset-alignment data](docs/data/xperience10m_dataset_card_alignment.json)
-for readers who need the full upstream-card and access-term context. The
+for full upstream-card and access-term context. The
 practical reading rule is simple: Line 1 is the task lab, Line 2 is the
 selected-128 comparison surface, and compact-proxy cells stay explicitly marked
 where direct raw targets are missing.
@@ -771,7 +771,7 @@ Hugging Face Space app:
     <tr><td><strong>Minimal heads</strong></td><td>softmax<br>ridge projection/regression<br>multi-label logistic heads</td><td>Keeps every input/output contract visible and inspectable.</td></tr>
     <tr><td><strong>Neural heads</strong></td><td>PyTorch MLP classifiers/regressors under <a href="results/episode_task_suite/neural_mlp/">neural_mlp/</a></td><td>Checks whether nonlinear heads improve each task without changing features.</td></tr>
     <tr><td><strong>Evidence</strong></td><td>metrics<br>predictions<br>confusion matrices<br>diagrams<br>dashboard</td><td>Makes the single-episode task development inspectable without rerunning first.</td></tr>
-    <tr><td><strong>Artifact guide</strong></td><td><a href="ARTIFACT_GUIDE.md">artifact guide</a></td><td>Groups the public evidence into reader-facing views after the first-pass overview.</td></tr>
+    <tr><td><strong>Artifact guide</strong></td><td><a href="ARTIFACT_GUIDE.md">artifact guide</a></td><td>Groups the public evidence after the project overview.</td></tr>
     <tr><td><strong>Reproducibility contract</strong></td><td><a href="REPRODUCIBILITY.md">reproducibility guide</a><br><a href="docs/data/reproducibility_matrix.json">reproducibility matrix</a></td><td>States public commands, expected outputs, exact-match reproduction evidence, and non-reproducible boundaries.</td></tr>
     <tr><td><strong>Citation metadata</strong></td><td><a href="CITATION.cff">citation metadata</a><br><a href="codemeta.json">software metadata</a><br><a href="LICENSE">license</a></td><td>Makes the repo easier to cite, index, and reuse without confusing code license and dataset terms.</td></tr>
   </tbody>
@@ -859,7 +859,7 @@ and
 the explicit score/proxy ledger is
 [`docs/data/task_method_20_gap_audit.json`](docs/data/task_method_20_gap_audit.json)
 and [`TASK_METHOD_20_GAP_AUDIT.md`](TASK_METHOD_20_GAP_AUDIT.md);
-the reader-facing matrix is
+the public matrix is
 [`TASK_METHOD_20_RESULT_MATRIX.md`](TASK_METHOD_20_RESULT_MATRIX.md).
 The website Results section also renders the same 180 cells as a wide,
 source-linked table with raw values, normalized radar values, metric keys, and
@@ -1002,7 +1002,7 @@ Ropedia distribution and follow the dataset terms.
 ## GitHub Package
 
 The public dashboard is packaged as a static-site container on GitHub Container
-Registry. It contains the `docs/` site plus the main reader documents; it does
+Registry. It contains the `docs/` site plus the main project documents; it does
 not include raw Xperience-10M videos, raw annotations, gated data, or model
 weights.
 

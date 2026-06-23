@@ -81,7 +81,7 @@ Entradas: [guia de dos lineas de evidencia](TWO_EVIDENCE_LINES.md), [datos de do
 
 El proyecto publica solo artifacts derivados, métricas, figuras, tarjetas y resúmenes public-safe. El uso de Xperience-10M sigue las condiciones oficiales de Ropedia en Hugging Face.
 
-## Public Surfaces
+## Published Mirrors
 
 | Surface | Link |
 | --- | --- |

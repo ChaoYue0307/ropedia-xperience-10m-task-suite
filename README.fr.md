@@ -81,7 +81,7 @@ Entrées : [guide des deux lignes de preuve](TWO_EVIDENCE_LINES.md), [données d
 
 Le projet publie des artifacts dérivés, métriques, figures et cartes public-safe. L'accès aux données Xperience-10M reste régi par la carte officielle Ropedia sur Hugging Face.
 
-## Public Surfaces
+## Published Mirrors
 
 | Surface | Link |
 | --- | --- |

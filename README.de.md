@@ -81,7 +81,7 @@ Einstieg: [Leitfaden zu zwei Evidenzlinien](TWO_EVIDENCE_LINES.md), [Daten der z
 
 Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Karten und public-safe Zusammenfassungen. Xperience-10M bleibt unter den offiziellen Ropedia/Hugging-Face-Bedingungen.
 
-## Public Surfaces
+## Published Mirrors
 
 | Surface | Link |
 | --- | --- |

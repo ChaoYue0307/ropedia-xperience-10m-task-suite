@@ -81,7 +81,7 @@
 
 이 프로젝트는 파생 artifacts, 지표, 그림, 카드, public-safe 요약만 공개합니다. Xperience-10M 사용은 Ropedia 공식 Hugging Face 데이터 카드와 접근 조건을 따릅니다.
 
-## Public Surfaces
+## Published Mirrors
 
 | Surface | Link |
 | --- | --- |

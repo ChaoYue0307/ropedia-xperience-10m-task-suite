@@ -81,7 +81,7 @@ Entradas: [guia de duas linhas de evidencia](TWO_EVIDENCE_LINES.md), [dados das 
 
 O projeto publica apenas artifacts derivados, métricas, figuras, cards e resumos public-safe. O uso do Xperience-10M segue o dataset card oficial da Ropedia no Hugging Face.
 
-## Public Surfaces
+## Published Mirrors
 
 | Surface | Link |
 | --- | --- |

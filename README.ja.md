@@ -81,7 +81,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 
 本プロジェクトは派生 artifacts、指標、図、カード、public-safe 要約のみを公開します。Xperience-10M の利用は Ropedia 公式 Hugging Face データカードとアクセス条件に従います。
 
-## Public Surfaces
+## Published Mirrors
 
 | Surface | Link |
 | --- | --- |
