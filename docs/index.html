@@ -7091,8 +7091,8 @@
           </a>
           <a class="hero-path" href="#directions">
             <small>Extend</small>
-            <strong>Plan next training tracks</strong>
-            <span>Spatial intelligence, human-video world models, VLA, and scale-up plans.</span>
+            <strong>Directions after results</strong>
+            <span>Research directions, roadmap, and scale-up plans after the result table.</span>
           </a>
         </div>
         <div class="hero-stats">
@@ -7195,7 +7195,7 @@
           <strong>Method</strong>
           <span>pipeline and model design</span>
         </button>
-        <button type="button" class="project-tab" id="tab-results" role="tab" data-tab-key="results" data-default-section="takeaways" aria-selected="false" aria-pressed="false" aria-controls="takeaways evidence" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-results" role="tab" data-tab-key="results" data-default-section="takeaways" aria-selected="false" aria-pressed="false" aria-controls="takeaways" tabindex="-1">
           <strong>Results</strong>
           <span>takeaways and baselines</span>
         </button>
@@ -7203,7 +7203,7 @@
           <strong>Directions</strong>
           <span>directions, pipelines, roadmap</span>
         </button>
-        <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="reading-path" aria-selected="false" aria-pressed="false" aria-controls="reading-path glossary artifacts omni-scale-up run" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="reading-path" aria-selected="false" aria-pressed="false" aria-controls="evidence reading-path glossary artifacts omni-scale-up run" tabindex="-1">
           <strong>Resources</strong>
           <span>project path, mirrors, commands</span>
         </button>
@@ -7240,179 +7240,13 @@
           <div class="reader-route-copy">
             <small>project route</small>
             <strong>Four project layers connect data, tasks, methods, and results.</strong>
-            <p>The project starts with the Xperience-10M data scope, then explains the 20-task contracts, the baseline/model pipeline, the result table, and the exact reproduction or extension artifacts.</p>
+            <p>The project starts with the Xperience-10M data scope, then explains the 20-task contracts, method design, result table, and exact reproduction or extension artifacts.</p>
           </div>
           <div class="reader-route-list">
             <a href="#dataset-card"><span>01 data</span><strong>Dataset scope</strong><em>Official Xperience-10M context, public sample files, and selected-128 boundaries.</em></a>
             <a href="#suite"><span>02 tasks</span><strong>20-task suite</strong><em>One task vocabulary for all methods and both evidence lines.</em></a>
             <a href="#pipeline"><span>03 method</span><strong>Pipeline and protocol</strong><em>Feature construction, leakage controls, model heads, and evaluation rules.</em></a>
             <a href="#takeaways"><span>04 results</span><strong>Result ledger</strong><em>Direct scores, compact-proxy cells, model diagnostics, and citeable tables.</em></a>
-          </div>
-        </div>
-        <div class="task-axis-panel" aria-label="Relationship between tasks, research directions, training pipelines, and unified embodied model target">
-          <div class="task-axis-head">
-            <div>
-              <small>relationship map</small>
-              <strong>20 tasks / 4 directions / 3 pipelines / 1 unified model target.</strong>
-            </div>
-            <p>The structure is fixed: the 20 tasks are scored contracts, the four directions group what those scores study, the three pipelines define training recipes, and the unified embodied model is the long-term integration target.</p>
-          </div>
-          <div class="task-axis-summary" aria-label="Public structure key">
-            <article class="task-axis-summary-card">
-              <span class="task-axis-count">20</span>
-              <div>
-                <small>scored task layer</small>
-                <strong>One unified task suite.</strong>
-                <p>Every metric, radar axis, and method row uses these same 20 task contracts.</p>
-              </div>
-            </article>
-            <article class="task-axis-summary-card">
-              <span class="task-axis-count">4</span>
-              <div>
-                <small>4-direction layer</small>
-                <strong>Four research views over the same tasks.</strong>
-                <p>Human motion, 3D/4D reconstruction, egocentric interaction, and world modeling are groupings over the same tasks.</p>
-              </div>
-            </article>
-            <article class="task-axis-summary-card">
-              <span class="task-axis-count">3</span>
-              <div>
-                <small>3-pipeline layer</small>
-                <strong>Three ways to train larger models.</strong>
-                <p>Spatial intelligence, human-video world models, and vision-language-action models reuse the same files with different input-output recipes.</p>
-              </div>
-            </article>
-            <article class="task-axis-summary-card">
-              <span class="task-axis-count">1</span>
-              <div>
-                <small>unified target</small>
-                <strong>One embodied foundation model goal.</strong>
-                <p>The pipeline outputs converge toward perception, 3D memory, language, action, and planning in one model family.</p>
-              </div>
-            </article>
-          </div>
-          <div class="task-axis-reader-rule" aria-label="How to identify the public layers">
-            <article>
-              <span>score question</span>
-              <strong>If it has a metric, it belongs to the 20-task layer.</strong>
-              <p>Task cards, radars, and the 180-record table all use the same numbered task IDs.</p>
-            </article>
-            <article>
-              <span>research question</span>
-              <strong>If it explains what the evidence studies, it belongs to the 4-direction layer.</strong>
-              <p>Directions A-D group the same 20 tasks. They are not extra tasks or a second tier.</p>
-            </article>
-            <article>
-              <span>training question</span>
-              <strong>If it describes model inputs and targets, it belongs to the 3-pipeline layer.</strong>
-              <p>Spatial, world-model, and VLA pipelines are recipes for future scale-up and task-grounded model training.</p>
-            </article>
-            <article>
-              <span>synthesis question</span>
-              <strong>If it combines pipeline abilities, it belongs to the unified-model target.</strong>
-              <p>This is the expandable integration goal, not an extra scored task axis in the 180-result matrix.</p>
-            </article>
-          </div>
-          <figure class="task-axis-visual">
-            <img src="assets/charts/task_direction_pipeline_relationship.png?v=relationship-map-v4-unified" alt="Labeled Ropedia Xperience-10M Task Suite relationship map showing 20 task contracts flowing into four named research directions, three foundation-model training pipelines, and one unified embodied foundation model target, with each layer open to expand.">
-            <figcaption aria-label="Relationship map legend">
-              <span><strong>20 tasks</strong>Score axes used by every method row.</span>
-              <span><strong>4 directions</strong>Research questions for reading those scores.</span>
-              <span><strong>3 pipelines</strong>Training recipes for larger foundation models.</span>
-              <span><strong>1 unified model</strong>Future integration target, not a new score axis.</span>
-            </figcaption>
-          </figure>
-          <div class="task-axis-key" aria-label="Explicit relationship key for the map">
-            <article class="task-axis-key-card">
-              <span>20 task contracts</span>
-              <strong>Every score axis is one of these tasks.</strong>
-              <p>The generated image uses one node per task; this list gives the exact public task names.</p>
-              <ol class="task-axis-task-list">
-                <li><b>01</b>Action Recognition</li>
-                <li><b>02</b>Procedure Step Recognition</li>
-                <li><b>03</b>Action Boundary Detection</li>
-                <li><b>04</b>Next-Action Prediction</li>
-                <li><b>05</b>Hand Trajectory Forecasting</li>
-                <li><b>06</b>Contact State Prediction</li>
-                <li><b>07</b>Object Relevance Prediction</li>
-                <li><b>08</b>Language Grounding</li>
-                <li><b>09</b>Cross-Modal Retrieval</li>
-                <li><b>10</b>Cross-Modal Reconstruction</li>
-                <li><b>11</b>Temporal Order Verification</li>
-                <li><b>12</b>Multimodal Synchronization Detection</li>
-                <li><b>13</b>Long-Horizon Next-Action Forecasting</li>
-                <li><b>14</b>Long-Horizon Next-Subtask Forecasting</li>
-                <li><b>15</b>Interaction Text Prediction</li>
-                <li><b>16</b>Action-Object Relation Prediction</li>
-                <li><b>17</b>Future Object-Set Forecasting</li>
-                <li><b>18</b>IMU-to-Hand Pose Reconstruction</li>
-                <li><b>19</b>Camera-View Synchronization Retrieval</li>
-                <li><b>20</b>Time-to-Next-Transition Regression</li>
-              </ol>
-            </article>
-            <article class="task-axis-key-card">
-              <span>4 research directions</span>
-              <strong>The same tasks are grouped by research question.</strong>
-              <p>Tasks can support more than one direction. This layer answers what the scores study; it is not a separate benchmark or task tier.</p>
-              <ol class="task-axis-mini-list">
-                <li><b>A</b>Human Modeling &amp; Motion Understanding</li>
-                <li><b>B</b>3D/4D Reconstruction &amp; Neural Rendering</li>
-                <li><b>C</b>Egocentric Vision &amp; Interaction</li>
-                <li><b>D</b>Scene Reconstruction &amp; World Modeling</li>
-              </ol>
-            </article>
-            <article class="task-axis-key-card">
-              <span>3 foundation pipelines</span>
-              <strong>The training tracks reuse the task and modality contracts.</strong>
-              <p>These are scale-up recipes for model training. They answer how the same files can be turned into larger model inputs and targets.</p>
-              <ol class="task-axis-mini-list">
-                <li><b>1</b>Spatial intelligence models</li>
-                <li><b>2</b>Human-video world models</li>
-                <li><b>3</b>Vision-language-action models</li>
-              </ol>
-            </article>
-            <article class="task-axis-key-card">
-              <span>1 unified target</span>
-              <strong>The pipelines converge into one embodied model goal.</strong>
-              <p>This target integrates perception, 3D memory, language, action, and planning. It is a research direction for scale-up, not a tenth method or twenty-first task.</p>
-              <ol class="task-axis-mini-list">
-                <li><b>P</b>Perception and multimodal input</li>
-                <li><b>M</b>3D memory and scene state</li>
-                <li><b>L</b>Language-grounded reasoning</li>
-                <li><b>A</b>Action and planning</li>
-              </ol>
-            </article>
-          </div>
-          <div class="task-axis-grid">
-            <article class="task-axis-card">
-              <span>scored contracts</span>
-              <strong>20 tasks</strong>
-              <p>Action, subtask, object, language, motion, synchronization, retrieval, and forecasting targets evaluated by each public method row.</p>
-            </article>
-            <article class="task-axis-card">
-              <span>research grouping</span>
-              <strong>4 directions</strong>
-              <p>Human Modeling &amp; Motion Understanding; 3D/4D Reconstruction &amp; Neural Rendering; Egocentric Vision &amp; Interaction; Scene Reconstruction &amp; World Modeling.</p>
-            </article>
-            <article class="task-axis-card">
-              <span>training tracks</span>
-              <strong>3 foundation pipelines</strong>
-              <p>Spatial intelligence models; Human-video world models; Vision-language-action models.</p>
-            </article>
-            <article class="task-axis-card">
-              <span>synthesis target</span>
-              <strong>1 unified embodied model</strong>
-              <p>A long-term model target where perception, spatial memory, language, action, and planning are trained against the same evidence structure.</p>
-            </article>
-          </div>
-          <div class="task-axis-flow" aria-label="Tasks directions and pipelines reading formula">
-            <strong>20 tasks are the score axes.</strong>
-            <span>-></span>
-            <strong>4 directions organize what the scores study.</strong>
-            <span>-></span>
-            <strong>3 pipelines describe how to train larger models.</strong>
-            <span>-></span>
-            <strong>1 unified model is the integration target.</strong>
           </div>
         </div>
         <figure class="line-map-figure">
@@ -8663,122 +8497,179 @@
       </div>
     </section>
 
-    <section id="evidence" data-project-tab="results" role="tabpanel" aria-labelledby="tab-results" tabindex="-1">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Current experiments and next milestones.</h2>
-          <p>The project shows the completed public-sample task suite and the first verified multi-episode Qwen3-Omni diagnostic pilot, then lays out the next quality-improvement and model-extension steps.</p>
-        </div>
-        <div class="evidence-grid">
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Sample windows and 20-task results</h3>
-            <p>5,821 frames become 1,161 synchronized 20-frame windows with an 8,546-dimensional representation, 20 task contracts, and the current 180-record public result matrix.</p>
-            <div class="evidence-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">task results</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature inputs</a>
-              <a href="data/task_method_20_result_matrix.json">result matrix</a>
-              <a href="#suite">20-task suite</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Audio and modality evidence</h3>
-            <p>Audio variants improve the primary metric on 6 walkthrough-backed task contracts, while the feature manifest and raw browser keep each modality source inspectable.</p>
-            <div class="evidence-links">
-              <a href="data/audio_ablation_summary.json">audio summary</a>
-              <a href="assets/charts/audio_ablation_delta.svg">delta chart</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/audio_ablation/AUDIO_ABLATION_SUMMARY.md">audio findings</a>
-              <a href="#raw-sample">raw browser</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Research directions and foundation pipelines</h3>
-            <p>The Ropedia directions are labeled as direct, proxy, or diagnostic coverage and connected to spatial intelligence, human-video world-model, and vision-language-action training paths.</p>
-            <div class="evidence-links">
-              <a href="data/research_directions.json">direction map</a>
-              <a href="data/research_direction_extensions.json">extension probes</a>
-              <a href="data/three_foundation_pipelines.json">pipeline data</a>
-              <a href="#directions">directions</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">current plan</span>
-            <h3>Foundation backbones are separated by role</h3>
-            <p>Qwen3-Omni is the trainable held-out LoRA track; Cosmos3 covers world-model diagnostics; OpenVLA/openpi/GR00T become policy candidates after robot-compatible action conversion; Xperience-native pretraining remains the later full-corpus goal.</p>
-            <div class="evidence-links">
-              <a href="data/foundation_model_plan.json">foundation model plan</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">plan doc</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified diagnostic</span>
-            <h3>Qwen3-Omni and Cosmos3 model evidence</h3>
-            <p>The selected 96/16/16 split has a verified Qwen3-Omni v6 package with 4,032 held-out predictions and 99.90% JSON validity. Cosmos3-Nano, Cosmos3-Super Reasoner, and Cosmos3-Super Forward-Dynamics LoRA remain separate public-safe diagnostic branches.</p>
-            <div class="evidence-links">
-              <a href="data/omni_model_comparison.json">result comparison</a>
-              <a href="data/omni_finetune_verified_result.json">pilot result</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/omni_finetune/verified_public">verified package</a>
-              <a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">current plan</span>
-            <h3>Selected-128 export and enhancement path</h3>
-            <p>The current selected-128 line has a source/feature index and can be pushed through dense/multiscale windows without changing the held-out episode split; the recommended scenario is `multiscale_20s10_40s20_80s40`.</p>
-            <div class="evidence-links">
-              <a href="data/xperience10m_128_episode_feature_index.json">source/feature index</a>
-              <a href="data/task_suite_enhancement_128.json">enhancement data</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/TASK_SUITE_ENHANCEMENT_128.md">enhancement report</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/task_suite_enhancement_128_v1_20260608/dense_window_scenarios.csv">dense scenarios</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Published mirrors and source anchors</h3>
-            <p>The website, GitHub repo, HF Space, artifact dataset, baseline model repo, consolidated weights/results repo, collection, official dataset, and HOMIE toolkit point to the same research package.</p>
-            <div class="evidence-links">
-              <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a>
-              <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">artifact dataset</a>
-              <a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite">collection</a>
-              <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official dataset</a>
-              <a href="https://github.com/Ropedia/HOMIE-toolkit">HOMIE toolkit</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Visual system and figure index</h3>
-            <p>The logo, raw-sample stream thumbnails, task-suite figure, unified radar, model-architecture figures, and LoRA training-flow figure are indexed and reused across published mirrors.</p>
-            <div class="evidence-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FIGURE_INDEX.md">figure guide</a>
-              <a href="assets/charts/unified_task_model_radar.svg">20-task radar</a>
-              <a href="assets/qwen3_omni_lora_pipeline.png">LoRA figure</a>
-              <a href="assets/brand/xperience10m-logo-social-card.png">logo card</a>
-            </div>
-          </article>
-          <article class="evidence-card">
-            <span class="status-pill">verified</span>
-            <h3>Governance and reproduction</h3>
-            <p>The project shares derived task artifacts, figures, reports, lightweight baselines, reproduction commands, validators, and audit records. Raw videos, raw annotations, RRD visualizations, gated data, and full Qwen weights stay outside the repo.</p>
-            <div class="evidence-links">
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">reproducibility</a>
-              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">latest rebuild</a>
-              <a href="data/publication_audit.json">publication audit</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section id="directions" data-project-tab="directions" role="tabpanel" aria-labelledby="tab-directions" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
           <h2>Four research directions over the same 20 tasks.</h2>
           <p>This is the 4-direction layer of the public structure. Each direction groups task evidence by research question; it does not create a separate task set. Each task is mapped as direct, proxy, or diagnostic evidence using the same minimal and Neural MLP baseline contracts.</p>
         </div>
+        <div class="task-axis-panel" aria-label="Relationship between tasks, research directions, training pipelines, and unified embodied model target">
+          <div class="task-axis-head">
+            <div>
+              <small>relationship map</small>
+              <strong>20 tasks / 4 directions / 3 pipelines / 1 unified model target.</strong>
+            </div>
+            <p>The structure is fixed: the 20 tasks are scored contracts, the four directions group what those scores study, the three pipelines define training recipes, and the unified embodied model is the long-term integration target.</p>
+          </div>
+          <div class="task-axis-summary" aria-label="Public structure key">
+            <article class="task-axis-summary-card">
+              <span class="task-axis-count">20</span>
+              <div>
+                <small>scored task layer</small>
+                <strong>One unified task suite.</strong>
+                <p>Every metric, radar axis, and method row uses these same 20 task contracts.</p>
+              </div>
+            </article>
+            <article class="task-axis-summary-card">
+              <span class="task-axis-count">4</span>
+              <div>
+                <small>4-direction layer</small>
+                <strong>Four research views over the same tasks.</strong>
+                <p>Human motion, 3D/4D reconstruction, egocentric interaction, and world modeling are groupings over the same tasks.</p>
+              </div>
+            </article>
+            <article class="task-axis-summary-card">
+              <span class="task-axis-count">3</span>
+              <div>
+                <small>3-pipeline layer</small>
+                <strong>Three ways to train larger models.</strong>
+                <p>Spatial intelligence, human-video world models, and vision-language-action models reuse the same files with different input-output recipes.</p>
+              </div>
+            </article>
+            <article class="task-axis-summary-card">
+              <span class="task-axis-count">1</span>
+              <div>
+                <small>unified target</small>
+                <strong>One embodied foundation model goal.</strong>
+                <p>The pipeline outputs converge toward perception, 3D memory, language, action, and planning in one model family.</p>
+              </div>
+            </article>
+          </div>
+          <div class="task-axis-reader-rule" aria-label="How to identify the public layers">
+            <article>
+              <span>score question</span>
+              <strong>If it has a metric, it belongs to the 20-task layer.</strong>
+              <p>Task cards, radars, and the 180-record table all use the same numbered task IDs.</p>
+            </article>
+            <article>
+              <span>research question</span>
+              <strong>If it explains what the evidence studies, it belongs to the 4-direction layer.</strong>
+              <p>Directions A-D group the same 20 tasks. They are not extra tasks or a second tier.</p>
+            </article>
+            <article>
+              <span>training question</span>
+              <strong>If it describes model inputs and targets, it belongs to the 3-pipeline layer.</strong>
+              <p>Spatial, world-model, and VLA pipelines are recipes for future scale-up and task-grounded model training.</p>
+            </article>
+            <article>
+              <span>synthesis question</span>
+              <strong>If it combines pipeline abilities, it belongs to the unified-model target.</strong>
+              <p>This is the expandable integration goal, not an extra scored task axis in the 180-result matrix.</p>
+            </article>
+          </div>
+          <figure class="task-axis-visual">
+            <img src="assets/charts/task_direction_pipeline_relationship.png?v=relationship-map-v4-unified" alt="Labeled Ropedia Xperience-10M Task Suite relationship map showing 20 task contracts flowing into four named research directions, three foundation-model training pipelines, and one unified embodied foundation model target, with each layer open to expand.">
+            <figcaption aria-label="Relationship map legend">
+              <span><strong>20 tasks</strong>Score axes used by every method row.</span>
+              <span><strong>4 directions</strong>Research questions for reading those scores.</span>
+              <span><strong>3 pipelines</strong>Training recipes for larger foundation models.</span>
+              <span><strong>1 unified model</strong>Future integration target, not a new score axis.</span>
+            </figcaption>
+          </figure>
+          <div class="task-axis-key" aria-label="Explicit relationship key for the map">
+            <article class="task-axis-key-card">
+              <span>20 task contracts</span>
+              <strong>Every score axis is one of these tasks.</strong>
+              <p>The generated image uses one node per task; this list gives the exact public task names.</p>
+              <ol class="task-axis-task-list">
+                <li><b>01</b>Action Recognition</li>
+                <li><b>02</b>Procedure Step Recognition</li>
+                <li><b>03</b>Action Boundary Detection</li>
+                <li><b>04</b>Next-Action Prediction</li>
+                <li><b>05</b>Hand Trajectory Forecasting</li>
+                <li><b>06</b>Contact State Prediction</li>
+                <li><b>07</b>Object Relevance Prediction</li>
+                <li><b>08</b>Language Grounding</li>
+                <li><b>09</b>Cross-Modal Retrieval</li>
+                <li><b>10</b>Cross-Modal Reconstruction</li>
+                <li><b>11</b>Temporal Order Verification</li>
+                <li><b>12</b>Multimodal Synchronization Detection</li>
+                <li><b>13</b>Long-Horizon Next-Action Forecasting</li>
+                <li><b>14</b>Long-Horizon Next-Subtask Forecasting</li>
+                <li><b>15</b>Interaction Text Prediction</li>
+                <li><b>16</b>Action-Object Relation Prediction</li>
+                <li><b>17</b>Future Object-Set Forecasting</li>
+                <li><b>18</b>IMU-to-Hand Pose Reconstruction</li>
+                <li><b>19</b>Camera-View Synchronization Retrieval</li>
+                <li><b>20</b>Time-to-Next-Transition Regression</li>
+              </ol>
+            </article>
+            <article class="task-axis-key-card">
+              <span>4 research directions</span>
+              <strong>The same tasks are grouped by research question.</strong>
+              <p>Tasks can support more than one direction. This layer answers what the scores study; it is not a separate benchmark or task tier.</p>
+              <ol class="task-axis-mini-list">
+                <li><b>A</b>Human Modeling &amp; Motion Understanding</li>
+                <li><b>B</b>3D/4D Reconstruction &amp; Neural Rendering</li>
+                <li><b>C</b>Egocentric Vision &amp; Interaction</li>
+                <li><b>D</b>Scene Reconstruction &amp; World Modeling</li>
+              </ol>
+            </article>
+            <article class="task-axis-key-card">
+              <span>3 foundation pipelines</span>
+              <strong>The training tracks reuse the task and modality contracts.</strong>
+              <p>These are scale-up recipes for model training. They answer how the same files can be turned into larger model inputs and targets.</p>
+              <ol class="task-axis-mini-list">
+                <li><b>1</b>Spatial intelligence models</li>
+                <li><b>2</b>Human-video world models</li>
+                <li><b>3</b>Vision-language-action models</li>
+              </ol>
+            </article>
+            <article class="task-axis-key-card">
+              <span>1 unified target</span>
+              <strong>The pipelines converge into one embodied model goal.</strong>
+              <p>This target integrates perception, 3D memory, language, action, and planning. It is a research direction for scale-up, not a tenth method or twenty-first task.</p>
+              <ol class="task-axis-mini-list">
+                <li><b>P</b>Perception and multimodal input</li>
+                <li><b>M</b>3D memory and scene state</li>
+                <li><b>L</b>Language-grounded reasoning</li>
+                <li><b>A</b>Action and planning</li>
+              </ol>
+            </article>
+          </div>
+          <div class="task-axis-grid">
+            <article class="task-axis-card">
+              <span>scored contracts</span>
+              <strong>20 tasks</strong>
+              <p>Action, subtask, object, language, motion, synchronization, retrieval, and forecasting targets evaluated by each public method row.</p>
+            </article>
+            <article class="task-axis-card">
+              <span>research grouping</span>
+              <strong>4 directions</strong>
+              <p>Human Modeling &amp; Motion Understanding; 3D/4D Reconstruction &amp; Neural Rendering; Egocentric Vision &amp; Interaction; Scene Reconstruction &amp; World Modeling.</p>
+            </article>
+            <article class="task-axis-card">
+              <span>training tracks</span>
+              <strong>3 foundation pipelines</strong>
+              <p>Spatial intelligence models; Human-video world models; Vision-language-action models.</p>
+            </article>
+            <article class="task-axis-card">
+              <span>synthesis target</span>
+              <strong>1 unified embodied model</strong>
+              <p>A long-term model target where perception, spatial memory, language, action, and planning are trained against the same evidence structure.</p>
+            </article>
+          </div>
+          <div class="task-axis-flow" aria-label="Tasks directions and pipelines reading formula">
+            <strong>20 tasks are the score axes.</strong>
+            <span>-></span>
+            <strong>4 directions organize what the scores study.</strong>
+            <span>-></span>
+            <strong>3 pipelines describe how to train larger models.</strong>
+            <span>-></span>
+            <strong>1 unified model is the integration target.</strong>
+          </div>
+        </div>
+
         <nav class="direction-jump-row" aria-label="Direction evidence quick links">
           <a href="#direction-coverage">Direction coverage</a>
           <a href="#direction-baselines">Baselines</a>
@@ -9174,6 +9065,116 @@
               <a href="data/task_suite_enhancement_128.json">Selected-128 enhancement mirror</a>
             </div>
           </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="evidence" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Current experiments and next milestones.</h2>
+          <p>The project shows the completed public-sample task suite and the first verified multi-episode Qwen3-Omni diagnostic pilot, then lays out the next quality-improvement and model-extension steps.</p>
+        </div>
+        <div class="evidence-grid">
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Sample windows and 20-task results</h3>
+            <p>5,821 frames become 1,161 synchronized 20-frame windows with an 8,546-dimensional representation, 20 task contracts, and the current 180-record public result matrix.</p>
+            <div class="evidence-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/summary_report.json">task results</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/episode_task_suite/feature_manifest.json">feature inputs</a>
+              <a href="data/task_method_20_result_matrix.json">result matrix</a>
+              <a href="#suite">20-task suite</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Audio and modality evidence</h3>
+            <p>Audio variants improve the primary metric on 6 walkthrough-backed task contracts, while the feature manifest and raw browser keep each modality source inspectable.</p>
+            <div class="evidence-links">
+              <a href="data/audio_ablation_summary.json">audio summary</a>
+              <a href="assets/charts/audio_ablation_delta.svg">delta chart</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/audio_ablation/AUDIO_ABLATION_SUMMARY.md">audio findings</a>
+              <a href="#raw-sample">raw browser</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Research directions and foundation pipelines</h3>
+            <p>The Ropedia directions are labeled as direct, proxy, or diagnostic coverage and connected to spatial intelligence, human-video world-model, and vision-language-action training paths.</p>
+            <div class="evidence-links">
+              <a href="data/research_directions.json">direction map</a>
+              <a href="data/research_direction_extensions.json">extension probes</a>
+              <a href="data/three_foundation_pipelines.json">pipeline data</a>
+              <a href="#directions">directions</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">current plan</span>
+            <h3>Foundation backbones are separated by role</h3>
+            <p>Qwen3-Omni is the trainable held-out LoRA track; Cosmos3 covers world-model diagnostics; OpenVLA/openpi/GR00T become policy candidates after robot-compatible action conversion; Xperience-native pretraining remains the later full-corpus goal.</p>
+            <div class="evidence-links">
+              <a href="data/foundation_model_plan.json">foundation model plan</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">plan doc</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified diagnostic</span>
+            <h3>Qwen3-Omni and Cosmos3 model evidence</h3>
+            <p>The selected 96/16/16 split has a verified Qwen3-Omni v6 package with 4,032 held-out predictions and 99.90% JSON validity. Cosmos3-Nano, Cosmos3-Super Reasoner, and Cosmos3-Super Forward-Dynamics LoRA remain separate public-safe diagnostic branches.</p>
+            <div class="evidence-links">
+              <a href="data/omni_model_comparison.json">result comparison</a>
+              <a href="data/omni_finetune_verified_result.json">pilot result</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/results/omni_finetune/verified_public">verified package</a>
+              <a href="https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep">LoRA adapter</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">current plan</span>
+            <h3>Selected-128 export and enhancement path</h3>
+            <p>The current selected-128 line has a source/feature index and can be pushed through dense/multiscale windows without changing the held-out episode split; the recommended scenario is `multiscale_20s10_40s20_80s40`.</p>
+            <div class="evidence-links">
+              <a href="data/xperience10m_128_episode_feature_index.json">source/feature index</a>
+              <a href="data/task_suite_enhancement_128.json">enhancement data</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/TASK_SUITE_ENHANCEMENT_128.md">enhancement report</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/task_suite_enhancement_128_v1_20260608/dense_window_scenarios.csv">dense scenarios</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Published mirrors and source anchors</h3>
+            <p>The website, GitHub repo, HF Space, artifact dataset, baseline model repo, consolidated weights/results repo, collection, official dataset, and HOMIE toolkit point to the same research package.</p>
+            <div class="evidence-links">
+              <a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a>
+              <a href="https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts">artifact dataset</a>
+              <a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite">collection</a>
+              <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">official dataset</a>
+              <a href="https://github.com/Ropedia/HOMIE-toolkit">HOMIE toolkit</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Visual system and figure index</h3>
+            <p>The logo, raw-sample stream thumbnails, task-suite figure, unified radar, model-architecture figures, and LoRA training-flow figure are indexed and reused across published mirrors.</p>
+            <div class="evidence-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FIGURE_INDEX.md">figure guide</a>
+              <a href="assets/charts/unified_task_model_radar.svg">20-task radar</a>
+              <a href="assets/qwen3_omni_lora_pipeline.png">LoRA figure</a>
+              <a href="assets/brand/xperience10m-logo-social-card.png">logo card</a>
+            </div>
+          </article>
+          <article class="evidence-card">
+            <span class="status-pill">verified</span>
+            <h3>Governance and reproduction</h3>
+            <p>The project shares derived task artifacts, figures, reports, lightweight baselines, reproduction commands, validators, and audit records. Raw videos, raw annotations, RRD visualizations, gated data, and full Qwen weights stay outside the repo.</p>
+            <div class="evidence-links">
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/DATA_NOTICE.md">data notice</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/REPRODUCIBILITY.md">reproducibility</a>
+              <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/notes/reproducibility_audit.md">latest rebuild</a>
+              <a href="data/publication_audit.json">publication audit</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -10051,11 +10052,11 @@ python scripts/validate_publication_package.py</code></pre>
       { id: "models", label: "Minimal Baselines" },
       { id: "neural", label: "Neural Heads" },
       { id: "diagnostics", label: "Diagnostic Charts" },
-      { id: "evidence", label: "Research Progress" },
       { id: "directions", label: "Four Directions" },
       { id: "extensions", label: "Unified Task Evidence" },
       { id: "development-directions", label: "Foundation Pipelines" },
       { id: "roadmap", label: "Roadmap" },
+      { id: "evidence", label: "Research Progress" },
       { id: "reading-path", label: "Project Path" },
       { id: "glossary", label: "Glossary" },
       { id: "artifacts", label: "Research Artifacts" },
@@ -10085,7 +10086,7 @@ python scripts/validate_publication_package.py</code></pre>
       diagnostics: "Integrated subsection for charts and error-analysis evidence inside Results.",
       glossary: "Best for terms that can be confused across data, tasks, models, metrics, and public mirrors.",
       artifacts: "Best for finding files, mirrors, weights, scripts, and checks.",
-      evidence: "Best after the result table: current experiment status, model evidence, and milestones.",
+      evidence: "Best after the roadmap: current experiment status, model evidence, mirrors, and milestones.",
       "omni-scale-up": "Best for Qwen3-Omni and Cosmos3 status.",
       run: "Best for reproduction commands."
     };
