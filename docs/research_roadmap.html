@@ -582,6 +582,40 @@
       border-radius: var(--radius);
       background: var(--card);
     }
+    .static-summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0 22px;
+    }
+    .static-card {
+      border: 1px solid var(--soft-line);
+      border-radius: var(--radius);
+      background: rgba(5, 10, 6, 0.74);
+      padding: 16px;
+    }
+    .static-card small {
+      display: block;
+      color: var(--green);
+      font-family: var(--font-btn);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .static-card strong {
+      display: block;
+      margin-top: 7px;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.2;
+    }
+    .static-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
     @media (max-width: 1180px) {
       .hero-grid,
       .section-head,
@@ -601,6 +635,7 @@
       .metric-grid { grid-template-columns: 1fr; }
       .route-step { grid-template-columns: 38px 1fr; }
       .route-step em { grid-column: 2; }
+      .static-summary { grid-template-columns: 1fr; }
       .section-head { gap: 18px; }
     }
   </style>
@@ -690,6 +725,14 @@
           <a href="#source-mirrors">Source mirrors</a>
         </div>
 
+        <div class="static-summary" aria-label="Roadmap quick read">
+          <article class="static-card"><small>Read first</small><strong>Stage status before task detail.</strong><p>Start with shipped, active, planned, and future stages so implementation status stays separate from ambition.</p></article>
+          <article class="static-card"><small>Then compare</small><strong>Four tracks reuse the same 20 tasks.</strong><p>Human motion, 3D/4D reconstruction, egocentric interaction, and world modeling are research views over the shared task suite.</p></article>
+          <article class="static-card"><small>Finally open mirrors</small><strong>Source data remains attached below.</strong><p>JSON mirrors and GitHub notes are kept after the reader flow for validation, reproduction, and citation checks.</p></article>
+        </div>
+        <noscript>
+          <div class="loading">JavaScript is disabled, so the generated task cards are not expanded here. The quick-read summary, navigation links, and structured roadmap mirrors below remain available.</div>
+        </noscript>
         <div id="loading" class="loading">Loading roadmap artifacts...</div>
 
         <div class="roadmap-detail-flow" id="app" hidden>

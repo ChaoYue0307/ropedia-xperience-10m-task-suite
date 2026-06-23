@@ -6768,12 +6768,12 @@
         </div>
         <div class="nav-external-actions" aria-label="External project links">
           <a class="nav-action nav-action-hf" data-mark="HF" href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite" aria-label="Open Hugging Face Space">
-            <span class="nav-action-text-full">HF</span>
+            <span class="nav-action-text-full">HF Space</span>
             <span class="nav-action-text-short">HF</span>
           </a>
           <a class="nav-action nav-action-repo" data-mark="GH" href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite" aria-label="Open GitHub repository">
-            <span class="nav-action-text-full">Repo</span>
-            <span class="nav-action-text-short">Repo</span>
+            <span class="nav-action-text-full">GitHub Repo</span>
+            <span class="nav-action-text-short">GitHub</span>
           </a>
         </div>
       </div>
@@ -6787,17 +6787,13 @@
         <div class="eyebrow">two evidence lines / 180 scored records</div>
         <h1>Ropedia Xperience-10M Task Suite.</h1>
         <p class="hero-copy">
-          The public suite has two evidence lines. Line 1 uses one public sample
-          episode to make the 20-task lab inspectable and reproducible. Line 2
-          uses 128 selected episodes to compare aligned baselines, Qwen3-Omni
-          v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. The public matrix is complete at 180/180 scored
-          method-task records, with six compact-proxy cells explicitly marked.
+          Ropedia turns Xperience-10M egocentric episodes into 20 reproducible embodied-AI tasks. The public site has one inspectable raw sample line and one selected-128 comparison line for baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. The 180-record matrix keeps direct scores separate from six compact-proxy scores, which are public-safe compact-feature estimates rather than direct raw-target reads.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#reader-map">Start guided path</a>
-          <a class="button" href="#takeaways">See current results</a>
+          <a class="button primary" href="#overview">Start: scope and route</a>
+          <a class="button" href="#takeaways">Cite current results</a>
           <a class="button" href="#suite">Inspect 20 tasks</a>
-          <a class="button" href="single_episode_explorer.html">Open explorer</a>
+          <a class="button" href="single_episode_explorer.html">Explore one episode</a>
         </div>
         <div class="suite-lines" aria-label="Two evidence lines">
           <article class="suite-line-card">
@@ -6821,7 +6817,7 @@
             <p>Seven methods share the selected-episode surface and the same 20 task axes.</p>
             <div class="line-readout">
               <div><span>best use</span><p>Compare same-split baselines, Qwen3-Omni v6, and Cosmos3 rows.</p></div>
-              <div><span>read separately from</span><p>Direct raw-target metrics for the 6 proxy-marked cells.</p></div>
+              <div><span>read separately from</span><p>The 6 compact-proxy cells, which use public-safe compact features instead of direct raw-target reads.</p></div>
             </div>
             <div class="suite-line-facts">
               <span><strong>128</strong>selected episodes</span>
@@ -6867,8 +6863,8 @@
         </div>
         <div class="hero-radar-layout">
           <div class="hero-radar-copy">
-            <h2>Start with the public task suite, then open the evidence.</h2>
-            <p>This page is a guided entry point for one inspectable Xperience-10M sample line and one selected-128 comparison line. Use the detailed tables after you know which evidence line and task layer you are reading.</p>
+            <h2>First understand the scope, then open the evidence.</h2>
+            <p>Read the site in this order: scope, tasks, results, then source files. The detailed tables stay available after the reader knows which evidence line and task layer they are reading.</p>
             <div class="hero-radar-stats" aria-label="Radar coverage summary">
               <div class="hero-radar-stat"><strong>180</strong><span>method-task records</span></div>
               <div class="hero-radar-stat"><strong>174</strong><span>direct scores</span></div>
@@ -6877,12 +6873,12 @@
             </div>
           </div>
           <div class="hero-radar-copy">
-            <h2>Three first clicks.</h2>
-            <p>Each click answers one reader question before the archive-level evidence begins.</p>
-            <div class="hero-method-list" aria-label="Reader mode first clicks">
-              <a class="hero-method" style="--method-color:#67e8d1" href="#suite"><strong>What are the 20 tasks?</strong><span>Open the compact task index first; the large map and radars are secondary visual analysis.</span></a>
-              <a class="hero-method" style="--method-color:#ffd166" href="#raw-sample"><strong>What data is public?</strong><span>Inspect playable sample files, HDF5 organization, and what each file contributes to training.</span></a>
-              <a class="hero-method" style="--method-color:#9bb8ff" href="#takeaways"><strong>Which numbers can I cite?</strong><span>Cite raw metric values from the matrix; radar values are visualization only.</span></a>
+            <h2>Three data scopes.</h2>
+            <p>The project is easiest to read when these scopes stay separate.</p>
+            <div class="hero-method-list" aria-label="Data scopes">
+              <a class="hero-method" style="--method-color:#67e8d1" href="#raw-sample"><strong>1 public sample</strong><span>Inspectable raw browser, HDF5/RRD roles, 1,161 windows, and 40 direct task scores.</span></a>
+              <a class="hero-method" style="--method-color:#ffd166" href="#suite"><strong>128 selected episodes</strong><span>Public-safe derived comparison surface with 34,269 windows and 140 selected-128 scores.</span></a>
+              <a class="hero-method" style="--method-color:#9bb8ff" href="#dataset-card"><strong>Full Xperience-10M</strong><span>Gated upstream dataset context only; raw full-corpus data is not redistributed here.</span></a>
             </div>
           </div>
         </div>
@@ -6895,7 +6891,12 @@
             <img src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v8-readable" alt="Unified 20-task grouped radar board with method-family panels, task key, score counts, and raw128 proxy notes">
           </a>
         </details>
-        <div class="hero-task-strip" aria-label="All 20 radar task axes">
+        <details class="split-radar-details hero-task-details">
+          <summary>
+            <span>show task names and source links</span>
+            <strong>All 20 task axes, radar images, result matrix, and proxy audit remain available here after the first-pass reader path.</strong>
+          </summary>
+          <div class="hero-task-strip" aria-label="All 20 radar task axes">
           <strong class="hero-task-strip-head">All 20 radar task axes</strong>
           <span><img class="task-axis-icon" src="assets/task-icons/01_timeline_action.svg" alt="" loading="lazy"><span class="task-axis-label">01 Action Recognition</span></span>
           <span><img class="task-axis-icon" src="assets/task-icons/02_timeline_subtask.svg" alt="" loading="lazy"><span class="task-axis-label">02 Procedure Step Recognition</span></span>
@@ -6918,16 +6919,17 @@
           <span><img class="task-axis-icon" src="assets/task-icons/19_camera_view_sync_retrieval.svg" alt="" loading="lazy"><span class="task-axis-label">19 Camera-View Synchronization Retrieval</span></span>
           <span><img class="task-axis-icon" src="assets/task-icons/20_time_to_transition.svg" alt="" loading="lazy"><span class="task-axis-label">20 Time-to-Next-Transition Regression</span></span>
         </div>
-        <div class="hero-radar-links">
-          <a href="#suite">Open full radar</a>
-          <a href="assets/charts/unified_task_model_radar.svg">View radar source</a>
-          <a href="assets/charts/single_episode_task_model_radar.svg">1-episode radar</a>
-          <a href="assets/charts/episode128_task_model_radar.svg">128ep radar</a>
-          <a href="data/unified_task_model_radar.json">Inspect radar source</a>
-          <a href="#result-matrix-table">Open 180-result table</a>
-          <a href="data/task_method_20_result_matrix.json">Inspect 20-task matrix</a>
-          <a href="data/task_method_20_gap_audit.json">Review score/proxy audit</a>
-        </div>
+          <div class="hero-radar-links">
+            <a href="#suite">Open full radar</a>
+            <a href="assets/charts/unified_task_model_radar.svg">View radar source</a>
+            <a href="assets/charts/single_episode_task_model_radar.svg">1-episode radar</a>
+            <a href="assets/charts/episode128_task_model_radar.svg">128ep radar</a>
+            <a href="data/unified_task_model_radar.json">Inspect radar source</a>
+            <a href="#result-matrix-table">Open 180-result table</a>
+            <a href="data/task_method_20_result_matrix.json">Inspect 20-task matrix</a>
+            <a href="data/task_method_20_gap_audit.json">Review score/proxy audit</a>
+          </div>
+        </details>
       </div>
     </div>
   </header>

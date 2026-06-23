@@ -307,6 +307,12 @@ HTML_TEMPLATE = """<!doctype html>
     .stat { border:1px solid rgba(204,255,160,.18); border-radius:8px; background:var(--card); padding:13px 14px; }
     .stat strong { display:block; font-family:var(--font-ui); font-size:24px; line-height:1; }
     .stat span { display:block; margin-top:6px; color:var(--muted); font-size:12px; }
+    .guide-strip { max-width:980px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:18px; }
+    .guide-card { border:1px solid rgba(204,255,160,.18); border-radius:8px; background:rgba(5,10,6,.74); padding:13px 14px; }
+    .guide-card strong { display:block; color:var(--ink); font-size:15px; line-height:1.2; }
+    .guide-card span { display:block; margin-top:6px; color:var(--muted); font-size:12px; line-height:1.45; }
+    .legend { display:grid; gap:7px; margin-top:14px; padding-top:12px; border-top:1px solid var(--soft); }
+    .legend span { color:#d8e4d3; font-size:12px; line-height:1.35; }
     main { padding:26px 0 70px; }
     .shell { display:grid; grid-template-columns:330px minmax(0,1fr); gap:18px; align-items:start; }
     .panel { border:1px solid rgba(204,255,160,.18); border-radius:8px; background:var(--card); box-shadow:0 18px 48px rgba(0,0,0,.32); }
@@ -315,6 +321,7 @@ HTML_TEMPLATE = """<!doctype html>
     input[type=range] { width:100%; accent-color:var(--green); }
     select, input[type=search] { width:100%; min-height:40px; border:1px solid var(--soft); border-radius:999px; background:#020802; color:var(--ink); padding:9px 12px; font:inherit; }
     .button-row { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+    .button-row.three { grid-template-columns:repeat(3,minmax(0,1fr)); }
     button { border:1px solid rgba(255,255,255,.12); border-radius:999px; background:var(--pill); color:var(--ink); min-height:38px; font:700 13px var(--font-btn); cursor:pointer; }
     button:hover { border-color:var(--green); color:var(--green); background:rgba(255,255,255,.08); }
     .timeline { padding:18px; margin-bottom:18px; }
@@ -351,7 +358,7 @@ HTML_TEMPLATE = """<!doctype html>
     .row { display:grid; grid-template-columns:1fr auto; gap:12px; border-bottom:1px solid var(--soft); padding:8px 0; color:#d8e4d3; font-size:13px; }
     .row strong { color:var(--green); font-variant-numeric:tabular-nums; }
     .note { margin-top:12px; color:var(--muted); font-size:12px; line-height:1.55; }
-    @media (max-width: 980px) { .shell,.analysis-grid { grid-template-columns:1fr; } .side { position:static; } .pred-grid,.feature-grid,.stats { grid-template-columns:1fr; } .window-head { grid-template-columns:1fr; } .nav-links { display:none; } }
+    @media (max-width: 980px) { .shell,.analysis-grid { grid-template-columns:1fr; } .side { position:static; } .pred-grid,.feature-grid,.stats,.guide-strip { grid-template-columns:1fr; } .button-row.three { grid-template-columns:1fr; } .window-head { grid-template-columns:1fr; } .nav-links { display:none; } }
   </style>
 </head>
 <body>
@@ -364,7 +371,7 @@ HTML_TEMPLATE = """<!doctype html>
   <section class="hero">
     <div class="wrap">
       <h1>Single-Episode Research Explorer</h1>
-      <p>Inspect the exported Xperience-10M sample windows, real object labels, model predictions, feature-block statistics, and diagnostic scores from one aligned episode.</p>
+      <p>Inspect one aligned public sample episode at window level: action labels, object labels, model predictions, feature-block magnitudes, and diagnostics are shown together so readers can see both successes and errors.</p>
       <div class="language-strip" aria-label="README language versions">
         <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.md">English</a>
         <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/README.zh.md">中文</a>
@@ -382,6 +389,11 @@ HTML_TEMPLATE = """<!doctype html>
         <div class="stat"><strong id="statObjects">-</strong><span>object labels</span></div>
         <div class="stat"><strong id="statPreds">-</strong><span>prediction rows</span></div>
       </div>
+      <div class="guide-strip" aria-label="Explorer quick guide">
+        <article class="guide-card"><strong>1. Pick a window</strong><span>Use the timeline, slider, Previous/Next, or search to jump to an action/object.</span></article>
+        <article class="guide-card"><strong>2. Read prediction cards</strong><span>Each card shows true label, predicted label, correctness, and confidence when available.</span></article>
+        <article class="guide-card"><strong>3. Treat errors as signal</strong><span>Use mismatches to inspect where feature blocks, object labels, or task definitions may need work.</span></article>
+      </div>
     </div>
   </section>
   <main>
@@ -394,7 +406,12 @@ HTML_TEMPLATE = """<!doctype html>
         <select id="taskSelect"></select>
         <label for="searchBox">Search Action or Object</label>
         <input id="searchBox" type="search" placeholder="e.g. Pour coffee, kettle">
-        <div class="button-row"><button id="firstMatch" type="button">First Match</button><button id="firstPred" type="button">First Predicted</button></div>
+        <div class="button-row three"><button id="firstMatch" type="button">First Match</button><button id="firstPred" type="button">First Predicted</button><button id="firstMismatch" type="button">First Mismatch</button></div>
+        <div class="legend" aria-label="Prediction legend">
+          <span><span class="ok">correct</span> means the prediction matches the exported target for the selected task.</span>
+          <span><span class="bad">mismatch</span> is useful for error analysis; it is not hidden as a failure of the page.</span>
+          <span>Object chips are the window-level labels used for inspection, not a redistributed raw annotation file.</span>
+        </div>
         <p class="note">This explorer embeds window-level exported artifacts. Open the Raw Sample page to play browser-preview clips, access the full raw MP4/HDF5/RRD source files, and inspect the HDF5/RRD file organization.</p>
       </aside>
       <section class="content">
@@ -559,6 +576,13 @@ HTML_TEMPLATE = """<!doctype html>
     document.getElementById("nextWindow").addEventListener("click", () => { state.index = Math.min(DATA.windows.length - 1, state.index + 1); render(); });
     document.getElementById("firstPred").addEventListener("click", () => {
       const found = DATA.windows.find((w) => hasPrediction(w, state.task));
+      if (found) { state.index = found.window_index; render(); }
+    });
+    document.getElementById("firstMismatch").addEventListener("click", () => {
+      const found = DATA.windows.find((w) => {
+        const entries = state.task === "all" ? Object.values(w.predictions) : [w.predictions[state.task]];
+        return entries.some((pred) => pred && !pred.correct);
+      });
       if (found) { state.index = found.window_index; render(); }
     });
     document.getElementById("firstMatch").addEventListener("click", () => {
