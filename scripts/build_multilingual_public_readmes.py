@@ -67,7 +67,7 @@ ENGLISH_TOP = f"""{hero(
     "en",
 )}
 
-**Ropedia Xperience-10M Task Suite** builds on the Xperience-10M dataset released by Ropedia to provide public, reproducible embodied-AI evaluation materials. The project is organized into two evidence lines. **Line 1** turns one public sample episode into inspectable tasks, targets, and baseline runs. **Line 2** uses selected 128-episode public-safe artifacts for aligned metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Every score links back to its source artifact, and direct scores remain clearly separated from compact-proxy estimates.
+This project builds on the Xperience-10M dataset released by Ropedia to provide public, reproducible embodied-AI evaluation materials. It is organized into two evidence lines. **Line 1** turns one public sample episode into inspectable tasks, targets, and baseline runs. **Line 2** uses selected 128-episode public-safe artifacts for aligned metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Every score links back to its source artifact, and direct scores remain clearly separated from compact-proxy estimates.
 
 **Updated:** {UPDATED}.
 
