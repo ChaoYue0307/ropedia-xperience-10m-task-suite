@@ -543,7 +543,6 @@
         rgba(2, 5, 2, 0.56);
     }
     .hero-path small,
-    .reader-step small,
     .resource-mode small {
       color: var(--green);
       font-family: var(--font-mono);
@@ -1608,55 +1607,6 @@
       color: var(--green);
       border-color: rgba(204, 255, 160, 0.44);
       background: rgba(204, 255, 160, 0.12);
-    }
-    .reader-priority-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin: 26px 0 30px;
-    }
-    .reader-priority-grid article {
-      min-width: 0;
-      border: 1px solid rgba(204, 255, 160, 0.20);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(180deg, rgba(204, 255, 160, 0.075), rgba(2, 5, 2, 0.58)),
-        rgba(7, 18, 7, 0.72);
-      padding: 18px;
-    }
-    .reader-priority-grid small {
-      color: var(--green);
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 820;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .reader-priority-grid strong {
-      display: block;
-      margin-top: 8px;
-      color: var(--ink);
-      font-family: var(--font-ui);
-      font-size: 20px;
-      line-height: 1.12;
-    }
-    .reader-priority-grid p {
-      margin: 9px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.52;
-    }
-    .reader-priority-grid a {
-      display: inline-flex;
-      margin-top: 13px;
-      color: var(--cyan);
-      font-family: var(--font-btn);
-      font-size: 12px;
-      font-weight: 780;
-      text-decoration: none;
-    }
-    .reader-priority-grid a:hover {
-      color: var(--green);
     }
     .reader-route-panel,
     .task-axis-panel,
@@ -3375,39 +3325,18 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
-    .reader-journey {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-bottom: 22px;
-    }
-    .reader-step {
-      display: grid;
-      gap: 11px;
-      align-content: start;
-      min-height: 184px;
-      border: 1px solid var(--soft-line);
-      border-radius: var(--radius);
-      padding: 18px;
-      background:
-        linear-gradient(180deg, rgba(204, 255, 160, 0.08), rgba(2, 5, 2, 0.42)),
-        rgba(7, 18, 7, 0.58);
-    }
-    .reader-step strong,
     .resource-mode strong {
       color: var(--ink);
       font-family: var(--font-ui);
       font-size: 19px;
       line-height: 1.1;
     }
-    .reader-step p,
     .resource-mode p {
       margin: 0;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.52;
     }
-    .reader-step a,
     .resource-mode a {
       justify-self: start;
       margin-top: auto;
@@ -3415,7 +3344,6 @@
       font-weight: 760;
       text-decoration: none;
     }
-    .reader-step a:hover,
     .resource-mode a:hover {
       color: var(--green);
     }
@@ -5214,7 +5142,6 @@
     .figure-brief-card h3,
     .suite-line-card h3,
     .raw-detail-card h3,
-    .reader-step strong,
     .resource-mode strong,
     .surface-map a strong {
       color: var(--ink);
@@ -5236,7 +5163,6 @@
     .figure-brief-card p,
     .suite-line-card p,
     .raw-detail-card p,
-    .reader-step p,
     .resource-mode p,
     .surface-map a span {
       color: var(--muted);
@@ -6059,7 +5985,7 @@
         border-right: 0;
         border-bottom: 1px solid var(--line);
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .reader-journey, .resource-mode-grid, .suite-lines, .result-reading-order, .reader-priority-grid, .result-rules-panel, .data-analysis-grid, .data-analysis-chart-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .resource-mode-grid, .suite-lines, .result-reading-order, .result-rules-panel, .data-analysis-grid, .data-analysis-chart-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .reader-route-panel,
       .task-axis-head,
       .method-flow-head {
@@ -6390,7 +6316,7 @@
         width: 100%;
         justify-content: center;
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .reader-journey, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .reader-priority-grid, .result-rules-panel, .reader-route-list, .task-axis-grid, .task-axis-summary, .task-axis-reader-rule, .task-axis-key, .task-axis-task-list, .task-axis-visual figcaption, .method-flow-steps, .suite-task-index-head, .data-analysis-grid, .data-analysis-chart-grid, .data-analysis-table-header { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .result-rules-panel, .reader-route-list, .task-axis-grid, .task-axis-summary, .task-axis-reader-rule, .task-axis-key, .task-axis-task-list, .task-axis-visual figcaption, .method-flow-steps, .suite-task-index-head, .data-analysis-grid, .data-analysis-chart-grid, .data-analysis-table-header { grid-template-columns: 1fr; }
       .roadmap-entry-steps,
       .roadmap-resource-grid {
         grid-template-columns: 1fr;
@@ -6540,7 +6466,6 @@
       .hero-path {
         min-height: 0;
       }
-      .reader-step,
       .resource-mode {
         min-height: 0;
       }
@@ -6831,13 +6756,13 @@
         </div>
         <div class="hero-radar-links">
           <a href="#suite">Open full radar</a>
-          <a href="assets/charts/unified_task_model_radar.svg">Open SVG</a>
+          <a href="assets/charts/unified_task_model_radar.svg">View radar source</a>
           <a href="assets/charts/single_episode_task_model_radar.svg">1-episode radar</a>
           <a href="assets/charts/episode128_task_model_radar.svg">128ep radar</a>
-          <a href="data/unified_task_model_radar.json">Open radar data</a>
+          <a href="data/unified_task_model_radar.json">Inspect radar source</a>
           <a href="#result-matrix-table">Open 180-result table</a>
-          <a href="data/task_method_20_result_matrix.json">Open 20-result matrix</a>
-          <a href="data/task_method_20_gap_audit.json">Open score/proxy audit</a>
+          <a href="data/task_method_20_result_matrix.json">Inspect 20-task matrix</a>
+          <a href="data/task_method_20_gap_audit.json">Review score/proxy audit</a>
         </div>
       </div>
     </div>
@@ -6899,37 +6824,17 @@
             </div>
           </div>
         </div>
-        <div class="reader-priority-grid" aria-label="Fast reader orientation">
-          <article>
-            <small>first question</small>
-            <strong>What is this?</strong>
-            <p>A public Xperience-10M task-suite package: one inspectable sample line plus a selected-128 comparison line, both organized around the same 20 task contracts.</p>
-            <a href="#suite">Open the 20 tasks</a>
-          </article>
-          <article>
-            <small>second question</small>
-            <strong>What should I compare?</strong>
-            <p>Use the 1-episode line for reproducible task-head baselines. Use the 128-episode line for metadata/raw baselines, Qwen3-Omni v6, and Cosmos3 diagnostics.</p>
-            <a href="#takeaways">Open the result table</a>
-          </article>
-          <article>
-            <small>third question</small>
-            <strong>What is not overclaimed?</strong>
-            <p>Direct scores, compact-proxy scores, normalized radar values, adapters, and public mirrors stay labeled separately so the evidence type is visible before interpretation.</p>
-            <a href="#glossary">Check the glossary</a>
-          </article>
-        </div>
         <div class="reader-route-panel" aria-label="Reader-first route through the project">
           <div class="reader-route-copy">
             <small>reader-first route</small>
             <strong>Read the project in four passes, then use the detailed tables as evidence.</strong>
-            <p>The page keeps every public artifact, but the fastest path is: understand the 20 tasks, inspect the sample files, compare the two result lines, then open the exact reproducibility surface you need.</p>
+            <p>The fastest path is: understand the shared 20-task vocabulary, inspect the source files, compare the 1-episode and selected-128 evidence lines with direct/proxy status visible, then open the exact reproduction or extension surface you need.</p>
           </div>
           <div class="reader-route-list">
             <a href="#suite"><span>01 tasks</span><strong>20-task suite</strong><em>One task vocabulary for all methods and both evidence lines.</em></a>
             <a href="#raw-sample"><span>02 data</span><strong>Raw sample browser</strong><em>Playable files, HDF5/RRD roles, and what each file contributes to training.</em></a>
             <a href="#takeaways"><span>03 results</span><strong>Result ledger</strong><em>Raw citeable scores first; radar values remain visual summaries.</em></a>
-            <a href="#artifacts"><span>04 reuse</span><strong>Artifacts and mirrors</strong><em>GitHub, GitHub Pages, HF Space, datasets, weights, and validation outputs.</em></a>
+            <a href="#artifacts"><span>04 reuse</span><strong>Artifacts and mirrors</strong><em>Reproduction commands, extension paths, GitHub/HF mirrors, weights, and validation outputs.</em></a>
           </div>
         </div>
         <div class="task-axis-panel" aria-label="Relationship between tasks, research directions, training pipelines, and unified embodied model target">
@@ -7229,32 +7134,6 @@
           </tbody>
         </table>
         <p class="table-note">Qwen v1-v6 are run-lineage labels inside the selected-128 evidence line, not project evidence lines. Use v6 for the public 20-task Qwen3-Omni row; keep v5 as the pinned prior multiscale comparator; read v1-v4 as pipeline-hardening and ablation evidence. Full details are available in the <a href="data/qwen3_omni_run_lineage.json">Qwen lineage data</a> and <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/QWEN3_OMNI_RUN_LINEAGE.md">Qwen lineage note</a>.</p>
-        <div class="reader-journey" aria-label="Recommended reader journeys">
-          <article class="reader-step">
-            <small>01 understand</small>
-            <strong>Start with scope and status</strong>
-            <p>Use this route if you need the project story, what is public, and how to read each result family.</p>
-            <a href="#overview">Read overview</a>
-          </article>
-          <article class="reader-step">
-            <small>02 inspect</small>
-            <strong>Follow the task evidence</strong>
-            <p>Use the 20-task suite, radar, matrix, and source audit to compare methods without losing metric provenance.</p>
-            <a href="#suite">Open task suite</a>
-          </article>
-          <article class="reader-step">
-            <small>03 reproduce</small>
-            <strong>Run or verify the release</strong>
-            <p>Use scripts, validators, mirrors, and checks when you want to rerun or trust the public package.</p>
-            <a href="#run">Open reproduce path</a>
-          </article>
-          <article class="reader-step">
-            <small>04 extend</small>
-            <strong>Choose the next model track</strong>
-            <p>Use directions and scale-up resources for spatial, world-model, VLA, Qwen3-Omni, and Cosmos3 follow-up work.</p>
-            <a href="#directions">Open directions</a>
-          </article>
-        </div>
         <div class="brief-panel reader-map-panel" id="reader-map">
           <div class="brief-panel-head">
             <div>
@@ -7274,8 +7153,8 @@
             <a href="https://huggingface.co/collections/cy0307/ropedia-xperience-10m-task-suite"><strong>HF collection</strong><span>Grouped project surfaces, baseline repos, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano repos.</span></a>
           </div>
           <div class="brief-actions">
-            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PUBLIC_READER_MAP.md">Open full reader map</a>
-            <a href="data/public_reader_map.json">Open reader-map data</a>
+            <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PUBLIC_READER_MAP.md">Read full surface guide</a>
+            <a href="data/public_reader_map.json">Inspect surface-map source</a>
             <a href="#artifacts">Open artifact index</a>
           </div>
         </div>
@@ -7357,8 +7236,8 @@
           </div>
           <div class="brief-actions">
             <a href="#suite">Open detailed radars</a>
-            <a href="data/task_method_20_result_matrix.json">Open 180-result matrix</a>
-            <a href="data/unified_task_model_radar.json">Open radar data</a>
+            <a href="data/task_method_20_result_matrix.json">Inspect 180-result table</a>
+            <a href="data/unified_task_model_radar.json">Inspect radar source</a>
           </div>
         </div>
         <div class="snapshot-grid">
@@ -8263,8 +8142,8 @@
               <p>Minimal and Neural MLP are both scored on all 20 public-sample task contracts in one enlarged panel without 128-episode methods competing for attention.</p>
               <img src="assets/charts/single_episode_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="Single-episode 20-task radar comparing Minimal and Neural MLP across all 20 scored task axes">
               <div class="split-radar-links">
-                <a href="assets/charts/single_episode_task_model_radar.svg">Open SVG</a>
-                <a href="data/single_episode_task_model_radar.json">Open chart data</a>
+                <a href="assets/charts/single_episode_task_model_radar.svg">View chart source</a>
+                <a href="data/single_episode_task_model_radar.json">Inspect chart source</a>
               </div>
             </article>
             <article class="split-radar-card">
@@ -8272,9 +8151,9 @@
               <p>Seven aligned 128-episode methods cover all 20 axes across metadata/text, raw-feature, and foundation-model panels. Proxy axes stay labeled in the chart and source data.</p>
               <img src="assets/charts/episode128_task_model_radar.svg?v=xperience10m-split-radar-v3-readable" alt="128-episode grouped 20-task radar comparing raw-feature baselines, metadata baselines, Qwen3-Omni, and Cosmos3 series with explicit score counts">
               <div class="split-radar-links">
-                <a href="assets/charts/episode128_task_model_radar.svg">Open SVG</a>
-                <a href="data/episode128_task_model_radar.json">Open chart data</a>
-                <a href="data/task_method_20_gap_audit.json">Gap audit</a>
+                <a href="assets/charts/episode128_task_model_radar.svg">View chart source</a>
+                <a href="data/episode128_task_model_radar.json">Inspect chart source</a>
+                <a href="data/task_method_20_gap_audit.json">Review score/proxy audit</a>
               </div>
             </article>
           </div>
@@ -8286,9 +8165,9 @@
             <div class="full-radar-frame">
               <img class="chart radar-chart unified-radar-chart" src="assets/charts/unified_task_model_radar.svg?v=xperience10m-20task-radar-v8-readable" alt="Unified grouped 20-task radar comparing Minimal, Neural MLP, 128-episode metadata/raw baselines, Qwen3-Omni, and Cosmos3 with task names, method details, 20-record counts, score counts, and proxy notes">
               <div class="split-radar-links">
-                <a href="assets/charts/unified_task_model_radar.svg">Open SVG</a>
-                <a href="data/unified_task_model_radar.json">Open chart data</a>
-                <a href="#result-matrix-table">Open raw-score table</a>
+                <a href="assets/charts/unified_task_model_radar.svg">View chart source</a>
+                <a href="data/unified_task_model_radar.json">Inspect chart source</a>
+                <a href="#result-matrix-table">Read raw-score table</a>
               </div>
             </div>
           </details>
@@ -8769,7 +8648,7 @@
           <div class="callout">
             <h3>Unified task artifact package</h3>
             <p>The public task package has one structured 20-task contract, per-task metrics, prediction/rank files, reader summaries, radar charts, and the 180-record method-task matrix.</p>
-            <p><a href="data/task_suite_20.json">Open task contract data</a> · <a href="data/task_method_20_result_matrix.json">Open 180-record matrix</a> · <a href="assets/charts/unified_task_model_radar.svg">Open unified radar</a></p>
+            <p><a href="data/task_suite_20.json">Inspect task-contract source</a> · <a href="data/task_method_20_result_matrix.json">Read 180-result table</a> · <a href="assets/charts/unified_task_model_radar.svg">View unified radar</a></p>
           </div>
           <div class="callout">
             <h3>One setup, one task surface</h3>
@@ -9008,9 +8887,9 @@
             </div>
             <div class="glossary-links">
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/GLOSSARY.md">Open complete glossary note</a>
-              <a href="data/glossary.json">Open structured glossary data</a>
+              <a href="data/glossary.json">Inspect glossary source</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PUBLIC_READER_MAP.md">Reader map</a>
-              <a href="data/task_method_20_gap_audit.json">Score/proxy audit</a>
+              <a href="data/task_method_20_gap_audit.json">Review score/proxy audit</a>
             </div>
           </div>
         </div>
@@ -10417,7 +10296,7 @@ python scripts/validate_publication_package.py</code></pre>
         if (!response.ok) throw new Error(`matrix ${response.status}`);
         renderResultScoreTable(await response.json());
       } catch (error) {
-        table.querySelector("tbody").innerHTML = '<tr><td colspan="2">Result matrix could not be loaded. Open the source-data link above.</td></tr>';
+        table.querySelector("tbody").innerHTML = '<tr><td colspan="2">Result matrix could not be loaded. Use the source link above for the complete evidence table.</td></tr>';
       }
     }
 
