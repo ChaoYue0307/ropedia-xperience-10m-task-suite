@@ -796,7 +796,7 @@ If you use this project, cite the Ropedia Xperience-10M Task Suite by Chaoyue He
   title        = {Ropedia Xperience-10M Task Suite},
   year         = {2026},
   url          = {https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite},
-  note         = {Public task and evaluation layer built on the Ropedia Xperience-10M dataset}
+  note         = {Public task and evaluation layer for Ropedia Xperience-10M: two evidence lines, 20 embodied-AI tasks, 180 scored method-task records, and selected-128 model diagnostics}
 }
 ```
 """

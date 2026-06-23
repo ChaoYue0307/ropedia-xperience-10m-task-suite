@@ -55,7 +55,7 @@ This project builds on the Xperience-10M dataset released by Ropedia to provide 
 - [Evaluation Protocol](#evaluation-protocol)
 - [Dataset Context](#dataset-context)
 - [Reproducibility](#reproducibility)
-- [Citation](#citation)
+- [Citation / BibTeX](#citation)
 
 ## Project Entry Points
 
@@ -806,7 +806,7 @@ Hugging Face Space app:
   </tbody>
 </table>
 
-## Citation, License, And Metadata
+## Citation
 
 If you use this project, cite the Ropedia Xperience-10M Task Suite by
 Chaoyue He and also cite the upstream Ropedia Xperience-10M dataset according
@@ -814,15 +814,19 @@ to its official dataset card. The repository includes [`CITATION.cff`](CITATION.
 [`codemeta.json`](codemeta.json), and [`docs/data/project_manifest.json`](docs/data/project_manifest.json)
 for machine-readable metadata.
 
+Copy this BibTeX entry for the repository:
+
 ```bibtex
 @misc{he2026ropedia_xperience10m_task_suite,
   author       = {Chaoyue He},
   title        = {Ropedia Xperience-10M Task Suite},
   year         = {2026},
   url          = {https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite},
-  note         = {Public task and evaluation layer built on the Ropedia Xperience-10M dataset}
+  note         = {Public task and evaluation layer for Ropedia Xperience-10M: two evidence lines, 20 embodied-AI tasks, 180 scored method-task records, and selected-128 model diagnostics}
 }
 ```
+
+## License And Metadata
 
 The code files are MIT-licensed. Raw Xperience-10M data is not redistributed
 here, and dataset use remains governed by the official Ropedia/Xperience-10M
