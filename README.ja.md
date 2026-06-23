@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Xperience-10M の多言語公開研究面: サンプルデータ、20 個の embodied-AI タスク、ベースライン、Qwen3-Omni と Cosmos3 診断、基盤モデル訓練方向。</strong>
+  <strong>Xperience-10M の公開タスク・評価レイヤー: サンプルデータ、20 個の embodied-AI タスク、ベースライン、Qwen3-Omni と Cosmos3 診断、基盤モデル訓練方向。</strong>
 </p>
 
 <!-- LANG-BAR:START -->
@@ -34,7 +34,7 @@
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-ccffa0"></a>
 </p>
 
-## このプロジェクトの読み方
+## プロジェクト概要
 
 このリポジトリは、公開 Xperience-10M サンプル episode を、検証可能な embodied AI タスク実験面に変換します。まずダッシュボードとプロジェクト状態を見て、その後 20 タスク、結果行列、Hugging Face ミラーを確認してください。
 
@@ -60,7 +60,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 | 目的 | 入口 |
 | --- | --- |
 | プロジェクトを素早く理解 | [プロジェクト概要](PROJECT_BRIEF.md), [プロジェクト状態](PROJECT_STATUS.md) |
-| 公開面を選ぶ | [公開リーダーマップ](PUBLIC_READER_MAP.md) |
+| GitHub / Web / HF の入口を選ぶ | [公開エビデンスマップ](PUBLIC_READER_MAP.md) |
 | 20 タスクを見る | [20 タスクガイド](TASK_SUITE_20.md), [タスク契約データ](docs/data/task_suite_20.json) |
 | 結果を比較 | [研究結果まとめ](RESEARCH_TAKEAWAYS.md), [180 件の結果表](docs/data/task_method_20_result_matrix.json) |
 | 1 サンプルを調べる | [1 episode ブラウザ](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample ファイルマップ](docs/data/raw_sample_files.json) |

@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Xperience-10M을 위한 다국어 공개 연구 표면: 샘플 데이터, 20개 embodied-AI 과제, 베이스라인, Qwen3-Omni 및 Cosmos3 진단, foundation 모델 학습 방향.</strong>
+  <strong>Xperience-10M을 위한 공개 과제 및 평가 레이어: 샘플 데이터, 20개 embodied-AI 과제, 베이스라인, Qwen3-Omni 및 Cosmos3 진단, foundation 모델 학습 방향.</strong>
 </p>
 
 <!-- LANG-BAR:START -->
@@ -34,7 +34,7 @@
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-ccffa0"></a>
 </p>
 
-## 이 프로젝트를 읽는 방법
+## 프로젝트 개요
 
 이 저장소는 공개 Xperience-10M sample episode를 검증 가능한 embodied AI 과제 실험 표면으로 정리합니다. 먼저 대시보드와 프로젝트 상태를 보고, 이후 20개 과제, 결과 행렬, Hugging Face 미러를 확인하세요.
 
@@ -60,7 +60,7 @@
 | 목표 | 시작점 |
 | --- | --- |
 | 프로젝트 빠르게 이해 | [프로젝트 요약](PROJECT_BRIEF.md), [프로젝트 상태](PROJECT_STATUS.md) |
-| 공개 표면 선택 | [공개 리더 맵](PUBLIC_READER_MAP.md) |
+| GitHub / 웹 / HF 입구 선택 | [공개 증거 맵](PUBLIC_READER_MAP.md) |
 | 20개 과제 확인 | [20개 과제 가이드](TASK_SUITE_20.md), [과제 계약 데이터](docs/data/task_suite_20.json) |
 | 결과 비교 | [연구 결과 요약](RESEARCH_TAKEAWAYS.md), [180개 결과 표](docs/data/task_method_20_result_matrix.json) |
 | 샘플 하나 검사 | [단일 episode 브라우저](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample 파일 지도](docs/data/raw_sample_files.json) |

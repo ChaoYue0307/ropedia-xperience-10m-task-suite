@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>面向 Xperience-10M 的多语言公开研究入口：样本数据、20 个具身智能任务、基线、Qwen3-Omni 与 Cosmos3 诊断结果，以及基础模型训练方向。</strong>
+  <strong>面向 Xperience-10M 的公开任务与评估层：样本数据、20 个具身智能任务、基线、Qwen3-Omni 与 Cosmos3 诊断结果，以及基础模型训练方向。</strong>
 </p>
 
 <!-- LANG-BAR:START -->
@@ -34,7 +34,7 @@
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-ccffa0"></a>
 </p>
 
-## 如何阅读这个项目
+## 项目概览
 
 这个仓库把 Ropedia 公开的 Xperience-10M sample episode 变成一个可检查的具身智能任务实验室。请先看仪表盘和项目状态，再进入 20 个任务、结果矩阵和 Hugging Face 镜像。
 
@@ -60,7 +60,7 @@
 | 目标 | 入口 |
 | --- | --- |
 | 快速理解项目 | [项目简报](PROJECT_BRIEF.md), [项目状态](PROJECT_STATUS.md) |
-| 选择 GitHub / 网页 / HF 的正确入口 | [公共阅读地图](PUBLIC_READER_MAP.md) |
+| 选择 GitHub / 网页 / HF 入口 | [公开证据地图](PUBLIC_READER_MAP.md) |
 | 查看 20 个任务定义 | [20 任务指南](TASK_SUITE_20.md), [任务契约数据](docs/data/task_suite_20.json) |
 | 比较结果 | [研究结论](RESEARCH_TAKEAWAYS.md), [180 条结果表](docs/data/task_method_20_result_matrix.json) |
 | 查看一个 sample 的全部文件关系 | [单 episode 浏览器](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample 文件地图](docs/data/raw_sample_files.json) |

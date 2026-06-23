@@ -75,16 +75,16 @@ baselines and selected 128-episode methods are published as
 """
 READER_MAP_MARKER = "docs/data/public_reader_map.json"
 READER_MAP_ARTIFACT_ROW = (
-    "| Choose the right public surface | `PUBLIC_READER_MAP.md`, "
+    "| Choose GitHub / website / HF entry point | `PUBLIC_READER_MAP.md`, "
     "`docs/data/public_reader_map.json` |"
 )
 READER_MAP_CARD_BLOCK = """
-## Public Surface Map
+## Published Mirror Map
 
 Use `PUBLIC_READER_MAP.md` and `docs/data/public_reader_map.json` to choose
 between the GitHub repo, GitHub Pages dashboard, HF Space, artifact dataset,
-baseline model repo, Qwen3-Omni and Cosmos3 model repos, and release-health checks without
-losing the full evidence trail.
+baseline model repo, Qwen3-Omni and Cosmos3 model repos, and release-health checks.
+All entries point back to the same evidence trail.
 """
 XPERIENCE128_MARKER = "docs/data/xperience10m_128_episode_feature_index.json"
 XPERIENCE128_ARTIFACT_ROW = (
@@ -118,14 +118,13 @@ LANGUAGE_VERSIONS_ROW = (
     "`README.ko.md`, `README.pt.md`, `docs/data/language_versions.json` |"
 )
 LANGUAGE_VERSIONS_CARD_BLOCK = """
-## Multilingual Entry Points
+## Language Entry Points
 
-The canonical repo README now has eight public reader entry points: English,
-Chinese, Spanish, French, German, Japanese, Korean, and Portuguese. The
-machine-readable language map is in `docs/data/language_versions.json`; each
-Hugging Face mirror carries the same translated README files so readers can
-move between GitHub, the dashboard, the Space, the artifact dataset, and model
-cards without losing the evidence trail.
+The repository keeps eight README entry points: English, Chinese, Spanish,
+French, German, Japanese, Korean, and Portuguese. The language map is in
+`docs/data/language_versions.json`; Hugging Face mirrors carry the same README
+files so GitHub, the dashboard, the Space, the artifact dataset, and model
+cards stay aligned.
 """
 PROJECT_IDENTITY_ARTIFACT_ROW = (
     "| Use the shared project identity assets | "
@@ -384,12 +383,12 @@ def ensure_reader_map_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
     text = artifacts_readme.read_text(encoding="utf-8")
     original = text
     if READER_MAP_ARTIFACT_ROW not in text:
-        table_anchor = "| Reader goal | Artifact |\n| --- | --- |\n"
+        table_anchor = "| Goal | Artifact |\n| --- | --- |\n"
         if table_anchor in text:
             text = text.replace(table_anchor, table_anchor + READER_MAP_ARTIFACT_ROW + "\n", 1)
         else:
             text = text.rstrip() + "\n\n" + READER_MAP_ARTIFACT_ROW + "\n"
-    if "## Public Surface Map" not in text:
+    if "## Published Mirror Map" not in text:
         insert_before = "\n## Dataset Boundary"
         if insert_before in text:
             text = text.replace(insert_before, READER_MAP_CARD_BLOCK + insert_before, 1)
@@ -412,7 +411,7 @@ def ensure_xperience128_card_links(hf_root: Path, *, dry_run: bool) -> list[str]
     while text.count(XPERIENCE128_VIEWER_NOTE) > 1:
         text = text.replace("\n" + XPERIENCE128_VIEWER_NOTE, "", 1)
     if XPERIENCE128_ARTIFACT_ROW not in text:
-        table_anchor = "| Reader goal | Artifact |\n| --- | --- |\n"
+        table_anchor = "| Goal | Artifact |\n| --- | --- |\n"
         if table_anchor in text:
             text = text.replace(table_anchor, table_anchor + XPERIENCE128_ARTIFACT_ROW + "\n", 1)
         else:
@@ -444,12 +443,12 @@ def ensure_language_card_links(hf_root: Path, *, dry_run: bool) -> list[str]:
     text = artifacts_readme.read_text(encoding="utf-8")
     original = text
     if LANGUAGE_VERSIONS_ROW not in text:
-        table_anchor = "| Reader goal | Artifact |\n| --- | --- |\n"
+        table_anchor = "| Goal | Artifact |\n| --- | --- |\n"
         if table_anchor in text:
             text = text.replace(table_anchor, table_anchor + LANGUAGE_VERSIONS_ROW + "\n", 1)
         else:
             text = text.rstrip() + "\n\n" + LANGUAGE_VERSIONS_ROW + "\n"
-    if "## Multilingual Entry Points" not in text:
+    if "## Language Entry Points" not in text:
         insert_before = "\n## Dataset Boundary"
         if insert_before in text:
             text = text.replace(insert_before, LANGUAGE_VERSIONS_CARD_BLOCK + insert_before, 1)
@@ -470,7 +469,7 @@ def ensure_project_identity_card_links(hf_root: Path, *, dry_run: bool) -> list[
     text = artifacts_readme.read_text(encoding="utf-8")
     original = text
     if PROJECT_IDENTITY_ARTIFACT_ROW not in text:
-        table_anchor = "| Reader goal | Artifact |\n| --- | --- |\n"
+        table_anchor = "| Goal | Artifact |\n| --- | --- |\n"
         if table_anchor in text:
             text = text.replace(table_anchor, table_anchor + PROJECT_IDENTITY_ARTIFACT_ROW + "\n", 1)
         else:

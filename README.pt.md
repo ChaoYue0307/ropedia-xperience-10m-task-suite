@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Superfície pública multilíngue para Xperience-10M: dados de amostra, 20 tarefas embodied-AI, baselines, diagnósticos Qwen3-Omni e Cosmos3 e direções de treino.</strong>
+  <strong>Camada pública de tarefas e avaliação para Xperience-10M: dados de amostra, 20 tarefas embodied-AI, baselines, diagnósticos Qwen3-Omni e Cosmos3 e direções de treino.</strong>
 </p>
 
 <!-- LANG-BAR:START -->
@@ -34,7 +34,7 @@
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-code%20MIT%20%2B%20data%20terms-ccffa0"></a>
 </p>
 
-## Como Ler Este Projeto
+## Visão Geral Do Projeto
 
 Este repositório transforma o episódio público de amostra do Xperience-10M em um laboratório verificável de tarefas para embodied AI. Comece pelo painel visual e pelo status do projeto; depois abra os contratos de tarefas, matrizes de resultados e espelhos no Hugging Face.
 
@@ -60,7 +60,7 @@ Entradas: [guia de duas linhas de evidencia](TWO_EVIDENCE_LINES.md), [dados das 
 | Objetivo | Entrada |
 | --- | --- |
 | Entender o projeto | [resumo do projeto](PROJECT_BRIEF.md), [status do projeto](PROJECT_STATUS.md) |
-| Escolher a superfície pública correta | [mapa publico de leitura](PUBLIC_READER_MAP.md) |
+| Escolher entrada GitHub / web / HF | [mapa publico de evidencias](PUBLIC_READER_MAP.md) |
 | Ver as 20 tarefas | [guia das 20 tarefas](TASK_SUITE_20.md), [dados dos contratos de tarefa](docs/data/task_suite_20.json) |
 | Comparar resultados | [conclusões de pesquisa](RESEARCH_TAKEAWAYS.md), [tabela de 180 resultados](docs/data/task_method_20_result_matrix.json) |
 | Inspecionar uma amostra | [explorador de um episódio](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [mapa dos arquivos de amostra](docs/data/raw_sample_files.json) |

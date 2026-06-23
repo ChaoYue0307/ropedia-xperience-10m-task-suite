@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build multilingual public README entry points for the project mirrors."""
+"""Build public README entry points for the project mirrors."""
 
 from __future__ import annotations
 
@@ -63,7 +63,7 @@ def hero(title: str, tagline: str, active: str) -> str:
 
 ENGLISH_TOP = f"""{hero(
     "Ropedia Xperience-10M Task Suite",
-    "A multilingual public research surface for Xperience-10M: sample data, 20 embodied-AI tasks, baselines, Qwen3-Omni and Cosmos3 diagnostics, and foundation-model training directions.",
+    "Public task and evaluation layer for Xperience-10M: sample data, 20 embodied-AI tasks, baselines, Qwen3-Omni and Cosmos3 diagnostics, and foundation-model training directions.",
     "en",
 )}
 
@@ -95,7 +95,7 @@ Use the two evidence lines first, then choose the artifact that answers your que
 
 Quick rule: use **Line 1** for “can I inspect and reproduce the task?” Use **Line 2** for “how do aligned baselines and model diagnostics compare on the selected 128 episodes?”
 
-The multilingual README files provide project overviews. The canonical technical evidence is still the committed task contracts, result matrices, validation JSON, and public-safe result packages.
+The committed task contracts, result matrices, validation JSON, public-safe result packages, GitHub sources, and Hugging Face mirrors are the canonical technical evidence.
 
 ## At A Glance
 
@@ -410,8 +410,8 @@ Result entry points:
 LANGUAGE_GUIDES = {
     "zh": {
         "title": "Xperience-10M 任务套件",
-        "tagline": "面向 Xperience-10M 的多语言公开研究入口：样本数据、20 个具身智能任务、基线、Qwen3-Omni 与 Cosmos3 诊断结果，以及基础模型训练方向。",
-        "body": f"""## 如何阅读这个项目
+        "tagline": "面向 Xperience-10M 的公开任务与评估层：样本数据、20 个具身智能任务、基线、Qwen3-Omni 与 Cosmos3 诊断结果，以及基础模型训练方向。",
+        "body": f"""## 项目概览
 
 这个仓库把 Ropedia 公开的 Xperience-10M sample episode 变成一个可检查的具身智能任务实验室。请先看仪表盘和项目状态，再进入 20 个任务、结果矩阵和 Hugging Face 镜像。
 
@@ -437,7 +437,7 @@ LANGUAGE_GUIDES = {
 | 目标 | 入口 |
 | --- | --- |
 | 快速理解项目 | [项目简报](PROJECT_BRIEF.md), [项目状态](PROJECT_STATUS.md) |
-| 选择 GitHub / 网页 / HF 的正确入口 | [公共阅读地图](PUBLIC_READER_MAP.md) |
+| 选择 GitHub / 网页 / HF 入口 | [公开证据地图](PUBLIC_READER_MAP.md) |
 | 查看 20 个任务定义 | [20 任务指南](TASK_SUITE_20.md), [任务契约数据](docs/data/task_suite_20.json) |
 | 比较结果 | [研究结论](RESEARCH_TAKEAWAYS.md), [180 条结果表](docs/data/task_method_20_result_matrix.json) |
 | 查看一个 sample 的全部文件关系 | [单 episode 浏览器](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample 文件地图](docs/data/raw_sample_files.json) |
@@ -461,8 +461,8 @@ LANGUAGE_GUIDES = {
     },
     "es": {
         "title": "Ropedia Xperience-10M Task Suite",
-        "tagline": "Superficie pública multilingüe para Xperience-10M: datos de muestra, 20 tareas embodied-AI, baselines, diagnósticos Qwen3-Omni y Cosmos3, y direcciones de entrenamiento.",
-        "body": f"""## Cómo Leer Este Proyecto
+        "tagline": "Capa pública de tareas y evaluación para Xperience-10M: datos de muestra, 20 tareas embodied-AI, baselines, diagnósticos Qwen3-Omni y Cosmos3, y direcciones de entrenamiento.",
+        "body": f"""## Descripción Del Proyecto
 
 Este repositorio convierte el episodio público de muestra de Xperience-10M en un laboratorio verificable de tareas para embodied AI. Empieza por el panel visual y el estado del proyecto; después entra en las tareas, matrices de resultados y espejos de Hugging Face.
 
@@ -488,7 +488,7 @@ Entradas: [guia de dos lineas de evidencia](TWO_EVIDENCE_LINES.md), [datos de do
 | Objetivo | Entrada |
 | --- | --- |
 | Entender el proyecto | [resumen del proyecto](PROJECT_BRIEF.md), [estado del proyecto](PROJECT_STATUS.md) |
-| Elegir la superficie correcta | [mapa publico de lectura](PUBLIC_READER_MAP.md) |
+| Elegir entrada GitHub / web / HF | [mapa publico de evidencia](PUBLIC_READER_MAP.md) |
 | Ver las 20 tareas | [guia de 20 tareas](TASK_SUITE_20.md), [datos de contratos de tarea](docs/data/task_suite_20.json) |
 | Comparar resultados | [conclusiones de investigacion](RESEARCH_TAKEAWAYS.md), [tabla de 180 resultados](docs/data/task_method_20_result_matrix.json) |
 | Inspeccionar una muestra | [explorador de un episodio](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [mapa de archivos de muestra](docs/data/raw_sample_files.json) |
@@ -512,8 +512,8 @@ El proyecto publica solo artifacts derivados, métricas, figuras, tarjetas y res
     },
     "fr": {
         "title": "Ropedia Xperience-10M Task Suite",
-        "tagline": "Surface publique multilingue pour Xperience-10M : échantillon, 20 tâches embodied-AI, baselines, diagnostics Qwen3-Omni et Cosmos3, et pistes d'entraînement.",
-        "body": f"""## Comment Lire Ce Projet
+        "tagline": "Couche publique de tâches et d'évaluation pour Xperience-10M : échantillon, 20 tâches embodied-AI, baselines, diagnostics Qwen3-Omni et Cosmos3, et pistes d'entraînement.",
+        "body": f"""## Présentation Du Projet
 
 Ce dépôt transforme l'épisode public d'exemple Xperience-10M en laboratoire de tâches vérifiable pour l'IA incarnée. Commencez par le tableau de bord et le statut du projet, puis ouvrez les contrats de tâches, les matrices de résultats et les miroirs Hugging Face.
 
@@ -539,7 +539,7 @@ Entrées : [guide des deux lignes de preuve](TWO_EVIDENCE_LINES.md), [données d
 | Objectif | Point d'entrée |
 | --- | --- |
 | Comprendre le projet | [résumé du projet](PROJECT_BRIEF.md), [état du projet](PROJECT_STATUS.md) |
-| Choisir la bonne surface publique | [carte de lecture publique](PUBLIC_READER_MAP.md) |
+| Choisir l’entrée GitHub / web / HF | [carte publique des preuves](PUBLIC_READER_MAP.md) |
 | Lire les 20 tâches | [guide des 20 tâches](TASK_SUITE_20.md), [données des contrats de tâche](docs/data/task_suite_20.json) |
 | Comparer les résultats | [conclusions de recherche](RESEARCH_TAKEAWAYS.md), [table des 180 résultats](docs/data/task_method_20_result_matrix.json) |
 | Inspecter un sample | [explorateur d'un épisode](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [carte des fichiers sample](docs/data/raw_sample_files.json) |
@@ -563,8 +563,8 @@ Le projet publie des artifacts dérivés, métriques, figures et cartes public-s
     },
     "de": {
         "title": "Ropedia Xperience-10M Task Suite",
-        "tagline": "Mehrsprachige öffentliche Forschungsoberfläche für Xperience-10M: Sample-Daten, 20 Embodied-AI-Aufgaben, Baselines, Qwen3-Omni- und Cosmos3-Diagnostik und Trainingsrichtungen.",
-        "body": f"""## So Liest Man Dieses Projekt
+        "tagline": "Öffentliche Aufgaben- und Evaluationsschicht für Xperience-10M: Sample-Daten, 20 Embodied-AI-Aufgaben, Baselines, Qwen3-Omni- und Cosmos3-Diagnostik und Trainingsrichtungen.",
+        "body": f"""## Projektüberblick
 
 Dieses Repository macht aus dem öffentlichen Xperience-10M-Sample eine prüfbare Aufgabenoberfläche für Embodied AI. Beginnen Sie mit Dashboard und Projektstatus, danach mit Aufgabenverträgen, Ergebnismatrizen und Hugging-Face-Spiegeln.
 
@@ -590,7 +590,7 @@ Einstieg: [Leitfaden zu zwei Evidenzlinien](TWO_EVIDENCE_LINES.md), [Daten der z
 | Ziel | Einstieg |
 | --- | --- |
 | Projekt verstehen | [Projektbrief](PROJECT_BRIEF.md), [Projektstatus](PROJECT_STATUS.md) |
-| Richtige öffentliche Oberfläche wählen | [öffentliche Lesekarte](PUBLIC_READER_MAP.md) |
+| GitHub-/Web-/HF-Einstieg wählen | [öffentliche Evidenzkarte](PUBLIC_READER_MAP.md) |
 | 20 Aufgaben prüfen | [20-Aufgaben-Leitfaden](TASK_SUITE_20.md), [Aufgabenvertragsdaten](docs/data/task_suite_20.json) |
 | Ergebnisse vergleichen | [Forschungsergebnisse](RESEARCH_TAKEAWAYS.md), [Tabelle mit 180 Ergebnissen](docs/data/task_method_20_result_matrix.json) |
 | Ein Sample untersuchen | [Ein-Episode-Explorer](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [Sample-Dateikarte](docs/data/raw_sample_files.json) |
@@ -614,8 +614,8 @@ Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Kar
     },
     "ja": {
         "title": "Ropedia Xperience-10M Task Suite",
-        "tagline": "Xperience-10M の多言語公開研究面: サンプルデータ、20 個の embodied-AI タスク、ベースライン、Qwen3-Omni と Cosmos3 診断、基盤モデル訓練方向。",
-        "body": f"""## このプロジェクトの読み方
+        "tagline": "Xperience-10M の公開タスク・評価レイヤー: サンプルデータ、20 個の embodied-AI タスク、ベースライン、Qwen3-Omni と Cosmos3 診断、基盤モデル訓練方向。",
+        "body": f"""## プロジェクト概要
 
 このリポジトリは、公開 Xperience-10M サンプル episode を、検証可能な embodied AI タスク実験面に変換します。まずダッシュボードとプロジェクト状態を見て、その後 20 タスク、結果行列、Hugging Face ミラーを確認してください。
 
@@ -641,7 +641,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 | 目的 | 入口 |
 | --- | --- |
 | プロジェクトを素早く理解 | [プロジェクト概要](PROJECT_BRIEF.md), [プロジェクト状態](PROJECT_STATUS.md) |
-| 公開面を選ぶ | [公開リーダーマップ](PUBLIC_READER_MAP.md) |
+| GitHub / Web / HF の入口を選ぶ | [公開エビデンスマップ](PUBLIC_READER_MAP.md) |
 | 20 タスクを見る | [20 タスクガイド](TASK_SUITE_20.md), [タスク契約データ](docs/data/task_suite_20.json) |
 | 結果を比較 | [研究結果まとめ](RESEARCH_TAKEAWAYS.md), [180 件の結果表](docs/data/task_method_20_result_matrix.json) |
 | 1 サンプルを調べる | [1 episode ブラウザ](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample ファイルマップ](docs/data/raw_sample_files.json) |
@@ -665,8 +665,8 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
     },
     "ko": {
         "title": "Ropedia Xperience-10M Task Suite",
-        "tagline": "Xperience-10M을 위한 다국어 공개 연구 표면: 샘플 데이터, 20개 embodied-AI 과제, 베이스라인, Qwen3-Omni 및 Cosmos3 진단, foundation 모델 학습 방향.",
-        "body": f"""## 이 프로젝트를 읽는 방법
+        "tagline": "Xperience-10M을 위한 공개 과제 및 평가 레이어: 샘플 데이터, 20개 embodied-AI 과제, 베이스라인, Qwen3-Omni 및 Cosmos3 진단, foundation 모델 학습 방향.",
+        "body": f"""## 프로젝트 개요
 
 이 저장소는 공개 Xperience-10M sample episode를 검증 가능한 embodied AI 과제 실험 표면으로 정리합니다. 먼저 대시보드와 프로젝트 상태를 보고, 이후 20개 과제, 결과 행렬, Hugging Face 미러를 확인하세요.
 
@@ -692,7 +692,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 | 목표 | 시작점 |
 | --- | --- |
 | 프로젝트 빠르게 이해 | [프로젝트 요약](PROJECT_BRIEF.md), [프로젝트 상태](PROJECT_STATUS.md) |
-| 공개 표면 선택 | [공개 리더 맵](PUBLIC_READER_MAP.md) |
+| GitHub / 웹 / HF 입구 선택 | [공개 증거 맵](PUBLIC_READER_MAP.md) |
 | 20개 과제 확인 | [20개 과제 가이드](TASK_SUITE_20.md), [과제 계약 데이터](docs/data/task_suite_20.json) |
 | 결과 비교 | [연구 결과 요약](RESEARCH_TAKEAWAYS.md), [180개 결과 표](docs/data/task_method_20_result_matrix.json) |
 | 샘플 하나 검사 | [단일 episode 브라우저](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [sample 파일 지도](docs/data/raw_sample_files.json) |
@@ -716,8 +716,8 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
     },
     "pt": {
         "title": "Ropedia Xperience-10M Task Suite",
-        "tagline": "Superfície pública multilíngue para Xperience-10M: dados de amostra, 20 tarefas embodied-AI, baselines, diagnósticos Qwen3-Omni e Cosmos3 e direções de treino.",
-        "body": f"""## Como Ler Este Projeto
+        "tagline": "Camada pública de tarefas e avaliação para Xperience-10M: dados de amostra, 20 tarefas embodied-AI, baselines, diagnósticos Qwen3-Omni e Cosmos3 e direções de treino.",
+        "body": f"""## Visão Geral Do Projeto
 
 Este repositório transforma o episódio público de amostra do Xperience-10M em um laboratório verificável de tarefas para embodied AI. Comece pelo painel visual e pelo status do projeto; depois abra os contratos de tarefas, matrizes de resultados e espelhos no Hugging Face.
 
@@ -743,7 +743,7 @@ Entradas: [guia de duas linhas de evidencia](TWO_EVIDENCE_LINES.md), [dados das 
 | Objetivo | Entrada |
 | --- | --- |
 | Entender o projeto | [resumo do projeto](PROJECT_BRIEF.md), [status do projeto](PROJECT_STATUS.md) |
-| Escolher a superfície pública correta | [mapa publico de leitura](PUBLIC_READER_MAP.md) |
+| Escolher entrada GitHub / web / HF | [mapa publico de evidencias](PUBLIC_READER_MAP.md) |
 | Ver as 20 tarefas | [guia das 20 tarefas](TASK_SUITE_20.md), [dados dos contratos de tarefa](docs/data/task_suite_20.json) |
 | Comparar resultados | [conclusões de pesquisa](RESEARCH_TAKEAWAYS.md), [tabela de 180 resultados](docs/data/task_method_20_result_matrix.json) |
 | Inspecionar uma amostra | [explorador de um episódio](https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/single_episode_explorer.html), [mapa dos arquivos de amostra](docs/data/raw_sample_files.json) |

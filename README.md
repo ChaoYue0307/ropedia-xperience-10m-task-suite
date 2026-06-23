@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>A multilingual public research surface for Xperience-10M: sample data, 20 embodied-AI tasks, baselines, Qwen3-Omni and Cosmos3 diagnostics, and foundation-model training directions.</strong>
+  <strong>Public task and evaluation layer for Xperience-10M: sample data, 20 embodied-AI tasks, baselines, Qwen3-Omni and Cosmos3 diagnostics, and foundation-model training directions.</strong>
 </p>
 
 <!-- LANG-BAR:START -->
@@ -63,7 +63,7 @@ Use the two evidence lines first, then choose the artifact that answers your que
 
 Quick rule: use **Line 1** for “can I inspect and reproduce the task?” Use **Line 2** for “how do aligned baselines and model diagnostics compare on the selected 128 episodes?”
 
-The multilingual README files provide project overviews. The canonical technical evidence is still the committed task contracts, result matrices, validation JSON, and public-safe result packages.
+The committed task contracts, result matrices, validation JSON, public-safe result packages, GitHub sources, and Hugging Face mirrors are the canonical technical evidence.
 
 ## At A Glance
 
@@ -608,16 +608,15 @@ This project is best read as a staged embodied-AI research study:
 </table>
 
 Detailed dataset notes, reproduction checks, and generated data reports are
-included for implementation inspection, but they are
-supporting materials rather than the main reading path. Use
-[the artifact guide](ARTIFACT_GUIDE.md) when you want the full file map.
+included for implementation inspection. The full file map is available in
+[the artifact guide](ARTIFACT_GUIDE.md).
 
 Source alignment is tracked in the [source-alignment note](SOURCE_ALIGNMENT_AUDIT.md)
 and [source-alignment data](docs/data/source_alignment_audit.json).
 Whenever this repo says "full dataset," it refers to the Hugging Face-hosted
 gated dataset version at `ropedia-ai/xperience-10m`, not a local raw-data
 mirror. The official gated `ropedia-ai/xperience-10m` card reports `31.9 TB`
-on the live HF dataset surface and an `about-1PB` full-scale storage statement; the committed
+on the live Hugging Face dataset card and an `about-1PB` full-scale storage statement; the committed
 API-listing snapshot records `12,103 episode folders` as upstream `metadata only`,
 not a local raw-data inventory. In other words, those episode folders are
 upstream listing metadata only for this project. The public sample remains
@@ -736,9 +735,8 @@ The current verified public-sample subset is:
 Detailed dataset notes are available in
 [the dataset-card alignment note](XPERIENCE10M_DATASET_CARD_ALIGNMENT.md)
 and [dataset-alignment data](docs/data/xperience10m_dataset_card_alignment.json)
-for full upstream-card and access-term context. The
-practical reading rule is simple: Line 1 is the task lab, Line 2 is the
-selected-128 comparison surface, and compact-proxy cells stay explicitly marked
+for full upstream-card and access-term context. Line 1 is the task lab; Line 2 is
+the selected-128 comparison layer; compact-proxy cells stay explicitly marked
 where direct raw targets are missing.
 
 Start with the visual dashboard:
@@ -749,7 +747,7 @@ Hugging Face Space app:
 
 **[cy0307-ropedia-xperience-10m-task-suite.hf.space](https://cy0307-ropedia-xperience-10m-task-suite.hf.space/)**
 
-## Read This Project By Evidence View
+## Evidence Views
 
 <table>
   <thead>
@@ -760,7 +758,7 @@ Hugging Face Space app:
     </tr>
   </thead>
   <tbody>
-    <tr><td><strong>Project status</strong></td><td><a href="PROJECT_STATUS.md">project status</a><br><a href="docs/data/project_status.json">project-status data</a></td><td>Gives a one-table current project summary before reading the full artifact trail.</td></tr>
+    <tr><td><strong>Project status</strong></td><td><a href="PROJECT_STATUS.md">project status</a><br><a href="docs/data/project_status.json">project-status data</a></td><td>Summarizes the current project state in one table.</td></tr>
     <tr><td><strong>Data contract</strong></td><td><a href="results/episode_task_suite/windows.csv">window table</a><br><a href="results/episode_task_suite/feature_manifest.json">feature manifest</a><br>modality manifests</td><td>Confirms what each sample window contains before modeling.</td></tr>
     <tr><td><strong>Dataset context</strong></td><td><a href="XPERIENCE10M_DATASET_CARD_ALIGNMENT.md">dataset-card alignment</a><br>official dataset links</td><td>Explains the official dataset, public sample, modalities, access boundary, and what this repo uses.</td></tr>
     <tr><td><strong>Visual assets</strong></td><td><a href="FIGURE_INDEX.md">figure index</a><br><a href="docs/assets/">site assets</a></td><td>Shows the task-suite graphic, modality thumbnails, pipeline diagrams, charts, and logo assets.</td></tr>
@@ -813,7 +811,7 @@ Hugging Face Space app:
 Use [`CITATION.cff`](CITATION.cff) when citing this project. The repository
 also includes [`codemeta.json`](codemeta.json) for machine-readable software
 metadata and [`docs/data/project_manifest.json`](docs/data/project_manifest.json)
-for website/Hugging Face surface metadata.
+for website and Hugging Face metadata.
 
 The code files are MIT-licensed. Raw Xperience-10M data is not redistributed
 here, and dataset use remains governed by the official Ropedia/Xperience-10M
@@ -865,7 +863,7 @@ The website Results section also renders the same 180 cells as a wide,
 source-linked table with raw values, normalized radar values, metric keys, and
 direct/proxy badges.
 
-For easier reading, the same source data is also split into two focused radars:
+The same source data is also split into two focused radars:
 
 ![Single-episode 20-task model radar](docs/assets/charts/single_episode_task_model_radar.svg)
 

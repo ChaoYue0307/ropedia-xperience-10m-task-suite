@@ -185,6 +185,12 @@ the Ropedia Xperience-10M Task Suite. It is intended to make the current model
 artifacts traceable from one Hugging Face location while preserving the
 canonical per-adapter repositories.
 
+The package follows the current project framing: Line 1 uses one public sample
+episode for inspectable task construction, while Line 2 uses selected
+128-episode public-safe artifacts for same-split baselines, Qwen3-Omni v6 LoRA,
+Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window diagnostics. Direct
+scores and compact-proxy estimates remain separated in the 180-record matrix.
+
 ## What Is Included
 
 - `baselines_and_analysis_snapshot/`: the published baseline-model snapshot,
