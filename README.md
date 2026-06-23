@@ -808,10 +808,21 @@ Hugging Face Space app:
 
 ## Citation, License, And Metadata
 
-Use [`CITATION.cff`](CITATION.cff) when citing this project. The repository
-also includes [`codemeta.json`](codemeta.json) for machine-readable software
-metadata and [`docs/data/project_manifest.json`](docs/data/project_manifest.json)
-for website and Hugging Face metadata.
+If you use this project, cite the Ropedia Xperience-10M Task Suite by
+Chaoyue He and also cite the upstream Ropedia Xperience-10M dataset according
+to its official dataset card. The repository includes [`CITATION.cff`](CITATION.cff),
+[`codemeta.json`](codemeta.json), and [`docs/data/project_manifest.json`](docs/data/project_manifest.json)
+for machine-readable metadata.
+
+```bibtex
+@misc{he2026ropedia_xperience10m_task_suite,
+  author       = {Chaoyue He},
+  title        = {Ropedia Xperience-10M Task Suite},
+  year         = {2026},
+  url          = {https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite},
+  note         = {Public task and evaluation layer built on the Ropedia Xperience-10M dataset}
+}
+```
 
 The code files are MIT-licensed. Raw Xperience-10M data is not redistributed
 here, and dataset use remains governed by the official Ropedia/Xperience-10M

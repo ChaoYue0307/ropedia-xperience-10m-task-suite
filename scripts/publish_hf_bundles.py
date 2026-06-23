@@ -419,6 +419,172 @@ def ensure_repo_card_metadata(readme_path: Path, metadata: str) -> None:
         readme_path.write_text(new_readme, encoding="utf-8")
 
 
+ARTIFACT_DATASET_CARD_BODY = """# Ropedia Xperience-10M Task Suite Artifacts
+
+![Ropedia Xperience-10M Task Suite logo](assets/brand/xperience10m-logo-social-card.png)
+
+This Hugging Face dataset repository is the public-safe artifact layer for the
+**Ropedia Xperience-10M Task Suite** by **Chaoyue He**. The task suite is built
+on the Xperience-10M egocentric dataset released by Ropedia; this repository
+publishes derived files, metrics, viewer tables, figures, manifests, result
+summaries, and model-diagnostic packages without redistributing gated raw data.
+
+The project is organized into two evidence lines:
+
+- **Line 1: one public sample episode.** This line supports raw-file inspection,
+  20-frame windows, 20 task contracts, Minimal baselines, Neural MLP baselines,
+  and 40/40 direct single-episode task scores.
+- **Line 2: selected 128 episodes.** This line supports same-split comparison
+  across metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and
+  Cosmos3-Nano Future Window diagnostics. It contains 140/140 selected-128
+  scores: 134 direct scores and 6 compact-proxy scores.
+
+Across both lines, the public matrix contains **180/180 method-task records**.
+Direct scores and compact-proxy estimates are intentionally kept separate.
+
+## What This Dataset Repository Contains
+
+This repository is useful when you want the public evidence files rather than
+only the website summary. It contains:
+
+- Hugging Face Dataset Viewer tables for the public sample and selected-128
+  windows.
+- Machine-readable task contracts, result matrices, proxy audits, quality gates,
+  glossary records, public mirror maps, and website integrity checks.
+- Public-safe metrics, predictions, confusion matrices, charts, figures, and
+  reports for Minimal, Neural MLP, metadata/raw baselines, Qwen3-Omni, and
+  Cosmos3 diagnostics.
+- Source-linked selected-128 feature/index records that point back to official
+  gated Xperience-10M episode paths without republishing the raw episodes.
+- Website assets used by the GitHub Pages dashboard and Hugging Face mirrors.
+
+## Dataset Viewer Configs
+
+Use the viewer configs separately. They are different evidence lines and should
+not be concatenated for scoring.
+
+- `episode_sample/public_sample`: one public Xperience-10M sample episode,
+  exposed as `viewer/episode_windows.parquet` and `viewer/episode_windows.jsonl`.
+  It contains 1,161 aligned windows with action/subtask labels, object labels,
+  time ranges, modality summaries, feature dimensions, and source-file links.
+- `selected_128_windows/selected_128`: selected 128-episode public-safe window
+  metadata, exposed as `viewer/selected128_windows.parquet` and
+  `viewer/selected128_windows.jsonl`. It contains 34,269 exported windows linked
+  to official gated episode paths and selected-128 split metadata.
+
+## Start Here
+
+For the shortest path through the artifact repository:
+
+1. Open `PROJECT_STATUS.md` for the current state.
+2. Open `TWO_EVIDENCE_LINES.md` and `docs/data/two_evidence_lines.json` to see
+   how Line 1 and Line 2 are separated.
+3. Open `TASK_SUITE_20.md` and `docs/data/task_suite_20.json` for the 20 task
+   contracts.
+4. Open `TASK_METHOD_20_RESULT_MATRIX.md` and
+   `docs/data/task_method_20_result_matrix.json` for the 180-record matrix.
+5. Open `TASK_METHOD_20_GAP_AUDIT.md` and
+   `docs/data/task_method_20_gap_audit.json` before interpreting proxy-marked
+   cells.
+6. Open `XPERIENCE10M_128_EPISODE_FEATURE_INDEX.md` and
+   `docs/data/xperience10m_128_episode_feature_index.json` for selected-128
+   source and feature provenance.
+7. Open `ARTIFACT_GUIDE.md` if you need the full file map.
+
+## Main Artifact Groups
+
+- `viewer/`: Dataset Viewer tables for public sample windows and selected-128
+  windows.
+- `docs/data/`: canonical JSON records for task contracts, matrices, audits,
+  public mirrors, glossary terms, quality gates, website integrity, and model
+  comparison summaries.
+- `docs/assets/`: charts, branding, task icons, modality thumbnails, pipeline
+  figures, and website graphics.
+- `results/episode_task_suite/`: public-sample window tables, feature manifests,
+  Minimal baselines, Neural MLP outputs, task walkthroughs, predictions, and
+  metric summaries.
+- `results/omni_finetune/verified_public/`: public-safe Qwen3-Omni and Cosmos3
+  diagnostic packages, metrics, predictions, package audits, and run summaries.
+- `results/single_episode_diagnostics/`: additional public-sample diagnostic
+  labels, object records, and explorer inputs.
+
+## How To Interpret Scores
+
+- The raw metric value is the value to cite or compare.
+- The normalized radar value is a plotting value used only for visual
+  comparison across metrics.
+- Direct scores use the task target directly available in the relevant evidence
+  line.
+- Compact-proxy scores use public-safe compact features when the direct raw
+  target is unavailable in the selected-128 export. These cells remain marked in
+  `docs/data/task_method_20_gap_audit.json` and the result matrix.
+
+## Data And Redistribution Boundary
+
+This artifact dataset does **not** redistribute raw Xperience-10M MP4 files,
+raw `annotation.hdf5`, `.rrd` visualization files, gated full-dataset contents,
+Qwen3 base weights, Cosmos3 base weights, private logs, or full training
+checkpoints. Use of Xperience-10M remains governed by the official Ropedia
+Xperience-10M dataset card and access terms.
+
+This repository publishes derived public-safe artifacts only: metrics, feature
+summaries, predictions, manifests, figures, JSON records, and selected-source
+links.
+
+## Related Repositories
+
+- Project website: https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/
+- GitHub source: https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite
+- HF Space: https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite
+- Baseline model mirror: https://huggingface.co/cy0307/ropedia-xperience-10m-task-baselines
+- Consolidated weights/results: https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results
+- Qwen3-Omni LoRA adapter: https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep
+- Cosmos3-Super LoRA adapter: https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep
+- Upstream gated dataset: https://huggingface.co/datasets/ropedia-ai/xperience-10m
+- Public sample dataset: https://huggingface.co/datasets/ropedia-ai/xperience-10m-sample
+
+## Citation
+
+If you use these artifacts, cite this artifact dataset, the main Ropedia
+Xperience-10M Task Suite, and the upstream Ropedia Xperience-10M dataset
+according to its official card.
+
+```bibtex
+@misc{he2026ropedia_xperience10m_task_suite_artifacts,
+  author       = {Chaoyue He},
+  title        = {Ropedia Xperience-10M Task Suite Artifacts},
+  year         = {2026},
+  publisher    = {Hugging Face},
+  url          = {https://huggingface.co/datasets/cy0307/ropedia-xperience-10m-task-suite-artifacts},
+  note         = {Public-safe derived artifacts, viewer tables, metrics, and result records for the Ropedia Xperience-10M Task Suite}
+}
+```
+
+## Contact
+
+Project author: Chaoyue He. Contact and profile:
+https://chaoyue0307.github.io/
+"""
+
+
+def preserve_card_frontmatter(readme: str, body: str) -> str:
+    if readme.startswith("---\n"):
+        parts = readme.split("---", 2)
+        if len(parts) == 3:
+            return "---" + parts[1] + "---\n\n" + body.strip() + "\n"
+    return body.strip() + "\n"
+
+
+def ensure_artifact_dataset_card_body(hf_root: Path) -> None:
+    readme_path = hf_root / "artifacts/README.md"
+    if not readme_path.exists():
+        return
+    readme = readme_path.read_text(encoding="utf-8")
+    new_readme = preserve_card_frontmatter(readme, ARTIFACT_DATASET_CARD_BODY)
+    if new_readme != readme:
+        readme_path.write_text(new_readme, encoding="utf-8")
+
+
 def ensure_space_runtime_files(hf_root: Path) -> None:
     """Keep the Hub Space runtime small and explicit."""
     requirements_path = hf_root / "space/requirements.txt"
@@ -610,6 +776,7 @@ def main() -> int:
     prune_generated_artifacts(hf_root)
     prune_artifact_bundle(hf_root)
     ensure_artifact_dataset_viewer_config(hf_root)
+    ensure_artifact_dataset_card_body(hf_root)
     ensure_space_runtime_files(hf_root)
     ensure_repo_card_metadata(hf_root / "space/README.md", SPACE_CARD_METADATA)
     ensure_repo_card_metadata(hf_root / "model/README.md", BASELINE_MODEL_CARD_METADATA)

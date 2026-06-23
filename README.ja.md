@@ -101,4 +101,14 @@ Cosmos3-Super, LoRA adapter, HF artifact dataset, and related terms.
 
 ## Citation
 
-Use `CITATION.cff` and cite the upstream Ropedia Xperience-10M dataset according to its official card.
+If you use this project, cite the Ropedia Xperience-10M Task Suite by Chaoyue He and also cite the upstream Ropedia Xperience-10M dataset according to its official card.
+
+```bibtex
+@misc{he2026ropedia_xperience10m_task_suite,
+  author       = {Chaoyue He},
+  title        = {Ropedia Xperience-10M Task Suite},
+  year         = {2026},
+  url          = {https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite},
+  note         = {Public task and evaluation layer built on the Ropedia Xperience-10M dataset}
+}
+```

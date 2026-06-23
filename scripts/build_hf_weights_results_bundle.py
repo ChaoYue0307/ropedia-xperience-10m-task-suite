@@ -234,6 +234,24 @@ scores and compact-proxy estimates remain separated in the 180-record matrix.
 - Qwen3-Omni LoRA repo: `https://huggingface.co/cy0307/ropedia-qwen3-omni-lora-128ep`
 - Cosmos3-Super LoRA repo: `https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep`
 
+## Citation
+
+If you use this consolidated weights/results package, cite it as:
+
+```bibtex
+@misc{{he2026ropedia_xperience10m_weights_results,
+  author       = {{Chaoyue He}},
+  title        = {{Ropedia Xperience-10M Weights, Results, and Analysis}},
+  year         = {{2026}},
+  publisher    = {{Hugging Face}},
+  url          = {{https://huggingface.co/cy0307/ropedia-xperience-10m-weights-results}},
+  note         = {{Public-safe weights, results, and analysis package for the Ropedia Xperience-10M Task Suite}}
+}}
+```
+
+Also cite the main Ropedia Xperience-10M Task Suite and the upstream Ropedia
+Xperience-10M dataset according to their citation guidance.
+
 ## Reproducibility
 
 The bundle is rebuilt by:
