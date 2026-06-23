@@ -3684,7 +3684,7 @@
       cursor: pointer;
       display: grid;
       gap: 15px;
-      min-height: 292px;
+      min-height: 520px;
       align-content: start;
       transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), border-color 240ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 240ms cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -3790,81 +3790,112 @@
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
-    .metric-row {
+    .task-results-panel {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
-      font-size: 12px;
+      gap: 10px;
+      border-top: 1px solid var(--soft-line);
+      padding-top: 11px;
     }
-    .metric-row span {
-      display: block;
-      border: 1px solid var(--soft-line);
-      border-radius: 6px;
-      padding: 9px;
-      color: var(--muted);
-      min-width: 0;
-    }
-    .metric-row strong {
-      display: block;
-      color: var(--ink);
-      font-family: var(--font-mono);
-      font-size: 18px;
-      line-height: 1.1;
-      font-variant-numeric: tabular-nums;
-      word-break: break-word;
-    }
-    .task-score-note {
+    .task-results-head {
       display: flex;
       justify-content: space-between;
-      gap: 10px;
-      color: #aebaa8;
+      gap: 12px;
+      align-items: baseline;
+      color: #dce8d6;
       font-family: var(--font-mono);
       font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
+      font-weight: 850;
+      letter-spacing: 0.045em;
       text-transform: uppercase;
     }
-    .task-score-note span {
+    .task-results-head em {
+      color: var(--muted);
+      font-style: normal;
+      text-align: right;
+    }
+    .task-method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .task-method-score {
+      --score-color: var(--green);
+      --score-width: 8%;
+      position: relative;
+      display: grid;
+      gap: 6px;
       min-width: 0;
-    }
-    .method-bars {
-      display: grid;
-      gap: 7px;
-    }
-    .method-bar {
-      display: grid;
-      grid-template-columns: minmax(68px, 0.58fr) minmax(90px, 1fr) minmax(54px, auto);
-      gap: 9px;
-      align-items: center;
-      color: #c7d1c3;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.035em;
-      text-transform: uppercase;
-    }
-    .method-bar-line {
-      height: 9px;
-      border: 1px solid rgba(204, 255, 160, 0.12);
-      background: rgba(204, 255, 160, 0.12);
-      border-radius: 999px;
+      min-height: 84px;
+      border: 1px solid color-mix(in srgb, var(--score-color), transparent 72%);
+      border-radius: 8px;
+      padding: 9px;
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--score-color), transparent 92%), rgba(2, 5, 2, 0.70));
       overflow: hidden;
     }
-    .method-bar-fill {
-      display: block;
-      width: var(--w);
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--c), rgba(204, 255, 160, 0.42));
+    .task-method-score::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: var(--score-width);
+      height: 3px;
+      background: linear-gradient(90deg, var(--score-color), color-mix(in srgb, var(--score-color), white 34%));
+      border-radius: 999px;
     }
-    .method-bar-value {
+    .task-method-score.proxy {
+      border-style: dashed;
+    }
+    .task-method-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      align-items: center;
+      min-width: 0;
+    }
+    .task-method-top strong {
       color: var(--ink);
-      text-align: right;
-      font-variant-numeric: tabular-nums;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      line-height: 1;
+      letter-spacing: 0.035em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .method-bar.minimal { --c: var(--green); }
-    .method-bar.neural { --c: var(--cyan); }
-
+    .task-method-top em {
+      border: 1px solid color-mix(in srgb, var(--score-color), transparent 58%);
+      border-radius: 999px;
+      padding: 2px 5px;
+      color: color-mix(in srgb, var(--score-color), white 24%);
+      background: rgba(2, 5, 2, 0.42);
+      font-family: var(--font-mono);
+      font-size: 8px;
+      font-style: normal;
+      font-weight: 900;
+      letter-spacing: 0.045em;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .task-method-value {
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 1.05;
+      font-variant-numeric: tabular-nums;
+      overflow-wrap: anywhere;
+    }
+    .task-method-meta {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 750;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      overflow-wrap: anywhere;
+    }
     .artifact-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4704,7 +4735,6 @@
     .roadmap-status,
     .player-frame-chip,
     .frame-pill,
-    .metric-row span,
     .player-badge,
     .player-frame-caption,
     .flow-step,
@@ -4730,13 +4760,11 @@
       color: #020502;
     }
     .track,
-    .method-bar-line,
     .player-progress {
       background: rgba(204, 255, 160, 0.16);
     }
     .track > span,
     .roadmap-card::before,
-    .method-bar-fill,
     .player-progress span,
     .bar span {
       background: linear-gradient(90deg, var(--c, var(--green)), rgba(204, 255, 160, 0.45));
@@ -5325,12 +5353,10 @@
       font-variant-numeric: tabular-nums;
       text-shadow: 0 0 16px rgba(204, 255, 160, 0.12);
     }
-    .track > span,
-    .method-bar-fill {
+    .track > span {
       transform-origin: left center;
     }
-    .motion-ready .track > span,
-    .motion-ready .method-bar-fill {
+    .motion-ready .track > span {
       animation: xperienceGrow 860ms var(--motion-ease) both;
     }
     .motion-ready .count-highlight {
@@ -5660,6 +5686,7 @@
       .brief-panel-head { grid-template-columns: 1fr; align-items: start; }
       .task-player { grid-template-columns: 1fr; }
       .task-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .task-method-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .storyboard-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .raw-sample-layout,
       .raw-detail-grid { grid-template-columns: 1fr; }
@@ -5691,13 +5718,26 @@
         position: relative;
         height: 64px;
       }
-      .method-bar {
-        grid-template-columns: 58px minmax(82px, 1fr) minmax(46px, auto);
-        gap: 7px;
-        font-size: 9px;
+      .task-results-head {
+        display: grid;
+        gap: 4px;
       }
-      .method-bar-value {
-        font-size: 9px;
+      .task-results-head em {
+        text-align: left;
+      }
+      .task-method-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
+      }
+      .task-method-score {
+        min-height: 76px;
+        padding: 8px;
+      }
+      .task-method-value {
+        font-size: 15px;
+      }
+      .task-method-top strong {
+        font-size: 10px;
       }
       .brand {
         font-size: 16px;
@@ -7495,7 +7535,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Ropedia Xperience-10M 20-task suite.</h2>
-          <p>Task map, radar comparisons, task cards, and the 180-result table are kept in one reading flow. Start with the map, inspect the score surfaces, then open each task card for its input, process, output, and metric.</p>
+          <p>Task map, radar comparisons, task cards, and the 180-result table are kept in one reading flow. Start with the map, inspect the score surfaces, then open each task card for its input, process, output, metric, and all nine public method scores.</p>
         </div>
         <nav class="suite-jump-row" aria-label="20-task suite quick links">
           <a href="#suite-task-index">20-task index</a>
@@ -7508,7 +7548,7 @@
           <div class="suite-task-index-head">
             <span>unified task index</span>
             <h3>All 20 tasks are one suite, not a separate tier.</h3>
-            <p>Each axis below has a task card, raw metric value, normalized radar value, source artifact, and method-row entry in the 180-result matrix.</p>
+            <p>Each axis below has a task card with nine raw method scores, normalized radar values, source artifacts, and matching method-row entries in the 180-result matrix.</p>
           </div>
           <div class="task-index-grid">
             <a href="#tasks"><img src="assets/task-icons/01_timeline_action.svg" alt="" loading="lazy"><strong>01 Action Recognition</strong><span>current action label</span></a>
@@ -7598,7 +7638,7 @@
         <div class="suite-task-cards-block" id="tasks">
           <div class="task-suite-subhead">
             <h3>All 20 task cards in the same suite.</h3>
-            <p>Each card uses its assigned icon and shows the task name, input sources, process, output target, metric, current Minimal score, and Neural MLP score. Use the filters for scanning; the cards stay tied to the task map and radar axes above.</p>
+            <p>Each card uses its assigned icon and shows the task name, input sources, process, output target, metric, and compact nine-method score panel. Use the filters for scanning; the cards stay tied to the task map, radar axes, and 180-record matrix.</p>
           </div>
           <article class="task-icon-atlas">
             <div>
@@ -8752,6 +8792,8 @@ python scripts/validate_publication_package.py</code></pre>
       diagnostic: "#d8f4a5"
     };
     let taskEntries = [];
+    let taskResultSeries = [];
+    let taskResultRecordsByNumber = new Map();
     let activeTaskIndex = 0;
     let activeStageIndex = 0;
     let activeFilter = "all";
@@ -9637,37 +9679,95 @@ python scripts/validate_publication_package.py</code></pre>
       }
     }
 
-    const metricNumber = (value) => {
-      if (value === null || value === undefined || value === "") return null;
-      const number = Number(value);
-      return Number.isFinite(number) ? number : null;
+    const prepareTaskResultLookup = (payload) => {
+      taskResultSeries = Array.isArray(payload?.series) ? payload.series : [];
+      taskResultRecordsByNumber = new Map();
+      const records = Array.isArray(payload?.records) ? payload.records : [];
+      records.forEach((record) => {
+        const taskNumber = Number(record.task_number);
+        if (!Number.isFinite(taskNumber)) return;
+        if (!taskResultRecordsByNumber.has(taskNumber)) taskResultRecordsByNumber.set(taskNumber, new Map());
+        taskResultRecordsByNumber.get(taskNumber).set(record.series_id, record);
+      });
     };
 
-    const metricQuality = (task, value) => {
-      const number = metricNumber(value);
-      if (number === null) return null;
-      if (task.metric?.name === "R2") return Math.max(0, number + 1);
-      if (task.metric?.direction === "lower") return 1 / (1 + Math.max(number, 0));
-      return Math.max(0, number);
+    const scoreWidthFromNormalized = (record) => {
+      const normalized = Number(record?.normalized_score);
+      if (!Number.isFinite(normalized)) return 6;
+      return Math.max(6, Math.min(100, normalized * 100));
     };
 
-    const methodBarWidth = (task, value) => {
-      const quality = metricQuality(task, value);
-      if (quality === null) return 0;
-      const allQualities = [task.metric?.minimal, task.metric?.neural_mlp]
-        .map((candidate) => metricQuality(task, candidate))
-        .filter((candidate) => candidate !== null);
-      const best = Math.max(0, ...allQualities);
-      if (best <= 0) return 6;
-      return Math.max(6, Math.min(100, (quality / best) * 100));
+    const compactMetricLabel = (metricKey, fallback = "metric") => {
+      const key = String(metricKey || fallback || "metric").toLowerCase();
+      if (key.includes("macro_f1") || key.includes("macro-f1")) return "macro-F1";
+      if (key.includes("micro_f1") || key.includes("micro-f1")) return "micro-F1";
+      if (key.includes("f1")) return "F1";
+      if (key.includes("mpjpe")) return "MPJPE";
+      if (key.includes("mrr")) return "MRR";
+      if (key === "r2" || key.includes("_r2") || key.includes(" r2")) return "R2";
+      if (key.includes("mae")) return "MAE";
+      if (key.includes("rmse")) return "RMSE";
+      if (key.includes("quality")) return "quality";
+      if (key.includes("accuracy") || key.includes("acc")) return "accuracy";
+      if (key.includes("json")) return "JSON";
+      return String(metricKey || fallback || "metric").replaceAll("_", " ");
     };
 
-    const methodBarMeaning = (task) => {
-      const metric = task.metric?.name || "primary metric";
-      const direction = task.metric?.direction === "lower"
-        ? "lower values are better"
-        : "higher values are better";
-      return `Minimal and Neural MLP ${metric} compared within this task; ${direction}; exact scores are printed above.`;
+    const taskMethodResults = (task, index) => {
+      const taskNumber = Number(task.task_number || index + 1);
+      const recordsBySeries = taskResultRecordsByNumber.get(taskNumber) || new Map();
+      return taskResultSeries.map((series) => ({
+        series,
+        record: recordsBySeries.get(series.id) || null
+      }));
+    };
+
+    const renderTaskMethodResults = (task, index) => {
+      const results = taskMethodResults(task, index);
+      if (!results.length) {
+        return `
+          <div class="task-results-panel">
+            <div class="task-results-head"><strong>Method results</strong><em>Open the 180-record table for scores</em></div>
+          </div>
+        `;
+      }
+      const metricName = task.metric?.name || "primary metric";
+      const cells = results.map(({ series, record }) => {
+        const color = series.color || "#ccffa0";
+        if (!record) {
+          return `
+            <span class="task-method-score missing" style="--score-color:${escapeHtml(color)};--score-width:6%" title="${escapeHtml(series.label)} has no record for this task.">
+              <span class="task-method-top"><strong>${escapeHtml(series.short_label || series.label || series.id)}</strong><em>n/a</em></span>
+              <span class="task-method-value">n/a</span>
+              <span class="task-method-meta">no record</span>
+            </span>
+          `;
+        }
+        const rawValue = record.raw_text || formatMetric(record.raw);
+        const metricLabel = compactMetricLabel(record.metric_key, metricName);
+        const normalized = record.normalized_score === null || record.normalized_score === undefined
+          ? "n/a"
+          : Number(record.normalized_score).toFixed(3);
+        const status = record.proxy_scored ? "proxy" : "direct";
+        const scoreWidth = scoreWidthFromNormalized(record);
+        const title = `${series.label}: raw ${rawValue}, normalized radar value ${normalized}, ${status} score, metric ${record.metric_key || metricName}. Source: ${record.source || "result matrix"}.`;
+        return `
+          <span class="task-method-score ${record.proxy_scored ? "proxy" : "direct"}" style="--score-color:${escapeHtml(color)};--score-width:${scoreWidth.toFixed(1)}%" aria-label="${escapeHtml(title)}" title="${escapeHtml(title)}">
+            <span class="task-method-top"><strong>${escapeHtml(series.short_label || series.label || series.id)}</strong><em>${escapeHtml(status)}</em></span>
+            <span class="task-method-value">${escapeHtml(rawValue)}</span>
+            <span class="task-method-meta">${escapeHtml(metricLabel)} · norm ${escapeHtml(normalized)}</span>
+          </span>
+        `;
+      }).join("");
+      return `
+        <div class="task-results-panel">
+          <div class="task-results-head">
+            <strong>9 public method scores</strong>
+            <em>task metric ${escapeHtml(metricName)} · bar = normalized</em>
+          </div>
+          <div class="task-method-grid" aria-label="All nine public method scores for ${escapeHtml(task.display_name)}">${cells}</div>
+        </div>
+      `;
     };
 
     const normalizeWalkthroughTasks = (payload) => Object.values(payload.tasks || {});
@@ -9700,6 +9800,7 @@ python scripts/validate_publication_package.py</code></pre>
       const family = familyFromSuiteTask(task);
       return {
         task_id: task.task_id,
+        task_number: task.task_number,
         display_name: task.task_display_name || task.task_id || "Task",
         research_name: `${task.suite_label || "Task"} · ${task.research_name || task.primary_direction || "Unified task contract"}`,
         task_family: family,
@@ -9738,6 +9839,7 @@ python scripts/validate_publication_package.py</code></pre>
           return {
             ...rich,
             task_id: task.task_id || rich.task_id,
+            task_number: task.task_number || rich.task_number,
             display_name: task.task_display_name || rich.display_name,
             research_name: `${task.suite_label || ""} · ${rich.research_name || task.research_name || ""}`.replace(/^ · /, ""),
             metric: {
@@ -9775,11 +9877,6 @@ python scripts/validate_publication_package.py</code></pre>
       grid.innerHTML = taskEntries.map((task, index) => {
         const family = task.task_family;
         const icon = taskIconFor(task);
-        const minimal = formatMetric(task.metric?.minimal);
-        const neural = formatMetric(task.metric?.neural_mlp);
-        const barMeaning = methodBarMeaning(task);
-        const minimalWidth = methodBarWidth(task, task.metric?.minimal);
-        const neuralWidth = methodBarWidth(task, task.metric?.neural_mlp);
         const modalityChips = (task.modalities || [])
           .map((key) => modalityMeta[key]?.label || key)
           .filter(Boolean)
@@ -9805,26 +9902,7 @@ python scripts/validate_publication_package.py</code></pre>
               <span><strong>Output</strong>${escapeHtml(task.output_short)}</span>
             </div>
             <div class="task-modality-chips" aria-label="Modalities used by ${escapeHtml(task.display_name)}">${modalityChips}</div>
-            <div class="metric-row">
-              <span><strong>${minimal}</strong>minimal ${escapeHtml(task.metric?.name)}</span>
-              <span><strong>${neural}</strong>neural MLP</span>
-            </div>
-            <div class="task-score-note">
-              <span>Public-sample task-head scores</span>
-              <span>Bars compare methods within task</span>
-            </div>
-            <div class="method-bars" aria-label="${escapeHtml(barMeaning)}" title="${escapeHtml(barMeaning)}">
-              <span class="method-bar minimal">
-                <span>Minimal</span>
-                <span class="method-bar-line"><span class="method-bar-fill" style="--w:${minimalWidth.toFixed(1)}%"></span></span>
-                <span class="method-bar-value">${minimal}</span>
-              </span>
-              <span class="method-bar neural">
-                <span>Neural</span>
-                <span class="method-bar-line"><span class="method-bar-fill" style="--w:${neuralWidth.toFixed(1)}%"></span></span>
-                <span class="method-bar-value">${neural}</span>
-              </span>
-            </div>
+            ${renderTaskMethodResults(task, index)}
           </button>
         `;
       }).join("");
@@ -9985,12 +10063,16 @@ python scripts/validate_publication_package.py</code></pre>
 
     async function initTaskSurface() {
       try {
-        const [walkthroughResponse, suiteResponse] = await Promise.all([
+        const [walkthroughResponse, suiteResponse, matrixPayload] = await Promise.all([
           fetch("data/task_walkthroughs.json", { cache: "no-cache" }),
-          fetch("data/task_suite_20.json", { cache: "no-cache" })
+          fetch("data/task_suite_20.json", { cache: "no-cache" }),
+          fetch("data/task_method_20_result_matrix.json", { cache: "no-cache" })
+            .then((response) => response.ok ? response.json() : null)
+            .catch(() => null)
         ]);
         if (!walkthroughResponse.ok) throw new Error(`walkthrough data ${walkthroughResponse.status}`);
         if (!suiteResponse.ok) throw new Error(`suite data ${suiteResponse.status}`);
+        prepareTaskResultLookup(matrixPayload);
         taskEntries = mergeUnifiedTaskCards(await walkthroughResponse.json(), await suiteResponse.json());
         renderTaskCards();
         renderSelector();

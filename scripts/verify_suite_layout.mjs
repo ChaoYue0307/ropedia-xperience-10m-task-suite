@@ -88,10 +88,12 @@ async function inspectViewport(page, baseUrl, viewport, name) {
     const taskCards = [...document.querySelectorAll("#taskGrid .task-card")].map((card) => {
       const rect = card.getBoundingClientRect();
       const style = window.getComputedStyle(card);
+      const methodScoreCount = card.querySelectorAll(".task-method-score").length;
       return {
         width: rect.width,
         height: rect.height,
         opacity: Number(style.opacity),
+        methodScoreCount,
         text: card.textContent.replace(/\s+/g, " ").trim().slice(0, 160)
       };
     });
@@ -108,7 +110,9 @@ async function inspectViewport(page, baseUrl, viewport, name) {
       taskGrid,
       jumpLinks,
       taskCardCount: taskCards.length,
+      methodScoreCounts: taskCards.map((card) => card.methodScoreCount),
       collapsedTaskCards: taskCards.filter((card) => card.width < 220 || card.height < 180),
+      incompleteMethodScoreCards: taskCards.filter((card) => card.methodScoreCount !== 9),
       hiddenTaskCards: taskCards.filter((card) => card.opacity < 0.8),
       filters,
       hasOldStandaloneTasks: Boolean(oldStandaloneTasks),
@@ -123,6 +127,7 @@ async function inspectViewport(page, baseUrl, viewport, name) {
   if (!metrics.tasks) failures.push("missing #tasks task-card anchor inside suite");
   if (metrics.hasOldStandaloneTasks) failures.push("old standalone main > section#tasks still exists");
   if (metrics.taskCardCount !== 20) failures.push(`expected 20 task cards, found ${metrics.taskCardCount}`);
+  if (metrics.incompleteMethodScoreCards.length) failures.push(`${metrics.incompleteMethodScoreCards.length} task cards do not show all 9 method scores`);
   if (metrics.filters.length !== 5) failures.push(`expected 5 task filters, found ${metrics.filters.length}`);
   if (!metrics.jumpLinks.includes("#task-suite-map") || !metrics.jumpLinks.includes("#suite-radars") || !metrics.jumpLinks.includes("#tasks")) {
     failures.push("suite jump row is missing required anchors");
