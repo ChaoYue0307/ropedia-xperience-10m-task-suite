@@ -365,6 +365,12 @@
     .nav-action-hf {
       min-width: 54px;
     }
+    .nav-action-official {
+      min-width: 76px;
+    }
+    .nav-action-dev {
+      min-width: 92px;
+    }
     .nav-action-repo {
       min-width: 78px;
       background: var(--green);
@@ -6160,6 +6166,12 @@
       .nav-action-hf {
         min-width: 54px;
       }
+      .nav-action-official {
+        min-width: 64px;
+      }
+      .nav-action-dev {
+        min-width: 58px;
+      }
       .nav-action-repo {
         min-width: 72px;
       }
@@ -6396,7 +6408,7 @@
       .nav-action {
         min-width: 40px;
         height: 36px;
-        padding: 0 9px;
+        padding: 0 8px;
         font-size: 11.5px;
         gap: 5px;
       }
@@ -6408,7 +6420,7 @@
       .nav-action-repo {
         display: inline-flex;
         min-width: 40px;
-        padding: 0 9px;
+        padding: 0 8px;
       }
       .nav-action-repo .nav-action-text-short {
         font-size: 0;
@@ -6789,7 +6801,7 @@
       .nav-action {
         min-width: 34px;
         height: 30px;
-        padding: 0 7px;
+        padding: 0 6px;
         font-size: 10.8px;
       }
       .nav-action::before {
@@ -6802,7 +6814,7 @@
       }
       .nav-action-repo {
         min-width: 34px;
-        padding: 0 7px;
+        padding: 0 6px;
       }
       .nav-action-repo .nav-action-text-short::after {
         font-size: 10.8px;
@@ -6861,6 +6873,14 @@
           <span id="siteLanguageStatus" class="site-language-status" aria-live="polite"></span>
         </div>
         <div class="nav-external-actions" aria-label="External project links">
+          <a class="nav-action nav-action-official" data-mark="RO" href="https://ropedia.com/" aria-label="Open official Ropedia website">
+            <span class="nav-action-text-full">Ropedia</span>
+            <span class="nav-action-text-short">RO</span>
+          </a>
+          <a class="nav-action nav-action-dev" data-mark="Dev" href="https://github.com/Ropedia" aria-label="Open Ropedia development organization on GitHub">
+            <span class="nav-action-text-full">Ropedia Dev</span>
+            <span class="nav-action-text-short">Dev</span>
+          </a>
           <a class="nav-action nav-action-hf" data-mark="HF" href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite" aria-label="Open Hugging Face Space">
             <span class="nav-action-text-full">HF Space</span>
             <span class="nav-action-text-short">HF</span>
