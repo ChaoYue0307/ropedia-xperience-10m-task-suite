@@ -7636,9 +7636,9 @@
           <div class="brief-panel-head">
             <div>
               <span>Project brief</span>
-              <h3>From one public episode to an extensible embodied-AI task lab.</h3>
+              <h3>Two public evidence lines: inspectable task lab and comparison surface.</h3>
             </div>
-            <p>Xperience-10M is much larger than the public sample. This project focuses on the sample available now, turns it into clear task contracts and baseline artifacts, and keeps the same data contract ready for held-out multi-episode training when more episodes are prepared.</p>
+            <p>This project has two public evidence lines: Line 1 uses one public sample episode as an inspectable task lab; Line 2 uses selected-128 public-safe derived artifacts as a same-split comparison surface for baselines and model diagnostics. The public sample remains the raw-inspectable development harness; selected-128 is the model-comparison surface.</p>
           </div>
           <div class="brief-grid" aria-label="Project brief cards">
             <article class="brief-card">
@@ -7648,10 +7648,11 @@
             <article class="brief-card">
               <strong>What is implemented</strong>
               <ul>
-                <li>1,161 aligned windows from one public sample episode</li>
+                <li>Line 1: 1,161 aligned windows from one public sample episode</li>
+                <li>Line 2: selected-128 same-split comparison surface</li>
                 <li>20 unified task contracts with minimal and neural evidence</li>
-                <li>One shared setup across all 20 task axes</li>
-                <li>Four research-direction maps and extension probes</li>
+                <li>180 scored method-task records with direct/proxy labels</li>
+                <li>Research-direction maps, extension probes, and scale-up paths</li>
               </ul>
             </article>
             <article class="brief-card">
@@ -7662,7 +7663,7 @@
           <div class="brief-grid" aria-label="Research capability map">
             <article class="brief-card">
               <strong>Data understanding</strong>
-              <p>Maps one public episode into synchronized windows across video, audio, depth, pose/SLAM, mocap, IMU, calibration, and language-derived signals.</p>
+              <p>Maps one public episode into raw-inspectable synchronized windows, then connects selected-128 public-safe artifacts to same-split comparison rows.</p>
             </article>
             <article class="brief-card">
               <strong>Task design</strong>
@@ -7670,11 +7671,11 @@
             </article>
             <article class="brief-card">
               <strong>Evaluation discipline</strong>
-              <p>Keeps chronological splits, predictions, confusion matrices, leakage notes, and single-episode limits visible before moving to broader model-quality reads.</p>
+              <p>Keeps chronological splits, predictions, confusion matrices, leakage notes, evidence-line boundaries, and direct/proxy score labels visible before broader model-quality reads.</p>
             </article>
             <article class="brief-card">
               <strong>Scale-up readiness</strong>
-              <p>Connects the same data contract to 128-episode baselines, a no-new-episode enhancement pack, Qwen3-Omni LoRA, Cosmos-style world modeling, policy/VLA tracks, and the later Xperience-native pretraining goal.</p>
+              <p>Connects the same data contract to selected-128 baselines, Qwen3-Omni/Cosmos3 diagnostics, a no-new-episode enhancement pack, policy/VLA candidates, and the later Xperience-native pretraining goal.</p>
             </article>
           </div>
           <div class="brief-actions">
@@ -9236,7 +9237,7 @@
           <article class="evidence-card">
             <span class="status-pill">current plan</span>
             <h3>Foundation backbones are separated by role</h3>
-            <p>Qwen3-Omni is the trainable held-out LoRA track; Cosmos3 covers world-model diagnostics; OpenVLA/openpi/GR00T become policy candidates after robot-compatible action conversion; Xperience-native pretraining remains the later full-corpus goal.</p>
+            <p>Current implemented/diagnostic tracks are Qwen3-Omni v6 and Cosmos3-Super/Nano. Candidate future policy tracks are OpenVLA/openpi/GR00T-style models after robot-compatible action conversion. Long-term, this points toward an Xperience-native embodied foundation model.</p>
             <div class="evidence-links">
               <a href="data/foundation_model_plan.json">foundation model plan</a>
               <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">plan doc</a>
@@ -9555,7 +9556,7 @@
               <article class="artifact primary-artifact"><div><h3>Two-line model comparison</h3><p>Groups Line 1 task-head baselines and Line 2 selected-128 methods: metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Nano Future Window, and Cosmos3-Super Reasoner.</p></div><a href="data/omni_model_comparison.json">result comparison</a></article>
               <article class="artifact primary-artifact"><div><h3>128-episode source + features</h3><p>Maps every selected official Xperience-10M episode id to its gated source tree and the public-safe processed features: Qwen v6 multiscale windows, dense multiscale rows, and metadata matrices.</p></div><a href="data/xperience10m_128_episode_feature_index.json">source/feature index</a></article>
               <article class="artifact"><h3>128-Episode Task Suite Enhancement Pack</h3><p>Canonical no-new-episode plan for denser supervision: `multiscale_20s10_40s20_80s40`, hierarchical action/subtask labels, stronger scoring slices, and raw-feature shard priorities.</p><a href="data/task_suite_enhancement_128.json">enhancement data</a></article>
-              <article class="artifact"><h3>Foundation-model plan</h3><p>Backbone selection matrix covering Qwen3-Omni, Cosmos 3, GR00T, OpenVLA/openpi, Gemini Robotics, Octo, SmolVLA-style policy candidates, and the future Xperience-native pretraining goal.</p><a href="data/foundation_model_plan.json">foundation model plan</a></article>
+              <article class="artifact"><h3>Foundation-model plan</h3><p>Separates current implemented/diagnostic tracks (Qwen3-Omni v6, Cosmos3-Super/Nano), candidate future policy tracks (OpenVLA/openpi/GR00T-style models after action conversion), and the long-term Xperience-native embodied foundation model goal.</p><a href="data/foundation_model_plan.json">foundation model plan</a></article>
               <article class="artifact"><h3>Multi-episode data access</h3><p>Public data-access path, selected 128-episode pilot plan, and preparation requirements.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/results/omni_finetune/MULTI_EPISODE_ACCESS_STATUS.md">data access</a></article>
               <article class="artifact"><h3>Qwen3-Omni LoRA group</h3><p>Separates the 1-episode sensor-adapter smoke test from Qwen run v1-v6. v6 is the current 20-task matrix row, while v5 remains the pinned prior release.</p><a href="data/qwen3_omni_run_lineage.json">Qwen v1-v6 lineage</a><a href="data/omni_model_comparison.json">Qwen group</a></article>
               <article class="artifact"><h3>Cosmos3 groups</h3><p>Shows the verified Nano future-window compatibility package, the Super base-weight Reasoner JSON-task evaluation, and the Super fine-tuned forward-dynamics LoRA artifact with separate loss metrics.</p><a href="data/omni_model_comparison.json">Cosmos groups</a></article>

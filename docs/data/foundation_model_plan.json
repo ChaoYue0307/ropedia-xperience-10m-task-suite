@@ -1,7 +1,7 @@
 {
   "title": "Xperience-10M Foundation Model Plan",
   "status": "planning_artifact",
-  "current_boundary": "Verified held-out multi-episode foundation-model diagnostics now exist for Qwen3-Omni LoRA, Cosmos3-Nano future-window compatibility, Cosmos3-Super base-weight Reasoner evaluation, and Cosmos3-Super Forward-Dynamics LoRA. Qwen remains the structured JSON baseline; the Cosmos branches answer world-model or base-reasoner questions with separate metrics.",
+  "current_boundary": "The plan separates model families by maturity: current implemented/diagnostic tracks are Qwen3-Omni v6 and Cosmos3-Super/Nano; candidate future policy tracks are OpenVLA/openpi/GR00T-style models after robot-compatible action conversion; the long-term goal is an Xperience-native embodied foundation model after smaller selected-episode stages prove value.",
   "pipeline_tracks": {
     "source_document": "THREE_FOUNDATION_PIPELINES.md",
     "data": "docs/data/three_foundation_pipelines.json",
@@ -28,6 +28,18 @@
     ]
   },
   "decision": {
+    "reader_framing": "Read the registry as staged model planning, not a list of current claims.",
+    "current_implemented_diagnostic_tracks": [
+      "Qwen3-Omni v6",
+      "Cosmos3-Super",
+      "Cosmos3-Nano"
+    ],
+    "candidate_future_policy_tracks": [
+      "OpenVLA / OpenVLA-OFT",
+      "openpi pi0/pi0.5",
+      "NVIDIA GR00T"
+    ],
+    "long_term_goal": "Xperience-native embodied foundation model",
     "immediate_trainable_backbone": "Qwen3-Omni",
     "first_world_model_branch": "Cosmos 3",
     "first_policy_branch_candidates": [

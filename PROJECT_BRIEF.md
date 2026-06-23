@@ -1,27 +1,27 @@
 # Project Brief
 
 This project presents Ropedia Xperience-10M through two public evidence lines.
-Line 1 turns one public sample episode into a concrete 20-task embodied-AI
-task lab. Line 2 compares selected 128-episode public-safe artifacts across
-aligned baselines, Qwen3-Omni v6, Cosmos3-Super, and Cosmos3-Nano.
+Line 1 uses one public sample episode as a raw-inspectable 20-task embodied-AI
+task lab. Line 2 uses selected-128 public-safe derived artifacts as a same-split
+comparison surface for aligned baselines, Qwen3-Omni v6, Cosmos3-Super, and
+Cosmos3-Nano.
 
 ## Research Intent
 
-The public sample is treated as a small but real research system, while the
-selected-128 line shows the first same-split scale-up comparison. The project
-does not blend those two evidence types. A reader should be able to trace one
-model input, understand each task, reproduce the public-sample results, compare
-the 128-episode method rows, and see what remains before presenting stronger
-model-quality numbers.
+The public sample remains the raw-inspectable development harness; selected-128
+is the model-comparison surface. The project does not blend those two evidence
+types. A reader should be able to trace one model input, understand each task,
+reproduce the public-sample results, compare the selected-128 method rows, and
+see what remains before presenting stronger model-quality numbers.
 
 ## Capability Map
 
 | Capability | Evidence in this project |
 | --- | --- |
-| Data understanding | `feature_manifest.json`, `available_modalities.json`, modality atlas, episode-window HF viewer |
+| Data understanding | `feature_manifest.json`, `available_modalities.json`, modality atlas, episode-window HF viewer, and selected-128 public-safe feature/index artifacts |
 | Task design | 20 unified task contracts, task cards, case-study walkthroughs, and four research-direction extension probes |
 | Evaluation rigor | chronological split, per-task metrics, predictions, confusion matrices, leakage notes, and generated takeaways |
-| Scale-up planning | Final verified 96/16/16 Qwen3-Omni v6 diagnostic row, same-split 128-episode baseline alignment, Cosmos3-Nano compatibility diagnostics, Cosmos3-Super diagnostics, and policy-model candidates after action-space conversion |
+| Scale-up planning | Final verified 96/16/16 Qwen3-Omni v6 diagnostic row, same-split selected-128 baseline alignment, Cosmos3-Nano compatibility diagnostics, Cosmos3-Super diagnostics, and policy-model candidates after action-space conversion |
 
 ## What Exists Now
 
@@ -55,10 +55,11 @@ model-quality numbers.
 
 Line 1 is enough to build and verify task definitions, feature contracts,
 metrics, visualization, and baseline code. It is not enough to measure final
-general embodied-AI model quality. Line 2 verifies the selected-128 held-out
-comparison surface and the Qwen3-Omni v6 diagnostic row; the next research
-stage is action/subtask error analysis, stronger structured-output training,
-and policy-target conversion before broader backbone comparisons.
+general embodied-AI model quality. Line 2 is the selected-128 held-out
+comparison surface: it verifies same-split baselines, model diagnostics, and the
+Qwen3-Omni v6 row. The next research stage is action/subtask error analysis,
+stronger structured-output training, and policy-target conversion before broader
+backbone comparisons.
 
 ## Best Entry Points
 

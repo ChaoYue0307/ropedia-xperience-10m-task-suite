@@ -5,11 +5,13 @@ Qwen3-Omni LoRA pilot. It separates immediate trainable work from later
 world-model and robot-policy branches, so the project can choose a backbone
 without mixing different research goals.
 
-Current status: this remains the backbone-selection plan, but the repo now has
-verified held-out multi-episode foundation-model diagnostics: Qwen3-Omni LoRA
-for structured JSON tasks, Cosmos3-Nano for future-window compatibility,
-Cosmos3-Super Reasoner as a base-weight JSON-task evaluation, and Cosmos3-Super
-Forward-Dynamics LoRA as the first fine-tuned Super adapter branch.
+Current status: this remains the backbone-selection plan, but the repo now
+separates model families by maturity. Current implemented/diagnostic tracks are
+Qwen3-Omni v6 for structured JSON tasks and Cosmos3-Super/Nano for public-safe
+world-model and reasoner diagnostics. Candidate future policy tracks are
+OpenVLA/openpi/GR00T-style models after robot-compatible action conversion. The
+long-term goal is an Xperience-native embodied foundation model after smaller
+selected-episode stages prove value.
 
 ## Three Pipeline Tracks
 
@@ -28,6 +30,12 @@ machine-readable copy at
 [`docs/data/three_foundation_pipelines.json`](docs/data/three_foundation_pipelines.json).
 
 ## Backbone Decision
+
+Read the table as a staged plan, not a list of current claims: Qwen3-Omni and
+Cosmos3 are the implemented/diagnostic tracks; OpenVLA, openpi, GR00T, Octo, and
+SmolVLA-style models are future policy candidates after action conversion;
+Gemini Robotics is an external reference; Xperience-native pretraining is the
+long-term full-corpus goal.
 
 | Priority | Model family | Best role for this project | Why it fits Xperience-10M | Current decision |
 | --- | --- | --- | --- | --- |
