@@ -2332,7 +2332,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 14px;
+      margin: 14px 0;
     }
     .matrix-legend-pill {
       min-height: 30px;
@@ -4149,11 +4149,21 @@
       gap: 22px;
       align-items: start;
     }
+    .data-scope-explorer {
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(204, 255, 160, 0.075), rgba(103, 232, 209, 0.035) 46%, rgba(2, 5, 2, 0.84)),
+        rgba(2, 5, 2, 0.72);
+      padding: 18px;
+      margin: 22px 0 24px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
+    }
     .data-analysis-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
-      margin: 22px 0;
+      margin: 0;
     }
     .data-analysis-card {
       border: 1px solid rgba(204, 255, 160, 0.20);
@@ -4165,7 +4175,28 @@
       display: grid;
       gap: 12px;
       align-content: start;
-      min-height: 280px;
+      min-height: 254px;
+      appearance: none;
+      width: 100%;
+      color: inherit;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+    }
+    .data-analysis-card:hover,
+    .data-analysis-card:focus-visible,
+    .data-analysis-card[aria-pressed="true"] {
+      border-color: rgba(204, 255, 160, 0.72);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.15), rgba(7, 18, 7, 0.70)),
+        rgba(2, 5, 2, 0.88);
+      box-shadow: 0 0 0 1px rgba(204, 255, 160, 0.12), 0 18px 46px rgba(0, 0, 0, 0.22);
+      transform: translateY(-2px);
+    }
+    .data-analysis-card:focus-visible {
+      outline: 2px solid rgba(204, 255, 160, 0.85);
+      outline-offset: 3px;
     }
     .data-analysis-card small,
     .data-analysis-table small,
@@ -4213,6 +4244,97 @@
       line-height: 1;
       letter-spacing: 0.02em;
     }
+    .data-scope-detail {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 16px;
+      border: 1px solid rgba(204, 255, 160, 0.22);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(90deg, rgba(204, 255, 160, 0.095), rgba(2, 5, 2, 0.50) 52%, rgba(103, 232, 209, 0.055)),
+        rgba(2, 5, 2, 0.70);
+      padding: 18px;
+    }
+    .data-scope-detail small {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .data-scope-detail h3 {
+      margin: 7px 0 8px;
+      color: var(--ink);
+      font-size: clamp(24px, 2.5vw, 38px);
+      line-height: 1.02;
+      text-wrap: balance;
+    }
+    .data-scope-detail p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.56;
+    }
+    .data-scope-facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .data-scope-facts span {
+      border: 1px solid rgba(204, 255, 160, 0.15);
+      border-radius: 13px;
+      background: rgba(2, 5, 2, 0.54);
+      padding: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .data-scope-facts strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 17px;
+      line-height: 1.05;
+    }
+    .data-scope-flow {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 10px;
+      align-items: stretch;
+      margin-top: 14px;
+    }
+    .data-scope-flow-item {
+      border: 1px solid rgba(204, 255, 160, 0.16);
+      border-radius: 14px;
+      background: rgba(2, 5, 2, 0.52);
+      padding: 12px;
+      min-height: 84px;
+    }
+    .data-scope-flow-item strong {
+      display: block;
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.15;
+    }
+    .data-scope-flow-item span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .data-scope-flow-arrow {
+      align-self: center;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 900;
+      opacity: 0.82;
+    }
     .data-analysis-table {
       border: 1px solid rgba(204, 255, 160, 0.18);
       border-radius: var(--radius);
@@ -4259,9 +4381,38 @@
       padding: 16px;
       display: grid;
       gap: 10px;
+      position: relative;
+      transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease, background 160ms ease;
+    }
+    .data-chart-card.is-scope-active {
+      border-color: rgba(204, 255, 160, 0.72);
+      background:
+        linear-gradient(180deg, rgba(204, 255, 160, 0.08), rgba(2, 5, 2, 0.74)),
+        rgba(7, 18, 7, 0.70);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.20);
+      transform: translateY(-2px);
     }
     .data-chart-card.wide {
       grid-column: 1 / -1;
+    }
+    .data-chart-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .chart-scope-chip {
+      border: 1px solid rgba(204, 255, 160, 0.20);
+      border-radius: 999px;
+      background: rgba(204, 255, 160, 0.075);
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      padding: 5px 8px;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
     .data-chart-card h3 {
       margin: 0;
@@ -4283,6 +4434,9 @@
       border: 1px solid rgba(204, 255, 160, 0.12);
       background: #020502;
       object-fit: contain;
+    }
+    .data-chart-card.is-scope-active img {
+      border-color: rgba(204, 255, 160, 0.28);
     }
     .data-chart-card.wide img {
       min-height: 430px;
@@ -5986,6 +6140,7 @@
         border-bottom: 1px solid var(--line);
       }
       .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .resource-mode-grid, .suite-lines, .result-reading-order, .result-rules-panel, .data-analysis-grid, .data-analysis-chart-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .data-scope-detail { grid-template-columns: 1fr; }
       .reader-route-panel,
       .task-axis-head,
       .method-flow-head {
@@ -6316,7 +6471,16 @@
         width: 100%;
         justify-content: center;
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .result-rules-panel, .reader-route-list, .task-axis-grid, .task-axis-summary, .task-axis-reader-rule, .task-axis-key, .task-axis-task-list, .task-axis-visual figcaption, .method-flow-steps, .suite-task-index-head, .data-analysis-grid, .data-analysis-chart-grid, .data-analysis-table-header { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .result-rules-panel, .reader-route-list, .task-axis-grid, .task-axis-summary, .task-axis-reader-rule, .task-axis-key, .task-axis-task-list, .task-axis-visual figcaption, .method-flow-steps, .suite-task-index-head, .data-analysis-grid, .data-analysis-chart-grid, .data-analysis-table-header, .data-scope-detail, .data-scope-facts { grid-template-columns: 1fr; }
+      .data-scope-explorer { padding: 12px; }
+      .data-scope-flow {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .data-scope-flow-arrow {
+        justify-self: center;
+        transform: rotate(90deg);
+      }
       .roadmap-entry-steps,
       .roadmap-resource-grid {
         grid-template-columns: 1fr;
@@ -7855,40 +8019,62 @@
           <h2>Data explorer analysis.</h2>
           <p>Read the data at three separate scales: the official public sample episode, the selected 128-episode feature surface, and authenticated file metadata for the Hugging Face-hosted gated full dataset. The charts are generated by a reproducible script and keep raw data boundaries explicit.</p>
         </div>
-        <div class="data-analysis-grid" aria-label="Three Xperience-10M data scopes">
-          <article class="data-analysis-card">
-            <small>scope 1 / public sample</small>
-            <h3>One inspectable episode.</h3>
-            <p>The browser-facing sample is the concrete data lab: six synchronized videos, embedded audio, one annotation HDF5, one Rerun recording, and aligned 20-frame windows.</p>
-            <div class="data-analysis-metrics">
-              <span><strong>5,821</strong>frames</span>
-              <span><strong>1,161</strong>20-frame windows</span>
-              <span><strong>8,546</strong>input dimensions</span>
-              <span><strong>4.76 GiB</strong>sample files</span>
+        <div class="data-scope-explorer" data-scope-explorer data-default-scope="sample" aria-label="Interactive comparison of three Xperience-10M data scopes">
+          <div class="data-analysis-grid" role="group" aria-label="Choose a data scope">
+            <button type="button" class="data-analysis-card" data-scope="sample" aria-pressed="true">
+              <small>scope 1 / public sample</small>
+              <h3>One inspectable episode.</h3>
+              <p>The browser-facing sample is the concrete data lab: six synchronized videos, embedded audio, one annotation HDF5, one Rerun recording, and aligned 20-frame windows.</p>
+              <div class="data-analysis-metrics">
+                <span><strong>5,821</strong>frames</span>
+                <span><strong>1,161</strong>20-frame windows</span>
+                <span><strong>8,546</strong>input dimensions</span>
+                <span><strong>4.76 GiB</strong>sample files</span>
+              </div>
+            </button>
+            <button type="button" class="data-analysis-card" data-scope="selected" aria-pressed="false">
+              <small>scope 2 / selected 128</small>
+              <h3>Held-out comparison surface.</h3>
+              <p>The selected-128 line keeps one episode per top-level session, a fixed train/val/test split, public-safe feature matrices, and multiscale JSONL windows for model scoring.</p>
+              <div class="data-analysis-metrics">
+                <span><strong>96/16/16</strong>train/val/test episodes</span>
+                <span><strong>34,269</strong>Qwen v6 rows</span>
+                <span><strong>106,095</strong>dense compact rows</span>
+                <span><strong>277.71 GiB</strong>source size view</span>
+              </div>
+            </button>
+            <button type="button" class="data-analysis-card" data-scope="full" aria-pressed="false">
+              <small>scope 3 / HF gated full dataset</small>
+              <h3>Full-corpus metadata.</h3>
+              <p>The official dataset remains gated. This project records file-level Hub metadata so readers can understand scale without downloading private raw MP4, HDF5, or RRD files.</p>
+              <div class="data-analysis-metrics">
+                <span><strong>804</strong>top-level sessions</span>
+                <span><strong>12,103</strong>episode-like folders</span>
+                <span><strong>85,257</strong>files</span>
+                <span><strong>24.63 TiB</strong>training bytes</span>
+              </div>
+            </button>
+          </div>
+          <div class="data-scope-detail" aria-live="polite">
+            <div>
+              <small data-scope-detail-kicker>selected scope / public sample</small>
+              <h3 data-scope-detail-title>Public sample episode: inspectable raw evidence.</h3>
+              <p data-scope-detail-body>The public sample is the only raw episode mirrored into the browser. Use it to understand file roles, synchronized streams, HDF5 contents, modality features, and how one episode becomes 20-frame task windows.</p>
             </div>
-          </article>
-          <article class="data-analysis-card">
-            <small>scope 2 / selected 128</small>
-            <h3>Held-out comparison surface.</h3>
-            <p>The selected-128 line keeps one episode per top-level session, a fixed train/val/test split, public-safe feature matrices, and multiscale JSONL windows for model scoring.</p>
-            <div class="data-analysis-metrics">
-              <span><strong>96/16/16</strong>train/val/test episodes</span>
-              <span><strong>34,269</strong>Qwen v6 rows</span>
-              <span><strong>106,095</strong>dense compact rows</span>
-              <span><strong>277.71 GiB</strong>source size view</span>
+            <div class="data-scope-facts" data-scope-detail-facts aria-label="Selected data-scope facts">
+              <span><strong>Raw contents</strong>6 MP4 streams, audio in MP4, annotation.hdf5, and visualization.rrd.</span>
+              <span><strong>Training view</strong>1,161 aligned windows with 8,546 feature dimensions.</span>
+              <span><strong>Best use</strong>File inspection, task construction, and local reproducibility.</span>
+              <span><strong>Boundary</strong>One official episode; no diversity or scale claim.</span>
             </div>
-          </article>
-          <article class="data-analysis-card">
-            <small>scope 3 / HF gated full dataset</small>
-            <h3>Full-corpus metadata.</h3>
-            <p>The official dataset remains gated. This project records file-level Hub metadata so readers can understand scale without downloading private raw MP4, HDF5, or RRD files.</p>
-            <div class="data-analysis-metrics">
-              <span><strong>804</strong>top-level sessions</span>
-              <span><strong>12,103</strong>episode-like folders</span>
-              <span><strong>85,257</strong>files</span>
-              <span><strong>24.63 TiB</strong>training bytes</span>
-            </div>
-          </article>
+          </div>
+          <div class="data-scope-flow" aria-label="How the three data scopes relate">
+            <div class="data-scope-flow-item"><strong>1. Inspect one episode</strong><span>Open media, HDF5, RRD, labels, and synchronized windows directly.</span></div>
+            <div class="data-scope-flow-arrow" aria-hidden="true">→</div>
+            <div class="data-scope-flow-item"><strong>2. Score selected 128</strong><span>Use public-safe derived rows for same-split baselines and model probes.</span></div>
+            <div class="data-scope-flow-arrow" aria-hidden="true">→</div>
+            <div class="data-scope-flow-item"><strong>3. Read HF full scale</strong><span>Use authenticated Hugging Face file metadata to understand upstream corpus size.</span></div>
+          </div>
         </div>
 
         <div class="data-analysis-table">
@@ -7932,35 +8118,35 @@
         </div>
 
         <div class="data-analysis-chart-grid" aria-label="Generated data explorer charts">
-          <article class="data-chart-card wide">
-            <small>scale comparison</small>
+          <article class="data-chart-card wide" data-scope-card="overview">
+            <div class="data-chart-meta"><small>scale comparison</small><span class="chart-scope-chip">all scopes</span></div>
             <h3>One sample, selected 128, and the HF full dataset are different reading scopes.</h3>
             <p>Log-scale bars keep the large jumps visible without hiding the small public-sample line.</p>
-            <img src="assets/charts/data_explorer_scope_ladder.svg?v=xperience10m-data-explorer-v1" alt="Scope ladder chart comparing public sample, selected 128 episodes, and the Hugging Face gated full dataset by episode count, window rows, and training bytes.">
+            <img src="assets/charts/data_explorer_scope_ladder.svg?v=xperience10m-data-explorer-v1" alt="Scope ladder chart comparing public sample, selected 128 episodes, and the Hugging Face gated full dataset by episode count, window rows, and training bytes." loading="lazy" decoding="async">
           </article>
-          <article class="data-chart-card">
-            <small>sample feature anatomy</small>
+          <article class="data-chart-card" data-scope-card="sample">
+            <div class="data-chart-meta"><small>sample feature anatomy</small><span class="chart-scope-chip">public sample</span></div>
             <h3>Video dominates the 8,546-dimensional public-sample input.</h3>
             <p>Motion capture, depth, language, pose/SLAM, audio, and inertial signals remain explicit feature groups.</p>
-            <img src="assets/charts/data_explorer_sample_feature_modalities.svg?v=xperience10m-data-explorer-v1" alt="Bar chart of public sample feature dimensions by modality group.">
+            <img src="assets/charts/data_explorer_sample_feature_modalities.svg?v=xperience10m-data-explorer-v1" alt="Bar chart of public sample feature dimensions by modality group." loading="lazy" decoding="async">
           </article>
-          <article class="data-chart-card">
-            <small>sample timeline labels</small>
+          <article class="data-chart-card" data-scope-card="sample">
+            <div class="data-chart-meta"><small>sample timeline labels</small><span class="chart-scope-chip">public sample</span></div>
             <h3>Window labels show which actions occupy the sample.</h3>
             <p>This helps readers see what the one-episode line can and cannot represent before opening task cards.</p>
-            <img src="assets/charts/data_explorer_sample_action_distribution.svg?v=xperience10m-data-explorer-v1" alt="Bar chart of the most frequent action labels by 20-frame window count.">
+            <img src="assets/charts/data_explorer_sample_action_distribution.svg?v=xperience10m-data-explorer-v1" alt="Bar chart of the most frequent action labels by 20-frame window count." loading="lazy" decoding="async">
           </article>
-          <article class="data-chart-card">
-            <small>selected-128 exports</small>
+          <article class="data-chart-card" data-scope-card="selected">
+            <div class="data-chart-meta"><small>selected-128 exports</small><span class="chart-scope-chip">selected 128</span></div>
             <h3>Feature rows grow by export density and window scale.</h3>
             <p>The selected-128 split is stable; sparse, Qwen v6 multiscale, and dense compact exports expose different row counts.</p>
-            <img src="assets/charts/data_explorer_selected128_split_rows.svg?v=xperience10m-data-explorer-v1" alt="Stacked bar chart of selected-128 processed rows by train, validation, and test split.">
+            <img src="assets/charts/data_explorer_selected128_split_rows.svg?v=xperience10m-data-explorer-v1" alt="Stacked bar chart of selected-128 processed rows by train, validation, and test split." loading="lazy" decoding="async">
           </article>
-          <article class="data-chart-card">
-            <small>HF full-dataset metadata</small>
+          <article class="data-chart-card" data-scope-card="full">
+            <div class="data-chart-meta"><small>HF full-dataset metadata</small><span class="chart-scope-chip">HF metadata</span></div>
             <h3>The Hugging Face full dataset is mostly repeated episode file structure.</h3>
             <p>The counts come from the gated <a href="https://huggingface.co/datasets/ropedia-ai/xperience-10m">ropedia-ai/xperience-10m</a> repository on Hugging Face. Each complete episode usually has one annotation HDF5 and six MP4 streams; RRD viewer recordings are optional.</p>
-            <img src="assets/charts/data_explorer_full_file_composition.svg?v=xperience10m-data-explorer-v1" alt="Log-scale file composition chart for the gated Hugging Face full-dataset metadata.">
+            <img src="assets/charts/data_explorer_full_file_composition.svg?v=xperience10m-data-explorer-v1" alt="Log-scale file composition chart for the gated Hugging Face full-dataset metadata." loading="lazy" decoding="async">
           </article>
         </div>
 
@@ -8471,18 +8657,18 @@
             <div class="result-matrix-stat"><strong>174</strong><span>direct scores</span></div>
             <div class="result-matrix-stat"><strong>6</strong><span>compact-proxy scores</span></div>
           </div>
+          <div class="result-matrix-legend" aria-label="Result table legend">
+            <span class="matrix-legend-pill" style="--pill-color:#ccffa0"><span class="term-with-help"><span>direct task score</span><span class="term-help" tabindex="0" aria-label="Direct score: A metric computed against the task target directly." title="A metric computed against the task target directly.">i<span class="term-tooltip" role="tooltip">A metric computed against the task target directly. This is the preferred score type in the 20-task matrix.</span></span></span></span>
+            <span class="matrix-legend-pill" style="--pill-color:#f472b6"><span class="term-with-help"><span>compact proxy score</span><span class="term-help" tabindex="0" aria-label="Compact-proxy score: A bounded proxy metric when a direct raw target is not publicly available." title="A bounded proxy metric when a direct raw target is not publicly available.">i<span class="term-tooltip" role="tooltip">A bounded proxy metric when a direct raw target is not publicly available. It stays explicit so readers do not over-read it.</span></span></span></span>
+            <span class="matrix-legend-pill" style="--pill-color:#9bb8ff"><span class="term-with-help"><span>raw value is citeable</span><span class="term-help" tabindex="0" aria-label="Raw metric value: The original metric value emitted by the runner or verified package." title="The original metric value emitted by the runner or verified package.">i<span class="term-tooltip" role="tooltip">The original metric value emitted by the runner or verified package. This is the value to cite.</span></span></span></span>
+            <span class="matrix-legend-pill" style="--pill-color:#67e8d1"><span class="term-with-help"><span>normalized value is radar-only</span><span class="term-help" tabindex="0" aria-label="Normalized radar value: A 0-1 plotting value used only to draw comparable radar polygons." title="A 0-1 plotting value used only to draw comparable radar polygons.">i<span class="term-tooltip" role="tooltip">A 0-1 plotting value used only to draw comparable radar polygons across metrics with different scales.</span></span></span></span>
+          </div>
           <details class="result-matrix-details">
             <summary>
               <span>open full 180-score audit table</span>
               <strong>Use this after the citation ledger. It contains the method summary, every method-task cell, direct/proxy badges, raw metric values, normalized radar values, and source-aligned evidence notes.</strong>
             </summary>
             <div class="result-matrix-body">
-              <div class="result-matrix-legend" aria-label="Result table legend">
-                <span class="matrix-legend-pill" style="--pill-color:#ccffa0"><span class="term-with-help"><span>direct task score</span><span class="term-help" tabindex="0" aria-label="Direct score: A metric computed against the task target directly." title="A metric computed against the task target directly.">i<span class="term-tooltip" role="tooltip">A metric computed against the task target directly. This is the preferred score type in the 20-task matrix.</span></span></span></span>
-                <span class="matrix-legend-pill" style="--pill-color:#f472b6"><span class="term-with-help"><span>compact proxy score</span><span class="term-help" tabindex="0" aria-label="Compact-proxy score: A bounded proxy metric when a direct raw target is not publicly available." title="A bounded proxy metric when a direct raw target is not publicly available.">i<span class="term-tooltip" role="tooltip">A bounded proxy metric when a direct raw target is not publicly available. It stays explicit so readers do not over-read it.</span></span></span></span>
-                <span class="matrix-legend-pill" style="--pill-color:#9bb8ff"><span class="term-with-help"><span>raw value is citeable</span><span class="term-help" tabindex="0" aria-label="Raw metric value: The original metric value emitted by the runner or verified package." title="The original metric value emitted by the runner or verified package.">i<span class="term-tooltip" role="tooltip">The original metric value emitted by the runner or verified package. This is the value to cite.</span></span></span></span>
-                <span class="matrix-legend-pill" style="--pill-color:#67e8d1"><span class="term-with-help"><span>normalized value is radar-only</span><span class="term-help" tabindex="0" aria-label="Normalized radar value: A 0-1 plotting value used only to draw comparable radar polygons." title="A 0-1 plotting value used only to draw comparable radar polygons.">i<span class="term-tooltip" role="tooltip">A 0-1 plotting value used only to draw comparable radar polygons across metrics with different scales.</span></span></span></span>
-              </div>
               <div class="method-summary-scroll" aria-label="Method summary table container">
                 <table class="method-summary-table" id="resultMethodSummary">
                   <thead>
@@ -9233,6 +9419,9 @@ python scripts/validate_publication_package.py</code></pre>
       ".figure-brief-card",
       ".result-matrix-panel",
       ".result-matrix-stat",
+      ".data-analysis-card",
+      ".data-chart-card",
+      ".data-scope-detail",
       ".direction-card",
       ".artifact-group",
       ".glossary-summary article"
@@ -9295,6 +9484,93 @@ python scripts/validate_publication_package.py</code></pre>
       observeXperienceReveal(document);
     }
     initPageMotion();
+
+    function escapeScopeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    const dataScopeCopy = {
+      sample: {
+        kicker: "selected scope / public sample",
+        title: "Public sample episode: inspectable raw evidence.",
+        body: "The public sample is the only raw episode mirrored into the browser. Use it to understand file roles, synchronized streams, HDF5 contents, modality features, and how one episode becomes 20-frame task windows.",
+        facts: [
+          ["Raw contents", "6 MP4 streams, audio in MP4, annotation.hdf5, and visualization.rrd."],
+          ["Training view", "1,161 aligned windows with 8,546 feature dimensions."],
+          ["Best use", "File inspection, task construction, and local reproducibility."],
+          ["Boundary", "One official episode; no diversity or scale claim."]
+        ]
+      },
+      selected: {
+        kicker: "selected scope / selected 128",
+        title: "Selected 128: same-split model and baseline surface.",
+        body: "The 128-episode line is the public-safe comparison surface for baselines and model probes. It keeps a fixed chronological split, derived feature rows, and source-linked windows without redistributing gated raw episodes.",
+        facts: [
+          ["Split", "96 train, 16 validation, and 16 test episodes."],
+          ["Rows", "34,269 Qwen v6 multiscale rows and 106,095 dense compact rows."],
+          ["Best use", "20-task scoring, radar comparison, method rows, and result-matrix updates."],
+          ["Boundary", "Derived public artifacts only; raw episode media remains gated upstream."]
+        ]
+      },
+      full: {
+        kicker: "selected scope / HF gated full dataset",
+        title: "Hugging Face full dataset: upstream scale from file metadata.",
+        body: "The full-dataset view summarizes authenticated Hugging Face Hub file metadata for ropedia-ai/xperience-10m. It explains session count, episode-like folder count, file composition, and storage footprint without inspecting private row contents.",
+        facts: [
+          ["Repository scale", "804 top-level sessions, 12,103 episode-like folders, and 85,257 files."],
+          ["Training bytes", "24.63 TiB excluding optional Rerun visualization files."],
+          ["Best use", "Corpus scale, file organization, and download planning."],
+          ["Boundary", "Metadata-only; gated rows and raw files are not redistributed here."]
+        ]
+      }
+    };
+
+    function initDataScopeExplorer() {
+      const root = document.querySelector("[data-scope-explorer]");
+      if (!root) return;
+      const triggers = Array.from(root.querySelectorAll("[data-scope]"));
+      const chartCards = Array.from(document.querySelectorAll("[data-scope-card]"));
+      const kicker = root.querySelector("[data-scope-detail-kicker]");
+      const title = root.querySelector("[data-scope-detail-title]");
+      const body = root.querySelector("[data-scope-detail-body]");
+      const facts = root.querySelector("[data-scope-detail-facts]");
+
+      function renderFacts(scope) {
+        const entry = dataScopeCopy[scope] || dataScopeCopy.sample;
+        facts.innerHTML = entry.facts.map(([label, value]) => (
+          `<span><strong>${escapeScopeHtml(label)}</strong>${escapeScopeHtml(value)}</span>`
+        )).join("");
+      }
+
+      function setScope(scope) {
+        const entry = dataScopeCopy[scope] || dataScopeCopy.sample;
+        root.dataset.activeScope = scope;
+        triggers.forEach((button) => {
+          const active = button.dataset.scope === scope;
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        chartCards.forEach((card) => {
+          const cardScopes = (card.dataset.scopeCard || "").split(/\s+/);
+          const active = cardScopes.includes(scope) || cardScopes.includes("overview");
+          card.classList.toggle("is-scope-active", active);
+        });
+        kicker.textContent = entry.kicker;
+        title.textContent = entry.title;
+        body.textContent = entry.body;
+        renderFacts(scope);
+      }
+
+      triggers.forEach((button) => {
+        button.addEventListener("click", () => setScope(button.dataset.scope));
+      });
+      setScope(root.dataset.defaultScope || triggers[0]?.dataset.scope || "sample");
+    }
+    initDataScopeExplorer();
 
     const modalityMeta = {
       video: { label: "Video", src: "assets/modalities/video.jpg" },
