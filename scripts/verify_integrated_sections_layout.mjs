@@ -170,11 +170,11 @@ async function inspectViewport(page, baseUrl, viewport, name) {
   for (const href of ["#direction-coverage", "#direction-baselines", "#extensions", "#suite"]) {
     if (!metrics.directionJumpLinks.includes(href)) failures.push(`missing Directions quick link ${href}`);
   }
-  for (const count of ["20", "4", "3"]) {
+  for (const count of ["20", "4", "3", "1"]) {
     if (!metrics.taskAxisSummaryCounts.includes(count)) failures.push(`missing public structure count ${count}`);
   }
-  if (metrics.taskAxisRuleCards.length !== 3) failures.push(`expected 3 public-structure reader-rule cards, found ${metrics.taskAxisRuleCards.length}`);
-  for (const marker of ["20-task layer", "4-direction layer", "3-pipeline layer"]) {
+  if (metrics.taskAxisRuleCards.length !== 4) failures.push(`expected 4 public-structure reader-rule cards, found ${metrics.taskAxisRuleCards.length}`);
+  for (const marker of ["20-task layer", "4-direction layer", "3-pipeline layer", "unified-model target"]) {
     if (!metrics.taskAxisRuleCards.some((text) => text.includes(marker))) failures.push(`missing reader-rule marker: ${marker}`);
   }
   if (metrics.resultBlocks.length !== 3) failures.push(`expected 3 integrated result subsections, found ${metrics.resultBlocks.length}`);

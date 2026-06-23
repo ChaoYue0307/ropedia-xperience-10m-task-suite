@@ -1,6 +1,6 @@
 {
   "title": "Ropedia Xperience-10M Task Suite Artifact Index",
-  "generated_at_utc": "2026-06-23T06:16:03+00:00",
+  "generated_at_utc": "2026-06-23T07:24:42+00:00",
   "status": "pass",
   "artifact_count": 228,
   "missing": [],
@@ -632,7 +632,7 @@
       "shows": "Machine-readable source-alignment pass/fail check for repo, website, and HF surfaces.",
       "exists": true,
       "bytes": 4432,
-      "sha256": "e8706007477657bf1d8155006462101d355b8c9bf0d8ab155fc74a577ccfec46"
+      "sha256": "9da89d3ebcdd8494d26ad63c00064b757c2fbefbb6bf3708a64c5e3d2aa5a1cf"
     },
     {
       "id": "source_alignment_validator",
@@ -1093,8 +1093,8 @@
       "surface": "repo_hf",
       "shows": "Catalogs public figures, charts, modality thumbnails, dimensions, hashes, roles, and source scripts.",
       "exists": true,
-      "bytes": 7421,
-      "sha256": "76306997bd59ee0219d5f990fb92358a25ec0d15a70d4eed213215abf6fd152c"
+      "bytes": 7472,
+      "sha256": "cb574f637e457a47b6b36bfa8b905886007e122064f4e12afd0143cca0ede76b"
     },
     {
       "id": "figure_index_json",
@@ -1104,8 +1104,8 @@
       "surface": "website_hf",
       "shows": "Machine-readable visual asset index for website and Hugging Face mirrors.",
       "exists": true,
-      "bytes": 20339,
-      "sha256": "15bb5dad98b9e53cb88c74e20e0a2b7e8f0080bf6d8301262b3df3e97216fe33"
+      "bytes": 20390,
+      "sha256": "78d850db3f9b627e754139a2316f359ca6c61b142d43d87d1c51326364e31d38"
     },
     {
       "id": "figure_index_builder",
@@ -1115,8 +1115,8 @@
       "surface": "repo_hf",
       "shows": "Regenerates visual-asset hashes, dimensions, and source-script provenance.",
       "exists": true,
-      "bytes": 17444,
-      "sha256": "521f69760ba5f7d2993222495833f56f883aca6b832e71dd36c410a757bc1e20"
+      "bytes": 17495,
+      "sha256": "cab9aa79378e5851e1bb80b01bc0c1fb2bb53342201d7a34caf7629926108dd7"
     },
     {
       "id": "brand_assets_json",
@@ -1182,7 +1182,7 @@
       "shows": "Machine-readable release-check summary for validators, mirrors, and public project surfaces.",
       "exists": true,
       "bytes": 8640,
-      "sha256": "dedc34fa478d0d55198dd775205f0fe76032a964f70b6eb34e7d5941bcb3ab03"
+      "sha256": "812203f1e12b211770f2a0771ecc2cf27d350250ea8181867e41e9c5f9ff47fc"
     },
     {
       "id": "public_surface_qa",
@@ -1318,8 +1318,8 @@
       "surface": "repo",
       "shows": "Fetches the published GitHub/HF URLs and compares live hashes and public-card markers against the release assets.",
       "exists": true,
-      "bytes": 69811,
-      "sha256": "4d44fb7c634d84735a9c0ec2b3c1ab56c75fc65cce6137aae981f81de9121040"
+      "bytes": 69839,
+      "sha256": "9bfe428736e073ca99ddd5a7e4aab1644028866c3501d46568c313efb5c155bf"
     },
     {
       "id": "reproducibility_contract",
@@ -1363,7 +1363,7 @@
       "volatile": true,
       "shows": "Confirms public bundles exclude raw data, caches, heavy archives, and credential text.",
       "exists": true,
-      "bytes": 14235,
+      "bytes": 10940,
       "hash_policy": "existence_and_size_only"
     },
     {

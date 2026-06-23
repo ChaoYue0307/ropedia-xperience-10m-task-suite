@@ -107,20 +107,24 @@ The multilingual README files are reader guides. The canonical technical evidenc
       <td>Spatial intelligence, human-video world modeling, and vision-language-action pipelines are documented as training recipes with task mappings, input-output contracts, and model-evidence requirements.</td>
     </tr>
     <tr>
+      <td><strong>1 unified target</strong></td>
+      <td>The long-term embodied foundation-model target connects perception, 3D memory, language-grounded reasoning, action, and planning without adding a new score axis.</td>
+    </tr>
+    <tr>
       <td><strong>Public mirrors</strong></td>
       <td>GitHub, GitHub Pages, HF Space, HF artifact dataset, HF baseline model repo, Qwen3-Omni and Cosmos3 model repos, and HF collection.</td>
     </tr>
   </tbody>
 </table>
 
-## Public Structure: 20 Tasks / 4 Directions / 3 Pipelines
+## Public Structure: 20 Tasks / 4 Directions / 3 Pipelines / 1 Unified Target
 
-Read the project as three layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are reader-facing research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets. Use them in that order when reading the project.
+Read the project as four connected layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are reader-facing research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets. The **1 unified embodied model target** is the long-term integration goal after those pipelines mature. Use them in that order when reading the project.
 
-Reader rule: if it has a metric, it is a **task**; if it explains what the evidence studies, it is a **direction**; if it describes model inputs and training targets, it is a **pipeline**.
+Reader rule: if it has a metric, it is a **task**; if it explains what the evidence studies, it is a **direction**; if it describes model inputs and training targets, it is a **pipeline**; if it combines perception, 3D memory, language, action, and planning, it is the **unified target** rather than an extra score axis.
 
 <p align="center">
-  <img src="docs/assets/charts/task_direction_pipeline_relationship.png" alt="Relationship map showing 20 task contracts, 4 research directions, and 3 foundation-model pipeline tracks" width="100%">
+  <img src="docs/assets/charts/task_direction_pipeline_relationship.png" alt="Relationship map showing 20 task contracts, 4 research directions, 3 foundation-model pipeline tracks, and 1 unified embodied model target" width="100%">
 </p>
 
 | Layer | Count | Reader role | Exact public labels |
@@ -128,6 +132,7 @@ Reader rule: if it has a metric, it is a **task**; if it explains what the evide
 | Task contracts | 20 | Score axes used by the matrix, radars, task cards, and method rows. | Action Recognition; Procedure Step Recognition; Action Boundary Detection; Next-Action Prediction; Hand Trajectory Forecasting; Contact State Prediction; Object Relevance Prediction; Language Grounding; Cross-Modal Retrieval; Cross-Modal Reconstruction; Temporal Order Verification; Multimodal Synchronization Detection; Long-Horizon Next-Action Forecasting; Long-Horizon Next-Subtask Forecasting; Interaction Text Prediction; Action-Object Relation Prediction; Future Object-Set Forecasting; IMU-to-Hand Pose Reconstruction; Camera-View Synchronization Retrieval; Time-to-Next-Transition Regression. |
 | Research directions | 4 | Ways to interpret what the 20 tasks study; not separate benchmark tiers. | Human Modeling & Motion Understanding; 3D/4D Reconstruction & Neural Rendering; Egocentric Vision & Interaction; Scene Reconstruction & World Modeling. |
 | Foundation pipelines | 3 | Larger-model training tracks with separate input-output recipes and result gates. | Spatial intelligence models; Human-video world models; Vision-language-action models. |
+| Unified embodied model target | 1 | Long-term integration target, not a task/method row in the 180-result matrix. | Perception; 3D memory; language-grounded reasoning; action; planning. |
 
 ## Two Evidence Lines
 

@@ -69,11 +69,11 @@ Einstieg: [Leitfaden zu zwei Evidenzlinien](TWO_EVIDENCE_LINES.md), [Daten der z
 
 ## Struktur
 
-- Leseregel: Hat es eine Metrik, gehört es zu den 20 Aufgaben; erklärt es, was die Evidenz untersucht, gehört es zu den 4 research directions; beschreibt es Trainings-Inputs und Targets, gehört es zu den 3 foundation pipelines.
+- Leseregel: Hat es eine Metrik, gehört es zu den 20 Aufgaben; erklärt es, was die Evidenz untersucht, gehört es zu den 4 research directions; beschreibt es Trainings-Inputs und Targets, gehört es zu den 3 foundation pipelines; verbindet es Wahrnehmung, 3D-Gedächtnis, Sprache, Aktion und Planung, ist es das unified embodied model target, keine zusätzliche Score-Achse.
 - Daten: 20-Frame-Fenster über Video, Audio, Tiefe, Pose/SLAM, Mocap, IMU, Kalibrierung und Sprachannotation.
 - Aufgaben: 20 Verträge für Erkennung, Vorhersage, Retrieval, Rekonstruktion, Ordnung, Synchronisierung, Langhorizont-Prognose, Aktion-Objekt-Bindung und Sensor-Brücken.
 - Ergebnisse: Single-Episode minimal/NN decken 20/20 ab; 128-Episode-Zweige trennen Metadata, Raw Features, Qwen3 und Cosmos; die öffentliche Matrix steht bei 180/180 gescorten Einträgen: 174 direct und 6 compact proxy, mit sichtbaren Proxy-Targets.
-- Richtungen: spatial intelligence, human-video world model und vision-language-action sind mit Aufgaben und Evidenzanforderungen dokumentiert.
+- Richtungen: spatial intelligence, human-video world model und vision-language-action sind mit Aufgaben und Evidenzanforderungen dokumentiert; das langfristige Ziel ist ein unified embodied foundation model.
 
 ## Öffentliche Grenze
 

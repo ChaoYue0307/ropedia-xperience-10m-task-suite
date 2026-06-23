@@ -69,11 +69,11 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 
 ## 構造
 
-- 読み方のルール: metric があるものは 20 tasks、evidence が何を調べるかを説明するものは 4 research directions、training input/output を定義するものは 3 foundation pipelines です。
+- 読み方のルール: metric があるものは 20 tasks、evidence が何を調べるかを説明するものは 4 research directions、training input/output を定義するものは 3 foundation pipelines です。perception、3D memory、language reasoning、action、planning を統合するものは unified embodied model target であり、新しい score axis ではありません。
 - データ: 20-frame window が video、audio、depth、pose/SLAM、mocap、IMU、calibration、language annotation を結びます。
 - タスク: 認識、予測、retrieval、reconstruction、order、sync、long-horizon、action-object、sensor bridge など 20 契約。
 - 結果: single-episode minimal/NN は 20/20。128-episode 側は metadata、raw feature、Qwen3、Cosmos を証拠タイプ別に分けます。公開 matrix は 180/180 scored records で、174 direct と 6 compact proxy を分離し、proxy targets は明示します。
-- 方向: spatial intelligence、human-video world model、vision-language-action に対して、タスク対応と必要証拠を記録しています。
+- 方向: spatial intelligence、human-video world model、vision-language-action に対して、タスク対応と必要証拠を記録しています。長期目標は unified embodied foundation model です。
 
 ## 公開境界
 

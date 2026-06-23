@@ -139,20 +139,24 @@ The multilingual README files are reader guides. The canonical technical evidenc
       <td>Spatial intelligence, human-video world modeling, and vision-language-action pipelines are documented as training recipes with task mappings, input-output contracts, and model-evidence requirements.</td>
     </tr>
     <tr>
+      <td><strong>1 unified target</strong></td>
+      <td>The long-term embodied foundation-model target connects perception, 3D memory, language-grounded reasoning, action, and planning without adding a new score axis.</td>
+    </tr>
+    <tr>
       <td><strong>Public mirrors</strong></td>
       <td>GitHub, GitHub Pages, HF Space, HF artifact dataset, HF baseline model repo, Qwen3-Omni and Cosmos3 model repos, and HF collection.</td>
     </tr>
   </tbody>
 </table>
 
-## Public Structure: 20 Tasks / 4 Directions / 3 Pipelines
+## Public Structure: 20 Tasks / 4 Directions / 3 Pipelines / 1 Unified Target
 
-Read the project as three layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are reader-facing research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets. Use them in that order when reading the project.
+Read the project as four connected layers. The **20 tasks** are the scored benchmark contracts. The **4 directions** are reader-facing research groupings over those same tasks. The **3 foundation pipelines** are training recipes that reuse the same modalities, windows, and task targets. The **1 unified embodied model target** is the long-term integration goal after those pipelines mature. Use them in that order when reading the project.
 
-Reader rule: if it has a metric, it is a **task**; if it explains what the evidence studies, it is a **direction**; if it describes model inputs and training targets, it is a **pipeline**.
+Reader rule: if it has a metric, it is a **task**; if it explains what the evidence studies, it is a **direction**; if it describes model inputs and training targets, it is a **pipeline**; if it combines perception, 3D memory, language, action, and planning, it is the **unified target** rather than an extra score axis.
 
 <p align="center">
-  <img src="docs/assets/charts/task_direction_pipeline_relationship.png" alt="Relationship map showing 20 task contracts, 4 research directions, and 3 foundation-model pipeline tracks" width="100%">
+  <img src="docs/assets/charts/task_direction_pipeline_relationship.png" alt="Relationship map showing 20 task contracts, 4 research directions, 3 foundation-model pipeline tracks, and 1 unified embodied model target" width="100%">
 </p>
 
 | Layer | Count | Reader role | Exact public labels |
@@ -160,6 +164,7 @@ Reader rule: if it has a metric, it is a **task**; if it explains what the evide
 | Task contracts | 20 | Score axes used by the matrix, radars, task cards, and method rows. | Action Recognition; Procedure Step Recognition; Action Boundary Detection; Next-Action Prediction; Hand Trajectory Forecasting; Contact State Prediction; Object Relevance Prediction; Language Grounding; Cross-Modal Retrieval; Cross-Modal Reconstruction; Temporal Order Verification; Multimodal Synchronization Detection; Long-Horizon Next-Action Forecasting; Long-Horizon Next-Subtask Forecasting; Interaction Text Prediction; Action-Object Relation Prediction; Future Object-Set Forecasting; IMU-to-Hand Pose Reconstruction; Camera-View Synchronization Retrieval; Time-to-Next-Transition Regression. |
 | Research directions | 4 | Ways to interpret what the 20 tasks study; not separate benchmark tiers. | Human Modeling & Motion Understanding; 3D/4D Reconstruction & Neural Rendering; Egocentric Vision & Interaction; Scene Reconstruction & World Modeling. |
 | Foundation pipelines | 3 | Larger-model training tracks with separate input-output recipes and result gates. | Spatial intelligence models; Human-video world models; Vision-language-action models. |
+| Unified embodied model target | 1 | Long-term integration target, not a task/method row in the 180-result matrix. | Perception; 3D memory; language-grounded reasoning; action; planning. |
 
 ## Two Evidence Lines
 
@@ -419,11 +424,11 @@ LANGUAGE_GUIDES = {
 
 ## 核心结构
 
-- 识别规则：有 metric 的是 20 个任务层；解释这些 evidence 研究什么的是 4 个 research directions；描述模型 input/output 和训练目标的是 3 条 foundation pipelines。
+- 识别规则：有 metric 的是 20 个任务层；解释这些 evidence 研究什么的是 4 个 research directions；描述模型 input/output 和训练目标的是 3 条 foundation pipelines；把感知、3D 记忆、语言推理、action 和 planning 合并起来的是 unified embodied model target，不是新的评分轴。
 - 数据层：公开 sample episode 被切成 20-frame 窗口，并连接视频、音频、深度、pose/SLAM、mocap、IMU、calibration 和语言标注。
 - 任务层：20 个统一任务覆盖识别、预测、检索、重建、同步、长时预测、action-object 关系和 sensor bridge。
 - 结果层：单 episode minimal/NN 覆盖 20/20；128-episode metadata/raw、Qwen3-Omni v6 LoRA、Cosmos3-Super Reasoner、Cosmos3-Nano Future Window 分开标注；当前公开矩阵为 180/180 scored records，其中 174 direct、6 compact proxy，proxy target 显式保留。
-- 训练方向：spatial intelligence、human-video world model、vision-language-action 三条 pipeline 已经有任务映射和需要的证据清单。
+- 训练方向：spatial intelligence、human-video world model、vision-language-action 三条 pipeline 已经有任务映射和需要的证据清单；长期目标是一个 unified embodied foundation model。
 
 ## 公开边界
 
@@ -468,11 +473,11 @@ Entradas: [guia de dos lineas de evidencia](TWO_EVIDENCE_LINES.md), [datos de do
 
 ## Estructura
 
-- Regla de lectura: si tiene una métrica, es una tarea de las 20; si explica qué estudia la evidencia, es una de las 4 research directions; si define inputs/outputs de entrenamiento, es una de las 3 foundation pipelines.
+- Regla de lectura: si tiene una métrica, es una tarea de las 20; si explica qué estudia la evidencia, es una de las 4 research directions; si define inputs/outputs de entrenamiento, es una de las 3 foundation pipelines; si combina percepción, memoria 3D, lenguaje, acción y planificación, es el unified embodied model target, no otro eje de score.
 - Datos: ventanas de 20 frames con video, audio, profundidad, pose/SLAM, mocap, IMU, calibración y lenguaje.
 - Tareas: 20 contratos para reconocimiento, predicción, recuperación, reconstrucción, sincronización, horizonte largo, relación acción-objeto y puentes de sensores.
 - Resultados: minimal/NN de un episodio cubren 20/20; las ramas de 128 episodios separan metadata, raw features, Qwen3 y Cosmos; la matriz pública está en 180/180 registros con score: 174 direct y 6 compact proxy, con proxy targets visibles.
-- Direcciones: spatial intelligence, human-video world model y vision-language-action tienen mapeo de tareas y requisitos de evidencia.
+- Direcciones: spatial intelligence, human-video world model y vision-language-action tienen mapeo de tareas y requisitos de evidencia; el objetivo largo plazo es un unified embodied foundation model.
 
 ## Límite Público
 
@@ -517,11 +522,11 @@ Entrées : [guide des deux lignes de preuve](TWO_EVIDENCE_LINES.md), [données d
 
 ## Structure
 
-- Règle de lecture : avec une métrique, c'est l'une des 20 tâches; si cela explique ce que les preuves étudient, c'est l'une des 4 research directions; si cela définit des inputs/outputs d'entraînement, c'est l'une des 3 foundation pipelines.
+- Règle de lecture : avec une métrique, c'est l'une des 20 tâches; si cela explique ce que les preuves étudient, c'est l'une des 4 research directions; si cela définit des inputs/outputs d'entraînement, c'est l'une des 3 foundation pipelines; si cela combine perception, mémoire 3D, langage, action et planification, c'est la cible unified embodied model, pas un nouvel axe de score.
 - Données : fenêtres de 20 frames reliant vidéo, audio, profondeur, pose/SLAM, mocap, IMU, calibration et annotations de langage.
 - Tâches : 20 contrats couvrant reconnaissance, prévision, retrieval, reconstruction, ordre, synchronisation, horizon long, relations action-objet et sensor bridge.
 - Résultats : minimal/NN sur l'épisode public couvrent 20/20; la ligne 128 épisodes sépare metadata, raw features, Qwen3-Omni et Cosmos3; la matrice publique atteint 180/180 enregistrements scorés: 174 direct et 6 compact proxy, avec proxy targets visibles.
-- Directions : spatial intelligence, human-video world model et vision-language-action sont documentés avec tâches et preuves nécessaires.
+- Directions : spatial intelligence, human-video world model et vision-language-action sont documentés avec tâches et preuves nécessaires; l'objectif à long terme est un unified embodied foundation model.
 
 ## Frontière Publique
 
@@ -566,11 +571,11 @@ Einstieg: [Leitfaden zu zwei Evidenzlinien](TWO_EVIDENCE_LINES.md), [Daten der z
 
 ## Struktur
 
-- Leseregel: Hat es eine Metrik, gehört es zu den 20 Aufgaben; erklärt es, was die Evidenz untersucht, gehört es zu den 4 research directions; beschreibt es Trainings-Inputs und Targets, gehört es zu den 3 foundation pipelines.
+- Leseregel: Hat es eine Metrik, gehört es zu den 20 Aufgaben; erklärt es, was die Evidenz untersucht, gehört es zu den 4 research directions; beschreibt es Trainings-Inputs und Targets, gehört es zu den 3 foundation pipelines; verbindet es Wahrnehmung, 3D-Gedächtnis, Sprache, Aktion und Planung, ist es das unified embodied model target, keine zusätzliche Score-Achse.
 - Daten: 20-Frame-Fenster über Video, Audio, Tiefe, Pose/SLAM, Mocap, IMU, Kalibrierung und Sprachannotation.
 - Aufgaben: 20 Verträge für Erkennung, Vorhersage, Retrieval, Rekonstruktion, Ordnung, Synchronisierung, Langhorizont-Prognose, Aktion-Objekt-Bindung und Sensor-Brücken.
 - Ergebnisse: Single-Episode minimal/NN decken 20/20 ab; 128-Episode-Zweige trennen Metadata, Raw Features, Qwen3 und Cosmos; die öffentliche Matrix steht bei 180/180 gescorten Einträgen: 174 direct und 6 compact proxy, mit sichtbaren Proxy-Targets.
-- Richtungen: spatial intelligence, human-video world model und vision-language-action sind mit Aufgaben und Evidenzanforderungen dokumentiert.
+- Richtungen: spatial intelligence, human-video world model und vision-language-action sind mit Aufgaben und Evidenzanforderungen dokumentiert; das langfristige Ziel ist ein unified embodied foundation model.
 
 ## Öffentliche Grenze
 
@@ -615,11 +620,11 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 
 ## 構造
 
-- 読み方のルール: metric があるものは 20 tasks、evidence が何を調べるかを説明するものは 4 research directions、training input/output を定義するものは 3 foundation pipelines です。
+- 読み方のルール: metric があるものは 20 tasks、evidence が何を調べるかを説明するものは 4 research directions、training input/output を定義するものは 3 foundation pipelines です。perception、3D memory、language reasoning、action、planning を統合するものは unified embodied model target であり、新しい score axis ではありません。
 - データ: 20-frame window が video、audio、depth、pose/SLAM、mocap、IMU、calibration、language annotation を結びます。
 - タスク: 認識、予測、retrieval、reconstruction、order、sync、long-horizon、action-object、sensor bridge など 20 契約。
 - 結果: single-episode minimal/NN は 20/20。128-episode 側は metadata、raw feature、Qwen3、Cosmos を証拠タイプ別に分けます。公開 matrix は 180/180 scored records で、174 direct と 6 compact proxy を分離し、proxy targets は明示します。
-- 方向: spatial intelligence、human-video world model、vision-language-action に対して、タスク対応と必要証拠を記録しています。
+- 方向: spatial intelligence、human-video world model、vision-language-action に対して、タスク対応と必要証拠を記録しています。長期目標は unified embodied foundation model です。
 
 ## 公開境界
 
@@ -664,11 +669,11 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 
 ## 구조
 
-- 읽기 규칙: metric이 있으면 20개 task layer이고, evidence가 무엇을 연구하는지 설명하면 4개 research direction layer이며, model input/output과 training target을 설명하면 3개 foundation pipeline layer입니다.
+- 읽기 규칙: metric이 있으면 20개 task layer이고, evidence가 무엇을 연구하는지 설명하면 4개 research direction layer이며, model input/output과 training target을 설명하면 3개 foundation pipeline layer입니다. perception, 3D memory, language reasoning, action, planning을 합치는 것은 unified embodied model target이며 새 score axis가 아닙니다.
 - 데이터: 20-frame window가 video, audio, depth, pose/SLAM, mocap, IMU, calibration, language annotation을 연결합니다.
 - 과제: 인식, 예측, retrieval, reconstruction, order, sync, long-horizon, action-object binding, sensor bridge 등 20개 계약.
 - 결과: single-episode minimal/NN은 20/20; 128-episode 레이어는 metadata, raw feature, Qwen3, Cosmos를 증거 유형별로 분리합니다. 공개 matrix는 180/180 scored records이며 174 direct와 6 compact proxy를 분리하고 proxy targets를 명시합니다.
-- 방향: spatial intelligence, human-video world model, vision-language-action에 대해 과제 매핑과 필요한 증거를 기록합니다.
+- 방향: spatial intelligence, human-video world model, vision-language-action에 대해 과제 매핑과 필요한 증거를 기록합니다. 장기 목표는 unified embodied foundation model입니다.
 
 ## 공개 경계
 
@@ -713,11 +718,11 @@ Entradas: [guia de duas linhas de evidencia](TWO_EVIDENCE_LINES.md), [dados das 
 
 ## Estrutura
 
-- Regra de leitura: se tem uma métrica, pertence às 20 tarefas; se explica o que a evidência estuda, pertence às 4 research directions; se define inputs/outputs de treino, pertence às 3 foundation pipelines.
+- Regra de leitura: se tem uma métrica, pertence às 20 tarefas; se explica o que a evidência estuda, pertence às 4 research directions; se define inputs/outputs de treino, pertence às 3 foundation pipelines; se combina percepção, memória 3D, linguagem, ação e planejamento, pertence ao unified embodied model target, não a um novo eixo de score.
 - Dados: janelas de 20 frames ligam vídeo, áudio, profundidade, pose/SLAM, mocap, IMU, calibração e anotações de linguagem.
 - Tarefas: 20 contratos cobrem reconhecimento, previsão, retrieval, reconstrução, ordem, sincronização, horizonte longo, relação ação-objeto e pontes de sensores.
 - Resultados: minimal/NN de um episódio cobrem 20/20; a camada de 128 episódios separa metadata, raw features, Qwen3 e Cosmos; a matriz pública está em 180/180 registros com score: 174 direct e 6 compact proxy, com proxy targets visíveis.
-- Direções: spatial intelligence, human-video world model e vision-language-action têm mapeamento de tarefas e requisitos de evidência.
+- Direções: spatial intelligence, human-video world model e vision-language-action têm mapeamento de tarefas e requisitos de evidência; o objetivo de longo prazo é um unified embodied foundation model.
 
 ## Fronteira Pública
 

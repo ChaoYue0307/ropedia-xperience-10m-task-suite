@@ -69,11 +69,11 @@ Entradas: [guia de duas linhas de evidencia](TWO_EVIDENCE_LINES.md), [dados das 
 
 ## Estrutura
 
-- Regra de leitura: se tem uma métrica, pertence às 20 tarefas; se explica o que a evidência estuda, pertence às 4 research directions; se define inputs/outputs de treino, pertence às 3 foundation pipelines.
+- Regra de leitura: se tem uma métrica, pertence às 20 tarefas; se explica o que a evidência estuda, pertence às 4 research directions; se define inputs/outputs de treino, pertence às 3 foundation pipelines; se combina percepção, memória 3D, linguagem, ação e planejamento, pertence ao unified embodied model target, não a um novo eixo de score.
 - Dados: janelas de 20 frames ligam vídeo, áudio, profundidade, pose/SLAM, mocap, IMU, calibração e anotações de linguagem.
 - Tarefas: 20 contratos cobrem reconhecimento, previsão, retrieval, reconstrução, ordem, sincronização, horizonte longo, relação ação-objeto e pontes de sensores.
 - Resultados: minimal/NN de um episódio cobrem 20/20; a camada de 128 episódios separa metadata, raw features, Qwen3 e Cosmos; a matriz pública está em 180/180 registros com score: 174 direct e 6 compact proxy, com proxy targets visíveis.
-- Direções: spatial intelligence, human-video world model e vision-language-action têm mapeamento de tarefas e requisitos de evidência.
+- Direções: spatial intelligence, human-video world model e vision-language-action têm mapeamento de tarefas e requisitos de evidência; o objetivo de longo prazo é um unified embodied foundation model.
 
 ## Fronteira Pública
 

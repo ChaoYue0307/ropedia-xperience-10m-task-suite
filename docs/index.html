@@ -1766,12 +1766,12 @@
     }
     .task-axis-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
     }
     .task-axis-visual {
       position: relative;
-      margin: 0 0 16px;
+      margin: 22px 0 18px;
       border: 1px solid rgba(204, 255, 160, 0.18);
       border-radius: var(--radius);
       overflow: hidden;
@@ -1787,18 +1787,17 @@
       background: #020502;
     }
     .task-axis-visual figcaption {
-      position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 14px;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 8px;
+      padding: 12px;
+      border-top: 1px solid rgba(204, 255, 160, 0.16);
+      background: rgba(2, 5, 2, 0.92);
     }
     .task-axis-visual figcaption span {
       border: 1px solid rgba(204, 255, 160, 0.22);
       border-radius: 8px;
-      background: rgba(2, 5, 2, 0.72);
+      background: rgba(204, 255, 160, 0.055);
       backdrop-filter: blur(10px);
       color: rgba(245, 247, 240, 0.84);
       font-family: var(--font-ui);
@@ -1819,7 +1818,7 @@
     }
     .task-axis-summary {
       display: grid;
-      grid-template-columns: 1.08fr 1fr 0.92fr;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
       margin: 0 0 16px;
     }
@@ -1877,7 +1876,7 @@
     }
     .task-axis-reader-rule {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
       margin: 0 0 16px;
     }
@@ -1914,7 +1913,7 @@
     }
     .task-axis-key {
       display: grid;
-      grid-template-columns: minmax(0, 1.24fr) minmax(0, 0.92fr) minmax(0, 0.84fr);
+      grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, 0.82fr));
       gap: 12px;
       margin: 0 0 16px;
     }
@@ -2048,7 +2047,7 @@
     }
     .task-axis-flow {
       display: grid;
-      grid-template-columns: 1fr auto 1fr auto 1fr;
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
       align-items: center;
       gap: 10px;
       margin-top: 14px;
@@ -6709,13 +6708,13 @@
             <a href="#artifacts"><span>04 reuse</span><strong>Artifacts and mirrors</strong><em>GitHub, GitHub Pages, HF Space, datasets, weights, and validation outputs.</em></a>
           </div>
         </div>
-        <div class="task-axis-panel" aria-label="Relationship between tasks, research directions, and training pipelines">
+        <div class="task-axis-panel" aria-label="Relationship between tasks, research directions, training pipelines, and unified embodied model target">
           <div class="task-axis-head">
             <div>
               <small>relationship map</small>
-              <strong>20 tasks / 4 directions / 3 foundation pipelines.</strong>
+              <strong>20 tasks / 4 directions / 3 pipelines / 1 unified model target.</strong>
             </div>
-            <p>Read the project in that order. The 20 tasks are the scored contracts; the four directions are reader-facing research groupings over those tasks; the three foundation pipelines are model-training recipes that reuse the same episode files.</p>
+            <p>Read the project in that order. The 20 tasks are scored contracts; the four directions group what those scores study; the three pipelines define training recipes; the unified embodied model is the long-term integration target.</p>
           </div>
           <div class="task-axis-summary" aria-label="Reader key for the public structure">
             <article class="task-axis-summary-card">
@@ -6742,8 +6741,16 @@
                 <p>Spatial intelligence, human-video world models, and vision-language-action models reuse the same files with different input-output recipes.</p>
               </div>
             </article>
+            <article class="task-axis-summary-card">
+              <span class="task-axis-count">1</span>
+              <div>
+                <small>unified target</small>
+                <strong>One embodied foundation model goal.</strong>
+                <p>The pipeline outputs converge toward perception, 3D memory, language, action, and planning in one model family.</p>
+              </div>
+            </article>
           </div>
-          <div class="task-axis-reader-rule" aria-label="How to identify the three public layers">
+          <div class="task-axis-reader-rule" aria-label="How to identify the public layers">
             <article>
               <span>score question</span>
               <strong>If it has a metric, it belongs to the 20-task layer.</strong>
@@ -6759,13 +6766,19 @@
               <strong>If it describes model inputs and targets, it belongs to the 3-pipeline layer.</strong>
               <p>Spatial, world-model, and VLA pipelines are recipes for future scale-up and task-grounded model training.</p>
             </article>
+            <article>
+              <span>synthesis question</span>
+              <strong>If it combines pipeline abilities, it belongs to the unified-model target.</strong>
+              <p>This is the expandable integration goal, not an extra scored task axis in the 180-result matrix.</p>
+            </article>
           </div>
           <figure class="task-axis-visual">
-            <img src="assets/charts/task_direction_pipeline_relationship.png?v=relationship-map-v2-chatgpt" alt="Labeled relationship map showing 20 task contracts flowing into four named research directions and three foundation-model training pipelines, with the current structure marked as expandable.">
+            <img src="assets/charts/task_direction_pipeline_relationship.png?v=relationship-map-v4-unified" alt="Labeled Ropedia Xperience-10M Task Suite relationship map showing 20 task contracts flowing into four named research directions, three foundation-model training pipelines, and one unified embodied foundation model target, with each layer open to expand.">
             <figcaption aria-label="Relationship map legend">
               <span><strong>20 tasks</strong>Score axes used by every method row.</span>
               <span><strong>4 directions</strong>Research questions for reading those scores.</span>
               <span><strong>3 pipelines</strong>Training recipes for larger foundation models.</span>
+              <span><strong>1 unified model</strong>Future integration target, not a new score axis.</span>
             </figcaption>
           </figure>
           <div class="task-axis-key" aria-label="Explicit relationship key for the map">
@@ -6817,6 +6830,17 @@
                 <li><b>3</b>Vision-language-action models</li>
               </ol>
             </article>
+            <article class="task-axis-key-card">
+              <span>1 unified target</span>
+              <strong>The pipelines converge into one embodied model goal.</strong>
+              <p>This target integrates perception, 3D memory, language, action, and planning. It is a research direction for scale-up, not a tenth method or twenty-first task.</p>
+              <ol class="task-axis-mini-list">
+                <li><b>P</b>Perception and multimodal input</li>
+                <li><b>M</b>3D memory and scene state</li>
+                <li><b>L</b>Language-grounded reasoning</li>
+                <li><b>A</b>Action and planning</li>
+              </ol>
+            </article>
           </div>
           <div class="task-axis-grid">
             <article class="task-axis-card">
@@ -6834,6 +6858,11 @@
               <strong>3 foundation pipelines</strong>
               <p>Spatial intelligence models; Human-video world models; Vision-language-action models.</p>
             </article>
+            <article class="task-axis-card">
+              <span>synthesis target</span>
+              <strong>1 unified embodied model</strong>
+              <p>A long-term model target where perception, spatial memory, language, action, and planning are trained against the same evidence structure.</p>
+            </article>
           </div>
           <div class="task-axis-flow" aria-label="Tasks directions and pipelines reading formula">
             <strong>20 tasks are the score axes.</strong>
@@ -6841,6 +6870,8 @@
             <strong>4 directions organize what the scores study.</strong>
             <span>-></span>
             <strong>3 pipelines describe how to train larger models.</strong>
+            <span>-></span>
+            <strong>1 unified model is the integration target.</strong>
           </div>
         </div>
         <figure class="line-map-figure">

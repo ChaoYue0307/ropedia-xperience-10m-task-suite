@@ -69,11 +69,11 @@
 
 ## 核心结构
 
-- 识别规则：有 metric 的是 20 个任务层；解释这些 evidence 研究什么的是 4 个 research directions；描述模型 input/output 和训练目标的是 3 条 foundation pipelines。
+- 识别规则：有 metric 的是 20 个任务层；解释这些 evidence 研究什么的是 4 个 research directions；描述模型 input/output 和训练目标的是 3 条 foundation pipelines；把感知、3D 记忆、语言推理、action 和 planning 合并起来的是 unified embodied model target，不是新的评分轴。
 - 数据层：公开 sample episode 被切成 20-frame 窗口，并连接视频、音频、深度、pose/SLAM、mocap、IMU、calibration 和语言标注。
 - 任务层：20 个统一任务覆盖识别、预测、检索、重建、同步、长时预测、action-object 关系和 sensor bridge。
 - 结果层：单 episode minimal/NN 覆盖 20/20；128-episode metadata/raw、Qwen3-Omni v6 LoRA、Cosmos3-Super Reasoner、Cosmos3-Nano Future Window 分开标注；当前公开矩阵为 180/180 scored records，其中 174 direct、6 compact proxy，proxy target 显式保留。
-- 训练方向：spatial intelligence、human-video world model、vision-language-action 三条 pipeline 已经有任务映射和需要的证据清单。
+- 训练方向：spatial intelligence、human-video world model、vision-language-action 三条 pipeline 已经有任务映射和需要的证据清单；长期目标是一个 unified embodied foundation model。
 
 ## 公开边界
 

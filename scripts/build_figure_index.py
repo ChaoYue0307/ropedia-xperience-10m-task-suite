@@ -68,9 +68,9 @@ FIGURES = [
     },
     {
         "id": "task_direction_pipeline_relationship",
-        "title": "20-task / 4-direction / 3-pipeline relationship map",
+        "title": "20-task / 4-direction / 3-pipeline / unified-model relationship map",
         "path": "docs/assets/charts/task_direction_pipeline_relationship.png",
-        "role": "Overview map showing the exact 20 task tiles, four research-direction groups, and three foundation-pipeline columns used by the public reader flow.",
+        "role": "Overview map showing the exact 20 task tiles, four research-direction groups, three foundation-pipeline columns, and the unified embodied model target used by the public reader flow.",
         "source_script": "docs/assets/charts/task_direction_pipeline_relationship.prompt.md",
         "surface": "website overview, HF Space, artifact dataset, model card",
     },

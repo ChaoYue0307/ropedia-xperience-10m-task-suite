@@ -69,11 +69,11 @@
 
 ## 구조
 
-- 읽기 규칙: metric이 있으면 20개 task layer이고, evidence가 무엇을 연구하는지 설명하면 4개 research direction layer이며, model input/output과 training target을 설명하면 3개 foundation pipeline layer입니다.
+- 읽기 규칙: metric이 있으면 20개 task layer이고, evidence가 무엇을 연구하는지 설명하면 4개 research direction layer이며, model input/output과 training target을 설명하면 3개 foundation pipeline layer입니다. perception, 3D memory, language reasoning, action, planning을 합치는 것은 unified embodied model target이며 새 score axis가 아닙니다.
 - 데이터: 20-frame window가 video, audio, depth, pose/SLAM, mocap, IMU, calibration, language annotation을 연결합니다.
 - 과제: 인식, 예측, retrieval, reconstruction, order, sync, long-horizon, action-object binding, sensor bridge 등 20개 계약.
 - 결과: single-episode minimal/NN은 20/20; 128-episode 레이어는 metadata, raw feature, Qwen3, Cosmos를 증거 유형별로 분리합니다. 공개 matrix는 180/180 scored records이며 174 direct와 6 compact proxy를 분리하고 proxy targets를 명시합니다.
-- 방향: spatial intelligence, human-video world model, vision-language-action에 대해 과제 매핑과 필요한 증거를 기록합니다.
+- 방향: spatial intelligence, human-video world model, vision-language-action에 대해 과제 매핑과 필요한 증거를 기록합니다. 장기 목표는 unified embodied foundation model입니다.
 
 ## 공개 경계
 

@@ -14,13 +14,17 @@ Asset type: high-resolution website figure for Ropedia Xperience-10M.
 
 Primary request: generate a polished, readable, dark neon Ropedia-style
 infographic that clearly explains the current expandable structure:
-20 task contracts -> 4 research directions -> 3 foundation training pipelines.
+20 task contracts -> 4 research directions -> 3 foundation training pipelines
+-> 1 unified embodied foundation model target.
 
 Critical text accuracy and layout:
 
-- Make the numbers 20, 4, and 3 unmistakable. Use large section headings:
-  `20 TASKS`, `4 RESEARCH DIRECTIONS`, `3 FOUNDATION PIPELINES`.
-- Add the subtitle: `Current public release, open to expand`.
+- Use the exact title: `Ropedia Xperience-10M Task Suite`.
+- Make the numbers 20, 4, 3, and 1 unmistakable. Use large section headings:
+  `20 TASKS`, `4 RESEARCH DIRECTIONS`, `3 FOUNDATION PIPELINES`,
+  and `1 UNIFIED EMBODIED FOUNDATION MODEL`.
+- Add the subtitle:
+  `20 tasks -> 4 directions -> 3 pipelines -> 1 unified embodied foundation model, open to expand`.
 - Left side: exactly twenty task tiles in a 5 x 4 grid. Use large numbers
   `01` through `20` plus simple icons. Keep task labels short and readable:
   Action, Step, Boundary, Next Action, Hand Path, Contact, Object, Grounding,
@@ -45,9 +49,13 @@ Critical text accuracy and layout:
   - Spatial Intelligence: RGB + depth + pose -> 3D geometry + spatial reasoning
   - Human-Video World Model: video + action + motion -> future frame + future action
   - Vision-Language-Action: video + language + motion -> robot action chunk
+- Far right: exactly one final synthesis card labeled
+  `1 Unified Embodied Foundation Model`. Show it as the convergence target for
+  perception, 3D memory, language-grounded reasoning, action, and planning.
 - Draw clean arrows from the 20-task grid into the 4 direction panels, then
-  arrows into the 3 pipeline cards.
-- Add a footer line: `Tasks, directions, and pipelines can expand as new evidence is added.`
+  arrows into the 3 pipeline cards, then arrows into the unified model target.
+- Add a footer line:
+  `Tasks, directions, pipelines, and unified model targets can expand as new evidence is added.`
 
 Visual style:
 
@@ -58,15 +66,10 @@ Visual style:
 - No photorealistic presenter, no white page background, no watermark.
 - Avoid tiny decorative clutter; prioritize readability at website size.
 
-## Post-Processing
-
-The generated image output was used as the visual base. The top title band was
-locally corrected with an exact text overlay to avoid generated-text spelling
-drift while preserving the generated diagram content.
-
 ## Verification
 
-The committed asset was visually checked after post-processing. The page also
-includes an HTML key that lists the exact 20 task names, four canonical research
-directions, and three foundation-pipeline tracks, so reader-facing counts do
-not depend only on the image.
+The committed asset was visually checked at its native 1672 x 941 resolution.
+The page also includes an HTML key that lists the exact 20 task names, four
+canonical research directions, three foundation-pipeline tracks, and one
+unified embodied foundation-model target, so reader-facing counts do not depend
+only on the image.
