@@ -41,6 +41,20 @@ This project builds on the Xperience-10M dataset released by Ropedia to provide 
 
 **Scope:** Line 1 uses one public sample episode. Line 2 uses selected 128-episode public-safe artifacts linked back to official gated episode paths. Raw Xperience-10M MP4/HDF5/RRD files, Qwen3 base weights, Cosmos3 base weights, and gated data are not redistributed here.
 
+## Cite This Repository
+
+Use this copyable BibTeX block for the repository:
+
+```bibtex
+@misc{he2026ropedia_xperience10m_task_suite,
+  author       = {Chaoyue He},
+  title        = {Ropedia Xperience-10M Task Suite},
+  year         = {2026},
+  url          = {https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite},
+  note         = {Public task and evaluation layer for Ropedia Xperience-10M: two evidence lines, 20 embodied-AI tasks, 180 scored method-task records, and selected-128 model diagnostics}
+}
+```
+
 ## Contents
 
 - [Project Entry Points](#project-entry-points)
