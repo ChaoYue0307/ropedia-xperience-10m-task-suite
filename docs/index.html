@@ -1349,7 +1349,7 @@
       list-style: none;
       cursor: pointer;
       display: grid;
-      grid-template-columns: minmax(0, 0.38fr) minmax(280px, 1fr);
+      grid-template-columns: minmax(150px, 0.28fr) minmax(0, 1fr);
       gap: 16px;
       align-items: center;
       padding: 16px 18px;
@@ -1358,14 +1358,17 @@
       display: none;
     }
     .split-radar-details summary span {
+      min-width: 0;
       color: var(--green);
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 820;
       letter-spacing: 0.08em;
+      line-height: 1.25;
       text-transform: uppercase;
     }
     .split-radar-details summary strong {
+      min-width: 0;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.4;
@@ -4068,6 +4071,7 @@
       line-height: 1.08;
       letter-spacing: 0;
       text-wrap: balance;
+      overflow-wrap: anywhere;
     }
     .task-research-name {
       display: block;
@@ -4075,6 +4079,7 @@
       color: #d7e5d1;
       font-size: 13px;
       line-height: 1.35;
+      overflow-wrap: anywhere;
     }
     .tag {
       font-size: 11px;
@@ -5981,6 +5986,21 @@
     .hero-radar-details {
       margin: 14px 0 0;
     }
+    .hero-radar-details summary,
+    .hero-task-details summary {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      align-items: start;
+    }
+    .hero-radar-details summary span,
+    .hero-task-details summary span {
+      letter-spacing: 0.06em;
+    }
+    .hero-radar-details summary strong,
+    .hero-task-details summary strong {
+      max-width: 62ch;
+      color: rgba(245, 247, 240, 0.72);
+    }
     .hero-radar-details .hero-radar-frame {
       margin: 16px;
     }
@@ -6128,7 +6148,7 @@
     }
     @media (min-width: 1121px) {
       .hero-inner {
-        grid-template-columns: minmax(0, 1.34fr) minmax(390px, 0.66fr);
+        grid-template-columns: minmax(0, 1fr) minmax(500px, 0.82fr);
         gap: 34px;
         align-items: start;
         min-height: 0;
@@ -6229,7 +6249,7 @@
         align-items: start;
       }
       .hero-radar-top span {
-        max-width: 300px;
+        max-width: 360px;
         text-align: right;
         line-height: 1.35;
       }
@@ -6321,7 +6341,20 @@
     }
     @media (min-width: 961px) and (max-width: 1120px) {
       .hero-inner {
-        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+        grid-template-columns: minmax(0, 1fr) minmax(460px, 0.95fr);
+      }
+      .hero-radar-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 1180px) {
+      .split-radar-details summary {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        align-items: start;
+      }
+      .split-radar-details summary strong {
+        max-width: 72ch;
       }
     }
     @media (max-width: 1280px) {
@@ -6546,6 +6579,14 @@
       }
       .roadmap-resource-card.primary {
         grid-column: 1 / -1;
+      }
+      .glossary-table {
+        min-width: min(760px, 100%);
+        font-size: 12.5px;
+      }
+      .glossary-table th,
+      .glossary-table td {
+        padding: 12px;
       }
     }
     @media (max-width: 1120px) {
@@ -7269,7 +7310,7 @@
       <div class="hero-radar-panel" aria-label="Project scope and result orientation">
         <div class="hero-radar-top">
           <strong>project overview</strong>
-          <span>dataset scope / task suite / result records</span>
+          <span>scope / tasks / result records</span>
         </div>
         <div class="hero-radar-layout">
           <div class="hero-radar-copy">
@@ -7294,7 +7335,7 @@
         </div>
         <details class="split-radar-details hero-radar-details">
           <summary>
-            <span>open full 9-method radar</span>
+            <span>open radar</span>
             <strong>The full grouped radar is useful for pattern scanning after comparing the 1-episode and 128-episode views.</strong>
           </summary>
           <a class="hero-radar-frame" href="#suite-radars" aria-label="Open full unified 20-task model radar">
@@ -7303,7 +7344,7 @@
         </details>
         <details class="split-radar-details hero-task-details">
           <summary>
-            <span>show task names and source links</span>
+            <span>task names and sources</span>
             <strong>All 20 task axes, radar images, result matrix, and proxy audit remain available here without crowding the first screen.</strong>
           </summary>
           <div class="hero-task-strip" aria-label="All 20 radar task axes">
