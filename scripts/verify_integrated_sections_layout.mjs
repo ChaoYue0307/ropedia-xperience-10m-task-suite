@@ -63,6 +63,38 @@ async function inspectViewport(page, baseUrl, viewport, name) {
   await page.locator("#takeaways").scrollIntoViewIfNeeded();
   await page.waitForTimeout(500);
 
+  const tooltipSamples = [];
+  const tooltipLocator = page.locator("#takeaways .term-help");
+  const tooltipCount = await tooltipLocator.count();
+  for (let index = 0; index < Math.min(5, tooltipCount); index += 1) {
+    const help = tooltipLocator.nth(index);
+    await help.scrollIntoViewIfNeeded();
+    await help.hover();
+    await page.waitForTimeout(80);
+    tooltipSamples.push(await page.evaluate(() => {
+      const tooltip = document.querySelector("#termFloatingTooltip");
+      const source = document.querySelector(".term-help[aria-describedby='termFloatingTooltip']");
+      if (!tooltip || !source) return { present: Boolean(tooltip), source: Boolean(source), visible: false };
+      const rect = tooltip.getBoundingClientRect();
+      const style = window.getComputedStyle(tooltip);
+      return {
+        present: true,
+        source: true,
+        visible: tooltip.classList.contains("show") && style.visibility === "visible" && Number(style.opacity) > 0.9,
+        parent: tooltip.parentElement?.tagName || null,
+        zIndex: Number(style.zIndex),
+        width: rect.width,
+        height: rect.height,
+        top: rect.top,
+        left: rect.left,
+        right: rect.right,
+        bottom: rect.bottom,
+        text: tooltip.textContent.replace(/\s+/g, " ").trim()
+      };
+    }));
+    await page.mouse.move(1, 1);
+  }
+
   const metrics = await page.evaluate(() => {
     const rectFor = (selector) => {
       const element = document.querySelector(selector);
@@ -118,11 +150,13 @@ async function inspectViewport(page, baseUrl, viewport, name) {
       taskAxisSummaryCounts,
       resultMatrixDetails: resultMatrixDetails ? { open: resultMatrixDetails.open } : null,
       resultScoreRows,
+      tooltipSamples: [],
       resultCitationBanner,
       resultBlocks,
       sectionCount: document.querySelectorAll("main > section[data-project-tab]").length
     };
   });
+  metrics.tooltipSamples = tooltipSamples;
 
   const failures = [];
   if (metrics.oldStandalone.length) failures.push(`old standalone sections remain: ${metrics.oldStandalone.join(", ")}`);
@@ -156,6 +190,17 @@ async function inspectViewport(page, baseUrl, viewport, name) {
     failures.push("direction provenance subsection collapsed below readable size");
   }
   if (metrics.bodyOverflow > 2) failures.push(`page has horizontal overflow of ${metrics.bodyOverflow}px`);
+  if (tooltipCount < 4) failures.push(`expected at least 4 result-section info icons, found ${tooltipCount}`);
+  metrics.tooltipSamples.forEach((sample, index) => {
+    if (!sample.present || !sample.source) failures.push(`tooltip sample ${index + 1} did not use the floating tooltip portal`);
+    if (!sample.visible) failures.push(`tooltip sample ${index + 1} was not visibly shown`);
+    if (sample.parent !== "BODY") failures.push(`tooltip sample ${index + 1} is not attached to body`);
+    if (sample.zIndex < 1000) failures.push(`tooltip sample ${index + 1} has too-low z-index ${sample.zIndex}`);
+    if (!sample.text) failures.push(`tooltip sample ${index + 1} has no readable text`);
+    if (sample.left < 0 || sample.top < 0 || sample.right > viewport.width || sample.bottom > viewport.height) {
+      failures.push(`tooltip sample ${index + 1} is outside the viewport`);
+    }
+  });
 
   const screenshotPath = path.join(outputDir, `integrated-results-${name}.png`);
   const directionScreenshotPath = path.join(outputDir, `integrated-directions-${name}.png`);

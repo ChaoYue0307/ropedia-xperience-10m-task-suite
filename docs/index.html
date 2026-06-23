@@ -2478,6 +2478,40 @@
       border-bottom: 1px solid rgba(204, 255, 160, 0.28);
       background: rgba(2, 5, 2, 0.98);
     }
+    .tooltip-portal-ready .term-tooltip {
+      display: none !important;
+    }
+    .term-floating-tooltip {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 10000;
+      width: min(360px, calc(100vw - 24px));
+      max-width: calc(100vw - 24px);
+      transform: translate3d(var(--tooltip-x, 12px), var(--tooltip-y, 12px), 0);
+      opacity: 0;
+      pointer-events: none;
+      border: 1px solid rgba(204, 255, 160, 0.32);
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, rgba(12, 22, 11, 0.99), rgba(2, 5, 2, 0.99));
+      box-shadow: 0 20px 54px rgba(0, 0, 0, 0.58), 0 0 0 1px rgba(204, 255, 160, 0.07) inset;
+      color: var(--text);
+      padding: 11px 12px;
+      font-family: var(--font-copy);
+      font-size: var(--type-sm);
+      font-weight: 620;
+      letter-spacing: 0;
+      line-height: 1.42;
+      text-align: left;
+      text-transform: none;
+      white-space: normal;
+      visibility: hidden;
+    }
+    .term-floating-tooltip.show {
+      opacity: 1;
+      visibility: visible;
+    }
     .result-matrix-stat .term-with-help,
     .matrix-legend-pill .term-with-help,
     .method-cell .term-with-help,
@@ -9519,6 +9553,82 @@ python scripts/validate_publication_package.py</code></pre>
       return `<span class="term-with-help"><span>${escapeHtml(label)}</span>${infoIcon(term, termDefinition(term))}</span>`;
     }
 
+    function initTermTooltipPortal() {
+      const tooltip = document.createElement("div");
+      tooltip.className = "term-floating-tooltip";
+      tooltip.id = "termFloatingTooltip";
+      tooltip.setAttribute("role", "tooltip");
+      tooltip.setAttribute("aria-hidden", "true");
+      document.body.appendChild(tooltip);
+      document.body.classList.add("tooltip-portal-ready");
+      let activeHelp = null;
+
+      const tooltipText = (help) => {
+        const inlineTooltip = help?.querySelector(".term-tooltip");
+        const text = inlineTooltip?.textContent || help?.getAttribute("title") || help?.getAttribute("aria-label") || "";
+        return text.replace(/\s+/g, " ").trim();
+      };
+
+      const positionTooltip = () => {
+        if (!activeHelp) return;
+        const text = tooltipText(activeHelp);
+        if (!text) return;
+        tooltip.textContent = text;
+        tooltip.setAttribute("aria-hidden", "false");
+        tooltip.classList.add("show");
+        const helpRect = activeHelp.getBoundingClientRect();
+        const tooltipRect = tooltip.getBoundingClientRect();
+        const gap = 10;
+        const margin = 12;
+        let x = helpRect.left + (helpRect.width / 2) - (tooltipRect.width / 2);
+        x = Math.max(margin, Math.min(x, window.innerWidth - tooltipRect.width - margin));
+        let y = helpRect.top - tooltipRect.height - gap;
+        if (y < margin) y = helpRect.bottom + gap;
+        y = Math.max(margin, Math.min(y, window.innerHeight - tooltipRect.height - margin));
+        tooltip.style.setProperty("--tooltip-x", `${Math.round(x)}px`);
+        tooltip.style.setProperty("--tooltip-y", `${Math.round(y)}px`);
+      };
+
+      const showTooltip = (help) => {
+        if (!help || !tooltipText(help)) return;
+        activeHelp = help;
+        help.setAttribute("aria-describedby", tooltip.id);
+        positionTooltip();
+      };
+
+      const hideTooltip = (help = activeHelp) => {
+        if (help) help.removeAttribute("aria-describedby");
+        if (help && activeHelp && help !== activeHelp) return;
+        activeHelp = null;
+        tooltip.classList.remove("show");
+        tooltip.setAttribute("aria-hidden", "true");
+      };
+
+      document.addEventListener("pointerover", (event) => {
+        const help = event.target.closest?.(".term-help");
+        if (!help || help.contains(event.relatedTarget)) return;
+        showTooltip(help);
+      });
+      document.addEventListener("pointerout", (event) => {
+        const help = event.target.closest?.(".term-help");
+        if (!help || help.contains(event.relatedTarget)) return;
+        hideTooltip(help);
+      });
+      document.addEventListener("focusin", (event) => {
+        const help = event.target.closest?.(".term-help");
+        if (help) showTooltip(help);
+      });
+      document.addEventListener("focusout", (event) => {
+        const help = event.target.closest?.(".term-help");
+        if (help) hideTooltip(help);
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") hideTooltip();
+      });
+      window.addEventListener("scroll", positionTooltip, { passive: true });
+      window.addEventListener("resize", positionTooltip);
+    }
+
     function methodGlossaryTerms(method) {
       const text = `${method.id || ""} ${method.label || ""} ${method.short_label || ""} ${method.method_detail || ""}`.toLowerCase();
       const terms = [];
@@ -10100,6 +10210,7 @@ python scripts/validate_publication_package.py</code></pre>
       });
     });
     labelResponsiveTables();
+    initTermTooltipPortal();
     initGlossaryControls();
     initGlossaryData();
     initResultMatrixTable();
