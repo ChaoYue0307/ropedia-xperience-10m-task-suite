@@ -7203,7 +7203,7 @@
           <strong>Directions</strong>
           <span>directions and roadmap</span>
         </button>
-        <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="reading-path" aria-selected="false" aria-pressed="false" aria-controls="evidence reading-path glossary artifacts omni-scale-up run" tabindex="-1">
+        <button type="button" class="project-tab" id="tab-resources" role="tab" data-tab-key="resources" data-default-section="reading-path" aria-selected="false" aria-pressed="false" aria-controls="evidence reading-path glossary artifacts omni-scale-up foundation-model-paths run" tabindex="-1">
           <strong>Resources</strong>
           <span>project path, mirrors, commands</span>
         </button>
@@ -9327,11 +9327,50 @@
               <article class="artifact"><h3>Scale-up requirement</h3><p>Future runs need validation tracking, held-out predictions, quality-target reporting, and the same public-safe package gate.</p><a href="data/foundation_model_plan.json">training requirements</a></article>
               <article class="artifact"><h3>Xperience-native pretraining</h3><p>Future plan for a domain-specific embodied foundation model trained from scratch over full-corpus video, audio, geometry, motion, inertial, and language streams.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a></article>
             </div>
-            <details class="structured-mirrors foundation-appendix-details">
-              <summary>Foundation-model scale-up paths</summary>
-              <div class="foundation-appendix-inner">
+          </section>
+
+          <section class="artifact-group tabbed-panel" id="artifact-panel-checks" role="tabpanel" aria-labelledby="artifact-tab-checks" hidden>
+            <div class="artifact-group-head">
+              <div><span>Release checks</span><h3>Validators and parity records</h3></div>
+              <p>This tab now does one job: show the audit files that prove the public pages, mirrors, and package contents are internally consistent.</p>
+            </div>
+            <div class="artifact-grid">
+              <article class="artifact primary-artifact"><div><h3>Publication audit</h3><p>Checks the expected public package files, docs, figures, structured data, and artifact boundaries before a release is trusted.</p></div><a href="data/publication_audit.json">publication audit</a></article>
+              <article class="artifact"><h3>Website integrity</h3><p>Validates local website links, referenced data files, asset paths, and generated dashboard dependencies.</p><a href="data/website_integrity.json">website integrity</a></article>
+              <article class="artifact"><h3>Mirror parity</h3><p>Compares GitHub, HF Space, artifact dataset, baseline model repo, and weights/results mirror snapshots.</p><a href="data/mirror_parity.json">mirror parity</a></article>
+              <article class="artifact"><h3>Publication QA</h3><p>Records mirror readiness, evidence-map links, live status pointers, and cross-repo publication checks.</p><a href="data/public_surface_qa.json">publication QA</a></article>
+              <article class="artifact"><h3>Live publication status</h3><p>Tracks live URLs and hash checks used after publishing to GitHub Pages and Hugging Face surfaces.</p><a href="data/live_publication_status.json">live status</a></article>
+              <article class="artifact"><h3>Source alignment audit</h3><p>Separates official Xperience-10M source facts from local/public project inventory and derived artifacts.</p><a href="data/source_alignment_audit.json">source alignment</a></article>
+              <article class="artifact"><h3>Task surface validation</h3><p>Checks task-count, task-contract, and result-matrix consistency across generated public data files.</p><a href="data/task_surface_integrity.json">task surface</a></article>
+              <article class="artifact"><h3>Quality gates</h3><p>Summarizes build, validation, mirror, and publication gates that should pass before relying on the release.</p><a href="data/quality_gates.json">quality gates</a></article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="omni-scale-up" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
+      <div class="wrap">
         <div class="section-head">
-          <h3>Foundation-model scale-up paths.</h3>
+          <h2>Qwen3-Omni diagnostic run is verified.</h2>
+          <p>The selected pilot uses 128 source-balanced episodes across 128 different session UUIDs. The latest v6 held-out package is verified, and its weak metrics define the next structured-output and error-analysis pass.</p>
+        </div>
+        <div class="artifact-grid">
+          <article class="artifact"><h3>Selection</h3><p>128 complete episodes selected from 128 unique top-level sessions, balanced across episode-size bands and split 96/16/16 for train/val/test.</p><a href="data/xperience10m_128_episode_feature_index.json">source/feature index</a></article>
+          <article class="artifact"><h3>Transfer</h3><p>Download raw episodes only from official gated sources, exclude visualization.rrd, validate files, then stage them for training.</p></article>
+          <article class="artifact"><h3>Current LoRA artifact</h3><p>The current Qwen3-Omni LoRA artifact is the verified v6 selected 128-episode diagnostic adapter. The v5 row remains pinned as the prior release, and the 1-episode Qwen entry is only a sensor-adapter smoke test.</p><a href="data/omni_model_comparison.json">model groups</a></article>
+          <article class="artifact"><h3>No-new-episode suite push</h3><p>The next suite push does not need more episodes first: use `multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets, and raw-feature shards while keeping the held-out split fixed.</p><a href="data/task_suite_enhancement_128.json">enhancement data</a></article>
+          <article class="artifact"><h3>Backbone tracks</h3><p>Qwen3-Omni uses a separate LoRA model repo; Cosmos3-Nano remains a compatibility package; Cosmos3-Super now has a verified forward-dynamics LoRA artifact with weights in a dedicated model repo.</p><a href="https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep">Cosmos3-Super weights</a></article>
+          <article class="artifact"><h3>Native foundation model</h3><p>The long-term goal is a full-corpus Xperience Embodied Foundation Model trained on synchronized perception, geometry, motion, inertial, audio, and language streams after smaller scaling stages validate the approach.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a></article>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="foundation-model-paths" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Foundation-model scale-up paths.</h2>
           <p>This later appendix keeps the three training paths without making them the first reading stop. The four research directions organize what the 20 task scores study; these pipeline cards describe how Xperience-10M files can train larger spatial, world-model, and vision-language-action models.</p>
         </div>
         <div class="foundation-pipeline-grid" aria-label="Three high-resolution foundation direction slide diagrams">
@@ -9436,47 +9475,8 @@
           <article class="artifact"><h3>Quality and sync diagnostics</h3><p>Track timestamp drift, missing streams, calibration consistency, corrupted files, and degraded-mode manifests before large training runs.</p><a href="data/evidence_contract.json">evidence contract</a></article>
           <article class="artifact"><h3>Policy and simulation transfer</h3><p>Convert mocap, hand trajectories, contacts, and object states into action tokens, robot-compatible targets, and imitation-learning examples.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/FOUNDATION_MODEL_PLAN.md">foundation plan</a></article>
         </div>
-              </div>
-            </details>
-          </section>
-
-          <section class="artifact-group tabbed-panel" id="artifact-panel-checks" role="tabpanel" aria-labelledby="artifact-tab-checks" hidden>
-            <div class="artifact-group-head">
-              <div><span>Release checks</span><h3>Validators and parity records</h3></div>
-              <p>This tab now does one job: show the audit files that prove the public pages, mirrors, and package contents are internally consistent.</p>
-            </div>
-            <div class="artifact-grid">
-              <article class="artifact primary-artifact"><div><h3>Publication audit</h3><p>Checks the expected public package files, docs, figures, structured data, and artifact boundaries before a release is trusted.</p></div><a href="data/publication_audit.json">publication audit</a></article>
-              <article class="artifact"><h3>Website integrity</h3><p>Validates local website links, referenced data files, asset paths, and generated dashboard dependencies.</p><a href="data/website_integrity.json">website integrity</a></article>
-              <article class="artifact"><h3>Mirror parity</h3><p>Compares GitHub, HF Space, artifact dataset, baseline model repo, and weights/results mirror snapshots.</p><a href="data/mirror_parity.json">mirror parity</a></article>
-              <article class="artifact"><h3>Publication QA</h3><p>Records mirror readiness, evidence-map links, live status pointers, and cross-repo publication checks.</p><a href="data/public_surface_qa.json">publication QA</a></article>
-              <article class="artifact"><h3>Live publication status</h3><p>Tracks live URLs and hash checks used after publishing to GitHub Pages and Hugging Face surfaces.</p><a href="data/live_publication_status.json">live status</a></article>
-              <article class="artifact"><h3>Source alignment audit</h3><p>Separates official Xperience-10M source facts from local/public project inventory and derived artifacts.</p><a href="data/source_alignment_audit.json">source alignment</a></article>
-              <article class="artifact"><h3>Task surface validation</h3><p>Checks task-count, task-contract, and result-matrix consistency across generated public data files.</p><a href="data/task_surface_integrity.json">task surface</a></article>
-              <article class="artifact"><h3>Quality gates</h3><p>Summarizes build, validation, mirror, and publication gates that should pass before relying on the release.</p><a href="data/quality_gates.json">quality gates</a></article>
-            </div>
-          </section>
-        </div>
       </div>
     </section>
-
-    <section id="omni-scale-up" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Qwen3-Omni diagnostic run is verified.</h2>
-          <p>The selected pilot uses 128 source-balanced episodes across 128 different session UUIDs. The latest v6 held-out package is verified, and its weak metrics define the next structured-output and error-analysis pass.</p>
-        </div>
-        <div class="artifact-grid">
-          <article class="artifact"><h3>Selection</h3><p>128 complete episodes selected from 128 unique top-level sessions, balanced across episode-size bands and split 96/16/16 for train/val/test.</p><a href="data/xperience10m_128_episode_feature_index.json">source/feature index</a></article>
-          <article class="artifact"><h3>Transfer</h3><p>Download raw episodes only from official gated sources, exclude visualization.rrd, validate files, then stage them for training.</p></article>
-          <article class="artifact"><h3>Current LoRA artifact</h3><p>The current Qwen3-Omni LoRA artifact is the verified v6 selected 128-episode diagnostic adapter. The v5 row remains pinned as the prior release, and the 1-episode Qwen entry is only a sensor-adapter smoke test.</p><a href="data/omni_model_comparison.json">model groups</a></article>
-          <article class="artifact"><h3>No-new-episode suite push</h3><p>The next suite push does not need more episodes first: use `multiscale_20s10_40s20_80s40`, hierarchical action/subtask targets, and raw-feature shards while keeping the held-out split fixed.</p><a href="data/task_suite_enhancement_128.json">enhancement data</a></article>
-          <article class="artifact"><h3>Backbone tracks</h3><p>Qwen3-Omni uses a separate LoRA model repo; Cosmos3-Nano remains a compatibility package; Cosmos3-Super now has a verified forward-dynamics LoRA artifact with weights in a dedicated model repo.</p><a href="https://huggingface.co/cy0307/ropedia-cosmos3-super-forward-dynamics-lora-128ep">Cosmos3-Super weights</a></article>
-          <article class="artifact"><h3>Native foundation model</h3><p>The long-term goal is a full-corpus Xperience Embodied Foundation Model trained on synchronized perception, geometry, motion, inertial, audio, and language streams after smaller scaling stages validate the approach.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/XPERIENCE_EMBODIED_FOUNDATION_MODEL_PRETRAINING.md">pretraining plan</a></article>
-        </div>
-      </div>
-    </section>
-
     <section id="run" data-project-tab="resources" role="tabpanel" aria-labelledby="tab-resources" tabindex="-1">
       <div class="wrap">
         <div class="section-head">
@@ -10061,6 +10061,7 @@ python scripts/validate_publication_package.py</code></pre>
       { id: "glossary", label: "Glossary" },
       { id: "artifacts", label: "Research Artifacts" },
       { id: "omni-scale-up", label: "Omni Scale-Up" },
+      { id: "foundation-model-paths", label: "Foundation Paths" },
       { id: "run", label: "Reproduce" }
     ];
     const sectionLabels = Object.fromEntries(sectionConfig.map((section) => [section.id, section.label]));
@@ -10088,6 +10089,7 @@ python scripts/validate_publication_package.py</code></pre>
       artifacts: "Best for finding files, mirrors, weights, scripts, and checks.",
       evidence: "Best after the roadmap: current experiment status, model evidence, mirrors, and milestones.",
       "omni-scale-up": "Best for Qwen3-Omni and Cosmos3 status.",
+      "foundation-model-paths": "Later scale-up section: three larger training paths after current model status.",
       run: "Best for reproduction commands."
     };
     const sectionTabMap = Object.fromEntries(tabSections.map((section) => [section.id, section.dataset.projectTab]));
