@@ -2281,6 +2281,36 @@
     .result-interpretation-note strong {
       color: #fff4ca;
     }
+    .result-limitations-card {
+      margin: 22px 0 18px;
+      border-color: rgba(255, 209, 102, 0.34);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255, 209, 102, 0.16), transparent 38%),
+        linear-gradient(180deg, rgba(255, 209, 102, 0.075), rgba(2, 5, 2, 0.76));
+    }
+    .result-limitations-card summary span {
+      color: #ffe6a3;
+    }
+    .result-limitations-card summary strong {
+      color: #fff4ca;
+      font-family: var(--font-ui);
+      font-size: 17px;
+    }
+    .result-limitations-body {
+      display: grid;
+      gap: 12px;
+      padding: 0 18px 18px;
+    }
+    .result-limitations-body p {
+      margin: 0;
+      color: #d8e2d4;
+      font-size: 13px;
+      line-height: 1.58;
+    }
+    .result-limitations-body p:first-child {
+      color: var(--ink);
+      font-weight: 720;
+    }
     .citation-ledger {
       margin-top: 8px;
     }
@@ -8392,6 +8422,20 @@
           <a href="#neural">Neural heads</a>
           <a href="#diagnostics">Diagnostic charts</a>
         </nav>
+        <details class="split-radar-details result-limitations-card">
+          <summary>
+            <span>Result Interpretation and Limitations</span>
+            <strong>These results are diagnostic, not a final model-quality leaderboard.</strong>
+          </summary>
+          <div class="result-limitations-body">
+            <p>This project has two public evidence lines. Line 1 uses one public sample episode as an inspectable task lab. Line 2 uses a selected-128 public-safe comparison surface for same-split baselines and model diagnostics. The current public results do not estimate full Xperience-10M corpus performance.</p>
+            <p>The 180-record matrix should be read task-by-task. Raw metric values are the citeable values. Radar-normalized values are visual summaries only and should not be used as leaderboard scores.</p>
+            <p>Direct and compact-proxy scores remain separate. Proxy-marked cells are bounded public-safe substitutes where a direct raw target is not publicly available; they should not be treated as direct raw-target evidence.</p>
+            <p>The selected-128 surface is a diagnostic comparison subset, not a distributionally representative sample of the full Xperience-10M corpus. Broader model-quality claims require larger episode coverage, locked held-out splits, seed variance, and episode-level confidence intervals.</p>
+            <p>Because 20-frame windows with stride 5 can create local temporal overlap, split construction matters. Window counts should be read as evaluation units, not statistically independent human-experience episodes.</p>
+            <p>High local baseline scores are within-surface sanity checks, not proof of general embodied-intelligence performance. The Qwen3-Omni and Cosmos rows are model-family diagnostics; weak action/subtask results are kept visible because they define the next error-analysis and model-improvement stage.</p>
+          </div>
+        </details>
         <div class="result-citation-banner result-interpretation-note" role="note" aria-label="Result interpretation note">
           <span>!</span>
           <div>
