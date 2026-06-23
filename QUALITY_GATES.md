@@ -1,6 +1,6 @@
 # Release Checks
 
-This file is the release map for the Xperience-10M Task Suite.
+This file is the release map for the Ropedia Xperience-10M Task Suite.
 
 Current gate status: **pass**
 

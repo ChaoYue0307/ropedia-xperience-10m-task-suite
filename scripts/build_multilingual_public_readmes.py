@@ -42,13 +42,13 @@ def badges() -> str:
 
 def hero(title: str, tagline: str, active: str) -> str:
     return f"""<p align="center">
-  <img src="docs/assets/brand/xperience10m-logo-social-card.png" alt="Xperience-10M Task Suite cover" width="100%">
+  <img src="docs/assets/brand/xperience10m-logo-social-card.png" alt="Ropedia Xperience-10M Task Suite cover" width="100%">
 </p>
 
 <h1 align="center">{title}</h1>
 
 <p align="center">
-  <img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Xperience-10M Task Suite logo" width="112">
+  <img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Ropedia Xperience-10M Task Suite logo" width="112">
 </p>
 
 <p align="center">
@@ -62,12 +62,12 @@ def hero(title: str, tagline: str, active: str) -> str:
 
 
 ENGLISH_TOP = f"""{hero(
-    "Xperience-10M Task Suite",
+    "Ropedia Xperience-10M Task Suite",
     "A multilingual public research surface for Xperience-10M: sample data, 20 embodied-AI tasks, baselines, Qwen3-Omni and Cosmos3 diagnostics, and foundation-model training directions.",
     "en",
 )}
 
-**Xperience-10M Task Suite** is an independent public task-suite and evaluation project built on Ropedia's released Xperience-10M dataset. It has two public evidence lines. **Line 1** is the 1-sample task lab for raw-file inspection, task construction, and reproducibility. **Line 2** is the selected-128 comparison surface for aligned metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Every score points to a source artifact and keeps direct-vs-proxy status visible.
+**Ropedia Xperience-10M Task Suite** is the public task-suite and evaluation layer built on the Xperience-10M dataset released by Ropedia. It has two public evidence lines. **Line 1** is the 1-sample task lab for raw-file inspection, task construction, and reproducibility. **Line 2** is the selected-128 comparison surface for aligned metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Every score points to a source artifact and keeps direct-vs-proxy status visible.
 
 **Updated:** {UPDATED}.
 
@@ -108,8 +108,8 @@ The multilingual README files are reader guides. The canonical technical evidenc
   </thead>
   <tbody>
     <tr>
-      <td><strong>Project identity</strong><br><img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Xperience-10M Task Suite logo" width="56"></td>
-      <td>The same project logo mark is used across the GitHub README, GitHub Pages dashboard, Hugging Face Space, artifact dataset, model mirrors, favicon, and social preview. Ropedia is the Xperience-10M data provider and releaser; this repository is the task-suite and evaluation layer. Reusable assets: <a href="docs/assets/brand/xperience10m-logo-mark-512.png">logo mark</a> and <a href="docs/assets/brand/xperience10m-logo-social-card.png">social card</a>.</td>
+      <td><strong>Project identity</strong><br><img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Ropedia Xperience-10M Task Suite logo" width="56"></td>
+      <td>The same project logo mark is used across the GitHub README, GitHub Pages dashboard, Hugging Face Space, artifact dataset, model mirrors, favicon, and social preview. Ropedia is credited as the Xperience-10M data provider and releaser; this repository is the task-suite and evaluation layer built on that dataset. Reusable assets: <a href="docs/assets/brand/xperience10m-logo-mark-512.png">logo mark</a> and <a href="docs/assets/brand/xperience10m-logo-social-card.png">social card</a>.</td>
     </tr>
     <tr>
       <td><strong>Two-line contract</strong></td>
@@ -460,7 +460,7 @@ LANGUAGE_GUIDES = {
 """,
     },
     "es": {
-        "title": "Xperience-10M Task Suite",
+        "title": "Ropedia Xperience-10M Task Suite",
         "tagline": "Superficie pública multilingüe para Xperience-10M: datos de muestra, 20 tareas embodied-AI, baselines, diagnósticos Qwen3-Omni y Cosmos3, y direcciones de entrenamiento.",
         "body": f"""## Cómo Leer Este Proyecto
 
@@ -511,7 +511,7 @@ El proyecto publica solo artifacts derivados, métricas, figuras, tarjetas y res
 """,
     },
     "fr": {
-        "title": "Xperience-10M Task Suite",
+        "title": "Ropedia Xperience-10M Task Suite",
         "tagline": "Surface publique multilingue pour Xperience-10M : échantillon, 20 tâches embodied-AI, baselines, diagnostics Qwen3-Omni et Cosmos3, et pistes d'entraînement.",
         "body": f"""## Comment Lire Ce Projet
 
@@ -562,7 +562,7 @@ Le projet publie des artifacts dérivés, métriques, figures et cartes public-s
 """,
     },
     "de": {
-        "title": "Xperience-10M Task Suite",
+        "title": "Ropedia Xperience-10M Task Suite",
         "tagline": "Mehrsprachige öffentliche Forschungsoberfläche für Xperience-10M: Sample-Daten, 20 Embodied-AI-Aufgaben, Baselines, Qwen3-Omni- und Cosmos3-Diagnostik und Trainingsrichtungen.",
         "body": f"""## So Liest Man Dieses Projekt
 
@@ -613,7 +613,7 @@ Dieses Projekt veröffentlicht nur abgeleitete Artefakte, Metriken, Figuren, Kar
 """,
     },
     "ja": {
-        "title": "Xperience-10M Task Suite",
+        "title": "Ropedia Xperience-10M Task Suite",
         "tagline": "Xperience-10M の多言語公開研究面: サンプルデータ、20 個の embodied-AI タスク、ベースライン、Qwen3-Omni と Cosmos3 診断、基盤モデル訓練方向。",
         "body": f"""## このプロジェクトの読み方
 
@@ -664,7 +664,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 """,
     },
     "ko": {
-        "title": "Xperience-10M Task Suite",
+        "title": "Ropedia Xperience-10M Task Suite",
         "tagline": "Xperience-10M을 위한 다국어 공개 연구 표면: 샘플 데이터, 20개 embodied-AI 과제, 베이스라인, Qwen3-Omni 및 Cosmos3 진단, foundation 모델 학습 방향.",
         "body": f"""## 이 프로젝트를 읽는 방법
 
@@ -715,7 +715,7 @@ Method blocks: Line 1 は task-head baselines（Minimal、Neural MLP）。Line 2
 """,
     },
     "pt": {
-        "title": "Xperience-10M Task Suite",
+        "title": "Ropedia Xperience-10M Task Suite",
         "tagline": "Superfície pública multilíngue para Xperience-10M: dados de amostra, 20 tarefas embodied-AI, baselines, diagnósticos Qwen3-Omni e Cosmos3 e direções de treino.",
         "body": f"""## Como Ler Este Projeto
 
@@ -803,7 +803,7 @@ def write_language_json() -> None:
         for code, label, filename in LANGUAGES
     ]
     payload = {
-        "title": "Xperience-10M Task Suite Language Versions",
+        "title": "Ropedia Xperience-10M Task Suite Language Versions",
         "status": "pass",
         "updated": UPDATED,
         "language_count": len(rows),

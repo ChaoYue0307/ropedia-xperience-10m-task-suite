@@ -7,7 +7,7 @@ Current status: **pass**
 ## Browser Flow
 
 - URL: `http://127.0.0.1:8765/#walkthroughs`
-- Title: `Xperience-10M Task Suite`
+- Title: `Ropedia Xperience-10M Task Suite`
 - Viewport: `481 x 716`
 - Flow: load current docs server -> open #walkthroughs deep link -> click Next -> click Process story chapter
 - Screenshot: `/tmp/xperience_site_walkthrough_fresh.png`

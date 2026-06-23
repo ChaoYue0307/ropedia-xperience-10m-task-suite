@@ -19,7 +19,7 @@ infographic that clearly explains the current expandable structure:
 
 Critical text accuracy and layout:
 
-- Use the exact title: `Xperience-10M Task Suite`.
+- Use the exact title: `Ropedia Xperience-10M Task Suite`.
 - Make the numbers 20, 4, 3, and 1 unmistakable. Use large section headings:
   `20 TASKS`, `4 RESEARCH DIRECTIONS`, `3 FOUNDATION PIPELINES`,
   and `1 UNIFIED EMBODIED FOUNDATION MODEL`.

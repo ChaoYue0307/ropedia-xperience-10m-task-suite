@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="docs/assets/brand/xperience10m-logo-social-card.png" alt="Xperience-10M Task Suite cover" width="100%">
+  <img src="docs/assets/brand/xperience10m-logo-social-card.png" alt="Ropedia Xperience-10M Task Suite cover" width="100%">
 </p>
 
-<h1 align="center">Xperience-10M Task Suite</h1>
+<h1 align="center">Ropedia Xperience-10M Task Suite</h1>
 
 <p align="center">
-  <img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Xperience-10M Task Suite logo" width="112">
+  <img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Ropedia Xperience-10M Task Suite logo" width="112">
 </p>
 
 <p align="center">
@@ -35,7 +35,7 @@
 </p>
 
 
-**Xperience-10M Task Suite** is an independent public task-suite and evaluation project built on Ropedia's released Xperience-10M dataset. It has two public evidence lines. **Line 1** is the 1-sample task lab for raw-file inspection, task construction, and reproducibility. **Line 2** is the selected-128 comparison surface for aligned metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Every score points to a source artifact and keeps direct-vs-proxy status visible.
+**Ropedia Xperience-10M Task Suite** is the public task-suite and evaluation layer built on the Xperience-10M dataset released by Ropedia. It has two public evidence lines. **Line 1** is the 1-sample task lab for raw-file inspection, task construction, and reproducibility. **Line 2** is the selected-128 comparison surface for aligned metadata/raw baselines, Qwen3-Omni v6 LoRA, Cosmos3-Super Reasoner, and Cosmos3-Nano Future Window. Every score points to a source artifact and keeps direct-vs-proxy status visible.
 
 **Updated:** 2026-06-23.
 
@@ -76,8 +76,8 @@ The multilingual README files are reader guides. The canonical technical evidenc
   </thead>
   <tbody>
     <tr>
-      <td><strong>Project identity</strong><br><img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Xperience-10M Task Suite logo" width="56"></td>
-      <td>The same project logo mark is used across the GitHub README, GitHub Pages dashboard, Hugging Face Space, artifact dataset, model mirrors, favicon, and social preview. Ropedia is the Xperience-10M data provider and releaser; this repository is the task-suite and evaluation layer. Reusable assets: <a href="docs/assets/brand/xperience10m-logo-mark-512.png">logo mark</a> and <a href="docs/assets/brand/xperience10m-logo-social-card.png">social card</a>.</td>
+      <td><strong>Project identity</strong><br><img src="docs/assets/brand/xperience10m-logo-mark-192.png" alt="Ropedia Xperience-10M Task Suite logo" width="56"></td>
+      <td>The same project logo mark is used across the GitHub README, GitHub Pages dashboard, Hugging Face Space, artifact dataset, model mirrors, favicon, and social preview. Ropedia is credited as the Xperience-10M data provider and releaser; this repository is the task-suite and evaluation layer built on that dataset. Reusable assets: <a href="docs/assets/brand/xperience10m-logo-mark-512.png">logo mark</a> and <a href="docs/assets/brand/xperience10m-logo-social-card.png">social card</a>.</td>
     </tr>
     <tr>
       <td><strong>Two-line contract</strong></td>
@@ -819,7 +819,7 @@ The code files are MIT-licensed. Raw Xperience-10M data is not redistributed
 here, and dataset use remains governed by the official Ropedia/Xperience-10M
 terms. See [`LICENSE`](LICENSE) and [`DATA_NOTICE.md`](DATA_NOTICE.md).
 
-![Xperience-10M task-suite infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v14-modality-compact)
+![Ropedia Xperience-10M task-suite infographic](docs/assets/task_suite_infographic.png?v=xperience10m-taskfirst-v14-modality-compact)
 
 The infographic uses a custom text-free research background and puts the shared
 processing contract plus all 20 unified task families in one figure. Public

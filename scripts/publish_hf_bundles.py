@@ -40,7 +40,7 @@ DEFAULT_MODEL_REPO = "ropedia-xperience-10m-task-baselines"
 DEFAULT_WEIGHTS_RESULTS_REPO = "ropedia-xperience-10m-weights-results"
 DEFAULT_QWEN3_LORA_REPO = "ropedia-qwen3-omni-lora-128ep"
 DEFAULT_COSMOS3_SUPER_LORA_REPO = "ropedia-cosmos3-super-forward-dynamics-lora-128ep"
-COLLECTION_TITLE = "Xperience-10M Task Suite"
+COLLECTION_TITLE = "Ropedia Xperience-10M Task Suite"
 
 COMMON_IGNORE = [
     ".DS_Store",
@@ -118,7 +118,7 @@ episodes.
 """
 
 SPACE_CARD_METADATA = """---
-title: Xperience-10M Task Suite
+title: Ropedia Xperience-10M Task Suite
 emoji: 🚀
 colorFrom: blue
 colorTo: green

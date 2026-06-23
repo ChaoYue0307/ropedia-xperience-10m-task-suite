@@ -1,6 +1,6 @@
 FROM nginx:1.27-alpine
 
-LABEL org.opencontainers.image.title="Xperience-10M Task Suite"
+LABEL org.opencontainers.image.title="Ropedia Xperience-10M Task Suite"
 LABEL org.opencontainers.image.description="Static research dashboard for the Ropedia Xperience-10M task-suite project."
 LABEL org.opencontainers.image.source="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite"
 LABEL org.opencontainers.image.url="https://chaoyue0307.github.io/ropedia-xperience-10m-task-suite/"

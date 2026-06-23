@@ -147,7 +147,7 @@ def render_readme(
             "---",
             "",
             '<p align="center">',
-            '  <img src="https://raw.githubusercontent.com/ChaoYue0307/ropedia-xperience-10m-task-suite/main/docs/assets/brand/xperience10m-logo-social-card.png" alt="Xperience-10M Task Suite cover" width="100%">',
+            '  <img src="https://raw.githubusercontent.com/ChaoYue0307/ropedia-xperience-10m-task-suite/main/docs/assets/brand/xperience10m-logo-social-card.png" alt="Ropedia Xperience-10M Task Suite cover" width="100%">',
             "</p>",
             "",
             '<p align="center">',

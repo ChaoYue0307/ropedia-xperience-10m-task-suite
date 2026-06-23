@@ -221,7 +221,7 @@ def build_payload() -> dict:
         row["suite_label"] = f"Task {idx:02d}"
 
     return {
-        "title": "Xperience-10M Task Suite Evaluation Protocol",
+        "title": "Ropedia Xperience-10M Task Suite Evaluation Protocol",
         "status": "pass",
         "version": "2026-06-01",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),

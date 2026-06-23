@@ -41,7 +41,7 @@ def build_report(observations: dict[str, Any]) -> dict[str, Any]:
     checks = [
         check(
             "page_identity",
-            observations.get("title") == "Xperience-10M Task Suite"
+            observations.get("title") == "Ropedia Xperience-10M Task Suite"
             and str(observations.get("url", "")).startswith("http://127.0.0.1:"),
             "The rendered page should load the expected local site title and URL.",
             title=observations.get("title"),

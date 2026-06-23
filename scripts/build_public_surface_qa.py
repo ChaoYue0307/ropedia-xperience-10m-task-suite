@@ -156,7 +156,7 @@ def build_report() -> dict:
     }
 
     seo_markers = [
-        "<title>Xperience-10M Task Suite | Built on Ropedia Data</title>",
+        "<title>Ropedia Xperience-10M Task Suite</title>",
         'name="description"',
         'rel="canonical"',
         'property="og:title"',
@@ -178,7 +178,7 @@ def build_report() -> dict:
         "End",
     ]
     naming_markers = [
-        "Xperience-10M Task Suite",
+        "Ropedia Xperience-10M Task Suite",
         "Xperience-10M",
         "20-task",
         "Qwen3-Omni",
@@ -282,7 +282,7 @@ def build_report() -> dict:
         check(
             "public_naming_consistent",
             all(marker in combined_public_text for marker in naming_markers),
-            "Public copy should present the project as the Xperience-10M Task Suite, while crediting Ropedia as the dataset provider and releaser.",
+            "Public copy should present the project as the Ropedia Xperience-10M Task Suite, while crediting Ropedia as the dataset provider and releaser.",
             marker_counts=marker_count(combined_public_text, naming_markers),
         ),
         check(
