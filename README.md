@@ -707,6 +707,13 @@ scale-up documents.
 machine-readable companion used by the website and Hugging Face artifact
 dataset.
 
+[The project resource map](PROJECT_RESOURCE_MAP.md) is the complete generated
+inventory for scripts, result artifacts, website data, visual assets, configs,
+notes, and prepared Hugging Face bundles. Its structured companion,
+[docs/data/project_resource_map.json](docs/data/project_resource_map.json), is
+used by the website Resources tab to search, filter, and open scripts/results
+directly.
+
 ## Evaluation Protocol
 
 [The evaluation protocol](EVALUATION_PROTOCOL.md) and

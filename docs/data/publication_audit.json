@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-23T12:25:08+00:00",
+  "generated_at_utc": "2026-06-28T08:21:52+00:00",
   "checks": [
     {
       "name": "required_publication_assets_present",
@@ -66,6 +66,7 @@
     "FIGURE_INDEX.md": true,
     "SOURCE_ALIGNMENT_AUDIT.md": true,
     "XPERIENCE10M_DATASET_CARD_ALIGNMENT.md": true,
+    "PROJECT_RESOURCE_MAP.md": true,
     "REPRODUCIBILITY.md": true,
     "EVIDENCE_CONTRACT.md": true,
     "DATA_NOTICE.md": true,
@@ -89,6 +90,7 @@
     "docs/data/quality_gates.json": true,
     "docs/data/project_manifest.json": true,
     "docs/data/project_packet.json": true,
+    "docs/data/project_resource_map.json": true,
     "docs/data/public_reader_map.json": true,
     "docs/data/project_status.json": true,
     "docs/data/research_roadmap.json": true,
@@ -153,6 +155,7 @@
     "scripts/episode_task_suite.py": true,
     "scripts/neural_task_models.py": true,
     "scripts/build_artifact_index.py": true,
+    "scripts/build_project_resource_map.py": true,
     "scripts/build_brand_assets.py": true,
     "scripts/build_evaluation_protocol.py": true,
     "scripts/build_unified_task_suite.py": true,
@@ -235,8 +238,8 @@
     "github_repo": {
       "root": "repo",
       "exists": true,
-      "file_count": 1568,
-      "text_file_count": 1296,
+      "file_count": 1571,
+      "text_file_count": 1299,
       "largest_file": {
         "path": "results/omni_finetune/a100_128_metadata_task_baselines_20260616_v2/interaction_text_prediction/confusion_matrix.csv",
         "bytes": 73057076

@@ -4300,6 +4300,192 @@
         rgba(7, 18, 7, 0.56);
       padding: 17px;
     }
+    .resource-map-panel {
+      display: grid;
+      gap: 16px;
+      border: 1px solid rgba(204, 255, 160, 0.22);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(204, 255, 160, 0.08), rgba(103, 232, 209, 0.035) 48%, rgba(2, 5, 2, 0.82)),
+        rgba(2, 5, 2, 0.72);
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+    .resource-map-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(280px, 1.1fr);
+      gap: 24px;
+      align-items: end;
+    }
+    .resource-map-head span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .resource-map-head h4 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.05;
+    }
+    .resource-map-head p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .resource-map-stats {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .resource-map-stat {
+      border: 1px solid rgba(204, 255, 160, 0.16);
+      border-radius: 14px;
+      background: rgba(7, 18, 7, 0.58);
+      padding: 14px;
+    }
+    .resource-map-stat strong {
+      display: block;
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 24px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .resource-map-stat span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.3;
+    }
+    .resource-map-controls {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.9fr) minmax(0, 1.8fr);
+      gap: 12px;
+      align-items: center;
+    }
+    .resource-map-search {
+      width: 100%;
+      border: 1px solid rgba(204, 255, 160, 0.2);
+      border-radius: 999px;
+      background: rgba(2, 5, 2, 0.72);
+      color: var(--ink);
+      padding: 13px 16px;
+      font: inherit;
+      outline: none;
+    }
+    .resource-map-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+    .resource-map-filter {
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: 999px;
+      background: rgba(7, 18, 7, 0.7);
+      color: var(--muted);
+      padding: 10px 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .resource-map-filter.active {
+      color: #041004;
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .resource-map-table-scroll {
+      max-height: 560px;
+      overflow: auto;
+      border: 1px solid rgba(204, 255, 160, 0.14);
+      border-radius: 16px;
+      background: rgba(2, 5, 2, 0.62);
+    }
+    .resource-map-pagination {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .resource-map-page-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .resource-map-page-actions button {
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: 999px;
+      background: rgba(7, 18, 7, 0.72);
+      color: var(--green);
+      padding: 8px 12px;
+      font-weight: 850;
+      cursor: pointer;
+    }
+    .resource-map-page-actions button:disabled {
+      cursor: default;
+      color: rgba(238, 245, 232, 0.32);
+      border-color: rgba(238, 245, 232, 0.08);
+    }
+    .resource-map-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 960px;
+    }
+    .resource-map-table th,
+    .resource-map-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(204, 255, 160, 0.1);
+      text-align: left;
+      vertical-align: top;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .resource-map-table th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      color: var(--green);
+      background: rgba(2, 5, 2, 0.96);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .resource-map-path {
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+    .resource-map-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .resource-map-links a,
+    .resource-map-links span {
+      border: 1px solid rgba(204, 255, 160, 0.18);
+      border-radius: 999px;
+      color: var(--green);
+      padding: 5px 8px;
+      font-size: 11px;
+      font-weight: 850;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .resource-map-links span {
+      color: var(--muted);
+    }
+    .resource-map-note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
     .artifact-group {
       border: 1px solid var(--soft-line);
       border-radius: var(--radius);
@@ -6554,7 +6740,10 @@
         border-right: 0;
         border-bottom: 1px solid var(--line);
       }
-      .hero-stats, .hero-paths, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .resource-mode-grid, .suite-lines, .result-reading-order, .result-rules-panel, .data-analysis-grid, .data-analysis-chart-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-stats, .hero-paths, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .resource-mode-grid, .suite-lines, .result-reading-order, .result-rules-panel, .data-analysis-grid, .data-analysis-chart-grid, .resource-map-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .resource-map-head,
+      .resource-map-controls { grid-template-columns: 1fr; }
+      .resource-map-filter-row { justify-content: flex-start; }
       .data-scope-detail { grid-template-columns: 1fr; }
       .reader-route-panel,
       .task-axis-head,
@@ -6923,7 +7112,9 @@
         width: 100%;
         justify-content: center;
       }
-      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .result-rules-panel, .reader-route-list, .task-axis-grid, .task-axis-summary, .task-axis-reader-rule, .task-axis-key, .task-axis-task-list, .task-axis-visual figcaption, .method-flow-steps, .suite-task-index-head, .data-analysis-grid, .data-analysis-chart-grid, .data-analysis-table-header, .data-scope-detail, .data-scope-facts { grid-template-columns: 1fr; }
+      .hero-stats, .models, .task-grid, .artifact-grid, .evidence-grid, .reading-grid, .snapshot-grid, .roadmap-grid, .brief-grid, .surface-map, .boundary-strip, .chart-grid, .callout-row, .direction-grid, .baseline-strip, .extension-grid, .walk-flow, .flow-steps, .storyboard-steps, .task-selector, .hero-paths, .resource-mode-grid, .suite-lines, .suite-line-facts, .result-reading-order, .result-rules-panel, .reader-route-list, .task-axis-grid, .task-axis-summary, .task-axis-reader-rule, .task-axis-key, .task-axis-task-list, .task-axis-visual figcaption, .method-flow-steps, .suite-task-index-head, .data-analysis-grid, .data-analysis-chart-grid, .data-analysis-table-header, .data-scope-detail, .data-scope-facts, .resource-map-head, .resource-map-controls, .resource-map-stats { grid-template-columns: 1fr; }
+      .resource-map-panel { padding: 14px; }
+      .resource-map-filter-row { justify-content: flex-start; }
       .data-scope-explorer { padding: 12px; }
       .data-scope-flow {
         grid-template-columns: 1fr;
@@ -9575,9 +9766,51 @@
               <div><span>Published mirrors</span><h3>Project map, mirrors, and runnable code</h3></div>
               <p>Project files, published mirrors, and scripts for the public-sample pipeline.</p>
             </div>
+            <div class="resource-map-panel" id="project-resource-map" aria-labelledby="project-resource-map-title">
+              <div class="resource-map-head">
+                <div>
+                  <span>complete generated inventory</span>
+                  <h4 id="project-resource-map-title">Open scripts, result artifacts, website data, and HF bundle files directly.</h4>
+                </div>
+                <p>The map is generated from the project folders instead of hand-curated cards. It keeps every script and result file indexed in place, marks local-only files when they are not tracked, and links to GitHub Pages, GitHub, or Hugging Face raw files when a public surface exists.</p>
+              </div>
+              <div class="resource-map-stats" id="resourceMapStats" aria-label="Project resource-map summary">
+                <div class="resource-map-stat"><strong>...</strong><span>loading inventory</span></div>
+              </div>
+              <div class="resource-map-controls" aria-label="Filter project resource map">
+                <input class="resource-map-search" id="resourceMapSearch" type="search" placeholder="Search scripts, results, data files, models, or HF bundles" aria-label="Search project resources">
+                <div class="resource-map-filter-row">
+                  <button type="button" class="resource-map-filter active" data-resource-filter="all" aria-pressed="true">All</button>
+                  <button type="button" class="resource-map-filter" data-resource-filter="scripts" aria-pressed="false">Scripts</button>
+                  <button type="button" class="resource-map-filter" data-resource-filter="results" aria-pressed="false">Results</button>
+                  <button type="button" class="resource-map-filter" data-resource-filter="website" aria-pressed="false">Website data</button>
+                  <button type="button" class="resource-map-filter" data-resource-filter="hf" aria-pressed="false">HF bundles</button>
+                  <button type="button" class="resource-map-filter" data-resource-filter="local" aria-pressed="false">Local-only</button>
+                </div>
+              </div>
+              <div class="resource-map-pagination" id="resourceMapPagination" aria-live="polite"></div>
+              <div class="resource-map-table-scroll" aria-label="Scrollable project resource table">
+                <table class="resource-map-table" id="resourceMapTable">
+                  <thead>
+                    <tr>
+                      <th>File</th>
+                      <th>Type</th>
+                      <th>Role</th>
+                      <th>Size</th>
+                      <th>Direct access</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td colspan="5">Loading project resource map...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="resource-map-note">Generated sources: <a href="data/project_resource_map.json">structured resource map</a> and <a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_RESOURCE_MAP.md">human-readable resource map</a>. Rerun <code>python scripts/build_project_resource_map.py</code> after new result runs or script additions.</p>
+            </div>
             <div class="artifact-grid">
               <article class="artifact primary-artifact"><div><h3>Evidence map</h3><p>Single navigation view for GitHub, GitHub Pages, HF Space, artifact dataset, baseline model repo, Qwen3-Omni/Cosmos3 repos, and result lanes.</p></div><a href="data/public_reader_map.json">evidence map</a></article>
               <article class="artifact primary-artifact"><div><h3>Glossary</h3><p>Definitions for project-specific terms plus broader embodied-AI, egocentric multimodal data, spatial geometry, world-model, VLA, training, evaluation, adapter, and public mirror terms.</p></div><a href="data/glossary.json">glossary data</a><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/GLOSSARY.md">full glossary note</a></article>
+              <article class="artifact primary-artifact"><div><h3>Project resource map</h3><p>Complete generated inventory for scripts, result artifacts, website JSON, visual assets, configs, notes, and prepared Hugging Face bundles.</p></div><a href="data/project_resource_map.json">resource-map data</a><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/PROJECT_RESOURCE_MAP.md">resource-map note</a></article>
               <article class="artifact primary-artifact"><div><h3>Artifact guide</h3><p>Human-readable map from project scope to data contract, task evidence, platform mirrors, and scale-up status.</p></div><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/blob/main/ARTIFACT_GUIDE.md">artifact guide</a></article>
               <article class="artifact"><h3>Reproduction scripts</h3><p>Training, visualization, taxonomy, walkthrough, validator, and omni-readiness scripts.</p><a href="https://github.com/ChaoYue0307/ropedia-xperience-10m-task-suite/tree/main/scripts">scripts/</a></article>
               <article class="artifact"><h3>Hugging Face Space</h3><p>The dashboard packaged as a public static Space.</p><a href="https://huggingface.co/spaces/cy0307/ropedia-xperience-10m-task-suite">HF Space</a></article>
@@ -11135,6 +11368,140 @@
       }
     }
 
+    function resourceMapBucket(entry) {
+      if (!entry) return "all";
+      if (entry.kind === "script" || entry.kind === "omni_script") return "scripts";
+      if (entry.kind === "result" || entry.kind === "omni_result") return "results";
+      if (entry.kind === "structured_data" || entry.kind === "visual_asset") return "website";
+      if (entry.kind === "hf_bundle") return "hf";
+      return "other";
+    }
+
+    function resourceMapLinks(entry) {
+      const access = entry.access || {};
+      const links = [];
+      if (access.site) links.push(`<a href="${escapeHtml(access.site)}">site</a>`);
+      if (access.github) links.push(`<a href="${escapeHtml(access.github)}">repo</a>`);
+      if (access.hf_raw) links.push(`<a href="${escapeHtml(access.hf_raw)}">HF raw</a>`);
+      if (access.raw && !access.github) links.push(`<a href="${escapeHtml(access.raw)}">raw</a>`);
+      if (!links.length) {
+        const label = access.bundle ? "staged bundle" : "local-only";
+        links.push(`<span title="${escapeHtml(access.local_path || entry.path)}">${escapeHtml(label)}</span>`);
+      }
+      return `<span class="resource-map-links">${links.join("")}</span>`;
+    }
+
+    function renderProjectResourceMap(payload) {
+      const stats = document.getElementById("resourceMapStats");
+      const table = document.getElementById("resourceMapTable");
+      if (!stats || !table) return;
+      const entries = Array.isArray(payload.entries) ? payload.entries : [];
+      const summary = payload.summary || {};
+      const statRows = [
+        [summary.total_files || entries.length, "indexed files"],
+        [summary.script_files || 0, "scripts"],
+        [summary.result_files || 0, "result files"],
+        [summary.structured_data_files || 0, "website JSON files"],
+        [summary.hf_bundle_files || 0, "HF bundle files"]
+      ];
+      stats.innerHTML = statRows.map(([value, label]) => `
+        <div class="resource-map-stat"><strong>${escapeHtml(value)}</strong><span>${escapeHtml(label)}</span></div>
+      `).join("");
+
+      let activeFilter = "all";
+      let activePage = 0;
+      const pageSize = 250;
+      const search = document.getElementById("resourceMapSearch");
+      const buttons = Array.from(document.querySelectorAll("[data-resource-filter]"));
+      const tbody = table.querySelector("tbody");
+      const pagination = document.getElementById("resourceMapPagination");
+
+      const passesFilter = (entry) => {
+        if (activeFilter === "all") return true;
+        if (activeFilter === "local") return entry.source_root === "repo" && entry.access && entry.access.tracked_in_git === false;
+        return resourceMapBucket(entry) === activeFilter;
+      };
+
+      const renderRows = () => {
+        const query = (search?.value || "").trim().toLowerCase();
+        const rows = entries.filter((entry) => {
+          if (!passesFilter(entry)) return false;
+          if (!query) return true;
+          return [
+            entry.path,
+            entry.kind,
+            entry.role,
+            entry.source_root,
+            entry.purpose,
+            entry.bundle
+          ].filter(Boolean).join(" ").toLowerCase().includes(query);
+        });
+        if (!rows.length) {
+          tbody.innerHTML = '<tr><td colspan="5">No resources match this filter.</td></tr>';
+          if (pagination) pagination.innerHTML = "<span>No matching resources.</span>";
+          return;
+        }
+        const pageCount = Math.max(1, Math.ceil(rows.length / pageSize));
+        activePage = Math.min(activePage, pageCount - 1);
+        const start = activePage * pageSize;
+        const visibleRows = rows.slice(start, start + pageSize);
+        tbody.innerHTML = visibleRows.map((entry) => `
+          <tr>
+            <td><span class="resource-map-path">${escapeHtml(entry.path)}</span><br><span class="table-note">${escapeHtml(entry.purpose || "")}</span></td>
+            <td>${escapeHtml(entry.kind || "")}</td>
+            <td>${escapeHtml(entry.role || "")}<br><span class="table-note">${escapeHtml(entry.source_root || "")}</span></td>
+            <td>${escapeHtml(entry.size_human || "")}</td>
+            <td>${resourceMapLinks(entry)}</td>
+          </tr>
+        `).join("");
+        if (pagination) {
+          pagination.innerHTML = `
+            <span>Showing ${escapeHtml(start + 1)}-${escapeHtml(Math.min(start + pageSize, rows.length))} of ${escapeHtml(rows.length)} matching resources. Search narrows across the full generated inventory.</span>
+            <span class="resource-map-page-actions">
+              <button type="button" data-resource-page="-1" ${activePage === 0 ? "disabled" : ""}>Previous</button>
+              <button type="button" data-resource-page="1" ${activePage >= pageCount - 1 ? "disabled" : ""}>Next</button>
+            </span>
+          `;
+          pagination.querySelectorAll("[data-resource-page]").forEach((button) => {
+            button.addEventListener("click", () => {
+              activePage += Number(button.dataset.resourcePage || 0);
+              renderRows();
+            });
+          });
+        }
+      };
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activeFilter = button.dataset.resourceFilter || "all";
+          activePage = 0;
+          buttons.forEach((candidate) => {
+            const active = candidate === button;
+            candidate.classList.toggle("active", active);
+            candidate.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+          renderRows();
+        });
+      });
+      if (search) search.addEventListener("input", () => {
+        activePage = 0;
+        renderRows();
+      });
+      renderRows();
+    }
+
+    async function initProjectResourceMap() {
+      const table = document.getElementById("resourceMapTable");
+      if (!table) return;
+      try {
+        const response = await fetch("data/project_resource_map.json", { cache: "no-cache" });
+        if (!response.ok) throw new Error(`resource map ${response.status}`);
+        renderProjectResourceMap(await response.json());
+      } catch (error) {
+        table.querySelector("tbody").innerHTML = '<tr><td colspan="5">Project resource map could not be loaded. Use PROJECT_RESOURCE_MAP.md in the repository for the complete inventory.</td></tr>';
+      }
+    }
+
     const prepareTaskResultLookup = (payload) => {
       taskResultSeries = Array.isArray(payload?.series) ? payload.series : [];
       taskResultRecordsByNumber = new Map();
@@ -11560,6 +11927,7 @@
     initGlossaryControls();
     initGlossaryData();
     initResultMatrixTable();
+    initProjectResourceMap();
     initTaskSurface();
 
     document.querySelectorAll("[data-copy]").forEach((button) => {

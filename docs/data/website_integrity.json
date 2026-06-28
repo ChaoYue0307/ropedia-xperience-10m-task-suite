@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "generated_at_utc": "2026-06-23T19:52:36+00:00",
+  "generated_at_utc": "2026-06-28T08:30:01+00:00",
   "docs_root": "docs",
   "site_base": "/ropedia-xperience-10m-task-suite/",
   "summary": {
     "html_pages": 4,
-    "local_references": 356,
-    "external_reference_count": 149,
-    "json_files": 57,
+    "local_references": 358,
+    "external_reference_count": 151,
+    "json_files": 58,
     "image_assets_referenced": 55,
     "failure_count": 0
   },
@@ -80,8 +80,8 @@
       "name": "project_overview_precedes_progress_ledger",
       "status": "pass",
       "reason": "The project overview should appear before the deeper progress ledger.",
-      "overview_index": 215914,
-      "evidence_index": 353730
+      "overview_index": 221045,
+      "evidence_index": 358861
     },
     {
       "name": "project_status_links_json",
@@ -159,9 +159,9 @@
       "name": "evaluation_protocol_between_overview_and_progress",
       "status": "pass",
       "reason": "The evaluation protocol should appear before the deeper evidence ledger.",
-      "overview_index": 215914,
-      "protocol_index": 283180,
-      "evidence_index": 353730
+      "overview_index": 221045,
+      "protocol_index": 288311,
+      "evidence_index": 358861
     },
     {
       "name": "evaluation_protocol_links_json",
@@ -290,8 +290,8 @@
     },
     {
       "path": "index.html",
-      "id_count": 115,
-      "reference_count": 323,
+      "id_count": 121,
+      "reference_count": 325,
       "image_count": 80
     },
     {
@@ -409,6 +409,11 @@
       "top_level_type": "dict"
     },
     {
+      "path": "data/project_resource_map.json",
+      "bytes": 22465923,
+      "top_level_type": "dict"
+    },
+    {
       "path": "data/project_status.json",
       "bytes": 23040,
       "top_level_type": "dict"
@@ -425,7 +430,7 @@
     },
     {
       "path": "data/publication_audit.json",
-      "bytes": 10940,
+      "bytes": 11077,
       "top_level_type": "dict"
     },
     {
@@ -580,7 +585,7 @@
     },
     {
       "path": "data/website_integrity.json",
-      "bytes": 26145,
+      "bytes": 26,
       "top_level_type": "dict"
     },
     {
